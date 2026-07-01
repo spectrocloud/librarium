@@ -12,8 +12,8 @@ tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces"]
 
 Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubernetes namespaces. You can also apply
 [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) and
-[Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to those namespaces.
-Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubernetes namespaces. You can also apply
+[Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to those namespaces. Virtual Machine
+Orchestrator (VMO) allows you to create, manage, and edit Kubernetes namespaces. You can also apply
 [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) and
 [Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to those namespaces.
 
@@ -33,8 +33,7 @@ Launchpad for VMs:
 | `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all labels managed by VMO, including those created in the UI                                                                            |
 | `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by the Launchpad for VMs appliance |
 
-Managed namespaces:
-Managed namespaces:
+Managed namespaces: Managed namespaces:
 
 - Are listed in relevant drop-downs and filters.
 - Can be edited from a single modal.
@@ -43,9 +42,9 @@ Managed namespaces:
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
 with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
 namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can
-filter by a specific namespace using the namespace drop-down.
-namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can
-filter by a specific namespace using the namespace drop-down.
+filter by a specific namespace using the namespace drop-down. namespaces appear in drop-downs and filters. Users with
+cluster-wide access can view all managed namespaces. You can filter by a specific namespace using the namespace
+drop-down.
 
 VMO manages the following namespaces by default.
 
@@ -54,7 +53,6 @@ VMO manages the following namespaces by default.
 | `default`           | Default Kubernetes namespace.                           |
 | `vm-dashboard`      | The appliance's own namespace, or the configured value. |
 | `vmo-golden-images` | Dedicated namespace for golden image DataVolumes.       |
-
 
 ## Create Namespaces
 
@@ -87,14 +85,14 @@ namespace is immediately managed.
    alphanumeric character). Validation runs as you type.
 
 4. _(Optional)_ Enter key-value pairs for **Labels** and **Annotations** as necessary.
-4. _(Optional)_ Enter key-value pairs for **Labels** and **Annotations** as necessary.
+5. _(Optional)_ Enter key-value pairs for **Labels** and **Annotations** as necessary.
 
 ### Reserved Key-Values
 
 Certain keys and values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent
-accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
-Certain keys and values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent
-accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
+accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly. Certain keys and
+values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent accidental edits. If
+you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
 
 | Label              | Annotation         | Key                                           | Value         |
 | ------------------ | ------------------ | --------------------------------------------- | ------------- |
@@ -112,7 +110,7 @@ accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit n
 | :white_check_mark: | :white_check_mark: | `pod-security.kubernetes.io/...`              | -             |
 
 5. _(Optional)_ Enter **Quotas** and **Limit Range** values as necessary.
-5. _(Optional)_ Enter **Quotas** and **Limit Range** values as necessary.
+6. _(Optional)_ Enter **Quotas** and **Limit Range** values as necessary.
 
 - Use [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) to set resource constraints on all
   pods in the namespace, keeping resource-hungry namespaces from starving other workloads on the cluster.
@@ -165,9 +163,8 @@ it only fills in defaults.
 
 The namespace is created with the appropriate labels set. Any provided **Quotas** and **Limit Range** values are applied
 as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can edit the namespace to
-adjust values as needed.
-as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can edit the namespace to
-adjust values as needed.
+adjust values as needed. as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can
+edit the namespace to adjust values as needed.
 
 ### Adopt Existing Namespaces
 
@@ -194,10 +191,10 @@ underlying namespace with `kubectl` or another tool when needed.
 
 Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces). From the VMO left
 main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the namespace. Add, remove,
-and edit fields as necessary, selecting **Save changes** when finished.
-Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces). From the VMO left
-main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the namespace. Add, remove,
-and edit fields as necessary, selecting **Save changes** when finished.
+and edit fields as necessary, selecting **Save changes** when finished. Editing an existing namespace uses a similar
+process as [creating a namespace](#create-namespaces). From the VMO left main menu, select **Infrastructure** >
+**Namespaces**, and select the **Edit** icon beside the namespace. Add, remove, and edit fields as necessary, selecting
+**Save changes** when finished.
 
 :::info
 
