@@ -333,11 +333,20 @@ p img.markdown-image {
     }
   }
 
-  // Larger, bolder headers than the shared default. Size the header text on its
-  // own element with a fixed line-height so it doesn't reflow when antd's
-  // CSS-in-JS loads after first paint.
+  // Larger, bolder headers than the shared default.
+  //
+  // antd v5 injects the Collapse's layout CSS at runtime (CSS-in-JS), so on a
+  // hard refresh it isn't present at first paint and the header/icon briefly
+  // render unstyled, then snap into place. This global stylesheet, by contrast,
+  // is a real <link> in <head> and IS present at first paint. So we define the
+  // header layout in full here -- flex row, gap, fixed icon box, and a fixed
+  // header-text size/line-height -- rather than leaning on antd for any of it.
+  // That makes the first paint match the hydrated state and removes the jump.
   .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 12px;
     padding: 24px 28px !important;
     font-weight: 700;
     line-height: 1.3;
@@ -349,14 +358,22 @@ p img.markdown-image {
   }
 
   .ant-collapse .ant-collapse-header-text {
+    flex: 1 1 auto;
     font-size: 22px;
     line-height: 1.3;
   }
 
-  // Pin the expand icon to a fixed size. Its SVG is sized at 1em, so without this
-  // it inherits the 22px header font and renders oversized until antd's styles
-  // load, causing a visible resize on refresh.
+  // Reserve a fixed-size box for the expand icon and pin its SVG. The SVG is
+  // sized at 1em, so without an explicit size it inherits the 22px header font
+  // and renders oversized until antd's styles load.
   .ant-collapse .ant-collapse-expand-icon {
+    order: 1; // keep the icon on the right, matching antd's default placement
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
     font-size: 16px;
     line-height: 1;
 
