@@ -80,8 +80,8 @@ namespace is immediately managed. -->
 
    Certain keys and values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent
    accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly. Certain keys and
-   values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent accidental edits. If
-   you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
+   values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent accidental edits.
+   If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
 
    | Label              | Annotation         | Key                                           | Value         |
    | ------------------ | ------------------ | --------------------------------------------- | ------------- |
@@ -93,10 +93,10 @@ namespace is immediately managed. -->
 
 5. _(Optional)_ Enter **Quotas** and **Limit Range** values as necessary.
 
-   - Use [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) to set resource constraints on all
-   pods in the namespace, keeping resource-hungry namespaces from starving other workloads on the cluster.
-   - Use [Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to automatically set resource constraints
-   for each container within the namespace that does not specify requests or limits for CPU or memory.
+   - Use [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) to set resource constraints on
+     all pods in the namespace, keeping resource-hungry namespaces from starving other workloads on the cluster.
+   - Use [Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to automatically set resource
+     constraints for each container within the namespace that does not specify requests or limits for CPU or memory.
 
    ### Quota Fields
 
@@ -124,14 +124,14 @@ namespace is immediately managed. -->
    | Default Memory Request per container | `requests.memory` for containers that do not specify their own. |
    | Default Memory Limit per container   | `limits.memory` for containers that do not specify their own.   |
 
-   If a workload already declares its own `resources.requests` or `resources.limits`, the Limit Range does not override it;
-   it only fills in defaults.
+   If a workload already declares its own `resources.requests` or `resources.limits`, the Limit Range does not override
+   it; it only fills in defaults.
 
 6. **Create** the namespace.
 
-   The namespace is created with the appropriate labels set. Any provided **Quotas** and **Limit Range** values are applied
-   as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can edit the namespace to
-   adjust values as needed
+   The namespace is created with the appropriate labels set. Any provided **Quotas** and **Limit Range** values are
+   applied as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can edit the
+   namespace to adjust values as needed
 
 ## Adopt Existing Namespaces
 
