@@ -1,0 +1,52 @@
+[
+  {
+    "path": "/deployment-modes/agent-mode/install-agent-host",
+    "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
+    "views": 336
+  },
+  {
+    "path": "/clusters/public-cloud/aws/required-iam-policies",
+    "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
+    "views": 320
+  },
+  {
+    "path": "/vm-management",
+    "url": "https://docs.spectrocloud.com/vm-management",
+    "views": 317
+  },
+  {
+    "path": "/vm-management/launchpad-for-vms/install-vmla-iso",
+    "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms/install-vmla-iso",
+    "views": 301
+  },
+  {
+    "path": "/clusters",
+    "url": "https://docs.spectrocloud.com/clusters",
+    "views": 269
+  },
+  {
+    "path": "/tutorials/getting-started",
+    "url": "https://docs.spectrocloud.com/tutorials/getting-started",
+    "views": 264
+  },
+  {
+    "path": "/vm-management/launchpad-for-vms",
+    "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms",
+    "views": 254
+  },
+  {
+    "path": "/clusters/edge",
+    "url": "https://docs.spectrocloud.com/clusters/edge",
+    "views": 232
+  },
+  {
+    "path": "/vertex",
+    "url": "https://docs.spectrocloud.com/vertex",
+    "views": 227
+  },
+  {
+    "path": "/enterprise-version/install-palette/palette-management-appliance",
+    "url": "https://docs.spectrocloud.com/enterprise-version/install-palette/palette-management-appliance",
+    "views": 196
+  }
+]
