@@ -32,9 +32,7 @@ Managed namespaces:
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
 with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
 namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can
-filter by a specific namespace using the namespace drop-down. namespaces appear in drop-downs and filters. Users with
-cluster-wide access can view all managed namespaces. You can filter by a specific namespace using the namespace
-drop-down.
+filter by a specific namespace using the namespace drop-down. 
 
 VMO manages the following namespaces by default.
 
@@ -70,18 +68,13 @@ namespace is immediately managed. -->
    [DNS-1123 compliant](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
    **Namespace name** (lowercase letters, digits, and hyphens; up to 63 characters; must start and end with an
    alphanumeric character). Validation runs as you type.
-   [DNS-1123 compliant](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
-   **Namespace name** (lowercase letters, digits, and hyphens; up to 63 characters; must start and end with an
-   alphanumeric character). Validation runs as you type.
 
 4. _(Optional)_ Enter key-value pairs for **Labels** and **Annotations** as necessary.
 
    ### Reserved Key-Values
 
    Certain keys and values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent
-   accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly. Certain keys and
-   values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent accidental edits.
-   If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
+   accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
 
    | Label              | Annotation         | Key                                           | Value         |
    | ------------------ | ------------------ | --------------------------------------------- | ------------- |
@@ -141,20 +134,22 @@ You can adopt a namespace that already exists in the cluster so that it can be m
 2. Select **Add Existing**.
 3. Select one or more unmanaged namespaces from the list and click **Adopt Namespace**.
 
-Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but **not** marked with
+Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but are _not_ labeled
 `vmo-manager.spectrocloud.com/origin=created`.
 
 ## Edit Namespaces
 
 Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces).
 
-From the VMO left main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the
-namespace. Add, remove, and edit fields as necessary, selecting **Save changes** when finished.
+1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
+2. Select the **Edit** icon beside the namespace. 
+3. Add, remove, and edit fields as necessary.
+4. Select **Save changes** when finished.
 
 :::info
 
 Namespace names are immutable. Kubernetes does not allow renaming a namespace, so the name field is shown but disabled
-in edit mode. To use a different name, create a new namespace, move resources over, and delete the old namespace.
+in edit mode. To use a different name, create a new namespace, move resources to the new namespace, and delete the old namespace.
 
 :::
 
@@ -171,9 +166,7 @@ Take the following steps to delete a namespace created using the VMO UI.
 
 You can remove the ability to provision VMO-related resources in non-VMO managed namespaces by "unadopting" a namespace,
 but you cannot delete the namespace itself from the VMO UI. Unadopting a namespace does not remove any resources within
-the namespace.
-
-To delete the underlying namespace, use `kubectl` or similar tool.
+the namespace. To delete the underlying namespace, use `kubectl` or similar tool.
 
 1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
 2. Right-click the namespace you want to unadopt and select **Remove from VMO**. This can only be done for namespaces
