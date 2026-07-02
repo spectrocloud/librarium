@@ -16,7 +16,7 @@ name: "Monthly Assessment"
 
 on:
   schedule:
-    - cron: "0 7 1 * *" # 07:00 UTC on the 1st of each month
+    - cron: "0 8 1 * *" # 08:00 UTC on the 1st of each month
   workflow_dispatch:
     inputs:
       month:
@@ -166,6 +166,18 @@ jobs:
               --title "docs: monthly assessment scorecard ${MONTH}" \
               --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo."
           fi
+
+      - name: Report Slack Notification
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete. View the latest scorecard and rolling 3-month trend: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard)."
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
