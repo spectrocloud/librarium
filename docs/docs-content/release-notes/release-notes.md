@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 4, 2026 - Release 4.9.24
+## July 1, 2026 - Release 4.9.24
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -22,7 +22,7 @@ tags: ["release-notes"]
 - While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
   all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
   installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
-  disks is optional and must be confirmed on the following screen.
+  disks is optional and must be confirmed on the follow-up screen.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 

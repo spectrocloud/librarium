@@ -66,8 +66,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    behavior.
 
    If any disks are affected, they are pre-selected for wiping; you can select additional disks as well. Wiping disks is
-   optional and must be confirmed on the following screen. Carefully verify the selected disks, as proceeding
-   permanently deletes all data from the selected disks.
+   optional and must be confirmed on the following screen. Carefully verify the selected disks before proceeding.
 
    :::
 
