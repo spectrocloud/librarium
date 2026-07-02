@@ -1,0 +1,190 @@
+name: "Monthly Assessment"
+
+# DOC-2472 (epic DOC-2348), Option 2: a lightweight monthly persona assessment
+# of the most-visited docs pages.
+#
+# Flow:
+#   1. FullStory Segment Export -> aggregate the top-N docs.spectrocloud.com
+#      pages by page views over the last 30 days (fetch-top-pages.mjs).
+#   2. Run Impersonaid once per page with an auto-selected persona; parse a
+#      forced VERDICT/SCORE/GAPS block (run-assessment.mjs).
+#   3. Publish the scorecard + rolling 3-month trend to a Confluence page in the
+#      DE space (publish-confluence.mjs; self-disables without credentials).
+#   4. Open a PR committing the month's scorecard JSON/MD (the trend history).
+#
+# Assigning owners and curating quick wins remain a manual team step.
+
+on:
+  schedule:
+    - cron: "0 8 1 * *" # 08:00 UTC on the 1st of each month
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Month to label the scorecard (YYYY-MM). Defaults to the current UTC month."
+        required: false
+        type: string
+      use_committed_pages:
+        description: "Skip FullStory and assess the committed pages.json instead (rerun / fallback)."
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  # The private-repo checkout, git push, and PR creation all use the Vault-issued
+  # org token, so the default GITHUB_TOKEN needs no write scope.
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: monthly-assessment
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "24"
+  # Pinned Impersonaid commit (private repo, no tags). Kept current by the
+  # "Bump Impersonaid SHA" workflow (bump-impersonaid-sha.yaml). Keep this value
+  # identical to IMPERSONAID_REF in persona-check.yaml.
+  IMPERSONAID_REF: "937795df3a6019b06768972f5a96afb4b7cb09d7" # spectrocloud/impersonaid main, last bumped 2026-06-30
+  MA_DIR: .github/monthly-assessment
+  PR_BRANCH: chore/monthly-assessment
+
+jobs:
+  monthly-assessment:
+    runs-on: ubuntu-latest
+    # FullStory export can poll up to 15 min; add ~10 sequential persona runs and
+    # publishing on top, so allow generous headroom for an unattended job.
+    timeout-minutes: 45
+    steps:
+      # Fail fast on a malformed manual `month` input before any expensive work —
+      # it becomes the scorecard filename in run-assessment.mjs.
+      - name: Validate month input
+        if: ${{ inputs.month != '' }}
+        env:
+          MONTH_INPUT: ${{ inputs.month }}
+        run: |
+          if [[ ! "$MONTH_INPUT" =~ ^[0-9]{4}-[0-9]{2}$ ]]; then
+            echo "::error::month input must be YYYY-MM (got '$MONTH_INPUT')."
+            exit 1
+          fi
+
+      # Org-scoped token: required to read the PRIVATE spectrocloud/impersonaid,
+      # and used as the push/PR token so the resulting PR triggers normal CI.
+      - name: Retrieve org GitHub token
+        id: import-secrets
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout librarium (master)
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: master
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Checkout Impersonaid
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          repository: spectrocloud/impersonaid
+          ref: ${{ env.IMPERSONAID_REF }}
+          path: impersonaid
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Impersonaid dependencies
+        working-directory: impersonaid
+        run: npm ci
+
+      - name: Select top pages (FullStory)
+        if: ${{ inputs.use_committed_pages != true }}
+        env:
+          FULLSTORY_API_KEY: ${{ secrets.FULLSTORY_API_KEY }}
+          FS_SEGMENT_ID: ${{ secrets.FULLSTORY_EVERYONE_SEGMENT_ID }}
+          MA_PAGES_OUT: ${{ github.workspace }}/${{ env.MA_DIR }}/pages.json
+          # The export is held in memory before aggregating (~1.5 GB observed for
+          # ~2.2M events / 30 days). Raise the heap ceiling to absorb growth.
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: node ${{ env.MA_DIR }}/fetch-top-pages.mjs
+
+      - name: Run persona assessment
+        env:
+          MA_IMPERSONAID_DIR: ${{ github.workspace }}/impersonaid
+          MA_PAGES: ${{ github.workspace }}/${{ env.MA_DIR }}/pages.json
+          MA_OUT_DIR: ${{ github.workspace }}/${{ env.MA_DIR }}/scorecards
+          MA_WORK_DIR: ${{ runner.temp }}/monthly-assessment
+          MA_PROVIDER: anthropic
+          MA_MONTH: ${{ inputs.month }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node ${{ env.MA_DIR }}/run-assessment.mjs
+
+      - name: Publish to Confluence (self-disables without credentials)
+        env:
+          ATLASSIAN_EMAIL: ${{ secrets.ATLASSIAN_EMAIL }}
+          ATLASSIAN_API_TOKEN: ${{ secrets.ATLASSIAN_API_TOKEN }}
+          CONFLUENCE_PAGE_ID: ${{ secrets.CONFLUENCE_PAGE_ID }}
+          MA_OUT_DIR: ${{ github.workspace }}/${{ env.MA_DIR }}/scorecards
+          MA_MONTH: ${{ inputs.month }}
+        run: node ${{ env.MA_DIR }}/publish-confluence.mjs
+
+      - name: Open PR with the month's scorecard
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Commit the selected page list alongside the scorecard so runs are
+          # reproducible and `use_committed_pages` reruns have a list to reuse.
+          git add "${MA_DIR}/scorecards" "${MA_DIR}/pages.json"
+          if git diff --cached --quiet; then
+            echo "No scorecard changes to commit."
+            exit 0
+          fi
+
+          MONTH=$(ls "${MA_DIR}/scorecards"/*.json | sort | tail -1 | xargs -n1 basename | sed 's/\.json$//')
+          git checkout -B "$PR_BRANCH"
+          git commit -m "docs: monthly assessment scorecard ${MONTH}"
+          git push --force origin "$PR_BRANCH"
+
+          EXISTING=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$EXISTING" ]]; then
+            echo "🔄 Updated existing PR #$EXISTING."
+          else
+            gh pr create \
+              --base master \
+              --head "$PR_BRANCH" \
+              --title "docs: monthly assessment scorecard ${MONTH}" \
+              --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo."
+          fi
+
+      - name: Report Slack Notification
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete. View the latest scorecard and rolling 3-month trend: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard)."
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The Monthly Assessment job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
