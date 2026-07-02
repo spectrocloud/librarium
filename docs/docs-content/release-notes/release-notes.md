@@ -11,6 +11,34 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 1, 2026 - Release 4.9.24
+
+<!-- PATCH RELEASE TICKET: DOC-2957 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
+
+- While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
+  all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
+  installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
+  disks is optional and must be confirmed on the follow-up screen.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
+
+- Content authors can now bundle a custom UI into Edge content using the `--custom-ui` flag of the
+  [Palette CLI](/automation/palette-cli/commands/content/#build) `content build` command. When the content is uploaded
+  to a Slim ISO-bootstrapped Edge host, Local UI detects the bundle and renders the custom configuration screens,
+  allowing you to ship tailored configuration experiences alongside your Edge content.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9004 -->
+
+- Fixed an issue where upgrading Palette could also upgrade the Edge host agent on some nodes of a multi-node cluster
+  even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
+  leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
+
 ## June 29, 2026 - Release 4.9.23
 
 ### Bug Fixes
