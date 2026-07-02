@@ -48,20 +48,20 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-759 -->
 
-- SBOMs and attestations for appliances and packs are now available in Artifact Studio. Users can download the SBOM and
-  attestation for every appliance and pack directly from the Artifact Studio interface.
+- SBOMs and attestations for appliances and packs are now available in [Artifact Studio](/downloads/artifact-studio/). Users can download the SBOM for every appliance and pack directly from the Artifact Studio interface. Attestation documents are built with each image and are accessible once packs are uploaded to registries.
 
 ### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2286 -->
+  <!-- https://spectrocloud.atlassian.net/browse/PLT-2286 -->
 
-- Fixed a Terraform issue where newly added `profile_variables` were silently dropped when bumping an immutable cluster
-  profile version. New variables are now correctly persisted in Palette and visible in the UI and API after a version
-  bump.
+- Fixed a Terraform issue that caused newly added [profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  to be silently dropped when bumping the `version` of a `spectrocloud_cluster_profile` resource with the
+  `immutable-clusterprofiles` feature preview enabled. The `terraform apply` operation reported success and created the
+  new profile version, but the newly declared variables did not appear in Palette.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2288 -->
 
-- Fixed a Terraform provider issue where the `skip_k8s_upgrade` field was incorrectly sent for MAAS, vSphere, and Edge
+- Fixed a Terraform issue where the `skip_k8s_upgrade` field was incorrectly sent for MAAS, vSphere, and Edge
   Native cluster worker machine pools, causing an API rejection. This field is only supported for AWS clusters, and the
   provider now correctly omits it for non-AWS cloud types.
 
@@ -103,7 +103,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
 
-- While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
+- While bootstrapping Edge hosts, the Palette Edge Interactive Installer TUI now checks
   all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
   installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
   disks is optional and must be confirmed on the follow-up screen.
