@@ -30,8 +30,10 @@ on:
         default: false
 
 permissions:
-  contents: write
-  pull-requests: write
+  # The private-repo checkout, git push, and PR creation all use the Vault-issued
+  # org token, so the default GITHUB_TOKEN needs no write scope.
+  contents: read
+  pull-requests: read
 
 concurrency:
   group: monthly-assessment
@@ -49,8 +51,22 @@ env:
 jobs:
   monthly-assessment:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # FullStory export can poll up to 15 min; add ~10 sequential persona runs and
+    # publishing on top, so allow generous headroom for an unattended job.
+    timeout-minutes: 45
     steps:
+      # Fail fast on a malformed manual `month` input before any expensive work —
+      # it becomes the scorecard filename in run-assessment.mjs.
+      - name: Validate month input
+        if: ${{ inputs.month != '' }}
+        env:
+          MONTH_INPUT: ${{ inputs.month }}
+        run: |
+          if [[ ! "$MONTH_INPUT" =~ ^[0-9]{4}-[0-9]{2}$ ]]; then
+            echo "::error::month input must be YYYY-MM (got '$MONTH_INPUT')."
+            exit 1
+          fi
+
       # Org-scoped token: required to read the PRIVATE spectrocloud/impersonaid,
       # and used as the push/PR token so the resulting PR triggers normal CI.
       - name: Retrieve org GitHub token
@@ -92,20 +108,16 @@ jobs:
         env:
           FULLSTORY_API_KEY: ${{ secrets.FULLSTORY_API_KEY }}
           FS_SEGMENT_ID: ${{ secrets.FULLSTORY_EVERYONE_SEGMENT_ID }}
-          MA_PAGES_OUT: ${{ github.workspace }}/pages.json
+          MA_PAGES_OUT: ${{ github.workspace }}/${{ env.MA_DIR }}/pages.json
           # The export is held in memory before aggregating (~1.5 GB observed for
           # ~2.2M events / 30 days). Raise the heap ceiling to absorb growth.
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: node ${{ env.MA_DIR }}/fetch-top-pages.mjs
 
-      - name: Use committed pages.json (fallback / rerun)
-        if: ${{ inputs.use_committed_pages == true }}
-        run: cp ${{ env.MA_DIR }}/pages.json ${{ github.workspace }}/pages.json
-
       - name: Run persona assessment
         env:
           MA_IMPERSONAID_DIR: ${{ github.workspace }}/impersonaid
-          MA_PAGES: ${{ github.workspace }}/pages.json
+          MA_PAGES: ${{ github.workspace }}/${{ env.MA_DIR }}/pages.json
           MA_OUT_DIR: ${{ github.workspace }}/${{ env.MA_DIR }}/scorecards
           MA_WORK_DIR: ${{ runner.temp }}/monthly-assessment
           MA_PROVIDER: anthropic
@@ -131,8 +143,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # pages.json is a per-run input; keep it out of the commit.
-          git add "${MA_DIR}/scorecards"
+          # Commit the selected page list alongside the scorecard so runs are
+          # reproducible and `use_committed_pages` reruns have a list to reuse.
+          git add "${MA_DIR}/scorecards" "${MA_DIR}/pages.json"
           if git diff --cached --quiet; then
             echo "No scorecard changes to commit."
             exit 0

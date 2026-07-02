@@ -48,6 +48,7 @@ const providerInput = env("MA_PROVIDER").trim().toLowerCase();
 const provider = providerInput === "anthropic" || providerInput === "openai" ? providerInput : config.defaultProvider;
 const modelOverride = env("MA_MODEL").trim();
 const month = env("MA_MONTH").trim() || new Date().toISOString().slice(0, 7); // YYYY-MM
+if (!/^\d{4}-\d{2}$/.test(month)) throw new Error(`MA_MONTH must be in YYYY-MM format (got "${month}")`);
 
 const pages = JSON.parse(fs.readFileSync(pagesPath, "utf8"));
 const question = `${config.question}\n${config.formatSuffix}`;
