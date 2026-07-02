@@ -27,7 +27,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 
 - Content authors can now bundle a custom UI into Edge content using the `--custom-ui` flag of the
-  [Palette CLI](../automation/palette-cli/palette-cli.md) `content build` command. When the content is uploaded to a
+  [Palette CLI](/automation/palette-cli/commands/content/#build) `content build` command. When the content is uploaded to a
   Slim ISO-bootstrapped Edge host, Local UI detects the bundle and renders the custom configuration screens, allowing
   you to ship tailored configuration experiences alongside your Edge content.
 
