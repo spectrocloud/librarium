@@ -18,9 +18,10 @@ and Network Attachment Definitions (NADs) you define here.
 
 ## Infrastructure Resources
 
-| **Resource**                  | **Description**                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
-| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges. |
+| **Resource**                  | **Description**                                                                                   |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- |
+| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.           |
+| [Storage](./storage.md)       | Manage StorageClasses, storage pools, PersistentVolumeClaims, and DataVolumes that back VM disks. |
 
 ## Related Workflows
 
