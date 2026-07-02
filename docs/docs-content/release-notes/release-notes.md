@@ -70,32 +70,33 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 ### Packs
 
 <!-- BEGIN PACKS LIST BODY: DOC-2962. DO NOT DELETE. -->
-<!-- prettier-ignore-start -->
 
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.0.0 |
-| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.32.1 |
-| <VersionedLink text="cni-antrea" url="/integrations/packs/?pack=cni-antrea" /> | `cni` | :white_check_mark: | :x: | 2.6.2 |
-| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.21.2 |
-| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.32.1 |
-| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.32.1 |
-| <VersionedLink text="cni-cilium" url="/integrations/packs/?pack=cni-cilium" /> | `cni` | :x: | :white_check_mark: | 1.19.4 |
-| <VersionedLink text="eks-pod-identity-agent" url="/integrations/packs/?pack=eks-pod-identity-agent" /> | `addon` | :white_check_mark: | :x: | 0.2.1 |
-| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.7.0 |
-| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.43.0 |
-| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.2 |
-| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.14.0 |
-| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.4.0 |
-| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.32.1 |
-
-<!-- prettier-ignore-end -->
+| Pack Name                                                                                                    | Layer   | Non-FIPS           | FIPS               | New Version |
+| ------------------------------------------------------------------------------------------------------------ | ------- | ------------------ | ------------------ | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" />                                     | `addon` | :white_check_mark: | :x:                | 10.0.0      |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" />         | `addon` | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-antrea" url="/integrations/packs/?pack=cni-antrea" />                               | `cni`   | :white_check_mark: | :x:                | 2.6.2       |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" />           | `cni`   | :x:                | :white_check_mark: | 1.21.2      |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" />                               | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" />                   | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-cilium" url="/integrations/packs/?pack=cni-cilium" />                               | `cni`   | :x:                | :white_check_mark: | 1.19.4      |
+| <VersionedLink text="eks-pod-identity-agent" url="/integrations/packs/?pack=eks-pod-identity-agent" />       | `addon` | :white_check_mark: | :x:                | 0.2.1       |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x:                | 2.7.0       |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" />                                   | `addon` | :white_check_mark: | :x:                | 0.43.0      |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" />                                         | `addon` | :white_check_mark: | :x:                | 1.30.2      |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" />                   | `addon` | :white_check_mark: | :x:                | 29.14.0     |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" />             | `addon` | :white_check_mark: | :x:                | 87.4.0      |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" />                     | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
 
 <!-- END PACKS LIST BODY: DOC-2962. DO NOT DELETE. -->
 
 #### Pack Notes
 
 ## July 1, 2026 - Release 4.9.24
+
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -125,6 +126,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 ## June 29, 2026 - Release 4.9.23
 
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9014 -->
@@ -133,7 +138,11 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
   variables for non-VMO Edge clusters, blocking cluster updates when weak passwords were present. Password strength
   checks are now restricted to VMO profile variables only, restoring the update behavior from previous Palette versions.
 
-## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
+## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.22}
+
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -734,6 +743,11 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 ## June 11, 2026 - Release 4.9.18
 
+The following component updates are applicable to this release:
+
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
 ### Bug Fixes
@@ -780,7 +794,12 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 ## June 8, 2026 - Release 4.9.16
 
-### Breaking Changes {#breaking-changes-4-9-x}
+The following component updates are applicable to this release:
+
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+
+### Breaking Changes {#breaking-changes-4-9-16}
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
 
@@ -900,7 +919,7 @@ resources would repeatedly show Terraform plan differences for sensitive cluster
 
 <!-- prettier-ignore-end -->
 
-## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
+## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-14}
 
 ### Security Notices
 
@@ -1512,7 +1531,7 @@ The following components have been updated for Palette version 4.9.5.
 
 <!-- prettier-ignore-end -->
 
-## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
+## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-5}
 
 The following component updates are applicable to this release:
 
