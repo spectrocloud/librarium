@@ -56,7 +56,19 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
    host.
 
-5. Boot your device using the Launchpad for VMs Appliance ISO.
+5. Boot your device using the Launchpad for VMs Appliance ISO. On the GRand Unified Bootloader (GRUB) menu, allow the
+   Launchpad for VMs appliance to select the **Palette Edge Interactive Installer** boot option automatically
+
+   :::danger
+
+   During the bootstrap process, the TUI performs a pre-installation check that checks all disks for partitions left
+   behind by previous Kairos installations. This helps prevent stale partitions from causing unpredictable installation
+   behavior.
+
+   If any disks are affected, they are pre-selected for wiping; you can select additional disks as well. Wiping disks is
+   optional and must be confirmed on the following screen. Carefully verify the selected disks before proceeding.
+
+   :::
 
 6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
