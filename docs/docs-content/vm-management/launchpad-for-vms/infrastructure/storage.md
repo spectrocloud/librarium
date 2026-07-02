@@ -8,7 +8,6 @@ icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "storage"]
-draft: true
 ---
 
 Virtual Machine Orchestrator (VMO) manages the storage that backs VM disks. From **Infrastructure** > **Storage**, you
