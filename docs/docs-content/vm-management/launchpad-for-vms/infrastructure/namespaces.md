@@ -32,7 +32,7 @@ Managed namespaces:
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
 with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
 namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can
-filter by a specific namespace using the namespace drop-down. 
+filter by a specific namespace using the namespace drop-down.
 
 VMO manages the following namespaces by default.
 
@@ -142,14 +142,15 @@ Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but ar
 Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces).
 
 1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
-2. Select the **Edit** icon beside the namespace. 
+2. Select the **Edit** icon beside the namespace.
 3. Add, remove, and edit fields as necessary.
 4. Select **Save changes** when finished.
 
 :::info
 
 Namespace names are immutable. Kubernetes does not allow renaming a namespace, so the name field is shown but disabled
-in edit mode. To use a different name, create a new namespace, move resources to the new namespace, and delete the old namespace.
+in edit mode. To use a different name, create a new namespace, move resources to the new namespace, and delete the old
+namespace.
 
 :::
 
