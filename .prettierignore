@@ -24,3 +24,13 @@ static/generated/security-bulletins/reports/*.html
 # Ignore partials
 _partials/
 scripts/release/
+
+# Generated monthly-assessment scorecards. Prettier's mdx parser reflows the
+# AI-written Markdown, and its width-based array collapsing reformats the per-page
+# "gaps" lists in a data-dependent way the generator can't reliably match. Both are
+# generated artifacts, so ignore them. README.md is hand-authored — keep it checked.
+# (pages.json lives one level up and has no collapsible arrays, so the generator's
+# trailing newline keeps it Prettier-clean; it is intentionally not ignored.)
+.github/monthly-assessment/scorecards/*.md
+.github/monthly-assessment/scorecards/*.json
+!.github/monthly-assessment/scorecards/README.md
