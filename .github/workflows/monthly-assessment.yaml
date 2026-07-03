@@ -177,10 +177,15 @@ jobs:
           # the version-* branches the backport workflow targets, whose ruleset grants the
           # bot bypass). Instead, enable GitHub auto-merge: GitHub merges the PR itself once
           # a code owner approves and the required checks (Build / Pre-merge) pass.
-          if gh pr merge "$PR" --squash --auto; then
-            echo "Auto-merge enabled on PR #${PR}; it merges once a docs-education code owner approves and checks pass."
+          gh pr merge "$PR" --squash --auto || echo "::warning::'gh pr merge --auto' returned non-zero on PR #${PR}."
+
+          # Verify auto-merge actually got enabled (the enable call can silently no-op).
+          # If enabled, GitHub merges the PR once a code owner approves and checks pass; if
+          # not, a reviewer approves AND merges it by hand — the Slack link covers both.
+          if [[ "$(gh pr view "$PR" --json autoMergeRequest --jq '.autoMergeRequest != null')" == "true" ]]; then
+            echo "✅ Auto-merge IS enabled on PR #${PR} — it will merge once approved and checks pass."
           else
-            echo "::warning::Could not enable auto-merge on PR #${PR} (it may already be enabled). Review the PR manually."
+            echo "::warning::Auto-merge is NOT enabled on PR #${PR} — a reviewer must approve AND merge it manually."
           fi
 
           # Expose the PR URL so the Slack notification can link reviewers straight to it.
@@ -196,7 +201,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete and published to Confluence: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard). A pull request with this month's results is open and will merge automatically once approved — 👉 [Approve and merge the PR](${{ steps.open_pr.outputs.url || format('{0}/{1}/pulls', github.server_url, github.repository) }})."
+          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete and published to Confluence: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard). A pull request with this month's results is open — 👉 [Approve and merge the PR](${{ steps.open_pr.outputs.url || format('{0}/{1}/pulls', github.server_url, github.repository) }}) to add it to the in-repo trend history."
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
