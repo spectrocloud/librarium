@@ -19,7 +19,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
 
-- While bootstrapping Edge hosts, the interactive TUI now checks
+- While bootstrapping Edge hosts, the interactive install TUI now checks
   all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
   installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
   disks is optional and must be confirmed on the follow-up screen.
