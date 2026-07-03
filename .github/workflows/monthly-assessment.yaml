@@ -10,7 +10,7 @@ name: "Monthly Assessment"
 #      forced VERDICT/SCORE/GAPS block (run-assessment.mjs).
 #   3. Publish the scorecard + rolling 3-month trend to a Confluence page in the
 #      DE space (publish-confluence.mjs; self-disables without credentials).
-#   4. Open a PR committing the month's scorecard JSON/MD (the trend history).
+#   4. Open and auto-merge a PR committing the month's scorecard JSON/MD (the trend history).
 #
 # Assigning owners and curating quick wins remain a manual team step.
 
@@ -135,7 +135,7 @@ jobs:
           MA_MONTH: ${{ inputs.month }}
         run: node ${{ env.MA_DIR }}/publish-confluence.mjs
 
-      - name: Open PR with the month's scorecard
+      - name: Open and auto-merge the month's scorecard PR
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
@@ -156,16 +156,53 @@ jobs:
           git commit -m "docs: monthly assessment scorecard ${MONTH}"
           git push --force origin "$PR_BRANCH"
 
-          EXISTING=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
-          if [[ -n "$EXISTING" ]]; then
-            echo "🔄 Updated existing PR #$EXISTING."
-          else
+          PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -z "$PR" ]]; then
             gh pr create \
               --base master \
               --head "$PR_BRANCH" \
               --title "docs: monthly assessment scorecard ${MONTH}" \
-              --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo."
+              --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo and is merged automatically once its checks pass."
+            PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          else
+            echo "🔄 Updated existing PR #$PR (branch re-pushed)."
           fi
+          [[ -z "$PR" ]] && { echo "::error::Could not resolve the scorecard PR number."; exit 1; }
+
+          # Let CI gate the merge: wait for the PR's checks (the required "Build" /
+          # Pre-merge Checks, plus the rest) to finish, and merge only if they pass.
+          # `gh pr checks --watch` errors until checks register, so poll for them.
+          echo "Waiting for checks on PR #${PR}..."
+          for attempt in $(seq 1 30); do
+            if out=$(gh pr checks "$PR" --watch --fail-fast 2>&1); then
+              echo "$out"
+              echo "All checks passed on PR #${PR}."
+              break
+            fi
+            if echo "$out" | grep -qiE "no checks reported|no pull requests found"; then
+              [[ "$attempt" -eq 30 ]] && { echo "::error::Checks never registered on PR #${PR}."; exit 1; }
+              echo "Checks not registered yet (attempt ${attempt}/30); waiting 20s..."
+              sleep 20
+              continue
+            fi
+            echo "$out"
+            echo "::error::A check failed on PR #${PR} — not merging."
+            exit 1
+          done
+
+          # Checks are green. Admin-merge with the Vault token: vault-token-factory-
+          # spectrocloud[bot] is a repo admin, so --admin bypasses the required code-owner
+          # review (the same admin bypass the backport workflow relies on). CI already gated.
+          for m in 1 2 3; do
+            if gh pr merge "$PR" --squash --admin; then
+              echo "Merged PR #${PR}."
+              exit 0
+            fi
+            echo "::warning::merge attempt ${m} failed; retrying in 15s"
+            sleep 15
+          done
+          echo "::error::Admin-merge failed after checks passed."
+          exit 1
 
       - name: Report Slack Notification
         if: ${{ success() }}
