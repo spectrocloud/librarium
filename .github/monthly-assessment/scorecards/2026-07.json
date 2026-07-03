@@ -1,0 +1,148 @@
+{
+  "month": "2026-07",
+  "generatedAt": "2026-07-03T11:33:00.573Z",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "pages": [
+    {
+      "path": "/deployment-modes/agent-mode/install-agent-host",
+      "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
+      "views": 336,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "FAIL",
+      "score": 1,
+      "summary": "The page content provided is severely truncated — I'm seeing only disconnected code fragments (SELinux policy snippets, a cgroup v2 check, and partial firewall-cmd rules) with no surrounding context, no prerequisites checklist, no ordered install sequence, and no complete command set.",
+      "gaps": [
+        "The page is missing the full install procedure entirely — there's no agent download/install command, no configuration inputs (cluster endpoint, credentials, tokens), and no validation steps to confirm a successful agent registration.",
+        "The firewall rules block is cut off mid-command, so I cannot confirm the complete set of required ports (especially Cilium IPsec and any Palette-specific ports), making it impossible to safely configure firewall rules before deployment."
+      ]
+    },
+    {
+      "path": "/clusters/public-cloud/aws/required-iam-policies",
+      "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
+      "views": 321,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page clearly explains what IAM roles Palette auto-creates and attaches during cluster deployment, but it doesn't actually provide the policy JSON or ARNs for the Core IAM Policies or Minimum Permissions Policies I need to configure before connecting my AWS account — it just describes them at a high level and defers to sibling pages.",
+      "gaps": [
+        "The actual policy documents (JSON), ARNs, or step-by-step attachment instructions for both Core IAM Policies and Minimum Permissions Policies are absent — this page only names the options and links elsewhere, leaving me unable to configure the Palette IAM user/role without navigating away.",
+        "The 10-policy-per-role limit warning is called out twice but there's no guidance on which policies to combine or a sample consolidated policy, which is a real blocker for least-privilege setups that may hit that ceiling."
+      ]
+    },
+    {
+      "path": "/vm-management/launchpad-for-vms/install-vmla-iso",
+      "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms/install-vmla-iso",
+      "views": 304,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page covers hardware requirements, Secure Boot prerequisites, and high-level cluster creation flow, but critical networking inputs (VIP CIDR, MetalLB address range format, bridge config specifics) and the actual step-by-step install sequence are truncated mid-content, leaving me unable to fully execute the install without gaps.",
+      "gaps": [
+        "The step-by-step install sequence is visibly cut off mid-sentence (\"Re...tion, select Next\") and the sections for Configure Network Settings, OS and Metrics, Container and Registry, OIDC Settings, Keycloak Admin, Local Admin, and Storage are all referenced in the page TOC but their actual content is missing from this page — I cannot complete the cluster creation wizard without knowing what inputs each section requires.",
+        "The MetalLB address range requirement is mentioned only implicitly in the Verify section (\"the address you provided for MetalLB\") with no prior specification of format, required pool size, or whether it must be on the management or data network, which is a hard prerequisite I need before I can reserve IPs."
+      ]
+    },
+    {
+      "path": "/vm-management",
+      "url": "https://docs.spectrocloud.com/vm-management",
+      "views": 301,
+      "persona": "Product Evaluator",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page gives a solid high-level orientation to VMO's use cases and deployment options, but stops short of the business-critical details a decision-maker needs to make a go/no-go call.",
+      "gaps": [
+        "No production readiness signal anywhere on the page — GA vs. Tech Preview status, support tier, and known limitations are entirely absent, which is the first thing I need before advancing an evaluation.",
+        "No TCO or licensing information is provided (e.g., whether VMO is included in Palette licensing, separately priced, or tied to specific hardware), and there is no mention of support model, SLAs, or compliance certifications beyond a brief FIPS 140-3 reference with no elaboration."
+      ]
+    },
+    {
+      "path": "/clusters",
+      "url": "https://docs.spectrocloud.com/clusters",
+      "views": 259,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "FAIL",
+      "score": 1,
+      "summary": "This page describes what Palette does conceptually during cluster creation but provides zero actionable setup steps, prerequisites, required inputs, or IaC examples needed to actually stand up a cluster.",
+      "gaps": [
+        "No step-by-step cluster creation workflow, required inputs (cloud credentials, network CIDRs, IAM permissions, Kubernetes versions), or prerequisites checklist — the page is purely descriptive with no actionable Day-0/Day-1 guidance.",
+        "No IaC or automation hooks (Terraform, Crossplane, Helm) are referenced, and the cluster profile dependency (which appears to be a hard prerequisite) is mentioned but never linked to setup instructions."
+      ]
+    },
+    {
+      "path": "/tutorials/getting-started",
+      "url": "https://docs.spectrocloud.com/tutorials/getting-started",
+      "views": 256,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "FAIL",
+      "score": 1,
+      "summary": "This page is a marketing/navigation landing page with no actionable technical content — it provides zero prerequisites, required inputs, setup sequences, or IaC hooks needed to actually stand up a cluster.",
+      "gaps": [
+        "No prerequisites checklist, required permissions, supported versions, or network requirements are listed anywhere on the page — nothing to act on before starting.",
+        "The only concrete \"first step\" offered is booking a sales demo, which is a blocker for an engineer trying to begin a reproducible technical onboarding workflow."
+      ]
+    },
+    {
+      "path": "/vm-management/launchpad-for-vms",
+      "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms",
+      "views": 256,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "This page gives a solid conceptual overview of what the Launchpad for VMs Appliance is and what it includes, but it's purely introductory — it contains no prerequisites, no required inputs, no setup sequence, and no validation steps, so I cannot actually stand anything up from this page alone.",
+      "gaps": [
+        "No hardware requirements, network prerequisites, or supported versions are listed on this page — I'm told to \"review the hardware requirements\" but there's no link or inline content to act on immediately.",
+        "No IaC or automation hooks (Terraform, Helm, Crossplane) are mentioned anywhere, leaving me without a reproducible workflow entry point for the install phase."
+      ]
+    },
+    {
+      "path": "/vertex",
+      "url": "https://docs.spectrocloud.com/vertex",
+      "views": 229,
+      "persona": "Product Evaluator",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 2,
+      "summary": "This page establishes that Palette VerteX exists and targets regulated/government sectors with FIPS 140-3 compliance, but it reads as a brief landing page with almost no substantive information needed to make a go/no-go evaluation decision.",
+      "gaps": [
+        "There is no production readiness signal on this page — no GA vs. Tech Preview status, no support tier definition, no known limitations, and no SLA or support model details, all of which are blockers for a vendor evaluation decision.",
+        "There is no TCO, sizing, licensing, or deployment scope information (e.g., what infrastructure is required, what the procurement path looks like beyond emailing support), leaving time-to-value and adoption risk entirely unaddressed."
+      ]
+    },
+    {
+      "path": "/clusters/edge",
+      "url": "https://docs.spectrocloud.com/clusters/edge",
+      "views": 226,
+      "persona": "Platform Engineer",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 2,
+      "summary": "This is a high-level overview/landing page that orients me toward Edge but provides zero actionable prerequisites, inputs, or setup steps needed to actually stand up an Edge cluster.",
+      "gaps": [
+        "No prerequisites checklist, required permissions, network/port requirements, supported OS/Kubernetes versions, or hardware specs are listed on this page — critical Day-0 inputs are entirely absent.",
+        "The page references essential resources (EdgeForge Workflow, Architecture, Deployment Lifecycle, Compatibility Matrix) but provides no inline content from them, leaving me dependent on navigating multiple other pages before I can begin any actual work."
+      ]
+    },
+    {
+      "path": "/architecture/architecture-overview",
+      "url": "https://docs.spectrocloud.com/architecture/architecture-overview",
+      "views": 186,
+      "persona": "Product Evaluator",
+      "model": "claude-sonnet-4-6",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page gives a solid high-level picture of deployment models and data flows, which covers the \"what options exist\" question well, but it leaves critical evaluation gaps around production readiness status, support tiers, licensing differentiation, and VerteX-specific availability that block a go/no-go decision.",
+      "gaps": [
+        "No production readiness signals anywhere on the page — there is no indication of GA vs. Tech Preview status for any deployment model, no support tier information, and no known limitations called out, which are the first things needed before an evaluation can proceed.",
+        "Palette VerteX is mentioned in the region table (US Gov only, no Dedicated SaaS) but never explained in terms of what it is, how it differs from standard Palette, or what use cases it targets — leaving a significant unknown for regulated-industry evaluators who may need exactly that variant."
+      ]
+    }
+  ]
+}
