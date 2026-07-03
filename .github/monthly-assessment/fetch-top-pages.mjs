@@ -272,7 +272,8 @@ async function main() {
     );
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(top, null, 2));
+  // Trailing newline so Prettier (which runs on committed JSON) leaves it unchanged.
+  fs.writeFileSync(OUT_PATH, JSON.stringify(top, null, 2) + "\n");
   console.log(`[monthly-assessment] wrote ${top.length} pages to ${OUT_PATH}:`);
   for (const [i, p] of top.entries()) console.log(`  ${i + 1}. ${p.path} (${p.views} views)`);
 }
