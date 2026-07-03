@@ -73,8 +73,36 @@ Use the following steps to confirm the cause and apply a workaround.
 
    This workaround is temporary. On block-based storage such as LINSTOR/DRBD, `Filesystem` mode is `ReadWriteOnce`
    (`RWO`) only. VMs migrated this way **cannot be live-migrated**, because KubeVirt live migration requires
-   `ReadWriteMany` (`RWX`), which is only available in `Block` mode on this storage. To restore live migration, your
-   VMO environment must be updated with a guest conversion image that handles the block-size constraints reported by
-   the storage. Contact your Spectro Cloud support representative for the status of this fix.
+   `ReadWriteMany` (`RWX`), which is only available in `Block` mode on this storage. To restore live migration, apply
+   the permanent fix described in the next section.
 
    :::
+
+### Restore Live Migration with Updated Guest Conversion Image
+
+The workaround in the previous section unblocks migrations by using `Filesystem` volume mode, but it disables live
+migration for the migrated VMs. To restore live migration, load an updated `forklift-virt-v2v` content bundle into the
+cluster's Zot registry. The updated image contains a newer `nbdkit` that handles the block-size constraints reported
+by block-based storage such as LINSTOR/DRBD.
+
+1. Contact your Spectro Cloud support representative to obtain the updated `forklift-virt-v2v` content bundle. The
+   bundle replaces the existing image at the following reference:
+
+   ```text
+   us-docker.pkg.dev/palette-images/third-party/vm-migration-assistant/forklift-virt-v2v:4.9.2
+   ```
+
+2. Remove the existing `forklift-virt-v2v` image from the cluster's Zot registry so that the new image can be
+   uploaded in its place. Your Spectro Cloud support representative can guide you through this step for your
+   environment.
+
+3. Upload the updated content bundle to the cluster. Use either the
+   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or
+   the [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+
+4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default
+   `Block`-mode storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the
+   workaround. Refer to [Create Migration Plans](../vm-migration-assistant/create-migration-plans.md) for guidance.
+
+5. Start the migration plan. Confirm that guest conversion completes without the `nbdkit` block-size error, and that
+   the migrated VMs support live migration on the destination storage.
