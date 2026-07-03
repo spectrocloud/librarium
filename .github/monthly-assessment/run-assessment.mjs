@@ -177,7 +177,10 @@ const record = {
   pages: results.map(({ response, ok, error, ...keep }) => keep), // JSON stays compact; prose lives in the md
 };
 const jsonPath = path.join(outDir, `${month}.json`);
-fs.writeFileSync(jsonPath, JSON.stringify(record, null, 2));
+// Trailing newline for a POSIX-clean file (avoids a "no newline at EOF" diff).
+// This scorecard JSON is also Prettier-ignored (see .prettierignore) because its
+// per-page gap arrays would otherwise be reformatted by Prettier's array collapsing.
+fs.writeFileSync(jsonPath, JSON.stringify(record, null, 2) + "\n");
 
 // --- Write the Markdown scorecard (human artifact / Confluence fallback) ----
 function verdictBadge(v) {
@@ -188,6 +191,11 @@ const partials = results.filter((r) => r.verdict === "PARTIAL").length;
 const fails = results.filter((r) => r.verdict === "FAIL").length;
 
 const md = [];
+// Disable Vale on this generated file. The AI-written gap text otherwise floods
+// the scorecard PR with reviewdog/Vale comments. Repo convention: the directive
+// on the first line (with a blank line under it) turns Vale off for the file.
+md.push("<!-- vale off -->");
+md.push("");
 md.push(`# Docs Monthly Assessment — ${month}`);
 md.push("");
 md.push(
