@@ -32,8 +32,30 @@ const baseUrl = config.confluence.baseUrl.replace(/\/$/, "");
 export function esc(s) {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
-function verdictLabel(v) {
-  return { PASS: "✅ PASS", PARTIAL: "🟡 PARTIAL", FAIL: "❌ FAIL", ERROR: "⚠️ ERROR", UNKNOWN: "❔" }[v] || esc(v);
+// Score legend explaining the 1-5 rating, rendered just after the intro.
+export function scoreLegend() {
+  const rows = [
+    [5, "Reader can complete the task using only this page"],
+    [4, "Minor gaps; succeeds with little friction"],
+    [3, "Usable, but real gaps slow the reader down"],
+    [2, "Significant gaps; likely to get stuck"],
+    [1, "Reader cannot complete the task from this page"],
+  ]
+    .map(([n, meaning]) => `<tr><td>${n}</td><td>${meaning}</td></tr>`)
+    .join("");
+  return (
+    "<p><strong>Score</strong> rates how well a reader can accomplish their task on the page:</p>" +
+    "<table><tbody><tr><th>Score</th><th>What it means</th></tr>" +
+    rows +
+    "</tbody></table>"
+  );
+}
+
+// A page's top gaps as a bullet list (or an em dash when there are none).
+function gapList(p) {
+  const gaps = p.gaps || [];
+  if (!gaps.length) return "<p>—</p>";
+  return "<ul>" + gaps.map((g) => `<li>${esc(g)}</li>`).join("") + "</ul>";
 }
 
 // Load the trend window: the newest N month records, newest first.
@@ -47,31 +69,26 @@ export function loadRecords(dir) {
   return files.map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
 }
 
-// --- Latest scorecard table -------------------------------------------------
-export function scorecardTable(rec) {
-  const rows = rec.pages
-    .map((p, i) => {
-      const gaps = (p.gaps || []).map(esc).join("<br/>") || "—";
-      return (
-        `<tr><td>${i + 1}</td>` +
+// --- Latest scorecard: one small table per page, with top gaps as a bullet
+// list beneath it (labelled "Top gaps:"). ------------------------------------
+export function scorecardBlocks(rec) {
+  return rec.pages
+    .map(
+      (p) =>
+        "<table><tbody>" +
+        "<tr><th>Views</th><th>Page</th><th>Persona</th><th>Score</th></tr>" +
+        `<tr><td>${esc(p.views ?? "")}</td>` +
         `<td><a href="${esc(p.url)}">${esc(p.path)}</a></td>` +
-        `<td style="text-align:right">${esc(p.views ?? "")}</td>` +
         `<td>${esc(p.persona)}</td>` +
-        `<td>${verdictLabel(p.verdict)}</td>` +
-        `<td style="text-align:center">${p.score ?? "—"}</td>` +
-        `<td>${gaps}</td></tr>`
-      );
-    })
+        `<td>${p.score ?? "—"}</td></tr>` +
+        "</tbody></table>" +
+        `<p><strong>Top gaps for '${esc(p.path)}':</strong></p>` +
+        gapList(p),
+    )
     .join("");
-  return (
-    "<table><tbody>" +
-    "<tr><th>#</th><th>Page</th><th>Views</th><th>Persona</th><th>Verdict</th><th>Score</th><th>Top gaps</th></tr>" +
-    rows +
-    "</tbody></table>"
-  );
 }
 
-// --- Rolling trend table (verdict + score per page across months) -----------
+// --- Rolling trend table (score per page across months) ---------------------
 export function trendTable(recs) {
   const months = recs.map((r) => r.month); // newest first
   const paths = [];
@@ -94,7 +111,7 @@ export function trendTable(recs) {
       const cells = months
         .map((m) => {
           const p = byMonthPath.get(`${m}|${pth}`);
-          return `<td>${p ? `${verdictLabel(p.verdict)} (${p.score ?? "—"})` : "—"}</td>`;
+          return `<td>${p ? (p.score ?? "—") : "—"}</td>`;
         })
         .join("");
       return `<tr><td>${esc(pth)}</td>${cells}</tr>`;
@@ -103,11 +120,12 @@ export function trendTable(recs) {
   const summary = months
     .map((m) => {
       const r = recs.find((x) => x.month === m);
-      const pass = r.pages.filter((p) => p.verdict === "PASS").length;
-      return `<td><strong>${pass}/${r.pages.length} pass</strong></td>`;
+      const scored = r.pages.filter((p) => typeof p.score === "number");
+      const avg = scored.length ? (scored.reduce((s, p) => s + p.score, 0) / scored.length).toFixed(1) : "—";
+      return `<td><strong>${avg}</strong></td>`;
     })
     .join("");
-  return "<table><tbody>" + header + rows + `<tr><td><strong>Pass rate</strong></td>${summary}</tr>` + "</tbody></table>";
+  return "<table><tbody>" + header + rows + `<tr><td><strong>Average score</strong></td>${summary}</tr>` + "</tbody></table>";
 }
 
 // Parent "Monthly Assessments" page; deep-links to its "Ignored paths" section
@@ -122,10 +140,11 @@ export function renderBody(latest, records) {
     `Advisory AI feedback — not a substitute for human review. Owners and quick-wins are assigned manually. ` +
     `Some high-traffic front-facing pages are excluded from the ranking — see ` +
     `<a href="${IGNORED_PATHS_URL}">Ignored paths</a>.</p>` +
+    scoreLegend() +
     `<h2>Latest scorecard — ${esc(latest.month)}</h2>` +
     `<p>Provider <code>${esc(latest.provider)}</code>, model <code>${esc(latest.model)}</code>. ` +
     `Generated ${esc(latest.generatedAt)}.</p>` +
-    scorecardTable(latest) +
+    scorecardBlocks(latest) +
     `<h2>Rolling ${records.length}-month trend</h2>` +
     trendTable(records)
   );
