@@ -114,19 +114,19 @@ console for all Edge hosts of your organization.
     The `banner` object controls a banner that appears on every VerteX Local UI page, including the login screen. You
     can customize the banner text and colors through the following properties.
 
-    | Property      | Description                                                    |
-    | ------------- | -------------------------------------------------------------- |
-    | `bannerText`  | The text displayed in the banner.                              |
-    | `textColor`   | The banner text color as a hex value, for example `#FFFFFF`.   |
-    | `bannerColor` | The banner background color as a hex value.                    |
+    | Property      | Description                                                  |
+    | ------------- | ------------------------------------------------------------ |
+    | `bannerText`  | The text displayed in the banner.                            |
+    | `textColor`   | The banner text color as a hex value, for example `#FFFFFF`. |
+    | `bannerColor` | The banner background color as a hex value.                  |
 
     The `loginBanner` object controls a consent acknowledgment popup that appears before authentication. The user must
     explicitly acknowledge the notice before login can proceed. It has the following properties.
 
-    | Property  | Description                                                          |
-    | --------- | -------------------------------------------------------------------- |
-    | `title`   | The title displayed at the top of the consent acknowledgment popup.  |
-    | `message` | The consent notice text displayed before login.                      |
+    | Property  | Description                                                         |
+    | --------- | ------------------------------------------------------------------- |
+    | `title`   | The title displayed at the top of the consent acknowledgment popup. |
+    | `message` | The consent notice text displayed before login.                     |
 
     The banner and consent popup are configured at build time through `customizations.json` and cannot be modified from
     the VerteX Local UI after deployment. To change either after deployment, rebuild the ISO and reinstall.
