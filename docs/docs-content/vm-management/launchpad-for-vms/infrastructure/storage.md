@@ -22,7 +22,7 @@ provisioning.
 VMO does not assume a specific storage backend. It works with any Kubernetes StorageClass that supports dynamic
 provisioning.
 
-The default appliance backend is **Piraeus/LINSTOR**, which provides:
+The default appliance backend is Piraeus/LINSTOR, which provides:
 
 - Replicated storage for VM disks.
 - StorageClass-based provisioning.
