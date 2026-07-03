@@ -72,7 +72,8 @@ console for all Edge hosts of your organization.
     limit the height of the logo image to between 64 pixels and 120 pixels. If you don't upload a logo, Local UI will
     use the Spectro Cloud logo.
 
-6.  Populate the file with the following schema:
+6.  Populate the file with the following schema. The `banner` and `loginBanner` objects apply to Palette VerteX Local UI
+    only. Omit them if you are building for Palette Edge.
 
     ```json
     {
@@ -80,7 +81,16 @@ console for all Edge hosts of your organization.
         "brand": "#4A8FF1",
         "sidebar": "#2B323C"
       },
-      "logo": "logo.webp"
+      "logo": "logo.webp",
+      "banner": {
+        "bannerText": "You are accessing a U.S. Government (USG) Information System...",
+        "textColor": "#FFFFFF",
+        "bannerColor": "#C8102E"
+      },
+      "loginBanner": {
+        "title": "Authorization to Operate",
+        "message": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only..."
+      }
     }
     ```
 
@@ -90,6 +100,36 @@ console for all Edge hosts of your organization.
     UI. The following image displays the default logo, brand, and sidebar color.
 
     ![A screenshot of Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
+
+    :::info
+
+    The `banner` and `loginBanner` objects are supported in Palette VerteX 4.9.c and later. These objects help satisfy
+    compliance requirements for federal and DoD deployments by presenting a notice throughout the VerteX Local UI and
+    requiring users to explicitly acknowledge a consent notice before authentication. Spectro Cloud-built VerteX
+    appliances ship with default banner and consent notice content. If you are building your own ISO, you can supply
+    your own values.
+
+    :::
+
+    The `banner` object controls a banner that appears on every VerteX Local UI page, including the login screen. You
+    can customize the banner text and colors through the following properties.
+
+    | Property      | Description                                                  |
+    | ------------- | ------------------------------------------------------------ |
+    | `bannerText`  | The text displayed in the banner.                            |
+    | `textColor`   | The banner text color as a hex value, for example `#FFFFFF`. |
+    | `bannerColor` | The banner background color as a hex value.                  |
+
+    The `loginBanner` object controls a consent acknowledgment popup that appears before authentication. The user must
+    explicitly acknowledge the notice before login can proceed. It has the following properties.
+
+    | Property  | Description                                                         |
+    | --------- | ------------------------------------------------------------------- |
+    | `title`   | The title displayed at the top of the consent acknowledgment popup. |
+    | `message` | The consent notice text displayed before login.                     |
+
+    The banner and consent popup are configured at build time through `customizations.json` and cannot be modified from
+    the VerteX Local UI after deployment. To change either after deployment, rebuild the ISO and reinstall.
 
 7.  Compress the UI directory to a TAR file. The file must be named `local-ui.tar`.
 

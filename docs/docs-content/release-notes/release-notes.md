@@ -45,6 +45,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8935 -->
+
+- The VerteX Local UI now supports a configurable banner and a pre-login consent acknowledgment popup, both set through
+  `customizations.json` during EdgeForge. The banner appears on all Local UI pages including the login screen, and the
+  consent popup requires users to acknowledge the notice before authentication. For more information, refer to
+  [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md).
+
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.9.c) for more details.
 
