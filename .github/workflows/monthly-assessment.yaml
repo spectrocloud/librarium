@@ -10,7 +10,8 @@ name: "Monthly Assessment"
 #      forced VERDICT/SCORE/GAPS block (run-assessment.mjs).
 #   3. Publish the scorecard + rolling 3-month trend to a Confluence page in the
 #      DE space (publish-confluence.mjs; self-disables without credentials).
-#   4. Open and auto-merge a PR committing the month's scorecard JSON/MD (the trend history).
+#   4. Open a PR with the month's scorecard JSON/MD (the trend history); it auto-merges once a
+#      docs-education code owner approves. Confluence (step 3) is published first, independent of the PR.
 #
 # Assigning owners and curating quick wins remain a manual team step.
 
@@ -135,7 +136,8 @@ jobs:
           MA_MONTH: ${{ inputs.month }}
         run: node ${{ env.MA_DIR }}/publish-confluence.mjs
 
-      - name: Open and auto-merge the month's scorecard PR
+      - name: Open the scorecard PR and enable auto-merge
+        id: open_pr
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
@@ -162,47 +164,32 @@ jobs:
               --base master \
               --head "$PR_BRANCH" \
               --title "docs: monthly assessment scorecard ${MONTH}" \
-              --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo and is merged automatically once its checks pass."
+              --body "Automated monthly persona assessment scorecard for **${MONTH}** (DOC-2472). Adds \`${MA_DIR}/scorecards/${MONTH}.{json,md}\`. The Confluence page has already been updated (if configured); this PR preserves the trend history in-repo. Auto-merge is enabled — it merges once a spectrocloud/docs-education code owner approves and the checks pass."
             PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
           else
             echo "🔄 Updated existing PR #$PR (branch re-pushed)."
           fi
           [[ -z "$PR" ]] && { echo "::error::Could not resolve the scorecard PR number."; exit 1; }
 
-          # Let CI gate the merge: wait for the PR's checks (the required "Build" /
-          # Pre-merge Checks, plus the rest) to finish, and merge only if they pass.
-          # `gh pr checks --watch` errors until checks register, so poll for them.
-          echo "Waiting for checks on PR #${PR}..."
-          for attempt in $(seq 1 30); do
-            if out=$(gh pr checks "$PR" --watch --fail-fast 2>&1); then
-              echo "$out"
-              echo "All checks passed on PR #${PR}."
-              break
-            fi
-            if echo "$out" | grep -qiE "no checks reported|no pull requests found"; then
-              [[ "$attempt" -eq 30 ]] && { echo "::error::Checks never registered on PR #${PR}."; exit 1; }
-              echo "Checks not registered yet (attempt ${attempt}/30); waiting 20s..."
-              sleep 20
-              continue
-            fi
-            echo "$out"
-            echo "::error::A check failed on PR #${PR} — not merging."
-            exit 1
-          done
+          # master is covered by the org ruleset "Public Repos Enforce Branch Protections",
+          # which requires a code-owner review from spectrocloud/docs-education and allows
+          # NO bypass — so neither --admin nor the Vault token can merge unattended (unlike
+          # the version-* branches the backport workflow targets, whose ruleset grants the
+          # bot bypass). Instead, enable GitHub auto-merge: GitHub merges the PR itself once
+          # a code owner approves and the required checks (Build / Pre-merge) pass.
+          gh pr merge "$PR" --squash --auto || echo "::warning::'gh pr merge --auto' returned non-zero on PR #${PR}."
 
-          # Checks are green. Admin-merge with the Vault token: vault-token-factory-
-          # spectrocloud[bot] is a repo admin, so --admin bypasses the required code-owner
-          # review (the same admin bypass the backport workflow relies on). CI already gated.
-          for m in 1 2 3; do
-            if gh pr merge "$PR" --squash --admin; then
-              echo "Merged PR #${PR}."
-              exit 0
-            fi
-            echo "::warning::merge attempt ${m} failed; retrying in 15s"
-            sleep 15
-          done
-          echo "::error::Admin-merge failed after checks passed."
-          exit 1
+          # Verify auto-merge actually got enabled (the enable call can silently no-op).
+          # If enabled, GitHub merges the PR once a code owner approves and checks pass; if
+          # not, a reviewer approves AND merges it by hand — the Slack link covers both.
+          if [[ "$(gh pr view "$PR" --json autoMergeRequest --jq '.autoMergeRequest != null')" == "true" ]]; then
+            echo "✅ Auto-merge IS enabled on PR #${PR} — it will merge once approved and checks pass."
+          else
+            echo "::warning::Auto-merge is NOT enabled on PR #${PR} — a reviewer must approve AND merge it manually."
+          fi
+
+          # Expose the PR URL so the Slack notification can link reviewers straight to it.
+          echo "url=$(gh pr view "$PR" --json url --jq .url)" >> "$GITHUB_OUTPUT"
 
       - name: Report Slack Notification
         if: ${{ success() }}
@@ -214,7 +201,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete. View the latest scorecard and rolling 3-month trend: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard)."
+          SLACK_MESSAGE: "✅ The monthly documentation persona assessment is complete and published to Confluence: [Monthly Assessment Scorecard](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3936944142/Monthly+Assessment+Scorecard). A pull request with this month's results is open — 👉 [Approve and merge the PR](${{ steps.open_pr.outputs.url || format('{0}/{1}/pulls', github.server_url, github.repository) }}) to add it to the in-repo trend history."
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
