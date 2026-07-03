@@ -41,9 +41,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Edge hosts can now select a Linux bridge as the management interface in
   [Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md#configure-the-management-interface),
-  in addition to physical NICs, bonds, and VLAN child interfaces. A bridge is a valid candidate regardless of whether it
-  has an IP address, which supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md)
-  appliance topologies where management traffic terminates on a bridge.
+  in addition to physical NICs, bonds, and VLAN child interfaces. You can select a bridge whether or not it has an IP
+  address. This supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md) appliance
+  topologies, where management traffic terminates on the bridge itself.
 
 #### Improvements
 
