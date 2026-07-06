@@ -15,9 +15,9 @@ Cluster API Provider vSphere (CAPV).
 Cluster-level overrides target the `VSphereCluster` resource, and pool-level overrides target the
 `VSphereMachineTemplate` resource.
 
-| Level   | CAPI Kind                | API References                                                                                                                                                    |
-| ------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster | `VSphereCluster`         | [v1.12.0 VSphereCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/v1.12.0/apis/v1beta1/vspherecluster_types.go)             |
+| Level   | CAPI Kind                | API References                                                                                                                                                        |
+| ------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster | `VSphereCluster`         | [v1.12.0 VSphereCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/v1.12.0/apis/v1beta1/vspherecluster_types.go)                 |
 | Pool    | `VSphereMachineTemplate` | [v1.12.0 VSphereMachineTemplate API types](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/v1.12.0/apis/v1beta1/vspheremachinetemplate_types.go) |
 
 :::warning
@@ -67,7 +67,7 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPV Resource Type       | Properties                                                                                                                                                          |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VSphereCluster`         | `disableClusterModule`, `identityRef`, `failureDomainSelector`, `clusterModules`                                                                                    |
-| `VSphereMachineTemplate` | `powerOffMode`, `guestSoftPowerOffTimeout`, `hardwareVersion`, `pciDevices`, `tagIDs`, `os`, `additionalDisksGiB`, `customVMXKeys`, `namingStrategy`, `bootPolicy` |
+| CAPV Resource Type       | Properties                                                                                                                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VSphereCluster`         | `thumbprint`, `clusterModules`, `disableClusterModule`                                                                                                                                |
+| `VSphereMachineTemplate` | `snapshot`, `server`, `thumbprint`, `numCoresPerSocket`, `additionalDisksGiB`, `dataDisks`, `customVMXKeys`, `tagIDs`, `pciDevices`, `os`, `hardwareVersion`, `network.routes`, `network`, `preferredAPIServerCidr` |

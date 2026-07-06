@@ -15,11 +15,11 @@ clusters using Cluster API Provider GCP (CAPG).
 GCP IaaS clusters use the CAPG self-managed path. Cluster-level overrides target the `GCPCluster` resource, and
 pool-level overrides target the `GCPMachineTemplate` resource.
 
-| Level   | CAPI Kind            | API References                                                                                                                                             |
-| ------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All     | -                    | [CAPG Book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> \*Use with caution as this reference guide is not semantically versioned.             |
-| Cluster | `GCPCluster`         | [v1.8.1 GCPCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpcluster_types.go)                     |
-| Pool    | `GCPMachineTemplate` | [v1.8.1 GCPMachineTemplate API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpmachinetemplate_types.go)     |
+| Level   | CAPI Kind            | API References                                                                                                                                         |
+| ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| All     | -                    | [CAPG Book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> \*Use with caution as this reference guide is not semantically versioned.         |
+| Cluster | `GCPCluster`         | [v1.8.1 GCPCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpcluster_types.go)                 |
+| Pool    | `GCPMachineTemplate` | [v1.8.1 GCPMachineTemplate API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpmachinetemplate_types.go) |
 
 ### Examples
 
@@ -72,23 +72,22 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPG Resource Type   | Properties                                                                                                                          |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `GCPCluster`         | `additionalLabels`, `resourceManagerTags`, `loadBalancerSpec`, `failureDomains`, `network.mtu`, `credentialsRef`                    |
-| `GCPMachineTemplate` | `additionalNetworkTags`, `shieldedInstanceConfig`, `additionalMetadata`, `confidentialCompute`, `resourceManagerTags`, `onHostMaintenance`, `serviceAccounts` |
+| CAPG Resource Type   | Properties                                                                                                                                                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GCPCluster`         | `controlPlaneEndpoint`, `resourceManagerTags`, `loadBalancer`, `network.loadBalancerBackendPort`, `network.hostProject`, `network.mtu`                                                                                                                                                                  |
+| `GCPMachineTemplate` | `imageFamily`, `additionalLabels`, `additionalMetadata`, `additionalNetworkTags`, `resourceManagerTags`, `rootDeviceType`, `additionalDisks`, `serviceAccounts`, `preemptible`, `provisioningModel`, `ipForwarding`, `shieldedInstanceConfig`, `onHostMaintenance`, `confidentialCompute`, `rootDiskEncryptionKey` |
 
 ## GKE
 
 Google Kubernetes Engine (GKE) clusters use the CAPG managed-cluster path. Cluster-level overrides target
-`GCPManagedControlPlane` (and, if needed, `GCPManagedCluster`), and pool-level overrides target
-`GCPManagedMachinePool`.
+`GCPManagedControlPlane` (and, if needed, `GCPManagedCluster`), and pool-level overrides target `GCPManagedMachinePool`.
 
-| Level   | CAPI Kind                | API References                                                                                                                                                                        |
-| ------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All     | -                        | [CAPG Book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> \*Use with caution as this reference guide is not semantically versioned.                                        |
-| Cluster | `GCPManagedControlPlane` | [v1.8.1 GCPManagedControlPlane API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcontrolplane_types.go)                    |
-| Cluster | `GCPManagedCluster`      | [v1.8.1 GCPManagedCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcluster_types.go)                              |
-| Pool    | `GCPManagedMachinePool`  | [v1.8.1 GCPManagedMachinePool API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedmachinepool_types.go)                      |
+| Level   | CAPI Kind                | API References                                                                                                                                                     |
+| ------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| All     | -                        | [CAPG Book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> \*Use with caution as this reference guide is not semantically versioned.                     |
+| Cluster | `GCPManagedControlPlane` | [v1.8.1 GCPManagedControlPlane API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcontrolplane_types.go) |
+| Cluster | `GCPManagedCluster`      | [v1.8.1 GCPManagedCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcluster_types.go)           |
+| Pool    | `GCPManagedMachinePool`  | [v1.8.1 GCPManagedMachinePool API types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedmachinepool_types.go)   |
 
 :::info
 
@@ -148,8 +147,6 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPG Resource Type       | Properties                                                                                                                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `GCPManagedControlPlane` | `releaseChannel`, `description`, `master_authorized_networks_config`, `loggingService`, `monitoringService`, `resourceLabels`, `enableAutopilot`, `masterAuthorizedNetworks`   |
-| `GCPManagedCluster`      | `additionalLabels`, `resourceManagerTags`, `network.mtu`, `failureDomains`                                                                                                     |
-| `GCPManagedMachinePool`  | `management` (autoRepair, autoUpgrade), `nodeLocations`, `additionalLabels`, `maxPodsPerNode`, `diskType`, `linuxNodeConfig`, `kubeletConfig`, `nodePoolShieldedInstanceConfig` |
+| CAPG Resource Type       | Properties                                                                                         |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| `GCPManagedControlPlane` | `description`, `clusterNetwork`, `releaseChannel`, `master_authorized_networks_config`, `endpoint` |

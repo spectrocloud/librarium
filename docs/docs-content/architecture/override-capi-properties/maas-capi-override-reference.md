@@ -10,15 +10,25 @@ tags: ["architecture", "capi", "cluster api", "advanced configuration", "maas"]
 This page provides examples and references for overriding Cluster API (CAPI) properties on Metal as a Service (MAAS)
 clusters using the Cluster API Provider MAAS (CAPMAAS).
 
+:::info
+
+Overriding CAPI properties is not supported on
+[MAAS HyperShift host clusters](../../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-hypershift-host-cluster.md)
+or
+[HyperShift-hosted OpenShift workload clusters](../../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-openshift-workload-cluster.md).
+The override toggles in the Palette UI have no effect on these cluster types.
+
+:::
+
 ## MAAS
 
 Cluster-level overrides target the `MaasCluster` resource, and pool-level overrides target the `MaasMachineTemplate`
 resource.
 
-| Level   | CAPI Kind             | API References                                                                                                                                                     |
-| ------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Cluster | `MaasCluster`         | [v0.6.1 MaasCluster API types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maascluster_types.go)                             |
-| Pool    | `MaasMachineTemplate` | [v0.6.1 MaasMachineTemplate API types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maasmachinetemplate_types.go)             |
+| Level   | CAPI Kind             | API References                                                                                                                                         |
+| ------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Cluster | `MaasCluster`         | [v0.6.1 MaasCluster API types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maascluster_types.go)                 |
+| Pool    | `MaasMachineTemplate` | [v0.6.1 MaasMachineTemplate API types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maasmachinetemplate_types.go) |
 
 ### Examples
 
@@ -61,7 +71,7 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPMAAS Resource Type | Properties                                                                                                                                          |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `MaasCluster`         | `lxdConfig`, `dnsDomain`, `failureDomains`                                                                                                          |
-| `MaasMachineTemplate` | `tags`, `resourcePool`, `minMemoryInMB`, `minCPUCount`, `customImageMirror`, `image.osImage`                                                        |
+| CAPMAAS Resource Type | Properties |
+| --------------------- | ---------- |
+| `MaasCluster`         | None       |
+| `MaasMachineTemplate` | None       |
