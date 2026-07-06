@@ -37,7 +37,28 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8687 -->
+
+- Edge hosts can now select a Linux bridge as the management interface in
+  [Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md#configure-the-management-interface),
+  in addition to physical NICs, bonds, and VLAN child interfaces. You can select a bridge whether or not it has an IP
+  address. This supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md) appliance
+  topologies, where management traffic terminates on the bridge itself.
+
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8773 -->
+
+- The **Create Bridge** and **Create Bond** forms in
+  [Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) now include a **None**
+  configuration type for L2-only network devices that carry no IP address. Use this option when the bridge or bond
+  terminates L3 traffic elsewhere, such as on a VLAN sub-interface or on guest VMs.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8845 -->
+
+- When you create a cluster from [Local UI](../clusters/edge/local-ui/cluster-management/create-cluster.md) using an
+  Edge installer ISO that contains embedded content and a cluster definition, the **Create cluster** wizard now selects
+  **embedded config** by default instead of **Import config**.
 
 #### Bug Fixes
 

@@ -96,10 +96,10 @@ management.
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
-   import a cluster definition file. The embedded config uses a cluster definition you included during the creation of
-   the ISO image you used to install Palette Edge on your Edge host. For local clusters, we recommend the profile for
-   your deployed cluster contain a primary registry to lower bandwidth usage and protect against outages. For more
-   information, refer to
+   import a cluster definition file. When the ISO contains embedded content, **embedded config** is selected by default.
+   The embedded config uses a cluster definition you included during the creation of the ISO image you used to install
+   Palette Edge on your Edge host. For local clusters, we recommend the profile for your deployed cluster contain a
+   primary registry to lower bandwidth usage and protect against outages. For more information, refer to
    [Deploy with a Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
    :::warning

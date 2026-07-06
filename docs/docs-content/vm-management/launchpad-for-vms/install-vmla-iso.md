@@ -145,7 +145,10 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 2. Log in with the username and password you created during installation.
 
 3. If you need to change the interface used for management traffic, locate the **Management Interface** field and select
-   the interface to use. Local UI can override the management interface selected during TUI configuration.
+   the interface to use. Local UI can override the management interface selected during TUI configuration. Valid
+   candidates include physical NICs, bonds (when not enslaved to another bond or a bridge), VLAN child interfaces, and
+   bridges (with or without an IP address). A NIC or bond that is enslaved to a bond or bridge, or that has VLAN
+   children, is not a valid candidate.
 
    :::warning
 
@@ -157,18 +160,18 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 5. Complete the fields on the **Create Bond** screen and select **Confirm**.
 
-   | **Parameter**                | **Description**                                                                                |
-   | ---------------------------- | ---------------------------------------------------------------------------------------------- |
-   | **Name**                     | Enter a name for the bond. For example, `bond0`.                                               |
-   | **Bond type**                | Select **Static** or **DHCP** for IP address settings.                                         |
-   | **Member interfaces**        | Select one or more Network Interface Cards (NICs) for the bond.                                |
-   | **Bonding mode**             | Select the bonding mode for the bond. This must match your physical switch port configuration. |
-   | **Link monitoring interval** | Select time in milliseconds.                                                                   |
-   | **MTU**                      | Leave the default value or adjust to 9000 for jumbo frames.                                    |
-   | **DNS**                      | Enter one or more DNS server IP addresses.                                                     |
-   | **IP Address**               | For static bonds only, enter the IP address for the bond.                                      |
-   | **Subnet mask**              | For static bonds only, enter the subnet mask for the bond.                                     |
-   | **Gateway**                  | For static bonds only, enter the gateway IP address for the bond.                              |
+   | **Parameter**                | **Description**                                                                                                                                                             |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**                     | Enter a name for the bond. For example, `bond0`.                                                                                                                            |
+   | **Bond type**                | Select **Static**, **DHCP**, or **None** for IP address settings. Use **None** for an L2-only bond with no IP configuration, such as when the bond is enslaved to a bridge. |
+   | **Member interfaces**        | Select one or more Network Interface Cards (NICs) for the bond.                                                                                                             |
+   | **Bonding mode**             | Select the bonding mode for the bond. This must match your physical switch port configuration.                                                                              |
+   | **Link monitoring interval** | Select time in milliseconds.                                                                                                                                                |
+   | **MTU**                      | Leave the default value or adjust to 9000 for jumbo frames.                                                                                                                 |
+   | **DNS**                      | Enter one or more DNS server IP addresses.                                                                                                                                  |
+   | **IP Address**               | For static bonds only, enter the IP address for the bond.                                                                                                                   |
+   | **Subnet mask**              | For static bonds only, enter the subnet mask for the bond.                                                                                                                  |
+   | **Gateway**                  | For static bonds only, enter the gateway IP address for the bond.                                                                                                           |
 
    :::warning
 
@@ -180,17 +183,17 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 7. Complete the fields on the **Create Bridge** screen and select **Confirm**.
 
-   | **Parameter**         | **Description**                                                                                                                                       |
-   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                      |
-   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                              |
-   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has more than one member interface. Leave off for single-member bridges. |
-   | **Config type**       | Select **Static** or **DHCP** for IP address settings.                                                                                                |
-   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                           |
-   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                            |
-   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                         |
-   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                        |
-   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                                |
+   | **Parameter**         | **Description**                                                                                                                                                                             |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                                                            |
+   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                                                                    |
+   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has more than one member interface. Leave off for single-member bridges.                                       |
+   | **Config type**       | Select **Static**, **DHCP**, or **None** for IP address settings. Use **None** for an L2-only bridge with no IP configuration, such as when the bridge carries only VM tenant VLAN traffic. |
+   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                                                                 |
+   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                                                                  |
+   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                                                               |
+   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                                                              |
+   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                                                                      |
 
    :::warning
 
