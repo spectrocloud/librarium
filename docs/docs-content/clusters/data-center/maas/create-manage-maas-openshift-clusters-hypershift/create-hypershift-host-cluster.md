@@ -87,28 +87,41 @@ cluster in Palette before creating any OpenShift workload clusters.
    :::
 
 9. Click the **Host HyperShift-based control planes** toggle to enable this cluster to deploy HyperShift control planes
-   for OpenShift workload clusters. Click **Next** when done.
+   for OpenShift workload clusters.
 
-10. On the **Nodes Config** step, configure the control plane and, optionally, worker node pools.
+10. Enable **Override Cluster API cluster configuration** if you want to provide custom Cluster API manifests in YAML
+    format. This is an advanced option that allows you to customize the underlying CAPI objects used to provision and
+    manage your cluster.
+
+    When enabled, the **Update Cluster API cluster configuration** option becomes available. Click this button to view
+    the YAML code editor drawer, where you can provide your override configuration.
+
+    Review the [Override CAPI Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
+    documentation to learn more about this feature.
+
+    Click **Next** when done.
+
+11. On the **Nodes Config** step, configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS node pools. For a description of input fields common across target
     platforms, refer to [Node Pools](../../../cluster-management/node-pool.md). Click **Next** when done.
 
     ### Cloud Configuration
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                      |
-    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource pool**      | The [MAAS resource pool](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-resource-pools) from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **Minimum CPU** and **Minimum Memory** selected. |
-    | **Minimum CPU**        | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                              |
-    | **Minimum Memory**     | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                 |
-    | **Availability zones** | Specify the [Availability Zones (AZs)](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-availability-zones) for the node pool.                                                                                                                                            |
-    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                        |
+    | **Parameter**                                               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource pool**                                           | The [MAAS resource pool](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-resource-pools) from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **Minimum CPU** and **Minimum Memory** selected.                                                                                                                                                                                                                                                                                  |
+    | **Minimum CPU**                                             | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Minimum Memory**                                          | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | **Availability zones**                                      | Specify the [Availability Zones (AZs)](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-availability-zones) for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Override Cluster API node pool configuration (Optional)** | Enable if you want to provide custom Cluster API manifests in YAML format. This is an advanced option that allows you to customize the underlying CAPI objects used to provision and manage your node pool. When enabled, the **Update Cluster API node pool configuration** option becomes available. Click this button to view the YAML code editor drawer, where you can provide your override configuration. Review the [Override CAPI Properties](../../../../architecture/override-capi-properties/override-capi-properties.md) documentation to learn more about this feature. |
+    | **Tags**                                                    | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                                                                                                                                                                                                                                                                                                         |
 
-11. <PartialsComponent category="clusters" name="cluster-settings" />
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-12. Select **Validate** to review your cluster configuration and settings.
+13. Select **Validate** to review your cluster configuration and settings.
 
-13. If no changes are needed, **Finish Configuration** to deploy the host cluster.
+14. If no changes are needed, **Finish Configuration** to deploy the host cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the

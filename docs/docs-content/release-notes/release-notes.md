@@ -23,6 +23,22 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6912 -->
+
+- <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [GCP
+  IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md),
+  [GKE](../clusters/public-cloud/gcp/create-gcp-gke-cluster.md),
+  [vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md), and
+  [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) clusters. This allows you to configure advanced
+  provider-specific settings not natively exposed by Palette by supplying YAML that targets the underlying CAPI provider
+  objects directly. For more information, refer to [Override Cluster API (CAPI)
+  Properties](../architecture/override-capi-properties/override-capi-properties.md) and the corresponding provider
+  reference pages:
+
+  - [GCP](../architecture/override-capi-properties/gcp-capi-override-reference.md)
+  - [vSphere](../architecture/override-capi-properties/vsphere-capi-override-reference.md)
+  - [MAAS](../architecture/override-capi-properties/maas-capi-override-reference.md)
+
 #### Improvements
 
 #### Deprecations and Removals
