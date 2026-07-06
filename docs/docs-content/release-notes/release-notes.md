@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July X, 2026 - Release 4.8.X
+## July 6, 2026 - Release 4.8.61
 
 <!-- PATCH RELEASE TICKET: DOC-2958 -->
 
@@ -135,7 +135,7 @@ tags: ["release-notes"]
 
 ## May 11, 2026 - Release 4.8.54
 
-## Bug Fixes
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8589 -->
 
@@ -178,7 +178,7 @@ tags: ["release-notes"]
 
 ## April 28, 2026 - Release 4.8.52
 
-## Bug Fixes
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10545 -->
 
