@@ -7,8 +7,8 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration", "gcp", "gke"]
 ---
 
-This page provides examples and references for overriding Cluster API (CAPI) properties on Google Cloud Platform (GCP)
-clusters using Cluster API Provider GCP (CAPG).
+This page provides examples and references for overriding Cluster API (CAPI) properties on GCP clusters using Cluster
+API Provider GCP (CAPG).
 
 ## GCP IaaS
 
@@ -79,8 +79,8 @@ override.
 
 ## GKE
 
-Google Kubernetes Engine (GKE) clusters use the CAPG managed-cluster path. Cluster-level overrides target
-`GCPManagedControlPlane` (and, if needed, `GCPManagedCluster`), and pool-level overrides target `GCPManagedMachinePool`.
+GKE clusters use the CAPG managed-cluster path. Cluster-level overrides target `GCPManagedControlPlane` (and, if needed,
+`GCPManagedCluster`), and pool-level overrides target `GCPManagedMachinePool`.
 
 | Level   | CAPI Kind                | API References                                                                                                                                                     |
 | ------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

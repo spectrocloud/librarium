@@ -7,8 +7,8 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration", "maas"]
 ---
 
-This page provides examples and references for overriding Cluster API (CAPI) properties on Metal as a Service (MAAS)
-clusters using the Cluster API Provider MAAS (CAPMAAS).
+This page provides examples and references for overriding Cluster API (CAPI) properties on MAAS clusters using the
+Cluster API Provider MAAS (CAPMAAS).
 
 :::info
 
