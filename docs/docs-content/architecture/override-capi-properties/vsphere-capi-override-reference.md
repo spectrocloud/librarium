@@ -7,8 +7,8 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration", "vsphere"]
 ---
 
-This page provides examples and references for overriding Cluster API (CAPI) properties on VMware vSphere clusters
-using CAPV, the Cluster API provider implementation for vSphere.
+This page provides examples and references for overriding Cluster API (CAPI) properties on VMware vSphere clusters using
+CAPV, the Cluster API provider implementation for vSphere.
 
 ## vSphere
 
