@@ -93,9 +93,9 @@ cluster in Palette before creating any OpenShift workload clusters.
 
    Overriding Cluster API (CAPI) properties is not supported on HyperShift host clusters. The **Override Cluster API
    cluster configuration** and **Override Cluster API node pool configuration** toggles in the Palette UI have no effect
-   on this cluster type. Refer to [Override Cluster API (CAPI)
-   Properties](../../../../architecture/override-capi-properties/override-capi-properties.md) for the list of supported
-   providers.
+   on this cluster type. Refer to
+   [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
+   for the list of supported providers.
 
    :::
 
@@ -106,8 +106,8 @@ cluster in Palette before creating any OpenShift workload clusters.
 
     ### Cloud Configuration
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                       |
-    | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                      |
+    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Resource pool**      | The [MAAS resource pool](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-resource-pools) from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **Minimum CPU** and **Minimum Memory** selected. |
     | **Minimum CPU**        | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                              |
     | **Minimum Memory**     | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                 |

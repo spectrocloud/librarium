@@ -72,9 +72,9 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPG Resource Type   | Properties                                                                                                                                                                                                                                                                                              |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `GCPCluster`         | `controlPlaneEndpoint`, `resourceManagerTags`, `loadBalancer`, `network.loadBalancerBackendPort`, `network.hostProject`, `network.mtu`                                                                                                                                                                  |
+| CAPG Resource Type   | Properties                                                                                                                                                                                                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `GCPCluster`         | `controlPlaneEndpoint`, `resourceManagerTags`, `loadBalancer`, `network.loadBalancerBackendPort`, `network.hostProject`, `network.mtu`                                                                                                                                                                             |
 | `GCPMachineTemplate` | `imageFamily`, `additionalLabels`, `additionalMetadata`, `additionalNetworkTags`, `resourceManagerTags`, `rootDeviceType`, `additionalDisks`, `serviceAccounts`, `preemptible`, `provisioningModel`, `ipForwarding`, `shieldedInstanceConfig`, `onHostMaintenance`, `confidentialCompute`, `rootDiskEncryptionKey` |
 
 ## GKE

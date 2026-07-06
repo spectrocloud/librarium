@@ -67,7 +67,7 @@ The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
-| CAPV Resource Type       | Properties                                                                                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VSphereCluster`         | `thumbprint`, `clusterModules`, `disableClusterModule`                                                                                                                                |
+| CAPV Resource Type       | Properties                                                                                                                                                                                                          |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VSphereCluster`         | `thumbprint`, `clusterModules`, `disableClusterModule`                                                                                                                                                              |
 | `VSphereMachineTemplate` | `snapshot`, `server`, `thumbprint`, `numCoresPerSocket`, `additionalDisksGiB`, `dataDisks`, `customVMXKeys`, `tagIDs`, `pciDevices`, `os`, `hardwareVersion`, `network.routes`, `network`, `preferredAPIServerCidr` |
