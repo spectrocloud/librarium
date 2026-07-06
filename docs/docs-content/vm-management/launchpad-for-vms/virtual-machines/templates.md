@@ -160,7 +160,7 @@ templates, use a sealed and generalized golden image as the source.
     | **Virtio RNG**      | Add a random number generator.                                             |
     | **Tablet Input**    | Add a USB input device for pointer precision.                              |
     | **Headless**        | Create the template without a graphics device.                             |
-    | **Video Type**      | Select **Default VGA**, **Virtio**, **VGA**, or **Bochs**.                                |
+    | **Video Type**      | Select **Default VGA**, **Virtio**, **VGA**, or **Bochs**.                 |
     | **TPM**             | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state. |
     | **USB Redirection** | Enable client passthrough. Requires KubeVirt 0.44 or later.                |
 
