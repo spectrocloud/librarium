@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 <!-- COMPONENT UPDATES TICKET: DOC-2962 -->
 <!-- RELEASE DATE: July 3, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: TBD -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.24 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.12 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.7 -->
 
@@ -26,8 +26,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.12  |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.7  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.7  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | TBD     |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | TBD     |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.24  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.24  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-2962. DO NOT DELETE. -->
 
@@ -35,22 +35,22 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-71 -->
 
-- Palette now generates build attestation documents for all components as part of the secure supply chain initiative.
+- Palette now generates build attestation documents for all packs as part of the secure supply chain initiative.
   Attestation records when and how software was produced, on which systems, and by which users, providing a complete
   audit trail of the software development lifecycle.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-81 -->
 
 - Palette now generates a Software Bill of Materials (SBOM) for all downloadable artifacts. Each downloadable component
-  includes an associated SBOM in CycloneDX, SPDX, and Syft JSON formats, augmented with metadata such as author,
-  supplier, repository location, license, and copyright. SBOMs are signed and can be downloaded and reviewed before
-  deploying software to your environment.
+  includes an associated SBOM in CycloneDX format, augmented with metadata such as author, supplier, repository
+  location, license, and copyright. SBOMs are signed and can be downloaded from
+  [Artifact Studio](../downloads/artifact-studio.md) and reviewed before deploying software to your environment.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-759 -->
 
-- SBOMs and attestations for appliances and packs are now available in [Artifact Studio](/downloads/artifact-studio/).
-  Users can download the SBOM for every appliance and pack directly from the Artifact Studio interface. Attestation
-  documents are built with each image and are accessible once packs are uploaded to registries.
+- SBOMs and attestations for packs are now available in [Artifact Studio](/downloads/artifact-studio/). Users can
+  download the SBOM for every appliance and pack directly from the Artifact Studio interface. Attestation documents are
+  built with each image and are accessible once packs are uploaded to registries.
 
 ### Bug Fixes
 
@@ -83,17 +83,14 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 | <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" />                               | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
 | <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" />                   | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
 | <VersionedLink text="cni-cilium" url="/integrations/packs/?pack=cni-cilium" />                               | `cni`   | :x:                | :white_check_mark: | 1.19.4      |
-| <VersionedLink text="eks-pod-identity-agent" url="/integrations/packs/?pack=eks-pod-identity-agent" />       | `addon` | :white_check_mark: | :x:                | 0.2.1       |
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x:                | 2.7.0       |
-| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" />                                   | `addon` | :white_check_mark: | :x:                | 0.43.0      |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" />                                   | `addon` | :white_check_mark: | :white_check_mark: | 0.43.0      |
 | <VersionedLink text="istio" url="/integrations/packs/?pack=istio" />                                         | `addon` | :white_check_mark: | :x:                | 1.30.2      |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" />                   | `addon` | :white_check_mark: | :x:                | 29.14.0     |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" />             | `addon` | :white_check_mark: | :x:                | 87.4.0      |
 | <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" />                     | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
 
 <!-- END PACKS LIST BODY: DOC-2962. DO NOT DELETE. -->
-
-#### Pack Notes
 
 ## July 1, 2026 - Release 4.9.24
 
