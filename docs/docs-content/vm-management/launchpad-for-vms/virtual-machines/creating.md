@@ -192,7 +192,7 @@ Optional advanced hardware settings. This step can be skipped for basic VMs.
 - **Virtio RNG** — Random number generator.
 - **Tablet Input** — USB tablet for pointer precision.
 - **Headless** — No graphics device.
-- **Video Type** — VGA, Virtio, or Bochs.
+- **Video Type** — **VGA**, **Virtio**, or **Bochs**.
 - **TPM** — Trusted Platform Module (ephemeral or persistent).
 - **USB Redirection** — Client passthrough (requires KubeVirt 0.44+).
 

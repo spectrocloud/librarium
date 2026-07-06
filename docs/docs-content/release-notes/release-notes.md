@@ -82,7 +82,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 | <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" />           | `cni`   | :x:                | :white_check_mark: | 1.21.2      |
 | <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" />                               | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
 | <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" />                   | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
-| <VersionedLink text="cni-cilium" url="/integrations/packs/?pack=cni-cilium" />                               | `cni`   | :x:                | :white_check_mark: | 1.19.4      |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" />                       | `cni`   | :x:                | :white_check_mark: | 1.19.4      |
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x:                | 2.7.0       |
 | <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" />                                   | `addon` | :white_check_mark: | :white_check_mark: | 0.43.0      |
 | <VersionedLink text="istio" url="/integrations/packs/?pack=istio" />                                         | `addon` | :white_check_mark: | :x:                | 1.30.2      |
