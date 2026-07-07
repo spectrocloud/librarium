@@ -34,7 +34,6 @@ coding assistant, start with the certified models.
 Other models may serve other use cases better, so if your primary need is not a coding assistant,
 [contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss the right models for your use case.
 
-## Beyond the Certified List
 
 The certified list is not exclusive. You can load models beyond it as long as they fit within the GPU resources
 available on your appliance. If the model you want is not certified for your hardware,
