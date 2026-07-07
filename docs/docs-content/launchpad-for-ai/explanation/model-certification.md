@@ -30,7 +30,6 @@ it is certified, you can be confident it loads and serves requests without hardw
 Spectro Cloud chooses the certified models with coding assistants as the primary use case. If your primary need is a
 coding assistant, start with the certified models.
 
-## Models for Other Use Cases
 
 Other models may serve other use cases better, so if your primary need is not a coding assistant,
 [contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss the right models for your use case.
