@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 6, 2026 - Release 4.7.46
+
+<!-- PATCH RELEASE TICKET: DOC-2959 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9004 -->
+
+- Fixed an issue where upgrading Palette could also upgrade the Edge host agent on some nodes of a multi-node cluster
+  even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
+  leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
+
 ## June 11, 2026 - Release 4.7.45
 
 <!-- PATCH RELEASE TICKET: DOC-2889 -->
