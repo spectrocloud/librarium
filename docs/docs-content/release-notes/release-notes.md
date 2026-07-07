@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 6, 2026 - Release 4.7.46
+## July 6, 2026 - Release 4.7.47
 
 <!-- PATCH RELEASE TICKET: DOC-2959 -->
 
