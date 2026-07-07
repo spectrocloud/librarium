@@ -141,18 +141,30 @@ OK
 
 ## Troubleshooting
 
-- **401 authentication error**: Re-check `ANTHROPIC_AUTH_TOKEN`. Copy the token exactly from the one-time reveal. If you
-  lost it, revoke it and create a new one, because the appliance cannot recover the plain text.
-- **Tier map apply is held**: The alias points at a model the appliance does not serve, or the rule did not pass the
-  coding-agent evaluation. The console shows the reason when you apply the change. Choose a model from the drop-down
-  menu.
-- **Requests return 429**: The user hit a quota window (**Access & Policy** &rarr; user detail &rarr; **Quota
-  windows**), or an operator suspended the user. A 429 response includes a `Retry-After` header.
-- **Connector warning at startup**: Claude Code prints a notice that it turned off claude.ai connectors because another
-  auth source is set. Expect this when connecting to an appliance, because the environment token takes precedence.
-- **TLS certificate errors**: For TLS errors on an HTTPS appliance with the self-signed CA, keep the
-  `NODE_TLS_REJECT_UNAUTHORIZED=0` line from the snippet, or install a publicly trusted certificate on the appliance and
-  drop it.
+### 401 Authentication Error
+
+Re-check `ANTHROPIC_AUTH_TOKEN`. Copy the token exactly from the one-time reveal. If you lost it, revoke it and create a
+new one, because the appliance cannot recover the plain text.
+
+### Tier Map Apply Is Held
+
+The alias points at a model the appliance does not serve, or the rule did not pass the coding-agent evaluation. The
+console shows the reason when you apply the change. Choose a model from the drop-down menu.
+
+### Requests Return 429
+
+The user exceeded a quota window, or an operator suspended them. In **Access & Policy**, raise the limit under **Quota
+windows** or resume the user. Otherwise, wait for the interval in the `Retry-After` header.
+
+### Connector Warning at Startup
+
+Claude Code prints a notice that it turned off claude.ai connectors because another auth source is set. You can ignore
+it, because the environment token takes precedence when connecting to an appliance.
+
+### TLS Certificate Errors
+
+For TLS errors on an HTTPS appliance with the self-signed CA, keep the `NODE_TLS_REJECT_UNAUTHORIZED=0` line from the
+snippet, or install a publicly trusted certificate on the appliance and drop it.
 
 ## Next Steps
 
