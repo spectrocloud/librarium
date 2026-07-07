@@ -66,7 +66,7 @@ address and the token filled in.
 
 :::warning
 
-Copy the token now. The appliance stores only a hash, and the plaintext is never shown again. If you lose it, you must
+Copy the token now. The appliance stores only a hash, and the plain text is never shown again. If you lose it, you must
 revoke the token and create a new one.
 
 :::
@@ -142,7 +142,7 @@ OK
 ## Troubleshooting
 
 - **401 authentication error**: Re-check `ANTHROPIC_AUTH_TOKEN`. Copy the token exactly from the one-time reveal. If you
-  lost it, revoke it and create a new one, because the appliance cannot recover the plaintext.
+  lost it, revoke it and create a new one, because the appliance cannot recover the plain text.
 - **Tier map apply is held**: The alias points at a model the appliance does not serve, or the rule did not pass the
   coding-agent evaluation. The console shows the reason when you apply the change. Choose a model from the drop-down
   menu.
