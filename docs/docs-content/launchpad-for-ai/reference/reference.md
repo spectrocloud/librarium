@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Reference"
 title: "Launchpad for AI Reference"
-description: "Authoritative technical reference for requirements, supported models, and specifications."
+description: "Authoritative technical reference for requirements, certified models, and specifications."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["launchpad-for-ai", "reference"]
@@ -14,8 +14,8 @@ is configured, not how to accomplish a task.
 
 ## Contents
 
-| **Reference**                                       | **What it covers**                                                                         |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [System Requirements](./system-requirements.md)     | Hardware, software, and network prerequisites for deploying the appliance.                 |
-| [Hardware Requirements](./hardware-requirements.md) | Per-model GPU VRAM requirements and multi-node cluster sizing.                             |
-| [Supported Models](./supported-models.md)           | Full list of supported LLMs with parameter counts, VRAM minimums, and quantization levels. |
+| **Reference**                                                     | **What it covers**                                                              |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [System Requirements](./system-requirements.md)                   | Minimum hardware, software, network, and operating system prerequisites.        |
+| [Hardware Requirements](./hardware-requirements.md)               | GPU and multi-node cluster sizing for the appliance.                            |
+| [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration. |
