@@ -33,14 +33,19 @@ coding assistant, start with the certified models.
 Other models may serve other use cases better, so if your primary need is not a coding assistant,
 [contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss the right models for your use case.
 
+:::info
+
 The certified list is not exclusive. You can load models beyond it as long as they fit within the GPU resources
 available on your appliance. If the model you want is not certified for your hardware,
-[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case. For how to add a model to a
-running appliance, refer to [Add a Model](../how-to-guides/add-a-model.md).
+[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
 
-## How Certification Differs from Model-as-a-Service
+:::
+
+For how to add a model to a running appliance, refer to [Add a Model](../how-to-guides/add-a-model.md).
+
+## How Certification Differs from Model as a Service
 
 Launchpad for AI is not a Model as a Service. Rather than offering the widest possible catalog of models on demand,
-Spectro Cloud certifies a focused set of models for on-premises inference, on your own hardware. For multi-tenant AI
+Spectro Cloud certifies a focused set of models for on-premises inference on your own hardware. For multi-tenant AI
 factory use cases, [PaletteAI](https://docs.palette-ai.com) is the better fit. For a full comparison of the two
 products, refer to [What is Launchpad for AI?](../launchpad-for-ai.md).
