@@ -14,8 +14,9 @@ you the steps to do it without teaching background concepts.
 
 ## Contents
 
-| **Guide**                                           | **What you do**                                                                 |
-| --------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [Install the Appliance](./install-the-appliance.md) | Flash the installer ISO, boot the hardware, and bring up the appliance console. |
-| [Deploy a Model](./deploy-a-model.md)               | Deploy an LLM to the cluster and verify it is serving.                          |
-| [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.     |
+| **Guide**                                           | **What you do**                                                                    |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Install the Appliance](./install-the-appliance.md) | Flash the installer ISO, boot the hardware, and bring up the appliance console.    |
+| [Deploy a Model](./deploy-a-model.md)               | Deploy an LLM to the cluster and verify it is serving.                             |
+| [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.        |
+| [Connect Claude Code](./run-claude-code.md)         | Connect Anthropic's Claude Code coding agent so it is served by your local models. |
