@@ -25,7 +25,7 @@ confirmed runs correctly on Launchpad for AI. Spectro Cloud runs each certified 
 rather than assuming the model works from public benchmarks. When you deploy a certified model on a configuration where
 it is certified, you can be confident it loads and serves requests without hardware surprises.
 
-## Focus on Coding Assistants
+## Model Use Cases
 
 Spectro Cloud chooses the certified models with coding assistants as the primary use case. If your primary need is a
 coding assistant, start with the certified models.
