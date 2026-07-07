@@ -14,6 +14,7 @@ design decisions, component relationships, and trade-offs rather than walking yo
 
 ## Contents
 
-| **Topic**                                  | **What you understand**                                                                       |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| [Architecture Overview](./architecture.md) | The component stack, request routing, model provisioning lifecycle, and data residency model. |
+| **Topic**                                       | **What you understand**                                                                       |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [Architecture Overview](./architecture.md)      | The component stack, request routing, model provisioning lifecycle, and data residency model. |
+| [Model Certification](./model-certification.md) | What certified means, how models are certified, and how to choose models for your use case.   |
