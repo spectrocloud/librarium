@@ -15,9 +15,9 @@ This guide explains how to add a model to a running Launchpad for AI appliance a
 requests. For background on the appliance and how it routes requests, refer to
 [What is Launchpad for AI?](../launchpad-for-ai.md) and [Architecture](../explanation/architecture.md).
 
-Launchpad for AI provides a set of recommended models, including GLM, DeepSeek, and Kimi. You can deploy models beyond
-the recommended list, but any model must fit within the GPU resources available on the appliance. Before you select a
-model, check the [Supported LLM Models](../reference/supported-models.md) and
+Launchpad for AI provides a set of certified models, including GLM, DeepSeek, and Kimi. You can deploy models beyond the
+certified list, but any model must fit within the GPU resources available on the appliance. Before you select a model,
+check the [Certified Models by Hardware](../reference/certified-models-by-hardware.md) and
 [Hardware Requirements](../reference/hardware-requirements.md) reference pages to confirm that your appliance can
 support it.
 
