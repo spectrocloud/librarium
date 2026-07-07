@@ -18,8 +18,8 @@ Use this page to build an understanding of the architecture before you deploy or
 
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. The gateway
-also exposes an Anthropic Messages API endpoint (`/v1/messages`), so Anthropic-format clients such as Claude Code connect
-to the appliance directly, without a translation proxy.
+also exposes an Anthropic Messages API endpoint (`/v1/messages`), so Anthropic-format clients such as Claude Code
+connect to the appliance directly, without a translation proxy.
 
 ## Appliance and Cluster Formation
 

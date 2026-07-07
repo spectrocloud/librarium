@@ -2,8 +2,8 @@
 sidebar_label: "Connect Claude Code"
 title: "Connect Claude Code to a Launchpad for AI Appliance"
 description:
-  "Step-by-step guidance for connecting Anthropic's Claude Code coding agent to a Launchpad for AI appliance so that every
-  prompt is served by local models."
+  "Step-by-step guidance for connecting Anthropic's Claude Code coding agent to a Launchpad for AI appliance so that
+  every prompt is served by local models."
 hide_table_of_contents: false
 sidebar_position: 3
 tags: ["launchpad-for-ai", "claude-code", "integration", "how-to"]
@@ -20,7 +20,8 @@ that the appliance's models serve every request instead of Anthropic's cloud.
 - A running Launchpad for AI appliance with at least one model in the `SERVING` state. You can check model state on the
   **Cluster** page.
 - The console URL and an admin (operator) login for the appliance.
-- Claude Code installed on the developer's machine: `npm install --global @anthropic-ai/claude-code` (or `brew install --cask claude-code`).
+- Claude Code installed on the developer's machine: `npm install --global @anthropic-ai/claude-code` (or
+  `brew install --cask claude-code`).
 
 ## Sign In to the Console
 
@@ -37,8 +38,8 @@ From the left main menu, select **Access & Policy**.
 
 ![The Access & Policy page showing appliance-wide controls, the Claude Code reference block, and the Users table below.](/launchpad-for-ai_run-claude-code_access-policy.webp)
 
-Scroll to the **Create user** card at the bottom of the Users section, type a display name (for example, `jane-dev`), and
-select **Create user**.
+Scroll to the **Create user** card at the bottom of the Users section, type a display name (for example, `jane-dev`),
+and select **Create user**.
 
 ![The Create user card, where only a display name is required; the appliance assigns the ID.](/launchpad-for-ai_run-claude-code_create-user.webp)
 
@@ -79,15 +80,15 @@ The tier map points each Claude alias at one of your served models. Point Opus a
 Haiku at a faster model. For how the tier map translates Claude model names into local models, refer to
 [Tier Maps](../explanation/architecture.md#tier-maps).
 
-On the user's detail page, find the **Tier map** card, select **Add alias rule** for each alias, choose the alias
-prefix and the model from the drop-down menus, then select **Apply tier map** and confirm.
+On the user's detail page, find the **Tier map** card, select **Add alias rule** for each alias, choose the alias prefix
+and the model from the drop-down menus, then select **Apply tier map** and confirm.
 
 ![Three alias rules mapping Opus and Sonnet to the flagship model and Haiku to the fast coder model.](/launchpad-for-ai_run-claude-code_tier-map-rules.webp)
 
 ## Run Claude Code
 
-On the developer's machine, paste the environment block from the token reveal into the shell. It is also
-reproduced below. The base URL is your appliance's address, and the token is the one you just created.
+On the developer's machine, paste the environment block from the token reveal into the shell. It is also reproduced
+below. The base URL is your appliance's address, and the token is the one you just created.
 
 ```bash
 # The appliance serves HTTPS with a self-signed CA certificate, which Node (Claude Code)
@@ -116,8 +117,8 @@ Claude Code starts and connects to the appliance. The banner shows the Opus mode
 
 ![Claude Code connected to the appliance, with the reply coming from the local model set in the tier map.](/launchpad-for-ai_run-claude-code_claude-code-connected.webp)
 
-To confirm Claude Code points at the appliance rather than the Anthropic cloud, run the `/status` command in the
-session and check the **Anthropic base URL** and **Auth token** lines on the **Status** tab.
+To confirm Claude Code points at the appliance rather than the Anthropic cloud, run the `/status` command in the session
+and check the **Anthropic base URL** and **Auth token** lines on the **Status** tab.
 
 ```text hideClipboard title="Status tab"
 Anthropic base URL:  https://<your-appliance-address>
@@ -145,8 +146,8 @@ OK
 - **Tier map apply is held**: The alias points at a model the appliance does not serve, or the rule did not pass the
   coding-agent evaluation. The console shows the reason when you apply the change. Choose a model from the drop-down
   menu.
-- **Requests return 429**: The user hit a quota window (**Access & Policy** &rarr; user detail &rarr; **Quota windows**),
-  or an operator suspended the user. A 429 response includes a `Retry-After` header.
+- **Requests return 429**: The user hit a quota window (**Access & Policy** &rarr; user detail &rarr; **Quota
+  windows**), or an operator suspended the user. A 429 response includes a `Retry-After` header.
 - **Connector warning at startup**: Claude Code prints a notice that it turned off claude.ai connectors because another
   auth source is set. Expect this when connecting to an appliance, because the environment token takes precedence.
 - **TLS certificate errors**: For TLS errors on an HTTPS appliance with the self-signed CA, keep the
