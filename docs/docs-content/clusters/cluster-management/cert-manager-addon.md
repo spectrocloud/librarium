@@ -63,11 +63,11 @@ certificate expires as necessary.
 
     :::warning
 
-         You can do [customizations](https://cert-manager.io/docs/installation/configuring-components/), however, the following must be adhered to:
+    You can apply [customizations](https://cert-manager.io/docs/installation/configuring-components/), but do **not** set any of the following:
 
-            - `crds.enabled` is set to `false`.
-            - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
-            - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+    - `crds.enabled` to `false`.
+    - `cainjector.enabled` to `false`, or `cainjector.replicas` to `0`.
+    - `nodeSelector` or `nodeAffinity` to values that keep Cert Manager off control plane nodes.
 
     :::
 
