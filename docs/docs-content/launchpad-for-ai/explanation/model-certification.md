@@ -18,7 +18,7 @@ keywords: ["launchpad", "ai", "certified models", "certification", "coding assis
 This page explains what model certification means and how a model becomes certified. For the models certified on
 specific hardware, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
-## What Certification Means
+## Model Certification
 
 A certified model is a large language model (LLM) that Spectro Cloud has tested on a specific GPU configuration and
 confirmed runs correctly on Launchpad for AI. Spectro Cloud runs each certified model on the hardware it is paired with,
