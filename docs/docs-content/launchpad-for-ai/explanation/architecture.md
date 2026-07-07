@@ -44,6 +44,10 @@ between them: each Claude alias points at one of the served models, and the gate
 the mapped local model. The client behaves as if it is talking to Anthropic, while the appliance serves every request
 locally.
 
+How you split the tiers depends on how Claude Code uses them. Claude Code sends its main coding work to the Opus and
+Sonnet tiers and quick background tasks to the Haiku tier, so a common split points Opus and Sonnet at a flagship model
+and Haiku at a smaller, faster one.
+
 A tier map is set per user, so two users can route the same alias to different models. The gateway enforces two guard
 rails on every tier edit:
 
