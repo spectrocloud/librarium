@@ -51,7 +51,7 @@ and Haiku at a smaller, faster one.
 A tier map is set per user, so two users can route the same alias to different models. The gateway enforces two guard
 rails on every tier edit:
 
-- A rule can map an alias only to a model that is onboarded on the appliance. Mapping an alias to a model the appliance
+- A rule can map an alias only to a model that is available on the appliance. Mapping an alias to a model the appliance
   does not serve is rejected.
 - Tier edits are evaluation-gated. The gateway holds a rule that would regress the coding-agent evaluation and shows the
   reason when you apply the change.
