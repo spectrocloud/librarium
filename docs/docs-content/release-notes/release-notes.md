@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 9, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2985 -->
+
+### Bug Fixes
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11302 -->
+
+- Fixed security vulnerabilities identified in the 4.9.x release by applying targeted security fixes across affected
+  components.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7141 -->
+
+- Fixed an issue in the Palette platform that required an out-of-band release candidate build (4.9.11-rc.3) to address.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9048 -->
+
+- Fixed an issue where the installer boot media (live ISO or flashed USB) was incorrectly identified as a previous
+  Kairos installation and listed as a disk-wipe candidate, preventing installation from completing.
+
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2962 -->
