@@ -11,27 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 9, 2026 - Release 4.9.x
+## July 9, 2026 - Release 4.9.25
 
 <!-- PATCH RELEASE TICKET: DOC-2985 -->
 
 ### Bug Fixes
 
-### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-11302 -->
-
-- Fixed security vulnerabilities identified in the 4.9.x release by applying targeted security fixes across affected
-  components.
-
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7141 -->
 
-- Fixed an issue in the Palette platform that required an out-of-band release candidate build (4.9.11-rc.3) to address.
+- Fixed an issue that prevented new [CloudStack](/clusters/data-center/cloudstack/create-manage-cloudstack-clusters/)
+  clusters from being provisioned using a CloudStack [PCG](/clusters/pcg/).
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9048 -->
 
-- Fixed an issue where the installer boot media (live ISO or flashed USB) was incorrectly identified as a previous
-  Kairos installation and listed as a disk-wipe candidate, preventing installation from completing.
+- Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly list the installer boot media as
+  a disk containing a previous Kairos installation when an Edge host was booted from a physical USB drive flashed with
+  the installer ISO.
 
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
