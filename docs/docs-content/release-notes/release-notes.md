@@ -25,7 +25,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6527 -->
 
-- <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [GCP
+- Overriding Cluster API (CAPI) properties is now supported on [GCP
   IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md),
   [GKE](../clusters/public-cloud/gcp/create-gcp-gke-cluster.md),
   [vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md), and

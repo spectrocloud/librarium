@@ -22,7 +22,7 @@ Cluster-level overrides target the `VSphereCluster` resource, and pool-level ove
 
 :::warning
 
-The top-level keys for both vSphere resources are all-lowercase `vsphereCluster` and `vsphereMachineTemplate`. These
+The top-level keys for both vSphere resources are all-lowercase (`vsphereCluster` and `vsphereMachineTemplate`). These
 keys do not follow the camelCase-of-Kind rule that most other providers use, so watch for the casing when constructing
 override YAML.
 
