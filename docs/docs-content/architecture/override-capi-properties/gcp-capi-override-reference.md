@@ -61,21 +61,15 @@ gcpMachineTemplate:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPG Resource Type   | Properties                                                                                                                                                                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `GCPCluster`         | `controlPlaneEndpoint`, `resourceManagerTags`, `loadBalancer`, `network.loadBalancerBackendPort`, `network.hostProject`, `network.mtu`                                                                                                                                                                             |
-| `GCPMachineTemplate` | `imageFamily`, `additionalLabels`, `additionalMetadata`, `additionalNetworkTags`, `resourceManagerTags`, `rootDeviceType`, `additionalDisks`, `serviceAccounts`, `preemptible`, `provisioningModel`, `ipForwarding`, `shieldedInstanceConfig`, `onHostMaintenance`, `confidentialCompute`, `rootDiskEncryptionKey` |
+| `GCPCluster`         | `controlPlaneEndpoint`, `loadBalancer`, `network.hostProject`, `network.loadBalancerBackendPort`, `network.mtu`, `resourceManagerTags`                                                                                                                                                                             |
+| `GCPMachineTemplate` | `additionalDisks`, `additionalLabels`, `additionalMetadata`, `additionalNetworkTags`, `confidentialCompute`, `imageFamily`, `ipForwarding`, `onHostMaintenance`, `preemptible`, `provisioningModel`, `resourceManagerTags`, `rootDeviceType`, `rootDiskEncryptionKey`, `serviceAccounts`, `shieldedInstanceConfig` |
 
 ## GKE
 
@@ -136,17 +130,11 @@ gcpManagedMachinePool:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPG Resource Type       | Properties                                                                                         |
 | ------------------------ | -------------------------------------------------------------------------------------------------- |
-| `GCPManagedControlPlane` | `description`, `clusterNetwork`, `releaseChannel`, `master_authorized_networks_config`, `endpoint` |
+| `GCPManagedControlPlane` | `clusterNetwork`, `description`, `endpoint`, `master_authorized_networks_config`, `releaseChannel` |

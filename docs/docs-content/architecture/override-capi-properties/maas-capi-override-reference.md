@@ -60,18 +60,6 @@ maasMachineTemplate:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
+All first-class properties are supported. To learn more about the difference between first-class properties and override
+properties, refer to the
 [First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
-The following properties are not exposed as first-class properties in the
-[supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
-
-| CAPMAAS Resource Type | Properties |
-| --------------------- | ---------- |
-| `MaasCluster`         | None       |
-| `MaasMachineTemplate` | None       |
