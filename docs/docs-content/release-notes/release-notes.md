@@ -24,8 +24,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9048 -->
 
-- Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly select the installer boot media for disk-wiping when booting an Edge host from a physical USB drive flashed with
-  the installer ISO.
+- Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly select the installer boot media
+  for disk-wiping when booting an Edge host from a physical USB drive flashed with the installer ISO.
 
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
