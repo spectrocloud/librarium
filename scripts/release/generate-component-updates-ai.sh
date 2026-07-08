@@ -107,6 +107,7 @@ done < <(
       | select(.key | startswith("PRM-") | not)
       | select(.fields.summary | contains("Pack Updates") | not)
       | select(.fields.summary | contains("[Platone]") | not)
+      | select(.fields.status.name | ascii_downcase != "not a bug")
       | .key
     '
 )
@@ -131,6 +132,7 @@ done < <(
       .fields.issuelinks[]
       | (.outwardIssue // .inwardIssue)
       | select(.fields.summary | contains("[Platone]"))
+      | select(.fields.status.name | ascii_downcase != "not a bug")
       | .key
     '
 )
@@ -145,6 +147,7 @@ PACK_UPDATES_TICKET=$(
       [ .fields.issuelinks[]
         | (.outwardIssue // .inwardIssue)
         | select(.fields.summary | contains("Pack Updates"))
+        | select(.fields.status.name | ascii_downcase != "not a bug")
         | .key
       ] | first // empty
     '
@@ -163,11 +166,12 @@ if [[ -n "$PACK_UPDATES_TICKET" ]]; then
       --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
       --header "Accept: application/json" \
       --data-urlencode "jql=parent = ${PACK_UPDATES_TICKET}" \
-      --data-urlencode "fields=summary" \
+      --data-urlencode "fields=summary,status" \
       --data-urlencode "maxResults=100" \
     | jq -r '
         .issues[]
         | select(.fields.summary | contains("[Platone]"))
+        | select(.fields.status.name | ascii_downcase != "not a bug")
         | .key
       '
   )
@@ -184,7 +188,7 @@ if (( ${#PLATONE_ISSUES[@]} > 0 )); then
   PLATONE_ISSUES=("${DEDUPED_ISSUES[@]}")
 fi
 
-echo "ℹ️ Platone issues retrieved: ${PLATONE_ISSUES[*]}"
+echo "ℹ️ Platone issues retrieved: ${PLATONE_ISSUES[*]:-}"
 
 # Check if release notes section for this component update ticket already exists in the release notes file
 COMPONENT_UPDATES_EXISTING_BODY=""
