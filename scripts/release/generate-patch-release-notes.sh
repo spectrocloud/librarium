@@ -87,10 +87,15 @@ ISSUE_RESPONSE=$(curl -s --fail-with-body \
   --header "Accept: application/json" \
   --get \
   --data-urlencode "jql=${JQL}" \
+  --data-urlencode "fields=status" \
   --data-urlencode "maxResults=100")
 
 ISSUE_KEYS=()
-for id in $(echo "$ISSUE_RESPONSE" | jq -r '.issues[].id'); do
+for id in $(echo "$ISSUE_RESPONSE" | jq -r '
+  .issues[]
+  | select(.fields.status.name | ascii_downcase != "not a bug")
+  | .id
+'); do
   key=$(curl -s --fail-with-body \
     --url "${JIRA_DOMAIN}/rest/api/3/issue/${id}" \
     --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
