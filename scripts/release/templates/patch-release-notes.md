@@ -2,5 +2,4 @@
 
 <!-- PATCH RELEASE TICKET: {{PATCH_RELEASE_TICKET}} -->
 
-### Bug Fixes
 {{SUPER_BUG_FIXES_BODY}}
