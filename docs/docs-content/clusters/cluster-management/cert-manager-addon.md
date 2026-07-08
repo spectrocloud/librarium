@@ -63,8 +63,8 @@ certificate expires as necessary.
 
     :::warning
 
-    You can apply [customizations](https://cert-manager.io/docs/installation/configuring-components/), but do _not_
-    set any of the following:
+    You can apply [customizations](https://cert-manager.io/docs/installation/configuring-components/), but do _not_ set
+    any of the following:
 
     - `crds.enabled` to `false`.
     - `cainjector.enabled` to `false`, or `cainjector.replicas` to `0`.
