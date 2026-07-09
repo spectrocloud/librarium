@@ -125,10 +125,16 @@ azureManagedMachinePool:
       updated: "true"
 ```
 
-```yaml title="Set the node pool OS SKU to Azure Linux"
+Whenever you use `asoManagedClustersAgentPoolPatches` on `azureManagedMachinePool`, you must include an entry that sets
+the `osSKU` field alongside any other patch entries.
+
+Set `osSKU` to the value that matches the OS you selected for the node pool: `AzureLinux`, `Ubuntu`, or `Windows2022`.
+
+```yaml {5} title="Set the node pool OS SKU to Azure Linux"
 azureManagedMachinePool:
   spec:
     asoManagedClustersAgentPoolPatches:
+      - '{"spec":{"upgradeSettings":{"maxSurge":"1"}}}'
       - '{"spec":{"osSKU":"AzureLinux"}}' # Other values include Ubuntu and Windows2022
 ```
 
