@@ -38,6 +38,15 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
+
+- The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x
+  series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the Enterprise
+  Cluster installation method available through the [Palette CLI](../automation/palette-cli/palette-cli.md). If you have
+  already migrated to an Enterprise Cluster installation, no action is required. If your Palette installation was
+  deployed with the Quickstart OVA, migrate to Enterprise Cluster by following the process outlined in the
+  [legacy Palette 3.x installation guide](https://version-3-4.legacy.docs.spectrocloud.com/enterprise-version/install-palette/install-on-vmware/install/).
+
 ### Edge
 
 :::info
