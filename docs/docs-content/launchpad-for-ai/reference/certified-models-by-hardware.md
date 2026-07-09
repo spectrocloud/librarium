@@ -36,13 +36,13 @@ discuss your use case.
 | 4 x H100 <sup>\*</sup> |     ❌      |         ❌          |      ❌      |
 | 8 x H100 <sup>\*</sup> |     ❌      |         ❌          |      ❌      |
 | 4 x H200 <sup>\*</sup> |     ❌      |         ❌          |      ❌      |
-| 8 x H200               |     ✅      |         ✅          |      ❌      |
-| 4 x H300               |     ❌      |         ❌          |      ✅      |
-| 8 x H300               |     ✅      |         ✅          |      ❌      |
-| 4 x GB100              |     ❌      |         ❌          |      ✅      |
-| 8 x GB100              |     ✅      |         ✅          |      ❌      |
-| 4 x GB200              |     ❌      |         ❌          |      ✅      |
-| 8 x GB200              |     ✅      |         ✅          |      ❌      |
+| 8 x H200               |     ✅      |         ✅          |      ✅      |
+| 4 x H300 <sup>\*</sup> |     ❌      |         ❌          |      ❌      |
+| 8 x H300               |     ✅      |         ✅          |      ✅      |
+| 4 x GB100 <sup>\*</sup>|     ❌      |         ❌          |      ❌      |
+| 8 x GB100              |     ✅      |         ✅          |      ✅      |
+| 4 x GB200 <sup>\*</sup>|     ❌      |         ❌          |      ❌      |
+| 8 x GB200              |     ✅      |         ✅          |      ✅      |
 
 <sup>*</sup> No certified model for this configuration. [Contact Spectro Cloud](https://www.spectrocloud.com/contact) to
 discuss your use case.
