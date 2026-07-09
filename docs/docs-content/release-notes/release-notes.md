@@ -36,6 +36,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
+-   [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) for AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
+
 #### Deprecations and Removals
 
 ### Edge
