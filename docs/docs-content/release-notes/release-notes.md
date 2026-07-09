@@ -11,6 +11,68 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 28, 2026 - Component Updates {#component-updates-2026-28}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2995 -->
+<!-- RELEASE DATE: June 28, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.21 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.11 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.6 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.24.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.11  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.6  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.6  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.21  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.21  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+- Zot Registry and Harbor Registry on [Edge clusters](../clusters/edge/edge.md) now integrate with `cert-manager` to
+  automatically rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime.
+  This applies to connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
+  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Zot registry uses cert-manager
+  to automatically rotate its TLS certificate.
+
+<!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
+<!-- BEGIN PACKS LIST BODY: DOC-2995. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.2 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :x: | 1.20.3 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.22.3 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :x: | :white_check_mark: | 0.28.7 |
+| <VersionedLink text="kong" url="/integrations/packs/?pack=kong" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.19 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.0.2 |
+| <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.34.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-2995. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2962 -->
