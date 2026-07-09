@@ -41,7 +41,7 @@ available on your appliance. If the model you want is not certified for your har
 
 :::
 
-For how to add a model to a running appliance, refer to [Add a Model](../how-to-guides/add-a-model.md).
+For how to add a model to a running appliance, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 ## How Certification Differs from Model as a Service
 
