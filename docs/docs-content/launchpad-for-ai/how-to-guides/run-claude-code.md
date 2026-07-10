@@ -13,15 +13,14 @@ keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api t
 <PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
 
 {/*
-DRAFT — targets the redesigned "Client / API token" flow that ships at GA, NOT the current stable build (which still
-shows "Users / access token").
+This guide documents the verified live build (tested end-to-end against a running Launchpad for AI deployment):
+Access & Policy → Users, a one-time "lpai_" token, two environment variables, and automatic gateway alias mapping
+(no user-facing tier-map UI).
 
-PENDING SME CONFIRMATION (Andreea / Alex) — resolve before publishing: [T1] Entity label: draft uses "Client" (replacing
-"User"). Confirm exact string. [T2] Credential label: draft uses "API token". Shipping UI today uses "access token"
-(preferred) vs "API key" (legacy) — confirm which string ships. [T3] Flow: draft assumes ONE step ("Create an API
-token"). If it is two steps (create Client, then mint token), split the section back out. [T4] Exact UI location of the
-tier map in the shipping build (current demo nav exposes no "Routing" page). [S] All screenshots are placeholders — no
-screenshot-able build exists yet.
+REDESIGN WATCH — revisit if these land:
+- The "user → capability" console redesign (per PM) may rename the Users area; update entity wording if it ships.
+- Confirm whether an operator-facing tier-map / routing editor ships; if so, add a configuration section.
+- [S] Screenshots are placeholders — capture against the shipping console when a build is available.
 */}
 
 This guide explains how to connect Claude Code, Anthropic's terminal coding agent, to a Launchpad for AI appliance so
@@ -44,23 +43,20 @@ happens on the **Access & Policy** page, which requires an operator login.
 
 ## Create an API Token
 
-{/* [T1][T2][T3] This section merges the old "Create a User" + "Create the User's Access Token" steps into a single
-credential-creation flow, per the redesign. If the shipping flow keeps two distinct steps, split this back out. */}
+Each developer connects with their own API token. In the console, open the **Access & Policy** page and select
+**Users**, then create a token.
 
-Each developer connects with their own API token. From the left main menu, select **Access & Policy**.
+{/* [S] SCREENSHOT NEEDED: Access & Policy → Users, showing the create-token control */}
 
-{/* [S] SCREENSHOT NEEDED: Access & Policy page showing the Clients table and the create control */}
+Give the token a label that indicates where it lives (for example, `jane-laptop`) so you can revoke it later without
+guessing which machine it belongs to. When you make a change, the console first shows a preview card of exactly what
+changes, and nothing happens until you select **Confirm & apply**.
 
-Create the token for a client (for example, `jane-dev`), give it a label that indicates where it lives (for example,
-`jane-laptop`), and confirm. When you make a change, the console first shows a preview card of exactly what changes, and
-nothing happens until you select **Confirm & apply**.
+{/* [S] SCREENSHOT NEEDED: create-token form and the guarded Confirm & apply card */}
 
-{/* [S] SCREENSHOT NEEDED: Create API token form and the guarded Confirm & apply card */}
+The new token is shown exactly once and begins with `lpai_`.
 
-The new token is shown exactly once, together with a ready-to-run Claude Code snippet that already has the appliance
-address and the token filled in.
-
-{/* [S] SCREENSHOT NEEDED: one-time token reveal with the copy-ready Claude Code environment block */}
+{/* [S] SCREENSHOT NEEDED: one-time token reveal */}
 
 :::warning
 
@@ -69,39 +65,54 @@ revoke the token and create a new one.
 
 :::
 
-The snippet's last line shows which local model the `claude-opus-4-8` alias resolves to on this appliance.
-
 ## About the Tier Map
 
-Each Claude alias in the snippet (Opus, Sonnet, Haiku) resolves to one of the appliance's served models through the
-appliance's **tier map**. The tier map is a single, appliance-wide setting that an operator configures once. It is not
-per-client: every token's aliases resolve through the same map. Typically Opus and Sonnet point at the flagship model
-and Haiku at a faster model.
+You do not choose the backend model. Claude Code sends a model alias — `claude-opus-4-8`, `claude-sonnet-4-5`, or
+`claude-haiku-4-5` — and the appliance's gateway maps each alias to one of its served models automatically. The mapping
+is a property of the appliance, not something you configure per token. For how the appliance translates Claude model
+names into local models, refer to [Tier Maps](../explanation/architecture.md#tier-maps).
 
-You do not configure the tier map while creating a token; it is managed separately at the appliance level.
-{/* [T4] Confirm and name the exact UI location for editing the tier map in the shipping build. */} For how the tier map
-translates Claude model names into local models, refer to [Tier Maps](../explanation/architecture.md#tier-maps).
+{/* REDESIGN WATCH: the live build exposes no operator-facing tier-map editor; the gateway maps aliases automatically.
+If a routing/tier-map UI ships, add a configuration section here. */}
 
 ## Run Claude Code
 
-On the developer's machine, paste the environment block from the token reveal into the shell. It is also reproduced
-below. The base URL is your appliance's address, and the token is the one you just created.
+On the developer's machine, set two environment variables — your appliance's address and the token you just created —
+then start Claude Code.
 
 ```bash
-# The appliance serves HTTPS with a self-signed CA certificate, which Node (Claude Code)
-# rejects by default. This disables Node's TLS verification for the session; drop
-# it if your appliance presents a publicly trusted certificate (for example, a cert-manager leaf).
-export NODE_TLS_REJECT_UNAUTHORIZED=0
 export ANTHROPIC_BASE_URL=https://<your-appliance-address>
 export ANTHROPIC_AUTH_TOKEN=<lpai-token>
-export ANTHROPIC_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
-export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
-
-# Run Claude Code at maximum reasoning effort (low | medium | high | max).
-export CLAUDE_CODE_EFFORT_LEVEL=max
 ```
+
+Use `ANTHROPIC_AUTH_TOKEN`, not `ANTHROPIC_API_KEY`. (`ANTHROPIC_API_KEY` also works, but avoid setting it globally if
+you also sign in to Claude Code with a claude.ai account.)
+
+To persist the settings instead of exporting them each session, add them to `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://<your-appliance-address>",
+    "ANTHROPIC_AUTH_TOKEN": "<lpai-token>"
+  }
+}
+```
+
+We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection
+uses HTTPS, so a valid certificate is what keeps your token and traffic secure in transit. An appliance configured this
+way needs no TLS workaround.
+
+If the appliance still presents a self-signed certificate, Node (which Claude Code runs on) rejects it by default. As a
+temporary measure, add `export NODE_TLS_REJECT_UNAUTHORIZED=0` before starting Claude Code.
+
+:::warning
+
+`NODE_TLS_REJECT_UNAUTHORIZED=0` turns off certificate verification, which is insecure and should be limited to
+short-lived testing. Install a publicly trusted certificate before any real use. Some tools do not allow this workaround
+at all — for example, OpenAI Codex requires a valid certificate on a real DNS name and cannot skip verification.
+
+:::
 
 Then start Claude Code in any project folder.
 
@@ -145,13 +156,13 @@ new one, because the appliance cannot recover the plain text.
 
 ### An Alias Does Not Resolve
 
-The alias points at a model the appliance does not serve. Ask an operator to confirm the appliance's tier map maps the
-alias to a model in the serving state. {/* [T4] Reword once the tier-map UI location is confirmed. */}
+The alias maps to a model the appliance does not currently serve. Ask an operator to confirm a model is in the serving
+state so the gateway can map the alias to it. You can check model state on the **Cluster** page.
 
 ### Requests Return 429
 
-The client exceeded a quota window, or an operator suspended them. In **Access & Policy**, raise the limit under **Quota
-windows** or resume the client. Otherwise, wait for the interval in the `Retry-After` header.
+The user exceeded a quota window, or an operator suspended them. In **Access & Policy**, raise the limit under **Quota
+windows** or resume the user. Otherwise, wait for the interval in the `Retry-After` header.
 
 ### Connector Warning at Startup
 
@@ -160,8 +171,9 @@ it, because the environment token takes precedence when connecting to an applian
 
 ### TLS Certificate Errors
 
-For TLS errors on an HTTPS appliance with the self-signed CA, keep the `NODE_TLS_REJECT_UNAUTHORIZED=0` line from the
-snippet, or install a publicly trusted certificate on the appliance and drop it.
+The lasting fix is to give the appliance a DNS name and a valid, publicly trusted TLS certificate, which also lets other
+coding tools connect. If the appliance uses a self-signed certificate, `NODE_TLS_REJECT_UNAUTHORIZED=0` bypasses the
+error for short-lived testing, but it disables verification and should not be left in place.
 
 ## Next Steps
 
