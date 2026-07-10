@@ -160,7 +160,7 @@ deploy a VM.
     | **Devices**          | **Virtio RNG**                | Add a random number generator.                                                                                |
     | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
     | **Devices**          | **Headless**                  | Create the VM without a graphics device.                                                                      |
-    | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
+    | **Devices**          | **Video Type**                | Select **VGA**, **Virtio**, or **Bochs**.                                                                     |
     | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
     | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
