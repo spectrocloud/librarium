@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 9, 2026 - Release 4.9.27
+
+<!-- PATCH RELEASE TICKET: DOC-2985 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7141 -->
+
+- Fixed an issue that prevented new [CloudStack](/clusters/data-center/cloudstack/create-manage-cloudstack-clusters/)
+  clusters from being provisioned using a CloudStack [PCG](/clusters/pcg/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9048 -->
+
+- Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly select the installer boot media
+  for disk-wiping when booting an Edge host from a physical USB drive flashed with the installer ISO.
+
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2962 -->
