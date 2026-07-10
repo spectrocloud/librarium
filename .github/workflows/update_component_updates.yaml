@@ -19,7 +19,8 @@ jobs:
   update_component_updates:
     if: >
       github.event.issue.pull_request &&
-      !endsWith(github.actor, '[bot]')
+      !endsWith(github.actor, '[bot]') &&
+      contains(fromJSON('["MEMBER", "OWNER"]'), github.event.comment.author_association)
     runs-on: ubuntu-latest
 
     permissions:
