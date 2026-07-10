@@ -7,17 +7,29 @@ description:
 hide_table_of_contents: false
 sidebar_position: 3
 tags: ["launchpad-for-ai", "claude-code", "integration", "how-to"]
-keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "access token", "tier map"]
+keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token", "tier map"]
 ---
 
 <PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
+{/*
+DRAFT — targets the redesigned "Client / API token" flow that ships at GA, NOT the current stable build (which still
+shows "Users / access token").
+
+PENDING SME CONFIRMATION (Andreea / Alex) — resolve before publishing: [T1] Entity label: draft uses "Client" (replacing
+"User"). Confirm exact string. [T2] Credential label: draft uses "API token". Shipping UI today uses "access token"
+(preferred) vs "API key" (legacy) — confirm which string ships. [T3] Flow: draft assumes ONE step ("Create an API
+token"). If it is two steps (create Client, then mint token), split the section back out. [T4] Exact UI location of the
+tier map in the shipping build (current demo nav exposes no "Routing" page). [S] All screenshots are placeholders — no
+screenshot-able build exists yet.
+*/}
 
 This guide explains how to connect Claude Code, Anthropic's terminal coding agent, to a Launchpad for AI appliance so
 that the appliance's models serve every request instead of Anthropic's cloud.
 
 ## Prerequisites
 
-- A running Launchpad for AI appliance with at least one model in the `SERVING` state. You can check model state on the
+- A running Launchpad for AI appliance with at least one model in the serving state. You can check model state on the
   **Cluster** page.
 - The console URL and an admin (operator) login for the appliance.
 - Claude Code installed on the developer's machine: `npm install --global @anthropic-ai/claude-code` (or
@@ -28,41 +40,27 @@ that the appliance's models serve every request instead of Anthropic's cloud.
 Open the appliance's console in a browser and sign in with your admin username and password. Everything in this guide
 happens on the **Access & Policy** page, which requires an operator login.
 
-![The Launchpad for AI console login screen, where user management requires an operator sign-in.](/launchpad-for-ai_run-claude-code_login.webp)
+{/* [S] SCREENSHOT NEEDED: console login screen (redesigned build) */}
 
-## Create a User
+## Create an API Token
 
-Each developer gets their own user, and the access token you create next belongs to that user.
+{/* [T1][T2][T3] This section merges the old "Create a User" + "Create the User's Access Token" steps into a single
+credential-creation flow, per the redesign. If the shipping flow keeps two distinct steps, split this back out. */}
 
-From the left main menu, select **Access & Policy**.
+Each developer connects with their own API token. From the left main menu, select **Access & Policy**.
 
-![The Access & Policy page showing appliance-wide controls, the Claude Code reference block, and the Users table below.](/launchpad-for-ai_run-claude-code_access-policy.webp)
+{/* [S] SCREENSHOT NEEDED: Access & Policy page showing the Clients table and the create control */}
 
-Scroll to the **Create user** card at the bottom of the Users section, type a display name (for example, `jane-dev`),
-and select **Create user**.
+Create the token for a client (for example, `jane-dev`), give it a label that indicates where it lives (for example,
+`jane-laptop`), and confirm. When you make a change, the console first shows a preview card of exactly what changes, and
+nothing happens until you select **Confirm & apply**.
 
-![The Create user card, where only a display name is required; the appliance assigns the ID.](/launchpad-for-ai_run-claude-code_create-user.webp)
-
-When you make a change, the console first shows a small preview card of exactly what changes, and nothing happens until
-you select **Confirm & apply**.
-
-![The guarded confirmation card that previews the change before you select Confirm & apply.](/launchpad-for-ai_run-claude-code_confirm-apply.webp)
-
-## Create the User's Access Token
-
-Open the new user's detail page by selecting the ID in their row (for example, `usr_0a2684b33d4c`).
-
-![The user detail page showing identity, usage, and per-user settings.](/launchpad-for-ai_run-claude-code_user-detail.webp)
-
-Scroll to the token section, give the token a label that indicates where it lives (for example, `jane-laptop`), and
-select **Create token**, then **Confirm & apply**.
-
-![The token creation form, where a label names the token after where you use it to make revocation easier later.](/launchpad-for-ai_run-claude-code_create-token.webp)
+{/* [S] SCREENSHOT NEEDED: Create API token form and the guarded Confirm & apply card */}
 
 The new token is shown exactly once, together with a ready-to-run Claude Code snippet that already has the appliance
 address and the token filled in.
 
-![The one-time token reveal, showing the token plus a copy-ready Claude Code environment block.](/launchpad-for-ai_run-claude-code_token-reveal.webp)
+{/* [S] SCREENSHOT NEEDED: one-time token reveal with the copy-ready Claude Code environment block */}
 
 :::warning
 
@@ -71,19 +69,18 @@ revoke the token and create a new one.
 
 :::
 
-The snippet's last line shows which local model the `claude-opus-4-8` alias currently resolves to for this user. Set the
-tier map next.
+The snippet's last line shows which local model the `claude-opus-4-8` alias resolves to on this appliance.
 
-## Set the Tier Map
+## About the Tier Map
 
-The tier map points each Claude alias at one of your served models. Point Opus and Sonnet at your flagship model and
-Haiku at a faster model. For how the tier map translates Claude model names into local models, refer to
-[Tier Maps](../explanation/architecture.md#tier-maps).
+Each Claude alias in the snippet (Opus, Sonnet, Haiku) resolves to one of the appliance's served models through the
+appliance's **tier map**. The tier map is a single, appliance-wide setting that an operator configures once. It is not
+per-client: every token's aliases resolve through the same map. Typically Opus and Sonnet point at the flagship model
+and Haiku at a faster model.
 
-On the user's detail page, find the **Tier map** card, select **Add alias rule** for each alias, choose the alias prefix
-and the model from the drop-down menus, then select **Apply tier map** and confirm.
-
-![Three alias rules mapping Opus and Sonnet to the flagship model and Haiku to the fast coder model.](/launchpad-for-ai_run-claude-code_tier-map-rules.webp)
+You do not configure the tier map while creating a token; it is managed separately at the appliance level.
+{/* [T4] Confirm and name the exact UI location for editing the tier map in the shipping build. */} For how the tier map
+translates Claude model names into local models, refer to [Tier Maps](../explanation/architecture.md#tier-maps).
 
 ## Run Claude Code
 
@@ -115,7 +112,7 @@ claude
 
 Claude Code starts and connects to the appliance. The banner shows the Opus model tier.
 
-![Claude Code connected to the appliance, with the reply coming from the local model set in the tier map.](/launchpad-for-ai_run-claude-code_claude-code-connected.webp)
+{/* [S] SCREENSHOT NEEDED: Claude Code connected, with the reply coming from the local model */}
 
 To confirm Claude Code points at the appliance rather than the Anthropic cloud, run the `/status` command in the session
 and check the **Anthropic base URL** and **Auth token** lines on the **Status** tab.
@@ -146,15 +143,15 @@ OK
 Re-check `ANTHROPIC_AUTH_TOKEN`. Copy the token exactly from the one-time reveal. If you lost it, revoke it and create a
 new one, because the appliance cannot recover the plain text.
 
-### Tier Map Apply Is Held
+### An Alias Does Not Resolve
 
-The alias points at a model the appliance does not serve, or the rule did not pass the coding-agent evaluation. The
-console shows the reason when you apply the change. Choose a model from the drop-down menu.
+The alias points at a model the appliance does not serve. Ask an operator to confirm the appliance's tier map maps the
+alias to a model in the serving state. {/* [T4] Reword once the tier-map UI location is confirmed. */}
 
 ### Requests Return 429
 
-The user exceeded a quota window, or an operator suspended them. In **Access & Policy**, raise the limit under **Quota
-windows** or resume the user. Otherwise, wait for the interval in the `Retry-After` header.
+The client exceeded a quota window, or an operator suspended them. In **Access & Policy**, raise the limit under **Quota
+windows** or resume the client. Otherwise, wait for the interval in the `Retry-After` header.
 
 ### Connector Warning at Startup
 
@@ -168,5 +165,5 @@ snippet, or install a publicly trusted certificate on the appliance and drop it.
 
 ## Next Steps
 
-To add more models that you can map to Claude tiers, refer to [Deploy a Model](./deploy-a-model.md). For background on how the
-appliance routes requests to models, refer to [Architecture](../explanation/architecture.md).
+To add more models that you can map to Claude tiers, refer to [Deploy a Model](./deploy-a-model.md). For background on
+how the appliance routes requests to models, refer to [Architecture](../explanation/architecture.md).
