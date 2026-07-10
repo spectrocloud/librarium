@@ -168,5 +168,5 @@ snippet, or install a publicly trusted certificate on the appliance and drop it.
 
 ## Next Steps
 
-To add more models that you can map to Claude tiers, refer to [Add a Model](./add-a-model.md). For background on how the
+To add more models that you can map to Claude tiers, refer to [Deploy a Model](./deploy-a-model.md). For background on how the
 appliance routes requests to models, refer to [Architecture](../explanation/architecture.md).
