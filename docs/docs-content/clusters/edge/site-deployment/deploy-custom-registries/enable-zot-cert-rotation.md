@@ -51,10 +51,6 @@ want to override its settings. The Zot chart provisions the cert-manager `Cluste
   stores the Zot server certificate, but the Zot pods continue to serve the previous certificate
   from memory until they are restarted manually.
 
-- cert-manager must be installed before the profile is applied. The Zot chart fails to reconcile
-  if the cert-manager Custom Resource Definitions (CRDs) `Certificate`, `Issuer`, and
-  `ClusterIssuer` are missing.
-
 ## Prerequisites
 
 - An existing [Edge cluster](../../edge.md) that uses an Edge profile with the in-cluster Zot registry pack
@@ -220,7 +216,7 @@ present the new certificate after the `reloader`-driven restart completes.
 
 If you need to revert the upgrade, follow these steps.
 
-1. Revert the cluster profile to the previous version. This version uses `zot` version `0.1.89`, `registry-connect`
+1. Revert the cluster profile to the previous version. This version uses `zot` version `0.1.89-rev1`, `registry-connect`
    version `0.2.0`, and the **Zot Internal Registry** preset.
 
 2. Re-apply the previous profile version to the cluster.
