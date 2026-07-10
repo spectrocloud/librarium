@@ -55,17 +55,19 @@ between them: each Claude alias points at one of the served models, and the gate
 the mapped local model. The client behaves as if it is talking to Anthropic, while the appliance serves every request
 locally.
 
-How you split the tiers depends on how Claude Code uses them. Claude Code sends its main coding work to the Opus and
-Sonnet tiers and quick background tasks to the Haiku tier, so a common split points Opus and Sonnet at a flagship model
-and Haiku at a smaller, faster one.
+The mapping is a property of the appliance and is applied automatically to every request. Clients do not choose the
+backend model, and the same map applies to every token. An alias resolves only to a model the appliance currently
+serves: if no served model backs an alias, requests for that alias fail until an operator brings a suitable model into
+the serving state.
 
-A tier map is set per user, so two users can route the same alias to different models. The gateway enforces two guard
-rails on every tier edit:
+How the tiers are split follows how Claude Code uses them. Claude Code sends its main coding work to the Opus and Sonnet
+tiers and quick background tasks to the Haiku tier, so a common split points Opus and Sonnet at a flagship model and
+Haiku at a smaller, faster one.
 
-- A rule can map an alias only to a model that is available on the appliance. Mapping an alias to a model the appliance
-  does not serve is rejected.
-- Tier edits are evaluation-gated. The gateway holds a rule that would regress the coding-agent evaluation and shows the
-  reason when you apply the change.
+{/* REDESIGN WATCH: verified against the live build, the tier map is appliance-wide and automatic — not per user and not
+user-editable. An earlier design described per-user tier maps with user-editable, evaluation-gated tier rules (a rule
+maps an alias only to an available model; edits that would regress the coding-agent evaluation are held with the reason
+shown). If that editable / per-user model ships, restore it here and add a how-to for configuring it. */}
 
 ## Network Topology
 

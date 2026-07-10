@@ -65,16 +65,6 @@ revoke the token and create a new one.
 
 :::
 
-## About the Tier Map
-
-You do not choose the backend model. Claude Code sends a model alias — `claude-opus-4-8`, `claude-sonnet-4-5`, or
-`claude-haiku-4-5` — and the appliance's gateway maps each alias to one of its served models automatically. The mapping
-is a property of the appliance, not something you configure per token. For how the appliance translates Claude model
-names into local models, refer to [Tier Maps](../explanation/architecture.md#tier-maps).
-
-{/* REDESIGN WATCH: the live build exposes no operator-facing tier-map editor; the gateway maps aliases automatically.
-If a routing/tier-map UI ships, add a configuration section here. */}
-
 ## Run Claude Code
 
 On the developer's machine, set two environment variables — your appliance's address and the token you just created —
@@ -121,9 +111,13 @@ cd ~/my-project
 claude
 ```
 
-Claude Code starts and connects to the appliance. The banner shows the Opus model tier.
+Claude Code starts and connects to the appliance. The banner shows the Opus model tier. You do not pick the backend
+model: the appliance maps each Claude alias (Opus, Sonnet, Haiku) to one of its served models. For how that mapping
+works, refer to [Tier Maps](../explanation/architecture.md#tier-maps).
 
 {/* [S] SCREENSHOT NEEDED: Claude Code connected, with the reply coming from the local model */}
+{/* REDESIGN WATCH: the live build exposes no operator-facing tier-map editor; the gateway maps aliases automatically.
+If a routing/tier-map UI ships, add a configuration section (or a separate how-to) for it. */}
 
 To confirm Claude Code points at the appliance rather than the Anthropic cloud, run the `/status` command in the session
 and check the **Anthropic base URL** and **Auth token** lines on the **Status** tab.
