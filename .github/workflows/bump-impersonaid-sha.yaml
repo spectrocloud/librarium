@@ -2,11 +2,12 @@ name: "Bump Impersonaid SHA"
 
 # DOC-2977: keep the persona-check action current with Impersonaid.
 #
-# persona-check pins Impersonaid to a commit SHA (`IMPERSONAID_REF` in
-# .github/workflows/persona-check.yaml), consumed by actions/checkout's `ref:`.
-# Dependabot cannot track a SHA held in an env var, so this scheduled job checks
+# persona-check and monthly-assessment each pin Impersonaid to a commit SHA
+# (`IMPERSONAID_REF` in .github/workflows/persona-check.yaml and
+# monthly-assessment.yaml), consumed by actions/checkout's `ref:`. Dependabot
+# cannot track a SHA held in an env var, so this scheduled job checks
 # spectrocloud/impersonaid `main` weekly and, when it has moved, opens a
-# reviewable PR bumping `IMPERSONAID_REF`. A human reviews and merges.
+# reviewable PR bumping `IMPERSONAID_REF` in both files. A human reviews and merges.
 
 on:
   schedule:
@@ -22,7 +23,10 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # persona-check.yaml is the source of truth for the current SHA; both files
+  # are kept in lockstep.
   TARGET_FILE: .github/workflows/persona-check.yaml
+  TARGET_FILES: ".github/workflows/persona-check.yaml .github/workflows/monthly-assessment.yaml"
   PR_BRANCH: chore/bump-impersonaid-sha
 
 jobs:
@@ -62,7 +66,9 @@ jobs:
             exit 1
           fi
 
-          CURRENT=$(grep -E '^[[:space:]]*IMPERSONAID_REF:' "$TARGET_FILE" | grep -oE '[0-9a-f]{40}' | head -1)
+          # No `head -1`: the second grep already yields exactly one 40-char SHA,
+          # and `head` closing the pipe early can SIGPIPE-fail under `pipefail`.
+          CURRENT=$(grep -E '^[[:space:]]*IMPERSONAID_REF:' "$TARGET_FILE" | grep -oE '[0-9a-f]{40}')
           if [[ -z "$CURRENT" ]]; then
             echo "::error::Could not find IMPERSONAID_REF in $TARGET_FILE."
             exit 1
@@ -76,13 +82,16 @@ jobs:
           fi
 
           # Replace the SHA and refresh the trailing comment (records when it was
-          # last bumped), preserving the leading indentation/key. Anchored so the
-          # `ref: ${{ env.IMPERSONAID_REF }}` usage line is never matched.
+          # last bumped) in every target file, preserving the leading
+          # indentation/key. Anchored so the `ref: ${{ env.IMPERSONAID_REF }}`
+          # usage line is never matched.
           DATE=$(date -u +%F) # YYYY-MM-DD
-          sed -i -E "s|^([[:space:]]*IMPERSONAID_REF: ).*|\1\"${LATEST}\" # spectrocloud/impersonaid main, last bumped ${DATE}|" "$TARGET_FILE"
+          for f in $TARGET_FILES; do
+            sed -i -E "s|^([[:space:]]*IMPERSONAID_REF: ).*|\1\"${LATEST}\" # spectrocloud/impersonaid main, last bumped ${DATE}|" "$f"
+          done
 
-          if git diff --quiet -- "$TARGET_FILE"; then
-            echo "::error::Expected a change but the file is unmodified."
+          if git diff --quiet -- $TARGET_FILES; then
+            echo "::error::Expected a change but the files are unmodified."
             exit 1
           fi
 
@@ -90,7 +99,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git checkout -B "$PR_BRANCH"
-          git add "$TARGET_FILE"
+          git add $TARGET_FILES
           git commit -m "chore: bump Impersonaid to ${LATEST:0:7}"
           git push --force origin "$PR_BRANCH"
 
