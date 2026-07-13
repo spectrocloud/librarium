@@ -7,10 +7,6 @@ sidebar_position: 20
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Cursor](https://cursor.com/get-started).
 
@@ -79,6 +75,12 @@ You can now use the Palette MCP server with Cursor.
 
    There was no next_continue_token, so this is the full list for the queried scope (default project/context your MCP uses).
    ```
+
+:::info
+
+To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `mcp.json` after the image name. By default, the server starts in read-only mode.
+
+:::
 
 ## Next Steps
 

@@ -7,10 +7,6 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Claude Code](https://code.claude.com/docs/en/overview).
 
@@ -59,16 +55,21 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
        --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
-       -e SPECTROCLOUD_HOST=<palette-api-endpoint> \
-       -e SPECTROCLOUD_APIKEY=<palette-api-key> \
-       -e SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id> \
-       -e ALLOW_DANGEROUS_ACTIONS=0 \
+       -e PALETTE_HOST=<palette-api-endpoint> \
+       -e PALETTE_API_KEY=<palette-api-key> \
+       -e PALETTE_PROJECT_UID=<palette-project-id> \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
    </TabItem>
 
    </Tabs>
+
+   :::info
+
+   To enable write tools, such as create, update, and delete, append `--allow-write` after the image name. By default, the server starts in read-only mode.
+
+   :::
 
    :::warning
 

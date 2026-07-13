@@ -7,10 +7,6 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with the
 [Gemini CLI](https://geminicli.com/).
 
@@ -106,6 +102,12 @@ You can now use the Palette MCP server with the Gemini CLI.
 
    ✦ You have 1 active cluster in Palette: aws-cluster-test.
    ```
+
+:::info
+
+To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `settings.json` after the image name. By default, the server starts in read-only mode.
+
+:::
 
 ## Next Steps
 

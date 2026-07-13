@@ -7,10 +7,6 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 <PartialsComponent category="palette-mcp" name="mcp-tools" />
 
 This guide provides examples of how to use the Palette MCP server using
@@ -26,7 +22,7 @@ model that suits your needs.
     [Gemini CLI](./setup/mcp-setup-gemini.md).
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
-    [Podman](https://podman.io/docs/installation).
+    [Podman](https://podman.io/docs/installation), if you use the container image.
 
 - A Palette account.
 
@@ -35,7 +31,7 @@ model that suits your needs.
 
 ## List Clusters and Cluster Profiles
 
-The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_or_delete_clusters` tool lists clusters.
+The `read_cluster_profiles` tool lists cluster profiles. The `read_clusters` tool lists clusters.
 
 1. Open your MCP client.
 
@@ -44,7 +40,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
    ```shell hideClipboard title="Example Output"
-   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "list", limit: 25, continue_token: "xxx")
+   ⏺ palette - read_cluster_profiles (MCP)(filters: { tags: ["env:prod"] })
 
    ⏺ Profiles explicitly tagged with env:prod:
 
@@ -63,7 +59,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    deployed to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
    ```shell hideClipboard title="Example Output"
-   ⏺ palette - gather_or_delete_clusters (MCP)(action: "list", compact: false)
+   ⏺ palette - read_clusters (MCP)(filters: { cloud_type: "aws" })
 
    ⏺ You have 3 clusters deployed to AWS (cloud_type: aws):
    ┌───────────────┬─────────┐
@@ -79,119 +75,119 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    The remaining clusters run on vSphere and MAAS.
    ```
 
-## Download Kubeconfig Files
+## Read Cluster Status
 
-The `getKubeconfig` tool downloads kubeconfig files.
+The `read_cluster_status` tool returns the state, conditions, and other status details for a single cluster. It is the recommended polling tool after a `create_cluster` or `delete_cluster` call, because a state-only projection costs a single API call.
 
 1. Open your MCP client.
 
-2. Send a query asking to download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for one of
-   your running clusters. For example, you can ask "Download the kubeconfig file for the `<cluster-name>` Palette
-   cluster."
+2. Send a query asking for the status of a cluster. For example, you can ask "What is the current status of the
+   `<cluster-name>` cluster?".
 
    Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
-   ⏺ palette - getKubeconfig (MCP)(cluster_uid: "69c401bf35d56c1812c5a00f")
-   The kubeconfig for cluster-test has been downloaded. As noted in the project instructions, the file is written inside the MCP container at /tmp/kubeconfig/69c401bf35d56c1812c5a00f.kubeconfig, which is synced to your machine at:
+   ⏺ palette - read_cluster_status (MCP)(uid: "650f1a2b3c4d5e6f7a8b9c0d", fields: ["status.state"])
 
-   /Users/test-user/.palette/kubeconfig
-
-   You can use it with:
-   kubectl --kubeconfig="$HOME/.palette/kubeconfig" get nodes
+   ⏺ The prod-cluster cluster is currently in the Running state.
    ```
 
-3. Instruct the MCP tool to connect to the cluster and list the nodes. For example, you can say "Run kubectl and list
-   the nodes of the `<cluster-name>` Palette cluster."
+## Read Cluster Observability
 
-   Replace the placeholder with your cluster name.
+The `read_cluster_observability` tool returns compliance-scan, backup, and restore results for a single cluster.
 
-   :::info
+1. Open your MCP client.
 
-   Kubectl will only function correctly if you have added an Agent Skill to your MCP client that instructs it to use the
-   local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for
-   [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
-   [Gemini CLI](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP client.
-
-   :::
-
-   ```shell hideClipboard title="Example Output"
-   ⏺ Bash(kubectl --kubeconfig="/Users/test-user/.palette/kubeconfig/69c401bf35d56c1812c5a00f.kubeconfig" get nodes)
-
-   ⏺ The cluster-test cluster has 2 nodes:
-   ┌───────────────────────────┬───────────────────────────┬───────────────┬─────┬──────────┐
-   │           Name            │          Status           │     Role      │ Age │ Version  │
-   ├───────────────────────────┼───────────────────────────┼───────────────┼─────┼──────────┤
-   │ ip-10-0-1-11.ec2.internal │ Ready, SchedulingDisabled │ —             │ 22h │ v1.32.13 │
-   ├───────────────────────────┼───────────────────────────┼───────────────┼─────┼──────────┤
-   │ ip-10-0-1-31.ec2.internal │ Ready                     │ control-plane │ 22h │ v1.32.13 │
-   └───────────────────────────┴───────────────────────────┴───────────────┴─────┴──────────┘
-   The worker node has SchedulingDisabled (cordoned), meaning no new pods will be scheduled on it.
-   ```
-
-## Manage Resource Tags
-
-The `search_and_manage_resource_tags` tool manages resource tags for cluster profiles, clusters,
-[Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
-[cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
-
-1. Open your MCP tool.
-
-2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to the `<cluster-name>`
-   Palette cluster" to add a custom tag to an [AWS cluster](../../clusters/public-cloud/aws/aws.md).
+2. Send a query asking for observability data for a cluster. For example, you can ask "Show me the latest compliance
+   scans and backup status for the `<cluster-name>` cluster."
 
    Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
-   ⏺ palette - search_and_manage_resource_tags (MCP)(action: "create", resource_type: "spectroclusters", uid: "69c401bf35d56c1812c5a00f", tags: ["cloud:aws"])
+   ⏺ palette - read_cluster_observability (MCP)(uid: "650f1a2b3c4d5e6f7a8b9c0d", include: ["scans", "backup"])
 
-   ⏺ Done. The cloud:aws tag has been applied to cluster-test. The cluster's tags are now:
-    - cloud:aws (new)
-    - owner:test-user
+   ⏺ Compliance scans and backup status for prod-cluster:
+   - Latest CIS scan: 2 High, 5 Medium findings
+   - Latest backup: succeeded 2 hours ago
    ```
 
-## Delete Clusters and Cluster Profiles
+## Read Component Events
 
-The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gather_or_delete_clusters` tool deletes
-clusters.
+The `read_events` tool returns paginated Kubernetes and controller component events. You can scope the query to one
+cluster, one edge host, or a recent tenant-wide feed.
 
-1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the
-   applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
+1. Open your MCP client.
+
+2. Send a query asking for events. For example, you can ask "Show me the last 20 error events for the
+   `<cluster-name>` cluster."
+
+   Replace the placeholder with your cluster name.
+
+   ```shell hideClipboard title="Example Output"
+   ⏺ palette - read_events (MCP)(object_kind: "spectrocluster", object_uid: "650f...", limit: 20, filters: { severity: "Error" })
+
+   ⏺ Latest error events for dev-cluster-1:
+   - FailedScheduling — 0/3 nodes available: insufficient memory (2 minutes ago)
+   ```
+
+## Manage Projects, Teams, and Users
+
+The `read_projects`, `read_teams`, and `read_users` tools return project, team, and user records. The corresponding `create_*`, `update_*`, and `delete_*` tools mutate those records when the server runs with `--allow-write`.
+
+1. Open your MCP client.
+
+2. Send a query asking to create a project. For example, you can ask "Create a Palette project named
+   `<project-name>`."
+
+   Replace the placeholder with your cluster name.
+
+   ```shell hideClipboard title="Example Output"
+   ⏺ palette - create_project (MCP)(name: "dev-project")
+
+   ⏺ Done. The dev-project project has been created with uid 650f1a2b3c4d5e6f7a8b9c0d.
+   ```
+
+3. Send a query asking to list team membership. For example, you can ask "List the members of the `<team-name>` team."
+
+   Replace the placeholder with your team name.
+
+   ```shell hideClipboard title="Example Output"
+   ⏺ palette - read_teams (MCP)(uid: "qa-team")
+
+   ⏺ The qa-team team has 2 members: alice@example.com, bob@example.com.
+   ```
+
+## Delete Clusters and Cluster Profiles (WIP)
+
+The `delete_cluster` tool deletes a cluster.
+
+1. Start the Palette MCP server with the `--allow-write` startup flag to enable write tools. Refer to the applicable
+   setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
    [Gemini CLI](./setup/mcp-setup-gemini.md) for more information.
-
-   Enable dangerous actions to allow the MCP server to delete resources. Save and close the file.
-
-   ```shell
-   ALLOW_DANGEROUS_ACTIONS=1
-   ```
 
 2. Open your MCP client.
 
-3. Send a query to delete a Palette cluster profile. For example, you can say "Delete the `<cluster-profile-name>`
-   Palette cluster profile."
-
-   Replace the placeholder with your cluster profile name.
-
-   ```shell hideClipboard title="Example Output"
-   ⏺ The cluster-profile-test profile has uid 698bc897c7fdfaca31d7122f. This is a destructive action — confirming before proceeding: delete cluster profile cluster-profile-test?
-
-   ❯ Yes
-
-   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "delete", uid: "698bc897c7fdfaca31d7122f")
-
-   ⏺ Done. The cluster-profile-test cluster profile has been deleted.
-   ```
-
-4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` Palette cluster."
+3. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` Palette cluster."
 
    Replace the placeholder with your cluster name.
 
+   The MCP server prompts you to type back the cluster name to confirm the delete.
+
    ```shell hideClipboard title="Example Output"
-   ⏺ This will delete the running cluster-test cluster (uid: 69c401bf35d56c1812c5a00f). This is irreversible — are you sure?
+   ⏺ This will delete the running dev-cluster cluster (uid: 69c401bf35d56c1812c5a00f). This is irreversible.
+     To confirm, please type the cluster name: dev-cluster
 
-   ❯ Yes
+   ❯ dev-cluster
 
-   ⏺ palette - gather_or_delete_clusters (MCP)(action: "delete", uid: "69c401bf35d56c1812c5a00f")
+   ⏺ palette - delete_cluster (MCP)(uid: "69c401bf35d56c1812c5a00f", confirm: "dev-cluster")
 
-   ⏺ Done. The cluster-test cluster has been deleted.
+   ⏺ Done. The dev-cluster cluster has been marked for deletion.
+   ```
+
+4. Poll the cluster status with `read_cluster_status` until the cluster reaches the `Deleted` state.
+
+   ```shell hideClipboard title="Example Output"
+   ⏺ palette - read_cluster_status (MCP)(uid: "69c401bf35d56c1812c5a00f", fields: ["status.state"])
+
+   ⏺ The dev-cluster cluster is currently in the Deleting state.
    ```
