@@ -75,11 +75,14 @@ Claude Code requests a Claude alias, such as `claude-sonnet-4-5`. To pin every r
 export ANTHROPIC_MODEL=claude-sonnet-4-5
 ```
 
+We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection
+uses HTTPS, so a valid certificate protects your token in transit.
+
 :::warning
 
-If your appliance uses a self-signed certificate, Claude Code rejects the connection by default. Set
-`NODE_TLS_REJECT_UNAUTHORIZED=0` for short-lived testing, or serve the appliance with a valid, publicly trusted
-certificate.
+If the appliance uses a self-signed certificate, Claude Code rejects the connection by default. As a temporary measure
+for testing, set `NODE_TLS_REJECT_UNAUTHORIZED=0` before you start Claude Code. This disables certificate verification,
+so do not use it outside short-lived testing.
 
 :::
 
