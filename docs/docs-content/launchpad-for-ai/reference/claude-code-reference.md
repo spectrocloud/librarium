@@ -16,10 +16,10 @@ set them, refer to [Use Launchpad for AI with Claude Code](../how-to-guides/use-
 
 ## Environment Variables
 
-| Variable               | Description                                                                                                                                | Example value                       |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
-| `ANTHROPIC_BASE_URL`   | The Launchpad for AI inference endpoint. Use the appliance address with no path. Claude Code appends `/v1/messages`.                       | `https://amd.spectrocloud.com:8443` |
-| `ANTHROPIC_AUTH_TOKEN` | The API token generated in the console. It begins with `lpai_`. `ANTHROPIC_API_KEY` is also accepted.                                      | `lpai_YOUR_TOKEN`                   |
+| Variable               | Description                                                                                                                                 | Example value                       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `ANTHROPIC_BASE_URL`   | The Launchpad for AI inference endpoint. Use the appliance address with no path. Claude Code appends `/v1/messages`.                        | `https://amd.spectrocloud.com:8443` |
+| `ANTHROPIC_AUTH_TOKEN` | The API token generated in the console. It begins with `lpai_`. `ANTHROPIC_API_KEY` is also accepted.                                       | `lpai_YOUR_TOKEN`                   |
 | `ANTHROPIC_MODEL`      | Optional. The Claude alias Claude Code requests. The appliance maps the alias to the model it serves, so you do not pick the backend model. | `claude-sonnet-4-5`                 |
 
 ## Endpoint URL
@@ -31,9 +31,9 @@ not include `/v1`. If you do not know the address, ask the administrator who set
 ## Model Name
 
 Claude Code requests a Claude alias (`claude-opus-4-8`, `claude-sonnet-4-5`, or `claude-haiku-4-5`), and the appliance
-maps that alias to the model it serves. Set `ANTHROPIC_MODEL` to one of these aliases. You do not select a backend
-model directly. Both the aliases the appliance accepts and the ids of the models it serves, such as `glm-5.2`, appear
-in the console's model list and in the appliance's `/v1/models` API response.
+maps that alias to the model it serves. Set `ANTHROPIC_MODEL` to one of these aliases. You do not select a backend model
+directly. Both the aliases the appliance accepts and the ids of the models it serves, such as `glm-5.2`, appear in the
+console's model list and in the appliance's `/v1/models` API response.
 
 ## Token Quotas
 

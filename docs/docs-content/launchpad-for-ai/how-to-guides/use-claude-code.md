@@ -100,8 +100,8 @@ session uses, run the `/status` command in Claude Code and review the **Anthropi
 
 ## Token Quotas
 
-If requests return an HTTP `429` response, you have exceeded your token quota. Wait for the quota window to reset, or ask
-an operator to raise your limit. {/* TODO: link once the token quotas and metering reference page exists */}
+If requests return an HTTP `429` response, you have exceeded your token quota. Wait for the quota window to reset, or
+ask an operator to raise your limit. {/* TODO: link once the token quotas and metering reference page exists */}
 
 ## Next Steps
 
