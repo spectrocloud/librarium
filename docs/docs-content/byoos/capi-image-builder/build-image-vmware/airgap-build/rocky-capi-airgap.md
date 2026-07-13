@@ -43,8 +43,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
     of the tool. This guide uses version 4.6.24 as an example.
 
-  - [Rocky Linux ISO](https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso) version 8
-    or 9. Ensure you download the `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its
+  - [Rocky Linux ISO](https://dl.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd1.iso) version 8
+    or 9. Ensure you download the `x86_64-dvd1.iso` file and not the `x86_64-boot.iso` file, and make sure you have its
     SHA256 checksum available. This guide uses Rocky 8 as an example. Refer to the
     [Configuration Reference](../../config-reference.md) page for details on supported operating systems.
 
