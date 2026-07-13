@@ -15,17 +15,17 @@ This page provides troubleshooting guidance for common scenarios you may encount
 
 When you use the [VM Migration Assistant](../vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to a VMO
 cluster backed by a block-based Container Storage Interface (CSI) — such as the LINSTOR/DRBD storage used by the
-Launchpad for VMs appliance — migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration
-plan reports only a generic message:
+Launchpad for VMs appliance — migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan
+reports only a generic message:
 
 ```text
 error: { phase: "ConvertGuest", reasons: ["Guest conversion failed. See pod logs for details."] }
 ```
 
-This occurs because the destination volumes are provisioned in `Block` volume mode. During conversion, `virt-v2v`
-serves the raw block device through `nbdkit`, which probes the device's minimum block size. When the underlying
-storage reports a block size outside the range that `nbdkit` accepts, the conversion fails. Linux guests (for example,
-Ubuntu) are most commonly affected, while Windows guests may still succeed.
+This occurs because the destination volumes are provisioned in `Block` volume mode. During conversion, `virt-v2v` serves
+the raw block device through `nbdkit`, which probes the device's minimum block size. When the underlying storage reports
+a block size outside the range that `nbdkit` accepts, the conversion fails. Linux guests (for example, Ubuntu) are most
+commonly affected, while Windows guests may still succeed.
 
 Use the following steps to confirm the cause and apply a workaround.
 
@@ -44,8 +44,8 @@ Use the following steps to confirm the cause and apply a workaround.
    kubectl logs --namespace <migration-namespace> <conversion-pod-name>
    ```
 
-4. Confirm the failure signature. Logs that contain the following lines indicate that `nbdkit` is operating on a
-   block device whose minimum block size it cannot handle.
+4. Confirm the failure signature. Logs that contain the following lines indicate that `nbdkit` is operating on a block
+   device whose minimum block size it cannot handle.
 
    ```text
    nbdkit: file[1]: debug: extents disabled: lseek: SEEK_HOLE: Invalid argument
@@ -82,8 +82,8 @@ Use the following steps to confirm the cause and apply a workaround.
 
 The workaround in the previous section unblocks migrations by using `Filesystem` volume mode, but it disables live
 migration for the migrated VMs. To restore live migration, load an updated `forklift-virt-v2v` content bundle into the
-cluster's Zot registry. The updated image contains a newer `nbdkit` that handles the block-size constraints reported
-by block-based storage such as LINSTOR/DRBD.
+cluster's Zot registry. The updated image contains a newer `nbdkit` that handles the block-size constraints reported by
+block-based storage such as LINSTOR/DRBD.
 
 1. Contact your Spectro Cloud support representative to obtain the updated `forklift-virt-v2v` content bundle. The
    bundle replaces the existing image at the following reference:
@@ -92,17 +92,16 @@ by block-based storage such as LINSTOR/DRBD.
    us-docker.pkg.dev/palette-images/third-party/vm-migration-assistant/forklift-virt-v2v:4.9.2
    ```
 
-2. Remove the existing `forklift-virt-v2v` image from the cluster's Zot registry so that the new image can be
-   uploaded in its place. Your Spectro Cloud support representative can guide you through this step for your
-   environment.
+2. Remove the existing `forklift-virt-v2v` image from the cluster's Zot registry so that the new image can be uploaded
+   in its place. Your Spectro Cloud support representative can guide you through this step for your environment.
 
 3. Upload the updated content bundle to the cluster. Use either the
-   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or
-   the [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
+   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
-4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default
-   `Block`-mode storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the
-   workaround. Refer to [Create Migration Plans](../vm-migration-assistant/create-migration-plans.md) for guidance.
+4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default `Block`-mode
+   storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the workaround. Refer
+   to [Create Migration Plans](../vm-migration-assistant/create-migration-plans.md) for guidance.
 
-5. Start the migration plan. Confirm that guest conversion completes without the `nbdkit` block-size error, and that
-   the migrated VMs support live migration on the destination storage.
+5. Start the migration plan. Confirm that guest conversion completes without the `nbdkit` block-size error, and that the
+   migrated VMs support live migration on the destination storage.
