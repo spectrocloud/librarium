@@ -75,8 +75,8 @@ Claude Code requests a Claude alias, such as `claude-sonnet-4-5`. To pin every r
 export ANTHROPIC_MODEL=claude-sonnet-4-5
 ```
 
-We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection
-uses HTTPS, so a valid certificate protects your token in transit.
+We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection uses
+HTTPS, so a valid certificate protects your token in transit.
 
 :::warning
 
