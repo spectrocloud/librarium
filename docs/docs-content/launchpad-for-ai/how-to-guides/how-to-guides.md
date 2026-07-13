@@ -20,3 +20,4 @@ you the steps to do it without teaching background concepts.
 | [Deploy a Model](./deploy-a-model.md)               | Deploy an LLM to the cluster and verify it is serving.                          |
 | [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.     |
 | [Use Claude Code](./use-claude-code.md)             | Connect Claude Code to the appliance so a local model serves each request.      |
+| [Use Cursor](./use-cursor.md)                       | Connect Cursor's Ask mode to the appliance through a uniquely named model alias. |
