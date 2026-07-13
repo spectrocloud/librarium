@@ -36,6 +36,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7412 -->
+
+- The [VM Migration Assistant](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) service
+  console now supports authentication with **Custom** OpenID Connect Identity Providers (IdPs), such as Okta or Azure
+  Active Directory, alongside Palette OIDC. To enable OIDC, follow the
+  [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
+  third-party IdP.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
@@ -373,14 +381,6 @@ The following component updates are applicable to this release:
 <!-- https://spectrocloud.atlassian.net/browse/PRM-2688 -->
 
 - [Artifact Studio](../downloads/artifact-studio.md) version 4.9.11 is now available.
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-7412 -->
-
-- The [VM Migration Assistant](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) service
-  console now supports authentication with **Custom** OpenID Connect Identity Providers (IdPs), such as Okta or Azure
-  Active Directory, alongside Palette OIDC. To enable OIDC, follow the
-  [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
-  third-party IdP.
 
 #### Improvements
 
