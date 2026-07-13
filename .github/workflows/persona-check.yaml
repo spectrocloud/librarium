@@ -19,9 +19,19 @@ name: "Persona Check"
 # available (they are withheld from fork-triggered `pull_request` runs). We
 # check out PR head content but only ever read it as text for the LLM — no
 # PR-supplied code is executed. Our own scripts run from the trusted base ref.
+#
+# zizmor flags `pull_request_target` via the `dangerous-triggers` rule (a
+# blanket rule that can't infer our mode-gating). The classic footgun —
+# checking out and executing untrusted PR head under a privileged token — is
+# not present here: the `pull_request_target` (labeled) path stays in "prompt"
+# mode, which never checks out PR head, never pulls Vault/API secrets, and
+# only runs base-ref scripts to post a preview comment. The `issue_comment`
+# path is additionally gated by an OWNER/MEMBER/COLLABORATOR author_association
+# check before it runs. The ignore directive below reflects this — bump or
+# revisit if the labeled path ever needs PR-head content or extra secrets.
 
 on:
-  pull_request_target:
+  pull_request_target: # zizmor: ignore[dangerous-triggers]
     types: [labeled]
   issue_comment:
     types: [created]
