@@ -23,7 +23,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 | **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
 | **Network Adapters** | 2 x 1 Gbps (data and management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
 | **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                             |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | -                                                                                                                                                 |
 
 ## Prerequisites
 
@@ -56,7 +56,19 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
    host.
 
-5. Boot your device using the Launchpad for VMs Appliance ISO.
+5. Boot your device using the Launchpad for VMs Appliance ISO. On the GRand Unified Bootloader (GRUB) menu, allow the
+   Launchpad for VMs appliance to select the **Palette Edge Interactive Installer** boot option automatically
+
+   :::danger
+
+   During the bootstrap process, the TUI performs a pre-installation check that checks all disks for partitions left
+   behind by previous Kairos installations. This helps prevent stale partitions from causing unpredictable installation
+   behavior.
+
+   If any disks are affected, they are pre-selected for wiping; you can select additional disks as well. Wiping disks is
+   optional and must be confirmed on the following screen. Carefully verify the selected disks before proceeding.
+
+   :::
 
 6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
