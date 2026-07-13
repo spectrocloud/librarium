@@ -14,9 +14,9 @@ This page provides troubleshooting guidance for common scenarios you may encount
 ## Scenario - VM Migration Fails During Guest Conversion on Block-Based Storage
 
 When you use the [VM Migration Assistant](../vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to a VMO
-cluster backed by a block-based Container Storage Interface (CSI) — such as the LINSTOR/DRBD storage used by the
-Launchpad for VMs appliance — migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan
-reports only a generic message:
+cluster backed by a block-based Container Storage Interface (CSI), such as the LINSTOR/DRBD storage used by the
+Launchpad for VMs appliance, migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan
+reports only a generic message. The following text is an example of the message.
 
 ```text
 error: { phase: "ConvertGuest", reasons: ["Guest conversion failed. See pod logs for details."] }
@@ -86,7 +86,7 @@ cluster's Zot registry. The updated image contains a newer `nbdkit` that handles
 block-based storage such as LINSTOR/DRBD.
 
 1. Contact your Spectro Cloud support representative to obtain the updated `forklift-virt-v2v` content bundle. The
-   bundle replaces the existing image at the following reference:
+   bundle replaces the existing image at the following reference.
 
    ```text
    us-docker.pkg.dev/palette-images/third-party/vm-migration-assistant/forklift-virt-v2v:4.9.2
