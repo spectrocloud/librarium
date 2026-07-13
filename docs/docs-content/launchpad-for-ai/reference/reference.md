@@ -19,3 +19,4 @@ is configured, not how to accomplish a task.
 | [System Requirements](./system-requirements.md)                   | Minimum hardware, software, network, and operating system prerequisites.        |
 | [Hardware Requirements](./hardware-requirements.md)               | GPU and multi-node cluster sizing for the appliance.                            |
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration. |
+| [Claude Code Configuration](./claude-code-reference.md)           | Environment variables and values for pointing Claude Code at the appliance.     |
