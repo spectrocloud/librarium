@@ -23,7 +23,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 | **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
 | **Network Adapters** | 2 x 1 Gbps (data and management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
 | **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | -                             |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | -                                                                                                                                                 |
 
 ## Prerequisites
 
