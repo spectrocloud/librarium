@@ -71,7 +71,7 @@ jobs:
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6 as of May 6, 2026
 
       - name: Setup Node.js Environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -142,7 +142,7 @@ jobs:
     steps:
       - name: Check out repository code
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6 as of May 6, 2026
 
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -196,7 +196,7 @@ jobs:
     steps:
     - name: Check out repository code
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6 as of May 6, 2026
 
     - name: Setup Node.js environment
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -245,7 +245,7 @@ jobs:
 
     - name: Checkout GitHub Pages Branch
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6 as of May 6, 2026
       with:
         ref: gh-pages  
 
