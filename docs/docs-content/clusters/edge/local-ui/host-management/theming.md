@@ -99,7 +99,7 @@ console for all Edge hosts of your organization.
     will serve as the background for your logo. The **brand** color controls the color of buttons and checkboxes in the
     UI. The following image displays the default logo, brand, and sidebar color.
 
-    ![A screenshot of Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
+    ![A screenshot of Local UI showing the elements that can be adjusted in themes](/cluster_edge_emc_theming_4-9.webp)
 
     :::info
 
