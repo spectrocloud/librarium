@@ -19,7 +19,7 @@ provisioning.
 
 ## Storage Providers
 
-VMO does not assume a specific storage backend. It works with any Kubernetes StorageClass that supports dynamic
+VMO does not require a specific storage backend. It works with any Kubernetes StorageClass that supports dynamic
 provisioning.
 
 The default appliance backend is Piraeus/LINSTOR, which provides:
@@ -44,13 +44,13 @@ StorageClass operations.
 
 ## Storage Pools
 
-Storage pools are provider-specific constructs. For Piraeus/LINSTOR, VMO supports the following storage pool operations.
+Storage pools are provider-specific. For Piraeus/LINSTOR, VMO supports the following storage pool operations.
 
-| Operation            | Description                                                                                                                                                 |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Create**           | Create a new storage pool with a name and one or more block devices.                                                                                        |
-| **Delete**           | Remove a storage pool. You can remove a pool only when it is empty.                                                                                         |
-| **Device selection** | When creating a pool, select block devices from cluster nodes. The `vmo-node-agent` DaemonSet discovers physical block devices on each node and lists them. |
+| Operation            | Description                                                                                                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Create**           | Create a new storage pool with a name and one or more block devices.                                                                                                             |
+| **Delete**           | Remove a storage pool. You can remove a pool only when it is empty.                                                                                                              |
+| **Device selection** | When creating a pool, select block devices from cluster nodes. The `vmo-node-agent` DaemonSet discovers physical block devices on each node and lists them in the device picker. |
 
 :::info
 
@@ -74,20 +74,21 @@ The exclusion covers the full parent disk, not just the mounted partition. For e
 [Containerized Data Importer (CDI)](https://github.com/kubevirt/containerized-data-importer) resources that back VM
 disks. VMO supports the following DataVolume sources.
 
-| Source     | Description                                       |
-| ---------- | ------------------------------------------------- |
-| **Blank**  | An empty disk of the specified size.              |
-| **URL**    | Import from an HTTP or HTTPS URL.                 |
-| **Clone**  | Clone from an existing PVC or DataVolume.         |
-| **Upload** | Upload from a browser. Uses the CDI upload proxy. |
+| Source       | Description                                       |
+| ------------ | ------------------------------------------------- |
+| **Upload**   | Upload from a browser. Uses the CDI upload proxy. |
+| **URL**      | Import from an HTTP or HTTPS URL.                 |
+| **Blank**    | An empty disk of the specified size.              |
+| **Clone**    | Clone from an existing PVC or DataVolume.         |
+| **Registry** | Import from a container registry.                 |
 
 VMO lists DataVolumes on **Infrastructure** > **Storage**, where you can create, resize, and delete them.
 
 When creating a DataVolume from **Upload**, **URL**, or **Registry**, use the **Image** checkbox to control how VMO
 treats the volume during VM creation.
 
-- **Cleared**: VMO treats the DataVolume as installer media and attaches it as a CD-ROM drive in the VM.
-- **Selected**: VMO treats the DataVolume as a ready-to-boot disk or template image and clones it as a VM boot disk.
+- **Cleared**: VMO treats the DataVolume as an ISO for a CD-ROM installer.
+- **Selected**: VMO treats the DataVolume as a disk image for a boot disk or template source.
 
 ## Persistent Volume Claims
 
