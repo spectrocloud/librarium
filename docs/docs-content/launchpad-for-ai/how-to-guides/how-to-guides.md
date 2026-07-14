@@ -21,3 +21,4 @@ you the steps to do it without teaching background concepts.
 | [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.      |
 | [Use Claude Code](./use-claude-code.md)             | Connect Claude Code to the appliance so a local model serves each request.       |
 | [Use Cursor](./use-cursor.md)                       | Connect Cursor's Ask mode to the appliance through a uniquely named model alias. |
+| [Use OpenAI Codex](./use-codex.md)                  | Connect the OpenAI Codex CLI to the appliance with a custom model provider.       |
