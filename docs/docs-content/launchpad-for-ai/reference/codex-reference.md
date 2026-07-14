@@ -32,7 +32,7 @@ wire_api = "responses"
 
 ## Fields
 
-| Field            | Description                                                                                                                               | Example value                          |
+| **Field**        | **Description**                                                                                                                           | **Example value**                      |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | `model`          | The id of a model the appliance serves. Use a real served model id, not `auto`, because the Responses API passes the model to the engine. | `glm-5.2`                              |
 | `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                                                     | `lpai`                                 |
