@@ -35,10 +35,31 @@ tags: ["release-notes"]
   [Override Cluster API (CAPI) Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
 #### Improvements
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
 
--   [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) for AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
+- [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) 
+  for AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7412 -->
+- The [VM Migration Assistant](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) service
+  console now supports authentication with **Custom** OpenID Connect Identity Providers (IdPs), such as Okta or Azure
+  Active Directory, alongside Palette OIDC. To enable OIDC, follow the
+  [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
+  third-party IdP.
 
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
+
+- The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x 
+  series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the
+  [EC command](../automation/palette-cli/commands/ec.md) of the [Palette CLI](../automation/palette-cli/palette-cli.md).
+
+  If you have already migrated to an Enterprise Cluster installation, no action is required.
+
+  If your Palette installation was deployed in quick start mode, migrate to Enterprise Cluster by following the process
+  outlined in the
+  [legacy Palette 3.x installation guide](https://version-3-4.legacy.docs.spectrocloud.com/enterprise-version/install-palette/install-on-vmware/install/).
 
 ### Edge
 
@@ -147,7 +168,108 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## July 9, 2026 - Release 4.9.27
+
+<!-- PATCH RELEASE TICKET: DOC-2985 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7141 -->
+
+- Fixed an issue that prevented new [CloudStack](/clusters/data-center/cloudstack/create-manage-cloudstack-clusters/)
+  clusters from being provisioned using a CloudStack [PCG](/clusters/pcg/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9048 -->
+
+- Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly select the installer boot media
+  for disk-wiping when booting an Edge host from a physical USB drive flashed with the installer ISO.
+
+## July 3, 2026 - Component Updates {#component-updates-2026-27}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2962 -->
+<!-- RELEASE DATE: July 3, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.24 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.12 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.7 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.24.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.12  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.7  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.7  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.24  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.24  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-2962. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-71 -->
+
+- Palette now generates build attestation documents for all packs as part of the secure supply chain initiative.
+  Attestation records when and how software was produced, on which systems, and by which users, providing a complete
+  audit trail of the software development lifecycle.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-81 -->
+
+- Palette now generates a Software Bill of Materials (SBOM) for all downloadable artifacts. Each downloadable component
+  includes an associated SBOM in CycloneDX format, augmented with metadata such as author, supplier, repository
+  location, license, and copyright. SBOMs are signed and can be downloaded from
+  [Artifact Studio](../downloads/artifact-studio.md) and reviewed before deploying software to your environment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-759 -->
+
+- SBOMs and attestations for packs are now available in [Artifact Studio](/downloads/artifact-studio/). Users can
+  download the SBOM for every appliance and pack directly from the Artifact Studio interface. Attestation documents are
+  built with each image and are accessible once packs are uploaded to registries.
+
+### Bug Fixes
+
+  <!-- https://spectrocloud.atlassian.net/browse/PLT-2286 -->
+
+- Fixed a Terraform issue that caused newly added
+  [profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  to be silently dropped when bumping the `version` of a `spectrocloud_cluster_profile` resource with the
+  `immutable-clusterprofiles` feature preview enabled. The `terraform apply` operation reported success and created the
+  new profile version, but the newly declared variables did not appear in Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2288 -->
+
+- Fixed a Terraform issue where the `skip_k8s_upgrade` field was incorrectly sent for MAAS, vSphere, and Edge Native
+  cluster worker machine pools, causing an API rejection. This field is only supported for AWS clusters, and the
+  provider now correctly omits it for non-AWS cloud types.
+
+<!-- END COMPONENT UPDATES BODY: DOC-2962. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-2962. DO NOT DELETE. -->
+
+| Pack Name                                                                                                    | Layer   | Non-FIPS           | FIPS               | New Version |
+| ------------------------------------------------------------------------------------------------------------ | ------- | ------------------ | ------------------ | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" />                                     | `addon` | :white_check_mark: | :x:                | 10.0.0      |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" />         | `addon` | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-antrea" url="/integrations/packs/?pack=cni-antrea" />                               | `cni`   | :white_check_mark: | :x:                | 2.6.2       |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" />           | `cni`   | :x:                | :white_check_mark: | 1.21.2      |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" />                               | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" />                   | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" />                       | `cni`   | :x:                | :white_check_mark: | 1.19.4      |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x:                | 2.7.0       |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" />                                   | `addon` | :white_check_mark: | :white_check_mark: | 0.43.0      |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" />                                         | `addon` | :white_check_mark: | :x:                | 1.30.2      |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" />                   | `addon` | :white_check_mark: | :x:                | 29.14.0     |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" />             | `addon` | :white_check_mark: | :x:                | 87.4.0      |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" />                     | `cni`   | :white_check_mark: | :x:                | 3.32.1      |
+
+<!-- END PACKS LIST BODY: DOC-2962. DO NOT DELETE. -->
+
 ## July 1, 2026 - Release 4.9.24
+
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -155,10 +277,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
 
-- While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
-  all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
-  installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
-  disks is optional and must be confirmed on the follow-up screen.
+- While bootstrapping Edge hosts, the Palette Edge Interactive Installer TUI now checks all disks for partitions left
+  behind by previous installations, preventing stale partitions from causing unpredictable installation behavior.
+  Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping disks is optional and must
+  be confirmed on the follow-up screen.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 
@@ -177,6 +299,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ## June 29, 2026 - Release 4.9.23
 
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9014 -->
@@ -185,7 +311,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   variables for non-VMO Edge clusters, blocking cluster updates when weak passwords were present. Password strength
   checks are now restricted to VMO profile variables only, restoring the update behavior from previous Palette versions.
 
-## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
+## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.22}
+
+The following component updates are applicable to this release:
+
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -784,6 +914,11 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 ## June 11, 2026 - Release 4.9.18
 
+The following component updates are applicable to this release:
+
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
 ### Bug Fixes
@@ -830,7 +965,12 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 ## June 8, 2026 - Release 4.9.16
 
-### Breaking Changes {#breaking-changes-4-9-x}
+The following component updates are applicable to this release:
+
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+
+### Breaking Changes {#breaking-changes-4-9-16}
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
 
@@ -950,7 +1090,7 @@ resources would repeatedly show Terraform plan differences for sensitive cluster
 
 <!-- prettier-ignore-end -->
 
-## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
+## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-14}
 
 ### Security Notices
 
@@ -1562,7 +1702,7 @@ The following components have been updated for Palette version 4.9.5.
 
 <!-- prettier-ignore-end -->
 
-## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
+## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-5}
 
 The following component updates are applicable to this release:
 

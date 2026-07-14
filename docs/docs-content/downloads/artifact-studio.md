@@ -26,8 +26,11 @@ CLI.
 
 Following are the main use cases:
 
-- Install Palette Enterprise (content bundle, ISO, or Helm chart).
-- Install Palette VerteX (content bundle, ISO, or Helm chart).
+- Install Palette Enterprise (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
+- Install Palette VerteX (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
+- Install PaletteAI (content bundle, ISO, or MOK key for Secure Boot).
+- Install PaletteAI VerteX (content bundle, ISO, or MOK key for Secure Boot).
+- Install Launchpad for VMs (content bundle, ISO, or MOK key for Secure Boot).
 - Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
 - Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and
@@ -36,6 +39,8 @@ Following are the main use cases:
   about PaletteAI.
 - Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get
   started immediately.
+- Download Software Bill of Materials (SBOMs) for appliances and packs. Each image contains attestations that can be
+  viewed once the pack is uploaded to a registry.
 
 :::preview
 
@@ -375,7 +380,7 @@ To verify the integrity and authenticity of your artifacts, you can do a checksu
 ## Upload Packs to Management Appliances
 
 For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate
-guide:
+guide. Each image contains attestations that can be viewed once the pack is uploaded to a registry.
 
 - [Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette)
 
