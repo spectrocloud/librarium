@@ -1,0 +1,8 @@
+{
+  "label": "Tutorials",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "paletteai-inference-launchpad/tutorials/tutorials"
+  }
+}
