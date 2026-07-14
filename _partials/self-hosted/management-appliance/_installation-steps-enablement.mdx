@@ -191,6 +191,40 @@ partial_name: installation-steps-enablement
     | **Root Domain (Optional)**                    | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). If using an external registry, adjust this to the appropriate domain. | String                | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Mongo Replicas** | The number of MongoDB replicas to create for the cluster. The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the MongoDB database. _This value must match the **CSI Placement Count** value._ | Integer               | **`3`**                                   |
 
+    #### DRBD Kernel Module Loading
+
+    The {props.app} uses the Piraeus Container Storage Interface (CSI), which requires the Distributed Replicated Block Device (DRBD) kernel module on each node. The `drbd-module-loader` init container in the `linstor-satellite` pod loads this module using the mode configured by the `LB_HOW` environment variable in the `piraeus-operator` pack. Starting with {props.version} 4.9.a, the following modes are available.
+
+    | **Value**                        | **Description**                                                                                                | **Requirements**                                                                                    |
+    | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+    | **`shipped_modules`** _(Default)_ | Installs pre-built, pre-signed DRBD `.deb` packages from the container image.                                        | Compatible with Secure Boot.                                                                        |
+    | **`compile`**                    | Builds the DRBD kernel module from source on the target node at install time using Dynamic Kernel Module Support (DKMS). | The OS image must include kernel headers that match the running kernel. Not compatible with Secure Boot. |
+
+    :::warning
+
+    Do not set `LB_HOW` to `compile` on nodes with Secure Boot enabled. Modules compiled on the node are unsigned, and the kernel refuses to load them. This causes the `drbd-module-loader` init container to fail and the {props.app} installation to stall.
+
+    :::
+
+    Most deployments should leave `LB_HOW` at the default value of `shipped_modules`. To override the value, edit the `piraeus-operator` pack YAML in the cluster profile before you deploy the cluster. Locate the `LinstorSatelliteConfiguration` custom resource and update the `drbd-module-loader` init container.
+
+    ```yaml
+    apiVersion: piraeus.io/v1
+    kind: LinstorSatelliteConfiguration
+    metadata:
+      name: custom-loader-image
+    spec:
+      podTemplate:
+        spec:
+          initContainers:
+            - name: drbd-module-loader
+              env:
+                - name: LB_HOW
+                  value: "shipped_modules"
+    ```
+
+    For more information about DRBD module loading modes and the container image requirements for `compile` mode, refer to the [Piraeus CSI](/integrations/piraeus-csi) integration page.
+
 38. Click **Next** when you are done.
 
 39. In **Cluster Config**, configure the following options.

@@ -15,7 +15,7 @@ following modes.
 | ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | Palette CLI                              | VMware                   | Install Palette in VMware environment.                                | [Install on VMware](install-on-vmware/install.md)                            |
 | Helm Chart                               | Kubernetes               | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](install-on-kubernetes/install.md)                    |
-| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS | Install Palette using the Palette Management Appliance ISO file.      | [Install with Palette Management Appliance](palette-management-appliance.md) |
+| Palette Management Appliance             | VMware, Bare Metal, MAAS | Install Palette using the Palette Management Appliance ISO file.      | [Install with Palette Management Appliance](palette-management-appliance.md) |
 
 ## Airgap Installation
 
@@ -26,7 +26,7 @@ You can also install Palette in an airgap environment. For more information, ref
 | ---------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | Palette CLI                              | VMware                         | Install Palette in VMware environment using your own OCI registry server.                                              | [VMware Airgap Install](./install-on-vmware/airgap-install/airgap-install.md)         |
 | Helm Chart                               | Kubernetes                     | Install Palette using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Kubernetes Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
-| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS       | Install Palette using the Palette Management Appliance ISO file.                                                       | [Install with Palette Management Appliance](palette-management-appliance.md)          |
+| Palette Management Appliance             | VMware, Bare Metal, MAAS       | Install Palette using the Palette Management Appliance ISO file.                                                       | [Install with Palette Management Appliance](palette-management-appliance.md)          |
 
 The next sections provide sizing guidelines we recommend you review before installing Palette in your environment.
 

@@ -15,7 +15,7 @@ available in the following modes.
 | --------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Palette CLI                             | VMware                   | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)                        |
 | Helm Chart                              | Kubernetes               | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md)                |
-| <TpBadge /> VerteX Management Appliance | VMware, Bare Metal, MAAS | Install Palette VerteX using the VerteX Management Appliance ISO file.       | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
+| VerteX Management Appliance             | VMware, Bare Metal, MAAS | Install Palette VerteX using the VerteX Management Appliance ISO file.       | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
 
 ## Airgap Installation
 
@@ -26,7 +26,7 @@ You can also install Palette VerteX in an airgap environment. For more informati
 | --------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Palette CLI                             | VMware                         | Install Palette VerteX in VMware environment using your own OCI registry server.                                              |
 | Helm Chart                              | Kubernetes                     | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
-| <TpBadge /> VerteX Management Appliance | VMware, Bare Metal, MAAS       | Install Palette VerteX using the VerteX Management Appliance ISO file.                                                        | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
+| VerteX Management Appliance             | VMware, Bare Metal, MAAS       | Install Palette VerteX using the VerteX Management Appliance ISO file.                                                        | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
 
 The next sections describe specific requirements for installing Palette VerteX.
 
