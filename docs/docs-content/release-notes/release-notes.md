@@ -35,12 +35,14 @@ tags: ["release-notes"]
   [Override Cluster API (CAPI) Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
 #### Improvements
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
 
-- [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) 
-  for AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
+- [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) for
+  AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7412 -->
+
 - The [VM Migration Assistant](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) service
   console now supports authentication with **Custom** OpenID Connect Identity Providers (IdPs), such as Okta or Azure
   Active Directory, alongside Palette OIDC. To enable OIDC, follow the
@@ -51,7 +53,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
 
-- The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x 
+- The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x
   series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the
   [EC command](../automation/palette-cli/commands/ec.md) of the [Palette CLI](../automation/palette-cli/palette-cli.md).
 
