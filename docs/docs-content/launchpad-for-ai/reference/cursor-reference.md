@@ -18,7 +18,7 @@ them, refer to [Use Launchpad for AI with Cursor](../how-to-guides/use-cursor.md
 
 Set the following in Cursor under **Settings** > **Models**.
 
-| Setting                      | Description                                                                                      | Example value                          |
+| **Setting**                  | **Description**                                                                                  | **Example value**                      |
 | ---------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------- |
 | **Override OpenAI Base URL** | The Launchpad for AI inference endpoint. Use the appliance address with the `/v1` path appended. | `https://amd.spectrocloud.com:8443/v1` |
 | **OpenAI API Key**           | The API token generated in the console. It begins with `lpai_`.                                  | `lpai_YOUR_TOKEN`                      |
@@ -47,12 +47,12 @@ the appliance's `/v1/models` API response.
 
 ## Supported Modes
 
-| Cursor mode | Supported | Notes                                                        |
-| ----------- | --------- | ------------------------------------------------------------ |
-| Ask (chat)  | Yes       | Routes to the appliance through the model alias.             |
-| Agent       | No        | Locked to Cursor's own models for bring-your-own-key setups. |
-| Edit        | No        | Locked to Cursor's own models for bring-your-own-key setups. |
-| Tab         | No        | Locked to Cursor's own models for bring-your-own-key setups. |
+| **Cursor mode** | **Supported** | **Notes**                                                    |
+| --------------- | ------------- | ------------------------------------------------------------ |
+| Ask (chat)      | Yes           | Routes to the appliance through the model alias.             |
+| Agent           | No            | Locked to Cursor's own models for bring-your-own-key setups. |
+| Edit            | No            | Locked to Cursor's own models for bring-your-own-key setups. |
+| Tab             | No            | Locked to Cursor's own models for bring-your-own-key setups. |
 
 The unsupported modes are a limitation of Cursor's bring-your-own-key support, not of the appliance.
 
