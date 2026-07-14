@@ -66,8 +66,8 @@ field, refer to [OpenAI Codex Configuration](../reference/codex-reference.md).
    Set `model` to a model the appliance serves, such as `glm-5.2`. Do not use `auto`, because the Responses API passes
    the model straight to the engine. Set `base_url` to your appliance address with the `/v1` path appended.
 
-2. Export your API token in the environment variable named by `env_key`. This sets the token for the current shell
-   session. To persist it, add the line to your shell profile.
+2. Set the environment variable named in `env_key` to your API token so that Codex can authenticate. In this example,
+   `env_key` is `LPAI_KEY`. Replace `<lpai-token>` with the token you copied.
 
    ```bash
    export LPAI_KEY=<lpai-token>
