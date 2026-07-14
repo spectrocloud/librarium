@@ -16,7 +16,7 @@ set them, refer to [Use Launchpad for AI with Claude Code](../how-to-guides/use-
 
 ## Environment Variables
 
-| Variable               | Description                                                                                                                                 | Example value                       |
+| **Variable**           | **Description**                                                                                                                             | **Example value**                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | `ANTHROPIC_BASE_URL`   | The Launchpad for AI inference endpoint. Use the appliance address with no path. Claude Code appends `/v1/messages`.                        | `https://amd.spectrocloud.com:8443` |
 | `ANTHROPIC_AUTH_TOKEN` | The API token generated in the console. It begins with `lpai_`. `ANTHROPIC_API_KEY` is also accepted.                                       | `lpai_YOUR_TOKEN`                   |
