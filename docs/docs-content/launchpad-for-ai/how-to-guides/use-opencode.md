@@ -46,7 +46,8 @@ create a new one.
 ## Configure OpenCode
 
 OpenCode connects to any OpenAI-compatible endpoint through a custom provider. Add a provider for the appliance to the
-OpenCode configuration file.
+OpenCode configuration file. For a description of each field, refer to
+[OpenCode Configuration](../reference/opencode-reference.md).
 
 1. Add the following provider to the OpenCode configuration file at `~/.config/opencode/opencode.json`. Replace
    `<appliance-host>` with your appliance address and `<lpai-token>` with the token you copied.
@@ -122,6 +123,7 @@ response.
 
 ## Next Steps
 
-To connect a different coding tool, refer to [Use Launchpad for AI with Claude Code](./use-claude-code.md),
+To look up each configuration value, refer to [OpenCode Configuration](../reference/opencode-reference.md). To connect a
+different coding tool, refer to [Use Launchpad for AI with Claude Code](./use-claude-code.md),
 [Use Launchpad for AI with Cursor](./use-cursor.md), or [Use Launchpad for AI with OpenAI Codex](./use-codex.md). To
 deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md).
