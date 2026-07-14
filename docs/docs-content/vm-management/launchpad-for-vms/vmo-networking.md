@@ -8,8 +8,8 @@ sidebar_position: 9
 tags: ["vmo", "launchpad for vms", "networking", "design"]
 ---
 
-Networking for the VMO use case requires extra care compared to a regular Kubernetes cluster. In most cases, VMs need
-to be accessible on existing VLANs. Accessing existing VLANs requires bypassing the typical Kubernetes pod networking
+Networking for the VMO use case requires extra care compared to a regular Kubernetes cluster. In most cases, VMs need to
+be accessible on existing VLANs. Accessing existing VLANs requires bypassing the typical Kubernetes pod networking
 stack.
 
 For the Launchpad for VMs appliance, Cilium provides the mechanism to achieve that goal. Cilium requires specific host
@@ -126,9 +126,9 @@ addresses to BGP routers.
 You can choose either option depending on the network equipment used. We recommend a dedicated VLAN for end-user access
 to Kubernetes services that VMs do not share.
 
-You can share the same VLAN for VMs and Kubernetes, but this configuration requires extra considerations if this
-VLAN also has the default gateway. The following network configuration on the host, using a total of four NICs in two
-bonds, is suitable for the setup described.
+You can share the same VLAN for VMs and Kubernetes, but this configuration requires extra considerations if this VLAN
+also has the default gateway. The following network configuration on the host, using a total of four NICs in two bonds,
+is suitable for the setup described.
 
 <!-- vale off -->
 
@@ -154,16 +154,16 @@ work with any other type.
 
 The `br0` interface sits on top of the `bond_data` bond interface, which supports only the following bonding modes.
 
-| Bond mode | Description                                                    |
-| --------- | -------------------------------------------------------------- |
-| Mode 1    | `active-backup` (does not require switch configuration)        |
-| Mode 2    | `balance-xor` (requires switch configuration)                  |
-| Mode 4    | `802.3ad` (requires switch LACP configuration)                 |
+| Bond mode | Description                                             |
+| --------- | ------------------------------------------------------- |
+| Mode 1    | `active-backup` (does not require switch configuration) |
+| Mode 2    | `balance-xor` (requires switch configuration)           |
+| Mode 4    | `802.3ad` (requires switch LACP configuration)          |
 
 We recommend `802.3ad` mode for best performance, as this mode fully aggregates the bandwidth of the links.
 
-The other modes (0, 3, 5, and 6) do not support VLAN bridging due to broadcast storms, MAC address rewrites, or poor
-TCP stream performance.
+The other modes (0, 3, 5, and 6) do not support VLAN bridging due to broadcast storms, MAC address rewrites, or poor TCP
+stream performance.
 
 For a four-NIC, two-bond configuration, the four physical network interfaces connect to the physical switch as shown in
 the following example.

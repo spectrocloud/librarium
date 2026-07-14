@@ -17,18 +17,18 @@ do an [initial configuration](./getting-started-wiz.md), and [create your first 
 
 Each device where you install the Launchpad for VMs Appliance ISO must meet the following hardware requirements.
 
-| **Component**        | **Minimum**                                                          | **Recommended**                                                      | **Additional Information**                                                                                             |
-| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD64 CPU with 8 cores                                      | Intel or AMD64 CPU with 8 cores                                      | -                                                                                                                      |
-| **RAM**              | 24 GB                                                                | 256 GB or more                                                       | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                         |
-| **Network Adapters** | 4 x 1 Gbps <br /> (2 bonded for management, 2 bonded for VM data)    | 4 x 10 Gbps <br /> (2 bonded for management, 2 bonded for VM data)   | Cilium bridges VMs onto the data NICs. Review [Network Configuration Considerations](./vmo-networking.md) for details. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                        | Local disk of at least 500 GB for the OS boot                        | -                                                                                                                      |
+| **Component**        | **Minimum**                                                       | **Recommended**                                                    | **Additional Information**                                                                                             |
+| -------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                                    | -                                                                                                                      |
+| **RAM**              | 24 GB                                                             | 256 GB or more                                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                         |
+| **Network Adapters** | 4 x 1 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | 4 x 10 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | Cilium bridges VMs onto the data NICs. Review [Network Configuration Considerations](./vmo-networking.md) for details. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot                      | -                                                                                                                      |
 
 :::info
 
 **Advanced storage configuration.** If only two network adapters are available, you can deploy with two NICs bonded for
-all traffic plus two 16 Gbps Fiber Channel (FC) adapters dedicated to storage. FC-attached storage can also serve as
-raw disks for Piraeus consumption without a CSI driver, though this is not the typical configuration. Refer to
+all traffic plus two 16 Gbps Fiber Channel (FC) adapters dedicated to storage. FC-attached storage can also serve as raw
+disks for Piraeus consumption without a CSI driver, though this is not the typical configuration. Refer to
 [Network Configuration Considerations](./vmo-networking.md) for supported layouts.
 
 :::

@@ -18,10 +18,10 @@ and network attachment definitions you define here.
 
 ## Infrastructure Resources
 
-| **Resource**                  | **Description**                                                                                                                                    |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.                                                            |
-| [Networks](./networking.md)   | Create Network Attachment Definitions that expose bridge, `macvlan`, or SR-IOV networks to VMs, and bulk-create one NAD per VLAN from a range.     |
+| **Resource**                  | **Description**                                                                                                                                |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.                                                        |
+| [Networks](./networking.md)   | Create Network Attachment Definitions that expose bridge, `macvlan`, or SR-IOV networks to VMs, and bulk-create one NAD per VLAN from a range. |
 
 ## Related Workflows
 

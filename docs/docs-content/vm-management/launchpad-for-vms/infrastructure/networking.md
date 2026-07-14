@@ -2,8 +2,8 @@
 sidebar_label: "Networks"
 title: "Networks"
 description:
-  "Manage network attachment definitions and additional network interfaces for virtual machines on the Launchpad for
-  VMs appliance."
+  "Manage network attachment definitions and additional network interfaces for virtual machines on the Launchpad for VMs
+  appliance."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
@@ -45,15 +45,15 @@ a namespace-scoped Kubernetes resource.
 
 3. Configure the following fields.
 
-   | **Field**                               | **Description**                                                                                            |
-   | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-   | **Name**                                | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens.          |
-   | **Namespace**                           | The namespace in which the appliance creates the NAD.                                                      |
-   | **Type**                                | Bridge, `macvlan`, or SR-IOV.                                                                              |
-   | **Bridge name** (Bridge type)           | The name of the Linux bridge on the host.                                                                  |
-   | **Host interface** (`macvlan` type)     | The host network interface to attach to.                                                                   |
-   | **Resource name** (SR-IOV type)         | The SR-IOV device plugin resource.                                                                         |
-   | **VLAN ID** _(Optional)_                | The 802.1Q VLAN tag.                                                                                       |
+   | **Field**                           | **Description**                                                                                   |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
+   | **Name**                            | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens. |
+   | **Namespace**                       | The namespace in which the appliance creates the NAD.                                             |
+   | **Type**                            | Bridge, `macvlan`, or SR-IOV.                                                                     |
+   | **Bridge name** (Bridge type)       | The name of the Linux bridge on the host.                                                         |
+   | **Host interface** (`macvlan` type) | The host network interface to attach to.                                                          |
+   | **Resource name** (SR-IOV type)     | The SR-IOV device plugin resource.                                                                |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag.                                                                              |
 
 ### Bulk Create VLANs
 
@@ -118,10 +118,10 @@ passthrough.
 
 The node detail page shows the following SR-IOV metrics.
 
-| **Metric**         | **Description**                                                     |
-| ------------------ | ------------------------------------------------------------------- |
-| **VFs configured** | The number of Virtual Functions currently active per interface.     |
-| **VFs total**      | The number of Virtual Functions each interface supports.            |
+| **Metric**         | **Description**                                                 |
+| ------------------ | --------------------------------------------------------------- |
+| **VFs configured** | The number of Virtual Functions currently active per interface. |
+| **VFs total**      | The number of Virtual Functions each interface supports.        |
 
 These metrics come from the `vmo-node-agent` DaemonSet, which reads `/sys/class/net/*/device/sriov_numvfs` and
 `/sys/class/net/*/device/sriov_totalvfs`.
