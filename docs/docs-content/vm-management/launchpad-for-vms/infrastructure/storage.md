@@ -113,7 +113,7 @@ data PVC, such as `vmo-manager-data`, and caches the value. VMO uses the detecte
 If VMO does not detect a StorageClass, such as when no bound PVC exists, VMO falls back to the cluster default. When no
 cluster default is configured, you must specify a StorageClass explicitly when creating resources.
 
-:::tip
+:::info
 
 To control the default storage for VM disks, configure the VMO data PVC with the StorageClass you want to use. This PVC
 is the single source of truth for default storage.
