@@ -38,14 +38,14 @@ wire_api = "responses"
 | `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                                                     | `lpai`                                 |
 | `name`           | A display name for the provider.                                                                                                          | `Launchpad`                            |
 | `base_url`       | The appliance inference endpoint, with the `/v1` path appended.                                                                           | `https://amd.spectrocloud.com:8443/v1` |
-| `env_key`        | The name of the environment variable that holds your API token.                                                                          | `LPAI_KEY`                             |
+| `env_key`        | The name of the environment variable that holds your API token.                                                                           | `LPAI_KEY`                             |
 | `wire_api`       | The API Codex uses. Codex uses the Responses API, so set this to `responses`.                                                             | `responses`                            |
 
 ## Endpoint URL
 
 Set `base_url` to your appliance's address, the same host you use to reach the console, with `/v1` appended. The gateway
-serves the Responses API at `/v1/responses`, and Codex appends the `/responses` path itself, so `base_url` ends at `/v1`.
-If you do not know the address, ask the administrator who set up the appliance.
+serves the Responses API at `/v1/responses`, and Codex appends the `/responses` path itself, so `base_url` ends at
+`/v1`. If you do not know the address, ask the administrator who set up the appliance.
 
 ## API Token
 
