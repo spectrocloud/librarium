@@ -27,22 +27,7 @@ the Codex configuration file, and confirm the connection.
 
 ## Generate an API Token
 
-If an administrator already gave you an API token, skip to [Configure Codex](#configure-codex).
-
-1. Open the appliance console in a browser and sign in.
-
-2. From the left main menu, select **Access & Policy** > **Users**.
-
-3. Create a token.
-
-4. Copy the token when the console reveals it. The token begins with `lpai_`.
-
-:::warning
-
-The console shows the token only once. Copy it now, because you cannot view it again. If you lose it, revoke the token
-and create a new one.
-
-:::
+<PartialsComponent category="launchpad-for-ai" name="generate-api-token" />
 
 ## Configure Codex
 
@@ -97,11 +82,7 @@ request.
 
 ## Request Routing and Quotas
 
-Requests you send through the appliance are subject to the routing rule and quota configured for your API token. If an
-operator configured a routing rule for your token, the appliance can redirect a request to a frontier model instead of a
-local one. Token quotas apply per API token, and when a token exhausts its quota, the appliance returns an HTTP `429`
-response.
-{/* TODO: link to the intelligent routing how-to and the token quotas and metering reference once they exist */}
+<PartialsComponent category="launchpad-for-ai" name="request-routing-and-quotas" />
 
 ## Next Steps
 
