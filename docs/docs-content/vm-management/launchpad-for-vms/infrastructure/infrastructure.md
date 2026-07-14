@@ -14,13 +14,14 @@ to. VMO surfaces these Kubernetes constructs through dedicated UI workflows, whi
 underlying resources when you need advanced configuration.
 
 Configure these resources before or while creating VMs. The VM creation wizard draws on the namespaces, StorageClasses,
-and Network Attachment Definitions (NADs) you define here.
+and network attachment definitions you define here.
 
 ## Infrastructure Resources
 
-| **Resource**                  | **Description**                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
-| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges. |
+| **Resource**                  | **Description**                                                                                                                                    |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.                                                            |
+| [Networks](./networking.md)   | Create Network Attachment Definitions that expose bridge, `macvlan`, or SR-IOV networks to VMs, and bulk-create one NAD per VLAN from a range.     |
 
 ## Related Workflows
 
