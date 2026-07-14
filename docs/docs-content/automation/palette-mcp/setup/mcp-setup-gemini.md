@@ -105,7 +105,8 @@ You can now use the Palette MCP server with the Gemini CLI.
 
 :::info
 
-To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `settings.json` after the image name. By default, the server starts in read-only mode.
+To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in
+`settings.json` after the image name. By default, the server starts in read-only mode.
 
 :::
 

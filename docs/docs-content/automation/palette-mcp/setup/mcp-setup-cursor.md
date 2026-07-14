@@ -78,7 +78,8 @@ You can now use the Palette MCP server with Cursor.
 
 :::info
 
-To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `mcp.json` after the image name. By default, the server starts in read-only mode.
+To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `mcp.json`
+after the image name. By default, the server starts in read-only mode.
 
 :::
 

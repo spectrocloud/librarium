@@ -77,7 +77,9 @@ The `read_cluster_profiles` tool lists cluster profiles. The `read_clusters` too
 
 ## Read Cluster Status
 
-The `read_cluster_status` tool returns the state, conditions, and other status details for a single cluster. It is the recommended polling tool after a `create_cluster` or `delete_cluster` call, because a state-only projection costs a single API call.
+The `read_cluster_status` tool returns the state, conditions, and other status details for a single cluster. It is the
+recommended polling tool after a `create_cluster` or `delete_cluster` call, because a state-only projection costs a
+single API call.
 
 1. Open your MCP client.
 
@@ -118,8 +120,8 @@ cluster, one edge host, or a recent tenant-wide feed.
 
 1. Open your MCP client.
 
-2. Send a query asking for events. For example, you can ask "Show me the last 20 error events for the
-   `<cluster-name>` cluster."
+2. Send a query asking for events. For example, you can ask "Show me the last 20 error events for the `<cluster-name>`
+   cluster."
 
    Replace the placeholder with your cluster name.
 
@@ -132,12 +134,12 @@ cluster, one edge host, or a recent tenant-wide feed.
 
 ## Manage Projects, Teams, and Users
 
-The `read_projects`, `read_teams`, and `read_users` tools return project, team, and user records. The corresponding `create_*`, `update_*`, and `delete_*` tools mutate those records when the server runs with `--allow-write`.
+The `read_projects`, `read_teams`, and `read_users` tools return project, team, and user records. The corresponding
+`create_*`, `update_*`, and `delete_*` tools mutate those records when the server runs with `--allow-write`.
 
 1. Open your MCP client.
 
-2. Send a query asking to create a project. For example, you can ask "Create a Palette project named
-   `<project-name>`."
+2. Send a query asking to create a project. For example, you can ask "Create a Palette project named `<project-name>`."
 
    Replace the placeholder with your cluster name.
 

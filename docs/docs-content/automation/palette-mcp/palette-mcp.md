@@ -17,16 +17,19 @@ The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) wra
 to use natural language to perform actions on resources. The MCP server is a powerful automation tool that enables LLMs
 to interact with Palette consistently without having to understand the complete Palette API.
 
-The Palette MCP server ships as a container image and as a native binary for macOS and Linux, and lets you interact with the following Palette resources:
+The Palette MCP server ships as a container image and as a native binary for macOS and Linux, and lets you interact with
+the following Palette resources:
 
-- List, filter, and read status and observability data for clusters, along with the option to create, update, and
-  delete them.
+- List, filter, and read status and observability data for clusters, along with the option to create, update, and delete
+  them.
 - List, filter, create, and delete cluster profiles.
 - List, create, update, and delete projects, teams, and users.
 - List and filter packs, registries, cloud accounts, and edge hosts.
 - Read component events per cluster, per edge host, or tenant-wide.
 
-The server operates in read-only mode by default. Write tools, such as create, update, and delete, are gated behind the `--allow-write` startup flag. Delete tools additionally require a typed-name confirmation. For the full tool catalog, refer to [Palette MCP Server Operations](./palette-mcp-operations.md).
+The server operates in read-only mode by default. Write tools, such as create, update, and delete, are gated behind the
+`--allow-write` startup flag. Delete tools additionally require a typed-name confirmation. For the full tool catalog,
+refer to [Palette MCP Server Operations](./palette-mcp-operations.md).
 
 :::tip
 
