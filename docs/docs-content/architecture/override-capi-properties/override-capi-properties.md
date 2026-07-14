@@ -8,10 +8,6 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration"]
 ---
 
-:::preview
-
-:::
-
 Palette uses [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) and its cloud-specific provider extensions to
 provision and manage Kubernetes clusters. When provisioning a cluster, Palette populates only a curated subset of the
 properties supported by the underlying CAPI objects. For most use cases, this is sufficient. However, some advanced or

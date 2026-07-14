@@ -36,6 +36,11 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
+
+- [Overriding Cluster API (CAPI) properties](../architecture/override-capi-properties/override-capi-properties.md) for
+  AWS, Azure, and CloudStack clusters has exited Tech Preview and is now ready for production workloads.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7412 -->
 
 - The [VM Migration Assistant](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) service
