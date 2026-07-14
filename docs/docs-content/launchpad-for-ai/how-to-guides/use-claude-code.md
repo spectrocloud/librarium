@@ -26,22 +26,7 @@ the appliance with two environment variables, and confirm the connection.
 
 ## Generate an API Token
 
-If an administrator already gave you an API token, skip to [Configure Claude Code](#configure-claude-code).
-
-1. Open the appliance console in a browser and sign in.
-
-2. From the left main menu, select **Access & Policy** > **Users**.
-
-3. Create a token.
-
-4. Copy the token when the console reveals it. The token begins with `lpai_`.
-
-:::warning
-
-The console shows the token only once and stores only a hash of it. Copy it now. If you lose it, revoke the token and
-create a new one.
-
-:::
+<PartialsComponent category="launchpad-for-ai" name="generate-api-token" />
 
 ## Configure Claude Code
 
@@ -101,10 +86,9 @@ CC_OK
 A reply confirms that the base URL, token, and model routing all work. To confirm which endpoint and credential the
 session uses, run the `/status` command in Claude Code and review the **Anthropic base URL** and **Auth token** lines.
 
-## Token Quotas
+## Request Routing and Quotas
 
-If requests return an HTTP `429` response, you have exceeded your token quota. Wait for the quota window to reset, or
-ask an operator to raise your limit. {/* TODO: link once the token quotas and metering reference page exists */}
+<PartialsComponent category="launchpad-for-ai" name="request-routing-and-quotas" />
 
 ## Next Steps
 
