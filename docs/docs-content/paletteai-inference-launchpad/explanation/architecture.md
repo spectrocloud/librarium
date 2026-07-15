@@ -47,6 +47,9 @@ name a model falls back to the default model. When you change the default model,
 place. The gateway does not restart, and it does not drain requests that are in progress. Requests that the gateway
 already routed continue on their assigned model, and the new default applies only to later requests.
 
+Before it routes a request, the gateway authenticates the calling client from its API key and enforces that client's
+quotas. For how clients, API keys, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
+
 ## Network Topology
 
 ## Data Residency and Isolation
