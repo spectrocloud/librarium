@@ -35,6 +35,14 @@ model provider to the Codex configuration file, and confirm the connection.
 Codex uses the Responses API, so you add a custom model provider that points at the appliance. For a description of each
 field, refer to [OpenAI Codex Configuration](../reference/codex-reference.md).
 
+:::tip
+
+The console can generate a starter version of this configuration for you. Select **Connect coding agent** and open the
+**Codex** tab to copy a `config.toml` snippet pre-filled with your appliance's endpoint. Review the model and provider
+values against the steps below before you save it.
+
+:::
+
 1. Add the following custom provider to the Codex configuration file at `~/.codex/config.toml`. Replace
    `<appliance-host>` with your appliance address.
 
@@ -58,6 +66,8 @@ field, refer to [OpenAI Codex Configuration](../reference/codex-reference.md).
    ```bash
    export LPAI_KEY=<lpai-token>
    ```
+
+{/* NEEDS REVIEW: this guide says `model` must be a real served id (not an alias) because the Responses API passes the model straight to the engine, but the console's "Connect coding agent" > Codex snippet sets `model = "claude-opus-4-8"`, a tier-map alias. Confirm with an SME whether the tier map resolves aliases over the Responses API. */}
 
 ## Verify the Connection
 

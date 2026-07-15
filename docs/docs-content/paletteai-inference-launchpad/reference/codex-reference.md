@@ -64,6 +64,8 @@ Codex sends the value of `model` straight to the appliance engine over the Respo
 appliance serves, such as `glm-5.2`. Do not use `auto`. The served model ids appear in the console model list and in the
 appliance's `/v1/models` API response.
 
+{/* NEEDS REVIEW: the console's "Connect coding agent" > Codex snippet sets `model = "claude-opus-4-8"`, a tier-map alias rather than a served id. Confirm with an SME whether the tier map resolves aliases over the Responses API, which would contradict the preceding guidance. */}
+
 ## Requirements
 
 - The appliance must present a valid, publicly trusted TLS certificate on a DNS hostname. Codex validates TLS strictly

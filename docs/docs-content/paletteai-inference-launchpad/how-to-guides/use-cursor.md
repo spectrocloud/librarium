@@ -45,6 +45,8 @@ name matches a model already in Cursor's catalog, such as `glm-5.2` or `gpt-4o`,
 backend and never contacts your appliance. To force Cursor to use the appliance, serve the model under a unique alias
 name that does not exist in Cursor's catalog.
 
+{/* NEEDS REVIEW: the console's "Connect coding agent" > Cursor tab suggests adding the model `claude-opus-4-8`. That name likely matches Cursor's built-in catalog, so it would route to Cursor's own backend rather than the appliance, the problem this section prevents. Confirm with an SME; the unique-alias approach in this section is what reliably reaches the appliance. */}
+
 Creating an alias is an operator task. If you do not have operator access, ask an administrator to create the alias and
 give you its name, then continue to [Configure Cursor](#configure-cursor).
 
@@ -72,6 +74,14 @@ such as `launchpad-glm52`, is the name you enter in Cursor.
 
 Point Cursor at the appliance in Cursor's settings. For the full list of settings and their example values, refer to
 [Cursor Configuration](../reference/cursor-reference.md).
+
+:::tip
+
+The console lists these same steps for you. Select **Connect coding agent** and open the **Cursor** tab for the base URL
+and key to enter. Use the unique alias from [Create a Model Alias](#create-a-model-alias) as the model name, not a
+built-in model name that Cursor already knows.
+
+:::
 
 1. In Cursor, open **Settings** > **Models**.
 
