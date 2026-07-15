@@ -18,11 +18,17 @@ the steps to set them, refer to
 
 ## Environment Variables
 
-| **Variable**           | **Description**                                                                                                                             | **Example value**                   |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| `ANTHROPIC_BASE_URL`   | The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with no path. Claude Code appends `/v1/messages`.           | `https://amd.spectrocloud.com:8443` |
-| `ANTHROPIC_AUTH_TOKEN` | The API token generated in the console. It begins with `lpai_`. `ANTHROPIC_API_KEY` is also accepted.                                       | `lpai_YOUR_TOKEN`                   |
-| `ANTHROPIC_MODEL`      | Optional. The Claude alias Claude Code requests. The appliance maps the alias to the model it serves, so you do not pick the backend model. | `claude-sonnet-4-5`                 |
+| **Variable**                     | **Description**                                                                                                                             | **Example value**                   |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `ANTHROPIC_BASE_URL`             | The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with no path. Claude Code appends `/v1/messages`.           | `https://amd.spectrocloud.com:8443` |
+| `ANTHROPIC_AUTH_TOKEN`           | The API token generated in the console. It begins with `lpai_`. `ANTHROPIC_API_KEY` is also accepted.                                       | `lpai_YOUR_TOKEN`                   |
+| `ANTHROPIC_MODEL`                | Optional. The Claude alias Claude Code requests. The appliance maps the alias to the model it serves, so you do not pick the backend model. | `claude-opus-4-8`                   |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL`   | Optional. The alias Claude Code requests for its Opus-tier work. The appliance maps the alias to the model it serves.                       | `claude-opus-4-8`                   |
+| `ANTHROPIC_DEFAULT_SONNET_MODEL` | Optional. The alias Claude Code requests for its Sonnet-tier work.                                                                          | `claude-sonnet-4-5`                 |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL`  | Optional. The alias Claude Code requests for its Haiku-tier, background work.                                                               | `claude-haiku-4-5`                  |
+| `CLAUDE_CODE_EFFORT_LEVEL`       | Optional. Sets Claude Code's reasoning effort. One of `low`, `medium`, `high`, or `max`.                                                    | `max`                               |
+
+{/* TODO: confirm the ANTHROPIC_DEFAULT_* and CLAUDE_CODE_EFFORT_LEVEL rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
 
 ## Endpoint URL
 
