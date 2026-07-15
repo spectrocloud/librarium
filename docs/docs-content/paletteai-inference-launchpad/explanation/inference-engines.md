@@ -5,7 +5,7 @@ description:
   "An explanation of inference engines in PaletteAI Inference Launchpad, including automatic engine selection, the
   supported engine kinds, and when to override the automatic choice."
 hide_table_of_contents: false
-sidebar_position: 2
+sidebar_position: 4
 tags: ["paletteai-inference-launchpad", "models", "explanation"]
 keywords: ["launchpad", "ai", "inference", "engine", "vLLM", "SGLang", "Ollama"]
 ---
