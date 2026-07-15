@@ -34,6 +34,14 @@ OpenCode connects to any OpenAI-compatible endpoint through a custom provider. A
 OpenCode configuration file. For a description of each field, refer to
 [OpenCode Configuration](../reference/opencode-reference.md).
 
+:::tip
+
+The console can generate a starter version of this file for you. Select **Connect coding agent** and open the
+**OpenCode** tab to copy an `opencode.json` snippet pre-filled with your appliance's endpoint. Review the `baseURL` and
+`models` values against the steps below before you save it.
+
+:::
+
 1. Add the following provider to the OpenCode configuration file at `~/.config/opencode/opencode.json`. Replace
    `<appliance-host>` with your appliance address and `<lpai-token>` with the token you copied.
 

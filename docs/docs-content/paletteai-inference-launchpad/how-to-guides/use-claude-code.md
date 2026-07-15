@@ -32,6 +32,15 @@ Claude Code at the appliance with two environment variables, and confirm the con
 
 On the machine where you run Claude Code, set the following environment variables.
 
+:::tip
+
+You do not have to assemble these variables by hand. In the console, select **Connect coding agent** and open the
+**Claude Code** tab to generate a ready-to-paste configuration snippet. The snippet can also set optional per-tier model
+aliases and a reasoning-effort level. For the full list of values it can set, refer to
+[Claude Code Configuration](../reference/claude-code-reference.md).
+
+:::
+
 ```bash
 export ANTHROPIC_BASE_URL=https://<appliance-host>
 export ANTHROPIC_AUTH_TOKEN=<lpai-token>
@@ -52,12 +61,12 @@ To persist the settings instead of exporting them each session, add them to the 
 }
 ```
 
-Claude Code requests a Claude alias, such as `claude-sonnet-4-5`. To pin every request to one alias, set
-`ANTHROPIC_MODEL` to it. For the aliases the appliance accepts, refer to
+Claude Code requests a Claude alias, such as `claude-opus-4-8`. To pin every request to one alias, set `ANTHROPIC_MODEL`
+to it. For the aliases the appliance accepts, refer to
 [Claude Code Configuration](../reference/claude-code-reference.md).
 
 ```bash
-export ANTHROPIC_MODEL=claude-sonnet-4-5
+export ANTHROPIC_MODEL=claude-opus-4-8
 ```
 
 We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection uses
