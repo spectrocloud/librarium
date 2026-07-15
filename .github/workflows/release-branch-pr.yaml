@@ -48,7 +48,7 @@ jobs:
 
     - name: Check out repository
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6 as of May 6, 2026
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
     - name: Setup Node.js environment
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
