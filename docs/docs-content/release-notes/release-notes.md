@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 28, 2026 - Component Updates {#component-updates-2026-28}
+## July 10, 2026 - Component Updates {#component-updates-2026-28}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2995 -->
 <!-- RELEASE DATE: June 28, 2026 -->
@@ -40,15 +40,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
   guide for information on how to upgrade an existing Edge cluster so that the in-cluster Zot registry uses cert-manager
   to automatically rotate its TLS certificate.
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
-
-- Harbor Registry on [Edge clusters](../clusters/edge/edge.md) now integrates with `cert-manager` to automatically
-  rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime. This applies to
-  connected and airgap clusters in both FIPS and non-FIPS configurations.
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
-
-- Kubernetes pack versions available in Palette have been updated to include the latest upstream releases.
 <!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
 
 ### Packs
@@ -60,12 +51,15 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 | Pack Name | Layer | Non-FIPS | FIPS | New Version |
 | --------- | ----- | -------- | ---- | ----------- |
 | <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.2 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
 | <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :x: | 1.20.3 |
 | <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.22.3 |
-| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
 | <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :x: | :white_check_mark: | 0.28.7 |
 | <VersionedLink text="kong" url="/integrations/packs/?pack=kong" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
-| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.12.1 |
 | <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.19 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.0.2 |
 | <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.34.0 |
@@ -176,7 +170,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -209,7 +203,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -224,7 +218,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -830,7 +824,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -883,7 +877,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Breaking Changes {#breaking-changes-4-9-16}
 
@@ -1013,7 +1007,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1468,7 +1462,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -1513,7 +1507,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1646,7 +1640,7 @@ The following component updates are applicable to this release:
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
-- [June 28, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
