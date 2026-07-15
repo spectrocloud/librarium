@@ -67,9 +67,9 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
     npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
     ```
 
-11.(Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
-kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
-`kubectl` workflows.
+11. (Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
+    kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
+    `kubectl` workflows.
 
     Issue the following command to create the `GEMINI.md` file on your machine if it does not exist.
 

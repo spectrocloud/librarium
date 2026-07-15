@@ -27,18 +27,18 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
-5. Open Cursor on your local machine. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**.
+5.  Open Cursor on your local machine. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**.
 
-6. Select **Add Custom MCP**. The `mcp.json` file opens.
+6.  Select **Add Custom MCP**. The `mcp.json` file opens.
 
-7. <PartialsComponent category="palette-mcp" name="server-snippet" />
+7.  <PartialsComponent category="palette-mcp" name="server-snippet" />
 
-8. Save the `mcp.json` file and close it.
+8.  Save the `mcp.json` file and close it.
 
-9. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**. Ensure that the **palette** MCP server is set up
-   and enabled.
+9.  Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**. Ensure that the **palette** MCP server is set up
+    and enabled.
 
-   ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
+    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
 10. Install the four Palette diagnostic skills (`diagnose-cluster`, `diagnose-edge`, `health-overview`, and
     `access-review`) from the Palette Agent Toolkit repository.
@@ -47,8 +47,9 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
     npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
     ```
 
-11. We recommend adding an [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use kubeconfig files
-    retrieved with `read_cluster_kubeconfig` to access clusters.
+11. (Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
+    kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
+    `kubectl` workflows.
 
     Issue the following command to create a new file for your Palette skill.
 
