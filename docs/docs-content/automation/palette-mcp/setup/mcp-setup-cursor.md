@@ -40,17 +40,24 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
-10. We recommend adding an [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use the downloaded
-    kubeconfig files to access clusters.
+10. Install the four Palette diagnostic skills (`diagnose-cluster`, `diagnose-edge`, `health-overview`, and
+    `access-review`) from the Palette Agent Toolkit repository.
 
-    Execute the following command to create a new file for your Palette skill.
+    ```shell
+    npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
+    ```
+
+11. We recommend adding an [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use kubeconfig files
+    retrieved with `read_cluster_kubeconfig` to access clusters.
+
+    Issue the following command to create a new file for your Palette skill.
 
     ```shell
     touch ~/.cursor/skills/palette-mcp-guidance.md
     ```
 
     Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
-    placeholder with the kubeconfig local path you configured in **Step 4**.
+    placeholder with a directory where you want to store kubeconfig files.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -68,12 +75,10 @@ You can now use the Palette MCP server with Cursor.
    ```shell hideClipboard title="Example Output"
    ❯ How many clusters do I have in Palette?
 
-   From your Palette account (via the Palette MCP gather_or_delete_clusters list call, limit 500, all clusters), you currently have 1 cluster.
+   From your Palette account (via the Palette MCP read_clusters call), you currently have 1 cluster.
 
    | Name             | State   |
    | aws-cluster-test | Running |
-
-   There was no next_continue_token, so this is the full list for the queried scope (default project/context your MCP uses).
    ```
 
 :::info

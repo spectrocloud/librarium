@@ -16,8 +16,8 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more
-    information.
+  - The Gemini CLI version 0.49.0 or later, configured with API key authentication. Refer to
+    [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
 
 - A Palette account.
 
@@ -60,17 +60,25 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
    ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
 
-10. We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded
-    kubeconfig files to access clusters.
+10. Install the four Palette diagnostic skills (`diagnose-cluster`, `diagnose-edge`, `health-overview`, and
+    `access-review`) from the Palette Agent Toolkit repository.
 
-    Execute the following command to create the `GEMINI.md` file on your machine if it does not exist.
+    ```shell
+    npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
+    ```
+
+11.(Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
+kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
+`kubectl` workflows.
+
+    Issue the following command to create the `GEMINI.md` file on your machine if it does not exist.
 
     ```shell
     touch ~/.gemini/GEMINI.md
     ```
 
     Open the file in your preferred text editor and paste the following snippet into the file. Replace the
-    `<local-path>` placeholder with the kubeconfig local path you configured in **Step 4**.
+    `<local-path>` placeholder with a directory where you want to store kubeconfig files.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -98,7 +106,7 @@ You can now use the Palette MCP server with the Gemini CLI.
 
    ```shell hideClipboard title="Example Output"
    ✦ I will list the active clusters in Palette to determine how many you have.
-   gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"}
+   read_clusters (palette MCP Server) {"filters":{"states":["Running"]}}
 
    ✦ You have 1 active cluster in Palette: aws-cluster-test.
    ```

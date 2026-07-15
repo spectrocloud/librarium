@@ -11,28 +11,33 @@ The [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) is 
 (MCP) server that runs on your machine or environment as a container or a native binary. The server communicates with
 the configured Palette instance and performs the required API operations.
 
-The Palette MCP server ships in two forms:
+The Palette MCP server ships in the following forms:
 
-- The `public.ecr.aws/palette-ai/palette-mcp-server` container image. We recommend pinning to a specific version tag
+- A native binary published on [GitHub Releases](https://github.com/spectrocloud/palette-agent-toolkit/releases) for
+  macOS on Apple Silicon, macOS on Intel, Linux on x86_64, and Linux on ARM64. Windows is not supported as a native
+  binary. On Windows, use the container image.
+
+- A container image at `public.ecr.aws/palette-ai/palette-mcp-server`. We recommend pinning to a specific version tag
   rather than `:latest` so that automatic updates do not change the server behind your MCP client configuration.
 
-- The Native binary published on [GitHub Releases](https://github.com/spectrocloud/palette-mcp-server/releases) for
-  macOS on Apple Silicon, macOS on Intel, and Linux on x86_64. Windows is not supported as a native binary. On Windows,
-  use the container image.
+- The [Palette Agent Toolkit plugin](https://github.com/spectrocloud/palette-agent-toolkit) for Claude Code and Claude
+  Desktop. The plugin bundles the MCP server configuration and four diagnostic skills (`diagnose-cluster`,
+  `diagnose-edge`, `health-overview`, and `access-review`) in a single install. Refer to the
+  [Set Up MCP Server with Claude Code](./setup/mcp-setup-claude.md) guide.
 
 The following list provides an overview of how to configure and use the Palette MCP server:
 
 1. Install an MCP client on your local machine or environment. Popular clients are
-   [Cursor](https://cursor.com/get-started), [Claude Code](https://code.claude.com/docs/en/overview), and
-   [Gemini CLI](https://geminicli.com/).
+   [Claude Code](https://code.claude.com/docs/en/overview), [Cursor](https://cursor.com/get-started),
+   [Gemini CLI](https://geminicli.com/), and [Codex](https://github.com/openai/codex).
 
 2. The Palette MCP server expects a handful of parameters in order to connect to Palette. Refer to
    [Server Configuration](#server-configuration) for more information.
 
-3. Configure the Palette MCP server as a custom MCP server in your MCP client to use the tools it provides. The Palette
-   MCP server runs as a local container from an image hosted in
-   [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/), or as a native binary downloaded from
-   [GitHub Releases](https://github.com/spectrocloud/palette-mcp-server/releases).
+3. Configure the Palette MCP server in your MCP client. Claude Code and Claude Desktop customers can install the Palette
+   Agent Toolkit plugin, which bundles the MCP server and diagnostic skills. All other clients configure the MCP server
+   manually using the container image from [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/), or
+   the native binary downloaded from [GitHub Releases](https://github.com/spectrocloud/palette-agent-toolkit/releases).
 
 4. The MCP server is now ready to use. Your queries are sent to the Palette API to perform the requested operations.
 

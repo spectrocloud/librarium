@@ -20,8 +20,9 @@ to interact with Palette consistently without having to understand the complete 
 The Palette MCP server ships as a container image and as a native binary for macOS and Linux, and lets you interact with
 the following Palette resources:
 
-- List, filter, and read status and observability data for clusters, along with the option to create, update, and delete
-  them.
+- List, filter, and read status and observability data for clusters, retrieve their kubeconfig files, along with the
+  option to create, update, and delete them.
+- Read and update cluster tags.
 - List, filter, create, and delete cluster profiles.
 - List, create, update, and delete projects, teams, and users.
 - List and filter packs, registries, cloud accounts, and edge hosts.
