@@ -11,6 +11,72 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 17, 2026 - Component Updates {#component-updates-2026-29}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3007 -->
+<!-- RELEASE DATE: July 17, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.27 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.14 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.8 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.14  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.8  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.8  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.27  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3007. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+- The in-cluster Harbor registry used in edge cluster add-on packs now integrates with cert-manager to automate TLS
+  certificate rotation. Certificates are automatically renewed before expiration, eliminating the need for manual
+  intervention and preventing service downtime. This applies to connected and airgap clusters, including FIPS and
+  non-FIPS configurations.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2256 -->
+
+- Fixed an issue in the `spectrocloud_registry_oci` Terraform resource where omitting `base_content_path` when
+  `is_synchronization = true` produced a raw API error at apply time instead of a clear validation error at plan time.
+  Terraform now surfaces an actionable validation error during `terraform plan` when `base_content_path` is missing and
+  synchronization is enabled.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3007. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3007. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.3 |
+| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.20.2 |
+| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.20.2 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.33.13 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.35.6 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :x: | 1.11.2 |
+| <VersionedLink text="keycloak" url="/integrations/packs/?pack=keycloak" /> | `addon` | :white_check_mark: | :x: | 7.2.2 |
+| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.3.3 |
+| <VersionedLink text="open-policy-agent" url="/integrations/packs/?pack=open-policy-agent" /> | `addon` | :white_check_mark: | :x: | 3.23.0 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 0.91.1 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.10.8 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.10.8 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3007. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## July 9, 2026 - Release 4.9.27
 
 <!-- PATCH RELEASE TICKET: DOC-2985 -->
