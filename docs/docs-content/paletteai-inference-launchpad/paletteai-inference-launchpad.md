@@ -61,7 +61,9 @@ Intelligent routing directs each request to the most appropriate model. Requests
 low latency stay local. Other requests can route outbound when the network allows.
 
 Platform services cover authentication, RBAC, monitoring, and observability. These surface health and usage data and
-ensure the appliance behaves as a managed enterprise system rather than a raw inference server.
+ensure the appliance behaves as a managed enterprise system rather than a raw inference server. To understand how the
+appliance identifies callers and meters their usage, refer to
+[Clients and Quotas](/paletteai-inference-launchpad/explanation/clients-and-quotas).
 
 The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
 independently without replacing the entire appliance image.

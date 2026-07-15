@@ -5,7 +5,7 @@ description: >
   What it means for a model to be certified on PaletteAI Inference Launchpad, how models are certified, and how to
   choose the right models for your use case.
 sidebar_label: Model Certification
-sidebar_position: 2
+sidebar_position: 3
 tags:
   - paletteai-inference-launchpad
   - explanation
