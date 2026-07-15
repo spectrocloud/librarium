@@ -92,8 +92,8 @@ a namespace-scoped Kubernetes resource.
 
    :::info
 
-   This tab needs an SR-IOV screenshot from a host that exposes SR-IOV Virtual Functions. Update it once you capture
-   the dialog fields.
+   This tab needs an SR-IOV screenshot from a host that exposes SR-IOV Virtual Functions. Update it once you capture the
+   dialog fields.
 
    :::
 
