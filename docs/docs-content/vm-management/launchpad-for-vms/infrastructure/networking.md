@@ -19,16 +19,18 @@ controllers (NICs) through network attachment definitions for advanced networkin
 VMO detects the network capabilities available on the cluster at runtime. The capabilities API,
 `/api/v1/network-capabilities`, reports which network types the cluster supports.
 
-| **Type**      | **Requires**                 | **Description**                                                               |
-| ------------- | ---------------------------- | ----------------------------------------------------------------------------- |
-| **Bridge**    | Bridge CNI plugin            | Layer 2 bridged networking. VMs connect to a Linux bridge on the host.        |
-| **`macvlan`** | `macvlan` CNI plugin         | Each VM receives its own MAC address on the host's physical network.          |
-| **SR-IOV**    | SR-IOV device plugin and CNI | Hardware-accelerated networking through PCI passthrough of virtual functions. |
+| **Type**         | **Requires**                  | **Description**                                                                                  |
+| ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Linux Bridge** | Bridge CNI plugin             | Layer 2 bridged networking. VMs connect to a Linux bridge on the host.                           |
+| **`macvlan`**    | `macvlan` CNI plugin          | Each VM receives its own MAC address on the host's physical network.                             |
+| **`ipvlan`**     | `ipvlan` CNI plugin           | VMs share the host's MAC address but receive unique IP addresses on the host's physical network. |
+| **SR-IOV**       | SR-IOV device plugin and CNI  | Hardware-accelerated networking through PCI passthrough of virtual functions.                    |
+| **Custom JSON**  | Any CNI plugin on the cluster | Supply a raw CNI plugin configuration when the built-in types don't fit your use case.           |
 
 :::info
 
-Available network types depend on the CNI plugins installed on the cluster. If a network type is not available, the
-corresponding option does not appear in the UI.
+Available network types depend on the CNI plugins installed on the cluster. Types the cluster doesn't support appear
+grayed out in the UI.
 
 :::
 
@@ -43,17 +45,72 @@ a namespace-scoped Kubernetes resource.
 
 2. Select **Create Network**.
 
-3. Configure the following fields.
+3. Configure the common fields.
 
-   | **Field**                           | **Description**                                                                                   |
-   | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
-   | **Name**                            | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens. |
-   | **Namespace**                       | The namespace in which the appliance creates the NAD.                                             |
-   | **Type**                            | Bridge, `macvlan`, or SR-IOV.                                                                     |
-   | **Bridge name** (Bridge type)       | The name of the Linux bridge on the host.                                                         |
-   | **Host interface** (`macvlan` type) | The host network interface to attach to.                                                          |
-   | **Resource name** (SR-IOV type)     | The SR-IOV device plugin resource.                                                                |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag.                                                                              |
+   | **Field**        | **Description**                                                                                   |
+   | ---------------- | ------------------------------------------------------------------------------------------------- |
+   | **Name**         | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens. |
+   | **Namespace**    | The namespace in which the appliance creates the NAD.                                             |
+   | **Network Type** | Linux Bridge, `macvlan`, `ipvlan`, SR-IOV, or Custom JSON.                                        |
+
+4. Configure the fields for the selected **Network Type**.
+
+   <Tabs groupId="network-type">
+
+   <TabItem value="linux-bridge" label="Linux Bridge">
+
+   | **Field**                           | **Description**                                                                                                                                          |
+   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Bridge Name**                     | The Linux bridge on the host. The bridge must already exist on the nodes.                                                                                |
+   | **VLAN Mode**                       | **Access** for a single untagged VLAN. **Trunk** carries many tagged VLANs and creates one NAD per VLAN ID you enter.                                    |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+
+   </TabItem>
+
+   <TabItem value="macvlan" label="macvlan">
+
+   | **Field**                           | **Description**                                                                                                                                          |
+   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+
+   </TabItem>
+
+   <TabItem value="ipvlan" label="ipvlan">
+
+   | **Field**                           | **Description**                                                                                                                                          |
+   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+
+   </TabItem>
+
+   <TabItem value="sr-iov" label="SR-IOV">
+
+   :::info
+
+   This tab needs an SR-IOV screenshot from a host that exposes SR-IOV Virtual Functions. Update it once you capture
+   the dialog fields.
+
+   :::
+
+   </TabItem>
+
+   <TabItem value="custom-json" label="Custom JSON">
+
+   Provide the full CNI plugin configuration in the required **CNI Config JSON** field. Selecting **Custom JSON** hides
+   the type-specific and networking fields (**Bridge Name**, **Master Interface**, **VLAN Mode**, **VLAN ID**, and
+   **IPAM Configuration**).
+
+   </TabItem>
+
+   </Tabs>
+
+   For all network types except Custom JSON, the **Generated Config (preview)** panel updates as you edit the fields so
+   you can review the resulting NAD configuration before you create it.
 
 ### Bulk Create VLANs
 
