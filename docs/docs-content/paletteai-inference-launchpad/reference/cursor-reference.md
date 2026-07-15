@@ -46,6 +46,8 @@ An operator creates the alias on the appliance, which maps it to a model the app
 `zai-org/GLM-5.2`. Both the alias and the ids of the models the appliance serves appear in the console model list and in
 the appliance's `/v1/models` API response.
 
+{/* NEEDS REVIEW: the console's "Connect coding agent" > Cursor tab suggests the model `claude-opus-4-8`, which likely matches Cursor's built-in catalog and would route to Cursor's own backend. Confirm with an SME; the unique-alias approach is what reliably reaches the appliance. */}
+
 ## Supported Modes
 
 | **Cursor mode** | **Supported** | **Notes**                                                    |
