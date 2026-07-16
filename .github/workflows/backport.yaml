@@ -79,7 +79,7 @@ jobs:
         # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.
           github_token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           auto_backport_label_prefix: backport-
-          add_original_reviewers: true
+          copy_source_pr_reviewers: true
 
       - name: Info log
         if: ${{ success() }} 
