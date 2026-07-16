@@ -1,0 +1,18 @@
+---
+partial_category: self-hosted
+partial_name: helm-client-version
+---
+
+:::warning
+
+**Use Helm client v3.14.0 or later.** Older Helm clients do not wait for pre-upgrade hook resources to finish
+terminating before recreating them. When you run `helm upgrade` against the `hubble` chart with a client earlier than
+v3.14.0, the `hubble-system` namespace can be inadvertently deleted mid-upgrade, which results in **loss of MongoDB
+data** — including tenants and cluster metadata — with no automatic recovery.
+
+The fix for this hook behavior landed in
+[Helm v3.14.0](https://github.com/helm/helm/releases/tag/v3.14.0) (refer to
+[pull request #11387](https://github.com/helm/helm/pull/11387) for the underlying change). Confirm your client version
+with `helm version` before you continue.
+
+:::
