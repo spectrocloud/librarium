@@ -30,19 +30,15 @@ For suggested server configurations that meet these requirements, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md). For the design decisions behind these requirements,
 refer to [Architecture Overview](../explanation/architecture.md).
 
-## Deployment Topology
+## Minimum Requirements
 
-The supported topology is a single high-density GPU server. The appliance ships an immutable Kairos-based operating
-system, so no separate install is required.
-
-## Hardware Baseline
-
-The following table lists the baseline hardware for a single-server appliance. Values are minimums.
+The following table lists the minimum hardware for the appliance on a single high-density GPU server. The appliance
+ships an immutable Kairos-based operating system, so no separate install is required.
 
 | **Component**   | **Requirement**                                                            | **Notes**                                                        |
 | --------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | CPU             | 2x 64-core x86_64 (128 cores total)                                        | Dual-socket.                                                     |
-| GPU             | 4x NVIDIA or AMD GPU (8x for larger models)                                | Reference GPU: NVIDIA H100 80 GB. GLM 5.2 FP8 requires 8 GPUs.   |
+| GPU             | 4x NVIDIA or AMD GPU ()                                                    | 8x for larger models                                             |
 | RAM             | 2 TB or more                                                               | 128 GB per GPU, plus 1 TB for the operating system and KV cache. |
 | OS boot disks   | 2x NVMe, 800 GB or more, hardware RAID1                                    | Dedicated boot controller, for example HPE NS204i-u Gen11.       |
 | Data disks      | 4x NVMe, 8 TB or more each (32 TB or more raw), separate from the OS disks | Piraeus storage pool for model weights and KV cache.             |
