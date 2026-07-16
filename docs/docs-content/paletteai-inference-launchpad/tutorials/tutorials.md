@@ -15,7 +15,7 @@ result you can build on. If you are new to the appliance, tutorials are a great 
 
 :::info
 
-We are still writing the tutorials for PaletteAI Inference Launchpad. In the meantime, the
+We are still developing tutorials for PaletteAI Inference Launchpad. In the meantime, the
 [How-to Guides](../how-to-guides/how-to-guides.md) take you through the full practical path, from
 [installing the appliance](../how-to-guides/install-the-appliance.md) to
 [deploying your first model](../how-to-guides/deploy-a-model.md). If you need help getting started,
