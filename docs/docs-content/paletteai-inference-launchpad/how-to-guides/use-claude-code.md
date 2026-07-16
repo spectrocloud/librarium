@@ -5,7 +5,7 @@ description:
   "Connect Anthropic's Claude Code coding agent to a PaletteAI Inference Launchpad appliance so that a model on the
   appliance serves every request."
 hide_table_of_contents: false
-sidebar_position: 3
+sidebar_position: 4
 tags: ["paletteai-inference-launchpad", "claude-code", "how-to"]
 keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token"]
 ---
@@ -13,8 +13,8 @@ keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api t
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 This guide explains how to connect Claude Code to a PaletteAI Inference Launchpad appliance so that a model running on
-the appliance serves every request instead of Anthropic's hosted API. You generate an API token in the console, point
-Claude Code at the appliance with two environment variables, and confirm the connection.
+the appliance serves every request instead of Anthropic's hosted API. You point Claude Code at the appliance with two
+environment variables and confirm the connection.
 
 ## Prerequisites
 
@@ -22,11 +22,8 @@ Claude Code at the appliance with two environment variables, and confirm the con
   [Claude Code documentation](https://docs.claude.com/en/docs/claude-code).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- Admin access to the PaletteAI Inference Launchpad console, or an API token that an administrator generated for you.
-
-## Generate an API Token
-
-<PartialsComponent category="paletteai-inference-launchpad" name="generate-api-token" />
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use
+  a token an administrator generated for you.
 
 ## Configure Claude Code
 

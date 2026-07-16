@@ -5,7 +5,7 @@ description:
   "Connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves
   every request."
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 6
 tags: ["paletteai-inference-launchpad", "codex", "how-to"]
 keywords: ["launchpad", "ai", "openai codex", "codex cli", "responses api", "config.toml", "api token"]
 ---
@@ -13,8 +13,8 @@ keywords: ["launchpad", "ai", "openai codex", "codex cli", "responses api", "con
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 This guide explains how to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model
-running on the appliance serves every request instead of OpenAI's hosted API. You generate an API token, add a custom
-model provider to the Codex configuration file, and confirm the connection.
+running on the appliance serves every request instead of OpenAI's hosted API. You add a custom model provider to the
+Codex configuration file and confirm the connection.
 
 ## Prerequisites
 
@@ -22,13 +22,10 @@ model provider to the Codex configuration file, and confirm the connection.
   [OpenAI Codex website](https://github.com/openai/codex).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- Admin access to the PaletteAI Inference Launchpad console, or an API token that an administrator generated for you.
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use
+  a token an administrator generated for you.
 - The appliance reachable at a DNS hostname with a valid, publicly trusted TLS certificate. Codex validates TLS strictly
   and cannot skip certificate verification, so a self-signed certificate does not work.
-
-## Generate an API Token
-
-<PartialsComponent category="paletteai-inference-launchpad" name="generate-api-token" />
 
 ## Configure Codex
 
