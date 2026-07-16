@@ -293,7 +293,8 @@ VMO lists DataVolumes on **Infrastructure** > **Storage**, where you can create,
 
    :::info
 
-   The VMO UI does not include an option to add private registries that require authentication. Contact [Spectro Cloud Support](mailto:support@spectrocloud.com) for manual configuration steps.
+   The VMO UI does not include an option to add private registries that require authentication. Contact
+   [Spectro Cloud Support](mailto:support@spectrocloud.com) for manual configuration steps.
 
    :::
 
