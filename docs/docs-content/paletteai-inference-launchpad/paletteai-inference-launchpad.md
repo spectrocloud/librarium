@@ -95,6 +95,5 @@ different scales and deployment models.
 - **Install the appliance:** Follow the
   [Install the PaletteAI Inference Launchpad Appliance](/paletteai-inference-launchpad/how-to-guides/install-the-appliance)
   guide to go from bare hardware to a running appliance with the UI accessible.
-- **Deploy your first model:** Follow the
-  [Deploy a Model](/paletteai-inference-launchpad/how-to-guides/deploy-a-model) guide to deploy a model on the running
-  appliance and confirm it is serving requests.
+- **Deploy your first model:** Follow the [Deploy a Model](/paletteai-inference-launchpad/how-to-guides/deploy-a-model)
+  guide to deploy a model on the running appliance and confirm it is serving requests.
