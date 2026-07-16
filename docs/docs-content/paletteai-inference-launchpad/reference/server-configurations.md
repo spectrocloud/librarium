@@ -34,10 +34,6 @@ AMD Instinct MI325X GPUs.
 | HPE        | ProLiant Compute DL380a Gen12         | 8x NVIDIA L40S                                              | Intel Xeon 6710E            |
 | Dell       | PowerEdge XE9680                      | 8x NVIDIA H100 80 GB SXM5                                   | 2x Intel Xeon Platinum 8570 |
 
-Note the following before you deploy:
-
-- On the HPE ProLiant Compute DL380a Gen12, GPUs may require a PCI workaround, which changes NIC names.
-- On the Dell PowerEdge XE9680, the BOSS-N1 controller may need disabling to boot the Spectro Cloud OS.
 
 ## Resources
 
