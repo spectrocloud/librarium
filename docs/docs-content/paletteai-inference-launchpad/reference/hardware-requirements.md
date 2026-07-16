@@ -92,6 +92,8 @@ The appliance listens on the following ports.
 | 443/TCP  | Appliance console and API, served by Traefik on the platform IP address. |
 | 5080/TCP | Node Local UI, reached at `https://<node-ip>:5080` during installation.  |
 
+## Airgapped
+
 The appliance is airgapped. Application images ship in the content bundle, and model weights ship as a separate
 artifact. The appliance requires no outbound internet access during installation or day-two operation.
 
