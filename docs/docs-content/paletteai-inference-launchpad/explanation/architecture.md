@@ -22,6 +22,34 @@ The appliance serves each model through an inference engine, such as vLLM, runni
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
 engine kinds the appliance supports and how it selects one, refer to [Inference Engines](./inference-engines.md).
 
+## Hardware Sizing
+
+The appliance is designed and tuned for a single high-density GPU server. That shape avoids the storage-replication,
+network-fabric, and scheduling complexity that appears as soon as nodes multiply, and it matches how most deployments
+start. Multi-server clusters are possible but are not tuned for this release.
+
+Sizing follows from the model rather than from a fixed value. The target model sets the GPU count, and the rest of the
+machine scales with it.
+
+The CPU is dual-socket because high-density GPU servers use two sockets, and 128 total cores give Kubernetes, the
+inference server, and system tasks enough headroom while leaving room to reuse the server for other workloads later.
+
+Host RAM is sized as GPU-adjacent memory, which covers host-side buffers and KV cache spill, plus a base for the
+operating system, the Kubernetes control plane, cluster services, and the hot KV cache tier. Undersized RAM forces the
+KV cache to spill to disk sooner, where it is far slower.
+
+Storage is NVMe only because model loading and KV cache I/O exceed what SATA solid-state drives or spinning disks can
+sustain. The disks split into two pools with different lifetimes. A small system pool on the OS disks holds the
+container registry and airgap content that must be available before the cluster builds, and a larger data pool on
+separate NVMe drives is created after the cluster comes up, once Piraeus is available. Piraeus stripes the data pool
+across its drives to combine read and write bandwidth for model loading and KV cache spill.
+
+The network uses bonded NICs so that the ports on a high-density server present one logical interface, which the
+appliance detects and configures automatically.
+
+For the specific values and example server configurations, refer to
+[Hardware Requirements](../reference/hardware-requirements.md).
+
 ## Appliance and Cluster Formation
 
 ## Model Provisioning Lifecycle
