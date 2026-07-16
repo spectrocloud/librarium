@@ -13,8 +13,8 @@ keywords: ["launchpad", "ai", "opencode", "openai-compatible", "custom provider"
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 This guide explains how to connect OpenCode to a PaletteAI Inference Launchpad appliance so that a model running on the
-appliance serves every request instead of a cloud provider. You add a custom provider to the OpenCode configuration
-file and confirm the connection.
+appliance serves every request instead of a cloud provider. You add a custom provider to the OpenCode configuration file
+and confirm the connection.
 
 ## Prerequisites
 
@@ -22,8 +22,8 @@ file and confirm the connection.
   [OpenCode website](https://opencode.ai).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use
-  a token an administrator generated for you.
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
+  token an administrator generated for you.
 
 ## Configure OpenCode
 

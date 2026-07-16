@@ -22,8 +22,8 @@ Codex configuration file and confirm the connection.
   [OpenAI Codex website](https://github.com/openai/codex).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use
-  a token an administrator generated for you.
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
+  token an administrator generated for you.
 - The appliance reachable at a DNS hostname with a valid, publicly trusted TLS certificate. Codex validates TLS strictly
   and cannot skip certificate verification, so a self-signed certificate does not work.
 

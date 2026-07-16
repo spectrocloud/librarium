@@ -22,8 +22,8 @@ environment variables and confirm the connection.
   [Claude Code documentation](https://docs.claude.com/en/docs/claude-code).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use
-  a token an administrator generated for you.
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
+  token an administrator generated for you.
 
 ## Configure Claude Code
 
