@@ -9,7 +9,9 @@ tags: ["clusters", "cluster management"]
 
 In Kubernetes, Public Key Infrastructure (PKI) certificates are used to secure communications and authenticate
 components within the cluster. Certificates have an expiry date and need to be renewed periodically. You can view the
-issue and expiry date of the cluster by click on **View K8s Certificates** in the cluster details page.
+issue and expiry date of the cluster by clicking on **View K8s Certificates** in the cluster details page. Palette lists
+all control plane PKI certificates that it includes in its automatic renewal cycle, including the kubeconfig-embedded
+client certificates, the etcd peer and health-check certificates, and the kubelet client and serving certificates.
 
 This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
 cluster PKI certificates:
@@ -107,11 +109,11 @@ method, using the Palette UI or the API.
 
 4. From the cluster details page, click on **View K8s Certificates**.
 
-![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/clusters_cluster-management_certificate-management_cluster-details-page.webp)
+   ![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/certificate-management_cluster-details-page.webp)
 
 5. Next, select **Renew All** to start the renewal process.
 
-![A view of the cluster certificates displaying the expiration date](/clusters_cluster-management_certificate-management_certificate-renew-page.webp)
+   ![A view of the cluster certificates displaying the expiration date](/certificate-management_certificate-renew-page.webp)
 
 The renewal process may take several minutes, depending on the number of cluster nodes.
 
@@ -248,47 +250,71 @@ Using the following steps, you can validate that the cluster's PKI certificates 
            {
              "certificates": [
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "expiry": "2027-06-09T16:51:05.000Z",
                  "name": "front-proxy-client"
                }
              ],
-             "expiry": "2033-05-23T16:45:22.209Z",
+             "expiry": "2036-06-09T16:45:22.209Z",
              "name": "front-proxy-ca"
            },
            {
              "certificates": [
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-apiserver"
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "apiserver"
                },
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-apiserver-kubelet-client"
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "apiserver-kubelet-client"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "apiserver-etcd-client"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "admin"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "super-admin"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "controller-manager"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "scheduler"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "kubelet-client"
+               },
+               {
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "kubelet-serving"
                }
              ],
-             "expiry": "2033-05-23T16:45:22.209Z",
+             "expiry": "2036-06-09T16:45:22.209Z",
              "name": "ca"
            },
            {
              "certificates": [
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-apiserver-etcd-client"
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "server"
                },
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-etcd-healthcheck-client"
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "peer"
                },
                {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-etcd-peer"
-               },
-               {
-                 "expiry": "2024-05-23T16:51:05.000Z",
-                 "name": "kube-etcd-server"
+                 "expiry": "2027-06-09T16:51:05.000Z",
+                 "name": "healthcheck-client"
                }
              ],
-             "expiry": "2033-05-23T16:45:22.209Z",
+             "expiry": "2036-06-09T16:45:22.209Z",
              "name": "etcd-ca"
            }
          ],
@@ -297,6 +323,12 @@ Using the following steps, you can validate that the cluster's PKI certificates 
      ]
    }
    ```
+
+   :::info
+
+   The exact set of certificates returned varies by Kubernetes distribution and node configuration.
+
+   :::
 
 </TabItem>
 </Tabs>

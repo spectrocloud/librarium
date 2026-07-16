@@ -8,6 +8,7 @@ readability, usage, correctness, and consistency for Spectro Cloud’s documenta
 For reference materials not covered in this guide, defer to the
 [Google Developer Documentation Style Guide](https://developers.google.com/style).
 
+- [Spectro Cloud Internal Style Guide](#spectro-cloud-internal-style-guide)
 - [Inclusive English for a Global Audience](#inclusive-english-for-a-global-audience)
   - [Simplified English](#simplified-english)
   - [Voice](#voice)
@@ -21,7 +22,7 @@ For reference materials not covered in this guide, defer to the
   - [Gender](#gender)
   - [Contractions](#contractions)
   - [Wordiness](#wordiness)
-    - [Angle Brackets (>)](#angle-brackets-)
+    - [Angle Brackets (`>`)](#angle-brackets-)
     - [UI Elements as Verbs](#ui-elements-as-verbs)
   - [Latin Phrases](#latin-phrases)
 - [Grammar Guidance](#grammar-guidance)
@@ -48,7 +49,7 @@ For reference materials not covered in this guide, defer to the
   - [Directionals](#directionals)
   - [Emoticons](#emoticons)
   - [Text Formatting](#text-formatting)
-    - [Commands & Parameters](#commands--parameters)
+    - [Commands \& Parameters](#commands--parameters)
       - [Command Output](#command-output)
         - [Lengthy Output](#lengthy-output)
     - [Product UI Naming](#product-ui-naming)
@@ -56,7 +57,7 @@ For reference materials not covered in this guide, defer to the
   - [Markdown Tables](#markdown-tables)
   - [Admonitions](#admonitions)
   - [Supplemental Information](#supplemental-information)
-  - [Next Steps](#supplemental-information)
+  - [Next Steps](#next-steps)
   - [Resources List](#resources-list)
 - [Image File Naming Standard](#image-file-naming-standard)
 
@@ -370,18 +371,22 @@ This procedure requires a physical or virtual Linux machine with an AMD64 or x86
 
 ### Optional Steps
 
-Preface optional steps with the text _(Optional)_. This allows customers to identify optional steps at a glance,
-preventing them from reading through or performing actions that may not be applicable to their situation (or worse,
-performing an action only to later realize they are not the intended audience, thus disrupting or compromising their
-workflow).
+Preface optional steps with the text _(Optional)_. Use italics to offset the text and catch the eye quicker. This allows
+customers to identify optional steps at a glance, preventing them from reading through or performing actions that may
+not be applicable to their situation (or worse, performing an action only to later realize they are not the intended
+audience, thus disrupting or compromising their workflow).
+
+If the step only applies to specific circumstances, such as self-hosted installations or proxy environments, you can
+preface an optional step using the circumstance instead. For example, _(Self-hosted OCI registries only)_, _(Proxy
+environments only)_, etc.
 
 If applicable, place the circumstance that makes the step optional **immediately** after _(Optional)_ so that customers
 can quickly decide to proceed with or skip the step.
 
-| Good ✅                                                                                                                                                                                                                                                                                              | Bad ❌                                                                                                                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code>                                     | 3. To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code> |
-| 5. (Optional) _If you are using a self-hosted instance of Palette_, build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content                                                                                                                                                                                                          | match("version: ([^\n]+)").captures[0].string'</code> | 5. (Optional) Build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'</code><br><br>:::warning<br><br>This step only applies to self-hosted instances.<br><br>::: |
+| Good ✅                                                                                                                                                                                                                                                                                                                    | Bad ❌                                                                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| 3. _(Optional)_ To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code>                                                         | 3. To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code> |
+| 5. _(Self-hosted installations only)_ If you are using a self-hosted instance of Palette, build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content                                                                                                                                                                                                          | match("version: ([^\n]+)").captures[0].string'</code> | 5. _(Optional)_ Build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'</code><br><br>:::warning<br><br>This step only applies to self-hosted instances.<br><br>::: |
 
 ### Parenthetical Expressions and Jargon
 

@@ -77,7 +77,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     details on supported operating systems.
 
     ```shell
-    curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
+    curl https://dl.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd1.iso --output Rocky-8-latest-x86_64-dvd.iso
     ```
 
 6.  Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the

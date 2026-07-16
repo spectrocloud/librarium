@@ -1,0 +1,114 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-validate
+---
+
+Use the following steps to validate your {props.version} installation.
+
+<Tabs>
+
+<TabItem value="ui" label="UI">
+
+1. Open up a web browser and navigate to the {props.version} system console. To access the system console, open a web
+   browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can
+   also use the IP address of the load balancer.
+
+2. Log in using the default credentials. After logging in, you are prompted to create a new password. Enter a new
+   password and save your changes. You are redirected to the {props.version} system console.
+
+</TabItem>
+
+<TabItem value="terminal" label="Terminal">
+
+1. Open a terminal session with access to the cluster you installed {props.version} on.
+
+2. Verify all pods in all namespaces are running.
+
+   ```shell
+   kubectl get pods --all-namespaces
+   ```
+
+   ```shell hideClipboard title="Example output"
+   NAMESPACE         NAME                                        READY   STATUS      RESTARTS       AGE
+   cert-manager      cert-manager-5fb779d887-mz2vb               1/1     Running     0              8m46s
+   cert-manager      cert-manager-cainjector-764f9646d4-7nhpq    1/1     Running     0              8m46s
+   cert-manager      cert-manager-webhook-85b8dbdddd-fkn6z       1/1     Running     0              8m46s
+   cp-system         spectro-cp-ui-5dffbcdc78-gk8st              1/1     Running     0              7m14s
+   hubble-system     auth-7f4c7ff9c-2clwp                        1/1     Running     0              6m8s
+   hubble-system     auth-7f4c7ff9c-j84bt                        1/1     Running     0              6m7s
+   hubble-system     cloud-8f8467c95-9r8bp                       1/1     Running     0              6m7s
+   hubble-system     cloud-8f8467c95-pvcv4                       1/1     Running     0              6m8s
+   hubble-system     configserver-5bc8f9fdcb-mbt66               1/1     Running     0              6m8s
+   hubble-system     event-5fbf6b7f44-bmzdk                      1/1     Running     0              6m8s
+   hubble-system     event-5fbf6b7f44-cxc58                      1/1     Running     0              6m7s
+   hubble-system     event-5fbf6b7f44-zhr9h                      1/1     Running     0              6m7s
+   hubble-system     foreq-8487bf9bbf-847vj                      1/1     Running     0              6m7s
+   hubble-system     hashboard-66f957cfdf-k48wn                  1/1     Running     0              6m7s
+   hubble-system     hashboard-66f957cfdf-pddx7                  1/1     Running     0              6m6s
+   hubble-system     hutil-7cc6975bb5-5mhjp                      1/1     Running     0              6m6s
+   hubble-system     hutil-7cc6975bb5-jwzr5                      1/1     Running     0              6m7s
+   hubble-system     memstore-7d59d65f67-j8lls                   1/1     Running     0              6m6s
+   hubble-system     mgmt-54fb5f487d-dj2tz                       1/1     Running     0              7m14s
+   hubble-system     mongo-0                                     2/2     Running     0              6m33s
+   hubble-system     mongo-1                                     2/2     Running     0              5m47s
+   hubble-system     mongo-2                                     2/2     Running     0              4m57s
+   hubble-system     mongodb-key-manager-helm-k6294              0/1     Completed   0              7m15s
+   hubble-system     msgbroker-0                                 1/1     Running     0              7m15s
+   hubble-system     msgbroker-1                                 1/1     Running     0              6m43s
+   hubble-system     oci-proxy-78cd749dc9-jfs86                  1/1     Running     0              6m6s
+   hubble-system     reloader-reloader-55d78d877b-7tnkq          1/1     Running     0              6m6s
+   hubble-system     specman-0                                   1/1     Running     0              6m2s
+   hubble-system     spectro-tunnel-74d559dd65-hlwch             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-knrfq             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-pb6pr             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-xcvk9             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-jobs-7dc76bf6c7-pjc7l        1/1     Running     0              6m5s
+   hubble-system     spectrocluster-reconciler-dcfd55ff5-gnfjg   1/1     Running     0              6m4s
+   hubble-system     spectroclusterop-58966f7f54-grznt           1/1     Running     0              6m4s
+   hubble-system     spectroclusterop-58966f7f54-jj9m6           1/1     Running     0              6m4s
+   hubble-system     spectrossh-589d975d4d-82vm2                 1/1     Running     0              6m4s
+   hubble-system     system-d48fdbc9-ffzq9                       1/1     Running     0              6m8s
+   hubble-system     system-d48fdbc9-sztrr                       1/1     Running     0              6m8s
+   hubble-system     timeseries-f465b4c99-8h8c7                  1/1     Running     0              6m4s
+   hubble-system     timeseries-f465b4c99-jlzlj                  1/1     Running     0              6m3s
+   hubble-system     timeseries-f465b4c99-z27d8                  1/1     Running     0              6m3s
+   hubble-system     user-697c6f8bf-fgwtp                        1/1     Running     0              6m3s
+   hubble-system     user-697c6f8bf-wcqxk                        1/1     Running     0              6m3s
+   ingress-traefik   traefik-ingress-controller-5dctd            1/1     Running     0              7m15s
+   ingress-traefik   traefik-ingress-controller-tx6st            1/1     Running     0              7m16s
+   ingress-traefik   traefik-ingress-controller-zf25w            1/1     Running     0              7m16s
+   jet-system        jet-796fc87c5d-vpvtz                        1/1     Running     0              4m1s
+   kube-system       aws-node-8xqnx                              2/2     Running     0              121m
+   kube-system       aws-node-gtr64                              2/2     Running     0              121m
+   kube-system       aws-node-h7pdv                              2/2     Running     0              121m
+   kube-system       coredns-566b9b9d-hck47                      1/1     Running     0              129m
+   kube-system       coredns-566b9b9d-jpnrs                      1/1     Running     0              129m
+   kube-system       ebs-csi-controller-7dfbb6bd58-nwcjl         6/6     Running     0              113m
+   kube-system       ebs-csi-controller-7dfbb6bd58-w8kxz         6/6     Running     0              113m
+   kube-system       ebs-csi-node-9r6fk                          3/3     Running     0              113m
+   kube-system       ebs-csi-node-vp744                          3/3     Running     0              113m
+   kube-system       ebs-csi-node-xb69v                          3/3     Running     0              113m
+   kube-system       kube-proxy-59qgr                            1/1     Running     0              121m
+   kube-system       kube-proxy-krrzd                            1/1     Running     0              121m
+   kube-system       kube-proxy-lbsgp                            1/1     Running     0              121m
+   ui-system         spectro-ui-56749c5f84-98m89                 1/1     Running     0              7m15s
+   ```
+
+3. Verify the `hubble` release is deployed.
+
+   ```shell
+   helm status hubble
+   ```
+
+   ```shell title="Example output" hideClipboard
+   NAME: hubble
+   LAST DEPLOYED: Thu Jun 18 18:33:18 2026
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+</TabItem>
+
+</Tabs>

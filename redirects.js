@@ -622,6 +622,10 @@ let redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/automation/palette-cli/commands/validate-auth/",
+    to: "/automation/palette-cli/commands/",
+  },
+  {
     from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
     to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
@@ -1003,6 +1007,17 @@ let redirects = [
   {
     from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image/`,
     to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-rhel-stig-image/`,
+  },
+
+  // Image Pull Secret
+
+  {
+    from: `/enterprise-version/configure-image-pull-secret/`,
+    to: `/enterprise-version/system-management/configure-image-pull-secret/`,
+  },
+  {
+    from: `/vertex/configure-image-pull-secret/`,
+    to: `/vertex/system-management/configure-image-pull-secret/`,
   },
 ];
 

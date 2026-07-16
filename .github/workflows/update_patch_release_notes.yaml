@@ -19,7 +19,8 @@ jobs:
   update_release_notes:
     if: >
       github.event.issue.pull_request &&
-      !endsWith(github.actor, '[bot]')
+      !endsWith(github.actor, '[bot]') &&
+      contains(fromJSON('["MEMBER", "OWNER"]'), github.event.comment.author_association)
     runs-on: ubuntu-latest
 
     permissions:
@@ -55,7 +56,7 @@ jobs:
 
       - name: Checkout Librarium Repository
         if: steps.check.outputs.run == 'true'
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with: 
           repository: spectrocloud/librarium
           ref: ${{ env.BASE_BRANCH }}
@@ -131,3 +132,12 @@ jobs:
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
             -f body="❌ Failed to update patch release notes. Please check the workflow logs."
+
+      - name: Comment on PR when job completes successfully
+        if: steps.check.outputs.run == 'true' && success() && github.event.issue.pull_request
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -f body="✅ Patch release notes updated successfully."

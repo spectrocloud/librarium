@@ -8,7 +8,7 @@ name: API Format
 
 on:
   pull_request:
-    types: ["labeled", "closed"]
+    types: ["labeled", "ready_for_review", "closed"]
 
 concurrency:
   group: api-format-${{ github.ref }}
@@ -33,10 +33,25 @@ jobs:
   backport:
     name: Format API PR
     runs-on: ubuntu-latest
+    # Run once per PR, regardless of whether the 'api-format' label was applied
+    # before or after the PR left draft state:
+    #   - 'labeled' branch: fires when the label is added to a non-draft PR.
+    #     The draft==false guard keeps it from running on drafts (and from
+    #     pushing auto-commits to work-in-progress branches).
+    #   - 'ready_for_review' branch: covers the case where the label was added
+    #     while the PR was still a draft. That 'labeled' event is skipped above,
+    #     so we (re)trigger when the PR is marked ready and the label is present.
+    # The draft guard on the 'labeled' branch is also what prevents a double run
+    # when a draft PR is labeled and then marked ready in sequence.
     if: |
-      github.event.action == 'labeled'
-      && github.event.label.name == 'api-format'
-      && github.event.pull_request.draft == false
+      (
+        github.event.action == 'labeled'
+        && github.event.label.name == 'api-format'
+        && github.event.pull_request.draft == false
+      ) || (
+        github.event.action == 'ready_for_review'
+        && contains(github.event.pull_request.labels.*.name, 'api-format')
+      )
   
   
     steps:
@@ -56,7 +71,7 @@ jobs:
 
       - name: Checkout Code
               # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
@@ -99,7 +114,7 @@ jobs:
       - name: Slack Notification
         if: ${{ failure() }}
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3 as of May 6, 2026
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"

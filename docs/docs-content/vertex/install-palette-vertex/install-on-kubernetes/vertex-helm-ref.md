@@ -37,35 +37,50 @@ The global block allows you to provide configurations that apply globally to the
 
 ### Image Pull Secret
 
-This section is only relevant if you are using your own private registry to host the images required for the Palette
-installation process.
+:::warning
 
-The `imagePullSecret` block allows you to provide image pull secrets that will be used to authenticate with private
-registries to obtain the images required for Palette VerteX installation.
-
-| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                             | **Type** | **Default value** |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `create`           | Specifies whether to create a secret containing credentials to your own private image registry.                                                                                                                                                                                                             | Boolean  | `false`           |
-| `dockerConfigJson` | The **config.json** file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the **config.json** file, refer to [Kubernetes Documentation](https://kubernetes.io/docs/concepts/containers/images/#config-json). | String   | None              |
-
-:::info
-
-To obtain the base-64 encoded version of the credential `config.json` file, you can issue the following command. Replace
-`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr -d '\n'` removes new line characters
-and produce the output on a single line.
-
-```shell
-cat <path/to/.docker/config.json> | base64 | tr -d '\n'
-```
+Spectro Cloud's image pull secret will be required in an upcoming release for any users pulling images from a Spectro
+Cloud-owned registry. This is a breaking change. We recommend obtaining your secret as soon as possible to avoid service
+disruptions. Refer to
+[Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
+more information.
 
 :::
+
+The `imagePullSecret` block configures the image pull secret used to authenticate with private registries. Palette
+VerteX always creates a Kubernetes Secret named `spectro-image-pull-secret` from this value and distributes it to the
+management plane, workload clusters, and PCGs. The secret serves the following purposes:
+
+- **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
+  images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
+  your Spectro Cloud customer support representative. Refer to
+  [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
+  more information.
+
+- **Private registry authentication** - If you host Palette images in your own private registry, the secret provides the
+  credentials needed to pull those images.
+
+| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `dockerConfigJson` | The values of the `config.json` file encoded in base64 as a single string, containing the registry URL and credentials for your image registry. For more information about the `config.json` file, refer to the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/containers/images/#config-json). | String   | `""`              |
 
 ```yaml
 global:
   imagePullSecret:
-    create: true
     dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json
 ```
+
+:::info
+
+To obtain the base64-encoded version of your `config.json` file, use the following command. Replace
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr --delete '\n'` removes new line
+characters and produces the output on a single line.
+
+```shell
+cat <path/to/.docker/config.json> | base64 | tr --delete '\n'
+```
+
+:::
 
 ## MongoDB
 
