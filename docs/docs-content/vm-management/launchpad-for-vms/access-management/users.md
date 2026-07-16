@@ -25,15 +25,15 @@ From the left main menu, select **Settings** > **Access Management** > **Users**
 
 The **Users** table lists the following columns.
 
-| **Column**   | **Description**                                                                        |
-| ------------ | -------------------------------------------------------------------------------------- |
-| **Username** | The Keycloak username.                                                                 |
-| **Email**    | The email address on the account.                                                      |
-| **Name**     | The first and last name on the account.                                                |
-| **Enabled**  | A check mark indicates the user can sign in.                                           |
-| **Groups**   | Groups the user belongs to. Each group is displayed as a pill.                         |
-| **Created**  | The date the user was created.                                                         |
-| **Actions**  | Row actions to edit, reset the password, or delete the user.                           |
+| **Column**   | **Description**                                                |
+| ------------ | -------------------------------------------------------------- |
+| **Username** | The Keycloak username.                                         |
+| **Email**    | The email address on the account.                              |
+| **Name**     | The first and last name on the account.                        |
+| **Enabled**  | A check mark indicates the user can sign in.                   |
+| **Groups**   | Groups the user belongs to. Each group is displayed as a pill. |
+| **Created**  | The date the user was created.                                 |
+| **Actions**  | Row actions to edit, reset the password, or delete the user.   |
 
 Select a column header to sort. Use the **Filter rows** search box to filter by any field.
 
@@ -48,15 +48,15 @@ scope.
 
 3. Complete the following fields for the first user.
 
-   | **Field**           | **Description**                                                                            |
-   | ------------------- | ------------------------------------------------------------------------------------------ |
-   | **Username**        | Required. Must be unique.                                                                  |
-   | **Email**           | Required. Must be a valid email address.                                                   |
-   | **First Name**      | Optional. The user's given name.                                                           |
-   | **Last Name**       | Optional. The user's family name.                                                          |
-   | **Password**        | Required unless **Temporary** is selected. Must meet the password policy.                  |
-   | **Verify Password** | Must match **Password**.                                                                   |
-   | **Temporary**       | Select to force a password reset on first sign-in. Bypasses the password field.            |
+   | **Field**           | **Description**                                                                 |
+   | ------------------- | ------------------------------------------------------------------------------- |
+   | **Username**        | Required. Must be unique.                                                       |
+   | **Email**           | Required. Must be a valid email address.                                        |
+   | **First Name**      | Optional. The user's given name.                                                |
+   | **Last Name**       | Optional. The user's family name.                                               |
+   | **Password**        | Required unless **Temporary** is selected. Must meet the password policy.       |
+   | **Verify Password** | Must match **Password**.                                                        |
+   | **Temporary**       | Select to force a password reset on first sign-in. Bypasses the password field. |
 
    Passwords must meet the following requirements. Violations appear as inline validation and **Next** stays disabled
    until they are resolved.
@@ -67,8 +67,8 @@ scope.
 
    - At least 1 special character
 
-4. _(Optional)_ To onboard more users at the same time, select **+ Add another user** and repeat the previous step.
-   Each user has its own row in the wizard.
+4. _(Optional)_ To onboard more users at the same time, select **+ Add another user** and repeat the previous step. Each
+   user has its own row in the wizard.
 
 5. Select **Next** to open the **Role** step. Select a VMO role to assign to every user in this wizard run, or select
    **Skip** to onboard users without a role.
@@ -83,11 +83,11 @@ scope.
 6. Select **Next** to open the **Scope** step. Choose the namespace scope for the selected role. A scope is required
    when a role is assigned.
 
-   | **Option**              | **Description**                                                                                                     |
-   | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-   | **Cluster-wide access** | Grants access to all namespaces through a Kubernetes ClusterRoleBinding.                                            |
-   | **Select Namespaces**   | Choose one or more existing namespaces. Launchpad creates RoleBindings scoped to those namespaces only.             |
-   | **Create New Namespace**| _(Optional)_ Enter a namespace name and select **+ Create** to create a namespace and add it to the current scope.  |
+   | **Option**               | **Description**                                                                                                    |
+   | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+   | **Cluster-wide access**  | Grants access to all namespaces through a Kubernetes ClusterRoleBinding.                                           |
+   | **Select Namespaces**    | Choose one or more existing namespaces. Launchpad creates RoleBindings scoped to those namespaces only.            |
+   | **Create New Namespace** | _(Optional)_ Enter a namespace name and select **+ Create** to create a namespace and add it to the current scope. |
 
 7. Select **Next** to open the **Review** step. Review the actions the wizard will perform for each user.
 
@@ -114,20 +114,20 @@ fixed.
 
 3. Update any of the following:
 
-   | **Field**                | **Description**                                                                                                        |
-   | ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-   | **Email**                | The email address on the account.                                                                                      |
-   | **First Name**           | The user's given name.                                                                                                 |
-   | **Last Name**            | The user's family name.                                                                                                |
-   | **Enabled**              | Clear the checkbox to disable the account without deleting it. Disabled users cannot sign in.                          |
-   | **Groups**               | Add a group by selecting it from the list. Remove a group by selecting the `×` on its pill.                            |
-   | **VMO Role**             | Select one of the role cards to assign a VMO platform role. The selected card is outlined.                             |
-   | **Namespaces**           | Select **Cluster-wide (all namespaces)** or select one or more specific namespaces to scope the Kubernetes bindings.   |
+   | **Field**      | **Description**                                                                                                      |
+   | -------------- | -------------------------------------------------------------------------------------------------------------------- |
+   | **Email**      | The email address on the account.                                                                                    |
+   | **First Name** | The user's given name.                                                                                               |
+   | **Last Name**  | The user's family name.                                                                                              |
+   | **Enabled**    | Clear the checkbox to disable the account without deleting it. Disabled users cannot sign in.                        |
+   | **Groups**     | Add a group by selecting it from the list. Remove a group by selecting the `×` on its pill.                          |
+   | **VMO Role**   | Select one of the role cards to assign a VMO platform role. The selected card is outlined.                           |
+   | **Namespaces** | Select **Cluster-wide (all namespaces)** or select one or more specific namespaces to scope the Kubernetes bindings. |
 
    :::info
 
-   The **Username** cannot be changed after a user is created. To use a different username, delete the user and create
-   a new one.
+   The **Username** cannot be changed after a user is created. To use a different username, delete the user and create a
+   new one.
 
    :::
 
@@ -137,21 +137,21 @@ fixed.
 
 When the user is a member of a group that already carries a VMO role, an amber banner appears above the role cards
 listing the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). The banner is a
-heads-up, not a lock: any role you set here is added to the roles the user already inherits from their groups. Refer
-to [How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
+heads-up, not a lock: any role you set here is added to the roles the user already inherits from their groups. Refer to
+[How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
 
 :::
 
 ## How Effective Permissions Are Calculated
 
 A user's effective permissions are the **union** of every VMO role and namespace scope granted to them, whether the
-grant comes from the user directly or from any group they belong to. There is no override or precedence between
-sources. For example, a user who has the **Viewer** role assigned directly and belongs to a group with the **Editor**
-role receives the sum of both roles' permissions in the sum of both scopes.
+grant comes from the user directly or from any group they belong to. There is no override or precedence between sources.
+For example, a user who has the **Viewer** role assigned directly and belongs to a group with the **Editor** role
+receives the sum of both roles' permissions in the sum of both scopes.
 
-To reduce a user's effective permissions, remove the grant from every source that provides it. Editing the user
-alone is not enough if a group also grants the permission. Refer to [Groups](./groups.md) to review and edit group
-membership and role assignments.
+To reduce a user's effective permissions, remove the grant from every source that provides it. Editing the user alone is
+not enough if a group also grants the permission. Refer to [Groups](./groups.md) to review and edit group membership and
+role assignments.
 
 ## Reset a User's Password
 
@@ -192,17 +192,16 @@ You can delete a single user or select multiple users to delete in a single oper
 
 :::warning
 
-Deleting a user removes them from Keycloak, but their existing ClusterRoleBindings and RoleBindings may remain until
-you explicitly revoke them. Remove the bindings on the [Groups](./groups.md) page or through the Kubernetes API if you
-no longer need them.
+Deleting a user removes them from Keycloak, but their existing ClusterRoleBindings and RoleBindings may remain until you
+explicitly revoke them. Remove the bindings on the [Groups](./groups.md) page or through the Kubernetes API if you no
+longer need them.
 
 :::
 
 ## Palette-Managed Environments
 
 When Launchpad for VMs is deployed in a Palette-managed environment, user creation may be hidden. In that case, user
-lifecycle is managed by the parent platform, and Launchpad displays users for viewing and access policy assignment
-only.
+lifecycle is managed by the parent platform, and Launchpad displays users for viewing and access policy assignment only.
 
 ## Next Steps
 
