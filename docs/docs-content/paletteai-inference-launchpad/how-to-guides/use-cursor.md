@@ -5,7 +5,7 @@ description:
   "Connect the Cursor code editor to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves
   your requests in Cursor's Ask mode."
 hide_table_of_contents: false
-sidebar_position: 4
+sidebar_position: 5
 tags: ["paletteai-inference-launchpad", "cursor", "how-to"]
 keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask mode", "api token"]
 ---
@@ -13,8 +13,8 @@ keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 This guide explains how to connect Cursor to a PaletteAI Inference Launchpad appliance so that a model running on the
-appliance serves your requests instead of a cloud provider. You generate an API token, create a uniquely named model
-alias on the appliance, point Cursor at the appliance, and confirm that requests route through the appliance.
+appliance serves your requests instead of a cloud provider. You create a uniquely named model alias on the appliance,
+point Cursor at the appliance, and confirm that requests route through the appliance.
 
 :::warning
 
@@ -29,14 +29,10 @@ appliance even after you complete this guide.
 - Cursor installed and already working. For installation, refer to the [Cursor documentation](https://docs.cursor.com).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
-- Operator access to the PaletteAI Inference Launchpad console, or an operator who can generate an API token and create
-  a model alias for you. Both tasks can require operator access.
+- An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md).
+  Generating the token and creating the model alias later in this guide can require operator access.
 - The appliance reachable at a DNS name with a valid, publicly trusted TLS certificate. Cursor sends requests from its
   own cloud servers, so a self-signed certificate does not work and there is no client-side workaround.
-
-## Generate an API Token
-
-<PartialsComponent category="paletteai-inference-launchpad" name="generate-api-token" />
 
 ## Create a Model Alias
 
