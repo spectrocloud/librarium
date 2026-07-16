@@ -39,7 +39,7 @@
     "axios": "1.13.5"
   },
   "dependencies": {
-    "@ant-design/icons": "^6.1.0",
+    "@ant-design/icons": "^6.3.2",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.4.2",
     "@docusaurus/core": "^3.9.2",
