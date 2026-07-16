@@ -73,7 +73,7 @@ jobs:
 
       - name: Backport Action
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: sqren/backport-github-action@85813678d776774a19ec5af56bd3a04305946f8a # v12.0.0
+        uses: sqren/backport-github-action@8a6c0381851f43f9f1fddc7303f0e9015eb57b62 # v12.0.4
         with:
         # We are using a PAT token through our Vault Operator to address the issue of PR workflows not being triggered.
         # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.
