@@ -45,7 +45,7 @@ env:
   # Pinned Impersonaid commit (private repo, no tags). Kept current by the
   # "Bump Impersonaid SHA" workflow (bump-impersonaid-sha.yaml). Keep this value
   # identical to IMPERSONAID_REF in persona-check.yaml.
-  IMPERSONAID_REF: "c1b9e58245b57a717902b901cba48b3f462add65" # spectrocloud/impersonaid main, last bumped 2026-07-06
+  IMPERSONAID_REF: "711b0dd41b812a77ae92b0a041b7dc1aa3821e43" # spectrocloud/impersonaid main, last bumped 2026-07-13
   MA_DIR: .github/monthly-assessment
   PR_BRANCH: chore/monthly-assessment
 
