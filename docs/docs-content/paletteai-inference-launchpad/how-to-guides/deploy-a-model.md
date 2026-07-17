@@ -21,7 +21,7 @@ lifecycle work, refer to [Model Provisioning Lifecycle](../explanation/architect
 - At least one node with free capacity for the model you intend to deploy.
 - The model present in the appliance catalog and able to fit the appliance's available GPU resources. To confirm
   support, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md) and
-  [Hardware Requirements](../reference/hardware-requirements.md).
+  [Suggested Hardware](../reference/hardware-requirements.md).
 
 ## Deploy a Model
 

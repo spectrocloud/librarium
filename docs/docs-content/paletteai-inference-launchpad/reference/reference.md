@@ -16,8 +16,8 @@ is configured, not how to accomplish a task.
 
 | **Reference**                                                     | **What it covers**                                                              |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [Hardware Requirements](./hardware-requirements.md)               | Compute, GPU, memory, storage, and network requirements for the appliance.      |
-| [Suggested Server Configurations](./server-configurations.md)     | Suggested AMD and NVIDIA server configurations for the appliance.               |
+| [Suggested Hardware](./hardware-requirements.md)                  | Compute, GPU, memory, storage, and network requirements for the appliance.      |
+| [Example Server Configurations](./server-configurations.md)       | Example AMD and NVIDIA server configurations for the appliance.                 |
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration. |
 | [Claude Code Configuration](./claude-code-reference.md)           | Environment variables and values for pointing Claude Code at the appliance.     |
 | [Cursor Configuration](./cursor-reference.md)                     | Settings and values for pointing Cursor at the appliance.                       |

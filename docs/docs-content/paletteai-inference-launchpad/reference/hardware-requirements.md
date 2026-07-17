@@ -1,9 +1,9 @@
 ---
 id: hardware-requirements
-title: Hardware Requirements
+title: Suggested Hardware
 description: >
-  Hardware requirements for a PaletteAI Inference Launchpad appliance: compute, GPU, memory, storage, and network.
-sidebar_label: Hardware Requirements
+  Suggested hardware for a PaletteAI Inference Launchpad appliance: compute, GPU, memory, storage, and network.
+sidebar_label: Suggested Hardware
 sidebar_position: 2
 tags:
   - paletteai-inference-launchpad
@@ -25,8 +25,8 @@ keywords:
 This page lists the hardware requirements for a PaletteAI Inference Launchpad appliance. Requirements are model-driven:
 the target model determines the GPU count, GPU memory, host RAM, and storage.
 
-For suggested server configurations that meet these requirements, refer to
-[Suggested Server Configurations](./server-configurations.md). For model-to-hardware mapping, refer to
+For example server configurations that meet these requirements, refer to
+[Example Server Configurations](./server-configurations.md). For model-to-hardware mapping, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md). For the design decisions behind these requirements,
 refer to [Architecture Overview](../explanation/architecture.md).
 
@@ -122,6 +122,6 @@ administrative workstation before you upload them.
 
 ## Resources
 
-- [Suggested Server Configurations](./server-configurations.md) for suggested machines that meet these requirements.
+- [Example Server Configurations](./server-configurations.md) for example machines that meet these requirements.
 - [Certified Models by Hardware](./certified-models-by-hardware.md) for model-to-hardware mapping.
 - [Architecture Overview](../explanation/architecture.md) for the design decisions behind these requirements.

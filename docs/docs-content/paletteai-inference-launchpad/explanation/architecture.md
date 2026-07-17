@@ -48,7 +48,7 @@ The network uses bonded NICs so that the ports on a high-density server present 
 appliance detects and configures automatically.
 
 For the specific values and example server configurations, refer to
-[Hardware Requirements](../reference/hardware-requirements.md).
+[Suggested Hardware](../reference/hardware-requirements.md).
 
 ## Appliance and Cluster Formation
 

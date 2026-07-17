@@ -1,10 +1,10 @@
 ---
 id: server-configurations
-title: Suggested Server Configurations
+title: Example Server Configurations
 description: >
-  Suggested server configurations for a PaletteAI Inference Launchpad appliance, spanning AMD Instinct and NVIDIA GPUs
+  Example server configurations for a PaletteAI Inference Launchpad appliance, spanning AMD Instinct and NVIDIA GPUs
   from multiple vendors.
-sidebar_label: Suggested Server Configurations
+sidebar_label: Example Server Configurations
 sidebar_position: 3
 tags:
   - paletteai-inference-launchpad
@@ -22,9 +22,8 @@ keywords:
 
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
-The following table lists suggested server configurations for PaletteAI Inference Launchpad. Each configuration meets
-the [Hardware Requirements](./hardware-requirements.md). The GPU model is an independent choice from the server vendor.
-Treat each row as an example build, not the only GPU the server vendor supports.
+The following table lists example server configurations for PaletteAI Inference Launchpad. Each configuration meets the
+specifications in [Suggested Hardware](./hardware-requirements.md).
 
 <!-- vale Vale.Terms = NO -->
 
@@ -41,6 +40,6 @@ Treat each row as an example build, not the only GPU the server vendor supports.
 
 ## Resources
 
-- [Hardware Requirements](./hardware-requirements.md) for the requirements these configurations meet.
+- [Suggested Hardware](./hardware-requirements.md) for the specifications these configurations meet.
 - [Certified Models by Hardware](./certified-models-by-hardware.md) for model-to-hardware mapping.
 - [Install the Appliance](../how-to-guides/install-the-appliance.md) to deploy the appliance.
