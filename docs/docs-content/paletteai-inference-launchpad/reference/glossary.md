@@ -14,8 +14,8 @@ keywords:
 This glossary defines the key AI, product, and platform terms used across the PaletteAI Inference Launchpad
 documentation. Use it to look up an unfamiliar term without leaving the guide you are reading.
 
-**Go to:** [A](#a) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [H](#h) · [I](#i) · [K](#k) · [L](#l) · [M](#m) · [N](#n) ·
-[O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v)
+**Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) ·
+[M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v)
 
 ## A
 
@@ -47,6 +47,22 @@ Palette or PaletteAI dependency.
 
 The web UI served by the appliance, sometimes referred to as the admin UI. Platform [operators](#operator) use it to
 deploy models, create clients, issue API tokens, set quotas, and view usage.
+
+## B
+
+### BMC
+
+The baseboard management controller, a server's out-of-band management interface, available on enterprise servers under
+vendor names such as iDRAC (Dell), iLO (HPE), or IPMI (open standard). Operators use the BMC to power the server on and
+off remotely, view console output during boot, and mount [virtual media](#virtual-media) — the fallback for ISO boot
+when a USB stick is not available.
+
+### Bond
+
+An aggregated network interface, typically `bond0`, that combines two physical NICs into a single logical link. The
+appliance carries cluster traffic and [Piraeus](#piraeus) storage replication over a bond so both share the aggregated
+bandwidth of the data NICs, using dynamic Link Aggregation (802.3ad) and LACP. Refer to
+[Install the Appliance](../how-to-guides/install-the-appliance.md#create-a-bond).
 
 ## C
 
@@ -81,11 +97,30 @@ is more often a workload, such as an AI [coding assistant](#coding-assistant), a
 than a person. Each client holds one or more [API tokens](#api-token), its own [quotas](#quota), and its own usage
 visibility. Refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 
+### Cluster
+
+One or more [nodes](#node) operating together as the appliance. A single-node cluster acts as both control plane and
+worker; a multi-node cluster distributes those roles across nodes linked through
+[Linked Edge Hosts](#linked-edge-hosts) and uses an odd number of control-plane nodes for high availability.
+
+### CMVP
+
+The Cryptographic Module Validation Program, run jointly by NIST and the Canadian Centre for Cyber Security, which
+certifies cryptographic modules against [FIPS](#fips) 140-3. Public-sector deployments may require appliance components
+to run in CMVP-validated configurations.
+
 ### Coding Assistant
 
 An AI development tool, such as Claude Code, Cursor, OpenAI Codex, or OpenCode, that sends its requests to a model.
 Coding assistants are the primary workloads the appliance is tuned for; each one connects to the appliance as a
 [client](#client) instead of to a cloud provider.
+
+### Content Bundle
+
+A compressed archive, larger than 20 GB, containing the appliance's platform and application software. Operators upload
+the bundle to the node through [Local UI](#local-ui) or the Palette CLI as part of installation. The bundle does not
+include LLM [model weights](#model-weights), which ship as a separate artifact and are uploaded independently through
+the CLI.
 
 ### Context Window
 
@@ -119,6 +154,18 @@ The network location, expressed as a URL path, at which the appliance exposes a 
 model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at paths such as `/v1/chat/completions`.
 
 ## F
+
+### FIPS
+
+The U.S. Federal Information Processing Standards, a suite of government security standards. FIPS 140 covers
+cryptographic modules and is relevant to public-sector deployments; see also [CMVP](#cmvp), which validates modules
+against FIPS 140-3.
+
+### Follower
+
+In a multi-node cluster, a node that joins the [leader](#leader) through [Linked Edge Hosts](#linked-edge-hosts).
+Followers run the same OS and packs as the leader and take on their share of the cluster's workload once linking
+completes.
 
 ### Frontier Model
 
@@ -156,6 +203,21 @@ The capability that directs each request to the most appropriate model, [local](
 content, the API token used, cost policy, or semantic classification, so routine work runs on local models and frontier
 models are used only when policy demands.
 
+### Interactive Installer
+
+The Palette Edge installer that runs from the [slim ISO](#slim-iso) and writes the immutable [Kairos](#kairos)-based
+operating system to the local disk. The installer inspects every disk on the host, blocks the install if any disk still
+holds Kairos partitions from a prior install, and provides an in-flow wipe-all-disks option so the reader does not have
+to drop to a shell.
+
+## J
+
+### Jumpbox
+
+An informal name for the [administrative workstation](#administrative-workstation) — a separate Linux machine, distinct
+from the appliance itself, on which operators install the Palette CLI and from which they drive installation and
+day-two operations against the appliance nodes.
+
 ## K
 
 ### Kairos
@@ -188,6 +250,18 @@ The proxy component that sits in front of the inference engine and handles every
 calling [client](#client) from its [API token](#api-token), enforces that client's [quotas](#quota), meters usage, and
 routes the request to a local or frontier model. Refer to [Architecture Overview](../explanation/architecture.md).
 
+### Leader
+
+In a multi-node cluster, the node whose [Local UI](#local-ui) generates the token that [followers](#follower) present
+to join. The leader remains part of the control plane after linking. Use an odd number of control-plane nodes for high
+availability.
+
+### Linked Edge Hosts
+
+The [Local UI](#local-ui) feature that joins nodes to the [leader](#leader) using a Base64-encoded token containing the
+leader's IP address and a one-time password ([OTP](#otp)) valid for two minutes. Content synchronizes automatically
+across every linked host once the group is formed.
+
 ### Local Mode
 
 A deployment mode in which the appliance operates as a fully standalone unit, with the inference engine enabled and all
@@ -200,6 +274,12 @@ features active. This is the mode used for a standalone appliance without [Palet
 A model deployed and served directly on the appliance's own hardware. Local inference keeps data on-premises and avoids
 the per-token API costs of a [frontier model](#frontier-model). Every client can call every local model; the appliance
 meters and limits usage through quotas but does not gate access.
+
+### Local UI
+
+The web console the appliance's edge OS serves on TCP port `5080` at `https://<node-ip>:5080`, used to create the
+[bond](#bond), link nodes, upload the [content bundle](#content-bundle), and deploy the cluster. Distinct from the
+[appliance console](#appliance-console) that the running cluster serves once installation completes.
 
 ## M
 
@@ -214,6 +294,12 @@ serving status. The appliance turns a model off when a [quota](#quota) that cove
 An alternate name under which a model is served, so a [coding assistant](#coding-assistant) can request a model by a
 name it recognizes, such as an Anthropic or OpenAI model id. Some tools require a unique alias rather than a name that
 collides with their own catalog.
+
+### Model Metadata
+
+A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
+from Hugging Face and upload them to the appliance. The metadata is downloaded from Artifact Studio, or from the
+`launchpad-ai` repository, alongside the ISO and content bundle.
 
 ### Model Weights
 
@@ -256,7 +342,20 @@ tools can point at the appliance by changing only the base URL and the API token
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
 models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console).
 
+### OTP
+
+One-time password. A short-lived credential embedded in the Base64-encoded token that a multi-node cluster's
+[leader](#leader) emits during [Linked Edge Hosts](#linked-edge-hosts) linking. The OTP is valid for two minutes, after
+which the leader must issue a fresh token.
+
 ## P
+
+### Pack
+
+A unit of software the cluster installs as part of a cluster profile, such as `piraeus-operator` or
+`nvidia-gpu-operator-ai`. The PaletteAI Inference Launchpad profile bundles the edge OS, [Kubernetes](#kubernetes), the Cilium CNI,
+[Piraeus](#piraeus), the Zot registry, MetalLB, Traefik, cert-manager, Grafana, Victoria Metrics, the OTel Collector,
+and the PaletteAI Inference Launchpad application as packs.
 
 ### PaletteAI
 
@@ -264,6 +363,12 @@ Spectro Cloud's multi-cluster AI platform for the AI factory, offering GPU-as-a-
 Studio at data-center scale. It is a distinct product from PaletteAI Inference Launchpad, which is a standalone
 appliance that requires no PaletteAI dependency. Refer to
 [What is PaletteAI Inference Launchpad?](../paletteai-inference-launchpad.md).
+
+### Palette TUI
+
+The text-based console on the appliance node itself, used after the [interactive installer](#interactive-installer)
+reboots the node to set the initial administrator credentials, hostname, static IP, DNS, and NTP. To re-enter the
+Palette TUI after quitting, run `palette-tui` on the node.
 
 ### Piraeus
 
@@ -308,11 +413,24 @@ does this is called a reasoning model, and the depth of that effort can sometime
 
 ## S
 
+### Slim ISO
+
+The small (approximately 1.5 GB) bootable installer image that contains the appliance's operating system, provisioning
+agent, and web console. Operators boot the node from the slim ISO — flashed to a USB drive or mounted through the
+[BMC](#bmc) as [virtual media](#virtual-media) — and the [interactive installer](#interactive-installer) writes the OS
+to the local disk.
+
 ### Smoke Test
 
 A short check the appliance runs against a newly deployed model before it accepts traffic. A model becomes routable only
 after its signature is verified and its smoke test passes, so the appliance never presents a model as ready before it
 can serve requests.
+
+### STIG
+
+The Security Technical Implementation Guides published by the U.S. Defense Information Systems Agency (DISA), which
+prescribe hardened configurations for information systems. STIG compliance is required for certain U.S. Department of
+Defense deployments.
 
 ## T
 
@@ -336,6 +454,18 @@ window. The appliance meters input tokens, output tokens, and derived cost for e
 [quotas](#quota), gives operators usage visibility, and enables [chargeback](#chargeback).
 
 ## V
+
+### VIP
+
+Virtual IP address — a single IP address that resolves to whichever cluster node currently holds the control-plane
+role, so a multi-node cluster presents one stable endpoint even as individual nodes fail over. Configured in the
+cluster-creation wizard.
+
+### Virtual Media
+
+The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached
+optical drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not
+available.
 
 ### vLLM
 
