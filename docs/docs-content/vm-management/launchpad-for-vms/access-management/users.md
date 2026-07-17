@@ -112,7 +112,7 @@ fixed.
 
 2. In the **Actions** column, select the pencil icon for the user you want to edit. The **Edit User** modal opens.
 
-3. Update any of the following:
+3. The table below lists the fields you can edit.
 
    | **Field**      | **Description**                                                                                                      |
    | -------------- | -------------------------------------------------------------------------------------------------------------------- |
