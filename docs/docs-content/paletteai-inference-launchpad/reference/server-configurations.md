@@ -23,17 +23,21 @@ keywords:
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 The following table lists suggested server configurations for PaletteAI Inference Launchpad. Each configuration meets
-the [Hardware Requirements](./hardware-requirements.md). The recommended platform is the Supermicro configuration with
-AMD Instinct MI325X GPUs.
+the [Hardware Requirements](./hardware-requirements.md). The GPU model is an independent choice from the server vendor.
+Treat each row as an example build, not the only GPU the server vendor supports.
 
-| **Vendor** | **System**                            | **GPUs**                                                    | **CPU**                     |
-| ---------- | ------------------------------------- | ----------------------------------------------------------- | --------------------------- |
-| Supermicro | AMD Instinct MI325X (recommended)     | 8x AMD Instinct MI325X, 256 GB GPU memory each (2 TB total) | 256 vCPU                    |
-| Supermicro | AMD Instinct MI350X (next generation) | 8x AMD Instinct MI350X, CDNA 4 (gfx950)                     | Not specified               |
-| Supermicro | SYS-421GE-TNHR-LC1 (liquid-cooled)    | 8x NVIDIA H100 SXM                                          | Intel Xeon Platinum 8570    |
-| HPE        | ProLiant Compute DL380a Gen12         | 8x NVIDIA L40S                                              | Intel Xeon 6710E            |
-| Dell       | PowerEdge XE9680                      | 8x NVIDIA H100 80 GB SXM5                                   | 2x Intel Xeon Platinum 8570 |
+<!-- vale Vale.Terms = NO -->
 
+| **Server vendor**        | **Server model**                                   | **GPU vendor** | **GPU**                                           | **CPU**                                            |
+| ------------------------ | -------------------------------------------------- | -------------- | ------------------------------------------------- | -------------------------------------------------- |
+| Supermicro               | SYS-421GE-TNHR-LC1 (liquid-cooled)                 | NVIDIA         | 8x H100 SXM                                       | Intel Xeon Platinum 8570                           |
+| Supermicro               | Contact your Supermicro representative for details | AMD            | 8x Instinct MI350X                                | Contact your Supermicro representative for details |
+| HPE                      | ProLiant Compute DL380a Gen12                      | NVIDIA         | 8x L40S                                           | Intel Xeon 6710E                                   |
+| Dell                     | PowerEdge XE9680                                   | NVIDIA         | 8x H100 80 GB SXM5                                | 2x Intel Xeon Platinum 8570                        |
+| Dell                     | PowerEdge XE7740                                   | NVIDIA         | 8x RTX PRO 6000 Blackwell Server Edition 96 GB/ea | 2x Intel Xeon 6                                    |
+| Vultr (bare metal cloud) | vbm-256c-3072gb-8-mi325x-gpu                       | AMD            | 8x Instinct MI325X 256 GB/ea                      | Contact your Vultr representative for details      |
+
+<!-- vale Vale.Terms = YES -->
 
 ## Resources
 
