@@ -134,7 +134,7 @@ jobs:
       - name: Slack Notification
         if: ${{ failure() && github.event.pull_request.head.repo.fork == false }}
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3 as of May 6, 2026
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
