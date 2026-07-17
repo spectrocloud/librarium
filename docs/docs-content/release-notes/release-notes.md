@@ -49,6 +49,14 @@ tags: ["release-notes"]
   [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
   third-party IdP.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now support installing
+  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
+  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
+  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
