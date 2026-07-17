@@ -23,9 +23,9 @@ not name a model, the appliance routes it to the default model. For how the appl
 
 ## Set the Default Model
 
-Set the default model from the _Control Room_. You can only select a model that the appliance currently serves.
+Set the default model from the _Overview_. You can only select a model that the appliance currently serves.
 
-1. From the left main menu, select **Control Room**.
+1. From the left main menu, select **Overview**.
 
 2. Open the **switch default model** drop-down menu and select the model to make default.
 
