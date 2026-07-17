@@ -90,7 +90,7 @@ different scales and deployment models.
 ## Next Steps
 
 - **Check hardware requirements:** Review the
-  [Hardware Requirements](/paletteai-inference-launchpad/reference/hardware-requirements) reference before procuring or
+  [Suggested Hardware](/paletteai-inference-launchpad/reference/hardware-requirements) reference before procuring or
   preparing your hardware.
 - **Install the appliance:** Follow the
   [Install the PaletteAI Inference Launchpad Appliance](/paletteai-inference-launchpad/how-to-guides/install-the-appliance)
