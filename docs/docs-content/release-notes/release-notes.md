@@ -59,12 +59,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 | Pack Name | Layer | Non-FIPS | FIPS | New Version |
 | --------- | ----- | -------- | ---- | ----------- |
 | <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.3 |
-| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.20.2 |
-| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.20.2 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.33.13 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.35.6 |
 | <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :x: | 1.11.2 |
-| <VersionedLink text="keycloak" url="/integrations/packs/?pack=keycloak" /> | `addon` | :white_check_mark: | :x: | 7.2.2 |
 | <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.3.3 |
 | <VersionedLink text="open-policy-agent" url="/integrations/packs/?pack=open-policy-agent" /> | `addon` | :white_check_mark: | :x: | 3.23.0 |
 | <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 0.91.1 |
