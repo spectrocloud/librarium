@@ -41,7 +41,7 @@
     "axios": "1.13.5"
   },
   "dependencies": {
-    "@ant-design/icons": "^6.1.0",
+    "@ant-design/icons": "^6.3.2",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.4.2",
     "@docusaurus/core": "^3.9.2",
@@ -75,7 +75,7 @@
     "react-select": "^5.10.2",
     "remark-gfm": "4.0.1",
     "sass": "^1.97.3",
-    "semver": "^7.8.4"
+    "semver": "^7.8.5"
   },
   "devDependencies": {
     "@argos-ci/cli": "^5.0.4",
