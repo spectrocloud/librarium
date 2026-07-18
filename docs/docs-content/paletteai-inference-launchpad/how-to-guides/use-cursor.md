@@ -5,7 +5,7 @@ description:
   "Connect the Cursor code editor to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves
   your requests in Cursor's Ask mode."
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 10
 tags: ["paletteai-inference-launchpad", "cursor", "how-to"]
 keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask mode", "api token"]
 ---

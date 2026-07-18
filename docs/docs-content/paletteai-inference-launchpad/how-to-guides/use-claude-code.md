@@ -5,7 +5,7 @@ description:
   "Connect Anthropic's Claude Code coding agent to a PaletteAI Inference Launchpad appliance so that a model on the
   appliance serves every request."
 hide_table_of_contents: false
-sidebar_position: 4
+sidebar_position: 9
 tags: ["paletteai-inference-launchpad", "claude-code", "how-to"]
 keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token"]
 ---
