@@ -80,7 +80,7 @@ and the client is back under the limit.
 
 {/* NEEDS REVIEW: quota enforcement is off by default (global switch) per current working assumption. Confirm with an SME before publishing. */}
 
-{/* TODO: link to the quota how-to and Quota & Rate Limit reference (DOC-2925) once those pages exist. */}
+{/* TODO: link to the Set and Manage Quotas how-to (DOC-2940) and Quota & Rate Limit reference (DOC-2941) once they exist. */}
 
 ## What Clients Can Access
 
@@ -108,6 +108,8 @@ so it is ready to run on every request.
 
 ## Resources
 
+- [Create a Client](../how-to-guides/create-a-client.md) walks through creating a client and issuing its first API
+  token.
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md) walks through connecting a
   coding assistant to a client with an API key.
 - [Architecture Overview](./architecture.md) explains how the appliance routes requests and where its components sit.

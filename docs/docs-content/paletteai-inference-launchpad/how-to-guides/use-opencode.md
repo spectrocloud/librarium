@@ -5,7 +5,7 @@ description:
   "Connect the OpenCode terminal coding agent to a PaletteAI Inference Launchpad appliance so that a model on the
   appliance serves every request."
 hide_table_of_contents: false
-sidebar_position: 7
+sidebar_position: 12
 tags: ["paletteai-inference-launchpad", "opencode", "how-to"]
 keywords: ["launchpad", "ai", "opencode", "openai-compatible", "custom provider", "opencode.json", "api token"]
 ---
