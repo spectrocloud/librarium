@@ -16,6 +16,7 @@ is configured, not how to accomplish a task.
 
 | **Reference**                                                     | **What it covers**                                                              |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Glossary](./glossary.md)                                         | Definitions of the AI, product, and platform terms used across the docs.        |
 | [Suggested Hardware](./hardware-requirements.md)                  | Compute, GPU, memory, storage, and network requirements for the appliance.      |
 | [Example Server Configurations](./server-configurations.md)       | Example AMD and NVIDIA server configurations for the appliance.                 |
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration. |
