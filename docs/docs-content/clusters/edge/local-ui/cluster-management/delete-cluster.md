@@ -17,11 +17,10 @@ For more information about leader hosts, refer to [Link Hosts](link-hosts.md#lea
 
 :::warning
 
-On Edge hosts with an
-[`applianceType`](../../edge-configuration/installer-reference.md) of `paletteai`, `vertexai`, `vm-launchpad`,
-`vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, deleting the cluster also erases the on-appliance
-content bundle. Redeploying the cluster requires either re-uploading a content bundle or reinstalling the appliance
-with an installer ISO that contains embedded content. Before you delete, make sure the content bundle is saved
+On Edge hosts with an [`applianceType`](../../edge-configuration/installer-reference.md) of `paletteai`, `vertexai`,
+`vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, deleting the cluster also erases the
+on-appliance content bundle. Redeploying the cluster requires either re-uploading a content bundle or reinstalling the
+appliance with an installer ISO that contains embedded content. Before you delete, make sure the content bundle is saved
 somewhere off the appliance. Refer to [Recover a Deleted Cluster](#recover-a-deleted-cluster) for the redeploy flow.
 
 :::
@@ -53,8 +52,8 @@ somewhere off the appliance. Refer to [Recover a Deleted Cluster](#recover-a-del
    :::info
 
    In appliance mode with one of the VMO `applianceType` variants, Local UI displays a reminder in the confirmation
-   dialog that deletion erases the on-appliance content bundle and directs you to save it off the appliance first if
-   you have not already done so.
+   dialog that deletion erases the on-appliance content bundle and directs you to save it off the appliance first if you
+   have not already done so.
 
    :::
 
@@ -68,13 +67,13 @@ not a valid recovery path for these appliance types.
 
 To redeploy the cluster, use one of the following paths.
 
-- **Re-upload the content bundle.** From the **Content** page in Local UI, upload the content bundle you used earlier
-  on this appliance. For more information, refer to
-  [Upload Content Bundle](./upload-content-bundle.md#recover-a-deleted-cluster). Then return to the **Cluster** page
-  and create the cluster. Refer to [Create Local Cluster](./create-cluster.md).
+- **Re-upload the content bundle.** From the **Content** page in Local UI, upload the content bundle you used earlier on
+  this appliance. For more information, refer to
+  [Upload Content Bundle](./upload-content-bundle.md#recover-a-deleted-cluster). Then return to the **Cluster** page and
+  create the cluster. Refer to [Create Local Cluster](./create-cluster.md).
 
-- **Reinstall the appliance.** Reinstall the appliance using an Edge installer ISO that contains embedded content and
-  a cluster definition. For more information about building an installer ISO with embedded content, refer to
+- **Reinstall the appliance.** Reinstall the appliance using an Edge installer ISO that contains embedded content and a
+  cluster definition. For more information about building an installer ISO with embedded content, refer to
   [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and the
   [EdgeForge workflow](../../edgeforge-workflow/edgeforge-workflow.md). After the appliance boots, create the cluster.
 

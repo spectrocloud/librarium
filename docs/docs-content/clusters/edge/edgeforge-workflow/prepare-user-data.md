@@ -132,9 +132,9 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    :::info
 
    If you are preparing user data for a Palette appliance, also set
-   [`stylus.applianceType`](../edge-configuration/installer-reference.md) to identify the appliance variant, for
-   example `paletteai` or `vm-launchpad`. Local UI uses this value to enable appliance-specific behavior, such as
-   guiding the redeploy flow after a cluster deletion.
+   [`stylus.applianceType`](../edge-configuration/installer-reference.md) to identify the appliance variant, for example
+   `paletteai` or `vm-launchpad`. Local UI uses this value to enable appliance-specific behavior, such as guiding the
+   redeploy flow after a cluster deletion.
 
    :::
 

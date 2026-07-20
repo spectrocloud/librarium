@@ -125,12 +125,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Local UI now guides operators through the correct redeploy path after a cluster deletion on Edge hosts with an
   `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
-  `ai-launchpad-vertex`. The delete confirmation warns that deletion erases the on-appliance content bundle and
-  reminds you to save it off the appliance first. After deletion, Local UI directs you to re-upload the content bundle
-  from the [Content](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) page or reinstall the
-  appliance with an installer ISO that contains embedded content. The **Import config** option is hidden for these
-  appliance types because uploading a cluster configuration is not a valid recovery path in this mode. For more
-  information, refer to [Delete a Cluster](../clusters/edge/local-ui/cluster-management/delete-cluster.md) and
+  `ai-launchpad-vertex`. The delete confirmation warns that deletion erases the on-appliance content bundle and reminds
+  you to save it off the appliance first. After deletion, Local UI directs you to re-upload the content bundle from the
+  [Content](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) page or reinstall the appliance with
+  an installer ISO that contains embedded content. The **Import config** option is hidden for these appliance types
+  because uploading a cluster configuration is not a valid recovery path in this mode. For more information, refer to
+  [Delete a Cluster](../clusters/edge/local-ui/cluster-management/delete-cluster.md) and
   [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md).
 
 #### Bug Fixes

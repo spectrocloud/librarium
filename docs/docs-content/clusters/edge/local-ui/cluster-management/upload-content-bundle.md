@@ -124,12 +124,12 @@ This page guides you through how to upload a content bundle to an Edge host usin
 
 ## Recover a Deleted Cluster
 
-On Edge hosts running in appliance mode with an
-[`applianceType`](../../edge-configuration/installer-reference.md) of `paletteai`, `vertexai`, `vm-launchpad`,
-`vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, deleting the cluster also erases the on-appliance
-content bundle. To redeploy the cluster, upload the content bundle again from the **Content** page using either
-[Local UI](#upload-content-bundle-with-local-ui) or the [Palette CLI](#upload-content-bundle-with-palette-cli), and then
-create the cluster. Refer to [Create Local Cluster](./create-cluster.md).
+On Edge hosts running in appliance mode with an [`applianceType`](../../edge-configuration/installer-reference.md) of
+`paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, deleting the
+cluster also erases the on-appliance content bundle. To redeploy the cluster, upload the content bundle again from the
+**Content** page using either [Local UI](#upload-content-bundle-with-local-ui) or the
+[Palette CLI](#upload-content-bundle-with-palette-cli), and then create the cluster. Refer to
+[Create Local Cluster](./create-cluster.md).
 
 If you do not have a copy of the content bundle saved off the appliance, reinstall the appliance with an Edge installer
 ISO that contains embedded content. For more information, refer to

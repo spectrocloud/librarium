@@ -114,8 +114,8 @@ management.
    `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, the **Import config** option is
    hidden. These appliances always deploy from the content bundle and its embedded cluster definition. If no content is
    available on the appliance, for example after a cluster deletion, the wizard blocks the redeploy and prompts you to
-   re-upload a content bundle or reinstall the appliance with an installer ISO that contains embedded content. Refer
-   to [Recover a Deleted Cluster](./delete-cluster.md#recover-a-deleted-cluster).
+   re-upload a content bundle or reinstall the appliance with an installer ISO that contains embedded content. Refer to
+   [Recover a Deleted Cluster](./delete-cluster.md#recover-a-deleted-cluster).
 
    :::
 
