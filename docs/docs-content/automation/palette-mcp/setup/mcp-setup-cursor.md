@@ -7,10 +7,6 @@ sidebar_position: 20
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Cursor](https://cursor.com/get-started).
 
@@ -31,30 +27,38 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
-5. Open Cursor on your local machine. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**.
+5.  Open Cursor on your local machine. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**.
 
-6. Select **Add Custom MCP**. The `mcp.json` file opens.
+6.  Select **Add Custom MCP**. The `mcp.json` file opens.
 
-7. <PartialsComponent category="palette-mcp" name="server-snippet" />
+7.  <PartialsComponent category="palette-mcp" name="server-snippet" />
 
-8. Save the `mcp.json` file and close it.
+8.  Save the `mcp.json` file and close it.
 
-9. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**. Ensure that the **palette** MCP server is set up
-   and enabled.
+9.  Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**. Ensure that the **palette** MCP server is set up
+    and enabled.
 
-   ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
+    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
-10. We recommend adding an [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use the downloaded
-    kubeconfig files to access clusters.
+10. Install the four Palette diagnostic skills (`diagnose-cluster`, `diagnose-edge`, `health-overview`, and
+    `access-review`) from the Palette Agent Toolkit repository.
 
-    Execute the following command to create a new file for your Palette skill.
+    ```shell
+    npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
+    ```
+
+11. (Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
+    kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
+    `kubectl` workflows.
+
+    Issue the following command to create a new file for your Palette skill.
 
     ```shell
     touch ~/.cursor/skills/palette-mcp-guidance.md
     ```
 
     Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
-    placeholder with the kubeconfig local path you configured in **Step 4**.
+    placeholder with a directory where you want to store kubeconfig files.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -72,13 +76,18 @@ You can now use the Palette MCP server with Cursor.
    ```shell hideClipboard title="Example Output"
    ❯ How many clusters do I have in Palette?
 
-   From your Palette account (via the Palette MCP gather_or_delete_clusters list call, limit 500, all clusters), you currently have 1 cluster.
+   From your Palette account (via the Palette MCP read_clusters call), you currently have 1 cluster.
 
    | Name             | State   |
    | aws-cluster-test | Running |
-
-   There was no next_continue_token, so this is the full list for the queried scope (default project/context your MCP uses).
    ```
+
+:::info
+
+To enable write tools, such as create, update, and delete, append `"--allow-write"` to the `args` array in `mcp.json`
+after the image name. By default, the server starts in read-only mode.
+
+:::
 
 ## Next Steps
 

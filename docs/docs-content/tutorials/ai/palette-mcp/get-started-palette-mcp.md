@@ -33,7 +33,7 @@ these popular MCP clients.
 :::
 
 Below is a high-level diagram of the MCP server workflow. Your MCP client interacts with the Palette MCP server, which
-directly communicates with the Palette API. The Palette MCP server downloads the
+directly communicates with the Palette API. The Palette MCP server retrieves the
 [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for your cluster, which is then used by the MCP
 client to gather information about the cluster using the [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 command line tool.
@@ -56,11 +56,11 @@ information and example use cases.
     [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
     [Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md).
 
-  - Enable `ALLOW_DANGEROUS_ACTIONS` on the Palette MCP Server. Refer to
+  - Start the Palette MCP server with the `--allow-write` flag to enable write tools, such as delete. Refer to
     [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) for more information.
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
-    [Podman](https://podman.io/docs/installation).
+    [Podman](https://podman.io/docs/installation), if you use the container image.
 
   - Kubectl installed locally. Refer to the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for
     additional guidance.
@@ -118,45 +118,42 @@ Open your MCP client.
 :::warning
 
 Ensure that you follow all of the steps in the MCP server setup guides before proceeding with the tutorial. You must
-configure the `kubeconfig` folder, `.env.mcp` file, and an agent skill for cluster access through the MCP client to
-succeed. Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
+configure an agent skill for cluster access through the MCP client to succeed. Refer to the
+[Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
 [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
 [Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) pages for more information.
 
 :::
 
-Send a prompt asking to download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
+Send a prompt asking to retrieve the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
 your running clusters. Replace the placeholder with your cluster name and submit the following prompt. The Palette MCP
-server uses the `getKubeconfig` tool to download the kubeconfig file for your Palette cluster.
+server uses the `read_cluster_kubeconfig` tool to retrieve the kubeconfig file for your Palette cluster.
 
 ```shell title="Example Prompt"
-Download the kubeconfig file for the `<cluster-name>` Palette cluster.
+Retrieve the kubeconfig file for the `<cluster-name>` Palette cluster.
 ```
 
 ```shell hideClipboard title="Example Output"
-❯ Download the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
+❯ Retrieve the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
 
-⏺ I'll first find the cluster UID by listing clusters, then download the kubeconfig.
-
-  Called palette (ctrl+o to expand)
-
-⏺ Found the cluster. Now let me load and call the getKubeconfig tool.
+⏺ I'll first find the cluster UID by listing clusters, then retrieve the kubeconfig.
 
   Called palette (ctrl+o to expand)
 
-⏺ The kubeconfig for get-started-palette-mcp-cluster has been downloaded successfully.
+⏺ Found the cluster. Now let me call the read_cluster_kubeconfig tool.
 
-  As noted in the CLAUDE.md instructions, the file was written inside the MCP container at /tmp/kubeconfig/69df9741978d9f786aacf13a.kubeconfig, which is synced to
-  your host machine at $HOME/.palette/kubeconfig.
+  Called palette (ctrl+o to expand)
+
+⏺ The kubeconfig for get-started-palette-mcp-cluster has been retrieved successfully and saved to $HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig.
 
   To use it with kubectl:
 
-  export KUBECONFIG="$HOME/.palette/kubeconfig"
+  export KUBECONFIG="$HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig"
   kubectl get nodes
 
   Or per-command:
 
-  kubectl --kubeconfig="$HOME/.palette/kubeconfig" get pods -A
+  kubectl --kubeconfig="$HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig" get pods -A
 ```
 
 Investigate if there are any failing pods or deployments on your cluster. Replace the placeholder with your cluster name
@@ -463,8 +460,8 @@ Use the following steps to remove all the resources you created for the tutorial
 
 :::warning
 
-Ensure that you enable `ALLOW_DANGEROUS_ACTIONS` on the Palette MCP server before proceeding with this section. Refer to
-the [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) page for more
+Ensure that the Palette MCP server is started with the `--allow-write` flag before proceeding with this section. Refer
+to the [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) page for more
 information.
 
 :::
@@ -481,12 +478,13 @@ Delete the `<cluster-name>` Palette cluster.
 ```shell hideClipboard title="Example Output"
 ❯ Delete the `get-started-palette-mcp-cluster` Palette cluster.
 
-⏺ This will permanently delete the get-started-palette-mcp-cluster cluster (UID: 69e5fa2b08e508cba60edbb8). This action is irreversible. Are you sure you want to proceed?
+⏺ This will permanently delete the get-started-palette-mcp-cluster cluster (UID: 69e5fa2b08e508cba60edbb8). This action is irreversible.
+  To confirm, please type the cluster name: get-started-palette-mcp-cluster
 
-❯ Yes
+❯ get-started-palette-mcp-cluster
   Called palette (ctrl+o to expand)
 
-⏺ Cluster get-started-palette-mcp-cluster has been successfully deleted.
+⏺ Cluster get-started-palette-mcp-cluster has been marked for deletion.
 ```
 
 Navigate back to the Palette UI. From the left main menu, select **Clusters**. Then, select the row for the tutorial
@@ -509,9 +507,10 @@ Delete the `<cluster-profile-name>` Palette cluster profile.
 ⏺ I'll look up the cluster profile first to get its UID.
   Called palette (ctrl+o to expand)
 
-⏺ Found it — UID 69de31e540f19df7ae05a3e6. This will permanently delete the get-started-palette-mcp-aws cluster profile. Are you sure you want to proceed?
+⏺ Found it — UID 69de31e540f19df7ae05a3e6. This will permanently delete the get-started-palette-mcp-aws cluster profile.
+  To confirm, please type the cluster profile name: get-started-palette-mcp-aws
 
-❯ Yes
+❯ get-started-palette-mcp-aws
   Called palette (ctrl+o to expand)
 
 ⏺ Cluster profile get-started-palette-mcp-aws has been successfully deleted.
