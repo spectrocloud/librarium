@@ -108,5 +108,7 @@ catalog.
 
 ## Next Steps
 
-- [Deploy a Model](./deploy-a-model.md) — deploy the uploaded model and verify it is serving.
-- [Model Upload Reference](../reference/model-upload-reference.md) — the full command flags and metadata file fields.
+- **Deploy the model:** Follow [Deploy a Model](./deploy-a-model.md) to deploy the uploaded model and verify it is
+  serving.
+- **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
+  command flags and metadata file fields.
