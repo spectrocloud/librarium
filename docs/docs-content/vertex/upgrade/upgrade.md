@@ -68,8 +68,8 @@ The following table lists the Kubernetes version bundled with each recent Palett
 | 4.9.23 and later               |       1.34.6       |
 
 Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x` series ships Kubernetes
-`1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. To reach `4.9.23` or later from `4.8.x`,
-upgrade in two hops.
+`1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. To reach `4.9.23` or later from
+`4.8.x`, upgrade in two hops.
 
 1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
