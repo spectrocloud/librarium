@@ -18,6 +18,8 @@ into your own Amazon Elastic Container Registry (ECR) so that your cluster never
 
 Before you begin, ensure you meet the following prerequisites.
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 ### AWS Infrastructure
 
 - An AWS account with permissions to create ECR repositories.
@@ -45,7 +47,7 @@ Before you begin, ensure you meet the following prerequisites.
         aws eks update-kubeconfig --region <region-code> --name <cluster-name>
         ```
 
-  - [Helm 3](https://helm.sh/docs/intro/install/) - Required to install the Palette Helm charts.
+  - [Helm](https://helm.sh/docs/intro/install/) **v3.14.0 or later** - Required to install the Palette Helm charts.
 
   - [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) - Required to copy container
     images between registries without a local Docker daemon.

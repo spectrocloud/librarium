@@ -49,6 +49,15 @@ tags: ["release-notes"]
   [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
   third-party IdP.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3008 -->
+
+- Self-hosted installations and upgrades of Palette and Palette VerteX now require Helm client **v3.14.0 or later**.
+  Older Helm clients do not wait for pre-upgrade hook resources to finish terminating before recreating them, which can
+  cause the `hubble-system` namespace to be deleted mid-upgrade and result in MongoDB data loss. Refer to
+  [Install on Kubernetes](../enterprise-version/install-palette/install-on-kubernetes/install.md) and
+  [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
+  prerequisites.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
 - [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
