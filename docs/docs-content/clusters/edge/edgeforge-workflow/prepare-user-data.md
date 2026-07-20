@@ -129,6 +129,15 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
+   :::info
+
+   If you are preparing user data for a Palette appliance, also set
+   [`stylus.applianceType`](../edge-configuration/installer-reference.md) to identify the appliance variant, for
+   example `paletteai` or `vm-launchpad`. Local UI uses this value to enable appliance-specific behavior, such as
+   guiding the redeploy flow after a cluster deletion.
+
+   :::
+
 8. If you want to deploy a locally managed Edge host, skip this step.
 
    To deploy the Edge host in central management mode, provide the Palette endpoint in addition to either a registration
