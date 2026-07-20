@@ -195,3 +195,7 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 You can upload one or more content bundles to your primary registry using Local UI. Refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md) for more information.
+
+If you deployed the cluster with the Zot pack and want the in-cluster Zot registry to rotate its TLS certificate
+automatically, refer to
+[Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](./enable-zot-cert-rotation.md).
