@@ -49,6 +49,14 @@ tags: ["release-notes"]
   [Custom OIDC steps](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant) in your
   third-party IdP.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
+
+- [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
+  such as Red Hat Enterprise Linux (RHEL), Rocky Linux, and SUSE Linux Enterprise Server (SLES), through the
+  [Bring Your Own OS (BYOOS)](../integrations/generic-byoi.mdx#maas-byoos-configuration) pack. Reference a custom image
+  with `osImageOverride` as an HTTP(S) URL or the name of an existing MAAS image, and specify `osName` and `osVersion`
+  so MAAS recognizes the operating system. This applies to Palette and VerteX, including airgap deployments.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->

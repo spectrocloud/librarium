@@ -23,12 +23,14 @@ tags: ["packs", "byoos", "operating system"]
 Different infrastructure providers have different ways of referencing custom images. The following table provides
 examples of how to reference custom images for different infrastructure providers.
 
-| Provider       | Example Image ID                                            | osImageOverride Value                                       | Notes                                                                                                                |
-| -------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| AWS            | `ami-0f4804aff4cf9c5a2`                                     | `ami-0f4804aff4cf9c5a2`                                     | Ensure the AMI is available in the same region as the workload cluster.                                              |
-| Azure          | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | You must reference the Azure blob URL of a Virtual Hard Disk (VHD). Image Gallery ID reference is not supported.     |
-| Vmware vSphere | `r_u-2004-0-k-1243-0-new.ova`                               | `path/to/template/r_u-2004-0-k-1243-0-new.ova`              | Point to the path to where the custom template is located. Palette and VerteX expect OVAs to have the `r_u-` prefix. |
-| Vmware vSphere | `rhel-8-kube-v1.27.11`                                      | `path/to/template/rhel-8-kube-v1.27.11`                     | Point to the path to where the custom template is located.                                                           |
+| Provider       | Example Image ID                                            | osImageOverride Value                                       | Notes                                                                                                                                                             |
+| -------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS            | `ami-0f4804aff4cf9c5a2`                                     | `ami-0f4804aff4cf9c5a2`                                     | Ensure the AMI is available in the same region as the workload cluster.                                                                                           |
+| Azure          | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | You must reference the Azure blob URL of a Virtual Hard Disk (VHD). Image Gallery ID reference is not supported.                                                  |
+| Vmware vSphere | `r_u-2004-0-k-1243-0-new.ova`                               | `path/to/template/r_u-2004-0-k-1243-0-new.ova`              | Point to the path to where the custom template is located. Palette and VerteX expect OVAs to have the `r_u-` prefix.                                              |
+| Vmware vSphere | `rhel-8-kube-v1.27.11`                                      | `path/to/template/rhel-8-kube-v1.27.11`                     | Point to the path to where the custom template is located.                                                                                                        |
+| MAAS           | `rhel-9-kube-v1.30.6`                                       | `rhel-9-kube-v1.30.6`                                       | Reference an existing image in MAAS by name. You must also set `osName` and `osVersion`. Refer to [MAAS BYOOS Configuration](#maas-byoos-configuration) below.    |
+| MAAS           | `https://example.com/rhel-9-kube-v1.30.6.tar.gz`            | `https://example.com/rhel-9-kube-v1.30.6.tar.gz`            | Palette downloads the image from the HTTP(S) URL and imports it into MAAS. You must also set `osName` and `osVersion`. Refer to [MAAS BYOOS Configuration](#maas-byoos-configuration) below. |
 
 Image creation tools are available to help you create custom OS images for the infrastructure provider you are using.
 The following is a list of commonly used tools for creating a custom OS:
@@ -40,6 +42,27 @@ The following is a list of commonly used tools for creating a custom OS:
 - [HashiCorp Packer](https://developer.hashicorp.com/packer).
 
 - [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html).
+
+### MAAS BYOOS Configuration
+
+The BYOOS pack for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) supports non-Ubuntu
+operating systems, such as Red Hat Enterprise Linux (RHEL), Rocky Linux, and SUSE Linux Enterprise Server (SLES), in
+addition to Ubuntu. Configure the following BYOOS pack fields for MAAS:
+
+| Field              | Description                                                                                                                                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `osImageOverride`  | Reference the custom image as an HTTP(S) URL that Palette downloads and imports into MAAS, or as the name of an existing image in MAAS.                                                |
+| `osName`           | The OS name that MAAS uses to identify the image. Examples include `rhel`, `rocky`, and `sles`.                                                                                        |
+| `osVersion`        | The OS version. Examples include `9.4` and `8`.                                                                                                                                        |
+
+Palette derives the MAAS boot resource name as `<osName>/<image-name>` and the `base_image` as `<osName>/<osVersion>`.
+MAAS uses the OS prefix in the boot resource name to recognize the operating system.
+
+For backward compatibility, if Palette does not find an image with the derived prefix in MAAS, it reuses an existing
+unprefixed image with the same name. If Palette cannot locate a matching image and no URL is provided for
+`osImageOverride`, cluster provisioning fails and the MAAS validation message is displayed in the cluster events.
+
+This capability is available on Palette and VerteX, including airgap deployments.
 
 </TabItem>
 </Tabs>
