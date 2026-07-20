@@ -39,7 +39,7 @@ tags: ["release-notes"]
 - You can now configure the Spectro Cloud image pull secret for security-hardened images during Day-0 setup of the
   [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md). Provide the value
-  through the `spectro-image-pull-secret` profile variable in the **Profile Config** step of Local UI. For more
+  through the optional **Image pull secret** profile variable in the **Profile Config** step of Local UI. For more
   information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
