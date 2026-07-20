@@ -45,16 +45,14 @@ Paste the following snippet in the file, replacing the placeholders with your lo
             "run",
             "-i",
             "--mount",
-            "type=bind,source=/FILE_PATH_REPLACE_ME/kubeconfig,target=/tmp/kubeconfig",
+            "type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig",
             "--rm",
             "-e",
-            "SPECTROCLOUD_HOST=<palette-api-endpoint>",
+            "PALETTE_HOST=<palette-api-endpoint>",
             "-e",
-            "SPECTROCLOUD_APIKEY=<palette-api-key>",
+            "PALETTE_API_KEY=<palette-api-key>",
             "-e",
-            "SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id>",
-            "-e",
-            "ALLOW_DANGEROUS_ACTIONS=0",
+            "PALETTE_PROJECT_UID=<palette-project-id>",
             "public.ecr.aws/palette-ai/palette-mcp-server:latest"
         ]
         }
@@ -63,7 +61,13 @@ Paste the following snippet in the file, replacing the placeholders with your lo
 
     </TabItem>
     </Tabs>
-   
+
+   :::info
+
+   To enable write operations, such as create, update, or delete tools, append `"--allow-write"` to the `args` array after the image name. By default, the server starts in read-only mode.
+
+   :::
+
    :::warning
 
    The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
