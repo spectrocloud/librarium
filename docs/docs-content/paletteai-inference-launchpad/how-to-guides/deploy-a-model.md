@@ -21,7 +21,8 @@ lifecycle work, refer to [Model Provisioning Lifecycle](../explanation/architect
 - At least one node with free capacity for the model you intend to deploy.
 - The model present in the appliance catalog and able to fit the appliance's available GPU resources. To confirm
   support, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md) and
-  [Suggested Hardware](../reference/hardware-requirements.md).
+  [Suggested Hardware](../reference/hardware-requirements.md). On an air-gapped appliance, place the model in the
+  catalog first by following [Upload a Model (Air-Gapped)](./upload-a-model-air-gapped.md).
 
 ## Deploy a Model
 

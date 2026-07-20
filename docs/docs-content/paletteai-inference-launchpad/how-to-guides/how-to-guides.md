@@ -19,6 +19,7 @@ you the steps to do it without teaching background concepts.
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | [Install the Appliance](./install-the-appliance.md)               | Flash the installer ISO, boot the hardware, and bring up the appliance console.  |
 | [Deploy a Model](./deploy-a-model.md)                             | Deploy an LLM to the cluster and verify it is serving.                           |
+| [Upload a Model (Air-Gapped)](./upload-a-model-air-gapped.md)     | Download a model on a workstation and upload it to an air-gapped appliance.      |
 | [Set the Default Model](./set-the-default-model.md)               | Configure which model handles requests that do not name a model explicitly.      |
 | [Generate an API Token](./generate-an-api-token.md)               | Create an API token that clients use to authenticate to the appliance.           |
 | [Create a Client](./create-a-client.md)                           | Create a client and issue its first API token.                                   |
