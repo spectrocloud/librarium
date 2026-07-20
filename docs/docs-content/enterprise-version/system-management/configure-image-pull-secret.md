@@ -71,6 +71,16 @@ self-hosted Palette.
   helm="palette"
 />
 
+#### Palette Management Appliance Installations
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-appliance-install"
+  edition="palette"
+  version="Palette"
+  helm="palette"
+/>
+
 ### Post-Installation
 
 <PartialsComponent
