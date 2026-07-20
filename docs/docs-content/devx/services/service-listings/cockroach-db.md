@@ -147,4 +147,4 @@ scalable, resilient, and secure.
 
 - [CockroachDB Official Documentation](https://www.cockroachlabs.com/docs/)
 
-- [Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html)
+- [Developer Get Started](https://www.cockroachlabs.com/developers/)
