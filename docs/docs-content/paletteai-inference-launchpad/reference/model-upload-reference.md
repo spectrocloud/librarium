@@ -3,18 +3,17 @@ sidebar_label: "Model Upload Reference"
 title: "PaletteAI Inference Launchpad Model Upload Reference"
 description:
   "Reference for the Palette CLI model download and upload commands and the model metadata file used to place models on
-  an air-gapped PaletteAI Inference Launchpad appliance."
+  a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 4.5
-tags: ["paletteai-inference-launchpad", "reference", "models", "air-gapped"]
+tags: ["paletteai-inference-launchpad", "reference", "models"]
 keywords: ["launchpad", "ai", "palette cli", "model upload", "metadata", "huggingface", "air-gapped"]
 ---
 
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
 This reference lists the flags for the Palette CLI model commands and the fields of the model metadata file. It supports
-the [Upload a Model (Air-Gapped)](../how-to-guides/upload-a-model-air-gapped.md) how-to, which walks through the
-download and upload flow.
+the [Upload a Model](../how-to-guides/upload-a-model.md) how-to, which walks through the download and upload flow.
 
 {/* NEEDS REVIEW: `palette content model download` and `palette content model upload` are a new command surface from the engineering source and are not yet in the published Palette CLI reference. Confirm the command names, flags, and defaults before publishing. */}
 
@@ -71,22 +70,23 @@ required; everything else is optional. The parser rejects unknown top-level fiel
 | `logo`                 | A logo bundled from local disk. Mutually exclusive with `huggingface.logo`.                                                                 | No           |
 | `launchpad`            | Optional gateway tuning block (engine, variants, and so on). The Palette CLI ships it to the appliance unchanged and does not interpret it. | No           |
 
-The following example downloads a set of GGUF weights from a Hugging Face repository and includes a `launchpad` tuning
-block.
+The following example downloads GLM 5.2 weights from a Hugging Face repository and includes a `launchpad` tuning block.
 
 ```yaml
-name: llama-3-8b-instruct
+name: glm-5.2
 version: 1.0.0
-displayName: "Llama 3 8B Instruct"
-description: "Meta's Llama 3 8B instruct-tuned model."
-author: Meta AI
-license: llama-3
+displayName: "GLM 5.2"
+description: "Zhipu AI GLM 5.2, served on the appliance for coding assistants."
+author: Zhipu AI
+license: mit
 
 huggingface:
-  repo: bartowski/Llama-3.2-1B-Instruct-GGUF
+  repo: zai-org/GLM-5.2
   revision: main
   files:
-    - "*.gguf"
+    - "*.safetensors"
+    - "*.json"
+    - "tokenizer*"
   logo: assets/logo.png # optional: pulled from the Hugging Face repo, saved as logo.<ext>
 
 # logo: ./local-logo.png # OR bundle a local file from disk (mutually exclusive with huggingface.logo)
@@ -104,6 +104,8 @@ launchpad: # optional: gateway tuning block, shipped verbatim (the Palette CLI d
         tensor_parallel_size: 8
 ```
 
+{/* NEEDS REVIEW: the GLM 5.2 example values (the zai-org/GLM-5.2 repository, file globs, and license) are representative. Confirm the canonical repository, weight files, and license with an SME before publishing. */}
+
 After a successful upload, the model directory on the appliance node has the following layout.
 
 ```text
@@ -117,6 +119,5 @@ After a successful upload, the model directory on the appliance node has the fol
 
 ## Resources
 
-- [Upload a Model (Air-Gapped)](../how-to-guides/upload-a-model-air-gapped.md) walks through the download and upload
-  flow.
+- [Upload a Model](../how-to-guides/upload-a-model.md) walks through the download and upload flow.
 - [Deploy a Model](../how-to-guides/deploy-a-model.md) deploys an uploaded model and verifies it is serving.

@@ -1,44 +1,54 @@
 ---
-sidebar_label: "Upload a Model (Air-Gapped)"
-title: "Upload a Model to an Air-Gapped Appliance"
+sidebar_label: "Upload a Model"
+title: "Upload a Model"
 description:
-  "Step-by-step guidance for platform operators on how to download a model on a connected workstation and upload it to
-  an air-gapped PaletteAI Inference Launchpad appliance with the Palette CLI over SSH."
+  "Step-by-step guidance for platform operators on how to download a model on a jumpbox and upload it to a PaletteAI
+  Inference Launchpad appliance with the Palette CLI over SSH."
 hide_table_of_contents: false
 sidebar_position: 1.5
-tags: ["paletteai-inference-launchpad", "models", "how-to", "air-gapped"]
-keywords: ["launchpad", "ai", "air-gapped", "model upload", "palette cli", "huggingface", "rsync", "ssh"]
+tags: ["paletteai-inference-launchpad", "models", "how-to"]
+keywords: ["launchpad", "ai", "model upload", "jumpbox", "palette cli", "huggingface", "rsync", "ssh", "air-gapped"]
 ---
 
 <PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
 
-This guide explains how to place a model on an air-gapped PaletteAI Inference Launchpad appliance. Because an air-gapped
-appliance has no outbound internet access, it cannot pull a model from Hugging Face when you deploy. Instead, you
-download the model on a connected workstation and ship it to the appliance over SSH, after which the model appears in
-the appliance's deploy catalog.
+{/* NEEDS REVIEW: per SME review, the model-upload flow is expected to change due to storage constraints and requirements. Revisit this guide when the new flow lands. */}
+
+PaletteAI Inference Launchpad is a self-contained appliance with no outbound internet access, so you bring models to it
+rather than having the appliance pull them at deploy time. You download a model onto a jumpbox and transfer it to the
+appliance over SSH, after which the model appears in the appliance's deploy catalog.
 
 This guide comes before [Deploy a Model](./deploy-a-model.md): the upload puts the model in the catalog, and the deploy
 serves it. For the full command flags and metadata file fields, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
+:::info
+
+You run every step in this guide from a **jumpbox**: a separate machine (also called the administrative workstation)
+with network access to your model source, such as Hugging Face, and SSH access to the appliance. The appliance never
+downloads models itself. For how to provision the jumpbox, refer to
+[Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation).
+
+:::
+
 ## Prerequisites
 
-- A connected administrative workstation on the appliance network, provisioned with the Palette CLI, an SSH client and
-  key pair (or password authentication), and enough local disk to stage model downloads. For details, refer to
-  [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation). The workstation also
-  needs outbound access to Hugging Face; refer to
+- A **jumpbox** (administrative workstation) on the appliance network, provisioned with the Palette CLI, an SSH client
+  and key pair (or password authentication), enough local disk to stage model downloads, and network access to your
+  model source, such as Hugging Face. For details, refer to
+  [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation) and
   [Model Download Access](../reference/hardware-requirements.md#model-download-access-recommended).
-- `rsync` on the workstation. The Palette CLI uses it to transfer the model to the appliance over SSH.
+- `rsync` on the jumpbox. The Palette CLI uses it to transfer the model to the appliance over SSH.
 - The metadata YAML for the model you intend to upload, obtained from Artifact Studio. For its fields, refer to
   [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
 - The appliance's SSH host address (IP or DNS name) and an SSH user.
 - _(Gated or private Hugging Face repositories)_ A Hugging Face access token.
 
-{/* NEEDS REVIEW: the source specifies rsync 3.2.3+ and OpenSSH 8.4+ on the workstation. Confirm the minimum versions before publishing. */}
+{/* NEEDS REVIEW: the source specifies rsync 3.2.3+ and OpenSSH 8.4+ on the jumpbox. Confirm the minimum versions before publishing. */}
 
-## Download the Model on the Workstation
+## Download the Model
 
-On the connected workstation, download the model from Hugging Face into a local directory.
+On the jumpbox, download the model from Hugging Face into a local directory.
 
 1. Run the download command, using the path to your metadata file and the directory to download into.
 
@@ -61,8 +71,8 @@ On the connected workstation, download the model from Hugging Face into a local 
 
 ## Upload the Model to the Appliance
 
-Ship the downloaded directory to the appliance over SSH. On a multi-node appliance, upload to a single node; the
-appliance syncs the model to the remaining nodes automatically.
+Ship the downloaded directory from the jumpbox to the appliance over SSH. On a multi-node appliance, upload to a single
+node; the appliance syncs the model to the remaining nodes automatically.
 
 1. Run the upload command with the model directory and the appliance's SSH details.
 
