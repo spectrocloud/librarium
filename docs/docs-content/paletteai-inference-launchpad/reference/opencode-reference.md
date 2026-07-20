@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "opencode", "reference"]
 keywords: ["launchpad", "ai", "opencode", "opencode.json", "openai-compatible", "custom provider", "api token", "model"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page lists the configuration values OpenCode uses to connect to a PaletteAI Inference Launchpad appliance. For the
 steps to set them, refer to [Use PaletteAI Inference Launchpad with OpenCode](../how-to-guides/use-opencode.md).
 

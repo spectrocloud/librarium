@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "cursor", "reference"]
 keywords: ["launchpad", "ai", "cursor", "openai-compatible", "base url", "model alias", "api token"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page lists the configuration values Cursor uses to connect to a PaletteAI Inference Launchpad appliance. For the
 steps to set them, refer to [Use PaletteAI Inference Launchpad with Cursor](../how-to-guides/use-cursor.md).
 

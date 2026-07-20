@@ -13,8 +13,6 @@ tags:
 keywords: ["launchpad", "ai", "certified models", "certification", "coding assistant"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page explains what model certification means and how a model becomes certified. For the models certified on
 specific hardware, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 

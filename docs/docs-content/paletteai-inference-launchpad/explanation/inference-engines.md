@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "models", "explanation"]
 keywords: ["launchpad", "ai", "inference", "engine", "vLLM", "SGLang", "Ollama"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page explains what an inference engine is in PaletteAI Inference Launchpad, how the appliance selects one
 automatically, and when you might choose one yourself. It gives you the background to make an informed choice when you
 [deploy a model](../how-to-guides/deploy-a-model.md), where the engine is an optional setting.

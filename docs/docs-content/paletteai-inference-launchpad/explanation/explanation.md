@@ -7,8 +7,6 @@ sidebar_position: 0
 tags: ["paletteai-inference-launchpad", "explanation"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 Explanatory and conceptual guides help you understand how and why PaletteAI Inference Launchpad works the way it does.
 They cover design decisions, component relationships, and trade-offs rather than walking you through tasks.
 

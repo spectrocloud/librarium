@@ -20,8 +20,6 @@ keywords:
   - appliance
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page lists the hardware requirements for a PaletteAI Inference Launchpad appliance. Requirements are model-driven:
 the target model determines the GPU count, GPU memory, host RAM, and storage.
 

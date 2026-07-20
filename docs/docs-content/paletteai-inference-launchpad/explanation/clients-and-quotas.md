@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "explanation", "clients", "quotas"]
 keywords: ["launchpad", "ai", "clients", "api token", "quota", "rate limit", "coding assistant", "claude code"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 AI coding assistants such as Claude Code, Cursor, OpenAI Codex, and OpenCode make up many of the workloads that connect
 to a PaletteAI Inference Launchpad appliance, sending their requests to the appliance instead of to a cloud provider. A
 single appliance can serve many of these assistants at once, along with other workloads such as an internal chatbot or a

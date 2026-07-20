@@ -12,8 +12,6 @@ tags:
   - explanation
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 PaletteAI Inference Launchpad is a turnkey appliance for running large language models (LLMs) on your hardware. It
 deploys as an image with no Palette or PaletteAI dependency. Once a model is loaded, inference runs on the appliance, so
 data stays in your environment and per-token API costs become predictable infrastructure spend.

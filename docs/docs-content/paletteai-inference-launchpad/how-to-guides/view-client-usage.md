@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "clients", "usage", "how-to"]
 keywords: ["launchpad", "ai", "clients", "usage", "tokens", "requests", "cost", "metrics"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how a platform administrator views consumption per client and per API token on a PaletteAI Inference
 Launchpad appliance. To understand how usage relates to clients and quotas, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md).

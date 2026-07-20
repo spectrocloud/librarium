@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "clients", "api token", "how-to"]
 keywords: ["launchpad", "ai", "clients", "revoke", "delete", "expired", "api token", "in-flight"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how a platform administrator ends a client's access on a PaletteAI Inference Launchpad appliance:
 finding expired or revoked tokens, revoking a single API token, and deleting a client. To understand how clients and API
 tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).

@@ -7,8 +7,6 @@ sidebar_position: 0
 tags: ["paletteai-inference-launchpad", "reference"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 Reference pages give you technical information when you need to look something up. They describe what exists and how it
 is configured, not how to accomplish a task.
 

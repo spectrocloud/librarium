@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "install", "how-to"]
 keywords: ["launchpad", "ai", "install", "appliance", "hardware", "iso", "edge", "local ui"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide walks you through installing the PaletteAI Inference Launchpad appliance on bare hardware, from flashing the
 installer ISO to verifying that the appliance console is reachable. The step-by-step content for this guide is actively
 being drafted. Review the working draft at

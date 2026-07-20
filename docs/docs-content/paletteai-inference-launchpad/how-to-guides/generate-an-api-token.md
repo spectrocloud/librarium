@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "api-token", "how-to"]
 keywords: ["launchpad", "ai", "api token", "authentication", "lpai", "coding agent"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to generate an API token in the PaletteAI Inference Launchpad console. Clients such as coding
 assistants use the token to authenticate their requests to the appliance. To understand how tokens, clients, and quotas
 relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md). To create a client and then set its quotas

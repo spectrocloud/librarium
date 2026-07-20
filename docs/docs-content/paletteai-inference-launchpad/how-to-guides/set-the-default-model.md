@@ -9,8 +9,6 @@ sidebar_position: 2
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to set the default model on a running PaletteAI Inference Launchpad appliance. If a request does
 not name a model, the appliance routes it to the default model. For how the appliance routes requests, refer to
 [Architecture](../explanation/architecture.md).

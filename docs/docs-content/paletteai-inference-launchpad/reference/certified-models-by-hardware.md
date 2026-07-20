@@ -13,8 +13,6 @@ tags:
   - hardware
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 Spectro Cloud certifies a small set of large language models (LLMs) for the hardware that PaletteAI Inference Launchpad
 supports. A _certified_ model is one that Spectro Cloud has tested on the listed GPU configuration. For what
 certification covers, refer to [Model Certification](../explanation/model-certification.md).

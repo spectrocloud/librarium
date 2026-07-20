@@ -9,8 +9,6 @@ sidebar_position: 1
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to deploy a model to a running PaletteAI Inference Launchpad appliance and verify that the model
 is serving requests. The appliance places the model automatically on the best-fit node. For how placement and the deploy
 lifecycle work, refer to [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).

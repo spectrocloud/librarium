@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "clients", "models", "how-to"]
 keywords: ["launchpad", "ai", "clients", "model access", "routing", "tier map", "egress", "frontier"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how a platform administrator controls which models a client uses on a PaletteAI Inference Launchpad
 appliance. Model access depends on whether a model runs locally on the appliance or is reached through an external
 provider.

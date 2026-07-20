@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "clients", "quotas", "how-to"]
 keywords: ["launchpad", "ai", "clients", "quota", "rate limit", "requests", "tokens", "cost", "429"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how a platform administrator sets and manages usage quotas on a client on a PaletteAI Inference
 Launchpad appliance. A quota limits how much a client consumes. A quota applies to the client, so every API token that
 belongs to the client draws on the same limits. To understand how quotas fit with clients and API tokens, refer to

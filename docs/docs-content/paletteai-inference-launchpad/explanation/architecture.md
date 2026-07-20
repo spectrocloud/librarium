@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
 the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
 Launchpad.

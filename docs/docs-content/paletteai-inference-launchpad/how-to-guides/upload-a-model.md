@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "models", "how-to"]
 keywords: ["launchpad", "ai", "model upload", "jumpbox", "palette cli", "huggingface", "rsync", "ssh", "air-gapped"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 {/* NEEDS REVIEW: per SME review, the model-upload flow is expected to change due to storage constraints and requirements. Revisit this guide when the new flow lands. */}
 
 PaletteAI Inference Launchpad is a self-contained appliance with no outbound internet access, so you bring models to it

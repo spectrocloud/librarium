@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "claude-code", "reference"]
 keywords: ["launchpad", "ai", "claude code", "anthropic", "environment variables", "api token", "model"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page lists the configuration values Claude Code uses to connect to a PaletteAI Inference Launchpad appliance. For
 the steps to set them, refer to
 [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md).

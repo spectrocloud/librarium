@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "cursor", "how-to"]
 keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask mode", "api token"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to connect Cursor to a PaletteAI Inference Launchpad appliance so that a model running on the
 appliance serves your requests instead of a cloud provider. You create a uniquely named model alias on the appliance,
 point Cursor at the appliance, and confirm that requests route through the appliance.

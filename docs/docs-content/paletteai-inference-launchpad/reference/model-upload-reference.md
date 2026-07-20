@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "reference", "models"]
 keywords: ["launchpad", "ai", "palette cli", "model upload", "metadata", "huggingface", "air-gapped"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This reference lists the flags for the Palette CLI model commands and the fields of the model metadata file. It supports
 the [Upload a Model](../how-to-guides/upload-a-model.md) how-to, which walks through the download and upload flow.
 

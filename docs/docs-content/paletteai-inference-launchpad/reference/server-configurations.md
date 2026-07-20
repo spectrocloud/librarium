@@ -20,8 +20,6 @@ keywords:
   - nvidia
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 The following table lists example server configurations for PaletteAI Inference Launchpad. Each configuration meets the
 specifications in [Suggested Hardware](./hardware-requirements.md).
 

@@ -8,8 +8,6 @@ sidebar_position: 0
 tags: ["paletteai-inference-launchpad", "how-to"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 How-to guides get a specific job done on a running appliance. They assume you know what you want to accomplish and give
 you the steps to do it without teaching background concepts.
 

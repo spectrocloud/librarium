@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "claude-code", "how-to"]
 keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to connect Claude Code to a PaletteAI Inference Launchpad appliance so that a model running on
 the appliance serves every request instead of Anthropic's hosted API. You point Claude Code at the appliance with two
 environment variables and confirm the connection.

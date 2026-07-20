@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "codex", "reference"]
 keywords: ["launchpad", "ai", "openai codex", "codex cli", "config.toml", "responses api", "api token", "model"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This page lists the configuration values the OpenAI Codex CLI uses to connect to a PaletteAI Inference Launchpad
 appliance. For the steps to set them, refer to
 [Use PaletteAI Inference Launchpad with OpenAI Codex](../how-to-guides/use-codex.md).

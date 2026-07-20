@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "codex", "how-to"]
 keywords: ["launchpad", "ai", "openai codex", "codex cli", "responses api", "config.toml", "api token"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model
 running on the appliance serves every request instead of OpenAI's hosted API. You add a custom model provider to the
 Codex configuration file and confirm the connection.

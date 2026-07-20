@@ -10,8 +10,6 @@ tags: ["paletteai-inference-launchpad", "clients", "how-to"]
 keywords: ["launchpad", "ai", "clients", "add client", "api token", "lpai"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This guide explains how a platform administrator creates a client on a PaletteAI Inference Launchpad appliance. A client
 is a named team, business unit, or workload, represented by one or more API tokens. To understand what a client is and
 how clients, API tokens, and quotas relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).

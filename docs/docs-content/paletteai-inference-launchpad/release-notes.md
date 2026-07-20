@@ -8,6 +8,4 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 Release notes for PaletteAI Inference Launchpad are published here with each release.

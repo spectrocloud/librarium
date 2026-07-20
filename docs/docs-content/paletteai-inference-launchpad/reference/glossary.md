@@ -11,8 +11,6 @@ keywords:
   ["launchpad", "ai", "glossary", "definitions", "terms", "llm", "inference", "quota", "client", "token", "appliance"]
 ---
 
-<PartialsComponent category="paletteai-inference-launchpad" name="unreleased-banner" />
-
 This glossary defines the key AI, product, and platform terms used across the PaletteAI Inference Launchpad
 documentation. Use it to look up an unfamiliar term without leaving the guide you are reading.
 
