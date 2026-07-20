@@ -23,7 +23,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.14  |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.8  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.8  |
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.27  |
@@ -176,6 +175,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -208,6 +208,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -222,6 +223,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -826,6 +828,8 @@ The following component updates are applicable to this release:
 
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -877,6 +881,8 @@ The following component updates are applicable to this release:
 
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Breaking Changes {#breaking-changes-4-9-16}
 
@@ -999,6 +1005,14 @@ resources would repeatedly show Terraform plan differences for sensitive cluster
 <!-- prettier-ignore-end -->
 
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-14}
+
+The following component updates are applicable to this release:
+
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1449,6 +1463,11 @@ The following component updates are applicable to this release:
 
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -1489,6 +1508,11 @@ The following component updates are applicable to this release:
 
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1614,9 +1638,14 @@ The following components have been updated for Palette version 4.9.5.
 
 The following component updates are applicable to this release:
 
-- [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
+- [May 8, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 
 ### Security Notices
 
