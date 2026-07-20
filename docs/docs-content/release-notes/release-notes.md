@@ -57,6 +57,7 @@ tags: ["release-notes"]
   [Install on Kubernetes](../enterprise-version/install-palette/install-on-kubernetes/install.md) and
   [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
   prerequisites.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
 - [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
