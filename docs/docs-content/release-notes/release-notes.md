@@ -56,6 +56,22 @@ tags: ["release-notes"]
   from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
   **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
   to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3008 -->
+
+- Self-hosted installations and upgrades of Palette and Palette VerteX now require Helm client **v3.14.0 or later**.
+  Older Helm clients do not wait for pre-upgrade hook resources to finish terminating before recreating them, which can
+  cause the `hubble-system` namespace to be deleted mid-upgrade and result in MongoDB data loss. Refer to
+  [Install on Kubernetes](../enterprise-version/install-palette/install-on-kubernetes/install.md) and
+  [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
+  prerequisites.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
+
+- [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
+  such as Red Hat Enterprise Linux (RHEL), Rocky Linux, and SUSE Linux Enterprise Server (SLES), through the
+  [Bring Your Own OS (BYOOS)](../integrations/generic-byoi.mdx#maas-byoos-configuration) pack. Reference a custom image
+  with `osImageOverride` as an HTTP(S) URL or the name of an existing MAAS image, and specify `osName` and `osVersion`
+  so MAAS recognizes the operating system. This applies to Palette and VerteX, including airgap deployments.
 
 #### Deprecations and Removals
 
@@ -178,6 +194,122 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## July 17, 2026 - Component Updates {#component-updates-2026-29}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3007 -->
+<!-- RELEASE DATE: July 17, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.27 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.14 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.8 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.8  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.8  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.27  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3007. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+- The in-cluster Harbor registry used in edge cluster add-on packs now integrates with cert-manager to automate TLS
+  certificate rotation. Certificates are automatically renewed before expiration, eliminating the need for manual
+  intervention and preventing service downtime. This applies to connected and airgap clusters, including FIPS and
+  non-FIPS configurations.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2256 -->
+
+- Fixed an issue in the `spectrocloud_registry_oci` Terraform resource where omitting `base_content_path` when
+  `is_synchronization = true` produced a raw API error at apply time instead of a clear validation error at plan time.
+  Terraform now surfaces an actionable validation error during `terraform plan` when `base_content_path` is missing and
+  synchronization is enabled.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3007. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3007. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.3 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.33.13 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.35.6 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :x: | 1.11.2 |
+| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.3.3 |
+| <VersionedLink text="open-policy-agent" url="/integrations/packs/?pack=open-policy-agent" /> | `addon` | :white_check_mark: | :x: | 3.23.0 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 0.91.1 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.10.8 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.10.8 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3007. DO NOT DELETE. -->
+
+## July 10, 2026 - Component Updates {#component-updates-2026-28}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2995 -->
+<!-- RELEASE DATE: June 28, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.21 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.11 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.6 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.24.
+
+| Component                                          | Version |
+| -------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.9.13  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+- Zot Registry and Harbor Registry on [Edge clusters](../clusters/edge/edge.md) now integrate with `cert-manager` to
+  automatically rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime.
+  This applies to connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
+  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Zot registry uses cert-manager
+  to automatically rotate its TLS certificate.
+
+<!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
+<!-- BEGIN PACKS LIST BODY: DOC-2995. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.2 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :x: | 1.20.3 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.22.3 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.32.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `kubernetes` | :white_check_mark: | :white_check_mark: | 1.34.9 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :x: | :white_check_mark: | 0.28.7 |
+| <VersionedLink text="kong" url="/integrations/packs/?pack=kong" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.19 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.0.2 |
+| <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.34.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-2995. DO NOT DELETE. -->
+
 ## July 9, 2026 - Release 4.9.27
 
 <!-- PATCH RELEASE TICKET: DOC-2985 -->
@@ -280,6 +412,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -312,6 +446,8 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -326,6 +462,8 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -928,6 +1066,9 @@ The following component updates are applicable to this release:
 
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -979,6 +1120,9 @@ The following component updates are applicable to this release:
 
 - [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
 - [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Breaking Changes {#breaking-changes-4-9-16}
 
@@ -1101,6 +1245,15 @@ resources would repeatedly show Terraform plan differences for sensitive cluster
 <!-- prettier-ignore-end -->
 
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-14}
+
+The following component updates are applicable to this release:
+
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1551,6 +1704,12 @@ The following component updates are applicable to this release:
 
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -1591,6 +1750,12 @@ The following component updates are applicable to this release:
 
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1716,9 +1881,15 @@ The following components have been updated for Palette version 4.9.5.
 
 The following component updates are applicable to this release:
 
-- [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
+- [May 8, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
 - [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 - [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
+- [June 5, 2026 - Component Updates](#component-updates-2026-23) <!-- omit in toc -->
+- [June 12, 2026 - Component Updates](#component-updates-2026-24) <!-- omit in toc -->
+- [June 19, 2026 - Component Updates](#component-updates-2026-25) <!-- omit in toc -->
+- [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
 
 ### Security Notices
 
