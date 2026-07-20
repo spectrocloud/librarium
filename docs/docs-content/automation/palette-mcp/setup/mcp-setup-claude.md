@@ -7,27 +7,70 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-:::preview
-
-:::
-
 This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
-[Claude Code](https://code.claude.com/docs/en/overview).
+[Claude Code](https://code.claude.com/docs/en/overview). You can install the server through the Palette Agent Toolkit
+plugin, which bundles the MCP server configuration and four diagnostic skills in a single install, or configure the
+server manually as a container. We recommend the plugin install for most Claude Code users.
 
 ## Prerequisites
 
-- Ensure the following software is installed locally on your workstation:
-
-  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
-    [Podman](https://podman.io/docs/installation).
-  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for more information.
+- Claude Code installed on your workstation. Refer to the
+  [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for more information.
 
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   guide for more information.
 
-## Setup
+- If you plan to configure the MCP server manually, a container engine, such as
+  [Docker](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation).
+
+## Set Up with the Palette Agent Toolkit Plugin
+
+The Palette Agent Toolkit plugin bundles the MCP server configuration and four diagnostic skills (`diagnose-cluster`,
+`diagnose-edge`, `health-overview`, and `access-review`) in a single install. This is the recommended setup path for
+Claude Code and Claude Desktop.
+
+1. Export the Palette connection variables in your shell profile so the plugin picks them up when Claude Code starts.
+   Replace the placeholders with your own values.
+
+   ```shell
+   export PALETTE_HOST=<palette-api-endpoint>
+   export PALETTE_API_KEY=<palette-api-key>
+   export PALETTE_PROJECT_UID=<palette-project-id>
+   ```
+
+2. Start Claude Code in a terminal. Ensure that you authenticate with Claude by following the prompts.
+
+   ```shell
+   claude
+   ```
+
+3. Add the Palette Agent Toolkit marketplace.
+
+   ```shell
+   /plugin marketplace add spectrocloud/palette-agent-toolkit
+   ```
+
+4. Install the Palette plugin from the marketplace.
+
+   ```shell
+   /plugin install palette@palette-agent-toolkit
+   ```
+
+   The plugin installs the MCP server configuration and the four diagnostic skills.
+
+5. Verify the plugin is active.
+
+   ```shell
+   claude mcp list
+   ```
+
+You can now use the Palette MCP server with Claude Code.
+
+## Set Up Manually
+
+Use this path if you prefer to configure the container image directly instead of installing the plugin.
 
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
@@ -59,16 +102,22 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
        --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
-       -e SPECTROCLOUD_HOST=<palette-api-endpoint> \
-       -e SPECTROCLOUD_APIKEY=<palette-api-key> \
-       -e SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id> \
-       -e ALLOW_DANGEROUS_ACTIONS=0 \
+       -e PALETTE_HOST=<palette-api-endpoint> \
+       -e PALETTE_API_KEY=<palette-api-key> \
+       -e PALETTE_PROJECT_UID=<palette-project-id> \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
    </TabItem>
 
    </Tabs>
+
+   :::info
+
+   To enable write tools, such as create, update, and delete, append `--allow-write` after the image name. By default,
+   the server starts in read-only mode.
+
+   :::
 
    :::warning
 
@@ -81,7 +130,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    Added stdio MCP server palette with command: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest to local config
    ```
 
-5. Execute the following to command to ensure that the MCP server was set up successfully.
+5. Issue the following command to ensure that the MCP server was set up successfully.
 
    ```shell
    claude mcp list
@@ -105,16 +154,16 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    ```
 
 7. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
-   enable Claude to use the downloaded kubeconfig files to access clusters.
+   enable Claude to use kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters.
 
-   Execute the following command to create the `CLAUDE.md` file on your machine if it does not exist.
+   Issue the following command to create the `CLAUDE.md` file on your machine if it does not exist.
 
    ```shell
    touch ~/.claude/CLAUDE.md
    ```
 
    Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
-   placeholder with the kubeconfig local path you configured in **Step 4**.
+   placeholder with a directory where you want to store kubeconfig files.
 
    <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -139,7 +188,7 @@ You can now use the Palette MCP server with Claude Code.
    For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
 
    ```shell title="Example Output"
-   ⏺ palette - gather_or_delete_clusters (MCP)(action: "list", active_only: true)
+   ⏺ palette - read_clusters (MCP)(filters: { states: ["Running"] })
 
    ⏺ You have 1 active cluster in Palette:
 
