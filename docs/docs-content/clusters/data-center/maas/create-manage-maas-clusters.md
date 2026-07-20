@@ -28,7 +28,9 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
 
 - Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in
   your MAAS environment. Review the [How to use standard images](https://canonical.com/maas/docs/about-images) for
-  guidance on downloading OS images for MAAS.
+  guidance on downloading OS images for MAAS. To deploy a MAAS cluster with a non-Ubuntu OS, such as Red Hat Enterprise
+  Linux (RHEL), Rocky Linux, or SUSE Linux Enterprise Server (SLES), refer to
+  [MAAS BYOOS Configuration](../../../integrations/generic-byoi.mdx#maas-byoos-configuration).
 
 :::info
 
