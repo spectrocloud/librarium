@@ -100,8 +100,8 @@ visibility. Refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 ### Cluster
 
 One or more [nodes](#node) operating together as the appliance. A single-node cluster acts as both control plane and
-worker; a multi-node cluster distributes those roles across nodes linked through
-[Linked Edge Hosts](#linked-edge-hosts) and uses an odd number of control-plane nodes for high availability.
+worker; a multi-node cluster distributes those roles across nodes linked through [Linked Edge Hosts](#linked-edge-hosts)
+and uses an odd number of control-plane nodes for high availability.
 
 ### CMVP
 
@@ -215,8 +215,8 @@ to drop to a shell.
 ### Jumpbox
 
 An informal name for the [administrative workstation](#administrative-workstation) — a separate Linux machine, distinct
-from the appliance itself, on which operators install the Palette CLI and from which they drive installation and
-day-two operations against the appliance nodes.
+from the appliance itself, on which operators install the Palette CLI and from which they drive installation and day-two
+operations against the appliance nodes.
 
 ## K
 
@@ -252,8 +252,8 @@ routes the request to a local or frontier model. Refer to [Architecture Overview
 
 ### Leader
 
-In a multi-node cluster, the node whose [Local UI](#local-ui) generates the token that [followers](#follower) present
-to join. The leader remains part of the control plane after linking. Use an odd number of control-plane nodes for high
+In a multi-node cluster, the node whose [Local UI](#local-ui) generates the token that [followers](#follower) present to
+join. The leader remains part of the control plane after linking. Use an odd number of control-plane nodes for high
 availability.
 
 ### Linked Edge Hosts
@@ -353,9 +353,9 @@ which the leader must issue a fresh token.
 ### Pack
 
 A unit of software the cluster installs as part of a cluster profile, such as `piraeus-operator` or
-`nvidia-gpu-operator-ai`. The PaletteAI Inference Launchpad profile bundles the edge OS, [Kubernetes](#kubernetes), the Cilium CNI,
-[Piraeus](#piraeus), the Zot registry, MetalLB, Traefik, cert-manager, Grafana, Victoria Metrics, the OTel Collector,
-and the PaletteAI Inference Launchpad application as packs.
+`nvidia-gpu-operator-ai`. The PaletteAI Inference Launchpad profile bundles the edge OS, [Kubernetes](#kubernetes), the
+Cilium CNI, [Piraeus](#piraeus), the Zot registry, MetalLB, Traefik, cert-manager, Grafana, Victoria Metrics, the OTel
+Collector, and the PaletteAI Inference Launchpad application as packs.
 
 ### PaletteAI
 
@@ -457,15 +457,14 @@ window. The appliance meters input tokens, output tokens, and derived cost for e
 
 ### VIP
 
-Virtual IP address — a single IP address that resolves to whichever cluster node currently holds the control-plane
-role, so a multi-node cluster presents one stable endpoint even as individual nodes fail over. Configured in the
+Virtual IP address — a single IP address that resolves to whichever cluster node currently holds the control-plane role,
+so a multi-node cluster presents one stable endpoint even as individual nodes fail over. Configured in the
 cluster-creation wizard.
 
 ### Virtual Media
 
-The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached
-optical drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not
-available.
+The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached optical
+drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not available.
 
 ### vLLM
 

@@ -117,16 +117,16 @@ After a successful upload, the model directory on the appliance node has the fol
 
 ## Upload behavior
 
-Before starting a transfer, the Palette CLI checks that the target host has enough free disk space to hold the
-model. It verifies file checksums during the transfer and resumes an interrupted download or upload from where it
-stopped rather than starting over.
+Before starting a transfer, the Palette CLI checks that the target host has enough free disk space to hold the model. It
+verifies file checksums during the transfer and resumes an interrupted download or upload from where it stopped rather
+than starting over.
 
-The CLI writes the weight files first and `metadata.yaml` last, so the presence of `metadata.yaml` on the appliance
-node is the "upload complete" signal for that host.
+The CLI writes the weight files first and `metadata.yaml` last, so the presence of `metadata.yaml` on the appliance node
+is the "upload complete" signal for that host.
 
-On a multi-node cluster, the CLI uploads to a single node. The appliance then synchronizes the model to the other
-hosts, reconciling about every two minutes. In the deploy catalog, a model shows one of the following states, and
-only **Available** models are selectable for deployment:
+On a multi-node cluster, the CLI uploads to a single node. The appliance then synchronizes the model to the other hosts,
+reconciling about every two minutes. In the deploy catalog, a model shows one of the following states, and only
+**Available** models are selectable for deployment:
 
 | **State**     | **Meaning**                                                                       |
 | ------------- | --------------------------------------------------------------------------------- |
