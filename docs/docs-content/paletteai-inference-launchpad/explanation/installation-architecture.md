@@ -2,8 +2,8 @@
 id: installation-architecture
 title: Installation Architecture
 description: >
-  How the PaletteAI Inference Launchpad appliance installs—the two stages, the roles of the jumpbox, slim ISO, and Local
-  UI, and why the network uses a bond rather than a bridge.
+  How the PaletteAI Inference Launchpad appliance installs across two stages, the roles of the jumpbox, slim ISO, and
+  Local UI, and why the network uses a bond rather than a bridge.
 sidebar_label: Installation Architecture
 sidebar_position: 5
 tags:
@@ -21,11 +21,11 @@ each stage and why the appliance is put together the way it is. For the ordered 
 ## Two stages, driven from the jumpbox
 
 You install the appliance from a jumpbox because the appliance itself is a self-contained unit with no external
-management plane. The jumpbox holds the Palette CLI and the artifacts you download from Artifact Studio—the
+management plane. The jumpbox holds the Palette CLI and the artifacts you download from Artifact Studio: the
 [slim ISO](../reference/glossary.md#slim-iso), the [content bundle](../reference/glossary.md#content-bundle), and one
-`metadata.yaml` per model—and it is where you run the CLI commands that put those artifacts on the appliance.
+`metadata.yaml` per model. The jumpbox is where you run the CLI commands that put those artifacts on the appliance.
 
-### Stage 1—Operating system and initial configuration
+### Stage 1: Operating System and Initial Configuration
 
 You flash the slim ISO (approximately 1.5 GB) to bootable media, or mount it through the server's
 [baseboard management controller (BMC)](../reference/glossary.md#bmc) as
@@ -34,7 +34,7 @@ writes the immutable [Kairos](../reference/glossary.md#kairos)-based operating s
 reboots into the [Palette TUI](../reference/glossary.md#palette-tui), where you set the initial administrator
 credentials, hostname, DNS, NTP, and a static IP.
 
-### Stage 2—Networking, content, and cluster deployment
+### Stage 2: Network, Content, and Cluster Deployment
 
 You open [Local UI](../reference/glossary.md#local-ui) at the node's IP address, create a network
 [bond](../reference/glossary.md#bond), link the other nodes (multi-node only), and upload the content bundle (more than
@@ -48,13 +48,13 @@ to serve requests.
 Networking uses a bond, not a bridge. A bond aggregates two physical NICs into a single logical link (`bond0`), and both
 member NICs are active at once. That matters because two heavy traffic classes share the appliance's data NICs:
 
-- **Cluster traffic**—concurrent client requests, model-weight loads, and container-image pulls.
-- **[Piraeus](../reference/glossary.md#piraeus) storage replication**—continuous, byte-level replication of storage
+- **Cluster traffic**. concurrent client requests, model-weight loads, and container-image pulls.
+- **[Piraeus](../reference/glossary.md#piraeus) storage replication**. continuous, byte-level replication of storage
   volumes across nodes in a multi-node cluster.
 
 A bond in `802.3ad` mode (Link Aggregation Control Protocol, or LACP) with the `layer3+4` hash policy spreads these
 long-lived flows evenly across both NICs, so cluster and storage traffic share the aggregated bandwidth. A bridge, by
-contrast, is only useful in scenarios where distinct virtual-machine networks must be isolated—PaletteAI Inference
+contrast, is only useful in scenarios where distinct virtual-machine networks must be isolated. PaletteAI Inference
 Launchpad runs containerized workloads and does not need that.
 
 For the exact field values you enter in the bond form, refer to
