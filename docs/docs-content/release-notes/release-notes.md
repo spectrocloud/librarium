@@ -107,6 +107,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   address. This supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md) appliance
   topologies, where management traffic terminates on the bridge itself.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8975 -->
+
+- A new [`stylus.applianceType`](../clusters/edge/edge-configuration/installer-reference.md) user data field lets you
+  identify an Edge host as an appliance and specify its variant. Supported values are `palette`, `vertex`, `paletteai`,
+  `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, and `ai-launchpad-vertex`. When set, the value is
+  also returned in the [`GET /v1/edge-mgmt/settings`](/api/edge-v1/v-1-settings/) response. The field is omitted for
+  regular Edge hosts.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8773 -->
@@ -121,6 +129,18 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - When you create a cluster from [Local UI](../clusters/edge/local-ui/cluster-management/create-cluster.md) using an
   Edge installer ISO that contains embedded content and a cluster definition, the **Create cluster** wizard now selects
   **embedded config** by default instead of **Import config**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8718 -->
+
+- Local UI now guides operators through the correct redeploy path after a cluster deletion on Edge hosts with an
+  `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
+  `ai-launchpad-vertex`. The delete confirmation warns that deletion erases the on-appliance content bundle and reminds
+  you to save it off the appliance first. After deletion, Local UI directs you to re-upload the content bundle from the
+  [Content](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) page or reinstall the appliance with
+  an installer ISO that contains embedded content. The **Import config** option is hidden for these appliance types
+  because uploading a cluster configuration is not a valid recovery path in this mode. For more information, refer to
+  [Delete a Cluster](../clusters/edge/local-ui/cluster-management/delete-cluster.md) and
+  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md).
 
 #### Bug Fixes
 
