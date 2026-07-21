@@ -232,9 +232,3 @@ Depending on how you originally installed the source cluster, you may need to ru
 - **Default pack registry conflict:** If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the default record on the destination cluster must be reconciled with the destination Zot registry.
 
 - **Stale cache in Hubble pods:** If workload clusters continue to report `Resource Not Found` errors against a Cluster UID after the restore, the Hubble pods on the destination cluster may need to be restarted to clear the cache.
-
-:::info
-
-Spectro Cloud adds detailed steps for the workarounds above once validation completes in [PCOM-701](https://spectrocloud.atlassian.net/browse/PCOM-701).
-
-:::

@@ -9,7 +9,7 @@ sidebar_position: 30
 ---
 
 The following procedure describes how to back up a Palette Management Appliance installation and restore it to another
-Palette Management Appliance installation. You can also use this procedure to back up and restore to the same cluster.
+Palette Management Appliance installation.
 
 <PartialsComponent
   category="self-hosted"
