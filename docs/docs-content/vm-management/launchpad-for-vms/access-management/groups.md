@@ -143,10 +143,9 @@ You can delete a single group or select many groups to delete in a single operat
 
 :::warning
 
-Deleting a group removes it from Keycloak and automatically revokes all associated access. Launchpad cleans up the
-VMO role mapping and any Kubernetes ClusterRoleBindings or RoleBindings bound to the group in the same operation.
-This prevents orphaned bindings from granting cluster access to future users who later join a group with the same
-name.
+Deleting a group removes it from Keycloak and automatically revokes all associated access. Launchpad cleans up the VMO
+role mapping and any Kubernetes ClusterRoleBindings or RoleBindings bound to the group in the same operation. This
+prevents orphaned bindings from granting cluster access to future users who later join a group with the same name.
 
 :::
 

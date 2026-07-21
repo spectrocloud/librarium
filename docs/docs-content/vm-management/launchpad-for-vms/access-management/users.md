@@ -8,9 +8,9 @@ sidebar_position: 2
 tags: ["vmo", "vm launchpad", "access management"]
 ---
 
-Launchpad for VMs integrates with Keycloak for user identity. Launchpad stores users you create on the **Users**
-page in Keycloak and manages their VMO role and Kubernetes access on your behalf. This guide covers viewing,
-creating, editing, resetting passwords, and deleting users.
+Launchpad for VMs integrates with Keycloak for user identity. Launchpad stores users you create on the **Users** page in
+Keycloak and manages their VMO role and Kubernetes access on your behalf. This guide covers viewing, creating, editing,
+resetting passwords, and deleting users.
 
 ## Prerequisites
 
@@ -25,15 +25,15 @@ From the left main menu, select **Settings** > **Access Management** > **Users**
 
 The **Users** table lists the following columns.
 
-| **Column**   | **Description**                                                |
-| ------------ | -------------------------------------------------------------- |
-| **Username** | The Keycloak username.                                         |
-| **Email**    | The email address on the account.                              |
-| **Name**     | The first and last name on the account.                        |
-| **Enabled**  | A check mark indicates the user can sign in.                   |
-| **Groups**   | Groups the user belongs to. Each group appears as a pill.      |
-| **Created**  | The date Launchpad created the user.                           |
-| **Actions**  | Row actions to edit, reset the password, or delete the user.   |
+| **Column**   | **Description**                                              |
+| ------------ | ------------------------------------------------------------ |
+| **Username** | The Keycloak username.                                       |
+| **Email**    | The email address on the account.                            |
+| **Name**     | The first and last name on the account.                      |
+| **Enabled**  | A check mark indicates the user can sign in.                 |
+| **Groups**   | Groups the user belongs to. Each group appears as a pill.    |
+| **Created**  | The date Launchpad created the user.                         |
+| **Actions**  | Row actions to edit, reset the password, or delete the user. |
 
 Select a column header to sort. Use the **Filter rows** search box to filter by any field.
 
@@ -91,8 +91,8 @@ scope.
 
 7. Select **Next** to open the **Review** step. Review the actions the wizard performs for each user.
 
-8. Select **Apply**. Each action has its own progress indicator, and Launchpad lists any failures after the
-   operation completes.
+8. Select **Apply**. Each action has its own progress indicator, and Launchpad lists any failures after the operation
+   completes.
 
 9. Select **Close** to return to the **Users** page.
 
@@ -126,8 +126,8 @@ fixed.
 
    :::info
 
-   The **Username** field is read-only after a user exists. To use a different username, delete the user and create
-   a new one.
+   The **Username** field is read-only after a user exists. To use a different username, delete the user and create a
+   new one.
 
    :::
 
@@ -135,9 +135,9 @@ fixed.
 
 :::info
 
-When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards
-listing the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). The banner is a
-heads-up, not a lock: any role you set here is added to the roles the user already inherits from their groups. Refer to
+When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards listing
+the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). The banner is a heads-up, not
+a lock: any role you set here is added to the roles the user already inherits from their groups. Refer to
 [How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
 
 :::
@@ -200,9 +200,8 @@ longer need them.
 
 ## Palette-Managed Environments
 
-When Launchpad for VMs runs in a Palette-managed environment, the UI may hide user creation. In that case, the
-parent platform manages user lifecycle. Launchpad displays users for viewing and for access policy assignment
-only.
+When Launchpad for VMs runs in a Palette-managed environment, the UI may hide user creation. In that case, the parent
+platform manages user lifecycle. Launchpad displays users for viewing and for access policy assignment only.
 
 ## Next Steps
 
