@@ -7,7 +7,7 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
+This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) with
 [Claude Code](https://code.claude.com/docs/en/overview). You can install the server through the Palette Agent Toolkit
 plugin, which bundles the MCP server configuration and four diagnostic skills in a single install, or configure the
 server manually as a container. We recommend the plugin install for most Claude Code users.

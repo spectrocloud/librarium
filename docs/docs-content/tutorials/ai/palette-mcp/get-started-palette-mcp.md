@@ -8,7 +8,7 @@ toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) provides an abstraction layer over the
+The [Palette MCP Server](https://github.com/spectrocloud/palette-agent-toolkit) provides an abstraction layer over the
 Palette API, allowing you to interact with Palette resources through natural language. It interprets user intent,
 translates it into appropriate API requests, and returns structured responses for Large Language Models (LLMs) to
 process. By handling the complexity of the underlying API, it allows LLMs to interact with Palette in a consistent and
