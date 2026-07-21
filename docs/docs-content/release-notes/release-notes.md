@@ -122,10 +122,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11429 -->
 
-- Fixed an issue where validating an OCI Helm registry that pointed to a large Harbor project, such as the DoD Iron Bank
-  repository, timed out at the 60-second server deadline because Palette enumerated the entire catalog to check
-  credentials. Validation now performs a lightweight probe that completes in under a second regardless of the number of
-  repositories in the project.
+- Fixed an issue where validating an OCI Helm registry that pointed to a large Harbor project timed out at the 60-second
+  server deadline because Palette enumerated the entire catalog to check credentials. Validation now performs a
+  lightweight probe that completes in under a second regardless of the number of repositories in the project.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7086 -->
 
