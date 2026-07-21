@@ -416,10 +416,9 @@ does this is called a reasoning model, and the depth of that effort can sometime
 ### Slim ISO
 
 The small (approximately 1.5 GB) bootable installer image that contains the appliance's operating system, provisioning
-agent, and web console. Operators boot the node from the slim ISO, either flashed to a USB drive or mounted through
-the [BMC](#bmc) as [virtual media](#virtual-media). The [interactive installer](#interactive-installer) writes the OS
-to
-the local disk.
+agent, and web console. Operators boot the node from the slim ISO, either flashed to a USB drive or mounted through the
+[BMC](#bmc) as [virtual media](#virtual-media). The [interactive installer](#interactive-installer) writes the OS to the
+local disk.
 
 ### Smoke Test
 
@@ -458,9 +457,8 @@ window. The appliance meters input tokens, output tokens, and derived cost for e
 
 ### VIP
 
-A single IP address that resolves to whichever cluster node currently holds the control-plane role,
-so a multi-node cluster presents one stable endpoint even as individual nodes fail over. Configured in the
-cluster-creation wizard.
+A single IP address that resolves to whichever cluster node currently holds the control-plane role, so a multi-node
+cluster presents one stable endpoint even as individual nodes fail over. Configured in the cluster-creation wizard.
 
 ### Virtual Media
 

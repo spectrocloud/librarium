@@ -57,10 +57,10 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
   boot the node from it.
 - **Content bundle (more than 20 GB)**. the platform and application layers. You upload it through Local UI or the
   Palette CLI after the node is on the network.
-- **Model metadata (`metadata.yaml`, a few KB)**. one file per model you intend to deploy. It is a separate download, not
-  part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from Hugging
-  Face and upload them to the appliance. Download it from Artifact Studio, or from the `models/` directory of the
-  `launchpad-ai` repository, for example `models/glm-5.2/1.0.0/metadata.yaml`.
+- **Model metadata (`metadata.yaml`, a few KB)**. one file per model you intend to deploy. It is a separate download,
+  not part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from
+  Hugging Face and upload them to the appliance. Download it from Artifact Studio, or from the `models/` directory of
+  the `launchpad-ai` repository, for example `models/glm-5.2/1.0.0/metadata.yaml`.
 
 ## Install the OS
 
@@ -183,8 +183,8 @@ Before you start, confirm the jumpbox has everything the upload needs:
 
 - **The Palette CLI installed and on your `PATH`.** Download the Linux binary from the Downloads page and move it to
   `/usr/local/bin/palette` so the `palette` command resolves from any directory. For step-by-step instructions, refer to
-  [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run `palette login`
-  for this workflow, because the content-upload command uses a node-issued token, not your Palette API key.
+  [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run `palette login` for
+  this workflow, because the content-upload command uses a node-issued token, not your Palette API key.
 - **The content bundle you downloaded from Artifact Studio.** The `.tar.zst` file must be reachable on the jumpbox
   filesystem. If you downloaded it on another machine, copy it to the jumpbox first with `scp` or `rsync`.
 - **SSH access to the node** using the administrator account you created in the Palette TUI. You use SSH once, to read
