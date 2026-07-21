@@ -75,9 +75,9 @@ Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported.
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
 Before you start any Palette VerteX upgrade, compare the Kubernetes version of your current release with that of the
-target release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the missing
-minor. This constraint applies to EC binary and VerteX Management Appliance installations. It does not apply to Palette
-VerteX installed via Helm on a customer-managed Kubernetes cluster, where your Kubernetes version is managed
+target release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the
+missing minor. This constraint applies to EC binary and VerteX Management Appliance installations. It does not apply to
+Palette VerteX installed via Helm on a customer-managed Kubernetes cluster, where your Kubernetes version is managed
 independently of Palette VerteX.
 
 <Tabs>
