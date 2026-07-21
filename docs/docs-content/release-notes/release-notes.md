@@ -21,6 +21,24 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.9.c}
 
+#### Upgrade Notes {#upgrade-notes-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
+
+- Direct Enterprise Cluster (EC) binary and Palette Management Appliance upgrades from any `4.8.x` release to `4.9.23`
+  or later are not supported. The `4.8.x` series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes
+  `1.34.6`; a single Palette upgrade cannot cross more than one Kubernetes minor version. To reach `4.9.23` or later
+  from `4.8.x`, upgrade in two steps.
+
+  1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
+  2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
+
+  Before starting any Palette upgrade, compare the Kubernetes version of your current release with that of the target
+  release. If the delta is two or more minor versions, plan an intermediate upgrade. This constraint does not apply to
+  Palette installed via Helm on a customer-managed Kubernetes cluster. For the version-to-Kubernetes mapping and full
+  guidance, refer to
+  [Kubernetes Version Constraint](../enterprise-version/upgrade/upgrade.md#kubernetes-version-constraint).
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6527 -->
@@ -201,6 +219,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   address. This supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md) appliance
   topologies, where management traffic terminates on the bridge itself.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8975 -->
+
+- A new [`stylus.applianceType`](../clusters/edge/edge-configuration/installer-reference.md) user data field lets you
+  identify an Edge host as an appliance and specify its variant. Supported values are `palette`, `vertex`, `paletteai`,
+  `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, and `ai-launchpad-vertex`. When set, the value is
+  also returned in the [`GET /v1/edge-mgmt/settings`](/api/edge-v1/v-1-settings/) response. The field is omitted for
+  regular Edge hosts.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8773 -->
@@ -215,6 +241,18 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - When you create a cluster from [Local UI](../clusters/edge/local-ui/cluster-management/create-cluster.md) using an
   Edge installer ISO that contains embedded content and a cluster definition, the **Create cluster** wizard now selects
   **embedded config** by default instead of **Import config**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8718 -->
+
+- Local UI now guides operators through the correct redeploy path after a cluster deletion on Edge hosts with an
+  `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
+  `ai-launchpad-vertex`. The delete confirmation warns that deletion erases the on-appliance content bundle and reminds
+  you to save it off the appliance first. After deletion, Local UI directs you to re-upload the content bundle from the
+  [Content](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) page or reinstall the appliance with
+  an installer ISO that contains embedded content. The **Import config** option is hidden for these appliance types
+  because uploading a cluster configuration is not a valid recovery path in this mode. For more information, refer to
+  [Delete a Cluster](../clusters/edge/local-ui/cluster-management/delete-cluster.md) and
+  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md).
 
 #### Bug Fixes
 
@@ -272,6 +310,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.9.c) for more details.
+
+#### Upgrade Notes {#vertex-upgrade-notes-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
+
+- The Kubernetes minor-version constraint on Enterprise Cluster (EC) binary and VerteX Management Appliance upgrades
+  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the
+  [Palette Enterprise Upgrade Notes](#upgrade-notes-4.9.c) for the two-hop upgrade path, and to
+  [Kubernetes Version Constraint](../vertex/upgrade/upgrade.md#kubernetes-version-constraint) for the full guidance.
 
 ### Automation
 
@@ -368,7 +415,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 - The in-cluster Harbor registry used in edge cluster add-on packs now integrates with cert-manager to automate TLS
   certificate rotation. Certificates are automatically renewed before expiration, eliminating the need for manual
   intervention and preventing service downtime. This applies to connected and airgap clusters, including FIPS and
-  non-FIPS configurations.
+  non-FIPS configurations. Refer to the
+  [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md)
+  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Harbor registry uses
+  cert-manager to automatically rotate its TLS certificate.
 
 ### Bug Fixes
 
@@ -421,14 +471,11 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
 
-- Zot Registry and Harbor Registry on [Edge clusters](../clusters/edge/edge.md) now integrate with `cert-manager` to
-  automatically rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime.
-  This applies to connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
-  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
-  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Zot registry uses cert-manager
-  to automatically rotate its TLS certificate.
+- Zot Registry on [Edge clusters](../clusters/edge/edge.md) now integrates with `cert-manager` to automatically rotate
+  TLS certificates before expiration, eliminating manual renewal and preventing service downtime. This applies to
+  connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md).
 
 <!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
 
