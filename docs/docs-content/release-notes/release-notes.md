@@ -66,6 +66,23 @@ tags: ["release-notes"]
   with `osImageOverride` as an HTTP(S) URL or the name of an existing MAAS image, and specify `osName` and `osVersion`
   so MAAS recognizes the operating system. This applies to Palette and VerteX, including airgap deployments.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8489 -->
+
+- Emails sent by Palette and VerteX now include a hyperlink to the tenant URL on the tenant name in every template.
+  When the same or similar tenant names exist across multiple Palette or VerteX instances, or across regional SaaS
+  instances, this makes it clear which tenant the email refers to.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11093 -->
+
+- Palette and VerteX management services now maintain stable memory usage, preventing the gradual memory growth previously. Internal
+  cache-invalidation traffic has also been reduced by removing unnecessary acknowledgments on broadcast messages, which
+  lowers broker load.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1257 -->
+
+- Removing a Spectro-managed namespace from a cluster's **RBAC** settings or from a **Workspace** now prompts you to
+  confirm the action, preventing accidental deletion.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
@@ -79,6 +96,99 @@ tags: ["release-notes"]
   If your Palette installation was deployed in quick start mode, migrate to Enterprise Cluster by following the process
   outlined in the
   [legacy Palette 3.x installation guide](https://version-3-4.legacy.docs.spectrocloud.com/enterprise-version/install-palette/install-on-vmware/install/).
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6689 -->
+
+- Fixed an issue that prevented Kubernetes v1.36 clusters from being created and blocked upgrades from v1.35 to v1.36.
+  The Cluster API (CAPI) provider set the `ControlPlaneKubeletLocalMode` feature gate, which was removed in Kubernetes
+  v1.36 after graduating to general availability in v1.35, causing `kubeadm` initialization to fail. Palette no longer
+  sets this feature gate on v1.36 clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9998 -->
+
+- Fixed an issue in the Palette YAML editor where the **Presets** and **Variables** actions could be hidden behind the
+  editor content as you scrolled through a YAML document. The actions now remain visible while scrolling in cluster
+  profile creation and edit, cluster creation, and cluster overview flows.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9689 -->
+
+- Fixed an issue where the JSON Web Token (JWT) session token for the Palette and VerteX web UI remained valid after a
+  user logged out, which meant the token could still be used to access protected endpoints. Palette and VerteX now
+  revoke the JWT on logout and check every request against the revocation list before granting access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11509 -->
+
+- Fixed an issue where downloading the kubeconfig for an EKS cluster from the Palette UI could fail even though the
+  kubeconfig had been uploaded to the management plane and the cluster agent was connected. The management plane now
+  recovers the OIDC kubeconfig client registration when it has drifted out of sync, so you can download the kubeconfig
+  from the Palette UI as expected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11429 -->
+
+- Fixed an issue where validating an OCI Helm registry that pointed to a large Harbor project, such as the DoD Iron
+  Bank repository, timed out at the 60-second server deadline because Palette enumerated the entire catalog to check
+  credentials. Validation now performs a lightweight probe that completes in under a second regardless of the number of
+  repositories in the project.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7086 -->
+
+- Fixed an issue where updates to the internal `reach-controller-manager` Deployment did not reach existing management
+  clusters because the Deployment was rendered as a Helm pre-install hook and skipped on `helm upgrade`. The Deployment
+  is now managed as a standard chart resource so subsequent upgrades apply changes in place.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11299 -->
+
+- Fixed an issue where a pack registry sync could stay in an `InProgress` state for hours when a downstream dependency,
+  such as the internal message broker or the upstream OCI registry, stopped responding. Broadcast and registry calls
+  now use bounded timeouts, so a stalled dependency causes the sync to fail cleanly and the sync-recovery scheduler
+  resumes it on the next interval rather than leaving the registry stuck.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11294 -->
+
+- Fixed an issue where the `maxSurge` and `maxUnavailable` rolling-update overrides for managed Kubernetes clusters
+  (AKS, EKS, and GKE) accepted values that the managed control plane never honored, causing confusion. These overrides
+  have been removed from the UI, API, Palette Terraform provider, and Palette Crossplane provider for managed
+  Kubernetes clusters. Rolling-update configuration remains available for infrastructure-provider clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11286 -->
+
+- Fixed an issue where the teams summary API returned HTTP 500 when a team referenced a user that no longer existed.
+  The **Update Team** API now validates every user ID in the request, and the teams summary API skips references to
+  deleted users instead of failing.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6938 -->
+
+- Fixed an issue where an AKS system node pool provisioned with an OS SKU of `AzureLinux` was created as Ubuntu on
+  first boot and then repaved to Azure Linux on the next reconcile, forcing an unnecessary node roll. The system node
+  pool now boots directly with the requested OS SKU, matching the behavior of user node pools.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11154 -->
+
+- Fixed an issue where syncing an OCI Helm registry indexed zero charts when the charts were stored at the repository
+  root of the project. The sync now indexes charts at both the project root and nested paths, so OCI Helm registries
+  whose charts live at the top level can be synced without additional configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6927 -->
+
+- Fixed an issue where the internal `image-swap` and `reach-controller-manager` pods tolerated the Kubernetes cordon
+  taint, which prevented EKS managed node-group upgrades from draining the old nodes and caused EKS to roll the
+  upgrade back. These pods no longer tolerate the cordon taint, so managed node-group upgrades complete without
+  rollback.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6895 -->
+
+- Fixed an issue where Palette OS images could fail to boot on Dell PowerEdge servers configured with certain BOSS-N1
+  RAID controllers, causing the host to hang on a black screen after the GRUB menu. Refreshed OS images now use a newer
+  Linux kernel that supports this hardware.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6935 -->
+
+- Fixed an issue in Palette VerteX where installing the `reach-system` Helm chart alongside `image-swap` failed with
+  `ImagePullBackOff` on the `reach-controller-manager` pod, because the chart pointed to non-FIPS images while the
+  VerteX airgap bundle only shipped the FIPS variants. The chart now references the FIPS image path that matches the
+  airgap bundle.
 
 ### Edge
 
@@ -115,6 +225,48 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9074 -->
+
+- Fixed an issue on Palette Edge clusters where the control-plane virtual IP managed by `kube-vip` could flap during
+  brief periods of elevated storage latency, because Stylus configured `kube-vip` lease timers three times shorter than
+  the upstream default. The `kube-vip` lease duration, renew deadline, and retry period now use the upstream defaults
+  of 15, 10, and 2 seconds, which tolerate transient etcd write stalls on slower storage without failing over the
+  virtual IP.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8824 -->
+
+- Fixed an issue on two-node Palette Edge clusters where the VNC console for virtual machines disconnected every 30 to
+  60 seconds because the bundled Kine binary used a 10-minute watch-progress notification interval, causing the
+  Kubernetes API server watch cache to go stale. Stylus now sets a 5-second watch-progress interval on the Kine
+  service, and new provider images built with the current CanvOS release ship an updated Kine version.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8629 -->
+
+- Fixed an issue where installing Palette Edge on HPE ProLiant servers with SUSE Linux Enterprise Micro 5.5 could fail
+  with `Disk /dev/dm-0 does not exist` when the Kairos installer's automatic device selection picked a
+  device-mapper pseudo-device instead of a physical disk. The installer now skips device-mapper devices during
+  auto-selection, so installations succeed on HPE hardware without setting an explicit `install.device` value in your
+  user data.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7650 -->
+
+- Fixed an issue on Palette Edge clusters where a failed Kubernetes minor-version upgrade was not surfaced in the
+  Palette UI, which allowed subsequent upgrade attempts to proceed even though the `kubeadm-config` ConfigMap had not
+  been updated to the new version. Failed Kubernetes upgrades are now reported to the management plane and block
+  further upgrade actions until the underlying failure is resolved.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-4291 -->
+
+- Fixed an issue on Palette Edge native clusters where manifest files attached to the CNI or CSI infrastructure layer
+  of a cluster profile were staged on the host but never applied to the cluster. Attached manifests for both
+  infrastructure layers are now applied, and editing an attached manifest triggers a re-apply on the next reconcile.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-3330 -->
+
+- Fixed an issue on Palette Edge native clusters with the Harbor pack where `palette-webhook` pods could remain in a
+  `ContainerStatusUnknown` state after a Kubernetes upgrade because they were not drained from a node before the node
+  rebooted. Node drains now complete before an upgrade reboots the node.
+
 ### VerteX
 
 #### Features
@@ -148,6 +300,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now available.
 
 #### Improvements
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2287 -->
+
+- Fixed an issue in the Palette Terraform provider where changing the version of an add-on cluster profile attached to
+  a cluster could cause the underlying add-on packs to uninstall and reinstall instead of updating in place, which
+  briefly removed workloads such as Argo CD. Changing the add-on profile version now performs an in-place update and
+  preserves the existing pack state.
 
 ### Docs and Education
 
