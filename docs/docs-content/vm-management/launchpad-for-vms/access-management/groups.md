@@ -46,11 +46,11 @@ Select a column header to sort. Use the **Filter rows** search box to filter by 
 
    | **Field**      | **Description**                                                                                                                         |
    | -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Group Name** | Required. Follow DNS label rules: lowercase alphanumeric characters and hyphens only. Maximum 128 characters.                           |
+   | **Group Name** | Required. Follow DNS label rules: lowercase alphanumeric characters and hyphens only. Up to 128 characters.                             |
    | **Namespaces** | Select **Cluster-wide (all namespaces)** to bind the group across the cluster, or select one or more specific namespaces from the list. |
    | **VMO Role**   | _(Optional)_ Assign a VMO platform role to all members of the group. Select **None** to create a group without a VMO role.              |
 
-   The VMO roles are described in the following table.
+   The following table describes each VMO role.
 
    | **Role**           | **Description**                                                                                  |
    | ------------------ | ------------------------------------------------------------------------------------------------ |
@@ -100,8 +100,8 @@ fixed.
 
 :::info
 
-Member changes take effect on the user's next sign-in or token refresh. Kubernetes access changes are applied
-immediately and create or revoke ClusterRoleBindings and RoleBindings in the cluster.
+Member changes take effect on the user's next sign-in or token refresh. Launchpad applies Kubernetes access changes
+immediately and creates or revokes ClusterRoleBindings and RoleBindings in the cluster.
 
 :::
 
@@ -116,7 +116,7 @@ another group or directly. Refer to
 
 ## Delete Groups
 
-You can delete a single group or select multiple groups to delete in a single operation.
+You can delete a single group or select many groups to delete in a single operation.
 
 ### Delete a Single Group
 
@@ -128,24 +128,25 @@ You can delete a single group or select multiple groups to delete in a single op
 
 4. Select **Delete**.
 
-### Delete Multiple Groups
+### Delete Groups in Bulk
 
 1. From the left main menu, select **Settings** > **Access Management** > **Groups**.
 
 2. Select the checkbox for each group you want to delete. Use the header checkbox to select every group on the current
    page.
 
-3. Select **Delete** in the bulk action bar.
+3. Select the **Delete** button in the bulk actions toolbar at the top of the table.
 
-4. For a single selected group, type the group name to confirm. For multiple groups, type `delete` to confirm.
+4. For a single selected group, type the group name to confirm. For many groups, type `delete` to confirm.
 
-5. A progress indicator tracks each deletion. Any failures are listed after the operation completes.
+5. A progress indicator tracks each deletion. Launchpad lists any failures after the operation completes.
 
 :::warning
 
-Deleting a group removes it from Keycloak and automatically revokes all associated access. The VMO role mapping and any
-Kubernetes ClusterRoleBindings or RoleBindings bound to the group are cleaned up in the same operation. This prevents
-orphaned bindings from granting cluster access to future users who later join a group with the same name.
+Deleting a group removes it from Keycloak and automatically revokes all associated access. Launchpad cleans up the
+VMO role mapping and any Kubernetes ClusterRoleBindings or RoleBindings bound to the group in the same operation.
+This prevents orphaned bindings from granting cluster access to future users who later join a group with the same
+name.
 
 :::
 

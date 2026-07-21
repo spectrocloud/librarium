@@ -8,8 +8,8 @@ sidebar_position: 2
 tags: ["vmo", "vm launchpad", "access management"]
 ---
 
-Launchpad for VMs integrates with Keycloak for user identity. Users you create on the **Users** page are stored in
-Keycloak, and Launchpad manages their VMO role and Kubernetes access on your behalf. This guide covers viewing,
+Launchpad for VMs integrates with Keycloak for user identity. Launchpad stores users you create on the **Users**
+page in Keycloak and manages their VMO role and Kubernetes access on your behalf. This guide covers viewing,
 creating, editing, resetting passwords, and deleting users.
 
 ## Prerequisites
@@ -31,8 +31,8 @@ The **Users** table lists the following columns.
 | **Email**    | The email address on the account.                              |
 | **Name**     | The first and last name on the account.                        |
 | **Enabled**  | A check mark indicates the user can sign in.                   |
-| **Groups**   | Groups the user belongs to. Each group is displayed as a pill. |
-| **Created**  | The date the user was created.                                 |
+| **Groups**   | Groups the user belongs to. Each group appears as a pill.      |
+| **Created**  | The date Launchpad created the user.                           |
 | **Actions**  | Row actions to edit, reset the password, or delete the user.   |
 
 Select a column header to sort. Use the **Filter rows** search box to filter by any field.
@@ -58,14 +58,14 @@ scope.
    | **Verify Password** | Must match **Password**.                                                        |
    | **Temporary**       | Select to force a password reset on first sign-in. Bypasses the password field. |
 
-   Passwords must meet the following requirements. Violations appear as inline validation and **Next** stays disabled
-   until they are resolved.
+   Passwords must meet the following requirements. Violations appear as inline validation, and **Next** remains
+   unavailable until you resolve them.
 
-   - Minimum 15 characters
+   - At least 15 characters
 
-   - At least 1 digit
+   - At least one digit
 
-   - At least 1 special character
+   - At least one special character
 
 4. _(Optional)_ To onboard more users at the same time, select **+ Add another user** and repeat the previous step. Each
    user has its own row in the wizard.
@@ -89,9 +89,9 @@ scope.
    | **Select Namespaces**    | Choose one or more existing namespaces. Launchpad creates RoleBindings scoped to those namespaces only.            |
    | **Create New Namespace** | _(Optional)_ Enter a namespace name and select **+ Create** to create a namespace and add it to the current scope. |
 
-7. Select **Next** to open the **Review** step. Review the actions the wizard will perform for each user.
+7. Select **Next** to open the **Review** step. Review the actions the wizard performs for each user.
 
-8. Select **Apply**. Each action is tracked with its own progress indicator, and any failures are listed after the
+8. Select **Apply**. Each action has its own progress indicator, and Launchpad lists any failures after the
    operation completes.
 
 9. Select **Close** to return to the **Users** page.
@@ -126,8 +126,8 @@ fixed.
 
    :::info
 
-   The **Username** cannot be changed after a user is created. To use a different username, delete the user and create a
-   new one.
+   The **Username** field is read-only after a user exists. To use a different username, delete the user and create
+   a new one.
 
    :::
 
@@ -135,7 +135,7 @@ fixed.
 
 :::info
 
-When the user is a member of a group that already carries a VMO role, an amber banner appears above the role cards
+When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards
 listing the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). The banner is a
 heads-up, not a lock: any role you set here is added to the roles the user already inherits from their groups. Refer to
 [How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
@@ -167,7 +167,7 @@ role assignments.
 
 ## Delete Users
 
-You can delete a single user or select multiple users to delete in a single operation.
+You can delete a single user or select many users to delete in a single operation.
 
 ### Delete a Single User
 
@@ -177,18 +177,18 @@ You can delete a single user or select multiple users to delete in a single oper
 
 3. Confirm the deletion.
 
-### Delete Multiple Users
+### Delete Users in Bulk
 
 1. From the left main menu, select **Settings** > **Access Management** > **Users**.
 
 2. Select the checkbox for each user you want to delete. Use the header checkbox to select every user on the current
    page.
 
-3. Select **Delete** in the bulk action bar.
+3. Select the **Delete** button in the bulk actions toolbar at the top of the table.
 
-4. For a single selected user, type the username to confirm. For multiple users, type `delete` to confirm.
+4. For a single selected user, type the username to confirm. For many users, type `delete` to confirm.
 
-5. A progress indicator tracks each deletion. Any failures are listed after the operation completes.
+5. A progress indicator tracks each deletion. Launchpad lists any failures after the operation completes.
 
 :::warning
 
@@ -200,8 +200,9 @@ longer need them.
 
 ## Palette-Managed Environments
 
-When Launchpad for VMs is deployed in a Palette-managed environment, user creation may be hidden. In that case, user
-lifecycle is managed by the parent platform, and Launchpad displays users for viewing and access policy assignment only.
+When Launchpad for VMs runs in a Palette-managed environment, the UI may hide user creation. In that case, the
+parent platform manages user lifecycle. Launchpad displays users for viewing and for access policy assignment
+only.
 
 ## Next Steps
 
