@@ -2,8 +2,8 @@
 id: bond-configuration
 title: Bond Configuration Reference
 description: >
-  Field-by-field reference for the bond form in Local UI—type, hash policy, LACP rate, members, IP, gateway and DNS,
-  MetalLB range, optional VLAN sub-interface, and Cilium interface selection.
+  Field-by-field reference for the bond form in Local UI: type, hash policy, LACP rate, link monitoring interval,
+  members, IP, gateway and DNS, optional VLAN sub-interface, and Cilium interface selection.
 sidebar_label: Bond Configuration
 sidebar_position: 2.5
 tags:
@@ -11,7 +11,7 @@ tags:
   - reference
   - install
   - network
-keywords: ["launchpad", "ai", "bond", "802.3ad", "LACP", "MetalLB", "VLAN", "network"]
+keywords: ["launchpad", "ai", "bond", "802.3ad", "LACP", "MIIMonitorSec", "VLAN", "network"]
 ---
 
 The appliance carries cluster traffic and [Piraeus](./glossary.md#piraeus) storage replication over a bonded interface,
@@ -54,6 +54,15 @@ The rate at which the appliance exchanges LACP heartbeat frames with the switch.
 so a failed link is detected within a few seconds. `slow` (the LACP default) sends one every 30 seconds; use it only if
 your switch team requires it. The overhead of `fast` is negligible.
 
+### Link Monitoring Interval
+
+Recommended value: `100`.
+
+The interval at which the bond driver checks each member NIC's link state, set through the `MIIMonitorSec` option. Local
+UI populates this field with a default of `100`. Keep the default unless your network team requires a different value.
+
+{/* NEEDS REVIEW: confirm the unit of the Link Monitoring Interval field (milliseconds or seconds) for the default value 100. */}
+
 ### Members
 
 Recommended value: the two data NICs, for example `enP1s3f0np0` and `enP1s3f1np1`.
@@ -73,15 +82,6 @@ Palette TUI onto the bond when you apply the form, so the node keeps the same ad
 Recommended value: the default gateway and DNS servers you set in the Palette TUI.
 
 Local UI carries these over so the node keeps outbound connectivity and name resolution once the bond takes over.
-
-### MetalLB range
-
-Recommended value: an unused, contiguous IP range in the same subnet as the bond IP, for example `10.0.21.50` to
-`10.0.21.59`.
-
-MetalLB is the load balancer that assigns IP addresses from this range to platform services such as the appliance
-console and Traefik, so those services are reachable outside the cluster. The range must not overlap the DHCP scope on
-the same subnet or any other reserved address.
 
 ### VLAN sub-interface (optional)
 
@@ -104,9 +104,9 @@ directs you to.
 Type        : 802.3ad
 Hash policy : layer3+4
 LACP rate   : fast
+Link monitor: 100 (MIIMonitorSec)
 Members     : the data NICs, for example enP1s3f0np0 and enP1s3f1np1
 IP          : the host IP on the bond, for example 10.0.21.106/24 (untagged)
 Gateway/DNS : the default gateway and DNS servers
-MetalLB     : an unused IP range for platform services, for example 10.0.21.50 to 10.0.21.59
 VLAN (opt.) : bond0.<vlan-id>, for example bond0.393 with 10.0.22.110/24
 ```

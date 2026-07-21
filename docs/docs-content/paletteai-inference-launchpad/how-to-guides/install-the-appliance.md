@@ -91,6 +91,21 @@ drop to a shell. The action is destructive; confirm before you run it.
 After the OS install and reboot, the node comes up in the Palette TUI, where you set the initial credentials and
 network. The hostname, DNS, and NTP settings are configured here in the TUI, not in Local UI.
 
+:::info Password requirements
+
+The appliance enforces a password policy on every account you create in the Palette TUI, including `root`. Each password
+must meet all of the following:
+
+- Be at least 15 characters long.
+- Include at least one lowercase letter, one uppercase letter, one digit, and one special character, such as `!`, `@`,
+  `#`, `$`, `%`, `^`, `&`, or `*`.
+- Not contain the account username.
+- Not contain spaces, a double quote (`"`), a single quote (`'`), or a backslash (`\`).
+
+When you change an existing password, the new password must differ from the old one by at least five characters.
+
+:::
+
 1. Provide the initial administrator account (username and password). This account signs in to Local UI and accesses the
    node over SSH. Press **ENTER** to continue.
 2. Move between options with **TAB** or the arrow keys. Press **ENTER** to apply a change, and **ESC** to go back.
@@ -128,9 +143,12 @@ Once the node has an IP address, you can leave the console and reach the node's 
 
 ## Configure the Storage
 
-The **Data volume group** tells [Piraeus](../reference/glossary.md#piraeus) which physical disks to use for cluster
-storage. Model weights and the KV cache live on these disks. Configure the volume group after the bond and before you
-link hosts. On a multi-node cluster, complete this section on every node.
+If you do not configure storage, Local UI configures it automatically and adds every available disk on the host to the
+**Data volume group**. Configure it manually only when you need to control which disks
+[Piraeus](../reference/glossary.md#piraeus) uses, for example to keep a disk out of the storage pool. The **Data volume
+group** tells Piraeus which physical disks to use for cluster storage, and model weights and the KV cache live on these
+disks. Configure the volume group after the bond and before you link hosts, and on a multi-node cluster complete this
+section on every node.
 
 :::warning Read-only after cluster creation
 
@@ -165,19 +183,22 @@ before you link them.
 
 ## Upload the Content Bundle
 
-Upload the content bundle from Local UI, or from the Palette CLI on the jumpbox. On a multi-node cluster, content
-uploaded on the leader synchronizes automatically to every linked host. The model itself is not uploaded here; you
-upload it separately in [Upload Your Model](#upload-your-model).
+Upload the content bundle before you deploy the cluster. On a multi-node cluster, content uploaded on the leader
+synchronizes automatically to every linked host. The model itself is not uploaded here; you upload it separately in
+[Upload Your Model](#upload-your-model).
 
-From Local UI.
+Two upload paths are available:
 
-1. From the left main menu, select **Content** > **Actions** > **Upload Content**.
-2. Select the content bundle and start the upload.
-3. After the upload reaches 100 percent, wait for the node to finish unpacking the bundle before continuing.
+- **Palette CLI from the jumpbox (recommended).** Streams the bundle to the node from the command line, so you can
+  script the upload and it does not depend on a browser session. The bundle can sit on the jumpbox filesystem or on an
+  NFS share mounted on the jumpbox.
+- **Local UI browser upload (not recommended).** Uploads through the browser. The content bundle is more than 20 GB, so
+  the browser upload is slow and prone to timeouts. Use it only when the Palette CLI is not available on the jumpbox.
 
-Upload with the Palette CLI (from the jumpbox). Use this path when you want to script the upload, or when the browser
-upload times out. The Palette CLI runs on your jumpbox and authenticates to the node with a per-node upload token, so
-you do not sign in to Palette SaaS for this step.
+### Upload with the Palette CLI (Recommended)
+
+The Palette CLI runs on your jumpbox and authenticates to the node with a per-node upload token, so you do not sign in
+to Palette SaaS for this step.
 
 Before you start, confirm the jumpbox has everything the upload needs:
 
@@ -185,24 +206,56 @@ Before you start, confirm the jumpbox has everything the upload needs:
   `/usr/local/bin/palette` so the `palette` command resolves from any directory. For step-by-step instructions, refer to
   [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run `palette login` for
   this workflow, because the content-upload command uses a node-issued token, not your Palette API key.
-- **The content bundle you downloaded from Artifact Studio.** The `.tar.zst` file must be reachable on the jumpbox
-  filesystem. If you downloaded it on another machine, copy it to the jumpbox first with `scp` or `rsync`.
+- **The content bundle reachable on the jumpbox.** The `.tar.zst` file must be on the jumpbox filesystem or on an NFS
+  share mounted on the jumpbox. If you downloaded it on another machine, copy it to the jumpbox first with `scp` or
+  `rsync`.
 - **SSH access to the node** using the administrator account you created in the Palette TUI. You use SSH once, to read
   the token off the node.
-- **Network reachability from the jumpbox to the node on TCP port `5080`.** The upload command posts the bundle to the
-  same Local UI endpoint your browser uses. If the jumpbox cannot reach the bond IP on port `5080`, the upload fails.
+- **Network reachability from the jumpbox to the node on TCP port `5082`.** The Palette CLI posts the bundle to the
+  node's Local UI API on port `5082`, which is separate from the Local UI web address on port `5080`. If the jumpbox
+  cannot reach the bond IP on port `5082`, the upload fails.
 
-Then perform the upload in three steps.
+#### (Optional) Locate the bundle on an NFS share
 
-1. From the jumpbox, open an SSH session to the node. Replace `<user>` with the administrator username you set in the
-   Palette TUI and `<node-ip>` with the bond IP.
+If the content bundle is on an NFS share rather than the jumpbox's local disk, mount the share on the jumpbox and note
+the bundle's full path. You upload it directly from the mount, so no local copy is needed. These commands assume a POSIX
+shell on the Linux jumpbox.
+
+1. List the NFS mounts on the jumpbox to find the share.
+
+   ```bash
+   df --human-readable --type=nfs --type=nfs4
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   Filesystem             Size  Used Avail Use% Mounted on
+   10.0.19.10:/data/ipmi  7.0T   52G  6.6T   1% /mnt/nfs/ipmi
+   ```
+
+   The path in the **Mounted on** column is the mount point. In this example the share is mounted at `/mnt/nfs/ipmi`.
+
+2. List the bundle on the mount and note the full path to the `.tar.zst` file.
+
+   ```bash
+   ls -lh /mnt/nfs/ipmi/
+   ```
+
+   Use the full mount path, for example `/mnt/nfs/ipmi/<content-bundle>.tar.zst`, as the `--file` value in the upload
+   command below.
+
+#### Upload steps
+
+1. From the jumpbox, read the per-node upload token from the node and store it in an environment variable. Local UI
+   writes this token to a file on the node when it first comes up, so the token already exists and you do not generate
+   or request one. Replace `<user>` with the administrator username you set in the Palette TUI and `<node-ip>` with the
+   bond IP.
 
    <Tabs groupId="os">
 
    <TabItem label="Linux / macOS" value="unix">
 
    ```bash
-   ssh <user>@<node-ip>
+   export AIL_NODE_TOKEN=$(ssh <user>@<node-ip> sudo cat /opt/spectrocloud/.upload-auth-token)
    ```
 
    </TabItem>
@@ -210,31 +263,27 @@ Then perform the upload in three steps.
    <TabItem label="Windows" value="windows">
 
    ```powershell
-   ssh <user>@<node-ip>
+   $env:AIL_NODE_TOKEN = ssh <user>@<node-ip> sudo cat /opt/spectrocloud/.upload-auth-token
    ```
 
    </TabItem>
 
    </Tabs>
 
-2. On the node (inside the SSH session), read the upload token. Local UI writes a per-node token to the file below when
-   it first comes up, so the token already exists and you do not generate or request one. Copy the token string that the
-   command prints, then type `exit` to return to the jumpbox.
-
-   ```bash
-   cat /opt/spectrocloud/.upload_auth_token
-   ```
-
-3. Back on the jumpbox, run the upload. Replace `<content-bundle>` with the path to the file you downloaded from
-   Artifact Studio (for example, `./launchpad-ai-content.tar.zst`) and `<token>` with the token you copied in the
-   previous step.
+2. Run the upload from the jumpbox. Replace `<content-bundle>` with the path to the bundle, on the jumpbox filesystem or
+   on the NFS mount (for example `./launchpad-ai-content.tar.zst` or `/mnt/nfs/ipmi/launchpad-ai-content.tar.zst`), and
+   `<node-ip>` with the bond IP. The default target port is `5082`; if the Local UI API uses a different port, add
+   `-p <port>`.
 
    <Tabs groupId="os">
 
    <TabItem label="Linux / macOS" value="unix">
 
    ```bash
-   palette content upload --file <content-bundle> --token <token>
+   palette content upload \
+     --file <content-bundle> \
+     --token "$AIL_NODE_TOKEN" \
+     <node-ip>
    ```
 
    </TabItem>
@@ -242,17 +291,33 @@ Then perform the upload in three steps.
    <TabItem label="Windows" value="windows">
 
    ```powershell
-   palette content upload --file <content-bundle> --token <token>
+   palette content upload `
+     --file <content-bundle> `
+     --token $env:AIL_NODE_TOKEN `
+     <node-ip>
    ```
 
    </TabItem>
 
    </Tabs>
 
-   The CLI streams the file to the node's Local UI content endpoint on port `5080` and prints a progress line while the
-   upload runs. The content bundle is more than 20 GB, so expect a long upload. Use a wired connection, and keep the
-   terminal open until the CLI prints a completion message. Then wait for the node to finish unpacking the bundle before
-   you continue to the next section.
+   ```bash hideClipboard title="Expected output"
+   response: Uploaded content successfully
+   ```
+
+   A progress bar tracks the transfer. After it reaches 100 percent, the node decompresses the archive and imports its
+   images into the local registry. For a bundle of 20 GB or more, this server-side phase can take 15 to 30 minutes with
+   no visible progress. Use a wired connection, keep the terminal open, do not interrupt the CLI, and wait for the node
+   to finish before you continue.
+
+### Upload from Local UI (Not Recommended)
+
+The content bundle is more than 20 GB, so the browser upload is slow and can time out. Use this path only when the
+Palette CLI is not available on the jumpbox.
+
+1. From the left main menu, select **Content** > **Actions** > **Upload Content**.
+2. Select the content bundle and start the upload.
+3. After the upload reaches 100 percent, wait for the node to finish unpacking the bundle before continuing.
 
 ## Deploy the Cluster
 
@@ -332,10 +397,10 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 :::info Log in to the console
 
 The cluster is now running. Open the PaletteAI Inference Launchpad console in a browser at `https://<platform-ip>`, the
-platform IP address that Traefik fronts (from the MetalLB range you configured on the bond). On the first login, the
-console prompts you to set an admin username and password. This admin credential is separate from the Palette TUI
-account you created earlier, and it also becomes the Grafana admin login. Select **Set admin password**, then **Finish
-setup** to enter the console.
+platform IP address that Traefik fronts (from the MetalLB range you configured in the cluster profile). On the first
+login, the console prompts you to set an admin username and password. This admin credential is separate from the Palette
+TUI account you created earlier, and it also becomes the Grafana admin login. Select **Set admin password**, then
+**Finish setup** to enter the console.
 
 :::
 

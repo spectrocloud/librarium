@@ -24,11 +24,14 @@ For the step-by-step procedure, refer to
 
 ## Network
 
-| Variable                  | Type      | Required | Default          | Description                                                                                                                       |
-| ------------------------- | --------- | -------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Pod Network Range**     | IPv4 CIDR | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                |
-| **Service Network Range** | IPv4 CIDR | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.        |
-| **Platform IP Address**   | IPv4      | Yes      | —                | Single IPv4 address drawn from the MetalLB range on the bond. Traefik claims this address; the console and API are reached at it. |
+{/* NEEDS REVIEW: MetalLB Range placement. Reviewer feedback on 2026-07-21 says the range is not a bond form field. Confirm it is collected here in the Profile Config networking wizard and not elsewhere before publishing. */}
+
+| Variable                  | Type       | Required | Default          | Description                                                                                                                                                                                                                                                                              |
+| ------------------------- | ---------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Pod Network Range**     | IPv4 CIDR  | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                                                                                                                                                                       |
+| **Service Network Range** | IPv4 CIDR  | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.                                                                                                                                                               |
+| **MetalLB Range**         | IPv4 range | Yes      | —                | Unused, contiguous IP range in the same subnet as the node's bond IP, for example `10.0.21.50` to `10.0.21.59`. MetalLB assigns addresses from this range to platform services such as the appliance console and Traefik. Must not overlap the DHCP scope or any other reserved address. |
+| **Platform IP Address**   | IPv4       | Yes      | —                | Single IPv4 address drawn from the MetalLB Range. Traefik claims this address; the console and API are reached at it.                                                                                                                                                                    |
 
 ## OS and metrics
 
