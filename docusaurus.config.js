@@ -397,7 +397,7 @@ const config = {
             sidebarId: "docSidebar",
             label: "Docs",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
           },
           {
             to: "/tutorials",
@@ -405,7 +405,15 @@ const config = {
             sidebarId: "tutorialSidebar",
             label: "Tutorials",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
+          },
+          {
+            to: "/paletteai-inference-launchpad",
+            type: "docSidebar",
+            sidebarId: "launchpadSidebar",
+            label: "PaletteAI Inference Launchpad",
+            position: "left",
+            activeBaseRegex: "^/paletteai-inference-launchpad(/.*)?$",
           },
           {
             to: "/downloads",
@@ -413,7 +421,7 @@ const config = {
             sidebarId: "downloadsSidebar",
             label: "Downloads",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
           },
           {
             to: "/api/introduction",
