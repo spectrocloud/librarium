@@ -55,8 +55,8 @@ health status of MongoDB ReplicaSet members, refer to our
 
 Enterprise Cluster (EC) binary and Palette Management Appliance installations bundle a specific Kubernetes version with
 each Palette release. Kubernetes does not support skipping a minor version during a cluster upgrade, so a Palette
-upgrade cannot cross more than one Kubernetes minor version. An upgrade that would skip a Kubernetes
-minor version may fail mid-run and leave the management cluster in an unrecoverable state.
+upgrade cannot cross more than one Kubernetes minor version. An upgrade that would skip a Kubernetes minor version may
+fail mid-run and leave the management cluster in an unrecoverable state.
 
 The following table lists the Kubernetes version bundled with each recent Palette release.
 
@@ -75,8 +75,8 @@ Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported.
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
 Before you start any Palette upgrade, compare the Kubernetes version of your current release with that of the target
-release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the missing minor.
-This constraint applies to EC binary and Palette Management Appliance installations. It does not apply to Palette
+release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the missing
+minor. This constraint applies to EC binary and Palette Management Appliance installations. It does not apply to Palette
 installed via Helm on a customer-managed Kubernetes cluster, where your Kubernetes version is managed independently of
 Palette.
 
