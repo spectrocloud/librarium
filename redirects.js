@@ -25,6 +25,10 @@ if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
 
 let redirects = [
   {
+    from: `/launchpad-for-ai`,
+    to: `/paletteai-inference-launchpad`,
+  },
+  {
     from: `/api/`,
     to: `/api/introduction/`,
   },
