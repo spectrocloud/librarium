@@ -28,13 +28,13 @@ tags: ["release-notes"]
 - Direct Enterprise Cluster (EC) binary and Palette Management Appliance upgrades from any `4.8.x` release to `4.9.23`
   or later are not supported. The `4.8.x` series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes
   `1.34.6`; a single Palette upgrade cannot cross more than one Kubernetes minor version. To reach `4.9.23` or later
-  from `4.8.x`, upgrade in two hops.
+  from `4.8.x`, upgrade in two steps.
 
   1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
   2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
   Before starting any Palette upgrade, compare the Kubernetes version of your current release with that of the target
-  release. If the delta is two or more minor versions, plan an intermediate hop. This constraint does not apply to
+  release. If the delta is two or more minor versions, plan an intermediate upgrade. This constraint does not apply to
   Palette installed via Helm on a customer-managed Kubernetes cluster. For the version-to-Kubernetes mapping and full
   guidance, refer to
   [Kubernetes Version Constraint](../enterprise-version/upgrade/upgrade.md#kubernetes-version-constraint).
