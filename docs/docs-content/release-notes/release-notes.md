@@ -21,6 +21,24 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.9.c}
 
+#### Upgrade Notes {#upgrade-notes-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
+
+- Direct Enterprise Cluster (EC) binary and Palette Management Appliance upgrades from any `4.8.x` release to `4.9.23`
+  or later are not supported. The `4.8.x` series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes
+  `1.34.6`; a single Palette upgrade cannot cross more than one Kubernetes minor version. To reach `4.9.23` or later
+  from `4.8.x`, upgrade in two steps.
+
+  1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
+  2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
+
+  Before starting any Palette upgrade, compare the Kubernetes version of your current release with that of the target
+  release. If the delta is two or more minor versions, plan an intermediate upgrade. This constraint does not apply to
+  Palette installed via Helm on a customer-managed Kubernetes cluster. For the version-to-Kubernetes mapping and full
+  guidance, refer to
+  [Kubernetes Version Constraint](../enterprise-version/upgrade/upgrade.md#kubernetes-version-constraint).
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6527 -->
@@ -157,6 +175,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.9.c) for more details.
+
+#### Upgrade Notes {#vertex-upgrade-notes-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
+
+- The Kubernetes minor-version constraint on Enterprise Cluster (EC) binary and VerteX Management Appliance upgrades
+  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the
+  [Palette Enterprise Upgrade Notes](#upgrade-notes-4.9.c) for the two-hop upgrade path, and to
+  [Kubernetes Version Constraint](../vertex/upgrade/upgrade.md#kubernetes-version-constraint) for the full guidance.
 
 ### Automation
 
