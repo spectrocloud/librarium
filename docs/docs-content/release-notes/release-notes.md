@@ -269,7 +269,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 - The in-cluster Harbor registry used in edge cluster add-on packs now integrates with cert-manager to automate TLS
   certificate rotation. Certificates are automatically renewed before expiration, eliminating the need for manual
   intervention and preventing service downtime. This applies to connected and airgap clusters, including FIPS and
-  non-FIPS configurations.
+  non-FIPS configurations. Refer to the
+  [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md)
+  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Harbor registry uses
+  cert-manager to automatically rotate its TLS certificate.
 
 ### Bug Fixes
 
@@ -322,14 +325,11 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
 
-- Zot Registry and Harbor Registry on [Edge clusters](../clusters/edge/edge.md) now integrate with `cert-manager` to
+- Zot Registry on [Edge clusters](../clusters/edge/edge.md) now integrates with `cert-manager` to
   automatically rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime.
   This applies to connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
-  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
-  guide for information on how to upgrade an existing Edge cluster so that the in-cluster Zot registry uses cert-manager
-  to automatically rotate its TLS certificate.
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md).
 
 <!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
 
