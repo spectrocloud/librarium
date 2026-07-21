@@ -53,11 +53,11 @@ Confirm each prerequisite before starting:
 Three artifacts come from Artifact Studio, Spectro Cloud's artifact download portal. Download all three before you
 begin. The slim ISO and content bundle must match the target hardware's GPU (NVIDIA or AMD).
 
-- **Slim ISO (~1.5 GB)** — the bootable installer. You write it to a USB drive, or mount it through the server's BMC,
+- **Slim ISO (~1.5 GB)**—the bootable installer. You write it to a USB drive, or mount it through the server's BMC,
   and boot the node from it.
-- **Content bundle (more than 20 GB)** — the platform and application layers. You upload it through Local UI or the
+- **Content bundle (more than 20 GB)**—the platform and application layers. You upload it through Local UI or the
   Palette CLI after the node is on the network.
-- **Model metadata (`metadata.yaml`, a few KB)** — one file per model you intend to deploy. It is a separate download,
+- **Model metadata (`metadata.yaml`, a few KB)**—one file per model you intend to deploy. It is a separate download,
   not part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from
   Hugging Face and upload them to the appliance. Download it from Artifact Studio, or from the `models/` directory of
   the `launchpad-ai` repository, for example `models/glm-5.2/1.0.0/metadata.yaml`.
@@ -96,8 +96,8 @@ network. The hostname, DNS, and NTP settings are configured here in the TUI, not
 2. Move between options with **TAB** or the arrow keys. Press **ENTER** to apply a change, and **ESC** to go back.
    - **Hostname.** Review the hostname and change it if required.
    - **Network adapter.** Each adapter uses Dynamic Host Configuration Protocol (DHCP) by default. For each adapter you
-     can switch to a static IP address (with subnet mask and gateway), set a VLAN ID, or set the maximum transmission
-     unit (MTU). Setting a static IP removes the DHCP settings.
+     can switch to a static IP address (with subnet mask and gateway), set a VLAN ID, or set the Maximum Transmission
+     Unit (MTU). Setting a static IP removes the DHCP settings.
    - **DNS.** Set the primary and alternate name servers, and an optional search domain.
    - **NTP.** Set one or more NTP servers, for example `0.pool.ntp.org`.
 3. Navigate to **Quit** and confirm. After a few seconds the terminal displays the device information and the Local UI
@@ -169,7 +169,7 @@ Upload the content bundle from Local UI, or from the Palette CLI on the jumpbox.
 uploaded on the leader synchronizes automatically to every linked host. The model itself is not uploaded here; you
 upload it separately in [Upload Your Model](#upload-your-model).
 
-From Local UI:
+From Local UI.
 
 1. From the left main menu, select **Content** > **Actions** > **Upload Content**.
 2. Select the content bundle and start the upload.
@@ -181,10 +181,10 @@ you do not sign in to Palette SaaS for this step.
 
 Before you start, confirm the jumpbox has everything the upload needs:
 
-- **The Palette CLI installed and on your `PATH`.** Download the Linux binary from the librarium Downloads page and move
-  it to `/usr/local/bin/palette` so the `palette` command resolves from any directory. For step-by-step instructions,
-  refer to [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run
-  `palette login` for this workflow — the content-upload command uses a node-issued token, not your Palette API key.
+- **The Palette CLI installed and on your `PATH`.** Download the Linux binary from the Downloads page and move it to
+  `/usr/local/bin/palette` so the `palette` command resolves from any directory. For step-by-step instructions, refer
+  to [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run
+  `palette login` for this workflow—the content-upload command uses a node-issued token, not your Palette API key.
 - **The content bundle you downloaded from Artifact Studio.** The `.tar.zst` file must be reachable on the jumpbox
   filesystem. If you downloaded it on another machine, copy it to the jumpbox first with `scp` or `rsync`.
 - **SSH access to the node** using the administrator account you created in the Palette TUI. You use SSH once, to read
@@ -218,7 +218,7 @@ Then perform the upload in three steps:
    </Tabs>
 
 2. On the node (inside the SSH session), read the upload token. Local UI writes a per-node token to the file below when
-   it first comes up, so the token already exists — you do not generate or request one. Copy the token string that the
+   it first comes up, so the token already exists—you do not generate or request one. Copy the token string that the
    command prints, then type `exit` to return to the jumpbox.
 
    ```bash
@@ -234,7 +234,7 @@ Then perform the upload in three steps:
    <TabItem label="Linux / macOS" value="unix">
 
    ```bash
-   palette content upload -f <content-bundle> --token <token>
+   palette content upload --file <content-bundle> --token <token>
    ```
 
    </TabItem>
@@ -242,7 +242,7 @@ Then perform the upload in three steps:
    <TabItem label="Windows" value="windows">
 
    ```powershell
-   palette content upload -f <content-bundle> --token <token>
+   palette content upload --file <content-bundle> --token <token>
    ```
 
    </TabItem>
@@ -250,7 +250,7 @@ Then perform the upload in three steps:
    </Tabs>
 
    The CLI streams the file to the node's Local UI content endpoint on port `5080` and prints a progress line while the
-   upload runs. The content bundle is more than 20 GB, so expect a long upload — use a wired connection, and keep the
+   upload runs. The content bundle is more than 20 GB, so expect a long upload—use a wired connection, and keep the
    terminal open until the CLI prints a completion message. Then wait for the node to finish unpacking the bundle before
    you continue to the next section.
 
@@ -273,7 +273,7 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 4. In **Profile Config**, complete the PaletteAI Inference Launchpad custom wizard. The wizard collects the settings the
    platform packs need in order to install correctly on your hardware and network, in six sections: Networking, OS and
    metrics, Container registry, Local admin, Storage, and Certificates. For every field's type, default, and validation
-   rules — including the password complexity requirements for the Registry and Local Admin passwords — refer to
+   rules—including the password complexity requirements for the Registry and Local Admin passwords—refer to
    [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
 
 5. In **Cluster Config**, configure the cluster settings, including the cluster VIP.
@@ -285,7 +285,7 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 7. Review the configuration and deploy. The nodes reboot as part of the build, and deployment can take up to
    approximately 45 minutes; GPU driver installation adds time on first boot. During deployment, Traefik and Local UI
    restart alongside the packs, so the browser may display a **"Your service is temporarily unavailable"** page more
-   than once — refresh the browser to resume, and do not close the wizard or restart the deployment.
+   than once—refresh the browser to resume, and do not close the wizard or restart the deployment.
 
    :::warning Extended pause during the node reboot
 
@@ -420,11 +420,11 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
 After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:
 
-- **Deploy a model** — [Deploy a Model](./deploy-a-model.md).
-- **Set the default model** — [Set the Default Model](./set-the-default-model.md).
-- **Generate an API token** — [Generate an API Token](./generate-an-api-token.md).
-- **Connect a coding tool** — [Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),
+- **Deploy a model**—[Deploy a Model](./deploy-a-model.md).
+- **Set the default model**—[Set the Default Model](./set-the-default-model.md).
+- **Generate an API token**—[Generate an API Token](./generate-an-api-token.md).
+- **Connect a coding tool**—[Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),
   [OpenAI Codex](./use-codex.md), or [OpenCode](./use-opencode.md).
 
-For definitions of the terms used in this guide — such as slim ISO, content bundle, jumpbox, bond, leader, follower,
-Palette TUI, Local UI, and OTP — refer to the [Glossary](../reference/glossary.md).
+For definitions of the terms used in this guide—such as slim ISO, content bundle, jumpbox, bond, leader, follower,
+Palette TUI, Local UI, and OTP—refer to the [Glossary](../reference/glossary.md).

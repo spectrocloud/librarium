@@ -109,7 +109,7 @@ After a successful upload, the model directory on the appliance node has the fol
 ```text
 /usr/local/spectrocloud/content/models/<name>/<version>/
 ├── ...model files...   # written first (per huggingface.files globs)
-├── metadata.yaml       # written last — readiness signal
+├── metadata.yaml       # written last—readiness signal
 └── logo.<ext>          # optional (local or Hugging Face-sourced)
 ```
 
@@ -126,7 +126,7 @@ is the "upload complete" signal for that host.
 
 On a multi-node cluster, the CLI uploads to a single node. The appliance then synchronizes the model to the other hosts,
 reconciling about every two minutes. In the deploy catalog, a model shows one of the following states, and only
-**Available** models are selectable for deployment:
+**Available** models are selectable for deployment.
 
 | **State**     | **Meaning**                                                                       |
 | ------------- | --------------------------------------------------------------------------------- |

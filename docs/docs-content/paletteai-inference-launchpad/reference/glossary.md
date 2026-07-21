@@ -53,8 +53,8 @@ deploy models, create clients, issue API tokens, set quotas, and view usage.
 ### BMC
 
 The baseboard management controller, a server's out-of-band management interface, available on enterprise servers under
-vendor names such as iDRAC (Dell), iLO (HPE), or IPMI (open standard). Operators use the BMC to power the server on and
-off remotely, view console output during boot, and mount [virtual media](#virtual-media) — the fallback for ISO boot
+vendor names such as iDRAC on Dell, iLO on Hewlett Packard Enterprise (HPE), or IPMI as an open standard. Operators use the BMC to power the server on and
+off remotely, view console output during boot, and mount [virtual media](#virtual-media)—the fallback for ISO boot
 when a USB stick is not available.
 
 ### Bond
@@ -158,7 +158,7 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 ### FIPS
 
 The U.S. Federal Information Processing Standards, a suite of government security standards. FIPS 140 covers
-cryptographic modules and is relevant to public-sector deployments; see also [CMVP](#cmvp), which validates modules
+cryptographic modules and is relevant to public-sector deployments; refer to [CMVP](#cmvp), which validates modules
 against FIPS 140-3.
 
 ### Follower
@@ -212,9 +212,9 @@ to drop to a shell.
 
 ## J
 
-### Jumpbox
+### jumpbox
 
-An informal name for the [administrative workstation](#administrative-workstation) — a separate Linux machine, distinct
+An informal name for the [administrative workstation](#administrative-workstation)—a separate Linux machine, distinct
 from the appliance itself, on which operators install the Palette CLI and from which they drive installation and day-two
 operations against the appliance nodes.
 
@@ -416,8 +416,8 @@ does this is called a reasoning model, and the depth of that effort can sometime
 ### Slim ISO
 
 The small (approximately 1.5 GB) bootable installer image that contains the appliance's operating system, provisioning
-agent, and web console. Operators boot the node from the slim ISO — flashed to a USB drive or mounted through the
-[BMC](#bmc) as [virtual media](#virtual-media) — and the [interactive installer](#interactive-installer) writes the OS
+agent, and web console. Operators boot the node from the slim ISO—flashed to a USB drive or mounted through the
+[BMC](#bmc) as [virtual media](#virtual-media)—and the [interactive installer](#interactive-installer) writes the OS
 to the local disk.
 
 ### Smoke Test
@@ -457,7 +457,7 @@ window. The appliance meters input tokens, output tokens, and derived cost for e
 
 ### VIP
 
-Virtual IP address — a single IP address that resolves to whichever cluster node currently holds the control-plane role,
+Virtual IP address—a single IP address that resolves to whichever cluster node currently holds the control-plane role,
 so a multi-node cluster presents one stable endpoint even as individual nodes fail over. Configured in the
 cluster-creation wizard.
 

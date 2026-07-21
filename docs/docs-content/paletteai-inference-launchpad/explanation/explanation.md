@@ -18,4 +18,4 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Clients and Quotas](./clients-and-quotas.md)               | What a client is, why the appliance serves many clients, and how API tokens and quotas govern usage.    |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.             |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.  |
-| [Installation Architecture](./installation-architecture.md) | How the appliance installs — the two stages, the roles of the jumpbox, and why the network uses a bond. |
+| [Installation Architecture](./installation-architecture.md) | How the appliance installs—the two stages, the roles of the jumpbox, and why the network uses a bond. |

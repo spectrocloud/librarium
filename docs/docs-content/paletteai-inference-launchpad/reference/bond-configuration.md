@@ -2,7 +2,7 @@
 id: bond-configuration
 title: Bond Configuration Reference
 description: >
-  Field-by-field reference for the bond form in Local UI — type, hash policy, LACP rate, members, IP, gateway and DNS,
+  Field-by-field reference for the bond form in Local UI—type, hash policy, LACP rate, members, IP, gateway and DNS,
   MetalLB range, optional VLAN sub-interface, and Cilium interface selection.
 sidebar_label: Bond Configuration
 sidebar_position: 2.5
@@ -61,7 +61,7 @@ Recommended value: the two data NICs, for example `enP1s3f0np0` and `enP1s3f1np1
 These are the NICs the Palette TUI showed during initial configuration. Do not include the out-of-band management NIC.
 Both member NICs must be cabled to switch ports that belong to the same LAG group.
 
-### IP
+### IP Address
 
 Recommended value: the host IP on the bond, as CIDR, for example `10.0.21.106/24`.
 
