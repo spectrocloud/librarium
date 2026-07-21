@@ -2,8 +2,8 @@
 sidebar_label: "Enable Automatic TLS Rotation for Harbor Registry"
 title: "Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry"
 description:
-  "Upgrade an existing Edge cluster so that the in-cluster Harbor registry uses cert-manager to automatically rotate
-  its TLS certificate."
+  "Upgrade an existing Edge cluster so that the in-cluster Harbor registry uses cert-manager to automatically rotate its
+  TLS certificate."
 hide_table_of_contents: false
 sidebar_position: 95
 tags: ["edge"]
@@ -39,36 +39,34 @@ The following table lists the pack versions used by the upgrade.
 | Add-on   | `reloader`         | Any `1.4.x` version, for example, `1.4.19`    |
 | Add-on   | `cert-manager`     | Any version already supported by your profile |
 
-The `harbor` pack version `1.19.0-rev1` declares `reloader` as a required pack dependency and
-`registry-connect` version `0.2.1` or later as a recommended companion. You can use the
-cert-manager version shipped with Palette or add the `cert-manager` pack to the profile if you want
-to override its settings. The Harbor chart provisions the cert-manager `ClusterIssuer`, `Issuer`,
-and `Certificate` resources during installation.
+The `harbor` pack version `1.19.0-rev1` declares `reloader` as a required pack dependency and `registry-connect` version
+`0.2.1` or later as a recommended companion. You can use the cert-manager version shipped with Palette or add the
+`cert-manager` pack to the profile if you want to override its settings. The Harbor chart provisions the cert-manager
+`ClusterIssuer`, `Issuer`, and `Certificate` resources during installation.
 
 ## Limitations
 
-- The `reloader` pack is required. Without it, cert-manager rotates the Kubernetes Secret that
-  stores the Harbor server certificate, but the Harbor `nginx` pods continue to serve the previous
-  certificate from memory until they are restarted manually.
+- The `reloader` pack is required. Without it, cert-manager rotates the Kubernetes Secret that stores the Harbor server
+  certificate, but the Harbor `nginx` pods continue to serve the previous certificate from memory until they are
+  restarted manually.
 
 ## Prerequisites
 
-- An existing [Edge cluster](../../edge.md) that uses an Edge profile with the in-cluster Harbor registry pack
-  (`harbor` version `1.19.0` or earlier) and the `registry-connect` pack.
+- An existing [Edge cluster](../../edge.md) that uses an Edge profile with the in-cluster Harbor registry pack (`harbor`
+  version `1.19.0` or earlier) and the `registry-connect` pack.
 
 - Permission to edit and version the cluster profile in Palette.
 
-- cert-manager installed in the target cluster, either through the version shipped with Palette or
-  through the `cert-manager` pack in the profile.
+- cert-manager installed in the target cluster, either through the version shipped with Palette or through the
+  `cert-manager` pack in the profile.
 
-- Healthy persistent storage backing the existing Harbor Persistent Volume Claims (PVCs),
-  `harbor-registry` and `harbor-jobservice` in the `harbor` namespace. The upgrade does not change
-  the PVCs, so image data and job logs are preserved.
+- Healthy persistent storage backing the existing Harbor Persistent Volume Claims (PVCs), `harbor-registry` and
+  `harbor-jobservice` in the `harbor` namespace. The upgrade does not change the PVCs, so image data and job logs are
+  preserved.
 
 ## Enable Automatic TLS Rotation on the Harbor Registry
 
-Perform the following steps in the cluster profile, and then apply the new profile version to the
-target clusters.
+Perform the following steps in the cluster profile, and then apply the new profile version to the target clusters.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -95,8 +93,8 @@ target clusters.
 
 <!-- prettier-ignore-end -->
 
-6. In the **Presets** panel of the **Registry Connect** pack, select **Harbor Internal Registry with Cert-Manager**.
-   The preset name is `harbor-registry-preset-cert`.
+6. In the **Presets** panel of the **Registry Connect** pack, select **Harbor Internal Registry with Cert-Manager**. The
+   preset name is `harbor-registry-preset-cert`.
 
    Selecting this preset switches the trust bundle reference in `charts.registry-connect.config.certificates` from the
    legacy `harbor-nginx` Secret and its `ca.crt` key to the cert-manager-managed `harbor-ingress-tls` Secret.
@@ -141,17 +139,17 @@ target clusters.
    The remaining defaults under `expose.tls.certManager` describe the cert-manager plumbing that the chart provisions.
    Do not change them unless you have a specific reason to do so.
 
-   | Parameter                                                            | Default value        | Description                                                                                                                                                                              |
-   | -------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `expose.tls.certSource`                                              | `secret`             | Instructs the Harbor chart to read the server certificate from the Kubernetes Secret that cert-manager writes.                                                                           |
-   | `expose.tls.secret.secretName`                                       | `harbor-ingress-tls` | Names the Kubernetes Secret that stores the served Harbor server certificate.                                                                                                            |
-   | `expose.tls.certManager.issuerRef.kind`                              | `Issuer`             | Sets the kind of cert-manager issuer that signs the Harbor server certificate.                                                                                                           |
-   | `expose.tls.certManager.issuerRef.name`                              | `internal-ca`        | Names the namespace-scoped issuer that the chart creates.                                                                                                                                |
-   | `expose.tls.certManager.certificate.duration`                        | `8760h0m0s`          | Sets a 1-year duration for the Harbor server certificate.                                                                                                                                |
-   | `expose.tls.certManager.certificate.renewBefore`                     | `360h0m0s`           | Instructs cert-manager to renew the Harbor server certificate 15 days before it expires.                                                                                                 |
-   | `expose.tls.certManager.bootstrapCA.enabled`                         | `true`               | Creates a self-signed `ClusterIssuer` named `harbor-edge-ca`, a namespace-scoped `Issuer` named `internal-ca`, and a root CA `Certificate` named `root-ca` in the `harbor` namespace.    |
-   | `expose.tls.certManager.bootstrapCA.rootCA.duration`                 | `87600h0m0s`         | Sets a 10-year duration for the root CA.                                                                                                                                                 |
-   | `expose.tls.certManager.bootstrapCA.rootCA.privateKeyRotationPolicy` | `Never`              | Preserves the root CA private key across renewals so that downstream trust bundles remain valid.                                                                                         |
+   | Parameter                                                            | Default value        | Description                                                                                                                                                                           |
+   | -------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `expose.tls.certSource`                                              | `secret`             | Instructs the Harbor chart to read the server certificate from the Kubernetes Secret that cert-manager writes.                                                                        |
+   | `expose.tls.secret.secretName`                                       | `harbor-ingress-tls` | Names the Kubernetes Secret that stores the served Harbor server certificate.                                                                                                         |
+   | `expose.tls.certManager.issuerRef.kind`                              | `Issuer`             | Sets the kind of cert-manager issuer that signs the Harbor server certificate.                                                                                                        |
+   | `expose.tls.certManager.issuerRef.name`                              | `internal-ca`        | Names the namespace-scoped issuer that the chart creates.                                                                                                                             |
+   | `expose.tls.certManager.certificate.duration`                        | `8760h0m0s`          | Sets a 1-year duration for the Harbor server certificate.                                                                                                                             |
+   | `expose.tls.certManager.certificate.renewBefore`                     | `360h0m0s`           | Instructs cert-manager to renew the Harbor server certificate 15 days before it expires.                                                                                              |
+   | `expose.tls.certManager.bootstrapCA.enabled`                         | `true`               | Creates a self-signed `ClusterIssuer` named `harbor-edge-ca`, a namespace-scoped `Issuer` named `internal-ca`, and a root CA `Certificate` named `root-ca` in the `harbor` namespace. |
+   | `expose.tls.certManager.bootstrapCA.rootCA.duration`                 | `87600h0m0s`         | Sets a 10-year duration for the root CA.                                                                                                                                              |
+   | `expose.tls.certManager.bootstrapCA.rootCA.privateKeyRotationPolicy` | `Never`              | Preserves the root CA private key across renewals so that downstream trust bundles remain valid.                                                                                      |
 
 10. Select **Confirm & Create**.
 
@@ -217,8 +215,8 @@ Use the following commands against the target cluster to confirm that the automa
      | grep --after-context=2 certificates
    ```
 
-The registry endpoint at `https://<node-ip>:30003` continues to serve traffic throughout the upgrade. The Harbor
-`nginx` pods present the new certificate after the `reloader`-driven restart completes.
+The registry endpoint at `https://<node-ip>:30003` continues to serve traffic throughout the upgrade. The Harbor `nginx`
+pods present the new certificate after the `reloader`-driven restart completes.
 
 ## Roll Back the Upgrade
 
@@ -229,23 +227,23 @@ If you need to revert the upgrade, follow these steps.
 
 2. Re-apply the previous profile version to the cluster.
 
-3. Because the earlier `harbor-nginx` Secret and its `ca.crt` key are still populated with the pre-upgrade CA,
-   workloads that were trusting it continue to work until the certificate would have naturally expired.
+3. Because the earlier `harbor-nginx` Secret and its `ca.crt` key are still populated with the pre-upgrade CA, workloads
+   that were trusting it continue to work until the certificate would have naturally expired.
 
 :::warning
 
-Do not delete the `root-ca-secret` or `harbor-ingress-tls` Kubernetes Secrets during the rollback. Leaving them in
-place allows a forward re-upgrade later without cert-manager having to reissue the CA.
+Do not delete the `root-ca-secret` or `harbor-ingress-tls` Kubernetes Secrets during the rollback. Leaving them in place
+allows a forward re-upgrade later without cert-manager having to reissue the CA.
 
 :::
 
-The `harbor-registry` and `harbor-jobservice` PVCs are unchanged by both the upgrade and the rollback, so no image
-data is lost.
+The `harbor-registry` and `harbor-jobservice` PVCs are unchanged by both the upgrade and the rollback, so no image data
+is lost.
 
 ## Next Steps
 
-After the upgrade completes, cert-manager renews the Harbor server certificate automatically. To change how images
-are pulled from the registry, or to review the primary registry configuration, refer to the following pages.
+After the upgrade completes, cert-manager renews the Harbor server certificate automatically. To change how images are
+pulled from the registry, or to review the primary registry configuration, refer to the following pages.
 
 - [Deploy Cluster with a Primary Registry](./deploy-primary-registry.md)
 

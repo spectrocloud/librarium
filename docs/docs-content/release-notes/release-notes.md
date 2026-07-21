@@ -326,9 +326,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
 
-- Zot Registry on [Edge clusters](../clusters/edge/edge.md) now integrates with `cert-manager` to
-  automatically rotate TLS certificates before expiration, eliminating manual renewal and preventing service downtime.
-  This applies to connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
+- Zot Registry on [Edge clusters](../clusters/edge/edge.md) now integrates with `cert-manager` to automatically rotate
+  TLS certificates before expiration, eliminating manual renewal and preventing service downtime. This applies to
+  connected and airgap clusters in both FIPS and non-FIPS configurations. Refer to the
   [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md).
 
 <!-- END COMPONENT UPDATES BODY: DOC-2995. DO NOT DELETE. -->
