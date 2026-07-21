@@ -2,8 +2,8 @@
 id: installation-architecture
 title: Installation Architecture
 description: >
-  How the PaletteAI Inference Launchpad appliance installs—the two stages, the roles of the jumpbox, slim ISO, and
-  Local UI, and why the network uses a bond rather than a bridge.
+  How the PaletteAI Inference Launchpad appliance installs—the two stages, the roles of the jumpbox, slim ISO, and Local
+  UI, and why the network uses a bond rather than a bridge.
 sidebar_label: Installation Architecture
 sidebar_position: 5
 tags:
@@ -52,10 +52,10 @@ member NICs are active at once. That matters because two heavy traffic classes s
 - **[Piraeus](../reference/glossary.md#piraeus) storage replication**—continuous, byte-level replication of storage
   volumes across nodes in a multi-node cluster.
 
-A bond in `802.3ad` mode (Link Aggregation Control Protocol, or LACP) with the `layer3+4` hash policy spreads these long-lived flows evenly across both NICs,
-so cluster and storage traffic share the aggregated bandwidth. A bridge, by contrast, is only useful in scenarios where
-distinct virtual-machine networks must be isolated—PaletteAI Inference Launchpad runs containerized workloads and does
-not need that.
+A bond in `802.3ad` mode (Link Aggregation Control Protocol, or LACP) with the `layer3+4` hash policy spreads these
+long-lived flows evenly across both NICs, so cluster and storage traffic share the aggregated bandwidth. A bridge, by
+contrast, is only useful in scenarios where distinct virtual-machine networks must be isolated—PaletteAI Inference
+Launchpad runs containerized workloads and does not need that.
 
 For the exact field values you enter in the bond form, refer to
 [Bond Configuration Reference](../reference/bond-configuration.md).

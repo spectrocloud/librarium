@@ -53,9 +53,9 @@ deploy models, create clients, issue API tokens, set quotas, and view usage.
 ### BMC
 
 The baseboard management controller, a server's out-of-band management interface, available on enterprise servers under
-vendor names such as iDRAC on Dell, iLO on Hewlett Packard Enterprise (HPE), or IPMI as an open standard. Operators use the BMC to power the server on and
-off remotely, view console output during boot, and mount [virtual media](#virtual-media)—the fallback for ISO boot
-when a USB stick is not available.
+vendor names such as iDRAC on Dell, iLO on Hewlett Packard Enterprise (HPE), or IPMI as an open standard. Operators use
+the BMC to power the server on and off remotely, view console output during boot, and mount
+[virtual media](#virtual-media)—the fallback for ISO boot when a USB stick is not available.
 
 ### Bond
 
@@ -417,8 +417,8 @@ does this is called a reasoning model, and the depth of that effort can sometime
 
 The small (approximately 1.5 GB) bootable installer image that contains the appliance's operating system, provisioning
 agent, and web console. Operators boot the node from the slim ISO—flashed to a USB drive or mounted through the
-[BMC](#bmc) as [virtual media](#virtual-media)—and the [interactive installer](#interactive-installer) writes the OS
-to the local disk.
+[BMC](#bmc) as [virtual media](#virtual-media)—and the [interactive installer](#interactive-installer) writes the OS to
+the local disk.
 
 ### Smoke Test
 

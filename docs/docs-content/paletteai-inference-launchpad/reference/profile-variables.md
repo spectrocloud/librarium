@@ -28,7 +28,7 @@ For the step-by-step procedure, refer to
 | ------------------------- | --------- | -------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | **Pod Network Range**     | IPv4 CIDR | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                |
 | **Service Network Range** | IPv4 CIDR | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.        |
-| **Platform IP Address**   | IPv4      | Yes      |—               | Single IPv4 address drawn from the MetalLB range on the bond. Traefik claims this address; the console and API are reached at it. |
+| **Platform IP Address**   | IPv4      | Yes      | —                | Single IPv4 address drawn from the MetalLB range on the bond. Traefik claims this address; the console and API are reached at it. |
 
 ## OS and metrics
 
@@ -44,14 +44,14 @@ For the step-by-step procedure, refer to
 | Variable              | Type               | Required | Default | Description                                                                                                                    |
 | --------------------- | ------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | **Registry Username** | string             | Yes      | `admin` | Username for the on-cluster Zot registry that hosts platform and application images.                                           |
-| **Registry Password** | string (sensitive) | Yes      |—      | Password for the Zot registry account. Must satisfy the [password complexity requirements](#password-complexity-requirements). |
+| **Registry Password** | string (sensitive) | Yes      | —       | Password for the Zot registry account. Must satisfy the [password complexity requirements](#password-complexity-requirements). |
 
 ## Local admin
 
 | Variable                 | Type               | Required | Default | Description                                                                                                                                                 |
 | ------------------------ | ------------------ | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Local Admin Username** | string             | Yes      | `admin` | Administrator username shared by the appliance console and the Grafana dashboard.                                                                           |
-| **Local Admin Password** | string (sensitive) | Yes      |—      | Administrator password shared by the appliance console and Grafana. Must satisfy the [password complexity requirements](#password-complexity-requirements). |
+| **Local Admin Password** | string (sensitive) | Yes      | —       | Administrator password shared by the appliance console and Grafana. Must satisfy the [password complexity requirements](#password-complexity-requirements). |
 
 ## Storage (Piraeus)
 
@@ -63,8 +63,8 @@ For the step-by-step procedure, refer to
 
 | Variable         | Type   | Required | Default | Description                                                  |
 | ---------------- | ------ | -------- | ------- | ------------------------------------------------------------ |
-| **OIDC CA cert** | base64 | Yes      |—      | Base64-encoded CA certificate.                               |
-| **OIDC CA key**  | base64 | Yes      |—      | Base64-encoded private key that pairs with the OIDC CA cert. |
+| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate.                               |
+| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert. |
 
 ## Password complexity requirements
 
