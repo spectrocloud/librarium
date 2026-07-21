@@ -22,14 +22,14 @@ Inference Launchpad appliance, and the workaround for each. For the ordered proc
 <!-- vale off -->
 
 **Symptom.** On some HPE servers, for example the DL380a Gen11, the GPUs do not enumerate on the PCI bus. Each GPU
-reports `Region 0/2/4: Memory at ignored` under `lspci -vv`, and the kernel logs `NVRM: BAR0 is 0M @ 0x0` with a probe
-failure for every device.
+reports `Region 0/2/4: Memory at ignored` when you run `lspci` with `-vv`, and the kernel logs `NVRM: BAR0 is 0M @ 0x0`
+with a probe failure for every device.
 
 **Workaround.** Add `pci=realloc=off` to the GRUB kernel command line.
 
 1. Boot into GRUB and append `pci=realloc=off` to `GRUB_CMDLINE_LINUX_DEFAULT` so that it reads
    `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=realloc=off"`, then reboot.
-2. Verify the GPUs with `lspci -v -s <bus:device.function>`, then confirm with `nvidia-smi`.
+2. Verify the GPUs by running `lspci` with `-v` and `-s <bus:device.function>`, then confirm with `nvidia-smi`.
 3. For better performance, enable Resizable BAR in the BIOS. On HPE Gen11 servers, go to **PCIe Device Configuration >
    Advanced PCIe Configuration**. An RBSU BIOS upgrade may be required.
 
