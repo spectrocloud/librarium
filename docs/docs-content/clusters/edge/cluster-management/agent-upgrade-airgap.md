@@ -21,6 +21,15 @@ of a Palette instance, as well as how to specify a Palette agent package in the 
 profile. This is useful for upgrading the Palette agent on a local Edge cluster and for launching new centrally managed
 clusters while using an older version of the Palette agent.
 
+:::warning
+
+Local Edge clusters have new content compatibility and pre-upgrade requirements in Palette 4.9.c. Content bundles built
+against 4.9.22 or earlier are incompatible with 4.9.c Edge installers, and existing local Edge clusters must apply
+remediation steps before upgrade. Refer to the [Release Notes](../../../release-notes/release-notes.md) for more
+information.
+
+:::
+
 ## Prerequisites
 
 - An active Edge cluster.
