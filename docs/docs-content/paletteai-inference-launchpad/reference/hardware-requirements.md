@@ -33,15 +33,15 @@ refer to [Architecture Overview](../explanation/architecture.md).
 The following table lists the minimum hardware for the appliance on a single high-density GPU server. The appliance
 ships an immutable Kairos-based operating system, so no separate install is required.
 
-| **Component**   | **Minimum Hardware**                       | **Recommened Hardware**                    | **Notes**    |
-| --------------- | ------------------------------------------ | ------------------------------------------ | --------------------------------------------------------------- |
-| CPU             | 2x 32-core CPU (64 cores total)            | 2x 64-core CPU (128 cores total)           | Dual-socket is required for 8x GPU systems                      |
-| GPU             | 2x NVIDIA or AMD GPU                       | 8x NVIDIA or AMD GPU                       | Larger models require much more VRAM, typically with 8 GPUs     |
-| GPU VRAM        | 128 GB (all GPUs combined)                 | 1024 GB (all GPUs combined)                | 8x for larger models                                            |
-| RAM             | 1 TB                                       | 2 TB or more                               | 128 GB RAM per GPU, plus 512 GB or more for KV cache            |
-| OS boot drive   | 500 GB SSD                                 | RAID1 of two 800GB SSD drives              | Onboard RAID controller available on most server chipsets       |
-| Data disks      | 1x 8 TB NVMe                               | 4x 8TB NVMe                                | Model weights and persistent KV cache stored on these drives    |
-| Network         | 1x 10 Gbps NIC                             | 2x 10+ Gbps NICs, bonded                   | 802.3ad Etherchannel recommended                                |
+| **Component** | **Minimum Hardware**            | **Recommened Hardware**          | **Notes**                                                    |
+| ------------- | ------------------------------- | -------------------------------- | ------------------------------------------------------------ |
+| CPU           | 2x 32-core CPU (64 cores total) | 2x 64-core CPU (128 cores total) | Dual-socket is required for 8x GPU systems                   |
+| GPU           | 2x NVIDIA or AMD GPU            | 8x NVIDIA or AMD GPU             | Larger models require much more VRAM, typically with 8 GPUs  |
+| GPU VRAM      | 128 GB (all GPUs combined)      | 1024 GB (all GPUs combined)      | 8x for larger models                                         |
+| RAM           | 1 TB                            | 2 TB or more                     | 128 GB RAM per GPU, plus 512 GB or more for KV cache         |
+| OS boot drive | 500 GB SSD                      | RAID1 of two 800GB SSD drives    | Onboard RAID controller available on most server chipsets    |
+| Data disks    | 1x 8 TB NVMe                    | 4x 8TB NVMe                      | Model weights and persistent KV cache stored on these drives |
+| Network       | 1x 10 Gbps NIC                  | 2x 10+ Gbps NICs, bonded         | 802.3ad Etherchannel recommended                             |
 
 ## GPU
 
