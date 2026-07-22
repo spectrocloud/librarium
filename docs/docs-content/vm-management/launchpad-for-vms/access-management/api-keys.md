@@ -9,7 +9,7 @@ tags: ["vmo", "vm launchpad", "access management", "api keys"]
 ---
 
 API keys are first-party opaque tokens that Launchpad for VMs issues for programmatic access to the platform API. They
-are self-service: every authenticated user creates, lists, and revokes their own keys from the user menu, and each key
+are self-service: every authenticated user creates, lists, and revokes their own keys from the **User Menu**, and each key
 inherits its creator's effective VMO permissions live on every request.
 
 ## Prerequisites
@@ -43,14 +43,24 @@ authentication, and they can be sent directly as a Bearer token without any prio
 
 ## API Keys Page
 
-Manage API keys from the user menu, not the Access Management sidebar.
+Manage API keys from the **User Menu**, not the Access Management sidebar.
 
-1. Select your user avatar in the top right of the header to open the user menu.
+1. Select your user identifier in the top right of the header, such as `admin@vmo.local`, to open the **User Menu**.
 
-2. Select **API Keys**. The **My API Keys** page opens at `/me/api-keys` and lists the keys you have created.
+2. Select **My API Keys**. The **My API Keys** page opens at `/me/api-keys` and lists the keys you have created.
 
-The **My API Keys** table lists your keys with their label, key ID, creation date, expiry, and last four characters of
-the secret. The full token is only shown once, at creation.
+The **My API Keys** table lists your keys with the following columns.
+
+| **Column**    | **Description**                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| **Label**     | The human-readable name you gave the key at creation.                                                  |
+| **Created**   | The date the key was created.                                                                          |
+| **Expires**   | The date the key expires.                                                                              |
+| **Last Used** | The most recent date and time the key was used to authenticate a request, or _never_ if never used.    |
+| **Suffix**    | The last four characters of the secret half of the token. Safe to log or share.                        |
+| **Status**    | Whether the key is **Active**, **Expired**, or **Revoked**.                                            |
+
+The full token is only shown once, at creation.
 
 :::info
 
@@ -63,28 +73,29 @@ other users; cluster-wide governance is done through VMO role assignments on the
 
 ## Create an API Key
 
-1. Open the user menu and select **API Keys**.
+1. Open the **User Menu** and select **My API Keys**.
 
 2. Select **Create API Key**.
 
 3. Complete the following fields.
 
-   | **Field**             | **Description**                                                                                        |
-   | --------------------- | ------------------------------------------------------------------------------------------------------ |
-   | **Label**             | A short human-readable name for the key. Up to 64 characters. Appears in the key list and audit log.   |
-   | **Expires in (days)** | _(Optional)_ The number of days until the key expires. Leave blank to create a key that never expires. |
+   | **Field**             | **Description**                                                                                      |
+   | --------------------- | ---------------------------------------------------------------------------------------------------- |
+   | **Label**             | A short human-readable name for the key. Appears in the key list and audit log.                      |
+   | **Expires in (days)** | The number of days until the key expires. Minimum 1 day. Maximum 90 days.                            |
 
-4. Select **Create**. Launchpad displays the full token in a reveal modal.
+4. Select **Create**. The **API Key Created** dialog opens and displays the full token, along with its label, key ID,
+   and expiration date and time.
 
-5. Copy the token with **Copy**, or download it as a text file with **Download**. Store it somewhere secure such as a
-   password manager or a CI secrets store.
+5. Select **Copy token** to copy the token, or **Download as .txt** to save it as a text file. Store it somewhere
+   secure such as a password manager or a CI secrets store.
 
-6. Close the modal.
+6. Select **Done** to close the dialog.
 
 :::warning
 
-Launchpad for VMs cannot show the token again after you close the reveal modal. If you lose the token, revoke the key
-and create a new one.
+Launchpad for VMs cannot show the token again after you close the **API Key Created** dialog. If you lose the token,
+revoke the key and create a new one.
 
 :::
 
@@ -107,10 +118,10 @@ vmok_a3k9pqr2x7m4_NjQwMjU2OTQyZTYxNjE5MjVkOWI1MjkyZjE4Y2RmZjA=
 
 ## Use an API Key
 
-Send the key as a standard `Authorization: Bearer` header on any Launchpad API request.
+Send the key as a standard `Authorization: Bearer` header on any Launchpad API request. 
 
 ```bash
-curl --header "Authorization: Bearer vmok_a3k9pqr2x7m4_NjQwMjU2OTQyZTYxNjE5MjVkOWI1MjkyZjE4Y2RmZjA=" \
+curl --header "Authorization: Bearer <your_api_key>" \
      https://<vmo-url>/api/v1/vms
 ```
 
@@ -119,11 +130,12 @@ API keys keep working even when the identity provider is unreachable or not conf
 
 ## Revoke an API Key
 
-1. Open the user menu and select **API Keys**.
+1. Open the **User Menu** and select **My API Keys**.
 
-2. Select the row for the key you want to revoke, or open its context menu, and select **Revoke**.
+2. In the row for the key you want to revoke, select the trash icon at the end of the row. The **Revoke API Key**
+   dialog opens.
 
-3. Confirm the revocation.
+3. Select **Revoke** to confirm.
 
 Revocation is immediate on the replica that processes it. In a highly available deployment, other replicas observe the
 revocation after their internal API key cache expires, typically within about 30 seconds. Requests made with the revoked
@@ -139,8 +151,8 @@ or clear the **Enabled** checkbox on the [Users](./users.md) page, and revoke an
 ## Permission Staleness
 
 Launchpad for VMs refreshes an API key creator's identity record only when the creator signs in interactively or
-refreshes their UI session. API key traffic does not refresh it. This has two consequences worth understanding before
-you give a highly privileged user long-lived API keys.
+refreshes their UI session. API key traffic does not refresh it. This has two consequences worth understanding when a
+highly privileged user issues API keys.
 
 - If the creator's identity provider group membership changes but the creator never signs in to Launchpad again, every
   API key they own keeps authenticating with the group set from their last interactive login. Revoke the key or evict
