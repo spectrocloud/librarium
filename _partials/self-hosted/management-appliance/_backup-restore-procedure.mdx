@@ -49,13 +49,12 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
   :::
 
-- On the jump host, install the following packages.
+- On the jump host, install the following packages. Skopeo mirrors the internal Zot registry, and `jq` parses the registry catalog response.
 
   ```shell
   sudo apt-get update
   sudo apt-get upgrade
-  sudo apt-get install skopeo
-  sudo apt-get install -y apt-transport-https ca-certificates curl
+  sudo apt-get install -y skopeo jq apt-transport-https ca-certificates curl gnupg
   ```
 
 - Add the Kubernetes apt repository and install `kubectl`.
@@ -73,6 +72,23 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
   ```shell
   sudo apt-get update
   sudo apt-get install -y kubectl
+  ```
+
+- Add the MongoDB apt repository and install MongoDB Database Tools. The backup and restore scripts call `mongodump` and `mongorestore` from this package.
+
+  ```shell
+  curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/mongodb-server-8.0.gpg
+  ```
+
+  ```shell
+  echo "deb [signed-by=/etc/apt/keyrings/mongodb-server-8.0.gpg] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | \
+    sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+  ```
+
+  ```shell
+  sudo apt-get update
+  sudo apt-get install -y mongodb-database-tools
   ```
 
 ## Back Up the Source Cluster
@@ -115,7 +131,7 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
 
 5. Copy the destination cluster `kubeconfig` file into this directory and name it `dst.kubeconfig`.
 
-6. Run the backup script. The script creates the backup directory automatically.
+6. Run the backup script. The script creates the backup directory automatically. If you omit `--backup-dir`, the script generates a timestamped directory named `mongo_hubble_backup_<YYYYMMDD-HHMMSS>`.
 
     ```shell
     ./edge-backup.sh --kubeconfig source.kubeconfig --backup-dir source-backup
@@ -127,7 +143,7 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
     tree -L 1 source-backup
     ```
 
-    The output should show `backup_summary.txt` and the database dump directories, similar to the following.
+    The output shows `backup_summary.txt`, the database dump directories, the cleaned secrets, and the extracted MongoDB TLS material, similar to the following.
 
     ```text hideClipboard
     source-backup
@@ -135,7 +151,8 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
     ├── cleaned-secrets
     ├── hubble_archivedb
     ├── hubble_timeseriesdb
-    └── hubbledb
+    ├── hubbledb
+    └── mongo-tls
     ```
 
 ## Synchronize the Zot Registry
@@ -157,18 +174,22 @@ If both clusters share a common external registry, you can skip this section.
 2. Update the four values at the top of the script to match your environment. The `SRC` and `DST` values can be the Virtual IP Address (VIP) or the IP address of any node in the corresponding cluster. The credentials must match the ones you set during installation.
 
     ```shell
-    SRC=10.10.142.70:30003
-    DST=10.10.145.4:30003
+    SRC=192.0.2.10:30003
+    DST=198.51.100.10:30003
     SRC_CREDS="admin:password"
     DST_CREDS="admin:password"
     ```
 
 3. Save the file and close the editor.
 
-4. Run the sync script.
+4. Run the sync script. By default, the script mirrors every repository. To limit the sync to a subset, pass a repository path prefix as the first argument. For example, if you launched the destination cluster edge hosts from the same ISO as the source, you only need to sync the packs uploaded after edge host creation, which live under `spectro-content/spectro-packs/archive/`.
 
     ```shell
     ./zot-sync.sh
+    ```
+
+    ```shell
+    ./zot-sync.sh spectro-content/spectro-packs/archive/
     ```
 
 5. Log in to the destination cluster Zot registry and confirm that the packs are synchronized and that the image checksums match the source registry.
@@ -206,6 +227,12 @@ After the restore, workload clusters may temporarily show as unhealthy because t
 1. On your DNS server, update the record for the {props.version} FQDN to point to the destination cluster VIP.
 
 2. In the {props.version} system console for the destination cluster, go to **Administration** > **System Address**. Confirm the FQDN and TLS certificate settings match the destination cluster.
+
+    :::tip
+
+    If you need to issue a new self-signed TLS certificate for the destination cluster VIP, the utility archive includes a helper script. Run `./certs-gen.sh <VIP>` from the working directory to generate a CA, server certificate, and matching key. The script writes base64-encoded values to `out/cert.b64`, `out/key.b64`, and `out/ca.b64`, ready to paste into the **System Address** fields.
+
+    :::
 
 3. Wait for workload clusters to reconnect and report a **Healthy** status.
 

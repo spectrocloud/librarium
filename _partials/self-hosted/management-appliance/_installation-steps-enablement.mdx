@@ -193,7 +193,7 @@ partial_name: installation-steps-enablement
 
     #### DRBD Kernel Module Loading
 
-    The {props.app} uses the Piraeus Container Storage Interface (CSI), which requires the Distributed Replicated Block Device (DRBD) kernel module on each node. The `drbd-module-loader` init container in the `linstor-satellite` pod loads this module using the mode configured by the `LB_HOW` environment variable in the `piraeus-operator` pack. Starting with {props.version} 4.9.a, the following modes are available.
+    The {props.app} uses the Piraeus Container Storage Interface (CSI), which requires the Distributed Replicated Block Device (DRBD) kernel module on each node. The `drbd-module-loader` init container in the `linstor-satellite` pod loads this module using the mode configured by the `LB_HOW` environment variable in the `piraeus-operator` pack. Starting with {props.version} 4.9.14, the following modes are available.
 
     | **Value**                        | **Description**                                                                                                | **Requirements**                                                                                    |
     | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
