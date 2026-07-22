@@ -90,12 +90,10 @@ a namespace-scoped Kubernetes resource.
 
    <TabItem value="sr-iov" label="SR-IOV">
 
-   :::info
-
-   This tab needs an SR-IOV screenshot from a host that exposes SR-IOV Virtual Functions. Update it once you capture the
-   dialog fields.
-
-   :::
+   | **Field**                           | **Description**                                                                                                                                          |
+   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
    </TabItem>
 
