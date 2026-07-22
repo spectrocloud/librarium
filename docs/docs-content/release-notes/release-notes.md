@@ -221,9 +221,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-9123 -->
 
 - Local Edge clusters have new content compatibility and pre-upgrade requirements in 4.9.c. This change applies to local
-  Edge clusters. Connected Edge deployments are not affected.
+  Edge clusters. Connected Edge deployments are not affected. Existing local Edge clusters will continue to run, but
+  Day-2 operations will not work.
 
-  Content bundles built against 4.9.22 or earlier releases are incompatible with 4.9.c Edge installers. The Stylus agent
+  Content bundles built against 4.9.27 or earlier releases are incompatible with 4.9.c Edge installers. The Stylus agent
   in 4.9.c uses the `v1` API version, but Custom Resource Definitions (CRDs) in older content still target `v1alpha1`,
   which prevents cluster provisioning from completing.
 
