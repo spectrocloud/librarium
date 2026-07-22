@@ -42,7 +42,20 @@ partial_name: pcg-initial-installation
 
     :::
 
-4.  Once you have authenticated your Palette CLI installation, start the PCG installer by issuing the following command. Refer to the
+4.  (Optional) If Spectro Cloud support provided you with an image pull secret for security-hardened images,
+    authenticate to the Spectro Cloud OCI registry on the installer host before you start the PCG installation. Save
+    the secret file as `imagepullsecret.json`, and then execute the following command.
+
+    ```shell
+    cat imagepullsecret.json | docker login -u _json_key --password-stdin https://us-docker.pkg.dev
+    ```
+
+    The command returns **Login Succeeded** when the credentials are accepted. If you skip this step, you can add or
+    rotate the secret later from the system console of your Palette or Palette VerteX management plane. For more
+    information, refer to
+    [Configure Image Pull Secret](../../../enterprise-version/system-management/configure-image-pull-secret.md).
+
+5.  Once you have authenticated your Palette CLI installation, start the PCG installer by issuing the following command. Refer to the
     table below for information about each parameter.
 
     ```bash
@@ -58,7 +71,7 @@ partial_name: pcg-initial-installation
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                       |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                |
 
-5. If you want to configure your PCG to use a proxy network, complete the following fields, as appropriate.
+6. If you want to configure your PCG to use a proxy network, complete the following fields, as appropriate.
 
     | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
    | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -75,14 +88,14 @@ partial_name: pcg-initial-installation
 
     :::
 
-6. Enter the following network details.
+7. Enter the following network details.
 
    | **Parameter**        | **Description**                                                                                                                                                                                        |
    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | **Pod CIDR**         | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                |
    | **Service IP Range** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. |                                                                                                       |
 
-7. If you selected `Custom` for the image registry type, you are prompted to provide the following information.
+8. If you selected `Custom` for the image registry type, you are prompted to provide the following information.
 
    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
    | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

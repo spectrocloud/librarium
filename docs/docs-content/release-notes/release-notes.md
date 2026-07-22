@@ -61,6 +61,15 @@ tags: ["release-notes"]
   information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2974 -->
+
+- You can now configure the Spectro Cloud image pull secret for security-hardened images during Day-0 installations
+  performed with the Palette CLI, including
+  [Palette](../enterprise-version/install-palette/install-on-vmware/install.md),
+  [Palette VerteX](../vertex/install-palette-vertex/install-on-vmware/install.md), and
+  [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
