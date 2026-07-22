@@ -26,15 +26,15 @@ rather than a bridge, refer to [Installation Architecture](../explanation/instal
 ## Fields
 
 Two fields are often confused. The **Bond type** sets how the bond gets its IP address (`static`, `dhcp`, or `none`),
-while the **Bonding mode** sets the link-aggregation algorithm (`802.3ad`). They are separate settings: set the bond
+while the **Bonding mode** sets the link-aggregation algorithm (`802.3ad`). They are separate settings. Set the bond
 type to `static` and the bonding mode to `802.3ad`.
 
 ### Bond name
 
 Recommended value: a name you type yourself, for example `bond0`.
 
-The name field shows `bond0` as greyed-out placeholder text, not a saved value. Click into the field and type the name
-before you continue, otherwise the bond can be submitted without a name. Use `bond0` unless you already have a bond of
+The name field shows `bond0` as grayed-out placeholder text, not a saved value. Click into the field and type the name
+before you continue; otherwise, the bond can be submitted without a name. Use `bond0` unless you already have a bond of
 that name.
 
 ### Bond type

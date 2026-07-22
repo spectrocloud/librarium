@@ -95,10 +95,8 @@ drop to a shell. The action is destructive; confirm before you run it.
 After the OS install and reboot, the node comes up in the Palette TUI, where you set the initial credentials and
 network. The hostname, DNS, and NTP settings are configured here in the TUI, not in Local UI.
 
-:::info Password requirements
-
 The appliance enforces a password policy on every account you create in the Palette TUI, including `root`. Each password
-must meet all of the following:
+must meet all of the following requirements:
 
 - Be at least 15 characters long.
 - Include at least one lowercase letter, one uppercase letter, one digit, and one special character, such as `!`, `@`,
@@ -106,9 +104,7 @@ must meet all of the following:
 - Not contain the account username.
 - Not contain spaces, a double quote (`"`), a single quote (`'`), or a backslash (`\`).
 
-When you change an existing password, the new password must differ from the old one by at least five characters.
-
-:::
+When you change an existing password, the new password must differ from the old one by at least 5 characters.
 
 1. Provide the initial administrator account (username and password). This account signs in to Local UI and accesses the
    node over SSH. Press **ENTER** to continue.
@@ -119,7 +115,7 @@ When you change an existing password, the new password must differ from the old 
      Unit (MTU). Setting a static IP removes the DHCP settings.
    - **DNS.** Set the primary and alternate name servers, and an optional search domain.
    - **NTP.** Set one or more NTP servers, for example `0.pool.ntp.org`.
-3. Navigate to **Quit** and confirm. Quit acts as a logout: it ends your TUI session and returns to the device
+3. Navigate to **Quit** and confirm. Quit acts as a logout. It ends your TUI session and returns to the device
    information screen, which shows the node details and the Local UI address. It does not power off the node. To
    re-enter the TUI later, run `palette-tui` on the node.
 4. Repeat the OS install and this TUI configuration on every node. On a multi-node cluster, also complete the network
@@ -153,10 +149,10 @@ Once the node has an IP address, you can leave the console and reach the node's 
 
 If you do not configure storage, Local UI configures it automatically and adds every available data disk on the host to
 the **Data volume group**, always excluding the operating system disk. Configure it manually only when you need to
-control which disks [Piraeus](../reference/glossary.md#piraeus) uses, for example to keep a data disk out of the storage
-pool. The **Data volume group** tells Piraeus which physical disks to use for cluster storage, and model weights and the
-KV cache live on these disks. Local UI mounts the volume group at `/opt/data/spectrocloud`. Configure the volume group
-after the bond and before you link hosts, and on a multi-node cluster complete this section on every node.
+control which disks [Piraeus](../reference/glossary.md#piraeus) uses, for example, to keep a data disk out of the
+storage pool. The **Data volume group** tells Piraeus which physical disks to use for cluster storage, and model weights
+and the KV cache live on these disks. Local UI mounts the volume group at `/opt/data/spectrocloud`. Configure the volume
+group after the bond and before you link hosts, and on a multi-node cluster, complete this section on every node.
 
 :::warning Read-only after cluster creation
 
@@ -168,7 +164,7 @@ creation, the group becomes read-only. Confirm the disk selection before you con
 1. In Local UI, open the **Edgehost** tab.
 2. Under **Hardware**, select **Disks**. A side pane opens listing every disk on the host.
 3. Under **Data volume group**, select **Create volume** to open the wizard.
-4. Review the disk selection. By default the wizard selects every data disk on the host and automatically excludes the
+4. Review the disk selection. By default, the wizard selects every data disk on the host and automatically excludes the
    operating system disk, so you cannot add it to the volume group by mistake. Deselect any data disk you want to keep
    out of the volume group.
 5. Select **Create** to apply. The new entry appears under **Data volume group**.
@@ -246,7 +242,11 @@ shell on the Linux jumpbox.
 2. List the bundle on the mount and note the full path to the `.tar.zst` file.
 
    ```bash
-   ls -lh /mnt/nfs/ipmi/
+   ls --format=long --human-readable /mnt/nfs/ipmi/
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   -rw-r--r-- 1 root root 22G Jul 21 10:00 launchpad-ai-content.tar.zst
    ```
 
    Use the full mount path, for example `/mnt/nfs/ipmi/<content-bundle>.tar.zst`, as the `--file` value in the upload
@@ -356,7 +356,7 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 5. In **Cluster Config**, configure the cluster settings, including the cluster VIP.
 6. In **Node Config**, assign hosts to the control-plane and worker node pools.
    {/* NEEDS REVIEW: review notes (2026-07-21) ask to tell users to select the bond, if one exists, during node config. Confirm the exact step and field label before publishing. */}
-   - Single node: no host selection is needed. Remove the worker pool, and ensure **Allow worker capability** is enabled
+   - Single node: no host selection is needed. Remove the worker pool and ensure **Allow worker capability** is enabled
      on the control-plane pool so the sole node acts as both the control plane and the worker.
    - Multi-node: assign the hosts you linked previously. Keep the leader in the control-plane pool and use an odd number
      of control-plane nodes. You can remove the worker pool if it is not required, but ensure **Allow worker
@@ -405,16 +405,16 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 
 3. If the installation stalls, verify that the `piraeus-operator` and `nvidia-gpu-operator-ai` packs install correctly.
    GPU driver installation can take additional time on first boot.
-4. After deployment completes, additional items appear in the Local UI left navigation. Use them to reach the PaletteAI
+4. After deployment completes, additional items appear in the Local UI left main menu. Use them to reach the PaletteAI
    Inference Launchpad platform and confirm that GPU nodes are schedulable.
 
 :::info Log in to the console
 
 The cluster is now running. Open the PaletteAI Inference Launchpad console from the custom link that appears in the
-Local UI left navigation after deployment completes, rather than typing the platform IP address by hand. The console is
+Local UI left main menu after deployment completes, rather than typing the platform IP address by hand. The console is
 served at `https://<platform-ip>`, the single Platform IP Address that Traefik fronts (the one you set in the cluster
 profile). Sign in with the **Local Admin** username and password you set in the Profile Config wizard during cluster
-creation. These are the console credentials, and they are also the Grafana admin login. They are not a separate account,
+creation. These are the console credentials, and they are also the Grafana admin login. They are not a separate account
 and not the Palette TUI account you created earlier.
 
 :::
@@ -424,10 +424,10 @@ If the cluster stalls, or if the GPUs do not enumerate as expected, refer to
 
 ## Upload Your Model
 
-Uploading a model is a day-two operation, separate from the day-zero appliance install covered in the sections above.
-You can run it in parallel with cluster deployment; it does not need to wait for validation. Models are uploaded
-separately from the content bundle, from the jumpbox to an appliance node, using the Palette CLI. The jumpbox needs
-`rsync` 3.2.3 or later and OpenSSH 8.4 or later.
+Uploading a model is a day-two operation, separate from the day-zero appliance install. You can run it in parallel with
+cluster deployment; it does not need to wait for validation. Models are uploaded separately from the content bundle,
+from the jumpbox to an appliance node, using the Palette CLI. The jumpbox needs `rsync` 3.2.3 or later and OpenSSH 8.4
+or later.
 
 For the full flag list, the metadata file schema, the on-appliance layout, and the deploy-catalog states, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
@@ -462,8 +462,8 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    For gated or private Hugging Face repos, set `HF_TOKEN`.
 
-3. Upload the model to an appliance node. SSH key authentication is recommended. If you do not have a key on the node,
-   the Palette CLI can use SSH password authentication with an insecure flag instead.
+3. Upload the model to an appliance node. We recommend using SSH key authentication. If you do not have a key on the
+   node, the Palette CLI can use SSH password authentication with an insecure flag instead.
    {/* NEEDS REVIEW: confirm the exact palette content model upload flag for SSH password authentication (the insecure flag) before publishing. */}
 
    <Tabs groupId="os">
