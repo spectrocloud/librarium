@@ -93,6 +93,13 @@ tags: ["release-notes"]
   with `osImageOverride` as an HTTP(S) URL or the name of an existing MAAS image, and specify `osName` and `osVersion`
   so MAAS recognizes the operating system. This applies to Palette and VerteX, including airgap deployments.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6837 -->
+
+- Custom Resource Definitions (CRDs) in the `cluster.spectrocloud.com` API group now serve a stable `v1` API version
+  alongside the existing `v1alpha1`. Existing manifests, tooling, and integrations that reference `v1alpha1` continue to
+  work without change. Refer to [Custom Resource Definition API Versions](../architecture/crd-api-versions.md) for more
+  information.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2988 -->
