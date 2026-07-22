@@ -54,14 +54,14 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
   ```shell
   sudo apt-get update
   sudo apt-get upgrade
-  sudo apt-get install -y skopeo jq apt-transport-https ca-certificates curl gnupg
+  sudo apt-get install --yes skopeo jq apt-transport-https ca-certificates curl gnupg
   ```
 
 - Add the Kubernetes apt repository and install `kubectl`.
 
   ```shell
-  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | \
-    sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  curl --fail --silent --show-error --location https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | \
+    sudo gpg --dearmor --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
   ```
 
   ```shell
@@ -71,14 +71,14 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
   ```shell
   sudo apt-get update
-  sudo apt-get install -y kubectl
+  sudo apt-get install --yes kubectl
   ```
 
 - Add the MongoDB apt repository and install MongoDB Database Tools. The backup and restore scripts call `mongodump` and `mongorestore` from this package.
 
   ```shell
-  curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
-    sudo gpg --dearmor -o /etc/apt/keyrings/mongodb-server-8.0.gpg
+  curl --fail --silent --show-error --location https://www.mongodb.org/static/pgp/server-8.0.asc | \
+    sudo gpg --dearmor --output /etc/apt/keyrings/mongodb-server-8.0.gpg
   ```
 
   ```shell
@@ -88,7 +88,7 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
   ```shell
   sudo apt-get update
-  sudo apt-get install -y mongodb-database-tools
+  sudo apt-get install --yes mongodb-database-tools
   ```
 
 ## Back Up the Source Cluster
@@ -112,19 +112,19 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
 1. On the jump host, create a working directory and change into it.
 
     ```shell
-    mkdir -p palette-backup-restore && cd palette-backup-restore
+    mkdir --parents palette-backup-restore && cd palette-backup-restore
     ```
 
 2. Download the utility archive.
 
     ```shell
-    curl -O https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz
+    curl --remote-name https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz
     ```
 
 3. Extract the archive. The scripts extract into the current directory.
 
     ```shell
-    tar xvf Palette-Backup-Restore-v4.9.0.tar.gz
+    tar --extract --verbose --file=Palette-Backup-Restore-v4.9.0.tar.gz
     ```
 
 4. Copy the source cluster `kubeconfig` file into this directory and name it `source.kubeconfig`.
@@ -140,7 +140,7 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
 7. Confirm that the backup directory contains the expected artifacts.
 
     ```shell
-    tree -L 1 source-backup
+    tree --level 1 source-backup
     ```
 
     The output shows `backup_summary.txt`, the database dump directories, the cleaned secrets, and the extracted MongoDB TLS material, similar to the following.
@@ -258,7 +258,7 @@ Enable agent upgrades in stages so that you can validate the restore against a s
 
 Depending on how you originally installed the source cluster, you may need to run further manual steps after the restore. Spectro Cloud is finalizing these workarounds as part of the release validation. Review the following list of scenarios that may apply to your environment, and contact Spectro Cloud support for the current steps.
 
-- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette Command Line Interface (CLI) in Enterprise Cluster mode, the `installerMode` value in the MongoDB `systemconfig` document must be updated to `self-hosted` on the destination cluster.
+- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` value in the MongoDB `systemconfig` document must be updated to `self-hosted` on the destination cluster.
 
 - **Default pack registry conflict:** If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the default record on the destination cluster must be reconciled with the destination Zot registry.
 
