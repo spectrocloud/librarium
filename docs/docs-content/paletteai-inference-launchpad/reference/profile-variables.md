@@ -24,14 +24,12 @@ For the step-by-step procedure, refer to
 
 ## Network
 
-{/* NEEDS REVIEW: MetalLB Range placement. Reviewer feedback on 2026-07-21 says the range is not a bond form field. Confirm it is collected here in the Profile Config networking wizard and not elsewhere before publishing. */}
-
-| Variable                  | Type       | Required | Default          | Description                                                                                                                                                                                                                                                                              |
-| ------------------------- | ---------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Pod Network Range**     | IPv4 CIDR  | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                                                                                                                                                                       |
-| **Service Network Range** | IPv4 CIDR  | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.                                                                                                                                                               |
-| **MetalLB Range**         | IPv4 range | Yes      | —                | Unused, contiguous IP range in the same subnet as the node's bond IP, for example `10.0.21.50` to `10.0.21.59`. MetalLB assigns addresses from this range to platform services such as the appliance console and Traefik. Must not overlap the DHCP scope or any other reserved address. |
-| **Platform IP Address**   | IPv4       | Yes      | —                | Single IPv4 address drawn from the MetalLB Range. Traefik claims this address; the console and API are reached at it.                                                                                                                                                                    |
+| Variable                         | Type      | Required | Default          | Description                                                                                                                                                                                                                                                  |
+| -------------------------------- | --------- | -------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Pod Network Range**            | IPv4 CIDR | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                                                                                                                                           |
+| **Service Network Range**        | IPv4 CIDR | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.                                                                                                                                   |
+| **Platform IP Address**          | IPv4      | Yes      | —                | Single IPv4 address (not a range or CIDR) that MetalLB assigns to Traefik; the console and API are reached at it. Must be in the same subnet as the Cilium and MetalLB interface, and must not overlap the node's management IP or any other address in use. |
+| **Cilium and MetalLB interface** | string    | Yes      | —                | Host NIC that Cilium and MetalLB use to advertise the Platform IP Address on the local network. Select the bond that carries the node's management IP.                                                                                                       |
 
 ## OS and metrics
 
@@ -64,10 +62,13 @@ For the step-by-step procedure, refer to
 
 ## Certificates
 
-| Variable         | Type   | Required | Default | Description                                                  |
-| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------ |
-| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate.                               |
-| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert. |
+You are responsible for the certificate authority (CA) the appliance uses. Either provide your own CA certificate and
+its private key, or generate a self-signed CA and supply that. The wizard does not create one for you.
+
+| Variable         | Type   | Required | Default | Description                                                              |
+| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------------------ |
+| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate. Provide your own CA or a self-signed one. |
+| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert.             |
 
 ## Password complexity requirements
 
