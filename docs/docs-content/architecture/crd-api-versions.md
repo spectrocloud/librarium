@@ -28,7 +28,7 @@ VerteX share the same CRD API versions.
 
 | Palette / VerteX version | `v1alpha1`                   | `v1`          | Storage version |
 | ------------------------ | ---------------------------- | ------------- | --------------- |
-| 4.9.22 and earlier       | Served                       | Not available | `v1alpha1`      |
+| 4.9.27 and earlier       | Served                       | Not available | `v1alpha1`      |
 | 4.9.c and later          | Served (backward-compatible) | Served        | `v1`            |
 
 There is currently no deprecation timeline for `v1alpha1`. Palette continues to serve both versions.
