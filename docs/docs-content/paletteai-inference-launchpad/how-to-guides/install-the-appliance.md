@@ -376,16 +376,29 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 ## Validate the Installation
 
 1. On the **Cluster** page, confirm the cluster reaches a **Running** and **Healthy** state and that all packs install.
-2. Confirm that all pods are running. SSH to a control-plane node (the sole node on a single-node install, or the leader
-   on a multi-node install) and run the following command. You can also copy the cluster's kubeconfig to the jumpbox and
-   run the same command, or a tool such as K9s, over the VPN.
+2. Confirm that all pods are running. SSH to the node and run `kubectl` against the node's admin kubeconfig.
+
+   ```bash
+   sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   NAMESPACE     NAME                        READY   STATUS    RESTARTS   AGE
+   kube-system   coredns-6f9b7c9d8-abcde     1/1     Running   0          12m
+   ```
+
+   The output lists pods across namespaces in the `Running` state.
+
+   To run `kubectl`, or a tool such as K9s, from the jumpbox instead, copy the node's kubeconfig off the node. It lives
+   at `/etc/kubernetes/admin.conf` and is readable only by `root`, so read it with `sudo`. Replace `<user>` with the
+   administrator username you set in the Palette TUI and `<node-ip>` with the node's IP.
 
    <Tabs groupId="os">
 
    <TabItem label="Linux / macOS" value="unix">
 
    ```bash
-   kubectl get pods --all-namespaces
+   ssh <user>@<node-ip> "sudo cat /etc/kubernetes/admin.conf" > appliance.kubeconfig
    ```
 
    </TabItem>
@@ -393,14 +406,20 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
    <TabItem label="Windows" value="windows">
 
    ```powershell
-   kubectl get pods --all-namespaces
+   ssh <user>@<node-ip> "sudo cat /etc/kubernetes/admin.conf" | Out-File -Encoding ascii appliance.kubeconfig
    ```
 
    </TabItem>
 
    </Tabs>
 
-   The output lists pods across namespaces in the `Running` state.
+   The kubeconfig grants cluster-admin access, so store it like a root credential. If its `server` address is
+   `127.0.0.1` or an internal VIP the jumpbox cannot reach, replace it with the node's reachable IP or the cluster VIP.
+   Then point `kubectl` at it.
+
+   ```bash
+   kubectl --kubeconfig appliance.kubeconfig get pods --all-namespaces
+   ```
 
 3. If the installation stalls, verify that the `piraeus-operator` and `nvidia-gpu-operator-ai` packs install correctly.
    GPU driver installation can take additional time on first boot.
