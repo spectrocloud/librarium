@@ -224,7 +224,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   content bundles on a 4.9.c Palette instance. Refer to
   [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) for guidance.
 
-  **Pre-upgrade steps for existing airgap Edge clusters**
+  **Pre-upgrade steps for existing local Edge clusters**
 
   Without the following remediation, an internal configuration conflict on existing airgap Edge clusters causes cluster
   APIs to fail after you upgrade to 4.9.c. Apply the remediation that matches your cluster configuration before you
