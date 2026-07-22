@@ -24,11 +24,12 @@ For the step-by-step procedure, refer to
 
 ## Network
 
-| Variable                  | Type      | Required | Default          | Description                                                                                                                       |
-| ------------------------- | --------- | -------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Pod Network Range**     | IPv4 CIDR | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                |
-| **Service Network Range** | IPv4 CIDR | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.        |
-| **Platform IP Address**   | IPv4      | Yes      | —                | Single IPv4 address drawn from the MetalLB range on the bond. Traefik claims this address; the console and API are reached at it. |
+| Variable                         | Type      | Required | Default          | Description                                                                                                                                                                                                                                                 |
+| -------------------------------- | --------- | -------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Pod Network Range**            | IPv4 CIDR | Yes      | `100.64.0.0/18`  | Kubernetes pod network CIDR. Read-only after day 1. Pick a range that will not collide with your existing network.                                                                                                                                          |
+| **Service Network Range**        | IPv4 CIDR | Yes      | `100.64.64.0/18` | Kubernetes ClusterIP service CIDR. Read-only after day 1. Must not overlap the Pod Network Range or your existing network.                                                                                                                                  |
+| **Platform IP Address**          | IPv4      | Yes      | —                | Single IPv4 address (not a range or CIDR) that MetalLB assigns to Traefik; the console and API are reached at it. Must be in the same subnet as the Cilium and MetalLB interface and must not overlap the node's management IP or any other address in use. |
+| **Cilium and MetalLB interface** | string    | Yes      | —                | Host NIC that Cilium and MetalLB use to advertise the Platform IP Address on the local network. Select the bond that carries the node's management IP.                                                                                                      |
 
 ## OS and metrics
 
@@ -61,10 +62,17 @@ For the step-by-step procedure, refer to
 
 ## Certificates
 
-| Variable         | Type   | Required | Default | Description                                                  |
-| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------ |
-| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate.                               |
-| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert. |
+The appliance needs a certificate authority (CA) for its OIDC endpoint. Each certificate field offers two options:
+
+- **Generate.** Select **Generate** and the wizard creates a self-signed certificate and fills in the field for you. Use
+  this for internal or lab deployments, where a browser trust warning is acceptable.
+- **Provide.** Paste your own base64-encoded CA certificate and its private key. Use this in production, where you want
+  the appliance certificates signed by your organization's CA so clients trust them without an exception.
+
+| Variable         | Type   | Required | Default | Description                                                                                                         |
+| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate. Provide your own, or select **Generate** for a self-signed one.                      |
+| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert. The wizard fills this in when you select **Generate**. |
 
 ## Password complexity requirements
 

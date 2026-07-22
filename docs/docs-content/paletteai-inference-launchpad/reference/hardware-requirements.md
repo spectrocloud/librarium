@@ -72,9 +72,9 @@ and a fast LACP rate. The bonded NICs present a single logical interface.
 
 Required IP addresses:
 
-- A platform IP address assigned to MetalLB. Traefik claims this address and fronts the appliance.
+- A single unused platform IP address (not a range) for MetalLB to assign to Traefik, which fronts the appliance console
+  and API.
 - A cluster virtual IP address (VIP).
-- An unused IP address, or a range, for MetalLB to expose platform services.
 
 The following network ranges apply by default and become read-only after day one.
 
@@ -85,10 +85,11 @@ The following network ranges apply by default and become read-only after day one
 
 The appliance listens on the following ports.
 
-| **Port** | **Purpose**                                                              |
-| -------- | ------------------------------------------------------------------------ |
-| 443/TCP  | Appliance console and API, served by Traefik on the platform IP address. |
-| 5080/TCP | Node Local UI, reached at `https://<node-ip>:5080` during installation.  |
+| **Port** | **Purpose**                                                                               |
+| -------- | ----------------------------------------------------------------------------------------- |
+| 443/TCP  | Appliance console and API, served by Traefik on the platform IP address.                  |
+| 5080/TCP | Node Local UI, reached at `https://<node-ip>:5080` during installation.                   |
+| 5082/TCP | Node Local UI API, used by the Palette CLI to upload the content bundle from the jumpbox. |
 
 ## Airgapped
 
