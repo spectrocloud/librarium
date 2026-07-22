@@ -56,9 +56,9 @@ read-only runtime prevents configuration drift and keeps the appliance in a know
 manages the lifecycle of containerized workloads on top, handling scheduling, scaling, and health recovery.
 
 vLLM serves language models with high GPU throughput and handles concurrent requests from many users. The appliance
-ships GLM, DeepSeek, Kimi, and Gemma as local open-weight models that run entirely on your hardware with no external API
-calls. NVIDIA and AMD GPU support provides the parallel processing that large language models require to respond at
-production speed.
+ships with the ability to download one of these flagship open-weight models (GLM, DeepSeek, Kimi, or Gemma) and run it
+entirely on your hardware with no external API calls. NVIDIA and AMD GPU support provides the parallel processing that
+large language models require to respond at production speed.
 
 Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require
 low latency stay local. Other requests can route outbound when the network allows.
