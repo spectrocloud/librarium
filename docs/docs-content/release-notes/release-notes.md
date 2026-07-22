@@ -209,6 +209,40 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
+#### Breaking Changes {#edge-breaking-changes-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9123 -->
+
+- Local Edge clusters have new content compatibility and pre-upgrade requirements in 4.9.c. This change applies to local
+  Edge clusters. Connected Edge deployments are not affected.
+
+  Content bundles built against 4.9.22 or earlier releases are incompatible with 4.9.c Edge installers. The Stylus agent
+  in 4.9.c uses the `v1` API version, but Custom Resource Definitions (CRDs) in older content still target `v1alpha1`,
+  which prevents cluster provisioning from completing.
+
+  Before you deploy new airgap Edge clusters or upload new content to existing airgap Edge clusters, rebuild your
+  content bundles on a 4.9.c Palette instance. Refer to
+  [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) for guidance.
+
+  **Pre-upgrade steps for existing airgap Edge clusters**
+
+  Without the following remediation, an internal configuration conflict on existing airgap Edge clusters causes cluster
+  APIs to fail after you upgrade to 4.9.c. Apply the remediation that matches your cluster configuration before you
+  trigger the upgrade:
+
+  - If `skipStylusUpgrade` is set to `true` in the user data, set it to `false` in each of the following files, then
+    restart the `stylus-agent` and `stylus-operator` services:
+
+    - `/run/stylus/userdata`
+    - `/oem/90_custom.yaml`
+    - `/oem/userdata` or `/oem/95_userdata/userdata`
+    - `/oem/userdata.yaml` or `/oem/95_userdata/userdata.yaml`
+
+  - If `skipStylusUpgrade` is not set or is `false`, and Stylus is pinned through the `stylusPackage` field in the OS
+    pack or user data, remove the `stylusPackage` field and rebuild the content bundle before you upgrade. Refer to
+    [Configure Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md) for details on the
+    `stylusPackage` field.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8687 -->
