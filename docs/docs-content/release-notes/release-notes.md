@@ -209,7 +209,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
 
-- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.13 is now available.
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.13 is now
+  available.
 
 - The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
@@ -219,8 +220,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
 
-- The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point
-  of failure in the appliance ingress path.
+- The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point of
+  failure in the appliance ingress path.
 
 #### Bug Fixes
 
@@ -230,8 +231,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PVM-839 -->
 
 - Fixed round-trip mutations in the Preferences editor. CPU topology values, grace period serialization, and EFI and
-  Secure Boot display are now preserved correctly on save, and the deprecated `preferThreads` field is no longer
-  written back to the resource.
+  Secure Boot display are now preserved correctly on save, and the deprecated `preferThreads` field is no longer written
+  back to the resource.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-633 -->
 
