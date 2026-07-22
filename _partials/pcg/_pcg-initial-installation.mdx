@@ -47,7 +47,7 @@ partial_name: pcg-initial-installation
     the secret file as `imagepullsecret.json`, and then execute the following command.
 
     ```shell
-    cat imagepullsecret.json | docker login -u _json_key --password-stdin https://us-docker.pkg.dev
+    cat imagepullsecret.json | docker login --username _json_key --password-stdin https://us-docker.pkg.dev
     ```
 
     The command returns **Login Succeeded** when the credentials are accepted. If you skip this step, you can add or
