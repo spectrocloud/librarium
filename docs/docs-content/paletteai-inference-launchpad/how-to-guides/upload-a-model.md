@@ -46,7 +46,7 @@ downloads models itself. For how to provision the jumpbox, refer to
 
 ## Download the Model
 
-On the jumpbox, download the model from Hugging Face into a local directory.
+On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS mount.
 
 1. Run the download command, using the path to your metadata file and the directory to download into.
 
@@ -86,8 +86,9 @@ node; the appliance syncs the model to the remaining nodes automatically.
    Replace `<ssh-user>` and `<appliance-host>` with the appliance's SSH user and address, and `<private-key-path>` with
    the path to your private key, such as `~/.ssh/id_ed25519`.
 
-The upload command accepts other flags, including password authentication (`--ssh-password`), one-step download and
-upload (`--download`), and metadata-only sync (`--metadata-only`). For the full list, refer to
+The upload command accepts other flags, including password authentication (`--ssh-password`, optionally with
+`--insecure-skip-host-key-check`), one-step download and upload (`--download`), and metadata-only sync
+(`--metadata-only`). For the full list, refer to
 [Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
 
 ## Verify the Model and Deploy It

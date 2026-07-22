@@ -62,13 +62,17 @@ For the step-by-step procedure, refer to
 
 ## Certificates
 
-You are responsible for the certificate authority (CA) the appliance uses. Either provide your own CA certificate and
-its private key, or generate a self-signed CA and supply that. The wizard does not create one for you.
+The appliance needs a certificate authority (CA) for its OIDC endpoint. Each certificate field offers two options:
 
-| Variable         | Type   | Required | Default | Description                                                              |
-| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------------------ |
-| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate. Provide your own CA or a self-signed one. |
-| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert.             |
+- **Generate.** Select **Generate** and the wizard creates a self-signed certificate and fills in the field for you. Use
+  this for internal or lab deployments, where a browser trust warning is acceptable.
+- **Provide.** Paste your own base64-encoded CA certificate and its private key. Use this in production, where you want
+  the appliance certificates signed by your organization's CA so clients trust them without an exception.
+
+| Variable         | Type   | Required | Default | Description                                                                                                         |
+| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| **OIDC CA cert** | base64 | Yes      | —       | Base64-encoded CA certificate. Provide your own, or select **Generate** for a self-signed one.                      |
+| **OIDC CA key**  | base64 | Yes      | —       | Base64-encoded private key that pairs with the OIDC CA cert. The wizard fills this in when you select **Generate**. |
 
 ## Password complexity requirements
 

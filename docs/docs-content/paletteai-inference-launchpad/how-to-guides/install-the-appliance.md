@@ -71,8 +71,6 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
 4. In the interactive installer:
    - When the installer prompts for the registration option after its first boot, select **Palette eXtended Kubernetes
      (PXK)**. This registers the node with the edge Kubernetes distribution the appliance uses.
-   - To change node settings such as the hostname or network before the install proceeds, press **F2** to open the
-     customization screen.
    - The installer inspects every disk and blocks the install if any disk still holds Kairos partitions from a prior
      install. It reports the offending disks by name.
    - If needed, use the in-flow wipe option to clear leftover partitions. Refer to
@@ -106,8 +104,10 @@ must meet all of the following requirements:
 
 When you change an existing password, the new password must differ from the old one by at least 5 characters.
 
-1. Provide the initial administrator account (username and password). This account signs in to Local UI and accesses the
-   node over SSH. Press **ENTER** to continue.
+1. On the Palette TUI landing page, no local account exists yet, so press **F2** (**Create login**) to create the
+   initial administrator account, then set its username and password. This account signs in to Local UI and accesses the
+   node over SSH.
+   {/* NEEDS REVIEW: the F2 "Create login" entry point is from PE-8675, which is not yet merged. Confirm the label and flow before publishing; until then F2 opens node customization and the account is created through the TUI account step. */}
 2. Move between options with **TAB** or the arrow keys. Press **ENTER** to apply a change, and **ESC** to go back.
    - **Hostname.** Review the hostname and change it if required.
    - **Network adapter.** Each adapter uses Dynamic Host Configuration Protocol (DHCP) by default. For each adapter you
@@ -347,11 +347,10 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 4. In **Profile Config**, complete the PaletteAI Inference Launchpad custom wizard. The wizard collects the settings the
    platform packs need to install correctly on your hardware and network, in six sections: Networking, OS and metrics,
    Container registry, Local admin, Storage, and Certificates. In Networking, the **Platform IP Address** is a single
-   unused IP address (not a range) that MetalLB assigns to the appliance console and API. In Certificates, you supply
-   your own certificate authority (CA) certificate and key, or a self-signed CA; the wizard does not generate one. For
-   every field's type, default, and validation rules, including the password complexity requirements for the Registry
-   and Local Admin passwords, refer to [Cluster Profile Variables](../reference/profile-variables.md). Then select
-   **Next**.
+   unused IP address (not a range) that MetalLB assigns to the appliance console and API. In Certificates, either select
+   **Generate** to create a self-signed CA certificate, or provide your own CA certificate and key. For every field's
+   type, default, and validation rules, including the password complexity requirements for the Registry and Local Admin
+   passwords, refer to [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
 
 5. In **Cluster Config**, configure the cluster settings, including the cluster VIP.
 6. In **Node Config**, assign hosts to the control-plane and worker node pools.
@@ -462,9 +461,9 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    For gated or private Hugging Face repos, set `HF_TOKEN`.
 
-3. Upload the model to an appliance node. We recommend using SSH key authentication. If you do not have a key on the
-   node, the Palette CLI can use SSH password authentication with an insecure flag instead.
-   {/* NEEDS REVIEW: confirm the exact palette content model upload flag for SSH password authentication (the insecure flag) before publishing. */}
+3. Upload the model to an appliance node. We recommend using SSH key authentication (`--ssh-key`). If you do not have a
+   key on the node, use `--ssh-password` for password authentication (supported on a Unix jumpbox only), and add
+   `--insecure-skip-host-key-check` if the node's host key is not yet known.
 
    <Tabs groupId="os">
 
