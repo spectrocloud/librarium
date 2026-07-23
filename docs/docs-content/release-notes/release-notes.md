@@ -61,6 +61,15 @@ tags: ["release-notes"]
   information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2974 -->
+
+- You can now configure the Spectro Cloud image pull secret for security-hardened images during Day-0 installations
+  performed with the Palette CLI, including
+  [Palette](../enterprise-version/install-palette/install-on-vmware/install.md),
+  [Palette VerteX](../vertex/install-palette-vertex/install-on-vmware/install.md), and
+  [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
@@ -338,6 +347,50 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue on Palette Edge native clusters with the Harbor pack where `palette-webhook` pods could remain in a
   `ContainerStatusUnknown` state after a Kubernetes upgrade because they were not drained from a node before the node
   rebooted. Node drains now complete before an upgrade reboots the node.
+
+### Launchpad for VMs
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
+
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.13 is now
+  available.
+
+- The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
+  variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
+  variables that matter for its role.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
+
+- The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point of
+  failure in the appliance ingress path.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-751 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-755 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-741 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-839 -->
+
+- Fixed round-trip mutations in the Preferences editor. CPU topology values, grace period serialization, and EFI and
+  Secure Boot display are now preserved correctly on save, and the deprecated `preferThreads` field is no longer written
+  back to the resource.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-633 -->
+
+- Fixed an issue where VM cloning did not stop the source VM first, which could produce inconsistent clones.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-835 -->
+
+- Fixed namespace quota miscalculations that could cause VM deployment failures even when the namespace had enough
+  remaining quota.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-727 -->
+
+- Fixed an issue where clones of VMs with hotplug disks did not boot correctly.
 
 ### VerteX
 
