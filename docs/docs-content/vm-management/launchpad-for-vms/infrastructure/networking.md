@@ -243,8 +243,8 @@ passthrough.
 
    Apply the policy to the cluster.
 
-7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. Refer to [Create a NAD](#create-a-nad)
-   for the appliance-driven flow.
+7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. Refer to
+   [Create a NAD](#create-a-nad) for the appliance-driven flow.
 
 </details>
 
