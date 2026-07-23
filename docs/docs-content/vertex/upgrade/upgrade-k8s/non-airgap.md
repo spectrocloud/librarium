@@ -33,6 +33,8 @@ Kubernetes.
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette VerteX" />
+
 ## Prerequisites
 
 <PartialsComponent category="self-hosted" name="helm-client-version" />

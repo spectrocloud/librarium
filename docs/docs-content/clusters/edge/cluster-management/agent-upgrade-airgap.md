@@ -24,7 +24,7 @@ clusters while using an older version of the Palette agent.
 :::warning
 
 Local Edge clusters have new content compatibility and pre-upgrade requirements in Palette 4.9.c. Content bundles built
-against 4.9.22 or earlier are incompatible with 4.9.c Edge installers, and existing local Edge clusters must apply
+against 4.9.27 or earlier are incompatible with 4.9.c Edge installers, and existing local Edge clusters must apply
 remediation steps before upgrade. Refer to the [Release Notes](../../../release-notes/release-notes.md) for more
 information.
 
