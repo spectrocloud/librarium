@@ -95,6 +95,21 @@ a namespace-scoped Kubernetes resource.
    | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
    | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
+   :::info
+
+   The SR-IOV form does not add a `k8s.v1.cni.cncf.io/resourceName` annotation to the generated NAD. After the appliance
+   creates the NAD, add the annotation manually so the NAD binds to the Kubernetes resource defined in your
+   `SriovNetworkNodePolicy`. The resource-name value combines the pack's `resourcePrefix` with the policy's
+   `resourceName`, for example:
+
+   ```yaml
+   k8s.v1.cni.cncf.io/resourceName: spectro/intel_sriov_netdevice
+   ```
+
+   Without the annotation, VMs cannot request a Virtual Function from the pool.
+
+   :::
+
    </TabItem>
 
    <TabItem value="custom-json" label="Custom JSON">
@@ -165,9 +180,73 @@ passthrough.
 
 - SR-IOV capable NICs on compute nodes.
 
-- SR-IOV device plugin installed and configured.
+- [SR-IOV Network Operator pack](https://docs.spectrocloud.com/integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main)
+  from the Community Repo added to the cluster profile.
 
 - Virtual Functions configured on the host and visible in node hardware metrics.
+
+<details>
+<summary>Detailed cluster setup steps</summary>
+
+1. Use SR-IOV capable hardware. NICs must support SR-IOV, and you must know the maximum number of Virtual Functions
+   each NIC can create.
+
+2. Enable SR-IOV in the BIOS.
+
+3. Enable IOMMU in the kernel boot parameters:
+
+   - Intel CPUs: `intel_iommu=on iommu=pt`
+   - AMD CPUs: `amd_iommu=on iommu=pt`
+
+4. If the number of Virtual Functions is configured through firmware (for example, Mellanox NICs), use the NIC's
+   native configuration tool to set the maximum. For example, on a ConnectX NIC to enable up to 128 Virtual Functions:
+
+   ```bash
+   mlxconfig -d <PCI slot id> set SRIOV_EN=1 NUM_OF_VFS=128
+   ```
+
+5. Add the SR-IOV Network Operator pack from the Community Repo to the cluster profile.
+
+6. Define a `SriovNetworkNodePolicy` manifest that configures:
+
+   - A node selector, so only SR-IOV capable nodes are processed.
+   - A NIC selector, to limit processing to the intended SR-IOV capable NIC type.
+   - The number of Virtual Functions to create.
+   - The Kubernetes resource names to allocate the Virtual Functions into so that NADs can request them.
+
+   For example:
+
+   ```yaml
+   apiVersion: sriovnetwork.openshift.io/v1
+   kind: SriovNetworkNodePolicy
+   metadata:
+     name: intel-sriov-policy
+     namespace: openshift-sriov-network-operator
+   spec:
+     resourceName: intel_sriov_netdevice
+     nodeSelector:
+       feature.node.kubernetes.io/network-sriov.capable: "true"
+     priority: 99
+     mtu: 1500
+     numVfs: 4
+     deviceType: netdevice
+     nicSelector:
+       vendor: "8086"
+       deviceID: "159b"
+       pfNames: ["ens1f0"]
+   ```
+
+   The resulting Kubernetes resource name combines the pack's `resourcePrefix` value with the policy's
+   `resourceName`. For example, with `resourcePrefix: spectro` in the pack config and the policy above, the
+   resource name is `spectro/intel_sriov_netdevice`. For more configuration options, see the
+   [SR-IOV Network Operator pack documentation](https://docs.spectrocloud.com/integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main).
+
+   Apply the policy to the cluster.
+
+7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. See
+   [Create a NAD](#create-a-nad) for the appliance-driven flow.
+
+</details>
 
 ### Monitor SR-IOV
 
