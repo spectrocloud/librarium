@@ -130,6 +130,7 @@ tags: ["release-notes"]
   recommended and is the only mode compatible with Secure Boot.
 
 #### Deprecations and Removals
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8489 -->
 
 - Emails sent by Palette and VerteX now include a hyperlink to the tenant URL on the tenant name in every template. When
