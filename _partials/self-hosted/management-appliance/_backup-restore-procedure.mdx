@@ -115,13 +115,7 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
     mkdir --parents palette-backup-restore && cd palette-backup-restore
     ```
 
-2. Download the utility archive.
-
-    ```shell
-    curl --remote-name https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz
-    ```
-
-3. Extract the archive. The scripts extract into the current directory.
+2. Place the utility archive downloaded in the [Prerequisites](#prerequisites) into this directory, then extract it. The scripts extract into the current directory.
 
     ```shell
     tar --extract --verbose --file=Palette-Backup-Restore-v4.9.0.tar.gz
