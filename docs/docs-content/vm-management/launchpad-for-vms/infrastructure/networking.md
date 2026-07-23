@@ -188,8 +188,8 @@ passthrough.
 <details>
 <summary>Detailed cluster setup steps</summary>
 
-1. Use SR-IOV capable hardware. NICs must support SR-IOV, and you must know the maximum number of Virtual Functions
-   each NIC can create.
+1. Use SR-IOV capable hardware. NICs must support SR-IOV, and you must know the maximum number of Virtual Functions each
+   NIC can create.
 
 2. Enable SR-IOV in the BIOS.
 
@@ -198,8 +198,8 @@ passthrough.
    - Intel CPUs: `intel_iommu=on iommu=pt`
    - AMD CPUs: `amd_iommu=on iommu=pt`
 
-4. If the number of Virtual Functions is configured through firmware (for example, Mellanox NICs), use the NIC's
-   native configuration tool to set the maximum. For example, on a ConnectX NIC to enable up to 128 Virtual Functions:
+4. If the number of Virtual Functions is configured through firmware (for example, Mellanox NICs), use the NIC's native
+   configuration tool to set the maximum. For example, on a ConnectX NIC to enable up to 128 Virtual Functions:
 
    ```bash
    mlxconfig -d <PCI slot id> set SRIOV_EN=1 NUM_OF_VFS=128
@@ -236,15 +236,15 @@ passthrough.
        pfNames: ["ens1f0"]
    ```
 
-   The resulting Kubernetes resource name combines the pack's `resourcePrefix` value with the policy's
-   `resourceName`. For example, with `resourcePrefix: spectro` in the pack config and the policy above, the
-   resource name is `spectro/intel_sriov_netdevice`. For more configuration options, see the
+   The resulting Kubernetes resource name combines the pack's `resourcePrefix` value with the policy's `resourceName`.
+   For example, with `resourcePrefix: spectro` in the pack config and the policy above, the resource name is
+   `spectro/intel_sriov_netdevice`. For more configuration options, see the
    [SR-IOV Network Operator pack documentation](https://docs.spectrocloud.com/integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main).
 
    Apply the policy to the cluster.
 
-7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. See
-   [Create a NAD](#create-a-nad) for the appliance-driven flow.
+7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. See [Create a NAD](#create-a-nad)
+   for the appliance-driven flow.
 
 </details>
 
