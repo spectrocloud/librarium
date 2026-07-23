@@ -17,8 +17,8 @@ version to use in new manifests.
 
 ## API Versions
 
-- `cluster.spectrocloud.com/v1` - The new stable API version, introduced in 4.9.33. It is the stored version, which means
-  that Palette persists all objects in `v1` format in the underlying `etcd` datastore.
+- `cluster.spectrocloud.com/v1` - The new stable API version, introduced in 4.9.33. It is the stored version, which
+  means that Palette persists all objects in `v1` format in the underlying `etcd` datastore.
 
 - `cluster.spectrocloud.com/v1alpha1` - The legacy API version. It remains served for backward compatibility, so
   existing manifests, tooling, and integrations continue to work without change.
@@ -29,7 +29,7 @@ VerteX share the same CRD API versions.
 | Palette / VerteX version | `v1alpha1`                   | `v1`          | Storage version |
 | ------------------------ | ---------------------------- | ------------- | --------------- |
 | 4.9.27 and earlier       | Served                       | Not available | `v1alpha1`      |
-| 4.9.33 and later          | Served (backward-compatible) | Served        | `v1`            |
+| 4.9.33 and later         | Served (backward-compatible) | Served        | `v1`            |
 
 There is currently no deprecation timeline for `v1alpha1`. Palette continues to serve both versions.
 

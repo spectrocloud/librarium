@@ -236,36 +236,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9123 -->
 
-- Local Edge clusters have new content compatibility and pre-upgrade requirements in 4.9.33. This change applies to local
-  Edge clusters. Connected Edge deployments are not affected. Existing local Edge clusters will continue to run, but
-  Day-2 operations will not work.
+- Local Edge clusters have new content compatibility and pre-upgrade requirements in 4.9.33. This change applies to
+  local Edge clusters. Connected Edge deployments are not affected. Existing local Edge clusters will continue to run,
+  but Day-2 operations will not work.
 
-  Content bundles built against 4.9.27 or earlier releases are incompatible with 4.9.33 Edge installers. The Stylus agent
-  in 4.9.33 uses the `v1` API version, but Custom Resource Definitions (CRDs) in older content still target `v1alpha1`,
-  which prevents cluster provisioning from completing.
-
-  Before you deploy new airgap Edge clusters or upload new content to existing airgap Edge clusters, rebuild your
-  content bundles on a 4.9.33 Palette instance. Refer to
-  [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) for guidance.
-
-  **Pre-upgrade steps for existing local Edge clusters**
-
-  Without the following remediation, an internal configuration conflict on existing airgap Edge clusters causes cluster
-  APIs to fail after you upgrade to 4.9.33. Apply the remediation that matches your cluster configuration before you
-  trigger the upgrade:
-
-  - If `skipStylusUpgrade` is set to `true` in the user data, set it to `false` in each of the following files, then
-    restart the `stylus-agent` and `stylus-operator` services:
-
-    - `/run/stylus/userdata`
-    - `/oem/90_custom.yaml`
-    - `/oem/userdata` or `/oem/95_userdata/userdata`
-    - `/oem/userdata.yaml` or `/oem/95_userdata/userdata.yaml`
-
-  - If `skipStylusUpgrade` is not set or is `false`, and Stylus is pinned through the `stylusPackage` field in the OS
-    pack or user data, remove the `stylusPackage` field and rebuild the content bundle before you upgrade. Refer to
-    [Configure Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md) for details on the
-    `stylusPackage` field.
+  Content bundles built against 4.9.27 or earlier releases are incompatible with 4.9.33 Edge installers. The Stylus
+  agent in 4.9.33 uses the `v1` API version, but Custom Resource Definitions (CRDs) in older content still target
+  `v1alpha1`, which prevents cluster provisioning from completing.
 
 #### Features
 
@@ -419,16 +396,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   consent popup requires users to acknowledge the notice before authentication. For more information, refer to
   [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md).
 
-- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  Palette section for more details.
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the Palette
+  section for more details.
 
 #### Upgrade Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
 
 - The Kubernetes minor-version constraint on Enterprise Cluster (EC) binary and VerteX Management Appliance upgrades
-  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the
-  Palette Enterprise Upgrade Notes for the two-hop upgrade path, and to
+  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the Palette Enterprise Upgrade Notes for
+  the two-hop upgrade path, and to
   [Kubernetes Version Constraint](../vertex/upgrade/upgrade.md#kubernetes-version-constraint) for the full guidance.
 
 ### Automation
