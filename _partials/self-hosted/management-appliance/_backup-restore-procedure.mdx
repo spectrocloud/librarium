@@ -1,0 +1,259 @@
+---
+partial_category: self-hosted
+partial_name: backup-restore-procedure
+---
+
+Use the following procedure to back up a {props.app} installation and restore it to another {props.app} installation. In this guide, the installation you back up from is the *source cluster*, and the installation you restore to is the *destination cluster*.
+
+You can also use this procedure to back up a cluster and restore to the same cluster.
+
+:::info
+
+The utility archive referenced throughout this guide contains the scripts you need to complete the backup and restore. Download it from [https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz) to your Linux jump host before you begin.
+
+:::
+
+## Supported Scenarios
+
+The following combinations are supported.
+
+| **Scenario**                                                    | **Supported** |
+| --------------------------------------------------------------- | ------------- |
+| Source and destination are the same cluster.                    | Yes           |
+| Destination is at the same {props.version} version as source.   | Yes           |
+| Destination is at a higher {props.version} version than source. | Yes           |
+| Destination is at a lower {props.version} version than source.  | No            |
+| Source and destination are different editions.                  | No            |
+
+For example, a source cluster at 4.7.x can be restored to a destination cluster at 4.7.x or 4.8.x, but not to a destination cluster at 4.6.x. Both clusters must be the same edition, either Palette or VerteX.
+
+## Prerequisites
+
+- A Linux jump host running Ubuntu 24.04 with network access to both the source and destination clusters. This host is used to run the backup and restore scripts, including the Zot registry sync, which requires Ubuntu 24.04.
+
+- The [`Palette-Backup-Restore-v4.9.0.tar.gz`](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz) utility archive downloaded to your Linux jump host.
+
+- The source cluster and destination cluster meet the requirements listed in [Supported Scenarios](#supported-scenarios).
+
+- The destination cluster is already installed and healthy. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Management Appliance install guide" palettePath="/enterprise-version/install-palette/palette-management-appliance" vertexPath="/vertex/install-palette-vertex/vertex-management-appliance"/> for installation instructions.
+
+- The `kubeconfig` file for the source cluster and the `kubeconfig` file for the destination cluster.
+
+- Administrative access to the {props.version} system console for the source cluster.
+
+- The system address for the source cluster is configured with a Fully Qualified Domain Name (FQDN) instead of an IP address. Workload cluster edge hosts must also reference the FQDN as the `PaletteEndpoint` value in their userdata.
+
+  :::warning
+
+  If your source cluster uses an IP address instead of an FQDN for the system address, a config map on each workload cluster must be updated manually to point to the destination cluster's IP address. Contact Spectro Cloud support for guidance.
+
+  :::
+
+- On the jump host, install the following packages. Skopeo mirrors the internal Zot registry, and `jq` parses the registry catalog response.
+
+  ```shell
+  sudo apt-get update
+  sudo apt-get upgrade
+  sudo apt-get install --yes skopeo jq apt-transport-https ca-certificates curl gnupg
+  ```
+
+- Add the Kubernetes apt repository and install `kubectl`.
+
+  ```shell
+  curl --fail --silent --show-error --location https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | \
+    sudo gpg --dearmor --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  ```
+
+  ```shell
+  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | \
+    sudo tee /etc/apt/sources.list.d/kubernetes.list
+  ```
+
+  ```shell
+  sudo apt-get update
+  sudo apt-get install --yes kubectl
+  ```
+
+- Add the MongoDB apt repository and install MongoDB Database Tools. The backup and restore scripts call `mongodump` and `mongorestore` from this package.
+
+  ```shell
+  curl --fail --silent --show-error --location https://www.mongodb.org/static/pgp/server-8.0.asc | \
+    sudo gpg --dearmor --output /etc/apt/keyrings/mongodb-server-8.0.gpg
+  ```
+
+  ```shell
+  echo "deb [signed-by=/etc/apt/keyrings/mongodb-server-8.0.gpg] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | \
+    sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+  ```
+
+  ```shell
+  sudo apt-get update
+  sudo apt-get install --yes mongodb-database-tools
+  ```
+
+## Back Up the Source Cluster
+
+Use the following steps to pause agent upgrades on workload clusters and take a database backup from the source cluster.
+
+### Pause Agent Upgrade on the Source Cluster
+
+Pause the agent upgrade on all workload clusters before you take a backup. This prevents workload clusters from receiving an agent upgrade during the backup and cutover, before the destination cluster takes over.
+
+1. Log in to the {props.version} tenant console for the source cluster.
+
+2. From the left main menu, select **Tenant Settings**.
+
+3. Select **Platform Settings**.
+
+4. Enable **Pause Agent Upgrade**.
+
+### Take a Database Backup
+
+1. On the jump host, create a working directory and change into it.
+
+    ```shell
+    mkdir --parents palette-backup-restore && cd palette-backup-restore
+    ```
+
+2. Place the utility archive downloaded in the [Prerequisites](#prerequisites) into this directory, then extract it. The scripts extract into the current directory.
+
+    ```shell
+    tar --extract --verbose --file=Palette-Backup-Restore-v4.9.0.tar.gz
+    ```
+
+4. Copy the source cluster `kubeconfig` file into this directory and name it `source.kubeconfig`.
+
+5. Copy the destination cluster `kubeconfig` file into this directory and name it `dst.kubeconfig`.
+
+6. Run the backup script. The script creates the backup directory automatically. If you omit `--backup-dir`, the script generates a timestamped directory named `mongo_hubble_backup_<YYYYMMDD-HHMMSS>`.
+
+    ```shell
+    ./edge-backup.sh --kubeconfig source.kubeconfig --backup-dir source-backup
+    ```
+
+7. Confirm that the backup directory contains the expected artifacts.
+
+    ```shell
+    tree --level 1 source-backup
+    ```
+
+    The output shows `backup_summary.txt`, the database dump directories, the cleaned secrets, and the extracted MongoDB TLS material, similar to the following.
+
+    ```text hideClipboard
+    source-backup
+    ├── backup_summary.txt
+    ├── cleaned-secrets
+    ├── hubble_archivedb
+    ├── hubble_timeseriesdb
+    ├── hubbledb
+    └── mongo-tls
+    ```
+
+## Synchronize the Zot Registry
+
+Synchronize the internal Zot registry on the source cluster with the internal Zot registry on the destination cluster so that the destination has the packs and images required by the workload clusters.
+
+:::info
+
+If both clusters share a common external registry, you can skip this section.
+
+:::
+
+1. On the jump host, open the `zot-sync.sh` script for editing.
+
+    ```shell
+    vi ./zot-sync.sh
+    ```
+
+2. Update the four values at the top of the script to match your environment. The `SRC` and `DST` values can be the Virtual IP Address (VIP) or the IP address of any node in the corresponding cluster. The credentials must match the ones you set during installation.
+
+    ```shell
+    SRC=192.0.2.10:30003
+    DST=198.51.100.10:30003
+    SRC_CREDS="admin:password"
+    DST_CREDS="admin:password"
+    ```
+
+3. Save the file and close the editor.
+
+4. Run the sync script. By default, the script mirrors every repository. To limit the sync to a subset, pass a repository path prefix as the first argument. For example, if you launched the destination cluster edge hosts from the same ISO as the source, you only need to sync the packs uploaded after edge host creation, which live under `spectro-content/spectro-packs/archive/`.
+
+    ```shell
+    ./zot-sync.sh
+    ```
+
+    ```shell
+    ./zot-sync.sh spectro-content/spectro-packs/archive/
+    ```
+
+5. Log in to the destination cluster Zot registry and confirm that the packs are synchronized and that the image checksums match the source registry.
+
+## Restore to the Destination Cluster
+
+Use the following steps to restore the database backup to the destination cluster.
+
+1. On the jump host, set the `KUBECONFIG` environment variable to point to the destination cluster.
+
+    ```shell
+    export KUBECONFIG=dst.kubeconfig
+    ```
+
+2. Retrieve the cluster namespace for the destination cluster.
+
+    ```shell
+    kubectl --kubeconfig dst.kubeconfig get ns | grep cluster-
+    ```
+
+    The output contains a namespace in the format `cluster-<uid>`. Record the `<uid>` value for the next step.
+
+3. Run the restore script. Replace `<uid>` with the value from the previous step.
+
+    ```shell
+    ./edge-restore.sh --uid <uid> --kubeconfig dst.kubeconfig --backup-dir source-backup
+    ```
+
+4. Wait for the restore to complete.
+
+## Update DNS and Re-Register Workload Clusters
+
+After the restore, workload clusters may temporarily show as unhealthy because they are still pointed at the source cluster. Update DNS so that workload clusters reach the destination cluster.
+
+1. On your DNS server, update the record for the {props.version} FQDN to point to the destination cluster VIP.
+
+2. In the {props.version} system console for the destination cluster, go to **Administration** > **System Address**. Confirm the FQDN and TLS certificate settings match the destination cluster.
+
+    :::tip
+
+    If you need to issue a new self-signed TLS certificate for the destination cluster VIP, the utility archive includes a helper script. Run `./certs-gen.sh <VIP>` from the working directory to generate a CA, server certificate, and matching key. The script writes base64-encoded values to `out/cert.b64`, `out/key.b64`, and `out/ca.b64`, ready to paste into the **System Address** fields.
+
+    :::
+
+3. Wait for workload clusters to reconnect and report a **Healthy** status.
+
+## Resume Agent Upgrade in Stages
+
+Enable agent upgrades in stages so that you can validate the restore against a small number of workload clusters before applying it broadly.
+
+1. Select one or two workload clusters to use as test clusters.
+
+2. In the cluster settings for each test cluster, enable **Agent Upgrade**.
+
+3. Wait for the agent upgrade to complete. On the cluster **Overview** tab, confirm the following.
+
+    - The **Cluster Management Agent** version shows the new version.
+
+    - On the **Edge Hosts** tab, the Stylus Agent version on each edge host shows the new version.
+
+4. Deploy a new test cluster from the destination cluster to further validate that the environment is stable.
+
+5. Once the test clusters are healthy and running the new agent, enable **Agent Upgrade** for the remaining workload clusters.
+
+## Post-Restore Workarounds
+
+Depending on how you originally installed the source cluster, you may need to run further manual steps after the restore. Spectro Cloud is finalizing these workarounds as part of the release validation. Review the following list of scenarios that may apply to your environment, and contact Spectro Cloud support for the current steps.
+
+- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` value in the MongoDB `systemconfig` document must be updated to `self-hosted` on the destination cluster.
+
+- **Default pack registry conflict:** If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the default record on the destination cluster must be reconciled with the destination Zot registry.
+
+- **Stale cache in Hubble pods:** If workload clusters continue to report `Resource Not Found` errors against a Cluster UID after the restore, the Hubble pods on the destination cluster may need to be restarted to clear the cache.

@@ -109,6 +109,28 @@ tags: ["release-notes"]
   work without change. Refer to [Custom Resource Definition API Versions](../architecture/crd-api-versions.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have exited Tech
+  Preview and are now supported for production use. A formal backup and restore procedure is documented for both
+  appliances. Refer to
+  [Backup and Restore the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md)
+  and
+  [Backup and Restore the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
+
+- The installation steps for the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now document the
+  `LB_HOW` environment variable on the `piraeus-operator` pack, which controls how the Distributed Replicated Block
+  Device (DRBD) kernel module is loaded. A new `compile` mode builds the module from source using Dynamic Kernel Module
+  Support (DKMS) for OS images that ship with matching kernel headers; the default `shipped_modules` mode remains
+  recommended and is the only mode compatible with Secure Boot.
+
+#### Deprecations and Removals
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8489 -->
 
 - Emails sent by Palette and VerteX now include a hyperlink to the tenant URL on the tenant name in every template. When
