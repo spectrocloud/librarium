@@ -19,8 +19,6 @@ tags: ["release-notes"]
 
 ### Palette Enterprise
 
-#### Breaking Changes
-
 #### Upgrade Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
@@ -69,6 +67,10 @@ tags: ["release-notes"]
   [Palette VerteX](../vertex/install-palette-vertex/install-on-vmware/install.md), and
   [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.33 are now
+  available.
 
 #### Improvements
 
@@ -438,8 +440,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   cluster could cause the underlying add-on packs to uninstall and reinstall instead of updating in place, which briefly
   removed workloads such as Argo CD. Changing the add-on profile version now performs an in-place update and preserves
   the existing pack state.
-
-### Docs and Education
 
 ### Packs
 
