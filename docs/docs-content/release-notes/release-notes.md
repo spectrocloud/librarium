@@ -138,6 +138,14 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
   [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now support installing
+  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
+  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
+  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
@@ -176,6 +184,28 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
   alongside the existing `v1alpha1`. Existing manifests, tooling, and integrations that reference `v1alpha1` continue to
   work without change. Refer to [Custom Resource Definition API Versions](../architecture/crd-api-versions.md) for more
   information.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have exited Tech
+  Preview and are now supported for production use. A formal backup and restore procedure is documented for both
+  appliances. Refer to
+  [Backup and Restore the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md)
+  and
+  [Backup and Restore the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
+
+- The installation steps for the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now document the
+  `LB_HOW` environment variable on the `piraeus-operator` pack, which controls how the Distributed Replicated Block
+  Device (DRBD) kernel module is loaded. A new `compile` mode builds the module from source using Dynamic Kernel Module
+  Support (DKMS) for OS images that ship with matching kernel headers; the default `shipped_modules` mode remains
+  recommended and is the only mode compatible with Secure Boot.
+
+#### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8489 -->
 
@@ -444,6 +474,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
   variables that matter for its role.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
+
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports installing
+  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
+  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
+  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
 #### Improvements
 
