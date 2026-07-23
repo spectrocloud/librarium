@@ -28,25 +28,25 @@ For example server configurations that meet these requirements, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md). For the design decisions behind these requirements,
 refer to [Architecture Overview](../explanation/architecture.md).
 
-## Minimum Requirements
+## Hardware Requirements
 
-The following table lists the minimum hardware for the appliance on a single high-density GPU server. The appliance
-ships an immutable Kairos-based operating system, so no separate install is required.
+The following table lists the minimum and recommended hardware for the appliance on a single high-density GPU server.
+The appliance ships an immutable Kairos-based operating system, so no separate install is required.
 
-| **Component** | **Minimum Hardware**            | **Recommened Hardware**          | **Notes**                                                    |
-| ------------- | ------------------------------- | -------------------------------- | ------------------------------------------------------------ |
-| CPU           | 2x 32-core CPU (64 cores total) | 2x 64-core CPU (128 cores total) | Dual-socket is required for 8x GPU systems                   |
-| GPU           | 2x NVIDIA or AMD GPU            | 8x NVIDIA or AMD GPU             | Larger models require much more VRAM, typically with 8 GPUs  |
-| GPU VRAM      | 128 GB (all GPUs combined)      | 1024 GB (all GPUs combined)      | 8x for larger models                                         |
-| RAM           | 1 TB                            | 2 TB or more                     | 128 GB RAM per GPU, plus 512 GB or more for KV cache         |
-| OS boot drive | 500 GB SSD                      | RAID1 of two 800GB SSD drives    | Onboard RAID controller available on most server chipsets    |
-| Data disks    | 1x 8 TB NVMe                    | 4x 8TB NVMe                      | Model weights and persistent KV cache stored on these drives |
-| Network       | 1x 10 Gbps NIC                  | 2x 10+ Gbps NICs, bonded         | 802.3ad Etherchannel recommended                             |
+| **Component** | **Minimum Hardware**            | **Recommended Hardware**         | **Notes**                                                        |
+| ------------- | ------------------------------- | -------------------------------- | ---------------------------------------------------------------- |
+| CPU           | 2x 32-core CPU (64 cores total) | 2x 64-core CPU (128 cores total) | Dual-socket is required for 8x GPU systems                       |
+| GPU           | 2x NVIDIA or AMD GPU            | 8x NVIDIA or AMD GPU             | Larger models require much more VRAM, typically with 8 GPUs      |
+| GPU VRAM      | 128 GB (all GPUs combined)      | 1024 GB (all GPUs combined)      | Total VRAM across all installed GPUs; larger models require more |
+| RAM           | 1 TB                            | 2 TB or more                     | 128 GB RAM per GPU, plus 512 GB or more for KV cache             |
+| OS boot drive | 500 GB SSD                      | RAID1 of two 800 GB SSD drives   | Most servers provide an onboard RAID controller                  |
+| Data disks    | 1x 8 TB NVMe                    | 4x 8 TB NVMe                     | Model weights and persistent KV cache stored on these drives     |
+| Network       | 1x 10 Gbps NIC                  | 2x 10+ Gbps NICs, bonded         | 802.3ad LACP recommended                                         |
 
 ## GPU
 
-The required GPU count depends on the target model. The baseline is 4 GPUs. Larger models require more. For example, GLM
-5.2 FP8 requires 8 GPUs.
+The required GPU count depends on the target model. The minimum is 2 GPUs, and 8 GPUs are recommended for larger models.
+For example, GLM 5.2 FP8 requires 8 GPUs.
 
 The reference GPU is the NVIDIA H100 80 GB. The appliance supports both NVIDIA and AMD GPUs, and the GPU Operator
 installs GPU drivers automatically. For the models certified on each GPU configuration, refer to
@@ -54,21 +54,22 @@ installs GPU drivers automatically. For the models certified on each GPU configu
 
 ## Storage
 
-The appliance uses NVMe storage only. SATA solid-state drives and spinning disks are not supported. Storage has two
+The OS boot drive is an SSD, and the data pool uses NVMe drives only. Spinning disks are not supported. Storage has two
 roles.
 
-| **Role**      | **Devices**                                    | **Contents**                                                                                                                        |
-| ------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| OS boot disks | 2x NVMe, 800 GB or more, hardware RAID1        | Operating system, plus a system partition (roughly 400 GB to 500 GB) for the Piraeus system storage pool used at cluster bootstrap. |
-| Data pool     | 4x NVMe, 8 TB or more each (32 TB or more raw) | Piraeus storage pool, striped across all data drives, for the model-weights and KV cache volumes.                                   |
+| **Role**      | **Devices**                                                        | **Contents**                                                                                                                   |
+| ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| OS boot drive | 500 GB SSD (minimum); two 800 GB SSD drives in RAID1 (recommended) | Operating system, plus a system partition for the Piraeus system storage pool used at cluster bootstrap.                       |
+| Data pool     | 1x 8 TB NVMe (minimum); 4x 8 TB NVMe (recommended)                 | Piraeus storage pool for the model-weights and KV cache volumes; striped across the data drives when more than one is present. |
 
 A single model artifact is large. For example, GLM 5.2 FP8 weights are approximately 750 GB. The Piraeus storage layer
 provisions a 1 TB volume for model weights and a 2 TB volume for the KV cache.
 
 ## Network and IP Addressing
 
-The recommended bond configuration is the 802.3ad Link Aggregation Control Protocol (LACP) with a `layer3+4` hash policy
-and a fast LACP rate. The bonded NICs present a single logical interface.
+A single 10 Gbps NIC meets the minimum requirement. For the recommended configuration, bond two or more 10 Gbps or
+faster NICs using the 802.3ad Link Aggregation Control Protocol (LACP) with a `layer3+4` hash policy and a fast LACP
+rate. The bonded NICs present a single logical interface.
 
 Required IP addresses:
 
