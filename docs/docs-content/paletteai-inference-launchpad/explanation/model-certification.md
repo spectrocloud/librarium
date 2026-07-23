@@ -18,9 +18,9 @@ specific hardware, refer to [Certified Models by Hardware](../reference/certifie
 
 ## Certification Overview
 
-A certified model is a large language model (LLM) that Spectro Cloud has tested on a specific GPU configuration and
-confirmed runs correctly on PaletteAI Inference Launchpad. Spectro Cloud runs each certified model on the hardware it is
-paired with, rather than assuming the model works from public benchmarks. When you deploy a certified model on a
+A certified model is a large language model (LLM) that Spectro Cloud has validated to run correctly on the listed GPU
+configuration for PaletteAI Inference Launchpad. This validation is based on Spectro Cloud's own testing rather than
+public benchmarks, and it can extend across equivalent GPU configurations. When you deploy a certified model on a
 configuration where it is certified, you can be confident it loads and serves requests without hardware surprises.
 
 ## Model Use Cases
