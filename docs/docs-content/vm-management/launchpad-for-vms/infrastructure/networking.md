@@ -100,7 +100,7 @@ a namespace-scoped Kubernetes resource.
    The SR-IOV form does not add a `k8s.v1.cni.cncf.io/resourceName` annotation to the generated NAD. After the appliance
    creates the NAD, add the annotation manually so the NAD binds to the Kubernetes resource defined in your
    `SriovNetworkNodePolicy`. The resource-name value combines the pack's `resourcePrefix` with the policy's
-   `resourceName`, for example:
+   `resourceName` similar to the following example.
 
    ```yaml
    k8s.v1.cni.cncf.io/resourceName: spectro/intel_sriov_netdevice
@@ -193,7 +193,7 @@ passthrough.
 
 2. Enable SR-IOV in the BIOS.
 
-3. Enable IOMMU in the kernel boot parameters:
+3. Enable IOMMU in the kernel boot parameters.
 
    - Intel CPUs: `intel_iommu=on iommu=pt`
    - AMD CPUs: `amd_iommu=on iommu=pt`
@@ -238,12 +238,12 @@ passthrough.
 
    The resulting Kubernetes resource name combines the pack's `resourcePrefix` value with the policy's `resourceName`.
    For example, with `resourcePrefix: spectro` in the pack config and the policy above, the resource name is
-   `spectro/intel_sriov_netdevice`. For more configuration options, see the
+   `spectro/intel_sriov_netdevice`. For more configuration options, refer to the
    [SR-IOV Network Operator pack documentation](https://docs.spectrocloud.com/integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main).
 
    Apply the policy to the cluster.
 
-7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. See [Create a NAD](#create-a-nad)
+7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. Refer to [Create a NAD](#create-a-nad)
    for the appliance-driven flow.
 
 </details>
