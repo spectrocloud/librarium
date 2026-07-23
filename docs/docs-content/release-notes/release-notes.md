@@ -11,6 +11,74 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 26, 2026 - Component Updates {#component-updates-2026-30}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3020 -->
+<!-- RELEASE DATE: July 26, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.28 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.14 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.14  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.33  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.33  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
+
+- Updated Kubernetes pack versions are available for Palette clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-757 -->
+
+- The Palette and Palette VerteX appliance installer now features a redesigned configuration form that organizes
+  variables into named sections (networking, credentials, certificates, and appliance-specific groups) instead of a
+  single flat list. Network interface fields are pre-populated from the host environment, TLS certificate fields support
+  one-click generation, and inline validation prevents misconfigured deployments from proceeding. The same form renders
+  during day-two operations with all fields pre-filled from the current cluster configuration, and only changed fields
+  are updated on submit.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2298 -->
+
+- The Terraform Spectro Cloud provider now supports CAPI passthrough overrides for GCP IaaS, GKE, vSphere, and MAAS
+  clusters. You can supply key/value overrides at the cluster and node pool levels for day-zero and day-two operations,
+  consistent with the existing passthrough experience for AKS, AWS IaaS, EKS, and CloudStack. This feature is supported
+  on both Palette and Palette VerteX.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.1 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.4 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.0 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.8.0 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.0 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :x: | :white_check_mark: | 1.14.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## July 26, 2026 - Release 4.9.c {#release-notes-4.9.c}
 
 ### Security Notices
@@ -70,14 +138,6 @@ tags: ["release-notes"]
   [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
-
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now support installing
-  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
-  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
-  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7135 -->
@@ -116,28 +176,6 @@ tags: ["release-notes"]
   alongside the existing `v1alpha1`. Existing manifests, tooling, and integrations that reference `v1alpha1` continue to
   work without change. Refer to [Custom Resource Definition API Versions](../architecture/crd-api-versions.md) for more
   information.
-
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
-
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have exited Tech
-  Preview and are now supported for production use. A formal backup and restore procedure is documented for both
-  appliances. Refer to
-  [Backup and Restore the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md)
-  and
-  [Backup and Restore the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md).
-
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2885 -->
-
-- The installation steps for the
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now document the
-  `LB_HOW` environment variable on the `piraeus-operator` pack, which controls how the Distributed Replicated Block
-  Device (DRBD) kernel module is loaded. A new `compile` mode builds the module from source using Dynamic Kernel Module
-  Support (DKMS) for OS images that ship with matching kernel headers; the default `shipped_modules` mode remains
-  recommended and is the only mode compatible with Secure Boot.
-
-#### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8489 -->
 
@@ -400,19 +438,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
 
-- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.13 is now
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.15 is now
   available.
 
 - The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
   variables that matter for its role.
-
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
-
-- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports installing
-  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
-  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
-  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
 #### Improvements
 
