@@ -77,8 +77,7 @@ gateway continues to handle routing, [token metering](#token-metering), quota co
 ### Certified Model
 
 A model that Spectro Cloud has validated to run correctly on the listed GPU configuration, based on its own testing
-rather than public benchmarks. Refer to
-[Model Certification](../explanation/model-certification.md) and
+rather than public benchmarks. Refer to [Model Certification](../explanation/model-certification.md) and
 [Certified Models by Hardware](./certified-models-by-hardware.md).
 
 ### Chargeback
