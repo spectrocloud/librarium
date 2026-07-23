@@ -67,9 +67,9 @@ provisions a 1 TB volume for model weights and a 2 TB volume for the KV cache.
 
 ## Network and IP Addressing
 
-A single 10 Gbps NIC meets the minimum requirement. For the recommended configuration, bond two or more 10 Gbps or
-faster NICs using the 802.3ad Link Aggregation Control Protocol (LACP) with a `layer3+4` hash policy and a fast LACP
-rate. The bonded NICs present a single logical interface.
+The minimum is a single 10 Gbps NIC. The recommended configuration is a bond of two or more 10 Gbps or faster NICs using
+the 802.3ad Link Aggregation Control Protocol (LACP) with a `layer3+4` hash policy and a fast LACP rate, presented as a
+single logical interface.
 
 Required IP addresses:
 
@@ -100,10 +100,10 @@ artifact. The appliance requires no outbound internet access during installation
 ## Administrative Workstation
 
 The appliance requires a separate Linux administrative workstation, also called a jumpbox, on the same network as the
-appliance nodes. The appliance does not provide this machine. You use it during
+appliance nodes. The appliance does not provide this machine. It is used during
 [installation](../how-to-guides/install-the-appliance.md) and across the entire appliance lifecycle.
 
-Provision the administrative workstation with the following:
+The administrative workstation requires the following:
 
 - Network access to the appliance nodes over SSH.
 - An SSH client and a key pair, or password authentication, for the appliance nodes.
@@ -113,12 +113,12 @@ Provision the administrative workstation with the following:
 
 ### Model Download Access (Recommended)
 
-Outbound HTTPS access to `huggingface.co` from the administrative workstation is recommended. It lets you download model
-weights directly before you upload them to the appliance. This access applies to the administrative workstation, not the
+Outbound HTTPS access to `huggingface.co` from the administrative workstation is optional but recommended. It applies to
+the administrative workstation only and allows model weights to be downloaded there before they are uploaded to the
 appliance. As noted in [Airgapped](#airgapped), the appliance itself needs no outbound internet access.
 
-If outbound access is blocked, download model weights on a separate connected machine, then transfer them to the
-administrative workstation before you upload them.
+Without this access, model weights must be staged on a separate connected machine and transferred to the administrative
+workstation before upload.
 
 ## Resources
 
