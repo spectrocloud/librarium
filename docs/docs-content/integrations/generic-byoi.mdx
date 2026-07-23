@@ -47,13 +47,23 @@ The following is a list of commonly used tools for creating a custom OS:
 
 The BYOOS pack for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) supports non-Ubuntu
 operating systems, such as Red Hat Enterprise Linux (RHEL), Rocky Linux, and SUSE Linux Enterprise Server (SLES), in
-addition to Ubuntu. Configure the following BYOOS pack fields for MAAS:
+addition to Ubuntu.
 
-| Field              | Description                                                                                                                                                                            |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `osImageOverride`  | Reference the custom image as an HTTP(S) URL that Palette downloads and imports into MAAS, or as the name of an existing image in MAAS.                                                |
-| `osName`           | The OS name that MAAS uses to identify the image. Examples include `rhel`, `rocky`, and `sles`.                                                                                        |
-| `osVersion`        | The OS version. Examples include `9.4` and `8`.                                                                                                                                        |
+:::warning
+
+BYOOS on MAAS requires setup on the MAAS server before you deploy a cluster. Place the appropriate
+`curtin_userdata_preseed` files for the target OS on the MAAS server so that machine deployment completes
+successfully. Refer to this [troubleshooting guide](https://discourse.maas.io/t/rocky-9-3-deployment/7744) for more information.
+
+:::
+
+Configure the following BYOOS pack fields for MAAS:
+
+| Field             | Description                                                                                                                                                                                                          |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `osImageOverride` | Reference the custom image as an HTTP(S) URL that Palette downloads and imports into MAAS, or as the name of an existing image in MAAS.                                                                              |
+| `osName`          | The OS name that MAAS uses to identify the image. Examples include `ubuntu`, `rhel`, `rocky`, and `sles`.                                                                                                            |
+| `osVersion`       | The OS version. For non-Ubuntu operating systems, use the numeric version, such as `9.4` or `8`. For Ubuntu, use the Ubuntu release codename instead of the numeric version — `jammy` for 22.04 or `noble` for 24.04. |
 
 Palette derives the MAAS boot resource name as `<osName>/<image-name>` and the `base_image` as `<osName>/<osVersion>`.
 MAAS uses the OS prefix in the boot resource name to recognize the operating system.
@@ -61,6 +71,13 @@ MAAS uses the OS prefix in the boot resource name to recognize the operating sys
 For backward compatibility, if Palette does not find an image with the derived prefix in MAAS, it reuses an existing
 unprefixed image with the same name. If Palette cannot locate a matching image and no URL is provided for
 `osImageOverride`, cluster provisioning fails and the MAAS validation message is displayed in the cluster events.
+
+:::info
+
+When `osImageOverride` is an HTTP(S) URL for an Ubuntu BYOOS pack, MAAS places the imported image under the
+**Other/Custom** folder instead of the **Ubuntu** OS family folder.
+
+:::
 
 This capability is available on Palette and VerteX, including airgap deployments.
 

@@ -32,6 +32,8 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette" />
+
 ## Prerequisites
 
 <PartialsComponent category="self-hosted" name="helm-client-version" />

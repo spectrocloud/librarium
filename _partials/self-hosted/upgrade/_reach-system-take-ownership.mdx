@@ -1,0 +1,27 @@
+---
+partial_category: self-hosted
+partial_name: reach-system-take-ownership
+---
+
+**(pre-4.9.c to 4.9.c+, proxy environments only)** If you are upgrading {props.edition} from a version earlier than 4.9.c and your
+instance uses the `reach-system` chart for network proxy support, the first upgrade to `reach-system-4.9.3-v4` or later
+requires a one-time migration. Earlier chart versions created the `reach-controller-manager` Deployment through a Helm
+pre-install hook, which did not record Helm ownership metadata on the Deployment. As a result, a plain `helm upgrade`
+cannot update it and, with Helm 3.14 or later, fails with an `ownership-import` error.
+
+To adopt the existing Deployment into the release, add the `--take-ownership` flag to the standard `reach-system`
+upgrade command. The `--take-ownership` flag requires Helm 3.17 or later.
+
+```shell
+helm upgrade --values <values.yaml> \
+reach-system extras/reach-system/reach-system-*.tgz --install --take-ownership
+```
+
+After the upgrade completes, remove the leftover hook annotations from the adopted Deployment.
+
+```shell
+kubectl --namespace reach-system annotate deployment reach-controller-manager \
+  helm.sh/hook- helm.sh/hook-weight- --overwrite
+```
+
+Subsequent `helm upgrade` invocations of the `reach-system` chart do not require `--take-ownership`.
