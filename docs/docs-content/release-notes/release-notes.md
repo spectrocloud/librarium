@@ -468,6 +468,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+<!-- prettier-ignore-start -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4186 -->
+
+- The <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" /> pack now includes a
+  native load balancer that you can enable through the pack configuration, available in version `1.35.2` and later.Refer to <VersionedLink text="Native Load Balancer" url="/integrations/packs/?pack=kubernetes-ck8s&tab=custom" /> for configuration steps.
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4395 -->
 
 - Fixed an issue where the Traefik pack remained in `PackServiceNotReady` state on Kubernetes distributions that do not
