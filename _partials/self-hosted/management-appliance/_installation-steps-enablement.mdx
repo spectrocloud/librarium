@@ -3,7 +3,24 @@ partial_category: self-hosted
 partial_name: installation-steps-enablement
 ---
 
-1. Download the {props.iso} ISO from the [Artifact Studio](https://artifact-studio.spectrocloud.com/). Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for instructions on how to access and download the ISO.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in. Under **Install {props.iso}**, select the version to install and click **Show Artifacts**. Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for instructions on how to access and download artifacts.
+
+   The following table describes the artifacts available for the {props.app}.
+
+   | **Artifact**                          | **Description**                                                                                                    |
+   | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and {props.version} packs.         |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation.  |
+   | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                       |
+   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                    |
+
+   Download the **Appliance ISO with Content**, or download both the **Appliance ISO** and **Content bundle (including Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
+
+   :::info
+
+   Use the slim **Appliance ISO** with the **Content bundle (including Ubuntu)** when you have limited network capacity for mounting ISOs and greater network capacity to upload the content bundle after the initial install.
+
+   :::
 
 2. Load the {props.iso} ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://etcher.balena.io/).
 
@@ -148,6 +165,12 @@ partial_name: installation-steps-enablement
     | **Content** | Synced     |
     | **Health**  | Healthy    |
 
+    :::info
+
+    If you installed the {props.app} using the slim **Appliance ISO**, upload the **Content bundle (including Ubuntu)** to Local UI before proceeding. The **Content** column will not show **Synced** until the content bundle is uploaded and synchronized. Refer to <VersionedLink text="Upload Content Bundle with Local UI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-content-bundle-with-local-ui"/> or <VersionedLink text="Upload Content Bundle with Palette CLI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-bundle"/> for the upload steps.
+
+    :::
+
     Content synchronization will take at least five minutes to complete, depending on your network resources.
 
 33. On the left main menu, click **Cluster**.
@@ -191,6 +214,40 @@ partial_name: installation-steps-enablement
     | **Image Replacement Rules (Optional)**        | Set rules for replacing image references when using an external registry. For example, `all: oci-registry-ip:oci-registry-port/spectro-content`. Leave empty if using the internal Zot registry.                                                                                                                                  | String                | _No default_                              |
     | **Root Domain (Optional)**                    | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). If using an external registry, adjust this to the appropriate domain. | String                | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Mongo Replicas** | The number of MongoDB replicas to create for the cluster. The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the MongoDB database. _This value must match the **CSI Placement Count** value._ | Integer               | **`3`**                                   |
+
+    #### DRBD Kernel Module Loading
+
+    The {props.app} uses the Piraeus Container Storage Interface (CSI), which requires the Distributed Replicated Block Device (DRBD) kernel module on each node. The `drbd-module-loader` init container in the `linstor-satellite` pod loads this module using the mode configured by the `LB_HOW` environment variable in the `piraeus-operator` pack. Starting with {props.version} 4.9.14, the following modes are available.
+
+    | **Value**                        | **Description**                                                                                                | **Requirements**                                                                                    |
+    | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+    | **`shipped_modules`** _(Default)_ | Installs pre-built, pre-signed DRBD `.deb` packages from the container image.                                        | Compatible with Secure Boot.                                                                        |
+    | **`compile`**                    | Builds the DRBD kernel module from source on the target node at install time using Dynamic Kernel Module Support (DKMS). | The OS image must include kernel headers that match the running kernel. Not compatible with Secure Boot. |
+
+    :::warning
+
+    Do not set `LB_HOW` to `compile` on nodes with Secure Boot enabled. Modules compiled on the node are unsigned, and the kernel refuses to load them. This causes the `drbd-module-loader` init container to fail and the {props.app} installation to stall.
+
+    :::
+
+    Most deployments should leave `LB_HOW` at the default value of `shipped_modules`. To override the value, edit the `piraeus-operator` pack YAML in the cluster profile before you deploy the cluster. Locate the `LinstorSatelliteConfiguration` custom resource and update the `drbd-module-loader` init container.
+
+    ```yaml
+    apiVersion: piraeus.io/v1
+    kind: LinstorSatelliteConfiguration
+    metadata:
+      name: custom-loader-image
+    spec:
+      podTemplate:
+        spec:
+          initContainers:
+            - name: drbd-module-loader
+              env:
+                - name: LB_HOW
+                  value: "shipped_modules"
+    ```
+
+    For more information about DRBD module loading modes and the container image requirements for `compile` mode, refer to the [Piraeus CSI](/integrations/piraeus-csi) integration page.
 
 38. Click **Next** when you are done.
 
