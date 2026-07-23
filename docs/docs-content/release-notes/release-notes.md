@@ -204,6 +204,13 @@ tags: ["release-notes"]
   taint, which prevented EKS managed node-group upgrades from draining the old nodes and caused EKS to roll the upgrade
   back. These pods no longer tolerate the cordon taint, so managed node-group upgrades complete without rollback.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6924 -->
+
+- Fixed an issue where the `palette-webhook` pod on the Palette and Palette VerteX management cluster tolerated the
+  Kubernetes cordon taint, which prevented EKS managed node-group upgrades of the management cluster from draining the
+  old nodes and caused EKS to roll the upgrade back. The pod no longer tolerates the cordon taint, so managed node-group
+  upgrades of the management cluster complete without rollback.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6895 -->
 
 - Fixed an issue where Palette OS images could fail to boot on Dell PowerEdge servers configured with certain BOSS-N1
@@ -221,7 +228,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.c Palette release is 4.9.c.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.c Palette release is 4.9.25.
 
 :::
 
@@ -306,6 +313,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md).
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9096 -->
+
+- Fixed an issue on Palette Edge clusters where the internal `palette-lite-controller-manager` could write an incorrect
+  service reference to the `spec.conversion.webhook.clientConfig.service` field of the `cluster.spectrocloud.com` Custom
+  Resource Definitions (CRDs), pointing to a service that did not exist. This poisoned the Kubernetes API server watch
+  cache and blocked Stylus reconciliation of the `v1alpha1` API version, with errors such as
+  `service "webhook-service" not found`. The controller now always sets the correct `palette-webhook-service` reference
+  in the `palette-system` namespace.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9074 -->
 
@@ -451,6 +467,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 ### Packs
 
 #### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4395 -->
+
+- Fixed an issue where the Traefik pack remained in `PackServiceNotReady` state on Kubernetes distributions that do not
+  include a Service `LoadBalancer` controller, such as Canonical Kubernetes and bare-metal clusters without MetalLB or
+  `kube-vip` service mode. The Traefik Service defaults to `type: LoadBalancer`, and its `status.loadBalancer.ingress`
+  field was never populated on these distributions, which held the pack in a not-ready state even though Traefik pods
+  were running and traffic was flowing through NodePorts or virtual IPs. Traefik pack readiness on these distributions
+  now works as expected.
 
 #### OS
 
