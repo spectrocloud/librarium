@@ -25,11 +25,11 @@ VMO detects the network capabilities available on the cluster at runtime. The ca
 | **`macvlan`**    | `macvlan` CNI plugin          | Each VM receives its own MAC address on the host's physical network.                             |
 | **`ipvlan`**     | `ipvlan` CNI plugin           | VMs share the host's MAC address but receive unique IP addresses on the host's physical network. |
 | **SR-IOV**       | SR-IOV device plugin and CNI  | Hardware-accelerated networking through PCI passthrough of virtual functions.                    |
-| **Custom JSON**  | Any CNI plugin on the cluster | Supply a raw CNI plugin configuration when the built-in types don't fit your use case.           |
+| **Custom JSON**  | Any CNI plugin on the cluster | Supply a raw CNI plugin configuration when the built-in types do not fit your use case.          |
 
 :::info
 
-Available network types depend on the CNI plugins installed on the cluster. Types the cluster doesn't support appear
+Available network types depend on the CNI plugins installed on the cluster. Types the cluster does not support appear
 grayed out in the UI.
 
 :::
@@ -64,7 +64,7 @@ a namespace-scoped Kubernetes resource.
    | **Bridge Name**                     | The Linux bridge on the host. The bridge must already exist on the nodes.                                                                                |
    | **VLAN Mode**                       | **Access** for a single untagged VLAN. **Trunk** carries many tagged VLANs and creates one NAD per VLAN ID you enter.                                    |
    | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
    </TabItem>
 
@@ -74,7 +74,7 @@ a namespace-scoped Kubernetes resource.
    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
    | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
    </TabItem>
 
@@ -84,7 +84,7 @@ a namespace-scoped Kubernetes resource.
    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
    | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
    </TabItem>
 
@@ -93,7 +93,7 @@ a namespace-scoped Kubernetes resource.
    | **Field**                           | **Description**                                                                                                                                          |
    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "10.10.0.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
 
    :::info
 
@@ -199,22 +199,23 @@ passthrough.
    - AMD CPUs: `amd_iommu=on iommu=pt`
 
 4. If the number of Virtual Functions is configured through firmware (for example, Mellanox NICs), use the NIC's native
-   configuration tool to set the maximum. For example, on a ConnectX NIC to enable up to 128 Virtual Functions:
+   configuration tool to set the maximum. For example, on a ConnectX NIC, run the following command to enable up to 128
+   Virtual Functions.
 
    ```bash
-   mlxconfig -d <PCI slot id> set SRIOV_EN=1 NUM_OF_VFS=128
+   mlxconfig --dev <pci-slot-id> set SRIOV_EN=1 NUM_OF_VFS=128
    ```
 
 5. Add the SR-IOV Network Operator pack from the Community Repo to the cluster profile.
 
 6. Define a `SriovNetworkNodePolicy` manifest that configures:
 
-   - A node selector, so only SR-IOV capable nodes are processed.
+   - A node selector, to limit processing to SR-IOV capable nodes.
    - A NIC selector, to limit processing to the intended SR-IOV capable NIC type.
    - The number of Virtual Functions to create.
    - The Kubernetes resource names to allocate the Virtual Functions into so that NADs can request them.
 
-   For example:
+   The following example shows a policy manifest.
 
    ```yaml
    apiVersion: sriovnetwork.openshift.io/v1
@@ -237,7 +238,7 @@ passthrough.
    ```
 
    The resulting Kubernetes resource name combines the pack's `resourcePrefix` value with the policy's `resourceName`.
-   For example, with `resourcePrefix: spectro` in the pack config and the policy above, the resource name is
+   For example, with `resourcePrefix: spectro` in the pack config and the preceding policy, the resource name is
    `spectro/intel_sriov_netdevice`. For more configuration options, refer to the
    [SR-IOV Network Operator pack documentation](https://docs.spectrocloud.com/integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main).
 
