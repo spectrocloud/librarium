@@ -171,12 +171,12 @@ to one of the configured Multus networks in the **Network** step of VM creation.
 :::warning
 
 VMO does not automatically assign a persistent MAC address to new VMs, and the VM creation wizard does not expose a
-field to set one. Without a persistent MAC, a VM receives a new dynamic MAC address after each live migration, which
-can break DHCP for VMs that rely on static IP reservations.
+field to set one. Without a persistent MAC, a VM receives a new dynamic MAC address after each live migration, which can
+break DHCP for VMs that rely on static IP reservations.
 
 To assign a persistent MAC address, edit the VM manifest YAML directly and add a `macAddress` field to each interface
-entry under `spec.template.spec.domain.devices.interfaces`. The following example shows a bridge interface with a
-static MAC.
+entry under `spec.template.spec.domain.devices.interfaces`. The following example shows a bridge interface with a static
+MAC.
 
 ```yaml
 interfaces:
