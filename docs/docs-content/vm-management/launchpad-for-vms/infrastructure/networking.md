@@ -10,9 +10,11 @@ sidebar_position: 20
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "networking"]
 ---
 
-Virtual Machine Orchestrator (VMO) manages VM networking through Kubernetes Network Attachment Definitions. Every VM
-connects to the default pod network for basic cluster connectivity, and you can attach more network interface
-controllers (NICs) through network attachment definitions for advanced networking scenarios.
+Virtual Machine Orchestrator (VMO) manages VM networking through Kubernetes Network Attachment Definitions (NADs).
+Spectro Cloud recommends attaching VM network interface controllers (NICs) only to external VLANs through NADs. This
+pattern is the closest analog to a VMware vSphere port group on a vSwitch. Connecting a VM to both a VLAN and the
+default pod network introduces routing challenges that require custom configuration, so only use that pattern when
+necessary.
 
 ## Network Capabilities
 
@@ -36,8 +38,10 @@ grayed out in the UI.
 
 ## Network Attachment Definitions
 
-A Network Attachment Definition (NAD) defines how the appliance configures more network interfaces for VMs. Each NAD is
-a namespace-scoped Kubernetes resource.
+A NAD defines how the appliance configures network interfaces for VMs. NADs are namespace-scoped Kubernetes resources.
+As an exception, any namespace can use NADs created in the `default` namespace. Create NADs that represent global or
+standard networks in the `default` namespace so that you can manage them in one place. A NAD created in any other
+namespace is only visible from that specific namespace.
 
 ### Create a NAD
 
@@ -150,20 +154,38 @@ dialog that lists the VMs using the NAD.
 
 ## How VMs Use Networks
 
-Every VM connects to the default **pod network** automatically. The default pod network provides basic cluster
-connectivity through the Kubernetes CNI, typically Cilium.
+The first NIC of a new VM connects to the **pod network** by default. The pod network provides basic cluster
+connectivity using NAT through the Kubernetes CNI, typically Cilium. The pod network does not maintain network
+connections when a VM live migrates across hosts.
 
-Attach more NICs during VM creation in the **Network** step.
+To preserve network connectivity during live migration, change the VM NIC network type from **Pod Network (masquerade)**
+to one of the configured Multus networks in the **Network** step of VM creation.
 
-1. The default pod network appears first in the list.
+1. In the **Network** step, select the default NIC.
 
-2. Select **Add Network** to attach another NIC.
+2. Change the network **Type** from **Pod Network (masquerade)** to a NAD from the available networks in the VM's
+   namespace.
 
-3. Select a NAD from the available networks in the VM's namespace.
+3. For batch VM creation, use **Static IP fill-down** to auto-assign sequential IP addresses across VMs.
 
-4. _(Optional)_ Enter a static MAC address.
+:::warning
 
-5. For batch VM creation, use **Static IP fill-down** to auto-assign sequential IP addresses across VMs.
+VMO does not automatically assign a persistent MAC address to new VMs, and the VM creation wizard does not expose a
+field to set one. Without a persistent MAC, a VM receives a new dynamic MAC address after each live migration, which
+can break DHCP for VMs that rely on static IP reservations.
+
+To assign a persistent MAC address, edit the VM manifest YAML directly and add a `macAddress` field to each interface
+entry under `spec.template.spec.domain.devices.interfaces`. The following example shows a bridge interface with a
+static MAC.
+
+```yaml
+interfaces:
+  - name: default
+    macAddress: "de:ad:00:00:be:af"
+    bridge: {}
+```
+
+:::
 
 ### Network Configuration in Templates
 
@@ -244,7 +266,20 @@ passthrough.
 
    Apply the policy to the cluster.
 
-7. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. Refer to
+7. After you apply the policy, the SR-IOV Network Operator processes each node in sequence:
+
+   - Drains the node of all workloads.
+   - Creates the desired number of Virtual Functions on the selected NICs.
+   - Unbinds the selected NICs and their Virtual Functions from their vendor-specific driver.
+   - Binds the selected NICs and their Virtual Functions to the `vfio-pci` driver.
+   - Allocates the Virtual Functions to the custom Kubernetes resource. The resource then appears on the node as
+     allocatable capacity.
+   - Uncordons the node and allows workloads to resume.
+
+   The process can take several minutes per node, depending on how many Virtual Functions the operator handles. The
+   process repeats on every node reboot because the configuration is not persistent.
+
+8. Create an SR-IOV NAD that consumes the Kubernetes resource created by the policy. Refer to
    [Create a NAD](#create-a-nad) for the appliance-driven flow.
 
 </details>
@@ -263,8 +298,10 @@ These metrics come from the `vmo-node-agent` DaemonSet, which reads `/sys/class/
 
 :::warning
 
-Changing SR-IOV Virtual Function counts on a node requires careful coordination. Stop or migrate any VM using a Virtual
-Function from that interface before you make changes.
+To change the number of Virtual Functions on a node, update the `SriovNetworkNodePolicy` resource in the cluster
+directly. The VMO UI does not expose a control for this operation. When you apply the change, the SR-IOV Network
+Operator drains, reconfigures, and uncordons each node in sequence. The cluster must have multiple nodes with enough
+spare capacity to absorb the workloads that live migrate off the draining node.
 
 :::
 
