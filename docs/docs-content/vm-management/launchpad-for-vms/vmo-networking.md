@@ -13,23 +13,20 @@ be accessible on existing VLANs. Accessing existing VLANs requires bypassing the
 stack.
 
 Launchpad for VMs runs Cilium as the Kubernetes CNI for pod networking. To place VMs on existing VLANs, the appliance
-uses the Multus Bridge network type, which attaches VMs to a bridge interface (`br0`) on the host. This gives VMs
-direct access to the physical network and its VLANs, and requires specific host network setup on the Kubernetes worker
-nodes.
+uses the Multus Bridge network type, which attaches VMs to a bridge interface (`br0`) on the host. This gives VMs direct
+access to the physical network and its VLANs, and requires specific host network setup on the Kubernetes worker nodes.
 
 ## Supported Configurations
 
-Launchpad for VMs supports two host network configurations. Storage architecture drives which one fits your
-deployment.
+Launchpad for VMs supports two host network configurations. Storage architecture drives which one fits your deployment.
 
 - **Four NICs, two bonds.** Two NICs bonded for management and Kubernetes cluster traffic, and two NICs bonded for VM
-  data traffic. This is the recommended configuration for production deployments and works with hyper-converged
-  storage, external iSCSI storage, or Fiber Channel storage.
+  data traffic. This is the recommended configuration for production deployments and works with hyper-converged storage,
+  external iSCSI storage, or Fiber Channel storage.
 
 - **Two NICs, one bond, plus two Fiber Channel (FC) storage adapters.** Two NICs bonded to carry management, cluster,
-  and VM data traffic, with two Fiber Channel adapters dedicated to storage. This configuration is only viable when
-  the servers have FC storage adapters, because storage I/O offloads to those adapters and does not consume NIC
-  bandwidth.
+  and VM data traffic, with two Fiber Channel adapters dedicated to storage. This configuration is only viable when the
+  servers have FC storage adapters, because storage I/O offloads to those adapters and does not consume NIC bandwidth.
 
 Alternative host network configurations may work, but Spectro Cloud does not test or support them.
 
@@ -49,15 +46,15 @@ The storage architecture determines the minimum viable NIC count.
 ### The `br0` Bridge
 
 Every supported configuration includes a `br0` bridge interface. The Multus Bridge network type requires `br0` to
-associate VLAN-bridged VM networks with. Reserve `br0` for VM traffic. A dedicated bond for `br0` is best, though
-`br0` can share a bond with other traffic when NICs are limited.
+associate VLAN-bridged VM networks with. Reserve `br0` for VM traffic. A dedicated bond for `br0` is best, though `br0`
+can share a bond with other traffic when NICs are limited.
 
 Do not run the Kubernetes cluster itself on `br0` or on any `br0.xxx` VLAN subinterface. Instead, run the Kubernetes
 cluster on a VLAN sub-interface of the bond that carries `br0`. This separation works even with only two NICs in a
 single bond.
 
-Cilium usually does not run on the bridge interface. Only run Cilium on the bridge in the specific case where no
-other option is available.
+Cilium usually does not run on the bridge interface. Only run Cilium on the bridge in the specific case where no other
+option is available.
 
 Review the following sections before installing Launchpad for VMs so that you can prepare your host network and switch
 port configuration.
@@ -131,10 +128,10 @@ traffic for those VLANs before it reaches the bridge. If VMs require access to t
 The example defines VLAN 20 as a subinterface of `br0` instead of `bond0`. This configuration allows VMs to run on VLAN
 20 without conflict.
 
-To allow traffic on `br0.20`, edit the VMO layer's cluster profile variables in Local UI. You cannot modify the VMO
-pack YAML directly on the Launchpad for VMs appliance. All configuration flows through profile variables. Enable the
-variable that permits VLAN traffic on the host bridge, and set the corresponding VLAN list variable to include both
-the VLAN IDs available to VMs and the VLAN IDs used by the host.
+To allow traffic on `br0.20`, edit the VMO layer's cluster profile variables in Local UI. You cannot modify the VMO pack
+YAML directly on the Launchpad for VMs appliance. All configuration flows through profile variables. Enable the variable
+that permits VLAN traffic on the host bridge, and set the corresponding VLAN list variable to include both the VLAN IDs
+available to VMs and the VLAN IDs used by the host.
 
 <!-- TODO: confirm the exact profile variable labels with Kevin/Sumit during the next review. -->
 
@@ -214,13 +211,13 @@ the following example.
 <!-- vale on -->
 
 The `bond_data.20` subinterface provides outbound connectivity because it has the default gateway. The `bond_data.20`
-subinterface is the primary way to publish services from container workloads to end users. To reach specific data
-center networks over the `bond_mgmt.10` subinterface, configure static routes on the `172.16.0.0/22` subnet.
+subinterface is the primary way to publish services from container workloads to end users. To reach specific data center
+networks over the `bond_mgmt.10` subinterface, configure static routes on the `172.16.0.0/22` subnet.
 
 For publishing workloads from VMs, you have two options.
 
-1. Place the entire VM on a VLAN by attaching it to a Multus Bridge network that sits on top of the `br0` interface.
-   The VM itself (for static IPs) or the network (for DHCP) then assigns IP addresses. This is the most widely used and
+1. Place the entire VM on a VLAN by attaching it to a Multus Bridge network that sits on top of the `br0` interface. The
+   VM itself (for static IPs) or the network (for DHCP) then assigns IP addresses. This is the most widely used and
    recommended option.
 
 2. Run the VM on the pod network, as if it were a container, and publish individual ports of the VM as Kubernetes
