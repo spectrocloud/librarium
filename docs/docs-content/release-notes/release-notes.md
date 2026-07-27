@@ -50,9 +50,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PVM-741 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-839 -->
 
-- Fixed round-trip mutations in the Preferences editor. CPU topology values, grace period serialization, and Extensible Firmware Interface (EFI) and
-  Secure Boot display are now preserved correctly on save, and the deprecated `preferThreads` field is no longer written
-  back to the resource.
+- Fixed round-trip mutations in the Preferences editor. CPU topology values, grace period serialization, and Extensible
+  Firmware Interface (EFI) and Secure Boot display are now preserved correctly on save, and the deprecated
+  `preferThreads` field is no longer written back to the resource.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-633 -->
 
