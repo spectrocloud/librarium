@@ -11,6 +11,24 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 24, 2026 - Component Updates {#component-updates-2026-30}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3028 -->
+<!-- RELEASE DATE: July 24, 2026 -->
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
+
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports installing
+  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
+  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
+  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
+
 ## July 17, 2026 - Component Updates {#component-updates-2026-29}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3007 -->
