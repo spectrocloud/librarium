@@ -97,7 +97,7 @@ Use the following steps to pause agent upgrades on workload clusters and take a 
 
 ### Pause Agent Upgrade on the Source Cluster
 
-Pause the agent upgrade on all workload clusters before you take a backup. This prevents workload clusters from receiving an agent upgrade during the backup and cutover, before the destination cluster takes over.
+Pause the agent upgrade on all workload clusters before you take a backup. This helps ensure a controlled agent upgrade of workload clusters during the restore step if the destination cluster is at a newer version than the source cluster.
 
 1. Log in to the {props.version} tenant console for the source cluster.
 
@@ -121,17 +121,15 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
     tar --extract --verbose --file=Palette-Backup-Restore-v4.9.0.tar.gz
     ```
 
-4. Copy the source cluster `kubeconfig` file into this directory and name it `source.kubeconfig`.
+3. Copy the source cluster `kubeconfig` file into this directory and name it `source.kubeconfig`.
 
-5. Copy the destination cluster `kubeconfig` file into this directory and name it `dst.kubeconfig`.
-
-6. Run the backup script. The script creates the backup directory automatically. If you omit `--backup-dir`, the script generates a timestamped directory named `mongo_hubble_backup_<YYYYMMDD-HHMMSS>`.
+4. Run the backup script. The script creates the backup directory automatically. If you omit `--backup-dir`, the script generates a timestamped directory named `mongo_hubble_backup_<YYYYMMDD-HHMMSS>`.
 
     ```shell
     ./edge-backup.sh --kubeconfig source.kubeconfig --backup-dir source-backup
     ```
 
-7. Confirm that the backup directory contains the expected artifacts.
+5. Confirm that the backup directory contains the expected artifacts.
 
     ```shell
     tree --level 1 source-backup
@@ -149,9 +147,13 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
     └── mongo-tls
     ```
 
-## Synchronize the Zot Registry
+## Restore to the Destination Cluster
 
-Synchronize the internal Zot registry on the source cluster with the internal Zot registry on the destination cluster so that the destination has the packs and images required by the workload clusters.
+Use the following steps to synchronize the internal Zot registry with the source cluster and then restore the database backup to the destination cluster.
+
+### Synchronize the Zot Registry
+
+Synchronize the internal Zot registry on the destination cluster with the internal Zot registry on the source cluster so that the destination has the packs and images required by the workload clusters.
 
 :::info
 
@@ -188,17 +190,17 @@ If both clusters share a common external registry, you can skip this section.
 
 5. Log in to the destination cluster Zot registry and confirm that the packs are synchronized and that the image checksums match the source registry.
 
-## Restore to the Destination Cluster
+### Restore the Database Backup
 
-Use the following steps to restore the database backup to the destination cluster.
+1. Copy the destination cluster `kubeconfig` file into the working directory and name it `dst.kubeconfig`.
 
-1. On the jump host, set the `KUBECONFIG` environment variable to point to the destination cluster.
+2. On the jump host, set the `KUBECONFIG` environment variable to point to the destination cluster.
 
     ```shell
     export KUBECONFIG=dst.kubeconfig
     ```
 
-2. Retrieve the cluster namespace for the destination cluster.
+3. Retrieve the cluster namespace for the destination cluster.
 
     ```shell
     kubectl --kubeconfig dst.kubeconfig get ns | grep cluster-
@@ -206,13 +208,13 @@ Use the following steps to restore the database backup to the destination cluste
 
     The output contains a namespace in the format `cluster-<uid>`. Record the `<uid>` value for the next step.
 
-3. Run the restore script. Replace `<uid>` with the value from the previous step.
+4. Run the restore script. Replace `<uid>` with the value from the previous step.
 
     ```shell
     ./edge-restore.sh --uid <uid> --kubeconfig dst.kubeconfig --backup-dir source-backup
     ```
 
-4. Wait for the restore to complete.
+5. Wait for the restore to complete.
 
 ## Update DNS and Re-Register Workload Clusters
 
@@ -252,7 +254,7 @@ Enable agent upgrades in stages so that you can validate the restore against a s
 
 Depending on how you originally installed the source cluster, you may need to run further manual steps after the restore. Spectro Cloud is finalizing these workarounds as part of the release validation. Review the following list of scenarios that may apply to your environment, and contact Spectro Cloud support for the current steps.
 
-- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` value in the MongoDB `systemconfig` document must be updated to `self-hosted` on the destination cluster.
+- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` field in the `SystemInstallerConfig` document in the `hubbledb.systems` collection must be updated to `self-hosted` on the destination cluster. This document is immutable through the Palette API, so the update must be applied with a direct MongoDB write.
 
 - **Default pack registry conflict:** If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the default record on the destination cluster must be reconciled with the destination Zot registry.
 
