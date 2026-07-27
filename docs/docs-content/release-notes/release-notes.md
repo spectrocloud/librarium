@@ -33,8 +33,8 @@ tags: ["release-notes"]
 
 - The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now installs from a slim
   **Appliance ISO** paired with a separately downloaded **Content bundle**. As of Launchpad for VMs 4.9.15, the full
-  **Appliance ISO with Content** is no longer available. Refer to
-  [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+  **Appliance ISO with Content** is no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for
+  a description of each artifact.
 
 ### Improvements
 
