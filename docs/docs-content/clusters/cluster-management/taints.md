@@ -109,6 +109,9 @@ Taints can also be applied to node pools using the Spectro Cloud
 13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
     fill in the toleration values specified in your cluster profile. Click on **Next**.
 
+    If **Add New Taint** is unavailable, every other node pool in the cluster is already tainted. Palette requires at
+    least one node pool to remain untainted at all times. Remove a taint from another pool to re-enable the option.
+
     ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 
     :::info
