@@ -18,14 +18,54 @@ tags: ["release-notes"]
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
 
-### Improvements
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
+
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.15 is now
+  available.
+
+- The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
+  variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
+  variables that matter for its role.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
 
-- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports installing
-  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
-  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
-  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now installs from a slim
+  **Appliance ISO** paired with a separately downloaded **Content bundle**. As of Launchpad for VMs 4.9.15, the full
+  **Appliance ISO with Content** is no longer available. Refer to
+  [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
+
+- The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point of
+  failure in the appliance ingress path.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-751 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-755 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-741 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-839 -->
+
+- Fixed round-trip mutations in the Preferences editor. CPU topology values, grace period serialization, and EFI and
+  Secure Boot display are now preserved correctly on save, and the deprecated `preferThreads` field is no longer written
+  back to the resource.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-633 -->
+
+- Fixed an issue where VM cloning did not stop the source VM first, which could produce inconsistent clones.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-835 -->
+
+- Fixed namespace quota miscalculations that could cause VM deployment failures even when the namespace had enough
+  remaining quota.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-727 -->
+
+- Fixed an issue where clones of VMs with hotplug disks did not boot correctly.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
 
