@@ -60,8 +60,8 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::info
 
-   Use the slim **Appliance ISO** with the **Content bundle (including Ubuntu)** when you have limited network capacity
-   for mounting ISOs and greater network capacity to upload the content bundle after the initial install.
+   Starting with Launchpad for VMs 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the
+   slim **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
 
    :::
 
