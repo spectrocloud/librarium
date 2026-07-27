@@ -407,13 +407,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
   variables that matter for its role.
 
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
-
-- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports installing
-  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
-  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
-  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
