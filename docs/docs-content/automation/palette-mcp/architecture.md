@@ -29,7 +29,7 @@ The following list provides an overview of how to configure and use the Palette 
 
 1. Install an MCP client on your local machine or environment. Popular clients are
    [Claude Code](https://code.claude.com/docs/en/overview), [Cursor](https://cursor.com/get-started),
-   [Antigravity CLI](https://antigravity.google/), and [Codex](https://github.com/openai/codex).
+   [Antigravity](https://antigravity.google/), and [Codex](https://github.com/openai/codex).
 
 2. The Palette MCP server expects a handful of parameters in order to connect to Palette. Refer to
    [Server Configuration](#server-configuration) for more information.
@@ -118,4 +118,4 @@ When using the Palette MCP server, we recommend the following security best prac
 ## Next Steps
 
 Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-the [Antigravity CLI](./setup/mcp-setup-antigravity.md).
+[Antigravity](./setup/mcp-setup-antigravity.md).

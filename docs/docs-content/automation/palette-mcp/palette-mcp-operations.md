@@ -18,8 +18,8 @@ model that suits your needs.
 - Ensure the following software is installed locally on your workstation:
 
   - The Palette MCP server configured and set up. Refer to the applicable setup guide for
-    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
-    [Antigravity CLI](./setup/mcp-setup-antigravity.md).
+    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+    [Antigravity](./setup/mcp-setup-antigravity.md).
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation), if you use the container image.
@@ -220,8 +220,8 @@ The `delete_cluster` tool deletes a cluster. The `delete_cluster_profile` tool d
 require a typed-name confirmation before the delete is issued to Palette.
 
 1. Start the Palette MCP server with the `--allow-write` startup flag to enable write tools. Refer to the applicable
-   setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
-   [Antigravity CLI](./setup/mcp-setup-antigravity.md) for more information.
+   setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+   [Antigravity](./setup/mcp-setup-antigravity.md) for more information.
 
 2. Open your MCP client.
 

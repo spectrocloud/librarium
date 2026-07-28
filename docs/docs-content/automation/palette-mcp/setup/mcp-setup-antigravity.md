@@ -1,14 +1,14 @@
 ---
-sidebar_label: "Set Up MCP Server with Antigravity CLI"
-title: "Set Up MCP Server with Antigravity CLI"
-description: "Learn how to setup the Palette MCP server with the Antigravity CLI."
+sidebar_label: "Set Up MCP Server with Antigravity"
+title: "Set Up MCP Server with Antigravity"
+description: "Learn how to setup the Palette MCP server with Antigravity."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) with the
-[Antigravity CLI](https://antigravity.google/).
+This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) with
+[Antigravity](https://antigravity.google/).
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
     npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
     ```
 
-11. (Optional) We recommend adding an Agent Skill to enable the Antigravity CLI to use kubeconfig files retrieved with
+11. (Optional) We recommend adding an Agent Skill to enable Antigravity to use kubeconfig files retrieved with
     `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc `kubectl` workflows.
 
     Issue the following command to create the `ANTIGRAVITY.md` file on your machine if it does not exist.
@@ -82,7 +82,7 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
-You can now use the Palette MCP server with the Antigravity CLI.
+You can now use the Palette MCP server with Antigravity.
 
 ## Validation
 

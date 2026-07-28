@@ -44,5 +44,5 @@ into your workflows.
 - [Architecture](./architecture.md)
 - [Set Up MCP Server with Claude Code](./setup/mcp-setup-claude.md)
 - [Set Up MCP Server with Cursor](./setup/mcp-setup-cursor.md)
-- [Set Up MCP Server with Antigravity CLI](./setup/mcp-setup-antigravity.md).
+- [Set Up MCP Server with Antigravity](./setup/mcp-setup-antigravity.md).
 - [Palette MCP Server Operations](./palette-mcp-operations.md)
