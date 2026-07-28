@@ -9,8 +9,8 @@ tags: ["vmo", "vm launchpad", "access management", "rbac"]
 ---
 
 The **Access Mapping** page is a read-only view of every Kubernetes binding and VMO IAM mapping Launchpad for VMs
-manages on your behalf. Use it to answer questions such as _"who has access to namespace X?"_ or _"which Kubernetes
-ClusterRole is bound to the `vmo-editors` group?"_ without opening a `kubectl` shell.
+manages on your behalf. Use it to audit who has access to a given namespace and to trace which Kubernetes ClusterRole
+is bound to a specific user or group, without opening a `kubectl` shell.
 
 ## Prerequisites
 

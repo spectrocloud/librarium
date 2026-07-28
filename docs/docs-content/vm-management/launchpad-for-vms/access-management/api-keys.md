@@ -100,7 +100,7 @@ revoke the key and create a new one.
 :::
 
 Each API key inherits your effective VMO permissions live. There is no role picker on this form. If you hold the
-**Viewer** role, keys you mint can only read; if you hold **Platform Admin**, keys you mint can do anything.
+**Viewer** role, keys you create can only read; if you hold **Platform Admin**, keys you create can do anything.
 
 ### Token Format
 
@@ -151,7 +151,7 @@ or clear the **Enabled** checkbox on the [Users](./users.md) page, and revoke an
 ## Permission Staleness
 
 Launchpad for VMs refreshes an API key creator's identity record only when the creator signs in interactively or
-refreshes their UI session. API key traffic does not refresh it. This has two consequences worth understanding when a
+refreshes their UI session. API key traffic does not refresh it. This has two consequences when a
 highly privileged user issues API keys.
 
 - If the creator's identity provider group membership changes but the creator never signs in to Launchpad again, every
@@ -159,7 +159,7 @@ highly privileged user issues API keys.
   the creator's identity record to break this loop.
 
 - If the creator's VMO role or namespace scope changes on the [Users](./users.md) or [Groups](./groups.md) pages, their
-  API keys observe the new permissions after a short cache delay, typically within about 90 seconds.
+  API keys observe the new permissions after a short cache delay, within about 90 seconds.
 
 ## Cluster-Wide Administration
 
