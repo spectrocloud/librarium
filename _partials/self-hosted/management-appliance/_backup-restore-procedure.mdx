@@ -41,13 +41,15 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
 - Administrative access to the {props.version} system console for the source cluster.
 
-- The system address for the source cluster is configured with a Fully Qualified Domain Name (FQDN) instead of an IP address. Workload cluster edge hosts must also reference the FQDN as the `PaletteEndpoint` value in their userdata.
+- The system address for the source cluster is configured with a Fully Qualified Domain Name (FQDN) instead of an IP address.
 
   :::warning
 
   If your source cluster uses an IP address instead of an FQDN for the system address, a config map on each workload cluster must be updated manually to point to the destination cluster's IP address. Contact Spectro Cloud support for guidance.
 
   :::
+
+- Every Edge host used to launch a Connected Edge Native workload cluster from the source cluster references the {props.version} FQDN, and not an IP address, as the `PaletteEndpoint` value in its user data ISO. This is required so that the DNS cutover in [Update DNS and Re-Register Workload Clusters](#update-dns-and-re-register-workload-clusters) reaches every edge host.
 
 - On the jump host, install the following packages. Skopeo mirrors the internal Zot registry, and `jq` parses the registry catalog response.
 
@@ -208,11 +210,19 @@ If both clusters share a common external registry, you can skip this section.
 
     The output contains a namespace in the format `cluster-<uid>`. Record the `<uid>` value for the next step.
 
-4. Run the restore script. Replace `<uid>` with the value from the previous step.
+4. Run the restore script.
 
-    ```shell
-    ./edge-restore.sh --uid <uid> --kubeconfig dst.kubeconfig --backup-dir source-backup
-    ```
+    - For a destination cluster installed with the Management Appliance or the Palette CLI, replace `<uid>` with the value from the previous step and run the following command.
+
+      ```shell
+      ./edge-restore.sh --uid <uid> --kubeconfig dst.kubeconfig --backup-dir source-backup
+      ```
+
+    - For a destination cluster installed with the Helm chart, pass `--is-helm` and omit `--uid`. The script derives the namespace from the Helm release.
+
+      ```shell
+      ./edge-restore.sh --is-helm --kubeconfig dst.kubeconfig --backup-dir source-backup
+      ```
 
 5. Wait for the restore to complete.
 
@@ -230,7 +240,15 @@ After the restore, workload clusters may temporarily show as unhealthy because t
 
     :::
 
-3. Wait for workload clusters to reconnect and report a **Healthy** status.
+3. For each Connected Edge Native workload cluster, SSH into every edge host and reload the Stylus services so that they pick up the new destination cluster. The `daemon-reload` re-reads the unit files, and the two restarts drop any in-memory connection state that still points at the source cluster.
+
+    ```shell
+    systemctl daemon-reload
+    systemctl restart stylus-operator
+    systemctl restart stylus-agent
+    ```
+
+4. Wait for workload clusters to reconnect and report a **Healthy** status.
 
 ## Resume Agent Upgrade in Stages
 
@@ -260,10 +278,185 @@ Enable agent upgrades in stages so that you can validate the restore against a s
 
 ## Post-Restore Workarounds
 
-Depending on how you originally installed the source cluster, you may need to run further manual steps after the restore. Spectro Cloud is finalizing these workarounds as part of the release validation. Review the following list of scenarios that may apply to your environment, and contact Spectro Cloud support for the current steps.
+Depending on how you originally installed the source cluster, and which workload cluster types are re-pointed to the destination cluster, you may need to run further manual steps after the restore. Review the following scenarios and apply the workarounds that fit your environment.
 
-- **CLI-installed Enterprise Cluster source:** If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` field in the `SystemInstallerConfig` document in the `hubbledb.systems` collection must be updated to `self-hosted` on the destination cluster. This document is immutable through the Palette API, so the update must be applied with a direct MongoDB write.
+Several of the workarounds finish by clearing the cache in the Hubble pods on the destination cluster. Use the procedure in [Clear the Hubble Pod Cache](#clear-the-hubble-pod-cache) whenever it is referenced.
 
-- **Default pack registry conflict:** If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the default record on the destination cluster must be reconciled with the destination Zot registry.
+### Clear the Hubble Pod Cache
 
-- **Stale cache in Hubble pods:** If workload clusters continue to report `Resource Not Found` errors against a Cluster UID after the restore, the Hubble pods on the destination cluster may need to be restarted to clear the cache.
+The utility archive includes helper scripts that shut down and start up the Hubble system deployments for a cluster namespace. Running them in sequence forces the Hubble pods to reload their in-memory state.
+
+1. Shut down the Hubble system deployments. Replace `<uid>` with the cluster UID retrieved in [Restore the Database Backup](#restore-the-database-backup).
+
+    ```shell
+    ./k8s-shutdown-edge.sh --uid <uid> --kubeconfig dst.kubeconfig
+    ```
+
+2. Wait one to two minutes for the pods to fully terminate.
+
+3. Start the Hubble system deployments back up.
+
+    ```shell
+    ./k8s-startup-edge.sh --uid <uid> --kubeconfig dst.kubeconfig
+    ```
+
+4. Confirm the Hubble pods return to a `Running` status before continuing.
+
+    ```shell
+    kubectl --kubeconfig dst.kubeconfig get pods --namespace hubble-system
+    ```
+
+If workload clusters continue to report `Resource Not Found` errors against a Cluster UID after the restore, the Hubble pods on the destination cluster may still be caching stale data. Repeat this procedure to clear the cache.
+
+### CLI-Installed Enterprise Cluster Source
+
+If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` field in the `systemconfig` document in the `hubbledb.config` collection must be updated to `self-hosted` on the destination cluster. This document is immutable through the Palette API, so the update must be applied with a direct MongoDB write.
+
+Use the following signals to confirm this workaround applies to your destination cluster.
+
+- The destination cluster system console displays a **System Cluster** section, which is only present on CLI-installed Enterprise Cluster environments.
+
+- The response from `<VIP>/v1/auth/org` contains `"appEnv": "enterprise-cli"`.
+
+Apply the workaround with the following steps.
+
+1. On the jump host, port-forward the MongoDB service on the destination cluster.
+
+    ```shell
+    kubectl --kubeconfig dst.kubeconfig port-forward --namespace hubble-system svc/mongo 27017:27017
+    ```
+
+2. In a new terminal, retrieve the MongoDB root password.
+
+    ```shell
+    kubectl --kubeconfig dst.kubeconfig get secret spectromongosecret --namespace hubble-system \
+      --output jsonpath='{.data.mongoRootPassword}' | base64 --decode
+    ```
+
+3. Connect to MongoDB with `mongosh`. Replace `<password>` with the value from the previous step.
+
+    ```shell
+    mongosh "mongodb://root:<password>@127.0.0.1:27017/hubbledb?authSource=admin&directConnection=true"
+    ```
+
+4. Locate the `systemconfig` document and record its `_id` value.
+
+    ```javascript
+    db.config.find({ kind: "systemconfig" })
+    ```
+
+5. Update the document to set `installerMode` to `self-hosted`. Replace `<doc_id>` with the `_id` from the previous step.
+
+    ```javascript
+    db.config.updateOne(
+      { kind: "systemconfig", _id: "<doc_id>" },
+      { $set: { "spec.installerMode": "self-hosted", "status.updateTime": new Date() } }
+    )
+    ```
+
+6. Confirm the update.
+
+    ```javascript
+    db.config.find({ kind: "systemconfig" })
+    ```
+
+7. Exit `mongosh` and stop the port-forward.
+
+8. Clear the Hubble pod cache using the procedure in [Clear the Hubble Pod Cache](#clear-the-hubble-pod-cache).
+
+Validate the workaround with the following checks.
+
+- The **System Cluster** section is no longer shown in the destination system console. Compare it against a system console from a fresh appliance environment if needed.
+
+- The response from `<VIP>/v1/auth/org` no longer contains `"appEnv": "enterprise-cli"`.
+
+### Default Pack Registry Conflict
+
+If the source cluster used an external registry, such as Amazon Elastic Container Registry (ECR), as the default pack registry, the destination cluster inherits that record after the restore, replacing the internal Zot registry that the destination cluster was installed with. The Palette UI blocks editing the default record to point to a Zot registry because of the registry type conflict, so the reconciliation must be applied directly in MongoDB.
+
+1. In the destination cluster system console, go to **Tenant Settings** > **Registries** > **Pack Registries** and create a new pack registry that points at the destination Zot registry. Give it a distinct name, for example `dst-zot`.
+
+2. On the jump host, port-forward the MongoDB service and connect with `mongosh`, following steps 1 through 3 of the [CLI-Installed Enterprise Cluster Source](#cli-installed-enterprise-cluster-source) workaround.
+
+3. Confirm both the current default record and the new record. Replace `<default>` with the name of the current default record.
+
+    ```javascript
+    db.registries.findOne({ "metadata.name": "<default>" })
+    db.registries.findOne({ "metadata.name": "dst-zot" })
+    ```
+
+4. Mark the new `dst-zot` record as the default in metadata so that the `spec` copy in the next step passes UI validation.
+
+    ```javascript
+    db.registries.updateOne(
+      { "metadata.name": "dst-zot" },
+      {
+        $set: {
+          "metadata.annotations.isDefault": "true",
+          "spec.registryMeta.isDefault": true,
+          "spec.registryMeta.containsSpectroManifest": true
+        }
+      }
+    )
+    ```
+
+5. Copy the `dst-zot` spec and status into the existing default record. Replace `<default>` with the same name used in step 3.
+
+    ```javascript
+    const zot = db.registries.findOne({ "metadata.name": "dst-zot" });
+
+    db.registries.updateOne(
+      { "metadata.name": "<default>" },
+      {
+        $set: {
+          spec: zot.spec,
+          status: zot.status
+        }
+      }
+    );
+    ```
+
+6. Confirm both records reflect the intended Zot values.
+
+    ```javascript
+    db.registries.findOne({ "metadata.name": "<default>" })
+    db.registries.findOne({ "metadata.name": "dst-zot" })
+    ```
+
+7. In the {props.version} system console, confirm that the default pack registry details now show the destination Zot registry, then sync the registry. After the sync completes, review cluster profiles for any errors or warnings.
+
+8. Remove the temporary record.
+
+    ```javascript
+    db.registries.deleteOne({ "metadata.name": "dst-zot" })
+    ```
+
+9. Exit `mongosh` and stop the port-forward.
+
+10. Clear the Hubble pod cache using the procedure in [Clear the Hubble Pod Cache](#clear-the-hubble-pod-cache).
+
+### Private Cloud Gateway Workload Clusters
+
+Workload clusters deployed through a Private Cloud Gateway (PCG) may continue to reconcile against stale controller state on the destination cluster, even when the source cluster used an FQDN for the system address. Restart the affected controllers on the destination cluster so that they shed the stale caches.
+
+:::warning
+
+Confirm the exact deployment names and namespaces with Spectro Cloud engineering before applying this workaround in production. The list below is based on field observations and may need to be adjusted for your PCG topology and enabled infrastructure providers.
+
+:::
+
+Restart the following deployments on the destination cluster.
+
+- `cluster-management-agent`
+- `palette-controller-manager`
+- `jet`
+- `spectro-cloud-driver`
+- The CAPI controller and each active CAPI infrastructure provider, for example `capv-controller-manager` for VMware.
+
+For each deployment, run the following command. Replace `<name>` with the deployment name and `<ns>` with its namespace.
+
+```shell
+kubectl --kubeconfig dst.kubeconfig rollout restart deployment <name> --namespace <ns>
+```
+
+Wait for each rollout to report all replicas ready, then verify that PCG workload clusters return to a **Healthy** status.
