@@ -9,7 +9,9 @@ You can also use this procedure to back up a cluster and restore to the same clu
 
 :::info
 
-The utility archive referenced throughout this guide contains the scripts you need to complete the backup and restore. Download it from [https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz) to your Linux jump host before you begin.
+The utility archive referenced throughout this guide contains the scripts you need to complete the backup and restore. Download the scripts linked below to your Linux jump host before you begin.
+
+[Palette Backup and Restore Scripts](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz)
 
 :::
 
@@ -31,7 +33,7 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
 - A Linux jump host running Ubuntu 24.04 with network access to both the source and destination clusters. This host is used to run the backup and restore scripts, including the Zot registry sync, which requires Ubuntu 24.04.
 
-- The [`Palette-Backup-Restore-v4.9.0.tar.gz`](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz) utility archive downloaded to your Linux jump host.
+- The [Palette Backup and Restore Scripts](https://software.spectrocloud.com/scripts/backup-restore/Palette-Backup-Restore-v4.9.0.tar.gz) utility archive downloaded to your Linux jump host.
 
 - The source cluster and destination cluster meet the requirements listed in [Supported Scenarios](#supported-scenarios).
 
@@ -45,7 +47,7 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
   :::warning
 
-  If your source cluster uses an IP address instead of an FQDN for the system address, a config map on each workload cluster must be updated manually to point to the destination cluster's IP address. Contact Spectro Cloud support for guidance.
+  If your source cluster uses an IP address instead of an FQDN for the system address, a config map on each workload cluster must be updated manually to point to the destination cluster's IP address. Contact [Spectro Cloud Support](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6) for guidance.
 
   :::
 
@@ -120,7 +122,7 @@ Pause the agent upgrade on all workload clusters before you take a backup. This 
 2. Place the utility archive downloaded in the [Prerequisites](#prerequisites) into this directory, then extract it. The scripts extract into the current directory.
 
     ```shell
-    tar --extract --verbose --file=Palette-Backup-Restore-v4.9.0.tar.gz
+    tar --extract --verbose --file=Palette-Backup-Restore-*.tar.gz
     ```
 
 3. Copy the source cluster `kubeconfig` file into this directory and name it `source.kubeconfig`.
@@ -174,8 +176,8 @@ If both clusters share a common external registry, you can skip this section.
     ```shell
     SRC=192.0.2.10:30003
     DST=198.51.100.10:30003
-    SRC_CREDS="admin:password"
-    DST_CREDS="admin:password"
+    SRC_CREDS="<username>:<password>"
+    DST_CREDS="<username>:<password>"
     ```
 
 3. Save the file and close the editor.
@@ -311,6 +313,8 @@ If workload clusters continue to report `Resource Not Found` errors against a Cl
 ### CLI-Installed Enterprise Cluster Source
 
 If the source cluster was installed using the Palette CLI in Enterprise Cluster mode, the `installerMode` field in the `systemconfig` document in the `hubbledb.config` collection must be updated to `self-hosted` on the destination cluster. This document is immutable through the Palette API, so the update must be applied with a direct MongoDB write.
+
+Contact [Spectro Cloud Support](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6) for assistance before applying this workaround.
 
 Use the following signals to confirm this workaround applies to your destination cluster.
 
