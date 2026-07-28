@@ -151,8 +151,8 @@ or clear the **Enabled** checkbox on the [Users](./users.md) page, and revoke an
 ## Permission Staleness
 
 Launchpad for VMs refreshes an API key creator's identity record only when the creator signs in interactively or
-refreshes their UI session. API key traffic does not refresh it. This has two consequences when a
-highly privileged user issues API keys.
+refreshes their UI session. API key traffic does not refresh it. This has two consequences when a highly privileged user
+issues API keys.
 
 - If the creator's identity provider group membership changes but the creator never signs in to Launchpad again, every
   API key they own keeps authenticating with the group set from their last interactive login. Revoke the key or evict
