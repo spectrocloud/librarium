@@ -236,19 +236,27 @@ After the restore, workload clusters may temporarily show as unhealthy because t
 
 Enable agent upgrades in stages so that you can validate the restore against a small number of workload clusters before applying it broadly.
 
-1. Select one or two workload clusters to use as test clusters.
+1. Log in to the {props.version} tenant console for the destination cluster.
 
-2. In the cluster settings for each test cluster, enable **Agent Upgrade**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Wait for the agent upgrade to complete. On the cluster **Overview** tab, confirm the following.
+3. Select **Platform Settings**.
+
+4. Disable **Pause Agent Upgrade** so that per-cluster Agent Upgrade toggles take effect.
+
+5. Select one or two workload clusters to use as test clusters.
+
+6. In the cluster settings for each test cluster, enable **Agent Upgrade**.
+
+7. Wait for the agent upgrade to complete. On the cluster **Overview** tab, confirm the following.
 
     - The **Cluster Management Agent** version shows the new version.
 
-    - On the **Edge Hosts** tab, the Stylus Agent version on each edge host shows the new version.
+    - For Edge clusters, on the **Edge Hosts** tab, the Stylus Agent version on each edge host shows the new version. Controller mode clusters do not have this tab.
 
-4. Deploy a new test cluster from the destination cluster to further validate that the environment is stable.
+8. Deploy a new test cluster from the destination cluster to further validate that the environment is stable.
 
-5. Once the test clusters are healthy and running the new agent, enable **Agent Upgrade** for the remaining workload clusters.
+9. Once the test clusters are healthy and running the new agent, enable **Agent Upgrade** for the remaining workload clusters.
 
 ## Post-Restore Workarounds
 
