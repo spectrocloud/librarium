@@ -60,20 +60,31 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   windows, and returns HTTP `429` when a limit is reached. Refer to
   [Manage Client Quotas](./how-to-guides/manage-client-quotas.md) for more information.
 
-- Grants every client access to all local models, and gates external providers with a per-client, deny-by-default
-  allow-list. Refer to [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
+- Grants every client access to all local models, and can burst to external frontier models. Refer to
+  [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
 
 - Reports per-client usage and lets you revoke a token or delete a client at any time. Refer to
   [View Client Usage](./how-to-guides/view-client-usage.md) and
   [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
+- Prices each served model and estimates the savings from running inference locally.
 - Connects AI coding assistants directly to the appliance with ready-to-paste console snippets: Claude Code, Cursor,
-  OpenAI Codex, and OpenCode. In Cursor, only Ask mode routes to the appliance. Refer to
-  [Claude Code](./how-to-guides/use-claude-code.md), [Cursor](./how-to-guides/use-cursor.md),
-  [OpenAI Codex](./how-to-guides/use-codex.md), and [OpenCode](./how-to-guides/use-opencode.md) for more information.
+  OpenAI Codex, and OpenCode. Refer to [Claude Code](./how-to-guides/use-claude-code.md),
+  [Cursor](./how-to-guides/use-cursor.md), [OpenAI Codex](./how-to-guides/use-codex.md), and
+  [OpenCode](./how-to-guides/use-opencode.md) for more information.
 
 ### Known Issues
 
 - On some HPE servers, for example the DL380a Gen11, the GPUs do not enumerate on the PCI bus. Add `pci=realloc=off` to
   the GRUB kernel command line as a workaround. Refer to [Known Issues](./reference/known-issues.md) for the full
   procedure.
+
+- Cursor routes only some request types to the appliance. Only Ask mode (chat) reaches a custom endpoint. Agent, Edit,
+  and Tab remain locked to Cursor's own models. This is a limitation of the tool's bring-your-own-key support, not of
+  the appliance. Refer to [Use Cursor](./how-to-guides/use-cursor.md) for more information.
+
+- On Windows, model transfers require extra setup. The `palette content model download` and
+  `palette content model upload` commands stream artifacts over `rsync` and SSH, so they need `rsync` 3.2.3 or later and
+  OpenSSH 8.4 or later, which Windows does not ship by default. On Windows, only SSH key authentication works, because
+  `--ssh-password` is supported on Unix administrative workstations only. Use a Linux administrative workstation for
+  model transfers. Refer to [Model Upload Reference](./reference/model-upload-reference.md) for more information.
