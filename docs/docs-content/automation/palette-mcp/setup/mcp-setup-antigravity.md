@@ -16,7 +16,7 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Antigravity CLI (`agy`) installed and authenticated. Refer to
+  - The Antigravity CLI installed and authenticated. Refer to
     [Install the Antigravity CLI](https://antigravity.google/docs/cli/install) for more information.
 
 - A Palette account.
