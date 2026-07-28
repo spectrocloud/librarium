@@ -31,8 +31,8 @@ You can use other providers, such as host-path or Rook-Ceph, depending on the cl
 
 ## StorageClasses
 
-StorageClasses define how VMO provisions PVCs. From **Infrastructure** > **Storage**, you can perform the following
-StorageClass operations.
+StorageClasses define how VMO provisions PersistentVolumeClaims (PVCs). From **Infrastructure** > **Storage**, you can
+perform the following StorageClass operations.
 
 | Operation       | Description                                                                                                                      |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,7 +55,7 @@ StorageClass operations.
    | **Default Class**                                  | Select to mark this StorageClass as the cluster default. New PVCs that do not specify a StorageClass use the default. |
    | **Allow Expansion**                                | Select to let PVCs expand. The underlying provider must support volume expansion.                                     |
    | **Allow for VMs**                                  | Select to make this StorageClass available for VM workloads.                                                          |
-   | **Create StorageProfile for CSI-assisted cloning** | Select to enable offloaded (`csi-clone`) DataVolume clones on Block volumes for this StorageClass.                    |
+   | **Create StorageProfile for CSI-assisted cloning** | Select to enable offloaded DataVolume clones (`csi-clone`) on Block volumes for this StorageClass.                    |
    | **Reclaim Policy**                                 | The Kubernetes reclaim policy: `Delete` or `Retain`. Controls what happens to a PV when its PVC is released.          |
    | **Binding Mode**                                   | `Immediate` or `WaitForFirstConsumer`. Controls when volume binding and dynamic provisioning happen.                  |
 
@@ -77,9 +77,9 @@ StorageClass operations.
 Only one StorageClass can be the cluster default at a time. New PVCs that do not specify a StorageClass use the default.
 Set the default in one of two ways:
 
-- **During creation**: select the **Default Class** checkbox in the [Create Storage Class](#create-a-storageclass)
+- **During creation**: Select the **Default Class** checkbox in the [Create Storage Class](#create-a-storageclass)
   modal.
-- **On an existing StorageClass**: edit the StorageClass and select the **Default Class** checkbox.
+- **On an existing StorageClass**: Edit the StorageClass and select the **Default Class** checkbox.
 
 :::warning
 
@@ -169,7 +169,7 @@ Storage Pool creation is provider-specific. The following steps apply to Piraeus
    | **Field**        | **Description**                                                                                                                   |
    | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
    | **Pool Name**    | The storage pool name. Up to 128 characters.                                                                                      |
-   | **Pool Type**    | The backing storage type: **LVM Thin**, **LVM**, **ZFS**, **ZFS Thin**, **File**, or **File Thin**.                               |
+   | **Pool Type**    | The backing storage type: `LVM Thin`, `LVM`, `ZFS`, `ZFS Thin`, `File`, or `File Thin`.                                           |
    | **Host Devices** | Block devices from cluster nodes to include in the pool. If no devices appear, enter a device path (for example, `/dev/nvme0n1`). |
 
 4. Configure the fields for the selected **Pool Type**.
@@ -217,6 +217,11 @@ Storage Pool creation is provider-specific. The following steps apply to Piraeus
 
 5. Select **Create Storage Pool**.
 
+### Edit a Storage Pool
+
+The Storage Pools UI does not include an edit option. To change a pool's device selection or type, delete the pool and
+recreate it.
+
 ### Delete a Storage Pool
 
 1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Pools**.
@@ -228,9 +233,6 @@ Storage Pool creation is provider-specific. The following steps apply to Piraeus
 4. In the confirmation dialog, confirm the deletion.
 
 If the storage pool is not empty, VMO blocks the deletion. Remove any resources that reference the pool before retrying.
-
-The Storage Pools UI does not include an edit option. To change a pool's device selection or type, delete the pool and
-recreate it.
 
 ### OS Disk Exclusion
 
