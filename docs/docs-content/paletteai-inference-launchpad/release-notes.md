@@ -67,7 +67,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [View Client Usage](./how-to-guides/view-client-usage.md) and
   [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
-- Prices each served model and estimates the savings from running inference locally.
+- Computes estimated savings by comparing locally served token volume against a configurable frontier provider reference rate.
+
 - Connects AI coding assistants directly to the appliance with ready-to-paste console snippets: Claude Code, Cursor,
   OpenAI Codex, and OpenCode. Refer to [Claude Code](./how-to-guides/use-claude-code.md),
   [Cursor](./how-to-guides/use-cursor.md), [OpenAI Codex](./how-to-guides/use-codex.md), and
