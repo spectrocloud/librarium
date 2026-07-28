@@ -47,15 +47,24 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
    Artifacts**.
 
-3. The following table describes the installer options to download for installation.
+3. The following table describes the artifacts available for Launchpad for VMs.
 
-   | **Artifact**                   | **Description**                                 |
-   | ------------------------------ | ----------------------------------------------- |
-   | **Appliance ISO with Content** | Full ISO with embedded content bundle.          |
-   | **MOK Key for Secure Boot**    | MOK key to use for secure boot with MokManager. |
+   | **Artifact**                          | **Description**                                                                                                   |
+   | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and Launchpad for VMs packs.      |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation. |
+   | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                      |
+   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                   |
 
-4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
-   host.
+4. Download the **Appliance ISO with Content**, or download both the **Appliance ISO** and **Content bundle (including
+   Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
+
+   :::info
+
+   Starting with Launchpad for VMs 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the
+   slim **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
+
+   :::
 
 5. Boot your device using the Launchpad for VMs Appliance ISO. On the GRand Unified Bootloader (GRUB) menu, allow the
    Launchpad for VMs appliance to select the **Palette Edge Interactive Installer** boot option automatically
