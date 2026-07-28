@@ -171,7 +171,7 @@ table describes the two direct API paths available for callers holding the appro
 | `vmo:api-keys:read`  | List every API key in the cluster through `GET /api/v1/api-keys` (without the `?scope=self` query parameter). |
 | `vmo:api-keys:write` | Revoke any API key in the cluster through `DELETE /api/v1/api-keys?id=<keyID>`.                               |
 
-Only the built-in **Platform Admin** role holds these permissions by default. The Launchpad UI does not surface either
+Only the built-in **Platform Admin** role holds these permissions by default. The Launchpad UI does not present either
 endpoint, so the cluster-wide list and revoke paths are only used by direct API callers such as `kubectl` or CI tooling.
 
 ## Rate Limits
