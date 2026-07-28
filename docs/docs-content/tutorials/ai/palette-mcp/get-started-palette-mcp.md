@@ -27,7 +27,7 @@ and MCP client that suits your needs to follow along.
 The [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) can be used with any MCP client to investigate
 and modify Palette resources. Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
 [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
-[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) setup guides to learn how to configure it with
+[Antigravity CLI](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) setup guides to learn how to configure it with
 these popular MCP clients.
 
 :::
@@ -54,7 +54,7 @@ information and example use cases.
   - The Palette MCP server configured and set up. Refer to the applicable setup guide for
     [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
     [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
-    [Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md).
+    [Antigravity CLI](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md).
 
   - Start the Palette MCP server with the `--allow-write` flag to enable write tools, such as delete. Refer to
     [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) for more information.
@@ -121,7 +121,7 @@ Ensure that you follow all of the steps in the MCP server setup guides before pr
 configure an agent skill for cluster access through the MCP client to succeed. Refer to the
 [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
 [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
-[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) pages for more information.
+[Antigravity CLI](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) pages for more information.
 
 :::
 
