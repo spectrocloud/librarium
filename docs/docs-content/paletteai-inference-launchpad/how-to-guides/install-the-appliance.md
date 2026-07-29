@@ -104,7 +104,6 @@ When you change an existing password, the new password must differ from the old 
 1. On the Palette TUI landing page, no local account exists yet, so press **F2** (**Create login**) to create the
    initial administrator account, then set its username and password. This account signs in to Local UI and accesses the
    node over SSH.
-   {/* NEEDS REVIEW: the F2 "Create login" entry point is from PE-8675, which is not yet merged. QA (2026-07-27) confirmed F2 opens the account-creation screen but saw it labeled "Create User" rather than "Create login"; confirm the final label and flow under PE-8675 before publishing. */}
 2. Move between options with **TAB** or the arrow keys. Press **ENTER** to apply a change, and **ESC** to go back.
    - **Hostname.** Review the hostname and change it if required.
    - **Network adapter.** Each adapter uses Dynamic Host Configuration Protocol (DHCP) by default. For each adapter you
