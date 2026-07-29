@@ -1840,6 +1840,112 @@
         ]
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/data-volume-group": {
+      "put": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Configure the data volume group from selected disks",
+        "operationId": "V1EdgeHostDataVolumeGroupUpdate",
+        "parameters": [
+          {
+            "description": "Disks to assemble into the data volume group.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DataVolumeGroupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The provisioned data volume group.",
+            "schema": {
+              "$ref": "#/definitions/v1DataVolumeGroupList"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete the data volume group",
+        "operationId": "V1EdgeHostDataVolumeGroupDelete",
+        "parameters": [
+          {
+            "description": "Volume group to tear down.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DataVolumeGroupDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The data volume group after deletion.",
+            "schema": {
+              "$ref": "#/definitions/v1DataVolumeGroupList"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "No matching data volume group",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current/download-logs": {
       "get": {
         "description": "Downloads the logs of the edge host as a tar file.",
@@ -3408,6 +3514,41 @@
         ]
       }
     },
+    "/v1/edge-mgmt/ui/widgets": {
+      "get": {
+        "description": "Returns all widget manifest.json files discovered under the Local UI widgets directory.\nEach entry includes a UI-relative path and the parsed manifest content exactly as stored.\nAsset paths inside the manifest (e.g. script, css) are relative to the manifest file's directory.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List widget manifests",
+        "operationId": "v1ListUIWidgets",
+        "responses": {
+          "200": {
+            "description": "Widget manifests",
+            "schema": {
+              "$ref": "#/definitions/v1UiWidgets"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/v1/ping": {
       "get": {
         "description": "Ping Service",
@@ -3429,12 +3570,7 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
+        }
       }
     },
     "/v1/users/current": {
@@ -4878,11 +5014,122 @@
         }
       }
     },
+    "v1DataVolumeGroup": {
+      "description": "DataVolumeGroup is an LVM volume group assembled from operator-selected disks and the logical volumes carved from it.",
+      "type": "object",
+      "properties": {
+        "freeBytes": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "logicalVolumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1LogicalVolume"
+          }
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1VolumeGroupMember"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "Provisioning status of the volume group.",
+          "type": "string",
+          "enum": [
+            "Pending",
+            "Active",
+            "Failed"
+          ]
+        },
+        "statusMessage": {
+          "description": "Human-readable detail, populated when status is Failed.",
+          "type": "string"
+        }
+      }
+    },
+    "v1DataVolumeGroupDeleteRequest": {
+      "description": "DataVolumeGroupDeleteRequest tears down a data volume group by name.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "force": {
+          "description": "If true, proceed even if the logical volume is mounted or busy (lazy unmount).",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Name of the volume group to delete; must match the current data volume group.",
+          "type": "string"
+        },
+        "wipeDisks": {
+          "description": "If true, also remove the partitions created for the group (making the disks reusable) after removing LVM metadata.",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1DataVolumeGroupList": {
+      "description": "DataVolumeGroupList is the set of data volume groups on the edge host.",
+      "type": "object",
+      "properties": {
+        "dataVolumeGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1DataVolumeGroup"
+          }
+        }
+      }
+    },
+    "v1DataVolumeGroupRequest": {
+      "description": "DataVolumeGroupRequest is the desired storage layout - the volume groups to create-or-extend and the logical volumes to carve from them.",
+      "type": "object",
+      "required": [
+        "volumeGroups"
+      ],
+      "properties": {
+        "volumeGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1VolumeGroupRequest"
+          }
+        }
+      }
+    },
     "v1Disk": {
       "description": "Disk is the specification of the disks on the edge host.",
       "type": "object",
       "properties": {
         "controller": {
+          "type": "string"
+        },
+        "driveType": {
+          "description": "Drive category as reported by the host, e.g. \"SSD\" or \"HDD\".",
+          "type": "string"
+        },
+        "freeBytes": {
+          "description": "Unpartitioned (unclaimed) bytes on the disk not in any partition - the OS install disk's free tail, or the whole device for an empty data disk.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "inUse": {
+          "description": "True if the disk already carries partitions (a filesystem or volume).",
+          "type": "boolean"
+        },
+        "model": {
+          "description": "Disk model.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Kernel device name, e.g. \"nvme0n1\".",
           "type": "string"
         },
         "partitions": {
@@ -4891,12 +5138,46 @@
             "$ref": "#/definitions/v1Partition"
           }
         },
+        "path": {
+          "description": "Device path, e.g. \"/dev/nvme0n1\". For display only; not stable across reboots.",
+          "type": "string"
+        },
+        "reservedBytes": {
+          "description": "Bytes on the disk already claimed by partitions (the OS install region or existing partitions).",
+          "type": "integer",
+          "format": "int64"
+        },
+        "role": {
+          "description": "Disk role - \"os\" for the Kairos install disk, \"data\" otherwise.",
+          "type": "string"
+        },
+        "selectable": {
+          "description": "True if the operator may add this disk to the data volume group.",
+          "type": "boolean"
+        },
+        "serial": {
+          "description": "Disk serial number. Human-readable fallback identifier.",
+          "type": "string"
+        },
         "size": {
           "description": "Size in GB",
           "type": "integer",
           "format": "int32"
         },
+        "sizeBytes": {
+          "description": "Exact size of the disk in bytes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "stableId": {
+          "description": "Stable disk selector: the hardware WWN when available, otherwise the\nPCI by-path address (e.g. \"pci-0000:0c:00.0\"). Always populated and\nunique; use this to reference a disk in a data-volume-group request.\n",
+          "type": "string"
+        },
         "vendor": {
+          "type": "string"
+        },
+        "wwn": {
+          "description": "Stable hardware identifier for the disk (World Wide Name for SATA/SAS,\nEUI-64/NGUID for NVMe). Stable across reboots and controller reordering.\nMay be empty on virtualized disks; prefer stableId as the selector.\n",
           "type": "string"
         }
       }
@@ -5619,6 +5900,12 @@
         "cpu": {
           "$ref": "#/definitions/v1CPU"
         },
+        "dataVolumeGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1DataVolumeGroup"
+          }
+        },
         "disks": {
           "type": "array",
           "items": {
@@ -5825,6 +6112,61 @@
           "description": "The next offset for the pagination. Starting index for which next request will be placed.",
           "type": "integer",
           "x-omitempty": false
+        }
+      }
+    },
+    "v1LogicalVolume": {
+      "description": "LogicalVolume is the single data logical volume carved from the data volume group.",
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "fileSystemType": {
+          "type": "string"
+        },
+        "mountPoint": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v1LogicalVolumeRequest": {
+      "description": "LogicalVolumeRequest configures a logical volume carved from the volume group.",
+      "type": "object",
+      "properties": {
+        "extents": {
+          "description": "Proportional size passed to lvcreate -l, e.g. \"100%FREE\" (the default) to consume the group.",
+          "type": "string"
+        },
+        "fileSystemLabel": {
+          "description": "Filesystem label applied at mkfs time (mkfs -L, or -n for vfat). Empty leaves the filesystem unlabelled. Ignored for a raw (\"none\") volume.",
+          "type": "string"
+        },
+        "fileSystemType": {
+          "description": "Filesystem to create on the logical volume, e.g. \"ext4\" or \"xfs\". Omit it or use \"none\" for a raw block volume (created but not formatted or mounted). Defaults to \"none\".",
+          "type": "string"
+        },
+        "grow": {
+          "description": "When true, grow the logical volume and its filesystem into free space on every reconcile, so adding a disk to the group grows this volume. Additive only, never shrinks.",
+          "type": "boolean"
+        },
+        "mountPoint": {
+          "description": "Mount point for the logical volume. Defaults to \"/opt/data/spectrocloud\".",
+          "type": "string"
+        },
+        "name": {
+          "description": "Logical volume name. Defaults to \"data-lv\".",
+          "type": "string"
         }
       }
     },
@@ -6500,8 +6842,26 @@
           "type": "integer",
           "format": "int32"
         },
-        "mountPoint": {
+        "label": {
+          "description": "Filesystem label, e.g. \"COS_OEM\".",
           "type": "string"
+        },
+        "mountPoint": {
+          "description": "Primary mount point, empty if the partition is not mounted.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Kernel device name, e.g. \"vda1\".",
+          "type": "string"
+        },
+        "path": {
+          "description": "Device path, e.g. \"/dev/vda1\".",
+          "type": "string"
+        },
+        "sizeBytes": {
+          "description": "Exact partition size in bytes.",
+          "type": "integer",
+          "format": "int64"
         },
         "totalSpace": {
           "type": "integer",
@@ -6510,6 +6870,10 @@
         "usedSpace": {
           "type": "integer",
           "format": "int32"
+        },
+        "uuid": {
+          "description": "Filesystem UUID.",
+          "type": "string"
         }
       }
     },
@@ -6669,6 +7033,24 @@
     "v1Settings": {
       "type": "object",
       "properties": {
+        "applianceType": {
+          "description": "Present only when stylus.applianceType is set in userdata. Omitted for regular (non-appliance) EdgeHosts.\n",
+          "type": "string",
+          "enum": [
+            "palette",
+            "vertex",
+            "paletteai",
+            "vertexai",
+            "vm-launchpad",
+            "vm-launchpad-vertex",
+            "ai-launchpad",
+            "ai-launchpad-vertex"
+          ]
+        },
+        "clusterPreviouslyProvisioned": {
+          "description": "True if this appliance has been provisioned into a cluster in the past (regardless of whether that cluster still exists). Used by Local UI to distinguish Day-1 install from post-deletion redeploy — set once on first successful cluster provisioning and preserved across reset.\n",
+          "type": "boolean"
+        },
         "featureFlags": {
           "type": "object",
           "additionalProperties": {
@@ -6731,6 +7113,39 @@
       "properties": {
         "traceRouteStatus": {
           "type": "string"
+        }
+      }
+    },
+    "v1UiWidgetManifest": {
+      "type": "object",
+      "required": [
+        "path",
+        "content"
+      ],
+      "properties": {
+        "content": {
+          "description": "Parsed manifest.json content as stored. Schema may vary per widget.\n",
+          "type": "object",
+          "additionalProperties": true
+        },
+        "path": {
+          "description": "Path to the manifest file, relative to the Local UI root.\nExample: widgets/vmo/manifest.json\n",
+          "type": "string"
+        }
+      }
+    },
+    "v1UiWidgets": {
+      "type": "object",
+      "required": [
+        "manifests"
+      ],
+      "properties": {
+        "manifests": {
+          "description": "Widget manifest entries, one per manifest.json file found.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1UiWidgetManifest"
+          }
         }
       }
     },
@@ -7088,6 +7503,75 @@
           "type": "boolean"
         },
         "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1VolumeGroupDeviceSelection": {
+      "description": "VolumeGroupDeviceSelection is a per-disk participation choice.",
+      "type": "object",
+      "required": [
+        "stableId",
+        "participate"
+      ],
+      "properties": {
+        "participate": {
+          "description": "Whether this disk should be part of the data volume group.",
+          "type": "boolean"
+        },
+        "stableId": {
+          "description": "Stable disk identifier taken from v1Disk.stableId. This is the hardware\nWWN when available, otherwise the PCI by-path address; use it to\nreference a disk rather than the device path.\n",
+          "type": "string"
+        },
+        "wwn": {
+          "description": "Legacy hardware-WWN selector, retained for backward compatibility.\nMatched only when stableId is empty; prefer stableId.\n",
+          "type": "string"
+        }
+      }
+    },
+    "v1VolumeGroupMember": {
+      "description": "VolumeGroupMember is one physical volume (disk or partition) that belongs to the data volume group.",
+      "type": "object",
+      "properties": {
+        "contributedBytes": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "device": {
+          "description": "Physical volume device path, e.g. \"/dev/nvme0n1p5\".",
+          "type": "string"
+        },
+        "stableId": {
+          "description": "Stable id (v1Disk.stableId) of the disk this physical volume lives on - the hardware WWN when available, otherwise the PCI by-path address. Correlate a member back to the selected disk with this.",
+          "type": "string"
+        },
+        "wwn": {
+          "description": "Hardware WWN of the disk this physical volume lives on, if any.",
+          "type": "string"
+        }
+      }
+    },
+    "v1VolumeGroupRequest": {
+      "description": "VolumeGroupRequest is one volume group to assemble from selected disks, with the logical volumes to carve from it.",
+      "type": "object",
+      "required": [
+        "devices"
+      ],
+      "properties": {
+        "devices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1VolumeGroupDeviceSelection"
+          }
+        },
+        "logicalVolumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1LogicalVolumeRequest"
+          }
+        },
+        "name": {
+          "description": "Volume group name. Defaults to \"data\".",
           "type": "string"
         }
       }
