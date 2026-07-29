@@ -1,19 +1,19 @@
 ---
 sidebar_label: "Manage Packages"
 title: "Manage Packages"
-description: "Learn how to manage packages in airgap Launchpad for VMs environments."
+description: "Learn how to manage packages in airgap VM Launchpad environments."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 9
 tags: ["vmo", "vm launchpad", "packages"]
 ---
 
-Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and serve them to
+VM Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and serve them to
 VMs via a built-in APT/YUM-compatible repository.
 
 ## Overview
 
-In airgap clusters, VMs cannot reach external package repositories. Launchpad provides the following capabilities.
+In airgap clusters, VMs cannot reach external package repositories. VM Launchpad provides the following capabilities.
 
 | **Capability**                    | **Description**                                                                                         |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -26,7 +26,7 @@ In airgap clusters, VMs cannot reach external package repositories. Launchpad pr
 
 ### Workflow
 
-1. **Upload packages**. On a connected machine, download DEB/RPM/MSI/ISO files. Upload them to Launchpad from the
+1. **Upload packages**. On a connected machine, download DEB/RPM/MSI/ISO files. Upload them to VM Launchpad from the
    Packages page or API.
 2. **Rebuild metadata**. Trigger a repository metadata rebuild so APT/YUM clients detect the new packages.
 3. **Configure VMs**. Use cloud-init to add the VMO repository as a source and install packages, or enable **Install
@@ -60,7 +60,7 @@ Each package is listed with the following columns.
 
 | **Column**       | **Description**                                                                                                                                                                                                   |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**         | The package name and target, such as `libnuma1 (Ubuntu 24.04 Noble / generic, amd64)`. A **Built-in** badge marks packages that Launchpad seeds automatically, such as the QEMU guest agent and its dependencies. |
+| **Name**         | The package name and target, such as `libnuma1 (Ubuntu 24.04 Noble / generic, amd64)`. A **Built-in** badge marks packages that VM Launchpad seeds automatically, such as the QEMU guest agent and its dependencies. |
 | **Type**         | The package format, such as DEB or RPM, including codename-specific variants such as DEB (jammy).                                                                                                                 |
 | **Architecture** | The target architecture, such as amd64 or arm64.                                                                                                                                                                  |
 | **Version**      | The package version.                                                                                                                                                                                              |
@@ -85,7 +85,7 @@ Each package is listed with the following columns.
    | **Description**  | An optional description for the package.                                                                                                                                 |
    | **File**         | Select **Choose File** and select the package file (DEB, RPM, MSI, or ISO).                                                                                              |
 
-4. Select **Upload**. Launchpad stores the package and computes its SHA-256 checksum.
+4. Select **Upload**. VM Launchpad stores the package and computes its SHA-256 checksum.
 
 :::info
 
@@ -110,7 +110,7 @@ The QEMU guest agent enables:
 
 ### Built-in Package
 
-Launchpad ships with a built-in QEMU guest agent package for Debian/Ubuntu (amd64 and arm64). It is embedded in the
+VM Launchpad ships with a built-in QEMU guest agent package for Debian/Ubuntu (amd64 and arm64). It is embedded in the
 container image at `/embedded-packages/` and does not require upload.
 
 ### Auto-Injection via Cloud-Init
@@ -122,7 +122,7 @@ section), the generated cloud-init user-data includes:
 - Commands to install the guest agent, such as `apt-get install --yes qemu-guest-agent` for Debian/Ubuntu.
 
 The package server URL uses the in-cluster service name, such as
-`http://vmo-manager.vm-dashboard.svc.cluster.local:8080/serve/repo/`. VMs must be able to reach the Launchpad service
+`http://vmo-manager.vm-dashboard.svc.cluster.local:8080/serve/repo/`. VMs must be able to reach the VM Launchpad service
 from within the cluster.
 
 :::tip
@@ -136,7 +136,7 @@ if you manage the guest agent separately.
 
 ### Pure-Go APT/YUM Metadata
 
-Launchpad generates APT and YUM repository metadata in pure Go. No external tools, such as `dpkg-scanpackages` or
+VM Launchpad generates APT and YUM repository metadata in pure Go. No external tools, such as `dpkg-scanpackages` or
 `createrepo`, are required. This keeps the container image small and avoids licensing concerns.
 
 ### Metadata Rebuild

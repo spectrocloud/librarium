@@ -38,10 +38,10 @@ VMO is designed for organizations that need to manage VM workloads on Kubernetes
 
 ## Deployment Approaches
 
-VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm-launchpad-appliance-recommended)
+VMO is available through two deployment approaches: [VM Launchpad](#vm-launchpad-recommended)
 (recommended) and [VMO Pack](#vmo-pack).
 
-| **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                           |
+| **Capability**                         | **VM Launchpad**           | **VMO Pack**                                                                           |
 | -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
 | **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters |
 | **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                 |
@@ -54,9 +54,9 @@ VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm
 | **Cluster lifecycle management**       | Self-managed (Local UI)              | Palette-managed or self-managed (Local UI)                                             |
 | **Imported cluster support**           | No                                   | Yes                                                                                    |
 
-### VM Launchpad Appliance (Recommended)
+### VM Launchpad (Recommended)
 
-The [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) is the recommended way to deploy VMO. It provides
+The [VM Launchpad](./vm-launchpad/vm-launchpad.md) is the recommended way to deploy VMO. It provides
 a standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your
 devices together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
 
@@ -65,8 +65,8 @@ access management, golden image workflows, airgapped package management, snapsho
 dashboards. This self-contained approach is well suited for distributed sites, Edge locations, airgapped environments,
 and regulated environments.
 
-If you are new to VMO, start with the VM Launchpad Appliance. Refer to
-[Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) to get started.
+If you are new to VMO, start with the VM Launchpad. Refer to
+[Install VM Launchpad](./vm-launchpad/install.md) to get started.
 
 ### VMO Pack
 
@@ -78,7 +78,7 @@ to a curated [cluster profile](./vmo-pack/create-vmo-profile.md). VM management 
 
 <!-- prettier-ignore-end -->
 
-VMO Pack remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because it
+VMO Pack remains fully supported. However, we recommend using the VM Launchpad for new deployments because it
 provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities that
 are not available in the pack approach.
 
@@ -90,17 +90,17 @@ existing VMs from VMware vSphere to your VMO cluster.
 
 <Tabs>
 
-<TabItem label="VM Launchpad Appliance" value="appliance">
+<TabItem label="VM Launchpad" value="appliance">
 
-1. Review the [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) overview to learn about the appliance
+1. Review the [VM Launchpad](./vm-launchpad/vm-launchpad.md) overview to learn about the appliance
    architecture and capabilities.
 
-2. Follow the [Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) guide to install the appliance on your
+2. Follow the [Install VM Launchpad](./vm-launchpad/install.md) guide to install the appliance on your
    devices and create your cluster.
 
-3. Use the [Create Your First VM](./launchpad-for-vms/quick-start.md) guide to deploy your first VM.
+3. Use the [Create Your First VM](./vm-launchpad/quick-start.md) guide to deploy your first VM.
 
-Refer to the [VMs section](./launchpad-for-vms/virtual-machines/virtual-machines.md) to learn how to create and manage
+Refer to the [VMs section](./vm-launchpad/virtual-machines/virtual-machines.md) to learn how to create and manage
 golden images, templates, and snapshots.
 
 </TabItem>

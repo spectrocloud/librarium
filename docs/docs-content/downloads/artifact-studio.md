@@ -30,7 +30,7 @@ Following are the main use cases:
 - Install Palette VerteX (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
 - Install PaletteAI (content bundle, ISO, or MOK key for Secure Boot).
 - Install PaletteAI VerteX (content bundle, ISO, or MOK key for Secure Boot).
-- Install Launchpad for VMs (content bundle, ISO, or MOK key for Secure Boot).
+- Install VM Launchpad (content bundle, ISO, or MOK key for Secure Boot).
 - Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
 - Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and

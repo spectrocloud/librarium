@@ -577,7 +577,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    :::warning
 
    VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
-   [Launchpad for VMs appliance](../launchpad-for-vms/launchpad-for-vms.md), require explicit storage map settings for
+   [VM Launchpad](../vm-launchpad/vm-launchpad.md), require explicit storage map settings for
    migrated VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
 
    ```yaml {4-5}
@@ -600,7 +600,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    `ReadWriteMany` (`RWX`), which is only available in `Block` mode on this storage.
 
    If migrations fail during guest conversion with an `nbdkit` block-size error, refer to
-   [Troubleshooting Launchpad for VMs](../launchpad-for-vms/troubleshooting.md#scenario---vm-migration-fails-during-guest-conversion-on-block-based-storage).
+   [Troubleshooting VM Launchpad](../vm-launchpad/troubleshooting.md#scenario---vm-migration-fails-during-guest-conversion-on-block-based-storage).
 
    :::
 
