@@ -33,10 +33,6 @@ let redirects = [
     to: `/vm-management/vm-launchpad/`,
   },
   {
-    from: `/vm-management/launchpad-for-vms/launchpad-for-vms/`,
-    to: `/vm-management/vm-launchpad/vm-launchpad/`,
-  },
-  {
     from: `/vm-management/launchpad-for-vms/install-vmla-iso/`,
     to: `/vm-management/vm-launchpad/install/`,
   },
@@ -63,10 +59,6 @@ let redirects = [
   {
     from: `/vm-management/launchpad-for-vms/virtual-machines/`,
     to: `/vm-management/vm-launchpad/virtual-machines/`,
-  },
-  {
-    from: `/vm-management/launchpad-for-vms/virtual-machines/virtual-machines/`,
-    to: `/vm-management/vm-launchpad/virtual-machines/virtual-machines/`,
   },
   {
     from: `/vm-management/launchpad-for-vms/virtual-machines/creating/`,
