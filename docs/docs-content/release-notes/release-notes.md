@@ -73,10 +73,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3037 -->
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a
-  slim **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with
-  Content** is no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of
-  each artifact.
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a slim
+  **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with Content** is
+  no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
 #### Improvements
 
