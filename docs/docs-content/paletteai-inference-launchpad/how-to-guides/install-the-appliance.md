@@ -161,8 +161,8 @@ creation, the group becomes read-only. Confirm the disk selection before you con
 :::
 
 1. In Local UI, open the **Edgehost** tab.
-2. Under **Hardware**, select the disks link. This link is labeled with the number of disks on the host, for example **5
-   disks**, rather than the word **Disks**. A side pane opens listing every disk on the host.
+2. Under **Hardware**, select the disks link. This link is labeled with the number of disks on the host (for example,
+   **5 disks**) rather than the word **Disks**. A side pane opens listing every disk on the host.
 3. Under **Data volume group**, select **Create data volume group** to open the wizard.
 4. Review the disk selection. By default, the wizard selects every data disk on the host and automatically excludes the
    operating system disk, so you cannot add it to the volume group by mistake. Deselect any data disk you want to keep
