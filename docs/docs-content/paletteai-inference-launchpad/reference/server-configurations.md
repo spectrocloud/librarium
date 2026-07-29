@@ -25,14 +25,13 @@ specifications in [Suggested Hardware](./hardware-requirements.md).
 
 <!-- vale Vale.Terms = NO -->
 
-| **Server vendor**        | **Server model**                                   | **GPU vendor** | **GPU**                                           | **CPU**                                            |
-| ------------------------ | -------------------------------------------------- | -------------- | ------------------------------------------------- | -------------------------------------------------- |
-| Supermicro               | SYS-421GE-TNHR-LC1 (liquid-cooled)                 | NVIDIA         | 8x H100 SXM                                       | Intel Xeon Platinum 8570                           |
-| Supermicro               | Contact your Supermicro representative for details | AMD            | 8x Instinct MI350X                                | Contact your Supermicro representative for details |
-| HPE                      | ProLiant Compute DL380a Gen12                      | NVIDIA         | 8x L40S                                           | Intel Xeon 6710E                                   |
-| Dell                     | PowerEdge XE9680                                   | NVIDIA         | 8x H100 80 GB SXM5                                | 2x Intel Xeon Platinum 8570                        |
-| Dell                     | PowerEdge XE7740                                   | NVIDIA         | 8x RTX PRO 6000 Blackwell Server Edition 96 GB/ea | 2x Intel Xeon 6                                    |
-| Vultr (bare metal cloud) | vbm-256c-3072gb-8-mi325x-gpu                       | AMD            | 8x Instinct MI325X 256 GB/ea                      | Contact your Vultr representative for details      |
+| **Server vendor**        | **Server model**                                   | **GPU vendor** | **GPU**                      | **CPU**                                            |
+| ------------------------ | -------------------------------------------------- | -------------- | ---------------------------- | -------------------------------------------------- |
+| Dell                     | PowerEdge XE9680                                   | NVIDIA         | 8x H200 141 GB SXM5          | 2x Intel Xeon Platinum 8570                        |
+| Supermicro               | SYS-A21GE-NBRT                                     | NVIDIA         | 8x B200 180 GB SXM           | 2x Intel Xeon Platinum 8570                        |
+| Supermicro               | Contact your Supermicro representative for details | NVIDIA         | 8x B300 288 GB SXM           | Contact your Supermicro representative for details |
+| Supermicro               | Contact your Supermicro representative for details | AMD            | 8x Instinct MI350X 288 GB/ea | Contact your Supermicro representative for details |
+| Vultr (bare metal cloud) | vbm-256c-3072gb-8-mi325x-gpu                       | AMD            | 8x Instinct MI325X 256 GB/ea | Contact your Vultr representative for details      |
 
 <!-- vale Vale.Terms = YES -->
 
