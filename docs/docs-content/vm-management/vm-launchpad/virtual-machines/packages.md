@@ -8,8 +8,8 @@ sidebar_position: 9
 tags: ["vmo", "vm launchpad", "packages"]
 ---
 
-VM Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and serve them to
-VMs via a built-in APT/YUM-compatible repository.
+VM Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and serve them
+to VMs via a built-in APT/YUM-compatible repository.
 
 ## Overview
 
@@ -58,15 +58,15 @@ usage and the time the repository was last rebuilt, and provides the following c
 
 Each package is listed with the following columns.
 
-| **Column**       | **Description**                                                                                                                                                                                                   |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Column**       | **Description**                                                                                                                                                                                                      |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Name**         | The package name and target, such as `libnuma1 (Ubuntu 24.04 Noble / generic, amd64)`. A **Built-in** badge marks packages that VM Launchpad seeds automatically, such as the QEMU guest agent and its dependencies. |
-| **Type**         | The package format, such as DEB or RPM, including codename-specific variants such as DEB (jammy).                                                                                                                 |
-| **Architecture** | The target architecture, such as amd64 or arm64.                                                                                                                                                                  |
-| **Version**      | The package version.                                                                                                                                                                                              |
-| **File**         | The package filename.                                                                                                                                                                                             |
-| **Size**         | The package file size.                                                                                                                                                                                            |
-| **Uploaded**     | The date and time the package was uploaded.                                                                                                                                                                       |
+| **Type**         | The package format, such as DEB or RPM, including codename-specific variants such as DEB (jammy).                                                                                                                    |
+| **Architecture** | The target architecture, such as amd64 or arm64.                                                                                                                                                                     |
+| **Version**      | The package version.                                                                                                                                                                                                 |
+| **File**         | The package filename.                                                                                                                                                                                                |
+| **Size**         | The package file size.                                                                                                                                                                                               |
+| **Uploaded**     | The date and time the package was uploaded.                                                                                                                                                                          |
 
 ## Upload a Package
 

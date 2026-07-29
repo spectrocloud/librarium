@@ -304,8 +304,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Edge hosts can now select a Linux bridge as the management interface in
   [Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md#configure-the-management-interface),
   in addition to physical NICs, bonds, and VLAN child interfaces. You can select a bridge whether or not it has an IP
-  address. This supports [VM Launchpad](../vm-management/vm-launchpad/install.md) appliance topologies,
-  where management traffic terminates on the bridge itself.
+  address. This supports [VM Launchpad](../vm-management/vm-launchpad/install.md) appliance topologies, where management
+  traffic terminates on the bridge itself.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8975 -->
 
@@ -1164,8 +1164,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
-- [Launchpad for VMs Appliance](../vm-management/vm-launchpad/vm-launchpad.md) version 4.9.8 is now available.
-  If upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain the pre-upgrade script, contact
+- [Launchpad for VMs Appliance](../vm-management/vm-launchpad/vm-launchpad.md) version 4.9.8 is now available. If
+  upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain the pre-upgrade script, contact
   your customer support representative.
 
 - The Launchpad for VMs Appliance now supports live updates to running VMs. You can hot-plug memory and hot-update CPU

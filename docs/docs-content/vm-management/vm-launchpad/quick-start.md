@@ -8,13 +8,12 @@ tags: ["vmo", "vm launchpad"]
 ---
 
 This guide walks you through the process of creating your first virtual machine using Virtual Machine Orchestrator (VMO)
-installed on your cluster created with PaletteAI VM Launchpad. For learning purposes, this guide shows the
-steps to create a general-purpose VM (1 vCPU, 4 Gi memory) using an Ubuntu 24.04 ISO.
+installed on your cluster created with PaletteAI VM Launchpad. For learning purposes, this guide shows the steps to
+create a general-purpose VM (1 vCPU, 4 Gi memory) using an Ubuntu 24.04 ISO.
 
 ## Prerequisites
 
-- A cluster created using the VM Launchpad. Refer to [Install VM Launchpad](./install.md) for
-  guidance.
+- A cluster created using the VM Launchpad. Refer to [Install VM Launchpad](./install.md) for guidance.
 
 - Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
   admin credentials configured during cluster creation.
@@ -46,14 +45,14 @@ which manages the storage and lifecycle of a VM disk image.
 
 7. Complete the **Upload ISO/Disk Image** dialog with the following information.
 
-   | **Parameter**       | **Description**                                                                                                                                                                                                               |
-   | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **DataVolume Name** | Enter a unique name for the OS ISO installer. For this guide, use a descriptive name such as `ubuntu-2404-iso`.                                                                                                               |
-   | **Namespace**       | Select the namespace to store your image in. The `vmo-golden-images` namespace is created by default during cluster deployment and is the recommended location for ISO installers and golden images.                          |
+   | **Parameter**       | **Description**                                                                                                                                                                                                        |
+   | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **DataVolume Name** | Enter a unique name for the OS ISO installer. For this guide, use a descriptive name such as `ubuntu-2404-iso`.                                                                                                        |
+   | **Namespace**       | Select the namespace to store your image in. The `vmo-golden-images` namespace is created by default during cluster deployment and is the recommended location for ISO installers and golden images.                   |
    | **Storage Class**   | Select a storage class from the drop-down menu. The VM Launchpad includes Piraeus/LINSTOR as the default storage backend, which creates storage classes during cluster deployment. Select the available storage class. |
-   | **Volume Size**     | Set the disk capacity for the DataVolume that stores the uploaded ISO. The size must be large enough to hold the ISO file. Specify the value in GiB or TiB. For an Ubuntu 24.04 desktop ISO, 8 GiB is sufficient.             |
-   | **Image Type**      | Select **ISO Installer**.                                                                                                                                                                                                     |
-   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2 format. For this guide, we used a `ubuntu-24.04.4-desktop-amd64.iso` file.                      |
+   | **Volume Size**     | Set the disk capacity for the DataVolume that stores the uploaded ISO. The size must be large enough to hold the ISO file. Specify the value in GiB or TiB. For an Ubuntu 24.04 desktop ISO, 8 GiB is sufficient.      |
+   | **Image Type**      | Select **ISO Installer**.                                                                                                                                                                                              |
+   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2 format. For this guide, we used a `ubuntu-24.04.4-desktop-amd64.iso` file.               |
 
 8. Select **Upload**. Large ISO files may take several minutes to upload. VMO displays the upload progress during the
    upload phase.

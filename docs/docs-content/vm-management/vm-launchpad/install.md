@@ -8,10 +8,10 @@ sidebar_position: 0
 tags: ["vmo", "VM Launchpad"]
 ---
 
-PaletteAI VM Launchpad is a bootable ISO that you install on bare metal or Edge devices to create a cluster
-with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
-your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, log into VM Launchpad to
-do an [initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
+PaletteAI VM Launchpad is a bootable ISO that you install on bare metal or Edge devices to create a cluster with Virtual
+Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in your VMO
+cluster, and link the nodes together to form your cluster. After you deploy your cluster, log into VM Launchpad to do an
+[initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
@@ -27,15 +27,15 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 ## Prerequisites
 
-- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
-  VM Launchpad installation process. This is optional but recommended for security and compliance purposes.
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the VM
+  Launchpad installation process. This is optional but recommended for security and compliance purposes.
 
 - (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
   more information about network considerations, review [VMO Network Configuration Considerations](./vmo-networking.md).
 
-- Reserve a virtual IP address (VIP) for the VM Launchpad management cluster. The VM Launchpad installation
-  process assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the VM Launchpad
-   management cluster can access the VIP.
+- Reserve a virtual IP address (VIP) for the VM Launchpad management cluster. The VM Launchpad installation process
+  assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the VM Launchpad management
+  cluster can access the VIP.
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="VM Launchpad" />
 
@@ -43,14 +43,13 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
-2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show
-   Artifacts**.
+2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
 
 3. The following table describes the artifacts available for VM Launchpad.
 
    | **Artifact**                          | **Description**                                                                                                   |
    | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs.      |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs.           |
    | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation. |
    | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                      |
    | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                   |
@@ -60,13 +59,13 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
    :::info
 
-   Starting with VM Launchpad 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the
-   slim **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
+   Starting with VM Launchpad 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the slim
+   **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
 
    :::
 
-5. Boot your device using the VM Launchpad ISO. On the GRand Unified Bootloader (GRUB) menu, allow the
-   VM Launchpad to select the **Palette Edge Interactive Installer** boot option automatically
+5. Boot your device using the VM Launchpad ISO. On the GRand Unified Bootloader (GRUB) menu, allow the VM Launchpad to
+   select the **Palette Edge Interactive Installer** boot option automatically
 
    :::danger
 
@@ -81,8 +80,8 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
-7. From the **VM Launchpad Interactive Installer** screen, select the disk to install the appliance on. Press
-   **ENTER** to proceed to the next screen.
+7. From the **VM Launchpad Interactive Installer** screen, select the disk to install the appliance on. Press **ENTER**
+   to proceed to the next screen.
 
    :::danger
 
@@ -148,8 +147,8 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 ## Configure Network Settings
 
 1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad
-   Appliance host. If you have access to the VM Launchpad host terminal, the Local UI address appears on
-   the terminal screen. If you have changed the default port, replace `5080` with your configured Local UI port.
+   Appliance host. If you have access to the VM Launchpad host terminal, the Local UI address appears on the terminal
+   screen. If you have changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
@@ -337,10 +336,10 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
 
-   | **Parameter**                   | **Description**                                                                      |
-   | ------------------------------- | ------------------------------------------------------------------------------------ |
-   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
-   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
+   | **Parameter**                   | **Description**                                                                         |
+   | ------------------------------- | --------------------------------------------------------------------------------------- |
+   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                           |
+   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                        |
    | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the VM Launchpad host. |
 
    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
@@ -355,8 +354,8 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
    [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
 8. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
-   Use this page to track deployment progress. The VM Launchpad host reboots as part of the build process.
-   Depending on your infrastructure environment, the deployment might take up to 45 minutes.
+   Use this page to track deployment progress. The VM Launchpad host reboots as part of the build process. Depending on
+   your infrastructure environment, the deployment might take up to 45 minutes.
 
 9. After the cluster deployment is complete, more options appear in the left main menu.
 
@@ -364,8 +363,8 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 ## Verify
 
-1. From the left main menu in the VM Launchpad, select **VM Orchestrator**. You can also go to the
-   address you provided for MetalLB in your browser.
+1. From the left main menu in the VM Launchpad, select **VM Orchestrator**. You can also go to the address you provided
+   for MetalLB in your browser.
 
 2. Log in to VMO Manager.
 
@@ -427,5 +426,5 @@ sessions.
 
 ## Next Steps
 
-After you deploy your VMO cluster, [complete the initial configuration of VM Launchpad](./getting-started-wiz.md),
-and then [create your first VM](./quick-start.md).
+After you deploy your VMO cluster, [complete the initial configuration of VM Launchpad](./getting-started-wiz.md), and
+then [create your first VM](./quick-start.md).

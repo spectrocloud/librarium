@@ -577,8 +577,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    :::warning
 
    VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
-   [VM Launchpad](../vm-launchpad/vm-launchpad.md), require explicit storage map settings for
-   migrated VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
+   [VM Launchpad](../vm-launchpad/vm-launchpad.md), require explicit storage map settings for migrated VM disks. Ensure
+   the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
 
    ```yaml {4-5}
    spec:

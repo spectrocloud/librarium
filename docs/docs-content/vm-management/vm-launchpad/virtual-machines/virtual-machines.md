@@ -7,9 +7,9 @@ sidebar_position: 3
 tags: ["vmo", "vm launchpad", "quick start", "virtual machines", "VMs"]
 ---
 
-Use PaletteAI VM Launchpad to create, configure, monitor, and maintain virtual machines on Kubernetes. VM Launchpad provides UI
-workflows for common VM operations while preserving access to the underlying KubeVirt resources when you need advanced
-configuration.
+Use PaletteAI VM Launchpad to create, configure, monitor, and maintain virtual machines on Kubernetes. VM Launchpad
+provides UI workflows for common VM operations while preserving access to the underlying KubeVirt resources when you
+need advanced configuration.
 
 ## Virtual Machine Workflows
 

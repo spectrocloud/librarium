@@ -33,8 +33,8 @@ the value from `user-data`. After initial setup, a selection made in Local UI ov
 management interface is selected, the host uses the network interface associated with the default route.
 
 Kubernetes cluster traffic uses the interface selected during cluster creation. This includes node IP selection,
-Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP). For VM Launchpad
-, this is the interface selected in the **Cilium and MetalLB interface** field.
+Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP). For VM Launchpad ,
+this is the interface selected in the **Cilium and MetalLB interface** field.
 
 :::warning
 

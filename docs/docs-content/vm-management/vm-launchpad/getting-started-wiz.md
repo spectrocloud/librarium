@@ -11,8 +11,7 @@ This guide walks you through the **Getting Started** wizard.
 
 ## Prerequisites
 
-- A cluster created using PaletteAI VM Launchpad. Refer to [Install VM Launchpad](./install.md) for
-  guidance.
+- A cluster created using PaletteAI VM Launchpad. Refer to [Install VM Launchpad](./install.md) for guidance.
 
 - Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
   admin credentials configured during cluster creation.
@@ -21,9 +20,9 @@ This guide walks you through the **Getting Started** wizard.
 
 Complete the following required configuration steps before you [create your first VM](./quick-start.md).
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad
-   host. If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal
-   screen. If you changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
+   If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If
+   you changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
@@ -85,7 +84,7 @@ Complete the following required configuration steps before you [create your firs
     | **Name**               | Name of the NAD.                                                                                                                                                            |
     | **Namespace**          | Namespace for the NAD. The appliance creates the `default`, `virtual-machines`, and `vmo-golden-images` namespaces. To add namespaces, select **Create Namespace**.         |
     | **Network Type**       | Defaults to `Linux Bridge`. Other options include `macvlan`, `ipvlan`, `SR-IOV`, and `Custom JSON`.                                                                         |
-    | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the VM Launchpad node.                                                                            |
+    | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the VM Launchpad node.                                                                         |
     | **VLAN Mode**          | Defaults to `Access` for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select `Trunk` to support more than one VLAN for one NAD. |
     | **Tagged VLANs**       | Optional. Enter one or more comma-separated VLAN IDs.                                                                                                                       |
     | **IPAM Configuration** | Optional JSON.                                                                                                                                                              |

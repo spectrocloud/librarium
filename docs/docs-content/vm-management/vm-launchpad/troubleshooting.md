@@ -14,9 +14,9 @@ This page provides troubleshooting guidance for common scenarios you may encount
 ## Scenario - VM Migration Fails During Guest Conversion on Block-Based Storage
 
 When you use the [VM Migration Assistant](../vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to a VMO
-cluster backed by a block-based Container Storage Interface (CSI), such as the LINSTOR/DRBD storage used by the
-VM Launchpad, migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan
-reports only a generic message. The following text is an example of the message.
+cluster backed by a block-based Container Storage Interface (CSI), such as the LINSTOR/DRBD storage used by the VM
+Launchpad, migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan reports only a
+generic message. The following text is an example of the message.
 
 ```text
 error: { phase: "ConvertGuest", reasons: ["Guest conversion failed. See pod logs for details."] }
