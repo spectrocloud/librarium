@@ -9,9 +9,10 @@ tags: ["palette management appliance", "self-hosted", "enterprise"]
 sidebar_position: 20
 ---
 
-The Palette Management Appliance is downloadable as an ISO file and is a solution for installing self-hosted Palette on
-your infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is
-used to boot the nodes, which are then clustered to form a Palette management cluster.
+The Palette Management Appliance is a solution for installing self-hosted Palette on your infrastructure. It ships as a
+slim **Appliance ISO** paired with a **Content bundle** that you download separately. The ISO is used to boot the
+nodes, which are then clustered to form a Palette management cluster. You upload the content bundle after linking the
+nodes to provide the OS content and Palette packs needed to complete the installation.
 
 Once Palette has been installed, you can download pack bundles and upload them to the internal Zot registry or an
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters

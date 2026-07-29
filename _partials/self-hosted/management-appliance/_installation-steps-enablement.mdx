@@ -7,20 +7,13 @@ partial_name: installation-steps-enablement
 
    The following table describes the artifacts available for the {props.app}.
 
-   | **Artifact**                          | **Description**                                                                                                    |
-   | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and {props.version} packs.         |
-   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation.  |
-   | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                       |
-   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                    |
+   | **Artifact**                          | **Description**                                                                                                   |
+   | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and {props.version} packs.        |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation. |
+   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                   |
 
-   Download the **Appliance ISO with Content**, or download both the **Appliance ISO** and **Content bundle (including Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
-
-   :::info
-
-   Use the slim **Appliance ISO** with the **Content bundle (including Ubuntu)** when you have limited network capacity for mounting ISOs and greater network capacity to upload the content bundle after the initial install.
-
-   :::
+   Download both the **Appliance ISO** and **Content bundle (including Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
 
 2. Load the {props.iso} ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://etcher.balena.io/).
 
@@ -167,7 +160,7 @@ partial_name: installation-steps-enablement
 
     :::info
 
-    If you installed the {props.app} using the slim **Appliance ISO**, upload the **Content bundle (including Ubuntu)** to Local UI before proceeding. The **Content** column will not show **Synced** until the content bundle is uploaded and synchronized. Refer to <VersionedLink text="Upload Content Bundle with Local UI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-content-bundle-with-local-ui"/> or <VersionedLink text="Upload Content Bundle with Palette CLI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-bundle"/> for the upload steps.
+    Upload the **Content bundle (including Ubuntu)** to Local UI before proceeding. The **Content** column will not show **Synced** until the content bundle is uploaded and synchronized. Refer to <VersionedLink text="Upload Content Bundle with Local UI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-content-bundle-with-local-ui"/> or <VersionedLink text="Upload Content Bundle with Palette CLI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-bundle"/> for the upload steps.
 
     :::
 
