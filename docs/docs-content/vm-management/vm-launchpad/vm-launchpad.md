@@ -7,17 +7,16 @@ sidebar_position: 10
 tags: ["vmo", "VM Launchpad", "quick start"]
 ---
 
-PaletteAI VM Launchpad is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for
-bare metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you
-link together to form a cluster to create and managing VMs through a dedicated management UI.
+PaletteAI VM Launchpad is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare metal
+and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you link together
+to form a cluster to create and managing VMs through a dedicated management UI.
 
-Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the VM Launchpad does not require a connection to Palette. It
-operates independently with its own identity management, storage configuration, and observability stack.
+Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the VM Launchpad does not require a connection to Palette. It operates
+independently with its own identity management, storage configuration, and observability stack.
 
 ## Use Cases
 
-The VM Launchpad addresses common challenges that organizations encounter when adopting VM orchestration
-on Kubernetes:
+The VM Launchpad addresses common challenges that organizations encounter when adopting VM orchestration on Kubernetes:
 
 - **No external control plane required** - The appliance is self-contained. You do not need to set up or connect to
   Palette before you can deploy and manage VMs. This is particularly useful for distributed sites, Edge locations,
@@ -84,7 +83,7 @@ passthrough.
 
 ## Next Steps
 
-1. Review the hardware requirements and follow the [Install VM Launchpad](./install.md) guide to install
-   the appliance on your devices and create your cluster.
+1. Review the hardware requirements and follow the [Install VM Launchpad](./install.md) guide to install the appliance
+   on your devices and create your cluster.
 
 2. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.

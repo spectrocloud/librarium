@@ -8,11 +8,11 @@ sidebar_position: 2
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 
-In PaletteAI VM Launchpad, finalization templates define seal and generalize scripts for [golden image](./golden-images.md)
-finalization. They prepare the OS for cloning by removing machine-specific data and assigning a unique identity to each
-clone. Create custom finalization templates for other Linux distributions, such as Alpine, Arch, and SUSE. You can also
-create custom templates when you need to modify seal logic, include cleanup scripts, include custom scripts, or complete
-security hardening and compliance checks.
+In PaletteAI VM Launchpad, finalization templates define seal and generalize scripts for
+[golden image](./golden-images.md) finalization. They prepare the OS for cloning by removing machine-specific data and
+assigning a unique identity to each clone. Create custom finalization templates for other Linux distributions, such as
+Alpine, Arch, and SUSE. You can also create custom templates when you need to modify seal logic, include cleanup
+scripts, include custom scripts, or complete security hardening and compliance checks.
 
 ## Finalization Templates
 
@@ -34,10 +34,10 @@ VM Launchpad stores finalization templates as CRDs and manages them under **Imag
 
 VM Launchpad includes built-in finalization templates.
 
-| **Template**               | **OS Type**     | **Description**                                                                                                                                                           |
-| -------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                                               |
-| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                                       |
+| **Template**               | **OS Type**     | **Description**                                                                                                                                                              |
+| -------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                                                  |
+| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                                          |
 | **Windows**                | `windows`       | Generalize Windows: run `sysprep` with `/generalize /oobe /shutdown`. Also installs QEMU guest agent from the VM Launchpad [package server](./packages.md) before `sysprep`. |
 
 You can reference built-in templates when you create custom templates. VM Launchpad prevents deletion of built-in
@@ -49,12 +49,12 @@ templates.
 2. Select **Create Template**.
 3. Complete the following fields on the **Create Finalize Template** page and select **Create**.
 
-   | **Parameter**   | **Description**                                                                                                                      |
-   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Name**        | Enter a unique name for the template.                                                                                                |
-   | **Description** | Enter a description for the template.                                                                                                |
+   | **Parameter**   | **Description**                                                                                                                         |
+   | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | Enter a unique name for the template.                                                                                                   |
+   | **Description** | Enter a description for the template.                                                                                                   |
    | **OS Type**     | `linux`, `windows`, `ubuntu`, `rhel`, or another supported value. VM Launchpad uses this value to filter templates during finalization. |
-   | **Script**      | Select the option on how to add the script: **Editor**, **Template**, **Upload**, or **URL**.                                        |
+   | **Script**      | Select the option on how to add the script: **Editor**, **Template**, **Upload**, or **URL**.                                           |
 
 The finalization template is available on the **Finalize Template** page.
 
@@ -70,7 +70,8 @@ The finalization template is available on the **Finalize Template** page.
 When you select **Finalize** on a builder VM, VM Launchpad applies the template in the following order.
 
 1. The finalization page loads available finalization templates.
-2. VM Launchpad filters templates by **OS Type**. It infers the guest OS from the builder VM or uses the value you select.
+2. VM Launchpad filters templates by **OS Type**. It infers the guest OS from the builder VM or uses the value you
+   select.
    - `ubuntu/debian` builders display Ubuntu/Debian and generic Linux templates.
    - `rhel/centos/fedora` builders display RHEL-family templates.
    - `windows` builders display Windows templates.
@@ -130,14 +131,14 @@ You can reference or copy a built-in script when you create your own.
 
 3. Complete the following fields in the **Create Auto Install Script** dialog and select **Create**.
 
-   | **Parameter**    | **Description**                                                                                                                                                    |
-   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Name**         | Enter a unique name for the script.                                                                                                                                |
-   | **Description**  | Enter an optional description for the script.                                                                                                                      |
-   | **OS Type**      | Select the target OS, such as **RHEL / CentOS**, **Ubuntu / Debian**, or **Windows**. Select **Custom** for another OS.                                            |
+   | **Parameter**    | **Description**                                                                                                                                                       |
+   | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**         | Enter a unique name for the script.                                                                                                                                   |
+   | **Description**  | Enter an optional description for the script.                                                                                                                         |
+   | **OS Type**      | Select the target OS, such as **RHEL / CentOS**, **Ubuntu / Debian**, or **Windows**. Select **Custom** for another OS.                                               |
    | **OS Default**   | Select this option to set the script as the default for its OS type. VM Launchpad auto-populates the script in the builder when you build a golden image for that OS. |
-   | **Script**       | Select how to add the script: **Editor**, **Template**, **Upload**, or **URL**. Linux scripts use cloud-init YAML, and Windows scripts use Autounattend.xml.       |
-   | **Network Data** | Optionally provide Netplan network configuration to apply during installation.                                                                                     |
+   | **Script**       | Select how to add the script: **Editor**, **Template**, **Upload**, or **URL**. Linux scripts use cloud-init YAML, and Windows scripts use Autounattend.xml.          |
+   | **Network Data** | Optionally provide Netplan network configuration to apply during installation.                                                                                        |
 
 ### How Templates and Auto-Install Work Together
 

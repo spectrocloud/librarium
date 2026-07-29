@@ -8,8 +8,8 @@ sidebar_position: 7
 tags: ["vmo", "vm launchpad"]
 ---
 
-This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in VM Launchpad. To provision
-new VMs, refer to [Create a VM](./creating.md).
+This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in VM Launchpad. To
+provision new VMs, refer to [Create a VM](./creating.md).
 
 ## VM List Page
 
@@ -66,10 +66,10 @@ Halted.
 
 ### Pause and Unpause
 
-| **Action**  | **Description**                                                                                                                                                  |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Action**  | **Description**                                                                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Pause**   | Suspends a running VM. The guest stops running, and VM Launchpad holds its CPU and memory state in memory. A paused VM continues to reserve its memory and compute. |
-| **Unpause** | Resumes a paused VM from the point where it was suspended.                                                                                                       |
+| **Unpause** | Resumes a paused VM from the point where it was suspended.                                                                                                          |
 
 **Pause** and **Unpause** let you briefly suspend a VM without writing its state to disk or stopping it.
 
@@ -102,12 +102,12 @@ The VNC console provides a browser-based remote desktop to the VM.
 
 ### Console Features
 
-| **Feature**      | **Description**                                                                                                                                                                        |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Feature**      | **Description**                                                                                                                                                                           |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Paste**        | Paste text from your machine into the VM. If your browser does not grant clipboard access automatically, VM Launchpad displays a dialog where you can paste the text and select **Send**. |
-| **Ctrl+Alt+Del** | Send the Ctrl+Alt+Del key combination to the VM.                                                                                                                                       |
-| **Full Screen**  | Use the full-screen control for a larger view.                                                                                                                                         |
-| **Reconnect**    | If the connection drops, refresh or reopen the console to reconnect.                                                                                                                   |
+| **Ctrl+Alt+Del** | Send the Ctrl+Alt+Del key combination to the VM.                                                                                                                                          |
+| **Full Screen**  | Use the full-screen control for a larger view.                                                                                                                                            |
+| **Reconnect**    | If the connection drops, refresh or reopen the console to reconnect.                                                                                                                      |
 
 :::info
 
@@ -259,11 +259,11 @@ memory, or firmware.
 
 CPU **sockets** are handled differently from CPU cores and threads.
 
-| **Change**                             | **Behavior**                                                                                                                                                                                                                                                                                  |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Change**                             | **Behavior**                                                                                                                                                                                                                                                                                        |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Increasing sockets on a running VM** | VM Launchpad saves the spec and then triggers a **live migration** automatically. The VM keeps running; no restart is required. This works when KubeVirt's CPU hot-plug prerequisites are met (a `maxSockets` value at least as large as the new socket count, which VM Launchpad ensures on save). |
-| **Decreasing sockets**                 | VM Launchpad saves the spec, but the new socket count only takes effect after a **restart**. The UI surfaces a banner and a toast reminding you to restart.                                                                                                                                      |
-| **Unchanged sockets**                  | Saves apply the patch with no side effects. Other compute-related edits (cores, threads, memory, firmware) still follow the standard "restart required" rule.                                                                                                                                 |
+| **Decreasing sockets**                 | VM Launchpad saves the spec, but the new socket count only takes effect after a **restart**. The UI surfaces a banner and a toast reminding you to restart.                                                                                                                                         |
+| **Unchanged sockets**                  | Saves apply the patch with no side effects. Other compute-related edits (cores, threads, memory, firmware) still follow the standard "restart required" rule.                                                                                                                                       |
 
 :::info
 
@@ -272,8 +272,8 @@ VM `evictionStrategy` that allows migration. If live migration fails after the p
 socket count in its spec. You can retry the migration with the **Migrate** action or restart the VM.
 
 KubeVirt only hot-plugs CPU sockets when `cpu.maxSockets` was present on the VirtualMachineInstance when it started. VMs
-created before VM Launchpad started injecting this default fail the auto-migration on their first socket increase. Restart
-the VM once so the new `maxSockets` takes effect on the running instance. Later socket increases live migrate as
+created before VM Launchpad started injecting this default fail the auto-migration on their first socket increase.
+Restart the VM once so the new `maxSockets` takes effect on the running instance. Later socket increases live migrate as
 expected. In-UI edits also require the `vmo:vm:operate` permission to trigger the auto-migration. Users with Update but
 not Operate permission receive a restart prompt instead.
 
@@ -282,8 +282,8 @@ not Operate permission receive a restart prompt instead.
 ### Memory Hot-Plug
 
 You can increase the memory of a running VM without a restart when the VM has **Max Guest Memory** set to a value
-greater than its current **Guest Memory**. VM Launchpad applies the additional memory to the running guest, up to the **Max
-Guest Memory** ceiling.
+greater than its current **Guest Memory**. VM Launchpad applies the additional memory to the running guest, up to the
+**Max Guest Memory** ceiling.
 
 If **Max Guest Memory** is not configured, or you raise memory above that ceiling, the new memory takes effect only
 after you restart the VM. To configure the memory hot-plug ceiling on an instance type or preference, refer to
