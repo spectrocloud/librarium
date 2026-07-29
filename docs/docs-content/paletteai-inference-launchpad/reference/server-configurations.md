@@ -6,6 +6,7 @@ description: >
   from multiple vendors.
 sidebar_label: Example Server Configurations
 sidebar_position: 3
+unlisted: true
 tags:
   - paletteai-inference-launchpad
   - reference
