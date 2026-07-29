@@ -315,7 +315,7 @@ clone source. Use sealed and generalized golden images as template sources whene
 ## Template Generalization {#cross-namespace-disclosure}
 
 When a template generalizes the OS for cloning purposes, the workflow preserves certain fields, and removes others. VM
-VM Launchpad copies the following fields from the source VM into the template.
+Launchpad copies the following fields from the source VM into the template.
 
 #### Generalization Fields Added
 

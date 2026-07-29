@@ -403,7 +403,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Launchpad for VMs is now [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md), with **VM
   Launchpad** as the short name. The rename applies to the product UI, documentation, and marketing materials.
   Documentation pages previously under `/vm-management/launchpad-for-vms/` now serve at `/vm-management/vm-launchpad/`,
-  and existing URLs redirect to the new locations, so bookmarks and external references continue to resolve.
+  and existing URLs redirect to the new locations.
 
 ### VerteX
 
