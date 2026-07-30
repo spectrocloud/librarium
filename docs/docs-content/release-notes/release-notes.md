@@ -72,13 +72,13 @@ tags: ["release-notes"]
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.36 are now
   available.
 
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3037 -->
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now support installing
-  from a slim **Appliance ISO** paired with a separately downloaded **Content bundle**, in addition to the full
-  **Appliance ISO with Content**. Use the slim ISO when your environment has limited bandwidth for mounting ISOs. Refer
-  to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a slim
+  **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with Content** is
+  only available for versions prior to 4.9.c. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a
+  description of each artifact.
 
 #### Improvements
 
