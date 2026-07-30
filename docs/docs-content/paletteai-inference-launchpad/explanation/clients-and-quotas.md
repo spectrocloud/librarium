@@ -60,6 +60,19 @@ A client can hold more than one API token. When each developer or coding tool th
 token, revoking one token (for example, after a developer leaves the team) does not disturb the others. Revoking the
 client itself revokes every token that belongs to it.
 
+## Client Lifecycle
+
+A client is active by default. You can suspend it, delete it, or revoke its individual API tokens without changing the
+client itself.
+
+- **Suspend** blocks a client's requests but keeps its API tokens, quotas, and routing settings in place. A suspended
+  client can be resumed at any time, so suspension is reversible.
+- **Delete** permanently retires a client and removes its quota, egress, and routing settings. It revokes every API
+  token the client owns. The client's audit history is preserved, and a delete cannot be undone.
+
+An API token has its own state. A token stays active until it is revoked or passes its expiration date. The appliance
+rejects any request that presents a revoked or expired token, fail-closed.
+
 ## Quotas
 
 A quota is a consumption limit attached to a client. The appliance enforces quotas across three dimensions:
