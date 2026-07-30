@@ -1,11 +1,10 @@
 ---
 sidebar_label: "Infrastructure"
 title: "Infrastructure"
-description:
-  "Manage the networking, storage, and namespaces that back virtual machines on the Launchpad for VMs appliance."
+description: "Manage the networking, storage, and namespaces that back virtual machines on PaletteAI VM Launchpad."
 hide_table_of_contents: false
 sidebar_position: 4
-tags: ["vmo", "vm launchpad appliance", "infrastructure", "networking", "storage", "namespaces"]
+tags: ["vmo", "vm launchpad", "infrastructure", "networking", "storage", "namespaces"]
 ---
 
 Use the **Infrastructure** section of Virtual Machine Orchestrator (VMO) to manage the foundational platform resources

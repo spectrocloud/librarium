@@ -2,12 +2,11 @@
 sidebar_label: "Namespaces"
 title: "Namespaces"
 description:
-  "Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges on the Launchpad for VMs
-  appliance."
+  "Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges on PaletteAI VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces"]
+tags: ["vmo", "vm launchpad", "infrastructure", "namespaces"]
 ---
 
 Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubernetes namespaces. You can also apply
@@ -18,10 +17,10 @@ Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubern
 
 Namespaces managed by VMO are denoted with the following labels:
 
-| Label                                         | Description                                                                                                                                        |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all labels managed by VMO, including those created in the UI                                                                            |
-| `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by the Launchpad for VMs appliance |
+| Label                                         | Description                                                                                                                     |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all labels managed by VMO, including those created in the UI                                                         |
+| `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by VM Launchpad |
 
 Managed namespaces:
 

@@ -5,20 +5,21 @@ description: "Learn about VMO Network Configuration Considerations"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 9
-tags: ["vmo", "launchpad for vms", "networking", "design"]
+tags: ["vmo", "vm launchpad", "networking", "design"]
 ---
 
 Networking for the VMO use case requires extra care compared to a regular Kubernetes cluster. In most cases, VMs need to
 be accessible on existing VLANs. Accessing existing VLANs requires bypassing the typical Kubernetes pod networking
 stack.
 
-Launchpad for VMs runs Cilium as the Kubernetes CNI for pod networking. To place VMs on existing VLANs, the appliance
-uses the Multus Bridge network type, which attaches VMs to a bridge interface (`br0`) on the host. This gives VMs direct
-access to the physical network and its VLANs, and requires specific host network setup on the Kubernetes worker nodes.
+PaletteAI VM Launchpad runs Cilium as the Kubernetes CNI for pod networking. To place VMs on existing VLANs, the
+appliance uses the Multus Bridge network type, which attaches VMs to a bridge interface (`br0`) on the host. This gives
+VMs direct access to the physical network and its VLANs, and requires specific host network setup on the Kubernetes
+worker nodes.
 
 ## Supported Configurations
 
-Launchpad for VMs supports two host network configurations. Storage architecture drives which one fits your deployment.
+VM Launchpad supports two host network configurations. Storage architecture drives which one fits your deployment.
 
 - **Four NICs, two bonds.** Two NICs bonded for management and Kubernetes cluster traffic, and two NICs bonded for VM
   data traffic. This is the recommended configuration for production deployments and works with hyper-converged storage,
@@ -56,13 +57,13 @@ single bond.
 Cilium usually does not run on the bridge interface. Only run Cilium on the bridge in the specific case where no other
 option is available.
 
-Review the following sections before installing Launchpad for VMs so that you can prepare your host network and switch
-port configuration.
+Review the following sections before installing VM Launchpad so that you can prepare your host network and switch port
+configuration.
 
 ## Management and Cluster Traffic
 
-Launchpad for VMs hosts can use separate network interfaces for management traffic and Kubernetes cluster traffic.
-Management traffic includes Local UI access, communication between hosts, and content synchronization.
+VM Launchpad hosts can use separate network interfaces for management traffic and Kubernetes cluster traffic. Management
+traffic includes Local UI access, communication between hosts, and content synchronization.
 
 You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI overrides
 the value from `user-data`. After initial setup, a selection made in Local UI overrides the value from the TUI. If you
@@ -70,7 +71,7 @@ do not select a management interface, the host uses the network interface associ
 
 Kubernetes cluster traffic uses the interface you select during cluster creation. Kubernetes cluster traffic includes
 node IP selection, Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP).
-For Launchpad for VMs, this is the interface selected in the **Cilium and MetalLB interface** field.
+For VM Launchpad, this is the interface selected in the **Cilium and MetalLB interface** field.
 
 :::warning
 
@@ -129,8 +130,8 @@ The example defines VLAN 20 as a subinterface of `br0` instead of `bond0`. This 
 20 without conflict.
 
 To allow traffic on `br0.20`, edit the VMO layer's cluster profile variables in Local UI. You cannot modify the VMO pack
-YAML directly on the Launchpad for VMs appliance. All configuration flows through profile variables. Enable the variable
-that permits VLAN traffic on the host bridge, and set the corresponding VLAN list variable to include both the VLAN IDs
+YAML directly on the VM Launchpad appliance. All configuration flows through profile variables. Enable the variable that
+permits VLAN traffic on the host bridge, and set the corresponding VLAN list variable to include both the VLAN IDs
 available to VMs and the VLAN IDs used by the host.
 
 <!-- TODO: confirm the exact profile variable labels with Kevin/Sumit during the next review. -->

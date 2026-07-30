@@ -2,12 +2,12 @@
 sidebar_label: "Networks"
 title: "Networks"
 description:
-  "Manage network attachment definitions and additional network interfaces for virtual machines on the Launchpad for VMs
-  appliance."
+  "Manage network attachment definitions and additional network interfaces for virtual machines on PaletteAI VM
+  Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vmo", "vm launchpad appliance", "infrastructure", "networking"]
+tags: ["vmo", "vm launchpad", "infrastructure", "networking"]
 ---
 
 Virtual Machine Orchestrator (VMO) manages VM networking through Kubernetes Network Attachment Definitions (NADs).
@@ -309,4 +309,4 @@ spare capacity to absorb the workloads that live migrate off the draining node.
 
 - [Network Configuration Considerations](../vmo-networking.md)
 
-- [Initial Configuration of Launchpad for VMs](../getting-started-wiz.md)
+- [Initial Configuration of VM Launchpad](../getting-started-wiz.md)

@@ -2,19 +2,17 @@
 sidebar_label: "Storage"
 title: "Storage"
 description:
-  "Manage StorageClasses, storage pools, and DataVolumes that back virtual machine disks on the Launchpad for VMs
-  appliance."
+  "Manage StorageClasses, storage pools, and DataVolumes that back virtual machine disks on PaletteAI VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vmo", "vm launchpad appliance", "infrastructure", "storage"]
+tags: ["vmo", "vm launchpad", "infrastructure", "storage"]
 ---
 
 Virtual Machine Orchestrator (VMO) manages the storage that backs VM disks. From **Infrastructure** > **Storage**, you
 can manage [StorageClasses](https://kubernetes.io/docs/concepts/storage/storage-classes/), storage pools, and
-[DataVolumes](https://kubevirt.io/user-guide/storage/containerized_data_importer/). The Launchpad for VMs appliance
-ships with Piraeus/LINSTOR as the default storage backend, but VMO works with any StorageClass that supports dynamic
-provisioning.
+[DataVolumes](https://kubevirt.io/user-guide/storage/containerized_data_importer/). PaletteAI VM Launchpad ships with
+Piraeus/LINSTOR as the default storage backend, but VMO works with any StorageClass that supports dynamic provisioning.
 
 ## Storage Providers
 
