@@ -81,7 +81,7 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
   sudo apt-get install --yes kubectl
   ```
 
-- Add the MongoDB apt repository and install MongoDB Database Tools. The backup and restore scripts call `mongodump` and `mongorestore` from this package.
+- Add the MongoDB apt repository and install MongoDB Database Tools and the MongoDB Shell. The backup and restore scripts call `mongodump` and `mongorestore` from the Database Tools package. The [Post-Restore Workarounds](#post-restore-workarounds) use `mongosh` from the MongoDB Shell package.
 
   ```shell
   curl --fail --silent --show-error --location https://www.mongodb.org/static/pgp/server-8.0.asc | \
@@ -95,7 +95,7 @@ For example, a source cluster at 4.7.x can be restored to a destination cluster 
 
   ```shell
   sudo apt-get update
-  sudo apt-get install --yes mongodb-database-tools
+  sudo apt-get install --yes mongodb-database-tools mongodb-mongosh
   ```
 
 ## Back Up the Source Cluster
