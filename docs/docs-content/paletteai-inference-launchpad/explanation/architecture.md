@@ -76,6 +76,14 @@ already routed continue on their assigned model, and the new default applies onl
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
 quotas. For how clients, API tokens, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
 
+### The Default Model
+
+The appliance sets the default model for you. The model you deploy during setup becomes the default, and if only one
+model serves, that model is the default. The appliance does not switch the default to a different model on its own. When
+the current default stops serving, the appliance raises an incident on the **Overview** page and offers a one-step fix
+so you can switch the default to a model that is currently serving. For that procedure, refer to
+[Set the Default Model](../how-to-guides/set-the-default-model.md).
+
 ## Network Topology
 
 ## Data Residency and Isolation
