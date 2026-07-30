@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Set the Default Model"
-title: "Set the Default Model"
+sidebar_label: "Switch the Default Model"
+title: "Switch the Default Model"
 description:
   "Task guidance for platform operators on how to switch the default model on a PaletteAI Inference Launchpad appliance
   from the Overview page when the current default is no longer serving."

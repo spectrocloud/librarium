@@ -82,7 +82,7 @@ The appliance sets the default model for you. The model you deploy during setup 
 model serves, that model is the default. The appliance does not switch the default to a different model on its own. When
 the current default stops serving, the appliance raises an incident on the **Overview** page and offers a one-step fix
 so you can switch the default to a model that is currently serving. For that procedure, refer to
-[Set the Default Model](../how-to-guides/set-the-default-model.md).
+[Switch the Default Model](../how-to-guides/set-the-default-model.md).
 
 ## Network Topology
 
