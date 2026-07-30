@@ -75,7 +75,8 @@ tags: ["release-notes"]
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a slim
   **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with Content** is
-  only available for versions prior to 4.9.c. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
+  only available for versions prior to 4.9.c. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a
+  description of each artifact.
 
 #### Improvements
 
