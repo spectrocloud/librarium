@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 26, 2026 - Release 4.9.33
+## August 2, 2026 - Release 4.9.38
 
 ### Security Notices
 
@@ -69,7 +69,7 @@ tags: ["release-notes"]
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.33 are now
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.36 are now
   available.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
@@ -260,7 +260,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.33 Palette release is 4.9.25.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.38 Palette release is 4.9.34.
 
 :::
 

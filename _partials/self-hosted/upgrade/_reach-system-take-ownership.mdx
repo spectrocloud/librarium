@@ -3,8 +3,8 @@ partial_category: self-hosted
 partial_name: reach-system-take-ownership
 ---
 
-**(pre-4.9.33 to 4.9.33+, proxy environments only)** If you are upgrading {props.edition} from a version earlier than 4.9.33 and your
-instance uses the `reach-system` chart for network proxy support, the first upgrade to `reach-system-4.9.33-v4` or later
+**(pre-4.9.38 to 4.9.38+, proxy environments only)** If you are upgrading {props.edition} from a version earlier than 4.9.38 and your
+instance uses the `reach-system` chart for network proxy support, the first upgrade to `reach-system-4.9.38-v4` or later
 requires a one-time migration. Earlier chart versions created the `reach-controller-manager` Deployment through a Helm
 pre-install hook, which did not record Helm ownership metadata on the Deployment. As a result, a plain `helm upgrade`
 cannot update it and, with Helm 3.14 or later, fails with an `ownership-import` error.

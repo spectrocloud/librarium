@@ -103,7 +103,7 @@ console for all Edge hosts of your organization.
 
     :::info
 
-    The `banner` and `loginBanner` objects are supported in Palette VerteX 4.9.33 and later. These objects help satisfy
+    The `banner` and `loginBanner` objects are supported in Palette VerteX 4.9.38 and later. These objects help satisfy
     compliance requirements for federal and DoD deployments by presenting a notice throughout the VerteX Local UI and
     requiring users to explicitly acknowledge a consent notice before authentication. Spectro Cloud-built VerteX
     appliances ship with default banner and consent notice content. If you are building your own ISO, you can supply
