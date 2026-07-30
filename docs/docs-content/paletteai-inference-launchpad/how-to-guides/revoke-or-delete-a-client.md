@@ -11,8 +11,8 @@ keywords: ["launchpad", "ai", "clients", "revoke", "delete", "expired", "api tok
 ---
 
 This guide explains how a platform administrator ends a client's access on a PaletteAI Inference Launchpad appliance:
-finding expired or revoked tokens, revoking a single API token, and deleting a client. To understand how clients and API
-tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
+finding expired or revoked tokens, revoking a single API token, and suspending or deleting a client. To understand how
+clients and API tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 
 ## Prerequisites
 
@@ -44,18 +44,27 @@ The **Usage** page also shows a token's state in its per-token detail. For usage
 
 3. Select the **API tokens** section.
 
-4. Find the token, and then select **Revoke**.
+4. Find the token, then select the **Revoke access** icon (a prohibit symbol) at the end of its row, and confirm in the
+   **Revoke token** dialog.
 
 Revoking a token is immediate and cannot be undone.
 
-## Delete a Client
+## Suspend or Delete a Client
+
+The **Overview** section of a client's detail panel offers two lifecycle actions, each behind a confirmation:
+
+- **Suspend** blocks the client's requests but keeps its API tokens, quotas, and routing settings in place, so you can
+  resume it later. Suspending is reversible.
+- **Delete** permanently retires the client, removes its quota, egress, and routing settings, and revokes every API
+  token the client owns. The client's audit history is preserved, and you cannot undo a delete.
 
 1. From the left main menu, select **Access & Policy**.
 
-2. On the **Clients & API tokens** page, select the client's delete action, and then confirm.
-   {/* NEEDS REVIEW: exact delete control and confirmation wording. */}
+2. On the **Clients & API tokens** page, select the client to open its detail panel.
 
-Deleting a client revokes every API token that belongs to it.
+3. Select the **Overview** section, then select **Suspend** or **Delete**, and then confirm.
+
+To restore a suspended client, select **Resume** in the **Overview** section.
 
 ## Next Steps
 
