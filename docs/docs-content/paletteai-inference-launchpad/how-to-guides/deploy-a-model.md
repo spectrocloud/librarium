@@ -53,6 +53,13 @@ Confirm the model is serving before you route traffic to it.
    `deploying` or `smoke-testing` means the model is still coming online, and a state of `failed` or
    `verification failed` means the model did not come online.
 
+:::info
+
+While a model is deploying, a node hosting it can briefly report a `Degraded` or `Not serving` state. This is expected
+during deployment and clears once the model finishes coming online, at which point the node returns to a healthy state.
+
+:::
+
 For why a model becomes routable only after it passes its smoke test, refer to
 [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
 
@@ -71,5 +78,5 @@ resolve the unknown allocation on the affected nodes. Then deploy the model agai
 
 ## Next Steps
 
-To configure which model handles requests that do not name a model explicitly, refer to
-[Set the Default Model](./set-the-default-model.md).
+To change which model handles requests that do not name a model explicitly, refer to
+[Switch the Default Model](./set-the-default-model.md).

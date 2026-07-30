@@ -30,8 +30,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
 
 - Runs on a single high-density GPU server with NVIDIA or AMD GPUs, NVMe storage, and bonded NICs, sized to the target
-  model from a baseline of 4 GPUs. Refer to [Suggested Hardware](./reference/hardware-requirements.md) and
-  [Example Server Configurations](./reference/server-configurations.md) for more information.
+  model from a baseline of 4 GPUs. Refer to [Suggested Hardware](./reference/hardware-requirements.md) for more
+  information.
 
 - Certifies a focused set of LLMs for coding-assistant use, GLM 5.2, DeepSeek v4 Pro, Kimi 2.7, and Gemma 4, and lets
   you load any other model that fits the available GPU memory. Refer to
