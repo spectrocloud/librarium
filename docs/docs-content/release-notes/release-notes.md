@@ -35,7 +35,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
 
-- vcluster is now available at version 0.27.3 in Artifact Studio. Users can deploy the updated vcluster ZST package when
+- vCluster is now available at version 0.27.3 in Artifact Studio. Users can deploy the updated vCluster ZST package when
   building virtual cluster environments through Palette.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-824 -->
