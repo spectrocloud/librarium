@@ -78,5 +78,5 @@ resolve the unknown allocation on the affected nodes. Then deploy the model agai
 
 ## Next Steps
 
-To configure which model handles requests that do not name a model explicitly, refer to
-[Set the Default Model](./set-the-default-model.md).
+To change which model handles requests that do not name a model explicitly, refer to
+[Switch the Default Model](./set-the-default-model.md).
