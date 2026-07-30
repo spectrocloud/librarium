@@ -80,17 +80,15 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 
 #### Pack Notes
 
-## July 26, 2026 - Release 4.9.c {#release-notes-4.9.c}
+## August 2, 2026 - Release 4.9.38 {#release-notes-4.9.c}
 
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
-### Palette Enterprise {#palette-enterprise-4.9.c}
+### Palette Enterprise
 
-#### Breaking Changes {#breaking-changes-4.9.c}
-
-#### Upgrade Notes {#upgrade-notes-4.9.c}
+#### Upgrade Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
 
@@ -139,12 +137,16 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
   [Private Cloud Gateway](../clusters/pcg/deploy-pcg/deploy-pcg.md) deployments. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.36 are now
+  available.
+
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3037 -->
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a slim
   **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with Content** is
-  only available for versions prior to 4.9.c. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a
+  only available for versions prior to 4.9.36. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a
   description of each artifact.
 
 #### Improvements
@@ -327,44 +329,11 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.c Palette release is 4.9.25.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.38 Palette release is 4.9.34.
 
 :::
 
-#### Breaking Changes {#edge-breaking-changes-4.9.c}
-
-<!-- https://spectrocloud.atlassian.net/browse/PE-9123 -->
-
-- Local Edge clusters have new content compatibility and pre-upgrade requirements in 4.9.c. This change applies to local
-  Edge clusters. Connected Edge deployments are not affected. Existing local Edge clusters will continue to run, but
-  Day-2 operations will not work.
-
-  Content bundles built against 4.9.27 or earlier releases are incompatible with 4.9.c Edge installers. The Stylus agent
-  in 4.9.c uses the `v1` API version, but Custom Resource Definitions (CRDs) in older content still target `v1alpha1`,
-  which prevents cluster provisioning from completing.
-
-  Before you deploy new airgap Edge clusters or upload new content to existing airgap Edge clusters, rebuild your
-  content bundles on a 4.9.c Palette instance. Refer to
-  [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) for guidance.
-
-  **Pre-upgrade steps for existing local Edge clusters**
-
-  Without the following remediation, an internal configuration conflict on existing airgap Edge clusters causes cluster
-  APIs to fail after you upgrade to 4.9.c. Apply the remediation that matches your cluster configuration before you
-  trigger the upgrade:
-
-  - If `skipStylusUpgrade` is set to `true` in the user data, set it to `false` in each of the following files, then
-    restart the `stylus-agent` and `stylus-operator` services:
-
-    - `/run/stylus/userdata`
-    - `/oem/90_custom.yaml`
-    - `/oem/userdata` or `/oem/95_userdata/userdata`
-    - `/oem/userdata.yaml` or `/oem/95_userdata/userdata.yaml`
-
-  - If `skipStylusUpgrade` is not set or is `false`, and Stylus is pinned through the `stylusPackage` field in the OS
-    pack or user data, remove the `stylusPackage` field and rebuild the content bundle before you upgrade. Refer to
-    [Configure Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md) for details on the
-    `stylusPackage` field.
+#### Breaking Changes
 
 #### Features
 
@@ -485,16 +454,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   consent popup requires users to acknowledge the notice before authentication. For more information, refer to
   [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md).
 
-- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4.9.c) for more details.
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the Palette
+  section for more details.
 
-#### Upgrade Notes {#vertex-upgrade-notes-4.9.c}
+#### Upgrade Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2999 -->
 
 - The Kubernetes minor-version constraint on Enterprise Cluster (EC) binary and VerteX Management Appliance upgrades
-  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the
-  [Palette Enterprise Upgrade Notes](#upgrade-notes-4.9.c) for the two-hop upgrade path, and to
+  from `4.8.x` to `4.9.23` or later applies to Palette VerteX as well. Refer to the Palette Enterprise Upgrade Notes for
+  the two-hop upgrade path, and to
   [Kubernetes Version Constraint](../vertex/upgrade/upgrade.md#kubernetes-version-constraint) for the full guidance.
 
 ### Automation
@@ -507,11 +476,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 4.9.c of the
+- Terraform version 0.29.9 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.9.c of the
+- Crossplane version 0.29.9 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 - The [Palette MCP Server](../automation/palette-mcp/palette-mcp.md) has exited Tech Preview and is now ready for
@@ -527,8 +496,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   cluster could cause the underlying add-on packs to uninstall and reinstall instead of updating in place, which briefly
   removed workloads such as Argo CD. Changing the add-on profile version now performs an in-place update and preserves
   the existing pack state.
-
-### Docs and Education
 
 ### Packs
 

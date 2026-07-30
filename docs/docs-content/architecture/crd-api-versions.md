@@ -11,14 +11,14 @@ sidebar_custom_props:
 ---
 
 Palette manages workload clusters through Custom Resource Definitions (CRDs) in the `cluster.spectrocloud.com` API
-group. Starting in Palette and Palette VerteX 4.9.c, these CRDs serve a new stable API version, `v1`, alongside the
+group. Starting in Palette and Palette VerteX 4.9.38, these CRDs serve a new stable API version, `v1`, alongside the
 existing `v1alpha1`. This page describes the two API versions, the compatibility guarantees between them, and which
 version to use in new manifests.
 
 ## API Versions
 
-- `cluster.spectrocloud.com/v1` - The new stable API version, introduced in 4.9.c. It is the stored version, which means
-  that Palette persists all objects in `v1` format in the underlying `etcd` datastore.
+- `cluster.spectrocloud.com/v1` - The new stable API version, introduced in 4.9.38. It is the stored version, which
+  means that Palette persists all objects in `v1` format in the underlying `etcd` datastore.
 
 - `cluster.spectrocloud.com/v1alpha1` - The legacy API version. It remains served for backward compatibility, so
   existing manifests, tooling, and integrations continue to work without change.
@@ -29,14 +29,14 @@ VerteX share the same CRD API versions.
 | Palette / VerteX version | `v1alpha1`                   | `v1`          | Storage version |
 | ------------------------ | ---------------------------- | ------------- | --------------- |
 | 4.9.27 and earlier       | Served                       | Not available | `v1alpha1`      |
-| 4.9.c and later          | Served (backward-compatible) | Served        | `v1`            |
+| 4.9.38 and later         | Served (backward-compatible) | Served        | `v1`            |
 
 There is currently no deprecation timeline for `v1alpha1`. Palette continues to serve both versions.
 
 A Kubernetes conversion webhook translates objects between the two versions transparently at read and write time. No
 manual migration is required for existing resources.
 
-When you upgrade Palette or Palette VerteX to 4.9.c, all existing `v1alpha1` objects are read and re-served as `v1`
+When you upgrade Palette or Palette VerteX to 4.9.38, all existing `v1alpha1` objects are read and re-served as `v1`
 through the conversion webhook, and Palette re-persists them in `v1` format. No customer action is required for existing
 resources.
 
@@ -44,14 +44,14 @@ resources.
 
 The dual API surface supports the Palette Long Term Support (LTS) upgrade path, where cluster-side agents and resources
 can lag the management plane by up to two LTS major versions (N-2). Older cluster-side components continue to reconcile
-against the management plane after the management plane upgrades to 4.9.c.
+against the management plane after the management plane upgrades to 4.9.38.
 
 :::
 
 ## Usage
 
 The following 13 CRDs in the `cluster.spectrocloud.com` API group serve both `v1` (stored) and `v1alpha1` (served) in
-4.9.c and later:
+4.9.38 and later:
 
 - `SpectroCluster`
 - `Pack`
