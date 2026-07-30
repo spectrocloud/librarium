@@ -6,7 +6,7 @@ description:
   appliance."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "networking"]
 ---
 
