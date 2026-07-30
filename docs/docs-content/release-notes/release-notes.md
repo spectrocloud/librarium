@@ -80,6 +80,74 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
 
 #### Pack Notes
 
+## July 26, 2026 - Component Updates {#component-updates-2026-30b}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3020 -->
+<!-- RELEASE DATE: July 26, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.28 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.14 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.14  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.33  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.33  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
+
+- Updated Kubernetes pack versions are available for Palette clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-757 -->
+
+- The Palette and Palette VerteX appliance installer now features a redesigned configuration form that organizes
+  variables into named sections (networking, credentials, certificates, and appliance-specific groups) instead of a
+  single flat list. Network interface fields are pre-populated from the host environment, TLS certificate fields support
+  one-click generation, and inline validation prevents misconfigured deployments from proceeding. The same form renders
+  during day-two operations with all fields pre-filled from the current cluster configuration, and only changed fields
+  are updated on submit.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2298 -->
+
+- The Terraform Spectro Cloud provider now supports CAPI passthrough overrides for GCP IaaS, GKE, vSphere, and MAAS
+  clusters. You can supply key/value overrides at the cluster and node pool levels for day-zero and day-two operations,
+  consistent with the existing passthrough experience for AKS, AWS IaaS, EKS, and CloudStack. This feature is supported
+  on both Palette and Palette VerteX.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.1 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.4 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.0 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.8.0 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.0 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :x: | :white_check_mark: | 1.14.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## August 2, 2026 - Release 4.9.38 {#release-notes-4.9.c}
 
 ### Security Notices
