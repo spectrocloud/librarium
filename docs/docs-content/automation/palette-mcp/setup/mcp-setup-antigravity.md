@@ -35,14 +35,7 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
    agy
    ```
 
-   ```shell hideClipboard title="Example Output"
-   Antigravity CLI
-
-   Type your prompt or press Ctrl+C to exit.
-   >
-   ```
-
-6. Open the `~/.antigravity/settings.json` file in your preferred text editor. If the file does not exist, create it.
+6. Open the `~/.gemini/antigravity-cli/settings.json` file in your preferred text editor. If the file does not exist, create it.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
 
