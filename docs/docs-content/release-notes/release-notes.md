@@ -11,6 +11,75 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 2, 2026 - Component Updates {#component-updates-2026-31}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3029 -->
+<!-- RELEASE DATE: August 2, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.19  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.36  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.36  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
+
+- vCluster is now available at version 0.27.3 in Artifact Studio. Users can deploy the updated vCluster ZST package when
+  building virtual cluster environments through Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-824 -->
+
+- A Slim Appliance ISO is now available for new Palette and VerteX installations. The updated Downloads page provides
+  the Slim Appliance ISO, Content Bundle, and MOK Key for Secure Boot for each release version, streamlining the
+  installation experience for new deployments.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3652 -->
+
+- Palette eXtended Kubernetes (PXK) versions 1.34 and 1.35 are now available for use with the CAPI Image Builder,
+  enabling customers to build CAPI images for the latest supported Kubernetes versions.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.1 |
+| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.36.0 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.22.3 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.8 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :x: | 1.63.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.1.0 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.20.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.21.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `ADDON` | :x: | :white_check_mark: | 1.4.19 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## July 26, 2026 - Release 4.9.c {#release-notes-4.9.c}
 
 ### Security Notices
