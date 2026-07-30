@@ -23,6 +23,8 @@ not name a model, the appliance routes it to the default model. For how the appl
 
 Set the default model from the _Overview_. You can only select a model that the appliance currently serves.
 
+{/* NEEDS REVIEW: the "switch default model" control was not displayed on Overview during QA testing (2026-07-27). Confirm the exact condition under which it appears (for example, at least one deployed and serving model, or possibly more than one model) and document it here before publishing. */}
+
 1. From the left main menu, select **Overview**.
 
 2. Open the **switch default model** drop-down menu and select the model to make default.
@@ -34,4 +36,6 @@ For what happens to requests that are in progress when you change the default mo
 
 ## Next Steps
 
-To deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md).
+- **Generate an API token** to send requests to the default model. Refer to
+  [Generate an API Token](./generate-an-api-token.md).
+- **Deploy another model** to the appliance. Refer to [Deploy a Model](./deploy-a-model.md).
