@@ -325,7 +325,21 @@ Use the following signals to confirm this workaround applies to your destination
 
 - The response from `<VIP>/v1/auth/org` contains `"appEnv": "enterprise-cli"`.
 
-Apply the workaround with the following steps.
+Apply the workaround with the utility script, or with a direct MongoDB write. The utility script is the recommended path because it handles the port-forward, credential lookup, and document update for you.
+
+**Apply with the utility script**
+
+1. On the jump host, run the `set-installer-mode.sh` script from the working directory. The script sets `installerMode` to `self-hosted` in the `systemconfig` document for you.
+
+    ```shell
+    ./set-installer-mode.sh --kubeconfig dst.kubeconfig
+    ```
+
+2. Clear the Hubble pod cache using the procedure in [Clear the Hubble Pod Cache](#clear-the-hubble-pod-cache).
+
+**Apply directly in MongoDB**
+
+If you prefer to apply the change by hand, use the following steps.
 <!-- vale off -->
 1. On the jump host, port-forward the MongoDB service on the destination cluster.
 <!-- vale on -->
@@ -383,7 +397,7 @@ If the source cluster used an external registry, such as Amazon Elastic Containe
 
 1. In the destination cluster system console, go to **Tenant Settings** > **Registries** > **Pack Registries** and create a new pack registry that points at the destination Zot registry. Give it a distinct name, for example `dst-zot`.
 <!-- vale off -->
-2. On the jump host, port-forward the MongoDB service and connect with `mongosh`, following steps 1 through 3 of the [CLI-Installed Enterprise Cluster Source](#cli-installed-enterprise-cluster-source) workaround.
+2. On the jump host, port-forward the MongoDB service and connect with `mongosh`, following steps 1 through 3 of the **Apply directly in MongoDB** procedure in the [CLI-Installed Enterprise Cluster Source](#cli-installed-enterprise-cluster-source) workaround.
 <!-- vale on -->
 3. Confirm both the current default record and the new record. Replace `<default>` with the name of the current default record.
 
