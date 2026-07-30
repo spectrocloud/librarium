@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create a VM"
 title: "Create a VM"
-description: "Learn how to create VMs using the VM Launchpad Appliance"
+description: "Learn how to create VMs using the VM Launchpad"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 6
 tags: ["vmo", "vm launchpad"]
 ---
 
-This guide walks through the VM creation wizard and batch creation options in VM Launchpad.
+This guide walks through the VM creation wizard and batch creation options in PaletteAI VM Launchpad.
 
 ## Overview
 
@@ -25,11 +25,10 @@ step.
 
 ## Prerequisites
 
-- A cluster created using the Launchpad Appliance. Refer to [Install Launchpad for VMs](../install-vmla-iso.md) for
-  guidance.
+- A cluster created using the VM Launchpad. Refer to [Install VM Launchpad](../install.md) for guidance.
 
-- Credentials to access the Launchpad UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
-  admin credentials configured during cluster creation.
+- Credentials to access the VM Launchpad UI hosted on your cluster. You can use either Keycloak OIDC credentials or
+  local admin credentials configured during cluster creation.
 
 ## Create a Virtual Machine
 
@@ -44,21 +43,21 @@ deploy a VM.
 
 3.  The **Create Virtual Machine** wizard opens. Complete the following fields on the **Source** wizard step.
 
-    | **Parameter** | **Description**                                                                                                                                                                                                       |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Source**    | Select the source for the VM: **Template**, **Image/ISO**, or **Custom**.                                                                                                                                             |
-    | **OS**        | Select **Linux** or **Windows**.                                                                                                                                                                                      |
-    | **Namespace** | Select the namespace that contains your ISO.                                                                                                                                                                          |
-    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                                                                                                 |
-    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu.                                                                         |
-    | **Custom**    | If you select **Custom**, Launchpad creates a VM from scratch with no template, golden image, or ISO as its source. Configure the VM's compute, storage, and network settings manually in the following wizard steps. |
-    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.                                                                            |
+    | **Parameter** | **Description**                                                                                                                                                                                                          |
+    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Source**    | Select the source for the VM: **Template**, **Image/ISO**, or **Custom**.                                                                                                                                                |
+    | **OS**        | Select **Linux** or **Windows**.                                                                                                                                                                                         |
+    | **Namespace** | Select the namespace that contains your ISO.                                                                                                                                                                             |
+    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                                                                                                    |
+    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu.                                                                            |
+    | **Custom**    | If you select **Custom**, VM Launchpad creates a VM from scratch with no template, golden image, or ISO as its source. Configure the VM's compute, storage, and network settings manually in the following wizard steps. |
+    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.                                                                               |
 
     :::info
 
     You can select a golden image from any namespace you can access, not only the namespace of the VM you are creating.
-    Launchpad provisions the VM directly from the golden image through the **Create VM** flow, so you no longer need to
-    create a [template](./templates.md) first to use a golden image across namespaces.
+    VM Launchpad provisions the VM directly from the golden image through the **Create VM** flow, so you no longer need
+    to create a [template](./templates.md) first to use a golden image across namespaces.
 
     :::
 
@@ -220,7 +219,7 @@ deploy a VM.
     | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                       |
     | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                                 |
-    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                               |
+    | **Use internal package repository** | Keep the internal VM Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
     | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                         |
     | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, VM Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
@@ -261,7 +260,7 @@ deploy a VM.
 
 ## Validate
 
-1. From the left main menu of the Launchpad console, select **Workloads** > **Virtual Machines**.
+1. From the left main menu of the VM Launchpad console, select **Workloads** > **Virtual Machines**.
 
 2. Locate your VM in the list. The status column displays **Provisioning** during VM creation and changes to **Running**
    after the VM starts.
@@ -279,7 +278,7 @@ deploy a VM.
 
 4. Select the **Console** tab to open a noVNC-based remote console. Use the console to interact with the VM keyboard.
 
-   ![Screenshot of a running VM console](/launchpad-for-vms_quick-start_console.webp)
+   ![Screenshot of a running VM console](/vm-launchpad_quick-start_console.webp)
 
 ## Next Steps
 
