@@ -1,29 +1,28 @@
 ---
-sidebar_label: "Initial Configuration of Launchpad for VMs"
-title: "Initial Configuration of Launchpad for VMs"
-description: "Learn how to use the Getting Started wizard for Launchpad for VMs Appliance."
+sidebar_label: "Initial Configuration of VM Launchpad"
+title: "Initial Configuration of VM Launchpad"
+description: "Learn how to use the Getting Started wizard for VM Launchpad."
 hide_table_of_contents: false
 sidebar_position: 1
-tags: ["vmo", "launchpad for vms appliance"]
+tags: ["vmo", "vm launchpad"]
 ---
 
 This guide walks you through the **Getting Started** wizard.
 
 ## Prerequisites
 
-- A cluster created using the Launchpad Appliance. Refer to [Install Launchpad for VMs](./install-vmla-iso.md) for
-  guidance.
+- A cluster created using PaletteAI VM Launchpad. Refer to [Install VM Launchpad](./install.md) for guidance.
 
 - Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
   admin credentials configured during cluster creation.
 
-## Initial Launchpad for VMs Configuration
+## Initial VM Launchpad Configuration
 
 Complete the following required configuration steps before you [create your first VM](./quick-start.md).
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs
-   host. If you have access to the Launchpad for VMs host terminal, the Local UI address is displayed on the terminal
-   screen. If you changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
+   If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If
+   you changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
@@ -31,7 +30,7 @@ Complete the following required configuration steps before you [create your firs
    Guide** icon in the upper-right corner to reopen it. If the wizard is minimized, it appears in the lower-right
    corner.
 
-   ![Screenshot of the getting started icon](/vmo/vm-management_launchpad-for-vms_getstart-icon-4-9.webp)
+   ![Screenshot of the getting started icon](/vmo/vm-management_vm-launchpad_getstart-icon-4-9.webp)
 
 4. Select **Set Up a Storage Pool**. The appliance creates **Set Up a Storage Pool** during deployment, so the wizard
    marks it complete by default.
@@ -51,7 +50,7 @@ Complete the following required configuration steps before you [create your firs
 
    The following image shows the creation of an `LVM Thin` storage pool that uses the local host storage `/dev/sdb`.
 
-   ![Screenshot of getting started storage pool creation](/vmo/vm-management_launchpad-for-vms_getstart-storage-pool-4-9.webp)
+   ![Screenshot of getting started storage pool creation](/vmo/vm-management_vm-launchpad_getstart-storage-pool-4-9.webp)
 
 6. Select **Review Storage Policy** to display the default **Piraeus DRBD Performance Tuning** storage policy. You can
    add more policies here.
@@ -85,7 +84,7 @@ Complete the following required configuration steps before you [create your firs
     | **Name**               | Name of the NAD.                                                                                                                                                            |
     | **Namespace**          | Namespace for the NAD. The appliance creates the `default`, `virtual-machines`, and `vmo-golden-images` namespaces. To add namespaces, select **Create Namespace**.         |
     | **Network Type**       | Defaults to `Linux Bridge`. Other options include `macvlan`, `ipvlan`, `SR-IOV`, and `Custom JSON`.                                                                         |
-    | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the Launchpad node.                                                                            |
+    | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the VM Launchpad node.                                                                         |
     | **VLAN Mode**          | Defaults to `Access` for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select `Trunk` to support more than one VLAN for one NAD. |
     | **Tagged VLANs**       | Optional. Enter one or more comma-separated VLAN IDs.                                                                                                                       |
     | **IPAM Configuration** | Optional JSON.                                                                                                                                                              |
@@ -111,4 +110,4 @@ Complete the following required configuration steps before you [create your firs
 
 ## Next Steps
 
-After you configure Launchpad for VMs, use the [Create Your First VM](./quick-start.md) guide to create your first VM.
+After you configure VM Launchpad, use the [Create Your First VM](./quick-start.md) guide to create your first VM.

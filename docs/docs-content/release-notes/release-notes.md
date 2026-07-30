@@ -11,7 +11,76 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 2, 2026 - Release 4.9.38
+## August 2, 2026 - Component Updates {#component-updates-2026-31}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3029 -->
+<!-- RELEASE DATE: August 2, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.19  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.36  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.36  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
+
+- vCluster is now available at version 0.27.3 in Artifact Studio. Users can deploy the updated vCluster ZST package when
+  building virtual cluster environments through Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-824 -->
+
+- A Slim Appliance ISO is now available for new Palette and VerteX installations. The updated Downloads page provides
+  the Slim Appliance ISO, Content Bundle, and MOK Key for Secure Boot for each release version, streamlining the
+  installation experience for new deployments.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3652 -->
+
+- Palette eXtended Kubernetes (PXK) versions 1.34 and 1.35 are now available for use with the CAPI Image Builder,
+  enabling customers to build CAPI images for the latest supported Kubernetes versions.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.1 |
+| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.36.0 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.22.3 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.8 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :x: | 1.63.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.1.0 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.20.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.21.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `ADDON` | :x: | :white_check_mark: | 1.4.19 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
+
+#### Pack Notes
+
+## August 2, 2026 - Release 4.9.38 {#release-notes-4.9.c}
 
 ### Security Notices
 
@@ -273,8 +342,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Edge hosts can now select a Linux bridge as the management interface in
   [Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md#configure-the-management-interface),
   in addition to physical NICs, bonds, and VLAN child interfaces. You can select a bridge whether or not it has an IP
-  address. This supports [Launchpad for VMs](../vm-management/launchpad-for-vms/install-vmla-iso.md) appliance
-  topologies, where management traffic terminates on the bridge itself.
+  address. This supports [VM Launchpad](../vm-management/vm-launchpad/install.md) appliance topologies, where management
+  traffic terminates on the bridge itself.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8975 -->
 
@@ -362,6 +431,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue on Palette Edge native clusters with the Harbor pack where `palette-webhook` pods could remain in a
   `ContainerStatusUnknown` state after a Kubernetes upgrade because they were not drained from a node before the node
   rebooted. Node drains now complete before an upgrade reboots the node.
+
+### VM Launchpad
+
+#### Improvements {#vm-launchpad-improvements-4.9.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3038 -->
+
+- Launchpad for VMs is now [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md), with **VM
+  Launchpad** as the short name. The rename applies to the product UI, documentation, and marketing materials.
+  Documentation pages previously under `/vm-management/launchpad-for-vms/` now serve at `/vm-management/vm-launchpad/`,
+  and existing URLs redirect to the new locations.
 
 ### VerteX
 
@@ -480,8 +560,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
 
-- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.15 is now
-  available.
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) (formerly Launchpad for VMs) version 4.9.15
+  is now available.
 
 - The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
@@ -489,10 +569,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
 
-- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now installs from a slim
-  **Appliance ISO** paired with a separately downloaded **Content bundle**. As of Launchpad for VMs 4.9.15, the full
-  **Appliance ISO with Content** is no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for
-  a description of each artifact.
+- The [VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) now installs from a slim **Appliance ISO** paired
+  with a separately downloaded **Content bundle**. As of VM Launchpad 4.9.15, the full **Appliance ISO with Content** is
+  no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
 ### Improvements
 
@@ -1114,18 +1193,18 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue where Canonical Kubernetes 1.35 was missing from the `k8s_version.json` file in CanvOS v4.8.18, which
   prevented building Canonical provider images for Edge deployments.
 
-### Launchpad for VMs
+### PaletteAI VM Launchpad (formerly Launchpad for VMs) {#launchpad-for-vms}
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-654 -->
 
 #### Features
 
-- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.8 is now available.
-  If upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain the pre-upgrade script, contact
-  your customer support representative.
+- [VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.9.8 is now available. If upgrading from
+  version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain the pre-upgrade script, contact your customer
+  support representative.
 
-- The Launchpad for VMs Appliance now supports live updates to running VMs. You can hot-plug memory and hot-update CPU
-  sockets on a running VM without a reboot.
+- VM Launchpad now supports live updates to running VMs. You can hot-plug memory and hot-update CPU sockets on a running
+  VM without a reboot.
 
 - Running VMs can now be paused and resumed.
 
@@ -1302,7 +1381,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.18.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4209 -->
 
-- The <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack version 0.2.0 is now FIPS compliant for [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) deployments.
+- The <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack version 0.2.0 is now FIPS compliant for [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) (formerly Launchpad for VMs) deployments.
 
 <!-- prettier-ignore-end -->
 

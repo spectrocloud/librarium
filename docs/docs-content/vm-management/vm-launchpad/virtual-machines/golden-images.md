@@ -26,7 +26,7 @@ The following diagram illustrates this workflow.
 
 ## Prerequisites
 
-- A running Launchpad for VMs deployment.
+- A running PaletteAI VM Launchpad deployment.
 - A user account with the platform administrator role.
 - An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
   Catalog** > **Golden Images**.

@@ -8,7 +8,7 @@ sidebar_position: 4
 tags: ["vmo", "vm launchpad", "templates"]
 ---
 
-VM templates in Launchpad for VMs define reusable VM specifications for base image, compute, network, storage, and
+VM templates in PaletteAI VM Launchpad define reusable VM specifications for base image, compute, network, storage, and
 hardware settings. Create VMs from templates to standardize provisioning across teams.
 
 ## Namespace Limitations
@@ -253,7 +253,7 @@ templates, use a sealed and generalized golden image as the source.
     | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                       |
     | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                                 |
-    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                               |
+    | **Use internal package repository** | Keep the internal VM Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
     | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                         |
     | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, VM Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
