@@ -522,7 +522,6 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:
 
 - **Deploy a model**. [Deploy a Model](./deploy-a-model.md).
-- **Set the default model**. [Set the Default Model](./set-the-default-model.md).
 - **Generate an API token**. [Generate an API Token](./generate-an-api-token.md).
 - **Connect a coding tool**. [Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),
   [OpenAI Codex](./use-codex.md), or [OpenCode](./use-opencode.md).
