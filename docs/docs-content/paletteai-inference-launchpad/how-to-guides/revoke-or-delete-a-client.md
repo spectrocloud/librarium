@@ -22,8 +22,8 @@ clients and API tokens relate, refer to [Clients and Quotas](../explanation/clie
 
 ## Find Expired or Revoked Keys
 
-An API token that passes its expiration date becomes expired, and the appliance rejects any request that presents it,
-fail-closed. The console shows each token's state so you can find expired tokens.
+The console shows each token's state, so you can find expired or revoked tokens. For how the appliance enforces token
+expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
 
 1. From the left main menu, select **Access & Policy**.
 
@@ -51,12 +51,11 @@ Revoking a token is immediate and cannot be undone.
 
 ## Suspend or Delete a Client
 
-The **Overview** section of a client's detail panel offers two lifecycle actions, each behind a confirmation:
+Suspend a client to block its requests temporarily; suspension is reversible. Delete a client to permanently retire it,
+which revokes all its API tokens and cannot be undone. For what each action keeps or removes, refer to
+[Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
 
-- **Suspend** blocks the client's requests but keeps its API tokens, quotas, and routing settings in place, so you can
-  resume it later. Suspending is reversible.
-- **Delete** permanently retires the client, removes its quota, egress, and routing settings, and revokes every API
-  token the client owns. The client's audit history is preserved, and you cannot undo a delete.
+Both actions are in the **Overview** section of the client's detail panel, each behind a confirmation.
 
 1. From the left main menu, select **Access & Policy**.
 
