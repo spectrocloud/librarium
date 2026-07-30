@@ -41,6 +41,8 @@ has the necessary network connectivity for self-hosted Palette to operate succes
 
 <PartialsComponent category="self-hosted" name="kubernetes-install-local-prereqs" edition="palette" version="Palette" />
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 ### Other Prerequisites
 
 <PartialsComponent category="self-hosted" name="kubernetes-install-other-prereqs" edition="palette" version="Palette" />

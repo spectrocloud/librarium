@@ -121,6 +121,15 @@ Certain prerequisites apply to all OCI Helm registries, while others are specifi
 Use the following steps to add an OCI Helm registry to Palette. Select the tab that corresponds to the type of OCI
 registry you are adding.
 
+:::info
+
+When synchronization is enabled, the **Base Content Path** field is required. Palette syncs only the Helm charts stored
+directly in the directories you specify. Charts stored at the registry root, in the parent directory of the specified
+path, or in child directories nested below it are not synced. To sync Helm charts from multiple locations, add each
+directory as a separate base content path.
+
+:::
+
 <Tabs groupId="registry">
 
 <TabItem value="basic" label="Basic">

@@ -151,7 +151,20 @@ Use the following steps to install Palette VerteX.
     export PALETTE_ENCRYPTION_PASSWORD=*************
     ```
 
-6.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
+6.  (Optional) If Spectro Cloud support provided you with an image pull secret for security-hardened images,
+    authenticate to the Spectro Cloud OCI registry on the installer host before you start the installation. Save the
+    secret file as `imagepullsecret.json`, and then issue the following command.
+
+    ```shell
+    cat imagepullsecret.json | docker login --username _json_key --password-stdin https://us-docker.pkg.dev
+    ```
+
+    The command returns **Login Succeeded** when the credentials are accepted.
+
+    If you skip this step, you can add or rotate the secret later from the system console. For more information, refer
+    to [Configure Image Pull Secret](../../system-management/configure-image-pull-secret.md).
+
+7.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
     to [Palette Commands](../../../automation/palette-cli/commands/ec.md).
 
@@ -159,9 +172,9 @@ Use the following steps to install Palette VerteX.
     palette ec install
     ```
 
-7.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
+8.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
-8.  Select the desired OS you want to use for the installation. Review the table below for more information about each
+9.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
     | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                              |
@@ -169,7 +182,7 @@ Use the following steps to install Palette VerteX.
     | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-3 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                             |
     | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
-9.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
+10. Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
     vSphere template and specify the version.
 
@@ -180,11 +193,11 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-10. Choose `VMware vSphere` as the cloud type. This is the default.
+11. Choose `VMware vSphere` as the cloud type. This is the default.
 
-11. Type an enterprise cluster name. Your VM instances will use this name as a prefix.
+12. Type an enterprise cluster name. Your VM instances will use this name as a prefix.
 
-12. When prompted, enter the information listed in each of the following tables.
+13. When prompted, enter the information listed in each of the following tables.
 
     #### Environment Configuration
 
@@ -197,7 +210,7 @@ Use the following steps to install Palette VerteX.
     | **Pod CIDR**                      | Enter the CIDR pool IP used to assign IP addresses to pods in the EC. The pod IP addresses must be unique and must not overlap with any machine IPs in the environment.                                                                                                                                                                 |
     | **Service IP Range**              | Enter the IP address range used to assign IP addresses to services in the EC. The service IP addresses must be unique and must not overlap with any machine IPs in the environment.                                                                                                                                                     |
 
-13. Choose the image registry configuration. By default, our support team will provide you with the credentials for the
+14. Choose the image registry configuration. By default, our support team will provide you with the credentials for the
     AWS ECR registry that contains the packs. Use the following table for guidance.
 
     #### Pack & Image Registry Configuration
@@ -218,7 +231,7 @@ Use the following steps to install Palette VerteX.
 
         	When prompted to **Pull images from public registry**, type `y`.
 
-14. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
+15. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
     below.
 
     #### VMware vSphere Account Information
@@ -249,7 +262,7 @@ Use the following steps to install Palette VerteX.
         | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`.                                                                                                                                                                                                                                                            |
         | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+16. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
     addresses using DNS.
 
@@ -264,7 +277,7 @@ Use the following steps to install Palette VerteX.
         | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
         | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-16. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+17. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
         #### vSphere Machine Configuration
@@ -334,7 +347,7 @@ Use the following steps to install Palette VerteX.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+18. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
@@ -367,7 +380,7 @@ Use the following steps to install Palette VerteX.
     Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
     ```
 
-18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+19. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -387,13 +400,13 @@ Use the following steps to install Palette VerteX.
 
     ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
-19. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
+20. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
     a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
     [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
     upload the SSL certificate files to Palette VerteX.
 
-20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)

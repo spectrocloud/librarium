@@ -15096,6 +15096,10 @@
           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
           "type": "string"
         },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
+        },
         "project": {
           "description": "Name of the project in which cluster is to be deployed",
           "type": "string"
@@ -18075,6 +18079,10 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
         },
         "sshKeys": {
           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -39436,6 +39444,10 @@
           },
           "type": "array"
         },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
+        },
         "placement": {
           "$ref": "#/definitions/v1VspherePlacementConfig",
           "description": "Placement configuration Placement config in ClusterConfig serve as default values for each MachinePool"
@@ -39469,6 +39481,10 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
         },
         "placement": {
           "$ref": "#/definitions/v1VspherePlacementConfigEntity",
@@ -61023,6 +61039,7 @@
     },
     "/v1/dashboard/clusterprofiles": {
       "post": {
+        "description": "This is the recommended API for listing and searching cluster profiles by name, tag, type,\nenvironment, or resource type. Prefer this over the older GET /v1/clusterprofiles.\nSupported filter fields - ['profileName', 'tags', 'profileType', 'environment', 'resourceType'].\nSupported sort fields - ['profileName', 'environment', 'profileType', 'creationTimestamp', 'lastModifiedTimestamp'].\n\nExample - find cluster profiles tagged 'production':\n{\"filter\": {\"tags\": {\"eq\": [\"production\"]}}, \"sort\": [{\"field\": \"profileName\", \"order\": \"asc\"}]}",
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
@@ -61076,7 +61093,7 @@
             "Authorization": []
           }
         ],
-        "summary": "Retrieves a list of cluster profiles filter summary Supported filter fields - ['profileName', 'tags', 'profileType', 'environment', 'resourceType'] Supported sort fields - ['profileName', 'environment', 'profileType', 'creationTimestamp', 'lastModifiedTimestamp']",
+        "summary": "Retrieves a list of cluster profiles filter summary",
         "tags": [
           "dashboard"
         ]
@@ -62129,6 +62146,7 @@
     },
     "/v1/dashboard/spectroclusters/search": {
       "post": {
+        "description": "This is the recommended API for listing and searching clusters. Prefer this over the older\nGET /v1/spectroclusters and POST /v1/dashboard/spectroclusters. Supports filtering by any cluster\nproperty (e.g. clusterName, environment, tags, healthState) via a conjunction of filter groups.\nSupported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"].\n\nExample - find clusters whose name contains 'aws':\n{\"filter\": {\"conjunction\": \"and\", \"filterGroups\": [{\"conjunction\": \"and\", \"filters\": [{\"property\": \"clusterName\", \"type\": \"string\", \"condition\": {\"string\": {\"operator\": \"contains\", \"negation\": false, \"ignoreCase\": false, \"match\": {\"conjunction\": \"or\", \"values\": [\"aws\"]}}}}]}]}, \"sort\": [{\"field\": \"clusterName\", \"order\": \"asc\"}]}",
         "operationId": "v1SpectroClustersSearchFilterSummary",
         "parameters": [
           {
@@ -62182,7 +62200,7 @@
             "Authorization": []
           }
         ],
-        "summary": "Retrieves a list of cluster summary with provided search filter spec Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "summary": "Retrieves a list of cluster summary with provided search filter spec",
         "tags": [
           "dashboard"
         ]

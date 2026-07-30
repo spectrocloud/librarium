@@ -60,21 +60,15 @@ azureMachineTemplate:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPZ Resource Type     | Properties                                                                                                                                                                                                                                                                                                        |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AzureCluster`         | `bastionSpec`, `controlPlaneEnabled`, `controlPlaneEndpoint`, `extendedLocation`, `cloudProviderConfigOverrides`, `failureDomains`, `additionalTags`                                                                                                                                                              |
-| `AzureMachineTemplate` | `providerID`, `failureDomain`, `userAssignedIdentities`, `systemAssignedIdentityRole`, `dataDisks`, `additionalTags`, `additionalCapabilities`, `allocatePublicIP`, `enableIPForwarding`, `diagnostics`, `securityProfile.securityType`, `securityProfile.uefiSettings`, `additionalCapabilities.ultraSSDEnabled` |
+| `AzureCluster`         | `additionalTags`, `bastionSpec`, `cloudProviderConfigOverrides`, `controlPlaneEnabled`, `controlPlaneEndpoint`, `extendedLocation`, `failureDomains`                                                                                                                                                              |
+| `AzureMachineTemplate` | `additionalCapabilities`, `additionalCapabilities.ultraSSDEnabled`, `additionalTags`, `allocatePublicIP`, `dataDisks`, `diagnostics`, `enableIPForwarding`, `failureDomain`, `providerID`, `securityProfile.securityType`, `securityProfile.uefiSettings`, `systemAssignedIdentityRole`, `userAssignedIdentities` |
 
 ## Azure AKS
 
@@ -131,10 +125,16 @@ azureManagedMachinePool:
       updated: "true"
 ```
 
-```yaml title="Set the node pool OS SKU to Azure Linux"
+Whenever you use `asoManagedClustersAgentPoolPatches` on `azureManagedMachinePool`, you must include an entry that sets
+the `osSKU` field alongside any other patch entries.
+
+Set `osSKU` to the value that matches the OS you selected for the node pool: `AzureLinux`, `Ubuntu`, or `Windows2022`.
+
+```yaml {5} title="Set the node pool OS SKU to Azure Linux"
 azureManagedMachinePool:
   spec:
     asoManagedClustersAgentPoolPatches:
+      - '{"spec":{"upgradeSettings":{"maxSurge":"1"}}}'
       - '{"spec":{"osSKU":"AzureLinux"}}' # Other values include Ubuntu and Windows2022
 ```
 
@@ -204,18 +204,12 @@ to reconcile.
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPZ Resource Type         | Properties                                                                                                                                                                          |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AzureManagedControlPlane` | `controlPlaneEndpoint`, `fleetsMember`, `fqdnSubdomain`, `securityProfile` (partial support)                                                                                        |
-| `AzureManagedMachinePool`  | `additionalTags`, `name`, `nodeLabels`, `taints`, `osDiskType`, `enableUltraSSD`, `enableNodePublicIP`, `nodePublicIPPrefixID`, `scaleSetPriority`, `scaleDownMode`, `spotMaxPrice` |
+| `AzureManagedMachinePool`  | `additionalTags`, `enableNodePublicIP`, `enableUltraSSD`, `name`, `nodeLabels`, `nodePublicIPPrefixID`, `osDiskType`, `scaleDownMode`, `scaleSetPriority`, `spotMaxPrice`, `taints` |

@@ -10,6 +10,16 @@ tags: ["edge"]
 You can update existing local clusters in a locally managed Edge host from Local UI by uploading a new cluster profile
 version. This guide explains how to update an existing cluster in Local UI.
 
+:::info
+
+The **Upload Configuration** flow described on this page is available in agent mode and in appliance mode on Edge hosts
+with an [`applianceType`](../../edge-configuration/installer-reference.md) of `palette` or `vertex`. On appliance hosts
+with an `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
+`ai-launchpad-vertex`, Local UI hides the cluster configuration upload option. To update these appliances, upload a new
+content bundle from the [Content](./upload-content-bundle.md) page and redeploy the cluster.
+
+:::
+
 ## Prerequisites
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
