@@ -13,9 +13,9 @@ databases, or call APIs; they do not have to rely on custom logic authored by yo
 (Large Language Model) LLM itself. AI tools connected to MCP servers are useful in practical applications because they
 become active assistants, with capabilities far beyond generating text.
 
-The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) wraps around the Palette API, allowing you
-to use natural language to perform actions on resources. The MCP server is a powerful automation tool that enables LLMs
-to interact with Palette consistently without having to understand the complete Palette API.
+The [Palette MCP Server](https://github.com/spectrocloud/palette-agent-toolkit) wraps around the Palette API, allowing
+you to use natural language to perform actions on resources. The MCP server is a powerful automation tool that enables
+LLMs to interact with Palette consistently without having to understand the complete Palette API.
 
 The Palette MCP server ships as a container image and as a native binary for macOS and Linux, and lets you interact with
 the following Palette resources:
