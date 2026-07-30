@@ -178,12 +178,14 @@ before you link them.
    number of control-plane nodes.
 2. In the leader's Local UI, open **[Linked Edge Hosts](../reference/glossary.md#linked-edge-hosts)** > **Generate
    token**. The leader emits a Base64-encoded token containing its IP address and a
-   [one-time password (OTP)](../reference/glossary.md#otp) valid for two minutes. Select **Copy**.
+   [one-time password (OTP)](../reference/glossary.md#otp) valid for two minutes. The token appears with a copy button,
+   not a labeled **Copy** control, so select the copy button to copy the token to your clipboard.
 3. On each other host's Local UI, open **Linked Edge Hosts** > **Link this device to another**. Paste the token from the
    leader and confirm.
 4. Repeat for every host you want to link.
-5. Confirm all linked hosts appear in the **Linked Edge Hosts** table. Content synchronization takes at least five
-   minutes, depending on the network.
+5. Confirm all linked hosts appear in the **Linked Edge Hosts** table. Each linked host shows a **Pending** status until
+   you upload the content bundle in the next step, so a **Pending** status here is expected and does not indicate a
+   problem. Content synchronization takes at least five minutes, depending on the network.
 
 ## Upload the Content Bundle
 
@@ -346,14 +348,19 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 4. In **Profile Config**, complete the PaletteAI Inference Launchpad custom wizard. The wizard collects the settings the
    platform packs need to install correctly on your hardware and network, in six sections: Networking, OS and metrics,
    Container registry, Local admin, Storage, and Certificates. In Networking, the **Platform IP Address** is a single
-   unused IP address (not a range) that MetalLB assigns to the appliance console and API. In Certificates, either select
-   **Generate** to create a self-signed CA certificate, or provide your own CA certificate and key. For every field's
-   type, default, and validation rules, including the password complexity requirements for the Registry and Local Admin
-   passwords, refer to [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
+   unused IP address (not a range) that MetalLB assigns to the appliance console and API. In Certificates, provide the
+   CA certificate for the appliance's OIDC endpoint. The two certificate fields are labeled **OIDC CA cert** and **OIDC
+   CA key**, so look for the **OIDC** labels. To create a self-signed certificate, select the **OIDC CA cert** field
+   first, then select **Generate**, which fills in both the certificate and the key. To provide your own certificate
+   instead, paste your base64-encoded CA certificate and its private key. For every field's type, default, and
+   validation rules, including the password complexity requirements for the Registry and Local Admin passwords, refer to
+   [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
 
-5. In **Cluster Config**, configure the cluster settings, including the cluster VIP.
+5. In **Cluster Config**, configure the cluster settings, including the cluster **VIP**. Enter the VIP you reserved in
+   [Before You Begin](#before-you-begin). The VIP is a single IP address that always resolves to whichever node
+   currently holds the control-plane role, so the cluster keeps one stable endpoint even as individual nodes fail over.
 6. In **Node Config**, assign hosts to the control-plane and worker node pools.
-   {/* NEEDS REVIEW: review notes (2026-07-21) ask to tell users to select the bond, if one exists, during node config. Confirm the exact step and field label before publishing. */}
+   {/* NEEDS REVIEW: QA's end-to-end install pass (2026-07-27) confirms a step is needed here to select the bond interface for the CNI during node config, but the exact field label and its section are still unconfirmed. Remains SME-blocked before publishing. */}
    - Single node: no host selection is needed. Remove the worker pool and ensure **Allow worker capability** is enabled
      on the control-plane pool so the sole node acts as both the control plane and the worker.
    - Multi-node: assign the hosts you linked previously. Keep the leader in the control-plane pool and use an odd number
@@ -420,9 +427,7 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
    kubectl --kubeconfig appliance.kubeconfig get pods --all-namespaces
    ```
 
-3. If the installation stalls, verify that the `piraeus-operator` and `nvidia-gpu-operator-ai` packs install correctly.
-   GPU driver installation can take additional time on first boot.
-4. After deployment completes, additional items appear in the Local UI left main menu. Use them to reach the PaletteAI
+3. After deployment completes, additional items appear in the Local UI left main menu. Use them to reach the PaletteAI
    Inference Launchpad platform and confirm that GPU nodes are schedulable.
 
 :::info Log in to the console
@@ -431,12 +436,14 @@ The cluster is now running. Open the PaletteAI Inference Launchpad console from 
 Local UI left main menu after deployment completes, rather than typing the platform IP address by hand. The console is
 served at `https://<platform-ip>`, the single Platform IP Address that Traefik fronts (the one you set in the cluster
 profile). Sign in with the **Local Admin** username and password you set in the Profile Config wizard during cluster
-creation. These are the console credentials, and they are also the Grafana admin login. They are not a separate account
-and not the Palette TUI account you created earlier.
+creation. This is deliberately a different account from the Palette TUI account you created earlier: the Palette TUI
+account manages the node, signing in to Local UI and connecting over SSH, while the Local Admin account signs in to the
+appliance console and the Grafana dashboard, which share this one login. You set the Local Admin password during cluster
+creation because the console and Grafana do not exist until the cluster is deployed.
 
 :::
 
-If the cluster stalls, or if the GPUs do not enumerate as expected, refer to
+If the cluster does not reach a **Running** and **Healthy** state, or if the GPUs do not enumerate as expected, refer to
 [Known Issues](../reference/known-issues.md).
 
 ## Upload Your Model
@@ -513,9 +520,12 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    </Tabs>
 
-4. Wait for the model to reach **Available** in the appliance console's deploy picker. On a multi-node cluster the
-   appliance syncs the model to every node before marking it **Available**; the picker shows **Pending** or **Missing**
-   for nodes that are still catching up.
+4. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
+   select **Deploy model** to open the deploy panel, and open the model drop-down menu. On a single-node appliance, the
+   model appears in the drop-down on the next catalog scan after the upload finishes. On a multi-node appliance, the
+   drop-down shows the model's cluster-wide state: **Available** when the model is ready on every node and can be
+   deployed, **Pending** while the appliance is still synchronizing it across nodes, or **Missing** when the appliance
+   has the model's metadata but not yet its weights. Only an **Available** model can be deployed.
 
 ## Next Steps
 
