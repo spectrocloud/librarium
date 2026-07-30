@@ -29,11 +29,20 @@ If an administrator already gave you an API token, you can use it and skip the f
 
 2. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
 
-3. Select the client to open its detail panel, and then select the **API tokens** section.
+3. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
+   **Overview** section.
 
-4. Select **Mint an API token**, and optionally set a **Label** and an **Expires** date.
+4. Select the **API tokens** section, and then select **Create Token**. The **Create API token** dialog opens.
 
-5. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+5. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
+   it.
+
+6. _(Optional)_ To set an expiration date, clear **Never expires**, and then choose an **Expires** date. By default, the
+   token does not expire.
+
+7. Select **Create Token**.
+
+8. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
 :::warning
 
