@@ -9,9 +9,9 @@ name: Release Branch Preview
 on:
   push:
     branches:
-      - "docs-rel-[0-9]-[0-9]"
-      - "docs-rel-[0-9]-[0-9]-[0-9]"
-      - "docs-rel-[0-9]-[0-9]-[a-z]"
+      - "docs-rel-[0-9]-[0-9]*"
+      - "docs-rel-[0-9]-[0-9]*-[0-9]*"
+      - "docs-rel-[0-9]-[0-9]*-[a-z]"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
