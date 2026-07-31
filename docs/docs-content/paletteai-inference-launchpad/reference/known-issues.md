@@ -37,3 +37,12 @@ with a probe failure for every device.
 and `/oem` directories afterward.
 
 <!-- vale on -->
+
+## Installation stalls during cluster deployment
+
+**Symptom.** The cluster does not reach a **Running** and **Healthy** state during deployment, and one or more packs
+stay in a pending or installing state.
+
+**Workaround.** Confirm that the `piraeus-operator` and `nvidia-gpu-operator-ai` packs install correctly. GPU driver
+installation can take extra time on the first boot, so wait before you treat a slow pack as stalled. If the GPUs do not
+enumerate as expected, refer to [GPUs do not enumerate on HPE servers](#gpus-do-not-enumerate-on-hpe-servers).

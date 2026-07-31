@@ -39,14 +39,17 @@ grants model access, and optionally issues the client's first API token.
 5. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
    refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
 
-6. _(Optional)_ On the **Egress** step, allow the client to reach external models, and then select **Next step**. For
-   details, refer to [Manage a Client's Model Access](./manage-client-model-access.md).
+6. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external, or frontier, models,
+   and then select **Next step**. External access is denied by default. To add a provider key and set a daily spend cap,
+   refer to [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
 
-7. _(Optional)_ On the **Routing** step, route the client to specific models, and then select **Next step**. For
-   details, refer to [Manage a Client's Model Access](./manage-client-model-access.md).
+7. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
+   default model routing, or edit the **Tier map** to route the client's model aliases to specific models. Then select
+   **Next step**. For details, refer to
+   [Manage a Client's Model Access](./manage-client-model-access.md#route-a-client-to-specific-models).
 
-8. On the **API tokens** step, select **Mint an API token** to issue the client's first token. Optionally enter a
-   **Label** and an **Expires** date. Leave **Expires** blank for a token that never expires.
+8. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**
+   and an **Expires** date, and then select **Add Token**. Leave **Expires** blank for a token that never expires.
 
 9. Select **Create client**.
 
@@ -72,7 +75,7 @@ Confirm that the appliance registered the client and its API token.
 
 3. Select the client to open its detail panel, and then select the **API tokens** section.
 
-4. Confirm the token you minted appears with a state of **active**.
+4. Confirm the token you added appears with a state of **active**.
 
 The client is ready to use once its token is active. To confirm the token works from end to end, connect a coding
 assistant to the appliance with it, as described in [Use Claude Code](./use-claude-code.md).
