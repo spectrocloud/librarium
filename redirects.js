@@ -24,7 +24,6 @@ if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
 }
 
 let redirects = [
-
   {
     from: `/vm-management/launchpad-for-vms/`,
     to: `/vm-management/vm-launchpad/`,
