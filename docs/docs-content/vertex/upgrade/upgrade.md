@@ -89,13 +89,16 @@ independently of Palette VerteX.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.8.61       |       4.9.27       | :white_check_mark: |
+|       4.8.61       |       4.9.38       | :white_check_mark: |
+|       4.8.61       |       4.9.24       | :white_check_mark: |
 |       4.8.61       |       4.9.14       | :white_check_mark: |
 |       4.8.61       |       4.9.5        | :white_check_mark: |
-|       4.8.56       |       4.9.27       | :white_check_mark: |
+|       4.8.56       |       4.9.38       | :white_check_mark: |
+|       4.8.56       |       4.9.24       | :white_check_mark: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
 |       4.8.56       |       4.9.5        | :white_check_mark: |
-|       4.8.52       |       4.9.27       | :white_check_mark: |
+|       4.8.52       |       4.9.38       | :white_check_mark: |
+|       4.8.52       |       4.9.24       | :white_check_mark: |
 |       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.5        | :white_check_mark: |
 |       4.8.33       |       4.9.5        | :white_check_mark: |
@@ -535,13 +538,16 @@ after a few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.8.61       |       4.9.27       | :white_check_mark: |
+|       4.8.61       |       4.9.38       | :white_check_mark: |
+|       4.8.61       |       4.9.24       | :white_check_mark: |
 |       4.8.61       |       4.9.14       | :white_check_mark: |
 |       4.8.61       |       4.9.5        | :white_check_mark: |
-|       4.8.56       |       4.9.27       | :white_check_mark: |
+|       4.8.56       |       4.9.38       | :white_check_mark: |
+|       4.8.56       |       4.9.24       | :white_check_mark: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
 |       4.8.56       |       4.9.5        | :white_check_mark: |
-|       4.8.52       |       4.9.27       | :white_check_mark: |
+|       4.8.52       |       4.9.38       | :white_check_mark: |
+|       4.8.52       |       4.9.24       | :white_check_mark: |
 |       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.5        | :white_check_mark: |
 |       4.8.51       |       4.9.5        | :white_check_mark: |
@@ -986,13 +992,16 @@ after a few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.8.61       |       4.9.27       | :white_check_mark: |
+|       4.8.61       |       4.9.38       | :white_check_mark: |
+|       4.8.61       |       4.9.24       | :white_check_mark: |
 |       4.8.61       |       4.9.14       | :white_check_mark: |
 |       4.8.61       |       4.9.5        | :white_check_mark: |
-|       4.8.56       |       4.9.27       | :white_check_mark: |
+|       4.8.56       |       4.9.38       | :white_check_mark: |
+|       4.8.56       |       4.9.24       | :white_check_mark: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
 |       4.8.56       |       4.9.5        | :white_check_mark: |
-|       4.8.52       |       4.9.27       | :white_check_mark: |
+|       4.8.52       |       4.9.38       | :white_check_mark: |
+|       4.8.52       |       4.9.24       | :white_check_mark: |
 |       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.5        | :white_check_mark: |
 |       4.8.12       |       4.9.5        | :white_check_mark: |
