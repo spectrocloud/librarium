@@ -11,144 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 2, 2026 - Component Updates {#component-updates-2026-31}
+## July 30, 2026 - Release 4.9.38 {#release-notes-4.9.c}
 
-<!-- COMPONENT UPDATES TICKET: DOC-3029 -->
+<!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
 <!-- RELEASE DATE: August 2, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
-
-The following components have been updated for Palette version 4.9.5 - 4.9.27.
-
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.19  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.36  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.36  |
-
-<!-- BEGIN COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
-
-### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
-
-- vCluster is now available at version 0.27.3 in Artifact Studio. Users can deploy the updated vCluster ZST package when
-  building virtual cluster environments through Palette.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-824 -->
-
-- A Slim Appliance ISO is now available for new Palette and VerteX installations. The updated Downloads page provides
-  the Slim Appliance ISO, Content Bundle, and MOK Key for Secure Boot for each release version, streamlining the
-  installation experience for new deployments.
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3652 -->
-
-- Palette eXtended Kubernetes (PXK) versions 1.34 and 1.35 are now available for use with the CAPI Image Builder,
-  enabling customers to build CAPI images for the latest supported Kubernetes versions.
-
-<!-- END COMPONENT UPDATES BODY: DOC-3029. DO NOT DELETE. -->
-
-### Packs
-
-<!-- BEGIN PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
-<!-- prettier-ignore-start -->
-
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.1 |
-| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.36.0 |
-| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
-| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.22.3 |
-| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.8 |
-| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :x: | 1.63.0 |
-| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.1 |
-| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.19.6 |
-| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.19.6 |
-| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.1.0 |
-| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
-| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
-| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.20.0 |
-| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.21.0 |
-| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `ADDON` | :x: | :white_check_mark: | 1.4.19 |
-
-<!-- prettier-ignore-end -->
-
-<!-- END PACKS LIST BODY: DOC-3029. DO NOT DELETE. -->
-
-#### Pack Notes
-
-## July 26, 2026 - Component Updates {#component-updates-2026-30b}
-
-<!-- COMPONENT UPDATES TICKET: DOC-3020 -->
-<!-- RELEASE DATE: July 26, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.28 -->
-<!-- RELEASE ARTIFACT STUDIO: 4.9.14 -->
-<!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
-
-The following components have been updated for Palette version 4.9.5 - 4.9.27.
-
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.14  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.33  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.33  |
-
-<!-- BEGIN COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
-
-### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
-
-- Updated Kubernetes pack versions are available for Palette clusters.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-757 -->
-
-- The Palette and Palette VerteX appliance installer now features a redesigned configuration form that organizes
-  variables into named sections (networking, credentials, certificates, and appliance-specific groups) instead of a
-  single flat list. Network interface fields are pre-populated from the host environment, TLS certificate fields support
-  one-click generation, and inline validation prevents misconfigured deployments from proceeding. The same form renders
-  during day-two operations with all fields pre-filled from the current cluster configuration, and only changed fields
-  are updated on submit.
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2298 -->
-
-- The Terraform Spectro Cloud provider now supports CAPI passthrough overrides for GCP IaaS, GKE, vSphere, and MAAS
-  clusters. You can supply key/value overrides at the cluster and node pool levels for day-zero and day-two operations,
-  consistent with the existing passthrough experience for AKS, AWS IaaS, EKS, and CloudStack. This feature is supported
-  on both Palette and Palette VerteX.
-
-<!-- END COMPONENT UPDATES BODY: DOC-3020. DO NOT DELETE. -->
-
-### Packs
-
-<!-- BEGIN PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
-<!-- prettier-ignore-start -->
-
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.1 |
-| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.4 |
-| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.0 |
-| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.0 |
-| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.19.6 |
-| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.0 |
-| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.8.0 |
-| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.0 |
-| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
-| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :x: | :white_check_mark: | 1.14.0 |
-
-<!-- prettier-ignore-end -->
-
-<!-- END PACKS LIST BODY: DOC-3020. DO NOT DELETE. -->
-
-#### Pack Notes
-
-## August 2, 2026 - Release 4.9.38 {#release-notes-4.9.c}
 
 ### Security Notices
 
@@ -210,12 +79,18 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
   available.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3037 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-824 -->
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a slim
-  **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with Content** is
-  only available for versions prior to 4.9.36. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a
-  description of each artifact.
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now install from a
+  smaller **Appliance ISO** paired with a separately downloaded **Content bundle**. The full **Appliance ISO with
+  Content** is only available for versions prior to 4.9.36. Refer to
+  [Install the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [Install the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) for the
+  updated installation steps, and to [Artifact Studio](../downloads/artifact-studio.md) for a description of each
+  artifact and the MOK Key for Secure Boot per release version.
+
+- [Artifact Studio](../downloads/artifact-studio.md) version 4.9.19 is now available.
 
 #### Improvements
 
@@ -275,6 +150,30 @@ The following components have been updated for Palette version 4.9.5 - 4.9.27.
   Device (DRBD) kernel module is loaded. A new `compile` mode builds the module from source using Dynamic Kernel Module
   Support (DKMS) for OS images that ship with matching kernel headers; the default `shipped_modules` mode remains
   recommended and is the only mode compatible with Secure Boot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-757 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) installer now features
+  a redesigned configuration form that organizes variables into named sections (networking, credentials, certificates,
+  and appliance-specific groups) instead of a single flat list. Network interface fields are pre-populated from the host
+  environment, TLS certificate fields support one-click generation, and inline validation prevents misconfigured
+  deployments from proceeding. The same form renders during day-two operations with all fields pre-filled from the
+  current cluster configuration, and only changed fields are updated on submit.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
+
+- vCluster is now available at version 0.27.3 in [Artifact Studio](../downloads/artifact-studio.md). Users can deploy
+  the updated vCluster ZST package when building virtual cluster environments through Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3652 -->
+
+- Palette eXtended Kubernetes (PXK) versions 1.34 and 1.35 are now available for use with the CAPI Image Builder,
+  enabling customers to build CAPI images for the latest supported Kubernetes versions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4320 -->
+
+- Updated Kubernetes pack versions are available for Palette clusters.
 
 #### Deprecations and Removals
 
@@ -556,6 +455,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2298 -->
+
+- The Terraform Spectro Cloud provider now supports CAPI passthrough overrides for GCP IaaS, GKE, vSphere, and MAAS
+  clusters. You can supply key/value overrides at the cluster and node pool levels for day-zero and day-two operations,
+  consistent with the existing passthrough experience for AKS, AWS IaaS, EKS, and CloudStack. This is supported on both
+  Palette and Palette VerteX.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2287 -->
@@ -566,6 +472,40 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   the existing pack state.
 
 ### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3029 + DOC-3020. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.1 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.4 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.1.1 |
+| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.36.0 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.22.3 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.8 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :x: | 1.63.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.1 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.19.6 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.8.0 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.1.0 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.0 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.3 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :x: | :white_check_mark: | 1.14.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.20.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 87.21.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :x: | :white_check_mark: | 1.4.19 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3029 + DOC-3020. DO NOT DELETE. -->
 
 #### Pack Notes
 
@@ -584,36 +524,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   field was never populated on these distributions, which held the pack in a not-ready state even though Traefik pods
   were running and traffic was flowing through NodePorts or virtual IPs. Traefik pack readiness on these distributions
   now works as expected.
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
 
 #### Deprecations and Removals
 
