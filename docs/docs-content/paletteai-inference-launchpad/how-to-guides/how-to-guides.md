@@ -19,8 +19,8 @@ you the steps to do it without teaching background concepts.
 | [Deploy a Model](./deploy-a-model.md)                             | Deploy an LLM to the cluster and verify it is serving.                           |
 | [Upload a Model](./upload-a-model.md)                             | Download a model on a jumpbox and upload it to the appliance.                    |
 | [Switch the Default Model](./set-the-default-model.md)            | Switch the default model when the current default becomes unavailable.           |
-| [Generate an API Token](./generate-an-api-token.md)               | Create an API token that clients use to authenticate to the appliance.           |
 | [Create a Client](./create-a-client.md)                           | Create a client and issue its first API token.                                   |
+| [Generate an API Token](./generate-an-api-token.md)               | Create an API token that clients use to authenticate to the appliance.           |
 | [Set and Manage Client Quotas](./manage-client-quotas.md)         | Set, edit, and remove a client's request, token, and cost limits.                |
 | [Manage a Client's Model Access](./manage-client-model-access.md) | Route a client to models and allow it to reach external models.                  |
 | [View Client Usage](./view-client-usage.md)                       | View a client's per-token consumption, requests, and cost.                       |
