@@ -82,12 +82,13 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 9. Fill out the following parameters and click **Next** when you are done.
 
-   | **Parameter**        | **Description**                                                                                                                                                                             |
-   | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Project**          | The project to which the cluster belongs.                                                                                                                                                   |
-   | **Region**           | Choose the desired GCP region to deploy the cluster.                                                                                                                                        |
-   | **SSH Key**          | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                 |
-   | **Static Placement** | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](#static-placement) table below to learn more about the required input fields. |
+   | **Parameter**                                  | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+   | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Project**                                    | The project to which the cluster belongs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+   | **Region**                                     | Choose the desired GCP region to deploy the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **SSH Key**                                    | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Static Placement**                           | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Override Cluster API cluster configuration** | Enable if you want to provide custom Cluster API manifests in YAML format. This is an advanced option that allows you to customize the underlying CAPI objects used to provision and manage your cluster. When enabled, the **Update Cluster API cluster configuration** option becomes available. Click this button to view the YAML code editor drawer, where you can provide your override configuration. Review the [Override CAPI Properties](../../../architecture/override-capi-properties/override-capi-properties.md) documentation to learn more about this feature. |
 
    #### Static Placement
 
@@ -114,11 +115,21 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     :::
 
-11. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on
+11. Enable **Override Cluster API node pool configuration (Optional)** if you want to provide custom Cluster API
+    manifests in YAML format. This is an advanced option that allows you to customize the underlying CAPI objects used
+    to provision and manage your node pool.
+
+    When enabled, the **Update Cluster API node pool configuration** option becomes available. Click this button to view
+    the YAML code editor drawer, where you can provide your override configuration.
+
+    Review the [Override CAPI Properties](../../../architecture/override-capi-properties/override-capi-properties.md)
+    documentation to learn more about this feature.
+
+12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on
     existing clusters. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more.
     Toggle the **Taint** button to create a label.
 
-12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
+13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters.
 
     | **Parameter** | **Description**                                                                                                                      |
@@ -135,13 +146,13 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod on the tainted node but is not guaranteed.                                                                          |
     | **NoExecute**        | New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
-13. Click **Next** after configuring the node pool.
+14. Click **Next** after configuring the node pool.
 
-14. <PartialsComponent category="clusters" name="cluster-settings" />
+15. <PartialsComponent category="clusters" name="cluster-settings" />
 
-15. Select **Validate** to review your cluster configurations and settings.
+16. Select **Validate** to review your cluster configurations and settings.
 
-16. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+17. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the

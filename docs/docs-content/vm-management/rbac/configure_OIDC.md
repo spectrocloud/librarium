@@ -75,6 +75,48 @@ The following steps apply exclusively to clusters configured with **Custom** thi
     `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to which
     the IdP will redirect users after successful authentication.
 
+## Configure Custom OIDC for VM Migration Assistant
+
+The VM Migration Assistant service console supports authentication with **Custom** third-party OIDC Identity Providers
+(IdPs), such as Okta or Azure Active Directory, in addition to Palette OIDC. If you configured **Custom** OIDC at the
+Kubernetes layer of your VMO cluster and enabled OIDC on the Migration Assistant service console, follow the steps in
+this section to authorize sign-ins through your third-party IdP.
+
+### Prerequisites for VM Migration Assistant OIDC
+
+- A VMO cluster with **Custom** OIDC configured at the Kubernetes layer. Refer to [Enable OIDC](#enable-oidc) for
+  guidance.
+
+- A deployed VM Migration Assistant add-on profile that sets `vm-migration-assistant-ui.console.deployment.env.userAuth`
+  to `oidc`. Refer to
+  [Create a VM Migration Assistant Profile](../vm-migration-assistant/create-vm-migration-assistant-profile.md) for
+  guidance.
+
+- Access to the third-party IdP console associated with the OIDC configuration in your cluster's Kubernetes layer.
+
+### Configure the IdP Redirect URI and Refresh Token
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Clusters** and select your VMO cluster.
+
+3. On the **Overview** tab, locate the **vm-migration** entry in the **Services** list, and copy the VM Migration
+   Assistant service console URL.
+
+4. Log in to the third-party IdP console associated with the OIDC configuration used in your cluster.
+
+5. Locate the OIDC application used by the cluster.
+
+6. Enable the **Refresh Token** setting. For example, if you use [Okta](https://www.okta.com), refer to the
+   [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide.
+
+7. Update the **Sign-in redirect URIs** field. Append `/auth/callback` to the service console URL copied in step 3, and
+   add the resulting URL. For example, if the service console URL is `https://vm-migration.mycompany.dev`, add
+   `https://vm-migration.mycompany.dev/auth/callback`. This is the URI to which the IdP redirects users after successful
+   authentication.
+
+8. Save the IdP application configuration.
+
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com/).

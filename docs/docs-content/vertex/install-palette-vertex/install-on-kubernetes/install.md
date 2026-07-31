@@ -47,6 +47,8 @@ and VerteX-created Kubernetes resources that will interfere with the installatio
   version="Palette VerteX"
 />
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 - An image pull secret from Spectro Cloud customer support, required to pull images from Spectro Cloud OCI registries.
   This is not required if you plan to use [mirror registries](../../system-management/registry-override.md) or
   [image swap](../../../clusters/cluster-management/image-swap.md) when pulling images. Refer to
