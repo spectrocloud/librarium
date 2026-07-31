@@ -72,21 +72,15 @@ awsMachineTemplate:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPA Resource Type   | Properties                                                                                                                                                                                                                                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `AWSCluster`         | `partition`, `secondaryControlPlaneLoadBalancer`                                                                                                                                                                                           |
-| `AWSMachineTemplate` | `placementGroupName`, `tenancy`, dedicated host fields, `networkInterfaces` (beyond single-subnet pattern), `nonRootVolumes`, cloudInit/ignition blocks, `cpuOptions` (not available in v2.7.1), `privateDnsName`, `capacityReservationId` |
+| `AWSMachineTemplate` | `capacityReservationId`, cloudInit/ignition blocks, `cpuOptions` (not available in v2.7.1), dedicated host fields, `networkInterfaces` (beyond single-subnet pattern), `nonRootVolumes`, `placementGroupName`, `privateDnsName`, `tenancy` |
 
 ## EKS
 
@@ -281,19 +275,13 @@ You can set node-pool tags when you create a cluster (Day-0) or on a running clu
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPA Resource Type       | Properties                                                                                                                                                                          |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AWSManagedControlPlane` | `secondaryCidrBlock`, `partition`, `imageLookupFormat`, `imageLookupOrg`, `imageLookupBaseOS`, `tokenMethod`, `restrictPrivateSubnets`, `vpcCni.env`, `addons`                      |
-| `AWSManagedMachinePool`  | `availabilityZoneSubnetType`, `amiVersion`, `labels`, `taints`, `providerIDList`, `remoteAccess.sourceSecurityGroups`, `remoteAccess.public`, `awsLaunchTemplate` (partial support) |
+| `AWSManagedControlPlane` | `addons`, `imageLookupBaseOS`, `imageLookupFormat`, `imageLookupOrg`, `partition`, `restrictPrivateSubnets`, `secondaryCidrBlock`, `tokenMethod`, `vpcCni.env`                      |
+| `AWSManagedMachinePool`  | `amiVersion`, `availabilityZoneSubnetType`, `awsLaunchTemplate` (partial support), `labels`, `providerIDList`, `remoteAccess.public`, `remoteAccess.sourceSecurityGroups`, `taints` |
 | `AWSFargateProfile`      | `role`                                                                                                                                                                              |

@@ -48,17 +48,20 @@ The following examples demonstrate how to configure OCI pack registries for diff
 - The full Docker V2 API path is required for the JFrog Artifactory `<endpoint>`.
 - The [repository key](https://jfrog.com/help/r/artifactory-rest-apis/list-docker-repositories) is included in the
   `<endpoint>` value, which is `spectro-packs-repo` in this example.
+- The `<baseContentPath>` is the directory in the JFrog repository where the packs are stored, which is `sample-dir` in
+  this example. Palette syncs only the content stored directly in the specified directory. Content stored at the
+  repository root or in child directories nested below the specified path is not synced.
 
 ```text hideClipboard title="UI values example"
 Endpoint: https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo
-Base Content Path: (leave empty)
+Base Content Path: sample-dir
 ```
 
 ```yaml hideClipboard title="Helm values example"
 config:
   ociPackRegistry:
     endpoint: "https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo"
-    baseContentPath: ""
+    baseContentPath: "sample-dir"
     name: "Artifactory OCI Packs"
     username: "<username>"
     password: "<base64-encoded-password>"
@@ -69,7 +72,7 @@ config:
 This configuration resolves to the following URL for `spectro-packs`.
 
 ```
-https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo/spectro-packs/
+https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo/sample-dir/spectro-packs/
 ```
 
 </TabItem>

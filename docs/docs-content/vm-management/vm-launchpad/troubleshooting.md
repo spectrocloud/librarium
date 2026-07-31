@@ -1,22 +1,22 @@
 ---
 sidebar_label: "Troubleshooting"
-title: "Troubleshooting Launchpad for VMs"
-description: "Troubleshooting steps for common Launchpad for VMs (VMO 2.0) scenarios."
+title: "Troubleshooting VM Launchpad"
+description: "Troubleshooting steps for common VM Launchpad (VMO 2.0) scenarios."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vmo", "launchpad for vms", "troubleshooting"]
+tags: ["vmo", "vm launchpad", "troubleshooting"]
 ---
 
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
-[Launchpad for VMs appliance](./launchpad-for-vms.md).
+[PaletteAI VM Launchpad](./vm-launchpad.md).
 
 ## Scenario - VM Migration Fails During Guest Conversion on Block-Based Storage
 
 When you use the [VM Migration Assistant](../vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to a VMO
-cluster backed by a block-based Container Storage Interface (CSI), such as the LINSTOR/DRBD storage used by the
-Launchpad for VMs appliance, migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan
-reports only a generic message. The following text is an example of the message.
+cluster backed by a block-based Container Storage Interface (CSI), such as the LINSTOR/DRBD storage used by the VM
+Launchpad, migrations can fail during the guest conversion (`ConvertGuest`) phase. The migration plan reports only a
+generic message. The following text is an example of the message.
 
 ```text
 error: { phase: "ConvertGuest", reasons: ["Guest conversion failed. See pod logs for details."] }

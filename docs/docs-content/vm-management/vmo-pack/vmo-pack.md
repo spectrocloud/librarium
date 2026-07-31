@@ -1,7 +1,7 @@
 ---
 sidebar_label: "VMO Pack"
 title: "VMO Pack"
-description: "Learn about the VMO Pack. If you are new to VMO, we recommend using the VM Launchpad Appliance instead."
+description: "Learn about the VMO Pack. If you are new to VMO, we recommend using the VM Launchpad instead."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["vmo", "vmo pack"]
@@ -17,9 +17,9 @@ Palette console using the Spectro Proxy.
 
 :::tip
 
-We recommend using the [VM Launchpad Appliance](../launchpad-for-vms/launchpad-for-vms.md) for new VMO deployments. The
+We recommend using the [VM Launchpad](../vm-launchpad/vm-launchpad.md) for new VMO deployments. The
 appliance provides a dedicated VM management UI with built-in golden image workflows, snapshot policies, airgapped package
-management, and identity management capabilities that are not available in Pack VMO. Refer to the [Deployment Approaches table](../vm-management.md#deployment-approaches) for a comparison between VM Launchpad Appliance and VMO Pack. 
+management, and identity management capabilities that are not available in Pack VMO. Refer to the [Deployment Approaches table](../vm-management.md#deployment-approaches) for a comparison between VM Launchpad and VMO Pack. 
 
 :::
 
@@ -49,7 +49,7 @@ VMO Pack is appropriate in the following scenarios:
   management interface.
 
 - Golden image building, snapshot policies, and air-gap package management are not available. These capabilities are
-  exclusive to the [VM Launchpad Appliance](../launchpad-for-vms/launchpad-for-vms.md).
+  exclusive to the [VM Launchpad](../vm-launchpad/vm-launchpad.md).
 
 ## Get Started
 

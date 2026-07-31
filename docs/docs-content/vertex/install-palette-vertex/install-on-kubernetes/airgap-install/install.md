@@ -49,6 +49,8 @@ cluster has the necessary network connectivity for Palette VerteX to operate suc
   version="Palette VerteX"
 />
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 ### Other Prerequisites
 
 <PartialsComponent

@@ -119,7 +119,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 
 <PartialsComponent category="pcg" name="pcg-initial-installation" edition="CloudStack" />
 
-8.  Provide the CloudStack account information when prompted by the Palette CLI.
+9.  Provide the CloudStack account information when prompted by the Palette CLI.
 
     | **Field**                        | **Description**                                                                                                                                                                                                       |
     | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -128,7 +128,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
     | **CloudStack SecretKey**         | Enter the CloudStack Secret key for the user account that has permissions to deploy the PCG.                                                                                                                          |
     | **CloudStack Domain (optional)** | If applicable, enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name for the user account that has permissions to deploy the PCG. Otherwise, leave blank. |
 
-9.  Provide the CloudStack cluster configuration information when prompted by the Palette CLI.
+10. Provide the CloudStack cluster configuration information when prompted by the Palette CLI.
 
     | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                    |
     | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -142,16 +142,16 @@ environment using KVM as the hypervisor. Before you begin the installation, care
     | **Offering**                                     | Select the CloudStack service offering that defines the compute resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.                                                                                                                                         |
     | **Disk Offering**                                | Select the CloudStack disk service offering that defines the disk resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing. This option will be available based on the **Compute Offering** template selected, and available **Disk offerings** in CloudStack.    |
 
-10. Provide the PCG cluster size information when prompted by the Palette CLI.
+11. Provide the PCG cluster size information when prompted by the Palette CLI.
 
     | **Parameter**                           | **Description**                                                                                                                                                                                                                                     |
     | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Number of nodes**                     | Select `1` for a single-node deployment or `3` for a high-availability (HA) deployment.                                                                                                                                                             |
     | **Enable control plane node affinity?** | Enter `y` to enable control plane node affinity or `n` to disable it. If enabled, all Palette related pods (those in the `cluster-<uid>` namespace) will be deployed to control plane nodes only on all workload clusters created through this PCG. |
 
-11. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="CloudStack" />
+12. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="CloudStack" />
 
-12. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
+13. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 

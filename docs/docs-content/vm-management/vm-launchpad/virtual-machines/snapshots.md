@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Manage Snapshots"
 title: "Manage Snapshots"
-description: "Learn about how to take, manage, and restore snapshots in Launchpad for VMs"
+description: "Learn about how to take, manage, and restore snapshots in VM Launchpad"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 8
 tags: ["vmo", "vm launchpad", "snapshots"]
 ---
 
-Launchpad supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new identities.
+VM Launchpad supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new identities.
 
 ## Snapshots
 
