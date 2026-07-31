@@ -90,7 +90,7 @@ tags: ["release-notes"]
   updated installation steps, and to [Artifact Studio](../downloads/artifact-studio.md) for a description of each
   artifact and the MOK Key for Secure Boot per release version.
 
-- [Artifact Studio](../downloads/artifact-studio.md) version 4.9.19 is now available.  
+- [Artifact Studio](../downloads/artifact-studio.md) version 4.9.19 is now available.
 
 #### Improvements
 
