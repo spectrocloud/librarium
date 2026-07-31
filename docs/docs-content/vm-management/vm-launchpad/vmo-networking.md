@@ -5,7 +5,7 @@ description: "Learn about VMO Network Configuration Considerations"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 9
-tags: ["vmo", "launchpad for vms", "networking", "design"]
+tags: ["vmo", "vm launchpad", "networking", "design"]
 ---
 
 <!-- vale off -->
@@ -25,7 +25,7 @@ alternative configurations, but they must include a `br0` bridge.
 
 ## Management and Cluster Traffic
 
-Launchpad for VMs hosts can use separate network interfaces for management traffic and Kubernetes cluster traffic.
+PaletteAI VM Launchpad hosts can use separate network interfaces for management traffic and Kubernetes cluster traffic.
 Management traffic includes Local UI access, communication between hosts, and content synchronization.
 
 You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI overrides
@@ -33,8 +33,8 @@ the value from `user-data`. After initial setup, a selection made in Local UI ov
 management interface is selected, the host uses the network interface associated with the default route.
 
 Kubernetes cluster traffic uses the interface selected during cluster creation. This includes node IP selection,
-Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP). For Launchpad for
-VMs, this is the interface selected in the **Cilium and MetalLB interface** field.
+Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP). For VM Launchpad ,
+this is the interface selected in the **Cilium and MetalLB interface** field.
 
 :::warning
 
