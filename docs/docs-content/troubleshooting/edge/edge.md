@@ -71,16 +71,18 @@ Head "https://<registry>/v2/<image-name>/manifests/<tag>": dial tcp 192.0.2.10:4
 ```
 
 Kubernetes v1.35 enables the [Ensure Secret Pulled Images](https://kubernetes.io/docs/concepts/containers/images/)
-feature, which tracks whether each image was pulled using verified registry credentials. The default Kubelet policy for
-this feature, `NeverVerifyPreloadedImages`, trusts images that were preloaded onto the node unless a pull record already
-exists for them.
+feature, which tracks whether each image was pulled using verified registry credentials. Kubelet, the Kubernetes node
+agent that manages the pods on each node, keeps these pull records on disk. Its default policy for this feature,
+`NeverVerifyPreloadedImages`, trusts images that were preloaded onto the node unless a pull record already exists for
+them.
 
 In an airgap deployment, images are loaded onto the node from the Palette content bundle instead of being pulled from a
 registry. Depending on the timing of the bundle import relative to when the first pod is scheduled, Kubelet can write a
 pull record for a bundle image that contains no credential mapping. From that point on, Kubelet stops treating the image
 as preloaded and forces a new pull from the image's original public registry, which cannot succeed in an airgap
 environment and times out. The failure is sticky, so it persists for every later pod that uses the image until you
-remove the record and restart Kubelet.
+remove the record and restart K3s. On K3s, Kubelet runs inside the `k3s` process instead of as a separate service, so
+restarting `k3s` restarts Kubelet and clears its in-memory record cache.
 
 Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
 others in the same cluster are not.
