@@ -61,28 +61,40 @@ cgroup2fs
 On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" /> with
 Kubernetes v1.35.x or later, pods may intermittently fail to start with an `ImagePullBackOff` status, even though the
 image is already present on the node. The `palette-webhook` and `palette-lite-controller-manager` pods are the most
-commonly affected. The pod events show a timeout while reaching an external registry, similar to the following.
+commonly affected, and failures have also been observed on the `spectro-drive`, `crony`, and `spectro-import-presetup`
+images. The pod events show a timeout while reaching an external registry, similar to the following.
 
 ```bash hideClipboard title="Example output"
 Failed to pull image "<registry>/<image-name>:<tag>":
 Head "https://<registry>/v2/<image-name>/manifests/<tag>": dial tcp 192.0.2.10:443: i/o timeout
 ```
 
-Kubernetes v1.35 enables the `KubeletEnsureSecretPulledImages` feature gate, which records whether each image was pulled
-using verified registry credentials. In an airgap deployment, images are loaded onto the node from the Palette content
-bundle instead of being pulled from a registry. Depending on the timing of the bundle import relative to when the first
-pod is scheduled, the node's record for an image can be written without the expected credential information. Kubernetes
-then stops treating the image as available and forces a new pull from the image's original public registry, which cannot
-succeed in an airgap environment and times out.
+Kubernetes v1.35 enables the [Ensure Secret Pulled Images](https://kubernetes.io/docs/concepts/containers/images/)
+feature, which tracks whether each image was pulled using verified registry credentials. The default Kubelet policy for
+this feature, `NeverVerifyPreloadedImages`, trusts images that were preloaded onto the node unless a pull record already
+exists for them.
 
-This issue affects both new cluster deployments and upgrades from Kubernetes v1.34.x to v1.35.x. Because the behavior
-depends on import timing, the issue is intermittent, and some nodes or images are affected while others in the same
-cluster are not.
+In an airgap deployment, images are loaded onto the node from the Palette content bundle instead of being pulled from a
+registry. Depending on the timing of the bundle import relative to when the first pod is scheduled, Kubelet can write a
+pull record for a bundle image that contains no credential mapping. From that point on, Kubelet stops treating the image
+as preloaded and forces a new pull from the image's original public registry, which cannot succeed in an airgap
+environment and times out. The failure is sticky, so it persists for every later pod that uses the image until you
+remove the record and restart Kubelet.
+
+Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
+others in the same cluster are not.
+
+The issue affects new cluster deployments and upgrades to Kubernetes v1.35.x. An upgrade from Kubernetes v1.34.5 to
+v1.35.2 has been verified to complete without the issue when the target K3s pack already contains the override described
+in [Apply the Override When Deploying a New Cluster](#apply-the-override-when-deploying-a-new-cluster). The issue arises
+when a cluster reaches Kubernetes v1.35.x without that setting in place.
 
 :::info
 
 If an affected pod also serves a webhook that manages a Custom Resource Definition (CRD) conversion, the control plane
-may return errors while reading cluster resources until that pod recovers.
+may return errors while reading cluster resources until that pod recovers. An upgrade can partially apply CRD changes
+before the new webhook pod starts, which leaves the control plane unable to read cluster resources through the webhook
+until you recover the pod.
 
 :::
 
@@ -134,20 +146,28 @@ temporary, per-node mitigation.
 
 1. Log in to the affected node as a user with root privileges.
 
-2. Confirm that the image is already present on the node. Replace `<image-name>` with the name of the affected image.
+2. Confirm that the image is already present on the node. Replace `<image-name>` with the name of the affected image and
+   `<image>` with its full reference, including the registry and tag.
 
    ```bash
    crictl images | grep <image-name>
+   crictl inspecti <image>
    ```
 
-3. List the image tracking records.
+3. List the image pull records.
 
    ```bash
    ls /var/lib/kubelet/image_manager/pulled/
    ```
 
-4. Inspect each file and identify the record that references the digest of the affected image and has no credential
-   mapping information. Remove that record. Replace `<record-file-name>` with the name of the file you identified.
+4. Inspect each record and identify the one that references the digest of the affected image and contains no
+   `credentialMapping` field. Replace `<record-file-name>` with the name of each file you inspect.
+
+   ```bash
+   cat /var/lib/kubelet/image_manager/pulled/<record-file-name>
+   ```
+
+5. Remove the record you identified in the previous step.
 
    ```bash
    rm /var/lib/kubelet/image_manager/pulled/<record-file-name>
@@ -155,18 +175,19 @@ temporary, per-node mitigation.
 
    :::warning
 
-   Remove only the record for the affected image. Records for other images, such as networking components, may contain
-   valid credential mappings, and removing them can cause those images to fail.
+   Remove only records that contain no `credentialMapping` field and that belong to the affected image. Records for
+   other images, such as MetalLB, may contain a valid `credentialMapping`, and removing those can cause the
+   corresponding images to fail.
 
    :::
 
-5. Create the Kubelet configuration directory.
+6. Create the Kubelet configuration directory.
 
    ```bash
    mkdir --parents /var/lib/rancher/k3s/agent/etc/kubelet.conf.d
    ```
 
-6. Create the Kubelet configuration file.
+7. Create the Kubelet configuration file.
 
    ```bash
    tee /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
@@ -178,13 +199,13 @@ temporary, per-node mitigation.
    EOF
    ```
 
-7. Set the permissions on the configuration file.
+8. Set the permissions on the configuration file.
 
    ```bash
    chmod 0600 /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
    ```
 
-8. Restart K3s on the node and wait for the node to report a `Ready` status. Replace `<node-name>` with the name of the
+9. Restart K3s on the node and wait for the node to report a `Ready` status. Replace `<node-name>` with the name of the
    node.
 
    ```bash
@@ -192,14 +213,35 @@ temporary, per-node mitigation.
    kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
    ```
 
-9. Delete the affected pods so that they are rescheduled and use the local image. The following example deletes the
-   `palette-webhook` pods.
+10. Delete the affected pods so that they are rescheduled and use the local image. Replace `<cluster-namespace>` with
+    the namespace of your cluster. Delete any other pods that remain in an `ImagePullBackOff` status as well.
 
-   ```bash
-   kubectl delete pod --namespace palette-system --selector app=palette-webhook
-   ```
+    ```bash
+    kubectl delete pod --namespace palette-system --selector app=palette-webhook
+    kubectl delete pod --namespace <cluster-namespace> --selector control-plane=palette-lite-controller-manager
+    ```
 
-   The pod events should indicate that the image was found locally, and the pods should reach a `Running` status.
+11. Confirm that the pods recover. The pod events should include a message stating that the image is already present on
+    the machine, and the pods should reach a `Running` status.
+
+    ```bash
+    kubectl get pods --namespace palette-system --selector app=palette-webhook
+    kubectl get events --namespace palette-system --sort-by=.lastTimestamp | grep palette-webhook
+    ```
+
+12. Confirm that the webhook service endpoints point to the new pod.
+
+    ```bash
+    kubectl get endpoints --namespace palette-system palette-webhook-service
+    ```
+
+    If the cluster was left in a partially upgraded state with a broken CRD conversion webhook, wait until the webhook
+    endpoints are healthy before you resume any control plane or cluster profile operations. Confirm that the cluster
+    resources are readable first. Replace `<cluster-namespace>` with the namespace of your cluster.
+
+    ```bash
+    kubectl get spc --namespace <cluster-namespace>
+    ```
 
 #### Verification
 
@@ -212,6 +254,9 @@ kubectl get --raw "/api/v1/nodes/<node-name>/proxy/configz" | jq '.kubeletconfig
 ```bash hideClipboard title="Expected output"
 "NeverVerify"
 ```
+
+If the command returns `NeverVerifyPreloadedImages`, the override has not reached the running Kubelet, and the node is
+still exposed to the issue.
 
 ## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
 
