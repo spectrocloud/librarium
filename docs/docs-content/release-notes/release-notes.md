@@ -11,10 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 30, 2026 - Release 4.9.38 {#release-notes-4.9.38}
+## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
-<!-- RELEASE DATE: August 2, 2026 -->
+<!-- RELEASE DATE: July 30, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
@@ -300,7 +300,29 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Breaking Changes
+#### Upgrade Notes {#upgrade-notes-edge-4-9-c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3062 -->
+
+- Edge clusters that use an in-cluster image registry serve a TLS certificate with a one-year validity period. On `zot`
+  pack version `0.1.89` or earlier, and on `harbor` pack version `1.19.0` or earlier, this certificate does not renew
+  automatically and must be rotated manually before each 365-day expiration. When the certificate expires, registry
+  connectivity breaks. Clusters can no longer pull images, and workload deployments, scale-out operations, node
+  replacements, and cluster repaves fail until the certificate is replaced. At remote or unattended sites, recovery
+  often requires on-site intervention during an unplanned outage.
+
+  Palette now supports automatic TLS certificate rotation for both registries through cert-manager integration. After
+  you upgrade to `zot` pack version `0.1.89-rev2` or `harbor` pack version `1.19.0-rev1`, cert-manager renews the
+  certificate automatically 15 days before it expires, which removes the annual manual rotation and the outage risk that
+  comes with missing it.
+
+  We recommend upgrading during your next scheduled maintenance window, prioritizing the clusters closest to one year
+  since deployment or since their last manual certificate rotation. The upgrade involves a pack version change and a pod
+  restart, so validate it on a non-production cluster first. For upgrade instructions, refer to
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
+  and
+  [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md).
+  If you need help identifying affected clusters, contact [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 #### Features
 
@@ -516,6 +538,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   native load balancer that you can enable through the pack configuration, available in version `1.35.2` and later.Refer to <VersionedLink text="Native Load Balancer" url="/integrations/packs/?pack=kubernetes-ck8s&tab=custom" /> for configuration steps.
 <!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3036 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
+
+- Before deploying a virtual cluster with the updated **Virtual Cluster** pack (version `4.9.0` in [Artifact Studio](https://artifact-studio.spectrocloud.com/packs-catalog?search=vcluster), which packages vCluster `0.27.3`), set the CoreDNS image in the cluster group's **Advanced Config** YAML under `controlPlane.coredns.deployment.image`.
+  
+  Use `us-docker.pkg.dev/palette-images/k8s/coredns/coredns:v1.12.1` for Palette, or `us-docker.pkg.dev/palette-images-fips/k8s/coredns:v1.12.1` for Palette VerteX. Refer to [Configure the CoreDNS Image](../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#configure-the-coredns-image) for step-by-step guidance.
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4395 -->
 
 - Fixed an issue where the Traefik pack remained in `PackServiceNotReady` state on Kubernetes distributions that do not
@@ -525,8 +556,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   were running and traffic was flowing through NodePorts or virtual IPs. Traefik pack readiness on these distributions
   now works as expected.
 
-#### Deprecations and Removals
-
 ## July 24, 2026 - Component Updates {#component-updates-2026-30}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3028 -->
@@ -534,31 +563,36 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
 
-### Features
+### Palette AI VM Launchpad
+
+#### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
 
 - [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) (formerly Launchpad for VMs) version 4.9.15
   is now available.
 
-- The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
+<!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
+
+- Local UI now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
   variables that matter for its role.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3028 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
 
 - The [VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) now installs from a slim **Appliance ISO** paired
   with a separately downloaded **Content bundle**. As of VM Launchpad 4.9.15, the full **Appliance ISO with Content** is
   no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
-### Improvements
+#### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
 
 - The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point of
   failure in the appliance ingress path.
 
-### Bug Fixes
+#### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-751 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-755 -->
@@ -702,6 +736,12 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 ## July 9, 2026 - Release 4.9.27
 
+The following component updates are applicable to this release:
+
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-2985 -->
 
 ### Bug Fixes
@@ -804,6 +844,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -838,6 +879,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -854,6 +896,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1459,6 +1502,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -1513,6 +1557,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Breaking Changes {#breaking-changes-4-9-16}
 
@@ -1644,6 +1689,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -2100,6 +2146,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -2146,6 +2193,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2280,6 +2328,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
