@@ -14,7 +14,7 @@ tags: ["release-notes"]
 ## July 30, 2026 - Release 4.9.38 {#release-notes-4.9.38}
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
-<!-- RELEASE DATE: August 2, 2026 -->
+<!-- RELEASE DATE: July 30, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
@@ -300,8 +300,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Breaking Changes
-
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8687 -->
@@ -525,8 +523,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   were running and traffic was flowing through NodePorts or virtual IPs. Traefik pack readiness on these distributions
   now works as expected.
 
-#### Deprecations and Removals
-
 ## July 24, 2026 - Component Updates {#component-updates-2026-30}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3028 -->
@@ -534,31 +530,36 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3028. DO NOT DELETE. -->
 
-### Features
+### Palette AI VM Launchpad
+
+#### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-509 -->
 
 - [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) (formerly Launchpad for VMs) version 4.9.15
   is now available.
 
-- The appliance now supports a custom UI framework for profile variables. Operators can define and expose appliance
+<!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
+
+- Local UI now supports a custom UI framework for profile variables. Operators can define and expose appliance
   variables through a dedicated, pluggable profile variable page in Local UI, so each appliance can surface the
   variables that matter for its role.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3028 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2994 -->
 
 - The [VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) now installs from a slim **Appliance ISO** paired
   with a separately downloaded **Content bundle**. As of VM Launchpad 4.9.15, the full **Appliance ISO with Content** is
   no longer available. Refer to [Artifact Studio](../downloads/artifact-studio.md) for a description of each artifact.
 
-### Improvements
+#### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-805 -->
 
 - The Traefik ingress controller on the appliance now scales to multiple replicas, removing the previous single point of
   failure in the appliance ingress path.
 
-### Bug Fixes
+#### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-751 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-755 -->
@@ -702,6 +703,12 @@ The following components have been updated for Palette version 4.9.5 - 4.9.24.
 
 ## July 9, 2026 - Release 4.9.27
 
+The following component updates are applicable to this release:
+
+- [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
+- [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-2985 -->
 
 ### Bug Fixes
@@ -804,6 +811,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -838,6 +846,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -854,6 +863,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1459,6 +1469,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -1513,6 +1524,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Breaking Changes {#breaking-changes-4-9-16}
 
@@ -1644,6 +1656,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -2100,6 +2113,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -2146,6 +2160,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2280,6 +2295,7 @@ The following component updates are applicable to this release:
 - [July 3, 2026 - Component Updates](#component-updates-2026-27) <!-- omit in toc -->
 - [July 10, 2026 - Component Updates](#component-updates-2026-28) <!-- omit in toc -->
 - [July 17, 2026 - Component Updates](#component-updates-2026-29) <!-- omit in toc -->
+- [July 24, 2026 - Component Updates](#component-updates-2026-30) <!-- omit in toc -->
 
 ### Security Notices
 
