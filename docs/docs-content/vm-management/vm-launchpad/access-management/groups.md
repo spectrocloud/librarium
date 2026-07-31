@@ -1,21 +1,20 @@
 ---
 sidebar_label: "Groups"
 title: "Groups"
-description: "Learn how to manage groups in Launchpad for VMs."
+description: "Learn how to manage groups in PaletteAI VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 3
 tags: ["vmo", "vm launchpad", "access management"]
 ---
 
-Groups are how you assign the same VMO role and Kubernetes access to many users at once. Launchpad for VMs stores groups
-in Keycloak and, when a group is bound to a VMO role, automatically manages the corresponding Kubernetes
+Groups are how you assign the same VMO role and Kubernetes access to many users at once. PaletteAI VM Launchpad stores
+groups in Keycloak and, when a group is bound to a VMO role, automatically manages the corresponding Kubernetes
 ClusterRoleBindings and RoleBindings. This guide covers viewing, creating, editing, and deleting groups.
 
 ## Prerequisites
 
-- A cluster created using the Launchpad Appliance. Refer to [Install Launchpad for VMs](../install-vmla-iso.md) for
-  guidance.
+- A cluster created using VM Launchpad. Refer to [Install VM Launchpad](../install.md) for guidance.
 
 - An account with the **Platform Admin** VMO role, or membership in a group mapped to Platform Admin.
 
@@ -63,12 +62,12 @@ Select a column header to sort. Use the **Filter rows** search box to filter by 
 
 :::info
 
-If a VMO role is selected, a namespace scope (cluster-wide or at least one namespace) is required. Launchpad
+If a VMO role is selected, a namespace scope (cluster-wide or at least one namespace) is required. VM Launchpad
 automatically binds the matching Kubernetes ClusterRole to the group in each selected scope.
 
 :::
 
-Launchpad selects the matching Kubernetes ClusterRole automatically based on the VMO role you assign. The mapping is
+VM Launchpad selects the matching Kubernetes ClusterRole automatically based on the VMO role you assign. The mapping is
 fixed.
 
 | **VMO Role**   | **Kubernetes ClusterRole** |

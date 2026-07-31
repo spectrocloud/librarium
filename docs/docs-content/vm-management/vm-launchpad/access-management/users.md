@@ -1,21 +1,20 @@
 ---
 sidebar_label: "Users"
 title: "Users"
-description: "Learn how to manage users in Launchpad for VMs."
+description: "Learn how to manage users in PaletteAI VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 2
 tags: ["vmo", "vm launchpad", "access management"]
 ---
 
-Launchpad for VMs integrates with Keycloak for user identity. Users you create on the **Users** page are stored in
-Keycloak, and Launchpad manages their VMO role and Kubernetes access on your behalf. This guide covers viewing,
+PaletteAI VM Launchpad integrates with Keycloak for user identity. Users you create on the **Users** page are stored in
+Keycloak, and VM Launchpad manages their VMO role and Kubernetes access on your behalf. This guide covers viewing,
 creating, editing, resetting passwords, and deleting users.
 
 ## Prerequisites
 
-- A cluster created using the Launchpad Appliance. Refer to [Install Launchpad for VMs](../install-vmla-iso.md) for
-  guidance.
+- A cluster created using VM Launchpad. Refer to [Install VM Launchpad](../install.md) for guidance.
 
 - An account with the **Platform Admin** VMO role, or membership in a group mapped to Platform Admin.
 
@@ -39,8 +38,7 @@ Select a column header to sort. Use the **Filter rows** search box to filter by 
 
 ## Create Users
 
-Launchpad for VMs creates one or more users in a single guided flow that also assigns their VMO role and namespace
-scope.
+VM Launchpad creates one or more users in a single guided flow that also assigns their VMO role and namespace scope.
 
 1. From the left main menu, select **Settings** > **Access Management** > **Users**.
 
@@ -86,7 +84,7 @@ scope.
    | **Option**               | **Description**                                                                                                    |
    | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
    | **Cluster-wide access**  | Grants access to all namespaces through a Kubernetes ClusterRoleBinding.                                           |
-   | **Select Namespaces**    | Choose one or more existing namespaces. Launchpad creates RoleBindings scoped to those namespaces only.            |
+   | **Select Namespaces**    | Choose one or more existing namespaces. VM Launchpad creates RoleBindings scoped to those namespaces only.         |
    | **Create New Namespace** | _(Optional)_ Enter a namespace name and select **+ Create** to create a namespace and add it to the current scope. |
 
 7. Select **Next** to open the **Review** step. Review the actions the wizard will perform for each user.
@@ -96,7 +94,7 @@ scope.
 
 9. Select **Close** to return to the **Users** page.
 
-Launchpad selects the matching Kubernetes ClusterRole automatically based on the VMO role you assign. The mapping is
+VM Launchpad selects the matching Kubernetes ClusterRole automatically based on the VMO role you assign. The mapping is
 fixed.
 
 | **VMO Role**   | **Kubernetes ClusterRole** |
@@ -200,8 +198,9 @@ longer need them.
 
 ## Palette-Managed Environments
 
-When Launchpad for VMs is deployed in a Palette-managed environment, user creation may be hidden. In that case, user
-lifecycle is managed by the parent platform, and Launchpad displays users for viewing and access policy assignment only.
+When VM Launchpad is deployed in a Palette-managed environment, user creation may be hidden. In that case, user
+lifecycle is managed by the parent platform, and VM Launchpad displays users for viewing and access policy assignment
+only.
 
 ## Next Steps
 
