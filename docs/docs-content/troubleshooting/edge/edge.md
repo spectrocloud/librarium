@@ -58,11 +58,12 @@ cgroup2fs
 ## Scenario - Intermittent `ImagePullBackOff` Errors on Airgap Edge Clusters with Kubernetes v1.35.x
 
 <!-- prettier-ignore -->
-On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" /> with
-Kubernetes v1.35.x or later, pods may intermittently fail to start with an `ImagePullBackOff` status, even though the
-image is already present on the node. The `palette-webhook` and `palette-lite-controller-manager` pods are the most
-commonly affected, and failures have also been observed on the `spectro-drive`, `crony`, and `spectro-import-presetup`
-images. The pod events show a timeout while reaching an external registry, similar to the following.
+On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" /> at
+Kubernetes v1.35.x or later, pods may intermittently fail to start with an `ImagePullBackOff`
+status, even though the image is already present on the node. The issue most commonly affects the `palette-webhook` and
+`palette-lite-controller-manager` pods, and it also affects pods that use the `spectro-drive`, `crony`, and
+`spectro-import-presetup` images. The pod events show a timeout while reaching an external registry, similar to the
+following.
 
 ```bash hideClipboard title="Example output"
 Failed to pull image "<registry>/<image-name>:<tag>":
@@ -84,10 +85,11 @@ remove the record and restart Kubelet.
 Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
 others in the same cluster are not.
 
-The issue affects new cluster deployments and upgrades to Kubernetes v1.35.x. An upgrade from Kubernetes v1.34.5 to
-v1.35.2 has been verified to complete without the issue when the target K3s pack already contains the override described
-in [Apply the Override When Deploying a New Cluster](#apply-the-override-when-deploying-a-new-cluster). The issue arises
-when a cluster reaches Kubernetes v1.35.x without that setting in place.
+The issue affects new cluster deployments and upgrades to Kubernetes v1.35.x or later. An upgrade from Kubernetes
+v1.34.5 to v1.35.2 has been verified to complete without the issue when the target K3s pack already contains the
+override described in
+[Apply the Override When Deploying a New Cluster](#apply-the-override-when-deploying-a-new-cluster). The issue arises
+when a cluster reaches Kubernetes v1.35.x or later without that setting in place.
 
 :::info
 
@@ -146,12 +148,12 @@ temporary, per-node mitigation.
 
 1. Log in to the affected node as a user with root privileges.
 
-2. Confirm that the image is already present on the node. Replace `<image-name>` with the name of the affected image and
-   `<image>` with its full reference, including the registry and tag.
+2. Confirm that the image is already present on the node. Replace `<image-name>` with the name of the affected image,
+   and `<image-reference>` with the full image reference, including the registry and tag.
 
    ```bash
    crictl images | grep <image-name>
-   crictl inspecti <image>
+   crictl inspecti <image-reference>
    ```
 
 3. List the image pull records.
