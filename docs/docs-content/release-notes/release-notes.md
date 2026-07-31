@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 30, 2026 - Release 4.9.38 {#release-notes-4.9.38}
+## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
 <!-- RELEASE DATE: July 30, 2026 -->
