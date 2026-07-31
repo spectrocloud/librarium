@@ -1,0 +1,22 @@
+/* Copied from @docusaurus/theme-classic, with the landing-page additions below. */
+
+.docRoot {
+  display: flex;
+  width: 100%;
+}
+
+.docsWrapper {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+/* Landing-page mode: full-width content, no sidebar, no breadcrumbs. */
+.landingMain {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.landingMain :global(.theme-doc-breadcrumbs) {
+  display: none;
+}
