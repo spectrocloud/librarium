@@ -89,6 +89,16 @@ cluster in Palette before creating any OpenShift workload clusters.
 9. Click the **Host HyperShift-based control planes** toggle to enable this cluster to deploy HyperShift control planes
    for OpenShift workload clusters. Click **Next** when done.
 
+   :::info
+
+   Overriding Cluster API (CAPI) properties is not supported on HyperShift host clusters. The **Override Cluster API
+   cluster configuration** and **Override Cluster API node pool configuration** toggles in the Palette UI have no effect
+   on this cluster type. Refer to
+   [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
+   for the list of supported providers.
+
+   :::
+
 10. On the **Nodes Config** step, configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS node pools. For a description of input fields common across target
