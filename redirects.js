@@ -25,10 +25,6 @@ if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
 
 let redirects = [
   {
-    from: `/launchpad-for-ai`,
-    to: `/paletteai-inference-launchpad`,
-  },
-  {
     from: `/vm-management/launchpad-for-vms/`,
     to: `/vm-management/vm-launchpad/`,
   },
