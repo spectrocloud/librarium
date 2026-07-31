@@ -5,7 +5,7 @@ description:
   "Step-by-step guidance for platform administrators on how to create a client on a PaletteAI Inference Launchpad
   appliance by stepping through the Add client wizard and issuing the client's first API token."
 hide_table_of_contents: false
-sidebar_position: 4
+sidebar_position: 3
 tags: ["paletteai-inference-launchpad", "clients", "how-to"]
 keywords: ["launchpad", "ai", "clients", "add client", "api token", "lpai"]
 ---
@@ -27,33 +27,31 @@ To generate an API token by itself, without stepping through the full client set
 Create a client through the **Add client** wizard. The wizard names the client, optionally sets a quota, optionally
 grants model access, and optionally issues the client's first API token.
 
-1. Open the appliance console in a browser and sign in.
+1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
 
-2. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+2. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
 
-3. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
-
-4. On the **Overview** step, enter a **Client name**, and then select **Next step**. The appliance assigns the client an
+3. On the **Overview** step, enter a **Client name**, and then select **Next step**. The appliance assigns the client an
    immutable identifier and registers it as active.
 
-5. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
+4. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
    refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
 
-6. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external, or frontier, models,
+5. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external, or frontier, models,
    and then select **Next step**. External access is denied by default. To add a provider key and set a daily spend cap,
    refer to [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
 
-7. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
+6. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
    default model routing, or edit the **Tier map** to route the client's model aliases to specific models. Then select
    **Next step**. For details, refer to
    [Manage a Client's Model Access](./manage-client-model-access.md#route-a-client-to-specific-models).
 
-8. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**
+7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**
    and an **Expires** date, and then select **Add Token**. Leave **Expires** blank for a token that never expires.
 
-9. Select **Create client**.
+8. Select **Create client**.
 
-10. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+9. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
 :::warning
 
