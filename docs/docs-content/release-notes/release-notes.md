@@ -19,16 +19,6 @@ tags: ["release-notes"]
 <!-- RELEASE ARTIFACT STUDIO: 4.9.19 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.9 -->
 
-The following components have been updated for Palette version 4.9.5 - 4.9.38.
-
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.19  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.9  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.9  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.36  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.36  |
-
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
@@ -99,6 +89,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.38.
   [Install the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) for the
   updated installation steps, and to [Artifact Studio](../downloads/artifact-studio.md) for a description of each
   artifact and the MOK Key for Secure Boot per release version.
+
+- [Artifact Studio](../downloads/artifact-studio.md) version 4.9.19 is now available.  
 
 #### Improvements
 
