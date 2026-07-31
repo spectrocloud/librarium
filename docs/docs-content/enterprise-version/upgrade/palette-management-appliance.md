@@ -9,13 +9,6 @@ tags: ["palette management appliance", "self-hosted", "enterprise"]
 sidebar_position: 20
 ---
 
-:::preview
-
-This is a Tech Preview feature and is subject to change. Upgrades from a Tech Preview deployment may not be available.
-Do not use this feature in production workloads.
-
-:::
-
 Follow the instructions to upgrade the
 [Palette Management Appliance](../install-palette/palette-management-appliance.md) using a content bundle. The content
 bundle is used to upgrade the Palette instance to a chosen target version.

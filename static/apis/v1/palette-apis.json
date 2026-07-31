@@ -32192,6 +32192,10 @@
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                           "type": "string"
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "project": {
                           "description": "Name of the project in which cluster is to be deployed",
                           "type": "string"
@@ -32555,6 +32559,10 @@
                     },
                     "network": {
                       "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+                      "type": "string"
+                    },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
                       "type": "string"
                     },
                     "project": {
@@ -36579,6 +36587,10 @@
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                           "type": "string"
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "project": {
                           "description": "Name of the project in which cluster is to be deployed",
                           "type": "string"
@@ -36942,6 +36954,10 @@
                     },
                     "network": {
                       "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+                      "type": "string"
+                    },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
                       "type": "string"
                     },
                     "project": {
@@ -38922,6 +38938,10 @@
                             "type": "string"
                           }
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "sshKeys": {
                           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
                           "type": "array",
@@ -39399,6 +39419,10 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
                     },
                     "sshKeys": {
                       "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -43053,6 +43077,10 @@
                             "type": "string"
                           }
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "placement": {
                           "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
                           "type": "object",
@@ -43754,6 +43782,10 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
                     },
                     "placement": {
                       "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
@@ -71783,10 +71815,11 @@
             "Authorization": []
           }
         ],
+        "description": "This is the recommended API for listing and searching cluster profiles by name, tag, type,\nenvironment, or resource type. Prefer this over the older GET /v1/clusterprofiles.\nSupported filter fields - ['profileName', 'tags', 'profileType', 'environment', 'resourceType'].\nSupported sort fields - ['profileName', 'environment', 'profileType', 'creationTimestamp', 'lastModifiedTimestamp'].\n\nExample - find cluster profiles tagged 'production':\n{\"filter\": {\"tags\": {\"eq\": [\"production\"]}}, \"sort\": [{\"field\": \"profileName\", \"order\": \"asc\"}]}",
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster profiles filter summary Supported filter fields - ['profileName', 'tags', 'profileType', 'environment', 'resourceType'] Supported sort fields - ['profileName', 'environment', 'profileType', 'creationTimestamp', 'lastModifiedTimestamp']",
+        "summary": "Retrieves a list of cluster profiles filter summary",
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
@@ -80463,10 +80496,11 @@
             "Authorization": []
           }
         ],
+        "description": "This is the recommended API for listing and searching clusters. Prefer this over the older\nGET /v1/spectroclusters and POST /v1/dashboard/spectroclusters. Supports filtering by any cluster\nproperty (e.g. clusterName, environment, tags, healthState) via a conjunction of filter groups.\nSupported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"].\n\nExample - find clusters whose name contains 'aws':\n{\"filter\": {\"conjunction\": \"and\", \"filterGroups\": [{\"conjunction\": \"and\", \"filters\": [{\"property\": \"clusterName\", \"type\": \"string\", \"condition\": {\"string\": {\"operator\": \"contains\", \"negation\": false, \"ignoreCase\": false, \"match\": {\"conjunction\": \"or\", \"values\": [\"aws\"]}}}}]}]}, \"sort\": [{\"field\": \"clusterName\", \"order\": \"asc\"}]}",
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster summary with provided search filter spec Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "summary": "Retrieves a list of cluster summary with provided search filter spec",
         "operationId": "v1SpectroClustersSearchFilterSummary",
         "parameters": [
           {
@@ -105291,6 +105325,10 @@
                         "type": "string"
                       }
                     },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
+                    },
                     "sshKeys": {
                       "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
                       "type": "array",
@@ -105975,6 +106013,10 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
                     },
                     "sshKeys": {
                       "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -147820,6 +147862,10 @@
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                           "type": "string"
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "project": {
                           "description": "Name of the project in which cluster is to be deployed",
                           "type": "string"
@@ -148924,6 +148970,10 @@
                       "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                       "type": "string"
                     },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
+                    },
                     "project": {
                       "description": "Name of the project in which cluster is to be deployed",
                       "type": "string"
@@ -149564,6 +149614,10 @@
                         },
                         "network": {
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+                          "type": "string"
+                        },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
                           "type": "string"
                         },
                         "project": {
@@ -151400,6 +151454,10 @@
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                           "type": "string"
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "project": {
                           "description": "Name of the project in which cluster is to be deployed",
                           "type": "string"
@@ -152380,6 +152438,10 @@
                       "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                       "type": "string"
                     },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
+                    },
                     "project": {
                       "description": "Name of the project in which cluster is to be deployed",
                       "type": "string"
@@ -153020,6 +153082,10 @@
                         },
                         "network": {
                           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+                          "type": "string"
+                        },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
                           "type": "string"
                         },
                         "project": {
@@ -154119,6 +154185,10 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
                         },
                         "sshKeys": {
                           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -155267,6 +155337,10 @@
                         "type": "string"
                       }
                     },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
+                    },
                     "sshKeys": {
                       "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
                       "type": "array",
@@ -155942,6 +156016,10 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
                         },
                         "sshKeys": {
                           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -159617,6 +159695,10 @@
                             "type": "string"
                           }
                         },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
+                        },
                         "placement": {
                           "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
                           "type": "object",
@@ -160847,6 +160929,10 @@
                         "type": "string"
                       }
                     },
+                    "overrideClusterAPIConfig": {
+                      "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                      "type": "string"
+                    },
                     "placement": {
                       "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
                       "type": "object",
@@ -161608,6 +161694,10 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "overrideClusterAPIConfig": {
+                          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                          "type": "string"
                         },
                         "placement": {
                           "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
@@ -318695,6 +318785,10 @@
               "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
               "type": "string"
             },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
+            },
             "project": {
               "description": "Name of the project in which cluster is to be deployed",
               "type": "string"
@@ -318808,6 +318902,10 @@
                 },
                 "network": {
                   "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+                  "type": "string"
+                },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
                   "type": "string"
                 },
                 "project": {
@@ -319161,6 +319259,10 @@
               "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
               "type": "string"
             },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
+            },
             "project": {
               "description": "Name of the project in which cluster is to be deployed",
               "type": "string"
@@ -319486,6 +319588,10 @@
         },
         "network": {
           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+          "type": "string"
+        },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
           "type": "string"
         },
         "project": {
@@ -329631,6 +329737,10 @@
                 "type": "string"
               }
             },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
+            },
             "sshKeys": {
               "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
               "type": "array",
@@ -329746,6 +329856,10 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                  "type": "string"
                 },
                 "sshKeys": {
                   "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -330211,6 +330325,10 @@
                 "type": "string"
               }
             },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
+            },
             "sshKeys": {
               "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
               "type": "array",
@@ -330650,6 +330768,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
         },
         "sshKeys": {
           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -341316,6 +341438,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
             },
             "sshKeys": {
               "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -392308,6 +392434,10 @@
                   "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
                   "type": "string"
                 },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                  "type": "string"
+                },
                 "project": {
                   "description": "Name of the project in which cluster is to be deployed",
                   "type": "string"
@@ -393297,6 +393427,10 @@
             },
             "network": {
               "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
+              "type": "string"
+            },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
               "type": "string"
             },
             "project": {
@@ -394424,6 +394558,10 @@
                     "type": "string"
                   }
                 },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                  "type": "string"
+                },
                 "sshKeys": {
                   "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
                   "type": "array",
@@ -395457,6 +395595,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
             },
             "sshKeys": {
               "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
@@ -397414,6 +397556,10 @@
                     "type": "string"
                   }
                 },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                  "type": "string"
+                },
                 "placement": {
                   "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
                   "type": "object",
@@ -398530,6 +398676,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
             },
             "placement": {
               "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
@@ -429636,6 +429786,10 @@
                 "type": "string"
               }
             },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
+            },
             "placement": {
               "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
               "type": "object",
@@ -429824,6 +429978,10 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "overrideClusterAPIConfig": {
+                  "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+                  "type": "string"
                 },
                 "placement": {
                   "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
@@ -430516,6 +430674,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "overrideClusterAPIConfig": {
+              "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+              "type": "string"
             },
             "placement": {
               "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
@@ -431229,6 +431391,10 @@
             "type": "string"
           }
         },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
+        },
         "placement": {
           "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",
           "type": "object",
@@ -431434,6 +431600,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "overrideClusterAPIConfig": {
+          "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values.\n",
+          "type": "string"
         },
         "placement": {
           "description": "Both ClusterConfig and MachinePoolConfig will have PlacementConfig MachinePoolconfig.Placements will overwrite values defined in ClusterConfig Currently the convention is: Datacenter / Folder / ImageTemplateFolder / Network should be defined at ClusterConfig Cluster / ResourcePool / Datastore / Network is defined at MachinePool ClusterConfig Network should only indicate use DHCP or not MachinePool Network should contain the actual network and IPPool",

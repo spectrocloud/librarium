@@ -8,10 +8,6 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration"]
 ---
 
-:::preview
-
-:::
-
 Palette uses [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) and its cloud-specific provider extensions to
 provision and manage Kubernetes clusters. When provisioning a cluster, Palette populates only a curated subset of the
 properties supported by the underlying CAPI objects. For most use cases, this is sufficient. However, some advanced or
@@ -34,13 +30,25 @@ Use with caution and test changes in a non-production environment first.
 Overriding CAPI properties is currently supported for the following infrastructure types. Override fields must be valid
 for the listed provider API version.
 
-| Provider   | CAPI Implementation | Version                                                                                          | Reference Docs                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ---------- | ------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS IaaS   | CAPA                | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)        | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awscluster_types.go) <br /> - [v2.7.1 AWSMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awsmachinetemplate_types.go)                                                    |
-| AWS EKS    | CAPA                | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)        | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/controlplane/eks/api/v1beta2/awsmanagedcontrolplane_types.go) <br /> - [v2.7.1 AWSManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/exp/api/v1beta2/awsmanagedmachinepool_types.go) |
-| Azure IaaS | CAPZ                | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0)    | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azurecluster_types.go) <br /> - [v1.18.0 AzureMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremachinetemplate_types.go)                                               |
-| Azure AKS  | CAPZ                | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0)    | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedcontrolplane_types.go) <br /> - [v1.18.0 AzureManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedmachinepool_types.go)                 |
-| CloudStack | CAPC                | [v0.6.1](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/releases/tag/v0.6.1) | - [CAPC book](https://cluster-api-cloudstack.sigs.k8s.io/) <br /> - [v0.6.1 CloudStackCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/blob/v0.6.1/api/v1beta3/cloudstackcluster_types.go) <br /> - [v0.6.1 CloudStackMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/blob/v0.6.1/api/v1beta3/cloudstackmachinetemplate_types.go)   |
+| Provider                                            | CAPI Implementation | Version                                                                                          | Reference Docs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| --------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS IaaS                                            | CAPA                | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)        | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awscluster_types.go) <br /> - [v2.7.1 AWSMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awsmachinetemplate_types.go)                                                                                                                                                                                                                 |
+| AWS EKS                                             | CAPA                | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)        | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/controlplane/eks/api/v1beta2/awsmanagedcontrolplane_types.go) <br /> - [v2.7.1 AWSManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/exp/api/v1beta2/awsmanagedmachinepool_types.go)                                                                                                                                                              |
+| Azure IaaS                                          | CAPZ                | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0)    | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azurecluster_types.go) <br /> - [v1.18.0 AzureMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremachinetemplate_types.go)                                                                                                                                                                                                            |
+| Azure AKS                                           | CAPZ                | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0)    | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedcontrolplane_types.go) <br /> - [v1.18.0 AzureManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedmachinepool_types.go)                                                                                                                                                                              |
+| GCP IaaS                                            | CAPG                | [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)        | - [CAPG book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> - [v1.8.1 GCPCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpcluster_types.go) <br /> - [v1.8.1 GCPMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/api/v1beta1/gcpmachinetemplate_types.go)                                                                                                                                                                                                     |
+| GCP GKE                                             | CAPG                | [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)        | - [CAPG book](https://cluster-api-gcp.sigs.k8s.io/introduction) <br /> - [v1.8.1 GCPManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcontrolplane_types.go) <br /> - [v1.8.1 GCPManagedCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedcluster_types.go) <br /> - [v1.8.1 GCPManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/v1.8.1/exp/api/v1beta1/gcpmanagedmachinepool_types.go) |
+| CloudStack                                          | CAPC                | [v0.6.1](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/releases/tag/v0.6.1) | - [CAPC book](https://cluster-api-cloudstack.sigs.k8s.io/) <br /> - [v0.6.1 CloudStackCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/blob/v0.6.1/api/v1beta3/cloudstackcluster_types.go) <br /> - [v0.6.1 CloudStackMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack/blob/v0.6.1/api/v1beta3/cloudstackmachinetemplate_types.go)                                                                                                                                                                |
+| MAAS <br /> \*_Refer to [Exceptions](#exceptions)._ | CAPMAAS             | [v0.6.1](https://github.com/spectrocloud/cluster-api-provider-maas/releases/tag/v0.6.1)          | - [v0.6.1 MaasCluster Types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maascluster_types.go) <br /> - [v0.6.1 MaasMachineTemplate Types](https://github.com/spectrocloud/cluster-api-provider-maas/blob/v0.6.1/api/v1beta1/maasmachinetemplate_types.go)                                                                                                                                                                                                                                                                            |
+| vSphere                                             | CAPV                | [v1.12.0](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/releases/tag/v1.12.0)  | - [v1.12.0 VSphereCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/v1.12.0/apis/v1beta1/vspherecluster_types.go) <br /> - [v1.12.0 VSphereMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/v1.12.0/apis/v1beta1/vspheremachinetemplate_types.go)                                                                                                                                                                                                                                              |
+
+### Exceptions
+
+Overriding CAPI properties is not supported on
+[MAAS HyperShift host clusters](../../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-hypershift-host-cluster.md)
+or
+[HyperShift-hosted OpenShift workload clusters](../../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-openshift-workload-cluster.md).
+The override toggles in the Palette UI have no effect on these cluster types.
 
 ## Supported Interfaces
 
@@ -132,9 +140,13 @@ The following table lists example top-level keys and nested keys.
 
 :::info
 
-An exception to the camelCase rule is `CloudStackMachineTemplate`, which uses a lowercase `s` in the top-level key
-(`cloudstackMachineTemplate`). This is a historical artifact and requires special attention when constructing override
-YAML for CloudStack.
+Two providers have keys that do not follow the camelCase-of-Kind rule and require special attention:
+
+- `CloudStackMachineTemplate` uses a lowercase `s` in the top-level key (`cloudstackMachineTemplate`).
+- vSphere uses all-lowercase keys `vsphereCluster` (for `VSphereCluster`) and `vsphereMachineTemplate` (for
+  `VSphereMachineTemplate`).
+
+These are historical artifacts. All other providers follow the standard camelCase-of-Kind rule.
 
 :::
 
@@ -174,13 +186,21 @@ construct valid override YAML, use the following steps.
 
    <details>
 
-   <summary> Note on CloudStackMachineTemplate top-level key </summary>
+   <summary> Note on top-level keys that do not follow camelCase </summary>
 
-   An exception to the camelCase rule is `CloudStackMachineTemplate`, which uses a lowercase `s` in the top-level key
-   (`cloudstackMachineTemplate`).
+   Two providers have keys that do not follow the camelCase-of-Kind rule:
+
+   - `CloudStackMachineTemplate` uses a lowercase `s` in the top-level key (`cloudstackMachineTemplate`).
+   - vSphere uses all-lowercase keys `vsphereCluster` and `vsphereMachineTemplate` for the `VSphereCluster` and
+     `VSphereMachineTemplate` resources.
 
    ```yaml hideClipboard title="Example top-level key for CloudStackMachineTemplate"
    cloudstackMachineTemplate:
+   ```
+
+   ```yaml hideClipboard title="Example top-level keys for VSphereCluster and VSphereMachineTemplate"
+   vsphereCluster:
+   vsphereMachineTemplate:
    ```
 
    </details>
@@ -253,9 +273,9 @@ construct valid override YAML, use the following steps.
 
 6. For node pool overrides on self-managed clusters, apply the extra `template` nesting.
 
-   Self-managed clusters (for example, AWS IaaS) back their node pools with a machine template resource. These machine
-   template specs wrap the actual machine configuration in a `template` field, so pool-level overrides require an
-   additional `template` level in the YAML.
+   Self-managed clusters (for example, AWS IaaS, Azure IaaS, GCP IaaS, CloudStack, vSphere, and MAAS) back their node
+   pools with a machine template resource. These machine template specs wrap the actual machine configuration in a
+   `template` field, so pool-level overrides require an additional `template` level in the YAML.
 
    ```yaml hideClipboard title="Example AWSMachineTemplate override YAML with nested template field"
    awsMachineTemplate:
@@ -264,6 +284,9 @@ construct valid override YAML, use the following steps.
          spec:
            instanceType: m5.xlarge
    ```
+
+   Managed node pools on EKS, AKS, and GKE do not use the extra `template` nesting. Pool-level overrides for these
+   providers map directly under `spec`.
 
 ## Important Behaviors
 
@@ -364,3 +387,9 @@ Failed to get/apply cloudconfig from hubble. admission webhook "vawscloudconfig.
 - [Azure CAPI Override Reference](./azure-capi-override-reference.md)
 
 - [CloudStack CAPI Override Reference](./cloudstack-capi-override-reference.md)
+
+- [GCP CAPI Override Reference](./gcp-capi-override-reference.md)
+
+- [vSphere CAPI Override Reference](./vsphere-capi-override-reference.md)
+
+- [MAAS CAPI Override Reference](./maas-capi-override-reference.md)
