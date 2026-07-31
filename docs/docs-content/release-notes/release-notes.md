@@ -514,6 +514,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   native load balancer that you can enable through the pack configuration, available in version `1.35.2` and later.Refer to <VersionedLink text="Native Load Balancer" url="/integrations/packs/?pack=kubernetes-ck8s&tab=custom" /> for configuration steps.
 <!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3036 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-777 -->
+
+- Before deploying a virtual cluster with the updated **Virtual Cluster** pack (version `4.9.0` in [Artifact Studio](https://artifact-studio.spectrocloud.com/packs-catalog?search=vcluster), which packages vCluster `0.27.3`), set the CoreDNS image in the cluster group's **Advanced Config** YAML under `controlPlane.coredns.deployment.image`.
+  
+  Use `us-docker.pkg.dev/palette-images/k8s/coredns/coredns:v1.12.1` for Palette, or `us-docker.pkg.dev/palette-images-fips/k8s/coredns:v1.12.1` for Palette VerteX. Refer to [Configure the CoreDNS Image](../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#configure-the-coredns-image) for step-by-step guidance.
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4395 -->
 
 - Fixed an issue where the Traefik pack remained in `PackServiceNotReady` state on Kubernetes distributions that do not
