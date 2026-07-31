@@ -152,6 +152,16 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
    cluster you created when following the [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md) guide.
    This associates the workload cluster with the selected host cluster.
 
+   :::info
+
+   Overriding Cluster API (CAPI) properties is not supported on HyperShift-hosted OpenShift workload clusters. The
+   **Override Cluster API cluster configuration** and **Override Cluster API node pool configuration** toggles in the
+   Palette UI have no effect on this cluster type. Refer to
+   [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
+   for the list of supported providers.
+
+   :::
+
 10. On the **Nodes Config** step, configure the worker node pools. As the OpenShift control plane is hosted in the
     HyperShift host cluster, you only configure worker nodes here.
 

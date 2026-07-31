@@ -5,7 +5,7 @@ description:
   "Step-by-step guidance on how to generate an API token in the PaletteAI Inference Launchpad console so that coding
   assistants and other clients can authenticate to the appliance."
 hide_table_of_contents: false
-sidebar_position: 3
+sidebar_position: 4
 tags: ["paletteai-inference-launchpad", "api-token", "how-to"]
 keywords: ["launchpad", "ai", "api token", "authentication", "lpai", "coding agent"]
 ---
@@ -25,15 +25,22 @@ and model access, start with [Create a Client](./create-a-client.md).
 
 If an administrator already gave you an API token, you can use it and skip the following steps.
 
-1. Open the appliance console in a browser and sign in.
+1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
 
-2. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+2. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
+   **Overview** section.
 
-3. Select the client to open its detail panel, and then select the **API tokens** section.
+3. Select the **API tokens** section, and then select **Create Token**. The **Create API token** dialog opens.
 
-4. Select **Mint an API token**, and optionally set a **Label** and an **Expires** date.
+4. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
+   it.
 
-5. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+5. _(Optional)_ To set an expiration date, clear **Never expires**, and then choose an **Expires** date. By default, the
+   token does not expire.
+
+6. Select **Create Token**.
+
+7. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
 :::warning
 
