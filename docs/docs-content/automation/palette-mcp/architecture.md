@@ -7,7 +7,7 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-The [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) is a local-first Model Context Protocol
+The [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) is a local-first Model Context Protocol
 (MCP) server that runs on your machine or environment as a container or a native binary. The server communicates with
 the configured Palette instance and performs the required API operations.
 
