@@ -30,7 +30,9 @@ You can use any OCI-compliant registry as the primary registry. Palette provides
 configuration with [Zot](https://zotregistry.dev) and [Harbor](https://goharbor.io/). For central Edge clusters, a
 primary registry can still help you reduce network bandwidth usage and protect against outages.
 
-For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md).
+For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md). To upgrade an
+existing cluster so that the in-cluster Zot primary registry rotates its TLS certificate automatically, refer to
+[Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](./enable-zot-cert-rotation.md).
 
 ## Provider Image Registry
 
