@@ -300,6 +300,30 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
+#### Upgrade Notes {#upgrade-notes-edge-4-9-c}
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3062 -->
+
+- Edge clusters that use an in-cluster image registry serve a TLS certificate with a one-year validity period. On `zot`
+  pack version `0.1.89` or earlier, and on `harbor` pack version `1.19.0` or earlier, this certificate does not renew
+  automatically and must be rotated manually before each 365-day expiration. When the certificate expires, registry
+  connectivity breaks. Clusters can no longer pull images, and workload deployments, scale-out operations, node
+  replacements, and cluster repaves fail until the certificate is replaced. At remote or unattended sites, recovery
+  often requires on-site intervention during an unplanned outage.
+
+  Palette now supports automatic TLS certificate rotation for both registries through cert-manager integration. After
+  you upgrade to `zot` pack version `0.1.89-rev2` or `harbor` pack version `1.19.0-rev1`, cert-manager renews the
+  certificate automatically 15 days before it expires, which removes the annual manual rotation and the outage risk that
+  comes with missing it.
+
+  We recommend upgrading during your next scheduled maintenance window, prioritizing the clusters closest to one year
+  since deployment or since their last manual certificate rotation. The upgrade involves a pack version change and a pod
+  restart, so validate it on a non-production cluster first. For upgrade instructions, refer to
+  [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
+  and
+  [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md).
+  If you need help identifying affected clusters, contact [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8687 -->
