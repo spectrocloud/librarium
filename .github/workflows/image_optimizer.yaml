@@ -60,7 +60,7 @@ jobs:
 
       - name: Compress Images
         # Third-party action also pinned for the same reason
-        uses: calibreapp/image-actions@3d5873ac3e7bf1a38b24d9778d8dc639d5706d8b # main as of June 3, 2026
+        uses: calibreapp/image-actions@20a2d896d7e1103fc29631f4829539761123b8f5 # main as of June 3, 2026
         with:
           # Pass token via step output (not env) to limit exposure
           # VS Code/YAML may warn here due to SHA pinning; input is valid
