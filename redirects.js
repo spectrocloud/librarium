@@ -1083,6 +1083,13 @@ let redirects = [
     from: `/vertex/configure-image-pull-secret/`,
     to: `/vertex/system-management/configure-image-pull-secret/`,
   },
+
+  // Palette MCP: Gemini CLI replaced by Antigravity CLI 
+
+  {
+    from: `/automation/palette-mcp/setup/mcp-setup-gemini/`,
+    to: `/automation/palette-mcp/setup/mcp-setup-antigravity/`,
+  },
 ];
 
 if (packRedirects.length > 0) {

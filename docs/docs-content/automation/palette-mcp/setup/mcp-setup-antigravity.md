@@ -1,14 +1,14 @@
 ---
-sidebar_label: "Set Up MCP Server with Gemini CLI"
-title: "Set Up MCP Server with Gemini CLI"
-description: "Learn how to setup the Palette MCP server with Gemini CLI."
+sidebar_label: "Set Up MCP Server with Antigravity"
+title: "Set Up MCP Server with Antigravity"
+description: "Learn how to setup the Palette MCP server with Antigravity."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) with the
-[Gemini CLI](https://geminicli.com/).
+This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-agent-toolkit) with
+[Antigravity](https://antigravity.google/).
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Gemini CLI version 0.49.0 or later, configured with API key authentication. Refer to
-    [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
+  - The Antigravity CLI installed and authenticated. Refer to
+    [Install the Antigravity CLI](https://antigravity.google/docs/cli/install) for more information.
 
 - A Palette account.
 
@@ -28,30 +28,24 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
-5. Start the Gemini CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
-   authenticate with the Gemini CLI by following the prompts.
+5. Start the Antigravity CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
+   authenticate with the Antigravity CLI by following the prompts.
 
    ```shell
-   gemini
+   agy
    ```
 
-   ```shell hideClipboard title="Example Output"
-   Gemini CLI
-
-   Type your prompt or press Ctrl+C to exit.
-   >
-   ```
-
-6. Open the `~/.gemini/settings.json` file in your preferred text editor.
+6. Open the `~/.gemini/antigravity-cli/settings.json` file in your preferred text editor. If the file does not exist, create it.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
 
 8. Save the `settings.json` file and close it.
 
-9. Return to the terminal and execute the following command to ensure the MCP server is properly set up.
+9. Return to the Antigravity CLI and type the `/mcp` slash command to open the MCP Manager overlay and confirm that the
+   `palette` MCP server is listed and connected.
 
    ```shell
-   gemini mcp list
+   /mcp
    ```
 
    ```shell hideClipboard title="Example Output"
@@ -67,14 +61,13 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
     npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
     ```
 
-11. (Optional) We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use
-    kubeconfig files retrieved with `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc
-    `kubectl` workflows.
+11. (Optional) We recommend adding an Agent Skill to enable Antigravity to use kubeconfig files retrieved with
+    `read_cluster_kubeconfig` to access clusters, if you plan to use the files in ad-hoc `kubectl` workflows.
 
-    Issue the following command to create the `GEMINI.md` file on your machine if it does not exist.
+    Issue the following command to create the `ANTIGRAVITY.md` file on your machine if it does not exist.
 
     ```shell
-    touch ~/.gemini/GEMINI.md
+    touch ~/.antigravity/ANTIGRAVITY.md
     ```
 
     Open the file in your preferred text editor and paste the following snippet into the file. Replace the
@@ -82,19 +75,19 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
-You can now use the Palette MCP server with the Gemini CLI.
+You can now use the Palette MCP server with Antigravity.
 
 ## Validation
 
-1. Start the Gemini CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
-   authenticate with the Gemini CLI by following the prompts.
+1. Start the Antigravity CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
+   authenticate with the Antigravity CLI by following the prompts.
 
    ```shell
-   gemini
+   agy
    ```
 
    ```shell hideClipboard title="Example Output"
-   Gemini CLI
+   Antigravity CLI
 
    Type your prompt or press Ctrl+C to exit.
    >
