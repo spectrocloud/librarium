@@ -11,6 +11,27 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 6, 2026 - Release 4.9.x, palette-ai-v1.2.0
+
+<!-- PATCH RELEASE TICKET: DOC-3088 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7347 -->
+
+- Fixed an issue where the outgoing `palette-controller-manager` pod during a rolling upgrade would re-apply its older
+  baked `palette-webhook` manifest, downgrading the webhook and permanently stalling cluster reconciliation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7341 -->
+
+- Fixed a panic in `palette-lite` that caused add-on pack deployments and cluster profile attachments to silently fail
+  on imported clusters using the generic cloud provider.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAD-3561 -->
+
+- Fixed a UI 500 error that prevented login to self-hosted Palette after installing the PaletteAI ISO version
+  4.9.33-1.2.0.
+
 ## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
