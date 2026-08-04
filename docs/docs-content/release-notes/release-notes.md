@@ -27,11 +27,6 @@ tags: ["release-notes"]
 - Fixed a panic in `palette-lite` that caused add-on pack deployments and cluster profile attachments to silently fail
   on imported clusters using the generic cloud provider.
 
-<!-- https://spectrocloud.atlassian.net/browse/PAD-3561 -->
-
-- Fixed a UI 500 error that prevented login to self-hosted Palette after installing the PaletteAI ISO version
-  4.9.33-1.2.0.
-
 ## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
