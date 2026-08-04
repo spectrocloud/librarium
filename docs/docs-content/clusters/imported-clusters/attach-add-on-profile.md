@@ -14,6 +14,8 @@ manage these dependencies through the normal cluster profile lifecycle.
 
 ## Prerequisites
 
+<PartialsComponent category="clusters-import" name="generic-addon-profile-defect" />
+
 - An imported cluster with full permissions. Refer to [Migrate to Full Permissions](migrate-full-permissions.md) to
   learn how to migrate an imported cluster from read-only mode to full permission mode.
 

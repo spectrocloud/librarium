@@ -43,6 +43,8 @@ supported for imported clusters because Palette does not provision or control th
 
 The following table summarizes what actions are supported by Palette depending on your import mode.
 
+<PartialsComponent category="clusters-import" name="generic-addon-profile-defect" />
+
 | **Operation**                                                                                                                                                                                                                                                                                | **Read-Only Mode** | **Full Permission Mode** |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :----------------------: |
 | View event logs, cost, and health checks                                                                                                                                                                                                                                                     | :white_check_mark: |    :white_check_mark:    |
