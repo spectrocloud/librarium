@@ -13,21 +13,35 @@ concurrency:
   group: dependabot-ci-${{ github.ref }}
   cancel-in-progress: true
 
+# Dependabot-triggered runs read from the Dependabot secrets scope, which GitHub configures
+# separately from the Actions secrets scope. Secrets that are absent from the Dependabot scope
+# resolve to an empty string with no warning, so this block is deliberately narrower than the env
+# blocks in release.yaml and pull_request.yaml: it lists only what `make build-ci` actually consumes.
+#
+# Keep this list in sync with the Dependabot secrets configured on the repository.
+#
+# Deliberately omitted. Do not re-add these for parity with the other build workflows:
+#   AWS_*                          Only used by the S3 sync steps in release.yaml.
+#   APPZI_TOKEN, SEERS_CMP_KEY     Interpolated into <script> tags. Only matter for a deployed site.
+#   FULLSTORY_ORGID                Not read by the build at all. The org ID is hardcoded in
+#                                  static/scripts/fullstory.js.
+#   ALGOLIA_ADMIN_KEY              Only used by the Algolia crawler, not by the build.
+#   DISABLE_PACKS_INTEGRATIONS     Unset behaves as false, which is what this workflow wants.
+#   DISABLE_SECURITY_INTEGRATIONS  Unset behaves as false. Must stay unset while DSO_AUTH_TOKEN is
+#                                  set, otherwise CVE checks are skipped entirely.
+#   SHOW_LAST_UPDATE_TIME          Unset behaves as false. Must stay unset: last-update times need
+#                                  full git history, and this workflow checks out shallow.
 env:
+  # Auto-provided by Actions. The fallback actions below receive it explicitly via `gh-token`.
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
-  AWS_DEFAULT_REGION: us-east-1
-  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
-  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
-  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  # The Docusaurus Algolia theme validates all three as required in docusaurus.config.js.
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  # Pack data fetches. A 401 exits 5, which routes to the cached-packs fallback below.
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
-  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
-  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
-  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  # CVE data fetches. utils/cves/requests.js throws at module load when this is unset, which exits 1
+  # and bypasses the cached-CVEs fallback. Only exit 7 reaches that fallback, so this must be set.
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   NODE_VERSION: "24"
 
