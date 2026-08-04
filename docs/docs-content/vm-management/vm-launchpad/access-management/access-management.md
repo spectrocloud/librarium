@@ -25,8 +25,8 @@ When you grant access on the [Users](./users.md) or [Groups](./groups.md) pages,
 mapping and the matching Kubernetes ClusterRoleBinding or RoleBinding in a single action, scoped to the namespaces you
 select. To view the resolved bindings for every user and group, use [Access Mapping](./access-mapping.md).
 
-A user's effective permissions are the union of every role and namespace scope granted to them, whether the grant comes
-from the user directly or from any group they belong to. Refer to
+Group membership takes precedence over a role assigned to a user directly. When a user belongs to any group that carries
+a VMO role, the group mappings determine their effective permissions. Refer to
 [How Effective Permissions Are Calculated](./users.md#how-effective-permissions-are-calculated) for details.
 
 ## Access Management Workflows

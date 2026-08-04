@@ -100,15 +100,16 @@ fixed.
 :::info
 
 Member changes take effect on the user's next sign-in or token refresh. VM Launchpad applies Kubernetes access changes
-immediately and creates or revokes ClusterRoleBindings and RoleBindings in the cluster.
+immediately and creates or revokes ClusterRoleBindings and RoleBindings in the cluster. Existing API keys keep their
+previous permissions until the user signs in again. Refer to [API Keys](./api-keys.md).
 
 :::
 
 :::info
 
-A user's effective permissions are the union of every role and scope granted to them, whether the grant comes from the
-group or from the user directly. Removing a group binding does not revoke permissions the user is granted through
-another group or directly. Refer to
+When a user belongs to any group that carries a VMO role, the group mappings determine their permissions and the role
+assigned to the user directly is ignored. A user in several mapped groups receives the combined permissions of those
+groups, so removing one group does not revoke permissions another group grants. Refer to
 [How Effective Permissions Are Calculated](./users.md#how-effective-permissions-are-calculated) for details.
 
 :::

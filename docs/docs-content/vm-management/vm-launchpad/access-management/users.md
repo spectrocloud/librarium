@@ -134,22 +134,36 @@ fixed.
 :::info
 
 When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards listing
-the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). The banner is a heads-up, not
-a lock: any role you set here is added to the roles the user already inherits from their groups. Refer to
+the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). Take the banner at its word.
+A role you set here does not take effect while the user remains in that group. Refer to
 [How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
 
 :::
 
 ## How Effective Permissions Are Calculated
 
-A user's effective permissions are the **union** of every VMO role and namespace scope granted to them, whether the
-grant comes from the user directly or from any group they belong to. There is no override or precedence between sources.
-For example, a user who has the **Viewer** role assigned directly and belongs to a group with the **Editor** role
-receives the sum of both roles' permissions in the sum of both scopes.
+Group membership determines a user's effective permissions whenever any group applies. The role assigned directly to the
+user is a fallback.
 
-To reduce a user's effective permissions, remove the grant from every source that provides it. Editing the user alone is
-not enough if a group also grants the permission. Refer to [Groups](./groups.md) to review and edit group membership and
-role assignments.
+- If the user belongs to one or more groups that carry a VMO role, their effective permissions are the **union of those
+  group roles**, and the role assigned directly to the user is ignored.
+
+- If none of the user's groups carries a VMO role, the role assigned directly to the user applies.
+
+For example, a user assigned **Editor** directly who belongs only to a group carrying **Viewer** receives Viewer
+permissions, not Editor. Removing that group membership makes the direct **Editor** assignment take effect. A user in
+two groups carrying **Viewer** and **Editor** receives the combined permissions of both.
+
+To reduce a user's effective permissions, change or remove the group mappings that grant them. Editing the user-level
+role has no effect while any mapped group applies. Refer to [Groups](./groups.md) to review and edit group membership
+and role assignments.
+
+:::warning
+
+Changing a user's roles or groups does not revoke their existing API keys. Revoke the keys as well. Refer to
+[API Keys](./api-keys.md).
+
+:::
 
 ## Reset a User's Password
 

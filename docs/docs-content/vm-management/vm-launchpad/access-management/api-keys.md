@@ -8,7 +8,7 @@ sidebar_position: 6
 tags: ["vmo", "vm launchpad", "access management", "api keys"]
 ---
 
-API keys are first-party opaque tokens that PaletteAI VM Launchpad issues for programmatic access to the platform API.
+API keys are tokens that PaletteAI VM Launchpad issues for programmatic access to the platform API.
 They are self-service: every authenticated user creates, lists, and revokes their own keys from the **User Menu**, and
 each key inherits its creator's effective VMO permissions live on every request.
 
