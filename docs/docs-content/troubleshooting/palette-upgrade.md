@@ -38,6 +38,10 @@ The trigger is the Palette agent upgrade on an existing cluster. New cluster dep
 
 ### Debug Steps
 
+Recovery may require restarting both the `palette-controller-manager` deployment in the affected cluster's namespace and
+the `palette-webhook` deployment in the `palette-system` namespace. Complete the steps in order and check the webhook
+image after each restart to determine whether the second restart is needed.
+
 1. Establish a shell session with `kubectl` access to the affected workload cluster. Refer to
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for guidance.
 
@@ -84,13 +88,17 @@ The trigger is the Palette agent upgrade on an existing cluster. New cluster dep
    us-docker.pkg.dev/palette-images/palette/spectro-drive:4.9.19
    ```
 
-6. (Optional) If the webhook image did not update after step 4, restart the `palette-webhook` deployment in the
-   `palette-system` namespace.
+6. If the webhook image in step 5 still shows the older version, restart the `palette-webhook` deployment in the
+   `palette-system` namespace. Some affected clusters need this second restart before the controller can move the
+   webhook forward.
 
    ```shell
    kubectl --namespace palette-system rollout restart deployment palette-webhook
    kubectl --namespace palette-system rollout status deployment palette-webhook --timeout=600s
    ```
+
+   After the rollout completes, run the check in step 5 again and confirm that the image now matches the expected
+   version.
 
 7. Confirm that reconcile has recovered. Follow the controller logs and verify that the
    `failed to set owner ref to cloud config` error no longer appears on new reconcile attempts.
