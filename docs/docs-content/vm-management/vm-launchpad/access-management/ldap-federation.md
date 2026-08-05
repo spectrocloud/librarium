@@ -9,9 +9,9 @@ sidebar_position: 4
 tags: ["vmo", "vm launchpad", "access management"]
 ---
 
-PaletteAI VM Launchpad uses Keycloak as its OIDC identity provider. If your organization already maintains user accounts
-in an LDAP directory, you can federate those accounts into Keycloak instead of creating them individually on the
-[Users](./users.md) page.
+PaletteAI VM Launchpad uses [Keycloak](https://www.keycloak.org/documentation) as its OIDC identity provider. If your
+organization already maintains user accounts in an LDAP directory, you can federate those accounts into Keycloak instead
+of creating them individually on the [Users](./users.md) page.
 
 Federated LDAP users must present an email address before VM Launchpad can identify them and assign VMO roles. Many LDAP
 directories do not populate an email attribute for every account. This page explains the requirement and how to satisfy
