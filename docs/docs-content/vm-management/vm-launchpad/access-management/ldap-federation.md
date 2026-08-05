@@ -53,8 +53,9 @@ Refer to [Create Users](./users.md#create-users).
 
 - An account with the **Platform Admin** VMO role, or membership in a group mapped to Platform Admin.
 
-- Access to the Keycloak admin console for your appliance, along with the Keycloak administrator credentials you set
-  during cluster deployment. Refer to the **Keycloak Admin** section in
+- Access to the Keycloak admin console for your appliance. The console is available at `https://<platform-ip>/iam`,
+  where `<platform-ip>` is the platform IP address you assigned during cluster creation. Sign in with the Keycloak
+  administrator credentials you set in the **Keycloak Admin** section of
   [Install VM Launchpad](../install.md#create-cluster).
 
 - An LDAP user federation provider already configured in Keycloak. VM Launchpad does not configure LDAP federation for
@@ -67,7 +68,9 @@ Refer to [Create Users](./users.md#create-users).
 ## Map an Email Attribute from LDAP
 
 Keycloak creates a default `email` mapper when you add an LDAP provider. That mapper reads the LDAP `mail` attribute.
-Point it at an attribute your directory actually populates.
+Point it at an attribute your directory actually populates. For background on how mappers move attributes between LDAP
+and Keycloak, refer to the Keycloak
+[LDAP mappers](https://www.keycloak.org/docs/latest/server_admin/index.html#_ldap_mappers) documentation.
 
 1. Log in to the Keycloak admin console as an administrator.
 
@@ -82,13 +85,12 @@ Point it at an attribute your directory actually populates.
 
 6. Complete the following fields.
 
-   | **Field**                       | **Value**                                                                                             |
-   | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-   | **User Model Attribute**        | `email`                                                                                               |
-   | **LDAP Attribute**              | The attribute that holds an email-formatted value, such as `userPrincipalName`.                       |
-   | **Read Only**                   | Enable, unless you intend to write email changes back to the directory.                               |
-   | **Always Read Value From LDAP** | Enable, so that Keycloak refreshes the value from the directory on every sync.                        |
-   | **Is Mandatory in LDAP**        | Enable, so that accounts missing the attribute fail the sync instead of importing without an address. |
+   | **Field**                       | **Value**                                                                                                                                     |
+   | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **User model attribute**        | `email`. The default mapper already uses this value. Leave it unchanged.                                                                      |
+   | **LDAP attribute**              | Change from `mail` to the attribute that holds an email-formatted value, such as `userPrincipalName`.                                         |
+   | **Always read value from LDAP** | _(Recommended)_ Set to **On** so that Keycloak refreshes the address from the directory on every sync. Defaults to **Off**.                   |
+   | **Is mandatory in LDAP**        | _(Optional)_ Set to **On** so that accounts missing the attribute fail the sync instead of importing without an address. Defaults to **Off**. |
 
 7. Select **Save**.
 
@@ -106,9 +108,9 @@ address as verified only when the LDAP provider is configured to trust it.
 
 1. In the Keycloak admin console, select **User federation**, and then select your LDAP provider.
 
-2. Expand the **Advanced settings** section.
+2. Scroll to the **Advanced settings** section, which is the last section on the provider settings page.
 
-3. Enable **Trust Email**.
+3. Set **Trust Email** to **On**.
 
 4. Select **Save**.
 
