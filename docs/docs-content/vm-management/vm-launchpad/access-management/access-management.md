@@ -13,7 +13,8 @@ to create users, group them, and assign VMO roles and namespace scopes.
 
 ## Access Management Workflows
 
-| **Workflow**          | **Description**                                                                    |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| [Users](./users.md)   | View, create, edit, reset passwords, and delete users.                             |
-| [Groups](./groups.md) | Group users together and manage their VMO role and Kubernetes access in one place. |
+| **Workflow**                            | **Description**                                                                     |
+| --------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Users](./users.md)                     | View, create, edit, reset passwords, and delete users.                              |
+| [Groups](./groups.md)                   | Group users together and manage their VMO role and Kubernetes access in one place.  |
+| [LDAP Federation](./ldap-federation.md) | Federate users from an LDAP directory and satisfy the OIDC email claim requirement. |

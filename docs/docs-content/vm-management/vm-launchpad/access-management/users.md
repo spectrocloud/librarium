@@ -49,7 +49,7 @@ VM Launchpad creates one or more users in a single guided flow that also assigns
    | **Field**           | **Description**                                                                 |
    | ------------------- | ------------------------------------------------------------------------------- |
    | **Username**        | Required. Must be unique.                                                       |
-   | **Email**           | Required. Must be a valid email address.                                        |
+   | **Email**           | Required. Must be a valid email address. Refer to the note that follows.        |
    | **First Name**      | Optional. The user's given name.                                                |
    | **Last Name**       | Optional. The user's family name.                                               |
    | **Password**        | Required unless **Temporary** is selected. Must meet the password policy.       |
@@ -64,6 +64,14 @@ VM Launchpad creates one or more users in a single guided flow that also assigns
    - At least 1 digit
 
    - At least 1 special character
+
+   :::info
+
+   The email address is required because the Kubernetes API server in a VM Launchpad cluster identifies users by their
+   `email` claim. Accounts without a verified address cannot be granted access. This also applies to users federated
+   from an LDAP directory. Refer to [Federate LDAP Users with Keycloak](./ldap-federation.md).
+
+   :::
 
 4. _(Optional)_ To onboard more users at the same time, select **+ Add another user** and repeat the previous step. Each
    user has its own row in the wizard.
