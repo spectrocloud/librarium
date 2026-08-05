@@ -74,7 +74,8 @@ and Keycloak, refer to the Keycloak
 
 1. Log in to the Keycloak admin console as an administrator.
 
-2. Select your realm from the realm drop-down menu.
+2. From the realm drop-down menu, select the realm that holds your VM Launchpad users. On a default appliance this is
+   the `vmo` realm. The admin console opens in a different realm, so switch realms before you continue.
 
 3. From the left main menu, select **User federation**, and then select your LDAP provider.
 
@@ -106,6 +107,12 @@ attribute produce unpredictable results. Edit the existing `email` mapper instea
 The mapper populates the `email` claim, but the token still needs `email_verified: true`. Keycloak marks a federated
 address as verified only when the LDAP provider is configured to trust it. **Trust Email** is a setting on the LDAP
 provider itself, not on the mapper, and it defaults to **Off**.
+
+:::tip
+
+Enable **Trust Email** when you first create the LDAP provider to avoid correcting accounts afterward.
+
+:::
 
 1. In the Keycloak admin console, select **User federation**, and then select your LDAP provider.
 
