@@ -123,15 +123,26 @@ tags: ["release-notes"]
   the upgrade path for both new clusters and existing clusters that reach `4.9.38` through a Palette upgrade, and
   Spectro Cloud validates all shipped packs against the new version.
 
-  If you author or maintain your own Helm-based packs, note two behavioral changes in Helm 4:
+  If you author or maintain your own Helm-based packs, or run `helm` directly against Palette-managed releases, note the
+  following Helm 4 changes:
 
-  - Server-side apply is the default, so optional fields that render as `null` scalars in a chart are now rejected by
-    Custom Resource Definitions (CRDs) that require a non-null value.
+  - Helm 4 rejects fields that are not declared in a Custom Resource Definition (CRD) schema, instead of silently
+    discarding them. Server-side apply converts the manifest to a typed object against the CRD's structural schema
+    before pruning, so an undeclared field fails the release with
+    `failed to create typed patch object (...): <path>: field not declared in schema`. In Helm 3, the API server pruned
+    the same field and emitted only a warning, so the release succeeded but the setting never took effect. Audit your
+    pack values for stale or misnamed keys before you upgrade to Palette `4.9.38`.
 
-  - `ValidatingWebhookConfiguration` and `MutatingWebhookConfiguration` are now installed before other custom resources
-    emitted by the same chart, which can cause the first few Helm revisions of a chart to fail until the validating
-    webhook pod is Ready. The install completes on its own after the webhook becomes reachable. For the resulting known
-    issue, refer to [Known Issues](../release-notes/known-issues.md).
+  - Helm 4 removes `helm list --all` and its short-form alias `-a`. `helm list` now reports releases in any status by
+    default.
+
+  - `helm upgrade` and `helm rollback` default to `--server-side=auto`, which reuses the apply method of the previous
+    revision. A release created by Helm 3 continues to use client-side apply until you explicitly pass
+    `--server-side=true`.
+
+  - Helm 4 rejects a chart whose rendered output is empty when a post-renderer is configured, failing with
+    `post-renderer "<name>" produced empty output`. This happens when every resource in the chart is gated behind a
+    condition that evaluates to `false`. Helm 3 accepted this and recorded the release with no resources.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
