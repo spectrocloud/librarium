@@ -8,8 +8,8 @@ tags: ["vmo", "vm launchpad", "infrastructure", "networking", "storage", "namesp
 ---
 
 Use the **Infrastructure** section of Virtual Machine Orchestrator (VMO) to manage the foundational platform resources
-that VMs depend on, such as the networks they attach to, the storage that backs their disks, and the namespaces that VMs run
-in. VMO surfaces these Kubernetes constructs through dedicated UI workflows, while preserving direct access to the
+that VMs depend on, such as the networks they attach to, the storage that backs their disks, and the namespaces that VMs
+run in. VMO surfaces these Kubernetes constructs through dedicated UI workflows, while preserving direct access to the
 underlying resources when you need advanced configuration.
 
 Configure these resources before or while creating VMs. The VM creation wizard draws on the network attachment
