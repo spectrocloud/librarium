@@ -19,19 +19,19 @@ Namespaces managed by VMO are denoted with the following labels:
 
 | Label                                         | Description                                                                                                                     |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all labels managed by VMO, including those created in the UI                                                         |
+| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all namespaces managed by VMO, whether created in the VMO UI or adopted from the cluster                             |
 | `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by VM Launchpad |
 
 Managed namespaces:
 
 - Are listed in relevant drop-downs and filters.
 - Can be edited from a single modal.
-- Can be created on-the-fly from various pages (for example, **Workloads** > **Virtual Machines** > **Create VM**)
+- Can be created on-the-fly from various pages (for example, **Workloads** > **Virtual Machines** > **Create VM**).
 
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
 with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
 namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can
-filter by a specific namespace using the namespace drop-down.
+filter by a specific namespace using the **All Namespaces** drop-down.
 
 VMO manages the following namespaces by default.
 
@@ -42,16 +42,6 @@ VMO manages the following namespaces by default.
 | `vmo-golden-images` | Dedicated namespace for golden image DataVolumes.       |
 
 ## Create Namespaces
-
-<!-- ### Quick-Create Links
-
-You can quick-create namespaces from several pages without leaving the page:
-
-- **VM creation**: the Namespace dropdown offers **Create namespace** when the desired namespace does not exist.
-- **Access Management** > **Users**: when scoping access to a namespace, you can create it inline.
-
-Namespaces created through quick-create modal applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
-namespace is immediately managed. -->
 
 1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
 
@@ -75,13 +65,13 @@ namespace is immediately managed. -->
    Certain keys and values are reserved for VMO and Kubernetes operations. The modal window hides these keys to prevent
    accidental edits. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
 
-   | Label              | Annotation         | Key                                           | Value         |
-   | ------------------ | ------------------ | --------------------------------------------- | ------------- |
-   | :white_check_mark: | :x:                | `app.kubernetes.io/managed-by`                | `vmo-manager` |
-   | :white_check_mark: | :x:                | `vmo-manager.spectrocloud.com/origin`         | `created`     |
-   | :white_check_mark: | :white_check_mark: | `kubernetes.io/...` and `*.kubernetes.io/...` | -             |
-   | :white_check_mark: | :white_check_mark: | `k8s.io/...` and `*.k8s.io/...`               | -             |
-   | :white_check_mark: | :white_check_mark: | `pod-security.kubernetes.io/...`              | -             |
+   | Key                                           | Value         | Reserved for labels | Reserved for annotations |
+   | --------------------------------------------- | ------------- | ------------------- | ------------------------ |
+   | `app.kubernetes.io/managed-by`                | `vmo-manager` | :white_check_mark:  | :x:                      |
+   | `vmo-manager.spectrocloud.com/origin`         | `created`     | :white_check_mark:  | :x:                      |
+   | `kubernetes.io/...` and `*.kubernetes.io/...` | Any           | :white_check_mark:  | :white_check_mark:       |
+   | `k8s.io/...` and `*.k8s.io/...`               | Any           | :white_check_mark:  | :white_check_mark:       |
+   | `pod-security.kubernetes.io/...`              | Any           | :white_check_mark:  | :white_check_mark:       |
 
 5. _(Optional)_ Enter **Quotas** and **Limit Range** values as necessary.
 
@@ -123,7 +113,7 @@ namespace is immediately managed. -->
 
    The namespace is created with the appropriate labels set. Any provided **Quotas** and **Limit Range** values are
    applied as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can edit the
-   namespace to adjust values as needed
+   namespace to adjust values as needed.
 
 ## Adopt Existing Namespaces
 
