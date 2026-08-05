@@ -116,7 +116,7 @@ tags: ["release-notes"]
   [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
   prerequisites.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-7355 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6398 -->
 
 - Palette now uses Helm `v4.2.x` internally to install and upgrade Helm-based packs on managed clusters, updated from
   Helm `v3.19.x`. The change is transparent to Palette-managed workflows and requires no user action. Palette validates
