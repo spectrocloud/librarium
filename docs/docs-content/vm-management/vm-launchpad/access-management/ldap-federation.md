@@ -104,7 +104,8 @@ attribute produce unpredictable results. Edit the existing `email` mapper instea
 ## Trust Email Addresses from LDAP
 
 The mapper populates the `email` claim, but the token still needs `email_verified: true`. Keycloak marks a federated
-address as verified only when the LDAP provider is configured to trust it.
+address as verified only when the LDAP provider is configured to trust it. **Trust Email** is a setting on the LDAP
+provider itself, not on the mapper, and it defaults to **Off**.
 
 1. In the Keycloak admin console, select **User federation**, and then select your LDAP provider.
 
@@ -119,8 +120,8 @@ email, and includes `email_verified: true` in the tokens it issues.
 
 ## Synchronize LDAP Users
 
-Existing users that Keycloak imported before you made these changes keep their original attributes. Run a new
-synchronization so the mapper applies to them.
+Accounts that Keycloak imported before you made these changes keep their original attributes. Run a new synchronization
+so the mapper applies to them.
 
 1. In the Keycloak admin console, select **User federation**, and then select your LDAP provider.
 
@@ -128,13 +129,36 @@ synchronization so the mapper applies to them.
 
 3. Wait for the synchronization to complete. Keycloak reports the number of accounts added and updated.
 
+A synchronization updates the `email` attribute on accounts Keycloak already imported, and it applies **Trust Email** to
+accounts that it imports for the first time. It does not apply **Trust Email** to accounts that already exist, because
+Keycloak sets the verified flag only during the initial import of an account.
+
+### Correct Previously Imported Accounts
+
+Accounts imported before you enabled **Trust Email** keep `email_verified: false` and still cannot sign in, even after
+the synchronization reports them as updated. Use one of the following approaches to correct them.
+
+- **Set the flag for each account.** On the **Users** page, select the account, set **Email verified** to **On**, and
+  save. Use this approach when only a few accounts are affected.
+
+- **Import the accounts again.** From the LDAP provider's **Action** drop-down menu, select **Remove imported**, and
+  then select **Sync all users**. Keycloak deletes its local copies and imports them again, which applies **Trust
+  Email**.
+
 :::warning
 
-Users who are already signed in continue to hold their previous token until it expires. That token does not carry the
-new `email` claim. Ask affected users to sign out and sign in again to receive an updated token. API keys created before
-the change also keep the old claims until the user signs in again.
+**Remove imported** deletes the local Keycloak record for every account imported from the provider. Group memberships
+and role mappings assigned in Keycloak, rather than derived from LDAP, are lost and must be assigned again. Because VM
+Launchpad maps VMO roles through Keycloak groups, review group membership and role assignments after the re-import.
+Refer to [Groups](./groups.md).
 
 :::
+
+### Refresh Existing Sessions
+
+Users who are already signed in continue to hold their previous token until it expires, and that token does not carry
+the new `email` claim. Ask affected users to sign out and sign in again to receive an updated token. API keys created
+before the change also keep the old claims until the user signs in again.
 
 ## Verify
 

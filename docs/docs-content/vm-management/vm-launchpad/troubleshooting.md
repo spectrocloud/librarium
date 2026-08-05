@@ -46,7 +46,10 @@ Keycloak imports the account without an address and issues a token that the API 
    **Trust Email** on the LDAP provider. Refer to
    [Federate LDAP Users with Keycloak](./access-management/ldap-federation.md) for the full procedure.
 
-5. Run a new synchronization from the LDAP provider so the change applies to accounts Keycloak already imported.
+5. Run a new synchronization from the LDAP provider so the mapper applies to accounts Keycloak already imported. A
+   synchronization does not set **Email verified** on accounts that already exist, so correct those accounts separately.
+   Refer to
+   [Correct Previously Imported Accounts](./access-management/ldap-federation.md#correct-previously-imported-accounts).
 
 6. Ask the affected users to sign out and sign in again. Tokens issued before the change do not carry the new claims.
 
