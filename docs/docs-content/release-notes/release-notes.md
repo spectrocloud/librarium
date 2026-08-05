@@ -116,6 +116,23 @@ tags: ["release-notes"]
   [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
   prerequisites.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7355 -->
+
+- Palette now uses Helm `v4.2.x` internally to install and upgrade Helm-based packs on managed clusters, updated from
+  Helm `v3.19.x`. The change is transparent to Palette-managed workflows and requires no user action. Palette validates
+  the upgrade path for both new clusters and existing clusters that reach `4.9.38` through a Palette upgrade, and
+  Spectro Cloud validates all shipped packs against the new version.
+
+  If you author or maintain your own Helm-based packs, note two behavioral changes in Helm 4:
+
+  - Server-side apply is the default, so optional fields that render as `null` scalars in a chart are now rejected by
+    Custom Resource Definitions (CRDs) that require a non-null value.
+
+  - `ValidatingWebhookConfiguration` and `MutatingWebhookConfiguration` are now installed before other custom resources
+    emitted by the same chart, which can cause the first few Helm revisions of a chart to fail until the validating
+    webhook pod is Ready. The install completes on its own after the webhook becomes reachable. For the resulting known
+    issue, refer to [Known Issues](../release-notes/known-issues.md).
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
 - [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
