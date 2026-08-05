@@ -83,7 +83,11 @@ passthrough.
 
 ## Next Steps
 
-1. Review the hardware requirements and follow the [Install VM Launchpad](./install.md) guide to install the appliance
+1. Review [Network Configuration Considerations](./vmo-networking.md) to plan your host network layout, bond and bridge
+   configuration, and switch port settings **before** you install the appliance. Networking decisions are difficult to
+   change after installation, and VM Launchpad supports specific host network configurations.
+
+2. Review the hardware requirements and follow the [Install VM Launchpad](./install.md) guide to install the appliance
    on your devices and create your cluster.
 
-2. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.
+3. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.
