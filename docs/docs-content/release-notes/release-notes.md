@@ -2420,8 +2420,8 @@ The following component updates are applicable to this release:
 
   :::info
 
-  Add-on cluster profile deployment on **Generic** imported clusters is a known defect on Palette 4.9.14 and later.
-  Refer to [Known Issues](known-issues.md).
+  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.x** or later. Refer to
+  [Imported Clusters](../clusters/imported-clusters/imported-clusters.md#import-modes).
 
   :::
 
