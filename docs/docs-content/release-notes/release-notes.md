@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 6, 2026 - Release 4.9.x, palette-ai-v1.2.0
+## August 6, 2026 - Release 4.9.x
 
 <!-- PATCH RELEASE TICKET: DOC-3088 -->
 
