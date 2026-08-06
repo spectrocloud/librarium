@@ -11,6 +11,70 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 7, 2026 - Component Updates {#component-updates-2026-32}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3087 -->
+<!-- RELEASE DATE: August 7, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.41 -->
+<!-- RELEASE ARTIFACT STUDIO: 0 -->
+<!-- RELEASE TERRAFORM VERSION: 0 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.41.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 0       |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0       |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0       |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.41  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.41  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3087. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4415 -->
+
+- The Kyverno pack has been upgraded from v1.12.2 to v1.18, bringing the latest Kyverno policy engine capabilities and
+  security improvements to your cluster profiles.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4496 -->
+
+- The Spectro Kubernetes Dashboard pack is now marked as disabled. This pack will no longer be available for new cluster
+  profile configurations. Existing deployments are not affected and will not trigger a repave. Users are encouraged to
+  migrate to the standard
+  [Kubernetes Dashboard pack](https://docs.spectrocloud.com/integrations/packs/?pack=k8s-dashboard) as an alternative.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4508 -->
+
+- Kubernetes pack versions have been updated for release week 2026-32, incorporating the latest Kubernetes releases
+  across supported versions.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3087. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3087. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.3 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.3 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.1 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.63.1 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.2 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.21.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 88.1.5 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.1.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3087. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## August 6, 2026 - Release 4.9.41
 
 <!-- PATCH RELEASE TICKET: DOC-3088 -->
