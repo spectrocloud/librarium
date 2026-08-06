@@ -35,13 +35,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.41.
 - The Kyverno pack has been upgraded from v1.12.2 to v1.18, bringing the latest Kyverno policy engine capabilities and
   security improvements to your cluster profiles.
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4496 -->
-
-- The Spectro Kubernetes Dashboard pack is now marked as disabled. This pack will no longer be available for new cluster
-  profile configurations. Existing deployments are not affected and will not trigger a repave. Users are encouraged to
-  migrate to the standard
-  [Kubernetes Dashboard pack](https://docs.spectrocloud.com/integrations/packs/?pack=k8s-dashboard) as an alternative.
-
 <!-- END COMPONENT UPDATES BODY: DOC-3087. DO NOT DELETE. -->
 
 ### Packs
