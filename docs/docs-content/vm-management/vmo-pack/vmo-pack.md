@@ -12,8 +12,8 @@ tags: ["vmo", "vmo pack"]
 Virtual Machine Orchestrator (VMO) Pack is the original approach to running VMs on Palette-managed Kubernetes
 clusters. With VMO Pack, you use Palette to deploy the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
 as an add-on cluster profile. The VMO pack bundles KubeVirt, Containerized Data Importer (CDI), Multus CNI, a snapshot controller, and the Spectro VM Dashboard into a single add-on.
-You can attach this add-on to Palette-managed clusters or [imported clusters](../../clusters/imported-clusters/imported-clusters.md) and then access the VM dashboard through the
-Palette console using the Spectro Proxy.
+You can attach this add-on to Palette-managed clusters or [imported clusters](../../clusters/imported-clusters/imported-clusters.md) and then access the VM dashboard through
+Palette using the Spectro Proxy.
 
 :::tip
 
@@ -39,11 +39,11 @@ VMO Pack is appropriate in the following scenarios:
 
 - A Palette connection is required to create your VMO pack.
 
-- The VM dashboard is typically accessed through the Palette console. On locally managed Edge clusters that operate
-  without a Palette connection, the dashboard still runs on the cluster but has no built-in authentication or access
-  control. The dashboard relies on Palette for identity management; without a Palette connection, it either runs with
-  auth disabled or requires OIDC to be configured independently at the Kubernetes layer. If the VMO pack is not in a
-  healthy state, the VM dashboard becomes unavailable.
+- The VM dashboard is typically accessed through Palette. On locally managed Edge clusters that operate without a
+  Palette connection, the dashboard still runs on the cluster, but Palette-managed OIDC is unavailable. In that case,
+  configure local authentication, Keycloak, or an external OIDC provider on the pack instead. Refer to
+  [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) for guidance. If the VMO pack is not
+  in a healthy state, the VM dashboard becomes unavailable.
 
 - Networking and storage management are configured through Kubernetes manifests rather than through a dedicated
   management interface.
@@ -55,13 +55,20 @@ VMO Pack is appropriate in the following scenarios:
 
 1. Review the [Architecture](../architecture.md) page to learn about the components included in the VMO pack.
 
-2. Follow the [Create a VMO Profile](./create-vmo-profile.md) guide to build your VMO add-on cluster profile. If you are
+2. Review [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) to decide how the VM
+   management UI is reached and which identity provider users authenticate against.
+
+3. Follow the [Create a VMO Profile](./create-vmo-profile.md) guide to build your VMO add-on cluster profile. If you are
    deploying in an airgapped environment, review the [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)
    guide first.
 
-3. Deploy a cluster with the VMO add-on profile attached, then refer to the
+4. Deploy a cluster with the VMO add-on profile attached, then refer to the
    [Create and Manage VMs](./create-manage-vm/create-manage-vm.md) section for guidance on deploying VMs and performing
    standard VM operations.
 
-4. Explore the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to learn how to create
+5. Explore the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to learn how to create
    VM and disk templates, manage VM resources, and perform other advanced operations.
+
+If you are moving an existing cluster from an earlier pack version, refer to
+[Upgrade the VMO Pack](./upgrade-vmo-pack.md) for the differences between the two generations of the pack and for the
+upgrade procedure.
