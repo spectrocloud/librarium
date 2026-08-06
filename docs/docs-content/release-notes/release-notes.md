@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 6, 2026 - Release 4.9.41
+
+<!-- PATCH RELEASE TICKET: DOC-3088 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7347 -->
+
+- Fixed an issue where the outgoing `palette-controller-manager` pod during a rolling upgrade would re-apply its older
+  baked `palette-webhook` manifest, downgrading the webhook and permanently stalling cluster reconciliation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7341 -->
+
+- Fixed a panic in `palette-lite` that caused add-on pack deployments and cluster profile attachments to silently fail
+  on imported clusters using the generic cloud provider.
+
 ## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
@@ -115,6 +131,34 @@ tags: ["release-notes"]
   [Install on Kubernetes](../enterprise-version/install-palette/install-on-kubernetes/install.md) and
   [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
   prerequisites.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6398 -->
+
+- Palette now uses Helm `v4.2.x` internally to install and upgrade Helm-based packs on managed clusters, updated from
+  Helm `v3.19.x`. The change is transparent to Palette-managed workflows and requires no user action. Palette validates
+  the upgrade path for both new clusters and existing clusters that reach `4.9.38` through a Palette upgrade, and
+  Spectro Cloud validates all shipped packs against the new version.
+
+  If you author or maintain your own Helm-based packs, or run `helm` directly against Palette-managed releases, note the
+  following Helm 4 changes:
+
+  - Helm 4 rejects fields that are not declared in a Custom Resource Definition (CRD) schema, instead of silently
+    discarding them. Server-side apply converts the manifest to a typed object against the CRD's structural schema
+    before pruning, so an undeclared field fails the release with
+    `failed to create typed patch object (...): <path>: field not declared in schema`. In Helm 3, the API server pruned
+    the same field and emitted only a warning, so the release succeeded but the setting never took effect. Audit your
+    pack values for stale or misnamed keys before you upgrade to Palette `4.9.38`.
+
+  - Helm 4 removes `helm list --all` and its short-form alias `-a`. `helm list` now reports releases in any status by
+    default.
+
+  - `helm upgrade` and `helm rollback` default to `--server-side=auto`, which reuses the apply method of the previous
+    revision. A release created by Helm 3 continues to use client-side apply until you explicitly pass
+    `--server-side=true`.
+
+  - Helm 4 rejects a chart whose rendered output is empty when a post-renderer is configured, failing with
+    `post-renderer "<name>" produced empty output`. This happens when every resource in the chart is gated behind a
+    condition that evaluates to `false`. Helm 3 accepted this and recorded the release with no resources.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
@@ -2417,6 +2461,13 @@ The following component updates are applicable to this release:
 - The **Cloud Type** options for [imported clusters](../clusters/imported-clusters/imported-clusters.md) have been
   updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
   when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
+
+  :::info
+
+  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.41** or later. Refer to
+  [Imported Clusters](../clusters/imported-clusters/imported-clusters.md#import-modes).
+
+  :::
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 
