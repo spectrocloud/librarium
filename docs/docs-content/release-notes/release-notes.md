@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 6, 2026 - Release 4.9.x
+## August 6, 2026 - Release 4.9.41
 
 <!-- PATCH RELEASE TICKET: DOC-3088 -->
 
@@ -2436,7 +2436,7 @@ The following component updates are applicable to this release:
 
   :::info
 
-  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.x** or later. Refer to
+  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.41** or later. Refer to
   [Imported Clusters](../clusters/imported-clusters/imported-clusters.md#import-modes).
 
   :::
