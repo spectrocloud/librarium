@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 6, 2026 - Release 4.9.41
+
+<!-- PATCH RELEASE TICKET: DOC-3088 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7347 -->
+
+- Fixed an issue where the outgoing `palette-controller-manager` pod during a rolling upgrade would re-apply its older
+  baked `palette-webhook` manifest, downgrading the webhook and permanently stalling cluster reconciliation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7341 -->
+
+- Fixed a panic in `palette-lite` that caused add-on pack deployments and cluster profile attachments to silently fail
+  on imported clusters using the generic cloud provider.
+
 ## July 30, 2026 - Release 4.9.38
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
@@ -2445,6 +2461,13 @@ The following component updates are applicable to this release:
 - The **Cloud Type** options for [imported clusters](../clusters/imported-clusters/imported-clusters.md) have been
   updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
   when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
+
+  :::info
+
+  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.41** or later. Refer to
+  [Imported Clusters](../clusters/imported-clusters/imported-clusters.md#import-modes).
+
+  :::
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 

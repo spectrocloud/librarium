@@ -18,6 +18,8 @@ enables Day-2 operations such as deploying add-on profiles, configuring RBAC bin
 scans, and scheduling backups. The agent also automatically installs a metrics server if one is not already present on
 the cluster.
 
+<PartialsComponent category="clusters-import" name="generic-addon-profile-min-version" />
+
 ### Prerequisites
 
 - Your imported cluster must meet the following requirements:
