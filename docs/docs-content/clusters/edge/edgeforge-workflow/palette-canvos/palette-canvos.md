@@ -290,7 +290,7 @@ customization.
     cluster profile.
 
 15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
-    out the required basic information fields to create a cluster profile for Edge.
+    out the required basic information fields. Under **Cloud Type**, select **Edge Native**.
 
 16. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
@@ -743,7 +743,7 @@ required Edge artifacts.
     cluster profile.
 
 16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
-    out the required basic information fields to create a cluster profile for Edge.
+    out the required basic information fields. Under **Cloud Type**, select **Edge Native**.
 
 17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
