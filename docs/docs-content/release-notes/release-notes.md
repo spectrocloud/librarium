@@ -132,6 +132,34 @@ tags: ["release-notes"]
   [Upgrade Palette Installed with Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for the updated
   prerequisites.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6398 -->
+
+- Palette now uses Helm `v4.2.x` internally to install and upgrade Helm-based packs on managed clusters, updated from
+  Helm `v3.19.x`. The change is transparent to Palette-managed workflows and requires no user action. Palette validates
+  the upgrade path for both new clusters and existing clusters that reach `4.9.38` through a Palette upgrade, and
+  Spectro Cloud validates all shipped packs against the new version.
+
+  If you author or maintain your own Helm-based packs, or run `helm` directly against Palette-managed releases, note the
+  following Helm 4 changes:
+
+  - Helm 4 rejects fields that are not declared in a Custom Resource Definition (CRD) schema, instead of silently
+    discarding them. Server-side apply converts the manifest to a typed object against the CRD's structural schema
+    before pruning, so an undeclared field fails the release with
+    `failed to create typed patch object (...): <path>: field not declared in schema`. In Helm 3, the API server pruned
+    the same field and emitted only a warning, so the release succeeded but the setting never took effect. Audit your
+    pack values for stale or misnamed keys before you upgrade to Palette `4.9.38`.
+
+  - Helm 4 removes `helm list --all` and its short-form alias `-a`. `helm list` now reports releases in any status by
+    default.
+
+  - `helm upgrade` and `helm rollback` default to `--server-side=auto`, which reuses the apply method of the previous
+    revision. A release created by Helm 3 continues to use client-side apply until you explicitly pass
+    `--server-side=true`.
+
+  - Helm 4 rejects a chart whose rendered output is empty when a post-renderer is configured, failing with
+    `post-renderer "<name>" produced empty output`. This happens when every resource in the chart is gated behind a
+    condition that evaluates to `false`. Helm 3 accepted this and recorded the release with no resources.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7101 -->
 
 - [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) now support non-Ubuntu operating systems,
