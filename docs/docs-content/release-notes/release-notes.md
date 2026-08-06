@@ -2434,6 +2434,13 @@ The following component updates are applicable to this release:
   updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
   when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
 
+  :::info
+
+  Deploying add-on cluster profiles on **Generic** imported clusters requires Palette **4.9.x** or later. Refer to
+  [Imported Clusters](../clusters/imported-clusters/imported-clusters.md#import-modes).
+
+  :::
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 
 - The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This
