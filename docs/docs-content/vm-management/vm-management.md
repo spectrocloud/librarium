@@ -41,18 +41,18 @@ VMO is designed for organizations that need to manage VM workloads on Kubernetes
 VMO is available through two deployment approaches: [VM Launchpad](#vm-launchpad-recommended) (recommended) and
 [VMO Pack](#vmo-pack).
 
-| **Capability**                         | **VM Launchpad**                     | **VMO Pack**                                                                           |
-| -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
-| **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters |
-| **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                 |
-| **Golden image builder**               | Yes                                  | No                                                                                     |
-| **Snapshot policies**                  | Yes                                  | No                                                                                     |
-| **Airgapped package management**       | Yes                                  | No                                                                                     |
-| **Built-in identity management**       | Yes (OIDC, Keycloak, local accounts) | Palette-managed OIDC                                                                   |
-| **Observability (metrics dashboards)** | Built-in (OTel, PromQL)              | Requires external setup                                                                |
-| **VM Migration Assistant**             | Yes                                  | Yes                                                                                    |
-| **Cluster lifecycle management**       | Self-managed (Local UI)              | Palette-managed or self-managed (Local UI)                                             |
-| **Imported cluster support**           | No                                   | Yes                                                                                    |
+| **Capability**                         | **VM Launchpad**                     | **VMO Pack**                                                                                |
+| -------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------- |
+| **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters      |
+| **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                      |
+| **Golden image builder**               | Yes                                  | No                                                                                          |
+| **Snapshot policies**                  | Yes                                  | No                                                                                          |
+| **Airgapped package management**       | Yes                                  | No                                                                                          |
+| **Built-in identity management**       | Yes (OIDC, Keycloak, local accounts) | Palette-managed OIDC by default, with local accounts, Keycloak, and external OIDC available |
+| **Observability (metrics dashboards)** | Built-in (OTel, PromQL)              | Requires external setup                                                                     |
+| **VM Migration Assistant**             | Yes                                  | Yes                                                                                         |
+| **Cluster lifecycle management**       | Self-managed (Local UI)              | Palette-managed or self-managed (Local UI)                                                  |
+| **Imported cluster support**           | No                                   | Yes                                                                                         |
 
 ### VM Launchpad (Recommended)
 
