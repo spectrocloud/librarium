@@ -116,6 +116,15 @@ The following components have been updated for Palette version 4.9.5 - 4.9.41.
   guidance, refer to
   [Kubernetes Version Constraint](../enterprise-version/upgrade/upgrade.md#kubernetes-version-constraint).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7357 -->
+
+- Palette `4.9.38` ships an updated <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" />
+  `1.20.2` Custom Resource Definition (CRD) manifest that requires Kubernetes `1.30` or later on the management cluster.
+  Before you upgrade, confirm that [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md) and any Palette instance
+  installed via Helm on a customer-managed Kubernetes cluster are running Kubernetes `1.30` or later. On earlier
+  Kubernetes, the API server rejects the CRD apply and `palette-controller-manager` enters `CrashLoopBackOff` when it
+  tries to install or repair cert-manager.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6527 -->
