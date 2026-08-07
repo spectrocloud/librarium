@@ -25,6 +25,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11657 -->
+
+- Fixed an issue where using the Palette UI to open and save a
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) created with the API or Terraform could reorder
+  its packs, surfacing as unexpected `terraform plan` drift for profiles managed as code.
+
 #### Deprecations and Removals
 
 ### Edge
