@@ -89,6 +89,9 @@ Most domains use `read` and `write`. The following table describes every other a
 | `configure`                          | `monitoring`                 | Change the monitoring configuration.                                                                                                        |
 | `device-discovery`                   | `storage`                    | Discover devices available on cluster nodes.                                                                                                |
 
+Only the Platform Admin role includes the `configure` and `device-discovery` actions. No procedure in this section
+depends on either one.
+
 Two domains define a single action. The `audit` domain defines only `read`, and the `branding` domain defines only
 `write`.
 
@@ -121,18 +124,14 @@ The following table lists every VMO permission domain and the actions each domai
 | `kubevirt`      | `read`, `write`                                             | Cluster-level KubeVirt configuration.                                                                       |
 | `admission`     | `read`, `write`                                             | Admission control policies.                                                                                 |
 
-## Role Reconciliation
+## Built-in Role Maintenance
 
-On every VM Launchpad restart, the platform reconciles the four built-in roles against the canonical permission set:
+VM Launchpad maintains the definitions of the four built-in roles, so you do not need to take any action to keep them
+current. Their permission sets belong to the release rather than to your installation, which means an upgrade can change
+what a built-in role grants.
 
-- **Adds missing permissions.** If an upgrade adds a permission to a built-in role, the reconciler adds it to existing
-  installations.
-
-- **Removes stale permissions.** If a built-in role has a permission that is no longer in the canonical set (for
-  example, after a scope tightening), the reconciler removes it.
-
-The reconciler runs only against the four built-in roles (Platform Admin, Editor, Operator, Viewer). You do not need to
-take any action to keep them current across upgrades.
+After an upgrade, review the [Built-in Roles](#built-in-roles) table for the version you run and confirm that each role
+still matches the access you intend to grant.
 
 ## Next Steps
 
