@@ -340,11 +340,6 @@ jobs:
       run: |
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
-
-    - name: GH Pages URL
-      run: |
-        echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
-
     - name: Post Report URL Comment
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
       uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9 as of May 10, 2026
