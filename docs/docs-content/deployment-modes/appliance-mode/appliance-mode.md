@@ -30,9 +30,9 @@ which does not require a connection to Palette.
 The table below provides an overview of the different use cases and the corresponding supported environments for
 appliance mode deployments.
 
-| Use Case | Supported Environments                                                                                                  |
-| -------- | ----------------------------------------------------------------------------------------------------------------------- |
-| **Edge** | [VMware vSphere](../../clusters/edge/site-deployment/virtual-deployment/virtual-deployment.md)<br />Bare metal machines |
+| Use Case | Supported Environments                                                                                                                                                                                                                       |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Edge** | [VMware vSphere](../../clusters/edge/site-deployment/virtual-deployment/virtual-deployment.md)<br />Bare metal machines<br />[AWS EC2](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-aws-cloud-image.md) |
 
 ## Resources
 
