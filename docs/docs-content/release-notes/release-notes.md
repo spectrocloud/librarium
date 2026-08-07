@@ -11,6 +11,63 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 7, 2026 - Component Updates {#component-updates-2026-32}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3087 -->
+<!-- RELEASE DATE: August 7, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.41 -->
+<!-- RELEASE ARTIFACT STUDIO: 0 -->
+<!-- RELEASE TERRAFORM VERSION: 0 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.41.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.41  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.41  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3087. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4415 -->
+
+- The Kyverno pack has been upgraded from v1.12.2 to v1.18, bringing the latest Kyverno policy engine capabilities and
+  security improvements to your cluster profiles.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3087. DO NOT DELETE. -->
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4508 -->
+<!-- BEGIN PACKS LIST BODY: DOC-3087. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.2.3 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.3 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.1 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.63.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `K8S` | :white_check_mark: | :x: | 1.33.13 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `K8S` | :white_check_mark: | :x: | 1.35.6 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.36.2 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.33.13 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.35.6 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.2 |
+| <VersionedLink text="kubernetes-aks" url="/integrations/packs/?pack=kubernetes-aks" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.36 |
+| <VersionedLink text="kubernetes-eks" url="/integrations/packs/?pack=kubernetes-eks" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.36 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.21.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 88.1.5 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.1.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3087. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## August 6, 2026 - Release 4.9.41
 
 <!-- PATCH RELEASE TICKET: DOC-3088 -->
