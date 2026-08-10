@@ -73,7 +73,7 @@ Select **Reload** at any point to discard your draft and fetch the current resou
 | **Enable CPU emulation**        | Falls back to software CPU emulation when the host does not provide hardware virtualization extensions. Intended for lab and development environments.                                                                      | Cleared     |
 | **Memory overcommit ratio (%)** | Sets the cluster-wide level of memory overcommit. At `100`, the memory request of a VM equals its guest memory. Higher values reduce the request proportionally, so `200` requests about half and allows more VMs per node. | `100`       |
 | **CPU allocation ratio**        | Defines how much physical CPU is reserved per vCPU. Lower values give each vCPU more guaranteed CPU. Higher values increase VM density with less CPU per VM.                                                                | `10`        |
-| **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | Varies      |
+| **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | _Varies_      |
 
 To enable a feature gate, enter its name in the **Add a gate** field and select **Add**. To disable a gate, select the
 **x** on the gate. VMO submits the list as you entered it, so the KubeVirt admission webhook rejects a name it does not
