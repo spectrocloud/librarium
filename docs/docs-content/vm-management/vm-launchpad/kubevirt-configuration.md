@@ -31,16 +31,16 @@ runs on the appliance.
 
 The page is organized into the following sections, each of which maps to a part of the `KubeVirt` resource.
 
-| **Section**                 | **Description**                                                                       | **Resource fields**                                                                                     |
-| --------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Developer Configuration** | CPU emulation, cluster-wide overcommit ratios, and the list of enabled feature gates. | `spec.configuration.developerConfiguration`, including `featureGates`                                   |
-| **Strategies**              | Cluster defaults for eviction, VM rollout, and uninstall behavior.                    | `spec.configuration.evictionStrategy`, `spec.configuration.vmRolloutStrategy`, `spec.uninstallStrategy` |
-| **Live Migration**          | Concurrency, bandwidth, and timeout limits that apply to live migration.              | `spec.configuration.migrations`                                                                         |
-| **Workload Updates**        | How KubeVirt applies updates to VMs that are already running.                         | `spec.workloadUpdateStrategy`                                                                           |
-| **KSM Configuration**       | Node label selector that determines where KSM runs.                                   | `spec.configuration.ksmConfiguration`                                                                   |
-| **Ownership**               | Read-only list of the controllers that own fields on the resource.                    | `metadata.managedFields`                                                                                |
+| **Section**                                             | **Description**                                                                       | **Resource fields**                                                                                     |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [**Developer Configuration**](#developer-configuration) | CPU emulation, cluster-wide overcommit ratios, and the list of enabled feature gates. | `spec.configuration.developerConfiguration`, including `featureGates`                                   |
+| [**Strategies**](#strategies)                           | Cluster defaults for eviction, VM rollout, and uninstall behavior.                    | `spec.configuration.evictionStrategy`, `spec.configuration.vmRolloutStrategy`, `spec.uninstallStrategy` |
+| [**Live Migration**](#live-migration)                   | Concurrency, bandwidth, and timeout limits that apply to live migration.              | `spec.configuration.migrations`                                                                         |
+| [**Workload Updates**](#workload-updates)               | How KubeVirt applies updates to VMs that are already running.                         | `spec.workloadUpdateStrategy`                                                                           |
+| [**KSM Configuration**](#ksm-configuration)             | Node label selector that determines where KSM runs.                                   | `spec.configuration.ksmConfiguration`                                                                   |
+| [**Ownership**](#ownership)                             | Read-only list of the controllers that own fields on the resource.                    | `metadata.managedFields`                                                                                |
 
-## Access the KubeVirt Configuration Page
+## Configure KubeVirt
 
 1. Log in to VMO.
 
@@ -48,25 +48,21 @@ The page is organized into the following sections, each of which maps to a part 
 
 3. Under **Configuration**, select **KubeVirt**. The page loads the current `KubeVirt` resource from the cluster.
 
-## Configure KubeVirt
-
-1. Access the **KubeVirt Configuration** page.
-
-2. Adjust the fields you want to change in any section. To reach fields that the form does not display, select **Open
+4. Adjust the fields you want to change in any section. To reach fields that the form does not display, select **Open
    YAML** and edit the resource spec directly. VMO validates your YAML and merges it into the same draft as the form
    fields.
 
-3. Select **Apply**. VMO makes **Apply** available only when your draft differs from the version stored in the cluster
+5. Select **Apply**. VMO makes **Apply** available only when your draft differs from the version stored in the cluster
    and every field passes validation.
 
-4. Review the **Diff Preview**, which compares the current spec with the spec you are about to submit.
+6. Review the **Diff Preview**, which compares the current spec with the spec you are about to submit.
 
-5. Select **Apply** in the **Diff Preview** to send the change to the cluster. VMO reloads the form from the updated
+7. Select **Apply** in the **Diff Preview** to send the change to the cluster. VMO reloads the form from the updated
    resource and clears your draft.
 
 Select **Reload** at any point to discard your draft and fetch the current resource from the cluster.
 
-## Developer Configuration
+### Developer Configuration
 
 | **Field**                       | **Description**                                                                                                                                                                                                             | **Default** |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
@@ -86,7 +82,7 @@ refer to [VM Overcommitment and Memory Optimization](./vmo-overcommit-memory-opt
 
 :::
 
-## Strategies
+### Strategies
 
 | **Field**                     | **Description**                                                                    | **Default**                            |
 | ----------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------- |
@@ -94,7 +90,7 @@ refer to [VM Overcommitment and Memory Optimization](./vmo-overcommit-memory-opt
 | **VM rollout strategy**       | When a configuration change to a VM takes effect.                                  | **Live update**                        |
 | **Uninstall strategy**        | Whether KubeVirt can be uninstalled while VM workloads still exist on the cluster. | **Block uninstall if workloads exist** |
 
-## Live Migration
+### Live Migration
 
 | **Field**                                        | **Description**                                                                                                     | **Default** |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------- |
@@ -107,10 +103,12 @@ refer to [VM Overcommitment and Memory Optimization](./vmo-overcommit-memory-opt
 | **Allow post-copy**                              | Allows KubeVirt to switch to post-copy migration when pre-copy migration does not converge.                         | Cleared     |
 | **Allow workload disruption during maintenance** | Allows KubeVirt to disrupt workloads that cannot migrate when a node enters maintenance.                            | Cleared     |
 
-An empty field means that the KubeVirt default applies. VMO validates the bandwidth format before you apply, so a value
-in the wrong format keeps **Apply** unavailable instead of failing at the admission webhook.
+An empty field means that the KubeVirt default applies. To review the upstream defaults, refer to
+[Live Migration](https://kubevirt.io/user-guide/compute/live_migration/) in the KubeVirt user guide. VMO validates the
+bandwidth format before you apply, so a value in the wrong format keeps **Apply** unavailable instead of failing at the
+admission webhook.
 
-## Workload Updates
+### Workload Updates
 
 | **Field**                   | **Description**                                                                                | **Default**     |
 | --------------------------- | ---------------------------------------------------------------------------------------------- | --------------- |
@@ -118,7 +116,7 @@ in the wrong format keeps **Apply** unavailable instead of failing at the admiss
 | **Batch eviction size**     | Number of VMs that KubeVirt updates in a single batch.                                         | Empty           |
 | **Batch eviction interval** | Time that KubeVirt waits between batches. Enter a Go duration, such as `1m0s`.                 | Empty           |
 
-## KSM Configuration
+### KSM Configuration
 
 [KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature that allows deduplication of identical
 memory pages across VMs. It reduces memory consumption when many VMs run the same guest operating system.
@@ -137,7 +135,7 @@ worth that cost, refer to
 
 :::
 
-## Ownership
+### Ownership
 
 The **Ownership** section lists every field manager that owns fields on the `KubeVirt` resource, along with the
 operation it used, when it last wrote, and how many fields it owns. Typical managers are `vmo-manager`,
