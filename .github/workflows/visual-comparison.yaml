@@ -85,7 +85,11 @@ jobs:
     needs: [run-ci]
     runs-on: ubuntu-latest
     # Posts the "starting the visual tests" comment on the PR.
+    # `actions: read` is required: build-cached-packs and build-cached-cves resolve and
+    # download artifacts from earlier workflow runs via the Actions API, which the default
+    # `contents: read` token cannot reach.
     permissions:
+      actions: read
       contents: read
       pull-requests: write
     steps:
@@ -154,7 +158,10 @@ jobs:
     name: Visual Comparison
     needs: [run-ci, create-assets]
     runs-on: ubuntu-latest
+    # `actions: read` is required: scripts/screenshot_artifacts.sh queries the Actions API
+    # for the latest screenshot_capture run and downloads its reference screenshots.
     permissions:
+      actions: read
       contents: read
     strategy:
       fail-fast: false
