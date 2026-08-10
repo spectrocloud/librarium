@@ -67,7 +67,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../networking/vxlan-overlay.md).
 
-    :::warning
+    :::info
 
     If any of your Edge hosts have more than one Network Interface Card (NIC), you must either use static IP addresses
     or use network overlay. DHCP is not supported.
