@@ -38,7 +38,8 @@ server cannot determine a username for the account, and the following behavior o
 - Requests to the Kubernetes API are rejected as unauthenticated.
 
 Creating the user manually on the **Users** page does not resolve the problem for a federated account. The address must
-arrive in the token that Keycloak issues, which means it must come from the LDAP directory or from a Keycloak mapper.
+arrive in the token that Keycloak issues, which means that it must come from the LDAP directory or from a Keycloak
+mapper.
 
 :::info
 
@@ -67,15 +68,16 @@ Refer to [Create Users](./users.md#create-users).
 
 ## Map an Email Attribute from LDAP
 
-Keycloak creates a default `email` mapper when you add an LDAP provider. That mapper reads the LDAP `mail` attribute.
-Point it at an attribute your directory actually populates. For background on how mappers move attributes between LDAP
-and Keycloak, refer to the Keycloak
+Keycloak creates a default `email` mapper when you add an LDAP provider. That mapper reads the LDAP `mail` attribute,
+which many directories leave empty. Edit the mapper so that it reads an attribute that your LDAP directory populates
+instead. For background on how mappers move attributes between LDAP and Keycloak, refer to the Keycloak
 [LDAP mappers](https://www.keycloak.org/docs/latest/server_admin/index.html#_ldap_mappers) documentation.
 
 1. Log in to the Keycloak admin console as an administrator.
 
-2. From the realm drop-down menu, select the realm that holds your VM Launchpad users. On a default appliance, this is
-   the `vmo` realm. The admin console opens in a different realm, so switch realms before you continue.
+2. From the realm drop-down menu at the top of the left main menu, select the realm that holds your VM Launchpad users.
+   On a default appliance, this is the `vmo` realm. The admin console opens in a different realm, so switch realms
+   before you continue.
 
 3. From the left main menu, select **User federation**, and then select your LDAP provider.
 
@@ -97,7 +99,7 @@ and Keycloak, refer to the Keycloak
 
 :::warning
 
-Do not create a second mapper that also writes to the `email` user model attribute. Two mappers targeting the same
+Do not create a second mapper that also writes to the `email` user model attribute. Two mappers that target the same
 attribute produce unpredictable results. Edit the existing `email` mapper instead.
 
 :::
@@ -122,13 +124,13 @@ Enable **Trust Email** when you first create the LDAP provider to avoid correcti
 
 4. Select **Save**.
 
-With **Trust Email** enabled, Keycloak accepts the address supplied by the directory without sending a verification
-email, and includes `email_verified: true` in the tokens it issues.
+With **Trust Email** enabled, Keycloak accepts the address that the directory supplies without sending a verification
+email, and includes `email_verified: true` in the tokens that it issues.
 
 ## Synchronize LDAP Users
 
 Accounts that Keycloak imported before you made these changes keep their original attributes. Run a new synchronization
-so the mapper applies to them.
+so that the mapper applies to them.
 
 1. In the Keycloak admin console, select **User federation**, and then select your LDAP provider.
 
@@ -136,14 +138,14 @@ so the mapper applies to them.
 
 3. Wait for the synchronization to complete. Keycloak reports the number of accounts added and updated.
 
-A synchronization updates the `email` attribute on accounts Keycloak already imported, and it applies **Trust Email** to
-accounts that it imports for the first time. It does not apply **Trust Email** to accounts that already exist, because
-Keycloak sets the verified flag only during the initial import of an account.
+A synchronization updates the `email` attribute on accounts that Keycloak already imported, and it applies **Trust
+Email** to accounts that it imports for the first time. It does not apply **Trust Email** to accounts that already
+exist, because Keycloak sets the verified flag only during the initial import of an account.
 
 ### Correct Previously Imported Accounts
 
-Accounts imported before you enabled **Trust Email** keep `email_verified: false` and still cannot sign in, even after
-the synchronization reports them as updated. Use one of the following approaches to correct them.
+Accounts that Keycloak imported before you enabled **Trust Email** keep `email_verified: false` and still cannot sign
+in, even after the synchronization reports them as updated. Use one of the following approaches to correct them.
 
 - **Set the flag for each account.** On the **Users** page, select the account, set **Email verified** to **On**, and
   save. Use this approach when only a few accounts are affected.
@@ -183,8 +185,8 @@ before the change also keep the old claims until the user signs in again.
 
 6. Ask the user to sign in and confirm that the resources that their role grants are available.
 
-If the account still has no email address after a synchronization, the LDAP attribute you mapped is not populated for
-that account. Refer to
+If the account still has no email address after a synchronization, the LDAP attribute that you mapped is not populated
+for that account. Refer to
 [Troubleshooting VM Launchpad](../troubleshooting.md#scenario---federated-ldap-users-cannot-access-vm-launchpad).
 
 ## Next Steps

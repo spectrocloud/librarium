@@ -13,8 +13,8 @@ This page provides troubleshooting guidance for common scenarios you may encount
 
 ## Scenario - Federated LDAP Users Cannot Access VM Launchpad
 
-Users federated from an LDAP directory into Keycloak sign in successfully, but they have no access once they reach VM
-Launchpad. The following symptoms indicate this scenario.
+Federated LDAP users sign in to Keycloak successfully, but they have no access once they reach VM Launchpad. The
+following symptoms indicate this scenario.
 
 - The user authenticates against Keycloak and the browser redirects back to VM Launchpad, but no resources are
   available.
@@ -37,7 +37,7 @@ Keycloak imports the account without an address and issues a token that the API 
 
 3. Check the **Email** field and the **Email verified** toggle.
 
-   - If **Email** is empty, the LDAP attribute mapped to `email` is not populated for this account.
+   - If **Email** is empty, the LDAP attribute that you mapped to `email` is not populated for this account.
 
    - If **Email** is populated but **Email verified** is disabled, the LDAP provider does not trust addresses from the
      directory.
@@ -46,9 +46,9 @@ Keycloak imports the account without an address and issues a token that the API 
    **Trust Email** on the LDAP provider. Refer to
    [Federate LDAP Users with Keycloak](./access-management/ldap-federation.md) for the full procedure.
 
-5. Run a new synchronization from the LDAP provider so the mapper applies to accounts Keycloak already imported. A
-   synchronization does not set **Email verified** on accounts that already exist, so correct those accounts separately.
-   Refer to
+5. Run a new synchronization from the LDAP provider so that the mapper applies to accounts that Keycloak already
+   imported. A synchronization does not set **Email verified** on accounts that already exist, so correct those accounts
+   separately. Refer to
    [Correct Previously Imported Accounts](./access-management/ldap-federation.md#correct-previously-imported-accounts).
 
 6. Ask the affected users to sign out and sign in again. Tokens issued before the change do not carry the new claims.
