@@ -78,7 +78,7 @@ jobs:
 
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
@@ -111,7 +111,7 @@ jobs:
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
