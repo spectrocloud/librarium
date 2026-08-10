@@ -6,6 +6,7 @@ const lightCodeTheme = themes.oceanicNext;
 const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
+const LaunchpadArchivedVersions = require("./launchpadArchiveVersions.json");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 import path from "path";
@@ -456,6 +457,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "left",
             docsPluginId: "default",
+            hideOnPathPrefix: "/paletteai-inference-launchpad",
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
                 href: versionUrl,
@@ -473,6 +475,16 @@ const config = {
                 label: versionName,
               })),
             ],
+          },
+          {
+            type: "dropdown",
+            position: "left",
+            label: "1.0.0",
+            showOnPathPrefix: "/paletteai-inference-launchpad",
+            items: Object.entries(LaunchpadArchivedVersions).map(([versionName, versionUrl]) => ({
+              href: versionUrl,
+              label: versionName,
+            })),
           },
         ],
         hideOnScroll: true,
