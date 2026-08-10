@@ -74,7 +74,7 @@ and Keycloak, refer to the Keycloak
 
 1. Log in to the Keycloak admin console as an administrator.
 
-2. From the realm drop-down menu, select the realm that holds your VM Launchpad users. On a default appliance this is
+2. From the realm drop-down menu, select the realm that holds your VM Launchpad users. On a default appliance, this is
    the `vmo` realm. The admin console opens in a different realm, so switch realms before you continue.
 
 3. From the left main menu, select **User federation**, and then select your LDAP provider.
@@ -181,7 +181,7 @@ before the change also keep the old claims until the user signs in again.
 5. Assign a VMO role and namespace scope to the account. Refer to [Edit a User](./users.md#edit-a-user), or add the
    account to a group that already carries a role. Refer to [Groups](./groups.md).
 
-6. Ask the user to sign in and confirm that the resources their role grants are available.
+6. Ask the user to sign in and confirm that the resources that their role grants are available.
 
 If the account still has no email address after a synchronization, the LDAP attribute you mapped is not populated for
 that account. Refer to
