@@ -5,8 +5,8 @@ description:
   "Learn how to satisfy the OIDC email claim requirement when you federate LDAP users into PaletteAI VM Launchpad."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 4
-tags: ["vmo", "vm launchpad", "access management"]
+sidebar_position: 7
+tags: ["vmo", "vm launchpad", "access management", "ldap"]
 ---
 
 PaletteAI VM Launchpad uses [Keycloak](https://www.keycloak.org/documentation) as its OIDC identity provider. If your

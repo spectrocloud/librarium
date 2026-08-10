@@ -17,25 +17,42 @@ cluster, and link the nodes together to form your cluster. After you deploy your
 
 Each device where you install the VM Launchpad ISO must meet the following hardware requirements.
 
-| **Component**        | **Minimum**                                                            | **Recommended**                                    | **Additional Information**                                                                                                                        |
-| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD64 CPU with 8 cores                                        | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                                 |
-| **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
-| **Network Adapters** | 2 x 1 Gbps (data and management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | -                                                                                                                                                 |
+| **Component**        | **Minimum**                                                       | **Recommended**                                                    | **Additional Information**                                                                                             |
+| -------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                                    | -                                                                                                                      |
+| **RAM**              | 24 GB                                                             | 256 GB or more                                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                         |
+| **Network Adapters** | 4 x 1 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | 4 x 10 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | Cilium bridges VMs onto the data NICs. Review [Network Configuration Considerations](./vmo-networking.md) for details. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot                      | -                                                                                                                      |
+
+:::info
+
+**Advanced storage configuration.** If only two network adapters are available, you can deploy with two NICs bonded for
+all traffic plus two 16 Gbps Fiber Channel (FC) adapters dedicated to storage. FC-attached storage can also serve as raw
+disks for Piraeus consumption without a CSI driver, though this is not the typical configuration. Refer to
+[Network Configuration Considerations](./vmo-networking.md) for supported layouts.
+
+:::
 
 ## Prerequisites
 
-- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the VM
-  Launchpad installation process. This is optional but recommended for security and compliance purposes.
+:::warning
 
-- (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
-  more information about network considerations, review [VMO Network Configuration Considerations](./vmo-networking.md).
+Plan your host network layout **before** you install the appliance. VM Launchpad supports specific bond, bridge, and
+VLAN configurations, and network changes are difficult to make after installation. Review
+[Network Configuration Considerations](./vmo-networking.md) to choose a supported layout and prepare your switch port
+configuration.
+
+:::
+
+- Configure the host network with a `br0` bridge that matches one of the supported layouts described in
+  [Network Configuration Considerations](./vmo-networking.md).
 
 - Reserve a virtual IP address (VIP) for the VM Launchpad management cluster. The VM Launchpad installation process
   assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the VM Launchpad management
   cluster can access the VIP.
+
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the VM
+  Launchpad installation process. This is optional but recommended for security and compliance purposes.
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="VM Launchpad" />
 
@@ -146,9 +163,9 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 ## Configure Network Settings
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad
-   Appliance host. If you have access to the VM Launchpad host terminal, the Local UI address appears on the terminal
-   screen. If you have changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
+   If you have access to the VM Launchpad host terminal, the Local UI address appears on the terminal screen. If you
+   have changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
@@ -371,8 +388,8 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 
 ## Verify
 
-1. From the left main menu in the VM Launchpad, select **VM Orchestrator**. You can also go to the address you provided
-   for MetalLB in your browser.
+1. From the left main menu in VM Launchpad, select **VM Orchestrator**. You can also go to the address you provided for
+   MetalLB in your browser.
 
 2. Log in to VMO Manager.
 
