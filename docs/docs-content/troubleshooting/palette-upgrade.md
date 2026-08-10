@@ -12,6 +12,101 @@ We recommend you review the [Release Notes](../release-notes/release-notes.md) a
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
+## Scenario - Palette Webhook Downgraded After Rolling Upgrade
+
+After upgrading a Palette or Palette VerteX deployment to `4.9.38`, connected workload clusters may fail to reconcile
+because the `palette-webhook` deployment was downgraded during the rolling upgrade of `palette-controller-manager` in
+the cluster's namespace. The outgoing controller pod holds the leader lease briefly while the new controller pod starts.
+During that window, the outgoing pod can re-apply the older `palette-webhook` manifest baked into its own image,
+overwriting the newer manifest the incoming pod already applied. The older webhook does not serve the `v1alpha1` to `v1`
+conversion that Custom Resource Definitions (CRDs) in the `cluster.spectrocloud.com` API group now require, so every
+`SpectroCluster` reconcile fails and does not self-heal.
+
+Symptoms of an affected cluster include:
+
+- The cluster appears grey on the **Clusters** page in the Palette UI.
+- Cluster profile updates do not apply to the cluster.
+- The `palette-controller-manager` logs record repeated reconcile failures similar to the following.
+
+  ```text hideClipboard title="Example error"
+  failed to set owner ref to cloud config: Internal error occurred: conversion webhook for
+  cluster.spectrocloud.com/v1alpha1, Kind=AwsCloudConfig failed: the server could not find
+  the requested resource
+  ```
+
+The trigger is the Palette agent upgrade on an existing cluster. New cluster deployments are not affected.
+
+### Debug Steps
+
+Recovery may require restarting both the `palette-controller-manager` deployment in the affected cluster's namespace and
+the `palette-webhook` deployment in the `palette-system` namespace. Complete the steps in order and check the webhook
+image after each restart to determine whether the second restart is needed.
+
+1. Establish a shell session with `kubectl` access to the affected workload cluster. Refer to
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for guidance.
+
+2. Identify the namespace of the affected cluster. The namespace follows the format `cluster-<cluster-uid>`, where
+   `<cluster-uid>` is the identifier displayed on the cluster's **Overview** tab in the Palette UI.
+
+3. Compare the image on the `palette-webhook` deployment against the expected Palette version recorded in the
+   `palette-version-info-for-webhook` ConfigMap.
+
+   ```shell
+   kubectl --namespace palette-system get deployment palette-webhook \
+     --output jsonpath='{.spec.template.spec.containers[0].image}{"\n"}'
+   kubectl --namespace palette-system get configmap palette-version-info-for-webhook \
+     --output jsonpath='{.data.VERSION}{"\n"}'
+   ```
+
+   ```text hideClipboard title="Example output on an affected cluster"
+   us-docker.pkg.dev/palette-images/palette/spectro-drive:4.9.11
+   4.9.19
+   ```
+
+   If the two values do not agree, the webhook has been downgraded and the cluster is affected. In the example above,
+   the webhook is still running the `4.9.11` image while the controller expects `4.9.19`.
+
+4. Restart the `palette-controller-manager` deployment in the affected cluster's namespace. When the outgoing controller
+   pod is gone, the surviving pod reapplies the correct `palette-webhook` manifest at startup, before it takes the
+   leader lease.
+
+   ```shell
+   kubectl --namespace cluster-<cluster-uid> rollout restart deployment palette-controller-manager
+   kubectl --namespace cluster-<cluster-uid> rollout status deployment palette-controller-manager \
+     --timeout=600s
+   ```
+
+5. Re-check the `palette-webhook` deployment image. When it matches the version recorded in
+   `palette-version-info-for-webhook`, the cluster begins reconciling successfully.
+
+   ```shell
+   kubectl --namespace palette-system get deployment palette-webhook \
+     --output jsonpath='{.spec.template.spec.containers[0].image}{"\n"}'
+   ```
+
+   ```text hideClipboard title="Example output on a recovered cluster"
+   us-docker.pkg.dev/palette-images/palette/spectro-drive:4.9.19
+   ```
+
+6. If the webhook image in step 5 still shows the older version, restart the `palette-webhook` deployment in the
+   `palette-system` namespace. Some affected clusters need this second restart before the controller can move the
+   webhook forward.
+
+   ```shell
+   kubectl --namespace palette-system rollout restart deployment palette-webhook
+   kubectl --namespace palette-system rollout status deployment palette-webhook --timeout=600s
+   ```
+
+   After the rollout completes, run the check in step 5 again and confirm that the image now matches the expected
+   version.
+
+7. Confirm that reconcile has recovered. Follow the controller logs and verify that the
+   `failed to set owner ref to cloud config` error no longer appears on new reconcile attempts.
+
+   ```shell
+   kubectl --namespace cluster-<cluster-uid> logs deployment/palette-controller-manager --follow
+   ```
+
 ## Scenario - Custom Certificate Replaced After Upgrade
 
 If upgrading IP-based [self-hosted Palette](../enterprise-version/enterprise-version.md) or
