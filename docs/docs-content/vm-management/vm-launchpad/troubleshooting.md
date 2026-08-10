@@ -11,6 +11,48 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Federated LDAP Users Cannot Access VM Launchpad
+
+Federated LDAP users sign in to Keycloak successfully, but they have no access once they reach VM Launchpad. The
+following symptoms indicate this scenario.
+
+- The user authenticates against Keycloak and the browser redirects back to VM Launchpad, but no resources are
+  available.
+
+- Assigning a VMO role to the user appears to succeed, but the role grants no permissions.
+
+- Requests to the Kubernetes API made with the user's credentials are rejected as unauthenticated.
+
+- On the **Settings** > **Access Management** > **Users** page, the **Email** column is empty for the account.
+
+This occurs because the Kubernetes API server in a VM Launchpad cluster runs with `--oidc-username-claim=email`. Tokens
+must carry an `email` claim and `email_verified: true`. LDAP directories frequently leave the `mail` attribute empty, so
+Keycloak imports the account without an address and issues a token that the API server cannot map to a username.
+
+### Confirm the Missing Email Claim
+
+1. Log in to the Keycloak admin console as an administrator and select your realm.
+
+2. From the left main menu, select **Users**, and then select the affected account.
+
+3. Check the **Email** field and the **Email verified** toggle.
+
+   - If **Email** is empty, the LDAP attribute that you mapped to `email` is not populated for this account.
+
+   - If **Email** is populated but **Email verified** is disabled, the LDAP provider does not trust addresses from the
+     directory.
+
+4. Resolve both conditions by mapping an email-formatted LDAP attribute, such as `userPrincipalName`, and enabling
+   **Trust Email** on the LDAP provider. Refer to
+   [Federate LDAP Users with Keycloak](./access-management/ldap-federation.md) for the full procedure.
+
+5. Run a new synchronization from the LDAP provider so that the mapper applies to accounts that Keycloak already
+   imported. A synchronization does not set **Email verified** on accounts that already exist, so correct those accounts
+   separately. Refer to
+   [Correct Previously Imported Accounts](./access-management/ldap-federation.md#correct-previously-imported-accounts).
+
+6. Ask the affected users to sign out and sign in again. Tokens issued before the change do not carry the new claims.
+
 ## Scenario - VM Migration Fails During Guest Conversion on Block-Based Storage
 
 When you use the [VM Migration Assistant](../vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to a VMO
