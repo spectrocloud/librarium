@@ -31,10 +31,11 @@ a VMO role, the group mappings determine their effective permissions. Refer to
 
 ## Access Management Workflows
 
-| **Workflow**                          | **Description**                                                                                                |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| [Users](./users.md)                   | View, create, edit, reset passwords, and delete users.                                                         |
-| [Groups](./groups.md)                 | Group users together and manage their VMO role and Kubernetes access in one place.                             |
-| [VMO Roles](./vmo-roles.md)           | Review the four built-in VMO IAM roles, the `vmo:<domain>:<action>` permission format, and permission domains. |
-| [Access Mapping](./access-mapping.md) | View the resolved Kubernetes bindings and VMO IAM mappings across every user and group.                        |
-| [API Keys](./api-keys.md)             | Create, use, and revoke self-service API keys for programmatic access.                                         |
+| **Workflow**                            | **Description**                                                                                                |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Users](./users.md)                     | View, create, edit, reset passwords, and delete users.                                                         |
+| [Groups](./groups.md)                   | Group users together and manage their VMO role and Kubernetes access in one place.                             |
+| [VMO Roles](./vmo-roles.md)             | Review the four built-in VMO IAM roles, the `vmo:<domain>:<action>` permission format, and permission domains. |
+| [Access Mapping](./access-mapping.md)   | View the resolved Kubernetes bindings and VMO IAM mappings across every user and group.                        |
+| [API Keys](./api-keys.md)               | Create, use, and revoke self-service API keys for programmatic access.                                         |
+| [LDAP Federation](./ldap-federation.md) | Federate users from an LDAP directory and satisfy the OIDC email claim requirement.                            |
