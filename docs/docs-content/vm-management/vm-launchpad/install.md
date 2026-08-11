@@ -336,6 +336,14 @@ configuration.
    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
+   :::info
+
+   Use the Keycloak administrator account to federate users from an existing LDAP directory after the cluster is
+   deployed. Federated users must present a verified email address before VM Launchpad can grant them access. Refer to
+   [Federate LDAP Users with Keycloak](./access-management/ldap-federation.md).
+
+   :::
+
    ### Local Admin
 
    | **Parameter**                 | **Description**                                                                                     |

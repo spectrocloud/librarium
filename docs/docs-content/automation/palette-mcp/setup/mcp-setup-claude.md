@@ -31,28 +31,19 @@ The Palette Agent Toolkit plugin bundles the MCP server configuration and four d
 `diagnose-edge`, `health-overview`, and `access-review`) in a single install. This is the recommended setup path for
 Claude Code and Claude Desktop.
 
-1. Export the Palette connection variables in your shell profile so the plugin picks them up when Claude Code starts.
-   Replace the placeholders with your own values.
-
-   ```shell
-   export PALETTE_HOST=<palette-api-endpoint>
-   export PALETTE_API_KEY=<palette-api-key>
-   export PALETTE_PROJECT_UID=<palette-project-id>
-   ```
-
-2. Start Claude Code in a terminal. Ensure that you authenticate with Claude by following the prompts.
+1. Start Claude Code in a terminal. Ensure that you authenticate with Claude by following the prompts.
 
    ```shell
    claude
    ```
 
-3. Add the Palette Agent Toolkit marketplace.
+2. Add the Palette Agent Toolkit marketplace.
 
    ```shell
    /plugin marketplace add spectrocloud/palette-agent-toolkit
    ```
 
-4. Install the Palette plugin from the marketplace.
+3. Install the Palette plugin from the marketplace.
 
    ```shell
    /plugin install palette@palette-agent-toolkit
@@ -60,7 +51,38 @@ Claude Code and Claude Desktop.
 
    The plugin installs the MCP server configuration and the four diagnostic skills.
 
-5. Verify the plugin is active.
+4. Configure your Palette connection. Open the plugin menu, select the **palette** plugin, and choose **Configure
+   options**.
+
+   ```shell
+   /plugin
+   ```
+
+   Set the following options.
+
+   | Option                  | Notes                                                                                    |
+   | ----------------------- | ---------------------------------------------------------------------------------------- |
+   | **Palette host**        | Required. Your tenant URL, for example `example.spectrocloud.com`.                       |
+   | **Palette API key**     | Required unless you use an auth token. Create one under **User Menu** > **My API Keys**. |
+   | **Palette auth token**  | JWT alternative to an API key. Provide an API key **or** an auth token, not both.        |
+   | **Default project UID** | Optional. Scopes all calls to one project; omit for tenant-wide access.                  |
+   | **Custom CA file path** | Optional. Path to a CA bundle for a self-hosted Palette behind a private CA.             |
+
+   You must set the **Palette host** and either the **Palette API key** or the **Palette auth token**. Claude Code
+   stores the API key and auth token in your operating system credential store, such as the macOS Keychain, Windows
+   Credential Manager, or Linux Secret Service. Where no credential store is available, Claude Code falls back to
+   `~/.claude/.credentials.json` with `0600` permissions. You don't need to export shell variables or create a `.env`
+   file.
+
+   To provision the plugin without prompts, such as in a CI pipeline, pass the options as repeatable `--config` flags at
+   install time instead. Replace the placeholders with your own values.
+
+   ```shell
+   claude plugin install palette@palette-agent-toolkit \
+     --config host=<palette-api-endpoint> --config api_key=<palette-api-key>
+   ```
+
+5. Verify the plugin is active and the MCP server is connected.
 
    ```shell
    claude mcp list
