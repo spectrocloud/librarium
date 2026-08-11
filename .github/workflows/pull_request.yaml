@@ -66,7 +66,7 @@ jobs:
       - name: Retrieve Credentials
         id: import-secrets
          # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # 4.0.0
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
