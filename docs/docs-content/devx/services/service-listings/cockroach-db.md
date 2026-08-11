@@ -139,12 +139,12 @@ Output:
 ## Next Steps
 
 To learn more about developing with CockroachDB, check out the
-[CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer
-guide is a great resource for understanding how to get started with CockroachDB and build applications that are
-scalable, resilient, and secure.
+[CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-basics). The developer guide is a
+great resource for understanding how to get started with CockroachDB and build applications that are scalable,
+resilient, and secure.
 
 ## Resources
 
 - [CockroachDB Official Documentation](https://www.cockroachlabs.com/docs/)
 
-- [Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html)
+- [Developer Get Started](https://www.cockroachlabs.com/developers/)

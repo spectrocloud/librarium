@@ -19,6 +19,17 @@ upgrade if the instance is newer than your Palette agent, or a downgrade if it i
 
 :::
 
+:::info
+
+Importing an exported cluster definition through Local UI is available in agent mode and in appliance mode on Edge hosts
+with an [`applianceType`](../../edge-configuration/installer-reference.md) of `palette` or `vertex`. On appliance hosts
+with an `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
+`ai-launchpad-vertex`, Local UI hides the **Import config** option in the **Create cluster** wizard and the **Upload
+Configuration** option in the **Update Cluster** flow. On these appliances, the cluster definition is delivered through
+the [content bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+:::
+
 You can export the cluster definition using the Palette CLI, Palette Edge CLI, or Palette API. The CLI offers a more
 user-friendly interface but requires a machine with X86_64 architecture. If you are using an ARM64 machine, such as
 Apple Silicon, use the API approach instead.

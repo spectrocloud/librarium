@@ -52,7 +52,7 @@ const allScripts = [
   {
     src: "https://widget.kapa.ai/kapa-widget.bundle.js",
     "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
-    "data-project-name": "Spectro Cloud Docs AI",
+    "data-project-name": "Spectro Cloud",
     "data-source-group-ids-include": "ebbf8a64-c913-453e-920d-27a278207da7",
     "data-project-color": "#3A9D99",
     "data-consent-required": "true",
@@ -397,7 +397,7 @@ const config = {
             sidebarId: "docSidebar",
             label: "Docs",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
           },
           {
             to: "/tutorials",
@@ -405,7 +405,15 @@ const config = {
             sidebarId: "tutorialSidebar",
             label: "Tutorials",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
+          },
+          {
+            to: "/paletteai-inference-launchpad",
+            type: "docSidebar",
+            sidebarId: "launchpadSidebar",
+            label: "PaletteAI Inference Launchpad",
+            position: "left",
+            activeBaseRegex: "^/paletteai-inference-launchpad(/.*)?$",
           },
           {
             to: "/downloads",
@@ -413,7 +421,7 @@ const config = {
             sidebarId: "downloadsSidebar",
             label: "Downloads",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/paletteai-inference-launchpad/).*$",
           },
           {
             to: "/api/introduction",
