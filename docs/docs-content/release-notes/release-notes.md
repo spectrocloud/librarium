@@ -30,7 +30,7 @@ tags: ["release-notes"]
 - The **Host LXD-based control planes** and **Use LXD VMs** toggles in cluster and node configuration now display a
   tooltip clarifying that LXD-based VMs on MAAS are supported only with Palette eXtended Kubernetes clusters. Enabling
   LXD with other Kubernetes distributions results in deployment failures.
-  
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11657 -->
@@ -38,7 +38,6 @@ tags: ["release-notes"]
 - Fixed an issue where using the Palette UI to open and save a
   [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) created with the API or Terraform could reorder
   its packs, surfacing as unexpected `terraform plan` drift for profiles managed as code.
-
 
 #### Deprecations and Removals
 
