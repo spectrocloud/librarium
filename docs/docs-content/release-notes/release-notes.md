@@ -23,6 +23,13 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->
+
+- Apache CloudStack support is now generally available. Palette removes the **ApacheCloudStack** feature flag and
+  enables Apache CloudStack for all tenants. You can deploy and manage Kubernetes clusters in your Apache CloudStack
+  environment through a Private Cloud Gateway (PCG). Refer to
+  [Apache CloudStack](../clusters/data-center/cloudstack/cloudstack.md) for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
