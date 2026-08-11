@@ -140,6 +140,10 @@ The following component updates are applicable to this release:
 
 ## July 30, 2026 - Release 4.9.38
 
+The following component updates are applicable to this release:
+
+- [August 7, 2026 - Component Updates](#component-updates-2026-32) <!-- omit in toc -->
+
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
 <!-- RELEASE DATE: July 30, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.36 -->
