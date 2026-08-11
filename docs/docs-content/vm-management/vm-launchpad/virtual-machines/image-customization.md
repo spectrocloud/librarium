@@ -8,11 +8,11 @@ sidebar_position: 2
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 
-In Launchpad for VMs, finalization templates define seal and generalize scripts for [golden image](./golden-images.md)
-finalization. They prepare the OS for cloning by removing machine-specific data and assigning a unique identity to each
-clone. Create custom finalization templates for other Linux distributions, such as Alpine, Arch, and SUSE. You can also
-create custom templates when you need to modify seal logic, include cleanup scripts, include custom scripts, or complete
-security hardening and compliance checks.
+In PaletteAI VM Launchpad, finalization templates define seal and generalize scripts for
+[golden image](./golden-images.md) finalization. They prepare the OS for cloning by removing machine-specific data and
+assigning a unique identity to each clone. Create custom finalization templates for other Linux distributions, such as
+Alpine, Arch, and SUSE. You can also create custom templates when you need to modify seal logic, include cleanup
+scripts, include custom scripts, or complete security hardening and compliance checks.
 
 ## Finalization Templates
 
@@ -24,7 +24,7 @@ A **finalization template** is a reusable script (or script reference) that runs
 - Runs `sysprep` with generalize and shutdown for Windows.
 - Prepares the image for cloning without identity conflicts.
 
-Launchpad stores finalization templates as CRDs and manages them under **Image Catalog** > **Finalize Templates**.
+VM Launchpad stores finalization templates as CRDs and manages them under **Image Catalog** > **Finalize Templates**.
 
 <!-- vale write-good.TooWordy = NO -->
 
@@ -32,15 +32,15 @@ Launchpad stores finalization templates as CRDs and manages them under **Image C
 
 <!-- vale write-good.TooWordy = YES -->
 
-Launchpad includes built-in finalization templates.
+VM Launchpad includes built-in finalization templates.
 
-| **Template**               | **OS Type**     | **Description**                                                                                                                                                           |
-| -------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                                               |
-| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                                       |
-| **Windows**                | `windows`       | Generalize Windows: run `sysprep` with `/generalize /oobe /shutdown`. Also installs QEMU guest agent from the Launchpad [package server](./packages.md) before `sysprep`. |
+| **Template**               | **OS Type**     | **Description**                                                                                                                                                              |
+| -------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                                                  |
+| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                                          |
+| **Windows**                | `windows`       | Generalize Windows: run `sysprep` with `/generalize /oobe /shutdown`. Also installs QEMU guest agent from the VM Launchpad [package server](./packages.md) before `sysprep`. |
 
-You can reference built-in templates when you create custom templates. Launchpad prevents deletion of built-in
+You can reference built-in templates when you create custom templates. VM Launchpad prevents deletion of built-in
 templates.
 
 ### Create a Custom Template
@@ -49,12 +49,12 @@ templates.
 2. Select **Create Template**.
 3. Complete the following fields on the **Create Finalize Template** page and select **Create**.
 
-   | **Parameter**   | **Description**                                                                                                                      |
-   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Name**        | Enter a unique name for the template.                                                                                                |
-   | **Description** | Enter a description for the template.                                                                                                |
-   | **OS Type**     | `linux`, `windows`, `ubuntu`, `rhel`, or another supported value. Launchpad uses this value to filter templates during finalization. |
-   | **Script**      | Select the option on how to add the script: **Editor**, **Template**, **Upload**, or **URL**.                                        |
+   | **Parameter**   | **Description**                                                                                                                         |
+   | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | Enter a unique name for the template.                                                                                                   |
+   | **Description** | Enter a description for the template.                                                                                                   |
+   | **OS Type**     | `linux`, `windows`, `ubuntu`, `rhel`, or another supported value. VM Launchpad uses this value to filter templates during finalization. |
+   | **Script**      | Select the option on how to add the script: **Editor**, **Template**, **Upload**, or **URL**.                                           |
 
 The finalization template is available on the **Finalize Template** page.
 
@@ -67,10 +67,11 @@ The finalization template is available on the **Finalize Template** page.
 
 ## Apply Templates during Finalization
 
-When you select **Finalize** on a builder VM, Launchpad applies the template in the following order.
+When you select **Finalize** on a builder VM, VM Launchpad applies the template in the following order.
 
 1. The finalization page loads available finalization templates.
-2. Launchpad filters templates by **OS Type**. It infers the guest OS from the builder VM or uses the value you select.
+2. VM Launchpad filters templates by **OS Type**. It infers the guest OS from the builder VM or uses the value you
+   select.
    - `ubuntu/debian` builders display Ubuntu/Debian and generic Linux templates.
    - `rhel/centos/fedora` builders display RHEL-family templates.
    - `windows` builders display Windows templates.
@@ -104,14 +105,14 @@ builder VM), not during finalization.
 | **Linux**   | Cloud-init YAML  | `preseed`, kickstart, or cloud-init `autoinstall` to automate OS installation.   |
 | **Windows** | Autounattend.xml | Unattended installation answers (product key, disk partitioning, user creation). |
 
-Launchpad manages auto-install scripts under **Image Catalog** > **Auto Install Scripts**. The page lists each script
+VM Launchpad manages auto-install scripts under **Image Catalog** > **Auto Install Scripts**. The page lists each script
 with its name, OS type, and description. When building a golden image, you select an auto-install script to inject into
 the builder VM's cloud-init or to attach as Autounattend.xml. Set a script as the OS default to auto-populate the
 builder for that OS.
 
 ### Built-in Auto Install Scripts
 
-Launchpad includes built-in auto-install scripts.
+VM Launchpad includes built-in auto-install scripts.
 
 | **Script**                                 | **OS Type**       | **Description**                                                                                                                                                                                   |
 | ------------------------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -130,14 +131,14 @@ You can reference or copy a built-in script when you create your own.
 
 3. Complete the following fields in the **Create Auto Install Script** dialog and select **Create**.
 
-   | **Parameter**    | **Description**                                                                                                                                                    |
-   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Name**         | Enter a unique name for the script.                                                                                                                                |
-   | **Description**  | Enter an optional description for the script.                                                                                                                      |
-   | **OS Type**      | Select the target OS, such as **RHEL / CentOS**, **Ubuntu / Debian**, or **Windows**. Select **Custom** for another OS.                                            |
-   | **OS Default**   | Select this option to set the script as the default for its OS type. Launchpad auto-populates the script in the builder when you build a golden image for that OS. |
-   | **Script**       | Select how to add the script: **Editor**, **Template**, **Upload**, or **URL**. Linux scripts use cloud-init YAML, and Windows scripts use Autounattend.xml.       |
-   | **Network Data** | Optionally provide Netplan network configuration to apply during installation.                                                                                     |
+   | **Parameter**    | **Description**                                                                                                                                                       |
+   | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**         | Enter a unique name for the script.                                                                                                                                   |
+   | **Description**  | Enter an optional description for the script.                                                                                                                         |
+   | **OS Type**      | Select the target OS, such as **RHEL / CentOS**, **Ubuntu / Debian**, or **Windows**. Select **Custom** for another OS.                                               |
+   | **OS Default**   | Select this option to set the script as the default for its OS type. VM Launchpad auto-populates the script in the builder when you build a golden image for that OS. |
+   | **Script**       | Select how to add the script: **Editor**, **Template**, **Upload**, or **URL**. Linux scripts use cloud-init YAML, and Windows scripts use Autounattend.xml.          |
+   | **Network Data** | Optionally provide Netplan network configuration to apply during installation.                                                                                        |
 
 ### How Templates and Auto-Install Work Together
 

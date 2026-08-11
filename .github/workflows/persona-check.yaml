@@ -44,7 +44,7 @@ permissions:
 env:
   NODE_VERSION: "24"
   # Pinned Impersonaid commit (private repo, no tags). Bump deliberately.
-  IMPERSONAID_REF: "711b0dd41b812a77ae92b0a041b7dc1aa3821e43" # spectrocloud/impersonaid main, last bumped 2026-07-13
+  IMPERSONAID_REF: "045c608c9bc9d6e773cf688d1638a8428104990d" # spectrocloud/impersonaid main, last bumped 2026-08-03
 
 concurrency:
   group: persona-check-${{ github.event.pull_request.number || github.event.issue.number }}
@@ -126,12 +126,12 @@ jobs:
 
       # Trusted base-ref checkout: provides .github/persona-check/* (our scripts).
       - name: Checkout base (trusted scripts)
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Untrusted PR head content — read only as data, never executed.
       - name: Checkout PR head
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: refs/pull/${{ steps.resolve.outputs.pr_number }}/head
           path: pr
@@ -139,7 +139,7 @@ jobs:
 
       - name: Checkout Impersonaid
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: spectrocloud/impersonaid
           ref: ${{ env.IMPERSONAID_REF }}

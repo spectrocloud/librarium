@@ -27,3 +27,5 @@ about Palette's architecture and the various components that make up the model, 
 - [Network Ports](networking-ports.md)
 
 - [IP Addresses](palette-public-ips.md)
+
+- [Custom Resource Definition API Versions](crd-api-versions.md)

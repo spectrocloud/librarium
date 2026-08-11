@@ -11,8 +11,8 @@ keywords: ["launchpad", "ai", "clients", "revoke", "delete", "expired", "api tok
 ---
 
 This guide explains how a platform administrator ends a client's access on a PaletteAI Inference Launchpad appliance:
-finding expired or revoked tokens, revoking a single API token, and deleting a client. To understand how clients and API
-tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
+finding expired or revoked tokens, revoking a single API token, and suspending or deleting a client. To understand how
+clients and API tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 
 ## Prerequisites
 
@@ -22,8 +22,8 @@ tokens relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.m
 
 ## Find Expired or Revoked Keys
 
-An API token that passes its expiration date becomes expired, and the appliance rejects any request that presents it,
-fail-closed. The console shows each token's state so you can find expired tokens.
+The console shows each token's state, so you can find expired or revoked tokens. For how the appliance enforces token
+expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
 
 1. From the left main menu, select **Access & Policy**.
 
@@ -44,18 +44,26 @@ The **Usage** page also shows a token's state in its per-token detail. For usage
 
 3. Select the **API tokens** section.
 
-4. Find the token, and then select **Revoke**.
+4. Find the token, then select the **Revoke access** icon (a prohibit symbol) at the end of its row, and confirm in the
+   **Revoke token** dialog.
 
 Revoking a token is immediate and cannot be undone.
 
-## Delete a Client
+## Suspend or Delete a Client
+
+Suspend a client to block its requests temporarily; suspension is reversible. Delete a client to permanently retire it,
+which revokes all its API tokens and cannot be undone. For what each action keeps or removes, refer to
+[Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
+
+Both actions are in the **Overview** section of the client's detail panel, each behind a confirmation.
 
 1. From the left main menu, select **Access & Policy**.
 
-2. On the **Clients & API tokens** page, select the client's delete action, and then confirm.
-   {/* NEEDS REVIEW: exact delete control and confirmation wording. */}
+2. On the **Clients & API tokens** page, select the client to open its detail panel.
 
-Deleting a client revokes every API token that belongs to it.
+3. Select the **Overview** section, then select **Suspend** or **Delete**, and then confirm.
+
+To restore a suspended client, select **Resume** in the **Overview** section.
 
 ## Next Steps
 

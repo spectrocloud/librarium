@@ -45,7 +45,7 @@ env:
   # Pinned Impersonaid commit (private repo, no tags). Kept current by the
   # "Bump Impersonaid SHA" workflow (bump-impersonaid-sha.yaml). Keep this value
   # identical to IMPERSONAID_REF in persona-check.yaml.
-  IMPERSONAID_REF: "711b0dd41b812a77ae92b0a041b7dc1aa3821e43" # spectrocloud/impersonaid main, last bumped 2026-07-13
+  IMPERSONAID_REF: "045c608c9bc9d6e773cf688d1638a8428104990d" # spectrocloud/impersonaid main, last bumped 2026-08-03
   MA_DIR: .github/monthly-assessment
   PR_BRANCH: chore/monthly-assessment
 
@@ -81,13 +81,13 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout librarium (master)
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: master
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Checkout Impersonaid
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: spectrocloud/impersonaid
           ref: ${{ env.IMPERSONAID_REF }}
