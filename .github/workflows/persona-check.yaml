@@ -126,12 +126,12 @@ jobs:
 
       # Trusted base-ref checkout: provides .github/persona-check/* (our scripts).
       - name: Checkout base (trusted scripts)
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Untrusted PR head content — read only as data, never executed.
       - name: Checkout PR head
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: refs/pull/${{ steps.resolve.outputs.pr_number }}/head
           path: pr
@@ -139,7 +139,7 @@ jobs:
 
       - name: Checkout Impersonaid
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: spectrocloud/impersonaid
           ref: ${{ env.IMPERSONAID_REF }}
