@@ -25,6 +25,12 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
+
+- The **Host LXD-based control planes** and **Use LXD VMs** toggles in cluster and node configuration now display a
+  tooltip clarifying that LXD-based VMs on MAAS are supported only with Palette eXtended Kubernetes clusters. Enabling
+  LXD with other Kubernetes distributions results in deployment failures.
+
 #### Deprecations and Removals
 
 ### Edge
