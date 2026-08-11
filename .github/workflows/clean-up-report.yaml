@@ -1,14 +1,15 @@
-# This workflow is triggered when a branch is deleted, except for master, main, and gh-pages.
+# This workflow is triggered when a branch is deleted. Tag deletions and the long-lived
+# branches (master, main, gh-pages) are filtered out by the job conditions below. The
+# `delete` event does not support branches-ignore, so that filtering has to happen in the
+# job `if:` rather than in the `on:` block. See DOC-3101.
 # The visual tests reports for the deleted branch are removed from the gh-pages branch. This is to ensure that the reports are not visible on the website after the branch is deleted and to reduce the size of the repository.
-# The workflow also removes branches that may have been automatically added to Netlify's branch deploy list. 
+# The workflow also removes branches that may have been automatically added to Netlify's branch deploy list.
 # It's common for release related branches to be added to the Netlify branch deploy list. Otherwise, if not part of the deploy list, the branch will not receive a Netlify deploy preview URL.
 
 name: Delete Visual Tests Reports
 
 on:
   delete:
-    branches-ignore: [master, main, gh-pages]
-
 
 env:
   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -16,23 +17,34 @@ env:
   GITHUB_BRANCH: ${{ github.event.ref }}
 
 concurrency:
-  group: ${{ github.event.ref }}
+  group: clean-up-report-${{ github.event.ref }}
   cancel-in-progress: true
 
 jobs:
   update_netlify:
+    if: >-
+      ${{ github.event.ref_type == 'branch'
+          && !contains(fromJSON('["master", "main", "gh-pages"]'), github.event.ref) }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-
-      - name: Checkout GitHub Pages Branch
+      # The Netlify script lives under scripts/ on the default branch, not on gh-pages.
+      # Do not add `ref: gh-pages` here or the script will not be present.
+      - name: Checkout Default Branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        
+
       - name: Remove Branch From Netlify
-        run: cd scripts && ./netlify_remove_branch.sh 
+        run: cd scripts && ./netlify_remove_branch.sh
 
   delete_reports:
     name: Delete Reports
+    if: >-
+      ${{ github.event.ref_type == 'branch'
+          && !contains(fromJSON('["master", "main", "gh-pages"]'), github.event.ref) }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout GitHub Pages Branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -58,12 +70,13 @@ jobs:
         env:
           BRANCH_SAFE: ${{ steps.branch.outputs.branch-safe }}
         run: |
-          if [ -z "$(ls -A "reports/${BRANCH_SAFE}")" ]; then
-            printf 'exists=false\n' >> "$GITHUB_OUTPUT"
-          else
+          if [ -d "reports/${BRANCH_SAFE}" ]; then
             printf 'exists=true\n' >> "$GITHUB_OUTPUT"
+          else
+            echo "No reports directory for reports/${BRANCH_SAFE}; nothing to clean up."
+            printf 'exists=false\n' >> "$GITHUB_OUTPUT"
           fi
-          
+
       - name: Delete reports from repo for branch
         if: ${{ steps.reports.outputs.exists == 'true' }}
         timeout-minutes: 3
@@ -73,18 +86,32 @@ jobs:
         run: |
           rm -rf "reports/${BRANCH_SAFE}"
           git add .
+
+          if git diff --staged --quiet; then
+            echo "Nothing staged for reports/${BRANCH_SAFE}; nothing to commit."
+            exit 0
+          fi
+
           git commit -m "workflow: remove all reports for branch ${DELETED_REF}"
 
-          while true; do
-            git pull --rebase
-            if [ $? -ne 0 ]; then
+          # Retry to survive a concurrent push to gh-pages. The retry is bounded and
+          # tests each command directly: the default shell is `bash -e`, so an
+          # unguarded failure would abort the step before any `$?` check could run,
+          # and an unbounded `while true` would spin against the remote.
+          for attempt in 1 2 3 4 5; do
+            if ! git pull --rebase; then
               echo "Failed to rebase. Please review manually."
               exit 1
             fi
 
-            git push
-            if [ $? -eq 0 ]; then
-              echo "Successfully pushed HTML reports to repo."
+            if git push; then
+              echo "Successfully removed reports for branch ${DELETED_REF}."
               exit 0
             fi
+
+            echo "Push rejected (attempt ${attempt} of 5), retrying..."
+            sleep 5
           done
+
+          echo "Exhausted push retries. Please review manually."
+          exit 1
