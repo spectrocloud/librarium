@@ -70,6 +70,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
+
+- A new
+  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
+  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
+  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
+  satisfy.
+
 ### Packs
 
 #### Pack Notes
