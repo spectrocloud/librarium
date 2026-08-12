@@ -100,11 +100,11 @@ On K3s and RKE2, pack version `1.35.6` includes an **Airgap** preset that applie
 version `1.35.6` remains exposed to the issue until you enable it. To apply the setting, refer to
 [Prevent the Issue on a New Cluster](#prevent-the-issue-on-a-new-cluster).
 
-On PXK-E, no pack version currently provides this setting. If you run airgap Edge clusters on PXK-E at Kubernetes
-v1.35.x or later, contact your Spectro Cloud support representative for the configuration that applies to your pack
-version before you provision or upgrade. The recovery steps in
-[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster) still apply to a PXK-E cluster that is
-already affected, except that the Kubelet configuration path differs from the K3s and RKE2 paths shown.
+On PXK-E, no released pack version includes the preset, so apply the setting as a manual values override on every
+affected pack version. PXK-E also requires a second file that K3s and RKE2 do not. PXK-E runs Kubelet as a standalone
+service that does not read the drop-in directory unless you point it there, so you must set the Kubelet `--config-dir`
+argument as well. Omitting it leaves the drop-in on disk but unread, which looks identical to the setting never having
+been applied.
 
 :::info
 
@@ -120,18 +120,17 @@ until you recover the pod.
 #### Prevent the Issue on a New Cluster
 
 The required setting is a Kubelet configuration drop-in file that must exist before any images are imported onto the
-node. The following applies to the K3s and RKE2 packs. For PXK-E, contact your Spectro Cloud support representative
-instead, because no PXK-E pack version currently provides this setting.
+node. How you apply it depends on your Kubernetes pack and version.
 
-- **Pack version `1.35.6` or later** - In the **Presets** panel of the Kubernetes layer, set **Airgap** to **Enable**.
-  The preset name is `airgap`. This preset is not enabled by default, so you must select it explicitly.
+- **K3s or RKE2 pack version `1.35.6` or later** - In the **Presets** panel of the Kubernetes layer, set **Airgap** to
+  **Enable**. The preset name is `airgap`. This preset is not enabled by default, so you must select it explicitly.
 
-- **Pack versions `1.35.2` and `1.35.3`** - These versions do not include the preset. In the `values.yaml` file of the
-  Kubernetes layer, add the configuration manually to the existing `initramfs` stage, alongside any other `directories`
-  or `files` entries.
+- **K3s or RKE2 pack versions `1.35.2` and `1.35.3`, or any PXK-E pack version** - These versions do not include the
+  preset. In the `values.yaml` file of the Kubernetes layer, add the configuration manually to the existing `initramfs`
+  stage, alongside any other `directories` or `files` entries.
 
-Both approaches produce the same result, shown in the following example. For more information about cloud-init stages,
-refer to [Cloud-Init Stages](../../clusters/edge/edge-configuration/cloud-init.md).
+Select your Kubernetes distribution for the configuration to apply. For more information about cloud-init stages, refer
+to [Cloud-Init Stages](../../clusters/edge/edge-configuration/cloud-init.md).
 
 <Tabs groupId="k8s-distribution">
 
@@ -174,6 +173,39 @@ stages:
               KubeletEnsureSecretPulledImages: true
             imagePullCredentialsVerificationPolicy: NeverVerify
 ```
+
+</TabItem>
+
+<TabItem value="PXK-E">
+
+```yaml
+stages:
+  initramfs:
+    - directories:
+        - path: "/etc/kubernetes/kubelet.conf.d"
+          permissions: 0700
+      files:
+        - path: /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf
+          permissions: 0600
+          content: |
+            apiVersion: kubelet.config.k8s.io/v1beta1
+            kind: KubeletConfiguration
+            featureGates:
+              KubeletEnsureSecretPulledImages: true
+            imagePullCredentialsVerificationPolicy: NeverVerify
+        - path: /etc/default/kubelet
+          permissions: 0644
+          content: |
+            KUBELET_EXTRA_ARGS="--config-dir=/etc/kubernetes/kubelet.conf.d"
+```
+
+:::warning
+
+The second entry replaces the entire contents of `/etc/default/kubelet`. If your cluster profile or user data already
+sets `KUBELET_EXTRA_ARGS`, add `--config-dir=/etc/kubernetes/kubelet.conf.d` to the existing value instead of
+overwriting the file, otherwise you lose the arguments already in place.
+
+:::
 
 </TabItem>
 
@@ -270,10 +302,37 @@ temporary, per-node mitigation.
 
    </TabItem>
 
+   <TabItem value="PXK-E">
+
+   PXK-E needs a second command that K3s and RKE2 do not, because its Kubelet does not read the drop-in directory
+   unless you set the `--config-dir` argument.
+
+   ```bash
+   mkdir --parents /etc/kubernetes/kubelet.conf.d
+   tee /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
+   apiVersion: kubelet.config.k8s.io/v1beta1
+   kind: KubeletConfiguration
+   featureGates:
+     KubeletEnsureSecretPulledImages: true
+   imagePullCredentialsVerificationPolicy: NeverVerify
+   EOF
+   chmod 0600 /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf
+   ```
+
+   Add the `--config-dir` argument to `/etc/default/kubelet`. If the file already sets `KUBELET_EXTRA_ARGS`, append the
+   argument to the existing value rather than replacing the line.
+
+   ```bash
+   echo 'KUBELET_EXTRA_ARGS="--config-dir=/etc/kubernetes/kubelet.conf.d"' > /etc/default/kubelet
+   chmod 0644 /etc/default/kubelet
+   ```
+
+   </TabItem>
+
    </Tabs>
 
-7. Restart the Kubernetes process on the node and wait for the node to report a `Ready` status. Replace `<node-name>`
-   with the name of the node.
+7. Restart Kubelet on the node and wait for the node to report a `Ready` status. Replace `<node-name>` with the name of
+   the node.
 
    <Tabs groupId="k8s-distribution">
 
@@ -293,6 +352,15 @@ temporary, per-node mitigation.
 
    ```bash
    systemctl restart rke2-server
+   kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
+   ```
+
+   </TabItem>
+
+   <TabItem value="PXK-E">
+
+   ```bash
+   systemctl restart kubelet
    kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
    ```
 
