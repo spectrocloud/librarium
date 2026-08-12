@@ -27,8 +27,8 @@ Refer to your MCP client's documentation for the exact steps to register a remot
 The Docs Ask AI MCP server requires authentication. When your MCP client connects to the server, you are prompted to
 sign in with a Google or GitHub account.
 
-Kapa uses authentication to prevent abuse and enforce rate limits. Even though you sign in, your queries are anonymous.
-They are tied to an internal UID rather than your Google or GitHub identity.
+Kapa uses authentication to prevent abuse and enforce rate limits. Even though you sign in, your queries are anonymous
+because they are tied to an internal identifier.
 
 ## Reduce Context Usage with a Subagent
 
