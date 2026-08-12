@@ -70,5 +70,4 @@ VMO Pack is appropriate in the following scenarios:
    VM and disk templates, manage VM resources, and perform other advanced operations.
 
 If you are moving an existing cluster from an earlier pack version, refer to
-[Upgrade the VMO Pack](./upgrade-vmo-pack.md) for the differences between the two generations of the pack and for the
-upgrade procedure.
+[Upgrade the VMO Pack](./upgrade-vmo-pack.md) for what changes at pack version 4.10.0 and for the upgrade procedure.

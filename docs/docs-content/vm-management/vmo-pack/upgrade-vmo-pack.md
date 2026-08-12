@@ -2,35 +2,35 @@
 sidebar_label: "Upgrade the VMO Pack"
 title: "Upgrade the VMO Pack"
 description:
-  "Learn what changes between VMO 1.0 and VMO 2.0 in the Virtual Machine Orchestrator pack, and how to upgrade an
-  existing cluster."
+  "Learn what changes in the Virtual Machine Orchestrator pack at version 4.10.0, and how to upgrade an existing
+  cluster."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["vmo", "vmo pack", "oidc"]
 ---
 
-The Virtual Machine Orchestrator (VMO) pack has two generations.
+The Virtual Machine Orchestrator (VMO) pack changed its management component at pack version 4.10.0.
 
-- **VMO 1.0** builds the VM management experience on the `spectro-vm-dashboard` component, which is derived from the
-  OpenShift console bridge.
+- **Pack versions 4.9.x and earlier** build the VM management experience on the `spectro-vm-dashboard` component, known
+  as the VM Dashboard, which is derived from the OpenShift console bridge.
 
-- **VMO 2.0** replaces that component with the purpose-built VMO Manager service. VMO Manager is the same service that
-  powers the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
+- **Pack versions 4.10.0 and later** replace that component with the purpose-built VMO Manager service. VMO Manager is
+  the same service that powers the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
 
 <!-- prettier-ignore-start -->
 
-Both generations ship under the same <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack name,
+All versions ship under the same <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack name,
 so you upgrade by changing the pack version in your add-on cluster profile.
 
 <!-- prettier-ignore-end -->
 
-This page describes what changes between the two generations, what you must configure in VMO 2.0 that had no equivalent
-in VMO 1.0, and how to perform the upgrade.
+This page describes what changes at pack version 4.10.0, what you must configure that has no equivalent in earlier
+versions, and how to perform the upgrade.
 
 ## What Changes
 
-| **Area**                 | **VMO 1.0**                                                       | **VMO 2.0**                                                                                               |
+| **Area**                 | **Pack 4.9.x and Earlier**                                        | **Pack 4.10.0 and Later**                                                                                 |
 | ------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Management service       | `spectro-vm-dashboard`                                            | `vmo-manager`                                                                                             |
 | Values layout            | Settings sit directly under `charts.virtual-machine-orchestrator` | Manager settings move to the `charts.virtual-machine-orchestrator.vmo-manager` sub-chart                  |
@@ -44,17 +44,17 @@ in VMO 1.0, and how to perform the upgrade.
 
 The two changes with the largest operational impact are the following.
 
-- **Group-based RBAC works without extra configuration.** In VMO 1.0, identity provider groups did not reach the
-  Kubernetes API server because the `groups` scope was not requested. VMO 2.0 requests it by default, so bindings that
-  use a `Group` subject take effect as soon as your identity provider emits the `groups` claim.
+- **Group-based RBAC works without extra configuration.** In 4.9.x and earlier, identity provider groups did not reach
+  the Kubernetes API server because the `groups` scope was not requested. VMO Manager requests it by default, so
+  bindings that use a `Group` subject take effect as soon as your identity provider emits the `groups` claim.
 
-- **The OIDC client secret moves out of a ConfigMap.** In VMO 1.0, anyone with `get configmap` permission on the
-  `vm-dashboard` namespace could read the client secret. Treat an existing VMO 1.0 client secret as exposed and rotate
-  it as part of the upgrade.
+- **The OIDC client secret moves out of a ConfigMap.** In 4.9.x and earlier, anyone with `get configmap` permission on
+  the `vm-dashboard` namespace could read the client secret. Treat an existing client secret as exposed and rotate it as
+  part of the upgrade.
 
-## What You Must Configure in VMO 2.0
+## What You Must Configure After the Upgrade
 
-The following items have no VMO 1.0 equivalent. Plan for them before you upgrade.
+The following items have no equivalent in 4.9.x and earlier. Plan for them before you upgrade.
 
 | **Item**                        | **What You Need to Do**                                                                                                                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,14 +62,14 @@ The following items have no VMO 1.0 equivalent. Plan for them before you upgrade
 | `LOCAL_ADMIN_PASSWORD` variable | Add this profile variable and set a strong password to seed the Day 0 local admin account. Leave it empty if you want a cluster with no local sign-in.                                                          |
 | `platform.baseUrl`              | Set this to the URL that users reach the UI at. It replaces `appConfig.clusterInfo.consoleBaseAddress`. Required in **Direct** mode with an external identity provider.                                         |
 | Identity provider prefixes      | If the Kubernetes API server uses `--oidc-username-prefix` or `--oidc-groups-prefix`, mirror those values in `oidc.k8sUsernamePrefix` and `oidc.k8sGroupPrefix` so that API key impersonation matches.          |
-| Group bindings                  | Replace the per-user role bindings that VMO 1.0 required with group bindings once you confirm that the groups claim reaches the API server.                                                                     |
+| Group bindings                  | Replace the per-user role bindings that 4.9.x and earlier required with group bindings once you confirm that the groups claim reaches the API server.                                                           |
 
 ### Parameter Mapping
 
-Use the following table to move an existing configuration by hand. All VMO 2.0 paths are relative to
+Use the following table to move an existing configuration by hand. All paths in the second column are relative to
 `charts.virtual-machine-orchestrator`.
 
-| **VMO 1.0 Parameter**                      | **VMO 2.0 Parameter**                                                                                                                   |
+| **4.9.x and Earlier**                      | **4.10.0 and Later**                                                                                                                    |
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `appConfig.auth.oidc.clientID`             | `vmo-manager.oidc.clientId`                                                                                                             |
 | `appConfig.auth.oidc.clientSecret`         | `vmo-manager.oidc.clientSecret`, rendered into a Secret                                                                                 |
@@ -79,13 +79,13 @@ Use the following table to move an existing configuration by hand. All VMO 2.0 p
 | `snapshotController.installCRDs`           | Removed. Set `snapshot-controller.enabled` to `false` when your Container Storage Interface (CSI) supplies its own snapshot components. |
 | `pack.cdi.privateRegistry.*`               | `cdi.privateRegistry.*`                                                                                                                 |
 
-The `appConfig.auth.oidc.callbackUrl` and `appConfig.auth.oidc.scopes` parameters have no VMO 2.0 equivalent. Remove
-them. VMO 1.0 ignored both.
+The `appConfig.auth.oidc.callbackUrl` and `appConfig.auth.oidc.scopes` parameters have no equivalent in 4.10.0 and
+later. Remove them. Earlier versions ignored both.
 
 ## Prerequisites
 
-- An existing cluster deployed with a VMO 1.0 add-on cluster profile that runs VMO pack version 4.9.9 or later. If the
-  cluster runs an earlier version, upgrade the pack on the VMO 1.0 line first. Refer to
+- An existing cluster deployed with a VMO add-on cluster profile that runs VMO pack version 4.9.9 or later. If the
+  cluster runs an earlier version, upgrade the pack to 4.9.9 or a later 4.9.x version first. Refer to
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) for
   guidance, and confirm that the cluster reports a **Healthy** status before you continue.
 
@@ -105,8 +105,8 @@ them. VMO 1.0 ignored both.
 3. Select the **Virtual Machine Orchestrator** layer, select **Values**, and copy the current values to a local file.
    Keep this file as a rollback reference.
 
-4. Record the existing role bindings so that you can recreate them if needed. In VMO 1.0, group-based RBAC did not work
-   end to end, so bindings are typically mapped to individual user identities.
+4. Record the existing role bindings so that you can recreate them if needed. In 4.9.x and earlier, group-based RBAC did
+   not work end to end, so bindings are typically mapped to individual user identities.
 
    ```shell
    kubectl get clusterrolebinding \
@@ -117,9 +117,9 @@ them. VMO 1.0 ignored both.
 5. _(Third-party OIDC only)_ Rotate the OIDC client secret in your identity provider and generate a new one on the same
    application. Do not revoke the old secret yet.
 
-6. In the profile layer, change the pack version to a VMO 2.0 version.
+6. In the profile layer, change the pack version to 4.10.0 or later.
 
-7. Update the values to match the VMO 2.0 layout. Refer to [Parameter Mapping](#parameter-mapping) and to
+7. Update the values to match the new layout. Refer to [Parameter Mapping](#parameter-mapping) and to
    [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) for the full parameter reference.
 
 8. Add the `LOCAL_ADMIN_PASSWORD` profile variable and set a strong password. Refer to
@@ -130,7 +130,8 @@ them. VMO 1.0 ignored both.
 
 10. Apply the profile update to your cluster and wait for the cluster to report a **Healthy** status.
 
-    Palette removes the VMO 1.0 workload and its ConfigMap, and creates the VMO 2.0 workload in the same namespace.
+    Palette removes the VM Dashboard workload and its ConfigMap, and creates the VMO Manager workload in the same
+    namespace.
 
 :::info
 
@@ -157,10 +158,10 @@ pod restarts.
 ## Limitations
 
 - There is no in-place upgrade path from the VMO pack to the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
-  This applies to both VMO 1.0 and VMO 2.0 clusters. The VM Launchpad is installed from a bootable ISO and manages its
-  own cluster lifecycle, so moving to it requires a new cluster.
+  This applies to all VMO pack versions. The VM Launchpad is installed from a bootable ISO and manages its own cluster
+  lifecycle, so moving to it requires a new cluster.
 
-- Upgrading from VMO 1.0 to VMO 2.0 does not migrate local user accounts, because VMO 1.0 has no local authentication.
+- Upgrading from 4.9.x does not migrate local user accounts, because the VM Dashboard has no local authentication.
 
 ## Validate
 
