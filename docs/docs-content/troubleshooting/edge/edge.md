@@ -57,13 +57,14 @@ cgroup2fs
 
 ## Scenario - Intermittent `ImagePullBackOff` Errors on Airgap Edge Clusters with Kubernetes v1.35.x
 
-<!-- prettier-ignore -->
-On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" /> at
-Kubernetes v1.35.x or later, pods may intermittently fail to start with an `ImagePullBackOff`
-status, even though the image is already present on the node. The issue most commonly affects the `palette-webhook` and
-`palette-lite-controller-manager` pods, and it also affects pods that use the `spectro-drive`, `crony`, and
-`spectro-import-presetup` images. The pod events show a timeout while reaching an external registry, similar to the
-following.
+<!-- prettier-ignore-start -->
+On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />
+or <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> at Kubernetes v1.35.x or
+later, pods may intermittently fail to start with an `ImagePullBackOff` status, even though the image is already present
+on the node. The issue most commonly affects the `palette-webhook` and `palette-lite-controller-manager` pods, and it
+also affects pods that use the `spectro-drive`, `crony`, and `spectro-import-presetup` images. The pod events show a
+timeout while reaching an external registry, similar to the following.
+<!-- prettier-ignore-end -->
 
 ```bash hideClipboard title="Example output"
 Failed to pull image "<registry>/<image-name>:<tag>":
@@ -81,17 +82,21 @@ registry. Depending on the timing of the bundle import relative to when the firs
 pull record for a bundle image that contains no credential mapping. From that point on, Kubelet stops treating the image
 as preloaded and forces a new pull from the image's original public registry, which cannot succeed in an airgap
 environment and times out. The failure is sticky, so it persists for every later pod that uses the image until you
-remove the record and restart K3s. On K3s, Kubelet runs inside the `k3s` process instead of as a separate service, so
-restarting `k3s` restarts Kubelet and clears its in-memory record cache.
+remove the record and restart the Kubernetes process on the node. On both K3s and RKE2, Kubelet runs inside the
+distribution's own process instead of as a separate service, so restarting that process also restarts Kubelet and clears
+its in-memory record cache.
 
 Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
 others in the same cluster are not.
 
-The issue affects new cluster deployments and upgrades to Kubernetes v1.35.x or later. An upgrade from Kubernetes
-v1.34.5 to v1.35.2 has been verified to complete without the issue when the target K3s pack already contains the
-override described in
-[Apply the Override When Deploying a New Cluster](#apply-the-override-when-deploying-a-new-cluster). The issue arises
-when a cluster reaches Kubernetes v1.35.x or later without that setting in place.
+The issue affects new cluster deployments and clusters that reach Kubernetes v1.35.x or later without the required
+Kubelet setting in place. An upgrade from Kubernetes v1.34.5 to v1.35.2 has been verified to complete without the issue
+when the target pack already carries that setting.
+
+Pack version `1.35.6` of both packs includes an **Airgap** preset that applies the setting for you. Pack versions
+`1.35.2` and `1.35.3` do not include the preset and need a manual values override. The preset is not enabled by default,
+so a cluster on pack version `1.35.6` remains exposed to the issue until you enable it. To apply the setting, refer to
+[Prevent the Issue on a New Cluster](#prevent-the-issue-on-a-new-cluster).
 
 :::info
 
@@ -104,12 +109,24 @@ until you recover the pod.
 
 ### Debug Steps
 
-#### Apply the Override When Deploying a New Cluster
+#### Prevent the Issue on a New Cluster
 
-When you provision a new cluster, add a Kubelet configuration override to the K3s layer of your cluster profile so that
-the setting is in place before any images are imported. In the pack's `values.yaml` file, add the following to the
-existing `initramfs` stage, alongside any other `directories` or `files` entries. For more information about cloud-init
-stages, refer to [Cloud-Init Stages](../../clusters/edge/edge-configuration/cloud-init.md).
+The required setting is a Kubelet configuration drop-in file that must exist before any images are imported onto the
+node. How you apply it depends on the version of the Kubernetes pack in your cluster profile.
+
+- **Pack version `1.35.6` or later** - In the **Presets** panel of the Kubernetes layer, set **Airgap** to **Enable**.
+  The preset name is `airgap`. This preset is not enabled by default, so you must select it explicitly.
+
+- **Pack versions `1.35.2` and `1.35.3`** - These versions do not include the preset. In the `values.yaml` file of the
+  Kubernetes layer, add the configuration manually to the existing `initramfs` stage, alongside any other `directories`
+  or `files` entries.
+
+Both approaches produce the same result, shown in the following example. For more information about cloud-init stages,
+refer to [Cloud-Init Stages](../../clusters/edge/edge-configuration/cloud-init.md).
+
+<Tabs groupId="k8s-distribution">
+
+<TabItem value="K3s">
 
 ```yaml
 stages:
@@ -128,17 +145,40 @@ stages:
             imagePullCredentialsVerificationPolicy: NeverVerify
 ```
 
-Apply the override and then provision or upgrade the cluster as you normally would. This prevents the issue on both
-airgap and connected clusters, and you do not need the node-level steps described in
-[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster). Spectro Cloud plans to include this
-setting in the K3s pack in a future release. Until then, apply it as a values override on the K3s layer of your cluster
-profile.
+</TabItem>
+
+<TabItem value="RKE2">
+
+```yaml
+stages:
+  initramfs:
+    - directories:
+        - path: "/var/lib/rancher/rke2/agent/etc/kubelet.conf.d"
+          permissions: 0700
+      files:
+        - path: /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+          permissions: 0600
+          content: |
+            apiVersion: kubelet.config.k8s.io/v1beta1
+            kind: KubeletConfiguration
+            featureGates:
+              KubeletEnsureSecretPulledImages: true
+            imagePullCredentialsVerificationPolicy: NeverVerify
+```
+
+</TabItem>
+
+</Tabs>
+
+Provision or upgrade the cluster as you normally would. This prevents the issue on both airgap and connected clusters,
+and you do not need the node-level steps described in
+[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster).
 
 :::warning
 
-Adding this override to the cluster profile of a cluster that is already running does not resolve the issue on that
-cluster, because re-applying the profile does not regenerate the live Kubelet configuration on existing nodes. For a
-cluster that is already affected, use the steps in
+Enabling the preset, or adding the override, in the cluster profile of a cluster that is already running does not
+resolve the issue on that cluster, because re-applying the profile does not regenerate the live Kubelet configuration on
+existing nodes. For a cluster that is already affected, use the steps in
 [Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster) instead.
 
 :::
@@ -185,15 +225,14 @@ temporary, per-node mitigation.
 
    :::
 
-6. Create the Kubelet configuration directory.
+6. Create the Kubelet configuration drop-in file and set its permissions.
+
+   <Tabs groupId="k8s-distribution">
+
+   <TabItem value="K3s">
 
    ```bash
    mkdir --parents /var/lib/rancher/k3s/agent/etc/kubelet.conf.d
-   ```
-
-7. Create the Kubelet configuration file.
-
-   ```bash
    tee /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
    apiVersion: kubelet.config.k8s.io/v1beta1
    kind: KubeletConfiguration
@@ -201,39 +240,74 @@ temporary, per-node mitigation.
      KubeletEnsureSecretPulledImages: true
    imagePullCredentialsVerificationPolicy: NeverVerify
    EOF
-   ```
-
-8. Set the permissions on the configuration file.
-
-   ```bash
    chmod 0600 /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
    ```
 
-9. Restart K3s on the node and wait for the node to report a `Ready` status. Replace `<node-name>` with the name of the
-   node.
+   </TabItem>
+
+   <TabItem value="RKE2">
+
+   ```bash
+   mkdir --parents /var/lib/rancher/rke2/agent/etc/kubelet.conf.d
+   tee /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
+   apiVersion: kubelet.config.k8s.io/v1beta1
+   kind: KubeletConfiguration
+   featureGates:
+     KubeletEnsureSecretPulledImages: true
+   imagePullCredentialsVerificationPolicy: NeverVerify
+   EOF
+   chmod 0600 /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+7. Restart the Kubernetes process on the node and wait for the node to report a `Ready` status. Replace `<node-name>`
+   with the name of the node.
+
+   <Tabs groupId="k8s-distribution">
+
+   <TabItem value="K3s">
 
    ```bash
    systemctl restart k3s
    kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
    ```
 
-10. Delete the affected pods so that they are rescheduled and use the local image. Replace `<cluster-namespace>` with
-    the namespace of your cluster. Delete any other pods that remain in an `ImagePullBackOff` status as well.
+   </TabItem>
 
-    ```bash
-    kubectl delete pod --namespace palette-system --selector app=palette-webhook
-    kubectl delete pod --namespace <cluster-namespace> --selector control-plane=palette-lite-controller-manager
-    ```
+   <TabItem value="RKE2">
 
-11. Confirm that the pods recover. The pod events should include a message stating that the image is already present on
-    the machine, and the pods should reach a `Running` status.
+   On a control plane node, restart the `rke2-server` service. On a worker node, restart the `rke2-agent` service
+   instead.
 
-    ```bash
-    kubectl get pods --namespace palette-system --selector app=palette-webhook
-    kubectl get events --namespace palette-system --sort-by=.lastTimestamp | grep palette-webhook
-    ```
+   ```bash
+   systemctl restart rke2-server
+   kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
+   ```
 
-12. Confirm that the webhook service endpoints point to the new pod.
+   </TabItem>
+
+   </Tabs>
+
+8. Delete the affected pods so that they are rescheduled and use the local image. Replace `<cluster-namespace>` with the
+   namespace of your cluster. Delete any other pods that remain in an `ImagePullBackOff` status as well.
+
+   ```bash
+   kubectl delete pod --namespace palette-system --selector app=palette-webhook
+   kubectl delete pod --namespace <cluster-namespace> --selector control-plane=palette-lite-controller-manager
+   ```
+
+9. Confirm that the pods recover. The pod events should include a message stating that the image is already present on
+   the machine, and the pods should reach a `Running` status.
+
+   ```bash
+   kubectl get pods --namespace palette-system --selector app=palette-webhook
+   kubectl get events --namespace palette-system --sort-by=.lastTimestamp | grep palette-webhook
+   ```
+
+10. Confirm that the webhook service endpoints point to the new pod.
 
     ```bash
     kubectl get endpoints --namespace palette-system palette-webhook-service
@@ -249,7 +323,8 @@ temporary, per-node mitigation.
 
 #### Verification
 
-After you apply either method, verify that the setting is in effect. Replace `<node-name>` with the name of the node.
+Whether you enabled the preset, applied the values override, or ran the node-level steps, verify that the setting is in
+effect. Replace `<node-name>` with the name of the node.
 
 ```bash
 kubectl get --raw "/api/v1/nodes/<node-name>/proxy/configz" | jq '.kubeletconfig.imagePullCredentialsVerificationPolicy'
@@ -259,7 +334,7 @@ kubectl get --raw "/api/v1/nodes/<node-name>/proxy/configz" | jq '.kubeletconfig
 "NeverVerify"
 ```
 
-If the command returns `NeverVerifyPreloadedImages`, the override has not reached the running Kubelet, and the node is
+If the command returns `NeverVerifyPreloadedImages`, the setting has not reached the running Kubelet, and the node is
 still exposed to the issue.
 
 ## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
