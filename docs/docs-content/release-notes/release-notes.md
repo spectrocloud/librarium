@@ -38,6 +38,11 @@ tags: ["release-notes"]
   tooltip clarifying that LXD-based VMs on MAAS are supported only with Palette eXtended Kubernetes clusters. Enabling
   LXD with other Kubernetes distributions results in deployment failures.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11711 -->
+
+- Headlamp, the modern replacement for the deprecated Kubernetes Dashboard, is now available on imported clusters as
+  well as Palette-managed clusters.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11657 -->
