@@ -58,10 +58,12 @@ cgroup2fs
 ## Scenario - Intermittent `ImagePullBackOff` Errors on Airgap Edge Clusters with Kubernetes v1.35.x
 
 <!-- prettier-ignore-start -->
-On airgap Edge clusters that use <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />
-or <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> at Kubernetes v1.35.x or
-later, pods may intermittently fail to start with an `ImagePullBackOff` status, even though the image is already present
-on the node. The issue most commonly affects the `palette-webhook` and `palette-lite-controller-manager` pods, and it
+On airgap Edge clusters at Kubernetes v1.35.x or later, pods may intermittently fail to start with an
+`ImagePullBackOff` status, even though the image is already present on the node. All three Edge Kubernetes distributions
+are affected: <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />,
+<VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />, and
+<VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />. The issue
+most commonly affects the `palette-webhook` and `palette-lite-controller-manager` pods, and it
 also affects pods that use the `spectro-drive`, `crony`, and `spectro-import-presetup` images. The pod events show a
 timeout while reaching an external registry, similar to the following.
 <!-- prettier-ignore-end -->
@@ -82,9 +84,9 @@ registry. Depending on the timing of the bundle import relative to when the firs
 pull record for a bundle image that contains no credential mapping. From that point on, Kubelet stops treating the image
 as preloaded and forces a new pull from the image's original public registry, which cannot succeed in an airgap
 environment and times out. The failure is sticky, so it persists for every later pod that uses the image until you
-remove the record and restart the Kubernetes process on the node. On both K3s and RKE2, Kubelet runs inside the
-distribution's own process instead of as a separate service, so restarting that process also restarts Kubelet and clears
-its in-memory record cache.
+remove the record and restart Kubelet on the node, which clears its in-memory record cache. On K3s and RKE2, Kubelet runs
+inside the distribution's own process rather than as a separate service, so you restart that process instead of a
+Kubelet service.
 
 Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
 others in the same cluster are not.
@@ -93,10 +95,16 @@ The issue affects new cluster deployments and clusters that reach Kubernetes v1.
 Kubelet setting in place. An upgrade from Kubernetes v1.34.5 to v1.35.2 has been verified to complete without the issue
 when the target pack already carries that setting.
 
-Pack version `1.35.6` of both packs includes an **Airgap** preset that applies the setting for you. Pack versions
-`1.35.2` and `1.35.3` do not include the preset and need a manual values override. The preset is not enabled by default,
-so a cluster on pack version `1.35.6` remains exposed to the issue until you enable it. To apply the setting, refer to
+On K3s and RKE2, pack version `1.35.6` includes an **Airgap** preset that applies the setting for you, and pack versions
+`1.35.2` and `1.35.3` need a manual values override instead. The preset is not enabled by default, so a cluster on pack
+version `1.35.6` remains exposed to the issue until you enable it. To apply the setting, refer to
 [Prevent the Issue on a New Cluster](#prevent-the-issue-on-a-new-cluster).
+
+On PXK-E, no pack version currently provides this setting. If you run airgap Edge clusters on PXK-E at Kubernetes
+v1.35.x or later, contact your Spectro Cloud support representative for the configuration that applies to your pack
+version before you provision or upgrade. The recovery steps in
+[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster) still apply to a PXK-E cluster that is
+already affected, except that the Kubelet configuration path differs from the K3s and RKE2 paths shown.
 
 :::info
 
@@ -112,7 +120,8 @@ until you recover the pod.
 #### Prevent the Issue on a New Cluster
 
 The required setting is a Kubelet configuration drop-in file that must exist before any images are imported onto the
-node. How you apply it depends on the version of the Kubernetes pack in your cluster profile.
+node. The following applies to the K3s and RKE2 packs. For PXK-E, contact your Spectro Cloud support representative
+instead, because no PXK-E pack version currently provides this setting.
 
 - **Pack version `1.35.6` or later** - In the **Presets** panel of the Kubernetes layer, set **Airgap** to **Enable**.
   The preset name is `airgap`. This preset is not enabled by default, so you must select it explicitly.
