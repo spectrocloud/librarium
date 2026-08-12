@@ -36,14 +36,31 @@ concurrency:
   group: "visual-comparison-${{ github.workflow }}-${{ github.head_ref }}"
   cancel-in-progress: true
 
+# Least privilege by default; jobs that need more override this individually below.
+permissions:
+  contents: read
+
 
 jobs:
   run-ci:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
+    # NOTE: github.actor is intentional here. Do not "harden" this to
+    # github.event.pull_request.user.login. Runs triggered BY Dependabot get a read-only
+    # token and no repository secrets, so the build cannot succeed. When a maintainer
+    # applies the visual-tests label, github.actor is that maintainer and the run does
+    # get secrets. The PR author is always dependabot[bot], so gating on it blocks the
+    # human-triggered case permanently. See DOC-3101.
+    if: >-
+      ${{ !github.event.pull_request.draft
+          && github.actor != 'dependabot[bot]'
+          && github.actor != 'dependabot-preview[bot]'
+          && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
@@ -68,10 +85,19 @@ jobs:
     name: create-assets
     needs: [run-ci]
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # Posts the "starting the visual tests" comment on the PR.
+    # `actions: read` is required: build-cached-packs and build-cached-cves resolve and
+    # download artifacts from earlier workflow runs via the Actions API, which the default
+    # `contents: read` token cannot reach.
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup Node.js Environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -79,6 +105,16 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
+
+      # Preflight before anything expensive. Without this, an unavailable reference set is
+      # only discovered inside take-screenshots, after all four shards have each run a
+      # checkout, npm ci, Playwright install and build download, and it then surfaces as four
+      # identical failures plus two skipped jobs. Failing here costs one job and names the
+      # cause. See DOC-3103.
+      - name: Verify Reference Screenshots Are Available
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./scripts/screenshot_artifacts.sh --check-only
 
       - name: Post PR Comment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -94,7 +130,7 @@ jobs:
 
       - name: Install Dependencies
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with: 
             command: npm ci
             attempt_limit: 3
@@ -134,6 +170,12 @@ jobs:
     name: Visual Comparison
     needs: [run-ci, create-assets]
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # `actions: read` is required: scripts/screenshot_artifacts.sh lists the repository's
+    # artifacts through the Actions API to find the newest unexpired reference screenshots.
+    permissions:
+      actions: read
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -142,7 +184,7 @@ jobs:
     steps:
       - name: Check out repository code
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -153,18 +195,33 @@ jobs:
 
       - name: Install Dependencies
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with: 
             command: npm ci
             attempt_limit: 3
             attempt_delay: 60000 # 1 minute
 
+      # Split the apt step (--with-deps) from the browser download so a stall is attributable
+      # in the logs, and bound each attempt with `timeout` so a hung apt/dpkg lock is killed
+      # and retried instead of running to the job ceiling. A healthy install takes ~15s; the
+      # observed failure stalled one shard past 10 minutes while the other three finished.
+      # wretry cannot time-box an individual attempt, hence the inner `timeout`. See DOC-3103.
+      - name: Install Playwright system dependencies
+        timeout-minutes: 20
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
+        with:
+          command: timeout 300 npx playwright install-deps chromium
+          attempt_limit: 3
+          attempt_delay: 10000 # 10 seconds
+
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 10
+        run: npx playwright install chromium
 
       - name: Download Build
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with: 
           attempt_limit: 3
           # Security: pin nested third-party action refs as well; wretry will call this exact commit.
@@ -193,10 +250,13 @@ jobs:
     name: Merge Reports
     needs: [take-screenshots]
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
     steps:
     - name: Check out repository code
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
     - name: Setup Node.js environment
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -207,7 +267,7 @@ jobs:
 
     - name: Install Dependencies
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
+      uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
       with: 
           command: npm ci
           attempt_limit: 3
@@ -240,12 +300,19 @@ jobs:
     name: Publish HTML Report
     needs: [run-ci, take-screenshots, merge-reports]
     runs-on: ubuntu-latest
-    continue-on-error: true    
+    timeout-minutes: 30
+    # Pushes the report to gh-pages and posts the report URL comment on the PR.
+    permissions:
+      contents: write
+      pull-requests: write
+    # NOTE: a failed push still leaves the overall run green. Check this job's own
+    # status when verifying that a report actually published. See DOC-3101.
+    continue-on-error: true
     steps: 
 
     - name: Checkout GitHub Pages Branch
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       with:
         ref: gh-pages  
 
@@ -278,30 +345,34 @@ jobs:
       run: |
         git add .
         git commit -m "workflow: add HTML report for run-id ${{ github.run_id }} (attempt:  ${{ github.run_attempt }})"
-        while true; do
-          git pull --rebase
-          if [ $? -ne 0 ]; then
+
+        # Retry to survive a concurrent push to gh-pages from another visual test run.
+        # The retry is bounded and tests each command directly: the default shell is
+        # `bash -e`, so an unguarded failure would abort the step before any `$?` check
+        # could run, and an unbounded `while true` would spin against the remote.
+        for attempt in 1 2 3 4 5; do
+          if ! git pull --rebase; then
             echo "Failed to rebase. Please review manually."
             exit 1
           fi
 
-          git push
-          if [ $? -eq 0 ]; then
+          if git push; then
             echo "Successfully pushed HTML report to repo."
             exit 0
           fi
+
+          echo "Push rejected (attempt ${attempt} of 5), retrying..."
+          sleep 5
         done
+
+        echo "Exhausted push retries. Please review manually."
+        exit 1
 
 
     - name: DNS Wait
       run:  sleep 120
 
         
-    - name: GH Pages URL
-      run: |
-        echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
-
-
     - name: GH Pages URL
       run: |
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"

@@ -116,7 +116,7 @@ jobs:
       - name: Retrieve org GitHub token (for private Impersonaid checkout)
         if: ${{ steps.resolve.outputs.mode == 'run' }}
         id: import-secrets
-        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -126,12 +126,12 @@ jobs:
 
       # Trusted base-ref checkout: provides .github/persona-check/* (our scripts).
       - name: Checkout base (trusted scripts)
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Untrusted PR head content — read only as data, never executed.
       - name: Checkout PR head
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: refs/pull/${{ steps.resolve.outputs.pr_number }}/head
           path: pr
@@ -139,7 +139,7 @@ jobs:
 
       - name: Checkout Impersonaid
         if: ${{ steps.resolve.outputs.mode == 'run' }}
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: spectrocloud/impersonaid
           ref: ${{ env.IMPERSONAID_REF }}
