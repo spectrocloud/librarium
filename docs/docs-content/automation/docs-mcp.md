@@ -14,8 +14,6 @@ deployment modes, features, and product behavior without you copy-pasting from t
 
 ## Server Endpoint
 
-<!-- TODO(DOC-2706): confirm final MCP URL with Kapa (spectro-cloud vs paletteai). -->
-
 Configure your MCP client to connect to the following HTTP endpoint:
 
 ```text
