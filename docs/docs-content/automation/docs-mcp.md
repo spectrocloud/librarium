@@ -27,8 +27,8 @@ Refer to your MCP client's documentation for the exact steps to register a remot
 ## Authentication
 
 The Docs Ask AI MCP server requires authentication. The first time your MCP client connects to the server, you are
-prompted to sign in with a Google or GitHub account. After you complete the sign-in, the client stores the credential and
-reuses it on subsequent connections.
+prompted to sign in with a Google or GitHub account. After you complete the sign-in, the client stores the credential
+and reuses it on subsequent connections.
 
 Kapa uses authentication to prevent abuse and enforce rate limits. Queries are anonymous; Kapa associates them with an
 internal identifier and does not link them to your account beyond rate limiting.
@@ -36,7 +36,7 @@ internal identifier and does not link them to your account beyond rate limiting.
 ## Reduce Context Usage with a Subagent
 
 Docs Ask AI responses can consume a substantial portion of the primary conversation context because each response
-includes documentation excerpts alongside the summary. To keep the main context clean, delegate documentation queries
-to a dedicated subagent that owns access to the Docs Ask AI MCP tool. The subagent runs the MCP tool in an isolated
-context and returns only its distilled answer to your main session. For example, Claude Code supports this pattern
-through its [subagents](https://code.claude.com/docs/en/sub-agents) feature.
+includes documentation excerpts alongside the summary. To keep the main context clean, delegate documentation queries to
+a dedicated subagent that owns access to the Docs Ask AI MCP tool. The subagent runs the MCP tool in an isolated context
+and returns only its distilled answer to your main session. For example, Claude Code supports this pattern through its
+[subagents](https://code.claude.com/docs/en/sub-agents) feature.
