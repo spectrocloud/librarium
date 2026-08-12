@@ -66,6 +66,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1615 -->
+
+- A FIPS-compiled vCluster pack is now available, letting strict-FIPS tenants provision virtual clusters using FIPS
+  140-3 approved cryptography. The FIPS-compiled pack is selected automatically.
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.0) for more details.
 
