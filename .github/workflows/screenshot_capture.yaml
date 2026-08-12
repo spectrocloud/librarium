@@ -10,8 +10,41 @@ name: Screenshot Capture
 
 
 on:
+  # Capture a reference set for every commit that lands on master, so a pull request can be
+  # compared against the exact commit it merges into rather than against whatever master
+  # looked like at the last scheduled capture. Master receives about 3 commits a day, and a
+  # capture costs roughly 32 minutes wall clock and 2 hours of runner time.
+  #
+  # `.github/**` is excluded because a commit touching only workflow files builds a site that
+  # is byte-identical to its parent's, so the parent's reference set is already a correct
+  # reference for it and a fresh capture would be 2 hours of runner time for the same images.
+  # Roughly 18% of master commits qualify (16 of the last 89), saving about 32 hours of runner
+  # time a month.
+  #
+  # Resist widening this list. `scripts/` in particular is NOT safe: the Makefile invokes
+  # scripts during the build, so a script change can alter the rendered output. Anything
+  # excluded in error silently skips a capture that mattered.
+  push:
+    branches: [master]
+    paths-ignore:
+      - ".github/**"
   workflow_call:
   workflow_dispatch:
+
+concurrency:
+  # Master commits cluster: about 1 in 5 arrives within 30 minutes of the previous one, which
+  # is inside a capture's 32-minute runtime. Without this, bursts stack up overlapping runs.
+  #
+  # The group includes the event name so a push-triggered capture can never cancel one that
+  # release.yaml invoked through workflow_call; cancelling that would fail the release run.
+  # cancel-in-progress is likewise limited to pushes for the same reason.
+  #
+  # Consequence worth knowing: commits in the middle of a burst never get their own reference
+  # set, because their capture is cancelled. That is safe only because the lookup falls back
+  # to the newest available set instead of demanding an exact match. The two behaviours are a
+  # pair; do not add an exact-match requirement without revisiting this. See DOC-3103 addendum.
+  group: screenshot-capture-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 
 

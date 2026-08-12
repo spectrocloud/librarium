@@ -114,7 +114,11 @@ jobs:
       - name: Verify Reference Screenshots Are Available
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./scripts/screenshot_artifacts.sh --check-only
+          # The commit this PR merges into. Asking for its reference set means the diff
+          # shows only what the PR changed, rather than also showing whatever landed on
+          # master since the last capture. Falls back to the newest set if none exists.
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: ./scripts/screenshot_artifacts.sh --check-only --match-sha "$BASE_SHA"
 
       - name: Post PR Comment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -232,7 +236,9 @@ jobs:
           attempt_delay: 60000 # 1 minute
 
       - name: Download Reference Screenshots
-        run:  ./scripts/screenshot_artifacts.sh ./screenshots
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: ./scripts/screenshot_artifacts.sh --match-sha "$BASE_SHA" ./screenshots
 
       - name: Take screenshots with Playwright
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0

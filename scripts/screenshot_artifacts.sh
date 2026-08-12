@@ -15,11 +15,21 @@ set -e
 # --check-only verifies that a usable artifact exists and exits without downloading it.
 # Callers use this as a cheap preflight so a missing reference set fails one job early
 # rather than failing every shard after each has already built and downloaded. See DOC-3103.
+#
+# --match-sha <sha> asks for the reference set built from a specific commit, normally the
+# base commit the pull request is merging into. When a matching set exists the visual diff
+# shows only what the PR itself changed. When it does not, the script falls back to the
+# newest usable set and says so, rather than failing or triggering a fresh capture, which
+# would add roughly 30 minutes to the run. See DOC-3103 addendum.
 CHECK_ONLY=false
-if [ "$1" = "--check-only" ]; then
-    CHECK_ONLY=true
-    shift
-fi
+MATCH_SHA=""
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --check-only) CHECK_ONLY=true; shift ;;
+        --match-sha)  MATCH_SHA="$2"; shift 2 ;;
+        *)            break ;;
+    esac
+done
 
 DESTINATION_FOLDER=$1
 
@@ -81,9 +91,29 @@ echo "Found $TOTAL_COUNT artifact(s) named '$ARTIFACT_NAME' in $OWNER/$REPO."
 # GitHub keeps expired artifacts in the listing with "expired": true, and still advertises an
 # archive_download_url for them. Downloading one returns 410 Gone, whose error body lands on
 # disk as a file unzip cannot read, surfacing as a bare "exit code 9". Filter them out first.
-SELECTED=$(echo "$ARTIFACTS" | jq -c '
-    [.artifacts[] | select(.expired == false)]
-    | sort_by(.created_at) | reverse | .[0] // empty')
+#
+# Selection is two-tier. The artifacts API already reports which commit each set was built
+# from, in workflow_run.head_sha, so no artifact renaming is needed to key sets by commit.
+# Prefer an exact match on the requested commit; otherwise take the newest usable set.
+SELECTED=""
+MATCH_KIND=""
+
+if [ -n "$MATCH_SHA" ]; then
+    SELECTED=$(echo "$ARTIFACTS" | jq -c --arg sha "$MATCH_SHA" '
+        [.artifacts[]
+         | select(.expired == false)
+         | select(.workflow_run.head_sha == $sha)]
+        | sort_by(.created_at) | reverse | .[0] // empty')
+    [ -n "$SELECTED" ] && MATCH_KIND="exact"
+fi
+
+if [ -z "$SELECTED" ]; then
+    SELECTED=$(echo "$ARTIFACTS" | jq -c '
+        [.artifacts[] | select(.expired == false)]
+        | sort_by(.created_at) | reverse | .[0] // empty')
+    [ -n "$SELECTED" ] && [ -n "$MATCH_SHA" ] && MATCH_KIND="fallback"
+    [ -n "$SELECTED" ] && [ -z "$MATCH_SHA" ] && MATCH_KIND="newest"
+fi
 
 if [ -z "$SELECTED" ]; then
     echo "No unexpired '$ARTIFACT_NAME' artifact is available ⛔"
@@ -103,14 +133,34 @@ CREATED_AT=$(echo "$SELECTED" | jq -r '.created_at')
 EXPIRES_AT=$(echo "$SELECTED" | jq -r '.expires_at')
 SIZE_BYTES=$(echo "$SELECTED" | jq -r '.size_in_bytes')
 SOURCE_RUN=$(echo "$SELECTED" | jq -r '.workflow_run.id // "unknown"')
+SOURCE_SHA=$(echo "$SELECTED" | jq -r '.workflow_run.head_sha // "unknown"')
 DOWNLOAD_URL=$(echo "$SELECTED" | jq -r '.archive_download_url')
 
 echo "Selected '$ARTIFACT_NAME' artifact ✅"
-echo "  id:         $ARTIFACT_ID"
-echo "  created:    $CREATED_AT"
-echo "  expires:    $EXPIRES_AT"
-echo "  size:       $SIZE_BYTES bytes"
-echo "  source run: $SOURCE_RUN"
+echo "  id:          $ARTIFACT_ID"
+echo "  created:     $CREATED_AT"
+echo "  expires:     $EXPIRES_AT"
+echo "  size:        $SIZE_BYTES bytes"
+echo "  source run:  $SOURCE_RUN"
+echo "  built from:  $SOURCE_SHA"
+
+# State plainly whether the diff is attributable to this PR alone. Without this line a
+# reviewer cannot tell whether an unexpected visual change came from the PR or from master
+# moving underneath it, which was the original complaint that motivated this work.
+case "$MATCH_KIND" in
+    exact)
+        echo "  match:       EXACT, this set was built from the commit being merged into."
+        echo "               Any difference in the report is attributable to this PR."
+        ;;
+    fallback)
+        echo "  match:       FALLBACK, no set exists for the requested commit $MATCH_SHA."
+        echo "               Differences may include changes made on master between"
+        echo "               $SOURCE_SHA and $MATCH_SHA, not just this PR's changes."
+        ;;
+    newest)
+        echo "  match:       NEWEST, no specific commit was requested."
+        ;;
+esac
 
 if [ "$CHECK_ONLY" = true ]; then
     echo "Check-only mode: a usable reference set exists, skipping download."
