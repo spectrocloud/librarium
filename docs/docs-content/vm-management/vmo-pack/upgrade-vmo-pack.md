@@ -84,7 +84,10 @@ them. VMO 1.0 ignored both.
 
 ## Prerequisites
 
-- An existing cluster deployed with a VMO 1.0 add-on cluster profile.
+- An existing cluster deployed with a VMO 1.0 add-on cluster profile that runs VMO pack version 4.9.9 or later. If the
+  cluster runs an earlier version, upgrade the pack on the VMO 1.0 line first. Refer to
+  [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) for
+  guidance, and confirm that the cluster reports a **Healthy** status before you continue.
 
 - A Palette permission key `update` for the resource `clusterProfile`.
 
