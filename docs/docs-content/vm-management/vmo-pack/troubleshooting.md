@@ -15,8 +15,12 @@ This page provides troubleshooting guidance for common scenarios you might encou
 
 <!-- vale off -->
 
-When you trigger an upgrade of the `virtual-machine-orchestrator` pack from Palette, the upgrade does not complete. The
-following symptoms indicate this scenario.
+This scenario affects a limited set of environments that upgrade the `virtual-machine-orchestrator` pack from a version
+earlier than 4.10.0. It occurs only where the cluster already carries VMO RBAC objects that lack Helm ownership
+metadata, which is why the same upgrade succeeds on most clusters.
+
+When the cluster is affected and you trigger the upgrade from Palette, the upgrade does not complete. The following
+symptoms indicate this scenario.
 
 - The cluster page displays the **Virtual Machine Orchestrator** layer in an error state.
 
@@ -52,8 +56,8 @@ The object named in the error can be a `Role`, `RoleBinding`, `ClusterRole`, or 
 always takes the form `X exists and cannot be imported into the current release: invalid ownership metadata`.
 
 This occurs because the upgrade brings a set of Kubernetes role-based access control (RBAC) objects under Helm
-management. Helm 3 refuses to adopt an existing object unless that object already carries the metadata that identifies
-it as part of the target release.
+management. Helm 3 refuses to adopt an existing object unless that object already carries the following metadata, which
+identifies it as part of the target release.
 
 | **Field**                                   | **Required Value**          |
 | ------------------------------------------- | --------------------------- |
@@ -136,7 +140,9 @@ Leave the namespace field empty for cluster-scoped objects, such as `ClusterRole
 <TabItem label="Kubernetes Job" value="job">
 
 1. Save the following manifest as `stamp-vmo-rbac-job.yaml`. If your release uses non-default names, edit the three
-   `env` values to match the values you found in [Find Your Release Values](#find-your-release-values).
+   `env` values to match the values you found in [Find Your Release Values](#find-your-release-values). The `image`
+   value can be any image that provides `kubectl`, because the Job only runs `kubectl label` and `kubectl annotate`.
+   Keep the default in airgapped environments, where that image is already present in your registry.
 
    ```yaml
    ---
@@ -393,6 +399,9 @@ Leave the namespace field empty for cluster-scoped objects, such as `ClusterRole
 
 2. Confirm that the pack reconciles without the `invalid ownership metadata` error. The pack transitions through the
    reconcile cycle before it reports a healthy status.
+
+Perform this procedure only once. After the cluster runs pack version 4.10.0 or later, the RBAC objects carry Helm
+ownership metadata, and later upgrades are unaffected.
 
 If the upgrade fails again with the same error, compare the release name and namespace you used against the output of
 `helm list --all-namespaces` and run the procedure again with the corrected values. If the upgrade fails with the same
