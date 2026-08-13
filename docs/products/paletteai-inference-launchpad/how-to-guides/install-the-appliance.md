@@ -210,8 +210,8 @@ Before you start, confirm the jumpbox has everything the upload needs:
 
 - **The Palette CLI installed and on your `PATH`.** Download the Linux binary from the Downloads page and move it to
   `/usr/local/bin/palette` so the `palette` command resolves from any directory. For step-by-step instructions, refer to
-  [Install Palette CLI](../../automation/palette-cli/install-palette-cli.md). You do not need to run `palette login` for
-  this workflow, because the content-upload command uses a node-issued token, not your Palette API key.
+  [Install Palette CLI](/automation/palette-cli/install-palette-cli). You do not need to run `palette login` for this
+  workflow, because the content-upload command uses a node-issued token, not your Palette API key.
 - **The content bundle reachable on the jumpbox.** The `.tar.zst` file must be on the jumpbox filesystem or on an NFS
   share mounted on the jumpbox. If you downloaded it on another machine, copy it to the jumpbox first with `scp` or
   `rsync`.
