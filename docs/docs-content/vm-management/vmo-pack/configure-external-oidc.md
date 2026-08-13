@@ -16,7 +16,7 @@ your own IdP, or against a different application than the one Palette itself use
 This page uses [Okta](https://www.okta.com) as the example provider. The same steps apply to any OIDC-compliant
 provider, such as Microsoft Entra ID or Google, with the provider-specific console labels changed accordingly.
 
-A sign-in to VMO follows this sequence.
+An SSO log in to VMO follows this sequence.
 
 1. The user opens the VMO UI in a browser.
 

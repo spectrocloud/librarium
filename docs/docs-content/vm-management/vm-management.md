@@ -44,7 +44,7 @@ VMO is available through two deployment approaches: [VM Launchpad](#vm-launchpad
 | **Capability**                         | **VM Launchpad**                     | **VMO Pack**                                                                                |
 | -------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------- |
 | **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters      |
-| **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                      |
+| **Deployment method**                  | bootable ISO                         | Palette cluster profile or exported cluster definition                                      |
 | **Golden image builder**               | Yes                                  | No                                                                                          |
 | **Snapshot policies**                  | Yes                                  | No                                                                                          |
 | **Airgapped package management**       | Yes                                  | No                                                                                          |
