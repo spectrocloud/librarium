@@ -8,7 +8,7 @@ sidebar_position: 60
 tags: ["vmo", "vmo pack", "troubleshooting"]
 ---
 
-This page provides troubleshooting guidance for common scenarios you may encounter when using the
+This page provides troubleshooting guidance for common scenarios you might encounter when using the
 [VMO pack](./vmo-pack.md).
 
 ## Scenario - Pack Upgrade Fails with an Invalid Ownership Metadata Error
