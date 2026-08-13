@@ -40,12 +40,11 @@ CANDIDATES_LINK=$(curl -s --fail-with-body \
   --url "${JIRA_DOMAIN}/rest/api/3/issue/${PATCH_RELEASE_TICKET}?fields=description" \
   --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
   --header "Accept: application/json" | jq -r '
-  .fields.description.content[]
-  | select(.type=="blockquote")
-  | .. 
+  .fields.description
+  | ..
   | objects
   | select(.type=="text" and (.text | ascii_downcase)=="list of candidates")
-  | .marks[]
+  | .marks[]?
   | select(.type=="link")
   | .attrs.href
 ')
