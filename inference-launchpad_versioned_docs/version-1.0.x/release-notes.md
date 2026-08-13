@@ -8,24 +8,6 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-{/* DEMO ONLY - placeholder for the version dropdown preview. Do not merge. */}
-
-:::warning DEMO CONTENT, NOT A REAL RELEASE
-
-The 1.1.0 section below is invented for a version dropdown preview. No 1.1.0 release exists.
-
-:::
-
-## Version 1.1.0 - Placeholder, not a real release {#version-1-1-0}
-
-This section exists only in the `latest` version. Switch to `v1.0.x` in the version dropdown and it disappears, because
-the 1.0.x copy was frozen before this text was written. That is the whole point of the demonstration: each version keeps
-the content it had when it was frozen.
-
-### Features
-
-- Placeholder entry. No real 1.1.0 feature is described here.
-
 ## Version 1.0.0 - July 21, 2026 {#version-1-0-0}
 
 PaletteAI Inference Launchpad 1.0.0 is the first release. It is a standalone, turnkey AI appliance that turns your own

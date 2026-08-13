@@ -13,19 +13,6 @@ tags:
   - explanation
 ---
 
-{/* DEMO ONLY - placeholder for the version dropdown preview. Do not merge. */}
-
-:::warning DEMO CONTENT, NOT A REAL RELEASE
-
-**You are viewing a preview build that simulates what the site looks like after a 1.1.0 release.** The "1.1.0" version
-and its content are invented purely to demonstrate the version dropdown. No 1.1.0 release exists, and nothing on this
-page should be treated as a roadmap commitment.
-
-Use the **version dropdown** in the navigation bar to switch between `latest` and `v1.0.x`. This notice appears only in
-`latest`, so it disappears when you switch to `v1.0.x`.
-
-:::
-
 PaletteAI Inference Launchpad turns your own hardware into a private AI platform. Boot the image, load a model, and you
 are serving large language models (LLMs) in your own environment, with no cloud dependency, no AI consulting engagement,
 and no weeks spent wiring together an inference stack.
