@@ -11,6 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 12, 2026 - Release 4.9.44
+
+<!-- PATCH RELEASE TICKET: DOC-3110 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7384 -->
+
+- Fixed an issue where the CAPMAAS power-state reconciler incorrectly treated transient BMC query failures (error or
+  unknown states) as "powered off," causing healthy running nodes to be unexpectedly power-cycled.
+
 ## August 11, 2026 - Release 4.9.43
 
 <!-- PATCH RELEASE TICKET: DOC-3099 -->
