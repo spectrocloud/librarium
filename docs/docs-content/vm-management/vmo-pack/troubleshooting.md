@@ -13,6 +13,8 @@ This page provides troubleshooting guidance for common scenarios you may encount
 
 ## Scenario - Pack Upgrade Fails with an Invalid Ownership Metadata Error
 
+<!-- vale off -->
+
 When you trigger an upgrade of the `virtual-machine-orchestrator` pack from Palette, the upgrade does not complete. The
 following symptoms indicate this scenario.
 
@@ -119,6 +121,15 @@ Both are idempotent, so you can run either one as many times as you need. Object
 metadata remain unchanged, objects that exist without the metadata receive it while their existing labels and
 annotations are preserved, and objects that do not exist yet are skipped. Helm creates those during the upgrade. No
 rules, subjects, or role references are modified.
+
+:::info
+
+The `RESOURCES` list in the Job and the script contains the eight objects that Spectro Cloud tested this procedure
+against. If your environment includes additional custom Roles, RoleBindings, ClusterRoles, or ClusterRoleBindings that
+must come under Helm management, add them to the `RESOURCES` list. Each entry uses the format `Kind:Namespace:Name`.
+Leave the namespace field empty for cluster-scoped objects, such as `ClusterRole::vmo-manager`.
+
+:::
 
 <Tabs groupId="method">
 
@@ -385,8 +396,8 @@ rules, subjects, or role references are modified.
 
 If the upgrade fails again with the same error, compare the release name and namespace you used against the output of
 `helm list --all-namespaces` and run the procedure again with the corrected values. If the upgrade fails with the same
-form of error but names an object that is not listed in
-[RBAC Objects This Procedure Modifies](#rbac-objects-this-procedure-modifies), contact
+form of error but names an object that you have not added to the `RESOURCES` list, add that object to the list, run the
+procedure again, and retry the upgrade. If the error persists, contact
 [Spectro Cloud support](https://support.spectrocloud.io/) and provide the full `ReconcileError` message, the Job or
 script output, and the output of `helm list --all-namespaces` filtered to your VMO release.
 
@@ -405,3 +416,5 @@ The Job and the script apply the label `app.kubernetes.io/managed-by: Helm` and 
 | Role               | Golden images namespace | `vmo-cdi-clone-source`   |
 | RoleBinding        | `default`               | `vmo-cdi-clone-source`   |
 | RoleBinding        | Golden images namespace | `vmo-cdi-clone-source`   |
+
+<!-- vale on -->
