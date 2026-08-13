@@ -21,17 +21,21 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.9.5 - 4.9.44.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | -       |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | -       |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | -       |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.44  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.44  |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.44  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.44  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3104. DO NOT DELETE. -->
 
-The answer is still being prepared. Fetch it with GET /v1/threads/sGQUFQyKxGFS8k in ~15s.
+### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4496 -->
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs have moved to the _Disabled_ deprecation stage, as the upstream projects are archived. These packs are no longer available for selection when you create a cluster profile. You can still launch new clusters from existing cluster profiles that contain either pack, and active clusters are not affected. Both packs are scheduled for removal from Palette on November 14, 2026. Refer to [Pack Deprecations](../integrations/maintenance-policy.md#pack-deprecations) for a description of each deprecation stage.
+
+<!-- prettier-ignore-end -->
 
 <!-- END COMPONENT UPDATES BODY: DOC-3104. DO NOT DELETE. -->
 
@@ -68,9 +72,11 @@ The answer is still being prepared. Fetch it with GET /v1/threads/sGQUFQyKxGFS8k
 
 <!-- END PACKS LIST BODY: DOC-3104. DO NOT DELETE. -->
 
-#### Pack Notes
-
 ## August 12, 2026 - Release 4.9.44
+
+The following component updates are applicable to this release:
+
+- [August 14, 2026 - Component Updates](#component-updates-2026-33) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-3110 -->
 
