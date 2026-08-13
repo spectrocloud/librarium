@@ -76,9 +76,8 @@ gateway continues to handle routing, [token metering](#token-metering), quota co
 
 ### Certified Model
 
-A model that Spectro Cloud has tested on a specific GPU configuration and confirmed runs correctly on the appliance,
-rather than assuming it works from public benchmarks. Refer to
-[Model Certification](../explanation/model-certification.md) and
+A model that Spectro Cloud has validated to run correctly on the listed GPU configuration, based on its own testing
+rather than public benchmarks. Refer to [Model Certification](../explanation/model-certification.md) and
 [Certified Models by Hardware](./certified-models-by-hardware.md).
 
 ### Chargeback
@@ -353,9 +352,9 @@ which the leader must issue a fresh token.
 ### Pack
 
 A unit of software the cluster installs as part of a cluster profile, such as `piraeus-operator` or
-`nvidia-gpu-operator-ai`. The PaletteAI Inference Launchpad profile bundles the edge OS, [Kubernetes](#kubernetes), the
-Cilium CNI, [Piraeus](#piraeus), the Zot registry, MetalLB, Traefik, cert-manager, Grafana, Victoria Metrics, the OTel
-Collector, and the PaletteAI Inference Launchpad application as packs.
+`nvidia-gpu-operator-ai`. The PaletteAI Inference Launchpad profile bundles the edge OS, [Kubernetes](#kubernetes),
+[Piraeus](#piraeus) storage, networking, ingress, observability, and the PaletteAI Inference Launchpad application as
+packs. The exact pack list is defined by the profile and can change between releases.
 
 ### PaletteAI
 

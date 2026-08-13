@@ -184,7 +184,7 @@ The following requirements apply to tags:
 
 <PartialsComponent category="pcg" name="pcg-initial-installation" edition="VMware vSphere" />
 
-8.  Next, fill out the VMware resource configurations.
+9.  Next, fill out the VMware resource configurations.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                              |
     | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -200,7 +200,7 @@ The following requirements apply to tags:
     | **SSH Public Key**                                       | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. Your system default text editor, such as Vi, will open and prompt you to enter the SSH key. Save and exit the file when finished. |
     | **Number of Nodes**                                      | Enter the number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                    |
 
-9.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
+10. Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
     Configuration Protocol (DHCP). With static placement, an IP pool is created, and the PCG VMs are assigned IP
     addresses from the selected pool. With DHCP, PCG VMs are assigned IP addresses via DNS. Review the following tables
     to learn more about each parameter.
@@ -229,14 +229,14 @@ The following requirements apply to tags:
     | ------------------ | --------------------------------------------------- |
     | **Search domains** | Enter a comma-separated list of DNS search domains. |
 
-10. Specify the cluster boot configuration.
+11. Specify the cluster boot configuration.
 
     | **Parameter**                             | **Description**                                                                                                           |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
     | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                      |
     | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled. |
 
-11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
+12. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
 
     | **Parameter** | **Description**                                                                                                                                                                                                                                             |
@@ -254,15 +254,15 @@ The following requirements apply to tags:
     | **Memory**    | The number of memory to allocate to the VM.  |
     | **Storage**   | The amount of storage to allocate to the VM. |
 
-12. Specify the node affinity configuration.
+13. Specify the node affinity configuration.
 
     | **Parameter**     | **Description**                                                   |
     | ----------------- | ----------------------------------------------------------------- |
     | **Node Affinity** | Enter `y` to schedule all Palette pods on the control plane node. |
 
-13. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="VMware vSphere" />
+14. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="VMware vSphere" />
 
-14. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
+15. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 

@@ -18,7 +18,6 @@ is configured, not how to accomplish a task.
 | [Suggested Hardware](./hardware-requirements.md)                  | Compute, GPU, memory, storage, and network requirements for the appliance.                     |
 | [Bond Configuration](./bond-configuration.md)                     | Field-by-field reference for the Local UI bond form used during installation.                  |
 | [Cluster Profile Variables](./profile-variables.md)               | Every variable the Profile Config wizard collects, with types, defaults, and validation rules. |
-| [Example Server Configurations](./server-configurations.md)       | Example AMD and NVIDIA server configurations for the appliance.                                |
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration.                |
 | [Model Upload Reference](./model-upload-reference.md)             | Palette CLI model download and upload flags, and the model metadata file fields.               |
 | [Claude Code Configuration](./claude-code-reference.md)           | Environment variables and values for pointing Claude Code at the appliance.                    |

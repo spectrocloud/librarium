@@ -69,6 +69,26 @@ self-hosted Palette.
   helm="vertex"
 />
 
+#### VerteX Management Appliance Installations
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-appliance-install"
+  edition="vertex"
+  version="Palette VerteX"
+  helm="vertex"
+/>
+
+#### Palette CLI Installations
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-cli-install"
+  edition="vertex"
+  version="Palette VerteX"
+  helm="vertex"
+/>
+
 ### Post-Installation
 
 <PartialsComponent

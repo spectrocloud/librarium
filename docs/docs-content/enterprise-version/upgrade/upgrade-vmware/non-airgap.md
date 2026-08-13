@@ -24,6 +24,11 @@ version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supporte
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
+- **(4.8.x to 4.9.23+)** Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported, because they
+  skip a Kubernetes minor version. Upgrade to a `4.9.x` release on Kubernetes `1.33.10` first (we recommend `4.9.14`),
+  then upgrade to your target `4.9.23` or later release. Refer to the
+  [Kubernetes Version Constraint](../upgrade.md#kubernetes-version-constraint) section for details.
+
 - **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette version that is older than 4.4.14, ensure that you
   have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to
   the [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).

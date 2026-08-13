@@ -29,7 +29,7 @@ preference.
 
 ### Built-in and Custom Instance Types
 
-Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Cluster
+VM Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Cluster
 administrators can add custom instance types through the Custom Resource Definition (CRD) or the Instance Types page
 under **Workloads** > **Instance Types**.
 

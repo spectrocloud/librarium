@@ -1,23 +1,22 @@
 ---
-sidebar_label: "Launchpad for VMs Appliance"
-title: "Launchpad for VMs Appliance"
-description: "Learn about the Launchpad for VMs Appliance, a standalone VMO deployment for bare metal and edge devices."
+sidebar_label: "VM Launchpad"
+title: "PaletteAI VM Launchpad"
+description: "Learn about PaletteAI VM Launchpad, a standalone VMO deployment for bare metal and edge devices."
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vmo", "Launchpad for VMs appliance", "quick start"]
+tags: ["vmo", "VM Launchpad", "quick start"]
 ---
 
-The Launchpad for VMs Appliance is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for
-bare metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you
-link together to form a cluster to create and managing VMs through a dedicated management UI.
+PaletteAI VM Launchpad is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare metal
+and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you link together
+to form a cluster to create and managing VMs through a dedicated management UI.
 
-Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the Launchpad for VMs Appliance does not require a connection to Palette. It
-operates independently with its own identity management, storage configuration, and observability stack.
+Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the VM Launchpad does not require a connection to Palette. It operates
+independently with its own identity management, storage configuration, and observability stack.
 
 ## Use Cases
 
-The Launchpad for VMs Appliance addresses common challenges that organizations encounter when adopting VM orchestration
-on Kubernetes:
+The VM Launchpad addresses common challenges that organizations encounter when adopting VM orchestration on Kubernetes:
 
 - **No external control plane required** - The appliance is self-contained. You do not need to set up or connect to
   Palette before you can deploy and manage VMs. This is particularly useful for distributed sites, Edge locations,
@@ -37,7 +36,7 @@ on Kubernetes:
 
 ## Key Capabilities
 
-The Launchpad for VMs Appliance includes the following capabilities beyond what is available in VMO Pack.
+The VM Launchpad includes the following capabilities beyond what is available in VMO Pack.
 
 ### Dedicated Management UI
 
@@ -84,7 +83,11 @@ passthrough.
 
 ## Next Steps
 
-1. Review the hardware requirements and follow the [Install Launchpad for VMs](./install-vmla-iso.md) guide to install
-   the appliance on your devices and create your cluster.
+1. Review [Network Configuration Considerations](./vmo-networking.md) to plan your host network layout, bond and bridge
+   configuration, and switch port settings **before** you install the appliance. Networking decisions are difficult to
+   change after installation, and VM Launchpad supports specific host network configurations.
 
-2. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.
+2. Review the hardware requirements and follow the [Install VM Launchpad](./install.md) guide to install the appliance
+   on your devices and create your cluster.
+
+3. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.

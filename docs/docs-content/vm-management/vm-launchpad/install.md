@@ -1,63 +1,88 @@
 ---
-sidebar_label: "Install Launchpad for VMs"
-title: "Install Launchpad for VMs"
-description: "Learn how to install the Launchpad for VMs Appliance on bare metal or Edge devices."
+sidebar_label: "Install VM Launchpad"
+title: "Install VM Launchpad"
+description: "Learn how to install the VM Launchpad on bare metal or Edge devices."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "Launchpad for VMs"]
+tags: ["vmo", "VM Launchpad"]
 ---
 
-The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster
-with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
-your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, log into Launchpad to
-do an [initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
+PaletteAI VM Launchpad is a bootable ISO that you install on bare metal or Edge devices to create a cluster with Virtual
+Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in your VMO
+cluster, and link the nodes together to form your cluster. After you deploy your cluster, log into VM Launchpad to do an
+[initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
-Each device where you install the Launchpad for VMs Appliance ISO must meet the following hardware requirements.
+Each device where you install the VM Launchpad ISO must meet the following hardware requirements.
 
-| **Component**        | **Minimum**                                                            | **Recommended**                                    | **Additional Information**                                                                                                                        |
-| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD64 CPU with 8 cores                                        | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                                 |
-| **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
-| **Network Adapters** | 2 x 1 Gbps (data and management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | -                                                                                                                                                 |
+| **Component**        | **Minimum**                                                       | **Recommended**                                                    | **Additional Information**                                                                                             |
+| -------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                                    | -                                                                                                                      |
+| **RAM**              | 24 GB                                                             | 256 GB or more                                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                         |
+| **Network Adapters** | 4 x 1 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | 4 x 10 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | Cilium bridges VMs onto the data NICs. Review [Network Configuration Considerations](./vmo-networking.md) for details. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot                      | -                                                                                                                      |
+
+:::info
+
+**Advanced storage configuration.** If only two network adapters are available, you can deploy with two NICs bonded for
+all traffic plus two 16 Gbps Fiber Channel (FC) adapters dedicated to storage. FC-attached storage can also serve as raw
+disks for Piraeus consumption without a CSI driver, though this is not the typical configuration. Refer to
+[Network Configuration Considerations](./vmo-networking.md) for supported layouts.
+
+:::
 
 ## Prerequisites
 
-- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
-  Launchpad for VMs installation process. This is optional but recommended for security and compliance purposes.
+:::warning
 
-- (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
-  more information about network considerations, review [VMO Network Configuration Considerations](./vmo-networking.md).
+Plan your host network layout **before** you install the appliance. VM Launchpad supports specific bond, bridge, and
+VLAN configurations, and network changes are difficult to make after installation. Review
+[Network Configuration Considerations](./vmo-networking.md) to choose a supported layout and prepare your switch port
+configuration.
 
-- Reserve a virtual IP address (VIP) for the Launchpad for VMs management cluster. The Launchpad for VMs installation
-  process assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the Launchpad for
-  VMs management cluster can access the VIP.
+:::
 
-- <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Launchpad for VMs" />
+- Configure the host network with a `br0` bridge that matches one of the supported layouts described in
+  [Network Configuration Considerations](./vmo-networking.md).
 
-## Install Launchpad for VMs {#install}
+- Reserve a virtual IP address (VIP) for the VM Launchpad management cluster. The VM Launchpad installation process
+  assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the VM Launchpad management
+  cluster can access the VIP.
 
-1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the VM
+  Launchpad installation process. This is optional but recommended for security and compliance purposes.
 
-2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
-   Artifacts**.
+- <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="VM Launchpad" />
 
-3. The following table describes the installer options to download for installation.
+## Install VM Launchpad {#install}
 
-   | **Artifact**                   | **Description**                                 |
-   | ------------------------------ | ----------------------------------------------- |
-   | **Appliance ISO with Content** | Full ISO with embedded content bundle.          |
-   | **MOK Key for Secure Boot**    | MOK key to use for secure boot with MokManager. |
+1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
-4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
-   host.
+2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
 
-5. Boot your device using the Launchpad for VMs Appliance ISO. On the GRand Unified Bootloader (GRUB) menu, allow the
-   Launchpad for VMs appliance to select the **Palette Edge Interactive Installer** boot option automatically
+3. The following table describes the artifacts available for VM Launchpad.
+
+   | **Artifact**                          | **Description**                                                                                                   |
+   | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs.           |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation. |
+   | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                      |
+   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                   |
+
+4. Download the **Appliance ISO with Content**, or download both the **Appliance ISO** and **Content bundle (including
+   Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
+
+   :::info
+
+   Starting with VM Launchpad 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the slim
+   **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
+
+   :::
+
+5. Boot your device using the VM Launchpad ISO. On the GRand Unified Bootloader (GRUB) menu, allow the VM Launchpad to
+   select the **Palette Edge Interactive Installer** boot option automatically
 
    :::danger
 
@@ -72,8 +97,8 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
-7. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
-   **ENTER** to proceed to the next screen.
+7. From the **VM Launchpad Interactive Installer** screen, select the disk to install the appliance on. Press **ENTER**
+   to proceed to the next screen.
 
    :::danger
 
@@ -122,7 +147,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 15. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
     ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
-    the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
+    the VM Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
 16. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
     interface can send without fragmentation. Press **ENTER** to apply the change.
@@ -133,19 +158,22 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 18. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
 19. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
-    terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
+    terminal screen displays the hostname and network information of your VM Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
 ## Configure Network Settings
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs
-   Appliance host. If you have access to the Launchpad for VMs Appliance host terminal, the Local UI address appears on
-   the terminal screen. If you have changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
+   If you have access to the VM Launchpad host terminal, the Local UI address appears on the terminal screen. If you
+   have changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
 3. If you need to change the interface used for management traffic, locate the **Management Interface** field and select
-   the interface to use. Local UI can override the management interface selected during TUI configuration.
+   the interface to use. Local UI can override the management interface selected during TUI configuration. Valid
+   candidates include physical NICs, bonds (when not enslaved to another bond or a bridge), VLAN child interfaces, and
+   bridges (with or without an IP address). A NIC or bond that is enslaved to a bond or bridge, or that has VLAN
+   children, is not a valid candidate.
 
    :::warning
 
@@ -157,18 +185,18 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 5. Complete the fields on the **Create Bond** screen and select **Confirm**.
 
-   | **Parameter**                | **Description**                                                                                |
-   | ---------------------------- | ---------------------------------------------------------------------------------------------- |
-   | **Name**                     | Enter a name for the bond. For example, `bond0`.                                               |
-   | **Bond type**                | Select **Static** or **DHCP** for IP address settings.                                         |
-   | **Member interfaces**        | Select one or more Network Interface Cards (NICs) for the bond.                                |
-   | **Bonding mode**             | Select the bonding mode for the bond. This must match your physical switch port configuration. |
-   | **Link monitoring interval** | Select time in milliseconds.                                                                   |
-   | **MTU**                      | Leave the default value or adjust to 9000 for jumbo frames.                                    |
-   | **DNS**                      | Enter one or more DNS server IP addresses.                                                     |
-   | **IP Address**               | For static bonds only, enter the IP address for the bond.                                      |
-   | **Subnet mask**              | For static bonds only, enter the subnet mask for the bond.                                     |
-   | **Gateway**                  | For static bonds only, enter the gateway IP address for the bond.                              |
+   | **Parameter**                | **Description**                                                                                                                                                             |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**                     | Enter a name for the bond. For example, `bond0`.                                                                                                                            |
+   | **Bond type**                | Select **Static**, **DHCP**, or **None** for IP address settings. Use **None** for an L2-only bond with no IP configuration, such as when the bond is enslaved to a bridge. |
+   | **Member interfaces**        | Select one or more Network Interface Cards (NICs) for the bond.                                                                                                             |
+   | **Bonding mode**             | Select the bonding mode for the bond. This must match your physical switch port configuration.                                                                              |
+   | **Link monitoring interval** | Select time in milliseconds.                                                                                                                                                |
+   | **MTU**                      | Leave the default value or adjust to 9000 for jumbo frames.                                                                                                                 |
+   | **DNS**                      | Enter one or more DNS server IP addresses.                                                                                                                                  |
+   | **IP Address**               | For static bonds only, enter the IP address for the bond.                                                                                                                   |
+   | **Subnet mask**              | For static bonds only, enter the subnet mask for the bond.                                                                                                                  |
+   | **Gateway**                  | For static bonds only, enter the gateway IP address for the bond.                                                                                                           |
 
    :::warning
 
@@ -180,17 +208,17 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 7. Complete the fields on the **Create Bridge** screen and select **Confirm**.
 
-   | **Parameter**         | **Description**                                                                                                                                       |
-   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                      |
-   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                              |
-   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has more than one member interface. Leave off for single-member bridges. |
-   | **Config type**       | Select **Static** or **DHCP** for IP address settings.                                                                                                |
-   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                           |
-   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                            |
-   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                         |
-   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                        |
-   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                                |
+   | **Parameter**         | **Description**                                                                                                                                                                             |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                                                            |
+   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                                                                    |
+   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has more than one member interface. Leave off for single-member bridges.                                       |
+   | **Config type**       | Select **Static**, **DHCP**, or **None** for IP address settings. Use **None** for an L2-only bridge with no IP configuration, such as when the bridge carries only VM tenant VLAN traffic. |
+   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                                                                 |
+   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                                                                  |
+   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                                                               |
+   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                                                              |
+   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                                                                      |
 
    :::warning
 
@@ -198,7 +226,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-## Create Launchpad for VMs Cluster {#create-cluster}
+## Create VM Launchpad Cluster {#create-cluster}
 
 1. From the left main menu, select **Cluster**.
 
@@ -224,7 +252,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    <details>
 
-   <summary>Components list of a Launchpad for VMs cluster</summary>
+   <summary>Components list of a VM Launchpad cluster</summary>
 
    <!-- vale off -->
 
@@ -308,6 +336,14 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
+   :::info
+
+   Use the Keycloak administrator account to federate users from an existing LDAP directory after the cluster is
+   deployed. Federated users must present a verified email address before VM Launchpad can grant them access. Refer to
+   [Federate LDAP Users with Keycloak](./access-management/ldap-federation.md).
+
+   :::
+
    ### Local Admin
 
    | **Parameter**                 | **Description**                                                                                     |
@@ -325,11 +361,11 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
 
-   | **Parameter**                   | **Description**                                                                      |
-   | ------------------------------- | ------------------------------------------------------------------------------------ |
-   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
-   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
-   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
+   | **Parameter**                   | **Description**                                                                         |
+   | ------------------------------- | --------------------------------------------------------------------------------------- |
+   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                           |
+   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                        |
+   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the VM Launchpad host. |
 
    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
    specify a CIDR range for the overlay network to use.
@@ -343,17 +379,17 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
 8. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
-   Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
-   Depending on your infrastructure environment, the deployment might take up to 45 minutes.
+   Use this page to track deployment progress. The VM Launchpad host reboots as part of the build process. Depending on
+   your infrastructure environment, the deployment might take up to 45 minutes.
 
 9. After the cluster deployment is complete, more options appear in the left main menu.
 
-   ![Screenshot of appliance](/vmo/vm-management_launchpad-for-vms_install-4-9.webp)
+   ![Screenshot of appliance](/vmo/vm-management_vm-launchpad_install-4-9.webp)
 
 ## Verify
 
-1. From the left main menu in the Launchpad for VMs appliance, select **VM Orchestrator**. You can also go to the
-   address you provided for MetalLB in your browser.
+1. From the left main menu in VM Launchpad, select **VM Orchestrator**. You can also go to the address you provided for
+   MetalLB in your browser.
 
 2. Log in to VMO Manager.
 
@@ -385,7 +421,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 3. After you log in, the **Dashboard** is the default landing page.
 
-   ![Screenshot of VMO dashboard](/vmo/vm-management_launchpad-for-vms_default-dashboard-4-9.webp)
+   ![Screenshot of VMO dashboard](/vmo/vm-management_vm-launchpad_default-dashboard-4-9.webp)
 
    The **Dashboard** contains a set of adjustable, drag-to-reorder widgets.
 
@@ -415,5 +451,5 @@ sessions.
 
 ## Next Steps
 
-After you deploy your VMO cluster, [complete the initial configuration of Launchpad for VMs](./getting-started-wiz.md),
-and then [create your first VM](./quick-start.md).
+After you deploy your VMO cluster, [complete the initial configuration of VM Launchpad](./getting-started-wiz.md), and
+then [create your first VM](./quick-start.md).
