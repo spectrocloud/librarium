@@ -50,12 +50,19 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      # Split the apt step (--with-deps) from the browser download so a stall is
-      # attributable in the logs. Both are time-boxed so a hung apt/dpkg lock or a
-      # stalled CDN download fails fast instead of running to the 6h job ceiling.
+      # Split the apt step (--with-deps) from the browser download so a stall is attributable
+      # in the logs, and time-box both so a hung apt/dpkg lock or a stalled CDN download fails
+      # fast instead of running to the 6h job ceiling. The apt step is also retried: it is the
+      # observed flake, healthy at ~15s but occasionally stalling on one shard while the others
+      # finish normally. wretry cannot time-box an individual attempt, hence the inner
+      # `timeout`. See DOC-3103.
       - name: Install Playwright system dependencies
-        timeout-minutes: 10
-        run: npx playwright install-deps chromium
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
+        with:
+          command: timeout 300 npx playwright install-deps chromium
+          attempt_limit: 3
+          attempt_delay: 10000 # 10 seconds
 
       - name: Install Playwright browsers
         timeout-minutes: 10
@@ -111,22 +118,29 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with: 
             command: npm ci
             attempt_limit: 3
             attempt_delay: 60000 # 1 minute
 
+      # Retried because the apt step is the observed flake: a healthy run takes ~15s, but it
+      # has stalled past its timeout on a single shard while the others finished normally.
+      # wretry cannot time-box an individual attempt, hence the inner `timeout`. See DOC-3103.
       - name: Install Playwright system dependencies
-        timeout-minutes: 10
-        run: npx playwright install-deps chromium
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
+        with:
+          command: timeout 300 npx playwright install-deps chromium
+          attempt_limit: 3
+          attempt_delay: 10000 # 10 seconds
 
       - name: Install Playwright browsers
         timeout-minutes: 10
         run: npx playwright install chromium
 
       - name: retry action
-        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with: 
           attempt_limit: 3
           action: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
