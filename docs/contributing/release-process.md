@@ -98,6 +98,13 @@ Archived versions are set to `noIndex`, matching how `version-X-Y` branches are 
 therefore from the visual-regression sweep and the Algolia crawler. Re-run the
 [Algolia crawler](../../.github/workflows/aloglia_crawler.yaml) after the release deploys.
 
+Archived pages do not display a "no longer actively maintained" notice, which matches Palette's archived sites. Because
+archived versions are de-indexed and absent from the sitemap, no search engine or site search routes a reader to one,
+and a bookmark cannot lead to one either, because a version is served from the unversioned URL while it is current.
+
+Archived pages do show a **Version: v1.0.x** label above the title. The current version shows no label, because there it
+would tell the reader nothing.
+
 ### Backport a Fix to an Older Product Version
 
 Unlike Palette, a product's older versions are not on separate branches, so there is no cherry-pick, no `auto-backport`
