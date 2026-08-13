@@ -52,6 +52,78 @@ new release tag is created.
 > Unless merging a release branch, don't use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a
 > version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
 
+## Product Documentation Versions
+
+Palette's archived documentation lives on separate `version-X-Y` branches, each deployed to its own
+`legacy.docs.spectrocloud.com` subdomain. That model freezes the whole site, so it only works for a product that _is_
+the site.
+
+Products that release on their own schedule are versioned differently. Each one gets its own docs collection, and its
+older versions are kept as frozen folders in this repository. Every version ships from one `master` build, so no branch,
+subdomain, or DNS entry is involved. The registry of these products is [productDocs.js](../../productDocs.js).
+
+> [!WARNING]
+>
+> Never backport a product's documentation to a `version-X-Y` branch. Those branches archive Palette, and a product's
+> release schedule has no relationship to Palette's. Product versions are cut with the command below instead.
+
+### Cut a New Product Version
+
+Cut version N from the current docs **immediately before** merging the version N+1 content. `master` always publishes
+the latest _released_ documentation, so cutting afterwards would archive the wrong content.
+
+1. Cut the version. Use the product `id` from `productDocs.js` and the `X.Y.x` naming convention.
+
+   ```shell
+   npm run docusaurus -- docs:version:inference-launchpad 1.0.x
+   ```
+
+   This creates `inference-launchpad_versioned_docs/version-1.0.x/`, `inference-launchpad_versioned_sidebars/`, and
+   `inference-launchpad_versions.json`. All three are committed.
+
+2. Confirm the version was created.
+
+   ```bash hideClipboard title="Expected output"
+   [SUCCESS] [inference-launchpad]: version 1.0.x created!
+   ```
+
+3. Build and confirm that the current documentation URLs did not change, that the new version is reachable under
+   `/<routeBasePath>/1.0.x/`, and that the version dropdown now appears on that product's pages.
+
+No configuration edit is required. The registry reads `<id>_versions.json` from disk, which is why the dropdown appears
+on its own and why the config can never name a version that has not been cut.
+
+Archived versions are set to `noIndex`, matching how `version-X-Y` branches are treated by
+[versions_robot.yaml](../../.github/workflows/versions_robot.yaml). This also removes them from `sitemap.xml`, and
+therefore from the visual-regression sweep and the Algolia crawler. Re-run the
+[Algolia crawler](../../.github/workflows/aloglia_crawler.yaml) after the release deploys.
+
+### Backport a Fix to an Older Product Version
+
+Unlike Palette, a product's older versions are not on separate branches, so there is no cherry-pick, no `auto-backport`
+label, and no waiting for a branch deploy. Edit the file inside `<id>_versioned_docs/version-<version>/` in an ordinary
+pull request against `master`. The fix ships with the next production release.
+
+Because both copies live in the same branch, a fix that applies to the current documentation and to an older version can
+be made in a single pull request, so a reviewer sees both changes together.
+
+Two things to know:
+
+- Frozen pages are excluded from Prettier so that a Prettier upgrade cannot rewrite a shipped version. Match the
+  surrounding formatting by hand. Vale still runs, so style and spelling are checked as usual.
+- Links inside a frozen page resolve within that same version, and the build fails on broken links. You therefore cannot
+  accidentally link an older version to a page that only exists in the current documentation.
+
+### Add a New Product
+
+1. Add an entry to [productDocs.js](../../productDocs.js).
+2. Create the content directory under `docs/products/`.
+3. Create a sidebar file. It must be its own file rather than a key in `sidebars.js`, because `docs:version` snapshots
+   the entire sidebar module and a shared file would freeze one product's sidebar into another product's version.
+
+Shared partials are not versioned per product. A frozen page falls back to the current partial, so a partial edit is
+visible in every version. To pin a partial to one version, add it under `versioned_partials/version-<version>/`.
+
 ## Unreleased Version Banner
 
 The `UNRELEASED_VERSION_BANNER` environment variable determines whether the unreleased version banner displays. For
