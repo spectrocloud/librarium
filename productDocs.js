@@ -96,19 +96,45 @@ function cutVersions(id) {
  * from sitemap.xml, which keeps them out of the visual-regression sweep and the
  * Algolia crawler.
  *
+ * `banner: "none"` suppresses the "no longer actively maintained" notice that
+ * Docusaurus shows on an archived page. Three reasons:
+ *
+ *   - Palette's own archived sites at *.legacy.docs.spectrocloud.com show no
+ *     such notice, so this keeps every archive on the site consistent.
+ *   - Nothing routes a reader to an archived page by accident. They are
+ *     de-indexed and absent from the sitemap, so neither a search engine nor
+ *     site search reaches them, and an old bookmark cannot rot into one either,
+ *     because a version lives at the unversioned URL while it is current.
+ *   - Docusaurus builds the notice from the site-wide title, which is shared by
+ *     every collection, so it named the wrong product on a product page. The
+ *     only fix is to fork the DocVersionBanner theme component, which is a lot
+ *     of copied code to maintain for a notice nobody arrives needing.
+ *
+ * The "Version: x" label that Docusaurus prints above the page title is kept on
+ * archived pages and turned off on the current one. It carries only the version
+ * label, so unlike the banner it cannot name the wrong product, which makes it a
+ * cheap way to mark an archived page without forking a theme component. On the
+ * current version it would tell the reader nothing.
+ *
+ * Both settings are explicit because Docusaurus turns the badge on for every
+ * version, current included, as soon as a second version exists.
+ *
+ * The version dropdown also shows which version is being read, and switching
+ * from it lands on the same page in the other version.
+ *
  * @param {ProductDocs} product
  */
 function buildVersionsConfig(product) {
   const versions = {
-    current: { label: "latest", banner: "none" },
+    current: { label: "latest", banner: "none", badge: false },
   };
 
   for (const version of cutVersions(product.id)) {
     versions[version] = {
       label: `v${version}`,
-      banner: "unmaintained",
+      banner: "none",
       noIndex: true,
-      badge: false,
+      badge: true,
       ...(product.versionOverrides?.[version] ?? {}),
     };
   }
