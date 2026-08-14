@@ -35,11 +35,11 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
    agy
    ```
 
-6. Open the `~/.gemini/antigravity-cli/settings.json` file in your preferred text editor. If the file does not exist, create it.
+6. Open the `~/.gemini/config/mcp_config.json` file in your preferred text editor. If the file does not exist, create it.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
 
-8. Save the `settings.json` file and close it.
+8. Save the `mcp_config.json` file and close it.
 
 9. Return to the Antigravity CLI and type the `/mcp` slash command to open the MCP Manager overlay and confirm that the
    `palette` MCP server is listed and connected.
