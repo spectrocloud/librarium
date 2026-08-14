@@ -113,8 +113,8 @@ If `spec.addresses` contains the node's Host IP, this issue applies.
      --patch='{"spec":{"loadBalancerIP":"<new-platform-ip>"}}'
    ```
 
-3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required.
-   Without it, external clients continue to reach the old address.
+3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required. Without
+   it, external clients continue to reach the old address.
 
    ```bash
    sudo kubectl --namespace kube-system rollout restart daemonset/cilium
