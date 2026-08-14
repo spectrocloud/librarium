@@ -20,6 +20,18 @@ Authentication is independent of the [Deployment Mode](./deployment-modes.md) se
 authentication option with any Deployment Mode, and selecting an authentication option never changes the network
 topology.
 
+## Available Options
+
+The following table summarizes the authentication options. Each option has a section later on this page with the
+complete list of parameters that it applies.
+
+| **Option**                                                        | **Description**                                                                                             | **Requires**                                                                               |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| No preset selected, [Palette-Managed OIDC](#palette-managed-oidc) | The default. Palette injects the OIDC configuration from the cluster profile's Kubernetes layer.            | Nothing. Palette supplies the values.                                                      |
+| [Local Auth](#local-auth)                                         | Built-in local admin accounts with no external IdP. Turns OIDC sign-in off entirely.                        | The `LOCAL_ADMIN_PASSWORD` profile variable.                                               |
+| [Keycloak](#keycloak)                                             | An in-cluster Keycloak realm, which also enables user and group management through the Keycloak Admin API.  | The Keycloak pack, a configured realm, and four profile variables.                         |
+| [External OIDC](#external-oidc)                                   | A third-party IdP such as Okta, Microsoft Entra ID, or Google. You supply the IdP-specific values yourself. | The `LOCAL_ADMIN_PASSWORD` profile variable and the IdP values that you enter in the YAML. |
+
 ## Values Paths
 
 Unless stated otherwise, the parameters on this page are relative to the following values root.
