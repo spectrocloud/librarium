@@ -11,6 +11,69 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 12, 2026 - Release 4.9.44
+
+<!-- PATCH RELEASE TICKET: DOC-3110 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7384 -->
+
+- Fixed an issue where the CAPMAAS power-state reconciler incorrectly treated transient BMC query failures (error or
+  unknown states) as "powered off," causing healthy running nodes to be unexpectedly power-cycled.
+
+## August 11, 2026 - Release 4.9.43
+
+<!-- PATCH RELEASE TICKET: DOC-3099 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11528 -->
+
+- Applied security fixes for the 4.9.43 release train to improve platform security posture.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11618 -->
+
+- AWS Marketplace subscription flow now calls `ResolveCustomer` and `GetEntitlements` at the initial redirect, before
+  registration, ensuring entitlement data is captured correctly and enabling the contract-priced listing to pass AWS
+  buyer-experience validation.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7357 -->
+
+- Fixed an issue where Nutanix cluster deployments became stuck in a `CrashLoopBackOff` because the
+  `palette-controller-manager` did not reinstall `cert-manager` when the `Certificate` CRD was missing from a partial
+  install.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7360 -->
+
+- Fixed a `kubectl` output-streaming deadlock in Jet that caused reconcile workers to hang indefinitely when a manifest
+  apply failed with an oversized `stderr` payload, leaving cluster provisioning stuck at `InstallingManifests` with no
+  error surfaced to the UI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7369 -->
+
+- Fixed an issue where the CMA-bundled Kyverno reconciler incorrectly adopted and attempted to upgrade
+  customer-installed Kyverno add-on packs, causing an infinite Helm upgrade and rollback loop.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9255 -->
+
+- Fixed an issue where Stylus created the `SpectroCluster` CRD with an incorrect pack type of `oci` instead of `ociPack`
+  for OS packs, causing `palette-lite` to misclassify the pack as a Helm chart and produce transient `403` errors during
+  cluster bring-up.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11659 -->
+
+- Fixed an increase in `msgbroker` service errors and pod restarts introduced in 4.9.38 caused by invalid broker
+  authentication token signature validation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2336 -->
+
+- Fixed vSphere PCG deployments behind a whitelist proxy hanging at `WaitingForKubeadmInit` due to the proxy CA
+  certificate never being written to the control-plane VM, which caused containerd image pull failures with an x509
+  certificate verification error.
+
 ## August 7, 2026 - Component Updates {#component-updates-2026-32}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3087 -->
@@ -66,9 +129,11 @@ The following components have been updated for Palette version 4.9.5 - 4.9.41.
 
 <!-- END PACKS LIST BODY: DOC-3087. DO NOT DELETE. -->
 
-#### Pack Notes
-
 ## August 6, 2026 - Release 4.9.41
+
+The following component updates are applicable to this release:
+
+- [August 7, 2026 - Component Updates](#component-updates-2026-32) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-3088 -->
 
@@ -85,6 +150,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.41.
   on imported clusters using the generic cloud provider.
 
 ## July 30, 2026 - Release 4.9.38
+
+The following component updates are applicable to this release:
+
+- [August 7, 2026 - Component Updates](#component-updates-2026-32) <!-- omit in toc -->
 
 <!-- COMPONENT UPDATES TICKETS: DOC-3029, DOC-3020 -->
 <!-- RELEASE DATE: July 30, 2026 -->
