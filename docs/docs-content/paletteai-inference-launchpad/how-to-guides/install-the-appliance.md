@@ -84,8 +84,8 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
    - Select the target disk for the operating system. The installer erases this disk, so do not select the disk you
      intend to use for the Piraeus storage pool. Linux NVMe device names such as `nvme0n1` are assigned in kernel
      enumeration order and may change between boots, so the disk you install to can appear under a different `nvmeXnY`
-     name after the first reboot. Local UI's Disk Inventory identifies the operating system disk by partition label
-     regardless of its current runtime name.
+     name after the first reboot. The Local UI Disk Inventory identifies the operating system disk by its partition
+     label regardless of the disk's current runtime name.
    - Choose the post-install action (reboot or power off).
    - Review the installation summary and press **ENTER** to start.
 5. Wait for the install to finish. It takes at least 15 minutes, depending on hardware. When it finishes, disconnect the
@@ -363,7 +363,7 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
    defined by the profile and can change between releases, so review the profile in Local UI for the current list.
    Select **Next**.
 
-   :::note "Use embedded config" is greyed out on stock ISOs
+   :::info "Use embedded config" is greyed out on stock ISOs
 
    The **Use embedded config** radio applies only to EdgeForged ISOs that carry a baked-in cluster definition. On the
    stock slim ISO the radio is disabled, and its description ("The ISO image contains a predefined set of

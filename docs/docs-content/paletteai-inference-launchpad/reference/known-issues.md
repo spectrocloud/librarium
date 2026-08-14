@@ -87,10 +87,10 @@ own services. Traefik's ports 80 and 443 remain reachable because they traverse 
 before MetalLB's L2 handling; host services on ports 22, 5080, and 6443 do not.
 
 **Discriminating diagnostic.** From a shell on the node (reached through the BMC serial console), inspect the MetalLB
-pool:
+pool.
 
 ```bash
-sudo kubectl -n metallb-system get ipaddresspool first-pool -o yaml
+sudo kubectl --namespace metallb-system get ipaddresspool first-pool --output yaml
 ```
 
 If `spec.addresses` contains the node's Host IP, this issue applies.
@@ -101,29 +101,30 @@ If `spec.addresses` contains the node's Host IP, this issue applies.
    your chosen address.
 
    ```bash
-   sudo kubectl -n metallb-system patch ipaddresspool first-pool --type='json' \
-     -p='[{"op":"replace","path":"/spec/addresses/0","value":"<new-platform-ip>/32"}]'
+   sudo kubectl --namespace metallb-system patch ipaddresspool first-pool --type='json' \
+     --patch='[{"op":"replace","path":"/spec/addresses/0","value":"<new-platform-ip>/32"}]'
    ```
 
 2. Point the Traefik Service at the same new IP. Use a strategic merge patch; a JSON Patch on `spec.loadBalancerIP` is
    rejected by the API server.
 
    ```bash
-   sudo kubectl -n traefik patch svc traefik \
-     -p '{"spec":{"loadBalancerIP":"<new-platform-ip>"}}'
+   sudo kubectl --namespace traefik patch svc traefik \
+     --patch='{"spec":{"loadBalancerIP":"<new-platform-ip>"}}'
    ```
 
-3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required: without
-   it, external clients continue to reach the old address.
+3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required.
+   Without it, external clients continue to reach the old address.
 
    ```bash
-   sudo kubectl -n kube-system rollout restart daemonset/cilium
+   sudo kubectl --namespace kube-system rollout restart daemonset/cilium
    ```
 
-4. Confirm the node is reachable again from the jumpbox.
+4. Confirm the node is reachable again from the jumpbox by opening an SSH session. Replace `<ssh-user>` with your
+   administrator account and `<node-ip>` with the node's Host IP.
 
    ```bash
-   nc -zv <node-ip> 22
+   ssh -o BatchMode=yes -o ConnectTimeout=5 <ssh-user>@<node-ip> exit && echo reachable
    ```
 
 To prevent this on future installs, choose a platform IP that is not the node's Host IP when you complete the cluster
@@ -138,10 +139,10 @@ guidance.
 **Symptom.** The Traefik Service reports the expected platform IP as its external IP, and pods are all Running, but
 `https://<platform-ip>/` times out from the jumpbox. Requests from a browser on the same host as the node succeed.
 
-**Discriminating diagnostic.** Inspect the Traefik Service's source-range allowlist:
+**Discriminating diagnostic.** Inspect the Traefik Service's source-range allowlist.
 
 ```bash
-sudo kubectl -n traefik get svc traefik -o jsonpath='{.spec.loadBalancerSourceRanges}'
+sudo kubectl --namespace traefik get svc traefik --output=jsonpath='{.spec.loadBalancerSourceRanges}'
 ```
 
 If the output contains a single `/32` range that does not include the jumpbox's source IP, this issue applies.
@@ -154,13 +155,13 @@ rejected before reaching Traefik.
 includes your jumpbox network.
 
 ```bash
-sudo kubectl -n traefik patch svc traefik --type='json' \
-  -p='[{"op":"remove","path":"/spec/loadBalancerSourceRanges"}]'
+sudo kubectl --namespace traefik patch svc traefik --type='json' \
+  --patch='[{"op":"remove","path":"/spec/loadBalancerSourceRanges"}]'
 ```
 
 ## Anthropic model aliases return "not served"
 
-**Symptom.** A `GET /v1/models` response advertises Anthropic tier aliases alongside the deployed model, for example:
+**Symptom.** A `GET /v1/models` response advertises Anthropic tier aliases alongside the deployed model.
 
 ```json
 {
@@ -187,14 +188,15 @@ hard-code an Anthropic model name, map the alias to the native ID at the client 
 boot-sequence view shows _Model artifacts verified_ stuck at _No model artifacts present yet — nothing to verify_.
 
 **Workaround.** This is a cosmetic reporting gap and does not affect model serving. Use the vLLM pod status and a
-successful `GET /v1/models` response as the ground truth that the model is ready:
+successful `GET /v1/models` response as the ground truth that the model is ready. Replace `<token>` with an API token
+from the appliance console and `<platform-ip>` with the appliance platform IP.
 
 ```bash
-sudo kubectl get pods -A | grep vllm
-curl -sk https://<platform-ip>/v1/models -H "Authorization: Bearer <token>"
+sudo kubectl get pods --all-namespaces | grep vllm
+curl --silent --insecure https://<platform-ip>/v1/models --header "Authorization: Bearer <token>"
 ```
 
-## Typing is unreliable in the iLO HTML5 Console
+## iLO HTML5 Console drops or duplicates keystrokes
 
 <!-- vale off -->
 
@@ -205,13 +207,13 @@ the HTML5 Remote Console results in dropped or duplicated characters. Escape seq
 **Root cause.** Browser HTML5 keyboard emulation over iLO's WebSocket transport drops keystrokes under load. HPE's
 Virtual Serial Port (`vsp`) over iLO SSH delivers raw scancodes and is not affected.
 
-**Workaround.** From the jumpbox, SSH into iLO and attach `vsp` for any text-heavy interaction:
+**Workaround.** From the jumpbox, SSH into iLO and attach `vsp` for any text-heavy interaction.
 
 ```bash
 ssh <ipmi-user>@<ilo-ip>
 ```
 
-At the iLO prompt, run:
+At the iLO prompt, run the `vsp` command.
 
 ```
 vsp
