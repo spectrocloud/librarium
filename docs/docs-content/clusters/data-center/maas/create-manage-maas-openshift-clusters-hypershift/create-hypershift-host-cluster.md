@@ -76,28 +76,17 @@ cluster in Palette before creating any OpenShift workload clusters.
 
 7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-8. On the **Cluster Config** step, select a domain from the **Domains** drop-down menu. You can also specify **NTP
-   Servers**.
+8. Fill out the following fields on the **Cluster Config** step. Click **Next** when done.
 
-   :::warning
-
-   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain
-   accurate time. If no NTP servers are specified, it can lead to time drift.
-
-   :::
+   | **Field**                                      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+   | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Domains**                                    | Register a DNS record in the selected domain for the deployed cluster. The DNS record links to the IP addresses of the control plane nodes.                                                                                                                                                                                                                                                                                                                                                         |
+   | **SSH Keys (Optional)**                        | Inject public Secure Shell (SSH) keys into `~/.ssh/authorized_keys` on each control plane and worker node, without removing existing MAAS users. The list is populated using the keys in **Tenant Settings** or **Project Settings** > **Security** > **SSH Keys**. Select **Add Item** to [add additional keys](../../../cluster-management/ssh/ssh-keys.md). Refer to [SSH Keys on MAAS Cluster Nodes](../architecture.md#ssh-keys-on-maas-cluster-nodes) for details on supported distributions. |
+   | **NTP Servers (Optional)**                     | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                                                                                                                                                                                       |
+   | **Override Cluster API cluster configuration** | _This feature is not supported on HyperShift host clusters_. The **Override Cluster API cluster configuration** and **Override Cluster API node pool configuration** toggles in the Palette UI have no effect on this cluster type. Refer to [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md) for the list of supported providers.                                                                                           |
 
 9. Click the **Host HyperShift-based control planes** toggle to enable this cluster to deploy HyperShift control planes
    for OpenShift workload clusters. Click **Next** when done.
-
-   :::info
-
-   Overriding Cluster API (CAPI) properties is not supported on HyperShift host clusters. The **Override Cluster API
-   cluster configuration** and **Override Cluster API node pool configuration** toggles in the Palette UI have no effect
-   on this cluster type. Refer to
-   [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
-   for the list of supported providers.
-
-   :::
 
 10. On the **Nodes Config** step, configure the control plane and, optionally, worker node pools.
 
