@@ -28,25 +28,33 @@ so you upgrade by changing the pack version in your add-on cluster profile.
 This page describes what changes at pack version 4.10.0, what you must configure that has no equivalent in earlier
 versions, and how to perform the upgrade.
 
+## Limitations
+
+- There is no in-place upgrade path from the VMO pack to the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
+  This applies to all VMO pack versions. The VM Launchpad is installed from a bootable ISO and manages its own cluster
+  lifecycle, so moving to it requires a new cluster.
+
+- Upgrading from 4.9.x does not migrate local user accounts, because the VM Dashboard has no local authentication.
+
 ## What Changes
 
-| **Area**                 | **Pack 4.9.x and Earlier**                                        | **Pack 4.10.0 and Later**                                                                                 |
-| ------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Management service       | `spectro-vm-dashboard`                                            | `vmo-manager`                                                                                             |
-| Values layout            | Settings sit directly under `charts.virtual-machine-orchestrator` | Manager settings move to the `charts.virtual-machine-orchestrator.vmo-manager` sub-chart                  |
-| OIDC configuration path  | `appConfig.auth.oidc.*`                                           | `oidc.*` on the `vmo-manager` sub-chart                                                                   |
-| Client secret storage    | Rendered into a ConfigMap                                         | Rendered into a Kubernetes Secret                                                                         |
-| Scopes requested         | A fixed set of `openid`, `email`, `profile`, and `offline_access` | `openid`, `profile`, `email`, and `groups` by default. The `groups` scope is always requested.            |
-| Callback URL             | Always `<consoleBaseAddress>/auth/callback`                       | `<baseUrl>/auth/callback` by default, with `oidc.callbackUrl` available as an override                    |
-| Groups claim             | Not forwarded to Kubernetes, because the scope was not requested  | Requested by default and forwarded to Kubernetes, which enables group-based RBAC                          |
-| Local admin fallback     | Not available                                                     | Available alongside OIDC as a Day 0 bootstrap path                                                        |
-| Identity provider choice | Palette-managed OIDC, configured per cluster                      | Palette-managed OIDC by default, with Local Auth, Keycloak, and External OIDC available as preset options |
+| **Area**                | **Pack 4.9.x and Earlier**                                        | **Pack 4.10.0 and Later**                                                                                 |
+| ----------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Management service      | `spectro-vm-dashboard`                                            | `vmo-manager`                                                                                             |
+| Values layout           | Settings sit directly under `charts.virtual-machine-orchestrator` | Manager settings move to the `charts.virtual-machine-orchestrator.vmo-manager` sub-chart                  |
+| OIDC configuration path | `appConfig.auth.oidc.*`                                           | `oidc.*` on the `vmo-manager` sub-chart                                                                   |
+| Client secret storage   | Rendered into a ConfigMap                                         | Rendered into a Kubernetes Secret                                                                         |
+| Scopes requested        | A fixed set of `openid`, `email`, `profile`, and `offline_access` | `openid`, `profile`, `email`, and `groups` by default. The `groups` scope is always requested.            |
+| Callback URL            | Always `<consoleBaseAddress>/auth/callback`                       | `<baseUrl>/auth/callback` by default, with `oidc.callbackUrl` available as an override                    |
+| Groups claim            | Not forwarded to Kubernetes, because the scope was not requested  | Requested by default and forwarded to Kubernetes, which enables group-based RBAC                          |
+| Local admin fallback    | Not available                                                     | Available as a Day 0 bootstrap path, turned off by default                                                |
+| IdP choice              | Palette-managed OIDC, configured per cluster                      | Palette-managed OIDC by default, with Local Auth, Keycloak, and External OIDC available as preset options |
 
 The two changes with the largest operational impact are the following.
 
-- **Group-based RBAC works without extra configuration.** In 4.9.x and earlier, identity provider groups did not reach
-  the Kubernetes API server because the `groups` scope was not requested. VMO Manager requests it by default, so
-  bindings that use a `Group` subject take effect as soon as your identity provider emits the `groups` claim.
+- **Group-based RBAC works without extra configuration.** In 4.9.x and earlier, IdP groups did not reach the Kubernetes
+  API server because the `groups` scope was not requested. VMO Manager requests it by default, so bindings that use a
+  `Group` subject take effect as soon as your IdP emits the `groups` claim.
 
 - **The OIDC client secret moves out of a ConfigMap.** In 4.9.x and earlier, anyone with `get configmap` permission on
   the `vm-dashboard` namespace could read the client secret. Treat an existing client secret as exposed and rotate it as
@@ -56,13 +64,13 @@ The two changes with the largest operational impact are the following.
 
 The following items have no equivalent in 4.9.x and earlier. Plan for them before you upgrade.
 
-| **Item**                        | **What You Need to Do**                                                                                                                                                                                         |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authentication selection        | Decide whether to keep Palette-managed OIDC or select an option from the **Alternative Authentication** preset group. Refer to [Deployment Modes and Authentication](./deployment-modes-and-authentication.md). |
-| `LOCAL_ADMIN_PASSWORD` variable | Add this profile variable and set a strong password to seed the Day 0 local admin account. Leave it empty if you want a cluster with no local sign-in.                                                          |
-| `platform.baseUrl`              | Set this to the URL that users reach the UI at. It replaces `appConfig.clusterInfo.consoleBaseAddress`. Required in **Direct** mode with an external identity provider.                                         |
-| Identity provider prefixes      | If the Kubernetes API server uses `--oidc-username-prefix` or `--oidc-groups-prefix`, mirror those values in `oidc.k8sUsernamePrefix` and `oidc.k8sGroupPrefix` so that API key impersonation matches.          |
-| Group bindings                  | Replace the per-user role bindings that 4.9.x and earlier required with group bindings once you confirm that the groups claim reaches the API server.                                                           |
+| **Item**                        | **What You Need to Do**                                                                                                                                                                                                                                                              |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Authentication selection        | Decide whether to keep Palette-managed OIDC or select an option from the **Alternative Authentication** preset group. Refer to [Authentication Options](./authentication-options.md).                                                                                                |
+| `LOCAL_ADMIN_PASSWORD` variable | Add this profile variable, because the **Local Auth** and **External OIDC** options both reference it. To seed a Day 0 local admin account, set a strong password and set `features.localAuth.enabled` to `true`. Local authentication is off in every option except **Local Auth**. |
+| `platform.baseUrl`              | Set this to the URL that users reach the UI at. It replaces `appConfig.clusterInfo.consoleBaseAddress`. Required in **Direct** mode with a third-party IdP.                                                                                                                          |
+| IdP prefixes                    | If the Kubernetes API server uses `--oidc-username-prefix` or `--oidc-groups-prefix`, mirror those values in `oidc.k8sUsernamePrefix` and `oidc.k8sGroupPrefix` so that API key impersonation matches.                                                                               |
+| Group bindings                  | Replace the per-user role bindings that 4.9.x and earlier required with group bindings once you confirm that the groups claim reaches the API server.                                                                                                                                |
 
 ### Parameter Mapping
 
@@ -94,7 +102,7 @@ later. Remove them. Earlier versions ignored both.
 - Cluster admin access through a [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, so that you can
   inspect and change role bindings.
 
-- Administrator access to your identity provider, if the cluster uses a third-party OIDC provider.
+- Administrator access to your identity provider (IdP), if the cluster uses a third-party OIDC IdP.
 
 ## Upgrade the Pack
 
@@ -114,13 +122,14 @@ later. Remove them. Earlier versions ignored both.
      | grep --extended-regexp 'spectro-vm|kubevirt'
    ```
 
-5. _(Third-party OIDC only)_ Rotate the OIDC client secret in your identity provider and generate a new one on the same
-   application. Do not revoke the old secret yet.
+5. _(Third-party OIDC only)_ Rotate the OIDC client secret in your IdP and generate a new one on the same application.
+   Do not revoke the old secret yet.
 
 6. In the profile layer, change the pack version to 4.10.0 or later.
 
-7. Update the values to match the new layout. Refer to [Parameter Mapping](#parameter-mapping) and to
-   [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) for the full parameter reference.
+7. Update the values to match the new layout. Refer to [Parameter Mapping](#parameter-mapping),
+   [Authentication Options](./authentication-options.md), and [VMO Pack Parameters](./vmo-pack-parameters.md) for the
+   full parameter reference.
 
 8. Add the `LOCAL_ADMIN_PASSWORD` profile variable and set a strong password. Refer to
    [Define Cluster Profile Variables](../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
@@ -142,9 +151,10 @@ pod restarts.
 
 ## Post-Upgrade Tasks
 
-1. Sign in with the local admin account and confirm that the UI is reachable.
+1. _(Local authentication only)_ Sign in with the local admin account and confirm that the UI is reachable. This step
+   applies if you selected the **Local Auth** option, or if you set `features.localAuth.enabled` to `true` yourself.
 
-2. Sign in through your identity provider and confirm that authentication succeeds.
+2. _(Third-party OIDC only)_ Sign in through your IdP and confirm that authentication succeeds.
 
 3. Confirm that group memberships reach the Kubernetes API server. Refer to
    [Validate the Groups Claim](./configure-external-oidc.md#validate-the-groups-claim) for guidance.
@@ -152,16 +162,8 @@ pod restarts.
 4. Replace the per-user role bindings that you recorded earlier with group bindings, and then delete the per-user
    bindings. Refer to [Grant Access to Groups](./configure-external-oidc.md#grant-access-to-groups) for guidance.
 
-5. _(Third-party OIDC only)_ Revoke the old OIDC client secret in your identity provider after the cluster operates
-   normally for 24 to 48 hours.
-
-## Limitations
-
-- There is no in-place upgrade path from the VMO pack to the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
-  This applies to all VMO pack versions. The VM Launchpad is installed from a bootable ISO and manages its own cluster
-  lifecycle, so moving to it requires a new cluster.
-
-- Upgrading from 4.9.x does not migrate local user accounts, because the VM Dashboard has no local authentication.
+5. _(Third-party OIDC only)_ Revoke the old OIDC client secret in your IdP after the cluster operates normally for 24 to
+   48 hours.
 
 ## Validate
 
@@ -178,8 +180,8 @@ pod restarts.
 
 ## Next Steps
 
-Review [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) to learn how the Deployment Mode
-and authentication selections interact, and which parameters each one applies.
+Review [Deployment Modes](./deployment-modes.md) and [Authentication Options](./authentication-options.md) to learn how
+the two selections interact, and which parameters each one applies.
 
-If your cluster authenticates against a third-party identity provider, refer to
-[Configure External OIDC](./configure-external-oidc.md) for the full provider-side and pack-side configuration.
+If your cluster authenticates against a third-party IdP, refer to
+[Configure External OIDC](./configure-external-oidc.md) for the full IdP-side and pack-side configuration.

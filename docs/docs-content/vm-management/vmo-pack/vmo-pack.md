@@ -41,9 +41,9 @@ VMO Pack is appropriate in the following scenarios:
 
 - The VM dashboard is typically accessed through Palette. On locally managed Edge clusters that operate without a
   Palette connection, the dashboard still runs on the cluster, but Palette-managed OIDC is unavailable. In that case,
-  configure local authentication, Keycloak, or an external OIDC provider on the pack instead. Refer to
-  [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) for guidance. If the VMO pack is not
-  in a healthy state, the VM dashboard becomes unavailable.
+  configure local authentication, Keycloak, or an external OIDC identity provider (IdP) on the pack instead. Refer to
+  [Authentication Options](./authentication-options.md) for guidance. If the VMO pack is not in a healthy state, the VM
+  dashboard becomes unavailable.
 
 - Networking and storage management are configured through Kubernetes manifests rather than through a dedicated
   management interface.
@@ -55,8 +55,8 @@ VMO Pack is appropriate in the following scenarios:
 
 1. Review the [Architecture](../architecture.md) page to learn about the components included in the VMO pack.
 
-2. Review [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) to decide how the VM
-   management UI is reached and which identity provider users authenticate against.
+2. Review [Deployment Modes](./deployment-modes.md) to decide how the VM management UI is reached, and
+   [Authentication Options](./authentication-options.md) to decide which IdP users authenticate against.
 
 3. Follow the [Create a VMO Profile](./create-vmo-profile.md) guide to build your VMO add-on cluster profile. If you are
    deploying in an airgapped environment, review the [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)

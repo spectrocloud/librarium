@@ -13,10 +13,10 @@ The Virtual Machine Orchestrator (VMO) pack can authenticate users against a thi
 provider (IdP) instead of using Palette-managed OIDC. Use this configuration when you want VMO to authenticate against
 your own IdP, or against a different application than the one Palette uses.
 
-This page uses [Okta](https://www.okta.com) as the example provider. The same steps apply to any OIDC-compliant
-provider, such as Microsoft Entra ID or Google, with the provider-specific console labels changed accordingly.
+This page uses [Okta](https://www.okta.com) as the example IdP. The same steps apply to any OIDC-compliant IdP, such as
+Microsoft Entra ID or Google, with the IdP-specific console labels changed accordingly.
 
-An SSO log in to VMO follows this sequence.
+A Single Sign-On (SSO) sign-in to VMO follows this sequence.
 
 1. The user opens the VMO UI in a browser.
 
@@ -47,7 +47,8 @@ the API server flags.
 - A cluster provisioned through Palette with the VMO pack in an add-on cluster profile. Refer to
   [Create a VMO Profile](./create-vmo-profile.md) for guidance.
 
-- Administrator access to the OIDC application that you want VMO to use.
+- Administrator access to your IdP, so that you can create or modify the OIDC application registration that represents
+  VMO. This registration is what tells the IdP how to handle sign-in requests that arrive from VMO.
 
 - Cluster admin access through a [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, so that you can
   create cluster role bindings.
@@ -74,9 +75,12 @@ the API server flags.
 
 You can reuse the same OIDC application that the cluster's Kubernetes layer uses, or register a separate one for VMO.
 
+The following steps use Okta console labels. Every setting has an equivalent in any OIDC-compliant IdP, though the field
+names differ.
+
 1. Log in to your IdP administration console.
 
-2. Open the OIDC application that you want VMO to use, or create a new one.
+2. Open the OIDC application that represents VMO, or create a new one.
 
 3. Set the application type to **Web**, and enable both the **Authorization Code** and **Refresh Token** grant types.
 
@@ -124,9 +128,8 @@ belong to a group whose name matches the filter for that group to appear in the 
 
 4. In the **Presets** panel, locate the **Alternative Authentication** group and select **External OIDC**.
 
-   This sets `oidc.enabled` to `true`, sets `palette.managedOidc` to `false`, and keeps local authentication on as a
-   fallback. Refer to [Deployment Modes and Authentication](./deployment-modes-and-authentication.md#external-oidc) for
-   the complete list of values applied.
+   This sets `oidc.enabled` to `true`, sets `palette.managedOidc` to `false`, and turns local authentication off. Refer
+   to [Authentication Options](./authentication-options.md#external-oidc) for the complete list of values applied.
 
 5. Select **Values** and enter the parameters that are specific to your IdP.
 
@@ -156,6 +159,8 @@ belong to a group whose name matches the filter for that group to appear in the 
            baseUrl: "https://<the-url-users-reach-vmo-at>"
          features:
            localAuth:
+             # The External OIDC option turns local authentication off. Set this
+             # back to true to keep a Day 0 local admin account as a fallback.
              enabled: true
              adminUsername: "admin"
              adminPassword: "{{ .spectro.var.LOCAL_ADMIN_PASSWORD }}"
@@ -163,8 +168,9 @@ belong to a group whose name matches the filter for that group to appear in the 
 
    The pack renders `oidc.clientSecret` into a Kubernetes Secret rather than a ConfigMap.
 
-6. Add a `LOCAL_ADMIN_PASSWORD` variable to the profile and set it to a strong password. This seeds a Day 0 local admin
-   account that you use to verify the deployment before OIDC users are mapped to roles. Refer to
+6. Add a `LOCAL_ADMIN_PASSWORD` variable to the profile and set it to a strong password. Together with
+   `features.localAuth.enabled`, this seeds a Day 0 local admin account that you use to verify the deployment before
+   OIDC users are mapped to roles. Refer to
    [Define Cluster Profile Variables](../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
    for guidance.
 
@@ -252,14 +258,17 @@ for guidance.
 
 ## Bootstrap Order
 
-Use the following order when you bring up a new cluster with an external IdP. This order ensures that you always have a
-way to sign in.
+The **External OIDC** option turns local authentication off, which means a misconfigured issuer URL or an unreachable
+IdP leaves no way to sign in. Use the following order when you bring up a new cluster with a third-party IdP, so that
+you always have a way in.
 
-1. Deploy the pack with local authentication enabled and `LOCAL_ADMIN_PASSWORD` set to a strong value.
+1. Deploy the pack with `features.localAuth.enabled` set to `true` and `LOCAL_ADMIN_PASSWORD` set to a strong value.
+   This overrides the value that the **External OIDC** option applies.
 
 2. Wait for the VMO Manager pod to report a `Ready` status.
 
-3. Sign in with the local admin account and confirm that the UI is reachable.
+3. Sign in with the local admin account at the `/local-login` path and confirm that the UI is reachable. VMO requires a
+   password change on first sign-in.
 
 4. Apply the cluster role bindings that map your IdP groups to the VMO cluster roles.
 
@@ -267,8 +276,16 @@ way to sign in.
 
 6. Confirm that the user has the expected permissions.
 
-The local admin account remains available afterward. It is a separate authentication path from OIDC, so an IdP outage
-cannot lock you out of the cluster.
+Keep `features.localAuth.enabled` set to `true` afterward if you want a recovery path. Local authentication is a
+separate path from OIDC, so an IdP outage cannot lock you out of the cluster.
+
+:::warning
+
+Local sessions authenticate to the Kubernetes API with the VMO Manager service account token rather than with a
+user-scoped token, so the per-user Kubernetes RBAC described on this page does not apply to a local admin. If you keep
+local authentication on, treat the local admin password as a cluster-admin credential.
+
+:::
 
 ## Validate
 
@@ -364,8 +381,8 @@ Wait for the reconcile to redeploy the VMO Manager pod.
 
 ## Next Steps
 
-Review [Deployment Modes and Authentication](./deployment-modes-and-authentication.md) to learn how the authentication
-options interact with the Deployment Mode selection, and which parameters each option applies.
+Review [Authentication Options](./authentication-options.md) to learn how the authentication options interact with the
+[Deployment Mode](./deployment-modes.md) selection, and which parameters each option applies.
 
 If you are moving an existing cluster from an earlier VMO pack version, refer to
 [Upgrade the VMO Pack](./upgrade-vmo-pack.md) for the differences that affect an existing OIDC configuration.
