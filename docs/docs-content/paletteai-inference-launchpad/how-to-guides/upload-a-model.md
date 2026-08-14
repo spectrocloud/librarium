@@ -86,6 +86,17 @@ node; the appliance syncs the model to the remaining nodes automatically.
    Replace `<ssh-user>` and `<appliance-host>` with the appliance's SSH user and address, and `<private-key-path>` with
    the path to your private key, such as `~/.ssh/id_ed25519`.
 
+   :::warning `--model-dir` points at the parent, not the model's own directory
+
+   `--model-dir` is the directory that _contains_ `<name>/<version>/`, not the directory named after the model. The
+   Palette CLI composes the model path as `<model-dir>/<name>/<version>/` from the `name` and `version` fields in your
+   metadata YAML. For a model at `./models/my-model/1.0.0/`, pass `--model-dir ./models`. Passing
+   `--model-dir ./models/my-model` produces the error
+   `model dir ./models/my-model/my-model/1.0.0 is not a complete download for my-model@1.0.0`, with the model name
+   doubled in the path.
+
+   :::
+
 The upload command accepts other flags, including password authentication (`--ssh-password`, optionally with
 `--insecure-skip-host-key-check`), one-step download and upload (`--download`), and metadata-only sync
 (`--metadata-only`). For the full list, refer to
