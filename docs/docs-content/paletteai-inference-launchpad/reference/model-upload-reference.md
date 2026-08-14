@@ -20,11 +20,11 @@ the [Upload a Model](../how-to-guides/upload-a-model.md) how-to, which walks thr
 Downloads a model from Hugging Face into a local directory on a connected workstation and records a completion manifest
 that a later upload validates against.
 
-| **Flag**                   | **Description**                                                                                          | **Required** |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- | ------------ |
-| `--metadata`, `-f`         | Path to the model metadata YAML (from Artifact Studio), or a `.tar.gz` bundle of the metadata and files. | Yes          |
-| `--model-dir`              | Local directory to download into. The model lands at `<model-dir>/<name>/<version>/`.                    | Yes          |
-| `--hf-token` (`$HF_TOKEN`) | Hugging Face token for gated or private repositories.                                                    | No           |
+| **Flag**                   | **Description**                                                                                                                                                                   | **Required** |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `--metadata`, `-f`         | Path to the model metadata YAML (from Artifact Studio), or a `.tar.gz` bundle of the metadata and files.                                                                          | Yes          |
+| `--model-dir`              | Parent directory to download into. Not the model's own directory: the model lands at `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from the metadata YAML. | Yes          |
+| `--hf-token` (`$HF_TOKEN`) | Hugging Face token for gated or private repositories.                                                                                                                             | No           |
 
 ## palette content model upload
 
@@ -33,13 +33,13 @@ contacts Hugging Face and fails if `--model-dir` is missing or incomplete; pass 
 
 **Required flags**
 
-| **Flag**                        | **Description**                                                                                                          |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `--metadata`, `-f`              | Path to the model metadata YAML, or a `.tar.gz` bundle of the metadata and files.                                        |
-| `--model-dir`                   | Local directory holding the model at `<model-dir>/<name>/<version>/`. Required unless `--download` or `--metadata-only`. |
-| `--ssh-user`                    | SSH user on the target appliance node.                                                                                   |
-| `--ssh-host`                    | Address (IP or DNS name) of the target appliance node.                                                                   |
-| `--ssh-key` or `--ssh-password` | SSH authentication. Mutually exclusive; `--ssh-password` is supported on Unix workstations only.                         |
+| **Flag**                        | **Description**                                                                                                                                                                                                                                                        |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--metadata`, `-f`              | Path to the model metadata YAML, or a `.tar.gz` bundle of the metadata and files.                                                                                                                                                                                      |
+| `--model-dir`                   | Parent directory holding the model at `<model-dir>/<name>/<version>/`. Not the model's own directory: passing the `<name>/` directory yields `model dir <...>/<name>/<name>/<version>/ is not a complete download`. Required unless `--download` or `--metadata-only`. |
+| `--ssh-user`                    | SSH user on the target appliance node.                                                                                                                                                                                                                                 |
+| `--ssh-host`                    | Address (IP or DNS name) of the target appliance node.                                                                                                                                                                                                                 |
+| `--ssh-key` or `--ssh-password` | SSH authentication. Mutually exclusive; `--ssh-password` is supported on Unix workstations only.                                                                                                                                                                       |
 
 **Optional flags**
 
