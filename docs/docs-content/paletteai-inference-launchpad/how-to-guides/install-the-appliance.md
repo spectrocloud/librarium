@@ -38,8 +38,8 @@ Confirm each prerequisite before starting:
   [virtual media](../reference/glossary.md#virtual-media), as a fallback if USB boot fails.
 - You have a reserved [virtual IP address (VIP)](../reference/glossary.md#vip) for the cluster, and a single unused
   platform IP address (not a range, and different from the node's Host IP) for MetalLB to assign to platform services.
-  On a single-node install, using the node's Host IP as the platform IP causes MetalLB to intercept traffic to the
-  Host IP and breaks SSH, Local UI, and the Kubernetes API on the node. For the symptom and recovery, refer to
+  On a single-node install, using the node's Host IP as the platform IP causes MetalLB to intercept traffic to the Host
+  IP and breaks SSH, Local UI, and the Kubernetes API on the node. For the symptom and recovery, refer to
   [Known Issues: SSH, Local UI, or Kubernetes API unreachable after cluster deploy](../reference/known-issues.md#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy).
 - The target model fits the available GPU memory. Refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md) for the model-to-hardware mapping, and to
@@ -83,9 +83,9 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
      drop to a shell. This action is destructive, so confirm the disk selection before you run it.
    - Select the target disk for the operating system. The installer erases this disk, so do not select the disk you
      intend to use for the Piraeus storage pool. Linux NVMe device names such as `nvme0n1` are assigned in kernel
-     enumeration order and may change between boots, so the disk you install to can appear under a different
-     `nvmeXnY` name after the first reboot. Local UI's Disk Inventory identifies the operating system disk by
-     partition label regardless of its current runtime name.
+     enumeration order and may change between boots, so the disk you install to can appear under a different `nvmeXnY`
+     name after the first reboot. Local UI's Disk Inventory identifies the operating system disk by partition label
+     regardless of its current runtime name.
    - Choose the post-install action (reboot or power off).
    - Review the installation summary and press **ENTER** to start.
 5. Wait for the install to finish. It takes at least 15 minutes, depending on hardware. When it finishes, disconnect the
@@ -99,9 +99,9 @@ network. The hostname, DNS, and NTP settings are configured here in the TUI, not
 :::warning First-boot GRUB entry
 
 On the first boot after install, the GRUB menu shows multiple boot entries with a short countdown timer. Select
-**Palette eXtended Kubernetes Edge** (the first, plain entry with no suffix). Do not select the **Registration**
-entry: it marks first-boot complete without launching the Palette TUI and leaves the node at a plain login prompt
-with no user account. If you miss the countdown and land at a plain login prompt, refer to
+**Palette eXtended Kubernetes Edge** (the first, plain entry with no suffix). Do not select the **Registration** entry:
+it marks first-boot complete without launching the Palette TUI and leaves the node at a plain login prompt with no user
+account. If you miss the countdown and land at a plain login prompt, refer to
 [Known Issues: Node stuck at login prompt after first boot](../reference/known-issues.md#node-stuck-at-login-prompt-after-first-boot)
 for recovery.
 
@@ -367,33 +367,34 @@ driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, a
 
    The **Use embedded config** radio applies only to EdgeForged ISOs that carry a baked-in cluster definition. On the
    stock slim ISO the radio is disabled, and its description ("The ISO image contains a predefined set of
-   configurations") does not apply to your ISO. Proceed with **Import config** (the default); the *Imported
-   Applications preview* on the right shows the profile discovered from your uploaded content bundle, which is the
-   profile that will deploy.
+   configurations") does not apply to your ISO. Proceed with **Import config** (the default); the _Imported Applications
+   preview_ on the right shows the profile discovered from your uploaded content bundle, which is the profile that will
+   deploy.
 
    :::
+
 4. In **Profile Config**, complete the PaletteAI Inference Launchpad custom wizard. The wizard collects the settings the
    platform packs need to install correctly on your hardware and network, in six sections: Networking, OS and metrics,
    Container registry, Local admin, Storage, and Certificates. In Networking, the **Platform IP Address** is a single
-   unused IP address (not a range) that MetalLB assigns to the appliance console and API, and it must be different
-   from the node's Host IP on a single-node install.
+   unused IP address (not a range) that MetalLB assigns to the appliance console and API, and it must be different from
+   the node's Host IP on a single-node install.
 
    :::warning Platform IP must not equal the node's Host IP
 
-   Setting **Platform IP Address** to the node's Host IP on a single-node install causes MetalLB to intercept traffic
-   to the Host IP, which breaks SSH, Local UI, and the Kubernetes API on the node. Traefik ports 80 and 443 continue
-   to work, which can make the failure look like a partial network problem. Choose a distinct unused IP address from
-   your reserved MetalLB range. For the symptom and recovery, refer to
+   Setting **Platform IP Address** to the node's Host IP on a single-node install causes MetalLB to intercept traffic to
+   the Host IP, which breaks SSH, Local UI, and the Kubernetes API on the node. Traefik ports 80 and 443 continue to
+   work, which can make the failure look like a partial network problem. Choose a distinct unused IP address from your
+   reserved MetalLB range. For the symptom and recovery, refer to
    [Known Issues: SSH, Local UI, or Kubernetes API unreachable after cluster deploy](../reference/known-issues.md#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy).
 
    :::
 
-   In Certificates, provide the CA certificate for the appliance's OIDC endpoint. The two certificate fields are labeled **OIDC CA cert** and **OIDC
-   CA key**, so look for the **OIDC** labels. To create a self-signed certificate, select the **OIDC CA cert** field
-   first, then select **Generate**, which fills in both the certificate and the key. To provide your own certificate
-   instead, paste your base64-encoded CA certificate and its private key. For every field's type, default, and
-   validation rules, including the password complexity requirements for the Registry and Local Admin passwords, refer to
-   [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
+   In Certificates, provide the CA certificate for the appliance's OIDC endpoint. The two certificate fields are labeled
+   **OIDC CA cert** and **OIDC CA key**, so look for the **OIDC** labels. To create a self-signed certificate, select
+   the **OIDC CA cert** field first, then select **Generate**, which fills in both the certificate and the key. To
+   provide your own certificate instead, paste your base64-encoded CA certificate and its private key. For every field's
+   type, default, and validation rules, including the password complexity requirements for the Registry and Local Admin
+   passwords, refer to [Cluster Profile Variables](../reference/profile-variables.md). Then select **Next**.
 
 5. In **Cluster Config**, configure the cluster settings, including the cluster **VIP**. Enter the VIP you reserved in
    [Before You Begin](#before-you-begin). The VIP is a single IP address that always resolves to whichever node

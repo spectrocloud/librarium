@@ -88,9 +88,9 @@ node; the appliance syncs the model to the remaining nodes automatically.
 
    :::warning `--model-dir` points at the parent, not the model's own directory
 
-   `--model-dir` is the directory that *contains* `<name>/<version>/`, not the directory named after the model. The
-   Palette CLI composes the model path as `<model-dir>/<name>/<version>/` from the `name` and `version` fields in
-   your metadata YAML. For a model at `./models/my-model/1.0.0/`, pass `--model-dir ./models`. Passing
+   `--model-dir` is the directory that _contains_ `<name>/<version>/`, not the directory named after the model. The
+   Palette CLI composes the model path as `<model-dir>/<name>/<version>/` from the `name` and `version` fields in your
+   metadata YAML. For a model at `./models/my-model/1.0.0/`, pass `--model-dir ./models`. Passing
    `--model-dir ./models/my-model` produces the error
    `model dir ./models/my-model/my-model/1.0.0 is not a complete download for my-model@1.0.0`, with the model name
    doubled in the path.

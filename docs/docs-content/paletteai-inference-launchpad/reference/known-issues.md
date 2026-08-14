@@ -49,45 +49,45 @@ enumerate as expected, refer to [GPUs do not enumerate on HPE servers](#gpus-do-
 
 ## Node stuck at login prompt after first boot
 
-**Symptom.** After the first boot following the OS install, the console shows a plain login prompt with a
-UUID-derived hostname (for example `edge-<uuid> login:`), and no user account exists. Every credential you try fails
-with `Login incorrect`. The Palette TUI never paints.
+**Symptom.** After the first boot following the OS install, the console shows a plain login prompt with a UUID-derived
+hostname (for example `edge-<uuid> login:`), and no user account exists. Every credential you try fails with
+`Login incorrect`. The Palette TUI never paints.
 
-**Root cause.** At the first-boot GRUB menu, the **Registration** entry was selected (either explicitly or by
-countdown timeout). Registration runs Kairos onboarding and marks first-boot complete without launching the Palette
-TUI, so no interactive account creation happens and the node is left at a login prompt with no account.
+**Root cause.** At the first-boot GRUB menu, the **Registration** entry was selected (either explicitly or by countdown
+timeout). Registration runs Kairos onboarding and marks first-boot complete without launching the Palette TUI, so no
+interactive account creation happens and the node is left at a login prompt with no account.
 
 **Workaround.** Boot the state-reset entry to clear the first-boot marker, then boot the primary entry.
 
 1. From the [baseboard management controller (BMC)](../reference/glossary.md#bmc), power-cycle the node.
-2. When the GRUB menu paints, press an arrow key immediately to freeze the countdown. Move the highlight to
-   **Palette eXtended Kubernetes Edge state reset (auto)** and press **ENTER**. The node runs a state cleanup and
-   reboots itself; do not intervene during the mid-cycle reboot.
+2. When the GRUB menu paints, press an arrow key immediately to freeze the countdown. Move the highlight to **Palette
+   eXtended Kubernetes Edge state reset (auto)** and press **ENTER**. The node runs a state cleanup and reboots itself;
+   do not intervene during the mid-cycle reboot.
 3. When the GRUB menu paints the second time, select **Palette eXtended Kubernetes Edge** (the first entry, with no
    suffix) and press **ENTER**. The Palette TUI paints, and you can create the initial user account.
 
-If the state-reset entry does not restore first-boot behavior, boot the **recovery** entry, drop to a shell by
-editing the GRUB entry (press `e`, append `init=/bin/bash` to the `linux` line, and press **Ctrl-X** to boot), and
-run `kairos-agent reset` from the shell. The node reboots into a fresh first-boot state.
+If the state-reset entry does not restore first-boot behavior, boot the **recovery** entry, drop to a shell by editing
+the GRUB entry (press `e`, append `init=/bin/bash` to the `linux` line, and press **Ctrl-X** to boot), and run
+`kairos-agent reset` from the shell. The node reboots into a fresh first-boot state.
 
 ## SSH, Local UI, or Kubernetes API unreachable after cluster deploy
 
 <!-- vale off -->
 
 **Symptom.** After the cluster reaches a **Running** and **Healthy** state, TCP connections from the
-[jumpbox](../reference/glossary.md#jumpbox) to the node's Host IP time out on port 22 (SSH), 5080 (Local UI), and
-6443 (Kubernetes API), while port 443 on the platform IP (Traefik) continues to serve the appliance console. ICMP
-ping to the Host IP still succeeds. The failure appears to be partial rather than a complete outage.
+[jumpbox](../reference/glossary.md#jumpbox) to the node's Host IP time out on port 22 (SSH), 5080 (Local UI), and 6443
+(Kubernetes API), while port 443 on the platform IP (Traefik) continues to serve the appliance console. ICMP ping to the
+Host IP still succeeds. The failure appears to be partial rather than a complete outage.
 
-**Root cause.** On a single-node install, the platform IP was set equal to the node's Host IP during the cluster
-profile wizard. Local UI wires the MetalLB `IPAddressPool first-pool` to include the Host IP as a `/32` and sets the
-Traefik Service `spec.loadBalancerIP` to the same address. The MetalLB speaker then announces the Host IP on the
-node's bond interface through gratuitous ARP, and inbound traffic to the Host IP is delivered to MetalLB rather than
-to the host's own services. Traefik's ports 80 and 443 remain reachable because they traverse the
-kube-proxy-replacement DNAT path before MetalLB's L2 handling; host services on ports 22, 5080, and 6443 do not.
+**Root cause.** On a single-node install, the platform IP was set equal to the node's Host IP during the cluster profile
+wizard. Local UI wires the MetalLB `IPAddressPool first-pool` to include the Host IP as a `/32` and sets the Traefik
+Service `spec.loadBalancerIP` to the same address. The MetalLB speaker then announces the Host IP on the node's bond
+interface through gratuitous ARP, and inbound traffic to the Host IP is delivered to MetalLB rather than to the host's
+own services. Traefik's ports 80 and 443 remain reachable because they traverse the kube-proxy-replacement DNAT path
+before MetalLB's L2 handling; host services on ports 22, 5080, and 6443 do not.
 
-**Discriminating diagnostic.** From a shell on the node (reached through the BMC serial console), inspect the
-MetalLB pool:
+**Discriminating diagnostic.** From a shell on the node (reached through the BMC serial console), inspect the MetalLB
+pool:
 
 ```bash
 sudo kubectl -n metallb-system get ipaddresspool first-pool -o yaml
@@ -105,16 +105,16 @@ If `spec.addresses` contains the node's Host IP, this issue applies.
      -p='[{"op":"replace","path":"/spec/addresses/0","value":"<new-platform-ip>/32"}]'
    ```
 
-2. Point the Traefik Service at the same new IP. Use a strategic merge patch; a JSON Patch on
-   `spec.loadBalancerIP` is rejected by the API server.
+2. Point the Traefik Service at the same new IP. Use a strategic merge patch; a JSON Patch on `spec.loadBalancerIP` is
+   rejected by the API server.
 
    ```bash
    sudo kubectl -n traefik patch svc traefik \
      -p '{"spec":{"loadBalancerIP":"<new-platform-ip>"}}'
    ```
 
-3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required:
-   without it, external clients continue to reach the old address.
+3. Restart the Cilium daemonset so its BPF load-balancer tables pick up the new mapping. This step is required: without
+   it, external clients continue to reach the old address.
 
    ```bash
    sudo kubectl -n kube-system rollout restart daemonset/cilium
@@ -126,10 +126,10 @@ If `spec.addresses` contains the node's Host IP, this issue applies.
    nc -zv <node-ip> 22
    ```
 
-To prevent this on future installs, choose a platform IP that is not the node's Host IP when you complete the
-cluster profile wizard. Refer to
-[Install the Appliance: Deploy the Cluster](../how-to-guides/install-the-appliance.md#deploy-the-cluster) for the
-inline guidance.
+To prevent this on future installs, choose a platform IP that is not the node's Host IP when you complete the cluster
+profile wizard. Refer to
+[Install the Appliance: Deploy the Cluster](../how-to-guides/install-the-appliance.md#deploy-the-cluster) for the inline
+guidance.
 
 <!-- vale on -->
 
@@ -146,12 +146,12 @@ sudo kubectl -n traefik get svc traefik -o jsonpath='{.spec.loadBalancerSourceRa
 
 If the output contains a single `/32` range that does not include the jumpbox's source IP, this issue applies.
 
-**Root cause.** Local UI sets `spec.loadBalancerSourceRanges` on the Traefik Service to a `/32` range containing
-only the platform IP. Because `loadBalancerSourceRanges` is a load-balancer-level ACL, source IPs outside the range
-are rejected before reaching Traefik.
+**Root cause.** Local UI sets `spec.loadBalancerSourceRanges` on the Traefik Service to a `/32` range containing only
+the platform IP. Because `loadBalancerSourceRanges` is a load-balancer-level ACL, source IPs outside the range are
+rejected before reaching Traefik.
 
-**Workaround.** Remove the allowlist so external clients can reach the appliance console, or replace it with a CIDR
-that includes your jumpbox network.
+**Workaround.** Remove the allowlist so external clients can reach the appliance console, or replace it with a CIDR that
+includes your jumpbox network.
 
 ```bash
 sudo kubectl -n traefik patch svc traefik --type='json' \
@@ -160,33 +160,31 @@ sudo kubectl -n traefik patch svc traefik --type='json' \
 
 ## Anthropic model aliases return "not served"
 
-**Symptom.** A `GET /v1/models` response advertises Anthropic tier aliases alongside the deployed model, for
-example:
+**Symptom.** A `GET /v1/models` response advertises Anthropic tier aliases alongside the deployed model, for example:
 
 ```json
 {
   "data": [
-    {"id": "<model-name>", "object": "model", "owned_by": "launchpad-ai"},
-    {"id": "claude-opus-4-8", "object": "model", "owned_by": "launchpad-ai-tier-alias"},
-    {"id": "claude-sonnet-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias"},
-    {"id": "claude-haiku-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias"}
+    { "id": "<model-name>", "object": "model", "owned_by": "launchpad-ai" },
+    { "id": "claude-opus-4-8", "object": "model", "owned_by": "launchpad-ai-tier-alias" },
+    { "id": "claude-sonnet-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias" },
+    { "id": "claude-haiku-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias" }
   ]
 }
 ```
 
 A request that uses one of the aliases as `model` returns `{"error":"model '' is not served by this box"}`.
 
-**Root cause.** The alias entries are advertised by the gateway, but the router-to-engine mapping is not wired for
-them in the current build.
+**Root cause.** The alias entries are advertised by the gateway, but the router-to-engine mapping is not wired for them
+in the current build.
 
 **Workaround.** Use the native model ID (the entry with `owned_by: launchpad-ai`) in every request. For clients that
 hard-code an Anthropic model name, map the alias to the native ID at the client side.
 
 ## "Model artifacts verified" step remains at "not present" after model loads
 
-**Symptom.** After a model is uploaded, deployed, and serving requests successfully, the appliance console's
-model boot-sequence view shows *Model artifacts verified* stuck at *No model artifacts present yet — nothing to
-verify*.
+**Symptom.** After a model is uploaded, deployed, and serving requests successfully, the appliance console's model
+boot-sequence view shows _Model artifacts verified_ stuck at _No model artifacts present yet — nothing to verify_.
 
 **Workaround.** This is a cosmetic reporting gap and does not affect model serving. Use the vLLM pod status and a
 successful `GET /v1/models` response as the ground truth that the model is ready:
@@ -200,8 +198,8 @@ curl -sk https://<platform-ip>/v1/models -H "Authorization: Bearer <token>"
 
 <!-- vale off -->
 
-**Symptom.** On HPE servers with iLO 7, typing longer strings (passwords, hostnames, GRUB edit-line modifications)
-in the HTML5 Remote Console results in dropped or duplicated characters. Escape sequences such as `Ctrl-Alt-F2` or
+**Symptom.** On HPE servers with iLO 7, typing longer strings (passwords, hostnames, GRUB edit-line modifications) in
+the HTML5 Remote Console results in dropped or duplicated characters. Escape sequences such as `Ctrl-Alt-F2` or
 `Esc + (` may not register.
 
 **Root cause.** Browser HTML5 keyboard emulation over iLO's WebSocket transport drops keystrokes under load. HPE's
@@ -221,22 +219,22 @@ vsp
 
 Return to the iLO prompt with `Esc` then `(`. Exit iLO with `exit`.
 
-To skip the hostname field in the Palette TUI, leave the auto-generated `edge-<uuid>` value and rename the node
-later from Local UI. This avoids the worst of the HTML5 typing problem during initial configuration.
+To skip the hostname field in the Palette TUI, leave the auto-generated `edge-<uuid>` value and rename the node later
+from Local UI. This avoids the worst of the HTML5 typing problem during initial configuration.
 
 ## Stale iLO Virtual Serial Port session on iLO 7
 
 **Symptom.** On HPE iLO 7, running `stop /system1/oemhp_vsp1` at the iLO CLI to clear a stale Virtual Serial Port
 session returns `unknown command`. The SMASH CLP path documented for iLO 4 and iLO 5 does not apply.
 
-**Workaround.** Reset the iLO management processor. This restarts iLO itself, not the server, and takes
-approximately 30 seconds.
+**Workaround.** Reset the iLO management processor. This restarts iLO itself, not the server, and takes approximately 30
+seconds.
 
 ```
 reset /map1
 ```
 
-Any HTML5 Remote Console session is dropped by the reset and must be re-launched from the iLO web UI after iLO
-finishes restarting. The server operating system is not affected.
+Any HTML5 Remote Console session is dropped by the reset and must be re-launched from the iLO web UI after iLO finishes
+restarting. The server operating system is not affected.
 
 <!-- vale on -->
