@@ -12,6 +12,10 @@ tags: ["vmo"]
 The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack when you use the default
 profile configuration. To learn about pack components, refer to [Palette VMO](../vm-management.md).
 
+Before you create the profile, review [Deployment Modes](./deployment-modes.md), which describes each **Deployment
+Mode** option in detail, and [Authentication Options](./authentication-options.md), which lists the identity provider
+(IdP) options available in the **Presets** panel and documents the profile variables that some of those options require.
+
 ## Limitations
 
 - If you are updating the profile of an existing cluster that already has the **Spectro Proxy** pack. You must restart
