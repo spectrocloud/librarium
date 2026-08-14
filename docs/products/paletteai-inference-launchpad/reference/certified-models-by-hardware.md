@@ -56,3 +56,12 @@ discuss your use case.
 </TabItem>
 
 </Tabs>
+
+## Vision Models
+
+The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To
+answer questions about images, deploy a small vision model next to the text model and turn on vision preprocessing.
+
+Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal on 8 x B200. For the setup, refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md). For how the request path works, refer to
+[Vision Preprocessing](../explanation/vision-preprocessing.md).
