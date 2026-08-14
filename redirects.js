@@ -1024,7 +1024,7 @@ let redirects = [
     to: `/vertex/system-management/configure-image-pull-secret/`,
   },
 
-  // Palette MCP: Gemini CLI replaced by Antigravity CLI 
+  // Palette MCP: Gemini CLI replaced by Antigravity CLI
 
   {
     from: `/automation/palette-mcp/setup/mcp-setup-gemini/`,

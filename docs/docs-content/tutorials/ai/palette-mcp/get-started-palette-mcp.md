@@ -27,8 +27,8 @@ and MCP client that suits your needs to follow along.
 The [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) can be used with any MCP client to investigate
 and modify Palette resources. Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
 [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or
-[Antigravity](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) setup guides to learn how to configure it with
-these popular MCP clients.
+[Antigravity](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) setup guides to learn how to configure it
+with these popular MCP clients.
 
 :::
 

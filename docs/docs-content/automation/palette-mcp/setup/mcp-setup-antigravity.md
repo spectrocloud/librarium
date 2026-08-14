@@ -35,7 +35,8 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
    agy
    ```
 
-6. Open the `~/.gemini/config/mcp_config.json` file in your preferred text editor. If the file does not exist, create it.
+6. Open the `~/.gemini/config/mcp_config.json` file in your preferred text editor. If the file does not exist, create
+   it.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
 
