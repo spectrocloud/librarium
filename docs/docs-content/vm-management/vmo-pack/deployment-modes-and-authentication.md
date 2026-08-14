@@ -213,7 +213,7 @@ You must set the following parameters in the pack YAML yourself, because they ar
 
 | **Parameter**       | **Description**                                                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `oidc.issuerUrl`    | The issuer URL of your IdP. For example, `https://login.microsoftonline.com/<tenant>/v2.0`.                          |
+| `oidc.issuerUrl`    | The issuer URL of your IdP. For example, `https://login.microsoftonline.com/<tenant>/v2.0`.                               |
 | `oidc.clientId`     | The client ID registered with your provider. The pack default is `k8s-oidc`.                                              |
 | `oidc.clientSecret` | The client secret issued by your provider. The pack renders this value into a Kubernetes Secret.                          |
 | `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/auth/callback` is not reachable. |
