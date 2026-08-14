@@ -120,11 +120,11 @@ If `spec.addresses` contains the node's Host IP, this issue applies.
    sudo kubectl --namespace kube-system rollout restart daemonset/cilium
    ```
 
-4. Confirm the node is reachable again from the jumpbox by opening an SSH session. Replace `<ssh-user>` with your
-   administrator account and `<node-ip>` with the node's Host IP.
+4. Confirm the node's SSH port is reachable again from the jumpbox. Replace `<node-ip>` with the node's Host IP.
 
    ```bash
-   ssh -o BatchMode=yes -o ConnectTimeout=5 <ssh-user>@<node-ip> exit && echo reachable
+   curl --output /dev/null --silent --show-error --connect-timeout 5 telnet://<node-ip>:22 \
+     && echo reachable
    ```
 
 To prevent this on future installs, choose a platform IP that is not the node's Host IP when you complete the cluster
