@@ -69,6 +69,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.0) for more details.
 
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11714 -->
+
+- Palette VerteX now invalidates all active JWTs for a session when a user logs out or changes their password.
+  Previously, tokens remained valid after logout and could be reused.
+
 ### Automation
 
 :::info
