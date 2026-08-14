@@ -39,7 +39,7 @@ deploys. Text in `<angle-brackets>` is a placeholder that you replace with a val
 ## Palette-Managed OIDC
 
 Palette-managed OIDC is the default and is the recommended option for Palette-managed clusters where the Kubernetes
-layer of the cluster profile has **Palette** selected as the OIDC Identity Provider. Refer to
+layer of the cluster profile has **Palette** selected as the OIDC identity provider. Refer to
 [Configure OIDC](../rbac/configure_OIDC.md) for guidance on that setting.
 
 | **Setting**                      | **Effective Value**                                                       |
