@@ -75,7 +75,7 @@ pack provides remote access to the UI. This is the default selection.
 | `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
 
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
-self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that may not exist on every
+self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every
 cluster.
 
 ### Direct
@@ -213,7 +213,7 @@ You must set the following parameters in the pack YAML yourself, because they ar
 
 | **Parameter**       | **Description**                                                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `oidc.issuerUrl`    | The issuer URL of your provider. For example, `https://login.microsoftonline.com/<tenant>/v2.0`.                          |
+| `oidc.issuerUrl`    | The issuer URL of your IdP. For example, `https://login.microsoftonline.com/<tenant>/v2.0`.                          |
 | `oidc.clientId`     | The client ID registered with your provider. The pack default is `k8s-oidc`.                                              |
 | `oidc.clientSecret` | The client secret issued by your provider. The pack renders this value into a Kubernetes Secret.                          |
 | `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/auth/callback` is not reachable. |
@@ -245,7 +245,7 @@ to work. Only `palette.managedOidc` changes.
 
 To return to Palette-managed OIDC after you select an alternative option, clear the preset selection. Clearing it sets
 `palette.managedOidc` back to `true`, and the Palette-injected `appConfig.auth.oidc.*` values take precedence again. You
-do not need to blank out the `oidc.*` values by hand.
+do not need to manually blank out the `oidc.*` values.
 
 Selecting an option never deletes keys from the YAML. Provider-specific fields that the selected option does not use are
 reset to an empty string so that the key stays visible. An empty string is equivalent to unset.

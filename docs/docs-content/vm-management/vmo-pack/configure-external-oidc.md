@@ -11,7 +11,7 @@ tags: ["vmo", "vmo pack", "oidc"]
 
 The Virtual Machine Orchestrator (VMO) pack can authenticate users against a third-party OpenID Connect (OIDC) identity
 provider (IdP) instead of using Palette-managed OIDC. Use this configuration when you want VMO to authenticate against
-your own IdP, or against a different application than the one Palette itself uses.
+your own IdP, or against a different application than the one Palette uses.
 
 This page uses [Okta](https://www.okta.com) as the example provider. The same steps apply to any OIDC-compliant
 provider, such as Microsoft Entra ID or Google, with the provider-specific console labels changed accordingly.
@@ -128,7 +128,7 @@ belong to a group whose name matches the filter for that group to appear in the 
    fallback. Refer to [Deployment Modes and Authentication](./deployment-modes-and-authentication.md#external-oidc) for
    the complete list of values applied.
 
-5. Select **Values** and enter the parameters that are specific to your provider.
+5. Select **Values** and enter the parameters that are specific to your IdP.
 
    ```yaml
    charts:
