@@ -17,7 +17,7 @@ partial_name: installation-steps-enablement
 
 2. Load the {props.iso} ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://etcher.balena.io/).
 
-   - For VMware vSphere, you can upload the {props.iso} ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/upload-iso-image-installation-media-for-a-guest-operating-system.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
+   - For VMware vSphere, you can upload the {props.iso} ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-storage.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
    - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the {props.iso} ISO to the nodes, or use a USB drive to
      boot the nodes from the ISO.
    - For Machine as a Service (MAAS), you can upload and deploy ISOs using Packer. Refer to the [MAAS documentation](https://maas.io/docs/about-images#p-17467-custom-images) for more information.
