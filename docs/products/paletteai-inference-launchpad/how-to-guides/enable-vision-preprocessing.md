@@ -22,8 +22,9 @@ keep calling the text model they already use. For what the feature does and what
   for this path. To place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
   [Deploy a Model](./deploy-a-model.md).
 - A vision model in the appliance catalog. Qwen 3.5 9B multimodal is the validated vision model for this path.
-- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B on 8 x B200.
-  For certified text models by GPU, refer to
+- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal
+  on **8 x H200, 8 x B200, and 8 x MI325X**. Both models run on the same physical GPUs; no manual GPU reservation is
+  needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
 ## Deploy Both Models
@@ -36,11 +37,15 @@ that converts images to text. Deploy the text model first, then the vision model
 2. If the text model is not already serving, select **Deploy model**, choose the text model, and complete the deploy
    flow. Refer to [Deploy a Model](./deploy-a-model.md).
 
-3. Wait until the text model health reads `N/N healthy` and its state reaches `ready` or `serving`.
+3. Wait until the text model health reads `N/N healthy` and its state reaches `ready` or `serving`. A large text model
+   such as GLM 5.2 can take **5 to 10 minutes on the first-ever cold start** while it loads weights, compiles kernels,
+   and captures CUDA graphs. Do not cancel the deploy during this window. Subsequent restarts reuse the compiled kernels
+   from the on-appliance cache and start faster.
 
 4. Select **Deploy model** again, choose the vision model, and complete the deploy flow.
 
-5. Wait until the vision model also reaches `ready` or `serving`.
+5. Wait until the vision model also reaches `ready` or `serving`. The vision model is small and starts in under two
+   minutes on validated hardware.
 
 :::info
 
@@ -127,8 +132,10 @@ requests continue to work.
   images. Text-only requests are unaffected.
 - **Stay within the image cap.** The default cap is 8 images per turn. Extra images in the same turn are skipped with a
   notice. Ask about them in a follow-up message.
-- **Expect a small share of GPU memory for the vision model.** The validated Qwen 3.5 9B pairing is sized to run next to
-  GLM 5.2 rather than instead of it. Do not treat remaining GPU memory as spare capacity for another large model.
+- **Expect a small share of GPU memory for the vision model.** On the validated pairings the text model reserves about
+  86% of VRAM per GPU and the vision model reserves an additional 4%, leaving roughly 10% headroom on each shared GPU.
+  Qwen 3.5 9B is sized to run next to GLM 5.2 rather than instead of it. Do not treat remaining GPU memory as spare
+  capacity for another large model.
 - **This path covers vision preprocessing only.** It does not configure arbitrary multi-model placement or a separate
   vision API.
 

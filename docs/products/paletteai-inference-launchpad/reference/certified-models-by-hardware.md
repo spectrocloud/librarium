@@ -62,6 +62,18 @@ discuss your use case.
 The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To
 answer questions about images, deploy a small vision model next to the text model and turn on vision preprocessing.
 
-Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal on 8 x B200. For the setup, refer to
+The certified pairing is **GLM 5.2** as the text model and **Qwen 3.5 9B multimodal** as the vision model. Spectro Cloud
+has validated this pairing on the following configurations:
+
+| **GPU configuration** | **Text model** | **Vision model**         | **Validated** |
+| --------------------- | -------------- | ------------------------ | :-----------: |
+| 8 x H200              | GLM 5.2        | Qwen 3.5 9B multimodal   |      ✅       |
+| 8 x B200              | GLM 5.2        | Qwen 3.5 9B multimodal   |      ✅       |
+| 8 x MI325X            | GLM 5.2        | Qwen 3.5 9B multimodal   |      ✅       |
+
+On each configuration, the text model runs at tensor-parallel width 8 across all GPUs, and the vision model runs at
+tensor-parallel width 4 across the first 4 GPUs. Both models share the same physical devices; the appliance isolates
+their memory budgets so they do not compete for the same VRAM allocation. For how that isolation works and what to
+expect from memory usage, refer to
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md). For how the request path works, refer to
 [Vision Preprocessing](../explanation/vision-preprocessing.md).
