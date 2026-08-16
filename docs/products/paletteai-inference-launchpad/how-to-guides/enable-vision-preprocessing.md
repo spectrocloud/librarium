@@ -22,8 +22,8 @@ keep calling the text model they already use. For what the feature does and what
   for this path. To place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
   [Deploy a Model](./deploy-a-model.md).
 - A vision model in the appliance catalog. Qwen 3.5 9B multimodal is the validated vision model for this path.
-- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal
-  on **8 x H200, 8 x B200, and 8 x MI325X**. Both models run on the same physical GPUs; no manual GPU reservation is
+- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal on
+  **8 x H200, 8 x B200, and 8 x MI325X**. Both models run on the same physical GPUs; no manual GPU reservation is
   needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 

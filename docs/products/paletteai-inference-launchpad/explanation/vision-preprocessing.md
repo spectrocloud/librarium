@@ -35,10 +35,10 @@ Spectro Cloud has validated this pairing with GLM 5.2 as the text model and Qwen
 on **8 x H200, 8 x B200, and 8 x MI325X** hardware. Other pairings can work when both models fit on the node. For the
 certified text models, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
-Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs
-for its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes
-each model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs — the
-text model sees all eight, the vision model sees four. Operators do not have to reserve GPUs manually.
+Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs for
+its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes each
+model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs — the text
+model sees all eight, the vision model sees four. Operators do not have to reserve GPUs manually.
 
 ## How an Image Request Is Handled
 
