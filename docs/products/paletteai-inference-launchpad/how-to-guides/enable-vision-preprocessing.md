@@ -22,15 +22,21 @@ keep calling the text model they already use. For what the feature does and what
   for this path. To place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
   [Deploy a Model](./deploy-a-model.md).
 - A vision model in the appliance catalog. Qwen 3.5 9B multimodal is the validated vision model for this path.
-- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal on
-  **8 x H200, 8 x B200, and 8 x MI325X**. Both models run on the same physical GPUs; no manual GPU reservation is
+- Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal
+  on **8 x MI325X, 8 x B200, and 8 x H200**. Both models run on the same physical GPUs; no manual GPU reservation is
   needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
+- The two catalog entries the appliance uses for this pairing are `glm-5.2-shared` (text half) and
+  `qwen-3.5-9B-shared` (vision half). Each carries per-GPU-family variants (MI325X, B200, H200) that hold the
+  memory-budget, tensor-parallel, and engine-argument settings validated on the corresponding hardware. Deploying these
+  two entries is what you do below; you do not edit the variant settings by hand.
 
 ## Deploy Both Models
 
 Vision preprocessing needs two models serving at the same time: the text model that answers users, and the vision model
-that converts images to text. Deploy the text model first, then the vision model.
+that converts images to text. Deploy the text model first, then the vision model. On the validated pairing, choose
+`glm-5.2-shared` as the text half and `qwen-3.5-9B-shared` as the vision half — those are the catalog entries whose
+per-hardware variants carry the tuned deploy configuration.
 
 1. From the left main menu, select **Cluster**.
 

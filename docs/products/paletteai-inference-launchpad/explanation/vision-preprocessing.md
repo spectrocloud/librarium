@@ -32,13 +32,17 @@ read each image and write a text extract: transcribed text, a description of cha
 needed to answer the user's question. The text model does the comparison, reasoning, and final answer.
 
 Spectro Cloud has validated this pairing with GLM 5.2 as the text model and Qwen 3.5 9B multimodal as the vision model
-on **8 x H200, 8 x B200, and 8 x MI325X** hardware. Other pairings can work when both models fit on the node. For the
+on **8 x MI325X, 8 x B200, and 8 x H200** hardware. Other pairings can work when both models fit on the node. For the
 certified text models, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
-Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs for
-its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes each
-model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs — the text
-model sees all eight, the vision model sees four. Operators do not have to reserve GPUs manually.
+The tuned deploy configurations for both halves — memory budgets, tensor-parallel widths, engine arguments — ship in
+the catalog as `glm-5.2-shared` and `qwen-3.5-9B-shared`, with per-GPU-family variants for MI325X, B200, and H200.
+Operators choose the two catalog entries from the console; the appliance selects the right variant for the node.
+
+Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs
+for its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes
+each model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs — the
+text model sees all eight, the vision model sees four. Operators do not have to reserve GPUs manually.
 
 ## How an Image Request Is Handled
 

@@ -67,12 +67,17 @@ has validated this pairing on the following configurations:
 
 | **GPU configuration** | **Text model** | **Vision model**       | **Validated** |
 | --------------------- | -------------- | ---------------------- | :-----------: |
-| 8 x H200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
-| 8 x B200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
 | 8 x MI325X            | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
+| 8 x B200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
+| 8 x H200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
 
 On each configuration, the text model runs at tensor-parallel width 8 across all GPUs, and the vision model runs at
 tensor-parallel width 4 across the first 4 GPUs. Both models share the same physical devices; the appliance isolates
 their memory budgets so they do not compete for the same VRAM allocation. For how that isolation works and what to
 expect from memory usage, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md). For
 how the request path works, refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+
+The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as
+`glm-5.2-shared` and `qwen-3.5-9B-shared`. Each carries per-GPU-family variants — MI325X, B200, and H200 — with the
+memory-budget, tensor-parallel, and engine-argument settings that were validated on the hardware above. Operators do not
+edit these directly; deploying the two catalog entries is enough.
