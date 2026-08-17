@@ -60,8 +60,11 @@ jobs:
 
       - name: Run Spellcheck
         run: |
-          # Run Vale on all markdown files in the docs directory and all mdx files in _partials
-          find docs/docs-content _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
+          # Run Vale on all markdown files in the docs directory and all mdx files in _partials.
+          # docs/products holds independently versioned product doc sets (see productDocs.js);
+          # listing the parent means a new product is covered without editing this workflow.
+          # docs/api-content is deliberately excluded -- it is generated from OpenAPI specs.
+          find docs/docs-content docs/products _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
             ! -iname '*cve*' \
             ! -path 'docs/docs-content/security-bulletins/*' \
             ! -path 'docs/docs-content/security-bulletins/**/*' \
