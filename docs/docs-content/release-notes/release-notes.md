@@ -43,7 +43,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1035 -->
 
 - Fixed an issue where upgrading the `virtual-machine-orchestrator` pack failed with an `invalid ownership metadata`
-  error on clusters that already carried VMO role-based access control (RBAC) objects without Helm ownership metadata.
+  error on clusters that already carried VMO Role-Based Access Control (RBAC) objects without Helm ownership metadata.
   The pack now applies the required metadata to those objects in a pre-upgrade hook, so Helm adopts them instead of
   stopping the upgrade. Refer to [Troubleshooting the VMO Pack](../vm-management/vmo-pack/troubleshooting.md) for the
   manual procedure that applies when you upgrade to a pack version that predates this fix.
