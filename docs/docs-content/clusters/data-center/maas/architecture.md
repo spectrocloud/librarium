@@ -104,7 +104,7 @@ or the machine image configured for them.
 ### SSH Access on OpenShift Workload Clusters
 
 OpenShift workload clusters hosted by a HyperShift host cluster are provisioned through HyperShift's `HostedCluster` and
-`NodePool` custom resources on RHCOS, not through Palette's cloud-init injection path. SSH access to those nodes is
+`NodePool` custom resources on Red Hat Enterprise Linux CoreOS (RHCOS), not through Palette's cloud-init injection path. SSH access to those nodes is
 governed by OpenShift and RHCOS mechanisms rather than by the cluster's **SSH Keys** field.
 
 ## Custom API Server Endpoint for MAAS Clusters
