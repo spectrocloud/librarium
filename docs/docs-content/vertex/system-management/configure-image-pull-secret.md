@@ -128,3 +128,13 @@ self-hosted Palette.
   version="Palette VerteX"
   helm="vertex"
 />
+
+## Troubleshoot Image Pull Secret Propagation
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-troubleshooting"
+  edition="vertex"
+  version="Palette VerteX"
+  helm="vertex"
+/>
