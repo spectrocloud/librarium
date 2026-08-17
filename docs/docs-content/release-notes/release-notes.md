@@ -11,6 +11,43 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 17, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3113 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-976 -->
+
+- The Palette Virtual Machine Orchestrator (VMO) pack now uses the FIPS build of the `spectro-kubectl` image for every
+  Helm hook and job that it ships. The FIPS image is also included in the pack's image list, so airgap content bundles
+  carry it.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9154 -->
+
+- Fixed a race condition between k3s service startup and Palette Edge cluster configuration writes that caused cluster
+  DNS to fail on slow-network boots, preventing Harbor and Harbor-dependent add-ons from coming up.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9239 -->
+
+- Fixed an image reference mismatch between `docker.io` and `index.docker.io` in containerd 2.1.4 that caused Longhorn
+  manager and driver-deployer pods to enter `ImagePullBackOff` on edge appliances without outbound Docker Hub access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9263 -->
+
+- Fixed an issue where content bundles uploaded via the Local UI were not synced, leaving packs and images unavailable
+  after a successful upload.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1035 -->
+
+- Fixed an issue where upgrading the `virtual-machine-orchestrator` pack failed with an `invalid ownership metadata`
+  error on clusters that already carried VMO role-based access control (RBAC) objects without Helm ownership metadata.
+  The pack now applies the required metadata to those objects in a pre-upgrade hook, so Helm adopts them instead of
+  stopping the upgrade. Refer to [Troubleshooting the VMO Pack](../vm-management/vmo-pack/troubleshooting.md) for the
+  manual procedure that applies when you upgrade to a pack version that predates this fix.
+
 ## August 14, 2026 - Component Updates {#component-updates-2026-33}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3104 -->
