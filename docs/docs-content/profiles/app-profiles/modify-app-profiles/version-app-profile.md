@@ -31,7 +31,8 @@ New versions of an app profile may add or remove layers, contain new pack versio
 
 4. From the **drop-down Menu** next to the app profile name, select **Create New Version**.
 
-5. Provide the version number using `major.minor.patch` format.
+5. Provide the version number as a strict [Semantic Versioning](https://semver.org) value in `major.minor.patch` format,
+   for example `1.2.3` or `1.2.3-rc.1`. Palette rejects malformed strings such as `2.2.2.develop`, `b0.0.1`, or `v1.2`.
 
 6. Click on **Confirm**. Palette displays a versioning successful message.
 

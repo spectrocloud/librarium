@@ -21,6 +21,16 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.0}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11143 -->
+
+- Cluster profile and app profile versions supplied through the Palette UI, API, Terraform provider, or Crossplane
+  provider are now validated against the [Semantic Versioning](https://semver.org) specification. Values such as
+  `2.2.2.develop` or `b0.0.1` that earlier releases accepted are rejected on both create and update, while values such
+  as `1.2.3` and `1.2.3-rc.1` remain valid. External registry and chart tags, including Zarf UDS tags, continue to be
+  parsed leniently. For the accepted format, refer to
+  [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
+  [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->

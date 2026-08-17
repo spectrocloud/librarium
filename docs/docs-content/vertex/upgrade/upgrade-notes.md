@@ -28,3 +28,15 @@ A known issue impacts all self-hosted Palette instances older then 4.4.14. Befor
 version older than 4.4.14, ensure that you execute a utility script to make all your cluster IDs unique in your
 Persistent Volume Claim (PVC) metadata. For more information, refer to the
 [Troubleshooting Guide](../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+
+## VerteX 4.10
+
+Palette VerteX 4.10 validates user-supplied cluster profile and app profile versions against the
+[Semantic Versioning](https://semver.org) specification. Before upgrading, audit your existing cluster profiles and app
+profiles for malformed version strings. Values such as `2.2.2.develop` or `b0.0.1` that earlier releases accepted are
+rejected on any subsequent update until the version is corrected. Values such as `1.2.3` and `1.2.3-rc.1` remain valid.
+External registry and chart tags, including Zarf UDS tags, are unaffected.
+
+For the accepted format, refer to
+[Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
+[Version an App Profile](../../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
