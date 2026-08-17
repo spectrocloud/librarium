@@ -32,6 +32,13 @@ Confirm each prerequisite before starting:
 - The appliance server and administrative workstation (jumpbox) meet the
   [Hardware Requirements](../reference/hardware-requirements.md), which covers GPU, CPU, RAM, storage, network, and IP
   addressing.
+- **Above 4G Decoding** and **Re-Size BAR Support** are enabled in the appliance server's BIOS. Both settings are
+  required on any server with GPUs, for every GPU brand and every server brand, and you must enable them before you boot
+  the slim ISO. If either setting is turned off, the slim ISO may not appear in the boot menu, or the screen may go
+  black after you select it. Setting names and menu paths vary by server vendor, so refer to your server vendor's
+  documentation to enable both settings. **Re-Size BAR Support** is also called **Resizable BAR** or **Smart Access
+  Memory**. For the symptoms, refer to
+  [Known Issues: Slim ISO Does Not Boot on a GPU Server](../reference/known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
 - The Palette CLI is installed and configured on the jumpbox.
 - The hardware supports Ubuntu 24.04.
 - The server has [baseboard management controller (BMC)](../reference/glossary.md#bmc) access available for
@@ -72,7 +79,10 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
 2. Attach the media to the node and set the boot order to boot from it first.
 3. Power on the node. At the GRUB menu, let it select the Palette Edge interactive installer. After the selection, the
    screen can stay blank for several minutes with no output while the installer loads. This is expected, so wait for the
-   interactive installer to appear instead of assuming the boot has stalled.
+   interactive installer to appear instead of assuming the boot has stalled. If the media never appears in the boot
+   menu, or the screen stays black and the interactive installer never appears, confirm that **Above 4G Decoding** and
+   **Re-Size BAR Support** are enabled in the BIOS. Refer to
+   [Known Issues: Slim ISO Does Not Boot on a GPU Server](../reference/known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
 4. In the interactive installer:
    - When the installer prompts for the registration option after its first boot, select **Palette eXtended Kubernetes
      (PXK)**. This registers the node with the edge Kubernetes distribution the appliance uses.
