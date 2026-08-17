@@ -35,13 +35,13 @@ Spectro Cloud has validated this pairing with GLM 5.2 as the text model and Qwen
 on **8 x MI325X, 8 x B200, and 8 x H200** hardware. Other pairings can work when both models fit on the node. For the
 certified text models, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
-The tuned deploy configurations for both halves — memory budgets, tensor-parallel widths, engine arguments — ship in the
-catalog as `glm-5.2-shared` and `qwen-3.5-9B-shared`, with per-GPU-family variants for MI325X, B200, and H200. Operators
-choose the two catalog entries from the console; the appliance selects the right variant for the node.
+The tuned deploy configurations for both halves, covering memory budgets, tensor-parallel widths, and engine arguments,
+ship in the catalog as `glm-5.2-shared` and `qwen-3.5-9B-shared`, with per-GPU-family variants for MI325X, B200, and
+H200. Operators choose the two catalog entries from the console; the appliance selects the right variant for the node.
 
 Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs for
 its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes each
-model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs — the text
+model's VRAM budget so their memory allocations do not overlap, and each model sees only the GPUs it needs. The text
 model sees all eight, the vision model sees four. Operators do not have to reserve GPUs manually.
 
 ## How an Image Request Is Handled
@@ -62,13 +62,13 @@ vision model.
 Only images added in the current turn go to the vision model. Images from earlier turns are already text in the
 conversation, so they are not processed again. Raw images never reach the text model.
 
-## What Clients See
+## What Changes on the Client
 
 Nothing changes on the client. The request still goes to the text model, or to a model alias such as `claude-opus-4-8`,
 and the response comes back in the normal shape. There is no separate vision URL to configure, and coding assistants do
 not need a second provider.
 
-In Claude Code, a file path or a pasted screenshot is enough:
+In Claude Code, a file path or a pasted screenshot is enough.
 
 ```text
 What is the prefix cache hit rate in this screenshot, and is that healthy?
@@ -76,22 +76,24 @@ What is the prefix cache hit rate in this screenshot, and is that healthy?
 
 ## Image Limits
 
-The **Max images per request** setting on **Settings** > **Configurations** is a per-turn cap. The default is 8. Keep
-each turn at or below this value.
+A per-turn cap governs how many images a single request can carry. The default is 8.
 
-If a turn includes more images than the cap, the appliance processes images up to the cap and skips the rest with a
-notice in the request. It does not drop extra images silently. Ask about the remaining images in a follow-up message.
+When a turn carries more images than the cap allows, the appliance processes images up to the limit and skips the rest
+with a notice in the request rather than dropping them silently, so the client can tell that something was left out.
+Text-only turns are not affected by the cap.
 
-Text-only turns are not affected by this cap.
+The cap is configurable. For where the setting lives and how to change it, refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ## The Vision Model Is Not a Chat Model
 
 The vision model is a preprocessing stage, not a general-purpose assistant. It is sized to convert a small number of
-images to text. It is not sized for ordinary coding-assistant sessions.
+images to text, not to hold ordinary coding-assistant sessions.
 
-Do not set the vision model as the [default model](./architecture.md#the-default-model), and do not route general chat
-or tool-using sessions to it. Keep client routing pointed at the text model. For how routing works, refer to
-[Request Routing](./architecture.md#request-routing).
+That sizing is what makes it unsuited to serving as the [default model](./architecture.md#the-default-model) or as the
+target of general chat and tool-using traffic. It shares each GPU with the text model and receives only a small share of
+that memory, so it has neither the context window nor the throughput such sessions expect. Client routing therefore
+stays pointed at the text model. For how routing works, refer to [Request Routing](./architecture.md#request-routing).
 
 ## What Vision Preprocessing Is Not
 

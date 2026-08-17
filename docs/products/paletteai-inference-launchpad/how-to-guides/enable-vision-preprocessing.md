@@ -12,7 +12,7 @@ keywords: ["launchpad", "ai", "vision", "multimodal", "preprocessing", "images",
 
 This guide explains how to enable vision preprocessing on a running PaletteAI Inference Launchpad appliance. After you
 finish, a text-only model such as GLM 5.2 can answer questions about screenshots and other images. Coding assistants
-keep calling the text model they already use. For what the feature does and what clients see, refer to
+keep calling the text model they already use. For what the feature does and what clients receive, refer to
 [Vision Preprocessing](../explanation/vision-preprocessing.md).
 
 ## Prerequisites
@@ -26,16 +26,15 @@ keep calling the text model they already use. For what the feature does and what
   **8 x MI325X, 8 x B200, and 8 x H200**. Both models run on the same physical GPUs; no manual GPU reservation is
   needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
-- The two catalog entries the appliance uses for this pairing are `glm-5.2-shared` (text half) and `qwen-3.5-9B-shared`
-  (vision half). Each carries per-GPU-family variants (MI325X, B200, H200) that hold the memory-budget, tensor-parallel,
-  and engine-argument settings validated on the corresponding hardware. Deploying these two entries is what you do
-  below; you do not edit the variant settings by hand.
+- The catalog entries `glm-5.2-shared` (text half) and `qwen-3.5-9B-shared` (vision half). You deploy these two entries
+  in the steps below and do not edit their settings by hand. For the per-GPU-family variants each entry carries, refer
+  to [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
 
 ## Deploy Both Models
 
 Vision preprocessing needs two models serving at the same time: the text model that answers users, and the vision model
 that converts images to text. Deploy the text model first, then the vision model. On the validated pairing, choose
-`glm-5.2-shared` as the text half and `qwen-3.5-9B-shared` as the vision half — those are the catalog entries whose
+`glm-5.2-shared` as the text half and `qwen-3.5-9B-shared` as the vision half. Those are the catalog entries whose
 per-hardware variants carry the tuned deploy configuration.
 
 1. From the left main menu, select **Cluster**.
@@ -56,7 +55,7 @@ per-hardware variants carry the tuned deploy configuration.
 :::info
 
 The **Multimodal preprocessing** card on **Settings** > **Configurations** appears after a second model is available, or
-when vision preprocessing is already on. If you do not see the card, confirm both models are serving, then open
+when vision preprocessing is already on. If the card does not appear, confirm both models are serving, then open
 **Settings** again.
 
 :::
@@ -138,10 +137,10 @@ requests continue to work.
   images. Text-only requests are unaffected.
 - **Stay within the image cap.** The default cap is 8 images per turn. Extra images in the same turn are skipped with a
   notice. Ask about them in a follow-up message.
-- **Expect a small share of GPU memory for the vision model.** On the validated pairings the text model reserves about
-  86% of VRAM per GPU and the vision model reserves an additional 4%, leaving roughly 10% headroom on each shared GPU.
-  Qwen 3.5 9B is sized to run next to GLM 5.2 rather than instead of it. Do not treat remaining GPU memory as spare
-  capacity for another large model.
+- **Expect the vision model to occupy GPU memory alongside the text model.** Qwen 3.5 9B is sized to run next to GLM 5.2
+  rather than instead of it, and together the two reserve most of the VRAM on each shared GPU. Do not treat the
+  remainder as spare capacity for another large model. For the per-GPU memory split, refer to
+  [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
 - **This path covers vision preprocessing only.** It does not configure arbitrary multi-model placement or a separate
   vision API.
 
