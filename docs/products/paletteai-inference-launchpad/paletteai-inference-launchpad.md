@@ -11,7 +11,7 @@ tags:
   - paletteai-inference-launchpad
   - overview
   - explanation
-keywords: ["launchpad", "ai", "bring your own model", "byom", "certified models", "appliance"]
+keywords: ["launchpad", "ai", "bring your own model", "certified models", "appliance"]
 ---
 
 PaletteAI Inference Launchpad turns your own hardware into a private AI platform. Boot the image, load a model, and you
@@ -59,8 +59,20 @@ manages the lifecycle of containerized workloads on top, handling scheduling, sc
 
 vLLM serves language models with high GPU throughput and handles concurrent requests from many users. The appliance
 ships with the ability to download one of these flagship open-weight models (GLM, DeepSeek, Kimi, or Gemma) and run it
-entirely on your hardware with no external API calls, and it can also serve a model you supply yourself. NVIDIA and AMD
-GPU support provides the parallel processing that large language models require to respond at production speed.
+entirely on your hardware with no external API calls. NVIDIA and AMD GPU support provides the parallel processing that
+large language models require to respond at production speed. The certified models are a starting point rather than a
+boundary, so you can also bring your own model and serve it alongside them. Bringing your own model means you author its
+metadata and validate it on your hardware yourself, rather than starting from a configuration Spectro Cloud has already
+tested.
+
+A model you bring must still fit within the GPU resources available on your appliance, which is the same constraint that
+governs the certified list. To understand what certification covers and how it is granted, refer to
+[Model Certification](./explanation/model-certification.md). If you want a specific model certified for your hardware,
+[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
+
+{/* NEEDS REVIEW: confirm the support expectation for an uncertified model before publishing, per the acceptance criteria on the bring-your-own-model epic. State plainly whether such a model is covered by a support agreement or is best effort. */}
+
+{/* NEEDS REVIEW: the upload guide warns that the appliance surfaces an uploaded model only when it matches the curated catalog, which reads as a contradiction of the two preceding sentences. Confirm which behavior ships, then reconcile the two pages. */}
 
 Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require
 low latency stay local. Other requests can route outbound when the network allows.
@@ -71,39 +83,6 @@ appliance identifies callers and meters their usage, refer to [Clients and Quota
 
 The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
 independently without replacing the entire appliance image.
-
-{/* Vale is off for the heading only: the headings-title rule matches any heading whose first word ends in `-ing` instead of checking the part of speech, so it rejects the verb Bring. */}
-
-<!-- vale off -->
-
-## Bring Your Own Model
-
-<!-- vale on -->
-
-The certified models are a starting point, not a boundary. Spectro Cloud certifies a focused set of models so that you
-know they load and serve correctly on your GPU configuration, but you are not limited to that list. You can bring your
-own model to the appliance and serve it alongside the certified ones.
-
-Both cases take the same path onto the appliance. You download the model onto an administrative workstation and transfer
-it to the appliance with the Palette CLI. To follow the steps, refer to
-[Upload a Model](./how-to-guides/upload-a-model.md).
-
-What changes is how much of the work Spectro Cloud has already done for you.
-
-|                                         | **Certified model**              | **Your own model**            |
-| --------------------------------------- | -------------------------------- | ----------------------------- |
-| **Validated on your GPU configuration** | Yes, tested by Spectro Cloud     | No, you validate it yourself  |
-| **Serving configuration**               | Supplied with the model metadata | You author the model metadata |
-| **Known to fit a supported GPU layout** | Yes, published per configuration | You size it against your GPUs |
-
-A model you bring must still fit within the GPU resources available on your appliance, which is the same constraint that
-governs the certified list. To understand what certification covers and how it is granted, refer to
-[Model Certification](./explanation/model-certification.md). If you want a specific model certified for your hardware,
-[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
-
-{/* NEEDS REVIEW: confirm the support expectation for an uncertified model before publishing, per the acceptance criteria on the bring-your-own-model epic. State plainly whether an uncertified model is covered by a support agreement or is best effort, and add that line to the comparison table. */}
-
-{/* NEEDS REVIEW: the upload guide warns that the appliance surfaces an uploaded model only when it matches the curated catalog, which reads as a contradiction of this section. Confirm which behavior ships, then reconcile the two pages. */}
 
 ## PaletteAI Inference Launchpad or PaletteAI
 
