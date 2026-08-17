@@ -94,10 +94,51 @@ jobs:
       actions: read
       contents: read
       pull-requests: write
+    # The base commit this job's build was actually produced from. take-screenshots consumes
+    # the build artifact this job uploads, so this job's checkout is the authority on what the
+    # reference set has to match.
+    outputs:
+      base-sha: ${{ steps.base_commit.outputs.sha }}
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # Needed for the base-commit resolution below: at the default depth of 1 the merge
+          # commit is shallow-grafted, which hides its parents and makes HEAD^1 unresolvable.
+          #
+          # 2 is the whole requirement, and it must not be widened to 0 as a convenience.
+          # fetch-depth: 0 fetches every ref, and this repository is roughly 9 GB on GitHub,
+          # about 80% of which is 40k Playwright PNGs under reports/ on gh-pages. That clone
+          # is fatal in CI. See DOC-3101, where the same suggestion was raised and rejected.
+          fetch-depth: 2
+
+      # On `pull_request`, actions/checkout leaves HEAD at refs/pull/N/merge: this PR's head
+      # merged into the base branch as of checkout time. Its first parent is therefore the
+      # exact base commit this build is produced from, which is what a reference set has to
+      # match to make the visual diff attributable.
+      #
+      # Do not substitute github.event.pull_request.base.sha here. That value is snapshotted
+      # into the webhook payload when the triggering event fired, while GitHub recomputes the
+      # merge ref whenever master moves. The two drift on a re-run, on a queued run, and on
+      # any merge landing in the half hour before this checkout. When they drift and a set
+      # happens to exist for the stale payload value, the lookup reports EXACT and claims the
+      # diff is attributable, against a commit the build never contained. That is the exact
+      # failure this work set out to remove, so it must not be reintroduced as a false
+      # positive. See DOC-3103 addendum.
+      - name: Resolve Base Commit
+        id: base_commit
+        env:
+          PAYLOAD_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if BASE_SHA=$(git rev-parse --verify --quiet "HEAD^1"); then
+            echo "Base commit resolved from the merge ref: $BASE_SHA"
+          else
+            BASE_SHA="$PAYLOAD_BASE_SHA"
+            echo "HEAD is not a merge commit. Falling back to the event payload: $BASE_SHA"
+            echo "This value can be stale; treat an EXACT match below with suspicion."
+          fi
+          echo "sha=$BASE_SHA" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js Environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
@@ -114,10 +155,10 @@ jobs:
       - name: Verify Reference Screenshots Are Available
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # The commit this PR merges into. Asking for its reference set means the diff
-          # shows only what the PR changed, rather than also showing whatever landed on
-          # master since the last capture. Falls back to the newest set if none exists.
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          # Asking for the base commit's reference set means the diff shows only what this PR
+          # changed, rather than also showing whatever landed on master since the last
+          # capture. Falls back to the newest set if none exists. See Resolve Base Commit.
+          BASE_SHA: ${{ steps.base_commit.outputs.sha }}
         run: ./scripts/screenshot_artifacts.sh --check-only --match-sha "$BASE_SHA"
 
       - name: Post PR Comment
@@ -237,7 +278,10 @@ jobs:
 
       - name: Download Reference Screenshots
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          # Resolved once in create-assets, from the merge ref that produced the build these
+          # shards download. Deliberately not github.event.pull_request.base.sha, which can
+          # be stale by the time this runs. See create-assets' Resolve Base Commit step.
+          BASE_SHA: ${{ needs.create-assets.outputs.base-sha }}
         run: ./scripts/screenshot_artifacts.sh --match-sha "$BASE_SHA" ./screenshots
 
       - name: Take screenshots with Playwright

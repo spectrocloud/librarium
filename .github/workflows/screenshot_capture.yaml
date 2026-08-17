@@ -1,4 +1,6 @@
-# This workflow is triggered by the "Release to Production" workflow or when manually triggered.
+# This workflow runs on every push to master, and can also be triggered manually. It used to
+# be invoked by the "Release to Production" workflow on a schedule; see the DOC-3103 addendum
+# for why that changed.
 # The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
 # The screenshots can be used to compare the visual appearance of the website before and after a release.
 # The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
@@ -28,16 +30,16 @@ on:
     branches: [master]
     paths-ignore:
       - ".github/**"
-  workflow_call:
   workflow_dispatch:
 
 concurrency:
   # Master commits cluster: about 1 in 5 arrives within 30 minutes of the previous one, which
   # is inside a capture's 32-minute runtime. Without this, bursts stack up overlapping runs.
   #
-  # The group includes the event name so a push-triggered capture can never cancel one that
-  # release.yaml invoked through workflow_call; cancelling that would fail the release run.
-  # cancel-in-progress is likewise limited to pushes for the same reason.
+  # The group includes the event name so a push-triggered capture can never cancel a manual
+  # workflow_dispatch, and cancel-in-progress is limited to pushes for the same reason.
+  # Someone who dispatches a capture by hand is usually rebuilding a set deliberately, and
+  # having the next merge to master kill it 5 minutes in would be baffling.
   #
   # Consequence worth knowing: commits in the middle of a burst never get their own reference
   # set, because their capture is cancelled. That is safe only because the lookup falls back

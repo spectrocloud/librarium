@@ -26,7 +26,15 @@ MATCH_SHA=""
 while [ $# -gt 0 ]; do
     case "$1" in
         --check-only) CHECK_ONLY=true; shift ;;
-        --match-sha)  MATCH_SHA="$2"; shift 2 ;;
+        --match-sha)
+            # Guard the value explicitly. Without this, `--match-sha` as the final argument
+            # makes `shift 2` fail on a single remaining positional, and `set -e` then kills
+            # the script with no message at all.
+            if [ $# -lt 2 ]; then
+                echo "Error: --match-sha requires a commit SHA." >&2
+                exit 1
+            fi
+            MATCH_SHA="$2"; shift 2 ;;
         *)            break ;;
     esac
 done
@@ -78,11 +86,17 @@ perform_curl() {
 # Fetch every artifact named "screenshots" across the repository.
 #
 # This deliberately queries the repository-wide artifacts endpoint rather than
-# screenshot_capture.yaml's own run list. That workflow is invoked through `workflow_call`
-# from release.yaml on a schedule, and a called workflow does not get its own entry under
-# the callee's runs endpoint. Scoping the search to screenshot_capture.yaml therefore only
-# ever finds manual workflow_dispatch runs, whose artifacts have usually expired, while
-# fresh scheduled artifacts sit unused. See DOC-3103.
+# screenshot_capture.yaml's own run list.
+#
+# The original reason was that the workflow only ran through `workflow_call` from
+# release.yaml, and a called workflow gets no entry under the callee's runs endpoint, so
+# scoping the search to screenshot_capture.yaml found nothing but stale workflow_dispatch
+# runs. See DOC-3103. That call is gone as of the DOC-3103 addendum and captures now run on
+# push, which do get their own entries, so a scoped query would work today.
+#
+# Keep the repository-wide query anyway: it is agnostic about which trigger produced a set,
+# so a workflow_dispatch capture and any future caller are both discoverable without
+# touching this code.
 ARTIFACTS=$(perform_curl "https://api.github.com/repos/$OWNER/$REPO/actions/artifacts?name=$ARTIFACT_NAME&per_page=100")
 
 TOTAL_COUNT=$(echo "$ARTIFACTS" | jq -r '.total_count')
@@ -118,9 +132,9 @@ fi
 if [ -z "$SELECTED" ]; then
     echo "No unexpired '$ARTIFACT_NAME' artifact is available ⛔"
     echo ""
-    echo "Reference screenshots are produced by screenshot_capture.yaml, which release.yaml"
-    echo "calls on a schedule. Every candidate below has passed its retention window, which"
-    echo "means that schedule has not produced a usable artifact recently."
+    echo "Reference screenshots are produced by screenshot_capture.yaml, which runs on every"
+    echo "push to master. Every candidate below has passed its 3-day retention window, so no"
+    echo "capture has completed successfully in that time. Check that workflow's recent runs."
     echo ""
     echo "Most recent '$ARTIFACT_NAME' artifacts:"
     echo "$ARTIFACTS" | jq -r '.artifacts | sort_by(.created_at) | reverse | .[0:5][]
@@ -156,6 +170,12 @@ case "$MATCH_KIND" in
         echo "  match:       FALLBACK, no set exists for the requested commit $MATCH_SHA."
         echo "               Differences may include changes made on master between"
         echo "               $SOURCE_SHA and $MATCH_SHA, not just this PR's changes."
+        echo ""
+        echo "               Before treating that as contamination, compare the two commits."
+        echo "               screenshot_capture.yaml skips commits touching only .github/**,"
+        echo "               because they build a byte-identical site. If everything between"
+        echo "               them is workflow-only, this set is still a correct reference and"
+        echo "               the diff is attributable to this PR after all."
         ;;
     newest)
         echo "  match:       NEWEST, no specific commit was requested."
