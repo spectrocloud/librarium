@@ -69,29 +69,150 @@ subdomain, or DNS entry is involved. The registry of these products is [productD
 
 ### Cut a New Product Version
 
-Cut version N from the current docs **immediately before** merging the version N+1 content. `master` always publishes
-the latest _released_ documentation, so cutting afterwards would archive the wrong content.
+> [!WARNING]
+>
+> **You archive the version you are leaving, not the version you are shipping.**
+>
+> When PaletteAI Inference Launchpad 1.1.0 ships, you cut `1.0.x`. Running the command with `1.1.0` freezes the new
+> documentation as an archive and leaves the old content published as `latest`. Nothing errors when you get this
+> backwards, so check the number before you run it.
 
-1. Cut the version. Use the product `id` from `productDocs.js` and the `X.Y.x` naming convention.
+The examples below cut `1.0.x` at the moment 1.1.0 ships. Substitute your own product `id` and version.
+
+#### Before You Begin
+
+- The 1.1.0 content is written and reviewed, but **not yet merged into `master`**. The cut copies whatever is on disk,
+  so any 1.1.0 content present when you run it lands in the 1.0.x archive by mistake.
+- Your `.env` file has `ALGOLIA_APP_ID`, `ALGOLIA_SEARCH_KEY`, and `ALGOLIA_INDEX_NAME` set. `make init` adds
+  placeholders. Without them the command fails with `"algolia.appId" is required`.
+- You are on a branch off the current `master`, not on a `version-X-Y` branch.
+
+#### Name the Version
+
+Use `X.Y.x`, so `1.0.x` rather than `1.0.0`. Two reasons:
+
+- One archive covers a whole patch line. A fix released as 1.0.4 belongs in the `1.0.x` archive, not a new one.
+- `visuals/screenshot.docs.spec.ts` skips paths matching `/\d+\.\d+\.x\//`. A version named `1.0.0` is not excluded, so
+  every archived page enters visual regression testing.
+
+#### Steps
+
+1. Confirm you are cutting the version you are leaving behind. List what already exists.
+
+   ```shell
+   cat inference-launchpad_versions.json 2>/dev/null || echo "no versions cut yet"
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   no versions cut yet
+   ```
+
+2. Cut the version. Use the product `id` from [productDocs.js](../../productDocs.js).
 
    ```shell
    npm run docusaurus -- docs:version:inference-launchpad 1.0.x
    ```
 
-   This creates `inference-launchpad_versioned_docs/version-1.0.x/`, `inference-launchpad_versioned_sidebars/`, and
-   `inference-launchpad_versions.json`. All three are committed.
-
-2. Confirm the version was created.
-
    ```bash hideClipboard title="Expected output"
    [SUCCESS] [inference-launchpad]: version 1.0.x created!
    ```
 
-3. Build and confirm that the current documentation URLs did not change, that the new version is reachable under
-   `/<routeBasePath>/1.0.x/`, and that the version dropdown now appears on that product's pages.
+3. Confirm the three artifacts exist. All three are committed.
+
+   ```shell
+   ls -d inference-launchpad_versioned_docs/version-1.0.x inference-launchpad_versioned_sidebars && cat inference-launchpad_versions.json
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   inference-launchpad_versioned_docs/version-1.0.x
+   inference-launchpad_versioned_sidebars
+   [
+     "1.0.x"
+   ]
+   ```
+
+4. Confirm the archive holds the released content and not the new content. The file count must match the live folder.
+
+   ```shell
+   find inference-launchpad_versioned_docs/version-1.0.x -name '*.md' | wc -l
+   find docs/products/paletteai-inference-launchpad -name '*.md' | wc -l
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   37
+   37
+   ```
+
+5. Build the site.
+
+   ```shell
+   make build
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   [SUCCESS] Generated static files in "build".
+   ```
+
+6. Confirm the current documentation URLs did not change. This count must be identical before and after the cut.
+
+   ```shell
+   find build/paletteai-inference-launchpad -name index.html | grep -v '/tags/' | grep -v '/1.0.x/' | wc -l
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   37
+   ```
+
+7. Confirm the archive is reachable and de-indexed.
+
+   ```shell
+   grep -o 'content="noindex, nofollow"' build/paletteai-inference-launchpad/1.0.x/index.html
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   content="noindex, nofollow"
+   ```
+
+8. Commit all three artifacts, open a pull request against `master`, and confirm on the Netlify deploy preview that the
+   version dropdown now lists `latest` and `v1.0.x`, and that switching versions from a nested page keeps you on the
+   same page.
+
+9. Merge the cut, then merge the 1.1.0 content. Alternatively, put both in one pull request with the cut as the
+   **first** commit. Either way the cut must land first, or the archive captures 1.1.0 content.
 
 No configuration edit is required. The registry reads `<id>_versions.json` from disk, which is why the dropdown appears
-on its own and why the config can never name a version that has not been cut.
+on its own, and why the configuration can never name a version that has not been cut.
+
+#### If You Cut the Wrong Version
+
+Before committing, delete the three artifacts and start again. Nothing else changed.
+
+```shell
+rm -rf inference-launchpad_versioned_docs inference-launchpad_versioned_sidebars inference-launchpad_versions.json
+```
+
+```bash hideClipboard title="Expected output"
+(no output)
+```
+
+After committing, revert the commit. After merging, the archive is in the published site and in git history, so remove
+it in a follow-up pull request and note the correction in the release notes.
+
+#### Common Mistakes
+
+| Mistake                                             | What happens                                                                  |
+| --------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Cutting `1.1.0` instead of `1.0.x`                  | The new content becomes the archive. No error is raised.                      |
+| Cutting after merging the 1.1.0 content             | The archive contains 1.1.0 content, so both versions show the same pages.     |
+| Naming the version `1.0.0` instead of `1.0.x`       | Archived pages are not excluded from visual regression testing.               |
+| Editing files under `<id>_versioned_docs/` by habit | You are editing a shipped version. Everyday edits belong in `docs/products/`. |
+| Running the command without `.env` loaded           | Fails with `"algolia.appId" is required`.                                     |
+
+> [!NOTE]
+>
+> Do not create a `docs-rel-*` branch for a product release. That branch pattern deploys to
+> `docs-latest.spectrocloud.com`, which Palette release previews use, and a second branch would overwrite whatever is
+> published there. Use an ordinary feature branch and the Netlify deploy preview instead.
 
 Archived versions are set to `noIndex`, matching how `version-X-Y` branches are treated by
 [versions_robot.yaml](../../.github/workflows/versions_robot.yaml). This also removes them from `sitemap.xml`, and
