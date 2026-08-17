@@ -101,10 +101,16 @@ init: ## Initialize npm dependencies
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npm run prepare
 
+# SHARP_IGNORE_GLOBAL_LIBVIPS forces sharp to use its prebuilt binaries instead of compiling from source.
+# Without it, sharp prefers any compatible libvips it finds on the system (for example a Homebrew `vips`
+# install), which pulls in node-gyp and a C++ toolchain. That source build is unreliable here because the
+# nested sharp copies under @argos-ci/cli and @argos-ci/core resolve their node-addon-api gyp include to
+# the same generated makefile, so building them concurrently races and fails with
+# "No rule to make target `Release/nothing.a'". CI has no global libvips and so never hits this.
 ci-local: ## Initialize npm dependencies for local development
 	@echo "initializing npm dependencies for local development"
 	npm ci --ignore-scripts
-	npm_config_ignore_scripts=false npm rebuild sharp
+	SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_ignore_scripts=false npm rebuild sharp
 
 start: ## Start a local development server
 	npm run start
