@@ -72,7 +72,13 @@ appliance identifies callers and meters their usage, refer to [Clients and Quota
 The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
 independently without replacing the entire appliance image.
 
-## Use Your Own Model
+{/* Vale is off for the heading only: the headings-title rule matches any heading whose first word ends in `-ing` instead of checking the part of speech, so it rejects the verb Bring. */}
+
+<!-- vale off -->
+
+## Bring Your Own Model
+
+<!-- vale on -->
 
 The certified models are a starting point, not a boundary. Spectro Cloud certifies a focused set of models so that you
 know they load and serve correctly on your GPU configuration, but you are not limited to that list. You can bring your
