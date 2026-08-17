@@ -235,3 +235,74 @@ check_env() {
 
     return 0    
 }
+
+# Utility function to check whether the Super API currently accepts SUPER_API_TOKEN.
+# Super only issues personal API keys, and a key returns HTTP 401 until its owner has
+# signed in to https://app.super.work through SSO. The Super API has no unauthenticated
+# health endpoint to probe - routing happens before authentication, so every other path
+# returns 404 regardless of the token - so this sends a trivial question to the assistant.
+# Params:
+# $1 - Super assistant ID
+# Returns 0 if Super accepts the token, 1 if Super rejects it.
+check_super_auth() {
+    local assistant_id="$1"
+    local status
+
+    status=$(curl -s --max-time 60 \
+        --output /dev/null \
+        --write-out '%{http_code}' \
+        --request POST \
+        --url https://api.super.work/v1/super \
+        --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
+        --header "Content-Type: application/json" \
+        --data "$(jq -n --arg question "Reply with the single word OK." --arg assistantID "$assistant_id" '{question: $question, assistantId: $assistantID}')" || echo "000")
+
+    if [[ "$status" == "401" || "$status" == "403" ]]; then
+        return 1
+    fi
+
+    # Any other status, including a network failure reported as 000, is left for the
+    # calling script's own retry loop to handle.
+    return 0
+}
+
+# Utility function to confirm Super authentication before a script does any other work,
+# so a lapsed SSO session fails immediately instead of after every issue tracker call.
+# In an interactive terminal, a rejected token opens Super so that the SSO login can be
+# completed, waits, then checks again. There is no browser in CI, so the script stops.
+# Params:
+# $1 - Super assistant ID
+# Returns 0 if Super accepts the token, 1 if the script should stop.
+require_super_auth() {
+    local assistant_id="$1"
+
+    echo "Verifying that Super accepts SUPER_API_TOKEN..."
+
+    if check_super_auth "$assistant_id"; then
+        echo "✅ Super accepted SUPER_API_TOKEN."
+        return 0
+    fi
+
+    if [[ ! -t 0 || -n "${CI:-}" ]]; then
+        echo "❌ Super rejected SUPER_API_TOKEN (HTTP 401). Super API keys are personal and are only valid while their owner has a current SSO session. Sign in at https://app.super.work and run this job again." >&2
+        return 1
+    fi
+
+    echo "🔐 Super rejected SUPER_API_TOKEN (HTTP 401). Your Super SSO session has lapsed."
+
+    if command -v open >/dev/null 2>&1; then
+        open "https://app.super.work"
+    else
+        echo "ℹ️  Sign in to Super at https://app.super.work."
+    fi
+
+    read -r -p "Press Enter once you have signed in to Super: "
+
+    if check_super_auth "$assistant_id"; then
+        echo "✅ Super accepted SUPER_API_TOKEN."
+        return 0
+    fi
+
+    echo "❌ Super still rejects SUPER_API_TOKEN. Confirm that SUPER_API_TOKEN in your .env file matches a current key in your Super settings." >&2
+    return 1
+}
