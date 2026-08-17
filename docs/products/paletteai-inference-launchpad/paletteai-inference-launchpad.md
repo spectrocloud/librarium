@@ -1,5 +1,6 @@
 ---
 id: overview
+slug: /
 title: What is PaletteAI Inference Launchpad?
 description: >
   PaletteAI Inference Launchpad is a standalone, turnkey AI appliance that lets enterprises run large language models on
