@@ -1,0 +1,1082 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.api.spec.ts >> API docs screenshots >> pathname /api/v1/v-1-spectro-clusters-uid-variables-patch/
+- Location: visuals/screenshot.api.spec.ts:31:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  294 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 294 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 294 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - link "Introduction" [ref=e46] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e48]
+                  - text: Introduction
+              - listitem [ref=e50]:
+                - link "Example Usage" [ref=e51] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e52]:
+                - link "Postman Collection" [ref=e53] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "Palette API V1" [expanded] [ref=e56] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e57] [cursor=pointer]
+                - list [ref=e58]:
+                  - listitem [ref=e59]:
+                    - link "Introduction" [ref=e60] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-9/
+                  - listitem [ref=e61]:
+                    - generic [ref=e62]:
+                      - link "Activations" [ref=e63] [cursor=pointer]:
+                        - /url: /api/v1/activations/
+                      - button "Toggle the collapsible sidebar category 'Activations'" [ref=e64] [cursor=pointer]
+                  - listitem [ref=e65]:
+                    - generic [ref=e66]:
+                      - link "Api Keys" [ref=e67] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e68] [cursor=pointer]
+                  - listitem [ref=e69]:
+                    - generic [ref=e70]:
+                      - link "App Deployments" [ref=e71] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e72] [cursor=pointer]
+                  - listitem [ref=e73]:
+                    - generic [ref=e74]:
+                      - link "App Profiles" [ref=e75] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e76] [cursor=pointer]
+                  - listitem [ref=e77]:
+                    - generic [ref=e78]:
+                      - link "Audits" [ref=e79] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e80] [cursor=pointer]
+                  - listitem [ref=e81]:
+                    - generic [ref=e82]:
+                      - link "Auth" [ref=e83] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e84] [cursor=pointer]
+                  - listitem [ref=e85]:
+                    - generic [ref=e86]:
+                      - link "Cloudaccounts" [ref=e87] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e88] [cursor=pointer]
+                  - listitem [ref=e89]:
+                    - generic [ref=e90]:
+                      - link "Cloudconfigs" [ref=e91] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e92] [cursor=pointer]
+                  - listitem [ref=e93]:
+                    - generic [ref=e94]:
+                      - link "Clouds" [ref=e95] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e96] [cursor=pointer]
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Cluster Templates" [ref=e99] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e100] [cursor=pointer]
+                  - listitem [ref=e101]:
+                    - generic [ref=e102]:
+                      - link "Clustergroups" [ref=e103] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e104] [cursor=pointer]
+                  - listitem [ref=e105]:
+                    - generic [ref=e106]:
+                      - link "Clusterprofiles" [ref=e107] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e108] [cursor=pointer]
+                  - listitem [ref=e109]:
+                    - generic [ref=e110]:
+                      - link "Dashboard" [ref=e111] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e112] [cursor=pointer]
+                  - listitem [ref=e113]:
+                    - generic [ref=e114]:
+                      - link "Datasinks" [ref=e115] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e116] [cursor=pointer]
+                  - listitem [ref=e117]:
+                    - generic [ref=e118]:
+                      - link "Edgehosts" [ref=e119] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Events" [ref=e123] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e124] [cursor=pointer]
+                  - listitem [ref=e125]:
+                    - generic [ref=e126]:
+                      - link "Features" [ref=e127] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Filters" [ref=e131] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e132] [cursor=pointer]
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "Grpc" [ref=e135] [cursor=pointer]:
+                        - /url: /api/v1/grpc/
+                      - button "Toggle the collapsible sidebar category 'Grpc'" [ref=e136] [cursor=pointer]
+                  - listitem [ref=e137]:
+                    - generic [ref=e138]:
+                      - link "Health" [ref=e139] [cursor=pointer]:
+                        - /url: /api/v1/health/
+                      - button "Toggle the collapsible sidebar category 'Health'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "Installers" [ref=e143] [cursor=pointer]:
+                        - /url: /api/v1/installers/
+                      - button "Toggle the collapsible sidebar category 'Installers'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Metrics" [ref=e147] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Notifications" [ref=e151] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e152] [cursor=pointer]
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "Overlords" [ref=e155] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Packs" [ref=e159] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e160] [cursor=pointer]
+                  - listitem [ref=e161]:
+                    - generic [ref=e162]:
+                      - link "Pcg" [ref=e163] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e164] [cursor=pointer]
+                  - listitem [ref=e165]:
+                    - generic [ref=e166]:
+                      - link "Permissions" [ref=e167] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Plans" [ref=e171] [cursor=pointer]:
+                        - /url: /api/v1/plans/
+                      - button "Toggle the collapsible sidebar category 'Plans'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Projects" [ref=e175] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Registries" [ref=e179] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Roles" [ref=e183] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "Services" [ref=e187] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Spc Policies" [ref=e191] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Spectroclusters" [expanded] [ref=e195] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e196] [cursor=pointer]
+                    - list [ref=e197]:
+                      - listitem [ref=e198]:
+                        - link "post Creates an AKS cluster" [ref=e199] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-create/
+                      - listitem [ref=e200]:
+                        - link "post Get AKS cluster estimated rate information" [ref=e201] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-rate/
+                      - listitem [ref=e202]:
+                        - link "post Validates AKS cluster create operation" [ref=e203] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-validate/
+                      - listitem [ref=e204]:
+                        - link "post Creates a CloudStack cluster" [ref=e205] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cloud-stack-create/
+                      - listitem [ref=e206]:
+                        - link "post Imports a CloudStack cluster" [ref=e207] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cloud-stack-import/
+                      - listitem [ref=e208]:
+                        - link "post Get CloudStack cluster estimated rate information" [ref=e209] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cloud-stack-rate/
+                      - listitem [ref=e210]:
+                        - link "post Validates CloudStack cluster create operation" [ref=e211] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cloud-stack-validate/
+                      - listitem [ref=e212]:
+                        - link "post Creates an AWS cluster" [ref=e213] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-create/
+                      - listitem [ref=e214]:
+                        - link "post Imports an AWS cluster" [ref=e215] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-import/
+                      - listitem [ref=e216]:
+                        - link "post Get AWS cluster estimated rate information" [ref=e217] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-rate/
+                      - listitem [ref=e218]:
+                        - link "post Validates AWS cluster create operation" [ref=e219] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-validate/
+                      - listitem [ref=e220]:
+                        - link "post Creates an Azure cluster" [ref=e221] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-create/
+                      - listitem [ref=e222]:
+                        - link "post Imports an Azure cluster" [ref=e223] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-import/
+                      - listitem [ref=e224]:
+                        - link "post Get Azure cluster estimated rate information" [ref=e225] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-rate/
+                      - listitem [ref=e226]:
+                        - link "post Validates Azure cluster create operation" [ref=e227] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-validate/
+                      - listitem [ref=e228]:
+                        - link "post Creates a Custom cluster" [ref=e229] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-custom-create/
+                      - listitem [ref=e230]:
+                        - link "post Validates Custom cluster create operation" [ref=e231] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-custom-validate/
+                      - listitem [ref=e232]:
+                        - link "get Get cluster upgrade settings by hostClusterUid or overlordUid" [ref=e233] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cluster-upgrade-settings-get/
+                      - listitem [ref=e234]:
+                        - link "patch Upgrades clusters launched from the specified cluster template" [ref=e235] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-templates-uid-clusters-upgrade/
+                      - listitem [ref=e236]:
+                        - link "get Returns the associated profiles for all the cluster of launched from the specified cluster template" [ref=e237] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cluster-templates-uid-profiles-get/
+                      - listitem [ref=e238]:
+                        - link "post Validates if cluster template profile update triggers repave" [ref=e239] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cluster-templates-uid-validate-repave/
+                      - listitem [ref=e240]:
+                        - link "get Cluster configuration for the edge installer" [ref=e241] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-config-edge-installer/
+                      - listitem [ref=e242]:
+                        - link "post Creates an EdgeNative cluster" [ref=e243] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-create/
+                      - listitem [ref=e244]:
+                        - link "post Imports an EdgeNative cluster" [ref=e245] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-import/
+                      - listitem [ref=e246]:
+                        - link "post Get edge-native cluster estimated rate information" [ref=e247] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-rate/
+                      - listitem [ref=e248]:
+                        - link "post Validates edge-native cluster create operation" [ref=e249] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-validate/
+                      - listitem [ref=e250]:
+                        - link "post Creates an EKS cluster" [ref=e251] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-create/
+                      - listitem [ref=e252]:
+                        - link "post Get EKS cluster estimated rate information" [ref=e253] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-rate/
+                      - listitem [ref=e254]:
+                        - link "post Validates EKS cluster create operation" [ref=e255] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-validate/
+                      - listitem [ref=e256]:
+                        - link "get Returns the cluster object references based on locationUid" [ref=e257] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-location-uid-get/
+                      - listitem [ref=e258]:
+                        - link "put Change cluster backup location" [ref=e259] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-location-uid-change/
+                      - listitem [ref=e260]:
+                        - link "get Download log fetcher logs for cluster by log fetcher uid" [ref=e261] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-log-download/
+                      - listitem [ref=e262]:
+                        - link "post Update log fetcher logs by log fetcher uid" [ref=e263] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-log-update/
+                      - listitem [ref=e264]:
+                        - link "post Creates a GCP cluster" [ref=e265] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-create/
+                      - listitem [ref=e266]:
+                        - link "post Imports a GCP cluster" [ref=e267] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-import/
+                      - listitem [ref=e268]:
+                        - link "post Get GCP cluster estimated rate information" [ref=e269] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-rate/
+                      - listitem [ref=e270]:
+                        - link "post Validates GCP cluster create operation" [ref=e271] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-validate/
+                      - listitem [ref=e272]:
+                        - link "post Imports a cluster of any cloud type in generic way" [ref=e273] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-generic-import/
+                      - listitem [ref=e274]:
+                        - link "post Get generic cluster estimated rate information" [ref=e275] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-generic-rate/
+                      - listitem [ref=e276]:
+                        - link "post Creates an GKE cluster" [ref=e277] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-create/
+                      - listitem [ref=e278]:
+                        - link "post Get GKE cluster estimated rate information" [ref=e279] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-rate/
+                      - listitem [ref=e280]:
+                        - link "post Validates GKE cluster create operation" [ref=e281] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-validate/
+                      - listitem [ref=e282]:
+                        - link "post Creates a MAAS cluster" [ref=e283] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-create/
+                      - listitem [ref=e284]:
+                        - link "post Imports a Maas cluster" [ref=e285] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-import/
+                      - listitem [ref=e286]:
+                        - link "post Get maas cluster estimated rate information" [ref=e287] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-rate/
+                      - listitem [ref=e288]:
+                        - link "post Validates MAAS cluster create operation" [ref=e289] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-validate/
+                      - listitem [ref=e290]:
+                        - link "post Downloads the cluster definition archive file" [ref=e291] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-spc-download/
+                      - listitem [ref=e292]:
+                        - link "get Returns the cluster image pull secret for the given scope" [ref=e293] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-system-image-pull-secret-get/
+                      - listitem [ref=e294]:
+                        - link "get Retrieves a list of spectrocluster tags" [ref=e295] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-tags-get/
+                      - listitem [ref=e296]:
+                        - link "get Get cluster settings by context" [ref=e297] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-upgrade-settings-get/
+                      - listitem [ref=e298]:
+                        - link "post Update all clusters upgrade settings" [ref=e299] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-upgrade-settings/
+                      - listitem [ref=e300]:
+                        - link "get Validates the cluster name" [ref=e301] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-validate-name/
+                      - listitem [ref=e302]:
+                        - link "post Validates spectro cluster packs" [ref=e303] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-validate-packs/
+                      - listitem [ref=e304]:
+                        - link "post Creates a virtual cluster" [ref=e305] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-virtual-create/
+                      - listitem [ref=e306]:
+                        - link "get Get the cluster pack values yaml" [ref=e307] [cursor=pointer]:
+                          - /url: /api/v1/v-1-virtual-clusters-packs-values/
+                      - listitem [ref=e308]:
+                        - link "post Validates virtual cluster create operation" [ref=e309] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-virtual-validate/
+                      - listitem [ref=e310]:
+                        - link "post Creates a vSphere cluster" [ref=e311] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-create/
+                      - listitem [ref=e312]:
+                        - link "post Imports a vSphere cluster" [ref=e313] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-import/
+                      - listitem [ref=e314]:
+                        - link "post Get vSphere cluster estimated rate information" [ref=e315] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-rate/
+                      - listitem [ref=e316]:
+                        - link "post Validates vSphere cluster create operation" [ref=e317] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-validate/
+                      - listitem [ref=e318]:
+                        - link "del Deletes the specified cluster" [ref=e319] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-delete/
+                      - listitem [ref=e320]:
+                        - link "get Returns the specified cluster" [ref=e321] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get/
+                      - listitem [ref=e322]:
+                        - link "get Get the cluster asset doc" [ref=e323] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-assets-get/
+                      - listitem [ref=e324]:
+                        - link "post Associate the assets for the cluster" [ref=e325] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-assets/
+                      - listitem [ref=e326]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e327] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-admin-kube-config/
+                      - listitem [ref=e328]:
+                        - link "del Deletes the cluster's token kube config data" [ref=e329] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-delete/
+                      - listitem [ref=e330]:
+                        - link "get Returns the specified cluster's token kube config file" [ref=e331] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-get/
+                      - listitem [ref=e332]:
+                        - link "put Updates the cluster's token kube config data" [ref=e333] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-update/
+                      - listitem [ref=e334]:
+                        - link "del Deletes the cluster's frp kube config client data" [ref=e335] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-delete/
+                      - listitem [ref=e336]:
+                        - link "get Returns the specified cluster's frp kube config file" [ref=e337] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-get/
+                      - listitem [ref=e338]:
+                        - link "put Updates the cluster's frp kube config data" [ref=e339] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-update/
+                      - listitem [ref=e340]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e341] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config/
+                      - listitem [ref=e342]:
+                        - link "put Updates the cluster's manifest data" [ref=e343] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-update/
+                      - listitem [ref=e344]:
+                        - link "del Deletes the cluster's kube config client data" [ref=e345] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-delete/
+                      - listitem [ref=e346]:
+                        - link "get Returns the specified cluster's kube config client file" [ref=e347] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-get/
+                      - listitem [ref=e348]:
+                        - link "put Updates the cluster's kube config client data" [ref=e349] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-update/
+                      - listitem [ref=e350]:
+                        - link "get Returns the specified cluster's manifest data" [ref=e351] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-manifest-get/
+                      - listitem [ref=e352]:
+                        - link "put Updates the specified cluster's manifest data" [ref=e353] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-manifest-update/
+                      - listitem [ref=e354]:
+                        - link "patch Updates the specified cluster meta attribute" [ref=e355] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-cluster-meta-attribute-update/
+                      - listitem [ref=e356]:
+                        - link "patch Updates the specified cluster controlPlane health check timeout" [ref=e357] [cursor=pointer]:
+                          - /url: /api/v1/v-1-control-plane-health-check-timeout-update/
+                      - listitem [ref=e358]:
+                        - link "patch Updates the specified cluster host config" [ref=e359] [cursor=pointer]:
+                          - /url: /api/v1/v-1-host-cluster-config-update/
+                      - listitem [ref=e360]:
+                        - link "patch Updates the specified cluster Life cycle configuration" [ref=e361] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-lifecycle-config-update/
+                      - listitem [ref=e362]:
+                        - link "patch Updates the specified cluster OS patch configuration" [ref=e363] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-os-patch-update/
+                      - listitem [ref=e364]:
+                        - link "patch Updates the specified cluster's timezone configuration" [ref=e365] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-timezone-update/
+                      - listitem [ref=e366]:
+                        - link "get Retrieves namespaces for the specified cluster" [ref=e367] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-get/
+                      - listitem [ref=e368]:
+                        - link "put Updates namespaces for the specified cluster" [ref=e369] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-update/
+                      - listitem [ref=e370]:
+                        - link "get Retrieves the specified namespace of the cluster" [ref=e371] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-uid-get/
+                      - listitem [ref=e372]:
+                        - link "put Updates the specified namespace of the cluster" [ref=e373] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-uid-update/
+                      - listitem [ref=e374]:
+                        - link "get Retrieves RBAC information for the specified cluster" [ref=e375] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-get/
+                      - listitem [ref=e376]:
+                        - link "put Updates RBAC information for the specified cluster" [ref=e377] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-update/
+                      - listitem [ref=e378]:
+                        - link "get Retrieves the specified RBAC of the cluster" [ref=e379] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-uid-get/
+                      - listitem [ref=e380]:
+                        - link "put Updates the specified RBAC of the cluster" [ref=e381] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-uid-update/
+                      - listitem [ref=e382]:
+                        - link "get Download the specified cluster" [ref=e383] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-download/
+                      - listitem [ref=e384]:
+                        - link "get Retrieves a list of edge host of edge-native cluster" [ref=e385] [cursor=pointer]:
+                          - /url: /api/v1/v-1-edge-native-clusters-hosts-list/
+                      - listitem [ref=e386]:
+                        - link "post reset the edge clusters by deleting machine pools and conditions" [ref=e387] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-edge-reset/
+                      - listitem [ref=e388]:
+                        - link "del Reset cluster backup schedule settings" [ref=e389] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-schedule-reset/
+                      - listitem [ref=e390]:
+                        - link "get Returns the cluster backup result" [ref=e391] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-get/
+                      - listitem [ref=e392]:
+                        - link "post Create cluster backup settings" [ref=e393] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-create/
+                      - listitem [ref=e394]:
+                        - link "put Update cluster backup settings" [ref=e395] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-update/
+                      - listitem [ref=e396]:
+                        - link "post Create on demand cluster backup" [ref=e397] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-on-demand-create/
+                      - listitem [ref=e398]:
+                        - link "del Delete cluster backup" [ref=e399] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-delete/
+                      - listitem [ref=e400]:
+                        - link "get Returns the compliance scan of cluster, if driverType is provided then specific status of driverType will be returned" [ref=e401] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-get/
+                      - listitem [ref=e402]:
+                        - link "post Create cluster compliance scan" [ref=e403] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-create/
+                      - listitem [ref=e404]:
+                        - link "put Update cluster compliance scan settings" [ref=e405] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-update/
+                      - listitem [ref=e406]:
+                        - link "get Returns the compliance scan log by cluster uid and driver type" [ref=e407] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-logs-get/
+                      - listitem [ref=e408]:
+                        - link "put Update the KubeBench compliance scan log by uid" [ref=e409] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-kube-bench-log-update/
+                      - listitem [ref=e410]:
+                        - link "put Update the KubeHunter compliance scan log by uid" [ref=e411] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-kube-hunter-log-update/
+                      - listitem [ref=e412]:
+                        - link "put Update the Sonobuoy compliance scan log by uid" [ref=e413] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-sonobuoy-log-update/
+                      - listitem [ref=e414]:
+                        - link "patch Update the Syft compliance scan log by uid" [ref=e415] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-syft-log-update/
+                      - listitem [ref=e416]:
+                        - link "del Delete the compliance scan log by uid" [ref=e417] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-log-delete/
+                      - listitem [ref=e418]:
+                        - link "get Returns the KubeBench compliance scan log by uid" [ref=e419] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-kube-bench-log-get/
+                      - listitem [ref=e420]:
+                        - link "get Returns the KubeHunter compliance scan log by uid" [ref=e421] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-kube-hunter-log-get/
+                      - listitem [ref=e422]:
+                        - link "get Returns the Sonobuoy compliance scan log by uid" [ref=e423] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-sonobuoy-log-get/
+                      - listitem [ref=e424]:
+                        - link "get Returns the Syft compliance scan log by uid" [ref=e425] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-syft-log-get/
+                      - listitem [ref=e426]:
+                        - link "get Returns the image sbom of syft scan log of cluster" [ref=e427] [cursor=pointer]:
+                          - /url: /api/v1/v-1-syft-scan-log-image-sbom-get/
+                      - listitem [ref=e428]:
+                        - link "get Downloads the driver cluster logs" [ref=e429] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-driver-log-download/
+                      - listitem [ref=e430]:
+                        - link "post Create on demand cluster compliance scan" [ref=e431] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-on-demand-create/
+                      - listitem [ref=e432]:
+                        - link "get Get the installed helm charts of a specified cluster" [ref=e433] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-helm-charts-get/
+                      - listitem [ref=e434]:
+                        - link "get Get the log fetcher for cluster" [ref=e435] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-get/
+                      - listitem [ref=e436]:
+                        - link "post Create the log fetcher for cluster" [ref=e437] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-create/
+                      - listitem [ref=e438]:
+                        - link "get Get the installed manifests of a specified cluster" [ref=e439] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-manifests-get/
+                      - listitem [ref=e440]:
+                        - link "get Returns the cluster restore of cluster" [ref=e441] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-restore-get/
+                      - listitem [ref=e442]:
+                        - link "post Create on demand cluster restore" [ref=e443] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-restore-on-demand-create/
+                      - listitem [ref=e444]:
+                        - link "put Update specific cluster heartbeat" [ref=e445] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-heartbeat-update/
+                      - listitem [ref=e446]:
+                        - link "get Returns the metadata of all hybrid pools associated with the specified cluster" [ref=e447] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-hybrid-pools-metadata/
+                      - listitem [ref=e448]:
+                        - link "patch Update specific cluster hybrid settings" [ref=e449] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-hybrid-settings/
+                      - listitem [ref=e450]:
+                        - link "get Returns the specified cluster's import manifest file" [ref=e451] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-import-manifest/
+                      - listitem [ref=e452]:
+                        - link "patch Upgrade the specified imported read only cluster with full permissions" [ref=e453] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-import-upgrade-patch/
+                      - listitem [ref=e454]:
+                        - link "get Get K8Certificate for spectro cluster" [ref=e455] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-k-8-certificate/
+                      - listitem [ref=e456]:
+                        - link "put Update K8Certificate for spectro cluster" [ref=e457] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-k-8-certificate-update/
+                      - listitem [ref=e458]:
+                        - link "patch Sets the cluster control plane nodes Kubernetes certificates for renewal" [ref=e459] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-certificates-renew/
+                      - listitem [ref=e460]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e461] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-ctl-redirect/
+                      - listitem [ref=e462]:
+                        - link "put Associate the assets for the cluster" [ref=e463] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-location-put/
+                      - listitem [ref=e464]:
+                        - link "get Returns all manifests attached to the cluster" [ref=e465] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-manifests-get/
+                      - listitem [ref=e466]:
+                        - link "patch Update the specified spectro cluster metadata" [ref=e467] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-metadata-update/
+                      - listitem [ref=e468]:
+                        - link "get Returns available namespaces for the cluster" [ref=e469] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-namespaces-get/
+                      - listitem [ref=e470]:
+                        - link "get Returns k8s spectrocluster oidc" [ref=e471] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-oidc/
+                      - listitem [ref=e472]:
+                        - link "get Returns k8s dashboard url" [ref=e473] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-oidc-dashboard-url/
+                      - listitem [ref=e474]:
+                        - link "get Returns the specified cluster's manifest" [ref=e475] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-pack-manifests-uid-get/
+                      - listitem [ref=e476]:
+                        - link "get Get specified cluster pack properties" [ref=e477] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-pack-properties/
+                      - listitem [ref=e478]:
+                        - link "patch Updates the cluster's pack references" [ref=e479] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-packs-ref-update/
+                      - listitem [ref=e480]:
+                        - link "get Returns the specified cluster's packs resolved values" [ref=e481] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-packs-resolved-values-get/
+                      - listitem [ref=e482]:
+                        - link "patch Patch update specified cluster's packs status" [ref=e483] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-packs-status-patch/
+                      - listitem [ref=e484]:
+                        - link "get Returns the profile updates of a specified cluster" [ref=e485] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profile-updates/
+                      - listitem [ref=e486]:
+                        - link "del Remove cluster profiles from the specified cluster" [ref=e487] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-delete-profiles/
+                      - listitem [ref=e488]:
+                        - link "get Returns the associated profiles of a specified cluster" [ref=e489] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profiles/
+                      - listitem [ref=e490]:
+                        - link "patch Patch cluster profiles to the specified cluster" [ref=e491] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-patch-profiles/
+                      - listitem [ref=e492]:
+                        - link "put Associate cluster profiles to the specified cluster" [ref=e493] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-profiles/
+                      - listitem [ref=e494]:
+                        - link "get Returns the associated profile's pack manifests of a specified cluster" [ref=e495] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profiles-packs-manifests/
+                      - listitem [ref=e496]:
+                        - link "get Returns the specified cluster's profile pack configuration" [ref=e497] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-profiles-uid-packs-config-get/
+                      - listitem [ref=e498]:
+                        - link "get Returns the associated profiles pack manifests of the specified cluster" [ref=e499] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-profiles-uid-pack-manifests-get/
+                      - listitem [ref=e500]:
+                        - link "put Updates cluster profiles pack manifests to the specified cluster" [ref=e501] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-profiles-uid-pack-manifests-update/
+                      - listitem [ref=e502]:
+                        - link "get Returns the estimated rate of the specified cluster" [ref=e503] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-rate/
+                      - listitem [ref=e504]:
+                        - link "patch Returns the spectrocluster repave approve update" [ref=e505] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-repave-approve-update/
+                      - listitem [ref=e506]:
+                        - link "get Returns the spectrocluster repave" [ref=e507] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-repave-get/
+                      - listitem [ref=e508]:
+                        - link "put reset the cluster s by deleting machine pools and condtions" [ref=e509] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-reset/
+                      - listitem [ref=e510]:
+                        - link "get Get the cluster's status" [ref=e511] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status/
+                      - listitem [ref=e512]:
+                        - link "put Updates the specified cluster status condition" [ref=e513] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-condition/
+                      - listitem [ref=e514]:
+                        - link "patch Updates the specified cluster status conditions" [ref=e515] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-conditions/
+                      - listitem [ref=e516]:
+                        - link "put Updates the specified cluster's service endpoints information" [ref=e517] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-endpoints/
+                      - listitem [ref=e518]:
+                        - link "patch Updates the specified cluster status as imported" [ref=e519] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-imported/
+                      - listitem [ref=e520]:
+                        - link "put Updates the specified cluster's services information" [ref=e521] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-services/
+                      - listitem [ref=e522]:
+                        - link "get Returns the SPC apply information for the agent" [ref=e523] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-apply-get/
+                      - listitem [ref=e524]:
+                        - link "post Set the CanBeApplied to true on the spcApply status. CanBeApplied indicates the agent to orchestrate the spc changes" [ref=e525] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-apply/
+                      - listitem [ref=e526]:
+                        - link "patch Updates the agent patch time for the SPC changes" [ref=e527] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-patch-time/
+                      - listitem [ref=e528]:
+                        - link "put Updates the cluster's upgrade status" [ref=e529] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-upgrades-put/
+                      - listitem [ref=e530]:
+                        - link "post Update specific cluster upgrade settings" [ref=e531] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-upgrade-settings/
+                      - listitem [ref=e532]:
+                        - link "post Validates cluster packs" [ref=e533] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-validate-packs/
+                      - listitem [ref=e534]:
+                        - link "post Validates if cluster gets repaved for the specified packs" [ref=e535] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-validate-repave/
+                      - listitem [ref=e536]:
+                        - link "get Retrieve a list of variables associated with the cluster" [ref=e537] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-variables-get/
+                      - listitem [ref=e538]:
+                        - link "patch Update cluster variable values for specified cluster" [ref=e539] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-variables-patch/
+                      - listitem [ref=e540]:
+                        - link "get Returns the list of virtual machines" [ref=e541] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-list/
+                      - listitem [ref=e542]:
+                        - link "post Create virtual machine" [ref=e543] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-create/
+                      - listitem [ref=e544]:
+                        - link "get Returns the list of snapshots of given namespaces" [ref=e545] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-vm-snapshots-list/
+                      - listitem [ref=e546]:
+                        - link "del Deletes the virtual machine" [ref=e547] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-delete/
+                      - listitem [ref=e548]:
+                        - link "get Get virtual machine" [ref=e549] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-get/
+                      - listitem [ref=e550]:
+                        - link "put Updates the specified virtual machine of the cluster" [ref=e551] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-update/
+                      - listitem [ref=e552]:
+                        - link "put Add volume to the virtual machine instance" [ref=e553] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-add-volume/
+                      - listitem [ref=e554]:
+                        - link "post Clone virtual machine" [ref=e555] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-clone/
+                      - listitem [ref=e556]:
+                        - link "put Migrate the virtual machine" [ref=e557] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-migrate/
+                      - listitem [ref=e558]:
+                        - link "put Pause the virtual machine instance" [ref=e559] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-pause/
+                      - listitem [ref=e560]:
+                        - link "put Remove volume from the virtual machine instance" [ref=e561] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-remove-volume/
+                      - listitem [ref=e562]:
+                        - link "put Restart the virtual machine" [ref=e563] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-restart/
+                      - listitem [ref=e564]:
+                        - link "put Resume the virtual machine instance" [ref=e565] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-resume/
+                      - listitem [ref=e566]:
+                        - link "post Create snapshot of virtual machine" [ref=e567] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-create/
+                      - listitem [ref=e568]:
+                        - link "del Delete the snapshot of virtual machine" [ref=e569] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-delete/
+                      - listitem [ref=e570]:
+                        - link "get Get virtual machine snapshot" [ref=e571] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-get/
+                      - listitem [ref=e572]:
+                        - link "put Updates the specified snapshot of a virtual machine" [ref=e573] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-update/
+                      - listitem [ref=e574]:
+                        - link "put Start the virtual machine" [ref=e575] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-start/
+                      - listitem [ref=e576]:
+                        - link "put Stop the virtual machine" [ref=e577] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-stop/
+                      - listitem [ref=e578]:
+                        - link "post Sync specified cluster workload" [ref=e579] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-workloads-sync/
+                      - listitem [ref=e580]:
+                        - link "post Sync specified cluster workload" [ref=e581] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-workloads-kind-sync/
+                  - listitem [ref=e582]:
+                    - generic [ref=e583]:
+                      - link "System" [ref=e584] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e585] [cursor=pointer]
+                  - listitem [ref=e586]:
+                    - generic [ref=e587]:
+                      - link "Teams" [ref=e588] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e589] [cursor=pointer]
+                  - listitem [ref=e590]:
+                    - generic [ref=e591]:
+                      - link "Tenants" [ref=e592] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e593] [cursor=pointer]
+                  - listitem [ref=e594]:
+                    - generic [ref=e595]:
+                      - link "Tunnel" [ref=e596] [cursor=pointer]:
+                        - /url: /api/v1/tunnel/
+                      - button "Toggle the collapsible sidebar category 'Tunnel'" [ref=e597] [cursor=pointer]
+                  - listitem [ref=e598]:
+                    - generic [ref=e599]:
+                      - link "Users" [ref=e600] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e601] [cursor=pointer]
+                  - listitem [ref=e602]:
+                    - generic [ref=e603]:
+                      - link "Workspaces" [ref=e604] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e605] [cursor=pointer]
+              - listitem [ref=e606]:
+                - generic [ref=e607]:
+                  - link "Edge Management API V1" [ref=e608] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e609] [cursor=pointer]
+      - main [ref=e610]:
+        - generic [ref=e614]:
+          - article [ref=e615]:
+            - navigation "Breadcrumbs" [ref=e616]:
+              - list [ref=e617]:
+                - listitem [ref=e618]:
+                  - link "Home page" [ref=e619] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e620]
+                - listitem [ref=e622]:
+                  - link "Palette API V1" [ref=e623] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e624]:
+                  - link "Spectroclusters" [ref=e625] [cursor=pointer]:
+                    - /url: /api/v1/spectroclusters/
+                - listitem [ref=e626]:
+                  - generic [ref=e627]: Update cluster variable values for specified cluster
+            - generic [ref=e629]:
+              - generic [ref=e630]:
+                - heading "Update cluster variable values for specified cluster" [level=1] [ref=e631]
+                - generic [ref=e632]:
+                  - generic [ref=e633]: PATCH
+                  - heading "https://api.spectrocloud.com/v1/spectroclusters/:uid/variables" [level=2] [ref=e634]
+                - paragraph [ref=e636]: Update cluster variable values for specified cluster
+                - heading "RequestDirect link to request" [level=2] [ref=e637]:
+                  - text: Request
+                  - link "Direct link to request" [ref=e638] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e639]:
+                  - generic "Path Parameters" [ref=e640] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e641]
+                  - list [ref=e644]:
+                    - generic [ref=e645]:
+                      - generic [ref=e646]:
+                        - strong [ref=e647]: uid
+                        - generic [ref=e648]: string
+                        - generic [ref=e650]: required
+                      - paragraph [ref=e651]: Cluster uid for which variables need to be retrieved
+                - group [ref=e652]:
+                  - generic "Header Parameters" [ref=e653] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e654]
+                  - list [ref=e657]:
+                    - generic [ref=e658]:
+                      - generic [ref=e659]:
+                        - strong [ref=e660]: ProjectUid
+                        - generic [ref=e661]: string
+                      - paragraph [ref=e662]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e663]:
+                  - tablist [ref=e666]:
+                    - tab "application/json" [selected] [ref=e667] [cursor=pointer]
+                  - tabpanel [ref=e669]:
+                    - group [ref=e670]:
+                      - generic "Body array" [ref=e671] [cursor=pointer]:
+                        - heading "Body array" [level=3] [ref=e672]
+                      - list [ref=e675]:
+                        - listitem [ref=e676]:
+                          - generic [ref=e677]: Array [
+                        - generic [ref=e679]:
+                          - generic [ref=e680]:
+                            - strong [ref=e681]: profileUid
+                            - generic [ref=e682]: string
+                            - generic [ref=e684]: required
+                          - paragraph [ref=e686]: Profile uid to which the variable belongs
+                        - group [ref=e688]:
+                          - generic "variables object[]" [ref=e689] [cursor=pointer]:
+                            - generic [ref=e690]:
+                              - strong [ref=e691]: variables
+                              - generic [ref=e692]: object[]
+                        - listitem [ref=e693]:
+                          - generic [ref=e694]: "]"
+                - generic [ref=e695]:
+                  - generic [ref=e696]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e697]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e698] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e700]:
+                      - tab "204" [selected] [ref=e701] [cursor=pointer]
+                  - tabpanel [ref=e703]:
+                    - paragraph [ref=e706]: The resource was updated successfully
+              - generic [ref=e707]:
+                - group [ref=e708]:
+                  - 'generic "Authorization: ApiKey" [ref=e709]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e710]'
+                - generic [ref=e711]:
+                  - tablist [ref=e712]:
+                    - tab "curl" [selected] [ref=e713] [cursor=pointer]:
+                      - generic [ref=e714]: curl
+                    - tab "python" [ref=e715] [cursor=pointer]:
+                      - generic [ref=e716]: python
+                    - tab "go" [ref=e717] [cursor=pointer]:
+                      - generic [ref=e718]: go
+                    - tab "nodejs" [ref=e719] [cursor=pointer]:
+                      - generic [ref=e720]: nodejs
+                    - tab "java" [ref=e721] [cursor=pointer]:
+                      - generic [ref=e722]: java
+                  - tabpanel [ref=e723]:
+                    - generic [ref=e724]:
+                      - tablist [ref=e725]:
+                        - tab "CURL" [selected] [ref=e726] [cursor=pointer]:
+                          - generic [ref=e727]: CURL
+                      - tabpanel [ref=e728]:
+                        - generic [ref=e730]:
+                          - code [ref=e732]:
+                            - generic [ref=e735]: curl -L -X PATCH 'https://api.spectrocloud.com/v1/spectroclusters/:uid/variables' \
+                            - generic [ref=e738]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e741]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e744]: "-d '["
+                            - generic [ref=e747]: "{"
+                            - generic [ref=e750]: "\"profileUid\": \"string\","
+                            - generic [ref=e753]: "\"variables\": ["
+                            - generic [ref=e756]: "{"
+                            - generic [ref=e759]: "\"name\": \"string\","
+                            - generic [ref=e762]: "\"value\": \"string\""
+                            - generic [ref=e765]: "}"
+                            - generic [ref=e768]: "]"
+                            - generic [ref=e771]: "}"
+                            - generic [ref=e774]: "]'"
+                          - generic [ref=e775]:
+                            - button "Toggle word wrap" [ref=e776] [cursor=pointer]:
+                              - img [ref=e777]
+                            - button "Copy code to clipboard" [ref=e779] [cursor=pointer]:
+                              - generic [ref=e780]:
+                                - img [ref=e781]
+                                - img [ref=e783]
+                            - button "Expand code to fullscreen" [ref=e785] [cursor=pointer]:
+                              - generic [ref=e786]:
+                                - img [ref=e787]
+                                - img [ref=e789]
+          - navigation "Docs pages" [ref=e793]:
+            - link "Previous « Retrieve a list of variables associated with the cluster" [ref=e794] [cursor=pointer]:
+              - /url: /api/v1/v-1-spectro-clusters-uid-variables-get/
+              - generic [ref=e795]: Previous
+              - generic [ref=e796]: « Retrieve a list of variables associated with the cluster
+            - link "Next Returns the list of virtual machines »" [ref=e797] [cursor=pointer]:
+              - /url: /api/v1/v-1-spectro-clusters-vm-list/
+              - generic [ref=e798]: Next
+              - generic [ref=e799]: Returns the list of virtual machines »
+  - button "Project Logo Ask AI" [ref=e800] [cursor=pointer]:
+    - generic [ref=e803]:
+      - img "Project Logo" [ref=e804]
+      - paragraph [ref=e805]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (excludeList.some((excludedPath) => pathname === excludedPath || pathname.startsWith(excludedPath))) {
+  15 |     console.log(`Excluding ${pathname} because it matches or starts with an exclude list pattern`);
+  16 |     return false;
+  17 |   }
+  18 |   // return false if the pathname does not start with /api/
+  19 |   if (pathname.startsWith("/api/") && !pathname.match(/^\/api\/(\d+\.\d+\.x)\//)) {
+  20 |     return true;
+  21 |   }
+  22 |   return false;
+  23 | }
+  24 | 
+  25 | test.beforeAll(() => {
+  26 |   console.log("Excluded pages: ", excludeList);
+  27 |   console.log("Total pages: ", extractSitemapPathnames(sitemapPath).length);
+  28 | });
+  29 | 
+  30 | function screenshotPathname(pathname: string) {
+  31 |   test(`pathname ${pathname}`, async ({ page }) => {
+  32 |     console.log(`Taking screenshot of ${pathname}`);
+  33 |     const url = siteUrl + pathname;
+  34 |     await page.goto(url);
+  35 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  36 |     await page.waitForLoadState("domcontentloaded");
+  37 |     await page.addStyleTag({ content: stylesheet });
+  38 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 39 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  40 |   });
+  41 | }
+  42 | 
+  43 | test.describe("API docs screenshots", () => {
+  44 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) => isApiDocsPathname(pathname, excludeList));
+  45 |   pathnames.forEach(screenshotPathname);
+  46 | });
+  47 | 
+```
