@@ -58,13 +58,13 @@ brand and every server brand.
 - **Above 4G Decoding**: Enabled.
 - **Re-Size BAR Support**: Enabled. This setting is also called **Resizable BAR** or **Smart Access Memory**.
 
-Setting names and menu paths vary by server vendor, so refer to your server vendor's documentation to enable them. On
-HPE Gen11 servers, for example, **Re-Size BAR Support** is under **PCIe Device Configuration > Advanced PCIe
-Configuration**.
+Setting names and menu paths vary by server vendor, so refer to your server vendor's documentation to enable both
+settings. On HPE Gen11 servers, for example, **Re-Size BAR Support** is under **PCIe Device Configuration > Advanced
+PCIe Configuration**.
 
 If either setting is turned off, the slim ISO may not appear in the boot menu, or the screen may go black after you
 select it. Refer to
-[Known Issues: Slim ISO does not boot on a GPU server](./known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
+[Known Issues: Slim ISO Does Not Boot on a GPU Server](./known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
 
 ## Storage
 

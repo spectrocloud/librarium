@@ -17,7 +17,7 @@ This page lists the known issues that operators may encounter during installatio
 Inference Launchpad appliance, and the workaround for each. For the ordered procedure, refer to
 [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
-## Slim ISO does not boot on a GPU server
+## Slim ISO Does Not Boot on a GPU Server
 
 **Symptom.** On a server with GPUs, the slim ISO does not appear in the boot menu, or the screen goes black after you
 select it and the interactive installer never appears. This applies to any GPU brand and any server brand.
@@ -30,8 +30,8 @@ server vendor, so refer to your server vendor's documentation. On HPE Gen11 serv
 Support** is under **PCIe Device Configuration > Advanced PCIe Configuration**. For the prerequisite, refer to
 [Suggested Hardware: Required BIOS Settings](./hardware-requirements.md#required-bios-settings).
 
-Note that a blank screen for several minutes immediately after the GRUB selection is expected while the installer loads.
-This issue applies when the installer never appears at all, not to that initial pause.
+A blank screen for several minutes immediately after the GRUB selection is expected while the installer loads. This
+issue applies only when the installer never appears at all.
 
 ## GPUs do not enumerate on HPE servers
 
