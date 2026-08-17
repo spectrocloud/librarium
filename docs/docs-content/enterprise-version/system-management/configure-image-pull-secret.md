@@ -130,3 +130,13 @@ self-hosted Palette.
   version="Palette"
   helm="palette"
 />
+
+## Troubleshoot Image Pull Secret Propagation
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-troubleshooting"
+  edition="palette"
+  version="Palette"
+  helm="palette"
+/>
