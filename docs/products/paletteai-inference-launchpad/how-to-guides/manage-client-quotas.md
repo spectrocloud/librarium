@@ -15,11 +15,49 @@ Launchpad appliance. A quota limits how much a client consumes. A quota applies 
 belongs to the client draws on the same limits. To understand how quotas fit with clients and API tokens, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md).
 
+Quotas have two layers. **Quota enforcement** is a single switch that covers the whole appliance and decides whether
+limits are enforced at all. The **quota windows** you set on each client are the limits themselves. Both must hold
+before the appliance limits a client, so confirm enforcement is on before you set a client's limits.
+
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
 - An existing client. To create one, refer to [Create a Client](./create-a-client.md).
 - Console access with permission to manage clients. Managing clients can require operator access.
+
+## Check Quota Enforcement
+
+Quota enforcement applies to the entire appliance, not to one client. While it is off, the appliance does not enforce
+any client's quota windows, and a client that passes its limits is not rejected. The limits you have set stay saved and
+take effect again when you turn enforcement back on.
+
+A new appliance starts with quota enforcement on.
+
+1. From the left main menu, select **Overview**.
+
+2. Find the **Quota Enforcement** card and read its badge. **On** means the appliance enforces client quota windows.
+   **Off** means it does not.
+
+To change the setting, use the following steps.
+
+1. From the left main menu, select **Access & Policy**.
+
+2. On the **Clients & API tokens** page, select **Quota Enforcement** in the page header. The **Quota enforcement**
+   dialog opens.
+
+3. Select or clear the enforcement checkbox.
+
+4. Select **Save**.
+
+5. If you turned enforcement off, the console asks you to confirm. Select **Disable Enforcement**.
+
+:::warning
+
+Turning quota enforcement off removes the limits protecting the appliance's GPU capacity. A single client can then
+consume all available throughput and starve the others. Turn it off only for a deliberate, time-boxed reason, such as
+clearing a backlog, and turn it back on afterward.
+
+:::
 
 ## Set a Client Quota
 

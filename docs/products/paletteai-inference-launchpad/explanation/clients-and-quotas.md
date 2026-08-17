@@ -88,9 +88,14 @@ When a client reaches a limit, the appliance rejects further requests with HTTP 
 dimension and window that tripped. It does not queue or slow the requests. It blocks them until the window rolls over
 and the client is back under the limit.
 
-{/* NEEDS REVIEW: quota enforcement is off by default (global switch) per current working assumption. Confirm with an SME before publishing. */}
+Above the per-client limits sits a single switch, quota enforcement, that covers the whole appliance. It decides whether
+a limit refuses a request or the appliance ignores it. A new appliance starts with enforcement on. While enforcement is
+off, the appliance honors no client's limits, though it keeps every limit you have set. Two things must hold before the
+appliance limits a client: enforcement on for the appliance, and a window limit on the client. To read the current
+setting or change it, refer to
+[Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md#check-quota-enforcement).
 
-{/* TODO: link to the Set and Manage Quotas how-to (DOC-2940) and Quota & Rate Limit reference (DOC-2941) once they exist. */}
+{/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
 ## What Clients Can Access
 
