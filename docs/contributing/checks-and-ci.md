@@ -120,6 +120,11 @@ make format
 
 ### Known Caveats
 
+- Frozen product documentation versions under `<product>_versioned_docs/` are excluded from Prettier. The CI formatting
+  job commits whatever it reformats, so without the exclusion a Prettier upgrade would rewrite every already-released
+  version. If you correct a frozen page, match the surrounding formatting by hand. Vale still checks these files, so
+  style and spelling are verified as usual.
+
 - When using callouts/admonitions,
   [pay attention to their syntax](https://docusaurus.io/docs/markdown-features/admonitions#usage-with-prettier).
 
