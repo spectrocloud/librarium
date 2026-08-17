@@ -189,6 +189,80 @@ cleanup() {
     rm $1
 }
 
+# Utility function to strip Super's inline citation markers from an answer, for example
+# {[5](https://spectrocloud.atlassian.net/browse/PE-9154)} or {[1](url), [2](url)}. Super started
+# appending these to sentences, and because the release scripts insert its answer verbatim they
+# land in the published release notes. Any leading space is taken with the marker so a sentence it
+# was appended to does not keep a trailing gap, and a line that held nothing but markers is dropped
+# rather than left blank. Real Markdown links are untouched because they are not brace-wrapped.
+# Reads the body on stdin, writes the stripped body to stdout.
+strip_super_citations() {
+    awk '
+      {
+        line = $0
+        had_content = (line ~ /[^ \t]/)
+
+        gsub(/[ \t]*\{[ \t]*(\[[0-9]+\](\([^()[:space:]]*\))?[,;[:space:]]*)+\}/, "", line)
+        sub(/[ \t]+$/, "", line)
+
+        if (line == "" && had_content) {
+          next
+        }
+
+        print line
+      }
+    '
+}
+
+# Utility function to normalise a Markdown body returned by Super before it is written into the
+# release notes. On top of stripping citation markers it puts a blank line either side of each
+# standalone HTML comment and then reflows the prose with Prettier, so a `<!-- ticket URL -->`
+# marker separates the bullets around it and list continuation lines are wrapped and indented.
+#
+# The blank lines have to be inserted before Prettier runs: while a comment sits directly under a
+# bullet, CommonMark absorbs it into that list item as an HTML block and Prettier then preserves
+# the whole list verbatim. Prettier also has to be told to use the Markdown parser, because
+# .prettierrc maps *.md to the MDX parser, which never reflows prose - that is why neither
+# `make format` nor a save in the editor corrects this after the fact.
+#
+# Consecutive comment lines are treated as one group and left packed together, matching how the
+# release notes already carry several ticket URLs above a single bullet.
+#
+# Reads the body on stdin, writes the normalised body to stdout.
+normalize_super_body() {
+    local stripped_file formatted_file
+    stripped_file="$(mktemp)"
+    formatted_file="$(mktemp)"
+
+    strip_super_citations | awk '
+      {
+        comment = ($0 ~ /^[ \t]*<!--.*-->[ \t]*$/)
+
+        if (comment && !prev_comment && printed && prev != "") {
+          print ""
+        }
+
+        if (!comment && prev_comment && $0 != "") {
+          print ""
+        }
+
+        print
+        prev = $0
+        prev_comment = comment
+        printed = 1
+      }
+    ' > "$stripped_file"
+
+    if npx --no-install prettier --config .prettierrc --parser markdown "$stripped_file" > "$formatted_file" 2>/dev/null; then
+        cat "$formatted_file"
+    else
+        echo "🟠 Prettier could not be run, so the Super response was inserted without prose wrapping. Run 'npm ci' and re-run this script, or wrap the new section by hand." >&2
+        cat "$stripped_file"
+    fi
+
+    rm -f "$stripped_file" "$formatted_file"
+}
+
 # Utility function to fetch a single file's raw contents from a (private) GitHub
 # repository at a given ref, using a token-based REST call. Writes the raw file
 # body to stdout. Requires the GITHUB_TOKEN environment variable.
