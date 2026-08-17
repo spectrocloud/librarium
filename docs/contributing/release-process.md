@@ -98,6 +98,14 @@ page.
 | `JIRA_API_TOKEN`         | Issue tracker API token. | `XXX`                   |
 | `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
+Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
+not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
+has no way to complete an SSO login from a script, the `generate-patch-release-notes` and `generate-component-updates`
+targets check the key before they make any other API calls. In a terminal, the script opens Super so that you can sign
+in, waits for you to confirm, and then continues. A GitHub Actions runner has no browser, so the script stops with an
+error instead. The owner of the key stored in the `SUPER_API_TOKEN` repository secret must sign in to Super before you
+run the workflow again.
+
 #### Release Notes
 
 | **Environment Variable**    | **Description**                                       | **Example Value**  |
