@@ -31,6 +31,8 @@ support team by opening up a ticket through our [support page](http://support.sp
 
 - [Private Cloud Gateway](pcg.md)
 
+- [System Management](system-management.md)
+
 - [Virtual Machine Orchestrator](vmo-issues.md)
 
 ## Generate HAR Files
