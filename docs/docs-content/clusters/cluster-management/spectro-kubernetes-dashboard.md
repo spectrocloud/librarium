@@ -7,6 +7,13 @@ sidebar_position: 210
 tags: ["clusters", "cluster management", "dashboard"]
 ---
 
+:::warning
+
+Avoid using the Spectro Kubernetes Dashboard because it is built on the deprecated Kubernetes Dashboard project. Use
+[Headlamp](./headlamp.md) instead as your web-based UI for Kubernetes clusters.
+
+:::
+
 The Spectro Kubernetes Dashboard is a customized version of the open source
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
 web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the

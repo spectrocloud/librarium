@@ -21,6 +21,7 @@ workloads, inspect configurations, and monitor the state of their applications t
   - Managed Kubernetes:
     - AWS EKS
 - Edge
+- Imported clusters
 
 ## Prerequisites
 
