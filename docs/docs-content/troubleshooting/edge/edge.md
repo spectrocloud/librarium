@@ -13,7 +13,7 @@ The following are common scenarios that you may encounter when using Edge.
 ## Scenario - Cluster Nodes Fail to Become `Ready` on Kubernetes v1.35.x
 
 On Edge clusters configured with Kubernetes v1.35.x, hosts running OSes that default to cgroup v1, such as Ubuntu 20.04
-and earlier and RHEL 7–8, may cause kubelet to fail to start, with nodes entering a restart loop.
+and earlier and RHEL 7–8, may cause Kubelet to fail to start, with nodes entering a restart loop.
 
 To resolve this issue, configure the host operating system to use cgroup v2.
 
