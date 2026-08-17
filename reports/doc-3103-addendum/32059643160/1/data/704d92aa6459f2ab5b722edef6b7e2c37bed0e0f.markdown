@@ -1,0 +1,480 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/reference/hardware-requirements/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  5765 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Explanation" [ref=e53] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e54] [cursor=pointer]
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Reference" [expanded] [ref=e57] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e58] [cursor=pointer]
+                - list [ref=e59]:
+                  - listitem [ref=e60]:
+                    - link "Glossary" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                  - listitem [ref=e62]:
+                    - link "Suggested Hardware" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                  - listitem [ref=e64]:
+                    - link "Bond Configuration" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                  - listitem [ref=e66]:
+                    - link "Cluster Profile Variables" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                  - listitem [ref=e68]:
+                    - link "Certified Models by Hardware" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - listitem [ref=e70]:
+                    - link "Model Upload Reference" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                  - listitem [ref=e72]:
+                    - link "Claude Code Configuration" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+                  - listitem [ref=e74]:
+                    - link "Cursor Configuration" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+                  - listitem [ref=e76]:
+                    - link "OpenAI Codex Configuration" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - listitem [ref=e78]:
+                    - link "OpenCode Configuration" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+                  - listitem [ref=e80]:
+                    - link "Known Issues" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/
+              - listitem [ref=e82]:
+                - link "Release Notes" [ref=e83] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e84]:
+                - button "Privacy Settings" [ref=e85] [cursor=pointer]
+      - main [ref=e86]:
+        - generic [ref=e88]:
+          - generic [ref=e90]:
+            - article [ref=e91]:
+              - navigation "Breadcrumbs" [ref=e92]:
+                - list [ref=e93]:
+                  - listitem [ref=e94]:
+                    - link "Home page" [ref=e95] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e96]
+                  - listitem [ref=e98]:
+                    - link "Reference" [ref=e99] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]: Suggested Hardware
+              - generic [ref=e102]:
+                - heading "Suggested Hardware" [level=1] [ref=e104]
+                - paragraph [ref=e105]: "This page lists the hardware requirements for a PaletteAI Inference Launchpad appliance. Requirements are model-driven: the target model determines the GPU count, GPU memory, host RAM, and storage."
+                - paragraph [ref=e106]:
+                  - text: For model-to-hardware mapping, refer to
+                  - link "Certified Models by Hardware" [ref=e107] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - text: . For the design decisions behind these requirements, refer to
+                  - link "Architecture Overview" [ref=e108] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/architecture/
+                  - text: .
+                - heading "Hardware RequirementsDirect link to Hardware Requirements" [level=2] [ref=e109]:
+                  - text: Hardware Requirements
+                  - link "Direct link to Hardware Requirements" [ref=e110] [cursor=pointer]:
+                    - /url: "#hardware-requirements"
+                    - text: "#"
+                - paragraph [ref=e111]: The following table lists the minimum and recommended hardware for the appliance on a single high-density GPU server. The appliance ships an immutable Kairos-based operating system, so no separate install is required.
+                - table [ref=e112]:
+                  - rowgroup [ref=e113]:
+                    - row "Component Minimum Hardware Recommended Hardware Notes" [ref=e114]:
+                      - columnheader "Component" [ref=e115]:
+                        - strong [ref=e116]: Component
+                      - columnheader "Minimum Hardware" [ref=e117]:
+                        - strong [ref=e118]: Minimum Hardware
+                      - columnheader "Recommended Hardware" [ref=e119]:
+                        - strong [ref=e120]: Recommended Hardware
+                      - columnheader "Notes" [ref=e121]:
+                        - strong [ref=e122]: Notes
+                  - rowgroup [ref=e123]:
+                    - row "CPU 2x 32-core CPU (64 cores total) 2x 64-core CPU (128 cores total) Dual-socket is required for 8x GPU systems" [ref=e124]:
+                      - cell "CPU" [ref=e125]
+                      - cell "2x 32-core CPU (64 cores total)" [ref=e126]
+                      - cell "2x 64-core CPU (128 cores total)" [ref=e127]
+                      - cell "Dual-socket is required for 8x GPU systems" [ref=e128]
+                    - row "GPU 2x NVIDIA or AMD GPU 8x NVIDIA or AMD GPU Larger models require much more VRAM, typically with 8 GPUs" [ref=e129]:
+                      - cell "GPU" [ref=e130]
+                      - cell "2x NVIDIA or AMD GPU" [ref=e131]
+                      - cell "8x NVIDIA or AMD GPU" [ref=e132]
+                      - cell "Larger models require much more VRAM, typically with 8 GPUs" [ref=e133]
+                    - row "GPU VRAM 128 GB (all GPUs combined) 1024 GB (all GPUs combined) Total VRAM across all installed GPUs; larger models require more" [ref=e134]:
+                      - cell "GPU VRAM" [ref=e135]
+                      - cell "128 GB (all GPUs combined)" [ref=e136]
+                      - cell "1024 GB (all GPUs combined)" [ref=e137]
+                      - cell "Total VRAM across all installed GPUs; larger models require more" [ref=e138]
+                    - row "RAM 1 TB 2 TB or more 128 GB RAM per GPU, plus 512 GB or more for KV cache" [ref=e139]:
+                      - cell "RAM" [ref=e140]
+                      - cell "1 TB" [ref=e141]
+                      - cell "2 TB or more" [ref=e142]
+                      - cell "128 GB RAM per GPU, plus 512 GB or more for KV cache" [ref=e143]
+                    - row "OS boot drive 500 GB SSD RAID1 of two 800 GB SSD drives Most servers provide an onboard RAID controller" [ref=e144]:
+                      - cell "OS boot drive" [ref=e145]
+                      - cell "500 GB SSD" [ref=e146]
+                      - cell "RAID1 of two 800 GB SSD drives" [ref=e147]
+                      - cell "Most servers provide an onboard RAID controller" [ref=e148]
+                    - row "Data disks 1x 8 TB NVMe 4x 8 TB NVMe Model weights and persistent KV cache stored on these drives" [ref=e149]:
+                      - cell "Data disks" [ref=e150]
+                      - cell "1x 8 TB NVMe" [ref=e151]
+                      - cell "4x 8 TB NVMe" [ref=e152]
+                      - cell "Model weights and persistent KV cache stored on these drives" [ref=e153]
+                    - row "Network 1x 10 Gbps NIC 2x 10+ Gbps NICs, bonded 802.3ad LACP recommended" [ref=e154]:
+                      - cell "Network" [ref=e155]
+                      - cell "1x 10 Gbps NIC" [ref=e156]
+                      - cell "2x 10+ Gbps NICs, bonded" [ref=e157]
+                      - cell "802.3ad LACP recommended" [ref=e158]
+                - heading "GPUDirect link to GPU" [level=2] [ref=e159]:
+                  - text: GPU
+                  - link "Direct link to GPU" [ref=e160] [cursor=pointer]:
+                    - /url: "#gpu"
+                    - text: "#"
+                - paragraph [ref=e161]: The required GPU count depends on the target model. The minimum is 2 GPUs, and 8 GPUs are recommended for larger models. For example, GLM 5.2 FP8 requires 8 GPUs.
+                - paragraph [ref=e162]:
+                  - text: The reference GPU is the NVIDIA H100 80 GB. The appliance supports both NVIDIA and AMD GPUs, and the GPU Operator installs GPU drivers automatically. For the models certified on each GPU configuration, refer to
+                  - link "Certified Models by Hardware" [ref=e163] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - text: .
+                - heading "StorageDirect link to Storage" [level=2] [ref=e164]:
+                  - text: Storage
+                  - link "Direct link to Storage" [ref=e165] [cursor=pointer]:
+                    - /url: "#storage"
+                    - text: "#"
+                - paragraph [ref=e166]: The OS boot drive is an SSD, and the data pool uses NVMe drives only. Spinning disks are not supported. Storage has two roles.
+                - table [ref=e167]:
+                  - rowgroup [ref=e168]:
+                    - row "Role Devices Contents" [ref=e169]:
+                      - columnheader "Role" [ref=e170]:
+                        - strong [ref=e171]: Role
+                      - columnheader "Devices" [ref=e172]:
+                        - strong [ref=e173]: Devices
+                      - columnheader "Contents" [ref=e174]:
+                        - strong [ref=e175]: Contents
+                  - rowgroup [ref=e176]:
+                    - row "OS boot drive 500 GB SSD (minimum); two 800 GB SSD drives in RAID1 (recommended) Operating system, plus a system partition for the Piraeus system storage pool used at cluster bootstrap." [ref=e177]:
+                      - cell "OS boot drive" [ref=e178]
+                      - cell "500 GB SSD (minimum); two 800 GB SSD drives in RAID1 (recommended)" [ref=e179]
+                      - cell "Operating system, plus a system partition for the Piraeus system storage pool used at cluster bootstrap." [ref=e180]
+                    - row "Data pool 1x 8 TB NVMe (minimum); 4x 8 TB NVMe (recommended) Piraeus storage pool for the model-weights and KV cache volumes; striped across the data drives when more than one is present." [ref=e181]:
+                      - cell "Data pool" [ref=e182]
+                      - cell "1x 8 TB NVMe (minimum); 4x 8 TB NVMe (recommended)" [ref=e183]
+                      - cell "Piraeus storage pool for the model-weights and KV cache volumes; striped across the data drives when more than one is present." [ref=e184]
+                - paragraph [ref=e185]: A single model artifact is large. For example, GLM 5.2 FP8 weights are approximately 750 GB. The Piraeus storage layer provisions a 1 TB volume for model weights and a 2 TB volume for the KV cache.
+                - heading "Network and IP AddressingDirect link to Network and IP Addressing" [level=2] [ref=e186]:
+                  - text: Network and IP Addressing
+                  - link "Direct link to Network and IP Addressing" [ref=e187] [cursor=pointer]:
+                    - /url: "#network-and-ip-addressing"
+                    - text: "#"
+                - paragraph [ref=e188]:
+                  - text: The minimum is a single 10 Gbps NIC. The recommended configuration is a bond of two or more 10 Gbps or faster NICs using the 802.3ad Link Aggregation Control Protocol (LACP) with a
+                  - code [ref=e189]: layer3+4
+                  - text: hash policy and a fast LACP rate, presented as a single logical interface.
+                - paragraph [ref=e190]: "Required IP addresses:"
+                - list [ref=e191]:
+                  - listitem [ref=e192]: A single unused platform IP address (not a range) for MetalLB to assign to Traefik, which fronts the appliance console and API.
+                  - listitem [ref=e193]: A cluster virtual IP address (VIP).
+                - paragraph [ref=e194]: The following network ranges apply by default and become read-only after day one.
+                - table [ref=e195]:
+                  - rowgroup [ref=e196]:
+                    - row "Network Default" [ref=e197]:
+                      - columnheader "Network" [ref=e198]:
+                        - strong [ref=e199]: Network
+                      - columnheader "Default" [ref=e200]:
+                        - strong [ref=e201]: Default
+                  - rowgroup [ref=e202]:
+                    - row "Pod network range 100.64.0.0/18" [ref=e203]:
+                      - cell "Pod network range" [ref=e204]
+                      - cell "100.64.0.0/18" [ref=e205]
+                    - row "Service network range 100.64.64.0/18" [ref=e206]:
+                      - cell "Service network range" [ref=e207]
+                      - cell "100.64.64.0/18" [ref=e208]
+                - paragraph [ref=e209]: The appliance listens on the following ports.
+                - table [ref=e210]:
+                  - rowgroup [ref=e211]:
+                    - row "Port Purpose" [ref=e212]:
+                      - columnheader "Port" [ref=e213]:
+                        - strong [ref=e214]: Port
+                      - columnheader "Purpose" [ref=e215]:
+                        - strong [ref=e216]: Purpose
+                  - rowgroup [ref=e217]:
+                    - row "443/TCP Appliance console and API, served by Traefik on the platform IP address." [ref=e218]:
+                      - cell "443/TCP" [ref=e219]
+                      - cell "Appliance console and API, served by Traefik on the platform IP address." [ref=e220]
+                    - row "5080/TCP Node Local UI, reached at https://<node-ip>:5080 during installation." [ref=e221]:
+                      - cell "5080/TCP" [ref=e222]
+                      - cell "Node Local UI, reached at https://<node-ip>:5080 during installation." [ref=e223]:
+                        - text: Node Local UI, reached at
+                        - code [ref=e224]: https://<node-ip>:5080
+                        - text: during installation.
+                    - row "5082/TCP Node Local UI API, used by the Palette CLI to upload the content bundle from the jumpbox." [ref=e225]:
+                      - cell "5082/TCP" [ref=e226]
+                      - cell "Node Local UI API, used by the Palette CLI to upload the content bundle from the jumpbox." [ref=e227]
+                - heading "AirgappedDirect link to Airgapped" [level=2] [ref=e228]:
+                  - text: Airgapped
+                  - link "Direct link to Airgapped" [ref=e229] [cursor=pointer]:
+                    - /url: "#airgapped"
+                    - text: "#"
+                - paragraph [ref=e230]: The appliance is airgapped. Application images ship in the content bundle, and model weights ship as a separate artifact. The appliance requires no outbound internet access during installation or day-two operation.
+                - heading "Administrative WorkstationDirect link to Administrative Workstation" [level=2] [ref=e231]:
+                  - text: Administrative Workstation
+                  - link "Direct link to Administrative Workstation" [ref=e232] [cursor=pointer]:
+                    - /url: "#administrative-workstation"
+                    - text: "#"
+                - paragraph [ref=e233]:
+                  - text: The appliance requires a separate Linux administrative workstation, also called a jumpbox, on the same network as the appliance nodes. The appliance does not provide this machine. It is used during
+                  - link "installation" [ref=e234] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - text: and across the entire appliance lifecycle.
+                - paragraph [ref=e235]: "The administrative workstation requires the following:"
+                - list [ref=e236]:
+                  - listitem [ref=e237]: Network access to the appliance nodes over SSH.
+                  - listitem [ref=e238]: An SSH client and a key pair, or password authentication, for the appliance nodes.
+                  - listitem [ref=e239]: The Palette CLI, which uploads model artifacts to the appliance.
+                  - listitem [ref=e240]:
+                    - code [ref=e241]: kubectl
+                    - text: ", for post-installation validation and day-two operations."
+                  - listitem [ref=e242]: Enough local disk to stage model downloads. Model artifacts are large and can reach hundreds of gigabytes.
+                - heading "Model Download Access (Recommended)Direct link to Model Download Access (Recommended)" [level=3] [ref=e243]:
+                  - text: Model Download Access (Recommended)
+                  - link "Direct link to Model Download Access (Recommended)" [ref=e244] [cursor=pointer]:
+                    - /url: "#model-download-access-recommended"
+                    - text: "#"
+                - paragraph [ref=e245]:
+                  - text: Outbound HTTPS access to
+                  - code [ref=e246]: huggingface.co
+                  - text: from the administrative workstation is optional but recommended. It applies to the administrative workstation only and allows model weights to be downloaded there before they are uploaded to the appliance. As noted in
+                  - link "Airgapped" [ref=e247] [cursor=pointer]:
+                    - /url: "#airgapped"
+                  - text: ", the appliance itself needs no outbound internet access."
+                - paragraph [ref=e248]: Without this access, model weights must be staged on a separate connected machine and transferred to the administrative workstation before upload.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e249]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e250] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e251]:
+                  - listitem [ref=e252]:
+                    - link "Certified Models by Hardware" [ref=e253] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                    - text: for model-to-hardware mapping.
+                  - listitem [ref=e254]:
+                    - link "Architecture Overview" [ref=e255] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/architecture/
+                    - text: for the design decisions behind these requirements.
+              - generic [ref=e256]:
+                - generic [ref=e258]:
+                  - text: "Tags:"
+                  - list [ref=e259]:
+                    - listitem [ref=e260]:
+                      - link "paletteai-inference-launchpad" [ref=e261] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e262]:
+                      - link "reference" [ref=e263] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/reference/
+                    - listitem [ref=e264]:
+                      - link "requirements" [ref=e265] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/requirements/
+                    - listitem [ref=e266]:
+                      - link "hardware" [ref=e267] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/hardware/
+                - link "Edit this page" [ref=e270] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/reference/hardware-requirements.md
+                  - img [ref=e271]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e275]:
+              - link "Previous « Glossary" [ref=e276] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/glossary/
+                - generic [ref=e277]: Previous
+                - generic [ref=e278]: « Glossary
+              - link "Next Bond Configuration »" [ref=e279] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                - generic [ref=e280]: Next
+                - generic [ref=e281]: Bond Configuration »
+          - list [ref=e284]:
+            - listitem [ref=e285]:
+              - link "Hardware Requirements" [ref=e286] [cursor=pointer]:
+                - /url: "#hardware-requirements"
+            - listitem [ref=e287]:
+              - link "GPU" [ref=e288] [cursor=pointer]:
+                - /url: "#gpu"
+            - listitem [ref=e289]:
+              - link "Storage" [ref=e290] [cursor=pointer]:
+                - /url: "#storage"
+            - listitem [ref=e291]:
+              - link "Network and IP Addressing" [ref=e292] [cursor=pointer]:
+                - /url: "#network-and-ip-addressing"
+            - listitem [ref=e293]:
+              - link "Airgapped" [ref=e294] [cursor=pointer]:
+                - /url: "#airgapped"
+            - listitem [ref=e295]:
+              - link "Administrative Workstation" [ref=e296] [cursor=pointer]:
+                - /url: "#administrative-workstation"
+              - list [ref=e297]:
+                - listitem [ref=e298]:
+                  - link "Model Download Access (Recommended)" [ref=e299] [cursor=pointer]:
+                    - /url: "#model-download-access-recommended"
+            - listitem [ref=e300]:
+              - link "Resources" [ref=e301] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e302] [cursor=pointer]:
+    - generic [ref=e305]:
+      - img "Project Logo" [ref=e306]
+      - paragraph [ref=e307]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

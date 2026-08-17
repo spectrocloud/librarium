@@ -1,0 +1,534 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/reference/bond-configuration/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  5765 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Explanation" [ref=e53] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e54] [cursor=pointer]
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Reference" [expanded] [ref=e57] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e58] [cursor=pointer]
+                - list [ref=e59]:
+                  - listitem [ref=e60]:
+                    - link "Glossary" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                  - listitem [ref=e62]:
+                    - link "Suggested Hardware" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                  - listitem [ref=e64]:
+                    - link "Bond Configuration" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                  - listitem [ref=e66]:
+                    - link "Cluster Profile Variables" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                  - listitem [ref=e68]:
+                    - link "Certified Models by Hardware" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - listitem [ref=e70]:
+                    - link "Model Upload Reference" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                  - listitem [ref=e72]:
+                    - link "Claude Code Configuration" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+                  - listitem [ref=e74]:
+                    - link "Cursor Configuration" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+                  - listitem [ref=e76]:
+                    - link "OpenAI Codex Configuration" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - listitem [ref=e78]:
+                    - link "OpenCode Configuration" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+                  - listitem [ref=e80]:
+                    - link "Known Issues" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/
+              - listitem [ref=e82]:
+                - link "Release Notes" [ref=e83] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e84]:
+                - button "Privacy Settings" [ref=e85] [cursor=pointer]
+      - main [ref=e86]:
+        - generic [ref=e88]:
+          - generic [ref=e90]:
+            - article [ref=e91]:
+              - navigation "Breadcrumbs" [ref=e92]:
+                - list [ref=e93]:
+                  - listitem [ref=e94]:
+                    - link "Home page" [ref=e95] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e96]
+                  - listitem [ref=e98]:
+                    - link "Reference" [ref=e99] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]: Bond Configuration
+              - generic [ref=e102]:
+                - heading "Bond Configuration Reference" [level=1] [ref=e104]
+                - paragraph [ref=e105]:
+                  - text: The appliance carries cluster traffic and
+                  - link "Piraeus" [ref=e106] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/#piraeus
+                  - text: storage replication over a bonded interface,
+                  - code [ref=e107]: bond0
+                  - text: ", that aggregates two physical NICs into one logical link. This page documents each field of the Local UI"
+                  - strong [ref=e108]: Network Interfaces > Bonds > Create
+                  - text: form. The values must match how your data-center switch is configured on the ports the appliance is plugged into; confirm them with your network administrator before you apply them.
+                - paragraph [ref=e109]:
+                  - text: For the step-by-step procedure, refer to
+                  - link "Install the Appliance" [ref=e110] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/#create-a-bond
+                  - text: . For the rationale for using a bond rather than a bridge, refer to
+                  - link "Installation Architecture" [ref=e111] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/installation-architecture/#bond-not-bridge
+                  - text: .
+                - heading "FieldsDirect link to Fields" [level=2] [ref=e112]:
+                  - text: Fields
+                  - link "Direct link to Fields" [ref=e113] [cursor=pointer]:
+                    - /url: "#fields"
+                    - text: "#"
+                - paragraph [ref=e114]:
+                  - text: Two fields are often confused. The
+                  - strong [ref=e115]: Bond type
+                  - text: sets how the bond gets its IP address (
+                  - code [ref=e116]: static
+                  - text: ","
+                  - code [ref=e117]: dhcp
+                  - text: ", or"
+                  - code [ref=e118]: none
+                  - text: ), while the
+                  - strong [ref=e119]: Bonding mode
+                  - text: sets the link-aggregation algorithm (
+                  - code [ref=e120]: 802.3ad
+                  - text: ). They are separate settings. Set the bond type to
+                  - code [ref=e121]: static
+                  - text: and the bonding mode to
+                  - code [ref=e122]: 802.3ad
+                  - text: .
+                - heading "Bond nameDirect link to Bond name" [level=3] [ref=e123]:
+                  - text: Bond name
+                  - link "Direct link to Bond name" [ref=e124] [cursor=pointer]:
+                    - /url: "#bond-name"
+                    - text: "#"
+                - paragraph [ref=e125]:
+                  - text: "Recommended value: a name you type yourself, for example"
+                  - code [ref=e126]: bond0
+                  - text: .
+                - paragraph [ref=e127]:
+                  - text: The name field shows
+                  - code [ref=e128]: bond0
+                  - text: as grayed-out placeholder text, not a saved value. Click into the field and type the name before you continue; otherwise, the bond can be submitted without a name. Use
+                  - code [ref=e129]: bond0
+                  - text: unless you already have a bond of that name.
+                - heading "Bond typeDirect link to Bond type" [level=3] [ref=e130]:
+                  - text: Bond type
+                  - link "Direct link to Bond type" [ref=e131] [cursor=pointer]:
+                    - /url: "#bond-type"
+                    - text: "#"
+                - paragraph [ref=e132]:
+                  - text: "Recommended value:"
+                  - code [ref=e133]: static
+                  - text: .
+                - paragraph [ref=e134]:
+                  - text: "Sets how the bond obtains its IP address:"
+                  - code [ref=e135]: static
+                  - text: (you enter the IP, subnet, and gateway),
+                  - code [ref=e136]: dhcp
+                  - text: (the bond requests an address), or
+                  - code [ref=e137]: none
+                  - text: (no IP, Layer 2 only). Choose
+                  - code [ref=e138]: static
+                  - text: so the appliance keeps a fixed address. The IP, gateway, and DNS fields appear only when the type is
+                  - code [ref=e139]: static
+                  - text: or
+                  - code [ref=e140]: dhcp
+                  - text: .
+                - heading "MembersDirect link to Members" [level=3] [ref=e141]:
+                  - text: Members
+                  - link "Direct link to Members" [ref=e142] [cursor=pointer]:
+                    - /url: "#members"
+                    - text: "#"
+                - paragraph [ref=e143]:
+                  - text: "Recommended value: the two data NICs, for example"
+                  - code [ref=e144]: enP1s3f0np0
+                  - text: and
+                  - code [ref=e145]: enP1s3f1np1
+                  - text: .
+                - paragraph [ref=e146]: Select the member NICs manually from the list of physical interfaces. These are the NICs the Palette TUI showed during initial configuration. Do not include the out-of-band management NIC. Both member NICs must be cabled to switch ports that belong to the same LAG group.
+                - heading "Bond modeDirect link to Bond mode" [level=3] [ref=e147]:
+                  - text: Bond mode
+                  - link "Direct link to Bond mode" [ref=e148] [cursor=pointer]:
+                    - /url: "#bond-mode"
+                    - text: "#"
+                - paragraph [ref=e149]:
+                  - text: "Recommended value:"
+                  - code [ref=e150]: 802.3ad
+                  - text: .
+                - paragraph [ref=e151]: Selects dynamic Link Aggregation (LAG), the industry-standard bonding mode negotiated with the switch by the Link Aggregation Control Protocol (LACP). Both NICs are active at the same time, and the switch treats the pair as one logical port. This mode requires the switch to be configured with a matching LAG group with LACP enabled on the two switch ports.
+                - paragraph [ref=e152]:
+                  - text: Do not select
+                  - code [ref=e153]: active-backup
+                  - text: (uses only one NIC at a time) or
+                  - code [ref=e154]: balance-alb
+                  - text: (works without switch configuration but interacts poorly with Piraeus's continuous replication traffic).
+                - heading "Hash policyDirect link to Hash policy" [level=3] [ref=e155]:
+                  - text: Hash policy
+                  - link "Direct link to Hash policy" [ref=e156] [cursor=pointer]:
+                    - /url: "#hash-policy"
+                    - text: "#"
+                - paragraph [ref=e157]:
+                  - text: "Recommended value:"
+                  - code [ref=e158]: layer3+4
+                  - text: .
+                - paragraph [ref=e159]:
+                  - text: The rule the bond uses to decide which of the two NICs sends any given outbound packet.
+                  - code [ref=e160]: layer3+4
+                  - text: hashes on the source and destination IP address plus the TCP or UDP port, so many long-lived flows spread evenly across both NICs. The simpler
+                  - code [ref=e161]: layer2
+                  - text: policy (MAC-only) sends all traffic through one NIC when the peer is a single router, which caps the bond at one NIC's bandwidth. Confirm the switch is set to the same hash policy. This field applies only to the
+                  - code [ref=e162]: 802.3ad
+                  - text: bonding mode.
+                - heading "Link monitoring intervalDirect link to Link monitoring interval" [level=3] [ref=e163]:
+                  - text: Link monitoring interval
+                  - link "Direct link to Link monitoring interval" [ref=e164] [cursor=pointer]:
+                    - /url: "#link-monitoring-interval"
+                    - text: "#"
+                - paragraph [ref=e165]:
+                  - text: "Recommended value:"
+                  - code [ref=e166]: "100"
+                  - text: .
+                - paragraph [ref=e167]:
+                  - text: The interval, in milliseconds, at which the bond driver checks each member NIC's link state, set through the
+                  - code [ref=e168]: MIIMonitorSec
+                  - text: option. Local UI populates this field with a default of
+                  - code [ref=e169]: "100"
+                  - text: . Keep the default unless your network team requires a different value.
+                - heading "LACP transmit rateDirect link to LACP transmit rate" [level=3] [ref=e170]:
+                  - text: LACP transmit rate
+                  - link "Direct link to LACP transmit rate" [ref=e171] [cursor=pointer]:
+                    - /url: "#lacp-transmit-rate"
+                    - text: "#"
+                - paragraph [ref=e172]:
+                  - text: "Recommended value:"
+                  - code [ref=e173]: fast
+                  - text: .
+                - paragraph [ref=e174]:
+                  - text: The rate at which the appliance exchanges LACP heartbeat frames with the switch.
+                  - code [ref=e175]: fast
+                  - text: sends one heartbeat per second, so a failed link is detected within a few seconds.
+                  - code [ref=e176]: slow
+                  - text: (the LACP default) sends one every 30 seconds; use it only if your switch team requires it. The overhead of
+                  - code [ref=e177]: fast
+                  - text: is negligible. This field applies only to the
+                  - code [ref=e178]: 802.3ad
+                  - text: bonding mode.
+                - heading "Maximum Transmission Unit (MTU)Direct link to Maximum Transmission Unit (MTU)" [level=3] [ref=e179]:
+                  - text: Maximum Transmission Unit (MTU)
+                  - link "Direct link to Maximum Transmission Unit (MTU)" [ref=e180] [cursor=pointer]:
+                    - /url: "#maximum-transmission-unit-mtu"
+                    - text: "#"
+                - paragraph [ref=e181]:
+                  - text: "Recommended value: your network's MTU, for example"
+                  - code [ref=e182]: "1500"
+                  - text: ", or"
+                  - code [ref=e183]: "9000"
+                  - text: for jumbo frames.
+                - paragraph [ref=e184]: The maximum transmission unit applied to the bond interface. Match the value your data-center switch uses on the same ports. Jumbo frames are optional and are not required for the appliance.
+                - heading "IP address (static bonds)Direct link to IP address (static bonds)" [level=3] [ref=e185]:
+                  - text: IP address (static bonds)
+                  - link "Direct link to IP address (static bonds)" [ref=e186] [cursor=pointer]:
+                    - /url: "#ip-address-static-bonds"
+                    - text: "#"
+                - paragraph [ref=e187]:
+                  - text: "Recommended value: the host IP on the bond, as CIDR, for example"
+                  - code [ref=e188]: 10.0.21.106/24
+                  - text: .
+                - paragraph [ref=e189]:
+                  - text: The address the node uses on the untagged (native) VLAN, shown only when the bond type is
+                  - code [ref=e190]: static
+                  - text: . Local UI moves the IP you set on the individual NIC in the Palette TUI onto the bond when you apply the form, so the node keeps the same address, only on a different interface.
+                - heading "Gateway and DNS serversDirect link to Gateway and DNS servers" [level=3] [ref=e191]:
+                  - text: Gateway and DNS servers
+                  - link "Direct link to Gateway and DNS servers" [ref=e192] [cursor=pointer]:
+                    - /url: "#gateway-and-dns-servers"
+                    - text: "#"
+                - paragraph [ref=e193]: "Recommended value: the default gateway and DNS servers you set in the Palette TUI."
+                - paragraph [ref=e194]: Local UI carries these over so the node keeps outbound connectivity and name resolution once the bond takes over.
+                - heading "VLAN sub-interface (optional)Direct link to VLAN sub-interface (optional)" [level=3] [ref=e195]:
+                  - text: VLAN sub-interface (optional)
+                  - link "Direct link to VLAN sub-interface (optional)" [ref=e196] [cursor=pointer]:
+                    - /url: "#vlan-sub-interface-optional"
+                    - text: "#"
+                - paragraph [ref=e197]:
+                  - text: "Recommended value (when needed):"
+                  - code [ref=e198]: bond0.<vlan-id>
+                  - text: with its own CIDR, for example
+                  - code [ref=e199]: bond0.393
+                  - text: with
+                  - code [ref=e200]: 10.0.22.110/24
+                  - text: .
+                - paragraph [ref=e201]: Add one only if you need to reach a tagged VLAN, such as an external NFS storage network. The switch ports that carry the bond must be configured to trunk the tagged VLAN through to the appliance.
+                - heading "Cilium interface selectionDirect link to Cilium interface selection" [level=3] [ref=e202]:
+                  - text: Cilium interface selection
+                  - link "Direct link to Cilium interface selection" [ref=e203] [cursor=pointer]:
+                    - /url: "#cilium-interface-selection"
+                    - text: "#"
+                - paragraph [ref=e204]: "Recommended value: leave empty."
+                - paragraph [ref=e205]: Cilium is the Kubernetes networking layer the cluster installs later. It auto-detects the interface that owns the default gateway (the bond) and uses it, so no explicit selection is needed. Only override this if Spectro Cloud support directs you to.
+                - heading "Quick referenceDirect link to Quick reference" [level=2] [ref=e206]:
+                  - text: Quick reference
+                  - link "Direct link to Quick reference" [ref=e207] [cursor=pointer]:
+                    - /url: "#quick-reference"
+                    - text: "#"
+                - generic [ref=e209]:
+                  - code [ref=e211]:
+                    - generic [ref=e212]: "Bond name : type it yourself, for example bond0 (the field shows bond0 as a placeholder)"
+                    - generic [ref=e213]: "Bond type : static"
+                    - generic [ref=e214]: "Members : the data NICs, selected manually, for example enP1s3f0np0 and enP1s3f1np1"
+                    - generic [ref=e215]: "Bonding mode : 802.3ad"
+                    - generic [ref=e216]: "Hash policy : layer3+4"
+                    - generic [ref=e217]: "Link monitor : 100 (MIIMonitorSec, milliseconds)"
+                    - generic [ref=e218]: "LACP rate : fast"
+                    - generic [ref=e219]: "MTU : your network MTU, for example 1500"
+                    - generic [ref=e220]: "IP : the host IP on the bond, for example 10.0.21.106/24 (untagged, static bonds)"
+                    - generic [ref=e221]: "Gateway/DNS : the default gateway and DNS servers"
+                    - generic [ref=e222]: "VLAN (opt.) : bond0.<vlan-id>, for example bond0.393 with 10.0.22.110/24"
+                  - generic [ref=e223]:
+                    - button "Toggle word wrap" [ref=e224] [cursor=pointer]:
+                      - img [ref=e225]
+                    - button "Copy code to clipboard" [ref=e227] [cursor=pointer]:
+                      - generic [ref=e228]:
+                        - img [ref=e229]
+                        - img [ref=e231]
+              - generic [ref=e233]:
+                - generic [ref=e235]:
+                  - text: "Tags:"
+                  - list [ref=e236]:
+                    - listitem [ref=e237]:
+                      - link "paletteai-inference-launchpad" [ref=e238] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e239]:
+                      - link "reference" [ref=e240] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/reference/
+                    - listitem [ref=e241]:
+                      - link "install" [ref=e242] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/install/
+                    - listitem [ref=e243]:
+                      - link "network" [ref=e244] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/network/
+                - link "Edit this page" [ref=e247] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/reference/bond-configuration.md
+                  - img [ref=e248]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e252]:
+              - link "Previous « Suggested Hardware" [ref=e253] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                - generic [ref=e254]: Previous
+                - generic [ref=e255]: « Suggested Hardware
+              - link "Next Cluster Profile Variables »" [ref=e256] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                - generic [ref=e257]: Next
+                - generic [ref=e258]: Cluster Profile Variables »
+          - list [ref=e261]:
+            - listitem [ref=e262]:
+              - link "Fields" [ref=e263] [cursor=pointer]:
+                - /url: "#fields"
+              - list [ref=e264]:
+                - listitem [ref=e265]:
+                  - link "Bond name" [ref=e266] [cursor=pointer]:
+                    - /url: "#bond-name"
+                - listitem [ref=e267]:
+                  - link "Bond type" [ref=e268] [cursor=pointer]:
+                    - /url: "#bond-type"
+                - listitem [ref=e269]:
+                  - link "Members" [ref=e270] [cursor=pointer]:
+                    - /url: "#members"
+                - listitem [ref=e271]:
+                  - link "Bond mode" [ref=e272] [cursor=pointer]:
+                    - /url: "#bond-mode"
+                - listitem [ref=e273]:
+                  - link "Hash policy" [ref=e274] [cursor=pointer]:
+                    - /url: "#hash-policy"
+                - listitem [ref=e275]:
+                  - link "Link monitoring interval" [ref=e276] [cursor=pointer]:
+                    - /url: "#link-monitoring-interval"
+                - listitem [ref=e277]:
+                  - link "LACP transmit rate" [ref=e278] [cursor=pointer]:
+                    - /url: "#lacp-transmit-rate"
+                - listitem [ref=e279]:
+                  - link "Maximum Transmission Unit (MTU)" [ref=e280] [cursor=pointer]:
+                    - /url: "#maximum-transmission-unit-mtu"
+                - listitem [ref=e281]:
+                  - link "IP address (static bonds)" [ref=e282] [cursor=pointer]:
+                    - /url: "#ip-address-static-bonds"
+                - listitem [ref=e283]:
+                  - link "Gateway and DNS servers" [ref=e284] [cursor=pointer]:
+                    - /url: "#gateway-and-dns-servers"
+                - listitem [ref=e285]:
+                  - link "VLAN sub-interface (optional)" [ref=e286] [cursor=pointer]:
+                    - /url: "#vlan-sub-interface-optional"
+                - listitem [ref=e287]:
+                  - link "Cilium interface selection" [ref=e288] [cursor=pointer]:
+                    - /url: "#cilium-interface-selection"
+            - listitem [ref=e289]:
+              - link "Quick reference" [ref=e290] [cursor=pointer]:
+                - /url: "#quick-reference"
+  - button "Project Logo Ask AI" [ref=e291] [cursor=pointer]:
+    - generic [ref=e294]:
+      - img "Project Logo" [ref=e295]
+      - paragraph [ref=e296]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

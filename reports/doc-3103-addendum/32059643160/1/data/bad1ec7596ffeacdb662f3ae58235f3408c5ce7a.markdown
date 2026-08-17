@@ -1,0 +1,352 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  5765 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [expanded] [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - link "Install the Appliance" [ref=e53] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - listitem [ref=e54]:
+                    - link "Deploy a Model" [ref=e55] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e56]:
+                    - link "Upload a Model" [ref=e57] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                  - listitem [ref=e58]:
+                    - link "Switch the Default Model" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+                  - listitem [ref=e60]:
+                    - link "Create a Client" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                  - listitem [ref=e62]:
+                    - link "Generate an API Token" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - listitem [ref=e64]:
+                    - link "Set and Manage Client Quotas" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e66]:
+                    - link "Manage a Client's Model Access" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e68]:
+                    - link "View Client Usage" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e70]:
+                    - link "Revoke or Delete a Client" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e72]:
+                    - link "Use Claude Code" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e74]:
+                    - link "Use Cursor" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - listitem [ref=e76]:
+                    - link "Use OpenAI Codex" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                  - listitem [ref=e78]:
+                    - link "Use OpenCode" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+              - listitem [ref=e80]:
+                - generic [ref=e81]:
+                  - link "Explanation" [ref=e82] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e83] [cursor=pointer]
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Reference" [ref=e86] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - link "Release Notes" [ref=e89] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e90]:
+                - button "Privacy Settings" [ref=e91] [cursor=pointer]
+      - main [ref=e92]:
+        - generic [ref=e94]:
+          - generic [ref=e96]:
+            - article [ref=e97]:
+              - navigation "Breadcrumbs" [ref=e98]:
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - link "Home page" [ref=e101] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e102]
+                  - listitem [ref=e104]:
+                    - link "How-to Guides" [ref=e105] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - listitem [ref=e106]:
+                    - generic [ref=e107]: Switch the Default Model
+              - generic [ref=e108]:
+                - heading "Switch the Default Model" [level=1] [ref=e110]
+                - paragraph [ref=e111]:
+                  - text: This guide shows how to switch the default model on a running PaletteAI Inference Launchpad appliance when the current default is no longer serving. The appliance sets and maintains the default model for you; for how the default is chosen and applied, refer to
+                  - link "The Default Model" [ref=e112] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/architecture/#the-default-model
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e113]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e114] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e115]:
+                  - listitem [ref=e116]: A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
+                  - listitem [ref=e117]:
+                    - text: A model other than the current default already deployed and serving, so that a healthy model is available to switch to. To deploy and verify a model, refer to
+                    - link "Deploy a Model" [ref=e118] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                    - text: .
+                - heading "Switch the Default ModelDirect link to Switch the Default Model" [level=2] [ref=e119]:
+                  - text: Switch the Default Model
+                  - link "Direct link to Switch the Default Model" [ref=e120] [cursor=pointer]:
+                    - /url: "#switch-the-default-model"
+                    - text: "#"
+                - paragraph [ref=e121]:
+                  - text: When the current default model stops serving, the
+                  - strong [ref=e122]: Overview
+                  - text: page raises an incident and offers a one-step fix to point the default at a model that is currently serving.
+                - list [ref=e123]:
+                  - listitem [ref=e124]:
+                    - text: From the left main menu, select
+                    - strong [ref=e125]: Overview
+                    - text: .
+                  - listitem [ref=e126]:
+                    - text: In the
+                    - strong [ref=e127]: Decisions waiting on you
+                    - text: card, locate the active incident for the default model.
+                  - listitem [ref=e128]:
+                    - text: Open the
+                    - strong [ref=e129]: switch default model
+                    - text: drop-down menu and select a model that the appliance currently serves.
+                  - listitem [ref=e130]:
+                    - text: Select
+                    - strong [ref=e131]: Apply Fix
+                    - text: ", and then select"
+                    - strong [ref=e132]: Confirm & apply
+                    - text: .
+                - paragraph [ref=e133]:
+                  - text: The appliance switches the default model and re-runs its health check to confirm the new default recovers. For what happens to requests already in progress when the default changes, refer to
+                  - link "Request Routing" [ref=e134] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/architecture/#request-routing
+                  - text: .
+                - generic [ref=e135]:
+                  - generic [ref=e136]:
+                    - img [ref=e138]
+                    - text: info
+                  - paragraph [ref=e141]:
+                    - text: If no model is currently serving, the card reports that there is nothing to switch to. Deploy a model from the
+                    - strong [ref=e142]: Cluster
+                    - text: tab first, then return to the
+                    - strong [ref=e143]: Overview
+                    - text: page. Refer to
+                    - link "Deploy a Model" [ref=e144] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                    - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e145]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e146] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - list [ref=e147]:
+                  - listitem [ref=e148]:
+                    - strong [ref=e149]: Generate an API token
+                    - text: to send requests to the default model. Refer to
+                    - link "Generate an API Token" [ref=e150] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                    - text: .
+                  - listitem [ref=e151]:
+                    - strong [ref=e152]: Deploy another model
+                    - text: to the appliance. Refer to
+                    - link "Deploy a Model" [ref=e153] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                    - text: .
+              - generic [ref=e154]:
+                - generic [ref=e156]:
+                  - text: "Tags:"
+                  - list [ref=e157]:
+                    - listitem [ref=e158]:
+                      - link "paletteai-inference-launchpad" [ref=e159] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e160]:
+                      - link "models" [ref=e161] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/models/
+                    - listitem [ref=e162]:
+                      - link "how-to" [ref=e163] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/how-to/
+                - link "Edit this page" [ref=e166] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/how-to-guides/set-the-default-model.md
+                  - img [ref=e167]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e171]:
+              - link "Previous « Upload a Model" [ref=e172] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                - generic [ref=e173]: Previous
+                - generic [ref=e174]: « Upload a Model
+              - link "Next Create a Client »" [ref=e175] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                - generic [ref=e176]: Next
+                - generic [ref=e177]: Create a Client »
+          - list [ref=e180]:
+            - listitem [ref=e181]:
+              - link "Prerequisites" [ref=e182] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e183]:
+              - link "Switch the Default Model" [ref=e184] [cursor=pointer]:
+                - /url: "#switch-the-default-model"
+            - listitem [ref=e185]:
+              - link "Next Steps" [ref=e186] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e187] [cursor=pointer]:
+    - generic [ref=e190]:
+      - img "Project Logo" [ref=e191]
+      - paragraph [ref=e192]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
