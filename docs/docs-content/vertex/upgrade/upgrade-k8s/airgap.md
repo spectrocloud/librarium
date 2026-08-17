@@ -33,7 +33,11 @@ Kubernetes.
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette VerteX" />
+
 ## Prerequisites
+
+<PartialsComponent category="self-hosted" name="helm-client-version" />
 
 - Access to the x86 Linux jumpbox or bastion host with connectivity to the target platform where you have installed
   Palette VerteX.
@@ -45,7 +49,7 @@ Kubernetes.
   [Access Palette VerteX](../../vertex.md#access-palette-vertex) for more details.
 
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
-  available in your system.
+  available in your system. **Helm must be v3.14.0 or later.**
 
 - Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster through
   `kubectl` and have sufficient permissions to upgrade Palette VerteX. We recommend using a role with the cluster-admin

@@ -34,6 +34,8 @@ agent and Palette-created Kubernetes resources that will interfere with the inst
 
 <PartialsComponent category="self-hosted" name="kubernetes-install-local-prereqs" edition="palette" version="Palette" />
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 - An image pull secret from Spectro Cloud customer support, required to pull images from Spectro Cloud OCI registries.
   This is not required if you plan to use [mirror registries](../../system-management/registry-override.md) or
   [image swap](../../../clusters/cluster-management/image-swap.md) when pulling images. Refer to

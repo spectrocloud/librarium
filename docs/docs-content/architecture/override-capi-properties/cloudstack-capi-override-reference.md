@@ -64,18 +64,12 @@ cloudstackMachineTemplate:
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPC Resource Type          | Properties                                                                                                                                                    |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CloudStackCluster`         | None                                                                                                                                                          |
-| `CloudStackMachineTemplate` | `affinity`, `cloudstackAffinityRef`, `uncompressedUserData`, `diskOffering.mountPath`, `diskOffering.device`, `diskOffering.filesystem`, `diskOffering.label` |
+| `CloudStackMachineTemplate` | `affinity`, `cloudstackAffinityRef`, `diskOffering.device`, `diskOffering.filesystem`, `diskOffering.label`, `diskOffering.mountPath`, `uncompressedUserData` |
