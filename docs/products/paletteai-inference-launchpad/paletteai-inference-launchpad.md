@@ -65,15 +65,6 @@ boundary, so you can also bring your own model and serve it alongside them. Brin
 metadata and validate it on your hardware yourself, rather than starting from a configuration Spectro Cloud has already
 tested.
 
-A model you bring must still fit within the GPU resources available on your appliance, which is the same constraint that
-governs the certified list. To understand what certification covers and how it is granted, refer to
-[Model Certification](./explanation/model-certification.md). If you want a specific model certified for your hardware,
-[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
-
-{/* NEEDS REVIEW: confirm the support expectation for an uncertified model before publishing, per the acceptance criteria on the bring-your-own-model epic. State plainly whether such a model is covered by a support agreement or is best effort. */}
-
-{/* NEEDS REVIEW: the upload guide warns that the appliance surfaces an uploaded model only when it matches the curated catalog, which reads as a contradiction of the two preceding sentences. Confirm which behavior ships, then reconcile the two pages. */}
-
 Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require
 low latency stay local. Other requests can route outbound when the network allows.
 
