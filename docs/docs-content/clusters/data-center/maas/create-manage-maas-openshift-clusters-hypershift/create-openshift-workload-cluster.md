@@ -138,29 +138,18 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
 7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-8. On the **Cluster Config** step, select a domain from the **Domains** drop-down menu. You can also specify **NTP
-   Servers**.
+8. Fill out the following fields on the **Cluster Config** step. Click **Next** when done.
 
-   :::warning
-
-   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain
-   accurate time. If no NTP servers are specified, it can lead to time drift.
-
-   :::
+   | **Field**                                      | **Description**                                                                                                                                                                                                                                                                                                                                                                                              |
+   | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Domains**                                    | Register a DNS record in the selected domain for the deployed cluster. The DNS record links to the IP addresses of the control plane nodes.                                                                                                                                                                                                                                                                  |
+   | **SSH Keys (Optional)**                        | _This field has no effect on OpenShift workload clusters_. Palette does not inject SSH keys into RHCOS worker nodes; SSH access is governed by OpenShift and RHCOS mechanisms. Refer to [SSH Access on OpenShift Workload Clusters](../architecture.md#ssh-access-on-openshift-workload-clusters) for details.                                                                                               |
+   | **NTP Servers (Optional)**                     | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                                                                                                |
+   | **Override Cluster API cluster configuration** | _This feature is not supported on OpenShift workload clusters_. The **Override Cluster API cluster configuration** and **Override Cluster API node pool configuration** toggles in the Palette UI have no effect on this cluster type. Refer to [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md) for the list of supported providers. |
 
 9. Select a **HyperShift host cluster** from the drop-down menu. This should match the name of the HyperShift host
    cluster you created when following the [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md) guide.
    This associates the workload cluster with the selected host cluster.
-
-   :::info
-
-   Overriding Cluster API (CAPI) properties is not supported on HyperShift-hosted OpenShift workload clusters. The
-   **Override Cluster API cluster configuration** and **Override Cluster API node pool configuration** toggles in the
-   Palette UI have no effect on this cluster type. Refer to
-   [Override Cluster API (CAPI) Properties](../../../../architecture/override-capi-properties/override-capi-properties.md)
-   for the list of supported providers.
-
-   :::
 
 10. On the **Nodes Config** step, configure the worker node pools. As the OpenShift control plane is hosted in the
     HyperShift host cluster, you only configure worker nodes here.

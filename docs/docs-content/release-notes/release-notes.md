@@ -30,6 +30,16 @@ tags: ["release-notes"]
   environment through a Private Cloud Gateway (PCG). Refer to
   [Apache CloudStack](../clusters/data-center/cloudstack/cloudstack.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6899 -->
+
+- Canonical Kubernetes (CK8s) clusters on MAAS now support SSH key management. You can configure **SSH Keys** on the
+  cluster's cloud configuration during cluster creation and on Day-2 through the Palette UI, API, Terraform provider,
+  and Crossplane provider, on both Palette and Palette VerteX. Palette injects the keys into the `spectro` user's
+  `~/.ssh/authorized_keys` on every control plane and worker node, and preserves any users that MAAS or the machine
+  image already configured. Refer to
+  [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
