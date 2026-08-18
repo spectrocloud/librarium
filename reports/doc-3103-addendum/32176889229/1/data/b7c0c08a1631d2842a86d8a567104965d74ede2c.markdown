@@ -1,0 +1,337 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 5415px, received 1280px by 5703px. 301095 pixels (ratio 0.05 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 5415px, received 1280px by 5703px. 301095 pixels (ratio 0.05 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 5415px, received 1280px by 5703px. 301095 pixels (ratio 0.05 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - heading "38 docs tagged with \"paletteai-inference-launchpad\"" [level=1] [ref=e38]
+        - link "View all tags" [ref=e39] [cursor=pointer]:
+          - /url: /paletteai-inference-launchpad/tags/
+      - generic [ref=e40]:
+        - article [ref=e41]:
+          - link "Bond Configuration Reference" [ref=e42] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+            - heading "Bond Configuration Reference" [level=2] [ref=e43]
+          - paragraph [ref=e44]: "Field-by-field reference for the bond form in Local UI: bond name, bond type, members, bonding mode, hash policy, link monitoring interval, LACP rate, MTU, IP, gateway and DNS, optional VLAN sub-interface, and Cilium interface selection."
+        - article [ref=e45]:
+          - link "Certified Models by Hardware" [ref=e46] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+            - heading "Certified Models by Hardware" [level=2] [ref=e47]
+          - paragraph [ref=e48]: Reference table that maps each supported NVIDIA and AMD GPU configuration to the LLM models certified for PaletteAI Inference Launchpad.
+        - article [ref=e49]:
+          - link "Clients and Quotas" [ref=e50] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+            - heading "Clients and Quotas" [level=2] [ref=e51]
+          - paragraph [ref=e52]: "An explanation of clients, API tokens, and quotas in PaletteAI Inference Launchpad: what a client is, why the appliance serves many clients such as AI coding assistants, and how it meters and limits their usage."
+        - article [ref=e53]:
+          - link "Cluster Profile Variables" [ref=e54] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/profile-variables/
+            - heading "Cluster Profile Variables" [level=2] [ref=e55]
+          - paragraph [ref=e56]: Reference for the PaletteAI Inference Launchpad cluster profile variables collected by the Profile Config wizard. Covers networking, OS and metrics, container registry, local admin, storage, and certificates with types, required fields, defaults, and validation rules.
+        - article [ref=e57]:
+          - link "Create a Client" [ref=e58] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+            - heading "Create a Client" [level=2] [ref=e59]
+          - paragraph [ref=e60]: Step-by-step guidance for platform administrators on how to create a client on a PaletteAI Inference Launchpad appliance by stepping through the Add client wizard and issuing the client's first API token.
+        - article [ref=e61]:
+          - link "Deploy a Model" [ref=e62] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+            - heading "Deploy a Model" [level=2] [ref=e63]
+          - paragraph [ref=e64]: Step-by-step guidance for platform operators on how to deploy an LLM model to a running PaletteAI Inference Launchpad appliance and verify that it is serving.
+        - article [ref=e65]:
+          - link "Enable Vision Preprocessing" [ref=e66] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+            - heading "Enable Vision Preprocessing" [level=2] [ref=e67]
+          - paragraph [ref=e68]: Step-by-step guidance for platform operators on how to deploy a vision model alongside a text-only model and enable multimodal preprocessing so image requests are answered on the appliance.
+        - article [ref=e69]:
+          - link "Generate an API Token" [ref=e70] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+            - heading "Generate an API Token" [level=2] [ref=e71]
+          - paragraph [ref=e72]: Step-by-step guidance on how to generate an API token in the PaletteAI Inference Launchpad console so that coding assistants and other clients can authenticate to the appliance.
+        - article [ref=e73]:
+          - link "Install the PaletteAI Inference Launchpad Appliance" [ref=e74] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+            - heading "Install the PaletteAI Inference Launchpad Appliance" [level=2] [ref=e75]
+          - paragraph [ref=e76]: Step-by-step guidance for platform operators on how to install the PaletteAI Inference Launchpad appliance from bare hardware to a running, reachable appliance console.
+        - article [ref=e77]:
+          - link "Installation Architecture" [ref=e78] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/installation-architecture/
+            - heading "Installation Architecture" [level=2] [ref=e79]
+          - paragraph [ref=e80]: How the PaletteAI Inference Launchpad appliance installs across two stages, the roles of the jumpbox, slim ISO, and Local UI, and why the network uses a bond rather than a bridge.
+        - article [ref=e81]:
+          - link "Known Issues" [ref=e82] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/known-issues/
+            - heading "Known Issues" [level=2] [ref=e83]
+          - paragraph [ref=e84]: Known issues that operators may encounter during PaletteAI Inference Launchpad installation and validation, and the workarounds for each.
+        - article [ref=e85]:
+          - link "Manage a Client's Model Access" [ref=e86] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+            - heading "Manage a Client's Model Access" [level=2] [ref=e87]
+          - paragraph [ref=e88]: Step-by-step guidance for platform administrators on how to route a client to specific models and allow a client to reach external models on a PaletteAI Inference Launchpad appliance.
+        - article [ref=e89]:
+          - link "Model Certification" [ref=e90] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/model-certification/
+            - heading "Model Certification" [level=2] [ref=e91]
+          - paragraph [ref=e92]: What it means for a model to be certified on PaletteAI Inference Launchpad, how models are certified, and how to choose the right models for your use case.
+        - article [ref=e93]:
+          - link "PaletteAI Inference Launchpad Architecture Overview" [ref=e94] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/architecture/
+            - heading "PaletteAI Inference Launchpad Architecture Overview" [level=2] [ref=e95]
+          - paragraph [ref=e96]: An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, and network topology.
+        - article [ref=e97]:
+          - link "PaletteAI Inference Launchpad Claude Code Configuration" [ref=e98] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+            - heading "PaletteAI Inference Launchpad Claude Code Configuration" [level=2] [ref=e99]
+          - paragraph [ref=e100]: Reference for the environment variables and values used to connect Claude Code to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e101]:
+          - link "PaletteAI Inference Launchpad Cursor Configuration" [ref=e102] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+            - heading "PaletteAI Inference Launchpad Cursor Configuration" [level=2] [ref=e103]
+          - paragraph [ref=e104]: Reference for the settings and values used to connect the Cursor code editor to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e105]:
+          - link "PaletteAI Inference Launchpad Explanation" [ref=e106] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/
+            - heading "PaletteAI Inference Launchpad Explanation" [level=2] [ref=e107]
+          - paragraph [ref=e108]: Background, context, and design rationale for understanding how PaletteAI Inference Launchpad works.
+        - article [ref=e109]:
+          - link "PaletteAI Inference Launchpad Glossary" [ref=e110] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/glossary/
+            - heading "PaletteAI Inference Launchpad Glossary" [level=2] [ref=e111]
+          - paragraph [ref=e112]: Definitions of the key AI, product, and platform terms used across the PaletteAI Inference Launchpad documentation.
+        - article [ref=e113]:
+          - link "PaletteAI Inference Launchpad How-to Guides" [ref=e114] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/
+            - heading "PaletteAI Inference Launchpad How-to Guides" [level=2] [ref=e115]
+          - paragraph [ref=e116]: Step-by-step guides for completing specific operational tasks on a running PaletteAI Inference Launchpad appliance.
+        - article [ref=e117]:
+          - link "PaletteAI Inference Launchpad Inference Engines" [ref=e118] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/inference-engines/
+            - heading "PaletteAI Inference Launchpad Inference Engines" [level=2] [ref=e119]
+          - paragraph [ref=e120]: An explanation of inference engines in PaletteAI Inference Launchpad, including automatic engine selection, the supported engine kinds, and when to override the automatic choice.
+        - article [ref=e121]:
+          - link "PaletteAI Inference Launchpad Model Upload Reference" [ref=e122] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+            - heading "PaletteAI Inference Launchpad Model Upload Reference" [level=2] [ref=e123]
+          - paragraph [ref=e124]: Reference for the Palette CLI model download and upload commands and the model metadata file used to place models on a PaletteAI Inference Launchpad appliance.
+        - article [ref=e125]:
+          - link "PaletteAI Inference Launchpad OpenAI Codex Configuration" [ref=e126] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/codex-reference/
+            - heading "PaletteAI Inference Launchpad OpenAI Codex Configuration" [level=2] [ref=e127]
+          - paragraph [ref=e128]: Reference for the configuration file fields and values used to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e129]:
+          - link "PaletteAI Inference Launchpad OpenCode Configuration" [ref=e130] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+            - heading "PaletteAI Inference Launchpad OpenCode Configuration" [level=2] [ref=e131]
+          - paragraph [ref=e132]: Reference for the configuration file fields and values used to connect the OpenCode terminal coding agent to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e133]:
+          - link "PaletteAI Inference Launchpad Reference" [ref=e134] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/
+            - heading "PaletteAI Inference Launchpad Reference" [level=2] [ref=e135]
+          - paragraph [ref=e136]: Authoritative technical reference for requirements, certified models, and specifications.
+        - article [ref=e137]:
+          - link "PaletteAI Inference Launchpad Release Notes" [ref=e138] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/release-notes/
+            - heading "PaletteAI Inference Launchpad Release Notes" [level=2] [ref=e139]
+          - paragraph [ref=e140]: Release notes for PaletteAI Inference Launchpad, including new features, improvements, and bug fixes.
+        - article [ref=e141]:
+          - link "Revoke or Delete a Client" [ref=e142] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+            - heading "Revoke or Delete a Client" [level=2] [ref=e143]
+          - paragraph [ref=e144]: Step-by-step guidance for platform administrators on how to find expired keys, revoke an API token, and delete a client on a PaletteAI Inference Launchpad appliance, and what happens to in-flight requests.
+        - article [ref=e145]:
+          - link "Set and Manage Client Quotas" [ref=e146] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+            - heading "Set and Manage Client Quotas" [level=2] [ref=e147]
+          - paragraph [ref=e148]: Step-by-step guidance for platform administrators on how to set, edit, and remove usage quotas on a client on a PaletteAI Inference Launchpad appliance.
+        - article [ref=e149]:
+          - link "Suggested Hardware" [ref=e150] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+            - heading "Suggested Hardware" [level=2] [ref=e151]
+          - paragraph [ref=e152]: "Suggested hardware for a PaletteAI Inference Launchpad appliance: compute, GPU, memory, storage, and network."
+        - article [ref=e153]:
+          - link "Switch the Default Model" [ref=e154] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+            - heading "Switch the Default Model" [level=2] [ref=e155]
+          - paragraph [ref=e156]: Task guidance for platform operators on how to switch the default model on a PaletteAI Inference Launchpad appliance from the Overview page when the current default is no longer serving.
+        - article [ref=e157]:
+          - link "Tutorials" [ref=e158] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/tutorials/
+            - heading "Tutorials" [level=2] [ref=e159]
+          - paragraph [ref=e160]: Hands-on, end-to-end tutorials for deploying and running PaletteAI Inference Launchpad.
+        - article [ref=e161]:
+          - link "Upload a Model" [ref=e162] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+            - heading "Upload a Model" [level=2] [ref=e163]
+          - paragraph [ref=e164]: Step-by-step guidance for platform operators on how to download a model on a jumpbox and upload it to a PaletteAI Inference Launchpad appliance with the Palette CLI over SSH.
+        - article [ref=e165]:
+          - link "Use PaletteAI Inference Launchpad with Claude Code" [ref=e166] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+            - heading "Use PaletteAI Inference Launchpad with Claude Code" [level=2] [ref=e167]
+          - paragraph [ref=e168]: Connect Anthropic's Claude Code coding agent to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves every request.
+        - article [ref=e169]:
+          - link "Use PaletteAI Inference Launchpad with Cursor" [ref=e170] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+            - heading "Use PaletteAI Inference Launchpad with Cursor" [level=2] [ref=e171]
+          - paragraph [ref=e172]: Connect the Cursor code editor to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves your requests in Cursor's Ask mode.
+        - article [ref=e173]:
+          - link "Use PaletteAI Inference Launchpad with OpenAI Codex" [ref=e174] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+            - heading "Use PaletteAI Inference Launchpad with OpenAI Codex" [level=2] [ref=e175]
+          - paragraph [ref=e176]: Connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves every request.
+        - article [ref=e177]:
+          - link "Use PaletteAI Inference Launchpad with OpenCode" [ref=e178] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+            - heading "Use PaletteAI Inference Launchpad with OpenCode" [level=2] [ref=e179]
+          - paragraph [ref=e180]: Connect the OpenCode terminal coding agent to a PaletteAI Inference Launchpad appliance so that a model on the appliance serves every request.
+        - article [ref=e181]:
+          - link "View Client Usage" [ref=e182] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+            - heading "View Client Usage" [level=2] [ref=e183]
+          - paragraph [ref=e184]: Step-by-step guidance for platform administrators on how to view per-client and per-token consumption on a PaletteAI Inference Launchpad appliance.
+        - article [ref=e185]:
+          - link "Vision Preprocessing" [ref=e186] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/explanation/vision-preprocessing/
+            - heading "Vision Preprocessing" [level=2] [ref=e187]
+          - paragraph [ref=e188]: "An explanation of vision preprocessing in PaletteAI Inference Launchpad: how a text-only model answers questions about images, what clients see, and the limits that apply."
+        - article [ref=e189]:
+          - link "What is PaletteAI Inference Launchpad?" [ref=e190] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+            - heading "What is PaletteAI Inference Launchpad?" [level=2] [ref=e191]
+          - paragraph [ref=e192]: PaletteAI Inference Launchpad is a standalone, turnkey AI appliance that lets enterprises run large language models on their own hardware without cloud dependency, AI consulting, or complex infrastructure setup.
+  - button "Project Logo Ask AI" [ref=e193] [cursor=pointer]:
+    - generic [ref=e196]:
+      - img "Project Logo" [ref=e197]
+      - paragraph [ref=e198]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

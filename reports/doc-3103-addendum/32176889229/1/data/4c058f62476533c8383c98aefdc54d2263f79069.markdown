@@ -1,0 +1,459 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/how-to-guides/create-a-client/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  5370 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 5370 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 5370 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [expanded] [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - link "Install the Appliance" [ref=e53] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - listitem [ref=e54]:
+                    - link "Deploy a Model" [ref=e55] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e56]:
+                    - link "Upload a Model" [ref=e57] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                  - listitem [ref=e58]:
+                    - link "Switch the Default Model" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+                  - listitem [ref=e60]:
+                    - link "Enable Vision Preprocessing" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                  - listitem [ref=e62]:
+                    - link "Create a Client" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                  - listitem [ref=e64]:
+                    - link "Generate an API Token" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - listitem [ref=e66]:
+                    - link "Set and Manage Client Quotas" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e68]:
+                    - link "Manage a Client's Model Access" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e70]:
+                    - link "View Client Usage" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e72]:
+                    - link "Revoke or Delete a Client" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e74]:
+                    - link "Use Claude Code" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e76]:
+                    - link "Use Cursor" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - listitem [ref=e78]:
+                    - link "Use OpenAI Codex" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                  - listitem [ref=e80]:
+                    - link "Use OpenCode" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Explanation" [ref=e84] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e85] [cursor=pointer]
+              - listitem [ref=e86]:
+                - generic [ref=e87]:
+                  - link "Reference" [ref=e88] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e89] [cursor=pointer]
+              - listitem [ref=e90]:
+                - link "Release Notes" [ref=e91] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e92]:
+                - button "Privacy Settings" [ref=e93] [cursor=pointer]
+      - main [ref=e94]:
+        - generic [ref=e96]:
+          - generic [ref=e98]:
+            - article [ref=e99]:
+              - navigation "Breadcrumbs" [ref=e100]:
+                - list [ref=e101]:
+                  - listitem [ref=e102]:
+                    - link "Home page" [ref=e103] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e104]
+                  - listitem [ref=e106]:
+                    - link "How-to Guides" [ref=e107] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]: Create a Client
+              - generic [ref=e110]:
+                - heading "Create a Client" [level=1] [ref=e112]
+                - paragraph [ref=e113]:
+                  - text: This guide explains how a platform administrator creates a client on a PaletteAI Inference Launchpad appliance. A client is a named team, business unit, or workload, represented by one or more API tokens. To understand what a client is and how clients, API tokens, and quotas relate, refer to
+                  - link "Clients and Quotas" [ref=e114] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                  - text: .
+                - paragraph [ref=e115]:
+                  - text: To generate an API token by itself, without stepping through the full client setup, refer to
+                  - link "Generate an API Token" [ref=e116] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e117]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e118] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e119]:
+                  - listitem [ref=e120]: A running PaletteAI Inference Launchpad appliance, with the console reachable.
+                  - listitem [ref=e121]: Console access with permission to manage clients. Managing clients can require operator access.
+                - heading "Create a ClientDirect link to Create a Client" [level=2] [ref=e122]:
+                  - text: Create a Client
+                  - link "Direct link to Create a Client" [ref=e123] [cursor=pointer]:
+                    - /url: "#create-a-client"
+                    - text: "#"
+                - paragraph [ref=e124]:
+                  - text: Create a client through the
+                  - strong [ref=e125]: Add client
+                  - text: wizard. The wizard names the client, optionally sets a quota, optionally grants model access, and optionally issues the client's first API token.
+                - list [ref=e126]:
+                  - listitem [ref=e127]:
+                    - paragraph [ref=e128]:
+                      - text: From the left main menu, select
+                      - strong [ref=e129]: Access & Policy
+                      - text: . The
+                      - strong [ref=e130]: Clients & API tokens
+                      - text: page opens.
+                  - listitem [ref=e131]:
+                    - paragraph [ref=e132]:
+                      - text: Select
+                      - strong [ref=e133]: Add client
+                      - text: . The
+                      - strong [ref=e134]: Add client
+                      - text: wizard opens on the
+                      - strong [ref=e135]: Overview
+                      - text: step.
+                  - listitem [ref=e136]:
+                    - paragraph [ref=e137]:
+                      - text: On the
+                      - strong [ref=e138]: Overview
+                      - text: step, enter a
+                      - strong [ref=e139]: Client name
+                      - text: ", and then select"
+                      - strong [ref=e140]: Next step
+                      - text: . The appliance assigns the client an immutable identifier and registers it as active.
+                  - listitem [ref=e141]:
+                    - paragraph [ref=e142]:
+                      - emphasis [ref=e143]: (Optional)
+                      - text: On the
+                      - strong [ref=e144]: Quotas
+                      - text: step, add usage limits for the client, and then select
+                      - strong [ref=e145]: Next step
+                      - text: . For details, refer to
+                      - link "Set and Manage Client Quotas" [ref=e146] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                      - text: .
+                  - listitem [ref=e147]:
+                    - paragraph [ref=e148]:
+                      - emphasis [ref=e149]: (Optional)
+                      - text: On the
+                      - strong [ref=e150]: Egress
+                      - text: step, select
+                      - strong [ref=e151]: Enable egress
+                      - text: to let the client reach external, or frontier, models, and then select
+                      - strong [ref=e152]: Next step
+                      - text: . External access is denied by default. To add a provider key and set a daily spend cap, refer to
+                      - link "Manage a Client's Model Access" [ref=e153] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/#allow-a-client-to-reach-external-models
+                      - text: .
+                  - listitem [ref=e154]:
+                    - paragraph [ref=e155]:
+                      - emphasis [ref=e156]: (Optional)
+                      - text: On the
+                      - strong [ref=e157]: Routing
+                      - text: step, leave the
+                      - strong [ref=e158]: Tier map
+                      - text: unchanged to route the client with the appliance's default model routing, or edit the
+                      - strong [ref=e159]: Tier map
+                      - text: to route the client's model aliases to specific models. Then select
+                      - strong [ref=e160]: Next step
+                      - text: . For details, refer to
+                      - link "Manage a Client's Model Access" [ref=e161] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/#route-a-client-to-specific-models
+                      - text: .
+                  - listitem [ref=e162]:
+                    - paragraph [ref=e163]:
+                      - text: On the
+                      - strong [ref=e164]: API tokens
+                      - text: step, select
+                      - strong [ref=e165]: Add API Token
+                      - text: . In the
+                      - strong [ref=e166]: Add API token
+                      - text: dialog, optionally enter a
+                      - strong [ref=e167]: Label
+                      - text: and an
+                      - strong [ref=e168]: Expires
+                      - text: date, and then select
+                      - strong [ref=e169]: Add Token
+                      - text: . Leave
+                      - strong [ref=e170]: Expires
+                      - text: blank for a token that never expires.
+                  - listitem [ref=e171]:
+                    - paragraph [ref=e172]:
+                      - text: Select
+                      - strong [ref=e173]: Create client
+                      - text: .
+                  - listitem [ref=e174]:
+                    - paragraph [ref=e175]:
+                      - text: When the console reveals the token, select
+                      - strong [ref=e176]: Copy
+                      - text: . The token begins with
+                      - code [ref=e177]: lpai_
+                      - text: .
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - img [ref=e181]
+                    - text: warning
+                  - paragraph [ref=e184]: The console shows the token only once and stores only a hash of it. Copy it now. If you lose it, revoke the token and create a new one.
+                - paragraph [ref=e185]:
+                  - text: A client can hold more than one API token. To add another token to a client later, refer to
+                  - link "Generate an API Token" [ref=e186] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - text: .
+                - heading "Verify the ClientDirect link to Verify the Client" [level=2] [ref=e187]:
+                  - text: Verify the Client
+                  - link "Direct link to Verify the Client" [ref=e188] [cursor=pointer]:
+                    - /url: "#verify-the-client"
+                    - text: "#"
+                - paragraph [ref=e189]: Confirm that the appliance registered the client and its API token.
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - paragraph [ref=e192]:
+                      - text: From the left main menu, select
+                      - strong [ref=e193]: Access & Policy
+                      - text: .
+                  - listitem [ref=e194]:
+                    - paragraph [ref=e195]:
+                      - text: On the
+                      - strong [ref=e196]: Clients & API tokens
+                      - text: page, confirm the new client appears in the list under the name you gave it.
+                  - listitem [ref=e197]:
+                    - paragraph [ref=e198]:
+                      - text: Select the client to open its detail panel, and then select the
+                      - strong [ref=e199]: API tokens
+                      - text: section.
+                  - listitem [ref=e200]:
+                    - paragraph [ref=e201]:
+                      - text: Confirm the token you added appears with a state of
+                      - strong [ref=e202]: active
+                      - text: .
+                - paragraph [ref=e203]:
+                  - text: The client is ready to use once its token is active. To confirm the token works from end to end, connect a coding assistant to the appliance with it, as described in
+                  - link "Use Claude Code" [ref=e204] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e205]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e206] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e207]: After you create a client, configure how much it can consume and which models it can reach.
+                - list [ref=e208]:
+                  - listitem [ref=e209]:
+                    - link "Set and Manage Client Quotas" [ref=e210] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e211]:
+                    - link "Manage a Client's Model Access" [ref=e212] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e213]:
+                    - link "View Client Usage" [ref=e214] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e215]:
+                    - link "Revoke or Delete a Client" [ref=e216] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+              - generic [ref=e217]:
+                - generic [ref=e219]:
+                  - text: "Tags:"
+                  - list [ref=e220]:
+                    - listitem [ref=e221]:
+                      - link "paletteai-inference-launchpad" [ref=e222] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e223]:
+                      - link "clients" [ref=e224] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/clients/
+                    - listitem [ref=e225]:
+                      - link "how-to" [ref=e226] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/how-to/
+                - link "Edit this page" [ref=e229] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/how-to-guides/create-a-client.md
+                  - img [ref=e230]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e234]:
+              - link "Previous « Enable Vision Preprocessing" [ref=e235] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                - generic [ref=e236]: Previous
+                - generic [ref=e237]: « Enable Vision Preprocessing
+              - link "Next Generate an API Token »" [ref=e238] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                - generic [ref=e239]: Next
+                - generic [ref=e240]: Generate an API Token »
+          - list [ref=e243]:
+            - listitem [ref=e244]:
+              - link "Prerequisites" [ref=e245] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e246]:
+              - link "Create a Client" [ref=e247] [cursor=pointer]:
+                - /url: "#create-a-client"
+            - listitem [ref=e248]:
+              - link "Verify the Client" [ref=e249] [cursor=pointer]:
+                - /url: "#verify-the-client"
+            - listitem [ref=e250]:
+              - link "Next Steps" [ref=e251] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e252] [cursor=pointer]:
+    - generic [ref=e255]:
+      - img "Project Logo" [ref=e256]
+      - paragraph [ref=e257]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

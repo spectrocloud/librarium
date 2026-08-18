@@ -1,0 +1,755 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /release-notes/announcements/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  1547 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 1547 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 1547 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Release Notes" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e49]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - link "Announcements" [ref=e54] [cursor=pointer]:
+                      - /url: /release-notes/announcements/
+                  - listitem [ref=e55]:
+                    - link "Known Issues" [ref=e56] [cursor=pointer]:
+                      - /url: /release-notes/known-issues/
+                  - listitem [ref=e57]:
+                    - link "Find Breaking Changes" [ref=e58] [cursor=pointer]:
+                      - /url: /release-notes/breaking-changes/
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "Security Bulletins" [ref=e61] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e63]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "What is Palette?" [ref=e68] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e70]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - link "Getting Started" [ref=e74] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e76]
+                  - text: Getting Started
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Architecture" [ref=e80] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e82]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Profiles" [ref=e87] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e89]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Cluster Templates" [ref=e96] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e98]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Deployment Modes" [ref=e103] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e105]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e107] [cursor=pointer]
+              - listitem [ref=e108]:
+                - generic [ref=e109]:
+                  - link "Clusters" [ref=e110] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e112]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e121] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e123]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "Palette Dev Engine" [ref=e128] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e130]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "AI Workloads" [ref=e135] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e137]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e139] [cursor=pointer]
+              - listitem [ref=e140]:
+                - generic [ref=e141]:
+                  - link "Virtual Machine Orchestrator" [ref=e142] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e144]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "Workspaces" [ref=e149] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e151]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Packs List" [ref=e156] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e158]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "User & Role Management" [ref=e163] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e165]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Registries and Packs" [ref=e170] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e172]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Security" [ref=e177] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e179]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Audit Logs" [ref=e184] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e186]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Self-Hosted Palette" [ref=e191] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e193]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Palette VerteX" [ref=e198] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e200]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Tenant Administration" [ref=e205] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e207]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Automation" [ref=e212] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e214]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Troubleshooting" [ref=e219] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e221]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Release Notes" [ref=e253] [cursor=pointer]:
+                      - /url: /release-notes/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Announcements
+              - generic [ref=e256]:
+                - heading "Announcements" [level=1] [ref=e258]
+                - paragraph [ref=e259]: This page lists the upcoming breaking changes, deprecations, and removals in Palette and Palette VerteX.
+                - heading "Upcoming Breaking ChangesDirect link to Upcoming Breaking Changes" [level=2] [ref=e260]:
+                  - text: Upcoming Breaking Changes
+                  - link "Direct link to Upcoming Breaking Changes" [ref=e261] [cursor=pointer]:
+                    - /url: "#upcoming-breaking-changes"
+                    - text: "#"
+                - generic [ref=e262]:
+                  - generic [ref=e263]:
+                    - img [ref=e265]
+                    - text: tip
+                  - paragraph [ref=e268]:
+                    - text: Use the
+                    - link "Find Breaking Changes" [ref=e269] [cursor=pointer]:
+                      - /url: /release-notes/breaking-changes/
+                    - text: page to list all the breaking changes between Palette versions.
+                - paragraph [ref=e270]: Stay informed about the upcoming breaking changes in Palette and Palette VerteX. Use the information below to prepare for the changes in your environment.
+                - table [ref=e271]:
+                  - rowgroup [ref=e272]:
+                    - row "Change Target Date Published Date" [ref=e273]:
+                      - columnheader "Change" [ref=e274]
+                      - columnheader "Target Date" [ref=e275]
+                      - columnheader "Published Date" [ref=e276]
+                  - rowgroup [ref=e277]:
+                    - row "Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro Cloud OCI registries will now require a Spectro Cloud image pull secret. This secret is intended for long-term use and is configured once. Image pulls from Spectro Cloud registries will not be allowed unless a valid image pull secret is configured. This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does not apply to airgapped environments, which pull images from their own registries. To obtain your image pull secret, contact your Spectro Cloud customer support representative. Refer to Configure Image Pull Secret for more information. To be announced June 28, 2026" [ref=e278]:
+                      - cell "Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro Cloud OCI registries will now require a Spectro Cloud image pull secret. This secret is intended for long-term use and is configured once. Image pulls from Spectro Cloud registries will not be allowed unless a valid image pull secret is configured. This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does not apply to airgapped environments, which pull images from their own registries. To obtain your image pull secret, contact your Spectro Cloud customer support representative. Refer to Configure Image Pull Secret for more information." [ref=e279]:
+                        - text: Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro Cloud OCI registries will now require a Spectro Cloud image pull secret. This secret is intended for long-term use and is configured once. Image pulls from Spectro Cloud registries will not be allowed unless a valid image pull secret is configured.
+                        - text: This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does not apply to airgapped environments, which pull images from their own registries. To obtain your image pull secret, contact your Spectro Cloud customer support representative. Refer to
+                        - link "Configure Image Pull Secret" [ref=e280] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-image-pull-secret/
+                        - text: for more information.
+                      - cell "To be announced" [ref=e281]:
+                        - emphasis [ref=e282]: To be announced
+                      - cell "June 28, 2026" [ref=e283]
+                    - row "AWS GovCloud and Azure Government cloud, currently disabled in the Palette UI, will be removed from the Palette API, Spectro Cloud Terraform provider, and Spectro Cloud Crossplane provider in an upcoming release. To continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, use Palette VerteX instead. To be announced May 3, 2026" [ref=e284]:
+                      - cell "AWS GovCloud and Azure Government cloud, currently disabled in the Palette UI, will be removed from the Palette API, Spectro Cloud Terraform provider, and Spectro Cloud Crossplane provider in an upcoming release. To continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, use Palette VerteX instead." [ref=e285]:
+                        - link "AWS GovCloud" [ref=e286] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-govcloud
+                        - text: and
+                        - link "Azure Government cloud" [ref=e287] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-cloud
+                        - text: ", currently disabled in the Palette UI, will be removed from the"
+                        - link "Palette API" [ref=e288] [cursor=pointer]:
+                          - /url: /api/category/palette-api-v1/
+                        - text: ","
+                        - link "Spectro Cloud Terraform provider" [ref=e289] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                        - text: ", and"
+                        - link "Spectro Cloud Crossplane provider" [ref=e290] [cursor=pointer]:
+                          - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                        - text: in an upcoming release. To continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, use
+                        - link "Palette VerteX" [ref=e291] [cursor=pointer]:
+                          - /url: /vertex/
+                        - text: instead.
+                      - cell "To be announced" [ref=e292]:
+                        - emphasis [ref=e293]: To be announced
+                      - cell "May 3, 2026" [ref=e294]
+                - heading "DeprecationsDirect link to Deprecations" [level=2] [ref=e295]:
+                  - text: Deprecations
+                  - link "Direct link to Deprecations" [ref=e296] [cursor=pointer]:
+                    - /url: "#deprecations"
+                    - text: "#"
+                - paragraph [ref=e297]: The table below lists the upcoming deprecations in Palette and Palette VerteX. Review the information to below and take necessary actions to avoid any disruptions in your environment.
+                - table [ref=e298]:
+                  - rowgroup [ref=e299]:
+                    - row "Change Target Removal Date Published Date" [ref=e300]:
+                      - columnheader "Change" [ref=e301]
+                      - columnheader "Target Removal Date" [ref=e302]
+                      - columnheader "Published Date" [ref=e303]
+                  - rowgroup [ref=e304]:
+                    - row "The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the EC command of the Palette CLI. If you have already migrated to an Enterprise Cluster installation, no action is required. If your Palette installation was deployed in quick start mode, migrate to Enterprise Cluster by following the process outlined in the legacy Palette 3.x installation guide. 23 August, 2026 July 30, 2026" [ref=e305]:
+                      - cell "The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the EC command of the Palette CLI. If you have already migrated to an Enterprise Cluster installation, no action is required. If your Palette installation was deployed in quick start mode, migrate to Enterprise Cluster by following the process outlined in the legacy Palette 3.x installation guide." [ref=e306]:
+                        - text: The Quickstart OVA installer for Palette is now deprecated. The Quickstart OVA was introduced in the Palette 3.x series to deploy a single-node Palette instance on VMware vSphere and was replaced in Palette 4.0 by the
+                        - link "EC command" [ref=e307] [cursor=pointer]:
+                          - /url: /automation/palette-cli/commands/ec/
+                        - text: of the
+                        - link "Palette CLI" [ref=e308] [cursor=pointer]:
+                          - /url: /automation/palette-cli/
+                        - text: . If you have already migrated to an Enterprise Cluster installation, no action is required. If your Palette installation was deployed in quick start mode, migrate to Enterprise Cluster by following the process outlined in the
+                        - link "legacy Palette 3.x installation guide" [ref=e309] [cursor=pointer]:
+                          - /url: https://version-3-4.legacy.docs.spectrocloud.com/enterprise-version/install-palette/install-on-vmware/install/
+                        - text: .
+                      - cell "23 August, 2026" [ref=e310]
+                      - cell "July 30, 2026" [ref=e311]
+                    - row "The v1/projects Palette API endpoint is now deprecated. Use the /v1/dashboard/projects endpoint instead. December 13, 2026 June 28, 2026" [ref=e312]:
+                      - cell "The v1/projects Palette API endpoint is now deprecated. Use the /v1/dashboard/projects endpoint instead." [ref=e313]:
+                        - text: The
+                        - code [ref=e314]: v1/projects
+                        - text: Palette
+                        - link "API endpoint" [ref=e315] [cursor=pointer]:
+                          - /url: /api/introduction/
+                        - text: is now deprecated. Use the
+                        - code [ref=e316]: /v1/dashboard/projects
+                        - text: endpoint instead.
+                      - cell "December 13, 2026" [ref=e317]
+                      - cell "June 28, 2026" [ref=e318]
+                    - row "EKS Hybrid Nodes are now deprecated in Palette and Palette VerteX. We recommend that customers deploy their workloads to EKS clusters instead. December 13, 2026 May 31, 2026" [ref=e319]:
+                      - cell "EKS Hybrid Nodes are now deprecated in Palette and Palette VerteX. We recommend that customers deploy their workloads to EKS clusters instead." [ref=e320]:
+                        - link "EKS Hybrid Nodes" [ref=e321] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                        - text: are now deprecated in Palette and Palette VerteX. We recommend that customers deploy their workloads to
+                        - link "EKS clusters" [ref=e322] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/eks/
+                        - text: instead.
+                      - cell "December 13, 2026" [ref=e323]
+                      - cell "May 31, 2026" [ref=e324]
+                    - row "The /clusterprofilesAPI endpoint is now deprecated. Use the /dashboard/clusterprofiles endpoint instead, which includes improved data retrieval capabilities. November 15, 2026 May 3, 2026" [ref=e325]:
+                      - cell "The /clusterprofilesAPI endpoint is now deprecated. Use the /dashboard/clusterprofiles endpoint instead, which includes improved data retrieval capabilities." [ref=e326]:
+                        - text: The
+                        - code [ref=e327]: /clusterprofiles
+                        - link "API endpoint" [ref=e328] [cursor=pointer]:
+                          - /url: /api/introduction/
+                        - text: is now deprecated. Use the
+                        - code [ref=e329]: /dashboard/clusterprofiles
+                        - text: endpoint instead, which includes improved data retrieval capabilities.
+                      - cell "November 15, 2026" [ref=e330]
+                      - cell "May 3, 2026" [ref=e331]
+                    - row "Support for Red Hat Enterprise Linux (RHEL) 8.x in Edge workflows has been deprecated, including FIPS-enabled configurations. We recommend using RHEL 9.x or RHEL 10.x. To be announced May 3, 2026" [ref=e332]:
+                      - cell "Support for Red Hat Enterprise Linux (RHEL) 8.x in Edge workflows has been deprecated, including FIPS-enabled configurations. We recommend using RHEL 9.x or RHEL 10.x." [ref=e333]
+                      - cell "To be announced" [ref=e334]:
+                        - emphasis [ref=e335]: To be announced
+                      - cell "May 3, 2026" [ref=e336]
+                    - row "Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. We recommend using Ubuntu 24.04, as it is FIPS 140-3 compliant. To be announced May 3, 2026" [ref=e337]:
+                      - cell "Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. We recommend using Ubuntu 24.04, as it is FIPS 140-3 compliant." [ref=e338]
+                      - cell "To be announced" [ref=e339]:
+                        - emphasis [ref=e340]: To be announced
+                      - cell "May 3, 2026" [ref=e341]
+                    - row "The /kubeconfig API endpoint has now been deprecated. Use the /kubeconfigclient or /adminKubeconfig API endpoint to download kubeconfig files instead. Refer to our Kubeconfig guide for more information on the types of cluster kubeconfig files. To be announced April 5, 2026" [ref=e342]:
+                      - cell "The /kubeconfig API endpoint has now been deprecated. Use the /kubeconfigclient or /adminKubeconfig API endpoint to download kubeconfig files instead. Refer to our Kubeconfig guide for more information on the types of cluster kubeconfig files." [ref=e343]:
+                        - text: The
+                        - code [ref=e344]: /kubeconfig
+                        - link "API endpoint" [ref=e345] [cursor=pointer]:
+                          - /url: /api/introduction/
+                        - text: has now been deprecated. Use the
+                        - code [ref=e346]: /kubeconfigclient
+                        - text: or
+                        - code [ref=e347]: /adminKubeconfig
+                        - text: API endpoint to download kubeconfig files instead. Refer to our
+                        - link "Kubeconfig" [ref=e348] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                        - text: guide for more information on the types of cluster kubeconfig files.
+                      - cell "To be announced" [ref=e349]:
+                        - emphasis [ref=e350]: To be announced
+                      - cell "April 5, 2026" [ref=e351]
+                    - row "The Spectro Kubernetes Dashboard and Kubernetes Dashboard packs are deprecated and have now moved to the Disabled stage. This is due to the archiving of upstream projects. These packs are no longer available for selection when you create a cluster profile, but you can still launch new clusters from existing cluster profiles that contain either pack. Refer to Pack Deprecations for a description of each deprecation stage. November 14, 2026 January 18, 2026" [ref=e352]:
+                      - cell "The Spectro Kubernetes Dashboard and Kubernetes Dashboard packs are deprecated and have now moved to the Disabled stage. This is due to the archiving of upstream projects. These packs are no longer available for selection when you create a cluster profile, but you can still launch new clusters from existing cluster profiles that contain either pack. Refer to Pack Deprecations for a description of each deprecation stage." [ref=e353]:
+                        - text: The
+                        - strong [ref=e354]: Spectro Kubernetes Dashboard
+                        - text: and
+                        - strong [ref=e355]: Kubernetes Dashboard
+                        - text: packs are deprecated and have now moved to the
+                        - emphasis [ref=e356]: Disabled
+                        - text: stage. This is due to the archiving of upstream projects. These packs are no longer available for selection when you create a cluster profile, but you can still launch new clusters from existing cluster profiles that contain either pack. Refer to
+                        - link "Pack Deprecations" [ref=e357] [cursor=pointer]:
+                          - /url: /integrations/maintenance-policy/#pack-deprecations
+                        - text: for a description of each deprecation stage.
+                      - cell "November 14, 2026" [ref=e358]
+                      - cell "January 18, 2026" [ref=e359]
+                    - 'row "The Nginx pack is now deprecated. We recommend using an alternative ingress controller, such as Kgateway or Traefik. Refer to the Ingress NGINX Retirement: What You Need to Know blog for further information. To be announced November 22, 2025" [ref=e360]':
+                      - 'cell "The Nginx pack is now deprecated. We recommend using an alternative ingress controller, such as Kgateway or Traefik. Refer to the Ingress NGINX Retirement: What You Need to Know blog for further information." [ref=e361]':
+                        - text: The
+                        - link "Nginx" [ref=e362] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=nginx
+                        - text: pack is now deprecated. We recommend using an alternative ingress controller, such as
+                        - link "Kgateway" [ref=e363] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=kgateway
+                        - text: or
+                        - link "Traefik" [ref=e364] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=traefik
+                        - text: . Refer to the
+                        - 'link "Ingress NGINX Retirement: What You Need to Know" [ref=e365] [cursor=pointer]':
+                          - /url: https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/
+                        - text: blog for further information.
+                      - cell "To be announced" [ref=e366]:
+                        - emphasis [ref=e367]: To be announced
+                      - cell "November 22, 2025" [ref=e368]
+                    - row "The stylus.includeTui Edge Installer Configuration flag is now deprecated. The TUI is always enabled regardless of the stylus.includeTui value. June 28, 2026 November 22, 2025" [ref=e369]:
+                      - cell "The stylus.includeTui Edge Installer Configuration flag is now deprecated. The TUI is always enabled regardless of the stylus.includeTui value." [ref=e370]:
+                        - text: The
+                        - code [ref=e371]: stylus.includeTui
+                        - link "Edge Installer Configuration" [ref=e372] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/installer-reference/
+                        - text: flag is now deprecated. The TUI is always enabled regardless of the
+                        - code [ref=e373]: stylus.includeTui
+                        - text: value.
+                      - cell "June 28, 2026" [ref=e374]
+                      - cell "November 22, 2025" [ref=e375]
+                - heading "RemovalsDirect link to Removals" [level=2] [ref=e376]:
+                  - text: Removals
+                  - link "Direct link to Removals" [ref=e377] [cursor=pointer]:
+                    - /url: "#removals"
+                    - text: "#"
+                - paragraph [ref=e378]:
+                  - text: You can review the deprecations that have been removed in Palette and VerteX in the following table. Refer to respective release version's
+                  - link "Release Notes" [ref=e379] [cursor=pointer]:
+                    - /url: /release-notes/
+                  - text: for more information.
+                - table [ref=e380]:
+                  - rowgroup [ref=e381]:
+                    - row "Change Release Date" [ref=e382]:
+                      - columnheader "Change" [ref=e383]
+                      - columnheader "Release" [ref=e384]
+                      - columnheader "Date" [ref=e385]
+                  - rowgroup [ref=e386]:
+                    - row "The internal Ingress Nginx controller used by Palette and Palette VerteX management plane services has been removed. Traefik is now the sole management cluster ingress controller. Most cleanup is automatic. The management plane removes leftover Nginx resources at startup. Refer to the Upgrade Palette on Kubernetes guide for the pre-upgrade GKE Identity and Access Management (IAM) requirements and recommended values.yaml hygiene. 4.9.14 May 31, 2026" [ref=e387]:
+                      - cell "The internal Ingress Nginx controller used by Palette and Palette VerteX management plane services has been removed. Traefik is now the sole management cluster ingress controller. Most cleanup is automatic. The management plane removes leftover Nginx resources at startup. Refer to the Upgrade Palette on Kubernetes guide for the pre-upgrade GKE Identity and Access Management (IAM) requirements and recommended values.yaml hygiene." [ref=e388]:
+                        - text: The internal
+                        - link "Ingress Nginx" [ref=e389] [cursor=pointer]:
+                          - /url: https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/
+                        - text: controller used by Palette and Palette VerteX management plane services has been removed. Traefik is now the sole management cluster ingress controller. Most cleanup is automatic. The management plane removes leftover Nginx resources at startup. Refer to the
+                        - link "Upgrade Palette on Kubernetes" [ref=e390] [cursor=pointer]:
+                          - /url: /enterprise-version/upgrade/upgrade-k8s/non-airgap/
+                        - text: guide for the pre-upgrade GKE Identity and Access Management (IAM) requirements and recommended
+                        - code [ref=e391]: values.yaml
+                        - text: hygiene.
+                      - cell "4.9.14" [ref=e392]
+                      - cell "May 31, 2026" [ref=e393]
+                    - row "The Palette Edge CLI is deprecated and there will be no more releases. We recommend using the Palette CLI for the creation and management of content bundles. Refer to the Build Content Bundle guide for further information. 4.9.14 May 31, 2026" [ref=e394]:
+                      - cell "The Palette Edge CLI is deprecated and there will be no more releases. We recommend using the Palette CLI for the creation and management of content bundles. Refer to the Build Content Bundle guide for further information." [ref=e395]:
+                        - text: The Palette Edge CLI is deprecated and there will be no more releases. We recommend using the
+                        - link "Palette CLI" [ref=e396] [cursor=pointer]:
+                          - /url: /automation/palette-cli/
+                        - text: for the creation and management of content bundles. Refer to the
+                        - link "Build Content Bundle" [ref=e397] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                        - text: guide for further information.
+                      - cell "4.9.14" [ref=e398]
+                      - cell "May 31, 2026" [ref=e399]
+                    - row "EKS-optimized Amazon Linux 2 (AL2) AMIs are now disabled. For new clusters, you are no longer able to select the AL2 AMIs for EKS worker nodes in Palette. For existing clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches. Refer to our Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023 guide for help with migrating workloads. 4.9.5 May 3, 2026" [ref=e400]:
+                      - cell "EKS-optimized Amazon Linux 2 (AL2) AMIs are now disabled. For new clusters, you are no longer able to select the AL2 AMIs for EKS worker nodes in Palette. For existing clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches. Refer to our Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023 guide for help with migrating workloads." [ref=e401]:
+                        - link "EKS-optimized Amazon Linux 2 (AL2) AMIs" [ref=e402] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html
+                        - text: are now disabled. For new clusters, you are no longer able to select the AL2 AMIs for EKS worker nodes in Palette. For existing clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches. Refer to our
+                        - link "Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023" [ref=e403] [cursor=pointer]:
+                          - /url: /troubleshooting/cluster-deployment/#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023
+                        - text: guide for help with migrating workloads.
+                      - cell "4.9.5" [ref=e404]
+                      - cell "May 3, 2026" [ref=e405]
+                    - row "OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported data center environment. 4.8.47 April 5, 2026" [ref=e406]:
+                      - cell "OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported data center environment." [ref=e407]:
+                        - text: OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
+                        - link "data center environment" [ref=e408] [cursor=pointer]:
+                          - /url: /clusters/data-center/
+                        - text: .
+                      - cell "4.8.47" [ref=e409]
+                      - cell "April 5, 2026" [ref=e410]
+                    - 'row "The stylus.installationMode Edge Installer Configuration flag is no longer available. Use the stylus.managementMode flag instead, which has two allowed values: central, which means the Edge host is connected to Palette, and local, which means the Edge host has no connection to a Palette instance. Refer to the Prepare User Data guide for further information. 4.8.21 January 18, 2026" [ref=e411]':
+                      - 'cell "The stylus.installationMode Edge Installer Configuration flag is no longer available. Use the stylus.managementMode flag instead, which has two allowed values: central, which means the Edge host is connected to Palette, and local, which means the Edge host has no connection to a Palette instance. Refer to the Prepare User Data guide for further information." [ref=e412]':
+                        - text: The
+                        - code [ref=e413]: stylus.installationMode
+                        - link "Edge Installer Configuration" [ref=e414] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/installer-reference/
+                        - text: flag is no longer available. Use the
+                        - code [ref=e415]: stylus.managementMode
+                        - text: "flag instead, which has two allowed values:"
+                        - code [ref=e416]: central
+                        - text: ", which means the Edge host is connected to Palette, and"
+                        - code [ref=e417]: local
+                        - text: ", which means the Edge host has no connection to a Palette instance. Refer to the"
+                        - link "Prepare User Data" [ref=e418] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                        - text: guide for further information.
+                      - cell "4.8.21" [ref=e419]
+                      - cell "January 18, 2026" [ref=e420]
+                    - row "The spec.jsonCredentialsFileUid field in API requests is no longer available. Users who create GCP cloud accounts using the API should use the spec.jsonCredentials field to supply their credentials in JSON format. Refer to the API documentation for further details. 4.7.20 September 13, 2025" [ref=e421]:
+                      - cell "The spec.jsonCredentialsFileUid field in API requests is no longer available. Users who create GCP cloud accounts using the API should use the spec.jsonCredentials field to supply their credentials in JSON format. Refer to the API documentation for further details." [ref=e422]:
+                        - text: The
+                        - code [ref=e423]: spec.jsonCredentialsFileUid
+                        - text: field in API requests is no longer available. Users who create GCP cloud accounts using the API should use the
+                        - code [ref=e424]: spec.jsonCredentials
+                        - text: field to supply their credentials in JSON format. Refer to the
+                        - link "API documentation" [ref=e425] [cursor=pointer]:
+                          - /url: /api/introduction/
+                        - text: for further details.
+                      - cell "4.7.20" [ref=e426]
+                      - cell "September 13, 2025" [ref=e427]
+                    - row "The spectrocloud_macro Terraform resource is no longer available. We recommend using the spectrocloud_macros resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform provider documentation. 4.7.20 September 13, 2025" [ref=e428]:
+                      - cell "The spectrocloud_macro Terraform resource is no longer available. We recommend using the spectrocloud_macros resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform provider documentation." [ref=e429]:
+                        - text: The
+                        - code [ref=e430]: spectrocloud_macro
+                        - text: Terraform resource is no longer available. We recommend using the
+                        - code [ref=e431]: spectrocloud_macros
+                        - text: resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform provider
+                        - link "documentation" [ref=e432] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                        - text: .
+                      - cell "4.7.20" [ref=e433]
+                      - cell "September 13, 2025" [ref=e434]
+                    - row "The tc subcommand of the Palette CLI is no longer available. This command provided functionality for deploying target clusters using the Palette CLI. We recommend using the Spectro Cloud Terraform provider for cluster deployment automation. 4.7.13 August 17, 2025" [ref=e435]:
+                      - cell "The tc subcommand of the Palette CLI is no longer available. This command provided functionality for deploying target clusters using the Palette CLI. We recommend using the Spectro Cloud Terraform provider for cluster deployment automation." [ref=e436]:
+                        - text: The
+                        - code [ref=e437]: tc
+                        - text: subcommand of the
+                        - link "Palette CLI" [ref=e438] [cursor=pointer]:
+                          - /url: /automation/palette-cli/
+                        - text: is no longer available. This command provided functionality for deploying target clusters using the Palette CLI. We recommend using the
+                        - link "Spectro Cloud Terraform provider" [ref=e439] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                        - text: for cluster deployment automation.
+                      - cell "4.7.13" [ref=e440]
+                      - cell "August 17, 2025" [ref=e441]
+                    - row "The PROXY_CERT_PATH variable is no longer available in the CanvOS build process. Use the certs folder in the root of the project directory to store proxy certificates. The certs folder is automatically included in the CanvOS build process. Refer to the Build Provider Images for guidance on using the certs folder to pass proxy certificates to the CanvOS build process. 4.6.12 March 15, 2025" [ref=e442]:
+                      - cell "The PROXY_CERT_PATH variable is no longer available in the CanvOS build process. Use the certs folder in the root of the project directory to store proxy certificates. The certs folder is automatically included in the CanvOS build process. Refer to the Build Provider Images for guidance on using the certs folder to pass proxy certificates to the CanvOS build process." [ref=e443]:
+                        - text: The
+                        - code [ref=e444]: PROXY_CERT_PATH
+                        - text: variable is no longer available in the CanvOS build process. Use the
+                        - strong [ref=e445]: certs
+                        - text: folder in the root of the project directory to store proxy certificates. The
+                        - strong [ref=e446]: certs
+                        - text: folder is automatically included in the CanvOS build process. Refer to the
+                        - link "Build Provider Images" [ref=e447] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                        - text: for guidance on using the
+                        - strong [ref=e448]: certs
+                        - text: folder to pass proxy certificates to the CanvOS build process.
+                      - cell "4.6.12" [ref=e449]
+                      - cell "March 15, 2025" [ref=e450]
+                    - row "Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS has been removed. This change primarily affects customers using Palette agents on versions older than 4.0. If your clusters still use agents on version 3.x or older, resume agent upgrades to avoid disrupting critical functions such as health monitoring and heartbeat publishing. To learn more about Palette's internal network architecture, refer to the Network Ports page. If you are using network proxies, we recommend you review the gRPC and Proxies documentation for potential issues. 4.6.12 March 15, 2025" [ref=e451]:
+                      - cell "Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS has been removed. This change primarily affects customers using Palette agents on versions older than 4.0. If your clusters still use agents on version 3.x or older, resume agent upgrades to avoid disrupting critical functions such as health monitoring and heartbeat publishing. To learn more about Palette's internal network architecture, refer to the Network Ports page. If you are using network proxies, we recommend you review the gRPC and Proxies documentation for potential issues." [ref=e452]:
+                        - text: Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS has been removed. This change primarily affects customers using Palette agents on versions older than 4.0. If your clusters still use agents on version 3.x or older,
+                        - link "resume agent upgrades" [ref=e453] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/platform-settings/pause-platform-upgrades/
+                        - text: to avoid disrupting critical functions such as health monitoring and heartbeat publishing. To learn more about Palette's internal network architecture, refer to the
+                        - link "Network Ports" [ref=e454] [cursor=pointer]:
+                          - /url: /architecture/networking-ports/
+                        - text: page. If you are using network proxies, we recommend you review the
+                        - link "gRPC and Proxies" [ref=e455] [cursor=pointer]:
+                          - /url: /architecture/grps-proxy/
+                        - text: documentation for potential issues.
+                      - cell "4.6.12" [ref=e456]
+                      - cell "March 15, 2025" [ref=e457]
+                    - row "The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such as secrets, in the CLI configuration files. Refer to the Palette CLI Encryption section to learn more about the encryption passphrase. 4.5.20 January 18, 2024" [ref=e458]:
+                      - cell "The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such as secrets, in the CLI configuration files. Refer to the Palette CLI Encryption section to learn more about the encryption passphrase." [ref=e459]:
+                        - text: The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such as secrets, in the CLI configuration files. Refer to the
+                        - link "Palette CLI Encryption" [ref=e460] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section to learn more about the encryption passphrase.
+                      - cell "4.5.20" [ref=e461]
+                      - cell "January 18, 2024" [ref=e462]
+                    - row "The Terraform resource, spectrocloud_cluster_import is removed. To import a cluster deployed outside of the context of Palette, refer to the Import a Cluster guide. 4.5.20 January 18, 2024" [ref=e463]:
+                      - cell "The Terraform resource, spectrocloud_cluster_import is removed. To import a cluster deployed outside of the context of Palette, refer to the Import a Cluster guide." [ref=e464]:
+                        - text: The Terraform resource,
+                        - code [ref=e465]: spectrocloud_cluster_import
+                        - text: is removed. To import a cluster deployed outside of the context of Palette, refer to the
+                        - link "Import a Cluster" [ref=e466] [cursor=pointer]:
+                          - /url: /clusters/imported-clusters/cluster-import/
+                        - text: guide.
+                      - cell "4.5.20" [ref=e467]
+                      - cell "January 18, 2024" [ref=e468]
+                    - row "Due to Google's decision to deprecate the gcr.io container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry is us-docker.pkg.dev. If you have network restrictions in place, ensure that the new registry is allowed. Ensure network connections to grc.io are allowed until the migration is complete. The new registry is available for use starting with this release. Refer to the Proxy Requirements for a complete list of domains that must be allowed. 4.5.3 October 13, 2024" [ref=e469]:
+                      - cell "Due to Google's decision to deprecate the gcr.io container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry is us-docker.pkg.dev. If you have network restrictions in place, ensure that the new registry is allowed. Ensure network connections to grc.io are allowed until the migration is complete. The new registry is available for use starting with this release. Refer to the Proxy Requirements for a complete list of domains that must be allowed." [ref=e470]:
+                        - text: Due to Google's decision to deprecate the
+                        - code [ref=e471]: gcr.io
+                        - text: container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry is
+                        - code [ref=e472]: us-docker.pkg.dev
+                        - text: . If you have network restrictions in place, ensure that the new registry is allowed. Ensure network connections to
+                        - code [ref=e473]: grc.io
+                        - text: are allowed until the migration is complete. The new registry is available for use starting with this release. Refer to the Proxy Requirements for a complete list of domains that must be allowed.
+                      - cell "4.5.3" [ref=e474]
+                      - cell "October 13, 2024" [ref=e475]
+                    - row "In this release, Palette aligns Google Cloud Platform GKE behavior with Azure AKS and AWS EKS and removes the ability to specify a patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions are available for selection. The underlying cloud provider will automatically select the latest patch version available for the selected major and minor version. 4.4.6 Jun 15, 2024" [ref=e476]:
+                      - cell "In this release, Palette aligns Google Cloud Platform GKE behavior with Azure AKS and AWS EKS and removes the ability to specify a patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions are available for selection. The underlying cloud provider will automatically select the latest patch version available for the selected major and minor version." [ref=e477]
+                      - cell "4.4.6" [ref=e478]
+                      - cell "Jun 15, 2024" [ref=e479]
+              - generic [ref=e480]:
+                - generic [ref=e482]:
+                  - text: "Tags:"
+                  - list [ref=e483]:
+                    - listitem [ref=e484]:
+                      - link "breaking-changes" [ref=e485] [cursor=pointer]:
+                        - /url: /tags/breaking-changes/
+                    - listitem [ref=e486]:
+                      - link "deprecations" [ref=e487] [cursor=pointer]:
+                        - /url: /tags/deprecations/
+                - link "Edit this page" [ref=e490] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/release-notes/announcements.md
+                  - img [ref=e491]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e495]:
+              - link "Previous « Release Notes" [ref=e496] [cursor=pointer]:
+                - /url: /release-notes/
+                - generic [ref=e497]: Previous
+                - generic [ref=e498]: « Release Notes
+              - link "Next Known Issues »" [ref=e499] [cursor=pointer]:
+                - /url: /release-notes/known-issues/
+                - generic [ref=e500]: Next
+                - generic [ref=e501]: Known Issues »
+          - list [ref=e504]:
+            - listitem [ref=e505]:
+              - link "Upcoming Breaking Changes" [ref=e506] [cursor=pointer]:
+                - /url: "#upcoming-breaking-changes"
+            - listitem [ref=e507]:
+              - link "Deprecations" [ref=e508] [cursor=pointer]:
+                - /url: "#deprecations"
+            - listitem [ref=e509]:
+              - link "Removals" [ref=e510] [cursor=pointer]:
+                - /url: "#removals"
+  - button "Project Logo Ask AI" [ref=e511] [cursor=pointer]:
+    - generic [ref=e514]:
+      - img "Project Logo" [ref=e515]
+      - paragraph [ref=e516]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

@@ -1,0 +1,385 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 1266px, received 1280px by 2247px. 40116 pixels (ratio 0.02 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 1266px, received 1280px by 2247px. 40116 pixels (ratio 0.02 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 1266px, received 1280px by 2247px. 40116 pixels (ratio 0.02 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Explanation" [ref=e53] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e54] [cursor=pointer]
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Reference" [expanded] [ref=e57] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e58] [cursor=pointer]
+                - list [ref=e59]:
+                  - listitem [ref=e60]:
+                    - link "Glossary" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                  - listitem [ref=e62]:
+                    - link "Suggested Hardware" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                  - listitem [ref=e64]:
+                    - link "Bond Configuration" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                  - listitem [ref=e66]:
+                    - link "Cluster Profile Variables" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                  - listitem [ref=e68]:
+                    - link "Certified Models by Hardware" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - listitem [ref=e70]:
+                    - link "Model Upload Reference" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                  - listitem [ref=e72]:
+                    - link "Claude Code Configuration" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+                  - listitem [ref=e74]:
+                    - link "Cursor Configuration" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+                  - listitem [ref=e76]:
+                    - link "OpenAI Codex Configuration" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - listitem [ref=e78]:
+                    - link "OpenCode Configuration" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+                  - listitem [ref=e80]:
+                    - link "Known Issues" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/
+              - listitem [ref=e82]:
+                - link "Release Notes" [ref=e83] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e84]:
+                - button "Privacy Settings" [ref=e85] [cursor=pointer]
+      - main [ref=e86]:
+        - generic [ref=e88]:
+          - generic [ref=e90]:
+            - article [ref=e91]:
+              - navigation "Breadcrumbs" [ref=e92]:
+                - list [ref=e93]:
+                  - listitem [ref=e94]:
+                    - link "Home page" [ref=e95] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e96]
+                  - listitem [ref=e98]:
+                    - link "Reference" [ref=e99] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]: Certified Models by Hardware
+              - generic [ref=e102]:
+                - heading "Certified Models by Hardware" [level=1] [ref=e104]
+                - paragraph [ref=e105]:
+                  - text: Spectro Cloud certifies a small set of large language models (LLMs) for the hardware that PaletteAI Inference Launchpad supports. A
+                  - emphasis [ref=e106]: certified
+                  - text: model is one that Spectro Cloud has validated to run correctly on the listed GPU configuration. For what certification covers, refer to
+                  - link "Model Certification" [ref=e107] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                  - text: .
+                - generic [ref=e108]:
+                  - generic [ref=e109]:
+                    - img [ref=e111]
+                    - text: info
+                  - paragraph [ref=e114]:
+                    - text: This is not an exclusive list. You can load other models on the appliance as long as they fit within the available GPU resources. If the model you want does not appear here,
+                    - link "contact Spectro Cloud" [ref=e115] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/contact
+                    - text: to discuss your use case.
+                - generic [ref=e116]:
+                  - tablist [ref=e117]:
+                    - tab "NVIDIA" [selected] [ref=e118] [cursor=pointer]
+                    - tab "AMD" [ref=e119] [cursor=pointer]
+                  - tabpanel [ref=e121]:
+                    - table [ref=e122]:
+                      - rowgroup [ref=e123]:
+                        - row "GPU configuration GLM 5.2 DeepSeek v4 Pro Kimi 2.7 Gemma 4" [ref=e124]:
+                          - columnheader "GPU configuration" [ref=e125]:
+                            - strong [ref=e126]: GPU configuration
+                          - columnheader "GLM 5.2" [ref=e127]:
+                            - strong [ref=e128]: GLM 5.2
+                          - columnheader "DeepSeek v4 Pro" [ref=e129]:
+                            - strong [ref=e130]: DeepSeek v4 Pro
+                          - columnheader "Kimi 2.7" [ref=e131]:
+                            - strong [ref=e132]: Kimi 2.7
+                          - columnheader "Gemma 4" [ref=e133]:
+                            - strong [ref=e134]: Gemma 4
+                      - rowgroup [ref=e135]:
+                        - row "4 x H100 ❌ ❌ ❌ ✅" [ref=e136]:
+                          - cell "4 x H100" [ref=e137]
+                          - cell "❌" [ref=e138]
+                          - cell "❌" [ref=e139]
+                          - cell "❌" [ref=e140]
+                          - cell "✅" [ref=e141]
+                        - row "8 x H100 ❌ ❌ ❌ ✅" [ref=e142]:
+                          - cell "8 x H100" [ref=e143]
+                          - cell "❌" [ref=e144]
+                          - cell "❌" [ref=e145]
+                          - cell "❌" [ref=e146]
+                          - cell "✅" [ref=e147]
+                        - row "4 x H200 ❌ ❌ ❌ ✅" [ref=e148]:
+                          - cell "4 x H200" [ref=e149]
+                          - cell "❌" [ref=e150]
+                          - cell "❌" [ref=e151]
+                          - cell "❌" [ref=e152]
+                          - cell "✅" [ref=e153]
+                        - row "8 x H200 ✅ ✅ ✅ ✅" [ref=e154]:
+                          - cell "8 x H200" [ref=e155]
+                          - cell "✅" [ref=e156]
+                          - cell "✅" [ref=e157]
+                          - cell "✅" [ref=e158]
+                          - cell "✅" [ref=e159]
+                        - row "4 x B200 ❌ ❌ ❌ ✅" [ref=e160]:
+                          - cell "4 x B200" [ref=e161]
+                          - cell "❌" [ref=e162]
+                          - cell "❌" [ref=e163]
+                          - cell "❌" [ref=e164]
+                          - cell "✅" [ref=e165]
+                        - row "8 x B200 ✅ ✅ ✅ ✅" [ref=e166]:
+                          - cell "8 x B200" [ref=e167]
+                          - cell "✅" [ref=e168]
+                          - cell "✅" [ref=e169]
+                          - cell "✅" [ref=e170]
+                          - cell "✅" [ref=e171]
+                - heading "Vision ModelsDirect link to Vision Models" [level=2] [ref=e172]:
+                  - text: Vision Models
+                  - link "Direct link to Vision Models" [ref=e173] [cursor=pointer]:
+                    - /url: "#vision-models"
+                    - text: "#"
+                - paragraph [ref=e174]: The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To answer questions about images, deploy a small vision model next to the text model and turn on vision preprocessing.
+                - paragraph [ref=e175]:
+                  - text: The certified pairing is
+                  - strong [ref=e176]: GLM 5.2
+                  - text: as the text model and
+                  - strong [ref=e177]: Qwen 3.5 9B multimodal
+                  - text: as the vision model. Spectro Cloud has validated this pairing on the following configurations.
+                - table [ref=e178]:
+                  - rowgroup [ref=e179]:
+                    - row "GPU configuration Text model Vision model Validated" [ref=e180]:
+                      - columnheader "GPU configuration" [ref=e181]:
+                        - strong [ref=e182]: GPU configuration
+                      - columnheader "Text model" [ref=e183]:
+                        - strong [ref=e184]: Text model
+                      - columnheader "Vision model" [ref=e185]:
+                        - strong [ref=e186]: Vision model
+                      - columnheader "Validated" [ref=e187]:
+                        - strong [ref=e188]: Validated
+                  - rowgroup [ref=e189]:
+                    - row "8 x MI325X GLM 5.2 Qwen 3.5 9B multimodal ✅" [ref=e190]:
+                      - cell "8 x MI325X" [ref=e191]
+                      - cell "GLM 5.2" [ref=e192]
+                      - cell "Qwen 3.5 9B multimodal" [ref=e193]
+                      - cell "✅" [ref=e194]
+                    - row "8 x B200 GLM 5.2 Qwen 3.5 9B multimodal ✅" [ref=e195]:
+                      - cell "8 x B200" [ref=e196]
+                      - cell "GLM 5.2" [ref=e197]
+                      - cell "Qwen 3.5 9B multimodal" [ref=e198]
+                      - cell "✅" [ref=e199]
+                    - row "8 x H200 GLM 5.2 Qwen 3.5 9B multimodal ✅" [ref=e200]:
+                      - cell "8 x H200" [ref=e201]
+                      - cell "GLM 5.2" [ref=e202]
+                      - cell "Qwen 3.5 9B multimodal" [ref=e203]
+                      - cell "✅" [ref=e204]
+                - paragraph [ref=e205]: On each configuration, the text model runs at tensor-parallel width 8 across all GPUs, and the vision model runs at tensor-parallel width 4 across the first 4 GPUs. Both models share the same physical devices; the appliance isolates their memory budgets so they do not compete for the same VRAM allocation.
+                - paragraph [ref=e206]: On each shared GPU, the text model reserves approximately 86 percent of VRAM and the vision model reserves a further 4 percent, leaving roughly 10 percent headroom. The remaining memory is not spare capacity for an additional large model.
+                - paragraph [ref=e207]:
+                  - text: For how the request path works, refer to
+                  - link "Vision Preprocessing" [ref=e208] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/vision-preprocessing/
+                  - text: . To deploy the pairing, refer to
+                  - link "Enable Vision Preprocessing" [ref=e209] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                  - text: .
+                - paragraph [ref=e210]:
+                  - text: The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as
+                  - code [ref=e211]: glm-5.2-shared
+                  - text: and
+                  - code [ref=e212]: qwen-3.5-9B-shared
+                  - text: . Each carries per-GPU-family variants for MI325X, B200, and H200, with the memory-budget, tensor-parallel, and engine-argument settings that were validated on the hardware above. Operators do not edit these directly; deploying the two catalog entries is enough.
+              - generic [ref=e213]:
+                - generic [ref=e215]:
+                  - text: "Tags:"
+                  - list [ref=e216]:
+                    - listitem [ref=e217]:
+                      - link "paletteai-inference-launchpad" [ref=e218] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e219]:
+                      - link "reference" [ref=e220] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/reference/
+                    - listitem [ref=e221]:
+                      - link "models" [ref=e222] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/models/
+                    - listitem [ref=e223]:
+                      - link "hardware" [ref=e224] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/hardware/
+                - link "Edit this page" [ref=e227] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/reference/certified-models-by-hardware.md
+                  - img [ref=e228]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e232]:
+              - link "Previous « Cluster Profile Variables" [ref=e233] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                - generic [ref=e234]: Previous
+                - generic [ref=e235]: « Cluster Profile Variables
+              - link "Next Model Upload Reference »" [ref=e236] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                - generic [ref=e237]: Next
+                - generic [ref=e238]: Model Upload Reference »
+          - list [ref=e241]:
+            - listitem [ref=e242]:
+              - link "Vision Models" [ref=e243] [cursor=pointer]:
+                - /url: "#vision-models"
+  - button "Project Logo Ask AI" [ref=e244] [cursor=pointer]:
+    - generic [ref=e247]:
+      - img "Project Logo" [ref=e248]
+      - paragraph [ref=e249]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
