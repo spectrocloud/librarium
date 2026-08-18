@@ -15,10 +15,9 @@ cluster itself. For more information about the Kubernetes Dashboard, visit the
 
 <!-- prettier-ignore-start -->
 
-The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS 
-<VersionedLink text="pack" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> that can be added to your cluster
-profile. The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources
-and roles.
+The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS pack that can be added to your cluster profile.
+The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources and
+roles.
 
 :::tip
 

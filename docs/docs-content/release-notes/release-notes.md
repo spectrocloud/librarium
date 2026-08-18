@@ -33,7 +33,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.44.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4496 -->
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs have moved to the _Disabled_ deprecation stage, as the upstream projects are archived. These packs are no longer available for selection when you create a cluster profile. You can still launch new clusters from existing cluster profiles that contain either pack, and active clusters are not affected. Both packs are scheduled for removal from Palette on November 14, 2026. Refer to [Pack Deprecations](../integrations/maintenance-policy.md#pack-deprecations) for a description of each deprecation stage.
+- The **Spectro Kubernetes Dashboard** and **Kubernetes Dashboard** packs have moved to the _Disabled_ deprecation stage, as the upstream projects are archived. These packs are no longer available for selection when you create a cluster profile. You can still launch new clusters from existing cluster profiles that contain either pack, and active clusters are not affected. Both packs are scheduled for removal from Palette on November 14, 2026. Refer to [Pack Deprecations](../integrations/maintenance-policy.md#pack-deprecations) for a description of each deprecation stage.
 
 <!-- prettier-ignore-end -->
 
