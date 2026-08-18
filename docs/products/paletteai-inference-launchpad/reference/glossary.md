@@ -314,6 +314,12 @@ with quotas through the [appliance console](#appliance-console); ModelGroupQuota
 
 {/* NEEDS REVIEW: ModelGroupQuota is an internal CRD name from the source glossary and does not appear in any shipped PAIIL doc. Confirm whether it should be exposed to readers before publishing. */}
 
+### Multimodal Preprocessing
+
+The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
+**Settings** > **Configurations**. Refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+
 ## N
 
 ### Node
@@ -463,6 +469,18 @@ cluster presents one stable endpoint even as individual nodes fail over. Configu
 
 The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached optical
 drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not available.
+
+### Vision Model
+
+A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
+not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+
+### Vision Preprocessing
+
+The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
+[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
+model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ### vLLM
 
