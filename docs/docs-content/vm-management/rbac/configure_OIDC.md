@@ -11,6 +11,14 @@ tags: ["vmo", "oidc"]
 Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC) Identity Provider (IdP) option
 selected in the Kubernetes layer of the infrastructure profile.
 
+:::info
+
+This page covers the OIDC IdP selection at the Kubernetes layer. To configure a third-party IdP directly on the Virtual
+Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
+[Configure External OIDC](../vmo-pack/configure-external-oidc.md).
+
+:::
+
 ## Prerequisites
 
 - A configured infrastructure cluster profile. For more information, review

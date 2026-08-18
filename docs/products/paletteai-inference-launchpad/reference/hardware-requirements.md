@@ -50,6 +50,22 @@ The reference GPU is the NVIDIA H100 80 GB. The appliance supports both NVIDIA a
 installs GPU drivers automatically. For the models certified on each GPU configuration, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md).
 
+### Required BIOS Settings
+
+On a server with GPUs, two BIOS settings must be enabled before you boot the slim ISO. They are required for every GPU
+brand and every server brand.
+
+- **Above 4G Decoding**: Enabled.
+- **Re-Size BAR Support**: Enabled. This setting is also called **Resizable BAR** or **Smart Access Memory**.
+
+Setting names and menu paths vary by server vendor, so refer to your server vendor's documentation to enable both
+settings. On HPE Gen11 servers, for example, **Re-Size BAR Support** is under **PCIe Device Configuration > Advanced
+PCIe Configuration**.
+
+If either setting is turned off, the slim ISO may not appear in the boot menu, or the screen may go black after you
+select it. Refer to
+[Known Issues: Slim ISO Does Not Boot on a GPU Server](./known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
+
 ## Storage
 
 The OS boot drive is an SSD, and the data pool uses NVMe drives only. Spinning disks are not supported. Storage has two

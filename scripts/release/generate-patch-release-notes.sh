@@ -30,6 +30,13 @@ if ! check_env "SUPER_API_TOKEN"; then
     exit 1
 fi
 
+# Confirm Super authentication up front. The token is only rejected until its owner signs
+# in to Super through SSO, so checking here avoids making every issue tracker call below
+# and then failing at the one call that needs Super.
+if ! require_super_auth "$SUPER_ASSISTANT_ID"; then
+    exit 1
+fi
+
 if [[ -z "${PATCH_RELEASE_TICKET:-}" ]]; then
   read -p "Specify ticket to generate patch release notes for (for example, DOC-2815): " PATCH_RELEASE_TICKET
 fi
@@ -150,18 +157,32 @@ fi
 
 SUPER_BUG_FIXES_BODY=""
 
+RESPONSE_FILE="$(mktemp)"
+trap 'rm -f "$RESPONSE_FILE"' EXIT
+
 for ((i=1; i<=MAX_RETRIES; i++)); do
   echo "Attempt Super POST call $i/$MAX_RETRIES..."
 
-  if RESPONSE=$(
-    curl -sS --fail-with-body \
+  HTTP_STATUS=$(
+    curl -sS \
+      --output "$RESPONSE_FILE" \
+      --write-out '%{http_code}' \
       --request POST \
       --url https://api.super.work/v1/super \
       --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
       --header "Content-Type: application/json" \
-      --data "$(jq -n --arg question "$SUPER_QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')"
-  ); then
-    SUPER_BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
+      --data "$(jq -n --arg question "$SUPER_QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')" || echo "000"
+  )
+
+  # Retrying an authentication failure never helps, because the token stays rejected until
+  # its owner signs in to Super through SSO.
+  if [[ "$HTTP_STATUS" == "401" || "$HTTP_STATUS" == "403" ]]; then
+    echo "❌ Super rejected SUPER_API_TOKEN (HTTP $HTTP_STATUS) part way through this run. Sign in at https://app.super.work and run this script again." >&2
+    exit 1
+  fi
+
+  if [[ "$HTTP_STATUS" == "200" ]]; then
+    SUPER_BUG_FIXES_BODY=$(jq -r '.answer // empty' < "$RESPONSE_FILE" 2>/dev/null || true)
 
     if [[ -n "$SUPER_BUG_FIXES_BODY" ]]; then
       echo "✅ Successfully retrieved bug fixes body from Super API."
@@ -170,7 +191,8 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
 
     echo "⚠️ Empty response, retrying in ${SLEEP_SECONDS}s..." >&2
   else
-    echo "⚠️ Super API call failed, retrying in ${SLEEP_SECONDS}s..." >&2
+    echo "⚠️ Super API call failed (HTTP $HTTP_STATUS): $(head -c 300 "$RESPONSE_FILE")" >&2
+    echo "⚠️ Retrying in ${SLEEP_SECONDS}s..." >&2
   fi
 
   if (( i < MAX_RETRIES )); then
@@ -182,6 +204,17 @@ done
 
 if [[ -z "$SUPER_BUG_FIXES_BODY" ]]; then
   echo "❌ Failed to retrieve SUPER_BUG_FIXES_BODY after $MAX_RETRIES attempts" >&2
+  exit 1
+fi
+
+# Super's answer is inserted verbatim, so normalise it before it reaches the release notes: drop the
+# inline citation markers the assistant appends to sentences, and restore the blank lines and prose
+# wrapping the published notes use. Prettier cannot repair either afterwards, because .prettierrc
+# parses *.md as MDX and the MDX parser leaves prose exactly as written.
+SUPER_BUG_FIXES_BODY=$(printf '%s\n' "$SUPER_BUG_FIXES_BODY" | normalize_super_body)
+
+if [[ -z "$SUPER_BUG_FIXES_BODY" ]]; then
+  echo "❌ Normalising the Super response left an empty bug fixes body" >&2
   exit 1
 fi
 
