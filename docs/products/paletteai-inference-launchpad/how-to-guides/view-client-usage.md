@@ -84,6 +84,11 @@ on the client detail view, refer to
 
 4. Select a client to open its API keys, per-token consumption, and the models that handled its requests.
 
+The **By Client** columns split each metric into **Local / Egress Requests**, **Local / Egress Tokens**, and **$ Cost
+Local / Egress**. **Egress** covers traffic to built-in frontier providers and to registered external inference
+endpoints together. The tab does not split those two sources. To see which registered endpoint served a request, select
+the **By Model** tab; a row served by a registered endpoint is labeled **External · egress**.
+
 ## Further Reading
 
 - [View Token Usage](./view-token-usage.md) covers the **Overview** and **By Model** tabs, appliance-wide totals, top
@@ -94,4 +99,5 @@ on the client detail view, refer to
 ## Next Steps
 
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
+- [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [Revoke or Delete a Client](./revoke-or-delete-a-client.md)
