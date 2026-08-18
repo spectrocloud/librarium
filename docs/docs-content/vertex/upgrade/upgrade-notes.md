@@ -28,7 +28,3 @@ A known issue impacts all self-hosted Palette instances older then 4.4.14. Befor
 version older than 4.4.14, ensure that you execute a utility script to make all your cluster IDs unique in your
 Persistent Volume Claim (PVC) metadata. For more information, refer to the
 [Troubleshooting Guide](../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
-
-## VerteX 4.10
-
-<PartialsComponent category="upgrade-notes" name="strict-semver-4-10" product="Palette VerteX 4.10" />

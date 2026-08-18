@@ -89,7 +89,3 @@ Follow the steps below to upgrade Kubernetes.
 7. Save your changes.
 
 The Enterprise cluster initiates the Kubernetes upgrade process and leads to the reconciliation of all three nodes.
-
-## Palette 4.10
-
-<PartialsComponent category="upgrade-notes" name="strict-semver-4-10" product="Palette 4.10" />

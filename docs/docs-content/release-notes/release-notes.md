@@ -21,16 +21,6 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.0}
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-11143 -->
-
-- Cluster profile and app profile versions supplied through the Palette UI, API, Terraform provider, or Crossplane
-  provider are now validated against the [Semantic Versioning](https://semver.org) specification. Values such as
-  `2.2.2.develop` or `b0.0.1` that earlier releases accepted are rejected on both create and update, while values such
-  as `1.2.3` and `1.2.3-rc.1` remain valid. External registry and chart tags, including Zarf UDS tags, continue to be
-  parsed leniently. For the accepted format, refer to
-  [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
-  [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
-
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->
@@ -57,6 +47,20 @@ tags: ["release-notes"]
 - The **Host LXD-based control planes** and **Use LXD VMs** toggles in cluster and node configuration now display a
   tooltip clarifying that LXD-based VMs on MAAS are supported only with Palette eXtended Kubernetes clusters. Enabling
   LXD with other Kubernetes distributions results in deployment failures.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11143 -->
+
+- Palette now validates user-supplied cluster profile and app profile versions against the
+  [Semantic Versioning](https://semver.org) specification when a profile is created or updated through the Palette UI,
+  API, Terraform provider, or Crossplane provider. Values such as `1.2.3` and `1.2.3-rc.1` are accepted; values such as
+  `2.2.2.develop` or `V0.0.1` that earlier releases accepted are now rejected whenever a version is set --- on create,
+  on clone, when creating a new profile version, or when changing the version of an existing profile. Existing profiles
+  carrying a malformed version continue to function, and no pre-upgrade or post-upgrade action is required. If you
+  update a profile's version to a valid value, later attempts to set a malformed value on that profile fail, including
+  reverting to the original value. These new requirements do not apply to external registry and chart tags, including
+  Zarf UDS tags. For the accepted format, refer to
+  [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
+  [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
 
 #### Bug Fixes
 
