@@ -246,19 +246,31 @@ jobs:
             attempt_limit: 3
             attempt_delay: 60000 # 1 minute
 
-      # Split the apt step (--with-deps) from the browser download so a stall is attributable
-      # in the logs, and bound each attempt with `timeout` so a hung apt/dpkg lock is killed
-      # and retried instead of running to the job ceiling. A healthy install takes ~15s; the
-      # observed failure stalled one shard past 10 minutes while the other three finished.
+      # Split the apt step (--with-deps) from the browser download so a failure is attributable
+      # in the logs, and bound each attempt with `timeout` so a hung install is killed and
+      # retried instead of running to the job ceiling. A healthy install takes ~15s.
+      #
+      # The observed failure is apt lock contention, not a stall:
+      #   E: Could not get lock /var/lib/apt/lists/lock. It is held by process NNNN (apt-get)
+      # The runner image's own apt-daily/unattended-upgrades job holds that lock shortly after
+      # boot, so `install-deps` races it. Each of the four shards races independently, which is
+      # why the failure lands on a different shard each time.
+      #
+      # Two things address it. Stopping the timers removes the competing process. And
+      # attempt_delay is 60s, not the 10s it was: with 10s, attempt 1 consumed the whole
+      # `timeout 300` and attempts 2 and 3 then fired 10s apart, so all three finished inside
+      # ~25s and could not outlast a lock held for longer. Three attempts, one real chance.
       # wretry cannot time-box an individual attempt, hence the inner `timeout`. See DOC-3103.
       - name: Install Playwright system dependencies
         timeout-minutes: 20
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
         uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with:
-          command: timeout 300 npx playwright install-deps chromium
+          command: |
+            sudo systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+            timeout 300 npx playwright install-deps chromium
           attempt_limit: 3
-          attempt_delay: 10000 # 10 seconds
+          attempt_delay: 60000 # 1 minute
 
       - name: Install Playwright browsers
         timeout-minutes: 10
