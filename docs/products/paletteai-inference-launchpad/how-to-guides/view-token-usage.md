@@ -52,18 +52,7 @@ you read afterward.
 4. _(Date range only)_ Select the first and last day of the range, and then apply it. The calendar accepts any range
    within the last 90 days.
 
-The appliance reports usage over fixed periods only. When you apply a date range that is not one of the three presets,
-the console serves the figures from the shortest preset that still contains your range and displays a note naming the
-period the figures actually cover. A range that starts more than 30 days ago is reported over the last 30 days.
-
 {/* NEEDS REVIEW, per AIL-415: that ticket asks for Last 60 Days and Last 90 Days quick-select presets and a range of up to 90 days. The build ships the 24-hour, seven-day, and 30-day presets plus a calendar that accepts 90 days but serves any custom range from the widest preset, so no figure covers more than 30 days. Confirm whether the 60-day and 90-day reporting is still planned before this page publishes. */}
-
-:::info
-
-The **Quota Usage** tab counts consumption against each limit as it stands right now, so it has no period to set. The
-**Data window** menu is hidden while that tab is open.
-
-:::
 
 ## View Appliance-Wide Token Totals
 
@@ -177,8 +166,7 @@ The **By Client** tab exports the figures it currently displays, for the period 
    | **Export as PDF** | Sharing and filing. The table is formatted and paginated for a reader.                     |
 
 The file downloads with a timestamped name, such as `usage-by-client-2026-08-18T10-22-04Z.csv`. Both formats state the
-period the figures cover, and both repeat the substitution note when the appliance reported a shorter period than the
-date range you picked. For the fields each file contains, refer to
+period the figures cover. For the fields each file contains, refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 :::info
