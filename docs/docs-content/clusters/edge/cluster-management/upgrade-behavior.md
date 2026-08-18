@@ -139,6 +139,14 @@ Support depends on how the cluster is managed.
 | Connected (centrally managed) | Supported. Configure the toggle in Palette.                                                                               |
 | Locally managed, airgapped    | Supported for clusters running Canonical Kubernetes (CK8s). Configure the toggle in Local UI or through the Local UI API. |
 
+:::info
+
+A newer Kubernetes long-term support version only becomes available as an upgrade target once your Palette or VerteX
+instance itself supports it. Support for newer long-term support versions is not back-ported to earlier Palette
+long-term support releases, so upgrade your Palette or VerteX instance first, then upgrade your clusters.
+
+:::
+
 When a cluster profile update bumps the Kubernetes version, the control plane and any worker pools that do not have
 **Skip worker node update** enabled are upgraded. Worker pools with the toggle enabled are skipped and stay at their
 current Kubernetes version. Control plane nodes are always upgraded to the Kubernetes and OS versions declared in the

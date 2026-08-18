@@ -108,6 +108,9 @@ cluster outside the compatibility window might make it unhealthy, so treat the b
 notice to dismiss. Agents resume upgrading as soon as you disable the setting, which returns the cluster to a supported
 state without any further action.
 
+For background on why cluster-side components are supported two major versions behind the management plane, refer to
+[CRD API Versions](../../../architecture/crd-api-versions.md).
+
 ## Prerequisites
 
 - Cluster admin permissions or Tenant admin permissions when pausing upgrades for all clusters within tenant scope.
