@@ -67,7 +67,8 @@ model becomes routable only after its signature is verified and its smoke test p
 model as ready before it can serve requests.
 
 To put a newer version or a different model on a node, remove the current model from that node, then deploy the
-replacement. There is no in-place replace. Refer to [Replace a Model](../how-to-guides/replace-a-model.md).
+replacement. There is no in-place replace. Removing the model from one node leaves it serving on the others. Refer to
+[Replace a Model](../how-to-guides/replace-a-model.md).
 
 ## Request Routing
 
