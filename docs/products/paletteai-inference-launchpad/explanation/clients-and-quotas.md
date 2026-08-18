@@ -108,8 +108,7 @@ Access to models depends on whether a model runs locally on the appliance or is 
 - **External models.** If the appliance is configured to route to external providers or registered inference endpoints,
   each client's reach is governed by an allow-list that denies by default. A client can call an external provider,
   registered endpoint, or model only when that provider, endpoint, or model is explicitly allowed for it. To register a
-  host, refer to
-  [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+  host, refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## How It Fits Together
 
