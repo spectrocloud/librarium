@@ -202,6 +202,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [visual-snapshots]
     timeout-minutes: 30
+    # `actions: write` is required by the shard cleanup step below, which deletes this
+    # run's own per-shard artifacts once they have been merged.
+    permissions:
+      contents: read
+      actions: write
     steps:
 
     - name: Download blob reports from GitHub Actions Artifacts
@@ -220,3 +225,49 @@ jobs:
           screenshots/
         if-no-files-found: error
         retention-days: 3
+
+    # The per-shard `screenshots-<n>` artifacts are intermediates. Once the merged
+    # `screenshots` artifact above has uploaded, they hold a duplicate copy of the same
+    # PNGs and nothing ever reads them again. They carry retention-days: 1, so they do
+    # expire on their own, but until they do they roughly double this workflow's storage
+    # footprint: measured on 2026-08-18, four live shard sets held ~1.85 GB alongside a
+    # 638 MB merged set.
+    #
+    # Scoped deliberately to this run's own artifacts. Deleting by name across the
+    # repository would race a concurrent capture that is still merging its shards.
+    - name: Delete Per-Shard Artifacts
+      # Reclaiming storage must never fail a capture that has already produced its
+      # reference set. The merged artifact is the output that matters.
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+
+        # Guard: only prune once the merged artifact is actually present for this run.
+        # Without this a failed upload would leave the shards deleted and no merged set.
+        artifacts=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts?per_page=100")
+
+        if ! printf '%s' "$artifacts" \
+          | jq -e '[.artifacts[] | select(.name == "screenshots" and .expired == false)] | length > 0' >/dev/null; then
+          echo "Merged 'screenshots' artifact not found for run ${RUN_ID}; leaving shards in place."
+          exit 0
+        fi
+
+        freed=0
+        while read -r id name bytes; do
+          [ -z "${id:-}" ] && continue
+          if gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/${id}" --silent; then
+            echo "Deleted ${name} (id=${id}, $((bytes / 1024 / 1024)) MB)"
+            freed=$((freed + bytes))
+          else
+            echo "Could not delete ${name} (id=${id}); it will expire on its own."
+          fi
+        done < <(printf '%s' "$artifacts" \
+          | jq -r '.artifacts[]
+                   | select(.name | test("^screenshots-[0-9]+$"))
+                   | select(.expired == false)
+                   | "\(.id) \(.name) \(.size_in_bytes)"')
+
+        echo "Reclaimed $((freed / 1024 / 1024)) MB of shard artifacts."

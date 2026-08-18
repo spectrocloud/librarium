@@ -390,6 +390,56 @@ jobs:
         name: report
         path: ${{ env.HTML_REPORT_URL_PATH }}
 
+    # Every run of this workflow adds reports/<branch>/<run-id>/<attempt> to gh-pages, and
+    # clean-up-report.yaml only prunes on branch *deletion*. A long-lived branch that is
+    # retriggered repeatedly therefore accumulates a full report per run: measured on
+    # 2026-08-18, doc-3103-addendum alone held 8 run directories, 381 files and 0.23 GB,
+    # which was 88% of everything on gh-pages.
+    #
+    # Keep the newest REPORTS_TO_KEEP runs for this branch and drop the rest. Run ids
+    # increase monotonically, so a numeric sort on the directory name is newest-last.
+    #
+    # NOTE for reviewers: this makes report URLs in older PR comments 404 once a branch
+    # exceeds the keep count. That is the intended trade, but it is user-visible. Raise
+    # REPORTS_TO_KEEP if the team wants a deeper history.
+    #
+    # This reclaims checkout size only. The blobs remain in gh-pages history, so it slows
+    # growth rather than shrinking the 9.4 GB clone; that needs gh-pages orphaned.
+    - name: Prune Old Reports for This Branch
+      # Never fail the publish over housekeeping; the new report is what matters.
+      continue-on-error: true
+      env:
+        REPORTS_TO_KEEP: "5"
+      run: |
+        set -euo pipefail
+
+        branch_dir="reports/${BRANCH_SAFE}"
+        if [ ! -d "$branch_dir" ]; then
+          echo "No existing reports for ${BRANCH_SAFE}; nothing to prune."
+          exit 0
+        fi
+
+        # Exclude the run just downloaded so a fresh report is never a prune candidate.
+        mapfile -t stale < <(
+          find "$branch_dir" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
+            | grep -E '^[0-9]+$' \
+            | grep -v -x "${GITHUB_RUN_ID}" \
+            | sort -n \
+            | head -n -"${REPORTS_TO_KEEP}"
+        ) || true
+
+        if [ "${#stale[@]}" -eq 0 ]; then
+          echo "Fewer than ${REPORTS_TO_KEEP} prior runs for ${BRANCH_SAFE}; nothing to prune."
+          exit 0
+        fi
+
+        for run in "${stale[@]}"; do
+          echo "Pruning ${branch_dir}/${run}"
+          git rm -r --quiet "${branch_dir}/${run}"
+        done
+
+        echo "Pruned ${#stale[@]} report(s), keeping the newest ${REPORTS_TO_KEEP} plus this run."
+
     - name: Push HTML Report
       timeout-minutes: 5
       run: |
