@@ -43,6 +43,11 @@ and installs the platform packs. During or after cluster deployment, the Palette
 from Hugging Face and uploads it to the appliance over SSH. The model then appears in the console, where you deploy it
 to serve requests.
 
+Day-two cluster operations stay in Local UI. To add or remove nodes, scale the cluster. To upgrade the platform, upload
+a newer content bundle from Artifact Studio and apply **Update** on the cluster configuration page. You do not reinstall
+the OS or redeploy the cluster. Refer to
+[Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md).
+
 ## Bond, not bridge
 
 Networking uses a bond, not a bridge. A bond aggregates two physical NICs into a single logical link (`bond0`), and both
