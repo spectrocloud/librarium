@@ -144,8 +144,8 @@ Skipping worker node updates is supported for the following cluster types:
 - MAAS clusters
 - VMware vSphere clusters
 - Connected (centrally managed) Edge Native clusters
-- Locally managed Edge Native clusters in an airgapped environment, running Canonical Kubernetes (CK8s). Configure these
-  clusters through Local UI or the Local UI API rather than through Palette. Refer to
+- Locally managed Edge Native clusters in an airgapped environment. Configure these clusters through Local UI or the
+  Local UI API rather than through Palette. Refer to
   [Edge Cluster Upgrade Behavior](../edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
 ### Cluster Profile Upgrade Behavior

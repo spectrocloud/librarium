@@ -134,10 +134,10 @@ several Kubernetes minor versions.
 
 Support depends on how the cluster is managed.
 
-| **Cluster management**        | **Support**                                                                                                               |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Connected (centrally managed) | Supported. Configure the toggle in Palette.                                                                               |
-| Locally managed, airgapped    | Supported for clusters running Canonical Kubernetes (CK8s). Configure the toggle in Local UI or through the Local UI API. |
+| **Cluster management**        | **Support**                                                              |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| Connected (centrally managed) | Supported. Configure the toggle in Palette.                              |
+| Locally managed, airgapped    | Supported. Configure the toggle in Local UI or through the Local UI API. |
 
 :::info
 
