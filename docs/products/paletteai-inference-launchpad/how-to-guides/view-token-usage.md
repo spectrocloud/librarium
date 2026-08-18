@@ -130,15 +130,6 @@ Use these steps to find which clients consumed the most tokens over the last wee
 4. Compare the **Local / Egress Tokens** column down the table. The left figure is the tokens the appliance served
    itself, and the right figure is the tokens routed to an external provider.
 
-The table lists clients in a fixed order and its columns do not sort, so on an appliance with many clients, export the
-table and rank it in a spreadsheet instead.
-
-1. Select **Export** in the **By Client** card header.
-
-2. Select **Export as CSV**.
-
-3. Open the file in a spreadsheet and sort it by the **Local tokens** column, descending.
-
 :::tip
 
 To find the heaviest consumers of one specific model rather than of the appliance as a whole, select that model on the
