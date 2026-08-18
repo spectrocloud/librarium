@@ -144,6 +144,9 @@ Skipping worker node updates is supported for the following cluster types:
 - MAAS clusters
 - VMware vSphere clusters
 - Connected (centrally managed) Edge Native clusters
+- Locally managed Edge Native clusters in an airgapped environment, running Canonical Kubernetes (CK8s). Configure these
+  clusters through Local UI or the Local UI API rather than through Palette. Refer to
+  [Edge Cluster Upgrade Behavior](../edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
 ### Cluster Profile Upgrade Behavior
 
@@ -167,9 +170,10 @@ For AWS IaaS, MAAS, and VMware vSphere clusters, scale-up is permitted. New node
 autoscaler join using the worker pool's current Kubernetes version, not the control plane version. Scale-down is not
 restricted.
 
-For connected Edge Native clusters, scale-up is not permitted while the toggle is enabled. Palette rejects scale-up
-requests on a pool with the toggle enabled, whether initiated manually or by the cluster autoscaler. To expand capacity,
-create a new worker pool and add Edge hosts to it instead.
+For Edge Native clusters, both connected and locally managed, scale-up is not permitted while the toggle is enabled.
+Scale-up requests on a pool with the toggle enabled are rejected, whether initiated manually or by the cluster
+autoscaler, because a new node cannot honor the pool's pinned Kubernetes version. To expand capacity, create a new
+worker pool and add Edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 

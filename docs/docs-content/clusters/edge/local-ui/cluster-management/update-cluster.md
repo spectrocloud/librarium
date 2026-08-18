@@ -74,6 +74,30 @@ content bundle from the [Content](./upload-content-bundle.md) page and redeploy 
 
    :::
 
+## Deferred Worker Node Upgrades
+
+On a locally managed cluster running Canonical Kubernetes (CK8s), you can defer the Kubernetes upgrade of individual
+worker pools while the control plane advances. Enable the **Skip worker node update (Optional)** toggle on a worker
+pool, and an update that raises the Kubernetes version upgrades the control plane and any pool without the toggle, while
+pools with the toggle stay at their current version.
+
+This is useful when crossing several Kubernetes minor versions to reach a newer long-term support release, because it
+reduces how many times worker nodes repave.
+
+Two constraints apply while the toggle is enabled.
+
+- A pool cannot fall more than three minor Kubernetes versions behind the control plane. An update that would exceed the
+  skew is rejected and is not applied to the cluster. Disable the toggle on the affected pools first.
+
+- Scale-up on that pool is rejected, because a new node cannot honor the pool's pinned Kubernetes version. To add
+  capacity, create a new worker pool and add Edge hosts to it.
+
+Disabling the toggle repaves the pool to the control plane's Kubernetes version, so make sure you are ready to repave
+before you disable it.
+
+For the full behavior, refer to
+[Decoupled Control Plane and Worker Node Upgrades](../../cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
+
 ## Validate
 
 1. Log in to Local UI.
