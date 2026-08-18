@@ -45,8 +45,8 @@ period, the card displays a note naming the span it does cover.
 
 ## Further Reading
 
-- [View Token Usage](./view-token-usage.md) covers the rest of the **Usage** page, including per-model usage, finding
-  the top consumers, and quota consumption.
+- [View Token Usage](./view-token-usage.md) covers the rest of the **Usage** page, including per-model usage and finding
+  the top consumers.
 - [Usage Metrics Reference](../reference/usage-metrics-reference.md) defines every metric, column, and export field.
 
 ## Next Steps

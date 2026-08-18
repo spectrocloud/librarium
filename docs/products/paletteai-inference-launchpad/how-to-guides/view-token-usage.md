@@ -3,21 +3,21 @@ sidebar_label: "View Token Usage"
 title: "View Token Usage and Consumption Metrics"
 description:
   "Step-by-step guidance for platform administrators on how to view token usage by model and by client, find the top
-  consumers, read quota consumption, and open the metrics dashboards on a PaletteAI Inference Launchpad appliance."
+  consumers, and open the metrics dashboards on a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 6.5
 tags: ["paletteai-inference-launchpad", "usage", "metrics", "how-to"]
-keywords: ["launchpad", "ai", "token usage", "metrics", "consumption", "grafana", "quota utilization"]
+keywords: ["launchpad", "ai", "token usage", "metrics", "consumption", "grafana"]
 ---
 
 This guide explains how a platform administrator views token consumption on a PaletteAI Inference Launchpad appliance.
 The **Usage** page reports every request the appliance handled, and you can narrow it to one model, one client, or one
 API token.
 
-Use this guide to answer questions such as which model consumes the most tokens, which client is the heaviest consumer
-over the last week, and how much of its quota a client has spent. For the meaning of each individual metric, tile, and
-column, refer to [Usage Metrics Reference](../reference/usage-metrics-reference.md). To understand how usage relates to
-clients and quotas, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
+Use this guide to answer questions such as which model consumes the most tokens and which client is the heaviest
+consumer over the last week. For the meaning of each individual metric, tile, and column, refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md). To understand how usage relates to clients and
+quotas, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 
 ## Prerequisites
 
@@ -28,13 +28,12 @@ clients and quotas, refer to [Clients and Quotas](../explanation/clients-and-quo
 
 - One or more clients with API tokens. To create a client, refer to [Create a Client](./create-a-client.md).
 
-- Console access with permission to view usage. The **By Client** and **Quota Usage** tabs read the client roster, which
-  can require operator access.
+- Console access with permission to view usage. The **By Client** tab reads the client roster, which can require
+  operator access.
 
 ## Set the Reporting Period
 
-Every tab except **Quota Usage** reports over a period you choose. Set the period first, because it scopes every figure
-you read afterward.
+Each tab reports over a period you choose. Set the period first, because it scopes every figure you read afterward.
 
 1. From the left main menu, select **Usage**.
 
@@ -136,49 +135,6 @@ To find the heaviest consumers of one specific model rather than of the applianc
 **By Model** tab. The model detail view lists only the clients that sent requests to it, with the tokens each one spent.
 
 :::
-
-## View Quota Consumption per Client
-
-The **Quota Usage** tab reports each client's consumption against the limits you set, so you can find a client that is
-close to a limit before it is rejected.
-
-1. From the left main menu, select **Usage**.
-
-2. Select the **Quota Usage** tab. Each row is one client, with a meter for each configured limit under **Requests**,
-   **Tokens**, and **Cost**.
-
-3. To bring the most-consumed limits to the top, select the **Tokens** column heading. The **Requests**, **Cost**, and
-   **Client** headings sort the table as well.
-
-4. Select a client row to display its limits in full. Each limit reports the amount consumed, the amount remaining, and
-   when its window next resets.
-
-A client that has reached a limit carries a **Reached limit** badge, and a banner at the top of the tab names every such
-client. The appliance rejects further requests from that client with HTTP `429` until the window resets or you raise the
-limit.
-
-To raise one limit from this tab, use the following steps.
-
-1. Select the client row to open its detail.
-
-2. Find the limit to raise and select **Increase limit**. The **Increase limit?** dialog opens.
-
-3. In **New limit**, enter the new limit. The field is pre-filled with double the current limit.
-
-4. Select **Increase limit** to preview the change. The dialog reports what the change does before anything is applied.
-
-5. Select **Confirm & Apply**.
-
-:::warning
-
-Raising a limit takes effect immediately and grants the client more of the appliance's GPU capacity. Raise a limit only
-when the appliance has the headroom to serve it. Without that headroom, the other clients slow down.
-
-:::
-
-Quota enforcement is a separate appliance-wide switch. While it is off, this tab still records consumption but the
-appliance does not reject a client that passes a limit. To check the switch or to set a client's limits, refer to
-[Set and Manage Client Quotas](./manage-client-quotas.md).
 
 ## Open the Metrics Dashboards
 
