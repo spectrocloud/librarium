@@ -11,9 +11,10 @@ keywords: ["launchpad", "ai", "clients", "usage", "tokens", "requests", "cost", 
 ---
 
 This guide explains how a platform administrator views consumption and quota utilization on a PaletteAI Inference
-Launchpad appliance. The **Usage** page has four tabs: **Overview**, **By Model**, **By Client**, and **Quota Usage**. To
-understand how usage relates to clients and quotas, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
-To set or raise a limit, refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
+Launchpad appliance. The **Usage** page has four tabs: **Overview**, **By Model**, **By Client**, and **Quota Usage**.
+To understand how usage relates to clients and quotas, refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md). To set or raise a limit, refer to
+[Set and Manage Client Quotas](./manage-client-quotas.md).
 
 ## Prerequisites
 
@@ -30,8 +31,8 @@ To set or raise a limit, refer to [Set and Manage Client Quotas](./manage-client
 **Quota Usage** is a point-in-time view of each client's configured limits. It does not follow the **Data window**.
 
 If a figure covers less time than the window in its label, the card says so. For example, the page can report that only
-eight hours of history is kept when **Last 30 days** was selected. If the appliance cannot report a custom date range, it
-says so and shows a supported period instead.
+eight hours of history is kept when **Last 30 days** was selected. If the appliance cannot report a custom date range,
+it says so and shows a supported period instead.
 
 ## View Quota Usage
 

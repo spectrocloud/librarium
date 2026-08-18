@@ -8,7 +8,19 @@ description:
 hide_table_of_contents: false
 sidebar_position: 2
 tags: ["paletteai-inference-launchpad", "explanation", "clients", "quotas"]
-keywords: ["launchpad", "ai", "clients", "api token", "quota", "rate limit", "coding assistant", "claude code", "usage", "utilization"]
+keywords:
+  [
+    "launchpad",
+    "ai",
+    "clients",
+    "api token",
+    "quota",
+    "rate limit",
+    "coding assistant",
+    "claude code",
+    "usage",
+    "utilization",
+  ]
 ---
 
 AI coding assistants such as Claude Code, Cursor, OpenAI Codex, and OpenCode make up many of the workloads that connect
@@ -100,9 +112,9 @@ setting or change it, refer to
 
 ### Utilization and Consumption
 
-**Quota Usage** on the **Usage** page shows point-in-time utilization: how much of each window the client has used
-right now, how much remains, and when that window next resets. Token utilization is the tokens counted against the
-client's token windows. Request and cost utilization use the same pattern on their own windows.
+**Quota Usage** on the **Usage** page shows point-in-time utilization: how much of each window the client has used right
+now, how much remains, and when that window next resets. Token utilization is the tokens counted against the client's
+token windows. Request and cost utilization use the same pattern on their own windows.
 
 Quota consumption is that used amount divided by the configured limit, shown as a percentage. On **Quota Usage**, each
 window reports its own percentage, and the table sorts the worst-used window first. On **By Client**, **Total Local
