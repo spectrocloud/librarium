@@ -109,6 +109,7 @@ Whatever brought you here, these are the fastest paths in.
   [OpenCode](./how-to-guides/use-opencode.md)
 - **Operate day to day**: [Create a client](./how-to-guides/create-a-client.md) •
   [Set client quotas](./how-to-guides/manage-client-quotas.md) •
+  [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
   [Revoke or delete a client](./how-to-guides/revoke-or-delete-a-client.md)
 - **Look something up**: [Glossary](./reference/glossary.md) •

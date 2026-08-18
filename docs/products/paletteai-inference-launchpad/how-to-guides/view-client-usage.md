@@ -36,6 +36,11 @@ The client view shows:
 - The percentage of each quota used, which indicates how much of each limit is still available.
 - A conversation-routing breakdown that shows which models handled the client's requests.
 
+**Egress** includes traffic to built-in frontier providers and to registered external inference endpoints. The **Usage**
+page labels that combined traffic **Egress**. It does not split frontier usage from registered-endpoint usage. On
+**By client**, the split columns are **Local / Egress Requests**, **Local / Egress Tokens**, and **$ Cost Local /
+Egress**. On **By model**, registered-endpoint traffic is labeled **External · egress**.
+
 :::info
 
 Usage counts reflect activity since the appliance gateway last restarted.
@@ -47,4 +52,5 @@ Usage counts reflect activity since the appliance gateway last restarted.
 ## Next Steps
 
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
+- [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [Revoke or Delete a Client](./revoke-or-delete-a-client.md)
