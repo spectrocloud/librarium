@@ -102,12 +102,14 @@ Whatever brought you here, these are the fastest paths in.
   [Install the appliance](./how-to-guides/install-the-appliance.md) •
   [Upload a model](./how-to-guides/upload-a-model.md) • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) •
   [Clients and Quotas](./explanation/clients-and-quotas.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •
   [Cursor](./how-to-guides/use-cursor.md) • [OpenAI Codex](./how-to-guides/use-codex.md) •
   [OpenCode](./how-to-guides/use-opencode.md)
 - **Operate day to day**: [Create a client](./how-to-guides/create-a-client.md) •
+  [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Set client quotas](./how-to-guides/manage-client-quotas.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
   [Revoke or delete a client](./how-to-guides/revoke-or-delete-a-client.md)
