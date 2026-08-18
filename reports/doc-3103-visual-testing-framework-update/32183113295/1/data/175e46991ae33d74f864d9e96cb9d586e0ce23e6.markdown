@@ -1,0 +1,746 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /automation/palette-mcp/setup/mcp-setup-cursor/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  1689 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 1689 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 1689 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Release Notes" [ref=e47] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e49]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Security Bulletins" [ref=e54] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e56]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "What is Palette?" [ref=e61] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e63]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - link "Getting Started" [ref=e67] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e69]
+                  - text: Getting Started
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Architecture" [ref=e73] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e75]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Profiles" [ref=e80] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e82]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e86] [cursor=pointer]
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Cluster Templates" [ref=e89] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e91]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Deployment Modes" [ref=e96] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e98]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Clusters" [ref=e103] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e105]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e114] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e116]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Palette Dev Engine" [ref=e121] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e123]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "AI Workloads" [ref=e128] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e130]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Virtual Machine Orchestrator" [ref=e135] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e137]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e139] [cursor=pointer]
+              - listitem [ref=e140]:
+                - generic [ref=e141]:
+                  - link "Workspaces" [ref=e142] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e144]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "Packs List" [ref=e149] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e151]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "User & Role Management" [ref=e156] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e158]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "Registries and Packs" [ref=e163] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e165]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Security" [ref=e170] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e172]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Audit Logs" [ref=e177] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e179]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Self-Hosted Palette" [ref=e184] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e186]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Palette VerteX" [ref=e191] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e193]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Tenant Administration" [ref=e198] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e200]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Automation" [expanded] [ref=e205] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e207]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e209] [cursor=pointer]
+                - list [ref=e210]:
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Palette CLI" [ref=e213] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e214] [cursor=pointer]
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Palette Go SDK" [ref=e217] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - link "Terraform" [ref=e220] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e221]:
+                    - generic [ref=e222]:
+                      - link "Crossplane" [ref=e223] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e224] [cursor=pointer]
+                  - listitem [ref=e225]:
+                    - generic [ref=e226]:
+                      - link "Palette MCP Server" [expanded] [ref=e227] [cursor=pointer]:
+                        - /url: /automation/palette-mcp/
+                      - button "Toggle the collapsible sidebar category 'Palette MCP Server'" [ref=e228] [cursor=pointer]
+                    - list [ref=e229]:
+                      - listitem [ref=e230]:
+                        - link "Architecture" [ref=e231] [cursor=pointer]:
+                          - /url: /automation/palette-mcp/architecture/
+                      - listitem [ref=e232]:
+                        - link "Set Up Palette MCP Server" [expanded] [ref=e234] [cursor=pointer]:
+                          - /url: "#"
+                        - list [ref=e235]:
+                          - listitem [ref=e236]:
+                            - link "Set Up MCP Server with Claude Code" [ref=e237] [cursor=pointer]:
+                              - /url: /automation/palette-mcp/setup/mcp-setup-claude/
+                          - listitem [ref=e238]:
+                            - link "Set Up MCP Server with Cursor" [ref=e239] [cursor=pointer]:
+                              - /url: /automation/palette-mcp/setup/mcp-setup-cursor/
+                          - listitem [ref=e240]:
+                            - link "Set Up MCP Server with Gemini CLI" [ref=e241] [cursor=pointer]:
+                              - /url: /automation/palette-mcp/setup/mcp-setup-gemini/
+                      - listitem [ref=e242]:
+                        - link "Palette MCP Server Operations" [ref=e243] [cursor=pointer]:
+                          - /url: /automation/palette-mcp/palette-mcp-operations/
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Troubleshooting" [ref=e246] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e248]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - link "Glossary" [ref=e252] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e254]
+                  - text: Glossary
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Compliance & Legal" [ref=e258] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e260]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - button "Privacy Settings" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+                  - text: Privacy Settings
+      - main [ref=e267]:
+        - generic [ref=e269]:
+          - generic [ref=e271]:
+            - article [ref=e272]:
+              - navigation "Breadcrumbs" [ref=e273]:
+                - list [ref=e274]:
+                  - listitem [ref=e275]:
+                    - link "Home page" [ref=e276] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e277]
+                  - listitem [ref=e279]:
+                    - link "Automation" [ref=e280] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e281]:
+                    - link "Palette MCP Server" [ref=e282] [cursor=pointer]:
+                      - /url: /automation/palette-mcp/
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]: Set Up Palette MCP Server
+                  - listitem [ref=e285]:
+                    - generic [ref=e286]: Set Up MCP Server with Cursor
+              - generic [ref=e287]:
+                - heading "Set Up MCP Server with Cursor" [level=1] [ref=e289]
+                - paragraph [ref=e290]:
+                  - text: This guide covers how to setup the
+                  - link "Palette MCP server" [ref=e291] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/palette-agent-toolkit
+                  - text: with
+                  - link "Cursor" [ref=e292] [cursor=pointer]:
+                    - /url: https://cursor.com/get-started
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e293]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e294] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e295]:
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]: "Ensure the following software is installed locally on your workstation:"
+                    - list [ref=e298]:
+                      - listitem [ref=e299]:
+                        - text: A container engine, such as
+                        - link "Docker" [ref=e300] [cursor=pointer]:
+                          - /url: https://www.docker.com/products/docker-desktop/
+                        - text: or
+                        - link "Podman" [ref=e301] [cursor=pointer]:
+                          - /url: https://podman.io/docs/installation
+                        - text: .
+                      - listitem [ref=e302]:
+                        - text: Cursor. Refer to the
+                        - link "Cursor Download" [ref=e303] [cursor=pointer]:
+                          - /url: https://cursor.com/get-started
+                        - text: page for more information.
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]: A Palette account.
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - text: A Palette API key. Check out the
+                      - link "Create API Key" [ref=e308] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/create-api-key/
+                      - text: guide for more information.
+                - heading "SetupDirect link to Setup" [level=2] [ref=e309]:
+                  - text: Setup
+                  - link "Direct link to Setup" [ref=e310] [cursor=pointer]:
+                    - /url: "#setup"
+                    - text: "#"
+                - list [ref=e311]:
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]: Open a terminal session on your local machine.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: (Optional) If you want to save the secrets you need to configure the Palette MCP server in a file, create an
+                      - code [ref=e316]: .env-mcp
+                      - text: file. You can choose to pass secrets directly to the MCP server as variables, but using the
+                      - code [ref=e317]: .env-mcp
+                      - text: file is a more secure and manageable approach.
+                    - list [ref=e318]:
+                      - listitem [ref=e319]:
+                        - paragraph [ref=e320]:
+                          - text: Issue the following command to create the
+                          - code [ref=e321]: .env-mcp
+                          - text: file in your home directory under the
+                          - code [ref=e322]: .palette
+                          - text: folder.
+                        - generic [ref=e324]:
+                          - code [ref=e326]:
+                            - generic [ref=e327]: mkdir -p ~/.palette
+                            - generic [ref=e328]: touch ~/.palette/.env-mcp
+                          - button "Copy code to clipboard" [ref=e330] [cursor=pointer]:
+                            - generic [ref=e331]:
+                              - img [ref=e332]
+                              - img [ref=e334]
+                      - listitem [ref=e336]:
+                        - paragraph [ref=e337]:
+                          - text: Add the required MCP values to the
+                          - code [ref=e338]: .env-mcp
+                          - text: file. Refer to the
+                          - link "Server Configuration" [ref=e339] [cursor=pointer]:
+                            - /url: /automation/palette-mcp/architecture/#server-configuration
+                          - text: section for further details on the MCP server configuration values.
+                        - generic [ref=e341]:
+                          - code [ref=e343]:
+                            - generic [ref=e344]: cat << EOF > ~/.palette/.env-mcp
+                            - generic [ref=e345]: PALETTE_HOST=<palette-api-endpoint>
+                            - generic [ref=e346]: PALETTE_API_KEY=<palette-api-key>
+                            - generic [ref=e347]: PALETTE_PROJECT_UID=<palette-project-id>
+                            - generic [ref=e348]: EOF
+                          - button "Copy code to clipboard" [ref=e350] [cursor=pointer]:
+                            - generic [ref=e351]:
+                              - img [ref=e352]
+                              - img [ref=e354]
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: Issue the following command to create a folder to store
+                      - link "kubeconfig" [ref=e358] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/kubeconfig/
+                      - text: files. This step improves the user experience when retrieving kubeconfig files.
+                    - paragraph [ref=e359]:
+                      - text: You can use any folder on your machine for this configuration. Replace
+                      - code [ref=e360]: <local-path>
+                      - text: with your desired local path.
+                    - generic [ref=e362]:
+                      - code [ref=e364]:
+                        - generic [ref=e365]: mkdir -p /<local-path>/kubeconfig
+                      - button "Copy code to clipboard" [ref=e367] [cursor=pointer]:
+                        - generic [ref=e368]:
+                          - img [ref=e369]
+                          - img [ref=e371]
+                - list [ref=e373]:
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - text: Open Cursor on your local machine. Navigate to
+                      - strong [ref=e376]: Settings
+                      - text: ">"
+                      - strong [ref=e377]: Cursor Settings
+                      - text: ">"
+                      - strong [ref=e378]: Tools & MCP
+                      - text: .
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - text: Select
+                      - strong [ref=e381]: Add Custom MCP
+                      - text: . The
+                      - code [ref=e382]: mcp.json
+                      - text: file opens.
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Paste the following snippet in the file, replacing the placeholders with your local path values. Ensure that you provide full filepaths for the
+                      - code [ref=e385]: kubeconfig
+                      - text: folder and
+                      - code [ref=e386]: .env.mcp
+                      - text: file, if you have configured one.
+                    - paragraph [ref=e387]:
+                      - text: If you want to use Podman, replace the command
+                      - code [ref=e388]: "\"docker\""
+                      - text: with
+                      - code [ref=e389]: "\"podman\""
+                      - text: .
+                    - generic [ref=e390]:
+                      - tablist [ref=e391]:
+                        - tab ".env-mcp File" [selected] [ref=e392] [cursor=pointer]
+                        - tab "Environment Variables" [ref=e393] [cursor=pointer]
+                      - tabpanel [ref=e395]:
+                        - generic [ref=e397]:
+                          - code [ref=e399]:
+                            - generic [ref=e400]: "\"mcpServers\": {"
+                            - generic [ref=e401]: "\"palette\": {"
+                            - generic [ref=e402]: "\"command\": \"docker\","
+                            - generic [ref=e403]: "\"args\": ["
+                            - generic [ref=e404]: "\"run\","
+                            - generic [ref=e405]: "\"--rm\","
+                            - generic [ref=e406]: "\"-i\","
+                            - generic [ref=e407]: "\"--pull\","
+                            - generic [ref=e408]: "\"always\","
+                            - generic [ref=e409]: "\"--mount\","
+                            - generic [ref=e410]: "\"type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig\","
+                            - generic [ref=e411]: "\"--env-file\","
+                            - generic [ref=e412]: "\"/<local-path>/.palette/.env-mcp\","
+                            - generic [ref=e413]: "\"public.ecr.aws/palette-ai/palette-mcp-server:latest\""
+                            - generic [ref=e414]: "]"
+                            - generic [ref=e415]: "}"
+                            - generic [ref=e416]: "}"
+                          - generic [ref=e417]:
+                            - button "Toggle word wrap" [ref=e418] [cursor=pointer]:
+                              - img [ref=e419]
+                            - button "Copy code to clipboard" [ref=e421] [cursor=pointer]:
+                              - generic [ref=e422]:
+                                - img [ref=e423]
+                                - img [ref=e425]
+                    - generic [ref=e427]:
+                      - generic [ref=e428]:
+                        - img [ref=e430]
+                        - text: info
+                      - paragraph [ref=e433]:
+                        - text: To enable write operations, such as create, update, or delete tools, append
+                        - code [ref=e434]: "\"--allow-write\""
+                        - text: to the
+                        - code [ref=e435]: args
+                        - text: array after the image name. By default, the server starts in read-only mode.
+                    - generic [ref=e436]:
+                      - generic [ref=e437]:
+                        - img [ref=e439]
+                        - text: warning
+                      - paragraph [ref=e442]:
+                        - text: The
+                        - code [ref=e443]: kubeconfig
+                        - text: folder you mount to the container is wiped whenever the container restarts. The Palette MCP server automatically removes the kubeconfig files from the
+                        - code [ref=e444]: /tmp/kubeconfig
+                        - text: folder when the container stops.
+                  - listitem [ref=e445]:
+                    - paragraph [ref=e446]:
+                      - text: Save the
+                      - code [ref=e447]: mcp.json
+                      - text: file and close it.
+                  - listitem [ref=e448]:
+                    - paragraph [ref=e449]:
+                      - text: Navigate to
+                      - strong [ref=e450]: Settings
+                      - text: ">"
+                      - strong [ref=e451]: Cursor Settings
+                      - text: ">"
+                      - strong [ref=e452]: Tools & MCP
+                      - text: . Ensure that the
+                      - strong [ref=e453]: palette
+                      - text: MCP server is set up and enabled.
+                    - paragraph [ref=e454]:
+                      - img "Palette MCP setup success cursor" [ref=e455]
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: Install the four Palette diagnostic skills (
+                      - code [ref=e458]: diagnose-cluster
+                      - text: ","
+                      - code [ref=e459]: diagnose-edge
+                      - text: ","
+                      - code [ref=e460]: health-overview
+                      - text: ", and"
+                      - code [ref=e461]: access-review
+                      - text: ) from the Palette Agent Toolkit repository.
+                    - generic [ref=e463]:
+                      - code [ref=e465]:
+                        - generic [ref=e466]: npx skills add github.com/spectrocloud/palette-agent-toolkit/skills
+                      - generic [ref=e467]:
+                        - button "Toggle word wrap" [ref=e468] [cursor=pointer]:
+                          - img [ref=e469]
+                        - button "Copy code to clipboard" [ref=e471] [cursor=pointer]:
+                          - generic [ref=e472]:
+                            - img [ref=e473]
+                            - img [ref=e475]
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]:
+                      - text: (Optional) We recommend adding an
+                      - link "Agent Skill" [ref=e479] [cursor=pointer]:
+                        - /url: https://geminicli.com/docs/cli/skills/
+                      - text: to enable Gemini to use kubeconfig files retrieved with
+                      - code [ref=e480]: read_cluster_kubeconfig
+                      - text: to access clusters, if you plan to use the files in ad-hoc
+                      - code [ref=e481]: kubectl
+                      - text: workflows.
+                    - paragraph [ref=e482]: Issue the following command to create a new file for your Palette skill.
+                    - generic [ref=e484]:
+                      - code [ref=e486]:
+                        - generic [ref=e487]: touch ~/.cursor/skills/palette-mcp-guidance.md
+                      - button "Copy code to clipboard" [ref=e489] [cursor=pointer]:
+                        - generic [ref=e490]:
+                          - img [ref=e491]
+                          - img [ref=e493]
+                    - paragraph [ref=e495]:
+                      - text: Open the file in your preferred editor and paste the following snippet into it. Replace the
+                      - code [ref=e496]: <local-path>
+                      - text: placeholder with a directory where you want to store kubeconfig files.
+                    - generic [ref=e498]:
+                      - code [ref=e500]:
+                        - generic [ref=e501]: "# Palette MCP Server"
+                        - generic [ref=e502]: "The Palette MCP server is a tool that you can use to interact with the Palette platform and its API. The MCP server is active as a container or a native binary and is accessible via the MCP protocol. A few things to keep in mind:"
+                        - generic [ref=e503]: "- When you retrieve a cluster kubeconfig with the `read_cluster_kubeconfig` tool, save the file to a local directory on your machine located at `<local-path>/kubeconfig`."
+                        - generic [ref=e504]: "Set the KUBECONFIG environment variable to the local filesystem path or use the `kubectl` command with the `--kubeconfig` flag, but ensure the path is correct."
+                      - generic [ref=e505]:
+                        - button "Toggle word wrap" [ref=e506] [cursor=pointer]:
+                          - img [ref=e507]
+                        - button "Copy code to clipboard" [ref=e509] [cursor=pointer]:
+                          - generic [ref=e510]:
+                            - img [ref=e511]
+                            - img [ref=e513]
+                - paragraph [ref=e515]: You can now use the Palette MCP server with Cursor.
+                - heading "ValidationDirect link to Validation" [level=2] [ref=e516]:
+                  - text: Validation
+                  - link "Direct link to Validation" [ref=e517] [cursor=pointer]:
+                    - /url: "#validation"
+                    - text: "#"
+                - list [ref=e518]:
+                  - listitem [ref=e519]:
+                    - paragraph [ref=e520]: Open Cursor on your local machine.
+                  - listitem [ref=e521]:
+                    - paragraph [ref=e522]:
+                      - text: Open the Cursor Chat sidebar using the shortcut
+                      - strong [ref=e523]: CMD + L
+                      - text: or
+                      - strong [ref=e524]: CTRL + L
+                      - text: . Send a query about your Palette environment to check if your MCP server is connected to Palette.
+                    - paragraph [ref=e525]: For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
+                    - generic [ref=e526]:
+                      - generic [ref=e527]: Example Output
+                      - generic [ref=e528]:
+                        - code [ref=e530]:
+                          - generic [ref=e531]: ❯ How many clusters do I have in Palette?
+                          - generic [ref=e532]: From your Palette account (via the Palette MCP read_clusters call), you currently have 1 cluster.
+                          - generic [ref=e533]: "| Name | State |"
+                          - generic [ref=e534]: "| aws-cluster-test | Running |"
+                        - button "Toggle word wrap" [ref=e536] [cursor=pointer]:
+                          - img [ref=e537]
+                - generic [ref=e539]:
+                  - generic [ref=e540]:
+                    - img [ref=e542]
+                    - text: info
+                  - paragraph [ref=e545]:
+                    - text: To enable write tools, such as create, update, and delete, append
+                    - code [ref=e546]: "\"--allow-write\""
+                    - text: to the
+                    - code [ref=e547]: args
+                    - text: array in
+                    - code [ref=e548]: mcp.json
+                    - text: after the image name. By default, the server starts in read-only mode.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e549]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e550] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e551]:
+                  - text: Refer to the
+                  - link "Palette MCP Server Operations" [ref=e552] [cursor=pointer]:
+                    - /url: /automation/palette-mcp/palette-mcp-operations/
+                  - text: page for further examples on how to leverage the functionality of the MCP server.
+              - generic [ref=e553]:
+                - generic [ref=e555]:
+                  - text: "Tags:"
+                  - list [ref=e556]:
+                    - listitem [ref=e557]:
+                      - link "ai" [ref=e558] [cursor=pointer]:
+                        - /url: /tags/ai/
+                    - listitem [ref=e559]:
+                      - link "mcp" [ref=e560] [cursor=pointer]:
+                        - /url: /tags/mcp/
+                    - listitem [ref=e561]:
+                      - link "automation" [ref=e562] [cursor=pointer]:
+                        - /url: /tags/automation/
+                - link "Edit this page" [ref=e565] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-mcp/setup/mcp-setup-cursor.md
+                  - img [ref=e566]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e570]:
+              - link "Previous « Set Up MCP Server with Claude Code" [ref=e571] [cursor=pointer]:
+                - /url: /automation/palette-mcp/setup/mcp-setup-claude/
+                - generic [ref=e572]: Previous
+                - generic [ref=e573]: « Set Up MCP Server with Claude Code
+              - link "Next Set Up MCP Server with Gemini CLI »" [ref=e574] [cursor=pointer]:
+                - /url: /automation/palette-mcp/setup/mcp-setup-gemini/
+                - generic [ref=e575]: Next
+                - generic [ref=e576]: Set Up MCP Server with Gemini CLI »
+          - list [ref=e579]:
+            - listitem [ref=e580]:
+              - link "Prerequisites" [ref=e581] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e582]:
+              - link "Setup" [ref=e583] [cursor=pointer]:
+                - /url: "#setup"
+            - listitem [ref=e584]:
+              - link "Validation" [ref=e585] [cursor=pointer]:
+                - /url: "#validation"
+            - listitem [ref=e586]:
+              - link "Next Steps" [ref=e587] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e588] [cursor=pointer]:
+    - generic [ref=e591]:
+      - img "Project Logo" [ref=e592]
+      - paragraph [ref=e593]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

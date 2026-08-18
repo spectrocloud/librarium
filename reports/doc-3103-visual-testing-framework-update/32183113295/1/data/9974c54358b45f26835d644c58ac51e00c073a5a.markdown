@@ -1,0 +1,1108 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/vmo-pack/create-manage-vm/advanced-topics/deploy-import-ova/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  525 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 525 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 525 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Release Notes" [ref=e47] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e49]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Security Bulletins" [ref=e54] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e56]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "What is Palette?" [ref=e61] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e63]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - link "Getting Started" [ref=e67] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e69]
+                  - text: Getting Started
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Architecture" [ref=e73] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e75]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Profiles" [ref=e80] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e82]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e86] [cursor=pointer]
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Cluster Templates" [ref=e89] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e91]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Deployment Modes" [ref=e96] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e98]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Clusters" [ref=e103] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e105]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e114] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e116]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Palette Dev Engine" [ref=e121] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e123]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "AI Workloads" [ref=e128] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e130]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e135] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e137]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e139] [cursor=pointer]
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Architecture" [ref=e142] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "VM Launchpad" [ref=e145] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e146] [cursor=pointer]
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]:
+                      - link "VMO Pack" [expanded] [ref=e149] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e150] [cursor=pointer]
+                    - list [ref=e151]:
+                      - listitem [ref=e152]:
+                        - link "Environment Setup" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/environment-setup/
+                      - listitem [ref=e154]:
+                        - link "Install VMO in Airgap Environments" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/install-vmo-in-airgap/
+                      - listitem [ref=e156]:
+                        - link "Create a VMO Profile" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - listitem [ref=e158]:
+                        - link "Configure Private CA Certificate" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-private-ca-certificate/
+                      - listitem [ref=e160]:
+                        - link "Configure Direct Access to VM Dashboard" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-console-base-address/
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Create and Manage VMs" [expanded] [ref=e164] [cursor=pointer]:
+                            - /url: /vm-management/vmo-pack/create-manage-vm/
+                          - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e165] [cursor=pointer]
+                        - list [ref=e166]:
+                          - listitem [ref=e167]:
+                            - link "Deploy VM From a Template" [ref=e168] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/deploy-vm-from-template/
+                          - listitem [ref=e169]:
+                            - link "Update VM Configuration" [ref=e170] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/update-vm-configuration/
+                          - listitem [ref=e171]:
+                            - link "Migrate a VM to a Different Node" [ref=e172] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/migrate-vm-to-different-node/
+                          - listitem [ref=e173]:
+                            - link "Take a VM Snapshot" [ref=e174] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/take-snapshot-of-vm/
+                          - listitem [ref=e175]:
+                            - link "Clone a VM" [ref=e176] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/clone-vm/
+                          - listitem [ref=e177]:
+                            - link "Manage CPU and Memory" [ref=e178] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/enable-cpu-hotplug/
+                          - listitem [ref=e179]:
+                            - link "Locate VM Disks" [ref=e180] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/locate-vm-disks/
+                          - listitem [ref=e181]:
+                            - link "Overcommit and Memory Optimization" [ref=e182] [cursor=pointer]:
+                              - /url: /vm-management/vmo-pack/create-manage-vm/vmo-overcommit-memory-optimization-legacy/
+                          - listitem [ref=e183]:
+                            - generic [ref=e184]:
+                              - link "Advanced Topics" [expanded] [ref=e185] [cursor=pointer]:
+                                - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/
+                              - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e186] [cursor=pointer]
+                            - list [ref=e187]:
+                              - listitem [ref=e188]:
+                                - link "Create a VM Template" [ref=e189] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/create-vm-template/
+                              - listitem [ref=e190]:
+                                - link "Access VM Cluster with Virtctl" [ref=e191] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                              - listitem [ref=e192]:
+                                - link "Create Disk Templates" [ref=e193] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/create-disk-templates/
+                              - listitem [ref=e194]:
+                                - link "Migrate a VM to a VMO cluster using the Palette CLI" [ref=e195] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                              - listitem [ref=e196]:
+                                - link "Over-Commit Resources to Enhance VM Performance" [ref=e197] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/vm-oversubscription/
+                              - listitem [ref=e198]:
+                                - link "Import and Deploy OVAs to Palette VMO" [ref=e199] [cursor=pointer]:
+                                  - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/deploy-import-ova/
+                  - listitem [ref=e200]:
+                    - generic [ref=e201]:
+                      - link "RBAC" [ref=e202] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "VM Migration Assistant" [ref=e206] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Workspaces" [ref=e210] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e212]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Packs List" [ref=e217] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e219]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "User & Role Management" [ref=e224] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e226]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Registries and Packs" [ref=e231] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e233]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Security" [ref=e238] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e240]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Audit Logs" [ref=e245] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e247]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Self-Hosted Palette" [ref=e252] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e254]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Palette VerteX" [ref=e259] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e261]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Tenant Administration" [ref=e266] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e268]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Automation" [ref=e273] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e275]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Troubleshooting" [ref=e280] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e282]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - link "Glossary" [ref=e286] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e288]
+                  - text: Glossary
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Compliance & Legal" [ref=e292] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e294]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - button "Privacy Settings" [ref=e298] [cursor=pointer]:
+                  - img [ref=e299]
+                  - text: Privacy Settings
+      - main [ref=e301]:
+        - generic [ref=e303]:
+          - generic [ref=e305]:
+            - article [ref=e306]:
+              - navigation "Breadcrumbs" [ref=e307]:
+                - list [ref=e308]:
+                  - listitem [ref=e309]:
+                    - link "Home page" [ref=e310] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e311]
+                  - listitem [ref=e313]:
+                    - link "Virtual Machine Orchestrator" [ref=e314] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e315]:
+                    - link "VMO Pack" [ref=e316] [cursor=pointer]:
+                      - /url: /vm-management/vmo-pack/
+                  - listitem [ref=e317]:
+                    - link "Create and Manage VMs" [ref=e318] [cursor=pointer]:
+                      - /url: /vm-management/vmo-pack/create-manage-vm/
+                  - listitem [ref=e319]:
+                    - link "Advanced Topics" [ref=e320] [cursor=pointer]:
+                      - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/
+                  - listitem [ref=e321]:
+                    - generic [ref=e322]: Import and Deploy OVAs to Palette VMO
+              - generic [ref=e323]:
+                - heading "Import and Deploy OVAs to Palette VMO" [level=1] [ref=e325]
+                - paragraph [ref=e326]: VMware vSphere Virtual Machines (VMs) can be exported using the Open Virtual Appliance (OVA) format. This allows users to share configurations and create templates for their VMs. These important templates need to be converted into Kubernetes compatible formats before they can be used in a Kubernetes cluster.
+                - paragraph [ref=e327]:
+                  - text: The
+                  - link "Palette CLI" [ref=e328] [cursor=pointer]:
+                    - /url: /automation/palette-cli/
+                  - text: provides the ability to import and deploy OVAs to Palette VMO.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e329]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e330] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - text: You can import only OVAs whose operating systems are present in the
+                    - link "virt-v2v supported guest systems" [ref=e333] [cursor=pointer]:
+                      - /url: https://libguestfs.org/virt-v2v-support.1.html
+                      - code [ref=e334]: virt-v2v
+                      - text: supported guest systems
+                    - text: list. Refer to
+                    - link "Verified Migrations" [ref=e335] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/#verified-migrations
+                    - text: for a list of operating systems and migration combinations verified by Spectro Cloud.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e336]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e337] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]:
+                      - text: A Healthy VMO cluster. Refer to the
+                      - link "Create a VMO Profile" [ref=e341] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - text: for further guidance.
+                    - list [ref=e342]:
+                      - listitem [ref=e343]:
+                        - text: Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy. Refer to the
+                        - link "Environment Setup" [ref=e344] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/environment-setup/
+                        - text: page for recommended environment sizes.
+                - generic [ref=e345]:
+                  - generic [ref=e346]:
+                    - img [ref=e348]
+                    - text: warning
+                  - generic [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: If you need to provision
+                      - code [ref=e352]: Block
+                      - text: storage volumes during the VM deployment process, add the following custom configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more information, refer to
+                      - link "Repave Behaviors and Configurations" [ref=e353] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                    - paragraph [ref=e354]:
+                      - text: Additionally, we recommend provisioning volumes with the
+                      - code [ref=e355]: ReadWriteMany
+                      - text: access mode to ensure that VMs can be
+                      - link "live migrated" [ref=e356] [cursor=pointer]:
+                        - /url: https://kubevirt.io/user-guide/compute/live_migration/#limitations
+                      - text: .
+                    - generic [ref=e358]:
+                      - code [ref=e360]:
+                        - generic [ref=e361]: "kubeadmconfig:"
+                        - generic [ref=e362]: "preKubeadmCommands:"
+                        - generic [ref=e363]: "# Start containerd with new configuration"
+                        - generic [ref=e364]: "- systemctl daemon-reload"
+                        - generic [ref=e365]: "- systemctl restart containerd"
+                        - generic [ref=e366]: "files:"
+                        - generic [ref=e367]: "- targetPath: /etc/containerd/config.toml"
+                        - generic [ref=e368]: "targetOwner: \"root:root\""
+                        - generic [ref=e369]: "targetPermissions: \"0644\""
+                        - generic [ref=e370]: "content: |"
+                        - generic [ref=e371]: "## template: jinja"
+                        - generic [ref=e372]: "# Use config version 2 to enable new configuration fields."
+                        - generic [ref=e373]: version = 2
+                        - generic [ref=e374]: imports = ["/etc/containerd/conf.d/*.toml"]
+                        - generic [ref=e375]: "[plugins]"
+                        - generic [ref=e376]: "[plugins.\"io.containerd.grpc.v1.cri\"]"
+                        - generic [ref=e377]: sandbox_image = "registry.k8s.io/pause:3.9"
+                        - generic [ref=e378]: device_ownership_from_security_context = true
+                        - generic [ref=e379]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc]"
+                        - generic [ref=e380]: runtime_type = "io.containerd.runc.v2"
+                        - generic [ref=e381]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc.options]"
+                        - generic [ref=e382]: SystemdCgroup = true
+                      - generic [ref=e383]:
+                        - button "Toggle word wrap" [ref=e384] [cursor=pointer]:
+                          - img [ref=e385]
+                        - button "Copy code to clipboard" [ref=e387] [cursor=pointer]:
+                          - generic [ref=e388]:
+                            - img [ref=e389]
+                            - img [ref=e391]
+                    - paragraph [ref=e393]:
+                      - text: If you are in a proxied environment, you must configure the
+                      - link "Containerized Data Importer" [ref=e394] [cursor=pointer]:
+                        - /url: https://kubevirt.io/user-guide/storage/containerized_data_importer/
+                      - text: (CDI) custom resource in order to deploy to a
+                      - code [ref=e395]: DataVolume
+                      - text: . Refer to the
+                      - link "CDI Configuration" [ref=e396] [cursor=pointer]:
+                        - /url: https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options
+                      - text: documentation.
+                    - paragraph [ref=e397]:
+                      - text: If you have configured Nginx together with MetalLB, add an entry to
+                      - code [ref=e398]: /etc/hosts
+                      - text: that maps the CDI upload proxy host name, for example
+                      - code [ref=e399]: cdi-uploadproxy.mycompany.io
+                      - text: ", to the Nginx load balancer’s public IP address."
+                - list [ref=e400]:
+                  - listitem [ref=e401]:
+                    - text: Install kubectl command-line tool. Refer to the
+                    - link "kubectl installation" [ref=e402] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                    - text: guide to learn more.
+                  - listitem [ref=e403]:
+                    - text: Install the virtctl command-line tool. Refer to the
+                    - link "virtctl installation" [ref=e404] [cursor=pointer]:
+                      - /url: https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/
+                    - text: guide for more information.
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e405]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e406] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e407]:
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]:
+                      - text: Download the
+                      - link "Kubeconfig" [ref=e410] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/kubeconfig/
+                      - text: file of the VMO cluster.
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e413]: KUBECONFIG
+                      - text: to point to the file you downloaded.
+                    - generic [ref=e415]:
+                      - code [ref=e417]:
+                        - generic [ref=e418]: export KUBECONFIG=<path-to-kubeconfig-file>
+                      - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                        - generic [ref=e421]:
+                          - img [ref=e422]
+                          - img [ref=e424]
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: Execute the following command in your terminal. It creates a dedicated VM inside your VMO cluster which contains all the tools required for OVA import and deployment. The VM is named
+                      - code [ref=e428]: vmo-jh
+                      - text: . Depending on the configuration of your VMO cluster's CSI layer, you may need to change the configured
+                      - code [ref=e429]: ReadWriteMany
+                      - text: access mode to
+                      - code [ref=e430]: ReadWriteOnce
+                      - text: . Check the documentation for your chosen CSI to ensure you have the correct setting.
+                    - generic [ref=e431]:
+                      - generic [ref=e432]:
+                        - img [ref=e434]
+                        - text: info
+                      - generic [ref=e436]:
+                        - paragraph [ref=e437]:
+                          - text: The following command uses the
+                          - code [ref=e438]: gcr.io/spectro-images-public/release/vmo-jh:v4.5.0
+                          - text: image to create a VM that contains all the prerequisites required for the import and deployment process.
+                        - paragraph [ref=e439]: "Alternatively, you can skip the VM creation and use any VM that has the following tools installed:"
+                        - list [ref=e440]:
+                          - listitem [ref=e441]:
+                            - link "Docker" [ref=e442] [cursor=pointer]:
+                              - /url: https://docs.docker.com/engine/install/
+                          - listitem [ref=e443]:
+                            - link "virtctl" [ref=e444] [cursor=pointer]:
+                              - /url: https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/
+                              - code [ref=e445]: virtctl
+                          - listitem [ref=e446]:
+                            - link "kubectl" [ref=e447] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/tasks/tools/
+                              - code [ref=e448]: kubectl
+                          - listitem [ref=e449]:
+                            - link "qemu-utils" [ref=e450] [cursor=pointer]:
+                              - /url: https://www.qemu.org/download/
+                              - code [ref=e451]: qemu-utils
+                          - listitem [ref=e452]:
+                            - link "libguestfs-tools" [ref=e453] [cursor=pointer]:
+                              - /url: https://libguestfs.org/
+                              - code [ref=e454]: libguestfs-tools
+                    - generic [ref=e456]:
+                      - code [ref=e458]:
+                        - generic [ref=e459]: cat <<EOF | kubectl apply --filename -
+                        - generic [ref=e460]: "apiVersion: kubevirt.io/v1"
+                        - generic [ref=e461]: "kind: VirtualMachine"
+                        - generic [ref=e462]: "metadata:"
+                        - generic [ref=e463]: "name: vmo-jh"
+                        - generic [ref=e464]: "namespace: default"
+                        - generic [ref=e465]: "spec:"
+                        - generic [ref=e466]: "dataVolumeTemplates:"
+                        - generic [ref=e467]: "- metadata:"
+                        - generic [ref=e468]: "name: vmo-jh-dv"
+                        - generic [ref=e469]: "spec:"
+                        - generic [ref=e470]: "pvc:"
+                        - generic [ref=e471]: "accessModes:"
+                        - generic [ref=e472]: "- ReadWriteMany"
+                        - generic [ref=e473]: "resources:"
+                        - generic [ref=e474]: "requests:"
+                        - generic [ref=e475]: "storage: 66Gi"
+                        - generic [ref=e476]: "source:"
+                        - generic [ref=e477]: "registry:"
+                        - generic [ref=e478]: "url: gcr.io/spectro-images-public/release/vmo-jh:v4.5.0"
+                        - generic [ref=e479]: "running: true"
+                        - generic [ref=e480]: "template:"
+                        - generic [ref=e481]: "metadata:"
+                        - generic [ref=e482]: "labels:"
+                        - generic [ref=e483]: "kubevirt.io/vm: vmo-jh"
+                        - generic [ref=e484]: "spec:"
+                        - generic [ref=e485]: "domain:"
+                        - generic [ref=e486]: "cpu:"
+                        - generic [ref=e487]: "cores: 2"
+                        - generic [ref=e488]: "sockets: 2"
+                        - generic [ref=e489]: "threads: 1"
+                        - generic [ref=e490]: "devices:"
+                        - generic [ref=e491]: "disks:"
+                        - generic [ref=e492]: "- disk:"
+                        - generic [ref=e493]: "bus: virtio"
+                        - generic [ref=e494]: "name: datavolume-os"
+                        - generic [ref=e495]: "- disk:"
+                        - generic [ref=e496]: "bus: virtio"
+                        - generic [ref=e497]: "name: cloudinitdisk"
+                        - generic [ref=e498]: "interfaces:"
+                        - generic [ref=e499]: "- masquerade: {}"
+                        - generic [ref=e500]: "model: virtio"
+                        - generic [ref=e501]: "name: default"
+                        - generic [ref=e502]: "machine:"
+                        - generic [ref=e503]: "type: q35"
+                        - generic [ref=e504]: "resources:"
+                        - generic [ref=e505]: "requests:"
+                        - generic [ref=e506]: "memory: 8Gi"
+                        - generic [ref=e507]: "networks:"
+                        - generic [ref=e508]: "- name: default"
+                        - generic [ref=e509]: "pod: {}"
+                        - generic [ref=e510]: "volumes:"
+                        - generic [ref=e511]: "- dataVolume:"
+                        - generic [ref=e512]: "name: vmo-jh-dv"
+                        - generic [ref=e513]: "name: datavolume-os"
+                        - generic [ref=e514]: "- cloudInitNoCloud:"
+                        - generic [ref=e515]: "userData: |"
+                        - generic [ref=e516]: "packages:"
+                        - generic [ref=e517]: "- qemu-guest-agent"
+                        - generic [ref=e518]: "runcmd:"
+                        - generic [ref=e519]: "- [\"sudo\", \"systemctl\", \"enable\", \"--now\", \"qemu-guest-agent\"]"
+                        - generic [ref=e520]: "name: cloudinitdisk"
+                        - generic [ref=e521]: EOF
+                      - generic [ref=e522]:
+                        - button "Toggle word wrap" [ref=e523] [cursor=pointer]:
+                          - img [ref=e524]
+                        - button "Copy code to clipboard" [ref=e526] [cursor=pointer]:
+                          - generic [ref=e527]:
+                            - img [ref=e528]
+                            - img [ref=e530]
+                  - listitem [ref=e532]:
+                    - paragraph [ref=e533]: The VM provisioning and start up process will take a few minutes to complete. Execute the following command to check the status of your VMs.
+                    - generic [ref=e535]:
+                      - code [ref=e537]:
+                        - generic [ref=e538]: kubectl get vms --all-namespaces
+                      - button "Copy code to clipboard" [ref=e540] [cursor=pointer]:
+                        - generic [ref=e541]:
+                          - img [ref=e542]
+                          - img [ref=e544]
+                    - paragraph [ref=e546]:
+                      - text: The
+                      - code [ref=e547]: vmo-jh
+                      - text: VM appears in the state
+                      - code [ref=e548]: Running
+                      - text: when it is ready for usage.
+                    - generic [ref=e550]:
+                      - code [ref=e552]:
+                        - generic [ref=e553]: NAMESPACE NAME AGE STATUS READY
+                        - generic [ref=e554]: default vmo-jh 6m16s Running True
+                      - button "Toggle word wrap" [ref=e556] [cursor=pointer]:
+                        - img [ref=e557]
+                  - listitem [ref=e559]:
+                    - paragraph [ref=e560]:
+                      - text: The VM is created with the
+                      - code [ref=e561]: Welcome@123
+                      - text: default password and is accessible through your cluster's kubeconfig file. You can secure access to the cluster by uploading a public key to the VM and adding it as an authorized key. You will then need to supply the corresponding private key when connecting to the VM.
+                    - generic [ref=e563]:
+                      - code [ref=e565]:
+                        - generic [ref=e566]: virtctl scp public-key.pub root@vmo-jh.default:/root
+                        - generic [ref=e567]: virtctl ssh root@vmo-jh.default --local-ssh=true
+                        - generic [ref=e568]: mkdir -p /root/.ssh && cat /root/public-key.pub >> /root/.ssh/authorized_keys
+                      - generic [ref=e569]:
+                        - button "Toggle word wrap" [ref=e570] [cursor=pointer]:
+                          - img [ref=e571]
+                        - button "Copy code to clipboard" [ref=e573] [cursor=pointer]:
+                          - generic [ref=e574]:
+                            - img [ref=e575]
+                            - img [ref=e577]
+                    - generic [ref=e579]:
+                      - generic [ref=e580]:
+                        - img [ref=e582]
+                        - text: info
+                      - paragraph [ref=e585]:
+                        - text: If you are starting an SSH session from a Windows machine, then you should omit the
+                        - code [ref=e586]: "--local-ssh=true"
+                        - text: flag and execute the command
+                        - code [ref=e587]: virtctl ssh root@vmo-jh.default
+                        - text: only.
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]: Copy your cluster's kubeconfig file to the VM. Replace the placeholders with local path to the kubeconfig file and the path to your private key. The kubeconfig file is required for subsequent operations.
+                    - generic [ref=e591]:
+                      - code [ref=e593]:
+                        - generic [ref=e594]: virtctl scp <path-to-downloaded-kubeconfig-file> --identity-file <path-to-private-key> root@vmo-jh.default:/root
+                      - generic [ref=e595]:
+                        - button "Toggle word wrap" [ref=e596] [cursor=pointer]:
+                          - img [ref=e597]
+                        - button "Copy code to clipboard" [ref=e599] [cursor=pointer]:
+                          - generic [ref=e600]:
+                            - img [ref=e601]
+                            - img [ref=e603]
+                  - listitem [ref=e605]:
+                    - paragraph [ref=e606]:
+                      - text: Download the newest
+                      - link "Palette CLI" [ref=e607] [cursor=pointer]:
+                        - /url: /downloads/cli-tools/#palette-cli
+                      - text: binary. Copy the binary to the VM, in the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and the path to your private key.
+                    - generic [ref=e609]:
+                      - code [ref=e611]:
+                        - generic [ref=e612]: virtctl scp <path-to-downloaded-palette-cli-binary> --identity-file <path-to-private-key> root@vmo-jh.default:/root
+                      - generic [ref=e613]:
+                        - button "Toggle word wrap" [ref=e614] [cursor=pointer]:
+                          - img [ref=e615]
+                        - button "Copy code to clipboard" [ref=e617] [cursor=pointer]:
+                          - generic [ref=e618]:
+                            - img [ref=e619]
+                            - img [ref=e621]
+                  - listitem [ref=e623]:
+                    - paragraph [ref=e624]: Start an SSH session with the VM.
+                    - generic [ref=e626]:
+                      - code [ref=e628]:
+                        - generic [ref=e629]: virtctl ssh --identity-file <path-to-private-key> root@vmo-jh.default --local-ssh=true
+                      - generic [ref=e630]:
+                        - button "Toggle word wrap" [ref=e631] [cursor=pointer]:
+                          - img [ref=e632]
+                        - button "Copy code to clipboard" [ref=e634] [cursor=pointer]:
+                          - generic [ref=e635]:
+                            - img [ref=e636]
+                            - img [ref=e638]
+                  - listitem [ref=e640]:
+                    - paragraph [ref=e641]:
+                      - text: Download an OVA file to import on the VM. Alternatively, you can upload the OVA file using
+                      - code [ref=e642]: virtctl scp
+                      - text: as demonstrated in previous steps. This guide uses a publicly available Bitnami image for demonstration purposes.
+                    - generic [ref=e644]:
+                      - code [ref=e646]:
+                        - generic [ref=e647]: curl --location https://downloads.bitnami.com/files/stacks/wordpress/6.2.2/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova --output bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova
+                      - generic [ref=e648]:
+                        - button "Toggle word wrap" [ref=e649] [cursor=pointer]:
+                          - img [ref=e650]
+                        - button "Copy code to clipboard" [ref=e652] [cursor=pointer]:
+                          - generic [ref=e653]:
+                            - img [ref=e654]
+                            - img [ref=e656]
+                  - listitem [ref=e658]:
+                    - paragraph [ref=e659]:
+                      - text: Set the environment variable
+                      - code [ref=e660]: KUBECONFIG
+                      - text: to point to the file you uploaded. This allows your terminal session to connect to your VMO cluster.
+                    - generic [ref=e662]:
+                      - code [ref=e664]:
+                        - generic [ref=e665]: export KUBECONFIG=<path-to-kubeconfig-file>
+                      - button "Copy code to clipboard" [ref=e667] [cursor=pointer]:
+                        - generic [ref=e668]:
+                          - img [ref=e669]
+                          - img [ref=e671]
+                  - listitem [ref=e673]:
+                    - paragraph [ref=e674]: Execute the following command to start an interactive shell and begin the import process.
+                    - generic [ref=e676]:
+                      - code [ref=e678]:
+                        - generic [ref=e679]: palette vmo import-ova
+                      - button "Copy code to clipboard" [ref=e681] [cursor=pointer]:
+                        - generic [ref=e682]:
+                          - img [ref=e683]
+                          - img [ref=e685]
+                    - generic [ref=e687]:
+                      - generic [ref=e688]:
+                        - img [ref=e690]
+                        - text: tip
+                      - generic [ref=e692]:
+                        - paragraph [ref=e693]: You can save your configuration to a file, allowing you to revise your configuration and perform the import later.
+                        - generic [ref=e695]:
+                          - code [ref=e697]:
+                            - generic [ref=e698]: palette vmo import-ova --config-only
+                          - button "Copy code to clipboard" [ref=e700] [cursor=pointer]:
+                            - generic [ref=e701]:
+                              - img [ref=e702]
+                              - img [ref=e704]
+                    - paragraph [ref=e706]: The Palette CLI prompts you for information regarding the OVA you want to import.
+                    - table [ref=e707]:
+                      - rowgroup [ref=e708]:
+                        - row "Parameter Description Values" [ref=e709]:
+                          - columnheader "Parameter" [ref=e710]:
+                            - strong [ref=e711]: Parameter
+                          - columnheader "Description" [ref=e712]:
+                            - strong [ref=e713]: Description
+                          - columnheader "Values" [ref=e714]:
+                            - strong [ref=e715]: Values
+                      - rowgroup [ref=e716]:
+                        - row "OVA Path The path to the OVA you uploaded to your VM. The path for the example provided is /root/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova/." [ref=e717]:
+                          - cell "OVA Path" [ref=e718]:
+                            - strong [ref=e719]: OVA Path
+                          - cell "The path to the OVA you uploaded to your VM. The path for the example provided is /root/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova/." [ref=e720]:
+                            - text: The path to the OVA you uploaded to your VM. The path for the example provided is
+                            - code [ref=e721]: /root/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova/
+                            - text: .
+                          - cell [ref=e722]
+                        - row "Container Disk Upload Method Indicate whether to upload the image directly to the target cluster as a DataVolume or build and push a Docker image. You will need to provide an existing image registry if you select Docker. DataVolume / Docker Image" [ref=e723]:
+                          - cell "Container Disk Upload Method" [ref=e724]:
+                            - strong [ref=e725]: Container Disk Upload Method
+                          - cell "Indicate whether to upload the image directly to the target cluster as a DataVolume or build and push a Docker image. You will need to provide an existing image registry if you select Docker." [ref=e726]:
+                            - text: Indicate whether to upload the image directly to the target cluster as a
+                            - code [ref=e727]: DataVolume
+                            - text: or build and push a Docker image. You will need to provide an existing image registry if you select Docker.
+                          - cell "DataVolume / Docker Image" [ref=e728]:
+                            - code [ref=e729]: DataVolume
+                            - text: /
+                            - code [ref=e730]: Docker Image
+                        - row "Kubeconfig Path The path to the kubeconfig file you have uploaded to your VM." [ref=e731]:
+                          - cell "Kubeconfig Path" [ref=e732]:
+                            - strong [ref=e733]: Kubeconfig Path
+                          - cell "The path to the kubeconfig file you have uploaded to your VM." [ref=e734]
+                          - cell [ref=e735]
+                        - row "DataVolume Namespace The namespace to create your DataVolume, if you selected this option previously." [ref=e736]:
+                          - cell "DataVolume Namespace" [ref=e737]:
+                            - strong [ref=e738]: DataVolume Namespace
+                          - cell "The namespace to create your DataVolume, if you selected this option previously." [ref=e739]:
+                            - text: The namespace to create your
+                            - code [ref=e740]: DataVolume
+                            - text: ", if you selected this option previously."
+                          - cell [ref=e741]
+                        - row "DataVolume Name The name of your DataVolume." [ref=e742]:
+                          - cell "DataVolume Name" [ref=e743]:
+                            - strong [ref=e744]: DataVolume Name
+                          - cell "The name of your DataVolume." [ref=e745]:
+                            - text: The name of your
+                            - code [ref=e746]: DataVolume
+                            - text: .
+                          - cell [ref=e747]
+                        - row "Overhead Percentage for DataVolume Size Set an overhead percentage for your DataVolume compared to the OVA specification. This parameter is optional and can be skipped with the value -1. If skipped, the filesystem overhead percentage will be inferred from the CDI Custom Resource in your VMO cluster. Refer to the CDI Configuration for further details." [ref=e748]:
+                          - cell "Overhead Percentage for DataVolume Size" [ref=e749]:
+                            - strong [ref=e750]: Overhead Percentage for DataVolume Size
+                          - cell "Set an overhead percentage for your DataVolume compared to the OVA specification. This parameter is optional and can be skipped with the value -1. If skipped, the filesystem overhead percentage will be inferred from the CDI Custom Resource in your VMO cluster. Refer to the CDI Configuration for further details." [ref=e751]:
+                            - text: Set an overhead percentage for your
+                            - code [ref=e752]: DataVolume
+                            - text: compared to the OVA specification. This parameter is optional and can be skipped with the value
+                            - code [ref=e753]: "-1"
+                            - text: . If skipped, the filesystem overhead percentage will be inferred from the CDI Custom Resource in your VMO cluster. Refer to the
+                            - link "CDI Configuration" [ref=e754] [cursor=pointer]:
+                              - /url: https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options
+                            - text: for further details.
+                          - cell [ref=e755]
+                        - row "Access Mode for the PVC Set the access mode for your DataVolume. Ensure that your configured CSI supports your selection. ReadWriteMany / ReadWriteOnce" [ref=e756]:
+                          - cell "Access Mode for the PVC" [ref=e757]:
+                            - strong [ref=e758]: Access Mode for the PVC
+                          - cell "Set the access mode for your DataVolume. Ensure that your configured CSI supports your selection." [ref=e759]:
+                            - text: Set the access mode for your
+                            - code [ref=e760]: DataVolume
+                            - text: . Ensure that your configured CSI supports your selection.
+                          - cell "ReadWriteMany / ReadWriteOnce" [ref=e761]:
+                            - code [ref=e762]: ReadWriteMany
+                            - text: /
+                            - code [ref=e763]: ReadWriteOnce
+                        - row "Create a PVC with VolumeMode=Block Indicate whether to set Block volume mode on the DataVolume. y / N" [ref=e764]:
+                          - cell "Create a PVC with VolumeMode=Block" [ref=e765]:
+                            - strong [ref=e766]: Create a PVC with VolumeMode=Block
+                          - cell "Indicate whether to set Block volume mode on the DataVolume." [ref=e767]:
+                            - text: Indicate whether to set
+                            - code [ref=e768]: Block
+                            - text: volume mode on the
+                            - code [ref=e769]: DataVolume
+                            - text: .
+                          - cell "y / N" [ref=e770]:
+                            - code [ref=e771]: "y"
+                            - text: /
+                            - code [ref=e772]: "N"
+                        - row "StorageClass The storage class on the destination that will be used to create the VM volume." [ref=e773]:
+                          - cell "StorageClass" [ref=e774]:
+                            - strong [ref=e775]: StorageClass
+                          - cell "The storage class on the destination that will be used to create the VM volume." [ref=e776]
+                          - cell [ref=e777]
+                        - row "CDI Upload Proxy URL Optionally provide a custom CDI upload proxy URL. If ingress is configured for the CDI upload proxy, the ingress hostname will be used by default and must be resolvable via DNS. If the CDI upload proxy is exposed via a NodePort, a node IP and ephemeral port will be used. Depending on how CDI and DNS are configured, you may need to edit /etc/hosts to ensure DNS resolution. You may also port-forward the CDI upload proxy via kubectl --namespace cdi port-forward deployment/cdi-uploadproxy 8443 and provide https://localhost:8443 as the CDI upload proxy URL. However, this approach will be less efficient." [ref=e778]:
+                          - cell "CDI Upload Proxy URL" [ref=e779]:
+                            - strong [ref=e780]: CDI Upload Proxy URL
+                          - cell "Optionally provide a custom CDI upload proxy URL. If ingress is configured for the CDI upload proxy, the ingress hostname will be used by default and must be resolvable via DNS. If the CDI upload proxy is exposed via a NodePort, a node IP and ephemeral port will be used. Depending on how CDI and DNS are configured, you may need to edit /etc/hosts to ensure DNS resolution. You may also port-forward the CDI upload proxy via kubectl --namespace cdi port-forward deployment/cdi-uploadproxy 8443 and provide https://localhost:8443 as the CDI upload proxy URL. However, this approach will be less efficient." [ref=e781]:
+                            - text: Optionally provide a custom CDI upload proxy URL. If ingress is configured for the CDI upload proxy, the ingress hostname will be used by default and must be resolvable via DNS. If the CDI upload proxy is exposed via a NodePort, a node IP and ephemeral port will be used. Depending on how CDI and DNS are configured, you may need to edit
+                            - code [ref=e782]: /etc/hosts
+                            - text: to ensure DNS resolution. You may also port-forward the CDI upload proxy via
+                            - code [ref=e783]: kubectl --namespace cdi port-forward deployment/cdi-uploadproxy 8443
+                            - text: and provide
+                            - code [ref=e784]: https://localhost:8443
+                            - text: as the CDI upload proxy URL. However, this approach will be less efficient.
+                          - cell [ref=e785]
+                  - listitem [ref=e786]:
+                    - paragraph [ref=e787]: The import may take a few minutes to complete. The Palette CLI outputs the path for your OVA configuration file. Make a note of it.
+                  - listitem [ref=e788]:
+                    - paragraph [ref=e789]: Your imported OVA is now ready to be deployed to a new VM inside your VMO cluster. Execute the following command to start an interactive shell and begin the deployment process. Replace the path placeholder with the path of your OVA configuration file.
+                    - generic [ref=e791]:
+                      - code [ref=e793]:
+                        - generic [ref=e794]: palette vmo deploy-ova --config-file <path-to-ova-configuration-file>
+                      - generic [ref=e795]:
+                        - button "Toggle word wrap" [ref=e796] [cursor=pointer]:
+                          - img [ref=e797]
+                        - button "Copy code to clipboard" [ref=e799] [cursor=pointer]:
+                          - generic [ref=e800]:
+                            - img [ref=e801]
+                            - img [ref=e803]
+                    - paragraph [ref=e805]: The Palette CLI prompts you for information regarding the VM you want to deploy.
+                    - table [ref=e806]:
+                      - rowgroup [ref=e807]:
+                        - row "Parameter Description Values" [ref=e808]:
+                          - columnheader "Parameter" [ref=e809]:
+                            - strong [ref=e810]: Parameter
+                          - columnheader "Description" [ref=e811]:
+                            - strong [ref=e812]: Description
+                          - columnheader "Values" [ref=e813]:
+                            - strong [ref=e814]: Values
+                      - rowgroup [ref=e815]:
+                        - row "VM Namespace The namespace to create your VM into." [ref=e816]:
+                          - cell "VM Namespace" [ref=e817]:
+                            - strong [ref=e818]: VM Namespace
+                          - cell "The namespace to create your VM into." [ref=e819]
+                          - cell [ref=e820]
+                        - row "VM Name The namespace of your VM." [ref=e821]:
+                          - cell "VM Name" [ref=e822]:
+                            - strong [ref=e823]: VM Name
+                          - cell "The namespace of your VM." [ref=e824]
+                          - cell [ref=e825]
+                        - row "Start VM Automatically? Indicate whether to start your VM after creation. y/ N" [ref=e826]:
+                          - cell "Start VM Automatically?" [ref=e827]:
+                            - strong [ref=e828]: Start VM Automatically?
+                          - cell "Indicate whether to start your VM after creation." [ref=e829]
+                          - cell "y/ N" [ref=e830]:
+                            - code [ref=e831]: "y"
+                            - text: /
+                            - code [ref=e832]: "N"
+                  - listitem [ref=e833]:
+                    - paragraph [ref=e834]: Depending on the configuration of your OVA, you may be prompted to provide additional values for the OVF template variables. The deployment of your VM should complete within a few minutes.
+                - generic [ref=e835]:
+                  - generic [ref=e836]:
+                    - img [ref=e838]
+                    - text: info
+                  - generic [ref=e840]:
+                    - paragraph [ref=e841]:
+                      - text: The import may generate a variety of warnings during the deployment process, including many repeated lines containing the word
+                      - code [ref=e842]: (BADINDEX)
+                      - text: . All of these warnings and messages can safely be ignored. If a fatal error is encountered, Palette CLI will exit completely.
+                    - paragraph [ref=e843]:
+                      - text: You may need to make minor edits to the auto-generated VM specification if you want to configure
+                      - link "Multus" [ref=e844] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-multus
+                      - text: VLAN for each network interface. If uploading your image to a
+                      - code [ref=e845]: DataVolume
+                      - text: upload fails, you may restart the upload after debugging any CDI issues. Execute the command
+                      - code [ref=e846]: palette vmo import-ova --config-file <path-to-ova-config.yaml> --skip-convert
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e847]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e848] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e849]:
+                  - listitem [ref=e850]:
+                    - paragraph [ref=e851]:
+                      - text: Log into
+                      - link "Palette" [ref=e852] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e853]:
+                    - paragraph [ref=e854]:
+                      - text: From the left
+                      - strong [ref=e855]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e856]: Clusters
+                      - text: . Then, choose the VMO cluster that you deployed your OVA to. The
+                      - strong [ref=e857]: Overview
+                      - text: tab appears.
+                  - listitem [ref=e858]:
+                    - paragraph [ref=e859]:
+                      - text: Select the
+                      - strong [ref=e860]: Virtual Machines
+                      - text: tab. Then, select your migration namespace from the
+                      - strong [ref=e861]: Namespace
+                      - text: drop-down Menu. Your deployed VM appears in the list of Virtual Machines. Select your VM to view its details. It is in a
+                      - strong [ref=e862]: Running
+                      - text: state.
+                    - paragraph [ref=e863]:
+                      - img "Imported VM details" [ref=e864]
+                  - listitem [ref=e865]:
+                    - paragraph [ref=e866]:
+                      - text: Even though your VM is healthy, Palette displays two warnings. You can resolve them from the UI. Click
+                      - strong [ref=e867]: Boot Order
+                      - text: . The
+                      - strong [ref=e868]: Virtual machine boot order
+                      - text: dialog appears.
+                  - listitem [ref=e869]:
+                    - paragraph [ref=e870]:
+                      - text: Select a boot source for your VM from the list of available disks. Then, click
+                      - strong [ref=e871]: Save
+                      - text: . The dialog closes.
+                    - paragraph [ref=e872]:
+                      - img "Fix boot order" [ref=e873]
+                  - listitem [ref=e874]:
+                    - paragraph [ref=e875]:
+                      - text: Click the second warning button, named after the clusters
+                      - strong [ref=e876]: Environment
+                      - text: configuration. Select a new
+                      - strong [ref=e877]: Serial Number
+                      - text: for your environment ConfigMap. Then, click
+                      - strong [ref=e878]: Save
+                      - text: .
+                    - paragraph [ref=e879]:
+                      - img "Fix ConfigMap serial" [ref=e880]
+                  - listitem [ref=e881]:
+                    - paragraph [ref=e882]:
+                      - text: Select the
+                      - strong [ref=e883]: Actions
+                      - text: drop-down Menu. Then, select
+                      - strong [ref=e884]: Restart
+                      - text: to apply your changes. Once your changes have been applied, Palette will not display any warnings.
+              - generic [ref=e885]:
+                - generic [ref=e887]:
+                  - text: "Tags:"
+                  - list [ref=e888]:
+                    - listitem [ref=e889]:
+                      - link "vmo" [ref=e890] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e891]:
+                      - link "palette-cli" [ref=e892] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e895] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vmo-pack/create-manage-vm/advanced-topics/deploy-import-ova.md
+                  - img [ref=e896]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e900]:
+              - link "Previous « Over-Commit Resources to Enhance VM Performance" [ref=e901] [cursor=pointer]:
+                - /url: /vm-management/vmo-pack/create-manage-vm/advanced-topics/vm-oversubscription/
+                - generic [ref=e902]: Previous
+                - generic [ref=e903]: « Over-Commit Resources to Enhance VM Performance
+              - link "Next RBAC »" [ref=e904] [cursor=pointer]:
+                - /url: /vm-management/rbac/
+                - generic [ref=e905]: Next
+                - generic [ref=e906]: RBAC »
+          - list [ref=e909]:
+            - listitem [ref=e910]:
+              - link "Limitations" [ref=e911] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e912]:
+              - link "Prerequisites" [ref=e913] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e914]:
+              - link "Enablement" [ref=e915] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e916]:
+              - link "Validate" [ref=e917] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e918] [cursor=pointer]:
+    - generic [ref=e921]:
+      - img "Project Logo" [ref=e922]
+      - paragraph [ref=e923]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

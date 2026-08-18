@@ -1,0 +1,582 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 3722px, received 1280px by 3702px. 99558 pixels (ratio 0.03 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 3722px, received 1280px by 3702px. 99558 pixels (ratio 0.03 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 3722px, received 1280px by 3702px. 99558 pixels (ratio 0.03 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Release Notes" [ref=e47] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e49]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Security Bulletins" [ref=e54] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e56]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "What is Palette?" [ref=e61] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e63]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - link "Getting Started" [ref=e67] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e69]
+                  - text: Getting Started
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Architecture" [ref=e73] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e75]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Profiles" [ref=e80] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e82]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e86] [cursor=pointer]
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Cluster Templates" [ref=e89] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e91]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Deployment Modes" [ref=e96] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e98]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Clusters" [ref=e103] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e105]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e114] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e116]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Palette Dev Engine" [ref=e121] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e123]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "AI Workloads" [ref=e128] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e130]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e135] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e137]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e139] [cursor=pointer]
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Architecture" [ref=e142] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "VM Launchpad" [ref=e145] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e146] [cursor=pointer]
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]:
+                      - link "VMO Pack" [ref=e149] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e150] [cursor=pointer]
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]:
+                      - link "RBAC" [ref=e153] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "VM Migration Assistant" [ref=e157] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Workspaces" [ref=e161] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e163]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Packs List" [ref=e168] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e170]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "User & Role Management" [ref=e175] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e177]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Registries and Packs" [ref=e182] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e184]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Security" [ref=e189] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e191]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Audit Logs" [ref=e196] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e198]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Self-Hosted Palette" [ref=e203] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e205]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Palette VerteX" [ref=e210] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e212]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Tenant Administration" [ref=e217] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e219]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Automation" [ref=e224] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e226]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Troubleshooting" [ref=e231] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e233]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - link "Glossary" [ref=e237] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e239]
+                  - text: Glossary
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Compliance & Legal" [ref=e243] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e245]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - button "Privacy Settings" [ref=e249] [cursor=pointer]:
+                  - img [ref=e250]
+                  - text: Privacy Settings
+      - main [ref=e252]:
+        - generic [ref=e254]:
+          - generic [ref=e256]:
+            - article [ref=e257]:
+              - navigation "Breadcrumbs" [ref=e258]:
+                - list [ref=e259]:
+                  - listitem [ref=e260]:
+                    - link "Home page" [ref=e261] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e262]
+                  - listitem [ref=e264]:
+                    - generic [ref=e265]: Virtual Machine Orchestrator
+              - generic [ref=e266]:
+                - heading "Virtual Machine Orchestrator" [level=1] [ref=e268]
+                - paragraph [ref=e269]:
+                  - text: Palette Virtual Machine Orchestrator (VMO) enables you to run and manage VMs alongside containers on Kubernetes. Instead of maintaining separate hypervisor and container platforms, VMO consolidates both workload types into a single infrastructure layer built on
+                  - link "KubeVirt" [ref=e270] [cursor=pointer]:
+                    - /url: https://kubevirt.io/
+                  - text: . You can deploy VMO on bare metal servers in data centers, at Edge locations, and in airgapped or regulated environments.
+                - paragraph [ref=e271]: With VMO, you can create, start, stop, migrate, snapshot, and clone VMs using the same Kubernetes cluster that runs your containerized applications. VMO handles the underlying infrastructure, including storage, networking, identity management, and observability, so you do not need to assemble and maintain separate tools for each concern.
+                - paragraph [ref=e272]:
+                  - img "A drawing of VMs deployed to Palette" [ref=e273]
+                - heading "Use CasesDirect link to Use Cases" [level=2] [ref=e274]:
+                  - text: Use Cases
+                  - link "Direct link to Use Cases" [ref=e275] [cursor=pointer]:
+                    - /url: "#use-cases"
+                    - text: "#"
+                - paragraph [ref=e276]: "VMO is designed for organizations that need to manage VM workloads on Kubernetes. Common scenarios include:"
+                - list [ref=e277]:
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]:
+                      - strong [ref=e280]: Hypervisor consolidation
+                      - text: "- Replace a traditional hypervisor with a Kubernetes-native VM runtime to reduce licensing costs, simplify operations, and unify your infrastructure management."
+                  - listitem [ref=e281]:
+                    - paragraph [ref=e282]:
+                      - strong [ref=e283]: VM-to-container migration
+                      - text: "- Run VMs and containers side by side during a gradual transition. Move workloads to containers at your own pace without maintaining two separate platforms."
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - strong [ref=e286]: Edge and distributed sites
+                      - text: "- Deploy VMs at Edge locations and remote sites where a standalone, self-contained platform is easier to operate than a centrally managed hypervisor."
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - strong [ref=e289]: Airgapped and regulated environments
+                      - text: "- Run VMs in disconnected or compliance-sensitive environments with built-in FIPS 140-3 support, airgapped package management, and standalone identity management."
+                - heading "Deployment ApproachesDirect link to Deployment Approaches" [level=2] [ref=e290]:
+                  - text: Deployment Approaches
+                  - link "Direct link to Deployment Approaches" [ref=e291] [cursor=pointer]:
+                    - /url: "#deployment-approaches"
+                    - text: "#"
+                - paragraph [ref=e292]:
+                  - text: "VMO is available through two deployment approaches:"
+                  - link "VM Launchpad" [ref=e293] [cursor=pointer]:
+                    - /url: "#vm-launchpad-recommended"
+                  - text: (recommended) and
+                  - link "VMO Pack" [ref=e294] [cursor=pointer]:
+                    - /url: "#vmo-pack"
+                  - text: .
+                - table [ref=e295]:
+                  - rowgroup [ref=e296]:
+                    - row "Capability VM Launchpad VMO Pack" [ref=e297]:
+                      - columnheader "Capability" [ref=e298]:
+                        - strong [ref=e299]: Capability
+                      - columnheader "VM Launchpad" [ref=e300]:
+                        - strong [ref=e301]: VM Launchpad
+                      - columnheader "VMO Pack" [ref=e302]:
+                        - strong [ref=e303]: VMO Pack
+                  - rowgroup [ref=e304]:
+                    - row "Palette connection Not supported Required for profile authoring; optional at runtime with locally managed Edge clusters" [ref=e305]:
+                      - cell "Palette connection" [ref=e306]:
+                        - strong [ref=e307]: Palette connection
+                      - cell "Not supported" [ref=e308]
+                      - cell "Required for profile authoring; optional at runtime with locally managed Edge clusters" [ref=e309]
+                    - row "Deployment method Bootable ISO Palette cluster profile or exported cluster definition" [ref=e310]:
+                      - cell "Deployment method" [ref=e311]:
+                        - strong [ref=e312]: Deployment method
+                      - cell "Bootable ISO" [ref=e313]
+                      - cell "Palette cluster profile or exported cluster definition" [ref=e314]
+                    - row "Golden image builder Yes No" [ref=e315]:
+                      - cell "Golden image builder" [ref=e316]:
+                        - strong [ref=e317]: Golden image builder
+                      - cell "Yes" [ref=e318]
+                      - cell "No" [ref=e319]
+                    - row "Snapshot policies Yes No" [ref=e320]:
+                      - cell "Snapshot policies" [ref=e321]:
+                        - strong [ref=e322]: Snapshot policies
+                      - cell "Yes" [ref=e323]
+                      - cell "No" [ref=e324]
+                    - row "Airgapped package management Yes No" [ref=e325]:
+                      - cell "Airgapped package management" [ref=e326]:
+                        - strong [ref=e327]: Airgapped package management
+                      - cell "Yes" [ref=e328]
+                      - cell "No" [ref=e329]
+                    - row "Built-in identity management Yes (OIDC, Keycloak, local accounts) Palette-managed OIDC" [ref=e330]:
+                      - cell "Built-in identity management" [ref=e331]:
+                        - strong [ref=e332]: Built-in identity management
+                      - cell "Yes (OIDC, Keycloak, local accounts)" [ref=e333]
+                      - cell "Palette-managed OIDC" [ref=e334]
+                    - row "Observability (metrics dashboards) Built-in (OTel, PromQL) Requires external setup" [ref=e335]:
+                      - cell "Observability (metrics dashboards)" [ref=e336]:
+                        - strong [ref=e337]: Observability (metrics dashboards)
+                      - cell "Built-in (OTel, PromQL)" [ref=e338]
+                      - cell "Requires external setup" [ref=e339]
+                    - row "VM Migration Assistant Yes Yes" [ref=e340]:
+                      - cell "VM Migration Assistant" [ref=e341]:
+                        - strong [ref=e342]: VM Migration Assistant
+                      - cell "Yes" [ref=e343]
+                      - cell "Yes" [ref=e344]
+                    - row "Cluster lifecycle management Self-managed (Local UI) Palette-managed or self-managed (Local UI)" [ref=e345]:
+                      - cell "Cluster lifecycle management" [ref=e346]:
+                        - strong [ref=e347]: Cluster lifecycle management
+                      - cell "Self-managed (Local UI)" [ref=e348]
+                      - cell "Palette-managed or self-managed (Local UI)" [ref=e349]
+                    - row "Imported cluster support No Yes" [ref=e350]:
+                      - cell "Imported cluster support" [ref=e351]:
+                        - strong [ref=e352]: Imported cluster support
+                      - cell "No" [ref=e353]
+                      - cell "Yes" [ref=e354]
+                - heading "VM Launchpad (Recommended)Direct link to VM Launchpad (Recommended)" [level=3] [ref=e355]:
+                  - text: VM Launchpad (Recommended)
+                  - link "Direct link to VM Launchpad (Recommended)" [ref=e356] [cursor=pointer]:
+                    - /url: "#vm-launchpad-recommended"
+                    - text: "#"
+                - paragraph [ref=e357]:
+                  - text: The
+                  - link "VM Launchpad" [ref=e358] [cursor=pointer]:
+                    - /url: /vm-management/vm-launchpad/
+                  - text: is the recommended way to deploy VMO. It provides a standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your devices together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
+                - paragraph [ref=e359]: The appliance includes a purpose-built management UI designed specifically for VM operations, with built-in identity and access management, golden image workflows, airgapped package management, snapshot policies, and observability dashboards. This self-contained approach is well suited for distributed sites, Edge locations, airgapped environments, and regulated environments.
+                - paragraph [ref=e360]:
+                  - text: If you are new to VMO, start with the VM Launchpad. Refer to
+                  - link "Install VM Launchpad" [ref=e361] [cursor=pointer]:
+                    - /url: /vm-management/vm-launchpad/install/
+                  - text: to get started.
+                - heading "VMO PackDirect link to VMO Pack" [level=3] [ref=e362]:
+                  - text: VMO Pack
+                  - link "Direct link to VMO Pack" [ref=e363] [cursor=pointer]:
+                    - /url: "#vmo-pack"
+                    - text: "#"
+                - paragraph [ref=e364]:
+                  - link "VMO Pack" [ref=e365] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/
+                  - text: is the original approach to deploying VMO. You create a cluster through Palette and add the
+                  - link "Virtual Machine Orchestrator" [ref=e366] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=virtual-machine-orchestrator
+                  - text: pack to a curated
+                  - link "cluster profile" [ref=e367] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/create-vmo-profile/
+                  - text: . VM management is accessed through the Palette UI.
+                - paragraph [ref=e368]: VMO Pack remains fully supported. However, we recommend using the VM Launchpad for new deployments because it provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities that are not available in the pack approach.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e369]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e370] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e371]:
+                  - text: Take the following steps to get started with VMO. Once you have a VMO cluster, you can also explore the
+                  - link "Virtual Machine Migration Assistant" [ref=e372] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/
+                  - text: to learn how you can migrate existing VMs from VMware vSphere to your VMO cluster.
+                - generic [ref=e373]:
+                  - tablist [ref=e374]:
+                    - tab "VM Launchpad" [selected] [ref=e375] [cursor=pointer]
+                    - tab "VMO Pack" [ref=e376] [cursor=pointer]
+                  - tabpanel [ref=e378]:
+                    - list [ref=e379]:
+                      - listitem [ref=e380]:
+                        - paragraph [ref=e381]:
+                          - text: Review the
+                          - link "VM Launchpad" [ref=e382] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/
+                          - text: overview to learn about the appliance architecture and capabilities.
+                      - listitem [ref=e383]:
+                        - paragraph [ref=e384]:
+                          - text: Follow the
+                          - link "Install VM Launchpad" [ref=e385] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/install/
+                          - text: guide to install the appliance on your devices and create your cluster.
+                      - listitem [ref=e386]:
+                        - paragraph [ref=e387]:
+                          - text: Use the
+                          - link "Create Your First VM" [ref=e388] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/quick-start/
+                          - text: guide to deploy your first VM.
+                    - paragraph [ref=e389]:
+                      - text: Refer to the
+                      - link "VMs section" [ref=e390] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/virtual-machines/
+                      - text: to learn how to create and manage golden images, templates, and snapshots.
+              - generic [ref=e391]:
+                - generic [ref=e393]:
+                  - text: "Tags:"
+                  - list [ref=e394]:
+                    - listitem [ref=e395]:
+                      - link "vmo" [ref=e396] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e399] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-management.md
+                  - img [ref=e400]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e404]:
+              - link "Previous « NVIDIA GPU Operator Pack" [ref=e405] [cursor=pointer]:
+                - /url: /ai-workloads/nvidia-gpu-operator/
+                - generic [ref=e406]: Previous
+                - generic [ref=e407]: « NVIDIA GPU Operator Pack
+              - link "Next Architecture »" [ref=e408] [cursor=pointer]:
+                - /url: /vm-management/architecture/
+                - generic [ref=e409]: Next
+                - generic [ref=e410]: Architecture »
+          - list [ref=e413]:
+            - listitem [ref=e414]:
+              - link "Use Cases" [ref=e415] [cursor=pointer]:
+                - /url: "#use-cases"
+            - listitem [ref=e416]:
+              - link "Deployment Approaches" [ref=e417] [cursor=pointer]:
+                - /url: "#deployment-approaches"
+              - list [ref=e418]:
+                - listitem [ref=e419]:
+                  - link "VM Launchpad (Recommended)" [ref=e420] [cursor=pointer]:
+                    - /url: "#vm-launchpad-recommended"
+                - listitem [ref=e421]:
+                  - link "VMO Pack" [ref=e422] [cursor=pointer]:
+                    - /url: "#vmo-pack"
+            - listitem [ref=e423]:
+              - link "Next Steps" [ref=e424] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e425] [cursor=pointer]:
+    - generic [ref=e428]:
+      - img "Project Logo" [ref=e429]
+      - paragraph [ref=e430]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

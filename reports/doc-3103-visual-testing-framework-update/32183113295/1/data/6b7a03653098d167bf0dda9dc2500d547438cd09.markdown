@@ -1,0 +1,402 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/explanation/clients-and-quotas/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 4421px, received 1280px by 4216px. 95246 pixels (ratio 0.02 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 4421px, received 1280px by 4216px. 95246 pixels (ratio 0.02 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 4421px, received 1280px by 4216px. 95246 pixels (ratio 0.02 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - link "Overview" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e47]:
+                - link "Tutorials" [ref=e48] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "How-to Guides" [ref=e51] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Explanation" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Architecture Overview" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/architecture/
+                  - listitem [ref=e60]:
+                    - link "Clients and Quotas" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                  - listitem [ref=e62]:
+                    - link "Model Certification" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                  - listitem [ref=e64]:
+                    - link "Inference Engines" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/inference-engines/
+                  - listitem [ref=e66]:
+                    - link "Installation Architecture" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/installation-architecture/
+              - listitem [ref=e68]:
+                - generic [ref=e69]:
+                  - link "Reference" [ref=e70] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - link "Release Notes" [ref=e73] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e74]:
+                - button "Privacy Settings" [ref=e75] [cursor=pointer]
+      - main [ref=e76]:
+        - generic [ref=e78]:
+          - generic [ref=e80]:
+            - article [ref=e81]:
+              - navigation "Breadcrumbs" [ref=e82]:
+                - list [ref=e83]:
+                  - listitem [ref=e84]:
+                    - link "Home page" [ref=e85] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e86]
+                  - listitem [ref=e88]:
+                    - link "Explanation" [ref=e89] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]: Clients and Quotas
+              - generic [ref=e92]:
+                - heading "Clients and Quotas" [level=1] [ref=e94]
+                - paragraph [ref=e95]:
+                  - text: AI coding assistants such as Claude Code, Cursor, OpenAI Codex, and OpenCode make up many of the workloads that connect to a PaletteAI Inference Launchpad appliance, sending their requests to the appliance instead of to a cloud provider. A single appliance can serve many of these assistants at once, along with other workloads such as an internal chatbot or a nightly batch job. This page explains how the appliance tells those workloads apart, and how it meters and limits what each one consumes. It covers what a
+                  - emphasis [ref=e96]: client
+                  - text: is, why one appliance serves many of them, and how clients, API tokens, and quotas fit together. Read it to understand these ideas before you create clients, issue tokens, or set quotas.
+                - heading "What a Client IsDirect link to What a Client Is" [level=2] [ref=e97]:
+                  - text: What a Client Is
+                  - link "Direct link to What a Client Is" [ref=e98] [cursor=pointer]:
+                    - /url: "#what-a-client-is"
+                    - text: "#"
+                - paragraph [ref=e99]: A client is the identity the appliance uses to recognize who is sending a request. It is the unit of both access and accounting. The appliance attributes every request to exactly one client and measures every quota and usage metric per client.
+                - paragraph [ref=e100]:
+                  - text: A client is more often a
+                  - emphasis [ref=e101]: workload
+                  - text: than a person. Each AI coding assistant that connects to the appliance is a client. A single client might represent one engineering team, with each developer holding a separate API token, or a single coding tool. A customer support assistant or a data pipeline also makes a natural client, and most such workloads have no human operator at all.
+                - paragraph [ref=e102]: One appliance can serve many clients side by side. They draw on the same loaded models and the same GPU hardware, so the appliance needs a way to keep them from interfering with one another. That is what clients, tokens, and quotas provide.
+                - heading "Why the Appliance Serves Many ClientsDirect link to Why the Appliance Serves Many Clients" [level=2] [ref=e103]:
+                  - text: Why the Appliance Serves Many Clients
+                  - link "Direct link to Why the Appliance Serves Many Clients" [ref=e104] [cursor=pointer]:
+                    - /url: "#why-the-appliance-serves-many-clients"
+                    - text: "#"
+                - paragraph [ref=e105]: "The appliance is a single machine with a fixed amount of GPU capacity. Unlike a cloud service, it cannot scale out on demand, so its capacity is shared among everything that uses it. Giving every workload the same anonymous access would make that shared resource impossible to manage. Distinct clients let you do four things that a single shared credential cannot:"
+                - list [ref=e106]:
+                  - listitem [ref=e107]:
+                    - strong [ref=e108]: Protect capacity.
+                    - text: Per-client limits stop one coding assistant, such as an agent working through a large refactor, from consuming all available throughput and starving the others.
+                  - listitem [ref=e109]:
+                    - strong [ref=e110]: Attribute usage.
+                    - text: Per-client metrics show which team or tool consumed what, so you can identify where capacity goes and plan accordingly.
+                  - listitem [ref=e111]:
+                    - strong [ref=e112]: Contain credentials.
+                    - text: A token that a developer commits to a repository by mistake affects only its client. You revoke that one token without disrupting any other workload.
+                  - listitem [ref=e113]:
+                    - strong [ref=e114]: Govern outbound reach.
+                    - text: When the appliance routes to external providers, you can control which clients may send requests off the appliance. For example, you can allow only certain coding assistants to reach a paid frontier model.
+                - paragraph [ref=e115]: Creating separate clients is not about distributing access for its own sake. It is how you keep a shared, finite appliance usable by many workloads at once.
+                - heading "Clients and API TokensDirect link to Clients and API Tokens" [level=2] [ref=e116]:
+                  - text: Clients and API Tokens
+                  - link "Direct link to Clients and API Tokens" [ref=e117] [cursor=pointer]:
+                    - /url: "#clients-and-api-tokens"
+                    - text: "#"
+                - paragraph [ref=e118]:
+                  - text: A client proves its identity with an API token, a bearer credential that begins with the prefix
+                  - code [ref=e119]: lpai_
+                  - text: . Every request carries its token in the
+                  - code [ref=e120]: Authorization
+                  - text: header. The appliance resolves the token to its client, applies that client's quotas, and records the request's usage against that client.
+                - paragraph [ref=e121]: A client can hold more than one API token. When each developer or coding tool that shares a client carries its own token, revoking one token (for example, after a developer leaves the team) does not disturb the others. Revoking the client itself revokes every token that belongs to it.
+                - heading "Client LifecycleDirect link to Client Lifecycle" [level=2] [ref=e122]:
+                  - text: Client Lifecycle
+                  - link "Direct link to Client Lifecycle" [ref=e123] [cursor=pointer]:
+                    - /url: "#client-lifecycle"
+                    - text: "#"
+                - paragraph [ref=e124]: A client is active by default. You can suspend it, delete it, or revoke its individual API tokens without changing the client itself.
+                - list [ref=e125]:
+                  - listitem [ref=e126]:
+                    - strong [ref=e127]: Suspend
+                    - text: blocks a client's requests but keeps its API tokens, quotas, and routing settings in place. A suspended client can be resumed at any time, so suspension is reversible.
+                  - listitem [ref=e128]:
+                    - strong [ref=e129]: Delete
+                    - text: permanently retires a client and removes its quota, egress, and routing settings. It revokes every API token the client owns. The client's audit history is preserved, and a delete cannot be undone.
+                - paragraph [ref=e130]: An API token has its own state. A token stays active until it is revoked or passes its expiration date. The appliance rejects any request that presents a revoked or expired token, fail-closed.
+                - heading "QuotasDirect link to Quotas" [level=2] [ref=e131]:
+                  - text: Quotas
+                  - link "Direct link to Quotas" [ref=e132] [cursor=pointer]:
+                    - /url: "#quotas"
+                    - text: "#"
+                - paragraph [ref=e133]: "A quota is a consumption limit attached to a client. The appliance enforces quotas across three dimensions:"
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - strong [ref=e136]: Requests.
+                    - text: The number of calls a client makes.
+                  - listitem [ref=e137]:
+                    - strong [ref=e138]: Tokens.
+                    - text: The number of tokens a client's requests process.
+                  - listitem [ref=e139]:
+                    - strong [ref=e140]: Cost.
+                    - text: The computed cost of a client's requests.
+                - paragraph [ref=e141]: The appliance measures each dimension over rolling windows of one second, one minute, one hour, and one day. There is no monthly or billing-cycle window.
+                - paragraph [ref=e142]:
+                  - text: When a client reaches a limit, the appliance rejects further requests with HTTP
+                  - code [ref=e143]: 429 Too Many Requests
+                  - text: and names the dimension and window that tripped. It does not queue or slow the requests. It blocks them until the window rolls over and the client is back under the limit.
+                - heading "What Clients Can AccessDirect link to What Clients Can Access" [level=2] [ref=e144]:
+                  - text: What Clients Can Access
+                  - link "Direct link to What Clients Can Access" [ref=e145] [cursor=pointer]:
+                    - /url: "#what-clients-can-access"
+                    - text: "#"
+                - paragraph [ref=e146]: Access to models depends on whether a model runs locally on the appliance or is reached through an external provider.
+                - list [ref=e147]:
+                  - listitem [ref=e148]:
+                    - strong [ref=e149]: Local models.
+                    - text: Every client can call every model served locally on the appliance. The appliance does not restrict which local models a client may call. It meters and limits how much a client uses through quotas, but it does not gate access to any local model.
+                  - listitem [ref=e150]:
+                    - strong [ref=e151]: External models.
+                    - text: If the appliance is configured to route to external providers, each client's reach is governed by an allow-list that denies by default. A client can call an external provider or model only when that provider or model is explicitly allowed for it.
+                - heading "How It Fits TogetherDirect link to How It Fits Together" [level=2] [ref=e152]:
+                  - text: How It Fits Together
+                  - link "Direct link to How It Fits Together" [ref=e153] [cursor=pointer]:
+                    - /url: "#how-it-fits-together"
+                    - text: "#"
+                - paragraph [ref=e154]: A single request from a coding assistant ties these ideas together.
+                - list [ref=e155]:
+                  - listitem [ref=e156]:
+                    - text: A code completion request arrives with
+                    - code [ref=e157]: "Authorization: Bearer lpai_..."
+                    - text: .
+                  - listitem [ref=e158]: The appliance resolves the token to its client.
+                  - listitem [ref=e159]: The appliance checks that client's quota for the requested dimension and window.
+                  - listitem [ref=e160]:
+                    - text: If the client is within its limits, the appliance routes the request to the model and records the usage against the client. If the client is over a limit, the appliance rejects the request with
+                    - code [ref=e161]: "429"
+                    - text: instead.
+                - paragraph [ref=e162]: Setting up a client builds this same chain ahead of time, starting with the client, then its tokens, and then its quotas, so it is ready to run on every request.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e163]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e164] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e165]:
+                  - listitem [ref=e166]:
+                    - link "Create a Client" [ref=e167] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                    - text: walks through creating a client and issuing its first API token.
+                  - listitem [ref=e168]:
+                    - link "Use PaletteAI Inference Launchpad with Claude Code" [ref=e169] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                    - text: walks through connecting a coding assistant to a client with an API token.
+                  - listitem [ref=e170]:
+                    - link "Architecture Overview" [ref=e171] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/architecture/
+                    - text: explains how the appliance routes requests and where its components sit.
+                  - listitem [ref=e172]:
+                    - link "Model Certification" [ref=e173] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                    - text: explains which models a client can call and how you choose them.
+                  - listitem [ref=e174]:
+                    - link "Glossary" [ref=e175] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                    - text: defines the client, API token, quota, and routing terms used throughout this page.
+              - generic [ref=e176]:
+                - generic [ref=e178]:
+                  - text: "Tags:"
+                  - list [ref=e179]:
+                    - listitem [ref=e180]:
+                      - link "paletteai-inference-launchpad" [ref=e181] [cursor=pointer]:
+                        - /url: /tags/paletteai-inference-launchpad/
+                    - listitem [ref=e182]:
+                      - link "explanation" [ref=e183] [cursor=pointer]:
+                        - /url: /tags/explanation/
+                    - listitem [ref=e184]:
+                      - link "clients" [ref=e185] [cursor=pointer]:
+                        - /url: /tags/clients/
+                    - listitem [ref=e186]:
+                      - link "quotas" [ref=e187] [cursor=pointer]:
+                        - /url: /tags/quotas/
+                - link "Edit this page" [ref=e190] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/paletteai-inference-launchpad/explanation/clients-and-quotas.md
+                  - img [ref=e191]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e195]:
+              - link "Previous « Architecture Overview" [ref=e196] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/explanation/architecture/
+                - generic [ref=e197]: Previous
+                - generic [ref=e198]: « Architecture Overview
+              - link "Next Model Certification »" [ref=e199] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                - generic [ref=e200]: Next
+                - generic [ref=e201]: Model Certification »
+          - list [ref=e204]:
+            - listitem [ref=e205]:
+              - link "What a Client Is" [ref=e206] [cursor=pointer]:
+                - /url: "#what-a-client-is"
+            - listitem [ref=e207]:
+              - link "Why the Appliance Serves Many Clients" [ref=e208] [cursor=pointer]:
+                - /url: "#why-the-appliance-serves-many-clients"
+            - listitem [ref=e209]:
+              - link "Clients and API Tokens" [ref=e210] [cursor=pointer]:
+                - /url: "#clients-and-api-tokens"
+            - listitem [ref=e211]:
+              - link "Client Lifecycle" [ref=e212] [cursor=pointer]:
+                - /url: "#client-lifecycle"
+            - listitem [ref=e213]:
+              - link "Quotas" [ref=e214] [cursor=pointer]:
+                - /url: "#quotas"
+            - listitem [ref=e215]:
+              - link "What Clients Can Access" [ref=e216] [cursor=pointer]:
+                - /url: "#what-clients-can-access"
+            - listitem [ref=e217]:
+              - link "How It Fits Together" [ref=e218] [cursor=pointer]:
+                - /url: "#how-it-fits-together"
+            - listitem [ref=e219]:
+              - link "Resources" [ref=e220] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e221] [cursor=pointer]:
+    - generic [ref=e224]:
+      - img "Project Logo" [ref=e225]
+      - paragraph [ref=e226]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

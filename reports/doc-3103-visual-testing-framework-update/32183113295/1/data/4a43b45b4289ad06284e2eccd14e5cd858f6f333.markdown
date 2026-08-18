@@ -1,0 +1,294 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/explanation/model-certification/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  5765 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 5765 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - link "Overview" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e47]:
+                - link "Tutorials" [ref=e48] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "How-to Guides" [ref=e51] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Explanation" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Architecture Overview" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/architecture/
+                  - listitem [ref=e60]:
+                    - link "Clients and Quotas" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                  - listitem [ref=e62]:
+                    - link "Model Certification" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                  - listitem [ref=e64]:
+                    - link "Inference Engines" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/inference-engines/
+                  - listitem [ref=e66]:
+                    - link "Installation Architecture" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/installation-architecture/
+              - listitem [ref=e68]:
+                - generic [ref=e69]:
+                  - link "Reference" [ref=e70] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - link "Release Notes" [ref=e73] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e74]:
+                - button "Privacy Settings" [ref=e75] [cursor=pointer]
+      - main [ref=e76]:
+        - generic [ref=e78]:
+          - generic [ref=e80]:
+            - article [ref=e81]:
+              - navigation "Breadcrumbs" [ref=e82]:
+                - list [ref=e83]:
+                  - listitem [ref=e84]:
+                    - link "Home page" [ref=e85] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e86]
+                  - listitem [ref=e88]:
+                    - link "Explanation" [ref=e89] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]: Model Certification
+              - generic [ref=e92]:
+                - heading "Model Certification" [level=1] [ref=e94]
+                - paragraph [ref=e95]:
+                  - text: This page explains what model certification means and how a model becomes certified. For the models certified on specific hardware, refer to
+                  - link "Certified Models by Hardware" [ref=e96] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - text: .
+                - heading "Certification OverviewDirect link to Certification Overview" [level=2] [ref=e97]:
+                  - text: Certification Overview
+                  - link "Direct link to Certification Overview" [ref=e98] [cursor=pointer]:
+                    - /url: "#certification-overview"
+                    - text: "#"
+                - paragraph [ref=e99]: A certified model is a large language model (LLM) that Spectro Cloud has validated to run correctly on the listed GPU configuration for PaletteAI Inference Launchpad. This validation is based on Spectro Cloud's own testing rather than public benchmarks, and it can extend across equivalent GPU configurations. When you deploy a certified model on a configuration where it is certified, you can be confident it loads and serves requests without hardware surprises.
+                - heading "Model Use CasesDirect link to Model Use Cases" [level=2] [ref=e100]:
+                  - text: Model Use Cases
+                  - link "Direct link to Model Use Cases" [ref=e101] [cursor=pointer]:
+                    - /url: "#model-use-cases"
+                    - text: "#"
+                - paragraph [ref=e102]: Spectro Cloud chooses the certified models with coding assistants as the primary use case. If your primary need is a coding assistant, start with the certified models.
+                - paragraph [ref=e103]:
+                  - text: Other models may serve other use cases better, so if your primary need is not a coding assistant,
+                  - link "contact Spectro Cloud" [ref=e104] [cursor=pointer]:
+                    - /url: https://www.spectrocloud.com/contact
+                  - text: to discuss the right models for your use case.
+                - generic [ref=e105]:
+                  - generic [ref=e106]:
+                    - img [ref=e108]
+                    - text: info
+                  - paragraph [ref=e111]:
+                    - text: The certified list is not exclusive. You can load models beyond it as long as they fit within the GPU resources available on your appliance. If the model you want is not certified for your hardware,
+                    - link "contact Spectro Cloud" [ref=e112] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/contact
+                    - text: to discuss your use case.
+                - paragraph [ref=e113]:
+                  - text: For how to add a model to a running appliance, refer to
+                  - link "Deploy a Model" [ref=e114] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - text: .
+                - heading "How Certification Differs from Model as a ServiceDirect link to How Certification Differs from Model as a Service" [level=2] [ref=e115]:
+                  - text: How Certification Differs from Model as a Service
+                  - link "Direct link to How Certification Differs from Model as a Service" [ref=e116] [cursor=pointer]:
+                    - /url: "#how-certification-differs-from-model-as-a-service"
+                    - text: "#"
+                - paragraph [ref=e117]:
+                  - text: PaletteAI Inference Launchpad is not a Model as a Service. Rather than offering the widest possible catalog of models on demand, Spectro Cloud certifies a focused set of models for on-premises inference on your own hardware. For multi-tenant AI factory use cases,
+                  - link "PaletteAI" [ref=e118] [cursor=pointer]:
+                    - /url: https://docs.palette-ai.com
+                  - text: is the better fit. For a full comparison of the two products, refer to
+                  - link "What is PaletteAI Inference Launchpad?" [ref=e119] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/
+                  - text: .
+              - generic [ref=e120]:
+                - generic [ref=e122]:
+                  - text: "Tags:"
+                  - list [ref=e123]:
+                    - listitem [ref=e124]:
+                      - link "paletteai-inference-launchpad" [ref=e125] [cursor=pointer]:
+                        - /url: /tags/paletteai-inference-launchpad/
+                    - listitem [ref=e126]:
+                      - link "explanation" [ref=e127] [cursor=pointer]:
+                        - /url: /tags/explanation/
+                    - listitem [ref=e128]:
+                      - link "models" [ref=e129] [cursor=pointer]:
+                        - /url: /tags/models/
+                - link "Edit this page" [ref=e132] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/paletteai-inference-launchpad/explanation/model-certification.md
+                  - img [ref=e133]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e137]:
+              - link "Previous « Clients and Quotas" [ref=e138] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                - generic [ref=e139]: Previous
+                - generic [ref=e140]: « Clients and Quotas
+              - link "Next Inference Engines »" [ref=e141] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/explanation/inference-engines/
+                - generic [ref=e142]: Next
+                - generic [ref=e143]: Inference Engines »
+          - list [ref=e146]:
+            - listitem [ref=e147]:
+              - link "Certification Overview" [ref=e148] [cursor=pointer]:
+                - /url: "#certification-overview"
+            - listitem [ref=e149]:
+              - link "Model Use Cases" [ref=e150] [cursor=pointer]:
+                - /url: "#model-use-cases"
+            - listitem [ref=e151]:
+              - link "How Certification Differs from Model as a Service" [ref=e152] [cursor=pointer]:
+                - /url: "#how-certification-differs-from-model-as-a-service"
+  - button "Project Logo Ask AI" [ref=e153] [cursor=pointer]:
+    - generic [ref=e156]:
+      - img "Project Logo" [ref=e157]
+      - paragraph [ref=e158]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

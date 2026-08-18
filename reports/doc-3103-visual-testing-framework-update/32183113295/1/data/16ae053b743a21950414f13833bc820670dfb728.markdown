@@ -1,0 +1,484 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 4580px, received 1280px by 4474px. 160882 pixels (ratio 0.03 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 4580px, received 1280px by 4474px. 160882 pixels (ratio 0.03 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 4580px, received 1280px by 4474px. 160882 pixels (ratio 0.03 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - link "Overview" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e47]:
+                - link "Tutorials" [ref=e48] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "How-to Guides" [ref=e51] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Explanation" [ref=e55] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "Reference" [ref=e59] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Release Notes" [ref=e62] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e63]:
+                - button "Privacy Settings" [ref=e64] [cursor=pointer]
+      - main [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e69]:
+            - article [ref=e70]:
+              - navigation "Breadcrumbs" [ref=e71]:
+                - list [ref=e72]:
+                  - listitem [ref=e73]:
+                    - link "Home page" [ref=e74] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e75]
+                  - listitem [ref=e77]:
+                    - generic [ref=e78]: Overview
+              - generic [ref=e79]:
+                - heading "What is PaletteAI Inference Launchpad?" [level=1] [ref=e81]
+                - paragraph [ref=e82]: PaletteAI Inference Launchpad turns your own hardware into a private AI platform. Boot the image, load a model, and you are serving large language models (LLMs) in your own environment, with no cloud dependency, no AI consulting engagement, and no weeks spent wiring together an inference stack.
+                - paragraph [ref=e83]: Because inference runs on the appliance, your data never leaves your environment, and unpredictable per-token API bills become a fixed, predictable infrastructure cost. The appliance deploys as a single bootable image with no Palette or PaletteAI dependency.
+                - heading "The Problem It SolvesDirect link to The Problem It Solves" [level=2] [ref=e84]:
+                  - text: The Problem It Solves
+                  - link "Direct link to The Problem It Solves" [ref=e85] [cursor=pointer]:
+                    - /url: "#the-problem-it-solves"
+                    - text: "#"
+                - paragraph [ref=e86]: Cloud-hosted AI is not the right fit for every enterprise. Data residency rules, regulatory compliance, air-gapped networks, latency targets, and per-token API costs can all push inference back inside your own walls.
+                - paragraph [ref=e87]: The catch is that building an on-prem AI stack from scratch means assembling GPU compute, an operating system, Kubernetes, an LLM inference runtime, authentication, Role-Based Access Control (RBAC), and observability, and then keeping it all working together. PaletteAI Inference Launchpad delivers the whole stack, pre-integrated, as a single bootable artifact.
+                - heading "Predictable AI CostsDirect link to Predictable AI Costs" [level=2] [ref=e88]:
+                  - text: Predictable AI Costs
+                  - link "Direct link to Predictable AI Costs" [ref=e89] [cursor=pointer]:
+                    - /url: "#predictable-ai-costs"
+                    - text: "#"
+                - paragraph [ref=e90]: Cloud AI services bill per token, so costs scale directly with usage and become difficult to budget at enterprise scale. Running inference on your own hardware changes that billing model. Once the hardware is provisioned, inference cost is a fixed infrastructure line item regardless of token volume, making AI spend predictable and independent of how heavily the system is used.
+                - heading "What Is Inside the ApplianceDirect link to What Is Inside the Appliance" [level=2] [ref=e91]:
+                  - text: What Is Inside the Appliance
+                  - link "Direct link to What Is Inside the Appliance" [ref=e92] [cursor=pointer]:
+                    - /url: "#what-is-inside-the-appliance"
+                    - text: "#"
+                - paragraph [ref=e93]: The appliance ships with the following pre-integrated components.
+                - table [ref=e94]:
+                  - rowgroup [ref=e95]:
+                    - row "Layer Technology" [ref=e96]:
+                      - columnheader "Layer" [ref=e97]:
+                        - strong [ref=e98]: Layer
+                      - columnheader "Technology" [ref=e99]:
+                        - strong [ref=e100]: Technology
+                  - rowgroup [ref=e101]:
+                    - row "Operating system Kairos on Ubuntu 24.04" [ref=e102]:
+                      - cell "Operating system" [ref=e103]
+                      - cell "Kairos on Ubuntu 24.04" [ref=e104]:
+                        - link "Kairos" [ref=e105] [cursor=pointer]:
+                          - /url: https://kairos.io
+                        - text: on Ubuntu 24.04
+                    - row "Orchestration Kubernetes" [ref=e106]:
+                      - cell "Orchestration" [ref=e107]
+                      - cell "Kubernetes" [ref=e108]
+                    - row "LLM inference runtime vLLM" [ref=e109]:
+                      - cell "LLM inference runtime" [ref=e110]
+                      - cell "vLLM" [ref=e111]
+                    - row "Intelligent routing Routing by task type and data sensitivity" [ref=e112]:
+                      - cell "Intelligent routing" [ref=e113]
+                      - cell "Routing by task type and data sensitivity" [ref=e114]
+                    - row "Local models GLM, DeepSeek, Kimi, Gemma" [ref=e115]:
+                      - cell "Local models" [ref=e116]
+                      - cell "GLM, DeepSeek, Kimi, Gemma" [ref=e117]
+                    - row "Platform services Authentication, RBAC, monitoring, observability" [ref=e118]:
+                      - cell "Platform services" [ref=e119]
+                      - cell "Authentication, RBAC, monitoring, observability" [ref=e120]
+                    - row "GPU support NVIDIA, AMD" [ref=e121]:
+                      - cell "GPU support" [ref=e122]
+                      - cell "NVIDIA, AMD" [ref=e123]
+                - paragraph [ref=e124]: The OS layer runs Kairos on Ubuntu 24.04, an immutable Linux distribution designed for appliance deployments. Its read-only runtime prevents configuration drift and keeps the appliance in a known, reproducible state. Kubernetes manages the lifecycle of containerized workloads on top, handling scheduling, scaling, and health recovery.
+                - paragraph [ref=e125]: vLLM serves language models with high GPU throughput and handles concurrent requests from many users. The appliance ships with the ability to download one of these flagship open-weight models (GLM, DeepSeek, Kimi, or Gemma) and run it entirely on your hardware with no external API calls. NVIDIA and AMD GPU support provides the parallel processing that large language models require to respond at production speed.
+                - paragraph [ref=e126]: Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require low latency stay local. Other requests can route outbound when the network allows.
+                - paragraph [ref=e127]:
+                  - text: Platform services cover authentication, RBAC, monitoring, and observability. These surface health and usage data and ensure the appliance behaves as a managed enterprise system rather than a raw inference server. To understand how the appliance identifies callers and meters their usage, refer to
+                  - link "Clients and Quotas" [ref=e128] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                  - text: .
+                - paragraph [ref=e129]: The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers independently without replacing the entire appliance image.
+                - heading "PaletteAI Inference Launchpad or PaletteAIDirect link to PaletteAI Inference Launchpad or PaletteAI" [level=2] [ref=e130]:
+                  - text: PaletteAI Inference Launchpad or PaletteAI
+                  - link "Direct link to PaletteAI Inference Launchpad or PaletteAI" [ref=e131] [cursor=pointer]:
+                    - /url: "#paletteai-inference-launchpad-or-paletteai"
+                    - text: "#"
+                - paragraph [ref=e132]:
+                  - text: PaletteAI Inference Launchpad and
+                  - link "PaletteAI" [ref=e133] [cursor=pointer]:
+                    - /url: https://docs.palette-ai.com
+                  - text: are related but distinct products that serve different scales and deployment models.
+                - table [ref=e134]:
+                  - rowgroup [ref=e135]:
+                    - row "PaletteAI Inference Launchpad PaletteAI" [ref=e136]:
+                      - columnheader [ref=e137]
+                      - columnheader "PaletteAI Inference Launchpad" [ref=e138]:
+                        - strong [ref=e139]: PaletteAI Inference Launchpad
+                      - columnheader "PaletteAI" [ref=e140]:
+                        - strong [ref=e141]: PaletteAI
+                  - rowgroup [ref=e142]:
+                    - row "Form factor Standalone appliance (bootable ISO) Software platform (Helm chart or All-in-One ISO on existing Kubernetes)" [ref=e143]:
+                      - cell "Form factor" [ref=e144]:
+                        - strong [ref=e145]: Form factor
+                      - cell "Standalone appliance (bootable ISO)" [ref=e146]
+                      - cell "Software platform (Helm chart or All-in-One ISO on existing Kubernetes)" [ref=e147]
+                    - row "Requires Palette? No Only if Palette also manages the underlying cluster" [ref=e148]:
+                      - cell "Requires Palette?" [ref=e149]:
+                        - strong [ref=e150]: Requires Palette?
+                      - cell "No" [ref=e151]
+                      - cell "Only if Palette also manages the underlying cluster" [ref=e152]
+                    - row "Primary users Platform engineering and IT teams Platform engineering teams" [ref=e153]:
+                      - cell "Primary users" [ref=e154]:
+                        - strong [ref=e155]: Primary users
+                      - cell "Platform engineering and IT teams" [ref=e156]
+                      - cell "Platform engineering teams" [ref=e157]
+                    - row "Scale Single-site, on-prem, air-gapped Multi-cluster, multi-tenant, cloud and data center" [ref=e158]:
+                      - cell "Scale" [ref=e159]:
+                        - strong [ref=e160]: Scale
+                      - cell "Single-site, on-prem, air-gapped" [ref=e161]
+                      - cell "Multi-cluster, multi-tenant, cloud and data center" [ref=e162]
+                    - 'row "AI workload model Local LLM inference with optional cloud routing Full AI factory: GPU-as-a-Service, Model-as-a-Service, AI Studio" [ref=e163]':
+                      - cell "AI workload model" [ref=e164]:
+                        - strong [ref=e165]: AI workload model
+                      - cell "Local LLM inference with optional cloud routing" [ref=e166]
+                      - 'cell "Full AI factory: GPU-as-a-Service, Model-as-a-Service, AI Studio" [ref=e167]'
+                - heading "What PaletteAI Inference Launchpad Is NotDirect link to What PaletteAI Inference Launchpad Is Not" [level=2] [ref=e168]:
+                  - text: What PaletteAI Inference Launchpad Is Not
+                  - link "Direct link to What PaletteAI Inference Launchpad Is Not" [ref=e169] [cursor=pointer]:
+                    - /url: "#what-paletteai-inference-launchpad-is-not"
+                    - text: "#"
+                - list [ref=e170]:
+                  - listitem [ref=e171]: Not a managed cloud service. You own and operate the appliance.
+                  - listitem [ref=e172]: Not a Palette add-on. No Palette tenant or license required.
+                  - listitem [ref=e173]: Not a general-purpose Kubernetes platform. It is for LLM inference only.
+                - heading "Explore the DocumentationDirect link to Explore the Documentation" [level=2] [ref=e174]:
+                  - text: Explore the Documentation
+                  - link "Direct link to Explore the Documentation" [ref=e175] [cursor=pointer]:
+                    - /url: "#explore-the-documentation"
+                    - text: "#"
+                - paragraph [ref=e176]: Whatever brought you here, these are the fastest paths in.
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - strong [ref=e179]: Get started
+                    - text: ":"
+                    - link "Suggested Hardware" [ref=e180] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                    - text: •
+                    - link "Install the appliance" [ref=e181] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                    - text: •
+                    - link "Deploy your first model" [ref=e182] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e183]:
+                    - strong [ref=e184]: Understand the product
+                    - text: ":"
+                    - link "Architecture" [ref=e185] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/architecture/
+                    - text: •
+                    - link "Clients and Quotas" [ref=e186] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                    - text: •
+                    - link "Model Certification" [ref=e187] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/model-certification/
+                    - text: •
+                    - link "Inference Engines" [ref=e188] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/inference-engines/
+                  - listitem [ref=e189]:
+                    - strong [ref=e190]: Connect your coding tools
+                    - text: ":"
+                    - link "Claude Code" [ref=e191] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                    - text: •
+                    - link "Cursor" [ref=e192] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                    - text: •
+                    - link "OpenAI Codex" [ref=e193] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                    - text: •
+                    - link "OpenCode" [ref=e194] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+                  - listitem [ref=e195]:
+                    - strong [ref=e196]: Operate day to day
+                    - text: ":"
+                    - link "Create a client" [ref=e197] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                    - text: •
+                    - link "Set client quotas" [ref=e198] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                    - text: •
+                    - link "View client usage" [ref=e199] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                    - text: •
+                    - link "Revoke or delete a client" [ref=e200] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e201]:
+                    - strong [ref=e202]: Look something up
+                    - text: ":"
+                    - link "Glossary" [ref=e203] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                    - text: •
+                    - link "Certified models by hardware" [ref=e204] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                    - text: •
+                    - link "Known issues" [ref=e205] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/
+                    - text: •
+                    - link "Release notes" [ref=e206] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/release-notes/
+                - heading "How This Documentation Is OrganizedDirect link to How This Documentation Is Organized" [level=2] [ref=e207]:
+                  - text: How This Documentation Is Organized
+                  - link "Direct link to How This Documentation Is Organized" [ref=e208] [cursor=pointer]:
+                    - /url: "#how-this-documentation-is-organized"
+                    - text: "#"
+                - list [ref=e209]:
+                  - listitem [ref=e210]:
+                    - strong [ref=e211]:
+                      - link "Tutorials" [ref=e212] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tutorials/
+                    - text: are learning-oriented lessons that guide you through a complete, working example from start to finish.
+                  - listitem [ref=e213]:
+                    - strong [ref=e214]:
+                      - link "How-to guides" [ref=e215] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/
+                    - text: are task-oriented and assume you know what you want to do, then give you the steps to get there.
+                  - listitem [ref=e216]:
+                    - strong [ref=e217]:
+                      - link "Reference" [ref=e218] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/reference/
+                    - text: is information-oriented. It describes what exists and how it is configured when you need to look something up.
+                  - listitem [ref=e219]:
+                    - strong [ref=e220]:
+                      - link "Explanation" [ref=e221] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/explanation/
+                    - text: is understanding-oriented. It covers design decisions, component relationships, and trade-offs.
+                - heading "Project and CommunityDirect link to Project and Community" [level=2] [ref=e222]:
+                  - text: Project and Community
+                  - link "Direct link to Project and Community" [ref=e223] [cursor=pointer]:
+                    - /url: "#project-and-community"
+                    - text: "#"
+                - paragraph [ref=e224]:
+                  - text: PaletteAI Inference Launchpad is built by
+                  - link "Spectro Cloud" [ref=e225] [cursor=pointer]:
+                    - /url: https://www.spectrocloud.com
+                  - text: ", and there is a friendly community around it that we would love you to be part of. Share what you are building, ask questions, and swap tips with other builders and the people who make the product."
+                - generic [ref=e226]:
+                  - generic [ref=e227]:
+                    - img [ref=e229]
+                    - text: info
+                  - paragraph [ref=e232]:
+                    - text: Visit the
+                    - link "Spectro Cloud community" [ref=e233] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/community
+                    - text: to connect with fellow users, follow the open source projects behind the appliance, and stay in the loop on what is next.
+                - heading "Commercial SupportDirect link to Commercial Support" [level=2] [ref=e234]:
+                  - text: Commercial Support
+                  - link "Direct link to Commercial Support" [ref=e235] [cursor=pointer]:
+                    - /url: "#commercial-support"
+                    - text: "#"
+                - paragraph [ref=e236]:
+                  - text: Planning a production rollout, or want to talk through your hardware and model choices with an expert? Learn more about plans and support on the
+                  - link "PaletteAI Inference Launchpad" [ref=e237] [cursor=pointer]:
+                    - /url: https://www.spectrocloud.com/platform/inference-launchpad
+                  - text: product page.
+              - generic [ref=e238]:
+                - generic [ref=e240]:
+                  - text: "Tags:"
+                  - list [ref=e241]:
+                    - listitem [ref=e242]:
+                      - link "paletteai-inference-launchpad" [ref=e243] [cursor=pointer]:
+                        - /url: /tags/paletteai-inference-launchpad/
+                    - listitem [ref=e244]:
+                      - link "overview" [ref=e245] [cursor=pointer]:
+                        - /url: /tags/overview/
+                    - listitem [ref=e246]:
+                      - link "explanation" [ref=e247] [cursor=pointer]:
+                        - /url: /tags/explanation/
+                - link "Edit this page" [ref=e250] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/paletteai-inference-launchpad/paletteai-inference-launchpad.md
+                  - img [ref=e251]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e255]:
+              - link "Next Tutorials »" [ref=e256] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/tutorials/
+                - generic [ref=e257]: Next
+                - generic [ref=e258]: Tutorials »
+          - list [ref=e261]:
+            - listitem [ref=e262]:
+              - link "The Problem It Solves" [ref=e263] [cursor=pointer]:
+                - /url: "#the-problem-it-solves"
+            - listitem [ref=e264]:
+              - link "Predictable AI Costs" [ref=e265] [cursor=pointer]:
+                - /url: "#predictable-ai-costs"
+            - listitem [ref=e266]:
+              - link "What Is Inside the Appliance" [ref=e267] [cursor=pointer]:
+                - /url: "#what-is-inside-the-appliance"
+            - listitem [ref=e268]:
+              - link "PaletteAI Inference Launchpad or PaletteAI" [ref=e269] [cursor=pointer]:
+                - /url: "#paletteai-inference-launchpad-or-paletteai"
+            - listitem [ref=e270]:
+              - link "What PaletteAI Inference Launchpad Is Not" [ref=e271] [cursor=pointer]:
+                - /url: "#what-paletteai-inference-launchpad-is-not"
+            - listitem [ref=e272]:
+              - link "Explore the Documentation" [ref=e273] [cursor=pointer]:
+                - /url: "#explore-the-documentation"
+            - listitem [ref=e274]:
+              - link "How This Documentation Is Organized" [ref=e275] [cursor=pointer]:
+                - /url: "#how-this-documentation-is-organized"
+            - listitem [ref=e276]:
+              - link "Project and Community" [ref=e277] [cursor=pointer]:
+                - /url: "#project-and-community"
+            - listitem [ref=e278]:
+              - link "Commercial Support" [ref=e279] [cursor=pointer]:
+                - /url: "#commercial-support"
+  - button "Project Logo Ask AI" [ref=e280] [cursor=pointer]:
+    - generic [ref=e283]:
+      - img "Project Logo" [ref=e284]
+      - paragraph [ref=e285]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

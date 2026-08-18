@@ -1,0 +1,696 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/rbac/configure_OIDC/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 3956px, received 1280px by 3770px. 211378 pixels (ratio 0.05 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 3956px, received 1280px by 3770px. 211378 pixels (ratio 0.05 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 3956px, received 1280px by 3770px. 211378 pixels (ratio 0.05 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e19] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e20] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e22] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+          - button "Search (Control+k)" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e40]:
+          - link "Spectro cloud logo" [ref=e41] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e42]
+          - navigation "Docs sidebar" [ref=e43]:
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Release Notes" [ref=e47] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e49]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Security Bulletins" [ref=e54] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e56]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "What is Palette?" [ref=e61] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e63]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - link "Getting Started" [ref=e67] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e69]
+                  - text: Getting Started
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Architecture" [ref=e73] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e75]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Profiles" [ref=e80] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e82]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e86] [cursor=pointer]
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Cluster Templates" [ref=e89] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e91]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Deployment Modes" [ref=e96] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e98]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Clusters" [ref=e103] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e105]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e114] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e116]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Palette Dev Engine" [ref=e121] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e123]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "AI Workloads" [ref=e128] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e130]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e135] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e137]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e139] [cursor=pointer]
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Architecture" [ref=e142] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "VM Launchpad" [ref=e145] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e146] [cursor=pointer]
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]:
+                      - link "VMO Pack" [ref=e149] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e150] [cursor=pointer]
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]:
+                      - link "RBAC" [expanded] [ref=e153] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e154] [cursor=pointer]
+                    - list [ref=e155]:
+                      - listitem [ref=e156]:
+                        - link "Add Roles and Role Bindings" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/rbac/add-roles-and-role-bindings/
+                      - listitem [ref=e158]:
+                        - link "Configure OIDC" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/rbac/configure_OIDC/
+                      - listitem [ref=e160]:
+                        - link "VM User Roles and Permissions" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/rbac/vm-roles-permissions/
+                  - listitem [ref=e162]:
+                    - generic [ref=e163]:
+                      - link "VM Migration Assistant" [ref=e164] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Workspaces" [ref=e168] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e170]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Packs List" [ref=e175] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e177]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "User & Role Management" [ref=e182] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e184]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Registries and Packs" [ref=e189] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e191]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Security" [ref=e196] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e198]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Audit Logs" [ref=e203] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e205]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Self-Hosted Palette" [ref=e210] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e212]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Virtual Machine Orchestrator" [ref=e272] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e273]:
+                    - link "RBAC" [ref=e274] [cursor=pointer]:
+                      - /url: /vm-management/rbac/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: Configure OIDC
+              - generic [ref=e277]:
+                - heading "Configure OIDC" [level=1] [ref=e279]
+                - paragraph [ref=e280]: Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC) Identity Provider (IdP) option selected in the Kubernetes layer of the infrastructure profile.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e281]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e282] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: A configured infrastructure cluster profile. For more information, review
+                      - link "Create a Cluster Profile" [ref=e286] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                      - text: .
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: A configured VMO add-on cluster profile. Refer to
+                      - link "Create the VMO Profile" [ref=e289] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - text: for guidance.
+                - heading "Enable OIDCDirect link to Enable OIDC" [level=2] [ref=e290]:
+                  - text: Enable OIDC
+                  - link "Direct link to Enable OIDC" [ref=e291] [cursor=pointer]:
+                    - /url: "#enable-oidc"
+                    - text: "#"
+                - list [ref=e292]:
+                  - listitem [ref=e293]:
+                    - paragraph [ref=e294]:
+                      - text: Log in to
+                      - link "Palette" [ref=e295] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: From the left
+                      - strong [ref=e298]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e299]: Profiles
+                      - text: .
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]: Select your infrastructure cluster profile. Palette displays the profile details and its profile stack.
+                - list [ref=e302]:
+                  - listitem [ref=e303]:
+                    - text: Select the Kubernetes layer in the profile stack, and choose an
+                    - strong [ref=e304]: OIDC Identity Provider
+                    - text: option. Refer to the
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e305] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                    - text: pack additional guidance for more information.
+                - list [ref=e306]:
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Selecting
+                      - strong [ref=e309]: None
+                      - text: or
+                      - strong [ref=e310]: Palette
+                      - text: will display the Virtual Machine dashboard in a tab.
+                    - generic [ref=e311]:
+                      - generic [ref=e312]:
+                        - img [ref=e314]
+                        - text: warning
+                      - paragraph [ref=e317]:
+                        - text: We do not recommend choosing
+                        - strong [ref=e318]: None
+                        - text: in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: Selecting
+                      - strong [ref=e321]: Inherit from Tenant
+                      - text: or
+                      - strong [ref=e322]: Custom
+                      - text: will display a link to the dashboard on the cluster overview page.
+                - list [ref=e323]:
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: If you selected
+                      - strong [ref=e326]: Custom
+                      - text: as the OIDC IdP, follow the steps in
+                      - link "Configure Custom OIDC" [ref=e327] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes#configure-custom-oidc
+                      - text: to set up the OIDC IdP for your cluster.
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]:
+                      - text: Once you have made the necessary changes, click
+                      - strong [ref=e330]: Confirm Updates
+                      - text: and
+                      - strong [ref=e331]: Save Changes
+                      - text: to conclude the update.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: Deploy a cluster using the updated infrastructure profile. Refer to the
+                      - link "Getting Started" [ref=e334] [cursor=pointer]:
+                        - /url: /getting-started/
+                      - text: tutorials for instructions on how to deploy a cluster.
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Once the cluster is listed as
+                      - strong [ref=e337]: Healthy
+                      - text: ", attach the VMO add-on profile to your cluster. Refer to the"
+                      - link "Attach an Add-on Profile" [ref=e338] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/attach-add-on-profile/
+                      - text: guide for instructions.
+                - paragraph [ref=e339]:
+                  - text: The following steps apply exclusively to clusters configured with
+                  - strong [ref=e340]: Custom
+                  - text: third-party OIDC IdPs.
+                - list [ref=e341]:
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: After the VMO profile deployment is completed, right-click the
+                      - strong [ref=e344]: Connect
+                      - text: button next to
+                      - strong [ref=e345]: Virtual Machine Dashboard
+                      - text: and copy the link. Save this link for later use.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: Locate the OIDC application that was used in step five and enable the
+                      - strong [ref=e350]: Refresh Token
+                      - text: setting. For example, if you are using
+                      - link "Okta" [ref=e351] [cursor=pointer]:
+                        - /url: https://www.okta.com
+                      - text: as the IdP, refer to the
+                      - link "Refresh access tokens and rotate refresh tokens" [ref=e352] [cursor=pointer]:
+                        - /url: https://developer.okta.com/docs/guides/refresh-tokens/main/
+                      - text: guide for further instructions.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Update the
+                      - strong [ref=e355]: Sign-in redirect URIs
+                      - text: field in your IdP. Add the VMO link copied in step nine, appending
+                      - code [ref=e356]: /auth/callback
+                      - text: to its end. For example, if the link is
+                      - code [ref=e357]: https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=
+                      - text: ", update it to"
+                      - code [ref=e358]: https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback
+                      - text: . This is the URI to which the IdP will redirect users after successful authentication.
+                - heading "Configure Custom OIDC for VM Migration AssistantDirect link to Configure Custom OIDC for VM Migration Assistant" [level=2] [ref=e359]:
+                  - text: Configure Custom OIDC for VM Migration Assistant
+                  - link "Direct link to Configure Custom OIDC for VM Migration Assistant" [ref=e360] [cursor=pointer]:
+                    - /url: "#configure-custom-oidc-for-vm-migration-assistant"
+                    - text: "#"
+                - paragraph [ref=e361]:
+                  - text: The VM Migration Assistant service console supports authentication with
+                  - strong [ref=e362]: Custom
+                  - text: third-party OIDC Identity Providers (IdPs), such as Okta or Azure Active Directory, in addition to Palette OIDC. If you configured
+                  - strong [ref=e363]: Custom
+                  - text: OIDC at the Kubernetes layer of your VMO cluster and enabled OIDC on the Migration Assistant service console, follow the steps in this section to authorize sign-ins through your third-party IdP.
+                - heading "Prerequisites for VM Migration Assistant OIDCDirect link to Prerequisites for VM Migration Assistant OIDC" [level=3] [ref=e364]:
+                  - text: Prerequisites for VM Migration Assistant OIDC
+                  - link "Direct link to Prerequisites for VM Migration Assistant OIDC" [ref=e365] [cursor=pointer]:
+                    - /url: "#prerequisites-for-vm-migration-assistant-oidc"
+                    - text: "#"
+                - list [ref=e366]:
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: A VMO cluster with
+                      - strong [ref=e369]: Custom
+                      - text: OIDC configured at the Kubernetes layer. Refer to
+                      - link "Enable OIDC" [ref=e370] [cursor=pointer]:
+                        - /url: "#enable-oidc"
+                      - text: for guidance.
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]:
+                      - text: A deployed VM Migration Assistant add-on profile that sets
+                      - code [ref=e373]: vm-migration-assistant-ui.console.deployment.env.userAuth
+                      - text: to
+                      - code [ref=e374]: oidc
+                      - text: . Refer to
+                      - link "Create a VM Migration Assistant Profile" [ref=e375] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - text: for guidance.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]: Access to the third-party IdP console associated with the OIDC configuration in your cluster's Kubernetes layer.
+                - heading "Configure the IdP Redirect URI and Refresh TokenDirect link to Configure the IdP Redirect URI and Refresh Token" [level=3] [ref=e378]:
+                  - text: Configure the IdP Redirect URI and Refresh Token
+                  - link "Direct link to Configure the IdP Redirect URI and Refresh Token" [ref=e379] [cursor=pointer]:
+                    - /url: "#configure-the-idp-redirect-uri-and-refresh-token"
+                    - text: "#"
+                - list [ref=e380]:
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]:
+                      - text: Log in to
+                      - link "Palette" [ref=e383] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: From the left main menu, select
+                      - strong [ref=e386]: Clusters
+                      - text: and select your VMO cluster.
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: On the
+                      - strong [ref=e389]: Overview
+                      - text: tab, locate the
+                      - strong [ref=e390]: vm-migration
+                      - text: entry in the
+                      - strong [ref=e391]: Services
+                      - text: list, and copy the VM Migration Assistant service console URL.
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]: Log in to the third-party IdP console associated with the OIDC configuration used in your cluster.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]: Locate the OIDC application used by the cluster.
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: Enable the
+                      - strong [ref=e398]: Refresh Token
+                      - text: setting. For example, if you use
+                      - link "Okta" [ref=e399] [cursor=pointer]:
+                        - /url: https://www.okta.com
+                      - text: ", refer to the"
+                      - link "Refresh access tokens and rotate refresh tokens" [ref=e400] [cursor=pointer]:
+                        - /url: https://developer.okta.com/docs/guides/refresh-tokens/main/
+                      - text: guide.
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]:
+                      - text: Update the
+                      - strong [ref=e403]: Sign-in redirect URIs
+                      - text: field. Append
+                      - code [ref=e404]: /auth/callback
+                      - text: to the service console URL copied in step 3, and add the resulting URL. For example, if the service console URL is
+                      - code [ref=e405]: https://vm-migration.mycompany.dev
+                      - text: ", add"
+                      - code [ref=e406]: https://vm-migration.mycompany.dev/auth/callback
+                      - text: . This is the URI to which the IdP redirects users after successful authentication.
+                  - listitem [ref=e407]:
+                    - paragraph [ref=e408]: Save the IdP application configuration.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e409]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e410] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e411]:
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Log in to
+                      - link "Palette" [ref=e414] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: From the left
+                      - strong [ref=e417]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e418]: Clusters
+                      - text: and select your cluster.
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: Based on your OIDC IdP settings, the
+                      - strong [ref=e421]: Virtual Machines
+                      - text: tab may display on the
+                      - strong [ref=e422]: Cluster Overview
+                      - text: page. Alternatively, the
+                      - strong [ref=e423]: Connect
+                      - text: button may display next to
+                      - strong [ref=e424]: Virtual Machines Dashboard
+                      - text: .
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: If you used a
+                      - strong [ref=e427]: Custom
+                      - text: OIDC IdP, click the
+                      - strong [ref=e428]: Connect
+                      - text: button next to
+                      - strong [ref=e429]: Virtual Machines Dashboard
+                      - text: to verify that the dashboard loads properly after authentication.
+              - generic [ref=e430]:
+                - generic [ref=e432]:
+                  - text: "Tags:"
+                  - list [ref=e433]:
+                    - listitem [ref=e434]:
+                      - link "vmo" [ref=e435] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e436]:
+                      - link "oidc" [ref=e437] [cursor=pointer]:
+                        - /url: /tags/oidc/
+                - link "Edit this page" [ref=e440] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/rbac/configure_OIDC.md
+                  - img [ref=e441]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e445]:
+              - link "Previous « Add Roles and Role Bindings" [ref=e446] [cursor=pointer]:
+                - /url: /vm-management/rbac/add-roles-and-role-bindings/
+                - generic [ref=e447]: Previous
+                - generic [ref=e448]: « Add Roles and Role Bindings
+              - link "Next VM User Roles and Permissions »" [ref=e449] [cursor=pointer]:
+                - /url: /vm-management/rbac/vm-roles-permissions/
+                - generic [ref=e450]: Next
+                - generic [ref=e451]: VM User Roles and Permissions »
+          - list [ref=e454]:
+            - listitem [ref=e455]:
+              - link "Prerequisites" [ref=e456] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e457]:
+              - link "Enable OIDC" [ref=e458] [cursor=pointer]:
+                - /url: "#enable-oidc"
+            - listitem [ref=e459]:
+              - link "Configure Custom OIDC for VM Migration Assistant" [ref=e460] [cursor=pointer]:
+                - /url: "#configure-custom-oidc-for-vm-migration-assistant"
+              - list [ref=e461]:
+                - listitem [ref=e462]:
+                  - link "Prerequisites for VM Migration Assistant OIDC" [ref=e463] [cursor=pointer]:
+                    - /url: "#prerequisites-for-vm-migration-assistant-oidc"
+                - listitem [ref=e464]:
+                  - link "Configure the IdP Redirect URI and Refresh Token" [ref=e465] [cursor=pointer]:
+                    - /url: "#configure-the-idp-redirect-uri-and-refresh-token"
+            - listitem [ref=e466]:
+              - link "Validate" [ref=e467] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e468] [cursor=pointer]:
+    - generic [ref=e471]:
+      - img "Project Logo" [ref=e472]
+      - paragraph [ref=e473]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
