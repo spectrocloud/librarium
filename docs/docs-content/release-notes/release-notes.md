@@ -115,6 +115,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9266 -->
+
+- The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
+  100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
+  upload completion as soon as the transfer finishes.
+
 ### Docs and Education
 
 ### Packs
