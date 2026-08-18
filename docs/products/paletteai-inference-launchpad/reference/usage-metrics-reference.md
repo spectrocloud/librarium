@@ -31,17 +31,11 @@ Usage** tab, which reports configured limits rather than usage over a period.
 
 ### Data Window Options
 
-| **Option**       | **Period**                                    |
-| ---------------- | --------------------------------------------- |
-| **Last 24h**     | The previous 24 hours.                        |
-| **Last 7 days**  | The previous seven days.                      |
-| **Last 30 days** | The previous 30 days.                         |
-| **Date range**   | A start and end day you pick from a calendar. |
-
-The calendar accepts any range that falls within the last 90 days. The appliance serves usage over fixed periods only,
-so a range that is not one of the three presets is served by the shortest preset that still contains it. When that
-happens, the console displays a note naming the period the figures actually cover, and the exported file repeats that
-note. A range beginning more than 30 days ago is served over the last 30 days.
+| **Option**       | **Period**               |
+| ---------------- | ------------------------ |
+| **Last 24h**     | The previous 24 hours.   |
+| **Last 7 days**  | The previous seven days. |
+| **Last 30 days** | The previous 30 days.    |
 
 ## Overview Tab
 
@@ -257,8 +251,8 @@ selection previews the change, and **Confirm & Apply** commits it.
 The **By Client** tab exports as CSV or PDF. Both formats carry the same columns, taken from the rows on screen for the
 period on screen. Files are named `usage-by-client-<timestamp>.<extension>`.
 
-Each file opens with the report name, the period the figures cover, the substitution note when the appliance served a
-shorter period than the range requested, and the time the file was generated.
+Each file opens with the report name, the period the figures cover, a note when the figures cover a shorter period than
+the one requested, and the time the file was generated.
 
 | **Field**                | **Definition**                                                           |
 | ------------------------ | ------------------------------------------------------------------------ |
