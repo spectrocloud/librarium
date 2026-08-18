@@ -14,7 +14,7 @@ deployment modes, features, and product behavior without you copy-pasting from t
 
 ## Server Endpoint
 
-Configure your MCP client to connect to the following HTTP endpoint:
+Configure your MCP client to connect to the following HTTP endpoint.
 
 ```text
 https://spectro-cloud.mcp.kapa.ai
