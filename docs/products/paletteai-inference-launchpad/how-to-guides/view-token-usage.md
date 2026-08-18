@@ -3,11 +3,11 @@ sidebar_label: "View Token Usage"
 title: "View Token Usage and Consumption Metrics"
 description:
   "Step-by-step guidance for platform administrators on how to view token usage by model and by client, find the top
-  consumers, export a usage report, and open the metrics dashboards on a PaletteAI Inference Launchpad appliance."
+  consumers, read quota consumption, and open the metrics dashboards on a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 6.5
 tags: ["paletteai-inference-launchpad", "usage", "metrics", "how-to"]
-keywords: ["launchpad", "ai", "token usage", "metrics", "consumption", "export", "grafana", "quota utilization"]
+keywords: ["launchpad", "ai", "token usage", "metrics", "consumption", "grafana", "quota utilization"]
 ---
 
 This guide explains how a platform administrator views token consumption on a PaletteAI Inference Launchpad appliance.
@@ -134,35 +134,6 @@ Use these steps to find which clients consumed the most tokens over the last wee
 
 To find the heaviest consumers of one specific model rather than of the appliance as a whole, select that model on the
 **By Model** tab. The model detail view lists only the clients that sent requests to it, with the tokens each one spent.
-
-:::
-
-## Export a Usage Report
-
-The **By Client** tab exports the figures it currently displays, for the period it currently covers.
-
-1. From the left main menu, select **Usage**.
-
-2. Set the **Data window** menu to the period you want to report on.
-
-3. Select the **By Client** tab.
-
-4. Select **Export** in the card header.
-
-5. Select one of the following formats.
-
-   | **Format**        | **Use it for**                                                                             |
-   | ----------------- | ------------------------------------------------------------------------------------------ |
-   | **Export as CSV** | Reconciliation and analysis. Cells carry bare numbers that a spreadsheet totals or pivots. |
-   | **Export as PDF** | Sharing and filing. The table is formatted and paginated for a reader.                     |
-
-The file downloads with a timestamped name, such as `usage-by-client-2026-08-18T10-22-04Z.csv`. Both formats state the
-period the figures cover. For the fields each file contains, refer to
-[Usage Metrics Reference](../reference/usage-metrics-reference.md).
-
-:::info
-
-The export covers the **By Client** table only, and the control is unavailable until at least one client exists.
 
 :::
 
