@@ -73,10 +73,12 @@ is one of the following:
 - No node has enough free GPUs for the model because every GPU node is full.
 - No node has enough free GPUs for the model, and some nodes report `allocation unknown`.
 
-To resolve the reason, free GPUs on a node by draining or shutting down another model, add capacity to the cluster, or
-resolve the unknown allocation on the affected nodes. Then deploy the model again.
+To resolve the reason, free GPUs on a node by removing another model, add capacity to the cluster, or resolve the
+unknown allocation on the affected nodes. Then deploy the model again. To replace what a node is serving, refer to
+[Replace a Model](./replace-a-model.md).
 
 ## Next Steps
 
 To change which model handles requests that do not name a model explicitly, refer to
-[Switch the Default Model](./set-the-default-model.md).
+[Switch the Default Model](./set-the-default-model.md). To put a newer version or a different model on a node, refer to
+[Replace a Model](./replace-a-model.md).
