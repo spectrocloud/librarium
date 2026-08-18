@@ -12,7 +12,7 @@ keywords: ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights
 
 This guide explains how to put a different model, or a newer version of a model you already serve, onto a node. There is
 no in-place replace and no rolling upgrade. You remove the current model from the node, then deploy the model you want
-from **Deploy model**.
+from **Deploy New Model**.
 
 Use this procedure for both of the following:
 
@@ -20,15 +20,17 @@ Use this procedure for both of the following:
   then deploy the newer version.
 - **Different model.** You remove the model that occupies the node, then deploy the model you want.
 
-The node stops serving the removed model until the replacement is ready. Requests that named the removed model fall back
-to the default model, or fail if there is no default. For how the default is chosen, refer to
-[The Default Model](../explanation/architecture.md#the-default-model).
+You can change one node and leave the others running the previous model, or you can remove the model from every node and
+deploy the replacement everywhere. The node you change stops serving the removed model until the replacement is ready.
+Requests that named the removed model fall back to the default model, or fail if there is no default. For how the
+default is chosen, refer to [The Default Model](../explanation/architecture.md#the-default-model).
 
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
-- The replacement model already in the appliance catalog. For a newer version that is not in the catalog yet, upload it
-  first. Refer to [Upload a Model](./upload-a-model.md).
+- The replacement model already in the appliance catalog, with its weights on every node you will deploy to. For a newer
+  version that is not in the catalog yet, upload it first. Refer to [Upload a Model](./upload-a-model.md). A node that
+  does not have the model's weights cannot be selected.
 - Enough GPU capacity on the target node after you remove the current model. To confirm support, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
@@ -36,22 +38,25 @@ to the default model, or fail if there is no default. For how the default is cho
 
 Review these points before you remove anything.
 
-- **Default model.** If you remove the cluster default, requests that do not name a model have no fallback until you
-  deploy a replacement and switch the default. After you remove it, the **Overview** page raises an incident. After the
-  replacement is serving, switch the default. Refer to [Switch the Default Model](./set-the-default-model.md). Removing
-  the default from the cluster requires you to type the model name to confirm.
-- **Routing.** Local clients can call every local model by name. If the replacement uses a different name, update any
-  client tier maps that pointed at the old name. Refer to
-  [Manage a Client's Model Access](./manage-client-model-access.md). If the replacement keeps the same name, those maps
-  continue to work after the new deploy is serving.
+- **Other nodes.** Removing a model from one node leaves it running on every other node that still serves it. Those
+  nodes are not interrupted.
+- **Default model.** Removing the cluster default shows a warning before you confirm. You can still remove it. Requests
+  that do not name a model then have no fallback until you deploy a replacement and switch the default. After you remove
+  it, the **Overview** page raises an incident. After the replacement is serving, switch the default. Refer to
+  [Switch the Default Model](./set-the-default-model.md). Removing the default from the cluster requires you to type the
+  model name to confirm.
+- **Routing and quotas.** Client routing rules and quotas stay in place. You do not recreate them after a
+  remove-and-deploy. If the replacement keeps the same name, those rules continue to work. If the replacement uses a
+  different name, update any client tier maps that pointed at the old name. Refer to
+  [Manage a Client's Model Access](./manage-client-model-access.md).
 - **Last node.** Removing a model from its last node means it is no longer deployed anywhere. You must deploy it again
   to serve it.
 
-## Remove the Model from a Node
+## Replace the Model on One Node
 
-1. From the left main menu, select **Cluster**.
+1. From the left main menu, select **Cluster**, and then select the **Models** tab.
 
-2. In the _Model_ table, expand the model you want to replace.
+2. Expand the model you want to replace.
 
 3. On the node that should run the replacement, open the three-dot menu and select **Remove**.
 
@@ -59,35 +64,66 @@ Review these points before you remove anything.
 
 5. Select **Confirm & apply**.
 
-Wait until that node no longer lists the model and its GPUs are free. The model row shows `deleting` while the engine
-stops. Then deploy the replacement.
+6. Wait until that node no longer lists the model and its GPUs are free. The model row shows `deleting` while the engine
+   stops. Other nodes that still serve the model keep running it.
 
-### Remove the Model from Every Node
+7. Deploy the replacement onto that node only, as described in [Deploy the Replacement](#deploy-the-replacement).
 
-To stop the model on every node at once, select **Remove model from cluster** on the model row. Confirm that you intend
-to stop the model everywhere, then select **Remove**. If it is the default model, type the model name before **Remove**
-is available.
+## Replace the Model on Every Node
+
+1. From the left main menu, select **Cluster**, and then select the **Models** tab.
+
+2. On the model row, select the trash control. The **Remove model from cluster** dialog opens.
+
+3. Confirm that you intend to stop the model on every node. If it is the default model, the dialog warns you and asks
+   you to type the model name.
+
+4. Select **Remove**.
+
+5. Wait until the model is gone from every node.
+
+6. Deploy the replacement onto every node that should serve it, as described in
+   [Deploy the Replacement](#deploy-the-replacement).
 
 ## Deploy the Replacement
 
-1. Select **Deploy model**.
+1. Select **Deploy New Model**. The **Deploy model** dialog opens.
 
 2. Select the newer version or the different model.
 
-3. Confirm that a node can host it. If **Deploy** is unavailable, the panel explains why, such as no free GPUs. Finish
-   removing the previous model, or free capacity, then try again. Refer to
-   [Resolve a Blocked Deployment](./deploy-a-model.md#resolve-a-blocked-deployment).
+3. In **Nodes**, select only the node or nodes you just freed. Leave nodes that should keep the previous model
+   unselected. If a node cannot run the model, it is not selectable and states why, such as missing weights or too few
+   free GPUs. If **Deploy** is unavailable, finish removing the previous model, or free capacity, then try again. Refer
+   to [Resolve a Blocked Deployment](./deploy-a-model.md#resolve-a-blocked-deployment).
 
 4. Select **Deploy**, review the preview, and then select **Confirm & apply**.
 
-5. Verify that the replacement reaches `ready` or `serving`. Refer to
+5. Wait until the replacement is running on each node you selected, then verify it. Refer to
    [Verify the Model Is Serving](./deploy-a-model.md#verify-the-model-is-serving).
 
 If you removed the default model, switch the default to the replacement after the replacement is serving. Refer to
 [Switch the Default Model](./set-the-default-model.md).
+
+### Stop a Deploy That Is Still in Progress
+
+If the replacement is still deploying on a node, you can stop that deploy and try again.
+
+1. Expand the model row.
+
+2. On the node that is still deploying, select **Abort**, and then select **Abort** in the confirmation.
+
+That node's deploy stops. The node is free to deploy to again, and the model you removed does not come back on its own.
+Deploys that are still in progress on other nodes continue. Deploy the replacement onto the freed node again from
+**Deploy New Model**.
+
+## After the Change
+
+New requests are counted against the replacement. Refer to [View Client Usage](./view-client-usage.md). Client routing
+and quotas continue to apply without you setting them again.
 
 ## Next Steps
 
 - [Deploy a Model](./deploy-a-model.md)
 - [Switch the Default Model](./set-the-default-model.md)
 - [Manage a Client's Model Access](./manage-client-model-access.md)
+- [View Client Usage](./view-client-usage.md)
