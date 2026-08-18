@@ -14,17 +14,18 @@ Virtual Machine Orchestrator (VMO) writes its logs to container standard output,
 agent can collect them. Use the **Logging** page to set the verbosity and encoding of those logs and to record that a
 central logging system collects them.
 
-VMO does not open a connection to your central logging system. The delivery hop belongs to a log-forwarding agent that
-you deploy and operate. The agent reads container logs from the nodes and ships them to Splunk, Elasticsearch, or
-another destination. This keeps the appliance free of outbound network dependencies, which matters in airgapped and
-regulated environments, and it lets you reuse the agent, credentials, and retention policy that already serve the rest
-of your cluster.
+For log forwarding, VMO does not open a connection to your central logging system. The delivery hop belongs to a
+log-forwarding agent that you deploy and operate. The agent reads container logs from the nodes and ships them to
+Splunk, Elasticsearch, or another destination. This keeps log delivery free of outbound network dependencies in the
+appliance itself, which matters in airgapped and regulated environments, and it lets you reuse the agent, credentials,
+and retention policy that already serve the rest of your cluster.
 
 :::info
 
-The **Logging** page controls the operational logs that the appliance produces. It does not replace the appliance
-[Audit Trail](./system/audit.md), which records who performed each security-relevant action. Because VMO deletes audit
-events after 30 days, forwarding appliance logs to a central system is how you keep that record beyond the window.
+The logging settings on this page control the operational logs that the appliance produces. They do not replace the
+appliance [Audit Trail](./system/audit.md), which records who performed each security-relevant action. Because VMO
+deletes audit events after 30 days, forwarding appliance logs to a central system is how you keep that record beyond the
+window.
 
 :::
 
@@ -61,7 +62,7 @@ VMO works with any agent that reads container logs. The following agents are in 
 - A log-forwarding agent that runs in the appliance cluster, or the ability to deploy one. The agent holds the
   credentials for your destination, such as a Splunk
   [HTTP Event Collector (HEC)](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector) token.
-  VMO never stores those credentials.
+  VMO does not store your agent's credentials.
 
 - Network connectivity from the cluster nodes to your central logging system.
 
@@ -111,8 +112,8 @@ VMO works with any agent that reads container logs. The following agents are in 
 
 ## Settings Reference
 
-The **Logging** page exposes the following settings. Each setting has a matching environment variable that the appliance
-reads at startup.
+The **Logging** page exposes the following log settings. Each setting has a matching environment variable that the
+appliance reads at startup.
 
 | **Setting**                        | **Configuration key**         | **Environment variable**  | **Default** | **Description**                                                                                                                                                      |
 | ---------------------------------- | ----------------------------- | ------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
