@@ -3,8 +3,7 @@ sidebar_label: "Bring Your Own Model"
 title: "Bring Your Own Model"
 description:
   "Step-by-step guidance for platform operators on how to bring a model that is not in the certified catalog onto a
-  PaletteAI Inference Launchpad appliance: author metadata.yaml, download from Hugging Face, upload to the appliance,
-  and deploy."
+  PaletteAI Inference Launchpad appliance by authoring its metadata file, then uploading and deploying it."
 hide_table_of_contents: false
 sidebar_position: 1.6
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
@@ -12,80 +11,119 @@ keywords: ["launchpad", "ai", "bring your own model", "metadata", "huggingface",
 ---
 
 This guide explains how to bring a model that is not in the certified catalog onto a PaletteAI Inference Launchpad
-appliance. You author `metadata.yaml`, download the weights from Hugging Face onto a jumpbox, upload them to the
-appliance, and deploy the model. Download, upload, and deploy match the certified-model flow. The extra step is
-authoring the metadata file instead of downloading it from Artifact Studio.
+appliance. The download, upload, and deploy steps are the same as for a certified model. The addition is the metadata
+file. Because there is no Artifact Studio download for an uncertified model, you author the file yourself, and that file
+is where you tell the appliance which weights to fetch and what the model needs to run.
 
-Spectro Cloud has not validated a model you bring yourself. You confirm that it fits your GPUs and that it serves
-requests on your hardware. For what certification covers, refer to
-[Model Certification](../explanation/model-certification.md). For the certified list, refer to
-[Certified Models by Hardware](../reference/certified-models-by-hardware.md).
-
-|                              | **Certified model**                                           | **Your own model**                           |
-| ---------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
-| **Metadata**                 | Download `metadata.yaml` from Artifact Studio.                | Author `metadata.yaml` yourself.             |
-| **Download, upload, deploy** | Follow [Upload a Model](./upload-a-model.md), then deploy.    | The same steps, using the file you authored. |
-| **Validation**               | Spectro Cloud has tested it on the listed GPU configurations. | You validate it on your hardware.            |
+Spectro Cloud has not tested a model you bring yourself on your hardware. Confirming that it loads, serves requests, and
+answers acceptably is yours to do. For what certification covers and how the two paths differ, refer to
+[Model Certification](../explanation/model-certification.md).
 
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
-- A jumpbox with the Palette CLI, `rsync`, SSH access to the appliance, and network access to Hugging Face. Refer to
-  [Upload a Model](./upload-a-model.md#prerequisites).
-- The Hugging Face repository for the model, and a token if the repository is gated or private.
-- Enough GPU memory on the appliance for the model. Refer to
+
+- A jumpbox that meets the prerequisites in [Upload a Model](./upload-a-model.md#prerequisites), including the Palette
+  CLI, `rsync`, SSH access to the appliance, and network access to Hugging Face.
+
+- The Hugging Face repository that holds the model, and an access token if the repository is gated or private.
+
+- Enough free GPU memory on the appliance for the model. Refer to
   [Suggested Hardware](../reference/hardware-requirements.md).
 
-## Create the Metadata File
+## Author the Metadata File
 
-On the jumpbox, create a YAML file for the model. Only `name`, `version`, and `huggingface.repo` are required. The
-Palette CLI uses `name` and `version` as the path `<model-dir>/<name>/<version>/`. The appliance uses `name` as the
-catalog name.
+The metadata file tells the Palette CLI which weights to download and tells the appliance how to serve them. The CLI
+reads `name` and `version` to build the model path `<model-dir>/<name>/<version>/`, and the appliance reads the same
+file after the upload to place the model in the deploy catalog under `name`.
 
-The following example is a starting point. Replace the repository, version, and GPU fields with values for your model
-and hardware. For every field, refer to
-[Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
+Create the file on the jumpbox. You choose the filename, for example `my-model.yaml`, and pass its path as `--metadata`
+in the commands that follow.
 
-```yaml
-name: my-model
-version: 1.0.0
+1. Start with the model identity and the source of the weights. A working file cannot omit `name`, `version`, or
+   `huggingface.repo`.
 
-huggingface:
-  repo: org/my-model
-  revision: main
-  files:
-    - "*.safetensors"
-    - "*.json"
-    - "tokenizer*"
+   ```yaml
+   name: my-model
+   version: 1.0.0
 
-launchpad:
-  engine: vllm
-  variants:
-    - vendor: nvidia
-      gpu_product: NVIDIA-H200
-      vram_gb: 141
-      min_gpus: 4
-      serve:
-        tensor_parallel_size: 4
-```
+   huggingface:
+     repo: org/my-model
+     revision: main
+     files:
+       - "*.safetensors"
+       - "*.json"
+       - "tokenizer*"
+   ```
 
-`launchpad` is optional. Include it when you need to pin an engine or describe which GPUs can host the model. The
-Palette CLI ships the block to the appliance unchanged.
+   The `files` globs narrow the download to the weight, configuration, and `tokenizer*` files rather than every file in
+   the repository. Omit `files` to download the whole repository.
 
-Save the file, for example as `my-model.yaml`. Pass that path as `--metadata` in the download and upload commands.
+2. _(Optional)_ Add a `launchpad` block to describe what the model needs to run. Refer to
+   [Describe the Hardware the Model Needs](#describe-the-hardware-the-model-needs).
 
-:::info
+   Without the block, the appliance serves the model with vLLM and treats it as needing at least one GPU.
 
-The parser rejects unknown top-level fields. Stay with the fields listed in
-[Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
+3. Check every field name against [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file),
+   then save the file.
+
+:::warning
+
+The appliance ignores fields it does not recognize instead of rejecting them. A misspelled field name is therefore
+dropped without an error, and the model deploys with the default the field was meant to override. Only `name` and
+`version` are enforced, and a file missing either one never reaches the deploy catalog.
 
 :::
 
-## Download the Model from Hugging Face
+### Describe the Hardware the Model Needs
 
-On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS mount.
+Inside `launchpad`, `variants` is a list of per-hardware tuning cells. The appliance detects each node's GPU product,
+GPU count, and per-GPU memory, then selects the single variant that fits that node. Fields set at the `launchpad` level
+are defaults, and a variant overrides them.
 
-1. Run the download command, using the path to the metadata file you authored and the directory to download into.
+```yaml
+launchpad:
+  engine: vllm
+  min_gpus: 4
+  variants:
+    - min_gpus: 4
+      vram_gb: 141
+      serve:
+        tensor_parallel_size: 4
+        max_model_len: 32768
+```
+
+The following fields decide whether the model can run.
+
+| **Field**                    | **What it does**                                                                                                                                                |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `min_gpus`                   | The minimum number of GPUs the model needs, not the width it runs at. A node with fewer GPUs than this does not fit the variant.                                |
+| `vram_gb`                    | A floor on per-GPU memory. The appliance compares it at deploy time against the memory the nodes advertise, and blocks the deployment if the floor is too high. |
+| `serve.tensor_parallel_size` | The number of GPUs the engine spreads the model across.                                                                                                         |
+| `serve.max_model_len`        | The maximum context length the engine serves. A longer context reserves more GPU memory for the key-value cache.                                                |
+| `vendor` and `gpu_product`   | Pins the variant to one GPU vendor or one GPU model. Both are unset in the preceding example, which lets the variant fit any node that satisfies `min_gpus`.    |
+
+:::warning
+
+The appliance compares `vendor` and `gpu_product` against the GPU labels a node publishes by exact string match, so the
+value has to be the node's own product label, such as `NVIDIA-H200` or `AMD_Instinct_MI325_OAM`, rather than a marketing
+name such as `H200`. A value that no node publishes does not fail quietly: the model appears in the deploy catalog
+marked as not deployable, with a reason naming what the variant needs against what the node has. Leave both fields unset
+unless you know the exact label your nodes publish.
+
+:::
+
+For every field the file accepts, refer to
+[Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
+
+## Download and Upload the Model
+
+The download and upload commands are the same ones a certified model uses, with your authored file as `--metadata`. For
+the full flag list, password authentication, and the one-step `--download` form, refer to
+[Upload a Model](./upload-a-model.md#upload-the-model-to-the-appliance).
+
+1. On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS
+   mount.
 
    ```bash
    palette content model download \
@@ -93,10 +131,10 @@ On the jumpbox, download the model from Hugging Face into a writable local direc
        --model-dir ./models
    ```
 
-   The model downloads to `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from the metadata file.
+   The model lands at `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from your metadata file.
 
 2. _(Gated or private Hugging Face repositories)_ Provide a Hugging Face token through the `HF_TOKEN` environment
-   variable.
+   variable instead.
 
    ```bash
    HF_TOKEN=<hugging-face-token> palette content model download \
@@ -104,12 +142,8 @@ On the jumpbox, download the model from Hugging Face into a writable local direc
        --model-dir ./models
    ```
 
-## Upload the Model to the Appliance
-
-Ship the downloaded directory from the jumpbox to the appliance over SSH. On a multi-node appliance, upload to a single
-node; the appliance syncs the model to the remaining nodes automatically.
-
-1. Run the upload command with the model directory and the appliance's SSH details.
+3. Upload the downloaded directory to the appliance over SSH. On a multi-node appliance, upload to a single node, and
+   the appliance syncs the model to the remaining nodes.
 
    ```bash
    palette content model upload \
@@ -121,33 +155,57 @@ node; the appliance syncs the model to the remaining nodes automatically.
    ```
 
    Replace `<ssh-user>` and `<appliance-host>` with the appliance's SSH user and address, and `<private-key-path>` with
-   the path to your private key, such as `~/.ssh/id_ed25519`.
+   the path to your private key, such as `~/.ssh/id_ed25519`. Pass the parent directory to `--model-dir`, not the
+   directory named after the model.
 
-   :::warning `--model-dir` points at the parent, not the model's own directory
+## Deploy and Validate the Model
 
-   `--model-dir` is the directory that _contains_ `<name>/<version>/`, not the directory named after the model. For a
-   model at `./models/my-model/1.0.0/`, pass `--model-dir ./models`. Refer to
-   [Upload a Model](./upload-a-model.md#upload-the-model-to-the-appliance).
+1. Deploy the model by following [Deploy a Model](./deploy-a-model.md). The model appears in the deploy catalog on the
+   next catalog scan after the upload finishes, and only a model in the `Available` state can be deployed.
 
-   :::
+2. Confirm the model reaches the `ready` or `serving` state and reports `N/N healthy`. If it does not, refer to
+   [Troubleshoot a Model That Does Not Deploy](#troubleshoot-a-model-that-does-not-deploy).
 
-For the full flag list, refer to
-[Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
+3. Send the workload you intend to run against the model and review the responses. A certified model arrives with
+   Spectro Cloud's own testing on a given GPU configuration, and a model you bring yourself does not, so this step is
+   where you establish that the model is fit for your use case.
 
-## Deploy the Model
+## Troubleshoot a Model That Does Not Deploy
 
-1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy model**.
+A model whose metadata does not match your hardware is never hidden. It appears in the deploy catalog marked as not
+deployable, with a reason. Use the following table to map the reason to the field to change.
 
-2. Open the model drop-down menu and confirm the model you uploaded is listed. On a single-node appliance, the model
-   appears on the next catalog scan after the upload finishes. On a multi-node appliance, the catalog shows the model's
-   cluster-wide state: `Available` when the model is ready on every node, `Pending N/M` while nodes are still syncing,
-   or `Missing`. Only an **Available** model can be deployed.
+| **What you observe**                                                                                                                   | **What it means**                                                                                                                                                                                   | **What to change**                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| The model does not appear in the deploy catalog at all.                                                                                | The upload has not finished, or the file sets no `name` or `version`. The appliance treats `metadata.yaml` as the last file of an upload, so the model surfaces only once the weights are in place. | Confirm the upload completed, and confirm the file sets both `name` and `version`.                          |
+| The model is listed as not deployable, with a reason such as `needs 8+ GPU NVIDIA-H200 141GB VRAM; this node has 4x NVIDIA-L40S 46GB`. | No variant in your file fits the node.                                                                                                                                                              | Lower `min_gpus`, correct `gpu_product` or `vendor`, or remove those two pins so the variant fits any node. |
+| The deployment is blocked with `no node in this cluster advertises GPU product <product>`.                                             | `gpu_product` is not a label any node in the cluster publishes.                                                                                                                                     | Correct the value to the node's exact GPU product label, or remove the field.                               |
+| The deployment is blocked with `MinVRAMGB <n> exceeds the <memory> per GPU advertised by nodes running <product>`.                     | `vram_gb` is higher than the per-GPU memory your GPUs advertise.                                                                                                                                    | Lower `vram_gb` to the memory your GPUs provide.                                                            |
+| The deployment is blocked with `no node advertises a driver version; MinDriver <version> cannot be verified`.                          | `min_driver` is set, but the appliance cannot read a driver version from any node.                                                                                                                  | Remove `min_driver`, or confirm the GPU driver is installed and reporting its version.                      |
+| The model deploys but reaches the `failed` or `verification failed` state.                                                             | The engine started but never became ready. For an uncertified model, the usual cause is that the weights and the requested context length do not fit the GPU memory.                                | Lower `serve.max_model_len`, or raise `serve.tensor_parallel_size` to spread the model across more GPUs.    |
 
-3. Deploy and verify the model. Refer to [Deploy a Model](./deploy-a-model.md).
+For deploy reasons that are about cluster capacity rather than your metadata, refer to
+[Resolve a Blocked Deployment](./deploy-a-model.md#resolve-a-blocked-deployment).
+
+## Limitations
+
+- Spectro Cloud does not test or support a model you bring yourself. Certification covers a model, an engine version,
+  and a GPU configuration together, and none of that applies to a model you author metadata for.
+
+- The appliance selects one variant per node from the hardware it detects, and it expects every node to carry the same
+  GPU model. Author variants for the hardware in your cluster rather than for a mixed fleet.
+
+{/* NEEDS REVIEW: per the epic, day-2 operations for an uncertified model are not supported. Confirm which day-2 operations are excluded, and add them to Limitations. */}
 
 ## Next Steps
 
-- [Upload a Model](./upload-a-model.md)
-- [Deploy a Model](./deploy-a-model.md)
-- [Model Upload Reference](../reference/model-upload-reference.md)
-- [Model Certification](../explanation/model-certification.md)
+Now that the model is serving, put it in front of clients.
+
+- **Make it the default:** To have this model answer requests that do not name a model, refer to
+  [Switch the Default Model](./set-the-default-model.md).
+
+- **Give a client access:** To route a client to the model, refer to
+  [Manage a Client's Model Access](./manage-client-model-access.md).
+
+- **Tune the metadata:** For every field the metadata file accepts, refer to
+  [Model Upload Reference](../reference/model-upload-reference.md).

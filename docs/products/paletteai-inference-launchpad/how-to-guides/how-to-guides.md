@@ -18,7 +18,7 @@ you the steps to do it without teaching background concepts.
 | [Install the Appliance](./install-the-appliance.md)               | Flash the installer ISO, boot the hardware, and bring up the appliance console.      |
 | [Deploy a Model](./deploy-a-model.md)                             | Deploy an LLM to the cluster and verify it is serving.                               |
 | [Upload a Model](./upload-a-model.md)                             | Download a model on a jumpbox and upload it to the appliance.                        |
-| [Bring Your Own Model](./bring-your-own-model.md) | Author metadata for a model that is not certified, then upload and deploy it. |
+| [Bring Your Own Model](./bring-your-own-model.md)                 | Author metadata for a model that is not certified, then upload and deploy it.        |
 | [Switch the Default Model](./set-the-default-model.md)            | Switch the default model when the current default becomes unavailable.               |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)   | Deploy a vision model and turn on image-to-text preprocessing for a text-only model. |
 | [Create a Client](./create-a-client.md)                           | Create a client and issue its first API token.                                       |
@@ -31,4 +31,3 @@ you the steps to do it without teaching background concepts.
 | [Use Cursor](./use-cursor.md)                                     | Connect Cursor's Ask mode to the appliance through a uniquely named model alias.     |
 | [Use OpenAI Codex](./use-codex.md)                                | Connect the OpenAI Codex CLI to the appliance with a custom model provider.          |
 | [Use OpenCode](./use-opencode.md)                                 | Connect the OpenCode terminal agent to the appliance through a custom provider.      |
-

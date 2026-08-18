@@ -44,6 +44,23 @@ and [Deploy a Model](../how-to-guides/deploy-a-model.md). To bring a model that 
 [Bring Your Own Model](../how-to-guides/bring-your-own-model.md). To let a certified text-only model answer questions
 about images, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
+## Certification Compared with Bringing Your Own Model
+
+Both paths place a model on the same appliance and serve it with the same inference engines. What differs is who writes
+the serving recipe and who establishes that the model works on the hardware.
+
+| **Aspect**                | **Certified model**                                                                                                         | **Your own model**                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Metadata file**         | Spectro Cloud authors it, and you download it from Artifact Studio.                                                         | You author it.                                                                      |
+| **Hardware fit**          | Validated on the GPU configurations listed in [Certified Models by Hardware](../reference/certified-models-by-hardware.md). | You state what the model needs, and you confirm it fits your GPUs.                  |
+| **Serving configuration** | Tuned per GPU configuration by Spectro Cloud.                                                                               | You choose the inference engine, the tensor-parallel width, and the context length. |
+| **Validation**            | Spectro Cloud tests that the model loads and serves on the listed configurations.                                           | You test the model on your hardware.                                                |
+
+Bringing your own model does not change how the appliance handles the model once it is serving. The gateway routes
+requests, meters tokens, and enforces quotas the same way it does for a certified model.
+
+{/* NEEDS REVIEW: confirm the formal support statement for an uncertified model before publishing, and add it to the comparison table. */}
+
 ## How Certification Differs from Model as a Service
 
 PaletteAI Inference Launchpad is not a Model as a Service. Rather than offering the widest possible catalog of models on

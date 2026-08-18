@@ -100,9 +100,8 @@ Whatever brought you here, these are the fastest paths in.
 
 - **Get started**: [Suggested Hardware](./reference/hardware-requirements.md) •
   [Install the appliance](./how-to-guides/install-the-appliance.md) •
-  [Upload a model](./how-to-guides/upload-a-model.md) •
-  [Bring your own model](./how-to-guides/bring-your-own-model.md) •
-  [Deploy your first model](./how-to-guides/deploy-a-model.md)
+  [Upload a model](./how-to-guides/upload-a-model.md) • [Bring your own model](./how-to-guides/bring-your-own-model.md)
+  • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
   [Vision Preprocessing](./explanation/vision-preprocessing.md) •
   [Clients and Quotas](./explanation/clients-and-quotas.md) •
