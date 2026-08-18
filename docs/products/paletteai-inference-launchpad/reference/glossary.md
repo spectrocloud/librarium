@@ -288,7 +288,9 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
 exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) and records its name, backend engine, and current
-serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted.
+serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted. To put a newer
+version or a different model on a [node](#node), remove the current model from that node and then deploy the
+replacement. Refer to [Replace a Model](../how-to-guides/replace-a-model.md).
 
 ### Model Alias
 

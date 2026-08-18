@@ -151,13 +151,15 @@ reasons include the following:
 
 To resolve the reason, free GPUs on a node by removing another model from that node, stage the model's weights on the
 node, add capacity to the cluster, or resolve the unknown allocation on the affected nodes. Then deploy the model again.
-For the full list of eligibility reasons and how the appliance behaves when a node degrades between selection and
-confirmation, refer to [Model Placement](../explanation/model-placement.md).
+To replace what a node is serving, refer to [Replace a Model](./replace-a-model.md). For the full list of eligibility
+reasons and how the appliance behaves when a node degrades between selection and confirmation, refer to
+[Model Placement](../explanation/model-placement.md).
 
 ## Next Steps
 
 To change which model handles requests that do not name a model explicitly, refer to
-[Switch the Default Model](./set-the-default-model.md). For why you would pin a model to some nodes and not others,
-refer to [Model Placement](../explanation/model-placement.md). To let a text-only model answer questions about images,
-refer to [Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified
-catalog, refer to [Bring Your Own Model](./bring-your-own-model.md).
+[Switch the Default Model](./set-the-default-model.md). To put a newer version or a different model on a node, refer to
+[Replace a Model](./replace-a-model.md). For why you would pin a model to some nodes and not others, refer to
+[Model Placement](../explanation/model-placement.md). To let a text-only model answer questions about images, refer to
+[Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified catalog,
+refer to [Bring Your Own Model](./bring-your-own-model.md).
