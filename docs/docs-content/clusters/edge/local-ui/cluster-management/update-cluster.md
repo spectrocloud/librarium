@@ -7,16 +7,18 @@ sidebar_position: 50
 tags: ["edge"]
 ---
 
-You can update an existing local cluster from Local UI. How you start the update depends on the appliance.
+You can update existing local clusters in a locally managed Edge host from Local UI by uploading a new cluster profile
+version. This guide explains how to update an existing cluster in Local UI.
 
-- **Content bundle.** On PaletteAI Inference Launchpad and other AI appliances, Local UI hides **Upload Configuration**.
-  Upload a new content bundle instead. After the upload, Local UI shows **Update available** on the cluster **Overview**
-  tab and **Update** on the **Configuration** tab. Review the diff, then apply the update. You do not redeploy the
-  cluster.
-- **Upload Configuration.** In agent mode, and on Palette or VerteX appliances, you can upload a new cluster profile
-  version as a **.tgz** file from the **Configuration** tab.
+:::info
 
-Both paths use the same review-and-apply steps after Local UI has the new cluster definition.
+The **Upload Configuration** flow described on this page is available in agent mode and in appliance mode on Edge hosts
+with an [`applianceType`](../../edge-configuration/installer-reference.md) of `palette` or `vertex`. On appliance hosts
+with an `applianceType` of `paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or
+`ai-launchpad-vertex`, Local UI hides the cluster configuration upload option. To update these appliances, upload a new
+content bundle from the [Content](./upload-content-bundle.md) page and redeploy the cluster.
+
+:::
 
 ## Prerequisites
 
@@ -26,30 +28,9 @@ Both paths use the same review-and-apply steps after Local UI has the new cluste
 
 - A local cluster created in Local UI. For more information, refer to [Create Local Cluster](create-cluster.md).
 
-- _(Content bundle path)_ A new content bundle on the host. For more information, refer to
-  [Upload Content Bundle](./upload-content-bundle.md).
+## Update Local Cluster
 
-## Update from a Content Bundle
-
-Use this path when the new cluster definition arrives inside a content bundle. PaletteAI Inference Launchpad appliances
-use this path.
-
-1. Upload the new content bundle to the leader host. Refer to [Upload Content Bundle](./upload-content-bundle.md).
-
-2. Log in to Local UI. For more information, refer to [Access Local UI](../host-management/access-console.md).
-
-3. From the left **Main Menu**, select **Cluster**. The **Overview** tab shows **Update available** when the uploaded
-   bundle includes a newer cluster definition.
-
-4. Select the **Configuration** tab, and then select **Update**.
-
-5. Review the incoming changes as described in [Review and Apply the Update](#review-and-apply-the-update).
-
-## Update from Upload Configuration
-
-Use this path in agent mode and on Palette or VerteX appliances, where **Upload Configuration** is available.
-
-1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
    refer to [Access Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**, and then select the **Configuration** tab.
@@ -62,39 +43,28 @@ Use this path in agent mode and on Palette or VerteX appliances, where **Upload 
    To learn more about how to export a cluster profile and import it during this step, refer to
    [Export Cluster Definition](./export-cluster-definition.md).
 
-5. Review the incoming changes as described in [Review and Apply the Update](#review-and-apply-the-update).
-
-:::info
-
-If **Update available** is already showing and you still start **Upload Configuration**, Local UI warns that uploading a
-new configuration replaces the available update. Confirm only if you intend to discard that update.
-
-:::
-
-## Review and Apply the Update
-
-1. Local UI displays the **Review Changes** modal, where you can review the update summary and verify all incoming
+5. Local UI displays the **Review Changes** modal, where you can review the update summary and verify all incoming
    changes to the
    [Cluster Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md).
    Your current configuration is displayed on the left, and the incoming changes are displayed on the right.
 
-2. Select each profile variable and review the changes. You can specify values for new profile variables, override the
+6. Click each profile variable and review the changes. You can specify values for new profile variables, override the
    incoming default values, or leave the incoming changes as is, depending on your local cluster configuration.
 
    :::info
 
    If your current cluster configuration overrides the default profile variable values, Local UI will preserve your
-   configuration in case the update introduces new defaults. To use the new default values, select **Use default** in
-   the respective profile variable field.
+   configuration in case the update introduces new defaults. To use the new default values, click **Use default** in the
+   respective profile variable field.
 
    :::
 
-3. Once all incoming changes have the **Reviewed** status, select **Confirm Changes**.
+7. Once all incoming changes have the **Reviewed** status, click **Confirm Changes**.
 
-4. Review all profile variables on the **Configuration** tab to make sure that the cluster configuration matches your
+8. Review all profile variables on the **Configuration** tab to make sure that the cluster configuration matches your
    expectations.
 
-5. In the bottom-left corner, select **Update**.
+9. In the bottom-left corner, click **Update**.
 
    :::info
 

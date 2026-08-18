@@ -2,19 +2,23 @@
 sidebar_label: "Manage Cluster Infrastructure"
 title: "Manage Cluster Infrastructure"
 description:
-  "How platform operators create, scale, and upgrade a PaletteAI Inference Launchpad cluster from Local UI, including
-  uploading a new content bundle so the cluster Update action becomes available."
+  "How platform operators create, scale, and upgrade a PaletteAI Inference Launchpad appliance cluster from Local UI,
+  including uploading a new content bundle so the cluster Update action becomes available."
 hide_table_of_contents: false
 sidebar_position: 0.5
 tags: ["paletteai-inference-launchpad", "install", "upgrade", "how-to"]
 keywords: ["launchpad", "ai", "upgrade", "local ui", "content bundle", "scale", "cluster", "day two", "artifact studio"]
 ---
 
-Day-one install and day-two cluster operations for PaletteAI Inference Launchpad use the node's
-[Local UI](../reference/glossary.md#local-ui), the same Edge Local UI that creates, scales, and updates a locally
-managed cluster. This page points to those Local UI guides and adds the Launchpad-specific upgrade path: download a new
-content bundle from Artifact Studio, upload it the same way as day one, then apply **Update** on the cluster
-**Configuration** tab.
+PaletteAI Inference Launchpad is an appliance. Day-one install and day-two infrastructure operations use the node's
+[Local UI](../reference/glossary.md#local-ui) at `https://<node-ip>:5080`. Local UI is the Edge host console; this
+appliance uses it to create the cluster, upload content, scale nodes, and apply a platform upgrade. It is not the
+[appliance console](../reference/glossary.md#appliance-console) that serves models after the cluster is running.
+
+This page covers those appliance infrastructure tasks. The step-by-step Local UI screens for sign-in, content upload,
+cluster create, and scale are in the Edge Local UI guides linked below. Platform upgrade for this appliance is described
+here: download a new content bundle from Artifact Studio, upload it the same way as day one, then apply **Update** on
+the cluster **Configuration** tab.
 
 For first-time install, including the Palette TUI, bond, storage, and first cluster deploy, refer to
 [Install the Appliance](./install-the-appliance.md). For why install is split across the jumpbox and Local UI, refer to
@@ -25,14 +29,11 @@ For first-time install, including the Palette TUI, bond, storage, and first clus
 Open Local UI at `https://<node-ip>:5080` on the leader node. For sign-in and credentials, refer to
 [Access Local UI](/clusters/edge/local-ui/host-management/access-console/).
 
-The appliance console that serves models is a different UI, reached after the cluster is running. Cluster create, scale,
-content upload, and platform upgrade stay in Local UI.
-
 ## Create the Cluster
 
 Creating the cluster is part of day-one install. Follow
-[Deploy the Cluster](./install-the-appliance.md#deploy-the-cluster) in the install guide. The same Local UI wizard is
-documented for Edge in [Create Local Cluster](/clusters/edge/local-ui/cluster-management/create-cluster/).
+[Deploy the Cluster](./install-the-appliance.md#deploy-the-cluster) in the install guide. The Local UI cluster wizard is
+also described in [Create Local Cluster](/clusters/edge/local-ui/cluster-management/create-cluster/).
 
 ## Upload a Content Bundle
 
@@ -41,10 +42,10 @@ during install, and you upload a newer one to upgrade. On a multi-node cluster, 
 synchronizes to linked hosts.
 
 Use the Palette CLI from the jumpbox. The bundle is more than 20 GB, so a browser upload is slow and can time out. The
-Launchpad install guide has the CLI steps, including the upload token and target port `5082`. Refer to
+install guide has the CLI steps, including the upload token and target port `5082`. Refer to
 [Upload with the Palette CLI](./install-the-appliance.md#upload-with-the-palette-cli-recommended).
 
-The Edge Local UI procedure is in
+The Local UI upload screens are in
 [Upload Content Bundle](/clusters/edge/local-ui/cluster-management/upload-content-bundle/).
 
 ## Scale the Cluster
@@ -68,10 +69,9 @@ connected jumpbox workflows and airgapped sites. Download the bundle that matche
 3. In Local UI, open **Cluster**. The **Overview** tab shows **Update available** when the bundle includes a newer
    cluster definition. The **Configuration** tab shows **Update**.
 
-4. Select **Update**, review the configuration diff, then select **Update** at the bottom of the page to apply.
+4. Select **Update** and review the configuration diff. Incoming changes appear beside the current values.
 
-The review-and-apply steps, including profile variables and **Use default**, are in
-[Update Local Cluster](/clusters/edge/local-ui/cluster-management/update-cluster/).
+5. Select **Update** at the bottom of the page to apply.
 
 After the cluster returns to **Running**, open the appliance console and confirm that models are still serving. You do
 not re-upload model weights unless the release notes for that version say to.
@@ -80,4 +80,3 @@ not re-upload model weights unless the release notes for that version say to.
 
 - [Install the Appliance](./install-the-appliance.md)
 - [Deploy a Model](./deploy-a-model.md)
-- [Local UI](/clusters/edge/local-ui/)
