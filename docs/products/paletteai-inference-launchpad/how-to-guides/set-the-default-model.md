@@ -44,4 +44,6 @@ If no model is currently serving, the card reports that there is nothing to swit
 
 - **Generate an API token** to send requests to the default model. Refer to
   [Generate an API Token](./generate-an-api-token.md).
+- **Replace a serving model** when you need a newer version or a different model on a node. Refer to
+  [Replace a Model](./replace-a-model.md).
 - **Deploy another model** to the appliance. Refer to [Deploy a Model](./deploy-a-model.md).

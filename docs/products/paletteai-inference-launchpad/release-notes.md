@@ -44,6 +44,9 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Deploys a model to the cluster and places it on the best-fit node automatically, after a guarded preview, gate,
   provision, and smoke-test sequence. Refer to [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
 
+- Replaces a serving model by removing it from a node and then deploying a newer version or a different model. Refer to
+  [Replace a Model](./how-to-guides/replace-a-model.md) for more information.
+
 - Lets you set a default model that handles requests no routing rule matches, and rebuilds the router in place when you
   change it, without a gateway restart. Refer to [Set the Default Model](./how-to-guides/set-the-default-model.md) for
   more information.

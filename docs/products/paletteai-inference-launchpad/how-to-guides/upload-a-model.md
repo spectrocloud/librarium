@@ -130,5 +130,7 @@ catalog.
 
 - **Deploy the model:** Follow [Deploy a Model](./deploy-a-model.md) to deploy the uploaded model and verify it is
   serving.
+- **Replace a serving model:** Follow [Replace a Model](./replace-a-model.md) to remove the current model from a node
+  and deploy this one instead.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
