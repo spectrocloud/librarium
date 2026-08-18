@@ -17,6 +17,22 @@ This page lists the known issues that operators may encounter during installatio
 Inference Launchpad appliance, and the workaround for each. For the ordered procedure, refer to
 [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
+## Slim ISO Does Not Boot on a GPU Server
+
+**Symptom.** On a server with GPUs, the slim ISO does not appear in the boot menu, or the screen goes black after you
+select it and the interactive installer never appears. This applies to any GPU brand and any server brand.
+
+**Root cause.** The **Above 4G Decoding** or **Re-Size BAR Support** BIOS setting is turned off. Both are required to
+boot the installer on a GPU server.
+
+**Workaround.** Enable both settings in the server's BIOS, then boot the ISO again. Setting names and menu paths vary by
+server vendor, so refer to your server vendor's documentation. On HPE Gen11 servers, for example, **Re-Size BAR
+Support** is under **PCIe Device Configuration > Advanced PCIe Configuration**. For the prerequisite, refer to
+[Suggested Hardware: Required BIOS Settings](./hardware-requirements.md#required-bios-settings).
+
+A blank screen for several minutes immediately after the GRUB selection is expected while the installer loads. This
+issue applies only when the installer never appears at all.
+
 ## GPUs do not enumerate on HPE servers
 
 <!-- vale off -->
@@ -30,8 +46,10 @@ with a probe failure for every device.
 1. Boot into GRUB and append `pci=realloc=off` to `GRUB_CMDLINE_LINUX_DEFAULT` so that it reads
    `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=realloc=off"`, then reboot.
 2. Verify the GPUs by running `lspci` with `-v` and `-s <bus:device.function>`, then confirm with `nvidia-smi`.
-3. For better performance, enable Resizable BAR in the BIOS. On HPE Gen11 servers, go to **PCIe Device Configuration >
-   Advanced PCIe Configuration**. An RBSU BIOS upgrade may be required.
+3. Confirm **Re-Size BAR Support** is enabled in the BIOS. It is required on any GPU server, as described in
+   [Suggested Hardware: Required BIOS Settings](./hardware-requirements.md#required-bios-settings), and it also improves
+   performance. On HPE Gen11 servers, go to **PCIe Device Configuration > Advanced PCIe Configuration**. An RBSU BIOS
+   upgrade may be required.
 
 **Side effect: NIC rename.** The workaround renames the NICs. Update the interface names in the `/etc/systemd/network`
 and `/oem` directories afterward.
