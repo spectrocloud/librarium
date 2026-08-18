@@ -326,9 +326,8 @@ and locally staged weights often mean that only some nodes can run a given model
 ### Node Selection
 
 The deploy-time choice of which [nodes](#node) run a model. The appliance creates one inference engine per chosen node
-and exposes those engines through a single per-model endpoint. A model with no recorded node list runs on every Ready
-node. Refer to [Model Placement](../explanation/model-placement.md) and
-[Deploy a Model](../how-to-guides/deploy-a-model.md).
+and exposes those engines through a single per-model endpoint. Refer to
+[Model Placement](../explanation/model-placement.md) and [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 ## O
 

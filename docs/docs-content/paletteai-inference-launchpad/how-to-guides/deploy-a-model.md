@@ -59,9 +59,9 @@ stages on each chosen node. For that lifecycle, refer to
 
 :::info
 
-A console deploy always records the nodes you selected. The model runs only on that list. It does not start automatically
-on a node you add to the cluster later. To let a deployed model follow every Ready node, refer to
-[Return a Model to Every Ready Node](#return-a-model-to-every-ready-node).
+A deploy from the console always records the nodes you selected. The model runs only on that list. It does not start
+automatically on a node you add to the cluster later. To run it on additional nodes, refer to
+[Add a Model to More Nodes](#add-a-model-to-more-nodes).
 
 :::
 
@@ -126,25 +126,6 @@ the remaining chosen nodes keep serving.
 ![Expanded gemma-4 row showing 1 of 3 nodes. worker-1 reads Removing, and control-plane remains Serving.](../../../../static/assets/docs/images/deploy-a-model_removing-node.webp)
 
 To remove the model from every node, use the trash icon on the model's row instead of a per-node **Remove**.
-
-## Return a Model to Every Ready Node
-
-The console records the nodes you choose and has no control that clears that list. To return a deployed model to every
-Ready node, including nodes added later, apply `clear_model_nodes` with an operator session token. Replace
-`<appliance-host>`, `<admin-session-token>`, and `<model>` with your values.
-
-```bash
-curl --silent "https://<appliance-host>/admin/apply" \
-  --header "Authorization: Bearer <admin-session-token>" \
-  --header "Content-Type: application/json" \
-  --data '{"proposed_op":{"op":"clear_model_nodes","model":"<model>","confirmed":true}}'
-```
-
-Omit `"confirmed":true` to preview the change first. The preview names both halves of the plan, for example which nodes
-keep the model and which nodes gain an engine.
-
-After you clear the list, the **Nodes** column reads a plain count such as `2 nodes` instead of `N of M nodes`, and a
-node added to the cluster later receives the model automatically.
 
 ## Resolve a Blocked Deployment
 
