@@ -33,15 +33,16 @@ Other models may serve other use cases better, so if your primary need is not a 
 
 :::info
 
-The certified list is not exclusive. You can load models beyond it as long as they fit within the GPU resources
-available on your appliance. If the model you want is not certified for your hardware,
-[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
+The certified list is not exclusive. You can bring your own model as long as it fits within the GPU resources available
+on your appliance. Refer to [Bring Your Own Model](../how-to-guides/bring-your-own-model.md). If you want Spectro Cloud
+to certify a model for your hardware, [contact Spectro Cloud](https://www.spectrocloud.com/contact).
 
 :::
 
-For how to add a model to a running appliance, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md). To let a
-certified text-only model answer questions about images, refer to
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+For how to add a certified model to a running appliance, refer to [Upload a Model](../how-to-guides/upload-a-model.md)
+and [Deploy a Model](../how-to-guides/deploy-a-model.md). To bring a model that is not certified, refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md). To let a certified text-only model answer questions
+about images, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ## How Certification Differs from Model as a Service
 

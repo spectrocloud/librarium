@@ -11,7 +11,8 @@ keywords: ["launchpad", "ai", "palette cli", "model upload", "metadata", "huggin
 ---
 
 This reference lists the flags for the Palette CLI model commands and the fields of the model metadata file. It supports
-the [Upload a Model](../how-to-guides/upload-a-model.md) how-to, which walks through the download and upload flow.
+the [Upload a Model](../how-to-guides/upload-a-model.md) how-to and
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
 
 {/* NEEDS REVIEW: `palette content model download` and `palette content model upload` are a new command surface from the engineering source and are not yet in the published Palette CLI reference. Confirm the command names, flags, and defaults before publishing. */}
 
@@ -136,5 +137,7 @@ reconciling about every two minutes. In the deploy catalog, a model shows one of
 
 ## Resources
 
-- [Upload a Model](../how-to-guides/upload-a-model.md) walks through the download and upload flow.
+- [Upload a Model](../how-to-guides/upload-a-model.md) walks through the download and upload flow for a certified model.
+- [Bring Your Own Model](../how-to-guides/bring-your-own-model.md) authors metadata, then downloads, uploads, and
+  deploys a model that is not in the certified catalog.
 - [Deploy a Model](../how-to-guides/deploy-a-model.md) deploys an uploaded model and verifies it is serving.
