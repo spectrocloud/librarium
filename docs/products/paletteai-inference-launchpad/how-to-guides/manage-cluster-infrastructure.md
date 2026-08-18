@@ -7,18 +7,7 @@ description:
 hide_table_of_contents: false
 sidebar_position: 0.5
 tags: ["paletteai-inference-launchpad", "install", "upgrade", "how-to"]
-keywords:
-  [
-    "launchpad",
-    "ai",
-    "upgrade",
-    "local ui",
-    "content bundle",
-    "scale",
-    "cluster",
-    "day two",
-    "artifact studio",
-  ]
+keywords: ["launchpad", "ai", "upgrade", "local ui", "content bundle", "scale", "cluster", "day two", "artifact studio"]
 ---
 
 Day-one install and day-two cluster operations for PaletteAI Inference Launchpad use the node's
@@ -47,9 +36,9 @@ documented for Edge in [Create Local Cluster](/clusters/edge/local-ui/cluster-ma
 
 ## Upload a Content Bundle
 
-A [content bundle](../reference/glossary.md#content-bundle) is the platform and application layers. You upload one during
-install, and you upload a newer one to upgrade. On a multi-node cluster, upload on the leader; content synchronizes to
-linked hosts.
+A [content bundle](../reference/glossary.md#content-bundle) is the platform and application layers. You upload one
+during install, and you upload a newer one to upgrade. On a multi-node cluster, upload on the leader; content
+synchronizes to linked hosts.
 
 Use the Palette CLI from the jumpbox. The bundle is more than 20 GB, so a browser upload is slow and can time out. The
 Launchpad install guide has the CLI steps, including the upload token and target port `5082`. Refer to

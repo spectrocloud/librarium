@@ -43,8 +43,7 @@ use this path.
 
 4. Select the **Configuration** tab, and then select **Update**.
 
-5. Review the incoming changes as described in
-   [Review and Apply the Update](#review-and-apply-the-update).
+5. Review the incoming changes as described in [Review and Apply the Update](#review-and-apply-the-update).
 
 ## Update from Upload Configuration
 
@@ -63,8 +62,7 @@ Use this path in agent mode and on Palette or VerteX appliances, where **Upload 
    To learn more about how to export a cluster profile and import it during this step, refer to
    [Export Cluster Definition](./export-cluster-definition.md).
 
-5. Review the incoming changes as described in
-   [Review and Apply the Update](#review-and-apply-the-update).
+5. Review the incoming changes as described in [Review and Apply the Update](#review-and-apply-the-update).
 
 :::info
 
