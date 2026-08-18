@@ -76,6 +76,12 @@ already routed continue on their assigned model, and the new default applies onl
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
 quotas. For how clients, API tokens, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
 
+When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
+converts each image to text, and the text model then answers as it would for any other prompt. Text-only requests skip
+this step. For the request path and how to turn the feature on, refer to
+[Vision Preprocessing](./vision-preprocessing.md) and
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+
 ### The Default Model
 
 The appliance sets the default model for you. The model you deploy during setup becomes the default, and if only one
