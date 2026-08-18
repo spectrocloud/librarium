@@ -30,8 +30,7 @@ To understand how clients and models relate, refer to [Clients and Quotas](../ex
 - An existing client. To create one, refer to [Create a Client](./create-a-client.md).
 - Console access with permission to manage clients. Managing clients can require operator access.
 - _(External models only)_ For a built-in frontier provider, a provider key. For a registered endpoint, the endpoint
-  already registered. Refer to
-  [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
+  already registered. Refer to [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
 ## Route a Client to Specific Models
 
