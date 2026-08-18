@@ -16,7 +16,7 @@ you the steps to do it without teaching background concepts.
 | **Guide**                                                         | **What you do**                                                                  |
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | [Install the Appliance](./install-the-appliance.md)               | Flash the installer ISO, boot the hardware, and bring up the appliance console.  |
-| [Deploy a Model](./deploy-a-model.md)                             | Deploy an LLM to the cluster and verify it is serving.                           |
+| [Deploy a Model](./deploy-a-model.md)                             | Deploy an LLM, choose which nodes run it, and verify it is serving.              |
 | [Upload a Model](./upload-a-model.md)                             | Download a model on a jumpbox and upload it to the appliance.                    |
 | [Switch the Default Model](./set-the-default-model.md)            | Switch the default model when the current default becomes unavailable.           |
 | [Create a Client](./create-a-client.md)                           | Create a client and issue its first API token.                                   |

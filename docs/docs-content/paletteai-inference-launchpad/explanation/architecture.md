@@ -52,19 +52,20 @@ For the specific values and example server configurations, refer to
 
 ## Model Provisioning Lifecycle
 
-When you deploy a model, you select it for the cluster rather than for a specific node, and the appliance places it
-automatically on the best-fit node. The best-fit node is the node with the most free GPUs that still fit the model. A
-model that does not need a GPU is placed on a CPU-capable node.
+When you deploy a model, you choose which nodes run it. The deploy dialog lists each node with its hardware, free GPUs,
+and whether it can run the model you picked. The appliance creates one inference engine per chosen node and exposes those
+engines through a single per-model endpoint. A model with no recorded node list still runs on every Ready node. For when
+to pin a model to a subset of nodes, refer to [Model Placement](./model-placement.md).
 
 The appliance reports each node's free capacity honestly. A node shows either a known free GPU count or an unknown
 allocation when the appliance cannot determine the count. The appliance never treats a node with an unknown allocation
-as free, never selects such a node automatically, and never invents a placement target. When no node can host a model,
-the appliance holds the deployment and reports the reason instead of choosing a node anyway.
+as free, never selects such a node automatically, and never invents a placement target. When a chosen node cannot host
+the model, the appliance holds the deployment and reports the reason instead of placing the engine on a different node.
 
 The appliance applies a deployment through a guarded sequence. It first previews the change so you can review it, and it
-writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages. A
-model becomes routable only after its signature is verified and its smoke test passes, so the appliance never presents a
-model as ready before it can serve requests.
+writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages on each
+chosen node. A model becomes routable only after its signature is verified and its smoke test passes, so the appliance
+never presents a model as ready before it can serve requests.
 
 ## Request Routing
 

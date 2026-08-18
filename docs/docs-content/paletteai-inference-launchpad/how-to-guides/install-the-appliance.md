@@ -521,11 +521,13 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
    </Tabs>
 
 4. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
-   select **Deploy model** to open the deploy panel, and open the model drop-down menu. On a single-node appliance, the
-   model appears in the drop-down on the next catalog scan after the upload finishes. On a multi-node appliance, the
-   drop-down shows the model's cluster-wide state: **Available** when the model is ready on every node and can be
-   deployed, **Pending** while the appliance is still synchronizing it across nodes, or **Missing** when the appliance
-   has the model's metadata but not yet its weights. Only an **Available** model can be deployed.
+   select **Deploy New Model** to open the **Deploy model** dialog, and open the **Model** drop-down menu. On a
+   single-node appliance, the model appears in the drop-down on the next catalog scan after the upload finishes. On a
+   multi-node appliance, the drop-down shows the model's cluster-wide state: **Available** when the model is ready on
+   every node and can be deployed, **Pending** while the appliance is still synchronizing it across nodes, or
+   **Missing** when the appliance has the model's metadata but not yet its weights. Only an **Available** model can be
+   deployed. The dialog then asks you to choose which nodes run the model. For that procedure, refer to
+   [Deploy a Model](./deploy-a-model.md).
 
 ## Next Steps
 

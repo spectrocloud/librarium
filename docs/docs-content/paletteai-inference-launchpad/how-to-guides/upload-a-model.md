@@ -105,8 +105,8 @@ catalog.
 
 {/* NEEDS REVIEW: multi-node catalog states and automatic peer sync are from the engineering source. Confirm the labels and behavior before publishing. */}
 
-1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy model** to open the deploy
-   panel.
+1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy New Model** to open the
+   **Deploy model** dialog.
 
 2. Open the model drop-down menu and confirm the model you uploaded is listed. On a single-node appliance, the model
    appears on the next catalog scan after the upload finishes. On a multi-node appliance, the catalog shows the model's
