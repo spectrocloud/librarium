@@ -7,8 +7,7 @@ description:
 hide_table_of_contents: false
 sidebar_position: 1.2
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
-keywords:
-  ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights", "remove", "deploy"]
+keywords: ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights", "remove", "deploy"]
 ---
 
 This guide explains how to put a different model, or a newer version of a model you already serve, onto a node. There is
