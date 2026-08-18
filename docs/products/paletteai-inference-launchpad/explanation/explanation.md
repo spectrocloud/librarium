@@ -15,7 +15,7 @@ They cover design decisions, component relationships, and trade-offs rather than
 | **Topic**                                                   | **What you understand**                                                                                           |
 | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [Architecture Overview](./architecture.md)                  | The component stack, request routing, model provisioning lifecycle, and data residency model.                     |
-| [Clients and Quotas](./clients-and-quotas.md)               | What a client is, why the appliance serves many clients, and how API tokens and quotas govern usage.              |
+| [Clients and Quotas](./clients-and-quotas.md)               | What a client is, how quotas meter usage, and how utilization, consumption, and historical windows are reported.  |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                       |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.            |
 | [Installation Architecture](./installation-architecture.md) | How the appliance installs across two stages, including the roles of the jumpbox and why the network uses a bond. |

@@ -2,8 +2,8 @@
 sidebar_label: "Set and Manage Client Quotas"
 title: "Set and Manage Client Quotas"
 description:
-  "Step-by-step guidance for platform administrators on how to set, edit, and remove usage quotas on a client on a
-  PaletteAI Inference Launchpad appliance."
+  "Step-by-step guidance for platform administrators on how to set, raise, edit, and remove usage quotas on a client on
+  a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["paletteai-inference-launchpad", "clients", "quotas", "how-to"]
@@ -71,16 +71,21 @@ clearing a backlog, and turn it back on afterward.
 
 5. Choose the dimension to limit: **requests**, **tokens**, or **cost**.
 
-6. Choose the window the limit applies over: **second**, **minute**, **hour**, or **day**.
+6. Choose the window the limit applies over: **hour** or **day**. Day limits reset at midnight UTC. Hour limits reset at
+   the top of each UTC hour.
 
 7. Enter the limit for that dimension and window.
 
-8. Repeat the previous steps for each limit you want. For example, add a requests-per-minute limit, a tokens-per-day
-   limit, and a cost-per-day limit.
+8. Repeat the previous steps for each limit you want. For example, add a tokens-per-day limit and a cost-per-day limit.
 
 9. Save the client.
 
-Each row limits one dimension over one window. A window with no row stays uncapped.
+Each row limits one dimension over one window. A window with no row stays uncapped. All active limits apply together.
+When a window is full, new requests are blocked until it resets.
+
+Per-second and per-minute windows are not offered when you add a limit. A client that already has a second or minute
+limit still displays that row, and the appliance still enforces it. To remove such a limit, delete the row and save the
+client.
 
 ## Edit or Remove a Quota
 
@@ -90,9 +95,28 @@ Each row limits one dimension over one window. A window with no row stays uncapp
 
 3. Select the **Quotas** section.
 
-4. Change a limit, or remove a window-limit row.
+4. Change a limit, or remove a window-limit row. Use this path when you need to lower a ceiling. **Increase limit** on
+   the **Usage** page cannot lower a cap.
 
 5. Save the client.
+
+## Increase a Limit from Usage
+
+When a client is at a limit, raise the ceiling from **Usage** instead of editing the row. **Increase limit** keeps the
+usage already counted. It does not reset the counter to zero.
+
+This action requires permission to manage clients.
+
+1. From the left main menu, select **Usage**.
+
+2. Select the **Quota Usage** tab, and then select the client.
+
+3. On the window row, select **Increase limit**.
+
+4. Enter a value above the current limit, preview the change, and then select **Confirm & Apply**.
+
+For the full sequence, including what **Reached limit** and the preview dialog show, refer to
+[Increase a Limit from Quota Usage](./view-client-usage.md#increase-a-limit-from-quota-usage).
 
 ## Next Steps
 
