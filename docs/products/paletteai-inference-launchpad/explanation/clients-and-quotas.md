@@ -44,8 +44,9 @@ cannot:
   and plan accordingly.
 - **Contain credentials.** A token that a developer commits to a repository by mistake affects only its client. You
   revoke that one token without disrupting any other workload.
-- **Govern outbound reach.** When the appliance routes to external providers, you can control which clients may send
-  requests off the appliance. For example, you can allow only certain coding assistants to reach a paid frontier model.
+- **Govern outbound reach.** When the appliance routes to external providers, including built-in frontier providers and
+  registered external inference endpoints, you can control which clients may send requests off the appliance. For
+  example, you can allow only certain coding assistants to reach a paid frontier model or a registered host.
 
 Creating separate clients is not about distributing access for its own sake. It is how you keep a shared, finite
 appliance usable by many workloads at once.
@@ -104,9 +105,10 @@ Access to models depends on whether a model runs locally on the appliance or is 
 - **Local models.** Every client can call every model served locally on the appliance. The appliance does not restrict
   which local models a client may call. It meters and limits how much a client uses through quotas, but it does not gate
   access to any local model.
-- **External models.** If the appliance is configured to route to external providers, each client's reach is governed by
-  an allow-list that denies by default. A client can call an external provider or model only when that provider or model
-  is explicitly allowed for it.
+- **External models.** If the appliance is configured to route to external providers or registered inference endpoints,
+  each client's reach is governed by an allow-list that denies by default. A client can call an external provider,
+  registered endpoint, or model only when that provider, endpoint, or model is explicitly allowed for it. To register a
+  host, refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## How It Fits Together
 
@@ -125,6 +127,8 @@ quotas, so it is ready to run on every request.
 
 - [Create a Client](../how-to-guides/create-a-client.md) walks through creating a client and issuing its first API
   token.
+- [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md) walks through
+  registering an OpenAI-compatible host and authorizing a client to use it.
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md) walks through connecting a
   coding assistant to a client with an API token.
 - [Architecture Overview](./architecture.md) explains how the appliance routes requests and where its components sit.

@@ -74,7 +74,10 @@ place. The gateway does not restart, and it does not drain requests that are in 
 already routed continue on their assigned model, and the new default applies only to later requests.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
-quotas. For how clients, API tokens, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
+quotas. When routing policy sends a request off the appliance, the gateway can reach a built-in frontier provider or a
+registered external inference endpoint. That traffic is metered as egress. For how clients, API tokens, and quotas work
+together, refer to [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ### The Default Model
 

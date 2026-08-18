@@ -63,6 +63,11 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Grants every client access to all local models, and can burst to external frontier models. Refer to
   [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
 
+- Registers an OpenAI-compatible host as an external inference endpoint, then authorizes clients and routes to its
+  models. Traffic to a registered endpoint is metered as egress. Refer to
+  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
+  information.
+
 - Reports per-client usage and lets you revoke a token or delete a client at any time. Refer to
   [View Client Usage](./how-to-guides/view-client-usage.md) and
   [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
