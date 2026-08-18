@@ -63,17 +63,17 @@ Expanding the row lists only the nodes that belong to the model:
 
 An ineligible node is not selectable and states why.
 
-| **What you see**                                                                  | **What it means**                                                    |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `2 free GPU(s), needs 4`                                                          | Fewer free GPUs than the model requires.                             |
-| `has L40S, model requires H200`                                                   | The model is pinned to a GPU product this node lacks.                |
-| `cordoned — a new engine pod would never be scheduled here`                       | Nothing new will schedule here.                                      |
-| `NotReady`                                                                        | The node is not Ready.                                               |
-| `not in the cluster's node roster`                                                | Not a node in this cluster.                                          |
-| `GPU capacity unknown on this node — cannot confirm it can run the model`         | GPU count unreadable. Treated as unusable, never as free.            |
-| `GPU product unknown on this node — cannot confirm it matches …`                  | GPU model unreadable, so a hardware match cannot be proven.          |
-| `the model's weights are not staged on this node`                                 | The model's weights are not on this node.                            |
-| `only the model's metadata is staged on this node, not its weights`               | The upload is incomplete on this node.                               |
+| **What you see**                                                                         | **What it means**                                               |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `2 free GPU(s), needs 4`                                                                 | Fewer free GPUs than the model requires.                        |
+| `has L40S, model requires H200`                                                          | The model is pinned to a GPU product this node lacks.           |
+| `cordoned — a new engine pod would never be scheduled here`                              | Nothing new will schedule here.                                 |
+| `NotReady`                                                                               | The node is not Ready.                                          |
+| `not in the cluster's node roster`                                                       | Not a node in this cluster.                                     |
+| `GPU capacity unknown on this node — cannot confirm it can run the model`                | GPU count unreadable. Treated as unusable, never as free.       |
+| `GPU product unknown on this node — cannot confirm it matches …`                         | GPU model unreadable, so a hardware match cannot be proven.     |
+| `the model's weights are not staged on this node`                                        | The model's weights are not on this node.                       |
+| `only the model's metadata is staged on this node, not its weights`                      | The upload is incomplete on this node.                          |
 | `local-weights state unreadable for this node — cannot confirm the model is staged here` | The appliance cannot confirm that the weights are on this node. |
 
 ## How Local Weights Affect the Choice
@@ -87,8 +87,8 @@ to [Upload a Model](../how-to-guides/upload-a-model.md).
 - **Not a weight copy.** Stage weights on a node before you select it for a model you uploaded.
 - **Not automatic rebalancing.** A model does not follow new hardware. Add the node, as described in
   [Add a Model to More Nodes](../how-to-guides/deploy-a-model.md#add-a-model-to-more-nodes).
-- **Not a substitute for per-node drain, resume, or replace.** Those actions apply to the appliance as a whole.
-  Per-node **Remove** and **Retry** target a single node.
+- **Not a substitute for per-node drain, resume, or replace.** Those actions apply to the appliance as a whole. Per-node
+  **Remove** and **Retry** target a single node.
 
 ## Next Steps
 

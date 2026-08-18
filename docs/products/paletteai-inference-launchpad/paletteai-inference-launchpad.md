@@ -102,8 +102,7 @@ Whatever brought you here, these are the fastest paths in.
   [Install the appliance](./how-to-guides/install-the-appliance.md) •
   [Upload a model](./how-to-guides/upload-a-model.md) • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
-  [Model Placement](./explanation/model-placement.md) •
-  [Clients and Quotas](./explanation/clients-and-quotas.md) •
+  [Model Placement](./explanation/model-placement.md) • [Clients and Quotas](./explanation/clients-and-quotas.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •
   [Cursor](./how-to-guides/use-cursor.md) • [OpenAI Codex](./how-to-guides/use-codex.md) •

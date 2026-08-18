@@ -53,8 +53,8 @@ For the specific values and example server configurations, refer to
 ## Model Provisioning Lifecycle
 
 When you deploy a model, you choose which nodes run it. The deploy dialog lists each node with its hardware, free GPUs,
-and whether it can run the model you picked. The appliance creates one inference engine per chosen node and exposes those
-engines through a single per-model endpoint. For when to pin a model to a subset of nodes, refer to
+and whether it can run the model you picked. The appliance creates one inference engine per chosen node and exposes
+those engines through a single per-model endpoint. For when to pin a model to a subset of nodes, refer to
 [Model Placement](./model-placement.md).
 
 The appliance reports each node's free capacity honestly. A node shows either a known free GPU count or an unknown

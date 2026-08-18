@@ -151,5 +151,5 @@ deployment with that reason. It does not place the engine on a different node.
 ## Next Steps
 
 To change which model handles requests that do not name a model explicitly, refer to
-[Switch the Default Model](./set-the-default-model.md). For why you would pin a model to some nodes and not others, refer
-to [Model Placement](../explanation/model-placement.md).
+[Switch the Default Model](./set-the-default-model.md). For why you would pin a model to some nodes and not others,
+refer to [Model Placement](../explanation/model-placement.md).
