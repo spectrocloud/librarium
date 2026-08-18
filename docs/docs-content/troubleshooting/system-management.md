@@ -14,7 +14,7 @@ Refer to the following sections to troubleshoot errors encountered while perform
 Palette and Palette VerteX. It also includes troubleshooting for tenant administrators when the underlying issue relates
 to the system.
 
-## Scenario - Pull Secret Propagated to Some Clusters but Not Others
+## Scenario - Image Pull Secret not propagated to all clusters
 
 Because Spectro Cloud publishes security-hardened images to authenticated OCI registries, the management plane, PCGs,
 and managed workload clusters need the
@@ -50,7 +50,7 @@ start at Step 5.
 4. Record every tenant that reports one or more clusters in the **Propagation Failed** state.
 
 5. Log in to the Palette UI as a tenant administrator. In self-hosted environments, log in as an administrator for one
-   of the tenants you recorded in Step 4.
+   of the tenants that you recorded in Step 4.
 
 6. From the left **Main Menu**, select **Security**, then select **Hardened Images**.
 
@@ -69,26 +69,31 @@ Complete the following steps for every cluster that you recorded in the previous
    export KUBECONFIG=<path-to-kubeconfig>
    ```
 
-2. Create the image pull secret in every Spectro Cloud system namespace on the workload cluster. Replace
-   `<base64-encoded-string>` with the base64-encoded pull secret provided by your Spectro Cloud support representative.
-   For self-hosted environments, this is the same value that you pasted into the **Pull secret** field in the system
+2. Create a shell variable set to the base64-encoded pull secret provided by your Spectro Cloud support representative. For self-hosted environments, this is the same value that you pasted into the **Pull secret** field in the system
    console.
 
    ```shell
-   for ns in hubble-system jet-system ui-system ingress-traefik cp-system kube-system; do
-     kubectl create secret docker-registry spectro-image-pull-secret \
-       --from-literal=.dockerconfigjson=<base64-encoded-string> \
-       --type=kubernetes.io/dockerconfigjson \
-       --namespace=$ns
-   done
+   export DOCKER_CONFIG_JSON='<base64-encoded-string-provided>'
+   ```
+
+2. Create the image pull secret in every Spectro Cloud system namespace on the workload cluster. Replace
+   `<base64-encoded-string>` with the base64-encoded pull secret provided by your Spectro Cloud support representative.
+   
+
+   ```shell
+   kubectl apply -f - <<EOF
+   apiVersion: v1
+   kind: Secret
+   metadata:
+      name: spectro-image-pull-secret
+      namespace: <namespace>
+   type: kubernetes.io/dockerconfigjson
+   data:
+      .dockerconfigjson: ${DOCKER_CONFIG_JSON}
+   EOF
    ```
 
    ```shell title="Example output" hideClipboard
-   secret/spectro-image-pull-secret created
-   secret/spectro-image-pull-secret created
-   secret/spectro-image-pull-secret created
-   secret/spectro-image-pull-secret created
-   secret/spectro-image-pull-secret created
    secret/spectro-image-pull-secret created
    ```
 
