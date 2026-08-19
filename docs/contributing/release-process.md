@@ -350,14 +350,21 @@ notes body with Super, and inserts it into the [Release Notes](../docs-content/r
 patch release can also ship a new CanvOS or Palette CLI version, so the target records those versions across the pages
 that document them.
 
-The target prompts for the following values. Each prompt is skipped when its environment variable is already set, and
-also when there is no terminal to prompt on, so the same target runs unattended in a workflow.
+The target asks a short series of questions, so you are only asked for values that apply to this patch. Each question is
+skipped when its environment variable is already set.
 
-| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                              |
-| ---------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`, or a placeholder such as `4.9.x`. Leave it empty to accept the version the candidates JQL reported. |
-| nickfury branch or tag | `NICKFURY_REF`           | The name of the `spectrocloud/nickfury` branch or tag that holds the component versions. Leave it empty to record the component versions as pending.         |
-| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive it from the published binary, or to record it as pending when that is unavailable.   |
+| **Question**                                        | **Answer**                                                                      | **Environment Variable**  |
+| --------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
+| Do you know the Palette patch release version?      | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
+| Is a new CanvOS or Palette CLI version being added? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
+| Do you know the nickfury branch or tag name?        | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
+| The Palette CLI checksum                            | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
+
+The Palette CLI checksum is published in ReTool, so look it up there and paste it in. Typing `derive` reads it from the
+published binary instead, which streams around 400 MB and only works once the release is out.
+
+An unattended run answers from the environment variables alone. It generates the release notes body only, unless
+`NICKFURY_REF` or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the component versions are wanted.
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
 prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
@@ -381,11 +388,10 @@ derived from the version.
 Palette `4.9.47`, for example, can be built from the tag `v4.9.47-rc.2`, which no version-derived guess would find. The
 prompt accepts a name copied straight from a release ticket, including a full `refs/tags/...` or `refs/heads/...` path.
 Supplying a bare version instead of a name also works: the target tries `v<version>` and then `release-<version>`.
-Leaving the prompt empty records the component versions as pending instead of looking anything up.
 
-The ref prompt only appears when a GitHub token is available, because without one there is nothing to read. The target
-reports which token it is using before it prompts for anything, so a missing token is clear before you answer the
-version prompt rather than after.
+The ref question only appears when a new component version is being added and a GitHub token is available, because
+without either there is nothing to read. When no token is available the target says so and records the versions as
+pending instead.
 
 Once the ref resolves, the target reads the `stylus` and `palette-cli` versions from `release/spectro_versions.txt` in
 the `spectrocloud/nickfury` repository. The target then compares those versions with the versions already recorded in

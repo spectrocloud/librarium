@@ -126,46 +126,33 @@ fi
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
 echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 
-# Reading nickfury needs a token that can see a private repository. Resolve it before prompting for
-# anything, so the run states up front whether the component versions can be looked up at all,
-# rather than asking for a version and then quietly ignoring it.
+# Reading nickfury needs a token that can see a private repository. Resolve it quietly here and
+# report on it only if the component versions are actually wanted, so a run that has none to record
+# never mentions nickfury at all.
 #
 # GITHUB_TOKEN comes from .env for a local run and from the workflow environment in CI. When it is
 # absent, fall back to the token the GitHub CLI already holds, which is usually signed in to the
 # organisation on a writer's machine.
 if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
   GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
-
-  if [[ -n "$GITHUB_TOKEN" ]]; then
-    export GITHUB_TOKEN
-    echo "ℹ️  GITHUB_TOKEN is not set, so the GitHub CLI token from 'gh auth token' is used to read $NICKFURY_REPO."
-  fi
+  [[ -n "$GITHUB_TOKEN" ]] && export GITHUB_TOKEN
 fi
 
-if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the CanvOS and Palette CLI versions are not looked up. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', then re-run this script. 'make init-release' adds the .env placeholder." >&2
-else
-  echo "ℹ️  Component versions will be read from $NICKFURY_REPO."
-fi
-
-# Confirm the patch release version. It heads the new release notes section, and it is the key the
-# documentation pages record the CanvOS and Palette CLI versions against. A placeholder such as
-# 4.9.x is a valid answer while the real version is still being decided.
+# The prompts below form a short interview, so only the values that apply to this patch are asked
+# for. Each is skipped when its environment variable is already set, and an unattended run answers
+# from those variables alone, so the same script still works in CI.
 #
-# Every prompt below is skipped when its environment variable is already set, and when there is no
-# terminal to prompt on, so the same script still runs unattended in CI.
+# The first question settles the patch release version. It heads the new release notes section, and
+# it is the key the documentation pages record the component versions against.
 RELEASE_PATCH_VERSION="${PATCH_RELEASE_VERSION:-}"
 
 if [[ -z "$RELEASE_PATCH_VERSION" && -t 0 ]]; then
-  echo "ℹ️  The patch release version heads the new release notes section. A placeholder such as"
-  echo "    $RELEASE_PATCH is fine while the real version is still being decided."
-
-  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-    echo "    A follow-up prompt then asks for the $NICKFURY_REPO branch or tag that holds the CanvOS"
-    echo "    and Palette CLI versions for it. The version and that ref name are separate values."
+  if confirm "Do you know the Palette patch release version?" y; then
+    read -r -p "   Specify the Palette patch release version, for example 4.9.48: " RELEASE_PATCH_VERSION
+  else
+    echo "   The version heads the release notes section, so a placeholder stands in until it is known."
+    read -r -p "   Specify a placeholder version, for example 4.9.x [$RELEASE_PATCH]: " RELEASE_PATCH_VERSION
   fi
-
-  read -p "Specify the Palette patch release version, for example 4.9.48 or the $RELEASE_PATCH placeholder [$RELEASE_PATCH]: " RELEASE_PATCH_VERSION
 fi
 
 # Pressing Enter, and an unattended run with no version supplied, both accept the version the
@@ -195,17 +182,50 @@ fi
 RELEASE_CANVOS=""
 RELEASE_PALETTE_CLI_VERSION=""
 
-if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+# The second question decides whether there is any component work to do. A patch release often
+# ships the same CanvOS and Palette CLI as the release before it, in which case none of the
+# component pages should be touched and the run is only about the release notes body.
+#
+# Unattended, the answer is inferred from whether a ref or a checksum was supplied, so a workflow
+# that passes neither behaves as though nothing changed.
+if [[ -n "${PATCH_COMPONENT_UPDATES:-}" ]]; then
+  case "$PATCH_COMPONENT_UPDATES" in
+    true | yes | 1) COMPONENT_UPDATES=true ;;
+    *) COMPONENT_UPDATES=false ;;
+  esac
+elif [[ -t 0 ]]; then
+  if confirm "Is a new CanvOS or Palette CLI version being added in this patch release?" n; then
+    COMPONENT_UPDATES=true
+  else
+    COMPONENT_UPDATES=false
+  fi
+elif [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+  COMPONENT_UPDATES=true
+else
+  COMPONENT_UPDATES=false
+fi
+
+if [[ "$COMPONENT_UPDATES" == false ]]; then
+  echo "ℹ️  No new CanvOS or Palette CLI version, so only the release notes body is generated."
+elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
+  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
+fi
+
+if [[ "$COMPONENT_UPDATES" == true && -n "${GITHUB_TOKEN:-}" ]]; then
   # The release engineers hand over a branch or a tag, and neither is named after the patch
   # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
   # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
   # than guessing it from the version, because the two do not always correspond. For example,
   # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
   if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
-    echo "ℹ️  Component versions come from $NICKFURY_REPO, whose refs are named:"
-    echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
-    echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
-    read -p "Specify the $NICKFURY_REPO branch or tag name, or leave blank to record the versions as pending: " NICKFURY_REF
+    if confirm "Do you know the $NICKFURY_REPO branch or tag name to read the versions from?" y; then
+      echo "   Its refs are named:"
+      echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
+      echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
+      read -r -p "   Specify the branch or tag name: " NICKFURY_REF
+    else
+      echo "   The component versions are recorded as pending until the branch or tag is known."
+    fi
   fi
 
   # Accept a ref pasted in full, for example "refs/tags/v4.9.47-rc.2", and tolerate stray
@@ -274,19 +294,16 @@ fi
 # Whatever is still unknown is recorded as pending rather than omitted, so the release notes and
 # the tables are scaffolded on the first run and only need their values corrected later. Each
 # marker names what is missing, so the placeholders are easy to spot and to grep for.
-if [[ -z "$RELEASE_CANVOS" ]]; then
-  RELEASE_CANVOS="$PENDING_VERSION"
+if [[ "$COMPONENT_UPDATES" == true ]]; then
+  if [[ -z "$RELEASE_CANVOS" ]]; then
+    RELEASE_CANVOS="$PENDING_VERSION"
+  fi
+
+  if [[ -z "$RELEASE_PALETTE_CLI_VERSION" ]]; then
+    RELEASE_PALETTE_CLI_VERSION="$PENDING_VERSION"
+  fi
 fi
 
-if [[ -z "$RELEASE_PALETTE_CLI_VERSION" ]]; then
-  RELEASE_PALETTE_CLI_VERSION="$PENDING_VERSION"
-fi
-
-# Only document a component whose version actually moved. A patch release often ships the same
-# CanvOS and Palette CLI as the release before it, and restating an unchanged version would add a
-# release note and a table row that say nothing new. The comparison skips any row this script has
-# already written for this version, so a re-run compares against the previous release rather than
-# against its own output.
 # The table rows this script writes are anchored on the release version, so a run that confirms a
 # version after an earlier run scaffolded a placeholder would leave the placeholder row behind. The
 # version each section was last generated with is recorded alongside its ticket marker, so a change
@@ -306,31 +323,37 @@ if [[ -n "$PREVIOUS_RELEASE_PATCH" && "$PREVIOUS_RELEASE_PATCH" != "$RELEASE_PAT
   echo "ℹ️  $PATCH_RELEASE_TICKET was last generated for $PREVIOUS_RELEASE_PATCH, so its rows are superseded by $RELEASE_PATCH."
 fi
 
+# Only document a component whose version actually moved. Restating an unchanged version would add
+# a release note and a table row that say nothing new. The comparison skips any row this script has
+# already written for this version, so a re-run compares against the previous release rather than
+# against its own output.
 CANVOS_CHANGED=false
 PALETTE_CLI_CHANGED=false
 
-DOCUMENTED_CANVOS=$(get_documented_table_version \
-  "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN" "$RELEASE_PATCH")
-DOCUMENTED_PALETTE_CLI=$(get_documented_table_version \
-  "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN" "$RELEASE_PATCH")
+if [[ "$COMPONENT_UPDATES" == true ]]; then
+  DOCUMENTED_CANVOS=$(get_documented_table_version \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN" "$RELEASE_PATCH")
+  DOCUMENTED_PALETTE_CLI=$(get_documented_table_version \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN" "$RELEASE_PATCH")
 
-# A pending version is always written, because the point of recording it is to scaffold the entry
-# that a later run fills in. Only a known version is worth comparing against what is published.
-if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
-  CANVOS_CHANGED=true
-elif [[ "$RELEASE_CANVOS" != "$DOCUMENTED_CANVOS" ]]; then
-  CANVOS_CHANGED=true
-  echo "ℹ️  CanvOS moved from $DOCUMENTED_CANVOS to $RELEASE_CANVOS."
+  # A pending version is always written, because the point of recording it is to scaffold the entry
+  # that a later run fills in. Only a known version is worth comparing against what is published.
+  if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
+    CANVOS_CHANGED=true
+  elif [[ "$RELEASE_CANVOS" != "$DOCUMENTED_CANVOS" ]]; then
+    CANVOS_CHANGED=true
+    echo "ℹ️  CanvOS moved from $DOCUMENTED_CANVOS to $RELEASE_CANVOS."
+  fi
+
+  if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
+    PALETTE_CLI_CHANGED=true
+  elif [[ "$RELEASE_PALETTE_CLI_VERSION" != "$DOCUMENTED_PALETTE_CLI" ]]; then
+    PALETTE_CLI_CHANGED=true
+    echo "ℹ️  The Palette CLI moved from $DOCUMENTED_PALETTE_CLI to $RELEASE_PALETTE_CLI_VERSION."
+  fi
 fi
 
-if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
-  PALETTE_CLI_CHANGED=true
-elif [[ "$RELEASE_PALETTE_CLI_VERSION" != "$DOCUMENTED_PALETTE_CLI" ]]; then
-  PALETTE_CLI_CHANGED=true
-  echo "ℹ️  The Palette CLI moved from $DOCUMENTED_PALETTE_CLI to $RELEASE_PALETTE_CLI_VERSION."
-fi
-
-if [[ "$CANVOS_CHANGED" == false && "$PALETTE_CLI_CHANGED" == false ]]; then
+if [[ "$COMPONENT_UPDATES" == true && "$CANVOS_CHANGED" == false && "$PALETTE_CLI_CHANGED" == false ]]; then
   echo "ℹ️  CanvOS ($RELEASE_CANVOS) and the Palette CLI ($RELEASE_PALETTE_CLI_VERSION) are unchanged from the documented versions, so no Edge or Automation notes are added."
 fi
 
@@ -343,15 +366,17 @@ RELEASE_PALETTE_CLI_SHA="${PATCH_PALETTE_CLI_SHA:-}"
 RELEASE_PALETTE_CLI_URL=""
 
 if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
-  # A pending version names no binary, so there is nothing to prompt for or download.
+  # A pending version names no binary, so there is nothing to ask for or to download.
   if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
     if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
-      read -p "Specify the SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION, or leave blank to derive it from the published binary: " RELEASE_PALETTE_CLI_SHA
+      echo "ℹ️  The SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION is published in ReTool. Look it up there."
+      read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " RELEASE_PALETTE_CLI_SHA
     fi
 
-    # The helper checks that the binary is published before transferring it, so an unreleased
-    # version costs one request rather than a download that cannot succeed.
-    if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
+    # Deriving it streams the binary, which is around 400 MB, so it is opt-in rather than the
+    # fallback. The helper checks that the binary is published first, so an unreleased version
+    # costs one request rather than a transfer that cannot succeed.
+    if [[ "$RELEASE_PALETTE_CLI_SHA" == "derive" ]]; then
       RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION") || RELEASE_PALETTE_CLI_SHA=""
     fi
 
@@ -367,7 +392,7 @@ if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
   # only its pending cells need filling once the binary is published.
   if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
     RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-    echo "ℹ️  No checksum available for the Palette CLI yet, so the CLI Tools row records '$PENDING_SHA'. Re-run with PATCH_PALETTE_CLI_SHA set, or once the binary is published, to fill it in."
+    echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
   fi
 
   if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then

@@ -18,7 +18,10 @@ on:
         description: "The nickfury branch or tag name holding the component versions. Branches are release-<version>, tags are v<version> with an optional -rc.N suffix (e.g. release-4.9 or v4.9.47-rc.2). Leave empty to try v<patch_version> then release-<patch_version>."
         required: false
       palette_cli_sha:
-        description: "SHA256 checksum of the Palette CLI binary. Leave empty to derive it from the published binary."
+        description: "SHA256 checksum of the Palette CLI binary, from ReTool. Leave empty to record it as pending."
+        required: false
+      component_updates:
+        description: "Set to true when this patch adds a new CanvOS or Palette CLI version. Leave empty to generate the release notes body only."
         required: false
 
 env:
@@ -82,6 +85,7 @@ jobs:
           PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
           NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
           PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
+          PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
         run: |
           touch .env
           PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes

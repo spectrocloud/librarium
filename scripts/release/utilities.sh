@@ -423,6 +423,41 @@ fetch_palette_cli_sha() {
     printf '%s' "$digest"
 }
 
+# Utility function to ask a yes or no question on a terminal, so a script can branch on what the
+# writer already knows rather than making them supply values that do not apply. An empty reply
+# takes the default, and so does a run with no terminal to prompt on, so an unattended job never
+# stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing "(y/n)"
+# $2 - default when the reply is empty or there is no terminal: "y" or "n"
+# Returns 0 for yes, 1 for no.
+confirm() {
+    local question="$1"
+    local default="$2"
+    local hint reply
+
+    if [[ "$default" == "y" ]]; then
+        hint="Y/n"
+    else
+        hint="y/N"
+    fi
+
+    if [[ ! -t 0 ]]; then
+        [[ "$default" == "y" ]] && return 0 || return 1
+    fi
+
+    while true; do
+        read -r -p "$question ($hint): " reply
+        reply="${reply:-$default}"
+
+        case "$reply" in
+            [Yy] | [Yy][Ee][Ss]) return 0 ;;
+            [Nn] | [Nn][Oo]) return 1 ;;
+            *) echo "   Answer y or n." >&2 ;;
+        esac
+    done
+}
+
 # Utility function to verify the presence of an environment variable
 # Params:
 # $1 - environment variable name
