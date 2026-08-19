@@ -567,9 +567,8 @@ kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer
 ```
 
 Open your browser window and navigate to `http://localhost:9090`. The Kubecost UI provides you with a variety of cost
-information about your cluster. Read more about
-[Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
-the cost analyzer pack.
+information about your cluster. Read more about [Navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost) to
+make the most of the cost analyzer pack.
 
 ![Image that shows the Kubecost UI](/getting-started/azure/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
