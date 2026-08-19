@@ -81,8 +81,7 @@ advances. Enable the **Skip worker node update (Optional)** toggle on a worker p
 Kubernetes version upgrades the control plane and any pool without the toggle, while pools with the toggle stay at their
 current version.
 
-This is useful when crossing several Kubernetes minor versions to reach a newer long-term support release, because it
-reduces how many times worker nodes repave.
+This is useful when crossing several Kubernetes minor versions, because it reduces how many times worker nodes repave.
 
 Two constraints apply while the toggle is enabled.
 

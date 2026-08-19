@@ -128,9 +128,9 @@ pack, but if you want to use a different storage pack altogether, we recommend y
 
 Edge Native clusters support upgrading the control plane independently from worker pools. You can enable the **Skip
 worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes upgrade while the control
-plane advances. This decouples worker upgrades from control plane upgrades, which lets you apply a security patch or
-advance an LTS upgrade without repaving worker nodes, and it reduces the number of worker upgrades needed to cross
-several Kubernetes minor versions.
+plane advances. This decouples worker upgrades from control plane upgrades, which lets you move the control plane
+forward, for example to apply a security patch, without repaving worker nodes. It also reduces the number of worker
+upgrades needed to cross several Kubernetes minor versions.
 
 Support depends on how the cluster is managed.
 
@@ -138,14 +138,6 @@ Support depends on how the cluster is managed.
 | ----------------------------- | ------------------------------------------------------------------------ |
 | Connected (centrally managed) | Supported. Configure the toggle in Palette.                              |
 | Locally managed, airgapped    | Supported. Configure the toggle in Local UI or through the Local UI API. |
-
-:::info
-
-A newer Kubernetes long-term support version only becomes available as an upgrade target once your Palette or VerteX
-instance itself supports it. Support for newer long-term support versions is not back-ported to earlier Palette
-long-term support releases, so upgrade your Palette or VerteX instance first, then upgrade your clusters.
-
-:::
 
 When a cluster profile update bumps the Kubernetes version, the control plane and any worker pools that do not have
 **Skip worker node update** enabled are upgraded. Worker pools with the toggle enabled are skipped and stay at their
