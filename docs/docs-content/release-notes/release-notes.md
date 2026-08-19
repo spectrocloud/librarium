@@ -100,6 +100,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
+
+- The Custom UI appliance install wizard now renders a specific inline error at any field whose value is invalid.
+  Sections that contain an invalid field display an "invalid" badge on the section title, and the step counter reads as
+  "X of Y complete."
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-9265 -->
 
 - Edge workflows have been updated to Kairos v4.1.2 with `kairos-init` v0.16.x. Day-1 and Day-2 upgrades from earlier
