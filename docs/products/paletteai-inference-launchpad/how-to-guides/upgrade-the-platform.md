@@ -15,7 +15,7 @@ Upgrade the PaletteAI Inference Launchpad appliance by uploading a newer content
 the **Update** action in Local UI, and rolling the application charts forward with Flux. You do not reinstall the OS or
 redeploy the cluster.
 
-## Before You Begin
+## Prerequisites
 
 Confirm each prerequisite before starting:
 
@@ -29,7 +29,7 @@ Confirm each prerequisite before starting:
 - A newer [content bundle](../reference/glossary.md#content-bundle) from Artifact Studio that matches the appliance's
   GPU vendor, NVIDIA or AMD.
 
-## Upgrade the Appliance
+## Upgrade the Platform
 
 1. Download the new content bundle from Artifact Studio. It must match the hardware GPU, as described in
    [Download the Artifacts](./install-the-appliance.md#download-the-artifacts).
