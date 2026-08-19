@@ -148,20 +148,34 @@ that document them.
 The target prompts for the following values. Each prompt is skipped when its environment variable is already set, and
 also when there is no terminal to prompt on, so the same target runs unattended in a workflow.
 
-| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                |
-| ---------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`. Leave it empty to generate the release notes body alone.                              |
-| nickfury branch or tag | `NICKFURY_REF`           | The `spectrocloud/nickfury` branch or tag that holds the component versions. Defaults to `v<version>`, then falls back to `release-<version>`. |
-| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive the checksum from the published binary, which transfers around 400 MB. |
+| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                           |
+| ---------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`. Leave it empty to generate the release notes body alone.                                         |
+| nickfury branch or tag | `NICKFURY_REF`           | The name of the `spectrocloud/nickfury` branch or tag that holds the component versions. Leave it empty to try `v<version>` and then `release-<version>`. |
+| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive the checksum from the published binary, which transfers around 400 MB.            |
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
-prompt both heads the new section and identifies the nickfury branch or tag to read. Leaving the prompt empty is the
-right answer while the version is still unknown. Re-running the target on the same ticket refreshes the section,
-including its heading, so you can draft the notes early and re-run once the version is confirmed.
+prompt heads the new section. Leaving the prompt empty is the right answer while the version is still unknown.
+Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the notes early
+and re-run once the version is confirmed.
 
-When you supply a version, the target reads the `stylus` and `palette-cli` versions from `release/spectro_versions.txt`
-in the `spectrocloud/nickfury` repository. Reading that repository requires `GITHUB_TOKEN`. The target then compares
-those versions with the versions already recorded in the
+The second prompt asks for the nickfury branch or tag name, because a ref name does not always correspond to the patch
+release version. Release engineering hands over one of the following, so use the name you were given rather than one
+derived from the version.
+
+| **Ref**  | **Naming**          | **Example**                    |
+| -------- | ------------------- | ------------------------------ |
+| Branch   | `release-<version>` | `release-4.9`, `release-4.9.b` |
+| Tag      | `v<version>`        | `v4.9.46`                      |
+| Tag (RC) | `v<version>-rc.<N>` | `v4.9.47-rc.2`                 |
+
+Palette `4.9.47`, for example, can be built from the tag `v4.9.47-rc.2`, which no version-derived guess would find. The
+prompt accepts a name copied straight from a release ticket, including a full `refs/tags/...` or `refs/heads/...` path.
+Supplying a bare version instead of a name still works: the target tries `v<version>` and then `release-<version>`.
+
+Once the ref resolves, the target reads the `stylus` and `palette-cli` versions from `release/spectro_versions.txt` in
+the `spectrocloud/nickfury` repository. Reading that repository requires `GITHUB_TOKEN`. The target then compares those
+versions with the versions already recorded in the
 [Edge Compatibility Matrix](../docs-content/clusters/edge/edge-compatibility-matrix.md), because a patch release often
 ships the same components as the release before it. Only a component whose version moved is documented.
 
