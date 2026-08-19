@@ -75,13 +75,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
-#### Bug Fixes
-
 <!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
 
 - The Custom UI appliance install wizard now renders a specific inline error at any field whose value is invalid.
   Sections that contain an invalid field display an "invalid" badge on the section title, and the step counter reads as
   "X of Y complete."
+
+#### Bug Fixes
 
 ### VerteX
 
