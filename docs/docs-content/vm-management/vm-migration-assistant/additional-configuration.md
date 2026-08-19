@@ -174,7 +174,7 @@ A dedicated migration network can improve performance and reduce risks to the VM
 ### Networks Tab
 
 The **Networks** tab displays a table of
-[NetworkAttachmentDefinitions](https://docs.openshift.com/container-platform/4.8/rest_api/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1.html)
+[NetworkAttachmentDefinitions](https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1)
 from the cluster. This tab is only visible on host clusters.
 
 You can select a default migration network for the cluster to improve disk transfer performance. If no network is
