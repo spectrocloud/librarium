@@ -86,28 +86,40 @@ jobs:
         run: npm ci
 
       # Split the apt step (--with-deps) from the browser download so a failure is attributable in
-      # the logs. A healthy install takes ~15s, but a slow Ubuntu mirror can take far longer: on
-      # 2026-08-19 a single 3.5 MB font package took over five minutes.
+      # the logs. A healthy install takes ~15s, but Ubuntu mirror throughput varies wildly: on
+      # 2026-08-19 one shard finished in 338s while three others could not pull the same 21 MB of
+      # font packages inside 20 minutes, on the same run.
       #
-      # Do NOT wrap install-deps in `timeout`. It was tried and removed. `timeout` kills node but
-      # not the apt-get it spawned, which survives as an orphan still holding the dpkg lock, so
-      # every retry then fails in ~2s against our own process:
+      # `timeout` bounds each attempt, and the `pkill` after it is NOT optional. Without it,
+      # `timeout` kills node but leaves the apt-get it spawned running as an orphan still holding
+      # the dpkg lock, so every remaining retry fails in ~2s against our own process:
       #   E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process NNNN (apt-get)
-      # Runs 32252072288 and 32263311838 both died that way, with the orphan's own download output
-      # still appearing in the log after the final attempt failed. `timeout-minutes` below bounds a
-      # genuine stall without orphaning anything.
+      # Runs 32252072288 and 32263311838 died exactly that way, with the orphan's own download
+      # output still arriving in the log after the final attempt had already failed.
       #
-      # DPkg::Lock::Timeout makes apt wait for a contended lock instead of exiting 100, which is
-      # what makes the retries worth having. Playwright shells out to apt-get internally, so a
-      # config file is the only way to set it. See DOC-3103.
+      # Retries are productive rather than decorative: apt keeps completed and partial .debs in
+      # /var/cache/apt/archives, so attempt 2 resumes where attempt 1 was cut off. Budget is
+      # 3 x 360s plus 2 x 60s of delay = 20 min, inside the 25 min step ceiling.
+      #
+      # DPkg::Lock::Timeout makes apt wait for a genuinely contended lock instead of exiting 100.
+      # Playwright shells out to apt-get internally, so a config file is the only way to set it.
+      #
+      # None of this fixes a collapsed mirror. The durable fix is the mcr.microsoft.com/playwright
+      # image, which ships these fonts pre-baked and removes apt, the mirror, the lock and this
+      # whole scaffolding. See DOC-3103.
       - name: Install Playwright system dependencies
-        timeout-minutes: 20
+        timeout-minutes: 25
         uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with:
           command: |
             echo 'DPkg::Lock::Timeout "300";' | sudo tee /etc/apt/apt.conf.d/99lock-timeout >/dev/null
             sudo systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
-            npx playwright install-deps chromium
+            if ! timeout 360 npx playwright install-deps chromium; then
+              sudo pkill -TERM -x apt-get 2>/dev/null || true
+              sleep 5
+              sudo pkill -KILL -x apt-get 2>/dev/null || true
+              exit 1
+            fi
           attempt_limit: 3
           attempt_delay: 60000 # 1 minute
 
@@ -172,17 +184,22 @@ jobs:
             attempt_delay: 60000 # 1 minute
 
       # Retried because the apt step is the observed flake, independently per shard, which is why
-      # the failure moves between shards. Same treatment as the capture job above, and the same
-      # warning applies: do NOT wrap install-deps in `timeout`. Refer to the comment on that step
-      # for why, and for the two run IDs that demonstrate it. See DOC-3103.
+      # the failure moves between shards. Same treatment as the capture job above, including the
+      # `pkill` that reaps an orphaned apt-get. Do not drop it; refer to the comment on that step
+      # for why, and for the two run IDs that demonstrate what happens without it. See DOC-3103.
       - name: Install Playwright system dependencies
-        timeout-minutes: 20
+        timeout-minutes: 25
         uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with:
           command: |
             echo 'DPkg::Lock::Timeout "300";' | sudo tee /etc/apt/apt.conf.d/99lock-timeout >/dev/null
             sudo systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
-            npx playwright install-deps chromium
+            if ! timeout 360 npx playwright install-deps chromium; then
+              sudo pkill -TERM -x apt-get 2>/dev/null || true
+              sleep 5
+              sudo pkill -KILL -x apt-get 2>/dev/null || true
+              exit 1
+            fi
           attempt_limit: 3
           attempt_delay: 60000 # 1 minute
 
