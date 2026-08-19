@@ -218,13 +218,13 @@ if [[ "$COMPONENT_UPDATES" == true && -n "${GITHUB_TOKEN:-}" ]]; then
   # than guessing it from the version, because the two do not always correspond. For example,
   # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
   if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
-    if confirm "Do you know the $NICKFURY_REPO branch or tag name to read the versions from?" y; then
+    # The consequence of answering no belongs in the question, so the choice is clear before it is
+    # made. Answering no leaves NICKFURY_REF empty, which the pending path below reports.
+    if confirm "Do you know the $NICKFURY_REPO branch or tag name? Answering no records the versions as pending" y; then
       echo "   Its refs are named:"
       echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
       echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
       read -r -p "   Specify the branch or tag name: " NICKFURY_REF
-    else
-      echo "   The component versions are recorded as pending until the branch or tag is known."
     fi
   fi
 
