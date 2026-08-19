@@ -15,7 +15,7 @@ on:
         description: "The Palette patch release version (e.g., 4.9.48). Leave empty to skip the CanvOS and Palette CLI updates."
         required: false
       nickfury_ref:
-        description: "The nickfury branch or tag holding the component versions (default: v<patch_version>)"
+        description: "The nickfury branch or tag name holding the component versions. Branches are release-<version>, tags are v<version> with an optional -rc.N suffix (e.g. release-4.9 or v4.9.47-rc.2). Leave empty to try v<patch_version> then release-<patch_version>."
         required: false
       palette_cli_sha:
         description: "SHA256 checksum of the Palette CLI binary. Leave empty to derive it from the published binary."
