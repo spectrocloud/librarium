@@ -120,9 +120,30 @@ fi
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
 echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 
-# Confirm the patch release version, so the CanvOS and Palette CLI versions this patch ships can
-# be read from nickfury. Both the branch and the tag that nickfury uses for a release are named
-# after the version, and the documentation pages are keyed on it too. Leaving it blank generates
+# Reading nickfury needs a token that can see a private repository. Resolve it before prompting for
+# anything, so the run states up front whether the component versions can be looked up at all,
+# rather than asking for a version and then quietly ignoring it.
+#
+# GITHUB_TOKEN comes from .env for a local run and from the workflow environment in CI. When it is
+# absent, fall back to the token the GitHub CLI already holds, which is usually signed in to the
+# organisation on a writer's machine.
+if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
+  GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
+
+  if [[ -n "$GITHUB_TOKEN" ]]; then
+    export GITHUB_TOKEN
+    echo "ℹ️  GITHUB_TOKEN is not set, so the GitHub CLI token from 'gh auth token' is used to read $NICKFURY_REPO."
+  fi
+fi
+
+if [[ -z "${GITHUB_TOKEN:-}" ]]; then
+  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the CanvOS and Palette CLI versions are not looked up. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', then re-run this script. 'make init-release' adds the .env placeholder." >&2
+else
+  echo "ℹ️  Component versions will be read from $NICKFURY_REPO."
+fi
+
+# Confirm the patch release version. It heads the new release notes section, and it is the key the
+# documentation pages record the CanvOS and Palette CLI versions against. Leaving it blank generates
 # the release notes alone, which is the right answer while the version is still unknown.
 #
 # Every prompt below is skipped when its environment variable is already set, and when there is no
@@ -130,6 +151,13 @@ echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 RELEASE_PATCH_VERSION="${PATCH_RELEASE_VERSION:-}"
 
 if [[ -z "$RELEASE_PATCH_VERSION" && -t 0 ]]; then
+  echo "ℹ️  The patch release version heads the new release notes section."
+
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    echo "    A follow-up prompt then asks for the $NICKFURY_REPO branch or tag that holds the CanvOS"
+    echo "    and Palette CLI versions for it. The version and that ref name are separate values."
+  fi
+
   read -p "Specify the Palette patch release version (for example, 4.9.48), or leave blank to skip the CanvOS and Palette CLI updates: " RELEASE_PATCH_VERSION
 fi
 
@@ -149,9 +177,8 @@ RELEASE_CANVOS=""
 RELEASE_PALETTE_CLI_VERSION=""
 
 if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
-  if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-    echo "⚠️  GITHUB_TOKEN is not set, so $NICKFURY_REPO cannot be read. Skipping the CanvOS and Palette CLI updates." >&2
-  else
+  # A missing token was already reported above, so this only has to skip the lookup quietly.
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
     # The release engineers hand over a branch or a tag, and neither is named after the patch
     # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
     # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
