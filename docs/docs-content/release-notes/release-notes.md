@@ -98,6 +98,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Decoupled Control Plane and Worker Node Upgrades](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9267 -->
+
+- Airgap content bundle uploads to Edge hosts are now chunked, resumable, and parallel by default. The Palette CLI
+  splits the bundle into chunks and transfers them over multiple connections, which shortens upload times for large
+  bundles on links with a high bandwidth-delay product, and verifies each chunk with SHA-256. An interrupted upload
+  resumes from the chunks the Edge host already holds instead of restarting. You can also stream a bundle straight from
+  a signed object store URL with the new `--src-url` flag rather than staging a local copy. The earlier single-stream
+  upload remains available with `--legacy`, and the CLI falls back to it automatically against Edge hosts that predate
+  chunked upload support. Refer to
+  [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
