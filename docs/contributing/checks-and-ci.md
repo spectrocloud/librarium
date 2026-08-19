@@ -36,8 +36,7 @@ We leverage [Vale](https://vale.sh/) to help us enforce our writing style progra
 mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the
 Vale CLI. Follow the steps below to install the Vale CLI and execute the writing checks.
 
-Start by installing Vale by following the [installation steps](https://vale.sh/docs/vale-cli/installation/) in the Vale
-documentation.
+Start by installing Vale by following the [installation steps](https://vale.sh/docs/install) in the Vale documentation.
 
 Next, download the required Vale plugins.
 
