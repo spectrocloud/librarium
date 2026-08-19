@@ -1,4 +1,6 @@
-# This workflow is triggered by the "Release to Production" workflow or when manually triggered.
+# This workflow runs on every push to master, and can also be triggered manually. It used to
+# be invoked by the "Release to Production" workflow on a schedule; see the DOC-3103 addendum
+# for why that changed.
 # The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
 # The screenshots can be used to compare the visual appearance of the website before and after a release.
 # The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
@@ -10,8 +12,41 @@ name: Screenshot Capture
 
 
 on:
-  workflow_call:
+  # Capture a reference set for every commit that lands on master, so a pull request can be
+  # compared against the exact commit it merges into rather than against whatever master
+  # looked like at the last scheduled capture. Master receives about 3 commits a day, and a
+  # capture costs roughly 32 minutes wall clock and 2 hours of runner time.
+  #
+  # `.github/**` is excluded because a commit touching only workflow files builds a site that
+  # is byte-identical to its parent's, so the parent's reference set is already a correct
+  # reference for it and a fresh capture would be 2 hours of runner time for the same images.
+  # Roughly 18% of master commits qualify (16 of the last 89), saving about 32 hours of runner
+  # time a month.
+  #
+  # Resist widening this list. `scripts/` in particular is NOT safe: the Makefile invokes
+  # scripts during the build, so a script change can alter the rendered output. Anything
+  # excluded in error silently skips a capture that mattered.
+  push:
+    branches: [master]
+    paths-ignore:
+      - ".github/**"
   workflow_dispatch:
+
+concurrency:
+  # Master commits cluster: about 1 in 5 arrives within 30 minutes of the previous one, which
+  # is inside a capture's 32-minute runtime. Without this, bursts stack up overlapping runs.
+  #
+  # The group includes the event name so a push-triggered capture can never cancel a manual
+  # workflow_dispatch, and cancel-in-progress is limited to pushes for the same reason.
+  # Someone who dispatches a capture by hand is usually rebuilding a set deliberately, and
+  # having the next merge to master kill it 5 minutes in would be baffling.
+  #
+  # Consequence worth knowing: commits in the middle of a burst never get their own reference
+  # set, because their capture is cancelled. That is safe only because the lookup falls back
+  # to the newest available set instead of demanding an exact match. The two behaviours are a
+  # pair; do not add an exact-match requirement without revisiting this. See DOC-3103 addendum.
+  group: screenshot-capture-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 
 
@@ -50,19 +85,26 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      # Split the apt step (--with-deps) from the browser download so a stall is attributable
-      # in the logs, and time-box both so a hung apt/dpkg lock or a stalled CDN download fails
-      # fast instead of running to the 6h job ceiling. The apt step is also retried: it is the
-      # observed flake, healthy at ~15s but occasionally stalling on one shard while the others
-      # finish normally. wretry cannot time-box an individual attempt, hence the inner
-      # `timeout`. See DOC-3103.
+      # Split the apt step (--with-deps) from the browser download so a failure is attributable
+      # in the logs, and time-box both so a hung install or a stalled CDN download fails fast
+      # instead of running to the 6h job ceiling. A healthy install takes ~15s.
+      #
+      # The observed failure is apt lock contention, not a stall:
+      #   E: Could not get lock /var/lib/apt/lists/lock. It is held by process NNNN (apt-get)
+      # The runner image's own apt-daily/unattended-upgrades job holds that lock shortly after
+      # boot, so `install-deps` races it. Stopping the timers removes the competing process, and
+      # attempt_delay is 60s rather than the 10s it was, so the retries can actually outlast a
+      # lock. wretry cannot time-box an individual attempt, hence the inner `timeout`.
+      # See DOC-3103.
       - name: Install Playwright system dependencies
         timeout-minutes: 20
         uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with:
-          command: timeout 300 npx playwright install-deps chromium
+          command: |
+            sudo systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+            timeout 300 npx playwright install-deps chromium
           attempt_limit: 3
-          attempt_delay: 10000 # 10 seconds
+          attempt_delay: 60000 # 1 minute
 
       - name: Install Playwright browsers
         timeout-minutes: 10
@@ -124,16 +166,21 @@ jobs:
             attempt_limit: 3
             attempt_delay: 60000 # 1 minute
 
-      # Retried because the apt step is the observed flake: a healthy run takes ~15s, but it
-      # has stalled past its timeout on a single shard while the others finished normally.
+      # Retried because the apt step is the observed flake. The cause is lock contention, not a
+      # stall: the runner image's apt-daily/unattended-upgrades job holds
+      # /var/lib/apt/lists/lock shortly after boot and `install-deps` races it, independently
+      # per shard, which is why the failure moves between shards. Stopping the timers removes
+      # the competitor; attempt_delay is 60s rather than 10s so retries outlast the lock.
       # wretry cannot time-box an individual attempt, hence the inner `timeout`. See DOC-3103.
       - name: Install Playwright system dependencies
         timeout-minutes: 20
         uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3.8.0 as of May 6, 2026
         with:
-          command: timeout 300 npx playwright install-deps chromium
+          command: |
+            sudo systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+            timeout 300 npx playwright install-deps chromium
           attempt_limit: 3
-          attempt_delay: 10000 # 10 seconds
+          attempt_delay: 60000 # 1 minute
 
       - name: Install Playwright browsers
         timeout-minutes: 10
@@ -167,6 +214,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [visual-snapshots]
     timeout-minutes: 30
+    # `actions: write` is required by the shard cleanup step below, which deletes this
+    # run's own per-shard artifacts once they have been merged.
+    permissions:
+      contents: read
+      actions: write
     steps:
 
     - name: Download blob reports from GitHub Actions Artifacts
@@ -185,3 +237,49 @@ jobs:
           screenshots/
         if-no-files-found: error
         retention-days: 3
+
+    # The per-shard `screenshots-<n>` artifacts are intermediates. Once the merged
+    # `screenshots` artifact above has uploaded, they hold a duplicate copy of the same
+    # PNGs and nothing ever reads them again. They carry retention-days: 1, so they do
+    # expire on their own, but until they do they roughly double this workflow's storage
+    # footprint: measured on 2026-08-18, four live shard sets held ~1.85 GB alongside a
+    # 638 MB merged set.
+    #
+    # Scoped deliberately to this run's own artifacts. Deleting by name across the
+    # repository would race a concurrent capture that is still merging its shards.
+    - name: Delete Per-Shard Artifacts
+      # Reclaiming storage must never fail a capture that has already produced its
+      # reference set. The merged artifact is the output that matters.
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+
+        # Guard: only prune once the merged artifact is actually present for this run.
+        # Without this a failed upload would leave the shards deleted and no merged set.
+        artifacts=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts?per_page=100")
+
+        if ! printf '%s' "$artifacts" \
+          | jq -e '[.artifacts[] | select(.name == "screenshots" and .expired == false)] | length > 0' >/dev/null; then
+          echo "Merged 'screenshots' artifact not found for run ${RUN_ID}; leaving shards in place."
+          exit 0
+        fi
+
+        freed=0
+        while read -r id name bytes; do
+          [ -z "${id:-}" ] && continue
+          if gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/${id}" --silent; then
+            echo "Deleted ${name} (id=${id}, $((bytes / 1024 / 1024)) MB)"
+            freed=$((freed + bytes))
+          else
+            echo "Could not delete ${name} (id=${id}); it will expire on its own."
+          fi
+        done < <(printf '%s' "$artifacts" \
+          | jq -r '.artifacts[]
+                   | select(.name | test("^screenshots-[0-9]+$"))
+                   | select(.expired == false)
+                   | "\(.id) \(.name) \(.size_in_bytes)"')
+
+        echo "Reclaimed $((freed / 1024 / 1024)) MB of shard artifacts."

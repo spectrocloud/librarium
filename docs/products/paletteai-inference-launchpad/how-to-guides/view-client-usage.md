@@ -38,11 +38,16 @@ The client view shows:
 
 :::info
 
-Usage counts reflect activity since the appliance gateway last restarted.
+The figures cover the period set in the **Data window** menu in the page header. When a figure cannot cover that whole
+period, the card displays a note naming the span it does cover.
 
 :::
 
-<!--TODO: once these sibling pages publish, add a "Further reading" list here linking to: View Token Usage and Consumption Metrics (DOC-2925) for more detail on usage metrics; and the Usage Metrics Reference (DOC-2942) for every metric and field. -->
+## Further Reading
+
+- [View Token Usage](./view-token-usage.md) covers the rest of the **Usage** page, including per-model usage and finding
+  the top consumers.
+- [Usage Metrics Reference](../reference/usage-metrics-reference.md) defines every metric, column, and export field.
 
 ## Next Steps
 

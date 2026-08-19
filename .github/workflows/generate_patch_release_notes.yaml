@@ -11,6 +11,15 @@ on:
         description: "The base branch for the patch release PR (default: master)"
         required: true
         default: "master"
+      patch_version:
+        description: "The Palette patch release version (e.g., 4.9.48). Leave empty to skip the CanvOS and Palette CLI updates."
+        required: false
+      nickfury_ref:
+        description: "The nickfury branch or tag name holding the component versions. Branches are release-<version>, tags are v<version> with an optional -rc.N suffix (e.g. release-4.9 or v4.9.47-rc.2). Leave empty to try v<patch_version> then release-<patch_version>."
+        required: false
+      palette_cli_sha:
+        description: "SHA256 checksum of the Palette CLI binary. Leave empty to derive it from the published binary."
+        required: false
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,6 +75,13 @@ jobs:
           npm ci
       
       - name: Execute Script to Generate Patch Release Notes
+        env:
+          # The default GITHUB_TOKEN is scoped to this repository and cannot read the private
+          # nickfury repository that holds the component versions, so use the Vault token here.
+          GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
+          NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
+          PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
         run: |
           touch .env
           PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
@@ -78,8 +94,13 @@ jobs:
           branch_name="${{ env.JIRA_TICKET }}-generate-patch-notes-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Commit and push the changes
-          git add docs/docs-content/release-notes/release-notes.md
+          # Commit and push the changes. A patch that bumps the CanvOS or Palette CLI version also
+          # updates the Edge Compatibility Matrix, the CLI Tools table, and the Palette CLI install
+          # page, so stage all four pages rather than only the release notes.
+          git add docs/docs-content/release-notes/release-notes.md \
+            docs/docs-content/clusters/edge/edge-compatibility-matrix.md \
+            docs/docs-content/downloads/cli-tools.md \
+            docs/docs-content/automation/palette-cli/install-palette-cli.md
           git commit -m "docs: add patch release notes for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 
