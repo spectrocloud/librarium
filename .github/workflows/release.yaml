@@ -271,12 +271,11 @@ jobs:
     uses: ./.github/workflows/post_release.yaml
     secrets: inherit
 
-  screenshot-capture:
-    name: "Screenshot Capture"
-    needs: [release]
-    if: ${{ always() && needs.release.result == 'success' }}
-    uses: ./.github/workflows/screenshot_capture.yaml
-    secrets: inherit
+  # Screenshot Capture used to run here. It now triggers on push to master instead, so a
+  # reference set exists for every commit rather than only for whichever commit happened to
+  # be at master's tip when this scheduled release ran. Keeping the call as well would
+  # capture the same commit twice on release days. See screenshot_capture.yaml and the
+  # DOC-3103 addendum.
 
   algolia-crawler:
     name: "Algolia Crawler"
