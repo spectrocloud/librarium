@@ -56,25 +56,89 @@ To add or remove nodes, use Local UI on the leader. Link each new host before yo
 
 ## Upgrade the Platform
 
-An upgrade replaces the cluster's platform packs with the versions in a newer content bundle. It is not a reinstall of
-the OS, and you do not redeploy the cluster. The appliance is airgapped, so the bundle is the upgrade payload for both
-connected jumpbox workflows and airgapped sites. Download the bundle that matches the node's GPU, NVIDIA or AMD.
+An upgrade replaces the cluster's platform packs and application charts with the versions in a newer content bundle. It
+is not a reinstall of the OS, and you do not redeploy the cluster. The appliance is airgapped, so the content bundle is
+the upgrade payload for both connected jumpbox workflows and airgapped sites. Download the bundle that matches the
+node's GPU, NVIDIA or AMD.
+
+Before you begin, confirm that you have the following:
+
+- A running PaletteAI Inference Launchpad appliance and network access to Local UI on the leader node at
+  `https://<node-ip>:5080`.
+- SSH access to the leader node, or the node's kubeconfig copied to your jumpbox. Refer to
+  [Validate the Installation](./install-the-appliance.md#validate-the-installation) for how to copy the kubeconfig off
+  the node.
+- The [Zot registry](../reference/profile-variables.md#container-registry-zot) password you set during the initial
+  installation. The upgrade wizard requires you to re-enter this password.
+
+Complete the following steps to upgrade the platform.
 
 1. Download the new content bundle from Artifact Studio. It must match the hardware GPU, as described in
    [Download the Artifacts](./install-the-appliance.md#download-the-artifacts).
 
-2. Upload the bundle to the leader, the same way as day one. Refer to
+2. Upload the bundle to the leader node the same way as day one, and wait for the upload and sync to complete. Refer to
    [Upload the Content Bundle](./install-the-appliance.md#upload-the-content-bundle).
 
-3. In Local UI, open **Cluster**. The **Overview** tab shows **Update available** when the bundle includes a newer
-   cluster definition. The **Configuration** tab shows **Update**.
+3. Log in to Local UI at `https://<node-ip>:5080` on the leader node.
 
-4. Select **Update** and review the configuration diff. Incoming changes appear beside the current values.
+4. From the left main menu, select **Cluster**. On the **Overview** tab, confirm that the **Update available** indicator
+   appears. The indicator appears when the uploaded content bundle contains a newer cluster definition.
 
-5. Select **Update** at the bottom of the page to apply.
+5. Select the **Configuration** tab. In the upper-right corner, select the **Update** drop-down menu, and then select
+   **Review Changes**.
 
-After the cluster returns to **Running**, open the appliance console and confirm that models are still serving. You do
-not re-upload model weights unless the release notes for that version say to.
+6. Local UI displays the **Review Changes** modal. Review the incoming configuration in the diff editor. Your current
+   configuration is displayed on the left, and the incoming changes are displayed on the right. Select each profile
+   variable and review the proposed change. Where the incoming default differs from your current value, decide whether
+   to keep the current value or accept the incoming default.
+
+7. Confirm that the Zot registry password matches the password you set during the initial installation.
+
+   :::warning
+
+   The upgrade fails if the Zot registry password does not match the password used during the initial installation.
+   Verify the password before you continue.
+
+   :::
+
+8. After you have reviewed every profile variable, select **Confirm Changes**.
+
+9. At the bottom of the page, select **Update** to start the upgrade.
+
+10. Wait for the appliance cluster to return to the **Running** state. From the left main menu, select **Cluster** to
+    monitor progress. The appliance may reboot during the upgrade, which briefly makes Local UI unreachable.
+
+11. Roll the application charts forward on the appliance cluster. The content-bundle upload stages new versions of the
+    `mural-crds` and `mural` charts in the appliance's in-cluster registry, but Flux does not advance the releases
+    automatically. From the leader node with `sudo`, or from the jumpbox with the node's kubeconfig, patch the Flux
+    `OCIRepository` resources in the `mural-system` namespace to the new chart versions. Patch `mural-crds` first, then
+    `mural`. Order matters; patching `mural` before `mural-crds` skips the CRD upgrade and can leave the release in a
+    failed state.
+
+## Validate the Upgrade
+
+1. In Local UI, from the left main menu, select **Cluster** and confirm that the `palette-ai` pack shows the upgraded
+   version and is in the **Running** state.
+
+2. From the leader node or from the jumpbox with the node's kubeconfig, confirm that both `HelmRelease` resources report
+   ready.
+
+   ```bash
+   kubectl --kubeconfig <kubeconfig-location> get helmrelease --namespace mural-system
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   NAME         AGE   READY   STATUS
+   mural        3h    True    Release reconciliation succeeded
+   mural-crds   3h    True    Release reconciliation succeeded
+   ```
+
+   Both `mural-crds` and `mural` must show `READY: True`. If either shows `READY: False`, review the release conditions
+   with `kubectl describe helmrelease <release-name> --namespace mural-system` and refer to
+   [Known Issues](../reference/known-issues.md).
+
+3. Open the appliance console and confirm that models are still serving. You do not re-upload model weights unless the
+   release notes for that version say to.
 
 ## Next Steps
 
