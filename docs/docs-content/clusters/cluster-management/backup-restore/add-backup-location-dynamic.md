@@ -20,22 +20,17 @@ To support dynamic credentials with AWS, Palette uses the AWS Security Token Ser
 can use AWS STS when adding an S3 bucket as the backup location. The following sections outline the prerequisites and
 provide detailed steps to add an S3 bucket as the backup location using the STS authentication method.
 
-:::warning
+Three scenarios are supported, depending on where your Kubernetes cluster runs and where the S3 bucket lives. Select the
+section that matches your use case.
 
-Palette supports AWS STS only when your Palette’s hosting environment and the backup location service provider are the
-same. Palette SaaS is hosted on AWS, so you can use AWS STS to add an S3 bucket as the backup location. Similarly, if
-you have a self-hosted Palette or Palette VerteX deployed in AWS, you can use AWS STS to add an S3 bucket as the backup
-location. Otherwise, you cannot use AWS STS to add an S3 bucket as the backup location.
+- [Single Cloud Account with AWS STS](#single-cloud-account-with-aws-sts) — the cluster and the S3 bucket are in the
+  same AWS account.
 
-:::
+- [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts) — the cluster is in one AWS account and
+  the S3 bucket is in another.
 
-You can use the same AWS account in which you deploy your Kubernetes cluster to add an S3 bucket as the backup location.
-You can also use a different AWS account to add an S3 bucket as the backup location. Select the tab below that best
-matches your use case.
-
-- [Single Cloud Account with AWS STS](#single-cloud-account-with-aws-sts)
-
-- [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts)
+- [Non-AWS Cluster with AWS STS](#non-aws-cluster-with-aws-sts) — the cluster runs on non-AWS infrastructure such as
+  edge-native, AKS, or vSphere, and the S3 bucket is in an AWS account.
 
 ## Single Cloud Account with AWS STS
 
@@ -49,14 +44,7 @@ cloud account.
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
-- Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
-  self-hosted Palette and Palette VerteX customers. Palette SaaS in hosted in an AWS environment.
-
-- An AWS account. This account is assumed to be the same account where you deploy Kubernetes clusters. Refer to the
-  [Multiple Cloud Accounts with AWS STS](add-backup-location-dynamic.md#multiple-cloud-accounts-with-aws-sts) section to
-  learn how to add a backup location when the cluster deployment cloud account differs from the backup cloud account.
-
-- An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
+- An AWS account with an S3 bucket in the account. The bucket will store the backup of your clusters or workspaces.
 
 - The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the
   `<bucket-name>` placeholder in the policy below with your bucket name. Refer to the
@@ -197,10 +185,14 @@ cloud account.
 11. Click on the **Create** button.
 
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
-AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
+AWS STS to authenticate Palette with the S3 bucket.
 
-EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
-the section below.
+The next step depends on your cluster type.
+
+- AWS IaaS workload clusters—no additional configuration is required. The node's instance role provides the credentials
+  to access the S3 bucket.
+- EKS workload clusters—update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA). Expand
+  the section below for the steps.
 
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
@@ -417,7 +409,7 @@ authentication you must follow.
 
 ![A diagram highlighting the order of authentication required when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.webp)
 
-A multi-cloud account scenario requires you to perform the following authentication steps.
+This scenario requires you to perform the following authentication steps.
 
 1. Grant Palette access to the cluster in AWS Account A. When you register a primary cloud account in Palette, you
    authenticate and authorize Palette to deploy clusters in the cloud account. Check out the
@@ -426,8 +418,8 @@ A multi-cloud account scenario requires you to perform the following authenticat
 2. Give Palette permission to use the S3 buckets in AWS Account B. Set the bucket permissions and link them to an IAM
    role. Then, update the IAM role to let Palette assume it.
 
-3. Authorize the cluster with AWS Account B for S3 bucket access. Update the IAM role to allow Palette clusters to
-   assume it.
+3. For EKS or AWS-only, authorize the cluster with AWS Account B for S3 bucket access. Update the IAM role to allow
+   Palette clusters to assume it.
 
 Use the following steps to add an S3 bucket as the backup location using the STS authentication method when you have
 multiple cloud accounts.
@@ -439,13 +431,9 @@ multiple cloud accounts.
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
-- Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
-  self-hosted Palette and Palette VerteX customers. Palette SaaS is hosted in an AWS environment.
-
 - An AWS account where you deploy Kubernetes clusters. This account will be referred to as _AWS Account A_.
 
 - Another AWS account where you want to create the backup location. This account will be referred to as _AWS Account B_.
-  This is the AWS account where you want to create the backup location.
 
 - An S3 bucket in AWS Account B. The bucket will store the backup of your clusters or workspaces.
 
@@ -636,8 +624,12 @@ multiple cloud accounts.
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
 AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
-EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
-the section below.
+The next step depends on your cluster type.
+
+- AWS IaaS workload clusters—no additional configuration is required. The node's instance role provides the credentials
+  to access the S3 bucket.
+- EKS workload clusters—update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA). Expand
+  the section below for the steps.
 
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
@@ -839,6 +831,167 @@ the section below.
     trust policy misconfiguration. Confirm the OIDC ID and AWS account ID are correct.
 
 </details>
+
+### Validate
+
+Use the following steps to validate adding the new backup location.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to **Project Settings** and click on **Backup Locations**.
+
+3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
+
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you have
+   successfully added a new backup location.
+
+## Non-AWS Cluster with AWS STS
+
+You can back up a non-AWS Kubernetes cluster—for example, an edge-native, AKS, or vSphere cluster—to an AWS S3 bucket
+using STS authentication. Palette forwards the IAM role details and access credentials to the in-cluster backup agent,
+which assumes the role, obtains temporary STS credentials, and writes the backup to the S3 bucket. The backup agent
+refreshes the credentials automatically before they expire, so scheduled backups continue without manual intervention.
+
+The cluster does not need its own AWS IAM identity—no instance role, no OIDC provider, no IRSA. Palette supplies the
+credentials the backup agent needs to authenticate to AWS. This is the main difference from the
+[Single Cloud Account](#single-cloud-account-with-aws-sts) and
+[Multiple Cloud Accounts](#multiple-cloud-accounts-with-aws-sts) scenarios, both of which rely on cluster-side IAM—an
+instance role for AWS IaaS clusters, or IRSA for EKS clusters.
+
+![A diagram showing Palette forwarding IAM role details and access credentials to the in-cluster backup agent, which assumes the role in AWS Account B, receives temporary STS credentials, and writes the backup to the S3 bucket.](/clusters_cluster-management_backup-restore_non-aws-cluster-sts.webp)
+
+The authentication flow requires the following two setup steps.
+
+1. Grant Palette permission to assume an IAM role in the AWS backup account. This is configured through the STS account
+   setup at the Palette instance level (self-hosted) or through the Palette-managed AWS account (SaaS).
+
+2. Create an IAM role in the AWS backup account whose trust policy allows the Palette AWS account to assume it, and
+   whose permissions policy grants access to the S3 bucket.
+
+### Prerequisites
+
+- If you are using a self-hosted Palette or VerteX instance, you must configure an AWS account at the instance level to
+  allow tenants to add AWS accounts using STS. For more information, refer to
+  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
+  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md).
+
+- A Kubernetes cluster on a non-AWS infrastructure—for example, edge-native, AKS, or vSphere.
+
+- An AWS account where you want to create the backup location. The remainder of this section refers to this account as
+  _AWS Account B_.
+
+- An S3 bucket in AWS Account B. The bucket will store the backups of your clusters or workspaces.
+
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
+
+- The following IAM policy must be created in AWS Account B. Replace the `BUCKET-NAME` placeholder with your bucket
+  name. Refer to
+  [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
+  additional guidance.
+
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:CreateTags",
+          "ec2:CreateVolume",
+          "ec2:CreateSnapshot",
+          "ec2:DeleteSnapshot"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:DeleteObject",
+          "s3:PutObject",
+          "s3:AbortMultipartUpload",
+          "s3:ListMultipartUploadParts"
+        ],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+      },
+      {
+        "Effect": "Allow",
+        "Action": ["s3:ListBucket"],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+      }
+    ]
+  }
+  ```
+
+### Instructions
+
+Use the following steps to add an S3 bucket as the backup location for a non-AWS cluster.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to **Project Settings** and click on **Backup Locations**.
+
+3. Click on **Add New Backup Location**.
+
+4. Fill out the input fields listed in the table below.
+
+   | **Configuration Field** | **Value**                                                                              |
+   | ----------------------- | -------------------------------------------------------------------------------------- |
+   | **Location Name**       | A name of your choice.                                                                 |
+   | **Location Provider**   | Select **AWS** from the drop-down menu.                                                |
+   | **Certificate**         | The CA bundle in PEM format, if you are using a custom certificate bundle for SSL/TLS. |
+   | **S3 Bucket**           | The name of the S3 bucket in AWS Account B. The bucket name must be DNS-compliant.     |
+   | **Region**              | The region where the S3 bucket is hosted.                                              |
+   | **Endpoint URL**        | Optional bucket URL. If you provide one, select the **Force S3 path style** checkbox.  |
+
+5. Choose the **STS** authentication method. Palette displays an external ID for use in the trust policy. Copy the
+   external ID.
+
+6. In the AWS console for AWS Account B, create a new IAM role with the following trust policy. Replace
+   `<palette-aws-account-id>` with the AWS account ID displayed by the Palette wizard, and `<external-id>` with the
+   value copied in the previous step.
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<palette-aws-account-id>:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "<external-id>"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+7. Attach the IAM policy you created in the Prerequisites section to the role.
+
+8. Copy the IAM role ARN.
+
+9. Switch back to the Palette UI and paste the IAM role ARN into the **ARN** field.
+
+10. Click on **Validate**. Palette will display a validation status message. If the validation status message indicates
+    a success, proceed to the next step. If the validation status message indicates an error, review the error message
+    and verify the IAM role ARN, the external ID in the trust policy, and the IAM policy attached to the role.
+
+11. Click on the **Create** button.
+
+You now have a backup location for Palette to store the backup of your clusters or workspaces. When a backup runs,
+Palette forwards the IAM role details and access credentials to the in-cluster backup agent, which assumes the role,
+obtains temporary STS credentials, and writes the backup to the S3 bucket in AWS Account B. The backup agent refreshes
+the credentials automatically before they expire, so scheduled backups continue without interruption.
+
+No cluster-side IAM configuration is required.
 
 ### Validate
 
