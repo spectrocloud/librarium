@@ -152,16 +152,34 @@ if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
   if [[ -z "${GITHUB_TOKEN:-}" ]]; then
     echo "⚠️  GITHUB_TOKEN is not set, so $NICKFURY_REPO cannot be read. Skipping the CanvOS and Palette CLI updates." >&2
   else
+    # The release engineers hand over a branch or a tag, and neither is named after the patch
+    # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
+    # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
+    # than guessing it from the version, because the two do not always correspond. For example,
+    # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
     if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
-      read -p "Specify the $NICKFURY_REPO branch or tag holding the $RELEASE_PATCH component versions [v$RELEASE_PATCH]: " NICKFURY_REF
+      echo "ℹ️  Component versions come from $NICKFURY_REPO, whose refs are named:"
+      echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
+      echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
+      read -p "Specify the branch or tag name holding the $RELEASE_PATCH component versions, or leave blank to try v$RELEASE_PATCH then release-$RELEASE_PATCH: " NICKFURY_REF
     fi
 
-    # nickfury names a release branch "release-<version>" and a release tag "v<version>". Try
-    # both when the ref was not given, because a patch is documented from whichever exists.
-    if [[ -n "${NICKFURY_REF:-}" ]]; then
+    # Accept a ref pasted in full, for example "refs/tags/v4.9.47-rc.2", and tolerate stray
+    # whitespace, so a value copied from a release ticket does not have to be tidied by hand.
+    NICKFURY_REF="$(printf '%s' "${NICKFURY_REF:-}" | tr -d '[:space:]')"
+    NICKFURY_REF="${NICKFURY_REF#refs/tags/}"
+    NICKFURY_REF="${NICKFURY_REF#refs/heads/}"
+
+    if [[ -z "$NICKFURY_REF" ]]; then
+      # Nothing given, so fall back to deriving both naming conventions from the version.
+      NICKFURY_REF_CANDIDATES=("v$RELEASE_PATCH" "release-$RELEASE_PATCH")
+    elif [[ "$NICKFURY_REF" == v* || "$NICKFURY_REF" == release-* ]]; then
+      # Already a ref name, so use exactly what was given.
       NICKFURY_REF_CANDIDATES=("$NICKFURY_REF")
     else
-      NICKFURY_REF_CANDIDATES=("v$RELEASE_PATCH" "release-$RELEASE_PATCH")
+      # A bare version was given rather than a ref name, so try both conventions for it.
+      echo "ℹ️  '$NICKFURY_REF' is a version rather than a ref name, so both naming conventions are tried."
+      NICKFURY_REF_CANDIDATES=("v$NICKFURY_REF" "release-$NICKFURY_REF")
     fi
 
     NICKFURY_VERSIONS=""
@@ -178,7 +196,7 @@ if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
     done
 
     if [[ -z "$NICKFURY_VERSIONS" ]]; then
-      echo "⚠️  No component versions available from $NICKFURY_REPO. Skipping the CanvOS and Palette CLI updates." >&2
+      echo "⚠️  No component versions available from $NICKFURY_REPO, so the CanvOS and Palette CLI updates are skipped. Confirm the branch or tag name with the release engineers: a branch is named release-<version> and a tag v<version>, optionally with an -rc.N suffix. Then re-run with NICKFURY_REF set to that name." >&2
     else
       RELEASE_CANVOS=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "stylus" || true)
       RELEASE_PALETTE_CLI_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "palette-cli" || true)
