@@ -93,11 +93,16 @@ page.
 
 #### Issue Tracker and Super API
 
-| **Environment Variable** | **Description**          | **Example Value**       |
-| ------------------------ | ------------------------ | ----------------------- |
-| `JIRA_EMAIL`             | Issue tracker email.     | `name@spectrocloud.com` |
-| `JIRA_API_TOKEN`         | Issue tracker API token. | `XXX`                   |
-| `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
+| **Environment Variable** | **Description**                                                                  | **Example Value**       |
+| ------------------------ | -------------------------------------------------------------------------------- | ----------------------- |
+| `JIRA_EMAIL`             | Issue tracker email.                                                             | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Issue tracker API token.                                                         | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token.                                                                 | `XXX`                   |
+| `GITHUB_TOKEN`           | GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
+
+`GITHUB_TOKEN` is only needed to look up component versions. Set it in your `.env` file, the same as the other tokens.
+When it is not set, the scripts fall back to the token the GitHub CLI already holds, so a machine that has run
+`gh auth login` against the organisation needs no `.env` entry at all. The scripts say which of the two they used.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
@@ -173,11 +178,14 @@ Palette `4.9.47`, for example, can be built from the tag `v4.9.47-rc.2`, which n
 prompt accepts a name copied straight from a release ticket, including a full `refs/tags/...` or `refs/heads/...` path.
 Supplying a bare version instead of a name still works: the target tries `v<version>` and then `release-<version>`.
 
+The ref prompt only appears when a GitHub token is available, because without one there is nothing to read. The target
+reports which token it is using before it prompts for anything, so a missing token is clear before you answer the
+version prompt rather than after.
+
 Once the ref resolves, the target reads the `stylus` and `palette-cli` versions from `release/spectro_versions.txt` in
-the `spectrocloud/nickfury` repository. Reading that repository requires `GITHUB_TOKEN`. The target then compares those
-versions with the versions already recorded in the
-[Edge Compatibility Matrix](../docs-content/clusters/edge/edge-compatibility-matrix.md), because a patch release often
-ships the same components as the release before it. Only a component whose version moved is documented.
+the `spectrocloud/nickfury` repository. The target then compares those versions with the versions already recorded in
+the [Edge Compatibility Matrix](../docs-content/clusters/edge/edge-compatibility-matrix.md), because a patch release
+often ships the same components as the release before it. Only a component whose version moved is documented.
 
 | **Component**             | **nickfury Key** | **Pages Updated When the Version Moves**                                                                                                                          |
 | ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
