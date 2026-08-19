@@ -702,8 +702,8 @@ To use Kubecost in VMware vSphere clusters, you must enable the
 [custom pricing](https://docs.kubecost.com/architecture/pricing-sources-matrix#cloud-provider-on-demand-api) option in
 the Kubecost UI and manually set the monthly cluster costs.
 
-Read more about [Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to
-make the most of the cost analyzer pack.
+Read more about [Navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost) to make the most of the cost analyzer
+pack.
 
 ![Image that shows the Kubecost UI](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
