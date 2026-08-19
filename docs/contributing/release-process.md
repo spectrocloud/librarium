@@ -353,16 +353,20 @@ that document them.
 The target prompts for the following values. Each prompt is skipped when its environment variable is already set, and
 also when there is no terminal to prompt on, so the same target runs unattended in a workflow.
 
-| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                           |
-| ---------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`. Leave it empty to generate the release notes body alone.                                         |
-| nickfury branch or tag | `NICKFURY_REF`           | The name of the `spectrocloud/nickfury` branch or tag that holds the component versions. Leave it empty to try `v<version>` and then `release-<version>`. |
-| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive the checksum from the published binary, which transfers around 400 MB.            |
+| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                              |
+| ---------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`, or a placeholder such as `4.9.x`. Leave it empty to accept the version the candidates JQL reported. |
+| nickfury branch or tag | `NICKFURY_REF`           | The name of the `spectrocloud/nickfury` branch or tag that holds the component versions. Leave it empty to record the component versions as pending.         |
+| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive it from the published binary, or to record it as pending when that is unavailable.   |
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
-prompt heads the new section. Leaving the prompt empty is the right answer while the version is still unknown.
-Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the notes early
-and re-run once the version is confirmed.
+prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
+reported. Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the
+notes before the version is decided and re-run once it is confirmed.
+
+Each generated section records the version it was built for in a `<!-- PATCH RELEASE VERSION: ... -->` comment. When a
+later run confirms a different version, the target removes the rows the earlier run wrote for the old one, so a
+confirmed version replaces its placeholder rather than sitting alongside it.
 
 The second prompt asks for the nickfury branch or tag name, because a ref name does not always correspond to the patch
 release version. Release engineering hands over one of the following, so use the name you were given rather than one
@@ -376,7 +380,8 @@ derived from the version.
 
 Palette `4.9.47`, for example, can be built from the tag `v4.9.47-rc.2`, which no version-derived guess would find. The
 prompt accepts a name copied straight from a release ticket, including a full `refs/tags/...` or `refs/heads/...` path.
-Supplying a bare version instead of a name still works: the target tries `v<version>` and then `release-<version>`.
+Supplying a bare version instead of a name also works: the target tries `v<version>` and then `release-<version>`.
+Leaving the prompt empty records the component versions as pending instead of looking anything up.
 
 The ref prompt only appears when a GitHub token is available, because without one there is nothing to read. The target
 reports which token it is using before it prompts for anything, so a missing token is clear before you answer the
@@ -392,9 +397,18 @@ often ships the same components as the release before it. Only a component whose
 | CanvOS, Stylus, Edge host | `stylus`         | An **Edge** section in the release notes, and a row in the Edge Compatibility Matrix.                                                                             |
 | Palette CLI               | `palette-cli`    | An **Automation** section in the release notes, a row in the Edge Compatibility Matrix, the Install Palette CLI version output, and a row in the CLI Tools table. |
 
-The CLI Tools table also needs the binary's checksum, which nickfury does not carry. The binary is only published after
-the release, so the target leaves that table unchanged when the checksum is unavailable. Re-run the target with
-`PATCH_PALETTE_CLI_SHA` set once the binary is published.
+The CLI Tools table also needs the binary's checksum, which nickfury does not carry, and the binary is only published
+after the release. Rather than omit an entry, the target writes it with a marker naming what is still missing, so the
+scaffolding exists from the first run and a later run only has to fill in the values.
+
+| **Marker**        | **Stands in for**                |
+| ----------------- | -------------------------------- |
+| `VERSION PENDING` | A CanvOS or Palette CLI version. |
+| `URL PENDING`     | The Palette CLI download URL.    |
+| `SHA PENDING`     | The Palette CLI checksum.        |
+
+Search the documentation for `PENDING` to find every value still to be confirmed. Re-run the target with the branch or
+tag name, and with `PATCH_PALETTE_CLI_SHA` set or the binary published, to replace them.
 
 > [!WARNING]
 >

@@ -194,10 +194,36 @@ replace_line() {
 }
 
 # Utility function to remove a file
-# Params: 
+# Params:
 # $1 - file name
 cleanup() {
     rm $1
+}
+
+# Utility function to delete the first line of a file that contains a literal string. Used to drop
+# a table row that a later run has superseded, for example a placeholder row keyed on a release
+# version that has since been confirmed. Does nothing when no line matches.
+# Params:
+# $1 - literal search term, example: edge-compat-4.9.x -->
+# $2 - target file
+# Returns 0 if a line was removed, 1 if nothing matched.
+remove_line_containing() {
+    local search="$1"
+    local file="$2"
+    local tmp_file
+
+    if ! grep -qF "$search" "$file"; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v search="$search" '
+      !removed && index($0, search) { removed = 1; next }
+      { print }
+    ' "$file" > "$tmp_file"
+
+    mv "$tmp_file" "$file"
 }
 
 # Utility function to strip Super's inline citation markers from an answer, for example

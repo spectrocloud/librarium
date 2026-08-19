@@ -23,11 +23,17 @@ EDGE_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-edge-output.md"
 AUTOMATION_NOTES_TEMPLATE_FILE="scripts/release/templates/patch-release-notes-automation.md"
 AUTOMATION_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-automation-output.md"
 EDGE_COMPATIBILITY_MATRIX_FILE="${EDGE_COMPATIBILITY_MATRIX_FILE:-docs/docs-content/clusters/edge/edge-compatibility-matrix.md}"
+DOWNLOADS_FILE="${DOWNLOADS_FILE:-docs/docs-content/downloads/cli-tools.md}"
 NICKFURY_REPO="spectrocloud/nickfury"
 NICKFURY_VERSIONS_PATH="release/spectro_versions.txt"
 # Columns in the Edge Compatibility Matrix table that hold the versions to compare against.
 MATRIX_CANVOS_COLUMN=2
 MATRIX_PALETTE_CLI_COLUMN=3
+# Markers written in place of a value that is not known yet. Each names what is missing, so a
+# reviewer can see which cells still need filling and can grep the docs for "PENDING".
+PENDING_VERSION="VERSION PENDING"
+PENDING_URL="URL PENDING"
+PENDING_SHA="SHA PENDING"
 
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
@@ -143,74 +149,92 @@ else
 fi
 
 # Confirm the patch release version. It heads the new release notes section, and it is the key the
-# documentation pages record the CanvOS and Palette CLI versions against. Leaving it blank generates
-# the release notes alone, which is the right answer while the version is still unknown.
+# documentation pages record the CanvOS and Palette CLI versions against. A placeholder such as
+# 4.9.x is a valid answer while the real version is still being decided.
 #
 # Every prompt below is skipped when its environment variable is already set, and when there is no
 # terminal to prompt on, so the same script still runs unattended in CI.
 RELEASE_PATCH_VERSION="${PATCH_RELEASE_VERSION:-}"
 
 if [[ -z "$RELEASE_PATCH_VERSION" && -t 0 ]]; then
-  echo "ℹ️  The patch release version heads the new release notes section."
+  echo "ℹ️  The patch release version heads the new release notes section. A placeholder such as"
+  echo "    $RELEASE_PATCH is fine while the real version is still being decided."
 
   if [[ -n "${GITHUB_TOKEN:-}" ]]; then
     echo "    A follow-up prompt then asks for the $NICKFURY_REPO branch or tag that holds the CanvOS"
     echo "    and Palette CLI versions for it. The version and that ref name are separate values."
   fi
 
-  read -p "Specify the Palette patch release version (for example, 4.9.48), or leave blank to skip the CanvOS and Palette CLI updates: " RELEASE_PATCH_VERSION
+  read -p "Specify the Palette patch release version, for example 4.9.48 or the $RELEASE_PATCH placeholder [$RELEASE_PATCH]: " RELEASE_PATCH_VERSION
 fi
 
-if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
-  if [[ ! "$RELEASE_PATCH_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
-    echo "❌  '$RELEASE_PATCH_VERSION' is not a Palette patch release version, for example 4.9.48." >&2
-    exit 1
-  fi
+# Pressing Enter, and an unattended run with no version supplied, both accept the version the
+# candidates JQL reported. That is usually a placeholder such as 4.9.x, which is a valid answer.
+if [[ -z "$RELEASE_PATCH_VERSION" ]]; then
+  RELEASE_PATCH_VERSION="$RELEASE_PATCH"
+fi
 
-  RELEASE_PATCH="$RELEASE_PATCH_VERSION"
+# A version is either a real patch release, such as 4.9.48, or a placeholder standing in for one,
+# such as 4.9.x. Both are accepted, but only a real version can name a download or be compared
+# against a published component version.
+if [[ ! "$RELEASE_PATCH_VERSION" =~ ^[0-9]+\.[0-9]+\.[^[:space:]]+$ ]]; then
+  echo "❌  '$RELEASE_PATCH_VERSION' is not a Palette patch release version or placeholder, for example 4.9.48 or 4.9.x." >&2
+  exit 1
+fi
+
+RELEASE_PATCH="$RELEASE_PATCH_VERSION"
+
+if [[ "$RELEASE_PATCH" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+  RELEASE_PATCH_IS_PLACEHOLDER=false
   echo "ℹ️  Using confirmed patch release version: $RELEASE_PATCH."
 else
-  echo "ℹ️  No patch release version supplied, so the CanvOS and Palette CLI updates are skipped."
+  RELEASE_PATCH_IS_PLACEHOLDER=true
+  echo "ℹ️  Using the patch release version placeholder: $RELEASE_PATCH."
 fi
 
 RELEASE_CANVOS=""
 RELEASE_PALETTE_CLI_VERSION=""
 
-if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
-  # A missing token was already reported above, so this only has to skip the lookup quietly.
-  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-    # The release engineers hand over a branch or a tag, and neither is named after the patch
-    # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
-    # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
-    # than guessing it from the version, because the two do not always correspond. For example,
-    # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
-    if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
-      echo "ℹ️  Component versions come from $NICKFURY_REPO, whose refs are named:"
-      echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
-      echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
-      read -p "Specify the branch or tag name holding the $RELEASE_PATCH component versions, or leave blank to try v$RELEASE_PATCH then release-$RELEASE_PATCH: " NICKFURY_REF
-    fi
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+  # The release engineers hand over a branch or a tag, and neither is named after the patch
+  # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
+  # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
+  # than guessing it from the version, because the two do not always correspond. For example,
+  # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
+  if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
+    echo "ℹ️  Component versions come from $NICKFURY_REPO, whose refs are named:"
+    echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
+    echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
+    read -p "Specify the $NICKFURY_REPO branch or tag name, or leave blank to record the versions as pending: " NICKFURY_REF
+  fi
 
-    # Accept a ref pasted in full, for example "refs/tags/v4.9.47-rc.2", and tolerate stray
-    # whitespace, so a value copied from a release ticket does not have to be tidied by hand.
-    NICKFURY_REF="$(printf '%s' "${NICKFURY_REF:-}" | tr -d '[:space:]')"
-    NICKFURY_REF="${NICKFURY_REF#refs/tags/}"
-    NICKFURY_REF="${NICKFURY_REF#refs/heads/}"
+  # Accept a ref pasted in full, for example "refs/tags/v4.9.47-rc.2", and tolerate stray
+  # whitespace, so a value copied from a release ticket does not have to be tidied by hand.
+  NICKFURY_REF="$(printf '%s' "${NICKFURY_REF:-}" | tr -d '[:space:]')"
+  NICKFURY_REF="${NICKFURY_REF#refs/tags/}"
+  NICKFURY_REF="${NICKFURY_REF#refs/heads/}"
 
-    if [[ -z "$NICKFURY_REF" ]]; then
-      # Nothing given, so fall back to deriving both naming conventions from the version.
-      NICKFURY_REF_CANDIDATES=("v$RELEASE_PATCH" "release-$RELEASE_PATCH")
-    elif [[ "$NICKFURY_REF" == v* || "$NICKFURY_REF" == release-* ]]; then
-      # Already a ref name, so use exactly what was given.
-      NICKFURY_REF_CANDIDATES=("$NICKFURY_REF")
-    else
-      # A bare version was given rather than a ref name, so try both conventions for it.
-      echo "ℹ️  '$NICKFURY_REF' is a version rather than a ref name, so both naming conventions are tried."
-      NICKFURY_REF_CANDIDATES=("v$NICKFURY_REF" "release-$NICKFURY_REF")
-    fi
+  # An empty candidate list is expressed as a flag rather than an empty array, because expanding
+  # an empty array trips "unbound variable" under the bash 3.2 that ships with macOS.
+  NICKFURY_LOOKUP=true
 
-    NICKFURY_VERSIONS=""
+  if [[ -z "$NICKFURY_REF" ]]; then
+    # Nothing given, so the component versions stay pending and the lookup is not attempted.
+    NICKFURY_LOOKUP=false
+    NICKFURY_REF_CANDIDATES=("")
+    echo "ℹ️  No branch or tag given, so the component versions are recorded as pending."
+  elif [[ "$NICKFURY_REF" == v* || "$NICKFURY_REF" == release-* ]]; then
+    # Already a ref name, so use exactly what was given.
+    NICKFURY_REF_CANDIDATES=("$NICKFURY_REF")
+  else
+    # A bare version was given rather than a ref name, so try both conventions for it.
+    echo "ℹ️  '$NICKFURY_REF' is a version rather than a ref name, so both naming conventions are tried."
+    NICKFURY_REF_CANDIDATES=("v$NICKFURY_REF" "release-$NICKFURY_REF")
+  fi
 
+  NICKFURY_VERSIONS=""
+
+  if [[ "$NICKFURY_LOOKUP" == true ]]; then
     for ref in "${NICKFURY_REF_CANDIDATES[@]}"; do
       if NICKFURY_VERSIONS=$(fetch_github_file "$NICKFURY_REPO" "$ref" "$NICKFURY_VERSIONS_PATH") &&
          [[ -n "$NICKFURY_VERSIONS" ]]; then
@@ -223,26 +247,39 @@ if [[ -n "$RELEASE_PATCH_VERSION" ]]; then
     done
 
     if [[ -z "$NICKFURY_VERSIONS" ]]; then
-      echo "⚠️  No component versions available from $NICKFURY_REPO, so the CanvOS and Palette CLI updates are skipped. Confirm the branch or tag name with the release engineers: a branch is named release-<version> and a tag v<version>, optionally with an -rc.N suffix. Then re-run with NICKFURY_REF set to that name." >&2
-    else
-      RELEASE_CANVOS=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "stylus" || true)
-      RELEASE_PALETTE_CLI_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "palette-cli" || true)
-      NICKFURY_SELF_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "nickfury" || true)
-
-      if [[ -n "$NICKFURY_SELF_VERSION" && "$NICKFURY_SELF_VERSION" != "$RELEASE_PATCH" ]]; then
-        echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF reports version '$NICKFURY_SELF_VERSION' but the patch release version is '$RELEASE_PATCH'. Confirm that the branch or tag matches the patch release."
-      fi
-
-      echo "ℹ️  Sourced component versions from $NICKFURY_REPO@$NICKFURY_REF (stylus=$RELEASE_CANVOS, palette-cli=$RELEASE_PALETTE_CLI_VERSION)."
-
-      # A release candidate ref carries prerelease component versions, which must not reach the
-      # published documentation. Warn loudly rather than stopping, so the notes can still be
-      # drafted ahead of the final tag.
-      if [[ "$RELEASE_CANVOS" == *-rc* || "$RELEASE_PALETTE_CLI_VERSION" == *-rc* ]]; then
-        echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF holds release candidate component versions. Re-run against the final release branch or tag before merging."
-      fi
+      echo "⚠️  No component versions available from $NICKFURY_REPO, so they are recorded as pending. Confirm the branch or tag name with the release engineers: a branch is named release-<version> and a tag v<version>, optionally with an -rc.N suffix. Then re-run with NICKFURY_REF set to that name." >&2
     fi
   fi
+
+  if [[ -n "$NICKFURY_VERSIONS" ]]; then
+    RELEASE_CANVOS=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "stylus" || true)
+    RELEASE_PALETTE_CLI_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "palette-cli" || true)
+    NICKFURY_SELF_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "nickfury" || true)
+
+    if [[ -n "$NICKFURY_SELF_VERSION" && "$NICKFURY_SELF_VERSION" != "$RELEASE_PATCH" ]]; then
+      echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF reports version '$NICKFURY_SELF_VERSION' but the patch release version is '$RELEASE_PATCH'. Confirm that the branch or tag matches the patch release."
+    fi
+
+    echo "ℹ️  Sourced component versions from $NICKFURY_REPO@$NICKFURY_REF (stylus=$RELEASE_CANVOS, palette-cli=$RELEASE_PALETTE_CLI_VERSION)."
+
+    # A release candidate ref carries prerelease component versions, which must not reach the
+    # published documentation. Warn loudly rather than stopping, so the notes can still be
+    # drafted ahead of the final tag.
+    if [[ "$RELEASE_CANVOS" == *-rc* || "$RELEASE_PALETTE_CLI_VERSION" == *-rc* ]]; then
+      echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF holds release candidate component versions. Re-run against the final release branch or tag before merging."
+    fi
+  fi
+fi
+
+# Whatever is still unknown is recorded as pending rather than omitted, so the release notes and
+# the tables are scaffolded on the first run and only need their values corrected later. Each
+# marker names what is missing, so the placeholders are easy to spot and to grep for.
+if [[ -z "$RELEASE_CANVOS" ]]; then
+  RELEASE_CANVOS="$PENDING_VERSION"
+fi
+
+if [[ -z "$RELEASE_PALETTE_CLI_VERSION" ]]; then
+  RELEASE_PALETTE_CLI_VERSION="$PENDING_VERSION"
 fi
 
 # Only document a component whose version actually moved. A patch release often ships the same
@@ -250,28 +287,51 @@ fi
 # release note and a table row that say nothing new. The comparison skips any row this script has
 # already written for this version, so a re-run compares against the previous release rather than
 # against its own output.
+# The table rows this script writes are anchored on the release version, so a run that confirms a
+# version after an earlier run scaffolded a placeholder would leave the placeholder row behind. The
+# version each section was last generated with is recorded alongside its ticket marker, so a change
+# can be detected and the superseded rows removed further down.
+PREVIOUS_RELEASE_PATCH=$(awk -v ticket="$PATCH_RELEASE_TICKET" -v marker="<!-- PATCH RELEASE VERSION: " '
+  $0 ~ "<!-- PATCH RELEASE TICKET: " ticket " -->" { in_section = 1; next }
+  in_section && /^## [^#]/ { exit }
+  in_section && index($0, marker) == 1 {
+    value = substr($0, length(marker) + 1)
+    sub(/ -->[ \t]*$/, "", value)
+    print value
+    exit
+  }
+' "$RELEASE_NOTES_FILE" || true)
+
+if [[ -n "$PREVIOUS_RELEASE_PATCH" && "$PREVIOUS_RELEASE_PATCH" != "$RELEASE_PATCH" ]]; then
+  echo "ℹ️  $PATCH_RELEASE_TICKET was last generated for $PREVIOUS_RELEASE_PATCH, so its rows are superseded by $RELEASE_PATCH."
+fi
+
 CANVOS_CHANGED=false
 PALETTE_CLI_CHANGED=false
 
-if [[ -n "$RELEASE_CANVOS" || -n "$RELEASE_PALETTE_CLI_VERSION" ]]; then
-  DOCUMENTED_CANVOS=$(get_documented_table_version \
-    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN" "$RELEASE_PATCH")
-  DOCUMENTED_PALETTE_CLI=$(get_documented_table_version \
-    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN" "$RELEASE_PATCH")
+DOCUMENTED_CANVOS=$(get_documented_table_version \
+  "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN" "$RELEASE_PATCH")
+DOCUMENTED_PALETTE_CLI=$(get_documented_table_version \
+  "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN" "$RELEASE_PATCH")
 
-  if [[ -n "$RELEASE_CANVOS" && "$RELEASE_CANVOS" != "$DOCUMENTED_CANVOS" ]]; then
-    CANVOS_CHANGED=true
-    echo "ℹ️  CanvOS moved from $DOCUMENTED_CANVOS to $RELEASE_CANVOS."
-  fi
+# A pending version is always written, because the point of recording it is to scaffold the entry
+# that a later run fills in. Only a known version is worth comparing against what is published.
+if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
+  CANVOS_CHANGED=true
+elif [[ "$RELEASE_CANVOS" != "$DOCUMENTED_CANVOS" ]]; then
+  CANVOS_CHANGED=true
+  echo "ℹ️  CanvOS moved from $DOCUMENTED_CANVOS to $RELEASE_CANVOS."
+fi
 
-  if [[ -n "$RELEASE_PALETTE_CLI_VERSION" && "$RELEASE_PALETTE_CLI_VERSION" != "$DOCUMENTED_PALETTE_CLI" ]]; then
-    PALETTE_CLI_CHANGED=true
-    echo "ℹ️  The Palette CLI moved from $DOCUMENTED_PALETTE_CLI to $RELEASE_PALETTE_CLI_VERSION."
-  fi
+if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
+  PALETTE_CLI_CHANGED=true
+elif [[ "$RELEASE_PALETTE_CLI_VERSION" != "$DOCUMENTED_PALETTE_CLI" ]]; then
+  PALETTE_CLI_CHANGED=true
+  echo "ℹ️  The Palette CLI moved from $DOCUMENTED_PALETTE_CLI to $RELEASE_PALETTE_CLI_VERSION."
+fi
 
-  if [[ "$CANVOS_CHANGED" == false && "$PALETTE_CLI_CHANGED" == false ]]; then
-    echo "ℹ️  CanvOS ($RELEASE_CANVOS) and the Palette CLI ($RELEASE_PALETTE_CLI_VERSION) are unchanged from the documented versions, so no Edge or Automation notes are added."
-  fi
+if [[ "$CANVOS_CHANGED" == false && "$PALETTE_CLI_CHANGED" == false ]]; then
+  echo "ℹ️  CanvOS ($RELEASE_CANVOS) and the Palette CLI ($RELEASE_PALETTE_CLI_VERSION) are unchanged from the documented versions, so no Edge or Automation notes are added."
 fi
 
 # The downloads table also needs the binary's checksum, which nickfury does not carry. A checksum
@@ -280,22 +340,38 @@ fi
 # publish a checksum that does not verify. PATCH_PALETTE_CLI_SHA is the override for this script.
 RELEASE_PALETTE_CLI_SHA="${PATCH_PALETTE_CLI_SHA:-}"
 
+RELEASE_PALETTE_CLI_URL=""
+
 if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
-  if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
-    read -p "Specify the SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION, or leave blank to download the binary and derive it (about 400 MB): " RELEASE_PALETTE_CLI_SHA
+  # A pending version names no binary, so there is nothing to prompt for or download.
+  if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
+    if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
+      read -p "Specify the SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION, or leave blank to derive it from the published binary: " RELEASE_PALETTE_CLI_SHA
+    fi
+
+    # The helper checks that the binary is published before transferring it, so an unreleased
+    # version costs one request rather than a download that cannot succeed.
+    if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
+      RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION") || RELEASE_PALETTE_CLI_SHA=""
+    fi
+
+    if [[ -n "$RELEASE_PALETTE_CLI_SHA" && ! "$RELEASE_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
+      echo "⚠️  '$RELEASE_PALETTE_CLI_SHA' is not a SHA256 checksum, so it is ignored." >&2
+      RELEASE_PALETTE_CLI_SHA=""
+    fi
+
+    RELEASE_PALETTE_CLI_URL="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/linux/cli/palette"
   fi
 
+  # The row is still written when the checksum or the version is unknown, so the entry exists and
+  # only its pending cells need filling once the binary is published.
   if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
-    RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION") || RELEASE_PALETTE_CLI_SHA=""
+    RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+    echo "ℹ️  No checksum available for the Palette CLI yet, so the CLI Tools row records '$PENDING_SHA'. Re-run with PATCH_PALETTE_CLI_SHA set, or once the binary is published, to fill it in."
   fi
 
-  if [[ -n "$RELEASE_PALETTE_CLI_SHA" && ! "$RELEASE_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
-    echo "⚠️  '$RELEASE_PALETTE_CLI_SHA' is not a SHA256 checksum, so it is ignored." >&2
-    RELEASE_PALETTE_CLI_SHA=""
-  fi
-
-  if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
-    echo "⚠️  No checksum available for Palette CLI $RELEASE_PALETTE_CLI_VERSION, so the CLI Tools table is left unchanged. Re-run with PATCH_PALETTE_CLI_SHA set once the binary is published." >&2
+  if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then
+    RELEASE_PALETTE_CLI_URL="$PENDING_URL"
   fi
 fi
 
@@ -430,6 +506,21 @@ if [[ -z "$SUPER_BUG_FIXES_BODY" ]]; then
   exit 1
 fi
 
+# A pending marker is written as inline code in prose, because Prettier reflows a release note to
+# 120 columns and would otherwise split "VERSION PENDING" across two lines. A real version needs no
+# such treatment, so the note-facing values differ from the table-facing ones only when pending.
+if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
+  RELEASE_CANVOS_NOTE="\`$RELEASE_CANVOS\`"
+else
+  RELEASE_CANVOS_NOTE="$RELEASE_CANVOS"
+fi
+
+if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
+  RELEASE_PALETTE_CLI_VERSION_NOTE="\`$RELEASE_PALETTE_CLI_VERSION\`"
+else
+  RELEASE_PALETTE_CLI_VERSION_NOTE="$RELEASE_PALETTE_CLI_VERSION"
+fi
+
 # Append the component version sections to Super's answer, so that both the insert and the update
 # path below carry them without any extra handling. This happens before the body is normalised so
 # that Prettier wraps these sentences to the same width as the rest of the notes. The citation
@@ -439,7 +530,7 @@ if [[ "$CANVOS_CHANGED" == true ]]; then
     "$EDGE_NOTES_TEMPLATE_FILE" \
     "$EDGE_NOTES_OUTPUT_FILE" \
     "RELEASE_PATCH" \
-    "RELEASE_CANVOS"
+    "RELEASE_CANVOS_NOTE"
 
   SUPER_BUG_FIXES_BODY="$SUPER_BUG_FIXES_BODY"$'\n\n'"$(cat "$EDGE_NOTES_OUTPUT_FILE")"
   cleanup "$EDGE_NOTES_OUTPUT_FILE"
@@ -451,7 +542,7 @@ if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
     "$AUTOMATION_NOTES_TEMPLATE_FILE" \
     "$AUTOMATION_NOTES_OUTPUT_FILE" \
     "RELEASE_PATCH" \
-    "RELEASE_PALETTE_CLI_VERSION"
+    "RELEASE_PALETTE_CLI_VERSION_NOTE"
 
   SUPER_BUG_FIXES_BODY="$SUPER_BUG_FIXES_BODY"$'\n\n'"$(cat "$AUTOMATION_NOTES_OUTPUT_FILE")"
   cleanup "$AUTOMATION_NOTES_OUTPUT_FILE"
@@ -482,16 +573,31 @@ if [[ "$CANVOS_CHANGED" == true || "$PALETTE_CLI_CHANGED" == true ]]; then
   # The Edge matrix script sources .env when run on its own, which would put the release-wide
   # CanvOS and Palette CLI versions back over the ones resolved above.
   export RELEASE_SKIP_DOTENV=true
+  # It also reads nickfury itself. The lookup already happened above, so repeating it here would
+  # either waste a request or, when the versions are pending, replace them with values the release
+  # notes do not mention.
+  export RELEASE_SKIP_NICKFURY=true
+
+  # Drop the rows an earlier run wrote for a version that has since changed, so a confirmed version
+  # replaces its placeholder rather than sitting alongside it.
+  if [[ -n "$PREVIOUS_RELEASE_PATCH" && "$PREVIOUS_RELEASE_PATCH" != "$RELEASE_PATCH" ]]; then
+    if remove_line_containing "edge-compat-$PREVIOUS_RELEASE_PATCH -->" "$EDGE_COMPATIBILITY_MATRIX_FILE"; then
+      echo "✅ Removed the superseded $PREVIOUS_RELEASE_PATCH row from $EDGE_COMPATIBILITY_MATRIX_FILE."
+    fi
+
+    if remove_line_containing "cli-$PREVIOUS_RELEASE_PATCH -->" "$DOWNLOADS_FILE"; then
+      echo "✅ Removed the superseded $PREVIOUS_RELEASE_PATCH row from $DOWNLOADS_FILE."
+    fi
+  fi
 
   ./scripts/release/generate-edge-compatibility-matrix.sh
 
   if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
     ./scripts/release/generate-install-palette-cli.sh
 
-    if [[ -n "$RELEASE_PALETTE_CLI_SHA" ]]; then
-      export RELEASE_PALETTE_CLI_SHA
-      ./scripts/release/generate-downloads.sh
-    fi
+    export RELEASE_PALETTE_CLI_SHA
+    export RELEASE_PALETTE_CLI_URL
+    ./scripts/release/generate-downloads.sh
   fi
 fi
 
@@ -501,10 +607,13 @@ if grep -qF "$PATCH_RELEASE_TICKET" "$RELEASE_NOTES_FILE"; then
   tmp_body_file="$(mktemp)"
   printf '%s' "$SUPER_BUG_FIXES_BODY" > "$tmp_body_file"
 
-  awk -v ticket="$PATCH_RELEASE_TICKET" -v body_file="$tmp_body_file" '
-    # When we hit the ticket marker, print it and inject new body
+  awk -v ticket="$PATCH_RELEASE_TICKET" -v body_file="$tmp_body_file" -v version="$RELEASE_PATCH" '
+    # When we hit the ticket marker, print it, re-record the version this section is now generated
+    # for, and inject the new body. The version marker is rewritten rather than carried over,
+    # because the old one sits inside the body region that is being replaced.
     $0 ~ "<!-- PATCH RELEASE TICKET: " ticket " -->" {
       print
+      print "<!-- PATCH RELEASE VERSION: " version " -->"
       while ((getline line < body_file) > 0) {
         print line
       }
