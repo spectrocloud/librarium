@@ -382,6 +382,52 @@ get_documented_table_version() {
     ' "$file"
 }
 
+# Utility function to read a cell from the row a given release already occupies, so a re-run can
+# see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
+# deliberately skips that row to find the previous release instead.
+# Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+# Params:
+# $1 - Markdown file to read
+# $2 - 1-based column number to return
+# $3 - the release whose row to read, example: 4.9.x
+get_table_cell_for_release() {
+    local file="$1"
+    local column="$2"
+    local release="$3"
+
+    [[ -f "$file" ]] || return 0
+
+    awk -v column="$column" -v want="$release" '
+      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        n = split($0, cells, "|")
+
+        release_cell = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment and the backticks a checksum cell is wrapped in, then trim.
+        gsub(/<!--[^>]*-->/, "", release_cell)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/`/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release_cell)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release_cell == want) {
+          print value
+          exit
+        }
+      }
+    ' "$file"
+}
+
 # Utility function to derive the SHA256 checksum of a published Palette CLI binary by
 # hashing it as it downloads, so the checksum column in the downloads table does not have
 # to be transcribed by hand. The binary is around 400 MB and is never written to disk.

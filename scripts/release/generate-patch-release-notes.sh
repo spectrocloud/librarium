@@ -26,9 +26,11 @@ EDGE_COMPATIBILITY_MATRIX_FILE="${EDGE_COMPATIBILITY_MATRIX_FILE:-docs/docs-cont
 DOWNLOADS_FILE="${DOWNLOADS_FILE:-docs/docs-content/downloads/cli-tools.md}"
 NICKFURY_REPO="spectrocloud/nickfury"
 NICKFURY_VERSIONS_PATH="release/spectro_versions.txt"
-# Columns in the Edge Compatibility Matrix table that hold the versions to compare against.
+# Columns in the Edge Compatibility Matrix table that hold the versions to compare against, and the
+# checksum column in the CLI Tools table.
 MATRIX_CANVOS_COLUMN=2
 MATRIX_PALETTE_CLI_COLUMN=3
+DOWNLOADS_SHA_COLUMN=4
 # Markers written in place of a value that is not known yet. Each names what is missing, so a
 # reviewer can see which cells still need filling and can grep the docs for "PENDING".
 PENDING_VERSION="VERSION PENDING"
@@ -302,6 +304,44 @@ if [[ "$COMPONENT_UPDATES" == true ]]; then
   if [[ -z "$RELEASE_PALETTE_CLI_VERSION" ]]; then
     RELEASE_PALETTE_CLI_VERSION="$PENDING_VERSION"
   fi
+
+  # Never turn a version this release already documents back into a pending marker without being
+  # told to. A re-run that answers "no" to the branch or tag question would otherwise undo correct,
+  # published content, and the install page carries whichever version the last run resolved. The
+  # existing value is kept unless the overwrite is confirmed, and an unattended run always keeps it.
+  guard_pending_overwrite() {
+    local label="$1"
+    local resolved="$2"
+    local file="$3"
+    local column="$4"
+    local existing
+
+    if [[ "$resolved" != "$PENDING_VERSION" ]]; then
+      printf '%s' "$resolved"
+      return 0
+    fi
+
+    existing=$(get_table_cell_for_release "$file" "$column" "$RELEASE_PATCH")
+
+    if [[ -z "$existing" || "$existing" == "$PENDING_VERSION" ]]; then
+      printf '%s' "$resolved"
+      return 0
+    fi
+
+    echo "⚠️  $RELEASE_PATCH already documents $label $existing, and this run has no version for it." >&2
+
+    if confirm "   Replace $label $existing with '$PENDING_VERSION'?" n; then
+      printf '%s' "$resolved"
+    else
+      echo "ℹ️  Keeping $label $existing." >&2
+      printf '%s' "$existing"
+    fi
+  }
+
+  RELEASE_CANVOS=$(guard_pending_overwrite "CanvOS" "$RELEASE_CANVOS" \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN")
+  RELEASE_PALETTE_CLI_VERSION=$(guard_pending_overwrite "the Palette CLI" "$RELEASE_PALETTE_CLI_VERSION" \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN")
 fi
 
 # The table rows this script writes are anchored on the release version, so a run that confirms a
@@ -389,10 +429,26 @@ if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
   fi
 
   # The row is still written when the checksum or the version is unknown, so the entry exists and
-  # only its pending cells need filling once the binary is published.
+  # only its pending cells need filling once the binary is published. A checksum this release
+  # already records is kept, for the same reason the versions above are, since a re-run that simply
+  # skips the checksum prompt should not discard one that was found earlier.
   if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
-    RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-    echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+    EXISTING_PALETTE_CLI_SHA=$(get_table_cell_for_release \
+      "$DOWNLOADS_FILE" "$DOWNLOADS_SHA_COLUMN" "$RELEASE_PATCH")
+
+    if [[ "$EXISTING_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
+      echo "⚠️  $RELEASE_PATCH already records a Palette CLI checksum, and this run has none." >&2
+
+      if confirm "   Replace it with '$PENDING_SHA'?" n; then
+        RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+      else
+        RELEASE_PALETTE_CLI_SHA="$EXISTING_PALETTE_CLI_SHA"
+        echo "ℹ️  Keeping the recorded checksum."
+      fi
+    else
+      RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+      echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+    fi
   fi
 
   if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then

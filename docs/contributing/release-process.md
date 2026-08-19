@@ -413,8 +413,19 @@ scaffolding exists from the first run and a later run only has to fill in the va
 | `URL PENDING`     | The Palette CLI download URL.    |
 | `SHA PENDING`     | The Palette CLI checksum.        |
 
-Search the documentation for `PENDING` to find every value still to be confirmed. Re-run the target with the branch or
-tag name, and with `PATCH_PALETTE_CLI_SHA` set or the binary published, to replace them.
+Search the documentation for `PENDING` to find every value still to be confirmed.
+
+Re-running the target replaces the values it wrote before, so a run that fills in a branch or tag turns the pending
+markers into real versions. It will not do the reverse silently: when a run has no version for a component that the
+release already documents, it says so and asks before replacing a real value with a marker. Declining keeps what is
+published, and an unattended run always keeps it.
+
+> [!WARNING]
+>
+> The target only maintains rows for the version it is generating. Answering no to the component version question on a
+> re-run leaves any rows an earlier run wrote exactly as they are, so tidy those by hand. The same applies once you have
+> edited a row yourself, because the target replaces whole rows rather than individual cells. Re-run the target with the
+> branch or tag name, and with `PATCH_PALETTE_CLI_SHA` set or the binary published, to replace them.
 
 > [!WARNING]
 >
