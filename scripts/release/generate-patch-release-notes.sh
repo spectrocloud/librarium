@@ -194,7 +194,7 @@ if [[ -n "${PATCH_COMPONENT_UPDATES:-}" ]]; then
     *) COMPONENT_UPDATES=false ;;
   esac
 elif [[ -t 0 ]]; then
-  if confirm "Is a new CanvOS or Palette CLI version being added in this patch release?" n; then
+  if confirm "Does this patch release add a new CanvOS or Palette CLI version, or both?" n; then
     COMPONENT_UPDATES=true
   else
     COMPONENT_UPDATES=false
@@ -206,7 +206,7 @@ else
 fi
 
 if [[ "$COMPONENT_UPDATES" == false ]]; then
-  echo "ℹ️  No new CanvOS or Palette CLI version, so only the release notes body is generated."
+  echo "ℹ️  No new CanvOS or Palette CLI versions, so only the release notes body is generated."
 elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
   echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
 fi

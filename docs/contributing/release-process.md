@@ -353,12 +353,12 @@ that document them.
 The target asks a short series of questions, so you are only asked for values that apply to this patch. Each question is
 skipped when its environment variable is already set.
 
-| **Question**                                        | **Answer**                                                                      | **Environment Variable**  |
-| --------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
-| Do you know the Palette patch release version?      | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
-| Is a new CanvOS or Palette CLI version being added? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
-| Do you know the nickfury branch or tag name?        | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
-| The Palette CLI checksum                            | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
+| **Question**                                                      | **Answer**                                                                      | **Environment Variable**  |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
+| Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
+| Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
+| Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
+| The Palette CLI checksum                                          | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
 
 The Palette CLI checksum is published in ReTool, so look it up there and paste it in. Typing `derive` reads it from the
 published binary instead, which streams around 400 MB and only works once the release is out.

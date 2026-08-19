@@ -12,7 +12,7 @@ on:
         required: true
         default: "master"
       patch_version:
-        description: "The Palette patch release version (e.g., 4.9.48). Leave empty to skip the CanvOS and Palette CLI updates."
+        description: "The Palette patch release version (e.g., 4.9.48), or a placeholder such as 4.9.x. Leave empty to use the version from the candidates JQL."
         required: false
       nickfury_ref:
         description: "The nickfury branch or tag name holding the component versions. Branches are release-<version>, tags are v<version> with an optional -rc.N suffix (e.g. release-4.9 or v4.9.47-rc.2). Leave empty to try v<patch_version> then release-<patch_version>."
@@ -21,7 +21,7 @@ on:
         description: "SHA256 checksum of the Palette CLI binary, from ReTool. Leave empty to record it as pending."
         required: false
       component_updates:
-        description: "Set to true when this patch adds a new CanvOS or Palette CLI version. Leave empty to generate the release notes body only."
+        description: "Set to true when this patch adds a new CanvOS or Palette CLI version, or both. Leave empty to generate the release notes body only."
         required: false
 
 env:
