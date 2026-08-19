@@ -401,7 +401,6 @@ init-release:
 	grep -q "^export RELEASE_DATE=" .env || printf "export RELEASE_DATE=\n" >> .env
 	grep -q "^export RELEASE_CANVOS=" .env || printf "export RELEASE_CANVOS=\n" >> .env
 	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || printf "export RELEASE_EDGE_CLI_VERSION=\n" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_DEPRECATED=" .env || printf "export RELEASE_EDGE_CLI_DEPRECATED=false\n" >> .env
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || printf "export RELEASE_TERRAFORM_VERSION=\n" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || printf "\n# COMPONENT UPDATES\n" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || printf "export RELEASE_PALETTE_CLI_VERSION=\n" >> .env
