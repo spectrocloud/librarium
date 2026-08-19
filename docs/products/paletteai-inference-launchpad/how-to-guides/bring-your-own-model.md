@@ -93,15 +93,9 @@ launchpad:
         max_model_len: 32768
 ```
 
-The following fields decide whether the model can run.
-
-| **Field**                    | **What it does**                                                                                                                                                |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `min_gpus`                   | The minimum number of GPUs the model needs, not the width it runs at. A node with fewer GPUs than this does not fit the variant.                                |
-| `vram_gb`                    | A floor on per-GPU memory. The appliance compares it at deploy time against the memory the nodes advertise, and blocks the deployment if the floor is too high. |
-| `serve.tensor_parallel_size` | The number of GPUs the engine spreads the model across.                                                                                                         |
-| `serve.max_model_len`        | The maximum context length the engine serves. A longer context reserves more GPU memory for the key-value cache.                                                |
-| `vendor` and `gpu_product`   | Pins the variant to one GPU vendor or one GPU model. Both are unset in the preceding example, which lets the variant fit any node that satisfies `min_gpus`.    |
+This example sets a floor of four GPUs, requires 141 GB of memory per GPU, and spreads the model across four GPUs at a
+32,768-token context. It leaves `vendor` and `gpu_product` unset, so the variant fits any node that meets the GPU floor.
+For what each field does, refer to [The launchpad Block](../reference/model-upload-reference.md#the-launchpad-block).
 
 :::warning
 
@@ -112,9 +106,6 @@ marked as not deployable, with a reason naming what the variant needs against wh
 unless you know the exact label your nodes publish.
 
 :::
-
-For every field the file accepts, refer to
-[Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
 
 ## Download and Upload the Model
 
