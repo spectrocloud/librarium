@@ -30,8 +30,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
 
 - Upgrades the platform from Local UI by uploading a newer content bundle from Artifact Studio and applying **Update**
-  on the cluster configuration page. Refer to
-  [Manage Cluster Infrastructure](./how-to-guides/manage-cluster-infrastructure.md) for more information.
+  on the cluster configuration page. Refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md) for more
+  information.
 
 - Runs on a single high-density GPU server with NVIDIA or AMD GPUs, NVMe storage, and bonded NICs, sized to the target
   model from a baseline of 4 GPUs. Refer to [Suggested Hardware](./reference/hardware-requirements.md) for more

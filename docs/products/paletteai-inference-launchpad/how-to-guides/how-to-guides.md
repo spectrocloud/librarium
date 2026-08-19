@@ -16,7 +16,8 @@ you the steps to do it without teaching background concepts.
 | **Guide**                                                           | **What you do**                                                                  |
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | [Install the Appliance](./install-the-appliance.md)                 | Flash the installer ISO, boot the hardware, and bring up the appliance console.  |
-| [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md) | Create, scale, and upgrade the cluster from Local UI with a new content bundle.  |
+| [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md) | Index the Local UI tasks for day-two cluster infrastructure operations.          |
+| [Upgrade the Platform](./upgrade-the-platform.md)                   | Upload a newer content bundle, apply **Update**, and roll application charts.    |
 | [Deploy a Model](./deploy-a-model.md)                               | Deploy an LLM to the cluster and verify it is serving.                           |
 | [Upload a Model](./upload-a-model.md)                               | Download a model on a jumpbox and upload it to the appliance.                    |
 | [Switch the Default Model](./set-the-default-model.md)              | Switch the default model when the current default becomes unavailable.           |

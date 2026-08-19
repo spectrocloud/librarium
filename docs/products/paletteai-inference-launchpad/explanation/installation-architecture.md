@@ -46,7 +46,8 @@ to serve requests.
 Day-two cluster operations stay in Local UI. To add or remove nodes, scale the cluster. To upgrade the platform, upload
 a newer content bundle from Artifact Studio and apply **Update** on the cluster configuration page. You do not reinstall
 the OS or redeploy the cluster. Refer to
-[Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md).
+[Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md) for the index of Local UI operations,
+and to [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md) for the upgrade procedure.
 
 ## Bond, not bridge
 
