@@ -86,6 +86,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9265 -->
+
+- Edge workflows have been updated to Kairos v4.1.2 with `kairos-init` v0.16.x. Day-1 and Day-2 upgrades from earlier
+  Kairos builds are supported.
+
 #### Bug Fixes
 
 ### VerteX
