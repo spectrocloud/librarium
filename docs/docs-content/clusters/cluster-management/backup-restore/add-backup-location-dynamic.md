@@ -23,7 +23,7 @@ provide detailed steps to add an S3 bucket as the backup location using the STS 
 Three scenarios are supported, depending on where your Kubernetes cluster runs and where the S3 bucket lives. Select the
 section that matches your use case.
 
-- [Single Cloud Account with AWS STS](#single-cloud-account-with-aws-sts) — the cluster and the S3 bucket are in the
+- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts) — the cluster and the S3 bucket are in the
   same AWS account.
 
 - [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts) — the cluster is in one AWS account and
@@ -32,10 +32,10 @@ section that matches your use case.
 - [Non-AWS Cluster with AWS STS](#non-aws-cluster-with-aws-sts) — the cluster runs on non-AWS infrastructure such as
   edge-native, AKS, or vSphere, and the S3 bucket is in an AWS account.
 
-## Single Cloud Account with AWS STS
+## Single AWS Account with AWS STS
 
 Use the following steps to add an S3 bucket as the backup location using the STS authentication method when you have one
-cloud account.
+AWS account.
 
 ### Prerequisites
 
@@ -44,9 +44,9 @@ cloud account.
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
-- An AWS account with an S3 bucket in the account. The bucket will store the backup of your clusters or workspaces.
+- An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
 
-- The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the
+- The following Identity and Access Management (IAM) policy must be created in your AWS account. Replace the
   `<bucket-name>` placeholder in the policy below with your bucket name. Refer to the
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
