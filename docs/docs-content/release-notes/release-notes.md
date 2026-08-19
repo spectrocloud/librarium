@@ -73,6 +73,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9264 -->
+
+- Locally managed Edge clusters in an airgapped environment that use Palette eXtended Kubernetes Edge (PXK-E) or
+  Canonical Kubernetes now support decoupled control plane and worker node upgrades. Enable the **Skip worker node
+  update (Optional)** toggle on a worker pool in Local UI to hold that pool at its current Kubernetes version while the
+  control plane advances, up to the Kubernetes N-3 minor version skew. This reduces how many times worker nodes repave
+  when crossing several Kubernetes minor versions. Scale-up on a pool with the toggle enabled is rejected, and disabling
+  the toggle repaves the pool to the control plane version. Refer to
+  [Decoupled Control Plane and Worker Node Upgrades](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades)
+  for more information.
+
 #### Improvements
 
 #### Bug Fixes
