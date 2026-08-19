@@ -15,6 +15,15 @@ the cluster by removing nodes from the cluster using Local UI.
 To scale up a cluster is to add additional nodes to an active cluster. You can scale up a cluster deployed on hosts
 installed in local management mode in Local UI.
 
+:::warning
+
+You cannot scale up a worker pool that has the **Skip worker node update (Optional)** toggle enabled, because a new node
+cannot honor the pool's pinned Kubernetes version. Either disable the toggle, which repaves the pool to the control
+plane version, or create a new worker pool and add the Edge hosts to it. Refer to
+[Decoupled Control Plane and Worker Node Upgrades](../../cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
+
+:::
+
 ### Prerequisites
 
 - You have an active cluster composed of hosts installed in local management mode. For more information, refer to

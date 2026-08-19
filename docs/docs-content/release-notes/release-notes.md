@@ -21,6 +21,20 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.0}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11143 -->
+
+- Palette now validates user-supplied cluster profile and app profile versions against the
+  [Semantic Versioning](https://semver.org) specification when a profile is created or updated through the Palette UI,
+  API, Terraform provider, or Crossplane provider. Values such as `1.2.3` and `1.2.3-rc.1` are accepted; values such as
+  `2.2.2.develop` or `V0.0.1` that earlier releases accepted are now rejected whenever a version is set --- on create,
+  on clone, when creating a new profile version, or when changing the version of an existing profile. Existing profiles
+  carrying a malformed version continue to function, and no pre-upgrade or post-upgrade action is required. If you
+  update a profile's version to a valid value, later attempts to set a malformed value on that profile fail, including
+  reverting to the original value. These new requirements do not apply to external registry and chart tags, including
+  Zarf UDS tags. For the accepted format, refer to
+  [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
+  [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->
@@ -73,6 +87,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9264 -->
+
+- Locally managed Edge clusters in an airgapped environment that use Palette eXtended Kubernetes Edge (PXK-E) or
+  Canonical Kubernetes now support decoupled control plane and worker node upgrades. Enable the **Skip worker node
+  update (Optional)** toggle on a worker pool in Local UI to hold that pool at its current Kubernetes version while the
+  control plane advances, up to the Kubernetes N-3 minor version skew. This reduces how many times worker nodes repave
+  when crossing several Kubernetes minor versions. Scale-up on a pool with the toggle enabled is rejected, and disabling
+  the toggle repaves the pool to the control plane version. Refer to
+  [Decoupled Control Plane and Worker Node Upgrades](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-9267 -->
 
 - Airgap content bundle uploads to Edge hosts are now chunked, resumable, and parallel by default. The Palette CLI
@@ -85,6 +110,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for more information.
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
+
+- The Custom UI appliance install wizard now renders a specific inline error at any field whose value is invalid.
+  Sections that contain an invalid field display an "invalid" badge on the section title, and the step counter reads as
+  "X of Y complete."
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9265 -->
+
+- Edge workflows have been updated to Kairos v4.1.2 with `kairos-init` v0.16.x. Day-1 and Day-2 upgrades from earlier
+  Kairos builds are supported.
 
 #### Bug Fixes
 
@@ -125,6 +161,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now available.
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9266 -->
+
+- The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
+  100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
+  upload completion as soon as the transfer finishes.
 
 ### Docs and Education
 
