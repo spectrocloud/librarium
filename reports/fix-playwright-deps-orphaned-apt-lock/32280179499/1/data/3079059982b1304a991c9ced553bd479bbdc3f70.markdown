@@ -1,0 +1,444 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/how-to-guides/use-codex/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  1292 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 1292 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 1292 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [expanded] [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - link "Install the Appliance" [ref=e53] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - listitem [ref=e54]:
+                    - link "Deploy a Model" [ref=e55] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e56]:
+                    - link "Upload a Model" [ref=e57] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                  - listitem [ref=e58]:
+                    - link "Switch the Default Model" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+                  - listitem [ref=e60]:
+                    - link "Enable Vision Preprocessing" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                  - listitem [ref=e62]:
+                    - link "Create a Client" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                  - listitem [ref=e64]:
+                    - link "Generate an API Token" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - listitem [ref=e66]:
+                    - link "Set and Manage Client Quotas" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e68]:
+                    - link "Manage a Client's Model Access" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e70]:
+                    - link "View Token Usage" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-token-usage/
+                  - listitem [ref=e72]:
+                    - link "View Client Usage" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e74]:
+                    - link "Revoke or Delete a Client" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e76]:
+                    - link "Use Claude Code" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e78]:
+                    - link "Use Cursor" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - listitem [ref=e80]:
+                    - link "Use OpenAI Codex" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                  - listitem [ref=e82]:
+                    - link "Use OpenCode" [ref=e83] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Explanation" [ref=e86] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Reference" [ref=e90] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - link "Release Notes" [ref=e93] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e94]:
+                - button "Privacy Settings" [ref=e95] [cursor=pointer]
+      - main [ref=e96]:
+        - generic [ref=e98]:
+          - generic [ref=e100]:
+            - article [ref=e101]:
+              - navigation "Breadcrumbs" [ref=e102]:
+                - list [ref=e103]:
+                  - listitem [ref=e104]:
+                    - link "Home page" [ref=e105] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e106]
+                  - listitem [ref=e108]:
+                    - link "How-to Guides" [ref=e109] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - listitem [ref=e110]:
+                    - generic [ref=e111]: Use OpenAI Codex
+              - generic [ref=e112]:
+                - heading "Use PaletteAI Inference Launchpad with OpenAI Codex" [level=1] [ref=e114]
+                - paragraph [ref=e115]: This guide explains how to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model running on the appliance serves every request instead of OpenAI's hosted API. You add a custom model provider to the Codex configuration file and confirm the connection.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e116]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e117] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e118]:
+                  - listitem [ref=e119]:
+                    - text: The OpenAI Codex CLI installed and already working. For installation, refer to the
+                    - link "OpenAI Codex website" [ref=e120] [cursor=pointer]:
+                      - /url: https://github.com/openai/codex
+                    - text: .
+                  - listitem [ref=e121]:
+                    - text: A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model, refer to
+                    - link "Deploy a Model" [ref=e122] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                    - text: .
+                  - listitem [ref=e123]:
+                    - text: An API token for the appliance. To create one, refer to
+                    - link "Generate an API Token" [ref=e124] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                    - text: ", or use a token an administrator generated for you."
+                  - listitem [ref=e125]: The appliance reachable at a DNS hostname with a valid, publicly trusted TLS certificate. Codex validates TLS strictly and cannot skip certificate verification, so a self-signed certificate does not work.
+                - heading "Configure CodexDirect link to Configure Codex" [level=2] [ref=e126]:
+                  - text: Configure Codex
+                  - link "Direct link to Configure Codex" [ref=e127] [cursor=pointer]:
+                    - /url: "#configure-codex"
+                    - text: "#"
+                - paragraph [ref=e128]:
+                  - text: Codex uses the Responses API, so you add a custom model provider that points at the appliance. For a description of each field, refer to
+                  - link "OpenAI Codex Configuration" [ref=e129] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - text: .
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - img [ref=e133]
+                    - text: tip
+                  - paragraph [ref=e136]:
+                    - text: The console can generate a starter version of this configuration for you. Select
+                    - strong [ref=e137]: Connect coding agent
+                    - text: and open the
+                    - strong [ref=e138]: Codex
+                    - text: tab to copy a
+                    - code [ref=e139]: config.toml
+                    - text: snippet pre-filled with your appliance's endpoint. Review the model and provider values against the steps below before you save it.
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - paragraph [ref=e142]:
+                      - text: Add the following custom provider to the Codex configuration file at
+                      - code [ref=e143]: ~/.codex/config.toml
+                      - text: . Replace
+                      - code [ref=e144]: <appliance-host>
+                      - text: with your appliance address.
+                    - generic [ref=e146]:
+                      - code [ref=e148]:
+                        - generic [ref=e149]: "model = \"glm-5.2\" # a model the appliance serves, not \"auto\""
+                        - generic [ref=e150]: model_provider = "lpai"
+                        - generic [ref=e151]: "[model_providers.lpai]"
+                        - generic [ref=e152]: name = "Launchpad"
+                        - generic [ref=e153]: base_url = "https://<appliance-host>/v1"
+                        - generic [ref=e154]: env_key = "LPAI_KEY"
+                        - generic [ref=e155]: "wire_api = \"responses\" # Codex uses the Responses API"
+                      - generic [ref=e156]:
+                        - button "Toggle word wrap" [ref=e157] [cursor=pointer]:
+                          - img [ref=e158]
+                        - button "Copy code to clipboard" [ref=e160] [cursor=pointer]:
+                          - generic [ref=e161]:
+                            - img [ref=e162]
+                            - img [ref=e164]
+                    - paragraph [ref=e166]:
+                      - text: Set
+                      - code [ref=e167]: model
+                      - text: to a model the appliance serves, such as
+                      - code [ref=e168]: glm-5.2
+                      - text: . Do not use
+                      - code [ref=e169]: auto
+                      - text: ", because the Responses API passes the model straight to the engine. Set"
+                      - code [ref=e170]: base_url
+                      - text: to your appliance address with the
+                      - code [ref=e171]: /v1
+                      - text: path appended.
+                  - listitem [ref=e172]:
+                    - paragraph [ref=e173]:
+                      - text: Set the environment variable named in
+                      - code [ref=e174]: env_key
+                      - text: to your API token so that Codex can authenticate. In this example,
+                      - code [ref=e175]: env_key
+                      - text: is
+                      - code [ref=e176]: LPAI_KEY
+                      - text: . Replace
+                      - code [ref=e177]: <lpai-token>
+                      - text: with the token you copied.
+                    - generic [ref=e179]:
+                      - code [ref=e181]:
+                        - generic [ref=e182]: export LPAI_KEY=<lpai-token>
+                      - button "Copy code to clipboard" [ref=e184] [cursor=pointer]:
+                        - generic [ref=e185]:
+                          - img [ref=e186]
+                          - img [ref=e188]
+                - heading "Verify the ConnectionDirect link to Verify the Connection" [level=2] [ref=e190]:
+                  - text: Verify the Connection
+                  - link "Direct link to Verify the Connection" [ref=e191] [cursor=pointer]:
+                    - /url: "#verify-the-connection"
+                    - text: "#"
+                - paragraph [ref=e192]: Run a single prompt to confirm the appliance answers.
+                - generic [ref=e194]:
+                  - code [ref=e196]:
+                    - generic [ref=e197]: codex exec --skip-git-repo-check "reply with exactly CODEX_OK and nothing else"
+                  - generic [ref=e198]:
+                    - button "Toggle word wrap" [ref=e199] [cursor=pointer]:
+                      - img [ref=e200]
+                    - button "Copy code to clipboard" [ref=e202] [cursor=pointer]:
+                      - generic [ref=e203]:
+                        - img [ref=e204]
+                        - img [ref=e206]
+                - generic [ref=e208]:
+                  - generic [ref=e209]: Expected output
+                  - code [ref=e212]:
+                    - generic [ref=e213]: CODEX_OK
+                - paragraph [ref=e214]:
+                  - text: A reply confirms that the base URL, token, provider, and model routing all work. The
+                  - code [ref=e215]: "--skip-git-repo-check"
+                  - text: flag lets you run the test outside a git repository.
+                - generic [ref=e216]:
+                  - generic [ref=e217]:
+                    - img [ref=e219]
+                    - text: info
+                  - paragraph [ref=e222]:
+                    - text: Codex may print a
+                    - code [ref=e223]: Model metadata for glm-5.2 not found
+                    - text: warning. This warning is cosmetic and does not affect the request.
+                - heading "Request Routing and QuotasDirect link to Request Routing and Quotas" [level=2] [ref=e224]:
+                  - text: Request Routing and Quotas
+                  - link "Direct link to Request Routing and Quotas" [ref=e225] [cursor=pointer]:
+                    - /url: "#request-routing-and-quotas"
+                    - text: "#"
+                - paragraph [ref=e226]:
+                  - text: Requests you send through the appliance are subject to the routing rule and quota configured for your API token. If an operator configured a routing rule for your token, the appliance can redirect a request to a frontier model instead of a local one. Token quotas apply per API token, and when a token exhausts its quota, the appliance returns an HTTP
+                  - code [ref=e227]: "429"
+                  - text: response.
+                - paragraph [ref=e228]:
+                  - text: To understand what a client is and how API keys and quotas govern usage, refer to
+                  - link "Clients and Quotas" [ref=e229] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/clients-and-quotas/
+                  - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e230]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e231] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e232]:
+                  - text: To look up each configuration value, refer to
+                  - link "OpenAI Codex Configuration" [ref=e233] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - text: . To connect a different coding tool, refer to
+                  - link "Use PaletteAI Inference Launchpad with Claude Code" [ref=e234] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - text: or
+                  - link "Use PaletteAI Inference Launchpad with Cursor" [ref=e235] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - text: .
+              - generic [ref=e236]:
+                - generic [ref=e238]:
+                  - text: "Tags:"
+                  - list [ref=e239]:
+                    - listitem [ref=e240]:
+                      - link "paletteai-inference-launchpad" [ref=e241] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e242]:
+                      - link "codex" [ref=e243] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/codex/
+                    - listitem [ref=e244]:
+                      - link "how-to" [ref=e245] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/how-to/
+                - link "Edit this page" [ref=e248] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/how-to-guides/use-codex.md
+                  - img [ref=e249]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e253]:
+              - link "Previous « Use Cursor" [ref=e254] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                - generic [ref=e255]: Previous
+                - generic [ref=e256]: « Use Cursor
+              - link "Next Use OpenCode »" [ref=e257] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+                - generic [ref=e258]: Next
+                - generic [ref=e259]: Use OpenCode »
+          - list [ref=e262]:
+            - listitem [ref=e263]:
+              - link "Prerequisites" [ref=e264] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e265]:
+              - link "Configure Codex" [ref=e266] [cursor=pointer]:
+                - /url: "#configure-codex"
+            - listitem [ref=e267]:
+              - link "Verify the Connection" [ref=e268] [cursor=pointer]:
+                - /url: "#verify-the-connection"
+            - listitem [ref=e269]:
+              - link "Request Routing and Quotas" [ref=e270] [cursor=pointer]:
+                - /url: "#request-routing-and-quotas"
+            - listitem [ref=e271]:
+              - link "Next Steps" [ref=e272] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e273] [cursor=pointer]:
+    - generic [ref=e276]:
+      - img "Project Logo" [ref=e277]
+      - paragraph [ref=e278]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

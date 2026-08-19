@@ -1,0 +1,212 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/tags/reference/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 1973px, received 1280px by 2103px. 12925 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 1973px, received 1280px by 2103px. 12925 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 1973px, received 1280px by 2103px. 12925 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - heading "13 docs tagged with \"reference\"" [level=1] [ref=e38]
+        - link "View all tags" [ref=e39] [cursor=pointer]:
+          - /url: /paletteai-inference-launchpad/tags/
+      - generic [ref=e40]:
+        - article [ref=e41]:
+          - link "Bond Configuration Reference" [ref=e42] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+            - heading "Bond Configuration Reference" [level=2] [ref=e43]
+          - paragraph [ref=e44]: "Field-by-field reference for the bond form in Local UI: bond name, bond type, members, bonding mode, hash policy, link monitoring interval, LACP rate, MTU, IP, gateway and DNS, optional VLAN sub-interface, and Cilium interface selection."
+        - article [ref=e45]:
+          - link "Certified Models by Hardware" [ref=e46] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+            - heading "Certified Models by Hardware" [level=2] [ref=e47]
+          - paragraph [ref=e48]: Reference table that maps each supported NVIDIA and AMD GPU configuration to the LLM models certified for PaletteAI Inference Launchpad.
+        - article [ref=e49]:
+          - link "Cluster Profile Variables" [ref=e50] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/profile-variables/
+            - heading "Cluster Profile Variables" [level=2] [ref=e51]
+          - paragraph [ref=e52]: Reference for the PaletteAI Inference Launchpad cluster profile variables collected by the Profile Config wizard. Covers networking, OS and metrics, container registry, local admin, storage, and certificates with types, required fields, defaults, and validation rules.
+        - article [ref=e53]:
+          - link "Known Issues" [ref=e54] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/known-issues/
+            - heading "Known Issues" [level=2] [ref=e55]
+          - paragraph [ref=e56]: Known issues that operators may encounter during PaletteAI Inference Launchpad installation and validation, and the workarounds for each.
+        - article [ref=e57]:
+          - link "PaletteAI Inference Launchpad Claude Code Configuration" [ref=e58] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+            - heading "PaletteAI Inference Launchpad Claude Code Configuration" [level=2] [ref=e59]
+          - paragraph [ref=e60]: Reference for the environment variables and values used to connect Claude Code to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e61]:
+          - link "PaletteAI Inference Launchpad Cursor Configuration" [ref=e62] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+            - heading "PaletteAI Inference Launchpad Cursor Configuration" [level=2] [ref=e63]
+          - paragraph [ref=e64]: Reference for the settings and values used to connect the Cursor code editor to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e65]:
+          - link "PaletteAI Inference Launchpad Glossary" [ref=e66] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/glossary/
+            - heading "PaletteAI Inference Launchpad Glossary" [level=2] [ref=e67]
+          - paragraph [ref=e68]: Definitions of the key AI, product, and platform terms used across the PaletteAI Inference Launchpad documentation.
+        - article [ref=e69]:
+          - link "PaletteAI Inference Launchpad Model Upload Reference" [ref=e70] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+            - heading "PaletteAI Inference Launchpad Model Upload Reference" [level=2] [ref=e71]
+          - paragraph [ref=e72]: Reference for the Palette CLI model download and upload commands and the model metadata file used to place models on a PaletteAI Inference Launchpad appliance.
+        - article [ref=e73]:
+          - link "PaletteAI Inference Launchpad OpenAI Codex Configuration" [ref=e74] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/codex-reference/
+            - heading "PaletteAI Inference Launchpad OpenAI Codex Configuration" [level=2] [ref=e75]
+          - paragraph [ref=e76]: Reference for the configuration file fields and values used to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e77]:
+          - link "PaletteAI Inference Launchpad OpenCode Configuration" [ref=e78] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+            - heading "PaletteAI Inference Launchpad OpenCode Configuration" [level=2] [ref=e79]
+          - paragraph [ref=e80]: Reference for the configuration file fields and values used to connect the OpenCode terminal coding agent to a PaletteAI Inference Launchpad appliance.
+        - article [ref=e81]:
+          - link "PaletteAI Inference Launchpad Reference" [ref=e82] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/
+            - heading "PaletteAI Inference Launchpad Reference" [level=2] [ref=e83]
+          - paragraph [ref=e84]: Authoritative technical reference for requirements, certified models, and specifications.
+        - article [ref=e85]:
+          - link "PaletteAI Inference Launchpad Usage Metrics Reference" [ref=e86] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/usage-metrics-reference/
+            - heading "PaletteAI Inference Launchpad Usage Metrics Reference" [level=2] [ref=e87]
+          - paragraph [ref=e88]: Reference for every filter, metric, table column, and export field on the Usage page of a PaletteAI Inference Launchpad appliance.
+        - article [ref=e89]:
+          - link "Suggested Hardware" [ref=e90] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+            - heading "Suggested Hardware" [level=2] [ref=e91]
+          - paragraph [ref=e92]: "Suggested hardware for a PaletteAI Inference Launchpad appliance: compute, GPU, memory, storage, and network."
+  - button "Project Logo Ask AI" [ref=e93] [cursor=pointer]:
+    - generic [ref=e96]:
+      - img "Project Logo" [ref=e97]
+      - paragraph [ref=e98]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

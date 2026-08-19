@@ -1,0 +1,403 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/reference/claude-code-reference/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  3203 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 3203 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 3203 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Explanation" [ref=e53] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e54] [cursor=pointer]
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Reference" [expanded] [ref=e57] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e58] [cursor=pointer]
+                - list [ref=e59]:
+                  - listitem [ref=e60]:
+                    - link "Glossary" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/
+                  - listitem [ref=e62]:
+                    - link "Suggested Hardware" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                  - listitem [ref=e64]:
+                    - link "Bond Configuration" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                  - listitem [ref=e66]:
+                    - link "Cluster Profile Variables" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                  - listitem [ref=e68]:
+                    - link "Certified Models by Hardware" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                  - listitem [ref=e70]:
+                    - link "Model Upload Reference" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                  - listitem [ref=e72]:
+                    - link "Usage Metrics Reference" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/usage-metrics-reference/
+                  - listitem [ref=e74]:
+                    - link "Claude Code Configuration" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/claude-code-reference/
+                  - listitem [ref=e76]:
+                    - link "Cursor Configuration" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+                  - listitem [ref=e78]:
+                    - link "OpenAI Codex Configuration" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/codex-reference/
+                  - listitem [ref=e80]:
+                    - link "OpenCode Configuration" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/opencode-reference/
+                  - listitem [ref=e82]:
+                    - link "Known Issues" [ref=e83] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/
+              - listitem [ref=e84]:
+                - link "Release Notes" [ref=e85] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e86]:
+                - button "Privacy Settings" [ref=e87] [cursor=pointer]
+      - main [ref=e88]:
+        - generic [ref=e90]:
+          - generic [ref=e92]:
+            - article [ref=e93]:
+              - navigation "Breadcrumbs" [ref=e94]:
+                - list [ref=e95]:
+                  - listitem [ref=e96]:
+                    - link "Home page" [ref=e97] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e98]
+                  - listitem [ref=e100]:
+                    - link "Reference" [ref=e101] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/
+                  - listitem [ref=e102]:
+                    - generic [ref=e103]: Claude Code Configuration
+              - generic [ref=e104]:
+                - heading "PaletteAI Inference Launchpad Claude Code Configuration" [level=1] [ref=e106]
+                - paragraph [ref=e107]:
+                  - text: This page lists the configuration values Claude Code uses to connect to a PaletteAI Inference Launchpad appliance. For the steps to set them, refer to
+                  - link "Use PaletteAI Inference Launchpad with Claude Code" [ref=e108] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - text: .
+                - heading "Environment VariablesDirect link to Environment Variables" [level=2] [ref=e109]:
+                  - text: Environment Variables
+                  - link "Direct link to Environment Variables" [ref=e110] [cursor=pointer]:
+                    - /url: "#environment-variables"
+                    - text: "#"
+                - table [ref=e111]:
+                  - rowgroup [ref=e112]:
+                    - row "Variable Description Example value" [ref=e113]:
+                      - columnheader "Variable" [ref=e114]:
+                        - strong [ref=e115]: Variable
+                      - columnheader "Description" [ref=e116]:
+                        - strong [ref=e117]: Description
+                      - columnheader "Example value" [ref=e118]:
+                        - strong [ref=e119]: Example value
+                  - rowgroup [ref=e120]:
+                    - row "ANTHROPIC_BASE_URL The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with no path. Claude Code appends /v1/messages. https://amd.spectrocloud.com:8443" [ref=e121]:
+                      - cell "ANTHROPIC_BASE_URL" [ref=e122]:
+                        - code [ref=e123]: ANTHROPIC_BASE_URL
+                      - cell "The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with no path. Claude Code appends /v1/messages." [ref=e124]:
+                        - text: The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with no path. Claude Code appends
+                        - code [ref=e125]: /v1/messages
+                        - text: .
+                      - cell "https://amd.spectrocloud.com:8443" [ref=e126]:
+                        - code [ref=e127]: https://amd.spectrocloud.com:8443
+                    - row "ANTHROPIC_AUTH_TOKEN The API token generated in the console. It begins with lpai_. ANTHROPIC_API_KEY is also accepted. lpai_YOUR_TOKEN" [ref=e128]:
+                      - cell "ANTHROPIC_AUTH_TOKEN" [ref=e129]:
+                        - code [ref=e130]: ANTHROPIC_AUTH_TOKEN
+                      - cell "The API token generated in the console. It begins with lpai_. ANTHROPIC_API_KEY is also accepted." [ref=e131]:
+                        - text: The API token generated in the console. It begins with
+                        - code [ref=e132]: lpai_
+                        - text: .
+                        - code [ref=e133]: ANTHROPIC_API_KEY
+                        - text: is also accepted.
+                      - cell "lpai_YOUR_TOKEN" [ref=e134]:
+                        - code [ref=e135]: lpai_YOUR_TOKEN
+                    - row "ANTHROPIC_MODEL Optional. The Claude alias Claude Code requests. The appliance maps the alias to the model it serves, so you do not pick the backend model. claude-opus-4-8" [ref=e136]:
+                      - cell "ANTHROPIC_MODEL" [ref=e137]:
+                        - code [ref=e138]: ANTHROPIC_MODEL
+                      - cell "Optional. The Claude alias Claude Code requests. The appliance maps the alias to the model it serves, so you do not pick the backend model." [ref=e139]
+                      - cell "claude-opus-4-8" [ref=e140]:
+                        - code [ref=e141]: claude-opus-4-8
+                    - row "ANTHROPIC_DEFAULT_OPUS_MODEL Optional. The alias Claude Code requests for its Opus-tier work. The appliance maps the alias to the model it serves. claude-opus-4-8" [ref=e142]:
+                      - cell "ANTHROPIC_DEFAULT_OPUS_MODEL" [ref=e143]:
+                        - code [ref=e144]: ANTHROPIC_DEFAULT_OPUS_MODEL
+                      - cell "Optional. The alias Claude Code requests for its Opus-tier work. The appliance maps the alias to the model it serves." [ref=e145]
+                      - cell "claude-opus-4-8" [ref=e146]:
+                        - code [ref=e147]: claude-opus-4-8
+                    - row "ANTHROPIC_DEFAULT_SONNET_MODEL Optional. The alias Claude Code requests for its Sonnet-tier work. claude-sonnet-4-5" [ref=e148]:
+                      - cell "ANTHROPIC_DEFAULT_SONNET_MODEL" [ref=e149]:
+                        - code [ref=e150]: ANTHROPIC_DEFAULT_SONNET_MODEL
+                      - cell "Optional. The alias Claude Code requests for its Sonnet-tier work." [ref=e151]
+                      - cell "claude-sonnet-4-5" [ref=e152]:
+                        - code [ref=e153]: claude-sonnet-4-5
+                    - row "ANTHROPIC_DEFAULT_HAIKU_MODEL Optional. The alias Claude Code requests for its Haiku-tier, background work. claude-haiku-4-5" [ref=e154]:
+                      - cell "ANTHROPIC_DEFAULT_HAIKU_MODEL" [ref=e155]:
+                        - code [ref=e156]: ANTHROPIC_DEFAULT_HAIKU_MODEL
+                      - cell "Optional. The alias Claude Code requests for its Haiku-tier, background work." [ref=e157]
+                      - cell "claude-haiku-4-5" [ref=e158]:
+                        - code [ref=e159]: claude-haiku-4-5
+                    - row "CLAUDE_CODE_EFFORT_LEVEL Optional. Sets Claude Code's reasoning effort. One of low, medium, high, or max. max" [ref=e160]:
+                      - cell "CLAUDE_CODE_EFFORT_LEVEL" [ref=e161]:
+                        - code [ref=e162]: CLAUDE_CODE_EFFORT_LEVEL
+                      - cell "Optional. Sets Claude Code's reasoning effort. One of low, medium, high, or max." [ref=e163]:
+                        - text: Optional. Sets Claude Code's reasoning effort. One of
+                        - code [ref=e164]: low
+                        - text: ","
+                        - code [ref=e165]: medium
+                        - text: ","
+                        - code [ref=e166]: high
+                        - text: ", or"
+                        - code [ref=e167]: max
+                        - text: .
+                      - cell "max" [ref=e168]:
+                        - code [ref=e169]: max
+                - heading "Endpoint URLDirect link to Endpoint URL" [level=2] [ref=e170]:
+                  - text: Endpoint URL
+                  - link "Direct link to Endpoint URL" [ref=e171] [cursor=pointer]:
+                    - /url: "#endpoint-url"
+                    - text: "#"
+                - paragraph [ref=e172]:
+                  - text: The endpoint is your appliance's address, the same host you use to reach the console, with no path appended. The gateway serves the Anthropic Messages API at
+                  - code [ref=e173]: /v1/messages
+                  - text: ", and Claude Code adds that path itself, so"
+                  - code [ref=e174]: ANTHROPIC_BASE_URL
+                  - text: must not include
+                  - code [ref=e175]: /v1
+                  - text: . If you do not know the address, ask the administrator who set up the appliance.
+                - heading "Model NameDirect link to Model Name" [level=2] [ref=e176]:
+                  - text: Model Name
+                  - link "Direct link to Model Name" [ref=e177] [cursor=pointer]:
+                    - /url: "#model-name"
+                    - text: "#"
+                - paragraph [ref=e178]:
+                  - text: Claude Code requests a Claude alias (
+                  - code [ref=e179]: claude-opus-4-8
+                  - text: ","
+                  - code [ref=e180]: claude-sonnet-4-5
+                  - text: ", or"
+                  - code [ref=e181]: claude-haiku-4-5
+                  - text: ), and the appliance maps that alias to the model it serves. Set
+                  - code [ref=e182]: ANTHROPIC_MODEL
+                  - text: to one of these aliases. You do not select a backend model directly. Both the aliases the appliance accepts and the ids of the models it serves, such as
+                  - code [ref=e183]: glm-5.2
+                  - text: ", appear in the console's model list and in the appliance's"
+                  - code [ref=e184]: /v1/models
+                  - text: API response.
+                - heading "Token QuotasDirect link to Token Quotas" [level=2] [ref=e185]:
+                  - text: Token Quotas
+                  - link "Direct link to Token Quotas" [ref=e186] [cursor=pointer]:
+                    - /url: "#token-quotas"
+                    - text: "#"
+                - paragraph [ref=e187]:
+                  - text: If the token's quota is exhausted, the appliance returns an HTTP
+                  - code [ref=e188]: "429"
+                  - text: response and Claude Code surfaces the error.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e189]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e190] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e191]:
+                  - listitem [ref=e192]:
+                    - link "Use PaletteAI Inference Launchpad with Claude Code" [ref=e193] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e194]: User and API token management
+                  - listitem [ref=e195]: Token quotas and metering
+                  - listitem [ref=e196]: Intelligent routing and tier maps
+              - generic [ref=e197]:
+                - generic [ref=e199]:
+                  - text: "Tags:"
+                  - list [ref=e200]:
+                    - listitem [ref=e201]:
+                      - link "paletteai-inference-launchpad" [ref=e202] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e203]:
+                      - link "claude-code" [ref=e204] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/claude-code/
+                    - listitem [ref=e205]:
+                      - link "reference" [ref=e206] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/reference/
+                - link "Edit this page" [ref=e209] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/reference/claude-code-reference.md
+                  - img [ref=e210]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e214]:
+              - link "Previous « Usage Metrics Reference" [ref=e215] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/usage-metrics-reference/
+                - generic [ref=e216]: Previous
+                - generic [ref=e217]: « Usage Metrics Reference
+              - link "Next Cursor Configuration »" [ref=e218] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/reference/cursor-reference/
+                - generic [ref=e219]: Next
+                - generic [ref=e220]: Cursor Configuration »
+          - list [ref=e223]:
+            - listitem [ref=e224]:
+              - link "Environment Variables" [ref=e225] [cursor=pointer]:
+                - /url: "#environment-variables"
+            - listitem [ref=e226]:
+              - link "Endpoint URL" [ref=e227] [cursor=pointer]:
+                - /url: "#endpoint-url"
+            - listitem [ref=e228]:
+              - link "Model Name" [ref=e229] [cursor=pointer]:
+                - /url: "#model-name"
+            - listitem [ref=e230]:
+              - link "Token Quotas" [ref=e231] [cursor=pointer]:
+                - /url: "#token-quotas"
+            - listitem [ref=e232]:
+              - link "Resources" [ref=e233] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e234] [cursor=pointer]:
+    - generic [ref=e237]:
+      - img "Project Logo" [ref=e238]
+      - paragraph [ref=e239]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

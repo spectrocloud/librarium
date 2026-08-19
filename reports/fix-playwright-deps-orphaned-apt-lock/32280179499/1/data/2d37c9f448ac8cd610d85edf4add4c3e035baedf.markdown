@@ -1,0 +1,1244 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  1292 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 1292 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 1292 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "PaletteAI Inference Launchpad" [ref=e12] [cursor=pointer]:
+            - /url: /paletteai-inference-launchpad/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - link "Tutorials" [ref=e46] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/tutorials/
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "How-to Guides" [expanded] [ref=e49] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - link "Install the Appliance" [ref=e53] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - listitem [ref=e54]:
+                    - link "Deploy a Model" [ref=e55] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e56]:
+                    - link "Upload a Model" [ref=e57] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                  - listitem [ref=e58]:
+                    - link "Switch the Default Model" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/set-the-default-model/
+                  - listitem [ref=e60]:
+                    - link "Enable Vision Preprocessing" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                  - listitem [ref=e62]:
+                    - link "Create a Client" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                  - listitem [ref=e64]:
+                    - link "Generate an API Token" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - listitem [ref=e66]:
+                    - link "Set and Manage Client Quotas" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e68]:
+                    - link "Manage a Client's Model Access" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e70]:
+                    - link "View Token Usage" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-token-usage/
+                  - listitem [ref=e72]:
+                    - link "View Client Usage" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e74]:
+                    - link "Revoke or Delete a Client" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e76]:
+                    - link "Use Claude Code" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e78]:
+                    - link "Use Cursor" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - listitem [ref=e80]:
+                    - link "Use OpenAI Codex" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                  - listitem [ref=e82]:
+                    - link "Use OpenCode" [ref=e83] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Explanation" [ref=e86] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Reference" [ref=e90] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - link "Release Notes" [ref=e93] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e94]:
+                - button "Privacy Settings" [ref=e95] [cursor=pointer]
+      - main [ref=e96]:
+        - generic [ref=e98]:
+          - generic [ref=e100]:
+            - article [ref=e101]:
+              - navigation "Breadcrumbs" [ref=e102]:
+                - list [ref=e103]:
+                  - listitem [ref=e104]:
+                    - link "Home page" [ref=e105] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e106]
+                  - listitem [ref=e108]:
+                    - link "How-to Guides" [ref=e109] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - listitem [ref=e110]:
+                    - generic [ref=e111]: Install the Appliance
+              - generic [ref=e112]:
+                - heading "Install the PaletteAI Inference Launchpad Appliance" [level=1] [ref=e114]
+                - paragraph [ref=e115]:
+                  - text: This guide explains how to install the PaletteAI Inference Launchpad appliance on bare hardware, from an administrative workstation (a
+                  - link "jumpbox" [ref=e116] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/#jumpbox
+                  - text: ). You download the
+                  - link "slim ISO" [ref=e117] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/#slim-iso
+                  - text: ","
+                  - link "content bundle" [ref=e118] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/#content-bundle
+                  - text: ", and model metadata from Artifact Studio, install the edge OS on the node, configure the network in the Palette text-based user interface (TUI) and Local UI, upload the content bundle, deploy the cluster, and upload a model. By the end, you will have a running, reachable appliance console with a model ready to deploy. For the two-stage architecture and design rationale, refer to"
+                  - link "Installation Architecture" [ref=e119] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/installation-architecture/
+                  - text: .
+                - generic [ref=e120]:
+                  - generic [ref=e121]:
+                    - img [ref=e123]
+                    - text: info
+                  - paragraph [ref=e126]:
+                    - text: Each terminal command in this guide has a
+                    - strong [ref=e127]: Linux / macOS
+                    - text: tab (POSIX shell) and a
+                    - strong [ref=e128]: Windows
+                    - text: tab (PowerShell). Select the tab that matches your jumpbox. Your choice applies to every command on the page.
+                - heading "Before You BeginDirect link to Before You Begin" [level=2] [ref=e129]:
+                  - text: Before You Begin
+                  - link "Direct link to Before You Begin" [ref=e130] [cursor=pointer]:
+                    - /url: "#before-you-begin"
+                    - text: "#"
+                - paragraph [ref=e131]: "Confirm each prerequisite before starting:"
+                - list [ref=e132]:
+                  - listitem [ref=e133]:
+                    - text: The appliance server and administrative workstation (jumpbox) meet the
+                    - link "Hardware Requirements" [ref=e134] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/hardware-requirements/
+                    - text: ", which covers GPU, CPU, RAM, storage, network, and IP addressing."
+                  - listitem [ref=e135]:
+                    - strong [ref=e136]: Above 4G Decoding
+                    - text: and
+                    - strong [ref=e137]: Re-Size BAR Support
+                    - text: are enabled in the appliance server's BIOS. Both settings are required on any server with GPUs, for every GPU brand and every server brand, and you must enable them before you boot the slim ISO. If either setting is turned off, the slim ISO may not appear in the boot menu, or the screen may go black after you select it. Setting names and menu paths vary by server vendor, so refer to your server vendor's documentation to enable both settings.
+                    - strong [ref=e138]: Re-Size BAR Support
+                    - text: is also called
+                    - strong [ref=e139]: Resizable BAR
+                    - text: or
+                    - strong [ref=e140]: Smart Access Memory
+                    - text: . For the symptoms, refer to
+                    - 'link "Known Issues: Slim ISO Does Not Boot on a GPU Server" [ref=e141] [cursor=pointer]':
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/#slim-iso-does-not-boot-on-a-gpu-server
+                    - text: .
+                  - listitem [ref=e142]: The Palette CLI is installed and configured on the jumpbox.
+                  - listitem [ref=e143]: The hardware supports Ubuntu 24.04.
+                  - listitem [ref=e144]:
+                    - text: The server has
+                    - link "baseboard management controller (BMC)" [ref=e145] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/#bmc
+                    - text: access available for
+                    - link "virtual media" [ref=e146] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/#virtual-media
+                    - text: ", as a fallback if USB boot fails."
+                  - listitem [ref=e147]:
+                    - text: You have a reserved
+                    - link "virtual IP address (VIP)" [ref=e148] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/#vip
+                    - text: for the cluster, and a single unused platform IP address (not a range, and different from the node's Host IP) for MetalLB to assign to platform services. On a single-node install, using the node's Host IP as the platform IP causes MetalLB to intercept traffic to the Host IP and breaks SSH, Local UI, and the Kubernetes API on the node. For the symptom and recovery, refer to
+                    - 'link "Known Issues: SSH, Local UI, or Kubernetes API unreachable after cluster deploy" [ref=e149] [cursor=pointer]':
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy
+                    - text: .
+                  - listitem [ref=e150]:
+                    - text: The target model fits the available GPU memory. Refer to
+                    - link "Certified Models by Hardware" [ref=e151] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/certified-models-by-hardware/
+                    - text: for the model-to-hardware mapping, and to
+                    - link "Installation Architecture" [ref=e152] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/explanation/installation-architecture/#gpu-memory-sizes-the-model
+                    - text: for the memory ceiling rule.
+                  - listitem [ref=e153]:
+                    - emphasis [ref=e154]: (External NFS only)
+                    - text: If the environment uses an external Network File System (NFS) storage network, such as a dedicated storage fabric, have the virtual local area network (VLAN) ID and IP address ready for a tagged VLAN sub-interface on the node's bond, for example
+                    - code [ref=e155]: bond0.396
+                    - text: on VLAN 396 with
+                    - code [ref=e156]: 10.0.22.110/24
+                    - text: . You configure this when you create the bond, because the storage network is otherwise unreachable. This is separate from the appliance's internal Piraeus storage.
+                - heading "Download the ArtifactsDirect link to Download the Artifacts" [level=2] [ref=e157]:
+                  - text: Download the Artifacts
+                  - link "Direct link to Download the Artifacts" [ref=e158] [cursor=pointer]:
+                    - /url: "#download-the-artifacts"
+                    - text: "#"
+                - paragraph [ref=e159]: Three artifacts come from Artifact Studio, Spectro Cloud's artifact download portal. Download all three before you begin. The slim ISO and content bundle must match the target hardware's GPU (NVIDIA or AMD).
+                - list [ref=e160]:
+                  - listitem [ref=e161]:
+                    - strong [ref=e162]: Slim ISO (~1.5 GB)
+                    - text: . the bootable installer. You write it to a USB drive, or mount it through the server's BMC, and boot the node from it.
+                  - listitem [ref=e163]:
+                    - strong [ref=e164]: Content bundle (more than 20 GB)
+                    - text: . the platform and application layers. You upload it through the Palette CLI (recommended) or Local UI after the node is on the network.
+                  - listitem [ref=e165]:
+                    - strong [ref=e166]:
+                      - text: Model metadata (
+                      - code [ref=e167]: metadata.yaml
+                      - text: ", a few KB)"
+                    - text: . one file per model you intend to deploy. It is a separate download, not part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from Hugging Face and upload them to the appliance. Download it from Artifact Studio, or from the
+                    - code [ref=e168]: models/
+                    - text: directory of the
+                    - code [ref=e169]: launchpad-ai
+                    - text: repository, for example
+                    - code [ref=e170]: models/glm-5.2/1.0.0/metadata.yaml
+                    - text: .
+                - heading "Install the OSDirect link to Install the OS" [level=2] [ref=e171]:
+                  - text: Install the OS
+                  - link "Direct link to Install the OS" [ref=e172] [cursor=pointer]:
+                    - /url: "#install-the-os"
+                    - text: "#"
+                - list [ref=e173]:
+                  - listitem [ref=e174]:
+                    - text: Flash the slim ISO to bootable media, such as a USB drive, with an imaging tool such as balenaEtcher. You can also transfer the ISO to the node with
+                    - code [ref=e175]: scp
+                    - text: or
+                    - code [ref=e176]: rsync
+                    - text: .
+                  - listitem [ref=e177]: Attach the media to the node and set the boot order to boot from it first.
+                  - listitem [ref=e178]:
+                    - text: Power on the node. At the GRUB menu, let it select the Palette Edge interactive installer. After the selection, the screen can stay blank for several minutes with no output while the installer loads. This is expected, so wait for the interactive installer to appear instead of assuming the boot has stalled. If the media never appears in the boot menu, or the screen stays black and the interactive installer never appears, confirm that
+                    - strong [ref=e179]: Above 4G Decoding
+                    - text: and
+                    - strong [ref=e180]: Re-Size BAR Support
+                    - text: are enabled in the BIOS. Refer to
+                    - 'link "Known Issues: Slim ISO Does Not Boot on a GPU Server" [ref=e181] [cursor=pointer]':
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/#slim-iso-does-not-boot-on-a-gpu-server
+                    - text: .
+                  - listitem [ref=e182]:
+                    - text: "In the interactive installer:"
+                    - list [ref=e183]:
+                      - listitem [ref=e184]:
+                        - text: When the installer prompts for the registration option after its first boot, select
+                        - strong [ref=e185]: Palette eXtended Kubernetes (PXK)
+                        - text: . This registers the node with the edge Kubernetes distribution the appliance uses.
+                      - listitem [ref=e186]: The installer inspects every disk and blocks the install if any disk still holds Kairos partitions from a prior install. It reports the offending disks by name.
+                      - listitem [ref=e187]: If a disk still holds Kairos partitions, use the in-flow wipe-all-disks option to clear them, so you do not have to drop to a shell. This action is destructive, so confirm the disk selection before you run it.
+                      - listitem [ref=e188]:
+                        - text: Select the target disk for the operating system. The installer erases this disk, so do not select the disk you intend to use for the Piraeus storage pool. Linux NVMe device names such as
+                        - code [ref=e189]: nvme0n1
+                        - text: are assigned in kernel enumeration order and may change between boots, so the disk you install to can appear under a different
+                        - code [ref=e190]: nvmeXnY
+                        - text: name after the first reboot. The Local UI Disk Inventory identifies the operating system disk by its partition label regardless of the disk's current runtime name.
+                      - listitem [ref=e191]: Choose the post-install action (reboot or power off).
+                      - listitem [ref=e192]:
+                        - text: Review the installation summary and press
+                        - strong [ref=e193]: ENTER
+                        - text: to start.
+                  - listitem [ref=e194]: Wait for the install to finish. It takes at least 15 minutes, depending on hardware. When it finishes, disconnect the ISO. If you chose reboot, the node reboots into the Palette TUI; if you chose power off, power it back on.
+                - heading "Configure the Node with the Palette TUIDirect link to Configure the Node with the Palette TUI" [level=2] [ref=e195]:
+                  - text: Configure the Node with the Palette TUI
+                  - link "Direct link to Configure the Node with the Palette TUI" [ref=e196] [cursor=pointer]:
+                    - /url: "#configure-the-node-with-the-palette-tui"
+                    - text: "#"
+                - paragraph [ref=e197]: After the OS install and reboot, the node comes up in the Palette TUI, where you set the initial credentials and network. The hostname, DNS, and NTP settings are configured here in the TUI, not in Local UI.
+                - generic [ref=e198]:
+                  - generic [ref=e199]:
+                    - img [ref=e201]
+                    - text: First-boot GRUB entry
+                  - paragraph [ref=e204]:
+                    - text: On the first boot after install, the GRUB menu shows multiple boot entries with a short countdown timer. Select
+                    - strong [ref=e205]: Palette eXtended Kubernetes Edge
+                    - text: (the first, plain entry with no suffix). Do not select the
+                    - strong [ref=e206]: Registration
+                    - text: "entry: it marks first-boot complete without launching the Palette TUI and leaves the node at a plain login prompt with no user account. If you miss the countdown and land at a plain login prompt, refer to"
+                    - 'link "Known Issues: Node stuck at login prompt after first boot" [ref=e207] [cursor=pointer]':
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/#node-stuck-at-login-prompt-after-first-boot
+                    - text: for recovery.
+                - paragraph [ref=e208]:
+                  - text: The appliance enforces a password policy on every account you create in the Palette TUI, including
+                  - code [ref=e209]: root
+                  - text: ". Each password must meet all of the following requirements:"
+                - list [ref=e210]:
+                  - listitem [ref=e211]: Be at least 15 characters long.
+                  - listitem [ref=e212]:
+                    - text: Include at least one lowercase letter, one uppercase letter, one digit, and one special character, such as
+                    - code [ref=e213]: "!"
+                    - text: ","
+                    - code [ref=e214]: "@"
+                    - text: ","
+                    - code [ref=e215]: "#"
+                    - text: ","
+                    - code [ref=e216]: $
+                    - text: ","
+                    - code [ref=e217]: "%"
+                    - text: ","
+                    - code [ref=e218]: ^
+                    - text: ","
+                    - code [ref=e219]: "&"
+                    - text: ", or"
+                    - code [ref=e220]: "*"
+                    - text: .
+                  - listitem [ref=e221]: Not contain the account username.
+                  - listitem [ref=e222]:
+                    - text: Not contain spaces, a double quote (
+                    - code [ref=e223]: "\""
+                    - text: ), a single quote (
+                    - code [ref=e224]: "'"
+                    - text: ), or a backslash (
+                    - code [ref=e225]: \
+                    - text: ).
+                - paragraph [ref=e226]: When you change an existing password, the new password must differ from the old one by at least 5 characters.
+                - list [ref=e227]:
+                  - listitem [ref=e228]:
+                    - text: On the Palette TUI landing page, no local account exists yet, so press
+                    - strong [ref=e229]: F2
+                    - text: (
+                    - strong [ref=e230]: Create login
+                    - text: ) to create the initial administrator account, then set its username and password. This account signs in to Local UI and accesses the node over SSH.
+                  - listitem [ref=e231]:
+                    - text: Move between options with
+                    - strong [ref=e232]: TAB
+                    - text: or the arrow keys. Press
+                    - strong [ref=e233]: ENTER
+                    - text: to apply a change, and
+                    - strong [ref=e234]: ESC
+                    - text: to go back.
+                    - list [ref=e235]:
+                      - listitem [ref=e236]:
+                        - strong [ref=e237]: Hostname.
+                        - text: Review the hostname and change it if required.
+                      - listitem [ref=e238]:
+                        - strong [ref=e239]: Network adapter.
+                        - text: Each adapter uses Dynamic Host Configuration Protocol (DHCP) by default. For each adapter you can switch to a static IP address (with subnet mask and gateway), set a VLAN ID, or set the Maximum Transmission Unit (MTU). Setting a static IP removes the DHCP settings.
+                      - listitem [ref=e240]:
+                        - strong [ref=e241]: DNS.
+                        - text: Set the primary and alternate name servers, and an optional search domain.
+                      - listitem [ref=e242]:
+                        - strong [ref=e243]: NTP.
+                        - text: Set one or more NTP servers, for example
+                        - code [ref=e244]: 0.pool.ntp.org
+                        - text: .
+                  - listitem [ref=e245]:
+                    - text: Navigate to
+                    - strong [ref=e246]: Logout
+                    - text: and confirm. It ends your TUI session and returns to the device information screen, which shows the node details and the Local UI address. It does not power off the node. To re-enter the TUI later, run
+                    - code [ref=e247]: palette-tui
+                    - text: on the node.
+                  - listitem [ref=e248]: Repeat the OS install and this TUI configuration on every node. On a multi-node cluster, also complete the network bond on every node before you link them.
+                - heading "Configure the Network in Local UIDirect link to Configure the Network in Local UI" [level=2] [ref=e249]:
+                  - text: Configure the Network in Local UI
+                  - link "Direct link to Configure the Network in Local UI" [ref=e250] [cursor=pointer]:
+                    - /url: "#configure-the-network-in-local-ui"
+                    - text: "#"
+                - paragraph [ref=e251]: Once the node has an IP address, you can leave the console and reach the node's Local UI from a browser.
+                - list [ref=e252]:
+                  - listitem [ref=e253]:
+                    - text: In a browser, go to
+                    - code [ref=e254]: https://<node-ip>:5080
+                    - text: ", using the IP you set in the Palette TUI. Local UI uses a self-signed certificate, so proceed past the browser warning."
+                  - listitem [ref=e255]: Sign in with the credentials you created in the Palette TUI.
+                  - listitem [ref=e256]: Confirm the node reports a pre-cluster state. The node has an IP address but is not yet part of a cluster, so Local UI shows it as ready to build a new cluster or join an existing one rather than reporting a running cluster.
+                - heading "Create a BondDirect link to Create a Bond" [level=3] [ref=e257]:
+                  - text: Create a Bond
+                  - link "Direct link to Create a Bond" [ref=e258] [cursor=pointer]:
+                    - /url: "#create-a-bond"
+                    - text: "#"
+                - paragraph [ref=e259]:
+                  - text: The
+                  - strong [ref=e260]: Network Interfaces
+                  - text: view is already open in Local UI, so you do not need to navigate to it separately.
+                - list [ref=e261]:
+                  - listitem [ref=e262]:
+                    - text: Under
+                    - strong [ref=e263]: Bonds
+                    - text: ", select"
+                    - strong [ref=e264]: Create
+                    - text: .
+                  - listitem [ref=e265]:
+                    - text: Fill in the bond form. The
+                    - strong [ref=e266]: Name
+                    - text: field shows
+                    - code [ref=e267]: bond0
+                    - text: as placeholder text, not a saved value, so click into it and type the name before you continue. Set
+                    - strong [ref=e268]: Bond type
+                    - text: to
+                    - code [ref=e269]: static
+                    - text: so the bond keeps a fixed IP, then enter the
+                    - strong [ref=e270]: IP Address
+                    - text: and
+                    - strong [ref=e271]: Subnet mask
+                    - text: ", which are both required."
+                    - strong [ref=e272]: Gateway
+                    - text: is optional. Select the member NICs manually, and set the
+                    - strong [ref=e273]: Bonding mode
+                    - text: to
+                    - code [ref=e274]: 802.3ad
+                    - text: . Bond type (the IP method) and bonding mode (the link-aggregation algorithm) are separate fields. For each field's recommended value, meaning, and when to deviate, refer to
+                    - link "Bond Configuration Reference" [ref=e275] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/bond-configuration/
+                    - text: . The values must match how your data-center switch is configured on the ports the appliance is plugged into, so coordinate with your network administrator before you apply.
+                  - listitem [ref=e276]:
+                    - text: Select
+                    - strong [ref=e277]: Apply
+                    - text: . If Local UI is briefly unreachable, reload the same address after a few seconds. The IP moves from the network interface card (NIC) to the bond.
+                - heading "Configure the StorageDirect link to Configure the Storage" [level=2] [ref=e278]:
+                  - text: Configure the Storage
+                  - link "Direct link to Configure the Storage" [ref=e279] [cursor=pointer]:
+                    - /url: "#configure-the-storage"
+                    - text: "#"
+                - paragraph [ref=e280]:
+                  - text: If you do not configure storage, Local UI configures it automatically and adds every available data disk on the host to the
+                  - strong [ref=e281]: Data volume group
+                  - text: ", always excluding the operating system disk. Configure it manually only when you need to control which disks"
+                  - link "Piraeus" [ref=e282] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/#piraeus
+                  - text: uses, for example, to keep a data disk out of the storage pool. The
+                  - strong [ref=e283]: Data volume group
+                  - text: tells Piraeus which physical disks to use for cluster storage, and model weights and the KV cache live on these disks. Local UI mounts the volume group at
+                  - code [ref=e284]: /opt/data/spectrocloud
+                  - text: . Configure the volume group after the bond and before you link hosts, and on a multi-node cluster, complete this section on every node.
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - img [ref=e288]
+                    - text: Read-only after cluster creation
+                  - paragraph [ref=e291]: You can delete or modify the Data volume group any number of times before you deploy the cluster. After cluster creation, the group becomes read-only. Confirm the disk selection before you continue.
+                - list [ref=e292]:
+                  - listitem [ref=e293]:
+                    - text: In Local UI, open the
+                    - strong [ref=e294]: Edgehost
+                    - text: tab.
+                  - listitem [ref=e295]:
+                    - text: Under
+                    - strong [ref=e296]: Hardware
+                    - text: ", select the disks link. This link is labeled with the number of disks on the host (for example,"
+                    - strong [ref=e297]: 5 disks
+                    - text: ) rather than the word
+                    - strong [ref=e298]: Disks
+                    - text: . A side pane opens listing every disk on the host.
+                  - listitem [ref=e299]:
+                    - text: Under
+                    - strong [ref=e300]: Data volume group
+                    - text: ", select"
+                    - strong [ref=e301]: Create data volume group
+                    - text: to open the wizard.
+                  - listitem [ref=e302]: Review the disk selection. By default, the wizard selects every data disk on the host and automatically excludes the operating system disk, so you cannot add it to the volume group by mistake. Deselect any data disk you want to keep out of the volume group. You can leave the wizard's other settings at their defaults for a standard installation.
+                  - listitem [ref=e303]:
+                    - text: Select
+                    - strong [ref=e304]: Create
+                    - text: to apply. The new entry appears under
+                    - strong [ref=e305]: Data volume group
+                    - text: .
+                - heading "Link Hosts (Multi-Node Only)Direct link to Link Hosts (Multi-Node Only)" [level=2] [ref=e306]:
+                  - text: Link Hosts (Multi-Node Only)
+                  - link "Direct link to Link Hosts (Multi-Node Only)" [ref=e307] [cursor=pointer]:
+                    - /url: "#link-hosts-multi-node-only"
+                    - text: "#"
+                - paragraph [ref=e308]: Skip this section for a single-node installation. Link the hosts before you upload the content bundle, so that content synchronizes across all linked hosts automatically. Every host must have a static IP, a Local UI login, and its own bond before you link them.
+                - list [ref=e309]:
+                  - listitem [ref=e310]: Decide which host is the leader of the group. The leader coordinates linking. For high availability, use an odd number of control-plane nodes.
+                  - listitem [ref=e311]:
+                    - text: In the leader's Local UI, open
+                    - strong [ref=e312]:
+                      - link "Linked Edge Hosts" [ref=e313] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/reference/glossary/#linked-edge-hosts
+                    - text: ">"
+                    - strong [ref=e314]: Generate token
+                    - text: . The leader emits a Base64-encoded token containing its IP address and a
+                    - link "one-time password (OTP)" [ref=e315] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/reference/glossary/#otp
+                    - text: valid for two minutes. The token appears with a copy button, not a labeled
+                    - strong [ref=e316]: Copy
+                    - text: control, so select the copy button to copy the token to your clipboard.
+                  - listitem [ref=e317]:
+                    - text: On each other host's Local UI, open
+                    - strong [ref=e318]: Linked Edge Hosts
+                    - text: ">"
+                    - strong [ref=e319]: Link this device to another
+                    - text: . Paste the token from the leader and confirm.
+                  - listitem [ref=e320]: Repeat for every host you want to link.
+                  - listitem [ref=e321]:
+                    - text: Confirm all linked hosts appear in the
+                    - strong [ref=e322]: Linked Edge Hosts
+                    - text: table. Each linked host shows a
+                    - strong [ref=e323]: Pending
+                    - text: status until you upload the content bundle in the next step, so a
+                    - strong [ref=e324]: Pending
+                    - text: status here is expected and does not indicate a problem. Content synchronization takes at least five minutes, depending on the network.
+                - heading "Upload the Content BundleDirect link to Upload the Content Bundle" [level=2] [ref=e325]:
+                  - text: Upload the Content Bundle
+                  - link "Direct link to Upload the Content Bundle" [ref=e326] [cursor=pointer]:
+                    - /url: "#upload-the-content-bundle"
+                    - text: "#"
+                - paragraph [ref=e327]:
+                  - text: Upload the content bundle before you deploy the cluster. On a multi-node cluster, content uploaded on the leader synchronizes automatically to every linked host. The model itself is not uploaded here; you upload it separately in
+                  - link "Upload Your Model" [ref=e328] [cursor=pointer]:
+                    - /url: "#upload-your-model"
+                  - text: .
+                - paragraph [ref=e329]: "Two upload paths are available:"
+                - list [ref=e330]:
+                  - listitem [ref=e331]:
+                    - strong [ref=e332]: Palette CLI from the jumpbox (recommended).
+                    - text: Streams the bundle to the node from the command line, so you can script the upload and it does not depend on a browser session. The bundle can sit on the jumpbox filesystem or on an NFS share mounted on the jumpbox.
+                  - listitem [ref=e333]:
+                    - strong [ref=e334]: Local UI browser upload (not recommended).
+                    - text: Uploads through the browser. The content bundle is more than 20 GB, so the browser upload is slow and prone to timeouts. Use it only when the Palette CLI is not available on the jumpbox.
+                - heading "Upload with the Palette CLI (Recommended)Direct link to Upload with the Palette CLI (Recommended)" [level=3] [ref=e335]:
+                  - text: Upload with the Palette CLI (Recommended)
+                  - link "Direct link to Upload with the Palette CLI (Recommended)" [ref=e336] [cursor=pointer]:
+                    - /url: "#upload-with-the-palette-cli-recommended"
+                    - text: "#"
+                - paragraph [ref=e337]: The Palette CLI runs on your jumpbox and authenticates to the node with a per-node upload token, so you do not sign in to Palette SaaS for this step.
+                - paragraph [ref=e338]: "Before you start, confirm the jumpbox has everything the upload needs:"
+                - list [ref=e339]:
+                  - listitem [ref=e340]:
+                    - strong [ref=e341]:
+                      - text: The Palette CLI installed and on your
+                      - code [ref=e342]: PATH
+                      - text: .
+                    - text: Download the Linux binary from the Downloads page and move it to
+                    - code [ref=e343]: /usr/local/bin/palette
+                    - text: so the
+                    - code [ref=e344]: palette
+                    - text: command resolves from any directory. For step-by-step instructions, refer to
+                    - link "Install Palette CLI" [ref=e345] [cursor=pointer]:
+                      - /url: /automation/palette-cli/install-palette-cli/
+                    - text: . You do not need to run
+                    - code [ref=e346]: palette login
+                    - text: for this workflow, because the content-upload command uses a node-issued token, not your Palette API key.
+                  - listitem [ref=e347]:
+                    - strong [ref=e348]: The content bundle reachable on the jumpbox.
+                    - text: The
+                    - code [ref=e349]: .tar.zst
+                    - text: file must be on the jumpbox filesystem or on an NFS share mounted on the jumpbox. If you downloaded it on another machine, copy it to the jumpbox first with
+                    - code [ref=e350]: scp
+                    - text: or
+                    - code [ref=e351]: rsync
+                    - text: .
+                  - listitem [ref=e352]:
+                    - strong [ref=e353]: SSH access to the node
+                    - text: using the administrator account you created in the Palette TUI. You use SSH once, to read the token off the node.
+                  - listitem [ref=e354]:
+                    - strong [ref=e355]:
+                      - text: Network reachability from the jumpbox to the node on TCP port
+                      - code [ref=e356]: "5082"
+                      - text: .
+                    - text: The Palette CLI posts the bundle to the node's Local UI API on port
+                    - code [ref=e357]: "5082"
+                    - text: ", which is separate from the Local UI web address on port"
+                    - code [ref=e358]: "5080"
+                    - text: . If the jumpbox cannot reach the bond IP on port
+                    - code [ref=e359]: "5082"
+                    - text: ", the upload fails."
+                - heading "(Optional) Locate the bundle on an NFS shareDirect link to (Optional) Locate the bundle on an NFS share" [level=4] [ref=e360]:
+                  - text: (Optional) Locate the bundle on an NFS share
+                  - link "Direct link to (Optional) Locate the bundle on an NFS share" [ref=e361] [cursor=pointer]:
+                    - /url: "#optional-locate-the-bundle-on-an-nfs-share"
+                    - text: "#"
+                - paragraph [ref=e362]: If the content bundle is on an NFS share rather than the jumpbox's local disk, mount the share on the jumpbox and note the bundle's full path. You upload it directly from the mount, so no local copy is needed. These commands assume a POSIX shell on the Linux jumpbox.
+                - list [ref=e363]:
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]: List the NFS mounts on the jumpbox to find the share.
+                    - generic [ref=e367]:
+                      - code [ref=e369]:
+                        - generic [ref=e370]: df --human-readable --type=nfs --type=nfs4
+                      - button "Copy code to clipboard" [ref=e372] [cursor=pointer]:
+                        - generic [ref=e373]:
+                          - img [ref=e374]
+                          - img [ref=e376]
+                    - generic [ref=e378]:
+                      - generic [ref=e379]: Expected output
+                      - code [ref=e382]:
+                        - generic [ref=e383]: Filesystem Size Used Avail Use% Mounted on
+                        - generic [ref=e384]: 10.0.19.10:/data/ipmi 7.0T 52G 6.6T 1% /mnt/nfs/ipmi
+                    - paragraph [ref=e385]:
+                      - text: The path in the
+                      - strong [ref=e386]: Mounted on
+                      - text: column is the mount point. In this example the share is mounted at
+                      - code [ref=e387]: /mnt/nfs/ipmi
+                      - text: .
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: List the bundle on the mount and note the full path to the
+                      - code [ref=e390]: .tar.zst
+                      - text: file.
+                    - generic [ref=e392]:
+                      - code [ref=e394]:
+                        - generic [ref=e395]: ls --format=long --human-readable /mnt/nfs/ipmi/
+                      - button "Copy code to clipboard" [ref=e397] [cursor=pointer]:
+                        - generic [ref=e398]:
+                          - img [ref=e399]
+                          - img [ref=e401]
+                    - generic [ref=e403]:
+                      - generic [ref=e404]: Expected output
+                      - generic [ref=e405]:
+                        - code [ref=e407]:
+                          - generic [ref=e408]: "-rw-r--r-- 1 root root 22G Jul 21 10:00 launchpad-ai-content.tar.zst"
+                        - button "Toggle word wrap" [ref=e410] [cursor=pointer]:
+                          - img [ref=e411]
+                    - paragraph [ref=e413]:
+                      - text: Use the full mount path, for example
+                      - code [ref=e414]: /mnt/nfs/ipmi/<content-bundle>.tar.zst
+                      - text: ", as the"
+                      - code [ref=e415]: "--file"
+                      - text: value in the upload command below.
+                - heading "Upload stepsDirect link to Upload steps" [level=4] [ref=e416]:
+                  - text: Upload steps
+                  - link "Direct link to Upload steps" [ref=e417] [cursor=pointer]:
+                    - /url: "#upload-steps"
+                    - text: "#"
+                - list [ref=e418]:
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: From the jumpbox, read the per-node upload token from the node and store it in an environment variable. Local UI writes this token to a file on the node when it first comes up, so the token already exists and you do not generate or request one. Replace
+                      - code [ref=e421]: <user>
+                      - text: with the administrator username you set in the Palette TUI and
+                      - code [ref=e422]: <node-ip>
+                      - text: with the bond IP.
+                    - generic [ref=e423]:
+                      - tablist [ref=e424]:
+                        - tab "Linux / macOS" [selected] [ref=e425] [cursor=pointer]
+                        - tab "Windows" [ref=e426] [cursor=pointer]
+                      - tabpanel [ref=e428]:
+                        - generic [ref=e430]:
+                          - code [ref=e432]:
+                            - generic [ref=e433]: export AIL_NODE_TOKEN=$(ssh <user>@<node-ip> sudo cat /opt/spectrocloud/.upload-auth-token)
+                          - generic [ref=e434]:
+                            - button "Toggle word wrap" [ref=e435] [cursor=pointer]:
+                              - img [ref=e436]
+                            - button "Copy code to clipboard" [ref=e438] [cursor=pointer]:
+                              - generic [ref=e439]:
+                                - img [ref=e440]
+                                - img [ref=e442]
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]:
+                      - text: Run the upload from the jumpbox. Replace
+                      - code [ref=e446]: <content-bundle>
+                      - text: with the path to the bundle, on the jumpbox filesystem or on the NFS mount (for example
+                      - code [ref=e447]: ./launchpad-ai-content.tar.zst
+                      - text: or
+                      - code [ref=e448]: /mnt/nfs/ipmi/launchpad-ai-content.tar.zst
+                      - text: ), and
+                      - code [ref=e449]: <node-ip>
+                      - text: with the bond IP. The default target port is
+                      - code [ref=e450]: "5082"
+                      - text: ; if the Local UI API uses a different port, add
+                      - code [ref=e451]: "-p <port>"
+                      - text: .
+                    - generic [ref=e452]:
+                      - tablist [ref=e453]:
+                        - tab "Linux / macOS" [selected] [ref=e454] [cursor=pointer]
+                        - tab "Windows" [ref=e455] [cursor=pointer]
+                      - tabpanel [ref=e457]:
+                        - generic [ref=e459]:
+                          - code [ref=e461]:
+                            - generic [ref=e462]: palette content upload \
+                            - generic [ref=e463]: "--file <content-bundle> \\"
+                            - generic [ref=e464]: "--token \"$AIL_NODE_TOKEN\" \\"
+                            - generic [ref=e465]: <node-ip>
+                          - button "Copy code to clipboard" [ref=e467] [cursor=pointer]:
+                            - generic [ref=e468]:
+                              - img [ref=e469]
+                              - img [ref=e471]
+                    - generic [ref=e473]:
+                      - generic [ref=e474]: Expected output
+                      - code [ref=e477]:
+                        - generic [ref=e478]: "response: Uploaded content successfully"
+                    - paragraph [ref=e479]: A progress bar tracks the transfer. After it reaches 100 percent, the node decompresses the archive and imports its images into the local registry. For a bundle of 20 GB or more, this server-side phase can take 15 to 30 minutes with no visible progress. Use a wired connection, keep the terminal open, do not interrupt the CLI, and wait for the node to finish before you continue.
+                - heading "Upload from Local UI (Not Recommended)Direct link to Upload from Local UI (Not Recommended)" [level=3] [ref=e480]:
+                  - text: Upload from Local UI (Not Recommended)
+                  - link "Direct link to Upload from Local UI (Not Recommended)" [ref=e481] [cursor=pointer]:
+                    - /url: "#upload-from-local-ui-not-recommended"
+                    - text: "#"
+                - paragraph [ref=e482]: The content bundle is more than 20 GB, so the browser upload is slow and can time out. Use this path only when the Palette CLI is not available on the jumpbox.
+                - list [ref=e483]:
+                  - listitem [ref=e484]:
+                    - text: From the left main menu, select
+                    - strong [ref=e485]: Content
+                    - text: ">"
+                    - strong [ref=e486]: Actions
+                    - text: ">"
+                    - strong [ref=e487]: Upload Content
+                    - text: .
+                  - listitem [ref=e488]: Select the content bundle and start the upload.
+                  - listitem [ref=e489]: After the upload reaches 100 percent, wait for the node to finish unpacking the bundle before continuing.
+                - heading "Deploy the ClusterDirect link to Deploy the Cluster" [level=2] [ref=e490]:
+                  - text: Deploy the Cluster
+                  - link "Direct link to Deploy the Cluster" [ref=e491] [cursor=pointer]:
+                    - /url: "#deploy-the-cluster"
+                    - text: "#"
+                - generic [ref=e492]:
+                  - generic [ref=e493]:
+                    - img [ref=e495]
+                    - text: HPE hardware
+                  - paragraph [ref=e498]:
+                    - text: On HPE servers, confirm the GPUs are visible to the operating system before you deploy. The cluster installs the GPU driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, apply the PCI workaround first. Refer to
+                    - 'link "Known Issues: GPUs do not enumerate on HPE servers" [ref=e499] [cursor=pointer]':
+                      - /url: /paletteai-inference-launchpad/reference/known-issues/#gpus-do-not-enumerate-on-hpe-servers
+                    - text: .
+                - list [ref=e500]:
+                  - listitem [ref=e501]:
+                    - paragraph [ref=e502]:
+                      - text: From the left main menu, select
+                      - strong [ref=e503]: Cluster
+                      - text: ">"
+                      - strong [ref=e504]: Create cluster
+                      - text: .
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Complete
+                      - strong [ref=e507]: Basic Information
+                      - text: (cluster name and tags), then select
+                      - strong [ref=e508]: Next
+                      - text: .
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]:
+                      - text: In
+                      - strong [ref=e511]: Cluster Profile
+                      - text: ", review the default PaletteAI Inference Launchpad profile. It bundles the edge OS, Kubernetes, storage, networking, ingress, observability, and the PaletteAI Inference Launchpad application. The exact packs are defined by the profile and can change between releases, so review the profile in Local UI for the current list. Select"
+                      - strong [ref=e512]: Next
+                      - text: .
+                    - generic [ref=e513]:
+                      - generic [ref=e514]:
+                        - img [ref=e516]
+                        - text: "\"Use embedded config\" is greyed out on stock ISOs"
+                      - paragraph [ref=e519]:
+                        - text: The
+                        - strong [ref=e520]: Use embedded config
+                        - text: radio applies only to EdgeForged ISOs that carry a baked-in cluster definition. On the stock slim ISO the radio is disabled, and its description ("The ISO image contains a predefined set of configurations") does not apply to your ISO. Proceed with
+                        - strong [ref=e521]: Import config
+                        - text: (the default); the
+                        - emphasis [ref=e522]: Imported Applications preview
+                        - text: on the right shows the profile discovered from your uploaded content bundle, which is the profile that will deploy.
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: In
+                      - strong [ref=e525]: Profile Config
+                      - text: ", complete the PaletteAI Inference Launchpad custom wizard. The wizard collects the settings the platform packs need to install correctly on your hardware and network, in six sections: Networking, OS and metrics, Container registry, Local admin, Storage, and Certificates. In Networking, the"
+                      - strong [ref=e526]: Platform IP Address
+                      - text: is a single unused IP address (not a range) that MetalLB assigns to the appliance console and API, and it must be different from the node's Host IP on a single-node install.
+                    - generic [ref=e527]:
+                      - generic [ref=e528]:
+                        - img [ref=e530]
+                        - text: Platform IP must not equal the node's Host IP
+                      - paragraph [ref=e533]:
+                        - text: Setting
+                        - strong [ref=e534]: Platform IP Address
+                        - text: to the node's Host IP on a single-node install causes MetalLB to intercept traffic to the Host IP, which breaks SSH, Local UI, and the Kubernetes API on the node. Traefik ports 80 and 443 continue to work, which can make the failure look like a partial network problem. Choose a distinct unused IP address from your reserved MetalLB range. For the symptom and recovery, refer to
+                        - 'link "Known Issues: SSH, Local UI, or Kubernetes API unreachable after cluster deploy" [ref=e535] [cursor=pointer]':
+                          - /url: /paletteai-inference-launchpad/reference/known-issues/#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy
+                        - text: .
+                    - paragraph [ref=e536]:
+                      - text: In Certificates, provide the CA certificate for the appliance's OIDC endpoint. The two certificate fields are labeled
+                      - strong [ref=e537]: OIDC CA cert
+                      - text: and
+                      - strong [ref=e538]: OIDC CA key
+                      - text: ", so look for the"
+                      - strong [ref=e539]: OIDC
+                      - text: labels. To create a self-signed certificate, select the
+                      - strong [ref=e540]: OIDC CA cert
+                      - text: field first, then select
+                      - strong [ref=e541]: Generate
+                      - text: ", which fills in both the certificate and the key. To provide your own certificate instead, paste your base64-encoded CA certificate and its private key. For every field's type, default, and validation rules, including the password complexity requirements for the Registry and Local Admin passwords, refer to"
+                      - link "Cluster Profile Variables" [ref=e542] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/reference/profile-variables/
+                      - text: . Then select
+                      - strong [ref=e543]: Next
+                      - text: .
+                  - listitem [ref=e544]:
+                    - paragraph [ref=e545]:
+                      - text: In
+                      - strong [ref=e546]: Cluster Config
+                      - text: ", configure the cluster settings, including the cluster"
+                      - strong [ref=e547]: VIP
+                      - text: . Enter the VIP you reserved in
+                      - link "Before You Begin" [ref=e548] [cursor=pointer]:
+                        - /url: "#before-you-begin"
+                      - text: . The VIP is a single IP address that always resolves to whichever node currently holds the control-plane role, so the cluster keeps one stable endpoint even as individual nodes fail over.
+                  - listitem [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: In
+                      - strong [ref=e551]: Node Config
+                      - text: ", assign hosts to the control-plane and worker node pools."
+                    - list [ref=e552]:
+                      - listitem [ref=e553]:
+                        - text: "Single node: no host selection is needed. Remove the worker pool and ensure"
+                        - strong [ref=e554]: Allow worker capability
+                        - text: is enabled on the control-plane pool so the sole node acts as both the control plane and the worker.
+                      - listitem [ref=e555]:
+                        - text: "Multi-node: assign the hosts you linked previously. Keep the leader in the control-plane pool and use an odd number of control-plane nodes. You can remove the worker pool if it is not required, but ensure"
+                        - strong [ref=e556]: Allow worker capability
+                        - text: is enabled on the control-plane pool.
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]:
+                      - text: Review the configuration and deploy. The nodes reboot as part of the build, and deployment can take up to approximately 45 minutes; GPU driver installation adds time on first boot. During deployment, Traefik and Local UI restart alongside the packs, so the browser may display a
+                      - strong [ref=e559]: "\"Your service is temporarily unavailable\""
+                      - text: page more than once. Refresh the browser to resume, and do not close the wizard or restart the deployment.
+                    - generic [ref=e560]:
+                      - generic [ref=e561]:
+                        - img [ref=e563]
+                        - text: Extended pause during the node reboot
+                      - paragraph [ref=e566]: The deployment includes a node reboot during which the browser displays no progress for approximately 10 minutes. This pause is expected. Wait for the browser to reconnect automatically; do not power-cycle the node or close the wizard.
+                - heading "Validate the InstallationDirect link to Validate the Installation" [level=2] [ref=e567]:
+                  - text: Validate the Installation
+                  - link "Direct link to Validate the Installation" [ref=e568] [cursor=pointer]:
+                    - /url: "#validate-the-installation"
+                    - text: "#"
+                - list [ref=e569]:
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]:
+                      - text: On the
+                      - strong [ref=e572]: Cluster
+                      - text: page, confirm the cluster reaches a
+                      - strong [ref=e573]: Running
+                      - text: and
+                      - strong [ref=e574]: Healthy
+                      - text: state and that all packs install.
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]:
+                      - text: Confirm that all pods are running. SSH to the node and run
+                      - code [ref=e577]: kubectl
+                      - text: against the node's admin kubeconfig.
+                    - generic [ref=e579]:
+                      - code [ref=e581]:
+                        - generic [ref=e582]: sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces
+                      - generic [ref=e583]:
+                        - button "Toggle word wrap" [ref=e584] [cursor=pointer]:
+                          - img [ref=e585]
+                        - button "Copy code to clipboard" [ref=e587] [cursor=pointer]:
+                          - generic [ref=e588]:
+                            - img [ref=e589]
+                            - img [ref=e591]
+                    - generic [ref=e593]:
+                      - generic [ref=e594]: Expected output
+                      - generic [ref=e595]:
+                        - code [ref=e597]:
+                          - generic [ref=e598]: NAMESPACE NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e599]: kube-system coredns-6f9b7c9d8-abcde 1/1 Running 0 12m
+                        - button "Toggle word wrap" [ref=e601] [cursor=pointer]:
+                          - img [ref=e602]
+                    - paragraph [ref=e604]:
+                      - text: The output lists pods across namespaces in the
+                      - code [ref=e605]: Running
+                      - text: state.
+                    - paragraph [ref=e606]:
+                      - text: To run
+                      - code [ref=e607]: kubectl
+                      - text: ", or a tool such as K9s, from the jumpbox instead, copy the node's kubeconfig off the node. It lives at"
+                      - code [ref=e608]: /etc/kubernetes/admin.conf
+                      - text: and is readable only by
+                      - code [ref=e609]: root
+                      - text: ", so read it with"
+                      - code [ref=e610]: sudo
+                      - text: . Replace
+                      - code [ref=e611]: <user>
+                      - text: with the administrator username you set in the Palette TUI and
+                      - code [ref=e612]: <node-ip>
+                      - text: with the node's IP.
+                    - generic [ref=e613]:
+                      - tablist [ref=e614]:
+                        - tab "Linux / macOS" [selected] [ref=e615] [cursor=pointer]
+                        - tab "Windows" [ref=e616] [cursor=pointer]
+                      - tabpanel [ref=e618]:
+                        - generic [ref=e620]:
+                          - code [ref=e622]:
+                            - generic [ref=e623]: ssh <user>@<node-ip> "sudo cat /etc/kubernetes/admin.conf" > appliance.kubeconfig
+                          - generic [ref=e624]:
+                            - button "Toggle word wrap" [ref=e625] [cursor=pointer]:
+                              - img [ref=e626]
+                            - button "Copy code to clipboard" [ref=e628] [cursor=pointer]:
+                              - generic [ref=e629]:
+                                - img [ref=e630]
+                                - img [ref=e632]
+                    - paragraph [ref=e634]:
+                      - text: The kubeconfig grants cluster-admin access, so store it like a root credential. If its
+                      - code [ref=e635]: server
+                      - text: address is
+                      - code [ref=e636]: 127.0.0.1
+                      - text: or an internal VIP the jumpbox cannot reach, replace it with the node's reachable IP or the cluster VIP. Then point
+                      - code [ref=e637]: kubectl
+                      - text: at it.
+                    - generic [ref=e639]:
+                      - code [ref=e641]:
+                        - generic [ref=e642]: kubectl --kubeconfig appliance.kubeconfig get pods --all-namespaces
+                      - generic [ref=e643]:
+                        - button "Toggle word wrap" [ref=e644] [cursor=pointer]:
+                          - img [ref=e645]
+                        - button "Copy code to clipboard" [ref=e647] [cursor=pointer]:
+                          - generic [ref=e648]:
+                            - img [ref=e649]
+                            - img [ref=e651]
+                  - listitem [ref=e653]:
+                    - paragraph [ref=e654]: After deployment completes, additional items appear in the Local UI left main menu. Use them to reach the PaletteAI Inference Launchpad platform and confirm that GPU nodes are schedulable.
+                - generic [ref=e655]:
+                  - generic [ref=e656]:
+                    - img [ref=e658]
+                    - text: Log in to the console
+                  - paragraph [ref=e661]:
+                    - text: The cluster is now running. Open the PaletteAI Inference Launchpad console from the custom link that appears in the Local UI left main menu after deployment completes, rather than typing the platform IP address by hand. The console is served at
+                    - code [ref=e662]: https://<platform-ip>
+                    - text: ", the single Platform IP Address that Traefik fronts (the one you set in the cluster profile). Sign in with the"
+                    - strong [ref=e663]: Local Admin
+                    - text: "username and password you set in the Profile Config wizard during cluster creation. This is deliberately a different account from the Palette TUI account you created earlier: the Palette TUI account manages the node, signing in to Local UI and connecting over SSH, while the Local Admin account signs in to the appliance console and the Grafana dashboard, which share this one login. You set the Local Admin password during cluster creation because the console and Grafana do not exist until the cluster is deployed."
+                - paragraph [ref=e664]:
+                  - text: If the cluster does not reach a
+                  - strong [ref=e665]: Running
+                  - text: and
+                  - strong [ref=e666]: Healthy
+                  - text: state, or if the GPUs do not enumerate as expected, refer to
+                  - link "Known Issues" [ref=e667] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/known-issues/
+                  - text: .
+                - heading "Upload Your ModelDirect link to Upload Your Model" [level=2] [ref=e668]:
+                  - text: Upload Your Model
+                  - link "Direct link to Upload Your Model" [ref=e669] [cursor=pointer]:
+                    - /url: "#upload-your-model"
+                    - text: "#"
+                - paragraph [ref=e670]:
+                  - text: Uploading a model is a day-two operation, separate from the day-zero appliance install. You can run it in parallel with cluster deployment; it does not need to wait for validation. Models are uploaded separately from the content bundle, from the jumpbox to an appliance node, using the Palette CLI. The jumpbox needs
+                  - code [ref=e671]: rsync
+                  - text: 3.2.3 or later and OpenSSH 8.4 or later.
+                - paragraph [ref=e672]:
+                  - text: For the full flag list, the metadata file schema, the on-appliance layout, and the deploy-catalog states, refer to
+                  - link "Model Upload Reference" [ref=e673] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/model-upload-reference/
+                  - text: .
+                - list [ref=e674]:
+                  - listitem [ref=e675]:
+                    - paragraph [ref=e676]:
+                      - text: Download the model metadata (
+                      - code [ref=e677]: metadata.yaml
+                      - text: ) from Artifact Studio.
+                  - listitem [ref=e678]:
+                    - paragraph [ref=e679]:
+                      - text: On the jumpbox, download the model to a writable local directory, for example
+                      - code [ref=e680]: /home/ubuntu/downloads
+                      - text: . Do not use an NFS share, which may be mounted read-only. The model lands at
+                      - code [ref=e681]: <model-dir>/<name>/<version>/
+                      - text: .
+                    - generic [ref=e682]:
+                      - tablist [ref=e683]:
+                        - tab "Linux / macOS" [selected] [ref=e684] [cursor=pointer]
+                        - tab "Windows" [ref=e685] [cursor=pointer]
+                      - tabpanel [ref=e687]:
+                        - generic [ref=e689]:
+                          - code [ref=e691]:
+                            - generic [ref=e692]: palette content model download \
+                            - generic [ref=e693]: "--metadata model.yaml \\"
+                            - generic [ref=e694]: "--model-dir ./models"
+                          - button "Copy code to clipboard" [ref=e696] [cursor=pointer]:
+                            - generic [ref=e697]:
+                              - img [ref=e698]
+                              - img [ref=e700]
+                    - paragraph [ref=e702]:
+                      - text: For gated or private Hugging Face repos, set
+                      - code [ref=e703]: HF_TOKEN
+                      - text: .
+                  - listitem [ref=e704]:
+                    - paragraph [ref=e705]:
+                      - text: Upload the model to an appliance node. We recommend using SSH key authentication (
+                      - code [ref=e706]: "--ssh-key"
+                      - text: ). If you do not have a key on the node, use
+                      - code [ref=e707]: "--ssh-password"
+                      - text: for password authentication (supported on a Unix jumpbox only), and add
+                      - code [ref=e708]: "--insecure-skip-host-key-check"
+                      - text: if the node's host key is not yet known.
+                    - generic [ref=e709]:
+                      - tablist [ref=e710]:
+                        - tab "Linux / macOS" [selected] [ref=e711] [cursor=pointer]
+                        - tab "Windows" [ref=e712] [cursor=pointer]
+                      - tabpanel [ref=e714]:
+                        - generic [ref=e716]:
+                          - code [ref=e718]:
+                            - generic [ref=e719]: palette content model upload \
+                            - generic [ref=e720]: "--metadata model.yaml \\"
+                            - generic [ref=e721]: "--model-dir ./models \\"
+                            - generic [ref=e722]: "--ssh-user <user> \\"
+                            - generic [ref=e723]: "--ssh-host <node-ip> \\"
+                            - generic [ref=e724]: "--ssh-key ~/.ssh/id_ed25519"
+                          - button "Copy code to clipboard" [ref=e726] [cursor=pointer]:
+                            - generic [ref=e727]:
+                              - img [ref=e728]
+                              - img [ref=e730]
+                  - listitem [ref=e732]:
+                    - paragraph [ref=e733]:
+                      - text: Confirm the model is ready to deploy. In the appliance console, select
+                      - strong [ref=e734]: Cluster
+                      - text: from the left main menu, then select
+                      - strong [ref=e735]: Deploy model
+                      - text: "to open the deploy panel, and open the model drop-down menu. On a single-node appliance, the model appears in the drop-down on the next catalog scan after the upload finishes. On a multi-node appliance, the drop-down shows the model's cluster-wide state:"
+                      - strong [ref=e736]: Available
+                      - text: when the model is ready on every node and can be deployed,
+                      - strong [ref=e737]: Pending
+                      - text: while the appliance is still synchronizing it across nodes, or
+                      - strong [ref=e738]: Missing
+                      - text: when the appliance has the model's metadata but not yet its weights. Only an
+                      - strong [ref=e739]: Available
+                      - text: model can be deployed.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e740]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e741] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e742]: "After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:"
+                - list [ref=e743]:
+                  - listitem [ref=e744]:
+                    - strong [ref=e745]: Deploy a model
+                    - text: .
+                    - link "Deploy a Model" [ref=e746] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                    - text: .
+                  - listitem [ref=e747]:
+                    - strong [ref=e748]: Generate an API token
+                    - text: .
+                    - link "Generate an API Token" [ref=e749] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                    - text: .
+                  - listitem [ref=e750]:
+                    - strong [ref=e751]: Connect a coding tool
+                    - text: .
+                    - link "Claude Code" [ref=e752] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                    - text: ","
+                    - link "Cursor" [ref=e753] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                    - text: ","
+                    - link "OpenAI Codex" [ref=e754] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                    - text: ", or"
+                    - link "OpenCode" [ref=e755] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+                    - text: .
+                - paragraph [ref=e756]:
+                  - text: For definitions of the terms used in this guide, such as slim ISO, content bundle, jumpbox, bond, leader, follower, Palette TUI, Local UI, and OTP, refer to the
+                  - link "Glossary" [ref=e757] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/glossary/
+                  - text: .
+              - generic [ref=e758]:
+                - generic [ref=e760]:
+                  - text: "Tags:"
+                  - list [ref=e761]:
+                    - listitem [ref=e762]:
+                      - link "paletteai-inference-launchpad" [ref=e763] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e764]:
+                      - link "install" [ref=e765] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/install/
+                    - listitem [ref=e766]:
+                      - link "how-to" [ref=e767] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/how-to/
+                - link "Edit this page" [ref=e770] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md
+                  - img [ref=e771]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e775]:
+              - link "Previous « How-to Guides" [ref=e776] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/
+                - generic [ref=e777]: Previous
+                - generic [ref=e778]: « How-to Guides
+              - link "Next Deploy a Model »" [ref=e779] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                - generic [ref=e780]: Next
+                - generic [ref=e781]: Deploy a Model »
+          - list [ref=e784]:
+            - listitem [ref=e785]:
+              - link "Before You Begin" [ref=e786] [cursor=pointer]:
+                - /url: "#before-you-begin"
+            - listitem [ref=e787]:
+              - link "Download the Artifacts" [ref=e788] [cursor=pointer]:
+                - /url: "#download-the-artifacts"
+            - listitem [ref=e789]:
+              - link "Install the OS" [ref=e790] [cursor=pointer]:
+                - /url: "#install-the-os"
+            - listitem [ref=e791]:
+              - link "Configure the Node with the Palette TUI" [ref=e792] [cursor=pointer]:
+                - /url: "#configure-the-node-with-the-palette-tui"
+            - listitem [ref=e793]:
+              - link "Configure the Network in Local UI" [ref=e794] [cursor=pointer]:
+                - /url: "#configure-the-network-in-local-ui"
+              - list [ref=e795]:
+                - listitem [ref=e796]:
+                  - link "Create a Bond" [ref=e797] [cursor=pointer]:
+                    - /url: "#create-a-bond"
+            - listitem [ref=e798]:
+              - link "Configure the Storage" [ref=e799] [cursor=pointer]:
+                - /url: "#configure-the-storage"
+            - listitem [ref=e800]:
+              - link "Link Hosts (Multi-Node Only)" [ref=e801] [cursor=pointer]:
+                - /url: "#link-hosts-multi-node-only"
+            - listitem [ref=e802]:
+              - link "Upload the Content Bundle" [ref=e803] [cursor=pointer]:
+                - /url: "#upload-the-content-bundle"
+              - list [ref=e804]:
+                - listitem [ref=e805]:
+                  - link "Upload with the Palette CLI (Recommended)" [ref=e806] [cursor=pointer]:
+                    - /url: "#upload-with-the-palette-cli-recommended"
+                - listitem [ref=e807]:
+                  - link "Upload from Local UI (Not Recommended)" [ref=e808] [cursor=pointer]:
+                    - /url: "#upload-from-local-ui-not-recommended"
+            - listitem [ref=e809]:
+              - link "Deploy the Cluster" [ref=e810] [cursor=pointer]:
+                - /url: "#deploy-the-cluster"
+            - listitem [ref=e811]:
+              - link "Validate the Installation" [ref=e812] [cursor=pointer]:
+                - /url: "#validate-the-installation"
+            - listitem [ref=e813]:
+              - link "Upload Your Model" [ref=e814] [cursor=pointer]:
+                - /url: "#upload-your-model"
+            - listitem [ref=e815]:
+              - link "Next Steps" [ref=e816] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e817] [cursor=pointer]:
+    - generic [ref=e820]:
+      - img "Project Logo" [ref=e821]
+      - paragraph [ref=e822]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
