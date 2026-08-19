@@ -126,13 +126,21 @@ pack, but if you want to use a different storage pack altogether, we recommend y
 
 ## Decoupled Control Plane and Worker Node Upgrades
 
-Edge Native clusters support upgrading the control plane independently from worker pools. You can enable the **Skip
-worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes upgrade while the control
-plane advances. This decouples worker upgrades from control plane upgrades, which lets you move the control plane
-forward, for example to apply a security patch, without repaving worker nodes. It also reduces the number of worker
-upgrades needed to cross several Kubernetes minor versions.
+Edge Native clusters that use Palette eXtended Kubernetes Edge (PXK-E) or Canonical Kubernetes support upgrading the
+control plane independently from worker pools. You can enable the **Skip worker node update (Optional)** toggle on
+individual worker pools to defer their Kubernetes upgrade while the control plane advances. This decouples worker
+upgrades from control plane upgrades, which lets you move the control plane forward, for example to apply a security
+patch, without repaving worker nodes. It also reduces the number of worker upgrades needed to cross several Kubernetes
+minor versions.
 
-Support depends on how the cluster is managed.
+:::info
+
+Decoupled control plane and worker node upgrades are supported for PXK-E and Canonical Kubernetes only. K3s and RKE2
+clusters are not supported.
+
+:::
+
+Support also depends on how the cluster is managed.
 
 | **Cluster management**        | **Support**                                                              |
 | ----------------------------- | ------------------------------------------------------------------------ |

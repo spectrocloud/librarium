@@ -148,6 +148,9 @@ Skipping worker node updates is supported for the following cluster types:
   Local UI API rather than through Palette. Refer to
   [Edge Cluster Upgrade Behavior](../edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
+For Edge Native clusters, both connected and locally managed, only Palette eXtended Kubernetes Edge (PXK-E) and
+Canonical Kubernetes are supported. K3s and RKE2 clusters are not supported.
+
 ### Cluster Profile Upgrade Behavior
 
 When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
