@@ -14,7 +14,7 @@
 ```
 Error: expect(page).toHaveScreenshot(expected) failed
 
-  601 pixels (ratio 0.01 of all image pixels) are different.
+  136 pixels (ratio 0.01 of all image pixels) are different.
 
 Call log:
   - Expect "toHaveScreenshot" with timeout 10000ms
@@ -23,14 +23,14 @@ Call log:
     - disabled all CSS animations
   - waiting for fonts to load...
   - fonts loaded
-  - 601 pixels (ratio 0.01 of all image pixels) are different.
+  - 136 pixels (ratio 0.01 of all image pixels) are different.
   - waiting 100ms before taking screenshot
   - taking page screenshot
     - disabled all CSS animations
   - waiting for fonts to load...
   - fonts loaded
   - captured a stable screenshot
-  - 601 pixels (ratio 0.01 of all image pixels) are different.
+  - 136 pixels (ratio 0.01 of all image pixels) are different.
 
 ```
 
