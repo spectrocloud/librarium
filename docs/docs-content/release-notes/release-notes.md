@@ -15,16 +15,9 @@ tags: ["release-notes"]
 
 <!-- COMPONENT UPDATES TICKET: DOC-3115 -->
 <!-- RELEASE DATE: August 21, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.46 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: DEFERRED (4.9.46 pending security scans; add when appliances ship) -->
 <!-- RELEASE ARTIFACT STUDIO: NA -->
 <!-- RELEASE TERRAFORM VERSION: NA -->
-
-The following components have been updated for Palette version 4.9.5 - 4.9.46.
-
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.46  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.46  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 
