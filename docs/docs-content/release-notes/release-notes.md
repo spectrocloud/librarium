@@ -21,13 +21,10 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.9.5 - 4.9.46.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | NA      |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | NA      |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | NA      |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.46  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.46  |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.46  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.46  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 
@@ -37,11 +34,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.46.
 
 - Kyverno is now available as a Verified Pack in the Palette Registry. The pack is maintained by Spectro Cloud with a
   controlled release cadence, images mirrored into Spectro registries for airgap and self-hosted deployments, CVE
-  scanning, and full support coverage. A FIPS-compliant pack variant and an airgapped FIPS ZST artifact are also
-  available. Spectro-opinionated defaults are included out of the box, with Spectro system namespaces excluded from
-  Kyverno admission by default to prevent conflicts with Palette's own reconciliation and Edge recovery paths. You can
-  add Kyverno directly to a cluster profile from the Palette Registry without requiring an external repository or a
-  custom pack build, and receive version updates through the standard pack-update path.
+  scanning, and full support coverage. Spectro-opinionated defaults are included out of the box, with Spectro system
+  namespaces excluded from Kyverno admission by default to prevent conflicts with Palette's own reconciliation and Edge
+  recovery paths. You can add Kyverno directly to a cluster profile from the Palette Registry without requiring an
+  external repository or a custom pack build, and receive version updates through the standard pack-update path.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 
