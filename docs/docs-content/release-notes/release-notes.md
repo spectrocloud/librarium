@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 24, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3123 -->
+<!-- PATCH RELEASE VERSION: 4.9.x -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9303 -->
+
+- Fixed an issue where Edge Kubernetes upgrades installed the new kubelet before the control plane was upgraded, causing
+  1.30 to 1.31 upgrades to deadlock permanently with no self-recovery path.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11551 -->
+
+- Fixed a `DuplicateClusterPacksForbidden` validation error that occurred when bumping a cluster profile version while a
+  pending profile update notification was present on the cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11738 -->
+
+- Fixed false "Full Repave is pending" warnings triggered by unresolved cluster profile variable macros being diffed
+  against their resolved values, causing healthy clusters to incorrectly enter repave status.
+
 ## August 17, 2026 - Release 4.9.46
 
 <!-- PATCH RELEASE TICKET: DOC-3113 -->
