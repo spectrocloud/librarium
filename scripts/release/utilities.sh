@@ -194,10 +194,36 @@ replace_line() {
 }
 
 # Utility function to remove a file
-# Params: 
+# Params:
 # $1 - file name
 cleanup() {
     rm $1
+}
+
+# Utility function to delete the first line of a file that contains a literal string. Used to drop
+# a table row that a later run has superseded, for example a placeholder row keyed on a release
+# version that has since been confirmed. Does nothing when no line matches.
+# Params:
+# $1 - literal search term, example: edge-compat-4.9.x -->
+# $2 - target file
+# Returns 0 if a line was removed, 1 if nothing matched.
+remove_line_containing() {
+    local search="$1"
+    local file="$2"
+    local tmp_file
+
+    if ! grep -qF "$search" "$file"; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v search="$search" '
+      !removed && index($0, search) { removed = 1; next }
+      { print }
+    ' "$file" > "$tmp_file"
+
+    mv "$tmp_file" "$file"
 }
 
 # Utility function to strip Super's inline citation markers from an answer, for example
@@ -356,6 +382,52 @@ get_documented_table_version() {
     ' "$file"
 }
 
+# Utility function to read a cell from the row a given release already occupies, so a re-run can
+# see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
+# deliberately skips that row to find the previous release instead.
+# Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+# Params:
+# $1 - Markdown file to read
+# $2 - 1-based column number to return
+# $3 - the release whose row to read, example: 4.9.x
+get_table_cell_for_release() {
+    local file="$1"
+    local column="$2"
+    local release="$3"
+
+    [[ -f "$file" ]] || return 0
+
+    awk -v column="$column" -v want="$release" '
+      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        n = split($0, cells, "|")
+
+        release_cell = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment and the backticks a checksum cell is wrapped in, then trim.
+        gsub(/<!--[^>]*-->/, "", release_cell)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/`/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release_cell)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release_cell == want) {
+          print value
+          exit
+        }
+      }
+    ' "$file"
+}
+
 # Utility function to derive the SHA256 checksum of a published Palette CLI binary by
 # hashing it as it downloads, so the checksum column in the downloads table does not have
 # to be transcribed by hand. The binary is around 400 MB and is never written to disk.
@@ -395,6 +467,41 @@ fetch_palette_cli_sha() {
     fi
 
     printf '%s' "$digest"
+}
+
+# Utility function to ask a yes or no question on a terminal, so a script can branch on what the
+# writer already knows rather than making them supply values that do not apply. An empty reply
+# takes the default, and so does a run with no terminal to prompt on, so an unattended job never
+# stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing "(y/n)"
+# $2 - default when the reply is empty or there is no terminal: "y" or "n"
+# Returns 0 for yes, 1 for no.
+confirm() {
+    local question="$1"
+    local default="$2"
+    local hint reply
+
+    if [[ "$default" == "y" ]]; then
+        hint="Y/n"
+    else
+        hint="y/N"
+    fi
+
+    if [[ ! -t 0 ]]; then
+        [[ "$default" == "y" ]] && return 0 || return 1
+    fi
+
+    while true; do
+        read -r -p "$question ($hint): " reply
+        reply="${reply:-$default}"
+
+        case "$reply" in
+            [Yy] | [Yy][Ee][Ss]) return 0 ;;
+            [Nn] | [Nn][Oo]) return 1 ;;
+            *) echo "   Answer y or n." >&2 ;;
+        esac
+    done
 }
 
 # Utility function to verify the presence of an environment variable
