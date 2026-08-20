@@ -150,19 +150,30 @@ notes body with Super, and inserts it into the [Release Notes](../docs-content/r
 patch release can also ship a new CanvOS or Palette CLI version, so the target records those versions across the pages
 that document them.
 
-The target prompts for the following values. Each prompt is skipped when its environment variable is already set, and
-also when there is no terminal to prompt on, so the same target runs unattended in a workflow.
+The target asks a short series of questions, so you are only asked for values that apply to this patch. Each question is
+skipped when its environment variable is already set.
 
-| **Prompt**             | **Environment Variable** | **Description**                                                                                                                                           |
-| ---------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Patch release version  | `PATCH_RELEASE_VERSION`  | The Palette patch release version, for example `4.9.48`. Leave it empty to generate the release notes body alone.                                         |
-| nickfury branch or tag | `NICKFURY_REF`           | The name of the `spectrocloud/nickfury` branch or tag that holds the component versions. Leave it empty to try `v<version>` and then `release-<version>`. |
-| Palette CLI checksum   | `PATCH_PALETTE_CLI_SHA`  | The SHA256 checksum of the Palette CLI binary. Leave it empty to derive the checksum from the published binary, which transfers around 400 MB.            |
+| **Question**                                                      | **Answer**                                                                      | **Environment Variable**  |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
+| Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
+| Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
+| Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
+| The Palette CLI checksum                                          | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
+
+The Palette CLI checksum is published in ReTool, so look it up there and paste it in. Typing `derive` reads it from the
+published binary instead, which streams around 400 MB and only works once the release is out.
+
+An unattended run answers from the environment variables alone. It generates the release notes body only, unless
+`NICKFURY_REF` or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the component versions are wanted.
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
-prompt heads the new section. Leaving the prompt empty is the right answer while the version is still unknown.
-Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the notes early
-and re-run once the version is confirmed.
+prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
+reported. Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the
+notes before the version is decided and re-run once it is confirmed.
+
+Each generated section records the version it was built for in a `<!-- PATCH RELEASE VERSION: ... -->` comment. When a
+later run confirms a different version, the target removes the rows the earlier run wrote for the old one, so a
+confirmed version replaces its placeholder rather than sitting alongside it.
 
 The second prompt asks for the nickfury branch or tag name, because a ref name does not always correspond to the patch
 release version. Release engineering hands over one of the following, so use the name you were given rather than one
@@ -176,11 +187,11 @@ derived from the version.
 
 Palette `4.9.47`, for example, can be built from the tag `v4.9.47-rc.2`, which no version-derived guess would find. The
 prompt accepts a name copied straight from a release ticket, including a full `refs/tags/...` or `refs/heads/...` path.
-Supplying a bare version instead of a name still works: the target tries `v<version>` and then `release-<version>`.
+Supplying a bare version instead of a name also works: the target tries `v<version>` and then `release-<version>`.
 
-The ref prompt only appears when a GitHub token is available, because without one there is nothing to read. The target
-reports which token it is using before it prompts for anything, so a missing token is clear before you answer the
-version prompt rather than after.
+The ref question only appears when a new component version is being added and a GitHub token is available, because
+without either there is nothing to read. When no token is available the target says so and records the versions as
+pending instead.
 
 Once the ref resolves, the target reads the `stylus` and `palette-cli` versions from `release/spectro_versions.txt` in
 the `spectrocloud/nickfury` repository. The target then compares those versions with the versions already recorded in
@@ -192,9 +203,29 @@ often ships the same components as the release before it. Only a component whose
 | CanvOS, Stylus, Edge host | `stylus`         | An **Edge** section in the release notes, and a row in the Edge Compatibility Matrix.                                                                             |
 | Palette CLI               | `palette-cli`    | An **Automation** section in the release notes, a row in the Edge Compatibility Matrix, the Install Palette CLI version output, and a row in the CLI Tools table. |
 
-The CLI Tools table also needs the binary's checksum, which nickfury does not carry. The binary is only published after
-the release, so the target leaves that table unchanged when the checksum is unavailable. Re-run the target with
-`PATCH_PALETTE_CLI_SHA` set once the binary is published.
+The CLI Tools table also needs the binary's checksum, which nickfury does not carry, and the binary is only published
+after the release. Rather than omit an entry, the target writes it with a marker naming what is still missing, so the
+scaffolding exists from the first run and a later run only has to fill in the values.
+
+| **Marker**        | **Stands in for**                |
+| ----------------- | -------------------------------- |
+| `VERSION PENDING` | A CanvOS or Palette CLI version. |
+| `URL PENDING`     | The Palette CLI download URL.    |
+| `SHA PENDING`     | The Palette CLI checksum.        |
+
+Search the documentation for `PENDING` to find every value still to be confirmed.
+
+Re-running the target replaces the values it wrote before, so a run that fills in a branch or tag turns the pending
+markers into real versions. It will not do the reverse silently: when a run has no version for a component that the
+release already documents, it says so and asks before replacing a real value with a marker. Declining keeps what is
+published, and an unattended run always keeps it.
+
+> [!WARNING]
+>
+> The target only maintains rows for the version it is generating. Answering no to the component version question on a
+> re-run leaves any rows an earlier run wrote exactly as they are, so tidy those by hand. The same applies once you have
+> edited a row yourself, because the target replaces whole rows rather than individual cells. Re-run the target with the
+> branch or tag name, and with `PATCH_PALETTE_CLI_SHA` set or the binary published, to replace them.
 
 > [!WARNING]
 >

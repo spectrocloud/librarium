@@ -23,9 +23,13 @@ fi
 
 # Only the variables the template uses are substituted, and through awk rather than
 # sed, because `sed -i ''` is BSD-only and this script also runs on a Linux runner.
+# The download URL is normally derived from the Palette CLI version, but a caller that does
+# not yet know the version can pass a placeholder instead of a link that would not resolve.
+RELEASE_PALETTE_CLI_URL="${RELEASE_PALETTE_CLI_URL:-https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/linux/cli/palette}"
+
 generate_parameterised_file_local_vars \
     "$CLI_TEMPLATE_FILE" "$CLI_PARAMETERISED_FILE" \
-    RELEASE_NAME RELEASE_VERSION RELEASE_PALETTE_CLI_VERSION RELEASE_PALETTE_CLI_SHA
+    RELEASE_NAME RELEASE_VERSION RELEASE_PALETTE_CLI_VERSION RELEASE_PALETTE_CLI_URL RELEASE_PALETTE_CLI_SHA
 generate_parameterised_file $EDGE_CLI_TEMPLATE_FILE $EDGE_CLI_PARAMETERISED_FILE
 
 # Check if the cli for this Palette release has already been added. The search has to
