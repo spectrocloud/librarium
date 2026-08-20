@@ -61,9 +61,9 @@ vLLM serves language models with high GPU throughput and handles concurrent requ
 ships with the ability to download one of these flagship open-weight models (GLM, DeepSeek, Kimi, or Gemma) and run it
 entirely on your hardware with no external API calls. NVIDIA and AMD GPU support provides the parallel processing that
 large language models require to respond at production speed. The certified models are a starting point rather than a
-boundary, so you can also bring your own model and serve it alongside them. Bringing your own model means you author its
-metadata and validate it on your hardware yourself, rather than starting from a configuration Spectro Cloud has already
-tested.
+boundary, so you can also [bring your own model](./how-to-guides/bring-your-own-model.md) and serve it alongside them.
+Bringing your own model means you author its metadata and validate it on your hardware yourself, rather than starting
+from a configuration Spectro Cloud has already tested.
 
 Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require
 low latency stay local. Other requests can route outbound when the network allows.
@@ -100,7 +100,8 @@ Whatever brought you here, these are the fastest paths in.
 
 - **Get started**: [Suggested Hardware](./reference/hardware-requirements.md) •
   [Install the appliance](./how-to-guides/install-the-appliance.md) •
-  [Upload a model](./how-to-guides/upload-a-model.md) • [Deploy your first model](./how-to-guides/deploy-a-model.md)
+  [Upload a model](./how-to-guides/upload-a-model.md) • [Bring your own model](./how-to-guides/bring-your-own-model.md)
+  • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
   [Vision Preprocessing](./explanation/vision-preprocessing.md) •
   [Clients and Quotas](./explanation/clients-and-quotas.md) •
