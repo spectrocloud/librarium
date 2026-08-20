@@ -151,12 +151,8 @@ reasons include the following:
 
 To resolve the reason, free GPUs on a node by removing another model from that node, stage the model's weights on the
 node, add capacity to the cluster, or resolve the unknown allocation on the affected nodes. Then deploy the model again.
-For the full list of eligibility reasons, refer to
-[Why a Node Cannot Be Chosen](../explanation/model-placement.md#why-a-node-cannot-be-chosen).
-
-If a node becomes ineligible between the moment you select it and the moment you confirm, the deploy preview raises a
-**Node fit** warning. Adjust the selection or proceed. If the node still cannot host the model when the deploy runs, the
-appliance reports that outcome on the model's condition rather than placing the engine on a different node.
+For the full list of eligibility reasons and how the appliance behaves when a node degrades between selection and
+confirmation, refer to [Model Placement](../explanation/model-placement.md).
 
 ## Next Steps
 

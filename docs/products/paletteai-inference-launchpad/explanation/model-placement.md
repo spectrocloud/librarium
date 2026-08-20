@@ -80,8 +80,8 @@ An ineligible node is not selectable and states why.
 ## How Local Weights Affect the Choice
 
 Choosing a node does not copy weights to it. For a model you uploaded to the appliance, only nodes that already hold the
-weights can run it. Stage the weights first. Then the **Nodes** list includes the node. For the upload procedure, refer
-to [Upload a Model](../how-to-guides/upload-a-model.md).
+weights can run it. A node appears in the **Nodes** list once the weights are staged on it. For the upload procedure,
+refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 ## What Model Placement Is Not
 

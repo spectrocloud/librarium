@@ -53,22 +53,15 @@ For the specific values and example server configurations, refer to
 
 ## Model Provisioning Lifecycle
 
-When you deploy a model, you choose which nodes run it. The deploy dialog lists each node with its hardware, free GPUs,
-and whether it can run the model you picked. The appliance creates one inference engine per chosen node and exposes
-those engines through a single per-model endpoint. For when to pin a model to a subset of nodes, refer to
+Deploying a model is a guarded sequence. The appliance first previews the change so you can review it, and it writes
+nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages. A model
+becomes routable only after its signature is verified and its smoke test passes, so the appliance never presents a model
+as ready before it can serve requests.
+
+On a multi-server cluster, the appliance runs one inference engine per chosen node and exposes those engines through a
+single per-model endpoint. The appliance treats unknown GPU capacity as unusable rather than as free. For how you choose
+which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
 [Model Placement](./model-placement.md).
-
-The appliance reports each node's free capacity honestly. A node shows either a known free GPU count or an unknown
-allocation when the appliance cannot determine the count. The appliance never treats a node with an unknown allocation
-as free, never selects such a node automatically, and never invents a placement target. If a chosen node degrades
-between selecting it and confirming the deploy, the deploy preview raises a **Node fit** warning; you can adjust the
-selection or proceed. If the node still cannot host the model when the deploy runs, the appliance reports that outcome
-on the model's condition rather than placing the engine on a different node.
-
-The appliance applies a deployment through a guarded sequence. It first previews the change so you can review it, and it
-writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages on each
-chosen node. A model becomes routable only after its signature is verified and its smoke test passes, so the appliance
-never presents a model as ready before it can serve requests.
 
 ## Request Routing
 
