@@ -278,8 +278,9 @@ meters and limits usage through quotas but does not gate access.
 ### Local UI
 
 The web console the appliance's edge OS serves on TCP port `5080` at `https://<node-ip>:5080`, used to create the
-[bond](#bond), link nodes, upload the [content bundle](#content-bundle), and deploy the cluster. Distinct from the
-[appliance console](#appliance-console) that the running cluster serves once installation completes.
+[bond](#bond), link nodes, upload the [content bundle](#content-bundle), deploy the cluster, scale nodes, and apply a
+platform upgrade. Distinct from the [appliance console](#appliance-console) that the running cluster serves once
+installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md).
 
 ## M
 
