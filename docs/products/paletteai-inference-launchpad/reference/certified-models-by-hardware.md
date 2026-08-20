@@ -19,9 +19,9 @@ For what certification covers, refer to [Model Certification](../explanation/mod
 
 :::info
 
-This is not an exclusive list. You can load other models on the appliance as long as they fit within the available GPU
-resources. If the model you want does not appear here, [contact Spectro Cloud](https://www.spectrocloud.com/contact) to
-discuss your use case.
+This is not an exclusive list. You can bring your own model as long as it fits within the available GPU resources. Refer
+to [Bring Your Own Model](../how-to-guides/bring-your-own-model.md). If you want Spectro Cloud to certify a model for
+your hardware, [contact Spectro Cloud](https://www.spectrocloud.com/contact).
 
 :::
 

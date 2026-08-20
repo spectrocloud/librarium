@@ -38,9 +38,10 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   information.
 
 - Certifies a focused set of LLMs for coding-assistant use, GLM 5.2, DeepSeek v4 Pro, Kimi 2.7, and Gemma 4, and lets
-  you load any other model that fits the available GPU memory. Refer to
-  [Certified Models by Hardware](./reference/certified-models-by-hardware.md) and
-  [Model Certification](./explanation/model-certification.md) for more information.
+  you bring your own model if it fits the available GPU memory. Refer to
+  [Certified Models by Hardware](./reference/certified-models-by-hardware.md),
+  [Model Certification](./explanation/model-certification.md), and
+  [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for more information.
 
 - Uploads models from the administrative workstation with the Palette CLI, which verifies checksums and supports
   resumable transfers. Refer to [Upload a Model](./how-to-guides/upload-a-model.md) for more information.

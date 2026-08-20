@@ -48,8 +48,12 @@ fi
 #
 # NICKFURY_REF lets a caller that has already resolved a ref pass it in, because a
 # patch release can be documented from a release branch rather than a release tag.
+# RELEASE_SKIP_NICKFURY lets a calling script that has already resolved these versions, or has
+# deliberately recorded them as pending, keep the values it passed in.
 nickfury_ref="${NICKFURY_REF:-v${RELEASE_VERSION}}"
-if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+if [[ -n "${RELEASE_SKIP_NICKFURY:-}" ]]; then
+    echo "ℹ️  Using the caller-provided Edge matrix versions (RELEASE_CANVOS=$RELEASE_CANVOS, RELEASE_PALETTE_CLI_VERSION=$RELEASE_PALETTE_CLI_VERSION)."
+elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
     nickfury_versions="$(fetch_github_file "$NICKFURY_REPO" "$nickfury_ref" "$NICKFURY_VERSIONS_PATH")" || nickfury_versions=""
     if [[ -n "$nickfury_versions" ]]; then
         nf_nickfury="$(printf '%s\n' "$nickfury_versions" | get_keyed_value "nickfury")"
