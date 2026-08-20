@@ -24,7 +24,8 @@ engine kinds the appliance supports and how it selects one, refer to [Inference 
 
 The appliance is designed and tuned for a single high-density GPU server. That shape avoids the storage-replication,
 network-fabric, and scheduling complexity that appears as soon as nodes multiply, and it matches how most deployments
-start. Multi-server clusters are possible but are not tuned for this release.
+start. Multi-server clusters are possible: you choose which nodes run each model when you deploy it. For that choice,
+refer to [Model Placement](./model-placement.md).
 
 Sizing follows from the model rather than from a fixed value. The target model sets the GPU count, and the rest of the
 machine scales with it.
@@ -59,8 +60,10 @@ those engines through a single per-model endpoint. For when to pin a model to a 
 
 The appliance reports each node's free capacity honestly. A node shows either a known free GPU count or an unknown
 allocation when the appliance cannot determine the count. The appliance never treats a node with an unknown allocation
-as free, never selects such a node automatically, and never invents a placement target. When a chosen node cannot host
-the model, the appliance holds the deployment and reports the reason instead of placing the engine on a different node.
+as free, never selects such a node automatically, and never invents a placement target. If a chosen node degrades
+between selecting it and confirming the deploy, the deploy preview raises a **Node fit** warning; you can adjust the
+selection or proceed. If the node still cannot host the model when the deploy runs, the appliance reports that outcome
+on the model's condition rather than placing the engine on a different node.
 
 The appliance applies a deployment through a guarded sequence. It first previews the change so you can review it, and it
 writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages on each

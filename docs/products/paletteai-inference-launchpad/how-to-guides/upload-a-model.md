@@ -114,15 +114,11 @@ catalog.
 
 {/* NEEDS REVIEW: per the source, an uploaded model that does not match a curated catalog entry is logged but not surfaced today, with a schema-gap follow-up planned. Confirm current behavior before publishing. */}
 
-{/* NEEDS REVIEW: multi-node catalog states and automatic peer sync are from the engineering source. Confirm the labels and behavior before publishing. */}
+1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab and **Deploy New
+   Model** to open the **Deploy model** dialog.
 
-1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy New Model** to open the
-   **Deploy model** dialog.
-
-2. Open the model drop-down menu and confirm the model you uploaded is listed. On a single-node appliance, the model
-   appears on the next catalog scan after the upload finishes. On a multi-node appliance, the catalog shows the model's
-   cluster-wide state: `Available` when the model is ready on every node, `Pending N/M` while nodes are still syncing,
-   or `Missing`. Only an `Available` model can be deployed.
+2. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
+   `<Name> · <N>+GPU · <size>GB`. The model appears on the next catalog scan after the upload finishes.
 
 3. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
 

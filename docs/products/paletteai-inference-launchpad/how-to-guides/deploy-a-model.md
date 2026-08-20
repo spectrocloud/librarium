@@ -27,9 +27,9 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 
 ## Deploy a Model
 
-1. From the left main menu, select **Cluster**.
+1. From the left main menu, select **Cluster**. The page opens on the **Nodes** tab.
 
-2. Select **Deploy New Model**. The **Deploy model** dialog opens.
+2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
 
 3. Open the **Model** drop-down menu and select the model to deploy.
 
@@ -39,11 +39,15 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 
 5. In **Nodes**, review each node. The list shows the node's name, hardware, free GPUs, and whether it can run the model
    you selected. Select every node that should run the model. A node that cannot run the model is not selectable and
-   states why, such as `2 free GPU(s), needs 4`, `has L40S, model requires H200`, or
-   `the model's weights are not staged on this node`.
+   states why, with a message such as `2 free GPU(s), needs 4`,
+   `has NVIDIA-L40S, model requires NVIDIA-RTX-PRO-6000-Blackwell-Server-Edition`, or
+   `the model's weights are not staged on this node`. For the full list of reasons, refer to
+   [Why a Node Cannot Be Chosen](../explanation/model-placement.md#why-a-node-cannot-be-chosen).
 
-   Nothing is pre-selected. The dialog reports `N of M eligible nodes chosen` and does not offer **Deploy** until you
-   choose at least one node.
+   On a first deploy, no nodes are pre-selected. The dialog reports `N of M eligible nodes chosen` and does not offer
+   **Deploy** until you choose at least one node. On a repeat deploy of the same model, nodes that already serve the
+   model arrive pre-selected and locked as **Already deployed**, and **Deploy** is available without any further
+   selection.
 
    ![Deploy model dialog with a Nodes list for control-plane and worker-1, each showing hardware and free GPUs, and a Choose at least one node message.](../../../../static/assets/docs/images/deploy-a-model_node-picker.webp)
 
@@ -51,7 +55,7 @@ dialog. For why you would pin a model to some nodes and not others, refer to
    snapshot. A node you add to the cluster later does not receive this model until you add it, as described in
    [Add a Model to More Nodes](#add-a-model-to-more-nodes).
 
-7. Select **Deploy**, review the deployment preview, and then select **Confirm & apply**.
+7. Select **Deploy**, review the deployment preview, and then select **Confirm & Apply**.
 
 The appliance writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready
 stages on each chosen node. For that lifecycle, refer to
@@ -78,7 +82,7 @@ Confirm the model is serving before you route traffic to it.
 3. Expand the model row. Only the nodes you chose are listed. A node you did not select is absent, which means it was
    never asked to run this model.
 
-   ![Expanded gemma-4 row showing 2 of 3 nodes and 2/2 healthy, with worker-1 and control-plane listed as Serving.](../../../../static/assets/docs/images/deploy-a-model_subset-placement.webp)
+   ![Expanded model row showing two of three chosen nodes with a two of two healthy chip; both chosen nodes read Serving.](../../../../static/assets/docs/images/deploy-a-model_subset-placement.webp)
 
 4. Confirm that each listed node's state reaches `ready` or `serving`. A state of `deploying` or `smoke-testing` means
    the model is still coming online on that node. A state of `Waiting to start` means the node is chosen and no engine
@@ -99,12 +103,14 @@ For why a model becomes routable only after it passes its smoke test, refer to
 To run an already deployed model on additional nodes, deploy it again and select the extra nodes. Nodes that already
 serve the model stay selected and show **Already deployed**.
 
-1. From the left main menu, select **Cluster**, and then select **Deploy New Model**.
+1. From the left main menu, select **Cluster**. The page opens on the **Nodes** tab.
 
-2. Select the same model. In **Nodes**, already serving nodes are locked with **Already deployed**. Select each
+2. Select the **Models** tab, and then select **Deploy New Model**.
+
+3. Select the same model. In **Nodes**, already serving nodes are locked with **Already deployed**. Select each
    additional eligible node.
 
-3. Select **Deploy**, review the preview, and then select **Confirm & apply**.
+4. Select **Deploy**, review the preview, and then select **Confirm & Apply**.
 
 The appliance creates an engine on each newly chosen node and leaves the existing engines and the model's endpoint
 alone. Traffic continues on the nodes that were already serving.
@@ -113,7 +119,7 @@ alone. Traffic continues on the nodes that were already serving.
 
 To stop a model on one node and leave it running elsewhere, expand the model row and remove it from that node.
 
-1. From the left main menu, select **Cluster**.
+1. From the left main menu, select **Cluster**, and then select the **Models** tab.
 
 2. Expand the model row, open the node's three-dot menu, and select **Remove**.
 
@@ -123,30 +129,34 @@ The node stays visible while its engine shuts down. It reads **Removing** with t
 `No longer chosen. Its engine is shutting down.` The row disappears once the engine is gone. The model's endpoint and
 the remaining chosen nodes keep serving.
 
-![Expanded gemma-4 row showing 1 of 3 nodes. worker-1 reads Removing, and control-plane remains Serving.](../../../../static/assets/docs/images/deploy-a-model_removing-node.webp)
+![Expanded model row showing one of three chosen nodes. One node reads Removing, and the other chosen node remains Serving.](../../../../static/assets/docs/images/deploy-a-model_removing-node.webp)
 
 To remove the model from every node, use the trash icon on the model's row instead of a per-node **Remove**.
 
 ## Resolve a Blocked Deployment
 
-If no chosen node can host the model, **Deploy** is unavailable and the dialog explains why. Common reasons include the
-following:
+If a deployment cannot proceed, the dialog explains why. **Deploy** is unavailable when you have not chosen a node, and
+the dialog shows an `Unable to deploy` notice when the model is already deployed on every node in the cluster. Common
+reasons include the following:
 
 - You have not chosen a node. The dialog reads `Choose at least one node.`
-- The model is already deployed on every node in the cluster.
+- The model is already deployed on every node in the cluster. **Deploy** stays enabled, but the dialog shows an
+  `Unable to deploy` notice.
 - A node does not have enough free GPUs, for example `2 free GPU(s), needs 4`.
-- A node's GPU product does not match the model, for example `has L40S, model requires H200`.
+- A node's GPU product does not match the model, for example
+  `has NVIDIA-L40S, model requires NVIDIA-RTX-PRO-6000-Blackwell-Server-Edition`.
 - The model's weights are not staged on that node, or only the metadata is staged.
 - The node's GPU allocation is unknown. Unknown capacity is treated as unusable, not as free.
 - The node is `NotReady` or cordoned.
 
-To resolve the reason, free GPUs on a node by draining or shutting down another model, stage the model's weights on the
+To resolve the reason, free GPUs on a node by removing another model from that node, stage the model's weights on the
 node, add capacity to the cluster, or resolve the unknown allocation on the affected nodes. Then deploy the model again.
 For the full list of eligibility reasons, refer to
 [Why a Node Cannot Be Chosen](../explanation/model-placement.md#why-a-node-cannot-be-chosen).
 
-If a node becomes ineligible between the moment you select it and the moment you confirm, the appliance holds the
-deployment with that reason. It does not place the engine on a different node.
+If a node becomes ineligible between the moment you select it and the moment you confirm, the deploy preview raises a
+**Node fit** warning. Adjust the selection or proceed. If the node still cannot host the model when the deploy runs, the
+appliance reports that outcome on the model's condition rather than placing the engine on a different node.
 
 ## Next Steps
 

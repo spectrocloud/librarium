@@ -39,9 +39,10 @@ The deploy dialog lists every cluster node with its hardware, its free GPUs, and
 picked. Nothing is pre-selected. **Select all eligible** selects what is eligible at that moment. It does not follow
 nodes added later.
 
-The same eligibility checks run again when you confirm. If a node degrades between selecting and confirming, the
-appliance holds the deployment with the reason instead of placing an engine where it cannot run. Nothing falls back to
-another node, and unreadable capacity counts as unusable rather than free.
+The same eligibility checks run again on the deploy preview. If a node degrades between selecting and confirming, the
+preview raises a **Node fit** warning; you can adjust the selection or proceed. If you proceed and the node still cannot
+run the model when the deploy runs, the appliance reports the outcome on the model's condition rather than placing the
+engine somewhere else. Nothing falls back to another node, and unreadable capacity counts as unusable rather than free.
 
 You change where a model runs by adding or removing nodes, as described in
 [Deploy a Model](../how-to-guides/deploy-a-model.md).
@@ -66,7 +67,7 @@ An ineligible node is not selectable and states why.
 | **What you see**                                                                         | **What it means**                                               |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `2 free GPU(s), needs 4`                                                                 | Fewer free GPUs than the model requires.                        |
-| `has L40S, model requires H200`                                                          | The model is pinned to a GPU product this node lacks.           |
+| `has NVIDIA-L40S, model requires NVIDIA-RTX-PRO-6000-Blackwell-Server-Edition`           | The model is pinned to a GPU product this node lacks.           |
 | `cordoned — a new engine pod would never be scheduled here`                              | Nothing new will schedule here.                                 |
 | `NotReady`                                                                               | The node is not Ready.                                          |
 | `not in the cluster's node roster`                                                       | Not a node in this cluster.                                     |
@@ -87,8 +88,9 @@ to [Upload a Model](../how-to-guides/upload-a-model.md).
 - **Not a weight copy.** Stage weights on a node before you select it for a model you uploaded.
 - **Not automatic rebalancing.** A model does not follow new hardware. Add the node, as described in
   [Add a Model to More Nodes](../how-to-guides/deploy-a-model.md#add-a-model-to-more-nodes).
-- **Not a substitute for per-node drain, resume, or replace.** Those actions apply to the appliance as a whole. Per-node
-  **Remove** and **Retry** target a single node.
+- **Not a substitute for per-node maintenance.** Per-node **Replace** swaps the engine on one node. Per-node **Remove**
+  stops the model on one node while it keeps running elsewhere. **Retry deploy** appears only on a node whose deploy
+  failed.
 
 ## Next Steps
 
