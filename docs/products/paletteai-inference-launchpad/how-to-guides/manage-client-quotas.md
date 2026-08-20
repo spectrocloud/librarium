@@ -10,14 +10,9 @@ tags: ["paletteai-inference-launchpad", "clients", "quotas", "how-to"]
 keywords: ["launchpad", "ai", "clients", "quota", "rate limit", "requests", "tokens", "cost", "429"]
 ---
 
-This guide explains how a platform administrator sets and manages usage quotas on a client on a PaletteAI Inference
-Launchpad appliance. A quota limits how much a client consumes. A quota applies to the client, so every API token that
-belongs to the client draws on the same limits. To understand how quotas fit with clients and API tokens, refer to
+This guide explains how a platform administrator sets and manages usage quotas on a PaletteAI Inference Launchpad
+appliance. For what a quota is and how it interacts with clients and appliance-wide enforcement, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md).
-
-Quotas have two layers. **Quota enforcement** is a single switch that covers the whole appliance and decides whether
-limits are enforced at all. The **quota windows** you set on each client are the limits themselves. Both must hold
-before the appliance limits a client, so confirm enforcement is on before you set a client's limits.
 
 ## Prerequisites
 
@@ -27,11 +22,8 @@ before the appliance limits a client, so confirm enforcement is on before you se
 
 ## Check Quota Enforcement
 
-Quota enforcement applies to the entire appliance, not to one client. While it is off, the appliance does not enforce
-any client's quota windows, and a client that passes its limits is not rejected. The limits you have set stay saved and
-take effect again when you turn enforcement back on.
-
-A new appliance starts with quota enforcement on.
+Use these steps to read or change the appliance-wide **Quota Enforcement** switch. For what the switch does, refer to
+[Clients and Quotas: Quotas](../explanation/clients-and-quotas.md#quotas).
 
 1. From the left main menu, select **Overview**.
 
@@ -102,10 +94,8 @@ client.
 
 ## Increase a Limit from Usage
 
-When a client is at a limit, raise the ceiling from **Usage** instead of editing the row. **Increase limit** keeps the
-usage already counted. It does not reset the counter to zero.
-
-This action requires permission to manage clients.
+Use these steps to raise a ceiling from **Usage** without editing the client's quota rows. For what this action does,
+refer to [Clients and Quotas: Limit Ceiling Increases](../explanation/clients-and-quotas.md#limit-ceiling-increases).
 
 1. From the left main menu, select **Usage**.
 

@@ -23,50 +23,25 @@ raise a limit, refer to [Set and Manage Client Quotas](./manage-client-quotas.md
 - Console access with permission to view usage. Raising a limit from **Quota Usage** requires permission to manage
   clients.
 
-## Choose a Data Window
-
-**By Client** honors the **Data window** control at the top of the page. The presets are **Last 24h**, **Last 7 days**,
-and **Last 30 days**. **Date range** opens a calendar so you can pick exact days. **Quota Usage** is a point-in-time
-view of each client's configured limits and does not follow the **Data window**.
-
-If a figure covers less time than the window in its label, the card says so. For example, the page can report that only
-eight hours of history is kept when **Last 30 days** was selected. If the appliance cannot report a custom date range,
-it says so and shows a supported period instead. For the full list of window options and their effect on each tab, refer
-to [Usage Metrics Reference](../reference/usage-metrics-reference.md#page-filters).
-
 ## View Quota Usage
 
-Use **Quota Usage** to check how close each client is to its request, token, and cost limits right now.
+Use these steps to check how close each client is to its request, token, and cost limits right now. For every column,
+badge, and status label on this tab, refer to
+[Usage Metrics Reference: Quota Usage Tab](../reference/usage-metrics-reference.md#quota-usage-tab).
 
 1. From the left main menu, select **Usage**.
 
 2. Select the **Quota Usage** tab.
 
-   The table lists every client with a **Requests**, **Tokens**, and **Cost** column. Each column shows the worst-used
-   window first. A client at 100% of a limit shows a red **Reached limit** marker. The tab also shows a dot, and a
-   banner at the top of the page names the client.
-
-   **Usage last synced** reports when the appliance last refreshed these counters.
-
-3. Select a client.
-
-The client view is titled **Quota utilization**. Three cards, **Requests**, **Tokens**, and **Cost**, list each window
-that has a limit. For every window, the card reports:
-
-- The percentage used.
-- Used of the limit, such as `6 of 12`.
-- How much remains, such as `6 left`.
-- When the window next resets, such as `Resets in 45m`.
-
-A dimension with no limit reads **Unlimited**. A dimension whose budget cannot be read reads **Unknown**. **Unknown**
-never means the client is free to spend. If quota enforcement is off for the appliance, each dimension reads **Not
-enforced**, and a notice states that client usage is recorded but not enforced.
+3. Select a client to open its **Quota utilization** view. Each configured window reports the percentage used, the used
+   value against the limit, the remaining amount, and when the window next resets. For every field on this view, refer
+   to
+   [Usage Metrics Reference: Client Quota Detail View](../reference/usage-metrics-reference.md#client-quota-detail-view).
 
 ### Increase a Limit from Quota Usage
 
-**Increase limit** raises a ceiling. It does not zero the counter. Usage is kept, so a client that had used 6 of 6 and
-is raised to 12 then shows 6 of 12. The window still resets on the UTC clock. To lower a limit, edit the client instead,
-as described in [Edit or Remove a Quota](./manage-client-quotas.md#edit-or-remove-a-quota).
+Raise the ceiling on one window from **Quota Usage**. For what **Increase limit** does and when to use it, refer to
+[Clients and Quotas: Limit Ceiling Increases](../explanation/clients-and-quotas.md#limit-ceiling-increases).
 
 1. On the client's **Quota utilization** view, select **Increase limit** on the window row you want to raise. The
    **Increase limit?** dialog opens. **New limit** defaults to double the current limit.
@@ -89,21 +64,18 @@ The banner and **Reached limit** marker clear when the client is back under ever
 
 ## View Usage by Client
 
-**By Client** reports consumption over the selected **Data window**, including how much of the configured local quota
-that period used.
+Use these steps to review one client's consumption over a chosen reporting period. For every column on this tab and tile
+on the client detail view, refer to
+[Usage Metrics Reference: By Client Tab](../reference/usage-metrics-reference.md#by-client-tab).
 
 1. From the left main menu, select **Usage**.
 
 2. Select the **By Client** tab.
 
-3. Set the **Data window** if you need a period other than the default.
+3. Set the **Data window** if you need a period other than the default. For the available windows, refer to
+   [Set the Reporting Period](./view-token-usage.md#set-the-reporting-period).
 
-   The table includes **Total Local Quota**, the configured cap for the selected window, and **Local Quota Used**, the
-   percentage of that cap consumed. A client with no token limit reads **Unlimited** in **Total Local Quota**. The table
-   also splits local and frontier requests, tokens, and cost.
-
-4. Select a client to open its API keys, per-token request, input, output, and cost figures, and the models that handled
-   the client's requests.
+4. Select a client to open its API keys, per-token consumption, and the models that handled its requests.
 
 ## Further Reading
 

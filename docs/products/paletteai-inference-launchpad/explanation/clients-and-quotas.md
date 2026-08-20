@@ -143,17 +143,6 @@ Windows reset on the UTC clock. That is not an operator action, and it does not 
 counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require
 permission to manage clients.
 
-### Quota Status Labels
-
-The console uses three labels when a dimension is not showing used-of-limit meters:
-
-- **Unlimited.** No limit is configured for that dimension. The client is not capped there.
-- **Unknown.** The client's budget could not be read. Limits may still apply. **Unknown** is never shown as
-  **Unlimited**.
-- **Not enforced.** Quota enforcement is off for the appliance. Usage is still recorded.
-
-To inspect these values and raise a ceiling, refer to [View Client Usage](../how-to-guides/view-client-usage.md).
-
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
 ## What Clients Can Access
