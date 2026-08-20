@@ -32,6 +32,42 @@ tags: ["release-notes"]
   recovery paths. You can add Kyverno directly to a cluster profile from the Palette Registry without requiring an
   external repository or a custom pack build, and receive version updates through the standard pack-update path.
 
+### PaletteAI VM Launchpad
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3131 -->
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.9.16 is now available.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-884 -->
+
+- Containerized Data Importer (CDI) certificates now use shorter lifetimes. Leaf certificates are valid for one year and
+  the certificate authority for five years, replacing the previous ten-year validity. Rotation is automatic, so no
+  manual renewal is required.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1011 -->
+
+- VMO Manager now validates the length of the `SESSION_KEY` value at startup and requires at least 32 characters.
+  Shorter keys weaken session cookie encryption and were previously accepted without warning. If you supply the key
+  through a pre-created Kubernetes Secret, confirm that it meets the minimum before you upgrade, because VMO Manager
+  does not start when the value is shorter. Refer to
+  [Configure External OIDC](../vm-management/vmo-pack/configure-external-oidc.md) for more information.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1052 -->
+
+- Fixed an issue where the image upload flow let you proceed when no storage class existed in the cluster. Image upload
+  is now blocked until a storage class is available.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-907 -->
+
+- Fixed contradictory role information on the user creation page. When you select a group that grants a lower privilege
+  than the default, the page no longer preselects a role that conflicts with the role the user inherits from that group.
+
 <!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 
 ### Packs
