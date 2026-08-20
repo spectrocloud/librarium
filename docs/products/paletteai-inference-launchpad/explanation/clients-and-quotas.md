@@ -95,6 +95,9 @@ appliance limits a client: enforcement on for the appliance, and a window limit 
 setting or change it, refer to
 [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md#check-quota-enforcement).
 
+Limits are only half the picture. The console also reports how much of a limit each client has actually spent. For the
+meters and states it uses, refer to [Usage Metrics Reference](../reference/usage-metrics-reference.md#quota-usage-tab).
+
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
 ## What Clients Can Access
