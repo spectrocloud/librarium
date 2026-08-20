@@ -13,8 +13,11 @@
 source scripts/release/utilities.sh
 
 # Source environment variables from .env if present, so the script works when run
-# directly in a terminal that has not already sourced them.
-if [[ -f .env ]]; then
+# directly in a terminal that has not already sourced them. A calling script that has
+# already resolved these versions sets RELEASE_SKIP_DOTENV, because .env also defines
+# RELEASE_CANVOS and RELEASE_PALETTE_CLI_VERSION and would overwrite the values it
+# passed in.
+if [[ -f .env && -z "${RELEASE_SKIP_DOTENV:-}" ]]; then
     source .env
 fi
 
@@ -40,11 +43,17 @@ fi
 # tag. The matrix columns map to nickfury keys as:
 #   CanvOS / Stylus / Edge Host -> stylus
 #   Palette CLI Version         -> palette-cli
-#   Edge CLI (when not deprecated) -> stylus
 # Falls back to any values already present in the environment if GITHUB_TOKEN is
 # unset or the fetch fails, so the script still works without network access.
-nickfury_ref="v${RELEASE_VERSION}"
-if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+#
+# NICKFURY_REF lets a caller that has already resolved a ref pass it in, because a
+# patch release can be documented from a release branch rather than a release tag.
+# RELEASE_SKIP_NICKFURY lets a calling script that has already resolved these versions, or has
+# deliberately recorded them as pending, keep the values it passed in.
+nickfury_ref="${NICKFURY_REF:-v${RELEASE_VERSION}}"
+if [[ -n "${RELEASE_SKIP_NICKFURY:-}" ]]; then
+    echo "ℹ️  Using the caller-provided Edge matrix versions (RELEASE_CANVOS=$RELEASE_CANVOS, RELEASE_PALETTE_CLI_VERSION=$RELEASE_PALETTE_CLI_VERSION)."
+elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
     nickfury_versions="$(fetch_github_file "$NICKFURY_REPO" "$nickfury_ref" "$NICKFURY_VERSIONS_PATH")" || nickfury_versions=""
     if [[ -n "$nickfury_versions" ]]; then
         nf_nickfury="$(printf '%s\n' "$nickfury_versions" | get_keyed_value "nickfury")"
@@ -57,9 +66,6 @@ if [[ -n "${GITHUB_TOKEN:-}" ]]; then
 
         [[ -n "$nf_stylus" ]] && RELEASE_CANVOS="$nf_stylus"
         [[ -n "$nf_palette_cli" ]] && RELEASE_PALETTE_CLI_VERSION="$nf_palette_cli"
-        if [[ "${RELEASE_EDGE_CLI_DEPRECATED}" != "true" && -z "${RELEASE_EDGE_CLI_VERSION:-}" ]]; then
-            RELEASE_EDGE_CLI_VERSION="$nf_stylus"
-        fi
         echo "ℹ️  Sourced Edge matrix versions from nickfury@$nickfury_ref (stylus=$nf_stylus, palette-cli=$nf_palette_cli)"
     else
         echo "⚠️  Could not fetch $NICKFURY_VERSIONS_PATH from nickfury@$nickfury_ref; using environment-provided values."
@@ -75,16 +81,10 @@ if ! check_env "RELEASE_CANVOS" ||
     exit 0
 fi
 
-# Determine the value for the "Palette Edge CLI Status" column: a deprecation
-# notice if the Edge CLI is deprecated, otherwise the Edge CLI version (which
-# tracks the stylus/CanvOS version).
-if [[ "${RELEASE_EDGE_CLI_DEPRECATED}" == "true" ]]; then
-    RELEASE_EDGE_CLI_STATUS="Deprecated. Use Palette CLI for supported workflows."
-elif [[ -n "${RELEASE_EDGE_CLI_VERSION}" ]]; then
-    RELEASE_EDGE_CLI_STATUS="$RELEASE_EDGE_CLI_VERSION"
-else
-    RELEASE_EDGE_CLI_STATUS="$RELEASE_CANVOS"
-fi
+# The "Palette Edge CLI Status" column is fixed. The Palette Edge CLI is deprecated
+# from Palette 4.9.14 onwards and there will be no further Palette Edge CLI releases,
+# so every new row carries the deprecation notice rather than a version.
+RELEASE_EDGE_CLI_STATUS="Deprecated. Use Palette CLI for supported workflows."
 
 export RELEASE_EDGE_CLI_STATUS
 

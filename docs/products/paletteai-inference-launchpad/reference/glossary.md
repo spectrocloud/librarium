@@ -78,7 +78,8 @@ gateway continues to handle routing, [token metering](#token-metering), quota co
 
 A model that Spectro Cloud has validated to run correctly on the listed GPU configuration, based on its own testing
 rather than public benchmarks. Refer to [Model Certification](../explanation/model-certification.md) and
-[Certified Models by Hardware](./certified-models-by-hardware.md).
+[Certified Models by Hardware](./certified-models-by-hardware.md). To bring a model that is not certified, refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
 
 ### Chargeback
 
@@ -297,8 +298,10 @@ collides with their own catalog.
 ### Model Metadata
 
 A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
-from Hugging Face and upload them to the appliance. The metadata is downloaded from Artifact Studio, or from the
-`launchpad-ai` repository, alongside the ISO and content bundle.
+from Hugging Face and upload them to the appliance. For a [certified model](#certified-model), the metadata is
+downloaded from Artifact Studio. For a model you bring yourself, you author the file. Refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
+[Model Upload Reference](./model-upload-reference.md#model-metadata-file).
 
 ### Model Weights
 
@@ -313,6 +316,12 @@ the models it covers with label selectors and tracks usage across every dimensio
 with quotas through the [appliance console](#appliance-console); ModelGroupQuota is the underlying enforcement object.
 
 {/* NEEDS REVIEW: ModelGroupQuota is an internal CRD name from the source glossary and does not appear in any shipped PAIIL doc. Confirm whether it should be exposed to readers before publishing. */}
+
+### Multimodal Preprocessing
+
+The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
+**Settings** > **Configurations**. Refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ## N
 
@@ -465,6 +474,18 @@ cluster presents one stable endpoint even as individual nodes fail over. Configu
 
 The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached optical
 drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not available.
+
+### Vision Model
+
+A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
+not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+
+### Vision Preprocessing
+
+The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
+[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
+model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ### vLLM
 

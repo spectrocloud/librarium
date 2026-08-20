@@ -113,7 +113,17 @@ This action requires permission to manage clients.
 
 3. On the window row, select **Increase limit**.
 
-4. Enter a value above the current limit, preview the change, and then select **Confirm & Apply**.
+4. Enter a value above the current limit, and then select **Increase limit** to preview the change.
+
+   :::warning
+
+   **Confirm & Apply** raises the ceiling for the current window immediately and for every window that follows. The
+   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access & Policy** as
+   described in [Edit or Remove a Quota](#edit-or-remove-a-quota).
+
+   :::
+
+5. Select **Confirm & Apply**.
 
 For the full sequence, including what **Reached limit** and the preview dialog show, refer to
 [Increase a Limit from Quota Usage](./view-client-usage.md#increase-a-limit-from-quota-usage).

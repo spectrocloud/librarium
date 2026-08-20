@@ -122,7 +122,8 @@ Quota** is the configured cap for the selected data window, and **Local Quota Us
 consumed.
 
 A client at 100% of a limit shows **Reached limit**. Further requests are throttled until the window resets or an
-operator raises the ceiling.
+operator raises the ceiling. For every field the console reports on **Quota Usage** and the other **Usage** tabs, refer
+to [Usage Metrics Reference](../reference/usage-metrics-reference.md#quota-usage-tab).
 
 ### Historical Reporting
 
@@ -130,11 +131,11 @@ operator raises the ceiling.
 **Last 30 days**, or a custom date range. Local versus external percentages on **Overview** are by tokens, not by
 requests or cost.
 
-**Quota Usage** does not follow that window. Its counters are the live budget, not a lookback.
+**Quota Usage** does not follow that window. Its counters are the live budget, not a historical record.
 
 If the appliance has kept less history than the window you asked for, the card says so rather than filling the gap.
 
-### Raising a Limit
+### Limit Ceiling Increases
 
 Windows reset on the UTC clock. That is not an operator action, and it does not require a confirmation.
 

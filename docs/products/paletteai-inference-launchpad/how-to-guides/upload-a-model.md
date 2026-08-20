@@ -17,7 +17,8 @@ rather than having the appliance pull them at deploy time. You download a model 
 appliance over SSH, after which the model appears in the appliance's deploy catalog.
 
 This guide comes before [Deploy a Model](./deploy-a-model.md): the upload puts the model in the catalog, and the deploy
-serves it. For the full command flags and metadata file fields, refer to
+serves it. For a model that is not in the certified catalog, author `metadata.yaml` first, then follow this guide. Refer
+to [Bring Your Own Model](./bring-your-own-model.md). For the full command flags and metadata file fields, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
 :::info
@@ -37,8 +38,9 @@ downloads models itself. For how to provision the jumpbox, refer to
   [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation) and
   [Model Download Access](../reference/hardware-requirements.md#model-download-access-recommended).
 - `rsync` on the jumpbox. The Palette CLI uses it to transfer the model to the appliance over SSH.
-- The metadata YAML for the model you intend to upload, obtained from Artifact Studio. For its fields, refer to
-  [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
+- The metadata YAML for the model you intend to upload. For a certified model, obtain it from Artifact Studio. For a
+  model that is not certified, author it yourself. Refer to [Bring Your Own Model](./bring-your-own-model.md). For its
+  fields, refer to [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
 - The appliance's SSH host address (IP or DNS name) and an SSH user.
 - _(Gated or private Hugging Face repositories)_ A Hugging Face access token.
 
@@ -104,18 +106,6 @@ The upload command accepts other flags, including password authentication (`--ss
 
 ## Verify the Model and Deploy It
 
-:::warning
-
-The appliance surfaces an uploaded model only when it matches an entry in the appliance's curated model catalog. If you
-upload a model that is not in the curated catalog, the upload succeeds but the model does not appear in the deploy
-catalog.
-
-:::
-
-{/* NEEDS REVIEW: per the source, an uploaded model that does not match a curated catalog entry is logged but not surfaced today, with a schema-gap follow-up planned. Confirm current behavior before publishing. */}
-
-{/* NEEDS REVIEW: multi-node catalog states and automatic peer sync are from the engineering source. Confirm the labels and behavior before publishing. */}
-
 1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy model** to open the deploy
    panel.
 
@@ -130,5 +120,9 @@ catalog.
 
 - **Deploy the model:** Follow [Deploy a Model](./deploy-a-model.md) to deploy the uploaded model and verify it is
   serving.
+- **Bring your own model:** Follow [Bring Your Own Model](./bring-your-own-model.md) to author metadata for a model that
+  is not in the certified catalog, then download, upload, and deploy it.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
+- **Enable vision preprocessing:** If you uploaded a vision model to use with a text-only model, follow
+  [Enable Vision Preprocessing](./enable-vision-preprocessing.md).

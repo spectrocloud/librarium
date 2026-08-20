@@ -19,6 +19,11 @@ This scenario affects a limited set of environments that upgrade the `virtual-ma
 earlier than 4.10.0. It occurs only where the cluster already carries VMO RBAC objects that lack Helm ownership
 metadata, which is why the same upgrade succeeds on most clusters.
 
+The pack now corrects this state on its own. It ships an `rbac-adopt` pre-upgrade hook that stamps the required Helm
+ownership metadata on those objects before Helm applies the chart, so an affected cluster completes the upgrade without
+manual work. Use the procedure on this page only when the upgrade still fails with this error, which indicates that the
+pack version you are upgrading to predates the hook.
+
 When the cluster is affected and you trigger the upgrade from Palette, the upgrade does not complete. The following
 symptoms indicate this scenario.
 
@@ -67,8 +72,9 @@ identifies it as part of the target release.
 
 If any of the RBAC objects that the pack templates already exist with different values, such as
 `app.kubernetes.io/managed-by: vmo-manager` from an earlier installation, or with no metadata because someone created
-them manually, the ownership check fails and the upgrade stops before it starts. This check runs before any Helm
-pre-upgrade hook, so the pack cannot correct the state on its own. Correct the metadata before you trigger the upgrade.
+them manually, the ownership check fails and the upgrade stops. Helm runs this check between its pre-upgrade hooks and
+the manifest apply, which is why the `rbac-adopt` hook can stamp the metadata in time. On a pack version that does not
+include that hook, correct the metadata yourself before you trigger the upgrade.
 
 ### Prerequisites
 
