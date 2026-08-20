@@ -164,7 +164,9 @@ The Palette CLI checksum is published in ReTool, so look it up there and paste i
 published binary instead, which streams around 400 MB and only works once the release is out.
 
 An unattended run answers from the environment variables alone. It generates the release notes body only, unless
-`NICKFURY_REF` or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the component versions are wanted.
+`NICKFURY_REF` or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the component versions are wanted. The
+**Generate Patch Release Notes** workflow presents the same values as form fields, in the same order, and its component
+version tick box has to be set for the branch or tag and checksum fields to be used.
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
 prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
