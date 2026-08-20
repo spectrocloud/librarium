@@ -158,4 +158,6 @@ confirmation, refer to [Model Placement](../explanation/model-placement.md).
 
 To change which model handles requests that do not name a model explicitly, refer to
 [Switch the Default Model](./set-the-default-model.md). For why you would pin a model to some nodes and not others,
-refer to [Model Placement](../explanation/model-placement.md).
+refer to [Model Placement](../explanation/model-placement.md). To let a text-only model answer questions about images,
+refer to [Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified
+catalog, refer to [Bring Your Own Model](./bring-your-own-model.md).

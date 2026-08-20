@@ -114,7 +114,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
-          git add docs/docs-content/release-notes/release-notes.md
+          # A patch that bumps the CanvOS or Palette CLI version also updates the Edge
+          # Compatibility Matrix, the CLI Tools table, and the Palette CLI install page.
+          git add docs/docs-content/release-notes/release-notes.md \
+            docs/docs-content/clusters/edge/edge-compatibility-matrix.md \
+            docs/docs-content/downloads/cli-tools.md \
+            docs/docs-content/automation/palette-cli/install-palette-cli.md
 
           if git diff --cached --quiet; then
             echo "ℹ️  No release notes changes to commit."

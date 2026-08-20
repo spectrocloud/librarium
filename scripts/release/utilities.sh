@@ -83,6 +83,10 @@ generate_parameterised_file_local_vars() {
 insert_file_after() {
     local TEMP_FILE="scripts/release/temp_file.md"
 
+    # Start from an empty temp file. The loops below append to it, so a temp file left
+    # behind by an earlier failed run would otherwise be prepended to the target file.
+    : > "$TEMP_FILE"
+
     # Process the target file line by line
     local inserted=false
     while IFS= read -r line; do
@@ -114,6 +118,11 @@ insert_file_after() {
 # $4 - target file to insert into, example: downloads file
 insert_file_offset() {
     local TEMP_FILE="scripts/release/temp_file.md"
+
+    # Start from an empty temp file. The loop below appends to it, so a temp file left
+    # behind by an earlier failed run would otherwise be prepended to the target file.
+    : > "$TEMP_FILE"
+
     # Process the file line by line until we find the search term
     local inserted=false
     local line_counter=0
@@ -150,8 +159,10 @@ insert_file_offset() {
 # Params: 
 # $1 - search term, example: linux/cli/palette
 # $2 - target file to insert into, example: downloads file
+# The search term is matched literally, so the dots in a version string such as
+# "cli-4.9.4 -->" cannot act as regular expression wildcards and match "cli-4.9.48 -->".
 search_line() {
-    local line_number=$(grep -m1 -n "${1}" "$2" | cut -d: -f1)
+    local line_number=$(grep -m1 -nF "${1}" "$2" | cut -d: -f1)
     echo "$line_number"
 }
 
@@ -183,10 +194,36 @@ replace_line() {
 }
 
 # Utility function to remove a file
-# Params: 
+# Params:
 # $1 - file name
 cleanup() {
     rm $1
+}
+
+# Utility function to delete the first line of a file that contains a literal string. Used to drop
+# a table row that a later run has superseded, for example a placeholder row keyed on a release
+# version that has since been confirmed. Does nothing when no line matches.
+# Params:
+# $1 - literal search term, example: edge-compat-4.9.x -->
+# $2 - target file
+# Returns 0 if a line was removed, 1 if nothing matched.
+remove_line_containing() {
+    local search="$1"
+    local file="$2"
+    local tmp_file
+
+    if ! grep -qF "$search" "$file"; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v search="$search" '
+      !removed && index($0, search) { removed = 1; next }
+      { print }
+    ' "$file" > "$tmp_file"
+
+    mv "$tmp_file" "$file"
 }
 
 # Utility function to strip Super's inline citation markers from an answer, for example
@@ -294,6 +331,177 @@ fetch_github_file() {
 # Usage: printf '%s' "$contents" | get_keyed_value stylus
 get_keyed_value() {
     grep -m1 -E "^${1}=" | cut -d= -f2- | tr -d '[:space:]'
+}
+
+# Utility function to read a component version that is already documented in a Markdown
+# table, so a freshly sourced version can be compared against it. Reads the first data row
+# of the table that the "Palette Release" heading opens, skipping any row whose Palette
+# Release cell matches the release being generated. Skipping our own row is what lets a
+# re-run compare against the previous release rather than against the value it just wrote.
+# Writes the trimmed cell value to stdout, or nothing if no such row exists.
+# Params:
+# $1 - Markdown file to read, example: docs/docs-content/clusters/edge/edge-compatibility-matrix.md
+# $2 - 1-based column number to return, example: 2 for CanvOS / Stylus / Edge Host Version
+# $3 - release to skip, example: 4.9.48
+get_documented_table_version() {
+    local file="$1"
+    local column="$2"
+    local skip_release="$3"
+
+    [[ -f "$file" ]] || return 0
+
+    awk -v column="$column" -v skip_release="$skip_release" '
+      # The table starts at the heading row, and its separator row follows immediately.
+      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        # Split on the pipes, which leaves field 1 empty and the cells in fields 2 onwards.
+        n = split($0, cells, "|")
+
+        release = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment, for example "<!-- edge-compat-4.9.38 -->", then trim.
+        gsub(/<!--[^>]*-->/, "", release)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release == skip_release) { next }
+
+        print value
+        exit
+      }
+    ' "$file"
+}
+
+# Utility function to read a cell from the row a given release already occupies, so a re-run can
+# see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
+# deliberately skips that row to find the previous release instead.
+# Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+# Params:
+# $1 - Markdown file to read
+# $2 - 1-based column number to return
+# $3 - the release whose row to read, example: 4.9.x
+get_table_cell_for_release() {
+    local file="$1"
+    local column="$2"
+    local release="$3"
+
+    [[ -f "$file" ]] || return 0
+
+    awk -v column="$column" -v want="$release" '
+      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        n = split($0, cells, "|")
+
+        release_cell = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment and the backticks a checksum cell is wrapped in, then trim.
+        gsub(/<!--[^>]*-->/, "", release_cell)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/`/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release_cell)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release_cell == want) {
+          print value
+          exit
+        }
+      }
+    ' "$file"
+}
+
+# Utility function to derive the SHA256 checksum of a published Palette CLI binary by
+# hashing it as it downloads, so the checksum column in the downloads table does not have
+# to be transcribed by hand. The binary is around 400 MB and is never written to disk.
+#
+# An unpublished version returns HTTP 403 with a short XML body, which would otherwise be
+# hashed into a plausible looking but wrong checksum, so the status code is checked before
+# the digest is trusted.
+# Params:
+# $1 - Palette CLI version, example: 4.9.19
+# Writes the checksum to stdout. Returns 1 if the binary is not available.
+fetch_palette_cli_sha() {
+    local version="$1"
+    local url="https://software.spectrocloud.com/palette-cli/v${version}/linux/cli/palette"
+    local status digest
+
+    # Confirm the binary is published before downloading it, so a 403 response body is
+    # never hashed into a plausible looking but wrong checksum.
+    status=$(curl -sS --head --write-out '%{http_code}' --output /dev/null "$url" || echo "000")
+
+    if [[ "$status" != "200" ]]; then
+        echo "🟠 Palette CLI $version is not available at $url (HTTP $status)." >&2
+        return 1
+    fi
+
+    echo "ℹ️  Downloading Palette CLI $version to derive its checksum. This transfers around 400 MB..." >&2
+
+    # shasum is the macOS spelling and sha256sum the usual Linux one, so accept either.
+    if command -v shasum >/dev/null 2>&1; then
+        digest=$(curl -sS --fail "$url" | shasum -a 256 | cut -d' ' -f1)
+    else
+        digest=$(curl -sS --fail "$url" | sha256sum | cut -d' ' -f1)
+    fi
+
+    if [[ ! "$digest" =~ ^[0-9a-f]{64}$ ]]; then
+        echo "🟠 Could not derive a checksum for Palette CLI $version." >&2
+        return 1
+    fi
+
+    printf '%s' "$digest"
+}
+
+# Utility function to ask a yes or no question on a terminal, so a script can branch on what the
+# writer already knows rather than making them supply values that do not apply. An empty reply
+# takes the default, and so does a run with no terminal to prompt on, so an unattended job never
+# stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing "(y/n)"
+# $2 - default when the reply is empty or there is no terminal: "y" or "n"
+# Returns 0 for yes, 1 for no.
+confirm() {
+    local question="$1"
+    local default="$2"
+    local hint reply
+
+    if [[ "$default" == "y" ]]; then
+        hint="Y/n"
+    else
+        hint="y/N"
+    fi
+
+    if [[ ! -t 0 ]]; then
+        [[ "$default" == "y" ]] && return 0 || return 1
+    fi
+
+    while true; do
+        read -r -p "$question ($hint): " reply
+        reply="${reply:-$default}"
+
+        case "$reply" in
+            [Yy] | [Yy][Ee][Ss]) return 0 ;;
+            [Nn] | [Nn][Oo]) return 1 ;;
+            *) echo "   Answer y or n." >&2 ;;
+        esac
+    done
 }
 
 # Utility function to verify the presence of an environment variable

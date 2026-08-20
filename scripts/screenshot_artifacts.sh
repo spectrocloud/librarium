@@ -15,11 +15,29 @@ set -e
 # --check-only verifies that a usable artifact exists and exits without downloading it.
 # Callers use this as a cheap preflight so a missing reference set fails one job early
 # rather than failing every shard after each has already built and downloaded. See DOC-3103.
+#
+# --match-sha <sha> asks for the reference set built from a specific commit, normally the
+# base commit the pull request is merging into. When a matching set exists the visual diff
+# shows only what the PR itself changed. When it does not, the script falls back to the
+# newest usable set and says so, rather than failing or triggering a fresh capture, which
+# would add roughly 30 minutes to the run. See DOC-3103 addendum.
 CHECK_ONLY=false
-if [ "$1" = "--check-only" ]; then
-    CHECK_ONLY=true
-    shift
-fi
+MATCH_SHA=""
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --check-only) CHECK_ONLY=true; shift ;;
+        --match-sha)
+            # Guard the value explicitly. Without this, `--match-sha` as the final argument
+            # makes `shift 2` fail on a single remaining positional, and `set -e` then kills
+            # the script with no message at all.
+            if [ $# -lt 2 ]; then
+                echo "Error: --match-sha requires a commit SHA." >&2
+                exit 1
+            fi
+            MATCH_SHA="$2"; shift 2 ;;
+        *)            break ;;
+    esac
+done
 
 DESTINATION_FOLDER=$1
 
@@ -68,11 +86,17 @@ perform_curl() {
 # Fetch every artifact named "screenshots" across the repository.
 #
 # This deliberately queries the repository-wide artifacts endpoint rather than
-# screenshot_capture.yaml's own run list. That workflow is invoked through `workflow_call`
-# from release.yaml on a schedule, and a called workflow does not get its own entry under
-# the callee's runs endpoint. Scoping the search to screenshot_capture.yaml therefore only
-# ever finds manual workflow_dispatch runs, whose artifacts have usually expired, while
-# fresh scheduled artifacts sit unused. See DOC-3103.
+# screenshot_capture.yaml's own run list.
+#
+# The original reason was that the workflow only ran through `workflow_call` from
+# release.yaml, and a called workflow gets no entry under the callee's runs endpoint, so
+# scoping the search to screenshot_capture.yaml found nothing but stale workflow_dispatch
+# runs. See DOC-3103. That call is gone as of the DOC-3103 addendum and captures now run on
+# push, which do get their own entries, so a scoped query would work today.
+#
+# Keep the repository-wide query anyway: it is agnostic about which trigger produced a set,
+# so a workflow_dispatch capture and any future caller are both discoverable without
+# touching this code.
 ARTIFACTS=$(perform_curl "https://api.github.com/repos/$OWNER/$REPO/actions/artifacts?name=$ARTIFACT_NAME&per_page=100")
 
 TOTAL_COUNT=$(echo "$ARTIFACTS" | jq -r '.total_count')
@@ -81,16 +105,36 @@ echo "Found $TOTAL_COUNT artifact(s) named '$ARTIFACT_NAME' in $OWNER/$REPO."
 # GitHub keeps expired artifacts in the listing with "expired": true, and still advertises an
 # archive_download_url for them. Downloading one returns 410 Gone, whose error body lands on
 # disk as a file unzip cannot read, surfacing as a bare "exit code 9". Filter them out first.
-SELECTED=$(echo "$ARTIFACTS" | jq -c '
-    [.artifacts[] | select(.expired == false)]
-    | sort_by(.created_at) | reverse | .[0] // empty')
+#
+# Selection is two-tier. The artifacts API already reports which commit each set was built
+# from, in workflow_run.head_sha, so no artifact renaming is needed to key sets by commit.
+# Prefer an exact match on the requested commit; otherwise take the newest usable set.
+SELECTED=""
+MATCH_KIND=""
+
+if [ -n "$MATCH_SHA" ]; then
+    SELECTED=$(echo "$ARTIFACTS" | jq -c --arg sha "$MATCH_SHA" '
+        [.artifacts[]
+         | select(.expired == false)
+         | select(.workflow_run.head_sha == $sha)]
+        | sort_by(.created_at) | reverse | .[0] // empty')
+    [ -n "$SELECTED" ] && MATCH_KIND="exact"
+fi
+
+if [ -z "$SELECTED" ]; then
+    SELECTED=$(echo "$ARTIFACTS" | jq -c '
+        [.artifacts[] | select(.expired == false)]
+        | sort_by(.created_at) | reverse | .[0] // empty')
+    [ -n "$SELECTED" ] && [ -n "$MATCH_SHA" ] && MATCH_KIND="fallback"
+    [ -n "$SELECTED" ] && [ -z "$MATCH_SHA" ] && MATCH_KIND="newest"
+fi
 
 if [ -z "$SELECTED" ]; then
     echo "No unexpired '$ARTIFACT_NAME' artifact is available ⛔"
     echo ""
-    echo "Reference screenshots are produced by screenshot_capture.yaml, which release.yaml"
-    echo "calls on a schedule. Every candidate below has passed its retention window, which"
-    echo "means that schedule has not produced a usable artifact recently."
+    echo "Reference screenshots are produced by screenshot_capture.yaml, which runs on every"
+    echo "push to master. Every candidate below has passed its 3-day retention window, so no"
+    echo "capture has completed successfully in that time. Check that workflow's recent runs."
     echo ""
     echo "Most recent '$ARTIFACT_NAME' artifacts:"
     echo "$ARTIFACTS" | jq -r '.artifacts | sort_by(.created_at) | reverse | .[0:5][]
@@ -103,14 +147,40 @@ CREATED_AT=$(echo "$SELECTED" | jq -r '.created_at')
 EXPIRES_AT=$(echo "$SELECTED" | jq -r '.expires_at')
 SIZE_BYTES=$(echo "$SELECTED" | jq -r '.size_in_bytes')
 SOURCE_RUN=$(echo "$SELECTED" | jq -r '.workflow_run.id // "unknown"')
+SOURCE_SHA=$(echo "$SELECTED" | jq -r '.workflow_run.head_sha // "unknown"')
 DOWNLOAD_URL=$(echo "$SELECTED" | jq -r '.archive_download_url')
 
 echo "Selected '$ARTIFACT_NAME' artifact ✅"
-echo "  id:         $ARTIFACT_ID"
-echo "  created:    $CREATED_AT"
-echo "  expires:    $EXPIRES_AT"
-echo "  size:       $SIZE_BYTES bytes"
-echo "  source run: $SOURCE_RUN"
+echo "  id:          $ARTIFACT_ID"
+echo "  created:     $CREATED_AT"
+echo "  expires:     $EXPIRES_AT"
+echo "  size:        $SIZE_BYTES bytes"
+echo "  source run:  $SOURCE_RUN"
+echo "  built from:  $SOURCE_SHA"
+
+# State plainly whether the diff is attributable to this PR alone. Without this line a
+# reviewer cannot tell whether an unexpected visual change came from the PR or from master
+# moving underneath it, which was the original complaint that motivated this work.
+case "$MATCH_KIND" in
+    exact)
+        echo "  match:       EXACT, this set was built from the commit being merged into."
+        echo "               Any difference in the report is attributable to this PR."
+        ;;
+    fallback)
+        echo "  match:       FALLBACK, no set exists for the requested commit $MATCH_SHA."
+        echo "               Differences may include changes made on master between"
+        echo "               $SOURCE_SHA and $MATCH_SHA, not just this PR's changes."
+        echo ""
+        echo "               Before treating that as contamination, compare the two commits."
+        echo "               screenshot_capture.yaml skips commits touching only .github/**,"
+        echo "               because they build a byte-identical site. If everything between"
+        echo "               them is workflow-only, this set is still a correct reference and"
+        echo "               the diff is attributable to this PR after all."
+        ;;
+    newest)
+        echo "  match:       NEWEST, no specific commit was requested."
+        ;;
+esac
 
 if [ "$CHECK_ONLY" = true ]; then
     echo "Check-only mode: a usable reference set exists, skipping download."
