@@ -48,7 +48,7 @@ The Palette CLI is available for the following operating systems and architectur
    step, the operating system blocks the binary from running.
 
    ```shell
-   xattr -d com.apple.quarantine ~/Downloads/palette-darwin-arm64 2>/dev/null || true
+   xattr -d com.apple.quarantine ~/Downloads/palette 2>/dev/null || true
    ```
 
 5. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
