@@ -56,6 +56,13 @@ tags: ["release-notes"]
   does not start when the value is shorter. Refer to
   [Configure External OIDC](../vm-management/vmo-pack/configure-external-oidc.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-693 -->
+
+- The installer now validates the Keycloak administrator password on fresh single-node installs before accepting the
+  value. The VMO Pack also pins the automatically generated Postgres password on first install, so redeployment does not
+  regenerate a different password. Refer to [Install VM Launchpad](../vm-management/vm-launchpad/install.md) for more
+  information.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1052 -->
@@ -67,6 +74,20 @@ tags: ["release-notes"]
 
 - Fixed contradictory role information on the user creation page. When you select a group that grants a lower privilege
   than the default, the page no longer preselects a role that conflicts with the role the user inherits from that group.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1053 -->
+
+- Clarified access control for the **KubeVirt Configuration** page. The page is available only to users who hold
+  cluster-admin privileges and who authenticate through OIDC. Refer to
+  [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1055 -->
+
+- Fixed the authentication scope for the VNC console. The console requires an interactive UI session and is no longer
+  accessible through an API key. Refer to
+  [Manage a Virtual Machine](../vm-management/vm-launchpad/virtual-machines/managing.md#vnc-console) and
+  [API Keys](../vm-management/vm-launchpad/access-management/api-keys.md) for more information.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 

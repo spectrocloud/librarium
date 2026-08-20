@@ -27,6 +27,13 @@ runs on the appliance.
 
 :::
 
+:::info
+
+The **KubeVirt Configuration** page is available only to users who hold cluster-admin privileges and who authenticate
+through OIDC.
+
+:::
+
 ## Configuration Sections
 
 The page is organized into the following sections, each of which maps to a part of the `KubeVirt` resource.
