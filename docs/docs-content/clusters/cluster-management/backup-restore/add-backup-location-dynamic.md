@@ -23,8 +23,8 @@ provide detailed steps to add an S3 bucket as the backup location using the STS 
 Three scenarios are supported, depending on where your Kubernetes cluster runs and where the S3 bucket lives. Select the
 section that matches your use case.
 
-- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts) — the cluster and the S3 bucket are in the
-  same AWS account.
+- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts) — the cluster and the S3 bucket are in the same
+  AWS account.
 
 - [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts) — the cluster is in one AWS account and
   the S3 bucket is in another.
@@ -165,6 +165,35 @@ AWS account.
    | Role name             | Provide a name of your choice.                                                      |
    | Role description      | Provide an optional description.                                                    |
 
+   <details>
+<summary>View the equivalent trust policy JSON</summary>
+
+   The console fields above create a trust policy equivalent to the following JSON. Use this if you are automating role
+   creation with the AWS CLI, Terraform, or CloudFormation. Replace `<aws-account-id-of-palette>` with the AWS account
+   ID displayed by the Palette wizard, and `<your-external-id>` with the external ID displayed by the Palette wizard.
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "<your-external-id>"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+   </details>
+
    ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
@@ -196,6 +225,11 @@ The next step depends on your cluster type.
 
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
+
+When you created the backup IAM role in step 6, the AWS console generated a trust policy containing a single statement
+that lets Palette assume the role. The following steps append a second statement to that same trust policy so EKS pods
+can also assume the role using IAM Roles for Service Accounts (IRSA), while keeping the original Palette statement in
+place.
 
 12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `<cluster-name>` and `<region>` with your cluster name and
     AWS region.
@@ -541,6 +575,35 @@ multiple cloud accounts.
    | Role name             | Provide a name of your choice.                                                      |
    | Role description      | Provide an optional description.                                                    |
 
+   <details>
+<summary>View the equivalent trust policy JSON</summary>
+
+   The console fields above create a trust policy equivalent to the following JSON. Use this if you are automating role
+   creation with the AWS CLI, Terraform, or CloudFormation. Replace `<aws-account-id-of-palette>` with the AWS account
+   ID displayed by the Palette wizard, and `<your-external-id>` with the external ID displayed by the Palette wizard.
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "<your-external-id>"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+   </details>
+
    ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role in AWS Account B.
@@ -550,9 +613,10 @@ multiple cloud accounts.
 8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette
    can assume this role under specified conditions.
 
-9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the
-   existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
-   the `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A.
+9. Extend the trust policy that the AWS console generated for the backup IAM role in step 6. In AWS Account B, edit the
+   role's trust policy to append the following statement to the `Statement` array, alongside the existing Palette
+   statement. This authorizes the cluster in AWS Account A to assume the role. Replace the
+   `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A.
 
    ```json
    {
@@ -633,6 +697,11 @@ The next step depends on your cluster type.
 
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
+
+The trust policy on the backup IAM role currently has two statements: the one AWS generated from the console fields in
+step 6 (Palette can assume), and the one you appended in step 9 (the AWS Account A cluster can assume). The following
+steps append a third statement to that same trust policy so EKS pods can assume the role using IAM Roles for Service
+Accounts (IRSA), while keeping the earlier statements in place.
 
 14. Ensure your AWS CLI is configured for AWS Account A, then retrieve the OIDC issuer URL for the EKS cluster. Replace
     `<cluster-name>` and `<region>` with your cluster name and AWS region.
@@ -950,9 +1019,26 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
 5. Choose the **STS** authentication method. Palette displays an external ID for use in the trust policy. Copy the
    external ID.
 
-6. In the AWS console for AWS Account B, create a new IAM role with the following trust policy. Replace
-   `<palette-aws-account-id>` with the AWS account ID displayed by the Palette wizard, and `<external-id>` with the
-   value copied in the previous step.
+6. Switch to the AWS console for AWS Account B and create a new IAM role. Use the following configuration while creating
+   the IAM role.
+
+   | **AWS Console Field** | **Value**                                                                             |
+   | --------------------- | ------------------------------------------------------------------------------------- |
+   | Trusted entity type   | Select **AWS account**.                                                               |
+   | AWS account           | Select the **Another AWS account** radio button.                                      |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                      |
+   | Options               | Select the **Require external ID** checkbox.                                          |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID.                  |
+   | Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites-2) section above. |
+   | Role name             | Provide a name of your choice.                                                        |
+   | Role description      | Provide an optional description.                                                      |
+
+      <details>
+<summary>View the equivalent trust policy JSON</summary>
+
+   The console fields above create a trust policy equivalent to the following JSON. Use this if you are automating role
+   creation with the AWS CLI, Terraform, or CloudFormation. Replace `<aws-account-id-of-palette>` with the AWS account
+   ID displayed by the Palette wizard, and `<your-external-id>` with the external ID displayed by the Palette wizard.
 
    ```json
    {
@@ -961,12 +1047,12 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
        {
          "Effect": "Allow",
          "Principal": {
-           "AWS": "arn:aws:iam::<palette-aws-account-id>:root"
+           "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
          },
          "Action": "sts:AssumeRole",
          "Condition": {
            "StringEquals": {
-             "sts:ExternalId": "<external-id>"
+             "sts:ExternalId": "<your-external-id>"
            }
          }
        }
@@ -974,17 +1060,17 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
    }
    ```
 
-7. Attach the IAM policy you created in the Prerequisites section to the role.
+      </details>
 
-8. Copy the IAM role ARN.
+7. Copy the IAM role ARN.
 
-9. Switch back to the Palette UI and paste the IAM role ARN into the **ARN** field.
+8. Switch back to the Palette UI and paste the IAM role ARN into the **ARN** field.
 
-10. Click on **Validate**. Palette will display a validation status message. If the validation status message indicates
-    a success, proceed to the next step. If the validation status message indicates an error, review the error message
-    and verify the IAM role ARN, the external ID in the trust policy, and the IAM policy attached to the role.
+9. Click on **Validate**. Palette will display a validation status message. If the validation status message indicates a
+   success, proceed to the next step. If the validation status message indicates an error, review the error message and
+   verify the IAM role ARN, the external ID in the trust policy, and the IAM policy attached to the role.
 
-11. Click on the **Create** button.
+10. Click on the **Create** button.
 
 You now have a backup location for Palette to store the backup of your clusters or workspaces. When a backup runs,
 Palette forwards the IAM role details and access credentials to the in-cluster backup agent, which assumes the role,
