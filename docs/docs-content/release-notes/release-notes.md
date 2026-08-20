@@ -11,6 +11,55 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 21, 2026 - Component Updates {#component-updates-2026-34}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3115 -->
+<!-- RELEASE DATE: August 21, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.46 -->
+<!-- RELEASE ARTIFACT STUDIO: NA -->
+<!-- RELEASE TERRAFORM VERSION: NA -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.46.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | NA      |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | NA      |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | NA      |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.46  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.46  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4592 -->
+
+- Kyverno is now available as a Verified Pack in the Palette Registry. The pack is maintained by Spectro Cloud with a
+  controlled release cadence, images mirrored into Spectro registries for airgap and self-hosted deployments, CVE
+  scanning, and full support coverage. A FIPS-compliant pack variant and an airgapped FIPS ZST artifact are also
+  available. Spectro-opinionated defaults are included out of the box, with Spectro system namespaces excluded from
+  Kyverno admission by default to prevent conflicts with Palette's own reconciliation and Edge recovery paths. You can
+  add Kyverno directly to a cluster profile from the Palette Registry without requiring an external repository or a
+  custom pack build, and receive version updates through the standard pack-update path.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.34.1 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## August 17, 2026 - Release 4.9.46
 
 <!-- PATCH RELEASE TICKET: DOC-3113 -->
