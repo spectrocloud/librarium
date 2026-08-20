@@ -209,6 +209,12 @@ fi
 
 if [[ "$COMPONENT_UPDATES" == false ]]; then
   echo "ℹ️  No new CanvOS or Palette CLI versions, so only the release notes body is generated."
+
+  # A branch, tag, or checksum supplied alongside a "no" answer is a mismatch worth naming, because
+  # the workflow form makes it easy to fill those fields in and leave the tick box clear.
+  if [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+    echo "⚠️  A branch or tag, or a checksum, was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
+  fi
 elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
   echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
 fi
