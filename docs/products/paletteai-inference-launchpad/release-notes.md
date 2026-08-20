@@ -67,8 +67,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Reports quota utilization and historical consumption on the **Usage** page, including a **Quota Usage** tab, 24-hour,
   7-day, and 30-day data windows, and per-model and per-client breakdowns. Lets you raise a ceiling without zeroing
   usage, and revoke a token or delete a client at any time. Refer to
-  [View Client Usage](./how-to-guides/view-client-usage.md) and
-  [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
+  [View Token Usage](./how-to-guides/view-token-usage.md), [View Client Usage](./how-to-guides/view-client-usage.md),
+  and [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
 - Computes estimated savings by comparing locally served token volume against a configurable frontier provider reference
   rate.
