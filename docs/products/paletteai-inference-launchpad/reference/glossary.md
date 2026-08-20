@@ -78,7 +78,8 @@ gateway continues to handle routing, [token metering](#token-metering), quota co
 
 A model that Spectro Cloud has validated to run correctly on the listed GPU configuration, based on its own testing
 rather than public benchmarks. Refer to [Model Certification](../explanation/model-certification.md) and
-[Certified Models by Hardware](./certified-models-by-hardware.md).
+[Certified Models by Hardware](./certified-models-by-hardware.md). To bring a model that is not certified, refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
 
 ### Chargeback
 
@@ -297,8 +298,10 @@ collides with their own catalog.
 ### Model Metadata
 
 A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
-from Hugging Face and upload them to the appliance. The metadata is downloaded from Artifact Studio, or from the
-`launchpad-ai` repository, alongside the ISO and content bundle.
+from Hugging Face and upload them to the appliance. For a [certified model](#certified-model), the metadata is
+downloaded from Artifact Studio. For a model you bring yourself, you author the file. Refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
+[Model Upload Reference](./model-upload-reference.md#model-metadata-file).
 
 ### Model Weights
 
