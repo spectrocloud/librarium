@@ -20,7 +20,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9303 -->
 
-- Fixed an issue where Edge Kubernetes upgrades installed the new kubelet before the control plane was upgraded, causing
+- Fixed an issue where Edge Kubernetes upgrades installed the new Kubelet before the control plane was upgraded, causing
   1.30 to 1.31 upgrades to deadlock permanently with no self-recovery path.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11551 -->
