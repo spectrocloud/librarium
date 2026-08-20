@@ -517,10 +517,56 @@ required Edge artifacts.
     Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
     add through the `Dockerfile`.
 
-    You can also configure Pluggable Authentication Modules (PAM) policies in the `Dockerfile`. Below are examples for
-    Ubuntu 22.04 and RHEL 9.
+    You can also configure Pluggable Authentication Modules (PAM) policies in the `Dockerfile`. The following examples
+    cover SUSE, Ubuntu 22.04, and RHEL 9.
+
+    Each example sets the `enforce_for_root` option. Local UI, the TUI, and the Palette API all change passwords as
+    root, and the password quality modules exempt root by default. Without this option the check still runs and logs a
+    `BAD PASSWORD` message, but it returns success, so a password that does not meet your policy is accepted. Setting
+    `enforce_for_root` makes the check fail instead. Refer to
+    [Change User Password](../../local-ui/host-management/access-console.md#change-user-password) for the ways a
+    password can be changed.
+
+    :::warning
+
+    `pam_cracklib` does not read `/etc/security/pwquality.conf`. On SUSE, where `pam_cracklib` provides password quality
+    checks, `enforce_for_root` must be set as an argument on the module line. Writing it to `pwquality.conf` has no
+    effect.
+
+    :::
 
           <Tabs groupId="os">
+
+          <TabItem value="SUSE">
+
+    SUSE distributions, including the openSUSE base this workflow builds, use
+    [`pam_cracklib`](https://linux.die.net/man/8/pam_cracklib) for password quality checks. Do not edit
+    `/etc/pam.d/common-password` directly. That file is a symlink to `common-password-pc`, which `pam-config`
+    regenerates, so a manual edit is discarded. Use `pam-config` instead.
+
+    ```dockerfile
+    # Enable enforce_for_root for pam_cracklib
+    RUN pam-config -a --cracklib-enforce_for_root
+    ```
+
+    The resulting `/etc/pam.d/common-password-pc` is similar to the following. The other options shown reflect a
+    password policy that is already in place. The `pam-config` command adds only `enforce_for_root`.
+
+    ```text
+    password    requisite    pam_cracklib.so enforce_for_root minlen=12 dcredit=-1 ucredit=-1 lcredit=-1 minclass=4
+    password    required     pam_pwhistory.so remember=10
+    password    required     pam_unix.so use_authtok nullok shadow sha512 try_first_pass rounds=10000
+    ```
+
+    To also apply password reuse rules to root, enable the equivalent option for
+    [`pam_pwhistory`](https://linux.die.net/man/8/pam_pwhistory).
+
+    ```dockerfile
+    # Optional. Enforce password reuse rules for root as well
+    RUN pam-config -a --pwhistory-enforce_for_root
+    ```
+
+          </TabItem>
 
           <TabItem value="Ubuntu 22.04">
 
@@ -541,7 +587,9 @@ required Edge artifacts.
     ```
 
     Alternatively, you can use [`pam_pwquality`](https://linux.die.net/man/8/pam_pwquality), which is the modern
-    replacement for `pam_cracklib`, as shown in the following example.
+    replacement for `pam_cracklib`, as shown in the following example. Setting the policy in
+    `/etc/security/pwquality.conf` is preferable to editing the PAM stack, because `pam-auth-update` can rewrite
+    `/etc/pam.d/common-password` and discard changes made there.
 
     ```dockerfile
     # Install pam_pwquality
@@ -574,7 +622,9 @@ required Edge artifacts.
           <TabItem value="RHEL 9">
 
     RHEL 9 uses [`pam_pwquality`](https://linux.die.net/man/8/pam_pwquality) by default. This module enforces password
-    strength using policies defined in `/etc/security/pwquality.conf`. You only need to configure the policy.
+    strength using policies defined in `/etc/security/pwquality.conf`. You only need to configure the policy. Setting it
+    in this file rather than as arguments in `/etc/pam.d/system-auth` and `/etc/pam.d/password-auth` also means the
+    policy survives `authselect apply-changes`.
 
     ```dockerfile
     # Configure password quality policy for pam_pwquality
