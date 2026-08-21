@@ -80,4 +80,5 @@ resolve the unknown allocation on the affected nodes. Then deploy the model agai
 
 To change which model handles requests that do not name a model explicitly, refer to
 [Switch the Default Model](./set-the-default-model.md). To let a text-only model answer questions about images, refer to
-[Enable Vision Preprocessing](./enable-vision-preprocessing.md).
+[Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified catalog,
+refer to [Bring Your Own Model](./bring-your-own-model.md).

@@ -2,22 +2,17 @@
 sidebar_label: "Set and Manage Client Quotas"
 title: "Set and Manage Client Quotas"
 description:
-  "Step-by-step guidance for platform administrators on how to set, edit, and remove usage quotas on a client on a
-  PaletteAI Inference Launchpad appliance."
+  "Step-by-step guidance for platform administrators on how to set, raise, edit, and remove usage quotas on a client on
+  a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["paletteai-inference-launchpad", "clients", "quotas", "how-to"]
 keywords: ["launchpad", "ai", "clients", "quota", "rate limit", "requests", "tokens", "cost", "429"]
 ---
 
-This guide explains how a platform administrator sets and manages usage quotas on a client on a PaletteAI Inference
-Launchpad appliance. A quota limits how much a client consumes. A quota applies to the client, so every API token that
-belongs to the client draws on the same limits. To understand how quotas fit with clients and API tokens, refer to
+This guide explains how a platform administrator sets and manages usage quotas on a PaletteAI Inference Launchpad
+appliance. For what a quota is and how it interacts with clients and appliance-wide enforcement, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md).
-
-Quotas have two layers. **Quota enforcement** is a single switch that covers the whole appliance and decides whether
-limits are enforced at all. The **quota windows** you set on each client are the limits themselves. Both must hold
-before the appliance limits a client, so confirm enforcement is on before you set a client's limits.
 
 ## Prerequisites
 
@@ -27,11 +22,8 @@ before the appliance limits a client, so confirm enforcement is on before you se
 
 ## Check Quota Enforcement
 
-Quota enforcement applies to the entire appliance, not to one client. While it is off, the appliance does not enforce
-any client's quota windows, and a client that passes its limits is not rejected. The limits you have set stay saved and
-take effect again when you turn enforcement back on.
-
-A new appliance starts with quota enforcement on.
+Use these steps to read or change the appliance-wide **Quota Enforcement** switch. For what the switch does, refer to
+[Clients and Quotas: Quotas](../explanation/clients-and-quotas.md#quotas).
 
 1. From the left main menu, select **Overview**.
 
@@ -71,16 +63,21 @@ clearing a backlog, and turn it back on afterward.
 
 5. Choose the dimension to limit: **requests**, **tokens**, or **cost**.
 
-6. Choose the window the limit applies over: **second**, **minute**, **hour**, or **day**.
+6. Choose the window the limit applies over: **hour** or **day**. Day limits reset at midnight UTC. Hour limits reset at
+   the top of each UTC hour.
 
 7. Enter the limit for that dimension and window.
 
-8. Repeat the previous steps for each limit you want. For example, add a requests-per-minute limit, a tokens-per-day
-   limit, and a cost-per-day limit.
+8. Repeat the previous steps for each limit you want. For example, add a tokens-per-day limit and a cost-per-day limit.
 
 9. Save the client.
 
-Each row limits one dimension over one window. A window with no row stays uncapped.
+Each row limits one dimension over one window. A window with no row stays uncapped. All active limits apply together.
+When a window is full, new requests are blocked until it resets.
+
+Per-second and per-minute windows are not offered when you add a limit. A client that already has a second or minute
+limit still displays that row, and the appliance still enforces it. To remove such a limit, delete the row and save the
+client.
 
 ## Edit or Remove a Quota
 
@@ -90,9 +87,36 @@ Each row limits one dimension over one window. A window with no row stays uncapp
 
 3. Select the **Quotas** section.
 
-4. Change a limit, or remove a window-limit row.
+4. Change a limit, or remove a window-limit row. Use this path when you need to lower a ceiling. **Increase limit** on
+   the **Usage** page cannot lower a cap.
 
 5. Save the client.
+
+## Increase a Limit from Usage
+
+Use these steps to raise a ceiling from **Usage** without editing the client's quota rows. For what this action does,
+refer to [Clients and Quotas: Limit Ceiling Increases](../explanation/clients-and-quotas.md#limit-ceiling-increases).
+
+1. From the left main menu, select **Usage**.
+
+2. Select the **Quota Usage** tab, and then select the client.
+
+3. On the window row, select **Increase limit**.
+
+4. Enter a value above the current limit, and then select **Increase limit** to preview the change.
+
+   :::warning
+
+   **Confirm & Apply** raises the ceiling for the current window immediately and for every window that follows. The
+   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access & Policy** as
+   described in [Edit or Remove a Quota](#edit-or-remove-a-quota).
+
+   :::
+
+5. Select **Confirm & Apply**.
+
+For the full sequence, including what **Reached limit** and the preview dialog show, refer to
+[Increase a Limit from Quota Usage](./view-client-usage.md#increase-a-limit-from-quota-usage).
 
 ## Next Steps
 

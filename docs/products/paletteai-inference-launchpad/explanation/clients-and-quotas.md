@@ -3,11 +3,24 @@ sidebar_label: "Clients and Quotas"
 title: "Clients and Quotas"
 description:
   "An explanation of clients, API tokens, and quotas in PaletteAI Inference Launchpad: what a client is, why the
-  appliance serves many clients such as AI coding assistants, and how it meters and limits their usage."
+  appliance serves many clients such as AI coding assistants, and how it meters usage, reports utilization, and limits
+  consumption."
 hide_table_of_contents: false
 sidebar_position: 2
 tags: ["paletteai-inference-launchpad", "explanation", "clients", "quotas"]
-keywords: ["launchpad", "ai", "clients", "api token", "quota", "rate limit", "coding assistant", "claude code"]
+keywords:
+  [
+    "launchpad",
+    "ai",
+    "clients",
+    "api token",
+    "quota",
+    "rate limit",
+    "coding assistant",
+    "claude code",
+    "usage",
+    "utilization",
+  ]
 ---
 
 AI coding assistants such as Claude Code, Cursor, OpenAI Codex, and OpenCode make up many of the workloads that connect
@@ -15,7 +28,8 @@ to a PaletteAI Inference Launchpad appliance, sending their requests to the appl
 single appliance can serve many of these assistants at once, along with other workloads such as an internal chatbot or a
 nightly batch job. This page explains how the appliance tells those workloads apart, and how it meters and limits what
 each one consumes. It covers what a _client_ is, why one appliance serves many of them, and how clients, API tokens, and
-quotas fit together. Read it to understand these ideas before you create clients, issue tokens, or set quotas.
+quotas fit together. Read it to understand these ideas before you create clients, issue tokens, set quotas, or review
+usage.
 
 ## What a Client Is
 
@@ -81,12 +95,13 @@ A quota is a consumption limit attached to a client. The appliance enforces quot
 - **Tokens.** The number of tokens a client's requests process.
 - **Cost.** The computed cost of a client's requests.
 
-The appliance measures each dimension over rolling windows of one second, one minute, one hour, and one day. There is no
-monthly or billing-cycle window.
+When you add a limit, the console offers **hour** and **day** windows. Day limits reset at midnight UTC. Hour limits
+reset at the top of each UTC hour. There is no monthly or billing-cycle window. A client that already has a per-second
+or per-minute limit still has that window enforced until you remove the row.
 
-When a client reaches a limit, the appliance rejects further requests with HTTP `429 Too Many Requests` and names the
-dimension and window that tripped. It does not queue or slow the requests. It blocks them until the window rolls over
-and the client is back under the limit.
+All active limits apply together. When a client reaches a limit, the appliance rejects further requests with HTTP
+`429 Too Many Requests` and names the dimension and window that tripped. It does not queue or slow the requests. It
+blocks them until the window resets and the client is back under the limit.
 
 Above the per-client limits sits a single switch, quota enforcement, that covers the whole appliance. It decides whether
 a limit refuses a request or the appliance ignores it. A new appliance starts with enforcement on. While enforcement is
@@ -95,8 +110,38 @@ appliance limits a client: enforcement on for the appliance, and a window limit 
 setting or change it, refer to
 [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md#check-quota-enforcement).
 
-Limits are only half the picture. The console also reports how much of a limit each client has actually spent. For the
-meters and states it uses, refer to [Usage Metrics Reference](../reference/usage-metrics-reference.md#quota-usage-tab).
+### Utilization and Consumption
+
+**Quota Usage** on the **Usage** page shows point-in-time utilization: how much of each window the client has used right
+now, how much remains, and when that window next resets. Token utilization is the tokens counted against the client's
+token windows. Request and cost utilization use the same pattern on their own windows.
+
+Quota consumption is that used amount divided by the configured limit, shown as a percentage. On **Quota Usage**, each
+window reports its own percentage, and the table sorts the worst-used window first. On **By Client**, **Total Local
+Quota** is the configured cap for the selected data window, and **Local Quota Used** is the percentage of that cap
+consumed.
+
+A client at 100% of a limit shows **Reached limit**. Further requests are throttled until the window resets or an
+operator raises the ceiling. For every field the console reports on **Quota Usage** and the other **Usage** tabs, refer
+to [Usage Metrics Reference](../reference/usage-metrics-reference.md#quota-usage-tab).
+
+### Historical Reporting
+
+**Overview**, **By Model**, and **By Client** report consumption over a **Data window**: **Last 24h**, **Last 7 days**,
+**Last 30 days**, or a custom date range. Local versus external percentages on **Overview** are by tokens, not by
+requests or cost.
+
+**Quota Usage** does not follow that window. Its counters are the live budget, not a historical record.
+
+If the appliance has kept less history than the window you asked for, the card says so rather than filling the gap.
+
+### Limit Ceiling Increases
+
+Windows reset on the UTC clock. That is not an operator action, and it does not require a confirmation.
+
+**Increase limit** on **Quota Usage** is the operator action. It raises one window's ceiling and keeps the usage already
+counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require
+permission to manage clients.
 
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
@@ -128,6 +173,10 @@ quotas, so it is ready to run on every request.
 
 - [Create a Client](../how-to-guides/create-a-client.md) walks through creating a client and issuing its first API
   token.
+- [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md) walks through setting limits, turning
+  enforcement on or off, and raising a ceiling.
+- [View Client Usage](../how-to-guides/view-client-usage.md) walks through **Quota Usage**, historical data windows, and
+  per-client consumption.
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md) walks through connecting a
   coding assistant to a client with an API token.
 - [Architecture Overview](./architecture.md) explains how the appliance routes requests and where its components sit.
