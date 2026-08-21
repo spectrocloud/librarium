@@ -86,6 +86,10 @@ VM Launchpad creates one or more users in a single guided flow that also assigns
    | **Operator**       | Day-to-day VM operations. Templates and dashboards (read and write), monitoring, storage (read). |
    | **Viewer**         | Read-only access. Templates, packages, and dashboards (read).                                    |
 
+   If any user in this wizard run will inherit a VMO role from a group, no role card is preselected on the **Role** step
+   and an amber banner names the inherited role. Refer to
+   [Group-inherited roles on the role cards](#group-inherited-roles-on-the-role-cards) for details.
+
 6. Select **Next** to open the **Scope** step. Choose the namespace scope for the selected role. A scope is required
    when a role is assigned.
 
@@ -139,14 +143,19 @@ fixed.
 
 4. Select **Save**.
 
-:::info
+### Group-inherited roles on the role cards
 
-When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards listing
-the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). Take the banner at its word.
-A role you set here does not take effect while the user remains in that group. Refer to
-[How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
+Whenever a user will inherit a VMO role from a group, either during creation or after you add a group in the **Edit
+User** modal, the role cards behave in two ways that keep the wizard honest about which assignment actually applies:
 
-:::
+- An amber banner appears over the role cards listing the inherited role, for example, _Platform Admin is inherited from
+  group cluster-admins_.
+
+- No role card is selected by default. Because group-based roles override any direct assignment, selecting a card as the
+  default would suggest the direct assignment is taking effect when it is not.
+
+Take the banner at its word. A role you set here does not take effect while the user remains in that group. Refer to
+[How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated).
 
 ## How Effective Permissions Are Calculated
 

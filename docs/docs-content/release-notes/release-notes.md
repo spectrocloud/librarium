@@ -101,6 +101,21 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-896 -->
+
+- Clarified boot firmware compatibility on FIPS-enabled clusters. Because the FIPS-hardened `virt-launcher` image ships
+  only the Secure Boot signed OVMF firmware, a VM that requests EFI without Secure Boot fails to start with the error
+  `EFI OVMF roms missing for booting in EFI mode with SecureBoot=false`. Enable **Secure Boot** together with **UEFI /
+  EFI Boot**, or leave both settings disabled so that the VM uses BIOS. Refer to
+  [Create a VM](../vm-management/vm-launchpad/virtual-machines/creating.md) and
+  [Template Management](../vm-management/vm-launchpad/virtual-machines/templates.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-893 -->
+
+- Documented an expected delay when you adopt a namespace. The namespace is listed as soon as you adopt it, but virtual
+  machines that already exist in it might take about five minutes to appear in VMO Manager. Refer to
+  [Namespaces](../vm-management/vm-launchpad/infrastructure/namespaces.md) for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1052 -->
 
 - Fixed an issue where the image upload flow let you proceed when no storage class existed in the cluster. Image upload
