@@ -328,9 +328,16 @@ The console name for [vision preprocessing](#vision-preprocessing). The **Multim
 
 ### Node
 
-A single machine in the appliance's Kubernetes cluster. When you deploy a model, the appliance places it automatically
-on the best-fit node, the node with the most free GPUs that still fit the model. Most appliances are a single
-high-density GPU server, so they have a single node.
+A single machine in the appliance's Kubernetes cluster. When you deploy a model, you choose which nodes run it. Most
+appliances are a single high-density GPU server, so they have a single node. On a multi-node appliance, mixed hardware
+and locally staged weights often mean that only some nodes can run a given model. Refer to
+[Model Placement](../explanation/model-placement.md).
+
+### Node Selection
+
+The deploy-time choice of which [nodes](#node) run a model. The appliance creates one inference engine per chosen node
+and exposes those engines through a single per-model endpoint. Refer to
+[Model Placement](../explanation/model-placement.md) and [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 ## O
 

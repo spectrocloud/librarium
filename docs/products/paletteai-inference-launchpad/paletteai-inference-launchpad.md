@@ -103,7 +103,7 @@ Whatever brought you here, these are the fastest paths in.
   [Upload a model](./how-to-guides/upload-a-model.md) • [Bring your own model](./how-to-guides/bring-your-own-model.md)
   • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
-  [Vision Preprocessing](./explanation/vision-preprocessing.md) •
+  [Model Placement](./explanation/model-placement.md) • [Vision Preprocessing](./explanation/vision-preprocessing.md) •
   [Clients and Quotas](./explanation/clients-and-quotas.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •

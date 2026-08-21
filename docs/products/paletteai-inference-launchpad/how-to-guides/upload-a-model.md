@@ -106,13 +106,11 @@ The upload command accepts other flags, including password authentication (`--ss
 
 ## Verify the Model and Deploy It
 
-1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy model** to open the deploy
-   panel.
+1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab and **Deploy New
+   Model** to open the **Deploy model** dialog.
 
-2. Open the model drop-down menu and confirm the model you uploaded is listed. On a single-node appliance, the model
-   appears on the next catalog scan after the upload finishes. On a multi-node appliance, the catalog shows the model's
-   cluster-wide state: `Available` when the model is ready on every node, `Pending N/M` while nodes are still syncing,
-   or `Missing`. Only an `Available` model can be deployed.
+2. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
+   `<Name> · <N>+GPU · <size>GB`. The model appears on the next catalog scan after the upload finishes.
 
 3. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
 
