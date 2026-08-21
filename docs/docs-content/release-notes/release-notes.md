@@ -76,7 +76,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Containerized Data Importer (CDI) certificates now use shorter lifetimes. Leaf certificates are valid for one year and
   the certificate authority for five years, replacing the previous ten-year validity. Rotation is automatic, so no
-  manual renewal is required. On upgrade, existing 10-year certificates are rotated to the new lifetime.
+  manual renewal is required. On upgrade, existing 10-year certificates are replaced with new certificates that use the
+  shorter lifetimes.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-902 -->
 
