@@ -46,7 +46,13 @@ tags: ["release-notes"]
 
 - Containerized Data Importer (CDI) certificates now use shorter lifetimes. Leaf certificates are valid for one year and
   the certificate authority for five years, replacing the previous ten-year validity. Rotation is automatic, so no
-  manual renewal is required.
+  manual renewal is required. On upgrade, existing 10-year certificates are rotated to the new lifetime.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-902 -->
+
+- In the PaletteAI VM Launchpad appliance, the `vmo-manager` Service now uses `ClusterIP`. Existing appliance installs
+  with a `LoadBalancer` Service and external IP are automatically converted to `ClusterIP` during upgrade, and no manual
+  cleanup is required. The VMO Pack continues to support all Service types.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1011 -->
 
