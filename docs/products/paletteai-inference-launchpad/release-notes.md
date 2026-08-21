@@ -29,6 +29,10 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   installer and a guided cluster wizard in the node Local UI. This release is tuned for a single-node topology. Refer to
   [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
 
+- Upgrades the platform from Local UI by uploading a newer content bundle from Artifact Studio and applying **Update**
+  on the cluster configuration page. Refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md) for more
+  information.
+
 - Runs on a single high-density GPU server with NVIDIA or AMD GPUs, NVMe storage, and bonded NICs, sized to the target
   model from a baseline of 4 GPUs. Refer to [Suggested Hardware](./reference/hardware-requirements.md) for more
   information.
@@ -42,8 +46,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Uploads models from the administrative workstation with the Palette CLI, which verifies checksums and supports
   resumable transfers. Refer to [Upload a Model](./how-to-guides/upload-a-model.md) for more information.
 
-- Deploys a model to the cluster and places it on the best-fit node automatically, after a guarded preview, gate,
-  provision, and smoke-test sequence. Refer to [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+- Deploys a model to the cluster after a guarded preview, gate, provision, and smoke-test sequence. Refer to
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
 
 - Lets you set a default model that handles requests no routing rule matches, and rebuilds the router in place when you
   change it, without a gateway restart. Refer to [Set the Default Model](./how-to-guides/set-the-default-model.md) for
@@ -57,16 +61,18 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [Clients and Quotas](./explanation/clients-and-quotas.md) and [Create a Client](./how-to-guides/create-a-client.md)
   for more information.
 
-- Enforces per-client quotas across requests, tokens, and cost over one-second, one-minute, one-hour, and one-day
-  windows, and returns HTTP `429` when a limit is reached. Refer to
+- Enforces per-client quotas across requests, tokens, and cost over hour and day windows, and returns HTTP `429` when a
+  limit is reached. Existing per-second and per-minute limits remain enforced. Refer to
   [Manage Client Quotas](./how-to-guides/manage-client-quotas.md) for more information.
 
 - Grants every client access to all local models, and can burst to external frontier models. Refer to
   [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
 
-- Reports per-client usage and lets you revoke a token or delete a client at any time. Refer to
-  [View Client Usage](./how-to-guides/view-client-usage.md) and
-  [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
+- Reports quota utilization and historical consumption on the **Usage** page, including a **Quota Usage** tab, 24-hour,
+  7-day, and 30-day data windows, and per-model and per-client breakdowns. Lets you raise a ceiling without zeroing
+  usage, and revoke a token or delete a client at any time. Refer to
+  [View Token Usage](./how-to-guides/view-token-usage.md), [View Client Usage](./how-to-guides/view-client-usage.md),
+  and [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
 - Computes estimated savings by comparing locally served token volume against a configurable frontier provider reference
   rate.
