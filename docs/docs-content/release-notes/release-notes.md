@@ -162,6 +162,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3117 -->
+
+- Palette CLI is now available for ARM Linux (arm64) and macOS Apple Silicon (arm64).
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-9266 -->
 
 - The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
