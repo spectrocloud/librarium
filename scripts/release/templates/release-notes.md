@@ -38,7 +38,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the {{RELEASE_VERSION}} Palette release is {{RELEASE_PALETTE_CLI_VERSION}}. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 

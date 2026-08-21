@@ -58,6 +58,8 @@ Cluster management features are only available to locally managed Edge hosts.
 
 - [Scale a Cluster](./cluster-management/scale-cluster.md)
 
+- [Update Local Cluster](./cluster-management/update-cluster.md)
+
 ## Host Management
 
 Most host management features, with the exception of reset, are available on both locally and centrally managed Edge
