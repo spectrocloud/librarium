@@ -41,6 +41,48 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
+## August 21, 2026 - Component Updates {#component-updates-2026-34}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3115 -->
+<!-- RELEASE DATE: August 21, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: DEFERRED (4.9.46 pending security scans; add when appliances ship) -->
+<!-- RELEASE ARTIFACT STUDIO: NA -->
+<!-- RELEASE TERRAFORM VERSION: NA -->
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4592 -->
+
+- Kyverno is now available as a Verified Pack in the Palette Registry. The pack is maintained by Spectro Cloud with a
+  controlled release cadence, images mirrored into Spectro registries for airgap and self-hosted deployments, CVE
+  scanning, and full support coverage. Spectro-opinionated defaults are included out of the box, with Spectro system
+  namespaces excluded from Kyverno admission by default to prevent conflicts with Palette's own reconciliation and Edge
+  recovery paths. You can add Kyverno directly to a cluster profile from the Palette Registry without requiring an
+  external repository or a custom pack build, and receive version updates through the standard pack-update path.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `K8S` | :white_check_mark: | :x: | 1.36.2 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.36.2 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `K8S` | :white_check_mark: | :white_check_mark: | 1.36.2 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.18.2 |
+| <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.34.1 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## August 17, 2026 - Release 4.9.46
 
 <!-- PATCH RELEASE TICKET: DOC-3113 -->
