@@ -75,6 +75,13 @@ on the client detail view, refer to
 3. Set the **Data window** if you need a period other than the default. For the available windows, refer to
    [Set the Reporting Period](./view-token-usage.md#set-the-reporting-period).
 
+   :::info
+
+   The **By Client** table is empty until at least one client accrues usage within the current quota window. This is
+   expected on a new appliance and is not an error.
+
+   :::
+
 4. Select a client to open its API keys, per-token consumption, and the models that handled its requests.
 
 ## Further Reading
