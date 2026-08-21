@@ -86,7 +86,7 @@ VM Launchpad creates one or more users in a single guided flow that also assigns
    | **Operator**       | Day-to-day VM operations. Templates and dashboards (read and write), monitoring, storage (read). |
    | **Viewer**         | Read-only access. Templates, packages, and dashboards (read).                                    |
 
-   If any user in this wizard run will inherit a VMO role from a group, no role card is preselected on the **Role** step
+   If any user in this wizard inherits a VMO role from a group, no role card is preselected on the **Role** step
    and an amber banner names the inherited role. Refer to
    [Group-inherited roles on the role cards](#group-inherited-roles-on-the-role-cards) for details.
 
@@ -145,8 +145,8 @@ fixed.
 
 ### Group-inherited roles on the role cards
 
-Whenever a user will inherit a VMO role from a group, either during creation or after you add a group in the **Edit
-User** modal, the role cards behave in two ways that keep the wizard honest about which assignment actually applies:
+Whenever a user inherits a VMO role from a group, either during creation or after you add a group in the **Edit
+User** modal, the role cards behave in two ways about which assignment actually applies:
 
 - An amber banner appears over the role cards listing the inherited role, for example, _Platform Admin is inherited from
   group cluster-admins_.
