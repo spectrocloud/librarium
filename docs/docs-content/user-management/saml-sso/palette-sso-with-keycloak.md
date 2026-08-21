@@ -234,9 +234,13 @@ Use the following steps to validate the SSO configuration.
 
    ![Image of keycloak client scopes highlighted](/keycloak/user-management_oidc-sso-keycloak-20-keycloak-mapper.webp "Palette Project")
 
-5. Deselect the radio button for **Full group path**.
+5. Enable all four token-inclusion toggles: **Add to ID token**, **Add to access token**, **Add to userinfo**, and **Add
+   to token introspection**. Palette Console SSO reads the groups claim from the ID token. Virtual Machine Orchestrator
+   (VMO) 2.0 and later requires all four to be enabled for group-based RBAC to resolve correctly against the realm.
 
-6. Save the add mapper page.
+6. Deselect the radio button for **Full group path**.
+
+7. Save the add mapper page.
 
 You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group
 and the Palette group match.
