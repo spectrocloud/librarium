@@ -147,7 +147,7 @@ Return to the Keycloak admin console, on the **OpenID Connect v1.0** form you op
    | **Field**              | **Value**                                                                                                                                                                    |
    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Alias**              | A short identifier for the provider, such as `okta`. This value appears in the redirect URI.                                                                                 |
-   | **Display name**       | The label shown on the VM Launchpad sign-in page, such as `Okta`.                                                                                                            |
+   | **Display name**       | A human-readable label for the provider in Keycloak, such as `Okta`.                                                                                                         |
    | **Discovery endpoint** | Your provider's OIDC discovery document, such as `https://<your-okta-domain>/.well-known/openid-configuration`. Keycloak populates the authorization and token URLs from it. |
    | **Client ID**          | The client ID from the application you created.                                                                                                                              |
    | **Client Secret**      | The client secret from the application you created.                                                                                                                          |
@@ -222,20 +222,40 @@ permissions until the user signs in again. Refer to [API Keys](./api-keys.md).
 
 ## Verify
 
-1. Open VM Launchpad in a fresh browser session, or use a private browsing window.
+:::info
 
-2. Confirm that the sign-in page offers your provider under the display name you configured, and sign in as a user who
-   belongs to a mapped group.
+In this release, the VM Launchpad sign-in page does not surface a per-provider button for federated identity providers,
+so the end-user brokered sign-in flow cannot be initiated from the appliance sign-in page. The steps below verify the
+Keycloak-side configuration you can confirm today. The user-side verification steps apply once a federated user
+completes a brokered sign-in through their identity provider.
 
-3. In the Keycloak admin console, select **Users** from the left main menu, and then select the account that just signed
-   in. Confirm that the **Email** field is populated and that **Email verified** is enabled.
+:::
 
-4. Select the **Groups** tab for that account, and confirm that the mapped Keycloak group is listed.
+### Verify the Keycloak configuration
 
-5. Log in to VM Launchpad and go to **Settings** > **Access Management** > **Access Mapping**. Confirm that the account
+1. In the Keycloak admin console for the `vmo` realm, select **Identity providers** from the left main menu, and confirm
+   that the provider you configured appears in the list.
+
+2. Select the provider. On the **Settings** tab, expand **Advanced settings** and confirm that **Trust Email** is
+   enabled and that **Scopes** is set to `openid profile email groups`.
+
+3. Select the **Mappers** tab and confirm that a mapper exists for each provider group you federate. Confirm that each
+   mapper uses the **Advanced Claim to Group** mapper type with **Sync mode override** set to **Force** and that its
+   **Claims** and **Group** values match the provider group and the target Keycloak group.
+
+### Verify a federated user's account
+
+Complete these steps after a federated user has completed their first brokered sign-in.
+
+1. In the Keycloak admin console, select **Users** from the left main menu, and then select the account. Confirm that
+   the **Email** field is populated and that **Email verified** is enabled.
+
+2. Select the **Groups** tab for that account, and confirm that the mapped Keycloak group is listed.
+
+3. Log in to VM Launchpad and go to **Settings** > **Access Management** > **Access Mapping**. Confirm that the account
    resolves to the VMO role and namespace scope you expect. Refer to [Access Mapping](./access-mapping.md).
 
-6. Ask the user to confirm that the resources their role grants are available.
+4. Ask the user to confirm that the resources their role grants are available.
 
 If the account appears in Keycloak with no group, the claim that the provider sent does not match the **Claims** value
 on the mapper. Compare the group name in the provider against the mapper configuration, including case.
