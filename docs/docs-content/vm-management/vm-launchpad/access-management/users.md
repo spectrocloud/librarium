@@ -142,7 +142,8 @@ fixed.
 :::info
 
 When the user belongs to a group that already carries a VMO role, an amber banner appears over the role cards listing
-the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). A role you set here does not take effect while the user remains in that group. Refer to
+the inherited role (for example, _Platform Admin is inherited from group cluster-admins_). A role you set here does not
+take effect while the user remains in that group. Refer to
 [How Effective Permissions Are Calculated](#how-effective-permissions-are-calculated) below.
 
 :::
