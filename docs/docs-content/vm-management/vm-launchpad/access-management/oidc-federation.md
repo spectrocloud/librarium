@@ -11,9 +11,9 @@ tags: ["vmo", "vm launchpad", "access management", "oidc", "okta"]
 
 PaletteAI VM Launchpad uses [Keycloak](https://www.keycloak.org/documentation) as its OIDC identity provider. If your
 organization authenticates users through an external identity provider, you can federate that provider into Keycloak
-instead of creating accounts individually on the [Users](./users.md) page. Keycloak calls this pattern identity
-brokering. Users sign in against your provider, and Keycloak issues the token that VM Launchpad and the Kubernetes API
-server consume.
+instead of creating accounts individually on the [Users](./users.md) page. Keycloak calls this pattern
+[identity brokering](https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker). Users sign in
+against your provider, and Keycloak issues the token that VM Launchpad and the Kubernetes API server consume.
 
 This page uses [Okta](https://www.okta.com) as the example provider. The same steps apply to any OIDC-compliant
 provider, though field names in the provider's administration console vary.
@@ -161,6 +161,10 @@ Return to the Keycloak admin console, on the **OpenID Connect v1.0** form you op
 
 5. Select **Save**.
 
+Refer to
+[OpenID Connect v1.0 identity providers](https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker_oidc)
+in the Keycloak documentation for the full field reference.
+
 ## Trust Email Addresses from the Provider
 
 Keycloak marks a brokered address as verified only when the identity provider is configured to trust it. **Trust Email**
@@ -186,7 +190,9 @@ you must correct each one individually on the **Users** page.
 ## Map Provider Groups to Keycloak Groups
 
 This mapper is what places a brokered user into a Keycloak group, which is what gives them a VMO role. Create one mapper
-for each group you federate.
+for each group you federate. Refer to
+[Mapping claims and assertions](https://www.keycloak.org/docs/latest/server_admin/index.html#_mappers) in the Keycloak
+documentation for the full list of mapper types and the sync-mode semantics.
 
 1. In the Keycloak admin console, select **Identity providers**, and then select your provider.
 
