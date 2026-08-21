@@ -124,6 +124,22 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+### VM Launchpad
+
+#### Features {#vm-launchpad-features-4.10.0}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-787 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
+
+- VM Launchpad adds a **Logging** page under **Settings** > **Configuration**. You can set the log level and switch the
+  log encoding to JSON so that an indexer parses the appliance logs into discrete fields, both without a pod restart,
+  and record that a central logging system collects those logs. The appliance writes that acknowledgment as a
+  `logging.forwarding.toggled` audit event that captures the previous value, the new value, and the administrator who
+  made the change, which gives compliance reviewers a dated record of when central logging was enabled. A cluster
+  log-forwarding agent that you operate, such as Splunk Connect for Kubernetes or Fluent Bit, collects the appliance
+  logs and delivers them to Splunk or another destination. Refer to
+  [Log Forwarding](../vm-management/vm-launchpad/log-forwarding.md) for more information.
+
 ### VerteX
 
 #### Features
@@ -173,6 +189,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   upload completion as soon as the transfer finishes.
 
 ### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
+
+- A new [Log Forwarding](../vm-management/vm-launchpad/log-forwarding.md) guide is now available. The guide explains how
+  to collect PaletteAI VM Launchpad appliance logs with a cluster log-forwarding agent and deliver them to Splunk or
+  another central logging system, and documents the **Logging** settings that control log verbosity, log encoding, and
+  the audit record of when an administrator enabled central logging.
 
 ### Packs
 
