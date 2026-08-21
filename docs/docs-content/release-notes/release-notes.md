@@ -11,10 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 24, 2026 - Release 4.9.x
+## August 24, 2026 - Release 4.9.48
 
 <!-- PATCH RELEASE TICKET: DOC-3123 -->
-<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE VERSION: 4.9.48 -->
 
 ### Bug Fixes
 
@@ -32,6 +32,14 @@ tags: ["release-notes"]
 
 - Fixed false "Full Repave is pending" warnings triggered by unresolved cluster profile variable macros being diffed
   against their resolved values, causing healthy clusters to incorrectly enter repave status.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.48 Palette release is 4.9.38.
+
+:::
 
 ## August 17, 2026 - Release 4.9.46
 
