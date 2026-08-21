@@ -70,6 +70,23 @@ tags: ["release-notes"]
   stopping the upgrade. Refer to [Troubleshooting the VMO Pack](../vm-management/vmo-pack/troubleshooting.md) for the
   manual procedure that applies when you upgrade to a pack version that predates this fix.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.46 Palette release is 4.9.37.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.46 Palette release is
+4.9.19. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## August 14, 2026 - Component Updates {#component-updates-2026-33}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3104 -->
@@ -198,6 +215,23 @@ The following component updates are applicable to this release:
 - Fixed vSphere PCG deployments behind a whitelist proxy hanging at `WaitingForKubeadmInit` due to the proxy CA
   certificate never being written to the control-plane VM, which caused containerd image pull failures with an x509
   certificate verification error.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.43 Palette release is 4.9.36.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.43 Palette release is
+4.9.18. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## August 7, 2026 - Component Updates {#component-updates-2026-32}
 
@@ -754,7 +788,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.38 Palette release is
+4.9.16. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
@@ -1051,6 +1086,14 @@ The following component updates are applicable to this release:
 - Fixed an issue that caused the Palette Edge Interactive Installer TUI to incorrectly select the installer boot media
   for disk-wiping when booting an Edge host from a physical USB drive flashed with the installer ISO.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.27 Palette release is 4.9.22.
+
+:::
+
 ## July 3, 2026 - Component Updates {#component-updates-2026-27}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2962 -->
@@ -1167,6 +1210,23 @@ The following component updates are applicable to this release:
   even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
   leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.24 Palette release is 4.9.21.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.24 Palette release is
+4.9.10. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## June 29, 2026 - Release 4.9.23
 
 The following component updates are applicable to this release:
@@ -1183,6 +1243,23 @@ The following component updates are applicable to this release:
 - Fixed a bug that caused the Edge Agent version 4.9.19 to incorrectly enforce password strength validation on profile
   variables for non-VMO Edge clusters, blocking cluster updates when weak passwords were present. Password strength
   checks are now restricted to VMO profile variables only, restoring the update behavior from previous Palette versions.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.23 Palette release is 4.9.20.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.23 Palette release is
+4.9.9. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.22}
 
@@ -1587,7 +1664,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.22 Palette release is
+4.9.8. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
@@ -1843,6 +1921,23 @@ The following component updates are applicable to this release:
 - Fixed redundant cluster status cache broadcasts by limiting eviction to cluster state changes, significantly reducing
   unnecessary cache reloads.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.18 Palette release is 4.9.13.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.18 Palette release is
+4.9.7. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## June 8, 2026 - Release 4.9.16
 
 The following component updates are applicable to this release:
@@ -1903,6 +1998,23 @@ The following component updates are applicable to this release:
   initiating the upgrade. Refer to
   [Scenario - Custom Certificate Handling During Upgrade](../troubleshooting/palette-upgrade.md#scenario---custom-certificate-replaced-after-upgrade)
   for more information.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.16 Palette release is 4.9.11.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.16 Palette release is
+4.9.6. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## June 5, 2026 - Component Updates {#component-updates-2026-23}
 
@@ -2253,7 +2365,8 @@ information.
 
 :::info
 
-Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.14 Palette release is
+4.9.5. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
@@ -2476,6 +2589,14 @@ The following component updates are applicable to this release:
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with static placement or
   private endpoint access to fail to deploy due to EC2 permission errors.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.8 Palette release is 4.9.7.
+
+:::
+
 ## May 11, 2026 - Release 4.9.6
 
 The following component updates are applicable to this release:
@@ -2529,6 +2650,14 @@ The following component updates are applicable to this release:
 
 - The dependencies of the Palette agent were updated to the latest versions, ensuring that it has the latest security
   patches.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.6 Palette release is 4.9.6.
+
+:::
 
 ## May 8, 2026 - Component Updates {#component-updates-2026-19}
 
@@ -2912,7 +3041,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.5 Palette release is 4.9.2.
+Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
