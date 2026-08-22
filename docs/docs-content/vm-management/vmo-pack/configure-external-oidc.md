@@ -195,7 +195,8 @@ belong to a group whose name matches the filter for that group to appear in the 
 ### Use an Existing Secret
 
 Instead of entering the client secret in the pack values, you can pre-create a Kubernetes Secret and reference it. The
-Secret must contain the `OIDC_CLIENT_SECRET` and `SESSION_KEY` keys.
+Secret must contain the `OIDC_CLIENT_SECRET` and `SESSION_KEY` keys. The `SESSION_KEY` value must be at least 32
+characters. VMO Manager fails to start if the value is shorter.
 
 ```yaml
 charts:
