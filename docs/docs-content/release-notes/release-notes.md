@@ -62,6 +62,85 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   recovery paths. You can add Kyverno directly to a cluster profile from the Palette Registry without requiring an
   external repository or a custom pack build, and receive version updates through the standard pack-update path.
 
+### PaletteAI VM Launchpad
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3131 -->
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.9.16 is now available.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-884 -->
+
+- Containerized Data Importer (CDI) certificates now use shorter lifetimes. Leaf certificates are valid for one year and
+  the certificate authority for five years, replacing the previous ten-year validity. Rotation is automatic, so no
+  manual renewal is required. On upgrade, existing 10-year certificates are replaced with new certificates that use the
+  shorter lifetimes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-902 -->
+
+- In the PaletteAI VM Launchpad appliance, the `vmo-manager` Service now uses `ClusterIP`. Existing appliance installs
+  with a `LoadBalancer` Service and external IP are automatically converted to `ClusterIP` during upgrade, and no manual
+  cleanup is required. The VMO Pack continues to support all Service types.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1011 -->
+
+- VMO Manager now validates the length of the `SESSION_KEY` value at startup and requires at least 32 characters.
+  Shorter keys weaken session cookie encryption and were previously accepted without warning. If you supply the key
+  through a pre-created Kubernetes Secret, confirm that it meets the minimum before you upgrade, because VMO Manager
+  does not start when the value is shorter. Refer to
+  [Configure External OIDC](../vm-management/vmo-pack/configure-external-oidc.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-693 -->
+
+- The installer now validates the Keycloak administrator password on fresh single-node installs before accepting the
+  value. The VMO Pack also pins the automatically generated Postgres password on first install, so redeployment does not
+  regenerate a different password. Refer to [Install VM Launchpad](../vm-management/vm-launchpad/install.md) for more
+  information.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-896 -->
+
+- Clarified boot firmware compatibility on FIPS-enabled clusters. Because the FIPS-hardened `virt-launcher` image ships
+  only the Secure Boot signed OVMF firmware, a VM that requests EFI without Secure Boot fails to start with the error
+  `EFI OVMF roms missing for booting in EFI mode with SecureBoot=false`. Enable **Secure Boot** together with **UEFI /
+  EFI Boot**, or leave both settings disabled so that the VM uses BIOS. Refer to
+  [Create a VM](../vm-management/vm-launchpad/virtual-machines/creating.md) and
+  [Template Management](../vm-management/vm-launchpad/virtual-machines/templates.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-893 -->
+
+- Documented an expected delay when you adopt a namespace. The namespace is listed as soon as you adopt it, but virtual
+  machines that already exist in it might take about five minutes to appear in VMO Manager. Refer to
+  [Namespaces](../vm-management/vm-launchpad/infrastructure/namespaces.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1052 -->
+
+- Fixed an issue where the image upload flow let you proceed when no storage class existed in the cluster. Image upload
+  is now blocked until a storage class is available.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-907 -->
+
+- Fixed contradictory role information on the user creation page. When you select a group that grants a lower privilege
+  than the default, the page no longer preselects a role that conflicts with the role the user inherits from that group.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1053 -->
+
+- Clarified access control for the **KubeVirt Configuration** page. The page is available only to users who hold
+  cluster-admin privileges and who authenticate through OIDC. Refer to
+  [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1055 -->
+
+- Fixed the authentication scope for the VNC console. The console requires an interactive UI session and is no longer
+  accessible through an API key. Refer to
+  [Manage a Virtual Machine](../vm-management/vm-launchpad/virtual-machines/managing.md#vnc-console) and
+  [API Keys](../vm-management/vm-launchpad/access-management/api-keys.md) for more information.
+
 <!-- END COMPONENT UPDATES BODY: DOC-3115. DO NOT DELETE. -->
 
 ### Packs
