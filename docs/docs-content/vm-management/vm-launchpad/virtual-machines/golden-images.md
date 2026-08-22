@@ -28,6 +28,8 @@ The following diagram illustrates this workflow.
 
 - A running PaletteAI VM Launchpad deployment.
 - A user account with the platform administrator role.
+- A storage class available in the cluster. VM Launchpad includes Piraeus/LINSTOR as the default storage backend, which
+  creates storage classes during cluster deployment. Image upload is blocked until a storage class exists.
 - An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
   Catalog** > **Golden Images**.
 - Required [packages](./packages.md) uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload

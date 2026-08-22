@@ -331,10 +331,10 @@ configuration.
 
    ### Keycloak Admin
 
-   | **Parameter**                                  | **Description**                                                                                                                           |
-   | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
-   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
+   | **Parameter**                                  | **Description**                                                                                                                                   |
+   | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`.         |
+   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. The installer validates the password before it accepts the value. This value is stored securely. |
 
    :::info
 

@@ -124,6 +124,13 @@ The following table lists every VMO permission domain and the actions each domai
 | `kubevirt`      | `read`, `write`                                             | Cluster-level KubeVirt configuration.                                                                       |
 | `admission`     | `read`, `write`                                             | Admission control policies.                                                                                 |
 
+:::info
+
+The **KubeVirt Configuration** page in the UI is additionally gated on cluster-admin privileges and OIDC authentication.
+A user who holds only the `kubevirt` domain permissions cannot open the page.
+
+:::
+
 ## Built-in Role Maintenance
 
 VM Launchpad maintains the definitions of the four built-in roles, so you do not need to take any action to keep them

@@ -34,6 +34,9 @@ platform resolves permissions live from the creator's identity record on every r
 - API keys cannot manage other API keys. Requests authenticated with an API key are rejected if they attempt to create
   or revoke keys through the API. Key lifecycle changes must originate from an interactive UI session.
 
+- API keys cannot open the [VNC console](../virtual-machines/managing.md#vnc-console). The console requires an
+  interactive UI session, so API-key-authenticated requests cannot start a console connection.
+
 :::info
 
 VM Launchpad API keys are not Keycloak refresh tokens. They work with an external identity provider or with local
@@ -125,8 +128,10 @@ curl --header "Authorization: Bearer <your_api_key>" \
      https://<vmo-url>/api/v1/vms
 ```
 
-Every VM Launchpad API endpoint accepts API keys through this header. Because the middleware matches on the `vmok_`
-prefix, API keys keep working even when the identity provider is unreachable or not configured.
+Every VM Launchpad API endpoint accepts API keys through this header, with one exception: the
+[VNC console](../virtual-machines/managing.md#vnc-console) requires an interactive UI session and cannot be opened with
+an API key. Because the middleware matches on the `vmok_` prefix, API keys keep working even when the identity provider
+is unreachable or not configured.
 
 ## Revoke an API Key
 
