@@ -140,6 +140,16 @@ templates, use a sealed and generalized golden image as the source.
     | **Machine Type**             | Override the default machine type, such as `q35`.           |
     | **SMBIOS**                   | Optionally configure UUID and serial values.                |
 
+    :::warning
+
+    On FIPS-enabled clusters, do not enable **UEFI / EFI Boot** unless you also enable **Secure Boot**. The
+    FIPS-hardened `virt-launcher` image ships only the Secure Boot signed OVMF firmware, so a VM that requests EFI with
+    Secure Boot disabled fails to start with the error
+    `EFI OVMF roms missing for booting in EFI mode with SecureBoot=false`. Either enable **Secure Boot**, which requires
+    a signed guest boot chain, or leave both settings disabled so that the VM uses BIOS.
+
+    :::
+
     </TabItem>
 
     <TabItem value="cpu-advanced" label="CPU Advanced">
