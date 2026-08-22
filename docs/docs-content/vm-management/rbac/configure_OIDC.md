@@ -67,21 +67,27 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 
 The following steps apply exclusively to clusters configured with **Custom** third-party OIDC IdPs.
 
-9. After the VMO profile deployment is completed, right-click the **Connect** button next to **Virtual Machine
-   Dashboard** and copy the link. Save this link for later use.
+9. After the VMO profile deployment is completed, locate the OIDC callback URL for the cluster.
 
-10. Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
+   The callback URL follows the form `<baseUrl>/auth/callback`, where `<baseUrl>` is the URL that users reach the
+   Virtual Machine dashboard at. When the cluster uses Palette-managed OIDC, `<baseUrl>` is the tenant apps proxy URL
+   that appears in the browser address bar when you open the dashboard, such as
+   `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`. When the cluster uses the External OIDC preset
+   on the Virtual Machine Orchestrator pack, refer to the `oidc.callbackUrl` value in the pack. Refer to
+   [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for guidance.
 
-11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For example, if you
+   Save this URL for the sign-in redirect step.
+
+10. Log in to the IdP console that is associated with the OIDC configuration used in your cluster.
+
+11. Locate the OIDC application that was used in step 5 and enable the **Refresh Token** setting. For example, if you
     are using [Okta](https://www.okta.com) as the IdP, refer to the
     [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide
     for further instructions.
 
-12. Update the **Sign-in redirect URIs** field in your IdP. Add the VMO link copied in step nine, appending
-    `/auth/callback` to its end. For example, if the link is
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=`, update it to
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to which
-    the IdP will redirect users after successful authentication.
+12. Update the **Sign-in redirect URIs** field in your IdP. Add the callback URL from step 9. For example,
+    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to
+    which the IdP redirects users after successful authentication.
 
 ## Configure Custom OIDC for VM Migration Assistant
 

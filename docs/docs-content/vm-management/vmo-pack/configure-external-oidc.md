@@ -78,6 +78,17 @@ You can reuse the same OIDC application that the cluster's Kubernetes layer uses
 The following steps use Okta console labels. Every setting has an equivalent in any OIDC-compliant IdP, though the field
 names differ.
 
+:::info
+
+When the IdP is Keycloak, VMO also requires the **Group Membership** mapper on the realm's `profile` client scope.
+Without it, VMO Manager receives an empty `groups` claim, and every `ClusterRoleBinding` with a `Group` subject silently
+fails. Palette Console SSO and Palette-managed Kubernetes clusters do not require this mapper, because they do not
+consume the `groups` claim directly. Refer to
+[Sync Keycloak Groups and Palette Teams](../../user-management/saml-sso/palette-sso-with-keycloak.md#sync-keycloak-groups-and-palette-teams)
+for the mapper configuration, including the four token-inclusion toggles that VMO requires.
+
+:::
+
 1. Log in to your IdP administration console.
 
 2. Open the OIDC application that represents VMO, or create a new one.
@@ -145,8 +156,11 @@ belong to a group whose name matches the filter for that group to appear in the 
            issuerUrl: "https://<your-okta-domain>"
            clientId: "<your-client-id>"
            clientSecret: "<your-client-secret>"
-           # Optional. Defaults to "openid,profile,email,groups". The groups scope
-           # is always requested, so removing it from this list has no effect.
+           # Optional. Defaults to "openid,profile,email,groups". Set to
+           # "openid,profile,email" when the IdP is Keycloak, which rejects
+           # "groups" as an unknown scope. Groups still reach the token when
+           # the realm has the Group Membership mapper configured on the
+           # profile client scope.
            scopes: ""
            # Optional. Set only when the UI is behind a proxy and the default
            # <baseUrl>/auth/callback is not reachable.
