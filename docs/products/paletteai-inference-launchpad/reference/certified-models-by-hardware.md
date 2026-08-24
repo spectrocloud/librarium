@@ -1,0 +1,87 @@
+---
+id: certified-models-by-hardware
+title: Certified Models by Hardware
+description: >
+  Reference table that maps each supported NVIDIA and AMD GPU configuration to the LLM models certified for PaletteAI
+  Inference Launchpad.
+sidebar_label: Certified Models by Hardware
+sidebar_position: 4
+tags:
+  - paletteai-inference-launchpad
+  - reference
+  - models
+  - hardware
+---
+
+Spectro Cloud certifies a small set of large language models (LLMs) for the hardware that PaletteAI Inference Launchpad
+supports. A _certified_ model is one that Spectro Cloud has validated to run correctly on the listed GPU configuration.
+For what certification covers, refer to [Model Certification](../explanation/model-certification.md).
+
+:::info
+
+This is not an exclusive list. You can bring your own model as long as it fits within the available GPU resources. Refer
+to [Bring Your Own Model](../how-to-guides/bring-your-own-model.md). If you want Spectro Cloud to certify a model for
+your hardware, [contact Spectro Cloud](https://www.spectrocloud.com/contact).
+
+:::
+
+<Tabs queryString="vendor">
+
+<TabItem label="NVIDIA" value="nvidia">
+
+| **GPU configuration** | **GLM 5.2** | **DeepSeek v4 Pro** | **Kimi 2.7** | **Gemma 4** |
+| --------------------- | :---------: | :-----------------: | :----------: | :---------: |
+| 4 x H100              |     ❌      |         ❌          |      ❌      |     ✅      |
+| 8 x H100              |     ❌      |         ❌          |      ❌      |     ✅      |
+| 4 x H200              |     ❌      |         ❌          |      ❌      |     ✅      |
+| 8 x H200              |     ✅      |         ✅          |      ✅      |     ✅      |
+| 4 x B200              |     ❌      |         ❌          |      ❌      |     ✅      |
+| 8 x B200              |     ✅      |         ✅          |      ✅      |     ✅      |
+
+</TabItem>
+
+<TabItem label="AMD" value="amd">
+
+| **GPU configuration** | **GLM 5.2** | **DeepSeek v4 Pro** | **Kimi 2.7** | **Gemma 4** |
+| --------------------- | :---------: | :-----------------: | :----------: | :---------: |
+| 4 x MI300X            |     ❌      |         ❌          |      ✅      |     ✅      |
+| 8 x MI300X            |     ✅      |         ❌          |      ✅      |     ✅      |
+| 4 x MI325X            |     ✅      |         ❌          |      ✅      |     ✅      |
+| 8 x MI325X            |     ✅      |         ❌          |      ❌      |     ✅      |
+| 4 x MI350X            |     ✅      |         ✅          |      ❌      |     ✅      |
+| 8 x MI350X            |     ✅      |         ✅          |      ❌      |     ✅      |
+| 4 x MI355X            |     ✅      |         ✅          |      ❌      |     ✅      |
+| 8 x MI355X            |     ✅      |         ✅          |      ❌      |     ✅      |
+
+</TabItem>
+
+</Tabs>
+
+## Vision Models
+
+The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To
+answer questions about images, deploy a small vision model next to the text model and turn on vision preprocessing.
+
+The certified pairing is **GLM 5.2** as the text model and **Qwen 3.5 9B multimodal** as the vision model. Spectro Cloud
+has validated this pairing on the following configurations.
+
+| **GPU configuration** | **Text model** | **Vision model**       | **Validated** |
+| --------------------- | -------------- | ---------------------- | :-----------: |
+| 8 x MI325X            | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
+| 8 x B200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
+| 8 x H200              | GLM 5.2        | Qwen 3.5 9B multimodal |      ✅       |
+
+On each configuration, the text model runs at tensor-parallel width 8 across all GPUs, and the vision model runs at
+tensor-parallel width 4 across the first 4 GPUs. Both models share the same physical devices; the appliance isolates
+their memory budgets so they do not compete for the same VRAM allocation.
+
+On each shared GPU, the text model reserves approximately 86 percent of VRAM and the vision model reserves a further 4
+percent, leaving roughly 10 percent headroom. The remaining memory is not spare capacity for an additional large model.
+
+For how the request path works, refer to [Vision Preprocessing](../explanation/vision-preprocessing.md). To deploy the
+pairing, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+
+The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as `glm-5.2-shared`
+and `qwen-3.5-9B-shared`. Each carries per-GPU-family variants for MI325X, B200, and H200, with the memory-budget,
+tensor-parallel, and engine-argument settings that were validated on the hardware above. Operators do not edit these
+directly; deploying the two catalog entries is enough.

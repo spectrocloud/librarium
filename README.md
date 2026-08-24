@@ -50,8 +50,10 @@ Create a branch for your changes.
 git checkout -b <branch_name>
 ```
 
-Most documentation pages are in the [docs/docs-content](./docs/docs-content/) folder. Make changes to the relevant
-Markdown or MDX files, then preview them locally.
+Most documentation pages are in the [docs/docs-content](./docs/docs-content/) folder. Products that release on their own
+schedule live in [docs/products](./docs/products/) instead, because they are versioned independently of Palette. Refer
+to [Product Documentation Versions](./docs/contributing/release-process.md#product-documentation-versions) for how that
+works. Make changes to the relevant Markdown or MDX files, then preview them locally.
 
 ```shell
 make start
@@ -94,14 +96,17 @@ The content in this repository requires approval from the documentation team. Ap
 
 ## Repository References
 
-| File or directory                                         | Description                                                 |
-| --------------------------------------------------------- | ----------------------------------------------------------- |
-| [docs/docs-content](./docs/docs-content/)                 | Main documentation content.                                 |
-| [docs/api-content](./docs/api-content/)                   | API documentation content generated from OpenAPI specs.     |
-| [\_partials](./_partials/)                                | Reusable MDX partials.                                      |
-| [static/assets/docs/images](./static/assets/docs/images/) | Documentation image assets.                                 |
-| [CODEOWNERS](./CODEOWNERS)                                | Pull request ownership and approval rules.                  |
-| [Makefile](./Makefile)                                    | Local development, validation, and release helper commands. |
+| File or directory                                         | Description                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| [docs/docs-content](./docs/docs-content/)                 | Main documentation content.                                  |
+| [docs/api-content](./docs/api-content/)                   | API documentation content generated from OpenAPI specs.      |
+| [docs/products](./docs/products/)                         | Independently versioned product documentation.               |
+| [productDocs.js](./productDocs.js)                        | Registry of independently versioned products.                |
+| `<product>_versioned_docs`                                | Frozen copies of a product's earlier documentation versions. |
+| [\_partials](./_partials/)                                | Reusable MDX partials.                                       |
+| [static/assets/docs/images](./static/assets/docs/images/) | Documentation image assets.                                  |
+| [CODEOWNERS](./CODEOWNERS)                                | Pull request ownership and approval rules.                   |
+| [Makefile](./Makefile)                                    | Local development, validation, and release helper commands.  |
 
 ## Related GitHub Repositories
 

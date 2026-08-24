@@ -9,10 +9,14 @@ RELEASE_NOTES_HEADING_TEMPLATE_FILE="scripts/release/templates/release-notes-hea
 RELEASE_NOTES_PARAMETERISED_FILE="scripts/release/release-notes-output.md"
 RELEASE_NOTES_HEADING_PARAMETERISED_FILE="scripts/release/release-notes-heading-output.md"
 
-if ! check_env "RELEASE_DATE" || 
-   ! check_env "RELEASE_NAME" ||  
-   ! check_env "RELEASE_CANVOS" ||  
-   ! check_env "RELEASE_TERRAFORM_VERSION" ||  
+# RELEASE_CANVOS and RELEASE_PALETTE_CLI_VERSION fill the Edge and Automation callouts. Both are
+# required, because generate_parameterised_file substitutes an unset variable with an empty string
+# and would leave a sentence that names no version rather than a visible placeholder.
+if ! check_env "RELEASE_DATE" ||
+   ! check_env "RELEASE_NAME" ||
+   ! check_env "RELEASE_CANVOS" ||
+   ! check_env "RELEASE_PALETTE_CLI_VERSION" ||
+   ! check_env "RELEASE_TERRAFORM_VERSION" ||
    ! check_env "RELEASE_VERSION" ; then
     echo "‼️  Skipping generate $RELEASE_NOTES_FILE due to missing environment variables. ‼️"
     exit 0
