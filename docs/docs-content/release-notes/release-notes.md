@@ -122,6 +122,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Edge workflows have been updated to Kairos v4.1.2 with `kairos-init` v0.16.x. Day-1 and Day-2 upgrades from earlier
   Kairos builds are supported.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8675 -->
+
+- The Palette TUI landing page now signposts initial user setup. When no login user exists on the Edge host, the landing
+  page displays the yellow warning **Setup required: press F2 to create login user for ssh and LocalUI**, and the footer
+  reads **`<F2> Create login`** instead of **`<F2> Customize`**. Both revert automatically once a login user is created.
+  Previously, the landing page did not indicate that a user account was missing, so the F2 shortcut for creating the
+  initial login was not discoverable. Refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md)
+  for more information.
+
 #### Bug Fixes
 
 ### VerteX
