@@ -112,7 +112,8 @@ Deploys that are still in progress on other nodes continue. Deploy the replaceme
 2. Send a request that names the replacement, and confirm you receive a successful response.
 3. Open [View Client Usage](./view-client-usage.md) and confirm the replacement records new requests.
 
-Client routing and quotas survive a remove-then-deploy. Refer to [Request Routing](../explanation/architecture.md#request-routing).
+Client routing and quotas survive a remove-then-deploy. Refer to
+[Request Routing](../explanation/architecture.md#request-routing).
 
 ## Next Steps
 
