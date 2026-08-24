@@ -376,9 +376,52 @@ jobs:
         retention-days: 1  
 
 
+  head_ref_check:
+    name: Confirm Head Branch Still Exists
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    # DOC-3108 Option B — a `labeled` event on a closed PR whose branch has already
+    # been deleted still fires this workflow. If the publish step below runs after that,
+    # it writes `reports/<sanitised-head-ref>` under a name that `clean-up-report.yaml`
+    # can never prune (the delete event has already happened), and posts a live report
+    # URL comment on the closed PR that stays reachable for the report's retention
+    # period. Query the remote for the branch here and gate `publish_report` on the
+    # result so the orphan is never created in the first place. The scheduled sweep in
+    # `reconcile-orphan-reports.yaml` still covers pre-DOC-3108 orphans and the narrow
+    # window where the branch disappears between this check and the push.
+    permissions:
+      contents: read
+    outputs:
+      branch_present: ${{ steps.check.outputs.branch_present }}
+    steps:
+      - name: Check that head branch still exists on origin
+        id: check
+        # Security: pass untrusted branch names through env, not through shell
+        # interpolation. `git ls-remote` needs no checkout, so this is a cheap probe.
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          REPO_URL: https://github.com/${{ github.repository }}.git
+        run: |
+          set -euo pipefail
+
+          if [ -z "$HEAD_REF" ]; then
+            echo "::notice::Empty head_ref; skipping publish."
+            printf 'branch_present=false\n' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git ls-remote --exit-code --heads "$REPO_URL" "refs/heads/$HEAD_REF" >/dev/null 2>&1; then
+            printf 'branch_present=true\n' >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Head branch '$HEAD_REF' no longer exists on origin; skipping publish to avoid orphaning reports/<sanitised>. The scheduled sweep in reconcile-orphan-reports.yaml will not have to fix this one."
+            printf 'branch_present=false\n' >> "$GITHUB_OUTPUT"
+          fi
+
+
   publish_report:
     name: Publish HTML Report
-    needs: [run-ci, take-screenshots, merge-reports]
+    needs: [run-ci, take-screenshots, merge-reports, head_ref_check]
+    if: needs.head_ref_check.outputs.branch_present == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # Pushes the report to gh-pages and posts the report URL comment on the PR.
