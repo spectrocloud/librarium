@@ -21,7 +21,7 @@ concurrency:
 # Keep this list in sync with the Dependabot secrets configured on the repository.
 #
 # Deliberately omitted. Do not re-add these for parity with the other build workflows:
-#   AWS_*                          Only used by the S3 sync steps in release.yaml.
+#   AWS_*                          Only used by the S3 sync steps in release.yaml and other workflows.
 #   APPZI_TOKEN, SEERS_CMP_KEY     Interpolated into <script> tags. Only matter for a deployed site.
 #   FULLSTORY_ORGID                Not read by the build at all. The org ID is hardcoded in
 #                                  static/scripts/fullstory.js.
