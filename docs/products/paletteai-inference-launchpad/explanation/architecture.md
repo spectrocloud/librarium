@@ -63,8 +63,8 @@ single per-model endpoint. The appliance treats unknown GPU capacity as unusable
 which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
 [Model Placement](./model-placement.md).
 
-To put a newer version or a different model on a node, remove the current model from that node, then deploy the
-replacement. There is no in-place replace. Removing the model from one node leaves it serving on the others. Refer to
+The appliance does not support in-place replacement: changing what a node serves requires removing the current model and
+then deploying the replacement. Removing the model from one node leaves it serving on the others. Refer to
 [Replace a Model](../how-to-guides/replace-a-model.md).
 
 ## Request Routing

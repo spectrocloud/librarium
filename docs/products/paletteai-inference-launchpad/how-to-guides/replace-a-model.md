@@ -19,11 +19,6 @@ Use this procedure in either of the following situations:
   deploy the newer version.
 - **Different model.** Remove the model that occupies the node, then deploy the model you want.
 
-You can change one node and leave the others running the previous model, or you can remove the model from every node and
-deploy the replacement everywhere. The node you change stops serving the removed model until the replacement is ready.
-Requests that named the removed model fall back to the default model, or fail if there is no default. For details on how
-the default is chosen, refer to [The Default Model](../explanation/architecture.md#the-default-model).
-
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
@@ -37,19 +32,14 @@ the default is chosen, refer to [The Default Model](../explanation/architecture.
 
 Review these points before you remove anything.
 
-- **Other nodes.** Removing a model from one node leaves it running on every other node that still serves it. Those
-  nodes are not interrupted.
-- **Default model.** Removing the cluster default shows a warning before you confirm. You can still remove it. Requests
-  that do not name a model then have no fallback until you deploy a replacement and switch the default. After you remove
-  it, the **Overview** page raises an incident. After the replacement is serving, switch the default. Refer to
-  [Switch the Default Model](./set-the-default-model.md). Removing the default from the cluster requires you to type the
-  model name to confirm.
-- **Routing and quotas.** Client routing rules and quotas stay in place. You do not recreate them after a
-  remove-and-deploy. If the replacement keeps the same name, those rules continue to work. If the replacement uses a
-  different name, update any client tier maps that pointed at the old name. Refer to
-  [Manage a Client's Model Access](./manage-client-model-access.md).
-- **Last node.** Removing a model from its last node means it is no longer deployed anywhere. You must deploy it again
-  to serve it.
+- **Other nodes.** Expect the model to keep serving on every other node that runs it. Refer to
+  [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
+- **Default model.** After removing the cluster default, switch the default to the replacement once it is serving. Refer
+  to [The Default Model](../explanation/architecture.md#the-default-model).
+- **Routing and quotas.** If the replacement uses a different name than the current model, update any client tier maps
+  that pointed at the old name. Refer to [Request Routing](../explanation/architecture.md#request-routing).
+- **Last node.** Deploy the replacement after removing the model from its last node, or the model is no longer deployed
+  anywhere. Refer to [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
 
 ## Replace the Model on One Node
 
