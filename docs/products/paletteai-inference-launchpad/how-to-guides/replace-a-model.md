@@ -112,8 +112,7 @@ Deploys that are still in progress on other nodes continue. Deploy the replaceme
 2. Send a request that names the replacement, and confirm you receive a successful response.
 3. Open [View Client Usage](./view-client-usage.md) and confirm the replacement records new requests.
 
-Client routing rules and quotas continue to apply without you setting them again. If the replacement uses a different
-name than the model it replaced, update any client tier maps that pointed at the old name.
+Client routing and quotas survive a remove-then-deploy. Refer to [Request Routing](../explanation/architecture.md#request-routing).
 
 ## Next Steps
 
