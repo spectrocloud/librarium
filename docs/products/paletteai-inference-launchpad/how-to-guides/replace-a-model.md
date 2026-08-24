@@ -7,34 +7,33 @@ description:
 hide_table_of_contents: false
 sidebar_position: 1.2
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
-keywords: ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights", "remove", "deploy"]
+keywords: ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights", "remove", "deploy", "day-2"]
 ---
 
-This guide explains how to put a different model, or a newer version of a model you already serve, onto a node. There is
-no in-place replace and no rolling upgrade. You remove the current model from the node, then deploy the model you want
-from **Deploy New Model**.
+Put a newer version of a model you already serve, or a different model, onto a node. There is no in-place replace and no
+rolling upgrade. Remove the current model from the node, then deploy the model you want from **Deploy New Model**.
 
-Use this procedure for both of the following:
+Use this procedure in either of the following situations:
 
-- **Same model, newer version.** The newer version is already in the catalog. You remove the version that is serving,
-  then deploy the newer version.
-- **Different model.** You remove the model that occupies the node, then deploy the model you want.
+- **Same model, newer version.** The newer version is already in the catalog. Remove the version that is serving, then
+  deploy the newer version.
+- **Different model.** Remove the model that occupies the node, then deploy the model you want.
 
 You can change one node and leave the others running the previous model, or you can remove the model from every node and
 deploy the replacement everywhere. The node you change stops serving the removed model until the replacement is ready.
-Requests that named the removed model fall back to the default model, or fail if there is no default. For how the
-default is chosen, refer to [The Default Model](../explanation/architecture.md#the-default-model).
+Requests that named the removed model fall back to the default model, or fail if there is no default. For details on how
+the default is chosen, refer to [The Default Model](../explanation/architecture.md#the-default-model).
 
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
-- The replacement model already in the appliance catalog, with its weights on every node you will deploy to. For a newer
-  version that is not in the catalog yet, upload it first. Refer to [Upload a Model](./upload-a-model.md). A node that
-  does not have the model's weights cannot be selected.
+- The replacement model already in the appliance catalog, with its weights on every node that should serve it. For a
+  newer version that is not in the catalog yet, upload it first. Refer to [Upload a Model](./upload-a-model.md). A node
+  that does not have the model's weights is not selectable.
 - Enough GPU capacity on the target node after you remove the current model. To confirm support, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
-## Before You Remove a Model
+## Considerations
 
 Review these points before you remove anything.
 
@@ -60,7 +59,7 @@ Review these points before you remove anything.
 
 3. On the node that should run the replacement, open the three-dot menu and select **Remove**.
 
-4. Review the preview. It states that the appliance will remove the model from that node and stop serving it.
+4. Review the preview. It states that the appliance removes the model from that node and stops serving it.
 
 5. Select **Confirm & apply**.
 
@@ -73,7 +72,7 @@ Review these points before you remove anything.
 
 1. From the left main menu, select **Cluster**, and then select the **Models** tab.
 
-2. On the model row, select the trash control. The **Remove model from cluster** dialog opens.
+2. On the model row, select the trash icon. The **Remove model from cluster** dialog opens.
 
 3. Confirm that you intend to stop the model on every node. If it is the default model, the dialog warns you and asks
    you to type the model name.
@@ -116,10 +115,15 @@ That node's deploy stops. The node is free to deploy to again, and the model you
 Deploys that are still in progress on other nodes continue. Deploy the replacement onto the freed node again from
 **Deploy New Model**.
 
-## After the Change
+## Verify the Replacement
 
-New requests are counted against the replacement. Refer to [View Client Usage](./view-client-usage.md). Client routing
-and quotas continue to apply without you setting them again.
+1. From the left main menu, select **Cluster**, and then select the **Models** tab. Confirm the replacement is listed as
+   serving on every node you deployed to.
+2. Send a request that names the replacement, and confirm you receive a successful response.
+3. Open [View Client Usage](./view-client-usage.md) and confirm the replacement records new requests.
+
+Client routing rules and quotas continue to apply without you setting them again. If the replacement uses a different
+name than the model it replaced, update any client tier maps that pointed at the old name.
 
 ## Next Steps
 
