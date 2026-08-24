@@ -55,7 +55,7 @@ dialog. For why you would pin a model to some nodes and not others, refer to
    snapshot. A node you add to the cluster later does not receive this model until you add it, as described in
    [Add a Model to More Nodes](#add-a-model-to-more-nodes).
 
-7. Select **Deploy**, review the deployment preview, and then select **Confirm & Apply**.
+7. Select **Deploy**, review the deployment preview, and then select **Confirm & apply**.
 
 The appliance writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready
 stages on each chosen node. For that lifecycle, refer to
@@ -110,7 +110,7 @@ serve the model stay selected and show **Already deployed**.
 3. Select the same model. In **Nodes**, already serving nodes are locked with **Already deployed**. Select each
    additional eligible node.
 
-4. Select **Deploy**, review the preview, and then select **Confirm & Apply**.
+4. Select **Deploy**, review the preview, and then select **Confirm & apply**.
 
 The appliance creates an engine on each newly chosen node and leaves the existing engines and the model's endpoint
 alone. Traffic continues on the nodes that were already serving.
