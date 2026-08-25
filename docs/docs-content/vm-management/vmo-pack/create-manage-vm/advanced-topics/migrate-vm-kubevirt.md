@@ -97,10 +97,9 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
   - The Palette CLI must have access to both the VMO cluster and the machines to be migrated.
 - The kubectl command-line tool should also be installed. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
-- We recommend providing a
-  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination
-  VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
+- We recommend providing a VMware Virtual Disk Development Kit (VDDK) image for the migration. This will significantly
+  speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the
+  source environment, transfer the data, and write it to the target storage.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
@@ -109,8 +108,8 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
     <details>
     <summary> Example steps to build and upload VDDK image </summary>
 
-    1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
+       required.
 
     2. Decompress the downloaded image.
 
