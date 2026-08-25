@@ -195,12 +195,57 @@ charts:
 
 ## Grant Access to Groups
 
-VMO Manager creates four cluster roles when it starts. Refer to
-[VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for a description of each role and the permissions it
-grants.
+Two authorization layers govern VMO access, and both must recognize the user's IdP group for a session to reach every
+part of the product.
 
-Bind these roles to your IdP groups with standard `ClusterRoleBinding` resources. The group names must match exactly
-what the IdP emits in the groups claim, including any prefix that the API server was started with.
+- **VMO IAM roles** control what the UI and API expose to the session, such as which pages are visible and which VMO
+  actions the session can invoke. Four built-in roles (Platform Admin, Editor, Operator, Viewer) map to fine-grained VMO
+  permissions. VMO Manager checks every request against this layer first.
+- **Kubernetes RBAC** controls the writes VMO issues to the Kubernetes API server on the user's behalf, along with any
+  direct `kubectl` access the user makes. Four `spectro-vm-*` cluster roles cover the common access patterns.
+
+The two layers are complementary, not redundant. VMO IAM decides what the UI exposes. Kubernetes RBAC decides what the
+API server accepts. Cluster-wide Settings pages require both layers to recognize the user's group. Refer to
+[VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for the full role catalog and permission list.
+
+### VMO IAM Roles
+
+VMO Manager seeds four group mappings when the pack starts. If your IdP group name exactly matches one of the following,
+users in that group receive the matching VMO role automatically without further configuration.
+
+| **IdP group name** | **VMO role**   | **What the user can do**                                                                                                                                                                                                         |
+| ------------------ | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cluster-admins`   | Platform Admin | Full platform control. Every VMO permission, including Users, Groups, Settings, Infrastructure CRUD, and all VM, template, network, storage, namespace, and package operations.                                                  |
+| `vmo-editors`      | Editor         | VM workflows and Image Catalog. VM create, update, delete, operate, and snapshot. Templates and packages read and write. Network, storage, and namespace read for the create-VM wizard. No infrastructure write and no Settings. |
+| `vmo-operators`    | Operator       | Day-to-day VM operations. VM read, operate, snapshot, and restore. Templates, dashboards, audit, and system or monitoring read. No writes.                                                                                       |
+| `cluster-viewers`  | Viewer         | Read-only. VM, template, dashboard, audit, and system or monitoring reads only. No operate, no snapshot, no writes.                                                                                                              |
+
+If your IdP group is named something other than the four above, users in it do not receive a VMO role by default. Extend
+the matching `VMORole` custom resource to include your group name.
+
+```shell
+kubectl --namespace vm-dashboard edit vmorole vmo-platform-admin
+```
+
+Under `spec`, add your IdP group name to the `groupMappings` list.
+
+```yaml
+spec:
+  groupMappings:
+    - cluster-admins # keep the default
+    - platform-team # your IdP group name
+```
+
+Save the change. The user must sign out and sign in again for the new mapping to take effect.
+
+Per-user mapping is also supported when a group is unavailable or too broad. Set `userMappings` instead of
+`groupMappings`, and provide the value that appears in the token's `email`, `sub`, or `preferred_username` claim.
+
+### Kubernetes RBAC
+
+VMO Manager also creates four Kubernetes cluster roles when it starts. Bind these roles to your IdP groups with standard
+`ClusterRoleBinding` resources. The group names must match exactly what the IdP emits in the groups claim, including any
+prefix that the API server was started with.
 
 1. Open a terminal and set the `KUBECONFIG` environment variable to point at your cluster's kubeconfig file.
 
@@ -254,6 +299,16 @@ To keep these bindings in place when a cluster is rebuilt, add them as a manifes
 the VMO pack. Refer to
 [Create a Manifest Add-on Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
 for guidance.
+
+:::
+
+:::info
+
+For cluster-wide Settings pages to work, both authorization layers must recognize the same group name. Choosing an IdP
+group name that lines up with the [VMO IAM seeded defaults](#vmo-iam-roles) (such as `cluster-admins` for administrators
+or `vmo-editors` for editors) means a single group grants both the VMO role from the seeded mapping and the Kubernetes
+RBAC from the `ClusterRoleBinding` above. For a custom name, add it to both the `VMORole` `groupMappings` list and the
+`ClusterRoleBinding` subject.
 
 :::
 

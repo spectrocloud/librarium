@@ -240,6 +240,12 @@ Verify that `oidc.issuerUrl`, `oidc.clientId`, `oidc.clientSecret`, and `oidc.ca
 callback URL must match the redirect URI registered with your IdP and must be reachable from the user's browser. Confirm
 that `platform.baseUrl` matches the URL that users enter in the browser.
 
+If the UI reads **Authentication service unavailable** rather than redirecting to the IdP, the OIDC provider failed to
+initialize because the pack has no issuer URL. Refer to
+[Authentication Service Unavailable at Sign-in](./configure-external-oidc.md#scenario---authentication-service-unavailable-at-sign-in)
+for the fix, which typically involves setting `palette.managedOidc: false` and populating the `oidc.*` values explicitly
+when the IdP is external.
+
 ### Scenario - No One Can Sign In After Selecting an Option
 
 The **Keycloak** and **External OIDC** options turn local authentication off, so an IdP outage or a misconfigured issuer
