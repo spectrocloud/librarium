@@ -12,6 +12,12 @@ git checkout -b <branch_name>
 
 Make changes to any markdown files in the [`docs/docs-content`](../docs-content/) folder.
 
+Products that release on their own schedule are the exception. Their documentation lives in `docs/products/` and is
+versioned independently of Palette, so each one has its own version dropdown in the navigation bar. Always edit the
+current copy under `docs/products/`, never the frozen copies under `<product>_versioned_docs/`, unless you are
+deliberately correcting an already-released version. Refer to
+[Product Documentation Versions](./release-process.md#product-documentation-versions) for more information.
+
 Start the local development server and preview your changes by navigating to the documentation page you modified. You
 can start the local development server by issuing the following command:
 

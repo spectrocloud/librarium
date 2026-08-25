@@ -18,9 +18,16 @@ export default function PartialsComponent(details: ComponentProperties): React.R
   // Get the version this page is on.
   const ver: string = GetVersion();
 
-  // Construct the map key including the version
-  const mapKey = getMapKey(ver, details.category, details.name);
-  const foundPartial = AllPartials[mapKey];
+  // Prefer a partial defined for this exact version, then fall back to the "current" one.
+  //
+  // A versioned docs collection whose partials have not been versioned alongside it -- which is
+  // every collection today, since versioned_partials/ is only generated for the default
+  // collection -- would otherwise fail the build on every frozen page that uses a partial.
+  // Falling back makes partials shared by default, with a versioned override remaining opt-in:
+  // drop a partial into versioned_partials/version-<v>/ and it wins for that version.
+  const foundPartial =
+    AllPartials[getMapKey(ver, details.category, details.name)] ??
+    AllPartials[getMapKey("current", details.category, details.name)];
   if (!foundPartial) {
     throw new Error(
       "No partial found for name "

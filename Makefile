@@ -12,8 +12,6 @@ CHANGED_FILES=$(shell \
 
 TEMP_DIR=$(shell $TMPDIR)
 
-CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
-
 ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 
 # Find all *.md files in docs, cut the prefix ./ 
@@ -102,10 +100,16 @@ init: ## Initialize npm dependencies
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npm run prepare
 
+# SHARP_IGNORE_GLOBAL_LIBVIPS forces sharp to use its prebuilt binaries instead of compiling from source.
+# Without it, sharp prefers any compatible libvips it finds on the system (for example a Homebrew `vips`
+# install), which pulls in node-gyp and a C++ toolchain. That source build is unreliable here because the
+# nested sharp copies under @argos-ci/cli and @argos-ci/core resolve their node-addon-api gyp include to
+# the same generated makefile, so building them concurrently races and fails with
+# "No rule to make target `Release/nothing.a'". CI has no global libvips and so never hits this.
 ci-local: ## Initialize npm dependencies for local development
 	@echo "initializing npm dependencies for local development"
 	npm ci --ignore-scripts
-	npm_config_ignore_scripts=false npm rebuild sharp
+	SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_ignore_scripts=false npm rebuild sharp
 
 start: ## Start a local development server
 	npm run start
@@ -292,23 +296,36 @@ pdf-local: ## Generate PDF from local docs
 
 verify-url-links:
 	@echo "Checking for broken external URLs in markdown files..."
-	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	@npx linkinator $(VERIFY_URL_PATHS) --config ./linkinator/linkinator.config.json > temp_report.csv && sleep 2
-	@grep -E 'https?://' temp_report.csv > filtered_report.csv
-	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_report.csv > link_report.csv && rm temp_report.csv filtered_report.csv
+	@rm -f link_report.csv
+	@# linkinator exits 1 when it finds broken links, which is the outcome this target
+	@# exists to capture. Tolerate it, then fail below if no report was produced at all.
+	@npx linkinator $(VERIFY_URL_PATHS) --config ./linkinator/linkinator.config.json > temp_report.csv || true
+	@sleep 2
+	@test -s temp_report.csv || { echo "linkinator produced no output"; exit 1; }
+	@# grep exits 1 when it matches nothing, which here just means "no broken links".
+	@grep -E 'https?://' temp_report.csv > filtered_report.csv || true
+	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_report.csv > link_report.csv || true
+	@rm -f temp_report.csv filtered_report.csv
 
 verify-rate-limited-links:
 	@echo "Checking for broken URLs in security-bulletins and oss-licenses markdown files..."
-	@rm link_rate_limit_report.csv || echo "No rate limited report exists. Proceeding to scan step"
+	@rm -f link_rate_limit_report.csv
 	@echo "Checking the following paths: $(RATE_LIMITED_FILES_LIST)"
-	@npx linkinator $(RATE_LIMITED_FILES_LIST) --config ./linkinator/linkinator-rate-limit.config.json  > temp_rate_limit_report.csv && sleep 2
-	@grep -E 'https?://' temp_rate_limit_report.csv > filtered_rate_limit_report.csv
-	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_rate_limit_report.csv > link_rate_limit_report.csv && rm temp_rate_limit_report.csv filtered_rate_limit_report.csv
+	@npx linkinator $(RATE_LIMITED_FILES_LIST) --config ./linkinator/linkinator-rate-limit.config.json  > temp_rate_limit_report.csv || true
+	@sleep 2
+	@test -s temp_rate_limit_report.csv || { echo "linkinator produced no output"; exit 1; }
+	@grep -E 'https?://' temp_rate_limit_report.csv > filtered_rate_limit_report.csv || true
+	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_rate_limit_report.csv > link_rate_limit_report.csv || true
+	@rm -f temp_rate_limit_report.csv filtered_rate_limit_report.csv
 
 verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
 	@echo "Checking for broken external URLs in CI environment..."
-	@rm link_report.json || echo "No report exists. Proceeding to scan step"
-	@npx linkinator $(VERIFY_URL_PATHS) --config ./linkinator/linkinator-ci.config.json  > temp_report.json
+	@rm -f scripts/link_report.json
+	@# linkinator exits 1 when it finds broken links, which is the outcome this target
+	@# exists to capture. Tolerate it, then fail below if the report is unusable, so a
+	@# genuine linkinator failure is still loud.
+	@npx linkinator $(VERIFY_URL_PATHS) --config ./linkinator/linkinator-ci.config.json  > temp_report.json || true
+	@jq -e 'has("links")' temp_report.json > /dev/null || { echo "linkinator produced no usable report"; exit 1; }
 	@# Use jq to filter out links that do not start with http or https and keep only broken links
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_report.json > filtered_report.json
 	@rm temp_report.json
@@ -316,9 +333,10 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 
 verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
 	@echo "Checking for broken URLs in security-bulletins and oss-licenses markdown files in CI environment..."
-	@rm link_rate_limit_report.json || echo "No rate limited report exists. Proceeding to scan step"
+	@rm -f scripts/link_rate_limit_report.json
 	@echo "Checking the following paths: $(RATE_LIMITED_FILES_LIST)"
-	@npx linkinator $(RATE_LIMITED_FILES_LIST) --config ./linkinator/linkinator-rate-limit-ci.config.json  > temp_rate_limit_report.json
+	@npx linkinator $(RATE_LIMITED_FILES_LIST) --config ./linkinator/linkinator-rate-limit-ci.config.json  > temp_rate_limit_report.json || true
+	@jq -e 'has("links")' temp_rate_limit_report.json > /dev/null || { echo "linkinator produced no usable report"; exit 1; }
 	@# Use jq to filter out links that do not start with http or https and keep only broken links
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_rate_limit_report.json > filtered_rate_limit_report.json
 	@rm temp_rate_limit_report.json
@@ -395,11 +413,9 @@ init-release:
 	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
 	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_DEPRECATED=" .env || echo "export RELEASE_EDGE_CLI_DEPRECATED=false" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
