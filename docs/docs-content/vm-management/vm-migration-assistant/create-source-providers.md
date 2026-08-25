@@ -48,10 +48,9 @@ Machines (VMs) that need to be migrated.
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
 
-- A
-  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0)
-  is required for migrations. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from
-  the source environment, transfer the data, and write it to the target storage.
+- A VMware Virtual Disk Development Kit (VDDK) image is required for migrations. The migration engine uses VDDK on the
+  destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the
+  target storage.
 
   - The VDDK version used must be **8.0.2.1** or earlier.
 
@@ -68,8 +67,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Non-Airgap" value="non-airgap">
 
-    1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0).
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
+       required.
 
     2. Decompress the downloaded image.
 
@@ -108,8 +107,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0).
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
+       required.
 
     2. Copy or move the VDDK image to another Linux environment inside your airgap environment.
 
