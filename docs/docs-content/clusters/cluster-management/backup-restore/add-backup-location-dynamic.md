@@ -166,7 +166,7 @@ AWS account.
    backup IAM role you just created so the deployment IAM principal can also assume it. This step applies only when the
    backup role is separate from the role used for cluster deployment. If the same role serves both, no change is needed.
 
-   To learn how to extend the trust policy for static credentials, refer to 
+   To learn how to extend the trust policy on the IAM role for this scenario, refer to 
    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials).
 
 9. Review the details of the newly created IAM role.
@@ -553,7 +553,7 @@ multiple cloud accounts.
    backup IAM role you just created so the deployment IAM principal can also assume it. This step applies only when the
    backup role is separate from the role used for cluster deployment. If the same role serves both, no change is needed.
 
-   To learn how to extend the trust policy for static credentials, refer to 
+   To learn how to extend the trust policy on the IAM role for this scenario, refer to 
    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials).
 
 9. Review the details of the newly created IAM role in AWS Account B.
