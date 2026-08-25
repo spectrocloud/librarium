@@ -166,7 +166,7 @@ AWS account.
    backup IAM role you just created so the deployment IAM principal can also assume it. This step applies only when the
    backup role is separate from the role used for cluster deployment. If the same role serves both, no change is needed.
 
-   To learn how to extend the trust policy on the IAM role for this scenario, refer to 
+   To learn how to extend the trust policy on the IAM role for this scenario, refer to
    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials).
 
 9. Review the details of the newly created IAM role.
@@ -553,7 +553,7 @@ multiple cloud accounts.
    backup IAM role you just created so the deployment IAM principal can also assume it. This step applies only when the
    backup role is separate from the role used for cluster deployment. If the same role serves both, no change is needed.
 
-   To learn how to extend the trust policy on the IAM role for this scenario, refer to 
+   To learn how to extend the trust policy on the IAM role for this scenario, refer to
    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials).
 
 9. Review the details of the newly created IAM role in AWS Account B.
@@ -577,11 +577,11 @@ multiple cloud accounts.
     }
     ```
 
-    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you can
-    use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
+    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you
+    can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
-    Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
-    Palette and another for AWS Account A.
+    Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
+    for Palette and another for AWS Account A.
 
     ```json
     {
@@ -610,8 +610,8 @@ multiple cloud accounts.
     }
     ```
 
-    In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you used
-    while creating the IAM role.
+    In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you
+    used while creating the IAM role.
 
     :::info
 
@@ -757,8 +757,8 @@ Accounts (IRSA), while keeping the earlier statements in place.
    :::
 
    After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
-   trust statements from steps 7 and 11, plus the new IRSA statement. The following example shows the expected result. Use the
-   table below to identify the values to substitute for each placeholder.
+   trust statements from steps 7 and 11, plus the new IRSA statement. The following example shows the expected result.
+   Use the table below to identify the values to substitute for each placeholder.
 
    | Placeholder                      | Description                                                                   |
    | -------------------------------- | ----------------------------------------------------------------------------- |
@@ -978,15 +978,22 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
    | Role name             | Provide a name of your choice.                                       |
    | Role description      | Provide an optional description.                                     |
 
-8. Use the AWS console to copy the Amazon Resource Name (ARN) of the IAM role.
+8. Open the newly created IAM role in the AWS console, and then click **Edit** on the Summary card.
 
-9. Switch back to the Palette UI and paste the IAM role ARN into the **ARN** field.
+9. Select **12 hours** from the **Maximum session duration** dropdown, and save your changes. This gives backup and restore operations on large
+   clusters enough time to complete before the STS credentials expire.
 
-10. Click on **Validate**. Palette will display a validation status message. If the validation status message indicates
+   You can also use the `max-session-duration` parameter from the AWS command line to increase the expiration time.
+
+10. Use the AWS console to copy the Amazon Resource Name (ARN) of the IAM role.
+
+11. Switch back to the Palette UI and paste the IAM role ARN into the **ARN** field.
+
+12. Click on **Validate**. Palette will display a validation status message. If the validation status message indicates
     a success, proceed to the next step. If the validation status message indicates an error, review the error message
     and verify the IAM role ARN, the external ID in the trust policy, and the IAM policy attached to the role.
 
-11. Click on the **Create** button.
+13. Click on the **Create** button.
 
 ### Validate
 

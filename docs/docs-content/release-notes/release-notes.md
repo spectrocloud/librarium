@@ -40,6 +40,14 @@ tags: ["release-notes"]
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7380 -->
+
+- You can now use dynamic credentials when backing up edge-native, AKS, vSphere, and other non-AWS clusters to AWS S3,
+  which allows you to authenticate backups without storing long-lived static keys. Previously, only AWS IaaS and EKS
+  clusters supported dynamic credentials. Refer to
+  [Add Backup Location using Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
+  for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
