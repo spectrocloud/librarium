@@ -164,8 +164,11 @@ belong to a group whose name matches the filter for that group to appear in the 
            # Group Membership mapper on the realm's profile client scope so
            # the groups claim still reaches the token.
            scopes: ""
-           # Optional. Set only when the UI is behind a proxy and the default
-           # <baseUrl>/auth/callback is not reachable.
+           # Set when the OIDC callback needs to go through an external proxy
+           # such as the Palette tenant apps proxy. Obtain the callback URL
+           # from the deployed VMO Manager pack after the profile deploys; the
+           # UI does not surface this URL directly. Defaults to
+           # <baseUrl>/auth/callback when left empty.
            callbackUrl: ""
            # Set to match the API server --oidc-username-prefix flag, such as "oidc:".
            k8sUsernamePrefix: ""
