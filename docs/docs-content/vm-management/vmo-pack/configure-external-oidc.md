@@ -380,6 +380,37 @@ The IdP application does not have the **Refresh Token** grant type enabled. Enab
 Update `oidc.clientSecret` in the pack values, or update the referenced Secret, and then save and apply the profile.
 Wait for the reconcile to redeploy the VMO Manager pod.
 
+### Scenario - Authentication Service Unavailable at Sign-in
+
+Sign-in redirects fail with "Authentication service unavailable" in the UI, and the VMO Manager pod log contains
+`HandleLogin: oidcProvider is nil`. The pack starts with `oidc.enabled: true` but no issuer URL, so VMO Manager cannot
+initialize the OIDC provider.
+
+The most common cause is a configuration mismatch: OIDC values are set on the Kubernetes pack,
+`palette.managedOidc: true` is on the `vmo-manager` sub-chart, but the cluster's identity provider is an external IdP
+such as Okta rather than Palette Hubble. Palette injects OIDC values into VMO only when Palette Hubble itself is the
+identity provider. For any external IdP, VMO needs the values on its own pack.
+
+Set `palette.managedOidc: false` and provide `oidc.issuerUrl`, `oidc.clientId`, and `oidc.clientSecret` explicitly on
+the `vmo-manager` sub-chart. Refer to [Configure the VMO Pack](#configure-the-vmo-pack) for the YAML sample.
+
+### Scenario - Settings Menu Missing Despite Platform Admin Role
+
+A user signs in with a role that grants Platform Admin permissions in VMO. VM lifecycle, templates, and dashboards work,
+but the Settings group is hidden from the sidebar. Direct navigation to a Settings path such as
+`/settings/configuration/kubevirt` returns `403 forbidden: cluster-wide K8s access required for this Setting`, and the
+VMO Manager pod log at sign-in contains `Cluster-scope probe: SSAR returned 401`.
+
+The Kubernetes API server does not federate the same OIDC issuer as VMO Manager, so the cluster-scope probe in VMO
+Manager cannot validate the user's identity against Kubernetes. VMO IAM authorizes the session at the application layer,
+but the Settings pages route Kubernetes API calls through the user's OIDC ID token as a Bearer, and the API server
+rejects the token.
+
+Configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` values that match the OIDC
+application VMO uses. Refer to [Prerequisites](#prerequisites) for the verification command. Then bind the user's group
+to `spectro-vm-admin` with a `ClusterRoleBinding`. For a temporary workaround, sign in with the local admin account at
+`<baseUrl>/local-login`. Local sessions bypass the cluster-scope probe and reach all Settings pages.
+
 ## Next Steps
 
 Review [Authentication Options](./authentication-options.md) to learn how the authentication options interact with the
