@@ -300,9 +300,9 @@ steps.
    Agent binaries when systemd extensions are available.
 2. If a provider image is required for operating system upgrades or patches, build the image from **CanvOS 4.10.x or
    later**.
-3. When Stylus is pinned to a release prior to 4.10.x, supply a provider image. Provider images built from
-   CanvOS 4.10.x must set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Provider images built from older CanvOS releases
-   might work but are not recommended.
+3. When Stylus is pinned to a release prior to 4.10.x, supply a provider image. Provider images built from CanvOS 4.10.x
+   must set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Provider images built from older CanvOS releases might work but
+   are not recommended.
 
 ### Upgrade an Existing Cluster on an Operating System with systemd 255 or Later
 
