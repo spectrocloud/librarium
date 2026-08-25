@@ -56,10 +56,9 @@ Machines (VMs) that need to be migrated.
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
 
-- We recommend providing a
-  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination
-  VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
+- We recommend providing a VMware Virtual Disk Development Kit (VDDK) image for the migration. This will significantly
+  speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the
+  source environment, transfer the data, and write it to the target storage.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
@@ -74,8 +73,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Non-Airgap" value="non-airgap">
 
-    1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
+       required.
 
     2. Decompress the downloaded image.
 
@@ -114,8 +113,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    1.  Download the VDDK image from the
-        [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
+    1.  Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
+        required.
 
     2.  Copy or move the VDDK image to another Linux environment inside your airgap environment. Use any approved method
         to transfer the binary to the airgap environment.
