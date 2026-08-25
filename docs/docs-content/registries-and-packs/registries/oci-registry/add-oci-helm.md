@@ -151,20 +151,25 @@ directory as a separate base content path.
 
 8. Provide the registry URL in the **Endpoint** field.
 
-9. If **Synchronization** is enabled, in the **Base Content Path** field, enter the base path to the repository in the
-   registry where the Helm charts are stored. You can specify multiple base paths by pressing the **ENTER** key after
-   each path. Providing multiple base paths is useful when Helm charts are stored in different directories or projects.
+9. If **Synchronization** is enabled and your registry requires a suffix to be appended to the endpoint, specify it in
+   the **Endpoint Suffix** field. This field is optional and applies to registries that do not use a standard Docker V2
+   API path. For example, JFrog Artifactory requires the API path and the repository key, such as
+   `artifactory/api/docker/spectro-charts-repo`.
 
-10. Fill out the **Username** and **Password** fields with the credentials to access the registry. If the registry does
+10. If **Synchronization** is enabled, in the **Base Content Path** field, enter the base path to the repository in the
+    registry where the Helm charts are stored. You can specify multiple base paths by pressing the **ENTER** key after
+    each path. Providing multiple base paths is useful when Helm charts are stored in different directories or projects.
+
+11. Fill out the **Username** and **Password** fields with the credentials to access the registry. If the registry does
     not require authentication, leave the **Username** and **Password** fields empty.
 
     <PartialsComponent category="registries-and-packs" name="acr-tip-oci" />
 
-11. If your OCI registry server is using a self-signed certificate, select **Upload file** to upload the certificate. If
+12. If your OCI registry server is using a self-signed certificate, select **Upload file** to upload the certificate. If
     the server certificate is not signed by a trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509
     certificate.
 
-12. Select **Confirm** to add the registry.
+13. Select **Confirm** to add the registry.
 
 </TabItem>
 
