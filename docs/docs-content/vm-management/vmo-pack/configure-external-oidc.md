@@ -156,11 +156,13 @@ belong to a group whose name matches the filter for that group to appear in the 
            issuerUrl: "https://<your-okta-domain>"
            clientId: "<your-client-id>"
            clientSecret: "<your-client-secret>"
-           # Optional. Defaults to "openid,profile,email,groups". Set to
-           # "openid,profile,email" when the IdP is Keycloak, which rejects
-           # "groups" as an unknown scope. Groups still reach the token when
-           # the realm has the Group Membership mapper configured on the
-           # profile client scope.
+           # Optional. Defaults to "openid,profile,email,groups". The pack
+           # force-appends "groups" if you omit it, so removing it here has
+           # no effect against Okta or Palette Hubble. Keycloak is the
+           # exception: it rejects "groups" as an unknown scope. For
+           # Keycloak, set this to "openid,profile,email" and configure the
+           # Group Membership mapper on the realm's profile client scope so
+           # the groups claim still reaches the token.
            scopes: ""
            # Optional. Set only when the UI is behind a proxy and the default
            # <baseUrl>/auth/callback is not reachable.
