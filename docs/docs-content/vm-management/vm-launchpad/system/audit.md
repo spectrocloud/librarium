@@ -27,6 +27,7 @@ VMO records the following actions.
 | VM operations      | `start`, `stop`, `restart`, `migrate`, `restore`     |
 | Access control     | `grant`, `revoke`                                    |
 | Log forwarding     | `logging.forwarding.toggled`                         |
+| Metrics forwarding | `monitoring.splunk_hec.toggled`                      |
 
 Authentication events cover both OIDC and local user accounts. VMO records a `login-failed` event when the credentials
 are incorrect and when the OIDC provider is unavailable.
@@ -119,5 +120,6 @@ VMO deletes audit events that are older than 30 days and runs the cleanup once p
 audit data bounded without any action on your part.
 
 If you need to keep audit records beyond the retention window, forward them to an external Security Information and
-Event Management (SIEM) system or log aggregator before they expire. Refer to [Log Forwarding](../log-forwarding.md) for
-how to collect the appliance logs, which carry the audit records, with a cluster log-forwarding agent.
+Event Management (SIEM) system or log aggregator before they expire. Refer to [Metrics and Logs](../metrics-and-logs.md)
+for how to record central log collection with the **Log Forwarding** toggle and how the OpenTelemetry Collector delivers
+appliance logs, which carry the audit records, to Splunk.

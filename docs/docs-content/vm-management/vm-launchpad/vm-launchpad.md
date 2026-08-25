@@ -72,9 +72,10 @@ providers, and local admin accounts for Day-0 bootstrap before an IdP is availab
 
 A tiered metrics pipeline collects cluster and VM performance data. An OpenTelemetry Collector gathers node-level
 metrics and forwards them to the appliance for dashboard display. You can optionally connect an external
-PromQL-compatible backend such as Prometheus for long-term historical data. The appliance writes its own logs to
-container standard output, so a cluster log-forwarding agent can deliver them to Splunk or another central logging
-system. Refer to [Log Forwarding](./log-forwarding.md) for more information.
+PromQL-compatible backend such as Prometheus for long-term historical data. The appliance can also push its metrics
+directly to Splunk HTTP Event Collector (HEC) through a first-class network gate, and record central log delivery
+through a compliance-audit toggle, both on the **Metrics and Logs** page under **Settings** and **Configuration**. Refer
+to [Metrics and Logs](./metrics-and-logs.md) for more information.
 
 ### Infrastructure Management
 
