@@ -567,38 +567,7 @@ multiple cloud accounts.
     AWS Account A to assume the role. Replace the `<account-id-for-aws-account-a>` placeholder with the AWS account ID
     for AWS Account A.
 
-```json
-{
-  "Effect": "Allow",
-  "Principal": {
-    "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
-  },
-  "Action": "sts:AssumeRole"
-}
-```
-
-If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you can
-use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
-
-Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
-Palette and another for AWS Account A.
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "<your-external-id>"
-        }
-      }
-    },
+    ```json
     {
       "Effect": "Allow",
       "Principal": {
@@ -606,20 +575,51 @@ Palette and another for AWS Account A.
       },
       "Action": "sts:AssumeRole"
     }
-  ]
-}
-```
+    ```
 
-In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you used
-while creating the IAM role.
+    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you can
+    use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
-:::info
+    Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
+    Palette and another for AWS Account A.
 
-Check out
-[How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
-for a deep dive into the IAM trust policies.
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "<your-external-id>"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ]
+    }
+    ```
 
-:::
+    In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you used
+    while creating the IAM role.
+
+    :::info
+
+    Check out
+    [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
+    for a deep dive into the IAM trust policies.
+
+    :::
 
 12. Use the AWS console to copy the Amazon Resource Name (ARN) of the IAM role.
 
