@@ -1239,3 +1239,113 @@ incorrectly. This prevents the CNI that do not run as root, such as Cilium, from
 
 5. Save the changes as a new version of the cluster profile and update your agent mode cluster to use the updated
    profile. For more information, refer to [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+## Scenario - Shared Volumes Fail on Kernel 7.x Due to NFSv4.1 Directory Delegations
+
+On Edge clusters running Linux kernel 6.19 or later, shared Read-Write-Many (RWX) volumes served by an older NFS server
+fail to open with a remote I/O error (`EREMOTEIO`). Both the Longhorn share manager and the Piraeus RWX driver ship an
+NFS server that is affected. Kernels known to trigger the issue include Hadron `7.1.3` and Ubuntu `7.0.0-generic`, which
+is the kernel that Ubuntu 24.04 hosts pull in when `UPDATE_KERNEL=true` or a 7.x kernel pack is applied. Pre-6.19
+kernels such as stock Ubuntu 6.8 and RHEL 9 do not trigger the issue. Block, `hostPath`, Rook RBD, Rook CephFS, Ceph CSI
+RBD, Local Path Provisioner, Portworx, Hitachi HSPC, NetApp Trident, HPE CSI, and KubeVirt CSI volumes are also
+unaffected because they do not depend on the affected NFS server.
+
+Symptoms include:
+
+- The in-cluster <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> registry enters a
+  `CrashLoopBackOff` state because it cannot read its Longhorn shared volume.
+- Image pulls from the registry VIP fail with `connection refused` or `ImagePullBackOff`.
+- Kubernetes upgrades hang because the shared volume is broken at the NFS layer, and rebooting the node does not
+  recover.
+
+Linux kernel 6.19 and later enable NFSv4.1 directory delegations by default and send an optional `GET_DIR_DELEGATION`
+operation as part of each directory open. An NFS server that does not implement directory delegations must reply that
+the operation is not supported, so that the client retries without it. Older NFS server builds reply that the operation
+is illegal instead, which the client does not retry, and the user-space application reports a remote I/O error. The disk
+is fine; only the NFS handshake is wrong. This is why the same CSI pack works on stock Ubuntu 6.8 and RHEL 9 and fails
+on Hadron `7.1.3` or Ubuntu `7.0.0-generic`.
+
+The durable fix is to upgrade the affected CSI pack. Use the [Longhorn CSI](/integrations/packs/?pack=csi-longhorn) pack
+at version `1.12.0`. Version `1.11.3` also contains the fix but requires Kubernetes v1.34 or later. Do not remain on
+Longhorn CSI `1.8.x` through `1.11.2` on kernel 6.19 or later. For Piraeus RWX, no fixed pack is available yet, so avoid
+Piraeus shared RWX volumes on kernel 6.19 or later. Read-Write-Once (RWO) and DRBD volumes are unaffected.
+
+Until you can move to a fixed pack, apply the following node-level workaround.
+
+### Debug Steps
+
+Apply the workaround on every node that mounts the shared volume, not only on the node running the CSI share manager.
+For example, if the affected workload is `zot`, the workaround must be present on the node hosting the `zot-0` pod. Skip
+the workaround on nodes running pre-6.19 kernels because those kernels do not trigger the issue.
+
+Choose the option that matches your host configuration.
+
+#### Option 1 - Set the Kernel Module Option on the Host
+
+On Ubuntu, Hadron, and RHEL hosts with a writable `/etc` directory, disable NFSv4 directory delegations through a
+`modprobe` drop-in file, then reboot the node.
+
+1. Log in to the affected node as a user with root privileges.
+
+2. Create the drop-in file.
+
+   ```bash
+   sudo tee /etc/modprobe.d/nfs-nodirdelegation.conf >/dev/null <<'EOF'
+   options nfsv4 directory_delegations=0
+   EOF
+   ```
+
+3. Reboot the node.
+
+   ```bash
+   sudo reboot
+   ```
+
+On Kairos or Hadron hosts, a file written directly to `/etc` might be lost during the next A/B upgrade. To persist the
+workaround across upgrades, apply the same drop-in through an OEM cloud-config file such as
+`/oem/90_nfs_workaround.yaml`.
+
+```yaml
+#cloud-config
+stages:
+  boot.before:
+    - name: "disable nfsv4 directory delegations"
+      files:
+        - path: /etc/modprobe.d/nfs-nodirdelegation.conf
+          permissions: 0644
+          content: |
+            options nfsv4 directory_delegations=0
+```
+
+#### Option 2 - Set the Kernel Command-Line Parameter in the UKI
+
+On trusted-boot or Unified Kernel Image (UKI) hosts where `/etc` is not writable, add the following token to the kernel
+command line in the UKI or [EdgeForge](../../clusters/edge/trusted-boot/edgeforge/edgeforge.md) image, then rebuild and
+redeploy the UKI.
+
+```text
+nfsv4.directory_delegations=0
+```
+
+Reboot the host after redeploying the UKI.
+
+#### Verify the Workaround
+
+After the node reboots, confirm that directory delegations are disabled and restart the affected workload.
+
+1. Confirm the kernel setting.
+
+   ```bash
+   cat /sys/module/nfsv4/parameters/directory_delegations
+   ```
+
+   The command must print `N`. If the `nfsv4` kernel module has not been loaded yet, the file at that path is missing
+   until something mounts NFS. The setting still applies the next time the module loads.
+
+2. Restart the affected workload. For example, restart the `zot-0` pod.
+
+   ```bash
+   kubectl --namespace zot-system delete pod zot-0
+   ```
+
+3. Confirm that shared volumes mount successfully and the workload reports a healthy state.
