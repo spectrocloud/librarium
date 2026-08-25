@@ -26,14 +26,25 @@ tags: ["release-notes"]
 - Palette now validates user-supplied cluster profile and app profile versions against the
   [Semantic Versioning](https://semver.org) specification when a profile is created or updated through the Palette UI,
   API, Terraform provider, or Crossplane provider. Values such as `1.2.3` and `1.2.3-rc.1` are accepted; values such as
-  `2.2.2.develop` or `V0.0.1` that earlier releases accepted are now rejected whenever a version is set --- on create,
-  on clone, when creating a new profile version, or when changing the version of an existing profile. Existing profiles
+  `2.2.2.develop` or `V0.0.1` that earlier releases accepted are now rejected whenever a version is set (on create, on
+  clone, when creating a new profile version, or when changing the version of an existing profile). Existing profiles
   carrying a malformed version continue to function, and no pre-upgrade or post-upgrade action is required. If you
   update a profile's version to a valid value, later attempts to set a malformed value on that profile fail, including
   reverting to the original value. These new requirements do not apply to external registry and chart tags, including
   Zarf UDS tags. For the accepted format, refer to
   [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
   [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11430 -->
+
+- The OCI Helm registry validation endpoint now returns an error code that reflects the actual failure. Previously, any
+  validation failure (including request timeouts, DNS failures, and TLS errors) returned `InvalidRegistryCredentials`.
+  Timeout and cancellation failures now return a timeout error, connectivity failures return an unreachable error, and
+  `InvalidRegistryCredentials` is reserved for authentication failures. Existing registries and credentials are
+  unaffected, and no pre-upgrade or post-upgrade action is required. If you have automation that treats
+  `InvalidRegistryCredentials` as the catch-all validation failure, narrow it to authentication failures and handle
+  timeout and connectivity errors with a retry instead. Refer to
+  [Registries](../registries-and-packs/registries/registries.md) for more information.
 
 #### Features
 
@@ -67,6 +78,11 @@ tags: ["release-notes"]
 - Headlamp, the modern replacement for the deprecated Kubernetes Dashboard, is now available on imported clusters as
   well as Palette-managed clusters.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6720 -->
+
+- The cert-manager chart deployed with the Palette management plane has been upgraded from version 1.14 to version
+  1.20.2.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11657 -->
@@ -74,6 +90,38 @@ tags: ["release-notes"]
 - Fixed an issue where using the Palette UI to open and save a
   [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) created with the API or Terraform could reorder
   its packs, surfacing as unexpected `terraform plan` drift for profiles managed as code.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7288 -->
+
+- Fixed an issue that caused the `import-presetup-logs` ConfigMap to grow without limit each time the setup job for
+  [importing a cluster](../clusters/imported-clusters/cluster-import.md) ran. The ConfigMap eventually exceeded the
+  maximum request size, causing `request is too large` errors and leaving the management plane API server unresponsive.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7388 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7404 -->
+
+- Fixed an issue that caused the `palette-webhook` deployment to stall with a pod stuck in `Pending` and the deployment
+  reporting `ProgressDeadlineExceeded` on [Amazon EKS clusters](../clusters/public-cloud/aws/eks.md) with three or fewer
+  nodes. The stall occurred both when a Palette agent upgrade updated the webhook and after a cluster pivot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7405 -->
+
+- Fixed an issue that caused the CoreDNS deployment in the `kube-system` namespace to be replaced with a virtual cluster
+  CoreDNS configuration on [MAAS clusters](../clusters/data-center/maas/maas.md) that host virtual clusters. Cluster DNS
+  resolution failed and the cluster reported an unknown status in Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11049 -->
+
+- Fixed an issue that prevented the Palette UI from updating when all tags were removed from a
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md). The removed tags continued to display until the
+  browser was refreshed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11520 -->
+
+- Fixed an issue that caused intermittent `504 Gateway Timeout` responses when attaching
+  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) to a cluster through the
+  `PUT /v1/spectroclusters/{uid}/profiles` API while that cluster was actively reporting its status. Attaching several
+  profiles to the same cluster in quick succession was the most common trigger.
 
 #### Deprecations and Removals
 
@@ -134,6 +182,34 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8891 -->
+
+- Fixed an issue that prevented digest-pinned application images from being redirected to the
+  [local registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md) on airgapped Edge
+  clusters. Pods that referenced an image by digest rather than by tag attempted to pull from the upstream registry and
+  remained in `ImagePullBackOff`, while the same image referenced by tag deployed successfully.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9033 -->
+
+- Fixed an issue that caused packs whose name contains a forward slash, such as Helm OCI packs sourced from a private
+  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors. The
+  affected packs were never cached, and the cluster re-downloaded them every two minutes without reaching a steady
+  state.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9143 -->
+
+- Fixed an issue that caused NTP servers entered in the
+  [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) as a comma-separated list without a
+  space, such as `10.10.180.0,10.10.180.1`, to generate an invalid time synchronization configuration. Both
+  comma-separated and comma-and-space-separated lists are now accepted.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11463 -->
+
+- Fixed an issue that prevented [remote shell](../clusters/edge/cluster-management/remote-shell.md) access to an Edge
+  host from being automatically disabled after 24 hours of inactivity. If the service handling remote shell sessions
+  restarted unexpectedly, the Edge host remained enabled for remote shell indefinitely, leaving the tunnel and its
+  temporary user credentials active.
+
 ### VerteX
 
 #### Features
@@ -142,6 +218,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - FIPS-compiled vCluster is now available, letting strict-FIPS tenants provision virtual clusters using FIPS 140-3
   approved cryptography. The FIPS-compiled pack is automatically selected when deploying virtual clusters on VerteX.
+
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.0) for more details.
 
@@ -151,6 +228,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Palette VerteX now invalidates all active JWTs for a session when a user logs out or changes their password.
   Previously, tokens remained valid after logout and could be reused.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-811 -->
+
+- Fixed an issue that caused the CA certificate help text in the **Certificate validation** step of the
+  [Create Provider](../vm-management/vm-migration-assistant/create-source-providers.md) wizard to refer to the OpenShift
+  API endpoint for every provider type, including VMware vSphere.
 
 ### Automation
 
@@ -184,6 +271,18 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   upload completion as soon as the transfer finishes.
 
 ### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3132 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9317 -->
+
+- Documentation has been added explaining that Local UI, the Palette TUI, and the Palette API all change Edge host
+  passwords as root, and that PAM exempts root from password quality checks unless the image sets the `enforce_for_root`
+  option. Without it, the check still logs a `BAD PASSWORD` message but returns success, so a password that does not
+  meet your policy is accepted. Refer to
+  [Change User Password](../clusters/edge/local-ui/host-management/access-console.md#change-user-password) for the ways
+  a password can be changed, and
+  [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for SUSE, Ubuntu, and
+  RHEL examples that set the option at image build time.
 
 ### Packs
 
