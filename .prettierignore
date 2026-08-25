@@ -34,3 +34,6 @@ scripts/release/
 .github/monthly-assessment/scorecards/*.md
 .github/monthly-assessment/scorecards/*.json
 !.github/monthly-assessment/scorecards/README.md
+
+# Claude
+.claude/
