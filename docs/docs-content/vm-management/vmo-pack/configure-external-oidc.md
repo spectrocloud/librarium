@@ -221,7 +221,11 @@ users in that group receive the matching VMO role automatically without further 
 | `cluster-viewers`  | Viewer         | Read-only. VM, template, dashboard, audit, and system or monitoring reads only. No operate, no snapshot, no writes.                                                                                                              |
 
 If your IdP group is named something other than the four above, users in it do not receive a VMO role by default. Extend
-the matching `VMORole` custom resource to include your group name.
+the built-in `VMORole` custom resource that matches the VMO role you want to grant. The four built-in `VMORole`
+resources are `vmo-platform-admin`, `vmo-editor`, `vmo-operator`, and `vmo-viewer`.
+
+For example, to grant the Platform Admin role to an IdP group named `platform-team`, edit the `vmo-platform-admin`
+resource.
 
 ```shell
 kubectl --namespace vm-dashboard edit vmorole vmo-platform-admin
@@ -232,11 +236,14 @@ Under `spec`, add your IdP group name to the `groupMappings` list.
 ```yaml
 spec:
   groupMappings:
-    - cluster-admins # keep the default
+    - cluster-admins # keep the seeded default
     - platform-team # your IdP group name
 ```
 
 Save the change. The user must sign out and sign in again for the new mapping to take effect.
+
+To grant a different VMO role, edit the corresponding resource instead: `vmo-editor` for Editor, `vmo-operator` for
+Operator, or `vmo-viewer` for Viewer.
 
 Per-user mapping is also supported when a group is unavailable or too broad. Set `userMappings` instead of
 `groupMappings`, and provide the value that appears in the token's `email`, `sub`, or `preferred_username` claim.
