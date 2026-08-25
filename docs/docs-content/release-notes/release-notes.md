@@ -54,6 +54,21 @@ tags: ["release-notes"]
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7118 -->
+
+- Palette now supports the option to skip worker node upgrades on
+  [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md),
+  [GCP IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md), and
+  [Apache CloudStack](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) clusters. For example, if
+  you have worker pools running critical databases or real-time processing services, you can enable this option to
+  maintain service continuity during control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned
+  maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
