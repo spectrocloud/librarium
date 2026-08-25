@@ -581,36 +581,8 @@ multiple cloud accounts.
    backup IAM role you just created so the deployment IAM principal can also assume it. This step applies only when the
    backup role is separate from the role used for cluster deployment. If the same role serves both, no change is needed.
 
-   Expand the following steps if you are using static credentials to deploy clusters.
-
-   <details>
-   <summary>Static credentials: allow the deployment IAM principal to assume the backup role</summary>
-
-   1. Identify the ARN of the IAM user or role associated with your static credentials. If those credentials are
-      configured as a named AWS CLI profile, run the following command to retrieve the ARN.
-
-      ```bash
-      aws sts get-caller-identity --profile <static-credentials-profile> --query 'Arn' --output text
-      ```
-
-   2. Append the following statement to the backup role's trust policy, alongside the existing Palette statement.
-      Replace `<deployment-principal-arn>` with the value from the previous step.
-
-      ```json
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "<deployment-principal-arn>"
-        },
-        "Action": "sts:AssumeRole"
-      }
-      ```
-
-   Refer to the
-   [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
-   guide for the `aws sts assume-role` command that verifies the updated trust policy.
-
-   </details>
+   To learn how to extend the trust policy for static credentials, refer to 
+   [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials).
 
 9. Review the details of the newly created IAM role in AWS Account B.
 
