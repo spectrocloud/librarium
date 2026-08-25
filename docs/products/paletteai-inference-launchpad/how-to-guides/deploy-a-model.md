@@ -49,7 +49,7 @@ dialog. For why you would pin a model to some nodes and not others, refer to
    model arrive pre-selected and locked as **Already deployed**, and **Deploy** is available without any further
    selection.
 
-   ![Deploy model dialog with a Nodes list for control-plane and worker-1, each showing hardware and free GPUs, and a Choose at least one node message.](../../../../static/assets/docs/images/deploy-a-model_node-picker.webp)
+   ![Deploy model dialog with a Nodes list for control-plane and worker-1, each showing hardware and free GPUs, and a Choose at least one node message.](/assets/docs/images/deploy-a-model_node-picker.webp)
 
 6. _(Optional)_ To select every node that can run the model right now, select **Select all eligible**. That choice is a
    snapshot. A node you add to the cluster later does not receive this model until you add it, as described in
@@ -82,7 +82,7 @@ Confirm the model is serving before you route traffic to it.
 3. Expand the model row. Only the nodes you chose are listed. A node you did not select is absent, which means it was
    never asked to run this model.
 
-   ![Expanded model row showing two of three chosen nodes with a two of two healthy chip; both chosen nodes read Serving.](../../../../static/assets/docs/images/deploy-a-model_subset-placement.webp)
+   ![Expanded model row showing two of three chosen nodes with a two of two healthy chip; both chosen nodes read Serving.](/assets/docs/images/deploy-a-model_subset-placement.webp)
 
 4. Confirm that each listed node's state reaches `ready` or `serving`. A state of `deploying` or `smoke-testing` means
    the model is still coming online on that node. A state of `Waiting to start` means the node is chosen and no engine
@@ -129,7 +129,7 @@ The node stays visible while its engine shuts down. It reads **Removing** with t
 `No longer chosen. Its engine is shutting down.` The row disappears once the engine is gone. The model's endpoint and
 the remaining chosen nodes keep serving.
 
-![Expanded model row showing one of three chosen nodes. One node reads Removing, and the other chosen node remains Serving.](../../../../static/assets/docs/images/deploy-a-model_removing-node.webp)
+![Expanded model row showing one of three chosen nodes. One node reads Removing, and the other chosen node remains Serving.](/assets/docs/images/deploy-a-model_removing-node.webp)
 
 To remove the model from every node, use the trash icon on the model's row instead of a per-node **Remove**.
 
