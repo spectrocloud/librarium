@@ -34,13 +34,13 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9220 -->
 
-- Fixed an issue where device-mapper (LVM) volumes were listed alongside physical disks in the disk scanner, causing
+- Fixed an issue where device-mapper/Logical Volume Manager (LVM) volumes were listed alongside physical disks in the disk scanner, causing
   disk wipe operations to fail when a stacked volume was selected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9296 -->
 
 - Fixed an issue where deploying a cluster with an SSH key caused the TUI OS user's home directory to become
-  inaccessible due to a UID conflict with the automatically created spectro user.
+  inaccessible due to a UID conflict with the automatically created `spectro` user.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11512 -->
 
