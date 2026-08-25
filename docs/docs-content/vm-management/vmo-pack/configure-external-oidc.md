@@ -293,14 +293,10 @@ prefix that the API server was started with.
    kubectl apply --filename <your-manifest-file>.yaml
    ```
 
-:::tip
-
-To keep these bindings in place when a cluster is rebuilt, add them as a manifest layer in the cluster profile alongside
-the VMO pack. Refer to
-[Create a Manifest Add-on Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
-for guidance.
-
-:::
+   To keep these bindings in place when a cluster is rebuilt, add them as a manifest layer in the cluster profile
+   alongside the VMO pack. Refer to
+   [Create a Manifest Add-on Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for guidance.
 
 :::info
 
