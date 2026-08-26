@@ -65,16 +65,18 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
    [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
 
-The following steps apply exclusively to clusters configured with **Custom** third-party OIDC IdPs.
-
 9. After the VMO profile deployment is completed, locate the OIDC callback URL for the cluster.
 
-   The callback URL follows the form `<baseUrl>/auth/callback`, where `<baseUrl>` is the URL that users reach the
-   Virtual Machine dashboard at. When the cluster uses Palette-managed OIDC, `<baseUrl>` is the tenant apps proxy URL
-   that appears in the browser address bar when you open the dashboard, such as
-   `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`. When the cluster uses the External OIDC preset
-   on the Virtual Machine Orchestrator pack, refer to the `oidc.callbackUrl` value in the pack. Refer to
-   [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for guidance.
+   The callback URL follows the form `<baseUrl>/auth/callback`, where `<baseUrl>` depends on how OIDC is configured for
+   your cluster:
+
+   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The callback
+     URL is the `oidc.callbackUrl` value in the deployed pack. Refer to
+     [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for guidance.
+
+   - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow. `<baseUrl>` is the tenant apps proxy URL
+     that appears in the browser address bar when you open the Virtual Machine dashboard, such as
+     `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`.
 
    Save this URL for the sign-in redirect step.
 
