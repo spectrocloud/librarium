@@ -120,6 +120,8 @@ The upload command accepts other flags, including password authentication (`--ss
   serving.
 - **Bring your own model:** Follow [Bring Your Own Model](./bring-your-own-model.md) to author metadata for a model that
   is not in the certified catalog, then download, upload, and deploy it.
+- **Replace a serving model:** Follow [Replace a Model](./replace-a-model.md) to remove the current model from a node
+  and deploy this one instead.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
 - **Enable vision preprocessing:** If you uploaded a vision model to use with a text-only model, follow

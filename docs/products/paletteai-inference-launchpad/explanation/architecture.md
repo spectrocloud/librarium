@@ -63,6 +63,10 @@ single per-model endpoint. The appliance treats unknown GPU capacity as unusable
 which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
 [Model Placement](./model-placement.md).
 
+The appliance does not support in-place replacement: changing what a node serves requires removing the current model and
+then deploying the replacement. Removing the model from one node leaves it serving on the others. Refer to
+[Replace a Model](../how-to-guides/replace-a-model.md).
+
 ## Request Routing
 
 The gateway routes each request to a model. A request that names a model uses that model, and a request that does not
