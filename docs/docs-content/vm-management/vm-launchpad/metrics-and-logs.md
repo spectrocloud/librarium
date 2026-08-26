@@ -35,9 +35,12 @@ events after 30 days, forwarding appliance logs to a central system is how you k
 
 :::info
 
-The **Metrics and Logs** page only appears in the VMO UI when the appliance has logging configured. If **Settings** >
-**Configuration** does not show **Metrics and Logs**, deploy the OpenTelemetry Collector addon on your VMO cluster
-profile first. Refer to [Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon).
+The **Metrics and Logs** page appears in the VMO UI only when VMO detects an external OpenTelemetry Collector Deployment
+or DaemonSet in the cluster. VMO checks at runtime through a capability probe, and the page stays hidden until at least
+one such workload exists. If **Metrics and Logs** does not appear under **Settings** > **Configuration**, deploy an
+OpenTelemetry Collector on the cluster. Refer to
+[Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon) for the Palette VMO pack
+addon path.
 
 :::
 
@@ -144,10 +147,18 @@ The metrics push in `vmo-manager` does not read these pack values. The metrics s
 
 5. From the **Forwarding Target** dropdown, select the option that matches your destination.
 
-   | **Option**   | **Use for**                                                                              |
-   | ------------ | ---------------------------------------------------------------------------------------- |
-   | `splunk-hec` | Splunk HTTP Event Collector destinations.                                                |
-   | `general`    | Any non-Splunk log destination, such as Elastic, Loki, Syslog, or another HTTP endpoint. |
+   <!-- vale Vale.Spelling = NO -->
+
+   | **Option**   | **Use for**                                                                                           |
+   | ------------ | ----------------------------------------------------------------------------------------------------- |
+   | `splunk-hec` | A Splunk HTTP Event Collector endpoint (the Splunk product).                                          |
+   | `general`    | Any other HEC-format-compatible sink over HTTPS, such as Cribl HEC input or an HEC-emulating gateway. |
+
+   <!-- vale Vale.Spelling = YES -->
+
+   Both options require the destination to speak the Splunk HEC protocol over HTTPS. Sinks that use a different wire
+   protocol, such as native Elastic, Loki, or Syslog, are not compatible with either option and need a different
+   delivery path.
 
    Enter your delivery address in **Forwarding URL**. The URL is informational. VMO stores it so administrators can read
    the central log delivery arrangement from the appliance without tracing it through cluster manifests, but VMO does
@@ -186,12 +197,16 @@ appliance verifies the certificate, and `false` when verification is skipped.
 
 ### Logs Section
 
-| **Setting**           | **Configuration Key**         | **Default** | **Description**                                                                                                                                                                                                                                            |
-| --------------------- | ----------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Log Format**        | `logging.format`              | `text`      | Encoding of the appliance logs. Accepts `text` and `json`. Use `json` when Splunk indexes the logs. Applied immediately without a pod restart.                                                                                                             |
-| **Log Forwarding**    | `logging.forwarding_enabled`  | `false`     | Compliance signal that records central log collection. Emits `logging.forwarding.toggled` on every change. Does not start or stop delivery; the OpenTelemetry Collector delivers logs.                                                                     |
-| **Forwarding Target** | `logging.forwarding_target`   | `(not set)` | Bounded dropdown identifying the destination category. Accepts `splunk-hec` for Splunk HTTP Event Collector, or `general` for any non-Splunk destination (Elastic, Loki, Syslog, generic HTTP). Informational. VMO does not route logs based on the value. |
-| **Forwarding URL**    | `logging.forwarding_endpoint` | Empty       | Informational address that your OpenTelemetry Collector delivers logs to. VMO does not enforce or interpret the value.                                                                                                                                     |
+<!-- vale Vale.Spelling = NO -->
+
+| **Setting**           | **Configuration Key**         | **Default** | **Description**                                                                                                                                                                                                                                                                                                                              |
+| --------------------- | ----------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Log Format**        | `logging.format`              | `text`      | Encoding of the appliance logs. Accepts `text` and `json`. Use `json` when Splunk indexes the logs. Applied immediately without a pod restart.                                                                                                                                                                                               |
+| **Log Forwarding**    | `logging.forwarding_enabled`  | `false`     | Compliance signal that records central log collection. Emits `logging.forwarding.toggled` on every change. Does not start or stop delivery; the OpenTelemetry Collector delivers logs.                                                                                                                                                       |
+| **Forwarding Target** | `logging.forwarding_target`   | `(not set)` | Bounded dropdown identifying the destination category. Accepts `splunk-hec` for a Splunk HEC endpoint, or `general` for any other HEC-format-compatible sink over HTTPS (Cribl HEC input, HEC-emulating gateways). Both require the destination to speak the Splunk HEC protocol. Informational. VMO does not route logs based on the value. |
+| **Forwarding URL**    | `logging.forwarding_endpoint` | Empty       | Informational address that your OpenTelemetry Collector delivers logs to. VMO does not enforce or interpret the value.                                                                                                                                                                                                                       |
+
+<!-- vale Vale.Spelling = YES -->
 
 ### Value Source Badges
 
