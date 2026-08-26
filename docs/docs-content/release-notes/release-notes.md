@@ -11,6 +11,50 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 26, 2026 - Release 4.9.51
+
+<!-- PATCH RELEASE TICKET: DOC-3138 -->
+<!-- PATCH RELEASE VERSION: 4.9.51 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9273 -->
+
+- Stylus now automatically reads Aviz network isolation details from edge-host tags and configures the appropriate NIC
+  and CNI interface, eliminating the need for manual per-host configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11808 -->
+
+- JFrog Artifactory OCI pack registries are now supported at the tenant scope. Add the registry through the Palette UI
+  or API, and specify the JFrog Docker V2 API path and repository key in the **Endpoint Suffix** field. Refer to
+  [OCI Packs Registry Configuration by Provider](../registries-and-packs/registries/oci-registry/oci-registry.md#oci-packs-registry-configuration-by-provider)
+  for configuration examples.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9220 -->
+
+- Fixed an issue where device-mapper/Logical Volume Manager (LVM) volumes were listed alongside physical disks in the
+  disk scanner, causing disk wipe operations to fail when a stacked volume was selected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9296 -->
+
+- Fixed an issue where deploying a cluster with an SSH key caused the TUI OS user's home directory to become
+  inaccessible due to a UID conflict with the automatically created `spectro` user.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11512 -->
+
+- Fixed an issue where a VerteX EC installation incorrectly displayed Palette branding instead of the expected Palette
+  VerteX branding in the UI.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.51 Palette release is 4.9.39.
+
+:::
+
 ## August 21, 2026 - Release 4.9.48
 
 <!-- PATCH RELEASE TICKET: DOC-3123 -->
