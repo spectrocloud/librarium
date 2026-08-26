@@ -289,7 +289,7 @@ provider binaries are embedded in the provider image.
 | systemd earlier than 255 | Included                                          | Setting the flag has no effect. Binaries are always embedded on these operating systems.          |
 
 The flag is new in CanvOS 4.10. Earlier CanvOS releases do not recognize it and continue to operate with the existing
-behavior. This is a non-breaking change.
+behavior.
 
 ### New Clusters
 
