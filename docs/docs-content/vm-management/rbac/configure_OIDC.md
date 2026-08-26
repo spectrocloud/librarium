@@ -65,20 +65,21 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
    [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
 
-9. After the VMO profile deployment is completed, locate the OIDC callback URL for the cluster.
+9. After the VMO profile deployment completes, obtain the OIDC callback URL that your IdP redirects to after successful
+   authentication.
 
-   The callback URL follows the form `<baseUrl>/auth/callback`, where `<baseUrl>` depends on how OIDC is configured for
-   your cluster:
+   The retrieval procedure depends on how OIDC is configured for VMO:
 
-   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The callback
-     URL is the `oidc.callbackUrl` value in the deployed pack. Refer to
+   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The deployed
+     pack surfaces the callback URL. Retrieve the `oidc.callbackUrl` value from the pack. Refer to
      [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for guidance.
 
-   - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow. `<baseUrl>` is the tenant apps proxy URL
-     that appears in the browser address bar when you open the Virtual Machine dashboard, such as
-     `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`.
+   - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow, and the callback URL is constructed from
+     the cluster base URL. Retrieve the base cluster URL from the deployed cluster with `kubectl`, then append
+     `/auth/callback` to form the callback URL.
+     <!-- TODO(DOC-3134): exact kubectl command pending Tony Windebank's Zoom transcript. -->
 
-   Save this URL for the sign-in redirect step.
+   Save the resulting callback URL for the sign-in redirect step.
 
 10. Log in to the IdP console that is associated with the OIDC configuration used in your cluster.
 
