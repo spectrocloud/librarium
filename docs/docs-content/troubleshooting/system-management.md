@@ -21,8 +21,7 @@ and managed workload clusters need the
 [image pull secret](../enterprise-version/system-management/configure-image-pull-secret.md) to pull images.
 
 Spectro Cloud automatically propagates the pull secret for you, but this propagation can fail for some clusters. For
-example, propagation can fail if a workload cluster loses connectivity to the management plane or is an airgapped
-cluster. Affected clusters cannot pull security-hardened images from Spectro Cloud's OCI registries until you create the
+example, propagation can fail if a workload cluster loses connectivity to the management plane. Affected clusters cannot pull security-hardened images from Spectro Cloud's OCI registries until you create the
 secret on the cluster directly.
 
 The **Hardened Images** views in the system console and in tenant settings identify which tenants and clusters did not
