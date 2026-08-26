@@ -10,10 +10,10 @@ keywords: ["launchpad", "ai", "release notes", "changelog"]
 
 ## Version 1.1.0 - August \_, 2026 {#version-1-1-0}
 
-PaletteAI Inference Launchpad 1.1.0 builds on 1.0.0 with node-targeted deployment, Bring Your Own Model (BYOM),
-colocated vision preprocessing for text-only flagships, external inference endpoints for burst to registered hosts, a
-validated platform upgrade path, and a standardized vendor OEM manufacturing process. This release also improves
-in-place model replacement, usage reporting and export, multi-node weight synchronization, and platform security.
+PaletteAI Inference Launchpad 1.1.0 builds on 1.0.0 with node-targeted model deployment, Bring Your Own Model (BYOM),
+colocated vision preprocessing for text-only flagships, and external inference endpoints for burst to registered hosts.
+This release also improves in-place model replacement, usage reporting and export, multi-node weight synchronization,
+and platform security.
 
 ### New Features
 
@@ -38,12 +38,6 @@ in-place model replacement, usage reporting and export, multi-node weight synchr
   [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
   information.
 
-- **Platform upgrade support.** There is now a validated upgrade path for connected and airgapped environments on
-  NVIDIA and AMD hardware. An automated upgrade test plan is included in the release validation process. Refer to
-  [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md) for more information.
-
-- **Vendor OEM manufacturing process.** A standardized manufacturing process is now available for hardware vendors
-  integrating with PaletteAI Inference Launchpad.
 
 ### Improvements
 
