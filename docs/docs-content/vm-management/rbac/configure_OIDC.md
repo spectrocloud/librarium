@@ -88,10 +88,10 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 
    The retrieval procedure depends on how OIDC is configured for VMO:
 
-   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The deployed
-     pack surfaces the callback URL as its `oidc.callbackUrl` value, populated once the `vm-dashboard` service (a
-     Kubernetes `Service` of type `LoadBalancer`) receives an External-IP. Refer to
-     [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for the pack setup.
+   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The pack does
+     not surface a callback URL on its own. You construct the callback URL from the External-IP of the `vm-dashboard`
+     service (a Kubernetes `Service` of type `LoadBalancer`) and write it to the pack's `oidc.callbackUrl` value. Refer
+     to [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for the pack setup.
 
      Wait for the `vm-dashboard` service to receive an External-IP.
 
@@ -99,14 +99,9 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
      kubectl get svc --namespace vm-dashboard vm-dashboard
      ```
 
-     When the `EXTERNAL-IP` column shows an IP address, read the callback URL from the deployed pack.
-
-     ```shell
-     kubectl get pack --namespace <cluster-namespace> virtual-machine-orchestrator --output yaml | grep callbackUrl
-     ```
-
-     The command returns the callback URL, of the form `https://<base-url>/oidc/callback`, where `<base-url>` matches
-     the pack's `platform.baseUrl` and the `vm-dashboard` External-IP.
+     When the `EXTERNAL-IP` column shows an IP address, construct the callback URL as
+     `https://<external-ip>/oidc/callback` and set it as `oidc.callbackUrl` in the VMO pack values. Use the same URL
+     when you register the sign-in redirect URI on your IdP at step 12.
 
    - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow, and the callback URL is constructed from
      the cluster's tenant apps proxy URL. Retrieve the URL from the deployed VMO pack and append `/oidc/callback` to
