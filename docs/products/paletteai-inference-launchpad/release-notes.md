@@ -8,15 +8,61 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.1.0 {#version-1-1-0}
+## Version 1.1.0 - August _, 2026 {#version-1-1-0}
 
-### Features
+PaletteAI Inference Launchpad 1.1.0 builds on 1.0.0 with node-targeted deployment, Bring Your Own Model (BYOM),
+colocated vision preprocessing for text-only flagships, external inference endpoints for burst to registered hosts, a
+validated platform upgrade path, and a standardized vendor OEM manufacturing process. This release also improves
+in-place model replacement, usage reporting and export, multi-node weight synchronization, and platform security.
 
-- Register any OpenAI-compatible inference host as a box-wide egress target, then authorize each client and cap its
-  daily spend. Traffic to a registered endpoint is metered as egress. Refer to
+### New Features
+
+- **Node-targeted model deployment.** You can now select which nodes a model runs on when deploying to a multi-node
+  cluster. Engines are created only on selected nodes, and unselected nodes receive none. Refer to
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+
+- **Bring Your Own Model (BYOM).** You can now deploy models that are not part of the certified model catalog. Models
+  deployed through the BYOM workflow serve inference requests the same way certified models do, but are not covered by
+  Spectro Cloud's certification guarantees. Refer to
+  [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for more information.
+
+- **Vision preprocessing for text-only models.** You can now colocate a vision sidecar model on the same GPUs as a
+  text-only flagship using time-slicing. When a request contains an image, the gateway routes it to the vision model,
+  which returns a text description that replaces the image before the flagship processes it. Refer to
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) and
+  [Enable Vision Preprocessing](./how-to-guides/enable-vision-preprocessing.md) for more information.
+
+- **Register an external inference endpoint.** You can now register any OpenAI-compatible inference host as a box-wide
+  egress target, then authorize each client and cap its daily spend. Traffic to a registered endpoint is metered as
+  egress. Refer to
   [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
   information.
 
+- **Platform upgrade support.** There is now a validated upgrade path for connected and airgapped environments on
+  NVIDIA and AMD hardware. An automated upgrade test plan is included in the release validation process. Refer to
+  [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md) for more information.
+
+- **Vendor OEM manufacturing process.** A standardized manufacturing process is now available for hardware vendors
+  integrating with PaletteAI Inference Launchpad.
+
+### Improvements
+
+- **Model upgrade through replacement.** You can now upgrade a deployed model's weights or swap it for a different
+  model version without a full redeployment. The platform deploys the new model first, waits for it to reach a ready
+  state, and then removes the old model. Refer to [Replace a Model](./how-to-guides/replace-a-model.md) for more
+  information.
+
+- **Enhanced usage reporting and export.** The **Usage** view now supports flexible date filtering and CSV export for
+  token consumption, cost, and client-level breakdowns. Refer to
+  [View Token Usage](./how-to-guides/view-token-usage.md) and
+  [View Client Usage](./how-to-guides/view-client-usage.md) for more information.
+
+- **Multi-node model weight synchronization.** Model weights uploaded to the primary node now synchronize automatically
+  to all GPU worker nodes.
+
+- **Security hardening.** This release addresses findings from a full security scan covering the operating system,
+  Kubernetes, dynamic application security testing (DAST), static application security testing (SAST), penetration
+  testing, and the Software Bill of Materials (SBOM).
 ## Version 1.0.0 - July 21, 2026 {#version-1-0-0}
 
 PaletteAI Inference Launchpad 1.0.0 is the first release. It is a standalone, turnkey AI appliance that turns your own
