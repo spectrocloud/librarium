@@ -97,8 +97,8 @@ for the mapper configuration, including the four token-inclusion toggles that VM
 
    Without the **Refresh Token** grant type, users are prompted to sign in again when the access token expires.
 
-4. Add the VMO callback URL to the **Sign-in redirect URIs** field. The callback URL is `<baseUrl>/auth/callback`, where
-   `<baseUrl>` is the public URL that users reach the VMO UI at. For example, `https://vmo.example.com/auth/callback`.
+4. Add the VMO callback URL to the **Sign-in redirect URIs** field. The callback URL is `<baseUrl>/oidc/callback`, where
+   `<baseUrl>` is the public URL that users reach the VMO UI at. For example, `https://vmo.example.com/oidc/callback`.
 
    When VMO is reached through the Palette tenant apps proxy, the base URL includes the tenant app path prefix. Enter
    the exact URL that appears in the browser address bar at sign-in time.
@@ -168,7 +168,7 @@ belong to a group whose name matches the filter for that group to appear in the 
            # such as the Palette tenant apps proxy. Obtain the callback URL
            # from the deployed VMO Manager pack after the profile deploys; the
            # UI does not surface this URL directly. Defaults to
-           # <baseUrl>/auth/callback when left empty.
+           # <baseUrl>/oidc/callback when left empty.
            callbackUrl: ""
            # Set to match the API server --oidc-username-prefix flag, such as "oidc:".
            k8sUsernamePrefix: ""
@@ -375,7 +375,7 @@ Restore the binding to grant access again.
 
 ### Scenario - The IdP Returns an Invalid Redirect URI Error
 
-The sign-in redirect URI configured in the IdP application does not exactly match `<baseUrl>/auth/callback`. Compare the
+The sign-in redirect URI configured in the IdP application does not exactly match `<baseUrl>/oidc/callback`. Compare the
 configured value with the browser address bar during sign-in, including the scheme, the host, and any tenant app path
 prefix.
 
