@@ -11,10 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 26, 2026 - Release 4.9.x
+## August 26, 2026 - Release 4.9.51
 
 <!-- PATCH RELEASE TICKET: DOC-3138 -->
-<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE VERSION: 4.9.51 -->
 
 ### Improvements
 
@@ -47,15 +47,13 @@ tags: ["release-notes"]
 - Fixed an issue where a VerteX EC installation incorrectly displayed Palette branding instead of the expected Palette
   VerteX branding in the UI.
 
-### Docs and Education
+### Edge
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-11809 -->
+:::info
 
-- Documentation improvements have been made for OCI registries. The **Endpoint Suffix** field is now documented on the
-  [Add OCI Packs Registry](../registries-and-packs/registries/oci-registry/add-oci-packs.md) and
-  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) pages, and the JFrog
-  Artifactory configuration example has been corrected. The **Base Content Path** guidance for OCI pack registries has
-  also been corrected, as it previously described behavior that applies only to OCI Helm registries.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.51 Palette release is 4.9.39.
+
+:::
 
 ## August 21, 2026 - Release 4.9.48
 
