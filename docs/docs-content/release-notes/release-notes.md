@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 30, 2026 - Release 4.10.0 {#release-notes-4.10.0}
+## September 6, 2026 - Release 4.10.0 {#release-notes-4.10.0}
 
 ### Security Notices
 
