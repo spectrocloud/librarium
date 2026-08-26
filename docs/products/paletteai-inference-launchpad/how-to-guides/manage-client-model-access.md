@@ -78,3 +78,4 @@ Frontier-model bursting is configured separately and is out of scope for this gu
 
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
 - [View Client Usage](./view-client-usage.md)
+- [Replace a Model](./replace-a-model.md)
