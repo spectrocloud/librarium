@@ -54,6 +54,15 @@ tags: ["release-notes"]
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7083 -->
+
+- Canonical Kubernetes (CK8s) clusters on MAAS now support Network Time Protocol (NTP) server configuration. You can
+  configure **NTP Servers** on the cluster's cloud configuration during cluster creation and on Day-2 through the
+  Palette UI, API, Terraform provider, and Crossplane provider, on both Palette and Palette VerteX. The servers you
+  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Refer to
+  [NTP Servers on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ntp-servers-on-maas-cluster-nodes)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7118 -->
 
 - Palette now supports the option to skip worker node upgrades on

@@ -60,7 +60,6 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
 
 - OpenID Connect (OIDC)
-- Network Time Protocol (NTP)
 - Deploying MAAS clusters with LXD VMs
 - The <VersionedLink
   text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack is available as a Container Network Interface
@@ -106,6 +105,28 @@ or the machine image configured for them.
 OpenShift workload clusters hosted by a HyperShift host cluster are provisioned through HyperShift's `HostedCluster` and
 `NodePool` custom resources on Red Hat Enterprise Linux CoreOS (RHCOS), not through Palette's cloud-init injection path.
 SSH access to those nodes is governed by OpenShift and RHCOS mechanisms rather than by the cluster's **SSH Keys** field.
+
+## NTP Servers on MAAS Cluster Nodes
+
+When you configure **NTP Servers** on a MAAS cluster's cloud configuration, Palette applies the servers to every control
+plane and worker node in the cluster. This applies to clusters that use the following distributions:
+
+- Palette eXtended Kubernetes (PXK)
+- Canonical Kubernetes (CK8s), from Palette 4.10.0 onward
+- HyperShift host clusters, which are PXK MAAS clusters and inherit the same behavior
+
+The servers you specify replace the NTP configuration that MAAS provides to the node. We recommend specifying at least
+one NTP server to prevent time drift issues.
+
+If you remove every server from the list on a Canonical Kubernetes cluster, its nodes fall back to the default NTP pools
+of the node operating system, for example `0.ubuntu.pool.ntp.org` through `3.ubuntu.pool.ntp.org`. They do not return to
+the NTP server that MAAS provides.
+
+### NTP on OpenShift Workload Clusters
+
+OpenShift workload clusters hosted by a HyperShift host cluster do not consume the cluster's **NTP Servers** field.
+Their nodes are provisioned through HyperShift's `HostedCluster` and `NodePool` custom resources on RHCOS rather than
+through Palette's cloud-init path, so time synchronization on those nodes is governed by OpenShift and RHCOS mechanisms.
 
 ## Custom API Server Endpoint for MAAS Clusters
 
