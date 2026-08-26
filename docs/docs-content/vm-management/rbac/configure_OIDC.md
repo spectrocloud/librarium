@@ -68,16 +68,57 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 9. After the VMO profile deployment completes, obtain the OIDC callback URL that your IdP redirects to after successful
    authentication.
 
+   :::warning
+
+   Do not switch the VMO pack's **Deployment Mode** between **Proxied** and **Direct** after the initial cluster
+   deployment. Changing modes on a running cluster leaves the OIDC configuration in an inconsistent state and requires
+   manual reconciliation of the pack values, the `oidc.callbackUrl`, and the Valid Redirect URIs list on the IdP. Choose
+   the target mode before you deploy the cluster.
+
+   :::
+
+   Find the cluster namespace and confirm the VMO pack name. The retrieval command below uses both values.
+
+   ```shell
+   kubectl get packs --all-namespaces
+   ```
+
+   The row whose `NAME` is `virtual-machine-orchestrator` shows a `NAMESPACE` of the form `cluster-<cluster-uid>`. Use
+   that namespace in the retrieval command below.
+
    The retrieval procedure depends on how OIDC is configured for VMO:
 
    - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The deployed
-     pack surfaces the callback URL. Retrieve the `oidc.callbackUrl` value from the pack. Refer to
-     [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for guidance.
+     pack surfaces the callback URL as its `oidc.callbackUrl` value, populated once the `vm-dashboard` service (a
+     Kubernetes `Service` of type `LoadBalancer`) receives an External-IP. Refer to
+     [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for the pack setup.
+
+     Wait for the `vm-dashboard` service to receive an External-IP.
+
+     ```shell
+     kubectl get svc --namespace vm-dashboard vm-dashboard
+     ```
+
+     When the `EXTERNAL-IP` column shows an IP address, read the callback URL from the deployed pack.
+
+     ```shell
+     kubectl get pack --namespace <cluster-namespace> virtual-machine-orchestrator --output yaml | grep callbackUrl
+     ```
+
+     The command returns the callback URL, of the form `https://<base-url>/oidc/callback`, where `<base-url>` matches
+     the pack's `platform.baseUrl` and the `vm-dashboard` External-IP.
 
    - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow, and the callback URL is constructed from
-     the cluster base URL. Retrieve the base cluster URL from the deployed cluster with `kubectl`, then append
-     `/auth/callback` to form the callback URL.
-     <!-- TODO(DOC-3134): exact kubectl command pending Tony Windebank's Zoom transcript. -->
+     the cluster's tenant apps proxy URL. Retrieve the URL from the deployed VMO pack and append `/oidc/callback` to
+     form the callback URL.
+
+     ```shell
+     kubectl get pack --namespace <cluster-namespace> virtual-machine-orchestrator --output yaml | grep consoleBaseAddress
+     ```
+
+     The command returns two lines. Use the line that carries a URL, which is the tenant apps proxy URL of the form
+     `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`. The other line is an empty duplicate field
+     elsewhere in the pack manifest. Append `/oidc/callback` to the URL to form the callback URL.
 
    Save the resulting callback URL for the sign-in redirect step.
 
@@ -89,7 +130,7 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
     for further instructions.
 
 12. Update the **Sign-in redirect URIs** field in your IdP. Add the callback URL from step 9. For example,
-    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to
+    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/oidc/callback`. This is the URI to
     which the IdP redirects users after successful authentication.
 
 ## Configure Custom OIDC for VM Migration Assistant
