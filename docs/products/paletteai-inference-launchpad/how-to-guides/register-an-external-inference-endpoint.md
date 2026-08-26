@@ -20,18 +20,17 @@ together as egress, refer to [Clients and Quotas](../explanation/clients-and-quo
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
 - The endpoint's URL, reachable from the appliance, and a key if the host requires one.
 - An existing client to authorize. To create one, refer to [Create a Client](./create-a-client.md).
-- Egress permitted for the appliance. Box sovereignty overrides every client's egress setting. When sovereignty is
-  armed, no request leaves the appliance, and a client's chip reads **Blocked by sovereignty**. To check or disarm it,
-  open **Access & Policy → Sovereignty**.
+- Egress permitted for the appliance. Sovereignty must not be armed. To check or disarm it, refer to
+  [Sovereignty and Egress](../explanation/clients-and-quotas.md#sovereignty-and-egress).
 
 ## Register the Endpoint
 
 1. From the left main menu, select **Integrations**.
 
 2. In **External inference endpoints**, under **Add an endpoint**, enter an **Endpoint id**, the **Endpoint URL**, and
-   the **Key** if the host requires one. Enter the origin only, such as `https://host.example.com`. The id is a short
-   name that becomes the routing prefix. It cannot be changed later, and it must not be `anthropic`, `openai`, or
-   `gemini`; registration refuses those ids.
+   the **Key** if the host requires one. Enter the origin only, such as `https://host.example.com`. For the id's
+   constraints and role, refer to
+   [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
 3. _(Optional)_ Enter **Input $/1M tokens** and **Output $/1M tokens** so usage is priced at the rates you set. If you
    leave them blank, the appliance applies a generic rate.
@@ -41,11 +40,12 @@ together as egress, refer to [Clients and Quotas](../explanation/clients-and-quo
 
 5. Review **Discovered models**, then select **Add endpoint**. Review the preview, and then select **Confirm & apply**.
 
-The list shows the endpoint as **enabled**, with its URL, model count, and a **key set** indicator when a key is stored.
-The key is never shown again.
+6. Confirm the endpoint appears in the list with an **enabled** chip, its URL, its model count, and a **key set** or
+   **no key** indicator on its row.
 
-To stop routing to the endpoint without deleting it, select **Disable**. To remove it, select **Remove**. Either change
-takes effect immediately. A rule that still points at that endpoint falls back to a local model instead of failing.
+To stop routing to the endpoint without deleting it, select **Disable**. To delete it, select **Remove**. For the
+fail-safe behavior that catches a routing rule still pointing at a disabled or removed endpoint, refer to
+[External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
 ## Authorize a Client
 
@@ -57,12 +57,9 @@ takes effect immediately. A rule that still points at that endpoint falls back t
 
 4. Select **Add provider key**. The **Add provider key** dialog opens.
 
-5. In **Provider**, select the endpoint id you registered. Registered endpoint ids appear alongside `anthropic`,
-   `openai`, and `gemini`. The **Key** field is hidden, and the dialog reads:
-
-   > This endpoint's key is set once at registration and shared by every client.
-
-   The credential is box-global. On the **Egress** table, the **Key** column shows **box-managed** for the row.
+5. In **Provider**, select the endpoint id you registered. The dialog hides the **Key** field for a registered endpoint
+   and shows a **box-managed** chip on the row instead. For why, refer to
+   [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
 6. Set a positive **Daily limit**, and then select **Save**. A limit of `$0` blocks the client from that endpoint, and
    the table shows **$0 blocked**.
@@ -92,8 +89,8 @@ appliance metered it as egress from that endpoint.
 
 2. From the left main menu, select **Usage**.
 
-3. Select the **By Model** tab. A row served by a registered endpoint is labeled **External · egress**. To review a
-   single client's split of local versus egress traffic, refer to [View Client Usage](./view-client-usage.md).
+3. Select the **By Model** tab and find the row labeled **External · egress**. For the field it uses and the per-client
+   split, refer to [Usage Metrics Reference: By Model Tab](../reference/usage-metrics-reference.md#by-model-tab).
 
 ## Next Steps
 

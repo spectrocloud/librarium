@@ -158,6 +158,12 @@ Access to models depends on whether a model runs locally on the appliance or is 
   registered endpoint, or model only when that provider, endpoint, or model is explicitly allowed for it. To register a
   host, refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
+### Sovereignty and Egress {#sovereignty-and-egress}
+
+Sovereignty is a separate switch that overrides every client's egress. When it is armed for the appliance, no request
+leaves the box regardless of any client's permission, and a client's egress chip reads **Blocked by sovereignty** until
+an operator disarms it under **Access & Policy → Sovereignty**.
+
 ## How It Fits Together
 
 A single request from a coding assistant ties these ideas together.
