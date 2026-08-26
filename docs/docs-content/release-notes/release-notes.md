@@ -124,6 +124,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   chunked upload support. Refer to
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
+
+- Connected Edge clusters can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at runtime,
+  instead of embedding those binaries in the provider image. On operating systems running systemd version 255 or later,
+  provider images built with CanvOS 4.10.x exclude the binaries by default, and Stylus 4.10.x delivers them through
+  systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new
+  `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file overrides the default when a specific flow requires the
+  binaries embedded. Refer to
+  [systemd Extensions and the `BUNDLE_K8S_AND_AGENT_PROVIDER` Flag](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  for build and upgrade guidance.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
