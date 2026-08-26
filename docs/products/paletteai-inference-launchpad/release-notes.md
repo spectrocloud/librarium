@@ -8,7 +8,7 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.1.0 - August _, 2026 {#version-1-1-0}
+## Version 1.1.0 - August \_, 2026 {#version-1-1-0}
 
 PaletteAI Inference Launchpad 1.1.0 builds on 1.0.0 with node-targeted deployment, Bring Your Own Model (BYOM),
 colocated vision preprocessing for text-only flagships, external inference endpoints for burst to registered hosts, a
@@ -23,8 +23,8 @@ in-place model replacement, usage reporting and export, multi-node weight synchr
 
 - **Bring Your Own Model (BYOM).** You can now deploy models that are not part of the certified model catalog. Models
   deployed through the BYOM workflow serve inference requests the same way certified models do, but are not covered by
-  Spectro Cloud's certification guarantees. Refer to
-  [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for more information.
+  Spectro Cloud's certification guarantees. Refer to [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for
+  more information.
 
 - **Vision preprocessing for text-only models.** You can now colocate a vision sidecar model on the same GPUs as a
   text-only flagship using time-slicing. When a request contains an image, the gateway routes it to the vision model,
@@ -47,15 +47,13 @@ in-place model replacement, usage reporting and export, multi-node weight synchr
 
 ### Improvements
 
-- **Model upgrade through replacement.** You can now upgrade a deployed model's weights or swap it for a different
-  model version without a full redeployment. The platform deploys the new model first, waits for it to reach a ready
-  state, and then removes the old model. Refer to [Replace a Model](./how-to-guides/replace-a-model.md) for more
-  information.
+- **Model upgrade through replacement.** You can now upgrade a deployed model's weights or swap it for a different model
+  version without a full redeployment. The platform deploys the new model first, waits for it to reach a ready state,
+  and then removes the old model. Refer to [Replace a Model](./how-to-guides/replace-a-model.md) for more information.
 
 - **Enhanced usage reporting and export.** The **Usage** view now supports flexible date filtering and CSV export for
-  token consumption, cost, and client-level breakdowns. Refer to
-  [View Token Usage](./how-to-guides/view-token-usage.md) and
-  [View Client Usage](./how-to-guides/view-client-usage.md) for more information.
+  token consumption, cost, and client-level breakdowns. Refer to [View Token Usage](./how-to-guides/view-token-usage.md)
+  and [View Client Usage](./how-to-guides/view-client-usage.md) for more information.
 
 - **Multi-node model weight synchronization.** Model weights uploaded to the primary node now synchronize automatically
   to all GPU worker nodes.
