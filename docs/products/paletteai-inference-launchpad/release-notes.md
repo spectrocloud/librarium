@@ -34,10 +34,8 @@ and platform security.
 
 - **Register an external inference endpoint.** You can now register any OpenAI-compatible inference host as a box-wide
   egress target, then authorize each client and cap its daily spend. Traffic to a registered endpoint is metered as
-  egress. Refer to
-  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
-  information.
-
+  egress. Refer to [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md)
+  for more information.
 
 ### Improvements
 
@@ -55,6 +53,7 @@ and platform security.
 - **Security hardening.** This release addresses findings from a full security scan covering the operating system,
   Kubernetes, dynamic application security testing (DAST), static application security testing (SAST), penetration
   testing, and the Software Bill of Materials (SBOM).
+
 ## Version 1.0.0 - July 21, 2026 {#version-1-0-0}
 
 PaletteAI Inference Launchpad 1.0.0 is the first release. It is a standalone, turnkey AI appliance that turns your own
