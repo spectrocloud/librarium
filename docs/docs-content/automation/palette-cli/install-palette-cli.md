@@ -18,6 +18,8 @@ The Palette CLI is available for the following operating systems and architectur
 | **Operating System** | **Architecture** |
 | -------------------- | ---------------- |
 | Linux                | amd64            |
+| Linux                | arm64            |
+| macOS                | arm64            |
 
 ## Limitations
 
@@ -42,7 +44,22 @@ The Palette CLI is available for the following operating systems and architectur
 
 3. Navigate to your default download folder. For Linux environments the default location is **~/Downloads**.
 
-4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
+4. If you are installing on macOS, remove the quarantine attribute that gets applied to files downloaded from the
+   internet. Without this step, the operating system blocks the binary from running.
+
+   ```shell
+   xattr -d com.apple.quarantine ~/Downloads/palette 2>/dev/null || true
+   ```
+
+   :::info
+
+   The Palette CLI binary is in the process of being certified as trusted. Until the process is complete, if you do not
+   remove the quarantine attribute, macOS displays a **"palette" Not Opened** dialog stating that it could not verify
+   the binary is free of malware.
+
+   :::
+
+5. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
    move the binary to the **/usr/local/bin** folder.
 
    ```shell
@@ -50,7 +67,7 @@ The Palette CLI is available for the following operating systems and architectur
    chmod +x /usr/local/bin/palette
    ```
 
-5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using
+6. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using
    a Palette self-hosted instance or Palette VerteX, replace the `--console-url` with your custom Palette URL.
 
    ```shell
