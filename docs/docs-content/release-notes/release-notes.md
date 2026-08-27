@@ -218,7 +218,9 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
   upload completion as soon as the transfer finishes.
 
-### Docs and Education
+### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
 
@@ -227,6 +229,8 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
   PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
   satisfy.
+
+### Docs and Education
 
 ### Packs
 
