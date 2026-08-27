@@ -141,7 +141,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new
   `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file overrides the default when a specific flow requires the
   binaries embedded. Refer to
-  [systemd Extensions and the `BUNDLE_K8S_AND_AGENT_PROVIDER` Flag](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
   for build and upgrade guidance.
 
 #### Improvements
