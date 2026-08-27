@@ -17,10 +17,8 @@ provider.
 - **Local models.** Every client with a valid API token can call every model served locally on the appliance. You do not
   grant access to local models. To choose which local model handles a client's requests, route the client with a tier
   map.
-- **External models.** A new client cannot reach external models until you enable egress for it. External access is
-  denied by default and is granted per client. External models include built-in frontier providers and hosts you
-  register as external inference endpoints. Refer to
-  [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
+- **External models.** A new client cannot reach external, or frontier, models until you enable egress for it. External
+  access is denied by default and is granted per client.
 
 To understand how clients and models relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
 
@@ -29,8 +27,7 @@ To understand how clients and models relate, refer to [Clients and Quotas](../ex
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
 - An existing client. To create one, refer to [Create a Client](./create-a-client.md).
 - Console access with permission to manage clients. Managing clients can require operator access.
-- _(External models only)_ For a built-in frontier provider, a provider key. For a registered endpoint, the endpoint
-  already registered. Refer to [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
+- _(External models only)_ A provider key for the external provider.
 
 ## Route a Client to Specific Models
 
@@ -44,9 +41,7 @@ Use a client's tier map to route the client's model aliases to the models you ch
 
 4. In the **Tier map**, select **Add alias rule**, or edit an existing row.
 
-5. Set the **Alias prefix**, such as `claude-opus-`, and the **Model** it routes to. Local models, frontier targets, and
-   models from a registered external inference endpoint appear in the picker. Endpoint models are listed as
-   `<id> / <model>`.
+5. Set the **Alias prefix**, such as `claude-opus-`, and the **Model** it routes to.
 
 6. Save the client.
 
@@ -59,8 +54,6 @@ routed to that model unless you configure their tier maps as well.
 
 ## Allow a Client to Reach External Models
 
-Enable egress, then add each provider or registered endpoint the client may use.
-
 1. From the left main menu, select **Access & Policy**.
 
 2. On the **Clients & API tokens** page, select the client to open its detail panel.
@@ -69,24 +62,20 @@ Enable egress, then add each provider or registered endpoint the client may use.
 
 4. Select **Enable egress**.
 
-5. Select **Add provider key**.
+5. Add a provider key for the external provider.
 
-6. In **Provider**, select a built-in frontier provider or a registered endpoint id.
+6. Set a daily spend cap for the client. Egress is fail-closed on the cap, so a cap of `0` blocks egress.
 
-   - For a frontier provider, enter the provider key.
-   - For a registered endpoint, the **Key** field is hidden. The credential was set when you registered the endpoint,
-     and the table shows **box-managed**. To register an endpoint first, refer to
-     [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
+7. _(Optional)_ List the provider models the client may reach. Leave the list empty to allow every model from that
+   provider.
 
-7. Set a positive **Daily limit**, and then select **Save**. Egress is fail-closed on the cap, so a limit of `$0` blocks
-   that provider or endpoint for the client, and the table shows **$0 blocked**.
+8. Save the client.
 
 Frontier-model bursting is configured separately and is out of scope for this guide.
 {/* TODO: link to the frontier-model bursting guide once published. */}
 
 ## Next Steps
 
-- [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
 - [View Client Usage](./view-client-usage.md)
 - [Replace a Model](./replace-a-model.md)

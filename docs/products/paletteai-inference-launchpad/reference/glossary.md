@@ -138,10 +138,9 @@ The model the appliance routes a request to when the request does not name a spe
 
 ### Egress
 
-A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model) or to a
-registered [external inference endpoint](#external-inference-endpoint). Egress denies by default: a new client cannot
-reach external providers or registered endpoints until an operator enables it. Usage labels this combined traffic
-**Egress**. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model). Egress
+denies by default: a new client cannot reach external providers until an operator enables it. Refer to
+[Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Embedding
 
@@ -153,13 +152,6 @@ inputs by meaning rather than by exact wording. The appliance uses embeddings in
 
 The network location, expressed as a URL path, at which the appliance exposes a served model or an API. Each loaded
 model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at paths such as `/v1/chat/completions`.
-
-### External Inference Endpoint
-
-An OpenAI-compatible inference host registered on the appliance as an appliance-wide [egress](#egress) target. The host
-can be a hosted router, a partner API, a second appliance, or an in-house inference server. After you register it, its
-models appear in a client's routing picker, and traffic to it is metered as egress. Refer to
-[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## F
 

@@ -114,7 +114,6 @@ Whatever brought you here, these are the fastest paths in.
   [Replace a model](./how-to-guides/replace-a-model.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
-  [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
   [Revoke or delete a client](./how-to-guides/revoke-or-delete-a-client.md)
 - **Look something up**: [Glossary](./reference/glossary.md) •
