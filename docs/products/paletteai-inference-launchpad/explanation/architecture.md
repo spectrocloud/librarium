@@ -103,8 +103,8 @@ cannot be changed after registration, and it cannot collide with a built-in fron
 client, which is why the client drawer shows `box-managed` in place of a per-client key for that row.
 
 Disabling or removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at
-that endpoint falls back to the appliance's local serving in flight rather than erroring. To register a host, refer to
-[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+that endpoint falls back to the appliance's local serving in flight rather than returning an error. To register a host,
+refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## Network Topology
 

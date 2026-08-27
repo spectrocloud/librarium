@@ -140,8 +140,8 @@ One row per registered client. Selecting a row opens the client's API tokens.
 
 Local and external figures are paired rather than summed, because a local quota and an external spend cap are separate
 budgets. Hold the pointer over a paired cell to display which figure is which. **Egress** covers traffic to built-in
-frontier providers and to registered external inference endpoints together. To see which registered endpoint served a
-request, open the **By Model** tab and look for the **External · egress** label.
+frontier providers and to registered external inference endpoints together. To identify which registered endpoint served
+a request, open the **By Model** tab and look for the **External · egress** label.
 
 The columns on this tab do not sort. To rank clients, export the table and sort it in a spreadsheet.
 
