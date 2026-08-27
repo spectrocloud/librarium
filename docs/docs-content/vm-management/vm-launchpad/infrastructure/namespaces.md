@@ -126,6 +126,13 @@ You can adopt a namespace that already exists in the cluster so that it can be m
 Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but are _not_ labeled
 `vmo-manager.spectrocloud.com/origin=created`.
 
+:::info
+
+The namespace is listed as soon as you adopt it, but virtual machines that already exist in it might take about five
+minutes to appear in VMO Manager.
+
+:::
+
 ## Edit Namespaces
 
 Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces).

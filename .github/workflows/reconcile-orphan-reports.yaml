@@ -1,0 +1,192 @@
+# Daily sweep that removes report directories on gh-pages whose branch no longer exists.
+#
+# This is the belt to the publish-time guard's suspenders. `visual-comparison.yaml`
+# skips its publish step when `github.head_ref` no longer exists on origin (Option B
+# in DOC-3108), which closes the common cause: a `labeled` event on a closed PR whose
+# branch was already deleted, or a `pull_request` retrigger in the same window. This
+# scheduled workflow catches anything the guard misses — pre-DOC-3108 orphans and the
+# narrow window where the branch disappears between the guard's `ls-remote` and the
+# push — and keeps the tip of gh-pages within one day of the live branch list.
+#
+# Sanitisation matches `clean-up-report.yaml` and the `Sanitize branch name for path`
+# step in `visual-comparison.yaml`: the on-disk directory name is the branch name with
+# `/` replaced by `-`. That mapping is not injective (a branch named `a/b` and a branch
+# named `a-b` both map to `a-b`), so comparison is sanitised-to-sanitised on both sides.
+# A live branch with either form therefore protects the directory from removal, which
+# is the safe direction: false negatives leave an orphan for one more cycle, false
+# positives would delete a live report.
+#
+# The mapping is duplicated across three workflows (publish, event cleanup, this sweep)
+# with no shared script or test linking them. If the publish side ever changes the
+# mapping — reports-by-PR-number, lowercasing, another character strip — every
+# reports/* directory becomes an orphan by this workflow's definition. The proportional
+# guard below turns that failure mode from a silent mass delete into a red run: abort
+# when more than 10 directories or more than 50% of reports/* would be removed, unless
+# `workflow_dispatch` was invoked with `force: true`.
+#
+# This does not reclaim repository size. The multi-GB gh-pages footprint lives in branch
+# history, not at the tip; deleting orphans at the tip does not shrink it. That is the
+# separate "orphan gh-pages" fix.
+
+name: Reconcile Orphan Reports
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # daily, 05:00 UTC (quiet window)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Bypass the proportional guard even if >10 orphans or >50% of reports/* would be removed. Use only after confirming that the publish-side sanitisation mapping has not drifted."
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: reconcile-orphan-reports
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    name: Reconcile Orphan Reports
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout gh-pages
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+
+      - name: Set Git User
+        # see: https://github.com/actions/checkout/issues/13#issuecomment-724415212
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Collect live branch names
+        # Query the remote directly and sanitise `refs/heads/<name>` the same way
+        # clean-up-report.yaml does (/ -> -). Sort unique for the set-difference in the
+        # next step. If the listing fails or is empty, exit non-zero: an empty set would
+        # treat every reports/* directory as an orphan, so we must never proceed without
+        # a real list.
+        run: |
+          set -euo pipefail
+
+          if ! git ls-remote --heads origin > /tmp/live-refs.raw; then
+            echo "::error::git ls-remote failed; aborting to avoid a false-positive sweep."
+            exit 1
+          fi
+
+          if [ ! -s /tmp/live-refs.raw ]; then
+            echo "::error::Empty branch list from origin; aborting to avoid a false-positive sweep."
+            exit 1
+          fi
+
+          awk '{print $2}' /tmp/live-refs.raw \
+            | sed 's|^refs/heads/||' \
+            | sed 's|/|-|g' \
+            | sort -u \
+            > /tmp/live-branches.sanitised
+
+          printf 'Live branches: %s\n' "$(wc -l < /tmp/live-branches.sanitised)"
+
+      - name: Identify and remove orphan reports
+        # Compare basenames of reports/* against the sanitised live-branch set. Anything
+        # missing from the live set is an orphan and gets removed, subject to the
+        # proportional guard below. Deletion is staged; commit and push happen in the
+        # next step, so an unchanged tree is a natural no-op.
+        env:
+          FORCE_INPUT: ${{ inputs.force || 'false' }}
+          MAX_ABSOLUTE_DELETIONS: '10'
+        run: |
+          set -euo pipefail
+
+          if [ ! -d reports ]; then
+            echo "reports/ is not present at gh-pages tip; nothing to reconcile."
+            exit 0
+          fi
+
+          find reports -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
+            | sort -u \
+            > /tmp/current-report-dirs
+
+          # Set difference: current dirs that are not in the live set.
+          comm -23 /tmp/current-report-dirs /tmp/live-branches.sanitised \
+            > /tmp/orphan-dirs
+
+          if [ ! -s /tmp/orphan-dirs ]; then
+            echo "No orphan report directories. reports/ is clean."
+            exit 0
+          fi
+
+          orphan_count=$(wc -l < /tmp/orphan-dirs)
+          reports_count=$(wc -l < /tmp/current-report-dirs)
+          printf 'Orphans found: %s of %s reports/* directories\n' \
+            "$orphan_count" "$reports_count"
+
+          if [ "$FORCE_INPUT" != "true" ]; then
+            if [ "$orphan_count" -gt "$MAX_ABSOLUTE_DELETIONS" ]; then
+              echo "::error::Refusing to delete ${orphan_count} directories (absolute limit: ${MAX_ABSOLUTE_DELETIONS}). This likely means the sanitisation mapping on the publish side has drifted from this workflow. Investigate before rerunning; use workflow_dispatch with 'force: true' only after confirming the sweep is intentional."
+              exit 1
+            fi
+            # > 50% of reports/*: equivalent to orphan_count * 2 > reports_count.
+            if [ "$reports_count" -gt 0 ] \
+              && [ "$((orphan_count * 2))" -gt "$reports_count" ]; then
+              echo "::error::Refusing to delete ${orphan_count} of ${reports_count} directories (> 50% of reports/*). This likely means the sanitisation mapping on the publish side has drifted from this workflow. Investigate before rerunning; use workflow_dispatch with 'force: true' only after confirming the sweep is intentional."
+              exit 1
+            fi
+          else
+            echo "::warning::Proportional guard bypassed via workflow_dispatch force input."
+          fi
+
+          echo "Removing orphan report directories:"
+          while IFS= read -r dir; do
+            printf '  - reports/%s\n' "$dir"
+            git rm -r --quiet "reports/${dir}"
+          done < /tmp/orphan-dirs
+
+      - name: Commit and push
+        # Same bounded retry pattern used by clean-up-report.yaml and visual-comparison.yaml
+        # to survive a concurrent push to gh-pages.
+        run: |
+          set -euo pipefail
+
+          if git diff --staged --quiet; then
+            echo "Nothing staged; reports/ was already clean."
+            exit 0
+          fi
+
+          orphan_count=$(git diff --staged --name-only \
+            | awk -F/ 'NF>=2 && $1=="reports"{print $2}' \
+            | sort -u \
+            | wc -l)
+
+          if [ "$orphan_count" -eq 1 ]; then
+            subject="workflow: reconcile 1 orphan report directory on gh-pages"
+          else
+            subject="workflow: reconcile ${orphan_count} orphan report directories on gh-pages"
+          fi
+
+          body=$(sed 's/^/  - reports\//' /tmp/orphan-dirs)
+          git commit -m "$subject" -m "$body"
+
+          for attempt in 1 2 3 4 5; do
+            if ! git pull --rebase; then
+              echo "Failed to rebase. Please review manually."
+              exit 1
+            fi
+
+            if git push; then
+              echo "Successfully reconciled orphan reports."
+              exit 0
+            fi
+
+            echo "Push rejected (attempt ${attempt} of 5), retrying..."
+            sleep 5
+          done
+
+          echo "Exhausted push retries. Please review manually."
+          exit 1

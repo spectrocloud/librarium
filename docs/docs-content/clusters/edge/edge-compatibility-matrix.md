@@ -21,22 +21,33 @@ CanvOS, Stylus, and the Edge host version refer to the same Edge host software r
 
 ## Compatibility Matrix
 
-| Palette Release                   | CanvOS / Stylus / Edge Host Version | Palette CLI Version | Palette Edge CLI Status                              |
-| --------------------------------- | ----------------------------------- | ------------------- | ---------------------------------------------------- |
-| <!-- edge-compat-4.9.c --> 4.9.38 | 4.9.34                              | 4.9.15              | Deprecated. Use Palette CLI for supported workflows. |
-| <!-- edge-compat-4.9.b --> 4.9.22 | 4.9.19                              | 4.9.8               | Deprecated. Use Palette CLI for supported workflows. |
-| 4.9.14                            | 4.9.10                              | 4.9.5               | Deprecated. Use Palette CLI for supported workflows. |
-| 4.9.5                             | 4.9.4                               | 4.9.2               | 4.9.4                                                |
-| 4.8.47                            | 4.8.18                              | 4.8.10              | 4.8.18                                               |
-| 4.8.33                            | 4.8.10                              | 4.8.7               | 4.8.10                                               |
-| 4.8.21                            | 4.8.8                               | 4.8.5               | 4.8.8                                                |
-| 4.8.6                             | 4.8.1                               | 4.8.2               | 4.8.1                                                |
-| 4.7.27                            | 4.7.16                              | 4.7.4               | 4.7.16                                               |
-| 4.7.20                            | 4.7.13                              | 4.7.2               | 4.7.13                                               |
-| 4.7.13                            | 4.7.9                               | 4.7.1               | 4.7.9                                                |
-| 4.7.3                             | 4.7.2                               | 4.7.0               | 4.7.2                                                |
-| 4.6.40                            | 4.6.24                              | 4.6.8               | 4.6.24                                               |
-| 4.6.32                            | 4.6.21                              | 4.6.6               | 4.6.21                                               |
+| Palette Release                    | CanvOS / Stylus / Edge Host Version | Palette CLI Version | Palette Edge CLI Status                              |
+| ---------------------------------- | ----------------------------------- | ------------------- | ---------------------------------------------------- |
+| <!-- edge-compat-4.9.51 --> 4.9.51 | 4.9.39                              | 4.9.19              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.48 --> 4.9.48 | 4.9.38                              | 4.9.19              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.46 --> 4.9.46 | 4.9.37                              | 4.9.19              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.43 --> 4.9.43 | 4.9.36                              | 4.9.18              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.c --> 4.9.38  | 4.9.34                              | 4.9.16              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.27 --> 4.9.27 | 4.9.22                              | 4.9.10              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.24 --> 4.9.24 | 4.9.21                              | 4.9.10              | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.23 --> 4.9.23 | 4.9.20                              | 4.9.9               | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.b --> 4.9.22  | 4.9.19                              | 4.9.8               | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.18 --> 4.9.18 | 4.9.13                              | 4.9.7               | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.16 --> 4.9.16 | 4.9.11                              | 4.9.6               | Deprecated. Use Palette CLI for supported workflows. |
+| 4.9.14                             | 4.9.10                              | 4.9.5               | Deprecated. Use Palette CLI for supported workflows. |
+| <!-- edge-compat-4.9.8 --> 4.9.8   | 4.9.7                               | 4.9.2               | 4.9.7                                                |
+| <!-- edge-compat-4.9.6 --> 4.9.6   | 4.9.6                               | 4.9.2               | 4.9.6                                                |
+| 4.9.5                              | 4.9.4                               | 4.9.2               | 4.9.4                                                |
+| 4.8.47                             | 4.8.18                              | 4.8.10              | 4.8.18                                               |
+| 4.8.33                             | 4.8.10                              | 4.8.7               | 4.8.10                                               |
+| 4.8.21                             | 4.8.8                               | 4.8.5               | 4.8.8                                                |
+| 4.8.6                              | 4.8.1                               | 4.8.2               | 4.8.1                                                |
+| 4.7.27                             | 4.7.16                              | 4.7.4               | 4.7.16                                               |
+| 4.7.20                             | 4.7.13                              | 4.7.2               | 4.7.13                                               |
+| 4.7.13                             | 4.7.9                               | 4.7.1               | 4.7.9                                                |
+| 4.7.3                              | 4.7.2                               | 4.7.0               | 4.7.2                                                |
+| 4.6.40                             | 4.6.24                              | 4.6.8               | 4.6.24                                               |
+| 4.6.32                             | 4.6.21                              | 4.6.6               | 4.6.21                                               |
 
 ## Palette Edge CLI Deprecation
 

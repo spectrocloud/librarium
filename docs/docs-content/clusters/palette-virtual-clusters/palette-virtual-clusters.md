@@ -14,6 +14,13 @@ default, virtual clusters use [k3s](https://github.com/k3s-io/k3s), a highly ava
 distribution designed for production workloads. Virtual clusters are supported in both connected and airgapped
 environments.
 
+:::info
+
+On Palette VerteX, virtual clusters use a FIPS-compiled vCluster pack automatically, so strict-FIPS tenants can
+provision virtual clusters without additional configuration.
+
+:::
+
 Palette provisions and orchestrates virtual clusters to make the lightweight Kubernetes technology stack and tools
 ecosystem available to you. Deploy virtual clusters on both new and imported Host Clusters and attach application
 profiles.
