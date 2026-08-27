@@ -50,7 +50,7 @@ tags: ["release-notes"]
   cluster's cloud configuration during cluster creation and on Day-2 through the Palette UI, API, Terraform provider,
   and Crossplane provider, on both Palette and Palette VerteX. Palette injects the keys into the `spectro` user's
   `~/.ssh/authorized_keys` on every control plane and worker node, and preserves any users that MAAS or the machine
-  image already configured. Refer to
+  image already configured. Changing the keys on a deployed CK8s cluster repaves the cluster nodes. Refer to
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
 
@@ -59,7 +59,8 @@ tags: ["release-notes"]
 - Canonical Kubernetes (CK8s) clusters on MAAS now support Network Time Protocol (NTP) server configuration. You can
   configure **NTP Servers** on the cluster's cloud configuration during cluster creation and on Day-2 through the
   Palette UI, API, Terraform provider, and Crossplane provider, on both Palette and Palette VerteX. The servers you
-  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Refer to
+  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Changing the servers
+  on a deployed CK8s cluster repaves the cluster nodes. Refer to
   [NTP Servers on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ntp-servers-on-maas-cluster-nodes)
   for more information.
 
