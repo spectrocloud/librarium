@@ -110,7 +110,6 @@ Whatever brought you here, these are the fastest paths in.
   [OpenCode](./how-to-guides/use-opencode.md)
 - **Operate day to day**: [Manage cluster infrastructure](./how-to-guides/manage-cluster-infrastructure.md) •
   [Upgrade the platform](./how-to-guides/upgrade-the-platform.md) •
-  [Replace a model](./how-to-guides/replace-a-model.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
