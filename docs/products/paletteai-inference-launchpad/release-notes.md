@@ -8,9 +8,9 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.1.0 - August \_, 2026 {#version-1-1-0}
+## Version 1.1.1 - August 27, 2026 {#version-1-1-1}
 
-PaletteAI Inference Launchpad 1.1.0 builds on 1.0.0 with node-targeted model deployment, Bring Your Own Model (BYOM),
+PaletteAI Inference Launchpad 1.1.1 builds on 1.0.0 with node-targeted model deployment, Bring Your Own Model (BYOM),
 colocated vision preprocessing for text-only flagships, and external inference endpoints for burst to registered hosts.
 This release also improves in-place model replacement, usage reporting and export, multi-node weight synchronization,
 and platform security.
