@@ -17,8 +17,7 @@ rather than having the appliance pull them at deploy time. You download a model 
 appliance over SSH, after which the model appears in the appliance's deploy catalog.
 
 This guide comes before [Deploy a Model](./deploy-a-model.md): the upload puts the model in the catalog, and the deploy
-serves it. For a model that is not in the certified catalog, author `metadata.yaml` first, then follow this guide. Refer
-to [Bring Your Own Model](./bring-your-own-model.md). For the full command flags and metadata file fields, refer to
+serves it. For the full command flags and metadata file fields, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
 :::info
@@ -38,9 +37,8 @@ downloads models itself. For how to provision the jumpbox, refer to
   [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation) and
   [Model Download Access](../reference/hardware-requirements.md#model-download-access-recommended).
 - `rsync` on the jumpbox. The Palette CLI uses it to transfer the model to the appliance over SSH.
-- The metadata YAML for the model you intend to upload. For a certified model, obtain it from Artifact Studio. For a
-  model that is not certified, author it yourself. Refer to [Bring Your Own Model](./bring-your-own-model.md). For its
-  fields, refer to [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
+- The metadata YAML for the model you intend to upload, obtained from Artifact Studio. For its fields, refer to
+  [Model Metadata File](../reference/model-upload-reference.md#model-metadata-file).
 - The appliance's SSH host address (IP or DNS name) and an SSH user.
 - _(Gated or private Hugging Face repositories)_ A Hugging Face access token.
 
@@ -118,8 +116,6 @@ The upload command accepts other flags, including password authentication (`--ss
 
 - **Deploy the model:** Follow [Deploy a Model](./deploy-a-model.md) to deploy the uploaded model and verify it is
   serving.
-- **Bring your own model:** Follow [Bring Your Own Model](./bring-your-own-model.md) to author metadata for a model that
-  is not in the certified catalog, then download, upload, and deploy it.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
 - **Enable vision preprocessing:** If you uploaded a vision model to use with a text-only model, follow
