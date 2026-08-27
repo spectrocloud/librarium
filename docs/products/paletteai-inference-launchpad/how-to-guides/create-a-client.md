@@ -37,12 +37,9 @@ grants model access, and optionally issues the client's first API token.
 4. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
    refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
 
-5. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external models, including
-   built-in frontier providers and registered external inference endpoints, and then select **Next step**. External
-   access is denied by default. To add a provider key or authorize a registered endpoint, and to set a daily spend cap,
+5. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external, or frontier, models,
+   and then select **Next step**. External access is denied by default. To add a provider key and set a daily spend cap,
    refer to [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
-   To register an endpoint first, refer to
-   [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
 6. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
    default model routing, or edit the **Tier map** to route the client's model aliases to specific models. Then select
@@ -87,6 +84,5 @@ After you create a client, configure how much it can consume and which models it
 
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
 - [Manage a Client's Model Access](./manage-client-model-access.md)
-- [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [View Client Usage](./view-client-usage.md)
 - [Revoke or Delete a Client](./revoke-or-delete-a-client.md)
