@@ -11,6 +11,20 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 27, 2026 - Release 4.9.52
+
+<!-- PATCH RELEASE TICKET: DOC-3162 -->
+<!-- PATCH RELEASE VERSION: 4.9.52 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11815 -->
+
+- You can now add a JFrog Artifactory OCI packs registry through the Palette UI. Specify the JFrog Docker V2 API path
+  and repository key in the **Endpoint Suffix** field when you add the registry. In Palette 4.9.51, this configuration
+  was available only through the API and Terraform. Refer to
+  [Add OCI Packs Registry](../registries-and-packs/registries/oci-registry/add-oci-packs.md) for more information.
+
 ## August 26, 2026 - Release 4.9.51
 
 <!-- PATCH RELEASE TICKET: DOC-3138 -->
@@ -25,8 +39,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11808 -->
 
-- JFrog Artifactory OCI pack registries are now supported at the tenant scope. Add the registry through the Palette UI
-  or API, and specify the JFrog Docker V2 API path and repository key in the **Endpoint Suffix** field. Refer to
+- JFrog Artifactory OCI pack registries are now supported at the tenant scope. Add the registry through the API or
+  Terraform, and specify the JFrog Docker V2 API path and repository key as the registry `basePath`. Refer to
   [OCI Packs Registry Configuration by Provider](../registries-and-packs/registries/oci-registry/oci-registry.md#oci-packs-registry-configuration-by-provider)
   for configuration examples.
 
