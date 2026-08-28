@@ -16,18 +16,16 @@ tags: ["release-notes"]
 <!-- COMPONENT UPDATES TICKET: DOC-3139 -->
 <!-- RELEASE DATE: August 28, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.51 -->
-<!-- RELEASE ARTIFACT STUDIO: 4.9.28 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.22 -->
 <!-- RELEASE TERRAFORM VERSION: NA -->
 
 The following components have been updated for Palette version 4.9.5 - 4.9.52.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.28  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | NA      |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | NA      |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.51  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.51  |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.22  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.51  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.51  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3139. DO NOT DELETE. -->
 
