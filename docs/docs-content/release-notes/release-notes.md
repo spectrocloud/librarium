@@ -147,6 +147,21 @@ tags: ["release-notes"]
   `PUT /v1/spectroclusters/{uid}/profiles` API while that cluster was actively reporting its status. Attaching several
   profiles to the same cluster in quick succession was the most common trigger.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4655 -->
+
+- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab. Only the first
+  line of the message was recorded, so an event displayed `"Reconciler error" err=<` while the description of the
+  failure that followed it, such as `NoCredentialProviders: no valid providers in chain`, was dropped. The complete
+  message is now recorded as a single event. Only error-level events were affected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7401 -->
+
+- Fixed an issue that caused changing a cluster-level tag on a healthy
+  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a misleading `ClusterUpgradeTriggered` event and
+  replace every node in the cluster's worker node pools. Pipelines that update tag values on each run, such as
+  compliance tagging, could therefore repave nodes repeatedly on a cluster that was never upgraded. Changing tags
+  directly on a worker node pool still replaces that pool's nodes.
+
 #### Deprecations and Removals
 
 ### Edge
@@ -245,6 +260,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   restarted unexpectedly, the Edge host remained enabled for remote shell indefinitely, leaving the tunnel and its
   temporary user credentials active.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9316 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9351 -->
+
+- Fixed an issue that prevented the NTP servers configured on an Edge host through the
+  [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) from being visible in Local UI. The
+  Edge host overview page now lists them in an **NTP Servers** field, so an operator working only in Local UI can
+  confirm the host's time synchronization settings. These servers remain specific to the host, and cluster-level NTP
+  configured in cluster settings continues to override them on every host in the cluster.
+
 ### VerteX
 
 #### Features
@@ -273,6 +297,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue that caused the CA certificate help text in the **Certificate validation** step of the
   [Create Provider](../vm-management/vm-migration-assistant/create-source-providers.md) wizard to refer to the OpenShift
   API endpoint for every provider type, including VMware vSphere.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1051 -->
+
+- Fixed an issue that caused uploading a [golden image](../vm-management/vm-launchpad/virtual-machines/golden-images.md)
+  to fail with a **Certificate Trust Required** prompt that contained no URL, leaving no way to accept the certificate
+  and complete the upload. This occurred when the upload was proxied through Palette because the cluster had no direct
+  upload URL available. The upload pages now display a notice before an upload begins, and a proxied upload that fails
+  states that direct upload access has to be enabled on the VMO pack.
 
 ### Automation
 
@@ -322,6 +354,15 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 ### Packs
 
 #### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4601 -->
+
+- The `tigera-operator` 3.32.1 pack has been republished as `tigera-operator-3.32.1-rev1` to add the `calico/csi` and
+  `calico/node-driver-registrar` images to its image manifest. The Tigera Operator deploys these two images whenever
+  `kubeletVolumePluginPath` is set to a value other than `None`, but because they were missing from the manifest they
+  were never mirrored into dedicated or airgapped registries, leaving the `csi-node-driver` DaemonSet in
+  `ImagePullBackOff`. Calico networking was unaffected, because the Container Storage Interface (CSI) driver is a
+  separate optional component.
 
 #### OS
 
