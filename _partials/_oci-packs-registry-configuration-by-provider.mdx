@@ -3,7 +3,7 @@ partial_category: oci-registry-configuration
 partial_name: oci-packs-registry-configuration-by-provider
 ---
 
-When configuring OCI pack registries in Palette through the UI or Helm values, ensure that the configuration values align with the expected URL structure of the registry. This is especially important for registries that do not adhere to the standard Docker V2 API structure, such as JFrog Artifactory.
+When configuring OCI pack registries in Palette through the UI, API, or Helm values, ensure that the configuration values align with the expected URL structure of the registry. This is especially important for registries that do not adhere to the standard Docker V2 API structure, such as JFrog Artifactory.
 
 The following sections provide key rules and example configurations for some of the supported OCI pack registry providers.
 
@@ -12,17 +12,19 @@ The following sections provide key rules and example configurations for some of 
 - Palette resolves pack URL locations using the following pattern.
 
   ```text
-  <endpoint>/<baseContentPath>/spectro-packs
+  <endpoint>/<basePath>/<baseContentPath>/spectro-packs
   ```
 
-  If `<baseContentPath>` is empty, Palette uses the following pattern instead.
+  Both `<basePath>` and `<baseContentPath>` are optional, and Palette omits any segment that you leave empty. If you
+  leave both empty, Palette uses the following pattern instead.
 
   ```text
   <endpoint>/spectro-packs
   ```
 
-- The `spectro-packs` path is appended automatically so you should not include it in the values for `<endpoint>` or
-  `<baseContentPath>`. Palette expects packs to be stored under the `spectro-packs` repository path in the OCI registry.
+- The `spectro-packs` path is appended automatically so you should not include it in the values for `<endpoint>`,
+  `<basePath>`, or `<baseContentPath>`. Palette expects packs to be stored under the `spectro-packs` repository path in
+  the OCI registry.
 
 - In general practice, set `<baseContentPath>` to the path segment that sits between the `<endpoint>` and
   `spectro-packs`. Leave empty if `spectro-packs` is at the repository root.
@@ -30,10 +32,13 @@ The following sections provide key rules and example configurations for some of 
   For example, if your OCI registry URL is `https://harbor.example.com/registry/palette-packs/spectro-packs`, set
   `<endpoint>` to `https://harbor.example.com` and `<baseContentPath>` to `registry/palette-packs`.
 
+- Palette syncs only the content stored directly in the directory that `<baseContentPath>` specifies. Content stored at
+  the repository root or in child directories nested below the specified path is not synced.
+
 - For registries with a non-standard API path like
-  [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/jfrog-artifactory), include the full API
-  path in the `<endpoint>` value. For standard Docker V2 registries like [Harbor](https://goharbor.io/), use the
-  hostname only.
+  [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/jfrog-artifactory), specify the API path
+  in `<basePath>`, which is the **Endpoint Suffix** field in the Palette UI. For standard Docker V2 registries like
+  [Harbor](https://goharbor.io/), use the hostname only for `<endpoint>` and leave `<basePath>` empty.
 
 - Self-hosted registries require a base64-encoded PEM CA certificate in `<caCert>`.
 
@@ -45,28 +50,48 @@ The following examples demonstrate how to configure OCI pack registries for diff
 
 <TabItem value="example-jfrog-artifactory" label="Example JFrog Artifactory">
 
-- The full Docker V2 API path is required for the JFrog Artifactory `<endpoint>`.
-- The [repository key](https://jfrog.com/help/r/artifactory-rest-apis/list-docker-repositories) is included in the
-  `<endpoint>` value, which is `spectro-packs-repo` in this example.
+:::info
+
+JFrog Artifactory pack registries are supported at the tenant scope only. Add them using the Palette UI or API. The
+`ociPackRegistry` Helm values of the self-hosted Palette and Palette VerteX charts do not support JFrog Artifactory.
+
+:::
+
+- The `<endpoint>` is the JFrog Artifactory hostname only.
+- The full Docker V2 API path is required, and it includes the
+  [repository key](https://jfrog.com/help/r/artifactory-rest-apis/list-docker-repositories). Specify this path in the
+  **Endpoint Suffix** field, which corresponds to `<basePath>` in the API. The repository key is `spectro-packs-repo` in
+  this example.
 - The `<baseContentPath>` is the directory in the JFrog repository where the packs are stored, which is `sample-dir` in
-  this example. Palette syncs only the content stored directly in the specified directory. Content stored at the
-  repository root or in child directories nested below the specified path is not synced.
+  this example.
 
 ```text hideClipboard title="UI values example"
-Endpoint: https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo
+Endpoint: https://artifactory.example.com
+Endpoint Suffix: artifactory/api/docker/spectro-packs-repo
 Base Content Path: sample-dir
 ```
 
-```yaml hideClipboard title="Helm values example"
-config:
-  ociPackRegistry:
-    endpoint: "https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo"
-    baseContentPath: "sample-dir"
-    name: "Artifactory OCI Packs"
-    username: "<username>"
-    password: "<base64-encoded-password>"
-    insecureSkipVerify: false
-    caCert: "<base64-encoded-ca-cert>"
+```json hideClipboard title="API values example"
+{
+  "spec": {
+    "endpoint": "https://artifactory.example.com",
+    "basePath": "artifactory/api/docker/spectro-packs-repo",
+    "baseContentPath": "sample-dir",
+    "providerType": "pack",
+    "isPrivate": false,
+    "isSyncSupported": true,
+    "auth": {
+      "type": "basic",
+      "username": "<username>",
+      "password": "<password>",
+      "tls": {
+        "ca": "<pem-ca-certificate>",
+        "enabled": true,
+        "insecureSkipVerify": false
+      }
+    }
+  }
+}
 ```
 
 This configuration resolves to the following URL for `spectro-packs`.

@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 30, 2026 - Release 4.10.0 {#release-notes-4.10.0}
+## September 6, 2026 - Release 4.10.0 {#release-notes-4.10.0}
 
 ### Security Notices
 
@@ -64,6 +64,30 @@ tags: ["release-notes"]
   image already configured. Refer to
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7083 -->
+
+- Canonical Kubernetes (CK8s) clusters on MAAS now support Network Time Protocol (NTP) server configuration. You can
+  configure **NTP Servers** on the cluster's cloud configuration during cluster creation and on Day-2 through the
+  Palette UI, API, Terraform provider, and Crossplane provider, on both Palette and Palette VerteX. The servers you
+  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Refer to
+  [NTP Servers on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ntp-servers-on-maas-cluster-nodes)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7118 -->
+
+- Palette now supports the option to skip worker node upgrades on
+  [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md),
+  [GCP IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md), and
+  [Apache CloudStack](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) clusters. For example, if
+  you have worker pools running critical databases or real-time processing services, you can enable this option to
+  maintain service continuity during control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned
+  maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
 #### Improvements
 
@@ -156,6 +180,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   upload remains available with `--legacy`, and the CLI falls back to it automatically against Edge hosts that predate
   chunked upload support. Refer to
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
+
+- Connected Edge clusters can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at runtime,
+  instead of embedding those binaries in the provider image. On operating systems running systemd version 255 or later,
+  provider images built with CanvOS 4.10.x exclude the binaries by default, and Stylus 4.10.x delivers them through
+  systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new
+  `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file overrides the default when a specific flow requires the
+  binaries embedded. Refer to
+  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  for build and upgrade guidance.
 
 #### Improvements
 

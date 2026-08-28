@@ -141,8 +141,11 @@ pool upgrade for a time that is convenient for you, such as during a scheduled m
 Skipping worker node updates is supported for the following cluster types:
 
 - AWS IaaS clusters
+- Azure IaaS clusters
+- GCP IaaS clusters
 - MAAS clusters
 - VMware vSphere clusters
+- Apache CloudStack clusters
 - Connected (centrally managed) Edge Native clusters
 - Locally managed Edge Native clusters in an airgapped environment. Configure these clusters through Local UI or the
   Local UI API rather than through Palette. Refer to
@@ -169,9 +172,9 @@ plane, Palette blocks the update.
 
 Scaling behavior for a worker pool with **Skip worker node update** enabled differs by cluster type.
 
-For AWS IaaS, MAAS, and VMware vSphere clusters, scale-up is permitted. New nodes added manually or by the cluster
-autoscaler join using the worker pool's current Kubernetes version, not the control plane version. Scale-down is not
-restricted.
+For AWS IaaS, Azure IaaS, GCP IaaS, MAAS, VMware vSphere, and Apache CloudStack clusters, scale-up is permitted. New
+nodes added manually or by the cluster autoscaler join using the worker pool's current Kubernetes version, not the
+control plane version. Scale-down is not restricted.
 
 For Edge Native clusters, both connected and locally managed, scale-up is not permitted while the toggle is enabled.
 Scale-up requests on a pool with the toggle enabled are rejected, whether initiated manually or by the cluster
