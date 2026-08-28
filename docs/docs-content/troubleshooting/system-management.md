@@ -14,21 +14,30 @@ Refer to the following sections to troubleshoot errors encountered while perform
 Palette and Palette VerteX. It also includes troubleshooting for tenant administrators when the underlying issue relates
 to the system.
 
-## Scenario - Image Pull Secret not propagated to all clusters
+## Scenario - Image Pull Secret not propagated to workload clusters
 
-Because Spectro Cloud publishes security-hardened images to authenticated OCI registries, the management plane, PCGs,
-and managed workload clusters need the
+Because Spectro Cloud publishes security-hardened images to authenticated OCI registries, the clusters need the
 [image pull secret](../enterprise-version/system-management/configure-image-pull-secret.md) to pull images.
 
-Spectro Cloud automatically propagates the pull secret for you, but this propagation can fail for some clusters. For
-example, propagation can fail if a workload cluster loses connectivity to the management plane. Affected clusters cannot pull security-hardened images from Spectro Cloud's OCI registries until you create the
-secret on the cluster directly.
+Spectro Cloud automatically propagates the pull secret for you, but this propagation can fail. For
+example, propagation can fail if the management cluster does not have the pull secret or if a workload cluster loses connectivity to the management plane. Affected clusters cannot pull security-hardened images from Spectro Cloud's OCI registries until they have the pull secret.
 
 The **Hardened Images** views in the system console and in tenant settings identify which tenants and clusters did not
-receive the pull secret. Use them to locate every affected cluster, then create the pull secret on each cluster
-manually.
+receive the pull secret from the management cluster.
 
 ### Debug Steps
+
+Determine if propagation failed for all tenants and workload clusters or just a subset. The solution depends on which behavior is identified.
+
+- If some clusters received the secret, but propagation failed for others, investigate teh workload cluster to determine why the propagation failed. Common causes include the following:
+  
+  - The cluster lost connectivity with the management plane. When you restore connectivity, the secret will propagate automatically.
+  - The Pause Agent Upgrades feature preventing the cluster from receiving the update it needs to receive a propagated secret. 
+
+- If propagation failed for all tenants and clusters, then most likely the management cluster does not have the pull secret. 
+
+   - Use system console to add teh secret. It gets propagated to the management cluster, from which it can then be propagated to the workload cluster.
+   - If for some reason you cannot use the system consolt to configure the secret, you can manually create teh secret in the management cluster 
 
 #### Identify Affected Clusters
 
