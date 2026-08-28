@@ -39,9 +39,7 @@ available on your appliance. If the model you want is not certified for your har
 
 :::
 
-For how to add a model to a running appliance, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md). To let a
-certified text-only model answer questions about images, refer to
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+For how to add a model to a running appliance, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 ## How Certification Differs from Model as a Service
 
