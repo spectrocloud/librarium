@@ -90,8 +90,8 @@ guide when you do not require [specialized configurations](#specialized-build-gu
     ```
 
 4.  Check out the CanvOS tag that corresponds to your Palette release. Refer to the
-    [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
-    Edge host version. This guide uses the tag **v4.4.12** as an example.
+    [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Palette Edge
+    agent, and Edge host version. This guide uses the tag **v4.4.12** as an example.
 
     ```shell
     git checkout v4.4.12
@@ -263,6 +263,79 @@ guide when you do not require [specialized configurations](#specialized-build-gu
    REPOSITORY                            TAG                                   IMAGE ID       CREATED         SIZE
    docker.io/[DOCKER-ID]/ubuntu          k3s-1.28.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
    ```
+
+## Deliver Kubernetes and Agent Binaries via systemd Extensions {#bundle-k8s-and-agent-provider-flag}
+
+Starting with **CanvOS 4.10**, connected Edge clusters can use systemd extensions to deliver Kubernetes and Palette
+Agent binaries at runtime instead of embedding them in the provider image. This reduces provider image size and lets a
+single provider image serve multiple Kubernetes versions on the same host. This capability applies to connected clusters
+only.
+
+### Support Requirements
+
+- **Palette Edge agent 4.10.0** or later on the cluster. Earlier releases fall back to the pre-systemd-extensions
+  behavior.
+- An operating system with **systemd version 255 or later**. Operating systems on earlier systemd versions continue to
+  follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the provider image.
+- **CanvOS 4.10.0** or later to build provider images that opt in or out of the extensions path.
+
+### `BUNDLE_K8S_AND_AGENT_PROVIDER` Flag Behavior
+
+The `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file controls whether Kubernetes and Palette Agent
+provider binaries are embedded in the provider image.
+
+| **Operating System**     | **Default `BUNDLE_K8S_AND_AGENT_PROVIDER` Value** | **Notes**                                                                                         |
+| ------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| systemd 255 or later     | Excluded (delivered by systemd extensions)        | Set the flag to `true` when a specific flow requires the binaries embedded in the provider image. |
+| systemd earlier than 255 | Included                                          | Setting the flag has no effect. Binaries are always embedded on these operating systems.          |
+
+The flag is a CanvOS 4.10 addition. Earlier CanvOS releases do not recognize it and continue to operate with the
+existing behavior.
+
+### New Clusters
+
+When you provision a new connected Edge cluster on an operating system with systemd 255 or later, take the following
+steps.
+
+1. Set `system.uri: NA` in the BYOOS pack. Palette does not need a provider image to deliver Kubernetes and Palette
+   Agent binaries when systemd extensions are available.
+2. If a provider image is required for operating system upgrades or patches, build the image from a supported CanvOS
+   release. Refer to [Support Requirements](#support-requirements) for the minimum version.
+3. When the Palette Edge agent is pinned to an earlier release, supply a provider image. Provider images built from a
+   supported CanvOS release must set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Provider images built from older CanvOS
+   releases might work but are not recommended.
+
+### Upgrade an Existing Cluster
+
+The first upgrade after adopting CanvOS 4.10.0 requires a provider image that ships the aligned Palette Agent version.
+Subsequent Kubernetes upgrades run without a provider image.
+
+1. Build a provider image with a supported CanvOS release and set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true` in the
+   `.arg` file. Set `system.uri: <provider-image>` in the BYOOS pack for the initial upgrade. This upgrade replaces the
+   `kairos-agent` on the system with the aligned Palette Agent version. Refer to
+   [Support Requirements](#support-requirements) for the minimum CanvOS release.
+2. For subsequent Kubernetes upgrades, set `system.uri: NA` in the BYOOS pack. Palette delivers Kubernetes binaries
+   through systemd extensions and does not require a provider image. A provider image can still be supplied for each
+   repave, in which case `BUNDLE_K8S_AND_AGENT_PROVIDER` is not required.
+3. If the Palette Edge agent remains pinned to an earlier release, systemd extensions are not available on this cluster.
+   Build provider images from a supported CanvOS release with `BUNDLE_K8S_AND_AGENT_PROVIDER` set to `true` for every
+   upgrade.
+
+### Upgrade Operating System Packages
+
+Operating system package upgrades require a provider image built from a supported CanvOS release. Reference the image
+through `system.uri` in the BYOOS pack, and refer to [Support Requirements](#support-requirements) for the minimum
+version.
+
+### Unified Kernel Image (UKI) Considerations
+
+For Edge hosts using [Unified Kernel Images](../../../trusted-boot/trusted-boot.md), signing keys must line up in both
+directions.
+
+- New provider images must be signed with the same keys used to sign the installer. A mismatch causes the host to reject
+  the image at boot.
+- systemd extensions delivered outside of the provider image must be signed with the same keys used to sign the
+  installer.
 
 ## Next Steps
 

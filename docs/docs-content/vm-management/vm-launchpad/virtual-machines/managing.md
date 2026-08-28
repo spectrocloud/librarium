@@ -111,8 +111,8 @@ The VNC console provides a browser-based remote desktop to the VM.
 
 :::info
 
-The VNC console requires the VM to be running. If the VM is stopped, start it first from the **Overview** tab or VM
-list.
+The VNC console requires the VM to be running and an interactive UI session. If the VM is stopped, start it first from
+the **Overview** tab or VM list. API-key-authenticated requests cannot open a VNC connection.
 
 :::
 

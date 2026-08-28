@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Troubleshooting"
 title: "Troubleshooting VM Launchpad"
-description: "Troubleshooting steps for common VM Launchpad (VMO 2.0) scenarios."
+description: "Troubleshooting steps for common PaletteAI VM Launchpad scenarios."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20

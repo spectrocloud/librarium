@@ -5,12 +5,26 @@ on:
   workflow_dispatch:
     inputs:
       jira_ticket:
-        description: "The Jira ticket for the patch release (e.g., DOC-2815)"
+        description: "Jira ticket for the patch release, for example DOC-2815."
         required: true
       base_branch:
-        description: "The base branch for the patch release PR (default: master)"
+        description: "Base branch for the pull request."
         required: true
         default: "master"
+      patch_version:
+        description: "Palette patch release version, for example 4.9.48. Use a placeholder such as 4.9.x while it is undecided. Empty takes the version from the candidates JQL."
+        required: false
+      component_updates:
+        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the two fields below are ignored."
+        required: false
+        type: boolean
+        default: false
+      nickfury_ref:
+        description: "nickfury branch or tag holding those versions, for example release-4.9 or v4.9.47-rc.2. Empty records the versions as PENDING."
+        required: false
+      palette_cli_sha:
+        description: "Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,6 +80,14 @@ jobs:
           npm ci
       
       - name: Execute Script to Generate Patch Release Notes
+        env:
+          # The default GITHUB_TOKEN is scoped to this repository and cannot read the private
+          # nickfury repository that holds the component versions, so use the Vault token here.
+          GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
+          NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
+          PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
+          PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
         run: |
           touch .env
           PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
@@ -78,8 +100,13 @@ jobs:
           branch_name="${{ env.JIRA_TICKET }}-generate-patch-notes-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Commit and push the changes
-          git add docs/docs-content/release-notes/release-notes.md
+          # Commit and push the changes. A patch that bumps the CanvOS or Palette CLI version also
+          # updates the Edge Compatibility Matrix, the CLI Tools table, and the Palette CLI install
+          # page, so stage all four pages rather than only the release notes.
+          git add docs/docs-content/release-notes/release-notes.md \
+            docs/docs-content/clusters/edge/edge-compatibility-matrix.md \
+            docs/docs-content/downloads/cli-tools.md \
+            docs/docs-content/automation/palette-cli/install-palette-cli.md
           git commit -m "docs: add patch release notes for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 

@@ -25,6 +25,15 @@ static/generated/security-bulletins/reports/*.html
 _partials/
 scripts/release/
 
+# Frozen copies of a product's docs, created by `docs:version:<id>`. These are
+# point-in-time snapshots that must never change again. The prettier job in
+# pull_request.yaml auto-commits whatever `make format` rewrites, so without
+# this it would churn every snapshot on every PR. Wildcarded so future products
+# are covered without editing this file.
+*_versioned_docs/
+*_versioned_sidebars/
+*_versions.json
+
 # Generated monthly-assessment scorecards. Prettier's mdx parser reflows the
 # AI-written Markdown, and its width-based array collapsing reformats the per-page
 # "gaps" lists in a data-dependent way the generator can't reliably match. Both are
@@ -34,3 +43,6 @@ scripts/release/
 .github/monthly-assessment/scorecards/*.md
 .github/monthly-assessment/scorecards/*.json
 !.github/monthly-assessment/scorecards/README.md
+
+# Claude
+.claude/

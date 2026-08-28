@@ -31,6 +31,8 @@ Refer to the following resources to learn how to upload content and create a clu
 
 - [Scale a Cluster](./scale-cluster.md)
 
+- [Update Local Cluster](./update-cluster.md)
+
 - [Delete a Cluster](./delete-cluster.md)
 
 - [Share Local UI Authentication](./share-auth.md)

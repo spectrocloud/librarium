@@ -18,6 +18,9 @@ create a general-purpose VM (1 vCPU, 4 Gi memory) using an Ubuntu 24.04 ISO.
 - Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
   admin credentials configured during cluster creation.
 
+- A storage class available in the cluster. VM Launchpad includes Piraeus/LINSTOR as the default storage backend, which
+  creates storage classes during cluster deployment. Image upload is blocked until a storage class exists.
+
 - A Linux-based ISO to use as the base for your VM. This guide uses an Ubuntu 24.04 desktop ISO
   (`ubuntu-24.04.4-desktop-amd64.iso`).
 

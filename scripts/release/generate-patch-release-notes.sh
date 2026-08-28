@@ -15,6 +15,28 @@ SUPER_ASSISTANT_ID="8fxCluEt-1T6w_" # ID for the assistant configured to write p
 MAX_RETRIES=5
 SLEEP_SECONDS=2
 
+# Component version handling. A patch ticket asks whether the CanvOS (stylus) and Palette CLI
+# (palette-cli) versions moved in this patch; nickfury is the source of truth for both, and the
+# Edge Compatibility Matrix records what is currently documented.
+EDGE_NOTES_TEMPLATE_FILE="scripts/release/templates/patch-release-notes-edge.md"
+EDGE_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-edge-output.md"
+AUTOMATION_NOTES_TEMPLATE_FILE="scripts/release/templates/patch-release-notes-automation.md"
+AUTOMATION_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-automation-output.md"
+EDGE_COMPATIBILITY_MATRIX_FILE="${EDGE_COMPATIBILITY_MATRIX_FILE:-docs/docs-content/clusters/edge/edge-compatibility-matrix.md}"
+DOWNLOADS_FILE="${DOWNLOADS_FILE:-docs/docs-content/downloads/cli-tools.md}"
+NICKFURY_REPO="spectrocloud/nickfury"
+NICKFURY_VERSIONS_PATH="release/spectro_versions.txt"
+# Columns in the Edge Compatibility Matrix table that hold the versions to compare against, and the
+# checksum column in the CLI Tools table.
+MATRIX_CANVOS_COLUMN=2
+MATRIX_PALETTE_CLI_COLUMN=3
+DOWNLOADS_SHA_COLUMN=4
+# Markers written in place of a value that is not known yet. Each names what is missing, so a
+# reviewer can see which cells still need filling and can grep the docs for "PENDING".
+PENDING_VERSION="VERSION PENDING"
+PENDING_URL="URL PENDING"
+PENDING_SHA="SHA PENDING"
+
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
     exit 1
@@ -30,6 +52,13 @@ if ! check_env "SUPER_API_TOKEN"; then
     exit 1
 fi
 
+# Confirm Super authentication up front. The token is only rejected until its owner signs
+# in to Super through SSO, so checking here avoids making every issue tracker call below
+# and then failing at the one call that needs Super.
+if ! require_super_auth "$SUPER_ASSISTANT_ID"; then
+    exit 1
+fi
+
 if [[ -z "${PATCH_RELEASE_TICKET:-}" ]]; then
   read -p "Specify ticket to generate patch release notes for (for example, DOC-2815): " PATCH_RELEASE_TICKET
 fi
@@ -40,13 +69,15 @@ CANDIDATES_LINK=$(curl -s --fail-with-body \
   --url "${JIRA_DOMAIN}/rest/api/3/issue/${PATCH_RELEASE_TICKET}?fields=description" \
   --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
   --header "Accept: application/json" | jq -r '
-  .fields.description
-  | ..
-  | objects
-  | select(.type=="text" and (.text | ascii_downcase)=="list of candidates")
-  | .marks[]?
-  | select(.type=="link")
-  | .attrs.href
+  first(
+    .fields.description
+    | ..
+    | objects
+    | select(.type=="text" and (.text | ascii_downcase)=="list of candidates")
+    | .marks[]?
+    | select(.type=="link")
+    | .attrs.href
+  ) // empty
 ')
 
 if [[ -z "$CANDIDATES_LINK" ]]; then
@@ -69,15 +100,367 @@ JQL=$(printf '%b' "${JQL_ENCODED//%/\\x}")
 JQL=${JQL//+/ }
 
 END_DATE=$(printf '%s' "$JQL" | sed -n 's/.*duedate <= "\([^"]*\)".*/\1/p')
+
+# Bail out on a missing due date rather than guessing one. On macOS the GNU fallback below
+# reads `date -d ""` as the daylight saving time flag and silently returns today's date,
+# which would date the release notes wrongly instead of failing.
+if [[ -z "$END_DATE" ]]; then
+  echo "❌  No 'duedate <= \"YYYY-MM-DD\"' clause found in the candidates JQL" >&2
+  exit 1
+fi
+
 # Try parsing with BSD date first (macOS), fallback to GNU date (Linux)
 if date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y" >/dev/null 2>&1; then
   RELEASE_DATE=$(date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y")
 else
   RELEASE_DATE=$(date -d "$END_DATE" +"%B %-d, %Y")
 fi
+
+# The fixVersion in the candidates JQL is often still a placeholder such as "4.9.x", so it
+# only seeds the release heading. The prompt below confirms the real version.
 RELEASE_PATCH=$(printf '%s' "$JQL" | sed -n 's/.*fixVersion IN (\([^)]*\)).*/\1/p')
+
+if [[ -z "$RELEASE_PATCH" ]]; then
+  echo "❌  No 'fixVersion IN (...)' clause found in the candidates JQL" >&2
+  exit 1
+fi
+
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
 echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
+
+# Reading nickfury needs a token that can see a private repository. Resolve it quietly here and
+# report on it only if the component versions are actually wanted, so a run that has none to record
+# never mentions nickfury at all.
+#
+# GITHUB_TOKEN comes from .env for a local run and from the workflow environment in CI. When it is
+# absent, fall back to the token the GitHub CLI already holds, which is usually signed in to the
+# organisation on a writer's machine.
+if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
+  GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
+  [[ -n "$GITHUB_TOKEN" ]] && export GITHUB_TOKEN
+fi
+
+# The prompts below form a short interview, so only the values that apply to this patch are asked
+# for. Each is skipped when its environment variable is already set, and an unattended run answers
+# from those variables alone, so the same script still works in CI.
+#
+# The first question settles the patch release version. It heads the new release notes section, and
+# it is the key the documentation pages record the component versions against.
+RELEASE_PATCH_VERSION="${PATCH_RELEASE_VERSION:-}"
+
+if [[ -z "$RELEASE_PATCH_VERSION" && -t 0 ]]; then
+  if confirm "Do you know the Palette patch release version?" y; then
+    read -r -p "   Specify the Palette patch release version, for example 4.9.48: " RELEASE_PATCH_VERSION
+  else
+    echo "   The version heads the release notes section, so a placeholder stands in until it is known."
+    read -r -p "   Specify a placeholder version, for example 4.9.x [$RELEASE_PATCH]: " RELEASE_PATCH_VERSION
+  fi
+fi
+
+# Pressing Enter, and an unattended run with no version supplied, both accept the version the
+# candidates JQL reported. That is usually a placeholder such as 4.9.x, which is a valid answer.
+if [[ -z "$RELEASE_PATCH_VERSION" ]]; then
+  RELEASE_PATCH_VERSION="$RELEASE_PATCH"
+fi
+
+# A version is either a real patch release, such as 4.9.48, or a placeholder standing in for one,
+# such as 4.9.x. Both are accepted, but only a real version can name a download or be compared
+# against a published component version.
+if [[ ! "$RELEASE_PATCH_VERSION" =~ ^[0-9]+\.[0-9]+\.[^[:space:]]+$ ]]; then
+  echo "❌  '$RELEASE_PATCH_VERSION' is not a Palette patch release version or placeholder, for example 4.9.48 or 4.9.x." >&2
+  exit 1
+fi
+
+RELEASE_PATCH="$RELEASE_PATCH_VERSION"
+
+if [[ "$RELEASE_PATCH" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+  RELEASE_PATCH_IS_PLACEHOLDER=false
+  echo "ℹ️  Using confirmed patch release version: $RELEASE_PATCH."
+else
+  RELEASE_PATCH_IS_PLACEHOLDER=true
+  echo "ℹ️  Using the patch release version placeholder: $RELEASE_PATCH."
+fi
+
+RELEASE_CANVOS=""
+RELEASE_PALETTE_CLI_VERSION=""
+
+# The second question decides whether there is any component work to do. A patch release often
+# ships the same CanvOS and Palette CLI as the release before it, in which case none of the
+# component pages should be touched and the run is only about the release notes body.
+#
+# Unattended, the answer is inferred from whether a ref or a checksum was supplied, so a workflow
+# that passes neither behaves as though nothing changed.
+if [[ -n "${PATCH_COMPONENT_UPDATES:-}" ]]; then
+  case "$PATCH_COMPONENT_UPDATES" in
+    true | yes | 1) COMPONENT_UPDATES=true ;;
+    *) COMPONENT_UPDATES=false ;;
+  esac
+elif [[ -t 0 ]]; then
+  if confirm "Does this patch release add a new CanvOS or Palette CLI version, or both?" n; then
+    COMPONENT_UPDATES=true
+  else
+    COMPONENT_UPDATES=false
+  fi
+elif [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+  COMPONENT_UPDATES=true
+else
+  COMPONENT_UPDATES=false
+fi
+
+if [[ "$COMPONENT_UPDATES" == false ]]; then
+  echo "ℹ️  No new CanvOS or Palette CLI versions, so only the release notes body is generated."
+
+  # A branch, tag, or checksum supplied alongside a "no" answer is a mismatch worth naming, because
+  # the workflow form makes it easy to fill those fields in and leave the tick box clear.
+  if [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+    echo "⚠️  A branch or tag, or a checksum, was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
+  fi
+elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
+  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
+fi
+
+if [[ "$COMPONENT_UPDATES" == true && -n "${GITHUB_TOKEN:-}" ]]; then
+  # The release engineers hand over a branch or a tag, and neither is named after the patch
+  # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
+  # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather
+  # than guessing it from the version, because the two do not always correspond. For example,
+  # Palette 4.9.47 can be built from tag v4.9.47-rc.2 or from branch release-4.9.
+  if [[ -z "${NICKFURY_REF:-}" && -t 0 ]]; then
+    # The consequence of answering no belongs in the question, so the choice is clear before it is
+    # made. Answering no leaves NICKFURY_REF empty, which the pending path below reports.
+    if confirm "Do you know the $NICKFURY_REPO branch or tag name? Answering no records the versions as pending" y; then
+      echo "   Its refs are named:"
+      echo "      branch  release-<version>   for example, release-4.9 or release-$RELEASE_PATCH"
+      echo "      tag     v<version>          for example, v$RELEASE_PATCH or v$RELEASE_PATCH-rc.2"
+      read -r -p "   Specify the branch or tag name: " NICKFURY_REF
+    fi
+  fi
+
+  # Accept a ref pasted in full, for example "refs/tags/v4.9.47-rc.2", and tolerate stray
+  # whitespace, so a value copied from a release ticket does not have to be tidied by hand.
+  NICKFURY_REF="$(printf '%s' "${NICKFURY_REF:-}" | tr -d '[:space:]')"
+  NICKFURY_REF="${NICKFURY_REF#refs/tags/}"
+  NICKFURY_REF="${NICKFURY_REF#refs/heads/}"
+
+  # An empty candidate list is expressed as a flag rather than an empty array, because expanding
+  # an empty array trips "unbound variable" under the bash 3.2 that ships with macOS.
+  NICKFURY_LOOKUP=true
+
+  if [[ -z "$NICKFURY_REF" ]]; then
+    # Nothing given, so the component versions stay pending and the lookup is not attempted.
+    NICKFURY_LOOKUP=false
+    NICKFURY_REF_CANDIDATES=("")
+    echo "ℹ️  No branch or tag given, so the component versions are recorded as pending."
+  elif [[ "$NICKFURY_REF" == v* || "$NICKFURY_REF" == release-* ]]; then
+    # Already a ref name, so use exactly what was given.
+    NICKFURY_REF_CANDIDATES=("$NICKFURY_REF")
+  else
+    # A bare version was given rather than a ref name, so try both conventions for it.
+    echo "ℹ️  '$NICKFURY_REF' is a version rather than a ref name, so both naming conventions are tried."
+    NICKFURY_REF_CANDIDATES=("v$NICKFURY_REF" "release-$NICKFURY_REF")
+  fi
+
+  NICKFURY_VERSIONS=""
+
+  if [[ "$NICKFURY_LOOKUP" == true ]]; then
+    for ref in "${NICKFURY_REF_CANDIDATES[@]}"; do
+      if NICKFURY_VERSIONS=$(fetch_github_file "$NICKFURY_REPO" "$ref" "$NICKFURY_VERSIONS_PATH") &&
+         [[ -n "$NICKFURY_VERSIONS" ]]; then
+        NICKFURY_REF="$ref"
+        break
+      fi
+
+      echo "⚠️  Could not read $NICKFURY_VERSIONS_PATH from $NICKFURY_REPO@$ref." >&2
+      NICKFURY_VERSIONS=""
+    done
+
+    if [[ -z "$NICKFURY_VERSIONS" ]]; then
+      echo "⚠️  No component versions available from $NICKFURY_REPO, so they are recorded as pending. Confirm the branch or tag name with the release engineers: a branch is named release-<version> and a tag v<version>, optionally with an -rc.N suffix. Then re-run with NICKFURY_REF set to that name." >&2
+    fi
+  fi
+
+  if [[ -n "$NICKFURY_VERSIONS" ]]; then
+    RELEASE_CANVOS=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "stylus" || true)
+    RELEASE_PALETTE_CLI_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "palette-cli" || true)
+    NICKFURY_SELF_VERSION=$(printf '%s\n' "$NICKFURY_VERSIONS" | get_keyed_value "nickfury" || true)
+
+    if [[ -n "$NICKFURY_SELF_VERSION" && "$NICKFURY_SELF_VERSION" != "$RELEASE_PATCH" ]]; then
+      echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF reports version '$NICKFURY_SELF_VERSION' but the patch release version is '$RELEASE_PATCH'. Confirm that the branch or tag matches the patch release."
+    fi
+
+    echo "ℹ️  Sourced component versions from $NICKFURY_REPO@$NICKFURY_REF (stylus=$RELEASE_CANVOS, palette-cli=$RELEASE_PALETTE_CLI_VERSION)."
+
+    # A release candidate ref carries prerelease component versions, which must not reach the
+    # published documentation. Warn loudly rather than stopping, so the notes can still be
+    # drafted ahead of the final tag.
+    if [[ "$RELEASE_CANVOS" == *-rc* || "$RELEASE_PALETTE_CLI_VERSION" == *-rc* ]]; then
+      echo "⚠️  $NICKFURY_REPO@$NICKFURY_REF holds release candidate component versions. Re-run against the final release branch or tag before merging."
+    fi
+  fi
+fi
+
+# Whatever is still unknown is recorded as pending rather than omitted, so the release notes and
+# the tables are scaffolded on the first run and only need their values corrected later. Each
+# marker names what is missing, so the placeholders are easy to spot and to grep for.
+if [[ "$COMPONENT_UPDATES" == true ]]; then
+  if [[ -z "$RELEASE_CANVOS" ]]; then
+    RELEASE_CANVOS="$PENDING_VERSION"
+  fi
+
+  if [[ -z "$RELEASE_PALETTE_CLI_VERSION" ]]; then
+    RELEASE_PALETTE_CLI_VERSION="$PENDING_VERSION"
+  fi
+
+  # Never turn a version this release already documents back into a pending marker without being
+  # told to. A re-run that answers "no" to the branch or tag question would otherwise undo correct,
+  # published content, and the install page carries whichever version the last run resolved. The
+  # existing value is kept unless the overwrite is confirmed, and an unattended run always keeps it.
+  guard_pending_overwrite() {
+    local label="$1"
+    local resolved="$2"
+    local file="$3"
+    local column="$4"
+    local existing
+
+    if [[ "$resolved" != "$PENDING_VERSION" ]]; then
+      printf '%s' "$resolved"
+      return 0
+    fi
+
+    existing=$(get_table_cell_for_release "$file" "$column" "$RELEASE_PATCH")
+
+    if [[ -z "$existing" || "$existing" == "$PENDING_VERSION" ]]; then
+      printf '%s' "$resolved"
+      return 0
+    fi
+
+    echo "⚠️  $RELEASE_PATCH already documents $label $existing, and this run has no version for it." >&2
+
+    if confirm "   Replace $label $existing with '$PENDING_VERSION'?" n; then
+      printf '%s' "$resolved"
+    else
+      echo "ℹ️  Keeping $label $existing." >&2
+      printf '%s' "$existing"
+    fi
+  }
+
+  RELEASE_CANVOS=$(guard_pending_overwrite "CanvOS" "$RELEASE_CANVOS" \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN")
+  RELEASE_PALETTE_CLI_VERSION=$(guard_pending_overwrite "the Palette CLI" "$RELEASE_PALETTE_CLI_VERSION" \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN")
+fi
+
+# The table rows this script writes are anchored on the release version, so a run that confirms a
+# version after an earlier run scaffolded a placeholder would leave the placeholder row behind. The
+# version each section was last generated with is recorded alongside its ticket marker, so a change
+# can be detected and the superseded rows removed further down.
+PREVIOUS_RELEASE_PATCH=$(awk -v ticket="$PATCH_RELEASE_TICKET" -v marker="<!-- PATCH RELEASE VERSION: " '
+  $0 ~ "<!-- PATCH RELEASE TICKET: " ticket " -->" { in_section = 1; next }
+  in_section && /^## [^#]/ { exit }
+  in_section && index($0, marker) == 1 {
+    value = substr($0, length(marker) + 1)
+    sub(/ -->[ \t]*$/, "", value)
+    print value
+    exit
+  }
+' "$RELEASE_NOTES_FILE" || true)
+
+if [[ -n "$PREVIOUS_RELEASE_PATCH" && "$PREVIOUS_RELEASE_PATCH" != "$RELEASE_PATCH" ]]; then
+  echo "ℹ️  $PATCH_RELEASE_TICKET was last generated for $PREVIOUS_RELEASE_PATCH, so its rows are superseded by $RELEASE_PATCH."
+fi
+
+# Only document a component whose version actually moved. Restating an unchanged version would add
+# a release note and a table row that say nothing new. The comparison skips any row this script has
+# already written for this version, so a re-run compares against the previous release rather than
+# against its own output.
+CANVOS_CHANGED=false
+PALETTE_CLI_CHANGED=false
+
+if [[ "$COMPONENT_UPDATES" == true ]]; then
+  DOCUMENTED_CANVOS=$(get_documented_table_version \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_CANVOS_COLUMN" "$RELEASE_PATCH")
+  DOCUMENTED_PALETTE_CLI=$(get_documented_table_version \
+    "$EDGE_COMPATIBILITY_MATRIX_FILE" "$MATRIX_PALETTE_CLI_COLUMN" "$RELEASE_PATCH")
+
+  # A pending version is always written, because the point of recording it is to scaffold the entry
+  # that a later run fills in. Only a known version is worth comparing against what is published.
+  if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
+    CANVOS_CHANGED=true
+  elif [[ "$RELEASE_CANVOS" != "$DOCUMENTED_CANVOS" ]]; then
+    CANVOS_CHANGED=true
+    echo "ℹ️  CanvOS moved from $DOCUMENTED_CANVOS to $RELEASE_CANVOS."
+  fi
+
+  if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
+    PALETTE_CLI_CHANGED=true
+  elif [[ "$RELEASE_PALETTE_CLI_VERSION" != "$DOCUMENTED_PALETTE_CLI" ]]; then
+    PALETTE_CLI_CHANGED=true
+    echo "ℹ️  The Palette CLI moved from $DOCUMENTED_PALETTE_CLI to $RELEASE_PALETTE_CLI_VERSION."
+  fi
+fi
+
+if [[ "$COMPONENT_UPDATES" == true && "$CANVOS_CHANGED" == false && "$PALETTE_CLI_CHANGED" == false ]]; then
+  echo "ℹ️  CanvOS ($RELEASE_CANVOS) and the Palette CLI ($RELEASE_PALETTE_CLI_VERSION) are unchanged from the documented versions, so no Edge or Automation notes are added."
+fi
+
+# The downloads table also needs the binary's checksum, which nickfury does not carry. A checksum
+# only ever matches one build, so the RELEASE_PALETTE_CLI_SHA that .env holds for the current named
+# release is deliberately ignored here: pairing it with a different Palette CLI version would
+# publish a checksum that does not verify. PATCH_PALETTE_CLI_SHA is the override for this script.
+RELEASE_PALETTE_CLI_SHA="${PATCH_PALETTE_CLI_SHA:-}"
+
+RELEASE_PALETTE_CLI_URL=""
+
+if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
+  # A pending version names no binary, so there is nothing to ask for or to download.
+  if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
+    if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
+      echo "ℹ️  The SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION is published in ReTool. Look it up there."
+      read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " RELEASE_PALETTE_CLI_SHA
+    fi
+
+    # Deriving it streams the binary, which is around 400 MB, so it is opt-in rather than the
+    # fallback. The helper checks that the binary is published first, so an unreleased version
+    # costs one request rather than a transfer that cannot succeed.
+    if [[ "$RELEASE_PALETTE_CLI_SHA" == "derive" ]]; then
+      RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION") || RELEASE_PALETTE_CLI_SHA=""
+    fi
+
+    if [[ -n "$RELEASE_PALETTE_CLI_SHA" && ! "$RELEASE_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
+      echo "⚠️  '$RELEASE_PALETTE_CLI_SHA' is not a SHA256 checksum, so it is ignored." >&2
+      RELEASE_PALETTE_CLI_SHA=""
+    fi
+
+    RELEASE_PALETTE_CLI_URL="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/linux/cli/palette"
+  fi
+
+  # The row is still written when the checksum or the version is unknown, so the entry exists and
+  # only its pending cells need filling once the binary is published. A checksum this release
+  # already records is kept, for the same reason the versions above are, since a re-run that simply
+  # skips the checksum prompt should not discard one that was found earlier.
+  if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
+    EXISTING_PALETTE_CLI_SHA=$(get_table_cell_for_release \
+      "$DOWNLOADS_FILE" "$DOWNLOADS_SHA_COLUMN" "$RELEASE_PATCH")
+
+    if [[ "$EXISTING_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
+      echo "⚠️  $RELEASE_PATCH already records a Palette CLI checksum, and this run has none." >&2
+
+      if confirm "   Replace it with '$PENDING_SHA'?" n; then
+        RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+      else
+        RELEASE_PALETTE_CLI_SHA="$EXISTING_PALETTE_CLI_SHA"
+        echo "ℹ️  Keeping the recorded checksum."
+      fi
+    else
+      RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+      echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+    fi
+  fi
+
+  if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then
+    RELEASE_PALETTE_CLI_URL="$PENDING_URL"
+  fi
+fi
 
 # Fetch issues
 ISSUE_RESPONSE=$(curl -s --fail-with-body \
@@ -122,6 +505,16 @@ if grep -qF "$PATCH_RELEASE_TICKET" "$RELEASE_NOTES_FILE"; then
     in_section && /^## [^#]/ { exit }
     in_section { print }
   ' "$RELEASE_NOTES_FILE")
+
+  # Drop any Edge and Automation sections a previous run generated. They are rebuilt from a
+  # template further down, and passing them to Super as context invites it to restate or
+  # rewrite the component versions in its own answer.
+  RELEASE_PATCH_EXISTING_BODY=$(printf '%s\n' "$RELEASE_PATCH_EXISTING_BODY" | awk '
+    /^### (Edge|Automation)[ \t]*$/ { skip=1; next }
+    skip && /^#/ { skip=0 }
+    skip { next }
+    { print }
+  ')
 fi
 
 SUPER_QUESTION=""
@@ -150,18 +543,32 @@ fi
 
 SUPER_BUG_FIXES_BODY=""
 
+RESPONSE_FILE="$(mktemp)"
+trap 'rm -f "$RESPONSE_FILE"' EXIT
+
 for ((i=1; i<=MAX_RETRIES; i++)); do
   echo "Attempt Super POST call $i/$MAX_RETRIES..."
 
-  if RESPONSE=$(
-    curl -sS --fail-with-body \
+  HTTP_STATUS=$(
+    curl -sS \
+      --output "$RESPONSE_FILE" \
+      --write-out '%{http_code}' \
       --request POST \
       --url https://api.super.work/v1/super \
       --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
       --header "Content-Type: application/json" \
-      --data "$(jq -n --arg question "$SUPER_QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')"
-  ); then
-    SUPER_BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
+      --data "$(jq -n --arg question "$SUPER_QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')" || echo "000"
+  )
+
+  # Retrying an authentication failure never helps, because the token stays rejected until
+  # its owner signs in to Super through SSO.
+  if [[ "$HTTP_STATUS" == "401" || "$HTTP_STATUS" == "403" ]]; then
+    echo "❌ Super rejected SUPER_API_TOKEN (HTTP $HTTP_STATUS) part way through this run. Sign in at https://app.super.work and run this script again." >&2
+    exit 1
+  fi
+
+  if [[ "$HTTP_STATUS" == "200" ]]; then
+    SUPER_BUG_FIXES_BODY=$(jq -r '.answer // empty' < "$RESPONSE_FILE" 2>/dev/null || true)
 
     if [[ -n "$SUPER_BUG_FIXES_BODY" ]]; then
       echo "✅ Successfully retrieved bug fixes body from Super API."
@@ -170,7 +577,8 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
 
     echo "⚠️ Empty response, retrying in ${SLEEP_SECONDS}s..." >&2
   else
-    echo "⚠️ Super API call failed, retrying in ${SLEEP_SECONDS}s..." >&2
+    echo "⚠️ Super API call failed (HTTP $HTTP_STATUS): $(head -c 300 "$RESPONSE_FILE")" >&2
+    echo "⚠️ Retrying in ${SLEEP_SECONDS}s..." >&2
   fi
 
   if (( i < MAX_RETRIES )); then
@@ -185,16 +593,114 @@ if [[ -z "$SUPER_BUG_FIXES_BODY" ]]; then
   exit 1
 fi
 
+# A pending marker is written as inline code in prose, because Prettier reflows a release note to
+# 120 columns and would otherwise split "VERSION PENDING" across two lines. A real version needs no
+# such treatment, so the note-facing values differ from the table-facing ones only when pending.
+if [[ "$RELEASE_CANVOS" == "$PENDING_VERSION" ]]; then
+  RELEASE_CANVOS_NOTE="\`$RELEASE_CANVOS\`"
+else
+  RELEASE_CANVOS_NOTE="$RELEASE_CANVOS"
+fi
+
+if [[ "$RELEASE_PALETTE_CLI_VERSION" == "$PENDING_VERSION" ]]; then
+  RELEASE_PALETTE_CLI_VERSION_NOTE="\`$RELEASE_PALETTE_CLI_VERSION\`"
+else
+  RELEASE_PALETTE_CLI_VERSION_NOTE="$RELEASE_PALETTE_CLI_VERSION"
+fi
+
+# Append the component version sections to Super's answer, so that both the insert and the update
+# path below carry them without any extra handling. This happens before the body is normalised so
+# that Prettier wraps these sentences to the same width as the rest of the notes. The citation
+# stripper only matches brace-wrapped markers, so it cannot alter them.
+if [[ "$CANVOS_CHANGED" == true ]]; then
+  generate_parameterised_file_local_vars \
+    "$EDGE_NOTES_TEMPLATE_FILE" \
+    "$EDGE_NOTES_OUTPUT_FILE" \
+    "RELEASE_PATCH" \
+    "RELEASE_CANVOS_NOTE"
+
+  SUPER_BUG_FIXES_BODY="$SUPER_BUG_FIXES_BODY"$'\n\n'"$(cat "$EDGE_NOTES_OUTPUT_FILE")"
+  cleanup "$EDGE_NOTES_OUTPUT_FILE"
+  echo "ℹ️  Added an Edge section for CanvOS $RELEASE_CANVOS."
+fi
+
+if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
+  generate_parameterised_file_local_vars \
+    "$AUTOMATION_NOTES_TEMPLATE_FILE" \
+    "$AUTOMATION_NOTES_OUTPUT_FILE" \
+    "RELEASE_PATCH" \
+    "RELEASE_PALETTE_CLI_VERSION_NOTE"
+
+  SUPER_BUG_FIXES_BODY="$SUPER_BUG_FIXES_BODY"$'\n\n'"$(cat "$AUTOMATION_NOTES_OUTPUT_FILE")"
+  cleanup "$AUTOMATION_NOTES_OUTPUT_FILE"
+  echo "ℹ️  Added an Automation section for Palette CLI $RELEASE_PALETTE_CLI_VERSION."
+fi
+
+# Super's answer is inserted verbatim, so normalise it before it reaches the release notes: drop the
+# inline citation markers the assistant appends to sentences, and restore the blank lines and prose
+# wrapping the published notes use. Prettier cannot repair either afterwards, because .prettierrc
+# parses *.md as MDX and the MDX parser leaves prose exactly as written.
+SUPER_BUG_FIXES_BODY=$(printf '%s\n' "$SUPER_BUG_FIXES_BODY" | normalize_super_body)
+
+if [[ -z "$SUPER_BUG_FIXES_BODY" ]]; then
+  echo "❌ Normalising the Super response left an empty bug fixes body" >&2
+  exit 1
+fi
+
+# Propagate the component versions to the other documentation pages that record them, reusing the
+# scripts `make generate-release` runs so the tables keep one format and one insert-or-replace
+# behaviour. The release is keyed on the patch version, so each page gains a row anchored to it and
+# a re-run replaces that row instead of adding a second one.
+if [[ "$CANVOS_CHANGED" == true || "$PALETTE_CLI_CHANGED" == true ]]; then
+  export RELEASE_NAME="$RELEASE_PATCH"
+  export RELEASE_VERSION="$RELEASE_PATCH"
+  export RELEASE_CANVOS
+  export RELEASE_PALETTE_CLI_VERSION
+  export NICKFURY_REF
+  # The Edge matrix script sources .env when run on its own, which would put the release-wide
+  # CanvOS and Palette CLI versions back over the ones resolved above.
+  export RELEASE_SKIP_DOTENV=true
+  # It also reads nickfury itself. The lookup already happened above, so repeating it here would
+  # either waste a request or, when the versions are pending, replace them with values the release
+  # notes do not mention.
+  export RELEASE_SKIP_NICKFURY=true
+
+  # Drop the rows an earlier run wrote for a version that has since changed, so a confirmed version
+  # replaces its placeholder rather than sitting alongside it.
+  if [[ -n "$PREVIOUS_RELEASE_PATCH" && "$PREVIOUS_RELEASE_PATCH" != "$RELEASE_PATCH" ]]; then
+    if remove_line_containing "edge-compat-$PREVIOUS_RELEASE_PATCH -->" "$EDGE_COMPATIBILITY_MATRIX_FILE"; then
+      echo "✅ Removed the superseded $PREVIOUS_RELEASE_PATCH row from $EDGE_COMPATIBILITY_MATRIX_FILE."
+    fi
+
+    if remove_line_containing "cli-$PREVIOUS_RELEASE_PATCH -->" "$DOWNLOADS_FILE"; then
+      echo "✅ Removed the superseded $PREVIOUS_RELEASE_PATCH row from $DOWNLOADS_FILE."
+    fi
+  fi
+
+  ./scripts/release/generate-edge-compatibility-matrix.sh
+
+  if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
+    ./scripts/release/generate-install-palette-cli.sh
+
+    export RELEASE_PALETTE_CLI_SHA
+    export RELEASE_PALETTE_CLI_URL
+    ./scripts/release/generate-downloads.sh
+  fi
+fi
+
 
 # If the release notes section for this patch already exists, will replace the existing body with the new one generated by Super, otherwise will insert a new section for this patch release.
 if grep -qF "$PATCH_RELEASE_TICKET" "$RELEASE_NOTES_FILE"; then
   tmp_body_file="$(mktemp)"
   printf '%s' "$SUPER_BUG_FIXES_BODY" > "$tmp_body_file"
 
-  awk -v ticket="$PATCH_RELEASE_TICKET" -v body_file="$tmp_body_file" '
-    # When we hit the ticket marker, print it and inject new body
+  awk -v ticket="$PATCH_RELEASE_TICKET" -v body_file="$tmp_body_file" -v version="$RELEASE_PATCH" '
+    # When we hit the ticket marker, print it, re-record the version this section is now generated
+    # for, and inject the new body. The version marker is rewritten rather than carried over,
+    # because the old one sits inside the body region that is being replaced.
     $0 ~ "<!-- PATCH RELEASE TICKET: " ticket " -->" {
       print
+      print "<!-- PATCH RELEASE VERSION: " version " -->"
       while ((getline line < body_file) > 0) {
         print line
       }
@@ -221,6 +727,42 @@ if grep -qF "$PATCH_RELEASE_TICKET" "$RELEASE_NOTES_FILE"; then
     && mv "${RELEASE_NOTES_FILE}.tmp" "$RELEASE_NOTES_FILE"
 
   rm -f "$tmp_body_file"
+
+  # Refresh this section's heading too. A patch ticket usually names its fixVersion as a
+  # placeholder such as "4.9.x", so the first run heads the section with that placeholder and a
+  # later run, once the version is confirmed, has to correct it. The due date is refreshed for the
+  # same reason, because a patch release can slip after the notes are first drafted.
+  awk -v ticket="$PATCH_RELEASE_TICKET" -v heading="## $RELEASE_DATE - Release $RELEASE_PATCH" '
+    { lines[NR] = $0 }
+
+    END {
+      marker = "<!-- PATCH RELEASE TICKET: " ticket " -->"
+
+      for (i = 1; i <= NR; i++) {
+        if (index(lines[i], marker) == 0) {
+          continue
+        }
+
+        # Walk back to the H2 that opens this section, stopping at any other heading so a
+        # neighbouring section is never rewritten.
+        for (j = i - 1; j >= 1; j--) {
+          if (lines[j] ~ /^## [^#]/) {
+            lines[j] = heading
+            break
+          }
+
+          if (lines[j] ~ /^#/) {
+            break
+          }
+        }
+      }
+
+      for (i = 1; i <= NR; i++) {
+        print lines[i]
+      }
+    }
+  ' "$RELEASE_NOTES_FILE" > "${RELEASE_NOTES_FILE}.tmp" \
+    && mv "${RELEASE_NOTES_FILE}.tmp" "$RELEASE_NOTES_FILE"
 
   echo "✅ Patch release notes updated for $PATCH_RELEASE_TICKET in $RELEASE_NOTES_FILE."
 
