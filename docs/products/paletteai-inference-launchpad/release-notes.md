@@ -56,18 +56,16 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [Clients and Quotas](./explanation/clients-and-quotas.md) and [Create a Client](./how-to-guides/create-a-client.md)
   for more information.
 
-- Enforces per-client quotas across requests, tokens, and cost over hour and day windows, and returns HTTP `429` when a
-  limit is reached. Existing per-second and per-minute limits remain enforced. Refer to
+- Enforces per-client quotas across requests, tokens, and cost over one-second, one-minute, one-hour, and one-day
+  windows, and returns HTTP `429` when a limit is reached. Refer to
   [Manage Client Quotas](./how-to-guides/manage-client-quotas.md) for more information.
 
 - Grants every client access to all local models, and can burst to external frontier models. Refer to
   [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
 
-- Reports quota utilization and historical consumption on the **Usage** page, including a **Quota Usage** tab, 24-hour,
-  7-day, and 30-day data windows, and per-model and per-client breakdowns. Lets you raise a ceiling without zeroing
-  usage, and revoke a token or delete a client at any time. Refer to
-  [View Token Usage](./how-to-guides/view-token-usage.md), [View Client Usage](./how-to-guides/view-client-usage.md),
-  and [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
+- Reports per-client usage and lets you revoke a token or delete a client at any time. Refer to
+  [View Client Usage](./how-to-guides/view-client-usage.md) and
+  [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
 - Computes estimated savings by comparing locally served token volume against a configurable frontier provider reference
   rate.

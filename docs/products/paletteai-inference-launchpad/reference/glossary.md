@@ -403,21 +403,19 @@ requirements, is one such precision.
 ### Quota
 
 A consumption limit attached to a [client](#client), enforced across three dimensions: requests (the number of calls),
-tokens (the number of tokens processed), and cost (the computed dollar spend). New limits are set per hour or per day.
-Day windows reset at midnight UTC, and hour windows reset at the top of each UTC hour. Existing per-second and
-per-minute limits remain enforced until you remove them. There is no monthly window. When a client reaches a limit, the
-appliance rejects further requests with HTTP `429 Too Many Requests` until the window resets or an operator raises the
-ceiling. **Quota Usage** shows point-in-time utilization. **By Client** shows consumption over a selected data window.
-Refer to [Manage Client Quotas](../how-to-guides/manage-client-quotas.md) and
-[View Client Usage](../how-to-guides/view-client-usage.md).
+tokens (the number of tokens processed), and cost (the computed dollar spend). Each dimension is measured over rolling
+windows of one second, one minute, one hour, and one day; there is no monthly window. When a client reaches a limit, the
+appliance rejects further requests with HTTP `429 Too Many Requests` until the window rolls over. Refer to
+[Manage Client Quotas](../how-to-guides/manage-client-quotas.md).
+
+{/* NEEDS REVIEW: per the current working assumption, quota enforcement is off by default behind a global switch. Confirm with an SME before publishing. */}
 
 ## R
 
 ### Rate Limit
 
-A [quota](#quota) on the number of requests per unit of time, such as 1,000 requests per hour. Rate limits are the
-request-dimension quotas. New limits use hour or day windows. A shorter per-second or per-minute request limit that is
-already configured still applies until you remove it.
+A [quota](#quota) on the number of requests per unit of time, such as 60 requests per minute. Rate limits are the
+request-dimension quotas enforced over short windows.
 
 ### Reasoning
 
@@ -465,7 +463,7 @@ are counted.
 
 The process of counting and tracking token consumption per request, per model, per [API token](#api-token), and per time
 window. The appliance meters input tokens, output tokens, and derived cost for every request, which is what enforces
-[quotas](#quota), gives operators usage visibility on the **Usage** page, and enables [chargeback](#chargeback).
+[quotas](#quota), gives operators usage visibility, and enables [chargeback](#chargeback).
 
 ## V
 

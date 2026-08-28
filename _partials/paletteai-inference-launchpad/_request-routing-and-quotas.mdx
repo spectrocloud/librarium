@@ -3,10 +3,10 @@ partial_category: paletteai-inference-launchpad
 partial_name: request-routing-and-quotas
 ---
 
-Requests you send through the appliance are subject to the routing rule and quota configured for your client. If an
+Requests you send through the appliance are subject to the routing rule and quota configured for your API token. If an
 operator configured a routing rule for your token, the appliance can redirect a request to a frontier model instead of a
-local one. Quotas apply to the client, so every API token that belongs to the client draws on the same limits. When the
-client exhausts a quota, the appliance returns an HTTP `429` response.
+local one. Token quotas apply per API token, and when a token exhausts its quota, the appliance returns an HTTP `429`
+response.
 
 To understand what a client is and how API keys and quotas govern usage, refer to
 [Clients and Quotas](/paletteai-inference-launchpad/explanation/clients-and-quotas).
