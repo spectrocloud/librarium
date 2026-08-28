@@ -120,5 +120,3 @@ The upload command accepts other flags, including password authentication (`--ss
   serving.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
-- **Enable vision preprocessing:** If you uploaded a vision model to use with a text-only model, follow
-  [Enable Vision Preprocessing](./enable-vision-preprocessing.md).
