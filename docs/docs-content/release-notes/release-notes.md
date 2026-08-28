@@ -218,6 +218,21 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
   upload completion as soon as the transfer finishes.
 
+### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
+
+- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
+  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
+  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
+  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
+  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
+  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
+
 ### Docs and Education
 
 ### Packs
