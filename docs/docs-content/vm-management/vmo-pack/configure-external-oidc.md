@@ -131,6 +131,11 @@ belong to a group whose name matches the filter for that group to appear in the 
    This sets `oidc.enabled` to `true`, sets `palette.managedOidc` to `false`, and turns local authentication off. Refer
    to [Authentication Options](./authentication-options.md#external-oidc) for the complete list of values applied.
 
+   If the save fails with an error naming undefined `spectro.var.*` variables, define the missing profile variables and
+   select the preset again. Refer to
+   [Preset Save Fails with Undefined Variables](./authentication-options.md#scenario---preset-save-fails-with-undefined-variables)
+   for the full list.
+
 5. Select **Values** and enter the parameters that are specific to your IdP.
 
    ```yaml

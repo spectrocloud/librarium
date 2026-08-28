@@ -242,6 +242,21 @@ ones.
 
 ## Troubleshooting
 
+### Scenario - Preset Save Fails with Undefined Variables
+
+Selecting the **Keycloak** or **External OIDC** preset in the **Alternative Authentication** group can fail to save with
+an error similar to the following.
+
+```text hideClipboard title="Example error"
+An error occurred while trying to update the profiles. Pack 'virtual-machine-orchestrator' has variables 'spectro.var.PLATFORM_IP,spectro.var.KEYCLOAK_ADMIN_PASSWORD,spectro.var.KEYCLOAK_ADMIN_CLIENT_SECRET,spectro.var.OIDC_CLIENT_SECRET' undefined
+```
+
+Each preset templates `spectro.var.*` references into the pack YAML that expect matching profile variables on the
+cluster profile. If the profile does not define one of them, the preset fails to render. Define every profile variable
+named in the error before selecting the preset again. Refer to [Profile Variables](#profile-variables) for the full list
+each preset requires. Set the variable to any non-empty string even when you do not intend to use it (for example,
+`KEYCLOAK_ADMIN_PASSWORD` when local authentication stays off).
+
 ### Scenario - OIDC Sign-in Fails
 
 Verify that `oidc.issuerUrl`, `oidc.clientId`, `oidc.clientSecret`, and `oidc.callbackUrl` are all populated. The
