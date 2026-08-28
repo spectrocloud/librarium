@@ -33,26 +33,25 @@ events after 30 days, forwarding appliance logs to a central system is how you k
 
 :::
 
-:::info
+## Page Visibility
 
 The **Metrics and Logs** page appears in the VMO UI only when VMO detects an external OpenTelemetry Collector Deployment
 or DaemonSet in the cluster. VMO checks at runtime through a capability probe, and the page stays hidden until at least
-one such workload exists. If **Metrics and Logs** does not appear under **Settings** > **Configuration**, deploy an
-OpenTelemetry Collector on the cluster. Refer to
-[Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon) for the Palette VMO pack
-addon path.
+one such workload exists.
 
-:::
+If **Metrics and Logs** does not appear under **Settings** > **Configuration**, deploy an OpenTelemetry Collector on the
+cluster. Refer to [Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon) for the
+Palette VMO pack addon path.
 
 ## How Forwarding Works
 
 ### Metrics Path
 
 The `vmo-node-agent` DaemonSet scrapes each node and ships OpenTelemetry Protocol (OTLP) metrics to the per-node
-OpenTelemetry Collector. The Collector fans the metrics out to two destinations: Victoria Metrics for the built-in
-dashboards, and the `vmo-manager` service's OTLP receiver. Inside `vmo-manager`, a ring buffer receives every point.
-When the **Metrics Forwarding** toggle is enabled and both **Forwarding URL** and **Forwarding Token** are set, the ring
-buffer POSTs each point to Splunk HEC under `sourcetype=vmo:metric`.
+OpenTelemetry Collector. The Collector forwards the metrics to Victoria Metrics for the built-in dashboards and to the
+`vmo-manager` service's OTLP receiver. Inside `vmo-manager`, a ring buffer receives every point. When the **Metrics
+Forwarding** toggle is enabled and both **Forwarding URL** and **Forwarding Token** are set, the ring buffer POSTs each
+point to Splunk HEC under `sourcetype=vmo:metric`.
 
 The toggle plus the URL and token together form the network gate. If any of them is unset, `vmo-manager` sends nothing.
 
@@ -101,10 +100,14 @@ these values to configure the `splunk_hec/vmo-logs` exporter for the logs path.
          splunkHECToken: "<your-splunk-hec-token>"
    ```
 
+   Replace `<your-splunk-hec-host>` with your Splunk HEC endpoint and `<your-splunk-hec-token>` with your Splunk HEC
+   token.
+
 3. Save the profile and apply the update to the cluster.
 
 The metrics push in `vmo-manager` does not read these pack values. The metrics side is configured entirely on the
-**Metrics** section of the appliance UI, described in the following section.
+**Metrics** section of the appliance UI. Refer to [Configure Metrics Forwarding](#configure-metrics-forwarding) for
+those steps.
 
 ## Configure Metrics Forwarding
 
@@ -191,9 +194,6 @@ storage in the `VMOConfig` custom resource.
 | **Forwarding Token**   | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token used by the metrics client in `vmo-manager`. Masked in GET responses; the UI renders `(set)` in place of the value.                                                               |
 | **TLS Verify**         | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | Controls TLS certificate verification for the metrics push. `false` (default) verifies the Splunk HEC certificate. `true` skips verification and is intended for development or demo environments. |
 
-The **TLS Verify** setting stores the underlying `_insecure_skip_verify` value inverted: the UI reads `true` when the
-appliance verifies the certificate, and `false` when verification is skipped.
-
 ### Logs Section
 
 <!-- vale Vale.Spelling = NO -->
@@ -235,6 +235,13 @@ No-op writes that keep the same value are suppressed. Only real transitions prod
 
 ## Verify Delivery
 
+Before verifying delivery, set the `KUBECONFIG` environment variable to point at the appliance cluster's kubeconfig
+file.
+
+```shell
+export KUBECONFIG=<path-to-appliance-kubeconfig>
+```
+
 1. Confirm that VMO emits JSON after you change **Log Format**.
 
    ```shell
@@ -269,24 +276,13 @@ No-op writes that keep the same value are suppressed. Only real transitions prod
 
 ## Considerations
 
-- **Metrics forwarding is airgap-safe by default.** The toggle is the network gate. If the toggle is off, or the URL or
-  token is empty, `vmo-manager` sends zero bytes to Splunk for metrics.
-
-- **Log forwarding delivery is agent-driven.** The OpenTelemetry Collector's `splunk_hec/vmo-logs` exporter delivers
-  logs whenever its addon values name a Splunk HEC endpoint and token, regardless of the **Log Forwarding** toggle
-  state. The toggle is the compliance acknowledgment, not the delivery switch.
-
-- **Metrics and Logs each carry their own Forwarding URL.** Point them at the same Splunk instance to keep the
-  operational picture in one place, or at different Splunk endpoints if your organization separates metrics and log
-  indexers.
-
-- **Multi-replica considerations.** On a multi-replica appliance, a **Log Format** change that you make in the UI
-  applies to the replica that handled the request. The remaining replicas keep their previous encoding until they
-  restart. To apply an encoding change across every replica at once, restart the `vmo-manager` StatefulSet after you
-  save the change.
-
-- **`monitoring.splunk_hec_url` supports HTTP or HTTPS.** Use HTTPS in production. Use HTTP only for testing against a
-  local Splunk instance that does not expose TLS.
+| **Behavior**                     | **What to know**                                                                                                                                                                                                                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Metrics forwarding airgap safety | The toggle is the network gate. If the toggle is off, or the URL or token is empty, `vmo-manager` sends zero bytes to Splunk for metrics.                                                                                                                                          |
+| Log forwarding delivery          | The OpenTelemetry Collector's `splunk_hec/vmo-logs` exporter delivers logs whenever its addon values name a Splunk HEC endpoint and token, regardless of the **Log Forwarding** toggle state. The toggle is the compliance acknowledgment, not the delivery switch.                |
+| Independent Forwarding URLs      | Metrics and Logs each carry their own Forwarding URL. Point them at the same Splunk instance to keep the operational picture in one place, or at different Splunk endpoints if your organization separates metrics and log indexers.                                               |
+| Multi-replica log format changes | A **Log Format** change made in the UI applies to the replica that handled the request. The remaining replicas keep their previous encoding until they restart. To apply an encoding change across every replica at once, restart the `vmo-manager` StatefulSet after you save it. |
+| Metrics URL scheme               | `monitoring.splunk_hec_url` supports HTTP or HTTPS. Use HTTPS in production. Use HTTP only for testing against a local Splunk instance that does not expose TLS.                                                                                                                   |
 
 ## Palette Audit Trail Forwarding
 
