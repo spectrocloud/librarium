@@ -980,8 +980,8 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
 
 8. Open the newly created IAM role in the AWS console, and then click **Edit** on the Summary card.
 
-9. Select **12 hours** from the **Maximum session duration** dropdown, and save your changes. This gives backup and restore operations on large
-   clusters enough time to complete before the STS credentials expire.
+9. Select **12 hours** from the **Maximum session duration** dropdown, and save your changes. This gives backup and
+   restore operations on large clusters enough time to complete before the STS credentials expire.
 
    You can also use the `max-session-duration` parameter from the AWS command line to increase the expiration time.
 
