@@ -15,7 +15,6 @@ They cover design decisions, component relationships, and trade-offs rather than
 | **Topic**                                                   | **What you understand**                                                                                           |
 | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [Architecture Overview](./architecture.md)                  | The component stack, request routing, model provisioning lifecycle, and data residency model.                     |
-| [Vision Preprocessing](./vision-preprocessing.md)           | How a text-only model answers questions about images by converting them to text first.                            |
 | [Clients and Quotas](./clients-and-quotas.md)               | What a client is, why the appliance serves many clients, and how API tokens and quotas govern usage.              |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                       |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.            |
