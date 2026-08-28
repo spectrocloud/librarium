@@ -24,8 +24,7 @@ engine kinds the appliance supports and how it selects one, refer to [Inference 
 
 The appliance is designed and tuned for a single high-density GPU server. That shape avoids the storage-replication,
 network-fabric, and scheduling complexity that appears as soon as nodes multiply, and it matches how most deployments
-start. Multi-server clusters are possible: you choose which nodes run each model when you deploy it. For that choice,
-refer to [Model Placement](./model-placement.md).
+start. Multi-server clusters are possible but are not tuned for this release.
 
 Sizing follows from the model rather than from a fixed value. The target model sets the GPU count, and the rest of the
 machine scales with it.
@@ -53,15 +52,19 @@ For the specific values and example server configurations, refer to
 
 ## Model Provisioning Lifecycle
 
-Deploying a model is a guarded sequence. The appliance first previews the change so you can review it, and it writes
-nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages. A model
-becomes routable only after its signature is verified and its smoke test passes, so the appliance never presents a model
-as ready before it can serve requests.
+When you deploy a model, you select it for the cluster rather than for a specific node, and the appliance places it
+automatically on the best-fit node. The best-fit node is the node with the most free GPUs that still fit the model. A
+model that does not need a GPU is placed on a CPU-capable node.
 
-On a multi-server cluster, the appliance runs one inference engine per chosen node and exposes those engines through a
-single per-model endpoint. The appliance treats unknown GPU capacity as unusable rather than as free. For how you choose
-which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
-[Model Placement](./model-placement.md).
+The appliance reports each node's free capacity honestly. A node shows either a known free GPU count or an unknown
+allocation when the appliance cannot determine the count. The appliance never treats a node with an unknown allocation
+as free, never selects such a node automatically, and never invents a placement target. When no node can host a model,
+the appliance holds the deployment and reports the reason instead of choosing a node anyway.
+
+The appliance applies a deployment through a guarded sequence. It first previews the change so you can review it, and it
+writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages. A
+model becomes routable only after its signature is verified and its smoke test passes, so the appliance never presents a
+model as ready before it can serve requests.
 
 ## Request Routing
 
