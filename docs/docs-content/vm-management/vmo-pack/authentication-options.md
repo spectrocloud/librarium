@@ -62,7 +62,9 @@ layer of the cluster profile has **Palette** selected as the OIDC identity provi
 | Issuer, client, callback, scopes | Injected by Palette into `appConfig.auth.oidc.*` when the cluster deploys |
 
 Because Palette injects the OIDC configuration at deploy time, the values match the OIDC flags that the cluster's
-Kubernetes API server was started with. You do not need to select a preset or enter any values for this to work.
+Kubernetes API server was started with. You do not need to select a preset, and you do not need to set `oidc.issuerUrl`,
+`oidc.clientId`, `oidc.clientSecret`, `oidc.callbackUrl`, or `oidc.scopes` yourself. A profile with no Alternative
+Authentication preset selected deploys with Palette-managed OIDC out of the box.
 
 :::info
 
@@ -169,6 +171,12 @@ You must set the following parameters in the pack YAML yourself, because they ar
 | `oidc.clientSecret` | The client secret issued by your IdP. The pack renders this value into a Kubernetes Secret.                               |
 | `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/auth/callback` is not reachable. |
 | `platform.baseUrl`  | The URL that users reach the UI at. Required in **Direct** mode.                                                          |
+
+The following parameter is optional and applies to specific deployment scenarios.
+
+| **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `oidc.k8sNotFederated` | Defaults to `false`. Set to `true` when the Kubernetes API server is not federated with the same OIDC issuer as VMO. Refer to [Configure Non-Federated Kubernetes API Servers](./configure-external-oidc.md#configure-non-federated-kubernetes-api-servers) for the behavior it changes and the security trade-off. |
 
 Refer to [Configure External OIDC](./configure-external-oidc.md) for a complete procedure that uses Okta as the example
 IdP.

@@ -193,6 +193,49 @@ charts:
       existingSecret: "vmo-manager-oidc"
 ```
 
+### Configure Non-Federated Kubernetes API Servers
+
+If the cluster's Kubernetes API server is not federated with the same OIDC issuer that VMO uses, cluster-wide Settings
+pages return `403 forbidden: cluster-wide K8s access required`, and the Settings menu is hidden from the sidebar. VMO
+passes the user's ID token as an `Authorization: Bearer` header to the Kubernetes API server, and the API server rejects
+the token when its OIDC flags do not match.
+
+The recommended fix is to configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` flags that
+match the OIDC application VMO uses, so that OIDC identity flows through the same trust chain in both layers. Refer to
+[Prerequisites](#prerequisites) for the verification command.
+
+If reconfiguring the API server is not an option, set `oidc.k8sNotFederated` to `true` in the pack values.
+
+```yaml
+charts:
+  virtual-machine-orchestrator:
+    vmo-manager:
+      oidc:
+        k8sNotFederated: true
+```
+
+The default is `false`. Leave the default in place whenever the API server is federated with the same OIDC issuer as
+VMO. This includes Palette-managed OIDC and the VM Launchpad appliance, which ships with Keycloak federating both VMO
+and the Kubernetes API server.
+
+With `k8sNotFederated` set to `true`, cookie and OIDC sessions call the Kubernetes API using the VMO Manager service
+account token, without impersonation headers. The cluster-scope Self-Subject Access Review probe is bypassed, and the
+cluster-scoped Settings pages open on the VMO IAM Platform Admin role alone. Namespace-scoped VM writes (create, delete,
+clone, disks, NICs, snapshots) also ride the cluster-wide service account token, so Kubernetes `RoleBinding` resources
+that scope users to specific namespaces no longer apply to those writes.
+
+:::warning
+
+Setting `oidc.k8sNotFederated` to `true` collapses two independent authorization gates into one. Any user granted a VMO
+IAM Platform Admin role reaches cluster-wide Settings without an independent Kubernetes RBAC check, and a user bound to
+a single namespace through Kubernetes RBAC can create VMs in any managed namespace in this mode. Use this option only
+for deployments where every OIDC user is trusted with cluster-wide reach, and restrict VMO IAM Platform Admin group and
+user mappings accordingly.
+
+:::
+
+API key sessions, bearer-token endpoints, and local-authentication sessions are not affected by this setting.
+
 ## Grant Access to Groups
 
 Two authorization layers govern VMO access, and both must recognize the user's IdP group for a session to reach every
@@ -464,10 +507,19 @@ Manager cannot validate the user's identity against Kubernetes. VMO IAM authoriz
 but the Settings pages route Kubernetes API calls through the user's OIDC ID token as a Bearer, and the API server
 rejects the token.
 
-Configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` values that match the OIDC
-application VMO uses. Refer to [Prerequisites](#prerequisites) for the verification command. Then bind the user's group
-to `spectro-vm-admin` with a `ClusterRoleBinding`. For a temporary workaround, sign in with the local admin account at
-`<baseUrl>/local-login`. Local sessions bypass the cluster-scope probe and reach all Settings pages.
+Two options fix this behavior:
+
+- Configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` values that match the OIDC
+  application VMO uses, and bind the user's group to `spectro-vm-admin` with a `ClusterRoleBinding`. Refer to
+  [Prerequisites](#prerequisites) for the verification command. This option keeps VMO IAM and Kubernetes RBAC as two
+  independent authorization gates.
+- Set `oidc.k8sNotFederated` to `true` in the pack values. Refer to
+  [Configure Non-Federated Kubernetes API Servers](#configure-non-federated-kubernetes-api-servers) for the setting, the
+  behavior it changes, and the security trade-off. This option makes VMO IAM the sole authorization gate for
+  cluster-wide Settings.
+
+For a temporary workaround, sign in with the local admin account at `<baseUrl>/local-login`. Local sessions bypass the
+cluster-scope probe and reach all Settings pages.
 
 ## Next Steps
 
