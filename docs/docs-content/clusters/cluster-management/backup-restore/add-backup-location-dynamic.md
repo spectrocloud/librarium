@@ -21,11 +21,11 @@ provide detailed steps to add an S3 bucket as the backup location using the STS 
 Three scenarios are supported, depending on where your Kubernetes cluster runs and where the S3 bucket lives. Select the
 section that matches your use case.
 
-- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts)—the cluster and the S3 bucket are in the same
-  AWS account.
+- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts)—the cluster and the S3 bucket are in the same AWS
+  account.
 
-- [Multiple AWS Accounts with AWS STS](#multiple-aws-accounts-with-aws-sts)—the cluster is in one AWS account and the
-  S3 bucket is in another.
+- [Multiple AWS Accounts with AWS STS](#multiple-aws-accounts-with-aws-sts)—the cluster is in one AWS account and the S3
+  bucket is in another.
 
 - [Non-AWS Cluster with AWS STS](#non-aws-cluster-with-aws-sts)—the cluster runs on non-AWS infrastructure such as
   edge-native, AKS, or vSphere, and the S3 bucket is in an AWS account.
