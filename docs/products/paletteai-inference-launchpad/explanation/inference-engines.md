@@ -25,14 +25,13 @@ model can only run on a GPU-capable engine, and a model intended for CPU nodes r
 
 ## Automatic Engine Selection
 
-When you deploy a model, the engine setting defaults to **auto**. With the automatic option, the appliance selects an
-engine that fits the model you chose, a GPU-capable engine for a GPU model and a CPU-only engine for a CPU model.
-Leaving the setting on automatic is the recommended choice for most deployments, because the appliance matches the
-engine to the model and the chosen nodes for you.
+When you deploy a model, the engine setting defaults to **engine (auto)**. With the automatic option, the appliance
+selects an engine that fits the model you chose, a GPU-capable engine for a GPU model and a CPU-only engine for a CPU
+model. Leaving the setting on automatic is the recommended choice for most deployments, because the appliance matches
+the engine to the model and the target node for you.
 
-The engines you can choose from depend on how your appliance is configured. The **Deploy model** dialog lists the
-automatic option first, followed by any named engines the appliance exposes, each labeled with its kind, such as
-`default · sglang`.
+The engines you can choose from depend on how your appliance is configured. The deploy panel lists the automatic option
+first, followed by any named engines the appliance exposes, each labeled with its kind, such as `default · sglang`.
 
 ## Supported Engine Kinds
 
