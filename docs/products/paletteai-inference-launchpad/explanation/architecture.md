@@ -69,10 +69,14 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 ## Request Routing
 
-The gateway routes each request to a model. A request that names a model uses that model, and a request that does not
-name a model falls back to the default model. When you change the default model, the gateway rebuilds its router in
-place. The gateway does not restart, and it does not drain requests that are in progress. Requests that the gateway
-already routed continue on their assigned model, and the new default applies only to later requests.
+The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
+the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
+from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
+the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+
+When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
+restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
+assigned model, and the new configuration applies only to later requests.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
 quotas. When routing policy sends a request off the appliance, the gateway can reach a built-in frontier provider or a

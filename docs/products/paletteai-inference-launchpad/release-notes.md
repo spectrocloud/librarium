@@ -37,6 +37,16 @@ and platform security.
   egress. Refer to [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md)
   for more information.
 
+<!-- vale off -->
+
+- **Semantic routing.** The appliance now routes every request through an on-box semantic router that picks a model from
+  a category, **Coding** or **Everything else**, and a complexity band, **Simple** or **Complex**. The Tier map and the
+  **Semantic routing** card remain separate controls in the console, and both accept per-client overrides. Refer to
+  [Routing Behavior](./explanation/routing-behavior.md) and
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md) for more information.
+
+<!-- vale on -->
+
 - **Typed editor for JSON-valued engine arguments.** When an engine argument's value is a JSON document, the **Deploy
   model** panel now shows a typed editor with live validation, per-field type badges, byte sizes in readable units, and
   a one-select fix when a value is a quoted boolean or a quoted number. KV cache offloading is the first engine argument

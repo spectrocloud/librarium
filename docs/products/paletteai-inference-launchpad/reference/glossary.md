@@ -89,6 +89,13 @@ makes chargeback possible.
 
 {/* NEEDS REVIEW: chargeback is defined in the source glossary but does not yet appear in any shipped PAIIL doc. Confirm the term and framing with an SME before publishing. */}
 
+### Choose per Request
+
+The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
+[semantic routing](#semantic-routing) card instead of settling the request in the Tier map. The alias contributes its
+Thinking directive to whichever model the semantic router picks. Refer to
+[Routing Behavior](../explanation/routing-behavior.md).
+
 ### Client
 
 The identity the appliance uses to recognize who is sending a request, and the unit of both access and accounting. The
@@ -115,6 +122,18 @@ An AI development tool, such as Claude Code, Cursor, OpenAI Codex, or OpenCode, 
 Coding assistants are the primary workloads the appliance is tuned for; each one connects to the appliance as a
 [client](#client) instead of to a cloud provider.
 
+### Complex
+
+The [semantic routing](#semantic-routing) band applied to a prompt whose complexity score reaches the
+[Complexity threshold](#complexity-threshold). Refer to [Routing Behavior](../explanation/routing-behavior.md).
+
+### Complexity Threshold
+
+The boundary between the [Simple](#simple) band and the [Complex](#complex) band on the
+[semantic routing](#semantic-routing) card. The console shows the value as a percentage. `0` is the simplest prompt and
+`1` is the most complex, so a lower threshold sends more traffic to the **Complex** rule. Refer to
+[Routing Behavior](../explanation/routing-behavior.md).
+
 ### Content Bundle
 
 A compressed archive, larger than 20 GB, containing the appliance's platform and application software. Operators upload
@@ -128,6 +147,14 @@ The maximum number of tokens a model can process in a single request, counting t
 Different models have different context window sizes.
 
 ## D
+
+### Decision Recording
+
+An operator-tuning feature that writes one CSV row per classification the [semantic router](#semantic-routing) makes, so
+the recorded prompts can be used to tune the categories and the [Complexity threshold](#complexity-threshold) against
+real traffic. The switch is off by default, survives a restart, and the console offers **Download** and **Delete**
+actions on the CSV. Refer to
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording).
 
 ### Default Model
 
@@ -162,6 +189,13 @@ models appear in a client's routing picker, and traffic to it is metered as egre
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## F
+
+### Fallback for Unmatched Requests
+
+The box-wide model that answers any request no other control settles: a request no [Tier map](#tier-map) row matches, a
+request the [semantic router](#semantic-routing) finds no rule for, or a request that names a model the appliance does
+not serve. When the fallback is off, the appliance returns HTTP `404` for these requests. Refer to
+[Switch the Default Model](../how-to-guides/set-the-default-model.md).
 
 ### FIPS
 
@@ -449,6 +483,24 @@ does this is called a reasoning model, and the depth of that effort can sometime
 
 ## S
 
+### Semantic Routing
+
+The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The router
+keys every rule on two axes: a category the appliance derives for the prompt, such as **Coding** or **Everything else**,
+and a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex). The card lives on the box-wide
+**Semantic routing** card under **Settings** > **Configurations**, and on each client's **Routing** section for
+per-client overrides. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md).
+
+<!-- vale off -->
+
+### Simple
+
+The [semantic routing](#semantic-routing) band applied to a prompt whose complexity score is below the
+[Complexity threshold](#complexity-threshold). Refer to [Routing Behavior](../explanation/routing-behavior.md).
+
+<!-- vale on -->
+
 ### Slim ISO
 
 The small (approximately 1.5 GB) bootable installer image that contains the appliance's operating system, provisioning
@@ -472,9 +524,12 @@ Defense deployments.
 
 ### Tier Map
 
-A routing overlay that governs which model handles a client's requests by default, mapping an incoming model name or
-alias to a served model. It selects the default target for a client's requests rather than acting as a hard access gate
-for local models. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A routing overlay that governs which model handles a client's requests when the request names a model by name or alias.
+The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. Each
+row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
+[Choose per Request](#choose-per-request) hands the alias to the semantic router instead of settling it in the Tier map.
+Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Token and Tokenization
 

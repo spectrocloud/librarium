@@ -51,9 +51,9 @@ Use a client's tier map to route the client's model aliases to the models you ch
 6. Save the client.
 
 The tier map applies to the selected client. Requests from other clients follow their own tier maps, so they are not
-routed to that model unless you configure their tier maps as well.
-
-<!--TODO: once published, add a sentence here linking to Configure Intelligent Routing and Semantic Domains (DOC-2926) for routing that goes beyond client-level model selection, such as semantic domains.-->
+routed to that model unless you configure their tier maps as well. For requests the tier map does not settle, such as a
+request that sends `auto`, refer to [Configure Semantic Routing](./configure-semantic-routing.md). For how the two
+controls combine, refer to [Routing Behavior](../explanation/routing-behavior.md).
 
 {/* NEEDS REVIEW: the tier map governs which model handles a client's requests by default. It is a routing overlay, not a hard access gate for local models. Confirm the operator-facing framing with an SME. */}
 
