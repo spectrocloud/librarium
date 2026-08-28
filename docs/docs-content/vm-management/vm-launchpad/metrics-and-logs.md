@@ -104,7 +104,7 @@ these values to configure the `splunk_hec/vmo-logs` exporter for the logs path.
 3. Save the profile and apply the update to the cluster.
 
 The metrics push in `vmo-manager` does not read these pack values. The metrics side is configured entirely on the
-**Metrics** section of the appliance UI, described below.
+**Metrics** section of the appliance UI, described in the following section.
 
 ## Configure Metrics Forwarding
 
@@ -117,8 +117,7 @@ The metrics push in `vmo-manager` does not read these pack values. The metrics s
 
 4. Select the edit icon next to **Forwarding Token** and enter your Splunk HEC token. Save.
 
-   The token is stored as a masked field. GET responses on the configuration API return `(set)` rather than the token
-   value, and the UI renders `(set)` in place of the token.
+   The token is stored as a masked field.
 
 5. Adjust **TLS Verify** if your Splunk HEC certificate is trusted by the appliance. Leave the value at `true` in
    production. Set the value to `false` only for development or demonstration environments where the certificate cannot
