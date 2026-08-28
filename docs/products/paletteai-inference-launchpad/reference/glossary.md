@@ -245,6 +245,14 @@ The key-value cache that an [inference engine](#inference-engine) keeps in GPU a
 response, holding the intermediate state for the tokens processed so far. Its size drives much of the appliance's memory
 and fast-storage requirements.
 
+### KV Cache Offloading
+
+A memory-management strategy in which an [inference engine](#inference-engine) keeps part of the [KV cache](#kv-cache)
+outside GPU memory, in host RAM or on fast local storage, and swaps it back to the GPU when the tokens it holds are
+needed again. Offloading lets a model serve longer contexts, or more concurrent requests, than would fit in GPU memory
+alone. Refer to
+[Review or Change an Engine Argument That Uses JSON](../how-to-guides/deploy-a-model.md#review-or-change-an-engine-argument-that-uses-json).
+
 ## L
 
 ### Large Language Model (LLM)

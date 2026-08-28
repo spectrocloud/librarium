@@ -37,6 +37,13 @@ and platform security.
   egress. Refer to [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md)
   for more information.
 
+- **Typed editor for JSON-valued engine arguments.** When an engine argument's value is a JSON document, the **Deploy
+  model** panel now shows a typed editor with live validation, per-field type badges, byte sizes in readable units, and
+  a one-select fix when a value is a quoted boolean or a quoted number. KV cache offloading is the first engine argument
+  that uses this editor. Refer to
+  [Review or Change an Engine Argument That Uses JSON](./how-to-guides/deploy-a-model.md#review-or-change-an-engine-argument-that-uses-json)
+  for more information.
+
 ### Improvements
 
 - **Model upgrade through replacement.** You can now upgrade a deployed model's weights or swap it for a different model

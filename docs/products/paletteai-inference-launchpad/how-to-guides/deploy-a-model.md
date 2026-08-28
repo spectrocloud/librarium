@@ -55,7 +55,7 @@ dialog. For why you would pin a model to some nodes and not others, refer to
    snapshot. A node you add to the cluster later does not receive this model until you add it, as described in
    [Add a Model to More Nodes](#add-a-model-to-more-nodes).
 
-7. Select **Deploy**, review the deployment preview, and then select **Confirm & apply**.
+7. Select **Deploy**, review the deployment preview, and then select **Confirm & Apply**.
 
 The appliance writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready
 stages on each chosen node. For that lifecycle, refer to
@@ -98,6 +98,43 @@ during deployment and clears once the model finishes coming online, at which poi
 For why a model becomes routable only after it passes its smoke test, refer to
 [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
 
+## Review or Change an Engine Argument That Uses JSON
+
+When a `{ } JSON` chip appears on an **Extra arguments** row in the **Deploy model** panel, use the JSON argument editor
+to review or change the value for this deploy. For background on when the recipe carries a JSON-valued argument, refer
+to [Engine Arguments](../explanation/inference-engines.md#engine-arguments).
+
+1. On the **Cluster** page, select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** panel
+   opens.
+
+2. Choose the model in the **Model** drop-down menu, then expand the **Serving overrides** card.
+
+3. Under **Extra arguments**, locate a row whose value is a `{ } JSON` chip followed by a one-line preview of its
+   top-level fields.
+
+4. Select **Edit JSON** on that row. The dialog opens with the argument's flag in its title, for example
+   `Edit --kv-transfer-config`, and the sub-line `Changes apply to this deploy only. Field names come from the engine.`
+
+5. On the **Form** tab, change values in place. Every field carries its type as a badge: `string`, `number`, `boolean`,
+   or `null`. A boolean field renders as a `true` / `false` button pair. A number field rejects non-numeric text with
+   `Enter a number.` A byte field shows its size in readable units, such as `64 GiB.` A per-rank byte field also shows
+   the node total for the model's tensor-parallel width. A `null` field is not editable on this tab and reads
+   `Set a value on the Raw JSON tab.`
+
+   To add or remove a field, switch to the **Raw JSON** tab. A note at the top of the **Form** tab makes this explicit:
+   `Add or remove fields on the Raw JSON tab. The form edits values only, so a typo cannot invent a key the engine ignores.`
+
+6. On the **Raw JSON** tab, review the whole document, or add and remove fields. The tab validates on every keystroke.
+   When the text does not parse, the error appears as `Line N: [message]`, **Apply** is unavailable, and the **Form**
+   tab is unavailable with the tooltip `Fix the JSON error first.` Correct the parse error to re-enable both.
+
+7. If the editor shows the warning
+   `[key] is the text '[value]', not the boolean [value]. Engines read any non-empty text as true.`, select **Convert to
+   boolean [value]**. If it shows the softer nudge for a quoted number, select **Convert to number [value]**.
+
+8. Select **Apply** to keep the change, or **Cancel** to discard it. **Apply** writes the argument back for this deploy
+   only.
+
 ## Add a Model to More Nodes
 
 To run an already deployed model on additional nodes, deploy it again and select the extra nodes. Nodes that already
@@ -110,7 +147,7 @@ serve the model stay selected and show **Already deployed**.
 3. Select the same model. In **Nodes**, already serving nodes are locked with **Already deployed**. Select each
    additional eligible node.
 
-4. Select **Deploy**, review the preview, and then select **Confirm & apply**.
+4. Select **Deploy**, review the preview, and then select **Confirm & Apply**.
 
 The appliance creates an engine on each newly chosen node and leaves the existing engines and the model's endpoint
 alone. Traffic continues on the nodes that were already serving.
@@ -157,9 +194,7 @@ reasons and how the appliance behaves when a node degrades between selection and
 
 ## Next Steps
 
-To change which model handles requests that do not name a model explicitly, refer to
-[Switch the Default Model](./set-the-default-model.md). To put a newer version or a different model on a node, refer to
-[Replace a Model](./replace-a-model.md). For why you would pin a model to some nodes and not others, refer to
-[Model Placement](../explanation/model-placement.md). To let a text-only model answer questions about images, refer to
-[Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified catalog,
-refer to [Bring Your Own Model](./bring-your-own-model.md).
+To put a newer version or a different model on a node, refer to [Replace a Model](./replace-a-model.md). For why you
+would pin a model to some nodes and not others, refer to [Model Placement](../explanation/model-placement.md). To let a
+text-only model answer questions about images, refer to [Enable Vision Preprocessing](./enable-vision-preprocessing.md).
+To bring a model that is not in the certified catalog, refer to [Bring Your Own Model](./bring-your-own-model.md).
