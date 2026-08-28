@@ -11,8 +11,7 @@ keywords: ["launchpad", "ai", "palette cli", "model upload", "metadata", "huggin
 ---
 
 This reference lists the flags for the Palette CLI model commands and the fields of the model metadata file. It supports
-the [Upload a Model](../how-to-guides/upload-a-model.md) how-to and
-[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
+the [Upload a Model](../how-to-guides/upload-a-model.md) how-to, which walks through the download and upload flow.
 
 {/* NEEDS REVIEW: `palette content model download` and `palette content model upload` are a new command surface from the engineering source and are not yet in the published Palette CLI reference. Confirm the command names, flags, and defaults before publishing. */}
 
@@ -55,29 +54,19 @@ contacts Hugging Face and fails if `--model-dir` is missing or incomplete; pass 
 
 ## Model Metadata File
 
-The metadata file is the operator's contract with the appliance. The appliance enforces `name` and `version`. A file
-missing either one never reaches the deploy catalog. The appliance does not enforce `huggingface.repo`, but the download
-command has no source without it, so a working file sets all three. Every other field is optional.
+The metadata file is the operator's contract with the appliance. Only `name`, `version`, and `huggingface.repo` are
+required; everything else is optional. The parser rejects unknown top-level fields.
 
-Unknown fields are ignored rather than rejected, so that a file written by a newer authoring tool still parses. A
-misspelled field name is therefore dropped without an error, and the model is served with the default that the field was
-meant to override.
-
-| **Field**                   | **Description**                                                                                                                                                                                                                    | **Required** |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `name`                      | Model name. Sets the `<name>` path segment on the appliance and the name the model appears under in the deploy catalog.                                                                                                            | Yes          |
-| `version`                   | Model version. Sets the `<version>` path segment on the appliance.                                                                                                                                                                 | Yes          |
-| `displayName`               | Human-readable model name for the console. Defaults to `name`.                                                                                                                                                                     | No           |
-| `description`               | Short description of the model, surfaced in the console.                                                                                                                                                                           | No           |
-| `author`                    | Publisher of the model, surfaced in the console.                                                                                                                                                                                   | No           |
-| `license`                   | License identifier for the model, surfaced in the console.                                                                                                                                                                         | No           |
-| `huggingface.repo`          | Source Hugging Face repository. The only source the download command reads.                                                                                                                                                        | Yes          |
-| `huggingface.files`         | One or more globs selecting which repository files to download. When omitted, every file is downloaded.                                                                                                                            | No           |
-| `huggingface.revision`      | Hugging Face revision (branch, tag, or commit). Defaults to `main`.                                                                                                                                                                | No           |
-| `huggingface.logo`          | Path inside the Hugging Face repository to a logo image, downloaded alongside the weights.                                                                                                                                         | No           |
-| `huggingface.file_manifest` | Generated list of the repository's files, sizes, and checksums at the pinned revision, which lets a staged copy be verified without network access. Generated, not hand-written.                                                   | No           |
-| `logo`                      | A logo bundled from local disk. Mutually exclusive with `huggingface.logo`.                                                                                                                                                        | No           |
-| `launchpad`                 | Serving recipe: engine, GPU requirements, per-hardware variants, and engine settings. The Palette CLI ships it to the appliance unchanged, and the appliance reads it to pick a variant for each node and to configure the engine. | No           |
+| **Field**              | **Description**                                                                                                                             | **Required** |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `name`                 | Model name. Sets the `<name>` path segment on the appliance.                                                                                | Yes          |
+| `version`              | Model version. Sets the `<version>` path segment on the appliance.                                                                          | Yes          |
+| `huggingface.repo`     | Source Hugging Face repository.                                                                                                             | Yes          |
+| `huggingface.files`    | One or more globs selecting which repository files to download. When omitted, every file is downloaded.                                     | No           |
+| `huggingface.revision` | Hugging Face revision (branch, tag, or commit). Defaults to `main`.                                                                         | No           |
+| `huggingface.logo`     | Path inside the Hugging Face repository to a logo image, downloaded alongside the weights.                                                  | No           |
+| `logo`                 | A logo bundled from local disk. Mutually exclusive with `huggingface.logo`.                                                                 | No           |
+| `launchpad`            | Optional gateway tuning block (engine, variants, and so on). The Palette CLI ships it to the appliance unchanged and does not interpret it. | No           |
 
 The following example downloads GLM 5.2 weights from a Hugging Face repository and includes a `launchpad` tuning block.
 
@@ -100,7 +89,7 @@ huggingface:
 
 # logo: ./local-logo.png # OR bundle a local file from disk (mutually exclusive with huggingface.logo)
 
-launchpad: # optional: serving recipe, shipped verbatim by the Palette CLI
+launchpad: # optional: gateway tuning block, shipped verbatim (the Palette CLI does not interpret it)
   engine: vllm
   min_engine_version: "0.23.0"
   variants:
@@ -114,53 +103,6 @@ launchpad: # optional: serving recipe, shipped verbatim by the Palette CLI
 ```
 
 {/* NEEDS REVIEW: the GLM 5.2 example values (the zai-org/GLM-5.2 repository, file globs, and license) are representative. Confirm the canonical repository, weight files, and license with an SME before publishing. */}
-
-### The `launchpad` Block
-
-The `launchpad` block is the serving recipe. Fields set directly on the block are defaults, and each entry in `variants`
-overrides them for one hardware cell. When the block is absent, the appliance serves the model with the `vllm` engine
-and a floor of one GPU.
-
-| **Field**            | **Description**                                                                                                                                                 |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`             | Inference engine that serves the model. Defaults to `vllm`.                                                                                                     |
-| `min_gpus`           | Minimum number of GPUs the model needs. This is a floor, not the width the model runs at. A node with fewer GPUs does not fit the variant.                      |
-| `widths`             | Tensor-parallel widths the deploy picker offers. When omitted, the picker offers `min_gpus` only.                                                               |
-| `vram_gb`            | Floor on per-GPU memory, in GB. Checked at deploy time against the memory the nodes advertise. A floor higher than the hardware provides blocks the deployment. |
-| `size_gb`            | Approximate on-disk size of the model, surfaced in the console.                                                                                                 |
-| `min_driver`         | Minimum GPU driver version. If no node advertises a driver version, the deployment is blocked rather than allowed through unverified.                           |
-| `min_engine_version` | Minimum version of the inference engine.                                                                                                                        |
-| `rationale`          | Prose explaining why these values were chosen, surfaced in the deploy picker.                                                                                   |
-| `serve`              | Engine settings for the cell. Refer to the following table.                                                                                                     |
-| `tools`              | The model's tool-calling, structured-output, and reasoning capabilities, which decide the parser flags the engine starts with.                                  |
-| `variants`           | List of per-hardware cells. Each entry accepts every field in this table, plus `vendor` and `gpu_product`.                                                      |
-
-Each entry in `variants` may additionally pin the hardware it applies to.
-
-| **Field**     | **Description**                                                                                                                                                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `vendor`      | GPU vendor the cell applies to, such as `nvidia` or `amd`. When unset, the cell applies to any vendor.                                                                                                                                                             |
-| `gpu_product` | GPU product label the cell applies to, matched against the node's own label by exact string match. Use the label value the node publishes, such as `NVIDIA-H200` or `AMD_Instinct_MI325_OAM`, not a marketing name. When unset, the cell applies to any GPU model. |
-
-The appliance detects each node's GPU vendor, product, count, and per-GPU memory, then selects the single variant that
-fits that node. It expects every node in the cluster to carry the same GPU model. A model that no variant fits still
-appears in the deploy catalog, marked as not deployable, with a reason naming what the variant needs against what the
-node has.
-
-The following `serve` fields are the ones a serving recipe most often sets.
-
-| **Field**              | **Description**                                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `image`                | Container image the engine runs. Pin it by digest for a reproducible deployment.                              |
-| `tensor_parallel_size` | Number of GPUs the engine spreads the model across.                                                           |
-| `max_model_len`        | Maximum context length the engine serves. A longer context reserves more GPU memory for the key-value cache.  |
-| `gpu_memory_util`      | Fraction of each GPU's memory the engine may use.                                                             |
-| `quantization`         | Quantization the engine applies to the weights.                                                               |
-| `shm_size`             | Size of the shared-memory volume. Multi-GPU serving needs more than the Kubernetes default of 64 Mi.          |
-| `env`                  | Environment variables set on the engine.                                                                      |
-| `extra_args`           | Additional command-line arguments passed to the engine verbatim.                                              |
-| `probe`                | Health-probe budgets as durations: `startup_timeout`, `liveness_timeout`, `interval`, and `response_timeout`. |
-| `volumes`              | Additional volumes the engine mounts. Each entry sets `mount_path` and exactly one source.                    |
 
 After a successful upload, the model directory on the appliance node has the following layout.
 
@@ -194,7 +136,5 @@ reconciling about every two minutes. In the deploy catalog, a model shows one of
 
 ## Resources
 
-- [Upload a Model](../how-to-guides/upload-a-model.md) walks through the download and upload flow for a certified model.
-- [Bring Your Own Model](../how-to-guides/bring-your-own-model.md) authors metadata, then downloads, uploads, and
-  deploys a model that is not in the certified catalog.
+- [Upload a Model](../how-to-guides/upload-a-model.md) walks through the download and upload flow.
 - [Deploy a Model](../how-to-guides/deploy-a-model.md) deploys an uploaded model and verifies it is serving.

@@ -8,15 +8,6 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.1.0 {#version-1-1-0}
-
-### Features
-
-- Register any OpenAI-compatible inference host as a box-wide egress target, then authorize each client and cap its
-  daily spend. Traffic to a registered endpoint is metered as egress. Refer to
-  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
-  information.
-
 ## Version 1.0.0 - July 21, 2026 {#version-1-0-0}
 
 PaletteAI Inference Launchpad 1.0.0 is the first release. It is a standalone, turnkey AI appliance that turns your own
@@ -47,10 +38,9 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   information.
 
 - Certifies a focused set of LLMs for coding-assistant use, GLM 5.2, DeepSeek v4 Pro, Kimi 2.7, and Gemma 4, and lets
-  you bring your own model if it fits the available GPU memory. Refer to
-  [Certified Models by Hardware](./reference/certified-models-by-hardware.md),
-  [Model Certification](./explanation/model-certification.md), and
-  [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for more information.
+  you load any other model that fits the available GPU memory. Refer to
+  [Certified Models by Hardware](./reference/certified-models-by-hardware.md) and
+  [Model Certification](./explanation/model-certification.md) for more information.
 
 - Uploads models from the administrative workstation with the Palette CLI, which verifies checksums and supports
   resumable transfers. Refer to [Upload a Model](./how-to-guides/upload-a-model.md) for more information.

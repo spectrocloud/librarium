@@ -109,9 +109,6 @@ One row per model that the appliance knows about. Selecting a row opens the clie
 
 A model that served no requests in the period renders dimmed, with `—` in place of its figures.
 
-A row served by a registered external inference endpoint is labeled **External · egress** in the **Location** column,
-alongside rows for built-in frontier providers. The tab does not split those two sources further.
-
 ### Model Detail View
 
 | **Column**       | **Definition**                                            |
@@ -139,9 +136,7 @@ One row per registered client. Selecting a row opens the client's API tokens.
 | **$ Savings**               | The estimated amount avoided by serving on the appliance instead of a benchmark external model.                      |
 
 Local and external figures are paired rather than summed, because a local quota and an external spend cap are separate
-budgets. Hold the pointer over a paired cell to display which figure is which. **Egress** covers traffic to built-in
-frontier providers and to registered external inference endpoints together. To identify which registered endpoint served
-a request, open the **By Model** tab and look for the **External · egress** label.
+budgets. Hold the pointer over a paired cell to display which figure is which.
 
 The columns on this tab do not sort. To rank clients, export the table and sort it in a spreadsheet.
 

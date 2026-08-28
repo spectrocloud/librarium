@@ -161,5 +161,4 @@ To change which model handles requests that do not name a model explicitly, refe
 [Switch the Default Model](./set-the-default-model.md). To put a newer version or a different model on a node, refer to
 [Replace a Model](./replace-a-model.md). For why you would pin a model to some nodes and not others, refer to
 [Model Placement](../explanation/model-placement.md). To let a text-only model answer questions about images, refer to
-[Enable Vision Preprocessing](./enable-vision-preprocessing.md). To bring a model that is not in the certified catalog,
-refer to [Bring Your Own Model](./bring-your-own-model.md).
+[Enable Vision Preprocessing](./enable-vision-preprocessing.md).
