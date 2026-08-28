@@ -571,17 +571,16 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
    </Tabs>
 
 4. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
-   select the **Models** tab and **Deploy New Model** to open the **Deploy model** dialog. Open the **Model** drop-down
-   menu. Each entry renders as `<Name> · <N>+GPU · <size>GB`. The model you uploaded appears on the next catalog scan
-   after the upload finishes. The dialog then asks you to choose which nodes run the model. For that procedure, refer to
-   [Deploy a Model](./deploy-a-model.md).
+   select **Deploy model** to open the deploy panel, and open the model drop-down menu. On a single-node appliance, the
+   model appears in the drop-down on the next catalog scan after the upload finishes. On a multi-node appliance, the
+   drop-down shows the model's cluster-wide state: **Available** when the model is ready on every node and can be
+   deployed, **Pending** while the appliance is still synchronizing it across nodes, or **Missing** when the appliance
+   has the model's metadata but not yet its weights. Only an **Available** model can be deployed.
 
 ## Next Steps
 
-After the model is uploaded, the remaining tasks are day-two operations, covered by the existing how-to guides:
+After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:
 
-- **Manage the cluster**. [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md) indexes the Local UI
-  tasks; [Upgrade the Platform](./upgrade-the-platform.md) covers the appliance upgrade procedure.
 - **Deploy a model**. [Deploy a Model](./deploy-a-model.md).
 - **Generate an API token**. [Generate an API Token](./generate-an-api-token.md).
 - **Connect a coding tool**. [Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),

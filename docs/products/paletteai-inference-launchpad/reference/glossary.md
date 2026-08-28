@@ -277,9 +277,8 @@ meters and limits usage through quotas but does not gate access.
 ### Local UI
 
 The web console the appliance's edge OS serves on TCP port `5080` at `https://<node-ip>:5080`, used to create the
-[bond](#bond), link nodes, upload the [content bundle](#content-bundle), deploy the cluster, scale nodes, and apply a
-platform upgrade. Distinct from the [appliance console](#appliance-console) that the running cluster serves once
-installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md).
+[bond](#bond), link nodes, upload the [content bundle](#content-bundle), and deploy the cluster. Distinct from the
+[appliance console](#appliance-console) that the running cluster serves once installation completes.
 
 ## M
 
@@ -287,9 +286,7 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
 exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) and records its name, backend engine, and current
-serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted. Changing which model
-a [node](#node) serves uses a remove-then-deploy workflow. Refer to
-[Replace a Model](../how-to-guides/replace-a-model.md).
+serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted.
 
 ### Model Alias
 
@@ -317,26 +314,13 @@ with quotas through the [appliance console](#appliance-console); ModelGroupQuota
 
 {/* NEEDS REVIEW: ModelGroupQuota is an internal CRD name from the source glossary and does not appear in any shipped PAIIL doc. Confirm whether it should be exposed to readers before publishing. */}
 
-### Multimodal Preprocessing
-
-The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
-**Settings** > **Configurations**. Refer to
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
-
 ## N
 
 ### Node
 
-A single machine in the appliance's Kubernetes cluster. When you deploy a model, you choose which nodes run it. Most
-appliances are a single high-density GPU server, so they have a single node. On a multi-node appliance, mixed hardware
-and locally staged weights often mean that only some nodes can run a given model. Refer to
-[Model Placement](../explanation/model-placement.md).
-
-### Node Selection
-
-The deploy-time choice of which [nodes](#node) run a model. The appliance creates one inference engine per chosen node
-and exposes those engines through a single per-model endpoint. Refer to
-[Model Placement](../explanation/model-placement.md) and [Deploy a Model](../how-to-guides/deploy-a-model.md).
+A single machine in the appliance's Kubernetes cluster. When you deploy a model, the appliance places it automatically
+on the best-fit node, the node with the most free GPUs that still fit the model. Most appliances are a single
+high-density GPU server, so they have a single node.
 
 ## O
 
@@ -406,21 +390,19 @@ requirements, is one such precision.
 ### Quota
 
 A consumption limit attached to a [client](#client), enforced across three dimensions: requests (the number of calls),
-tokens (the number of tokens processed), and cost (the computed dollar spend). New limits are set per hour or per day.
-Day windows reset at midnight UTC, and hour windows reset at the top of each UTC hour. Existing per-second and
-per-minute limits remain enforced until you remove them. There is no monthly window. When a client reaches a limit, the
-appliance rejects further requests with HTTP `429 Too Many Requests` until the window resets or an operator raises the
-ceiling. **Quota Usage** shows point-in-time utilization. **By Client** shows consumption over a selected data window.
-Refer to [Manage Client Quotas](../how-to-guides/manage-client-quotas.md) and
-[View Client Usage](../how-to-guides/view-client-usage.md).
+tokens (the number of tokens processed), and cost (the computed dollar spend). Each dimension is measured over rolling
+windows of one second, one minute, one hour, and one day; there is no monthly window. When a client reaches a limit, the
+appliance rejects further requests with HTTP `429 Too Many Requests` until the window rolls over. Refer to
+[Manage Client Quotas](../how-to-guides/manage-client-quotas.md).
+
+{/* NEEDS REVIEW: per the current working assumption, quota enforcement is off by default behind a global switch. Confirm with an SME before publishing. */}
 
 ## R
 
 ### Rate Limit
 
-A [quota](#quota) on the number of requests per unit of time, such as 1,000 requests per hour. Rate limits are the
-request-dimension quotas. New limits use hour or day windows. A shorter per-second or per-minute request limit that is
-already configured still applies until you remove it.
+A [quota](#quota) on the number of requests per unit of time, such as 60 requests per minute. Rate limits are the
+request-dimension quotas enforced over short windows.
 
 ### Reasoning
 
@@ -468,7 +450,7 @@ are counted.
 
 The process of counting and tracking token consumption per request, per model, per [API token](#api-token), and per time
 window. The appliance meters input tokens, output tokens, and derived cost for every request, which is what enforces
-[quotas](#quota), gives operators usage visibility on the **Usage** page, and enables [chargeback](#chargeback).
+[quotas](#quota), gives operators usage visibility, and enables [chargeback](#chargeback).
 
 ## V
 
@@ -481,18 +463,6 @@ cluster presents one stable endpoint even as individual nodes fail over. Configu
 
 The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached optical
 drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not available.
-
-### Vision Model
-
-A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
-not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
-
-### Vision Preprocessing
-
-The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
-[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
-model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ### vLLM
 
