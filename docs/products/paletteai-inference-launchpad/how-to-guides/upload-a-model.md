@@ -104,11 +104,13 @@ The upload command accepts other flags, including password authentication (`--ss
 
 ## Verify the Model and Deploy It
 
-1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab and **Deploy New
-   Model** to open the **Deploy model** dialog.
+1. In the appliance console, select **Cluster** from the left main menu, then select **Deploy model** to open the deploy
+   panel.
 
-2. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
-   `<Name> · <N>+GPU · <size>GB`. The model appears on the next catalog scan after the upload finishes.
+2. Open the model drop-down menu and confirm the model you uploaded is listed. On a single-node appliance, the model
+   appears on the next catalog scan after the upload finishes. On a multi-node appliance, the catalog shows the model's
+   cluster-wide state: `Available` when the model is ready on every node, `Pending N/M` while nodes are still syncing,
+   or `Missing`. Only an `Available` model can be deployed.
 
 3. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
 
@@ -116,9 +118,5 @@ The upload command accepts other flags, including password authentication (`--ss
 
 - **Deploy the model:** Follow [Deploy a Model](./deploy-a-model.md) to deploy the uploaded model and verify it is
   serving.
-- **Replace a serving model:** Follow [Replace a Model](./replace-a-model.md) to remove the current model from a node
-  and deploy this one instead.
 - **Review the reference:** Refer to [Model Upload Reference](../reference/model-upload-reference.md) for the full
   command flags and metadata file fields.
-- **Enable vision preprocessing:** If you uploaded a vision model to use with a text-only model, follow
-  [Enable Vision Preprocessing](./enable-vision-preprocessing.md).
