@@ -578,10 +578,8 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
 ## Next Steps
 
-After the model is uploaded, the remaining tasks are day-two operations, covered by the existing how-to guides:
+After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:
 
-- **Manage the cluster**. [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md) indexes the Local UI
-  tasks; [Upgrade the Platform](./upgrade-the-platform.md) covers the appliance upgrade procedure.
 - **Deploy a model**. [Deploy a Model](./deploy-a-model.md).
 - **Generate an API token**. [Generate an API Token](./generate-an-api-token.md).
 - **Connect a coding tool**. [Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),
