@@ -22,6 +22,7 @@
     "https://dev.mysql.com/doc/.*$$",
     "^https://github.com.*$$",
     "^https://developers.redhat.com.*$$",
+    "^https://docs.redhat.com.*$$",
     "^https://www.intel.com.*$$",
     "^https://developer.hashicorp.com.*$$",
     "^https://www.packer.io.*$$",
