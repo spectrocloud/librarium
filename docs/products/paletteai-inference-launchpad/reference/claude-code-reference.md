@@ -51,4 +51,4 @@ If the token's quota is exhausted, the appliance returns an HTTP `429` response 
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md)
 - User and API token management {/* TODO: link once page exists */}
 - Token quotas and metering {/* TODO: link once page exists */}
-- Intelligent routing and tier maps {/* TODO: link once page exists */}
+- [Routing Behavior](../explanation/routing-behavior.md)
