@@ -97,5 +97,8 @@ session uses, run the `/status` command in Claude Code and review the **Anthropi
 ## Next Steps
 
 To look up any configuration value, refer to [Claude Code Configuration](../reference/claude-code-reference.md). To
-deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md).
-{/* TODO: add direction to the client and API token management, token quotas and metering, and intelligent routing pages once they exist */}
+deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md). To let the appliance answer
+questions about pasted screenshots, refer to [Enable Vision Preprocessing](./enable-vision-preprocessing.md). To
+understand how the Tier map and the semantic router pick a model for each request, refer to
+[Routing Behavior](../explanation/routing-behavior.md).
+{/* TODO: add direction to the client and API token management, and token quotas and metering pages once they exist */}

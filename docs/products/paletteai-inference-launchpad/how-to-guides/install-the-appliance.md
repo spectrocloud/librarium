@@ -69,8 +69,8 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
   (recommended) or Local UI after the node is on the network.
 - **Model metadata (`metadata.yaml`, a few KB)**. one file per model you intend to deploy. It is a separate download,
   not part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from
-  Hugging Face and upload them to the appliance. Download it from Artifact Studio, or from the `models/` directory of
-  the `launchpad-ai` repository, for example `models/glm-5.2/1.0.0/metadata.yaml`.
+  Hugging Face and upload them to the appliance. For a certified model, download it from Artifact Studio. For a model
+  that is not certified, author the file. Refer to [Bring Your Own Model](./bring-your-own-model.md).
 
 ## Install the OS
 
@@ -506,7 +506,8 @@ or later.
 For the full flag list, the metadata file schema, the on-appliance layout, and the deploy-catalog states, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
-1. Download the model metadata (`metadata.yaml`) from Artifact Studio.
+1. Download the model metadata (`metadata.yaml`) from Artifact Studio. For a model that is not certified, author the
+   file instead. Refer to [Bring Your Own Model](./bring-your-own-model.md).
 2. On the jumpbox, download the model to a writable local directory, for example `/home/ubuntu/downloads`. Do not use an
    NFS share, which may be mounted read-only. The model lands at `<model-dir>/<name>/<version>/`.
 
@@ -571,16 +572,17 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
    </Tabs>
 
 4. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
-   select **Deploy model** to open the deploy panel, and open the model drop-down menu. On a single-node appliance, the
-   model appears in the drop-down on the next catalog scan after the upload finishes. On a multi-node appliance, the
-   drop-down shows the model's cluster-wide state: **Available** when the model is ready on every node and can be
-   deployed, **Pending** while the appliance is still synchronizing it across nodes, or **Missing** when the appliance
-   has the model's metadata but not yet its weights. Only an **Available** model can be deployed.
+   select the **Models** tab and **Deploy New Model** to open the **Deploy model** dialog. Open the **Model** drop-down
+   menu. Each entry renders as `<Name> · <N>+GPU · <size>GB`. The model you uploaded appears on the next catalog scan
+   after the upload finishes. The dialog then asks you to choose which nodes run the model. For that procedure, refer to
+   [Deploy a Model](./deploy-a-model.md).
 
 ## Next Steps
 
-After the model is uploaded, the remaining tasks are day-two product usage, covered by the existing how-to guides:
+After the model is uploaded, the remaining tasks are day-two operations, covered by the existing how-to guides:
 
+- **Manage the cluster**. [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md) indexes the Local UI
+  tasks; [Upgrade the Platform](./upgrade-the-platform.md) covers the appliance upgrade procedure.
 - **Deploy a model**. [Deploy a Model](./deploy-a-model.md).
 - **Generate an API token**. [Generate an API Token](./generate-an-api-token.md).
 - **Connect a coding tool**. [Claude Code](./use-claude-code.md), [Cursor](./use-cursor.md),
