@@ -78,7 +78,8 @@ gateway continues to handle routing, [token metering](#token-metering), quota co
 
 A model that Spectro Cloud has validated to run correctly on the listed GPU configuration, based on its own testing
 rather than public benchmarks. Refer to [Model Certification](../explanation/model-certification.md) and
-[Certified Models by Hardware](./certified-models-by-hardware.md).
+[Certified Models by Hardware](./certified-models-by-hardware.md). To bring a model that is not certified, refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
 
 ### Chargeback
 
@@ -87,6 +88,13 @@ infrastructure costs back to the teams or workloads that consumed them. Per-clie
 makes chargeback possible.
 
 {/* NEEDS REVIEW: chargeback is defined in the source glossary but does not yet appear in any shipped PAIIL doc. Confirm the term and framing with an SME before publishing. */}
+
+### Choose per Request
+
+The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
+[semantic routing](#semantic-routing) card instead of settling the request in the Tier map. The alias contributes its
+Thinking directive to whichever model the semantic router picks. Refer to
+[Routing Behavior](../explanation/routing-behavior.md).
 
 ### Client
 
@@ -114,6 +122,18 @@ An AI development tool, such as Claude Code, Cursor, OpenAI Codex, or OpenCode, 
 Coding assistants are the primary workloads the appliance is tuned for; each one connects to the appliance as a
 [client](#client) instead of to a cloud provider.
 
+### Complex
+
+The [semantic routing](#semantic-routing) band applied to a prompt whose complexity score reaches the
+[Complexity threshold](#complexity-threshold). Refer to [Routing Behavior](../explanation/routing-behavior.md).
+
+### Complexity Threshold
+
+The boundary between the [Simple](#simple) band and the [Complex](#complex) band on the
+[semantic routing](#semantic-routing) card. The console shows the value as a percentage. `0` is the simplest prompt and
+`1` is the most complex, so a lower threshold sends more traffic to the **Complex** rule. Refer to
+[Routing Behavior](../explanation/routing-behavior.md).
+
 ### Content Bundle
 
 A compressed archive, larger than 20 GB, containing the appliance's platform and application software. Operators upload
@@ -128,6 +148,14 @@ Different models have different context window sizes.
 
 ## D
 
+### Decision Recording
+
+An operator-tuning feature that writes one CSV row per classification the [semantic router](#semantic-routing) makes, so
+the recorded prompts can be used to tune the categories and the [Complexity threshold](#complexity-threshold) against
+real traffic. The switch is off by default, survives a restart, and the console offers **Download** and **Delete**
+actions on the CSV. Refer to
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording).
+
 ### Default Model
 
 The model the appliance routes a request to when the request does not name a specific model. Refer to
@@ -137,9 +165,10 @@ The model the appliance routes a request to when the request does not name a spe
 
 ### Egress
 
-A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model). Egress
-denies by default: a new client cannot reach external providers until an operator enables it. Refer to
-[Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model) or to a
+registered [external inference endpoint](#external-inference-endpoint). Egress denies by default: a new client cannot
+reach external providers or registered endpoints until an operator enables it. Usage labels this combined traffic
+**Egress**. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Embedding
 
@@ -152,7 +181,21 @@ inputs by meaning rather than by exact wording. The appliance uses embeddings in
 The network location, expressed as a URL path, at which the appliance exposes a served model or an API. Each loaded
 model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at paths such as `/v1/chat/completions`.
 
+### External Inference Endpoint
+
+An OpenAI-compatible inference host registered on the appliance as an appliance-wide [egress](#egress) target. The host
+can be a hosted router, a partner API, a second appliance, or an in-house inference server. After you register it, its
+models appear in a client's routing picker, and traffic to it is metered as egress. Refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+
 ## F
+
+### Fallback for Unmatched Requests
+
+The box-wide model that answers any request no other control settles: a request no [Tier map](#tier-map) row matches, a
+request the [semantic router](#semantic-routing) finds no rule for, or a request that names a model the appliance does
+not serve. When the fallback is off, the appliance returns HTTP `404` for these requests. Refer to
+[Switch the Default Model](../how-to-guides/set-the-default-model.md).
 
 ### FIPS
 
@@ -236,6 +279,14 @@ The key-value cache that an [inference engine](#inference-engine) keeps in GPU a
 response, holding the intermediate state for the tokens processed so far. Its size drives much of the appliance's memory
 and fast-storage requirements.
 
+### KV Cache Offloading
+
+A memory-management strategy in which an [inference engine](#inference-engine) keeps part of the [KV cache](#kv-cache)
+outside GPU memory, in host RAM or on fast local storage, and swaps it back to the GPU when the tokens it holds are
+needed again. Offloading lets a model serve longer contexts, or more concurrent requests, than would fit in GPU memory
+alone. Refer to
+[Review or Change an Engine Argument That Uses JSON](../how-to-guides/deploy-a-model.md#review-or-change-an-engine-argument-that-uses-json).
+
 ## L
 
 ### Large Language Model (LLM)
@@ -277,8 +328,9 @@ meters and limits usage through quotas but does not gate access.
 ### Local UI
 
 The web console the appliance's edge OS serves on TCP port `5080` at `https://<node-ip>:5080`, used to create the
-[bond](#bond), link nodes, upload the [content bundle](#content-bundle), and deploy the cluster. Distinct from the
-[appliance console](#appliance-console) that the running cluster serves once installation completes.
+[bond](#bond), link nodes, upload the [content bundle](#content-bundle), deploy the cluster, scale nodes, and apply a
+platform upgrade. Distinct from the [appliance console](#appliance-console) that the running cluster serves once
+installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guides/manage-cluster-infrastructure.md).
 
 ## M
 
@@ -286,7 +338,9 @@ The web console the appliance's edge OS serves on TCP port `5080` at `https://<n
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
 exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) and records its name, backend engine, and current
-serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted.
+serving status. The appliance turns a model off when a [quota](#quota) that covers it is exhausted. Changing which model
+a [node](#node) serves uses a remove-then-deploy workflow. Refer to
+[Replace a Model](../how-to-guides/replace-a-model.md).
 
 ### Model Alias
 
@@ -297,8 +351,10 @@ collides with their own catalog.
 ### Model Metadata
 
 A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
-from Hugging Face and upload them to the appliance. The metadata is downloaded from Artifact Studio, or from the
-`launchpad-ai` repository, alongside the ISO and content bundle.
+from Hugging Face and upload them to the appliance. For a [certified model](#certified-model), the metadata is
+downloaded from Artifact Studio. For a model you bring yourself, you author the file. Refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
+[Model Upload Reference](./model-upload-reference.md#model-metadata-file).
 
 ### Model Weights
 
@@ -314,13 +370,26 @@ with quotas through the [appliance console](#appliance-console); ModelGroupQuota
 
 {/* NEEDS REVIEW: ModelGroupQuota is an internal CRD name from the source glossary and does not appear in any shipped PAIIL doc. Confirm whether it should be exposed to readers before publishing. */}
 
+### Multimodal Preprocessing
+
+The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
+**Settings** > **Configurations**. Refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+
 ## N
 
 ### Node
 
-A single machine in the appliance's Kubernetes cluster. When you deploy a model, the appliance places it automatically
-on the best-fit node, the node with the most free GPUs that still fit the model. Most appliances are a single
-high-density GPU server, so they have a single node.
+A single machine in the appliance's Kubernetes cluster. When you deploy a model, you choose which nodes run it. Most
+appliances are a single high-density GPU server, so they have a single node. On a multi-node appliance, mixed hardware
+and locally staged weights often mean that only some nodes can run a given model. Refer to
+[Model Placement](../explanation/model-placement.md).
+
+### Node Selection
+
+The deploy-time choice of which [nodes](#node) run a model. The appliance creates one inference engine per chosen node
+and exposes those engines through a single per-model endpoint. Refer to
+[Model Placement](../explanation/model-placement.md) and [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 ## O
 
@@ -390,19 +459,21 @@ requirements, is one such precision.
 ### Quota
 
 A consumption limit attached to a [client](#client), enforced across three dimensions: requests (the number of calls),
-tokens (the number of tokens processed), and cost (the computed dollar spend). Each dimension is measured over rolling
-windows of one second, one minute, one hour, and one day; there is no monthly window. When a client reaches a limit, the
-appliance rejects further requests with HTTP `429 Too Many Requests` until the window rolls over. Refer to
-[Manage Client Quotas](../how-to-guides/manage-client-quotas.md).
-
-{/* NEEDS REVIEW: per the current working assumption, quota enforcement is off by default behind a global switch. Confirm with an SME before publishing. */}
+tokens (the number of tokens processed), and cost (the computed dollar spend). New limits are set per hour or per day.
+Day windows reset at midnight UTC, and hour windows reset at the top of each UTC hour. Existing per-second and
+per-minute limits remain enforced until you remove them. There is no monthly window. When a client reaches a limit, the
+appliance rejects further requests with HTTP `429 Too Many Requests` until the window resets or an operator raises the
+ceiling. **Quota Usage** shows point-in-time utilization. **By Client** shows consumption over a selected data window.
+Refer to [Manage Client Quotas](../how-to-guides/manage-client-quotas.md) and
+[View Client Usage](../how-to-guides/view-client-usage.md).
 
 ## R
 
 ### Rate Limit
 
-A [quota](#quota) on the number of requests per unit of time, such as 60 requests per minute. Rate limits are the
-request-dimension quotas enforced over short windows.
+A [quota](#quota) on the number of requests per unit of time, such as 1,000 requests per hour. Rate limits are the
+request-dimension quotas. New limits use hour or day windows. A shorter per-second or per-minute request limit that is
+already configured still applies until you remove it.
 
 ### Reasoning
 
@@ -411,6 +482,24 @@ does this is called a reasoning model, and the depth of that effort can sometime
 [tokens](#token-and-tokenization) like any other output.
 
 ## S
+
+### Semantic Routing
+
+The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The router
+keys every rule on two axes: a category the appliance derives for the prompt, such as **Coding** or **Everything else**,
+and a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex). The card lives on the box-wide
+**Semantic routing** card under **Settings** > **Configurations**, and on each client's **Routing** section for
+per-client overrides. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md).
+
+<!-- vale off -->
+
+### Simple
+
+The [semantic routing](#semantic-routing) band applied to a prompt whose complexity score is below the
+[Complexity threshold](#complexity-threshold). Refer to [Routing Behavior](../explanation/routing-behavior.md).
+
+<!-- vale on -->
 
 ### Slim ISO
 
@@ -435,9 +524,12 @@ Defense deployments.
 
 ### Tier Map
 
-A routing overlay that governs which model handles a client's requests by default, mapping an incoming model name or
-alias to a served model. It selects the default target for a client's requests rather than acting as a hard access gate
-for local models. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A routing overlay that governs which model handles a client's requests when the request names a model by name or alias.
+The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. Each
+row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
+[Choose per Request](#choose-per-request) hands the alias to the semantic router instead of settling it in the Tier map.
+Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Token and Tokenization
 
@@ -450,7 +542,7 @@ are counted.
 
 The process of counting and tracking token consumption per request, per model, per [API token](#api-token), and per time
 window. The appliance meters input tokens, output tokens, and derived cost for every request, which is what enforces
-[quotas](#quota), gives operators usage visibility, and enables [chargeback](#chargeback).
+[quotas](#quota), gives operators usage visibility on the **Usage** page, and enables [chargeback](#chargeback).
 
 ## V
 
@@ -463,6 +555,18 @@ cluster presents one stable endpoint even as individual nodes fail over. Configu
 
 The mechanism by which a server's [BMC](#bmc) presents a remote ISO to the host as if it were a locally attached optical
 drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#slim-iso) when USB boot is not available.
+
+### Vision Model
+
+A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
+not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+
+### Vision Preprocessing
+
+The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
+[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
+model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ### vLLM
 

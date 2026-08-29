@@ -8,6 +8,70 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
+## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
+
+PaletteAI Inference Launchpad 1.1.3 broadens what a single appliance can serve. Operators pick where each model runs and
+let a semantic router pick which model handles each request. The appliance now takes image inputs, bursts to external
+endpoints, and accepts models outside the certified catalog. Day-two operations gain in-place model replacement, and
+1.1.3 ships the appliance's first security hardening pass.
+
+### New Features
+
+- **Node-targeted model deployment.** You can now select which nodes a model runs on when deploying to a multi-node
+  cluster. Engines are created only on selected nodes, and unselected nodes receive none. Refer to
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+
+- **Bring Your Own Model (BYOM).** You can now deploy models that are not part of the certified model catalog. Models
+  deployed through the BYOM workflow serve inference requests the same way certified models do, but are not covered by
+  Spectro Cloud's certification guarantees. Refer to [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for
+  more information.
+
+- **Vision preprocessing for text-only models.** You can now colocate a vision sidecar model on the same GPUs as a
+  text-only flagship using time-slicing. When a request contains an image, the gateway routes it to the vision model,
+  which returns a text description that replaces the image before the flagship processes it. Refer to
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) and
+  [Enable Vision Preprocessing](./how-to-guides/enable-vision-preprocessing.md) for more information.
+
+- **Register an external inference endpoint.** You can now register any OpenAI-compatible inference host as a box-wide
+  egress target, then authorize each client and cap its daily spend. Traffic to a registered endpoint is metered as
+  egress. Refer to [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md)
+  for more information.
+
+<!-- vale off -->
+
+- **Semantic routing.** The appliance now routes every request through an on-box semantic router that picks a model from
+  a category, **Coding** or **Everything else**, and a complexity band, **Simple** or **Complex**. The Tier map and the
+  **Semantic routing** card remain separate controls in the console, and both accept per-client overrides. Refer to
+  [Routing Behavior](./explanation/routing-behavior.md) and
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md) for more information.
+
+<!-- vale on -->
+
+- **Typed editor for JSON-valued engine arguments.** When an engine argument's value is a JSON document, the **Deploy
+  model** panel now shows a typed editor with live validation, per-field type badges, byte sizes in readable units, and
+  a one-select fix when a value is a quoted boolean or a quoted number. KV cache offloading is the first engine argument
+  that uses this editor. Refer to
+  [Review or Change an Engine Argument That Uses JSON](./how-to-guides/deploy-a-model.md#review-or-change-an-engine-argument-that-uses-json)
+  for more information.
+
+### Improvements
+
+- **Model upgrade through replacement.** You can now upgrade a deployed model's weights or swap it for a different model
+  version without a full redeployment. The platform deploys the new model first, waits for it to reach a ready state,
+  and then removes the old model. Refer to [Replace a Model](./how-to-guides/replace-a-model.md) for more information.
+
+- **Enhanced usage reporting and export.** The **Usage** view now supports flexible date filtering and CSV export for
+  token consumption, cost, and client-level breakdowns. Refer to [View Token Usage](./how-to-guides/view-token-usage.md)
+  and [View Client Usage](./how-to-guides/view-client-usage.md) for more information.
+
+- **Security hardening.** This release addresses findings from a full security scan covering the operating system,
+  Kubernetes, Dynamic Application Security Testing (DAST), Static Application Security Testing (SAST), penetration
+  testing, and the Software Bill of Materials.
+
+### Upgrade
+
+To upgrade a running appliance to 1.1.3, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+
 ## Version 1.0.0 - July 21, 2026 {#version-1-0-0}
 
 PaletteAI Inference Launchpad 1.0.0 is the first release. It is a standalone, turnkey AI appliance that turns your own
@@ -29,20 +93,28 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   installer and a guided cluster wizard in the node Local UI. This release is tuned for a single-node topology. Refer to
   [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
 
+- Upgrades the platform from Local UI by uploading a newer content bundle from Artifact Studio and applying **Update**
+  on the cluster configuration page. Refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md) for more
+  information.
+
 - Runs on a single high-density GPU server with NVIDIA or AMD GPUs, NVMe storage, and bonded NICs, sized to the target
   model from a baseline of 4 GPUs. Refer to [Suggested Hardware](./reference/hardware-requirements.md) for more
   information.
 
 - Certifies a focused set of LLMs for coding-assistant use, GLM 5.2, DeepSeek v4 Pro, Kimi 2.7, and Gemma 4, and lets
-  you load any other model that fits the available GPU memory. Refer to
-  [Certified Models by Hardware](./reference/certified-models-by-hardware.md) and
-  [Model Certification](./explanation/model-certification.md) for more information.
+  you bring your own model if it fits the available GPU memory. Refer to
+  [Certified Models by Hardware](./reference/certified-models-by-hardware.md),
+  [Model Certification](./explanation/model-certification.md), and
+  [Bring Your Own Model](./how-to-guides/bring-your-own-model.md) for more information.
 
 - Uploads models from the administrative workstation with the Palette CLI, which verifies checksums and supports
   resumable transfers. Refer to [Upload a Model](./how-to-guides/upload-a-model.md) for more information.
 
-- Deploys a model to the cluster and places it on the best-fit node automatically, after a guarded preview, gate,
-  provision, and smoke-test sequence. Refer to [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+- Deploys a model to the cluster after a guarded preview, gate, provision, and smoke-test sequence. Refer to
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+
+- Replaces a serving model by removing it from a node and then deploying a newer version or a different model. Refer to
+  [Replace a Model](./how-to-guides/replace-a-model.md) for more information.
 
 - Lets you set a default model that handles requests no routing rule matches, and rebuilds the router in place when you
   change it, without a gateway restart. Refer to [Set the Default Model](./how-to-guides/set-the-default-model.md) for
@@ -56,16 +128,18 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
   [Clients and Quotas](./explanation/clients-and-quotas.md) and [Create a Client](./how-to-guides/create-a-client.md)
   for more information.
 
-- Enforces per-client quotas across requests, tokens, and cost over one-second, one-minute, one-hour, and one-day
-  windows, and returns HTTP `429` when a limit is reached. Refer to
+- Enforces per-client quotas across requests, tokens, and cost over hour and day windows, and returns HTTP `429` when a
+  limit is reached. Existing per-second and per-minute limits remain enforced. Refer to
   [Manage Client Quotas](./how-to-guides/manage-client-quotas.md) for more information.
 
 - Grants every client access to all local models, and can burst to external frontier models. Refer to
   [Manage Client Model Access](./how-to-guides/manage-client-model-access.md) for more information.
 
-- Reports per-client usage and lets you revoke a token or delete a client at any time. Refer to
-  [View Client Usage](./how-to-guides/view-client-usage.md) and
-  [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
+- Reports quota utilization and historical consumption on the **Usage** page, including a **Quota Usage** tab, 24-hour,
+  7-day, and 30-day data windows, and per-model and per-client breakdowns. Lets you raise a ceiling without zeroing
+  usage, and revoke a token or delete a client at any time. Refer to
+  [View Token Usage](./how-to-guides/view-token-usage.md), [View Client Usage](./how-to-guides/view-client-usage.md),
+  and [Revoke or Delete a Client](./how-to-guides/revoke-or-delete-a-client.md) for more information.
 
 - Computes estimated savings by comparing locally served token volume against a configurable frontier provider reference
   rate.
