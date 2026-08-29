@@ -233,6 +233,14 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
   Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1020 -->
+
+- PaletteAI VM Launchpad now supports a new Slim ISO + Content Bundle install path that decouples appliance storage from
+  VM storage. The appliance boots on its own storage, and administrators attach a customer-chosen CSI for VM workloads
+  after the install completes. Portworx SDS and Portworx with Pure Array are validated for 4.10.0. Refer to
+  [Storage](../vm-management/vm-launchpad/infrastructure/storage.md) for the list of validated providers and
+  [Install VM Launchpad](../vm-management/vm-launchpad/install.md) for the install procedure.
+
 ### Docs and Education
 
 ### Packs
