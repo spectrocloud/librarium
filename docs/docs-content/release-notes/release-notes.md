@@ -233,6 +233,53 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
   Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
+
+- The CDI Upload Proxy and KubeVirt Export Proxy are now exposed on the appliance so that `virtctl image-upload`
+  transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
+  only from inside the cluster.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->
+
+- The appliance audit trail now records a broader set of virtual machine lifecycle events, expanding the coverage
+  available to audit and compliance teams. Refer to [Audit Trail](../vm-management/vm-launchpad/system/audit.md) for the
+  full list of recorded events.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-987 -->
+
+- Fixed an issue in the **Snapshot Policies** creation and edit modal that caused the **Add label** action to silently
+  overwrite an existing label value after a middle label row was deleted. New label rows now receive unique keys, and
+  existing values are preserved.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1007 -->
+
+- Fixed an issue that caused hotplug disk attachments to stall on Portworx-backed clusters. The `DataVolume` for the
+  hotplug disk previously remained in `ImportScheduled` when other virtual machines in the same cluster used only
+  container disks. Hotplug attachment now proceeds correctly in this scenario.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1053 -->
+
+- Clarified access control for the **KubeVirt Configuration** page. The page is available only to users who hold
+  cluster-admin privileges and who authenticate through OIDC. Refer to
+  [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1060 -->
+
+- Fixed an issue that caused the VMO Manager dashboard to under-report node CPU usage by up to 19 percentage points when
+  the appliance ran with an external metrics backend. Reported node CPU figures now match the values in the metrics
+  store.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
+
+- Fixed an issue in the virtual machine creation wizard that caused the default network interface boot-order field to be
+  omitted from new virtual machines when UEFI Boot, Secure Boot, TPM Device, and Persistent TPM were all enabled. The
+  wizard now sets `bootOrder=2` on the network interface for this firmware configuration.
+
 ### Docs and Education
 
 ### Packs
