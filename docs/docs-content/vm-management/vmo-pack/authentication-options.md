@@ -122,7 +122,7 @@ realm before you select this option. Access to the Keycloak admin console is man
 | `oidc.enabled`                       | `true`                                                                       |
 | `oidc.issuerUrl`                     | `https://{{ .spectro.var.PLATFORM_IP }}/iam/realms/vmo`                      |
 | `oidc.clientSecret`                  | `{{ .spectro.var.OIDC_CLIENT_SECRET }}`                                      |
-| `oidc.callbackUrl`                   | `https://{{ .spectro.var.PLATFORM_IP }}/oidc/callback`                       |
+| `oidc.callbackUrl`                   | `https://{{ .spectro.var.PLATFORM_IP }}/auth/callback`                       |
 | `palette.managedOidc`                | `false`                                                                      |
 | `identity.keycloakAdminClientSecret` | `{{ .spectro.var.KEYCLOAK_ADMIN_CLIENT_SECRET }}`                            |
 | `platform.baseUrl`                   | `https://{{ .spectro.var.PLATFORM_IP }}`                                     |
@@ -167,7 +167,7 @@ You must set the following parameters in the pack YAML yourself, because they ar
 | `oidc.issuerUrl`    | The issuer URL of your IdP. For example, `https://login.microsoftonline.com/<tenant>/v2.0`.                               |
 | `oidc.clientId`     | The client ID registered with your IdP. The pack default is `k8s-oidc`.                                                   |
 | `oidc.clientSecret` | The client secret issued by your IdP. The pack renders this value into a Kubernetes Secret.                               |
-| `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/oidc/callback` is not reachable. |
+| `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/auth/callback` is not reachable. |
 | `platform.baseUrl`  | The URL that users reach the UI at. Required in **Direct** mode.                                                          |
 
 Refer to [Configure External OIDC](./configure-external-oidc.md) for a complete procedure that uses Okta as the example

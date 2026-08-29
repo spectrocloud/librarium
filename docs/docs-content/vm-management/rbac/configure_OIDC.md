@@ -100,11 +100,11 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
      ```
 
      When the `EXTERNAL-IP` column shows an IP address, construct the callback URL as
-     `https://<external-ip>/oidc/callback` and set it as `oidc.callbackUrl` in the VMO pack values. Use the same URL
+     `https://<external-ip>/auth/callback` and set it as `oidc.callbackUrl` in the VMO pack values. Use the same URL
      when you register the sign-in redirect URI on your IdP at step 12.
 
    - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow, and the callback URL is constructed from
-     the cluster's tenant apps proxy URL. Retrieve the URL from the deployed VMO pack and append `/oidc/callback` to
+     the cluster's tenant apps proxy URL. Retrieve the URL from the deployed VMO pack and append `/auth/callback` to
      form the callback URL.
 
      ```shell
@@ -113,7 +113,7 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 
      The command returns two lines. Use the line that carries a URL, which is the tenant apps proxy URL of the form
      `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`. The other line is an empty duplicate field
-     elsewhere in the pack manifest. Append `/oidc/callback` to the URL to form the callback URL.
+     elsewhere in the pack manifest. Append `/auth/callback` to the URL to form the callback URL.
 
    Save the resulting callback URL for the sign-in redirect step.
 
@@ -125,7 +125,7 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
     for further instructions.
 
 12. Update the **Sign-in redirect URIs** field in your IdP. Add the callback URL from step 9. For example,
-    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/oidc/callback`. This is the URI to
+    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to
     which the IdP redirects users after successful authentication.
 
 ## Configure Custom OIDC for VM Migration Assistant

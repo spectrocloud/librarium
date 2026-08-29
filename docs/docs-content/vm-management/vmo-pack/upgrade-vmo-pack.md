@@ -45,7 +45,7 @@ versions, and how to perform the upgrade.
 | OIDC configuration path | `appConfig.auth.oidc.*`                                           | `oidc.*` on the `vmo-manager` sub-chart                                                                   |
 | Client secret storage   | Rendered into a ConfigMap                                         | Rendered into a Kubernetes Secret                                                                         |
 | Scopes requested        | A fixed set of `openid`, `email`, `profile`, and `offline_access` | `openid`, `profile`, `email`, and `groups` by default. The `groups` scope is always requested.            |
-| Callback URL            | Always `<consoleBaseAddress>/oidc/callback`                       | `<baseUrl>/oidc/callback` by default, with `oidc.callbackUrl` available as an override                    |
+| Callback URL            | Always `<consoleBaseAddress>/auth/callback`                       | `<baseUrl>/auth/callback` by default, with `oidc.callbackUrl` available as an override                    |
 | Groups claim            | Not forwarded to Kubernetes, because the scope was not requested  | Requested by default and forwarded to Kubernetes, which enables group-based RBAC                          |
 | Local admin fallback    | Not available                                                     | Available as a Day 0 bootstrap path, turned off by default                                                |
 | IdP choice              | Palette-managed OIDC, configured per cluster                      | Palette-managed OIDC by default, with Local Auth, Keycloak, and External OIDC available as preset options |

@@ -80,10 +80,16 @@ names differ.
 
 :::info
 
-When the IdP is Keycloak, VMO also requires the **Group Membership** mapper on the realm's `profile` client scope.
-Without it, VMO Manager receives an empty `groups` claim, and every `ClusterRoleBinding` with a `Group` subject silently
-fails. Palette Console SSO and Palette-managed Kubernetes clusters do not require this mapper, because they do not
-consume the `groups` claim directly. Refer to
+When the IdP is Keycloak, VMO requires two realm-side configurations for group-based RBAC to work end-to-end:
+
+- **A `groups` client scope on the realm.** VMO force-appends the `groups` scope to every OIDC authentication request,
+  regardless of what is set in `oidc.scopes` on the pack. If the realm does not recognize `groups` as a client scope,
+  Keycloak returns `invalid_scope` and sign-in fails.
+- **A Group Membership mapper on the `profile` client scope.** Without it, VMO Manager receives an empty `groups` claim,
+  and every `ClusterRoleBinding` with a `Group` subject silently fails.
+
+Palette Console SSO and Palette-managed Kubernetes clusters do not require the mapper, because they do not consume the
+`groups` claim directly. Refer to
 [Sync Keycloak Groups and Palette Teams](../../user-management/saml-sso/palette-sso-with-keycloak.md#sync-keycloak-groups-and-palette-teams)
 for the mapper configuration, including the four token-inclusion toggles that VMO requires.
 
@@ -97,8 +103,8 @@ for the mapper configuration, including the four token-inclusion toggles that VM
 
    Without the **Refresh Token** grant type, users are prompted to sign in again when the access token expires.
 
-4. Add the VMO callback URL to the **Sign-in redirect URIs** field. The callback URL is `<baseUrl>/oidc/callback`, where
-   `<baseUrl>` is the public URL that users reach the VMO UI at. For example, `https://vmo.example.com/oidc/callback`.
+4. Add the VMO callback URL to the **Sign-in redirect URIs** field. The callback URL is `<baseUrl>/auth/callback`, where
+   `<baseUrl>` is the public URL that users reach the VMO UI at. For example, `https://vmo.example.com/auth/callback`.
 
    When VMO is reached through the Palette tenant apps proxy, the base URL includes the tenant app path prefix. Enter
    the exact URL that appears in the browser address bar at sign-in time.
@@ -157,18 +163,17 @@ belong to a group whose name matches the filter for that group to appear in the 
            clientId: "<your-client-id>"
            clientSecret: "<your-client-secret>"
            # Optional. Defaults to "openid,profile,email,groups". The pack
-           # force-appends "groups" if you omit it, so removing it here has
-           # no effect against Okta or Palette Hubble. Keycloak is the
-           # exception: it rejects "groups" as an unknown scope. For
-           # Keycloak, set this to "openid,profile,email" and configure the
-           # Group Membership mapper on the realm's profile client scope so
-           # the groups claim still reaches the token.
+           # force-appends "groups" if you omit it, so removing it from this
+           # list has no effect on the outbound OIDC request against any IdP.
+           # When the IdP is Keycloak, see the Keycloak admonition above for
+           # the realm-side prerequisites (the "groups" client scope plus the
+           # Group Membership mapper).
            scopes: ""
            # Set when the OIDC callback needs to go through an external proxy
            # such as the Palette tenant apps proxy. Obtain the callback URL
            # from the deployed VMO Manager pack after the profile deploys; the
            # UI does not surface this URL directly. Defaults to
-           # <baseUrl>/oidc/callback when left empty.
+           # <baseUrl>/auth/callback when left empty.
            callbackUrl: ""
            # Set to match the API server --oidc-username-prefix flag, such as "oidc:".
            k8sUsernamePrefix: ""
@@ -375,7 +380,7 @@ Restore the binding to grant access again.
 
 ### Scenario - The IdP Returns an Invalid Redirect URI Error
 
-The sign-in redirect URI configured in the IdP application does not exactly match `<baseUrl>/oidc/callback`. Compare the
+The sign-in redirect URI configured in the IdP application does not exactly match `<baseUrl>/auth/callback`. Compare the
 configured value with the browser address bar during sign-in, including the scheme, the host, and any tenant app path
 prefix.
 
