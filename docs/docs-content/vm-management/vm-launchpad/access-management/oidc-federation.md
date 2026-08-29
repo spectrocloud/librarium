@@ -97,8 +97,11 @@ value and displays it when you add the provider.
    https://<platform-ip>/iam/realms/vmo/broker/<alias>/endpoint
    ```
 
-   The `<alias>` segment reflects the **Alias** field on the same form. Set the alias before you copy the URI, because
-   changing the alias later changes the redirect URI and breaks the provider configuration.
+   The `<alias>` segment reflects the **Alias** field, which appears below the URI on the same form. Set the alias
+   before you copy the URI, because changing the alias later changes the redirect URI and breaks the provider
+   configuration.
+
+   ![The Keycloak Add OpenID Connect provider form. The Redirect URI field at the top and the Alias field directly below it are highlighted; the URI ends in the alias value.](/vm-management_vm-launchpad_access-management_oidc-federation_keycloak-redirect-uri.webp)
 
 Leave this page open. You return to it after you create the application in your identity provider.
 
