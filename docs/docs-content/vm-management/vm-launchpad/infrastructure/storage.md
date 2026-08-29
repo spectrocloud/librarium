@@ -27,17 +27,6 @@ The default appliance backend is Piraeus/LINSTOR, which provides:
 
 You can use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
 
-### Validated Providers for VM Storage in 4.10.0
-
-In 4.10.0, the following providers are validated for VM storage on PaletteAI VM Launchpad:
-
-- Portworx SDS
-- Portworx with Pure Array
-
-Both are supported when you install the appliance using the Slim ISO and Content Bundle path, which lets the appliance
-boot on its own storage and administrators attach the customer-chosen CSI for VM workloads afterward. Refer to
-[Install VM Launchpad](../install.md) for the install procedure.
-
 ## StorageClasses
 
 StorageClasses define how VMO provisions PersistentVolumeClaims (PVCs). From **Infrastructure** > **Storage**, you can
