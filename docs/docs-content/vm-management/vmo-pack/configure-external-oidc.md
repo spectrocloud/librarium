@@ -131,6 +131,11 @@ belong to a group whose name matches the filter for that group to appear in the 
    This sets `oidc.enabled` to `true`, sets `palette.managedOidc` to `false`, and turns local authentication off. Refer
    to [Authentication Options](./authentication-options.md#external-oidc) for the complete list of values applied.
 
+   If the save fails with an error naming undefined `spectro.var.*` variables, define the missing profile variables and
+   select the preset again. Refer to
+   [Preset Save Fails with Undefined Variables](./authentication-options.md#scenario---preset-save-fails-with-undefined-variables)
+   for the full list.
+
 5. Select **Values** and enter the parameters that are specific to your IdP.
 
    ```yaml
@@ -193,14 +198,111 @@ charts:
       existingSecret: "vmo-manager-oidc"
 ```
 
+### Configure Non-Federated Kubernetes API Servers
+
+If the cluster's Kubernetes API server is not federated with the same OIDC issuer that VMO uses, cluster-wide Settings
+pages return `403 forbidden: cluster-wide K8s access required for this Setting`, and the Settings menu is hidden from
+the sidebar. VMO passes the user's ID token as an `Authorization: Bearer` header to the Kubernetes API server, and the
+API server rejects the token when its OIDC flags do not match.
+
+The recommended fix is to configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` flags that
+match the OIDC application VMO uses, so that OIDC identity flows through the same trust chain in both layers. Refer to
+[Prerequisites](#prerequisites) for the verification command.
+
+If reconfiguring the API server is not an option, set `oidc.k8sNotFederated` to `true` in the pack values.
+
+```yaml
+charts:
+  virtual-machine-orchestrator:
+    vmo-manager:
+      oidc:
+        k8sNotFederated: true
+```
+
+The default is `false`. Leave the default in place whenever the API server is federated with the same OIDC issuer as
+VMO. This includes Palette-managed OIDC and the VM Launchpad appliance, which ships with Keycloak federating both VMO
+and the Kubernetes API server.
+
+With `k8sNotFederated` set to `true`, cookie and OIDC sessions call the Kubernetes API using the VMO Manager service
+account token, without impersonation headers. The cluster-scope Self-Subject Access Review probe is bypassed, and the
+cluster-scoped Settings pages open on the VMO IAM Platform Admin role alone. Namespace-scoped VM writes (create, delete,
+clone, disks, NICs, snapshots) also ride the cluster-wide service account token, so Kubernetes `RoleBinding` resources
+that scope users to specific namespaces no longer apply to those writes.
+
+:::warning
+
+Setting `oidc.k8sNotFederated` to `true` collapses two independent authorization gates into one. Any user granted a VMO
+IAM Platform Admin role reaches cluster-wide Settings without an independent Kubernetes RBAC check, and a user bound to
+a single namespace through Kubernetes RBAC can create VMs in any managed namespace in this mode. Use this option only
+for deployments where every OIDC user is trusted with cluster-wide reach, and restrict VMO IAM Platform Admin group and
+user mappings accordingly.
+
+:::
+
+API key sessions, bearer-token endpoints, and local-authentication sessions are not affected by this setting.
+
 ## Grant Access to Groups
 
-VMO Manager creates four cluster roles when it starts. Refer to
-[VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for a description of each role and the permissions it
-grants.
+Two authorization layers govern VMO access, and both must recognize the user's IdP group for a session to reach every
+part of the product.
 
-Bind these roles to your IdP groups with standard `ClusterRoleBinding` resources. The group names must match exactly
-what the IdP emits in the groups claim, including any prefix that the API server was started with.
+- **VMO IAM roles** control what the UI and API expose to the session, such as which pages are visible and which VMO
+  actions the session can invoke. Four built-in roles (Platform Admin, Editor, Operator, Viewer) map to fine-grained VMO
+  permissions. VMO Manager checks every request against this layer first.
+- **Kubernetes RBAC** controls the writes VMO issues to the Kubernetes API server on the user's behalf, along with any
+  direct `kubectl` access the user makes. Four `spectro-vm-*` cluster roles cover the common access patterns.
+
+The two layers are complementary, not redundant. VMO IAM decides what the UI exposes. Kubernetes RBAC decides what the
+API server accepts. Cluster-wide Settings pages require both layers to recognize the user's group, unless
+[`oidc.k8sNotFederated`](#configure-non-federated-kubernetes-api-servers) is set to `true`. In that mode, VMO IAM alone
+gates cluster-wide Settings. Refer to [VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for the full role
+catalog and permission list.
+
+### VMO IAM Roles
+
+VMO Manager seeds four group mappings when the pack starts. If your IdP group name exactly matches one of the following,
+users in that group receive the matching VMO role automatically without further configuration.
+
+| **IdP group name** | **VMO role**   | **What the user can do**                                                                                                                                                                                                         |
+| ------------------ | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cluster-admins`   | Platform Admin | Full platform control. Every VMO permission, including Users, Groups, Settings, Infrastructure CRUD, and all VM, template, network, storage, namespace, and package operations.                                                  |
+| `vmo-editors`      | Editor         | VM workflows and Image Catalog. VM create, update, delete, operate, and snapshot. Templates and packages read and write. Network, storage, and namespace read for the create-VM wizard. No infrastructure write and no Settings. |
+| `vmo-operators`    | Operator       | Day-to-day VM operations. VM read, operate, snapshot, and restore. Templates, dashboards, audit, and system or monitoring read. No writes.                                                                                       |
+| `cluster-viewers`  | Viewer         | Read-only. VM, template, dashboard, audit, and system or monitoring reads only. No operate, no snapshot, no writes.                                                                                                              |
+
+If your IdP group is named something other than the four above, users in it do not receive a VMO role by default. Extend
+the built-in `VMORole` custom resource that matches the VMO role you want to grant. The four built-in `VMORole`
+resources are `vmo-platform-admin`, `vmo-editor`, `vmo-operator`, and `vmo-viewer`.
+
+For example, to grant the Platform Admin role to an IdP group named `platform-team`, edit the `vmo-platform-admin`
+resource.
+
+```shell
+kubectl --namespace vm-dashboard edit vmorole vmo-platform-admin
+```
+
+Under `spec`, add your IdP group name to the `groupMappings` list.
+
+```yaml
+spec:
+  groupMappings:
+    - cluster-admins # keep the seeded default
+    - platform-team # your IdP group name
+```
+
+Save the change. The user must sign out and sign in again for the new mapping to take effect.
+
+To grant a different VMO role, edit the corresponding resource instead: `vmo-editor` for Editor, `vmo-operator` for
+Operator, or `vmo-viewer` for Viewer.
+
+Per-user mapping is also supported when a group is unavailable or too broad. Set `userMappings` instead of
+`groupMappings`, and provide the value that appears in the token's `email`, `sub`, or `preferred_username` claim.
+
+### Kubernetes RBAC
+
+VMO Manager also creates four Kubernetes cluster roles when it starts. Bind these roles to your IdP groups with standard
+`ClusterRoleBinding` resources. The group names must match exactly what the IdP emits in the groups claim, including any
+prefix that the API server was started with.
 
 1. Open a terminal and set the `KUBECONFIG` environment variable to point at your cluster's kubeconfig file.
 
@@ -248,12 +350,18 @@ what the IdP emits in the groups claim, including any prefix that the API server
    kubectl apply --filename <your-manifest-file>.yaml
    ```
 
-:::tip
+   To keep these bindings in place when a cluster is rebuilt, add them as a manifest layer in the cluster profile
+   alongside the VMO pack. Refer to
+   [Create a Manifest Add-on Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for guidance.
 
-To keep these bindings in place when a cluster is rebuilt, add them as a manifest layer in the cluster profile alongside
-the VMO pack. Refer to
-[Create a Manifest Add-on Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
-for guidance.
+:::info
+
+For cluster-wide Settings pages to work, both authorization layers must recognize the same group name. Choosing an IdP
+group name that lines up with the [VMO IAM seeded defaults](#vmo-iam-roles) (such as `cluster-admins` for administrators
+or `vmo-editors` for editors) means a single group grants both the VMO role from the seeded mapping and the Kubernetes
+RBAC from the `ClusterRoleBinding` above. For a custom name, add it to both the `VMORole` `groupMappings` list and the
+`ClusterRoleBinding` subject.
 
 :::
 
@@ -379,6 +487,46 @@ The IdP application does not have the **Refresh Token** grant type enabled. Enab
 
 Update `oidc.clientSecret` in the pack values, or update the referenced Secret, and then save and apply the profile.
 Wait for the reconcile to redeploy the VMO Manager pod.
+
+### Scenario - Authentication Service Unavailable at Sign-in
+
+Sign-in redirects fail with "Authentication service unavailable" in the UI, and the VMO Manager pod log contains
+`HandleLogin: oidcProvider is nil`. The pack starts with `oidc.enabled: true` but no issuer URL, so VMO Manager cannot
+initialize the OIDC provider.
+
+The most common cause is a configuration mismatch: OIDC values are set on the Kubernetes pack,
+`palette.managedOidc: true` is on the `vmo-manager` sub-chart, but the cluster's identity provider is an external IdP
+such as Okta rather than Palette Hubble. Palette injects OIDC values into VMO only when Palette Hubble itself is the
+identity provider. For any external IdP, VMO needs the values on its own pack.
+
+Set `palette.managedOidc: false` and provide `oidc.issuerUrl`, `oidc.clientId`, and `oidc.clientSecret` explicitly on
+the `vmo-manager` sub-chart. Refer to [Configure the VMO Pack](#configure-the-vmo-pack) for the YAML sample.
+
+### Scenario - Settings Menu Missing Despite Platform Admin Role
+
+A user signs in with a role that grants Platform Admin permissions in VMO. VM lifecycle, templates, and dashboards work,
+but the Settings group is hidden from the sidebar. Direct navigation to a Settings path such as
+`/settings/configuration/kubevirt` returns `403 forbidden: cluster-wide K8s access required for this Setting`, and the
+VMO Manager pod log at sign-in contains `Cluster-scope probe: SSAR returned 401`.
+
+The Kubernetes API server does not federate the same OIDC issuer as VMO Manager, so the cluster-scope probe in VMO
+Manager cannot validate the user's identity against Kubernetes. VMO IAM authorizes the session at the application layer,
+but the Settings pages route Kubernetes API calls through the user's OIDC ID token as a Bearer, and the API server
+rejects the token.
+
+Two options fix this behavior:
+
+- Configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` values that match the OIDC
+  application VMO uses, and bind the user's group to `spectro-vm-admin` with a `ClusterRoleBinding`. Refer to
+  [Prerequisites](#prerequisites) for the verification command. This option keeps VMO IAM and Kubernetes RBAC as two
+  independent authorization gates.
+- Set `oidc.k8sNotFederated` to `true` in the pack values. Refer to
+  [Configure Non-Federated Kubernetes API Servers](#configure-non-federated-kubernetes-api-servers) for the setting, the
+  behavior it changes, and the security trade-off. This option makes VMO IAM the sole authorization gate for
+  cluster-wide Settings.
+
+For a temporary workaround, sign in with the local admin account at `<baseUrl>/local-login`. Local sessions bypass the
+cluster-scope probe and reach all Settings pages.
 
 ## Next Steps
 
