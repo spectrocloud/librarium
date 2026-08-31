@@ -48,6 +48,29 @@ PaletteAI Inference Launchpad supports the following engine kinds.
 Serving features can vary by kind. For example, some kinds support reasoning and tool-calling for models that provide
 them, while others do not. The automatic option accounts for these differences when it matches an engine to a model.
 
+## Engine Arguments
+
+Engine behavior can be adjusted through engine-specific arguments, which the model's recipe carries alongside its launch
+configuration. The **Deploy model** panel shows those arguments in the **Extra arguments** subsection of the **Serving
+overrides** card, so you can review or override them for a single deploy without editing the recipe.
+
+Where an argument's value is a JSON document, the panel replaces the plain text input with a typed editor that validates
+the JSON on every keystroke and offers a form view labeled by field type. The editor is triggered by the shape of the
+value, not by a list of known argument names, so any current or future engine argument whose value is a JSON object or
+array is edited the same way. The editor validates that the text parses as JSON, not the values the engine will accept.
+Where the engine rejects a value at startup, the deploy fails on the model row after you confirm, rather than showing an
+inline error in the dialog.
+
+KV cache offloading is the first engine argument that uses this editor. The offloading strategy travels with the model's
+recipe, which the appliance ships alongside a supported model, so the operator does not enable or disable offloading
+from a switch on the deploy panel; the editor exists only to let the operator review or adjust the recipe's JSON value
+for a single deploy. A common trap the editor catches is a quoted boolean: engines read any non-empty text as `true`, so
+a field holding `"false"` as a string is silently read as `true`. The editor detects that and offers a one-select fix to
+rewrite the value as an actual boolean.
+
+Refer to
+[Review or Change an Engine Argument That Uses JSON](../how-to-guides/deploy-a-model.md#review-or-change-an-engine-argument-that-uses-json).
+
 ## Manual Engine Selection
 
 Leave the engine on the automatic option unless you have a specific reason to pin a model to a particular engine, such
