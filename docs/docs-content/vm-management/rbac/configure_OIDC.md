@@ -65,23 +65,68 @@ Machine Orchestrator pack instead of using Palette-managed OIDC, refer to
 8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
    [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
 
-The following steps apply exclusively to clusters configured with **Custom** third-party OIDC IdPs.
+9. After the VMO profile deployment completes, obtain the OIDC callback URL that your IdP redirects to after successful
+   authentication.
 
-9. After the VMO profile deployment is completed, right-click the **Connect** button next to **Virtual Machine
-   Dashboard** and copy the link. Save this link for later use.
+   :::warning
 
-10. Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
+   Do not switch the VMO pack's **Deployment Mode** between **Proxied** and **Direct** after the initial cluster
+   deployment. Changing modes on a running cluster leaves the OIDC configuration in an inconsistent state and requires
+   manual reconciliation of the pack values, the `oidc.callbackUrl`, and the Valid Redirect URIs list on the IdP. Choose
+   the target mode before you deploy the cluster.
 
-11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For example, if you
+   :::
+
+   Find the cluster namespace and confirm the VMO pack name. The retrieval command below uses both values.
+
+   ```shell
+   kubectl get packs --all-namespaces
+   ```
+
+   The row whose `NAME` is `virtual-machine-orchestrator` shows a `NAMESPACE` of the form `cluster-<cluster-uid>`. Use
+   that namespace in the retrieval command below.
+
+   The retrieval procedure depends on how OIDC is configured for VMO:
+
+   - **OIDC for VMO (direct)**: The VMO pack consumes the IdP directly through the External OIDC preset. The pack does
+     not surface a callback URL on its own. You construct the callback URL from the External-IP of the `vm-dashboard`
+     service (a Kubernetes `Service` of type `LoadBalancer`) and write it to the pack's `oidc.callbackUrl` value. Refer
+     to [Configure External OIDC](../vmo-pack/configure-external-oidc.md) for the pack setup.
+
+     Wait for the `vm-dashboard` service to receive an External-IP.
+
+     ```shell
+     kubectl get svc --namespace vm-dashboard vm-dashboard
+     ```
+
+     When the `EXTERNAL-IP` column shows an IP address, construct the callback URL as
+     `https://<external-ip>/auth/callback` and set it as `oidc.callbackUrl` in the VMO pack values. Use the same URL
+     when you register the sign-in redirect URI on your IdP at step 12.
+
+   - **OIDC for VMO through Palette (proxied)**: Palette proxies the OIDC flow, and the callback URL is constructed from
+     the cluster's tenant apps proxy URL. Retrieve the URL from the deployed VMO pack and append `/auth/callback` to
+     form the callback URL.
+
+     ```shell
+     kubectl get pack --namespace <cluster-namespace> virtual-machine-orchestrator --output yaml | grep consoleBaseAddress
+     ```
+
+     The command returns two lines. Use the line that carries a URL, which is the tenant apps proxy URL of the form
+     `https://console.spectrocloud.com/v1/tenantApps/<base64-tenant-id>`. The other line is an empty duplicate field
+     elsewhere in the pack manifest. Append `/auth/callback` to the URL to form the callback URL.
+
+   Save the resulting callback URL for the sign-in redirect step.
+
+10. Log in to the IdP console that is associated with the OIDC configuration used in your cluster.
+
+11. Locate the OIDC application that was used in step 5 and enable the **Refresh Token** setting. For example, if you
     are using [Okta](https://www.okta.com) as the IdP, refer to the
     [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide
     for further instructions.
 
-12. Update the **Sign-in redirect URIs** field in your IdP. Add the VMO link copied in step nine, appending
-    `/auth/callback` to its end. For example, if the link is
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=`, update it to
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to which
-    the IdP will redirect users after successful authentication.
+12. Update the **Sign-in redirect URIs** field in your IdP. Add the callback URL from step 9. For example,
+    `https://console.spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to
+    which the IdP redirects users after successful authentication.
 
 ## Configure Custom OIDC for VM Migration Assistant
 
