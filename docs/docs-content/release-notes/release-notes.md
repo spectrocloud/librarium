@@ -239,6 +239,21 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
   only from inside the cluster.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
+
+- A new
+  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
+  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
+  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
+  satisfy.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1020 -->
+
+- The VM Launchpad appliance now installs on its own storage through a new Slim ISO with a companion Content Bundle.
+  After the appliance is up, administrators attach a separate Container Storage Interface (CSI) for virtual machine
+  storage, decoupling appliance uptime from the CSI configuration used for virtual machine workloads. Portworx SDS and
+  Portworx with Pure Array are validated at release.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->

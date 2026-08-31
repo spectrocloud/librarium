@@ -22,6 +22,7 @@
     "https://dev.mysql.com/doc/.*$$",
     "^https://github.com.*$$",
     "^https://developers.redhat.com.*$$",
+    "^https://docs.redhat.com.*$$",
     "^https://www.intel.com.*$$",
     "^https://developer.hashicorp.com.*$$",
     "^https://www.packer.io.*$$",
@@ -40,6 +41,5 @@
     "^https://portal\\.azure\\.com.*$$",
     "^https://entra\\.microsoft\\.com.*$$"
   ],
-  "verbosity": "error",
-  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+  "verbosity": "error"
 }
