@@ -124,11 +124,14 @@ for the mapper configuration, including the four token-inclusion toggles that VM
 
    New sign-ins include the groups claim. Users with an existing session must sign out and sign in again.
 
-:::warning
+:::info
 
-Okta limits the number of groups included in a claim, with a default of 100. A broad filter combined with a user who
-belongs to many groups can produce a truncated claim. Keep the filter narrow enough that the groups you use for RBAC are
-always included.
+Okta caps the groups claim at 100 entries in the Implicit Flow. VM Launchpad's Keycloak broker uses the Authorization
+Code Flow, which does not have this cap, so an unbounded filter is safe. If you configure Keycloak to broker over the
+Implicit Flow instead, the cap applies and a user who belongs to more than 100 groups receives a truncated claim. Refer
+to
+[Error: The groups claim matched too many groups and must be configured to match fewer groups](https://support.okta.com/help/s/article/error-the-groups-claim-matched-too-many-groups-and-must-be-configured-to-match-fewer-groups?language=en_US)
+in Okta's documentation for the underlying constraint.
 
 :::
 
