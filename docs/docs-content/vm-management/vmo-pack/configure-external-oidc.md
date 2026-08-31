@@ -201,9 +201,9 @@ charts:
 ### Configure Non-Federated Kubernetes API Servers
 
 If the cluster's Kubernetes API server is not federated with the same OIDC issuer that VMO uses, cluster-wide Settings
-pages return `403 forbidden: cluster-wide K8s access required`, and the Settings menu is hidden from the sidebar. VMO
-passes the user's ID token as an `Authorization: Bearer` header to the Kubernetes API server, and the API server rejects
-the token when its OIDC flags do not match.
+pages return `403 forbidden: cluster-wide K8s access required for this Setting`, and the Settings menu is hidden from
+the sidebar. VMO passes the user's ID token as an `Authorization: Bearer` header to the Kubernetes API server, and the
+API server rejects the token when its OIDC flags do not match.
 
 The recommended fix is to configure the Kubernetes API server with `--oidc-issuer-url` and `--oidc-client-id` flags that
 match the OIDC application VMO uses, so that OIDC identity flows through the same trust chain in both layers. Refer to
@@ -253,8 +253,10 @@ part of the product.
   direct `kubectl` access the user makes. Four `spectro-vm-*` cluster roles cover the common access patterns.
 
 The two layers are complementary, not redundant. VMO IAM decides what the UI exposes. Kubernetes RBAC decides what the
-API server accepts. Cluster-wide Settings pages require both layers to recognize the user's group. Refer to
-[VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for the full role catalog and permission list.
+API server accepts. Cluster-wide Settings pages require both layers to recognize the user's group, unless
+[`oidc.k8sNotFederated`](#configure-non-federated-kubernetes-api-servers) is set to `true`. In that mode, VMO IAM alone
+gates cluster-wide Settings. Refer to [VM User Roles and Permissions](../rbac/vm-roles-permissions.md) for the full role
+catalog and permission list.
 
 ### VMO IAM Roles
 

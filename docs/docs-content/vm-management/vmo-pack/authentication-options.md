@@ -54,17 +54,19 @@ Palette-managed OIDC is the default and is the recommended option for Palette-ma
 layer of the cluster profile has **Palette** selected as the OIDC identity provider. Refer to
 [Configure OIDC](../rbac/configure_OIDC.md) for guidance on that setting.
 
-| **Setting**                      | **Effective Value**                                                       |
-| -------------------------------- | ------------------------------------------------------------------------- |
-| `oidc.enabled`                   | `true`                                                                    |
-| `palette.enabled`                | `true`                                                                    |
-| `palette.managedOidc`            | `true`                                                                    |
-| Issuer, client, callback, scopes | Injected by Palette into `appConfig.auth.oidc.*` when the cluster deploys |
+| **Setting**            | **Effective Value**                                                       |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `oidc.enabled`         | `true`                                                                    |
+| `palette.enabled`      | `true`                                                                    |
+| `palette.managedOidc`  | `true`                                                                    |
+| Issuer, client, scopes | Injected by Palette into `appConfig.auth.oidc.*` when the cluster deploys |
+| Callback URL           | Derived by VMO from `platform.baseUrl` (`<BASE_URL>/auth/callback`)       |
 
-Because Palette injects the OIDC configuration at deploy time, the values match the OIDC flags that the cluster's
-Kubernetes API server was started with. You do not need to select a preset, and you do not need to set `oidc.issuerUrl`,
-`oidc.clientId`, `oidc.clientSecret`, `oidc.callbackUrl`, or `oidc.scopes` yourself. A profile with no Alternative
-Authentication preset selected deploys with Palette-managed OIDC out of the box.
+Palette injects `oidc.issuerUrl`, `oidc.clientId`, `oidc.clientSecret`, and `oidc.scopes` at deploy time, so the values
+match the OIDC flags that the cluster's Kubernetes API server was started with. `oidc.callbackUrl` is derived
+automatically from `platform.baseUrl` (VMO uses `<platform.baseUrl>/auth/callback`), so you do not need to set it
+yourself either. A profile with no Alternative Authentication preset selected deploys with Palette-managed OIDC out of
+the box.
 
 :::info
 
