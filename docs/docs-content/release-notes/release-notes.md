@@ -104,8 +104,7 @@ tags: ["release-notes"]
 - Palette now reconciles the IAM roles defined in the `irsaRoles` field of the Kubernetes EKS pack as a day-2 resource.
   Edits to `irsaRoles` in the cluster profile take effect on the next reconcile: policies are attached and detached,
   service account changes update the trust policy, and removing an entry deletes the underlying IAM role. When you
-  delete an EKS cluster, Palette deletes every IRSA role it manages for that cluster. Palette only manages the IAM roles
-  it created, and reverts any changes made to those roles outside of Palette on the next reconcile. Refer to
+  delete an EKS cluster, Palette deletes every IRSA role it manages for that cluster. Refer to
   [Configure IAM Roles for Service Accounts](../integrations/kubernetes-eks.mdx#configure-iam-roles-for-service-accounts)
   for more information.
 
