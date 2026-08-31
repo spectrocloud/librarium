@@ -72,6 +72,14 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
 </Tabs>
 
+Regardless of environment, if you pre-provision StorageClasses that VM workloads should use (for example, through
+GitOps, Terraform, or an imperative script), label each class with `vmo-manager.spectrocloud.com/vm-workload: "true"`.
+Without the label, the class appears in the VMO UI but the **Allow for VMs** checkbox is not pre-checked, so the class
+is not available for VM workloads until an administrator edits it on the **Home** > **Storage** > **Storage Classes**
+page. Refer to
+[Custom StorageClass Not Appearing as VM-eligible](./troubleshooting.md#scenario---custom-storageclass-not-appearing-as-vm-eligible)
+for the fix on an existing class.
+
 ## Create the Profile
 
 <Tabs groupId="environment">
