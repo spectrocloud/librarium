@@ -159,7 +159,7 @@ Return to the Keycloak admin console, on the **OpenID Connect v1.0** form you op
 
 2. Select **Add**.
 
-3. On the provider's settings page, expand **Advanced settings**.
+3. On the provider's settings page, in the **OpenID Connect settings** section, expand **Advanced**.
 
 4. Set **Scopes** to `openid profile email groups` so that the provider returns the groups claim alongside the identity
    claims.
@@ -178,7 +178,7 @@ the Kubernetes API server rejects the user.
 
 1. In the Keycloak admin console, select **Identity providers** from the left main menu, and then select your provider.
 
-2. Expand **Advanced settings**.
+2. Scroll to the **Advanced settings** section.
 
 3. Set **Trust Email** to **On**.
 
@@ -205,13 +205,14 @@ documentation for the full list of mapper types and the sync-mode semantics.
 
 3. Complete the following fields.
 
-   | **Field**              | **Value**                                                                                                           |
-   | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
-   | **Name**               | A descriptive name for the mapping, such as `okta-vmo-admins`.                                                      |
-   | **Sync mode override** | **Force**, so that Keycloak reapplies the mapping on every sign-in and reflects group changes made in the provider. |
-   | **Mapper type**        | **Advanced Claim to Group**.                                                                                        |
-   | **Claims**             | Key `groups`, value set to the group name as the provider emits it, such as `vmo-admins`.                           |
-   | **Group**              | The Keycloak group that carries the VMO role you want the user to receive.                                          |
+   | **Field**              | **Value**                                                                                                                                                      |
+   | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**               | A descriptive name for the mapping, such as `okta-vmo-admins`.                                                                                                 |
+   | **Sync mode override** | **Force**, so that Keycloak reapplies the mapping on every sign-in and reflects group changes made in the provider.                                            |
+   | **Mapper type**        | **Advanced Claim to Group**.                                                                                                                                   |
+   | **Claims**             | Select **Add Claims** to expose the Key and Value inputs, then set Key to `groups` and Value to the group name as the provider emits it, such as `vmo-admins`. |
+   | **Regex Claim Values** | Leave **Off**. The example claim value is a literal string, not a regex pattern.                                                                               |
+   | **Group**              | The Keycloak group that carries the VMO role you want the user to receive.                                                                                     |
 
 4. Select **Save**.
 
@@ -247,10 +248,12 @@ completes a brokered sign-in through their identity provider.
 1. In the Keycloak admin console for the `vmo` realm, select **Identity providers** from the left main menu, and confirm
    that the provider you configured appears in the list.
 
-2. Select the provider. On the **Settings** tab, expand **Advanced settings** and confirm that **Trust Email** is
-   enabled and that **Scopes** is set to `openid profile email groups`.
+2. Select the provider. On the **Settings** tab, in the **OpenID Connect settings** section, expand **Advanced** and
+   confirm that **Scopes** is set to `openid profile email groups`.
 
-3. Select the **Mappers** tab and confirm that a mapper exists for each provider group you federate. Confirm that each
+3. Scroll to the **Advanced settings** section and confirm that **Trust Email** is set to **On**.
+
+4. Select the **Mappers** tab and confirm that a mapper exists for each provider group you federate. Confirm that each
    mapper uses the **Advanced Claim to Group** mapper type with **Sync mode override** set to **Force** and that its
    **Claims** and **Group** values match the provider group and the target Keycloak group.
 
