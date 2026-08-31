@@ -214,7 +214,9 @@ documentation for the full list of mapper types and the sync-mode semantics.
    | **Regex Claim Values** | Leave **Off**. The example claim value is a literal string, not a regex pattern.                                                                               |
    | **Group**              | The Keycloak group that carries the VMO role you want the user to receive.                                                                                     |
 
-4. Select **Save**.
+4. Select **Save**. Reload the **Mappers** tab and confirm the new mapper appears in the list before you initiate a
+   federated sign-in. Keycloak returns the success toast before the mapping is fully applied, and a user who signs in
+   during that window lands with no VMO role and sees a "not allowed" error.
 
 5. Repeat for each provider group you federate.
 
@@ -233,15 +235,6 @@ the new mapping. Ask affected users to sign out and sign in again. API keys crea
 permissions until the user signs in again. Refer to [API Keys](./api-keys.md).
 
 ## Verify
-
-:::info
-
-In this release, the VM Launchpad sign-in page does not surface a per-provider button for federated identity providers,
-so the end-user brokered sign-in flow cannot be initiated from the appliance sign-in page. The steps below verify the
-Keycloak-side configuration you can confirm today. The user-side verification steps apply once a federated user
-completes a brokered sign-in through their identity provider.
-
-:::
 
 ### Verify the Keycloak configuration
 
