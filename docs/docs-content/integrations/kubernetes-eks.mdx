@@ -102,6 +102,17 @@ irsaRoles:
 
 </details>
 
+Palette reconciles the roles defined in `irsaRoles` throughout the cluster lifetime. Edits to `irsaRoles` in the cluster
+profile take effect on the next reconcile: policies are attached or detached, service account changes update the trust
+policy, and removing an entry deletes the underlying IAM role. When you delete an EKS cluster, Palette deletes every IAM
+role it manages for that cluster.
+
+Palette only manages the IAM roles it created for the cluster and does not modify roles it does not own. If a role with
+the same name already exists in AWS when you add it to `irsaRoles`, Palette adopts it when its policies and trust policy
+match the profile, and otherwise leaves it untouched and reports a warning on the cluster. Refer to
+[IRSA reconcile warnings](../troubleshooting/cluster-deployment.md#scenario---irsa-role-reconcile-warning) if you see a
+warning event.
+
 ### Configure Security Group Overrides
 
 Use the following parameters to override the default security groups for the Amazon EKS components.
@@ -452,7 +463,7 @@ overview of the permissions required for each configuration section.
 | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Disable IAM OIDC Identity Provider](#disable-iam-oidc-identity-provider)                                           | `iam:CreateOpenIDConnectProvider` <br /> `iam:DeleteOpenIDConnectProvider` <br /> `iam:GetOpenIDConnectProvider` <br /> `iam:TagOpenIDConnectProvider`                                                                                                    |
 | [Configure Logging](#configure-logging)                                                                             | `logs:CreateLogGroup` <br /> `logs:CreateLogStream` <br /> `logs:PutLogEvents` <br /> `eks:UpdateClusterConfig`                                                                                                                                           |
-| [Configure IAM Roles for Service Accounts](#configure-iam-roles-for-service-accounts)                               | `iam:CreateRole` <br /> `iam:AttachRolePolicy` <br /> `iam:PassRole` <br /> `iam:GetRole` <br /> `iam:ListRoles`                                                                                                                                          |
+| [Configure IAM Roles for Service Accounts](#configure-iam-roles-for-service-accounts)                               | `iam:CreateRole` <br /> `iam:AttachRolePolicy` <br /> `iam:PassRole` <br /> `iam:GetRole` <br /> `iam:ListRoles` <br /> `iam:ListRolePolicies`                                                                                                            |
 | [Configure Security Group Overrides](#configure-security-group-overrides)                                           | `ec2:DescribeSecurityGroups` <br /> `ec2:CreateSecurityGroup` <br /> `ec2:AuthorizeSecurityGroupIngress` <br /> `ec2:AuthorizeSecurityGroupEgress` <br /> `ec2:DeleteSecurityGroup`                                                                       |
 | [Configure OIDC Identity Provider](#configure-oidc-identity-provider)                                               | `eks:AssociateIdentityProviderConfig` <br /> `eks:DisassociateIdentityProviderConfig` <br /> `eks:DescribeIdentityProviderConfig` <br /> `iam:CreateOpenIDConnectProvider` <br /> `iam:DeleteOpenIDConnectProvider` <br /> `iam:TagOpenIDConnectProvider` |
 | [Configure Additional Control Plane Policies](#configure-additional-control-plane-policies)                         | `iam:AttachRolePolicy` <br /> `iam:DetachRolePolicy` <br /> `iam:PassRole`                                                                                                                                                                                |
