@@ -61,7 +61,7 @@ tags: ["release-notes"]
   cluster's cloud configuration during cluster creation and on Day-2 through the Palette UI, API, Terraform provider,
   and Crossplane provider, on both Palette and Palette VerteX. Palette injects the keys into the `spectro` user's
   `~/.ssh/authorized_keys` on every control plane and worker node, and preserves any users that MAAS or the machine
-  image already configured. Refer to
+  image already configured. Changing the keys on a deployed CK8s cluster repaves the cluster nodes. Refer to
   [SSH Keys on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ssh-keys-on-maas-cluster-nodes) for more
   information.
 
@@ -70,7 +70,8 @@ tags: ["release-notes"]
 - Canonical Kubernetes (CK8s) clusters on MAAS now support Network Time Protocol (NTP) server configuration. You can
   configure **NTP Servers** on the cluster's cloud configuration during cluster creation and on Day-2 through the
   Palette UI, API, Terraform provider, and Crossplane provider, on both Palette and Palette VerteX. The servers you
-  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Refer to
+  specify replace the NTP configuration that MAAS provides to each control plane and worker node. Changing the servers
+  on a deployed CK8s cluster repaves the cluster nodes. Refer to
   [NTP Servers on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ntp-servers-on-maas-cluster-nodes)
   for more information.
 
@@ -348,6 +349,29 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 - The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
   100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
   upload completion as soon as the transfer finishes.
+
+### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
+
+- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
+  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
+  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
+  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
+  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
+  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
+
+- A new
+  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
+  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
+  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
+  satisfy.
 
 ### Docs and Education
 
