@@ -22,7 +22,6 @@ you the steps to do it without teaching background concepts.
 | [Replace a Model](./replace-a-model.md)                                                 | Remove a model from a node, then deploy a newer version or a different model.                                  |
 | [Upload a Model](./upload-a-model.md)                                                   | Download a model on a jumpbox and upload it to the appliance.                                                  |
 | [Bring Your Own Model](./bring-your-own-model.md)                                       | Author metadata for a model that is not certified, then upload and deploy it.                                  |
-| [Switch the Default Model](./set-the-default-model.md)                                  | Switch the default model when the current default becomes unavailable.                                         |
 | [Configure Semantic Routing](./configure-semantic-routing.md)                           | Set the Complexity threshold, author category rules, override both per client, and turn on Decision recording. |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)                         | Deploy a vision model and turn on image-to-text preprocessing for a text-only model.                           |
 | [Create a Client](./create-a-client.md)                                                 | Create a client and issue its first API token.                                                                 |

@@ -159,7 +159,7 @@ actions on the CSV. Refer to
 ### Default Model
 
 The model the appliance routes a request to when the request does not name a specific model. Refer to
-[Set the Default Model](../how-to-guides/set-the-default-model.md).
+[The Default Model](../explanation/architecture.md#the-default-model).
 
 ## E
 
@@ -195,7 +195,7 @@ models appear in a client's routing picker, and traffic to it is metered as egre
 The box-wide model that answers any request no other control settles: a request no [Tier map](#tier-map) row matches, a
 request the [semantic router](#semantic-routing) finds no rule for, or a request that names a model the appliance does
 not serve. When the fallback is off, the appliance returns HTTP `404` for these requests. Refer to
-[Switch the Default Model](../how-to-guides/set-the-default-model.md).
+[The Default Model](../explanation/architecture.md#the-default-model).
 
 ### FIPS
 

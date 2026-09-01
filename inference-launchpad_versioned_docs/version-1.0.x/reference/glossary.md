@@ -131,7 +131,7 @@ Different models have different context window sizes.
 ### Default Model
 
 The model the appliance routes a request to when the request does not name a specific model. Refer to
-[Set the Default Model](../how-to-guides/set-the-default-model.md).
+[The Default Model](../explanation/architecture.md#the-default-model).
 
 ## E
 
