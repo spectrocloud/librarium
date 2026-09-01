@@ -433,3 +433,57 @@ The Job and the script apply the label `app.kubernetes.io/managed-by: Helm` and 
 | RoleBinding        | Golden images namespace | `vmo-cdi-clone-source`   |
 
 <!-- vale on -->
+
+## Scenario - Custom StorageClass Not Appearing as VM-eligible
+
+The VMO UI shows a StorageClass on the **Home** > **Storage** > **Storage Classes** page, but the **VM WORKLOADS**
+column reports `Not configured` and the **Allow for VMs** checkbox on the edit dialog is not pre-checked. VMs cannot use
+the class until an administrator enables it.
+
+This condition applies when a StorageClass is created out-of-band from the VMO UI, such as through GitOps, Terraform, or
+`kubectl apply`, without the label VMO reads to determine VM eligibility.
+
+### Debug Steps
+
+VMO decides which StorageClass is VM-eligible by looking for the label
+`vmo-manager.spectrocloud.com/vm-workload: "true"` on the class. A class that does not carry the label is not surfaced
+to VM workloads, regardless of its Container Storage Interface (CSI) provisioner.
+
+To confirm the state on a specific class, issue the following command. Replace `<class-name>` with the name of your
+StorageClass.
+
+```shell
+kubectl get storageclass <class-name> --output jsonpath='{.metadata.labels}'
+```
+
+The output should include `"vmo-manager.spectrocloud.com/vm-workload":"true"`. If the label is missing, VMO treats the
+class as not VM-eligible.
+
+### Resolution
+
+Add the label to the StorageClass. Issue the following command, replacing `<class-name>` with the name of your
+StorageClass.
+
+```shell
+kubectl label storageclass <class-name> vmo-manager.spectrocloud.com/vm-workload=true
+```
+
+Refresh the **Storage Classes** page in the VMO UI. The **VM WORKLOADS** column reports `Healthy` and the **Allow for
+VMs** checkbox is pre-checked on the edit dialog. Existing VMs and new VM workloads can now use the class.
+
+To bake the label into a StorageClass manifest so it is present at creation time, include the label under
+`metadata.labels`.
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: <class-name>
+  labels:
+    vmo-manager.spectrocloud.com/vm-workload: "true"
+provisioner: <your-csi-provisioner>
+# ... rest of your StorageClass definition
+```
+
+The label is CSI-agnostic. It applies to Piraeus, Rook-Ceph, Portworx, and any other CSI provisioner. VMO reads the
+label only, not the CSI or the class name.
