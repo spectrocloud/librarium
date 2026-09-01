@@ -35,19 +35,13 @@ first, followed by any named engines the appliance exposes, each labeled with it
 
 ## Supported Engine Kinds
 
-PaletteAI Inference Launchpad currently supports one engine kind, vLLM. Additional kinds are on the roadmap and will be
-listed here once they are supported.
+PaletteAI Inference Launchpad supports one engine kind, vLLM.
 
-| **Kind**  | **Hardware** | **Status**  | **Summary**                                                              |
-| --------- | ------------ | ----------- | ------------------------------------------------------------------------ |
-| vLLM      | GPU          | Supported   | High-throughput GPU serving for large models.                            |
-| SGLang    | GPU          | Coming soon | High-throughput GPU serving with support for advanced serving features.  |
-| Ollama    | CPU          | Coming soon | CPU-based serving for smaller models on nodes without a GPU.             |
-| llama.cpp | CPU          | Coming soon | Lightweight CPU-based serving for smaller models on nodes without a GPU. |
+| **Kind** | **Hardware** | **Summary**                                   |
+| -------- | ------------ | --------------------------------------------- |
+| vLLM     | GPU          | High-throughput GPU serving for large models. |
 
-Because vLLM is the only supported kind today, the automatic option and any manual selection both resolve to a vLLM
-engine. The deploy panel may list other kinds if a future release adds them, but you should not select a kind marked as
-coming soon until its release notes announce support.
+Because vLLM is the only supported kind, the automatic option and any manual selection both resolve to a vLLM engine.
 
 ## Manual Engine Selection
 

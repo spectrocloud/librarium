@@ -192,8 +192,7 @@ locally rather than by a cloud provider.
 
 The runtime that loads a model and serves its requests behind the model's endpoint. It determines how a model runs,
 which hardware it can use, and which serving features are available. The appliance selects an engine automatically by
-default. [vLLM](#vllm) is the only currently supported kind; other kinds may be added in future releases. Refer to
-[Inference Engines](../explanation/inference-engines.md).
+default. [vLLM](#vllm) is the only supported kind. Refer to [Inference Engines](../explanation/inference-engines.md).
 
 ### Intelligent Routing
 
