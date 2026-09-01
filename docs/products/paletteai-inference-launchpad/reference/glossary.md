@@ -570,6 +570,6 @@ model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) a
 
 ### vLLM
 
-An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is one of the
-GPU-serving engines the appliance can run, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the
+An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is the
+GPU-serving engine the appliance currently runs, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the
 Kubernetes cluster.
