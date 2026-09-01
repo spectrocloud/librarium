@@ -74,6 +74,7 @@ tags: ["release-notes"]
   [NTP Servers on MAAS Cluster Nodes](../clusters/data-center/maas/architecture.md#ntp-servers-on-maas-cluster-nodes)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6414 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7118 -->
 
 - Palette now supports the option to skip worker node upgrades on
@@ -91,12 +92,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11115 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11712 -->
 
 - The **Host LXD-based control planes** and **Use LXD VMs** toggles in cluster and node configuration now display a
   tooltip clarifying that LXD-based VMs on MAAS are supported only with Palette eXtended Kubernetes clusters. Enabling
   LXD with other Kubernetes distributions results in deployment failures.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7720 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11711 -->
 
 - Headlamp, the modern replacement for the deprecated Kubernetes Dashboard, is now available on imported clusters as
@@ -174,6 +177,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8679 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9264 -->
 
 - Locally managed Edge clusters in an airgapped environment that use Palette eXtended Kubernetes Edge (PXK-E) or
@@ -185,6 +189,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Decoupled Control Plane and Worker Node Upgrades](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9097 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9267 -->
 
 - Airgap content bundle uploads to Edge hosts are now chunked, resumable, and parallel by default. The Palette CLI
@@ -196,6 +201,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   chunked upload support. Refer to
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8314 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
 
 - Connected Edge clusters can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at runtime,
@@ -209,12 +215,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9110 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9268 -->
 
 - The Custom UI appliance install wizard now renders a specific inline error at any field whose value is invalid.
   Sections that contain an invalid field display an "invalid" badge on the section title, and the step counter reads as
   "X of Y complete."
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8787 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9265 -->
 
 - Edge workflows have been updated to Kairos v4.1.2 with `kairos-init` v0.16.x. Day-1 and Day-2 upgrades from earlier
@@ -273,6 +281,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1597 -->
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1615 -->
 
 - FIPS-compiled vCluster is now available, letting strict-FIPS tenants provision virtual clusters using FIPS 140-3
@@ -283,6 +292,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11361 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11714 -->
 
 - Palette VerteX now invalidates all active JWTs for a session when a user logs out or changes their password.
@@ -327,10 +337,12 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2117 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3117 -->
 
 - Palette CLI is now available for ARM Linux (arm64) and macOS Apple Silicon (arm64).
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9050 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9266 -->
 
 - The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
