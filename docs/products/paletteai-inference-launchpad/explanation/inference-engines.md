@@ -47,8 +47,8 @@ listed here once they are supported.
 | llama.cpp | CPU          | Coming soon | Lightweight CPU-based serving for smaller models on nodes without a GPU. |
 
 Because vLLM is the only supported kind today, the automatic option and any manual selection both resolve to a vLLM
-engine. The **Deploy model** dialog may list other kinds if a future release adds them, but you should not select a
-kind marked as coming soon until its release notes announce support.
+engine. The **Deploy model** dialog may list other kinds if a future release adds them, but you should not select a kind
+marked as coming soon until its release notes announce support.
 
 ## Engine Arguments
 
