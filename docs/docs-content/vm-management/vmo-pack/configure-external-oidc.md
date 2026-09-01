@@ -78,6 +78,23 @@ You can reuse the same OIDC application that the cluster's Kubernetes layer uses
 The following steps use Okta console labels. Every setting has an equivalent in any OIDC-compliant IdP, though the field
 names differ.
 
+:::info
+
+When the IdP is Keycloak, VMO requires two realm-side configurations for group-based RBAC to work end-to-end:
+
+- **A `groups` client scope on the realm.** VMO force-appends the `groups` scope to every OIDC authentication request,
+  regardless of what is set in `oidc.scopes` on the pack. If the realm does not recognize `groups` as a client scope,
+  Keycloak returns `invalid_scope` and sign-in fails.
+- **A Group Membership mapper on the `profile` client scope.** Without it, VMO Manager receives an empty `groups` claim,
+  and every `ClusterRoleBinding` with a `Group` subject silently fails.
+
+Palette Console SSO and Palette-managed Kubernetes clusters do not require the mapper, because they do not consume the
+`groups` claim directly. Refer to
+[Sync Keycloak Groups and Palette Teams](../../user-management/saml-sso/palette-sso-with-keycloak.md#sync-keycloak-groups-and-palette-teams)
+for the mapper configuration, including the four token-inclusion toggles that VMO requires.
+
+:::
+
 1. Log in to your IdP administration console.
 
 2. Open the OIDC application that represents VMO, or create a new one.
@@ -153,11 +170,18 @@ belong to a group whose name matches the filter for that group to appear in the 
            issuerUrl: "https://<your-okta-domain>"
            clientId: "<your-client-id>"
            clientSecret: "<your-client-secret>"
-           # Optional. Defaults to "openid,profile,email,groups". The groups scope
-           # is always requested, so removing it from this list has no effect.
+           # Optional. Defaults to "openid,profile,email,groups". The pack
+           # force-appends "groups" if you omit it, so removing it from this
+           # list has no effect on the outbound OIDC request against any IdP.
+           # When the IdP is Keycloak, see the Keycloak admonition above for
+           # the realm-side prerequisites (the "groups" client scope plus the
+           # Group Membership mapper).
            scopes: ""
-           # Optional. Set only when the UI is behind a proxy and the default
-           # <baseUrl>/auth/callback is not reachable.
+           # Set when the OIDC callback needs to go through an external proxy
+           # such as the Palette tenant apps proxy. Obtain the callback URL
+           # from the deployed VMO Manager pack after the profile deploys; the
+           # UI does not surface this URL directly. Defaults to
+           # <baseUrl>/auth/callback when left empty.
            callbackUrl: ""
            # Set to match the API server --oidc-username-prefix flag, such as "oidc:".
            k8sUsernamePrefix: ""

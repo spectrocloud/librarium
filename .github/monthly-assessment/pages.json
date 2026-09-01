@@ -1,28 +1,13 @@
 [
   {
-    "path": "/deployment-modes/agent-mode/install-agent-host",
-    "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
-    "views": 336
-  },
-  {
-    "path": "/clusters/public-cloud/aws/required-iam-policies",
-    "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
-    "views": 322
-  },
-  {
-    "path": "/vm-management/launchpad-for-vms/install-vmla-iso",
-    "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms/install-vmla-iso",
-    "views": 304
+    "path": "/paletteai-inference-launchpad",
+    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad",
+    "views": 664
   },
   {
     "path": "/vm-management",
     "url": "https://docs.spectrocloud.com/vm-management",
-    "views": 301
-  },
-  {
-    "path": "/clusters",
-    "url": "https://docs.spectrocloud.com/clusters",
-    "views": 259
+    "views": 351
   },
   {
     "path": "/tutorials/getting-started",
@@ -30,23 +15,38 @@
     "views": 259
   },
   {
-    "path": "/vm-management/launchpad-for-vms",
-    "url": "https://docs.spectrocloud.com/vm-management/launchpad-for-vms",
-    "views": 256
+    "path": "/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
+    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
+    "views": 243
   },
   {
-    "path": "/vertex",
-    "url": "https://docs.spectrocloud.com/vertex",
+    "path": "/clusters/public-cloud/aws/required-iam-policies",
+    "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
     "views": 229
   },
   {
-    "path": "/clusters/edge",
-    "url": "https://docs.spectrocloud.com/clusters/edge",
-    "views": 226
+    "path": "/paletteai-inference-launchpad/reference/certified-models-by-hardware",
+    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/reference/certified-models-by-hardware",
+    "views": 194
   },
   {
     "path": "/architecture/architecture-overview",
     "url": "https://docs.spectrocloud.com/architecture/architecture-overview",
-    "views": 186
+    "views": 191
+  },
+  {
+    "path": "/enterprise-version/install-palette",
+    "url": "https://docs.spectrocloud.com/enterprise-version/install-palette",
+    "views": 181
+  },
+  {
+    "path": "/paletteai-inference-launchpad/how-to-guides",
+    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides",
+    "views": 172
+  },
+  {
+    "path": "/clusters",
+    "url": "https://docs.spectrocloud.com/clusters",
+    "views": 172
   }
 ]
