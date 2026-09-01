@@ -46,6 +46,44 @@ tags: ["release-notes"]
   timeout and connectivity errors with a retry instead. Refer to
   [Registries](../registries-and-packs/registries/registries.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11127 -->
+
+- Palette removes the deprecated `GET /v1/projects` endpoint. Use `POST /v1/dashboard/projects` instead, which supports
+  the filtering and sorting that the removed endpoint lacked. Update any automation, script, or integration that calls
+  `GET /v1/projects` before you upgrade, because those calls fail after the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11633 -->
+
+- Creating or updating a registry now requires a non-empty `metadata.name`. Palette validates the field at the API layer
+  and rejects a missing or empty name with an HTTP 400 response that identifies `metadata.name`. Earlier releases
+  performed no field-level check, so you could create a registry with an empty name, and only the uniqueness constraint
+  on the tenant and name pair rejected it later, which surfaced as a misleading duplicate-name error. The validation
+  applies to pack, Helm, basic OCI, and ECR OCI registries. Existing registries are unaffected, and no pre-upgrade or
+  post-upgrade action is required. Update any automation or Terraform configuration that templates a registry payload
+  and might pass an unset name. Refer to [Registries](../registries-and-packs/registries/registries.md) for more
+  information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11534 -->
+
+- Updating an OCI registry that uses the Helm or Zarf provider no longer accepts a change to the synchronization
+  setting. Palette treats synchronization as a create-only setting for these registries, and the Palette UI does not
+  offer the toggle after creation. The update API accepted the change and returned success without applying it. The API
+  now rejects the request with an HTTP 400 response and the message
+  `Registry synchronization setting cannot be changed after the registry is created`. This applies to both basic and ECR
+  OCI registries. If you manage registries with the Terraform provider, remove any change to `is_synchronization` on an
+  existing `spectrocloud_registry_oci` resource. Such a change previously produced persistent `terraform plan` drift,
+  because each apply reported success without taking effect. Refer to
+  [Registries](../registries-and-packs/registries/registries.md) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11675 -->
+
+- The Edge host search API, `POST /v1/dashboard/edgehosts/search`, now has its own sort field contract. The accepted
+  sort fields are `name`, `state`, `healthState`, `creationTimestamp`, and `lastModifiedTimestamp`. Palette removes the
+  `environment`, `clusterName`, and `clusterState` fields, which do not apply to Edge hosts. A request that sorts on one
+  of the removed fields now returns an HTTP 422 response instead of an HTTP 500 response. Sorting on `healthState` was
+  advertised in earlier releases but did not return results, and now works. Remove the unsupported fields from any
+  automation or integration that sorts Edge host search results.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->
@@ -176,6 +214,20 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
+#### Breaking Changes {#edge-breaking-changes-4.10.0}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8314 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
+
+- Upgrading an existing connected Edge cluster on an operating system with systemd version 255 or later requires a
+  provider image built with **CanvOS 4.10.x** that sets `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Reference the image
+  through `system.uri` in the BYOOS pack for the first upgrade after you adopt **CanvOS 4.10.x**. This upgrade aligns
+  the Palette Edge node agent on the host with the Palette release. Subsequent Kubernetes upgrades do not need a
+  provider image, so set `system.uri: NA` in the BYOOS pack. For Unified Kernel Image (UKI) deployments, sign the new
+  provider image and the systemd extensions with the same keys that you used to sign the installer. Refer to
+  [Upgrade an Existing Cluster](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#upgrade-an-existing-cluster)
+  for more information.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8679 -->
@@ -207,8 +259,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Connected Edge clusters can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at runtime,
   instead of embedding those binaries in the provider image. On operating systems running systemd version 255 or later,
-  provider images built with CanvOS 4.10.x exclude the binaries by default, and Stylus 4.10.x delivers them through
-  systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new
+  provider images built with CanvOS 4.10.x exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x
+  delivers them through systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new
   `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file overrides the default when a specific flow requires the
   binaries embedded. Refer to
   [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
@@ -301,7 +353,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ### Virtual Machine Orchestrator (VMO)
 
-#### Bug Fixes
+#### VMO Pack
+
+##### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-811 -->
 
@@ -316,6 +370,29 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   and complete the upload. This occurred when the upload was proxied through Palette because the cluster had no direct
   upload URL available. The upload pages now display a notice before an upload begins, and a proxied upload that fails
   states that direct upload access has to be enabled on the VMO pack.
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
+
+- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
+
+##### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
+
+- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
+  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
+  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
+  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
+  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
+  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
+
+- A new
+  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
+  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
+  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
+  satisfy.
 
 ### Automation
 
@@ -349,29 +426,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 - The Palette CLI now confirms content bundle uploads immediately. Previously, after the upload progress bar reached
   100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
   upload completion as soon as the transfer finishes.
-
-### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
-
-- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
-
-#### Features
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
-
-- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
-  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
-  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
-  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
-  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
-  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
-
-- A new
-  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
-  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
-  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
-  satisfy.
 
 ### Docs and Education
 
