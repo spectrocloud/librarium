@@ -36,13 +36,9 @@ automatic option first, followed by any named engines the appliance exposes, eac
 
 ## Supported Engine Kinds
 
-PaletteAI Inference Launchpad supports one engine kind, vLLM.
-
-| **Kind** | **Hardware** | **Summary**                                   |
-| -------- | ------------ | --------------------------------------------- |
-| vLLM     | GPU          | High-throughput GPU serving for large models. |
-
-Because vLLM is the only supported kind, the automatic option and any manual selection both resolve to a vLLM engine.
+PaletteAI Inference Launchpad supports one engine kind, vLLM, which provides high-throughput GPU serving for large
+models. Because it is the only supported kind, the automatic option and any manual selection both resolve to a vLLM
+engine.
 
 ## Engine Arguments
 
