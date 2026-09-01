@@ -90,9 +90,10 @@ The cap is configurable. For where the setting lives and how to change it, refer
 The vision model is a preprocessing stage, not a general-purpose assistant. It is sized to convert a small number of
 images to text, not to hold ordinary coding-assistant sessions.
 
-That sizing is what makes it unsuited as the target of general chat and tool-using traffic. It shares each GPU with the text model and receives only a small share of
-that memory, so it has neither the context window nor the throughput such sessions expect. Client routing therefore
-stays pointed at the text model. For how routing works, refer to [Request Routing](./architecture.md#request-routing).
+That sizing is what makes it unsuited as the target of general chat and tool-using traffic. It shares each GPU with the
+text model and receives only a small share of that memory, so it has neither the context window nor the throughput such
+sessions expect. Client routing therefore stays pointed at the text model. For how routing works, refer to
+[Request Routing](./architecture.md#request-routing).
 
 ## What Vision Preprocessing Is Not
 
