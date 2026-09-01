@@ -30,6 +30,23 @@ content bundle from the [Content](./upload-content-bundle.md) page and redeploy 
 
 ## Update Local Cluster
 
+:::warning
+
+Palette enforces sequential Kubernetes minor version upgrades on locally managed Edge clusters, in both connected and
+air-gapped modes. If the cluster profile version you upload skips one or more Kubernetes minor versions, the Edge host
+manager rejects the update, and you cannot select **Confirm Changes** or **Update**. Upgrade one minor version at a time
+instead. Palette displays the following message.
+
+> Kubernetes upgrades across multiple minor versions are not supported. Please update your cluster profile to
+> sequentially upgrade the Kubernetes pack across each minor version.
+
+Similarly, after the cluster successfully upgrades to a new Kubernetes minor version, the Edge host manager rejects an
+update that downgrades it to a lower minor version than the one it runs today, unless the downgrade is part of a cluster
+profile rollback. For more information, refer to the
+[Kubernetes Upgrades](../../../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
+
 1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
    refer to [Access Local UI](../host-management/access-console.md).
 

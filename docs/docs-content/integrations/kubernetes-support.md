@@ -62,18 +62,58 @@ about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#
 
 ## Kubernetes Upgrades
 
-:::warning
+Kubernetes supports sequential minor version upgrades only, one minor version at a time. For example, if you are using
+Kubernetes version 1.30, you upgrade to 1.31 before upgrading to 1.32. Skipping a minor version leaves control-plane
+components in an inconsistent, often unrecoverable state. You can learn more about the official Kubernetes upgrade
+guidelines on the [Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page.
 
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in this section.
+To protect your clusters, Palette enforces this sequential upgrade path. The restrictions described in this section
+apply uniformly to all Kubernetes distributions, including CNCF Kubernetes, PXK, PXK-E, K3s, RKE2, MicroK8s, and
+cloud-managed distributions such as Amazon EKS, Azure AKS, and Google GKE, with no per-distribution exceptions. The
+restrictions apply to both management-plane clusters, which you manage through the Palette UI, API, or Terraform, and
+Edge clusters, which you manage through the Edge Local UI in both connected and air-gapped modes.
+
+### Palette Blocks Multi-Minor Upgrades
+
+Palette blocks any Kubernetes upgrade that skips one or more minor versions. For example, an upgrade from 1.30 to 1.32
+is not allowed. To reach 1.32 from 1.30, upgrade one minor version at a time, first to 1.31 and then to 1.32. Changes
+within the same minor version, such as a patch upgrade from 1.30.4 to 1.30.8, remain allowed.
+
+When you attempt a multi-minor upgrade, Palette disables the update action in the review editor and displays the
+following message.
+
+> Kubernetes upgrades across multiple minor versions are not supported. Please update your cluster profile to
+> sequentially upgrade the Kubernetes pack across each minor version.
+
+Palette enforces this restriction on the server, so it applies across every upgrade path, including the Palette UI, the
+API, Terraform and Crossplane (where the block surfaces as a plan or apply diagnostic), and scheduled or
+cluster-template updates. Palette refuses a scheduled or template-driven update that skips a minor version and does not
+advance the cluster.
+
+### Palette Blocks Downgrades After an Upgrade
+
+After a cluster successfully upgrades to a new Kubernetes minor version, Palette blocks any attempt to downgrade it to a
+minor version lower than the one it is currently running. When you attempt such a downgrade, Palette displays the
+following message.
+
+> Kubernetes downgrades are not supported after a successful upgrade. Please update your cluster profile to a Kubernetes
+> version equal to or newer than the currently running version.
+
+This block applies only to reverting a Kubernetes version that the cluster has already successfully reached. Deploying a
+lower Kubernetes minor version to a cluster that has not already upgraded to a higher one is not affected.
+
+:::info
+
+A Kubernetes downgrade that occurs as part of a cluster profile rollback, such as restoring an earlier cluster profile
+version or revision, is exempt from this block. The block applies to a user-initiated downgrade, not to a profile
+rollback or revision restore.
 
 :::
 
-The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
-using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about
-the official Kubernetes upgrade guidelines in the
-[Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page. We recommend following the official
-guidelines for all Kubernetes upgrades, including PXK and PXK-E.
+### Imported Clusters
+
+The multi-minor upgrade block and the downgrade block do not apply to imported (brownfield) clusters. Palette does not
+manage the Kubernetes lifecycle of imported clusters, so it does not enforce these restrictions on them.
 
 :::tip
 

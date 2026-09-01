@@ -124,6 +124,24 @@ pack, but if you want to use a different storage pack altogether, we recommend y
 
 :::
 
+## Kubernetes Minor Version Upgrades
+
+Edge clusters follow the same sequential Kubernetes upgrade rules as management-plane clusters. Palette blocks a
+control-plane upgrade that skips one or more Kubernetes minor versions. After a cluster successfully upgrades, Palette
+also blocks a downgrade to a minor version lower than the one the cluster runs. These blocks apply to all Edge
+Kubernetes distributions, and you cannot override them. For the full behavior and the exact messages that Palette
+displays, refer to the [Kubernetes Upgrades](../../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+How Palette applies the block depends on how you manage the cluster.
+
+- For connected (centrally managed) Edge clusters, the management plane validates both interactive and scheduled or
+  cluster-template updates before it pushes the updated profile down to the Edge host. Palette refuses an upgrade that
+  skips a minor version before the cluster advances.
+
+- For locally managed Edge clusters, the Edge host manager validates interactive updates in the Edge Local UI. It
+  rejects an upgrade that skips a minor version and blocks the update action. For more information, refer to
+  [Update Local Cluster](../local-ui/cluster-management/update-cluster.md).
+
 ## Decoupled Control Plane and Worker Node Upgrades
 
 Connected (centrally managed) Edge Native clusters support upgrading the control plane independently from worker pools.

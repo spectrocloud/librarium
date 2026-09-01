@@ -25,9 +25,10 @@ repave schedule and methodology. Refer to
 
 :::warning
 
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the
-[Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+After a cluster successfully upgrades to a new Kubernetes minor version, Palette blocks any attempt to downgrade it to a
+lower minor version than the one it is currently running, and displays an error banner. This block applies to
+user-initiated downgrades; a downgrade that occurs as part of a cluster profile rollback is exempt. Before upgrading,
+review the [Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
 
 :::
 
@@ -37,8 +38,13 @@ upgrading, you review the information provided in the
   instead. For more information about creating an Edge cluster, refer to
   [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
-- Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
-  Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths.
+- You cannot skip minor versions when upgrading the Kubernetes version of a cluster. Palette prevents a Kubernetes
+  upgrade that skips one or more minor versions. If you attempt a multi-minor upgrade in the review-changes editor,
+  Palette disables the **Update** button and displays a banner. Upgrade one minor version at a time instead. For more
+  information, refer to the [Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+  This restriction applies to all Kubernetes distributions, but it does not apply to imported (brownfield) clusters,
+  whose Kubernetes lifecycle Palette does not manage. For distribution-specific upgrade guidance, refer to the
+  documentation of your Kubernetes distribution.
 
   - For PXK and PXK-E, refer to
     [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).

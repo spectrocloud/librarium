@@ -235,9 +235,15 @@ Ensure you follow these practices when updating to a new pack version.
 - You should not copy the pack configuration from one version to another, as the newer version often contains
   customizations. Instead, you should integrate your changes manually in the new version. Use the **Keep** button to
   copy the lines from the current configuration to the new version.
-- Update to a newer Kubernetes version incrementally, one minor version at a time.
+- Update to a newer Kubernetes version incrementally, one minor version at a time. Palette prevents an upgrade of the
+  Kubernetes pack that skips one or more minor versions. When you review the changes, Palette disables **Apply Changes /
+  Update** and displays a banner if the update would skip a minor version.
 - Select a specific target version instead of a group that ends in `.x`
-- We do not recommend downgrading packs to the previous version.
+- We do not recommend downgrading packs to the previous version. For the Kubernetes pack specifically, after a cluster
+  successfully upgrades to a new Kubernetes minor version, Palette blocks a downgrade to a lower minor version than the
+  one the cluster is currently running. This block does not apply to a downgrade that occurs as part of a cluster
+  profile rollback. For more information, refer to the
+  [Kubernetes Upgrades](../../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
 
 :::
 

@@ -79,6 +79,15 @@ each variable before attempting the upgrade again.
 
 :::
 
+:::info
+
+A scheduled or template-driven update that would upgrade a cluster's Kubernetes version across more than one minor
+version at a time is refused on the server, and the cluster is not advanced. This is consistent with interactive cluster
+updates. Update the linked cluster profile to advance the Kubernetes version one minor version at a time. For more
+information, refer to the [Kubernetes Upgrades](../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
+
 ### Policies Tab
 
 Use the **Policies** tab to perform the following actions:

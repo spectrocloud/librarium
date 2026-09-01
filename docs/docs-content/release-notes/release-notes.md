@@ -11,6 +11,21 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+{/* PROVISIONAL ENTRY. The release date and version below are placeholders pending the PE-9338 target release (Solution Design Open Question 5). Move this entry under the correct release heading, or regenerate it with `make generate-release-notes`, at release cut. */}
+
+## TBD, 2026 - Release TBD
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9338 -->
+
+- Palette now enforces sequential Kubernetes minor version upgrades. Palette blocks an upgrade that skips one or more
+  Kubernetes minor versions, and after a cluster successfully upgrades, it blocks a downgrade to a minor version lower
+  than the one the cluster runs. The restrictions apply to management-plane and Edge clusters, in both connected and
+  air-gapped modes, across all Kubernetes distributions. Imported clusters are exempt, and a downgrade performed as part
+  of a cluster profile rollback is exempt. Refer to
+  [Kubernetes Upgrades](../integrations/kubernetes-support.md#kubernetes-upgrades) for more information.
+
 ## August 27, 2026 - Release 4.9.52
 
 <!-- PATCH RELEASE TICKET: DOC-3162 -->
