@@ -116,9 +116,9 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Replaces a serving model by removing it from a node and then deploying a newer version or a different model. Refer to
   [Replace a Model](./how-to-guides/replace-a-model.md) for more information.
 
-- Exposes each model as an OpenAI-compatible endpoint and supports four engine kinds, vLLM, SGLang, Ollama, and
-  llama.cpp, selected automatically or pinned per model. Refer to
-  [Inference Engines](./explanation/inference-engines.md) for more information.
+- Exposes each model as an OpenAI-compatible endpoint served by vLLM, the only supported engine kind, selected
+  automatically or pinned per model. Refer to [Inference Engines](./explanation/inference-engines.md) for more
+  information.
 
 - Serves many clients from one appliance, each identified by API tokens prefixed `lpai_`. Refer to
   [Clients and Quotas](./explanation/clients-and-quotas.md) and [Create a Client](./how-to-guides/create-a-client.md)
