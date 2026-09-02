@@ -21,10 +21,10 @@ provide detailed steps to add an S3 bucket as the backup location using the STS 
 Three scenarios are supported, depending on where your Kubernetes cluster runs and where the S3 bucket lives. Select the
 section that matches your use case.
 
-- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts) — the cluster and the S3 bucket are in the same
+- [Single AWS Account with AWS STS](#single-aws-account-with-aws-sts) - the cluster and the S3 bucket are in the same
   AWS account.
 
-- [Multiple AWS Accounts with AWS STS](#multiple-aws-accounts-with-aws-sts) — the cluster is in one AWS account and the
+- [Multiple AWS Accounts with AWS STS](#multiple-aws-accounts-with-aws-sts) - the cluster is in one AWS account and the
   S3 bucket is in another.
 
 - [Non-AWS Cluster with AWS STS](#non-aws-cluster-with-aws-sts) - the cluster runs on non-AWS infrastructure such as
@@ -190,9 +190,9 @@ AWS STS to authenticate Palette with the S3 bucket.
 
 The next step depends on your cluster type.
 
-- AWS IaaS workload clusters — no additional configuration is required. The node's instance role provides the
+- AWS IaaS workload clusters - no additional configuration is required. The node's instance role provides the
   credentials to access the S3 bucket.
-- EKS workload clusters — update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA).
+- EKS workload clusters - update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA).
   Expand the following section for the steps.
 
 <details>
@@ -638,9 +638,9 @@ AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
 The next step depends on your cluster type.
 
-- AWS IaaS workload clusters — no additional configuration is required. The node's instance role provides the
+- AWS IaaS workload clusters - no additional configuration is required. The node's instance role provides the
   credentials to access the S3 bucket.
-- EKS workload clusters — update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA).
+- EKS workload clusters - update the backup IAM role trust policy to support IAM Roles for Service Accounts (IRSA).
   Expand the following section for the steps.
 
 <details>
