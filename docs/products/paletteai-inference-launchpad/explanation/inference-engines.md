@@ -7,7 +7,7 @@ description:
 hide_table_of_contents: false
 sidebar_position: 4
 tags: ["paletteai-inference-launchpad", "models", "explanation"]
-keywords: ["launchpad", "ai", "inference", "engine", "vLLM", "SGLang", "Ollama"]
+keywords: ["launchpad", "ai", "inference", "engine", "vLLM"]
 ---
 
 This page explains what an inference engine is in PaletteAI Inference Launchpad, how the appliance selects one
@@ -32,21 +32,13 @@ engine to the model and the chosen nodes for you.
 
 The engines you can choose from depend on how your appliance is configured. The **Deploy model** dialog lists the
 automatic option first, followed by any named engines the appliance exposes, each labeled with its kind, such as
-`default · sglang`.
+`default · vllm`.
 
 ## Supported Engine Kinds
 
-PaletteAI Inference Launchpad supports the following engine kinds.
-
-| **Kind**  | **Hardware** | **Summary**                                                              |
-| --------- | ------------ | ------------------------------------------------------------------------ |
-| vLLM      | GPU          | High-throughput GPU serving for large models.                            |
-| SGLang    | GPU          | High-throughput GPU serving with support for advanced serving features.  |
-| Ollama    | CPU          | CPU-based serving for smaller models on nodes without a GPU.             |
-| llama.cpp | CPU          | Lightweight CPU-based serving for smaller models on nodes without a GPU. |
-
-Serving features can vary by kind. For example, some kinds support reasoning and tool-calling for models that provide
-them, while others do not. The automatic option accounts for these differences when it matches an engine to a model.
+PaletteAI Inference Launchpad supports one engine kind, vLLM, which provides high-throughput GPU serving for large
+models. Because it is the only supported kind, the automatic option and any manual selection both resolve to a vLLM
+engine.
 
 ## Engine Arguments
 
