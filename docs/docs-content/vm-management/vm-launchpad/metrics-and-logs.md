@@ -78,8 +78,10 @@ configuration change.
 
 1. Open your VMO cluster profile in Palette and select the **Virtual Machine Orchestrator** pack.
 
-2. Under `charts.vmo-manager.deployment.extraEnv`, add the two variables with your extra namespaces and workload names.
-   Both fields take comma-separated values and trim whitespace.
+2. Under `charts.vmo-manager.deployment.extraEnv`, add the two environment variables `VMO_OTEL_EXTRA_NAMESPACES` and
+   `VMO_OTEL_EXTRA_NAMES` with your extra namespaces and workload names. Use these exact variable names, which VMO reads
+   literally; only the values in the following example are placeholders. Both fields take comma-separated values and
+   trim whitespace.
 
    ```yaml title="Example YAML values"
    charts:
