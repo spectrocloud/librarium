@@ -154,7 +154,7 @@ tags: ["release-notes"]
 
   If you have existing EKS clusters that use the `irsaRoles` field, you should add the `iam:ListRolePolicies` action to
   the **PaletteControllersEKSPolicy** AWS IAM policy so that Palette can fully manage the lifecycle of the roles.
-  
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6720 -->
 
 - The cert-manager chart deployed with the Palette management plane has been upgraded from version 1.14 to version
