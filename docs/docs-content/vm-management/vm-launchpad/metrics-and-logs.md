@@ -81,7 +81,7 @@ configuration change.
 2. Under `charts.vmo-manager.deployment.extraEnv`, add the two variables with your extra namespaces and workload names.
    Both fields take comma-separated values and trim whitespace.
 
-   ```yaml
+   ```yaml title="Example YAML values"
    charts:
      vmo-manager:
        deployment:
