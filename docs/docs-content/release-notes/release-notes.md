@@ -11,6 +11,30 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 2, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3179 -->
+<!-- PATCH RELEASE VERSION: 4.9.x -->
+
+### Breaking Changes {#breaking-changes-4-9-x}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11891 -->
+
+- The `GET /v1/spectroclusters/{uid}/assets/manifest` [Palette API](/api/introduction/) endpoint is now restricted to
+  the Palette cluster management agent. Requests made with a user access token or an API key return a forbidden
+  response. The cluster asset manifest contains sensitive material, such as the admin kubeconfig, certificates, and
+  secrets, that only the agent requires for cluster management operations. Update any automation that retrieves the
+  cluster asset manifest with a user access token or an API key.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11891 -->
+
+- Fixed an issue where the cluster asset manifest endpoint authorized requests against the `cluster.get` permission
+  alone. As a result, users with read-only cluster access, such as those assigned the
+  [Cluster Viewer](../user-management/palette-rbac/project-scope-roles-permissions.md) role, could retrieve sensitive
+  cluster material that their role otherwise denies them.
+
 ## August 27, 2026 - Release 4.9.52
 
 <!-- PATCH RELEASE TICKET: DOC-3162 -->
