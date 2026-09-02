@@ -35,14 +35,6 @@ tags: ["release-notes"]
   [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and
   [Version an App Profile](../profiles/app-profiles/modify-app-profiles/version-app-profile.md).
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-7364 -->
-
-- The **PaletteControllersEKSPolicy** AWS IAM policy now requires the `iam:ListRolePolicies` action to support day-2
-  reconciliation of IRSA roles for Amazon EKS clusters. Add this action to the policy before upgrading; without it,
-  adoption of any existing IAM role referenced by `irsaRoles` fails on the next reconcile. Refer to
-  [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
-  for the updated policy.
-
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7210 -->
@@ -101,12 +93,14 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7364 -->
 
-- Palette now reconciles the IAM roles defined in the `irsaRoles` field of the Kubernetes EKS pack as a day-2 resource.
-  Edits to `irsaRoles` in the cluster profile take effect on the next reconcile: policies are attached and detached,
-  service account changes update the trust policy, and removing an entry deletes the underlying IAM role. When you
-  delete an EKS cluster, Palette deletes every IRSA role it manages for that cluster. Refer to
-  [Configure IAM Roles for Service Accounts](../integrations/kubernetes-eks.mdx#configure-iam-roles-for-service-accounts)
-  for more information.
+- Palette now updates IAM roles in AWS when the `irsaRoles` parameter of the EKS pack is updated. Previously, specified
+  IAM roles were created in AWS, but not updated when the `irsaRoles` field changed. Edits to `irsaRoles` in the cluster
+  profile take effect on the next reconcile: policies are attached and detached, service account changes update the
+  trust policy, and removing an entry deletes the underlying IAM role. When you delete an EKS cluster, Palette deletes
+  every IRSA role that it manages for that cluster.
+
+  If you have existing EKS clusters that use the `irsaRoles` field, you should add the `iam:ListRolePolicies` action to
+  the **PaletteControllersEKSPolicy** AWS IAM policy so that Palette can fully manage the lifecycle of the roles.
 
 #### Bug Fixes
 
