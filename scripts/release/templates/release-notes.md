@@ -34,6 +34,24 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the [Palette section](#palette-enterprise-{{RELEASE_NAME}}) for more details.
 
+### Virtual Machine Orchestrator (VMO)
+
+#### VMO Pack
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+#### PaletteAI VM Launchpad
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
 ### Automation
 
 :::info

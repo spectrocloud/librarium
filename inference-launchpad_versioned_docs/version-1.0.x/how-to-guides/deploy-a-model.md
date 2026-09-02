@@ -75,8 +75,3 @@ is one of the following:
 
 To resolve the reason, free GPUs on a node by draining or shutting down another model, add capacity to the cluster, or
 resolve the unknown allocation on the affected nodes. Then deploy the model again.
-
-## Next Steps
-
-To change which model handles requests that do not name a model explicitly, refer to
-[Switch the Default Model](./set-the-default-model.md).

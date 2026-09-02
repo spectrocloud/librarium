@@ -192,9 +192,6 @@ For deploy reasons that are about cluster capacity rather than your metadata, re
 
 Now that the model is serving, put it in front of clients.
 
-- **Make it the default:** To have this model answer requests that do not name a model, refer to
-  [Switch the Default Model](./set-the-default-model.md).
-
 - **Give a client access:** To route a client to the model, refer to
   [Manage a Client's Model Access](./manage-client-model-access.md).
 
