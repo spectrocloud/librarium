@@ -131,11 +131,11 @@ self-hosted Palette.
   helm="palette"
 />
 
-## Troubleshoot Image Pull Secret Propagation
+## Monitor Propagation of the Image Pull Secret {#monitor-propagation}
 
 <PartialsComponent
   category="self-hosted"
-  name="image-pull-secret-troubleshooting"
+  name="image-pull-secret-monitor-propagation"
   edition="palette"
   version="Palette"
   helm="palette"

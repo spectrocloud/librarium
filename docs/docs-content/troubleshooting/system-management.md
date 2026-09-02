@@ -35,10 +35,13 @@ Debug steps vary depending on your product.
 3. For each cluster in the list, use the failure reason to help determine why the cluster did not receive the secret so
    you can take corrective action.
 
-   - For connectivity issues, the secret will propagate properly when you restore connectivity.
+   - For connectivity issues, the secret propagates properly when you restore connectivity.
    - If the [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) feature
      is excluding the cluster from Palette agent upgrades, the cluster does not have the update it needs to receive the
-     secret. You need to toggle off Pause Agent Upgrades before the secret will propagate.
+     secret. Toggle off Pause Agent Upgrades to allow the secret to propagate.
+   - Local propagation failures occur when the secret cannot be configured within the cluster due to conditions in the
+     cluster itself. For example, the secret might reach the cluster, but fail to be properly configured because of API
+     server throttling or lack of permissions for the service account used by Palette cluster agents.
 
 ### Debug Steps for Self-Hosted Palette and VerteX
 
@@ -70,14 +73,17 @@ Debug steps vary depending on your product.
 7. For each cluster in the list, use the failure reason to help determine why the cluster did not receive the secret so
    you can take corrective action.
 
-   - For connectivity issues, the secret will propagate properly when you restore connectivity.
+   - For connectivity issues, the secret propagates properly when you restore connectivity.
    - If the [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) feature
      is excluding the cluster from Palette agent upgrades, the cluster does not have the update it needs to receive the
-     secret. You need to toggle off Pause Agent Upgrades before the secret will propagate.
+     secret. Toggle off Pause Agent Upgrades to allow the secret to propagate.
+   - Local propagation failures occur when the secret cannot be configured within the cluster due to conditions in the
+     cluster itself. For example, the secret might reach the cluster, but fail to be properly configured because of API
+     server throttling or lack of permissions for the service account used by Palette cluster agents.
 
 8. Repeat Steps 5 through 7 for each remaining tenant you recorded in Step 4.
 
-#### Breakglass scenario: Manually create secret in management plane {#breakglass-pull-secret}
+#### Break-glass scenario: Manually create secret in management plane {#breakglass-pull-secret}
 
 If the image pull secret is not properly configured for the deployment and you cannot access the system console to add
 it, you can use the terminal to manually create the secret in the management cluster so that it can be propagated to the
@@ -99,7 +105,7 @@ workload clusters.
 3. Use the following command to create secrets in the management cluster.
 
    ```shell
-   kubectl apply -f - <<EOF
+   kubectl apply --filename - <<EOF
    apiVersion: v1
    kind: Secret
    metadata:
@@ -123,7 +129,7 @@ workload clusters.
    For example, to create the secret in the `hubble-system` namespace of the management cluster, run the following.
 
    ```shell
-   kubectl apply -f - <<EOF
+   kubectl apply --filename - <<EOF
    apiVersion: v1
    kind: Secret
    metadata:
