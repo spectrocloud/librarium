@@ -69,20 +69,15 @@ model as ready before it can serve requests.
 ## Request Routing
 
 The gateway routes each request to a model. A request that names a model uses that model, and a request that does not
-name a model falls back to the default model. When you change the default model, the gateway rebuilds its router in
-place. The gateway does not restart, and it does not drain requests that are in progress. Requests that the gateway
-already routed continue on their assigned model, and the new default applies only to later requests.
+name a model falls back to the default model.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
 quotas. For how clients, API tokens, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
 
 ### The Default Model
 
-The appliance sets the default model for you. The model you deploy during setup becomes the default, and if only one
-model serves, that model is the default. The appliance does not switch the default to a different model on its own. When
-the current default stops serving, the appliance raises an incident on the **Overview** page and offers a one-step fix
-so you can switch the default to a model that is currently serving. For that procedure, refer to
-[Switch the Default Model](../how-to-guides/set-the-default-model.md).
+The default model is the model the appliance routes a request to when the request does not name a specific model. The
+appliance sets the default; there is no operator control to change which model is the default.
 
 ## Network Topology
 

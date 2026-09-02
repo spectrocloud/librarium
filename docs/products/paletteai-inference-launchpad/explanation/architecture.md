@@ -92,11 +92,8 @@ this step. For the request path and how to turn the feature on, refer to
 
 ### The Default Model
 
-The appliance sets the default model for you. The model you deploy during setup becomes the default, and if only one
-model serves, that model is the default. The appliance does not switch the default to a different model on its own. When
-the current default stops serving, the appliance raises an incident on the **Overview** page and offers a one-step fix
-so you can switch the default to a model that is currently serving. For that procedure, refer to
-[Switch the Default Model](../how-to-guides/set-the-default-model.md).
+The default model is the model the appliance routes a request to when the request does not name a specific model. The
+appliance sets the default; there is no operator control to change which model is the default.
 
 ### External Inference Endpoints {#external-inference-endpoints}
 

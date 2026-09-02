@@ -25,8 +25,6 @@ model and then deploy the replacement from **Deploy New Model**.
 
 - **Other nodes.** A per-node remove affects only the target node. Refer to
   [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
-- **Default model.** After removing the cluster default, switch the default to the replacement once it is serving. Refer
-  to [The Default Model](../explanation/architecture.md#the-default-model).
 - **Routing and quotas.** If the replacement uses a different name than the current model, update any client tier maps
   that pointed at the old name. Refer to [Request Routing](../explanation/architecture.md#request-routing).
 - **Last node.** Deploy the replacement after removing the model from its last node, or the model is no longer deployed
@@ -64,9 +62,6 @@ If a node is not selectable, it is missing the model's weights or has too few fr
 finish removing the previous model or free capacity, then try again. Refer to
 [Resolve a Blocked Deployment](./deploy-a-model.md#resolve-a-blocked-deployment).
 
-If you removed the default model, switch the default to the replacement once it is serving. Refer to
-[Switch the Default Model](./set-the-default-model.md).
-
 ### Stop a Deploy That Is Still in Progress
 
 1. Expand the model row.
@@ -87,6 +82,5 @@ Client routing and quotas survive a remove-then-deploy. Refer to
 ## Next Steps
 
 - [Deploy a Model](./deploy-a-model.md)
-- [Switch the Default Model](./set-the-default-model.md)
 - [Manage a Client's Model Access](./manage-client-model-access.md)
 - [View Client Usage](./view-client-usage.md)

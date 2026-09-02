@@ -44,12 +44,8 @@ conceptual introduction, refer to [What is PaletteAI Inference Launchpad?](./pal
 - Deploys a model to the cluster and places it on the best-fit node automatically, after a guarded preview, gate,
   provision, and smoke-test sequence. Refer to [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
 
-- Lets you set a default model that handles requests no routing rule matches, and rebuilds the router in place when you
-  change it, without a gateway restart. Refer to [Set the Default Model](./how-to-guides/set-the-default-model.md) for
-  more information.
-
-- Exposes each model as an OpenAI-compatible endpoint and supports four engine kinds, vLLM, SGLang, Ollama, and
-  llama.cpp, selected automatically or pinned per model. Refer to
+- Exposes each model as an OpenAI-compatible endpoint served by vLLM, the only supported engine kind, selected
+  automatically or pinned per model. Refer to
   [Inference Engines](./explanation/inference-engines.md) for more information.
 
 - Serves many clients from one appliance, each identified by API tokens prefixed `lpai_`. Refer to

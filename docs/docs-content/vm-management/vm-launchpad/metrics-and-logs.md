@@ -35,13 +35,71 @@ events after 30 days, forwarding appliance logs to a central system is how you k
 
 ## Page Visibility
 
-The **Metrics and Logs** page appears in the VMO UI only when VMO detects an external OpenTelemetry Collector Deployment
-or DaemonSet in the cluster. VMO checks at runtime through a capability probe, and the page stays hidden until at least
-one such workload exists.
+The **Metrics and Logs** page appears in the VMO UI only when VMO detects an OpenTelemetry Collector Deployment or
+DaemonSet in the cluster. VMO checks at runtime through a capability probe that scans a built-in set of namespaces for
+workloads with a built-in set of names. The page stays hidden until at least one match exists.
 
-If **Metrics and Logs** does not appear under **Settings** > **Configuration**, deploy an OpenTelemetry Collector on the
-cluster. Refer to [Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon) for the
-Palette VMO pack addon path.
+By default, the probe searches the following namespaces:
+
+- `kube-system`
+- `opentelemetry`
+- `monitoring`
+- `otel`
+
+for a Deployment or DaemonSet with any of the following names:
+
+- `otel-collector-agent`
+- `opentelemetry-collector`
+- `otel-collector`
+
+The `kube-system` namespace covers the OpenTelemetry Collector that the Palette VMO pack addon deploys. The other three
+cover community Helm charts and manual installs into a dedicated namespace.
+
+If **Metrics and Logs** does not appear under **Settings** > **Configuration**, either deploy an OpenTelemetry Collector
+into one of the default locations or extend the probe as described in
+[Extend the OpenTelemetry Collector Probe](#extend-the-opentelemetry-collector-probe). Refer to
+[Configure the OpenTelemetry Collector addon](#configure-the-opentelemetry-collector-addon) for the Palette VMO pack
+addon path.
+
+:::info
+
+If the probe cannot reach the Kubernetes API server for any check because of a network error, RBAC denial, or 5xx
+response, VMO leaves the **Metrics and Logs** page visible rather than hiding a working feature. Confirm the
+OpenTelemetry Collector is present before relying on page visibility as a signal.
+
+:::
+
+### Extend the OpenTelemetry Collector Probe
+
+If your OpenTelemetry Collector runs under a non-default namespace or workload name, such as one deployed by a custom
+Helm chart or a service mesh sidecar, extend the probe by setting two environment variables on the `vmo-manager`
+container through the VMO pack values. VMO appends the extras to the defaults, so existing installs keep working with no
+configuration change.
+
+1. Open your VMO cluster profile in Palette and select the **Virtual Machine Orchestrator** pack.
+
+2. Under `charts.vmo-manager.deployment.extraEnv`, add the two environment variables `VMO_OTEL_EXTRA_NAMESPACES` and
+   `VMO_OTEL_EXTRA_NAMES` with your extra namespaces and workload names. Use these exact variable names, which VMO reads
+   literally; only the values in the following example are placeholders. Both fields take comma-separated values and
+   trim whitespace.
+
+   ```yaml title="Example YAML values"
+   charts:
+     vmo-manager:
+       deployment:
+         extraEnv:
+           - name: VMO_OTEL_EXTRA_NAMESPACES
+             value: "my-observability,mesh-obs"
+           - name: VMO_OTEL_EXTRA_NAMES
+             value: "my-otel-agent"
+   ```
+
+3. Save the profile and apply the update. Palette re-renders the Deployment, the `vmo-manager` pods restart with the new
+   environment, and the next capability probe picks up the extras within 60 seconds. The **Metrics and Logs** page
+   appears in the sidebar once a matching workload is found.
+
+The extension is additive. Removing the environment variables reverts the probe to the built-in defaults on the next pod
+restart.
 
 ## How Forwarding Works
 
