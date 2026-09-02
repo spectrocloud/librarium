@@ -110,8 +110,7 @@ role it manages for that cluster.
 Palette only manages the IAM roles it created for the cluster and does not modify roles it does not own. If a role with
 the same name already exists in AWS when you add it to `irsaRoles`, Palette adopts it when its policies and trust policy
 match the profile, and otherwise leaves it untouched and reports a warning on the cluster. Refer to
-[IRSA reconcile warnings](../troubleshooting/cluster-deployment.md#scenario---irsa-role-reconcile-warning) if you see a
-warning event.
+[IRSA reconcile warnings](../troubleshooting/cluster-deployment.md#scenario---irsa-role-reconcile-warning) to troubleshoot warnings.
 
 ### Configure Security Group Overrides
 
