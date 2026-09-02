@@ -82,8 +82,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11336 -->
 
 - You can now use a UI to help troubleshoot why image pull secrets did not propagate to workload clusters, which allows
-  you to identify with clusters cannot pull security-hardened images from Spectro Cloud's OCI registries. Refer to [System Management troubleshooting](../troubleshooting/system-management.md) for
-  more information.
+  you to identify with clusters cannot pull security-hardened images from Spectro Cloud's OCI registries. Refer to
+  [System Management troubleshooting](../troubleshooting/system-management.md) for more information.
 
 #### Improvements
 

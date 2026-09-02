@@ -96,7 +96,7 @@ workload clusters.
    export DOCKER_CONFIG_JSON='<base64-encoded-string-provided>'
    ```
 
-3. Use the following command to create secrets in the management cluster. 
+3. Use the following command to create secrets in the management cluster.
 
    ```shell
    kubectl apply -f - <<EOF
@@ -110,7 +110,7 @@ workload clusters.
       .dockerconfigjson: ${DOCKER_CONFIG_JSON}
    EOF
    ```
-   
+
    You must create the secret in the following namespaces:
 
    - `hubble-system`
