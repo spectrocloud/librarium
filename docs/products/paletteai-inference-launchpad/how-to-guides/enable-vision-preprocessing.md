@@ -129,9 +129,8 @@ requests continue to work.
 
 ## Operational Caveats
 
-- **Do not use the vision model as a chat model.** It exists to convert images to text. Do not set it as the default
-  model, and do not point coding-assistant routing at it. Keep clients on the text model. Refer to
-  [Switch the Default Model](./set-the-default-model.md) and
+- **Do not use the vision model as a chat model.** It exists to convert images to text. Do not point coding-assistant
+  routing at it; keep clients on the text model. Refer to
   [Manage a Client's Model Access](./manage-client-model-access.md).
 - **Keep both models serving.** If the vision model stops serving, image requests fail instead of continuing without the
   images. Text-only requests are unaffected.
