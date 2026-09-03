@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "Palette APIs - 4.9",
+    "title": "Palette APIs - 4.10",
     "version": "v1"
   },
   "paths": {
@@ -6121,10 +6121,7 @@
               }
             }
           }
-        },
-        "x-Features": [
-          "ApacheCloudstack"
-        ]
+        }
       },
       "post": {
         "security": [
@@ -6255,10 +6252,7 @@
               }
             }
           }
-        },
-        "x-Features": [
-          "ApacheCloudstack"
-        ]
+        }
       }
     },
     "/v1/cloudaccounts/apache-cloudstack/{uid}": {
@@ -12966,6 +12960,16 @@
                             "type": "integer",
                             "format": "int32"
                           },
+                          "skipK8sUpgrade": {
+                            "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                            "type": "string",
+                            "default": "disabled",
+                            "enum": [
+                              "enabled",
+                              "disabled"
+                            ],
+                            "x-omitempty": true
+                          },
                           "spotVMOptions": {
                             "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
                             "type": "object",
@@ -13412,7 +13416,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -13714,7 +13719,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -15734,6 +15740,16 @@
                                 "type": "integer",
                                 "format": "int32"
                               },
+                              "skipK8sUpgrade": {
+                                "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                                "type": "string",
+                                "default": "disabled",
+                                "enum": [
+                                  "enabled",
+                                  "disabled"
+                                ],
+                                "x-omitempty": true
+                              },
                               "taints": {
                                 "description": "control plane or worker taints",
                                 "type": "array",
@@ -16029,7 +16045,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -16338,7 +16355,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -19979,7 +19997,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -20321,7 +20340,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -22461,6 +22481,16 @@
                             "type": "integer",
                             "format": "int32"
                           },
+                          "skipK8sUpgrade": {
+                            "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                            "type": "string",
+                            "default": "disabled",
+                            "enum": [
+                              "enabled",
+                              "disabled"
+                            ],
+                            "x-omitempty": true
+                          },
                           "spotVMOptions": {
                             "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
                             "type": "object",
@@ -22907,7 +22937,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -23209,7 +23240,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -25237,7 +25269,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -25376,7 +25409,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -27310,6 +27344,10 @@
             "in": "body",
             "schema": {
               "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "required": [
@@ -27609,6 +27647,10 @@
             "in": "body",
             "schema": {
               "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "required": [
@@ -29917,6 +29959,11 @@
             "name": "body",
             "in": "body",
             "schema": {
+              "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "properties": {
@@ -30316,6 +30363,11 @@
             "name": "body",
             "in": "body",
             "schema": {
+              "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "properties": {
@@ -32338,6 +32390,16 @@
                             "type": "integer",
                             "format": "int32"
                           },
+                          "skipK8sUpgrade": {
+                            "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                            "type": "string",
+                            "default": "disabled",
+                            "enum": [
+                              "enabled",
+                              "disabled"
+                            ],
+                            "x-omitempty": true
+                          },
                           "subnet": {
                             "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
                             "type": "string"
@@ -32623,7 +32685,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -32893,7 +32956,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -34738,6 +34802,11 @@
             "name": "body",
             "in": "body",
             "schema": {
+              "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "description": "Generic cluster config",
@@ -35002,6 +35071,11 @@
             "name": "body",
             "in": "body",
             "schema": {
+              "type": "object",
+              "required": [
+                "cloudConfig",
+                "poolConfig"
+              ],
               "properties": {
                 "cloudConfig": {
                   "description": "Generic cluster config",
@@ -36733,6 +36807,16 @@
                             "type": "integer",
                             "format": "int32"
                           },
+                          "skipK8sUpgrade": {
+                            "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                            "type": "string",
+                            "default": "disabled",
+                            "enum": [
+                              "enabled",
+                              "disabled"
+                            ],
+                            "x-omitempty": true
+                          },
                           "subnet": {
                             "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
                             "type": "string"
@@ -37018,7 +37102,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -37288,7 +37373,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -39486,7 +39572,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -39789,7 +39876,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -43906,7 +43994,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -44228,7 +44317,8 @@
             "schema": {
               "type": "object",
               "required": [
-                "cloudConfig"
+                "cloudConfig",
+                "poolConfig"
               ],
               "properties": {
                 "cloudConfig": {
@@ -72769,7 +72859,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "description": "Spectro cluster search filter summary spec",
+              "description": "Edge host search filter summary spec",
               "properties": {
                 "filter": {
                   "properties": {
@@ -73029,9 +73119,8 @@
                       "field": {
                         "type": "string",
                         "enum": [
-                          "environment",
-                          "clusterName",
-                          "clusterState",
+                          "name",
+                          "state",
                           "healthState",
                           "creationTimestamp",
                           "lastModifiedTimestamp"
@@ -126232,7 +126321,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -126924,7 +127014,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -128194,7 +128285,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -129370,7 +129462,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -130139,7 +130232,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -131321,7 +131415,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -132533,7 +132628,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -132541,7 +132639,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -133318,7 +133417,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -134550,7 +134650,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -134558,7 +134661,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -135869,7 +135973,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -136685,7 +136790,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -137955,7 +138061,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -138915,7 +139022,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -138923,7 +139033,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -139540,7 +139651,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -139548,7 +139662,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -141664,6 +141779,10 @@
                       "type": "array",
                       "items": {
                         "type": "object",
+                        "required": [
+                          "cloudConfig",
+                          "poolConfig"
+                        ],
                         "properties": {
                           "cloudConfig": {
                             "required": [
@@ -142368,6 +142487,10 @@
                   "type": "array",
                   "items": {
                     "type": "object",
+                    "required": [
+                      "cloudConfig",
+                      "poolConfig"
+                    ],
                     "properties": {
                       "cloudConfig": {
                         "required": [
@@ -143517,6 +143640,10 @@
                       "type": "array",
                       "items": {
                         "type": "object",
+                        "required": [
+                          "cloudConfig",
+                          "poolConfig"
+                        ],
                         "properties": {
                           "cloudConfig": {
                             "required": [
@@ -144724,7 +144851,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "fargateProfiles": {
@@ -144784,6 +144914,11 @@
                     "machinepoolconfig": {
                       "type": "array",
                       "items": {
+                        "type": "object",
+                        "required": [
+                          "cloudConfig",
+                          "poolConfig"
+                        ],
                         "properties": {
                           "cloudConfig": {
                             "properties": {
@@ -145511,6 +145646,11 @@
                 "machinepoolconfig": {
                   "type": "array",
                   "items": {
+                    "type": "object",
+                    "required": [
+                      "cloudConfig",
+                      "poolConfig"
+                    ],
                     "properties": {
                       "cloudConfig": {
                         "properties": {
@@ -146818,7 +146958,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "fargateProfiles": {
@@ -146878,6 +147021,11 @@
                     "machinepoolconfig": {
                       "type": "array",
                       "items": {
+                        "type": "object",
+                        "required": [
+                          "cloudConfig",
+                          "poolConfig"
+                        ],
                         "properties": {
                           "cloudConfig": {
                             "properties": {
@@ -148339,7 +148487,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -148989,7 +149138,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -150093,7 +150243,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -150831,6 +150982,11 @@
                 "machinepoolconfig": {
                   "type": "array",
                   "items": {
+                    "type": "object",
+                    "required": [
+                      "cloudConfig",
+                      "poolConfig"
+                    ],
                     "properties": {
                       "cloudConfig": {
                         "description": "Generic cluster config",
@@ -151931,7 +152087,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -152457,7 +152614,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -153561,7 +153719,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -154078,6 +154237,311 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/imagePullSecret/clusters": {
+      "put": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update cluster exclude flags for DHI image pull secret propagation rollup",
+        "operationId": "v1SpectroClustersImagePullSecretClustersUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "description": "Update cluster exclude flags for propagation rollup",
+              "type": "object",
+              "required": [
+                "exclude",
+                "clusterUids"
+              ],
+              "properties": {
+                "clusterUids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exclude": {
+                  "type": "boolean",
+                  "x-omitempty": false
+                }
+              }
+            }
+          },
+          {
+            "type": "string",
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "name": "ProjectUid",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/imagePullSecret/export": {
+      "get": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Returns all matching cluster rows in one CSV. Use query filters only; limit and offset are not supported.",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Bulk CSV export of DHI image pull secret propagation status for the tenant (no pagination)",
+        "operationId": "v1SpectroClustersImagePullSecretExportGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Filter clusters by name",
+            "name": "clusterName",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Scope to a project",
+            "name": "projectUid",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "ConnectivityIssue",
+              "PauseAgentUpgrades",
+              "LocalPropagationFailure"
+            ],
+            "type": "string",
+            "description": "Filter clusters by ImagePullSecretPropagationDone condition failure reason",
+            "name": "failureReason",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "name": "ProjectUid",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV export of propagation status",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/imagePullSecret/status": {
+      "get": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns DHI image pull secret propagation status for the authenticated tenant",
+        "operationId": "v1SpectroClustersImagePullSecretStatusGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Filter clusters by name",
+            "name": "clusterName",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Scope to a project",
+            "name": "projectUid",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "ConnectivityIssue",
+              "PauseAgentUpgrades",
+              "LocalPropagationFailure"
+            ],
+            "type": "string",
+            "description": "Filter clusters by ImagePullSecretPropagationDone condition failure reason",
+            "name": "failureReason",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "name": "ProjectUid",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "description": "Tenant DHI image pull secret propagation status",
+              "type": "object",
+              "properties": {
+                "clusters": {
+                  "description": "Tenant cluster propagation failed count",
+                  "type": "object",
+                  "properties": {
+                    "failed": {
+                      "type": "integer",
+                      "format": "int64",
+                      "x-omitempty": false
+                    }
+                  }
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "description": "Per-cluster DHI image pull secret propagation status",
+                    "type": "object",
+                    "properties": {
+                      "cluster": {
+                        "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "type": "string"
+                          },
+                          "uid": {
+                            "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "exclude": {
+                        "type": "boolean",
+                        "x-omitempty": false
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "project": {
+                        "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "type": "string"
+                          },
+                          "uid": {
+                            "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "description": "DHI image pull secret propagation state",
+                        "type": "string",
+                        "enum": [
+                          "Completed",
+                          "InProgress",
+                          "Failed"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "listmeta": {
+                  "description": "ListMeta describes metadata for the resource listing",
+                  "type": "object",
+                  "properties": {
+                    "continue": {
+                      "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
+                      "type": "string",
+                      "x-omitempty": false
+                    },
+                    "count": {
+                      "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
+                      "type": "integer",
+                      "x-omitempty": false
+                    },
+                    "limit": {
+                      "description": "Number of records feteched",
+                      "type": "integer",
+                      "x-omitempty": false
+                    },
+                    "offset": {
+                      "description": "The next offset for the pagination. Starting index for which next request will be placed.",
+                      "type": "integer",
+                      "x-omitempty": false
+                    }
+                  }
+                },
+                "state": {
+                  "description": "DHI image pull secret propagation state",
+                  "type": "string",
+                  "enum": [
+                    "Completed",
+                    "InProgress",
+                    "Failed"
+                  ]
                 }
               }
             }
@@ -154668,7 +155132,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -154676,7 +155143,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -155360,7 +155828,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -156499,7 +156968,10 @@
                       "enum": [
                         "PureManage",
                         "PureAttach",
-                        "PureAdopt"
+                        "PureAdopt",
+                        "AlloyMonitor",
+                        "AlloyAssist",
+                        "AlloyExtend"
                       ]
                     },
                     "machinepoolconfig": {
@@ -156507,7 +156979,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -157225,6 +157698,161 @@
             "headers": {
               "Content-Disposition": {
                 "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/system/config/imagePullSecret/export": {
+      "get": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Returns all matching tenant rows in one CSV. Use query filters only; limit and offset are not supported.",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Bulk CSV export of DHI image pull secret propagation status (no pagination)",
+        "operationId": "v1SpectroClustersSystemConfigImagePullSecretExportGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Filter tenants by name",
+            "name": "tenantName",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "name": "ProjectUid",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV export of propagation status",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/system/config/imagePullSecret/status": {
+      "get": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns DHI image pull secret propagation status for all tenants",
+        "operationId": "v1SpectroClustersSystemConfigImagePullSecretStatusGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Filter tenants by name",
+            "name": "tenantName",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "name": "ProjectUid",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "description": "System-wide DHI image pull secret propagation status",
+              "type": "object",
+              "properties": {
+                "state": {
+                  "description": "DHI image pull secret propagation state",
+                  "type": "string",
+                  "enum": [
+                    "Completed",
+                    "InProgress",
+                    "Failed"
+                  ]
+                },
+                "tenants": {
+                  "type": "array",
+                  "items": {
+                    "description": "Per-tenant DHI image pull secret propagation status",
+                    "type": "object",
+                    "properties": {
+                      "clusters": {
+                        "description": "Cluster propagation counts",
+                        "type": "object",
+                        "properties": {
+                          "completed": {
+                            "type": "integer",
+                            "format": "int64",
+                            "x-omitempty": false
+                          },
+                          "failed": {
+                            "type": "integer",
+                            "format": "int64",
+                            "x-omitempty": false
+                          },
+                          "total": {
+                            "type": "integer",
+                            "format": "int64",
+                            "x-omitempty": false
+                          }
+                        }
+                      },
+                      "exclude": {
+                        "type": "boolean",
+                        "x-omitempty": false
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "uid": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -160237,7 +160865,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -161009,7 +161638,8 @@
                   "items": {
                     "type": "object",
                     "required": [
-                      "cloudConfig"
+                      "cloudConfig",
+                      "poolConfig"
                     ],
                     "properties": {
                       "cloudConfig": {
@@ -162237,7 +162867,8 @@
                       "items": {
                         "type": "object",
                         "required": [
-                          "cloudConfig"
+                          "cloudConfig",
+                          "poolConfig"
                         ],
                         "properties": {
                           "cloudConfig": {
@@ -163523,8 +164154,11 @@
                     },
                     "clusterType": {
                       "type": "string",
+                      "default": "PureManage",
                       "enum": [
                         "PureManage",
+                        "PureAttach",
+                        "PureAdopt",
                         "AlloyMonitor",
                         "AlloyAssist",
                         "AlloyExtend"
@@ -163642,6 +164276,16 @@
                             "partial",
                             "unknown"
                           ]
+                        }
+                      }
+                    },
+                    "imagePullSecret": {
+                      "description": "DHI image pull secret status on a spectro cluster",
+                      "type": "object",
+                      "properties": {
+                        "hash": {
+                          "description": "hash of the expected image pull secret for this cluster",
+                          "type": "string"
                         }
                       }
                     },
@@ -172364,6 +173008,16 @@
                             "partial",
                             "unknown"
                           ]
+                        }
+                      }
+                    },
+                    "imagePullSecret": {
+                      "description": "DHI image pull secret status on a spectro cluster",
+                      "type": "object",
+                      "properties": {
+                        "hash": {
+                          "description": "hash of the expected image pull secret for this cluster",
+                          "type": "string"
                         }
                       }
                     },
@@ -216374,6 +217028,20 @@
                 "imagePullSecret": {
                   "description": "base64 encoded docker config JSON",
                   "type": "string"
+                },
+                "tenants": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "description": "per-tenant DHI image pull secret propagation settings",
+                    "type": "object",
+                    "properties": {
+                      "exclude": {
+                        "description": "when true, tenant is omitted from propagation rollup",
+                        "type": "boolean",
+                        "x-omitempty": false
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -216407,6 +217075,73 @@
                 "imagePullSecret": {
                   "description": "base64 encoded docker config JSON",
                   "type": "string"
+                },
+                "tenants": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "description": "per-tenant DHI image pull secret propagation settings",
+                    "type": "object",
+                    "properties": {
+                      "exclude": {
+                        "description": "when true, tenant is omitted from propagation rollup",
+                        "type": "boolean",
+                        "x-omitempty": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "description": "The resource was updated successfully"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/config/imagePullSecret/tenants": {
+      "put": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "update tenant exclude flags for DHI image pull secret propagation rollup",
+        "operationId": "V1SystemConfigImagePullSecretTenantsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "description": "update tenant exclude flags for propagation rollup",
+              "type": "object",
+              "required": [
+                "exclude",
+                "tenantUids"
+              ],
+              "properties": {
+                "exclude": {
+                  "type": "boolean",
+                  "x-omitempty": false
+                },
+                "tenantUids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -251702,7 +252437,8 @@
     "v1AwsMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -254751,6 +255487,16 @@
                     "type": "integer",
                     "format": "int32"
                   },
+                  "skipK8sUpgrade": {
+                    "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                    "type": "string",
+                    "default": "disabled",
+                    "enum": [
+                      "enabled",
+                      "disabled"
+                    ],
+                    "x-omitempty": true
+                  },
                   "spotVMOptions": {
                     "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
                     "type": "object",
@@ -255309,6 +256055,16 @@
                 "description": "size of the pool, number of machines",
                 "type": "integer",
                 "format": "int32"
+              },
+              "skipK8sUpgrade": {
+                "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                "type": "string",
+                "default": "disabled",
+                "enum": [
+                  "enabled",
+                  "disabled"
+                ],
+                "x-omitempty": true
               },
               "spotVMOptions": {
                 "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
@@ -256331,6 +257087,16 @@
           "type": "integer",
           "format": "int32"
         },
+        "skipK8sUpgrade": {
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "x-omitempty": true
+        },
         "spotVMOptions": {
           "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
           "type": "object",
@@ -256406,7 +257172,8 @@
     "v1AzureMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -260813,6 +261580,16 @@
                         "type": "integer",
                         "format": "int32"
                       },
+                      "skipK8sUpgrade": {
+                        "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                        "type": "string",
+                        "default": "disabled",
+                        "enum": [
+                          "enabled",
+                          "disabled"
+                        ],
+                        "x-omitempty": true
+                      },
                       "taints": {
                         "description": "control plane or worker taints",
                         "type": "array",
@@ -261232,6 +262009,16 @@
                     "description": "size of the pool, number of machines",
                     "type": "integer",
                     "format": "int32"
+                  },
+                  "skipK8sUpgrade": {
+                    "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                    "type": "string",
+                    "default": "disabled",
+                    "enum": [
+                      "enabled",
+                      "disabled"
+                    ],
+                    "x-omitempty": true
                   },
                   "taints": {
                     "description": "control plane or worker taints",
@@ -262306,6 +263093,16 @@
               "type": "integer",
               "format": "int32"
             },
+            "skipK8sUpgrade": {
+              "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+              "type": "string",
+              "default": "disabled",
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
+              "x-omitempty": true
+            },
             "taints": {
               "description": "control plane or worker taints",
               "type": "array",
@@ -262449,7 +263246,8 @@
     "v1CloudStackMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -278634,31 +279432,6 @@
         }
       }
     },
-    "v1ClusterRbacEntity": {
-      "properties": {
-        "clusterRbac": {
-          "description": "Cluster RBAC role bindings",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "uid"
-            ],
-            "properties": {
-              "kind": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
     "v1ClusterRbacInputEntity": {
       "description": "Cluster RBAC role binding defintion",
       "type": "object",
@@ -283744,7 +284517,10 @@
       "enum": [
         "PureManage",
         "PureAttach",
-        "PureAdopt"
+        "PureAdopt",
+        "AlloyMonitor",
+        "AlloyAssist",
+        "AlloyExtend"
       ]
     },
     "v1ClusterUpgradeSettingsEntity": {
@@ -302442,7 +303218,8 @@
     "v1CustomMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -310981,6 +311758,322 @@
         }
       }
     },
+    "v1EdgeHostsSearchFilterSummarySpec": {
+      "description": "Edge host search filter summary spec",
+      "properties": {
+        "filter": {
+          "properties": {
+            "conjunction": {
+              "type": "string",
+              "enum": [
+                "and",
+                "or"
+              ],
+              "x-nullable": true
+            },
+            "filterGroups": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "properties": {
+                  "conjunction": {
+                    "type": "string",
+                    "enum": [
+                      "and",
+                      "or"
+                    ],
+                    "x-nullable": true
+                  },
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "properties": {
+                        "condition": {
+                          "properties": {
+                            "bool": {
+                              "properties": {
+                                "value": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "date": {
+                              "properties": {
+                                "match": {
+                                  "properties": {
+                                    "conjunction": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and",
+                                        "or"
+                                      ],
+                                      "x-nullable": true
+                                    },
+                                    "values": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "items": {
+                                        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                                        "type": "string",
+                                        "format": "date-time"
+                                      }
+                                    }
+                                  }
+                                },
+                                "negation": {
+                                  "type": "boolean"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "gt",
+                                    "gte",
+                                    "lt",
+                                    "lte",
+                                    "range"
+                                  ]
+                                }
+                              }
+                            },
+                            "float": {
+                              "properties": {
+                                "match": {
+                                  "properties": {
+                                    "conjunction": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and",
+                                        "or"
+                                      ],
+                                      "x-nullable": true
+                                    },
+                                    "values": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "items": {
+                                        "type": "number",
+                                        "format": "float64"
+                                      }
+                                    }
+                                  }
+                                },
+                                "negation": {
+                                  "type": "boolean"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "gt",
+                                    "gte",
+                                    "lt",
+                                    "lte"
+                                  ]
+                                }
+                              }
+                            },
+                            "int": {
+                              "properties": {
+                                "match": {
+                                  "properties": {
+                                    "conjunction": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and",
+                                        "or"
+                                      ],
+                                      "x-nullable": true
+                                    },
+                                    "values": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "items": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  }
+                                },
+                                "negation": {
+                                  "type": "boolean"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "gt",
+                                    "gte",
+                                    "lt",
+                                    "lte"
+                                  ]
+                                }
+                              }
+                            },
+                            "keyValue": {
+                              "properties": {
+                                "ignoreCase": {
+                                  "type": "boolean"
+                                },
+                                "key": {
+                                  "type": "string"
+                                },
+                                "match": {
+                                  "properties": {
+                                    "conjunction": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and",
+                                        "or"
+                                      ],
+                                      "x-nullable": true
+                                    },
+                                    "values": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "negation": {
+                                  "type": "boolean"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "contains",
+                                    "beginsWith"
+                                  ]
+                                }
+                              }
+                            },
+                            "string": {
+                              "properties": {
+                                "ignoreCase": {
+                                  "type": "boolean"
+                                },
+                                "match": {
+                                  "properties": {
+                                    "conjunction": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and",
+                                        "or"
+                                      ],
+                                      "x-nullable": true
+                                    },
+                                    "values": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "negation": {
+                                  "type": "boolean"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "contains",
+                                    "beginsWith"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "string",
+                            "int",
+                            "float",
+                            "bool",
+                            "date",
+                            "keyValue"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "properties": {
+              "field": {
+                "type": "string",
+                "enum": [
+                  "name",
+                  "state",
+                  "healthState",
+                  "creationTimestamp",
+                  "lastModifiedTimestamp"
+                ],
+                "x-nullable": true
+              },
+              "order": {
+                "type": "string",
+                "default": "asc",
+                "enum": [
+                  "asc",
+                  "desc"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1EdgeHostsSearchSortFields": {
+      "type": "string",
+      "enum": [
+        "name",
+        "state",
+        "healthState",
+        "creationTimestamp",
+        "lastModifiedTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1EdgeHostsSearchSortSpec": {
+      "properties": {
+        "field": {
+          "type": "string",
+          "enum": [
+            "name",
+            "state",
+            "healthState",
+            "creationTimestamp",
+            "lastModifiedTimestamp"
+          ],
+          "x-nullable": true
+        },
+        "order": {
+          "type": "string",
+          "default": "asc",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        }
+      }
+    },
     "v1EdgeHostsSearchSummary": {
       "type": "object",
       "required": [
@@ -313864,6 +314957,10 @@
     },
     "v1EdgeNativeMachinePoolConfigEntity": {
       "type": "object",
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
       "properties": {
         "cloudConfig": {
           "required": [
@@ -316910,6 +318007,11 @@
       }
     },
     "v1EksMachinePoolConfigEntity": {
+      "type": "object",
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
       "properties": {
         "cloudConfig": {
           "properties": {
@@ -319050,6 +320152,16 @@
                     "type": "integer",
                     "format": "int32"
                   },
+                  "skipK8sUpgrade": {
+                    "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                    "type": "string",
+                    "default": "disabled",
+                    "enum": [
+                      "enabled",
+                      "disabled"
+                    ],
+                    "x-omitempty": true
+                  },
                   "subnet": {
                     "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
                     "type": "string"
@@ -319404,6 +320516,16 @@
                 "description": "size of the pool, number of machines",
                 "type": "integer",
                 "format": "int32"
+              },
+              "skipK8sUpgrade": {
+                "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+                "type": "string",
+                "default": "disabled",
+                "enum": [
+                  "enabled",
+                  "disabled"
+                ],
+                "x-omitempty": true
               },
               "subnet": {
                 "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
@@ -320150,6 +321272,16 @@
           "type": "integer",
           "format": "int32"
         },
+        "skipK8sUpgrade": {
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "x-omitempty": true
+        },
         "subnet": {
           "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
           "type": "string"
@@ -320225,7 +321357,8 @@
     "v1GcpMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -321843,6 +322976,11 @@
       }
     },
     "v1GenericMachinePoolConfigEntity": {
+      "type": "object",
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
       "properties": {
         "cloudConfig": {
           "description": "Generic cluster config",
@@ -325688,6 +326826,356 @@
           "name": {
             "type": "string"
           }
+        }
+      }
+    },
+    "v1ImagePullSecretPropagationClusterCounts": {
+      "description": "Cluster propagation counts",
+      "type": "object",
+      "properties": {
+        "completed": {
+          "type": "integer",
+          "format": "int64",
+          "x-omitempty": false
+        },
+        "failed": {
+          "type": "integer",
+          "format": "int64",
+          "x-omitempty": false
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1ImagePullSecretPropagationClustersUpdate": {
+      "description": "Update cluster exclude flags for propagation rollup",
+      "type": "object",
+      "required": [
+        "exclude",
+        "clusterUids"
+      ],
+      "properties": {
+        "clusterUids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1ImagePullSecretPropagationState": {
+      "description": "DHI image pull secret propagation state",
+      "type": "string",
+      "enum": [
+        "Completed",
+        "InProgress",
+        "Failed"
+      ]
+    },
+    "v1ImagePullSecretPropagationTenantsUpdate": {
+      "description": "update tenant exclude flags for propagation rollup",
+      "type": "object",
+      "required": [
+        "exclude",
+        "tenantUids"
+      ],
+      "properties": {
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "tenantUids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1ImagePullSecretSystemPropagationStatus": {
+      "description": "System-wide DHI image pull secret propagation status",
+      "type": "object",
+      "properties": {
+        "state": {
+          "description": "DHI image pull secret propagation state",
+          "type": "string",
+          "enum": [
+            "Completed",
+            "InProgress",
+            "Failed"
+          ]
+        },
+        "tenants": {
+          "type": "array",
+          "items": {
+            "description": "Per-tenant DHI image pull secret propagation status",
+            "type": "object",
+            "properties": {
+              "clusters": {
+                "description": "Cluster propagation counts",
+                "type": "object",
+                "properties": {
+                  "completed": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-omitempty": false
+                  },
+                  "failed": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-omitempty": false
+                  },
+                  "total": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-omitempty": false
+                  }
+                }
+              },
+              "exclude": {
+                "type": "boolean",
+                "x-omitempty": false
+              },
+              "name": {
+                "type": "string"
+              },
+              "uid": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1ImagePullSecretSystemPropagationTenantStatus": {
+      "description": "Per-tenant DHI image pull secret propagation status",
+      "type": "object",
+      "properties": {
+        "clusters": {
+          "description": "Cluster propagation counts",
+          "type": "object",
+          "properties": {
+            "completed": {
+              "type": "integer",
+              "format": "int64",
+              "x-omitempty": false
+            },
+            "failed": {
+              "type": "integer",
+              "format": "int64",
+              "x-omitempty": false
+            },
+            "total": {
+              "type": "integer",
+              "format": "int64",
+              "x-omitempty": false
+            }
+          }
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ImagePullSecretTenantPropagationClusterCounts": {
+      "description": "Tenant cluster propagation failed count",
+      "type": "object",
+      "properties": {
+        "failed": {
+          "type": "integer",
+          "format": "int64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1ImagePullSecretTenantPropagationClusterStatus": {
+      "description": "Per-cluster DHI image pull secret propagation status",
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": "string"
+            },
+            "uid": {
+              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "type": "string"
+            }
+          }
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "project": {
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": "string"
+            },
+            "uid": {
+              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "type": "string"
+            }
+          }
+        },
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "description": "DHI image pull secret propagation state",
+          "type": "string",
+          "enum": [
+            "Completed",
+            "InProgress",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1ImagePullSecretTenantPropagationStatus": {
+      "description": "Tenant DHI image pull secret propagation status",
+      "type": "object",
+      "properties": {
+        "clusters": {
+          "description": "Tenant cluster propagation failed count",
+          "type": "object",
+          "properties": {
+            "failed": {
+              "type": "integer",
+              "format": "int64",
+              "x-omitempty": false
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "description": "Per-cluster DHI image pull secret propagation status",
+            "type": "object",
+            "properties": {
+              "cluster": {
+                "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": "string"
+                  },
+                  "uid": {
+                    "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+                    "type": "string"
+                  }
+                }
+              },
+              "exclude": {
+                "type": "boolean",
+                "x-omitempty": false
+              },
+              "message": {
+                "type": "string"
+              },
+              "project": {
+                "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": "string"
+                  },
+                  "uid": {
+                    "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+                    "type": "string"
+                  }
+                }
+              },
+              "reason": {
+                "type": "string"
+              },
+              "state": {
+                "description": "DHI image pull secret propagation state",
+                "type": "string",
+                "enum": [
+                  "Completed",
+                  "InProgress",
+                  "Failed"
+                ]
+              }
+            }
+          }
+        },
+        "listmeta": {
+          "description": "ListMeta describes metadata for the resource listing",
+          "type": "object",
+          "properties": {
+            "continue": {
+              "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
+              "type": "string",
+              "x-omitempty": false
+            },
+            "count": {
+              "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
+              "type": "integer",
+              "x-omitempty": false
+            },
+            "limit": {
+              "description": "Number of records feteched",
+              "type": "integer",
+              "x-omitempty": false
+            },
+            "offset": {
+              "description": "The next offset for the pagination. Starting index for which next request will be placed.",
+              "type": "integer",
+              "x-omitempty": false
+            }
+          }
+        },
+        "state": {
+          "description": "DHI image pull secret propagation state",
+          "type": "string",
+          "enum": [
+            "Completed",
+            "InProgress",
+            "Failed"
+          ]
         }
       }
     },
@@ -331505,7 +332993,8 @@
     "v1MaasMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
@@ -332871,6 +334360,16 @@
           "description": "size of the pool, number of machines",
           "type": "integer",
           "format": "int32"
+        },
+        "skipK8sUpgrade": {
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "x-omitempty": true
         },
         "taints": {
           "description": "control plane or worker taints",
@@ -355137,246 +356636,6 @@
         }
       }
     },
-    "v1Projects": {
-      "type": "object",
-      "required": [
-        "items"
-      ],
-      "properties": {
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "Project information",
-            "type": "object",
-            "properties": {
-              "metadata": {
-                "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-                "type": "object",
-                "properties": {
-                  "annotations": {
-                    "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "creationTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "deletionTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "labels": {
-                    "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "lastModifiedTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "name": {
-                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
-                    "type": "string"
-                  },
-                  "uid": {
-                    "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
-                    "type": "string"
-                  }
-                }
-              },
-              "spec": {
-                "description": "Project specifications",
-                "properties": {
-                  "alerts": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "channels": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "alertAllUsers": {
-                                "type": "boolean",
-                                "x-omitempty": false
-                              },
-                              "createdBy": {
-                                "type": "string"
-                              },
-                              "http": {
-                                "type": "object",
-                                "properties": {
-                                  "body": {
-                                    "type": "string"
-                                  },
-                                  "headers": {
-                                    "additionalProperties": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "method": {
-                                    "type": "string"
-                                  },
-                                  "url": {
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              "identifiers": {
-                                "type": "array",
-                                "uniqueItems": true,
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "isActive": {
-                                "type": "boolean",
-                                "x-omitempty": false
-                              },
-                              "status": {
-                                "type": "object",
-                                "properties": {
-                                  "isSucceeded": {
-                                    "type": "boolean",
-                                    "x-omitempty": false
-                                  },
-                                  "message": {
-                                    "type": "string"
-                                  },
-                                  "time": {
-                                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                                    "type": "string",
-                                    "format": "date-time"
-                                  }
-                                }
-                              },
-                              "type": {
-                                "type": "string",
-                                "enum": [
-                                  "email",
-                                  "app",
-                                  "http"
-                                ]
-                              },
-                              "uid": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "component": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "logoUrl": {
-                    "type": "string"
-                  },
-                  "teams": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                      "properties": {
-                        "roles": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "teamId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "users": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                      "properties": {
-                        "roles": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "userId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "status": {
-                "description": "Project status",
-                "properties": {
-                  "cleanUpStatus": {
-                    "description": "Project cleanup status",
-                    "type": "object",
-                    "properties": {
-                      "cleanedResources": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
-                      "msg": {
-                        "type": "string"
-                      },
-                      "state": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "isDisabled": {
-                    "type": "boolean"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "listmeta": {
-          "description": "ListMeta describes metadata for the resource listing",
-          "type": "object",
-          "properties": {
-            "continue": {
-              "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
-              "type": "string",
-              "x-omitempty": false
-            },
-            "count": {
-              "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "limit": {
-              "description": "Number of records feteched",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "offset": {
-              "description": "The next offset for the pagination. Starting index for which next request will be placed.",
-              "type": "integer",
-              "x-omitempty": false
-            }
-          }
-        }
-      }
-    },
     "v1ProjectsFilterSpec": {
       "description": "Project filter summary spec",
       "properties": {
@@ -363318,7 +364577,10 @@
               "enum": [
                 "PureManage",
                 "PureAttach",
-                "PureAdopt"
+                "PureAdopt",
+                "AlloyMonitor",
+                "AlloyAssist",
+                "AlloyExtend"
               ]
             },
             "machinepoolconfig": {
@@ -363326,7 +364588,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -363990,7 +365253,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -364968,7 +366232,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -365671,7 +366936,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -366514,7 +367780,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -367170,7 +368437,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -368071,8 +369339,11 @@
             },
             "clusterType": {
               "type": "string",
+              "default": "PureManage",
               "enum": [
                 "PureManage",
+                "PureAttach",
+                "PureAdopt",
                 "AlloyMonitor",
                 "AlloyAssist",
                 "AlloyExtend"
@@ -368190,6 +369461,16 @@
                     "partial",
                     "unknown"
                   ]
+                }
+              }
+            },
+            "imagePullSecret": {
+              "description": "DHI image pull secret status on a spectro cluster",
+              "type": "object",
+              "properties": {
+                "hash": {
+                  "description": "hash of the expected image pull secret for this cluster",
+                  "type": "string"
                 }
               }
             },
@@ -369969,6 +371250,16 @@
                     "partial",
                     "unknown"
                   ]
+                }
+              }
+            },
+            "imagePullSecret": {
+              "description": "DHI image pull secret status on a spectro cluster",
+              "type": "object",
+              "properties": {
+                "hash": {
+                  "description": "hash of the expected image pull secret for this cluster",
+                  "type": "string"
                 }
               }
             },
@@ -377480,8 +378771,11 @@
             },
             "clusterType": {
               "type": "string",
+              "default": "PureManage",
               "enum": [
                 "PureManage",
+                "PureAttach",
+                "PureAdopt",
                 "AlloyMonitor",
                 "AlloyAssist",
                 "AlloyExtend"
@@ -378160,8 +379454,11 @@
         },
         "clusterType": {
           "type": "string",
+          "default": "PureManage",
           "enum": [
             "PureManage",
+            "PureAttach",
+            "PureAdopt",
             "AlloyMonitor",
             "AlloyAssist",
             "AlloyExtend"
@@ -378289,6 +379586,16 @@
                 "partial",
                 "unknown"
               ]
+            }
+          }
+        },
+        "imagePullSecret": {
+          "description": "DHI image pull secret status on a spectro cluster",
+          "type": "object",
+          "properties": {
+            "hash": {
+              "description": "hash of the expected image pull secret for this cluster",
+              "type": "string"
             }
           }
         },
@@ -378732,6 +380039,16 @@
               "type": "string"
             }
           }
+        }
+      }
+    },
+    "v1SpectroClusterStatusImagePullSecret": {
+      "description": "DHI image pull secret status on a spectro cluster",
+      "type": "object",
+      "properties": {
+        "hash": {
+          "description": "hash of the expected image pull secret for this cluster",
+          "type": "string"
         }
       }
     },
@@ -384181,8 +385498,11 @@
                   },
                   "clusterType": {
                     "type": "string",
+                    "default": "PureManage",
                     "enum": [
                       "PureManage",
+                      "PureAttach",
+                      "PureAdopt",
                       "AlloyMonitor",
                       "AlloyAssist",
                       "AlloyExtend"
@@ -384300,6 +385620,16 @@
                           "partial",
                           "unknown"
                         ]
+                      }
+                    }
+                  },
+                  "imagePullSecret": {
+                    "description": "DHI image pull secret status on a spectro cluster",
+                    "type": "object",
+                    "properties": {
+                      "hash": {
+                        "description": "hash of the expected image pull secret for this cluster",
+                        "type": "string"
                       }
                     }
                   },
@@ -387162,7 +388492,10 @@
               "enum": [
                 "PureManage",
                 "PureAttach",
-                "PureAdopt"
+                "PureAdopt",
+                "AlloyMonitor",
+                "AlloyAssist",
+                "AlloyExtend"
               ]
             },
             "machinepoolconfig": {
@@ -387170,7 +388503,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -387919,6 +389253,10 @@
               "type": "array",
               "items": {
                 "type": "object",
+                "required": [
+                  "cloudConfig",
+                  "poolConfig"
+                ],
                 "properties": {
                   "cloudConfig": {
                     "required": [
@@ -388872,6 +390210,10 @@
               "type": "array",
               "items": {
                 "type": "object",
+                "required": [
+                  "cloudConfig",
+                  "poolConfig"
+                ],
                 "properties": {
                   "cloudConfig": {
                     "required": [
@@ -389819,6 +391161,10 @@
               "type": "array",
               "items": {
                 "type": "object",
+                "required": [
+                  "cloudConfig",
+                  "poolConfig"
+                ],
                 "properties": {
                   "cloudConfig": {
                     "required": [
@@ -390409,6 +391755,10 @@
           "type": "array",
           "items": {
             "type": "object",
+            "required": [
+              "cloudConfig",
+              "poolConfig"
+            ],
             "properties": {
               "cloudConfig": {
                 "required": [
@@ -391283,7 +392633,10 @@
               "enum": [
                 "PureManage",
                 "PureAttach",
-                "PureAdopt"
+                "PureAdopt",
+                "AlloyMonitor",
+                "AlloyAssist",
+                "AlloyExtend"
               ]
             },
             "fargateProfiles": {
@@ -391343,6 +392696,11 @@
             "machinepoolconfig": {
               "type": "array",
               "items": {
+                "type": "object",
+                "required": [
+                  "cloudConfig",
+                  "poolConfig"
+                ],
                 "properties": {
                   "cloudConfig": {
                     "properties": {
@@ -392008,6 +393366,11 @@
         "machinepoolconfig": {
           "type": "array",
           "items": {
+            "type": "object",
+            "required": [
+              "cloudConfig",
+              "poolConfig"
+            ],
             "properties": {
               "cloudConfig": {
                 "properties": {
@@ -392911,7 +394274,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -393448,7 +394812,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -393790,6 +395155,11 @@
         "machinepoolconfig": {
           "type": "array",
           "items": {
+            "type": "object",
+            "required": [
+              "cloudConfig",
+              "poolConfig"
+            ],
             "properties": {
               "cloudConfig": {
                 "description": "Generic cluster config",
@@ -395040,7 +396410,10 @@
               "enum": [
                 "PureManage",
                 "PureAttach",
-                "PureAdopt"
+                "PureAdopt",
+                "AlloyMonitor",
+                "AlloyAssist",
+                "AlloyExtend"
               ]
             },
             "machinepoolconfig": {
@@ -395048,7 +396421,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -395619,7 +396993,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -398098,7 +399473,8 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "cloudConfig"
+                  "cloudConfig",
+                  "poolConfig"
                 ],
                 "properties": {
                   "cloudConfig": {
@@ -398757,7 +400133,8 @@
           "items": {
             "type": "object",
             "required": [
-              "cloudConfig"
+              "cloudConfig",
+              "poolConfig"
             ],
             "properties": {
               "cloudConfig": {
@@ -401206,24 +402583,6 @@
         }
       }
     },
-    "v1SystemCertificateSpec": {
-      "description": "system smtp config spec",
-      "type": "object",
-      "properties": {
-        "caCert": {
-          "type": "string"
-        },
-        "crt": {
-          "type": "string"
-        },
-        "insecureSkipVerify": {
-          "type": "boolean"
-        },
-        "key": {
-          "type": "string"
-        }
-      }
-    },
     "v1SystemCertificatesSpec": {
       "description": "system certificate in base64 format",
       "type": "object",
@@ -401349,6 +402708,31 @@
         "imagePullSecret": {
           "description": "base64 encoded docker config JSON",
           "type": "string"
+        },
+        "tenants": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "per-tenant DHI image pull secret propagation settings",
+            "type": "object",
+            "properties": {
+              "exclude": {
+                "description": "when true, tenant is omitted from propagation rollup",
+                "type": "boolean",
+                "x-omitempty": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1SystemConfigImagePullSecretTenant": {
+      "description": "per-tenant DHI image pull secret propagation settings",
+      "type": "object",
+      "properties": {
+        "exclude": {
+          "description": "when true, tenant is omitted from propagation rollup",
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -404465,148 +405849,6 @@
               "uid": {
                 "type": "string"
               }
-            }
-          }
-        }
-      }
-    },
-    "v1TeamsSummary": {
-      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
-      "type": "object",
-      "required": [
-        "items"
-      ],
-      "properties": {
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "Team summary",
-            "type": "object",
-            "properties": {
-              "metadata": {
-                "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-                "type": "object",
-                "properties": {
-                  "annotations": {
-                    "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "creationTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "deletionTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "labels": {
-                    "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "lastModifiedTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "name": {
-                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
-                    "type": "string"
-                  },
-                  "uid": {
-                    "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
-                    "type": "string"
-                  }
-                }
-              },
-              "spec": {
-                "type": "object",
-                "properties": {
-                  "emailId": {
-                    "type": "string"
-                  },
-                  "projects": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "roles": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "users": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "status": {
-                "description": "Team status",
-                "type": "object"
-              }
-            }
-          }
-        },
-        "listmeta": {
-          "description": "ListMeta describes metadata for the resource listing",
-          "type": "object",
-          "properties": {
-            "continue": {
-              "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
-              "type": "string",
-              "x-omitempty": false
-            },
-            "count": {
-              "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "limit": {
-              "description": "Number of records feteched",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "offset": {
-              "description": "The next offset for the pagination. Starting index for which next request will be placed.",
-              "type": "integer",
-              "x-omitempty": false
             }
           }
         }
@@ -409917,181 +411159,6 @@
               "uid": {
                 "type": "string"
               }
-            }
-          }
-        }
-      }
-    },
-    "v1UsersSummary": {
-      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
-      "type": "object",
-      "required": [
-        "items"
-      ],
-      "properties": {
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "User summary",
-            "type": "object",
-            "properties": {
-              "metadata": {
-                "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-                "type": "object",
-                "properties": {
-                  "annotations": {
-                    "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "creationTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "deletionTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "labels": {
-                    "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "lastModifiedTimestamp": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "name": {
-                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
-                    "type": "string"
-                  },
-                  "uid": {
-                    "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
-                    "type": "string"
-                  }
-                }
-              },
-              "spec": {
-                "type": "object",
-                "properties": {
-                  "emailId": {
-                    "type": "string"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "projects": {
-                    "description": "Deprecated.",
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "projectsCount": {
-                    "type": "integer",
-                    "format": "int32",
-                    "x-omitempty": false
-                  },
-                  "roles": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "teams": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "uid": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "status": {
-                "description": "User status",
-                "properties": {
-                  "activationLink": {
-                    "description": "provides the link to activate or reset the user password",
-                    "type": "string",
-                    "x-omitempty": false
-                  },
-                  "isActive": {
-                    "description": "Specifies if user account is active/disabled",
-                    "type": "boolean",
-                    "x-omitempty": false
-                  },
-                  "isPasswordResetting": {
-                    "description": "Specifies if user in multi org requested password reset",
-                    "type": "boolean",
-                    "x-omitempty": false
-                  },
-                  "lastSignIn": {
-                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "listmeta": {
-          "description": "ListMeta describes metadata for the resource listing",
-          "type": "object",
-          "properties": {
-            "continue": {
-              "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
-              "type": "string",
-              "x-omitempty": false
-            },
-            "count": {
-              "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "limit": {
-              "description": "Number of records feteched",
-              "type": "integer",
-              "x-omitempty": false
-            },
-            "offset": {
-              "description": "The next offset for the pagination. Starting index for which next request will be placed.",
-              "type": "integer",
-              "x-omitempty": false
             }
           }
         }
@@ -432923,7 +433990,8 @@
     "v1VsphereMachinePoolConfigEntity": {
       "type": "object",
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "properties": {
         "cloudConfig": {
