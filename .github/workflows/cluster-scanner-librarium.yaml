@@ -49,7 +49,7 @@ jobs:
           PALETTE_API_KEY: ${{ env.PALETTE_API_KEY }}
           PALETTE_HOST: ${{ env.PALETTE_HOST }}
         run: |
-          set -e
+          set -euo pipefail
           go build -o cluster-scanner
           ./cluster-scanner | tee result.log
 
