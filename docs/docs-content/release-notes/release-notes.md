@@ -11,12 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## September 2, 2026 - Release 4.9.x
+## September 3, 2026 - Release 4.9.53
 
 <!-- PATCH RELEASE TICKET: DOC-3179 -->
-<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE VERSION: 4.9.53 -->
 
-### Breaking Changes {#breaking-changes-4-9-x}
+### Breaking Changes {#breaking-changes-4-9-53}
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11891 -->
 
@@ -34,6 +34,22 @@ tags: ["release-notes"]
   alone. As a result, users with read-only cluster access, such as those assigned the
   [Cluster Viewer](../user-management/palette-rbac/project-scope-roles-permissions.md) role, could retrieve sensitive
   cluster material that their role otherwise denies them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2346 -->
+
+- Fixed an issue where the Palette CLI generated a cert-manager manifest with empty image tags and a malformed container
+  argument. As a result, [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) installation failed during the bootstrap
+  phase with the error
+  `cannot unmarshal object into Go struct field Container.spec.template.spec.containers.args of type string`.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.53 Palette release is
+4.9.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## August 27, 2026 - Release 4.9.52
 
