@@ -11,6 +11,46 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 3, 2026 - Release 4.9.53
+
+<!-- PATCH RELEASE TICKET: DOC-3179 -->
+<!-- PATCH RELEASE VERSION: 4.9.53 -->
+
+### Breaking Changes {#breaking-changes-4-9-53}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11891 -->
+
+- The `GET /v1/spectroclusters/{uid}/assets/manifest` [Palette API](/api/introduction/) endpoint is now restricted to
+  the Palette cluster management agent. Requests made with a user access token or an API key return a forbidden
+  response. The cluster asset manifest contains sensitive material, such as the admin kubeconfig, certificates, and
+  secrets, that only the agent requires for cluster management operations. Update any automation that retrieves the
+  cluster asset manifest with a user access token or an API key.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11891 -->
+
+- Fixed an issue where the cluster asset manifest endpoint authorized requests against the `cluster.get` permission
+  alone. As a result, users with read-only cluster access, such as those assigned the
+  [Cluster Viewer](../user-management/palette-rbac/project-scope-roles-permissions.md) role, could retrieve sensitive
+  cluster material that their role otherwise denies them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2346 -->
+
+- Fixed an issue where the Palette CLI generated a cert-manager manifest with empty image tags and a malformed container
+  argument. As a result, [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) installation failed during the bootstrap
+  phase with the error
+  `cannot unmarshal object into Go struct field Container.spec.template.spec.containers.args of type string`.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.53 Palette release is
+4.9.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## August 28, 2026 - Component Updates {#component-updates-2026-35}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3139 -->
