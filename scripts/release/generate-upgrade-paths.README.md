@@ -27,6 +27,9 @@ Mirrors what the published docs show:
 
 - `supported` / `verified` / `✅` → ✅
 - `fails` / `not supported` / `❌` / `:cross_mark:` → ❌
+- `staggered` / `conditional` / `intermediate` / `see note` / `❓` → ❓ linking to the **Kubernetes Version Constraint**
+  section (use for a path that is supported only through an intermediate hop, such as a Kubernetes minor-version
+  constraint)
 - `n/a` / `NA` / `In Progress` / blank → _dropped_ (not published)
 
 ## Setup

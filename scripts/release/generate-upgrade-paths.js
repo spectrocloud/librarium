@@ -40,6 +40,11 @@ const cheerio = require("cheerio");
 
 const CHECK = ":white_check_mark:";
 const CROSS = ":x:";
+// Staggered/conditional path: supported only through an intermediate hop (for example,
+// a Kubernetes minor-version constraint that forbids a direct upgrade). Rendered as a
+// linked question mark that points at the hand-written "Kubernetes Version Constraint"
+// section, which exists on both the VerteX and Self-Hosted upgrade pages. See DOC-3097.
+const QUESTION = "[:question:](#kubernetes-version-constraint)";
 
 // Confluence install-type heading -> marker install slug.
 const INSTALL_MAP = {
@@ -115,9 +120,10 @@ function range(start, end) {
 
 // Map a Confluence status cell to a published Support mark, or null to drop.
 // Decision: mirror the live docs.
-//   supported / verified / ✅            -> ✅
-//   fails / not supported / ❌ / cross    -> ❌
-//   n/a / NA / in progress / blank        -> dropped
+//   supported / verified / ✅                        -> ✅
+//   fails / not supported / ❌ / cross                -> ❌
+//   staggered / conditional / intermediate / ❓        -> ❓ (links to the version constraint note)
+//   n/a / NA / in progress / blank                    -> dropped
 function statusToMark(status) {
   const s = clean(status).toLowerCase();
   if (["supported", "verified", "✅", ":white_check_mark:"].includes(s)) {
@@ -136,6 +142,23 @@ function statusToMark(status) {
     ].includes(s)
   ) {
     return CROSS;
+  }
+  // Supported only via an intermediate/staggered hop. A bare note in the cell would
+  // otherwise fall through to null and silently drop the row, so map these explicitly.
+  if (
+    [
+      "staggered",
+      "conditional",
+      "intermediate",
+      "see note",
+      "see notes",
+      "❓",
+      "❔",
+      ":question:",
+      ":grey_question:",
+    ].includes(s)
+  ) {
+    return QUESTION;
   }
   // n/a, na, "in progress", blank, notes, etc. are not published.
   return null;
