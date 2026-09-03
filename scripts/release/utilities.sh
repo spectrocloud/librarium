@@ -166,6 +166,23 @@ search_line() {
     echo "$line_number"
 }
 
+# Utility function to search for a line within a bounded section of a target file. The scan
+# starts after the first line containing the anchor and stops at the first "</TabItem>", so
+# the same row anchor can exist in more than one tabbed table and each table stays searchable
+# in isolation. Prints the 1-based line number of the first match, or nothing when the needle
+# is not present between the anchor and the terminator. All matches are literal.
+# Params:
+# $1 - anchor whose line opens the search window, example: palette-cli-linux-arm64-table
+# $2 - literal needle to find after the anchor, example: cli-4.10.0 -->
+# $3 - target file to search
+search_line_after() {
+    awk -v anchor="$1" -v needle="$2" '
+      !found && index($0, anchor) { found = 1; next }
+      found && index($0, "</TabItem>") { exit }
+      found && index($0, needle) { print NR; exit }
+    ' "$3"
+}
+
 # Utility function to replace a line with a source file
 # Params: 
 # $1 - line number to replace
