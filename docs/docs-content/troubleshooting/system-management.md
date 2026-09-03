@@ -14,7 +14,7 @@ Refer to the following sections to troubleshoot errors encountered while perform
 Palette and Palette VerteX. It also includes troubleshooting for tenant administrators when the underlying issue relates
 to the system.
 
-## Scenario - Image Pull Secret Not Propagated to Workload Clusters
+## Scenario - Image Pull Secret Not Propagated to Workload Clusters {#pull-secret-not-propagated}
 
 Because Spectro Cloud publishes security-hardened images to authenticated OCI registries, the clusters need the
 [image pull secret](../enterprise-version/system-management/configure-image-pull-secret.md) to pull images.
