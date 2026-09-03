@@ -309,8 +309,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- END PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
 
-#### Pack Notes
-
 ## August 17, 2026 - Release 4.9.46
 
 <!-- PATCH RELEASE TICKET: DOC-3113 -->
