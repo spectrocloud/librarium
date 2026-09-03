@@ -405,8 +405,8 @@ leaves the role untouched and emits one of the following events.
    - Edit the role in AWS so that it matches the cluster profile. For example, detach the extra managed policy, delete
      the inline policy, or correct the trust policy.
 
-   For `IRSARoleForeignOwner`, investigate the name collision with the cluster that owns the role. The conflicting role
-   must be renamed or removed before Palette can manage a role of the same name on this cluster.
+   If the event is `IRSARoleForeignOwner`, investigate the name collision with the cluster that owns the role. The
+   conflicting role must be renamed or removed before Palette can manage a role of the same name on this cluster.
 
 3. Wait for the next reconcile. Palette re-runs the compatibility check and adopts the role if it now matches. Confirm
    by returning to the **Events Tab** and looking for a `Normal IRSARoleAdopted` event.
