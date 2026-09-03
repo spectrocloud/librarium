@@ -51,6 +51,57 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 :::
 
+## August 28, 2026 - Component Updates {#component-updates-2026-35}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3139 -->
+<!-- RELEASE DATE: August 28, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.51 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.22 -->
+<!-- RELEASE TERRAFORM VERSION: NA -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.52.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.22  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.51  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.51  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3139. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-995 -->
+
+- Artifact Studio now publishes downloadable model metadata for all verified PaletteAI Inference Launchpad models,
+  enabling users to download unified GPU-vendor metadata directly from the Show Artifacts view.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3139. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3139. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.4.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.22.3 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :x: | :white_check_mark: | 1.34.5 |
+| <VersionedLink text="csi-local-path-provisioner" url="/integrations/packs/?pack=csi-local-path-provisioner" /> | `csi` | :x: | :white_check_mark: | 0.0.37 |
+| <VersionedLink text="csi-local-path-provisioner-addon" url="/integrations/packs/?pack=csi-local-path-provisioner-addon" /> | `addon` | :x: | :white_check_mark: | 0.0.37 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :x: | :white_check_mark: | 1.11.2 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :x: | :white_check_mark: | 1.11.2 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :white_check_mark: | 2.11.0 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.11.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.27.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 88.5.4 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.122 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3139. DO NOT DELETE. -->
+
 ## August 27, 2026 - Release 4.9.52
 
 <!-- PATCH RELEASE TICKET: DOC-3162 -->
@@ -257,8 +308,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3115. DO NOT DELETE. -->
-
-#### Pack Notes
 
 ## August 17, 2026 - Release 4.9.46
 
