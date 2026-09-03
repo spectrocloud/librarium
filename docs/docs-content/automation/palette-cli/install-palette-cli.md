@@ -40,12 +40,6 @@ The Palette CLI is available for the following operating systems and architectur
 1. Visit the [Downloads](../../downloads/cli-tools.md#palette-cli) page and download the Palette CLI by using the URL
    provided for your operating system and chip architecture.
 
-   | **Operating System/Architecture** | **Download URL**                                                                                                                                                 |
-   | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Linux AMD64                       | [https://software.spectrocloud.com/palette-cli/v4.10.3/linux/cli/palette](https://software.spectrocloud.com/palette-cli/v4.10.3/linux/cli/palette)               |
-   | Linux ARM64                       | [https://software.spectrocloud.com/palette-cli/v4.10.3/linux-arm64/cli/palette](https://software.spectrocloud.com/palette-cli/v4.10.3/linux-arm64/cli/palette)   |
-   | macOS ARM64                       | [https://software.spectrocloud.com/palette-cli/v4.10.3/darwin-arm64/cli/palette](https://software.spectrocloud.com/palette-cli/v4.10.3/darwin-arm64/cli/palette) |
-
 2. Open up a terminal session on your local system.
 
 3. Navigate to your default download folder. For Linux environments the default location is **~/Downloads**.
