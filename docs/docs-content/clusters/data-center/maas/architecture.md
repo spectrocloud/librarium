@@ -60,7 +60,6 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
 
 - OpenID Connect (OIDC)
-- Network Time Protocol (NTP)
 - Deploying MAAS clusters with LXD VMs
 - The <VersionedLink
   text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack is available as a Container Network Interface
@@ -101,11 +100,75 @@ Configuring **SSH Keys** through Palette does not remove or modify default or ex
 example, the built-in `ubuntu` user on Ubuntu MAAS images. Palette preserves those users, along with any keys that MAAS
 or the machine image configured for them.
 
+On a Canonical Kubernetes cluster, changing **SSH Keys** after the cluster is deployed repaves the cluster nodes. Refer
+to
+[Day-2 SSH Key and NTP Changes on Canonical Kubernetes Clusters](#day-2-ssh-key-and-ntp-changes-on-canonical-kubernetes-clusters)
+for more information.
+
 ### SSH Access on OpenShift Workload Clusters
 
 OpenShift workload clusters hosted by a HyperShift host cluster are provisioned through HyperShift's `HostedCluster` and
 `NodePool` custom resources on Red Hat Enterprise Linux CoreOS (RHCOS), not through Palette's cloud-init injection path.
 SSH access to those nodes is governed by OpenShift and RHCOS mechanisms rather than by the cluster's **SSH Keys** field.
+
+## NTP Servers on MAAS Cluster Nodes
+
+When you configure **NTP Servers** on a MAAS cluster's cloud configuration, Palette applies the servers to every control
+plane and worker node in the cluster. This applies to clusters that use the following distributions:
+
+- Palette eXtended Kubernetes (PXK)
+- Canonical Kubernetes (CK8s), from Palette 4.10.0 onward
+- HyperShift host clusters, which are PXK MAAS clusters and inherit the same behavior
+
+The servers you specify replace the NTP configuration that MAAS provides to the node. We recommend specifying at least
+one NTP server to prevent time drift issues.
+
+If you remove every server from the list on a Canonical Kubernetes cluster, its nodes fall back to the default NTP pools
+of the node operating system, for example `0.ubuntu.pool.ntp.org` through `3.ubuntu.pool.ntp.org`. They do not return to
+the NTP server that MAAS provides.
+
+On a Canonical Kubernetes cluster, changing **NTP Servers** after the cluster is deployed repaves the cluster nodes.
+Refer to
+[Day-2 SSH Key and NTP Changes on Canonical Kubernetes Clusters](#day-2-ssh-key-and-ntp-changes-on-canonical-kubernetes-clusters)
+for more information.
+
+### NTP on OpenShift Workload Clusters
+
+OpenShift workload clusters hosted by a HyperShift host cluster do not consume the cluster's **NTP Servers** field.
+Their nodes are provisioned through HyperShift's `HostedCluster` and `NodePool` custom resources on RHCOS rather than
+through Palette's cloud-init path, so time synchronization on those nodes is governed by OpenShift and RHCOS mechanisms.
+
+## Day-2 SSH Key and NTP Changes on Canonical Kubernetes Clusters
+
+Palette injects the **SSH Keys** and **NTP Servers** values from a cluster's cloud configuration into the bootstrap
+configuration of each Canonical Kubernetes (CK8s) node. When you change either value on a deployed CK8s cluster, the
+node configuration that Palette generates no longer matches the configuration of the running nodes, and Palette repaves
+the cluster to reconcile the difference.
+
+The repave replaces the control plane nodes and the nodes in every worker pool. Palette replaces nodes one at a time so
+that the cluster remains available for the duration of the operation. As with any repave, Palette requires your approval
+before the operation starts. Refer to
+[Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration) to learn
+how repaves proceed and how to approve them.
+
+:::warning
+
+Plan **SSH Keys** and **NTP Servers** changes on a deployed Canonical Kubernetes cluster in the same way you plan a
+Kubernetes version upgrade. Every node in the cluster is replaced.
+
+:::
+
+Palette does not repave the cluster in the following cases:
+
+- You save the cloud configuration without changing the **SSH Keys** or **NTP Servers** values. Palette compares the
+  node configuration it generates against the configuration of the running nodes and takes no action when the two match.
+
+- You use an auto-generated SSH key and do not regenerate it. Palette reuses the stored public key each time it
+  evaluates the cluster, so the node configuration remains unchanged. Regenerating the key produces a new public key,
+  which does repave the cluster.
+
+- You have not configured **SSH Keys** or **NTP Servers** on the cluster. Palette repaves the cluster only in response
+  to a change in these values.
 
 ## Custom API Server Endpoint for MAAS Clusters
 

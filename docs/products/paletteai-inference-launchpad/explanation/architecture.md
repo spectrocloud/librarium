@@ -63,15 +63,26 @@ single per-model endpoint. The appliance treats unknown GPU capacity as unusable
 which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
 [Model Placement](./model-placement.md).
 
+The appliance does not support in-place replacement: changing what a node serves requires removing the current model and
+then deploying the replacement. Removing the model from one node leaves it serving on the others. Refer to
+[Replace a Model](../how-to-guides/replace-a-model.md).
+
 ## Request Routing
 
-The gateway routes each request to a model. A request that names a model uses that model, and a request that does not
-name a model falls back to the default model. When you change the default model, the gateway rebuilds its router in
-place. The gateway does not restart, and it does not drain requests that are in progress. Requests that the gateway
-already routed continue on their assigned model, and the new default applies only to later requests.
+The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
+the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
+from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
+the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+
+When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
+restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
+assigned model, and the new configuration applies only to later requests.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
-quotas. For how clients, API tokens, and quotas work together, refer to [Clients and Quotas](./clients-and-quotas.md).
+quotas. When routing policy sends a request off the appliance, the gateway can reach a built-in frontier provider or a
+registered external inference endpoint. That traffic is metered as egress. For how clients, API tokens, and quotas work
+together, refer to [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
 converts each image to text, and the text model then answers as it would for any other prompt. Text-only requests skip
@@ -81,11 +92,20 @@ this step. For the request path and how to turn the feature on, refer to
 
 ### The Default Model
 
-The appliance sets the default model for you. The model you deploy during setup becomes the default, and if only one
-model serves, that model is the default. The appliance does not switch the default to a different model on its own. When
-the current default stops serving, the appliance raises an incident on the **Overview** page and offers a one-step fix
-so you can switch the default to a model that is currently serving. For that procedure, refer to
-[Switch the Default Model](../how-to-guides/set-the-default-model.md).
+The default model is the model the appliance routes a request to when the request does not name a specific model. The
+appliance sets the default; there is no operator control to change which model is the default.
+
+### External Inference Endpoints {#external-inference-endpoints}
+
+An external inference endpoint is a box-wide OpenAI-compatible host that an operator registers so the gateway can route
+tier traffic to it as egress. Each endpoint carries a short **Endpoint id** that becomes the routing prefix. The id
+cannot be changed after registration, and it cannot collide with a built-in frontier provider (`anthropic`, `openai`,
+`gemini`); registration refuses a colliding id. The credential is stored once for the appliance and is never held per
+client, which is why the client drawer shows `box-managed` in place of a per-client key for that row.
+
+Disabling or removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at
+that endpoint falls back to the appliance's local serving in flight rather than returning an error. To register a host,
+refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## Network Topology
 

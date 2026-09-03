@@ -401,27 +401,39 @@ jobs:
         env:
           HEAD_REF: ${{ github.head_ref }}
           REPO_URL: https://github.com/${{ github.repository }}.git
+        # The sentinels below are deliberately `present`/`absent` and NOT `true`/`false`.
+        # Several secrets in this workflow's top-level `env:` block hold the literal
+        # string `true` or `false` (DISABLE_PACKS_INTEGRATIONS, DISABLE_SECURITY_INTEGRATIONS,
+        # SHOW_LAST_UPDATE_TIME). Actions registers every secret value as a mask for the
+        # whole job, then refuses to set any job output containing a masked value:
+        #   ##[warning]Skip output 'branch_present' since it may contain secret.
+        # The output then arrives at `publish_report` as an empty string, the `if` is
+        # false, and the publish silently skips while the run stays green. That is
+        # exactly what happened to every run between DOC-3108 merging and this fix.
+        # Do not "tidy" these back to booleans. See DOC-3108.
         run: |
           set -euo pipefail
 
           if [ -z "$HEAD_REF" ]; then
             echo "::notice::Empty head_ref; skipping publish."
-            printf 'branch_present=false\n' >> "$GITHUB_OUTPUT"
+            printf 'branch_present=absent\n' >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           if git ls-remote --exit-code --heads "$REPO_URL" "refs/heads/$HEAD_REF" >/dev/null 2>&1; then
-            printf 'branch_present=true\n' >> "$GITHUB_OUTPUT"
+            printf 'branch_present=present\n' >> "$GITHUB_OUTPUT"
           else
             echo "::notice::Head branch '$HEAD_REF' no longer exists on origin; skipping publish to avoid orphaning reports/<sanitised>. The scheduled sweep in reconcile-orphan-reports.yaml will not have to fix this one."
-            printf 'branch_present=false\n' >> "$GITHUB_OUTPUT"
+            printf 'branch_present=absent\n' >> "$GITHUB_OUTPUT"
           fi
 
 
   publish_report:
     name: Publish HTML Report
     needs: [run-ci, take-screenshots, merge-reports, head_ref_check]
-    if: needs.head_ref_check.outputs.branch_present == 'true'
+    # `present`/`absent` rather than `true`/`false` is load-bearing — see the sentinel
+    # comment in head_ref_check's check step before changing this comparison.
+    if: needs.head_ref_check.outputs.branch_present == 'present'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # Pushes the report to gh-pages and posts the report URL comment on the PR.

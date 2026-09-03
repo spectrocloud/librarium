@@ -104,15 +104,18 @@ Whatever brought you here, these are the fastest paths in.
   • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
   [Model Placement](./explanation/model-placement.md) • [Vision Preprocessing](./explanation/vision-preprocessing.md) •
-  [Clients and Quotas](./explanation/clients-and-quotas.md) •
+  [Clients and Quotas](./explanation/clients-and-quotas.md) • [Routing Behavior](./explanation/routing-behavior.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •
   [Cursor](./how-to-guides/use-cursor.md) • [OpenAI Codex](./how-to-guides/use-codex.md) •
   [OpenCode](./how-to-guides/use-opencode.md)
 - **Operate day to day**: [Manage cluster infrastructure](./how-to-guides/manage-cluster-infrastructure.md) •
   [Upgrade the platform](./how-to-guides/upgrade-the-platform.md) •
+  [Replace a model](./how-to-guides/replace-a-model.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
+  [Configure semantic routing](./how-to-guides/configure-semantic-routing.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
+  [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
   [Revoke or delete a client](./how-to-guides/revoke-or-delete-a-client.md)
 - **Look something up**: [Glossary](./reference/glossary.md) •
