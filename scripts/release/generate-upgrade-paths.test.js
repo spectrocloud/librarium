@@ -1,5 +1,6 @@
 const {
   checkK8sConstraint,
+  isPlaceholderK8sLabel,
   diffRows,
   headingMeetsFloor,
   isKnownDropStatus,
@@ -61,6 +62,24 @@ describe("parseK8sLabel", () => {
   });
 });
 
+describe("isPlaceholderK8sLabel", () => {
+  it("flags a label that announces a version but gives none", () => {
+    // The 4.9 -> 4.10 EC Install column is labelled "K8s TBD" while unreleased.
+    expect(isPlaceholderK8sLabel("4.10.x \u00b7 K8s TBD")).toBe(true);
+    expect(isPlaceholderK8sLabel("4.10.x \u00b7 K8s ?")).toBe(true);
+  });
+
+  it("does not flag a label with no Kubernetes version at all", () => {
+    // Normal and expected for Helm installs.
+    expect(isPlaceholderK8sLabel("4.9.x")).toBe(false);
+    expect(isPlaceholderK8sLabel("")).toBe(false);
+  });
+
+  it("does not flag a resolved label", () => {
+    expect(isPlaceholderK8sLabel("4.9.x \u00b7 K8s 1.33.10")).toBe(false);
+  });
+});
+
 describe("headingMeetsFloor", () => {
   it("recognizes an in-scope version group", () => {
     expect(headingMeetsFloor("4.8 \u2192 4.9")).toBe(true);
@@ -119,11 +138,43 @@ describe("checkK8sConstraint", () => {
     ).toEqual([]);
   });
 
-  it("skips paths with no Kubernetes labels, such as Helm installs", () => {
+  it("reports a supported path it could not check because the label says TBD", () => {
+    const report = newReport();
+    checkK8sConstraint(
+      {
+        vmware: [
+          {
+            source: "4.9.51",
+            target: "4.10.11",
+            support: CHECK,
+            sourceK8s: { major: 1, minor: 34 },
+            targetK8s: null,
+            sourceLabel: "4.9.x \u00b7 K8s 1.34.6",
+            targetLabel: "4.10.x \u00b7 K8s TBD",
+          },
+        ],
+      },
+      report
+    );
+    expect(report.constraintConflicts).toEqual([]);
+    expect(report.unresolvedK8s).toEqual([
+      'vmware: 4.9.51 -> 4.10.11 could not be checked ("4.10.x \u00b7 K8s TBD")',
+    ]);
+  });
+
+  it("stays silent for paths with no Kubernetes labels, such as Helm installs", () => {
     expect(
       run({
         kubernetes: [
-          { source: "4.8.61", target: "4.9.24", support: CHECK, sourceK8s: null, targetK8s: null },
+          {
+            source: "4.8.61",
+            target: "4.9.24",
+            support: CHECK,
+            sourceK8s: null,
+            targetK8s: null,
+            sourceLabel: "4.8.x",
+            targetLabel: "4.9.x",
+          },
         ],
       })
     ).toEqual([]);

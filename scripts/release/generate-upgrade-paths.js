@@ -229,6 +229,15 @@ function parseK8sLabel(label) {
   return { major: Number(m[1]), minor: Number(m[2]) };
 }
 
+// A label that announces a Kubernetes version but does not give one, such as
+// "4.10.x · K8s TBD" on an unreleased version. Distinct from a label with no
+// Kubernetes version at all, which is the normal and silent case for Helm installs:
+// here someone intended to state a version and has not yet, so the cross-check
+// cannot run and must say so rather than pass quietly.
+function isPlaceholderK8sLabel(label) {
+  return /K8s/i.test(clean(label)) && !parseK8sLabel(label);
+}
+
 // Report any path Confluence marks as validated whose own labels say it crosses more
 // than MAX_K8S_MINOR_DELTA Kubernetes minor versions. This never rewrites a mark --
 // Confluence is the source of truth -- but a disagreement means either the matrix or
@@ -240,7 +249,17 @@ function checkK8sConstraint(pathsByInstall, report) {
       if (p.support !== CHECK) continue;
       const from = p.sourceK8s;
       const to = p.targetK8s;
-      if (!from || !to) continue;
+      if (!from || !to) {
+        // Silence here would hide a path the cross-check never evaluated.
+        const unresolved = [p.sourceLabel, p.targetLabel].filter(isPlaceholderK8sLabel);
+        if (unresolved.length) {
+          report.unresolvedK8s.push(
+            `${install}: ${p.source} -> ${p.target} could not be checked ` +
+              `(${unresolved.map((l) => `"${clean(l)}"`).join(", ")})`
+          );
+        }
+        continue;
+      }
       const delta = from.major === to.major ? to.minor - from.minor : Infinity;
       if (delta <= MAX_K8S_MINOR_DELTA) continue;
       report.constraintConflicts.push(
@@ -260,6 +279,7 @@ function newReport() {
     emptyInstalls: [],
     skippedLegacyTables: [],
     constraintConflicts: [],
+    unresolvedK8s: [],
   };
 }
 
@@ -320,7 +340,8 @@ function matrixToPaths(rows, install, report) {
     if (row.length < 3) continue;
     const source = row[1];
     if (!/^\d+\.\d+/.test(source)) continue;
-    const sourceK8s = parseK8sLabel(row[0]);
+    const sourceLabel = row[0];
+    const sourceK8s = parseK8sLabel(sourceLabel);
     const statuses = row.slice(2);
     for (let i = 0; i < targetVersions.length; i++) {
       const mark = statusToMark(statuses[i]);
@@ -328,10 +349,11 @@ function matrixToPaths(rows, install, report) {
         if (!isKnownDropStatus(statuses[i])) flag(statuses[i], source, targetVersions[i]);
         continue;
       }
-      const targetK8s = parseK8sLabel(targetLabels[i]);
+      const targetLabel = targetLabels[i];
+      const targetK8s = parseK8sLabel(targetLabel);
       for (const target of expandTarget(targetVersions[i])) {
         if (/^\d+\.\d+/.test(target)) {
-          paths.push({ source, target, support: mark, sourceK8s, targetK8s });
+          paths.push({ source, target, support: mark, sourceK8s, targetK8s, sourceLabel, targetLabel });
         }
       }
     }
@@ -700,6 +722,14 @@ async function main() {
     );
     for (const cell of report.unrecognizedCells) console.log(`  ${cell}`);
   }
+  if (report.unresolvedK8s.length) {
+    console.log(
+      `Warning: ${report.unresolvedK8s.length} supported path(s) could not be checked ` +
+        `against the Kubernetes constraint because the matrix label names no version. ` +
+        `Fill in the version in Confluence, then re-run:`
+    );
+    for (const line of report.unresolvedK8s) console.log(`  ${line}`);
+  }
   if (report.constraintConflicts.length) {
     console.log(
       `Warning: ${report.constraintConflicts.length} path(s) are marked supported but ` +
@@ -755,6 +785,7 @@ if (require.main === module) {
 
 module.exports = {
   checkK8sConstraint,
+  isPlaceholderK8sLabel,
   diffRows,
   headingMeetsFloor,
   isKnownDropStatus,

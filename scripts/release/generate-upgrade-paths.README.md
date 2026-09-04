@@ -89,6 +89,13 @@ These are warnings or notes, and the run continues:
 - An `h3` heading that maps to no install and has no table under it.
 - A status cell that cannot be classified.
 - A path marked supported that skips a Kubernetes minor version (refer to the cross-check above).
+- A supported path the cross-check **could not evaluate**, because the matrix label announces a
+  Kubernetes version without giving one (`4.10.x · K8s TBD` on an unreleased version). This one
+  matters at regen time: while the label says `TBD`, a `4.9.x → 4.10.x` path that skips a minor
+  keeps whatever mark Confluence gave it and nothing verifies it. **Before regenerating for a new
+  release, fill the real Kubernetes version into the matrix labels in Confluence, then read the
+  warnings rather than trusting a green run.** A label with no Kubernetes version at all is
+  silent by design, since that is the normal case for Helm installs.
 - A Confluence block the Markdown has no marker for. Add the marker pair and rerun. This is
   expected for a version whose docs live on another branch — for example `4.10` blocks are
   reported here and added on `docs-rel-4-10-0`.
