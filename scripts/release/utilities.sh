@@ -219,6 +219,60 @@ replace_line() {
   mv "$tmp_file" "$target_file"
 }
 
+# Utility function to replace an inclusive region of a target file, delimited by a start and an end
+# marker, with the contents of a source file. Used to refresh a managed block of prose that a
+# re-run has to rewrite in full, such as a release note callout naming a component version that was
+# bumped on the day of release.
+#
+# A region rather than a single line, because Prettier reflows prose to 120 columns: the Automation
+# callout in the release notes runs past that and is published across two lines, so a replacement
+# keyed on one line would rewrite half a sentence.
+#
+# Both markers are matched literally, and nothing is changed unless both are present and the end
+# marker follows the start marker, so a half-marked block is left alone rather than mangled. The
+# markers themselves sit inside the region and are re-rendered from the template with it, which is
+# what lets the same region be replaced again on the next run.
+# Params:
+# $1 - literal start marker, example: <!-- release-notes-edge-callout-4.10.0-start -->
+# $2 - literal end marker, example: <!-- release-notes-edge-callout-4.10.0-end -->
+# $3 - source file whose contents replace the region, its own markers included
+# $4 - target file
+# Returns 0 if the region was replaced, 1 if it was not found.
+replace_region() {
+    local start_marker="$1"
+    local end_marker="$2"
+    local source_file="$3"
+    local target_file="$4"
+    local start_line end_line tmp_file
+
+    [[ -f "$target_file" ]] || return 1
+
+    start_line=$(search_line "$start_marker" "$target_file")
+    end_line=$(search_line "$end_marker" "$target_file")
+
+    if [[ -z "$start_line" || -z "$end_line" || "$end_line" -le "$start_line" ]]; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v start_line="$start_line" -v end_line="$end_line" -v source_file="$source_file" '
+      NR == start_line {
+        while ((getline line < source_file) > 0) {
+          print line
+        }
+        close(source_file)
+        next
+      }
+
+      NR > start_line && NR <= end_line { next }
+
+      { print }
+    ' "$target_file" > "$tmp_file"
+
+    mv "$tmp_file" "$target_file"
+}
+
 # Utility function to remove a file
 # Params:
 # $1 - file name

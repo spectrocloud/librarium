@@ -237,7 +237,15 @@ tags: ["release-notes"]
 
 ### Edge
 
+<!-- release-notes-edge-callout-4.10.0-start -->
+
+:::info
+
 The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.0 Palette release is 4.10.3.
+
+:::
+
+<!-- release-notes-edge-callout-4.10.0-end -->
 
 :::warning
 
@@ -467,12 +475,16 @@ troubleshooting scenario.
 
 ### Automation
 
+<!-- release-notes-automation-callout-4.10.0-start -->
+
 :::info
 
 The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.0 Palette release is
-4.10.0. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+4.10.3. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
+
+<!-- release-notes-automation-callout-4.10.0-end -->
 
 #### Features
 
