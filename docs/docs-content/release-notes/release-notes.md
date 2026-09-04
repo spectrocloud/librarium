@@ -576,6 +576,12 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Deprecations and Removals
 
+- The Ingress Nginx pack is disabled in Palette 4.10.0. You can no longer create new cluster profiles that include the
+  pack. Existing profiles that already contain it continue to launch new clusters, and running workloads are unaffected.
+  The pack was deprecated in Palette 4.8.0, following the Kubernetes project's retirement of `ingress-nginx`. The pack
+  remains disabled for approximately three months before it transitions to the Deleted state, after which existing
+  profiles can no longer launch new clusters either.
+
 ## September 6, 2026 - Component Updates {#component-updates-2026-36}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3171 -->
