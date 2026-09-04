@@ -19,3 +19,4 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                       |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.            |
 | [Installation Architecture](./installation-architecture.md) | How the appliance installs across two stages, including the roles of the jumpbox and why the network uses a bond. |
+| [The Thinking Directive](./thinking-directive.md)           | What the Thinking directive controls, why off is disabled for some models, and how a budget is interpreted.       |
