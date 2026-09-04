@@ -16,6 +16,17 @@
  * (vmware/kubernetes 4.6+, appliance 4.7+). The *-prior and legacy 4.5/4.4
  * blocks are left untouched for hand maintenance.
  *
+ * Every run prints the rows it adds, removes, and re-marks per block, and fails
+ * before writing anything if the Confluence headings changed in a way that would
+ * leave marker blocks stale. Refer to the README for the failure modes.
+ *
+ * The published marks mirror Confluence exactly. As a cross-check, the script reads
+ * the bundled Kubernetes version from the matrix's own header and row labels (which
+ * differ between the EC binary and the Appliance Installer) and reports any path
+ * marked supported that skips a Kubernetes minor version. It reports rather than
+ * rewrites: that disagreement means the matrix or its labels need fixing at source
+ * (DOC-3097).
+ *
  * Usage:
  *   # Reads CONFLUENCE_* env vars from .env (run `make init-release` once,
  *   # fill in the values, then `source .env`).
@@ -40,6 +51,39 @@ const cheerio = require("cheerio");
 
 const CHECK = ":white_check_mark:";
 const CROSS = ":x:";
+// Staggered/conditional path: supported only through an intermediate hop (for example,
+// a Kubernetes minor-version constraint that forbids a direct upgrade). Rendered as a
+// linked question mark that points at the hand-written "Kubernetes Version Constraint"
+// section, which exists on both the VerteX and Self-Hosted upgrade pages. See DOC-3097.
+const QUESTION = "[:question:](#kubernetes-version-constraint)";
+
+// Status cells that intentionally publish nothing. Any other cell that fails to
+// classify is reported, so a Confluence wording change cannot silently drop rows.
+const DROP_STATUSES = [
+  "",
+  "-",
+  "--",
+  "\u2014",
+  "n/a",
+  "n.a.",
+  "na",
+  "none",
+  "not applicable",
+  "not tested",
+  "untested",
+  "in progress",
+  "in-progress",
+  "pending",
+  "tbd",
+];
+
+// Kubernetes minor versions cannot be skipped during an upgrade, so a validated
+// path that crosses two or more minors is a contradiction worth reporting. The
+// Confluence matrix carries the bundled Kubernetes version per install type in its
+// header and row labels ("4.9.x . K8s 1.33.10"), which is the authority: the EC
+// binary and the Appliance Installer ship different Kubernetes versions for the
+// same Palette release. See DOC-3097.
+const MAX_K8S_MINOR_DELTA = 1;
 
 // Confluence install-type heading -> marker install slug.
 const INSTALL_MAP = {
@@ -91,6 +135,15 @@ function meetsFloor(mm) {
   return cmpKey(versionKey(mm), MIN_VERSION) >= 0;
 }
 
+// Does a Confluence version-group heading ("4.8 -> 4.9", "4.1 through 4.3") name any
+// release inside the auto-managed range? A heading with no parseable version counts as
+// in scope, so that genuine drift is never hidden behind an unreadable heading.
+function headingMeetsFloor(heading) {
+  const versions = clean(heading).match(/\d+\.\d+/g);
+  if (!versions) return true;
+  return versions.some((v) => meetsFloor(v));
+}
+
 // Expand cells such as "4.6.25 to .28" or "4.6.25 to 4.6.28" into versions.
 function expandTarget(rawTarget) {
   const target = clean(rawTarget);
@@ -113,32 +166,121 @@ function range(start, end) {
   return out;
 }
 
-// Map a Confluence status cell to a published Support mark, or null to drop.
-// Decision: mirror the live docs.
-//   supported / verified / ✅            -> ✅
-//   fails / not supported / ❌ / cross    -> ❌
-//   n/a / NA / in progress / blank        -> dropped
+// Split one Markdown table row into trimmed cells. Tolerates the padding Prettier
+// adds when it aligns a table, and rows written without outer pipes.
+function splitTableRow(line) {
+  const trimmed = line.trim();
+  if (!trimmed.includes("|")) return [];
+  return trimmed
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
+// Map a Confluence status cell to a published Support mark, or null to drop the row.
+// Matching is by keyword rather than exact equality so that an editorialized cell such
+// as "Supported (staggered)" still classifies instead of vanishing from the table.
+// Order matters: "not supported" contains "supported", and a staggered cell usually
+// says "supported" too, so the narrower cases are tested first.
+//   staggered / conditional / intermediate / two-step / ❓ -> ❓ (links to the constraint)
+//   not supported / unsupported / fails / ❌              -> ❌
+//   supported / verified / passed / ✅                    -> ✅
+//   n/a / in progress / blank (refer to DROP_STATUSES)   -> dropped
+// Anything else returns null and is reported by the caller.
 function statusToMark(status) {
   const s = clean(status).toLowerCase();
-  if (["supported", "verified", "✅", ":white_check_mark:"].includes(s)) {
-    return CHECK;
-  }
+  if (isKnownDropStatus(s)) return null;
   if (
-    [
-      "fails",
-      "fail",
-      "failed",
-      "not supported",
-      "unsupported",
-      "❌",
-      ":cross_mark:",
-      ":x:",
-    ].includes(s)
+    /staggered|conditional|intermediate|see notes?|two[- ]step|not supported directly|\u2753|\u2754|:question:|:grey_question:/.test(
+      s
+    )
   ) {
+    return QUESTION;
+  }
+  // Negation-aware: "not yet supported" and "not currently supported" must not fall
+  // through to the positive branch just because they contain "supported".
+  if (/\bnot\b[^.]*\bsupported\b|unsupported|\bfails?\b|\bfailed\b|\u274c|:cross_mark:|:x:/.test(s)) {
     return CROSS;
   }
-  // n/a, na, "in progress", blank, notes, etc. are not published.
+  if (/supported|verified|passed|\u2705|:white_check_mark:/.test(s)) {
+    return CHECK;
+  }
   return null;
+}
+
+// True when a cell is an expected "publish nothing" value rather than an unknown one.
+function isKnownDropStatus(status) {
+  return DROP_STATUSES.includes(clean(status).toLowerCase());
+}
+
+// ---------------------------------------------------------------------------
+// Kubernetes version constraint
+// ---------------------------------------------------------------------------
+
+// Pull the bundled Kubernetes version out of a Confluence label cell, for example
+// "4.9.x . K8s 1.33.10" or "4.8.x - K8s 1.32.9". Returns null when the label carries
+// no version, which is the normal case for Helm installs (the cluster's Kubernetes
+// version is managed independently of Palette) and for "K8s TBD" on an unreleased
+// version.
+function parseK8sLabel(label) {
+  const m = clean(label).match(/K8s\s*v?(\d+)\.(\d+)(?:\.\d+)?/i);
+  if (!m) return null;
+  return { major: Number(m[1]), minor: Number(m[2]) };
+}
+
+// A label that announces a Kubernetes version but does not give one, such as
+// "4.10.x · K8s TBD" on an unreleased version. Distinct from a label with no
+// Kubernetes version at all, which is the normal and silent case for Helm installs:
+// here someone intended to state a version and has not yet, so the cross-check
+// cannot run and must say so rather than pass quietly.
+function isPlaceholderK8sLabel(label) {
+  return /K8s/i.test(clean(label)) && !parseK8sLabel(label);
+}
+
+// Report any path Confluence marks as validated whose own labels say it crosses more
+// than MAX_K8S_MINOR_DELTA Kubernetes minor versions. This never rewrites a mark --
+// Confluence is the source of truth -- but a disagreement means either the matrix or
+// its Kubernetes labels are wrong, which is exactly the defect DOC-3097 was raised
+// for. Paths whose labels carry no Kubernetes version are skipped.
+function checkK8sConstraint(pathsByInstall, report) {
+  for (const [install, paths] of Object.entries(pathsByInstall)) {
+    for (const p of paths) {
+      if (p.support !== CHECK) continue;
+      const from = p.sourceK8s;
+      const to = p.targetK8s;
+      if (!from || !to) {
+        // Silence here would hide a path the cross-check never evaluated.
+        const unresolved = [p.sourceLabel, p.targetLabel].filter(isPlaceholderK8sLabel);
+        if (unresolved.length) {
+          report.unresolvedK8s.push(
+            `${install}: ${p.source} -> ${p.target} could not be checked ` +
+              `(${unresolved.map((l) => `"${clean(l)}"`).join(", ")})`
+          );
+        }
+        continue;
+      }
+      const delta = from.major === to.major ? to.minor - from.minor : Infinity;
+      if (delta <= MAX_K8S_MINOR_DELTA) continue;
+      report.constraintConflicts.push(
+        `${install}: ${p.source} -> ${p.target} is marked supported but crosses ` +
+          `Kubernetes ${from.major}.${from.minor} -> ${to.major}.${to.minor}`
+      );
+    }
+  }
+}
+
+// A fresh collector for everything a run needs to report or fail on.
+function newReport() {
+  return {
+    unknownHeadings: new Set(),
+    orphanTables: [],
+    unrecognizedCells: [],
+    emptyInstalls: [],
+    skippedLegacyTables: [],
+    constraintConflicts: [],
+    unresolvedK8s: [],
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -159,9 +301,18 @@ function getRows($, tableEl) {
   return rows;
 }
 
-function matrixToPaths(rows) {
+function matrixToPaths(rows, install, report) {
   if (rows.length < 3) return [];
   const paths = [];
+
+  // An unclassifiable cell drops its row from the published table, which is the one
+  // failure a reader cannot detect, so record enough to trace it back to Confluence.
+  const flag = (raw, source, target) => {
+    if (!report) return;
+    report.unrecognizedCells.push(
+      `${install}: ${source || "?"} -> ${target || "?"} = "${clean(raw)}"`
+    );
+  };
 
   // Simple legacy table: From | To | Verified?
   if (
@@ -171,26 +322,38 @@ function matrixToPaths(rows) {
   ) {
     for (const row of rows.slice(1)) {
       if (row.length >= 2 && row[0] && row[1]) {
-        const mark = statusToMark(row.length > 2 ? row[2] : "verified");
+        const raw = row.length > 2 ? row[2] : "verified";
+        const mark = statusToMark(raw);
         if (mark) paths.push({ source: row[0], target: row[1], support: mark });
+        else if (!isKnownDropStatus(raw)) flag(raw, row[0], row[1]);
       }
     }
     return paths;
   }
 
   // Matrix table: row 0 = target labels, row 1 = target versions ("to ➡️").
+  // The labels carry the bundled Kubernetes version per install type, which differs
+  // between the EC binary and the Appliance Installer for the same Palette release.
+  const targetLabels = rows[0].slice(2);
   const targetVersions = rows[1].slice(2);
   for (const row of rows.slice(2)) {
     if (row.length < 3) continue;
     const source = row[1];
     if (!/^\d+\.\d+/.test(source)) continue;
+    const sourceLabel = row[0];
+    const sourceK8s = parseK8sLabel(sourceLabel);
     const statuses = row.slice(2);
     for (let i = 0; i < targetVersions.length; i++) {
       const mark = statusToMark(statuses[i]);
-      if (!mark) continue;
+      if (!mark) {
+        if (!isKnownDropStatus(statuses[i])) flag(statuses[i], source, targetVersions[i]);
+        continue;
+      }
+      const targetLabel = targetLabels[i];
+      const targetK8s = parseK8sLabel(targetLabel);
       for (const target of expandTarget(targetVersions[i])) {
         if (/^\d+\.\d+/.test(target)) {
-          paths.push({ source, target, support: mark });
+          paths.push({ source, target, support: mark, sourceK8s, targetK8s, sourceLabel, targetLabel });
         }
       }
     }
@@ -198,7 +361,7 @@ function matrixToPaths(rows) {
   return paths;
 }
 
-function parseUpgradePaths(html) {
+function parseUpgradePaths(html, report) {
   const $ = cheerio.load(html);
 
   let start = null;
@@ -211,6 +374,7 @@ function parseUpgradePaths(html) {
 
   const byInstall = { vmware: [], kubernetes: [], appliance: [] };
   let currentInstall = null;
+  let lastHeading = null;
 
   for (const el of $(start).nextAll().toArray()) {
     if (el.type !== "tag") continue;
@@ -219,18 +383,31 @@ function parseUpgradePaths(html) {
     if (tag === "h2") {
       // New version-pair group; reset install so bare tables aren't mis-filed.
       currentInstall = null;
+      lastHeading = clean($(el).text());
       continue;
     }
     if (tag === "h3") {
-      currentInstall = INSTALL_MAP[clean($(el).text())] || null;
+      lastHeading = clean($(el).text());
+      currentInstall = INSTALL_MAP[lastHeading] || null;
+      if (!currentInstall && lastHeading) report.unknownHeadings.add(lastHeading);
       continue;
     }
     let tableEl = null;
     if (tag === "table") tableEl = el;
     else tableEl = $(el).find("table").get(0) || null;
-    if (tableEl && currentInstall) {
-      byInstall[currentInstall].push(...matrixToPaths(getRows($, tableEl)));
+    if (!tableEl) continue;
+    if (!currentInstall) {
+      // A table with no install context is discarded. Inside the auto-managed range
+      // that would leave marker blocks stale, so the run must fail rather than report
+      // success on a page whose headings were restructured. The legacy groups below
+      // the floor have always been bare tables and are hand-maintained, so they are
+      // only noted.
+      const where = lastHeading || "(no preceding heading)";
+      if (headingMeetsFloor(where)) report.orphanTables.push(where);
+      else report.skippedLegacyTables.push(where);
+      continue;
     }
+    byInstall[currentInstall].push(...matrixToPaths(getRows($, tableEl), currentInstall, report));
   }
 
   // De-dupe (drop self-upgrades) and sort newest-first.
@@ -254,6 +431,7 @@ function parseUpgradePaths(html) {
         )
     );
     deduped[install] = unique;
+    if (!unique.length) report.emptyInstalls.push(install);
   }
   return deduped;
 }
@@ -286,23 +464,59 @@ function escapeRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+// Read the rows already published inside a marker block, so a run can report what it
+// changes rather than only that something changed.
+function parseRenderedRows(block) {
+  const rows = [];
+  for (const line of (block || "").split("\n")) {
+    const cells = splitTableRow(line);
+    if (cells.length === 3 && /^\d+\.\d+/.test(cells[0])) {
+      rows.push({ source: cells[0], target: cells[1], support: cells[2] });
+    }
+  }
+  return rows;
+}
+
+// Compare published rows with generated ones. A row count alone cannot distinguish a
+// clean run from a Confluence change that quietly halved a table, so every run prints
+// added, removed, and re-marked rows per block.
+function diffRows(oldRows, newRows) {
+  const label = (r) => `${r.source} -> ${r.target}`;
+  const before = new Map(oldRows.map((r) => [label(r), r.support]));
+  const after = new Map(newRows.map((r) => [label(r), r.support]));
+  const added = [];
+  const removed = [];
+  const changed = [];
+  for (const [key, mark] of after) {
+    if (!before.has(key)) added.push(key);
+    else if (before.get(key) !== mark) changed.push(`${key}: ${before.get(key)} -> ${mark}`);
+  }
+  for (const key of before.keys()) {
+    if (!after.has(key)) removed.push(key);
+  }
+  return { added, removed, changed };
+}
+
 function replaceMarkerBlock(markdown, key, table) {
   const re = new RegExp(
-    `(<!-- upgrade-paths:${escapeRe(key)}:start -->)[\\s\\S]*?(<!-- upgrade-paths:${escapeRe(
+    `(<!-- upgrade-paths:${escapeRe(key)}:start -->)([\\s\\S]*?)(<!-- upgrade-paths:${escapeRe(
       key
     )}:end -->)`
   );
   let found = false;
-  const updated = markdown.replace(re, (_m, open, close) => {
+  let previous = "";
+  const updated = markdown.replace(re, (_m, open, body, close) => {
     found = true;
+    previous = body;
     return `${open}\n\n${table}\n\n${close}`;
   });
-  return [updated, found];
+  return [updated, found, previous];
 }
 
 function replaceUpgradePathMarkers(markdown, pathsByInstall) {
   let updated = markdown;
   const missing = [];
+  const changes = [];
   for (const install of ["vmware", "kubernetes", "appliance"]) {
     const paths = pathsByInstall[install];
     if (!paths || !paths.length) continue;
@@ -311,12 +525,20 @@ function replaceUpgradePathMarkers(markdown, pathsByInstall) {
     for (const mm of mms) {
       if (!meetsFloor(mm)) continue; // scope: 4.6+
       const key = `${install}-${mm}`;
-      const [next, found] = replaceMarkerBlock(updated, key, renderTable(byMm[mm]));
+      const rows = byMm[mm];
+      const [next, found, previous] = replaceMarkerBlock(updated, key, renderTable(rows));
       updated = next;
-      if (!found) missing.push(key);
+      if (!found) {
+        missing.push(key);
+        continue;
+      }
+      const diff = diffRows(parseRenderedRows(previous), rows);
+      if (diff.added.length || diff.removed.length || diff.changed.length) {
+        changes.push({ key, diff });
+      }
     }
   }
-  return [updated, missing];
+  return [updated, missing, changes];
 }
 
 // ---------------------------------------------------------------------------
@@ -434,6 +656,32 @@ Options:
   --write                   Write changes (then run \`npm run format\`)
 `;
 
+// Structural drift in the Confluence page silently strands whole marker blocks at
+// their old content, so treat it as fatal and stop before anything is written.
+function assertNoStructuralDrift(report) {
+  const problems = [];
+  if (report.orphanTables.length) {
+    problems.push(
+      `${report.orphanTables.length} table(s) had no install-type heading above them ` +
+        `(under: ${[...new Set(report.orphanTables)].join(", ")}). ` +
+        `Every marker block for the affected install would keep its old content.`
+    );
+  }
+  if (report.emptyInstalls.length) {
+    problems.push(
+      `No rows parsed for: ${report.emptyInstalls.join(", ")}. ` +
+        `Those marker blocks would keep their old content.`
+    );
+  }
+  if (problems.length) {
+    throw new Error(
+      `The Confluence page structure changed and the tables cannot be trusted:\n  - ` +
+        problems.join("\n  - ") +
+        `\nCheck the h3 install-type headings against INSTALL_MAP, then re-run.`
+    );
+  }
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
@@ -446,33 +694,108 @@ async function main() {
 
   const markdownPaths = resolveMarkdownPaths(args);
   const html = await loadHtml(args);
-  const pathsByInstall = parseUpgradePaths(html);
+  const report = newReport();
+  const pathsByInstall = parseUpgradePaths(html, report);
+  checkK8sConstraint(pathsByInstall, report);
 
   console.log("Parsed upgrade paths:");
   for (const [install, paths] of Object.entries(pathsByInstall)) {
     console.log(`  ${install}: ${paths.length} rows`);
   }
 
+  if (report.skippedLegacyTables.length) {
+    console.log(
+      `Note: skipped ${report.skippedLegacyTables.length} hand-maintained table(s) ` +
+        `below ${MIN_VERSION.join(".")} (under: ${[...new Set(report.skippedLegacyTables)].join(", ")})`
+    );
+  }
+  if (report.unknownHeadings.size) {
+    console.log(
+      `Warning: unrecognized install-type heading(s), not mapped to any install: ` +
+        `${[...report.unknownHeadings].join(", ")}`
+    );
+  }
+  if (report.unrecognizedCells.length) {
+    console.log(
+      `Warning: ${report.unrecognizedCells.length} status cell(s) could not be ` +
+        `classified, so their rows are not published:`
+    );
+    for (const cell of report.unrecognizedCells) console.log(`  ${cell}`);
+  }
+  if (report.unresolvedK8s.length) {
+    console.log(
+      `Warning: ${report.unresolvedK8s.length} supported path(s) could not be checked ` +
+        `against the Kubernetes constraint because the matrix label names no version. ` +
+        `Fill in the version in Confluence, then re-run:`
+    );
+    for (const line of report.unresolvedK8s) console.log(`  ${line}`);
+  }
+  if (report.constraintConflicts.length) {
+    console.log(
+      `Warning: ${report.constraintConflicts.length} path(s) are marked supported but ` +
+        `skip a Kubernetes minor version according to the matrix's own labels. Either ` +
+        `the mark or the label is wrong -- confirm with Engineering before publishing:`
+    );
+    for (const line of report.constraintConflicts) console.log(`  ${line}`);
+  }
+
+  assertNoStructuralDrift(report);
+
   for (const [product, mdPath] of Object.entries(markdownPaths)) {
     const markdown = fs.readFileSync(mdPath, "utf8");
-    const [updated, missing] = replaceUpgradePathMarkers(markdown, pathsByInstall);
+    const [updated, missing, changes] = replaceUpgradePathMarkers(markdown, pathsByInstall);
+
+    console.log(`\n${product} (${mdPath})`);
     if (missing.length) {
-      console.log(`Note: ${product} had no marker for: ${missing.join(", ")}`);
+      console.log(`  Note: no marker for: ${missing.join(", ")}`);
     }
+    if (!changes.length) {
+      console.log(`  No row changes.`);
+    }
+    for (const { key, diff } of changes) {
+      const counts = [
+        `+${diff.added.length}`,
+        `-${diff.removed.length}`,
+        `~${diff.changed.length}`,
+      ].join(" ");
+      console.log(`  ${key} (${counts})`);
+      for (const row of diff.added) console.log(`    + ${row}`);
+      for (const row of diff.removed) console.log(`    - ${row}`);
+      for (const row of diff.changed) console.log(`    ~ ${row}`);
+    }
+
     if (args.write) {
       fs.writeFileSync(mdPath, updated, "utf8");
-      console.log(`Updated ${mdPath}`);
+      console.log(`  Updated ${mdPath}`);
     } else {
-      const changed = updated !== markdown;
-      console.log(`Would ${changed ? "update" : "leave unchanged"} ${mdPath}`);
+      console.log(`  Would ${updated !== markdown ? "update" : "leave unchanged"} ${mdPath}`);
     }
   }
   return 0;
 }
 
-main()
-  .then((code) => process.exit(code))
-  .catch((err) => {
-    console.error(`Error: ${err.message}`);
-    process.exit(1);
-  });
+if (require.main === module) {
+  main()
+    .then((code) => process.exit(code))
+    .catch((err) => {
+      console.error(`Error: ${err.message}`);
+      process.exit(1);
+    });
+}
+
+module.exports = {
+  checkK8sConstraint,
+  isPlaceholderK8sLabel,
+  diffRows,
+  headingMeetsFloor,
+  isKnownDropStatus,
+  matrixToPaths,
+  newReport,
+  parseK8sLabel,
+  parseRenderedRows,
+  parseUpgradePaths,
+  renderTable,
+  replaceUpgradePathMarkers,
+  splitTableRow,
+  statusToMark,
+};
