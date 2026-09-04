@@ -8,22 +8,6 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.1.4 - September 4, 2026 {#version-1-1-4}
-
-PaletteAI Inference Launchpad 1.1.4 refines the Thinking directive on the Tier Map, replacing the token-budget picker
-with a graded effort dial and adding a new `xhigh` level.
-
-### Improvements
-
-- **Effort-based Thinking directive.** The Thinking directive on the Tier Map now grades reasoning depth by effort
-  level. The five levels are `low`, `medium`, `high`, `xhigh`, and `max`. Selecting **on** without a level uses
-  `medium`. Refer to [Set the Thinking Directive for a Tier](./how-to-guides/set-tier-thinking.md) and
-  [The Thinking Directive](./explanation/thinking-directive.md) for more information.
-
-### Upgrade
-
-To upgrade a running appliance to 1.1.4, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
-
 ## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
 
 PaletteAI Inference Launchpad 1.1.3 broadens what a single appliance can serve. Operators pick where each model runs and
