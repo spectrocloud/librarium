@@ -54,9 +54,9 @@ The Palette CLI is available for the following operating systems and architectur
    :::info
 
    Apple has not yet certified and approved the Palette CLI binary. Until it does, if you skip the quarantine step,
-   macOS blocks the binary and displays a **"palette" Not Opened** dialog stating that Apple could not verify that it is free
-   of malware. Select **Done** to dismiss the dialog. Do not select
-   the option to move the binary to the bin or trash, because that deletes the file that you downloaded.
+   macOS blocks the binary and displays a **"palette" Not Opened** dialog stating that Apple could not verify that it is
+   free of malware. Select **Done** to dismiss the dialog. Do not select the option to move the binary to the bin or
+   trash, because that deletes the file that you downloaded.
 
    :::
 
