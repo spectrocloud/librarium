@@ -20,11 +20,12 @@
  * before writing anything if the Confluence headings changed in a way that would
  * leave marker blocks stale. Refer to the README for the failure modes.
  *
- * Beyond mirroring Confluence, the script downgrades a validated direct path to a
- * staggered one when the upgrade crosses more than one Kubernetes minor version.
- * The bundled Kubernetes version per release is read from the "Kubernetes Version
- * Constraint" table on the page being written, so a hand edit to the tables is
- * never needed and can never disagree with that section (DOC-3097).
+ * The published marks mirror Confluence exactly. As a cross-check, the script reads
+ * the bundled Kubernetes version from the matrix's own header and row labels (which
+ * differ between the EC binary and the Appliance Installer) and reports any path
+ * marked supported that skips a Kubernetes minor version. It reports rather than
+ * rewrites: that disagreement means the matrix or its labels need fixing at source
+ * (DOC-3097).
  *
  * Usage:
  *   # Reads CONFLUENCE_* env vars from .env (run `make init-release` once,
@@ -76,16 +77,13 @@ const DROP_STATUSES = [
   "tbd",
 ];
 
-// Kubernetes minor versions cannot be skipped during an upgrade, so a path that
-// crosses two or more minors is supportable only as a staggered upgrade. The
-// bundled Kubernetes version per release is read from the "Kubernetes Version
-// Constraint" table in the Markdown itself, so this rule cannot drift from what
-// the page publishes. See DOC-3097.
+// Kubernetes minor versions cannot be skipped during an upgrade, so a validated
+// path that crosses two or more minors is a contradiction worth reporting. The
+// Confluence matrix carries the bundled Kubernetes version per install type in its
+// header and row labels ("4.9.x . K8s 1.33.10"), which is the authority: the EC
+// binary and the Appliance Installer ship different Kubernetes versions for the
+// same Palette release. See DOC-3097.
 const MAX_K8S_MINOR_DELTA = 1;
-
-// Installs the constraint applies to. Helm installs on a customer-managed cluster
-// are exempt because the Kubernetes version is managed independently of Palette.
-const CONSTRAINED_INSTALLS = ["vmware", "appliance"];
 
 // Confluence install-type heading -> marker install slug.
 const INSTALL_MAP = {
@@ -135,6 +133,15 @@ function majorMinor(version) {
 
 function meetsFloor(mm) {
   return cmpKey(versionKey(mm), MIN_VERSION) >= 0;
+}
+
+// Does a Confluence version-group heading ("4.8 -> 4.9", "4.1 through 4.3") name any
+// release inside the auto-managed range? A heading with no parseable version counts as
+// in scope, so that genuine drift is never hidden behind an unreadable heading.
+function headingMeetsFloor(heading) {
+  const versions = clean(heading).match(/\d+\.\d+/g);
+  if (!versions) return true;
+  return versions.some((v) => meetsFloor(v));
 }
 
 // Expand cells such as "4.6.25 to .28" or "4.6.25 to 4.6.28" into versions.
@@ -211,75 +218,34 @@ function isKnownDropStatus(status) {
 // Kubernetes version constraint
 // ---------------------------------------------------------------------------
 
-// Read the bundled Kubernetes version per release out of the "Kubernetes Version
-// Constraint" table on the upgrade page. Both cell shapes in use are handled:
-//   "4.8.54, 4.8.56, 4.8.58, 4.8.61" -> those exact releases
-//   "4.9.23 and later"               -> any later patch of the same minor (4.9.x)
-// A floor is deliberately confined to its own major.minor, so "4.9.23 and later"
-// never claims to describe a 4.10.x release.
-function parseBundledK8sVersions(markdown) {
-  const exact = new Map();
-  const floors = [];
-  const parts = (markdown || "").split(/^### Kubernetes Version Constraint\s*$/m);
-  if (parts.length < 2) return { exact, floors };
-  const body = parts[1].split(/^#{1,3} /m)[0];
-  for (const line of body.split("\n")) {
-    const cells = splitTableRow(line);
-    if (cells.length !== 2) continue;
-    const k8s = cells[1].match(/^(\d+)\.(\d+)\.\d+$/);
-    if (!k8s) continue;
-    const version = { major: Number(k8s[1]), minor: Number(k8s[2]) };
-    const later = cells[0].match(/^(\d+\.\d+\.\d+)\s+and\s+later$/i);
-    if (later) {
-      floors.push({ release: later[1], k8s: version });
-      continue;
-    }
-    for (const release of cells[0].split(",")) {
-      const v = release.trim();
-      if (/^\d+\.\d+\.\d+$/.test(v)) exact.set(v, version);
-    }
-  }
-  return { exact, floors };
+// Pull the bundled Kubernetes version out of a Confluence label cell, for example
+// "4.9.x . K8s 1.33.10" or "4.8.x - K8s 1.32.9". Returns null when the label carries
+// no version, which is the normal case for Helm installs (the cluster's Kubernetes
+// version is managed independently of Palette) and for "K8s TBD" on an unreleased
+// version.
+function parseK8sLabel(label) {
+  const m = clean(label).match(/K8s\s*v?(\d+)\.(\d+)(?:\.\d+)?/i);
+  if (!m) return null;
+  return { major: Number(m[1]), minor: Number(m[2]) };
 }
 
-// Resolve one release to its bundled Kubernetes version, or null when the table
-// does not describe it.
-function bundledK8s(map, release) {
-  if (map.exact.has(release)) return map.exact.get(release);
-  let best = null;
-  for (const floor of map.floors) {
-    if (majorMinor(floor.release) !== majorMinor(release)) continue;
-    if (cmpKey(versionKey(release), versionKey(floor.release)) < 0) continue;
-    if (!best || cmpKey(versionKey(floor.release), versionKey(best.release)) > 0) best = floor;
-  }
-  return best ? best.k8s : null;
-}
-
-// Downgrade a validated direct path to a staggered one when it crosses more than
-// MAX_K8S_MINOR_DELTA Kubernetes minor versions.
-//
-// Fails open on purpose: a release the constraint table does not describe keeps the
-// mark Confluence gave it, so a newly shipped release is never mislabeled by
-// guesswork. Such a release is reported only when the other end of the path IS
-// described, because that is the case where a missing table entry hides a real
-// answer. A path with both ends unmapped predates the table and stays quiet.
-function applyK8sConstraint(pathsByInstall, k8sMap, report) {
-  for (const install of CONSTRAINED_INSTALLS) {
-    for (const p of pathsByInstall[install] || []) {
+// Report any path Confluence marks as validated whose own labels say it crosses more
+// than MAX_K8S_MINOR_DELTA Kubernetes minor versions. This never rewrites a mark --
+// Confluence is the source of truth -- but a disagreement means either the matrix or
+// its Kubernetes labels are wrong, which is exactly the defect DOC-3097 was raised
+// for. Paths whose labels carry no Kubernetes version are skipped.
+function checkK8sConstraint(pathsByInstall, report) {
+  for (const [install, paths] of Object.entries(pathsByInstall)) {
+    for (const p of paths) {
       if (p.support !== CHECK) continue;
-      const from = bundledK8s(k8sMap, p.source);
-      const to = bundledK8s(k8sMap, p.target);
-      if (!from || !to) {
-        if (from && !to) report.unmapped.add(p.target);
-        else if (!from && to) report.unmapped.add(p.source);
-        continue;
-      }
-      const crossesMajor = from.major !== to.major;
-      if (!crossesMajor && to.minor - from.minor <= MAX_K8S_MINOR_DELTA) continue;
-      p.support = QUESTION;
-      report.staggered.push(
-        `${install}: ${p.source} -> ${p.target} ` +
-          `(Kubernetes ${from.major}.${from.minor} -> ${to.major}.${to.minor})`
+      const from = p.sourceK8s;
+      const to = p.targetK8s;
+      if (!from || !to) continue;
+      const delta = from.major === to.major ? to.minor - from.minor : Infinity;
+      if (delta <= MAX_K8S_MINOR_DELTA) continue;
+      report.constraintConflicts.push(
+        `${install}: ${p.source} -> ${p.target} is marked supported but crosses ` +
+          `Kubernetes ${from.major}.${from.minor} -> ${to.major}.${to.minor}`
       );
     }
   }
@@ -292,8 +258,8 @@ function newReport() {
     orphanTables: [],
     unrecognizedCells: [],
     emptyInstalls: [],
-    unmapped: new Set(),
-    staggered: [],
+    skippedLegacyTables: [],
+    constraintConflicts: [],
   };
 }
 
@@ -346,11 +312,15 @@ function matrixToPaths(rows, install, report) {
   }
 
   // Matrix table: row 0 = target labels, row 1 = target versions ("to ➡️").
+  // The labels carry the bundled Kubernetes version per install type, which differs
+  // between the EC binary and the Appliance Installer for the same Palette release.
+  const targetLabels = rows[0].slice(2);
   const targetVersions = rows[1].slice(2);
   for (const row of rows.slice(2)) {
     if (row.length < 3) continue;
     const source = row[1];
     if (!/^\d+\.\d+/.test(source)) continue;
+    const sourceK8s = parseK8sLabel(row[0]);
     const statuses = row.slice(2);
     for (let i = 0; i < targetVersions.length; i++) {
       const mark = statusToMark(statuses[i]);
@@ -358,9 +328,10 @@ function matrixToPaths(rows, install, report) {
         if (!isKnownDropStatus(statuses[i])) flag(statuses[i], source, targetVersions[i]);
         continue;
       }
+      const targetK8s = parseK8sLabel(targetLabels[i]);
       for (const target of expandTarget(targetVersions[i])) {
         if (/^\d+\.\d+/.test(target)) {
-          paths.push({ source, target, support: mark });
+          paths.push({ source, target, support: mark, sourceK8s, targetK8s });
         }
       }
     }
@@ -404,10 +375,14 @@ function parseUpgradePaths(html, report) {
     else tableEl = $(el).find("table").get(0) || null;
     if (!tableEl) continue;
     if (!currentInstall) {
-      // A table with no install context is discarded, which would leave every marker
-      // block for that install untouched and stale. Record it so the run can fail
-      // instead of reporting success on a page whose headings were restructured.
-      report.orphanTables.push(lastHeading || "(no preceding heading)");
+      // A table with no install context is discarded. Inside the auto-managed range
+      // that would leave marker blocks stale, so the run must fail rather than report
+      // success on a page whose headings were restructured. The legacy groups below
+      // the floor have always been bare tables and are hand-maintained, so they are
+      // only noted.
+      const where = lastHeading || "(no preceding heading)";
+      if (headingMeetsFloor(where)) report.orphanTables.push(where);
+      else report.skippedLegacyTables.push(where);
       continue;
     }
     byInstall[currentInstall].push(...matrixToPaths(getRows($, tableEl), currentInstall, report));
@@ -685,15 +660,6 @@ function assertNoStructuralDrift(report) {
   }
 }
 
-// Deep-enough copy that per-product constraint marks cannot leak between products.
-function clonePaths(pathsByInstall) {
-  const out = {};
-  for (const [install, paths] of Object.entries(pathsByInstall)) {
-    out[install] = paths.map((p) => ({ ...p }));
-  }
-  return out;
-}
-
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
@@ -708,12 +674,19 @@ async function main() {
   const html = await loadHtml(args);
   const report = newReport();
   const pathsByInstall = parseUpgradePaths(html, report);
+  checkK8sConstraint(pathsByInstall, report);
 
   console.log("Parsed upgrade paths:");
   for (const [install, paths] of Object.entries(pathsByInstall)) {
     console.log(`  ${install}: ${paths.length} rows`);
   }
 
+  if (report.skippedLegacyTables.length) {
+    console.log(
+      `Note: skipped ${report.skippedLegacyTables.length} hand-maintained table(s) ` +
+        `below ${MIN_VERSION.join(".")} (under: ${[...new Set(report.skippedLegacyTables)].join(", ")})`
+    );
+  }
   if (report.unknownHeadings.size) {
     console.log(
       `Warning: unrecognized install-type heading(s), not mapped to any install: ` +
@@ -727,41 +700,22 @@ async function main() {
     );
     for (const cell of report.unrecognizedCells) console.log(`  ${cell}`);
   }
+  if (report.constraintConflicts.length) {
+    console.log(
+      `Warning: ${report.constraintConflicts.length} path(s) are marked supported but ` +
+        `skip a Kubernetes minor version according to the matrix's own labels. Either ` +
+        `the mark or the label is wrong -- confirm with Engineering before publishing:`
+    );
+    for (const line of report.constraintConflicts) console.log(`  ${line}`);
+  }
 
   assertNoStructuralDrift(report);
 
   for (const [product, mdPath] of Object.entries(markdownPaths)) {
     const markdown = fs.readFileSync(mdPath, "utf8");
-
-    // The constraint is derived per product, from that page's own Kubernetes version
-    // table, so the rule and the published table cannot disagree.
-    const productReport = { unmapped: new Set(), staggered: [] };
-    const k8sMap = parseBundledK8sVersions(markdown);
-    const paths = clonePaths(pathsByInstall);
-    if (!k8sMap.exact.size && !k8sMap.floors.length) {
-      console.log(
-        `Warning: no "Kubernetes Version Constraint" version table found in ${mdPath}; ` +
-          `the staggered-upgrade rule was not applied.`
-      );
-    } else {
-      applyK8sConstraint(paths, k8sMap, productReport);
-    }
-
-    const [updated, missing, changes] = replaceUpgradePathMarkers(markdown, paths);
+    const [updated, missing, changes] = replaceUpgradePathMarkers(markdown, pathsByInstall);
 
     console.log(`\n${product} (${mdPath})`);
-    if (productReport.staggered.length) {
-      console.log(`  Staggered by the Kubernetes version constraint:`);
-      for (const line of productReport.staggered) console.log(`    ${line}`);
-    }
-    if (productReport.unmapped.size) {
-      console.log(
-        `  Warning: no bundled Kubernetes version documented for ` +
-          `${[...productReport.unmapped].sort((a, b) => cmpKey(versionKey(a), versionKey(b))).join(", ")}. ` +
-          `Those paths keep the mark Confluence gave them. Add the release(s) to the ` +
-          `"Kubernetes Version Constraint" table to have the rule cover them.`
-      );
-    }
     if (missing.length) {
       console.log(`  Note: no marker for: ${missing.join(", ")}`);
     }
@@ -800,14 +754,13 @@ if (require.main === module) {
 }
 
 module.exports = {
-  applyK8sConstraint,
-  bundledK8s,
-  clonePaths,
+  checkK8sConstraint,
   diffRows,
+  headingMeetsFloor,
   isKnownDropStatus,
   matrixToPaths,
   newReport,
-  parseBundledK8sVersions,
+  parseK8sLabel,
   parseRenderedRows,
   parseUpgradePaths,
   renderTable,

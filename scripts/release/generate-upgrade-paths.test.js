@@ -1,10 +1,10 @@
 const {
-  applyK8sConstraint,
-  bundledK8s,
+  checkK8sConstraint,
   diffRows,
+  headingMeetsFloor,
   isKnownDropStatus,
   newReport,
-  parseBundledK8sVersions,
+  parseK8sLabel,
   parseRenderedRows,
   parseUpgradePaths,
   renderTable,
@@ -19,189 +19,146 @@ const QUESTION = "[:question:](#kubernetes-version-constraint)";
 
 // A trimmed stand-in for the Confluence "Release Artifacts" storage format: one
 // version-pair group with a matrix table per install type.
+// The EC binary and the Appliance Installer ship different Kubernetes versions for
+// the same Palette release, which is why the labels are per table.
 const CONFLUENCE_HTML = `
 <h1>Upgrade Paths</h1>
-<h2>4.8.x / 4.7.x to 4.9.x</h2>
+<h2>4.8 &#8594; 4.9</h2>
 <h3>EC Install</h3>
 <table>
-  <tr><td></td><td></td><td>target</td><td>target</td></tr>
-  <tr><td>from &#11015;</td><td>to &#10145;</td><td>4.9.14</td><td>4.9.24</td></tr>
-  <tr><td></td><td>4.8.61</td><td>Supported</td><td>Supported</td></tr>
-  <tr><td></td><td>4.7.38</td><td>Supported</td><td>N/A</td></tr>
+  <tr><td>from</td><td></td><td>4.9.x &#183; K8s 1.33.10</td><td>4.9.x &#183; K8s 1.34.6</td></tr>
+  <tr><td></td><td>to</td><td>4.9.14</td><td>4.9.24</td></tr>
+  <tr><td>4.8.x &#183; K8s 1.32.9</td><td>4.8.61</td><td>Supported</td><td>Not Supported</td></tr>
+  <tr><td>4.9.x &#183; K8s 1.33.10</td><td>4.9.14</td><td></td><td>Supported</td></tr>
 </table>
 <h3>Helm Install</h3>
 <table>
-  <tr><td></td><td></td><td>target</td><td>target</td></tr>
-  <tr><td>from &#11015;</td><td>to &#10145;</td><td>4.9.14</td><td>4.9.24</td></tr>
-  <tr><td></td><td>4.8.61</td><td>Supported</td><td>Supported</td></tr>
+  <tr><td>from</td><td></td><td>4.9.x</td><td>4.9.x</td></tr>
+  <tr><td></td><td>to</td><td>4.9.14</td><td>4.9.24</td></tr>
+  <tr><td>4.8.x</td><td>4.8.61</td><td>Supported</td><td>Supported</td></tr>
 </table>
 <h3>Appliance Installer</h3>
 <table>
-  <tr><td></td><td></td><td>target</td><td>target</td></tr>
-  <tr><td>from &#11015;</td><td>to &#10145;</td><td>4.9.14</td><td>4.9.24</td></tr>
-  <tr><td></td><td>4.8.61</td><td>Supported</td><td>Supported</td></tr>
+  <tr><td>from</td><td></td><td>4.9.x &#183; K8s 1.34.6</td><td>4.9.x &#183; K8s 1.34.9</td></tr>
+  <tr><td></td><td>to</td><td>4.9.14</td><td>4.9.24</td></tr>
+  <tr><td>4.8.x &#183; K8s 1.33.9</td><td>4.8.61</td><td>Supported</td><td>Supported</td></tr>
 </table>
 `;
 
 // The Kubernetes version table as it appears on the upgrade pages, including both
 // cell shapes: an explicit release list and an "and later" floor.
-const MARKDOWN_K8S_SECTION = `
-### Kubernetes Version Constraint
-
-Some prose about the constraint.
-
-| Palette Release                | Kubernetes Version |
-| :----------------------------- | :----------------: |
-| 4.7.40, 4.7.43                 |       1.31.8       |
-| 4.8.54, 4.8.56, 4.8.58, 4.8.61 |       1.32.9       |
-| 4.9.5, 4.9.8, 4.9.14           |      1.33.10       |
-| 4.9.23 and later               |       1.34.6       |
-
-More prose.
-
-## Upgrade Guides
-`;
-
-describe("splitTableRow", () => {
-  it("trims cells and tolerates Prettier's alignment padding", () => {
-    expect(splitTableRow("|       4.8.61       |       4.9.24       | :x: |")).toEqual([
-      "4.8.61",
-      "4.9.24",
-      ":x:",
-    ]);
+describe("parseK8sLabel", () => {
+  it("reads the version out of a Confluence label cell", () => {
+    expect(parseK8sLabel("4.9.x \u00b7 K8s 1.33.10")).toEqual({ major: 1, minor: 33 });
+    expect(parseK8sLabel("4.8.x - K8s v1.32.9")).toEqual({ major: 1, minor: 32 });
   });
 
-  it("tolerates rows written without outer pipes", () => {
-    expect(splitTableRow("4.8.61 | 4.9.24")).toEqual(["4.8.61", "4.9.24"]);
-  });
-
-  it("returns nothing for a line that is not a table row", () => {
-    expect(splitTableRow("Some prose.")).toEqual([]);
+  it("returns null when the label carries no version", () => {
+    // Normal for Helm installs, and for "K8s TBD" on an unreleased version.
+    expect(parseK8sLabel("4.9.x")).toBeNull();
+    expect(parseK8sLabel("4.10.x \u00b7 K8s TBD")).toBeNull();
+    expect(parseK8sLabel("")).toBeNull();
   });
 });
 
-describe("statusToMark", () => {
-  it("classifies the plain statuses", () => {
-    expect(statusToMark("Supported")).toBe(CHECK);
-    expect(statusToMark("Verified")).toBe(CHECK);
-    expect(statusToMark("Not Supported")).toBe(CROSS);
-    expect(statusToMark("Fails")).toBe(CROSS);
-    expect(statusToMark("Staggered")).toBe(QUESTION);
+describe("headingMeetsFloor", () => {
+  it("recognizes an in-scope version group", () => {
+    expect(headingMeetsFloor("4.8 \u2192 4.9")).toBe(true);
+    expect(headingMeetsFloor("4.6 \u2192 4.7")).toBe(true);
   });
 
-  it("matches by keyword so an editorialized cell still classifies", () => {
-    // These dropped to null under exact-equality matching, which deleted the row.
-    expect(statusToMark("Supported (staggered)")).toBe(QUESTION);
-    expect(statusToMark("Staggered - see note")).toBe(QUESTION);
-    expect(statusToMark("Supported*")).toBe(CHECK);
-    expect(statusToMark("  NOT SUPPORTED  ")).toBe(CROSS);
+  it("recognizes the hand-maintained legacy groups", () => {
+    expect(headingMeetsFloor("4.3 \u2192 4.4")).toBe(false);
+    expect(headingMeetsFloor("4.1 through 4.3")).toBe(false);
   });
 
-  it("tests the narrower cases first", () => {
-    // "not supported" contains "supported"; a staggered cell usually says both.
-    expect(statusToMark("Not supported directly, upgrade in two steps")).toBe(QUESTION);
-    expect(statusToMark("Not yet supported")).toBe(CROSS);
-  });
-
-  it("drops the expected publish-nothing values", () => {
-    for (const value of ["", "N/A", "n/a", "In Progress", "TBD", "  "]) {
-      expect(statusToMark(value)).toBeNull();
-      expect(isKnownDropStatus(value)).toBe(true);
-    }
-  });
-
-  it("reports an unknown value rather than treating it as a known drop", () => {
-    expect(statusToMark("ask QA")).toBeNull();
-    expect(isKnownDropStatus("ask QA")).toBe(false);
+  it("treats an unreadable heading as in scope so drift is not hidden", () => {
+    expect(headingMeetsFloor("Upgrade notes")).toBe(true);
   });
 });
 
-describe("parseBundledK8sVersions", () => {
-  const map = parseBundledK8sVersions(MARKDOWN_K8S_SECTION);
-
-  it("reads an explicit release list", () => {
-    expect(bundledK8s(map, "4.8.61")).toEqual({ major: 1, minor: 32 });
-    expect(bundledK8s(map, "4.7.40")).toEqual({ major: 1, minor: 31 });
-    expect(bundledK8s(map, "4.9.14")).toEqual({ major: 1, minor: 33 });
-  });
-
-  it("applies an 'and later' floor to later patches of the same minor", () => {
-    expect(bundledK8s(map, "4.9.23")).toEqual({ major: 1, minor: 34 });
-    expect(bundledK8s(map, "4.9.38")).toEqual({ major: 1, minor: 34 });
-  });
-
-  it("confines a floor to its own major.minor", () => {
-    // "4.9.23 and later" must not claim to describe the next minor release.
-    expect(bundledK8s(map, "4.10.0")).toBeNull();
-  });
-
-  it("returns null for a release the table does not describe", () => {
-    expect(bundledK8s(map, "4.7.38")).toBeNull();
-    expect(bundledK8s(map, "4.6.70")).toBeNull();
-  });
-
-  it("returns an empty map when the section is absent", () => {
-    const empty = parseBundledK8sVersions("# Upgrade\n\nNo constraint section here.\n");
-    expect(empty.exact.size).toBe(0);
-    expect(empty.floors).toEqual([]);
-  });
-});
-
-describe("applyK8sConstraint", () => {
-  const k8sMap = parseBundledK8sVersions(MARKDOWN_K8S_SECTION);
-
+describe("checkK8sConstraint", () => {
   function run(pathsByInstall) {
-    const report = { unmapped: new Set(), staggered: [] };
-    applyK8sConstraint(pathsByInstall, k8sMap, report);
-    return report;
+    const report = newReport();
+    checkK8sConstraint(pathsByInstall, report);
+    return report.constraintConflicts;
   }
 
-  it("staggers a path that crosses two Kubernetes minor versions", () => {
-    const paths = { vmware: [{ source: "4.8.61", target: "4.9.24", support: CHECK }] };
-    const report = run(paths);
-    expect(paths.vmware[0].support).toBe(QUESTION);
-    expect(report.staggered).toEqual([
-      "vmware: 4.8.61 -> 4.9.24 (Kubernetes 1.32 -> 1.34)",
+  it("reports a supported path that skips a Kubernetes minor version", () => {
+    expect(
+      run({
+        vmware: [
+          {
+            source: "4.8.61",
+            target: "4.9.24",
+            support: CHECK,
+            sourceK8s: { major: 1, minor: 32 },
+            targetK8s: { major: 1, minor: 34 },
+          },
+        ],
+      })
+    ).toEqual([
+      "vmware: 4.8.61 -> 4.9.24 is marked supported but crosses Kubernetes 1.32 -> 1.34",
     ]);
   });
 
-  it("leaves a single-minor hop alone", () => {
-    const paths = { vmware: [{ source: "4.8.61", target: "4.9.14", support: CHECK }] };
-    run(paths);
+  it("stays quiet on a single-minor hop", () => {
+    // Appliance ships 1.33.9 on 4.8.x and 1.34.9 on 4.9.24+, so this is one minor.
+    expect(
+      run({
+        appliance: [
+          {
+            source: "4.8.61",
+            target: "4.9.24",
+            support: CHECK,
+            sourceK8s: { major: 1, minor: 33 },
+            targetK8s: { major: 1, minor: 34 },
+          },
+        ],
+      })
+    ).toEqual([]);
+  });
+
+  it("skips paths with no Kubernetes labels, such as Helm installs", () => {
+    expect(
+      run({
+        kubernetes: [
+          { source: "4.8.61", target: "4.9.24", support: CHECK, sourceK8s: null, targetK8s: null },
+        ],
+      })
+    ).toEqual([]);
+  });
+
+  it("does not report a path that is already marked unsupported", () => {
+    expect(
+      run({
+        vmware: [
+          {
+            source: "4.8.61",
+            target: "4.9.24",
+            support: CROSS,
+            sourceK8s: { major: 1, minor: 32 },
+            targetK8s: { major: 1, minor: 34 },
+          },
+        ],
+      })
+    ).toEqual([]);
+  });
+
+  it("never rewrites a mark", () => {
+    const paths = {
+      vmware: [
+        {
+          source: "4.8.61",
+          target: "4.9.24",
+          support: CHECK,
+          sourceK8s: { major: 1, minor: 32 },
+          targetK8s: { major: 1, minor: 34 },
+        },
+      ],
+    };
+    checkK8sConstraint(paths, newReport());
     expect(paths.vmware[0].support).toBe(CHECK);
-  });
-
-  it("exempts Helm installs on a customer-managed cluster", () => {
-    const paths = { kubernetes: [{ source: "4.8.61", target: "4.9.24", support: CHECK }] };
-    const report = run(paths);
-    expect(paths.kubernetes[0].support).toBe(CHECK);
-    expect(report.staggered).toEqual([]);
-  });
-
-  it("applies to appliance installs", () => {
-    const paths = { appliance: [{ source: "4.8.61", target: "4.9.24", support: CHECK }] };
-    run(paths);
-    expect(paths.appliance[0].support).toBe(QUESTION);
-  });
-
-  it("never overrides an explicit unsupported mark", () => {
-    const paths = { vmware: [{ source: "4.8.61", target: "4.9.24", support: CROSS }] };
-    run(paths);
-    expect(paths.vmware[0].support).toBe(CROSS);
-  });
-
-  it("fails open and reports a release the version table does not describe", () => {
-    const paths = { vmware: [{ source: "4.7.38", target: "4.9.14", support: CHECK }] };
-    const report = run(paths);
-    expect(paths.vmware[0].support).toBe(CHECK);
-    expect([...report.unmapped]).toEqual(["4.7.38"]);
-  });
-
-  it("stays quiet when both ends predate the version table", () => {
-    const paths = { vmware: [{ source: "4.6.70", target: "4.7.14", support: CHECK }] };
-    const report = run(paths);
-    expect([...report.unmapped]).toEqual([]);
-    expect(report.staggered).toEqual([]);
   });
 });
 
@@ -209,16 +166,45 @@ describe("parseUpgradePaths", () => {
   it("files each matrix table under its install type", () => {
     const report = newReport();
     const paths = parseUpgradePaths(CONFLUENCE_HTML, report);
-    expect(paths.vmware).toEqual([
-      { source: "4.8.61", target: "4.9.24", support: CHECK },
-      { source: "4.8.61", target: "4.9.14", support: CHECK },
-      { source: "4.7.38", target: "4.9.14", support: CHECK },
+    const summarize = (rows) => rows.map((p) => `${p.source} -> ${p.target} ${p.support}`);
+
+    expect(summarize(paths.vmware)).toEqual([
+      `4.9.14 -> 4.9.24 ${CHECK}`,
+      `4.8.61 -> 4.9.24 ${CROSS}`,
+      `4.8.61 -> 4.9.14 ${CHECK}`,
     ]);
-    expect(paths.kubernetes).toHaveLength(2);
-    expect(paths.appliance).toHaveLength(2);
+    expect(summarize(paths.kubernetes)).toEqual([
+      `4.8.61 -> 4.9.24 ${CHECK}`,
+      `4.8.61 -> 4.9.14 ${CHECK}`,
+    ]);
+    expect(summarize(paths.appliance)).toEqual([
+      `4.8.61 -> 4.9.24 ${CHECK}`,
+      `4.8.61 -> 4.9.14 ${CHECK}`,
+    ]);
     expect(report.orphanTables).toEqual([]);
     expect(report.unrecognizedCells).toEqual([]);
     expect(report.emptyInstalls).toEqual([]);
+  });
+
+  it("captures the bundled Kubernetes version per install type", () => {
+    // The same Palette releases carry different Kubernetes versions on the EC binary
+    // and the Appliance Installer, which is why the labels cannot be read from a
+    // single table in the docs.
+    const paths = parseUpgradePaths(CONFLUENCE_HTML, newReport());
+    const ec = paths.vmware.find((p) => p.source === "4.8.61" && p.target === "4.9.24");
+    const appliance = paths.appliance.find((p) => p.source === "4.8.61" && p.target === "4.9.24");
+    expect(ec.sourceK8s).toEqual({ major: 1, minor: 32 });
+    expect(ec.targetK8s).toEqual({ major: 1, minor: 34 });
+    expect(appliance.sourceK8s).toEqual({ major: 1, minor: 33 });
+    expect(appliance.targetK8s).toEqual({ major: 1, minor: 34 });
+    expect(paths.kubernetes[0].sourceK8s).toBeNull();
+  });
+
+  it("finds no constraint conflict in a matrix whose marks match its labels", () => {
+    const report = newReport();
+    const paths = parseUpgradePaths(CONFLUENCE_HTML, report);
+    checkK8sConstraint(paths, report);
+    expect(report.constraintConflicts).toEqual([]);
   });
 
   it("reads the legacy From / To / Verified table shape", () => {

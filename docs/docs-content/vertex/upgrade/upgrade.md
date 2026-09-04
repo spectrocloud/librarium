@@ -32,10 +32,9 @@ Refer to the following tables for the supported Palette VerteX upgrade paths for
 [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md), and
 [VerteX Management Appliance](../install-palette-vertex/vertex-management-appliance.md) installations.
 
-In the following tables, :white_check_mark: indicates a validated direct upgrade path and :x: indicates an unsupported
-path. A [:question:](#kubernetes-version-constraint) indicates a path that Palette VerteX supports only as a staggered
-upgrade through an intermediate release. Refer to [Kubernetes Version Constraint](#kubernetes-version-constraint) for
-the intermediate release to use.
+In the following tables, :white_check_mark: indicates a validated upgrade path and :x: indicates a path that is not
+supported. Refer to [Kubernetes Version Constraint](#kubernetes-version-constraint) for why some upgrades from a `4.8.x`
+release are not supported, and for the two-step route to use instead.
 
 :::danger
 
@@ -58,30 +57,34 @@ health status of MongoDB ReplicaSet members, refer to our
 
 ### Kubernetes Version Constraint
 
-This constraint applies to Enterprise Cluster (EC) binary and VerteX Management Appliance installations, which bundle a
-specific Kubernetes version with each Palette VerteX release. It does not apply to Palette VerteX installed with Helm on
-a customer-managed Kubernetes cluster, where you manage the Kubernetes version independently of Palette VerteX. The
-paths in the **Kubernetes** tab are not subject to this constraint.
-
 Kubernetes does not support skipping a minor version during a cluster upgrade, so a Palette VerteX upgrade cannot cross
 more than one Kubernetes minor version in a single hop. An upgrade that would skip a Kubernetes minor version may fail
 mid-run and leave the management cluster in an unrecoverable state.
 
+This constraint applies to Enterprise Cluster (EC) binary and VerteX Management Appliance installations, which bundle a
+specific Kubernetes version with each Palette VerteX release. The two installation types do not bundle the same
+Kubernetes version for a given release, so compare the versions for the installation type you use. The constraint does
+not apply to Palette VerteX installed with Helm on a customer-managed Kubernetes cluster, where you manage the
+Kubernetes version independently of Palette VerteX. The paths in the **Kubernetes** tab are not subject to it.
+
 The following table lists the Kubernetes version bundled with each recent Palette VerteX release.
 
-| Palette VerteX Release                 | Kubernetes Version |
-| :------------------------------------- | :----------------: |
-| 4.7.40, 4.7.43                         |       1.31.8       |
-| 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61 |       1.32.9       |
-| 4.9.5, 4.9.8, 4.9.14                   |      1.33.10       |
-| 4.9.23 and later                       |       1.34.6       |
+| Palette VerteX Release                         | EC Binary | VerteX Management Appliance |
+| :--------------------------------------------- | :-------: | :-------------------------: |
+| 4.7.40, 4.7.43                                 |  1.31.8   |       Not documented        |
+| 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61, 4.8.62 |  1.32.9   |           1.33.9            |
+| 4.9.5, 4.9.8, 4.9.14                           |  1.33.10  |           1.34.6            |
+| 4.9.23 and later                               |  1.34.6   |           1.34.9            |
 
-Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x` series ships Kubernetes
-`1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade path tables mark these
-paths with :question: rather than :white_check_mark:. To reach `4.9.23` or later from `4.8.x`, upgrade in two steps.
+On EC binary installations, direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x`
+series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade
+path tables mark these paths with :x:. To reach `4.9.23` or later from `4.8.x`, upgrade in two steps.
 
-1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
+1. Upgrade to `4.9.14`, which ships Kubernetes `1.33.10`.
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
+
+VerteX Management Appliance installations are not affected, because they ship Kubernetes `1.33.9` on `4.8.x` and
+`1.34.9` on `4.9.24` and later, which crosses a single minor version.
 
 Before you start any Palette VerteX upgrade, compare the Kubernetes version of your current release with that of the
 target release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the
@@ -94,30 +97,51 @@ missing minor.
 
 <!-- upgrade-paths:vmware-4.9:start -->
 
-| **Source Version** | **Target Version** |                 **Support**                  |
-| :----------------: | :----------------: | :------------------------------------------: |
-|       4.8.61       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.61       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.61       |       4.9.14       |              :white_check_mark:              |
-|       4.8.61       |       4.9.5        |              :white_check_mark:              |
-|       4.8.56       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.56       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.56       |       4.9.14       |              :white_check_mark:              |
-|       4.8.56       |       4.9.5        |              :white_check_mark:              |
-|       4.8.52       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.52       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.52       |       4.9.14       |              :white_check_mark:              |
-|       4.8.52       |       4.9.5        |              :white_check_mark:              |
-|       4.8.33       |       4.9.5        |              :white_check_mark:              |
-|       4.8.25       |       4.9.5        |              :white_check_mark:              |
-|       4.8.22       |       4.9.5        |              :white_check_mark:              |
-|       4.8.16       |       4.9.5        |              :white_check_mark:              |
-|       4.8.12       |       4.9.5        |              :white_check_mark:              |
-|       4.8.9        |       4.9.5        |              :white_check_mark:              |
-|       4.8.8        |       4.9.5        |              :white_check_mark:              |
-|       4.7.38       |       4.9.5        |              :white_check_mark:              |
-|       4.7.29       |       4.9.5        |              :white_check_mark:              |
-|       4.7.27       |       4.9.5        |              :white_check_mark:              |
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.9.14       |       4.9.51       | :white_check_mark: |
+|       4.9.14       |       4.9.46       | :white_check_mark: |
+|       4.9.14       |       4.9.44       | :white_check_mark: |
+|       4.9.14       |       4.9.38       | :white_check_mark: |
+|       4.9.14       |       4.9.24       | :white_check_mark: |
+|       4.8.62       |       4.9.51       |        :x:         |
+|       4.8.62       |       4.9.46       |        :x:         |
+|       4.8.62       |       4.9.44       |        :x:         |
+|       4.8.62       |       4.9.38       |        :x:         |
+|       4.8.62       |       4.9.24       |        :x:         |
+|       4.8.62       |       4.9.14       | :white_check_mark: |
+|       4.8.62       |       4.9.5        | :white_check_mark: |
+|       4.8.61       |       4.9.51       |        :x:         |
+|       4.8.61       |       4.9.46       |        :x:         |
+|       4.8.61       |       4.9.44       |        :x:         |
+|       4.8.61       |       4.9.38       |        :x:         |
+|       4.8.61       |       4.9.24       |        :x:         |
+|       4.8.61       |       4.9.14       | :white_check_mark: |
+|       4.8.61       |       4.9.5        | :white_check_mark: |
+|       4.8.56       |       4.9.51       |        :x:         |
+|       4.8.56       |       4.9.46       |        :x:         |
+|       4.8.56       |       4.9.44       |        :x:         |
+|       4.8.56       |       4.9.38       |        :x:         |
+|       4.8.56       |       4.9.24       |        :x:         |
+|       4.8.56       |       4.9.14       | :white_check_mark: |
+|       4.8.56       |       4.9.5        | :white_check_mark: |
+|       4.8.52       |       4.9.51       |        :x:         |
+|       4.8.52       |       4.9.46       |        :x:         |
+|       4.8.52       |       4.9.44       |        :x:         |
+|       4.8.52       |       4.9.38       |        :x:         |
+|       4.8.52       |       4.9.24       |        :x:         |
+|       4.8.52       |       4.9.14       | :white_check_mark: |
+|       4.8.52       |       4.9.5        | :white_check_mark: |
+|       4.8.33       |       4.9.5        | :white_check_mark: |
+|       4.8.25       |       4.9.5        | :white_check_mark: |
+|       4.8.22       |       4.9.5        | :white_check_mark: |
+|       4.8.16       |       4.9.5        | :white_check_mark: |
+|       4.8.12       |       4.9.5        | :white_check_mark: |
+|       4.8.9        |       4.9.5        | :white_check_mark: |
+|       4.8.8        |       4.9.5        | :white_check_mark: |
+|       4.7.38       |       4.9.5        |        :x:         |
+|       4.7.29       |       4.9.5        |        :x:         |
+|       4.7.27       |       4.9.5        |        :x:         |
 
 <!-- upgrade-paths:vmware-4.9:end -->
 
@@ -545,14 +569,35 @@ after a few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.9.14       |       4.9.51       | :white_check_mark: |
+|       4.9.14       |       4.9.46       | :white_check_mark: |
+|       4.9.14       |       4.9.44       | :white_check_mark: |
+|       4.9.14       |       4.9.38       | :white_check_mark: |
+|       4.9.14       |       4.9.24       | :white_check_mark: |
+|       4.8.62       |       4.9.51       | :white_check_mark: |
+|       4.8.62       |       4.9.46       | :white_check_mark: |
+|       4.8.62       |       4.9.44       | :white_check_mark: |
+|       4.8.62       |       4.9.38       | :white_check_mark: |
+|       4.8.62       |       4.9.24       | :white_check_mark: |
+|       4.8.62       |       4.9.14       | :white_check_mark: |
+|       4.8.62       |       4.9.5        | :white_check_mark: |
+|       4.8.61       |       4.9.51       | :white_check_mark: |
+|       4.8.61       |       4.9.46       | :white_check_mark: |
+|       4.8.61       |       4.9.44       | :white_check_mark: |
 |       4.8.61       |       4.9.38       | :white_check_mark: |
 |       4.8.61       |       4.9.24       | :white_check_mark: |
 |       4.8.61       |       4.9.14       | :white_check_mark: |
 |       4.8.61       |       4.9.5        | :white_check_mark: |
+|       4.8.56       |       4.9.51       | :white_check_mark: |
+|       4.8.56       |       4.9.46       | :white_check_mark: |
+|       4.8.56       |       4.9.44       | :white_check_mark: |
 |       4.8.56       |       4.9.38       | :white_check_mark: |
 |       4.8.56       |       4.9.24       | :white_check_mark: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
 |       4.8.56       |       4.9.5        | :white_check_mark: |
+|       4.8.52       |       4.9.51       | :white_check_mark: |
+|       4.8.52       |       4.9.46       | :white_check_mark: |
+|       4.8.52       |       4.9.44       | :white_check_mark: |
 |       4.8.52       |       4.9.38       | :white_check_mark: |
 |       4.8.52       |       4.9.24       | :white_check_mark: |
 |       4.8.52       |       4.9.14       | :white_check_mark: |
@@ -997,22 +1042,43 @@ after a few hours.
 
 <!-- upgrade-paths:appliance-4.9:start -->
 
-| **Source Version** | **Target Version** |                 **Support**                  |
-| :----------------: | :----------------: | :------------------------------------------: |
-|       4.8.61       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.61       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.61       |       4.9.14       |              :white_check_mark:              |
-|       4.8.61       |       4.9.5        |              :white_check_mark:              |
-|       4.8.56       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.56       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.56       |       4.9.14       |              :white_check_mark:              |
-|       4.8.56       |       4.9.5        |              :white_check_mark:              |
-|       4.8.52       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
-|       4.8.52       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
-|       4.8.52       |       4.9.14       |              :white_check_mark:              |
-|       4.8.52       |       4.9.5        |              :white_check_mark:              |
-|       4.8.12       |       4.9.5        |              :white_check_mark:              |
-|       4.8.8        |       4.9.5        |              :white_check_mark:              |
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.9.14       |       4.9.51       | :white_check_mark: |
+|       4.9.14       |       4.9.46       | :white_check_mark: |
+|       4.9.14       |       4.9.44       | :white_check_mark: |
+|       4.9.14       |       4.9.38       | :white_check_mark: |
+|       4.9.14       |       4.9.24       | :white_check_mark: |
+|       4.8.62       |       4.9.51       | :white_check_mark: |
+|       4.8.62       |       4.9.46       | :white_check_mark: |
+|       4.8.62       |       4.9.44       | :white_check_mark: |
+|       4.8.62       |       4.9.38       | :white_check_mark: |
+|       4.8.62       |       4.9.24       | :white_check_mark: |
+|       4.8.62       |       4.9.14       | :white_check_mark: |
+|       4.8.62       |       4.9.5        | :white_check_mark: |
+|       4.8.61       |       4.9.51       | :white_check_mark: |
+|       4.8.61       |       4.9.46       | :white_check_mark: |
+|       4.8.61       |       4.9.44       | :white_check_mark: |
+|       4.8.61       |       4.9.38       | :white_check_mark: |
+|       4.8.61       |       4.9.24       | :white_check_mark: |
+|       4.8.61       |       4.9.14       | :white_check_mark: |
+|       4.8.61       |       4.9.5        | :white_check_mark: |
+|       4.8.56       |       4.9.51       | :white_check_mark: |
+|       4.8.56       |       4.9.46       | :white_check_mark: |
+|       4.8.56       |       4.9.44       | :white_check_mark: |
+|       4.8.56       |       4.9.38       | :white_check_mark: |
+|       4.8.56       |       4.9.24       | :white_check_mark: |
+|       4.8.56       |       4.9.14       | :white_check_mark: |
+|       4.8.56       |       4.9.5        | :white_check_mark: |
+|       4.8.52       |       4.9.51       | :white_check_mark: |
+|       4.8.52       |       4.9.46       | :white_check_mark: |
+|       4.8.52       |       4.9.44       | :white_check_mark: |
+|       4.8.52       |       4.9.38       | :white_check_mark: |
+|       4.8.52       |       4.9.24       | :white_check_mark: |
+|       4.8.52       |       4.9.14       | :white_check_mark: |
+|       4.8.52       |       4.9.5        | :white_check_mark: |
+|       4.8.12       |       4.9.5        | :white_check_mark: |
+|       4.8.8        |       4.9.5        | :white_check_mark: |
 
 <!-- upgrade-paths:appliance-4.9:end -->
 

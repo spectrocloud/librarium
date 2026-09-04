@@ -45,25 +45,29 @@ published page cannot detect.
 
 ## Kubernetes version constraint
 
-Kubernetes minor versions cannot be skipped during an upgrade, so a path that crosses two or more
-minors is supportable only as a staggered upgrade. Rather than relying on Confluence to carry that
-judgment, the script derives it (DOC-3097):
+Kubernetes minor versions cannot be skipped during an upgrade, so a validated path that
+crosses two or more minors is a contradiction. That contradiction is what DOC-3097 was raised
+for: the tables marked every `4.8.x` → `4.9.23`+ path as supported while the prose on the same
+page said those upgrades were unsupported.
 
-1. It reads the bundled Kubernetes version per release from the **Kubernetes Version Constraint**
-   table **on the page it is writing**, so the rule and the published table cannot disagree. Both
-   cell shapes are understood — an explicit list (`4.8.54, 4.8.56, 4.8.58, 4.8.61`) and a floor
-   (`4.9.23 and later`, confined to its own `major.minor` so it never describes a `4.10.x`
-   release).
-2. For `vmware` (EC binary) and `appliance` installs, a ✅ whose source and target are two or more
-   Kubernetes minors apart becomes ❓. `kubernetes` (Helm) installs are exempt, because on a
-   customer-managed cluster the Kubernetes version is managed independently of Palette.
-3. An explicit ❌ from Confluence is never overridden.
+The published marks now **mirror Confluence exactly**. Engineering marks the unsupported direct
+paths in the matrix itself, so the script does not need to derive them. What the script does add
+is a **cross-check**:
 
-The rule **fails open**: a release the constraint table does not describe keeps the mark Confluence
-gave it, so a newly shipped release is never mislabeled by guesswork. Such a release is reported
-only when the other end of the path *is* described, since that is the case where a missing table
-entry hides a real answer. Adding the release to the **Kubernetes Version Constraint** table brings
-it under the rule.
+1. It reads the bundled Kubernetes version from the matrix's own header and row labels, for
+   example `4.9.x · K8s 1.33.10`. These are per install type, which matters: **the EC binary and
+   the Appliance Installer ship different Kubernetes versions for the same Palette release**
+   (`4.8.x` is `1.32.9` on EC but `1.33.9` on the appliance), so the constraint bites on one and
+   not the other.
+2. Any path marked supported whose own labels say it crosses more than one Kubernetes minor
+   version is **reported**, not rewritten. A disagreement means either the mark or the label is
+   wrong, and both live in Confluence — fix it at source rather than papering over it here.
+3. Labels carrying no version are skipped. That is normal for Helm installs (the cluster's
+   Kubernetes version is managed independently of Palette) and for `K8s TBD` on an unreleased
+   version.
+
+The Kubernetes version tables on the upgrade pages are for readers only; nothing parses them.
+Keep them consistent with the matrix labels by hand, per installation type.
 
 ## Failure modes
 
@@ -73,16 +77,21 @@ quietly halves a table cannot look like a clean run.
 These abort the run **before anything is written**, because each one would otherwise leave whole
 marker blocks silently stranded at their old content:
 
-- A table with no install-type heading above it. Usually an `h3` was renamed, so `INSTALL_MAP` no
-  longer matches and the table is discarded. The error names the heading it found.
+- A table with no install-type heading above it, inside the auto-managed version range. Usually
+  an `h3` was renamed, so `INSTALL_MAP` no longer matches and the table is discarded. The error
+  names the heading it found.
 - An install that parsed zero rows.
 
-These are warnings, and the run continues:
+These are warnings or notes, and the run continues:
 
+- Bare tables in the legacy version groups below 4.6 (`4.3 → 4.4`, `4.1 through 4.3`). These have
+  always been hand-maintained and out of scope, so they are only noted.
 - An `h3` heading that maps to no install and has no table under it.
 - A status cell that cannot be classified.
-- A release with no documented bundled Kubernetes version (refer to the fail-open behavior above).
-- A Confluence block the Markdown has no marker for. Add the marker pair and rerun.
+- A path marked supported that skips a Kubernetes minor version (refer to the cross-check above).
+- A Confluence block the Markdown has no marker for. Add the marker pair and rerun. This is
+  expected for a version whose docs live on another branch — for example `4.10` blocks are
+  reported here and added on `docs-rel-4-10-0`.
 
 ## Setup
 
