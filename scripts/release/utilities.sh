@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Markers written into a documentation table in place of a value that is not known yet. Each names
+# what is missing, so a reviewer can see which cells still need filling and can grep the docs for
+# "PENDING". They live here because the script that decides a value is pending and the scripts that
+# write the rows are not the same script, and a marker that differs between them would publish a
+# cell that no later run recognises as still pending.
+PENDING_VERSION="VERSION PENDING"
+PENDING_URL="URL PENDING"
+PENDING_SHA="SHA PENDING"
+
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
 # $1 - template file, input file
@@ -217,13 +226,18 @@ cleanup() {
     rm $1
 }
 
-# Utility function to delete the first line of a file that contains a literal string. Used to drop
+# Utility function to delete every line of a file that contains a literal string. Used to drop
 # a table row that a later run has superseded, for example a placeholder row keyed on a release
 # version that has since been confirmed. Does nothing when no line matches.
+#
+# Every match is removed rather than only the first, because a row anchor can appear once per
+# tabbed table. The CLI Tools table carries one tab per Palette CLI architecture, so a superseded
+# release has a row under each, and leaving the later ones behind would strand placeholder rows in
+# every tab but the first.
 # Params:
 # $1 - literal search term, example: edge-compat-4.9.x -->
 # $2 - target file
-# Returns 0 if a line was removed, 1 if nothing matched.
+# Returns 0 if at least one line was removed, 1 if nothing matched.
 remove_line_containing() {
     local search="$1"
     local file="$2"
@@ -236,7 +250,7 @@ remove_line_containing() {
     tmp_file="$(mktemp)"
 
     awk -v search="$search" '
-      !removed && index($0, search) { removed = 1; next }
+      index($0, search) { next }
       { print }
     ' "$file" > "$tmp_file"
 
@@ -403,19 +417,26 @@ get_documented_table_version() {
 # see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
 # deliberately skips that row to find the previous release instead.
 # Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+#
+# A file can hold more than one release table, for example the CLI Tools table that carries a tab
+# per Palette CLI architecture. Pass the marker that anchors a particular table's heading row to
+# read that table rather than the first one in the file.
 # Params:
 # $1 - Markdown file to read
 # $2 - 1-based column number to return
 # $3 - the release whose row to read, example: 4.9.x
+# $4 - optional marker anchoring the table to read, example: palette-cli-linux-arm64-table.
+#      Defaults to the first release table in the file.
 get_table_cell_for_release() {
     local file="$1"
     local column="$2"
     local release="$3"
+    local anchor="${4:-Palette Release}"
 
     [[ -f "$file" ]] || return 0
 
-    awk -v column="$column" -v want="$release" '
-      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+    awk -v column="$column" -v want="$release" -v anchor="$anchor" '
+      !in_table && /^\|/ && index($0, "Palette Release") && index($0, anchor) { in_table = 1; next }
       !in_table { next }
 
       # Skip the separator row between the heading and the data rows.
@@ -447,29 +468,44 @@ get_table_cell_for_release() {
 
 # Utility function to derive the SHA256 checksum of a published Palette CLI binary by
 # hashing it as it downloads, so the checksum column in the downloads table does not have
-# to be transcribed by hand. The binary is around 400 MB and is never written to disk.
+# to be transcribed by hand. The binary is never written to disk. Sizes run from around
+# 300 MB to around 600 MB depending on the architecture, so the transfer is reported from
+# the Content-Length the availability check already returns rather than estimated.
 #
 # An unpublished version returns HTTP 403 with a short XML body, which would otherwise be
 # hashed into a plausible looking but wrong checksum, so the status code is checked before
 # the digest is trusted.
 # Params:
 # $1 - Palette CLI version, example: 4.9.19
+# $2 - optional URL suffix naming the architecture to hash, example: linux-arm64/cli/palette.
+#      Defaults to the Linux AMD64 binary.
 # Writes the checksum to stdout. Returns 1 if the binary is not available.
 fetch_palette_cli_sha() {
     local version="$1"
-    local url="https://software.spectrocloud.com/palette-cli/v${version}/linux/cli/palette"
-    local status digest
+    local suffix="${2:-linux/cli/palette}"
+    local url="https://software.spectrocloud.com/palette-cli/v${version}/${suffix}"
+    local headers status bytes size_note digest
 
     # Confirm the binary is published before downloading it, so a 403 response body is
-    # never hashed into a plausible looking but wrong checksum.
-    status=$(curl -sS --head --write-out '%{http_code}' --output /dev/null "$url" || echo "000")
+    # never hashed into a plausible looking but wrong checksum. The status code is appended
+    # to the headers so one request yields both it and the size reported below.
+    headers=$(curl -sS --head --write-out '\n%{http_code}' "$url" 2>/dev/null || printf '\n000')
+    status=$(printf '%s' "$headers" | tail -n 1)
 
     if [[ "$status" != "200" ]]; then
         echo "🟠 Palette CLI $version is not available at $url (HTTP $status)." >&2
         return 1
     fi
 
-    echo "ℹ️  Downloading Palette CLI $version to derive its checksum. This transfers around 400 MB..." >&2
+    bytes=$(printf '%s' "$headers" | tr -d '\r' | awk 'tolower($1) == "content-length:" { print $2 }' | tail -n 1)
+
+    if [[ "$bytes" =~ ^[0-9]+$ ]]; then
+        size_note="around $((bytes / 1048576)) MB"
+    else
+        size_note="several hundred megabytes"
+    fi
+
+    echo "ℹ️  Downloading $url to derive its checksum. This transfers $size_note..." >&2
 
     # shasum is the macOS spelling and sha256sum the usual Linux one, so accept either.
     if command -v shasum >/dev/null 2>&1; then
@@ -479,7 +515,7 @@ fetch_palette_cli_sha() {
     fi
 
     if [[ ! "$digest" =~ ^[0-9a-f]{64}$ ]]; then
-        echo "🟠 Could not derive a checksum for Palette CLI $version." >&2
+        echo "🟠 Could not derive a checksum for $url." >&2
         return 1
     fi
 

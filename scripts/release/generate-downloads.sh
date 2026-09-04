@@ -12,9 +12,7 @@ TABLE_OFFSET=2
 if ! check_env "RELEASE_NAME" ||
    ! check_env "RELEASE_VERSION" ||
    ! check_env "RELEASE_PALETTE_CLI_VERSION" ||
-   ! check_env "RELEASE_PALETTE_CLI_SHA" ||
-   ! check_env "RELEASE_PALETTE_CLI_ARM64_SHA" ||
-   ! check_env "RELEASE_PALETTE_CLI_MACOS_SHA" ; then
+   ! check_env "RELEASE_PALETTE_CLI_SHA" ; then
     echo "‼️  Skipping generate $DOWNLOADS_FILE due to missing environment variables. ‼️"
     exit 0
 fi
@@ -22,20 +20,48 @@ fi
 # The Palette CLI table is split into three tabs, one per supported architecture. Each spec
 # below carries the display name used in log output, the marker that anchors the tab's table
 # in the downloads file, the URL suffix under
-# https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/, and the name
-# of the env var holding that architecture's SHA256. Loop-scoped indirection lets one template
-# render all three rows.
+# https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/, and the names
+# of the variables holding that architecture's checksum and, optionally, its download URL.
+# Loop-scoped indirection lets one template render all three rows. PALETTE_CLI_ARCHES in
+# scripts/release/generate-patch-release-notes.sh mirrors this list, so a new architecture has to
+# be added in both places.
 ARCHES=(
-    "Linux AMD64|palette-cli-version-table|linux/cli/palette|RELEASE_PALETTE_CLI_SHA"
-    "Linux ARM64|palette-cli-linux-arm64-table|linux-arm64/cli/palette|RELEASE_PALETTE_CLI_ARM64_SHA"
-    "macOS ARM64|palette-cli-macos-arm64-table|darwin-arm64/cli/palette|RELEASE_PALETTE_CLI_MACOS_SHA"
+    "Linux AMD64|palette-cli-version-table|linux/cli/palette|RELEASE_PALETTE_CLI_SHA|RELEASE_PALETTE_CLI_URL"
+    "Linux ARM64|palette-cli-linux-arm64-table|linux-arm64/cli/palette|RELEASE_PALETTE_CLI_ARM64_SHA|RELEASE_PALETTE_CLI_ARM64_URL"
+    "macOS ARM64|palette-cli-macos-arm64-table|darwin-arm64/cli/palette|RELEASE_PALETTE_CLI_MACOS_SHA|RELEASE_PALETTE_CLI_MACOS_URL"
 )
 
 for spec in "${ARCHES[@]}"; do
-    IFS='|' read -r arch_name marker url_suffix sha_var <<< "$spec"
+    IFS='|' read -r arch_name marker url_suffix sha_var url_var <<< "$spec"
 
-    RELEASE_PALETTE_CLI_URL="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/${url_suffix}"
-    RELEASE_PALETTE_CLI_SHA="${!sha_var}"
+    # A tab the target file does not have is skipped rather than treated as a failure. The release
+    # branches for versions published before the table was split carry the AMD64 tab alone, and
+    # insert_file_offset exits the whole script when its marker is missing, which would otherwise
+    # abandon the run part-way through with only some of the rows written.
+    if ! grep -qF "$marker" "$DOWNLOADS_FILE"; then
+        echo "ℹ️ $DOWNLOADS_FILE has no $marker table, so the $arch_name row is skipped."
+        continue
+    fi
+
+    # Only the AMD64 checksum is required, because it is the one the check above guarantees and the
+    # one every release publishes. An architecture whose checksum this run does not know still gets
+    # its row, with a marker naming what is missing, so the entry exists from the first run and a
+    # later run only has to fill the cell in. A caller that resolved a value itself, such as
+    # generate-patch-release-notes.sh, passes it in and it is used as given.
+    RELEASE_PALETTE_CLI_SHA="${!sha_var:-}"
+
+    if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
+        RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+        echo "🟠 '$sha_var' is empty or not set, so the $arch_name row records '$PENDING_SHA'." >&2
+    fi
+
+    # The download URL is normally derived from the Palette CLI version, but a caller that does not
+    # yet know the version can pass a placeholder instead of a link that would not resolve.
+    RELEASE_PALETTE_CLI_URL="${!url_var:-}"
+
+    if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then
+        RELEASE_PALETTE_CLI_URL="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/${url_suffix}"
+    fi
 
     # Only the variables the template uses are substituted, and through awk rather than
     # sed, because `sed -i ''` is BSD-only and this script also runs on a Linux runner.

@@ -417,6 +417,8 @@ init-release:
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_ARM64_SHA=" .env || echo "export RELEASE_PALETTE_CLI_ARM64_SHA=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_MACOS_SHA=" .env || echo "export RELEASE_PALETTE_CLI_MACOS_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
