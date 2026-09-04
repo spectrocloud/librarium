@@ -581,7 +581,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   The pack was deprecated in Palette 4.8.0, following the Kubernetes project's
   [retirement of ingress-nginx](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). The pack remains
   disabled for approximately three months before it transitions to the Deleted state, after which existing profiles can
-  no longer launch new clusters either.
+  no longer launch new clusters.
 
 ## September 6, 2026 - Component Updates {#component-updates-2026-36}
 
