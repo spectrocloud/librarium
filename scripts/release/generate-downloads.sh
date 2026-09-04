@@ -8,11 +8,19 @@ DOWNLOADS_FILE="${DOWNLOADS_FILE:-docs/docs-content/downloads/cli-tools.md}"
 CLI_TEMPLATE_FILE="scripts/release/templates/palette-cli.md"
 CLI_PARAMETERISED_FILE="scripts/release/cli-output.md"
 TABLE_OFFSET=2
+# 1-based columns of the CLI Tools table, counting the Palette Release cell as column 1. Used to
+# read back what a release's row already records, so a re-run can reuse a checksum it derived
+# earlier instead of downloading the binary again.
+DOWNLOADS_CLI_VERSION_COLUMN=2
+DOWNLOADS_SHA_COLUMN=4
 
+# The checksums are deliberately not required. Each architecture's row records a marker naming its
+# missing checksum instead, so the entry exists from the first run and a later run only has to fill
+# the cell in. Requiring the AMD64 checksum here used to skip the whole file, which left the ARM64
+# and macOS rows unwritten even when their own checksums were known.
 if ! check_env "RELEASE_NAME" ||
    ! check_env "RELEASE_VERSION" ||
-   ! check_env "RELEASE_PALETTE_CLI_VERSION" ||
-   ! check_env "RELEASE_PALETTE_CLI_SHA" ; then
+   ! check_env "RELEASE_PALETTE_CLI_VERSION" ; then
     echo "‼️  Skipping generate $DOWNLOADS_FILE due to missing environment variables. ‼️"
     exit 0
 fi
@@ -43,16 +51,52 @@ for spec in "${ARCHES[@]}"; do
         continue
     fi
 
-    # Only the AMD64 checksum is required, because it is the one the check above guarantees and the
-    # one every release publishes. An architecture whose checksum this run does not know still gets
-    # its row, with a marker naming what is missing, so the entry exists from the first run and a
-    # later run only has to fill the cell in. A caller that resolved a value itself, such as
-    # generate-patch-release-notes.sh, passes it in and it is used as given.
+    # Resolve this architecture's checksum, in order of preference:
+    #
+    #   1. The value already in the environment, normally from .env. This wins outright, including
+    #      when it is a pending marker, because a caller that resolved a value itself is telling us
+    #      what to record. generate-patch-release-notes.sh always passes something, so it never
+    #      reaches the steps below and its own prompt stays the only place it asks.
+    #   2. The checksum this release's row already records, but only when that row also records the
+    #      Palette CLI version this run is writing. Matching on the version is what makes reuse safe:
+    #      after a release-day bump the recorded checksum belongs to the previous binary, so it has
+    #      to be re-derived rather than carried over onto a new download URL.
+    #   3. The published binary, hashed as it downloads. This is a fallback rather than the norm
+    #      because the transfer runs to several hundred megabytes per architecture.
+    #   4. A marker naming what is missing, so the row exists from the first run and a later run
+    #      only has to fill the cell in.
     RELEASE_PALETTE_CLI_SHA="${!sha_var:-}"
+    sha_source=""
 
-    if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
-        RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-        echo "🟠 '$sha_var' is empty or not set, so the $arch_name row records '$PENDING_SHA'." >&2
+    if [[ -n "$RELEASE_PALETTE_CLI_SHA" ]]; then
+        sha_source="$sha_var"
+    else
+        recorded_cli_version=$(get_table_cell_for_release \
+            "$DOWNLOADS_FILE" "$DOWNLOADS_CLI_VERSION_COLUMN" "$RELEASE_VERSION" "$marker")
+        recorded_sha=$(get_table_cell_for_release \
+            "$DOWNLOADS_FILE" "$DOWNLOADS_SHA_COLUMN" "$RELEASE_VERSION" "$marker")
+
+        if [[ "$recorded_cli_version" == "$RELEASE_PALETTE_CLI_VERSION" && "$recorded_sha" =~ ^[0-9a-f]{64}$ ]]; then
+            RELEASE_PALETTE_CLI_SHA="$recorded_sha"
+            sha_source="the checksum already recorded for Palette CLI $RELEASE_PALETTE_CLI_VERSION"
+        else
+            # A version that is not published yet returns HTTP 403, which the helper checks for
+            # before trusting a digest, so an unavailable binary costs one request and reports
+            # itself. That is an expected outcome on release day rather than a failure, so the run
+            # continues and the cell is left pending.
+            echo "ℹ️  '$sha_var' is empty or not set, so the $arch_name checksum is derived from the published binary." >&2
+
+            if RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION" "$url_suffix"); then
+                sha_source="the published binary"
+            else
+                RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
+                echo "🟠 The $arch_name Palette CLI $RELEASE_PALETTE_CLI_VERSION binary could not be hashed, so the row records '$PENDING_SHA'. Set '$sha_var' in your .env file, or re-run this script once the binary is published." >&2
+            fi
+        fi
+    fi
+
+    if [[ -n "$sha_source" ]]; then
+        echo "ℹ️  $arch_name checksum sourced from $sha_source."
     fi
 
     # The download URL is normally derived from the Palette CLI version, but a caller that does not

@@ -29,7 +29,11 @@ generate_parameterised_file $VMWARE_TEMPLATE_FILE $VMWARE_PARAMETERISED_FILE
 generate_parameterised_file $VERTEX_VMWARE_TEMPLATE_FILE $VERTEX_VMWARE_PARAMETERISED_FILE
 generate_parameterised_file $KUBERNETES_TEMPLATE_FILE $KUBERNETES_PARAMETERISED_FILE
 
-existing_vmware=$(search_line "vmware-k8s-$RELEASE_NAME" $VERSIONS_FILE)
+# The anchor is matched with its closing " -->" so a release name cannot substring-match a
+# longer one, matching the row for another release and overwriting it. RELEASE_NAME is a
+# named release such as 4.10.0 or 4.10.a today, but generate-patch-release-notes.sh passes a
+# patch version through the same scripts, where 4.9.5 and 4.9.51 can both hold a row.
+existing_vmware=$(search_line "vmware-k8s-$RELEASE_NAME -->" $VERSIONS_FILE)
 if [[ -n "$existing_vmware" && "$existing_vmware" -ne 0 ]]; then
     echo "ℹ️ VMware Kubernetes version for $RELEASE_NAME has already been generated in $VERSIONS_FILE"
     replace_line $existing_vmware $VMWARE_PARAMETERISED_FILE $VERSIONS_FILE
@@ -39,7 +43,7 @@ else
     echo "✅ Parameterised VMware Kubernetes version inserted into $VERSIONS_FILE"
 fi
 
-existing_vertex_vmware=$(search_line "vmware-k8s-$RELEASE_NAME" $VERTEX_VERSIONS_FILE)
+existing_vertex_vmware=$(search_line "vmware-k8s-$RELEASE_NAME -->" $VERTEX_VERSIONS_FILE)
 if [[ -n "$existing_vertex_vmware" && "$existing_vertex_vmware" -ne 0 ]]; then
     echo "ℹ️ VMware Kubernetes version for $RELEASE_NAME has already been generated in $VERTEX_VERSIONS_FILE"
     replace_line $existing_vertex_vmware $VERTEX_VMWARE_PARAMETERISED_FILE $VERTEX_VERSIONS_FILE
@@ -49,7 +53,7 @@ else
     echo "✅ Parameterised VMware Kubernetes version inserted into $VERTEX_VERSIONS_FILE"
 fi
 
-existing_kubernetes=$(search_line "k8s-max-$RELEASE_NAME" $K8S_VERSIONS_FILE)
+existing_kubernetes=$(search_line "k8s-max-$RELEASE_NAME -->" $K8S_VERSIONS_FILE)
 if [[ -n "$existing_kubernetes" && "$existing_kubernetes" -ne 0 ]]; then
     echo "ℹ️ Kubernetes highest version entry for $RELEASE_NAME has already been generated in $K8S_VERSIONS_FILE"
     replace_line $existing_kubernetes $KUBERNETES_PARAMETERISED_FILE $K8S_VERSIONS_FILE

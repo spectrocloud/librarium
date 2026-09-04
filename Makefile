@@ -405,6 +405,7 @@ generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
 	./scripts/release/generate-pcg-kubernetes-versions.sh
+	./scripts/release/generate-release-notes-callouts.sh
 	make -s format > /dev/null 2>&1
 
 init-release:
