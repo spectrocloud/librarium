@@ -83,6 +83,9 @@ Select the correct Palette CLI version for your operating system and chip archit
 | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------ | ----------------- |
 | <!-- cli-4.10.0 --> 4.10.x                             | 4.10.3                  | https://software.spectrocloud.com/palette-cli/v4.10.3/darwin-arm64/cli/palette | `TBD`             |
 
+macOS blocks this binary until you remove its quarantine attribute. Refer to
+[Install](../automation/palette-cli/install-palette-cli.md#download-and-setup) for the command.
+
 </TabItem>
 
 </Tabs>
