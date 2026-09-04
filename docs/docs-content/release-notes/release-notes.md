@@ -228,9 +228,16 @@ tags: ["release-notes"]
 
 ### Edge
 
-:::info
-
 The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.0 Palette release is 4.10.3.
+
+:::warning
+
+On Edge clusters running Linux kernel 6.19 or later, including Hadron `7.1.3` and Ubuntu `7.0.0-generic`, shared
+Read-Write-Many (RWX) volumes served by the [Longhorn CSI](/integrations/packs/?pack=csi-longhorn) pack at versions
+`1.8.x` through `1.11.2`, or by the Piraeus RWX driver, can fail to open with a remote I/O error. Upgrade the Longhorn
+CSI pack to `1.12.0`. For the affected combinations, symptoms, and a node-level workaround, refer to the
+[shared volumes fail on kernel 7.x](../troubleshooting/edge/edge.md#scenario---shared-volumes-fail-on-kernel-7x-due-to-nfsv41-directory-delegations)
+troubleshooting scenario.
 
 :::
 
