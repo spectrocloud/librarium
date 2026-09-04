@@ -71,7 +71,7 @@ The following table lists the Kubernetes version bundled with each recent Palett
 
 | Palette VerteX Release                         | EC Binary | VerteX Management Appliance |
 | :--------------------------------------------- | :-------: | :-------------------------: |
-| 4.7.40, 4.7.43                                 |  1.31.8   |       Not documented        |
+| 4.7.40, 4.7.43                                 |  1.31.8   |       Not applicable        |
 | 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61, 4.8.62 |  1.32.9   |           1.33.9            |
 | 4.9.5, 4.9.8, 4.9.14                           |  1.33.10  |           1.34.6            |
 | 4.9.23 and later                               |  1.34.6   |           1.34.9            |
