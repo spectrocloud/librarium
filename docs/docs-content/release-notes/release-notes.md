@@ -138,6 +138,15 @@ tags: ["release-notes"]
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10822 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11336 -->
+
+- You can now view whether the image pull secret that is specified during install has propagated properly to all
+  clusters. Clusters cannot pull security-hardened images from Spectro Cloud's OCI registries until they have the pull
+  secret. Refer to
+  [Monitor Propagation of the Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md#monitor-propagation)
+  for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11115 -->
