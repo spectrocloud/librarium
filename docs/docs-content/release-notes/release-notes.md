@@ -556,3 +556,89 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
+- The Ingress Nginx pack is disabled in Palette 4.10.0. You can no longer create new cluster profiles that include the
+  pack. Existing profiles that already contain it continue to launch new clusters, and running workloads are unaffected.
+  The pack was deprecated in Palette 4.8.0, following the Kubernetes project's
+  [retirement of ingress-nginx](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). The pack remains
+  disabled for approximately three months before it transitions to the Deleted state, after which existing profiles can
+  no longer launch new clusters.
+
+## September 6, 2026 - Component Updates {#component-updates-2026-36}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3171 -->
+<!-- RELEASE DATE: September 6, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.11 -->
+<!-- RELEASE ARTIFACT STUDIO: NA -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.0 -->
+
+The following components have been updated for Palette version 4.10.0.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | NA      |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.0  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.0  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.11 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.11 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3171. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2401 -->
+
+- Added the `is_synchronization` attribute to the `spectrocloud_registry_helm` Terraform resource to enable
+  synchronization controls and align functionality with OCI registries.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2403 -->
+
+- Added support for configuring registry synchronization settings and credential options in the Terraform provider.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2406 -->
+
+- Enhanced Terraform provider registry resource handling and configuration options.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4590 -->
+
+- Fixed an issue where the Spectro RBAC add-on pack preset included live example namespaces that were automatically
+  deployed when no namespaces were specified in the profile layer.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2356 -->
+
+- Fixed an issue in `spectrocloud_registry_helm` where missing TLS configuration options prevented TLS authentication
+  from being sent, causing Helm registries to be stored with TLS disabled.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3171. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3171. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.4.2 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.4.2 |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.32.2 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.64.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.4.2 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :x: | :white_check_mark: | 1.12.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :x: | :white_check_mark: | 1.12.0 |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.45.0 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.4 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.14.1 |
+| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.7.0 |
+| <VersionedLink text="open-policy-agent" url="/integrations/packs/?pack=open-policy-agent" /> | `addon` | :white_check_mark: | :x: | 3.23.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 88.6.2 |
+| <VersionedLink text="spectro-rbac" url="/integrations/packs/?pack=spectro-rbac" /> | `ADDON` | :white_check_mark: | :x: | 1.0.2 |
+| <VersionedLink text="tetragon" url="/integrations/packs/?pack=tetragon" /> | `addon` | :white_check_mark: | :x: | 1.7.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.4.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3171. DO NOT DELETE. -->
+
+#### Pack Notes
