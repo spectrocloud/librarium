@@ -281,7 +281,7 @@ mode Edge clusters in both connected and airgapped environments.
   versions continue to follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the
   provider image.
 - **CanvOS 4.10.0** or later to build provider images that opt in or out of the extensions path.
-- Palette can deliver all supported Kubernetes flavors through systemd extensions.
+- Palette can deliver all supported Kubernetes variants through systemd extensions.
 
 Unified Kernel Image (UKI) deployments do not support systemd extensions. Refer to
 [Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts.
