@@ -11,6 +11,20 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 4, 2026 - Release 4.9.54
+
+<!-- PATCH RELEASE TICKET: DOC-3184 -->
+<!-- PATCH RELEASE VERSION: 4.9.54 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-11070 -->
+
+- Fixed an issue where Palette 4.9.53 deployed release candidate builds of five internal container images instead of
+  their generally available builds. As a result, an image scan of a Palette 4.9.53 installation reports image tags with
+  an `-rc.1` suffix. Palette 4.9.54 deploys the generally available build of each image. These builds contain the same
+  code as the release candidates, so Palette behavior is unchanged.
+
 ## September 3, 2026 - Release 4.9.53
 
 <!-- PATCH RELEASE TICKET: DOC-3179 -->
