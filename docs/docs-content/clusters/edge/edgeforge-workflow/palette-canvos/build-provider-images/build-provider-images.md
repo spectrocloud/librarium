@@ -317,17 +317,15 @@ following steps.
 The first upgrade after adopting CanvOS 4.10.0 requires a provider image that ships the aligned Palette Agent version.
 Subsequent Kubernetes upgrades run without a provider image.
 
-1. Build a provider image with a supported CanvOS release and set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true` in the
-   `.arg` file. Set `system.uri: <provider-image>` in the BYOOS pack for the initial upgrade. This upgrade replaces the
-   `kairos-agent` on the system with the aligned Palette Agent version. Refer to
+1. Build a provider image with a supported CanvOS release. Set `system.uri: <provider-image>` in the BYOOS pack for the
+   upgrade. This upgrade replaces the `kairos-agent` on the system with the aligned Palette Agent version. Refer to
    [Support Requirements](#support-requirements) for the minimum CanvOS release.
-2. For subsequent Kubernetes upgrades, set `system.uri: NA` in the BYOOS pack and update the Kubernetes pack in the
-   cluster profile to the target version. Palette delivers the new Kubernetes binaries through systemd extensions and
-   does not require a provider image. A provider image can still be supplied for each repave, in which case
-   `BUNDLE_K8S_AND_AGENT_PROVIDER` is not required.
+2. For subsequent Kubernetes upgrades, if you intend to use systemd extensions, set `system.uri: NA` in the BYOOS pack
+   and update the Kubernetes pack in the cluster profile to the target version. Palette delivers the new Kubernetes
+   binaries through systemd extensions and does not require a provider image. A provider image can still be supplied if
+   you intend to perform operating system or Kubernetes upgrades, which follow the current behavior.
 3. If the Palette Edge agent remains pinned to an earlier release, systemd extensions are not available on this cluster.
-   Build provider images from a supported CanvOS release with `BUNDLE_K8S_AND_AGENT_PROVIDER` set to `true` for every
-   upgrade.
+   Build provider images from a supported CanvOS release and use one for every upgrade.
 
 ### Upgrade Operating System Packages
 
