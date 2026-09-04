@@ -449,13 +449,6 @@ troubleshooting scenario.
   transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
   only from inside the cluster.
 
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1020 -->
-
-- The VM Launchpad appliance now installs on its own storage using Slim ISO images, available in FIPS and non-FIPS
-  variants, with a companion Content Bundle. After the appliance is up, administrators attach a separate Container
-  Storage Interface (CSI) for virtual machine storage, decoupling appliance uptime from the CSI configuration used for
-  virtual machine workloads. Portworx SDS and Portworx with Pure Array are validated at release.
-
 ##### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->
