@@ -3,11 +3,6 @@ partial_category: self-hosted
 partial_name: upgrade-palette-upgrade-notes
 ---
 
-- **(4.8.x to 4.9.23+)** Direct upgrades of {props.version} from any `4.8.x` release to `4.9.23` or later are not
-  supported, because they skip a Kubernetes minor version. The `4.8.x` series ships Kubernetes `1.32.9`, and `4.9.23`
-  and later ship Kubernetes `1.34.6`. To reach `4.9.23` or later from `4.8.x`, first upgrade to a `4.9.x` release on
-  Kubernetes `1.33.10` (we recommend `4.9.14`), then upgrade to your target `4.9.23` or later release.
-
 - **(4.7.27 to 4.7.29+)** If upgrading from version **4.7.27**, you must run an additional script before upgrading
   {props.version}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely
   recreates the PVC while preserving data.
