@@ -18,7 +18,10 @@ together as egress, refer to [Clients and Quotas](../explanation/clients-and-quo
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
-- The endpoint's URL, reachable from the appliance, and a key if the host requires one.
+- The endpoint's URL, reachable from the appliance.
+- The credentials the host requires, if any. Credentials can be an API key, one or more custom headers, or both.
+- If the endpoint's TLS certificate is self-signed or issued by a private Certificate Authority (CA), that certificate
+  in Privacy-Enhanced Mail (PEM) format.
 - An existing client to authorize. To create one, refer to [Create a Client](./create-a-client.md).
 - Egress permitted for the appliance. Sovereignty must not be armed. To check or disarm it, refer to
   [Sovereignty and Egress](../explanation/clients-and-quotas.md#sovereignty-and-egress).
@@ -27,21 +30,37 @@ together as egress, refer to [Clients and Quotas](../explanation/clients-and-quo
 
 1. From the left main menu, select **Integrations**.
 
-2. In **External inference endpoints**, under **Add an endpoint**, enter an **Endpoint id**, the **Endpoint URL**, and
-   the **Key** if the host requires one. Enter the origin only, such as `https://host.example.com`. For the id's
-   constraints and role, refer to
+2. In **External inference endpoints**, under **Add an endpoint**, enter an **Endpoint id** and the **Endpoint URL**.
+   The URL can be an origin, such as `https://host.example.com`, or an origin followed by a path prefix, such as
+   `https://gateway.example.com/openai`. Do not include `/v1` in the URL. A URL that ends in `/v1` is refused, and
+   nothing is stored. For the id's constraints and role, and for how the appliance handles the URL, refer to
    [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
-3. _(Optional)_ Enter **Input $/1M tokens** and **Output $/1M tokens** so usage is priced at the rates you set. If you
+3. Enter the **Key** if the host requires an API key. Otherwise, leave **Key** blank; the appliance sends no
+   `Authorization` header.
+
+4. _(Optional)_ Add one or more custom headers. In **Custom headers**, select **Add header**, and then enter a header
+   name and its value. You can add up to 16 headers. Header values are stored as secrets and are not shown again after
+   you save. A small set of transport-level header names is reserved and refused. When you edit an existing endpoint,
+   leaving a header's value blank keeps the stored value.
+
+5. _(Optional)_ Trust a self-signed or private CA certificate. Only supply a certificate when the endpoint's own TLS
+   certificate is not signed by a publicly trusted CA. Expand **Advanced: self-signed or private CA**, and in **CA
+   certificate (PEM)**, paste the endpoint's certificate or bundle in PEM format. When you edit an existing endpoint,
+   the appliance shows the stored certificate in full.
+
+6. _(Optional)_ Enter **Input $/1M tokens** and **Output $/1M tokens** so usage is priced at the rates you set. If you
    leave them blank, the appliance applies a generic rate.
 
-4. Select **Probe models**. The appliance contacts the host and lists the models it serves. A bad key or an unreachable
-   host reports the failure and stores nothing.
+7. Select **Probe models**. The appliance contacts the host and lists the models it serves. The appliance reports the
+   failure and stores nothing if the key or a header is rejected, a header name is disallowed, more than 16 headers are
+   set, the certificate is untrusted, or the host is unreachable.
 
-5. Review **Discovered models**, then select **Add endpoint**. Review the preview, and then select **Confirm & apply**.
+8. Review **Discovered models**, then select **Add endpoint**. Review the preview, and then select **Confirm & apply**.
 
-6. Confirm the endpoint appears in the list with an **enabled** chip, its URL, its model count, and a **key set** or
-   **no key** indicator on its row.
+9. Confirm the endpoint appears in the list with an **enabled** chip, its URL, its model count, and a **key set** or
+   **no key** indicator on its row. If you added custom headers, the row reports the header count and names. If you
+   added a CA certificate, the row shows a **custom CA** indicator.
 
 To stop routing to the endpoint without deleting it, select **Disable**. To delete it, select **Remove**. For the
 fail-safe behavior that catches a routing rule still pointing at a disabled or removed endpoint, refer to
@@ -82,14 +101,14 @@ Requests that match that alias go to the registered host and are counted as egre
 
 ## Validate the Endpoint
 
-Send a request through the appliance that matches an alias rule you just routed to the endpoint, then confirm the
-appliance metered it as egress from that endpoint.
+Send a request through the appliance that matches the alias you just routed to the endpoint, then confirm the appliance
+metered it as egress from that endpoint.
 
 1. From a client with a valid API token, call the alias you routed to the endpoint.
 
 2. From the left main menu, select **Usage**.
 
-3. Select the **By Model** tab and find the row labeled **External · egress**. For the field it uses and the per-client
+3. Select the **By Model** tab and find the row labeled **External · egress**. For the metric field and the per-client
    split, refer to [Usage Metrics Reference: By Model Tab](../reference/usage-metrics-reference.md#by-model-tab).
 
 ## Next Steps
