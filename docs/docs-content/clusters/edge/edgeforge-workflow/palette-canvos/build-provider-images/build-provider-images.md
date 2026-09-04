@@ -266,18 +266,19 @@ guide when you do not require [specialized configurations](#specialized-build-gu
 
 ## Deliver Kubernetes and Agent Binaries via systemd Extensions {#bundle-k8s-and-agent-provider-flag}
 
-Starting with **CanvOS 4.10**, connected Edge clusters can use systemd extensions to deliver Kubernetes and Palette
-Agent binaries at runtime instead of embedding them in the provider image. This reduces provider image size and lets a
-single provider image serve multiple Kubernetes versions on the same host. This capability applies to connected clusters
-only.
+Starting with **CanvOS 4.10**, Edge clusters in appliance mode can use systemd extensions to deliver Kubernetes and
+Palette Agent binaries at runtime instead of embedding them in the provider image. This reduces provider image size and
+lets a single provider image serve multiple Kubernetes versions on the same host. This capability applies to appliance
+mode Edge clusters in both connected and airgapped environments.
 
 ### Support Requirements
 
 - **Palette Edge agent 4.10.0** (Stylus) or later on the cluster. When Stylus is pinned to an earlier release, systemd
   extensions are not available on the cluster regardless of the operating system or Kubernetes pack settings, and the
   cluster falls back to the pre-systemd-extensions behavior.
-- An operating system with **systemd version 255 or later**, such as Ubuntu 24 or RHEL 10. Operating systems on earlier
-  systemd versions continue to follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the
+- An operating system with **systemd version 255 or later**. Ubuntu 24 and RHEL 10 are the tested and verified operating
+  systems, and any operating system with systemd 255 or later is supported. Operating systems on earlier systemd
+  versions continue to follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the
   provider image.
 - **CanvOS 4.10.0** or later to build provider images that opt in or out of the extensions path.
 - Palette can deliver all supported Kubernetes flavors through systemd extensions.
@@ -300,8 +301,8 @@ existing behavior.
 
 ### New Clusters
 
-When you provision a new connected Edge cluster on an operating system with systemd 255 or later, take the following
-steps.
+When you provision a new appliance mode Edge cluster on an operating system with systemd 255 or later, take the
+following steps.
 
 1. Set `system.uri: NA` in the BYOOS pack. Palette does not need a provider image to deliver Kubernetes and Palette
    Agent binaries when systemd extensions are available.
