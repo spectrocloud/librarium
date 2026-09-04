@@ -22,3 +22,4 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                      |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.           |
 | [Installation Architecture](./installation-architecture.md) | How the appliance installs, why the network uses a bond, and how day-two upgrades stay in Local UI.              |
+| [The Thinking Directive](./thinking-directive.md)           | How the Thinking directive on the Tier Map controls reasoning depth by effort level and how each engine reacts.  |
