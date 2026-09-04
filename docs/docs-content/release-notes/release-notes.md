@@ -250,8 +250,9 @@ troubleshooting scenario.
   provider image built with **CanvOS 4.10.x** that sets `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Reference the image
   through `system.uri` in the BYOOS pack for the first upgrade after you adopt **CanvOS 4.10.x**. This upgrade aligns
   the Palette Edge node agent on the host with the Palette release. Subsequent Kubernetes upgrades do not need a
-  provider image, so set `system.uri: NA` in the BYOOS pack. For Unified Kernel Image (UKI) deployments, sign the new
-  provider image and the systemd extensions with the same keys that you used to sign the installer. Refer to
+  provider image, so set `system.uri: NA` in the BYOOS pack. Unified Kernel Image (UKI) deployments do not support
+  systemd extensions and continue to receive Kubernetes and Palette Agent binaries embedded in the provider image, which
+  you sign with the same keys that you used to sign the installer. Refer to
   [Upgrade an Existing Cluster](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#upgrade-an-existing-cluster)
   for more information.
 
