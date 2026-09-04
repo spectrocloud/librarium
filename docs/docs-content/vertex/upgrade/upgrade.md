@@ -32,6 +32,11 @@ Refer to the following tables for the supported Palette VerteX upgrade paths for
 [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md), and
 [VerteX Management Appliance](../install-palette-vertex/vertex-management-appliance.md) installations.
 
+In the following tables, :white_check_mark: indicates a validated direct upgrade path and :x: indicates an unsupported
+path. A [:question:](#kubernetes-version-constraint) indicates a path that Palette VerteX supports only as a staggered
+upgrade through an intermediate release. Refer to [Kubernetes Version Constraint](#kubernetes-version-constraint) for
+the intermediate release to use.
+
 :::danger
 
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
@@ -53,32 +58,34 @@ health status of MongoDB ReplicaSet members, refer to our
 
 ### Kubernetes Version Constraint
 
-Enterprise Cluster (EC) binary and VerteX Management Appliance installations bundle a specific Kubernetes version with
-each Palette VerteX release. Kubernetes does not support skipping a minor version during a cluster upgrade, so a Palette
-VerteX upgrade cannot cross more than one Kubernetes minor version in a single hop. An upgrade that would skip a
-Kubernetes minor version may fail mid-run and leave the management cluster in an unrecoverable state.
+This constraint applies to Enterprise Cluster (EC) binary and VerteX Management Appliance installations, which bundle a
+specific Kubernetes version with each Palette VerteX release. It does not apply to Palette VerteX installed with Helm on
+a customer-managed Kubernetes cluster, where you manage the Kubernetes version independently of Palette VerteX. The
+paths in the **Kubernetes** tab are not subject to this constraint.
+
+Kubernetes does not support skipping a minor version during a cluster upgrade, so a Palette VerteX upgrade cannot cross
+more than one Kubernetes minor version in a single hop. An upgrade that would skip a Kubernetes minor version may fail
+mid-run and leave the management cluster in an unrecoverable state.
 
 The following table lists the Kubernetes version bundled with each recent Palette VerteX release.
 
-| Palette VerteX Release         | Kubernetes Version |
-| :----------------------------- | :----------------: |
-| 4.7.40, 4.7.43                 |       1.31.8       |
-| 4.8.54, 4.8.56, 4.8.58, 4.8.61 |       1.32.9       |
-| 4.9.5, 4.9.8, 4.9.14           |      1.33.10       |
-| 4.9.23 and later               |       1.34.6       |
+| Palette VerteX Release                 | Kubernetes Version |
+| :------------------------------------- | :----------------: |
+| 4.7.40, 4.7.43                         |       1.31.8       |
+| 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61 |       1.32.9       |
+| 4.9.5, 4.9.8, 4.9.14                   |      1.33.10       |
+| 4.9.23 and later                       |       1.34.6       |
 
 Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x` series ships Kubernetes
-`1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. To reach `4.9.23` or later from
-`4.8.x`, upgrade in two steps.
+`1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade path tables mark these
+paths with :question: rather than :white_check_mark:. To reach `4.9.23` or later from `4.8.x`, upgrade in two steps.
 
 1. Upgrade to a `4.9.x` release on Kubernetes `1.33.10`. We recommend `4.9.14`.
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
 Before you start any Palette VerteX upgrade, compare the Kubernetes version of your current release with that of the
 target release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the
-missing minor. This constraint applies to EC binary and VerteX Management Appliance installations. It does not apply to
-Palette VerteX installed via Helm on a customer-managed Kubernetes cluster, where your Kubernetes version is managed
-independently of Palette VerteX.
+missing minor.
 
 <Tabs>
 <TabItem label="VMware" value="VMware">
@@ -87,30 +94,30 @@ independently of Palette VerteX.
 
 <!-- upgrade-paths:vmware-4.9:start -->
 
-| **Source Version** | **Target Version** |    **Support**     |
-| :----------------: | :----------------: | :----------------: |
-|       4.8.61       |       4.9.38       | :white_check_mark: |
-|       4.8.61       |       4.9.24       | :white_check_mark: |
-|       4.8.61       |       4.9.14       | :white_check_mark: |
-|       4.8.61       |       4.9.5        | :white_check_mark: |
-|       4.8.56       |       4.9.38       | :white_check_mark: |
-|       4.8.56       |       4.9.24       | :white_check_mark: |
-|       4.8.56       |       4.9.14       | :white_check_mark: |
-|       4.8.56       |       4.9.5        | :white_check_mark: |
-|       4.8.52       |       4.9.38       | :white_check_mark: |
-|       4.8.52       |       4.9.24       | :white_check_mark: |
-|       4.8.52       |       4.9.14       | :white_check_mark: |
-|       4.8.52       |       4.9.5        | :white_check_mark: |
-|       4.8.33       |       4.9.5        | :white_check_mark: |
-|       4.8.25       |       4.9.5        | :white_check_mark: |
-|       4.8.22       |       4.9.5        | :white_check_mark: |
-|       4.8.16       |       4.9.5        | :white_check_mark: |
-|       4.8.12       |       4.9.5        | :white_check_mark: |
-|       4.8.9        |       4.9.5        | :white_check_mark: |
-|       4.8.8        |       4.9.5        | :white_check_mark: |
-|       4.7.38       |       4.9.5        | :white_check_mark: |
-|       4.7.29       |       4.9.5        | :white_check_mark: |
-|       4.7.27       |       4.9.5        | :white_check_mark: |
+| **Source Version** | **Target Version** |                 **Support**                  |
+| :----------------: | :----------------: | :------------------------------------------: |
+|       4.8.61       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.61       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.61       |       4.9.14       |              :white_check_mark:              |
+|       4.8.61       |       4.9.5        |              :white_check_mark:              |
+|       4.8.56       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.56       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.56       |       4.9.14       |              :white_check_mark:              |
+|       4.8.56       |       4.9.5        |              :white_check_mark:              |
+|       4.8.52       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.52       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.52       |       4.9.14       |              :white_check_mark:              |
+|       4.8.52       |       4.9.5        |              :white_check_mark:              |
+|       4.8.33       |       4.9.5        |              :white_check_mark:              |
+|       4.8.25       |       4.9.5        |              :white_check_mark:              |
+|       4.8.22       |       4.9.5        |              :white_check_mark:              |
+|       4.8.16       |       4.9.5        |              :white_check_mark:              |
+|       4.8.12       |       4.9.5        |              :white_check_mark:              |
+|       4.8.9        |       4.9.5        |              :white_check_mark:              |
+|       4.8.8        |       4.9.5        |              :white_check_mark:              |
+|       4.7.38       |       4.9.5        |              :white_check_mark:              |
+|       4.7.29       |       4.9.5        |              :white_check_mark:              |
+|       4.7.27       |       4.9.5        |              :white_check_mark:              |
 
 <!-- upgrade-paths:vmware-4.9:end -->
 
@@ -990,22 +997,22 @@ after a few hours.
 
 <!-- upgrade-paths:appliance-4.9:start -->
 
-| **Source Version** | **Target Version** |    **Support**     |
-| :----------------: | :----------------: | :----------------: |
-|       4.8.61       |       4.9.38       | :white_check_mark: |
-|       4.8.61       |       4.9.24       | :white_check_mark: |
-|       4.8.61       |       4.9.14       | :white_check_mark: |
-|       4.8.61       |       4.9.5        | :white_check_mark: |
-|       4.8.56       |       4.9.38       | :white_check_mark: |
-|       4.8.56       |       4.9.24       | :white_check_mark: |
-|       4.8.56       |       4.9.14       | :white_check_mark: |
-|       4.8.56       |       4.9.5        | :white_check_mark: |
-|       4.8.52       |       4.9.38       | :white_check_mark: |
-|       4.8.52       |       4.9.24       | :white_check_mark: |
-|       4.8.52       |       4.9.14       | :white_check_mark: |
-|       4.8.52       |       4.9.5        | :white_check_mark: |
-|       4.8.12       |       4.9.5        | :white_check_mark: |
-|       4.8.8        |       4.9.5        | :white_check_mark: |
+| **Source Version** | **Target Version** |                 **Support**                  |
+| :----------------: | :----------------: | :------------------------------------------: |
+|       4.8.61       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.61       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.61       |       4.9.14       |              :white_check_mark:              |
+|       4.8.61       |       4.9.5        |              :white_check_mark:              |
+|       4.8.56       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.56       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.56       |       4.9.14       |              :white_check_mark:              |
+|       4.8.56       |       4.9.5        |              :white_check_mark:              |
+|       4.8.52       |       4.9.38       | [:question:](#kubernetes-version-constraint) |
+|       4.8.52       |       4.9.24       | [:question:](#kubernetes-version-constraint) |
+|       4.8.52       |       4.9.14       |              :white_check_mark:              |
+|       4.8.52       |       4.9.5        |              :white_check_mark:              |
+|       4.8.12       |       4.9.5        |              :white_check_mark:              |
+|       4.8.8        |       4.9.5        |              :white_check_mark:              |
 
 <!-- upgrade-paths:appliance-4.9:end -->
 
