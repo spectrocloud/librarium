@@ -1265,7 +1265,8 @@ is illegal instead, which the client does not retry, and the user-space applicat
 is fine; only the NFS handshake is wrong. This is why the same CSI pack works on stock Ubuntu 6.8 and RHEL 9 and fails
 on Hadron `7.1.3` or Ubuntu `7.0.0-generic`.
 
-The durable fix is to upgrade the affected CSI pack. Use the [Longhorn CSI](/integrations/packs/?pack=csi-longhorn) pack
+<!-- prettier-ignore -->
+The durable fix is to upgrade the affected CSI pack. Use the <VersionedLink text="Longhorn CSI" url="/integrations/packs/?pack=csi-longhorn" /> pack
 at version `1.12.0`. Version `1.11.3` also contains the fix but requires Kubernetes v1.34 or later. Do not remain on
 Longhorn CSI `1.8.x` through `1.11.2` on kernel 6.19 or later. For Piraeus RWX, no fixed pack is available yet, so avoid
 Piraeus shared RWX volumes on kernel 6.19 or later. Read-Write-Once (RWO) and DRBD volumes are unaffected.

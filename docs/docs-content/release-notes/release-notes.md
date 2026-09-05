@@ -13,6 +13,12 @@ tags: ["release-notes"]
 
 ## September 6, 2026 - Release 4.10.0 {#release-notes-4.10.0}
 
+<!-- COMPONENT UPDATES TICKET: DOC-3171 -->
+<!-- RELEASE DATE: September 6, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.11 -->
+<!-- RELEASE ARTIFACT STUDIO: NA -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.0 -->
+
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
@@ -147,6 +153,10 @@ tags: ["release-notes"]
   [Monitor Propagation of the Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md#monitor-propagation)
   for more information.
 
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.10.11 are now
+  available.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11115 -->
@@ -233,8 +243,6 @@ tags: ["release-notes"]
   compliance tagging, could therefore repave nodes repeatedly on a cluster that was never upgraded. Changing tags
   directly on a worker node pool still replaces that pool's nodes.
 
-#### Deprecations and Removals
-
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.0-start -->
@@ -249,10 +257,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::warning
 
+<!-- prettier-ignore -->
 On Edge clusters running Linux kernel 6.19 or later, including Hadron `7.1.3` and Ubuntu `7.0.0-generic`, shared
-Read-Write-Many (RWX) volumes served by the [Longhorn CSI](/integrations/packs/?pack=csi-longhorn) pack at versions
-`1.8.x` through `1.11.2`, or by the Piraeus RWX driver, can fail to open with a remote I/O error. Upgrade the Longhorn
-CSI pack to `1.12.0`. For the affected combinations, symptoms, and a node-level workaround, refer to the
+Read-Write-Many (RWX) volumes served by the <VersionedLink text="Longhorn CSI" url="/integrations/packs/?pack=csi-longhorn" /> pack
+at versions `1.8.x` through `1.11.2`, or by the Piraeus RWX driver, can fail to open with a remote I/O error. Upgrade
+the Longhorn CSI pack to `1.12.0`. For the affected combinations, symptoms, and a node-level workaround, refer to the
 [shared volumes fail on kernel 7.x](../troubleshooting/edge/edge.md#scenario---shared-volumes-fail-on-kernel-7x-due-to-nfsv41-directory-delegations)
 troubleshooting scenario.
 
@@ -488,13 +497,17 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Features
 
-- Terraform version 4.10.0 of the
+<!-- release-notes-automation-features-4.10.0-start -->
+
+- Terraform version 0.30.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.10.0 of the
+- Crossplane version 0.30.0 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
+
+<!-- release-notes-automation-features-4.10.0-end -->
 
 #### Improvements
 
@@ -510,94 +523,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   100%, the CLI could stay silent for several minutes while the Edge host unpacked the bundle. The CLI now reports
   upload completion as soon as the transfer finishes.
 
-### Docs and Education
-
-<!-- https://spectrocloud.atlassian.net/browse/DOC-3132 -->
-<!-- https://spectrocloud.atlassian.net/browse/PE-9317 -->
-
-- Documentation has been added explaining that Local UI, the Palette TUI, and the Palette API all change Edge host
-  passwords as root, and that PAM exempts root from password quality checks unless the image sets the `enforce_for_root`
-  option. Without it, the check still logs a `BAD PASSWORD` message but returns success, so a password that does not
-  meet your policy is accepted. Refer to
-  [Change User Password](../clusters/edge/local-ui/host-management/access-console.md#change-user-password) for the ways
-  a password can be changed, and
-  [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for SUSE, Ubuntu, and
-  RHEL examples that set the option at image build time.
-
-### Packs
-
-#### Pack Notes
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4601 -->
-
-- The `tigera-operator` 3.32.1 pack has been republished as `tigera-operator-3.32.1-rev1` to add the `calico/csi` and
-  `calico/node-driver-registrar` images to its image manifest. The Tigera Operator deploys these two images whenever
-  `kubeletVolumePluginPath` is set to a value other than `None`, but because they were missing from the manifest they
-  were never mirrored into dedicated or airgapped registries, leaving the `csi-node-driver` DaemonSet in
-  `ImagePullBackOff`. Calico networking was unaffected, because the Container Storage Interface (CSI) driver is a
-  separate optional component.
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
-
-- The Ingress Nginx pack is disabled in Palette 4.10.0. You can no longer create new cluster profiles that include the
-  pack. Existing profiles that already contain it continue to launch new clusters, and running workloads are unaffected.
-  The pack was deprecated in Palette 4.8.0, following the Kubernetes project's
-  [retirement of ingress-nginx](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). The pack remains
-  disabled for approximately three months before it transitions to the Deleted state, after which existing profiles can
-  no longer launch new clusters.
-
-## September 6, 2026 - Component Updates {#component-updates-2026-36}
-
-<!-- COMPONENT UPDATES TICKET: DOC-3171 -->
-<!-- RELEASE DATE: September 6, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.11 -->
-<!-- RELEASE ARTIFACT STUDIO: NA -->
-<!-- RELEASE TERRAFORM VERSION: 0.30.0 -->
-
-The following components have been updated for Palette version 4.10.0.
-
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | NA      |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.0  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.0  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.11 |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.11 |
-
-<!-- BEGIN COMPONENT UPDATES BODY: DOC-3171. DO NOT DELETE. -->
-
-### Improvements
-
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2401 -->
 
 - Added the `is_synchronization` attribute to the `spectrocloud_registry_helm` Terraform resource to enable
@@ -611,19 +536,26 @@ The following components have been updated for Palette version 4.10.0.
 
 - Enhanced Terraform provider registry resource handling and configuration options.
 
-### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4590 -->
-
-- Fixed an issue where the Spectro RBAC add-on pack preset included live example namespaces that were automatically
-  deployed when no namespaces were specified in the profile layer.
+#### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2356 -->
 
 - Fixed an issue in `spectrocloud_registry_helm` where missing TLS configuration options prevented TLS authentication
   from being sent, causing Helm registries to be stored with TLS disabled.
 
-<!-- END COMPONENT UPDATES BODY: DOC-3171. DO NOT DELETE. -->
+### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3132 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9317 -->
+
+- Documentation has been added explaining that Local UI, the Palette TUI, and the Palette API all change Edge host
+  passwords as root, and that PAM exempts root from password quality checks unless the image sets the `enforce_for_root`
+  option. Without it, the check still logs a `BAD PASSWORD` message but returns success, so a password that does not
+  meet your policy is accepted. Refer to
+  [Change User Password](../clusters/edge/local-ui/host-management/access-console.md#change-user-password) for the ways
+  a password can be changed, and
+  [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for SUSE, Ubuntu, and
+  RHEL examples that set the option at image build time.
 
 ### Packs
 
@@ -654,3 +586,26 @@ The following components have been updated for Palette version 4.10.0.
 <!-- END PACKS LIST BODY: DOC-3171. DO NOT DELETE. -->
 
 #### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4601 -->
+
+- The `tigera-operator` 3.32.1 pack has been republished as `tigera-operator-3.32.1-rev1` to add the `calico/csi` and
+  `calico/node-driver-registrar` images to its image manifest. The Tigera Operator deploys these two images whenever
+  `kubeletVolumePluginPath` is set to a value other than `None`, but because they were missing from the manifest they
+  were never mirrored into dedicated or airgapped registries, leaving the `csi-node-driver` DaemonSet in
+  `ImagePullBackOff`. Calico networking was unaffected, because the Container Storage Interface (CSI) driver is a
+  separate optional component.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4590 -->
+
+- Fixed an issue where the Spectro RBAC add-on pack preset included live example namespaces that were automatically
+  deployed when no namespaces were specified in the profile layer.
+
+#### Deprecations and Removals
+
+- The Ingress Nginx pack is disabled in Palette 4.10.0. You can no longer create new cluster profiles that include the
+  pack. Existing profiles that already contain it continue to launch new clusters, and running workloads are unaffected.
+  The pack was deprecated in Palette 4.8.0, following the Kubernetes project's
+  [retirement of ingress-nginx](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). The pack remains
+  disabled for approximately three months before it transitions to the Deleted state, after which existing profiles can
+  no longer launch new clusters.
