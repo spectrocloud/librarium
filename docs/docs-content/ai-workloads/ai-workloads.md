@@ -25,5 +25,8 @@ clusters and application engineers independently deploy AI/ML applications and m
 
 <!-- prettier-ignore-end -->
 
+- [Edge AI on NVIDIA Jetson](./edge-ai/edge-ai.md) - Run local AI models at the edge on NVIDIA Jetson devices managed by
+  Palette in agent mode.
+
 - [PaletteAI](https://docs.palette-ai.com/) - Provision and manage GPU-optimized infrastructure and clusters, allowing
   application teams to deploy curated AI/ML applications and models as needed.
