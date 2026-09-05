@@ -22,6 +22,12 @@ Jetson Linux (L4T) operating system built on Ubuntu. Install or update JetPack o
 For the Thor Developer Kit, this uses an NVIDIA installer image written to a USB drive, from which you select **Install
 on NVMe** to install the operating system to the device's NVMe SSD.
 
+During the operating system setup, the installer prompts you to enable [Ubuntu Pro](https://ubuntu.com/pro). Ubuntu Pro
+is optional and is not required by Palette or the Palette agent. Enable it only if your organization wants Ubuntu's
+Extended Security Maintenance (ESM) or compliance tooling on the host.
+
+<!-- VERIFY(DOC-3089): Ubuntu Pro on Jetson. The device runs the NVIDIA Jetson Linux (L4T) kernel, not a Canonical-built Ubuntu kernel, so kernel-level Pro features (Livepatch and the FIPS kernel) are expected NOT to apply; only the Ubuntu userspace (ESM, usg hardening) should. Not yet confirmed on the Thor — this unit was set up with Pro disabled. Validate on a rebuild with Pro enabled (`pro status` lists which services actually attach) before adding a customer-facing caveat about the Jetson kernel. -->
+
 <!-- VERIFY(DOC-3089): Record the JetPack and L4T versions actually installed on the Thor (the factory-flashed value 38.0.0-gcid-41245178 that the device reports at first boot is the UEFI firmware version, NOT the JetPack/L4T version). Capture the real values on the device with:
        cat /etc/nv_tegra_release        # L4T release
        apt-cache show nvidia-jetpack    # JetPack version, if the meta-package is installed
