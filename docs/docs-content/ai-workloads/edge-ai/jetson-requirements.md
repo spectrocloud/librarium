@@ -28,6 +28,24 @@ statement.
 
 <!-- VERIFY(DOC-3093): The published ARM64 support statement in hardware-requirements.md currently covers the Jetson Orin family only. Confirm Jetson Thor support with engineering (Rishi) and update that statement before publishing this guide. -->
 
+## Network requirements
+
+Palette manages the Jetson device over an outbound connection. In agent mode, the Palette agent on the device initiates
+the connection to Palette, and Palette does not connect inbound to the device. A Jetson host on a private network behind
+NAT is supported without inbound firewall rules or a [Private Cloud Gateway (PCG)](../../clusters/pcg/pcg.md). A PCG
+serves private-cloud data center environments where Palette reaches a private infrastructure API, which does not apply
+to an Edge host.
+
+The device requires outbound HTTPS access to the following:
+
+- The Palette SaaS endpoint, `console.spectrocloud.com`.
+- The image registries that host the packs and images your cluster profile uses.
+
+If your network restricts egress, configure a proxy on the host with the `HTTP_PROXY`, `HTTPS_PROXY`, and
+`PROXY_CERT_PATH` settings.
+
+<!-- VERIFY(DOC-3089): Confirm the exact outbound endpoints and ports the agent needs (Palette SaaS + image registries) against the Edge / agent-mode network requirements docs, and validate proxy behavior on the Thor once it registers. Follow-up: add a network diagram of the agent-mode outbound flow (Jetson on a private LAN making outbound HTTPS to Palette SaaS and the registries). -->
+
 ## Hardware requirements
 
 The following table lists the agent mode minimum requirements alongside the specifications of the Jetson AGX Thor
