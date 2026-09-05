@@ -53,13 +53,13 @@ fi
 # the template rendering that region, the file the rendered region is written to, and the names of
 # the variables the template needs beyond RELEASE_NAME and RELEASE_VERSION.
 REGIONS=(
-    "Edge callout|release-notes-edge-callout|$EDGE_CALLOUT_TEMPLATE_FILE|$EDGE_CALLOUT_PARAMETERISED_FILE|RELEASE_CANVOS"
-    "Automation callout|release-notes-automation-callout|$AUTOMATION_CALLOUT_TEMPLATE_FILE|$AUTOMATION_CALLOUT_PARAMETERISED_FILE|RELEASE_PALETTE_CLI_VERSION"
-    "Automation provider bullets|release-notes-automation-features|$AUTOMATION_FEATURES_TEMPLATE_FILE|$AUTOMATION_FEATURES_PARAMETERISED_FILE|RELEASE_TERRAFORM_VERSION"
+    "Edge callout|release-notes-edge-callout|$EDGE_CALLOUT_TEMPLATE_FILE|$EDGE_CALLOUT_PARAMETERISED_FILE|RELEASE_CANVOS|RELEASE_NAME RELEASE_VERSION RELEASE_CANVOS"
+    "Automation callout|release-notes-automation-callout|$AUTOMATION_CALLOUT_TEMPLATE_FILE|$AUTOMATION_CALLOUT_PARAMETERISED_FILE|RELEASE_PALETTE_CLI_VERSION|RELEASE_NAME RELEASE_VERSION RELEASE_PALETTE_CLI_VERSION"
+    "Automation provider bullets|release-notes-automation-features|$AUTOMATION_FEATURES_TEMPLATE_FILE|$AUTOMATION_FEATURES_PARAMETERISED_FILE|RELEASE_TERRAFORM_VERSION|RELEASE_NAME RELEASE_TERRAFORM_VERSION"
 )
 
 for spec in "${REGIONS[@]}"; do
-    IFS='|' read -r region_name marker_base template_file output_file version_var <<< "$spec"
+    IFS='|' read -r region_name marker_base template_file output_file version_var template_vars <<< "$spec"
 
     start_marker="<!-- ${marker_base}-${RELEASE_NAME}-start -->"
     end_marker="<!-- ${marker_base}-${RELEASE_NAME}-end -->"
@@ -75,10 +75,19 @@ for spec in "${REGIONS[@]}"; do
     fi
 
     # Only the variables the template uses are substituted, and through awk rather than sed,
-    # because `sed -i ''` is BSD-only.
+    # because `sed -i ''` is BSD-only. The list is per region rather than shared, because the
+    # templates do not carry the same placeholders: the provider bullets name the provider version
+    # and never the Palette release, so asking them for RELEASE_VERSION reported a placeholder that
+    # is legitimately absent. That warning is worth keeping meaningful, because the same message is
+    # how a template that has genuinely lost a placeholder announces itself.
+    #
+    # Deliberately not derived by grepping the template for {{VAR}}: an unset variable substitutes
+    # to an empty string, so a mistyped placeholder would quietly vanish from the published notes,
+    # whereas one missing from this list survives as a literal {{VAR}} that is obvious on review.
+    # shellcheck disable=SC2086 # word splitting is how the list is passed
     generate_parameterised_file_local_vars \
         "$template_file" "$output_file" \
-        RELEASE_NAME RELEASE_VERSION "$version_var"
+        $template_vars
 
     if replace_region "$start_marker" "$end_marker" "$output_file" "$RELEASE_NOTES_FILE"; then
         echo "✅ Refreshed the $region_name for $RELEASE_NAME in $RELEASE_NOTES_FILE (${version_var}=${!version_var})"
