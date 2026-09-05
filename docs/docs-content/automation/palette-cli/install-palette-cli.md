@@ -18,6 +18,8 @@ The Palette CLI is available for the following operating systems and architectur
 | **Operating System** | **Architecture** |
 | -------------------- | ---------------- |
 | Linux                | amd64            |
+| Linux                | arm64            |
+| macOS                | arm64            |
 
 ## Limitations
 
@@ -36,13 +38,29 @@ The Palette CLI is available for the following operating systems and architectur
 ## Download and Setup
 
 1. Visit the [Downloads](../../downloads/cli-tools.md#palette-cli) page and download the Palette CLI by using the URL
-   provided for your operating system.
+   provided for your operating system and chip architecture.
 
 2. Open up a terminal session on your local system.
 
 3. Navigate to your default download folder. For Linux environments the default location is **~/Downloads**.
 
-4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
+4. If you are installing on macOS, remove the quarantine attribute that gets applied to files downloaded from the
+   internet. Without this step, the operating system blocks the binary from running.
+
+   ```shell
+   xattr -d com.apple.quarantine ~/Downloads/palette 2>/dev/null || true
+   ```
+
+   :::info
+
+   Apple has not yet certified and approved the Palette CLI binary. Until it does, if you skip the quarantine step,
+   macOS blocks the binary and displays a **"palette" Not Opened** dialog stating that Apple could not verify that it is
+   free of malware. Select **Done** to dismiss the dialog. Do not select the option to move the binary to the bin or
+   trash, because that deletes the file that you downloaded.
+
+   :::
+
+5. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
    move the binary to the **/usr/local/bin** folder.
 
    ```shell
@@ -50,7 +68,7 @@ The Palette CLI is available for the following operating systems and architectur
    chmod +x /usr/local/bin/palette
    ```
 
-5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using
+6. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using
    a Palette self-hosted instance or Palette VerteX, replace the `--console-url` with your custom Palette URL.
 
    ```shell

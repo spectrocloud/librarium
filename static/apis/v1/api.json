@@ -3364,7 +3364,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -4503,6 +4504,16 @@
           "format": "int32",
           "type": "integer"
         },
+        "skipK8sUpgrade": {
+          "default": "disabled",
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": true
+        },
         "spotVMOptions": {
           "$ref": "#/definitions/v1SpotVMOptions",
           "description": "SpotVMOptions allows the ability to specify the Machine should use a Spot VM"
@@ -4543,7 +4554,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -6161,7 +6173,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -9066,17 +9079,6 @@
       },
       "type": "object"
     },
-    "v1ClusterRbacEntity": {
-      "properties": {
-        "clusterRbac": {
-          "description": "Cluster RBAC role bindings",
-          "items": {
-            "$ref": "#/definitions/v1ResourceReference"
-          },
-          "type": "array"
-        }
-      }
-    },
     "v1ClusterRbacInputEntity": {
       "description": "Cluster RBAC role binding defintion",
       "properties": {
@@ -10326,7 +10328,10 @@
       "enum": [
         "PureManage",
         "PureAttach",
-        "PureAdopt"
+        "PureAdopt",
+        "AlloyMonitor",
+        "AlloyAssist",
+        "AlloyExtend"
       ],
       "type": "string"
     },
@@ -11885,7 +11890,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -13089,6 +13095,42 @@
       ],
       "type": "object"
     },
+    "v1EdgeHostsSearchFilterSummarySpec": {
+      "description": "Edge host search filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1SearchFilterSpec"
+        },
+        "sort": {
+          "items": {
+            "$ref": "#/definitions/v1EdgeHostsSearchSortSpec"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      }
+    },
+    "v1EdgeHostsSearchSortFields": {
+      "enum": [
+        "name",
+        "state",
+        "healthState",
+        "creationTimestamp",
+        "lastModifiedTimestamp"
+      ],
+      "type": "string",
+      "x-nullable": true
+    },
+    "v1EdgeHostsSearchSortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1EdgeHostsSearchSortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1SortOrder"
+        }
+      }
+    },
     "v1EdgeHostsSearchSummary": {
       "properties": {
         "items": {
@@ -13618,6 +13660,10 @@
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
         }
       },
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
       "type": "object"
     },
     "v1EdgeNativeMachinePoolHostEntity": {
@@ -14268,7 +14314,12 @@
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
         }
-      }
+      },
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
+      "type": "object"
     },
     "v1EksSubnetEntity": {
       "properties": {
@@ -15306,6 +15357,16 @@
           "format": "int32",
           "type": "integer"
         },
+        "skipK8sUpgrade": {
+          "default": "disabled",
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": true
+        },
         "subnet": {
           "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
           "type": "string"
@@ -15350,7 +15411,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -15767,7 +15829,12 @@
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
         }
-      }
+      },
+      "required": [
+        "cloudConfig",
+        "poolConfig"
+      ],
+      "type": "object"
     },
     "v1GenericMachineSpec": {
       "description": "Generic cloud VM definition spec",
@@ -16644,6 +16711,167 @@
       },
       "type": "array",
       "uniqueItems": true
+    },
+    "v1ImagePullSecretPropagationClusterCounts": {
+      "description": "Cluster propagation counts",
+      "properties": {
+        "completed": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "failed": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "total": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1ImagePullSecretPropagationClustersUpdate": {
+      "description": "Update cluster exclude flags for propagation rollup",
+      "properties": {
+        "clusterUids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "exclude",
+        "clusterUids"
+      ],
+      "type": "object"
+    },
+    "v1ImagePullSecretPropagationState": {
+      "description": "DHI image pull secret propagation state",
+      "enum": [
+        "Completed",
+        "InProgress",
+        "Failed"
+      ],
+      "type": "string"
+    },
+    "v1ImagePullSecretPropagationTenantsUpdate": {
+      "description": "update tenant exclude flags for propagation rollup",
+      "properties": {
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "tenantUids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "exclude",
+        "tenantUids"
+      ],
+      "type": "object"
+    },
+    "v1ImagePullSecretSystemPropagationStatus": {
+      "description": "System-wide DHI image pull secret propagation status",
+      "properties": {
+        "state": {
+          "$ref": "#/definitions/v1ImagePullSecretPropagationState"
+        },
+        "tenants": {
+          "items": {
+            "$ref": "#/definitions/v1ImagePullSecretSystemPropagationTenantStatus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1ImagePullSecretSystemPropagationTenantStatus": {
+      "description": "Per-tenant DHI image pull secret propagation status",
+      "properties": {
+        "clusters": {
+          "$ref": "#/definitions/v1ImagePullSecretPropagationClusterCounts"
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ImagePullSecretTenantPropagationClusterCounts": {
+      "description": "Tenant cluster propagation failed count",
+      "properties": {
+        "failed": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1ImagePullSecretTenantPropagationClusterStatus": {
+      "description": "Per-cluster DHI image pull secret propagation status",
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "exclude": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "project": {
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/v1ImagePullSecretPropagationState"
+        }
+      },
+      "type": "object"
+    },
+    "v1ImagePullSecretTenantPropagationStatus": {
+      "description": "Tenant DHI image pull secret propagation status",
+      "properties": {
+        "clusters": {
+          "$ref": "#/definitions/v1ImagePullSecretTenantPropagationClusterCounts"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1ImagePullSecretTenantPropagationClusterStatus"
+          },
+          "type": "array"
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        },
+        "state": {
+          "$ref": "#/definitions/v1ImagePullSecretPropagationState"
+        }
+      },
+      "type": "object"
     },
     "v1ImportClusterConfig": {
       "properties": {
@@ -18389,7 +18617,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -18898,6 +19127,16 @@
           "description": "size of the pool, number of machines",
           "format": "int32",
           "type": "integer"
+        },
+        "skipK8sUpgrade": {
+          "default": "disabled",
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": true
         },
         "taints": {
           "description": "control plane or worker taints",
@@ -24700,24 +24939,6 @@
         }
       }
     },
-    "v1Projects": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1Project"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
     "v1ProjectsFilterSpec": {
       "description": "Project filter summary spec",
       "properties": {
@@ -28834,13 +29055,7 @@
           "$ref": "#/definitions/v1SpectroClusterTemplateRef"
         },
         "clusterType": {
-          "enum": [
-            "PureManage",
-            "AlloyMonitor",
-            "AlloyAssist",
-            "AlloyExtend"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/v1ClusterType"
         }
       },
       "type": "object"
@@ -28884,6 +29099,9 @@
         },
         "fips": {
           "$ref": "#/definitions/v1ClusterFips"
+        },
+        "imagePullSecret": {
+          "$ref": "#/definitions/v1SpectroClusterStatusImagePullSecret"
         },
         "location": {
           "$ref": "#/definitions/v1ClusterLocation"
@@ -28930,6 +29148,16 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/v1SpectroClusterState"
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroClusterStatusImagePullSecret": {
+      "description": "DHI image pull secret status on a spectro cluster",
+      "properties": {
+        "hash": {
+          "description": "hash of the expected image pull secret for this cluster",
+          "type": "string"
         }
       },
       "type": "object"
@@ -31551,24 +31779,6 @@
       },
       "type": "object"
     },
-    "v1SystemCertificateSpec": {
-      "description": "system smtp config spec",
-      "properties": {
-        "caCert": {
-          "type": "string"
-        },
-        "crt": {
-          "type": "string"
-        },
-        "insecureSkipVerify": {
-          "type": "boolean"
-        },
-        "key": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1SystemCertificatesSpec": {
       "description": "system certificate in base64 format",
       "properties": {
@@ -31669,6 +31879,23 @@
         "imagePullSecret": {
           "description": "base64 encoded docker config JSON",
           "type": "string"
+        },
+        "tenants": {
+          "additionalProperties": {
+            "$ref": "#/definitions/v1SystemConfigImagePullSecretTenant"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1SystemConfigImagePullSecretTenant": {
+      "description": "per-tenant DHI image pull secret propagation settings",
+      "properties": {
+        "exclude": {
+          "description": "when true, tenant is omitted from propagation rollup",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -32977,25 +33204,6 @@
           },
           "type": "array",
           "uniqueItems": true
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1TeamsSummary": {
-      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1TeamSummary"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
         }
       },
       "required": [
@@ -35132,25 +35340,6 @@
           },
           "type": "array",
           "uniqueItems": true
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1UsersSummary": {
-      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1UserSummary"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
         }
       },
       "required": [
@@ -39865,7 +40054,8 @@
         }
       },
       "required": [
-        "cloudConfig"
+        "cloudConfig",
+        "poolConfig"
       ],
       "type": "object"
     },
@@ -41089,7 +41279,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 4.9",
+    "title": "Palette APIs - 4.10",
     "version": "v1"
   },
   "paths": {
@@ -43629,9 +43819,6 @@
         "summary": "Retrieves a list of CloudStack cloud accounts",
         "tags": [
           "cloudaccounts"
-        ],
-        "x-Features": [
-          "ApacheCloudstack"
         ]
       },
       "post": {
@@ -43677,9 +43864,6 @@
         "summary": "Creates a CloudStack cloud account",
         "tags": [
           "cloudaccounts"
-        ],
-        "x-Features": [
-          "ApacheCloudstack"
         ]
       }
     },
@@ -61202,7 +61386,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/v1SearchFilterSummarySpec"
+              "$ref": "#/definitions/v1EdgeHostsSearchFilterSummarySpec"
             }
           },
           {
@@ -63604,47 +63788,6 @@
       }
     },
     "/v1/edgehosts": {
-      "get": {
-        "description": "Deprecated. Use POST /v1/dashboard/edgehosts/search , to retrieve all the edgehosts without pagination use GET /v1/edgehosts/metadata.",
-        "operationId": "v1EdgeHostDevicesList",
-        "parameters": [
-          {
-            "enum": [
-              "edge-native",
-              "vsphere"
-            ],
-            "in": "query",
-            "name": "type",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of edge host device items",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeHostDevices"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieve the Complete Edgehost Metadata List",
-        "tags": [
-          "edgehosts"
-        ]
-      },
       "post": {
         "operationId": "v1EdgeHostDevicesCreate",
         "parameters": [
@@ -68872,77 +69015,6 @@
       }
     },
     "/v1/projects": {
-      "get": {
-        "description": "Deprecated: Use POST /v1/dashboard/projects",
-        "operationId": "v1ProjectsList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of projects",
-            "schema": {
-              "$ref": "#/definitions/v1Projects"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of projects",
-        "tags": [
-          "projects"
-        ]
-      },
       "post": {
         "operationId": "v1ProjectsCreate",
         "parameters": [
@@ -74029,6 +74101,181 @@
         ]
       }
     },
+    "/v1/spectroclusters/imagePullSecret/clusters": {
+      "put": {
+        "operationId": "v1SpectroClustersImagePullSecretClustersUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ImagePullSecretPropagationClustersUpdate"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update cluster exclude flags for DHI image pull secret propagation rollup",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/imagePullSecret/export": {
+      "get": {
+        "description": "Returns all matching cluster rows in one CSV. Use query filters only; limit and offset are not supported.",
+        "operationId": "v1SpectroClustersImagePullSecretExportGet",
+        "parameters": [
+          {
+            "description": "Filter clusters by name",
+            "in": "query",
+            "name": "clusterName",
+            "type": "string"
+          },
+          {
+            "description": "Scope to a project",
+            "in": "query",
+            "name": "projectUid",
+            "type": "string"
+          },
+          {
+            "description": "Filter clusters by ImagePullSecretPropagationDone condition failure reason",
+            "enum": [
+              "ConnectivityIssue",
+              "PauseAgentUpgrades",
+              "LocalPropagationFailure"
+            ],
+            "in": "query",
+            "name": "failureReason",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV export of propagation status",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Bulk CSV export of DHI image pull secret propagation status for the tenant (no pagination)",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/imagePullSecret/status": {
+      "get": {
+        "operationId": "v1SpectroClustersImagePullSecretStatusGet",
+        "parameters": [
+          {
+            "description": "Filter clusters by name",
+            "in": "query",
+            "name": "clusterName",
+            "type": "string"
+          },
+          {
+            "description": "Scope to a project",
+            "in": "query",
+            "name": "projectUid",
+            "type": "string"
+          },
+          {
+            "description": "Filter clusters by ImagePullSecretPropagationDone condition failure reason",
+            "enum": [
+              "ConnectivityIssue",
+              "PauseAgentUpgrades",
+              "LocalPropagationFailure"
+            ],
+            "in": "query",
+            "name": "failureReason",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ImagePullSecretTenantPropagationStatus"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns DHI image pull secret propagation status for the authenticated tenant",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
     "/v1/spectroclusters/maas": {
       "post": {
         "operationId": "v1SpectroClustersMaasCreate",
@@ -74256,6 +74503,109 @@
           }
         ],
         "summary": "Downloads the cluster definition archive file",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/system/config/imagePullSecret/export": {
+      "get": {
+        "description": "Returns all matching tenant rows in one CSV. Use query filters only; limit and offset are not supported.",
+        "operationId": "v1SpectroClustersSystemConfigImagePullSecretExportGet",
+        "parameters": [
+          {
+            "description": "Filter tenants by name",
+            "in": "query",
+            "name": "tenantName",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV export of propagation status",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Bulk CSV export of DHI image pull secret propagation status (no pagination)",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/system/config/imagePullSecret/status": {
+      "get": {
+        "operationId": "v1SpectroClustersSystemConfigImagePullSecretStatusGet",
+        "parameters": [
+          {
+            "description": "Filter tenants by name",
+            "in": "query",
+            "name": "tenantName",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ImagePullSecretSystemPropagationStatus"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns DHI image pull secret propagation status for all tenants",
         "tags": [
           "spectroclusters"
         ]
@@ -82269,65 +82619,6 @@
         ]
       }
     },
-    "/v1/system/config/certificate": {
-      "get": {
-        "description": "Deprecated: Use GET /v1/system/config/domain/certificates",
-        "operationId": "V1SystemConfigCertificateGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1SystemCertificateSpec"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "get the system certificates",
-        "tags": [
-          "system"
-        ]
-      },
-      "put": {
-        "description": "Deprecated: Use PUT /v1/system/config/domain/certificates",
-        "operationId": "V1SystemConfigCertificateUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SystemCertificateSpec"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Updated"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "updates the system certificate",
-        "tags": [
-          "system"
-        ]
-      }
-    },
     "/v1/system/config/cluster": {
       "get": {
         "operationId": "V1SystemConfigClusterGet",
@@ -83011,6 +83302,41 @@
           }
         ],
         "summary": "create or update the system DHI image pull secret config",
+        "tags": [
+          "system"
+        ]
+      }
+    },
+    "/v1/system/config/imagePullSecret/tenants": {
+      "put": {
+        "operationId": "V1SystemConfigImagePullSecretTenantsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ImagePullSecretPropagationTenantsUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "update tenant exclude flags for DHI image pull secret propagation rollup",
         "tags": [
           "system"
         ]
@@ -85713,71 +86039,6 @@
       }
     },
     "/v1/teams/summary": {
-      "get": {
-        "description": "Deprecated, Use Post api - Returns a list of team summaries",
-        "operationId": "v1TeamsSummary",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1TeamsSummary"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of team summary",
-        "tags": [
-          "teams"
-        ]
-      },
       "post": {
         "operationId": "v1TeamsSummaryGet",
         "parameters": [
@@ -90586,53 +90847,6 @@
       }
     },
     "/v1/users/summary": {
-      "get": {
-        "description": "Deprecated, Use Post api - Returns a list of user summaries",
-        "operationId": "v1UsersSummary",
-        "parameters": [
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UsersSummary"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified user summary list",
-        "tags": [
-          "users"
-        ]
-      },
       "post": {
         "operationId": "v1UsersSummaryGet",
         "parameters": [

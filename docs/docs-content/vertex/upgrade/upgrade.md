@@ -75,6 +75,7 @@ The following table lists the Kubernetes version bundled with each recent Palett
 | 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61, 4.8.62 |  1.32.9   |           1.33.9            |
 | 4.9.5, 4.9.8, 4.9.14                           |  1.33.10  |           1.34.6            |
 | 4.9.23 and later                               |  1.34.6   |           1.34.9            |
+| 4.10.0 and later                               |    TBD    |           1.35.6            |
 
 On EC binary installations, direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x`
 series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade
@@ -92,6 +93,16 @@ missing minor.
 
 <Tabs>
 <TabItem label="VMware" value="VMware">
+
+**4.10**
+
+<!-- upgrade-paths:vmware-4.10:start -->
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.9.51       |      4.10.11       | :white_check_mark: |
+
+<!-- upgrade-paths:vmware-4.10:end -->
 
 **4.9**
 
@@ -562,6 +573,16 @@ after a few hours.
 </TabItem>
 
 <TabItem label="Kubernetes" value="Kubernetes">
+
+**4.10**
+
+<!-- upgrade-paths:kubernetes-4.10:start -->
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.9.51       |      4.10.11       | :white_check_mark: |
+
+<!-- upgrade-paths:kubernetes-4.10:end -->
 
 **4.9**
 
@@ -1037,6 +1058,16 @@ after a few hours.
 :::preview
 
 :::
+
+**4.10**
+
+<!-- upgrade-paths:appliance-4.10:start -->
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.9.51       |      4.10.11       | :white_check_mark: |
+
+<!-- upgrade-paths:appliance-4.10:end -->
 
 **4.9**
 

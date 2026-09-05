@@ -98,6 +98,18 @@ more information about EdgeForge and site user data, refer to
 
    :::
 
+   Starting with Palette version 4.10.0, the landing page signposts whether the Edge host has a login user configured
+   for the OS and Local UI:
+
+   - If no login user exists, the landing page displays the yellow warning **Setup required: press F2 to create login
+     user for ssh and LocalUI**, and the footer reads **`<F2> Create login`**. Pressing **F2** opens the **Create User**
+     page directly.
+
+   - If a login user already exists, the landing page displays its standard message and the footer reads
+     **`<F2> Customize`**. Pressing **F2** opens the customize flow described in the following steps.
+
+   The warning and the footer label automatically revert once a login user is created.
+
 3. Press **F2** to customize your settings.
 
 4. If you configured a user in your `user-data` file in the EdgeForge step, the TUI displays the **User Login** page.

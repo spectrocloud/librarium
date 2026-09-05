@@ -77,24 +77,17 @@ credentials.
 
    Note the `UserId` for an IAM user, or the role `Arn` for an IAM role.
 
-2. Locate the IAM role created for your backups and update the trust policy to include the IAM principal identified in
-   the previous step.
-
-   In the following example, you replace `<IAM_USER_ID_OR_ROLE_ARN>` with the principal identified in the previous step.
+2. Locate the IAM role created for your backups and append the following statement to its trust policy, alongside the
+   existing statements. Replace `<IAM_USER_ID_OR_ROLE_ARN>` with the principal identified in the previous step.
 
    ```json
    {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Principal": {
-           "AWS": "<IAM_USER_ID_OR_ROLE_ARN>",
-           "Service": "ec2.amazonaws.com"
-         },
-         "Action": "sts:AssumeRole"
-       }
-     ]
+     "Effect": "Allow",
+     "Principal": {
+       "AWS": "<IAM_USER_ID_OR_ROLE_ARN>",
+       "Service": "ec2.amazonaws.com"
+     },
+     "Action": "sts:AssumeRole"
    }
    ```
 

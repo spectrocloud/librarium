@@ -107,3 +107,10 @@ unused_images.json
 
 # Cursor
 .cursor/
+# Intermediate files the release scripts render templates into. They are removed on a successful
+# run, but a run that aborts part-way (a missing table marker, for example) leaves them behind,
+# and they are otherwise untracked files sitting in a tracked directory.
+scripts/release/temp_file.md
+scripts/release/*-output.md
+scripts/release/*-composed.md
+scripts/release/templates/*-output.md
