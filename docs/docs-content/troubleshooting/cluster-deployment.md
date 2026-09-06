@@ -377,6 +377,40 @@ change in any of your automation, such as Terraform, API, etc.
 30. Once all workloads have been successfully migrated to the AL2023 nodes, you can
     [delete](../clusters/cluster-management/node-pool.md#delete-a-node-pool) the AL2 node pools.
 
+## Scenario - IRSA Role Reconcile Warning
+
+After editing `irsaRoles` in an EKS cluster profile, the cluster's **Events Tab** shows a warning event and Palette does
+not modify the IAM role.
+
+Palette runs a compatibility check before adopting an IAM role that already exists in AWS. If the role's policies or
+trust policy do not match what the cluster profile defines, or the role is already managed by another cluster, Palette
+leaves the role untouched and emits one of the following events.
+
+| Event                                 | Cause                                                                                                          |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Warning IRSARoleOutOfBandPolicies`   | The role has managed or inline policies attached that are not listed in the profile's `policies`.              |
+| `Warning IRSARoleTrustPolicyMismatch` | The role's trust policy targets a different service account or OIDC provider than the profile.                 |
+| `Warning IRSARoleForeignOwner`        | A role with the same name is already managed by a different cluster.                                           |
+| `Warning IRSARoleUntaggedSkipped`     | Cluster deletion or an `irsaRoles` removal reached a role that Palette does not manage. No action is required. |
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster's **Events Tab** to identify which event
+   was emitted and against which role.
+
+2. Resolve the mismatch in one of the following ways.
+
+   - Edit `irsaRoles` in the cluster profile so that it matches the current state of the role in AWS. For example, add
+     the missing policy ARN or correct the `serviceAccount` name.
+   - Edit the role in AWS so that it matches the cluster profile. For example, detach the extra managed policy, delete
+     the inline policy, or correct the trust policy.
+
+   If the event is `IRSARoleForeignOwner`, investigate the name collision with the cluster that owns the role. The
+   conflicting role must be renamed or removed before Palette can manage a role of the same name on this cluster.
+
+3. Wait for the next reconcile. Palette re-runs the compatibility check and adopts the role if it now matches. Confirm
+   by returning to the **Events Tab** and looking for a `Normal IRSARoleAdopted` event.
+
 ## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
 
 After deploying an Amazon EKS cluster using an

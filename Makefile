@@ -405,6 +405,7 @@ generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
 	./scripts/release/generate-pcg-kubernetes-versions.sh
+	./scripts/release/generate-release-notes-callouts.sh
 	make -s format > /dev/null 2>&1
 
 init-release:
@@ -417,6 +418,8 @@ init-release:
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_ARM64_SHA=" .env || echo "export RELEASE_PALETTE_CLI_ARM64_SHA=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_MACOS_SHA=" .env || echo "export RELEASE_PALETTE_CLI_MACOS_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env

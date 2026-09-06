@@ -334,7 +334,9 @@ run the workflow again.
 | **Environment Variable**             | **Description**                                                                                                                                                                                    | **Example Value**                                                     |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `RELEASE_PALETTE_CLI_VERSION`        | The Palette CLI version.                                                                                                                                                                           | `4.6.0`                                                               |
-| `RELEASE_PALETTE_CLI_SHA`            | The SHA of the Palette CLI corresponding to the provided version.                                                                                                                                  | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
+| `RELEASE_PALETTE_CLI_SHA`            | The SHA of the Linux AMD64 Palette CLI binary corresponding to the provided version.                                                                                                               | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
+| `RELEASE_PALETTE_CLI_ARM64_SHA`      | The SHA of the Linux ARM64 Palette CLI binary corresponding to the provided version.                                                                                                               | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
+| `RELEASE_PALETTE_CLI_MACOS_SHA`      | The SHA of the macOS ARM64 Palette CLI binary corresponding to the provided version.                                                                                                               | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
 | `RELEASE_REGISTRY_VERSION`           | The Spectro registry version.                                                                                                                                                                      | `4.6.1`                                                               |
 | `RELEASE_SPECTRO_CLI_VERSION`        | The Spectro CLI version.                                                                                                                                                                           | `4.6.0`                                                               |
 | `RELEASE_VMWARE_KUBERNETES_VERSION`  | The Kubernetes version of the Palette [VMware installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                                            | `1.30.9`                                                              |
@@ -342,6 +344,12 @@ run the workflow again.
 | `RELEASE_VMWARE_FIPS_OVA_URL`        | The OS and Kubernetes FIPS OVA Download URL corresponding to the Palette for [VMware installations](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).    | `https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova` |
 | `RELEASE_HIGHEST_KUBERNETES_VERSION` | The highest supported Kubernetes version for Palette [Kubernetes installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                         | `1.30.9`                                                              |
 | `RELEASE_PCG_KUBERNETES_VERSION`     | The Kubernetes cluster version required for PCG [installations](https://docs.spectrocloud.com/clusters/pcg/#kubernetes-requirements).                                                              | `1.30.9`                                                              |
+
+Of the three Palette CLI checksums, only `RELEASE_PALETTE_CLI_SHA` has to be set. The CLI Tools table gives each
+architecture its own tab, and an architecture whose checksum is left empty still gets its row, with a `SHA PENDING`
+marker in the checksum cell. The entry therefore exists from the first run, and only that cell needs filling once the
+checksum is published. Release branches for versions published before the table was split into tabs carry the Linux
+AMD64 tab alone, and the rows for the other architectures are skipped there rather than treated as a failure.
 
 ### Patch Release Notes
 
@@ -353,20 +361,26 @@ that document them.
 The target asks a short series of questions, so you are only asked for values that apply to this patch. Each question is
 skipped when its environment variable is already set.
 
-| **Question**                                                      | **Answer**                                                                      | **Environment Variable**  |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
-| Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
-| Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
-| Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
-| The Palette CLI checksum                                          | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
+| **Question**                                                      | **Answer**                                                                         | **Environment Variable**      |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------- |
+| Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                     | `PATCH_RELEASE_VERSION`       |
+| Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.         | `PATCH_COMPONENT_UPDATES`     |
+| Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                      | `NICKFURY_REF`                |
+| The Linux AMD64 Palette CLI checksum                              | Paste it from ReTool, type `derive`, or leave it empty to record it as pending.    | `PATCH_PALETTE_CLI_SHA`       |
+| The Linux ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_ARM64_SHA` |
+| The macOS ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_MACOS_SHA` |
 
-The Palette CLI checksum is published in ReTool, so look it up there and paste it in. Typing `derive` reads it from the
-published binary instead, which streams around 400 MB and only works once the release is out.
+The Palette CLI ships one binary per supported architecture, and the CLI Tools table gives each its own tab, so the
+target asks for a checksum three times. Only the Linux AMD64 checksum is currently in ReTool, so look that one up there
+and paste it in. The other two are not currently in ReTool, so type `derive` to read them from the published binaries
+instead. Deriving only works once the release is out and streams the whole binary: roughly 300 MB for Linux ARM64, 400
+MB for Linux AMD64, and 600 MB for macOS ARM64. Each architecture is handled on its own, so leaving one empty records
+only that row as pending.
 
 An unattended run answers from the environment variables alone. It generates the release notes body only, unless
-`NICKFURY_REF` or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the component versions are wanted. The
-**Generate Patch Release Notes** workflow presents the same values as form fields, in the same order, and its component
-version tick box has to be set for the branch or tag and checksum fields to be used.
+`NICKFURY_REF` or any of the three checksum variables is supplied, which is taken to mean the component versions are
+wanted. The **Generate Patch Release Notes** workflow presents the same values as form fields, in the same order, and
+its component version tick box has to be set for the branch or tag and checksum fields to be used.
 
 A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so the version you confirm at the first
 prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
@@ -400,20 +414,20 @@ the `spectrocloud/nickfury` repository. The target then compares those versions 
 the [Edge Compatibility Matrix](../docs-content/clusters/edge/edge-compatibility-matrix.md), because a patch release
 often ships the same components as the release before it. Only a component whose version moved is documented.
 
-| **Component**             | **nickfury Key** | **Pages Updated When the Version Moves**                                                                                                                          |
-| ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CanvOS, Stylus, Edge host | `stylus`         | An **Edge** section in the release notes, and a row in the Edge Compatibility Matrix.                                                                             |
-| Palette CLI               | `palette-cli`    | An **Automation** section in the release notes, a row in the Edge Compatibility Matrix, the Install Palette CLI version output, and a row in the CLI Tools table. |
+| **Component**             | **nickfury Key** | **Pages Updated When the Version Moves**                                                                                                                                                    |
+| ------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CanvOS, Stylus, Edge host | `stylus`         | An **Edge** section in the release notes, and a row in the Edge Compatibility Matrix.                                                                                                       |
+| Palette CLI               | `palette-cli`    | An **Automation** section in the release notes, a row in the Edge Compatibility Matrix, the Install Palette CLI version output, and a row in every architecture tab of the CLI Tools table. |
 
-The CLI Tools table also needs the binary's checksum, which nickfury does not carry, and the binary is only published
-after the release. Rather than omit an entry, the target writes it with a marker naming what is still missing, so the
-scaffolding exists from the first run and a later run only has to fill in the values.
+The CLI Tools table also needs each binary's checksum, which nickfury does not carry, and the binaries are only
+published after the release. Rather than omit an entry, the target writes it with a marker naming what is still missing,
+so the scaffolding exists from the first run and a later run only has to fill in the values.
 
-| **Marker**        | **Stands in for**                |
-| ----------------- | -------------------------------- |
-| `VERSION PENDING` | A CanvOS or Palette CLI version. |
-| `URL PENDING`     | The Palette CLI download URL.    |
-| `SHA PENDING`     | The Palette CLI checksum.        |
+| **Marker**        | **Stands in for**                                  |
+| ----------------- | -------------------------------------------------- |
+| `VERSION PENDING` | A CanvOS or Palette CLI version.                   |
+| `URL PENDING`     | The Palette CLI download URL for one architecture. |
+| `SHA PENDING`     | The Palette CLI checksum for one architecture.     |
 
 Search the documentation for `PENDING` to find every value still to be confirmed.
 
@@ -427,7 +441,7 @@ published, and an unattended run always keeps it.
 > The target only maintains rows for the version it is generating. Answering no to the component version question on a
 > re-run leaves any rows an earlier run wrote exactly as they are, so tidy those by hand. The same applies once you have
 > edited a row yourself, because the target replaces whole rows rather than individual cells. Re-run the target with the
-> branch or tag name, and with `PATCH_PALETTE_CLI_SHA` set or the binary published, to replace them.
+> branch or tag name, and with the checksum variables set or the binaries published, to replace them.
 
 > [!WARNING]
 >

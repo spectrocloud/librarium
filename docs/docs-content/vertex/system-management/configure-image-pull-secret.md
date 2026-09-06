@@ -128,3 +128,13 @@ self-hosted Palette.
   version="Palette VerteX"
   helm="vertex"
 />
+
+## Monitor Propagation of the Image Pull Secret {#monitor-propagation}
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-monitor-propagation"
+  edition="vertex"
+  version="Palette VerteX"
+  helm="vertex"
+/>
