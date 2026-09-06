@@ -16,7 +16,7 @@ This page provides troubleshooting guidance for common scenarios you might encou
 <!-- vale off -->
 
 This scenario affects a limited set of environments that upgrade the `virtual-machine-orchestrator` pack from a version
-earlier than 4.10.0. It occurs only where the cluster already carries VMO RBAC objects that lack Helm ownership
+earlier than 4.10.x. It occurs only where the cluster already carries VMO RBAC objects that lack Helm ownership
 metadata, which is why the same upgrade succeeds on most clusters.
 
 The pack now corrects this state on its own. It ships an `rbac-adopt` pre-upgrade hook that stamps the required Helm
@@ -406,7 +406,7 @@ Leave the namespace field empty for cluster-scoped objects, such as `ClusterRole
 2. Confirm that the pack reconciles without the `invalid ownership metadata` error. The pack transitions through the
    reconcile cycle before it reports a healthy status.
 
-Perform this procedure only once. After the cluster runs pack version 4.10.0 or later, the RBAC objects carry Helm
+Perform this procedure only once. After the cluster runs pack version 4.10.x or later, the RBAC objects carry Helm
 ownership metadata, and later upgrades are unaffected.
 
 If the upgrade fails again with the same error, compare the release name and namespace you used against the output of

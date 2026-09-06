@@ -153,10 +153,6 @@ tags: ["release-notes"]
   [Monitor Propagation of the Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md#monitor-propagation)
   for more information.
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.10.11 are now
-  available.
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11115 -->
@@ -249,7 +245,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.0 Palette release is 4.10.3.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.13 Palette release is 4.10.3.
 
 :::
 
@@ -488,7 +484,7 @@ troubleshooting scenario.
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.0 Palette release is
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.13 Palette release is
 4.10.3. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
@@ -603,7 +599,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Deprecations and Removals
 
-- The Ingress Nginx pack is disabled in Palette 4.10.0. You can no longer create new cluster profiles that include the
+- The Ingress Nginx pack is disabled in Palette 4.10.13. You can no longer create new cluster profiles that include the
   pack. Existing profiles that already contain it continue to launch new clusters, and running workloads are unaffected.
   The pack was deprecated in Palette 4.8.0, following the Kubernetes project's
   [retirement of ingress-nginx](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). The pack remains

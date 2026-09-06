@@ -98,7 +98,7 @@ more information about EdgeForge and site user data, refer to
 
    :::
 
-   Starting with Palette version 4.10.0, the landing page signposts whether the Edge host has a login user configured
+   Starting with Palette version 4.10.13, the landing page signposts whether the Edge host has a login user configured
    for the OS and Local UI:
 
    - If no login user exists, the landing page displays the yellow warning **Setup required: press F2 to create login

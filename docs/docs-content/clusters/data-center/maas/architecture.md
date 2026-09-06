@@ -93,7 +93,7 @@ When you configure **SSH Keys** on a MAAS cluster's cloud configuration, Palette
 This applies to clusters that use the following distributions:
 
 - Palette eXtended Kubernetes (PXK)
-- Canonical Kubernetes (CK8s), from Palette 4.10.0 onward
+- Canonical Kubernetes (CK8s)
 - HyperShift host clusters, which are PXK MAAS clusters and inherit the same behavior
 
 Configuring **SSH Keys** through Palette does not remove or modify default or existing users on the MAAS node image, for
@@ -117,7 +117,7 @@ When you configure **NTP Servers** on a MAAS cluster's cloud configuration, Pale
 plane and worker node in the cluster. This applies to clusters that use the following distributions:
 
 - Palette eXtended Kubernetes (PXK)
-- Canonical Kubernetes (CK8s), from Palette 4.10.0 onward
+- Canonical Kubernetes (CK8s)
 - HyperShift host clusters, which are PXK MAAS clusters and inherit the same behavior
 
 The servers you specify replace the NTP configuration that MAAS provides to the node. We recommend specifying at least

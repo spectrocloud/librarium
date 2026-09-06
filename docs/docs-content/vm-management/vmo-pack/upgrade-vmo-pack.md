@@ -2,7 +2,7 @@
 sidebar_label: "Upgrade the VMO Pack"
 title: "Upgrade the VMO Pack"
 description:
-  "Learn what changes in the Virtual Machine Orchestrator pack at version 4.10.0, and how to upgrade an existing
+  "Learn what changes in the Virtual Machine Orchestrator pack at version 4.10.x, and how to upgrade an existing
   cluster."
 icon: " "
 hide_table_of_contents: false
@@ -10,12 +10,12 @@ sidebar_position: 50
 tags: ["vmo", "vmo pack", "oidc"]
 ---
 
-The Virtual Machine Orchestrator (VMO) pack changed its management component at pack version 4.10.0.
+The Virtual Machine Orchestrator (VMO) pack changed its management component at pack version 4.10.x.
 
 - **Pack versions 4.9.x and earlier** build the VM management experience on the `spectro-vm-dashboard` component, known
   as the VM Dashboard, which is derived from the OpenShift console bridge.
 
-- **Pack versions 4.10.0 and later** replace that component with the purpose-built VMO Manager service. VMO Manager is
+- **Pack versions 4.10.x and later** replace that component with the purpose-built VMO Manager service. VMO Manager is
   the same service that powers the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
 
 <!-- prettier-ignore-start -->
@@ -25,7 +25,7 @@ so you upgrade by changing the pack version in your add-on cluster profile.
 
 <!-- prettier-ignore-end -->
 
-This page describes what changes at pack version 4.10.0, what you must configure that has no equivalent in earlier
+This page describes what changes at pack version 4.10.x, what you must configure that has no equivalent in earlier
 versions, and how to perform the upgrade.
 
 ## Limitations
@@ -38,7 +38,7 @@ versions, and how to perform the upgrade.
 
 ## What Changes
 
-| **Area**                | **Pack 4.9.x and Earlier**                                        | **Pack 4.10.0 and Later**                                                                                 |
+| **Area**                | **Pack 4.9.x and Earlier**                                        | **Pack 4.10.x and Later**                                                                                 |
 | ----------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Management service      | `spectro-vm-dashboard`                                            | `vmo-manager`                                                                                             |
 | Values layout           | Settings sit directly under `charts.virtual-machine-orchestrator` | Manager settings move to the `charts.virtual-machine-orchestrator.vmo-manager` sub-chart                  |
@@ -78,7 +78,7 @@ The following items have no equivalent in 4.9.x and earlier. Plan for them befor
 Use the following table to move an existing configuration by hand. All paths in the second column are relative to
 `charts.virtual-machine-orchestrator`.
 
-| **4.9.x and Earlier**                      | **4.10.0 and Later**                                                                                                                    |
+| **4.9.x and Earlier**                      | **4.10.x and Later**                                                                                                                    |
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `appConfig.auth.oidc.clientID`             | `vmo-manager.oidc.clientId`                                                                                                             |
 | `appConfig.auth.oidc.clientSecret`         | `vmo-manager.oidc.clientSecret`, rendered into a Secret                                                                                 |
@@ -88,7 +88,7 @@ Use the following table to move an existing configuration by hand. All paths in 
 | `snapshotController.installCRDs`           | Removed. Set `snapshot-controller.enabled` to `false` when your Container Storage Interface (CSI) supplies its own snapshot components. |
 | `pack.cdi.privateRegistry.*`               | `cdi.privateRegistry.*`                                                                                                                 |
 
-The `appConfig.auth.oidc.callbackUrl` and `appConfig.auth.oidc.scopes` parameters have no equivalent in 4.10.0 and
+The `appConfig.auth.oidc.callbackUrl` and `appConfig.auth.oidc.scopes` parameters have no equivalent in 4.10.x and
 later. Remove them. Earlier versions ignored both.
 
 ## Prerequisites
@@ -126,7 +126,7 @@ later. Remove them. Earlier versions ignored both.
 5. _(Third-party OIDC only)_ Rotate the OIDC client secret in your IdP and generate a new one on the same application.
    Do not revoke the old secret yet.
 
-6. In the profile layer, change the pack version to 4.10.0 or later.
+6. In the profile layer, change the pack version to 4.10.x or later.
 
 7. Update the values to match the new layout. Refer to [Parameter Mapping](#parameter-mapping),
    [Authentication Options](./authentication-options.md), and [VMO Pack Parameters](./vmo-pack-parameters.md) for the

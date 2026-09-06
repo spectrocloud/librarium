@@ -273,14 +273,14 @@ mode Edge clusters in both connected and airgapped environments.
 
 ### Support Requirements
 
-- **Palette Edge agent 4.10.0** (Stylus) or later on the cluster. When Stylus is pinned to an earlier release, systemd
+- **Palette Edge agent 4.10.13** (Stylus) or later on the cluster. When Stylus is pinned to an earlier release, systemd
   extensions are not available on the cluster regardless of the operating system or Kubernetes pack settings, and the
   cluster falls back to the pre-systemd-extensions behavior.
 - An operating system with **systemd version 255 or later**. Ubuntu 24 and RHEL 10 are the tested and verified operating
   systems, and any operating system with systemd 255 or later is supported. Operating systems on earlier systemd
   versions continue to follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the
   provider image.
-- **CanvOS 4.10.0** or later to build provider images that opt in or out of the extensions path.
+- **CanvOS 4.10.3** or later to build provider images that opt in or out of the extensions path.
 - Palette can deliver all supported Kubernetes variants through systemd extensions.
 
 Unified Kernel Image (UKI) deployments do not support systemd extensions. Refer to
@@ -314,7 +314,7 @@ following steps.
 
 ### Upgrade an Existing Cluster
 
-The first upgrade after adopting CanvOS 4.10.0 requires a provider image that ships the aligned Palette Agent version.
+The first upgrade after adopting CanvOS 4.10.3 requires a provider image that ships the aligned Palette Agent version.
 Subsequent Kubernetes upgrades run without a provider image.
 
 1. Build a provider image with a supported CanvOS release. Set `system.uri: <provider-image>` in the BYOOS pack for the
