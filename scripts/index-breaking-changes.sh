@@ -73,7 +73,9 @@ mkdir -p "$BREAKING_CHANGES_PARTIALS_PATH"
 for branch in $branches; do
   echo "ℹ️ Checking branch: $branch"
   release_notes_path="$RELEASE_NOTES_PATH"
-  if [[ $branch == *version-4-0* || $branch == *version-4-1* ]]; then
+  # Match exact branch names. Unanchored globs would also match version-4-10
+  # and later two-digit minors, routing them to the pre-4.2 release notes path.
+  if [[ $branch == "version-4-0" || $branch == "version-4-1" ]]; then
     release_notes_path="$OLD_RELEASE_NOTES_PATH"
   fi
 
