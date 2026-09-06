@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## September 6, 2026 - Release 4.10.0 {#release-notes-4.10.0}
+## September 6, 2026 - Release 4.10.13 {#release-notes-4.10.0}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3171 -->
 <!-- RELEASE DATE: September 6, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.11 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: NA -->
 <!-- RELEASE ARTIFACT STUDIO: NA -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.0 -->
 
