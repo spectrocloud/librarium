@@ -8,6 +8,7 @@ RELEASE_NOTES_TEMPLATE_FILE="scripts/release/templates/release-notes.md"
 RELEASE_NOTES_HEADING_TEMPLATE_FILE="scripts/release/templates/release-notes-heading.md"
 EDGE_CALLOUT_TEMPLATE_FILE="scripts/release/templates/release-notes-edge-callout.md"
 AUTOMATION_CALLOUT_TEMPLATE_FILE="scripts/release/templates/release-notes-automation-callout.md"
+AUTOMATION_FEATURES_TEMPLATE_FILE="scripts/release/templates/release-notes-automation-features.md"
 RELEASE_NOTES_COMPOSED_FILE="scripts/release/release-notes-composed.md"
 RELEASE_NOTES_PARAMETERISED_FILE="scripts/release/release-notes-output.md"
 RELEASE_NOTES_HEADING_PARAMETERISED_FILE="scripts/release/release-notes-heading-output.md"
@@ -29,20 +30,24 @@ if ! check_env "RELEASE_DATE" ||
     exit 0
 fi
 
-# The Edge and Automation callouts are held in their own templates, because the component versions
-# they name can be bumped again on the day of release and generate-release-notes-callouts.sh has to
-# be able to rewrite them in the published notes afterwards. They are composed into the release
-# notes template here rather than duplicated inline, so each sentence has one definition and the
-# published callout cannot drift from the one a later refresh would write.
+# The component version sections are held in their own templates, because the versions they name can
+# be bumped again on the day of release and generate-release-notes-callouts.sh has to be able to
+# rewrite them in the published notes afterwards. They are composed into the release notes template
+# here rather than duplicated inline, so each sentence has one definition and the published text
+# cannot drift from what a later refresh would write.
 #
-# The composed file still carries the {{RELEASE_*}} placeholders the callout templates use, so the
+# The Automation features region covers only the two provider bullets. Anything a writer adds to
+# that section goes outside the end marker and is left alone by a refresh.
+#
+# The composed file still carries the {{RELEASE_*}} placeholders these templates use, so the
 # substitution pass below fills them along with the rest of the template.
 EDGE_CALLOUT="$(cat "$EDGE_CALLOUT_TEMPLATE_FILE")"
 AUTOMATION_CALLOUT="$(cat "$AUTOMATION_CALLOUT_TEMPLATE_FILE")"
+AUTOMATION_FEATURES="$(cat "$AUTOMATION_FEATURES_TEMPLATE_FILE")"
 
 generate_parameterised_file_local_vars \
     "$RELEASE_NOTES_TEMPLATE_FILE" "$RELEASE_NOTES_COMPOSED_FILE" \
-    EDGE_CALLOUT AUTOMATION_CALLOUT
+    EDGE_CALLOUT AUTOMATION_CALLOUT AUTOMATION_FEATURES
 
 generate_parameterised_file $RELEASE_NOTES_COMPOSED_FILE $RELEASE_NOTES_PARAMETERISED_FILE
 generate_parameterised_file $RELEASE_NOTES_HEADING_TEMPLATE_FILE $RELEASE_NOTES_HEADING_PARAMETERISED_FILE
@@ -55,7 +60,7 @@ if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     echo "ℹ️ Release notes for $RELEASE_NAME have already been generated in $RELEASE_NOTES_FILE"
     replace_line $existing_notes $RELEASE_NOTES_HEADING_PARAMETERISED_FILE $RELEASE_NOTES_FILE
     echo "✅ Replaced release notes heading in $RELEASE_NOTES_FILE"
-    echo "ℹ️ Only the heading is refreshed here, because the rest of the block is hand-written. Run 'make generate-release' to refresh the Edge and Automation component version callouts."
+    echo "ℹ️ Only the heading is refreshed here, because the rest of the block is hand-written. Run 'make generate-release' to refresh the Edge and Automation component versions."
 else
     insert_file_after "<ReleaseNotesVersions />" $RELEASE_NOTES_PARAMETERISED_FILE $RELEASE_NOTES_FILE
     echo "✅ Parameterised release notes inserted into $RELEASE_NOTES_FILE"
