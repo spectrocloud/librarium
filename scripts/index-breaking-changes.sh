@@ -53,11 +53,12 @@ echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
 git fetch --prune --no-tags --depth=1 origin \
   '+refs/heads/version-*:refs/remotes/origin/version-*'
 
-# Get remote version branches (no locals, no HEAD), exclude version-3-4
+# Get remote version branches (no locals, no HEAD), exclude version-3-4. Sort by version so
+# two-digit minors order naturally (version-4-9 before version-4-10, not after version-4-1).
  branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
    | grep -v '^HEAD$' \
    | grep -v '^version-3-4$' \
-   | sort -u)"
+   | sort -V -u)"
 
 # Leave this commented. To be used when doing local testing. 
 # branches="version-4-7 version-4-8"
