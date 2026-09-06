@@ -87,7 +87,7 @@ value and displays it when you add the provider.
 2. From the left main menu, select **Manage realms**. In the realm list, select the `vmo` realm. The admin console opens
    in a different realm by default, so confirm that `vmo` shows as the current realm before you continue.
 
-   ![The Keycloak admin console Manage realms page. The Manage realms item in the left main menu is highlighted, and an arrow points to the vmo realm row in the list, which is labeled Current realm.](/vm-management_vm-launchpad_access-management_oidc-federation_keycloak-manage-realms.webp)
+   ![The Keycloak admin console Manage realms page. The Manage realms item in the left main menu is highlighted, and an arrow points to the VMO realm row in the list, which is labeled Current realm.](/vm-management_vm-launchpad_access-management_oidc-federation_keycloak-manage-realms.webp)
 
 3. From the left main menu, select **Identity providers**.
 
