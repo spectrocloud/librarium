@@ -11,6 +11,24 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 6, 2026 - Release 4.7.48
+
+<!-- PATCH RELEASE TICKET: DOC-3189 -->
+<!-- PATCH RELEASE VERSION: 4.7.48 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11193 -->
+
+- Updated the base Nginx image to version 1.30.2 to improve security and currency.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9011 -->
+
+- Fixed an issue where forced recovery upgrades triggered unexpected version changes by pinning recovery to the
+  currently running Stylus version.
+
 ## July 6, 2026 - Release 4.7.47
 
 <!-- PATCH RELEASE TICKET: DOC-2959 -->
