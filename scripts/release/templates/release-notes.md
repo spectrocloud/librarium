@@ -8,15 +8,7 @@
 
 #### Breaking Changes {#breaking-changes-{{RELEASE_NAME}}}
 
-#### Features
-
-#### Improvements
-
-#### Deprecations and Removals
-
-### Edge
-
-{{EDGE_CALLOUT}}
+#### Upgrade Notes {#upgrade-notes-{{RELEASE_NAME}}}
 
 #### Features
 
@@ -24,33 +16,69 @@
 
 #### Bug Fixes
 
+#### Deprecations and Removals
+
+### Edge
+
+{{EDGE_CALLOUT}}
+
+#### Breaking Changes {#breaking-changes-edge-{{RELEASE_NAME}}}
+
+#### Upgrade Notes {#upgrade-notes-edge-{{RELEASE_NAME}}}
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
 ### VerteX
+
+#### Breaking Changes {#breaking-changes-vertex-{{RELEASE_NAME}}}
+
+#### Upgrade Notes {#upgrade-notes-vertex-{{RELEASE_NAME}}}
 
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the [Palette section](#palette-enterprise-{{RELEASE_NAME}}) for more details.
 
+#### Improvements
+
+#### Bug Fixes
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### VMO Pack
 
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-#### PaletteAI VM Launchpad
+##### Breaking Changes {#breaking-changes-vmo-pack-{{RELEASE_NAME}}}
 
 ##### Features
 
 ##### Improvements
 
 ##### Bug Fixes
+
+##### Deprecations and Removals
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-{{RELEASE_NAME}}}
+
+##### Breaking Changes {#breaking-changes-vm-launchpad-{{RELEASE_NAME}}}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
 
 ### Automation
 
 {{AUTOMATION_CALLOUT}}
+
+#### Breaking Changes {#breaking-changes-automation-{{RELEASE_NAME}}}
 
 #### Features
 
@@ -58,40 +86,21 @@
 
 #### Improvements
 
+#### Bug Fixes
+
+#### Deprecations and Removals
+
 ### Docs and Education
 
 ### Packs
 
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+<!-- prettier-ignore-end -->
+
 #### Pack Notes
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
 
 #### Deprecations and Removals
