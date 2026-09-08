@@ -31,8 +31,9 @@ On ARM64 devices such as the Jetson family, Palette registers the host using
 - [Prepare the Jetson Host](./prepare-jetson-host.md) - Install the software prerequisites and prepare the device so it
   can register with Palette.
 
-<!-- prettier-ignore-end -->
+- [Register a Jetson Host and Serve a Model](./register-jetson-host.md) - Register the device with Palette in agent
+  mode, deploy an Edge Native cluster profile, and serve a local AI model on the device GPU.
 
-<!-- TODO(DOC-3090): add "Register a Jetson host and serve a model" (Day 1) card once that page exists. -->
+<!-- prettier-ignore-end -->
 <!-- TODO(DOC-3091): add "Day 2 operations for Jetson Edge AI" card once that page exists. -->
 <!-- TODO(DOC-3092): add "Run a local AI model on a Jetson at the edge" tutorial card once that page exists. -->
