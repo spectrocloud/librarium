@@ -413,7 +413,7 @@ The following Nginx versions are affected by [CVE-2026-4342](https://github.com/
 
 - **Palette Enterprise and Palette VerteX environments** - All multi-tenant SaaS, dedicated SaaS, self-hosted, and
   appliance-based deployments earlier than version 4.8.40.
-- **Workload Clusters** - All workload clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack with an affected Nginx version.
+- **Workload Clusters** - All workload clusters using the Nginx pack with an affected Nginx version.
 
 <!-- prettier-ignore-end -->
 
@@ -431,7 +431,7 @@ Kubernetes Secrets.
   process. No action is required.
 - **Self-Hosted Deployments** - Palette version 4.8.51 has the fixed version of the `ingress-nginx` controller. Users should update their environments to this version.
 - **Workload Clusters** - Upgrade
-  your workload clusters to use the latest version of the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
+  your workload clusters to use the latest version of the Nginx pack. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
 
 <!-- prettier-ignore-end -->
 
@@ -602,7 +602,7 @@ Palette version 4.8.27 uses Nginx controller version 1.13.7. Refer to the
 
 1. **Workload Clusters**
 
-   - All clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack.
+   - All clusters using the Nginx pack.
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
