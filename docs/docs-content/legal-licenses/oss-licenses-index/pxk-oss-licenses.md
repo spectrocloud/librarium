@@ -137,7 +137,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/containerd/otelttrpc                                                               | v0.1.0                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/platforms                                                               | v1.0.0-rc.4                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/plugin                                                                  | v1.1.0                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| <!-- ROBOT_INFERRED --> github.com/containerd/ttrpc                                           | v1.2.9                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/containerd/ttrpc                                                                   | v1.2.9                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/ttrpc                                                                   | v1.2.7                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/typeurl/v2                                                              | v2.3.0                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/typeurl/v2                                                              | v2.2.3                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -455,7 +455,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | <!-- VERIFIED --> golang.org/x/mod                                                            | v0.37.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | <!-- VERIFIED --> golang.org/x/mod                                                            | v0.36.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | <!-- VERIFIED --> golang.org/x/mod                                                            | v0.35.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
-| <!-- RVERIFIED --> golang.org/x/net                                                           | v0.57.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| golang.org/x/net                                                                              | v0.57.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | <!-- VERIFIED --> golang.org/x/net                                                            | v0.56.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | <!-- VERIFIED --> golang.org/x/net                                                            | v0.55.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | golang.org/x/oauth2                                                                           | v0.36.0                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |

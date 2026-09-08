@@ -21,6 +21,7 @@ is configured, not how to accomplish a task.
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration.                |
 | [Model Upload Reference](./model-upload-reference.md)             | Palette CLI model download and upload flags, and the model metadata file fields.               |
 | [Usage Metrics Reference](./usage-metrics-reference.md)           | Every filter, metric, table column, and export field on the Usage page.                        |
+| [Thinking Directive Modes](./thinking-modes.md)                   | The Thinking directive modes on the Tier map and how each engine treats a token budget.        |
 | [Claude Code Configuration](./claude-code-reference.md)           | Environment variables and values for pointing Claude Code at the appliance.                    |
 | [Cursor Configuration](./cursor-reference.md)                     | Settings and values for pointing Cursor at the appliance.                                      |
 | [OpenAI Codex Configuration](./codex-reference.md)                | Configuration file fields and values for pointing Codex at the appliance.                      |

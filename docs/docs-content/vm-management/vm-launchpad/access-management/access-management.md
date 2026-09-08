@@ -39,3 +39,4 @@ a VMO role, the group mappings determine their effective permissions. Refer to
 | [Access Mapping](./access-mapping.md)   | View the resolved Kubernetes bindings and VMO IAM mappings across every user and group.                        |
 | [API Keys](./api-keys.md)               | Create, use, and revoke self-service API keys for programmatic access.                                         |
 | [LDAP Federation](./ldap-federation.md) | Federate users from an LDAP directory and satisfy the OIDC email claim requirement.                            |
+| [OIDC Federation](./oidc-federation.md) | Federate an external OIDC identity provider, such as Okta, and map its groups to VMO roles.                    |
