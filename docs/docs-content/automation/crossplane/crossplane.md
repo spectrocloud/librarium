@@ -26,6 +26,113 @@ You can use the Palette Crossplane provider to interact with the Palette API and
 Refer to the [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest)
 page for a complete list of managed resources and examples.
 
+### Configure a Custom CA Certificate and Proxy
+
+If your environment requires the Palette Crossplane provider to trust a custom certificate authority (CA) or route API
+calls through a proxy, inject those settings through a `DeploymentRuntimeConfig` resource. The provider mounts the
+certificate and picks up the proxy environment variables at startup, so you do not need to rebuild the provider image.
+
+Set your kubeconfig before running the `kubectl` commands in this procedure.
+
+```bash
+export KUBECONFIG=<path-to-kubeconfig>
+```
+
+1. Store your CA certificate in a `ConfigMap` in the `crossplane-system` namespace, or in the namespace where the
+   provider pod runs.
+
+   ```yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: cert-map
+     namespace: crossplane-system
+   data:
+     cert: |
+       -----BEGIN CERTIFICATE-----
+       <ca-certificate-body>
+       -----END CERTIFICATE-----
+   ```
+
+   Replace `<ca-certificate-body>` with the contents of your CA certificate.
+
+   If preferred, you can use a `Secret` instead of a `ConfigMap`.
+
+2. Create a `DeploymentRuntimeConfig` resource that defines the proxy environment variables and mounts the certificate
+   into the `package-runtime` container of the provider. Omit either the `env` block or the certificate volume if you
+   only need one of the two.
+
+   ```yaml
+   apiVersion: pkg.crossplane.io/v1beta1
+   kind: DeploymentRuntimeConfig
+   metadata:
+     name: palette-provider-runtime
+   spec:
+     deploymentTemplate:
+       spec:
+         selector: {}
+         template:
+           spec:
+             containers:
+               - name: package-runtime
+                 env:
+                   - name: HTTP_PROXY
+                     value: "<http-proxy-url>"
+                   - name: HTTPS_PROXY
+                     value: "<https-proxy-url>"
+                   - name: NO_PROXY
+                     value: "<no-proxy-list>"
+                 volumeMounts:
+                   - mountPath: /etc/ssl/certs/ca-certificates.crt
+                     name: cert-map
+                     subPath: cert
+                     readOnly: true
+                   - name: cache
+                     mountPath: /cache
+             volumes:
+               - name: cert-map
+                 configMap:
+                   name: cert-map
+                   defaultMode: 420
+   ```
+
+   Replace each placeholder as follows.
+
+   - Replace `<http-proxy-url>` with your HTTP proxy URL, for example, `http://proxy.example.com:8080`.
+   - Replace `<https-proxy-url>` with your HTTPS proxy URL.
+   - Replace `<no-proxy-list>` with a comma-separated list of hosts and domains that must bypass the proxy.
+
+   If you used a `Secret` in the previous step, replace the `configMap` block under `volumes` with a `secret` block that
+   references the same name.
+
+3. Reference the `DeploymentRuntimeConfig` from your `Provider` resource by setting `spec.runtimeConfigRef.name`.
+
+   ```yaml
+   apiVersion: pkg.crossplane.io/v1
+   kind: Provider
+   metadata:
+     name: provider-palette
+   spec:
+     package: xpkg.upbound.io/crossplane-contrib/provider-palette:<provider-version>
+     runtimeConfigRef:
+       name: palette-provider-runtime
+   ```
+
+   Replace `<provider-version>` with the Palette Crossplane provider version you want to install. Refer to the
+   [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest) page for
+   available versions.
+
+4. Apply the manifests to your cluster.
+
+   If you defined the resources in three separate manifests, run the following command for each manifest file.
+
+   ```bash
+   kubectl apply --filename <manifest-file>.yaml
+   ```
+
+After the provider pod restarts, the CA certificate is mounted at `/etc/ssl/certs/ca-certificates.crt` and the proxy
+environment variables are available to the provider process.
+
 ## Get Started
 
 You can use the Palette Crossplane Provider to deploy Kubernetes clusters on supported public cloud, data center, and
