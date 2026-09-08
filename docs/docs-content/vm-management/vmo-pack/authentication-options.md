@@ -54,15 +54,19 @@ Palette-managed OIDC is the default and is the recommended option for Palette-ma
 layer of the cluster profile has **Palette** selected as the OIDC identity provider. Refer to
 [Configure OIDC](../rbac/configure_OIDC.md) for guidance on that setting.
 
-| **Setting**                      | **Effective Value**                                                       |
-| -------------------------------- | ------------------------------------------------------------------------- |
-| `oidc.enabled`                   | `true`                                                                    |
-| `palette.enabled`                | `true`                                                                    |
-| `palette.managedOidc`            | `true`                                                                    |
-| Issuer, client, callback, scopes | Injected by Palette into `appConfig.auth.oidc.*` when the cluster deploys |
+| **Setting**            | **Effective Value**                                                       |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `oidc.enabled`         | `true`                                                                    |
+| `palette.enabled`      | `true`                                                                    |
+| `palette.managedOidc`  | `true`                                                                    |
+| Issuer, client, scopes | Injected by Palette into `appConfig.auth.oidc.*` when the cluster deploys |
+| Callback URL           | Derived by VMO from `platform.baseUrl` (`<BASE_URL>/auth/callback`)       |
 
-Because Palette injects the OIDC configuration at deploy time, the values match the OIDC flags that the cluster's
-Kubernetes API server was started with. You do not need to select a preset or enter any values for this to work.
+Palette injects `oidc.issuerUrl`, `oidc.clientId`, `oidc.clientSecret`, and `oidc.scopes` at deploy time, so the values
+match the OIDC flags that the cluster's Kubernetes API server was started with. `oidc.callbackUrl` is derived
+automatically from `platform.baseUrl` (VMO uses `<platform.baseUrl>/auth/callback`), so you do not need to set it
+yourself either. A profile with no Alternative Authentication preset selected deploys with Palette-managed OIDC out of
+the box.
 
 :::info
 
@@ -170,6 +174,12 @@ You must set the following parameters in the pack YAML yourself, because they ar
 | `oidc.callbackUrl`  | The callback URL. Set this only when the UI is behind a proxy and the default `<baseUrl>/auth/callback` is not reachable. |
 | `platform.baseUrl`  | The URL that users reach the UI at. Required in **Direct** mode.                                                          |
 
+The following parameter is optional and applies to specific deployment scenarios.
+
+| **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `oidc.k8sNotFederated` | Defaults to `false`. Set to `true` when the Kubernetes API server is not federated with the same OIDC issuer as VMO. Refer to [Configure Non-Federated Kubernetes API Servers](./configure-external-oidc.md#configure-non-federated-kubernetes-api-servers) for the behavior it changes and the security trade-off. |
+
 Refer to [Configure External OIDC](./configure-external-oidc.md) for a complete procedure that uses Okta as the example
 IdP.
 
@@ -234,11 +244,32 @@ ones.
 
 ## Troubleshooting
 
+### Scenario - Preset Save Fails with Undefined Variables
+
+Selecting the **Keycloak** or **External OIDC** preset in the **Alternative Authentication** group can fail to save with
+an error similar to the following.
+
+```text hideClipboard title="Example error"
+An error occurred while trying to update the profiles. Pack 'virtual-machine-orchestrator' has variables 'spectro.var.PLATFORM_IP,spectro.var.KEYCLOAK_ADMIN_PASSWORD,spectro.var.KEYCLOAK_ADMIN_CLIENT_SECRET,spectro.var.OIDC_CLIENT_SECRET' undefined
+```
+
+Each preset templates `spectro.var.*` references into the pack YAML that expect matching profile variables on the
+cluster profile. If the profile does not define one of them, the preset fails to render. Define every profile variable
+named in the error before selecting the preset again. Refer to [Profile Variables](#profile-variables) for the full list
+each preset requires. Set the variable to any non-empty string even when you do not intend to use it (for example,
+`KEYCLOAK_ADMIN_PASSWORD` when local authentication stays off).
+
 ### Scenario - OIDC Sign-in Fails
 
 Verify that `oidc.issuerUrl`, `oidc.clientId`, `oidc.clientSecret`, and `oidc.callbackUrl` are all populated. The
 callback URL must match the redirect URI registered with your IdP and must be reachable from the user's browser. Confirm
 that `platform.baseUrl` matches the URL that users enter in the browser.
+
+If the UI reads **Authentication service unavailable** rather than redirecting to the IdP, the OIDC provider failed to
+initialize because the pack has no issuer URL. Refer to
+[Authentication Service Unavailable at Sign-in](./configure-external-oidc.md#scenario---authentication-service-unavailable-at-sign-in)
+for the fix, which typically involves setting `palette.managedOidc: false` and populating the `oidc.*` values explicitly
+when the IdP is external.
 
 ### Scenario - No One Can Sign In After Selecting an Option
 

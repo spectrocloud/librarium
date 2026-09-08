@@ -78,6 +78,17 @@ You can change the password of an OS user through Local UI, through the terminal
 [TUI](../../site-deployment/site-installation/initial-setup.md) prompts for a password change when the password is
 expired and is not intended as the primary method for updating passwords.
 
+:::info
+
+Password quality rules are enforced by Pluggable Authentication Modules (PAM) on the Edge host and are configured when
+the image is built. Local UI, the TUI, and the Palette API all change passwords as root, and PAM exempts root from
+password quality checks by default. Unless the image sets the PAM `enforce_for_root` option, a password that does not
+meet your policy is accepted through these interfaces without a visible warning, even though the same password is
+rejected when a non-root user runs `passwd`. Refer to
+[Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) for how to configure PAM policies.
+
+:::
+
 :::warning
 
 If you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from Local

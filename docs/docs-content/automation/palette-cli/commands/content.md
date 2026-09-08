@@ -488,17 +488,49 @@ information on how to upload content bundles to Edge hosts.
 palette content upload [flags] [host]
 ```
 
+The upload is chunked, resumable, and parallel by default. The CLI splits the source into chunks and uploads them
+concurrently over multiple connections, which shortens transfer times for large bundles on links with a high
+bandwidth-delay product. Every chunk is verified with SHA-256 as it arrives.
+
+If an upload is interrupted, running the same command again resumes it instead of restarting. The Edge host is the
+authority on what it already holds, so the CLI validates its saved session against the host before trusting it. If the
+source file changed or the host expired the session, the CLI discards the record and starts a fresh upload.
+
+The `--legacy` flag forces the earlier single-stream upload. The CLI also falls back to it automatically when the Edge
+host is too old to accept chunked uploads, so a newer CLI continues to work against an older host.
+
+#### Flags
+
 The following flags are supported by the `upload` subcommand.
 
-| Short Flag | Long Flag          | Description                                                                                                                                                          | Type   |
-| ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-|            | `--cluster-export` | The cluster definition `.tgz` file to be uploaded. You can only upload a cluster definition if a content bundle is not being uploaded in the same command execution. | string |
-| `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                                                                  | string |
-| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                                                    | -      |
-| `-p`       | `--port`           | The Edge host target port. The default port is `5082`.                                                                                                               | string |
-|            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`.                               | string |
+| Short Flag | Long Flag          | Description                                                                                                                                                                                                                                 | Type   |
+| ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+|            | `--ca`             | The CA certificate file used to verify the Edge host. Use this instead of `--insecure` when you want the host's certificate verified.                                                                                                       | string |
+|            | `--chunk-size`     | The chunk size in MiB for a chunked upload. The default is `64`.                                                                                                                                                                            | int    |
+|            | `--cluster-export` | Upload a cluster-export package rather than a core content bundle. The file itself is still supplied with `--file`. The default is `false`.                                                                                                 | bool   |
+|            | `--connections`    | The number of parallel upload connections for a chunked upload. The default is `8`. Values above `32` are capped at `32`, and the CLI logs that it capped them.                                                                             | int    |
+| `-f`       | `--file`           | The file path of the content bundle to be uploaded. Use either `--file` or `--src-url`, not both.                                                                                                                                           | string |
+|            | `--full-verify`    | Verify the whole-file SHA-256 end to end. Per-chunk SHA-256 is always verified, so this adds a full pass over the source before the upload starts. The default is `false`.                                                                  | bool   |
+| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                                                                                                                           | -      |
+|            | `--insecure`       | Skip TLS verification of the Edge host's self-signed certificate. The default is `true`.                                                                                                                                                    | bool   |
+|            | `--legacy`         | Force the earlier non-chunked single-stream upload. The default is `false`.                                                                                                                                                                 | bool   |
+| `-p`       | `--port`           | The port to reach the Edge host on. The default is `5082`. An Edge host always serves on `5082`, so change this only when you reach it through a remapped port, such as an SSH tunnel, NAT, proxy, or load balancer.                        | string |
+|            | `--resume`         | Resume a prior interrupted upload of the same unchanged source instead of restarting. The default is `true`. Set it to `false` to discard any prior session and start fresh.                                                                | bool   |
+|            | `--signature`      | An optional detached signature file.                                                                                                                                                                                                        | string |
+|            | `--src-url`        | A remote source URL to stream from instead of uploading a local file, such as a public S3 object or one reached through a signed, time-limited URL. The URL must support HTTP range requests. Use either `--file` or `--src-url`, not both. | string |
+|            | `--tls`            | Use TLS, meaning HTTPS. The default is `true`. An Edge host also accepts unencrypted HTTP.                                                                                                                                                  | bool   |
+|            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`.                                                                                                      | string |
 
-#### Example
+#### Resume Records
+
+The CLI records an in-progress upload locally so a later run can resume it. The record is keyed by Edge host, port, and
+file name, and is stored at **~/.palette/uploads.json**. If a home directory is unavailable, the CLI falls back to
+**.palette-uploads.json** in the system temporary directory.
+
+The record holds a session identifier only, not bundle content. It is best effort: if the CLI cannot read or write it,
+resume is disabled for that run and the upload proceeds from the beginning rather than failing.
+
+#### Examples
 
 The following example uploads the `example-bundle.tar.zst` content bundle to the Edge host at IP address `10.45.67.89`.
 If the content bundle contains an embedded cluster definition, this definition will also be automatically uploaded to
@@ -508,10 +540,26 @@ Local UI.
 palette content upload --file output/example-bundle.tar.zst --token ABC1234566b31221do 10.45.67.89
 ```
 
-```text hideClipboard title="Example Output"
-uploading file example-bundle.tar.zst to appliance
-4.97 GiB / 4.97 GiB [=============================================================] 100.00%
-response: Uploaded content successfully
+The next example streams the bundle straight from a signed S3 URL, so no local copy is needed on the machine running the
+CLI.
+
+```shell
+palette content upload --src-url https://example-bucket.s3.amazonaws.com/example-bundle.tar.zst \
+  --token ABC1234566b31221do 10.45.67.89
+```
+
+The next example raises the parallelism and chunk size for a high-latency, high-bandwidth link, and adds a whole-file
+integrity check.
+
+```shell
+palette content upload --file output/example-bundle.tar.zst --connections 16 --chunk-size 128 --full-verify \
+  --token ABC1234566b31221do 10.45.67.89
+```
+
+The last example forces the earlier single-stream upload.
+
+```shell
+palette content upload --file output/example-bundle.tar.zst --legacy --token ABC1234566b31221do 10.45.67.89
 ```
 
 After the upload, the content bundle can be viewed in [Local UI](../../../clusters/edge/local-ui/local-ui.md) under the
