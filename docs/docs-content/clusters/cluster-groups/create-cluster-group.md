@@ -32,7 +32,7 @@ Downstream consumers can use the cluster group when using Palette in
 <!-- prettier-ignore -->
 - If the cluster group will contain Edge clusters, provide the capability to support a load balancer or ingress endpoint for the cluster group.You can use
   solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
-  <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types
+  Nginx in your cluster profile to support these types
   of endpoints.
 
 ## Enablement
