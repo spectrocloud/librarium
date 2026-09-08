@@ -784,7 +784,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated and should no longer be used to provision new clusters. We recommend using an alternative ingress controller, such as <VersionedLink text="Kgateway" url="/integrations/packs/?pack=kgateway" /> or <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />.
+- The Nginx pack is now deprecated and should no longer be used to provision new clusters. We recommend using an alternative ingress controller, such as <VersionedLink text="Kgateway" url="/integrations/packs/?pack=kgateway" /> or <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />.
 
 <!-- prettier-ignore-end -->
 
@@ -2998,7 +2998,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Use the Kgateway pack as an alternative. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
+- The Nginx pack is now deprecated. Use the Kgateway pack as an alternative. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
 
 <!-- prettier-ignore-end -->
 
