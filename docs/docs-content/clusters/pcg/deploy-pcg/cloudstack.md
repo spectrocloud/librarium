@@ -7,20 +7,11 @@ sidebar_position: 50
 tags: ["pcg", "cloudstack"]
 ---
 
-:::preview
-
-This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
-is supported in self-hosted Palette only.
-
-:::
-
 This guide provides you with the steps to deploy a Palette Cloud Gateway (PCG) cluster to an Apache CloudStack
 environment using KVM as the hypervisor. Before you begin the installation, carefully review the
 [Prerequisites](#prerequisites) section.
 
 ## Prerequisites
-
-- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   page for guidance.
