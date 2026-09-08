@@ -235,8 +235,7 @@ locally rather than by a cloud provider.
 
 The runtime that loads a model and serves its requests behind the model's endpoint. It determines how a model runs,
 which hardware it can use, and which serving features are available. The appliance selects an engine automatically by
-default. Refer to [Inference Engines](../explanation/inference-engines.md) for the supported kinds, such as
-[vLLM](#vllm), SGLang, Ollama, and llama.cpp.
+default. [vLLM](#vllm) is the only supported kind. Refer to [Inference Engines](../explanation/inference-engines.md).
 
 ### Intelligent Routing
 
@@ -570,6 +569,6 @@ model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) a
 
 ### vLLM
 
-An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is one of the
-GPU-serving engines the appliance can run, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the
-Kubernetes cluster.
+An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is the GPU-serving
+engine the appliance currently runs, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the Kubernetes
+cluster.

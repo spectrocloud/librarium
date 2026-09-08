@@ -15,7 +15,7 @@ on:
         description: "Palette patch release version, for example 4.9.48. Use a placeholder such as 4.9.x while it is undecided. Empty takes the version from the candidates JQL."
         required: false
       component_updates:
-        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the two fields below are ignored."
+        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the fields below are ignored."
         required: false
         type: boolean
         default: false
@@ -23,7 +23,13 @@ on:
         description: "nickfury branch or tag holding those versions, for example release-4.9 or v4.9.47-rc.2. Empty records the versions as PENDING."
         required: false
       palette_cli_sha:
-        description: "Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        description: "Linux AMD64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
+      palette_cli_arm64_sha:
+        description: "Linux ARM64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
+      palette_cli_macos_sha:
+        description: "macOS ARM64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
         required: false
 
 env:
@@ -87,6 +93,8 @@ jobs:
           PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
           NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
           PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
+          PATCH_PALETTE_CLI_ARM64_SHA: ${{ github.event.inputs.palette_cli_arm64_sha }}
+          PATCH_PALETTE_CLI_MACOS_SHA: ${{ github.event.inputs.palette_cli_macos_sha }}
           PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
         run: |
           touch .env

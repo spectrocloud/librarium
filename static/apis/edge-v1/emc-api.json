@@ -150,6 +150,12 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "Internal server error",
             "schema": {
@@ -490,6 +496,12 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           },
           "500": {
@@ -3549,6 +3561,52 @@
         ]
       }
     },
+    "/v1/eula": {
+      "get": {
+        "description": "Returns the agreement shipped on this host along with whether it still has to be accepted. Hosts that ship no agreement report required false with empty text. Cannot fail - the agreement is compiled into the build and an unusable acceptance record is treated as no acceptance.",
+        "tags": [
+          "eula"
+        ],
+        "summary": "Returns the EULA state for this host",
+        "operationId": "V1EulaGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Eula"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Records acceptance of the agreement currently shipped on this host. Takes no body - the accepted text is read server side. Idempotent, an existing record for the same text keeps its original timestamp.",
+        "tags": [
+          "eula"
+        ],
+        "summary": "Records acceptance of the EULA shipped on this host",
+        "operationId": "V1EulaAccept",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Eula"
+            }
+          },
+          "409": {
+            "description": "This build ships no agreement, so there is nothing to accept",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      }
+    },
     "/v1/ping": {
       "get": {
         "description": "Ping Service",
@@ -5152,8 +5210,13 @@
           "type": "string"
         },
         "selectable": {
-          "description": "True if the operator may add this disk to the data volume group.",
-          "type": "boolean"
+          "description": "True if the operator may add this disk to the data volume group. Always present.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "selectableReason": {
+          "description": "Why the disk is not selectable, e.g. \"already a member of volume group \\\"data\\\"\". Empty when selectable is true.",
+          "type": "string"
         },
         "serial": {
           "description": "Disk serial number. Human-readable fallback identifier.",
@@ -5575,7 +5638,7 @@
           "format": "int32"
         },
         "skipK8sUpgrade": {
-          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version\n",
+          "description": "Controls whether this worker pool is upgraded along with the Control Plane.\n- enabled: The pool keeps its current Kubernetes version, so the Control Plane may not be upgraded to more than 3 minor versions ahead of it\n- disabled: The pool is upgraded to match the Control Plane Kubernetes version, so no version skew limit applies\n",
           "type": "string",
           "enum": [
             "enabled",
@@ -5627,6 +5690,27 @@
           "type": "string"
         },
         "ref": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Eula": {
+      "description": "End user license agreement state for this host",
+      "type": "object",
+      "properties": {
+        "acceptedAt": {
+          "description": "Time at which the currently shipped text was accepted. Null when it has never been accepted, including when a previously accepted agreement has since changed",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "required": {
+          "description": "Whether the agreement must be presented and accepted before proceeding. Always present. True only when this host ships an agreement whose text differs from the text last accepted here",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "text": {
+          "description": "The agreement text currently shipped on this host, empty when none ships. Returned even when acceptance is not required, so it stays viewable afterwards",
           "type": "string"
         }
       }
@@ -6847,8 +6931,9 @@
           "type": "string"
         },
         "mountPoint": {
-          "description": "Primary mount point, empty if the partition is not mounted.",
-          "type": "string"
+          "description": "Primary mount point, \"\" if the partition is not mounted. Always present.",
+          "type": "string",
+          "x-omitempty": false
         },
         "name": {
           "description": "Kernel device name, e.g. \"vda1\".",
@@ -7049,6 +7134,14 @@
         },
         "clusterPreviouslyProvisioned": {
           "description": "True if this appliance has been provisioned into a cluster in the past (regardless of whether that cluster still exists). Used by Local UI to distinguish Day-1 install from post-deletion redeploy — set once on first successful cluster provisioning and preserved across reset.\n",
+          "type": "boolean"
+        },
+        "eulaPresent": {
+          "description": "True when the uploaded content shipped an end user license agreement. False on a host that has had no content uploaded, or content that carries no agreement — the Slim ISO is shared with non-appliance use cases, so this is what identifies a licensed appliance.\n",
+          "type": "boolean"
+        },
+        "eulaSigned": {
+          "description": "True when the agreement currently on the host has been accepted. Reverts to false when a content upload revises the wording, since the accepted text is compared verbatim. Local UI ends the session and presents the agreement when eulaPresent is true and this is false.\n",
           "type": "boolean"
         },
         "featureFlags": {
@@ -7589,6 +7682,10 @@
     {
       "name": "edge-mgmt",
       "x-displayName": "Edge Mgmt"
+    },
+    {
+      "name": "eula",
+      "x-displayName": "Eula"
     },
     {
       "name": "ping",

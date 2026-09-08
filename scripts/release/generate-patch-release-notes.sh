@@ -31,11 +31,22 @@ NICKFURY_VERSIONS_PATH="release/spectro_versions.txt"
 MATRIX_CANVOS_COLUMN=2
 MATRIX_PALETTE_CLI_COLUMN=3
 DOWNLOADS_SHA_COLUMN=4
-# Markers written in place of a value that is not known yet. Each names what is missing, so a
-# reviewer can see which cells still need filling and can grep the docs for "PENDING".
-PENDING_VERSION="VERSION PENDING"
-PENDING_URL="URL PENDING"
-PENDING_SHA="SHA PENDING"
+# PENDING_VERSION, PENDING_URL, and PENDING_SHA are the markers written in place of a value that
+# is not known yet. They come from scripts/release/utilities.sh, because the scripts this one hands
+# them off to write the rows that carry them.
+#
+# The Palette CLI ships one binary per supported architecture, and the CLI Tools table gives each
+# its own tab. Every entry below carries the display name used in prompts and log output, the
+# variables generate-downloads.sh reads for that architecture's checksum and download URL, the URL
+# suffix under https://software.spectrocloud.com/palette-cli/v<version>/, the marker anchoring that
+# architecture's tab in the CLI Tools table, and the variable a caller can set to supply the
+# checksum without being prompted. ARCHES in scripts/release/generate-downloads.sh mirrors this
+# list, so a new architecture has to be added in both places.
+PALETTE_CLI_ARCHES=(
+  "Linux AMD64|RELEASE_PALETTE_CLI_SHA|RELEASE_PALETTE_CLI_URL|linux/cli/palette|palette-cli-version-table|PATCH_PALETTE_CLI_SHA"
+  "Linux ARM64|RELEASE_PALETTE_CLI_ARM64_SHA|RELEASE_PALETTE_CLI_ARM64_URL|linux-arm64/cli/palette|palette-cli-linux-arm64-table|PATCH_PALETTE_CLI_ARM64_SHA"
+  "macOS ARM64|RELEASE_PALETTE_CLI_MACOS_SHA|RELEASE_PALETTE_CLI_MACOS_URL|darwin-arm64/cli/palette|palette-cli-macos-arm64-table|PATCH_PALETTE_CLI_MACOS_SHA"
+)
 
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
@@ -184,6 +195,22 @@ fi
 RELEASE_CANVOS=""
 RELEASE_PALETTE_CLI_VERSION=""
 
+# Reports whether a checksum was supplied for any architecture, so an unattended run can infer that
+# component versions are wanted and an attended one can flag a value that its answers will ignore.
+any_patch_cli_sha_supplied() {
+  local spec override_var
+
+  for spec in "${PALETTE_CLI_ARCHES[@]}"; do
+    override_var=$(printf '%s' "$spec" | cut -d'|' -f6)
+
+    if [[ -n "${!override_var:-}" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 # The second question decides whether there is any component work to do. A patch release often
 # ships the same CanvOS and Palette CLI as the release before it, in which case none of the
 # component pages should be touched and the run is only about the release notes body.
@@ -201,7 +228,7 @@ elif [[ -t 0 ]]; then
   else
     COMPONENT_UPDATES=false
   fi
-elif [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+elif [[ -n "${NICKFURY_REF:-}" ]] || any_patch_cli_sha_supplied; then
   COMPONENT_UPDATES=true
 else
   COMPONENT_UPDATES=false
@@ -212,7 +239,7 @@ if [[ "$COMPONENT_UPDATES" == false ]]; then
 
   # A branch, tag, or checksum supplied alongside a "no" answer is a mismatch worth naming, because
   # the workflow form makes it easy to fill those fields in and leave the tick box clear.
-  if [[ -n "${NICKFURY_REF:-}" || -n "${PATCH_PALETTE_CLI_SHA:-}" ]]; then
+  if [[ -n "${NICKFURY_REF:-}" ]] || any_patch_cli_sha_supplied; then
     echo "⚠️  A branch or tag, or a checksum, was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
   fi
 elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
@@ -403,64 +430,78 @@ if [[ "$COMPONENT_UPDATES" == true && "$CANVOS_CHANGED" == false && "$PALETTE_CL
   echo "ℹ️  CanvOS ($RELEASE_CANVOS) and the Palette CLI ($RELEASE_PALETTE_CLI_VERSION) are unchanged from the documented versions, so no Edge or Automation notes are added."
 fi
 
-# The downloads table also needs the binary's checksum, which nickfury does not carry. A checksum
-# only ever matches one build, so the RELEASE_PALETTE_CLI_SHA that .env holds for the current named
-# release is deliberately ignored here: pairing it with a different Palette CLI version would
-# publish a checksum that does not verify. PATCH_PALETTE_CLI_SHA is the override for this script.
-RELEASE_PALETTE_CLI_SHA="${PATCH_PALETTE_CLI_SHA:-}"
+# The downloads table also needs each binary's checksum, which nickfury does not carry. A checksum
+# only ever matches one build, so the RELEASE_PALETTE_CLI_*_SHA values that .env holds for the
+# current named release are deliberately ignored here: pairing one with a different Palette CLI
+# version would publish a checksum that does not verify. Every architecture's variable is therefore
+# resolved and exported below, even when this run has no value for it, so that nothing reaches
+# generate-downloads.sh from .env by default.
+for spec in "${PALETTE_CLI_ARCHES[@]}"; do
+  IFS='|' read -r arch_name sha_var url_var url_suffix table_anchor override_var <<< "$spec"
 
-RELEASE_PALETTE_CLI_URL=""
+  arch_sha=""
+  arch_url=""
 
-if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
-  # A pending version names no binary, so there is nothing to ask for or to download.
-  if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
-    if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
-      echo "ℹ️  The SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION is published in ReTool. Look it up there."
-      read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " RELEASE_PALETTE_CLI_SHA
-    fi
+  if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
+    arch_sha="${!override_var:-}"
 
-    # Deriving it streams the binary, which is around 400 MB, so it is opt-in rather than the
-    # fallback. The helper checks that the binary is published first, so an unreleased version
-    # costs one request rather than a transfer that cannot succeed.
-    if [[ "$RELEASE_PALETTE_CLI_SHA" == "derive" ]]; then
-      RELEASE_PALETTE_CLI_SHA=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION") || RELEASE_PALETTE_CLI_SHA=""
-    fi
-
-    if [[ -n "$RELEASE_PALETTE_CLI_SHA" && ! "$RELEASE_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
-      echo "⚠️  '$RELEASE_PALETTE_CLI_SHA' is not a SHA256 checksum, so it is ignored." >&2
-      RELEASE_PALETTE_CLI_SHA=""
-    fi
-
-    RELEASE_PALETTE_CLI_URL="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/linux/cli/palette"
-  fi
-
-  # The row is still written when the checksum or the version is unknown, so the entry exists and
-  # only its pending cells need filling once the binary is published. A checksum this release
-  # already records is kept, for the same reason the versions above are, since a re-run that simply
-  # skips the checksum prompt should not discard one that was found earlier.
-  if [[ -z "$RELEASE_PALETTE_CLI_SHA" ]]; then
-    EXISTING_PALETTE_CLI_SHA=$(get_table_cell_for_release \
-      "$DOWNLOADS_FILE" "$DOWNLOADS_SHA_COLUMN" "$RELEASE_PATCH")
-
-    if [[ "$EXISTING_PALETTE_CLI_SHA" =~ ^[0-9a-f]{64}$ ]]; then
-      echo "⚠️  $RELEASE_PATCH already records a Palette CLI checksum, and this run has none." >&2
-
-      if confirm "   Replace it with '$PENDING_SHA'?" n; then
-        RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-      else
-        RELEASE_PALETTE_CLI_SHA="$EXISTING_PALETTE_CLI_SHA"
-        echo "ℹ️  Keeping the recorded checksum."
+    # A pending version names no binary, so there is nothing to ask for or to download.
+    if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
+      if [[ -z "$arch_sha" && -t 0 ]]; then
+        echo "ℹ️  The SHA256 checksum for the $arch_name Palette CLI $RELEASE_PALETTE_CLI_VERSION binary is published in ReTool. Look it up there."
+        read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " arch_sha
       fi
-    else
-      RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-      echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+
+      # Deriving it streams the binary, which runs to several hundred megabytes, so it is opt-in
+      # rather than the fallback. The helper checks that the binary is published first, so an
+      # unreleased version costs one request rather than a transfer that cannot succeed.
+      if [[ "$arch_sha" == "derive" ]]; then
+        arch_sha=$(fetch_palette_cli_sha "$RELEASE_PALETTE_CLI_VERSION" "$url_suffix") || arch_sha=""
+      fi
+
+      if [[ -n "$arch_sha" && ! "$arch_sha" =~ ^[0-9a-f]{64}$ ]]; then
+        echo "⚠️  '$arch_sha' is not a SHA256 checksum, so it is ignored for $arch_name." >&2
+        arch_sha=""
+      fi
+
+      arch_url="https://software.spectrocloud.com/palette-cli/v${RELEASE_PALETTE_CLI_VERSION}/${url_suffix}"
+    fi
+
+    # The row is still written when the checksum or the version is unknown, so the entry exists and
+    # only its pending cells need filling once the binary is published. A checksum this release
+    # already records is kept, for the same reason the versions above are, since a re-run that
+    # simply skips the checksum prompt should not discard one that was found earlier. The lookup is
+    # scoped to this architecture's tab, because each tab records a different checksum for the same
+    # release.
+    if [[ -z "$arch_sha" ]]; then
+      existing_arch_sha=$(get_table_cell_for_release \
+        "$DOWNLOADS_FILE" "$DOWNLOADS_SHA_COLUMN" "$RELEASE_PATCH" "$table_anchor")
+
+      if [[ "$existing_arch_sha" =~ ^[0-9a-f]{64}$ ]]; then
+        echo "⚠️  $RELEASE_PATCH already records a $arch_name Palette CLI checksum, and this run has none." >&2
+
+        if confirm "   Replace it with '$PENDING_SHA'?" n; then
+          arch_sha="$PENDING_SHA"
+        else
+          arch_sha="$existing_arch_sha"
+          echo "ℹ️  Keeping the recorded $arch_name checksum."
+        fi
+      else
+        arch_sha="$PENDING_SHA"
+        echo "ℹ️  No $arch_name checksum given, so its CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+      fi
+    fi
+
+    if [[ -z "$arch_url" ]]; then
+      arch_url="$PENDING_URL"
     fi
   fi
 
-  if [[ -z "$RELEASE_PALETTE_CLI_URL" ]]; then
-    RELEASE_PALETTE_CLI_URL="$PENDING_URL"
-  fi
-fi
+  # generate-downloads.sh reads these by name, one pair per architecture.
+  printf -v "$sha_var" '%s' "$arch_sha"
+  printf -v "$url_var" '%s' "$arch_url"
+  export "$sha_var" "$url_var"
+done
 
 # Fetch issues
 ISSUE_RESPONSE=$(curl -s --fail-with-body \
@@ -682,8 +723,7 @@ if [[ "$CANVOS_CHANGED" == true || "$PALETTE_CLI_CHANGED" == true ]]; then
   if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
     ./scripts/release/generate-install-palette-cli.sh
 
-    export RELEASE_PALETTE_CLI_SHA
-    export RELEASE_PALETTE_CLI_URL
+    # The per-architecture checksums and URLs were exported as they were resolved above.
     ./scripts/release/generate-downloads.sh
   fi
 fi

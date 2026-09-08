@@ -28,7 +28,10 @@ New versions of a cluster profile may add or remove layers, contain new pack ver
 
 3. From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
 
-4. Provide the version number using `major.minor.patch` format.
+4. Provide the version number as a [Semantic Versioning](https://semver.org) value, for example `1.2.3` or `1.2.3-rc.1`.
+   Short forms and a leading lowercase `v` are also accepted and are normalized (for example, `1.2` is expanded to
+   `1.2.0` and `v1.2.3` becomes `1.2.3`). Palette rejects malformed strings such as `2.2.2.develop` or `V1.2` (with an
+   uppercase `V`).
 
 5. Click on **Confirm**. Palette displays a versioning successful message.
 
