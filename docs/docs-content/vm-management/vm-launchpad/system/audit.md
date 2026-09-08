@@ -43,6 +43,8 @@ are incorrect and when the OIDC provider is unavailable.
 
 The events table contains the following columns.
 
+<!-- vale Vale.Spelling = NO -->
+
 | **Column**    | **Description**                                                                                       |
 | ------------- | ----------------------------------------------------------------------------------------------------- |
 | **Time**      | Date and time the event occurred.                                                                     |
@@ -52,6 +54,8 @@ The events table contains the following columns.
 | **Name**      | Name of the affected resource.                                                                        |
 | **Namespace** | Namespace of the affected resource. Cluster-level actions display a dash.                             |
 | **Detail**    | Additional context, such as `VM tmp-nad-test patched`.                                                |
+
+<!-- vale Vale.Spelling = YES -->
 
 Select a column heading to sort the table by that column. Select **Refresh** to load the events that VMO has recorded
 since you opened the page.
