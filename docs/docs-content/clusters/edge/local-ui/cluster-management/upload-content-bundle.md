@@ -116,6 +116,18 @@ This page guides you through how to upload a content bundle to an Edge host usin
    palette content upload --file <content-bundle-file-path> --token <edge-host-token> <edge-host-ip>
    ```
 
+   The upload is chunked, resumable, and parallel by default, which shortens transfer times for large bundles. If the
+   transfer is interrupted, issue the same command again and the CLI resumes from the chunks the Edge host already holds
+   instead of restarting. You can tune the transfer with the `--chunk-size` and `--connections` flags, or stream the
+   bundle directly from a signed object store URL with `--src-url` rather than staging a local copy.
+
+   :::info
+
+   If the Edge host predates chunked upload support, the CLI falls back to the earlier single-stream upload
+   automatically. You do not need to pass `--legacy` to reach an older host.
+
+   :::
+
 ### Validate
 
 1. Log in to [Local UI](../host-management/access-console.md#log-in-to-local-ui).

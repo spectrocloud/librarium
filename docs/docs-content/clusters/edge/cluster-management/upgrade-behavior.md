@@ -126,27 +126,42 @@ pack, but if you want to use a different storage pack altogether, we recommend y
 
 ## Decoupled Control Plane and Worker Node Upgrades
 
-Connected (centrally managed) Edge Native clusters support upgrading the control plane independently from worker pools.
-You can enable the **Skip worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes
-upgrade while the control plane advances.
+Edge Native clusters that use Palette eXtended Kubernetes Edge (PXK-E) or Canonical Kubernetes support upgrading the
+control plane independently from worker pools. You can enable the **Skip worker node update (Optional)** toggle on
+individual worker pools to defer their Kubernetes upgrade while the control plane advances. This decouples worker
+upgrades from control plane upgrades, which lets you move the control plane forward, for example to apply a security
+patch, without repaving worker nodes. It also reduces the number of worker upgrades needed to cross several Kubernetes
+minor versions.
 
 :::info
 
-This feature is only available for connected Edge Native clusters. Locally managed Edge clusters are not supported.
+Decoupled control plane and worker node upgrades are supported for PXK-E and Canonical Kubernetes only. K3s and RKE2
+clusters are not supported.
 
 :::
 
-When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
-do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
-current Kubernetes version.
+Support also depends on how the cluster is managed.
 
-Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
-enabling the toggle would cause a worker pool to fall more than three minor versions behind the control plane, Palette
-blocks the upgrade.
+| **Cluster management**        | **Support**                                                              |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| Connected (centrally managed) | Supported. Configure the toggle in Palette.                              |
+| Locally managed, airgapped    | Supported. Configure the toggle in Local UI or through the Local UI API. |
 
-Scale-up is not permitted while the toggle is enabled. Palette rejects scale-up requests on a pool with the toggle
-enabled, whether initiated manually or by the cluster autoscaler. To expand capacity, create a new worker pool and add
-Edge hosts to it instead.
+When a cluster profile update bumps the Kubernetes version, the control plane and any worker pools that do not have
+**Skip worker node update** enabled are upgraded. Worker pools with the toggle enabled are skipped and stay at their
+current Kubernetes version. Control plane nodes are always upgraded to the Kubernetes and OS versions declared in the
+cluster profile, and are upgraded one at a time.
+
+A skipped worker pool can still be updated on Day-2 for other node configuration changes, such as taints and labels. Its
+Kubernetes and OS versions stay unchanged.
+
+The Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/) is enforced. If a profile
+update would push a worker pool more than three minor versions behind the control plane, the update is rejected and the
+profile is not applied to the cluster. Disable the toggle on the affected pools first.
+
+Scale-up is not permitted while the toggle is enabled. Scale-up requests on a pool with the toggle enabled are rejected,
+whether initiated manually or by the cluster autoscaler, because a new node cannot honor the pool's pinned Kubernetes
+version. To expand capacity, create a new worker pool and add Edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 
