@@ -397,7 +397,7 @@ generate-patch-release-notes: ## Generate patch release notes only
 	./scripts/release/generate-patch-release-notes.sh
 	make -s format > /dev/null 2>&1
 
-generate-release: ## Generate all release files except release notes
+generate-release: ## Generate all release files, refreshing the release notes heading and component versions but not the hand-written notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-edge-compatibility-matrix.sh
@@ -406,6 +406,7 @@ generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-kubernetes-palette-versions.sh
 	./scripts/release/generate-pcg-kubernetes-versions.sh
 	./scripts/release/generate-release-notes-callouts.sh
+	REFRESH_ONLY=true ./scripts/release/generate-release-notes.sh
 	make -s format > /dev/null 2>&1
 
 init-release:
