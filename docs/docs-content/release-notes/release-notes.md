@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 8, 2026 - Release 4.10.14
+
+<!-- PATCH RELEASE TICKET: DOC-3193 -->
+<!-- PATCH RELEASE VERSION: 4.10.14 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11942 -->
+
+- Fixed an issue where some OIDC sign-ins failed with an `OidcRedirectUriNotAllowed` error. This affected
+  `kubectl oidc-login` authentication from headless hosts and access to the Virtual Machine Orchestrator (VMO) console.
+
 ## September 6, 2026 - Release 4.10.13 {#release-notes-4.10.0}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3171 -->
