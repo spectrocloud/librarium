@@ -253,10 +253,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7524 -->
 
-- Fixed an issue that caused sustained high CPU usage by the Palette management plane on clusters whose
-  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) included one or more add-on, CNI, or CSI packs.
-  The management plane repeatedly reconciled packs whose configuration had not changed, consuming approximately 1.3 vCPU
-  per affected cluster continuously. Cluster provisioning and pack functionality were not affected.
+- Fixed an issue that caused sustained high CPU usage by the Palette management plane. The management plane repeatedly
+  reconciled packs whose configuration had not changed, consuming approximately 1.3 vCPU per affected cluster
+  continuously. Cluster provisioning and pack functionality were not affected.
 
 ### Edge
 
