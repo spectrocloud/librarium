@@ -414,7 +414,6 @@ init-release:
 	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
 	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
 	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
-	grep -q "^export GITHUB_TOKEN=" .env || echo "# Optional. Read access to the private nickfury repo, used only as a fallback for Edge matrix component versions your .env leaves empty.\nexport GITHUB_TOKEN=" >> .env
 	grep -q "^# RELEASE IDENTITY" .env || echo "\n# RELEASE IDENTITY" >> .env
 	grep -q "^export RELEASE_NAME=" .env || echo "export RELEASE_NAME=" >> .env
 	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
