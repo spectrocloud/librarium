@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Markers written into a documentation table in place of a value that is not known yet. Each names
+# what is missing, so a reviewer can see which cells still need filling and can grep the docs for
+# "PENDING". They live here because the script that decides a value is pending and the scripts that
+# write the rows are not the same script, and a marker that differs between them would publish a
+# cell that no later run recognises as still pending.
+PENDING_VERSION="VERSION PENDING"
+PENDING_URL="URL PENDING"
+PENDING_SHA="SHA PENDING"
+
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
 # $1 - template file, input file
@@ -166,6 +175,23 @@ search_line() {
     echo "$line_number"
 }
 
+# Utility function to search for a line within a bounded section of a target file. The scan
+# starts after the first line containing the anchor and stops at the first "</TabItem>", so
+# the same row anchor can exist in more than one tabbed table and each table stays searchable
+# in isolation. Prints the 1-based line number of the first match, or nothing when the needle
+# is not present between the anchor and the terminator. All matches are literal.
+# Params:
+# $1 - anchor whose line opens the search window, example: palette-cli-linux-arm64-table
+# $2 - literal needle to find after the anchor, example: cli-4.10.0 -->
+# $3 - target file to search
+search_line_after() {
+    awk -v anchor="$1" -v needle="$2" '
+      !found && index($0, anchor) { found = 1; next }
+      found && index($0, "</TabItem>") { exit }
+      found && index($0, needle) { print NR; exit }
+    ' "$3"
+}
+
 # Utility function to replace a line with a source file
 # Params: 
 # $1 - line number to replace
@@ -193,6 +219,60 @@ replace_line() {
   mv "$tmp_file" "$target_file"
 }
 
+# Utility function to replace an inclusive region of a target file, delimited by a start and an end
+# marker, with the contents of a source file. Used to refresh a managed block of prose that a
+# re-run has to rewrite in full, such as a release note callout naming a component version that was
+# bumped on the day of release.
+#
+# A region rather than a single line, because Prettier reflows prose to 120 columns: the Automation
+# callout in the release notes runs past that and is published across two lines, so a replacement
+# keyed on one line would rewrite half a sentence.
+#
+# Both markers are matched literally, and nothing is changed unless both are present and the end
+# marker follows the start marker, so a half-marked block is left alone rather than mangled. The
+# markers themselves sit inside the region and are re-rendered from the template with it, which is
+# what lets the same region be replaced again on the next run.
+# Params:
+# $1 - literal start marker, example: <!-- release-notes-edge-callout-4.10.0-start -->
+# $2 - literal end marker, example: <!-- release-notes-edge-callout-4.10.0-end -->
+# $3 - source file whose contents replace the region, its own markers included
+# $4 - target file
+# Returns 0 if the region was replaced, 1 if it was not found.
+replace_region() {
+    local start_marker="$1"
+    local end_marker="$2"
+    local source_file="$3"
+    local target_file="$4"
+    local start_line end_line tmp_file
+
+    [[ -f "$target_file" ]] || return 1
+
+    start_line=$(search_line "$start_marker" "$target_file")
+    end_line=$(search_line "$end_marker" "$target_file")
+
+    if [[ -z "$start_line" || -z "$end_line" || "$end_line" -le "$start_line" ]]; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v start_line="$start_line" -v end_line="$end_line" -v source_file="$source_file" '
+      NR == start_line {
+        while ((getline line < source_file) > 0) {
+          print line
+        }
+        close(source_file)
+        next
+      }
+
+      NR > start_line && NR <= end_line { next }
+
+      { print }
+    ' "$target_file" > "$tmp_file"
+
+    mv "$tmp_file" "$target_file"
+}
+
 # Utility function to remove a file
 # Params:
 # $1 - file name
@@ -200,13 +280,18 @@ cleanup() {
     rm $1
 }
 
-# Utility function to delete the first line of a file that contains a literal string. Used to drop
+# Utility function to delete every line of a file that contains a literal string. Used to drop
 # a table row that a later run has superseded, for example a placeholder row keyed on a release
 # version that has since been confirmed. Does nothing when no line matches.
+#
+# Every match is removed rather than only the first, because a row anchor can appear once per
+# tabbed table. The CLI Tools table carries one tab per Palette CLI architecture, so a superseded
+# release has a row under each, and leaving the later ones behind would strand placeholder rows in
+# every tab but the first.
 # Params:
 # $1 - literal search term, example: edge-compat-4.9.x -->
 # $2 - target file
-# Returns 0 if a line was removed, 1 if nothing matched.
+# Returns 0 if at least one line was removed, 1 if nothing matched.
 remove_line_containing() {
     local search="$1"
     local file="$2"
@@ -219,7 +304,7 @@ remove_line_containing() {
     tmp_file="$(mktemp)"
 
     awk -v search="$search" '
-      !removed && index($0, search) { removed = 1; next }
+      index($0, search) { next }
       { print }
     ' "$file" > "$tmp_file"
 
@@ -300,28 +385,39 @@ normalize_super_body() {
     rm -f "$stripped_file" "$formatted_file"
 }
 
-# Utility function to fetch a single file's raw contents from a (private) GitHub
-# repository at a given ref, using a token-based REST call. Writes the raw file
-# body to stdout. Requires the GITHUB_TOKEN environment variable.
+# Utility function to report whether the GitHub CLI can read a private Spectro Cloud repository.
+# Reading component versions from nickfury is always optional: it saves looking a version up by
+# hand, and every caller falls back to the values already in .env when it is not available. So this
+# is a capability check rather than a requirement, and a writer without the CLI is told what to set
+# up rather than being stopped.
+#
+# The CLI is used in place of a personal access token in .env, because Spectro Cloud issues
+# short-lived GitHub credentials through Bulwark rather than long-lived tokens. `gh` holds that
+# credential itself, and in CI it reads the token the workflow exports, so neither case needs a
+# token recorded in a file.
+github_cli_ready() {
+    command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1
+}
+
+# Utility function to fetch a single file's raw contents from a (private) GitHub repository at a
+# given ref, through the GitHub CLI. Writes the raw file body to stdout.
 # Params:
 # $1 - repository, example: spectrocloud/nickfury
 # $2 - ref (branch, tag, or SHA), example: v4.9.21
 # $3 - file path within the repo, example: release/spectro_versions.txt
+# Returns 1 if the CLI is unavailable or the file cannot be read.
 fetch_github_file() {
     local repo="$1"
     local ref="$2"
     local path="$3"
 
-    if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-        echo "🟠 GITHUB_TOKEN is empty or not set; cannot fetch $repo/$path." >&2
+    if ! github_cli_ready; then
+        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and run 'gh auth login' to look component versions up automatically." >&2
         return 1
     fi
 
-    curl -sfL \
-        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-        -H "Accept: application/vnd.github.raw" \
-        -H "X-GitHub-Api-Version: 2022-11-28" \
-        "https://api.github.com/repos/${repo}/contents/${path}?ref=${ref}"
+    gh api "repos/${repo}/contents/${path}?ref=${ref}" \
+        --header "Accept: application/vnd.github.raw" 2>/dev/null
 }
 
 # Utility function to read a "key=value" line from text on stdin and return the
@@ -386,19 +482,26 @@ get_documented_table_version() {
 # see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
 # deliberately skips that row to find the previous release instead.
 # Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+#
+# A file can hold more than one release table, for example the CLI Tools table that carries a tab
+# per Palette CLI architecture. Pass the marker that anchors a particular table's heading row to
+# read that table rather than the first one in the file.
 # Params:
 # $1 - Markdown file to read
 # $2 - 1-based column number to return
 # $3 - the release whose row to read, example: 4.9.x
+# $4 - optional marker anchoring the table to read, example: palette-cli-linux-arm64-table.
+#      Defaults to the first release table in the file.
 get_table_cell_for_release() {
     local file="$1"
     local column="$2"
     local release="$3"
+    local anchor="${4:-Palette Release}"
 
     [[ -f "$file" ]] || return 0
 
-    awk -v column="$column" -v want="$release" '
-      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+    awk -v column="$column" -v want="$release" -v anchor="$anchor" '
+      !in_table && /^\|/ && index($0, "Palette Release") && index($0, anchor) { in_table = 1; next }
       !in_table { next }
 
       # Skip the separator row between the heading and the data rows.
@@ -430,29 +533,44 @@ get_table_cell_for_release() {
 
 # Utility function to derive the SHA256 checksum of a published Palette CLI binary by
 # hashing it as it downloads, so the checksum column in the downloads table does not have
-# to be transcribed by hand. The binary is around 400 MB and is never written to disk.
+# to be transcribed by hand. The binary is never written to disk. Sizes run from around
+# 300 MB to around 600 MB depending on the architecture, so the transfer is reported from
+# the Content-Length the availability check already returns rather than estimated.
 #
 # An unpublished version returns HTTP 403 with a short XML body, which would otherwise be
 # hashed into a plausible looking but wrong checksum, so the status code is checked before
 # the digest is trusted.
 # Params:
 # $1 - Palette CLI version, example: 4.9.19
+# $2 - optional URL suffix naming the architecture to hash, example: linux-arm64/cli/palette.
+#      Defaults to the Linux AMD64 binary.
 # Writes the checksum to stdout. Returns 1 if the binary is not available.
 fetch_palette_cli_sha() {
     local version="$1"
-    local url="https://software.spectrocloud.com/palette-cli/v${version}/linux/cli/palette"
-    local status digest
+    local suffix="${2:-linux/cli/palette}"
+    local url="https://software.spectrocloud.com/palette-cli/v${version}/${suffix}"
+    local headers status bytes size_note digest
 
     # Confirm the binary is published before downloading it, so a 403 response body is
-    # never hashed into a plausible looking but wrong checksum.
-    status=$(curl -sS --head --write-out '%{http_code}' --output /dev/null "$url" || echo "000")
+    # never hashed into a plausible looking but wrong checksum. The status code is appended
+    # to the headers so one request yields both it and the size reported below.
+    headers=$(curl -sS --head --write-out '\n%{http_code}' "$url" 2>/dev/null || printf '\n000')
+    status=$(printf '%s' "$headers" | tail -n 1)
 
     if [[ "$status" != "200" ]]; then
         echo "🟠 Palette CLI $version is not available at $url (HTTP $status)." >&2
         return 1
     fi
 
-    echo "ℹ️  Downloading Palette CLI $version to derive its checksum. This transfers around 400 MB..." >&2
+    bytes=$(printf '%s' "$headers" | tr -d '\r' | awk 'tolower($1) == "content-length:" { print $2 }' | tail -n 1)
+
+    if [[ "$bytes" =~ ^[0-9]+$ ]]; then
+        size_note="around $((bytes / 1048576)) MB"
+    else
+        size_note="several hundred megabytes"
+    fi
+
+    echo "ℹ️  Downloading $url to derive its checksum. This transfers $size_note..." >&2
 
     # shasum is the macOS spelling and sha256sum the usual Linux one, so accept either.
     if command -v shasum >/dev/null 2>&1; then
@@ -462,7 +580,7 @@ fetch_palette_cli_sha() {
     fi
 
     if [[ ! "$digest" =~ ^[0-9a-f]{64}$ ]]; then
-        echo "🟠 Could not derive a checksum for Palette CLI $version." >&2
+        echo "🟠 Could not derive a checksum for $url." >&2
         return 1
     fi
 

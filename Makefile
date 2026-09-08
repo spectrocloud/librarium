@@ -397,7 +397,7 @@ generate-patch-release-notes: ## Generate patch release notes only
 	./scripts/release/generate-patch-release-notes.sh
 	make -s format > /dev/null 2>&1
 
-generate-release: ## Generate all release files except release notes
+generate-release: ## Generate all release files, refreshing the release notes heading and component versions but not the hand-written notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-edge-compatibility-matrix.sh
@@ -405,29 +405,41 @@ generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
 	./scripts/release/generate-pcg-kubernetes-versions.sh
+	./scripts/release/generate-release-notes-callouts.sh
+	REFRESH_ONLY=true ./scripts/release/generate-release-notes.sh
 	make -s format > /dev/null 2>&1
 
 init-release:
-	grep -q "^# RELEASE NOTES" .env || echo "\n# RELEASE NOTES" >> .env
+	grep -q "^# CREDENTIALS AND TOKENS" .env || echo "\n# CREDENTIALS AND TOKENS" >> .env
+	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
+	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
+	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
+	grep -q "^# RELEASE IDENTITY" .env || echo "\n# RELEASE IDENTITY" >> .env
 	grep -q "^export RELEASE_NAME=" .env || echo "export RELEASE_NAME=" >> .env
 	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
+# The first three variables under COMPONENT VERSIONS are the ones `make generate-release-notes`
+# requires, alongside the three under RELEASE IDENTITY. Keep them at the top of the group so the
+# writer can fill in everything that target needs without reading past the checksums. Do not
+# alphabetise this group.
+	grep -q "^# COMPONENT VERSIONS" .env || echo "\n# COMPONENT VERSIONS" >> .env
 	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
-	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_ARM64_SHA=" .env || echo "export RELEASE_PALETTE_CLI_ARM64_SHA=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_MACOS_SHA=" .env || echo "export RELEASE_PALETTE_CLI_MACOS_SHA=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^# KUBERNETES REQUIREMENTS" .env || echo "\n# KUBERNETES REQUIREMENTS" >> .env
 	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
 	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "export RELEASE_VMWARE_OVA_URL=" >> .env
 	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "export RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
 	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "export RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
 	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "export RELEASE_PCG_KUBERNETES_VERSION=" >> .env
-	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
-	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
-	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
-	grep -q "^export GITHUB_TOKEN=" .env || echo "export GITHUB_TOKEN=" >> .env
+	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
+	grep -q "^export RELEASE_MANAGEMENT_APPLIANCE=" .env || echo "export RELEASE_MANAGEMENT_APPLIANCE=" >> .env
+	grep -q "^export RELEASE_ARTIFACT_STUDIO=" .env || echo "export RELEASE_ARTIFACT_STUDIO=" >> .env
 	grep -q "^# UPGRADE PATHS" .env || echo "\n# UPGRADE PATHS" >> .env
 	grep -q "^export CONFLUENCE_BASE_URL=" .env || echo "export CONFLUENCE_BASE_URL=https://spectrocloud.atlassian.net" >> .env
 	grep -q "^export CONFLUENCE_PAGE_ID=" .env || echo "export CONFLUENCE_PAGE_ID=2087419998" >> .env

@@ -130,3 +130,13 @@ self-hosted Palette.
   version="Palette"
   helm="palette"
 />
+
+## Monitor Propagation of the Image Pull Secret {#monitor-propagation}
+
+<PartialsComponent
+  category="self-hosted"
+  name="image-pull-secret-monitor-propagation"
+  edition="palette"
+  version="Palette"
+  helm="palette"
+/>

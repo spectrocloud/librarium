@@ -6,13 +6,6 @@ hide_table_of_contents: false
 tags: ["data center", "cloudstack"]
 ---
 
-:::preview
-
-This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
-is supported in self-hosted Palette only.
-
-:::
-
 Palette supports using [Apache CloudStack](https://cloudstack.apache.org/) as a data center provider. You can deploy
 Kubernetes clusters to your CloudStack environment using Palette.
 

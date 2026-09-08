@@ -26,6 +26,8 @@ VMO records the following actions.
 | Resource lifecycle | `create`, `update`, `delete`                         |
 | VM operations      | `start`, `stop`, `restart`, `migrate`, `restore`     |
 | Access control     | `grant`, `revoke`                                    |
+| Log forwarding     | `logging.forwarding.toggled`                         |
+| Metrics forwarding | `monitoring.splunk_hec.toggled`                      |
 
 Authentication events cover both OIDC and local user accounts. VMO records a `login-failed` event when the credentials
 are incorrect and when the OIDC provider is unavailable.
@@ -41,6 +43,8 @@ are incorrect and when the OIDC provider is unavailable.
 
 The events table contains the following columns.
 
+<!-- vale Vale.Spelling = NO -->
+
 | **Column**    | **Description**                                                                                       |
 | ------------- | ----------------------------------------------------------------------------------------------------- |
 | **Time**      | Date and time the event occurred.                                                                     |
@@ -50,6 +54,8 @@ The events table contains the following columns.
 | **Name**      | Name of the affected resource.                                                                        |
 | **Namespace** | Namespace of the affected resource. Cluster-level actions display a dash.                             |
 | **Detail**    | Additional context, such as `VM tmp-nad-test patched`.                                                |
+
+<!-- vale Vale.Spelling = YES -->
 
 Select a column heading to sort the table by that column. Select **Refresh** to load the events that VMO has recorded
 since you opened the page.
@@ -118,4 +124,6 @@ VMO deletes audit events that are older than 30 days and runs the cleanup once p
 audit data bounded without any action on your part.
 
 If you need to keep audit records beyond the retention window, forward them to an external Security Information and
-Event Management (SIEM) system or log aggregator before they expire.
+Event Management (SIEM) system or log aggregator before they expire. Refer to [Metrics and Logs](../metrics-and-logs.md)
+for how to record central log collection with the **Log Forwarding** toggle and how the OpenTelemetry Collector delivers
+appliance logs, which carry the audit records, to Splunk.
