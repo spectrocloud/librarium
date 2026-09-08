@@ -1,4 +1,4 @@
-## {{RELEASE_DATE}} - Release {{RELEASE_VERSION}} {#release-notes-{{RELEASE_NAME}}}
+{{RELEASE_HEADING}}
 
 ### Security Notices
 
