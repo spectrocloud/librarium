@@ -139,17 +139,9 @@ fi
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
 echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 
-# Reading nickfury needs a token that can see a private repository. Resolve it quietly here and
-# report on it only if the component versions are actually wanted, so a run that has none to record
-# never mentions nickfury at all.
-#
-# GITHUB_TOKEN comes from .env for a local run and from the workflow environment in CI. When it is
-# absent, fall back to the token the GitHub CLI already holds, which is usually signed in to the
-# organisation on a writer's machine.
-if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
-  GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
-  [[ -n "$GITHUB_TOKEN" ]] && export GITHUB_TOKEN
-fi
+# Reading nickfury needs credentials that can see a private repository, which come from the GitHub
+# CLI rather than from a token in .env. Whether the CLI is set up is reported below, and only if the
+# component versions are actually wanted, so a run that has none to record never mentions nickfury.
 
 # The prompts below form a short interview, so only the values that apply to this patch are asked
 # for. Each is skipped when its environment variable is already set, and an unattended run answers
@@ -242,11 +234,11 @@ if [[ "$COMPONENT_UPDATES" == false ]]; then
   if [[ -n "${NICKFURY_REF:-}" ]] || any_patch_cli_sha_supplied; then
     echo "⚠️  A branch or tag, or a checksum, was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
   fi
-elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
+elif ! github_cli_ready; then
+  echo "⚠️  The GitHub CLI is not set up, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Install gh and run 'gh auth login' to look them up, or supply the versions when prompted." >&2
 fi
 
-if [[ "$COMPONENT_UPDATES" == true && -n "${GITHUB_TOKEN:-}" ]]; then
+if [[ "$COMPONENT_UPDATES" == true ]] && github_cli_ready; then
   # The release engineers hand over a branch or a tag, and neither is named after the patch
   # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
   # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather

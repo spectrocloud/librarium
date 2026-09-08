@@ -293,16 +293,17 @@ page.
 
 #### Issue Tracker and Super API
 
-| **Environment Variable** | **Description**                                                                               | **Example Value**       |
-| ------------------------ | --------------------------------------------------------------------------------------------- | ----------------------- |
-| `JIRA_EMAIL`             | Issue tracker email.                                                                          | `name@spectrocloud.com` |
-| `JIRA_API_TOKEN`         | Issue tracker API token.                                                                      | `XXX`                   |
-| `SUPER_API_TOKEN`        | Super API token.                                                                              | `XXX`                   |
-| `GITHUB_TOKEN`           | _(Optional)_ GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
+| **Environment Variable** | **Description**          | **Example Value**       |
+| ------------------------ | ------------------------ | ----------------------- |
+| `JIRA_EMAIL`             | Issue tracker email.     | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Issue tracker API token. | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
-`GITHUB_TOKEN` is only needed to look up component versions. Set it in your `.env` file, the same as the other tokens.
-When it is not set, the scripts fall back to the token the GitHub CLI already holds, so a machine that has run
-`gh auth login` against the organisation needs no `.env` entry at all. The scripts say which of the two they used.
+Looking component versions up from the private `spectrocloud/nickfury` repository is optional, and needs no token in
+your `.env` file. The scripts read it through the [GitHub CLI](https://cli.github.com), so a machine that has run
+`gh auth login` against the organisation can look versions up, and one that has not is told so and falls back to the
+values you set yourself. Spectro Cloud issues short-lived GitHub credentials through Bulwark rather than long-lived
+personal access tokens, so authenticate the CLI with one of those rather than storing a token.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
