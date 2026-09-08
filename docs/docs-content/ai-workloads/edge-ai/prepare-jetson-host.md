@@ -66,6 +66,18 @@ sudo apt-get install --yes --no-install-recommends \
 
 Enable the required systemd services.
 
+<!-- VERIFY(DOC-3089): Confirmed on the Thor over SSH on 2026-09-08 — running `systemctl enable --now systemd-networkd` severed the SSH session because the interface was managed by another network stack. Validate the exact guidance (pre-configure networkd vs. require console access, and which manager JetPack ships by default) on a clean rebuild before publishing. -->
+
+:::warning
+
+If you are connected to the Jetson device over SSH, enabling `systemd-networkd` might interrupt your session. Bringing
+up `systemd-networkd` can take over the network interfaces that another network manager, such as NetworkManager or
+`ifupdown`, currently controls, which drops your connection. Before you enable `systemd-networkd` on a remote host,
+confirm that you have console access to the device, or configure `systemd-networkd` with your network settings first so
+the interface stays up.
+
+:::
+
 ```shell
 sudo systemctl enable --now systemd-timesyncd
 sudo systemctl enable --now systemd-resolved
