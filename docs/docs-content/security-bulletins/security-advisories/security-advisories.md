@@ -59,7 +59,7 @@ Palette version 4.6.49 uses Nginx controller version 1.13.7. Refer to the
 
 1. **Workload Clusters**
 
-   - All clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack.
+   - All clusters using the Nginx pack.
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
