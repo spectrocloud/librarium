@@ -57,10 +57,13 @@ jobs:
             branches="$INPUT_BRANCH"
           else
             # List remote release branches matching version-X-Y. This intentionally excludes
-            # backport/version-* and other version-suffixed branches.
+            # backport/version-* and other version-suffixed branches. sort -V orders the
+            # branches by version number rather than lexicographically, so version-4-10 is
+            # triggered after version-4-9 instead of between version-4-1 and version-4-2.
             branches=$(git ls-remote --heads origin 'version-*' \
               | sed 's#.*refs/heads/##' \
-              | grep -E '^version-[0-9]+-[0-9]+$' || true)
+              | grep -E '^version-[0-9]+-[0-9]+$' \
+              | sort -V || true)
           fi
 
           if [ -z "$branches" ]; then
