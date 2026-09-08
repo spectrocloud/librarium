@@ -44,7 +44,7 @@ permissions:
 env:
   NODE_VERSION: "24"
   # Pinned Impersonaid commit (private repo, no tags). Bump deliberately.
-  IMPERSONAID_REF: "045c608c9bc9d6e773cf688d1638a8428104990d" # spectrocloud/impersonaid main, last bumped 2026-08-03
+  IMPERSONAID_REF: "44a10bcb8974fbd9d4fd8b40a020a1a513e9f704" # spectrocloud/impersonaid main, last bumped 2026-09-07
 
 concurrency:
   group: persona-check-${{ github.event.pull_request.number || github.event.issue.number }}
