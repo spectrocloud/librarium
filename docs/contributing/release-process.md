@@ -293,12 +293,12 @@ page.
 
 #### Issue Tracker and Super API
 
-| **Environment Variable** | **Description**                                                                  | **Example Value**       |
-| ------------------------ | -------------------------------------------------------------------------------- | ----------------------- |
-| `JIRA_EMAIL`             | Issue tracker email.                                                             | `name@spectrocloud.com` |
-| `JIRA_API_TOKEN`         | Issue tracker API token.                                                         | `XXX`                   |
-| `SUPER_API_TOKEN`        | Super API token.                                                                 | `XXX`                   |
-| `GITHUB_TOKEN`           | GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
+| **Environment Variable** | **Description**                                                                               | **Example Value**       |
+| ------------------------ | --------------------------------------------------------------------------------------------- | ----------------------- |
+| `JIRA_EMAIL`             | Issue tracker email.                                                                          | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Issue tracker API token.                                                                      | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token.                                                                              | `XXX`                   |
+| `GITHUB_TOKEN`           | _(Optional)_ GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
 
 `GITHUB_TOKEN` is only needed to look up component versions. Set it in your `.env` file, the same as the other tokens.
 When it is not set, the scripts fall back to the token the GitHub CLI already holds, so a machine that has run
@@ -314,13 +314,26 @@ run the workflow again.
 
 #### Release Notes
 
-| **Environment Variable**    | **Description**                                       | **Example Value**  |
-| --------------------------- | ----------------------------------------------------- | ------------------ |
-| `RELEASE_NAME`              | The internal release name.                            | `4-7-c`            |
-| `RELEASE_VERSION`           | The external release version.                         | `4.7.6`            |
-| `RELEASE_DATE`              | The date that the release takes place.                | `"March 18, 2025"` |
-| `RELEASE_CANVOS`            | The CanvOS version.                                   | `4.7.13`           |
-| `RELEASE_TERRAFORM_VERSION` | The version of the Terraform and Crossplane provider. | `0.24.5`           |
+| **Environment Variable**      | **Description**                                       | **Example Value**  |
+| ----------------------------- | ----------------------------------------------------- | ------------------ |
+| `RELEASE_NAME`                | The internal release name.                            | `4-7-c`            |
+| `RELEASE_VERSION`             | The external release version.                         | `4.7.6`            |
+| `RELEASE_DATE`                | The date that the release takes place.                | `"March 18, 2025"` |
+| `RELEASE_CANVOS`              | The CanvOS version.                                   | `4.7.13`           |
+| `RELEASE_PALETTE_CLI_VERSION` | The Palette CLI version.                              | `4.7.9`            |
+| `RELEASE_TERRAFORM_VERSION`   | The version of the Terraform and Crossplane provider. | `0.24.5`           |
+
+All six variables are required. `make generate-release-notes` drafts a block that names every one of them, so the target
+fails and writes nothing when any of them is blank. It reports which ones to set. When a component version is not
+settled yet, use the release's own identifier as a placeholder, for example `4.10.0` for the GA or `4.10.a` for a patch
+release in that train. Do not use `4.10.x`, which is too broad to search for and replace on release day.
+
+`make generate-release` needs only `RELEASE_DATE`, `RELEASE_NAME`, and `RELEASE_VERSION`, because it refreshes an
+already-drafted block rather than creating one. That target reports and skips rather than failing, so a blank component
+version leaves the section that names it unchanged.
+
+`RELEASE_PALETTE_CLI_VERSION` also drives the pages listed under [Other Release Updates](#other-release-updates), so it
+is set once and used by both.
 
 #### Component Updates
 
@@ -452,8 +465,13 @@ published, and an unattended run always keeps it.
 
 - `make init-release` creates placeholders for all the release related environment variables in your `.env` file. Use
   the placeholders to fill in the values relevant to the Palette release.
-- `make generate-release-notes` creates only the release notes changes for the Palette release.
-- `make generate-release` creates all Palette release related updates, excluding release notes.
+- `make generate-release-notes` creates only the release notes changes for the Palette release. When the release notes
+  already contain a block for `RELEASE_NAME`, the target refreshes that block's heading and leaves the hand-written
+  content unchanged.
+- `make generate-release` creates all Palette release related updates. It refreshes the current release notes block's
+  heading along with its Edge and Automation component versions, so a `RELEASE_VERSION` or `RELEASE_DATE` value that
+  changes after you draft the notes is corrected in both places. It never creates a block and never alters hand-written
+  content.
 - `make generate-component-updates` creates component updates using the issue tracker API and Super.
 - `make generate-patch-release-notes` creates patch release notes using the issue tracker API and Super, and records any
   CanvOS or Palette CLI version the patch ships. Refer to [Patch Release Notes](#patch-release-notes) for the values it
