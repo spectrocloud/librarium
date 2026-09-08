@@ -100,8 +100,18 @@ appliance sets the default; there is no operator control to change which model i
 An external inference endpoint is a box-wide OpenAI-compatible host that an operator registers so the gateway can route
 tier traffic to it as egress. Each endpoint carries a short **Endpoint id** that becomes the routing prefix. The id
 cannot be changed after registration, and it cannot collide with a built-in frontier provider (`anthropic`, `openai`,
-`gemini`); registration refuses a colliding id. The credential is stored once for the appliance and is never held per
-client, which is why the client drawer shows `box-managed` in place of a per-client key for that row.
+`gemini`); registration refuses a colliding id. The **Endpoint URL** can be an origin or an origin followed by a path
+prefix; the appliance appends the OpenAI-compatible request paths itself, so the URL does not include `/v1`.
+
+The credential for an endpoint is stored once for the appliance and is never held per client, which is why the client
+drawer shows `box-managed` in place of a per-client key for that row. The credential can be an API key, one or more
+custom headers, or both. The appliance sends any custom headers on both the model-catalog probe and every routed
+request.
+
+The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
+connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
+presents on its own inbound console. Header values are stored as secrets, but a CA certificate is not; the appliance
+shows a stored CA certificate in full whenever an operator edits the endpoint.
 
 Disabling or removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at
 that endpoint falls back to the appliance's local serving in flight rather than returning an error. To register a host,
