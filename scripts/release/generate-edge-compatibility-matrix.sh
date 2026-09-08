@@ -67,7 +67,7 @@ palette_cli_source=""
 if [[ -n "${RELEASE_SKIP_NICKFURY:-}" ]]; then
     canvos_source="the calling script"
     palette_cli_source="the calling script"
-elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
+elif github_cli_ready; then
     nickfury_versions="$(fetch_github_file "$NICKFURY_REPO" "$nickfury_ref" "$NICKFURY_VERSIONS_PATH")" || nickfury_versions=""
     if [[ -n "$nickfury_versions" ]]; then
         nf_nickfury="$(printf '%s\n' "$nickfury_versions" | get_keyed_value "nickfury")"
@@ -81,7 +81,7 @@ elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
         echo "⚠️  Could not fetch $NICKFURY_VERSIONS_PATH from nickfury@$nickfury_ref, so only the .env values are available."
     fi
 else
-    echo "ℹ️  GITHUB_TOKEN is not set, so nickfury cannot be read and only the .env values are available."
+    echo "ℹ️  The GitHub CLI is not set up, so nickfury cannot be read and only the .env values are available. Install gh and run 'gh auth login' to look component versions up automatically."
 fi
 
 if [[ -z "$canvos_source" ]]; then
