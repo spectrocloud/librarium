@@ -39,20 +39,34 @@ if ! check_env "RELEASE_NAME" ||
     exit 0
 fi
 
-# Source component versions from nickfury's spectro_versions.txt at the release
-# tag. The matrix columns map to nickfury keys as:
+# Resolve the component versions the matrix records. The environment, normally .env, is the
+# authoritative source: `make generate-release` exists so that a version bumped on the day of
+# release can be corrected by editing .env and re-running, and every other page in that run takes
+# its value from there. nickfury's spectro_versions.txt is consulted as a second opinion, and its
+# values fill anything .env does not set, so the script still records a row when a version has not
+# been added to .env yet. The matrix columns map to nickfury keys as:
 #   CanvOS / Stylus / Edge Host -> stylus
 #   Palette CLI Version         -> palette-cli
-# Falls back to any values already present in the environment if GITHUB_TOKEN is
-# unset or the fetch fails, so the script still works without network access.
+#
+# Where both sources have a value and they disagree, .env is used and the difference is reported,
+# because that is usually either a .env that has not caught up with the release or a release tag
+# that does not match the versions being documented, and both are worth seeing.
 #
 # NICKFURY_REF lets a caller that has already resolved a ref pass it in, because a
 # patch release can be documented from a release branch rather than a release tag.
 # RELEASE_SKIP_NICKFURY lets a calling script that has already resolved these versions, or has
 # deliberately recorded them as pending, keep the values it passed in.
 nickfury_ref="${NICKFURY_REF:-v${RELEASE_VERSION}}"
+env_canvos="${RELEASE_CANVOS:-}"
+env_palette_cli="${RELEASE_PALETTE_CLI_VERSION:-}"
+nf_stylus=""
+nf_palette_cli=""
+canvos_source=""
+palette_cli_source=""
+
 if [[ -n "${RELEASE_SKIP_NICKFURY:-}" ]]; then
-    echo "ℹ️  Using the caller-provided Edge matrix versions (RELEASE_CANVOS=$RELEASE_CANVOS, RELEASE_PALETTE_CLI_VERSION=$RELEASE_PALETTE_CLI_VERSION)."
+    canvos_source="the calling script"
+    palette_cli_source="the calling script"
 elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
     nickfury_versions="$(fetch_github_file "$NICKFURY_REPO" "$nickfury_ref" "$NICKFURY_VERSIONS_PATH")" || nickfury_versions=""
     if [[ -n "$nickfury_versions" ]]; then
@@ -63,23 +77,49 @@ elif [[ -n "${GITHUB_TOKEN:-}" ]]; then
         if [[ -n "$nf_nickfury" && "$nf_nickfury" != "$RELEASE_VERSION" ]]; then
             echo "⚠️  nickfury@$nickfury_ref reports version '$nf_nickfury' but RELEASE_VERSION is '$RELEASE_VERSION'."
         fi
-
-        [[ -n "$nf_stylus" ]] && RELEASE_CANVOS="$nf_stylus"
-        [[ -n "$nf_palette_cli" ]] && RELEASE_PALETTE_CLI_VERSION="$nf_palette_cli"
-        echo "ℹ️  Sourced Edge matrix versions from nickfury@$nickfury_ref (stylus=$nf_stylus, palette-cli=$nf_palette_cli)"
     else
-        echo "⚠️  Could not fetch $NICKFURY_VERSIONS_PATH from nickfury@$nickfury_ref; using environment-provided values."
+        echo "⚠️  Could not fetch $NICKFURY_VERSIONS_PATH from nickfury@$nickfury_ref, so only the .env values are available."
     fi
 else
-    echo "ℹ️  GITHUB_TOKEN not set; using environment-provided Edge matrix versions."
+    echo "ℹ️  GITHUB_TOKEN is not set, so nickfury cannot be read and only the .env values are available."
 fi
 
-# Component versions must now be present, whether from nickfury or the environment.
+if [[ -z "$canvos_source" ]]; then
+    if [[ -n "$env_canvos" ]]; then
+        RELEASE_CANVOS="$env_canvos"
+        canvos_source=".env"
+
+        if [[ -n "$nf_stylus" && "$nf_stylus" != "$env_canvos" ]]; then
+            echo "⚠️  .env sets RELEASE_CANVOS to '$env_canvos' but nickfury@$nickfury_ref reports stylus '$nf_stylus'. The .env value is used."
+        fi
+    elif [[ -n "$nf_stylus" ]]; then
+        RELEASE_CANVOS="$nf_stylus"
+        canvos_source="nickfury@$nickfury_ref"
+    fi
+fi
+
+if [[ -z "$palette_cli_source" ]]; then
+    if [[ -n "$env_palette_cli" ]]; then
+        RELEASE_PALETTE_CLI_VERSION="$env_palette_cli"
+        palette_cli_source=".env"
+
+        if [[ -n "$nf_palette_cli" && "$nf_palette_cli" != "$env_palette_cli" ]]; then
+            echo "⚠️  .env sets RELEASE_PALETTE_CLI_VERSION to '$env_palette_cli' but nickfury@$nickfury_ref reports palette-cli '$nf_palette_cli'. The .env value is used."
+        fi
+    elif [[ -n "$nf_palette_cli" ]]; then
+        RELEASE_PALETTE_CLI_VERSION="$nf_palette_cli"
+        palette_cli_source="nickfury@$nickfury_ref"
+    fi
+fi
+
+# Component versions must now be present, from whichever source supplied them.
 if ! check_env "RELEASE_CANVOS" ||
    ! check_env "RELEASE_PALETTE_CLI_VERSION"; then
     echo "‼️  Skipping generate $EDGE_COMPATIBILITY_MATRIX_FILE due to missing component versions. ‼️"
     exit 0
 fi
+
+echo "ℹ️  Edge matrix versions: CanvOS $RELEASE_CANVOS (from $canvos_source), Palette CLI $RELEASE_PALETTE_CLI_VERSION (from $palette_cli_source)."
 
 # The "Palette Edge CLI Status" column is fixed. The Palette Edge CLI is deprecated
 # from Palette 4.9.14 onwards and there will be no further Palette Edge CLI releases,
