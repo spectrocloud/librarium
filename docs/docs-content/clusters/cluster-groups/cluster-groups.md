@@ -42,9 +42,8 @@ clusters in a cluster group, you must consider the following limitations:
 - The cluster group can only support one Edge cluster.
 <!-- prettier-ignore -->
 - You must provide the capability to support a load balancer or ingress endpoint for the cluster group. You can use
-  solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
-  <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types of
-  endpoints.
+  solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and Nginx in your
+  cluster profile to support these types of endpoints.
 
 ## Get Started
 
