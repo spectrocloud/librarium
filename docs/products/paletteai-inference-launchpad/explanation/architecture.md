@@ -136,23 +136,19 @@ Once an operator enables egress, a client can reach two kinds of destination:
 - A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
   operator has added to the appliance.
 
-Egress is not only a destination a client asks for. When the appliance is at capacity, a request that asked for local
-serving can go to an external provider instead, which the **Usage** page reports as capacity spill. Naming a local model
-is therefore not on its own what keeps a prompt on the box.
-
-<!-- vale off -->
-
-{/* NEEDS REVIEW: the Usage page documents a capacity-spill tile, but no source states whether capacity spill honors a client's egress setting. A subject-matter expert should confirm that interaction before this page publishes. */}
-
-<!-- vale on -->
+Egress is not only a destination a client asks for. An operator can arm frontier-model bursting for a client, which
+sends a request that asked for local serving to an external provider once the client exhausts its local quota rather
+than refusing it. Naming a local model is therefore not on its own what keeps a prompt on the box. Bursting is still
+egress and runs through the same permission, so a client that cannot reach an external destination cannot burst to one
+either.
 
 Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
 it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency
 for the whole appliance rather than one client at a time. Refer to
 [Sovereignty and Egress](./clients-and-quotas.md#sovereignty-and-egress).
 
-The **Usage** page reports locally served and off-box traffic as separate figures rather than summing them, so an
-operator can review what share of the total went off the box. Refer to
+The **Usage** page reports what share of traffic stayed on the appliance and what share went off the box, and it pairs
+the two per client rather than summing them into one figure. Refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 The appliance needs no outbound internet access to install or to run day to day, so an appliance on which no client has
