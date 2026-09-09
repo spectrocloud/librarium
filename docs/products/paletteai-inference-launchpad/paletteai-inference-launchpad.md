@@ -75,6 +75,23 @@ appliance identifies callers and meters their usage, refer to [Clients and Quota
 The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
 independently without replacing the entire appliance image.
 
+## Local UI and the Appliance Console
+
+The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Both appear
+throughout this documentation, so check which interface a task belongs to before you begin.
+
+| **Interface**                                                  | **Address**              | **What you do there**                                                              |
+| -------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| [Local UI](./reference/glossary.md#local-ui)                   | `https://<node-ip>:5080` | Install the appliance, upgrade the platform, scale the cluster, and manage nodes.  |
+| [Appliance console](./reference/glossary.md#appliance-console) | `https://<platform-ip>`  | Deploy and replace models, manage clients and quotas, set routing, and view usage. |
+
+The node's own operating system serves Local UI, so it stays reachable when cluster services are not running. Day-one
+install and every day-two infrastructure operation happen there. Refer to
+[Manage Cluster Infrastructure](./how-to-guides/manage-cluster-infrastructure.md) for the full set of Local UI tasks.
+
+The running cluster serves the appliance console at the Platform IP address, so the console becomes available only after
+the cluster is up. Everything that involves models, clients, and request traffic happens there.
+
 ## PaletteAI Inference Launchpad or PaletteAI
 
 PaletteAI Inference Launchpad and [PaletteAI](https://docs.palette-ai.com) are related but distinct products that serve
