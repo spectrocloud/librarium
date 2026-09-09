@@ -89,7 +89,7 @@ The node's own operating system serves Local UI, so it stays reachable when clus
 install and every day-two infrastructure operation happen there. Refer to
 [Manage Cluster Infrastructure](./how-to-guides/manage-cluster-infrastructure.md) for the full set of Local UI tasks.
 
-The running cluster serves the appliance console at the Platform IP address, so the console becomes available only after
+The running cluster serves the appliance console at the platform IP address, so the console becomes available only after
 the cluster is up. Everything that involves models, clients, and request traffic happens there.
 
 ## PaletteAI Inference Launchpad or PaletteAI

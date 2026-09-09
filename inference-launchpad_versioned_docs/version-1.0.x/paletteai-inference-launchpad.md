@@ -89,7 +89,7 @@ The node's own operating system serves Local UI, so it stays reachable when clus
 install happens there. Refer to [Install the Appliance](./how-to-guides/install-the-appliance.md) for the procedure that
 uses it.
 
-The running cluster serves the appliance console at the Platform IP address, so the console becomes available only after
+The running cluster serves the appliance console at the platform IP address, so the console becomes available only after
 the cluster is up. Everything that involves models, clients, and request traffic happens there.
 
 ## PaletteAI Inference Launchpad or PaletteAI
