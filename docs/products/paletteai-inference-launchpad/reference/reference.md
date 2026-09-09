@@ -26,4 +26,4 @@ is configured, not how to accomplish a task.
 | [Cursor Configuration](./cursor-reference.md)                     | Settings and values for pointing Cursor at the appliance.                                      |
 | [OpenAI Codex Configuration](./codex-reference.md)                | Configuration file fields and values for pointing Codex at the appliance.                      |
 | [OpenCode Configuration](./opencode-reference.md)                 | Configuration file fields and values for pointing OpenCode at the appliance.                   |
-| [Known Issues](./known-issues.md)                                 | Known installation issues and their workarounds, including HPE PCI enumeration.                |
+| [Known Issues](./known-issues.md)                                 | Known installation and connection issues and their workarounds, including HPE PCI enumeration. |

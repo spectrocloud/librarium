@@ -2,8 +2,8 @@
 id: known-issues
 title: Known Issues
 description: >
-  Known issues that operators may encounter during PaletteAI Inference Launchpad installation and validation, and the
-  workarounds for each.
+  Known issues that operators may encounter during PaletteAI Inference Launchpad installation and validation, or when
+  they connect a client to the appliance, and the workarounds for each.
 sidebar_label: Known Issues
 sidebar_position: 9
 tags:
@@ -14,8 +14,8 @@ keywords: ["launchpad", "ai", "install", "known issues", "workaround", "troubles
 ---
 
 This page lists the known issues that operators may encounter during installation and validation of the PaletteAI
-Inference Launchpad appliance, and the workaround for each. For the ordered procedure, refer to
-[Install the Appliance](../how-to-guides/install-the-appliance.md).
+Inference Launchpad appliance, or when they connect a client to it, and the workaround for each. For the ordered
+installation procedure, refer to [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
 ## Slim ISO Does Not Boot on a GPU Server
 
@@ -199,6 +199,39 @@ in the current build.
 
 **Workaround.** Use the native model ID (the entry with `owned_by: launchpad-ai`) in every request. For clients that
 hard-code an Anthropic model name, map the alias to the native ID at the client side.
+
+## Codex Cannot Reach an Appliance on a Private Network
+
+**Symptom.** After you create an API token and follow the **Codex** steps in the **Connect a Coding Agent** panel, Codex
+does not reach the appliance. This applies when your machine does not yet trust the certificate the appliance presents.
+
+**Root cause.** The panel generates client configuration only. Codex runs on your own machine and validates TLS
+strictly. Unless you supply your own certificate at install time, the appliance serves a certificate that its own root
+certificate authority (CA) issues, and no public authority trusts that CA, so Codex rejects the connection. Trusting
+that CA is a separate step that happens outside the console, and the panel does not mention it.
+
+**Workaround.** Add the appliance root CA to your machine's trust store, then follow the panel's instructions. For the
+procedure, refer to
+[Use PaletteAI Inference Launchpad with OpenAI Codex: Trust the Appliance Certificate](../how-to-guides/use-codex.md#trust-the-appliance-certificate).
+
+## Cursor Cannot Reach an Appliance on a Private Network
+
+**Symptom.** After you create an API token and follow the **Cursor** steps in the **Connect a Coding Agent** panel,
+Cursor does not reach the appliance. This applies when the appliance sits on a private network that Cursor cannot reach.
+
+**Root cause.** The panel generates client configuration only. Cursor sends model requests from its own cloud servers
+rather than from your machine, so it never reaches an endpoint on a private network. It also does not accept the
+certificate that the appliance's own certificate authority issues, and it offers no way to skip certificate
+verification. The panel does not mention either constraint.
+
+**Workaround.** Expose the appliance inference endpoint through a tunnel that gives it an address Cursor can reach, then
+enter the tunnel address as the base URL in place of the appliance address. The tunnel must present a publicly trusted
+TLS certificate of its own. For the connectivity options Cursor documents for reaching a private network, refer to
+Cursor's [Private Connectivity](https://cursor.com/docs/enterprise/network-configuration#private-connectivity)
+documentation. For the remaining steps, refer to
+[Use PaletteAI Inference Launchpad with Cursor](../how-to-guides/use-cursor.md).
+
+{/* NEEDS REVIEW: the Cursor private connectivity section documents AWS PrivateLink and Cloudflare Tunnel for private source control systems and package registries, not for custom OpenAI-compatible model endpoints. Confirm with an SME which tunnel path Cursor supports for a custom base URL. */}
 
 ## "Model artifacts verified" step remains at "not present" after model loads
 

@@ -66,8 +66,9 @@ appliance's `/v1/models` API response.
 
 ## Requirements
 
-- The appliance must present a valid, publicly trusted TLS certificate on a DNS hostname. Codex validates TLS strictly
-  and cannot skip certificate verification, so a self-signed certificate does not work.
+- The appliance must present a TLS certificate that your machine trusts. Codex validates TLS strictly and cannot skip
+  certificate verification. To trust a certificate that the appliance's own certificate authority issues, refer to
+  [Trust the Appliance Certificate](../how-to-guides/use-codex.md#trust-the-appliance-certificate).
 - The gateway must accept the `developer` message role, which the PaletteAI Inference Launchpad gateway does.
 
 ## Token Quotas

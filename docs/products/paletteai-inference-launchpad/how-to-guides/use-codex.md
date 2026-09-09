@@ -22,8 +22,182 @@ Codex configuration file and confirm the connection.
   refer to [Deploy a Model](./deploy-a-model.md).
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
   token an administrator generated for you.
-- The appliance reachable at a DNS hostname with a valid, publicly trusted TLS certificate. Codex validates TLS strictly
-  and cannot skip certificate verification, so a self-signed certificate does not work.
+- The appliance reachable from your machine at an address whose TLS certificate your machine trusts. Codex validates TLS
+  strictly and cannot skip certificate verification. If your machine does not yet trust the appliance certificate,
+  complete [Trust the Appliance Certificate](#trust-the-appliance-certificate) first.
+
+## Trust the Appliance Certificate
+
+Codex validates TLS strictly and cannot skip certificate verification. Unless your organization supplied a certificate
+when the appliance was installed, the appliance presents a certificate that its own root certificate authority (CA)
+issues, and no public authority trusts that CA. Add the appliance root CA to your system trust store before you
+configure Codex. If your machine already trusts the certificate the appliance presents, skip this section.
+
+Your machine must also reach the appliance address over a VPN or from the same network, because step 1 opens an SSH
+session to the node.
+
+Each command below has a **Linux / macOS** tab (POSIX shell) and a **Windows** tab (PowerShell). Select the tab that
+matches your machine.
+
+1. Copy the appliance root CA to your machine. Replace `<user>` with an SSH user on the node and `<node-ip>` with the
+   node's Host IP.
+
+   <Tabs groupId="os">
+
+   <TabItem label="Linux / macOS" value="unix">
+
+   ```bash
+   mkdir -p ~/.codex
+   ssh <user>@<node-ip> \
+     "sudo kubectl --kubeconfig /etc/kubernetes/admin.conf --namespace cert-manager \
+     get secret lab-root-ca --output jsonpath='{.data.tls\.crt}' | base64 --decode" \
+     > ~/.codex/launchpad-ca.crt
+   ```
+
+   </TabItem>
+
+   <TabItem label="Windows" value="windows">
+
+   ```powershell
+   New-Item -ItemType Directory -Force -Path $HOME\.codex | Out-Null
+   ssh <user>@<node-ip> "sudo kubectl --kubeconfig /etc/kubernetes/admin.conf --namespace cert-manager get secret lab-root-ca --output jsonpath='{.data.tls\.crt}' | base64 --decode" | Out-File -Encoding ascii $HOME\.codex\launchpad-ca.crt
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   The command writes the certificate to a file and prints no output. PowerShell writes UTF-16 by default, which
+   produces a file no certificate tool can read, so the Windows command sets the encoding explicitly.
+
+   If `sudo` on the node requires a password, the command fails with a `sudo: no tty present` error, because it opens no
+   session for you to type one into. Open an SSH session to the node, run the same `sudo kubectl` command there, and
+   save its output to `~/.codex/launchpad-ca.crt` on your machine.
+
+2. Confirm the file holds a certificate.
+
+   <Tabs groupId="os">
+
+   <TabItem label="Linux / macOS" value="unix">
+
+   ```bash
+   grep --max-count=1 "BEGIN CERTIFICATE" ~/.codex/launchpad-ca.crt
+   ```
+
+   </TabItem>
+
+   <TabItem label="Windows" value="windows">
+
+   ```powershell
+   Get-Content $HOME\.codex\launchpad-ca.crt | Select-Object -First 1
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   ```bash hideClipboard title="Expected output"
+   -----BEGIN CERTIFICATE-----
+   ```
+
+   If the command prints nothing, the copy did not succeed. Confirm SSH and sudo access to the node, then run the copy
+   command in step 1 again.
+
+3. Trust the CA. This step runs once per machine.
+
+   :::warning
+
+   Trusting this root makes the appliance CA trusted for every host the machine connects to. Do this only on a machine
+   you control, for an appliance you administer, and remove the certificate when you no longer need it, as described in
+   [Remove the Certificate](#remove-the-certificate).
+
+   :::
+
+   <Tabs groupId="os">
+
+   <TabItem label="Linux / macOS" value="unix">
+
+   On macOS, add the certificate to the system keychain. The command prints no output.
+
+   ```bash
+   sudo security add-trusted-cert -d -r trustRoot \
+     -k /Library/Keychains/System.keychain ~/.codex/launchpad-ca.crt
+   ```
+
+   On Debian and Ubuntu, copy the certificate into the system store and refresh it. On RHEL and its derivatives, copy it
+   to `/etc/pki/ca-trust/source/anchors/` and run `sudo update-ca-trust` instead.
+
+   ```bash
+   sudo cp ~/.codex/launchpad-ca.crt /usr/local/share/ca-certificates/launchpad-ca.crt
+   sudo update-ca-certificates
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   Updating certificates in /etc/ssl/certs...
+   1 added, 0 removed; done.
+   Running hooks in /etc/ca-certificates/update.d...
+   done.
+   ```
+
+   </TabItem>
+
+   <TabItem label="Windows" value="windows">
+
+   Run PowerShell as Administrator, because the machine-wide store is not writable otherwise.
+
+   ```powershell
+   Import-Certificate -FilePath $HOME\.codex\launchpad-ca.crt -CertStoreLocation Cert:\LocalMachine\Root
+   ```
+
+   ```powershell hideClipboard title="Expected output"
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\Root
+
+   Thumbprint                                Subject
+   ----------                                -------
+   9F2A1C7B4D8E30561A2B3C4D5E6F70819A2B3C4D  CN=launchpad-ca
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+{/* NEEDS REVIEW: only the macOS path in step 3 is confirmed by the requester on a real appliance. The Debian, RHEL, and Windows trust-store commands and their sample output are written from each platform's standard mechanism and need verification, including whether Codex reads the platform trust store on Linux and Windows. The certificate subject shown in the Windows output varies by appliance. */}
+
+### Remove the Certificate
+
+When you no longer need the appliance CA, remove it from the trust store.
+
+<Tabs groupId="os">
+
+<TabItem label="Linux / macOS" value="unix">
+
+On macOS, remove the trust setting. The command prints no output.
+
+```bash
+sudo security remove-trusted-cert -d ~/.codex/launchpad-ca.crt
+```
+
+On Debian and Ubuntu, delete the certificate and refresh the store. On RHEL and its derivatives, delete it from
+`/etc/pki/ca-trust/source/anchors/` and run `sudo update-ca-trust` instead.
+
+```bash
+sudo rm /usr/local/share/ca-certificates/launchpad-ca.crt
+sudo update-ca-certificates --fresh
+```
+
+</TabItem>
+
+<TabItem label="Windows" value="windows">
+
+Run PowerShell as Administrator. Replace `<thumbprint>` with the thumbprint reported when you imported the certificate.
+
+```powershell
+Remove-Item -Path Cert:\LocalMachine\Root\<thumbprint>
+```
+
+</TabItem>
+
+</Tabs>
 
 ## Configure Codex
 
@@ -53,7 +227,8 @@ values against the steps below before you save it.
    ```
 
    Set `model` to a model the appliance serves, such as `glm-5.2`. Do not use `auto`, because the Responses API passes
-   the model straight to the engine. Set `base_url` to your appliance address with the `/v1` path appended.
+   the model straight to the engine. Set `base_url` to your appliance address with the `/v1` path appended. Keep
+   `wire_api` set to `responses`; current Codex CLI releases support no other value.
 
 2. Set the environment variable named in `env_key` to your API token so that Codex can authenticate. In this example,
    `env_key` is `LPAI_KEY`. Replace `<lpai-token>` with the token you copied.
