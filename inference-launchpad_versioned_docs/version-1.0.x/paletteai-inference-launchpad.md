@@ -18,9 +18,10 @@ PaletteAI Inference Launchpad turns your own hardware into a private AI platform
 are serving large language models (LLMs) in your own environment, with no cloud dependency, no AI consulting engagement,
 and no weeks spent wiring together an inference stack.
 
-Because inference runs on the appliance, your data never leaves your environment, and unpredictable per-token API bills
-become a fixed, predictable infrastructure cost. The appliance deploys as a single bootable image with no Palette or
-PaletteAI dependency.
+Because inference runs on the appliance, your data stays in your environment by default, and unpredictable per-token API
+bills become a fixed, predictable infrastructure cost. The appliance deploys as a single bootable image with no Palette
+or PaletteAI dependency. For the conditions under which a request can leave the appliance, refer to
+[Data Residency and Isolation](./explanation/architecture.md#data-residency-and-isolation).
 
 ## The Problem It Solves
 
