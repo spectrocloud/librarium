@@ -120,3 +120,26 @@ refer to [Register an External Inference Endpoint](../how-to-guides/register-an-
 ## Network Topology
 
 ## Data Residency and Isolation
+
+Inference runs on the appliance, so a request and the model that answers it stay inside your environment by default.
+Nothing about a prompt leaves the appliance unless an operator gives a client permission to send it elsewhere.
+
+That permission is [egress](../reference/glossary.md#egress), and it denies by default. A new client cannot reach any
+destination outside the appliance until an operator enables it. Refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
+
+Once an operator enables egress, a client can reach two kinds of destination:
+
+- A built-in [frontier model](../reference/glossary.md#frontier-model) served by `anthropic`, `openai`, or `gemini`.
+
+- A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
+  operator has added to the appliance.
+
+The **Usage** view labels both kinds of traffic **Egress**, so an operator can confirm from the console whether any
+request left the appliance and what share of the total it represented. Refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md).
+
+The appliance needs no outbound internet access to install or to run day to day, so an appliance whose clients all have
+egress disabled answers every request without reaching a network beyond your own. The residency guarantee is therefore
+an operator-controlled one rather than a physical one. The appliance is capable of reaching an external host, and it
+does so only where an operator has allowed it.
