@@ -151,8 +151,8 @@ it is armed, no request leaves the box regardless of what any client is permitte
 for the whole appliance rather than one client at a time. Refer to
 [Sovereignty and Egress](./clients-and-quotas.md#sovereignty-and-egress).
 
-The **Usage** page labels traffic that left the appliance **Egress** and meters it in tokens and cost rather than in
-request counts, so an operator can review what share of the total went off the box. Refer to
+The **Usage** page reports locally served and off-box traffic as separate figures rather than summing them, so an
+operator can review what share of the total went off the box. Refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 The appliance needs no outbound internet access to install or to run day to day, so an appliance on which no client has
