@@ -77,8 +77,8 @@ independently without replacing the entire appliance image.
 
 ## Local UI and the Appliance Console
 
-The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Every task in
-this documentation belongs to one of them.
+The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Each guide names
+the interface its steps use.
 
 | **Interface**                                                  | **What you do there**                                                           |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
