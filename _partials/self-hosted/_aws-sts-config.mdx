@@ -79,7 +79,13 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     --header "Content-Type: application/json" \
     --data "$CONFIG_JSON"
    ```
+   
+   :::info
 
+   To modify an existing AWS account, change `POST` to `PUT` in the curl statement.
+
+   :::
+   
    </TabItem>
 
    </Tabs>
