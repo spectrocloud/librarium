@@ -2,12 +2,12 @@
 sidebar_label: "Architecture Overview"
 title: "PaletteAI Inference Launchpad Architecture Overview"
 description:
-  "An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, and
-  network topology."
+  "An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, network
+  topology, and data residency model."
 hide_table_of_contents: false
 sidebar_position: 1
 tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
-keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow"]
+keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
@@ -143,3 +143,38 @@ serving it, so Local UI sits outside the MetalLB and Traefik path. That separati
 platform services are unavailable, and why it is the surface for install and for platform upgrades.
 
 ## Data Residency and Isolation
+
+Inference runs on the appliance, so a request and the model that answers it stay inside your environment by default.
+Nothing about a prompt leaves the appliance unless an operator gives a client permission to send it elsewhere.
+
+That permission is [egress](../reference/glossary.md#egress), and it denies by default. A new client cannot reach any
+destination outside the appliance until an operator enables it. Refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
+
+Once an operator enables egress, a client can reach two kinds of destination:
+
+- A built-in [frontier model](../reference/glossary.md#frontier-model), which is a model hosted by an external provider
+  rather than served from the appliance.
+
+- A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
+  operator has added to the appliance.
+
+Egress is not only a destination a client asks for. An operator can arm frontier-model bursting for a client, which
+sends a request that asked for local serving to an external provider once the client exhausts its local quota rather
+than refusing it. Naming a local model is therefore not on its own what keeps a prompt on the box. Bursting is still
+egress and runs through the same permission, so a client that cannot reach an external destination cannot burst to one
+either.
+
+Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
+it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency
+for the whole appliance rather than one client at a time. Refer to
+[Sovereignty and Egress](./clients-and-quotas.md#sovereignty-and-egress).
+
+The **Usage** page reports what share of traffic stayed on the appliance and what share went off the box, and it pairs
+the two per client rather than summing them into one figure. Refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md).
+
+The appliance needs no outbound internet access to install or to run day to day, so an appliance on which no client has
+egress enabled answers every request without reaching a network beyond your own. The residency guarantee is therefore an
+operator-controlled one rather than a physical one. The appliance is capable of reaching an external host, and it does
+so only where an operator has allowed it.
