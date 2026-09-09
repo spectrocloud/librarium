@@ -59,7 +59,7 @@ export KUBECONFIG=<path-to-kubeconfig>
    If preferred, you can use a `Secret` instead of a `ConfigMap`.
 
 2. Create a `DeploymentRuntimeConfig` resource that defines the proxy environment variables and mounts the certificate
-   into the `package-runtime` container of the provider. 
+   into the `package-runtime` container of the provider.
 
    ```yaml
    apiVersion: pkg.crossplane.io/v1beta1
