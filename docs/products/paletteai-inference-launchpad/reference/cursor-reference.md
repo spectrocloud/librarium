@@ -29,9 +29,12 @@ Cursor uses the OpenAI-compatible API, which the gateway serves at `/v1`. Set **
 appliance's address, the same host you use to reach the console, with `/v1` appended. This differs from Claude Code,
 which uses the Anthropic Messages API and adds the path itself.
 
-The appliance must have a valid, publicly trusted TLS certificate on a DNS name. Cursor sends the request from its own
-cloud servers rather than from your machine, so it does not accept a self-signed certificate and offers no way to skip
-certificate verification.
+The endpoint you enter as the base URL must have a valid, publicly trusted TLS certificate on a DNS name. Cursor sends
+the request from its own cloud servers rather than from your machine, so it does not accept a self-signed certificate
+and offers no way to skip certificate verification. If the appliance itself is on a private network Cursor cannot reach,
+refer to
+[Cursor Cannot Reach an Appliance on a Private Network](./known-issues.md#cursor-cannot-reach-an-appliance-on-a-private-network),
+which covers entering a tunnel address in place of the appliance address.
 
 ## Model Name and Aliases
 
