@@ -17,6 +17,7 @@ applying the **Update** action in Local UI. You do not reinstall the OS or redep
 
 Confirm each prerequisite before starting:
 
+- A maintenance window. The appliance may reboot during the upgrade, which makes Local UI briefly unreachable.
 - A running PaletteAI Inference Launchpad appliance and network access to Local UI on the leader node at
   `https://<node-ip>:5080`.
 - The [Zot registry](../reference/profile-variables.md#container-registry-zot) password you set during the initial
