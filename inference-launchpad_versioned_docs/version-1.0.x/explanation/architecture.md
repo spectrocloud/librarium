@@ -81,4 +81,30 @@ appliance sets the default; there is no operator control to change which model i
 
 ## Network Topology
 
+A client reaches a served model over a single address. The **Platform IP Address** set during cluster deployment is an
+unused address that MetalLB assigns to Traefik, and Traefik fronts both the appliance console and the OpenAI-compatible
+API. MetalLB announces that address on the node's bond through the interface selected as the Cilium and MetalLB
+interface, so platform traffic arrives on the bond and is delivered to Traefik. Traefik passes each request to the
+gateway, which authenticates the calling client, applies routing, and forwards the request to the inference engine
+serving the chosen model.
+
+The node keeps its own management address, the Host IP, and the two addresses do different jobs. The Host IP belongs to
+the node and carries SSH, Local UI, and the Kubernetes API. The Platform IP belongs to the cluster load balancer and
+carries the console and the API. Both must be distinct addresses in the same subnet, because setting the Platform IP to
+the Host IP on a single-node appliance makes MetalLB intercept traffic bound for the node's own services. Refer to
+[SSH, Local UI, or Kubernetes API unreachable after cluster deploy](../reference/known-issues.md#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy).
+
+Traefik also carries a load-balancer access control list that restricts which source addresses may reach the console.
+Where that list is narrower than the network an operator works from, the console refuses the connection even though the
+cluster is healthy. Refer to
+[Appliance console unreachable from the jumpbox after cluster deploy](../reference/known-issues.md#appliance-console-unreachable-from-the-jumpbox-after-cluster-deploy).
+
+The node's operating system serves [Local UI](../reference/glossary.md#local-ui) on port `5080`, rather than the
+cluster serving it, so Local UI sits outside the MetalLB and Traefik path. That separation is why Local UI stays
+reachable when platform services are unavailable, and why it is the surface for install and for platform upgrades.
+
+Cluster traffic and [Piraeus](../reference/glossary.md#piraeus) storage replication share the same bond, which is why
+the appliance aggregates two physical NICs into one logical link instead of bridging them. For that reasoning and the
+field values the bond uses, refer to [Bond, not bridge](./installation-architecture.md#bond-not-bridge).
+
 ## Data Residency and Isolation
