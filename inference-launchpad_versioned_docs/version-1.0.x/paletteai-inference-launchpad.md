@@ -77,20 +77,20 @@ independently without replacing the entire appliance image.
 
 ## Local UI and the Appliance Console
 
-The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Both appear
-throughout this documentation, so check which interface a task belongs to before you begin.
+The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Every task in
+this documentation belongs to one of them.
 
-| **Interface** | **Address** | **What you do there** |
-| --- | --- | --- |
-| [Local UI](./reference/glossary.md#local-ui) | `https://<node-ip>:5080` | Install the appliance, scale the cluster, and manage nodes. |
-| [Appliance console](./reference/glossary.md#appliance-console) | `https://<platform-ip>` | Deploy models, manage clients and quotas, and view usage. |
+| **Interface**                                                  | **What you do there**                                                           |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Local UI](./reference/glossary.md#local-ui)                   | Create the bond, link nodes, upload the content bundle, and deploy the cluster. |
+| [Appliance console](./reference/glossary.md#appliance-console) | Deploy models, manage clients and quotas, and view usage.                       |
 
 The node's own operating system serves Local UI, so it stays reachable when cluster services are not running. Day-one
-install and every day-two infrastructure operation happen there. Refer to
-[Install the Appliance](./how-to-guides/install-the-appliance.md) for the procedure that uses it.
+install happens there. Refer to [Install the Appliance](./how-to-guides/install-the-appliance.md) for the procedure that
+uses it.
 
-The running cluster serves the appliance console at the Platform IP address, so the console becomes available only
-after the cluster is up. Everything that involves models, clients, and request traffic happens there.
+The running cluster serves the appliance console at the Platform IP address, so the console becomes available only after
+the cluster is up. Everything that involves models, clients, and request traffic happens there.
 
 ## PaletteAI Inference Launchpad or PaletteAI
 

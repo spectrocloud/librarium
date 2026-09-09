@@ -77,13 +77,13 @@ independently without replacing the entire appliance image.
 
 ## Local UI and the Appliance Console
 
-The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Both appear
-throughout this documentation, so check which interface a task belongs to before you begin.
+The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Every task in
+this documentation belongs to one of them.
 
-| **Interface**                                                  | **Address**              | **What you do there**                                                              |
-| -------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
-| [Local UI](./reference/glossary.md#local-ui)                   | `https://<node-ip>:5080` | Install the appliance, upgrade the platform, scale the cluster, and manage nodes.  |
-| [Appliance console](./reference/glossary.md#appliance-console) | `https://<platform-ip>`  | Deploy and replace models, manage clients and quotas, set routing, and view usage. |
+| **Interface**                                                  | **What you do there**                                                              |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Local UI](./reference/glossary.md#local-ui)                   | Install the appliance, upgrade the platform, scale the cluster, and manage nodes.  |
+| [Appliance console](./reference/glossary.md#appliance-console) | Deploy and replace models, manage clients and quotas, set routing, and view usage. |
 
 The node's own operating system serves Local UI, so it stays reachable when cluster services are not running. Day-one
 install and every day-two infrastructure operation happen there. Refer to
