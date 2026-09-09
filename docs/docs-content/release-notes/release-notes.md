@@ -268,6 +268,16 @@ tags: ["release-notes"]
   fail with `ChartInstallFailed` when the pack enabled Gateway API support before the Gateway API custom resource
   definitions existed on the cluster. Palette now applies the setting once those definitions are available.
 
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1570 -->
+
+- K3s is deprecated as a Palette Virtual Cluster distribution and will be removed in a future Palette release. K3s was
+  deprecated in Palette 4.8.0, when the cluster group distribution selector in the Palette UI began marking K3s as
+  deprecated and moved the Kubernetes distribution to the top of the list. Existing virtual clusters that use K3s
+  continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual clusters. Refer to
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) for more information.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.0-start -->
