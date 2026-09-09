@@ -238,24 +238,35 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4655 -->
 
-- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab. Only the first
-  line of the message was recorded, so an event displayed `"Reconciler error" err=<` while the description of the
-  failure that followed it, such as `NoCredentialProviders: no valid providers in chain`, was dropped. The complete
-  message is now recorded as a single event. Only error-level events were affected.
+- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab, so an event
+  showed only `"Reconciler error" err=<` without the failure description that followed it. The complete message is now
+  recorded as a single event. Only error-level events were affected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7401 -->
 
 - Fixed an issue that caused changing a cluster-level tag on a healthy
-  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a misleading `ClusterUpgradeTriggered` event and
-  replace every node in the cluster's worker node pools. Pipelines that update tag values on each run, such as
-  compliance tagging, could therefore repave nodes repeatedly on a cluster that was never upgraded. Changing tags
-  directly on a worker node pool still replaces that pool's nodes.
+  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a `ClusterUpgradeTriggered` event and replace every
+  node in the cluster's worker node pools. Pipelines that update tag values on each run, such as compliance tagging,
+  could therefore repave nodes repeatedly. Changing tags directly on a worker node pool still replaces that pool's
+  nodes.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7524 -->
 
 - Fixed an issue that caused sustained high CPU usage by the Palette management plane. The management plane repeatedly
   reconciled packs whose configuration had not changed, consuming approximately 1.3 vCPU per affected cluster
   continuously. Cluster provisioning and pack functionality were not affected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7236 -->
+
+- Fixed an issue where [OS patching](../clusters/cluster-management/os-patching.md) on Ubuntu cluster nodes could leave
+  a node in `Ready,SchedulingDisabled` and unable to accept workloads, and could prevent scheduled patches from running.
+  Palette now requires OS patch schedules to run no more frequently than hourly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7245 -->
+
+- Fixed an issue that caused the [cert-manager](../clusters/cluster-management/cert-manager-addon.md) add-on pack to
+  fail with `ChartInstallFailed` when the pack enabled Gateway API support before the Gateway API custom resource
+  definitions existed on the cluster. Palette now applies the setting once those definitions are available.
 
 ### Edge
 
@@ -353,14 +364,12 @@ troubleshooting scenario.
 - Fixed an issue that prevented digest-pinned application images from being redirected to the
   [local registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md) on airgapped Edge
   clusters. Pods that referenced an image by digest rather than by tag attempted to pull from the upstream registry and
-  remained in `ImagePullBackOff`, while the same image referenced by tag deployed successfully.
+  remained in `ImagePullBackOff`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9033 -->
 
 - Fixed an issue that caused packs whose name contains a forward slash, such as Helm OCI packs sourced from a private
-  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors. The
-  affected packs were never cached, and the cluster re-downloaded them every two minutes without reaching a steady
-  state.
+  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9143 -->
 
@@ -381,9 +390,25 @@ troubleshooting scenario.
 
 - Fixed an issue that prevented the NTP servers configured on an Edge host through the
   [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) from being visible in Local UI. The
-  Edge host overview page now lists them in an **NTP Servers** field, so an operator working only in Local UI can
-  confirm the host's time synchronization settings. These servers remain specific to the host, and cluster-level NTP
-  configured in cluster settings continues to override them on every host in the cluster.
+  Edge host overview page now lists them in an **NTP Servers** field.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9302 -->
+
+- Fixed an issue that left a [two-node Edge cluster](../clusters/edge/architecture/two-node.md) without a Kubernetes API
+  server after the loss of the leader node. The surviving node did not complete its promotion, so the cluster virtual IP
+  served no traffic. Loss of the follower node was unaffected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9348 -->
+
+- Fixed an issue that could place the Kubernetes datastore of a
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) on ephemeral rather than persistent storage. Data
+  written since the last persistent snapshot was lost on reboot, and the node could not be promoted during failover.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9388 -->
+
+- Fixed an issue that prevented leader promotion from completing on a connected-mode
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) while Palette was unreachable, leaving the local
+  control plane unavailable until connectivity was restored. Promotion now completes without Palette connectivity.
 
 ### VerteX
 
