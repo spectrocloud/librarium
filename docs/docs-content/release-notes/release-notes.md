@@ -11,6 +11,24 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.10.x
+
+<!-- PATCH RELEASE TICKET: DOC-3205 -->
+<!-- PATCH RELEASE VERSION: 4.10.x -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+
+- Fixed an issue where a Palette agent upgrade re-ran the on-boot OS patch task on the existing nodes of a cluster that
+  has **Patch OS on boot** enabled, draining each node in turn. The task now runs only on nodes that it has not already
+  patched.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+
+- Fixed an issue where an orphaned `system-upgrade-controller` pod could remain in a cluster's `cluster-<cluster-uid>`
+  namespace and log `plans.upgrade.cattle.io CRD not found` errors. Palette now removes the pod.
+
 ## September 8, 2026 - Release 4.10.14
 
 <!-- PATCH RELEASE TICKET: DOC-3193 -->
