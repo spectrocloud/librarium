@@ -766,6 +766,54 @@ guide.
 
 Palette recreates all resources with the correct configuration.
 
+## Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade
+
+When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4.8, the `mongo` Pods in the
+`hubble-system` namespace can enter `CrashLoopBackOff` with the error
+`Invalid feature compatibility version value '6.0'`. Palette 4.8 ships MongoDB 8.0, which requires a MongoDB Feature
+Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette 4.5.x through
+4.6.9 might still be at FCV 6.0.
+
+The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that does not become Ready. The usual failure
+state is one Pod on the MongoDB 8 image crash-looping while the other two are still on the previous MongoDB 7 image, so
+a ReplicaSet primary is still elected on one of the remaining Pods.
+
+### Debug Steps
+
+1. Log in to the Palette or Palette VerteX
+   [system console](../enterprise-version/system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal window and set `KUBECONFIG` to point to the kubeconfig file you downloaded.
+
+   ```shell
+   export KUBECONFIG=~/Downloads/spectro-mgmt-cluster.kubeconfig
+   ```
+
+5. Check which MongoDB Pods are still on the previous release's image.
+
+   ```shell
+   kubectl --namespace hubble-system get pods --selector role=mongo \
+     --output custom-columns='POD:.metadata.name,READY:.status.containerStatuses[0].ready,IMAGE:.spec.containers[0].image'
+   ```
+
+6. Choose the recovery based on the output.
+
+   - **If two Pods are still on the previous MongoDB 7 image**, raise FCV to 7.0 on the ReplicaSet primary using the
+     procedure in
+     [Self-Hosted Palette or Palette VerteX Upgrade Hangs](palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs).
+     The crash-looping Pod starts on its next restart and the upgrade continues. No image rollback or `helm rollback` is
+     required.
+
+   - **If all three Pods are already on the MongoDB 8 image**, roll the `mongo` container image back to the previous
+     MongoDB 7 tag, wait for the Pods to become Ready, raise FCV using the same procedure, then restore the MongoDB 8
+     image or re-run the upgrade.
+
+7. After the fix, confirm that all three ReplicaSet members report FCV `7.0`.
+
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
 When attempting to upgrade the VerteX Management Appliance, the `linstor-satellite.*` and `linstor-csi-node.*` pods may
