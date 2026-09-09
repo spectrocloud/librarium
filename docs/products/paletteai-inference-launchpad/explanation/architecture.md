@@ -2,12 +2,12 @@
 sidebar_label: "Architecture Overview"
 title: "PaletteAI Inference Launchpad Architecture Overview"
 description:
-  "An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, and
-  network topology."
+  "An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, network
+  topology, and data residency model."
 hide_table_of_contents: false
 sidebar_position: 1
 tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
-keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow"]
+keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
