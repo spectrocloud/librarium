@@ -800,19 +800,18 @@ a ReplicaSet primary is still elected on one of the remaining Pods.
      --output custom-columns='POD:.metadata.name,READY:.status.containerStatuses[0].ready,IMAGE:.spec.containers[0].image'
    ```
 
-6. Choose the recovery based on the output.
+6. Choose the recovery path based on the output.
 
-   - **If two Pods are still on the previous MongoDB 7 image**, raise FCV to 7.0 on the ReplicaSet primary using the
-     procedure in
-     [Self-Hosted Palette or Palette VerteX Upgrade Hangs](palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs).
-     The crash-looping Pod starts on its next restart and the upgrade continues. No image rollback or `helm rollback` is
-     required.
+   - **If two Pods are still on the previous MongoDB 7 image**, proceed to step 7. The crash-looping Pod starts on its
+     next restart once the FCV is raised, and the upgrade continues. No image rollback or `helm rollback` is required.
 
-   - **If all three Pods are already on the MongoDB 8 image**, roll the `mongo` container image back to the previous
-     MongoDB 7 tag, wait for the Pods to become Ready, raise FCV using the same procedure, then restore the MongoDB 8
-     image or re-run the upgrade.
+   - **If all three Pods are already on the MongoDB 8 image**, first roll the `mongo` container image back to the
+     previous MongoDB 7 tag and wait for the Pods to become Ready, then proceed to step 7. After the FCV is raised,
+     restore the MongoDB 8 image or re-run the upgrade.
 
-7. After the fix, confirm that all three ReplicaSet members report FCV `7.0`.
+7. Raise the FCV to 7.0.
+
+   <PartialsComponent category="self-hosted" name="mongodb-fcv-check-and-raise" />
 
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
