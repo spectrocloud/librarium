@@ -121,8 +121,16 @@ make format
 
 - Frozen product documentation versions under `<product>_versioned_docs/` are excluded from Prettier. The CI formatting
   job commits whatever it reformats, so without the exclusion a Prettier upgrade would rewrite every already-released
-  version. If you correct a frozen page, match the surrounding formatting by hand. Vale still checks these files, so
-  style and spelling are verified as usual.
+  version. Vale skips them so that a rule change cannot retroactively fail an archived version:
+  [.vale.ini](../../.vale.ini) sets an empty `BasedOnStyles` for `*_versioned_docs/**`, and the weekly spellcheck job
+  scans only `docs/docs-content`, `docs/products`, and `_partials`. No automated check covers a frozen page, so when you
+  [deliberately correct an already-released version](./authoring-content.md), match the surrounding formatting by hand
+  and check the prose by piping the file through Vale, which applies the `[*.md]` styles that the path exclusion would
+  otherwise skip.
+
+  ```shell
+  vale --ext=.md < inference-launchpad_versioned_docs/version-1.0.x/paletteai-inference-launchpad.md
+  ```
 
 - When using callouts/admonitions,
   [pay attention to their syntax](https://docusaurus.io/docs/markdown-features/admonitions#usage-with-prettier).
