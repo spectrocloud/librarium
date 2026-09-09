@@ -105,10 +105,10 @@ is therefore not on its own what keeps a prompt on the box.
 <!-- vale on -->
 
 The **Usage** page labels traffic that left the appliance **Egress** and meters it in tokens and cost rather than in
-request counts, so an operator can see what share of the total went off the box. Refer to
+request counts, so an operator can review what share of the total went off the box. Refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
-The appliance needs no outbound internet access to install or to run day to day, so an appliance whose clients all
-have egress disabled answers every request without reaching a network beyond your own. The residency guarantee is
-therefore an operator-controlled one rather than a physical one. The appliance is capable of reaching an external host,
-and it does so only where an operator has allowed it.
+The appliance needs no outbound internet access to install or to run day to day, so an appliance on which no client has
+egress enabled answers every request without reaching a network beyond your own. The residency guarantee is therefore an
+operator-controlled one rather than a physical one. The appliance is capable of reaching an external host, and it does
+so only where an operator has allowed it.
