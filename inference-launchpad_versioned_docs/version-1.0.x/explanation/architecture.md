@@ -94,8 +94,18 @@ Once an operator enables egress, a client can reach a built-in
 [frontier model](../reference/glossary.md#frontier-model), which is a model hosted by an external provider rather than
 served from the appliance.
 
-The **Usage** view labels that traffic **Egress**, so an operator can confirm from the console whether any request left
-the appliance and what share of the total it represented. Refer to
+Egress is not only a destination a client asks for. When the appliance is at capacity, a request that asked for local
+serving can go to an external provider instead, which the **Usage** page reports as capacity spill. Naming a local model
+is therefore not on its own what keeps a prompt on the box.
+
+<!-- vale off -->
+
+{/* NEEDS REVIEW: the Usage page documents a capacity-spill tile, but no source states whether capacity spill honors a client's egress setting. A subject-matter expert should confirm that interaction before this page publishes. */}
+
+<!-- vale on -->
+
+The **Usage** page labels traffic that left the appliance **Egress** and meters it in tokens and cost rather than in
+request counts, so an operator can see what share of the total went off the box. Refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 The appliance needs no outbound internet access to install or to run day to day, so an appliance whose clients all

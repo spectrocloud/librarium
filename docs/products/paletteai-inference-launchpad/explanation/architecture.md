@@ -130,13 +130,29 @@ destination outside the appliance until an operator enables it. Refer to
 
 Once an operator enables egress, a client can reach two kinds of destination:
 
-- A built-in [frontier model](../reference/glossary.md#frontier-model) served by `anthropic`, `openai`, or `gemini`.
+- A built-in [frontier model](../reference/glossary.md#frontier-model), which is a model hosted by an external provider
+  rather than served from the appliance.
 
 - A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
   operator has added to the appliance.
 
-The **Usage** view labels both kinds of traffic **Egress**, so an operator can confirm from the console whether any
-request left the appliance and what share of the total it represented. Refer to
+Egress is not only a destination a client asks for. When the appliance is at capacity, a request that asked for local
+serving can go to an external provider instead, which the **Usage** page reports as capacity spill. Naming a local model
+is therefore not on its own what keeps a prompt on the box.
+
+<!-- vale off -->
+
+{/* NEEDS REVIEW: the Usage page documents a capacity-spill tile, but no source states whether capacity spill honors a client's egress setting. A subject-matter expert should confirm that interaction before this page publishes. */}
+
+<!-- vale on -->
+
+Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
+it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency
+for the whole appliance rather than one client at a time. Refer to
+[Sovereignty and Egress](./clients-and-quotas.md#sovereignty-and-egress).
+
+The **Usage** page labels traffic that left the appliance **Egress** and meters it in tokens and cost rather than in
+request counts, so an operator can see what share of the total went off the box. Refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 The appliance needs no outbound internet access to install or to run day to day, so an appliance whose clients all have
