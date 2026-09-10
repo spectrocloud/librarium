@@ -1,0 +1,439 @@
+/* Shared buttons */
+.buttonPrimary,
+.buttonSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.buttonPrimary {
+  background-color: var(--ifm-color-primary);
+  color: #ffffff;
+  border: 1px solid var(--ifm-color-primary);
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--ifm-color-primary-dark);
+    border-color: var(--ifm-color-primary-dark);
+    color: #ffffff;
+  }
+}
+
+.buttonSecondary {
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+    color: var(--ifm-color-primary);
+  }
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 56px 48px;
+  margin: 24px 0 8px;
+  background:
+    radial-gradient(
+      120% 120% at 100% 0%,
+      color-mix(in srgb, var(--ifm-color-primary) 22%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(135deg, color-mix(in srgb, var(--ifm-color-primary) 12%, transparent) 0%, transparent 60%);
+  border: 1px solid var(--simpleCardBorder);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.heroCopy {
+  flex: 1 1 auto;
+  min-width: 0;
+  // No hero button anymore, so the copy spans the full hero width.
+  max-width: none;
+}
+
+/* Hero product highlight panels, laid out in rows of three */
+.panelColumn {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: 16px;
+
+  > a {
+    display: flex;
+    min-width: 0;
+    text-decoration: none;
+  }
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--simpleCardBorder);
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    color: var(--ifm-font-color-base);
+    text-decoration: none;
+  }
+}
+
+.panelIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 18px;
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+.panelBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.panelTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--ifm-font-color-base);
+}
+
+.panelDescription {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  color: var(--simpleCardSubtle);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 14px;
+}
+
+.heroTitle {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-wrap: balance;
+  color: var(--ifm-font-color-base);
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0;
+  color: var(--simpleCardSubtle);
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  flex: 1 1 auto;
+}
+
+.heroActions .buttonPrimary,
+.heroActions .buttonSecondary {
+  padding: 16px 34px;
+  font-size: 17px;
+}
+
+// Make the primary hero call to action stand out: vibrant gradient, glow,
+// a shine sweep, and an arrow that nudges on hover.
+.heroActions .buttonPrimary {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  font-weight: 700;
+  background-image: linear-gradient(120deg, var(--ifm-color-primary) 0%, #2bb6b3 100%);
+}
+
+.heroActions .buttonPrimary::after {
+  content: "→";
+  margin-left: 10px;
+  transition: transform 0.18s ease;
+}
+
+.heroActions .buttonPrimary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.heroActions .buttonPrimary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background-image: linear-gradient(120deg, var(--ifm-color-primary) 0%, #2bb6b3 100%);
+  color: #ffffff;
+}
+
+.heroActions .buttonPrimary:hover::after {
+  transform: translateX(5px);
+}
+
+.heroActions .buttonPrimary:hover::before {
+  left: 150%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroActions .buttonPrimary,
+  .heroActions .buttonPrimary::before,
+  .heroActions .buttonPrimary::after {
+    transition: none;
+  }
+
+  .heroActions .buttonPrimary:hover {
+    transform: none;
+  }
+}
+
+/* Feature highlights */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin: 8px 0 16px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.featureTile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--simpleCardBorder);
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.featureGrid a:hover .featureTile {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  font-size: 24px;
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+.featureTitle {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--ifm-font-color-base);
+}
+
+.featureDescription {
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0;
+  color: var(--simpleCardSubtle);
+}
+
+/* Feature list — non-clickable, no card chrome */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 8px 0 24px;
+  padding: 24px 0 24px 40px;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.featureItemIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 20px;
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+.featureItemBody {
+  min-width: 0;
+}
+
+.featureItemTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 4px 0 8px;
+  color: var(--ifm-font-color-base);
+}
+
+.featureItemDescription {
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0;
+  color: var(--simpleCardSubtle);
+}
+
+/* CTA banner */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 32px 0;
+  padding: 40px 48px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-darker) 100%);
+}
+
+.ctaText {
+  max-width: 640px;
+}
+
+.ctaTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.ctaDescription {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  .buttonPrimary {
+    background-color: #ffffff;
+    color: var(--ifm-color-primary-darkest);
+    border-color: #ffffff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: var(--ifm-color-primary-darkest);
+    }
+  }
+
+  .buttonSecondary {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.7);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding: 40px 28px;
+  }
+
+  .heroTitle {
+    font-size: 30px;
+  }
+
+  .panelColumn {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .panelColumn {
+    grid-template-columns: 1fr;
+  }
+}

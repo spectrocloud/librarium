@@ -27,6 +27,15 @@ import RedirectPackPage from "@site/src/components/RedirectPackPage";
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
 import AskAI from "@site/src/components/AskAI/index";
 import FullUrlLink from "@site/src/components/FullUrlLink";
+import {
+  LandingHero,
+  HeroPanel,
+  FeatureHighlights,
+  FeatureTile,
+  FeatureList,
+  FeatureItem,
+  CTABanner,
+} from "@site/src/components/Landing/index";
 
 export default {
   ...MDXComponents,
@@ -56,4 +65,11 @@ export default {
   ReleaseNotesBreakingChanges,
   AskAI,
   FullUrlLink,
+  LandingHero,
+  HeroPanel,
+  FeatureHighlights,
+  FeatureTile,
+  FeatureList,
+  FeatureItem,
+  CTABanner,
 };
