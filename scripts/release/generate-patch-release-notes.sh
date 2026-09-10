@@ -110,46 +110,108 @@ fi
 JQL=$(printf '%b' "${JQL_ENCODED//%/\\x}")
 JQL=${JQL//+/ }
 
-END_DATE=$(printf '%s' "$JQL" | sed -n 's/.*duedate <= "\([^"]*\)".*/\1/p')
+# Formats a YYYY-MM-DD date the way a release notes heading writes it, for example
+# "September 14, 2026". BSD date (macOS) is tried first and GNU date (Linux) second. An empty
+# date is refused rather than passed on, because the GNU fallback reads `date -d ""` as the
+# daylight saving time flag and silently returns today's date, which would date the release
+# notes wrongly instead of failing.
+# Params:
+# $1 - date in YYYY-MM-DD form
+# Prints the formatted date and returns 0, or returns 1 when the date cannot be parsed.
+format_release_date() {
+  local raw="$1"
 
-# Bail out on a missing due date rather than guessing one. On macOS the GNU fallback below
-# reads `date -d ""` as the daylight saving time flag and silently returns today's date,
-# which would date the release notes wrongly instead of failing.
+  if [[ -z "$raw" ]]; then
+    return 1
+  fi
+
+  if date -j -f "%Y-%m-%d" "$raw" +"%B %-d, %Y" 2>/dev/null; then
+    return 0
+  fi
+
+  if date -d "$raw" +"%B %-d, %Y" 2>/dev/null; then
+    return 0
+  fi
+
+  return 1
+}
+
+# The release date comes from the end of the due date window the candidates JQL searches. Jira
+# accepts both "duedate" and its "due" alias, and a candidates link can carry either, so both are
+# read. The last matching clause wins, because the window is written as a lower bound followed by
+# an upper one.
+END_DATE=$(printf '%s' "$JQL" \
+  | grep -oiE '(^|[^[:alnum:]_])due(date)?[[:space:]]*<=[[:space:]]*"[^"]+"' \
+  | tail -1 \
+  | sed -n 's/.*"\([^"]*\)".*/\1/p' || true)
+
+# A candidates JQL that searches on something other than a due date window, or whose due date is
+# not set yet, leaves the release date unknown. That is not a reason to stop, because the date is
+# only needed for the section heading, so ask for it instead. Leaving the answer empty records the
+# pending marker, and a later run refreshes the heading, so an unknown date is corrected the same
+# way a placeholder version is.
 if [[ -z "$END_DATE" ]]; then
-  echo "❌  No 'duedate <= \"YYYY-MM-DD\"' clause found in the candidates JQL" >&2
-  exit 1
+  echo "🟠 No 'due <= \"YYYY-MM-DD\"' clause found in the candidates JQL, so the release date is unknown." >&2
+
+  END_DATE="${PATCH_RELEASE_DATE:-}"
+
+  if [[ -z "$END_DATE" && -t 0 ]]; then
+    while true; do
+      if ! read -r -p "   Specify the release date as YYYY-MM-DD, or leave it empty to record '$PENDING_DATE': " END_DATE; then
+        # The input ended. Whatever was typed before it still counts as the reply, but there is
+        # no way to ask again, so an unusable one leaves the date pending rather than stopping.
+        if [[ -n "$END_DATE" ]] && ! format_release_date "$END_DATE" >/dev/null; then
+          echo "   '$END_DATE' is not a date in YYYY-MM-DD form, so the release date is left pending." >&2
+          END_DATE=""
+        fi
+
+        break
+      fi
+
+      if [[ -z "$END_DATE" ]] || format_release_date "$END_DATE" >/dev/null; then
+        break
+      fi
+
+      echo "   '$END_DATE' is not a date in YYYY-MM-DD form, for example 2026-09-14." >&2
+    done
+  fi
 fi
 
-# Try parsing with BSD date first (macOS), fallback to GNU date (Linux)
-if date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y" >/dev/null 2>&1; then
-  RELEASE_DATE=$(date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y")
-else
-  RELEASE_DATE=$(date -d "$END_DATE" +"%B %-d, %Y")
+if [[ -z "$END_DATE" ]]; then
+  RELEASE_DATE="$PENDING_DATE"
+  echo "ℹ️  No release date given, so the release notes heading records '$PENDING_DATE'. Re-run this script once the date is known to correct the heading."
+elif ! RELEASE_DATE=$(format_release_date "$END_DATE"); then
+  echo "❌  '$END_DATE' is not a date in YYYY-MM-DD form, for example 2026-09-14." >&2
+  exit 1
 fi
 
 # The fixVersion in the candidates JQL is often still a placeholder such as "4.9.x", so it
-# only seeds the release heading. The prompt below confirms the real version.
-RELEASE_PATCH=$(printf '%s' "$JQL" | sed -n 's/.*fixVersion IN (\([^)]*\)).*/\1/p')
+# only seeds the release heading. The prompt below confirms the real version. A candidates link
+# can name one version, "fixVersion = 4.9.x", or a list, "fixVersion IN (4.9.x)", so both are
+# read, and the value is unquoted either way.
+RELEASE_PATCH=$(printf '%s' "$JQL" | sed -n 's/.*fixVersion[[:space:]]*IN[[:space:]]*(\([^)]*\)).*/\1/p')
 
 if [[ -z "$RELEASE_PATCH" ]]; then
-  echo "❌  No 'fixVersion IN (...)' clause found in the candidates JQL" >&2
-  exit 1
+  RELEASE_PATCH=$(printf '%s' "$JQL" | sed -n 's/.*fixVersion[[:space:]]*=[[:space:]]*"\{0,1\}\([^"[:space:]]*\).*/\1/p')
+fi
+
+RELEASE_PATCH=${RELEASE_PATCH//\"/}
+
+# A clause in some other shape only costs the heading its seed, because the prompt below asks for
+# the version regardless, so say so and carry on rather than stopping.
+if [[ -z "$RELEASE_PATCH" ]]; then
+  echo "🟠 No fixVersion clause found in the candidates JQL, so the patch release version has to be given below." >&2
 fi
 
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
-echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 
-# Reading nickfury needs a token that can see a private repository. Resolve it quietly here and
-# report on it only if the component versions are actually wanted, so a run that has none to record
-# never mentions nickfury at all.
-#
-# GITHUB_TOKEN comes from .env for a local run and from the workflow environment in CI. When it is
-# absent, fall back to the token the GitHub CLI already holds, which is usually signed in to the
-# organisation on a writer's machine.
-if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
-  GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
-  [[ -n "$GITHUB_TOKEN" ]] && export GITHUB_TOKEN
+if [[ -n "$RELEASE_PATCH" ]]; then
+  echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
 fi
+
+# Reading nickfury needs credentials that can see a private repository, which come from the GitHub
+# CLI rather than from a token in .env. Whether the CLI is set up is reported below, and only if the
+# component versions are actually wanted, so a run that has none to record never mentions nickfury.
 
 # The prompts below form a short interview, so only the values that apply to this patch are asked
 # for. Each is skipped when its environment variable is already set, and an unattended run answers
@@ -160,11 +222,18 @@ fi
 RELEASE_PATCH_VERSION="${PATCH_RELEASE_VERSION:-}"
 
 if [[ -z "$RELEASE_PATCH_VERSION" && -t 0 ]]; then
+  # The placeholder prompt offers the version the candidates JQL reported, when it reported one.
+  if [[ -n "$RELEASE_PATCH" ]]; then
+    placeholder_hint=" [$RELEASE_PATCH]"
+  else
+    placeholder_hint=""
+  fi
+
   if confirm "Do you know the Palette patch release version?" y; then
     read -r -p "   Specify the Palette patch release version, for example 4.9.48: " RELEASE_PATCH_VERSION
   else
     echo "   The version heads the release notes section, so a placeholder stands in until it is known."
-    read -r -p "   Specify a placeholder version, for example 4.9.x [$RELEASE_PATCH]: " RELEASE_PATCH_VERSION
+    read -r -p "   Specify a placeholder version, for example 4.9.x$placeholder_hint: " RELEASE_PATCH_VERSION
   fi
 fi
 
@@ -172,6 +241,14 @@ fi
 # candidates JQL reported. That is usually a placeholder such as 4.9.x, which is a valid answer.
 if [[ -z "$RELEASE_PATCH_VERSION" ]]; then
   RELEASE_PATCH_VERSION="$RELEASE_PATCH"
+fi
+
+# With no version from either the prompt or the candidates JQL there is nothing to head the section
+# with, and unlike the release date a placeholder cannot be invented, because the version is the key
+# a later run matches the section on.
+if [[ -z "$RELEASE_PATCH_VERSION" ]]; then
+  echo "❌  No patch release version given. Specify one at the prompt, or set PATCH_RELEASE_VERSION." >&2
+  exit 1
 fi
 
 # A version is either a real patch release, such as 4.9.48, or a placeholder standing in for one,
@@ -242,11 +319,11 @@ if [[ "$COMPONENT_UPDATES" == false ]]; then
   if [[ -n "${NICKFURY_REF:-}" ]] || any_patch_cli_sha_supplied; then
     echo "⚠️  A branch or tag, or a checksum, was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
   fi
-elif [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  echo "⚠️  No GitHub token is available, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Add 'export GITHUB_TOKEN=<token>' to your .env file, or run 'gh auth login', to look them up. 'make init-release' adds the .env placeholder." >&2
+elif ! github_cli_ready; then
+  echo "⚠️  The GitHub CLI is not set up, so $NICKFURY_REPO cannot be read and the component versions are recorded as pending. Install gh and run 'gh auth login' to look them up, or supply the versions when prompted." >&2
 fi
 
-if [[ "$COMPONENT_UPDATES" == true && -n "${GITHUB_TOKEN:-}" ]]; then
+if [[ "$COMPONENT_UPDATES" == true ]] && github_cli_ready; then
   # The release engineers hand over a branch or a tag, and neither is named after the patch
   # release version alone: a branch is "release-<version>" and a tag is "v<version>", where a
   # tag can also carry an "-rc.N" release candidate suffix. Ask for that name directly rather

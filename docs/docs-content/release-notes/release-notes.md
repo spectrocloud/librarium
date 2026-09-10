@@ -373,18 +373,35 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4655 -->
 
-- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab. Only the first
-  line of the message was recorded, so an event displayed `"Reconciler error" err=<` while the description of the
-  failure that followed it, such as `NoCredentialProviders: no valid providers in chain`, was dropped. The complete
-  message is now recorded as a single event. Only error-level events were affected.
+- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab, so an event
+  showed only `"Reconciler error" err=<` without the failure description that followed it. The complete message is now
+  recorded as a single event. Only error-level events were affected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7401 -->
 
 - Fixed an issue that caused changing a cluster-level tag on a healthy
-  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a misleading `ClusterUpgradeTriggered` event and
-  replace every node in the cluster's worker node pools. Pipelines that update tag values on each run, such as
-  compliance tagging, could therefore repave nodes repeatedly on a cluster that was never upgraded. Changing tags
-  directly on a worker node pool still replaces that pool's nodes.
+  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a `ClusterUpgradeTriggered` event and replace every
+  node in the cluster's worker node pools. Pipelines that update tag values on each run, such as compliance tagging,
+  could therefore repave nodes repeatedly. Changing tags directly on a worker node pool still replaces that pool's
+  nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7524 -->
+
+- Fixed an issue that caused sustained high CPU usage by the Palette management plane. The management plane repeatedly
+  reconciled packs whose configuration had not changed, consuming approximately 1.3 vCPU per affected cluster
+  continuously. Cluster provisioning and pack functionality were not affected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7236 -->
+
+- Fixed an issue where [OS patching](../clusters/cluster-management/os-patching.md) on Ubuntu cluster nodes could leave
+  a node in `Ready,SchedulingDisabled` and unable to accept workloads, and could prevent scheduled patches from running.
+  Palette now requires OS patch schedules to run no more frequently than hourly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7245 -->
+
+- Fixed an issue that caused the [cert-manager](../clusters/cluster-management/cert-manager-addon.md) add-on pack to
+  fail with `ChartInstallFailed` when the pack enabled Gateway API support before the Gateway API custom resource
+  definitions existed on the cluster. Palette now applies the setting once those definitions are available.
 
 ### Edge
 
@@ -482,14 +499,12 @@ troubleshooting scenario.
 - Fixed an issue that prevented digest-pinned application images from being redirected to the
   [local registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md) on airgapped Edge
   clusters. Pods that referenced an image by digest rather than by tag attempted to pull from the upstream registry and
-  remained in `ImagePullBackOff`, while the same image referenced by tag deployed successfully.
+  remained in `ImagePullBackOff`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9033 -->
 
 - Fixed an issue that caused packs whose name contains a forward slash, such as Helm OCI packs sourced from a private
-  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors. The
-  affected packs were never cached, and the cluster re-downloaded them every two minutes without reaching a steady
-  state.
+  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9143 -->
 
@@ -510,9 +525,25 @@ troubleshooting scenario.
 
 - Fixed an issue that prevented the NTP servers configured on an Edge host through the
   [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) from being visible in Local UI. The
-  Edge host overview page now lists them in an **NTP Servers** field, so an operator working only in Local UI can
-  confirm the host's time synchronization settings. These servers remain specific to the host, and cluster-level NTP
-  configured in cluster settings continues to override them on every host in the cluster.
+  Edge host overview page now lists them in an **NTP Servers** field.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9302 -->
+
+- Fixed an issue that left a [two-node Edge cluster](../clusters/edge/architecture/two-node.md) without a Kubernetes API
+  server after the loss of the leader node. The surviving node did not complete its promotion, so the cluster virtual IP
+  served no traffic. Loss of the follower node was unaffected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9348 -->
+
+- Fixed an issue that could place the Kubernetes datastore of a
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) on ephemeral rather than persistent storage. Data
+  written since the last persistent snapshot was lost on reboot, and the node could not be promoted during failover.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9388 -->
+
+- Fixed an issue that prevented leader promotion from completing on a connected-mode
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) while Palette was unreachable, leaving the local
+  control plane unavailable until connectivity was restored. Promotion now completes without Palette connectivity.
 
 ### VerteX
 
@@ -567,63 +598,6 @@ troubleshooting scenario.
   cluster-admin privileges and who authenticate through OIDC. Refer to
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
   [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
-
-- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
-
-##### Features
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
-
-- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
-  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
-  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
-  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
-  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
-  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
-
-- A new
-  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
-  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
-  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
-  satisfy.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
-
-- The CDI Upload Proxy and KubeVirt Export Proxy are now exposed on the appliance so that `virtctl image-upload`
-  transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
-  only from inside the cluster.
-
-##### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->
-
-- The appliance audit trail now records a broader set of virtual machine lifecycle events, expanding the coverage
-  available to audit and compliance teams. Refer to [Audit Trail](../vm-management/vm-launchpad/system/audit.md) for the
-  full list of recorded events.
-
-##### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-987 -->
-
-- Fixed an issue in the **Snapshot Policies** creation and edit modal that caused the **Add label** action to silently
-  overwrite an existing label value after a middle label row was deleted. New label rows now receive unique keys, and
-  existing values are preserved.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1060 -->
-
-- Fixed an issue that caused the VMO Manager dashboard to under-report node CPU usage by up to 19 percentage points when
-  the appliance ran with an external metrics backend. Reported node CPU figures now match the values in the metrics
-  store.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
-
-- Fixed an issue in the virtual machine creation wizard that caused the default network interface boot-order field to be
-  omitted from new virtual machines when UEFI Boot, Secure Boot, TPM Device, and Persistent TPM were all enabled. The
-  wizard now sets `bootOrder=2` on the network interface for this firmware configuration.
 
 ### Automation
 
