@@ -286,9 +286,6 @@ mode Edge clusters in both connected and airgapped environments.
 Unified Kernel Image (UKI) deployments and Two node clusters do not support systemd extensions. Refer to
 [Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts. 
 
-The flag is a CanvOS 4.10 addition. Earlier CanvOS releases do not recognize it and continue to operate with the
-existing behavior.
-
 ### New Clusters
 
 When you provision a new appliance mode Edge cluster on an operating system with systemd 255 or later, take the
