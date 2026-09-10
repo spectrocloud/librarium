@@ -11,23 +11,62 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.10.x
+## September 10, 2026 - Release 4.10.x
 
 <!-- PATCH RELEASE TICKET: DOC-3205 -->
 <!-- PATCH RELEASE VERSION: 4.10.x -->
 
 ### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9382 -->
+
+- Fixed an issue in two-node Edge clusters where PostgreSQL failed to start after a provider-image swap due to TLS
+  keypair path mismatches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9345 -->
+
+- Fixed an issue where the Stylus operator did not retry registry connections when secrets appeared late, preventing
+  pack images from syncing to the registry.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9378 -->
+
+- Fixed an issue where Edge Kubernetes upgrades stalled after a reboot due to certificate authority validation failures
+  during pack downloads and login.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
 
-- Fixed an issue where a Palette agent upgrade re-ran the on-boot OS patch task on the existing nodes of a cluster that
-  has **Patch OS on boot** enabled, draining each node in turn. The task now runs only on nodes that it has not already
-  patched.
+- Fixed an issue where an agent upgrade inadvertently re-triggered node OS patching and left nodes in an unrecoverable
+  cordoned state if draining failed.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11869 -->
 
-- Fixed an issue where an orphaned `system-upgrade-controller` pod could remain in a cluster's `cluster-<cluster-uid>`
-  namespace and log `plans.upgrade.cattle.io CRD not found` errors. Palette now removes the pod.
+- Fixed an issue where Private Cloud Gateway (PCG) migrations did not transfer IP pool ownership.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9367 -->
+
+- Fixed a deadlock during two-node Edge cluster creation that occurred when the API virtual IP was unavailable.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11890 -->
+
+- Fixed an issue where vSphere Private Cloud Gateway (PCG) migrations failed to transfer cloud account associations,
+  preventing migrated clusters from being deleted.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.x Palette release is 4.10.4-rc.3.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.x Palette release is
+4.10.4-rc.2. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 8, 2026 - Release 4.10.14
 
