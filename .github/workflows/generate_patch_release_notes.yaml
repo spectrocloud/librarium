@@ -14,6 +14,9 @@ on:
       patch_version:
         description: "Palette patch release version, for example 4.9.48. Use a placeholder such as 4.9.x while it is undecided. Empty takes the version from the candidates JQL."
         required: false
+      patch_release_date:
+        description: "Palette patch release date as YYYY-MM-DD, for example 2026-09-14. Empty takes the date from the candidates JQL, or records it as PENDING when that JQL has no due date."
+        required: false
       component_updates:
         description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the two fields below are ignored."
         required: false
@@ -85,6 +88,7 @@ jobs:
           # nickfury repository that holds the component versions, so use the Vault token here.
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
+          PATCH_RELEASE_DATE: ${{ github.event.inputs.patch_release_date }}
           NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
           PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
           PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
