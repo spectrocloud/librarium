@@ -93,5 +93,3 @@
 ### Docs and Education
 
 {{ WEEKLY_COMPONENT_RELEASE_UPDATES }}
-
-#### Deprecations and Removals
