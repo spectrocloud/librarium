@@ -50,6 +50,33 @@ fi
 RELEASE_ARTIFACT_STUDIO="${RELEASE_ARTIFACT_STUDIO:-}"
 RELEASE_TERRAFORM_VERSION="${RELEASE_TERRAFORM_VERSION:-}"
 
+# Release signal (DOC-3195). A Component Updates run is a "release run" when its base branch is a
+# release branch (docs-rel-<major>-<minor>-<0|a|b|c>) rather than master. The operator picks this
+# with the workflow's Base branch field, so no separate input is needed. The workflows pass the
+# base branch as RELEASE_BASE_BRANCH: the generate form passes its base_branch input; the comment
+# workflow reads the PR's base branch via gh. Default to master for a local or manual run.
+RELEASE_BASE_BRANCH="${RELEASE_BASE_BRANCH:-master}"
+
+# Validate the base branch: it must be master or a well-formed release branch. This mirrors the
+# fast-fail guard in both workflows -- keep the regex in sync if it ever changes.
+if [[ "$RELEASE_BASE_BRANCH" != "master" && ! "$RELEASE_BASE_BRANCH" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+  echo "‼️  RELEASE_BASE_BRANCH is '$RELEASE_BASE_BRANCH'; expected 'master' or 'docs-rel-<major>-<minor>-<0|a|b|c>' (for example, docs-rel-4-10-a). ‼️" >&2
+  exit 1
+fi
+
+# Derive release-ness and, on a release run, the release version (docs-rel-4-10-a -> 4.10.a).
+# IS_RELEASE_RUN and RELEASE_VERSION drive the release-week fold-in and appliance-table updates
+# added in later phases of DOC-3195.
+if [[ "$RELEASE_BASE_BRANCH" == "master" ]]; then
+  IS_RELEASE_RUN=false
+  RELEASE_VERSION=""
+else
+  IS_RELEASE_RUN=true
+  RELEASE_VERSION=$(echo "$RELEASE_BASE_BRANCH" | sed -E 's/^docs-rel-([0-9]+)-([0-9]+)-(0|a|b|c)$/\1.\2.\3/')
+fi
+
+echo "ℹ️ Base branch: $RELEASE_BASE_BRANCH (release run: $IS_RELEASE_RUN${RELEASE_VERSION:+, version: $RELEASE_VERSION})"
+
 # Confirm Super authentication up front. The token is only rejected until its owner signs
 # in to Super through SSO, so checking here avoids making every issue tracker call below
 # and then failing at the one call that needs Super.

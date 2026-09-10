@@ -50,6 +50,17 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Validate base branch
+        run: |
+          # A release run is signaled by a docs-rel release branch; a normal weekly run uses master.
+          # Fail fast on anything else. This mirrors the guard in generate-component-updates-ai.sh.
+          # BASE_BRANCH is read from the shell environment (not interpolated into the workflow
+          # template) to avoid injecting an operator-supplied value into the shell.
+          if [[ "$BASE_BRANCH" != "master" && ! "$BASE_BRANCH" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+            echo "❌ Base branch '$BASE_BRANCH' is not 'master' or a well-formed 'docs-rel-<major>-<minor>-<0|a|b|c>' branch (for example, docs-rel-4-10-a)." >&2
+            exit 1
+          fi
+
       - name: Retrieve Credentials
         id: import-secrets
         uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
@@ -84,7 +95,7 @@ jobs:
       - name: Execute Script to Generate Component Updates
         run: |
           touch .env
-          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" make generate-component-updates
+          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" RELEASE_BASE_BRANCH="${{ env.BASE_BRANCH }}" make generate-component-updates
 
       - name: Create a PR with generated component updates
         env:

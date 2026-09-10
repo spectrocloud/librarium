@@ -127,6 +127,21 @@ jobs:
             echo "RELEASE_TERRAFORM_VERSION=$TERRAFORM"
           } >> "$GITHUB_ENV"
       
+      - name: Determine release base branch
+        if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # The release signal rides on the PR's base branch. BASE_BRANCH above is the PR head ref
+          # (used for checkout), not the base, so read the base separately. Validate the same way
+          # as generate_component_updates.yaml and the script, so release-ness is consistent.
+          BASE=$(gh pr view ${{ github.event.issue.number }} --json baseRefName --jq .baseRefName)
+          if [[ "$BASE" != "master" && ! "$BASE" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+            echo "❌ PR base branch '$BASE' is not 'master' or a well-formed 'docs-rel-<major>-<minor>-<0|a|b|c>' branch (for example, docs-rel-4-10-a)." >&2
+            exit 1
+          fi
+          echo "RELEASE_BASE_BRANCH=$BASE" >> "$GITHUB_ENV"
+
       - name: Execute Script to Generate Component Updates
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         env:
@@ -135,6 +150,7 @@ jobs:
           RELEASE_MANAGEMENT_APPLIANCE: ${{ env.RELEASE_MANAGEMENT_APPLIANCE }}
           RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
           RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
+          RELEASE_BASE_BRANCH: ${{ env.RELEASE_BASE_BRANCH }}
         run: |
           touch .env
           make generate-component-updates
