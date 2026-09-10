@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Markers written into a documentation table in place of a value that is not known yet. Each names
-# what is missing, so a reviewer can see which cells still need filling and can grep the docs for
-# "PENDING". They live here because the script that decides a value is pending and the scripts that
-# write the rows are not the same script, and a marker that differs between them would publish a
-# cell that no later run recognises as still pending.
+# Markers written into a documentation table or heading in place of a value that is not known yet.
+# Each names what is missing, so a reviewer can see what still needs filling and can grep the docs
+# for "PENDING". They live here because the script that decides a value is pending and the scripts
+# that write the rows are not the same script, and a marker that differs between them would publish
+# a cell that no later run recognises as still pending.
 PENDING_VERSION="VERSION PENDING"
 PENDING_URL="URL PENDING"
 PENDING_SHA="SHA PENDING"
+PENDING_DATE="DATE PENDING"
 
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
@@ -385,28 +386,39 @@ normalize_super_body() {
     rm -f "$stripped_file" "$formatted_file"
 }
 
-# Utility function to fetch a single file's raw contents from a (private) GitHub
-# repository at a given ref, using a token-based REST call. Writes the raw file
-# body to stdout. Requires the GITHUB_TOKEN environment variable.
+# Utility function to report whether the GitHub CLI can read a private Spectro Cloud repository.
+# Reading component versions from nickfury is always optional: it saves looking a version up by
+# hand, and every caller falls back to the values already in .env when it is not available. So this
+# is a capability check rather than a requirement, and a writer without the CLI is told what to set
+# up rather than being stopped.
+#
+# The CLI is used in place of a personal access token in .env, because Spectro Cloud issues
+# short-lived GitHub credentials through Bulwark rather than long-lived tokens. `gh` holds that
+# credential itself, and in CI it reads the token the workflow exports, so neither case needs a
+# token recorded in a file.
+github_cli_ready() {
+    command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1
+}
+
+# Utility function to fetch a single file's raw contents from a (private) GitHub repository at a
+# given ref, through the GitHub CLI. Writes the raw file body to stdout.
 # Params:
 # $1 - repository, example: spectrocloud/nickfury
 # $2 - ref (branch, tag, or SHA), example: v4.9.21
 # $3 - file path within the repo, example: release/spectro_versions.txt
+# Returns 1 if the CLI is unavailable or the file cannot be read.
 fetch_github_file() {
     local repo="$1"
     local ref="$2"
     local path="$3"
 
-    if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-        echo "🟠 GITHUB_TOKEN is empty or not set; cannot fetch $repo/$path." >&2
+    if ! github_cli_ready; then
+        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and run 'gh auth login' to look component versions up automatically." >&2
         return 1
     fi
 
-    curl -sfL \
-        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-        -H "Accept: application/vnd.github.raw" \
-        -H "X-GitHub-Api-Version: 2022-11-28" \
-        "https://api.github.com/repos/${repo}/contents/${path}?ref=${ref}"
+    gh api "repos/${repo}/contents/${path}?ref=${ref}" \
+        --header "Accept: application/vnd.github.raw" 2>/dev/null
 }
 
 # Utility function to read a "key=value" line from text on stdin and return the
