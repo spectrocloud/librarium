@@ -156,6 +156,7 @@ skipped when its environment variable is already set.
 | **Question**                                                      | **Answer**                                                                      | **Environment Variable**  |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------- |
 | Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                  | `PATCH_RELEASE_VERSION`   |
+| The Palette patch release date                                    | Give it as `YYYY-MM-DD`, or leave it empty to record the date as pending.       | `PATCH_RELEASE_DATE`      |
 | Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.      | `PATCH_COMPONENT_UPDATES` |
 | Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                   | `NICKFURY_REF`            |
 | The Palette CLI checksum                                          | Paste it from ReTool, type `derive`, or leave it empty to record it as pending. | `PATCH_PALETTE_CLI_SHA`   |
@@ -172,6 +173,13 @@ A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so
 prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
 reported. Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the
 notes before the version is decided and re-run once it is confirmed.
+
+The section heading is dated from the end of the due date window that the candidates JQL searches. A ticket whose JQL
+searches on something else, or whose due date is not set yet, leaves the date unknown, so the target asks you for it.
+Leaving that answer empty heads the section with a `DATE PENDING` marker rather than stopping, and because a later run
+refreshes the heading, the run you make once the date is known replaces the marker. The target reads both spellings of
+the due date field, `due` and `duedate`, and both shapes of the `fixVersion` clause, a single value and a list, so a
+candidates link written either way is understood.
 
 Each generated section records the version it was built for in a `<!-- PATCH RELEASE VERSION: ... -->` comment. When a
 later run confirms a different version, the target removes the rows the earlier run wrote for the old one, so a
