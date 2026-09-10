@@ -293,16 +293,17 @@ page.
 
 #### Issue Tracker and Super API
 
-| **Environment Variable** | **Description**                                                                               | **Example Value**       |
-| ------------------------ | --------------------------------------------------------------------------------------------- | ----------------------- |
-| `JIRA_EMAIL`             | Issue tracker email.                                                                          | `name@spectrocloud.com` |
-| `JIRA_API_TOKEN`         | Issue tracker API token.                                                                      | `XXX`                   |
-| `SUPER_API_TOKEN`        | Super API token.                                                                              | `XXX`                   |
-| `GITHUB_TOKEN`           | _(Optional)_ GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
+| **Environment Variable** | **Description**          | **Example Value**       |
+| ------------------------ | ------------------------ | ----------------------- |
+| `JIRA_EMAIL`             | Issue tracker email.     | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Issue tracker API token. | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
-`GITHUB_TOKEN` is only needed to look up component versions. Set it in your `.env` file, the same as the other tokens.
-When it is not set, the scripts fall back to the token the GitHub CLI already holds, so a machine that has run
-`gh auth login` against the organisation needs no `.env` entry at all. The scripts say which of the two they used.
+Looking component versions up from the private `spectrocloud/nickfury` repository is optional, and needs no token in
+your `.env` file. The scripts read it through the [GitHub CLI](https://cli.github.com), so a machine that has run
+`gh auth login` against the organisation can look versions up, and one that has not is told so and falls back to the
+values you set yourself. Spectro Cloud issues short-lived GitHub credentials through Bulwark rather than long-lived
+personal access tokens, so authenticate the CLI with one of those rather than storing a token.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
@@ -377,6 +378,7 @@ skipped when its environment variable is already set.
 | **Question**                                                      | **Answer**                                                                         | **Environment Variable**      |
 | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------- |
 | Do you know the Palette patch release version?                    | Yes, give the version. No, give a placeholder such as `4.9.x`.                     | `PATCH_RELEASE_VERSION`       |
+| The Palette patch release date                                    | Give it as `YYYY-MM-DD`, or leave it empty to record the date as pending.          | `PATCH_RELEASE_DATE`          |
 | Does this patch add a new CanvOS or Palette CLI version, or both? | No, only the release notes body is generated and no other page is touched.         | `PATCH_COMPONENT_UPDATES`     |
 | Do you know the nickfury branch or tag name?                      | Yes, give the name. No, the pending markers are used instead.                      | `NICKFURY_REF`                |
 | The Linux AMD64 Palette CLI checksum                              | Paste it from ReTool, type `derive`, or leave it empty to record it as pending.    | `PATCH_PALETTE_CLI_SHA`       |
@@ -399,6 +401,13 @@ A patch ticket often names its `fixVersion` as a placeholder such as `4.9.x`, so
 prompt heads the new section. A placeholder is a valid answer, and pressing Enter accepts the one the candidates JQL
 reported. Re-running the target on the same ticket refreshes the section, including its heading, so you can draft the
 notes before the version is decided and re-run once it is confirmed.
+
+The section heading is dated from the end of the due date window that the candidates JQL searches. A ticket whose JQL
+searches on something else, or whose due date is not set yet, leaves the date unknown, so the target asks you for it.
+Leaving that answer empty heads the section with a `DATE PENDING` marker rather than stopping, and because a later run
+refreshes the heading, the run you make once the date is known replaces the marker. The target reads both spellings of
+the due date field, `due` and `duedate`, and both shapes of the `fixVersion` clause, a single value and a list, so a
+candidates link written either way is understood.
 
 Each generated section records the version it was built for in a `<!-- PATCH RELEASE VERSION: ... -->` comment. When a
 later run confirms a different version, the target removes the rows the earlier run wrote for the old one, so a
