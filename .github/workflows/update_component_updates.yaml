@@ -94,12 +94,12 @@ jobs:
             | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9._-]+).*/\1/'
           )
           ARTIFACT=$(
-            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]+).*/\1/'
+            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]*).*/\1/'
           )
           TERRAFORM=$(
-            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]+).*/\1/'
+            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]*).*/\1/'
           )
 
           if [[ -z "$TICKET" ]]; then
@@ -114,14 +114,8 @@ jobs:
             echo "❌ No RELEASE MANAGEMENT APPLIANCE found" >&2
             exit 1
           fi
-          if [[ -z "$ARTIFACT" ]]; then
-            echo "❌ No RELEASE ARTIFACT STUDIO found" >&2
-            exit 1
-          fi
-          if [[ -z "$TERRAFORM" ]]; then
-            echo "❌ No RELEASE TERRAFORM VERSION found" >&2
-            exit 1
-          fi
+          # Artifact Studio and Terraform are optional (not every week releases them). An empty
+          # value is valid and its component-table row is dropped downstream, so do not fail here.
 
           {
             echo "JIRA_TICKET=$TICKET"

@@ -44,15 +44,11 @@ if ! check_env "RELEASE_MANAGEMENT_APPLIANCE"; then
     exit 1
 fi
 
-if ! check_env "RELEASE_ARTIFACT_STUDIO"; then
-    echo "‼️  RELEASE_ARTIFACT_STUDIO environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
-
-if ! check_env "RELEASE_TERRAFORM_VERSION"; then
-    echo "‼️  RELEASE_TERRAFORM_VERSION environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
+# Artifact Studio and Terraform versions are optional: not every week releases these components.
+# Normalize an unset variable to empty so `set -u` does not trip, and so the corresponding
+# component-table row can be dropped when the version is blank (see the render step below).
+RELEASE_ARTIFACT_STUDIO="${RELEASE_ARTIFACT_STUDIO:-}"
+RELEASE_TERRAFORM_VERSION="${RELEASE_TERRAFORM_VERSION:-}"
 
 # Confirm Super authentication up front. The token is only rejected until its owner signs
 # in to Super through SSO, so checking here avoids making every issue tracker call below
@@ -402,6 +398,18 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
     "RELEASE_TERRAFORM_VERSION" \
     "RELEASE_MANAGEMENT_APPLIANCE" \
     "SUPER_COMPONENT_UPDATES_BODY"
+
+  # Artifact Studio and Terraform are optional. When their version is blank, drop the matching
+  # component-table row(s) rather than emit an empty version cell (which reads as an error).
+  # RELEASE_TERRAFORM_VERSION feeds BOTH the Terraform and Crossplane rows. The metadata HTML
+  # comments above the table keep the (empty) value so the comment-triggered refresh round-trips.
+  if [[ -z "$RELEASE_ARTIFACT_STUDIO" ]]; then
+    remove_line_containing "[Artifact Studio]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
+  if [[ -z "$RELEASE_TERRAFORM_VERSION" ]]; then
+    remove_line_containing "Spectro Cloud Terraform provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+    remove_line_containing "Spectro Cloud Crossplane provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
 
   insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
   echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."

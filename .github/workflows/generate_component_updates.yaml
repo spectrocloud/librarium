@@ -14,11 +14,11 @@ on:
         description: "The release management appliance for the component update (e.g., 4.8.6)"
         required: true
       release_artifact_studio:
-        description: "The release artifact studio for the component update (e.g., 4.8.6)"
-        required: true
+        description: "The release artifact studio for the component update (e.g., 4.8.6). Leave blank on a week Artifact Studio did not release; its row is dropped automatically."
+        required: false
       release_terraform_version:
-        description: "The release terraform version for the component update (e.g., 0.28.1)"
-        required: true
+        description: "The release terraform version for the component update (e.g., 0.28.1). Leave blank on a week Terraform did not release; the Terraform and Crossplane rows are dropped automatically."
+        required: false
       base_branch:
         description: "The base branch for the component update PR (default: master)"
         required: true
