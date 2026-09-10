@@ -284,17 +284,7 @@ mode Edge clusters in both connected and airgapped environments.
 - Palette can deliver all supported Kubernetes variants through systemd extensions.
 
 Unified Kernel Image (UKI) deployments and Two node clusters do not support systemd extensions. Refer to
-[Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts.
-
-### `BUNDLE_K8S_AND_AGENT_PROVIDER` Flag Behavior
-
-The `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the CanvOS `.arg` file controls whether Kubernetes and Palette Agent
-provider binaries are embedded in the provider image.
-
-| **Operating System**     | **Default `BUNDLE_K8S_AND_AGENT_PROVIDER` Value** | **Notes**                                                                                         |
-| ------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| systemd 255 or later     | Excluded (delivered by systemd extensions)        | Set the flag to `true` when a specific flow requires the binaries embedded in the provider image. |
-| systemd earlier than 255 | Included                                          | Setting the flag has no effect. Binaries are always embedded on these operating systems.          |
+[Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts.        |
 
 The flag is a CanvOS 4.10 addition. Earlier CanvOS releases do not recognize it and continue to operate with the
 existing behavior.
