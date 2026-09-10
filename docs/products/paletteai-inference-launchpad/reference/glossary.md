@@ -185,7 +185,9 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 
 An OpenAI-compatible inference host registered on the appliance as an appliance-wide [egress](#egress) target. The host
 can be a hosted router, a partner API, a second appliance, or an in-house inference server. After you register it, its
-models appear in a client's routing picker, and traffic to it is metered as egress. Refer to
+models appear in a client's routing picker, and traffic to it is metered as egress. The host can authenticate the
+appliance with a key, custom headers, or both, and can present a self-signed or private-CA certificate the appliance
+trusts individually. Refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## F
