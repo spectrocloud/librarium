@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Markers written into a documentation table in place of a value that is not known yet. Each names
-# what is missing, so a reviewer can see which cells still need filling and can grep the docs for
-# "PENDING". They live here because the script that decides a value is pending and the scripts that
-# write the rows are not the same script, and a marker that differs between them would publish a
-# cell that no later run recognises as still pending.
+# Markers written into a documentation table or heading in place of a value that is not known yet.
+# Each names what is missing, so a reviewer can see what still needs filling and can grep the docs
+# for "PENDING". They live here because the script that decides a value is pending and the scripts
+# that write the rows are not the same script, and a marker that differs between them would publish
+# a cell that no later run recognises as still pending.
 PENDING_VERSION="VERSION PENDING"
 PENDING_URL="URL PENDING"
 PENDING_SHA="SHA PENDING"
+PENDING_DATE="DATE PENDING"
 
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
