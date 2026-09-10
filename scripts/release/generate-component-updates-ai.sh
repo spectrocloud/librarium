@@ -257,6 +257,13 @@ generate_parameterised_file_local_vars \
   "RELEASE_COMPONENT_YEAR" \
   "RELEASE_COMPONENT_WEEK"
 
+# On a release run the Component Updates block nests under the release "## ... - Release X.Y.z"
+# heading, so demote its own heading one level (## -> ###). DOC-3195 Phase C. The anchor and text
+# are untouched, so the existing-heading search and cross-link updates below still match.
+if [[ "$IS_RELEASE_RUN" == true ]]; then
+  sed -i '' '1s/^## /### /' "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE"
+fi
+
 existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     replace_line $existing_notes $COMPONENT_UPDATES_HEADING_OUTPUT_FILE $RELEASE_NOTES_FILE
@@ -438,8 +445,25 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
     remove_line_containing "Spectro Cloud Crossplane provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
   fi
 
-  insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
-  echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  if [[ "$IS_RELEASE_RUN" == true ]]; then
+    # Release run: fold the block into the release section. Demote its heading one level (## -> ###)
+    # so it nests under the release "##", then replace the {{ WEEKLY_COMPONENT_RELEASE_UPDATES }}
+    # placeholder the release scaffold left (see scripts/release/templates/release-notes.md) instead
+    # of adding a new top-level section after <ReleaseNotesVersions />. The block carries its own
+    # "### Packs" (with markers keyed to the component-updates ticket), so the scaffold's markerless
+    # "### Packs" was removed to leave a single packs table. DOC-3195 Phase C.
+    sed -i '' '1s/^## /### /' "$COMPONENT_UPDATES_OUTPUT_FILE"
+    placeholder_line=$(search_line "{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}" "$RELEASE_NOTES_FILE")
+    if [[ -z "$placeholder_line" || "$placeholder_line" -eq 0 ]]; then
+      echo "❌ Release run, but the {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder was not found in $RELEASE_NOTES_FILE. Was the release scaffold generated from the updated template?" >&2
+      exit 1
+    fi
+    replace_line "$placeholder_line" "$COMPONENT_UPDATES_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
+    echo "✅ Component updates folded into the release section at the placeholder in $RELEASE_NOTES_FILE."
+  else
+    insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
+    echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  fi
   cleanup $COMPONENT_UPDATES_OUTPUT_FILE
 
 fi
