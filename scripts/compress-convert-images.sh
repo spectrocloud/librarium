@@ -5,8 +5,12 @@ set -e
 
 echo "Checking for files not in WebP format in static/assets/docs/images/ folder..."
 
-# Find files that are not in WebP format and are not .DS_STORE files
-non_webp_files=$(find static/assets/docs/images/ -type f ! -name "*.webp" ! -name "*.gif" -not -name ".DS_STORE")
+# Find files that are not in WebP format, excluding dotfiles.
+# find -name is case-sensitive, so the previous ".DS_STORE" exclusion never
+# matched the real ".DS_Store" filename macOS creates. Excluding all dotfiles
+# covers that and its siblings (AppleDouble "._*" files, .gitkeep) rather than
+# chasing one spelling at a time.
+non_webp_files=$(find static/assets/docs/images/ -type f ! -name "*.webp" ! -name "*.gif" ! -name ".*")
 
 # Check if there are any non-WebP files
 if [[ -n "$non_webp_files" ]]; then

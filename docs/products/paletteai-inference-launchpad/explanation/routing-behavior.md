@@ -58,9 +58,10 @@ Each Tier map row has three columns.
 - **Model.** A model the appliance serves, or the special picker value **Choose per request**. When Model is a served
   model, the Tier map settles the request in Stage 1. When Model is **Choose per request**, the alias is handed to the
   semantic router in Stage 2.
-- **Thinking.** A directive attached to the chosen model, one of `off`, `on`, `budget` (with a token count), or `effort`
-  (with a level: low, medium, high, max). The directive follows the request onto whichever model answers, even when the
-  semantic router picks that model.
+- **Thinking.** A directive attached to the chosen model that tells a reasoning-capable model how much reasoning to do
+  before it answers. The directive follows the request onto whichever model answers, even when the semantic router picks
+  that model. For the modes, levels, and per-engine behavior, refer to
+  [The Thinking Directive](./thinking-directive.md).
 
 A client that names a model no row matches, and no other rule catches, falls back to the box's **Fallback for unmatched
 requests**. When that fallback is off, the appliance returns HTTP `404`.
