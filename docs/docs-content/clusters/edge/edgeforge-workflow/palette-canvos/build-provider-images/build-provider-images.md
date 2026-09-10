@@ -283,7 +283,7 @@ mode Edge clusters in both connected and airgapped environments.
 - **CanvOS 4.10.3** or later to build provider images that opt in or out of the extensions path.
 - Palette can deliver all supported Kubernetes variants through systemd extensions.
 
-Unified Kernel Image (UKI) deployments do not support systemd extensions. Refer to
+Unified Kernel Image (UKI) deployments and Two node clusters do not support systemd extensions. Refer to
 [Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts.
 
 ### `BUNDLE_K8S_AND_AGENT_PROVIDER` Flag Behavior
