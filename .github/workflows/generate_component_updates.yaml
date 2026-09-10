@@ -93,6 +93,10 @@ jobs:
           npm ci
       
       - name: Execute Script to Generate Component Updates
+        env:
+          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # via the GitHub CLI on a release run, so it needs an authenticated token here too.
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           touch .env
           JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" RELEASE_BASE_BRANCH="${{ env.BASE_BRANCH }}" make generate-component-updates
@@ -105,8 +109,11 @@ jobs:
           branch_name="${{ env.JIRA_TICKET }}-generate-component-updates-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Commit and push the changes
-          git add docs/docs-content/release-notes/release-notes.md
+          # Commit and push the changes. On a release run the script may also update the appliance
+          # Kubernetes Requirements tables, so stage those pages too (no-op when unchanged).
+          git add docs/docs-content/release-notes/release-notes.md \
+                  docs/docs-content/enterprise-version/install-palette/install-palette.md \
+                  docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md
           git commit -m "docs: add component updates for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 

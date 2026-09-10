@@ -151,6 +151,9 @@ jobs:
           RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
           RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
           RELEASE_BASE_BRANCH: ${{ env.RELEASE_BASE_BRANCH }}
+          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # via the GitHub CLI on a release run, so it needs an authenticated token here too.
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           touch .env
           make generate-component-updates
@@ -169,7 +172,11 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
-          git add docs/docs-content/release-notes/release-notes.md
+          # On a release run the script may also update the appliance Kubernetes Requirements tables,
+          # so stage those pages too (no-op when unchanged).
+          git add docs/docs-content/release-notes/release-notes.md \
+                  docs/docs-content/enterprise-version/install-palette/install-palette.md \
+                  docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md
 
           if git diff --cached --quiet; then
             echo "ℹ️  No release notes changes to commit."

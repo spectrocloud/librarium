@@ -468,6 +468,83 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
 
 fi
 
+# ---------------------------------------------------------------------------------------------------
+# Appliance Kubernetes Requirements tables (DOC-3195 Phase D).
+#
+# On a release run that coincides with a Management Appliance release, prepend a newest-first row to
+# the Palette and VerteX "... Management Appliance" Kubernetes Requirements tables. The Palette Version
+# column is RELEASE_MANAGEMENT_APPLIANCE (a form input); the Kubernetes Version is derived from the
+# spectro-appliance-builder RC values so it is never transcribed by hand. A RELEASE_MANAGEMENT_APPLIANCE
+# of "NA" or empty means no appliance shipped this release, so the tables are left untouched. Deriving
+# the version and comparing it against the current top row also makes reruns idempotent.
+# ---------------------------------------------------------------------------------------------------
+
+APPLIANCE_BUILDER_REPO="spectrocloud/spectro-appliance-builder"
+APPLIANCE_BUILDER_REF="main"
+INSTALL_PALETTE_FILE="docs/docs-content/enterprise-version/install-palette/install-palette.md"
+INSTALL_VERTEX_FILE="docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md"
+
+# Derive the Kubernetes version from a spectro-appliance-builder k8s.yaml. Prefer the explicit
+# kubernetesVersion field; fall back to the kube-apiserver image tag. Strips the leading v.
+derive_appliance_k8s_version() {
+  local values_path="$1" contents k8s
+  contents=$(fetch_github_file "$APPLIANCE_BUILDER_REPO" "$APPLIANCE_BUILDER_REF" "$values_path") || return 1
+  k8s=$(printf '%s\n' "$contents" | grep -m1 -E '^[[:space:]]*kubernetesVersion:' | sed -E 's/.*kubernetesVersion:[[:space:]]*v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  if [[ -z "$k8s" ]]; then
+    k8s=$(printf '%s\n' "$contents" | grep -m1 -E 'kube-apiserver:v?[0-9]+\.[0-9]+\.[0-9]+' | sed -E 's/.*kube-apiserver:v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  fi
+  [[ -n "$k8s" ]] || return 1
+  printf '%s' "$k8s"
+}
+
+# Read the top data row's Palette Version cell from an appliance Kubernetes Requirements table (the
+# table whose header row carries both "Palette Version" and "Kubernetes Version").
+appliance_table_top_version() {
+  local file="$1"
+  [[ -f "$file" ]] || return 0
+  awk '
+    !in_table && /^\|/ && index($0, "Palette Version") && index($0, "Kubernetes Version") { in_table = 1; next }
+    !in_table { next }
+    /^\|[[:space:]]*-+/ { next }
+    !/^\|/ { exit }
+    { split($0, cells, "|"); v = cells[2]; gsub(/\*/, "", v); gsub(/^[[:space:]]+|[[:space:]]+$/, "", v); print v; exit }
+  ' "$file"
+}
+
+# Prepend "| <appliance> | <k8s> |" directly after the appliance table's header separator row.
+prepend_appliance_row() {
+  local file="$1" appliance="$2" k8s="$3" tmp
+  tmp="$(mktemp)"
+  awk -v appliance="$appliance" -v k8s="$k8s" '
+    done { print; next }
+    { print }
+    /^\|/ && index($0, "Palette Version") && index($0, "Kubernetes Version") { in_appliance = 1; next }
+    in_appliance && /^\|[[:space:]]*-+/ { print "| " appliance " | " k8s " |"; done = 1; in_appliance = 0 }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
+update_appliance_table() {
+  local edition_label="$1" file="$2" values_path="$3" k8s top
+  if ! k8s=$(derive_appliance_k8s_version "$values_path"); then
+    echo "⚠️ Could not derive the $edition_label Kubernetes version from $APPLIANCE_BUILDER_REPO ($values_path); leaving $file unchanged." >&2
+    return 0
+  fi
+  top=$(appliance_table_top_version "$file")
+  if [[ "$top" == "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
+    echo "ℹ️ $edition_label appliance table already lists $RELEASE_MANAGEMENT_APPLIANCE; no change."
+    return 0
+  fi
+  prepend_appliance_row "$file" "$RELEASE_MANAGEMENT_APPLIANCE" "$k8s"
+  npx prettier --write "$file" >/dev/null 2>&1 || true
+  echo "✅ Prepended $RELEASE_MANAGEMENT_APPLIANCE / $k8s to the $edition_label appliance table in $file."
+}
+
+if [[ "$IS_RELEASE_RUN" == true && -n "$RELEASE_MANAGEMENT_APPLIANCE" && "$RELEASE_MANAGEMENT_APPLIANCE" != "NA" ]]; then
+  echo "ℹ️ Release run with Management Appliance $RELEASE_MANAGEMENT_APPLIANCE; checking the appliance Kubernetes Requirements tables."
+  update_appliance_table "Palette" "$INSTALL_PALETTE_FILE" "values-yaml/rc/palette-values/k8s.yaml"
+  update_appliance_table "VerteX" "$INSTALL_VERTEX_FILE" "values-yaml/rc/vertex-values/k8s.yaml"
+fi
+
 # Process the Platone issues to generate the packs list in the release notes
 if (( ${#PLATONE_ISSUES[@]} == 0 )); then
   echo "ℹ️  No Platone issues found for ticket: $JIRA_TICKET. Nothing to do here." >&2
