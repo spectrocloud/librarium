@@ -774,9 +774,7 @@ When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4
 Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette 4.5.x through
 4.6.9 might still be at FCV 6.0.
 
-The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that does not become Ready. The usual failure
-state is one Pod on the MongoDB 8 image crash-looping while the other two are still on the previous MongoDB 7 image, so
-a ReplicaSet primary is still elected on one of the remaining Pods.
+The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that does not become Ready. In the usual failure, one Pod on the MongoDB 8 image is crash-looping while the other two are still on the MongoDB 7 image — a majority — so the ReplicaSet still has a working primary that can accept the FCV change.
 
 ### Debug Steps
 
@@ -809,9 +807,127 @@ a ReplicaSet primary is still elected on one of the remaining Pods.
      previous MongoDB 7 tag and wait for the Pods to become Ready, then proceed to step 7. After the FCV is raised,
      restore the MongoDB 8 image or re-run the upgrade.
 
-7. Raise the FCV to 7.0.
+7. Run the following command to find the current MongoDB FCV. 
 
-   <PartialsComponent category="self-hosted" name="mongodb-fcv-check-and-raise" />
+   <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+   <TabItem label="Palette" value="palette">
+
+   ```shell
+   kubectl exec --namespace hubble-system mongo-0 --container mongo -- bash -c \
+   'mongosh \
+      --username "$MONGO_INITDB_ROOT_USERNAME" \
+      --password "$MONGO_INITDB_ROOT_PASSWORD" \
+      admin --quiet \
+      --eval "printjson(db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 }))"'
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```shell
+   kubectl exec --namespace hubble-system mongo-0 --container mongo -- bash -c \
+   'mongosh \
+      --username "$MONGODB_INITDB_ROOT_USERNAME" \
+      --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+      --host "$HOSTNAME" \
+      --tls \
+      --tlsCAFile /var/mongodb/tls/ca.crt \
+      --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+      --tlsAllowInvalidHostnames \
+      admin --quiet \
+      --eval "printjson(db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 }))"'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+8. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary Pod and save its name to `MONGO_PRIMARY`.
+
+   <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+   <TabItem label="Palette" value="palette">
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec --namespace hubble-system mongo-1 --container mongo -- bash -c \
+        'mongosh \
+           --username "$MONGO_INITDB_ROOT_USERNAME" \
+           --password "$MONGO_INITDB_ROOT_PASSWORD" \
+           admin --quiet \
+           --eval "print(JSON.stringify(rs.hello()))"' \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec --namespace hubble-system mongo-1 --container mongo -- bash -c \
+        'mongosh \
+           --username "$MONGODB_INITDB_ROOT_USERNAME" \
+           --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+           --host "$HOSTNAME" \
+           --tls \
+           --tlsCAFile /var/mongodb/tls/ca.crt \
+           --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+           --tlsAllowInvalidHostnames \
+           admin --quiet \
+           --eval "print(JSON.stringify(rs.hello()))"' \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+9. Raise FCV to 7.0 on the primary Pod.
+
+   <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+   <TabItem label="Palette" value="palette">
+
+   ```shell
+   kubectl exec --namespace hubble-system "${MONGO_PRIMARY}" --container mongo -- bash -c \
+     'mongosh \
+        --username "$MONGO_INITDB_ROOT_USERNAME" \
+        --password "$MONGO_INITDB_ROOT_PASSWORD" \
+        admin --quiet \
+        --eval "printjson(db.adminCommand({ setFeatureCompatibilityVersion: \"7.0\", confirm: true }))"'
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```shell
+   kubectl exec --namespace hubble-system "${MONGO_PRIMARY}" --container mongo -- bash -c \
+     'mongosh \
+        --username "$MONGODB_INITDB_ROOT_USERNAME" \
+        --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+        --host "$HOSTNAME" \
+        --tls \
+        --tlsCAFile /var/mongodb/tls/ca.crt \
+        --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+        --tlsAllowInvalidHostnames \
+        admin --quiet \
+        --eval "printjson(db.adminCommand({ setFeatureCompatibilityVersion: \"7.0\", confirm: true }))"'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+Rerun the check command from earlier against `mongo-1` and `mongo-2` to confirm that all three ReplicaSet members
+return `7.0`.
 
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 

@@ -3,15 +3,8 @@ partial_category: self-hosted
 partial_name: mongodb-fcv-precheck
 ---
 
-**(4.7.x to 4.8.x)** {props.edition} 4.8 upgrades MongoDB to 8.0, which does not start if the stored MongoDB Feature
-Compatibility Version (FCV) is still `6.0`. Clusters whose MongoDB data was first created on {props.edition} 4.5.x
-through 4.6.9 might still be at FCV 6.0 and must be raised to 7.0 before upgrading to {props.edition} 4.8. Your current
-{props.edition} version does not indicate whether this applies; check the value directly. If you proceed with FCV at
-`6.0`, the `mongo` Pods in the `hubble-system` namespace enter `CrashLoopBackOff` with
-`Invalid feature compatibility version value '6.0'`. Set the `KUBECONFIG` environment variable to point to the
-management cluster kubeconfig file before running the commands below.
+**(4.7.x to 4.8.x)**  If the MongoDB data for your clusters was first created on {props.edition} 4.5.x through 4.6.9, the MongoDB Feature
+Compatibility Version (FCV) might be at 6.0, which prevents you from upgrading to {props.edition} 4.8. You must raise the FCV to 7.0 before upgrading because {props.edition} 4.8 uses MongoDB 8.0.
 
-<PartialsComponent category="self-hosted" name="mongodb-fcv-check-and-raise" edition={props.edition} />
-
-If the upgrade has already failed with the error above, refer to
-<VersionedLink text="Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade" url="/troubleshooting/enterprise-install/#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade" />.
+To learn how to check the FCV version and upgrade to FCV 7.0 if necessary, refer to
+[Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade](/troubleshooting/enterprise-install#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade).
