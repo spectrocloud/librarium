@@ -11,6 +11,55 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 10, 2026 - Release 4.10.16
+
+<!-- PATCH RELEASE TICKET: DOC-3205 -->
+<!-- PATCH RELEASE VERSION: 4.10.16 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9345 -->
+
+- Fixed an issue where `stylus-operator` did not retry the registry connection when the `zot-secret` appeared late,
+  which left pack images missing from Zot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9378 -->
+
+- Fixed an issue where Edge Kubernetes upgrades to version 1.33.5 stalled following a hostname-validation reboot due to
+  x509 certificate verification failures during Stylus pack download and edge login.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9382 -->
+
+- Fixed an issue on two-node Edge clusters where PostgreSQL failed to start after a provider image swap, because the TLS
+  key pair paths were split across persistent and ephemeral storage.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11869 -->
+
+- Fixed an issue where Private Cloud Gateway (PCG) migrations did not transfer IP pool ownership.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+
+- Fixed an issue where Ally upgrades retriggered on-boot operating system patching drains across nodes, causing nodes
+  with failed drains to remain cordoned indefinitely.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11890 -->
+
+- Fixed an issue during vSphere Private Cloud Gateway (PCG) migrations where the cloud account's overlord UID was not
+  transferred, preventing migrated clusters from being deleted.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9367 -->
+
+- Fixed an issue where two-node cluster creation deadlocked permanently when the API VIP was unavailable due to nodes
+  mutually fencing each other and evicting kube-vip.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.16 Palette release is 4.10.4.
+
+:::
+
 ## September 8, 2026 - Release 4.10.14
 
 <!-- PATCH RELEASE TICKET: DOC-3193 -->
