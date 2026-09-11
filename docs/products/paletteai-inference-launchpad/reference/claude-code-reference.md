@@ -38,10 +38,11 @@ not include `/v1`. If you do not know the address, ask the administrator who set
 
 ## Model Name
 
-Claude Code requests a Claude alias (`claude-opus-4-8`, `claude-sonnet-4-5`, or `claude-haiku-4-5`), and the appliance
-maps that alias to the model it serves. Set `ANTHROPIC_MODEL` to one of these aliases. You do not select a backend model
-directly. Both the aliases the appliance accepts and the ids of the models it serves, such as `glm-5.2`, appear in the
-console's model list and in the appliance's `/v1/models` API response.
+Claude Code requests a Claude alias, such as `claude-opus-4-8`, and the appliance maps that alias to the model it
+serves. To pin every request to one alias, set `ANTHROPIC_MODEL` to it. For the alias Claude Code requests for each
+tier, refer to [Environment Variables](#environment-variables). You do not select a backend model directly. Both the
+aliases the appliance accepts and the ids of the models it serves, such as `glm-5.2`, appear in the console's model list
+and in the appliance's `/v1/models` API response.
 
 ## Token Quotas
 
