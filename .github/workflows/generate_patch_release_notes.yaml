@@ -15,15 +15,24 @@ on:
         description: "Palette patch release version, for example 4.9.48. Use a placeholder such as 4.9.x while it is undecided. Empty takes the version from the candidates JQL."
         required: false
       patch_release_date:
-        description: "Palette patch release date as YYYY-MM-DD, for example 2026-09-14. Empty takes the date from the candidates JQL, or records it as PENDING when that JQL has no due date."
+        description: "Palette patch release date as YYYY-MM-DD, for example 2026-09-14. Overrides the candidates JQL, which is not a reliable record of when a patch shipped. Enter pending to record it as PENDING. Empty takes the date from the candidates JQL, then the ticket due date."
+        required: false
+      candidate_issues:
+        description: "Final issue keys to document, for example \"PE-9345 PEM-11891\". Overrides the candidates JQL. Empty resolves them from the ticket, and leaves the body to be written by hand when the ticket names none."
         required: false
       component_updates:
-        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the two fields below are ignored."
+        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the fields below are ignored. Clearing it on a re-run also removes the rows an earlier run wrote."
         required: false
         type: boolean
         default: false
       nickfury_ref:
-        description: "nickfury branch or tag holding those versions, for example release-4.9 or v4.9.47-rc.2. Empty records the versions as PENDING."
+        description: "nickfury branch or tag holding those versions, for example release-4.9 or v4.9.47-rc.2. Empty falls back to the two version fields below."
+        required: false
+      canvos_version:
+        description: "CanvOS (stylus) version, for example 4.9.40. Overrides nickfury. Enter same when this patch did not bump it, which removes any row an earlier run wrote. Empty records it as PENDING."
+        required: false
+      palette_cli_version:
+        description: "Palette CLI version, for example 4.9.22. Overrides nickfury. Enter same when this patch did not bump it, which removes any row an earlier run wrote. Empty records it as PENDING."
         required: false
       palette_cli_sha:
         description: "Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
@@ -89,7 +98,10 @@ jobs:
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
           PATCH_RELEASE_DATE: ${{ github.event.inputs.patch_release_date }}
+          PATCH_CANDIDATE_ISSUES: ${{ github.event.inputs.candidate_issues }}
           NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
+          PATCH_CANVOS_VERSION: ${{ github.event.inputs.canvos_version }}
+          PATCH_PALETTE_CLI_VERSION: ${{ github.event.inputs.palette_cli_version }}
           PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
           PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
         run: |
