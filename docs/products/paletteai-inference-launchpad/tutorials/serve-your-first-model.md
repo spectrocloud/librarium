@@ -297,10 +297,14 @@ cd <path-to-your-project>
 claude
 ```
 
-Ask it something that requires reading your files, such as `what does this project do, and where does it start?`
+Ask it a coding question, such as `what is the difference between a shallow copy and a deep copy?`
 
-Claude Code answers using the model on your appliance. Ask a second question, and notice that the reply arrives the same
-way. This is the loop you work in from now on.
+The model on your appliance answers. Ask a second question, and notice that the reply arrives the same way. This is the
+loop you work in from now on.
+
+Models differ in how well they drive a coding agent's tools, so a larger or coding-focused model gives better answers.
+For the models certified for your hardware, refer to
+[Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
 Now we confirm the appliance counted it.
 
@@ -325,8 +329,8 @@ expected on a new appliance and is not an error.
 ## What You Built
 
 You deployed a model onto your own GPU, created a client and a token, routed four Claude aliases to that model, and had
-Claude Code answer a question about your code without a single request leaving the appliance. You also learned to read
-GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy.
+Claude Code answer a coding question without a single request leaving the appliance. You also learned to read GPU memory
+as a model loads, which is the quickest way to tell whether an appliance is busy.
 
 ## Next Steps
 
