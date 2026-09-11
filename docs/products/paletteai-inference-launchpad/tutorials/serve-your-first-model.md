@@ -176,7 +176,8 @@ Now return to the console and confirm the model finished. In the **Model** table
 column reports the one node you chose out of however many nodes your cluster has, with a `1/1 healthy` chip, and the
 model's state reads `ready` or `serving`.
 
-Wait for that state before you continue. The next step offers only models that have finished loading.
+Wait until the state reads `ready` or `serving` before you map an alias to the model. An alias pointed at a model that
+is not yet serving cannot answer requests, so the verification later in this tutorial would fail.
 
 ## Create a Client and Its API Token
 
@@ -195,15 +196,14 @@ model answers the requests this client sends.
    the appliance, so this client never needs to reach an external model.
 
 6. On the **Routing** step, set the `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` rows in the **Tier map** to
-   the model you deployed in **Deploy a Model**.
+   the model you deployed in **Deploy a Model**. Then select **Next step**.
 
    Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
    model. For how the appliance turns an alias into a model, refer to
    [Routing Behavior](../explanation/routing-behavior.md).
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
-   **Label**, set **Expires** to a date a few days from now, and then select **Add Token**. A tutorial token should be
-   short-lived.
+   **Label**, leave **Expires** blank, and then select **Add Token**.
 
 8. Select **Create client**.
 
@@ -277,7 +277,9 @@ That reply came from your own hardware.
 
 `NODE_TLS_REJECT_UNAUTHORIZED=0` turns off certificate verification for this shell session, which a self-signed
 appliance certificate requires. Delete that line if your appliance presents a publicly trusted certificate. Do not carry
-it into day-to-day use.
+it into day-to-day use. Treat a token used in a session with certificate verification disabled as exposed, and if the
+appliance is not on a network you trust, revoke it, as described in
+[Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
 
 :::
 
@@ -304,10 +306,6 @@ Ask it a coding question, such as `what is the difference between a shallow copy
 The model on your appliance answers. Ask a second question, and notice that the reply arrives the same way. This is the
 loop you work in from now on.
 
-Models differ in how well they drive a coding agent's tools, so a larger or coding-focused model gives better answers.
-For the models certified for your hardware, refer to
-[Certified Models by Hardware](../reference/certified-models-by-hardware.md).
-
 Now we confirm the appliance counted it.
 
 1. In the console, select **Usage** from the left main menu.
@@ -323,8 +321,8 @@ Now we confirm the appliance counted it.
 
 :::info
 
-The **By Client** table is empty until at least one client accrues usage within the current quota window. This is
-expected on a new appliance and is not an error.
+Your client appears once the appliance has recorded your requests in the current quota window. If the table looks empty,
+confirm that the **Data window** covers when you asked your questions.
 
 :::
 
@@ -354,6 +352,3 @@ loads, which is the quickest way to tell whether an appliance is busy.
 
 - To understand how the appliance chooses a model for each request, refer to
   [Routing Behavior](../explanation/routing-behavior.md).
-
-- To keep using Claude Code against the appliance after the `tutorial` token expires, mint a longer-lived one, as
-  described in [Generate an API Token](../how-to-guides/generate-an-api-token.md).
