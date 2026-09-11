@@ -169,7 +169,8 @@ curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
 
 Notice that `mem_used_mib` is climbing on one GPU, and that its `temp_c` has risen with it. Those are your model weights
 arriving on the card. Run the command a few more times. Watching the number settle is the clearest sign that the
-appliance is doing what you asked.
+appliance is doing what you asked. The command reports the GPUs of the node that answered, so on a cluster with more
+than one node the **Model** table on the **Cluster** page is the check to trust.
 
 Now return to the console and confirm the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
 column reports the one node you chose out of however many nodes your cluster has, with a `1/1 healthy` chip, and the
@@ -234,9 +235,13 @@ Now we connect the two halves.
 4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
-The configuration the console generates begins with `export NODE_TLS_REJECT_UNAUTHORIZED=0`, and goes on to set your
-appliance address, your token, and the model alias for each tier. Each appliance advertises its own tier aliases, so
-your values can differ from the following example. Use the block the console generated rather than the example.
+The configuration sets your appliance address, your token, and the model alias for each tier. Each appliance advertises
+its own tier aliases, so your values can differ from the following example. Use the block the console generated rather
+than the example.
+
+If your appliance presents a self-signed certificate, `NODE_TLS_REJECT_UNAUTHORIZED=0` must be set in the shell before
+you start Claude Code. The configuration the console generates may already include it, so check the block you pasted
+before you add it yourself.
 
 ```bash
 export NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -286,7 +291,7 @@ correctly. If it is a `404`, an alias in **Create a Client and Its API Token** i
 
 ## Ask a Question, and Then Ask Another
 
-Now we give it real work.
+Now we ask it a question.
 
 Start Claude Code.
 
@@ -326,8 +331,8 @@ expected on a new appliance and is not an error.
 ## What You Built
 
 You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, and had
-Claude Code answer a coding question without a single request leaving the appliance. You also learned to read GPU memory
-as a model loads, which is the quickest way to tell whether an appliance is busy.
+Claude Code answer a coding question using the model on your appliance. You also learned to read GPU memory as a model
+loads, which is the quickest way to tell whether an appliance is busy.
 
 ## Next Steps
 
