@@ -70,8 +70,7 @@ virtual cluster will reside on the workload clusters belonging to the cluster gr
 Virtual clusters are standalone Kubernetes environments that sit on top of what you would consider a traditional
 Kubernetes cluster or host cluster. Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within
 an existing host cluster and share the host cluster resources, such as CPU, memory, and storage. Palette Virtual
-Clusters use k3s, a highly available, certified Kubernetes distribution designed for production workloads. Palette
-Virtual Clusters are also powered by vCluster.
+Clusters use the CNCF Kubernetes distribution and are powered by vCluster.
 
 :::
 
