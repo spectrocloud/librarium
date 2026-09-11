@@ -19,6 +19,22 @@ SUPER_ASSISTANT_ID="3hGjyJjygs5nyP" # ID for the assistant configured to generat
 MAX_RETRIES=5
 SLEEP_SECONDS=2
 
+# Demote every Markdown ATX heading in a file one level (## -> ###, ### -> ####, ...), skipping
+# lines inside fenced code blocks so a "## foo" line in a code sample is left alone. Used on a
+# release run so the whole Component Updates block nests one level deeper under the release "##"
+# heading: the block's own "## ... - Component Updates", "### Packs", "#### Pack Notes",
+# "#### Deprecations and Removals", and any headings in the Super-generated body all shift together
+# (DOC-3195 Phase C). Only h1-h5 are demoted; an h6 is left as-is since Markdown has no h7.
+demote_block_headings() {
+  local file="$1" tmp
+  tmp="$(mktemp)"
+  awk '
+    /^(```|~~~)/ { in_fence = !in_fence; print; next }
+    !in_fence && /^#{1,5} / { print "#" $0; next }
+    { print }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
     exit 1
@@ -258,10 +274,11 @@ generate_parameterised_file_local_vars \
   "RELEASE_COMPONENT_WEEK"
 
 # On a release run the Component Updates block nests under the release "## ... - Release X.Y.z"
-# heading, so demote its own heading one level (## -> ###). DOC-3195 Phase C. The anchor and text
-# are untouched, so the existing-heading search and cross-link updates below still match.
+# heading, so demote its own heading one level (## -> ###). DOC-3195 Phase C. This file holds only
+# the single heading line; the anchor and text are untouched, so the existing-heading search and
+# cross-link updates below still match.
 if [[ "$IS_RELEASE_RUN" == true ]]; then
-  sed -i '' '1s/^## /### /' "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE"
+  demote_block_headings "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE"
 fi
 
 existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
@@ -446,13 +463,15 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   fi
 
   if [[ "$IS_RELEASE_RUN" == true ]]; then
-    # Release run: fold the block into the release section. Demote its heading one level (## -> ###)
-    # so it nests under the release "##", then replace the {{ WEEKLY_COMPONENT_RELEASE_UPDATES }}
-    # placeholder the release scaffold left (see scripts/release/templates/release-notes.md) instead
-    # of adding a new top-level section after <ReleaseNotesVersions />. The block carries its own
-    # "### Packs" (with markers keyed to the component-updates ticket), so the scaffold's markerless
-    # "### Packs" was removed to leave a single packs table. DOC-3195 Phase C.
-    sed -i '' '1s/^## /### /' "$COMPONENT_UPDATES_OUTPUT_FILE"
+    # Release run: fold the block into the release section. Demote every heading in the block one
+    # level (## -> ###, ### Packs -> ####, #### Pack Notes / Deprecations -> #####, plus any headings
+    # in the Super-generated body) so the whole block nests under the release "##", then replace the
+    # {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder the release scaffold left (see
+    # scripts/release/templates/release-notes.md) instead of adding a new top-level section after
+    # <ReleaseNotesVersions />. The block carries its own "### Packs" (with markers keyed to the
+    # component-updates ticket), so the scaffold's markerless "### Packs" was removed to leave a
+    # single packs table. DOC-3195 Phase C.
+    demote_block_headings "$COMPONENT_UPDATES_OUTPUT_FILE"
     placeholder_line=$(search_line "{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}" "$RELEASE_NOTES_FILE")
     if [[ -z "$placeholder_line" || "$placeholder_line" -eq 0 ]]; then
       echo "❌ Release run, but the {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder was not found in $RELEASE_NOTES_FILE. Was the release scaffold generated from the updated template?" >&2
