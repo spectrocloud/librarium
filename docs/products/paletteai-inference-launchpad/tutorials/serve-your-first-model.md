@@ -196,10 +196,9 @@ model answers the requests this client sends.
    the appliance, so this client never needs to reach an external model.
 
 6. On the **Routing** step, set the `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` rows in the **Tier map** to
-   the model you deployed in **Deploy a Model**. Then select **Add alias rule**, enter `claude-fable-` as the **Alias
-   prefix**, and point it at the same model.
+   the model you deployed in **Deploy a Model**.
 
-   Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all four to your one
+   Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
    model. For how the appliance turns an alias into a model, refer to
    [Routing Behavior](../explanation/routing-behavior.md).
 
@@ -211,12 +210,17 @@ model answers the requests this client sends.
 
 9. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
-:::warning
+   :::warning
 
-The console displays the token once and stores only a hash of it. Copy it now. If you lose it, revoke the token and
-create a new one.
+   The console displays the token once and stores only a hash of it. Copy it now. If you lose it, revoke the token and
+   create a new one.
 
-:::
+   :::
+
+10. The configuration the console generates names a fourth alias, so we route that one as well. From the left main menu,
+    select **Access & Policy**, select the `coding-agent` client to open its detail panel, and then select the
+    **Routing** section. In the **Tier map**, select **Add alias rule**, enter `claude-fable-` as the **Alias prefix**,
+    point it at the same model, and then save the client.
 
 Notice that your new client now appears on the **Clients & API tokens** page under the name `coding-agent`. We look for
 that name again at the end.
@@ -225,7 +229,7 @@ that name again at the end.
 
 Now we connect the two halves.
 
-{/* TODO: seven other PAIIL pages spell this control Connect coding agent; the live 1.1.4 console renders it Connect Coding Agent, so align the other pages separately. */}
+{/* TODO: other PAIIL pages spell this control Connect coding agent while the live console renders it Connect Coding Agent; align the other pages separately. */}
 
 1. In the console, return to **Overview** and select **Connect Coding Agent**. The **Connect a coding agent** dialog
    opens.
@@ -310,6 +314,13 @@ Now we confirm the appliance counted it.
 
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
+
+:::info
+
+The **By Client** table is empty until at least one client accrues usage within the current quota window. This is
+expected on a new appliance and is not an error.
+
+:::
 
 ## What You Built
 
