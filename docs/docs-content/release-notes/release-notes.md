@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 11, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3211 -->
+<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11853 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11853 -->
+
+- Improved Palette Management maintenance and stability updates for this release.
+
 ## September 4, 2026 - Release 4.9.54
 
 <!-- PATCH RELEASE TICKET: DOC-3184 -->
