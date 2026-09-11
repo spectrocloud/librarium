@@ -28,7 +28,7 @@ the steps to set them, refer to
 | `CLAUDE_CODE_EFFORT_LEVEL`       | Optional. Sets Claude Code's reasoning effort. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`.                                                                                                                                                                                                                                                                                              | `max`                               |
 | `CLAUDE_CODE_MAX_OUTPUT_TOKENS`  | Optional. The ceiling on tokens Claude Code accepts in a reply. The console generates `64000`, the Opus 4.8 ceiling. Reasoning tokens and the visible answer draw from this one allowance, so a low value against a tier set to a deep effort level can be spent during the hidden reasoning phase and return an empty reply. Refer to [The Thinking Directive](../explanation/thinking-directive.md). | `64000`                             |
 
-{/* TODO: confirm the ANTHROPIC_DEFAULT_* rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
+{/* TODO: confirm the ANTHROPIC_DEFAULT_* and CLAUDE_CODE_EFFORT_LEVEL rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
 
 ## Endpoint URL
 
