@@ -24,7 +24,7 @@ the steps to set them, refer to
 | `ANTHROPIC_DEFAULT_OPUS_MODEL`   | Optional. The alias Claude Code requests for its Opus-tier work. The appliance maps the alias to the model it serves.                                                                                                                                                                                                                                                                                  | `claude-opus-4-8`                   |
 | `ANTHROPIC_DEFAULT_SONNET_MODEL` | Optional. The alias Claude Code requests for its Sonnet-tier work.                                                                                                                                                                                                                                                                                                                                     | `claude-sonnet-4-5`                 |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL`  | Optional. The alias Claude Code requests for its Haiku-tier, background work.                                                                                                                                                                                                                                                                                                                          | `claude-haiku-4-5`                  |
-| `ANTHROPIC_DEFAULT_FABLE_MODEL`  | Optional. The alias Claude Code requests for its Fable-tier work.                                                                                                                                                                                                                                                                                                                                      | `claude-fable-5`                    |
+| `ANTHROPIC_DEFAULT_FABLE_MODEL`  | Optional. The alias Claude Code requests for its Fable-tier work. The appliance routes it only after you add a `claude-fable-` alias rule.                                                                                                                                                                                                                                                             | `claude-fable-5`                    |
 | `CLAUDE_CODE_EFFORT_LEVEL`       | Optional. Sets Claude Code's reasoning effort. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`.                                                                                                                                                                                                                                                                                              | `max`                               |
 | `CLAUDE_CODE_MAX_OUTPUT_TOKENS`  | Optional. The ceiling on tokens Claude Code accepts in a reply. The console generates `64000`, the Opus 4.8 ceiling. Reasoning tokens and the visible answer draw from this one allowance, so a low value against a tier set to a deep effort level can be spent during the hidden reasoning phase and return an empty reply. Refer to [The Thinking Directive](../explanation/thinking-directive.md). | `64000`                             |
 
@@ -38,10 +38,14 @@ not include `/v1`. If you do not know the address, ask the administrator who set
 
 ## Model Name
 
-Claude Code requests a Claude alias (`claude-opus-4-8`, `claude-sonnet-4-5`, `claude-haiku-4-5`, or `claude-fable-5`),
-and the appliance maps that alias to the model it serves. Set `ANTHROPIC_MODEL` to one of these aliases. You do not
-select a backend model directly. Both the aliases the appliance accepts and the ids of the models it serves, such as
-`glm-5.2`, appear in the console's model list and in the appliance's `/v1/models` API response.
+Claude Code requests a Claude alias (`claude-opus-4-8`, `claude-sonnet-4-5`, or `claude-haiku-4-5`), and the appliance
+maps that alias to the model it serves. Set `ANTHROPIC_MODEL` to one of these aliases. You do not select a backend model
+directly. Both the aliases the appliance accepts and the ids of the models it serves, such as `glm-5.2`, appear in the
+console's model list and in the appliance's `/v1/models` API response.
+
+`claude-fable-` is not one of the appliance's preset alias prefixes, so the appliance routes `claude-fable-5` only after
+you add a custom alias rule for it, as described in
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
 
 ## Token Quotas
 
