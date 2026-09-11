@@ -53,6 +53,10 @@ The following components have been updated for Palette version 4.10.13 - 4.10.16
 - Fixed an issue in the Harbor pack where Palette-managed projects were created as public without a configuration
   setting to set them to private.
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1970 -->
+
+- Fixed an issue where running the Palette CLI shell completion command failed if the user had not first executed
+`palette login`.
 <!-- END COMPONENT UPDATES BODY: DOC-3191. DO NOT DELETE. -->
 
 ### Packs
