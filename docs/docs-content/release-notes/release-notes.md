@@ -11,6 +11,77 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 11, 2026 - Component Updates {#component-updates-2026-37}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3191 -->
+<!-- RELEASE DATE: September 11, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.14 -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.1 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.16.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.1  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.14 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.14 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3191. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4686 -->
+
+- Added support for deploying the NVIDIA GPU operator in airgapped Edge clusters using provider images with
+  pre-installed NVIDIA drivers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4179 -->
+
+- Deprecated Portworx pack versions 3.3 and older to align with upstream vendor support lifecycle policies.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2355 -->
+
+- Made `admin_kube_config` reads during cluster `Read()` operations conditional, gracefully handling 403 forbidden
+  responses when users lack download permissions.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4497 -->
+
+- Fixed an issue in the Harbor pack where Palette-managed projects were created as public without a configuration
+  setting to set them to private.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1970 -->
+
+- Fixed an issue where running the Palette CLI shell completion command failed if the user had not first executed
+`palette login`.
+<!-- END COMPONENT UPDATES BODY: DOC-3191. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3191. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.8.2 |
+| <VersionedLink text="cni-antrea" url="/integrations/packs/?pack=cni-antrea" /> | `cni` | :white_check_mark: | :x: | 2.7.0 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.32.2 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.32.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.65.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.10.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.27.2 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 90.0.0 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.32.2 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.5.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3191. DO NOT DELETE. -->
+
 ## September 10, 2026 - Release 4.10.16
 
 <!-- PATCH RELEASE TICKET: DOC-3205 -->
