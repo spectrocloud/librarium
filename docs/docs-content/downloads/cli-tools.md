@@ -31,7 +31,6 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-version-table --> | Recommended CLI Version          | Download URL                                                            | Checksum (SHA256)                                                  |
 | -------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| <!-- cli-4.10.x --> 4.10.x                         | VERSION PENDING                  | URL PENDING                                                             | `SHA PENDING`                                                      |
 | <!-- cli-4.10.0 --> 4.10.13                        | 4.10.3                           | https://software.spectrocloud.com/palette-cli/v4.10.3/linux/cli/palette | `a974e8e63b43f1c6e0570fc182cee69de4f861c018f9c65909f770b4fb5b9113` |
 | <!-- cli-4.9.53 --> 4.9.53                         | 4.9.21                           | https://software.spectrocloud.com/palette-cli/v4.9.21/linux/cli/palette | `ad6e3e6b86db3aefa73a32f2bbbd89e8db70dcfca6b105e3db30844440d13154` |
 | <!-- cli-4.9.46 --> 4.9.46                         | 4.9.19                           | https://software.spectrocloud.com/palette-cli/v4.9.19/linux/cli/palette | `472aa53dc5dd2a7161aff367415e08b75a2efd666a900bef95315804b4103132` |
@@ -74,7 +73,6 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-linux-arm64-table --> | Recommended CLI Version | Download URL                                                                  | Checksum (SHA256)                                                  |
 | ------------------------------------------------------ | ----------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| <!-- cli-4.10.x --> 4.10.x                             | VERSION PENDING         | URL PENDING                                                                   | `SHA PENDING`                                                      |
 | <!-- cli-4.10.0 --> 4.10.13                            | 4.10.3                  | https://software.spectrocloud.com/palette-cli/v4.10.3/linux-arm64/cli/palette | `1b28034b04158adac2a3edfb040b17bac31f997a20def49efe061b67ce6a04cd` |
 
 </TabItem>
@@ -83,7 +81,6 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-macos-arm64-table --> | Recommended CLI Version | Download URL                                                                   | Checksum (SHA256)                                                  |
 | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| <!-- cli-4.10.x --> 4.10.x                             | VERSION PENDING         | URL PENDING                                                                    | `SHA PENDING`                                                      |
 | <!-- cli-4.10.0 --> 4.10.13                            | 4.10.3                  | https://software.spectrocloud.com/palette-cli/v4.10.3/darwin-arm64/cli/palette | `5f8830c6b6fad45d5977652bdb38b54a908fef3a1f735d72a38f7a4493dbf07c` |
 
 macOS blocks this binary until you remove its quarantine attribute. Refer to
