@@ -469,6 +469,97 @@ fetch_palette_cli_sha() {
     printf '%s' "$digest"
 }
 
+# Utility function to format a YYYY-MM-DD date the way a release notes heading writes it, for
+# example "September 14, 2026". BSD date (macOS) is tried first and GNU date (Linux) second. An
+# empty date is refused rather than passed on, because the GNU fallback reads `date -d ""` as the
+# daylight saving time flag and silently returns today's date, which would date the release notes
+# wrongly instead of failing.
+# Params:
+# $1 - date in YYYY-MM-DD form
+# Prints the formatted date and returns 0, or returns 1 when the date cannot be parsed.
+format_release_date() {
+    local raw="$1"
+
+    if [[ -z "$raw" ]]; then
+        return 1
+    fi
+
+    if date -j -f "%Y-%m-%d" "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    if date -d "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    return 1
+}
+
+# Utility function to read issue keys out of arbitrary text, so a release ticket that names its
+# candidates in prose, as links, or as smart links rather than behind a saved search can still be
+# acted on. Matches the PROJECT-123 shape, and de-duplicates while keeping the order the keys were
+# written in, so the first mention decides where a key appears in the list.
+#
+# A key that is part of a longer word is skipped, because the shape also occurs inside URL path
+# segments and generated identifiers, and the security identifiers that share it, for example
+# CVE-2026, are skipped by prefix. awk does the matching rather than `grep -oE '\b...'`, because
+# the word boundary escape is a GNU extension and these scripts also run on macOS.
+# Reads text on stdin, writes one key per line to stdout.
+extract_issue_keys() {
+    awk '
+      {
+        line = $0
+
+        while (match(line, /[A-Z][A-Z0-9]+-[0-9]+/)) {
+          key = substr(line, RSTART, RLENGTH)
+          before = (RSTART > 1) ? substr(line, RSTART - 1, 1) : ""
+          line = substr(line, RSTART + RLENGTH)
+
+          if (before ~ /[A-Za-z0-9]/) { continue }
+          if (key ~ /^(CVE|CWE|CAPEC|CVSS|RFC|ISO|SOC|FIPS|NIST|UTF)-/) { continue }
+          if (seen[key]++) { continue }
+
+          print key
+        }
+      }
+    '
+}
+
+# Utility function to ask for a value on a terminal, offering what is already known as the default
+# so that confirming it costs one keystroke. This is the shape every release day question takes:
+# the script proposes the value it derived, and the writer either accepts it or replaces it with
+# what they have since been told.
+#
+# An empty reply takes the default, and so does a run with no terminal to prompt on, so an
+# unattended job never stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing default hint
+# $2 - default when the reply is empty or there is no terminal
+# Prints the answer to stdout. The prompt itself goes to stderr, so the answer can be captured
+# from a command substitution.
+prompt_with_default() {
+    local question="$1"
+    local default="$2"
+    local reply hint
+
+    if [[ -n "$default" ]]; then
+        hint=" [$default]"
+    else
+        hint=""
+    fi
+
+    if [[ ! -t 0 ]]; then
+        printf '%s' "$default"
+        return 0
+    fi
+
+    # bash writes a read prompt to standard error, so it is still seen when this function is
+    # called from a command substitution that captures standard output.
+    read -r -p "$question$hint: " reply || reply=""
+
+    printf '%s' "${reply:-$default}"
+}
+
 # Utility function to ask a yes or no question on a terminal, so a script can branch on what the
 # writer already knows rather than making them supply values that do not apply. An empty reply
 # takes the default, and so does a run with no terminal to prompt on, so an unattended job never
@@ -510,7 +601,7 @@ confirm() {
 check_env() {
     local var_name="$1"
 
-    if [[ -z "${!var_name}" ]]; then
+    if [[ -z "${!var_name:-}" ]]; then
         echo "🟠 '$var_name' is empty or not set."
         return 1
     fi
