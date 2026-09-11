@@ -258,6 +258,8 @@ export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
 
 Now confirm the connection with a single prompt.
 
+{/* TODO: reference/known-issues.md still publishes that Anthropic model aliases return not served with no version scope, which contradicts this tutorial; confirm with an SME whether that entry is stale or needs version scoping. */}
+
 ```bash
 claude --print "reply with exactly CC_OK and nothing else"
 ```
@@ -349,6 +351,9 @@ as a model loads, which is the quickest way to tell whether an appliance is busy
 
 - To understand how the appliance chooses a model for each request, refer to
   [Routing Behavior](../explanation/routing-behavior.md).
+
+- To keep using Claude Code against the appliance after the `tutorial` token expires, mint a longer-lived one, as
+  described in [Generate an API Token](../how-to-guides/generate-an-api-token.md).
 
 - To revoke the `tutorial` token when you are finished, refer to
   [Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
