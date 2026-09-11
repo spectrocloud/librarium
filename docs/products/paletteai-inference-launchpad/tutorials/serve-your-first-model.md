@@ -237,8 +237,9 @@ Now we connect the two halves.
 4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
-The configuration sets your appliance address, your token, and the model alias for each tier. The values come from your
-own appliance, so use the block the console generated rather than the following example.
+The configuration the console generates begins with `export NODE_TLS_REJECT_UNAUTHORIZED=0`, and goes on to set your
+appliance address, your token, and the model alias for each tier. Each appliance advertises its own tier aliases, so
+your values can differ from the following example. Use the block the console generated rather than the example.
 
 ```bash
 export NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -246,7 +247,7 @@ export ANTHROPIC_BASE_URL=https://<appliance-address>
 export ANTHROPIC_AUTH_TOKEN='<per-user-token>'
 export ANTHROPIC_MODEL=claude-opus-4-8
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5
+export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
 export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
 export CLAUDE_CODE_EFFORT_LEVEL=auto
@@ -314,34 +315,15 @@ Now we confirm the appliance counted it.
 
 You deployed a model onto your own GPU, created a client and a token, routed four Claude aliases to that model, and had
 Claude Code answer a question about your code without a single request leaving the appliance. You also learned to read
-GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy. When you are finished,
-revoke the `tutorial` token, as described in [Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
-
-## Try Changing One Thing
-
-Claude Code reads its configuration when it starts, so we lower the output ceiling between two sessions and compare the
-replies.
-
-1. At the Claude Code prompt, enter `/exit` to return to your shell.
-
-2. Lower the output ceiling.
-
-   ```bash
-   export CLAUDE_CODE_MAX_OUTPUT_TOKENS=512
-   ```
-
-3. Start Claude Code again, and ask the same question you asked before.
-
-   ```bash
-   claude
-   ```
-
-The reply is shorter than the one you got the first time.
+GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy.
 
 ## Next Steps
 
 - To keep your Claude Code configuration between sessions, refer to
   [Use Claude Code](../how-to-guides/use-claude-code.md).
+
+- For every configuration value Claude Code accepts, including the output-token ceiling, refer to
+  [Claude Code Configuration](../reference/claude-code-reference.md).
 
 - To carry out a specific task on the appliance, refer to the [How-to Guides](../how-to-guides/how-to-guides.md).
 
@@ -355,3 +337,6 @@ The reply is shorter than the one you got the first time.
 
 - To understand how the appliance chooses a model for each request, refer to
   [Routing Behavior](../explanation/routing-behavior.md).
+
+- To revoke the `tutorial` token when you are finished, refer to
+  [Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
