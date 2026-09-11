@@ -63,7 +63,7 @@ First, open `https://<appliance-address>` in a browser and sign in with your adm
 The **Overview** page opens. Notice the status indicator near the top of the page. On a healthy appliance it reads
 `all clear`, which means the appliance has nothing waiting on you.
 
-Keep this browser tab open. We come back to it three times.
+Keep this browser tab open.
 
 ## Ask the Appliance About Its GPUs
 
@@ -174,7 +174,8 @@ arriving on the card. Run the command a few more times. Watching the number sett
 appliance is doing what you asked.
 
 Now return to the console and confirm the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
-column reads `1 of 1 nodes` with a `1/1 healthy` chip, and the model's state reads `ready` or `serving`.
+column reports the one node you chose out of however many nodes your cluster has, with a `1/1 healthy` chip, and the
+model's state reads `ready` or `serving`.
 
 Wait for that state before you continue. The next step offers only models that have finished loading.
 
@@ -194,16 +195,17 @@ model answers the requests this client sends.
 5. On the **Egress** step, select **Next step** without enabling egress. Every request in this tutorial is answered on
    the appliance, so this client never needs to reach an external model.
 
-6. On the **Routing** step, point each Claude alias in the **Tier map** at the model you deployed in **Deploy a Model**.
-   Set `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, and `claude-fable-` to the same model. If the **Tier map**
-   does not already list an alias, select **Add alias rule** and enter the prefix.
+6. On the **Routing** step, set the `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` rows in the **Tier map** to
+   the model you deployed in **Deploy a Model**. Then select **Add alias rule**, enter `claude-fable-` as the **Alias
+   prefix**, and point it at the same model.
 
    Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all four to your one
    model. For how the appliance turns an alias into a model, refer to
    [Routing Behavior](../explanation/routing-behavior.md).
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
-   **Label**, leave **Expires** blank, and then select **Add Token**.
+   **Label**, set **Expires** to a date a few days from now, and then select **Add Token**. A tutorial token should be
+   short-lived.
 
 8. Select **Create client**.
 
@@ -223,6 +225,8 @@ that name again at the end.
 
 Now we connect the two halves.
 
+{/* TODO: seven other PAIIL pages spell this control Connect coding agent; the live 1.1.4 console renders it Connect Coding Agent, so align the other pages separately. */}
+
 1. In the console, return to **Overview** and select **Connect Coding Agent**. The **Connect a coding agent** dialog
    opens.
 
@@ -239,7 +243,7 @@ own appliance, so use the block the console generated rather than the following 
 ```bash
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 export ANTHROPIC_BASE_URL=https://<appliance-address>
-export ANTHROPIC_AUTH_TOKEN='<lpai-token>'
+export ANTHROPIC_AUTH_TOKEN='<per-user-token>'
 export ANTHROPIC_MODEL=claude-opus-4-8
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
 export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5
@@ -259,7 +263,7 @@ claude --print "reply with exactly CC_OK and nothing else"
 CC_OK
 ```
 
-Those three characters came from your own hardware.
+That reply came from your own hardware.
 
 :::warning
 
@@ -310,18 +314,29 @@ Now we confirm the appliance counted it.
 
 You deployed a model onto your own GPU, created a client and a token, routed four Claude aliases to that model, and had
 Claude Code answer a question about your code without a single request leaving the appliance. You also learned to read
-GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy.
+GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy. When you are finished,
+revoke the `tutorial` token, as described in [Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
 
 ## Try Changing One Thing
 
-The following change takes a minute and cannot break anything. Ask the same question again afterward and notice what
-moves.
+Claude Code reads its configuration when it starts, so we lower the output ceiling between two sessions and compare the
+replies.
 
-- In your terminal, lower the output ceiling and ask again. Replies get shorter.
+1. At the Claude Code prompt, enter `/exit` to return to your shell.
 
-  ```bash
-  export CLAUDE_CODE_MAX_OUTPUT_TOKENS=512
-  ```
+2. Lower the output ceiling.
+
+   ```bash
+   export CLAUDE_CODE_MAX_OUTPUT_TOKENS=512
+   ```
+
+3. Start Claude Code again, and ask the same question you asked before.
+
+   ```bash
+   claude
+   ```
+
+The reply is shorter than the one you got the first time.
 
 ## Next Steps
 
