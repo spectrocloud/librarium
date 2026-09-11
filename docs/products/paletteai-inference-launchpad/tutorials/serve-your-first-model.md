@@ -215,11 +215,6 @@ model answers the requests this client sends.
 
    :::
 
-10. The configuration the console generates names a fourth alias, so we route that one as well. From the left main menu,
-    select **Access & Policy**, select the `coding-agent` client to open its detail panel, and then select the
-    **Routing** section. In the **Tier map**, select **Add alias rule**, enter `claude-fable-` as the **Alias prefix**,
-    point it at the same model, and then save the client.
-
 Notice that your new client now appears on the **Clients & API tokens** page under the name `coding-agent`. We look for
 that name again at the end.
 
@@ -255,6 +250,9 @@ export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
 export CLAUDE_CODE_EFFORT_LEVEL=auto
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
 ```
+
+The generated configuration also names a fable alias, which this tutorial does not use; to route it, refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 Now confirm the connection with a single prompt.
 
@@ -327,7 +325,7 @@ expected on a new appliance and is not an error.
 
 ## What You Built
 
-You deployed a model onto your own GPU, created a client and a token, routed four Claude aliases to that model, and had
+You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, and had
 Claude Code answer a coding question without a single request leaving the appliance. You also learned to read GPU memory
 as a model loads, which is the quickest way to tell whether an appliance is busy.
 
@@ -354,6 +352,3 @@ as a model loads, which is the quickest way to tell whether an appliance is busy
 
 - To keep using Claude Code against the appliance after the `tutorial` token expires, mint a longer-lived one, as
   described in [Generate an API Token](../how-to-guides/generate-an-api-token.md).
-
-- To revoke the `tutorial` token when you are finished, refer to
-  [Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
