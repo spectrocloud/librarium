@@ -19,10 +19,15 @@ appliance mode or other Kubernetes distributions. Refer to [Limitations](#limita
 
 ## Provider Image Pull Paths
 
-A provider image is pulled at two different points in the life of a cluster, by two different components that do not
-share credentials. This is why the configuration has two halves.
+A provider image is pulled at two separate points in the life of a cluster:
 
-| Attribute                  | Cluster creation         | Upgrade                           |
+- **Cluster creation**, when a node first joins the cluster.
+- **Cluster upgrade**, when the provider image tag changes.
+
+A different component performs each pull, and the two components do not share credentials, so you configure creation and
+upgrade separately. The following table summarizes how each pull works.
+
+| Pull attribute             | Cluster creation         | Upgrade                           |
 | -------------------------- | ------------------------ | --------------------------------- |
 | When                       | A node joins the cluster | The provider image tag changes    |
 | Pulled by                  | Palette agent            | Kubelet                           |
@@ -33,12 +38,12 @@ share credentials. This is why the configuration has two halves.
 
 An upgrade runs as a pod whose container image is the provider image, and that pod has no image pull secret, so Kubelet
 performs the pull. Kubelet does not read `/root/.docker/config.json` and does not use the Docker credential helper
-protocol. If you configure only the creation path, the cluster creates successfully but then fails at its first upgrade
-with the error `authorization failed: no basic auth credentials`. Both paths are required.
+protocol. If you configure credentials for creation but not for upgrade, the cluster creates successfully but then fails
+at its first upgrade with the error `authorization failed: no basic auth credentials`. You must configure both.
 
-The two paths use separate credentials files on purpose. The cluster profile writes the upgrade path credentials file,
-and the Edge host user data writes the creation path credentials file. Because the cluster profile owns the upgrade path
-file, you can change those credentials later, which is what makes credential rotation possible.
+Creation and upgrade use separate credentials files on purpose. The cluster profile writes the file used at upgrade, and
+the Edge host user data writes the file used at creation. Because the cluster profile owns the upgrade file, you can
+change those credentials later, which is what makes credential rotation possible.
 
 ## Limitations
 
@@ -129,7 +134,7 @@ file itself.
 The `initramfs` and `boot` keys are two stages of the same `stages` document, not two alternative configurations.
 Deliver the whole document as the user data.
 
-Two details are load-bearing:
+Two details are critical:
 
 - The credential provider configuration must be written in an `initramfs` stage, not a `boot` stage. yip runs the
   `initramfs` stage of every `/oem` file before the `boot` stage of any of them. The cluster configuration runs
@@ -444,9 +449,9 @@ Normal  Pulled   kubelet  Successfully pulled image ... Image size: 1710678131 b
 
 :::info
 
-The provider image is large, roughly 1.7 GB, and there is no intermediate output during the pull, so a healthy pull and
-a hung one look the same for several minutes. Do not conclude that the pull failed early. Wait for `ImagePullBackOff` or
-`ErrImagePull`, which is the real failure signal.
+Provider images are large. The image used during validation was roughly 1.7 GB, and there is no intermediate output
+during the pull, so a healthy pull and a hung one look the same for several minutes. Do not conclude that the pull
+failed early. Wait for `ImagePullBackOff` or `ErrImagePull`, which is the real failure signal.
 
 :::
 
