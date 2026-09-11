@@ -24,11 +24,11 @@ result about one minute in.
 ## What You Need
 
 Confirm each of the following before you start. Every item is something you can check in a few seconds, and stopping now
-is faster than stopping at step 5.
+is faster than stopping at **Create a Client and Its API Token**.
 
 On the appliance:
 
-- PaletteAI Inference Launchpad 1.1.4 or later. The version appears at the bottom of the left main menu. To upgrade,
+- PaletteAI Inference Launchpad 1.1.3 or later. The version appears at the bottom of the left main menu. To upgrade,
   refer to [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
 
 - The console reachable in a browser at `https://<appliance-address>`, and the local admin account you set during setup.
@@ -51,8 +51,8 @@ On your own machine:
 :::info
 
 Two credentials appear in this tutorial, and they are not interchangeable. The **admin sign-in** gets you into the
-console, and you already have it. The **API token** authenticates Claude Code, and we create it in step 5. Neither one
-works in place of the other.
+console, and you already have it. The **API token** authenticates Claude Code, and we create it in **Create a Client and
+Its API Token**. Neither one works in place of the other.
 
 :::
 
@@ -69,6 +69,8 @@ Keep this browser tab open. We come back to it three times.
 
 Before we change anything on the appliance, we get something back from it. Open a terminal and run the following
 command, replacing `<appliance-address>` with your appliance address.
+
+{/* TODO: confirm with an SME that /healthz is a supported surface the docs may document, and that publishing its response shape is acceptable. */}
 
 ```bash
 curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
@@ -98,13 +100,12 @@ curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
 Your output names your own GPUs, so the model names and the totals differ from the example.
 
 Notice that `mem_used_mib` reads `0` on every GPU. Nothing is loaded yet. Remember this command, because we run it again
-in step 4 and the number changes.
+in **Watch the Weights Load** and the number changes.
 
 :::info
 
-The `/healthz` endpoint does not require a token, which is why this step works before we create one. We use `--insecure`
-because a freshly installed appliance presents a self-signed certificate. If your appliance has a publicly trusted
-certificate, you can omit that flag.
+We use `--insecure` because a freshly installed appliance presents a self-signed certificate. If your appliance has a
+publicly trusted certificate, you can omit that flag.
 
 :::
 
@@ -141,7 +142,7 @@ serving, refer to [Model Provisioning Lifecycle](../explanation/architecture.md#
 ## Watch the Weights Load
 
 Loading model weights onto a GPU takes a few minutes. Rather than wait, we watch it happen. Run the same command from
-step 2 again.
+**Ask the Appliance About Its GPUs** again.
 
 ```bash
 curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
@@ -193,10 +194,11 @@ model answers the requests this client sends.
 5. On the **Egress** step, select **Next step** without enabling egress. Every request in this tutorial is answered on
    the appliance, so this client never needs to reach an external model.
 
-6. On the **Routing** step, point each Claude alias in the **Tier map** at the model you deployed in step 3. Set
-   `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` to the same model.
+6. On the **Routing** step, point each Claude alias in the **Tier map** at the model you deployed in **Deploy a Model**.
+   Set `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, and `claude-fable-` to the same model. If the **Tier map**
+   does not already list an alias, select **Add alias rule** and enter the prefix.
 
-   Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
+   Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all four to your one
    model. For how the appliance turns an alias into a model, refer to
    [Routing Behavior](../explanation/routing-behavior.md).
 
@@ -228,7 +230,8 @@ Now we connect the two halves.
 
 3. Select the copy button to copy the generated configuration.
 
-4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in step 5.
+4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in **Create a
+   Client and Its API Token**.
 
 The configuration sets your appliance address, your token, and the model alias for each tier. The values come from your
 own appliance, so use the block the console generated rather than the following example.
@@ -270,7 +273,7 @@ it into day-to-day use.
 
 These variables last only as long as this terminal session. To keep them, refer to
 [Use Claude Code](../how-to-guides/use-claude-code.md). If the reply is an authentication error, the token did not paste
-correctly. If it is a `404`, an alias in step 5 is not pointing at your model.
+correctly. If it is a `404`, an alias in **Create a Client and Its API Token** is not pointing at your model.
 
 :::
 
@@ -297,33 +300,22 @@ Now we confirm the appliance counted it.
 2. On the **Overview** tab, read the **Totals** card. Requests, input tokens, and output tokens have all risen from
    zero.
 
-3. Find the **Local vs external** card. It reports every request as local, because your appliance answered each one and
-   no frontier model took part.
+3. Find the **Local vs external** card. Every token is kept on the Launchpad, and the share routed externally reads zero
+   tokens, because your appliance answered each request and no frontier model took part.
 
-4. Select the **By Client** tab, and find the `coding-agent` client you named in step 5. Its row carries the tokens your
-   two questions spent.
-
-:::info
-
-The **By Client** table stays empty until a client accrues usage in the current quota window, so give it a moment after
-your first question.
-
-:::
+4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
+   Its row carries the tokens your two questions spent.
 
 ## What You Built
 
-You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, and had
+You deployed a model onto your own GPU, created a client and a token, routed four Claude aliases to that model, and had
 Claude Code answer a question about your code without a single request leaving the appliance. You also learned to read
 GPU memory as a model loads, which is the quickest way to tell whether an appliance is busy.
 
 ## Try Changing One Thing
 
-Both of the following take a minute, and neither one can break anything. Ask the same question again after each change
-and notice what moves.
-
-- In the console, open your client from **Access & Policy** and set the `claude-sonnet-` tier to think before answering.
-  Replies take longer, because the model now reasons first. To set it, refer to
-  [Set the Thinking Directive for a Tier](../how-to-guides/set-tier-thinking.md).
+The following change takes a minute and cannot break anything. Ask the same question again afterward and notice what
+moves.
 
 - In your terminal, lower the output ceiling and ask again. Replies get shorter.
 
@@ -336,13 +328,15 @@ and notice what moves.
 - To keep your Claude Code configuration between sessions, refer to
   [Use Claude Code](../how-to-guides/use-claude-code.md).
 
-- To connect a different coding assistant, refer to [Use Cursor](../how-to-guides/use-cursor.md) or
-  [Use OpenAI Codex](../how-to-guides/use-codex.md).
+- To carry out a specific task on the appliance, refer to the [How-to Guides](../how-to-guides/how-to-guides.md).
 
 - To cap what a client can spend, refer to [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md).
 
 - To let this client reach a frontier model when your own model is not enough, refer to
   [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
+
+- To change how much a model reasons before it answers, refer to
+  [Set the Thinking Directive for a Tier](../how-to-guides/set-tier-thinking.md).
 
 - To understand how the appliance chooses a model for each request, refer to
   [Routing Behavior](../explanation/routing-behavior.md).
