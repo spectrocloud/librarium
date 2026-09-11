@@ -150,7 +150,13 @@ limits for a virtual cluster, and use the host cluster's default resource limits
 
 ## Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades
 
-Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
+:::info
+
+K3s is deprecated as a virtual cluster distribution. This scenario applies to existing virtual clusters that use K3s.
+
+:::
+
+Palette upgrades on K3s virtual clusters might get stuck if the cluster does not have enough resources to accommodate
 additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
 commencing an upgrade. Use the following steps to adjust the resource limits of a virtual cluster.
 
