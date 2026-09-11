@@ -774,7 +774,9 @@ When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4
 Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette 4.5.x through
 4.6.9 might still be at FCV 6.0.
 
-The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that does not become Ready. In the usual failure, one Pod on the MongoDB 8 image is crash-looping while the other two are still on the MongoDB 7 image — a majority — so the ReplicaSet still has a working primary that can accept the FCV change.
+The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that does not become Ready. In the usual
+failure, one Pod on the MongoDB 8 image is crash-looping while the other two are still on the MongoDB 7 image — a
+majority — so the ReplicaSet still has a working primary that can accept the FCV change.
 
 ### Debug Steps
 
@@ -807,7 +809,7 @@ The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that 
      previous MongoDB 7 tag and wait for the Pods to become Ready, then proceed to step 7. After the FCV is raised,
      restore the MongoDB 8 image or re-run the upgrade.
 
-7. Run the following command to find the current MongoDB FCV. 
+7. Run the following command to find the current MongoDB FCV.
 
    <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
 
@@ -844,7 +846,8 @@ The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that 
 
    </Tabs>
 
-8. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary Pod and save its name to `MONGO_PRIMARY`.
+8. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary
+   Pod and save its name to `MONGO_PRIMARY`.
 
    <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
 
@@ -926,8 +929,8 @@ The `mongo` StatefulSet rolls one Pod at a time and stops at the first Pod that 
 
    </Tabs>
 
-Rerun the check command from earlier against `mongo-1` and `mongo-2` to confirm that all three ReplicaSet members
-return `7.0`.
+Rerun the check command from earlier against `mongo-1` and `mongo-2` to confirm that all three ReplicaSet members return
+`7.0`.
 
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
