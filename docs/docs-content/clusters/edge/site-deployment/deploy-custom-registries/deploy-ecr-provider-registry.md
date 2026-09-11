@@ -1,16 +1,17 @@
 ---
 sidebar_label: "Deploy Cluster with an Amazon ECR Provider Registry"
 title: "Deploy Cluster with an Amazon ECR Provider Registry"
-description: "Configure an Edge cluster to pull provider images from a private Amazon ECR repository during cluster creation and upgrade."
+description:
+  "Configure an Edge cluster to pull provider images from a private Amazon ECR repository during cluster creation and
+  upgrade."
 hide_table_of_contents: false
 sidebar_position: 45
 tags: ["edge"]
 ---
 
-[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) authenticates pulls with a short-lived
-token rather than a static username and password. This guide describes how to configure an Edge cluster to pull
-provider images from a private Amazon ECR repository, both when the cluster is first created and when it is later
-upgraded.
+[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) authenticates pulls with a short-lived token
+rather than a static username and password. This guide describes how to configure an Edge cluster to pull provider
+images from a private Amazon ECR repository, both when the cluster is first created and when it is later upgraded.
 
 This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution deployed in agent mode, and
 it covers provider images only. It does not configure ECR for application workload images, and it does not cover
@@ -21,17 +22,17 @@ appliance mode or other Kubernetes distributions. Refer to [Limitations](#limita
 A provider image is pulled at two different points in the life of a cluster, by two different components that do not
 share credentials. This is why the configuration has two halves.
 
-| Attribute                    | Cluster creation                | Upgrade                        |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| When                         | A node joins the cluster        | The provider image tag changes |
-| Pulled by                    | Palette agent                   | kubelet                        |
-| Authentication               | Docker credential helper        | Kubernetes credential provider |
-| Credentials file             | `/root/.aws/credentials`        | `/etc/kubernetes/ecr/credentials` |
-| Written by                   | Edge host user data             | Cluster profile                |
-| Rotatable after deployment   | No                              | Yes                            |
+| Attribute                  | Cluster creation         | Upgrade                           |
+| -------------------------- | ------------------------ | --------------------------------- |
+| When                       | A node joins the cluster | The provider image tag changes    |
+| Pulled by                  | Palette agent            | Kubelet                           |
+| Authentication             | Docker credential helper | Kubernetes credential provider    |
+| Credentials file           | `/root/.aws/credentials` | `/etc/kubernetes/ecr/credentials` |
+| Written by                 | Edge host user data      | Cluster profile                   |
+| Rotatable after deployment | No                       | Yes                               |
 
-An upgrade runs as a pod whose container image is the provider image, and that pod has no image pull secret, so kubelet
-performs the pull. kubelet does not read `/root/.docker/config.json` and does not use the Docker credential helper
+An upgrade runs as a pod whose container image is the provider image, and that pod has no image pull secret, so Kubelet
+performs the pull. Kubelet does not read `/root/.docker/config.json` and does not use the Docker credential helper
 protocol. If you configure only the creation path, the cluster creates successfully but then fails at its first upgrade
 with the error `authorization failed: no basic auth credentials`. Both paths are required.
 
@@ -46,7 +47,7 @@ file, you can change those credentials later, which is what makes credential rot
 
 - The configuration covers provider images only. Application workload images are not covered.
 
-- Credentials are stored in plaintext on each node, in both the Edge host user data and the rendered cluster
+- Credentials are stored in plain text on each node, in both the Edge host user data and the rendered cluster
   configuration file at `/oem/85_cluster_config.yaml`. A bare-metal Edge host has no cloud instance profile, so a static
   access key is the only option. Scope the IAM user to a single repository to limit the exposure.
 
@@ -79,8 +80,8 @@ file, you can change those credentials later, which is what makes credential rot
 
 ## Create a Pull-Only IAM User
 
-1. In the AWS account that owns your ECR repository, create an IAM user for the Edge nodes. A bare-metal Edge host has no
-   instance profile, so a static access key is required.
+1. In the AWS account that owns your ECR repository, create an IAM user for the Edge nodes. A bare-metal Edge host has
+   no instance profile, so a static access key is required.
 
 2. Attach a policy that grants a registry-wide authorization token and pull-only access to the single repository that
    holds your provider images. Replace `<region>`, `<account-id>`, and `<repository-name>` with your values.
@@ -98,11 +99,7 @@ file, you can change those credentials later, which is what makes credential rot
        {
          "Sid": "PullOnlySingleRepository",
          "Effect": "Allow",
-         "Action": [
-           "ecr:BatchCheckLayerAvailability",
-           "ecr:GetDownloadUrlForLayer",
-           "ecr:BatchGetImage"
-         ],
+         "Action": ["ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"],
          "Resource": "arn:aws:ecr:<region>:<account-id>:repository/<repository-name>"
        }
      ]
@@ -126,7 +123,7 @@ on demand at pull time, so a cluster created months ago upgrades the same way as
 ## Configure Edge Host User Data
 
 Provide the following as the Edge host user data. This single document installs both helper binaries, writes the
-creation path credentials, and points kubelet at the profile-owned upgrade path credentials file without writing that
+creation path credentials, and points Kubelet at the profile-owned upgrade path credentials file without writing that
 file itself.
 
 The `initramfs` and `boot` keys are two stages of the same `stages` document, not two alternative configurations.
@@ -136,11 +133,11 @@ Two details are load-bearing:
 
 - The credential provider configuration must be written in an `initramfs` stage, not a `boot` stage. yip runs the
   `initramfs` stage of every `/oem` file before the `boot` stage of any of them. The cluster configuration runs
-  `kubeadm init` in its boot stage, and `kubeadm init` blocks until kubelet is up. kubelet validates the credential
+  `kubeadm init` in its boot stage, and `kubeadm init` blocks until Kubelet is up. Kubelet validates the credential
   provider configuration at startup and exits if it is missing or invalid. Writing the configuration in an `initramfs`
   stage guarantees that it is present and correct before `kubeadm init` starts.
 
-- The `defaultCacheDuration` field is mandatory. If you omit it, kubelet does not start and never retries, and
+- The `defaultCacheDuration` field is mandatory. If you omit it, Kubelet does not start and never retries, and
   `kubeadm init` fails at `wait-control-plane` with `providers.defaultCacheDuration: Required value`.
 
 Replace `<account-id>`, `<region>`, `<access-key-id>`, and `<secret-access-key>` with your values.
@@ -186,7 +183,7 @@ stages:
             chmod 0644 "$DST"
           else
             rm -f "$DST"
-            logger -t ecr-init "credential-provider binary absent; kubelet flags not enabled this boot"
+            logger --tag ecr-init "credential-provider binary absent; kubelet flags not enabled this boot"
           fi
           systemctl daemon-reload || true
           true
@@ -238,7 +235,7 @@ stages:
           if [ "$(systemctl is-failed kubelet 2>/dev/null)" = "failed" ]; then
             systemctl daemon-reload || true
             systemctl restart kubelet || true
-            logger -t ecr-selfheal "restarted failed kubelet after writing credential-provider config"
+            logger --tag ecr-selfheal "restarted failed kubelet after writing credential-provider config"
           fi
           true
       downloads:
@@ -262,7 +259,7 @@ stages:
 
 The `AWS_SHARED_CREDENTIALS_FILE=/etc/kubernetes/ecr/credentials` line redirects the upgrade path away from
 `/root/.aws`. The user data creates the directory but never writes the file. The cluster profile writes the file in the
-next step. Both `/etc/kubernetes` and `/etc/systemd` are persistent mounts, so the credentials file and the kubelet
+next step. Both `/etc/kubernetes` and `/etc/systemd` are persistent mounts, so the credentials file and the Kubelet
 drop-ins survive reboots and the A/B image swap.
 
 The [Amazon ECR credential helper](https://github.com/awslabs/amazon-ecr-credential-helper) and the
@@ -318,8 +315,8 @@ stages:
 Keep the following in mind when you configure the profile:
 
 - A variable marked masked in the Palette UI improves where the secret is stored and managed. It does not remove the
-  on-disk exposure. Palette renders the value in plaintext into `/oem/85_cluster_config.yaml` on every node, readable by
-  anyone with node access.
+  on-disk exposure. Palette renders the value in plain text into `/oem/85_cluster_config.yaml` on every node, readable
+  by anyone with node access.
 
 - Palette variable names cannot contain hyphens, because the template engine rejects them. Use `ecr_rotating_key_id`,
   not `ecr-rotating-key-id`.
@@ -362,19 +359,19 @@ PF=/etc/kubernetes/ecr/credentials
 
 echo "== provider flags on the running kubelet (expect 2) =="
 tr '\0' '\n' < /proc/$(systemctl show kubelet --property MainPID --value)/cmdline \
-  | grep -c image-credential-provider
+  | grep --count image-credential-provider
 
 echo "== kubelet points at the profile-owned credentials file =="
 systemctl show kubelet --property Environment --value | tr ' ' '\n' | grep AWS_SHARED
 
 echo "== profile-owned file present? which key id? =="
-if [ -f "$PF" ]; then grep -o 'AKIA[A-Z0-9]*' "$PF" | head -1
+if [ -f "$PF" ]; then grep --only-matching 'AKIA[A-Z0-9]*' "$PF" | head --lines 1
 else echo "   ABSENT - the profile has not written it yet"; fi
 
 echo "== can the credential provider resolve right now? =="
 echo "{\"apiVersion\":\"credentialprovider.kubelet.k8s.io/v1\",\"kind\":\"CredentialProviderRequest\",\"image\":\"$IMG\"}" \
   | HOME=/root AWS_SDK_LOAD_CONFIG=1 AWS_SHARED_CREDENTIALS_FILE=$PF $PROV 2>&1 \
-  | grep -o '"password":"[^"]*"' >/dev/null && echo "   RESOLVED" || echo "   FAILED"
+  | grep --only-matching '"password":"[^"]*"' >/dev/null && echo "   RESOLVED" || echo "   FAILED"
 ```
 
 A passing node reports `2` provider flags, `AWS_SHARED_CREDENTIALS_FILE=/etc/kubernetes/ecr/credentials`, an `AKIA` key
@@ -405,8 +402,8 @@ it can report success with a retired key. A raw `aws ecr get-authorization-token
 the reliable check.
 
 ```shell
-grep -o 'AKIA[A-Z0-9]*' /etc/kubernetes/ecr/credentials   # the new key ID
-grep -o 'AKIA[A-Z0-9]*' /root/.aws/credentials            # still the old key, by design
+grep --only-matching 'AKIA[A-Z0-9]*' /etc/kubernetes/ecr/credentials   # the new key ID
+grep --only-matching 'AKIA[A-Z0-9]*' /root/.aws/credentials            # still the old key, by design
 
 AWS_SHARED_CREDENTIALS_FILE=/etc/kubernetes/ecr/credentials AWS_PROFILE=default \
   aws ecr get-authorization-token --region <region> \
@@ -417,10 +414,10 @@ AWS_SHARED_CREDENTIALS_FILE=/etc/kubernetes/ecr/credentials AWS_PROFILE=default 
 
 If you changed the credential in [Rotate the ECR Credential](#rotate-the-ecr-credential), confirm that the rolling
 reboot finished on every node and that the live credentials file shows the new key before you upgrade. Checking
-`/oem/85_cluster_config.yaml` is not enough, because that reflects delivery rather than what kubelet reads.
+`/oem/85_cluster_config.yaml` is not enough, because that reflects delivery rather than what Kubelet reads.
 
 ```shell
-grep -o 'AKIA[A-Z0-9]*' /etc/kubernetes/ecr/credentials   # the file kubelet reads
+grep --only-matching 'AKIA[A-Z0-9]*' /etc/kubernetes/ecr/credentials   # the file kubelet reads
 stat --format %y /etc/kubernetes/ecr/credentials          # confirm it was written after the last boot
 uptime --since
 ```
@@ -459,17 +456,17 @@ The error `authorization failed: no basic auth credentials` appears identically 
 missing, its credential chain is broken, or the key is invalid. The error names neither ECR nor your configuration, so
 always verify the credential itself against ECR, not just the provider wiring. An invalid key is especially misleading:
 the AWS CLI reports `UnrecognizedClientException`, but the credential helper reports only
-`credentials not found in native keychain`, and kubelet surfaces it as `no basic auth credentials`.
+`credentials not found in native keychain`, and Kubelet surfaces it as `no basic auth credentials`.
 
-| Symptom                                                              | Likely cause                                                                | Check                                                                                  |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| kubelet does not start; `Failed to register CRI auth plugins`        | The flags are set but the provider binary is missing or misplaced           | `ls -l /etc/kubernetes/credential-provider/`                                           |
-| `providers.defaultCacheDuration: Required value`; kubelet exits      | `defaultCacheDuration` is omitted from the configuration                    | `cat /etc/kubernetes/credential-provider-config.yaml`                                  |
-| `kubeadm init` stuck at `wait-control-plane`; port `6443` never opens| kubelet exited on an invalid provider configuration and never retried       | `systemctl is-failed kubelet`                                                          |
-| Cluster creates fine, upgrade fails with `ImagePullBackOff`          | The upgrade path is not configured                                          | Provider flags on the running kubelet, expect `2`                                      |
-| `ImagePullBackOff` right after a combined credential and tag apply   | The credential was delivered to `/oem` but never executed, because no reboot happened | Compare `stat --format %y /etc/kubernetes/ecr/credentials` against `uptime --since`    |
-| The creation path reports OK on a key you deleted                    | A cached token in `/root/.ecr/cache.json` that ignores expiry               | Raw `aws ecr get-authorization-token` against the credentials file                     |
-| All nodes remain `NotReady` after creation                           | Typically unrelated to ECR                                                  | Check the `stylus-operator` service logs for a `lease lock` message, then restart the service |
+| Symptom                                                               | Likely cause                                                                          | Check                                                                                         |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Kubelet does not start; `Failed to register CRI auth plugins`         | The flags are set but the provider binary is missing or misplaced                     | `ls -l /etc/kubernetes/credential-provider/`                                                  |
+| `providers.defaultCacheDuration: Required value`; Kubelet exits       | `defaultCacheDuration` is omitted from the configuration                              | `cat /etc/kubernetes/credential-provider-config.yaml`                                         |
+| `kubeadm init` stuck at `wait-control-plane`; port `6443` never opens | Kubelet exited on an invalid provider configuration and never retried                 | `systemctl is-failed kubelet`                                                                 |
+| Cluster creates fine, upgrade fails with `ImagePullBackOff`           | The upgrade path is not configured                                                    | Provider flags on the running Kubelet, expect `2`                                             |
+| `ImagePullBackOff` right after a combined credential and tag apply    | The credential was delivered to `/oem` but never executed, because no reboot happened | Compare `stat --format %y /etc/kubernetes/ecr/credentials` against `uptime --since`           |
+| The creation path reports OK on a key you deleted                     | A cached token in `/root/.ecr/cache.json` that ignores expiry                         | Raw `aws ecr get-authorization-token` against the credentials file                            |
+| All nodes remain `NotReady` after creation                            | Typically unrelated to ECR                                                            | Check the `stylus-operator` service logs for a `lease lock` message, then restart the service |
 
 ## Next Steps
 
