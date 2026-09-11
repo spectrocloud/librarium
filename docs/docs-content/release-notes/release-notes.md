@@ -82,10 +82,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.16
 
 <!-- END PACKS LIST BODY: DOC-3191. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 10, 2026 - Release 4.10.16
 
 <!-- PATCH RELEASE TICKET: DOC-3205 -->
