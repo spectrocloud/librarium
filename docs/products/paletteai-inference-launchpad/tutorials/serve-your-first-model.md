@@ -46,8 +46,6 @@ On your own machine:
 
 - Network access to the appliance address. If the console loads in your browser, your terminal can reach it too.
 
-- A small code project on disk. Any folder with a few files in it. We ask Claude Code a question about it at the end.
-
 :::info
 
 Two credentials appear in this tutorial, and they are not interchangeable. The **admin sign-in** gets you into the
@@ -290,10 +288,9 @@ correctly. If it is a `404`, an alias in **Create a Client and Its API Token** i
 
 Now we give it real work.
 
-Change into your code project and start Claude Code.
+Start Claude Code.
 
 ```bash
-cd <path-to-your-project>
 claude
 ```
 
