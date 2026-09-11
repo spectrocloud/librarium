@@ -24,9 +24,9 @@ the steps to set them, refer to
 | `ANTHROPIC_DEFAULT_OPUS_MODEL`   | Optional. The alias Claude Code requests for its Opus-tier work. The appliance maps the alias to the model it serves.                       | `claude-opus-4-8`                   |
 | `ANTHROPIC_DEFAULT_SONNET_MODEL` | Optional. The alias Claude Code requests for its Sonnet-tier work.                                                                          | `claude-sonnet-4-5`                 |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL`  | Optional. The alias Claude Code requests for its Haiku-tier, background work.                                                               | `claude-haiku-4-5`                  |
-| `CLAUDE_CODE_EFFORT_LEVEL`       | Optional. Sets Claude Code's reasoning effort. One of `low`, `medium`, `high`, or `max`.                                                    | `max`                               |
+| `CLAUDE_CODE_EFFORT_LEVEL`       | Optional. Sets Claude Code's reasoning effort. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`.                                   | `max`                               |
 
-{/* TODO: confirm the ANTHROPIC_DEFAULT_* and CLAUDE_CODE_EFFORT_LEVEL rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
+{/* TODO: confirm the ANTHROPIC_DEFAULT_* rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
 
 ## Endpoint URL
 
