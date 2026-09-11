@@ -30,7 +30,10 @@ appliance even after you complete this guide.
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md).
   Generating the token and creating the model alias later in this guide can require operator access.
 - The appliance reachable at a DNS name with a valid, publicly trusted TLS certificate. Cursor sends requests from its
-  own cloud servers, so a self-signed certificate does not work and there is no client-side workaround.
+  own cloud servers, so a self-signed certificate does not work and there is no client-side workaround. If the appliance
+  is on a private network, refer to
+  [Cursor Cannot Reach an Appliance on a Private Network](../reference/known-issues.md#cursor-cannot-reach-an-appliance-on-a-private-network)
+  first.
 
 ## Create a Model Alias
 
