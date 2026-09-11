@@ -1,0 +1,10 @@
+---
+partial_category: self-hosted
+partial_name: mongodb-fcv-precheck
+---
+
+**(4.7.x to 4.8.x)**  If the MongoDB data for your clusters was first created on {props.edition} 4.5.x through 4.6.9, the MongoDB Feature
+Compatibility Version (FCV) might be at 6.0, which prevents you from upgrading to {props.edition} 4.8. You must raise the FCV to 7.0 before upgrading because {props.edition} 4.8 uses MongoDB 8.0.
+
+To learn how to check the FCV version and upgrade to FCV 7.0 if necessary, refer to
+[Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade](/troubleshooting/enterprise-install#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade).
