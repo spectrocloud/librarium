@@ -11,6 +11,25 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 11, 2026 - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-3210 -->
+<!-- PATCH RELEASE VERSION: 4.8.x -->
+<!-- PATCH RELEASE CANDIDATES: PE-9515 PEM-11854 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11854 -->
+
+- Improved Palette Management maintenance and stability updates for this release.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9515 -->
+
+- Fixed an issue where the Edge operator failed to sync informer caches and prevented CNI deployment during agent-mode
+  bootstrap.
+
 ## August 6, 2026 - Release 4.8.62
 
 <!-- PATCH RELEASE TICKET: DOC-3188 -->
