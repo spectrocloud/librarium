@@ -70,7 +70,7 @@ jobs:
 
       - name: Setup Node.js environment
         if: steps.check.outputs.run == 'true'
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm" 
@@ -94,12 +94,12 @@ jobs:
             | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9._-]+).*/\1/'
           )
           ARTIFACT=$(
-            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]+).*/\1/'
+            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]*).*/\1/'
           )
           TERRAFORM=$(
-            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]+).*/\1/'
+            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]*).*/\1/'
           )
 
           if [[ -z "$TICKET" ]]; then
@@ -114,14 +114,8 @@ jobs:
             echo "❌ No RELEASE MANAGEMENT APPLIANCE found" >&2
             exit 1
           fi
-          if [[ -z "$ARTIFACT" ]]; then
-            echo "❌ No RELEASE ARTIFACT STUDIO found" >&2
-            exit 1
-          fi
-          if [[ -z "$TERRAFORM" ]]; then
-            echo "❌ No RELEASE TERRAFORM VERSION found" >&2
-            exit 1
-          fi
+          # Artifact Studio and Terraform are optional (not every week releases them). An empty
+          # value is valid and its component-table row is dropped downstream, so do not fail here.
 
           {
             echo "JIRA_TICKET=$TICKET"
@@ -133,6 +127,21 @@ jobs:
             echo "RELEASE_TERRAFORM_VERSION=$TERRAFORM"
           } >> "$GITHUB_ENV"
       
+      - name: Determine release base branch
+        if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # The release signal rides on the PR's base branch. BASE_BRANCH above is the PR head ref
+          # (used for checkout), not the base, so read the base separately. Validate the same way
+          # as generate_component_updates.yaml and the script, so release-ness is consistent.
+          BASE=$(gh pr view ${{ github.event.issue.number }} --json baseRefName --jq .baseRefName)
+          if [[ "$BASE" != "master" && ! "$BASE" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+            echo "❌ PR base branch '$BASE' is not 'master' or a well-formed 'docs-rel-<major>-<minor>-<0|a|b|c>' branch (for example, docs-rel-4-10-a)." >&2
+            exit 1
+          fi
+          echo "RELEASE_BASE_BRANCH=$BASE" >> "$GITHUB_ENV"
+
       - name: Execute Script to Generate Component Updates
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         env:
@@ -141,6 +150,10 @@ jobs:
           RELEASE_MANAGEMENT_APPLIANCE: ${{ env.RELEASE_MANAGEMENT_APPLIANCE }}
           RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
           RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
+          RELEASE_BASE_BRANCH: ${{ env.RELEASE_BASE_BRANCH }}
+          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # via the GitHub CLI on a release run, so it needs an authenticated token here too.
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           touch .env
           make generate-component-updates
@@ -159,7 +172,11 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
-          git add docs/docs-content/release-notes/release-notes.md
+          # On a release run the script may also update the appliance Kubernetes Requirements tables,
+          # so stage those pages too (no-op when unchanged).
+          git add docs/docs-content/release-notes/release-notes.md \
+                  docs/docs-content/enterprise-version/install-palette/install-palette.md \
+                  docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md
 
           if git diff --cached --quiet; then
             echo "ℹ️  No release notes changes to commit."
