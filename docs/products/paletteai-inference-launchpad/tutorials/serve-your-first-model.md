@@ -115,7 +115,9 @@ Now we give those GPUs something to do.
 
 2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
 
-3. Open the **Model** drop-down menu and select the smallest model your catalog offers.
+3. Open the **Model** drop-down menu and select a model that serves chat requests. A smaller model finishes loading
+   sooner. A vision preprocessing sidecar is not a chat model, so do not choose one here; for what those entries are,
+   refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
    The catalog lists only models whose weights are already on a node in this appliance, so your list is specific to your
    hardware.
