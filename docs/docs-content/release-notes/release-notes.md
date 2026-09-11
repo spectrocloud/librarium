@@ -11,6 +11,55 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 10, 2026 - Release 4.10.16
+
+<!-- PATCH RELEASE TICKET: DOC-3205 -->
+<!-- PATCH RELEASE VERSION: 4.10.16 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9345 -->
+
+- Fixed an issue where `stylus-operator` did not retry the registry connection when the `zot-secret` appeared late,
+  which left pack images missing from Zot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9378 -->
+
+- Fixed an issue where Edge Kubernetes upgrades to version 1.33.5 stalled following a hostname-validation reboot due to
+  x509 certificate verification failures during Stylus pack download and edge login.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9382 -->
+
+- Fixed an issue on two-node Edge clusters where PostgreSQL failed to start after a provider image swap, because the TLS
+  key pair paths were split across persistent and ephemeral storage.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11869 -->
+
+- Fixed an issue where Private Cloud Gateway (PCG) migrations did not transfer IP pool ownership.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+
+- Fixed an issue where Ally upgrades retriggered on-boot operating system patching drains across nodes, causing nodes
+  with failed drains to remain cordoned indefinitely.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11890 -->
+
+- Fixed an issue during vSphere Private Cloud Gateway (PCG) migrations where the cloud account's overlord UID was not
+  transferred, preventing migrated clusters from being deleted.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9367 -->
+
+- Fixed an issue where two-node cluster creation deadlocked permanently when the API VIP was unavailable due to nodes
+  mutually fencing each other and evicting kube-vip.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.16 Palette release is 4.10.4.
+
+:::
+
 ## September 8, 2026 - Release 4.10.14
 
 <!-- PATCH RELEASE TICKET: DOC-3193 -->
@@ -463,63 +512,6 @@ troubleshooting scenario.
   cluster-admin privileges and who authenticate through OIDC. Refer to
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
   [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
-
-- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
-
-##### Features
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
-
-- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
-  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
-  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
-  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
-  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
-  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
-
-- A new
-  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
-  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
-  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
-  satisfy.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
-
-- The CDI Upload Proxy and KubeVirt Export Proxy are now exposed on the appliance so that `virtctl image-upload`
-  transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
-  only from inside the cluster.
-
-##### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->
-
-- The appliance audit trail now records a broader set of virtual machine lifecycle events, expanding the coverage
-  available to audit and compliance teams. Refer to [Audit Trail](../vm-management/vm-launchpad/system/audit.md) for the
-  full list of recorded events.
-
-##### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-987 -->
-
-- Fixed an issue in the **Snapshot Policies** creation and edit modal that caused the **Add label** action to silently
-  overwrite an existing label value after a middle label row was deleted. New label rows now receive unique keys, and
-  existing values are preserved.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1060 -->
-
-- Fixed an issue that caused the VMO Manager dashboard to under-report node CPU usage by up to 19 percentage points when
-  the appliance ran with an external metrics backend. Reported node CPU figures now match the values in the metrics
-  store.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
-
-- Fixed an issue in the virtual machine creation wizard that caused the default network interface boot-order field to be
-  omitted from new virtual machines when UEFI Boot, Secure Boot, TPM Device, and Persistent TPM were all enabled. The
-  wizard now sets `bootOrder=2` on the network interface for this firmware configuration.
 
 ### Automation
 
