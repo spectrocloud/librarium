@@ -103,8 +103,12 @@ cluster network. No proxy is required.
 | `ingressRoute.enabled`                                     | `false`, because `directAccess` owns the route                                         |
 | `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`                                                                                 |
 
-If you combine **Direct** with the [External OIDC](./authentication-options.md#external-oidc) authentication option, you
-must also set `platform.baseUrl` to the URL that users reach the UI at, so that VMO can build the OIDC redirect URI.
+**Direct** mode uses two address parameters, both set to the URL that users reach the VM dashboard at, such as the
+`LoadBalancer` IP or a DNS name. Do not append `/v1`, which is not used in pack version 4.10.x and later.
+
+- `charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` surfaces the **Connect** button on the
+  cluster **Overview** tab and becomes the address that the button opens.
+- `charts.virtual-machine-orchestrator.vmo-manager.platform.baseUrl` builds the OIDC redirect URI.
 
 ```yaml
 charts:
@@ -112,11 +116,14 @@ charts:
     vmo-manager:
       platform:
         baseUrl: "https://<lb-ip-or-dns>"
+    appConfig:
+      clusterInfo:
+        consoleBaseAddress: "https://<lb-ip-or-dns>"
 ```
 
-Palette-managed OIDC in **Direct** mode uses `appConfig.clusterInfo.consoleBaseAddress` automatically and requires no
-additional configuration. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for
-guidance on setting that address.
+Set both to the same value. The pack currently holds this address in two places and plans to merge them into a single
+parameter in a later version. The **Connect** button also requires that VMO is deployed as its own add-on cluster
+profile. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for the full procedure.
 
 ## Custom
 
@@ -135,6 +142,14 @@ YAML. A key that the selection touches, such as `oidc.enabled` or `features.loca
 and a comment next to it can be left behind.
 
 This behavior is cosmetic and applies to every pack that uses presets. The resulting values are correct.
+
+### Scenario - The Connect Button or Virtual Machines Tab Does Not Appear
+
+The **Connect** button and the **Virtual Machines** tab appear only when VMO is deployed as its own add-on cluster
+profile. If the VMO pack is a layer inside a full cluster profile, neither appears, regardless of the values you set.
+Move the VMO pack into a dedicated add-on cluster profile and reapply it to the cluster. Refer to
+[Create a VMO Profile](./create-vmo-profile.md) for guidance. The VMO pack must also report a **Ready** status on the
+cluster before the **Connect** button appears.
 
 ### Scenario - The Service Is Not Reachable in Direct Mode
 
