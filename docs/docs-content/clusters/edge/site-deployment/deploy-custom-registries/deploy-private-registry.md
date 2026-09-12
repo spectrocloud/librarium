@@ -30,8 +30,9 @@ to use a private registry for images other the provider images, refer to
   private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your private
   registry.
 
-- Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as
-  AWS ECR and Google Artifact Registry are not supported.
+- This page covers basic username and password authentication. For token authentication with Amazon ECR, refer to
+  [Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md). Token authentication with
+  Google Artifact Registry is not supported.
 
 ## Prerequisites
 
