@@ -35,8 +35,10 @@ bandwidth use and protect against outages. For more information, refer to
 
 ## Limitations
 
-- Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as
-  AWS ECR and Google Artifact Registry are not supported.
+- Palette Edge supports basic username and password authentication for external registries. Token authentication schemes
+  used by services such as AWS ECR and Google Artifact Registry are not supported for external registries. To use Amazon
+  ECR for provider images specifically, refer to
+  [Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md).
 
 - You cannot use content bundles with an external registry if you do not enable the local Harbor registry on your Edge
   host. If you specify a external registry without enabling the local Harbor registry, the images will be downloaded
