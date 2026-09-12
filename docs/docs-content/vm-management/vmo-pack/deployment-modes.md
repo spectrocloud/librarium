@@ -143,11 +143,12 @@ and a comment next to it can be left behind.
 
 This behavior is cosmetic and applies to every pack that uses presets. The resulting values are correct.
 
-### Scenario - The Connect Button or Virtual Machines Tab Does Not Appear
+### Scenario - The Connect Button Does Not Appear
 
-The **Connect** button and the **Virtual Machines** tab appear only when VMO is deployed as its own add-on cluster
-profile. If the VMO pack is a layer inside a full cluster profile, neither appears, regardless of the values you set.
-Move the VMO pack into a dedicated add-on cluster profile and reapply it to the cluster. Refer to
+The **Connect** button appears only when VMO is deployed as its own add-on cluster profile and `consoleBaseAddress` is
+set. In an add-on profile, setting `consoleBaseAddress` replaces the **Virtual Machines** tab with the **Connect**
+button. If the VMO pack is a layer inside a full cluster profile, the **Connect** button never appears, no matter what
+values you set. Move the VMO pack into a dedicated add-on cluster profile and reapply it to the cluster. Refer to
 [Create a VMO Profile](./create-vmo-profile.md) for guidance. The VMO pack must also report a **Ready** status on the
 cluster before the **Connect** button appears.
 

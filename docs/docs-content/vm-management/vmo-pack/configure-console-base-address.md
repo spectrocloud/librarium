@@ -20,9 +20,9 @@ cluster **Overview** tab. The button opens the dashboard directly at the address
 - A workload cluster with VMO installed and configured. Refer to the [VMO](../vm-management.md) guide for details.
   <!--prettier-ignore-start-->
 
-  - VMO must be deployed as its own add-on cluster profile. If the VMO pack is a layer inside a full cluster profile,
-    the **Connect** button and the **Virtual Machines** tab do not appear, regardless of the address you configure.
-    Refer to [Create a VMO Profile](./create-vmo-profile.md) for guidance.
+  - VMO must be deployed as its own add-on cluster profile. The **Connect** button appears only in an add-on profile. If
+    the VMO pack is a layer inside a full cluster profile, the **Connect** button never appears, regardless of the
+    address you configure. Refer to [Create a VMO Profile](./create-vmo-profile.md) for guidance.
   - The cluster must use the **Direct** preset on the
     <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" />
     layer.
