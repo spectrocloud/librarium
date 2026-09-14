@@ -150,39 +150,109 @@ Also confirm that the host rebooted after the agent installed, because registrat
 
 ## Create the cluster profile
 
-Create an Edge Native cluster profile that models the full stack for the Jetson device.
+Create an Edge Native cluster profile that models the operating system, Kubernetes distribution, and network for the
+Jetson device. Use a **Full** profile so that you can add the model-serving workload to the same profile.
 
-<!-- TODO(DOC-3090 / DOC-3093): State the verified ARM64 Kubernetes distribution (K3s is the likely candidate) and CNI once validated on the Thor, and add the ARM64 row to the agent-mode verified-combinations table. edge-canonical does not support ARM64. -->
+<!-- Validated on the Thor 2026-09-14: Full profile = BYOOS (Edge) Agent Mode + Palette Optimized K3S + Flannel, all ARM64-compatible. edge-canonical has no ARM64 build. Thor support statement still gated on DOC-3093 (Rishi). Model-serving layer pending (Option 2). -->
 
-<!-- TODO(DOC-3090 / DOC-3089): Document the embedded-GPU enablement layer for the integrated Jetson GPU. Validated on the Thor 2026-09-14: Palette auto-detects the GPU at registration and shows it in the Edge Hosts grid (Vendor NVIDIA, Model NVIDIA Thor, MIG Capable No; GPU memory reads 0.00 GB because the integrated GPU shares system memory). Detection is not the same as workload enablement: the NVIDIA GPU Operator pack does not support embedded products, so exposing the GPU to pods is a different mechanism (for example, the NVIDIA container runtime and a RuntimeClass, or a device plugin). This path is not yet covered in librarium; confirm with engineering how it is expressed in the profile. -->
+1. From the left **Main Menu**, select **Profiles**, and then select **Add Cluster Profile**.
+2. Enter a name, select the **Full** profile type, and then select **Next**.
+3. For the **Cloud Type**, select **Edge Native**, and then select **Next**.
+4. Add the following core layers. For each layer, select a pack version that supports ARM64.
 
-<!-- TODO(DOC-3090): Document the model-serving layer. Working demo is Ollama (ARM64), tentative pending Thor validation and product sign-off; fallback is a JetPack-tuned llama.cpp container. -->
+   | Layer      | Pack                               | Configuration                                                                                                                                                                              |
+   | ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | OS         | BYOOS (Edge) (`edge-native-byoi`)  | In the pack **Values**, expand **Presets** and select **Agent Mode**. This sets `options.system.uri` to `NA`, because agent mode manages the operating system that is already on the host. |
+   | Kubernetes | Palette Optimized K3s (`edge-k3s`) | Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so use K3s on a Jetson.                                                                                                 |
+   | Network    | Flannel (`cni-flannel`)            | Flannel is the verified Container Network Interface (CNI) for K3s.                                                                                                                         |
 
-The profile contains the following layers:
+5. Complete the profile and save it.
 
-- **Operating system** - the agent-mode host OS (JetPack), modeled so Palette manages the existing operating system on
-  the device.
-- **Kubernetes** - a distribution verified for ARM64.
-- **Network** - a Container Network Interface (CNI) verified for the chosen distribution.
-- **GPU enablement** - the layer that exposes the device integrated GPU to workloads.
-- **Model serving** - the layer that serves the local AI model.
-
-Refer to [Create an Edge Native Cluster Profile](../../clusters/edge/site-deployment/model-profile.md) and
-[Create Cluster Profiles](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) for
-guidance on building a profile.
+You do not add a layer to enable the GPU. Refer to [Enable GPU access for workloads](#enable-gpu-access-for-workloads)
+for how a workload reaches the device GPU. For the full profile-creation flow, refer to
+[Create an Edge Native Cluster Profile](../../clusters/edge/site-deployment/model-profile.md).
 
 ## Deploy the cluster
 
-Deploy the cluster profile to the registered Jetson host to create a single-node Edge cluster.
+Deploy the cluster profile to the registered Jetson host to create a single-node Edge cluster that runs both the control
+plane and your workloads.
 
-<!-- TODO(DOC-3090): Document the deploy flow for a single Jetson host (host selection, profile attachment, and any Jetson-specific configuration values), and capture the expected healthy state. Validate on the Thor. -->
+1. From the left **Main Menu**, select **Clusters**, and then select **Add New Cluster**.
+2. Select **Edge Native** as the cluster type, and then start the Edge Native configuration.
+3. Enter the cluster basic information, and then select **Next**.
+4. Select the cluster profile you created, and then continue through the profile layers.
+5. In the node pool configuration, set the pool **Architecture** to **ARM64**, and then add the registered Jetson host
+   to the pool.
+6. Review the settings and deploy the cluster.
+
+:::warning
+
+In the node pool **Pool Configuration**, the **Architecture** field defaults to **AMD64**. Change it to **ARM64** for a
+Jetson device. If you leave the default, the cluster does not build correctly.
+
+:::
+
+The cluster deploys as a single node that runs both the control plane and workloads. When the deployment finishes, the
+cluster reaches a **Running** state and a **Healthy** status.
+
+<!-- Validated on the Thor 2026-09-14: node Ready, K3s v1.36.2+k3s1, arch arm64, kernel 6.8.12-1021-tegra, Ubuntu 24.04.5; Flannel and kube-vip pods Running, all system pods healthy. The ARM64 node-pool default is AMD64 and must be changed by hand. -->
+
+## Enable GPU access for workloads
+
+Palette detects the Jetson GPU when the host registers, but detection does not expose the GPU to your workloads. On
+JetPack, the K3s container runtime automatically registers an `nvidia`
+[RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) that routes a pod through the NVIDIA
+container runtime. You do not add a GPU layer to the cluster profile, and you do not use the
+
+<VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack, which does not
+support embedded devices such as the Jetson.
+
+A workload reaches the GPU when its pod specification does both of the following:
+
+- Sets `runtimeClassName` to `nvidia`.
+- Requests the GPU with the `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` environment variables.
+
+The following example pod requests the GPU and prints the GPU status.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-check
+spec:
+  runtimeClassName: nvidia
+  restartPolicy: Never
+  containers:
+    - name: check
+      image: ubuntu:24.04
+      env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: "all"
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: "all"
+      command: ["bash", "-lc", "nvidia-smi"]
+```
+
+Apply the pod and review its logs.
+
+```shell
+kubectl apply --filename gpu-check.yaml
+kubectl logs gpu-check
+```
+
+When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device even
+though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU, because
+the NVIDIA container runtime injects the GPU only when the workload requests it.
+
+<!-- Validated on the Thor 2026-09-14: pod with runtimeClassName nvidia + NVIDIA_VISIBLE_DEVICES=all + NVIDIA_DRIVER_CAPABILITIES=all got /dev/nvidia0,1,ctl,uvm-tools and nvidia-smi reported NVIDIA Thor (driver 595.78, CUDA 13.2) inside a plain ubuntu:24.04 image. Without the env vars: no /dev/nvidia*. The nvidia RuntimeClass is auto-created by K3s/containerd on JetPack; no profile layer or device plugin needed. Confirm blessed pattern with Rishi (DOC-3093 Q3). -->
 
 ## Serve and verify the model
 
 After the cluster reaches a healthy state, the model-serving workload runs on the device and exposes a serving endpoint.
-Confirm the model responds.
+The serving workload uses the same GPU access pattern described in
+[Enable GPU access for workloads](#enable-gpu-access-for-workloads). Confirm the model responds.
 
-<!-- TODO(DOC-3090): Document how to reach the serving endpoint on the device and a concrete verification (for example, a request that returns a completion). Capture the real endpoint, port, and example response from the Thor. -->
+<!-- TODO(DOC-3090): Document the model-serving layer and verification (Option 2). Deploy the serving workload (Ollama on ARM64, tentative pending validation and product sign-off; llama.cpp fallback) with runtimeClassName nvidia + the NVIDIA_* env vars, then capture the real endpoint, port, and an example request/response from the Thor. -->
 
 ## Next steps
 
