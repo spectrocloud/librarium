@@ -109,7 +109,4 @@ available for the registration step.
 ## Next steps
 
 The device is now ready to register with Palette and run an AI model. Continue to
-
-<!-- TODO(DOC-3090): link the Day 1 "Register a Jetson host and serve a model" page once it exists. -->
-
-the Day 1 registration guide.
+[Register a Jetson Host and Serve a Model](./register-jetson-host.md).
