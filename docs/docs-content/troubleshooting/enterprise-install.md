@@ -768,7 +768,10 @@ Palette recreates all resources with the correct configuration.
 
 ## Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade
 
-When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4.8, the `mongo` Pods in the `hubble-system` namespace can fail to start and enter `CrashLoopBackOff`. Palette 4.8 ships MongoDB 8.0, which requires a MongoDB Feature Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette 4.5.x through 4.6.9 might still be at FCV 6.0.
+When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4.8, the `mongo` Pods in the
+`hubble-system` namespace can fail to start and enter `CrashLoopBackOff`. Palette 4.8 ships MongoDB 8.0, which requires
+a MongoDB Feature Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette
+4.5.x through 4.6.9 might still be at FCV 6.0.
 
 When an upgrade fails due to this problem, the following message is added to the `mongo` container log.
 
@@ -778,7 +781,8 @@ UPGRADE PROBLEM: Found an invalid featureCompatibilityVersion document
 Invalid feature compatibility version value '6.0'; expected '7.0' or '7.3' or '8.0'
 ```
 
-The number of affected members varies. Recovery depends on whether any member is still running the MongoDB 7 image and is Ready.
+The number of affected members varies. Recovery depends on whether any member is still running the MongoDB 7 image and
+is Ready.
 
 ### Debug Steps
 
@@ -811,16 +815,16 @@ The number of affected members varies. Recovery depends on whether any member is
      previous MongoDB 7 tag and wait for the Pods to become Ready, then proceed to step 7. After the FCV is raised,
      restore the MongoDB 8 image or re-run the upgrade.
 
-      :::warning
+     :::warning
 
-      Rolling the image back is safe in this situation only because MongoDB 8 never completed startup and
-      so never upgraded the on-disk data files. Do not roll a MongoDB 7 image onto data that a MongoDB 8
-      server has already opened successfully.
+     Rolling the image back is safe in this situation only because MongoDB 8 never completed startup and so never
+     upgraded the on-disk data files. Do not roll a MongoDB 7 image onto data that a MongoDB 8 server has already opened
+     successfully.
 
-      :::
+     :::
 
-7. From the output of step 5, select any Pod that is Ready and still on the MongoDB 7 image, and save
-   its name and an environment variable.
+7. From the output of step 5, select any Pod that is Ready and still on the MongoDB 7 image, and save its name and an
+   environment variable.
 
    ```shell
    export MONGO_POD=mongo-0
@@ -911,10 +915,8 @@ The number of affected members varies. Recovery depends on whether any member is
 
 10. Raise FCV to 7.0 on the primary Pod.
 
-   ::: warning
-   Raising the feature compatibility version cannot be undone in place. Raise it to `7.0` only. Do not
-   set a higher value.
-   :::
+::: warning Raising the feature compatibility version cannot be undone in place. Raise it to `7.0` only. Do not set a
+higher value. :::
 
     <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
 
@@ -951,7 +953,8 @@ The number of affected members varies. Recovery depends on whether any member is
 
     </Tabs>
 
-Confirm that the change replicated. Repeat the check command from step 8 for `mongo-0`, `mongo-1` and `mongo-2` in turn, substituting the Pod name, and confirm each returns `7.0` before you resume the upgrade.
+Confirm that the change replicated. Repeat the check command from step 8 for `mongo-0`, `mongo-1` and `mongo-2` in turn,
+substituting the Pod name, and confirm each returns `7.0` before you resume the upgrade.
 
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
