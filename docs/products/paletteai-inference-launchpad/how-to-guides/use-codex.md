@@ -67,9 +67,11 @@ alias, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a desc
    export LAUNCHPAD_API_KEY=<lpai-token>
    ```
 
-   Omit the `CODEX_CA_CERTIFICATE` line if the panel showed no CA certificate step. In PowerShell, set each value with
-   `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,
-   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   <PartialsComponent
+     category="paletteai-inference-launchpad"
+     name="ca-certificate-shell-notes"
+     variable="CODEX_CA_CERTIFICATE"
+   />
 
    Codex is written in Rust, so it does not read `NODE_EXTRA_CA_CERTS`. It layers `CODEX_CA_CERTIFICATE` on top of your
    system roots, so its other connections keep working with only the platform CA in the file.

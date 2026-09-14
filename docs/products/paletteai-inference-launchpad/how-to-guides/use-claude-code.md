@@ -56,9 +56,11 @@ to [Claude Code Configuration](../reference/claude-code-reference.md).
    Set `ANTHROPIC_BASE_URL` to your appliance address with no path. Do not append `/v1`. Claude Code adds the API path
    itself. The examples show `https://`; when the appliance serves plain HTTP, use `http://` instead.
 
-   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. In PowerShell, set each value with
-   `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,
-   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   <PartialsComponent
+     category="paletteai-inference-launchpad"
+     name="ca-certificate-shell-notes"
+     variable="NODE_EXTRA_CA_CERTS"
+   />
 
 2. Set your API token. The token is not part of the block in step 1, so that a copied configuration never carries a
    secret. Replace `<lpai-token>` with the token you copied.

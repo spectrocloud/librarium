@@ -80,8 +80,7 @@ OpenCode reads both of the following from your shell.
 | `LAUNCHPAD_API_KEY`   | The API token generated in the console. It begins with `lpai_`. The `apiKey` field reads it by reference.     | `lpai_YOUR_TOKEN`                                       |
 | `NODE_EXTRA_CA_CERTS` | Path to the platform CA certificate. Required only when the appliance presents a platform-issued certificate. | `$HOME/Downloads/palette-ai-inference-launchpad-ca.crt` |
 
-On Windows, the console writes the certificate path as
-`$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+<PartialsComponent category="paletteai-inference-launchpad" name="windows-ca-certificate-path" />
 
 ## Endpoint URL
 

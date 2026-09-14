@@ -38,8 +38,7 @@ serves HTTPS with a platform-issued certificate, download the CA from the **Conn
 `NODE_EXTRA_CA_CERTS` at the saved file. This lets Claude Code trust the appliance without turning off certificate
 verification.
 
-On Windows, the console writes the certificate path as
-`$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+<PartialsComponent category="paletteai-inference-launchpad" name="windows-ca-certificate-path" />
 
 ## Endpoint URL
 

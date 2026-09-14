@@ -88,9 +88,11 @@ alias, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a desc
    export LAUNCHPAD_API_KEY=<lpai-token>
    ```
 
-   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. In PowerShell, set each value with
-   `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,
-   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   <PartialsComponent
+     category="paletteai-inference-launchpad"
+     name="ca-certificate-shell-notes"
+     variable="NODE_EXTRA_CA_CERTS"
+   />
 
 3. Start OpenCode, then pick the `claude-opus-4-8` model.
 
