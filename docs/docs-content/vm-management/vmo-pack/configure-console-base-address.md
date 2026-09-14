@@ -85,8 +85,7 @@ cluster **Overview** tab. The button opens the dashboard directly at the address
 
    :::info
 
-   The VMO pack currently holds this address in two places. A later pack version plans to merge them into a single
-   parameter. Until then, set both to the same value.
+   The VMO pack currently holds this address in two places, so set both to the same value.
 
    :::
 

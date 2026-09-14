@@ -121,9 +121,9 @@ charts:
         consoleBaseAddress: "https://<lb-ip-or-dns>"
 ```
 
-Set both to the same value. The pack currently holds this address in two places and plans to merge them into a single
-parameter in a later version. The **Connect** button also requires that VMO is deployed as its own add-on cluster
-profile. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for the full procedure.
+Set both to the same value. The pack currently holds this address in two places. The **Connect** button also requires
+that VMO is deployed as its own add-on cluster profile. Refer to
+[Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for the full procedure.
 
 ## Custom
 
