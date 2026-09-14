@@ -33,14 +33,14 @@ env_key = "LAUNCHPAD_API_KEY"
 
 ## Fields
 
-| **Field**        | **Description**                                                                                                                                                                                | **Example value**                      |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `model`          | The model the appliance answers with. Accepts a tier-map alias, such as `gpt-5.6`, or a served model id. Do not use `auto`, because the Responses API passes the model straight to the engine. | `gpt-5.6`                              |
-| `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                                                                                                          | `launchpad`                            |
-| `name`           | A display name for the provider.                                                                                                                                                               | `PaletteAI Inference Launchpad`        |
-| `base_url`       | The appliance inference endpoint, with the `/v1` path appended.                                                                                                                                | `https://amd.spectrocloud.com:8443/v1` |
-| `wire_api`       | The API Codex uses. Codex uses the Responses API, so set this to `responses`.                                                                                                                  | `responses`                            |
-| `env_key`        | The name of the environment variable that holds your API token.                                                                                                                                | `LAUNCHPAD_API_KEY`                    |
+| **Field**        | **Description**                                                                                                                                                                                                        | **Example value**                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `model`          | The model the appliance answers with. Accepts a tier-map alias, such as `gpt-5.6`, or a served model id. Do not use `auto`, which is neither a tier-map alias nor a served model id, so the gateway cannot resolve it. | `gpt-5.6`                              |
+| `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                                                                                                                                  | `launchpad`                            |
+| `name`           | A display name for the provider.                                                                                                                                                                                       | `PaletteAI Inference Launchpad`        |
+| `base_url`       | The appliance inference endpoint, with the `/v1` path appended.                                                                                                                                                        | `https://amd.spectrocloud.com:8443/v1` |
+| `wire_api`       | The API Codex uses. Codex uses the Responses API, so set this to `responses`.                                                                                                                                          | `responses`                            |
+| `env_key`        | The name of the environment variable that holds your API token.                                                                                                                                                        | `LAUNCHPAD_API_KEY`                    |
 
 ## Environment Variables
 

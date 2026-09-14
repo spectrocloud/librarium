@@ -17,17 +17,20 @@ steps to set them, refer to [Use PaletteAI Inference Launchpad with Cursor](../h
 
 Set the following in Cursor under **Settings** > **Models**.
 
-| **Setting**                  | **Description**                                                                                               | **Example value**                      |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| **OpenAI API Key**           | The API token generated in the console. It begins with `lpai_`.                                               | `lpai_YOUR_TOKEN`                      |
-| **Override OpenAI Base URL** | The PaletteAI Inference Launchpad inference endpoint. Use the appliance address with the `/v1` path appended. | `https://amd.spectrocloud.com:8443/v1` |
-| Model list                   | A GPT model you enable, then select in chat.                                                                  | `gpt-5.6`                              |
+| **Setting**                  | **Description**                                                                                                                                                                                                          | **Example value**                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| **OpenAI API Key**           | The API token generated in the console. It begins with `lpai_`.                                                                                                                                                          | `lpai_YOUR_TOKEN`                      |
+| **Override OpenAI Base URL** | The endpoint Cursor sends model requests to, with the `/v1` path appended. Use the appliance address only when Cursor's cloud can reach it, as described in [Where Cursor Sends Requests](#where-cursor-sends-requests). | `https://amd.spectrocloud.com:8443/v1` |
+| Model list                   | A GPT model you enable, then select in chat.                                                                                                                                                                             | `gpt-5.6`                              |
 
 ## Endpoint URL
 
 Cursor uses the OpenAI-compatible API, which the gateway serves at `/v1`. Set **Override OpenAI Base URL** to your
 appliance's address, the same host you use to reach the console, with `/v1` appended. This differs from Claude Code,
 which uses the Anthropic Messages API and adds the path itself.
+
+When Cursor's cloud cannot reach the appliance address, enter the address you exposed the inference endpoint at instead,
+with `/v1` appended. For which addresses qualify, refer to [Where Cursor Sends Requests](#where-cursor-sends-requests).
 
 ## Where Cursor Sends Requests
 
@@ -43,13 +46,12 @@ product limit rather than an appliance defect. For details, refer to
 
 ## Certificate Trust
 
-Cursor is a desktop application, so the shell environment variables the other coding agents use do not reach it. When
-the appliance presents a platform-issued certificate, import the platform CA into your operating system trust store and
-restart Cursor.
+Cursor is a desktop application, so the shell environment variables the other coding agents use do not reach it. The
+**Connect a coding agent** panel shows the **CA certificate** step on the Cursor tab because the panel is agent-generic.
+To follow it, import the platform CA into your operating system trust store and restart Cursor.
 
-This covers the requests the Cursor desktop application sends from your own machine. It does not cover the model
-request, and it does not make an appliance on a private network reachable, because your machine is not what sends the
-model request.
+The import alone never completes the connection. It does not cover the model request, and it does not make an appliance
+on a private network reachable, because your machine is not what sends the model request.
 
 Trusting this root makes the platform CA trusted for every host the machine connects to, so do this only on a machine
 you control for an appliance you administer, and remove the certificate when you no longer need it. For the procedure,

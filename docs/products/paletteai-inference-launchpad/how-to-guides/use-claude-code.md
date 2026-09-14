@@ -76,13 +76,12 @@ to [Claude Code Configuration](../reference/claude-code-reference.md).
    claude
    ```
 
-To persist the settings instead of exporting them each session, add every value from step 1 to the
-`~/.claude/settings.json` file. The file expands no shell variables, so write the certificate path in full.
+To persist the settings instead of exporting them each session, add the values from step 1, except
+`NODE_EXTRA_CA_CERTS`, to the `~/.claude/settings.json` file.
 
 ```json
 {
   "env": {
-    "NODE_EXTRA_CA_CERTS": "/Users/<user>/Downloads/palette-ai-inference-launchpad-ca.crt",
     "ANTHROPIC_BASE_URL": "https://<appliance-host>",
     "ANTHROPIC_MODEL": "claude-opus-4-8",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8",
@@ -95,8 +94,12 @@ To persist the settings instead of exporting them each session, add every value 
 }
 ```
 
-Leave the token out of this file. Claude Code stores each value literally, so an `ANTHROPIC_AUTH_TOKEN` entry would hold
-your token in plain text on disk. Set it in your shell as shown in step 2 instead.
+Keep `NODE_EXTRA_CA_CERTS` out of this file and set it as a real shell environment variable before Claude Code starts,
+as shown in step 1. Node.js reads the variable from the process environment while it starts, so a `settings.json` entry
+arrives after the root certificate store is built and has no effect.
+
+Leave the token out of this file as well. Claude Code stores each value literally, so an `ANTHROPIC_AUTH_TOKEN` entry
+would hold your token in plain text on disk. Set it in your shell as shown in step 2 instead.
 
 ## Verify the Connection
 

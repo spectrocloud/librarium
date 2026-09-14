@@ -58,9 +58,6 @@ becomes **expired** and the appliance rejects every request that uses the token.
 
 Tokens created before the appliance required an expiry date keep their unlimited lifetime.
 
-To replace an expiring token, generate a new one for the same client, update the client configuration that uses it, and
-then revoke the old token.
-
 ## Next Steps
 
 Use the token to connect a coding assistant to the appliance.

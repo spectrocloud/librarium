@@ -36,11 +36,11 @@ Cursor cloud cannot reach the appliance in either of these cases:
   trust that authority, and Cursor offers no way to skip certificate verification.
 
 Importing the platform CA on your own machine does not change either case, because your machine is not what sends the
-model request. That import covers only the connections the Cursor desktop application makes from your machine, as
-described in [Download and Trust the Platform CA Certificate](#download-and-trust-the-platform-ca-certificate). To use
-Cursor with an appliance in either state, expose the appliance inference endpoint at an address Cursor cloud can reach,
-with a publicly trusted TLS certificate of its own, and enter that address as the base URL in place of the appliance
-address. For the connectivity options Cursor documents, refer to Cursor's
+model request, as described in
+[Download and Trust the Platform CA Certificate](#download-and-trust-the-platform-ca-certificate). To use Cursor with an
+appliance in either state, expose the appliance inference endpoint at an address Cursor cloud can reach, with a publicly
+trusted TLS certificate of its own, and enter that address as the base URL in place of the appliance address. For the
+connectivity options Cursor documents, refer to Cursor's
 [Private Connectivity](https://cursor.com/docs/enterprise/network-configuration#private-connectivity) documentation.
 
 This is a Cursor product limit, not an appliance defect.
@@ -61,14 +61,13 @@ This is a Cursor product limit, not an appliance defect.
 
 <PartialsComponent category="paletteai-inference-launchpad" name="download-platform-ca" />
 
-Cursor is a desktop application, so an environment variable in your shell does not reach it. When the appliance presents
-a platform-issued certificate, import the platform CA into your operating system trust store, then restart Cursor. This
-covers the requests the Cursor desktop application itself sends to the base URL from your machine, such as the check
-Cursor runs when you save the key and base URL in the next section.
+The **Connect a coding agent** panel is agent-generic, so it shows the **CA certificate** step on every tab, including
+the Cursor tab. Cursor is a desktop application, so an environment variable in your shell does not reach it. To follow
+the panel's step, import the platform CA into your operating system trust store, then restart Cursor.
 
-It does not cover the model request. Cursor sends that request from its own cloud servers, so the base URL still has to
-be an address Cursor cloud can reach with a publicly trusted certificate of its own, as described in
-[Cursor Requires a Reachable Endpoint](#cursor-requires-a-reachable-endpoint).
+For Cursor, the import alone never completes the connection. Cursor sends the model request from its own cloud servers
+rather than from your machine, so the base URL still has to be an address Cursor cloud can reach with a publicly trusted
+certificate of its own, as described in [Cursor Requires a Reachable Endpoint](#cursor-requires-a-reachable-endpoint).
 
 On macOS, open **Keychain Access**, select the **System** keychain, and drag `palette-ai-inference-launchpad-ca.crt`
 from your Downloads folder into it. Then open the certificate, expand **Trust**, and set **When using this certificate**
@@ -83,7 +82,7 @@ macOS, select it in the **System** keychain in **Keychain Access** and delete it
 
 :::
 
-{/* NEEDS REVIEW: confirm with an SME which requests the Cursor desktop application sends to the base URL from the user's machine, and whether the key check on save is one of them. Only the macOS trust-store path was confirmed on a real appliance. */}
+{/* NEEDS REVIEW: confirm with an SME which Cursor traffic, if any, the local platform CA import actually serves, given that the model request originates from Cursor cloud. If it serves none, say so here and tell the reader to skip the CA step on the Cursor tab. Only the macOS trust-store path was confirmed on a real appliance. */}
 
 ## Configure Cursor
 

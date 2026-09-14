@@ -56,17 +56,17 @@ at `~/.config/opencode/opencode.json` to apply it everywhere. Add a custom provi
 
 ## Fields
 
-| **Field**             | **Description**                                                                                                                    | **Example value**                                    |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `$schema`             | The OpenCode configuration schema. Enables validation and autocompletion in an editor.                                             | `https://opencode.ai/config.json`                    |
-| `provider.<key>`      | A custom provider entry. The key, such as `launchpad`, is the provider name you combine with a model name when you select a model. | `launchpad`                                          |
-| `npm`                 | The provider plugin OpenCode loads. For an OpenAI-compatible endpoint, use `@ai-sdk/openai-compatible`.                            | `@ai-sdk/openai-compatible`                          |
-| `name`                | A display name for the provider.                                                                                                   | `PaletteAI Inference Launchpad`                      |
-| `options.baseURL`     | The appliance inference endpoint, with the `/v1` path appended.                                                                    | `https://amd.spectrocloud.com:8443/v1`               |
-| `options.apiKey`      | Your API token. Use the `{env:LAUNCHPAD_API_KEY}` reference so the file holds no secret.                                           | `{env:LAUNCHPAD_API_KEY}`                            |
-| `models`              | A map of the models you want to use. Each key is a tier-map alias or a served model id.                                            | `claude-opus-4-8`                                    |
-| `models.*.modalities` | The input and output types the model accepts. Declare this explicitly, as described in [Model Capabilities](#model-capabilities).  | `{ "input": ["text", "image"], "output": ["text"] }` |
-| `models.*.limit`      | The context and output token ceilings OpenCode applies to the model.                                                               | `{ "context": 200000, "output": 64000 }`             |
+| **Field**             | **Description**                                                                                                                        | **Example value**                                    |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `$schema`             | The OpenCode configuration schema. Enables validation and autocompletion in an editor.                                                 | `https://opencode.ai/config.json`                    |
+| `provider.<key>`      | A custom provider entry. The key, such as `launchpad`, is the provider name you combine with a model name when you select a model.     | `launchpad`                                          |
+| `npm`                 | The provider plugin OpenCode loads. For an OpenAI-compatible endpoint, use `@ai-sdk/openai-compatible`.                                | `@ai-sdk/openai-compatible`                          |
+| `name`                | A display name for the provider.                                                                                                       | `PaletteAI Inference Launchpad`                      |
+| `options.baseURL`     | The appliance inference endpoint, with the `/v1` path appended.                                                                        | `https://amd.spectrocloud.com:8443/v1`               |
+| `options.apiKey`      | Your API token. Use the `{env:LAUNCHPAD_API_KEY}` reference so the file holds no secret.                                               | `{env:LAUNCHPAD_API_KEY}`                            |
+| `models`              | A map of the models you want to use. Each key is a tier-map alias or a served model id.                                                | `claude-opus-4-8`                                    |
+| `models.*.modalities` | The input and output types the model accepts. Declare this explicitly, as described in [Model Capabilities](#model-capabilities).      | `{ "input": ["text", "image"], "output": ["text"] }` |
+| `models.*.limit`      | The context and output token ceilings OpenCode applies to the model. Set these to the real ceilings of the model the appliance serves. | `{ "context": 200000, "output": 64000 }`             |
 
 ## Environment Variables
 
@@ -115,6 +115,11 @@ Every input type you do not declare therefore defaults to unsupported.
 Declare `modalities` explicitly on each model. Without `image` in the input list, OpenCode replaces a pasted image with
 an unsupported note on the client side, and the appliance never receives the image. To let the appliance answer
 questions about images, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+
+The panel fills `limit` with the ceilings of the model it generated the configuration for. A `models` key can be a
+tier-map alias, which the appliance resolves to whatever model it serves, so confirm the values against that model's
+real context and output ceilings. A context ceiling above the served model's own causes OpenCode to pack a request the
+appliance then rejects.
 
 ## Requirements
 
