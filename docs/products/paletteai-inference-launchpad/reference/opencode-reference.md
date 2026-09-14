@@ -102,8 +102,9 @@ That key can be a tier-map alias, such as `claude-opus-4-8`, or the id of a mode
 `glm-5.2`. Both appear in the console model list and in the appliance's `/v1/models` API response.
 
 An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where the seeded alias families fall through to the appliance default model. A client with its own Tier map must
-map the alias, or a request that uses it returns an HTTP `404` response. To map an alias, refer to
+table, where an alias family with no model set falls through to the appliance default model. A client that has its own
+Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
+an alias, refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
 
 ## Model Capabilities

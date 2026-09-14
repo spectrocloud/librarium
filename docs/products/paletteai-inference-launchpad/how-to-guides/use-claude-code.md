@@ -34,10 +34,10 @@ turning off certificate verification.
 
 ## Configure Claude Code
 
-In the console, select **Connect Coding Agent** and open the **Claude Code CLI** tab. The panel generates the
-environment block below, already filled in with your appliance address and model aliases, and offers a shell picker for
-`bash`, `zsh`, and `PowerShell`. For a description of each value, refer to
-[Claude Code Configuration](../reference/claude-code-reference.md).
+In the console, select the **Connect Coding Agent** button to open the **Connect a coding agent** panel, then open the
+**Claude Code CLI** tab. The panel generates the environment block below, already filled in with your appliance address
+and model aliases, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a description of each value, refer
+to [Claude Code Configuration](../reference/claude-code-reference.md).
 
 1. Copy the environment block and paste it in your terminal. Replace `<appliance-host>` with your appliance address.
 
@@ -56,8 +56,9 @@ environment block below, already filled in with your appliance address and model
    Set `ANTHROPIC_BASE_URL` to your appliance address with no path. Do not append `/v1`. Claude Code adds the API path
    itself.
 
-   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. On Windows, the panel writes the same
-   path as `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. In PowerShell, set each value with
+   `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,
+   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
 
 2. Set your API token. The token is not part of the block in step 1, so that a copied configuration never carries a
    secret. Replace `<lpai-token>` with the token you copied.
@@ -75,17 +76,27 @@ environment block below, already filled in with your appliance address and model
    claude
    ```
 
-To persist the settings instead of exporting them each session, add them to the `~/.claude/settings.json` file.
+To persist the settings instead of exporting them each session, add every value from step 1 to the
+`~/.claude/settings.json` file. The file expands no shell variables, so write the certificate path in full.
 
 ```json
 {
   "env": {
     "NODE_EXTRA_CA_CERTS": "/Users/<user>/Downloads/palette-ai-inference-launchpad-ca.crt",
     "ANTHROPIC_BASE_URL": "https://<appliance-host>",
-    "ANTHROPIC_AUTH_TOKEN": "<lpai-token>"
+    "ANTHROPIC_MODEL": "claude-opus-4-8",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4-5",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "claude-fable-5",
+    "CLAUDE_CODE_EFFORT_LEVEL": "auto",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000"
   }
 }
 ```
+
+Leave the token out of this file. Claude Code stores each value literally, so an `ANTHROPIC_AUTH_TOKEN` entry would hold
+your token in plain text on disk. Set it in your shell as shown in step 2 instead.
 
 ## Verify the Connection
 

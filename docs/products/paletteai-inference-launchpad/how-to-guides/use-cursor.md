@@ -35,10 +35,12 @@ Cursor cloud cannot reach the appliance in either of these cases:
 - The appliance presents only a certificate issued by the platform's own certificate authority. Cursor cloud does not
   trust that authority, and Cursor offers no way to skip certificate verification.
 
-Importing the platform CA on your own machine does not change either case, because your machine is not what connects. To
-use Cursor with an appliance in either state, expose the appliance inference endpoint at an address Cursor cloud can
-reach, with a publicly trusted TLS certificate of its own, and enter that address as the base URL in place of the
-appliance address. For the connectivity options Cursor documents, refer to Cursor's
+Importing the platform CA on your own machine does not change either case, because your machine is not what sends the
+model request. That import covers only the connections the Cursor desktop application makes from your machine, as
+described in [Download and Trust the Platform CA Certificate](#download-and-trust-the-platform-ca-certificate). To use
+Cursor with an appliance in either state, expose the appliance inference endpoint at an address Cursor cloud can reach,
+with a publicly trusted TLS certificate of its own, and enter that address as the base URL in place of the appliance
+address. For the connectivity options Cursor documents, refer to Cursor's
 [Private Connectivity](https://cursor.com/docs/enterprise/network-configuration#private-connectivity) documentation.
 
 This is a Cursor product limit, not an appliance defect.
@@ -59,18 +61,35 @@ This is a Cursor product limit, not an appliance defect.
 
 <PartialsComponent category="paletteai-inference-launchpad" name="download-platform-ca" />
 
-Cursor is a desktop application, so an environment variable in your shell does not reach it. Import the platform CA into
-your operating system trust store, then restart Cursor. This covers the whole application once it restarts.
+Cursor is a desktop application, so an environment variable in your shell does not reach it. When the appliance presents
+a platform-issued certificate, import the platform CA into your operating system trust store, then restart Cursor. This
+covers the requests the Cursor desktop application itself sends to the base URL from your machine, such as the check
+Cursor runs when you save the key and base URL in the next section.
 
-This step is required when the appliance presents a platform-issued certificate. It does not make an appliance on a
-private network reachable. For that, refer to
+It does not cover the model request. Cursor sends that request from its own cloud servers, so the base URL still has to
+be an address Cursor cloud can reach with a publicly trusted certificate of its own, as described in
 [Cursor Requires a Reachable Endpoint](#cursor-requires-a-reachable-endpoint).
+
+On macOS, open **Keychain Access**, select the **System** keychain, and drag `palette-ai-inference-launchpad-ca.crt`
+from your Downloads folder into it. Then open the certificate, expand **Trust**, and set **When using this certificate**
+to **Always Trust**. On another operating system, add the certificate to the system trust store with that operating
+system's own tooling.
+
+:::warning
+
+Trusting this root makes the platform certificate authority trusted for every host the machine connects to, so do this
+only on a machine you control for an appliance you administer. Remove the certificate when you no longer need it. On
+macOS, select it in the **System** keychain in **Keychain Access** and delete it.
+
+:::
+
+{/* NEEDS REVIEW: confirm with an SME which requests the Cursor desktop application sends to the base URL from the user's machine, and whether the key check on save is one of them. Only the macOS trust-store path was confirmed on a real appliance. */}
 
 ## Configure Cursor
 
-In the console, select **Connect Coding Agent** and open the **Cursor** tab. The panel lists these same steps with your
-appliance address and model alias filled in. For the full list of settings and their example values, refer to
-[Cursor Configuration](../reference/cursor-reference.md).
+In the console, select the **Connect Coding Agent** button to open the **Connect a coding agent** panel, then open the
+**Cursor** tab. The panel lists these same steps with your appliance address and model alias filled in. For the full
+list of settings and their example values, refer to [Cursor Configuration](../reference/cursor-reference.md).
 
 1. In Cursor, open **Settings** > **Models**.
 

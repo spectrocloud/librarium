@@ -33,14 +33,14 @@ env_key = "LAUNCHPAD_API_KEY"
 
 ## Fields
 
-| **Field**        | **Description**                                                                                          | **Example value**                      |
-| ---------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `model`          | The model the appliance answers with. Accepts a tier-map alias, such as `gpt-5.6`, or a served model id. | `gpt-5.6`                              |
-| `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                    | `launchpad`                            |
-| `name`           | A display name for the provider.                                                                         | `PaletteAI Inference Launchpad`        |
-| `base_url`       | The appliance inference endpoint, with the `/v1` path appended.                                          | `https://amd.spectrocloud.com:8443/v1` |
-| `wire_api`       | The API Codex uses. Codex uses the Responses API, so set this to `responses`.                            | `responses`                            |
-| `env_key`        | The name of the environment variable that holds your API token.                                          | `LAUNCHPAD_API_KEY`                    |
+| **Field**        | **Description**                                                                                                                                                                                | **Example value**                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `model`          | The model the appliance answers with. Accepts a tier-map alias, such as `gpt-5.6`, or a served model id. Do not use `auto`, because the Responses API passes the model straight to the engine. | `gpt-5.6`                              |
+| `model_provider` | The provider Codex uses. Must match the name of the `[model_providers.<name>]` table.                                                                                                          | `launchpad`                            |
+| `name`           | A display name for the provider.                                                                                                                                                               | `PaletteAI Inference Launchpad`        |
+| `base_url`       | The appliance inference endpoint, with the `/v1` path appended.                                                                                                                                | `https://amd.spectrocloud.com:8443/v1` |
+| `wire_api`       | The API Codex uses. Codex uses the Responses API, so set this to `responses`.                                                                                                                  | `responses`                            |
+| `env_key`        | The name of the environment variable that holds your API token.                                                                                                                                | `LAUNCHPAD_API_KEY`                    |
 
 ## Environment Variables
 
@@ -78,8 +78,9 @@ path, so `model` accepts either an alias such as `gpt-5.6` or the id of a model 
 and the served model ids appear in the console model list and in the appliance's `/v1/models` API response.
 
 An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where the seven seeded alias families fall through to the appliance default model. A client with its own Tier map
-must map the alias, or a request that uses it returns an HTTP `404` response. To map an alias, refer to
+table, where an alias family with no model set falls through to the appliance default model. A client that has its own
+Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
+an alias, refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
 
 ## Requirements

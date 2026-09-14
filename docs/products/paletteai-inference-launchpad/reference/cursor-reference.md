@@ -47,8 +47,14 @@ Cursor is a desktop application, so the shell environment variables the other co
 the appliance presents a platform-issued certificate, import the platform CA into your operating system trust store and
 restart Cursor.
 
-This covers the Cursor application on your own machine. It does not make an appliance on a private network reachable,
-because your machine is not what sends the model request.
+This covers the requests the Cursor desktop application sends from your own machine. It does not cover the model
+request, and it does not make an appliance on a private network reachable, because your machine is not what sends the
+model request.
+
+Trusting this root makes the platform CA trusted for every host the machine connects to, so do this only on a machine
+you control for an appliance you administer, and remove the certificate when you no longer need it. For the procedure,
+refer to
+[Download and Trust the Platform CA Certificate](../how-to-guides/use-cursor.md#download-and-trust-the-platform-ca-certificate).
 
 ## Model Name and Aliases
 

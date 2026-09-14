@@ -29,7 +29,7 @@ the steps to set them, refer to
 | `CLAUDE_CODE_MAX_OUTPUT_TOKENS`  | Optional. The maximum output tokens per response. Lower it to cap reply length and cost.                                                        | `64000`                                                 |
 | `NODE_EXTRA_CA_CERTS`            | Path to the platform CA certificate. Required only when the appliance presents a platform-issued certificate.                                   | `$HOME/Downloads/palette-ai-inference-launchpad-ca.crt` |
 
-{/* TODO: confirm the ANTHROPIC_DEFAULT_* and CLAUDE_CODE_EFFORT_LEVEL rows with an SME. The console's "Connect coding agent" snippet emits them, but their appliance behavior is unverified. */}
+{/* TODO: confirm the ANTHROPIC_DEFAULT_* and CLAUDE_CODE_EFFORT_LEVEL rows with an SME. The console's "Connect a coding agent" panel emits them, but their appliance behavior is unverified. */}
 
 ## Certificate Trust
 
@@ -55,8 +55,9 @@ select a backend model directly. Both the aliases the appliance accepts and the 
 `glm-5.2`, appear in the console's model list and in the appliance's `/v1/models` API response.
 
 An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where the seeded alias families fall through to the appliance default model. A client with its own Tier map must
-map the alias, or a request that uses it returns an HTTP `404` response. To map an alias, refer to
+table, where an alias family with no model set falls through to the appliance default model. A client that has its own
+Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
+an alias, refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
 
 ## Token Quotas

@@ -57,6 +57,10 @@ grants model access, and optionally issues the client's first API token.
    `Not mapped, so the box default <model> answers it.`, which means the appliance's default model answers requests for
    that alias family rather than returning an error.
 
+   Editing the **Tier map** gives the client a Tier map of its own, and the client stops inheriting the appliance's
+   table. From then on, an alias family the client's own map leaves unset returns an HTTP `404` response instead of
+   falling through to the appliance default model, so map every alias family the client's coding agents request.
+
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**,
    choose a required **Expires** date, and then select **Add Token**. The **Expires** date is the last day the token
    works. The earliest date you can choose is tomorrow, and the latest is 366 days out. There is no option for a token

@@ -35,9 +35,10 @@ off certificate verification.
 
 ## Configure OpenCode
 
-In the console, select **Connect Coding Agent** and open the **OpenCode** tab. The panel generates the configuration
-below, already filled in with your appliance address and model alias, and offers a shell picker for `bash`, `zsh`, and
-`PowerShell`. For a description of each field, refer to [OpenCode Configuration](../reference/opencode-reference.md).
+In the console, select the **Connect Coding Agent** button to open the **Connect a coding agent** panel, then open the
+**OpenCode** tab. The panel generates the configuration below, already filled in with your appliance address and model
+alias, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a description of each field, refer to
+[OpenCode Configuration](../reference/opencode-reference.md).
 
 1. Put the following configuration in `opencode.json`. Place it in your project folder to apply it to one project, or at
    `~/.config/opencode/opencode.json` to apply it everywhere. Replace `<appliance-host>` with your appliance address.
@@ -81,8 +82,9 @@ below, already filled in with your appliance address and model alias, and offers
    export LAUNCHPAD_API_KEY=<lpai-token>
    ```
 
-   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. On Windows, the panel writes the same
-   path as `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. In PowerShell, set each value with
+   `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,
+   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
 
 3. Start OpenCode, then pick the `claude-opus-4-8` model.
 
