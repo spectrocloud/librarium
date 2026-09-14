@@ -43,20 +43,29 @@ There is no required directory for the file. Create it in your working directory
 `./user-data`, and point the installer at it with the `USERDATA` environment variable in the
 [Install the Palette agent](#install-the-palette-agent) section.
 
-<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): this minimal set (edgeHostToken + paletteEndpoint + projectName) is sufficient for agent-mode registration. The `install:`, `users:`, and `stages:` stanzas are appliance/EdgeForge heritage and do not apply on a BYO host. -->
+<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). Appliance/EdgeForge stanzas (disk install: fields, users:, stages:) do not apply on a BYO host. -->
 
 ```yaml
 #cloud-config
+install:
+  reboot: true
 stylus:
   site:
     edgeHostToken: "<your-registration-token>"
     paletteEndpoint: "console.spectrocloud.com"
-    projectName: "<your-project-name>"
+    projectName: "Default"
 ```
 
-This minimal set is enough to register the host. In agent mode you do not need the `install:`, `users:`, or `stages:`
-stanzas used when building an appliance-mode installer image, because the agent runs on the existing host operating
-system. The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
+This set is enough to register the host. Note the following:
+
+- `install.reboot` set to `true` reboots the host after the agent installs. Registration completes on that reboot. If
+  you omit it, reboot the host manually after the installer finishes.
+- `projectName` must be an existing Palette project that the registration token can access. If you specify a project
+  that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
+  registration token instead, omit `projectName`.
+- The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
+- You do not need the disk-partitioning fields under `install:`, the `users:` stanza, or `stages:` that appliance-mode
+  installer images use, because the agent runs on the existing host operating system.
 
 Two optional settings are useful on a Jetson:
 
@@ -82,12 +91,19 @@ The installer downloads the agent, unpacks the agent runtime, configures the sys
    ```
 
 2. Download the Palette agent installation script for Palette SaaS or your self-hosted instance, then grant it execute
-   permission. Refer to [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md) for the
-   exact, version-specific download command.
+   permission.
 
    ```shell
    chmod +x ./palette-agent-install.sh
    ```
+
+   :::info
+
+   Find the download command for both the FIPS and non-FIPS builds in step 6 of the **Enablement** section on the
+   [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md#enablement) page. That step also
+   distinguishes the Palette SaaS and self-hosted commands.
+
+   :::
 
 3. Run the installer with `sudo --preserve-env` so that it inherits the `USERDATA` variable you exported.
 
@@ -111,12 +127,26 @@ Installation continues and reports `palette edge installation completed successf
 
 ## Verify the host registers
 
-After the agent starts, the device registers with Palette and appears in your Edge host inventory.
+After the host reboots, the Palette agent registers the device with your tenant, and it appears in your Edge host
+inventory.
 
-<!-- TODO(DOC-3090): Document where the host appears in the Palette UI (Clusters > Edge Hosts, or the equivalent), the expected status, and how auto-registration behaves with projectName set. Capture a screenshot from the Thor. -->
+<!-- Validated on the Thor 2026-09-14; screenshot still TODO(DOC-3090). -->
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-2. From the left **Main Menu**, confirm the Jetson device appears as a registered Edge host.
+2. From the left **Main Menu**, select **Clusters**, and then select the **Edge Hosts** tab.
+3. Switch to the project you set in `projectName`, or the project associated with your registration token. The Jetson
+   appears as a new Edge host. Use the **Architecture** filter to confirm it is an ARM64 host.
+
+Once the host connects to Palette, it shows a **Ready** status and a **Healthy** state. Palette also detects the device
+GPU and lists it in the **GPU** column. For a Jetson AGX Thor, this reads as `1 NVIDIA Thor`.
+
+:::info
+
+If the host does not appear, confirm that the `projectName` in your `user-data` matches an existing Palette project and
+that you are viewing that project. A host registered with a `projectName` that does not exist never appears in Palette.
+Also confirm that the host rebooted after the agent installed, because registration completes on that reboot.
+
+:::
 
 ## Create the cluster profile
 
@@ -124,7 +154,7 @@ Create an Edge Native cluster profile that models the full stack for the Jetson 
 
 <!-- TODO(DOC-3090 / DOC-3093): State the verified ARM64 Kubernetes distribution (K3s is the likely candidate) and CNI once validated on the Thor, and add the ARM64 row to the agent-mode verified-combinations table. edge-canonical does not support ARM64. -->
 
-<!-- TODO(DOC-3090 / DOC-3089): Document the embedded-GPU enablement layer for the integrated Jetson GPU. The NVIDIA GPU Operator pack does not support embedded products, so this is a different mechanism (for example, the NVIDIA container runtime and a RuntimeClass, or a device plugin). This path is not yet covered in librarium; confirm with engineering how it is expressed in the profile. -->
+<!-- TODO(DOC-3090 / DOC-3089): Document the embedded-GPU enablement layer for the integrated Jetson GPU. Validated on the Thor 2026-09-14: Palette auto-detects the GPU at registration and shows it in the Edge Hosts grid (Vendor NVIDIA, Model NVIDIA Thor, MIG Capable No; GPU memory reads 0.00 GB because the integrated GPU shares system memory). Detection is not the same as workload enablement: the NVIDIA GPU Operator pack does not support embedded products, so exposing the GPU to pods is a different mechanism (for example, the NVIDIA container runtime and a RuntimeClass, or a device plugin). This path is not yet covered in librarium; confirm with engineering how it is expressed in the profile. -->
 
 <!-- TODO(DOC-3090): Document the model-serving layer. Working demo is Ollama (ARM64), tentative pending Thor validation and product sign-off; fallback is a JetPack-tuned llama.cpp container. -->
 
