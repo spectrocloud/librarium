@@ -11,12 +11,8 @@ Tutorials are lessons that introduce PaletteAI Inference Launchpad by guiding yo
 from start to finish. They are learning-oriented and hands-on. You follow each step, learn by doing, and finish with a
 result you can build on. If you are new to the appliance, tutorials are a great place to start.
 
-:::info
+- [Serve Your First Model to Claude Code](./serve-your-first-model.md) - Deploy a model to your appliance, connect
+  Claude Code to it, and answer a coding question on your own hardware.
 
-We are still developing tutorials for PaletteAI Inference Launchpad. In the meantime, the
-[How-to Guides](../how-to-guides/how-to-guides.md) take you through the full practical path, from
-[installing the appliance](../how-to-guides/install-the-appliance.md) to
-[deploying your first model](../how-to-guides/deploy-a-model.md). If you need help getting started,
-[contact Spectro Cloud](https://www.spectrocloud.com/contact) to discuss your use case.
-
-:::
+If you need a specific task rather than a lesson, the [How-to Guides](../how-to-guides/how-to-guides.md) cover the same
+ground one step at a time.
