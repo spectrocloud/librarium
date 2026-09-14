@@ -9,7 +9,7 @@ sidebar_position: 30
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "day 1"]
 ---
 
-<!-- SCAFFOLD (DOC-3090 Day 1). Structure and verified-from-docs prose are seeded here; every device-specific value (agent install output, the ARM64 distribution/CNI, the embedded-GPU layer, and the model-serving layer) is a TODO gated on validation on the Thor. Do not publish until the TODOs and VERIFY markers are resolved. The serving-stack choice (Ollama ARM64, fallback llama.cpp) is tentative pending Thor validation and product sign-off. -->
+<!-- SCAFFOLD (DOC-3090 Day 1). Registration, cluster profile, deploy, GPU access, and model serving are all VALIDATED on the Thor 2026-09-14 (see the inline "Validated" comments in each section). Do NOT publish yet: this page documents Jetson AGX Thor, whose ARM64 support statement is still gated on engineering sign-off (DOC-3093, Rishi; hardware-requirements.md currently verifies Orin only). Remaining smaller items: the agent-version pin question and a registration screenshot. The local-admin block (stages.initramfs.users) was added from the agent-mode install reference (install-agent-host.md) but not yet re-validated on a Thor rebuild, because this unit registered before it was added. -->
 
 This page describes Day 1 of running Edge AI workloads on an NVIDIA Jetson device. Starting from a host you prepared in
 [Prepare the Jetson Host](./prepare-jetson-host.md), you register the device with Palette as an Edge host in
@@ -43,7 +43,7 @@ There is no required directory for the file. Create it in your working directory
 `./user-data`, and point the installer at it with the `USERDATA` environment variable in the
 [Install the Palette agent](#install-the-palette-agent) section.
 
-<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). Appliance/EdgeForge stanzas (disk install: fields, users:, stages:) do not apply on a BYO host. -->
+<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). The stages.initramfs.users block (local admin) comes from the agent-mode install reference and is used on a BYO host; only the appliance-mode disk-partitioning install: fields do not apply. -->
 
 ```yaml
 #cloud-config
@@ -54,18 +54,30 @@ stylus:
     edgeHostToken: "<your-registration-token>"
     paletteEndpoint: "console.spectrocloud.com"
     projectName: "Default"
+stages:
+  initramfs:
+    - users:
+        kairos:
+          groups:
+            - sudo
+          passwd: "<strong-password>"
 ```
 
-This set is enough to register the host. Note the following:
+This set registers the host and creates a local administrator account. Note the following:
 
 - `install.reboot` set to `true` reboots the host after the agent installs. Registration completes on that reboot. If
   you omit it, reboot the host manually after the installer finishes.
 - `projectName` must be an existing Palette project that the registration token can access. If you specify a project
   that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
   registration token instead, omit `projectName`.
+- The `stages.initramfs.users` block creates a local administrator account, named `kairos` here and added to the `sudo`
+  group. Because any operating system user can sign in to [Local UI](../../clusters/edge/local-ui/local-ui.md), this
+  account gives an administrator a reliable local and SSH login for troubleshooting after the host joins Palette.
+  Replace `<strong-password>` with a strong password, and name the user whatever you prefer. Always include a local
+  account so that the host remains reachable if it loses its connection to Palette.
 - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
-- You do not need the disk-partitioning fields under `install:`, the `users:` stanza, or `stages:` that appliance-mode
-  installer images use, because the agent runs on the existing host operating system.
+- You do not need the disk-partitioning fields under `install:` that appliance-mode installer images use, because the
+  agent runs on the existing host operating system.
 
 Two optional settings are useful on a Jetson:
 
@@ -248,11 +260,103 @@ the NVIDIA container runtime injects the GPU only when the workload requests it.
 
 ## Serve and verify the model
 
-After the cluster reaches a healthy state, the model-serving workload runs on the device and exposes a serving endpoint.
-The serving workload uses the same GPU access pattern described in
-[Enable GPU access for workloads](#enable-gpu-access-for-workloads). Confirm the model responds.
+Deploy a model server that runs on the GPU, pull a model, and confirm that it responds. This example uses
+[Ollama](https://ollama.com/), which serves local models over an HTTP API. The serving pod uses the same GPU access
+pattern described in [Enable GPU access for workloads](#enable-gpu-access-for-workloads).
 
-<!-- TODO(DOC-3090): Document the model-serving layer and verification (Option 2). Deploy the serving workload (Ollama on ARM64, tentative pending validation and product sign-off; llama.cpp fallback) with runtimeClassName nvidia + the NVIDIA_* env vars, then capture the real endpoint, port, and an example request/response from the Thor. -->
+<!-- Validated on the Thor 2026-09-14: official ollama/ollama:latest (multi-arch, no Jetson-specific build) runs llama3.2:1b at 100% GPU (ollama ps PROCESSOR column) and serves completions over the /api/generate endpoint. The llama.cpp fallback is not needed. Model data is ephemeral without a PVC. -->
+
+1. Create a `Deployment` and a `Service` for Ollama. The pod sets `runtimeClassName` and the `NVIDIA_*` environment
+   variables so that it reaches the device GPU.
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: ollama
+     labels:
+       app: ollama
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: ollama
+     template:
+       metadata:
+         labels:
+           app: ollama
+       spec:
+         runtimeClassName: nvidia
+         containers:
+           - name: ollama
+             image: ollama/ollama:latest
+             ports:
+               - containerPort: 11434
+             env:
+               - name: NVIDIA_VISIBLE_DEVICES
+                 value: "all"
+               - name: NVIDIA_DRIVER_CAPABILITIES
+                 value: "all"
+               - name: OLLAMA_HOST
+                 value: "0.0.0.0"
+   ---
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: ollama
+   spec:
+     selector:
+       app: ollama
+     ports:
+       - port: 11434
+         targetPort: 11434
+   ```
+
+2. Apply the manifest and wait for the deployment to roll out.
+
+   ```shell
+   kubectl apply --filename ollama.yaml
+   kubectl rollout status deployment/ollama
+   ```
+
+3. Pull a model into the running server.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama pull llama3.2:1b
+   ```
+
+4. Confirm the model runs on the GPU. In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the
+   model runs on the Jetson GPU instead of the CPU.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama ps
+   ```
+
+   ```text hideClipboard title="Example output"
+   NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
+   llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
+   ```
+
+5. Send a request to the serving endpoint. Forward the `Service` port to your workstation.
+
+   ```shell
+   kubectl port-forward service/ollama 11434:11434
+   ```
+
+6. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the
+   endpoint serves inference from the device GPU.
+
+   ```shell
+   curl http://localhost:11434/api/generate \
+     --data '{"model":"llama3.2:1b","prompt":"In one short sentence, what is edge computing?","stream":false}'
+   ```
+
+:::info
+
+Without a persistent volume, the pulled model is stored in the pod and is lost if the pod restarts. To keep models
+across restarts, add a storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/root/.ollama`.
+
+:::
 
 ## Next steps
 
