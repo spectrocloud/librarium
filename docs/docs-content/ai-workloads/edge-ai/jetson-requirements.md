@@ -36,22 +36,24 @@ NAT is supported without inbound firewall rules or a [Private Cloud Gateway (PCG
 serves private-cloud data center environments where Palette reaches a private infrastructure API, which does not apply
 to an Edge host.
 
-The device requires outbound HTTPS access to the following:
+The device requires outbound HTTPS (TCP 443) access to the following:
 
 - The Palette SaaS endpoint, `console.spectrocloud.com`.
-- The image registries that host the packs and images your cluster profile uses.
+- The Palette image registries that host the agent image, packs, and images your cluster profile uses.
 
-If your network restricts egress, configure a proxy on the host with the `HTTP_PROXY`, `HTTPS_PROXY`, and
-`PROXY_CERT_PATH` settings.
+If your network restricts egress, export the proxy configuration in your terminal session before you install the agent.
+Set the `http_proxy` and `https_proxy` variables, in both lowercase and uppercase forms. Refer to the proxy step in
+[Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md#enablement) for the exact commands.
 
-<!-- VERIFY(DOC-3089): Confirm the exact outbound endpoints and ports the agent needs (Palette SaaS + image registries) against the Edge / agent-mode network requirements docs, and validate proxy behavior on the Thor once it registers. Follow-up: add a network diagram of the agent-mode outbound flow (Jetson on a private LAN making outbound HTTPS to Palette SaaS and the registries). -->
+<!-- Resolved (DOC-3089) 2026-09-14: outbound is HTTPS/443 to console.spectrocloud.com plus the Palette image registries (the agent image pulls from Palette's registry, confirmed in the Thor install log). Proxy variables corrected to http_proxy/https_proxy per install-agent-host.md (there is no PROXY_CERT_PATH in the agent-mode flow). Proxy behavior itself is not yet validated on the Thor (this unit is not behind a proxy). Follow-up TODO(DOC-3089): add a diagram of the agent-mode outbound flow (Jetson on a private LAN making outbound HTTPS to Palette SaaS and the registries). -->
 
 ## Hardware requirements
 
 The following table lists the agent mode minimum requirements alongside the specifications of the Jetson AGX Thor
-Developer Kit, which exceeds them comfortably.
+Developer Kit, which exceeds them comfortably. The minimum values match the agent mode prerequisites on
+[Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md).
 
-<!-- VERIFY(DOC-3089): The "Minimum (agent mode)" column uses the prerequisite values from deployment-modes/agent-mode/install-agent-host.md (2 CPU / 8 GB / 100 GB). Note that deployment-modes/agent-mode/architecture.md lists different numbers (4 cores / 4 GB / 32 GB SSD). This is a discrepancy between two published pages; reconcile it (and confirm which is authoritative) before publishing. -->
+<!-- Resolved (DOC-3089) 2026-09-14: 2 CPU / 8 GB / 100 GB SSD is the authoritative agent-mode minimum, confirmed against install-agent-host.md and the engineering KB. The 4-core / 4 GB / 32 GB values on deployment-modes/agent-mode/architecture.md are outdated legacy guidance tracked for correction under DOC-1172; do not reconcile that here. -->
 
 | Component | Minimum (agent mode)  | Jetson AGX Thor Developer Kit                       |
 | --------- | --------------------- | --------------------------------------------------- |
@@ -60,13 +62,21 @@ Developer Kit, which exceeds them comfortably.
 | Storage   | 100 GB, SSD required  | 1 TB NVMe SSD                                       |
 | GPU       | Integrated NVIDIA GPU | NVIDIA Blackwell, 2,560 CUDA cores, 96 Tensor cores |
 
-## Operating system
+## Host Operating System
 
 The Jetson device runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which provides a Jetson Linux
 (L4T) operating system built on Ubuntu. For instructions on installing JetPack, refer to
 [Prepare the Jetson Host](./prepare-jetson-host.md).
 
-<!-- VERIFY(DOC-3089): Record the validated JetPack version, L4T (Linux for Tegra) version, Ubuntu base version, and CUDA version from the device. NVIDIA's current release is JetPack 7.2.1 (Jetson Linux L4T r39.2.1). The value 38.0.0-gcid-41245178 the device reports is the factory UEFI firmware version, not the JetPack/L4T version. Capture the real OS values with `cat /etc/nv_tegra_release`, `apt-cache show nvidia-jetpack`, and `lsb_release -a`, then confirm the supported combination with engineering (Rishi / DOC-3093). -->
+This guide is validated on the operating system versions in the following table.
+
+| Component    | Validated version        |
+| ------------ | ------------------------ |
+| JetPack      | 7.2.1                    |
+| Jetson Linux | L4T r39.2.1              |
+| Ubuntu base  | 24.04 LTS (Noble Numbat) |
+
+<!-- Resolved (DOC-3089) 2026-09-14 on the Thor: /etc/nv_tegra_release reports R39 REVISION 2.1 (L4T r39.2.1); lsb_release reports Ubuntu 24.04.5 LTS (noble). JetPack 7.2.1 is the release that corresponds to L4T r39.2.1 per NVIDIA's mapping; the nvidia-jetpack meta-package was not installed on this base image, so JetPack is inferred from L4T. CUDA was not present on the base OS (no nvcc, version.json, or cuda-toolkit package); capture the CUDA version during the model-serving (Day 1 / tutorial) validation, where that layer matters. Thor support statement itself is still gated on DOC-3093 (Rishi). -->
 
 ## Supported Kubernetes distribution and CNI
 
