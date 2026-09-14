@@ -39,9 +39,11 @@ A credential that authenticates requests to the appliance's inference endpoint. 
 
 ### Appliance
 
-The self-contained PaletteAI Inference Launchpad unit: a single server that ships as a bootable image and runs the
-operating system, orchestration, inference engine, and management UI as one pre-integrated stack. It deploys with no
-Palette or PaletteAI dependency.
+The Spectro Cloud software stack, not the hardware: the [Kairos](#kairos)-based operating system,
+[Kubernetes](#kubernetes), the [inference engine](#inference-engine), the [launchpad gateway](#launchpad-gateway), and
+the [appliance console](#appliance-console), pre-integrated and self-contained. You provide the server, which becomes a
+[node](#node), and install the appliance on it. Refer to
+[Install the Appliance](../how-to-guides/install-the-appliance.md).
 
 ### Appliance Console
 

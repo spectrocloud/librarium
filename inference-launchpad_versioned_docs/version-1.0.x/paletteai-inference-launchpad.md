@@ -18,9 +18,10 @@ PaletteAI Inference Launchpad turns your own hardware into a private AI platform
 are serving large language models (LLMs) in your own environment, with no cloud dependency, no AI consulting engagement,
 and no weeks spent wiring together an inference stack.
 
-Because inference runs on the appliance, your data never leaves your environment, and unpredictable per-token API bills
-become a fixed, predictable infrastructure cost. The appliance deploys as a single bootable image with no Palette or
-PaletteAI dependency.
+Because inference runs on the appliance, your data stays in your environment by default, and unpredictable per-token API
+bills become a fixed, predictable infrastructure cost. The appliance deploys as a single bootable image with no Palette
+or PaletteAI dependency. For the conditions under which a request can leave the appliance, refer to
+[Data Residency and Isolation](./explanation/architecture.md#data-residency-and-isolation).
 
 ## The Problem It Solves
 
@@ -74,6 +75,23 @@ appliance identifies callers and meters their usage, refer to [Clients and Quota
 
 The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
 independently without replacing the entire appliance image.
+
+## Local UI and the Appliance Console
+
+The appliance serves two separate web interfaces, and each one owns a different part of the lifecycle. Each guide names
+the interface its steps use.
+
+| **Interface**                                                  | **What you do there**                                                           |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Local UI](./reference/glossary.md#local-ui)                   | Create the bond, link nodes, upload the content bundle, and deploy the cluster. |
+| [Appliance console](./reference/glossary.md#appliance-console) | Deploy models, manage clients and quotas, and view usage.                       |
+
+The node's own operating system serves Local UI, so it stays reachable when cluster services are not running. Day-one
+install happens there. Refer to [Install the Appliance](./how-to-guides/install-the-appliance.md) for the procedure that
+uses it.
+
+The running cluster serves the appliance console at the platform IP address, so the console becomes available only after
+the cluster is up. Everything that involves models, clients, and request traffic happens there.
 
 ## PaletteAI Inference Launchpad or PaletteAI
 
