@@ -39,7 +39,11 @@ Create a `user-data` file on the Jetson device. In agent mode, the Palette agent
 the host with your Palette tenant and project. Unlike appliance mode, the file is not built into an installer image. It
 is a plain file on the device that you pass to the installer.
 
-<!-- VERIFY(DOC-3090): Confirm the minimal required user-data schema for agent mode on Jetson against site-user-data.md and a validated install on the Thor. The block below is the minimum registration set (edgeHostToken, paletteEndpoint, project). Do NOT publish a `registrationURL` value from internal examples (the vercel.app gateway is a test endpoint); most installs omit it and use the default gateway. Confirm whether the `palette.ai: "true"` tag is required for PaletteAI discovery and whether any `stages`/Kairos stanzas apply in pure agent mode on a BYO OS (they are Edge Installer heritage and might not). -->
+There is no required directory for the file. Create it in your working directory on the device, for example as
+`./user-data`, and point the installer at it with the `USERDATA` environment variable in the
+[Install the Palette agent](#install-the-palette-agent) section.
+
+<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): this minimal set (edgeHostToken + paletteEndpoint + projectName) is sufficient for agent-mode registration. The `install:`, `users:`, and `stages:` stanzas are appliance/EdgeForge heritage and do not apply on a BYO host. -->
 
 ```yaml
 #cloud-config
@@ -50,23 +54,60 @@ stylus:
     projectName: "<your-project-name>"
 ```
 
+This minimal set is enough to register the host. In agent mode you do not need the `install:`, `users:`, or `stages:`
+stanzas used when building an appliance-mode installer image, because the agent runs on the existing host operating
+system. The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
+
+Two optional settings are useful on a Jetson:
+
+- `stylus.path` - Redirect the agent's persistent data to an NVMe drive or SSD instead of the default root filesystem.
+  This avoids exhausting the on-board eMMC storage.
+- `stylus.site.caCerts` - Required only if your Palette endpoint presents a certificate signed by a private certificate
+  authority (CA).
+
 Refer to [Edge Installer User Data](../../clusters/edge/site-deployment/site-installation/site-user-data.md) for the
 full list of configuration options.
 
 ## Install the Palette agent
 
-Run the Palette agent installer on the device, pointing it at the `user-data` file you created. The installer downloads
-the agent, unpacks the agent runtime, configures the systemd service, and starts registration.
+Point the installer at the `user-data` file, then download and run the Palette agent installation script on the device.
+The installer downloads the agent, unpacks the agent runtime, configures the systemd service, and starts registration.
 
-<!-- TODO(DOC-3090): Confirm the exact, supported installer invocation and source URL for agent mode on Jetson, and capture the real output on the Thor. The command below reflects the agent-mode install flow; validate it end to end before publishing. Cross-check against install-agent-host.md. -->
+<!-- TODO(DOC-3090): Confirm which agent version the ARM64 install script resolves to and whether to pin a 4.10.x-matching tag. Validated on the Thor 2026-09-14: the script resolved to agent v4.8.29 against Palette 4.10.16, which is within the N-2 agent compatibility window; Palette reconciles the agent version on cluster provisioning unless pinned. Steps below mirror install-agent-host.md (steps 5-8): export USERDATA, download the script, chmod, then run with sudo --preserve-env. Do NOT use a `curl | sudo bash` pipe. A JetPack (Ubuntu-based) host uses the non-FIPS script, because the FIPS build is RHEL/Rocky only. -->
 
-```shell
-export USERDATA=/path/to/user-data
-curl --location --silent <palette-agent-install-url> | sudo --preserve-env bash
-```
+1. Export the path to your `user-data` file.
 
-Refer to [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md) for the agent-mode install
-reference.
+   ```shell
+   export USERDATA=./user-data
+   ```
+
+2. Download the Palette agent installation script for Palette SaaS or your self-hosted instance, then grant it execute
+   permission. Refer to [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md) for the
+   exact, version-specific download command.
+
+   ```shell
+   chmod +x ./palette-agent-install.sh
+   ```
+
+3. Run the installer with `sudo --preserve-env` so that it inherits the `USERDATA` variable you exported.
+
+   ```shell
+   sudo --preserve-env ./palette-agent-install.sh
+   ```
+
+Refer to [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md) for the full agent-mode
+install reference, including the SaaS and self-hosted download commands and the FIPS-compliant variant.
+
+:::info
+
+During installation, the agent log might show an error such as
+`Error on file /system/oem/80_stylus_agent_mode.yaml on stage Pull userdata: no metadata/userdata found`, followed by a
+warning that the `before-install` stage had one error. This is expected on a Jetson and does not indicate a failed
+install. The installer reads your local `user-data` file directly. The `Pull userdata` stage separately probes for a
+cloud metadata source, such as a CD-ROM or a cloud provider metadata service, which a bare device does not have.
+Installation continues and reports `palette edge installation completed successfully` when it finishes.
+
+:::
 
 ## Verify the host registers
 
