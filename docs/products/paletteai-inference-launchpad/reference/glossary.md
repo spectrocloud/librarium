@@ -34,8 +34,9 @@ appliance is designed to run air-gapped, requiring no outbound internet access d
 
 A credential that authenticates requests to the appliance's inference endpoint. Every request carries its token in the
 `Authorization` header, and tokens issued by the appliance begin with the prefix `lpai_`. Each token belongs to a
-[client](#client), can be given an expiration, and inherits that client's [quotas](#quota). Refer to
-[Clients and Quotas](../explanation/clients-and-quotas.md).
+[client](#client), requires an expiration date when you create it, and inherits that client's [quotas](#quota). Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md) and
+[Generate an API Token](../how-to-guides/generate-an-api-token.md).
 
 ### Appliance
 
