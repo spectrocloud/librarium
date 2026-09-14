@@ -816,7 +816,7 @@ The number of affected members varies. Recovery depends on whether any member is
       Rolling the image back is safe in this situation only because MongoDB 8 never completed startup and
       so never upgraded the on-disk data files. Do not roll a MongoDB 7 image onto data that a MongoDB 8
       server has already opened successfully.
-      
+
       :::
 
 7. From the output of step 5, select any Pod that is Ready and still on the MongoDB 7 image, and save
@@ -826,8 +826,7 @@ The number of affected members varies. Recovery depends on whether any member is
    export MONGO_POD=mongo-0
    ```
 
-
-8. Run the following command to find the current MongoDB FCV. 
+8. Run the following command to find the current MongoDB FCV.
 
    <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
 
@@ -864,7 +863,8 @@ The number of affected members varies. Recovery depends on whether any member is
 
    </Tabs>
 
-9. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary Pod and save its name to `MONGO_PRIMARY`.
+9. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary
+   Pod and save its name to `MONGO_PRIMARY`.
 
    <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
 
