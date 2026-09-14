@@ -7,12 +7,12 @@ description:
 hide_table_of_contents: false
 sidebar_position: 9
 tags: ["paletteai-inference-launchpad", "claude-code", "how-to"]
-keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token"]
+keywords: ["launchpad", "ai", "claude code", "anthropic", "coding agent", "api token", "platform ca"]
 ---
 
 This guide explains how to connect Claude Code to a PaletteAI Inference Launchpad appliance so that a model running on
-the appliance serves every request instead of Anthropic's hosted API. You point Claude Code at the appliance with two
-environment variables and confirm the connection.
+the appliance serves every request instead of Anthropic's hosted API. You trust the platform certificate authority if
+the appliance uses one, point Claude Code at the appliance with environment variables, and confirm the connection.
 
 ## Prerequisites
 
@@ -22,58 +22,70 @@ environment variables and confirm the connection.
   refer to [Deploy a Model](./deploy-a-model.md).
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
   token an administrator generated for you.
+- Your machine able to reach the appliance address. Claude Code sends every request from your own machine.
+
+## Download the Platform CA Certificate
+
+<PartialsComponent category="paletteai-inference-launchpad" name="download-platform-ca" />
+
+Claude Code runs on Node.js, which does not trust the platform CA by default. Keep the saved file in place. The
+`NODE_EXTRA_CA_CERTS` variable in the next section points at it, which lets Claude Code trust the appliance without
+turning off certificate verification.
 
 ## Configure Claude Code
 
-On the machine where you run Claude Code, set the following environment variables.
-
-:::tip
-
-You do not have to assemble these variables by hand. In the console, select **Connect coding agent** and open the
-**Claude Code** tab to generate a ready-to-paste configuration snippet. The snippet can also set optional per-tier model
-aliases and a reasoning-effort level. For the full list of values it can set, refer to
+In the console, select **Connect Coding Agent** and open the **Claude Code CLI** tab. The panel generates the
+environment block below, already filled in with your appliance address and model aliases, and offers a shell picker for
+`bash`, `zsh`, and `PowerShell`. For a description of each value, refer to
 [Claude Code Configuration](../reference/claude-code-reference.md).
 
-:::
+1. Copy the environment block and paste it in your terminal. Replace `<appliance-host>` with your appliance address.
 
-```bash
-export ANTHROPIC_BASE_URL=https://<appliance-host>
-export ANTHROPIC_AUTH_TOKEN=<lpai-token>
-```
+   ```bash
+   export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
+   export ANTHROPIC_BASE_URL=https://<appliance-host>
+   export ANTHROPIC_MODEL=claude-opus-4-8
+   export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
+   export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
+   export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
+   export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
+   export CLAUDE_CODE_EFFORT_LEVEL=auto
+   export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
+   ```
 
-Set `ANTHROPIC_BASE_URL` to your appliance's address with no path. Do not append `/v1`. Claude Code adds the API path
-itself. Use `ANTHROPIC_AUTH_TOKEN` for the token. `ANTHROPIC_API_KEY` also works, but do not set it globally if you also
-sign in to Claude Code with an Anthropic account.
+   Set `ANTHROPIC_BASE_URL` to your appliance address with no path. Do not append `/v1`. Claude Code adds the API path
+   itself.
+
+   Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. On Windows, the panel writes the same
+   path as `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+
+2. Set your API token. The token is not part of the block in step 1, so that a copied configuration never carries a
+   secret. Replace `<lpai-token>` with the token you copied.
+
+   ```bash
+   export ANTHROPIC_AUTH_TOKEN=<lpai-token>
+   ```
+
+   `ANTHROPIC_API_KEY` also works, but do not set it globally if you also sign in to Claude Code with an Anthropic
+   account.
+
+3. Start Claude Code.
+
+   ```bash
+   claude
+   ```
 
 To persist the settings instead of exporting them each session, add them to the `~/.claude/settings.json` file.
 
 ```json
 {
   "env": {
+    "NODE_EXTRA_CA_CERTS": "/Users/<user>/Downloads/palette-ai-inference-launchpad-ca.crt",
     "ANTHROPIC_BASE_URL": "https://<appliance-host>",
     "ANTHROPIC_AUTH_TOKEN": "<lpai-token>"
   }
 }
 ```
-
-Claude Code requests a Claude alias, such as `claude-opus-4-8`. To pin every request to one alias, set `ANTHROPIC_MODEL`
-to it. For the aliases the appliance accepts, refer to
-[Claude Code Configuration](../reference/claude-code-reference.md).
-
-```bash
-export ANTHROPIC_MODEL=claude-opus-4-8
-```
-
-We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection uses
-HTTPS, so a valid certificate protects your token in transit.
-
-:::warning
-
-If the appliance uses a self-signed certificate, Claude Code rejects the connection by default. As a temporary measure
-for testing, set `NODE_TLS_REJECT_UNAUTHORIZED=0` before you start Claude Code. This disables certificate verification,
-so do not use it outside short-lived testing.
-
-:::
 
 ## Verify the Connection
 
@@ -87,8 +99,9 @@ claude --print "reply with exactly CC_OK and nothing else"
 CC_OK
 ```
 
-A reply confirms that the base URL, token, and model routing all work. To confirm which endpoint and credential the
-session uses, run the `/status` command in Claude Code and review the **Anthropic base URL** and **Auth token** lines.
+A reply confirms that the base URL, token, certificate trust, and model routing all work. To confirm which endpoint and
+credential the session uses, run the `/status` command in Claude Code and review the **Anthropic base URL** and **Auth
+token** lines.
 
 ## Request Routing and Quotas
 

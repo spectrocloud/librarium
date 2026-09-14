@@ -1,0 +1,13 @@
+---
+partial_category: paletteai-inference-launchpad
+partial_name: download-platform-ca
+---
+
+When the appliance serves HTTPS with a certificate issued by the platform's own certificate authority (CA), the first
+step on every tab of the **Connect a coding agent** panel is a **CA certificate** download. Select it to save
+`palette-ai-inference-launchpad-ca.crt` to your Downloads folder.
+
+The CA step does not appear when the console is served over plain HTTP, or when the appliance presents a certificate
+your organization supplied at install time. If the panel cannot determine the appliance's TLS status, it shows the CA
+step anyway, along with the note `TLS status is unavailable. These steps include the platform CA so you can connect
+safely.`

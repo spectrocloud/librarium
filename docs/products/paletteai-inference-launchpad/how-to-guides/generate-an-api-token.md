@@ -35,8 +35,9 @@ If an administrator already gave you an API token, you can use it and skip the f
 4. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
    it.
 
-5. _(Optional)_ To set an expiration date, clear **Never expires**, and then choose an **Expires** date. By default, the
-   token does not expire.
+5. In the **Expires** field, choose the last day the token works. The field is required, and the console describes it as
+   `Token stops working at the end of this day. Pick a day within the next year.` The earliest date you can choose is
+   tomorrow, and the latest is 366 days out. There is no option for a token that never expires.
 
 6. Select **Create Token**.
 
@@ -48,6 +49,17 @@ The console shows the token only once and stores only a hash of it. Copy it now.
 create a new one.
 
 :::
+
+## Track an Expiring Token
+
+Every token in the client's **API tokens** section carries a state. A token within seven days of its expiry date shows
+an **expiring soon** state, so you can replace it before it stops working. After the expiry date passes, the state
+becomes **expired** and the appliance rejects every request that uses the token.
+
+Tokens created before the appliance required an expiry date keep their unlimited lifetime.
+
+To replace an expiring token, generate a new one for the same client, update the client configuration that uses it, and
+then revoke the old token.
 
 ## Next Steps
 

@@ -7,12 +7,12 @@ description:
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["paletteai-inference-launchpad", "cursor", "how-to"]
-keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask mode", "api token"]
+keywords: ["launchpad", "ai", "cursor", "openai-compatible", "model alias", "ask mode", "api token", "platform ca"]
 ---
 
 This guide explains how to connect Cursor to a PaletteAI Inference Launchpad appliance so that a model running on the
-appliance serves your requests instead of a cloud provider. You create a uniquely named model alias on the appliance,
-point Cursor at the appliance, and confirm that requests route through the appliance.
+appliance serves your requests instead of a cloud provider. You trust the platform certificate authority if the
+appliance uses one, point Cursor at the appliance, and confirm that requests route through the appliance.
 
 :::warning
 
@@ -22,75 +22,64 @@ appliance even after you complete this guide.
 
 :::
 
+## Cursor Requires a Reachable Endpoint
+
+Cursor sends model requests from Cursor's own cloud servers, not from your machine. Every other coding agent in this
+documentation set sends requests from the machine you run it on, and that difference decides whether Cursor can reach
+your appliance at all.
+
+Cursor cloud cannot reach the appliance in either of these cases:
+
+- The appliance sits on a private network that is not reachable from the public internet. Cursor cloud never receives
+  the request.
+- The appliance presents only a certificate issued by the platform's own certificate authority. Cursor cloud does not
+  trust that authority, and Cursor offers no way to skip certificate verification.
+
+Importing the platform CA on your own machine does not change either case, because your machine is not what connects. To
+use Cursor with an appliance in either state, expose the appliance inference endpoint at an address Cursor cloud can
+reach, with a publicly trusted TLS certificate of its own, and enter that address as the base URL in place of the
+appliance address. For the connectivity options Cursor documents, refer to Cursor's
+[Private Connectivity](https://cursor.com/docs/enterprise/network-configuration#private-connectivity) documentation.
+
+This is a Cursor product limit, not an appliance defect.
+
+{/* NEEDS REVIEW: Cursor's private connectivity section documents AWS PrivateLink and Cloudflare Tunnel for private source control systems and package registries, not for custom OpenAI-compatible model endpoints. Confirm with an SME which connectivity path Cursor supports for a custom base URL. */}
+
 ## Prerequisites
 
 - Cursor installed and already working. For installation, refer to the [Cursor documentation](https://docs.cursor.com).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md).
-  Generating the token and creating the model alias later in this guide can require operator access.
-- The appliance reachable at a DNS name with a valid, publicly trusted TLS certificate. Cursor sends requests from its
-  own cloud servers, so a self-signed certificate does not work and there is no client-side workaround. If the appliance
-  is on a private network, refer to
-  [Cursor Cannot Reach an Appliance on a Private Network](../reference/known-issues.md#cursor-cannot-reach-an-appliance-on-a-private-network)
-  first.
+  Generating the token can require operator access.
+- The appliance inference endpoint reachable from Cursor's cloud servers at a DNS name with a valid, publicly trusted
+  TLS certificate, as described in [Cursor Requires a Reachable Endpoint](#cursor-requires-a-reachable-endpoint).
 
-## Create a Model Alias
+## Download and Trust the Platform CA Certificate
 
-Cursor sends model requests from its own cloud servers and decides where to route each request by the model name. If the
-name matches a model already in Cursor's catalog, such as `glm-5.2` or `gpt-4o`, Cursor routes the request to its own
-backend and never contacts your appliance. To force Cursor to use the appliance, serve the model under a unique alias
-name that does not exist in Cursor's catalog.
+<PartialsComponent category="paletteai-inference-launchpad" name="download-platform-ca" />
 
-{/* NEEDS REVIEW: the console's "Connect coding agent" > Cursor tab suggests adding the model `claude-opus-4-8`. That name likely matches Cursor's built-in catalog, so it would route to Cursor's own backend rather than the appliance, the problem this section prevents. Confirm with an SME; the unique-alias approach in this section is what reliably reaches the appliance. */}
+Cursor is a desktop application, so an environment variable in your shell does not reach it. Import the platform CA into
+your operating system trust store, then restart Cursor. This covers the whole application once it restarts.
 
-Creating an alias is an operator task. If you do not have operator access, ask an administrator to create the alias and
-give you its name, then continue to [Configure Cursor](#configure-cursor).
-
-The appliance can serve any model id as an alias of a model it already runs. On the appliance, alias a unique name to a
-served model. Replace `<appliance-host>` with your appliance address and `<admin-session-token>` with an operator
-session token.
-
-```bash
-curl --silent "https://<appliance-host>/admin/apply" \
-  --header "Authorization: Bearer <admin-session-token>" \
-  --header "Content-Type: application/json" \
-  --data '{"proposed_op":{"op":"set_tier","alias_prefix":"launchpad-glm52","model":"zai-org/GLM-5.2","thinking":"off","confirmed":true}}'
-```
-
-Set `alias_prefix` to the unique name Cursor requests, and set `model` to the id of a model the appliance already
-serves, such as `zai-org/GLM-5.2`. To find the served model id, check the appliance's `/v1/models` endpoint or the admin
-view in the console.
-
-The alias then appears in the appliance's `/v1/models` response and routes to the real model. The `alias_prefix` value,
-such as `launchpad-glm52`, is the name you enter in Cursor.
-
-{/* NEEDS REVIEW: the alias command and its admin-session bearer token ($ADMIN_SESSION) come verbatim from the connect guide; confirm how an operator obtains that session token. */}
+This step is required when the appliance presents a platform-issued certificate. It does not make an appliance on a
+private network reachable. For that, refer to
+[Cursor Requires a Reachable Endpoint](#cursor-requires-a-reachable-endpoint).
 
 ## Configure Cursor
 
-Point Cursor at the appliance in Cursor's settings. For the full list of settings and their example values, refer to
+In the console, select **Connect Coding Agent** and open the **Cursor** tab. The panel lists these same steps with your
+appliance address and model alias filled in. For the full list of settings and their example values, refer to
 [Cursor Configuration](../reference/cursor-reference.md).
-
-:::tip
-
-The console lists these same steps for you. Select **Connect coding agent** and open the **Cursor** tab for the base URL
-and key to enter. Use the unique alias from [Create a Model Alias](#create-a-model-alias) as the model name, not a
-built-in model name that Cursor already knows.
-
-:::
 
 1. In Cursor, open **Settings** > **Models**.
 
-2. Enable **Override OpenAI Base URL**, and enter your appliance address with the `/v1` path appended, such as
+2. Under **OpenAI API Key**, paste your `lpai_` token.
+
+3. Enable **Override OpenAI Base URL**, and enter your appliance address with the `/v1` path appended, such as
    `https://<appliance-host>/v1`.
 
-3. In the **OpenAI API Key** field, enter your `lpai_` token.
-
-4. Under **OpenAI API Key**, select **Add model**, and enter the unique alias name, such as `launchpad-glm52`. A unique
-   name forces Cursor to treat the model as your custom model and send the request to your endpoint.
-
-5. Turn off Cursor's built-in models so that only your alias is active.
+4. Enable a GPT model such as `gpt-5.6` in the model list, then select it in chat.
 
 ## Verify the Connection
 
@@ -98,7 +87,7 @@ Confirm that Cursor routes a request to the appliance instead of to its own back
 
 1. In Cursor, open a chat and set the mode to **Ask**.
 
-2. In the model picker, select your alias, such as `launchpad-glm52`.
+2. In the model picker, select the model you enabled, such as `gpt-5.6`.
 
 3. Send a test prompt.
 
@@ -108,17 +97,18 @@ Confirm that Cursor routes a request to the appliance instead of to its own back
 
 4. Confirm that Cursor displays the reply `CURSOR_OK`.
 
-Because the alias name exists only on your appliance, Cursor cannot serve it from its own backend. A reply confirms that
-the chat request reached the appliance, that a model there served it, and that the base URL, token, alias, and routing
-all work.
+A reply confirms that the base URL, token, certificate trust, model, and routing all work.
 
 :::warning
 
-If Cursor returns `We're having trouble finding the resource you requested`, the alias name matches a model in Cursor's
-catalog, so Cursor routed the request to its own backend and never contacted the appliance. Create the alias again with
-a more unique name, and select the new name in Cursor.
+If Cursor returns `We're having trouble finding the resource you requested`, or the reply arrives but appliance usage
+does not increase, Cursor matched the model name against its own catalog and served the request from its own backend.
+Ask an operator to map an alias name that does not appear in Cursor's catalog, then enable that name in Cursor instead.
+To confirm which requests the appliance served, refer to [View Client Usage](./view-client-usage.md).
 
 :::
+
+{/* NEEDS REVIEW: the console's Cursor tab says to enable a GPT model such as `gpt-5.6`. Confirm with an SME whether that name collides with Cursor's built-in catalog and routes to Cursor's own backend. If it does, the panel copy needs to change and this guide should lead with a unique alias name. */}
 
 ## Request Routing and Quotas
 
@@ -126,5 +116,5 @@ a more unique name, and select the new name in Cursor.
 
 ## Next Steps
 
-To look up the base URL, alias, and the Cursor modes the appliance supports, refer to
+To look up the base URL, model name, and the Cursor modes the appliance supports, refer to
 [Cursor Configuration](../reference/cursor-reference.md).

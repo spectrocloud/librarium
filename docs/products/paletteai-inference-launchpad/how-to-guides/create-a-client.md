@@ -49,8 +49,18 @@ grants model access, and optionally issues the client's first API token.
    **Next step**. For details, refer to
    [Manage a Client's Model Access](./manage-client-model-access.md#route-a-client-to-specific-models).
 
-7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**
-   and an **Expires** date, and then select **Add Token**. Leave **Expires** blank for a token that never expires.
+   The wizard seeds the **Tier map** with seven locked alias prefixes, in this order: `claude-fable-`, `claude-opus-`,
+   `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`. These are the alias families that coding agents
+   request, so a new client can connect an agent without any routing work.
+
+   A client you leave unchanged inherits the appliance's own Tier map. An inherited row with no model set reads
+   `Not mapped, so the box default <model> answers it.`, which means the appliance's default model answers requests for
+   that alias family rather than returning an error.
+
+7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**,
+   choose a required **Expires** date, and then select **Add Token**. The **Expires** date is the last day the token
+   works. The earliest date you can choose is tomorrow, and the latest is 366 days out. There is no option for a token
+   that never expires. For more detail, refer to [Generate an API Token](./generate-an-api-token.md).
 
 8. Select **Create client**.
 
