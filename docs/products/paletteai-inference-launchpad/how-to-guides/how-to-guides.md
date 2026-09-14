@@ -34,6 +34,6 @@ you the steps to do it without teaching background concepts.
 | [View Client Usage](./view-client-usage.md)                                             | View quota utilization, historical consumption, and per-token usage.                                           |
 | [Revoke or Delete a Client](./revoke-or-delete-a-client.md)                             | Find expired keys, revoke a token, or delete a client.                                                         |
 | [Use Claude Code](./use-claude-code.md)                                                 | Connect Claude Code to the appliance so a local model serves each request.                                     |
-| [Use Cursor](./use-cursor.md)                                                           | Connect Cursor's Ask mode to the appliance through a uniquely named model alias.                               |
+| [Use Cursor](./use-cursor.md)                                                           | Connect Cursor's Ask mode to the appliance, and understand why Cursor needs a reachable endpoint.              |
 | [Use OpenAI Codex](./use-codex.md)                                                      | Connect the OpenAI Codex CLI to the appliance with a custom model provider.                                    |
 | [Use OpenCode](./use-opencode.md)                                                       | Connect the OpenCode terminal agent to the appliance through a custom provider.                                |

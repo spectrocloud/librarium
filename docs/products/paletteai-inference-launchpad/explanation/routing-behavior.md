@@ -53,8 +53,9 @@ answers?
 
 Each Tier map row has three columns.
 
-- **Alias prefix.** The name the client sends, matched by prefix. Presets are `claude-opus-`, `claude-sonnet-`, and
-  `claude-haiku-`. You can also add a custom prefix.
+- **Alias prefix.** The name the client sends, matched by prefix. Seven presets are seeded, in this order:
+  `claude-fable-`, `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`. You can also add a
+  custom prefix.
 - **Model.** A model the appliance serves, or the special picker value **Choose per request**. When Model is a served
   model, the Tier map settles the request in Stage 1. When Model is **Choose per request**, the alias is handed to the
   semantic router in Stage 2.
