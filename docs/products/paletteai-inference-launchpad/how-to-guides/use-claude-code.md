@@ -54,7 +54,7 @@ to [Claude Code Configuration](../reference/claude-code-reference.md).
    ```
 
    Set `ANTHROPIC_BASE_URL` to your appliance address with no path. Do not append `/v1`. Claude Code adds the API path
-   itself.
+   itself. The examples show `https://`; when the appliance serves plain HTTP, use `http://` instead.
 
    Omit the `NODE_EXTRA_CA_CERTS` line if the panel showed no CA certificate step. In PowerShell, set each value with
    `$env:<name> = "<value>"` in place of `export`, and use the path the panel writes for Windows,

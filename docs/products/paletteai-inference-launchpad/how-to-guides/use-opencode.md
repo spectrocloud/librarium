@@ -68,12 +68,18 @@ alias, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a desc
    }
    ```
 
-   Set `baseURL` to your appliance address with the `/v1` path appended. The `apiKey` value reads the token from your
-   shell, so the file itself holds no secret.
+   Set `baseURL` to your appliance address with the `/v1` path appended. The examples show `https://`; when the
+   appliance serves plain HTTP, use `http://` instead. The `apiKey` value reads the token from your shell, so the file
+   itself holds no secret.
 
    Declare `modalities` explicitly. OpenCode resolves a model's capabilities against a public catalog that has no entry
    for a custom provider, so an undeclared input type defaults to unsupported. Without the `image` input declared,
    OpenCode replaces a pasted image with an unsupported note and the appliance never receives it.
+
+   Set `limit` to the real context and output ceilings of the model the appliance serves. The panel fills it with the
+   ceilings of the model it generated the configuration for, and `claude-opus-4-8` is an alias the Tier map resolves to
+   whatever model the appliance runs. A context ceiling above that model's own makes OpenCode pack a request the
+   appliance then rejects.
 
 2. Run both export commands in your shell. Replace `<lpai-token>` with the token you copied.
 

@@ -61,10 +61,13 @@ at `~/.config/opencode/opencode.json` to apply it everywhere. Add a custom provi
 | `$schema`             | The OpenCode configuration schema. Enables validation and autocompletion in an editor.                                                 | `https://opencode.ai/config.json`                    |
 | `provider.<key>`      | A custom provider entry. The key, such as `launchpad`, is the provider name you combine with a model name when you select a model.     | `launchpad`                                          |
 | `npm`                 | The provider plugin OpenCode loads. For an OpenAI-compatible endpoint, use `@ai-sdk/openai-compatible`.                                | `@ai-sdk/openai-compatible`                          |
-| `name`                | A display name for the provider.                                                                                                       | `PaletteAI Inference Launchpad`                      |
+| `name`                | A display name for the provider. The `name` nested under a model key is a separate field, documented in its own row below.             | `PaletteAI Inference Launchpad`                      |
 | `options.baseURL`     | The appliance inference endpoint, with the `/v1` path appended.                                                                        | `https://amd.spectrocloud.com:8443/v1`               |
 | `options.apiKey`      | Your API token. Use the `{env:LAUNCHPAD_API_KEY}` reference so the file holds no secret.                                               | `{env:LAUNCHPAD_API_KEY}`                            |
 | `models`              | A map of the models you want to use. Each key is a tier-map alias or a served model id.                                                | `claude-opus-4-8`                                    |
+| `models.*.name`       | A label for the model in OpenCode's model picker. It does not affect routing.                                                          | `Claude Opus`                                        |
+| `models.*.tool_call`  | Whether the model accepts tool calls. Declare this explicitly, as described in [Model Capabilities](#model-capabilities).              | `true`                                               |
+| `models.*.reasoning`  | Whether the model produces reasoning output. Declare this explicitly, as described in [Model Capabilities](#model-capabilities).       | `true`                                               |
 | `models.*.modalities` | The input and output types the model accepts. Declare this explicitly, as described in [Model Capabilities](#model-capabilities).      | `{ "input": ["text", "image"], "output": ["text"] }` |
 | `models.*.limit`      | The context and output token ceilings OpenCode applies to the model. Set these to the real ceilings of the model the appliance serves. | `{ "context": 200000, "output": 64000 }`             |
 
@@ -101,16 +104,13 @@ first slash. The part before the slash is the provider key, and the part after i
 That key can be a tier-map alias, such as `claude-opus-4-8`, or the id of a model the appliance serves, such as
 `glm-5.2`. Both appear in the console model list and in the appliance's `/v1/models` API response.
 
-An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where an alias family with no model set falls through to the appliance default model. A client that has its own
-Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
-an alias, refer to
-[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
+<PartialsComponent category="paletteai-inference-launchpad" name="tier-map-alias-resolution" />
 
 ## Model Capabilities
 
 OpenCode resolves a model's capabilities against a public model catalog, which holds no entry for a custom provider.
-Every input type you do not declare therefore defaults to unsupported.
+Every capability you do not declare therefore defaults to unsupported, including `tool_call`, `reasoning`, and each
+input type in `modalities`.
 
 Declare `modalities` explicitly on each model. Without `image` in the input list, OpenCode replaces a pasted image with
 an unsupported note on the client side, and the appliance never receives the image. To let the appliance answer

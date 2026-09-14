@@ -55,8 +55,9 @@ alias, and offers a shell picker for `bash`, `zsh`, and `PowerShell`. For a desc
    env_key = "LAUNCHPAD_API_KEY"
    ```
 
-   Set `base_url` to your appliance address with the `/v1` path appended. Keep `wire_api` set to `responses`. Current
-   Codex CLI releases support no other value.
+   Set `base_url` to your appliance address with the `/v1` path appended. The examples show `https://`; when the
+   appliance serves plain HTTP, use `http://` instead. Keep `wire_api` set to `responses`. Current Codex CLI releases
+   support no other value.
 
 2. Run both export commands in your shell. These do not belong in `config.toml`, because an `export` line inside the
    file fails the Codex configuration parse. Replace `<lpai-token>` with the token you copied.

@@ -7,7 +7,7 @@ description:
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["paletteai-inference-launchpad", "claude-code", "reference"]
-keywords: ["launchpad", "ai", "claude code", "anthropic", "environment variables", "api token", "model"]
+keywords: ["launchpad", "ai", "claude code", "anthropic", "environment variables", "api token", "model", "platform ca"]
 ---
 
 This page lists the configuration values Claude Code uses to connect to a PaletteAI Inference Launchpad appliance. For
@@ -54,11 +54,7 @@ and the appliance maps that alias to the model it serves. Set `ANTHROPIC_MODEL` 
 select a backend model directly. Both the aliases the appliance accepts and the ids of the models it serves, such as
 `glm-5.2`, appear in the console's model list and in the appliance's `/v1/models` API response.
 
-An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where an alias family with no model set falls through to the appliance default model. A client that has its own
-Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
-an alias, refer to
-[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
+<PartialsComponent category="paletteai-inference-launchpad" name="tier-map-alias-resolution" />
 
 ## Token Quotas
 

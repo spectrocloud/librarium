@@ -77,11 +77,7 @@ Codex sends the value of `model` to the appliance over the Responses API. The ga
 path, so `model` accepts either an alias such as `gpt-5.6` or the id of a model the appliance serves. Both the aliases
 and the served model ids appear in the console model list and in the appliance's `/v1/models` API response.
 
-An alias resolves only if the client's Tier map routes it. A client with no Tier map of its own inherits the appliance's
-table, where an alias family with no model set falls through to the appliance default model. A client that has its own
-Tier map does not inherit that table, so an alias family its own map leaves unset returns an HTTP `404` response. To map
-an alias, refer to
-[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#route-a-client-to-specific-models).
+<PartialsComponent category="paletteai-inference-launchpad" name="tier-map-alias-resolution" />
 
 ## Requirements
 

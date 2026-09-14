@@ -115,7 +115,13 @@ Confirm that Cursor routes a request to the appliance instead of to its own back
 
 4. Confirm that Cursor displays the reply `CURSOR_OK`.
 
-A reply confirms that the base URL, token, certificate trust, model, and routing all work.
+5. In the console, confirm that the client's usage rose for the request you just sent. For the procedure, refer to
+   [View Client Usage](./view-client-usage.md).
+
+A reply by itself does not prove that the appliance served the request. Cursor answers from its own backend whenever the
+model name matches a model in its built-in catalog, and that answer is indistinguishable in chat. Step 5 is the pass
+criterion, because the appliance's own usage record is the only thing a catalog match cannot produce. Once usage rises,
+the base URL, token, certificate trust, model, and routing all work.
 
 :::warning
 
