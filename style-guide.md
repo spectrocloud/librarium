@@ -457,6 +457,23 @@ can use and instead of the comma without changing the meaning of your sentence.
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | Palette integrates with existing systems _and optimizes_ resource allocation. | Palette integrates with existing _systems, and optimizes_ resource allocation. |
 
+## Optional "That"
+
+Keep the conjunction _that_ when it introduces a subordinate clause and the sentence would still parse without it. The
+extra word signals the clause boundary on the first pass; without it, the reader can briefly misread the following noun
+as the direct object of the word in front of it.
+
+The rule applies wherever _that_ optionally introduces a clause: after verbs (_confirm, note, indicate, believe, know,
+require, ensure, recommend_), after adjectives (_aware, confident, sure, certain_), after nouns (_fact, assumption,
+belief, indication, evidence_), and in result or purpose clauses (_so that_, _such that_).
+
+| Good ✅                                                              | Bad ❌                                                          |
+| -------------------------------------------------------------------- | --------------------------------------------------------------- |
+| The engineer confirmed that the pack was updated before the release. | The engineer confirmed the pack was updated before the release. |
+| Verify that the cluster is healthy before proceeding.                | Verify the cluster is healthy before proceeding.                |
+| Palette is aware that the node has drained.                          | Palette is aware the node has drained.                          |
+| Adjust the timeout so that the request completes.                    | Adjust the timeout so the request completes.                    |
+
 ## Prepositions
 
 Use the preposition _in_ to convey the notion of an enclosed space surrounded or closed off on all sides within which
