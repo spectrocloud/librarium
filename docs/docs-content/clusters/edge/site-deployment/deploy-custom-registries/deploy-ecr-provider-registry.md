@@ -13,8 +13,7 @@ tags: ["edge"]
 rather than a static username and password. This guide describes how to configure an Edge cluster to pull provider
 images from a private Amazon ECR repository, both when the cluster is first created and when it is later upgraded.
 
-This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution and it covers provider
-images only. It does not cover ECR for application workload images and other kubernetes distributions. Refer to
+This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution, and it covers provider images only. It does not configure ECR for application workload images, and it does not cover other Kubernetes distributions. Refer to
 [Limitations](#limitations) for the full scope.
 
 ## Provider Image Pull Paths
