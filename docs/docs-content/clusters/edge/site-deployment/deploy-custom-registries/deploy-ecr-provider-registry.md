@@ -47,8 +47,7 @@ change those credentials later, which is what makes credential rotation possible
 
 ## Limitations
 
-- This configuration applies to the PXK-E (kubeadm) Kubernetes distribution other kubernetes distributions are not
-  covered.
+- This configuration applies to the PXK-E (kubeadm) Kubernetes distribution. Other Kubernetes distributions are not covered.
 
 - The configuration covers provider images only. Application workload images are not covered.
 
