@@ -21,14 +21,6 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.a}
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
-
-- Palette now enforces authorization checks on four APIs that were previously accessible without them:
-  `PATCH /v1/cloudaccounts/{uid}/geoLocation`, `POST /v1/spectroclusters/{uid}/workloads/sync`,
-  `GET /v1/users/assets/vsphere/dnsMapping`, and `GET /v1/tenants/{tenantUid}/subscriptions/metadata`. Automation that
-  calls these endpoints must use a principal that holds the required permissions. Otherwise, the request fails with an
-  authorization error.
-
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
 #### Features
