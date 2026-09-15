@@ -27,6 +27,11 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
+
+- Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
+  when.
+
 #### Bug Fixes
 
 #### Deprecations and Removals
