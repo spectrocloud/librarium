@@ -108,10 +108,13 @@ selected based on configured node labels and upgraded periodically according to 
     cat << 'EOF' > upgrades.sh
     #!/bin/sh
     set -e
-    secrets=$(dirname "$0")
     export DEBIAN_FRONTEND=noninteractive
     apt-get --assume-yes update
-    apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y --force-yes
+    apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -y --allow-downgrades \
+      --allow-remove-essential --allow-change-held-packages
+    if [ -f /var/run/reboot-required ]; then
+      systemd-run --unit=palette-os-upgrade-reboot --on-active=30s systemctl reboot
+    fi
     EOF
     ```
 
@@ -149,7 +152,7 @@ selected based on configured node labels and upgraded periodically according to 
                 nodeSelector:
                     matchExpressions:
                         - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
-                serviceAccountName: spectro-task
+                serviceAccountName: crony
                 secrets:
                     - name: os-upgrade-script
                       path: /host/run/spectro-task/secrets/bionic
@@ -179,7 +182,7 @@ selected based on configured node labels and upgraded periodically according to 
             spec:
                 template:
                     spec:
-                        serviceAccountName: spectro-task
+                        serviceAccountName: crony
                         containers:
                             - name: os-upgrade-job
                               image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
