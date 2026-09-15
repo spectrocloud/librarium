@@ -38,6 +38,7 @@ For reference materials not covered in this guide, defer to the
     - [Parenthetical Expressions and Jargon](#parenthetical-expressions-and-jargon)
     - [Single and Plural Subjects](#single-and-plural-subjects)
   - [Commas](#commas)
+  - [Optional "That"](#optional-that)
   - [Prepositions](#prepositions)
   - [Dialogue](#dialogue)
   - [Numbers](#numbers)
