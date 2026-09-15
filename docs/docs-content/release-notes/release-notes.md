@@ -29,8 +29,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
 
-- The system console now shows who configured the image pull secret and when, beneath the pull secret configuration
-  field.
+- Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
+  when.
 
 #### Bug Fixes
 
