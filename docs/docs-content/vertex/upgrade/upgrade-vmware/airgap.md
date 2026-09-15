@@ -25,6 +25,8 @@ vSphere.
 
 ### Specific Versions
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
+
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 - **(4.8.x to 4.9.23+)** Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported, because they
