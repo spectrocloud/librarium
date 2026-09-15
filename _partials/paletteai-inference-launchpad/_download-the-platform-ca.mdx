@@ -1,0 +1,18 @@
+---
+partial_category: paletteai-inference-launchpad
+partial_name: download-the-platform-ca
+---
+
+When the appliance serves HTTPS with a certificate issued by its own platform Certificate Authority (CA), the connect
+panel offers that CA certificate as a download. Your machine does not trust the platform CA yet, so download the
+certificate before you configure the agent.
+
+1. In the console, open the **Connect a coding agent** panel. Select **Connect Coding Agent** on the homepage, select
+   **Connect a Coding Agent** in the **Create API token** dialog that reveals a new token, or select **Connect Agent**
+   in the dialog that finishes the **Add client** wizard.
+
+2. Select the tab for your agent, and then select **CA certificate**. The browser saves
+   `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
+
+If the panel shows no **CA certificate** step, the appliance does not need one. Skip this section and every later step
+that points at the downloaded file.
