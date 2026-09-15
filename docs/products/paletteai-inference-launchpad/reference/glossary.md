@@ -34,14 +34,16 @@ appliance is designed to run air-gapped, requiring no outbound internet access d
 
 A credential that authenticates requests to the appliance's inference endpoint. Every request carries its token in the
 `Authorization` header, and tokens issued by the appliance begin with the prefix `lpai_`. Each token belongs to a
-[client](#client), can be given an expiration, and inherits that client's [quotas](#quota). Refer to
+[client](#client), carries an expiration date, and inherits that client's [quotas](#quota). Refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md).
 
 ### Appliance
 
-The self-contained PaletteAI Inference Launchpad unit: a single server that ships as a bootable image and runs the
-operating system, orchestration, inference engine, and management UI as one pre-integrated stack. It deploys with no
-Palette or PaletteAI dependency.
+The Spectro Cloud software stack, not the hardware: the [Kairos](#kairos)-based operating system,
+[Kubernetes](#kubernetes), the [inference engine](#inference-engine), the [launchpad gateway](#launchpad-gateway), and
+the [appliance console](#appliance-console), pre-integrated and self-contained. You provide the server, which becomes a
+[node](#node), and install the appliance on it. Refer to
+[Install the Appliance](../how-to-guides/install-the-appliance.md).
 
 ### Appliance Console
 
