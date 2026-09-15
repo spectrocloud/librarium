@@ -46,7 +46,8 @@ Use a client's tier map to route the client's model aliases to the models you ch
 
 5. Set the **Alias prefix**, such as `claude-opus-`, and the **Model** it routes to. Local models, frontier targets, and
    models from a registered external inference endpoint appear in the picker. Endpoint models are listed as
-   `<id> / <model>`.
+   `<id> / <model>`. The **Tier map** starts with seven seeded alias prefixes, `claude-fable-`, `claude-opus-`,
+   `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`, which you can map but not remove.
 
 6. Save the client.
 

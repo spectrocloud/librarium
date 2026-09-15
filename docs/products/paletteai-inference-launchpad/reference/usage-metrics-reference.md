@@ -165,7 +165,7 @@ The **API keys** table lists each of the client's tokens.
 | ------------------------- | -------------------------------------------------------------------- |
 | **Label**                 | The name given to the token at creation.                             |
 | **Key**                   | The token's prefix. The full secret is shown only once, at creation. |
-| **Status**                | Whether the token is active, expired, or revoked.                    |
+| **Status**                | Whether the token is active, expiring soon, expired, or revoked.     |
 | **Last used**             | When the token last authenticated a request, or `never`.             |
 | **Created**               | When the token was created.                                          |
 | **Expires**               | When the token expires.                                              |
