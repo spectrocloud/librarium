@@ -177,29 +177,6 @@ sudo kubectl --namespace traefik patch svc traefik --type='json' \
   --patch='[{"op":"remove","path":"/spec/loadBalancerSourceRanges"}]'
 ```
 
-## Anthropic model aliases return "not served"
-
-**Symptom.** A `GET /v1/models` response advertises Anthropic tier aliases alongside the deployed model.
-
-```json
-{
-  "data": [
-    { "id": "<model-name>", "object": "model", "owned_by": "launchpad-ai" },
-    { "id": "claude-opus-4-8", "object": "model", "owned_by": "launchpad-ai-tier-alias" },
-    { "id": "claude-sonnet-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias" },
-    { "id": "claude-haiku-4-5", "object": "model", "owned_by": "launchpad-ai-tier-alias" }
-  ]
-}
-```
-
-A request that uses one of the aliases as `model` returns `{"error":"model '' is not served by this box"}`.
-
-**Root cause.** The alias entries are advertised by the gateway, but the router-to-engine mapping is not wired for them
-in the current build.
-
-**Workaround.** Use the native model ID (the entry with `owned_by: launchpad-ai`) in every request. For clients that
-hard-code an Anthropic model name, map the alias to the native ID at the client side.
-
 ## "Model artifacts verified" step remains at "not present" after model loads
 
 **Symptom.** After a model is uploaded, deployed, and serving requests successfully, the appliance console's model

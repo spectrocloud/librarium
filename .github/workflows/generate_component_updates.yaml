@@ -14,11 +14,11 @@ on:
         description: "The release management appliance for the component update (e.g., 4.8.6)"
         required: true
       release_artifact_studio:
-        description: "The release artifact studio for the component update (e.g., 4.8.6)"
-        required: true
+        description: "The release artifact studio for the component update (e.g., 4.8.6). Leave blank on a week Artifact Studio did not release; its row is dropped automatically."
+        required: false
       release_terraform_version:
-        description: "The release terraform version for the component update (e.g., 0.28.1)"
-        required: true
+        description: "The release terraform version for the component update (e.g., 0.28.1). Leave blank on a week Terraform did not release; the Terraform and Crossplane rows are dropped automatically."
+        required: false
       base_branch:
         description: "The base branch for the component update PR (default: master)"
         required: true
@@ -50,6 +50,17 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Validate base branch
+        run: |
+          # A release run is signaled by a docs-rel release branch; a normal weekly run uses master.
+          # Fail fast on anything else. This mirrors the guard in generate-component-updates-ai.sh.
+          # BASE_BRANCH is read from the shell environment (not interpolated into the workflow
+          # template) to avoid injecting an operator-supplied value into the shell.
+          if [[ "$BASE_BRANCH" != "master" && ! "$BASE_BRANCH" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+            echo "❌ Base branch '$BASE_BRANCH' is not 'master' or a well-formed 'docs-rel-<major>-<minor>-<0|a|b|c>' branch (for example, docs-rel-4-10-a)." >&2
+            exit 1
+          fi
+
       - name: Retrieve Credentials
         id: import-secrets
         uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
@@ -82,9 +93,13 @@ jobs:
           npm ci
       
       - name: Execute Script to Generate Component Updates
+        env:
+          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # via the GitHub CLI on a release run, so it needs an authenticated token here too.
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           touch .env
-          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" make generate-component-updates
+          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" RELEASE_BASE_BRANCH="${{ env.BASE_BRANCH }}" make generate-component-updates
 
       - name: Create a PR with generated component updates
         env:
@@ -94,8 +109,11 @@ jobs:
           branch_name="${{ env.JIRA_TICKET }}-generate-component-updates-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Commit and push the changes
-          git add docs/docs-content/release-notes/release-notes.md
+          # Commit and push the changes. On a release run the script may also update the appliance
+          # Kubernetes Requirements tables, so stage those pages too (no-op when unchanged).
+          git add docs/docs-content/release-notes/release-notes.md \
+                  docs/docs-content/enterprise-version/install-palette/install-palette.md \
+                  docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md
           git commit -m "docs: add component updates for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 

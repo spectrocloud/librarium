@@ -19,6 +19,22 @@ SUPER_ASSISTANT_ID="3hGjyJjygs5nyP" # ID for the assistant configured to generat
 MAX_RETRIES=5
 SLEEP_SECONDS=2
 
+# Demote every Markdown ATX heading in a file one level (## -> ###, ### -> ####, ...), skipping
+# lines inside fenced code blocks so a "## foo" line in a code sample is left alone. Used on a
+# release run so the whole Component Updates block nests one level deeper under the release "##"
+# heading: the block's own "## ... - Component Updates", "### Packs", "#### Pack Notes",
+# "#### Deprecations and Removals", and any headings in the Super-generated body all shift together
+# (DOC-3195 Phase C). Only h1-h5 are demoted; an h6 is left as-is since Markdown has no h7.
+demote_block_headings() {
+  local file="$1" tmp
+  tmp="$(mktemp)"
+  awk '
+    /^(```|~~~)/ { in_fence = !in_fence; print; next }
+    !in_fence && /^#{1,5} / { print "#" $0; next }
+    { print }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
     exit 1
@@ -44,15 +60,38 @@ if ! check_env "RELEASE_MANAGEMENT_APPLIANCE"; then
     exit 1
 fi
 
-if ! check_env "RELEASE_ARTIFACT_STUDIO"; then
-    echo "‼️  RELEASE_ARTIFACT_STUDIO environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
+# Artifact Studio and Terraform versions are optional: not every week releases these components.
+# Normalize an unset variable to empty so `set -u` does not trip, and so the corresponding
+# component-table row can be dropped when the version is blank (see the render step below).
+RELEASE_ARTIFACT_STUDIO="${RELEASE_ARTIFACT_STUDIO:-}"
+RELEASE_TERRAFORM_VERSION="${RELEASE_TERRAFORM_VERSION:-}"
+
+# Release signal (DOC-3195). A Component Updates run is a "release run" when its base branch is a
+# release branch (docs-rel-<major>-<minor>-<0|a|b|c>) rather than master. The operator picks this
+# with the workflow's Base branch field, so no separate input is needed. The workflows pass the
+# base branch as RELEASE_BASE_BRANCH: the generate form passes its base_branch input; the comment
+# workflow reads the PR's base branch via gh. Default to master for a local or manual run.
+RELEASE_BASE_BRANCH="${RELEASE_BASE_BRANCH:-master}"
+
+# Validate the base branch: it must be master or a well-formed release branch. This mirrors the
+# fast-fail guard in both workflows -- keep the regex in sync if it ever changes.
+if [[ "$RELEASE_BASE_BRANCH" != "master" && ! "$RELEASE_BASE_BRANCH" =~ ^docs-rel-[0-9]+-[0-9]+-(0|a|b|c)$ ]]; then
+  echo "‼️  RELEASE_BASE_BRANCH is '$RELEASE_BASE_BRANCH'; expected 'master' or 'docs-rel-<major>-<minor>-<0|a|b|c>' (for example, docs-rel-4-10-a). ‼️" >&2
+  exit 1
 fi
 
-if ! check_env "RELEASE_TERRAFORM_VERSION"; then
-    echo "‼️  RELEASE_TERRAFORM_VERSION environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
+# Derive release-ness and, on a release run, the release version (docs-rel-4-10-a -> 4.10.a).
+# IS_RELEASE_RUN and RELEASE_VERSION drive the release-week fold-in and appliance-table updates
+# added in later phases of DOC-3195.
+if [[ "$RELEASE_BASE_BRANCH" == "master" ]]; then
+  IS_RELEASE_RUN=false
+  RELEASE_VERSION=""
+else
+  IS_RELEASE_RUN=true
+  RELEASE_VERSION=$(echo "$RELEASE_BASE_BRANCH" | sed -E 's/^docs-rel-([0-9]+)-([0-9]+)-(0|a|b|c)$/\1.\2.\3/')
 fi
+
+echo "ℹ️ Base branch: $RELEASE_BASE_BRANCH (release run: $IS_RELEASE_RUN${RELEASE_VERSION:+, version: $RELEASE_VERSION})"
 
 # Confirm Super authentication up front. The token is only rejected until its owner signs
 # in to Super through SSO, so checking here avoids making every issue tracker call below
@@ -234,6 +273,14 @@ generate_parameterised_file_local_vars \
   "RELEASE_COMPONENT_YEAR" \
   "RELEASE_COMPONENT_WEEK"
 
+# On a release run the Component Updates block nests under the release "## ... - Release X.Y.z"
+# heading, so demote its own heading one level (## -> ###). DOC-3195 Phase C. This file holds only
+# the single heading line; the anchor and text are untouched, so the existing-heading search and
+# cross-link updates below still match.
+if [[ "$IS_RELEASE_RUN" == true ]]; then
+  demote_block_headings "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE"
+fi
+
 existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     replace_line $existing_notes $COMPONENT_UPDATES_HEADING_OUTPUT_FILE $RELEASE_NOTES_FILE
@@ -403,10 +450,118 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
     "RELEASE_MANAGEMENT_APPLIANCE" \
     "SUPER_COMPONENT_UPDATES_BODY"
 
-  insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
-  echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  # Artifact Studio and Terraform are optional. When their version is blank, drop the matching
+  # component-table row(s) rather than emit an empty version cell (which reads as an error).
+  # RELEASE_TERRAFORM_VERSION feeds BOTH the Terraform and Crossplane rows. The metadata HTML
+  # comments above the table keep the (empty) value so the comment-triggered refresh round-trips.
+  if [[ -z "$RELEASE_ARTIFACT_STUDIO" ]]; then
+    remove_line_containing "[Artifact Studio]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
+  if [[ -z "$RELEASE_TERRAFORM_VERSION" ]]; then
+    remove_line_containing "Spectro Cloud Terraform provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+    remove_line_containing "Spectro Cloud Crossplane provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
+
+  if [[ "$IS_RELEASE_RUN" == true ]]; then
+    # Release run: fold the block into the release section. Demote every heading in the block one
+    # level (## -> ###, ### Packs -> ####, #### Pack Notes / Deprecations -> #####, plus any headings
+    # in the Super-generated body) so the whole block nests under the release "##", then replace the
+    # {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder the release scaffold left (see
+    # scripts/release/templates/release-notes.md) instead of adding a new top-level section after
+    # <ReleaseNotesVersions />. The block carries its own "### Packs" (with markers keyed to the
+    # component-updates ticket), so the scaffold's markerless "### Packs" was removed to leave a
+    # single packs table. DOC-3195 Phase C.
+    demote_block_headings "$COMPONENT_UPDATES_OUTPUT_FILE"
+    placeholder_line=$(search_line "{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}" "$RELEASE_NOTES_FILE")
+    if [[ -z "$placeholder_line" || "$placeholder_line" -eq 0 ]]; then
+      echo "❌ Release run, but the {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder was not found in $RELEASE_NOTES_FILE. Was the release scaffold generated from the updated template?" >&2
+      exit 1
+    fi
+    replace_line "$placeholder_line" "$COMPONENT_UPDATES_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
+    echo "✅ Component updates folded into the release section at the placeholder in $RELEASE_NOTES_FILE."
+  else
+    insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
+    echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  fi
   cleanup $COMPONENT_UPDATES_OUTPUT_FILE
 
+fi
+
+# ---------------------------------------------------------------------------------------------------
+# Appliance Kubernetes Requirements tables (DOC-3195 Phase D).
+#
+# On a release run that coincides with a Management Appliance release, prepend a newest-first row to
+# the Palette and VerteX "... Management Appliance" Kubernetes Requirements tables. The Palette Version
+# column is RELEASE_MANAGEMENT_APPLIANCE (a form input); the Kubernetes Version is derived from the
+# spectro-appliance-builder RC values so it is never transcribed by hand. A RELEASE_MANAGEMENT_APPLIANCE
+# of "NA" or empty means no appliance shipped this release, so the tables are left untouched. Deriving
+# the version and comparing it against the current top row also makes reruns idempotent.
+# ---------------------------------------------------------------------------------------------------
+
+APPLIANCE_BUILDER_REPO="spectrocloud/spectro-appliance-builder"
+APPLIANCE_BUILDER_REF="main"
+INSTALL_PALETTE_FILE="docs/docs-content/enterprise-version/install-palette/install-palette.md"
+INSTALL_VERTEX_FILE="docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md"
+
+# Derive the Kubernetes version from a spectro-appliance-builder k8s.yaml. Prefer the explicit
+# kubernetesVersion field; fall back to the kube-apiserver image tag. Strips the leading v.
+derive_appliance_k8s_version() {
+  local values_path="$1" contents k8s
+  contents=$(fetch_github_file "$APPLIANCE_BUILDER_REPO" "$APPLIANCE_BUILDER_REF" "$values_path") || return 1
+  k8s=$(printf '%s\n' "$contents" | grep -m1 -E '^[[:space:]]*kubernetesVersion:' | sed -E 's/.*kubernetesVersion:[[:space:]]*v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  if [[ -z "$k8s" ]]; then
+    k8s=$(printf '%s\n' "$contents" | grep -m1 -E 'kube-apiserver:v?[0-9]+\.[0-9]+\.[0-9]+' | sed -E 's/.*kube-apiserver:v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  fi
+  [[ -n "$k8s" ]] || return 1
+  printf '%s' "$k8s"
+}
+
+# Read the top data row's Palette Version cell from an appliance Kubernetes Requirements table (the
+# table whose header row carries both "Palette Version" and "Kubernetes Version").
+appliance_table_top_version() {
+  local file="$1"
+  [[ -f "$file" ]] || return 0
+  awk '
+    !in_table && /^\|/ && index($0, "Palette Version") && index($0, "Kubernetes Version") { in_table = 1; next }
+    !in_table { next }
+    /^\|[[:space:]]*-+/ { next }
+    !/^\|/ { exit }
+    { split($0, cells, "|"); v = cells[2]; gsub(/\*/, "", v); gsub(/^[[:space:]]+|[[:space:]]+$/, "", v); print v; exit }
+  ' "$file"
+}
+
+# Prepend "| <appliance> | <k8s> |" directly after the appliance table's header separator row.
+prepend_appliance_row() {
+  local file="$1" appliance="$2" k8s="$3" tmp
+  tmp="$(mktemp)"
+  awk -v appliance="$appliance" -v k8s="$k8s" '
+    done { print; next }
+    { print }
+    /^\|/ && index($0, "Palette Version") && index($0, "Kubernetes Version") { in_appliance = 1; next }
+    in_appliance && /^\|[[:space:]]*-+/ { print "| " appliance " | " k8s " |"; done = 1; in_appliance = 0 }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
+update_appliance_table() {
+  local edition_label="$1" file="$2" values_path="$3" k8s top
+  if ! k8s=$(derive_appliance_k8s_version "$values_path"); then
+    echo "⚠️ Could not derive the $edition_label Kubernetes version from $APPLIANCE_BUILDER_REPO ($values_path); leaving $file unchanged." >&2
+    return 0
+  fi
+  top=$(appliance_table_top_version "$file")
+  if [[ "$top" == "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
+    echo "ℹ️ $edition_label appliance table already lists $RELEASE_MANAGEMENT_APPLIANCE; no change."
+    return 0
+  fi
+  prepend_appliance_row "$file" "$RELEASE_MANAGEMENT_APPLIANCE" "$k8s"
+  npx prettier --write "$file" >/dev/null 2>&1 || true
+  echo "✅ Prepended $RELEASE_MANAGEMENT_APPLIANCE / $k8s to the $edition_label appliance table in $file."
+}
+
+if [[ "$IS_RELEASE_RUN" == true && -n "$RELEASE_MANAGEMENT_APPLIANCE" && "$RELEASE_MANAGEMENT_APPLIANCE" != "NA" ]]; then
+  echo "ℹ️ Release run with Management Appliance $RELEASE_MANAGEMENT_APPLIANCE; checking the appliance Kubernetes Requirements tables."
+  update_appliance_table "Palette" "$INSTALL_PALETTE_FILE" "values-yaml/rc/palette-values/k8s.yaml"
+  update_appliance_table "VerteX" "$INSTALL_VERTEX_FILE" "values-yaml/rc/vertex-values/k8s.yaml"
 fi
 
 # Process the Platone issues to generate the packs list in the release notes

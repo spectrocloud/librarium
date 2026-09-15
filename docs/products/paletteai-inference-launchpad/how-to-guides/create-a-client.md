@@ -49,12 +49,14 @@ grants model access, and optionally issues the client's first API token.
    **Next step**. For details, refer to
    [Manage a Client's Model Access](./manage-client-model-access.md#route-a-client-to-specific-models).
 
-7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**
-   and an **Expires** date, and then select **Add Token**. Leave **Expires** blank for a token that never expires.
+7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**,
+   choose an **Expires** date, and then select **Add Token**. **Expires** is required, and the console accepts a date up
+   to 366 days ahead. The token stops working at the end of the day you choose.
 
 8. Select **Create client**.
 
-9. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+9. When the console reveals the token, select **Copy**. The token begins with `lpai_`. To read the connection steps for
+   a coding assistant without leaving the dialog, select **Connect Agent**.
 
 :::warning
 

@@ -10,9 +10,16 @@ tags: ["clusters", "virtual clusters"]
 
 Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster
 resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By
-default, virtual clusters use [k3s](https://github.com/k3s-io/k3s), a highly available, certified Kubernetes
-distribution designed for production workloads. Virtual clusters are supported in both connected and airgapped
-environments.
+default, new virtual clusters use the CNCF [Kubernetes](https://www.cncf.io/projects/kubernetes) distribution. Virtual
+clusters are supported in both connected and airgapped environments.
+
+:::warning
+
+K3s is deprecated as a virtual cluster distribution and will be removed in a future Palette release. Existing virtual
+clusters that use K3s continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual
+clusters.
+
+:::
 
 :::info
 
@@ -37,10 +44,10 @@ To get started, refer to [Deploy a Virtual Cluster to a Cluster Group](deploy-vi
 
 The following Kubernetes distributions are supported for virtual clusters:
 
-| **Name**       | **Description**                                                                                                  |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **K3s**        | [K3s](https://k3s.io) is a lightweight, certified Kubernetes distribution designed for production workloads.     |
-| **Kubernetes** | The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes). |
+| **Name**       | **Description**                                                                                                        |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Kubernetes** | The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes).       |
+| **K3s**        | [K3s](https://k3s.io) is deprecated as a virtual cluster distribution and will be removed in a future Palette release. |
 
 Refer to the
 [Create and Manager Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) to
