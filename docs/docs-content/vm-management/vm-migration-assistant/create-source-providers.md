@@ -52,6 +52,14 @@ Machines (VMs) that need to be migrated.
   destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the
   target storage.
 
+  :::warning
+
+  Broadcom no longer offers free VDDK downloads. Downloading a VDDK image requires a Broadcom account with the
+  appropriate product entitlements. If you cannot access the download, contact your Broadcom account team or support
+  representative.
+
+  :::
+
   - The VDDK version used must be **8.0.2.1** or earlier.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
@@ -67,8 +75,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Non-Airgap" value="non-airgap">
 
-    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
-       required.
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). A Broadcom account
+       with the appropriate product entitlements is required.
 
     2. Decompress the downloaded image.
 
@@ -107,8 +115,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
-       required.
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). A Broadcom account
+       with the appropriate product entitlements is required.
 
     2. Copy or move the VDDK image to another Linux environment inside your airgap environment.
 
