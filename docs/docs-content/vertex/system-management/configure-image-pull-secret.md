@@ -19,6 +19,15 @@ keywords: ["self-hosted", "vertex", "image pull secret", "hardened images", "sec
   helm="vertex"
 />
 
+:::info
+
+If your installation pulls images from the Spectro Cloud registry instead of a local registry, configure the image pull
+secret before you upgrade or install. Until you do, Local UI and the system console display a warning. Existing clusters
+and workloads are unaffected, but new cluster deployments and day-2 operations that pull Spectro Cloud images fail until
+the pull secret is configured.
+
+:::
+
 ## When to Configure Image Pull Secret
 
 Depending on how your environment retrieves images, you may or may not need to configure Spectro Cloud's image pull

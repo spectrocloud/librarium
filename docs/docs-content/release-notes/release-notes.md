@@ -23,6 +23,18 @@ tags: ["release-notes"]
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
+
+- Palette and VerteX now use Docker Hardened Images (DHI). If your self-hosted installation pulls images from the
+  Spectro Cloud registry instead of a local registry, configure the image pull secret before you upgrade or install.
+  Local UI (for appliances) and the system console (for Enterprise Clusters) display a warning until the pull secret is
+  configured. This is not enforced and does not block the upgrade: the installation stays available and existing
+  workload clusters are unaffected. However, new cluster deployments and day-2 operations that pull Spectro Cloud images
+  fail until you configure the pull secret. Airgapped installations and installations that use a mirrored registry are
+  not affected. For more information, refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
 #### Features
 
 #### Improvements
