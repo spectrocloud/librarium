@@ -85,8 +85,9 @@ client itself.
 - **Delete** permanently retires a client and removes its quota, egress, and routing settings. It revokes every API
   token the client owns. The client's audit history is preserved, and a delete cannot be undone.
 
-An API token has its own state. A token stays active until it is revoked or passes its expiration date. The appliance
-rejects any request that presents a revoked or expired token, fail-closed.
+An API token has its own state. Every token created in the console carries an expiration date, up to 366 days ahead, and
+a token stays active until it is revoked or passes that date. The appliance rejects any request that presents a revoked
+or expired token, fail-closed.
 
 ## Quotas
 

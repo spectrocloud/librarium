@@ -113,6 +113,19 @@ jobs:
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
+      - name: Guard against an unfilled release-notes placeholder
+        if: github.base_ref == 'master'
+        run: |
+          # DOC-3195: on a release run the Component Updates fold-in fills the
+          # {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder that the release scaffold leaves behind.
+          # If it is still present when merging to master, the raw placeholder would ship to
+          # production, so fail the build here. The placeholder is expected transiently on docs-rel
+          # branches (before the Component Updates job runs), so this guard is scoped to master only.
+          if grep -qF '{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}' docs/docs-content/release-notes/release-notes.md; then
+            echo "::error::Unfilled {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} placeholder found in docs/docs-content/release-notes/release-notes.md. Run the Component Updates job on the release branch before merging to master." >&2
+            exit 1
+          fi
+
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
