@@ -20,10 +20,9 @@ This page guides you through how access the console, and log in, and manage your
 
 - Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
-
-- The password is not expired. If you provided the `stylus.site.users[*].passwordExpiry` value in the user data, it must
-  be a future date.
+- Credentials to log in to Local UI. Any OS user can be used to log into Local UI. If the password is expired, you can
+  still log in and change it inline. Refer to
+  [Change an Expired Password at Login](#change-an-expired-password-at-login) for more information.
 
 ### Instructions
 
@@ -47,6 +46,16 @@ user. By default, this lockout occurs after five consecutive failed attempts and
 You can customize the default values in the `user-data` file for Edge hosts built with Palette agent version 4.7.16 or
 later. For more information, refer to the `stylus.localUI.login` parameters description in the
 [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
+
+#### Change an Expired Password at Login
+
+If your OS password is expired when you log in, Local UI detects the expired password instead of reporting incorrect
+credentials, and prompts you to change it without leaving the login page. This applies whether an administrator expired
+the password, for example with `passwd --expire` or `chage --lastday 0`, or a Pluggable Authentication Modules (PAM)
+policy expired it after the number of days set in `PASS_MAX_DAYS`. Both cases look the same to you at login.
+
+To recover, change the password when Local UI prompts you. If you configured a PAM policy, the new password must comply
+with it. Otherwise, Local UI returns an error.
 
 ### Validate
 
