@@ -20,6 +20,19 @@ nodes.
 
 :::
 
+## Taints and system pods {#system-pod-taints}
+
+Palette cannot allow taints to prevent its system pods from being scheduled. To guarantee this, by default at least one
+node pool must remain free of taints so that the system pods have somewhere to run. As an alternative to this
+restriction, if you are creating an EKS or GKE cluster you can dedicate a specific node pool for system pods and apply
+taints to every other pool. Specifying a dedicated node pool for system pods does not prevent the pods from being
+scheduled on other nodes. It just ensures that there is at least one node pool where the system pods can be scheduled.
+
+To set aside a node pool for system pods, select **Dedicate node pool for system pods** when creating the EKS or GKE
+cluster.
+
+## Apply a taint
+
 Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be
 modified on the **Nodes** tab of the cluster details page.
 
@@ -32,14 +45,14 @@ Taints can also be applied to node pools using the Spectro Cloud
 
 :::
 
-## Prerequisites
+### Prerequisites
 
 - A [Palette](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
   clusters. Refer to the [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md)
   guide for more information.
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -109,8 +122,9 @@ Taints can also be applied to node pools using the Spectro Cloud
 13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
     fill in the toleration values specified in your cluster profile. Click on **Next**.
 
-    If **Add New Taint** is unavailable, every other node pool in the cluster is already tainted. Palette requires at
-    least one node pool to remain untainted at all times. Remove a taint from another pool to re-enable the option.
+    If **Add New Taint** is unavailable, every other node pool in the cluster is already tainted. By default, Palette
+    requires at least one node pool to remain untainted at all times. Refer to
+    [Taints and system pods](#system-pod-taints) for more information.
 
     ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 
@@ -132,7 +146,7 @@ Taints can also be applied to node pools using the Spectro Cloud
 
     :::
 
-## Validate
+### Validate
 
 You can follow these steps to validate that your taints and tolerations are applied successfully.
 
