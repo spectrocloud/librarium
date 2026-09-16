@@ -47,10 +47,12 @@ For reference materials not covered in this guide, defer to the
   - [Computer Resources (Units of Measurement)](#computer-resources-units-of-measurement)
 - [Other Style Choices](#other-style-choices)
   - [Future Features](#future-features)
+  - [Content Scope](#content-scope)
   - [Directionals](#directionals)
   - [Emoticons](#emoticons)
   - [Text Formatting](#text-formatting)
     - [Commands \& Parameters](#commands--parameters)
+      - [Placeholders](#placeholders)
       - [Command Output](#command-output)
         - [Lengthy Output](#lengthy-output)
     - [Product UI Naming](#product-ui-naming)
@@ -565,6 +567,10 @@ otherwise, use a bulleted list. Add a blank line between each item.
 Use sentence capitalization for each item in a list. The first word of each item must begin with a capital letter unless
 the first word is a proper noun that explicitly uses lowercase, such as library names.
 
+Avoid the **Bold opener.** Detail. bullet pattern for lists of heterogeneous notes, because it reads as
+machine-generated. Convert the list to a two-column table with a **What** and a **Detail** column, a set of H3
+subsections, or plain prose without the leading bold openers.
+
 | Good ✅                                                                                                                                                                                                | Bad ❌                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | To sign in to the database:<br><br>1. From the **File Menu**, select **Open database**.<br><br>2. Under **Username**, enter your full name.<br><br>3. Enter your **Password**, and then select **OK**. | To sign in to the database:<br><br>• From the **File Menu**, select **Open database**.<br><br>• Under **Username**, enter your full name.<br><br>• Enter your **Password**, and then select **OK**. |
@@ -572,9 +578,12 @@ the first word is a proper noun that explicitly uses lowercase, such as library 
 
 ## Colons
 
-Use a colon when you want to introduce a list. For instance, when listing several items you might write, "Make sure you
-bring the items Rita requested to the party: soda, board games, and a side dish." When in doubt, default to a period and
-start a new sentence.
+Use a colon **only** to introduce a list. For instance, when listing several items you might write, "Make sure you bring
+the items Rita requested to the party: soda, board games, and a side dish." When in doubt, default to a period and start
+a new sentence.
+
+Do not use a colon to introduce an inline enumeration in prose. Restructure the sentence as prose, or convert the
+enumeration to a bulleted list.
 
 | Good ✅                                                                                                                                                                           | Bad ❌                                                                                                                                                         |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -628,14 +637,26 @@ be available at a later date.
 | MagicProduct supports JSON input files.        | MagicProduct supports JSON input files. In future releases, YAML file support will be added. |
 | Anonymous SMTP configuration is not supported. | Anonymous SMTP configuration will be available in a future release.                          |
 
+## Content Scope
+
+Ask "Do users need to know this?" for every implementation-detail paragraph in a how-to or task. Move implementation
+detail, such as configuration-key internals, inverted flags, backend behavior, or masked-response formats, to a Settings
+Reference table or a dedicated How it Works section rather than embedding it in a procedure step. This keeps procedures
+scannable and confines the reasoning to a single place.
+
 ## Directionals
 
 Avoid directing the user to previous parts of the document, if possible. Ideally, the user should be directed to content
 following the text. By avoiding forcing the reader to scroll back, you improve the user experience.
 
+Prefer _refer to_ over _see_ when you point the reader to another page or section. Link directly to the referenced
+heading, such as `[Configure X](#configure-x)`, rather than using directional navigation like _above_, _below_, _in the
+following section_, or _later on this page_. A direct link survives reorganization and travels with the anchor.
+
 | Good ✅                                                                          | Bad ❌                                                                         |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | The _following diagram_ displays the application architecture for this tutorial. | As seen in the _diagram above_, the application architecture is hosted on AWS. |
+| For more information, _refer to_ [Admonitions](#admonitions).                    | For more information, _see_ the section above.                                 |
 
 ## Emoticons
 
@@ -682,6 +703,16 @@ Always use the long form of a command, as it helps the reader better understand 
 | Good ✅                                        | Bad ❌                                |
 | ---------------------------------------------- | ------------------------------------- |
 | `kubectl get pods --namespace service_banking` | `kubectl get pods -n service_banking` |
+
+Procedures that use `kubectl`, or any CLI that needs environment setup, should include a preflight lead-in that
+establishes access, for example `export KUBECONFIG=<path-to-kubeconfig>`, before the numbered list.
+
+#### Placeholders
+
+Placeholders use angle brackets and kebab-case, such as `<api-key>`. After a code sample that contains placeholders,
+follow it with a sentence that names each placeholder and what to substitute, for example _Replace `<api-key>` with your
+tenant API key._ Include this sentence even when the substitution seems obvious, because it is a consistent house
+pattern.
 
 #### Command Output
 
@@ -800,6 +831,10 @@ the reader. The table provides guidance for when to use the various types of adm
 The picture below shows an example of what not to do.
 
 ![Example of stacked admonitions.](./static/assets/docs/images/style-guide_admonitions.webp)
+
+Two consecutive admonitions almost always signal that at least one should be promoted to its own H2 or H3 section
+instead. When you draft or review, check whether an admonition's content earns a heading, such as Page Visibility or
+Prerequisites, rather than sitting under `:::info` alongside another block.
 
 Use the following Markdown syntax and replace the admonition `<type>` as applicable.
 
