@@ -59,6 +59,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9109 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9526 -->
 
 - Fixed an issue where the Edge [Local UI](../clusters/edge/local-ui/host-management/access-console.md) reported an
   expired OS password as incorrect credentials at login. The login page now detects an expired password, whether an

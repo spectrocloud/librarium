@@ -54,8 +54,34 @@ credentials, and prompts you to change it without leaving the login page. This a
 the password, for example with `passwd --expire` or `chage --lastday 0`, or a Pluggable Authentication Modules (PAM)
 policy expired it after the number of days set in `PASS_MAX_DAYS`. Both cases look the same to you at login.
 
-To recover, change the password when Local UI prompts you. If you configured a PAM policy, the new password must comply
-with it. Otherwise, Local UI returns an error.
+Expired-password detection at Local UI login requires Palette agent version 4.10.4 or later. On earlier agent versions,
+Local UI reports an expired password as a generic login failure, and you must recover through SSH or the Palette TUI
+console.
+
+To change your password when Local UI detects that it is expired, follow these steps.
+
+1. At `https://HOST_IP:5080`, enter your username and expired password, then click **Sign in**.
+
+2. Local UI reports that your password has expired and displays a password change form.
+
+3. In the **Old Password** field, enter your expired password.
+
+4. In the **New Password** and **Confirm Password** fields, enter a new password. If you configured a PAM policy, the
+   new password must comply with it. Otherwise, Local UI returns an error.
+
+5. Click **Update**.
+
+After a successful change, Local UI returns to the login screen. Log in with your new password to reach the Edge
+management console.
+
+:::info
+
+If Local UI reports that your account is locked or has expired and directs you to contact your system administrator, the
+account itself is locked or expired rather than the password. This state is distinct from an expired password and cannot
+be resolved from the login screen. Local UI also locks an account after repeated failed login attempts. Refer to
+[Login Security Behavior](#login-security-behavior) for details.
+
+:::
 
 ### Validate
 
@@ -85,7 +111,8 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 You can change the password of an OS user through Local UI, through the terminal, or through the Palette API. The
 [TUI](../../site-deployment/site-installation/initial-setup.md) prompts for a password change when the password is
-expired and is not intended as the primary method for updating passwords.
+expired and is not intended as the primary method for updating passwords. Local UI also prompts for a change when the
+password is expired at login. Refer to [Change an Expired Password at Login](#change-an-expired-password-at-login).
 
 :::info
 
