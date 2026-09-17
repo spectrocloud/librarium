@@ -22,8 +22,13 @@ nodes.
 
 ## Taints and system pods {#system-pod-taints}
 
+<!-- If appropriate, use 'system taints' to match ui tooltip-->
+
 Palette cannot allow taints to prevent its system pods from being scheduled. To guarantee this, by default at least one
-node pool must remain free of taints so that the system pods have somewhere to run. As an alternative to this
+node pool must remain free of taints so that the system pods have somewhere to run. 
+
+<!-- AKS System Node Pool option-->
+As an alternative to this
 restriction, if you are creating an EKS or GKE cluster you can dedicate a specific node pool for system pods and apply
 taints to every other pool. Specifying a dedicated node pool for system pods does not prevent the pods from being
 scheduled on other nodes. It just ensures that there is at least one node pool where the system pods can be scheduled.
