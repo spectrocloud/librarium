@@ -266,6 +266,10 @@ guide when you do not require [specialized configurations](#specialized-build-gu
 
 ## Deliver Kubernetes and Agent Binaries via systemd Extensions {#bundle-k8s-and-agent-provider-flag}
 
+:::preview
+
+:::
+
 Starting with **CanvOS 4.10**, Edge clusters in appliance mode can use systemd extensions to deliver Kubernetes and
 Palette Agent binaries at runtime instead of embedding them in the provider image. This reduces provider image size and
 lets a single provider image serve multiple Kubernetes versions on the same host. This capability applies to appliance
