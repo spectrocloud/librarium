@@ -295,9 +295,7 @@ following steps.
    Agent binaries when systemd extensions are available.
 2. If a provider image is required for operating system upgrades or patches, build the image from a supported CanvOS
    release. Refer to [Support Requirements](#support-requirements) for the minimum version.
-3. When the Palette Edge agent is pinned to an earlier release, supply a provider image. Provider images built from a
-   supported CanvOS release must set `BUNDLE_K8S_AND_AGENT_PROVIDER` to `true`. Provider images built from older CanvOS
-   releases might work but are not recommended.
+3. When the Palette Edge agent is pinned to an earlier release, supply a provider image.
 
 ### Upgrade an Existing Cluster
 
