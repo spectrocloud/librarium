@@ -25,19 +25,19 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
 
-- Added FIPS provider images to the content bundle when building content with the FIPS flag in Palette CLI.
+- Added FIPS provider images to the content bundle when building content with the `--fips` flag in Palette CLI.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/OPS-11308 -->
 
-- Fixed an issue where mixed compression formats in spectro-ui container image manifests caused unpack failures in
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
   containerd.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
 
-- Fixed an issue in airgap installations where cert-manager pod images failed to pull due to invalid upstream repository
-  references and missing tags.
+- Fixed an issue where airgapped Enterprise Cluster installations failed to pull cert-manager images because the
+  generated manifest referenced the upstream registry and an unpublished image tag instead of the local registry.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
 
