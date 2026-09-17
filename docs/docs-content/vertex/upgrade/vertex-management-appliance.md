@@ -26,6 +26,8 @@ remain operational.
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
+
 <PartialsComponent category="self-hosted" name="upgrade-palette-upgrade-notes" edition="Palette VerteX" />
 
 ## Prerequisites

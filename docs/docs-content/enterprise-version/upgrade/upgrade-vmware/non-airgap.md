@@ -29,6 +29,8 @@ version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supporte
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 - **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette version that is older than 4.4.14, ensure that you
   have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to
   the [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).

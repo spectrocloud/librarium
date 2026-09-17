@@ -30,6 +30,8 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 - **(pre-4.6.32 to 4.6.32)** When upgrading airgapped self-hosted Palette to version 4.6.32, the IPAM controller may
   report an `Exhausted IP Pools` error despite having available IP addresses, preventing the cluster from upgrading.
   This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this,
