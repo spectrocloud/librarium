@@ -308,6 +308,8 @@ Ask it a coding question, such as `what is the difference between a shallow copy
 The model on your appliance answers. Ask a second question, and notice that the reply arrives the same way. This is the
 loop you work in from now on.
 
+## Monitor Your Token Usage
+
 Now we confirm the appliance counted it.
 
 1. In the console, select **Usage** from the left main menu.
@@ -330,9 +332,10 @@ confirm that the **Data window** covers when you asked your questions.
 
 ## What You Built
 
-You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, and had
-Claude Code answer a coding question using the model on your appliance. You also learned to read GPU memory as a model
-loads, which is the quickest way to tell whether an appliance is busy.
+You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, had
+Claude Code answer a coding question using the model on your appliance, and watched the requests and tokens land under
+your client on the **Usage** page. You also learned to read GPU memory as a model loads, which is the quickest way to
+tell whether an appliance is busy.
 
 ## Next Steps
 
