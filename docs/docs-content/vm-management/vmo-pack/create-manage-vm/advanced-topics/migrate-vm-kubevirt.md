@@ -101,6 +101,14 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
   speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the
   source environment, transfer the data, and write it to the target storage.
 
+  :::warning
+
+  Broadcom no longer offers free VDDK downloads. Downloading a VDDK image requires a Broadcom account with the
+  appropriate product entitlements. If you cannot access the download, contact your Broadcom account team or support
+  representative.
+
+  :::
+
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
 
@@ -108,8 +116,8 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
     <details>
     <summary> Example steps to build and upload VDDK image </summary>
 
-    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
-       required.
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). A Broadcom account
+       with the appropriate product entitlements is required.
 
     2. Decompress the downloaded image.
 

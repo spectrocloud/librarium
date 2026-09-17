@@ -11,6 +11,184 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 4, 2026 - Release 4.10.a {#release-notes-4.10.a}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.10.a}
+
+#### Breaking Changes {#breaking-changes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11997 -->
+
+- Palette now enforces authorization checks on four APIs that previously required no permission. Automation that calls
+  these endpoints must use a principal that holds the required permission. Otherwise, the request fails with an
+  authorization error.
+
+  | API                                                  | Required permission                      |
+  | ---------------------------------------------------- | ---------------------------------------- |
+  | `PATCH /v1/cloudaccounts/{uid}/geoLocation`          | Update permission on the cloud account   |
+  | `POST /v1/spectroclusters/{uid}/workloads/sync`      | Update permission on the cluster         |
+  | `GET /v1/users/assets/vsphere/dnsMapping`            | Get permission on the DNS mapping object |
+  | `GET /v1/tenants/{tenantUid}/subscriptions/metadata` | Tenant Admin role on the tenant          |
+
+  The related endpoint `POST /v1/spectroclusters/{uid}/workloads/{kind}/sync`, which syncs a single workload kind,
+  requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
+  above.
+
+#### Upgrade Notes {#upgrade-notes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
+
+- Self-hosted Palette and VerteX now warn you to configure the image pull secret before you upgrade or install. If your
+  installation pulls images from the Spectro Cloud registry instead of a local registry and the secret is not
+  configured, Local UI (for appliances) and the system console (for Enterprise Clusters) display a warning. The warning
+  is not enforced and does not block the upgrade or installation: the installation stays available and existing workload
+  clusters are unaffected. However, new cluster deployments and day-2 operations that pull Spectro Cloud images fail
+  until you configure the pull secret. Airgapped installations and installations that use a mirrored registry are not
+  affected. For more information, refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
+#### Features
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
+
+- Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
+  when.
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Edge
+
+<!-- release-notes-edge-callout-4.10.a-start -->
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.a Palette release is 4.10.a.
+
+:::
+
+<!-- release-notes-edge-callout-4.10.a-end -->
+
+#### Breaking Changes {#breaking-changes-edge-4.10.a}
+
+#### Upgrade Notes {#upgrade-notes-edge-4.10.a}
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9109 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9526 -->
+
+- Fixed an issue where the Edge [Local UI](../clusters/edge/local-ui/host-management/access-console.md) reported an
+  expired OS password as incorrect credentials at login. The login page now detects an expired password, whether an
+  administrator or a PAM policy expired it, and lets you change the password there instead of requiring SSH or Palette
+  TUI console access.
+
+#### Deprecations and Removals
+
+### VerteX
+
+#### Breaking Changes {#breaking-changes-vertex-4.10.a}
+
+#### Upgrade Notes {#upgrade-notes-vertex-4.10.a}
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.10.a) for more details.
+
+#### Improvements
+
+#### Bug Fixes
+
+### Virtual Machine Orchestrator (VMO)
+
+#### VMO Pack
+
+##### Breaking Changes {#breaking-changes-vmo-pack-4.10.a}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.a}
+
+##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.a}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+### Automation
+
+<!-- release-notes-automation-callout-4.10.a-start -->
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.a Palette release is
+4.10.a. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
+<!-- release-notes-automation-callout-4.10.a-end -->
+
+#### Breaking Changes {#breaking-changes-automation-4.10.a}
+
+#### Features
+
+<!-- release-notes-automation-features-4.10.a-start -->
+
+- Terraform version 4.10.a of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 4.10.a of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+<!-- release-notes-automation-features-4.10.a-end -->
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Docs and Education
+
+### Packs
+
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+<!-- prettier-ignore-end -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3191 -->
