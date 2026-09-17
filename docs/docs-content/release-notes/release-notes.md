@@ -11,6 +11,38 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 17, 2026 - Release 4.10.17
+
+<!-- PATCH RELEASE TICKET: DOC-3224 -->
+<!-- PATCH RELEASE VERSION: 4.10.17 -->
+<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2293 PLT-2408 PLT-2409 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2293 -->
+
+- Included the X-SpectroCloud-Client header in Palette CLI requests to the Hubble API.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
+
+- Added FIPS provider images to the content bundle when building content with the FIPS flag in Palette CLI.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-11308 -->
+
+- Fixed an issue where mixed compression formats in spectro-ui container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+
+- Fixed an issue in airgap installations where cert-manager pod images failed to pull due to invalid upstream repository
+  references and missing tags.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
+
+- Fixed an issue that caused the Palette CLI shell completion command to fail.
+
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3191 -->
