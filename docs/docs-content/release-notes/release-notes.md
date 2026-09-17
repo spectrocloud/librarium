@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.9.59
+
+<!-- PATCH RELEASE TICKET: DOC-3223 -->
+<!-- PATCH RELEASE VERSION: 4.9.59 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11965 OPS-10912 PSOPS-297 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11965 -->
+
+- Updated components to include the latest security patches.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-10912 -->
+
+- Fixed an issue where container image layers failed to unpack properly on containerd runtimes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PSOPS-297 -->
+
+- Fixed an issue affecting internal platform operations.
+
 ## September 4, 2026 - Release 4.9.54
 
 <!-- PATCH RELEASE TICKET: DOC-3184 -->
