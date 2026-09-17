@@ -105,7 +105,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     documentation to learn more about this feature.
 
 12. If you want the node pool to run system pods only, click **Dedicate node pool for system pods**. Refer to
-    [Taints and system pods](../../cluster-management/taints.md#system-pod-taints) for more information.
+    [Dedicated node pool for system pods](../../cluster-management/node-pool.md#dedicated-system-pod-pool) for more
+    information.
 13. To apply a [taint](../../cluster-management/taints.md) to the node pool, click **Add New Taint**. When adding a
     taint, you need to provide values for the following parameters.
 

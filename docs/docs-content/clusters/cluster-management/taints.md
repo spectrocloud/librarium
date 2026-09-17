@@ -20,22 +20,6 @@ nodes.
 
 :::
 
-## Taints and system pods {#system-pod-taints}
-
-<!-- If appropriate, use 'system taints' to match ui tooltip-->
-
-Palette cannot allow taints to prevent its system pods from being scheduled. To guarantee this, by default at least one
-node pool must remain free of taints so that the system pods have somewhere to run. 
-
-<!-- AKS System Node Pool option-->
-As an alternative to this
-restriction, if you are creating an EKS or GKE cluster you can dedicate a specific node pool for system pods and apply
-taints to every other pool. Specifying a dedicated node pool for system pods does not prevent the pods from being
-scheduled on other nodes. It just ensures that there is at least one node pool where the system pods can be scheduled.
-
-To set aside a node pool for system pods, select **Dedicate node pool for system pods** when creating the EKS or GKE
-cluster.
-
 ## Apply a taint
 
 Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be
@@ -128,9 +112,8 @@ Taints can also be applied to node pools using the Spectro Cloud
     fill in the toleration values specified in your cluster profile. Click on **Next**.
 
     If **Add New Taint** is unavailable, every other node pool in the cluster is already tainted. By default, Palette
-    requires at least one node pool to remain untainted at all times. Refer to
-    [Taints and system pods](#system-pod-taints) for more information.
-
+    requires at least one node pool to remain untainted at all times. 
+    
     ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 
     :::info
