@@ -88,24 +88,22 @@ Two things they can change and watch happen, neither of which can break anything
 
 ### One tutorial covering deploy plus connect, or two shorter ones?
 
-Someone with no model deployed can't connect anything, so a connect-only tutorial either assumes a state first-timers aren't in, or finishes without a working result.
-
-**My suggestion: one tutorial.**
+**Decision: one tutorial.**
 
 ### Do we specifically name a model to deploy, or just say "the smallest one in your catalog"?
 
-Since there is no curated catalog, an appliance box can only deploy weights someone uploaded to it. So naming a model quietly adds "go upload these weights first" to the prerequisites, which is a multi-hour job with its own how-to, and it makes the page wrong on any box that doesn't have that model.
-
-**My suggestion: don't name one.**
+**Decision: don't name one.**
 
 ### What do we do about telling people to switch off TLS verification?
 
-Our lab boxes have a self-signed cert with no hostname on it, so Claude Code flat refuses to connect without `NODE_TLS_REJECT_UNAUTHORIZED=0`. But anyone with a proper cert shouldn't be setting it. I'm uneasy about "turn off certificate checking" being a step in our flagship tutorial.
-
-**My suggestion: keep `NODE_TLS_REJECT_UNAUTHORIZED=0`, and add one sentence saying delete it if your appliance has a real certificate.**
+**Decision: keep `NODE_TLS_REJECT_UNAUTHORIZED=0`, and add one sentence saying delete it if your appliance has a real certificate.**
 
 ### Which AIL version do we build the tutorial against?
 
-Our public docs show 1.1.3, the lab boxes are on 1.1.4 and 1.1.5 is coming out soon.
+**Decision: 1.1.5.**
 
-**My suggestion: 1.1.5.**
+### Should we incorporate the new interactive walkthrough?
+
+Interactive onboarding and tutorials serve different purposes. Tutorials should be thorough, repeatable learning experiences that users can search, follow, and revisit. Interactive onboarding should be short, contextual guidance inside the product.
+
+**Decision: do not incorporate walkthrough.**
