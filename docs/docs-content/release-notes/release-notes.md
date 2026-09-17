@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.8.56
+
+<!-- PATCH RELEASE TICKET: DOC-3222 -->
+<!-- PATCH RELEASE VERSION: 4.8.56 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11964 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11964 -->
+
+- Fixed security vulnerabilities as part of the scheduled patch release.
+
 ## August 6, 2026 - Release 4.8.62
 
 <!-- PATCH RELEASE TICKET: DOC-3188 -->
