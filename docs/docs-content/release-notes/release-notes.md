@@ -21,17 +21,19 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11965 -->
 
-- Updated components to include the latest security patches.
+- Applied security fixes for the 4.9.59 release train to improve platform security posture.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/OPS-10912 -->
 
-- Fixed an issue where container image layers failed to unpack properly on containerd runtimes.
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
 
 <!-- https://spectrocloud.atlassian.net/browse/PSOPS-297 -->
 
-- Fixed an issue affecting internal platform operations.
+- Fixed an issue where Day-2 upgrades of airgapped 4.9 clusters could not complete because the appliance build bundled
+  edge images from the 4.10 line instead of the required 4.9 images, leaving the cluster stuck in provisioning.
 
 ## September 4, 2026 - Release 4.9.54
 
