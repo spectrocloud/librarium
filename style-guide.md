@@ -567,9 +567,9 @@ otherwise, use a bulleted list. Add a blank line between each item.
 Use sentence capitalization for each item in a list. The first word of each item must begin with a capital letter unless
 the first word is a proper noun that explicitly uses lowercase, such as library names.
 
-Avoid the **Bold opener.** Detail. bullet pattern for lists of heterogeneous notes, because it reads as
-machine-generated. Convert the list to a two-column table with a **What** and a **Detail** column, a set of H3
-subsections, or plain prose without the leading bold openers.
+Avoid the bold-opener bullet pattern (list items that begin with a short bold phrase and a period, then a sentence or
+two of detail) for lists of heterogeneous notes, because it reads as machine-generated. Convert the list to a two-column
+table with a **What** and a **Detail** column, a set of H3 subsections, or plain prose without the leading bold openers.
 
 | Good ✅                                                                                                                                                                                                | Bad ❌                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
