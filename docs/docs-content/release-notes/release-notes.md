@@ -62,6 +62,16 @@ tags: ["release-notes"]
 - Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
   when.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5296 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5297 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5298 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5299 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7615 -->
+
+- Palette upgraded the Cluster API providers that it uses internally, including the AWS, vSphere, Azure, and GCP
+  providers. For the current provider versions, refer to
+  [Cluster API Provider Versions](../architecture/orchestration-spectrocloud.md#cluster-api-provider-versions).
+
 #### Bug Fixes
 
 #### Deprecations and Removals

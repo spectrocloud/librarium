@@ -32,11 +32,11 @@ and operation of Kubernetes clusters across various cloud platforms through the 
 
 | **Provider**                                                                                             | **Version** |
 | -------------------------------------------------------------------------------------------------------- | ----------- |
-| [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/main) | 2.7.1       |
-| [Cluster API Provider for GCP (CAPG)](https://github.com/kubernetes-sigs/cluster-api-provider-gcp)       | 1.8.1       |
+| [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/main) | 2.11.1      |
+| [Cluster API Provider for GCP (CAPG)](https://github.com/kubernetes-sigs/cluster-api-provider-gcp)       | 1.12.0      |
 | [Cluster API Provider for MAAS (CAPMAAS)](https://github.com/spectrocloud/cluster-api-provider-maas)     | 0.6.0       |
-| [Cluster API Provider vSphere (CAPV)](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere)   | 1.12.0      |
-| [Cluster API Provider Azure (CAPZ)](https://github.com/kubernetes-sigs/cluster-api-provider-azure)       | 1.18.1      |
+| [Cluster API Provider vSphere (CAPV)](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere)   | 1.16.1      |
+| [Cluster API Provider Azure (CAPZ)](https://github.com/kubernetes-sigs/cluster-api-provider-azure)       | 1.26.0      |
 
 ## Workload Cluster Provisioning
 
