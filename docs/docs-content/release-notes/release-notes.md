@@ -15,13 +15,9 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-3224 -->
 <!-- PATCH RELEASE VERSION: 4.10.17 -->
-<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2293 PLT-2408 PLT-2409 -->
+<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2408 PLT-2409 -->
 
 ### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2293 -->
-
-- Included the X-SpectroCloud-Client header in Palette CLI requests to the Hubble API.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
 
