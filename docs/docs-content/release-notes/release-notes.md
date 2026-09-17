@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.8.56
+
+<!-- PATCH RELEASE TICKET: DOC-3222 -->
+<!-- PATCH RELEASE VERSION: 4.8.56 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11964 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11964 -->
+
+- Improved platform security with updated security patches for Palette 4.8.x.
+
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3191 -->
