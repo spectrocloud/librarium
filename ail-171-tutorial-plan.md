@@ -107,3 +107,65 @@ Two things they can change and watch happen, neither of which can break anything
 Interactive onboarding and tutorials serve different purposes. Tutorials should be thorough, repeatable learning experiences that users can search, follow, and revisit. Interactive onboarding should be short, contextual guidance inside the product.
 
 **Decision: do not incorporate walkthrough.**
+
+## Live walkthrough log
+
+Filled in as I run the tutorial end-to-end against a fresh appliance. One row per H2 step in the tutorial. For each row, capture **Expected** from the tutorial text, **Observed** from the live run, and **Deviation** as `none` or a short note. Screenshots go in `walkthrough-screenshots/` at the worktree root (also untracked, deleted before merge) and are referenced by filename.
+
+### Environment
+
+| Field | Value |
+| --- | --- |
+| Appliance version | 1.1.5 |
+| Walk date | (fill in on start) |
+| Walker | Brent |
+| GPU count and model | (fill in from `/healthz`) |
+| Model uploaded to the node | (name, size) |
+| Fresh install or reset | (which, and how) |
+| Cert type on the appliance | platform-issued / publicly trusted / plain HTTP |
+
+### Cross-cutting observations to capture once
+
+| Item | Answer |
+| --- | --- |
+| Console version string, exactly as rendered | |
+| Does **Overview** show `all clear` on a healthy box? | |
+| Does the **Connect a coding agent** panel open from **Overview**? | |
+| Is the **Claude Code** tab labelled that, or **Claude Code CLI**? | |
+| Does the panel show a **CA certificate** step for this cert type? | |
+| What filename does the browser save the CA cert as? | |
+| Does the **Connect Coding Agent** control render in title case? | |
+| `/healthz` response shape, verbatim | (paste JSON) |
+| Does an `ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5` alias route by default? | |
+| Does any surface still print "Anthropic model aliases return not served"? | |
+| Does the **Tier Map** row have an `edit` control matching `set-tier-thinking.md`? | |
+| Does the **Usage** page show a **Data window** control? | |
+
+### Step-by-step log
+
+| # | Step (H2) | Expected | Observed | Deviation | Screenshot |
+| --- | --- | --- | --- | --- | --- |
+| 0 | Prereqs (What You Need) | Version 1.1.5+, admin sign-in, one uploaded model, curl+jq | | | n/a |
+| 1 | Sign In to the Console | Overview loads; status reads `all clear` | | | `01-overview.png` |
+| 2 | Download the Platform CA Certificate | **Connect a coding agent** opens from Overview; **Claude Code** tab; **CA certificate** step saves `palette-ai-inference-launchpad-ca.crt` to Downloads | | | `02-connect-panel.png`, `02-ca-download.png` |
+| 3 | Ask the Appliance About Its GPUs | `curl --cacert …/healthz \| jq '.gpus'` returns an array; every `mem_used_mib` is `0` | | | `03-healthz-first.png` (terminal) |
+| 4 | Deploy a Model | **Cluster > Models > Deploy New Model** dialog; select chat model + node; **Confirm & Apply** puts a row in the **Model** table with state `deploying` or `smoke-testing` | | | `04-deploy-dialog.png`, `04-model-pending.png` |
+| 5 | Watch the Weights Load | Same `curl` shows `mem_used_mib` climbing on one GPU and `temp_c` rising; console **Model** row settles to `ready`/`serving` with `1/1 healthy` | | | `05-healthz-climbing.png`, `05-model-serving.png` |
+| 6 | Create a Client and Its API Token | 9-step wizard runs; **Routing** step accepts the three aliases; **Create client** reveals a `lpai_` token exactly once | | | `06-wizard-routing.png`, `06-token-reveal.png` |
+| 7 | Point Claude Code at the Appliance | Panel emits a block matching the example (values may differ per appliance); `claude --print "reply with exactly CC_OK and nothing else"` returns `CC_OK` | | | `07-panel-config.png`, `07-cc-ok.png` (terminal) |
+| 8 | Ask a Question, and Then Ask Another | `claude` starts; both coding questions answered by the local model | | | `08-claude-answer.png` (terminal) |
+| 9 | Monitor Your Token Usage | **Usage > Overview** **Totals** card non-zero; **Local vs external** shows zero external; **By Client** row for `coding-agent` non-zero | | | `09-usage-totals.png`, `09-usage-by-client.png` |
+| 10 | Change Two Things and Watch — sonnet thinking on | **Routing > Tier Map > claude-sonnet- row > edit > Thinking on > Apply tier**; same question takes noticeably longer | | | `10-thinking-on.png`, `10-longer-reply.png` (terminal) |
+| 11 | Change Two Things and Watch — lower output ceiling | `export CLAUDE_CODE_MAX_OUTPUT_TOKENS=1024` then restart `claude`; reply visibly shorter | | | `11-short-reply.png` (terminal) |
+
+### Product bugs and doc bugs found
+
+Free-form list, filed as I go.
+
+- (none yet)
+
+### Tutorial edits queued from the walk
+
+Grouped by tutorial section, so the follow-up commit is easy to write.
+
+- (none yet)

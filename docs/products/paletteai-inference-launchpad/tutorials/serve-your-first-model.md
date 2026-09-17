@@ -28,8 +28,9 @@ is faster than stopping at **Create a Client and Its API Token**.
 
 On the appliance:
 
-- PaletteAI Inference Launchpad 1.1.3 or later. The version appears at the bottom of the left main menu. To upgrade,
-  refer to [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
+- PaletteAI Inference Launchpad 1.1.5 or later. The version appears at the bottom of the left main menu. Anything
+  earlier does not have the surfaces this tutorial uses. To upgrade, refer to
+  [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
 
 - The console reachable in a browser at `https://<appliance-address>`, and the local admin account you set during setup.
   To install an appliance, refer to [Install the Appliance](../how-to-guides/install-the-appliance.md).
