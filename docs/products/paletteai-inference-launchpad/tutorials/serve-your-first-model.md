@@ -171,8 +171,7 @@ curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
 
 Notice that `mem_used_mib` is climbing on one GPU, and that its `temp_c` has risen with it. Those are your model weights
 arriving on the card. Run the command a few more times. Watching the number settle is the clearest sign that the
-appliance is doing what you asked. The command reports the GPUs of the node that answered, so on a cluster with more
-than one node the **Model** table on the **Cluster** page is the check to trust.
+appliance is doing what you asked.
 
 Now return to the console and confirm the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
 column reports the one node you chose out of however many nodes your cluster has, with a `1/1 healthy` chip, and the
@@ -213,8 +212,7 @@ model answers the requests this client sends.
 
    :::warning
 
-   The console displays the token once and stores only a hash of it. Copy it now. If you lose it, revoke the token and
-   create a new one.
+   The console displays the token once and stores only a hash of it. Copy it now.
 
    :::
 
@@ -288,8 +286,7 @@ appliance is not on a network you trust, revoke it, as described in
 :::info
 
 These variables last only as long as this terminal session. To keep them, refer to
-[Use Claude Code](../how-to-guides/use-claude-code.md). If the reply is an authentication error, the token did not paste
-correctly. If it is a `404`, an alias in **Create a Client and Its API Token** is not pointing at your model.
+[Use Claude Code](../how-to-guides/use-claude-code.md).
 
 :::
 
@@ -323,12 +320,27 @@ Now we confirm the appliance counted it.
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
 
-:::info
+## Change Two Things and Watch
 
-Your client appears once the appliance has recorded your requests in the current quota window. If the table looks empty,
-confirm that the **Data window** covers when you asked your questions.
+Before you leave, change two settings and ask the same question again. Neither change can break anything you did.
 
-:::
+First, turn on thinking for the sonnet tier.
+
+1. From the left main menu, select **Routing**.
+
+2. On the **Tier Map** card, find the `claude-sonnet-` row and select **edit**.
+
+3. In the **Thinking** selector, choose **on**, and then select **Apply tier**. Confirm the plan card.
+
+4. In Claude Code, ask the same coding question again. The model reasons first, so the answer takes longer to arrive.
+
+Second, lower the output ceiling for this shell.
+
+```bash
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=1024
+```
+
+Restart Claude Code and ask the same question again. The reply is shorter, because Claude Code stopped it earlier.
 
 ## What You Built
 
