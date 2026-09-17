@@ -80,6 +80,14 @@ pack provides remote access to the UI. This is the default selection.
 | `ingressRoute.enabled`                                     | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
 | `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
 
+:::info
+
+In VMO Pack 4.10.7, the CDI upload proxy and KubeVirt export proxy are not available. As a result,
+`virtctl image-upload` and exporting virtual machines with `virtctl` do not work. Direct access to the VM dashboard is
+not affected.
+
+:::
+
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
 self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every
 cluster.
