@@ -121,8 +121,7 @@ Now we give those GPUs something to do.
 2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
 
 3. Open the **Model** drop-down menu and select a model that serves chat requests. A smaller model finishes loading
-   sooner. A vision preprocessing sidecar is not a chat model, so do not choose one here; for what those entries are,
-   refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+   sooner. A vision preprocessing sidecar is not a chat model, so do not choose one here.
 
    The catalog lists only models whose weights are already on a node in this appliance, so your list is specific to your
    hardware.
@@ -136,13 +135,6 @@ Now we give those GPUs something to do.
 
 The model appears in the **Model** table. Its state reads `deploying` or `smoke-testing` while the appliance brings it
 up.
-
-:::info
-
-The appliance writes nothing until you select **Confirm & Apply**. For the stages a model passes through on its way to
-serving, refer to [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
-
-:::
 
 ## Watch the Weights Load
 
@@ -179,8 +171,7 @@ arriving on the card. Run the command a few more times. Watching the number sett
 appliance is doing what you asked.
 
 Now return to the console and confirm the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
-column reports the one node you chose out of however many nodes your cluster has, with a `1/1 healthy` chip, and the
-model's state reads `ready` or `serving`.
+column reads `1/1 healthy` for the node you chose, and the model's state reads `ready` or `serving`.
 
 Wait until the state reads `ready` or `serving` before you map an alias to the model. An alias pointed at a model that
 is not yet serving cannot answer requests, so the verification later in this tutorial would fail.
@@ -205,8 +196,7 @@ model answers the requests this client sends.
    the model you deployed in **Deploy a Model**. Then select **Next step**.
 
    Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
-   model. For how the appliance turns an alias into a model, refer to
-   [Routing Behavior](../explanation/routing-behavior.md).
+   model.
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, leave **Expires** blank, and then select **Add Token**.
@@ -258,9 +248,6 @@ export CLAUDE_CODE_EFFORT_LEVEL=auto
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
 ```
 
-The generated configuration also names a fable alias, which this tutorial does not use; to route it, refer to
-[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
-
 Now confirm the connection with a single prompt.
 
 {/* TODO: reference/known-issues.md still publishes that Anthropic model aliases return not served with no version scope, which contradicts this tutorial; confirm with an SME whether that entry is stale or needs version scoping. */}
@@ -274,13 +261,6 @@ CC_OK
 ```
 
 That reply came from your own hardware.
-
-:::info
-
-These variables last only as long as this terminal session. To keep them, refer to
-[Use Claude Code](../how-to-guides/use-claude-code.md).
-
-:::
 
 ## Ask a Question, and Then Ask Another
 
@@ -361,3 +341,9 @@ tell whether an appliance is busy.
 
 - To understand how the appliance chooses a model for each request, refer to
   [Routing Behavior](../explanation/routing-behavior.md).
+
+- To follow the states a model passes through as it comes up, refer to
+  [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
+
+- To let the appliance answer questions about pasted screenshots, refer to
+  [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
