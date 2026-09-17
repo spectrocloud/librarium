@@ -63,6 +63,18 @@ The **Overview** page opens. Notice the status indicator near the top of the pag
 
 Keep this browser tab open.
 
+## Download the Platform CA Certificate
+
+Your appliance presents a certificate signed by its own platform Certificate Authority (CA). Your machine does not trust
+that CA yet, so we download the certificate now, and reach for it in every step that talks to the appliance.
+
+1. On the **Overview** page, select **Connect Coding Agent**. The **Connect a coding agent** dialog opens.
+
+2. Select the **Claude Code** tab, and then select **CA certificate**. The browser saves
+   `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
+
+3. Close the dialog. We open it again in **Point Claude Code at the Appliance**.
+
 ## Ask the Appliance About Its GPUs
 
 Before we change anything on the appliance, we get something back from it. Open a terminal and run the following
@@ -71,7 +83,7 @@ command, replacing `<appliance-address>` with your appliance address.
 {/* TODO: confirm with an SME that /healthz is a supported surface the docs may document, and that publishing its response shape is acceptable. */}
 
 ```bash
-curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
+curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt https://<appliance-address>/healthz | jq '.gpus'
 ```
 
 ```bash hideClipboard title="Expected output"
@@ -99,13 +111,6 @@ Your output names your own GPUs, so the model names and the totals differ from t
 
 Notice that `mem_used_mib` reads `0` on every GPU. Nothing is loaded yet. Remember this command, because we run it again
 in **Watch the Weights Load** and the number changes.
-
-:::info
-
-We use `--insecure` because a freshly installed appliance presents a self-signed certificate. If your appliance has a
-publicly trusted certificate, you can omit that flag.
-
-:::
 
 ## Deploy a Model
 
@@ -145,7 +150,7 @@ Loading model weights onto a GPU takes a few minutes. Rather than wait, we watch
 **Ask the Appliance About Its GPUs** again.
 
 ```bash
-curl --silent --insecure https://<appliance-address>/healthz | jq '.gpus'
+curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt https://<appliance-address>/healthz | jq '.gpus'
 ```
 
 ```bash hideClipboard title="Expected output"
@@ -235,16 +240,13 @@ Now we connect the two halves.
 4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
-The configuration sets your appliance address, your token, and the model alias for each tier. Each appliance advertises
-its own tier aliases, so your values can differ from the following example. Use the block the console generated rather
-than the example.
-
-If your appliance presents a self-signed certificate, `NODE_TLS_REJECT_UNAUTHORIZED=0` must be set in the shell before
-you start Claude Code. The configuration the console generates may already include it, so check the block you pasted
-before you add it yourself.
+The configuration sets your appliance address, your token, the platform CA certificate you downloaded in
+**Download the Platform CA Certificate**, and the model alias for each tier. Each appliance advertises its own tier
+aliases, so your values can differ from the following example. Use the block the console generated rather than the
+example.
 
 ```bash
-export NODE_TLS_REJECT_UNAUTHORIZED=0
+export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
 export ANTHROPIC_BASE_URL=https://<appliance-address>
 export ANTHROPIC_AUTH_TOKEN='<per-user-token>'
 export ANTHROPIC_MODEL=claude-opus-4-8
@@ -272,16 +274,6 @@ CC_OK
 ```
 
 That reply came from your own hardware.
-
-:::warning
-
-`NODE_TLS_REJECT_UNAUTHORIZED=0` turns off certificate verification for this shell session, which a self-signed
-appliance certificate requires. Delete that line if your appliance presents a publicly trusted certificate. Do not carry
-it into day-to-day use. Treat a token used in a session with certificate verification disabled as exposed, and if the
-appliance is not on a network you trust, revoke it, as described in
-[Revoke or Delete a Client](../how-to-guides/revoke-or-delete-a-client.md).
-
-:::
 
 :::info
 

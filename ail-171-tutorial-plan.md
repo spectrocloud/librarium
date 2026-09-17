@@ -96,7 +96,7 @@ Two things they can change and watch happen, neither of which can break anything
 
 ### What do we do about telling people to switch off TLS verification?
 
-**Decision: keep `NODE_TLS_REJECT_UNAUTHORIZED=0`, and add one sentence saying delete it if your appliance has a real certificate.**
+**Decision: do not switch off TLS. Download the platform CA certificate and set `NODE_EXTRA_CA_CERTS`.**
 
 ### Which AIL version do we build the tutorial against?
 
