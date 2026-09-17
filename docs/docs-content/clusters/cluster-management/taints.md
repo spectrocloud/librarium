@@ -112,8 +112,8 @@ Taints can also be applied to node pools using the Spectro Cloud
     fill in the toleration values specified in your cluster profile. Click on **Next**.
 
     If **Add New Taint** is unavailable, every other node pool in the cluster is already tainted. By default, Palette
-    requires at least one node pool to remain untainted at all times. 
-    
+    requires at least one node pool to remain untainted at all times.
+
     ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 
     :::info
