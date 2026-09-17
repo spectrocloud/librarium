@@ -29,6 +29,8 @@ operational.
 
 ## Upgrade Notes
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
 ## Prerequisites
