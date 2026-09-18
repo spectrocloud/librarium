@@ -35,8 +35,8 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1061 -->
 
-- Implemented edge-level geo-IP blocking for comprehensively sanctioned jurisdictions across production SaaS, Artifact
-  Studio, and product download endpoints to ensure compliance with export control requirements.
+- Palette now blocks access to production SaaS, Artifact Studio, and product downloads from comprehensively sanctioned
+  jurisdictions at the network edge, to meet export control compliance requirements.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3215. DO NOT DELETE. -->
 
