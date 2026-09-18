@@ -11,6 +11,25 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 18, 2026 - Release 4.9.59
+
+<!-- PATCH RELEASE TICKET: DOC-3223 -->
+<!-- PATCH RELEASE VERSION: 4.9.59 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11965 OPS-10912 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11965 -->
+
+- Applied security fixes for the 4.9.59 release train to improve platform security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-10912 -->
+
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
+
 ## September 4, 2026 - Release 4.9.54
 
 <!-- PATCH RELEASE TICKET: DOC-3184 -->
