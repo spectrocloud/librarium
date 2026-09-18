@@ -24,13 +24,11 @@ report, so the audience knows exactly what's covered.
 
 - The team → users → activation → orphans sequence this skill runs
 - How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user)
-- Why every example in this section uses redacted placeholder identities, and why that's the right call even for an
-  internal test tenant
 
 ## Prerequisites
 
-Same as the other tutorials in this series: an MCP-capable client, a Palette API key with tenant-wide read access to
-teams and users. No special server flags.
+Same as [Get Started with Palette MCP](./get-started-palette-mcp.md): an MCP-capable client, a Palette API key with
+tenant-wide read access to teams and users. No special server flags.
 
 :::info
 
@@ -68,8 +66,7 @@ Live result (redacted) against a real tenant.
 }
 ```
 
-All three teams show `user_count: 0`—every team in this tenant is currently empty. That's visible directly from this one
-call, no expansion needed—Step 1's list mode already answers whether there are empty teams.
+All three teams show `user_count: 0`—every team in this tenant is currently empty.
 
 ## Step 2—List Users
 
@@ -115,10 +112,9 @@ Is user2 on any team?
 { "items": [], "total": 0 }
 ```
 
-Same result for `user4`. Both confirmed as true orphans—no tenant roles, no team membership. In this tenant, that check
-is almost a formality: Step 1 already showed every team has `user_count: 0`, so no zero-role user could have a team to
-belong to. Run the per-user check in a tenant with real team membership rather than assuming the result from Step 1
-alone.
+Same result for `user4`. Both confirmed as true orphans—no tenant roles, no team membership. Here the check is a
+formality—Step 1 already showed every team is empty. In a tenant with real team membership, run the per-user check
+rather than inferring from Step 1.
 
 ## Step 5—Team Rosters and Per-User Detail
 
@@ -135,18 +131,17 @@ fetching all of them if the tenant has many.
 
 ## Troubleshooting
 
-| Symptom                                                                | Likely cause                                                                                    | Fix                                                                                                                                                                              |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Every team shows `user_count: 0` in a tenant you know has active teams | Pointed at the wrong tenant/profile—`list_auth_profiles` shows configured hosts                 | Re-run against the correct `auth_profile`.                                                                                                                                       |
-| Orphan check (`has_user_uid` filter) returns unexpected results        | `has_user_uid` and `has_user_email` are mutually exclusive—supplying both is a validation error | Pass exactly one.                                                                                                                                                                |
-| Real names/emails end up in a saved report                             | This skill returns real PII by design—it's an access review                                     | Redact before sharing outside the immediate reviewer, exactly as this tutorial does—real identifiers don't belong in a document meant to be read by more than the account owner. |
+| Symptom                                                                | Likely cause                                                                                    | Fix                                                                             |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Every team shows `user_count: 0` in a tenant you know has active teams | Pointed at the wrong tenant/profile—`list_auth_profiles` shows configured hosts                 | Re-run against the correct `auth_profile`.                                      |
+| Orphan check (`has_user_uid` filter) returns unexpected results        | `has_user_uid` and `has_user_email` are mutually exclusive—supplying both is a validation error | Pass exactly one.                                                               |
+| Real names/emails end up in a saved report                             | This skill returns real PII by design—it's an access review                                     | Redact before sharing, exactly as this tutorial does (Security Best Practices). |
 
 ## Security Best Practices
 
 - Read-only; no special server flags needed.
-- This is genuinely sensitive output (real names, emails, activation state) even against an internal test tenant—treat
-  every access-review report as carrying real people's identifiers, and redact before sharing beyond the person who
-  requested it.
+- Access-review output carries real people's identifiers (names, emails, activation state), even against an internal
+  test tenant—redact before sharing beyond the person who requested it.
 - To act on a finding (deactivate an orphan, add a role), the write tools (`update_user`, `update_team`) need
   `--allow-write`—this tutorial doesn't use them.
 
@@ -157,12 +152,10 @@ You've completed this tutorial if you can:
 - [ ] Run the team → user → activation → orphan sequence against your own tenant.
 - [ ] State this skill's scope (tenant-only roles, no project-scoped access) in your own report.
 - [ ] Distinguish the fast orphan signal from the full per-user team check, and know when each is enough.
-- [ ] Explain why this tutorial's examples are redacted even though the source tenant is internal, not customer-facing.
 
 ## Cleanup
 
-Read-only tutorial—nothing to clean up. If you captured any real names/emails while following along, don't leave them in
-a saved file or shared document; redact the same way this tutorial does.
+Read-only tutorial—nothing to clean up.
 
 ## Next Steps
 
