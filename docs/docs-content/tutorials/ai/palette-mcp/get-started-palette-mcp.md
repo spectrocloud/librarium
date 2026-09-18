@@ -95,7 +95,8 @@ subdomain you sign in with (for example, `your-tenant.spectrocloud.com`).
 The server operates at **tenant scope** by default—every read returns results across every project your credential can
 access. To scope a specific request to one project, mention the project by name or
 [Project ID](../../../tenant-settings/projects/projects.md#project-id) in your prompt. If your account or API key lacks
-tenant-wide access, an unscoped read can return `OperationForbidden`—refer to [Troubleshooting](#troubleshooting).
+tenant-wide access, a read without a project scope can return `OperationForbidden`—refer to
+[Troubleshooting](#troubleshooting).
 
 :::
 
@@ -223,8 +224,8 @@ List clusters in project my-project-uid.
 ```
 
 The assistant passes this as that call's `project_uid` argument. A project-scoped API key (refer to
-[Prerequisites](#prerequisites)) can't read at tenant scope—an unscoped call returns `OperationForbidden` (refer to
-[Troubleshooting](#troubleshooting)).
+[Prerequisites](#prerequisites)) can't read at tenant scope—a call without a project scope returns `OperationForbidden`
+(refer to [Troubleshooting](#troubleshooting)).
 
 ## Step 4—Identify Your Dev Cluster
 
@@ -344,15 +345,15 @@ default     hello-universe-7f9c8-def34   0/1     ImagePullBackOff   0
 
 ## Troubleshooting
 
-| Symptom                                                                         | Likely cause                                                     | Fix                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Client doesn't list `palette`, or no Palette tools appear                       | Config not picked up                                             | Restart the client; check the config file path and JSON syntax; confirm Docker is running.                                                                                                                    |
-| `OperationForbidden` on cluster reads                                           | Account/API key lacks tenant-wide access                         | Pass `project_uid` on the failing call to scope it to a project you can access—mention the project by name or UID in your prompt (Step 3).                                                                    |
-| `401` or "expired API key" errors                                               | Wrong, expired, or revoked key                                   | Create a new key in the Palette UI and update `PALETTE_API_KEY`; re-check `PALETTE_HOST` has no `https://` prefix.                                                                                            |
-| Want to confirm whether the server is running read-only or with `--allow-write` | Mode isn't reflected in the tool list itself                     | Call `delete_project` with a bogus UID (for example, `does-not-exist`). `PALETTE_WRITE_DISABLED` means read-only mode; `PALETTE_NOT_FOUND` means write mode is active. No real project is touched either way. |
-| `PALETTE_NOT_FOUND` when requesting `mode=oidc`                                 | Expected—OIDC isn't configured on that cluster's Kubernetes pack | Use the default `mode=readonly` instead, unless you specifically need OIDC-based auth.                                                                                                                        |
-| Kubeconfig downloads but `write_path` is ignored                                | Server wasn't started with `--allow-write`                       | Add `--allow-write` (refer to [Enable Write Mode](#enable-write-mode)), or skip the local file and use the returned content directly.                                                                         |
-| Kubeconfig downloads but `kubectl` can't reach the cluster                      | Cluster is private/edge and lacks the proxy pack                 | Confirm the `spectro-proxy` pack is installed—the readonly kubeconfig relies on it to route traffic through Palette rather than requiring direct network access.                                              |
+| Symptom                                                                         | Likely cause                                                     | Fix                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client doesn't list `palette`, or no Palette tools appear                       | Config not picked up                                             | Restart the client; check the config file path and JSON syntax; confirm Docker is running.                                                                                                                          |
+| `OperationForbidden` on cluster reads                                           | Account/API key lacks tenant-wide access                         | Pass `project_uid` on the failing call to scope it to a project you can access—mention the project by name or UID in your prompt (Step 3).                                                                          |
+| `401` or "expired API key" errors                                               | Wrong, expired, or revoked key                                   | Create a new key in the Palette UI and update `PALETTE_API_KEY`; re-check `PALETTE_HOST` has no `https://` prefix.                                                                                                  |
+| Want to confirm whether the server is running read-only or with `--allow-write` | Mode isn't reflected in the tool list itself                     | Call `delete_project` with a nonexistent UID (for example, `does-not-exist`). `PALETTE_WRITE_DISABLED` means read-only mode; `PALETTE_NOT_FOUND` means write mode is active. No real project is touched either way. |
+| `PALETTE_NOT_FOUND` when requesting `mode=oidc`                                 | Expected—OIDC isn't configured on that cluster's Kubernetes pack | Use the default `mode=readonly` instead, unless you specifically need OIDC-based auth.                                                                                                                              |
+| Kubeconfig downloads but `write_path` is ignored                                | Server wasn't started with `--allow-write`                       | Add `--allow-write` (refer to [Enable Write Mode](#enable-write-mode)), or skip the local file and use the returned content directly.                                                                               |
+| Kubeconfig downloads but `kubectl` can't reach the cluster                      | Cluster is private/edge and lacks the proxy pack                 | Confirm the `spectro-proxy` pack is installed—the read-only kubeconfig relies on it to route traffic through Palette rather than requiring direct network access.                                                   |
 
 ## Security Best Practices
 
