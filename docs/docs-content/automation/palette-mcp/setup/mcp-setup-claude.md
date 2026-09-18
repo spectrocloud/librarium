@@ -67,7 +67,7 @@ The Palette Agent Toolkit plugin bundles the MCP server configuration and four d
    You must set the **Palette host** and either the **Palette API key** or the **Palette auth token**. Claude Code
    stores the API key and auth token in your operating system credential store, such as the macOS Keychain, Windows
    Credential Manager, or Linux Secret Service. Where no credential store is available, Claude Code falls back to
-   `~/.claude/.credentials.json` with `0600` permissions. You don't need to export shell variables or create a `.env`
+   `~/.claude/.credentials.json` with `0600` permissions. You do not need to export shell variables or create a `.env`
    file.
 
    To provision the plugin without prompts, such as in a CI pipeline, pass the options as repeatable `--config` flags at

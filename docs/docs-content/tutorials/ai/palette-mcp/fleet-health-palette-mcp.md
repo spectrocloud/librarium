@@ -11,14 +11,14 @@ category: ["tutorial"]
 ---
 
 The `health-overview` skill is a breadth-first scan across your entire tenant—every cluster, every edge host—surfacing
-what's broken without diagnosing _why_. Think of it as the "how's the fleet?" check a platform admin runs at the start
+what is broken without diagnosing _why_. Think of it as the "how is the fleet?" check a platform admin runs at the start
 of the day, before deciding which single resource (if any) needs the deeper `diagnose-cluster` or `diagnose-edge`
 treatment.
 
 This tutorial runs that scan against a real tenant, scanning the full list and reading states directly. Completing
 [Get Started with Palette MCP](./get-started-palette-mcp.md) first is assumed.
 
-## What You'll Learn
+## What You Will Learn
 
 - The five-scan sequence a fleet health check runs, and what each one is looking for.
 - The difference between a cluster's lifecycle state (`Running`, `Provisioning`) and its health state.
@@ -94,7 +94,7 @@ Any edge hosts that registered but never paired?
 `read_edge_hosts` with `filters={state:"unpaired"}`. Live result against one tenant returned several unpaired hosts—a
 mix of what looked like leftover test registrations. This is a real onboarding-gap signal: hardware that showed up in
 Palette but was never paired to a cluster. Whether that is expected (a host awaiting provisioning) or worth cleaning up
-(a host someone forgot about) depends on context the scan itself does not have—that's a judgment call for the reader.
+(a host someone forgot about) depends on context the scan itself does not have—that is a judgment call for the reader.
 
 ## Step 6—Synthesize
 
@@ -114,7 +114,7 @@ health-overview scan across a real, actively used tenant surfaces real, unresolv
 | Symptom                                                                                | Likely cause                                                                                                                       | Fix                                                                                                         |
 | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | A cluster or edge-host `health_state` filter returns nothing when you expected results | Casing is case-sensitive and opposite between the two—clusters use `UnHealthy` (capital H), edge hosts use lowercase (`unhealthy`) | Match the casing shown in Steps 3–5.                                                                        |
-| Unpaired-host scan returns entries you don't recognize                                 | Genuine stale test/demo registrations rather than real onboarding gaps                                                             | Cross-check the host names/UIDs against what you actually provisioned before treating each one as an issue. |
+| Unpaired-host scan returns entries you do not recognize                                | Genuine stale test/demo registrations rather than real onboarding gaps                                                             | Cross-check the host names/UIDs against what you actually provisioned before treating each one as an issue. |
 | A large edge fleet makes the unpaired/unhealthy scans take longer                      | `read_edge_hosts` filters locally—the tenant list transfers before filtering                                                       | Expect scan time to scale with fleet size; the result is still correct.                                     |
 
 ## Security Best Practices
@@ -125,10 +125,10 @@ health-overview scan across a real, actively used tenant surfaces real, unresolv
 
 ## Validate
 
-You've completed this tutorial if you can:
+You have completed this tutorial if you can:
 
 - [ ] Run all five scans against your own tenant.
-- [ ] Distinguish a cluster's lifecycle state from its health state, and explain why they're scanned separately.
+- [ ] Distinguish a cluster's lifecycle state from its health state, and explain why they are scanned separately.
 - [ ] Correctly match casing for both health-state filters (`UnHealthy` for clusters, `unhealthy` for edge hosts).
 - [ ] Read an all-empty scan result as a genuine "fleet is healthy," not a broken query.
 

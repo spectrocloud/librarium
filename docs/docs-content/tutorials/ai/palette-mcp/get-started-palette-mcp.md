@@ -23,7 +23,7 @@ MCP-capable client—refer to the [Claude](../../../automation/palette-mcp/setup
 [Antigravity](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) setup guides to configure the server with
 these popular clients.
 
-## What You'll Learn
+## What You Will Learn
 
 - How to configure the Palette MCP Server for your tenant
 - How to list and identify clusters using natural-language prompts
@@ -47,7 +47,7 @@ these popular clients.
 - A Palette API key. Use a **project-scoped** key rather than a tenant-admin key—everything in this tutorial only needs
   project-level read access, and a project-scoped key limits the impact if the key is ever exposed. Refer to the
   [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) guide.
-- At least one existing cluster in that project (this tutorial doesn't create one).
+- At least one existing cluster in that project (this tutorial does not create one).
 
 :::info
 
@@ -59,7 +59,7 @@ your own cluster and project names throughout.
 ## Tools Used in This Tutorial
 
 The Palette MCP Server exposes each Palette capability as a discrete tool. Your MCP client picks the right one
-automatically based on your prompt—you don't call these directly—but knowing what's happening under the hood makes it
+automatically based on your prompt—you do not call these directly—but knowing what is happening under the hood makes it
 easier to interpret results and troubleshoot.
 
 | Tool                      | What it does                                                                                                                                                                                                                                                                                        |
@@ -68,8 +68,8 @@ easier to interpret results and troubleshoot.
 | `read_cluster_status`     | A cluster's state and health—also the primitive used to poll a cluster's progress.                                                                                                                                                                                                                  |
 | `read_cluster_kubeconfig` | Fetches a cluster's [kubeconfig](../../../clusters/cluster-management/kubeconfig.md). `mode=readonly` (default) returns the standard kubeconfig, routed through the cluster's reverse proxy automatically if the `spectro-proxy` pack is installed. `mode=admin` returns cluster-admin credentials. |
 
-All three are read-only and available without any special server flags. This tutorial doesn't use any tool that creates,
-modifies, or deletes resources. Refer to the
+All three are read-only and available without any special server flags. This tutorial does not use any tool that
+creates, modifies, or deletes resources. Refer to the
 [Palette MCP Server Operations](../../../automation/palette-mcp/palette-mcp-operations.md) page for the complete tool
 list and more example use cases.
 
@@ -85,7 +85,7 @@ You need two things before configuring the server.
 :::info
 
 **Host format:** bare hostname only—no `https://` prefix, no trailing slash, no path. A malformed host fails loudly the
-first time it's used (config save or first tool call) and never sends requests to the wrong host. Use the tenant
+first time it is used (config save or first tool call) and never sends requests to the wrong host. Use the tenant
 subdomain you sign in with (for example, `your-tenant.spectrocloud.com`).
 
 :::
@@ -138,7 +138,7 @@ Add the Palette MCP server to your client's MCP configuration file, filling in t
 
 :::info
 
-**These credentials are stored in plaintext in your MCP client's config file.** Don't commit it to version control or
+**These credentials are stored in plaintext in your MCP client's config file.** Do not commit it to version control or
 paste it into a shared channel—treat it like the API key itself. If your client supports referencing environment
 variables instead of literal values (for example `${env:PALETTE_API_KEY}`), prefer that so the key stays in your shell
 environment or OS credential store rather than on disk in this file.
@@ -156,7 +156,7 @@ environment or OS credential store rather than on disk in this file.
 
 For dev/prod/RC separation, more than one tenant, or a self-hosted host, use named profiles instead of a single set of
 environment variables. Run the interactive wizard from a terminal—not through your MCP client, since an API key or JWT
-shouldn't pass through chat context.
+should not pass through chat context.
 
 ```shell
 palette-mcp configure
@@ -184,7 +184,7 @@ prod:
 
 To keep the profiles file somewhere other than the default location, set `PALETTE_PROFILES_FILE` before starting your
 MCP client. To target a specific profile, name it in your prompt—for example, "List clusters using the prod profile"—and
-the assistant passes it as that call's `auth_profile` argument. Run `list_auth_profiles` first to view what's loaded
+the assistant passes it as that call's `auth_profile` argument. Run `list_auth_profiles` first to view what is loaded
 (names and hosts only, never secrets).
 
 :::info
@@ -199,7 +199,7 @@ Restart your MCP client so it picks up the new server or profile. Then verify it
 and confirm `palette` is listed; in Claude Desktop, open the tools (plug) menu after restarting and confirm Palette
 tools appear.
 
-**If the server doesn't appear as connected**, refer to [Troubleshooting](#troubleshooting) below before continuing.
+**If the server does not appear as connected**, refer to [Troubleshooting](#troubleshooting) below before continuing.
 
 ## Step 3—List Your Clusters
 
@@ -224,7 +224,7 @@ List clusters in project my-project-uid.
 ```
 
 The assistant passes this as that call's `project_uid` argument. A project-scoped API key (refer to
-[Prerequisites](#prerequisites)) can't read at tenant scope—a call without a project scope returns `OperationForbidden`
+[Prerequisites](#prerequisites)) cannot read at tenant scope—a call without a project scope returns `OperationForbidden`
 (refer to [Troubleshooting](#troubleshooting)).
 
 ## Step 4—Identify Your Dev Cluster
@@ -242,7 +242,7 @@ Based on the naming, `dev-sandbox` looks like your dev cluster.
 This step relies entirely on naming or tagging conventions—the MCP server has no built-in concept of "dev" vs. "prod."
 Two things to watch for:
 
-- **If your clusters aren't clearly named or tagged**, tag them in Palette first: **Clusters** → select your cluster →
+- **If your clusters are not clearly named or tagged**, tag them in Palette first: **Clusters** → select your cluster →
   **Tags**, then re-run the prompt. A consistent `environment: dev` tag across your fleet makes this and future prompts
   more reliable than relying on naming alone.
 - **If more than one cluster could plausibly match** (for example, `dev-sandbox` and `dev-sandbox-2`), be specific in
@@ -277,8 +277,9 @@ dev-sandbox").
 
 :::warning
 
-A kubeconfig grants access to your cluster—treat it as a credential. Don't commit a saved file to version control, paste
-its contents into a shared channel, or leave it in a world-readable location. Delete it once you no longer need it.
+A kubeconfig grants access to your cluster—treat it as a credential. Do not commit a saved file to version control,
+paste its contents into a shared channel, or leave it in a world-readable location. Delete it once you no longer need
+it.
 
 :::
 
@@ -325,12 +326,12 @@ default       hello-universe-7f9c8-def34   1/1     Running   0
 All pods are Running and Ready. No restarts detected.
 ```
 
-This step checks health at two levels, and it's worth understanding the difference:
+This step checks health at two levels, and it is worth understanding the difference:
 
 - **Palette-level status** (via `read_cluster_status`) reflects what Palette's control plane knows—whether the cluster
   is reachable and its declared state matches its actual state. A cluster can report `Running` here even if an
   individual workload inside it has failed.
-- **Workload-level status** (via `kubectl`, using the kubeconfig from Step 5) reflects what's actually running inside
+- **Workload-level status** (via `kubectl`, using the kubeconfig from Step 5) reflects what is actually running inside
   the cluster—pod readiness, restart counts, and failure states like `CrashLoopBackOff` or `ImagePullBackOff`.
 
 For example, if a pod were failing, the same prompt would surface something like this instead.
@@ -345,15 +346,15 @@ default     hello-universe-7f9c8-def34   0/1     ImagePullBackOff   0
 
 ## Troubleshooting
 
-| Symptom                                                                         | Likely cause                                                     | Fix                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Client doesn't list `palette`, or no Palette tools appear                       | Config not picked up                                             | Restart the client; check the config file path and JSON syntax; confirm Docker is running.                                                                                                                          |
-| `OperationForbidden` on cluster reads                                           | Account/API key lacks tenant-wide access                         | Pass `project_uid` on the failing call to scope it to a project you can access—mention the project by name or UID in your prompt (Step 3).                                                                          |
-| `401` or "expired API key" errors                                               | Wrong, expired, or revoked key                                   | Create a new key in the Palette UI and update `PALETTE_API_KEY`; re-check `PALETTE_HOST` has no `https://` prefix.                                                                                                  |
-| Want to confirm whether the server is running read-only or with `--allow-write` | Mode isn't reflected in the tool list itself                     | Call `delete_project` with a nonexistent UID (for example, `does-not-exist`). `PALETTE_WRITE_DISABLED` means read-only mode; `PALETTE_NOT_FOUND` means write mode is active. No real project is touched either way. |
-| `PALETTE_NOT_FOUND` when requesting `mode=oidc`                                 | Expected—OIDC isn't configured on that cluster's Kubernetes pack | Use the default `mode=readonly` instead, unless you specifically need OIDC-based auth.                                                                                                                              |
-| Kubeconfig downloads but `write_path` is ignored                                | Server wasn't started with `--allow-write`                       | Add `--allow-write` (refer to [Enable Write Mode](#enable-write-mode)), or skip the local file and use the returned content directly.                                                                               |
-| Kubeconfig downloads but `kubectl` can't reach the cluster                      | Cluster is private/edge and lacks the proxy pack                 | Confirm the `spectro-proxy` pack is installed—the read-only kubeconfig relies on it to route traffic through Palette rather than requiring direct network access.                                                   |
+| Symptom                                                                         | Likely cause                                                      | Fix                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client does not list `palette`, or no Palette tools appear                      | Config not picked up                                              | Restart the client; check the config file path and JSON syntax; confirm Docker is running.                                                                                                                          |
+| `OperationForbidden` on cluster reads                                           | Account/API key lacks tenant-wide access                          | Pass `project_uid` on the failing call to scope it to a project you can access—mention the project by name or UID in your prompt (Step 3).                                                                          |
+| `401` or "expired API key" errors                                               | Wrong, expired, or revoked key                                    | Create a new key in the Palette UI and update `PALETTE_API_KEY`; re-check `PALETTE_HOST` has no `https://` prefix.                                                                                                  |
+| Want to confirm whether the server is running read-only or with `--allow-write` | Mode is not reflected in the tool list itself                     | Call `delete_project` with a nonexistent UID (for example, `does-not-exist`). `PALETTE_WRITE_DISABLED` means read-only mode; `PALETTE_NOT_FOUND` means write mode is active. No real project is touched either way. |
+| `PALETTE_NOT_FOUND` when requesting `mode=oidc`                                 | Expected—OIDC is not configured on that cluster's Kubernetes pack | Use the default `mode=readonly` instead, unless you specifically need OIDC-based auth.                                                                                                                              |
+| Kubeconfig downloads but `write_path` is ignored                                | Server was not started with `--allow-write`                       | Add `--allow-write` (refer to [Enable Write Mode](#enable-write-mode)), or skip the local file and use the returned content directly.                                                                               |
+| Kubeconfig downloads but `kubectl` cannot reach the cluster                     | Cluster is private/edge and lacks the proxy pack                  | Confirm the `spectro-proxy` pack is installed—the read-only kubeconfig relies on it to route traffic through Palette rather than requiring direct network access.                                                   |
 
 ## Security Best Practices
 
@@ -363,12 +364,12 @@ default     hello-universe-7f9c8-def34   0/1     ImagePullBackOff   0
 - Only enable `--allow-write` when you actually need it—everything in this tutorial except saving a kubeconfig locally
   works without it.
 - Treat downloaded kubeconfig files as credentials—restrict file permissions, avoid committing them, and delete them
-  once you're done.
+  once you are done.
 - Rotate your Palette API key periodically, and immediately if you suspect it was exposed.
 
 ## Validate
 
-You've completed this tutorial if you can:
+You have completed this tutorial if you can:
 
 - [ ] View a list of your clusters through a prompt—tenant-wide by default, or scoped to one project if you asked for
       it.

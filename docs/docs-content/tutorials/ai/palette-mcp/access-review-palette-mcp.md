@@ -3,7 +3,7 @@ sidebar_position: 60
 sidebar_label: "Access Review with Palette MCP"
 title: "Access Review with Palette MCP: Teams, Users, and Orphans"
 description:
-  "Build a tenant-wide membership and activation map with the access-review skill: who's on which team, who's pending
+  "Build a tenant-wide membership and activation map with the access-review skill: who is on which team, who is pending
   activation, and who has no team and no tenant role at all."
 tags: ["ai", "palette-mcp", "tutorial"]
 toc_max_heading_level: 2
@@ -20,7 +20,7 @@ This review reports **tenant-level** roles, as UIDs and counts. **Project-scoped
 check—this is a membership and activation map, not a full role-based access audit. State this scope whenever you share a
 report, so the audience knows exactly what is covered.
 
-## What You'll Learn
+## What You Will Learn
 
 - The team → users → activation → orphans sequence that this skill runs.
 - How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user).
@@ -135,7 +135,7 @@ fetching all of them if the tenant has many.
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | Every team shows `user_count: 0` in a tenant you know has active teams | Pointed at the wrong tenant/profile—`list_auth_profiles` shows configured hosts                 | Re-run against the correct `auth_profile`.                                      |
 | Orphan check (`has_user_uid` filter) returns unexpected results        | `has_user_uid` and `has_user_email` are mutually exclusive—supplying both is a validation error | Pass exactly one.                                                               |
-| Real names/emails end up in a saved report                             | This skill returns real PII by design—it's an access review                                     | Redact before sharing, exactly as this tutorial does (Security Best Practices). |
+| Real names/emails end up in a saved report                             | This skill returns real PII by design—it is an access review                                    | Redact before sharing, exactly as this tutorial does (Security Best Practices). |
 
 ## Security Best Practices
 

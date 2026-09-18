@@ -19,7 +19,7 @@ In this tutorial, you triage a real cluster from management-plane signals down t
 specific project with a per-call argument, and view a second cluster's clean status as a healthy-baseline comparison.
 Completing [Get Started with Palette MCP](./get-started-palette-mcp.md) first is assumed.
 
-## What You'll Learn
+## What You Will Learn
 
 - How to run the management-plane triage sequence: status, events, observability, attached profiles
 - How to read `read_cluster_status`'s condition list to find the actual blocker, not just the summary `state`
@@ -59,7 +59,7 @@ List all my clusters.
 ```
 
 This calls `read_clusters`. Each item carries `metadata` (name, project), `spec.cloud_type`, a top-level `status.state`,
-and its `uid`—capture the `uid` and `project_uid` for the cluster you want to triage—you'll need the `uid` in the next
+and its `uid`—capture the `uid` and `project_uid` for the cluster you want to triage—you will need the `uid` in the next
 step and the `project_uid` in Step 3.
 
 ## Step 2—Read Cluster Status
@@ -94,9 +94,9 @@ Calls `read_cluster_status` with the cluster's `uid`. Live example—a real clus
 A top-level `state: Unknown` tells you _something's_ off, but not _what_. The `conditions` array is where the actual
 answer lives—read every condition, not just the ones that are `True`. Here, everything needed for the cluster to exist
 is `True` (infra, bootstrap, kubeconfig, image resolution)—but `ImagePullSecretPropagationDone` is `False`, with a
-specific reason: `ConnectivityIssue`. That's the actual blocker, and it's a management-plane signal—Palette's control
-plane can't reach the cluster's agent to push the pull secret. No kube-level or node-level digging is needed to identify
-this one.
+specific reason: `ConnectivityIssue`. That is the actual blocker, and it is a management-plane signal—Palette's control
+plane cannot reach the cluster's agent to push the pull secret. No kube-level or node-level digging is needed to
+identify this one.
 
 :::tip
 
@@ -122,7 +122,7 @@ What's the status of <CLUSTER_NAME>? It's in project <PROJECT_UID>.
 ```
 
 `read_clusters` returns each cluster's `project_uid` in its `metadata`, so you always have it on hand from Step 1—pass
-it explicitly any time your credential's access doesn't cover the tenant as a whole, or when you want to be precise
+it explicitly any time your credential's access does not cover the tenant as a whole, or when you want to be precise
 about which project a call targets.
 
 ## Step 4—Correlate with Events
@@ -135,7 +135,7 @@ Calls `read_events` with `object_kind="spectrocluster"`, `object_uid=<uid>` (pas
 you needed it there). Real output for the cluster above showed a clean image-resolution history (`LocatingBaseImage` →
 `ReconcileImage` → `ImageResolved`)—nothing in the event log pointed at the actual blocker, because
 `ImagePullSecretPropagationDone` is a status condition, not an event in this case. Events confirm what already succeeded
-and don't always surface what's currently failing—read conditions and events together.
+and do not always surface what is currently failing—read conditions and events together.
 
 ## Step 5—Observability and Attached Profiles
 
@@ -147,7 +147,7 @@ Check backup, scan, and pack status for <CLUSTER_NAME>.
 `RestoreNotExecuted`—expected when no restore has ever been run.
 
 `read_attached_profiles_to_cluster` (real output): one `cluster`-type profile (OS, Kubernetes, CNI, CSI packs, all
-`InstallSuccess`) and one `add-on` profile—both fully installed. Packs aren't the blocker here; this rules out a
+`InstallSuccess`) and one `add-on` profile—both fully installed. Packs are not the blocker here; this rules out a
 pack-compatibility cause and keeps the finding pointed at the connectivity condition from Step 2.
 
 ## Step 6—Synthesize and Decide Whether to Escalate
@@ -158,13 +158,13 @@ pack-compatibility cause and keeps the finding pointed at the connectivity condi
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `CloudInfrastructureReady=False`                   | Infra provisioning—cloud-account credentials, provider resources                                         |
 | `BootstrapReady=False` / `BootstrappingDone=False` | Node bootstrap never finished—node-level logs (kube-tier escalation)                                     |
-| `KubeConfigReady=False`                            | Control plane isn't up                                                                                   |
+| `KubeConfigReady=False`                            | Control plane is not up                                                                                  |
 | `ImageResolutionDone=False`                        | Image/registry resolution failed                                                                         |
 | `ImagePullSecretPropagationDone=False`             | Registry/pack pull-secret propagation failed—management-plane actionable, no kube-tier escalation needed |
 
 For the live example above, the failing condition is the last row: management-plane actionable. The skill routes this
-signature to a direct fix rather than escalating to kube-level triage—there's nothing on the cluster's own Kubernetes
-API that would add information the condition message doesn't already have.
+signature to a direct fix rather than escalating to kube-level triage—there is nothing on the cluster's own Kubernetes
+API that would add information the condition message does not already have.
 
 For a `BootstrapReady=False` or node-`NotReady` signature, the skill mints a session-scoped, RBAC-backed read-only
 kubeconfig to inspect CAPI/node/pod state directly, and—for self-managed infrastructure only (`aws`/`azure`/plain `gcp`,
@@ -206,13 +206,13 @@ tools for two different layers of the same tenant.
 
 ## Troubleshooting
 
-| Symptom                                                                                            | Likely cause                                                                                      | Fix                                                                                                                                                                                                                                                                         |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Top-level `status.state` is `Running` or `Unknown` but you need to know why                        | The summary state doesn't carry the reason                                                        | Read the full `conditions` array—the routing table (Step 6) shows which `False` condition matters.                                                                                                                                                                          |
-| `read_events` shows a clean history but the cluster still looks unhealthy                          | Events log what happened, not necessarily the current blocking condition                          | Cross-check `read_cluster_status`'s conditions instead of relying on events alone.                                                                                                                                                                                          |
-| Kube-tier escalation reports no `written_to` field                                                 | Server not started with `--allow-write`                                                           | Add `--allow-write` to write the kubeconfig to disk before running kube-tier; management-plane findings still stand either way.                                                                                                                                             |
-| `run_edge_command` isn't in the tool list when you try the node-level SSH leg                      | Server not started with `--allow-direct-ssh`                                                      | Add the flag and restart (the edge-triage tutorial's Step 1 covers it).                                                                                                                                                                                                     |
-| `kubectl get <provider>cluster,<provider>machine --all-namespaces` returns nothing under kube-tier | Querying the workload kubeconfig for a pre-pivot failure (first control-plane node never came up) | CAPI resources live in the management-plane kubeconfig for a pre-pivot failure—kube-tier triage against the workload kubeconfig can't display them. Treat the empty output as that signature, not as 'no CAPI objects,' and rely on the management-plane findings (Step 6). |
+| Symptom                                                                                            | Likely cause                                                                                      | Fix                                                                                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Top-level `status.state` is `Running` or `Unknown` but you need to know why                        | The summary state does not carry the reason                                                       | Read the full `conditions` array—the routing table (Step 6) shows which `False` condition matters.                                                                                                                                                                           |
+| `read_events` shows a clean history but the cluster still looks unhealthy                          | Events log what happened, not necessarily the current blocking condition                          | Cross-check `read_cluster_status`'s conditions instead of relying on events alone.                                                                                                                                                                                           |
+| Kube-tier escalation reports no `written_to` field                                                 | Server not started with `--allow-write`                                                           | Add `--allow-write` to write the kubeconfig to disk before running kube-tier; management-plane findings still stand either way.                                                                                                                                              |
+| `run_edge_command` is not in the tool list when you try the node-level SSH leg                     | Server not started with `--allow-direct-ssh`                                                      | Add the flag and restart (the edge-triage tutorial's Step 1 covers it).                                                                                                                                                                                                      |
+| `kubectl get <provider>cluster,<provider>machine --all-namespaces` returns nothing under kube-tier | Querying the workload kubeconfig for a pre-pivot failure (first control-plane node never came up) | CAPI resources live in the management-plane kubeconfig for a pre-pivot failure—kube-tier triage against the workload kubeconfig cannot display them. Treat the empty output as that signature, not as 'no CAPI objects,' and rely on the management-plane findings (Step 6). |
 
 ## Security Best Practices
 
@@ -224,18 +224,18 @@ tools for two different layers of the same tenant.
 
 ## Validate
 
-You've completed this tutorial if you can:
+You have completed this tutorial if you can:
 
 - [ ] Run the status → events → observability → attached-profiles sequence for a real cluster.
 - [ ] Identify a blocking condition from `read_cluster_status`'s `conditions` array, not just the top-level `state`.
 - [ ] Scope a single-cluster read to a specific project using a per-call `project_uid`.
-- [ ] Explain why a management-plane-actionable finding doesn't need kube-tier escalation.
+- [ ] Explain why a management-plane-actionable finding does not need kube-tier escalation.
 - [ ] Read an edge-native cluster's status via the API and know when to use `diagnose-cluster`'s kube/node tiers vs. the
       edge-triage tutorial's SSH-based tools instead.
 
 ## Cleanup
 
-This tutorial's example didn't escalate to kube-tier, so no temporary credentials were created—nothing to clean up. If
+This tutorial's example did not escalate to kube-tier, so no temporary credentials were created—nothing to clean up. If
 your own triage does escalate and a cleanup step reports failure, re-run the same `--cleanup` command the skill names
 once the cluster is reachable again.
 
