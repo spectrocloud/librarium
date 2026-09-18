@@ -223,11 +223,12 @@ model answers the requests this client sends.
 
 8. Select **Create**.
 
-9. When the console reveals the token, select the copy icon next to it. The token begins with `lpai_`.
+9. The console reveals the token, which begins with `lpai_`.
 
    :::warning
 
-   The console displays the token once and stores only a hash of it. Copy it now.
+   The console shows the token once and stores only a hash. Keep this modal open until you finish
+   **Point Claude Code at the Appliance**.
 
    :::
 
@@ -243,12 +244,8 @@ Now we connect the two halves.
 
 2. In your terminal, paste the configuration. Any directory works.
 
-3. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
-   Client and Its API Token**.
-
-   ```bash
-   export ANTHROPIC_AUTH_TOKEN=<per-user-token>
-   ```
+3. In the panel, select the copy button next to the `export ANTHROPIC_AUTH_TOKEN=...` line. In your terminal, paste
+   it. The panel fills in your real token, so nothing needs replacing.
 
 The configuration sets your appliance address, the platform CA certificate you downloaded in
 **Download the Platform CA Certificate**, and the model alias for each tier. Each appliance advertises its own tier
