@@ -68,12 +68,6 @@ Paste the following snippet in the file, replacing the placeholders with your lo
 
    :::
 
-   :::info
-
-   By default, the server operates at tenant scope—every call sees results across every project your credential can access. To scope a request to a single project, mention the project by name or UID in your prompt; the assistant passes it as that call's `project_uid` argument.
-
-   :::
-
    :::warning
 
    A kubeconfig contains cluster credentials. When you retrieve one with `read_cluster_kubeconfig`, pass `write_path` (requires `--allow-write`) to have the server save it locally with `0600` permissions, and treat the saved file as sensitive.
