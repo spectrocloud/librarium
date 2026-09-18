@@ -11,8 +11,8 @@ category: ["tutorial"]
 ---
 
 The `access-review` skill builds a tenant-wide membership and activation map: who is on which team, who is still pending
-activation, and who has no team and no tenant role at all (an orphaned account). It is a good starting point for security
-reviews, onboarding audits, or offboarding checks.
+activation, and who has no team and no tenant role at all (an orphaned account). It is a good starting point for
+security reviews, onboarding audits, or offboarding checks.
 
 ## What This Review Covers
 
@@ -32,8 +32,8 @@ tenant-wide read access to teams and users. No special server flags.
 
 :::info
 
-Every user in this tutorial's live run is replaced with a placeholder (for example, `user1@example.com`)— real names and email
-addresses were captured during the run and then redacted before anything was written to this document. No real
+Every user in this tutorial's live run is replaced with a placeholder (for example, `user1@example.com`)— real names and
+email addresses were captured during the run and then redacted before anything was written to this document. No real
 identifier appears below.
 
 :::
@@ -118,8 +118,8 @@ rather than inferring from Step 1.
 
 ## Step 5—Team Rosters and Per-User Detail
 
-With every team empty, there is no roster to expand in this run. In a tenant with real team membership, `read_teams` with
-`uid=<team_uid>` returns `Spec.Users[]`/`Spec.Roles[]` for one team at a time—ask which teams to expand rather than
+With every team empty, there is no roster to expand in this run. In a tenant with real team membership, `read_teams`
+with `uid=<team_uid>` returns `Spec.Users[]`/`Spec.Roles[]` for one team at a time—ask which teams to expand rather than
 fetching all of them if the tenant has many.
 
 ## Step 6—Synthesize
