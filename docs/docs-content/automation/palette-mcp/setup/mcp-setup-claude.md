@@ -142,8 +142,8 @@ Use this path if you prefer to configure the container image directly instead of
    :::info
 
    By default, the server operates at tenant scope—every call sees results across every project your credential can
-   access. To scope a request to a single project, mention the project by name or UID in your prompt instead of
-   setting an environment variable; the assistant passes it as that call's `project_uid` argument.
+   access. To scope a request to a single project, mention the project by name or UID in your prompt instead of setting
+   an environment variable; the assistant passes it as that call's `project_uid` argument.
 
    :::
 
