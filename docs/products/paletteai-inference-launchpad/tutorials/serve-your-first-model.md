@@ -239,13 +239,11 @@ Now we connect the two halves.
 
 {/* TODO: other PAIIL pages spell this control Connect coding agent while the live console renders it Connect Coding Agent; align the other pages separately. */}
 
-1. Select the **Claude Code CLI** tab, and then select your shell.
+1. Select your shell from the dropdown above the code block. Then select the copy button to copy the configuration.
 
-2. Select the copy button to copy the generated configuration.
+2. In your terminal, paste the configuration. Any directory works.
 
-3. In your terminal, paste the configuration. Any directory works.
-
-4. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
+3. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
    ```bash
