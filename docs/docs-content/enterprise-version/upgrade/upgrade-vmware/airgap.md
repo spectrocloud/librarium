@@ -23,6 +23,8 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 ### Specific Versions
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 - **(4.8.x to 4.9.23+)** Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported, because they
   skip a Kubernetes minor version. Upgrade to a `4.9.x` release on Kubernetes `1.33.10` first (we recommend `4.9.14`),
