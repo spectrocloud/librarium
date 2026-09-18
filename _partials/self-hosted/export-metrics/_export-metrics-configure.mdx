@@ -1,0 +1,38 @@
+---
+partial_category: self-hosted
+partial_name: export-metrics-configure
+---
+
+Metrics export is disabled by default. When you configure export to Splunk, you provide the connection details described
+in the following table.
+
+| Field                 | Required | Description                                                                                                                                                     |
+| --------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Splunk instance URL   | Yes      | The address of your Splunk HEC endpoint, for example `https://splunk.example.com:8088`. Provide only the instance address, with no collector or receiver path. |
+| Metrics index         | Yes      | The Splunk index that receives exported metrics. The index must already exist in Splunk.                                                                       |
+| Logs index            | Yes      | The Splunk index used for logs. The index must already exist in Splunk.                                                                                        |
+| HEC token             | Yes      | The Splunk HEC authentication token.                                                                                                                           |
+| Source name           | No       | An optional source name used to tag exported data.                                                                                                             |
+| Custom CA certificate | No       | An optional CA certificate that secures the connection to Splunk. Upload a custom CA certificate if Splunk uses a self-signed certificate.                     |
+
+{/* TODO(PEM-11992): Confirm the exact field labels in the UI. Varun's notes give behavior, not the rendered label text. */}
+
+Take the following steps to configure export to Splunk.
+
+1. Log in to the {props.version}
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="system console"
+        url="/system-management/#access-the-system-console/"
+    />.
+
+2. From the left main menu, select **Settings**, and then select **Administration**.
+
+3. Select the **Metrics** tab.
+
+4. Enable the **Export** toggle to choose a destination.
+
+5. Provide the connection details described in the table above.
+
+6. Confirm that the endpoint is a valid HTTP or HTTPS address and that the metrics index, logs index, and token are all
+   set before you continue.

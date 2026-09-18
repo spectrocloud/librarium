@@ -1,0 +1,30 @@
+---
+partial_category: self-hosted
+partial_name: export-metrics-prereqs
+---
+
+- The observability stack must be enabled at install or upgrade time. Set `observability.enabled` to `true` in your
+  `values.yaml` file. This value is `false` by default.
+
+  ```yaml
+  observability:
+    enabled: true # false by default
+  ```
+
+  If the observability stack is not enabled, the **Metrics** tab is read-only. Upgrade the environment with the value
+  set to `true` before you configure export.
+
+- A reachable Splunk Cloud Platform or Splunk Enterprise HTTP Event Collector (HEC) endpoint.
+
+- A Splunk HEC token.
+
+- A metrics index and a logs index that already exist in Splunk.
+
+{/* TODO(PEM-8670): The epic states logs are out of scope, but the UI requires a logs index. Confirm with Varun why a logs index is required when logs are not exported, and reword this prerequisite once clarified. */}
+
+- Access to the {props.version}
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="system console"
+    url="/system-management/#access-the-system-console/"
+  />.
