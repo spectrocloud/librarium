@@ -11,6 +11,34 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 17, 2026 - Release 4.10.17
+
+<!-- PATCH RELEASE TICKET: DOC-3224 -->
+<!-- PATCH RELEASE VERSION: 4.10.17 -->
+<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2408 PLT-2409 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
+
+- Added FIPS provider images to the content bundle when building content with the `--fips` flag in Palette CLI.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-11308 -->
+
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+
+- Fixed an issue where airgapped Enterprise Cluster installations failed to pull cert-manager images because the
+  generated manifest referenced the upstream registry and an unpublished image tag instead of the local registry.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
+
+- Fixed an issue that caused the Palette CLI shell completion command to fail.
+
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3191 -->
@@ -452,14 +480,13 @@ troubleshooting scenario.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
 
 - Edge clusters in appliance mode can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at
-  runtime, instead of embedding those binaries in the provider image. This applies in both connected and airgapped
-  environments. On operating systems running systemd version 255 or later, provider images built with CanvOS 4.10.x
-  exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers them through systemd extensions.
-  Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the
-  CanvOS `.arg` file overrides the default when a specific flow requires the binaries embedded. Unified Kernel Image
+  runtime, instead of embedding those binaries in the provider image. This feature is a Technical Preview. This applies
+  in both connected and airgapped environments. On operating systems running systemd version 255 or later, provider
+  images built with CanvOS 4.10.x exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers
+  them through systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. Unified Kernel Image
   (UKI) deployments do not support systemd extensions and continue to receive these binaries embedded in the provider
   image. Refer to
-  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
   for build and upgrade guidance.
 
 #### Improvements
