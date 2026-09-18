@@ -32,11 +32,11 @@ tenant-wide read access. No special server flags.
 
 ## Tools Used in This Tutorial
 
-| Tool                                 | What it does                                                                                                                                              |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `read_clusters`                      | Tenant-wide cluster list—this tutorial reads `status.state` directly from the unfiltered list in Step 1.                                                  |
-| `read_cluster_status` with `filters` | Server-side filtered cluster scan—by lifecycle state, by health state, or (as an alternative to Step 1's unfiltered approach) by `states:{in:["Error"]}`. |
-| `read_edge_hosts` with `filters`     | Filtered edge host scan—the MCP server fetches the tenant list and filters locally (Troubleshooting has the scale note).                                  |
+| Tool                                 | What it does                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `read_clusters`                      | Tenant-wide cluster list—this tutorial reads `status.state` directly from the unfiltered list in Step 1.                 |
+| `read_cluster_status` with `filters` | Server-side filtered cluster scan—by lifecycle state, by health state.                                                   |
+| `read_edge_hosts` with `filters`     | Filtered edge host scan—the MCP server fetches the tenant list and filters locally (Troubleshooting has the scale note). |
 
 ## Step 1—Scan Clusters in Error
 
@@ -44,15 +44,12 @@ tenant-wide read access. No special server flags.
 Are any of my clusters in an error state?
 ```
 
-List every cluster and read each one's `status.state`—a cluster in a failed state shows up directly.
-
 ```shell title="Example Prompt"
 List all my clusters and their status.
 ```
 
-Scan the returned `status.state` values yourself for anything indicating an error. It's the same `read_clusters` call
-from the [cloud-triage tutorial](./cloud-triage-palette-mcp.md)'s Step 1, applied tenant-wide instead of to one cluster
-you already had in mind.
+List every cluster and scan each one's `status.state` for anything indicating an error—the same `read_clusters` call
+from the [cloud-triage tutorial](./cloud-triage-palette-mcp.md)'s Step 1, applied tenant-wide.
 
 ## Step 2—Scan In-Progress Clusters
 
@@ -62,8 +59,8 @@ What clusters are mid-operation right now?
 
 `read_cluster_status` with `filters={states:{in:["Pending","Provisioning","Deleting"]}}`. Live result against a real
 tenant returned 8 clusters, all `Provisioning`. These aren't failures—a cluster normally passes through this state on
-create or teardown. Report them in a separate bucket from anything actually broken, exactly as the skill specifies, so a
-reader doesn't mistake "still coming up" for "stuck."
+create or teardown. Report them in a separate bucket from anything actually broken, so you don't mistake "still coming
+up" for "stuck."
 
 ## Step 3—Scan Unhealthy Clusters
 
@@ -74,9 +71,9 @@ Are any clusters unhealthy, even if they're technically running?
 `read_cluster_status` with `filters={health_state:{eq:"UnHealthy"}}` (note the capital `H`—lower `unhealthy` returns an
 empty set silently, per the skill's own guidance). This filter is independent of Step 2's lifecycle filter: live results
 included every cluster from Step 2's `Provisioning` set (unhealthy while mid-operation is expected) plus one additional
-cluster in `Unknown` state that Step 2 didn't surface. That's a cluster that's lifecycle-idle but genuinely
-unhealthy—exactly the `Running`-but-broken (here, `Unknown`-and-broken) case this scan exists to catch. The
-[cloud-triage tutorial](./cloud-triage-palette-mcp.md) covers what root-causing that specific cluster looked like.
+cluster in `Unknown` state that Step 2 didn't surface. That's a lifecycle-idle cluster that is genuinely
+unhealthy—exactly the case this scan exists to catch. The [cloud-triage tutorial](./cloud-triage-palette-mcp.md) covers
+what root-causing that specific cluster looked like.
 
 ## Step 4—Scan Unhealthy Edge Hosts
 
@@ -109,18 +106,16 @@ Group everything from Steps 1–5 into:
 - 📌 **Edge hosts unpaired**—from Step 5.
 - 📌 **In-progress operations**—from Step 2. Context only, not problems.
 
-If every working scan comes back empty, that's a real "fleet is healthy" result, not a sign something didn't run. This
-run wasn't fully clean (Step 3 found a real unhealthy cluster, Step 5 found unpaired hosts)—a health-overview scan
-across a real, actively used tenant surfaces real, unresolved things most of the time.
+If every working scan comes back empty, that's a real "fleet is healthy" result, not a sign something didn't run. A
+health-overview scan across a real, actively used tenant surfaces real, unresolved things most of the time.
 
 ## Troubleshooting
 
-| Symptom                                                                           | Likely cause                                                                                     | Fix                                                                                                         |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `health_state` filter on clusters returns nothing when you expected results       | Wrong casing—cluster health values are `UnHealthy` (capital H)                                   | Use the exact casing—the API matches case-sensitively.                                                      |
-| `read_edge_hosts` `health_state` filter returns nothing when you expected results | Edge-host health values are lowercase (`unhealthy`), a different casing convention from clusters | Match the casing shown in Steps 4–5.                                                                        |
-| Unpaired-host scan returns entries you don't recognize                            | Genuine stale test/demo registrations rather than real onboarding gaps                           | Cross-check the host names/UIDs against what you actually provisioned before treating each one as an issue. |
-| A large edge fleet makes the unpaired/unhealthy scans take longer                 | `read_edge_hosts` filters locally—the tenant list transfers before filtering                     | Expect scan time to scale with fleet size; the result is still correct.                                     |
+| Symptom                                                                                | Likely cause                                                                                                                       | Fix                                                                                                         |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| A cluster or edge-host `health_state` filter returns nothing when you expected results | Casing is case-sensitive and opposite between the two—clusters use `UnHealthy` (capital H), edge hosts use lowercase (`unhealthy`) | Match the casing shown in Steps 3–5.                                                                        |
+| Unpaired-host scan returns entries you don't recognize                                 | Genuine stale test/demo registrations rather than real onboarding gaps                                                             | Cross-check the host names/UIDs against what you actually provisioned before treating each one as an issue. |
+| A large edge fleet makes the unpaired/unhealthy scans take longer                      | `read_edge_hosts` filters locally—the tenant list transfers before filtering                                                       | Expect scan time to scale with fleet size; the result is still correct.                                     |
 
 ## Security Best Practices
 
