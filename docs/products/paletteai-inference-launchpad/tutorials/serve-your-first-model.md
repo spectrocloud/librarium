@@ -231,8 +231,7 @@ model answers the requests this client sends.
 
    :::
 
-Notice that your new client now appears on the **Clients & API tokens** page under the name `coding-agent`. We look for
-that name again at the end.
+10. In the same modal, select **Connect Agent**. The **Connect a coding agent** dialog opens.
 
 ## Point Claude Code at the Appliance
 
@@ -240,16 +239,13 @@ Now we connect the two halves.
 
 {/* TODO: other PAIIL pages spell this control Connect coding agent while the live console renders it Connect Coding Agent; align the other pages separately. */}
 
-1. In the console, return to **Overview** and select **Connect Coding Agent**. The **Connect a coding agent** dialog
-   opens.
+1. Select the **Claude Code CLI** tab, and then select your shell.
 
-2. Select the **Claude Code CLI** tab, and then select your shell.
+2. Select the copy button to copy the generated configuration.
 
-3. Select the copy button to copy the generated configuration.
+3. In your terminal, paste the configuration.
 
-4. In your terminal, paste the configuration.
-
-5. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
+4. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
    ```bash
