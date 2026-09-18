@@ -142,8 +142,8 @@ fetching all of them if the tenant has many.
 - Read-only; no special server flags needed.
 - Access-review output carries real people's identifiers (names, emails, activation state), even against an internal
   test tenant—redact before sharing beyond the person who requested it.
-- To act on a finding (deactivate an orphan, add a role), the write tools (`update_user`, `update_team`) need
-  `--allow-write`—this tutorial doesn't use them.
+- To act on a finding (clear an orphan's roles, adjust team membership), the write tools (`update_user`, `update_team`)
+  need `--allow-write`—this tutorial doesn't use them.
 
 ## Validate
 
