@@ -206,7 +206,7 @@ model answers the requests this client sends.
 
 1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
 
-2. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
+2. Select **Add Client**. The **Add Client** wizard opens on the **Overview** step.
 
 3. Enter `coding-agent` as the **Client name**, and then select **Next step**.
 
