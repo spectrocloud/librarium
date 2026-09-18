@@ -136,7 +136,10 @@ Use this path if you prefer to configure the container image directly instead of
 
    :::
 
-   :::note
+   :::warning
+
+   The Palette MCP server automatically removes the kubeconfig files from the mounted `/tmp/kubeconfig` folder when the
+   container stops.
 
    A kubeconfig contains cluster credentials. When you retrieve one with `read_cluster_kubeconfig`, pass `write_path`
    (requires `--allow-write`) to have the server save it locally with `0600` permissions, and treat the saved file as
