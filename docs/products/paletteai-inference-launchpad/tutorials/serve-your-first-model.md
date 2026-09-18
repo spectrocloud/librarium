@@ -215,11 +215,8 @@ model answers the requests this client sends.
 5. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
    appliance, so this client never needs to reach an external model.
 
-6. On the **Routing** step, set the `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` rows in the **Tier map** to
-   the model deployed on your appliance. Then select **Next**.
-
-   Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
-   model.
+6. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
+   **Next**. The wizard requires every alias to be mapped before it lets you continue.
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, leave **Expires** blank, and then select **Add Token**.
