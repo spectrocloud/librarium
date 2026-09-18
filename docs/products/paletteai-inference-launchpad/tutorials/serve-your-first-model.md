@@ -76,10 +76,13 @@ that CA yet, so we download the certificate now and reach for it in every step t
 
 1. On the **Overview** page, select **Connect Coding Agent**. The **Connect a coding agent** dialog opens.
 
-2. Select the **Claude Code CLI** tab, and then select **CA certificate**. The browser saves
-   `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
+2. Select the **Claude Code CLI** tab.
 
-3. Close the dialog. We open it again in **Point Claude Code at the Appliance**.
+3. Select **CA certificate**. The browser saves `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
+
+   ![The Connect a coding agent dialog with the CA certificate button highlighted.](/assets/docs/images/serve-your-first-model_ca-certificate-button.webp)
+
+4. Close the dialog. We open it again in **Point Claude Code at the Appliance**.
 
 ## Ask the Appliance About Its GPUs
 
