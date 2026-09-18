@@ -14,10 +14,11 @@ tags: ["edge"]
 
 :::
 
-Starting with **CanvOS 4.10**, Edge clusters in appliance mode can use systemd extensions to deliver Kubernetes and
-Palette Agent binaries at runtime instead of embedding them in the provider image. This reduces provider image size and
-lets a single provider image serve multiple Kubernetes versions on the same host. This capability applies to appliance
-mode Edge clusters in both connected and airgapped environments.
+Starting with **CanvOS 4.10**, Edge clusters in appliance mode can use
+[systemd extensions](https://kairos.io/docs/advanced/sys-extensions) to deliver Kubernetes and Palette Agent binaries at
+runtime instead of embedding them in the provider image. This reduces provider image size and lets a single provider
+image serve multiple Kubernetes versions on the same host. This capability applies to appliance mode Edge clusters in
+both connected and airgapped environments.
 
 ## Support Requirements
 
@@ -25,14 +26,13 @@ mode Edge clusters in both connected and airgapped environments.
   extensions are not available on the cluster regardless of the operating system or Kubernetes pack settings, and the
   cluster falls back to the pre-systemd-extensions behavior.
 - An operating system with **systemd version 255 or later**. Ubuntu 24 and RHEL 10 are the tested and verified operating
-  systems, and any operating system with systemd 255 or later is supported. Operating systems on earlier systemd
-  versions continue to follow the existing flow, where Kubernetes and Palette Agent binaries are embedded in the
-  provider image.
+  systems, and any operating system with systemd 255 or later is supported.
 - **CanvOS 4.10.3** or later to build provider images that opt in or out of the extensions path.
 - Palette can deliver all supported Kubernetes variants through systemd extensions.
 
-Unified Kernel Image (UKI) deployments and Two node clusters do not support systemd extensions. Refer to
-[Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) for the behavior on those hosts.
+Unified Kernel Image (UKI) deployments and two-node clusters do not support systemd extensions. Refer to
+[Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) and
+[Two-Node Cluster Considerations](#two-node-cluster-considerations) for the behavior on those hosts.
 
 ## New Clusters
 
@@ -73,3 +73,8 @@ Edge hosts that use [Unified Kernel Images](../../../trusted-boot/trusted-boot.m
 These hosts continue to receive Kubernetes and Palette Agent binaries embedded in the provider image, which you build
 from a supported CanvOS release for every upgrade. Sign the provider image with the same keys that you used to sign the
 installer. A mismatch causes the host to reject the image at boot.
+
+## Two-Node Cluster Considerations
+
+Two-node clusters do not support systemd extensions. These clusters continue to receive Kubernetes and Palette Agent
+binaries embedded in the provider image, which you build from a supported CanvOS release for every upgrade.
