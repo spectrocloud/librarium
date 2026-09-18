@@ -242,6 +242,8 @@ Now we connect the two halves.
 
 1. Select your shell from the dropdown above the code block. Then select the copy button to copy the configuration.
 
+   ![The coding-agent setup with the shell picker and the copy button highlighted above the code block.](/assets/docs/images/serve-your-first-model_shell-picker.webp)
+
 2. In your terminal, paste the configuration. Any directory works.
 
 3. In the panel, select the copy button next to the `export ANTHROPIC_AUTH_TOKEN=...` line. In your terminal, paste
