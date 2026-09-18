@@ -14,8 +14,7 @@ the configured Palette instance and performs the required API operations.
 The Palette MCP server ships in the following forms:
 
 - A native binary published on [GitHub Releases](https://github.com/spectrocloud/palette-agent-toolkit/releases) for
-  macOS on Apple Silicon, macOS on Intel, Linux on x86_64, and Linux on ARM64. Windows is not supported as a native
-  binary. On Windows, use the container image.
+  macOS on Apple Silicon, macOS on Intel, Linux on x86_64, and Linux on ARM64. On Windows, use the container image.
 
 - A container image at `public.ecr.aws/palette-ai/palette-mcp-server`. We recommend pinning to a specific version tag
   rather than `:latest` so that automatic updates do not change the server behind your MCP client configuration.
@@ -25,21 +24,11 @@ The Palette MCP server ships in the following forms:
   `diagnose-edge`, `health-overview`, and `access-review`) in a single install. Refer to the
   [Set Up MCP Server with Claude Code](./setup/mcp-setup-claude.md) guide.
 
-The following list provides an overview of how to configure and use the Palette MCP server:
-
-1. Install an MCP client on your local machine or environment. Popular clients are
-   [Claude Code](https://code.claude.com/docs/en/overview), [Cursor](https://cursor.com/get-started),
-   [Antigravity](https://antigravity.google/), and [Codex](https://github.com/openai/codex).
-
-2. The Palette MCP server expects a handful of parameters in order to connect to Palette. Refer to
-   [Server Configuration](#server-configuration) for more information.
-
-3. Configure the Palette MCP server in your MCP client. Claude Code and Claude Desktop customers can install the Palette
-   Agent Toolkit plugin, which bundles the MCP server and diagnostic skills. All other clients configure the MCP server
-   manually using the container image from [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/), or
-   the native binary downloaded from [GitHub Releases](https://github.com/spectrocloud/palette-agent-toolkit/releases).
-
-4. The MCP server is now ready to use. Your queries are sent to the Palette API to perform the requested operations.
+The server works with MCP clients such as [Claude Code](https://code.claude.com/docs/en/overview),
+[Cursor](https://cursor.com/get-started), [Antigravity](https://antigravity.google/), and
+[Codex](https://github.com/openai/codex). Claude Code and Claude Desktop customers can install the Palette Agent Toolkit
+plugin; all other clients configure the server manually using the container image or the native binary, per the setup
+guides under [Next Steps](#next-steps).
 
 ## Server Configuration
 
@@ -77,14 +66,14 @@ If the API key isn't tenant-admin scoped and a request isn't scoped to a project
 
 ### Startup Flags
 
-| **Flag**                    | **Description**                                                                                                                                                                                                                 |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--allow-write`             | Enables write tools, such as create, update, and delete. Without this flag, write tools return `PALETTE_WRITE_DISABLED` and the server operates in read-only mode. Delete tools additionally require a typed-name confirmation. |
-| `--allow-direct-ssh`        | Enables the direct-SSH edge diagnostic tools (`read_edge_service_status`/`read_edge_service_logs`, and the direct-SSH path of `run_edge_diagnostic`). Off by default.                                                           |
-| `--allow-tunnel-ssh`        | Enables the tunnel-SSH edge diagnostic tools via Hubble's remote shell (the tunnel path of `run_edge_diagnostic`). Off by default.                                                                                              |
-| `--tunnel-ssh-api-key-auth` | Permits the tunnel-SSH API-key authentication branch for profiles without a JWT. Off by default.                                                                                                                                |
-| `--tunnel-ssh-state`        | Path to a JSON file that persists the tunnel's last-seen-remote-shell-enabled record, improving the error message when an opt-in has expired. Empty means in-memory only.                                                       |
-| `--audit-file`              | Path to a local JSONL audit log. When set, the server records every tool call, including successes, failures, validation rejections, and write-disabled outcomes.                                                               |
+| **Flag**                    | **Description**                                                                                                                                                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--allow-write`             | Enables write tools, such as create, update, and delete. Without this flag, write tools return `PALETTE_WRITE_DISABLED` and the server operates in read-only mode. Delete tools additionally require a typed-name confirmation (the resource name, or the email address for user deletion). |
+| `--allow-direct-ssh`        | Enables the direct-SSH edge diagnostic tools and the direct-SSH path of `run_edge_diagnostic`. Off by default.                                                                                                                                                                              |
+| `--allow-tunnel-ssh`        | Enables the tunnel-SSH edge diagnostic tools via Hubble's remote shell (the tunnel path of `run_edge_diagnostic`). Off by default.                                                                                                                                                          |
+| `--tunnel-ssh-api-key-auth` | Permits the tunnel-SSH API-key authentication branch for profiles without a JWT. Off by default.                                                                                                                                                                                            |
+| `--tunnel-ssh-state`        | Path to a JSON file that persists the tunnel's last-seen-remote-shell-enabled record, improving the error message when an opt-in has expired. Empty means in-memory only.                                                                                                                   |
+| `--audit-file`              | Path to a local JSONL audit log. When set, the server records every tool call, including successes, failures, validation rejections, and write-disabled outcomes.                                                                                                                           |
 
 ## Security
 
@@ -95,27 +84,21 @@ The Palette MCP server uses a Palette API key or JWT to authenticate with the Pa
 server has the same permissions as the credentials used to authenticate with the Palette API. Actions performed by the
 MCP server can be audited through the [Palette audit logs](../../audit-logs/audit-logs.md). When reviewing the audit
 logs, search for the user that is associated with the credentials used by the Palette MCP server. You can also enable
-the local `--audit-file` audit log for a JSONL record of every tool call the server processes.
+the local `--audit-file` audit log.
 
-The Palette MCP server operates in read-only mode by default. Write tools remain in the tool list but return
-`PALETTE_WRITE_DISABLED` until you start the server with the `--allow-write` flag. Delete tools additionally require the
-caller to type back the resource name, or the email address for user deletion, before the server issues the delete call.
+The Palette MCP server operates in read-only mode by default; write operations require the `--allow-write` startup flag.
 
-The Palette MCP server uses the transport protocol `stdio` to communicate with the configured MCP client. With `stdio`,
-the MCP server communicates by sending direct JSON-Remote Procedure Call (RPC) messages to the MCP client in the local
-compute environment instead of sending requests over the network. Communication between the Palette MCP server and the
-Palette API is encrypted using Transport Layer Security (TLS). We recommend reviewing the MCP protocol's documentation
-on [transport mechanisms](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) to learn more about
-the security of the transport protocol.
+The Palette MCP server uses the `stdio` transport to communicate with the configured MCP client, exchanging direct
+JSON-Remote Procedure Call (RPC) messages locally instead of sending requests over the network. Communication with the
+Palette API is encrypted using Transport Layer Security (TLS). Refer to the MCP protocol's documentation on
+[transport mechanisms](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) to learn more.
 
 ### Prompt Injection
 
-The Palette MCP server is controlled by the prompts provided to the Large Language Model (LLM) that is used by the
-configured MCP client. We recommend you use an LLM model that your organization has approved for use in your
-environment. Write operations, such as deletion, are controlled by the `--allow-write` startup flag. However, if you
-have configured the MCP server to allow write operations, you should be aware of the risks associated with prompt
-injection. Take the proper precautions to prevent prompt injection by limiting access to the MCP client and providing
-prompts to the LLM.
+The Palette MCP server is controlled by the prompts provided to the Large Language Model (LLM) used by the configured
+MCP client. If you configure the MCP server to allow write operations, you should be aware of the risks associated with
+prompt injection. Take the proper precautions to prevent prompt injection by limiting access to the MCP client and
+reviewing the prompts provided to the LLM.
 
 Prompt injection is a lower-risk attack when your MCP client is a local workstation. Prompt injections are a more
 serious concern when an LLM service is exposed on behalf of other users who provide prompts to the LLM.
@@ -137,8 +120,7 @@ When using the Palette MCP server, we recommend the following security best prac
 - Rotate the Palette API key for the Palette MCP server regularly. To rotate the API key, you can create a new API key
   and update the `.env-mcp` file with the new API key. If you used inline `-e` or `--environment` flags, you must update
   the API key provided to the flags.
-- If you use the container image, pin to a specific version tag rather than `:latest`.
-- Use an LLM you trust or that has enterprise controls related to data protection and privacy.
+- Use an LLM approved by your organization, or one that has enterprise controls related to data protection and privacy.
 
 ## Next Steps
 
