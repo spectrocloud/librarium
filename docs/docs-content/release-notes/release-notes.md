@@ -70,7 +70,7 @@ tags: ["release-notes"]
 
 - Palette upgraded the Cluster API providers that it uses internally, including the AWS, vSphere, Azure, and GCP
   providers. For the current provider versions, refer to
-  [Cluster API Provider Versions](../architecture/orchestration-spectrocloud.md#cluster-api-provider-versions).
+  [Cluster API Versions](../architecture/orchestration-spectrocloud.md#cluster-api-versions).
 
 #### Bug Fixes
 

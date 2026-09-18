@@ -25,13 +25,15 @@ Kubernetes clusters.
 Cluster API automates cluster lifecycle management for platform operations. It ensures a consistent experience in
 cluster deployment across different infrastructure environments.
 
-## Cluster API Provider Versions
+## Cluster API Versions
 
-Palette leverages the following Cluster API providers internally. Each provider enables the provisioning, management,
-and operation of Kubernetes clusters across various cloud platforms through the Kubernetes Cluster API project.
+Palette leverages the Cluster API framework and the following infrastructure providers internally. Together, they enable
+the provisioning, management, and operation of Kubernetes clusters across various cloud platforms through the Kubernetes
+Cluster API project.
 
-| **Provider**                                                                                             | **Version** |
+| **Component**                                                                                            | **Version** |
 | -------------------------------------------------------------------------------------------------------- | ----------- |
+| [Cluster API core](https://github.com/kubernetes-sigs/cluster-api)                                       | 1.13.3      |
 | [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/main) | 2.11.1      |
 | [Cluster API Provider for GCP (CAPG)](https://github.com/kubernetes-sigs/cluster-api-provider-gcp)       | 1.12.0      |
 | [Cluster API Provider for MAAS (CAPMAAS)](https://github.com/spectrocloud/cluster-api-provider-maas)     | 0.6.0       |
