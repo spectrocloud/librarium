@@ -11,14 +11,15 @@ category: ["tutorial"]
 ---
 
 The Palette MCP Server ships a small, fixed catalog of read-only diagnostic commands for edge hosts, using
-`systemctl status` and `journalctl` against a closed list of systemd units. There's no free-text command execution:
-every diagnostic is validated against a fixed enum _before_ the server opens an SSH connection, so a typo or an
-out-of-range argument fails safely instead of running something unexpected on a host you don't fully control.
+`systemctl status` and `journalctl` against a closed list of systemd units. Every command in this catalog is fixed: the
+`service` argument is validated against a closed enum _before_ the server opens an SSH connection, so a typo or an
+out-of-range argument fails safely instead of running something unexpected on a host you don't fully control. The same
+flag also registers `run_edge_command`, a separately allowlist-gated free-text tool, so it appears in your client's tool
+list too.
 
 In this tutorial, you enable the edge diagnostic tools, connect to an edge host over direct SSH, run the same
 first-10-minutes triage sequence field engineers use manually, and learn to read the two exit-code conventions the
-catalog relies on. You'll also view what a safe rejection looks like—for a bad argument, and for a host that doesn't
-present the key you expected. This tutorial uses Claude Code, but the same prompts work with any MCP-capable client.
+catalog relies on. This tutorial uses Claude Code, but the same prompts work with any MCP-capable client.
 
 ## What You'll Learn
 
@@ -46,8 +47,8 @@ present the key you expected. This tutorial uses Claude Code, but the same promp
 
 :::info
 
-The sample outputs below use `<EDGE_HOST_IP>` and `<EDGE_HOST_NAME>` as placeholders—substitute your own host
-throughout.
+The examples below use `<EDGE_HOST_IP>`, `<EDGE_HOST_NAME>`, `<EDGE_HOST_USER>`, and `<PRIVATE_KEY_PATH>` as
+placeholders—substitute your own values throughout.
 
 :::
 
@@ -61,8 +62,8 @@ throughout.
 | `read_events`                                               | Palette-side events for an edge host object—registration failures, heartbeat timeouts. API-tier, not SSH.                                                                                                                   |
 | `read_cluster_status` / `read_attached_profiles_to_cluster` | Once an edge host is attached to a cluster, these show provisioning state and pack health. API-tier.                                                                                                                        |
 
-All of these are read-only. `run_edge_diagnostic` and its pinned siblings only register when the server starts with
-`--allow-direct-ssh` (direct SSH) or `--allow-tunnel-ssh` (Hubble tunnel)— neither is on by default.
+All of these are read-only. `run_edge_diagnostic` registers when the server starts with either `--allow-direct-ssh` or
+`--allow-tunnel-ssh`; its pinned direct-SSH siblings need `--allow-direct-ssh`.
 
 ## Step 1—Enable the Edge Diagnostic Tools
 
@@ -165,9 +166,7 @@ the unit itself.
 - **`exit_code: 0`**—the unit exists; read `stdout` for its actual state (`active (running)`, `activating`, `failed`,
   etc.).
 - **`exit_code: 4`** means `systemctl status` ran against a unit that doesn't exist on this host at all. This is normal
-  when probing a fixed enum against a host that only runs a subset of it (a kubeadm-style edge host, for example,
-  returns `4` on every Stylus and container-runtime unit and `0` on `kubelet` and `cloud-init` only)—by itself it isn't
-  evidence of a problem.
+  when probing a fixed enum against a host that only runs a subset of it—by itself it isn't evidence of a problem.
 
 Run the same `op=status` sweep across the units you expect for your deployment mode (appliance: `stylus-agent`; agent
 mode: `palette-agent`) plus `kubelet` and `cloud-init`, which are present in both modes. A `0` you didn't expect, or a
@@ -188,7 +187,6 @@ Show me the last 50 log lines for stylus-agent on <EDGE_HOST_IP>.
   "transport_used": "direct",
   "host": "<EDGE_HOST_IP>",
   "service": "stylus-agent",
-  "command": "sudo -n journalctl --no-pager -u stylus-agent -n 50",
   "exit_code": 0,
   "exit_known": true,
   "stdout": "-- No entries --\n",
@@ -196,10 +194,10 @@ Show me the last 50 log lines for stylus-agent on <EDGE_HOST_IP>.
 }
 ```
 
-This host has no `stylus-agent` unit at all (confirmed by the `status` call above returning `exit_code: 4`)—yet
-`journalctl` on the same missing unit returns `exit_code: 0` with `-- No entries --`. `journalctl` exiting `0` doesn't
-mean the unit exists or is healthy—it means the query itself succeeded and found nothing, which is exactly what happens
-for a unit name `journalctl` has never heard of. `status`'s exit code, not `logs`'s, tells you whether the unit exists.
+This host has no `stylus-agent` unit at all (a `status` call for it returns `exit_code: 4`)—yet `journalctl` on the same
+missing unit returns `exit_code: 0` with `-- No entries --`. `journalctl` exiting `0` doesn't mean the unit exists or is
+healthy—it means the query itself succeeded and found nothing. `status`'s exit code, not `logs`'s, tells you whether the
+unit exists.
 
 For a unit that does exist, `op=logs` returns its actual journal.
 
@@ -266,8 +264,7 @@ An out-of-range `tail_lines`.
 }
 ```
 
-Neither of these opened a socket to the host—the diagnostics tell you exactly what to fix, and you can retry immediately
-with a corrected argument.
+The diagnostics tell you exactly what to fix, and you can retry immediately with a corrected argument.
 
 ## Step 6—Host-Key Verification
 
@@ -286,8 +283,9 @@ it), the call fails loudly instead of silently trusting whatever key shows up.
 }
 ```
 
-If you don't pin a fingerprint, the host key is checked against your operator's `~/.ssh/known_hosts` instead—first
-connection to a new host follows normal SSH trust-on-first-use, exactly like running `ssh` by hand.
+If you don't pin a fingerprint, the host key is checked against your operator's `~/.ssh/known_hosts`. A host that isn't
+already listed there fails the call—add it first (for example, `ssh-keyscan <host> -t ed25519 >> ~/.ssh/known_hosts`
+from a trusted network) or pin `host_key_fingerprint`. Verification can't be disabled either way.
 
 ## Step 7—Map Findings to Common Edge Patterns
 
@@ -298,7 +296,7 @@ and how they present through this catalog.
 | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Host shows `unpaired` or `unhealthy` in `read_edge_hosts` | `op=logs`, `service=stylus-agent` (or `palette-agent` in agent mode), grep the returned text for `register`/`tls`/`certificate`                                        | Registration/pairing failure—often a VIP certificate missing a SAN, or a duplicate device UID blocking re-registration |
 | Agent won't start after a reboot                          | `op=status`, `service=stylus-agent`, with `No entries` on the paired `op=logs` call, combined with `status` never reaching `active`                                    | A hung `systemctl` PID blocking the start chain                                                                        |
-| Node stuck `NotReady` in Kubernetes                       | `op=status`, `service=kubelet` (present in both appliance and agent-mode deployments)—a non-zero, non-4 exit or a `failed` state in `stdout`                           | Check the reported failure reason in `stdout` against your cgroup version and CNI setup                                |
+| Node stuck `NotReady` in Kubernetes                       | `op=status`, `service=kubelet`—a non-zero, non-4 exit or a `failed` state in `stdout`                                                                                  | Check the reported failure reason in `stdout` against your cgroup version and CNI setup                                |
 | `containerd`/`rke2-*` won't come up                       | `op=status` across `containerd`, `rke2-server`, `rke2-agent`, `k3s`, `k3s-agent` (whichever your deployment uses), then `op=logs` on the one that's active but failing | Narrows the issue to the specific layer (container runtime vs. the Kubernetes distribution on top of it)               |
 
 ## Step 8—Escalate to the API Tier
@@ -310,7 +308,8 @@ host—pairing state, the cluster it's attached to, pack health—escalate.
 What events has Palette recorded for this edge host?
 ```
 
-Calls `read_events` with `object_kind="edgehost"`. If the host is attached to a cluster, follow up with
+Calls `read_events` with `object_kind="edgehost"` and the host's `uid` from Step 2, plus the host's
+`project_uid`—edge-host event reads are project-scoped. If the host is attached to a cluster, follow up with
 `read_cluster_status` and `read_attached_profiles_to_cluster` for provisioning state and pack compatibility—the same
 tools the `diagnose-edge` skill uses when driving a full triage end-to-end.
 
@@ -360,5 +359,5 @@ provisioned a temporary SSH key or credential specifically for this tutorial, re
 
 - [Get Started with Palette MCP](./get-started-palette-mcp.md)—if you haven't already, start there for cluster-level
   (non-edge) triage.
-- Fleet health and access-review tutorials—later parts of this series, covering the rest of the Palette MCP
-  troubleshooting toolkit.
+- [Morning Fleet Check with Palette MCP](./fleet-health-palette-mcp.md) and
+  [Access Review with Palette MCP](./access-review-palette-mcp.md)—the rest of the Palette MCP troubleshooting series.
