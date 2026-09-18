@@ -66,6 +66,16 @@ tags: ["release-notes"]
 
 - When adding a worker node pool to a running cluster, you can now click **Copy from Control Plane Pool** to reuse the
   control plane pool's configuration in the new pool. The copied fields remain editable.
+  
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5296 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5297 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5298 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5299 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7615 -->
+
+- Palette upgraded the Cluster API providers that it uses internally, including the AWS, vSphere, Azure, and GCP
+  providers. For the current provider versions, refer to
+  [Cluster API Versions](../architecture/orchestration-spectrocloud.md#cluster-api-versions).
 
 #### Bug Fixes
 

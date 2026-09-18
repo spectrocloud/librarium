@@ -25,18 +25,21 @@ Kubernetes clusters.
 Cluster API automates cluster lifecycle management for platform operations. It ensures a consistent experience in
 cluster deployment across different infrastructure environments.
 
-## Cluster API Provider Versions
+## Cluster API Versions
 
-Palette leverages the following Cluster API providers internally. Each provider enables the provisioning, management,
-and operation of Kubernetes clusters across various cloud platforms through the Kubernetes Cluster API project.
+Palette leverages the Cluster API framework and the following infrastructure providers internally. Together, they enable
+the provisioning, management, and operation of Kubernetes clusters across various cloud platforms through the Kubernetes
+Cluster API project.
 
-| **Provider**                                                                                             | **Version** |
-| -------------------------------------------------------------------------------------------------------- | ----------- |
-| [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/main) | 2.7.1       |
-| [Cluster API Provider for GCP (CAPG)](https://github.com/kubernetes-sigs/cluster-api-provider-gcp)       | 1.8.1       |
-| [Cluster API Provider for MAAS (CAPMAAS)](https://github.com/spectrocloud/cluster-api-provider-maas)     | 0.6.0       |
-| [Cluster API Provider vSphere (CAPV)](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere)   | 1.12.0      |
-| [Cluster API Provider Azure (CAPZ)](https://github.com/kubernetes-sigs/cluster-api-provider-azure)       | 1.18.1      |
+| **Component**                                                                                                    | **Version** |
+| ---------------------------------------------------------------------------------------------------------------- | ----------- |
+| [Cluster API core](https://github.com/kubernetes-sigs/cluster-api)                                               | 1.13.3      |
+| [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/main)         | 2.12.1      |
+| [Cluster API Provider for CloudStack (CAPC)](https://github.com/kubernetes-sigs/cluster-api-provider-cloudstack) | 0.6.1       |
+| [Cluster API Provider for GCP (CAPG)](https://github.com/kubernetes-sigs/cluster-api-provider-gcp)               | 1.12.0      |
+| [Cluster API Provider for MAAS (CAPMAAS)](https://github.com/spectrocloud/cluster-api-provider-maas)             | 0.9.0       |
+| [Cluster API Provider vSphere (CAPV)](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere)           | 1.16.1      |
+| [Cluster API Provider Azure (CAPZ)](https://github.com/kubernetes-sigs/cluster-api-provider-azure)               | 1.26.0      |
 
 ## Workload Cluster Provisioning
 
