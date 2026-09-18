@@ -2846,6 +2846,12 @@ The following component updates are applicable to this release:
 
 #### Breaking Changes {#breaking-changes-4.8.0}
 
+- Palette 4.8 upgrades MongoDB to 8.0, which requires a MongoDB Feature Compatibility Version (FCV) of 7.0 or later. If
+  your MongoDB data was first created on Palette 4.5.x through 4.6.9, the FCV might still be at 6.0, which causes the
+  upgrade to fail. The current Palette version does not indicate whether this applies; you must check the FCV directly and, if
+  it is 6.0, raise it to 7.0 before upgrading. To learn how to check the FCV version and upgrade to FCV 7.0 if necessary, refer to
+[Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade](/troubleshooting/enterprise-install#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade).
+
 - When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
   AMI. This change aligns with the [upcoming deprecation of Amazon Linux 2 (AL2) AMIs](./announcements.md#deprecations).
   A deprecation warning now appears for AL2 AMIs in the **Amazon Machine Image (AMI) Type** drop-down menu within
