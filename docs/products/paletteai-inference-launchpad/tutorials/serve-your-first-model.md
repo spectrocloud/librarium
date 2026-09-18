@@ -221,7 +221,7 @@ model answers the requests this client sends.
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, leave **Expires** blank, and then select **Add Token**.
 
-8. Select **Create client**.
+8. Select **Create**.
 
 9. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
