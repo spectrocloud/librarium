@@ -266,34 +266,21 @@ export CLAUDE_CODE_EFFORT_LEVEL=auto
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
 ```
 
-Now confirm the connection with a single prompt.
-
 {/* TODO: reference/known-issues.md still publishes that Anthropic model aliases return not served with no version scope, which contradicts this tutorial; confirm with an SME whether that entry is stale or needs version scoping. */}
 
-```bash
-claude --print "reply with exactly CC_OK and nothing else"
-```
+4. Start Claude Code.
 
-```bash hideClipboard title="Expected output"
-CC_OK
-```
-
-That reply came from your own hardware.
+   ```bash
+   claude
+   ```
 
 ## Ask a Question, and Then Ask Another
 
-Now we ask it a question.
+Now we ask it a question. In your Claude Code session, ask a coding question, such as
+`what is the difference between a shallow copy and a deep copy?`
 
-Start Claude Code.
-
-```bash
-claude
-```
-
-Ask it a coding question, such as `what is the difference between a shallow copy and a deep copy?`
-
-The model on your appliance answers. Ask a second question, and notice that the reply arrives the same way. This is the
-loop you work in from now on.
+The model on your appliance answers. That reply came from your own hardware. Ask a second question, and notice that the
+reply arrives the same way. This is the loop you work in from now on.
 
 ## Monitor Your Token Usage
 
