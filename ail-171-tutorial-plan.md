@@ -119,7 +119,7 @@ Filled in as I run the tutorial end-to-end against a fresh appliance. One row pe
 | Appliance version | 1.1.5 |
 | Walk date | (fill in on start) |
 | Walker | Brent |
-| GPU count and model | (fill in from `/healthz`) |
+| GPU count and model | 2 × NVIDIA RTX PRO 6000 Blackwell Server Edition |
 | Model uploaded to the node | (name, size) |
 | Fresh install or reset | (which, and how) |
 | Cert type on the appliance | platform-issued / publicly trusted / plain HTTP |
@@ -135,7 +135,7 @@ Filled in as I run the tutorial end-to-end against a fresh appliance. One row pe
 | Does the panel show a **CA certificate** step for this cert type? | Yes — as a clickable **CA certificate** chip inside the panel's first numbered step |
 | What filename does the browser save the CA cert as? | `palette-ai-inference-launchpad-ca.crt` |
 | Does the **Connect Coding Agent** control render in title case? | Yes (button); the Onboarding widget on **Overview** uses sentence case (`Connect a coding agent`), and the dialog title is also sentence case (`Connect a coding agent`) — three renderings, all on the same product |
-| `/healthz` response shape, verbatim | (paste JSON) |
+| `/healthz` response shape, verbatim | Per-GPU entry adds two boolean fields the tutorial did not have: `util_available` and `mem_available`. Full shape: `{index, name, util_pct, mem_used_mib, mem_total_mib, temp_c, util_available, mem_available}` — all string-typed except the two booleans. |
 | Does an `ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5` alias route by default? | No — the panel itself carries a yellow banner: *"`claude-fable-5` and `gpt-5.6` are not mapped in the tier map, so an agent that uses them receives a 404. Map them on a client's Routing tab."* |
 | Does any surface still print "Anthropic model aliases return not served"? | |
 | Does the **Tier Map** row have an `edit` control matching `set-tier-thinking.md`? | |
@@ -148,7 +148,7 @@ Filled in as I run the tutorial end-to-end against a fresh appliance. One row pe
 | 0 | Prereqs (What You Need) | Version 1.1.5+, admin sign-in, one uploaded model, curl+jq | | | n/a |
 | 1 | Sign In to the Console | Overview loads; status reads `all clear` | | | `01-overview.png` |
 | 2 | Download the Platform CA Certificate | **Connect a coding agent** opens from Overview; **Claude Code** tab; **CA certificate** step saves `palette-ai-inference-launchpad-ca.crt` to Downloads | | | `02-connect-panel.png`, `02-ca-download.png` |
-| 3 | Ask the Appliance About Its GPUs | `curl --cacert …/healthz \| jq '.gpus'` returns an array; every `mem_used_mib` is `0` | | | `03-healthz-first.png` (terminal) |
+| 3 | Ask the Appliance About Its GPUs | `curl --cacert …/healthz \| jq '.gpus'` returns an array; every `mem_used_mib` is `0` | Command returned an array of two GPUs; GPU 0 `mem_used_mib: "0"`, GPU 1 `mem_used_mib: "88114"` (qwen3.6-35b-a3b-fp8 already deployed); each entry also carries `util_available` and `mem_available` booleans | Response schema drift: two new boolean fields; already-deployed state means one GPU is non-zero, contradicting the tutorial's "reads `0` on every GPU" line | `03-healthz-first.png` (terminal) |
 | 4 | Deploy a Model | **Cluster > Models > Deploy New Model** dialog; select chat model + node; **Confirm & Apply** puts a row in the **Model** table with state `deploying` or `smoke-testing` | | | `04-deploy-dialog.png`, `04-model-pending.png` |
 | 5 | Watch the Weights Load | Same `curl` shows `mem_used_mib` climbing on one GPU and `temp_c` rising; console **Model** row settles to `ready`/`serving` with `1/1 healthy` | | | `05-healthz-climbing.png`, `05-model-serving.png` |
 | 6 | Create a Client and Its API Token | 9-step wizard runs; **Routing** step accepts the three aliases; **Create client** reveals a `lpai_` token exactly once | | | `06-wizard-routing.png`, `06-token-reveal.png` |
@@ -178,3 +178,5 @@ Grouped by tutorial section, so the follow-up commit is easy to write.
 - **Env block example refreshed against 1.1.5 emission.** `ANTHROPIC_DEFAULT_SONNET_MODEL` updated from `claude-sonnet-4-5` to `claude-sonnet-5`, and `ANTHROPIC_AUTH_TOKEN` dropped from the block (the console keeps it out of the copied block). Applied.
 - **Point Claude Code at the Appliance rewrite for the two-part paste + export flow.** Step 4 is now "paste the configuration", step 5 is a new "export your API token" step with its own code block. The intro paragraph no longer mentions "your token" as part of the copied configuration. Applied.
 - **Users-vs-Clients terminology drift stays as a product bug.** No tutorial fix — the tutorial keeps the nav-aligned "Clients" language; the panel banner's "Users" wording is a product-side inconsistency the reader sees briefly but never has to reconcile inside the tutorial's flow.
+- **`/healthz` expected-output blocks updated for the 1.1.5 schema.** Both the Ask the Appliance About Its GPUs and Watch the Weights Load examples now include `util_available: true` and `mem_available: true` on each GPU entry. Applied.
+- **Ask the Appliance About Its GPUs observation reworded so it works in both starting states.** Was: *"Notice that `mem_used_mib` reads `0` on every GPU. Nothing is loaded yet."* Now: *"Notice the `mem_used_mib` value on each GPU. Any GPU that reads `0` has nothing loaded."* The step runs before the Deploy a Model skip-line, so a reader on the already-deployed path used to hit a contradiction they couldn't yet explain. The reword teaches the reader to interpret whatever value they see without introducing a branch. Applied.

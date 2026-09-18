@@ -103,7 +103,9 @@ curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt htt
     "util_pct": "0",
     "mem_used_mib": "0",
     "mem_total_mib": "97887",
-    "temp_c": "29"
+    "temp_c": "29",
+    "util_available": true,
+    "mem_available": true
   },
   {
     "index": "1",
@@ -111,15 +113,17 @@ curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt htt
     "util_pct": "0",
     "mem_used_mib": "0",
     "mem_total_mib": "97887",
-    "temp_c": "30"
+    "temp_c": "30",
+    "util_available": true,
+    "mem_available": true
   }
 ]
 ```
 
 Your output names your own GPUs, so the model names and the totals differ from the example.
 
-Notice that `mem_used_mib` reads `0` on every GPU. Nothing is loaded yet. Remember this command, because we run it again
-in **Watch the Weights Load** and the number changes.
+Notice the `mem_used_mib` value on each GPU. Any GPU that reads `0` has nothing loaded. Remember this command, because
+we run it again in **Watch the Weights Load** and the number changes.
 
 ## Deploy a Model
 
@@ -165,7 +169,9 @@ curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt htt
     "util_pct": "0",
     "mem_used_mib": "0",
     "mem_total_mib": "97887",
-    "temp_c": "30"
+    "temp_c": "30",
+    "util_available": true,
+    "mem_available": true
   },
   {
     "index": "1",
@@ -173,7 +179,9 @@ curl --silent --cacert $HOME/Downloads/palette-ai-inference-launchpad-ca.crt htt
     "util_pct": "0",
     "mem_used_mib": "88110",
     "mem_total_mib": "97887",
-    "temp_c": "39"
+    "temp_c": "39",
+    "util_available": true,
+    "mem_available": true
   }
 ]
 ```
