@@ -62,6 +62,11 @@ tags: ["release-notes"]
 - Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
   when.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-4901 -->
+
+- When adding a worker node pool to a running cluster, you can now click **Copy from Control Plane Pool** to reuse the
+  control plane pool's configuration in the new pool. The copied fields remain editable.
+
 #### Bug Fixes
 
 #### Deprecations and Removals

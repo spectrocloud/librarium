@@ -222,6 +222,9 @@ You can create a new node pool for an active cluster. To create a new node pool 
 6. Fill out the input fields in the **Add node pool** page. Refer to the
    [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field.
 
+   To reuse the control plane pool's configuration in the new worker node pool, click **Copy from Control Plane Pool**.
+   The copied fields remain editable.
+
 7. Click on **Confirm** to create the new node pool.
 
 ### Validate
