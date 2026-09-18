@@ -223,7 +223,7 @@ model answers the requests this client sends.
 
 8. Select **Create**.
 
-9. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+9. When the console reveals the token, select the copy icon next to it. The token begins with `lpai_`.
 
    :::warning
 
