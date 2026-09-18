@@ -206,17 +206,17 @@ model answers the requests this client sends.
 
 1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
 
-2. Select **Add Client**. The **Add Client** wizard opens on the **Overview** step.
+2. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
 
-3. Enter `coding-agent` as the **Client name**, and then select **Next step**.
+3. Enter `coding-agent` as the **Client name**, and then select **Next**.
 
-4. On the **Quotas** step, select **Next step** without adding a limit.
+4. On the **Quotas** step, select **Next** without adding a limit.
 
-5. On the **Egress** step, select **Next step** without enabling egress. Every request in this tutorial is answered on
-   the appliance, so this client never needs to reach an external model.
+5. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
+   appliance, so this client never needs to reach an external model.
 
 6. On the **Routing** step, set the `claude-opus-`, `claude-sonnet-`, and `claude-haiku-` rows in the **Tier map** to
-   the model you deployed in **Deploy a Model**. Then select **Next step**.
+   the model you deployed in **Deploy a Model**. Then select **Next**.
 
    Claude Code asks for a different alias depending on the kind of work it is doing. Here we send all three to your one
    model.
