@@ -36,15 +36,9 @@ Unified Kernel Image (UKI) deployments and two-node clusters do not support syst
 
 ## New Clusters
 
-When you provision a new appliance mode Edge cluster on an operating system with systemd 255 or later, take the
-following steps.
-
-1. Set `system.uri: NA` in the BYOOS pack. Palette does not need a provider image to deliver Kubernetes and Palette
-   Agent binaries when systemd extensions are available.
-2. If a provider image is required for operating system upgrades or patches, build the image from a supported CanvOS
-   release. Refer to [Support Requirements](#support-requirements) for the minimum version.
-3. When the Palette Edge agent is pinned to an earlier release, supply a provider image built from a supported CanvOS
-   release. Provider images built from older CanvOS releases might work but are not recommended.
+When you provision a new appliance mode Edge cluster on an operating system with systemd 255 or later, set
+`system.uri: NA` in the BYOOS pack. Palette does not need a provider image to deliver Kubernetes and Palette Agent
+binaries when systemd extensions are available.
 
 ## Upgrade an Existing Cluster
 
