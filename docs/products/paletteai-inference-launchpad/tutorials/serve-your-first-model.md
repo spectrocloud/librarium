@@ -16,7 +16,7 @@ a coding question is answered by hardware you control. Along the way we meet the
 tokens, and alias routing.
 
 We work in two places. The console, in a browser, is where we deploy the model and create the client. A terminal, on
-your own machine, is where we watch the appliance and run Claude Code.
+your own machine, is where we watch the appliance and run Claude Code. The terminal can be in any directory.
 
 Set aside about 20 minutes. Most of that time is the appliance loading model weights onto a GPU, and you get your first
 result about one minute in.
@@ -243,7 +243,7 @@ Now we connect the two halves.
 
 2. Select the copy button to copy the generated configuration.
 
-3. In your terminal, paste the configuration.
+3. In your terminal, paste the configuration. Any directory works.
 
 4. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
