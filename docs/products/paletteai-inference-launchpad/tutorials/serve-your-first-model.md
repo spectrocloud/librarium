@@ -35,8 +35,8 @@ On the appliance:
 - The console reachable in a browser at `https://<appliance-address>`, and the local admin account you set during setup.
   To install an appliance, refer to [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
-- At least one model on the appliance. To check, in the console open **Cluster > Models**. If the table lists a row,
-  you have a deployed model.
+- At least one model on the appliance. To check, in the console open **Cluster** > **Models**. If the table lists a
+  row, you have a deployed model.
 
   ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/serve-your-first-model_cluster-models-deployed.webp)
 
@@ -72,7 +72,7 @@ Keep this browser tab open.
 ## Download the Platform CA Certificate
 
 Your appliance presents a certificate signed by its own platform Certificate Authority (CA). Your machine does not trust
-that CA yet, so we download the certificate now, and reach for it in every step that talks to the appliance.
+that CA yet, so we download the certificate now and reach for it in every step that talks to the appliance.
 
 1. On the **Overview** page, select **Connect Coding Agent**. The **Connect a coding agent** dialog opens.
 
@@ -236,10 +236,16 @@ Now we connect the two halves.
 
 3. Select the copy button to copy the generated configuration.
 
-4. In your terminal, paste the configuration and replace `<per-user-token>` with the token you copied in **Create a
+4. In your terminal, paste the configuration.
+
+5. In the same terminal, export your API token. Replace `<per-user-token>` with the token you copied in **Create a
    Client and Its API Token**.
 
-The configuration sets your appliance address, your token, the platform CA certificate you downloaded in
+   ```bash
+   export ANTHROPIC_AUTH_TOKEN=<per-user-token>
+   ```
+
+The configuration sets your appliance address, the platform CA certificate you downloaded in
 **Download the Platform CA Certificate**, and the model alias for each tier. Each appliance advertises its own tier
 aliases, so your values can differ from the following example. Use the block the console generated rather than the
 example.
@@ -247,10 +253,9 @@ example.
 ```bash
 export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
 export ANTHROPIC_BASE_URL=https://<appliance-address>
-export ANTHROPIC_AUTH_TOKEN='<per-user-token>'
 export ANTHROPIC_MODEL=claude-opus-4-8
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
+export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
 export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
 export CLAUDE_CODE_EFFORT_LEVEL=auto
