@@ -7,8 +7,7 @@ sidebar_position: 0
 tags: ["profiles", "cluster profiles"]
 ---
 
-Create an infrastructure profile by adding layers composed of an Operating System (OS), Kubernetes, Network, and Storage
-packs.
+Create an infrastructure profile by adding layers composed of an OS, Kubernetes, Network, and Storage packs.
 
 :::info
 
@@ -24,12 +23,6 @@ the same profile, create a [full cluster profile](./create-full-profile.md) inst
 ## Create Infrastructure Profile
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Infrastructure" />
-
-:::note
-
-In step 4, the **Type** field defaults to **Full**. You must actively select **Infrastructure** before continuing.
-
-:::
 
 5. Choose an option under **Infrastructure provider** or **Managed Kubernetes** to deploy your cluster on, then select
    **Next**. The available options are:
@@ -53,12 +46,12 @@ In step 4, the **Type** field defaults to **Full**. You must actively select **I
 
 6. Configure the four infrastructure layers in order. Each layer step is labeled with a counter such as **1/4 Select your base OS pack**. For each layer, select the **Registry**, **Pack Name**, and **Pack Version**. When a pack exposes **Presets**, choose one; update pack **Values** and create [cluster profile variables](../create-cluster-profiles/define-profile-variables/define-profile-variables.md) as needed. Select **Next layer** to proceed to the next infrastructure layer. On the final (Storage) layer, the button reads **Confirm** instead.
 
-   The **Registry** filter defaults to **Public Repo**. The set of packs available on each layer depends on the selected registry and on the cloud type chosen in the previous step. Some pack cards display badges — a green checkmark indicates a verified pack, **TP** indicates a Tech Preview pack, and grayed-out cards indicate deprecated packs that cannot be selected.
+   The **Registry** filter defaults to **Public Repo**. The set of packs available on each layer depends on the selected registry and on the cloud type chosen in the previous step. Some pack cards display badges: a green checkmark marks a verified pack, **TP** marks a Tech Preview pack, and dimmed cards mark deprecated packs that you cannot select.
 
       | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
       | **Operating System** | Select an OS to use with your Kubernetes clusters. Use the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack to use a different or custom OS. Refer to our [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) guide to learn more.                                                                                                                                                                                                                             |
-      | **Kubernetes**       | Select the Kubernetes distribution and version to use with the cluster. Three distributions are available: <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />, MicroK8s, and RKE2. PXK is Palette's recompiled, CNCF-conformant Kubernetes distribution and is the recommended default for most clusters; it also lets you manage an OpenID Connect (OIDC) Identity Provider (IDP), which is useful when your environment does not have an IDP configured. |
+      | **Kubernetes**       | Select the Kubernetes distribution and version to use with the cluster. The available distributions depend on the cloud type; for IaaS clouds these are <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />, MicroK8s, and RKE2. PXK is Palette's recompiled, CNCF-conformant Kubernetes distribution that also lets you manage an OpenID Connect (OIDC) Identity Provider (IDP), which is useful when your environment does not have an IDP configured. |
       | **Network**          | Select a network pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
       | **Storage**          | Select a storage pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
 
