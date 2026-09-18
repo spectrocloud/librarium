@@ -12,13 +12,10 @@ category: ["tutorial"]
 
 The [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) is an abstraction layer over the Palette API
 that lets you interact with your Palette resources through natural language. Instead of navigating the Palette UI or
-scripting against the API directly, you describe what you want in plain English to an MCP-capable client, and the server
-translates that intent into API calls and returns a structured response.
-
-In this tutorial, you configure the Palette MCP Server, list the clusters your credential can access, identify your dev
-cluster, download its kubeconfig, and check that the cluster and its workloads are healthy—end to end, through prompts
-alone. This is the fastest path to confirming your MCP setup works before moving on to more advanced workflows, such as
-automated troubleshooting or agentic pipelines.
+scripting against the API directly, you describe what you want in plain language to an MCP-capable client, and the
+server translates that intent into API calls and returns a structured response. This is the fastest path to confirming
+your MCP setup works before moving on to more advanced workflows, such as automated troubleshooting or agentic
+pipelines.
 
 This tutorial uses [Claude Code](https://code.claude.com/docs/en/overview), but the same prompts work with any
 MCP-capable client—refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
@@ -41,7 +38,7 @@ these popular clients.
 - [Docker](https://docs.docker.com/get-docker/), to run the MCP server as a container—or a native binary if you prefer
   not to use Docker. Refer to the [Architecture](../../../automation/palette-mcp/architecture.md) page for the native
   binary and container image options.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl), to verify workload health in Step 5.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl), to verify workload health in Step 6.
 - An MCP-capable client (Claude Code, Claude Desktop, Cursor, Antigravity, etc.)
 
 **Account requirements:**
@@ -88,9 +85,8 @@ You need two things before configuring the server.
 :::info
 
 **Host format:** bare hostname only—no `https://` prefix, no trailing slash, no path. A malformed host fails loudly the
-first time it's used (config save or first tool call), never silently misroutes. Use the tenant subdomain you sign in
-with (for example, `your-tenant.spectrocloud.com`); a shared entry point like `dev.spectrocloud.com` works identically
-for the same account—your tenant resolves from the API key, not the hostname.
+first time it's used (config save or first tool call) and never sends requests to the wrong host. Use the tenant
+subdomain you sign in with (for example, `your-tenant.spectrocloud.com`).
 
 :::
 
@@ -98,9 +94,8 @@ for the same account—your tenant resolves from the API key, not the hostname.
 
 The server operates at **tenant scope** by default—every read returns results across every project your credential can
 access. To scope a specific request to one project, mention the project by name or
-[Project ID](../../../tenant-settings/projects/projects.md#project-id) in your prompt, and the assistant passes it as
-that call's `project_uid`. If your account or API key lacks tenant-wide access, an unscoped read can return
-`OperationForbidden`—refer to [Troubleshooting](#troubleshooting).
+[Project ID](../../../tenant-settings/projects/projects.md#project-id) in your prompt. If your account or API key lacks
+tenant-wide access, an unscoped read can return `OperationForbidden`—refer to [Troubleshooting](#troubleshooting).
 
 :::
 
@@ -170,11 +165,16 @@ The wizard prompts for a profile name, host, and an API key or JWT, validates th
 saves the entry to `~/.palette/auth_profiles.yaml` at file permissions `0600`. Run it again with a different name to add
 more profiles.
 
+The `configure` wizard and named profiles require the native `palette-mcp` binary (refer to
+[Architecture](../../../automation/palette-mcp/architecture.md)); Docker-based setups pass a single set of environment
+variables instead, as in Step 2 and in the
+[Claude setup guide](../../../automation/palette-mcp/setup/mcp-setup-claude.md).
+
 The resulting file holds one entry per environment.
 
 ```yaml
 dev:
-  host: dev.spectrocloud.com
+  host: example.spectrocloud.com
   api_key: your-dev-api-key
 prod:
   host: your-tenant.spectrocloud.com
@@ -188,9 +188,9 @@ the assistant passes it as that call's `auth_profile` argument. Run `list_auth_p
 
 :::info
 
-Self-hosted CA trust (`PALETTE_CA_FILE`) is configured once at server startup and applies to every profile that needs
-it—this fits dev/prod/RC or multi-tenant setups on the same self-hosted trust domain. Profiles on public SaaS hosts
-don't need it.
+Self-hosted CA trust (`PALETTE_CA_FILE`) is configured once at server startup and applies to every named profile on the
+server—it fits dev/prod/RC setups that share one self-hosted trust domain. A profile on a public SaaS host needs no CA
+file, and fails TLS verification while one is set—run SaaS and self-hosted profiles on separate server instances.
 
 :::
 
@@ -216,17 +216,15 @@ The assistant renders the response as a table.
 | dev-sandbox  | AWS   | Running |
 | staging-eu   | Azure | Running |
 
-By default this calls `read_clusters` at **tenant scope**—you'll view every cluster your credential can access, across
-every project. If you manage multiple projects and only want one, name it in your prompt instead of reconfiguring
-anything.
+This runs at **tenant scope** by default (refer to the note in Step 1). To scope to one project, name it in your prompt.
 
 ```shell title="Example Prompt"
 List clusters in project my-project-uid.
 ```
 
-The assistant passes this as that call's `project_uid` argument—omit it for the tenant-wide default (all projects the
-credential can access). A project-scoped API key (refer to [Prerequisites](#prerequisites)) narrows every response to
-that project automatically, even at the tenant-wide default.
+The assistant passes this as that call's `project_uid` argument. A project-scoped API key (refer to
+[Prerequisites](#prerequisites)) can't read at tenant scope—an unscoped call returns `OperationForbidden` (refer to
+[Troubleshooting](#troubleshooting)).
 
 ## Step 4—Identify Your Dev Cluster
 
@@ -286,7 +284,8 @@ its contents into a shared channel, or leave it in a world-readable location. De
 ### Enable Write Mode
 
 The server is read-only by default. Saving a kubeconfig to disk is the one thing in this tutorial that needs write mode.
-Add `--allow-write` after the image name in your Step 2 config.
+Write mode also unlocks tools that create, modify, or delete resources (`create_cluster`, `delete_project`, etc.). Add
+`--allow-write` after the image name in your Step 2 config.
 
 ```json
 "args": [
@@ -298,13 +297,12 @@ Add `--allow-write` after the image name in your Step 2 config.
 ]
 ```
 
-:::info
-
-Write mode also unlocks tools that create, modify, or delete resources (`create_cluster`, `delete_project`, etc.)—none
-of which this tutorial uses. If you'd rather not enable it, manually save the kubeconfig content returned in Step 5 to a
-local file instead.
-
-:::
+**Using the Docker setup from Step 2?** The server interprets `write_path` inside the container, so a save to
+`~/.palette/kubeconfig/dev-sandbox.yaml` would land inside the container—out of reach of host-side `kubectl`. Add
+`-v /<home>/.palette/kubeconfig:/tmp/kubeconfig` to the `docker run` args in Step 2 (your MCP client runs `docker`
+directly, so use your absolute home path rather than `~`), have the prompt save to `/tmp/kubeconfig/dev-sandbox.yaml`,
+and point `kubectl` at the host path `~/.palette/kubeconfig/dev-sandbox.yaml`. The server automatically removes
+kubeconfig files from the mounted `/tmp/kubeconfig` folder when the container stops.
 
 ## Step 6—Check Cluster and Workload Health
 
@@ -344,9 +342,6 @@ default     hello-universe-7f9c8-def34   0/1     ImagePullBackOff   0
 1 pod is not ready: hello-universe-7f9c8-def34 (ImagePullBackOff).
 ```
 
-A cluster reporting `Running` at the Palette level doesn't guarantee every workload inside it is healthy—check both
-layers before considering a cluster fully verified.
-
 ## Troubleshooting
 
 | Symptom                                                                         | Likely cause                                                     | Fix                                                                                                                                                                                                           |
@@ -362,7 +357,7 @@ layers before considering a cluster fully verified.
 ## Security Best Practices
 
 - Use a project-scoped API key, not a tenant-admin key, for day-to-day MCP use.
-- Default to `mode=readonly` kubeconfigs; reserve `mode=admin` for tasks that specifically require cluster-admin
+- Default to `mode=readonly` kubeconfig files; reserve `mode=admin` for tasks that specifically require cluster-admin
   privileges.
 - Only enable `--allow-write` when you actually need it—everything in this tutorial except saving a kubeconfig locally
   works without it.
@@ -383,12 +378,14 @@ You've completed this tutorial if you can:
 
 ## Cleanup
 
-This tutorial doesn't create any new resources—you listed and read existing clusters only. Nothing to delete. If you
-saved a kubeconfig in Step 5 and no longer need it, delete the local file.
+If you saved a kubeconfig in Step 5 and no longer need it, delete the local file.
 
 ```shell
 rm ~/.palette/kubeconfig/dev-sandbox.yaml
 ```
+
+With the Docker setup, the server automatically removes kubeconfig files from the mounted `/tmp/kubeconfig` folder when
+the container stops—the file may already be gone.
 
 ## Next Steps
 
