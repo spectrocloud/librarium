@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.9.59
+## September 18, 2026 - Release 4.9.59
 
 <!-- PATCH RELEASE TICKET: DOC-3223 -->
 <!-- PATCH RELEASE VERSION: 4.9.59 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-11965 OPS-10912 PSOPS-297 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11965 OPS-10912 -->
 
 ### Improvements
 
@@ -29,11 +29,6 @@ tags: ["release-notes"]
 
 - Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
   containerd.
-
-<!-- https://spectrocloud.atlassian.net/browse/PSOPS-297 -->
-
-- Fixed an issue where Day-2 upgrades of airgapped 4.9 clusters could not complete because the appliance build bundled
-  edge images from the 4.10 line instead of the required 4.9 images, leaving the cluster stuck in provisioning.
 
 ## September 4, 2026 - Release 4.9.54
 
