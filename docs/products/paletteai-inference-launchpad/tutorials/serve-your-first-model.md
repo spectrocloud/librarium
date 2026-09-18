@@ -76,7 +76,7 @@ that CA yet, so we download the certificate now, and reach for it in every step 
 
 1. On the **Overview** page, select **Connect Coding Agent**. The **Connect a coding agent** dialog opens.
 
-2. Select the **Claude Code** tab, and then select **CA certificate**. The browser saves
+2. Select the **Claude Code CLI** tab, and then select **CA certificate**. The browser saves
    `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
 
 3. Close the dialog. We open it again in **Point Claude Code at the Appliance**.
@@ -232,7 +232,7 @@ Now we connect the two halves.
 1. In the console, return to **Overview** and select **Connect Coding Agent**. The **Connect a coding agent** dialog
    opens.
 
-2. Select the **Claude Code** tab, and then select your shell.
+2. Select the **Claude Code CLI** tab, and then select your shell.
 
 3. Select the copy button to copy the generated configuration.
 

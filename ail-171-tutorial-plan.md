@@ -128,15 +128,15 @@ Filled in as I run the tutorial end-to-end against a fresh appliance. One row pe
 
 | Item | Answer |
 | --- | --- |
-| Console version string, exactly as rendered | |
-| Does **Overview** show `all clear` on a healthy box? | |
-| Does the **Connect a coding agent** panel open from **Overview**? | |
-| Is the **Claude Code** tab labelled that, or **Claude Code CLI**? | |
-| Does the panel show a **CA certificate** step for this cert type? | |
-| What filename does the browser save the CA cert as? | |
-| Does the **Connect Coding Agent** control render in title case? | |
+| Console version string, exactly as rendered | 1.1.5 |
+| Does **Overview** show `all clear` on a healthy box? | Yes |
+| Does the **Connect a coding agent** panel open from **Overview**? | Yes, via the **Connect Coding Agent** button top-right |
+| Is the **Claude Code** tab labelled that, or **Claude Code CLI**? | **Claude Code CLI** |
+| Does the panel show a **CA certificate** step for this cert type? | Yes — as a clickable **CA certificate** chip inside the panel's first numbered step |
+| What filename does the browser save the CA cert as? | `palette-ai-inference-launchpad-ca.crt` |
+| Does the **Connect Coding Agent** control render in title case? | Yes (button); the Onboarding widget on **Overview** uses sentence case (`Connect a coding agent`), and the dialog title is also sentence case (`Connect a coding agent`) — three renderings, all on the same product |
 | `/healthz` response shape, verbatim | (paste JSON) |
-| Does an `ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5` alias route by default? | |
+| Does an `ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5` alias route by default? | No — the panel itself carries a yellow banner: *"`claude-fable-5` and `gpt-5.6` are not mapped in the tier map, so an agent that uses them receives a 404. Map them on a client's Routing tab."* |
 | Does any surface still print "Anthropic model aliases return not served"? | |
 | Does the **Tier Map** row have an `edit` control matching `set-tier-thinking.md`? | |
 | Does the **Usage** page show a **Data window** control? | |
@@ -162,7 +162,11 @@ Filled in as I run the tutorial end-to-end against a fresh appliance. One row pe
 
 Free-form list, filed as I go.
 
-- (none yet)
+- **Terminology drift — "Users" in the Connect panel vs "Clients" everywhere else.** The **Connect a coding agent** dialog carries a blue banner: *"Create a per-user token under **Access & Policy → Users → Pick a user → Create token**."* Every other PAIIL surface (nav item, tutorial, how-tos, glossary) uses **Clients** and **Clients & API tokens**. Live product is internally inconsistent — this is the drift flagged in [[reference_paiil_clients_naming_resolved]] and is now visible in the panel a first-time reader lands on.
+- **Emitted env block uses `claude-sonnet-5`, not `claude-sonnet-4-5`.** The tutorial's example block says `ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5`, but the live 1.1.5 panel emits `claude-sonnet-5`. The tutorial says "Use the block the console generated rather than the example", so this is not a reader trap, but the example should be refreshed against a 1.1.5 emission.
+- **`ANTHROPIC_AUTH_TOKEN` is separated from the copied env block in the console.** The panel's numbered instructions put the token export as its own step 3 (with a placeholder `lpai_...` icon), keeping the token out of the block that gets pasted in step 2. The tutorial's example block has `export ANTHROPIC_AUTH_TOKEN='<per-user-token>'` inline, and its step 4 tells the reader to "paste the configuration and replace `<per-user-token>` with the token". Reader trap: the console-generated block doesn't contain that placeholder, so a novice who follows the tutorial's step 4 literally will look for a placeholder that isn't there.
+- **Fable and gpt aliases show up in the emitted config but the panel itself flags them as unmapped.** Panel banner: *"`claude-fable-5` and `gpt-5.6` are not mapped in the tier map, so an agent that uses them receives a 404. Map them on a client's Routing tab."* Confirms the earlier "fable is not routed" claim from the plan; also newly reveals that `gpt-5.6` is emitted in the config too, which the tutorial has never mentioned.
+- **Panel emits `# comment` lines in the env block that the tutorial's example strips.** Not a bug; a novice who pastes the console-generated block will end up with commented exports in their terminal history, which is fine. Note for the walk-through capture: the emitted block is longer than the tutorial's example implies.
 
 ### Tutorial edits queued from the walk
 
@@ -170,3 +174,6 @@ Grouped by tutorial section, so the follow-up commit is easy to write.
 
 - **What You Need**, prereq #3 (model on the appliance) — the old wording ("At least one model uploaded to a node") was not verifiable from any UI surface. `Cluster > Models` is deployed-only (confirmed in `launchpad-ai/ui/src/FleetModels.tsx` line 665: `if (isDeployedModel(m)) modelSet.add(m.model)`). Rewrote as a novice-friendly sequence of small checks: look at **Cluster > Models** first (a row means deployed), fall back to opening **Deploy New Model** and inspecting the **Model** drop-down (a row means uploaded weights ready to deploy), and if both are empty, link out to Upload a Model. Applied.
 - **Deploy a Model** section — the plan's promised "skip 3 and 4 if a model is already serving" affordance was missing. Added a single skip-line at the top of the section pointing already-deployed readers straight to **Create a Client and Its API Token**. Applied.
+- **Tab label renamed to "Claude Code CLI".** The live panel shows tabs **Claude Code CLI**, **Codex CLI**, **Cursor**, **OpenCode**. The tutorial called the first tab **Claude Code** in two places. Both renamed. Applied.
+- **Env block example needs a 1.1.5 refresh (unapplied).** The example still shows `claude-sonnet-4-5`; the live panel emits `claude-sonnet-5`. Not urgent — the reader is told to use the console-generated block, not the example — but the example should be refreshed.
+- **Reader trap in Point Claude Code at the Appliance (unapplied).** The tutorial tells the reader to "paste the configuration and replace `<per-user-token>`", but the console emits the token separately, not inline. Rewrite the step to reflect the two-part paste + export flow.
