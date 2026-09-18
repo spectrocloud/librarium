@@ -317,21 +317,11 @@ Now we confirm the appliance counted it.
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
 
-## Change Two Things and Watch
+## Change a Setting and Watch
 
-Before you leave, change two settings and ask the same question again. Neither change can break anything you did.
+Before you leave, change one setting and ask the same question again. This change cannot break anything you did.
 
-First, turn on thinking for the sonnet tier.
-
-1. From the left main menu, select **Routing**.
-
-2. On the **Tier Map** card, find the `claude-sonnet-` row and select **edit**.
-
-3. In the **Thinking** selector, choose **on**, and then select **Apply tier**. Confirm the plan card.
-
-4. In Claude Code, ask the same coding question again. The model reasons first, so the answer takes longer to arrive.
-
-Second, lower the output ceiling for this shell.
+Lower the output ceiling for this shell.
 
 ```bash
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=1024
@@ -341,10 +331,9 @@ Restart Claude Code and ask the same question again. The reply is shorter, becau
 
 ## What You Built
 
-You deployed a model onto your own GPU, created a client and a token, routed three Claude aliases to that model, had
-Claude Code answer a coding question using the model on your appliance, and watched the requests and tokens land under
-your client on the **Usage** page. You also learned to read GPU memory as a model loads, which is the quickest way to
-tell whether an appliance is busy.
+You created a client and an API token, routed the Tier map's aliases to a model on your appliance, and had Claude Code
+answer a coding question using that model. You also watched the requests and tokens land under your client on the
+**Usage** page.
 
 ## Next Steps
 
