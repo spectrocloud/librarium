@@ -28,8 +28,7 @@ server manually as a container. We recommend the plugin install for most Claude 
 ## Set Up with the Palette Agent Toolkit Plugin
 
 The Palette Agent Toolkit plugin bundles the MCP server configuration and four diagnostic skills (`diagnose-cluster`,
-`diagnose-edge`, `health-overview`, and `access-review`) in a single install. This is the recommended setup path for
-Claude Code and Claude Desktop.
+`diagnose-edge`, `health-overview`, and `access-review`).
 
 1. Start Claude Code in a terminal. Ensure that you authenticate with Claude by following the prompts.
 
@@ -48,8 +47,6 @@ Claude Code and Claude Desktop.
    ```shell
    /plugin install palette@palette-agent-toolkit
    ```
-
-   The plugin installs the MCP server configuration and the four diagnostic skills.
 
 4. Configure your Palette connection. Open the plugin menu, select the **palette** plugin, and choose **Configure
    options**.
@@ -96,14 +93,14 @@ Use this path if you prefer to configure the container image directly instead of
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
 4. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
-   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file, if you have
+   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env-mcp` file, if you have
    configured one.
 
    If you want to use Podman, replace the command `docker` with `podman`.
 
    <Tabs groupId="mcp-setup">
 
-   <TabItem label=".env.mcp File" value="env_file">
+   <TabItem label=".env-mcp File" value="env_file">
 
    ```shell {2}
    claude mcp add --transport stdio palette -- \
@@ -139,24 +136,12 @@ Use this path if you prefer to configure the container image directly instead of
 
    :::
 
-   :::info
-
-   By default, the server operates at tenant scope—every call sees results across every project your credential can
-   access. To scope a request to a single project, mention the project by name or UID in your prompt instead of setting
-   an environment variable; the assistant passes it as that call's `project_uid` argument.
-
-   :::
-
    :::warning
 
-   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server
-   automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
+   The Palette MCP server automatically removes the kubeconfig files from the mounted `/tmp/kubeconfig` folder when the
+   container stops.
 
    :::
-
-   ```shell hideClipboard title="Example Output"
-   Added stdio MCP server palette with command: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest to local config
-   ```
 
 5. Issue the following command to ensure that the MCP server was set up successfully.
 
@@ -173,12 +158,6 @@ Use this path if you prefer to configure the container image directly instead of
 
    ```shell
    claude
-   ```
-
-   ```shell hideClipboard title="Example Output"
-   Welcome to Claude Code
-
-   ›
    ```
 
 7. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
@@ -218,7 +197,7 @@ You can now use the Palette MCP server with Claude Code.
    ```shell title="Example Output"
    ⏺ palette - read_clusters (MCP)(filters: { states: ["Running"] })
 
-   ⏺ You have 1 active cluster in Palette:
+   ⏺ You have 1 active cluster in Palette.
 
    ┌──────────────────┬───────┬─────────┬─────────┬──────────────┐
    │       Name       │ Cloud │  State  │ Health  │   Location   │
