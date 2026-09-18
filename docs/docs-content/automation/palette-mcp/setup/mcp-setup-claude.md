@@ -65,7 +65,6 @@ Claude Code and Claude Desktop.
    | **Palette host**        | Required. Your tenant URL, for example `example.spectrocloud.com`.                       |
    | **Palette API key**     | Required unless you use an auth token. Create one under **User Menu** > **My API Keys**. |
    | **Palette auth token**  | JWT alternative to an API key. Provide an API key **or** an auth token, not both.        |
-   | **Default project UID** | Optional. Scopes all calls to one project; omit for tenant-wide access.                  |
    | **Custom CA file path** | Optional. Path to a CA bundle for a self-hosted Palette behind a private CA.             |
 
    You must set the **Palette host** and either the **Palette API key** or the **Palette auth token**. Claude Code
@@ -120,13 +119,12 @@ Use this path if you prefer to configure the container image directly instead of
 
    Replace the environment variable values in the snippet below with your own values.
 
-   ```shell {2,4,5,6}
+   ```shell {2,4,5}
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
        --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
        -e PALETTE_HOST=<palette-api-endpoint> \
        -e PALETTE_API_KEY=<palette-api-key> \
-       -e PALETTE_PROJECT_UID=<palette-project-id> \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
@@ -138,6 +136,14 @@ Use this path if you prefer to configure the container image directly instead of
 
    To enable write tools, such as create, update, and delete, append `--allow-write` after the image name. By default,
    the server starts in read-only mode.
+
+   :::
+
+   :::info
+
+   By default, the server operates at tenant scope—every call sees results across every project your credential can
+   access. To scope a request to a single project, mention the project by name or UID in your prompt instead of
+   setting an environment variable; the assistant passes it as that call's `project_uid` argument.
 
    :::
 

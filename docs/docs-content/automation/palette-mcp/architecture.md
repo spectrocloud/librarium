@@ -52,13 +52,31 @@ The Palette MCP server accepts the following environment variables and startup f
 | `PALETTE_HOST`        | API endpoint for your Palette installation. For example: `api.spectrocloud.com`. Required.                                                                                                                                            |
 | `PALETTE_API_KEY`     | [Palette API key](../../user-management/authentication/api-key/api-key.md) used for authentication. Required, unless you use `PALETTE_AUTH_TOKEN` instead.                                                                            |
 | `PALETTE_AUTH_TOKEN`  | A JSON Web Token (JWT) that you can use as an alternative to `PALETTE_API_KEY`.                                                                                                                                                       |
-| `PALETTE_PROJECT_UID` | [Project ID](../../tenant-settings/projects/projects.md#project-id) that scopes read operations. If the API key is not tenant-admin scoped, you must set this value. Otherwise, many read tools return an `OperationForbidden` error. |
+| `PALETTE_CA_FILE`     | Path to a CA bundle for a self-hosted Palette instance behind a private CA. Applied once at server startup and shared by every named profile that needs it.                                                                          |
+| `PALETTE_INSECURE_SKIP_VERIFY` | Skips TLS certificate verification for the default profile. For lab or test environments only.                                                                                                                              |
+| `PALETTE_PROFILES_FILE` | Path to the named-profiles file, overriding the default `~/.palette/auth_profiles.yaml`.                                                                                                                                            |
+
+:::warning
+
+`PALETTE_PROJECT_UID` is no longer a supported environment variable. Setting it causes the server to refuse to start. If you're upgrading from an earlier setup, remove it from your MCP client configuration—refer to [Project Scoping](#project-scoping) below for the replacement.
+
+:::
+
+### Project Scoping
+
+The Palette MCP server operates at tenant scope by default—every read returns results across every project your credential can access. To scope a specific request to a single project, mention the project by name or [Project ID](../../tenant-settings/projects/projects.md#project-id) in your prompt; the assistant passes it as that call's `project_uid` argument. Most read tools accept a per-call `project_uid`, and write tools that need one take it as their own argument.
+
+If the API key isn't tenant-admin scoped and a request isn't scoped to a project it can access, the server returns an `OperationForbidden` error—pass `project_uid` on that request to resolve it.
 
 ### Startup Flags
 
 | **Flag**        | **Description**                                                                                                                                                                                                                 |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--allow-write` | Enables write tools, such as create, update, and delete. Without this flag, write tools return `PALETTE_WRITE_DISABLED` and the server operates in read-only mode. Delete tools additionally require a typed-name confirmation. |
+| `--allow-direct-ssh` | Enables the direct-SSH edge diagnostic tools (`read_edge_service_status`/`read_edge_service_logs`, and the direct-SSH path of `run_edge_diagnostic`). Off by default.                                                       |
+| `--allow-tunnel-ssh` | Enables the tunnel-SSH edge diagnostic tools via Hubble's remote shell (the tunnel path of `run_edge_diagnostic`). Off by default.                                                                                           |
+| `--tunnel-ssh-api-key-auth` | Permits the tunnel-SSH API-key authentication branch for profiles without a JWT. Off by default.                                                                                                                     |
+| `--tunnel-ssh-state` | Path to a JSON file that persists the tunnel's last-seen-remote-shell-enabled record, improving the error message when an opt-in has expired. Empty means in-memory only.                                                   |
 | `--audit-file`  | Path to a local JSONL audit log. When set, the server records every tool call, including successes, failures, validation rejections, and write-disabled outcomes.                                                               |
 
 ## Security

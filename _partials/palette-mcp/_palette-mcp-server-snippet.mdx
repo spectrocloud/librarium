@@ -37,7 +37,7 @@ Paste the following snippet in the file, replacing the placeholders with your lo
 
     Replace the environment variable values in the snippet below with your own values.
    
-    ```json {3,11,13,15}
+    ```json {3,11,13}
     "mcpServers": {
         "palette": {
         "command": "docker",
@@ -51,8 +51,6 @@ Paste the following snippet in the file, replacing the placeholders with your lo
             "PALETTE_HOST=<palette-api-endpoint>",
             "-e",
             "PALETTE_API_KEY=<palette-api-key>",
-            "-e",
-            "PALETTE_PROJECT_UID=<palette-project-id>",
             "public.ecr.aws/palette-ai/palette-mcp-server:latest"
         ]
         }
@@ -65,6 +63,12 @@ Paste the following snippet in the file, replacing the placeholders with your lo
    :::info
 
    To enable write operations, such as create, update, or delete tools, append `"--allow-write"` to the `args` array after the image name. By default, the server starts in read-only mode.
+
+   :::
+
+   :::info
+
+   By default, the server operates at tenant scope—every call sees results across every project your credential can access. To scope a request to a single project, mention the project by name or UID in your prompt; the assistant passes it as that call's `project_uid` argument.
 
    :::
 
