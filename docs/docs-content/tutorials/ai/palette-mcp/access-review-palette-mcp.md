@@ -20,7 +20,7 @@ This review reports **tenant-level** roles, as UIDs and counts. **Project-scoped
 check—this is a membership and activation map, not a full role-based access audit. State this scope whenever you share a
 report, so the audience knows exactly what is covered.
 
-## What You Will Learn
+## What This Tutorial Covers
 
 - The team → users → activation → orphans sequence that this skill runs.
 - How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user).
@@ -66,7 +66,7 @@ Live result (redacted) against a real tenant.
 }
 ```
 
-All three teams show `user_count: 0`—every team in this tenant is currently empty.
+All three teams show `user_count: 0`—every team in this tenant is empty.
 
 ## Step 2—List Users
 
@@ -93,7 +93,7 @@ Live result (redacted).
 
 ## Step 3—Flag Activation Gaps
 
-All 7 users show `is_active: true` in this run—zero pending activations. That is a genuine result: in a tenant with
+All seven users show `is_active: true` in this run—zero pending activations. That is a genuine result: in a tenant with
 pending invites, this is exactly where they would show up as `is_active: false`.
 
 ## Step 4—Flag Orphans
@@ -126,7 +126,7 @@ fetching all of them if the tenant has many.
 
 - **Teams (3):** all empty—worth flagging on its own; three teams with no members is either stale team creation or a gap
   in whatever process was supposed to populate them.
-- **Users (7):** 0 pending, 5 confirmed orphans (no roles, no team), 2 with tenant roles.
+- **Users (7):** zero pending, five confirmed orphans (no roles, no team), two with tenant roles.
 - Restate the scope (tenant-only, no project-scoped roles) in the final report every time.
 
 ## Troubleshooting

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Set Up MCP Server with Claude Code"
 title: "Set Up MCP Server with Claude Code"
-description: "Learn how to setup the Palette MCP server with Claude Code."
+description: "Learn how to set up the Palette MCP server with Claude Code."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
@@ -19,7 +19,7 @@ server manually as a container. We recommend the plugin install for most Claude 
 
 - A Palette account.
 
-- A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
+- A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   guide for more information.
 
 - If you plan to configure the MCP server manually, a container engine, such as

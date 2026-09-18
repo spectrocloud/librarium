@@ -13,9 +13,8 @@ category: ["tutorial"]
 The [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) is an abstraction layer over the Palette API
 that lets you interact with your Palette resources through natural language. Instead of navigating the Palette UI or
 scripting against the API directly, you describe what you want in plain language to an MCP-capable client, and the
-server translates that intent into API calls and returns a structured response. This is the fastest path to confirming
-your MCP setup works before moving on to more advanced workflows, such as automated troubleshooting or agentic
-pipelines.
+server translates that intent into API calls and returns a structured response. This tutorial confirms your MCP setup
+works before moving on to more advanced workflows, such as automated troubleshooting or agentic pipelines.
 
 This tutorial uses [Claude Code](https://code.claude.com/docs/en/overview), but the same prompts work with any
 MCP-capable client—refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
@@ -23,7 +22,7 @@ MCP-capable client—refer to the [Claude](../../../automation/palette-mcp/setup
 [Antigravity](../../../automation/palette-mcp/setup/mcp-setup-antigravity.md) setup guides to configure the server with
 these popular clients.
 
-## What You Will Learn
+## What This Tutorial Covers
 
 - How to configure the Palette MCP Server for your tenant
 - How to list and identify clusters using natural-language prompts
@@ -39,7 +38,7 @@ these popular clients.
   not to use Docker. Refer to the [Architecture](../../../automation/palette-mcp/architecture.md) page for the native
   binary and container image options.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl), to verify workload health in Step 6.
-- An MCP-capable client (Claude Code, Claude Desktop, Cursor, Antigravity, etc.)
+- An MCP-capable client (Claude Code, Claude Desktop, Cursor, Antigravity, and so on)
 
 **Account requirements:**
 
@@ -65,7 +64,7 @@ easier to interpret results and troubleshoot.
 | Tool                      | What it does                                                                                                                                                                                                                                                                                        |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `read_clusters`           | Lists clusters, or fetches one by UID.                                                                                                                                                                                                                                                              |
-| `read_cluster_status`     | A cluster's state and health—also the primitive used to poll a cluster's progress.                                                                                                                                                                                                                  |
+| `read_cluster_status`     | A cluster's state and health—also the underlying tool used to poll a cluster's progress.                                                                                                                                                                                                            |
 | `read_cluster_kubeconfig` | Fetches a cluster's [kubeconfig](../../../clusters/cluster-management/kubeconfig.md). `mode=readonly` (default) returns the standard kubeconfig, routed through the cluster's reverse proxy automatically if the `spectro-proxy` pack is installed. `mode=admin` returns cluster-admin credentials. |
 
 All three are read-only and available without any special server flags. This tutorial does not use any tool that
@@ -301,7 +300,7 @@ Write mode also unlocks tools that create, modify, or delete resources (`create_
 
 **Using the Docker setup from Step 2?** The server interprets `write_path` inside the container, so a save to
 `~/.palette/kubeconfig/dev-sandbox.yaml` would land inside the container—out of reach of host-side `kubectl`. Add
-`-v /<home>/.palette/kubeconfig:/tmp/kubeconfig` to the `docker run` args in Step 2 (your MCP client runs `docker`
+`-v /<home>/.palette/kubeconfig:/tmp/kubeconfig` to the `docker run` arguments in Step 2 (your MCP client runs `docker`
 directly, so use your absolute home path rather than `~`), have the prompt save to `/tmp/kubeconfig/dev-sandbox.yaml`,
 and point `kubectl` at the host path `~/.palette/kubeconfig/dev-sandbox.yaml`. The server automatically removes
 kubeconfig files from the mounted `/tmp/kubeconfig` folder when the container stops.
@@ -391,8 +390,8 @@ the container stops—the file may already be gone.
 
 ## Next Steps
 
-The Palette MCP server has many more capabilities than those explored in this tutorial. We encourage you to check out
-the [Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to build on this by
-driving a full deploy-and-verify workflow through Langchain. For focused, skill-driven troubleshooting, refer to the
+The Palette MCP server has many more capabilities than those explored in this tutorial. Refer to the
+[Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to build on this by driving
+a full deploy-and-verify workflow through Langchain. For focused, skill-driven troubleshooting, refer to the
 [cloud cluster](./cloud-triage-palette-mcp.md), [edge host](./edge-triage-palette-mcp.md),
 [fleet health](./fleet-health-palette-mcp.md), and [access review](./access-review-palette-mcp.md) tutorials.

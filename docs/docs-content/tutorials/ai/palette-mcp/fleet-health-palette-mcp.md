@@ -18,11 +18,11 @@ treatment.
 This tutorial runs that scan against a real tenant, scanning the full list and reading states directly. Completing
 [Get Started with Palette MCP](./get-started-palette-mcp.md) first is assumed.
 
-## What You Will Learn
+## What This Tutorial Covers
 
 - The five-scan sequence a fleet health check runs, and what each one is looking for.
-- The difference between a cluster's lifecycle state (`Running`, `Provisioning`) and its health state.
-  (`Healthy`/`UnHealthy`)—they are independent axes
+- The difference between a cluster's lifecycle state (`Running`, `Provisioning`) and its health state
+  (`Healthy`/`UnHealthy`)—they are independent axes.
 - How to read "fleet is healthy" as an actual negative result, not an absence of data.
 
 ## Prerequisites
@@ -58,9 +58,9 @@ What clusters are mid-operation right now?
 ```
 
 `read_cluster_status` with `filters={states:{in:["Pending","Provisioning","Deleting"]}}`. Live result against a real
-tenant returned 8 clusters, all `Provisioning`. These are not failures—a cluster normally passes through this state on
-create or teardown. Report them in a separate bucket from anything actually broken, so you do not mistake "still coming
-up" for "stuck."
+tenant returned eight clusters, all `Provisioning`. These are not failures—a cluster normally passes through this state
+on create or teardown. Report them in a separate bucket from anything actually broken, so you do not mistake "still
+coming up" for "stuck."
 
 ## Step 3—Scan Unhealthy Clusters
 

@@ -19,7 +19,7 @@ In this tutorial, you triage a real cluster from management-plane signals down t
 specific project with a per-call argument, and view a second cluster's clean status as a healthy-baseline comparison.
 Completing [Get Started with Palette MCP](./get-started-palette-mcp.md) first is assumed.
 
-## What You Will Learn
+## What This Tutorial Covers
 
 - How to run the management-plane triage sequence: status, events, observability, attached profiles
 - How to read `read_cluster_status`'s condition list to find the actual blocker, not just the summary `state`

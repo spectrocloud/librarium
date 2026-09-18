@@ -21,7 +21,7 @@ In this tutorial, you enable the edge diagnostic tools, connect to an edge host 
 first-10-minutes triage sequence field engineers use manually, and learn to read the two exit-code conventions the
 catalog relies on. This tutorial uses Claude Code, but the same prompts work with any MCP-capable client.
 
-## What You Will Learn
+## What This Tutorial Covers
 
 - How to enable the edge diagnostic tools (`--allow-direct-ssh`)
 - How to identify an edge host, including when Palette-side auto-discovery is not available
@@ -67,7 +67,8 @@ All of these are read-only. `run_edge_diagnostic` registers when the server star
 
 ## Step 1—Enable the Edge Diagnostic Tools
 
-Edge SSH tools are off by default, alongside the write tools. Add `--allow-direct-ssh` to your server's launch args.
+Edge SSH tools are off by default, alongside the write tools. Add `--allow-direct-ssh` to your server's launch
+arguments.
 
 ```json
 "args": [
@@ -164,7 +165,7 @@ Both calls succeeded (`ok: true`). `ok` reflects the _tool call_, not the system
 the unit itself.
 
 - **`exit_code: 0`**—the unit exists; read `stdout` for its actual state (`active (running)`, `activating`, `failed`,
-  etc.).
+  and so on).
 - **`exit_code: 4`** means `systemctl status` ran against a unit that does not exist on this host at all. This is normal
   when probing a fixed enum against a host that only runs a subset of it—by itself it is not evidence of a problem.
 
@@ -196,7 +197,7 @@ Show me the last 50 log lines for stylus-agent on <EDGE_HOST_IP>.
 
 This host has no `stylus-agent` unit at all (a `status` call for it returns `exit_code: 4`)—yet `journalctl` on the same
 missing unit returns `exit_code: 0` with `-- No entries --`. `journalctl` exiting `0` does not mean the unit exists or
-is healthy—it means the query itself succeeded and found nothing. `status`'s exit code, not `logs`'s, tells you whether
+is healthy—it means the query itself succeeded and found nothing. `status`'s exit code, not `logs`'s, indicates whether
 the unit exists.
 
 For a unit that does exist, `op=logs` returns its actual journal.
@@ -295,9 +296,9 @@ and how they present through this catalog.
 | Symptom                                                   | Check via `run_edge_diagnostic`                                                                                                                                         | What it means                                                                                                          |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Host shows `unpaired` or `unhealthy` in `read_edge_hosts` | `op=logs`, `service=stylus-agent` (or `palette-agent` in agent mode), grep the returned text for `register`/`tls`/`certificate`                                         | Registration/pairing failure—often a VIP certificate missing a SAN, or a duplicate device UID blocking re-registration |
-| Agent will not start after a reboot                       | `op=status`, `service=stylus-agent`, with `No entries` on the paired `op=logs` call, combined with `status` never reaching `active`                                     | A hung `systemctl` PID blocking the start chain                                                                        |
+| Agent fails to start after a reboot                       | `op=status`, `service=stylus-agent`, with `No entries` on the paired `op=logs` call, combined with `status` never reaching `active`                                     | A hung `systemctl` PID blocking the start chain                                                                        |
 | Node stuck `NotReady` in Kubernetes                       | `op=status`, `service=kubelet`—a non-zero, non-4 exit or a `failed` state in `stdout`                                                                                   | Check the reported failure reason in `stdout` against your cgroup version and CNI setup                                |
-| `containerd`/`rke2-*` will not come up                    | `op=status` across `containerd`, `rke2-server`, `rke2-agent`, `k3s`, `k3s-agent` (whichever your deployment uses), then `op=logs` on the one that is active but failing | Narrows the issue to the specific layer (container runtime vs. the Kubernetes distribution on top of it)               |
+| `containerd`/`rke2-*` fail to come up                     | `op=status` across `containerd`, `rke2-server`, `rke2-agent`, `k3s`, `k3s-agent` (whichever your deployment uses), then `op=logs` on the one that is active but failing | Narrows the issue to the specific layer (container runtime vs. the Kubernetes distribution on top of it)               |
 
 ## Step 8—Escalate to the API Tier
 
