@@ -36,8 +36,12 @@ On the appliance:
   To install an appliance, refer to [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
 - At least one model on the appliance. To check, in the console open **Cluster > Models**. If the table lists a row,
-  you have a deployed model. If the table is empty, select **Deploy New Model** and confirm the **Model** drop-down is
-  not empty. If the drop-down is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
+  you have a deployed model.
+
+  ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/serve-your-first-model_cluster-models-deployed.webp)
+
+  If the table is empty, select **Deploy New Model** and confirm the **Model** drop-down is not empty. If the drop-down
+  is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 On your own machine:
 
