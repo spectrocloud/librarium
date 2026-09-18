@@ -168,4 +168,5 @@ Free-form list, filed as I go.
 
 Grouped by tutorial section, so the follow-up commit is easy to write.
 
-- (none yet)
+- **What You Need**, prereq #3 (model on the appliance) — the old wording ("At least one model uploaded to a node") was not verifiable from any UI surface. `Cluster > Models` is deployed-only (confirmed in `launchpad-ai/ui/src/FleetModels.tsx` line 665: `if (isDeployedModel(m)) modelSet.add(m.model)`). Rewrote as a novice-friendly sequence of small checks: look at **Cluster > Models** first (a row means deployed), fall back to opening **Deploy New Model** and inspecting the **Model** drop-down (a row means uploaded weights ready to deploy), and if both are empty, link out to Upload a Model. Applied.
+- **Deploy a Model** section — the plan's promised "skip 3 and 4 if a model is already serving" affordance was missing. Added a single skip-line at the top of the section pointing already-deployed readers straight to **Create a Client and Its API Token**. Applied.

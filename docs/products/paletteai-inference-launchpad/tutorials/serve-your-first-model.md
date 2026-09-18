@@ -35,8 +35,9 @@ On the appliance:
 - The console reachable in a browser at `https://<appliance-address>`, and the local admin account you set during setup.
   To install an appliance, refer to [Install the Appliance](../how-to-guides/install-the-appliance.md).
 
-- At least one model uploaded to a node, with enough free GPU memory to run it. To upload a model, refer to
-  [Upload a Model](../how-to-guides/upload-a-model.md).
+- At least one model on the appliance. To check, in the console open **Cluster > Models**. If the table lists a row,
+  you have a deployed model. If the table is empty, select **Deploy New Model** and confirm the **Model** drop-down is
+  not empty. If the drop-down is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 On your own machine:
 
@@ -114,6 +115,9 @@ Notice that `mem_used_mib` reads `0` on every GPU. Nothing is loaded yet. Rememb
 in **Watch the Weights Load** and the number changes.
 
 ## Deploy a Model
+
+If a model is already deployed on your appliance, skip ahead to **Create a Client and Its API Token** and use that
+model.
 
 Now we give those GPUs something to do.
 
