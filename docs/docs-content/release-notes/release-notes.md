@@ -11,6 +11,90 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 18, 2026 - Component Updates {#component-updates-2026-38}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3215 -->
+<!-- RELEASE DATE: September 18, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.17 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.4 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
+
+The following components have been updated for Palette versions 4.10.16 - 4.10.17 and 4.9.51 - 4.10.17.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.4  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.17 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.17 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3215. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1061 -->
+
+- Palette now blocks access to production SaaS, Artifact Studio, and product downloads from comprehensively sanctioned
+  jurisdictions at the network edge, to meet export control compliance requirements.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3215. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.12.1 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.12.1 |
+| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.0 |
+| <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.22.0 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :x: | :white_check_mark: | 2.2.2 |
+| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `csi` | :white_check_mark: | :x: | 3.7.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.30.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.22 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
+## September 17, 2026 - Release 4.10.17
+
+<!-- PATCH RELEASE TICKET: DOC-3224 -->
+<!-- PATCH RELEASE VERSION: 4.10.17 -->
+<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2408 PLT-2409 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
+
+- Added FIPS provider images to the content bundle when building content with the `--fips` flag in Palette CLI.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-11308 -->
+
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+
+- Fixed an issue where airgapped Enterprise Cluster installations failed to pull cert-manager images because the
+  generated manifest referenced the upstream registry and an unpublished image tag instead of the local registry.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
+
+- Fixed an issue that caused the Palette CLI shell completion command to fail.
+
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3191 -->
@@ -452,14 +536,13 @@ troubleshooting scenario.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
 
 - Edge clusters in appliance mode can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at
-  runtime, instead of embedding those binaries in the provider image. This applies in both connected and airgapped
-  environments. On operating systems running systemd version 255 or later, provider images built with CanvOS 4.10.x
-  exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers them through systemd extensions.
-  Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the
-  CanvOS `.arg` file overrides the default when a specific flow requires the binaries embedded. Unified Kernel Image
+  runtime, instead of embedding those binaries in the provider image. This feature is a Technical Preview. This applies
+  in both connected and airgapped environments. On operating systems running systemd version 255 or later, provider
+  images built with CanvOS 4.10.x exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers
+  them through systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. Unified Kernel Image
   (UKI) deployments do not support systemd extensions and continue to receive these binaries embedded in the provider
   image. Refer to
-  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
   for build and upgrade guidance.
 
 #### Improvements
