@@ -219,7 +219,7 @@ model answers the requests this client sends.
    **Next**. The wizard requires every alias to be mapped before it lets you continue.
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
-   **Label**, leave **Expires** blank, and then select **Add Token**.
+   **Label**, select a date within the next year in **Expires**, and then select **Add Token**.
 
 8. Select **Create**.
 
