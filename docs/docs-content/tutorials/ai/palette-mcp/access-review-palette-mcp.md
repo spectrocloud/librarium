@@ -10,20 +10,20 @@ toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-The `access-review` skill builds a tenant-wide membership and activation map: who's on which team, who's still pending
-activation, and who has no team and no tenant role at all (an orphaned account). It's a good starting point for security
+The `access-review` skill builds a tenant-wide membership and activation map: who is on which team, who is still pending
+activation, and who has no team and no tenant role at all (an orphaned account). It is a good starting point for security
 reviews, onboarding audits, or offboarding checks.
 
 ## What This Review Covers
 
 This review reports **tenant-level** roles, as UIDs and counts. **Project-scoped** role assignments require a separate
 check—this is a membership and activation map, not a full role-based access audit. State this scope whenever you share a
-report, so the audience knows exactly what's covered.
+report, so the audience knows exactly what is covered.
 
 ## What You'll Learn
 
-- The team → users → activation → orphans sequence this skill runs
-- How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user)
+- The team → users → activation → orphans sequence that this skill runs.
+- How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user).
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ tenant-wide read access to teams and users. No special server flags.
 
 :::info
 
-Every user in this tutorial's live run is replaced with a placeholder (`user1@example.com`, etc.)— real names and email
+Every user in this tutorial's live run is replaced with a placeholder (for example, `user1@example.com`)— real names and email
 addresses were captured during the run and then redacted before anything was written to this document. No real
 identifier appears below.
 
@@ -93,8 +93,8 @@ Live result (redacted).
 
 ## Step 3—Flag Activation Gaps
 
-All 7 users show `is_active: true` in this run—zero pending activations. That's a genuine result: in a tenant with
-pending invites, this is exactly where they'd show up as `is_active: false`.
+All 7 users show `is_active: true` in this run—zero pending activations. That is a genuine result: in a tenant with
+pending invites, this is exactly where they would show up as `is_active: false`.
 
 ## Step 4—Flag Orphans
 
@@ -118,7 +118,7 @@ rather than inferring from Step 1.
 
 ## Step 5—Team Rosters and Per-User Detail
 
-With every team empty, there's no roster to expand in this run. In a tenant with real team membership, `read_teams` with
+With every team empty, there is no roster to expand in this run. In a tenant with real team membership, `read_teams` with
 `uid=<team_uid>` returns `Spec.Users[]`/`Spec.Roles[]` for one team at a time—ask which teams to expand rather than
 fetching all of them if the tenant has many.
 
@@ -143,11 +143,11 @@ fetching all of them if the tenant has many.
 - Access-review output carries real people's identifiers (names, emails, activation state), even against an internal
   test tenant—redact before sharing beyond the person who requested it.
 - To act on a finding (clear an orphan's roles, adjust team membership), the write tools (`update_user`, `update_team`)
-  need `--allow-write`—this tutorial doesn't use them.
+  need `--allow-write`—this tutorial does not use them.
 
 ## Validate
 
-You've completed this tutorial if you can:
+You have completed this tutorial if you can:
 
 - [ ] Run the team → user → activation → orphan sequence against your own tenant.
 - [ ] State this skill's scope (tenant-only roles, no project-scoped access) in your own report.

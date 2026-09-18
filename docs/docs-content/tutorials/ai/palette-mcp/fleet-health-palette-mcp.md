@@ -20,10 +20,10 @@ This tutorial runs that scan against a real tenant, scanning the full list and r
 
 ## What You'll Learn
 
-- The five-scan sequence a fleet health check runs, and what each one is looking for
-- The difference between a cluster's lifecycle state (`Running`, `Provisioning`) and its health state
-  (`Healthy`/`UnHealthy`)—they're independent axes
-- How to read "fleet is healthy" as an actual negative result, not an absence of data
+- The five-scan sequence a fleet health check runs, and what each one is looking for.
+- The difference between a cluster's lifecycle state (`Running`, `Provisioning`) and its health state.
+  (`Healthy`/`UnHealthy`)—they are independent axes
+- How to read "fleet is healthy" as an actual negative result, not an absence of data.
 
 ## Prerequisites
 
@@ -58,8 +58,8 @@ What clusters are mid-operation right now?
 ```
 
 `read_cluster_status` with `filters={states:{in:["Pending","Provisioning","Deleting"]}}`. Live result against a real
-tenant returned 8 clusters, all `Provisioning`. These aren't failures—a cluster normally passes through this state on
-create or teardown. Report them in a separate bucket from anything actually broken, so you don't mistake "still coming
+tenant returned 8 clusters, all `Provisioning`. These are not failures—a cluster normally passes through this state on
+create or teardown. Report them in a separate bucket from anything actually broken, so you do not mistake "still coming
 up" for "stuck."
 
 ## Step 3—Scan Unhealthy Clusters
@@ -71,7 +71,7 @@ Are any clusters unhealthy, even if they're technically running?
 `read_cluster_status` with `filters={health_state:{eq:"UnHealthy"}}` (note the capital `H`—lower `unhealthy` returns an
 empty set silently, per the skill's own guidance). This filter is independent of Step 2's lifecycle filter: live results
 included every cluster from Step 2's `Provisioning` set (unhealthy while mid-operation is expected) plus one additional
-cluster in `Unknown` state that Step 2 didn't surface. That's a lifecycle-idle cluster that is genuinely
+cluster in `Unknown` state that Step 2 did not surface. That is a lifecycle-idle cluster that is genuinely
 unhealthy—exactly the case this scan exists to catch. The [cloud-triage tutorial](./cloud-triage-palette-mcp.md) covers
 what root-causing that specific cluster looked like.
 
@@ -93,8 +93,8 @@ Any edge hosts that registered but never paired?
 
 `read_edge_hosts` with `filters={state:"unpaired"}`. Live result against one tenant returned several unpaired hosts—a
 mix of what looked like leftover test registrations. This is a real onboarding-gap signal: hardware that showed up in
-Palette but was never paired to a cluster. Whether that's expected (a host awaiting provisioning) or worth cleaning up
-(a host someone forgot about) depends on context the scan itself doesn't have—that's a judgment call for the reader.
+Palette but was never paired to a cluster. Whether that is expected (a host awaiting provisioning) or worth cleaning up
+(a host someone forgot about) depends on context the scan itself does not have—that's a judgment call for the reader.
 
 ## Step 6—Synthesize
 
@@ -106,7 +106,7 @@ Group everything from Steps 1–5 into:
 - 📌 **Edge hosts unpaired**—from Step 5.
 - 📌 **In-progress operations**—from Step 2. Context only, not problems.
 
-If every working scan comes back empty, that's a real "fleet is healthy" result, not a sign something didn't run. A
+If every working scan comes back empty, that is a real "fleet is healthy" result, not a sign something did not run. A
 health-overview scan across a real, actively used tenant surfaces real, unresolved things most of the time.
 
 ## Troubleshooting

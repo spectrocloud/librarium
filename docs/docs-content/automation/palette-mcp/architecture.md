@@ -48,7 +48,7 @@ The Palette MCP server accepts the following environment variables and startup f
 :::warning
 
 `PALETTE_PROJECT_UID` is no longer a supported environment variable. Setting it causes the server to refuse to start. If
-you're upgrading from an earlier setup, remove it from your MCP client configuration—refer to
+you are upgrading from an earlier setup, remove it from your MCP client configuration—refer to
 [Project Scoping](#project-scoping) below for the replacement.
 
 :::
