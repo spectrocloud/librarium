@@ -231,7 +231,7 @@ model answers the requests this client sends.
 
    :::
 
-10. In the same modal, select **Connect Agent**. The **Connect a coding agent** dialog opens.
+10. In the same modal, select **Connect Agent**. The coding-agent setup expands inline.
 
 ## Point Claude Code at the Appliance
 
