@@ -276,8 +276,12 @@ Now we confirm the appliance counted it.
 3. Find the **Local vs external** card. Every token is kept on the Launchpad, and the share routed externally reads zero
    tokens, because your appliance answered each request and no frontier model took part.
 
+   ![Usage Overview tab with the Totals card showing requests and tokens risen from zero, and the Local vs external card showing 100 percent kept on the Launchpad.](/assets/docs/images/serve-your-first-model_usage-overview.webp)
+
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
+
+   ![Usage By Client tab with a coding-agent row showing 1 API key, 3 local requests, and 86.9K local tokens.](/assets/docs/images/serve-your-first-model_usage-by-client.webp)
 
 ## Change a Setting and Watch
 
