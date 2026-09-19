@@ -9,7 +9,7 @@ sidebar_position: 30
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "day 1"]
 ---
 
-<!-- SCAFFOLD (DOC-3090 Day 1). Registration, cluster profile, deploy, GPU access, and model serving are all VALIDATED on the Thor 2026-09-14 (see the inline "Validated" comments in each section). Do NOT publish yet: this page documents Jetson AGX Thor, whose ARM64 support statement is still gated on engineering sign-off (DOC-3093, Rishi; hardware-requirements.md currently verifies Orin only). Remaining smaller items: the agent-version pin question and a registration screenshot. The local-admin block (stages.initramfs.users) was added from the agent-mode install reference (install-agent-host.md) but not yet re-validated on a Thor rebuild, because this unit registered before it was added. -->
+<!-- SCAFFOLD (DOC-3090 Day 1). Registration, cluster profile, deploy, GPU access, and model serving are all VALIDATED on the Thor 2026-09-14 and re-validated on a clean flash 2026-09-18 (see the inline "Validated" comments in each section). Do NOT publish yet: this page documents Jetson AGX Thor, whose ARM64 support statement is still gated on engineering sign-off (DOC-3093, Rishi; hardware-requirements.md currently verifies Orin only). The agent-version pin question is resolved (Palette reconciles the agent on registration; no pin needed) and the local-admin block was re-validated on the 2026-09-18 clean flash. Remaining smaller items: a registration screenshot for the Verify step, and confirming the `ollama ps` SIZE value (see the VERIFY in Serve and verify the model). -->
 
 This page describes Day 1 of running Edge AI workloads on an NVIDIA Jetson device. Starting from a host you prepared in
 [Prepare the Jetson Host](./prepare-jetson-host.md), you register the device with Palette as an Edge host in
@@ -43,7 +43,7 @@ There is no required directory for the file. Create it in your working directory
 `./user-data`, and point the installer at it with the `USERDATA` environment variable in the
 [Install the Palette agent](#install-the-palette-agent) section.
 
-<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). The stages.initramfs.users block (local admin) comes from the agent-mode install reference and is used on a BYO host; only the appliance-mode disk-partitioning install: fields do not apply. -->
+<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). The stages.initramfs.users block (local admin) comes from the agent-mode install reference and is used on a BYO host; only the appliance-mode disk-partitioning install: fields do not apply. Re-validated 2026-09-18 on a clean flash: the kairos local-admin block creates the account and it logs in over SSH, at the host TUI (F2), and through Local UI. -->
 
 ```yaml
 #cloud-config
@@ -71,10 +71,11 @@ This set registers the host and creates a local administrator account. Note the 
   that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
   registration token instead, omit `projectName`.
 - The `stages.initramfs.users` block creates a local administrator account, named `kairos` here and added to the `sudo`
-  group. Because any operating system user can sign in to [Local UI](../../clusters/edge/local-ui/local-ui.md), this
-  account gives an administrator a reliable local and SSH login for troubleshooting after the host joins Palette.
-  Replace `<strong-password>` with a strong password, and name the user whatever you prefer. Always include a local
-  account so that the host remains reachable if it loses its connection to Palette.
+  group. This account gives an administrator a reliable break-glass login for troubleshooting after the host joins
+  Palette, over SSH, at the host's TUI, and through [Local UI](../../clusters/edge/local-ui/local-ui.md), because any
+  operating system user can sign in to Local UI. Replace `<strong-password>` with a strong password, and name the user
+  whatever you prefer. Always include a local account so that the host remains reachable if it loses its connection to
+  Palette.
 - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
 - You do not need the disk-partitioning fields under `install:` that appliance-mode installer images use, because the
   agent runs on the existing host operating system.
@@ -94,7 +95,7 @@ full list of configuration options.
 Point the installer at the `user-data` file, then download and run the Palette agent installation script on the device.
 The installer downloads the agent, unpacks the agent runtime, configures the systemd service, and starts registration.
 
-<!-- TODO(DOC-3090): Confirm which agent version the ARM64 install script resolves to and whether to pin a 4.10.x-matching tag. Validated on the Thor 2026-09-14: the script resolved to agent v4.8.29 against Palette 4.10.16, which is within the N-2 agent compatibility window; Palette reconciles the agent version on cluster provisioning unless pinned. Steps below mirror install-agent-host.md (steps 5-8): export USERDATA, download the script, chmod, then run with sudo --preserve-env. Do NOT use a `curl | sudo bash` pipe. A JetPack (Ubuntu-based) host uses the non-FIPS script, because the FIPS build is RHEL/Rocky only. -->
+<!-- Resolved (DOC-3090) 2026-09-14/18: the ARM64 install script resolves to agent v4.8.29, but after the host registers Palette reconciles the agent up to the version that matches the Palette instance (observed v4.10.4 in Local UI + Host Overview against Palette 4.10.16). No version pin needed. Open: confirm with eng whether the reconcile happens on registration (observed) or on cluster provisioning. Steps below mirror install-agent-host.md (steps 5-8): export USERDATA, download the script, chmod, then run with sudo --preserve-env. Do NOT use a `curl | sudo bash` pipe. A JetPack (Ubuntu-based) host uses the non-FIPS script, because the FIPS build is RHEL/Rocky only. -->
 
 1. Export the path to your `user-data` file.
 
@@ -128,14 +129,24 @@ install reference, including the SaaS and self-hosted download commands and the 
 
 :::info
 
-During installation, the agent log might show an error such as
-`Error on file /system/oem/80_stylus_agent_mode.yaml on stage Pull userdata: no metadata/userdata found`, followed by a
-warning that the `before-install` stage had one error. This is expected on a Jetson and does not indicate a failed
-install. The installer reads your local `user-data` file directly. The `Pull userdata` stage separately probes for a
-cloud metadata source, such as a CD-ROM or a cloud provider metadata service, which a bare device does not have.
-Installation continues and reports `palette edge installation completed successfully` when it finishes.
+The install script resolves the latest agent build for your architecture. After the host registers, Palette reconciles
+the agent to the version that matches your Palette instance, so you do not need to pin an agent version.
 
 :::
+
+:::info
+
+During installation, the agent log might show messages about skipping a metadata or user-data source, such as
+`skipping /system/oem/80_stylus_agent_mode.yaml because it has no valid header` or
+`Error on file /system/oem/80_stylus_agent_mode.yaml on stage Pull userdata: no metadata/userdata found`. These messages
+are expected on a bare Jetson and do not indicate a failed install. The installer reads your local `user-data` file
+directly, while that stage separately probes for a cloud metadata source, such as a CD-ROM or a cloud provider metadata
+service, which a bare device does not have. Installation continues and reports
+`palette edge installation completed successfully` when it finishes.
+
+:::
+
+<!-- Resolved (DOC-3090) 2026-09-18: on the clean flash the classic "Pull userdata: no metadata/userdata found" line did NOT appear in the install-script log; instead the log showed "skipping /system/oem/80_stylus_agent_mode.yaml because it has no valid header" and "skipping /oem/.spectrocloud/.install_completion (extension)". The classic wording may still surface in the post-reboot agent journal (not checked this run). Both variants are benign; the info box now names both. -->
 
 ## Verify the host registers
 
@@ -150,7 +161,10 @@ inventory.
    appears as a new Edge host. Use the **Architecture** filter to confirm it is an ARM64 host.
 
 Once the host connects to Palette, it shows a **Ready** status and a **Healthy** state. Palette also detects the device
-GPU and lists it in the **GPU** column. For a Jetson AGX Thor, this reads as `1 NVIDIA Thor`.
+GPU and lists it in the **GPU** column. The integrated GPU reports `0.00 GB` of GPU memory, which is expected on a
+Jetson, because the GPU shares system memory instead of having dedicated memory. This is not a detection failure.
+
+<!-- VERIFY(DOC-3090): On the 2026-09-18 clean flash the GPU column read "1 NVIDIA NVIDIA Thor, 0.00 GB" — the vendor and model strings are concatenated ("NVIDIA" doubled). This looks like a product display bug; flag to Rishi/eng and either get it fixed or match the real string in the docs. Wording above is deliberately generic to avoid baking in the doubled name. The 0.00 GB is correct (unified memory). -->
 
 :::info
 
@@ -193,21 +207,23 @@ plane and your workloads.
 2. Select **Edge Native** as the cluster type, and then start the Edge Native configuration.
 3. Enter the cluster basic information, and then select **Next**.
 4. Select the cluster profile you created, and then continue through the profile layers.
-5. In the node pool configuration, set the pool **Architecture** to **ARM64**, and then add the registered Jetson host
-   to the pool.
+5. In the node pool configuration, set the pool **Architecture** to **ARM64** first, and then add the registered Jetson
+   host to the pool. The host appears in the list of hosts to add only after you set the architecture to **ARM64**.
 6. Review the settings and deploy the cluster.
 
 :::warning
 
-In the node pool **Pool Configuration**, the **Architecture** field defaults to **AMD64**. Change it to **ARM64** for a
-Jetson device. If you leave the default, the cluster does not build correctly.
+In the node pool **Pool Configuration**, the **Architecture** field defaults to **AMD64**. Change it to **ARM64** before
+you add the host. The registered Jetson host does not appear in the list of available hosts until the pool architecture
+is set to **ARM64**, because Palette filters the available hosts by architecture. If you miss this step, the Jetson
+seems to be missing even though it registered correctly.
 
 :::
 
 The cluster deploys as a single node that runs both the control plane and workloads. When the deployment finishes, the
 cluster reaches a **Running** state and a **Healthy** status.
 
-<!-- Validated on the Thor 2026-09-14: node Ready, K3s v1.36.2+k3s1, arch arm64, kernel 6.8.12-1021-tegra, Ubuntu 24.04.5; Flannel and kube-vip pods Running, all system pods healthy. The ARM64 node-pool default is AMD64 and must be changed by hand. -->
+<!-- Validated on the Thor 2026-09-14: node Ready, K3s v1.36.2+k3s1, arch arm64, kernel 6.8.12-1021-tegra, Ubuntu 24.04.5; Flannel and kube-vip pods Running, all system pods healthy. The ARM64 node-pool default is AMD64 and must be changed by hand. Refined 2026-09-18: the real symptom of leaving AMD64 is that the ARM64 Jetson host does not appear in the add-host list (Palette filters hosts by architecture), not a failed build — the warning now leads with that. -->
 
 ## Enable GPU access for workloads
 
@@ -265,6 +281,8 @@ Deploy a model server that runs on the GPU, pull a model, and confirm that it re
 pattern described in [Enable GPU access for workloads](#enable-gpu-access-for-workloads).
 
 <!-- Validated on the Thor 2026-09-14: official ollama/ollama:latest (multi-arch, no Jetson-specific build) runs llama3.2:1b at 100% GPU (ollama ps PROCESSOR column) and serves completions over the /api/generate endpoint. The llama.cpp fallback is not needed. Model data is ephemeral without a PVC. -->
+<!-- VERIFY(DOC-3090/3092): the example `ollama ps` output shows SIZE 6.4 GB for llama3.2:1b. A 1B model is ~1.3 GB on disk; 6.4 GB is plausible as the loaded footprint including the 131072-token KV cache, but confirm it against the real captured `ollama ps` line before publishing (the Day-1 demo also ran llama3.1:8b via Open WebUI for metrics — do not confuse the two). If the DOC-3092 tutorial standardizes on a different model, update both the model name and the SIZE here. -->
+<!-- Resolved (DOC-3090) 2026-09-18: `ollama ps` lists only loaded (running) models, and `ollama pull` downloads without loading, so ps stays empty until a request loads the model. Steps reordered to send a request before ollama ps, otherwise the reader sees empty output and thinks the GPU is not engaged. -->
 
 1. Create a `Deployment` and a `Service` for Ollama. The pod sets `runtimeClassName` and the `NVIDIA_*` environment
    variables so that it reaches the device GPU.
@@ -319,14 +337,22 @@ pattern described in [Enable GPU access for workloads](#enable-gpu-access-for-wo
    kubectl rollout status deployment/ollama
    ```
 
-3. Pull a model into the running server.
+3. Pull a model into the running server. The pull downloads the model but does not load it. Ollama loads a model into
+   the GPU on the first request.
 
    ```shell
    kubectl exec deployment/ollama -- ollama pull llama3.2:1b
    ```
 
-4. Confirm the model runs on the GPU. In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the
-   model runs on the Jetson GPU instead of the CPU.
+4. Send a request to load and exercise the model. The response confirms that the model serves inference.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
+   ```
+
+5. Confirm the model runs on the GPU. Because `ollama ps` lists only loaded models, run it after the request in the
+   previous step. In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the
+   Jetson GPU instead of the CPU.
 
    ```shell
    kubectl exec deployment/ollama -- ollama ps
@@ -337,13 +363,13 @@ pattern described in [Enable GPU access for workloads](#enable-gpu-access-for-wo
    llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
    ```
 
-5. Send a request to the serving endpoint. Forward the `Service` port to your workstation.
+6. To reach the model over its HTTP API from your workstation, forward the `Service` port.
 
    ```shell
    kubectl port-forward service/ollama 11434:11434
    ```
 
-6. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the
+7. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the
    endpoint serves inference from the device GPU.
 
    ```shell
