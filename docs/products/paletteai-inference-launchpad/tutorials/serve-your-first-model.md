@@ -259,11 +259,10 @@ Now we connect the two halves.
 
 ## Ask a Question, and Then Ask Another
 
-Now we ask it a question. In your Claude Code session, ask a coding question, such as
-`what is the difference between a shallow copy and a deep copy?`
+1. In your Claude Code session, ask a coding question, such as `what is the difference between a shallow copy and a
+   deep copy?` The model on your appliance answers. That reply came from your own hardware.
 
-The model on your appliance answers. That reply came from your own hardware. Ask a second question, and notice that the
-reply arrives the same way. This is the loop you work in from now on.
+2. Ask a second question. The reply arrives the same way. This is the loop you work in from now on.
 
 ## Monitor Your Token Usage
 
