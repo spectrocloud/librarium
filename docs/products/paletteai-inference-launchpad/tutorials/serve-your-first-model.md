@@ -249,23 +249,6 @@ Now we connect the two halves.
 3. In the panel, select the copy button next to the `export ANTHROPIC_AUTH_TOKEN=...` line. In your terminal, paste
    it. The panel fills in your real token, so nothing needs replacing.
 
-The configuration sets your appliance address, the platform CA certificate you downloaded in
-**Download the Platform CA Certificate**, and the model alias for each tier. Each appliance advertises its own tier
-aliases, so your values can differ from the following example. Use the block the console generated rather than the
-example.
-
-```bash
-export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
-export ANTHROPIC_BASE_URL=https://<appliance-address>
-export ANTHROPIC_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8
-export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5
-export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
-export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
-export CLAUDE_CODE_EFFORT_LEVEL=auto
-export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
-```
-
 {/* TODO: reference/known-issues.md still publishes that Anthropic model aliases return not served with no version scope, which contradicts this tutorial; confirm with an SME whether that entry is stale or needs version scoping. */}
 
 4. Start Claude Code.
