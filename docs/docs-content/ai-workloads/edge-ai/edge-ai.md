@@ -31,8 +31,10 @@ On ARM64 devices such as the Jetson family, Palette registers the host using
 - [Prepare the Jetson Host](./prepare-jetson-host.md) - Install the software prerequisites and prepare the device so it
   can register with Palette.
 
+- [Day 2 Operations](./day-2-operations.md) - Monitor, upgrade, back up, troubleshoot, and decommission a Jetson Edge AI
+  deployment after it is registered and serving a model.
+
 <!-- prettier-ignore-end -->
 
-<!-- TODO(DOC-3090): add "Register a Jetson host and serve a model" (Day 1) card once that page exists. -->
-<!-- TODO(DOC-3091): add "Day 2 operations for Jetson Edge AI" card once that page exists. -->
+<!-- TODO(DOC-3090): add "Register a Jetson host and serve a model" (Day 1) card once that page exists; place it before the Day 2 card. -->
 <!-- TODO(DOC-3092): add "Run a local AI model on a Jetson at the edge" tutorial card once that page exists. -->
