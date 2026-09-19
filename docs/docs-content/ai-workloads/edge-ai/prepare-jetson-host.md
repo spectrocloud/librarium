@@ -26,19 +26,31 @@ During the operating system setup, the installer prompts you to enable [Ubuntu P
 is optional and is not required by Palette or the Palette agent. Enable it only if your organization wants Ubuntu's
 Extended Security Maintenance (ESM) or compliance tooling on the host.
 
-<!-- VERIFY(DOC-3089): Ubuntu Pro on Jetson. The device runs the NVIDIA Jetson Linux (L4T) kernel, not a Canonical-built Ubuntu kernel, so kernel-level Pro features (Livepatch and the FIPS kernel) are expected NOT to apply; only the Ubuntu userspace (ESM, usg hardening) should. Not yet confirmed on the Thor — this unit was set up with Pro disabled. Validate on a rebuild with Pro enabled (`pro status` lists which services actually attach) before adding a customer-facing caveat about the Jetson kernel. -->
+On a Jetson, only some Ubuntu Pro services apply. The device runs the NVIDIA Jetson Linux (L4T) kernel rather than a
+Canonical-built Ubuntu kernel, so the kernel-level Pro services are not available. The `esm-infra` and `esm-apps`
+services attach, while Livepatch and the FIPS kernel report as not applicable. Do not enable the FIPS kernel, FIPS
+updates, or the real-time kernel on a Jetson, because those services attempt to replace the L4T kernel.
 
-<!-- VERIFY(DOC-3089): Record the JetPack and L4T versions actually installed on the Thor (the factory-flashed value 38.0.0-gcid-41245178 that the device reports at first boot is the UEFI firmware version, NOT the JetPack/L4T version). Capture the real values on the device with:
-       cat /etc/nv_tegra_release        # L4T release
-       apt-cache show nvidia-jetpack    # JetPack version, if the meta-package is installed
-       lsb_release -a                   # Ubuntu base version
-     NVIDIA's current release is JetPack 7.2.1 (Jetson Linux L4T r39.2.1); confirm what this unit is on before publishing. -->
+<!-- Resolved (DOC-3089) 2026-09-18 on the Thor (`pro status --all`, kernel 6.8.12-1021-tegra): esm-infra + esm-apps = enabled; livepatch + fips = n/a; fips-updates + realtime-kernel = "disabled (entitled)" and must not be enabled (they would try to swap the L4T kernel). Validated with the free personal Pro tier; customers attach an org token with the same service availability. -->
+
+After the operating system is installed, confirm the versions on the device. The value the device reports at first boot,
+such as `38.0.0-gcid-...`, is the UEFI firmware version, not the operating system version. Use the following commands
+instead:
+
+- `cat /etc/nv_tegra_release` reports the authoritative Jetson Linux (L4T) release.
+- `lsb_release --all` reports the Ubuntu base version.
+- `apt-cache show nvidia-jetpack` reports the JetPack version, but only if you installed the JetPack SDK meta-package.
+  On the base operating system, derive the JetPack version from the L4T release.
+
+For the validated versions, refer to [Jetson Requirements](./jetson-requirements.md).
+
+<!-- Resolved (DOC-3089) 2026-09-14/18 on the Thor: /etc/nv_tegra_release = R39 REVISION 2.1 (L4T r39.2.1); lsb_release = Ubuntu 24.04 LTS (noble). The nvidia-jetpack meta-package is NOT installed on the base image, so /etc/nv_tegra_release is the authoritative check; apt-cache show nvidia-jetpack only works after installing the SDK. JetPack 7.2.1 corresponds to L4T r39.2.1 per NVIDIA's mapping. The versions table lives on jetson-requirements.md. -->
 
 ## Install software prerequisites
 
 Install the software that the Palette agent requires. The following packages are required on the host.
 
-<!-- VERIFY(DOC-3089): Confirm every package below installs and runs on JetPack (Ubuntu ARM64) on the Thor. This list is the agent-mode prerequisite set from install-agent-host.md, verified for AMD64. -->
+<!-- Resolved (DOC-3089) 2026-09-18 on the Thor: all packages install on JetPack (Ubuntu ARM64). bash/jq/zstd/rsync/iptables/rsyslog were already the newest version; conntrack installed new; the systemd stack upgraded. During libpam-systemd setup, pam-auth-update prints cosmetic Perl "uninitialized value" warnings that are non-fatal. -->
 
 - [bash](https://www.gnu.org/software/bash/), configured as the default shell
 - [jq](https://jqlang.github.io/jq/download/)
@@ -66,24 +78,18 @@ sudo apt-get install --yes --no-install-recommends \
 
 Enable the required systemd services.
 
-<!-- VERIFY(DOC-3089): Confirmed on the Thor over SSH on 2026-09-08 — running `systemctl enable --now systemd-networkd` severed the SSH session because the interface was managed by another network stack. Validate the exact guidance (pre-configure networkd vs. require console access, and which manager JetPack ships by default) on a clean rebuild before publishing. -->
-
-:::warning
-
-If you are connected to the Jetson device over SSH, enabling `systemd-networkd` might interrupt your session. Bringing
-up `systemd-networkd` can take over the network interfaces that another network manager, such as NetworkManager or
-`ifupdown`, currently controls, which drops your connection. Before you enable `systemd-networkd` on a remote host,
-confirm that you have console access to the device, or configure `systemd-networkd` with your network settings first so
-the interface stays up.
-
-:::
-
 ```shell
 sudo systemctl enable --now systemd-timesyncd
 sudo systemctl enable --now systemd-resolved
-sudo systemctl enable --now systemd-networkd
 sudo systemctl enable --now rsyslog
 ```
+
+On JetPack, `systemd-networkd` is already active, so you do not enable it here. NetworkManager manages the device
+network interface, and `systemd-networkd` runs alongside it with its interfaces unmanaged, which is sufficient for the
+Palette agent. You only configure `systemd-networkd` to manage an interface if you set up an overlay network, as
+described in [Prepare networking](#prepare-networking).
+
+<!-- Resolved (DOC-3089) 2026-09-18 on the Thor: systemd-networkd is already active on JetPack but every interface is SETUP=unmanaged; NetworkManager owns the NIC (enP2p1s0, "Wired connection 1"). A bare `systemctl enable --now systemd-networkd` does NOT drop SSH on this build because it does not seize the NIC. The SSH-drop seen on 2026-09-08 happens when networkd is configured to MANAGE the interface you are connected over; that warning now lives on the Prepare networking / overlay step below, not here. -->
 
 :::info
 
@@ -98,7 +104,18 @@ If you plan to use overlay networks, or you want Palette to manage DNS or static
 `systemd-resolved` and `systemd-networkd`. Refer to
 [Configure networkd to Prepare Host for Overlay Network](../../deployment-modes/agent-mode/overlay-preparation.md).
 
-<!-- TODO(DOC-3089): Note any Jetson-specific networking or proxy considerations discovered during validation. -->
+:::warning
+
+On a Jetson, NetworkManager manages the network interface by default. If you configure `systemd-networkd` to take over
+the interface that you are connected to over SSH, the connection can drop, because the interface changes hands from
+NetworkManager to `systemd-networkd`. Before you move an interface to `systemd-networkd` on a remote host, confirm that
+you have console access to the device, or configure `systemd-networkd` with your network settings first so the interface
+stays up. If your SSH session appears to hang after the switch, the transport is gone. Close it with the SSH escape
+sequence (press **Enter**, then type `~.`), then reconnect from the console.
+
+:::
+
+<!-- Resolved (DOC-3089) 2026-09-18: the SSH-drop risk is the act of moving the SSH interface from NetworkManager to systemd-networkd during overlay configuration, not enabling networkd (already active on JetPack). Escape a hung SSH session with the client escape Enter ~ . — see memory jetson-networkd-ssh-drop. -->
 
 ## Obtain a registration token
 
