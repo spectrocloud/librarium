@@ -109,7 +109,13 @@ The `vmo-node-agent` DaemonSet scrapes each node and ships OpenTelemetry Protoco
 OpenTelemetry Collector. The Collector forwards the metrics to Victoria Metrics for the built-in dashboards and to the
 `vmo-manager` service's OTLP receiver. Inside `vmo-manager`, a ring buffer receives every point. When the **Metrics
 Forwarding** toggle is enabled and both **Forwarding URL** and **Forwarding Token** are set, the ring buffer POSTs each
-point to Splunk HEC under `sourcetype=vmo:metric`.
+point to the forwarding target. `vmo-manager` auto-detects the wire protocol from the **Forwarding URL** path: a URL
+that contains `/services/collector`, or a bare host with no path, is treated as Splunk HEC and posted under
+`sourcetype=vmo:metric`; a URL with any other path, such as `/v1/metrics`, is treated as OpenTelemetry Protocol (OTLP)
+over HTTP.
+
+Forwarding is additive. The local ring buffer and any Victoria Metrics target keep receiving points regardless of the
+forwarding target, and a failure on the forwarding push does not affect them.
 
 The toggle plus the URL and token together form the network gate. If any of them is unset, `vmo-manager` sends nothing.
 
@@ -188,6 +194,59 @@ those steps.
 
    VMO writes a `monitoring.splunk_hec.toggled` audit event that captures the previous value, the new value, and your
    identity. Metric points start flowing to Splunk under `sourcetype=vmo:metric` on the next scrape cycle.
+
+### Forward to an OpenTelemetry Backend
+
+<!-- SCAFFOLD (PVM-1181): confirm the shipped 4.10.a UI field labels and choose the canonical worked example before publish. -->
+
+The **Metrics** section forwards to any backend that accepts OTLP over HTTP, such as Datadog, Grafana Cloud, New Relic,
+or a generic OpenTelemetry Collector, using the same **Forwarding URL**, **Forwarding Token**, and **Metrics
+Forwarding** controls. You do not choose the protocol. `vmo-manager` uses OTLP/HTTP automatically when the **Forwarding
+URL** includes a path other than `/services/collector`.
+
+1. In the **Metrics** section, set **Forwarding URL** to the receiver's OTLP metrics endpoint, including the explicit
+   path, for example `https://<receiver-host>/v1/metrics`.
+
+2. Set **Forwarding Token** to the receiver's credential. The field accepts two formats:
+
+   - A plain token, which VMO sends as an `Authorization: Bearer <token>` header. Use this for Grafana Cloud and any
+     receiver that expects a bearer token.
+   - One or more comma-separated `Key=Value` pairs, which VMO sends as literal HTTP headers. Use this for receivers that
+     use a non-`Authorization` header, such as Datadog (`DD-API-KEY=<api-key>`) or New Relic (`api-key=<license-key>`).
+
+3. Enable the **Metrics Forwarding** toggle.
+
+:::warning
+
+The **Forwarding URL** must include the receiver's path segment. A bare host, such as `https://otlp.example.com`, is
+treated as Splunk HEC and posted to `/services/collector/event`, which an OTLP receiver rejects. Always include the
+path, such as `/v1/metrics`.
+
+:::
+
+The following table lists verified OTLP endpoints.
+
+<!-- VERIFY(PVM-1181): confirm the receiver endpoints and regions are current at publish, and pick the canonical worked example (Ben). -->
+
+| Receiver                | Forwarding URL                                                                          | Forwarding Token                             |
+| ----------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------- |
+| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (or your region host)                | `DD-API-KEY=<api-key>`                       |
+| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                             | Plain token, sent as `Authorization: Bearer` |
+| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics` | `api-key=<license-key>`                      |
+| OpenTelemetry Collector | `https://<your-collector>/v1/metrics`                                                   | Plain token or `Key=Value` headers           |
+
+To label the forwarded metrics with a recognizable cluster name, set the `clusterName` pack value
+(`charts.virtual-machine-orchestrator.vmo-manager.clusterName`). VMO emits it as the `k8s.cluster.name` resource
+attribute on each OTLP payload. If you leave it empty, VMO discovers the name from the cluster's `kubeadm-config`
+ConfigMap, then falls back to `local` if that lookup is also empty, which is indistinguishable across a multi-cluster
+fleet.
+
+:::info
+
+VMO emits all metrics as OTLP Gauge values, which represent an instantaneous observation. On the receiver, use a
+rate-over-gauge query rather than a rate-over-counter query.
+
+:::
 
 ## Configure Log Forwarding
 
