@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3229 -->
+<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12035 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12035 -->
+
+- Fixed security vulnerabilities as part of the 4.9.x security patch.
+
 ## September 18, 2026 - Release 4.9.59
 
 <!-- PATCH RELEASE TICKET: DOC-3223 -->
