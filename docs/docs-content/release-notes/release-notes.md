@@ -17,11 +17,11 @@ tags: ["release-notes"]
 <!-- PATCH RELEASE VERSION: 4.9.x -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12035 -->
 
-### Bug Fixes
+### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12035 -->
 
-- Fixed security vulnerabilities as part of the 4.9.x security patch.
+- Applied security fixes for the 4.9.x release train to improve platform security posture.
 
 ## September 18, 2026 - Release 4.9.59
 
