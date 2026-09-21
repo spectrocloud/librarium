@@ -76,6 +76,14 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11995 -->
+
+- EKS Hybrid Nodes, deprecated in May 2026, are now disabled. Hybrid node configuration controls are greyed out in the
+  Palette UI on imported EKS clusters, and API requests that enable or configure hybrid nodes are rejected. Existing
+  clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
+  workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.a-start -->

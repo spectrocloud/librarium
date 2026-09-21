@@ -177,6 +177,38 @@ let redirects = [
     to: `/clusters/public-cloud/aws/eks`,
   },
   {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/architecture`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/import-eks-cluster-enable-hybrid-mode`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-environment`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
+    from: `/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts`,
+    to: `/clusters/public-cloud/aws/eks/`,
+  },
+  {
     from: `/clusters/public-cloud/aks/`,
     to: `/clusters/public-cloud/azure/aks/`,
   },
