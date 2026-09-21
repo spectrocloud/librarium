@@ -9,13 +9,11 @@ sidebar_position: 30
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "day 1"]
 ---
 
-<!-- SCAFFOLD (DOC-3090 Day 1). Registration, cluster profile, deploy, GPU access, and model serving are all VALIDATED on the Thor 2026-09-14 and re-validated on a clean flash 2026-09-18 (see the inline "Validated" comments in each section). Do NOT publish yet: this page documents Jetson AGX Thor, whose ARM64 support statement is still gated on engineering sign-off (DOC-3093, Rishi; hardware-requirements.md currently verifies Orin only). The agent-version pin question is resolved (Palette reconciles the agent on registration; no pin needed) and the local-admin block was re-validated on the 2026-09-18 clean flash. Remaining smaller items: a registration screenshot for the Verify step, and confirming the `ollama ps` SIZE value (see the VERIFY in Serve and verify the model). -->
-
-This page describes Day 1 of running Edge AI workloads on an NVIDIA Jetson device. Starting from a host you prepared in
-[Prepare the Jetson Host](./prepare-jetson-host.md), you register the device with Palette as an Edge host in
-[agent mode](../../deployment-modes/agent-mode/agent-mode.md), model the operating system, Kubernetes distribution, and
-AI serving workload as an Edge Native cluster profile, deploy that profile to the device, and confirm the model
-responds.
+This page describes Day 1 of running Edge AI workloads on an NVIDIA Jetson device. You start from a host you prepared in
+[Prepare the Jetson Host](./prepare-jetson-host.md). First, you register the device with Palette as an Edge host in
+[agent mode](../../deployment-modes/agent-mode/agent-mode.md). Next, you build an Edge Native cluster profile that
+layers the operating system, Kubernetes distribution, and AI serving workload, and deploy the profile to the device.
+Finally, you confirm the model responds.
 
 :::info
 
@@ -42,8 +40,6 @@ is a plain file on the device that you pass to the installer.
 There is no required directory for the file. Create it in your working directory on the device, for example as
 `./user-data`, and point the installer at it with the `USERDATA` environment variable in the
 [Install the Palette agent](#install-the-palette-agent) section.
-
-<!-- Validated on the Thor 2026-09-14 (agent v4.8.29): edgeHostToken + paletteEndpoint + a valid projectName registers the host. install.reboot: true triggers the post-install reboot that completes registration. A projectName that does not exist silently fails to register (the host never appears in Palette). The stages.initramfs.users block (local admin) comes from the agent-mode install reference and is used on a BYO host; only the appliance-mode disk-partitioning install: fields do not apply. Re-validated 2026-09-18 on a clean flash: the kairos local-admin block creates the account and it logs in over SSH, at the host TUI (F2), and through Local UI. -->
 
 ```yaml
 #cloud-config
@@ -95,8 +91,6 @@ full list of configuration options.
 Point the installer at the `user-data` file, then download and run the Palette agent installation script on the device.
 The installer downloads the agent, unpacks the agent runtime, configures the systemd service, and starts registration.
 
-<!-- Resolved (DOC-3090) 2026-09-14/18: the ARM64 install script resolves to agent v4.8.29, but after the host registers Palette reconciles the agent up to the version that matches the Palette instance (observed v4.10.4 in Local UI + Host Overview against Palette 4.10.16). No version pin needed. Open: confirm with eng whether the reconcile happens on registration (observed) or on cluster provisioning. Steps below mirror install-agent-host.md (steps 5-8): export USERDATA, download the script, chmod, then run with sudo --preserve-env. Do NOT use a `curl | sudo bash` pipe. A JetPack (Ubuntu-based) host uses the non-FIPS script, because the FIPS build is RHEL/Rocky only. -->
-
 1. Export the path to your `user-data` file.
 
    ```shell
@@ -146,14 +140,10 @@ service, which a bare device does not have. Installation continues and reports
 
 :::
 
-<!-- Resolved (DOC-3090) 2026-09-18: on the clean flash the classic "Pull userdata: no metadata/userdata found" line did NOT appear in the install-script log; instead the log showed "skipping /system/oem/80_stylus_agent_mode.yaml because it has no valid header" and "skipping /oem/.spectrocloud/.install_completion (extension)". The classic wording may still surface in the post-reboot agent journal (not checked this run). Both variants are benign; the info box now names both. -->
-
 ## Verify the host registers
 
 After the host reboots, the Palette agent registers the device with your tenant, and it appears in your Edge host
 inventory.
-
-<!-- Validated on the Thor 2026-09-14; screenshot still TODO(DOC-3090). -->
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 2. From the left **Main Menu**, select **Clusters**, and then select the **Edge Hosts** tab.
@@ -163,8 +153,6 @@ inventory.
 Once the host connects to Palette, it shows a **Ready** status and a **Healthy** state. Palette also detects the device
 GPU and lists it in the **GPU** column. The integrated GPU reports `0.00 GB` of GPU memory, which is expected on a
 Jetson, because the GPU shares system memory instead of having dedicated memory. This is not a detection failure.
-
-<!-- VERIFY(DOC-3090): On the 2026-09-18 clean flash the GPU column read "1 NVIDIA NVIDIA Thor, 0.00 GB" — the vendor and model strings are concatenated ("NVIDIA" doubled). This looks like a product display bug; flag to Rishi/eng and either get it fixed or match the real string in the docs. Wording above is deliberately generic to avoid baking in the doubled name. The 0.00 GB is correct (unified memory). -->
 
 :::info
 
@@ -178,8 +166,6 @@ Also confirm that the host rebooted after the agent installed, because registrat
 
 Create an Edge Native cluster profile that models the operating system, Kubernetes distribution, and network for the
 Jetson device. Use a **Full** profile so that you can add the model-serving workload to the same profile.
-
-<!-- Validated on the Thor 2026-09-14: Full profile = BYOOS (Edge) Agent Mode + Palette Optimized K3S + Flannel, all ARM64-compatible. edge-canonical has no ARM64 build. Thor support statement still gated on DOC-3093 (Rishi). Model-serving layer pending (Option 2). -->
 
 1. From the left **Main Menu**, select **Profiles**, and then select **Add Cluster Profile**.
 2. Enter a name, select the **Full** profile type, and then select **Next**.
@@ -222,8 +208,6 @@ seems to be missing even though it registered correctly.
 
 The cluster deploys as a single node that runs both the control plane and workloads. When the deployment finishes, the
 cluster reaches a **Running** state and a **Healthy** status.
-
-<!-- Validated on the Thor 2026-09-14: node Ready, K3s v1.36.2+k3s1, arch arm64, kernel 6.8.12-1021-tegra, Ubuntu 24.04.5; Flannel and kube-vip pods Running, all system pods healthy. The ARM64 node-pool default is AMD64 and must be changed by hand. Refined 2026-09-18: the real symptom of leaving AMD64 is that the ARM64 Jetson host does not appear in the add-host list (Palette filters hosts by architecture), not a failed build — the warning now leads with that. -->
 
 ## Enable GPU access for workloads
 
@@ -272,17 +256,11 @@ When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, 
 though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU, because
 the NVIDIA container runtime injects the GPU only when the workload requests it.
 
-<!-- Validated on the Thor 2026-09-14: pod with runtimeClassName nvidia + NVIDIA_VISIBLE_DEVICES=all + NVIDIA_DRIVER_CAPABILITIES=all got /dev/nvidia0,1,ctl,uvm-tools and nvidia-smi reported NVIDIA Thor (driver 595.78, CUDA 13.2) inside a plain ubuntu:24.04 image. Without the env vars: no /dev/nvidia*. The nvidia RuntimeClass is auto-created by K3s/containerd on JetPack; no profile layer or device plugin needed. Confirm blessed pattern with Rishi (DOC-3093 Q3). -->
-
 ## Serve and verify the model
 
 Deploy a model server that runs on the GPU, pull a model, and confirm that it responds. This example uses
 [Ollama](https://ollama.com/), which serves local models over an HTTP API. The serving pod uses the same GPU access
 pattern described in [Enable GPU access for workloads](#enable-gpu-access-for-workloads).
-
-<!-- Validated on the Thor 2026-09-14: official ollama/ollama:latest (multi-arch, no Jetson-specific build) runs llama3.2:1b at 100% GPU (ollama ps PROCESSOR column) and serves completions over the /api/generate endpoint. The llama.cpp fallback is not needed. Model data is ephemeral without a PVC. -->
-<!-- VERIFY(DOC-3090/3092): the example `ollama ps` output shows SIZE 6.4 GB for llama3.2:1b. A 1B model is ~1.3 GB on disk; 6.4 GB is plausible as the loaded footprint including the 131072-token KV cache, but confirm it against the real captured `ollama ps` line before publishing (the Day-1 demo also ran llama3.1:8b via Open WebUI for metrics — do not confuse the two). If the DOC-3092 tutorial standardizes on a different model, update both the model name and the SIZE here. -->
-<!-- Resolved (DOC-3090) 2026-09-18: `ollama ps` lists only loaded (running) models, and `ollama pull` downloads without loading, so ps stays empty until a request loads the model. Steps reordered to send a request before ollama ps, otherwise the reader sees empty output and thinks the GPU is not engaged. -->
 
 1. Create a `Deployment` and a `Service` for Ollama. The pod sets `runtimeClassName` and the `NVIDIA_*` environment
    variables so that it reaches the device GPU.
