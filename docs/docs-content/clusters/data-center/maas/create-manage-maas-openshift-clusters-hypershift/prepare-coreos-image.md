@@ -160,7 +160,7 @@ the image was not found.
 - The MAAS CLI (`maas-cli`) installed on your build host.
 
 - A MAAS server endpoint and API key. Refer to the
-  [MAAS API Keys](https://canonical.com/maas/docs/how-to-enhance-maas-security) documentation for guidance on obtaining
+  [MAAS API Keys](https://canonical.com/maas/docs/stable/how-to-guides/enhance-maas-security/#manage-api-keys) documentation for guidance on obtaining
   your API key.
 
 - The RHCOS image build scripts, available at the following URL.
