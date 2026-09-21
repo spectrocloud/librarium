@@ -169,12 +169,13 @@ enable it.
 
 :::
 
-#### Recover from a filtering error
+#### Recover from a Filtering Error
 
 Three behaviors bound the risk of a connectivity loss:
 
-- NAD VLANs never touch the node's own network path. VMO applies them only to the bridge uplink ports. The VLANs that
-  the node itself uses come from administrator configuration, so creating a network cannot cut node management traffic.
+- NAD VLANs never touch the node's own network path. VMO applies them only to the ports that connect the bridge to the
+  external network. The VLANs that the node itself uses come from administrator configuration, so creating a network
+  cannot cut node management traffic.
 - VMO continuously verifies filtering and reverts it if it breaks the node. VMO probes the configured path on every
   reconciliation pass while filtering is enabled. After three consecutive failures, VMO turns filtering back off, and
   durable on-node state suppresses further attempts. Because that state lives on the node rather than in the pod, the
@@ -188,7 +189,7 @@ After you fix the network, select **Clear & Retry** on the **Networks** page.
 
 VMO consumes the request once and retries without a pod restart.
 
-#### Check what VLANs a node permits
+#### Check What VLANs a Node Permits
 
 Each node carries a `vmo-manager/vlan-filtering-status` annotation that summarizes what was applied, including whether
 filtering was reverted. Use the following command to read it.
@@ -197,7 +198,7 @@ filtering was reverted. Use the following command to read it.
 kubectl get node <node-name> -o jsonpath='{.metadata.annotations.vmo-manager/vlan-filtering-status}'
 ```
 
-#### Restrict which VLANs can be opened
+#### Restrict Which VLANs Can Be Opened
 
 By default, VMO permits any assignable VLAN that a NAD declares. To bound this, enable the tenant range in the pack
 values. VMO refuses and reports NAD VLANs outside the range, while administrator-configured VLANs are unaffected.
