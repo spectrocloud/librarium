@@ -16,8 +16,7 @@ allow environment overrides where necessary.
 
 ## Limitations
 
-- Cluster templates can be used to deploy new clusters only. Certain Day-2 operations, such as attaching a cluster
-  template to an existing cluster and detaching clusters from cluster templates, are not supported at this time.
+- Detaching a cluster from a cluster template is not supported at this time.
 
 ## Prerequisites
 
@@ -135,9 +134,9 @@ following differences:
 - You cannot make any adjustments to individual profile layers during the cluster deployment workflow.
 - When viewing the cluster attached to the cluster template, an additional **Templates** tab is available.
 
-Cluster profile variable values are assigned during the cluster deployment flow. Note that cluster templates can only be
-used to deploy new clusters. Certain Day-2 operations, such as attaching a cluster template to an existing cluster, are
-not supported. Additionally, once a cluster template is attached to a cluster, it cannot be detached.
+Cluster profile variable values are assigned during the cluster deployment flow. To bring an existing cluster under a
+cluster template, refer to [Attach an Existing Cluster to a Cluster Template](./attach-cluster-to-template.md). Once a
+cluster template is attached to a cluster, it cannot be detached.
 
 <PartialsComponent category="clusters" name="cluster-deployment-guides" />
 
