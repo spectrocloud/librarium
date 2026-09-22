@@ -10,10 +10,21 @@ enable the toggle again, export resumes immediately without re-entering the conn
 
 ## Exported Metrics
 
-The export includes {props.version} management-plane and Kubernetes metrics, such as CPU, memory, and disk usage.
-MongoDB health and replication metrics are also included.
+Self-hosted {props.version} collects platform metrics through OpenTelemetry receivers and exports them to your Splunk
+destination. The exported set comes from the following receivers. Refer to each receiver's upstream documentation for
+the complete list of metrics it produces.
 
-{/* TODO(PEM-11992): This ticket calls out that the curated metric list must be exact, not illustrative. Replace this paragraph with the confirmed metric set from Engineering (Varun / Ravikumar). MongoDB metrics are a "nice-to-have" per PEM-8670, so confirm whether they ship in this release. */}
+- [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md):
+  host-level CPU, memory, disk, filesystem, and network metrics.
+
+- [Kubelet Stats receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/README.md):
+  node, pod, and container resource metrics reported by the kubelet.
+
+- [Kubernetes Cluster receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/README.md):
+  cluster-level metrics for Kubernetes objects and resources.
+
+- [MongoDB receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/mongodbreceiver/README.md):
+  health and performance metrics for the {props.version} MongoDB database.
 
 ## Uninstall the Observability Stack
 

@@ -20,7 +20,7 @@ partial_name: export-metrics-prereqs
 
 - A metrics index and a logs index that already exist in Splunk.
 
-{/* TODO(PEM-8670): The epic states logs are out of scope, but the UI requires a logs index. Confirm with Varun why a logs index is required when logs are not exported, and reword this prerequisite once clarified. */}
+{/* VERIFY(PEM-8670): The UI requires a logs index even though only metrics are exported (confirmed required by Varun). Rationale for the logs-index requirement asked of Varun via Slack 2026-09-22; reword if a clearer explanation lands. */}
 
 - Access to the {props.version}
   <PaletteVertexUrlMapper

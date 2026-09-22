@@ -3,7 +3,7 @@ partial_category: self-hosted
 partial_name: export-metrics-intro
 ---
 
-{/* TODO(PEM-11992): Draft scaffolded from Varun's 2026-09-15 comment on PEM-11992 and the System Console screenshot. Confirm all UI labels and behavior against a build before publishing. */}
+{/* VERIFY(PEM-11992): UI labels and navigation drafted from Varun's PEM-11992 comments. Confirm exact rendered labels against a build or demo before publishing (asked Varun via Slack 2026-09-22). */}
 
 Self-hosted {props.version} can export a curated set of platform metrics to your existing observability stack using an
 OpenTelemetry collector. You configure and manage the export from the **Metrics** tab in the system console, without
@@ -12,7 +12,7 @@ deploying a customer-managed agent.
 Export is available for Helm and management appliance installations, and works in both connected and airgapped
 environments as long as the destination endpoint is reachable.
 
-{/* TODO(PEM-8670): Confirm Enterprise Cluster (EC) installs are out of scope for export-metrics, even though the image pull secret upgrade note references the EC system console. */}
+{/* VERIFY(PEM-8670): Confirm whether Enterprise Cluster (EC) installs are in scope for export-metrics, and whether the management appliance path applies (Varun's guidance covers Helm-based self-hosted only). Asked Varun via Slack 2026-09-22. */}
 
 :::info
 
@@ -20,7 +20,5 @@ The export sends metrics only. It never exports logs, traces, or audit events, a
 alerts on top of what you export. Workload cluster observability is configured per cluster, not from the system console.
 
 :::
-
-{/* TODO: Splunk is the only validated destination for this release. Datadog and OpenObserve are tracked separately under PEM-11896. Do not imply support for destinations that are not yet validated. */}
 
 The Splunk HTTP Event Collector (HEC) is the supported export destination.
