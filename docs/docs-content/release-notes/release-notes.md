@@ -39,6 +39,15 @@ tags: ["release-notes"]
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
   above.
 
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- Palette and Palette VerteX virtual clusters now run on vCluster 0.34.x. Following K3s removal in upstream vCluster
+  0.33, K3s is no longer a supported distribution for Palette and Palette VerteX virtual clusters or cluster groups.
+  Existing K3s virtual clusters continue to run on their current vCluster version, but their cluster groups cannot be
+  upgraded to newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group
+  and migrate your workloads.
+
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->

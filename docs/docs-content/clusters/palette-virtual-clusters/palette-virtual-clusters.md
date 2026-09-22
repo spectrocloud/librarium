@@ -15,9 +15,9 @@ clusters are supported in both connected and airgapped environments.
 
 :::warning
 
-K3s is deprecated as a virtual cluster distribution and will be removed in a future Palette release. Existing virtual
-clusters that use K3s continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual
-clusters.
+K3s is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their
+current vCluster version, but their cluster groups cannot be upgraded to newer vCluster versions. To move to a newer
+vCluster version, create a new Kubernetes-based cluster group and migrate your workloads.
 
 :::
 
@@ -40,39 +40,22 @@ the associated costs.
 
 To get started, refer to [Deploy a Virtual Cluster to a Cluster Group](deploy-virtual-cluster.md).
 
-## Kubernetes Distributions
+## Kubernetes Distribution
 
-The following Kubernetes distributions are supported for virtual clusters:
-
-| **Name**       | **Description**                                                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Kubernetes** | The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes).       |
-| **K3s**        | [K3s](https://k3s.io) is deprecated as a virtual cluster distribution and will be removed in a future Palette release. |
-
-Refer to the
-[Create and Manager Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) to
-learn how to configure your cluster group to use a specific Kubernetes distribution.
+Virtual clusters use the Cloud Native Computing Foundation (CNCF) [Kubernetes](https://www.cncf.io/projects/kubernetes)
+distribution. Refer to
+[Create and Manage Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) for
+guidance on configuring your cluster group.
 
 ### Minimum Resource Requirements
 
-The following table lists the minimum resource requirements for virtual clusters and the underlying Kubernetes
-distribution.
+The following table lists the minimum resource requirements for virtual clusters.
 
-| **Resource Type**     | **Default** | **K3s Minimum Limit** | **Kubernetes Minimum Limit** |
-| --------------------- | ----------- | --------------------- | ---------------------------- |
-| CPU (per request)     | 4           | 4                     | 4                            |
-| Memory (per request)  | 4 GiB       | 3 GiB                 | 4 GiB                        |
-| Storage (per request) | 2 GiB       | 0 GiB                 | 2 GiB                        |
-
-:::warning
-
-Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
-additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
-commencing an upgrade. Refer to
-[Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades](../../troubleshooting/palette-dev-engine.md#scenario---adjust-virtual-clusters-limits-before-palette-upgrades)
-for more information.
-
-:::
+| **Resource Type**     | **Default** | **Minimum Limit** |
+| --------------------- | ----------- | ----------------- |
+| CPU (per request)     | 4           | 4                 |
+| Memory (per request)  | 4 GiB       | 4 GiB             |
+| Storage (per request) | 2 GiB       | 2 GiB             |
 
 ## Network Connectivity
 

@@ -13,9 +13,9 @@ Clusters are powered by [vCluster](https://www.vcluster.com/).
 
 :::warning
 
-K3s is deprecated as a virtual cluster distribution and will be removed in a future Palette release. Existing virtual
-clusters that use K3s continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual
-clusters.
+K3s is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their
+current vCluster version, but their cluster groups cannot be upgraded to newer vCluster versions. To move to a newer
+vCluster version, create a new Kubernetes-based cluster group and migrate your workloads.
 
 :::
 
@@ -39,11 +39,11 @@ To create your new Palette Virtual Cluster complete the following actions.
    - Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    - Provide the resource limit in terms of CPU, memory, and storage.
 
-     | **Resource Type**     | **Default** | **K3s Minimum Limit** | **Kubernetes Minimum Limit** |
-     | --------------------- | ----------- | --------------------- | ---------------------------- |
-     | CPU (per request)     | 4           | 4                     | 4                            |
-     | Memory (per request)  | 4 GiB       | 3 GiB                 | 4 GiB                        |
-     | Storage (per request) | 2 GiB       | 0 GiB                 | 2 GiB                        |
+     | **Resource Type**     | **Default** | **Minimum Limit** |
+     | --------------------- | ----------- | ----------------- |
+     | CPU (per request)     | 4           | 4                 |
+     | Memory (per request)  | 4 GiB       | 4 GiB             |
+     | Storage (per request) | 2 GiB       | 2 GiB             |
 
 4. Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within
    the next few minutes.
@@ -102,13 +102,3 @@ provisioned successfully within existing groups, even across Palette updates.
 If you want to use the latest version of vCluster on your virtual clusters, you must upgrade your cluster group. This
 process must be performed in [cluster mode](../../deployment-modes/deployment-modes.md). Refer to
 [Upgrade Cluster Groups](../../clusters/cluster-groups/vcluster-upgrades.md) for guidance.
-
-:::warning
-
-Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
-additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
-commencing an upgrade. Refer to
-[Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades](../../troubleshooting/palette-dev-engine.md#scenario---adjust-virtual-clusters-limits-before-palette-upgrades)
-for more information.
-
-:::
