@@ -146,6 +146,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ##### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1182 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3019 -->
+
+- VM migrations now support VDDK 9 for source VMs on VMware vSphere 7.0 and 8.0. Because Broadcom has removed public
+  VDDK downloads, downloading VDDK requires a Broadcom account with the appropriate product entitlements and an active
+  vSphere subscription.
+
 ##### Bug Fixes
 
 ##### Deprecations and Removals
