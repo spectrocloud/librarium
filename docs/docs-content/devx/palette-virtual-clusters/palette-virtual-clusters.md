@@ -7,17 +7,9 @@ tags: ["devx", "app mode", "pde"]
 ---
 
 Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a
-Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default,
-new virtual clusters use the CNCF [Kubernetes](https://www.cncf.io/projects/kubernetes) distribution. Palette Virtual
-Clusters are powered by [vCluster](https://www.vcluster.com/).
-
-:::warning
-
-K3s is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their
-current vCluster version, but their cluster groups cannot be upgraded to newer vCluster versions. To move to a newer
-vCluster version, create a new Kubernetes-based cluster group and migrate your workloads.
-
-:::
+Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. Virtual
+clusters use the CNCF [Kubernetes](https://www.cncf.io/projects/kubernetes) distribution. Palette Virtual Clusters are
+powered by [vCluster](https://www.vcluster.com/).
 
 The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight,
 Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard

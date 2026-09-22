@@ -9,17 +9,9 @@ tags: ["clusters", "virtual clusters"]
 ---
 
 Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster
-resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By
-default, new virtual clusters use the CNCF [Kubernetes](https://www.cncf.io/projects/kubernetes) distribution. Virtual
-clusters are supported in both connected and airgapped environments.
-
-:::warning
-
-K3s is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their
-current vCluster version, but their cluster groups cannot be upgraded to newer vCluster versions. To move to a newer
-vCluster version, create a new Kubernetes-based cluster group and migrate your workloads.
-
-:::
+resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI).
+Virtual clusters use the CNCF [Kubernetes](https://www.cncf.io/projects/kubernetes) distribution. Virtual clusters are
+supported in both connected and airgapped environments.
 
 :::info
 
