@@ -8,8 +8,6 @@ sidebar_position: 50
 tags: ["edge", "hadron"]
 ---
 
-<!-- VERIFY(PE-9527): Scope/version/limits CONFIRMED by the Edge team 2026-09-22. Hadron as an OS option in CanvOS/EdgeForge; v0.5.1; supports all Kubernetes distributions except Canonical; not supported: Canonical, UKI, two-node. AuroraBoot pipeline + declarative cluster-profile OS layers (PE-8059/PE-8060) are roadmap, NOT 4.10.a. Meeting transcription pending for exact K8S_DISTRIBUTION arg values and any finer detail. -->
-
 Hadron is Spectro Cloud's minimal, immutable Edge operating system, built on the CNCF [Kairos](https://kairos.io/)
 project. Like other Kairos-based images, Hadron uses an
 [A/B partitioning scheme](../../../cluster-management/upgrade-behavior.md#ab-partitioning-in-upgrades) for atomic
@@ -23,12 +21,11 @@ The supported Hadron version is `v0.5.1`.
 
 ## Limitations
 
-<!-- VERIFY(PE-9527): Limitations confirmed by the Edge team 2026-09-22 (not supported: Canonical Kubernetes, UKI, two-node). Exact K8S_DISTRIBUTION arg value for Canonical, and the exact Canonical product name, pending the meeting transcription. -->
-
 - Hadron support applies to connected Edge clusters only. Air-gapped and appliance deployments are a separate effort and
   are not covered by this workflow.
 
-- Hadron supports all Palette Edge Kubernetes distributions except Canonical Kubernetes.
+- Hadron supports all Palette Edge Kubernetes distributions except Canonical Kubernetes, which is available only on
+  Ubuntu.
 
 - Unified Kernel Image (UKI) is not supported with Hadron.
 
@@ -108,10 +105,8 @@ The supported Hadron version is `v0.5.1`.
     EOF
     ```
 
-    <!-- VERIFY(PE-9527): Confirm the exact K8S_DISTRIBUTION arg value that maps to Canonical Kubernetes (the one unsupported distribution) against the meeting transcription. -->
-
-    Hadron supports all Kubernetes distributions except Canonical Kubernetes. Refer to
-    [Edge Artifact Build Configurations](../arg.md) for the complete list of supported `K8S_DISTRIBUTION` values.
+    The supported `K8S_DISTRIBUTION` values for Hadron are `kubeadm`, `kubeadm-fips`, `rke2`, and `k3s`. Refer to
+    [Edge Artifact Build Configurations](../arg.md) for more information on `.arg` parameters.
 
 5.  Prepare the `user-data` file. Refer to
     [Prepare User Data and Argument Files](../../prepare-user-data.md#prepare-user-data) for instructions.
