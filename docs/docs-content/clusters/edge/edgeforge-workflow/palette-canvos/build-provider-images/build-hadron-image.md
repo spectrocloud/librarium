@@ -111,7 +111,7 @@ The supported Hadron version is `v0.5.1`.
 5.  Prepare the `user-data` file. Refer to
     [Prepare User Data and Argument Files](../../prepare-user-data.md#prepare-user-data) for instructions.
 
-6.  Once the `user-data` file is ready, issue the following command to build the ISO image.
+6.  After the `user-data` file is ready, issue the following command to build the ISO image.
 
     ```bash
     sudo ./earthly.sh +iso
