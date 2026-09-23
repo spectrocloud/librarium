@@ -102,7 +102,8 @@ Take the following steps to verify that the cluster was attached to the template
 
 ## Next Steps
 
-- To change the template that governs the cluster, refer to [Modify Cluster Templates](./modify-cluster-templates.md).
+- To make changes to the template that governs the cluster, refer to
+  [Modify Cluster Templates](./modify-cluster-templates.md).
 
 - To adjust when the profile swap runs, refer to
   [Maintenance Policies](./create-cluster-template-policies/maintenance-policy.md).
