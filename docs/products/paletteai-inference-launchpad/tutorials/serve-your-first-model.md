@@ -190,7 +190,7 @@ Notice that `mem_used_mib` is climbing on one GPU, and that its `temp_c` has ris
 arriving on the card. Run the command a few more times. Watching the number settle is the clearest sign that the
 appliance is doing what you asked.
 
-Now return to the console and confirm the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
+Now return to the console and confirm that the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
 column reads `1/1 healthy` for the node you chose, and the model's state reads `Ready`.
 
 ![Cluster Models tab with the deployed model row expanded, showing the Ready state chip, a 1 of 1 healthy Health chip, and VRAM usage.](/assets/docs/images/serve-your-first-model_model-ready.webp)
@@ -243,9 +243,10 @@ Now connect the two halves.
 
 {/* TODO: other PAIIL pages spell this control Connect coding agent while the live console renders it Connect Coding Agent; align the other pages separately. */}
 
-1. Select your shell from the dropdown above the code block. Then select the copy button to copy the configuration.
+1. Select your shell from the dropdown at the top of the code block. Then select the copy button to copy the
+   configuration.
 
-   ![The coding-agent setup with the shell picker and the copy button highlighted above the code block.](/assets/docs/images/serve-your-first-model_shell-picker.webp)
+   ![The coding-agent setup with the shell picker and the copy button highlighted at the top of the code block.](/assets/docs/images/serve-your-first-model_shell-picker.webp)
 
 2. In your terminal, paste the configuration. Any directory works.
 
@@ -283,7 +284,7 @@ Now connect the two halves.
 
 ## Monitor Your Token Usage
 
-Now confirm the appliance counted it.
+Now confirm that the appliance counted it.
 
 1. In the console, select **Usage** from the left main menu.
 
