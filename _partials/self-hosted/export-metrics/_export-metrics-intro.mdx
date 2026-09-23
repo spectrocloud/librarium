@@ -3,16 +3,17 @@ partial_category: self-hosted
 partial_name: export-metrics-intro
 ---
 
-{/* VERIFY(PEM-11992): UI labels and navigation drafted from Varun's PEM-11992 comments. Confirm exact rendered labels against a build or demo before publishing (asked Varun via Slack 2026-09-22). */}
-
 Self-hosted {props.version} can export a curated set of platform metrics to your existing observability stack using an
-OpenTelemetry collector. You configure and manage the export from the **Metrics** tab in the system console, without
-deploying a customer-managed agent.
+OpenTelemetry collector. You configure and manage the export from the **Metrics** tab under **Administration** in the
+system console, without deploying a customer-managed agent.
+
+The **Metrics** tab also controls which signals {props.version} collects from your managed clusters. Those collection
+settings are outside the scope of this page, which covers exporting the collected metrics.
 
 Export is available for Helm and management appliance installations, and works in both connected and airgapped
 environments as long as the destination endpoint is reachable.
 
-{/* VERIFY(PEM-8670): Confirm whether Enterprise Cluster (EC) installs are in scope for export-metrics, and whether the management appliance path applies (Varun's guidance covers Helm-based self-hosted only). Asked Varun via Slack 2026-09-22. */}
+{/* VERIFY(PEM-8670): Video (build 4.10.18-rc.6) confirmed the Helm self-hosted management-plane path only. Still confirm whether Enterprise Cluster (EC) installs are in scope and whether the management appliance path applies before publishing. */}
 
 :::info
 

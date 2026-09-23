@@ -18,9 +18,9 @@ partial_name: export-metrics-prereqs
 
 - A Splunk HEC token.
 
-- A metrics index and a logs index that already exist in Splunk.
-
-{/* VERIFY(PEM-8670): The UI requires a logs index even though only metrics are exported (confirmed required by Varun). Rationale for the logs-index requirement asked of Varun via Slack 2026-09-22; reword if a clearer explanation lands. */}
+- A metrics index and an events index that already exist in Splunk. Splunk HEC separates metric-format records from
+  event-format records, so the export requires both a **Metrics index** and an **Events index**, and the HEC token must
+  have access to each.
 
 - Access to the {props.version}
   <PaletteVertexUrlMapper
