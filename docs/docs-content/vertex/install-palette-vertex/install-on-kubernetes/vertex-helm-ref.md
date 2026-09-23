@@ -134,9 +134,10 @@ mongo:
         topologyKey: kubernetes.io/hostname
 ```
 
-To keep the MongoDB replicas on dedicated nodes, combine `nodeSelector` or `nodeAffinity` with a matching `tolerations`
-entry and a node taint. Because these settings are part of the Helm values, they persist across `helm upgrade`
-operations, unlike changes applied directly to the StatefulSet with `kubectl patch`.
+To keep the MongoDB replicas on dedicated nodes, label and taint those nodes. Use `nodeSelector` or `nodeAffinity` to
+target the node labels, and a `tolerations` entry to tolerate the node taint. Because these settings are part of the
+Helm values, they persist across `helm upgrade` operations, unlike changes applied directly to the StatefulSet with
+`kubectl patch`.
 
 ## Config
 
@@ -542,16 +543,4 @@ Due to node affinity configurations, you must set `scheduleOnControlPlane: false
 
 ## Observability
 
-Palette VerteX can export a curated set of platform metrics to an external observability stack, such as Splunk, using an
-OpenTelemetry collector. The observability stack is disabled by default. Set `observability.enabled` to `true` at
-install or upgrade time to enable it, then configure the export from the **Metrics** tab in the system console. For the
-configuration procedure, refer to the Export Platform Metrics guide.
-
-| **Parameters**          | **Description**                                                                                                               | **Type** | **Default value** |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `observability.enabled` | Specifies whether to enable the OpenTelemetry observability stack used to export platform metrics to an external destination. | Boolean  | `false`           |
-
-```yaml
-observability:
-  enabled: false
-```
+<PartialsComponent category="self-hosted" name="helm-ref-observability" edition="vertex" version="Palette VerteX" />
