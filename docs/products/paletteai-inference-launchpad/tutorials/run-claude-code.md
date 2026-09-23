@@ -190,8 +190,8 @@ Notice that `mem_used_mib` is climbing on one GPU, and that its `temp_c` has ris
 arriving on the card. Run the command a few more times. Watching the number settle is the clearest sign that the
 appliance is doing what you asked.
 
-Now return to the console and confirm that the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
-column reads `1/1 healthy` for the node you chose, and the model's state reads `Ready`.
+Now return to the console and confirm that the model finished. In the **Model** table on the **Cluster** page, the
+**Nodes** column reads `1/1 healthy` for the node you chose, and the model's state reads `Ready`.
 
 ![Cluster Models tab with the deployed model row expanded, showing the Ready state chip, a 1 of 1 healthy Health chip, and VRAM usage.](/assets/docs/images/run-claude-code_model-ready.webp)
 

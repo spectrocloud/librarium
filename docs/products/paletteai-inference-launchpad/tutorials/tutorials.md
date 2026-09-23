@@ -11,8 +11,8 @@ Tutorials are lessons that introduce PaletteAI Inference Launchpad by guiding yo
 from start to finish. They are learning-oriented and hands-on. You follow each step, learn by doing, and finish with a
 result you can build on. If you are new to the appliance, tutorials are a great place to start.
 
-- [Run Claude Code on Your Own Hardware](./run-claude-code.md) - Deploy a model to your appliance, connect
-  Claude Code to it, and answer a coding question on your own hardware.
+- [Run Claude Code on Your Own Hardware](./run-claude-code.md) - Deploy a model to your appliance, connect Claude Code
+  to it, and answer a coding question on your own hardware.
 
 If you need a specific task rather than a lesson, the [How-to Guides](../how-to-guides/how-to-guides.md) cover the same
 ground one step at a time.
