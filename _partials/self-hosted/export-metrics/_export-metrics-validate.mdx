@@ -3,11 +3,8 @@ partial_category: self-hosted
 partial_name: export-metrics-validate
 ---
 
-1. Select **Test connection** to verify your settings without saving. The test sends a single test metric to confirm
-   that Splunk is reachable and that the token works. Palette retains nothing from the test. If the test fails, the
-   system console reports the reason, such as an incorrect index or an invalid token. Correct any reported issue and test
-   again.
+After you save the configuration, export starts automatically within a few seconds. No restart is required.
 
-2. Select **Save changes** to apply the configuration.
-
-Export starts automatically within a few seconds. No restart is required.
+To confirm that the export is working, search the metrics index you configured in Splunk and verify that metric data
+points are arriving. On the **Metrics** tab, the **Export** section also shows a **Connected** status when the connection
+is healthy.

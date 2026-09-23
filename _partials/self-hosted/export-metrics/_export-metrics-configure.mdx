@@ -3,13 +3,12 @@ partial_category: self-hosted
 partial_name: export-metrics-configure
 ---
 
-Metrics export is disabled by default. When you configure export to Splunk, you provide the connection details described
-in the following table.
+When you configure export to Splunk, you provide the connection details described in the following table.
 
 | Field             | Required | Description                                                                                                                                                                                                                       |
 | ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Destination       | Yes      | The export target. Select **Splunk** for the Splunk HEC exporter, which sends to one internal HTTPS endpoint. This is the usual fit for self-hosted and air-gapped sites.                                                         |
-| HEC endpoint      | Yes      | The HTTP Event Collector URL exposed inside your network, for example `https://splunk.example.com:8088`. Provide only the endpoint address, with no collector or receiver path.                                                   |
+| Destination       | Yes      | The export target. Select **Splunk** to use the Splunk HEC exporter, which sends metrics to a single Splunk HEC endpoint that you provide.                                                                                        |
+| HEC endpoint      | Yes      | The Splunk HTTP Event Collector (HEC) URL, for example `https://splunk.example.com:8088`. Provide only the endpoint address, with no collector or receiver path.                                                                  |
 | Metrics index     | Yes      | The Splunk index for metric-format records. The index must already exist in Splunk, and the HEC token must have access to it.                                                                                                     |
 | Events index      | Yes      | The Splunk index for event-format records. The index must already exist in Splunk, and the HEC token must have access to it.                                                                                                      |
 | HEC token         | Yes      | The Splunk HEC authentication token. Stored encrypted and never shown again after you save.                                                                                                                                       |
