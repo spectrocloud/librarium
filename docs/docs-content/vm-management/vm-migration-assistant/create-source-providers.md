@@ -54,13 +54,13 @@ Machines (VMs) that need to be migrated.
 
   :::warning
 
-  Broadcom no longer offers free VDDK downloads. Downloading a VDDK image requires a Broadcom account with the
-  appropriate product entitlements. If you cannot access the download, contact your Broadcom account team or support
-  representative.
+  Broadcom no longer offers public VDDK downloads. Downloading VDDK requires a Broadcom account with the appropriate
+  product entitlements and an active vSphere subscription. If you cannot access the download, contact your Broadcom
+  account team or support representative.
 
   :::
 
-  - The VDDK version used must be **8.0.2.1** or earlier.
+  - Use VDDK 9. The migration engine supports VDDK 9 for migrating source VMs from VMware vSphere 7.0 and 8.0.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
