@@ -55,6 +55,13 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11993 -->
+
+- You can now attach a running, Palette-provisioned cluster to an existing cluster template, bringing the cluster under
+  template governance for future upgrades and policy enforcement. Refer to
+  [Attach an Existing Cluster to a Cluster Template](../cluster-templates/attach-cluster-to-template.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
