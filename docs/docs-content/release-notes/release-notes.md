@@ -55,6 +55,15 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5872 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7379 -->
+
+- EKS and GKE clusters now support dedicating a worker node pool for system pods, both Palette and non-Palette. Select
+  **Dedicate node pool for system pods** in the pool configuration to keep non-system workloads off the pool, reserving
+  the other node pools in the cluster for your own workloads. Refer to
+  [Dedicated node pool for system pods](../clusters/cluster-management/node-pool.md#dedicated-system-pod-pool) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
