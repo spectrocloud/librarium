@@ -71,6 +71,11 @@ tags: ["release-notes"]
 - Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
   when.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-4901 -->
+
+- When adding a worker node pool to a running cluster, you can now click **Copy from Control Plane Pool** to reuse the
+  control plane pool's configuration in the new pool. The copied fields remain editable.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5296 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5297 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5298 -->
@@ -84,6 +89,14 @@ tags: ["release-notes"]
 #### Bug Fixes
 
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11995 -->
+
+- EKS Hybrid Nodes, deprecated in May 2026, are now disabled. Hybrid node configuration controls are greyed out in the
+  Palette UI on imported EKS clusters, and API requests that enable or configure hybrid nodes are rejected. Existing
+  clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
+  workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
 
 ### Edge
 
@@ -141,6 +154,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 ##### Features
 
 ##### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1182 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3019 -->
+
+- VM migrations now support VDDK 9 for source VMs on VMware vSphere 7.0 and 8.0. Because Broadcom has removed public
+  VDDK downloads, downloading VDDK requires a Broadcom account with the appropriate product entitlements and an active
+  vSphere subscription.
 
 ##### Bug Fixes
 
