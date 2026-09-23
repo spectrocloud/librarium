@@ -85,6 +85,21 @@ By default, the profile swap runs at the next upgrade window defined by the link
 **Actions > Upgrade now** on the template's **Overview** tab. Refer to
 [Modify Cluster Templates](./modify-cluster-templates.md#overview-tab) for details.
 
+## Validate
+
+Take the following steps to verify that the cluster was attached to the template.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Cluster Configurations**.
+
+3. Select the **Templates** tab.
+
+4. Locate the template you attached the cluster to, and select the icon in the **In use clusters** column. The
+   **Clusters attached to this template** dialog opens.
+
+5. Confirm that your cluster is listed.
+
 ## Next Steps
 
 - To change the template that governs the cluster, refer to [Modify Cluster Templates](./modify-cluster-templates.md).
