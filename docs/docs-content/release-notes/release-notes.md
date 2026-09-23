@@ -11,17 +11,31 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.9.x
+## September 22, 2026 - Release 4.9.60
 
 <!-- PATCH RELEASE TICKET: DOC-3229 -->
-<!-- PATCH RELEASE VERSION: 4.9.x -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12035 -->
+<!-- PATCH RELEASE VERSION: 4.9.60 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12035 PCP-7575 PCOM-1071 PCOM-1124 -->
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12035 -->
 
-- Applied security fixes for the 4.9.x release train to improve platform security posture.
+- Applied security fixes for the 4.9.60 release train to improve platform security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7575 -->
+
+- Fixed an issue where mixed compression formats in `spectro-drive` container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1124 -->
+
+- Fixed issues where airgapped Enterprise Cluster installations failed because bundled manifests referenced container
+  image tags that are not published in the airgap bundle, such as the cert-manager acme solver, `spectro-reach`, and
+  `kube-rbac-proxy`.
 
 ## September 18, 2026 - Release 4.9.59
 
