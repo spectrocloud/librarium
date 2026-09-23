@@ -84,6 +84,31 @@ refer to the [Taints and Tolerations](./taints.md) guide.
 
 ## Dedicated node pool for system pods {#dedicated-system-pod-pool}
 
+For EKS and GKE clusters, you can dedicate a node pool for system pods, both Palette and non-Palette. This can be
+helpful if you want to schedule system pods on a single node pool while reserving other pools for non-system workloads.
+
+Palette ensures that non-system workloads are not scheduled on the dedicated node pool by applying a system taint to the
+pool, thus repelling other workloads. Palette system pods automatically tolerate this taint and can therefore be
+scheduled on the dedicated node pool. If you want a non-Palette pod to be scheduled on the dedicated node pool, you must
+add a toleration to the pod that matches the pool's `node.spectrocloud.com/dedicated` system taint:
+
+| **Field**  | **Value**                         |
+| ---------- | --------------------------------- |
+| `key`      | `node.spectrocloud.com/dedicated` |
+| `operator` | `Equal`                           |
+| `value`    | `true`                            |
+| `effect`   | `NoExecute`                       |
+
+Dedicating a node pool for system pods is not enough to guarantee that system pods are not scheduled on other node
+pools; it only ensures that non-system pods are not scheduled on the dedicated node pool. To prevent system pods from
+being scheduled on node pools that you want to reserve for other workloads, you must apply a custom taint to those node
+pools. You must then add the matching toleration to your non-system pods so they can be scheduled on the node pools with
+the custom taint. Because the system pods do not have the toleration that matches the custom taint, they are only
+scheduled on the dedicated node pool.
+
+To dedicate a node pool for system pods, select the **Dedicate node pool for system pods** option when configuring the
+pool.
+
 ## Node Pool Configuration Settings
 
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
