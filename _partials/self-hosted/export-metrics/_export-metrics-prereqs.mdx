@@ -3,18 +3,13 @@ partial_category: self-hosted
 partial_name: export-metrics-prereqs
 ---
 
-- The observability stack must be installed before you can configure export. For Helm-based installs, set
-  `observability.enabled` to `true` in your `values.yaml` file at install or upgrade time. This value is `false` by
-  default.
+- The observability stack must be installed before you can configure export. Set `observability.enabled` to `true` in
+  your `values.yaml` file at install or upgrade time. This value is `false` by default.
 
   ```yaml
   observability:
     enabled: true # false by default
   ```
-
-  Appliance-based installs enable the observability stack through the appliance installer rather than `values.yaml`.
-
-  {/* VERIFY(PEM-8670): Confirm the exact method to enable the observability stack on appliance-based installs. The UI states installation differs for Helm-based and appliance-based systems. */}
 
   Until the observability stack is installed, the **Metrics** tab shows a **Metrics observability is not installed on
   this cluster** warning, the export control reads **Export unavailable**, and export settings stay read-only. Install or
