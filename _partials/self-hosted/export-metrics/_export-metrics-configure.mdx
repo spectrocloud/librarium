@@ -1,0 +1,38 @@
+---
+partial_category: self-hosted
+partial_name: export-metrics-configure
+---
+
+When you configure export to Splunk, you provide the connection details described in the following table.
+
+| Field             | Required | Description                                                                                                                                                                                                                       |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination       | Yes      | The export target. Select **Splunk** to use the Splunk HEC exporter, which sends metrics to a single Splunk HEC endpoint that you provide.                                                                                        |
+| HEC endpoint      | Yes      | The Splunk HTTP Event Collector (HEC) URL, for example `https://splunk.example.com:8088`. Provide only the endpoint address, with no collector or receiver path.                                                                  |
+| Metrics index     | Yes      | The Splunk index for metric-format records. The index must already exist in Splunk, and the HEC token must have access to it.                                                                                                     |
+| Events index      | Yes      | The Splunk index for event-format records. The index must already exist in Splunk, and the HEC token must have access to it.                                                                                                      |
+| HEC token         | Yes      | The Splunk HEC authentication token. Stored encrypted and never shown again after you save.                                                                                                                                       |
+| Source            | No       | An optional Splunk source value used to tag exported data.                                                                                                                                                                       |
+| Certificate trust | No       | Under **Transport**. Verification is always on. Keep the default **System trust store** when Splunk presents a publicly trusted certificate. Pin a private CA for a self-signed or internal certificate, common on air-gapped sites. |
+
+Take the following steps to configure export to Splunk.
+
+1. Log in to the {props.version}
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="system console"
+        url="/system-management/#access-the-system-console/"
+    />.
+
+2. Select **Administration**, and then select the **Metrics** tab.
+
+3. In the **Export** section, turn on the toggle. The off state reads **Export is off**.
+
+4. From the **Destination** drop-down menu, select **Splunk**.
+
+5. Provide the connection details described in the table above.
+
+6. Select **Test connection** to send a single test metric to Splunk, and then select **Save changes**.
+
+After you save, the section header changes to **Exporting to Splunk HEC** with a **Connected** status, and metrics begin
+forwarding to your destination. To change the settings later, select **Edit configuration**.

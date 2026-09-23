@@ -1,0 +1,20 @@
+---
+partial_category: self-hosted
+partial_name: export-metrics-intro
+---
+
+Self-hosted {props.version} can export a curated set of platform metrics to your existing observability stack using an
+OpenTelemetry collector. You configure and manage the export from the **Metrics** tab under **Administration** in the
+system console, without deploying a customer-managed agent.
+
+Export is available for Helm-based self-hosted installations, and works in both connected and airgapped environments as
+long as the destination endpoint is reachable.
+
+:::info
+
+The export sends metrics only. It never exports logs, traces, or audit events, and {props.version} adds no dashboards or
+alerts on top of what you export. Workload cluster observability is configured per cluster, not from the system console.
+
+:::
+
+The Splunk HTTP Event Collector (HEC) is the supported export destination.

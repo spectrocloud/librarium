@@ -55,6 +55,12 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8670 -->
+
+- Self-hosted Palette and VerteX can now export platform metrics to an external observability stack, such as Splunk,
+  using an OpenTelemetry collector. You configure and manage the export from the **Metrics** tab in the system console.
+  For more information, refer to [Export Platform Metrics](../enterprise-version/system-management/export-metrics.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
