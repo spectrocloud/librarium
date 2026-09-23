@@ -186,9 +186,10 @@ those steps.
 
    The token is stored as a masked field.
 
-5. Adjust **TLS Verify** if your Splunk HEC certificate is trusted by the appliance. Leave the value at `true` in
-   production. Set the value to `false` only for development or demonstration environments where the certificate cannot
-   be verified.
+5. (Optional) Select the edit icon next to **CA Certificate** and paste the PEM-encoded CA-signing certificate for your
+   Splunk HEC endpoint. Save. Provide this only when the endpoint presents a certificate that the appliance's system
+   trust store does not already trust, such as one issued by a private or internal CA. Leave it empty to verify against
+   the system trust store.
 
 6. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
@@ -197,7 +198,7 @@ those steps.
 
 ### Forward to an OpenTelemetry Backend
 
-<!-- SCAFFOLD (PVM-1181): confirm the shipped 4.10.a UI field labels and choose the canonical worked example before publish. -->
+<!-- PVM-1181: labels/fields verified live in 4.10.8-rc.12 + source. Canonical example = Datadog (from eng handoff live-verification; not re-tested by docs). Grafana row uses vendor-documented Basic auth, not live-tested. WIP stays until the 4.10.a release is cut. -->
 
 The **Metrics** section forwards to any backend that accepts OTLP over HTTP, such as Datadog, Grafana Cloud, New Relic,
 or a generic OpenTelemetry Collector, using the same **Forwarding URL**, **Forwarding Token**, and **Metrics
@@ -209,12 +210,17 @@ URL** includes a path other than `/services/collector`.
 
 2. Set **Forwarding Token** to the receiver's credential. The field accepts two formats:
 
-   - A plain token, which VMO sends as an `Authorization: Bearer <token>` header. Use this for Grafana Cloud and any
-     receiver that expects a bearer token.
-   - One or more comma-separated `Key=Value` pairs, which VMO sends as literal HTTP headers. Use this for receivers that
-     use a non-`Authorization` header, such as Datadog (`DD-API-KEY=<api-key>`) or New Relic (`api-key=<license-key>`).
+   - A plain token, which VMO sends as an `Authorization: Bearer <token>` header. Use this for a receiver that expects a
+     bearer token.
+   - One or more comma-separated `Key=Value` pairs, which VMO sends as literal HTTP headers. Use this for a receiver
+     that needs a specific header, such as Datadog (`DD-API-KEY=<api-key>`), New Relic (`api-key=<license-key>`), or
+     Grafana Cloud (`Authorization=Basic <base64(instanceID:token)>`).
 
 3. Enable the **Metrics Forwarding** toggle.
+
+4. (Optional) If the receiver presents a TLS certificate issued by a private or internal CA, add its PEM CA-signing
+   certificate in **CA Certificate**. Public receivers such as Datadog, Grafana Cloud, and New Relic use publicly
+   trusted certificates and do not need this.
 
 :::warning
 
@@ -224,16 +230,32 @@ path, such as `/v1/metrics`.
 
 :::
 
-The following table lists verified OTLP endpoints.
+The following steps forward metrics to Datadog.
 
-<!-- VERIFY(PVM-1181): confirm the receiver endpoints and regions are current at publish, and pick the canonical worked example (Ben). -->
+1. Set **Forwarding URL** to `https://api.datadoghq.com/api/v2/otlp/v1/metrics`. For a Datadog site other than US1, use
+   your site's API host. Refer to the [Datadog OTLP documentation](https://docs.datadoghq.com/opentelemetry/) for the
+   exact host.
 
-| Receiver                | Forwarding URL                                                                          | Forwarding Token                             |
-| ----------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------- |
-| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (or your region host)                | `DD-API-KEY=<api-key>`                       |
-| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                             | Plain token, sent as `Authorization: Bearer` |
-| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics` | `api-key=<license-key>`                      |
-| OpenTelemetry Collector | `https://<your-collector>/v1/metrics`                                                   | Plain token or `Key=Value` headers           |
+2. Set **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. VMO sends it as a literal `DD-API-KEY` header.
+
+3. Enable the **Metrics Forwarding** toggle.
+
+The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and, when you set a
+cluster name, `k8s.cluster.name:<name>`.
+
+The following table lists other supported OTLP receivers and their credential formats.
+
+| Receiver                | Forwarding URL                                                                           | Forwarding Token                                 |
+| ----------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<api-key>`                           |
+| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | `Authorization=Basic <base64(instanceID:token)>` |
+| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`  | `api-key=<license-key>`                          |
+| OpenTelemetry Collector | `https://<your-collector>/v1/metrics`                                                    | Plain token or `Key=Value` headers               |
+
+For Grafana Cloud, generate the instance ID and a Cloud Access Policy token from the Grafana Cloud console, then
+base64-encode them in the form `instanceID:token`. Refer to the
+[Grafana Cloud OTLP documentation](https://grafana.com/docs/grafana-cloud/send-data/otlp/send-data-otlp/) for the
+current credential format.
 
 To label the forwarded metrics with a recognizable cluster name, set the `clusterName` pack value
 (`charts.virtual-machine-orchestrator.vmo-manager.clusterName`). VMO emits it as the `k8s.cluster.name` resource
@@ -304,12 +326,12 @@ storage in the `VMOConfig` custom resource.
 
 ### Metrics Section
 
-| **Setting**            | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                                    |
-| ---------------------- | -------------------------------------------- | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Metrics Forwarding** | `monitoring.splunk_hec_enabled`              | `false`     | No            | Real network gate. When enabled with URL and token set, `vmo-manager` POSTs each metric point to Splunk HEC under `sourcetype=vmo:metric`. Emits `monitoring.splunk_hec.toggled` on every change.  |
-| **Forwarding URL**     | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HTTP Event Collector base URL. An empty value disables the metrics push regardless of the toggle state.                                                                                     |
-| **Forwarding Token**   | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token used by the metrics client in `vmo-manager`. Masked in GET responses; the UI renders `(set)` in place of the value.                                                               |
-| **TLS Verify**         | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | Controls TLS certificate verification for the metrics push. `false` (default) verifies the Splunk HEC certificate. `true` skips verification and is intended for development or demo environments. |
+| **Setting**            | **Configuration Key**           | **Default** | **Sensitive** | **Description**                                                                                                                                                                                   |
+| ---------------------- | ------------------------------- | ----------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Metrics Forwarding** | `monitoring.splunk_hec_enabled` | `false`     | No            | Real network gate. When enabled with URL and token set, `vmo-manager` POSTs each metric point to Splunk HEC under `sourcetype=vmo:metric`. Emits `monitoring.splunk_hec.toggled` on every change. |
+| **Forwarding URL**     | `monitoring.splunk_hec_url`     | Empty       | No            | Splunk HTTP Event Collector base URL. An empty value disables the metrics push regardless of the toggle state.                                                                                    |
+| **Forwarding Token**   | `monitoring.splunk_hec_token`   | Empty       | **Yes**       | Splunk HEC token used by the metrics client in `vmo-manager`. Masked in GET responses; the UI renders `(set)` in place of the value.                                                              |
+| **CA Certificate**     | `monitoring.splunk_hec_ca_cert` | Empty       | No            | Optional PEM CA-signing certificate used to verify the metrics endpoint's TLS certificate. An empty value verifies against the container's system trust store.                                    |
 
 ### Logs Section
 
