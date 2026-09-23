@@ -38,50 +38,33 @@ clusters while using an older version of the Palette agent.
 
 ## Procedure
 
-### Identify the Target Agent Version
+### Identify the Latest Palette Agent Version
 
-If you already know the agent version you want to use for your cluster, you can skip this step.
+You can determine whether an Edge host has the latest Palette agent version and, if it does not, identify the latest
+version so you can upgrade to it.
 
-1. The target agent version depends on the Palette instance you use to build content bundles for your Edge cluster. Use
-   the following request to identify the target version. If you are using self-hosted Palette or VerteX, replace
-   `api.spectrocloud.com` with the fully qualified domain name of your API endpoints. Replace the `apiKey` field with
-   your API key.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-   ```shell
-   curl --location 'https://api.spectrocloud.com/v1/services/stylus/version' \
-   --header 'apiKey: ******'
-   ```
+2. From the left **Main Menu**, select **Clusters**.
 
-   You can expect a response similar to the following. In the following response, the target agent version is 4.5.5.
+3. Click the **Edge Hosts** tab.
 
-   ```json {9}
-   {
-     "metadata": {
-       "creationTimestamp": "0001-01-01T00:00:00.000Z",
-       "deletionTimestamp": "0001-01-01T00:00:00.000Z",
-       "lastModifiedTimestamp": "0001-01-01T00:00:00.000Z"
-     },
-     "spec": {
-       "latestVersion": {
-         "content": "name: stylus\nversion: 4.5.5\nbuildId: \"20241025\"\nmajorVersion: \"4.5\"\napplyFilepath: /roar/stylus/4.5/4.5.5/apply/manifest.yaml\ndeleteFilepath: \"\"\n",
-         "name": "manifest.yaml",
-         "path": "nickfury/4.5/4.5.5/apply/services.yaml"
-       },
-       "name": "stylus"
-     }
-   }
-   ```
+4. In the **Stylus Version** column, look for a warning sign, which indicates that the Palette agent on the Edge host is
+   not the latest version.
+
+5. Hover over the warning icon and copy the number of the latest Palette Agent version. You need this version when you
+   upgrade the agent.
 
 ### Upgrade Palette Agent Version
 
-2. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-3. From the left **Main Menu**, select **Profiles**. Select the profile you want your cluster to upgrade to.
+2. From the left **Main Menu**, select **Profiles**. Select the profile you want your cluster to upgrade to.
 
-4. Create a new version of the profile. For more information, refer to
+3. Create a new version of the profile. For more information, refer to
    [Update a Cluster](../../cluster-management/cluster-updates.md).
 
-5. In the OS layer of the profile, include the following lines. Replace `versionNumber` with your target agent version
+4. In the OS layer of the profile, include the following lines. Replace `versionNumber` with your target agent version
    number you obtained in the first step or any other version number you want to use. Replace `amd64` with `arm64` if
    your hardware uses `arm64` architecture.
 
@@ -105,13 +88,13 @@ If you already know the agent version you want to use for your cluster, you can 
 
    :::
 
-6. Click **Save Changes** to publish the new version.
+5. Click **Save Changes** to publish the new version.
 
 <Tabs groupId="deploy">
 
 <TabItem value="Local">
 
-7. Follow [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+6. Follow [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
    [Export Cluster Definition](../local-ui/cluster-management/export-cluster-definition.md) to build a content bundle
    using your new cluster profile and export the cluster definition.
 
@@ -122,17 +105,17 @@ If you already know the agent version you want to use for your cluster, you can 
 
    :::
 
-8. Upload the content bundle to your cluster through Local UI. For more information, refer to
+7. Upload the content bundle to your cluster through Local UI. For more information, refer to
    [Upload Content Bundle](../local-ui/cluster-management/upload-content-bundle.md).
 
-9. Update your cluster using the new cluster definition. For more information, refer to
+8. Update your cluster using the new cluster definition. For more information, refer to
    [Update Local Cluster](../local-ui/cluster-management/update-cluster.md).
 
 </TabItem>
 
 <TabItem value="Central">
 
-7. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) to update your cluster with the new profile
+6. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) to update your cluster with the new profile
    version.
 
 </TabItem>
