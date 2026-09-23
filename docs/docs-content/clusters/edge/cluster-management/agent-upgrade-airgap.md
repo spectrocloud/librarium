@@ -49,10 +49,10 @@ version so you can upgrade to it.
 
 3. Click the **Edge Hosts** tab.
 
-4. In the **Stylus Version** column, look for a warning sign, which indicates that the Palette agent on the Edge host is
+4. In the **Stylus Version** column, look for a warning icon, which indicates that the Palette agent on the Edge host is
    not the latest version.
 
-5. Hover over the warning icon and copy the number of the latest Palette Agent version. You need this version when you
+5. Hover over the warning icon and copy the number of the latest Palette agent version. You need this version when you
    upgrade the agent.
 
 ### Upgrade Palette Agent Version
