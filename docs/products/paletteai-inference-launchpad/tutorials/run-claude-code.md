@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Serve Your First Model"
-title: "Serve Your First Model to Claude Code"
+sidebar_label: "Run Claude Code"
+title: "Run Claude Code on Your Own Hardware"
 description:
   "A hands-on tutorial that takes you from a freshly installed PaletteAI Inference Launchpad appliance to a Claude Code
   session answered by a model on your own hardware."
@@ -41,12 +41,12 @@ On the appliance:
 - At least one model on the appliance. To check, in the console open **Cluster** > **Models**. If the table lists a row,
   you have a deployed model.
 
-  ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/serve-your-first-model_cluster-models-deployed.webp)
+  ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/run-claude-code_cluster-models-deployed.webp)
 
   If the table is empty, select **Deploy New Model**, confirm the **Model** drop-down is not empty, and then select
   **Cancel**. You deploy the model later in **Deploy a Model**.
 
-  ![The Deploy model dialog with the Model drop-down open, listing two available models.](/assets/docs/images/serve-your-first-model_deploy-model-dropdown.webp)
+  ![The Deploy model dialog with the Model drop-down open, listing two available models.](/assets/docs/images/run-claude-code_deploy-model-dropdown.webp)
 
   If the drop-down is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
@@ -66,7 +66,7 @@ First, open `https://<appliance-address>` in a browser and sign in with your adm
 The **Overview** page opens. Notice the status indicator near the top of the page. On a healthy appliance it reads
 `all clear`, which means the appliance has nothing waiting on you.
 
-![Overview page with the all clear status indicator near the top.](/assets/docs/images/serve-your-first-model_overview-all-clear.webp)
+![Overview page with the all clear status indicator near the top.](/assets/docs/images/run-claude-code_overview-all-clear.webp)
 
 Keep this browser tab open.
 
@@ -81,7 +81,7 @@ that CA yet, so you download the certificate now and reach for it in every step 
 
 3. Select **CA certificate**. The browser saves `palette-ai-inference-launchpad-ca.crt` to your `Downloads` folder.
 
-   ![The Connect a coding agent dialog with the CA certificate button highlighted.](/assets/docs/images/serve-your-first-model_ca-certificate-button.webp)
+   ![The Connect a coding agent dialog with the CA certificate button highlighted.](/assets/docs/images/run-claude-code_ca-certificate-button.webp)
 
 4. Close the dialog. You open it again in **Point Claude Code at the Appliance**.
 
@@ -193,7 +193,7 @@ appliance is doing what you asked.
 Now return to the console and confirm that the model finished. In the **Model** table on the **Cluster** page, the **Nodes**
 column reads `1/1 healthy` for the node you chose, and the model's state reads `Ready`.
 
-![Cluster Models tab with the deployed model row expanded, showing the Ready state chip, a 1 of 1 healthy Health chip, and VRAM usage.](/assets/docs/images/serve-your-first-model_model-ready.webp)
+![Cluster Models tab with the deployed model row expanded, showing the Ready state chip, a 1 of 1 healthy Health chip, and VRAM usage.](/assets/docs/images/run-claude-code_model-ready.webp)
 
 Wait until the state reads `Ready` before you map an alias to the model. An alias pointed at a model that is not yet
 serving cannot answer requests, so the verification later in this tutorial would fail.
@@ -217,7 +217,7 @@ model answers the requests this client sends.
 6. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
    **Next**. The wizard requires every alias to be mapped before it lets you continue.
 
-   ![Routing step with all seven Tier map rows mapped to the deployed model.](/assets/docs/images/serve-your-first-model_routing-mapped.webp)
+   ![Routing step with all seven Tier map rows mapped to the deployed model.](/assets/docs/images/run-claude-code_routing-mapped.webp)
 
 7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, select a date within the next year in **Expires**, and then select **Add Token**.
@@ -226,7 +226,7 @@ model answers the requests this client sends.
 
 9. The console reveals the token, which begins with `lpai_`.
 
-   ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/serve-your-first-model_token-reveal.webp)
+   ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
 
    :::warning
 
@@ -246,7 +246,7 @@ Now connect the two halves.
 1. Select your shell from the dropdown at the top of the code block. Then select the copy button to copy the
    configuration.
 
-   ![The coding-agent setup with the shell picker and the copy button highlighted at the top of the code block.](/assets/docs/images/serve-your-first-model_shell-picker.webp)
+   ![The coding-agent setup with the shell picker and the copy button highlighted at the top of the code block.](/assets/docs/images/run-claude-code_shell-picker.webp)
 
 2. In your terminal, paste the configuration. Any directory works.
 
@@ -294,12 +294,12 @@ Now confirm that the appliance counted it.
 3. Find the **Local vs external** card. Every token is kept on the Launchpad, and the share routed externally reads zero
    tokens, because your appliance answered each request and no frontier model took part.
 
-   ![Usage Overview tab with the Totals card showing requests and tokens risen from zero, and the Local vs external card showing 100 percent kept on the Launchpad.](/assets/docs/images/serve-your-first-model_usage-overview.webp)
+   ![Usage Overview tab with the Totals card showing requests and tokens risen from zero, and the Local vs external card showing 100 percent kept on the Launchpad.](/assets/docs/images/run-claude-code_usage-overview.webp)
 
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
 
-   ![Usage By Client tab with a coding-agent row showing 1 API key, 3 local requests, and 86.9K local tokens.](/assets/docs/images/serve-your-first-model_usage-by-client.webp)
+   ![Usage By Client tab with a coding-agent row showing 1 API key, 3 local requests, and 86.9K local tokens.](/assets/docs/images/run-claude-code_usage-by-client.webp)
 
 ## Change a Setting and Watch
 
@@ -375,12 +375,12 @@ Undo the changes the tutorial made.
 5. On the **Clients & API tokens** page, find the `coding-agent` row and select the three-dot menu at the end of the
    row.
 
-   ![Clients and API tokens page with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/serve-your-first-model_three-dot-menu.webp)
+   ![Clients and API tokens page with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/run-claude-code_three-dot-menu.webp)
 
 6. Select **Delete** and confirm.
 
    <img
-     src="/assets/docs/images/serve-your-first-model_delete-menu.webp"
+     src="/assets/docs/images/run-claude-code_delete-menu.webp"
      alt="The three-dot menu open showing Manage Client and Delete options."
      width="220"
    />

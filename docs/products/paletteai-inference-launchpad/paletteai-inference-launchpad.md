@@ -116,7 +116,7 @@ different scales and deployment models.
 
 Whatever brought you here, these are the fastest paths in.
 
-- **Get started**: [Serve your first model to Claude Code](./tutorials/serve-your-first-model.md) •
+- **Get started**: [Run Claude Code on Your Own Hardware](./tutorials/run-claude-code.md) •
   [Suggested Hardware](./reference/hardware-requirements.md) •
   [Install the appliance](./how-to-guides/install-the-appliance.md) •
   [Upload a model](./how-to-guides/upload-a-model.md) • [Bring your own model](./how-to-guides/bring-your-own-model.md)
