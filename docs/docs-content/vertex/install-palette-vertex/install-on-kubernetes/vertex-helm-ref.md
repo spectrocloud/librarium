@@ -542,7 +542,7 @@ Due to node affinity configurations, you must set `scheduleOnControlPlane: false
 
 ## Observability
 
-Palette VerteX can export a curated set of platform metrics to an external observability stack, such as Splunk, using an
+Palette VerteX can export platform metrics to an external observability stack, such as Splunk, using an
 OpenTelemetry collector. The observability stack is disabled by default. Set `observability.enabled` to `true` at
 install or upgrade time to enable it, then configure the export from the **Metrics** tab in the system console. For the
 configuration procedure, refer to the Export Platform Metrics guide.
