@@ -147,6 +147,80 @@ Bulk VLAN creation is useful for environments with pre-configured trunk ports wh
 
 :::
 
+### Bridge VLAN Filtering
+
+A Linux bridge ignores VLAN tags by default, so every VM attached to it can reach every VLAN on that bridge. Bridge VLAN
+filtering makes the bridge VLAN-aware so that only permitted VLAN IDs are forwarded on each port.
+
+When you deploy the optional `vlan-mgmt` DaemonSet, VMO derives the permitted VLANs from your NADs. Creating a network
+on VLAN 300 permits VLAN 300 on that bridge within one reconciliation pass, which is 30 seconds by default. You do not
+need to edit a cluster profile or redeploy the cluster.
+
+VMO programs every bridge that a NAD names, provided the bridge exists on the node. If a NAD references a bridge that is
+not present on a node, VMO skips it on that node and reports it in the node status.
+
+:::warning
+
+Enabling VLAN filtering is a default-deny change. If the permitted set is incorrect, a node might lose network
+connectivity, and recovery might require out-of-band access to the machine. Review the safeguards below before you
+enable it.
+
+:::
+
+#### Recover from a Filtering Error
+
+Three behaviors bound the risk of a connectivity loss:
+
+- NAD VLANs never touch the node's own network path. VMO applies them only to the ports that connect the bridge to the
+  external network. The VLANs that the node itself uses come from administrator configuration, so creating a network
+  cannot cut node management traffic.
+- VMO continuously verifies filtering and reverts it if it breaks the node. VMO probes the configured path on every
+  reconciliation pass while filtering is enabled. After three consecutive failures, VMO turns filtering back off, and
+  durable on-node state suppresses further attempts. Because that state lives on the node rather than in the pod, the
+  decision survives a pod restart.
+- VMO suspends VLAN removal when the cluster view is incomplete. If VMO cannot read the NADs on a pass, it stops
+  removing VLANs for that pass instead of treating an empty result as a request to remove everything.
+
+After you fix the network, select **Clear & Retry** on the **Networks** page.
+
+
+VMO consumes the request once and retries without a pod restart.
+
+#### Check What VLANs a Node Permits
+
+Each node carries a `vmo-manager/vlan-filtering-status` annotation that summarizes what was applied, including whether
+filtering was reverted. Use the following command to read it.
+
+```bash
+kubectl get node <node-name> -o jsonpath='{.metadata.annotations.vmo-manager/vlan-filtering-status}'
+```
+
+#### Restrict Which VLANs Can Be Opened
+
+By default, VMO permits any assignable VLAN that a NAD declares. To bound this, enable the tenant range in the pack
+values. VMO refuses and reports NAD VLANs outside the range, while administrator-configured VLANs are unaffected.
+
+```yaml
+vlanFiltering:
+  env:
+    vlanRange: "100-399"
+    enforceVlanRange: "true"
+```
+
+The Palette pack and the appliance register VMO admission validation by default. The `admissionControl.enabled` setting
+enables both fail-open VM overcommit feedback and NAD network validation. A bridge network must name a bridge that the
+node agents report. During agent startup, an empty inventory produces a warning and remains fail-open. To use a bridge
+that is intentionally managed outside VMO, annotate that NAD with `vmo.spectrocloud.com/allow-unknown-bridge: "true"`.
+VMO then allows the request and issues a warning.
+
+:::info
+
+The `allowedVlans` allowlist is still supported. When you set `vlanFiltering.env.allowedVlans`, VMO adds those VLANs to
+the NAD-derived set, so existing values keep working. NAD-based discovery is controlled by the `nadDiscovery` setting.
+Setting it to `false` restores the previous allowlist-only behavior.
+
+:::
+
 ### Delete a NAD
 
 The appliance blocks deletion of a NAD that a running VM references. VMO checks for references and displays a conflict
