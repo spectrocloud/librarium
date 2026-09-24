@@ -60,7 +60,25 @@ configuration.
 
 1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
-2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
+2. In the **VM Launchpad** section, use the drop-down menu to select the version and appliance variant, and select
+   **Show Artifacts**.
+
+   The VM Launchpad appliance is available in the following variants, which differ by FIPS compliance and storage
+   backend. In the drop-down menu, the storage backend appears in parentheses, for example `(piraeus)` or `(portworx)`.
+   Choose the variant that matches your compliance and storage requirements.
+
+   | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                           |
+   | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
+   | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                |
+   | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS. |
+   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Pure Storage arrays.  |
+
+   :::info
+
+   The Slim ISO and the content bundle must match on FIPS mode. A FIPS content bundle pairs only with the Piraeus
+   backend. A non-FIPS content bundle pairs with either the Portworx or the Piraeus backend.
+
+   :::
 
 3. The following table describes the artifacts available for VM Launchpad.
 

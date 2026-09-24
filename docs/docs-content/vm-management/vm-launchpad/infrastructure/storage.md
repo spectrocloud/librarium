@@ -19,13 +19,14 @@ Piraeus/LINSTOR as the default storage backend, but VMO works with any StorageCl
 VMO does not require a specific storage backend. It works with any Kubernetes StorageClass that supports dynamic
 provisioning.
 
-The default appliance backend is Piraeus/LINSTOR, which provides:
+The appliance backend depends on the [appliance variant](../install.md#install) you install:
 
-- Replicated storage for VM disks.
-- StorageClass-based provisioning.
-- LVM-based storage pools.
+- **Piraeus/LINSTOR** provides replicated block storage for VM disks, StorageClass-based provisioning, and LVM-based
+  storage pools. This backend ships with both the FIPS and non-FIPS Piraeus variants.
+- **Portworx** provides enterprise distributed storage for VM disks. This backend ships with the non-FIPS Portworx
+  variant.
 
-You can use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
+You can also use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
 
 ## StorageClasses
 
