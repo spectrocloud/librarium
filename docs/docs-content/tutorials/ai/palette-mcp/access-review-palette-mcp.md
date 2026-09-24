@@ -14,46 +14,43 @@ The `access-review` skill builds a tenant-wide membership and activation map: wh
 activation, and who has no team and no tenant role at all (an orphaned account). It is a good starting point for
 security reviews, onboarding audits, or offboarding checks.
 
-## What This Review Covers
-
 This review reports **tenant-level** roles, as UIDs and counts. **Project-scoped** role assignments require a separate
-check—this is a membership and activation map, not a full role-based access audit. State this scope whenever you share a
-report, so the audience knows exactly what is covered.
-
-## What This Tutorial Covers
-
-- The team → users → activation → orphans sequence that this skill runs.
-- How to distinguish a fast orphan signal (no extra API calls) from a full orphan check (one call per candidate user).
+check, so treat the output as a membership and activation map, not a full role-based access audit. Restate this scope
+whenever you share a report, so the audience knows exactly what is covered. In this tutorial, you run the team, users,
+activation, and orphans sequence that the skill follows, and you learn to distinguish a fast orphan signal (no extra API
+calls) from a full orphan check (one call per candidate user).
 
 ## Prerequisites
 
-Same as [Get Started with Palette MCP](./get-started-palette-mcp.md): an MCP-capable client, a Palette API key with
+Same as [Get Started with Palette MCP](./get-started-palette-mcp.md): an MCP-capable client, and a Palette API key with
 tenant-wide read access to teams and users. No special server flags.
 
 :::info
 
-Every user in this tutorial's live run is replaced with a placeholder (for example, `user1@example.com`)— real names and
-email addresses were captured during the run and then redacted before anything was written to this document. No real
-identifier appears below.
+Every user shown in this tutorial is a placeholder (for example, `user1@example.com`). Substitute your own tenant's
+values when you run the sequence.
 
 :::
 
-## Tools Used in This Tutorial
+:::warning
 
-| Tool         | What it does                                                                                                                                                              |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `read_teams` | Lists teams (`uid`, `name`, `user_count`, `source_count`), or one team's full roster by `uid`. Filter by `has_user_uid`/`has_user_email` to find a specific user's teams. |
-| `read_users` | Lists users (`uid`, `email`, `name`, `is_active`, `tenant_role_count`), or one user's role detail by `uid`.                                                               |
+The access review returns real people's identifiers (names, emails, and activation state), even against an internal test
+tenant. Redact them before you share any output beyond the person who requested it. For the Palette MCP server's full
+security model, refer to [Palette MCP Architecture](../../../automation/palette-mcp/architecture.md#security).
 
-Both read-only.
+:::
 
-## Step 1—List Teams
+## List Teams
+
+The `read_teams` tool lists teams (`uid`, `name`, `user_count`, `source_count`), or one team's full roster by `uid`.
+Filter by `has_user_uid` or `has_user_email` to find a specific user's teams. It is read-only. Start by listing every
+team in the tenant.
 
 ```shell title="Example Prompt"
 List all my teams.
 ```
 
-Live result (redacted) against a real tenant.
+The following is an example response.
 
 ```json title="Example Output"
 {
@@ -66,15 +63,18 @@ Live result (redacted) against a real tenant.
 }
 ```
 
-All three teams show `user_count: 0`—every team in this tenant is empty.
+All three teams show `user_count: 0`, so every team in this tenant is empty.
 
-## Step 2—List Users
+## List Users
+
+The `read_users` tool lists users (`uid`, `email`, `name`, `is_active`, `tenant_role_count`), or returns one user's role
+detail by `uid`. It is also read-only. List every user and their activation status.
 
 ```shell title="Example Prompt"
 List all users and their activation status.
 ```
 
-Live result (redacted).
+The following is an example response.
 
 ```json title="Example Output"
 {
@@ -91,18 +91,18 @@ Live result (redacted).
 }
 ```
 
-## Step 3—Flag Activation Gaps
+## Flag Activation Gaps
 
-All seven users show `is_active: true` in this run—zero pending activations. That is a genuine result: in a tenant with
-pending invites, this is exactly where they would show up as `is_active: false`.
+In this example, all seven users show `is_active: true`, so there are zero pending activations. This is a genuine
+result: in a tenant with pending invites, those accounts show up here as `is_active: false`.
 
-## Step 4—Flag Orphans
+## Flag Orphans
 
-**Fast signal (no extra calls):** users with `tenant_role_count: 0`—five of the seven above (`user2` through `user6`).
-This alone is often enough to report.
+Use the fast signal first (no extra calls): users with `tenant_role_count: 0`, which is five of the seven above (`user2`
+through `user6`). This alone is often enough to report.
 
-**Full orphan check** (only for the small zero-role set—never for every user): confirm each candidate also has no team,
-via `read_teams` with `filters={has_user_uid:"<uid>"}`.
+For a full orphan check (only for the small zero-role set, never for every user), confirm each candidate also has no
+team, using `read_teams` with `filters={has_user_uid:"<uid>"}`.
 
 ```shell title="Example Prompt"
 Is user2 on any team?
@@ -112,52 +112,61 @@ Is user2 on any team?
 { "items": [], "total": 0 }
 ```
 
-Same result for `user4`. Both confirmed as true orphans—no tenant roles, no team membership. Here the check is a
-formality—Step 1 already showed every team is empty. In a tenant with real team membership, run the per-user check
-rather than inferring from Step 1.
+The `user4` account returns the same result. Both are confirmed as true orphans, with no tenant roles and no team
+membership. Here the check is a formality, because listing the teams already showed every team is empty. In a tenant
+with real team membership, run the per-user check rather than inferring from the team list.
 
-## Step 5—Team Rosters and Per-User Detail
+## Expand Team Rosters and Per-User Detail
 
-With every team empty, there is no roster to expand in this run. In a tenant with real team membership, `read_teams`
-with `uid=<team_uid>` returns `Spec.Users[]`/`Spec.Roles[]` for one team at a time—ask which teams to expand rather than
-fetching all of them if the tenant has many.
+With every team empty, there is no roster to expand in this example. In a tenant with real team membership, `read_teams`
+with `uid=<team_uid>` returns `Spec.Users[]` and `Spec.Roles[]` for one team at a time. Ask which teams to expand rather
+than fetching all of them if the tenant has many.
 
-## Step 6—Synthesize
+## Synthesize the Findings
 
-- **Teams (3):** all empty—worth flagging on its own; three teams with no members is either stale team creation or a gap
-  in whatever process was supposed to populate them.
-- **Users (7):** zero pending, five confirmed orphans (no roles, no team), two with tenant roles.
+- **Teams (3):** all empty, which is worth flagging on its own. Three teams with no members is either stale team
+  creation or a gap in whatever process was supposed to populate them.
+- **Users (7):** zero pending, five confirmed orphans (no roles, no team), and two with tenant roles.
 - Restate the scope (tenant-only, no project-scoped roles) in the final report every time.
+
+:::info
+
+To act on a finding, such as clearing an orphan's roles or adjusting team membership, the write tools (`update_user` and
+`update_team`) need the `--allow-write` flag. This tutorial does not use them.
+
+:::
 
 ## Troubleshooting
 
-| Symptom                                                                | Likely cause                                                                                    | Fix                                                                             |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Every team shows `user_count: 0` in a tenant you know has active teams | Pointed at the wrong tenant/profile—`list_auth_profiles` shows configured hosts                 | Re-run against the correct `auth_profile`.                                      |
-| Orphan check (`has_user_uid` filter) returns unexpected results        | `has_user_uid` and `has_user_email` are mutually exclusive—supplying both is a validation error | Pass exactly one.                                                               |
-| Real names/emails end up in a saved report                             | This skill returns real PII by design—it is an access review                                    | Redact before sharing, exactly as this tutorial does (Security Best Practices). |
-
-## Security Best Practices
-
-- Read-only; no special server flags needed.
-- Access-review output carries real people's identifiers (names, emails, activation state), even against an internal
-  test tenant—redact before sharing beyond the person who requested it.
-- To act on a finding (clear an orphan's roles, adjust team membership), the write tools (`update_user`, `update_team`)
-  need `--allow-write`—this tutorial does not use them.
+| Symptom                                                                | Likely cause                                                                                         | Fix                                                   |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Every team shows `user_count: 0` in a tenant you know has active teams | Pointed at the wrong tenant or profile. `list_auth_profiles` shows configured hosts.                 | Re-run against the correct `auth_profile`.            |
+| Orphan check (`has_user_uid` filter) returns unexpected results        | `has_user_uid` and `has_user_email` are mutually exclusive, so supplying both is a validation error. | Pass exactly one.                                     |
+| Real names or emails end up in a saved report                          | This skill returns real PII by design, because it is an access review.                               | Redact before sharing, exactly as this tutorial does. |
 
 ## Validate
 
-You have completed this tutorial if you can:
+Confirm that you can produce an access review through the Palette MCP server.
 
-- [ ] Run the team → user → activation → orphan sequence against your own tenant.
-- [ ] State this skill's scope (tenant-only roles, no project-scoped access) in your own report.
-- [ ] Distinguish the fast orphan signal from the full per-user team check, and know when each is enough.
+1. Run the team, user, activation, and orphan sequence against your own tenant, and confirm that you can identify which
+   users have no tenant role and no team.
+
+2. Confirm that your report states the skill's scope (tenant-only roles, no project-scoped access).
+
+3. Distinguish the fast orphan signal from the full per-user team check, and confirm that you know when each is enough.
 
 ## Cleanup
 
-Read-only tutorial—nothing to clean up.
+This tutorial is read-only and creates or changes nothing, so there is nothing to clean up.
 
-## Next Steps
+## Wrap-up
 
-- [Morning Fleet Check with Palette MCP](./fleet-health-palette-mcp.md)—the breadth-first health counterpart to this
+In this tutorial, you built a tenant-wide membership and activation map with the `access-review` skill. You listed teams
+and users, flagged activation gaps and orphaned accounts, and synthesized the results into a report. Remember that this
+review covers tenant-level roles only, not project-scoped assignments, so restate that scope whenever you share the
+output, and redact real identifiers first.
+
+To continue, refer to the following tutorials:
+
+- [Morning Fleet Check with Palette MCP](./fleet-health-palette-mcp.md), the breadth-first health counterpart to this
   membership review.
