@@ -221,12 +221,12 @@ terms.
 
 Mermaid's flowchart node shapes carry meaning in every architecture diagram.
 
-| Mermaid shape          | Syntax    | Meaning                                                                                                 |
-| ---------------------- | --------- | ------------------------------------------------------------------------------------------------------- |
-| Rectangle              | `[label]` | A component, service, or actor.                                                                         |
-| Stadium (rounded ends) | `([...])` | The entry node of a flow.                                                                               |
-| Diamond                | `{label}` | A decision node in a decision-tree or routing diagram.                                                  |
-| Cylinder               | `[(...)]` | A store, such as a database, secret store, or model artifact repository.                                |
+| Mermaid shape          | Syntax     | Meaning                                                                                                |
+| ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------ |
+| Rectangle              | `[label]`  | A component, service, or actor.                                                                        |
+| Stadium (rounded ends) | `([...])`  | The entry node of a flow.                                                                              |
+| Diamond                | `{label}`  | A decision node in a decision-tree or routing diagram.                                                 |
+| Cylinder               | `[(...)]`  | A store, such as a database, secret store, or model artifact repository.                               |
 | Subgraph               | `subgraph` | A cluster of related components. Style the subgraph with the same `classDef` as the role of the group. |
 
 Mark optional or off-by-default components with a dashed edge to their entry point rather than a dashed border.
@@ -235,12 +235,12 @@ Mark optional or off-by-default components with a dashed edge to their entry poi
 
 Mermaid's edge syntax expresses each of the following.
 
-| Arrow          | Mermaid syntax | Meaning                                                                             |
-| -------------- | -------------- | ----------------------------------------------------------------------------------- |
-| Solid          | `-->`          | A request or a data-plane call.                                                     |
-| Dashed         | `-.->`         | A Kubernetes reconcile loop, an egress hop, or an optional or telemetry connection. |
-| Labeled        | `-- label -->` | Any of the above with a short protocol, verb, or condition label.                   |
-| Bidirectional  | `<-->`         | A bidirectional state projection, such as the admin API authoring custom resources. |
+| Arrow         | Mermaid syntax | Meaning                                                                             |
+| ------------- | -------------- | ----------------------------------------------------------------------------------- |
+| Solid         | `-->`          | A request or a data-plane call.                                                     |
+| Dashed        | `-.->`         | A Kubernetes reconcile loop, an egress hop, or an optional or telemetry connection. |
+| Labeled       | `-- label -->` | Any of the above with a short protocol, verb, or condition label.                   |
+| Bidirectional | `<-->`         | A bidirectional state projection, such as the admin API authoring custom resources. |
 
 Set the color of every edge with `linkStyle` so that the arrow signals what kind of interaction it is, not just where it
 comes from. Use blue for a data-plane request, dashed indigo for a Kubernetes reconcile, dashed amber for egress to a
@@ -272,8 +272,8 @@ rather than shrinking the type. Two clear pictures always beat one crowded one.
 
 The docs repo authors architecture diagrams in Mermaid, renders them to PNG with
 [`@mermaid-js/mermaid-cli`](https://github.com/mermaid-js/mermaid-cli), and converts the PNG to webp with
-[`cwebp`](https://developers.google.com/speed/webp/download). The webp is the artifact the docs site serves; the
-Mermaid source is the authoring artifact that lives alongside it in the repo.
+[`cwebp`](https://developers.google.com/speed/webp/download). The webp is the artifact the docs site serves; the Mermaid
+source is the authoring artifact that lives alongside it in the repo.
 
 The Mermaid source for each diagram lives in a `mermaid/` subdirectory next to the page it belongs to, and the rendered
 webp lands under `static/assets/docs/images/` per the standard image naming convention
@@ -314,8 +314,8 @@ are unsure which role it belongs to.
 ![Conventions showcase: a neutral operator session driving a client app that reaches a blue gateway, which dispatches to a green local engine, on egress to an amber frontier provider, and to a red HTTP 401 denial branch, with an indigo control plane reconciling into the gateway and a teal observability stack collecting metrics from the engine.](../../static/assets/docs/images/diagramming-conventions_sample.webp)
 
 The Mermaid source for this sample lives at
-[`docs/contributing/mermaid/diagramming-conventions-sample.mmd`](./mermaid/diagramming-conventions-sample.mmd). Use it as
-a starting point when you author a new diagram.
+[`docs/contributing/mermaid/diagramming-conventions-sample.mmd`](./mermaid/diagramming-conventions-sample.mmd). Use it
+as a starting point when you author a new diagram.
 
 ## Code Lines Highlighter
 
