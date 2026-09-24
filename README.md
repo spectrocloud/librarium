@@ -87,7 +87,7 @@ The content in this repository requires approval from the documentation team. Ap
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
 | [Local Development](./docs/contributing/local-development.md)                  | Prerequisites, Docker setup, non-Docker setup, and local environment variables.         |
 | [Authoring Content](./docs/contributing/authoring-content.md)                  | Creating pages, organizing sidebars, tutorials, and reviewer guidance.                  |
-| [Markdown and MDX](./docs/contributing/markdown-and-mdx.md)                    | Links, images, redirects, code blocks, and admonitions.                                 |
+| [Markdown and MDX](./docs/contributing/markdown-and-mdx.md)                    | Links, images, diagrams, redirects, code blocks, and admonitions.                       |
 | [Components](./docs/contributing/components.md)                                | Tabs, videos, tooltips, partials, badges, cards, and Palette/VerteX URL helpers.        |
 | [Generated Content and Integrations](./docs/contributing/generated-content.md) | API docs, security bulletins, packs, cached generated data, and the Kapa widget.        |
 | [Checks and CI](./docs/contributing/checks-and-ci.md)                          | Netlify previews, Vale, Prettier, spellcheck, and build exit codes.                     |
