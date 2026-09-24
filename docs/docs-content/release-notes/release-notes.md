@@ -677,6 +677,11 @@ troubleshooting scenario.
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
   [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1190 -->
+
+- Fixed an issue that prevented a namespace created through the console from appearing in the UI until the page was
+  reloaded. New namespaces now appear immediately after they are created.
+
 ### Automation
 
 <!-- release-notes-automation-callout-4.10.0-start -->
