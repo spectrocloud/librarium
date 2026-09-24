@@ -39,6 +39,23 @@ tags: ["release-notes"]
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
   above.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- Palette now validates the callback URI on every authentication request when it acts as an identity provider (IdP). Earlier releases accepted any callback URI. A tenant admin must register callback URIs that Palette does not allow by default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URI, with some exceptions.
+
+  You do not need to register the callback URIs after upgrade in the following situations.
+
+  - The callback URI is on your Palette domain.
+  - The callback URI is a loopback such as `localhost` or `127.0.0.1`.
+  - The callback URI belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
+  of the upgrade.  
+  
+    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URIs
+  automatically at upgrade. If you change a cluster's callback URI after the upgrade, you must
+  register the new value.
+
+
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
