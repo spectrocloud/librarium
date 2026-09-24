@@ -242,8 +242,10 @@ Mermaid's edge syntax expresses each of the following.
 | Labeled        | `-- label -->` | Any of the above with a short protocol, verb, or condition label.                   |
 | Bidirectional  | `<-->`         | A bidirectional state projection, such as the admin API authoring custom resources. |
 
-Set the color of every edge with `linkStyle` so that the arrow inherits the palette color of the origin's role. Reserve
-solid arrows for the request path, dashed arrows for reconcile, egress, and telemetry connections.
+Set the color of every edge with `linkStyle` so that the arrow signals what kind of interaction it is, not just where it
+comes from. Use blue for a data-plane request, dashed indigo for a Kubernetes reconcile, dashed amber for egress to a
+frontier provider or external endpoint, and dotted teal for a metrics or telemetry hop. Reserve solid arrows for the
+request path.
 
 Label an arrow only when the label adds information the reader cannot infer from the shapes. Prefer protocol or
 transport tags such as `SSE`, `gRPC`, and `HTTPS`, or short verbs such as _reconcile_ or _classify_.
@@ -309,7 +311,7 @@ Do not commit the intermediate PNG.
 The following diagram uses every color role in the palette. Use it as a reference when you introduce a new component and
 are unsure which role it belongs to.
 
-![Conventions showcase: a client app reaching a blue gateway that dispatches to a green local engine and, on egress, to an amber frontier provider, with an indigo control plane reconciling into the gateway and a teal observability stack collecting metrics from the engine.](../../static/assets/docs/images/diagramming-conventions_sample.webp)
+![Conventions showcase: a neutral operator session driving a client app that reaches a blue gateway, which dispatches to a green local engine, on egress to an amber frontier provider, and to a red HTTP 401 denial branch, with an indigo control plane reconciling into the gateway and a teal observability stack collecting metrics from the engine.](../../static/assets/docs/images/diagramming-conventions_sample.webp)
 
 The Mermaid source for this sample lives at
 [`docs/contributing/mermaid/diagramming-conventions-sample.mmd`](./mermaid/diagramming-conventions-sample.mmd). Use it as

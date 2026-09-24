@@ -1,5 +1,7 @@
 flowchart LR
+    operator[Operator]:::neutral
     client([Client app]):::start
+    denied[HTTP 401]:::deny
 
     subgraph gateway_box[Gateway]
         router[Router]:::dataplane
@@ -26,9 +28,11 @@ flowchart LR
     end
     class obs_box obs
 
+    operator --> client
     client --> router
     router -- local --> engine
     router -.-> provider
+    router -- 401 --> denied
     model_cr -.-> router
     engine -.-> grafana
 
@@ -38,9 +42,13 @@ flowchart LR
     classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
     classDef frontier fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
     classDef obs fill:#f0fdfa,stroke:#0f766e,color:#0f172a,stroke-width:2px;
+    classDef deny fill:#fee2e2,stroke:#b91c1c,color:#0f172a,stroke-width:2px;
+    classDef neutral fill:#f8fafc,stroke:#cbd5e1,color:#0f172a,stroke-width:2px;
 
-    linkStyle 0 stroke:#2563eb,stroke-width:2px;
+    linkStyle 0 stroke:#cbd5e1,stroke-width:2px;
     linkStyle 1 stroke:#2563eb,stroke-width:2px;
-    linkStyle 2 stroke:#d97706,stroke-width:2px,stroke-dasharray:6 4;
-    linkStyle 3 stroke:#4f46e5,stroke-width:2px,stroke-dasharray:6 4;
-    linkStyle 4 stroke:#0f766e,stroke-width:2px,stroke-dasharray:2 3;
+    linkStyle 2 stroke:#2563eb,stroke-width:2px;
+    linkStyle 3 stroke:#d97706,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 4 stroke:#b91c1c,stroke-width:2px;
+    linkStyle 5 stroke:#4f46e5,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 6 stroke:#0f766e,stroke-width:2px,stroke-dasharray:2 3;
