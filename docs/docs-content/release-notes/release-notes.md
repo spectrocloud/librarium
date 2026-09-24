@@ -11,6 +11,40 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 21, 2026 - Release 4.8.67
+
+<!-- PATCH RELEASE TICKET: DOC-3222 -->
+<!-- PATCH RELEASE VERSION: 4.8.67 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11964 PEM-11854 PE-9515 PLT-2430 PCOM-1124 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11964 -->
+
+- Applied security fixes to improve the platform security posture.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11854 -->
+
+- Improved Palette Management maintenance and stability updates for this release.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9515 -->
+
+- Fixed an issue where the Edge operator failed to sync informer caches and prevented CNI deployment during agent-mode
+  bootstrap.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2430 -->
+
+- Fixed an issue where the Palette CLI `login` command misreported a request failure as
+  `Invalid Spectro Cloud credentials` and returned a success exit code, which allowed scripted logins to continue
+  without a valid session.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1124 -->
+
+- Fixed an issue where an airgap Enterprise Cluster install failed because a generated manifest referenced container
+  image tags that were not included in the airgap bundle.
+
 ## August 6, 2026 - Release 4.8.62
 
 <!-- PATCH RELEASE TICKET: DOC-3188 -->
@@ -2848,9 +2882,10 @@ The following component updates are applicable to this release:
 
 - Palette 4.8 upgrades MongoDB to 8.0, which requires a MongoDB Feature Compatibility Version (FCV) of 7.0 or later. If
   your MongoDB data was first created on Palette 4.5.x through 4.6.9, the FCV might still be at 6.0, which causes the
-  upgrade to fail. The current Palette version does not indicate whether this applies; you must check the FCV directly and, if
-  it is 6.0, raise it to 7.0 before upgrading. To learn how to check the FCV version and upgrade to FCV 7.0 if necessary, refer to
-[Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade](/troubleshooting/enterprise-install#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade).
+  upgrade to fail. The current Palette version does not indicate whether this applies; you must check the FCV directly
+  and, if it is 6.0, raise it to 7.0 before upgrading. To learn how to check the FCV version and upgrade to FCV 7.0 if
+  necessary, refer to
+  [Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade](/troubleshooting/enterprise-install#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade).
 
 - When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
   AMI. This change aligns with the [upcoming deprecation of Amazon Linux 2 (AL2) AMIs](./announcements.md#deprecations).
