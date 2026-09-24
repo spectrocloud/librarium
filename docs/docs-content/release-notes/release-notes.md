@@ -42,19 +42,23 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
 
-- Palette now validates the callback URI on every authentication request when it acts as an identity provider (IdP). Earlier releases accepted any callback URI. A tenant admin must register callback URIs that Palette does not allow by default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URI, with some exceptions.
+- Palette now validates the callback URL on every authentication request when it acts as an identity provider (IdP).
+  Earlier releases accepted any callback URL. A tenant admin must register callback URLs that Palette does not allow by
+  default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URL, with
+  some exceptions.
 
-  You do not need to register the callback URIs after upgrade in the following situations.
+  You do not need to register the callback URLs after upgrade in the following situations.
 
-  - The callback URI is on your Palette domain.
-  - The callback URI is a loopback such as `localhost` or `127.0.0.1`.
-  - The callback URI belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
-  of the upgrade.  
-  
-    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URIs
-  automatically at upgrade. If you change a cluster's callback URI after the upgrade, you must
-  register the new value.
+  - The callback URL is on your Palette domain.
+  - The callback URL is on the local machine, such as `localhost` or `127.0.0.1`.
+  - The callback URL belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
+    of the upgrade.
 
+    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URLs automatically at
+    upgrade. If you change a cluster's callback URL after the upgrade, you must register the new value.
+
+  For more information, refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
