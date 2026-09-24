@@ -1,11 +1,12 @@
-"""Generate the showcase SVG used in docs/contributing/diagramming-conventions.md.
+"""Generate the showcase SVG referenced from the "### Diagrams" subsection of docs/contributing/markdown-and-mdx.md.
 
 Regenerate with:
 
-    /private/tmp/claude-501/-Users-brenteritou-dev-librarium/bef82f9b-8adc-4e7d-b110-3a9deb14fdec/scratchpad/diagrams-venv/bin/python \
-      scripts/diagrams/diagramming-conventions/sample.py
+    python3 -m venv .diagrams-venv
+    .diagrams-venv/bin/pip install diagrams
+    .diagrams-venv/bin/python scripts/diagrams/diagramming-conventions/sample.py
 
-Output lands at static/assets/docs/images/diagramming-conventions_sample.svg.
+Output lands at static/assets/docs/diagrams/diagramming-conventions_sample.svg.
 Requires graphviz (dot) on PATH.
 """
 
