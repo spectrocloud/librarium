@@ -19,23 +19,24 @@ This page describes how to prepare an NVIDIA Jetson device so it can register wi
 The Jetson AGX Thor Developer Kit runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which provides a
 Jetson Linux (L4T) operating system built on Ubuntu. Install or update JetPack on the device following the
 [NVIDIA Jetson AGX Thor Developer Kit Quick Start Guide](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html).
-For the Thor Developer Kit, this uses an NVIDIA installer image written to a USB drive, from which you select **Install
-on NVMe** to install the operating system to the device's NVMe SSD.
+For the Thor Developer Kit, download the NVIDIA installer image from
+[NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), write it to a USB drive, then select **Install on
+NVMe** to install the operating system to the device's NVMe SSD.
 
 During the operating system setup, the installer prompts you to enable [Ubuntu Pro](https://ubuntu.com/pro). Ubuntu Pro
 is optional and is not required by Palette or the Palette agent. Enable it only if your organization wants Ubuntu's
 Extended Security Maintenance (ESM) or compliance tooling on the host.
 
-On a Jetson, only some Ubuntu Pro services apply. The device runs the NVIDIA Jetson Linux (L4T) kernel rather than a
-Canonical-built Ubuntu kernel, so the kernel-level Pro services are not available. The `esm-infra` and `esm-apps`
+On a Jetson device, only some Ubuntu Pro services apply. The device runs the NVIDIA Jetson Linux (L4T) kernel rather
+than a Canonical-built Ubuntu kernel, so the kernel-level Pro services are not available. The `esm-infra` and `esm-apps`
 services attach, while Livepatch and the FIPS kernel report as not applicable. Do not enable the FIPS kernel, FIPS
-updates, or the real-time kernel on a Jetson, because those services attempt to replace the L4T kernel.
+updates, or the real-time kernel on a Jetson device, because those services attempt to replace the L4T kernel.
 
 <!-- Resolved (DOC-3089) 2026-09-18 on the Thor (`pro status --all`, kernel 6.8.12-1021-tegra): esm-infra + esm-apps = enabled; livepatch + fips = n/a; fips-updates + realtime-kernel = "disabled (entitled)" and must not be enabled (they would try to swap the L4T kernel). Validated with the free personal Pro tier; customers attach an org token with the same service availability. -->
 
-After the operating system is installed, confirm the versions on the device. The value the device reports at first boot,
-such as `38.0.0-gcid-...`, is the UEFI firmware version, not the operating system version. Use the following commands
-instead:
+After the operating system is installed, confirm the versions on the device. The value that the device reports at first
+boot, such as `38.0.0-gcid-...`, is the UEFI firmware version, not the operating system version. Use the following
+commands instead:
 
 - `cat /etc/nv_tegra_release` reports the authoritative Jetson Linux (L4T) release.
 - `lsb_release --all` reports the Ubuntu base version.
@@ -106,12 +107,12 @@ If you plan to use overlay networks, or you want Palette to manage DNS or static
 
 :::warning
 
-On a Jetson, NetworkManager manages the network interface by default. If you configure `systemd-networkd` to take over
-the interface that you are connected to over SSH, the connection can drop, because the interface changes hands from
-NetworkManager to `systemd-networkd`. Before you move an interface to `systemd-networkd` on a remote host, confirm that
-you have console access to the device, or configure `systemd-networkd` with your network settings first so the interface
-stays up. If your SSH session appears to hang after the switch, the transport is gone. Close it with the SSH escape
-sequence (press **Enter**, then type `~.`), then reconnect from the console.
+On a Jetson device, NetworkManager manages the network interface by default. If you configure `systemd-networkd` to take
+over the interface that you are connected to over SSH, the connection can drop, because management of the interface
+moves from NetworkManager to `systemd-networkd`. Before you move an interface to `systemd-networkd` on a remote host,
+confirm that you have console access to the device, or configure `systemd-networkd` with your network settings first so
+the interface stays up. If your SSH session appears to hang after the switch, the transport is gone. Close it with the
+SSH escape sequence (press **Enter**, then type `~.`), then reconnect from the console.
 
 :::
 

@@ -80,8 +80,8 @@ This guide is validated on the operating system versions in the following table.
 
 ## Supported Kubernetes distribution and CNI
 
-Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so you cannot use it on a Jetson. This guide uses
-Palette Optimized K3s (`edge-k3s`) with the Flannel (`cni-flannel`) Container Network Interface (CNI), which is the
+Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so you cannot use it on a Jetson device. This guide
+uses Palette Optimized K3s (`edge-k3s`) with the Flannel (`cni-flannel`) Container Network Interface (CNI), which is the
 combination validated on the Jetson AGX Thor. You configure these layers in the cluster profile when you register the
 host and deploy a cluster.
 
@@ -95,10 +95,10 @@ The <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvi
 dedicated NVIDIA GPU and does not support embedded products such as NVIDIA Jetson. Do not use the GPU Operator pack on
 Jetson devices.
 
-On a Jetson, a workload reaches the integrated GPU through the NVIDIA container runtime that JetPack provides. You do
-not add a GPU layer to the cluster profile, and you do not install a device plugin. Palette detects the GPU when the
-host registers, but detection alone does not expose the GPU to your workloads. Instead, a pod requests the GPU in its
-specification. You configure this when you deploy a workload to the cluster.
+On a Jetson device, a workload reaches the integrated GPU through the NVIDIA container runtime that JetPack provides.
+You do not add a GPU layer to the cluster profile, and you do not install a device plugin. Palette detects the GPU when
+the host registers, but detection alone does not expose the GPU to your workloads. Instead, a pod requests the GPU in
+its specification. You configure this when you deploy a workload to the cluster.
 
 <!-- TODO(DOC-3090): link the "Enable GPU access for workloads" section of register-jetson-host.md from the sentence above once that page lands on this branch. onBrokenLinks is "throw", so do not add the link until the page exists here. -->
 
