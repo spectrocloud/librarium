@@ -181,10 +181,8 @@ Three behaviors bound the risk of a connectivity loss:
 - VMO suspends VLAN removal when the cluster view is incomplete. If VMO cannot read the NADs on a pass, it stops
   removing VLANs for that pass instead of treating an empty result as a request to remove everything.
 
-After you fix the network, select **Clear & Retry** on the **Networks** page.
-
-
-VMO consumes the request once and retries without a pod restart.
+After you fix the network, filtering stays off on the affected node until an administrator clears the revert. Use the
+`vmo-manager/vlan-filtering-status` annotation described below to confirm the node is healthy before you clear it.
 
 #### Check What VLANs a Node Permits
 
