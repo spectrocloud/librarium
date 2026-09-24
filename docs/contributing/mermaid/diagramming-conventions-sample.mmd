@@ -1,0 +1,46 @@
+flowchart LR
+    client([Client app]):::start
+
+    subgraph gateway_box[Gateway]
+        router[Router]:::dataplane
+    end
+    class gateway_box dataplane
+
+    subgraph local_box[Local engines]
+        engine[vLLM]:::local
+    end
+    class local_box local
+
+    subgraph frontier_box[Frontier · optional]
+        provider[Anthropic]:::frontier
+    end
+    class frontier_box frontier
+
+    subgraph control_box[Control plane]
+        model_cr[Model CR]:::control
+    end
+    class control_box control
+
+    subgraph obs_box[Observability]
+        grafana[Grafana]:::obs
+    end
+    class obs_box obs
+
+    client --> router
+    router -- local --> engine
+    router -.-> provider
+    model_cr -.-> router
+    engine -.-> grafana
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef dataplane fill:#eef6ff,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef control fill:#eef2ff,stroke:#4f46e5,color:#0f172a,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef frontier fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef obs fill:#f0fdfa,stroke:#0f766e,color:#0f172a,stroke-width:2px;
+
+    linkStyle 0 stroke:#2563eb,stroke-width:2px;
+    linkStyle 1 stroke:#2563eb,stroke-width:2px;
+    linkStyle 2 stroke:#d97706,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 3 stroke:#4f46e5,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 4 stroke:#0f766e,stroke-width:2px,stroke-dasharray:2 3;
