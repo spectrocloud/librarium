@@ -64,7 +64,7 @@ tags: ["release-notes"]
   the Spectro Cloud Terraform provider, bringing the cluster under template governance for future upgrades and policy
   enforcement. Refer to
   [Attach an Existing Cluster to a Cluster Template](../cluster-templates/attach-cluster-to-template.md).
-  
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8670 -->
 
 - Self-hosted Palette and VerteX can now export platform metrics to an external observability stack, such as Splunk,
