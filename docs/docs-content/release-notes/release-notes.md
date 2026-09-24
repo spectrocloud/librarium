@@ -11,17 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.8.67
+## September 21, 2026 - Release 4.8.67
 
 <!-- PATCH RELEASE TICKET: DOC-3222 -->
 <!-- PATCH RELEASE VERSION: 4.8.67 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-11964 PEM-11854 PE-9515 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11964 PEM-11854 PE-9515 PLT-2430 PCOM-1124 -->
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11964 -->
 
-- Applied security fixes for the 4.8.67 release train to improve platform security posture.
+- Applied security fixes to improve the platform security posture.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11854 -->
 
@@ -33,6 +33,17 @@ tags: ["release-notes"]
 
 - Fixed an issue where the Edge operator failed to sync informer caches and prevented CNI deployment during agent-mode
   bootstrap.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2430 -->
+
+- Fixed an issue where the Palette CLI `login` command misreported a request failure as
+  `Invalid Spectro Cloud credentials` and returned a success exit code, which allowed scripted logins to continue
+  without a valid session.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1124 -->
+
+- Fixed an issue where an airgap Enterprise Cluster install failed because a generated manifest referenced container
+  image tags that were not included in the airgap bundle.
 
 ## August 6, 2026 - Release 4.8.62
 
