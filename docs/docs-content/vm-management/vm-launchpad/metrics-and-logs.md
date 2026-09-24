@@ -198,8 +198,6 @@ those steps.
 
 ### Forward to an OpenTelemetry Backend
 
-<!-- PVM-1181: labels/fields verified live in 4.10.8-rc.12 + source. Canonical example = Datadog (from eng handoff live-verification; not re-tested by docs). Grafana row uses vendor-documented Basic auth, not live-tested. WIP stays until the 4.10.a release is cut. -->
-
 The **Metrics** section forwards to any backend that accepts OTLP over HTTP, such as Datadog, Grafana Cloud, New Relic,
 or a generic OpenTelemetry Collector, using the same **Forwarding URL**, **Forwarding Token**, and **Metrics
 Forwarding** controls. You do not choose the protocol. `vmo-manager` uses OTLP/HTTP automatically when the **Forwarding
