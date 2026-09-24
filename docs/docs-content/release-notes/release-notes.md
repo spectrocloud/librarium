@@ -11,6 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-3233 -->
+<!-- PATCH RELEASE VERSION: 4.8.x -->
+<!-- PATCH RELEASE CANDIDATES: PLT-2449 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2449 -->
+
+- Fixed an issue where debug messages were displayed during the Palette CLI configuration wizard workflow for VMware
+  Private Cloud Gateway deployments.
+
 ## September 21, 2026 - Release 4.8.67
 
 <!-- PATCH RELEASE TICKET: DOC-3222 -->
