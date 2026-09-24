@@ -147,7 +147,8 @@ environment or OS credential store rather than on disk in this file.
 :::info
 
 **Self-hosted Palette with a private CA?** Add `PALETTE_CA_FILE` (path to your CA bundle, mounted into the container)—or
-`PALETTE_INSECURE_SKIP_VERIFY: "true"` for a lab only. SaaS tenants need neither.
+`PALETTE_INSECURE_SKIP_VERIFY: "true"` for a lab only. SaaS tenants need neither. When you use named profiles, set
+`ca_file` on an individual profile instead to give that profile its own trust root.
 
 :::
 
@@ -189,8 +190,9 @@ the assistant passes it as that call's `auth_profile` argument. Run `list_auth_p
 :::info
 
 Self-hosted CA trust (`PALETTE_CA_FILE`) is configured once at server startup and applies to every named profile on the
-server—it fits dev/prod/RC setups that share one self-hosted trust domain. A profile on a public SaaS host needs no CA
-file, and fails TLS verification while one is set—run SaaS and self-hosted profiles on separate server instances.
+server unless a profile sets its own `ca_file`, which overrides it for that profile—it fits dev/prod/RC setups that
+share one self-hosted trust domain. A profile on a public SaaS host needs no CA file, and fails TLS verification while
+the server-wide one is set—profiles with different trust roots no longer require separate server instances.
 
 :::
 
