@@ -90,7 +90,7 @@ helpful if you want to schedule system pods on a single node pool while reservin
 Palette ensures that non-system workloads are not scheduled on the dedicated node pool by applying a system taint to the
 pool, thus repelling other workloads. Palette system pods automatically tolerate this taint and can therefore be
 scheduled on the dedicated node pool. If you want a non-Palette pod to be scheduled on the dedicated node pool, you must
-add a toleration to the pod that matches the pool's `node.spectrocloud.com/dedicated` system taint:
+add a toleration to the pod that matches the pool's `node.spectrocloud.com/dedicated` system taint.
 
 | **Field**  | **Value**                         |
 | ---------- | --------------------------------- |
