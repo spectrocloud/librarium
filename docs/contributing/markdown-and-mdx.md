@@ -185,6 +185,122 @@ image with high priority so LCP (Largest Contentful Paint) for the page is not a
 ![alt text eager-load](/clusterprofiles.png)
 ```
 
+### Diagrams
+
+Architecture diagrams follow their own conventions so that readers who move between pages recognize
+the same concept without re-learning what shapes and colors mean. Every architecture diagram in the
+docs site is authored as an SVG and lives under [`static/assets/docs/diagrams`](../../static/assets/docs/diagrams/),
+separate from the raster imagery under `static/assets/docs/images`. The `diagrams` subdirectory is
+outside the scope of the webp conversion pipeline, so SVGs stored there are preserved as-is by the
+pre-commit hook.
+
+#### When to Add a Diagram
+
+Add a diagram when a mental model is faster to grasp visually than in prose. Good candidates include
+sequence-of-events flows, decision trees, entity relationships, and physical topologies. Do not
+inline a diagram inside a how-to guide. How-to guides stay recipe-shaped and link to the diagram on
+its Explanation or Reference page.
+
+#### Palette
+
+Each diagram uses colors from the following palette. Pick the color that names the role of the
+component, not the color that happens to look nice next to other components on the page.
+
+| Role                           | Fill      | Border    | When to Use                                                                                   |
+| ------------------------------ | --------- | --------- | --------------------------------------------------------------------------------------------- |
+| Data plane (request path)      | `#eef6ff` | `#2563eb` | Any component that handles a live user request, such as the gateway, router, or proxy.        |
+| Kubernetes control plane       | `#eef2ff` | `#4f46e5` | Custom resources, controllers, admission webhooks, or anything reconciled by Kubernetes.      |
+| Local engines                  | `#f0fdf4` | `#16a34a` | Inference engines that run on the appliance itself, such as vLLM, SGLang, or Ollama.          |
+| Frontier or optional providers | `#fff7ed` | `#d97706` | Frontier providers, external inference endpoints, and any component that is off by default.   |
+| Observability                  | `#f0fdfa` | `#0f766e` | Metrics, logs, traces, and the tools that render them, such as VictoriaMetrics and Grafana.   |
+| Neutral or generic             | `#f8fafc` | `#cbd5e1` | Actors and components that do not fit the roles above, such as an operator's browser session. |
+
+Diagrams do _not_ need to render sensibly in a dark theme. Pick the color that makes the diagram
+clearest on its own terms.
+
+#### Shape Vocabulary
+
+| Shape             | Meaning                                                                    |
+| ----------------- | -------------------------------------------------------------------------- |
+| Rounded rectangle | A component, service, or actor.                                            |
+| Hexagon           | A decision node in a decision-tree or routing diagram.                     |
+| Cylinder          | A store, such as a database, secret store, or model artifact repository.   |
+| Dashed border     | A component that is optional or off by default, such as a frontier engine. |
+
+Group related components inside a rounded cluster whose border color matches the role of the group.
+
+#### Arrow Vocabulary
+
+| Arrow          | Meaning                                                                             |
+| -------------- | ----------------------------------------------------------------------------------- |
+| Solid, colored | A request or a data-plane call. The color matches the role of the origin component. |
+| Dashed, indigo | A Kubernetes reconcile loop projecting desired state into memory.                   |
+| Dashed, amber  | Egress from the appliance to a frontier provider or external endpoint.              |
+| Dotted, teal   | A metrics or telemetry hop.                                                         |
+| Double-headed  | A bidirectional state projection, such as the admin API authoring custom resources. |
+
+Label an arrow only when the label adds information the reader cannot infer from the shapes. Prefer
+protocol or transport tags such as `SSE`, `gRPC`, and `HTTPS`, or short verbs such as _reconcile_ or
+_classify_.
+
+#### Label Style
+
+Component labels are short noun phrases. Sub-labels below the component name carry the
+implementation detail, such as _React and Vite behind nginx_ or _one static Go binary_. Never write
+a sentence inside a component; a sentence belongs in the prose next to the diagram.
+
+Component names in the diagram must match the names the product uses in the console, the CRDs, and
+the rest of the docs. If the product's own terminology changes, the diagram changes with it.
+
+#### Typography and Layout
+
+Use `Inter, Arial, sans-serif` for every text element in a diagram. Set the component name at 18
+pixels, the sub-label at 14 pixels, and the tiny axis or protocol hint at 12 pixels. Give the
+canvas at least 16 pixels of interior padding on every side so that borders do not clip when the
+docs site scales the SVG.
+
+Keep the diagram to a single canvas. If a diagram feels too dense to fit, split it into two
+diagrams on separate anchors rather than shrinking the type. Two clear pictures always beat one
+crowded one.
+
+#### Tooling
+
+The docs repo authors architecture SVGs from Python source using the
+[`diagrams`](https://diagrams.mingrammer.com/) package. Sources live under
+[`scripts/diagrams/<page-name>/`](../../scripts/diagrams/), and the rendered SVGs land under
+[`static/assets/docs/diagrams/`](../../static/assets/docs/diagrams/). Each generator script is
+self-contained and re-runnable, so any contributor can regenerate the SVG after a source edit
+without leaving the repo.
+
+The `diagrams` package requires the `graphviz` `dot` binary on `PATH`. Install it with
+`brew install graphviz` on macOS or the platform-equivalent command elsewhere.
+
+Regenerate any diagram by running its generator script through a Python interpreter that has the
+`diagrams` package installed.
+
+```sh
+python3 -m venv .diagrams-venv
+.diagrams-venv/bin/pip install diagrams
+.diagrams-venv/bin/python scripts/diagrams/diagramming-conventions/sample.py
+```
+
+The script writes the SVG to its target path under `static/assets/docs/diagrams/` and post-processes
+it to embed each icon PNG as a base64 data URI. Without that post-process step the SVG references
+absolute local paths that do not resolve when the browser renders the page. Commit both the updated
+generator script and the regenerated SVG in the same change so that the source and the artifact
+stay in sync.
+
+#### Sample
+
+The following diagram uses every color role in the palette. Use it as a reference when you
+introduce a new component and are unsure which role it belongs to.
+
+![Conventions showcase: a client app reaching a blue gateway that dispatches to a green local engine and, on egress, to an amber frontier provider, with an indigo control plane reconciling into the gateway and a teal observability stack collecting metrics from the engine.](../../static/assets/docs/diagrams/diagramming-conventions_sample.svg)
+
+The generator for this sample lives at
+[`scripts/diagrams/diagramming-conventions/sample.py`](../../scripts/diagrams/diagramming-conventions/sample.py).
+Use it as a starting point when you author a new diagram.
+
 ## Code Lines Highlighter
 
 You can highlight specific lines in a block of code by using a
