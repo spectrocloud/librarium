@@ -48,21 +48,21 @@ The Palette MCP server accepts the following environment variables and startup f
 :::warning
 
 `PALETTE_PROJECT_UID` is no longer a supported environment variable. Setting it causes the server to refuse to start. If
-you are upgrading from an earlier setup, remove it from your MCP client configuration—refer to
+you are upgrading from an earlier setup, remove it from your MCP client configuration. Refer to
 [Project Scoping](#project-scoping) below for the replacement.
 
 :::
 
 ### Project Scoping
 
-The Palette MCP server operates at tenant scope by default—every read returns results across every project your
+The Palette MCP server operates at tenant scope by default. Every read returns results across every project your
 credential can access. To scope a specific request to a single project, mention the project by name or
 [Project ID](../../tenant-settings/projects/projects.md#project-id) in your prompt; the assistant passes it as that
 call's `project_uid` argument. Most read tools accept a per-call `project_uid`, and write tools that need one take it as
 their own argument.
 
 If the API key is not tenant-admin scoped and a request is not scoped to a project it can access, the server returns an
-`OperationForbidden` error—pass `project_uid` on that request to resolve it.
+`OperationForbidden` error. Pass `project_uid` on that request to resolve it.
 
 ### Startup Flags
 
