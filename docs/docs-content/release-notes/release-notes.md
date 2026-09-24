@@ -21,8 +21,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2449 -->
 
-- Fixed an issue where debug messages were displayed during the Palette CLI configuration wizard workflow for VMware
-  Private Cloud Gateway deployments.
+- Fixed an issue where the Palette CLI configuration wizard displayed debug messages during VMware Private Cloud Gateway
+  deployment.
 
 ## September 21, 2026 - Release 4.8.67
 
