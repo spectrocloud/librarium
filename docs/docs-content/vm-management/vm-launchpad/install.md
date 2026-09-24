@@ -64,8 +64,10 @@ configuration.
    **Show Artifacts**.
 
    The VM Launchpad appliance is available in the following variants, which differ by FIPS compliance and storage
-   backend. In the drop-down menu, the storage backend appears in parentheses, for example `(piraeus)` or `(portworx)`.
-   Choose the variant that matches your compliance and storage requirements.
+   backend. In the drop-down menu, each version lists its storage backend in parentheses, such as `(piraeus)` or
+   `(portworx)`, and FIPS builds carry a **FIPS** label. A FIPS and a non-FIPS build of the same backend are otherwise
+   identical in the list, so use the **FIPS** label to tell them apart. Choose the variant that matches your compliance
+   and storage requirements.
 
    | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                           |
    | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
