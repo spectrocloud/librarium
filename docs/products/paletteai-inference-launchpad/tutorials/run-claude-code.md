@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Run Claude Code"
-title: "Run Claude Code on Your Own Hardware"
+title: "Run Claude Code on Your Own Hardware with Open-Weight Models"
 description:
   "A hands-on tutorial that takes you from a freshly installed PaletteAI Inference Launchpad appliance to a Claude Code
   session answered by a model on your own hardware."
@@ -20,7 +20,7 @@ You work in two places:
 - The console in a browser, where you deploy the model and create the client.
 - A terminal on your machine, where you watch the appliance and run Claude Code. Any directory works.
 
-Set aside about 20 minutes. The appliance spends most of that time loading model weights onto a GPU. Your first result
+Set aside about 30 minutes. The appliance spends most of that time loading model weights onto a GPU. Your first result
 appears about one minute in.
 
 ## What You Need
