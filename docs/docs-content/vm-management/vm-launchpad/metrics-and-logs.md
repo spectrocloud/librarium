@@ -173,16 +173,17 @@ those steps.
 
 2. From the left main menu, select **Settings** > **Configuration** > **Metrics and Logs**.
 
-3. In the **Metrics** section, select the edit icon next to **Forwarding URL** and enter your Splunk HEC endpoint, such
-   as `https://splunk.example.com:8088`. Save.
+3. In the **Metrics** section, select **Add** next to **Forwarding URL**, enter your Splunk HEC endpoint, such as
+   `https://splunk.example.com:8088`, and select the save icon.
 
-4. Select the edit icon next to **Forwarding Token** and enter your Splunk HEC token. Save.
+4. Select **Add** next to **Forwarding Token**, enter your Splunk HEC token, and select the save icon.
 
    The token is stored as a masked field.
 
-5. Adjust **TLS Verify** if your Splunk HEC certificate is trusted by the appliance. Leave the value at `true` in
-   production. Set the value to `false` only for development or demonstration environments where the certificate cannot
-   be verified.
+5. (Optional) If the Splunk HEC endpoint presents a certificate that the appliance's system trust store does not already
+   trust, such as one issued by a private or internal CA, select **Add** next to **CA Certificate**, paste the
+   PEM-encoded CA-signing certificate, and select the save icon. Leave it empty to verify against the system trust
+   store.
 
 6. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
@@ -245,12 +246,12 @@ storage in the `VMOConfig` custom resource.
 
 ### Metrics Section
 
-| **Setting**            | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                                    |
-| ---------------------- | -------------------------------------------- | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Metrics Forwarding** | `monitoring.splunk_hec_enabled`              | `false`     | No            | Real network gate. When enabled with URL and token set, `vmo-manager` POSTs each metric point to Splunk HEC under `sourcetype=vmo:metric`. Emits `monitoring.splunk_hec.toggled` on every change.  |
-| **Forwarding URL**     | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HTTP Event Collector base URL. An empty value disables the metrics push regardless of the toggle state.                                                                                     |
-| **Forwarding Token**   | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token used by the metrics client in `vmo-manager`. Masked in GET responses; the UI renders `(set)` in place of the value.                                                               |
-| **TLS Verify**         | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | Controls TLS certificate verification for the metrics push. `false` (default) verifies the Splunk HEC certificate. `true` skips verification and is intended for development or demo environments. |
+| **Setting**            | **Configuration Key**           | **Default** | **Sensitive** | **Description**                                                                                                                                                                                   |
+| ---------------------- | ------------------------------- | ----------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Metrics Forwarding** | `monitoring.splunk_hec_enabled` | `false`     | No            | Real network gate. When enabled with URL and token set, `vmo-manager` POSTs each metric point to Splunk HEC under `sourcetype=vmo:metric`. Emits `monitoring.splunk_hec.toggled` on every change. |
+| **Forwarding URL**     | `monitoring.splunk_hec_url`     | Empty       | No            | Splunk HTTP Event Collector base URL. An empty value disables the metrics push regardless of the toggle state.                                                                                    |
+| **Forwarding Token**   | `monitoring.splunk_hec_token`   | Empty       | **Yes**       | Splunk HEC token used by the metrics client in `vmo-manager`. Masked in GET responses; the UI renders `(set)` in place of the value.                                                              |
+| **CA Certificate**     | `monitoring.splunk_hec_ca_cert` | Empty       | No            | Optional PEM CA-signing certificate used to verify the metrics endpoint's TLS certificate. An empty value verifies against the container's system trust store.                                    |
 
 ### Logs Section
 
