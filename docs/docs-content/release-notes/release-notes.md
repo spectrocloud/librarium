@@ -21,7 +21,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12035 -->
 
-- Applied security fixes for the 4.9.60 release train to improve platform security posture.
+- Applied security fixes to improve the platform's security posture.
 
 ### Bug Fixes
 
