@@ -85,6 +85,16 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11993 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2410 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2428 -->
+
+- You can now attach a running, Palette-provisioned cluster to an existing cluster template through the Palette UI or
+  the Spectro Cloud Terraform provider, bringing the cluster under template governance for future upgrades and policy
+  enforcement. Refer to
+  [Attach an Existing Cluster to a Cluster Template](../cluster-templates/attach-cluster-to-template.md).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8670 -->
 
 - Self-hosted Palette and VerteX can now export platform metrics to an external observability stack, such as Splunk,
