@@ -175,21 +175,25 @@ those steps.
 
 ## Configure Metrics Forwarding
 
+The **Metrics** section forwards metrics to either a Splunk HEC endpoint or any backend that accepts OTLP over HTTP. The
+appliance selects the protocol from the **Forwarding URL** path, so you do not set it directly. The following steps
+configure Splunk HEC forwarding. To forward to an OpenTelemetry backend instead, refer to
+[Forward to an OpenTelemetry Backend](#forward-to-an-opentelemetry-backend).
+
 1. Sign in to VMO.
 
 2. From the left main menu, select **Settings** > **Configuration** > **Metrics and Logs**.
 
 3. In the **Metrics** section, select the edit icon next to **Forwarding URL** and enter your Splunk HEC endpoint, such
-   as `https://splunk.example.com:8088`. Save.
+   as `https://splunk.example.com:8088`. Select **Save**.
 
-4. Select the edit icon next to **Forwarding Token** and enter your Splunk HEC token. Save.
+4. Select the edit icon next to **Forwarding Token** and enter your Splunk HEC token. Select **Save**.
 
    The token is stored as a masked field.
 
-5. (Optional) Select the edit icon next to **CA Certificate** and paste the PEM-encoded CA-signing certificate for your
-   Splunk HEC endpoint. Save. Provide this only when the endpoint presents a certificate that the appliance's system
-   trust store does not already trust, such as one issued by a private or internal CA. Leave it empty to verify against
-   the system trust store.
+5. (Optional) If the Splunk HEC endpoint presents a certificate that the appliance's system trust store does not already
+   trust, such as one issued by a private or internal CA, select the edit icon next to **CA Certificate**, paste the
+   PEM-encoded CA-signing certificate, and select **Save**. Leave it empty to verify against the system trust store.
 
 6. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
