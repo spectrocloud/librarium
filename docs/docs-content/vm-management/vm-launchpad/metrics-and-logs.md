@@ -173,16 +173,17 @@ those steps.
 
 2. From the left main menu, select **Settings** > **Configuration** > **Metrics and Logs**.
 
-3. In the **Metrics** section, select the edit icon next to **Forwarding URL** and enter your Splunk HEC endpoint, such
-   as `https://splunk.example.com:8088`. Select **Save**.
+3. In the **Metrics** section, select **Add** next to **Forwarding URL**, enter your Splunk HEC endpoint, such as
+   `https://splunk.example.com:8088`, and select the save icon.
 
-4. Select the edit icon next to **Forwarding Token** and enter your Splunk HEC token. Select **Save**.
+4. Select **Add** next to **Forwarding Token**, enter your Splunk HEC token, and select the save icon.
 
    The token is stored as a masked field.
 
 5. (Optional) If the Splunk HEC endpoint presents a certificate that the appliance's system trust store does not already
-   trust, such as one issued by a private or internal CA, select the edit icon next to **CA Certificate**, paste the
-   PEM-encoded CA-signing certificate, and select **Save**. Leave it empty to verify against the system trust store.
+   trust, such as one issued by a private or internal CA, select **Add** next to **CA Certificate**, paste the
+   PEM-encoded CA-signing certificate, and select the save icon. Leave it empty to verify against the system trust
+   store.
 
 6. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
