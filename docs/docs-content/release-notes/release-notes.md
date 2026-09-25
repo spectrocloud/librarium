@@ -35,11 +35,9 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
   [Manage Virtual Machines](../vm-management/vm-launchpad/virtual-machines/managing.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-787 -->
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1181 -->
 
-- PaletteAI VM Launchpad can now forward appliance metrics to any third-party observability solution that ingests
-  OpenTelemetry metrics, so you can retain metrics longer and view them in your own tooling. Refer to
-  [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+- PaletteAI VM Launchpad can now forward appliance metrics to Splunk, so you can retain metrics longer and view them in
+  your own tooling. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
 
@@ -88,7 +86,7 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1159 -->
 
 - Fixed an issue that caused the CDI upload proxy and KubeVirt export proxy ingress to unconditionally render a Traefik
-  configuration, which broke the Nginx reference architecture. This affected appliance versions 4.10.2 through 4.10.6.
+  configuration, which broke the Nginx reference architecture. This affected VMO pack versions 4.10.2 through 4.10.6.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1122 -->
 
@@ -167,11 +165,6 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
 
 - Fixed an issue that prevented cAdvisor metrics from reaching Victoria Metrics, which caused missing dashboard
   telemetry. This was a regression introduced in 4.9.16.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1141 -->
-
-- Fixed an issue that caused the OpenTelemetry Collector chart to fail to install and the Splunk HEC exporter to crash
-  with a nil-pointer error.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1075 -->
 
