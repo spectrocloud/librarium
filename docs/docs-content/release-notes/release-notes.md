@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
+## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3241 -->
 
@@ -22,9 +22,9 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1017 -->
 
-- PaletteAI VM Launchpad now ships as high-availability appliance variants backed by either Portworx or Piraeus/LINSTOR
-  storage, in addition to the existing FIPS Piraeus variant. Refer to
-  [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md) and
+- PaletteAI VM Launchpad now ships as high-availability appliance variants backed by either Piraeus/LINSTOR or Portworx
+  storage. The Piraeus/LINSTOR variant is available in both FIPS and non-FIPS builds; the Portworx variant is available
+  as non-FIPS only. Refer to [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md) and
   [Storage](../vm-management/vm-launchpad/infrastructure/storage.md) for variant selection and storage configuration.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-852 -->
@@ -45,13 +45,6 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
 
 - The CDI upload proxy and KubeVirt export proxy are now exposed, so `virtctl image-upload` and virtual machine disk
   exports work through the appliance.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-447 -->
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1183 -->
-
-- VM Launchpad now derives VLAN filtering rules from the cluster's NetworkAttachmentDefinitions (NADs) instead of a
-  cluster profile variable, so bridge VLAN filtering follows the networks you attach to virtual machines. Refer to
-  [Networks](../vm-management/vm-launchpad/infrastructure/networking.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-327 -->
 
