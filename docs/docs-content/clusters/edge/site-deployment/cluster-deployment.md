@@ -230,8 +230,13 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     :::
 
 13. (Optional) When you assign Edge hosts to node pools, you can apply node-level taints and labels to individual nodes
-    in the pool. Expand a node's row in the **Edge Hosts** section and set **Taints** and **Additional Labels** under
-    that node. For details, refer to
+    in the pool. Expand a node's row in the **Edge Hosts** section, then:
+
+    - Under **Taints**, click **Add New Taint** and enter a **Key**, an optional **Value**, and an **Effect**
+      (`NoSchedule`, `PreferNoSchedule`, or `NoExecute`). Repeat to add more taints.
+    - Under **Additional Labels**, enter each label in the format `key:value`. Separate multiple labels with a space.
+
+    For more information, refer to
     [Node-level Taints and Labels for Edge Native](../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
 
 14. <PartialsComponent category="clusters" name="cluster-settings" />
