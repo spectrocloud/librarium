@@ -113,6 +113,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8470 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9523 -->
+
+- On connected Edge Native clusters, you can now assign taints and labels to individual Edge hosts, so hosts in the same
+  node pool can play different roles without needing separate pools. Set the values on each host row inside a pool's
+  **Edge Hosts** section, either during cluster creation or when you edit a pool on an existing cluster. This supports
+  patterns such as a three-node control plane where two hosts run application workloads and a third, lightweight host
+  participates only in etcd quorum. Refer to
+  [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
+  for more information.
+
 #### Improvements
 
 #### Bug Fixes
