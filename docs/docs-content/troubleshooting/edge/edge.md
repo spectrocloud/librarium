@@ -809,7 +809,7 @@ the **user-data** file causes cluster creation to fail as it cannot find
 :::tip
 
 Refer to
-[Identify the Target Agent Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-target-agent-version)
+[Identify the Latest Palette Agent Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-latest-palette-agent-version)
 for guidance in retrieving your Palette agent version number.
 
 :::
