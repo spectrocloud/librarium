@@ -68,6 +68,10 @@ automatically from `platform.baseUrl` (VMO uses `<platform.baseUrl>/auth/callbac
 yourself either. A profile with no Alternative Authentication preset selected deploys with Palette-managed OIDC out of
 the box.
 
+Palette validates the derived callback URL at sign-in. If `platform.baseUrl` points to an address outside your Palette
+domain, a tenant admin must register that address before users can sign in. Refer to
+[Register OIDC Callback URLs](../../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
 :::info
 
 Local authentication is turned off in the pack base values, so Palette-managed OIDC is the only sign-in path in this
