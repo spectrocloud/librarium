@@ -209,21 +209,48 @@ This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, w
 
 - Fixed an issue that prevented special characters and uppercase letters from pasting correctly in the VNC console.
 
+## September 24, 2026 - Component Updates {#component-updates-2026-39}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3231 -->
+<!-- RELEASE DATE: September 24, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
+
+The following components have been updated for Palette version 4.10.16 - 4.10.17.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2438 -->
+
+- Fixed an issue in the Spectro Cloud Terraform provider where concurrent resource reconciliation could leak the
+  `ProjectUid` header across tenant and project scopes, leading to permission errors when managing mixed-scope
+  resources.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
+
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
 <!-- RELEASE DATE: September 18, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.10.17 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.10.4 -->
-<!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.1 -->
 
 The following components have been updated for Palette versions 4.10.16 - 4.10.17 and 4.9.51 - 4.10.17.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.4  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.1  |
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.17 |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.17 |
 
