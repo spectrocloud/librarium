@@ -59,10 +59,12 @@ tags: ["release-notes"]
   - The callback URL is on your Palette domain.
   - The callback URL is on the local machine, such as `localhost` or `127.0.0.1`.
   - The callback URL belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
-    of the upgrade.
+    of the upgrade with its address set to a literal value or a variable.
 
     Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URLs automatically at
-    upgrade. If you change a cluster's callback URL after the upgrade, you must register the new value.
+    upgrade, including an address set with a variable. However, Palette cannot resolve an address set with a
+    [macro](../clusters/cluster-management/macros.md), so sign-in to those clusters fails until a tenant admin registers
+    the address. If you change a cluster's callback URL after the upgrade, you must register the new value.
 
   For more information, refer to
   [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).

@@ -73,6 +73,9 @@ so those logins continue to work, and turned on **Enforce allowlist** and **Allo
 place. Palette registers these addresses only once. Register the address of any cluster that you create afterward, and
 whenever a cluster's console address changes.
 
+Palette cannot resolve an address that is set with a [macro](../../clusters/cluster-management/macros.md). If a cluster
+uses one, its console address is not in the list, and sign-in to that cluster fails until you register the address.
+
 A new installation starts with an empty list.
 
 ## Prerequisites
