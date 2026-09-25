@@ -15,6 +15,7 @@ is configured, not how to accomplish a task.
 | **Reference**                                                     | **What it covers**                                                                             |
 | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [Glossary](./glossary.md)                                         | Definitions of the AI, product, and platform terms used across the docs.                       |
+| [Quota Model](./quota-model.md)                                   | Hierarchy diagram of Clients, API tokens, quotas, and models, with a console-to-CRD map.       |
 | [Suggested Hardware](./hardware-requirements.md)                  | Compute, GPU, memory, storage, and network requirements for the appliance.                     |
 | [Bond Configuration](./bond-configuration.md)                     | Field-by-field reference for the Local UI bond form used during installation.                  |
 | [Cluster Profile Variables](./profile-variables.md)               | Every variable the Profile Config wizard collects, with types, defaults, and validation rules. |

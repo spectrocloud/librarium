@@ -160,3 +160,4 @@ appliance still collects metrics, but no browser-reachable dashboard address is 
 - [Usage Metrics Reference](../reference/usage-metrics-reference.md)
 - [View Client Usage](./view-client-usage.md)
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
+- [Quota Model](../reference/quota-model.md)

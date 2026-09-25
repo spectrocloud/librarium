@@ -96,3 +96,4 @@ on the client detail view, refer to
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
 - [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [Revoke or Delete a Client](./revoke-or-delete-a-client.md)
+- [Quota Model](../reference/quota-model.md)
