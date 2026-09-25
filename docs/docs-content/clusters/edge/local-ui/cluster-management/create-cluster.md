@@ -153,16 +153,21 @@ management.
 
    :::info
 
-   When **Allow worker capability** is disabled, Palette applies a taint to every node in the control plane pool so that
-   workloads are not scheduled on control plane nodes. If you want this default for most nodes in the pool but want a
-   specific node to behave differently, apply a node-level taint on that node instead of changing the pool setting.
-   Refer to
+   When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control
+   plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it
+   is automatically added again by the Palette Edge node agent. To keep the taint removed, add
+   `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in the OS pack before creating the cluster. For more
+   information, refer to [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+
+   To keep the pool default in place but let workloads run on a specific control plane node (or block workloads on a
+   specific worker node), apply a node-level taint on that node instead. Refer to
    [Node-level Taints and Labels for Edge Native](../../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
 
    :::
 
    You can also apply node-level taints and labels to individual nodes in a pool. Expand a node's row in the **Edge
-   Hosts** section and set **Taints** and **Additional Labels** under that node.
+   Hosts** section and set **Taints** and **Additional Labels** under that node. Refer to
+   [Node-level Taints and Labels for Edge Native](../../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.

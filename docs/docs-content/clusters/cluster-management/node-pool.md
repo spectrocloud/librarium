@@ -138,9 +138,12 @@ pool-level taints and labels that apply to every node. Node-level taints and lab
 pool need to play different roles.
 
 A common example is a three-node control plane where two nodes run application workloads and a third, lightweight node
-participates only in etcd quorum. The lightweight node is sometimes called a **witness** node. Red Hat and Portworx
-materials refer to the same role as an **arbiter**. To keep workloads off the witness, apply a node-level taint to that
-node only.
+participates only in etcd quorum. The lightweight node is sometimes called a **witness** node. To keep workloads off the
+witness, apply a node-level taint to that node only.
+
+You set node-level taints and labels in the Palette UI on each host row inside the **Edge Hosts** section of an Edge
+Native node pool. The controls are available both during cluster creation and when you edit a node pool on an existing
+cluster.
 
 ### How Pool-level and Node-level Values Interact
 
@@ -151,30 +154,6 @@ node only.
   node. Otherwise, both the pool-level and the node-level taint apply.
 - Node-level taints and labels do not persist when the underlying Edge host is replaced. After a host replacement,
   reapply the node-level taints and labels you want on the new host.
-
-### Set Node-level Taints and Labels
-
-You can set node-level taints and labels during cluster creation, or on an existing cluster.
-
-**During cluster creation:**
-
-1. In the cluster creation wizard, open the **Node Config** step.
-2. In the **Edge Hosts** section of a node pool, expand the row for the node you want to configure.
-3. Under **Taints**, click **Add New Taint**, then enter a **Key**, **Value**, and **Effect**. Repeat for each taint you
-   want to add.
-4. Under **Additional Labels**, enter each label in the format `key:value`. Separate multiple labels with a space.
-5. Continue with the rest of the wizard.
-
-**On an existing cluster:**
-
-1. In Palette, open the cluster and select the **Nodes** tab.
-2. Open the node pool that contains the node you want to configure.
-3. In the **Nodes (edge hosts)** section, expand the row for the node.
-4. Set **Taints** and **Additional Labels** as described above.
-5. Save your changes.
-
-An **Inherits from pool:** row above each editor shows the pool-level taints and labels the node inherits, so you can
-view the pool defaults while you set node-level values.
 
 ### Single-node Control Planes
 
