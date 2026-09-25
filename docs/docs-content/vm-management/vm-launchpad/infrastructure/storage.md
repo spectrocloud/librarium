@@ -28,6 +28,14 @@ The appliance backend depends on the [appliance variant](../install.md#install) 
 
 You can also use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
 
+:::info
+
+Set up the storage backend before you create a StorageClass. On the Piraeus/LINSTOR variants, VM storage is provisioned
+through LINSTOR [storage pools](#storage-pools). On the Portworx variant, create the
+[Storage Cluster](#storage-clusters) first. Create your StorageClasses on the configured backend afterward.
+
+:::
+
 ## StorageClasses
 
 StorageClasses define how VMO provisions PersistentVolumeClaims (PVCs). From **Infrastructure** > **Storage**, you can
@@ -143,9 +151,10 @@ or reassign the dependent resources before retrying.
 
 ## Storage Profiles
 
-Storage Profiles are CDI resources that define how VMO provisions DataVolumes for each StorageClass. VMO auto-creates a
-StorageProfile when you enable **Create StorageProfile for CSI-assisted cloning** during StorageClass creation. The UI
-exposes only editing; VMO manages Storage Profile creation and deletion for you.
+Storage Profiles are CDI resources that define how VMO provisions DataVolumes for each StorageClass. They apply to any
+StorageClass, regardless of the storage backend. VMO auto-creates a StorageProfile when you enable **Create
+StorageProfile for CSI-assisted cloning** during StorageClass creation. The UI exposes only editing; VMO manages Storage
+Profile creation and deletion for you.
 
 ### Edit a Storage Profile
 
@@ -164,11 +173,12 @@ exposes only editing; VMO manages Storage Profile creation and deletion for you.
 
 ## Storage Pools
 
-Storage pools are provider-specific constructs backed by the storage provider's own resources. VMO does not provide a
-dedicated **Storage Pools** tab. The underlying Piraeus/LINSTOR storage-pool APIs remain available and unchanged.
+Storage pools apply to the Piraeus/LINSTOR variants. They are provider-specific constructs backed by native LINSTOR
+storage resources. VMO does not provide a dedicated **Storage Pools** tab; the underlying Piraeus/LINSTOR storage-pool
+APIs remain available and unchanged. To dedicate whole disks or partitions to a LINSTOR storage pool, use the
+[disk partitioning workflow](#partition-a-disk-for-storage).
 
-To carve dedicated storage devices out of a node's disks, such as a KVDB, journal, or metadata partition for Portworx,
-use the [disk partitioning workflow](#partition-a-disk-for-storage).
+On the Portworx variant, you manage node-local devices through the [Storage Cluster](#storage-clusters) wizard instead.
 
 ## Storage Clusters
 

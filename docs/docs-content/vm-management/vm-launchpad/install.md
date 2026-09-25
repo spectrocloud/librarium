@@ -378,9 +378,11 @@ configuration.
    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
    | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
-   For the Portworx appliance variant, the **Storage** section also includes a **Portworx Activation ID** field. Enter
-   the activation ID to activate the Portworx Enterprise license at install time, or leave it blank to skip license
-   activation.
+   For the Portworx variant, the **Storage** section also includes the following field.
+
+   | **Parameter**              | **Description**                                                                                                                                         |
+   | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Portworx Activation ID** | Enter your Portworx Enterprise activation ID to activate the license during installation. Leave it blank to skip activation and license Portworx later. |
 
 6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
