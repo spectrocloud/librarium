@@ -133,9 +133,9 @@ configuration settings to learn more.
 
 ## Node-level Taints and Labels for Edge Native
 
-For Edge Native clusters, you can apply taints and labels to a single node inside a node pool, in addition to the
-pool-level taints and labels that apply to every node. Node-level taints and labels are useful when nodes in the same
-pool need to play different roles.
+For connected Edge Native clusters, you can apply taints and labels to a single node inside a node pool, in addition to
+the pool-level taints and labels that apply to every node. Node-level taints and labels are useful when nodes in the
+same pool need to play different roles.
 
 A common example is a three-node control plane where two nodes run application workloads and a third, lightweight node
 participates only in etcd quorum. The lightweight node is sometimes called a **witness** node. To keep workloads off the

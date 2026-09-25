@@ -159,21 +159,7 @@ management.
    `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in the OS pack before creating the cluster. For more
    information, refer to [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
 
-   To keep the pool default in place but let workloads run on a specific control plane node (or block workloads on a
-   specific worker node), apply a node-level taint on that node instead. Refer to
-   [Node-level Taints and Labels for Edge Native](../../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
-
    :::
-
-   You can also apply node-level taints and labels to individual nodes in a pool. Expand a node's row in the **Edge
-   Hosts** section, then:
-
-   - Under **Taints**, click **Add New Taint** and enter a **Key**, an optional **Value**, and an **Effect**
-     (`NoSchedule`, `PreferNoSchedule`, or `NoExecute`). Repeat to add more taints.
-   - Under **Additional Labels**, enter each label in the format `key:value`. Separate multiple labels with a space.
-
-   For more information, refer to
-   [Node-level Taints and Labels for Edge Native](../../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
