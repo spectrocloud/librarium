@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 <!-- COMPONENT UPDATES TICKET: DOC-3231 -->
 <!-- RELEASE DATE: September 24, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.60 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
 <!-- RELEASE ARTIFACT STUDIO:  -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
 
@@ -25,8 +25,6 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.60  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.60  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
 
@@ -40,52 +38,21 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
 
-### Packs
-
-<!-- BEGIN PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
-<!-- prettier-ignore-start -->
-
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.0 |
-| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.2 |
-| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.2 |
-| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.0 |
-| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.35.0 |
-| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.20.7 |
-| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.20.7 |
-| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.8 |
-| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
-| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1 |
-| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
-| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.31.1 |
-| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.1 |
-| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.2.2 |
-| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.0 |
-
-<!-- prettier-ignore-end -->
-
-<!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
 <!-- RELEASE DATE: September 18, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.10.17 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.10.4 -->
-<!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.1 -->
 
 The following components have been updated for Palette versions 4.10.16 - 4.10.17 and 4.9.51 - 4.10.17.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.4  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.1  |
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.17 |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.17 |
 
