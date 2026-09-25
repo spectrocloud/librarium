@@ -11,6 +11,204 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3241 -->
+
+This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.17.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1017 -->
+
+- PaletteAI VM Launchpad now ships as high-availability appliance variants backed by either Piraeus/LINSTOR or Portworx
+  storage. The Piraeus/LINSTOR variant is available in both FIPS and non-FIPS builds; the Portworx variant is available
+  as non-FIPS only. Refer to [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md) and
+  [Storage](../vm-management/vm-launchpad/infrastructure/storage.md) for variant selection and storage configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-852 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3234 -->
+
+- The appliance UI now includes a **Force Stop** action for virtual machines. Use **Force Stop** to immediately power
+  off a virtual machine whose guest operating system does not respond to a graceful **Stop**. Refer to
+  [Manage Virtual Machines](../vm-management/vm-launchpad/virtual-machines/managing.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-787 -->
+
+- PaletteAI VM Launchpad can now forward appliance metrics to Splunk, so you can retain metrics longer and view them in
+  your own tooling. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
+
+- The CDI upload proxy and KubeVirt export proxy are now exposed, so `virtctl image-upload` and virtual machine disk
+  exports work through the appliance.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-327 -->
+
+- The appliance now generates the OIDC client secrets for VMO, Headlamp, and the Keycloak admin account per appliance,
+  instead of setting them through hidden profile variables.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1101 -->
+
+- The virtual machine resource configuration form now includes a **Memory Limits** field, corrects a misleading CPU
+  request placeholder, and allows editing CPU and memory requests and limits on day 2.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-914 -->
+
+- The Local UI installation wizard now includes a verify-password field for the VMO password.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1189 -->
+
+- You can now set the Portworx activation ID from the appliance Local UI during Portworx storage setup. Refer to
+  [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1216 -->
+
+- The ephemeral-storage warning banner can now be dismissed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1187 -->
+
+- The appliance now bundles Palette VMM version 4.10.x.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1093 -->
+
+- All Helm hook workloads now run as non-root, with the exception of the privileged Multus cleanup job.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1094 -->
+
+- The `spectro-kubectl` images have been rebuilt on Go 1.26.7 to address security vulnerabilities.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1159 -->
+
+- Fixed an issue that caused the CDI upload proxy and KubeVirt export proxy ingress to unconditionally render a Traefik
+  configuration, which broke the Nginx reference architecture. This affected VMO pack versions 4.10.2 through 4.10.6.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1122 -->
+
+- Fixed an issue that caused failures when editing a virtual machine's CPU configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1088 -->
+
+- Fixed an issue that caused cloud-init `networkData` to be silently dropped. The appliance now sets
+  `networkDataSecretRef` so the network configuration is applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
+
+- Fixed an issue that caused the virtual machine creation wizard to skip a network interface with `bootOrder=2` when
+  UEFI, Secure Boot, and TPM were enabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1012 -->
+
+- Fixed an issue that prevented Windows virtual machines using `windows.*` cluster preferences from scheduling on nodes
+  that did not have Hyper-V enlightenment labels.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1199 -->
+
+- Fixed an issue that prevented creating Windows virtual machines from a template.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-631 -->
+
+- Fixed an issue that prevented `Sysprep` from running when the QEMU guest agent installation was enabled on Windows.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1033 -->
+
+- Fixed an issue that caused golden images to build non-bootable disks, produce an invalid template, or ignore the EFI
+  boot checkbox.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1079 -->
+
+- Fixed an issue that caused the Golden Image Builder to mis-detect the guest operating system from the ISO filename.
+  Refer to [Golden Images](../vm-management/vm-launchpad/virtual-machines/golden-images.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-687 -->
+
+- Fixed an issue that caused DataVolumes to display `ImportScheduled` instead of `ImportInProgress` while an import was
+  running.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1107 -->
+
+- Fixed an issue that caused image upload in Direct mode to fail on MAAS and Edge clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1194 -->
+
+- Fixed an issue that caused registry (zot) images to disappear from the UI after a pod restart.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1081 -->
+
+- Fixed an issue that caused the **Storage HA Not Available** banner to appear on clusters that do not use LINSTOR.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1171 -->
+
+- Fixed an issue that caused some Traefik routes to be inaccessible.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1063 -->
+
+- Fixed an issue that caused Headlamp SSO to land on a 404 `tenantApps` URL after Keycloak login through direct load
+  balancer access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-822 -->
+
+- Fixed an issue that caused the Keycloak configure hook to extract the wrong client ID, which caused a
+  `CrashLoopBackOff`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1114 -->
+
+- Fixed an issue that caused the namespace list to include namespaces a user could not access. VMO Manager now scopes
+  the namespace list to the user's Kubernetes token.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1127 -->
+
+- Fixed an issue that prevented cAdvisor metrics from reaching Victoria Metrics, which caused missing dashboard
+  telemetry. This was a regression introduced in 4.9.16.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1075 -->
+
+- Fixed an issue that caused the audit cleanup pod to error out.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-988 -->
+
+- Fixed an issue that caused the **Resource Summary** to show usage against allocated resources instead of against
+  cluster capacity.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1001 -->
+
+- Fixed an issue that caused the **Total vCPUs** count to be miscalculated. The count now multiplies cores, sockets, and
+  threads.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-994 -->
+
+- Fixed an issue that caused the node CPU history chart to drop to false 0% values.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1002 -->
+
+- Fixed an issue that caused the dashboard **Issues** count to apply an incorrect virtual machine status filter when
+  selected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1074 -->
+
+- Fixed an issue that prevented dashboard widget changes from persisting in Palette mode.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-714 -->
+
+- Fixed an issue that caused transitional states, such as `Stopping`, to be counted under **Provisioning**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-989 -->
+
+- Fixed an issue that caused edit modals to show a false unsaved-changes prompt when pressing Escape.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1102 -->
+
+- Fixed an issue that caused incorrect breadcrumb labels and a stale **System** > **Storage** reference.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1080 -->
+
+- Fixed an issue that prevented special characters and uppercase letters from pasting correctly in the VNC console.
+
 ## September 24, 2026 - Component Updates {#component-updates-2026-39}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3231 -->
