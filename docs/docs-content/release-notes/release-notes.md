@@ -15,6 +15,13 @@ tags: ["release-notes"]
 
 ### Security Notices
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- To improve the security posture of using Palette as an identity provider, Palette now validates the callback URL on
+  every authentication request. Refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4.10.a}
