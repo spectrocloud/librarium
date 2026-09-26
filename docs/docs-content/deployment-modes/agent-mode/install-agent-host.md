@@ -29,6 +29,7 @@ used to deploy your cluster.
   | AMD64             | Ubuntu                            | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            |
   | AMD64             | Ubuntu                            | K3s                                        | Flannel                           |
   | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            |
+  | ARM64             | Ubuntu                            | K3s                                        | Flannel                           |
 
 - Clusters with Flannel CNI are not verified for local management mode deployments.
 

@@ -44,7 +44,7 @@ To learn about the requirements for Edge hosts deployed in agent mode, refer to
 
 ### ARM64 Architecture Devices
 
-ARM64 support is only verified for the Nvidia Jetson Orin device family.
+ARM64 support is verified for the NVIDIA Jetson Orin and NVIDIA Jetson Thor device families.
 
 :::warning
 
