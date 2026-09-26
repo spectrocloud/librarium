@@ -92,3 +92,4 @@ After you create a client, configure how much it can consume and which models it
 - [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)
 - [View Client Usage](./view-client-usage.md)
 - [Revoke or Delete a Client](./revoke-or-delete-a-client.md)
+- [Quota Model](../reference/quota-model.md)

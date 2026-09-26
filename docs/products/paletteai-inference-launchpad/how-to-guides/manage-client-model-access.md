@@ -114,3 +114,4 @@ the budget runs out. If neither header appears, the client is bypassing the appl
 - [Set and Manage Client Quotas](./manage-client-quotas.md)
 - [View Client Usage](./view-client-usage.md)
 - [Replace a Model](./replace-a-model.md)
+- [Quota Model](../reference/quota-model.md)

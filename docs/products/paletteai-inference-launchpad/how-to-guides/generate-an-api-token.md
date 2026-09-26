@@ -61,3 +61,4 @@ dialog, select **Connect a Coding Agent**, and then select the tab for your agen
 - [Use Cursor](./use-cursor.md)
 - [Use OpenAI Codex](./use-codex.md)
 - [Use OpenCode](./use-opencode.md)
+- [Quota Model](../reference/quota-model.md)
