@@ -222,7 +222,8 @@ where you provision the cluster yourself.
 
 2. Select **New Portworx Storage Cluster**.
 
-3. Enter a **Name** and select a **Namespace**, for example `portworx`.
+3. Enter a **Name** and select `portworx` as the **Namespace**. The Portworx Storage Cluster must use the `portworx`
+   namespace.
 
 4. (Optional) Under **Metadata**, add labels and annotations. The appliance pre-populates the Portworx annotations the
    cluster requires, such as `portworx.io/misc-args`, `portworx.io/pvc-controller-port`, and
@@ -267,9 +268,9 @@ VMO can partition a discovered disk on a cluster node directly from a device fie
 journal, or metadata partition for Portworx out of a larger disk, or to split a single disk into a metadata partition
 and a data partition.
 
-The workflow lives inside the block-device picker on device fields that support partitioning, such as the **KVDB
-Device**, **Journal Device**, and **Metadata Device** fields. Open the picker for such a field and select **Partition a
-disk** to launch the partition tool.
+You partition a disk from the **block-device picker**, the control that opens on device fields that support
+partitioning, such as the **KVDB Device**, **Journal Device**, and **Metadata Device** fields in the Portworx Storage
+Cluster wizard. Open the picker for one of these fields and select **Partition a disk** to launch the partition tool.
 
 ### Prerequisites
 
@@ -286,7 +287,10 @@ disk** to launch the partition tool.
 
 ### Author Partitions
 
-1. Open the block-device picker for a device field that supports partitioning and select **Partition a disk**.
+Start from a device field that supports partitioning in the Portworx Storage Cluster wizard. Refer to
+[Create a Portworx Storage Cluster](#storage-clusters) to open the wizard.
+
+1. Open the block-device picker for the device field and select **Partition a disk**.
 
 2. Select the target node or nodes and one discovered device. When the field is scoped to specific nodes, the node scope
    is pre-filled. For a cluster-level field, select the nodes yourself, and VMO partitions the same device name on each.
@@ -301,8 +305,8 @@ disk** to launch the partition tool.
 5. Review the summary, then type the exact device name to confirm. The confirmation is deliberate, because the operation
    writes a partition table to a physical disk.
 
-6. Submit. VMO validates the request against current discovery data and records it as a `PartitionIntent` resource. The
-   node agent writes the partitions on the target node and reports the created partition paths.
+6. Select **Submit**. VMO validates the request against current discovery data and records it as a `PartitionIntent`
+   resource. The node agent writes the partitions on the target node and reports the created partition paths.
 
 The partitions you create become selectable in device pickers after the node agent's next discovery scan. The field you
 partitioned from is filled with the new partition path right away.
@@ -326,8 +330,8 @@ from scratch. Use it to reset a disk whose existing partition table blocks a fre
 
 3. Type the exact device name to confirm.
 
-VMO refuses the wipe when the disk hosts the operating system, or when the disk or any of its partitions is mounted, in
-use, or has active holders.
+VMO does not wipe a disk that hosts the operating system, or a disk whose partitions are mounted, in use, or have active
+holders.
 
 ## Storage Policies
 
