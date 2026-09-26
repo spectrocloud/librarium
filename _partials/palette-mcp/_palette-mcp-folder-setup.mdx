@@ -6,7 +6,7 @@ partial_name: folder-setup
 
 1. Open a terminal session on your local machine.
 
-2. (Optional) If you want to save the secrets you need to configure the Palette MCP server in a file, create an `.env-mcp` file. You can choose to pass secrets directly to the MCP server as variables, but using the `.env-mcp` file is a more secure and manageable approach.
+2. (Optional) To save the secrets you need to configure the Palette MCP server in a file rather than pass them directly as variables, create an `.env-mcp` file. The file approach is more secure and manageable.
 
     1. Issue the following command to create the `.env-mcp` file in your home directory under the `.palette` folder.
  
@@ -15,20 +15,29 @@ partial_name: folder-setup
        touch ~/.palette/.env-mcp
        ```
  
-    2. Add the required MCP values to the `.env-mcp` file. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
+    2. Populate the `.env-mcp` file with the following required values. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
  
-       ```shell {2,3,4}
+       ```shell {2,3}
        cat << EOF > ~/.palette/.env-mcp
        PALETTE_HOST=<palette-api-endpoint>
        PALETTE_API_KEY=<palette-api-key>
-       PALETTE_PROJECT_UID=<palette-project-id>
        EOF
+       chmod 600 ~/.palette/.env-mcp
        ```
 
-3. Issue the following command to create a folder to store
-   [kubeconfig](/clusters/cluster-management/kubeconfig) files. This step improves the user experience when retrieving kubeconfig files.
+       :::info
 
-   You can use any folder on your machine for this configuration. Replace `<local-path>` with your desired local path.
+       By default, the server operates at the tenant scope. Every call sees results across every
+       project that your credentials can access. To scope a request to a single project, mention the
+       project by name or UID in your prompt instead of setting an environment variable; the
+       assistant passes it as that call's `project_uid` argument.
+
+       :::
+
+3. Issue the following command to create a folder to store
+   [kubeconfig](/clusters/cluster-management/kubeconfig) files.
+
+   Replace `<local-path>` with any folder on your machine.
 
    ```shell
    mkdir -p /<local-path>/kubeconfig
