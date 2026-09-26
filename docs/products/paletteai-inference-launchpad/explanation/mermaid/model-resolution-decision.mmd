@@ -1,0 +1,68 @@
+flowchart TD
+    req([Request with model field]):::start
+
+    q_field{Model field}:::decision
+    req --> q_field
+
+    q_field -- "auto or empty" --> q_auto{Client pin on tier map}:::decision
+    q_field -- "Named model" --> q_named{Named model on tier map}:::decision
+
+    q_auto -- "Pin present" --> t_pin[Serve the pinned model]:::local
+    q_auto -- "No pin" --> sr[Semantic router]:::decision
+
+    q_named -- "Box serves this exact name" --> t_explicit[Serve the named model]:::local
+    q_named -- "Prefix matches a tier row" --> q_row{Tier row target}:::decision
+    q_named -- "Nothing matches" --> q_fb{Box fallback for unmatched requests}:::decision
+
+    q_row -- "Row names a model" --> t_alias[Serve the row target]:::local
+    q_row -- "Row blank on the box tier map" --> q_fb
+    q_row -- "Row blank on a client-owned tier map" --> t_404[HTTP 404]:::deny
+
+    sr --> q_claim{Category policy claim, client policy over box}:::decision
+    q_claim -- "Category-and-band key hits" --> q_target{Claimed target}:::decision
+    q_claim -- "Bare-category key hits" --> q_target
+    q_claim -- "No key hits" --> t_default[Serve the tier default]:::local
+
+    q_target -- "Local model" --> t_claimed[Serve the claimed local model]:::local
+    q_target -- "Frontier or external endpoint" --> q_egress{Egress gate for the client}:::decision
+
+    q_egress -- "Allow" --> t_frontier[Serve the frontier or external endpoint]:::frontier
+    q_egress -- "Budget refused" --> t_429[HTTP 429]:::deny
+    q_egress -- "Refused, degrade" --> t_default
+
+    q_fb -- "On" --> t_default
+    q_fb -- "Off" --> t_404
+
+    note[/"The matched tier row's Thinking directive rides the resolved model. It sets reasoning effort, not model choice."/]:::obs
+    t_alias -.-> note
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef decision fill:#eef2ff,stroke:#4f46e5,color:#0f172a,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef frontier fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef obs fill:#f0fdfa,stroke:#0f766e,color:#0f172a,stroke-width:2px;
+    classDef deny fill:#fee2e2,stroke:#b91c1c,color:#0f172a,stroke-width:2px;
+
+    linkStyle 0 stroke:#2563eb,stroke-width:2px;
+    linkStyle 1 stroke:#2563eb,stroke-width:2px;
+    linkStyle 2 stroke:#2563eb,stroke-width:2px;
+    linkStyle 3 stroke:#2563eb,stroke-width:2px;
+    linkStyle 4 stroke:#2563eb,stroke-width:2px;
+    linkStyle 5 stroke:#2563eb,stroke-width:2px;
+    linkStyle 6 stroke:#2563eb,stroke-width:2px;
+    linkStyle 7 stroke:#2563eb,stroke-width:2px;
+    linkStyle 8 stroke:#2563eb,stroke-width:2px;
+    linkStyle 9 stroke:#2563eb,stroke-width:2px;
+    linkStyle 10 stroke:#b91c1c,stroke-width:2px;
+    linkStyle 11 stroke:#2563eb,stroke-width:2px;
+    linkStyle 12 stroke:#2563eb,stroke-width:2px;
+    linkStyle 13 stroke:#2563eb,stroke-width:2px;
+    linkStyle 14 stroke:#2563eb,stroke-width:2px;
+    linkStyle 15 stroke:#2563eb,stroke-width:2px;
+    linkStyle 16 stroke:#2563eb,stroke-width:2px;
+    linkStyle 17 stroke:#d97706,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 18 stroke:#b91c1c,stroke-width:2px;
+    linkStyle 19 stroke:#2563eb,stroke-width:2px;
+    linkStyle 20 stroke:#2563eb,stroke-width:2px;
+    linkStyle 21 stroke:#b91c1c,stroke-width:2px;
+    linkStyle 22 stroke:#0f766e,stroke-width:2px,stroke-dasharray:2 3;

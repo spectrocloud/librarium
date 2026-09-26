@@ -19,7 +19,8 @@ Reasoning is a hidden generation phase that a reasoning-capable model runs befor
 hidden phase costs tokens and adds latency. Setting the Thinking directive is how a platform administrator trades that
 cost against answer quality for each tier. To perform this task, refer to
 [Set the Thinking Directive for a Tier](../how-to-guides/set-tier-thinking.md). For the values each mode carries, refer
-to [Thinking Directive Modes](../reference/thinking-modes.md).
+to [Thinking Directive Modes](../reference/thinking-modes.md). For where the directive rides the resolved model in the
+wider routing flow, refer to [Model Resolution Decision Tree](./routing-behavior.md#model-resolution-decision-tree).
 
 ## How Each Mode Is Interpreted
 
