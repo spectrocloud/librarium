@@ -60,7 +60,27 @@ configuration.
 
 1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
-2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
+2. In the **VM Launchpad** section, use the drop-down menu to select the version and appliance variant, and select
+   **Show Artifacts**.
+
+   The VM Launchpad appliance is available in the following variants, which differ by FIPS compliance and storage
+   backend. In the drop-down menu, each version lists its storage backend in parentheses, such as `(piraeus)` or
+   `(portworx)`, and FIPS builds carry a **FIPS** label. A FIPS and a non-FIPS build of the same backend are otherwise
+   identical in the list, so use the **FIPS** label to tell them apart. Choose the variant that matches your compliance
+   and storage requirements.
+
+   | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                           |
+   | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
+   | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                |
+   | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS. |
+   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Pure Storage arrays.  |
+
+   :::info
+
+   The Slim ISO and the content bundle must match on FIPS mode. A FIPS content bundle pairs only with the Piraeus
+   backend. A non-FIPS content bundle pairs with either the Portworx or the Piraeus backend.
+
+   :::
 
 3. The following table describes the artifacts available for VM Launchpad.
 
@@ -357,6 +377,12 @@ configuration.
    | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
    | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
+
+   For the Portworx variant, the **Storage** section also includes the following field.
+
+   | **Parameter**              | **Description**                                                                                                                                         |
+   | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Portworx Activation ID** | Enter your Portworx Enterprise activation ID to activate the license during installation. Leave it blank to skip activation and license Portworx later. |
 
 6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.

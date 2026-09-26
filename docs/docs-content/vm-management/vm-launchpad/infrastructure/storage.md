@@ -19,13 +19,22 @@ Piraeus/LINSTOR as the default storage backend, but VMO works with any StorageCl
 VMO does not require a specific storage backend. It works with any Kubernetes StorageClass that supports dynamic
 provisioning.
 
-The default appliance backend is Piraeus/LINSTOR, which provides:
+The appliance backend depends on the [appliance variant](../install.md#install) you install:
 
-- Replicated storage for VM disks.
-- StorageClass-based provisioning.
-- LVM-based storage pools.
+- **Piraeus/LINSTOR** provides replicated block storage for VM disks, StorageClass-based provisioning, and LVM-based
+  storage pools. This backend ships with both the FIPS and non-FIPS Piraeus variants.
+- **Portworx** provides enterprise distributed storage for VM disks. This backend ships with the non-FIPS Portworx
+  variant.
 
-You can use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
+You can also use other providers, such as host-path or Rook-Ceph, depending on the cluster configuration.
+
+:::info
+
+Set up the storage backend before you create a StorageClass. On the Piraeus/LINSTOR variants, VM storage is provisioned
+through LINSTOR [storage pools](#storage-pools). On the Portworx variant, create the
+[Storage Cluster](#storage-clusters) first. Create your StorageClasses on the configured backend afterward.
+
+:::
 
 ## StorageClasses
 
@@ -58,7 +67,10 @@ perform the following StorageClass operations.
    | **Binding Mode**                                   | `Immediate` or `WaitForFirstConsumer`. Controls when volume binding and dynamic provisioning happen.                  |
 
 4. Under **Parameters**, configure how VMO provisions volumes. The available parameters depend on the storage provider.
-   The following parameters apply to Piraeus/LINSTOR.
+
+   <Tabs groupId="storage-backend">
+
+   <TabItem value="piraeus" label="Piraeus/LINSTOR">
 
    | **Field**                            | **Description**                                                                                                                                   |
    | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,6 +79,27 @@ perform the following StorageClass operations.
    | **Placement Count**                  | The number of replicas for each volume.                                                                                                           |
    | **Resource Group**                   | The LINSTOR resource group name.                                                                                                                  |
    | **Advanced Parameters** _(Optional)_ | Expand to configure other provider-specific parameters as key-value pairs.                                                                        |
+
+   </TabItem>
+
+   <TabItem value="portworx" label="Portworx">
+
+   Portworx StorageClasses expose the Portworx volume options. The provisioner determines the full set of available
+   parameters. The following options are the most common.
+
+   | **Field**                            | **Description**                                                                                               |
+   | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+   | **Replication Factor**               | The number of synchronous volume replicas across nodes (Portworx `repl`), typically `1`, `2`, or `3`.         |
+   | **IO Profile**                       | The Portworx IO profile (`io_profile`) that tunes the volume for the workload, such as `auto` or `db_remote`. |
+   | **IO Priority**                      | The relative IO priority (`io_priority`): `high`, `medium`, or `low`.                                         |
+   | **Filesystem**                       | The volume filesystem (`fs`), such as `ext4` or `xfs`.                                                        |
+   | **Encryption**                       | Enable Portworx volume encryption (`secure`).                                                                 |
+   | **Shared (RWX)**                     | Enable shared ReadWriteMany volumes (`sharedv4`) for multi-attach and live migration.                         |
+   | **Advanced Parameters** _(Optional)_ | Expand to configure other Portworx parameters as key-value pairs.                                             |
+
+   </TabItem>
+
+   </Tabs>
 
 5. Select **Create Storage Class**.
 
@@ -118,9 +151,10 @@ or reassign the dependent resources before retrying.
 
 ## Storage Profiles
 
-Storage Profiles are CDI resources that define how VMO provisions DataVolumes for each StorageClass. VMO auto-creates a
-StorageProfile when you enable **Create StorageProfile for CSI-assisted cloning** during StorageClass creation. The UI
-exposes only editing; VMO manages Storage Profile creation and deletion for you.
+Storage Profiles are CDI resources that define how VMO provisions DataVolumes for each StorageClass. They apply to any
+StorageClass, regardless of the storage backend. VMO auto-creates a StorageProfile when you enable **Create
+StorageProfile for CSI-assisted cloning** during StorageClass creation. The UI exposes only editing; VMO manages Storage
+Profile creation and deletion for you.
 
 ### Edit a Storage Profile
 
@@ -139,107 +173,161 @@ exposes only editing; VMO manages Storage Profile creation and deletion for you.
 
 ## Storage Pools
 
-Storage pools are provider-specific. For Piraeus/LINSTOR, VMO supports the following storage pool operations.
+Storage pools apply to the Piraeus/LINSTOR variants. They are provider-specific constructs backed by native LINSTOR
+storage resources. VMO does not provide a dedicated **Storage Pools** tab; the underlying Piraeus/LINSTOR storage-pool
+APIs remain available and unchanged. To dedicate whole disks or partitions to a LINSTOR storage pool, use the
+[disk partitioning workflow](#partition-a-disk-for-storage).
 
-| Operation            | Description                                                                                                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Create**           | Create a new storage pool with a name and one or more block devices.                                                                                                             |
-| **Delete**           | Remove a storage pool. You can remove a pool only when it is empty.                                                                                                              |
-| **Device selection** | When creating a pool, select block devices from cluster nodes. The `vmo-node-agent` DaemonSet discovers physical block devices on each node and lists them in the device picker. |
+On the Portworx variant, you manage node-local devices through the [Storage Cluster](#storage-clusters) wizard instead.
 
-:::info
+## Storage Clusters
 
-Storage pool management depends on the storage provider. VMO supports Piraeus/LINSTOR pools directly. Other providers
-may expose different APIs or require configuration outside VMO.
+Only the Portworx storage backend uses a Kubernetes `StorageCluster` object. The storage-cluster operations available to
+you depend on the [appliance variant](../install.md#install) you install.
+
+<!-- TODO(PVM-1184): the vmo-manager handoff describes this tab as read-focused with the appliance overlay setting
+deployCluster: false so VMO owns the StorageCluster, but Yin's walkthrough shows a manual New Portworx Storage Cluster
+wizard (Sumit flagged that recording as a vCenter/POC scenario). Confirm with Sumit/Engineering when the manual create
+path applies vs. when VMO auto-provisions the cluster on the HA appliance, before this PR moves out of Draft. -->
+
+<Tabs groupId="storage-backend">
+
+<TabItem value="piraeus" label="Piraeus/LINSTOR">
+
+Piraeus/LINSTOR appliances do not use a `StorageCluster` object and do not include a **Portworx Storage Clusters** tab.
+Piraeus provisions VM storage through LINSTOR storage pools. To dedicate whole disks or partitions to a storage pool,
+use the [disk partitioning workflow](#partition-a-disk-for-storage) and reference the resulting devices in your LINSTOR
+configuration. Refer to [Storage Pools](#storage-pools) for more information.
+
+</TabItem>
+
+<TabItem value="portworx" label="Portworx">
+
+On appliances that use the Portworx storage backend, the **Storage** page includes an extra **Portworx Storage
+Clusters** tab that does not appear on Piraeus/LINSTOR appliances. The Portworx pack installs the Portworx operator
+without deploying a cluster, and VMO manages the resulting Portworx `StorageCluster`. Use this tab to review the
+cluster's configuration and status. The tab also provides a **New Portworx Storage Cluster** wizard for deployments
+where you provision the cluster yourself.
+
+**Review a Portworx Storage Cluster**
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
+
+2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
+   cluster size, capacity used, and capacity total.
+
+**Create a Portworx Storage Cluster**
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
+
+2. Select **New Portworx Storage Cluster**.
+
+3. Enter a **Name** and select a **Namespace**, for example `portworx`.
+
+4. (Optional) Under **Metadata**, add labels and annotations. The appliance pre-populates the Portworx annotations the
+   cluster requires, such as `portworx.io/misc-args`, `portworx.io/pvc-controller-port`, and
+   `portworx.io/pvc-controller-secure-port`.
+
+5. Confirm the **Storage backend** shows **Local disks (software-defined)** and that the **Run on control plane**
+   configuration preset is enabled.
+
+6. Configure the wizard sections from the left panel. The following table describes the most common fields. The
+   **Summary** and **Validation** panels on the right update as you go.
+
+   | **Section**         | **What you configure**                                                                                                                                                                                                                                                                                                                                                                                                          |
+   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **General**         | **Secrets Provider** (`k8s` stores Portworx credentials as Kubernetes secrets), **Custom Image Registry** (a registry prefix prepended to every Portworx image, required for airgapped clusters and left empty on connected clusters to pull from `docker.io`), and the Portworx **Image**.                                                                                                                                     |
+   | **Storage**         | The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions. |
+   | **Nodes**           | Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                          |
+   | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                 |
+   | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                               |
+   | **Network**         | The **Data Interface** Portworx uses for storage traffic and the **Mgmt Interface** it uses for management traffic.                                                                                                                                                                                                                                                                                                             |
+   | **Volumes**         | Default settings applied to new Portworx volumes.                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                       |
+   | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                  |
+
+7. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
+
+8. Review the **Summary** and confirm **Validation** reports no issues, then select **Save**.
+
+:::warning
+
+Portworx claims and formats the disks and devices you select in the **Storage** section. Confirm that each disk carries
+nothing you need before you save the cluster.
 
 :::
 
-### Create a Storage Pool
+</TabItem>
 
-Storage Pool creation is provider-specific. The following steps apply to Piraeus/LINSTOR.
+</Tabs>
 
-1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Pools**.
+## Partition a Disk for Storage
 
-2. Select **Create Storage Pool**.
+VMO can partition a discovered disk on a cluster node directly from a device field, for example to carve a small KVDB,
+journal, or metadata partition for Portworx out of a larger disk, or to split a single disk into a metadata partition
+and a data partition.
 
-3. Configure the common fields.
+The workflow lives inside the block-device picker on device fields that support partitioning, such as the **KVDB
+Device**, **Journal Device**, and **Metadata Device** fields. Open the picker for such a field and select **Partition a
+disk** to launch the partition tool.
 
-   | **Field**        | **Description**                                                                                                                   |
-   | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-   | **Pool Name**    | The storage pool name. Up to 128 characters.                                                                                      |
-   | **Pool Type**    | The backing storage type: `LVM Thin`, `LVM`, `ZFS`, `ZFS Thin`, `File`, or `File Thin`.                                           |
-   | **Host Devices** | Block devices from cluster nodes to include in the pool. If no devices appear, enter a device path (for example, `/dev/nvme0n1`). |
+### Prerequisites
 
-4. Configure the fields for the selected **Pool Type**.
+- Disk partitioning is enabled on the node agent. The feature is opt-in and dormant by default. Enabling it adds a
+  container to the node-agent DaemonSet that runs with elevated privileges so it can write partition tables to raw block
+  devices. Both partitioning and the **Wipe disk** action require this feature. When it is not enabled, the tool reports
+  that disk partitioning is unavailable.
 
-   <Tabs groupId="storage-pool-type">
+- Your account holds the `vmo:storage:partition` permission. Among the built-in roles, only **Platform Admin** holds it.
+  This permission is separate from `vmo:storage:write` because partitioning destructively rewrites the partition table
+  on a physical host disk.
 
-   <TabItem value="lvm-thin" label="LVM Thin">
+- The node agent is running on the target nodes. The workflow offers only devices from live node-agent discovery.
 
-   | **Field**        | **Description**                                     |
-   | ---------------- | --------------------------------------------------- |
-   | **Volume Group** | The LVM volume group name (for example, `drbd-vg`). |
-   | **Thin Pool**    | The LVM thin pool name (for example, `thinpool`).   |
+### Author Partitions
 
-   </TabItem>
+1. Open the block-device picker for a device field that supports partitioning and select **Partition a disk**.
 
-   <TabItem value="lvm" label="LVM">
+2. Select the target node or nodes and one discovered device. When the field is scoped to specific nodes, the node scope
+   is pre-filled. For a cluster-level field, select the nodes yourself, and VMO partitions the same device name on each.
 
-   | **Field**        | **Description**                                     |
-   | ---------------- | --------------------------------------------------- |
-   | **Volume Group** | The LVM volume group name (for example, `drbd-vg`). |
+3. Author the partitions. Each partition row takes a size in GiB and an optional reference label. Select **Add
+   partition** to split one disk into several labeled partitions in a single operation, for example a 64 GiB metadata
+   partition plus a data partition.
 
-   </TabItem>
+4. (Optional) To size the last partition to the remaining free space on the disk, set it to **Use remaining space**
+   instead of a fixed size. Only the last row can use remaining space.
 
-   <TabItem value="zfs" label="ZFS / ZFS Thin">
+5. Review the summary, then type the exact device name to confirm. The confirmation is deliberate, because the operation
+   writes a partition table to a physical disk.
 
-   | **Field**    | **Description**                  |
-   | ------------ | -------------------------------- |
-   | **ZFS Pool** | The name of the ZFS pool to use. |
+6. Submit. VMO validates the request against current discovery data and records it as a `PartitionIntent` resource. The
+   node agent writes the partitions on the target node and reports the created partition paths.
 
-   Select **ZFS Thin** for thin-provisioned ZFS volumes. Both pool types share the same configuration fields.
+The partitions you create become selectable in device pickers after the node agent's next discovery scan. The field you
+partitioned from is filled with the new partition path right away.
 
-   </TabItem>
+:::warning
 
-   <TabItem value="file" label="File / File Thin">
+VMO never partitions or wipes the disk that hosts the operating system. The safety guard detects only active mounts,
+holders, and in-use state. It does not detect inactive members, such as an unmounted LVM physical volume or a
+non-assembled software RAID member. Before you partition or wipe a disk, confirm it carries nothing you need.
 
-   | **Field**     | **Description**                                                                    |
-   | ------------- | ---------------------------------------------------------------------------------- |
-   | **Directory** | The host directory that stores pool files (for example, `/var/lib/linstor-pools`). |
+:::
 
-   Select **File Thin** for thin-provisioned file-backed volumes. Both pool types share the same configuration fields.
+### Wipe a Disk
 
-   </TabItem>
+**Wipe disk** is a separate, destructive action that clears a disk's entire partition table so you can repartition it
+from scratch. Use it to reset a disk whose existing partition table blocks a fresh partitioning attempt.
 
-   </Tabs>
+1. In the partition tool, select the target node or nodes and one device.
 
-5. Select **Create Storage Pool**.
+2. Select **Wipe disk**.
 
-### Edit a Storage Pool
+3. Type the exact device name to confirm.
 
-The Storage Pools UI does not include an edit option. To change a pool's device selection or type, delete the pool and
-recreate it.
-
-### Delete a Storage Pool
-
-1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Pools**.
-
-2. In the Storage Pools list, select the row of the pool you want to delete. The details panel opens on the right.
-
-3. Select **Delete Storage Pool**.
-
-4. In the confirmation dialog, confirm the deletion.
-
-If the storage pool is not empty, VMO blocks the deletion. Remove any resources that reference the pool before retrying.
-
-### OS Disk Exclusion
-
-VMO automatically excludes disks that back critical OS mount points (`/`, `/boot`, `/boot/efi`, `/efi`, and `/usr`) from
-the device picker and marks them as in-use. This prevents you from accidentally adding a node's operating system disk to
-a storage pool.
-
-The exclusion covers the full parent disk, not just the mounted partition. For example, if `/dev/sda1` is mounted at
-`/`, VMO hides the entire `sda` disk from the device list.
+VMO refuses the wipe when the disk hosts the operating system, or when the disk or any of its partitions is mounted, in
+use, or has active holders.
 
 ## Storage Policies
 
