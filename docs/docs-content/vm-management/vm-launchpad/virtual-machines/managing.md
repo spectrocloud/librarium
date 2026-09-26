@@ -35,15 +35,16 @@ Navigate to **Workloads** > **Virtual Machines** (`/vms`) to view all virtual ma
 
 From the VM list, you can perform the following actions.
 
-| **Action**          | **Description**                                              |
-| ------------------- | ------------------------------------------------------------ |
-| **Start**           | Start a stopped VM.                                          |
-| **Stop**            | Gracefully stop a running VM.                                |
-| **Restart**         | Restart a running VM.                                        |
-| **Delete**          | Delete the VM and its owned DataVolumes (with confirmation). |
-| **Open Console**    | Open the VNC console in a new tab (when the VM is running).  |
-| **Clone**           | Create a copy of the VM with a new name and namespace.       |
-| **Create Template** | Create a [VmTemplate](./templates.md) from the VM.           |
+| **Action**          | **Description**                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Start**           | Start a stopped VM.                                                                                              |
+| **Stop**            | Gracefully stop a running VM.                                                                                    |
+| **Force Stop**      | Immediately power off a running VM without a graceful shutdown. Requires confirmation and might cause data loss. |
+| **Restart**         | Restart a running VM.                                                                                            |
+| **Delete**          | Delete the VM and its owned DataVolumes (with confirmation).                                                     |
+| **Open Console**    | Open the VNC console in a new tab (when the VM is running).                                                      |
+| **Clone**           | Create a copy of the VM with a new name and namespace.                                                           |
+| **Create Template** | Create a [VmTemplate](./templates.md) from the VM.                                                               |
 
 Open a row's context menu to access more actions.
 
@@ -61,6 +62,19 @@ Open a row's context menu to access more actions.
 
 Stop and restart require the VM to be running. For VMs with `runStrategy: Always`, stop temporarily sets the strategy to
 Halted.
+
+:::
+
+### Force Stop
+
+**Force Stop** immediately powers off a running VM without a graceful shutdown, equivalent to pulling the power cord. It
+stops the VM with a zero grace period and removes the underlying VirtualMachineInstance, so the guest stops even when a
+graceful **Stop** is hung. Use Force Stop only when a graceful **Stop** does not shut the VM down.
+
+:::warning
+
+Force Stop does not let the guest flush in-flight writes, so it might cause data loss. VM Launchpad requires a
+confirmation before it force stops a VM.
 
 :::
 
