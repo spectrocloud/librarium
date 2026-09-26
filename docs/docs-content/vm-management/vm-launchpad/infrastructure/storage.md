@@ -247,6 +247,9 @@ where you provision the cluster yourself.
    | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                       |
    | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                  |
 
+   If you use a V1 Storage Cluster, you do not need to create a separate metadata device. Portworx uses one unmounted
+   partition or a raw unmounted disk that you provide.
+
 7. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
 
 8. Review the **Summary** and confirm **Validation** reports no issues, then select **Save**.
