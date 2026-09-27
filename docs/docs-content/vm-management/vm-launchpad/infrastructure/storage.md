@@ -222,8 +222,8 @@ where you provision the cluster yourself.
 
 2. Select **New Portworx Storage Cluster**.
 
-3. Enter a **Name** and select `portworx` as the **Namespace**. The Portworx Storage Cluster must use the `portworx`
-   namespace.
+3. Enter a **Name**. The **Namespace** is preset to `portworx` and cannot be changed, because the Portworx Storage
+   Cluster must use the `portworx` namespace.
 
 4. (Optional) Under **Metadata**, add labels and annotations. The appliance pre-populates the Portworx annotations the
    cluster requires, such as `portworx.io/misc-args`, `portworx.io/pvc-controller-port`, and
