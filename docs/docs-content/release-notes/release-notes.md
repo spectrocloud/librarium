@@ -514,10 +514,6 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
@@ -569,10 +565,6 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## September 17, 2026 - Release 4.10.17
 
