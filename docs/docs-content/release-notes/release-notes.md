@@ -92,7 +92,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7616 -->
 <!-- https://spectrocloud.atlassian.net/browse/PFR-946 -->
 
-- The MicroK8s pack is now deprecated in Palette and Palette VerteX.
+- The MicroK8s pack is no longer available in Palette and Palette VerteX. Use
+  <VersionedLink text="Canonical Kubernetes (CK8s)" url="/integrations/packs/?pack=kubernetes-ck8s" /> instead.
 
 ### Edge
 
