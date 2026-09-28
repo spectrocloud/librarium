@@ -15,6 +15,13 @@ tags: ["release-notes"]
 
 ### Security Notices
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- To improve the security posture of using Palette as an identity provider, Palette now validates the callback URL on
+  every authentication request. Refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4.10.a}
@@ -48,6 +55,29 @@ tags: ["release-notes"]
   upgraded to newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group
   and migrate your workloads.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- Palette now validates the callback URL on every authentication request when it acts as an identity provider (IdP).
+  Earlier releases accepted any callback URL. A tenant admin must register callback URLs that Palette does not allow by
+  default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URL, with
+  some exceptions.
+
+  You do not need to register the callback URLs after upgrade in the following situations.
+
+  - The callback URL is on your Palette domain.
+  - The callback URL is on the local machine, such as `localhost` or `127.0.0.1`.
+  - The callback URL belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
+    of the upgrade with its address set to a literal value or a variable.
+
+    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URLs automatically at
+    upgrade, including an address set with a variable. However, Palette cannot resolve an address set with a
+    [macro](../clusters/cluster-management/macros.md), so sign-in to those clusters fails until a tenant admin registers
+    the address. If you change a cluster's callback URL after the upgrade, you must register the new value.
+
+  For more information, refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
+
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
@@ -63,6 +93,22 @@ tags: ["release-notes"]
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
 
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11993 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2410 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2428 -->
+
+- You can now attach a running, Palette-provisioned cluster to an existing cluster template through the Palette UI or
+  the Spectro Cloud Terraform provider, bringing the cluster under template governance for future upgrades and policy
+  enforcement. Refer to
+  [Attach an Existing Cluster to a Cluster Template](../cluster-templates/attach-cluster-to-template.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8670 -->
+
+- Self-hosted Palette and VerteX can now export platform metrics to an external observability stack, such as Splunk,
+  using an OpenTelemetry collector. You configure and manage the export from the **Metrics** tab in the system console.
+  For more information, refer to [Export Platform Metrics](../enterprise-version/system-management/export-metrics.md).
 
 #### Improvements
 
