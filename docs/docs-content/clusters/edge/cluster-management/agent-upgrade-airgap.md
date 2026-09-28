@@ -45,7 +45,7 @@ version so you can upgrade to it.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Clusters**.
+2. From the left main menu, select **Clusters**.
 
 3. Click the **Edge Hosts** tab.
 
@@ -59,7 +59,7 @@ version so you can upgrade to it.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**. Select the profile you want your cluster to upgrade to.
+2. From the left main menu, select **Profiles**. Select the profile you want your cluster to upgrade to.
 
 3. Create a new version of the profile. For more information, refer to
    [Update a Cluster](../../cluster-management/cluster-updates.md).
