@@ -19,7 +19,7 @@ clusters.
 
 :::
 
-The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight,
+The Palette platform provisions and orchestrates all Palette Virtual Clusters, making it simple to use the lightweight,
 Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard
 and attaching Add-on profiles.
 
