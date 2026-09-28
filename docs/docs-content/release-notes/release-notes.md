@@ -236,6 +236,35 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
 
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :x: | 1.35.0 |
+| <VersionedLink text="csi-azure-fips" url="/integrations/packs/?pack=csi-azure-fips" /> | `csi` | :x: | :white_check_mark: | 1.35.0 |
+| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.8 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.31.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
