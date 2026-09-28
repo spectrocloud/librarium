@@ -82,7 +82,7 @@ that these pods are not removed during a repave operation.
 You can also specify other tolerations during the cluster creation process. For more information on adding tolerations,
 refer to the [Taints and Tolerations](./taints.md) guide.
 
-## Dedicated node pool for system pods {#dedicated-system-pod-pool}
+## Dedicated Node Pool for System Pods {#dedicated-system-pod-pool}
 
 For EKS and GKE clusters, you can dedicate a node pool for system pods, both Palette and non-Palette. This can be
 helpful if you want to schedule system pods on a single node pool while reserving other pools for non-system workloads.
