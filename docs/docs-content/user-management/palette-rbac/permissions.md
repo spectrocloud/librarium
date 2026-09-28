@@ -32,6 +32,7 @@ scopes you can assign permissions to.
 | Cluster Pair         | `clusterPair`        | ✅                | ✅                 |                     | Management of cluster pairing requests.                                    |
 | Cluster Group        | `clusterGroup`       | ✅                | ✅                 |                     | Creation and management of cluster groups                                  |
 | Cluster Profile      | `clusterProfile`     | ✅                | ✅                 | ✅                  | Creation and management of Palette cluster profiles                        |
+| Cluster Template     | `clusterTemplate`    | ✅                | ✅                 |                     | Creation and management of Palette cluster templates                       |
 | DNS Mapping          | `dnsMapping`         |                   | ✅                 | ✅                  | Domain Name Server mapping services creation and management                |
 | Edge Host            | `edgehost`           | ✅                | ✅                 |                     | Edge host deployment and management                                        |
 | Edge Host Token      | `edgeToken`          | ✅                |                    |                     | Edge host registration token management                                    |
@@ -145,6 +146,15 @@ the list of operations.
 - `list`
 - `update`
 - `publish`
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Template">
+
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="DNS Mapping">
