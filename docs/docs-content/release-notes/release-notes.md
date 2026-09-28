@@ -249,7 +249,6 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 | <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.0 |
 | <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :x: | 1.35.0 |
 | <VersionedLink text="csi-azure-fips" url="/integrations/packs/?pack=csi-azure-fips" /> | `csi` | :x: | :white_check_mark: | 1.35.0 |
-| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.20.7 |
 | <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.8 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
 | <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1 |
