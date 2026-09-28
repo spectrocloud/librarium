@@ -103,9 +103,9 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
 
   :::warning
 
-  Broadcom no longer offers free VDDK downloads. Downloading a VDDK image requires a Broadcom account with the
-  appropriate product entitlements. If you cannot access the download, contact your Broadcom account team or support
-  representative.
+  Broadcom no longer offers public VDDK downloads. Downloading VDDK requires a Broadcom account with the appropriate
+  product entitlements and an active vSphere subscription. If you cannot access the download, contact your Broadcom
+  account team or support representative.
 
   :::
 
