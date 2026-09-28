@@ -46,15 +46,6 @@ tags: ["release-notes"]
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
   above.
 
-<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
-<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
-
-- Palette and Palette VerteX virtual clusters now run on vCluster 0.34.x. **Because upstream vCluster removed K3s in
-  0.33**, K3s is no longer a supported distribution for Palette and Palette VerteX virtual clusters or cluster groups.
-  Existing K3s virtual clusters continue to run on their current vCluster version, but their cluster groups cannot be
-  upgraded to newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group
-  and migrate your workloads.
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
 
@@ -91,6 +82,14 @@ tags: ["release-notes"]
   until you configure the pull secret. Airgapped installations and installations that use a mirrored registry are not
   affected. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- If you have cluster groups on the K3s distribution, you cannot upgrade them to vCluster 0.34.x or later, because K3s
+  is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their current
+  vCluster version. Refer to [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) for more
+  information.
 
 #### Features
 
@@ -143,6 +142,15 @@ tags: ["release-notes"]
   Palette UI on imported EKS clusters, and API requests that enable or configure hybrid nodes are rejected. Existing
   clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
   workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- K3s is no longer a supported distribution for Palette and Palette VerteX virtual clusters or cluster groups. Palette
+  and Palette VerteX virtual clusters now run on vCluster 0.34.x, and upstream vCluster removed K3s in 0.33. Existing
+  K3s virtual clusters continue to run on their current vCluster version, but their cluster groups cannot be upgraded to
+  newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group and migrate
+  your workloads.
 
 ### Edge
 
