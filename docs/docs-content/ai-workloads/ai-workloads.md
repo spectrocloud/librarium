@@ -16,7 +16,8 @@ clusters and application engineers independently deploy AI/ML applications and m
 [PaletteAI](https://docs.palette-ai.com/) documentation.
 
 For a standalone appliance that serves large language models (LLMs) locally, keeps your data in your environment, and
-makes AI spend predictable, refer to [PaletteAI Inference Launchpad](/paletteai-inference-launchpad/).
+makes AI spend predictable, refer to
+[PaletteAI Inference Launchpad](https://docs.spectrocloud.com/paletteai-inference-launchpad/).
 
 ## Resources
 
@@ -31,5 +32,5 @@ makes AI spend predictable, refer to [PaletteAI Inference Launchpad](/paletteai-
 - [PaletteAI](https://docs.palette-ai.com/) - Provision and manage GPU-optimized infrastructure and clusters, allowing
   application teams to deploy curated AI/ML applications and models as needed.
 
-- [PaletteAI Inference Launchpad](/paletteai-inference-launchpad/) - Serve LLMs on your own hardware using a standalone
-  appliance that requires neither Palette nor PaletteAI.
+- [PaletteAI Inference Launchpad](https://docs.spectrocloud.com/paletteai-inference-launchpad/) - Serve LLMs on your own
+  hardware using a standalone appliance that requires neither Palette nor PaletteAI.
