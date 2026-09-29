@@ -179,6 +179,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9066 -->
+
+- The Palette UI now supports adding a temporary fourth control plane host to an Edge cluster node pool, so you can
+  replace a control plane Edge host by adding the replacement before you remove the original and maintain etcd quorum
+  throughout the operation. While the node pool contains four control plane hosts, Palette displays a warning that the
+  cluster is in a temporary intermediate state. Refer to
+  [Replace a Control Plane Edge Host](../clusters/edge/cluster-management/control-plane-host-replacement.md) for the
+  procedure, including how to verify etcd membership health before you remove the original host.
+
 #### Improvements
 
 #### Bug Fixes
