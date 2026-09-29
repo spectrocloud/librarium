@@ -24,6 +24,10 @@ If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
+## Upgrade Notes
+
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 ## Prerequisites
 
 - Access to the Palette system console.
