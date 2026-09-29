@@ -101,6 +101,12 @@ With an open and enterprise-grade platform, IT leaders can get peace of mind wit
 orchestration technologies or one-size-fits-all solutions. This helps lower the total cost of ownership (TCO) and reduce
 operational risk.
 
+## PaletteAI
+
+PaletteAI is a platform for teams that run AI and ML workloads. Platform engineers deploy and manage GPU-enabled
+clusters, and application engineers independently deploy AI and ML applications and models on those clusters. To learn
+more, refer to the [PaletteAI documentation](https://docs.palette-ai.com/).
+
 ## Next Steps
 
 Learn more about Palette and how it can improve your Kubernetes experience and those in your organization. Try
