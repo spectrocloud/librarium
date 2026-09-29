@@ -145,20 +145,31 @@ You set node-level taints and labels in the Palette UI on each host row inside t
 Native node pool. The controls are available both during cluster creation and when you edit a node pool on an existing
 cluster.
 
+:::info Do not apply node-level taints with the `NoSchedule` or `NoExecute` effect to every node in a cluster. Palette
+relies on system pods that carry out cluster operations and report cluster status back to Palette; these pods tolerate
+the control-plane taint and a small set of named taints, but do not tolerate a custom taint that you apply. If no node
+accepts them, they stay Pending, cluster operations fail, and the cluster does not report ready. Leave at least one node
+untainted, or apply only the `PreferNoSchedule` effect on the affected nodes. :::
+
 ### How Pool-level and Node-level Values Interact
 
 - Pool-level taints and labels apply to every node in the pool. A node-level taint or label applies only to the node it
   is set on.
 - If a pool-level label and a node-level label share the same key, the node-level value takes effect on that node.
-- If a pool-level taint and a node-level taint share the same key and effect, the node-level value takes effect on that
-  node. Otherwise, both the pool-level and the node-level taint apply.
+- A node cannot have more than one taint with the same key and effect combination. If a pool-level taint and a
+  node-level taint share both the key and the effect, the node-level taint replaces the pool-level taint on that node.
+  Otherwise, both the pool-level and the node-level taint apply.
+- You cannot apply reserved label keys, such as those in the `kubernetes.io` or `k8s.io` namespaces, at the node level.
 - Node-level taints and labels do not persist when the underlying Edge host is replaced. After a host replacement,
   reapply the node-level taints and labels you want on the new host.
 
-### Single-node Control Planes
+### Tolerations for Custom Taints
 
-On a single-node control plane, node-level taints can only use the **PreferNoSchedule** effect. Node-level taints with
-the **NoSchedule** or **NoExecute** effect are rejected because the cluster has no other node to run workloads on.
+Custom taints require matching tolerations on your cluster workloads. Container Network Interface (CNI) pods include a
+catch-all toleration and tolerate any custom taint. Container Storage Interface (CSI) pods do not automatically tolerate
+custom taints. You must add a toleration for your node-level taint to the CSI pack values in the cluster profile, at the
+path documented for each CSI pack, or storage pods fail to schedule on tainted nodes and the cluster's storage layer
+stops working.
 
 ## Skip Worker Node Update
 
