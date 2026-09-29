@@ -59,3 +59,5 @@ your first agent-mode cluster.
 - [Install Palette Agent](install-agent-host.md)
 
 - [Manage Hosts in Agent Mode](./manage-agent/manage-agent.md)
+
+- [Edge AI on NVIDIA Jetson](../../ai-workloads/edge-ai/edge-ai.md)

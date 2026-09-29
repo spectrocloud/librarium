@@ -7,8 +7,6 @@ sidebar_position: 0
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode"]
 ---
 
-<!-- SCAFFOLD (DOC-2802 / DOC-3089): Day-0 pages seeded with verified content; Thor-specific values are marked TODO and gated on hardware validation and DOC-3093 (ARM64 support statements). Placement under ai-workloads/edge-ai/ is provisional pending DOC-3094. -->
-
 This section guides you through running local AI models at the edge on NVIDIA Jetson devices managed by Palette. Because
 Palette manages the Jetson device as an Edge host, you can model the operating system, Kubernetes distribution, and AI
 serving workload as a cluster profile and deploy it the same way you manage the rest of your Edge fleet.
