@@ -11,6 +11,51 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 22, 2026 - Release 4.9.60
+
+<!-- PATCH RELEASE TICKET: DOC-3229 -->
+<!-- PATCH RELEASE VERSION: 4.9.60 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12035 PCP-7575 PCOM-1071 PCOM-1124 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12035 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7575 -->
+
+- Fixed an issue where mixed compression formats in `spectro-drive` container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1124 -->
+
+- Fixed issues where airgapped Enterprise Cluster installations failed because bundled manifests referenced container
+  image tags that are not published in the airgap bundle, such as the cert-manager acme solver, `spectro-reach`, and
+  `kube-rbac-proxy`.
+
+## September 18, 2026 - Release 4.9.59
+
+<!-- PATCH RELEASE TICKET: DOC-3223 -->
+<!-- PATCH RELEASE VERSION: 4.9.59 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11965 OPS-10912 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11965 -->
+
+- Applied security fixes for the 4.9.59 release train to improve platform security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-10912 -->
+
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
+
 ## September 4, 2026 - Release 4.9.54
 
 <!-- PATCH RELEASE TICKET: DOC-3184 -->
@@ -815,6 +860,14 @@ The following component updates are applicable to this release:
 
 - Removing a Spectro-managed namespace from a cluster's **RBAC** settings or from a **Workspace** now prompts you to
   confirm the action, preventing accidental deletion.
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1570 -->
+
+- K3s is deprecated as a Palette Virtual Cluster distribution and will be removed in a future Palette release. K3s was
+  deprecated in Palette 4.8.0, when the cluster group distribution selector in the Palette UI began marking K3s as
+  deprecated and moved the Kubernetes distribution to the top of the list. Existing virtual clusters that use K3s
+  continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual clusters. Refer to
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) for more information.
 
 #### Bug Fixes
 
