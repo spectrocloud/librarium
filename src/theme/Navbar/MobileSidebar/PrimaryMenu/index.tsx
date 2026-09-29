@@ -1,12 +1,11 @@
 import React from "react";
 import { useThemeConfig } from "@docusaurus/theme-common";
-import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
-import NavbarItem, { type Props as NavbarItemConfig } from "@theme/NavbarItem";
+import { splitNavbarItems, useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
+import NavbarItem from "@theme/NavbarItem";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return useThemeConfig().navbar.items as NavbarItemConfig[];
+  return useThemeConfig().navbar.items;
 }
 
 interface NavbarMobilePrimaryMenuProps {
@@ -19,7 +18,7 @@ export default function NavbarMobilePrimaryMenu({ className }: NavbarMobilePrima
 
   // TODO how can the order be defined for mobile?
   // Should we allow providing a different list of items?
-  const items = useNavbarItems();
+  const [items] = splitNavbarItems(useNavbarItems());
 
   return (
     <ul className={`menu__list ${className ? className : ""}`}>
