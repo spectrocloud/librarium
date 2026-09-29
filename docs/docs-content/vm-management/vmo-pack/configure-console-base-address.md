@@ -91,6 +91,10 @@ cluster **Overview** tab. The button opens the dashboard directly at the address
 
 10. Click **Save** to apply your changes. Wait for Palette to complete your cluster update.
 
+Palette validates the callback URL when a user signs in to the dashboard. If the address you configured is outside your
+Palette domain, a tenant admin must register it. Refer to
+[Register OIDC Callback URLs](../../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
 ## Validation
 
 1. Log in to [Palette](https://console.spectrocloud.com).

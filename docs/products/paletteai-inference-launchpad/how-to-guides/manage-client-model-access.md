@@ -85,6 +85,29 @@ Enable egress, then add each provider or registered endpoint the client may use.
 Frontier-model bursting is configured separately and is out of scope for this guide.
 {/* TODO: link to the frontier-model bursting guide once published. */}
 
+### Recommended Setup for Enterprise Anthropic
+
+For the common shape (an enterprise Anthropic subscription, mostly local traffic, occasional flagship), use the
+following opinionated defaults after completing the steps in
+[Allow a Client to Reach External Models](#allow-a-client-to-reach-external-models). For the mental model behind each
+choice, refer to [Frontier Providers](../explanation/frontier-providers.md).
+
+1. Store the same enterprise Anthropic key on every client that should have frontier access (Pattern A: one contract,
+   one key pasted per client).
+2. Set the tier map so `claude-opus-*` routes to Anthropic and `claude-sonnet-*` and `claude-haiku-*` route to a local
+   model. This captures most of the intended traffic mix because Claude Code defaults to Sonnet for cheap-tier turns and
+   reserves Opus for hard work.
+3. Set the Daily limit to the monthly cap you agreed with finance, divided by the days in the billing period.
+4. Configure `on_exceed=local` so the client falls back to a local model when the budget runs out, instead of returning
+   HTTP 429.
+5. Leave **Enable egress** on for these clients and off for every client that does not need frontier access.
+6. Skip bursting for now. Enable it later only if local capacity becomes the recurring bottleneck.
+
+To verify the setup, send a request that resolves to the flagship tier through this client and check the response
+headers for `X-AIBox-Frontier: anthropic` on a successful frontier turn, or `X-AIBox-Frontier: budget-exhausted` after
+the budget runs out. If neither header appears, the client is bypassing the appliance. Refer to
+[Common Misconfigurations](../explanation/frontier-providers.md#common-misconfigurations).
+
 ## Next Steps
 
 - [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md)

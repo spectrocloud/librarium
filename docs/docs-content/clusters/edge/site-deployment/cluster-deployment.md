@@ -297,6 +297,10 @@ When adding a new Edge host to an existing cluster, ensure you are not creating 
 number of control plane nodes. To learn more, check out the resource from the etcd documentation titled
 [Why an odd number of cluster members](https://etcd.io/docs/v3.3/faq/#why-an-odd-number-of-cluster-members).
 
+The exception is a planned control plane host replacement, where you temporarily run a fourth control plane host to
+avoid dropping below quorum while you swap a host. Refer to
+[Replace a Control Plane Edge Host](../cluster-management/control-plane-host-replacement.md) for that procedure.
+
 :::
 
 ### Add Edge Host to Node Pool
