@@ -15,16 +15,9 @@ This page describes Day 2 of running Edge AI workloads on an NVIDIA Jetson devic
 serves a model, as described in the Day 1 guide, you monitor the deployment, apply updates, back up and recover the
 device, troubleshoot common issues, and decommission the host when you are finished.
 
-## Two operational lanes
-
 Because Palette manages the Jetson in [agent mode](../../deployment-modes/agent-mode/agent-mode.md) with a
-bring-your-own operating system (BYOOS), Day 2 operations fall into two lanes. Knowing which lane a task belongs to
-tells you where you perform it.
-
-- **Palette-managed.** You perform these through Palette, usually by updating the cluster profile. They include
-  Kubernetes and pack updates, the model-serving workload, and cluster health.
-- **Host-managed.** You perform these on the device, outside Palette. They include JetPack and Jetson Linux (L4T)
-  upgrades, the NVIDIA GPU driver, and the kernel. Palette does not manage the operating system on a BYOOS host.
+bring-your-own operating system (BYOOS), you perform some Day 2 tasks through Palette and others on the device. Each
+section notes where you perform the task.
 
 :::warning
 
@@ -53,7 +46,7 @@ those on the host and in the workload.
 
 ## Update Kubernetes and packs
 
-Kubernetes and pack updates are Palette-managed. You update the cluster profile to a new pack version, and Palette
+You update Kubernetes and packs through Palette. Update the cluster profile to a new pack version, and Palette
 reconciles the change to the cluster.
 
 <!-- TODO(DOC-3091): write the K3s/pack update flow for the single-node Jetson, referencing the cluster-profile version-update procedure. VALIDATE on the kit (semi-destructive): change a pack version, observe the single-node reconcile and downtime, confirm the model returns. Open eng question (DOC-3093 candidate): is an in-place K3s upgrade supported on a single-node Jetson, and what downtime should the reader expect? -->
@@ -65,8 +58,8 @@ and content are updated differently; refer to
 
 ## Update JetPack and the operating system
 
-JetPack and Jetson Linux (L4T) updates are host-managed. Palette does not upgrade the operating system on a BYOOS host,
-so you update JetPack on the device using NVIDIA's tooling, as described in
+You update JetPack and Jetson Linux (L4T) on the device, outside Palette. Palette does not upgrade the operating system
+on a BYOOS host, so you update JetPack with NVIDIA's tooling, as described in
 [Prepare the Jetson Host](./prepare-jetson-host.md).
 
 <!-- TODO(DOC-3091): document the host-side JetPack/OS update path and its relationship to the registered host. Open eng questions (DOC-3093 candidates): (1) is a JetPack update an in-place apt upgrade or a reflash? (2) does the host need to re-register with Palette after an OS update, or does the agent persist? (3) does a GPU driver/L4T change affect the nvidia RuntimeClass or the running model? VALIDATE last (destructive: a reflash wipes the device). -->
@@ -75,13 +68,36 @@ so you update JetPack on the device using NVIDIA's tooling, as described in
 
 You can change the model the device serves in two ways.
 
-- **Directly on the cluster.** Pull a different model into the running server or edit the workload with `kubectl`. This
-  is quick but is not tracked by Palette.
-- **Through the cluster profile.** Model the serving workload as a manifest or Helm layer in the cluster profile, so
-  that model changes are versioned and reconciled by Palette. This keeps the device's configuration in one managed
-  place.
+### Change the model directly on the cluster
 
-<!-- TODO(DOC-3091): write both paths. The ad-hoc kubectl/ollama path is validated (Day 1). The Palette-managed path needs a decision: is there a blessed pattern for modeling the model-serving workload as a manifest/add-on layer so model updates go through a profile version? (Open eng/PM question, DOC-3093 candidate.) Cross-link the Day-1 serve section once that page lands on this branch. -->
+Pull a different model into the running server with `kubectl`. This approach is immediate, but Palette does not track
+the change.
+
+1. Pull the new model into the running server. Replace `<model>` with the model you want, such as `llama3.2:3b`.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama pull <model>
+   ```
+
+2. Load and exercise the new model. Ollama loads a model into the GPU on the first request.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama run <model> "In one short sentence, what is edge computing?"
+   ```
+
+3. Confirm that the new model is loaded and runs on the GPU. In the output, the `PROCESSOR` column reads `100% GPU`.
+
+   ```shell
+   kubectl exec deployment/ollama -- ollama ps
+   ```
+
+### Manage the model through the cluster profile
+
+To keep model changes versioned and reconciled by Palette, model the serving workload as a manifest or Helm layer in the
+cluster profile instead of changing it directly on the cluster. Palette then applies a model change as a cluster profile
+update, which keeps the device's configuration in one managed place.
+
+<!-- TODO(DOC-3091): expand the cluster-profile path once the blessed pattern is confirmed (eng/PM) - is the model-serving workload modeled as a manifest or add-on layer so model updates go through a profile version? Cross-link the Day-1 serve section once register-jetson-host.md lands on this branch. -->
 
 ## Back up, reset, and recover
 
@@ -108,14 +124,27 @@ documented in the Day 0 or Day 1 guide, this section points to it rather than re
 - **The model does not respond.** Confirm the serving pod is running and the model is loaded with `ollama ps`, because a
   pulled model does not load until the first request.
 
-<!-- TODO(DOC-3091): consolidate the banked troubleshooting items and link, do not duplicate: GPU env-var pattern (Day 1 Enable GPU access), agent connectivity (Local UI / journalctl), projectName-must-exist (Day 1), ollama ps loaded-state (Day 1). Add Day-1 cross-links once that page lands on this branch. -->
+<!-- TODO(DOC-3091): add Day-1 cross-links (Enable GPU access, registration troubleshooting) once register-jetson-host.md lands on this branch. -->
 
 ## Decommission the host
 
-When you are finished, delete the cluster in Palette, remove the Edge host from Palette, and optionally reset the device
-to a bare state so you can reuse it.
+When you finish with the deployment, decommission it in the following order so that Palette releases the host and you
+can reuse the device.
 
-<!-- TODO(DOC-3091): write the decommission/deregister flow (delete cluster -> deregister host -> optional factory reset). VALIDATE LAST on the kit: this tears down the environment needed for the other Day-2 validations and the DOC-3092 tutorial screenshots. Reference host-management (../../clusters/edge/local-ui/host-management/host-management.md) and reset-host.md. -->
+1. **Delete the cluster.** In Palette, from the left **Main Menu**, select **Clusters**, select the cluster, and then
+   delete it. Deleting the cluster stops the served model, removes the workloads, and releases the Jetson host back to
+   your Edge host inventory.
+
+2. **Remove the Edge host.** From the left **Main Menu**, select **Clusters**, select the **Edge Hosts** tab, select the
+   host, and then delete it to remove it from Palette.
+
+3. **(Optional) Reset the device.** To return the Jetson to a clean state so you can reuse it, reset the host. Refer to
+   [Reset an Edge Host](../../clusters/edge/cluster-management/reset-host.md).
+
+Because a single-node cluster has no high availability, back up any model data or configuration that you want to keep
+before you delete the cluster. Refer to [Back up, reset, and recover](#back-up-reset-and-recover).
+
+<!-- VERIFY(DOC-3091): validate the decommission flow on the kit LAST - it tears down the environment needed for the other Day-2 validations and the DOC-3092 tutorial screenshots. -->
 
 ## Next steps
 
