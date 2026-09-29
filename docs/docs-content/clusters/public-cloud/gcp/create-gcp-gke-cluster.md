@@ -16,6 +16,10 @@ to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
 - GPU machine types cannot be used to configure node pools.
 
+- New GKE clusters use the Regular release channel by default, which supports Kubernetes 1.34 and later. To deploy an
+  earlier Kubernetes version, set a different release channel at the cluster level with a
+  [CAPI override](../../../architecture/override-capi-properties/gcp-capi-override-reference.md#cluster-level-1).
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.
