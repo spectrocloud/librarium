@@ -47,7 +47,7 @@ clusters, refer to [Scale down a Cluster](../local-ui/cluster-management/scale-c
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters**.
+2. From the left main menu, click **Clusters**.
 
 3. Select the cluster whose control plane host you want to replace.
 
@@ -121,7 +121,7 @@ the learner state, wait for it to recover before you continue.
 
 ## Remove the Original Control Plane Host
 
-1. From the left **Main Menu**, click **Clusters**, and then select the same cluster.
+1. From the left main menu in Palette, click **Clusters**, and then select the same cluster.
 
 2. Click the **Nodes** tab in the cluster view.
 
@@ -145,7 +145,7 @@ removing multiple control plane hosts at once can take the cluster below etcd qu
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters**.
+2. From the left main menu, click **Clusters**.
 
 3. Select the cluster whose control plane host you replaced.
 
