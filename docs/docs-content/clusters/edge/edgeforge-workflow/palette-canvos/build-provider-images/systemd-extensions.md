@@ -28,7 +28,9 @@ both connected and airgapped environments.
 - An operating system with **systemd version 255 or later**. Ubuntu 24 and RHEL 10 are the tested and verified operating
   systems, and any operating system with systemd 255 or later is supported.
 - **CanvOS 4.10.3** or later to build provider images that opt in or out of the extensions path.
-- Palette can deliver all supported Kubernetes variants through systemd extensions.
+- Palette delivers all supported Kubernetes distributions through systemd extensions. In airgapped environments, RKE2 is
+  supported starting with Palette 4.10.a. Earlier releases do not support systemd-extension delivery for RKE2 in
+  airgapped environments.
 
 Unified Kernel Image (UKI) deployments and two-node clusters do not support systemd extensions. Refer to
 [Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) and
