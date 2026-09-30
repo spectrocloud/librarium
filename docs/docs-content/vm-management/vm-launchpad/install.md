@@ -329,7 +329,7 @@ configuration.
    | **Use br0 for Cluster Traffic (Optional)** | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
    | **Br0 VLAN Sub-Interface**                 | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
-   ### OS & Metrics
+   ### OS and Metrics
 
    | **Parameter**                                       | **Description**                                                                                                                           |
    | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
