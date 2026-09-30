@@ -21,7 +21,7 @@ new Palette release introduces a new vCluster version.
 
 :::warning
 
-Cluster groups on the K3s distribution cannot be upgraded to vCluster 0.34.x or later. K3s is no longer a supported
+Cluster groups on the K3s distribution cannot be upgraded to vCluster 0.36.x or later. K3s is no longer a supported
 virtual cluster distribution. On a K3s cluster group, the upgrade banner blocks the upgrade action and directs you to
 create a new Kubernetes-based cluster group. To move to a newer vCluster version, create a new Kubernetes-based cluster
 group and migrate your workloads.
@@ -91,5 +91,5 @@ group and migrate your workloads.
        # If you still want to use the pure OSS build, use 'loft-sh/vcluster-oss' instead.
        repository: "palette-images/third-party/vcluster-oss"
        # Tag is the tag of the container image, e.g. latest
-       tag: "0.34.1"
+       tag: "0.36.1"
    ```

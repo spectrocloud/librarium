@@ -31,16 +31,17 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11997 -->
 
-- Palette now enforces authorization checks on four APIs that previously required no permission. Automation that calls
+- Palette now enforces authorization checks on five APIs that previously required no permission. Automation that calls
   these endpoints must use a principal that holds the required permission. Otherwise, the request fails with an
   authorization error.
 
-  | API                                                  | Required permission                      |
-  | ---------------------------------------------------- | ---------------------------------------- |
-  | `PATCH /v1/cloudaccounts/{uid}/geoLocation`          | Update permission on the cloud account   |
-  | `POST /v1/spectroclusters/{uid}/workloads/sync`      | Update permission on the cluster         |
-  | `GET /v1/users/assets/vsphere/dnsMapping`            | Get permission on the DNS mapping object |
-  | `GET /v1/tenants/{tenantUid}/subscriptions/metadata` | Tenant Admin role on the tenant          |
+  | API                                                   | Required permission                      |
+  | ----------------------------------------------------- | ---------------------------------------- |
+  | `PATCH /v1/cloudaccounts/{uid}/geoLocation`           | Update permission on the cloud account   |
+  | `POST /v1/spectroclusters/{uid}/workloads/sync`       | Update permission on the cluster         |
+  | `GET /v1/users/assets/vsphere/dnsMapping`             | Get permission on the DNS mapping object |
+  | `GET /v1/tenants/{tenantUid}/subscriptions/metadata`  | Tenant Admin role on the tenant          |
+  | `GET /v1/tenants/{tenantUid}/subscriptions/aws/{uid}` | Tenant Admin role on the tenant          |
 
   The related endpoint `POST /v1/spectroclusters/{uid}/workloads/{kind}/sync`, which syncs a single workload kind,
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
@@ -69,6 +70,59 @@ tags: ["release-notes"]
   For more information, refer to
   [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11832 -->
+
+- To improve security, Palette SaaS now rejects Splunk audit trail endpoints that point at private or reserved IP
+  addresses. Palette checks the HTTP Event Collector (HEC) URL when you create, update, or validate a Splunk audit
+  trail, and each time it sends audit logs to Splunk. Palette rejects a URL that is, or resolves to, a private (RFC
+  1918), localhost, link-local, multicast, carrier-grade NAT (`100.64.0.0/10`), or unspecified address, including the
+  cloud instance metadata address `169.254.169.254`, as well as a hostname that it cannot resolve. A rejected request
+  returns the `InvalidParam` error code, and an existing audit trail that points at a blocked address stops delivering
+  logs after the upgrade. Self-hosted Palette and Palette VerteX are not affected. If you use Palette SaaS with a Splunk
+  instance on an internal IP address, expose a publicly routable HEC endpoint and update the audit trail to use it.
+  Refer to
+  [Push Audit Trails to Amazon CloudWatch or Splunk](../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11701 -->
+
+- Palette now requires a role name when you create, update, or clone a role. A request with an empty or whitespace-only
+  `metadata.name` fails with an HTTP 400 response and the `InvalidName` error code. Palette does not modify existing
+  roles, but you must add a name to any unnamed role the next time you update it. Update any automation that creates or
+  modifies roles through the API and might pass an unset name. The Spectro Cloud Terraform provider already requires a
+  role name, so this change does not affect Terraform configurations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11955 -->
+
+- Registry names must now be unique when you rename a pack or Helm registry, consistent with the existing check when you
+  create a registry. Renaming a registry to a name that another registry in the same tenant already uses through
+  `PUT /v1/registries/pack/{uid}` or `PUT /v1/registries/helm/{uid}` fails with an HTTP 409 response and the
+  `ResourceNameAlreadyExists` error code. Name matching is case-insensitive and applies across all registry types, so a
+  pack registry cannot take the name of a Helm or OCI registry. If two registries already share a name, rename one of
+  them to a unique name. Update any automation or Terraform configuration that renames registries so that it uses unique
+  names.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11848 -->
+
+- The private and synchronization settings of a Helm registry are now fixed when you create the registry, because
+  Palette determines synchronization support from the private setting at creation. The Palette UI no longer offers the
+  **Synchronization** toggle when you edit an existing Helm registry. A `PUT /v1/registries/helm/{uid}` request that
+  changes `spec.isPrivate` fails with an HTTP 400 response and the `HelmRegistryImmutableField` error code. A request
+  that omits `isPrivate` is treated as public, so an update to a private registry must include `"isPrivate": true`. To
+  change either setting, delete the registry, add it again with the setting you need, and update any cluster profiles
+  that reference it. Refer to
+  [Synchronization Behavior](../registries-and-packs/registries/helm-charts.md#synchronization-behavior) for more
+  information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- K3s is no longer a supported distribution for virtual clusters and cluster groups. You cannot create new K3s cluster
+  groups, and you cannot upgrade existing K3s cluster groups to vCluster 0.36.x. Existing K3s virtual clusters continue
+  to run on their current vCluster version. To move to vCluster 0.36.x, create a new Kubernetes-based cluster group and
+  migrate your workloads. Refer to
+  [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md#upgrade-cluster-group) for more information.
+
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
@@ -86,7 +140,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
 
-- If you have cluster groups on the K3s distribution, you cannot upgrade them to vCluster 0.34.x or later, because K3s
+- If you have cluster groups on the K3s distribution, you cannot upgrade them to vCluster 0.36.x or later, because K3s
   is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their current
   vCluster version. Refer to [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) for more
   information.
@@ -162,7 +216,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
 
 - K3s is no longer a supported distribution for Palette and Palette VerteX virtual clusters or cluster groups. Palette
-  and Palette VerteX virtual clusters now run on vCluster 0.34.x, and upstream vCluster removed K3s in 0.33. Existing
+  and Palette VerteX virtual clusters now run on vCluster 0.36.x, and upstream vCluster removed K3s in 0.33. Existing
   K3s virtual clusters continue to run on their current vCluster version, but their cluster groups cannot be upgraded to
   newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group and migrate
   your workloads.
@@ -180,6 +234,29 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- release-notes-edge-callout-4.10.a-end -->
 
 #### Breaking Changes {#breaking-changes-edge-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10966 -->
+
+- Palette now validates the control plane virtual IP (VIP) address of Edge Native clusters on cluster creation and day-2
+  updates. When the control plane endpoint type is VIP, the host must be a valid IPv4 address or a Fully Qualified
+  Domain Name (FQDN). Otherwise, the request fails with an HTTP 400 response and the `InvalidAddress` error code. After
+  a cluster is provisioned, you cannot change its control plane endpoint type or host. A day-2 update through
+  `PUT /v1/cloudconfigs/edge-native/{configUid}/clusterConfig` that changes either value fails with an HTTP 403 response
+  and the `ControlPlaneEndpointUpdateForbidden` error code. The Palette UI already enforces these rules. Update any
+  Terraform configuration or automation that passes an invalid VIP or changes the VIP of a provisioned Edge Native
+  cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9555 -->
+
+- When you update an Edge Native node pool through the
+  `PUT /v1/cloudconfigs/edge-native/{configUid}/machinePools/{machinePoolName}` endpoint, the number of entries in
+  `cloudConfig.edgeHosts` must now match `poolConfig.size`. This safeguard prevents a partial host list from removing
+  Edge hosts from the pool unintentionally, and applies to control plane and worker node pools. A request whose host
+  count does not match the pool size fails with an HTTP 400 response and the `ShouldBeEqualToValue` error code. If your
+  automation updates node-level taints or labels on some of the hosts in a pool, include every host in the pool in the
+  request. To remove a host, reduce `poolConfig.size` and omit the host from `cloudConfig.edgeHosts`. Refer to
+  [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
+  for more information.
 
 #### Upgrade Notes {#upgrade-notes-edge-4.10.a}
 
