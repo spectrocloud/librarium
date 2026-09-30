@@ -147,3 +147,85 @@ block-based storage such as LINSTOR/DRBD.
 
 5. Start the migration plan. Confirm that guest conversion completes without the `nbdkit` block-size error, and that the
    migrated VMs support live migration on the destination storage.
+
+## Scenario - Keycloak, VMO, and Headlamp UIs Become Inaccessible on Piraeus Storage
+
+On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
+PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
+Machine Orchestrator and Headlamp consoles authenticate through Keycloak, those UIs also become inaccessible, even
+though the Keycloak and PostgreSQL pods report a `Ready` status.
+
+The underlying cause is a PostgreSQL DRBD resource path that is missing or that uses different network interfaces on its
+peer nodes, which suspends database I/O. Until a permanent fix is available, you can restore the connection manually.
+
+:::info
+
+These steps apply to the Piraeus storage variants of VM Launchpad. The FIPS profile uses a `pgdata-postgres-0` data
+volume, while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` data volume. Substitute the values for your
+variant where indicated.
+
+:::
+
+### Identify the LINSTOR Resource
+
+Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm that at least one replica reports an
+`UpToDate` state. If no replica is `UpToDate`, investigate replica health instead of changing the path.
+
+```bash
+NS=keycloak
+kubectl -n "$NS" get pvc
+PVC=REPLACE_WITH_POSTGRES_DATA_PVC
+PV=$(kubectl -n "$NS" get pvc "$PVC" -o jsonpath='{.spec.volumeName}')
+RESOURCE=$(kubectl get pv "$PV" -o jsonpath='{.spec.csi.volumeHandle}')
+
+kubectl -n piraeus-system exec deploy/linstor-controller -- \
+  linstor resource list --resources "$RESOURCE"
+kubectl -n piraeus-system exec deploy/linstor-controller -- \
+  linstor resource-connection list "$RESOURCE" -g source target properties port
+```
+
+### Inspect the DRBD Connection Paths
+
+List every declared connection path and its interface, then inspect the interfaces on each source and target node pair.
+
+```bash
+kubectl get linstornodeconnection \
+  -o go-template='{{printf "PATH_NAME\tINTERFACE\n"}}{{range .items}}{{range .spec.paths}}{{printf "%s\t%s\n" .name .interface}}{{end}}{{end}}'
+
+PATH_NAME=REPLACE_WITH_PATH_NAME
+DRBD_IF=REPLACE_WITH_INTERFACE
+NODE_A=REPLACE_WITH_SOURCE_NODE
+NODE_B=REPLACE_WITH_TARGET_NODE
+
+kubectl -n piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_A"
+kubectl -n piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_B"
+kubectl -n piraeus-system exec deploy/linstor-controller -- \
+  linstor resource-connection path list "$NODE_A" "$NODE_B" "$RESOURCE"
+```
+
+### Restore the Connection Path
+
+If either node is missing the DRBD interface, inspect the `piraeus-netiface-builder` DaemonSet. To change the storage
+node interface, update the `csi.storageNodeInterface` variable in the Palette profile and redeploy the pack. Otherwise,
+create or correct each declared path. The command is idempotent for the same path name, so you can repeat it for every
+affected path and node pair.
+
+```bash
+kubectl -n piraeus-system exec deploy/linstor-controller -- \
+  linstor resource-connection path create "$NODE_A" "$NODE_B" "$RESOURCE" "$PATH_NAME" "$DRBD_IF" "$DRBD_IF"
+```
+
+### Verify PostgreSQL
+
+Confirm that every connection reports an `Ok` state. Then select a running PostgreSQL pod and run a query to confirm the
+database serves requests. A `pg_isready` check only confirms that the database accepts connections, so run an actual
+query instead.
+
+```bash
+kubectl -n "$NS" get pods
+DB_POD=REPLACE_WITH_POSTGRES_POD
+
+kubectl -n "$NS" exec "$DB_POD" -c postgres -- \
+  env PGCONNECT_TIMEOUT=5 psql --username keycloak --dbname keycloak --tuples-only --no-align \
+  --command "SET statement_timeout=5000; SELECT 1"
+```
