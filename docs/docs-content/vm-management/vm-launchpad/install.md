@@ -60,7 +60,27 @@ configuration.
 
 1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
-2. In the **VM Launchpad** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
+2. In the **VM Launchpad** section, use the drop-down menu to select the version and appliance variant, and select
+   **Show Artifacts**.
+
+   The VM Launchpad appliance is available in the following variants, which differ by FIPS compliance and storage
+   backend. In the drop-down menu, each version lists its storage backend in parentheses, such as `(piraeus)` or
+   `(portworx)`, and FIPS builds carry a **FIPS** label. A FIPS and a non-FIPS build of the same backend are otherwise
+   identical in the list, so use the **FIPS** label to tell them apart. Choose the variant that matches your compliance
+   and storage requirements.
+
+   | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                           |
+   | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
+   | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                |
+   | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS. |
+   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Pure Storage arrays.  |
+
+   :::info
+
+   The Slim ISO and the content bundle must match on FIPS mode. A FIPS content bundle pairs only with the Piraeus
+   backend. A non-FIPS content bundle pairs with either the Portworx or the Piraeus backend.
+
+   :::
 
 3. The following table describes the artifacts available for VM Launchpad.
 
@@ -81,7 +101,7 @@ configuration.
 
    :::
 
-5. Boot your device using the VM Launchpad ISO. On the GRand Unified Bootloader (GRUB) menu, allow the VM Launchpad to
+5. Boot your device using the VM Launchpad ISO. On the Grand Unified Bootloader (GRUB) menu, allow the VM Launchpad to
    select the **Palette Edge Interactive Installer** boot option automatically
 
    :::danger
@@ -289,13 +309,19 @@ configuration.
 
 5. On the **Profile Config** wizard step, complete the following fields for each section. Select **Next** when finished.
 
-   ### Network Settings
+   <!-- Section names match the exact wizard labels in the VM Launchpad UI. -->
+
+   <!-- vale spectrocloud-docs-internal.headings-title = NO -->
+
+   ### Networking
+
+   <!-- vale spectrocloud-docs-internal.headings-title = YES -->
 
    | **Parameter**                              | **Description**                                                                                                                           |
    | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
    | **Pod Network Range**                      | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
    | **Service Network Range**                  | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
-   | **Platform IP IP Address**                 | A single unused IP address on your network that exposes cluster services externally.                                                      |
+   | **Platform IP Address**                    | A single unused IP address on your network that exposes cluster services externally.                                                      |
    | **Cluster Network Interface**              | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
    | **Restrict Allowed VLANs (Optional)**      | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
    | **VM VLAN Range**                          | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
@@ -312,29 +338,42 @@ configuration.
    | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
    | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
 
-   ### Container and Registry
+   ### Container Registry
 
-   | **Parameter**                  | **Description**                                                                                                |
-   | ------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-   | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
-   | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
+   | **Parameter**                | **Description**                                                                             |
+   | ---------------------------- | ------------------------------------------------------------------------------------------- |
+   | **Registry Username**        | Username to authenticate with the platform's container image registry. Defaults to `admin`. |
+   | **Registry Password**        | Password for the container image registry. This value is stored securely.                   |
+   | **Verify Registry Password** | Re-enter the registry password to confirm it.                                               |
 
-   ### OIDC Settings
+   On the non-FIPS Piraeus and Portworx variants, this section also includes a **Replica Count** field, which sets the
+   number of replicas for the Zot registry and the SeaweedFS object store that backs it. Select `1` for a single-node
+   cluster or `3` for high availability. The FIPS Piraeus variant has no SeaweedFS object store, so this field does not
+   appear here. On the FIPS Piraeus variant, set replication with **Storage Replica Count** in the [Storage](#storage)
+   section instead.
 
-   | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
-   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
-   | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
-   | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
-   | **VMO OIDC Login Email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
-   | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
+   <!-- vale spectrocloud-docs-internal.heading-all-caps = NO -->
+
+   ### OIDC
+
+   <!-- vale spectrocloud-docs-internal.heading-all-caps = YES -->
+
+   | **Parameter**                  | **Description**                                                                                                                                                                                                                                              |
+   | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Platform CA Certificate**    | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
+   | **Platform CA Private Key**    | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
+   | **Admin OIDC Username**        | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
+   | **Admin OIDC Email**           | Email address associated with the VMO administrator OIDC account.                                                                                                                                                                                            |
+   | **Admin OIDC Password**        | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
+   | **Verify Admin OIDC Password** | Re-enter the password to confirm it.                                                                                                                                                                                                                         |
 
    ### Keycloak Admin
 
-   | **Parameter**                                  | **Description**                                                                                                                                   |
-   | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`.         |
-   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. The installer validates the password before it accepts the value. This value is stored securely. |
+   | **Parameter**                          | **Description**                                                                                                                           |
+   | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
+   | **Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
+   | **Verify Keycloak Admin Password**     | Re-enter the password to confirm it.                                                                                                      |
 
    :::info
 
@@ -346,17 +385,33 @@ configuration.
 
    ### Local Admin
 
-   | **Parameter**                 | **Description**                                                                                     |
-   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
-   | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
-   | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
+   | **Parameter**                   | **Description**                                                                                     |
+   | ------------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **Local Admin Username**        | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
+   | **Local Admin Password**        | Password for the local fallback administrator account. This value is stored securely.               |
+   | **Verify Local Admin Password** | Re-enter the password to confirm it.                                                                |
 
    ### Storage
 
-   | **Parameter**                                 | **Description**                                                                                                                                            |
-   | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
-   | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
+   The fields in this section depend on the appliance variant.
+
+   On the Piraeus/LINSTOR variants, configure the storage replication network.
+
+   | **Parameter**                     | **Description**                                                                                                                             |
+   | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Storage Replication Interface** | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible. |
+
+   On the FIPS Piraeus variant, this section also includes a **Storage Replica Count** field, which sets the Piraeus
+   DRBD storage class placement count. Select `1` for a single-node cluster or `3` for high availability. The FIPS Zot
+   registry is pinned to `1` because it has no shared backend.
+
+   On the Portworx variant, this section configures only the Portworx license. The storage replication network for
+   Portworx is configured later, in the Portworx Storage Cluster wizard. Refer to
+   [Storage](./infrastructure/storage.md#storage-clusters).
+
+   | **Parameter**                         | **Description**                                                                                                         |
+   | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+   | **Portworx Activation ID (Optional)** | Activation ID used to activate the Portworx Enterprise license at install time. Leave blank to skip license activation. |
 
 6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
