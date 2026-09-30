@@ -70,6 +70,7 @@ tags: ["release-notes"]
   For more information, refer to
   [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11651 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11832 -->
 
 - To improve security, Palette SaaS now rejects Splunk audit trail endpoints that point at private or reserved IP
@@ -184,6 +185,7 @@ tags: ["release-notes"]
 - When adding a worker node pool to a running cluster, you can now click **Copy from Control Plane Pool** to reuse the
   control plane pool's configuration in the new pool. The copied fields remain editable.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5295 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5296 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5297 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5298 -->
@@ -196,6 +198,45 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3503 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11990 -->
+
+- Fixed an issue that caused [cluster backups](../clusters/cluster-management/backup-restore/create-cluster-backup.md)
+  that Velero reported as `PartiallyFailed` to display as **Completed** in Palette. These backups now display as
+  **Partially Failed** in the **Backups** tab, where you can still delete or restore them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7402 -->
+
+- Fixed an issue that caused **Additional Labels** configured on [EKS](../clusters/public-cloud/aws/eks.md) worker node
+  pools to reach new nodes only after the nodes joined the cluster. Workloads that selected nodes by these labels could
+  fail to schedule, and node pool updates could time out while draining nodes. Palette now applies the labels when it
+  creates the nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7403 -->
+
+- Fixed an issue that caused the `AWSManagedMachinePool` resource of [EKS](../clusters/public-cloud/aws/eks.md) worker
+  node pools to list each Availability Zone twice when the node pool specified both Availability Zones and subnets.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7458 -->
+
+- Fixed an issue that could prevent Palette from applying
+  [add-on pack changes](../clusters/cluster-management/cluster-updates.md) to EKS clusters and other clusters with
+  managed worker node pools after a worker node pool recovered from a cloud provider failure, such as a deleted EC2
+  launch template version.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7532 -->
+
+- Fixed an issue that caused Palette to retry a [pack](../clusters/cluster-management/cluster-updates.md) uninstall
+  indefinitely when the uninstall could not complete, for example, when removing the VMO pack from a cluster that still
+  had virtual machines. Palette now stops after 12 failed attempts and reports a pack error with the reason
+  `PackUninstallStalled`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11972 -->
+
+- Fixed an issue that caused [audit trail](../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk)
+  events pushed to Splunk to omit the event time from the event body, so records exported or forwarded from Splunk did
+  not show when the action occurred. The event body now includes a `timestamp` field in UTC.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11589 -->
@@ -206,6 +247,7 @@ tags: ["release-notes"]
   clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
   workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7430 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7616 -->
 <!-- https://spectrocloud.atlassian.net/browse/PFR-946 -->
 
@@ -246,6 +288,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   Terraform configuration or automation that passes an invalid VIP or changes the VIP of a provisioned Edge Native
   cluster.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8470 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9555 -->
 
 - When you update an Edge Native node pool through the
@@ -284,6 +327,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9592 -->
+
+- The HTTPS certificate that Edge hosts generate for [Local UI](../clusters/edge/local-ui/local-ui.md) is now valid for
+  10 years instead of 5 years. Edge hosts that already have a Local UI certificate keep their existing certificate.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9109 -->
@@ -293,6 +341,44 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   expired OS password as incorrect credentials at login. The login page now detects an expired password, whether an
   administrator or a PAM policy expired it, and lets you change the password there instead of requiring SSH or Palette
   TUI console access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7493 -->
+
+- Fixed an issue that prevented add-on packs whose name contains a forward slash, such as packs sourced from a namespace
+  in an [OCI registry](../registries-and-packs/registries/oci-registry/oci-registry.md), from deploying to Edge
+  clusters. The cluster reported `FailedToDownloadPack` events with `failed to locate pack` errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9044 -->
+
+- Fixed an issue that caused Kubernetes to fail to start, with errors such as `bind: cannot assign requested address`,
+  after a single-node Edge cluster with an [overlay network](../clusters/edge/networking/vxlan-overlay.md) rebooted
+  while the Edge host could not connect to Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9196 -->
+
+- Fixed an issue that prevented OS and Kubernetes [upgrades](../clusters/edge/cluster-management/upgrade-behavior.md)
+  from starting on Edge clusters when the OS pack values in the cluster profile could not be parsed, for example,
+  because of incorrect YAML indentation. The cluster now reports an `OSPackValuesValid` condition that includes the
+  parsing error and line number.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9590 -->
+
+- Fixed an issue that prevented Kubernetes upgrades on Edge clusters that do not use
+  [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and were first deployed with Palette agent version 4.8.8
+  or earlier. The upgrade pods were rejected with the error
+  `maximum memory usage per Container is 1Gi, but limit is 1536Mi`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9598 -->
+
+- Fixed an issue that could prevent Edge hosts from resetting and returning to registration mode after their
+  [cluster was deleted](../clusters/cluster-management/remove-clusters.md), if a cleanup step failed during the reset.
+  Affected hosts could not reconnect to Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9600 -->
+
+- Fixed an issue that caused the [certificate check](../clusters/edge/cluster-management/certificate-renewal.md) that
+  runs during Edge cluster creation to restart control plane components, including `kube-apiserver`, on clusters that
+  use Palette eXtended Kubernetes - Edge (PXK-E). The restart could interrupt add-on packs that were still installing.
 
 #### Deprecations and Removals
 
@@ -321,6 +407,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ##### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-918 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1182 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3019 -->
 
@@ -329,6 +416,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   vSphere subscription.
 
 ##### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1133 -->
+
+- Fixed an issue that caused the removal of the [VMO pack](../vm-management/vmo-pack/vmo-pack.md) to delete the
+  Containerized Data Importer (CDI) even when KubeVirt blocked the removal because virtual machines still existed on the
+  cluster and the uninstall strategy was `BlockUninstallIfWorkloadsExist`. The removal now stops before it deletes any
+  components, so disk imports, cloning, and VM provisioning continue to work.
 
 ##### Deprecations and Removals
 
