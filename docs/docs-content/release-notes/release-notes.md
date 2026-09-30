@@ -152,6 +152,12 @@ tags: ["release-notes"]
   clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
   workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7616 -->
+<!-- https://spectrocloud.atlassian.net/browse/PFR-946 -->
+
+- The MicroK8s pack is no longer available in Palette and Palette VerteX. Use
+  <VersionedLink text="Canonical Kubernetes (CK8s)" url="/integrations/packs/?pack=kubernetes-ck8s" /> instead.
+
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
 
