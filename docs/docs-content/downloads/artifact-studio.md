@@ -26,8 +26,11 @@ CLI.
 
 Following are the main use cases:
 
-- Install Palette Enterprise (content bundle, ISO, or Helm chart).
-- Install Palette VerteX (content bundle, ISO, or Helm chart).
+- Install Palette Enterprise (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
+- Install Palette VerteX (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
+- Install PaletteAI (content bundle, ISO, or MOK key for Secure Boot).
+- Install PaletteAI VerteX (content bundle, ISO, or MOK key for Secure Boot).
+- Install VM Launchpad (content bundle, ISO, or MOK key for Secure Boot).
 - Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
 - Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and
@@ -36,6 +39,8 @@ Following are the main use cases:
   about PaletteAI.
 - Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get
   started immediately.
+- Download Software Bill of Materials (SBOMs) for appliances and packs. Each image contains attestations that can be
+  viewed once the pack is uploaded to a registry.
 
 :::preview
 
@@ -108,11 +113,12 @@ information on how to verify the authenticity and integrity of your bundles, ref
 3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that
    is applicable to your environment and use case.
 
-   | **Download Option**   | **Use Case**                                                                                                                                     |
-   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                          |
-   | **ISO**               | Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (`sig.bin`) is included with the ISO file. |
-   | **Helm installation** | Used to install with Helm charts.                                                                                                                |
+   | **Download Option**         | **Use Case**                                                                                                                                                                                                  |
+   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle**          | Content bundle to pair with the slim **Appliance ISO** or to use when upgrading an appliance. A signature file (`sig.bin`) is included with the ZST bundle.                                                   |
+   | **Appliance ISO**           | Slim ISO without an embedded content bundle. Pair with the **Content bundle** to install on a virtual machine, edge device, or bare-metal system. A signature file (`sig.bin`) is included with the ISO file. |
+   | **MOK Key for Secure Boot** | Machine Owner Key (MOK) to use for secure boot with MokManager on the appliance host.                                                                                                                         |
+   | **Helm installation**       | Used to install with Helm charts.                                                                                                                                                                             |
 
 Once you have the file, you can deploy Palette as a self-hosted application. For ISO downloads, review the
 [Palette Management Appliance Installation guide](../enterprise-version/install-palette/palette-management-appliance.md)
@@ -135,11 +141,12 @@ for more information on deploying Palette locally.
 3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that
    is applicable to your environment and use case.
 
-   | **Download Option**   | **Use Case**                                                                                                                                        |
-   | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                             |
-   | **ISO**               | Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (`sig.bin`) is included with the ISO file. |
-   | **Helm installation** | Used to install with Helm charts.                                                                                                                   |
+   | **Download Option**         | **Use Case**                                                                                                                                                                                                  |
+   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle**          | Content bundle to pair with the slim **Appliance ISO** or to use when upgrading an appliance. A signature file (`sig.bin`) is included with the ZST bundle.                                                   |
+   | **Appliance ISO**           | Slim ISO without an embedded content bundle. Pair with the **Content bundle** to install on a virtual machine, edge device, or bare-metal system. A signature file (`sig.bin`) is included with the ISO file. |
+   | **MOK Key for Secure Boot** | Machine Owner Key (MOK) to use for secure boot with MokManager on the appliance host.                                                                                                                         |
+   | **Helm installation**       | Used to install with Helm charts.                                                                                                                                                                             |
 
 Once you have the file, you can deploy Palette VerteX as a self-hosted application. For ISO downloads, review the
 [VerteX Management Appliance Installation guide](../vertex/install-palette-vertex/vertex-management-appliance.md) for
@@ -375,7 +382,7 @@ To verify the integrity and authenticity of your artifacts, you can do a checksu
 ## Upload Packs to Management Appliances
 
 For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate
-guide:
+guide. Each image contains attestations that can be viewed once the pack is uploaded to a registry.
 
 - [Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette)
 

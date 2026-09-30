@@ -112,21 +112,26 @@ registry you are adding.
 
 8. Provide the registry URL in the **Endpoint** field.
 
-9. Specify the **Base Content Path**. This is the path to the OCI registry where the OCI Packs are stored. For example,
-   if the OCI registry URL is `https://registry.example.com` and the OCI Packs are stored in the `internal` repository,
-   the base content path is `internal`. You can specify multiple base paths by pressing the Enter key after each path.
-   Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such as
-   multiple projects in a Harbor registry.
+9. If your registry requires a suffix to be appended to the endpoint, specify it in the **Endpoint Suffix** field. This
+   field is optional and applies to registries that do not use a standard Docker V2 API path. For example, JFrog
+   Artifactory requires the API path and the repository key, such as `artifactory/api/docker/spectro-packs-repo`. Refer
+   to [OCI Packs Registry Configuration by Provider](./oci-registry.md#oci-packs-registry-configuration-by-provider) for
+   provider-specific examples.
 
-10. Fill out the **Username** and **Password** fields with the credentials to access the registry.
+10. Specify the **Base Content Path**. This is the path to the OCI registry where the OCI packs are stored. For example,
+    if the OCI registry URL is `https://registry.example.com` and the OCI packs are stored in the `internal` repository,
+    the base content path is `internal`. Palette syncs only the packs stored directly in this directory. Packs stored at
+    the repository root or in child directories nested below it are not synced.
+
+11. Fill out the **Username** and **Password** fields with the credentials to access the registry.
 
     <PartialsComponent category="registries-and-packs" name="acr-tip-oci" />
 
-11. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
+12. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
     trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
     file** to upload the certificate.
 
-12. Click **Confirm** to complete adding the registry.
+13. Click **Confirm** to complete adding the registry.
 
 </TabItem>
 

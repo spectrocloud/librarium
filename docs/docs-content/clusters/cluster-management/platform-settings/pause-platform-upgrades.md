@@ -97,6 +97,20 @@ lower scopes, and changing the setting at the lower scope will override the sett
   issues with pushing images to the local registry, and cluster deployment issues. Ensure that you enable platform
   upgrades so your agent can be upgraded to be compatible with Palette/VerteX.
 
+## Agent Version Drift Warning
+
+While agent upgrades are paused, your Palette or VerteX instance continues to advance. If the management plane moves
+more than two major versions ahead of a cluster's agents, that cluster falls outside the supported N-2 compatibility
+window and a warning banner appears on the cluster.
+
+The banner advises you to disable **Pause Agent Upgrades** so the agents can update to the latest version. Leaving a
+cluster outside the compatibility window might make it unhealthy, so treat the banner as an action to take rather than a
+notice to dismiss. Agents resume upgrading as soon as you disable the setting, which returns the cluster to a supported
+state without any further action.
+
+For background on why cluster-side components are supported two major versions behind the management plane, refer to
+[CRD API Versions](../../../architecture/crd-api-versions.md).
+
 ## Prerequisites
 
 - Cluster admin permissions or Tenant admin permissions when pausing upgrades for all clusters within tenant scope.

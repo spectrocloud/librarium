@@ -10,7 +10,70 @@ tags: ["architecture", "capi", "cluster api", "advanced configuration", "azure"]
 This page provides examples and references for overriding Cluster API (CAPI) properties on Azure clusters using Cluster
 API Provider Azure (CAPZ).
 
+## Azure IaaS
+
+Self-managed Azure IaaS clusters use the CAPZ self-managed path. Cluster-level overrides target the `AzureCluster`
+resource, and pool-level overrides target the `AzureMachineTemplate` resource.
+
+| Level   | CAPI Kind              | API References                                                                                                                                                 |
+| ------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All     | -                      | [CAPZ Book - API Reference](https://capz.sigs.k8s.io/reference/reference) <br /> \*Use with caution as this reference guide is not semantically versioned.     |
+| Cluster | `AzureCluster`         | [v1.18.0 AzureCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azurecluster_types.go)                 |
+| Pool    | `AzureMachineTemplate` | [v1.18.0 AzureMachineTemplate API types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremachinetemplate_types.go) |
+
+### Examples
+
+These examples demonstrate how to override CAPI properties using YAML directly targeting the underlying CAPZ
+self-managed resources.
+
+#### Cluster-Level
+
+```yaml title="Set additional tags on the cluster"
+azureCluster:
+  spec:
+    additionalTags:
+      env: day0
+      owner: Anu
+```
+
+#### Pool-Level
+
+`AzureMachineTemplate` has an extra level of nesting. The spec wraps a `template`, which contains another `spec` field
+that holds the actual machine configuration. All pool-level Azure IaaS overrides use this structure.
+
+```yaml title="Set the VM size"
+azureMachineTemplate:
+  spec:
+    template:
+      spec:
+        vmSize: Standard_D4s_v3
+```
+
+```yaml title="Set the OS disk size"
+azureMachineTemplate:
+  spec:
+    template:
+      spec:
+        osDisk:
+          diskSizeGB: 128
+```
+
+### Unsupported First-Class Properties
+
+The following properties are not exposed as first-class properties in the
+[supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
+
+| CAPZ Resource Type     | Properties                                                                                                                                                                                                                                                                                                        |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AzureCluster`         | `additionalTags`, `bastionSpec`, `cloudProviderConfigOverrides`, `controlPlaneEnabled`, `controlPlaneEndpoint`, `extendedLocation`, `failureDomains`                                                                                                                                                              |
+| `AzureMachineTemplate` | `additionalCapabilities`, `additionalCapabilities.ultraSSDEnabled`, `additionalTags`, `allocatePublicIP`, `dataDisks`, `diagnostics`, `enableIPForwarding`, `failureDomain`, `providerID`, `securityProfile.securityType`, `securityProfile.uefiSettings`, `systemAssignedIdentityRole`, `userAssignedIdentities` |
+
 ## Azure AKS
+
+Azure AKS clusters use the CAPZ managed path. Cluster-level overrides target the `AzureManagedControlPlane` resource,
+and pool-level overrides target the `AzureManagedMachinePool` resource.
 
 | Level   | CAPI Kind                  | API References                                                                                                                                                         |
 | ------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,10 +125,16 @@ azureManagedMachinePool:
       updated: "true"
 ```
 
-```yaml title="Set the node pool OS SKU to Azure Linux"
+Whenever you use `asoManagedClustersAgentPoolPatches` on `azureManagedMachinePool`, you must include an entry that sets
+the `osSKU` field alongside any other patch entries.
+
+Set `osSKU` to the value that matches the OS you selected for the node pool: `AzureLinux`, `Ubuntu`, or `Windows2022`.
+
+```yaml {5} title="Set the node pool OS SKU to Azure Linux"
 azureManagedMachinePool:
   spec:
     asoManagedClustersAgentPoolPatches:
+      - '{"spec":{"upgradeSettings":{"maxSurge":"1"}}}'
       - '{"spec":{"osSKU":"AzureLinux"}}' # Other values include Ubuntu and Windows2022
 ```
 
@@ -135,18 +204,12 @@ to reconcile.
 
 ### Unsupported First-Class Properties
 
-:::info
-
-Learn more about the difference between first-class properties and override properties in the
-[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
-
-:::
-
 The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
-override.
+override. To learn more about the difference between first-class properties and override properties, refer to the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
 
 | CAPZ Resource Type         | Properties                                                                                                                                                                          |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AzureManagedControlPlane` | `controlPlaneEndpoint`, `fleetsMember`, `fqdnSubdomain`, `securityProfile` (partial support)                                                                                        |
-| `AzureManagedMachinePool`  | `additionalTags`, `name`, `nodeLabels`, `taints`, `osDiskType`, `enableUltraSSD`, `enableNodePublicIP`, `nodePublicIPPrefixID`, `scaleSetPriority`, `scaleDownMode`, `spotMaxPrice` |
+| `AzureManagedMachinePool`  | `additionalTags`, `enableNodePublicIP`, `enableUltraSSD`, `name`, `nodeLabels`, `nodePublicIPPrefixID`, `osDiskType`, `scaleDownMode`, `scaleSetPriority`, `spotMaxPrice`, `taints` |

@@ -35,6 +35,10 @@ Use the following steps to deploy a virtual cluster on connected and airgapped e
   [Additional Packs for Airgap Environments](../../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options)
   page for guidance.
 
+- If your cluster group uses vCluster pack version `4.9.0` or later, you must set the CoreDNS image in the cluster
+  group's **Advanced Config** YAML before deploying the virtual cluster. Refer to
+  [Configure the CoreDNS Image](#configure-the-coredns-image) for guidance.
+
   :::info
 
   Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
@@ -62,6 +66,62 @@ To add node-level policies:
      to learn more about additional IAM policies.
 
 5. Confirm your changes.
+
+## Configure the CoreDNS Image
+
+Version `4.9.0` of the vCluster pack, which packages vCluster `0.27.3`, does not ship a default CoreDNS image. Before
+deploying a virtual cluster to a cluster group that uses this pack version, set the CoreDNS image in the cluster group's
+**Advanced Config** YAML.
+
+:::info
+
+This step applies only to cluster groups that use vCluster pack version `4.9.0` or later. Cluster groups on earlier pack
+versions do not require this change.
+
+:::
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. From the left **Main Menu**, select **Cluster Groups**.
+
+3. Select the cluster group that will host the virtual cluster.
+
+4. In the **Host Clusters** tab that displays on the next page, select **Settings**.
+
+5. In the slide panel that opens, select the **Settings** tab. The **Advanced Config** section containing the cluster
+   group YAML appears.
+
+6. Locate the `controlPlane.coredns.deployment.image` field in the YAML. Set the value to the CoreDNS image that matches
+   your Palette installation, as shown in the following examples.
+
+   <Tabs queryString="palette-flavor">
+
+   <TabItem label="Palette" value="palette">
+
+   ```yaml hideClipboard {4} title="Example configuration"
+   controlPlane:
+     coredns:
+       deployment:
+         image: "us-docker.pkg.dev/palette-images/k8s/coredns/coredns:v1.12.1"
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="palette-vertex">
+
+   ```yaml hideClipboard {4} title="Example configuration"
+   controlPlane:
+     coredns:
+       deployment:
+         image: "us-docker.pkg.dev/palette-images-fips/k8s/coredns:v1.12.1"
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+7. Save your changes. You can now deploy a virtual cluster to the cluster group by following the steps in
+   [Deploy a Virtual Cluster](#deploy-a-virtual-cluster).
 
 ## Deploy a Virtual Cluster
 

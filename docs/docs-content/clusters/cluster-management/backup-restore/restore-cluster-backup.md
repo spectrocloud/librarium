@@ -98,9 +98,11 @@ backup. To learn more about the restore operation, refer to the Velero
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster.
 
 - If the backup location is configured using dynamic credentials, such as the AWS Security Token Service (STS)
-  authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship
-  enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the
-  [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide.
+  authentication method, the destination cluster must be able to authenticate to AWS. What this requires depends on the
+  cluster type. EKS destinations require an IRSA trust-policy update on the backup IAM role. AWS IaaS destinations rely
+  on the node's instance role having access to the backup S3 bucket. Non-AWS destinations (edge-native, AKS, vSphere,
+  and others) require no cluster-side setup; Palette forwards the credentials to the in-cluster backup agent. Refer to
+  the [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide for details.
 
 <!-- prettier-ignore -->
 - If your backup contains volume snapshots, ensure that your CSI driver supports volume snapshots. For more

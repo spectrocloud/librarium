@@ -90,8 +90,8 @@ guide when you do not require [specialized configurations](#specialized-build-gu
     ```
 
 4.  Check out the CanvOS tag that corresponds to your Palette release. Refer to the
-    [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
-    Edge host version. This guide uses the tag **v4.4.12** as an example.
+    [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Palette Edge
+    agent, and Edge host version. This guide uses the tag **v4.4.12** as an example.
 
     ```shell
     git checkout v4.4.12
@@ -263,6 +263,10 @@ guide when you do not require [specialized configurations](#specialized-build-gu
    REPOSITORY                            TAG                                   IMAGE ID       CREATED         SIZE
    docker.io/[DOCKER-ID]/ubuntu          k3s-1.28.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
    ```
+
+For appliance mode Edge clusters, Kubernetes and Palette Agent binaries can be delivered at runtime through systemd
+extensions instead of being embedded in the provider image. Refer to
+[Deliver Kubernetes and Agent Binaries via systemd Extensions](./systemd-extensions.md) for details.
 
 ## Next Steps
 

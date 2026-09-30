@@ -116,8 +116,33 @@ This page guides you through how to upload a content bundle to an Edge host usin
    palette content upload --file <content-bundle-file-path> --token <edge-host-token> <edge-host-ip>
    ```
 
+   The upload is chunked, resumable, and parallel by default, which shortens transfer times for large bundles. If the
+   transfer is interrupted, issue the same command again and the CLI resumes from the chunks the Edge host already holds
+   instead of restarting. You can tune the transfer with the `--chunk-size` and `--connections` flags, or stream the
+   bundle directly from a signed object store URL with `--src-url` rather than staging a local copy.
+
+   :::info
+
+   If the Edge host predates chunked upload support, the CLI falls back to the earlier single-stream upload
+   automatically. You do not need to pass `--legacy` to reach an older host.
+
+   :::
+
 ### Validate
 
 1. Log in to [Local UI](../host-management/access-console.md#log-in-to-local-ui).
 
 2. From the left main menu, click **Content** and confirm that the uploaded content bundle is listed.
+
+## Recover a Deleted Cluster
+
+On Edge hosts running in appliance mode with an [`applianceType`](../../edge-configuration/installer-reference.md) of
+`paletteai`, `vertexai`, `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, deleting the
+cluster also erases the on-appliance content bundle. To redeploy the cluster, upload the content bundle again from the
+**Content** page using either [Local UI](#upload-content-bundle-with-local-ui) or the
+[Palette CLI](#upload-content-bundle-with-palette-cli), and then create the cluster. Refer to
+[Create Local Cluster](./create-cluster.md).
+
+If you do not have a copy of the content bundle saved off the appliance, reinstall the appliance with an Edge installer
+ISO that contains embedded content. For more information, refer to
+[Delete a Cluster](./delete-cluster.md#recover-a-deleted-cluster).

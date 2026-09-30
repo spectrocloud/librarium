@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Trigger Netlify build hook per version branch
         env:
@@ -57,10 +57,13 @@ jobs:
             branches="$INPUT_BRANCH"
           else
             # List remote release branches matching version-X-Y. This intentionally excludes
-            # backport/version-* and other version-suffixed branches.
+            # backport/version-* and other version-suffixed branches. sort -V orders the
+            # branches by version number rather than lexicographically, so version-4-10 is
+            # triggered after version-4-9 instead of between version-4-1 and version-4-2.
             branches=$(git ls-remote --heads origin 'version-*' \
               | sed 's#.*refs/heads/##' \
-              | grep -E '^version-[0-9]+-[0-9]+$' || true)
+              | grep -E '^version-[0-9]+-[0-9]+$' \
+              | sort -V || true)
           fi
 
           if [ -z "$branches" ]; then
@@ -88,7 +91,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"

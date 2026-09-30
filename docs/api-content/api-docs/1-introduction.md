@@ -31,7 +31,7 @@ Palette supports two types of API authentication methods that can be used to aut
 
 #### Authorization Token
 
-You can acquire authorization tokens from Palette that have a 15-minute lifetime. The authorization token is passed as
+You can acquire authorization tokens from Palette that have a 240-minute lifetime. The authorization token is passed as
 part of the HTTP request header. You can use the authorization token to authenticate and authorize the request. The
 header name is `Authorization`, and the token is the header value. Refer to the
 [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization

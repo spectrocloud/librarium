@@ -31,8 +31,13 @@ echo "$branches" > evaluated_branches.json
 for current_branch in $branches; do  
     git checkout $current_branch
 
-    grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json || true 
-    find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
+    grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json || true
+    # Frozen product doc versions live at the repo root as <id>_versioned_docs/, outside docs/.
+    # They must be scanned too: an image referenced only by a frozen version would otherwise
+    # look unused, and clean-up-unused-images.yaml opens a PR that deletes it.
+    # Unquoted on purpose so the list word-splits, and expands to nothing before the first cut.
+    versioned_docs_dirs=$(find . -maxdepth 1 -type d -name '*_versioned_docs')
+    find docs $versioned_docs_dirs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
     find _partials -type f -name "*.mdx" -exec grep -Hn -E "\.webp|\.gif" {} \; > partials_used_images.json
     cat readme_used_images.json docs_used_images.json partials_used_images.json > used_images.json
 

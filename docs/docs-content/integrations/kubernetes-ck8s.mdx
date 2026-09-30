@@ -1,0 +1,86 @@
+---
+sidebar_label: "Canonical Kubernetes"
+title: "Canonical Kubernetes"
+description: "Canonical Kubernetes pack in Palette"
+hide_table_of_contents: true
+type: "integration"
+category: ["kubernetes", "amd64"]
+sidebar_class_name: "hide-from-sidebar"
+logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image.webp"
+tags: ["packs", "canonical", "kubernetes"]
+---
+
+<RedirectPackPage packName="kubernetes-ck8s" />
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+<TabItem label="1.35.x" value="1.35.x">
+
+## Native Load Balancer
+
+The Canonical Kubernetes pack includes a built-in load balancer that you can enable directly from the pack
+configuration. When enabled, Kubernetes Services of type `LoadBalancer` receive an external IP address from a Classless
+Inter-Domain Routing (CIDR) block or IP range that you specify in the pack values. This removes the need to install a
+separate load balancer pack, such as MetalLB, to publish services on clusters that use Canonical Kubernetes.
+
+The built-in load balancer runs in Layer 2 (L2) mode. In L2 mode, the load balancer announces the assigned IP address on
+the local network by responding to Address Resolution Protocol (ARP) requests, which makes the service reachable from
+other devices on the same subnet. Choose an address range that belongs to the same Layer 2 network as your cluster hosts
+and that does not overlap with any other allocated IP addresses.
+
+Native load balancer support was introduced in Canonical Kubernetes pack version `1.35.2`.
+
+### Prerequisites
+
+- A cluster profile that uses the Canonical Kubernetes pack version `1.35.2` or later.
+
+- A CIDR block or an IP range on the same Layer 2 network as your cluster hosts. Reserve the addresses for the load
+  balancer, and confirm that no other devices in the network use them.
+
+### Enablement
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the **left main menu**, select **Profiles**.
+
+3. Select the cluster profile that you plan to use, and then select the Canonical Kubernetes layer.
+
+4. In the YAML editor, locate the `cluster-config` section inside the `config` block. Add a `load-balancer` entry with
+   the following parameters. Replace `<load-balancer-range>` with the CIDR block or IP range that the load balancer must
+   use when it assigns external IP addresses.
+
+   ```yaml
+   config: |
+     cluster-config:
+       network:
+         enabled: false
+       ingress:
+         enabled: false
+       metrics-server:
+         enabled: false
+       local-storage:
+         enabled: false
+       load-balancer:
+         enabled: true
+         cidrs:
+           - <load-balancer-range>
+         l2-mode: true
+   ```
+
+   The following table describes each `load-balancer` parameter.
+
+   | **Parameter** | **Description**                                                                                                                                                                                                                                             |
+   | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `enabled`     | Enables the built-in load balancer in the Canonical Kubernetes distribution. Set to `true`.                                                                                                                                                                 |
+   | `cidrs`       | A list of address ranges that the load balancer draws from when it assigns an external IP address to a Service of type `LoadBalancer`. Each list item can be a CIDR block, such as `10.10.177.0/24`, or an IP range, such as `10.10.177.204-10.10.177.208`. |
+   | `l2-mode`     | Enables Layer 2 announcement of the assigned IP addresses through ARP. Set to `true` for environments where Border Gateway Protocol (BGP) is not available.                                                                                                 |
+
+5. Save the changes to the cluster profile.
+
+6. Deploy a cluster with this cluster profile, or update an existing cluster to the new profile version.
+
+</TabItem>
+
+</Tabs>

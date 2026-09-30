@@ -22,7 +22,7 @@ jobs:
     steps:
       
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -60,8 +60,11 @@ jobs:
 
       - name: Run Spellcheck
         run: |
-          # Run Vale on all markdown files in the docs directory and all mdx files in _partials
-          find docs/docs-content _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
+          # Run Vale on all markdown files in the docs directory and all mdx files in _partials.
+          # docs/products holds independently versioned product doc sets (see productDocs.js);
+          # listing the parent means a new product is covered without editing this workflow.
+          # docs/api-content is deliberately excluded -- it is generated from OpenAPI specs.
+          find docs/docs-content docs/products _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
             ! -iname '*cve*' \
             ! -path 'docs/docs-content/security-bulletins/*' \
             ! -path 'docs/docs-content/security-bulletins/**/*' \
@@ -101,7 +104,7 @@ jobs:
 
       - name: Slack Notification No Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'false'}}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -113,7 +116,7 @@ jobs:
       
       - name: Slack Notification Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -125,7 +128,7 @@ jobs:
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}

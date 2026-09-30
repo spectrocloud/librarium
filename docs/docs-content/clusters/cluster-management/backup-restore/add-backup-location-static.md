@@ -27,7 +27,7 @@ The following sections provide detailed instructions. Select the environment whe
 
 - [GCP](#gcp)
 
-- [MinIO](#minio)
+- [S3 Compatible Storage](#s3-compatible-storage)
 
 - [Azure](#azure)
 
@@ -121,14 +121,14 @@ The following sections provide detailed instructions. Select the environment whe
 
 4. Fill out the input fields listed in the table below.
 
-   | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                                                 |
-   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                            |
-   | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                   |
-   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                                                           |
-   | **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                      |
-   | **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                       |
-   | **S3 URL**              | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox. |
+   | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                                                      |
+   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                                 |
+   | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                        |
+   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                                                                |
+   | **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                           |
+   | **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                            |
+   | **Endpoint URL**        | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provide an endpoint URL, select the **Force S3 path style** checkbox. |
 
 5. Next, choose the _Credentials_ validation method. If you want to use dynamic credentials through the AWS STS service,
    refer to the [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) for guided
@@ -215,33 +215,45 @@ Use the following steps to validate adding the new backup location.
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you
    successfully added a new backup location.
 
-## MinIO
+## S3 Compatible Storage
+
+You can use any S3-compatible object storage, such as MinIO or NetApp StorageGRID, as a backup location. The following
+steps use MinIO as an example. If you use a different S3-compatible provider, refer to your provider's documentation for
+the equivalent account, bucket, and access key configuration.
+
+:::info
+
+This backup location was previously named **MinIO**. Backup locations that you created under the **MinIO** label
+continue to work and appear under the **S3 Compatible Storage** label after the upgrade, with all their settings
+preserved.
+
+:::
 
 ### Prerequisites
 
-- A MinIO account.
+- An account with an S3-compatible storage provider, such as MinIO.
 
-- An S3-compliant bucket in the MinIO account.
+- An S3-compliant bucket in your storage account.
 
-- IAM policy in your MinIO account to authorize a MinIO user to perform the required read and write operations on the
-  MinIO bucket. MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources
-  and what actions the IAM identities are authorized to perform on the specific resources. Refer to the
+- An IAM policy that authorizes a user to perform the required read and write operations on the bucket. For example,
+  MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources and what
+  actions the IAM identities are authorized to perform on the specific resources. Refer to the
   [MinIO Access Management](https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html#access-management)
   guide to learn more about the IAM policy requirements.
 
-- A MinIO user assigned to the IAM policy defined above. You can learn more about MinIO access management in the
+- A user assigned to the IAM policy defined above. To learn more about MinIO access management, refer to the
   [MinIO object storage for Kubernetes](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html)
   documentation.
 
-- An access key for the MinIO user. You can create an access key from the MinIO console. Refer to the
+- An access key for the user. For MinIO, you can create an access key from the MinIO console. Refer to the
   [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys)
   to learn about creating access keys.
 
 - If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
-  Privacy-Enhanced Mail (PEM) format to Palette. This is required if the MinIO endpoint is using a self-signed
+  Privacy-Enhanced Mail (PEM) format to Palette. This is required if the storage endpoint is using a self-signed
   certificate.
 
-### Add a MinIO Bucket
+### Add an S3 Compatible Storage Bucket
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -254,22 +266,21 @@ Use the following steps to validate adding the new backup location.
    | **Field**               | **Value**                                                                                                                                                                       |
    | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Location Name**       | Provide a name of your choice.                                                                                                                                                  |
-   | **Location Provider**   | Select MinIO from the drop-down field.                                                                                                                                          |
+   | **Location Provider**   | Select **S3 Compatible Storage** from the drop-down menu.                                                                                                                       |
    | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions. This is required for endpoints using a self-signed certificate. |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.                                                                                                                |
-   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`                                                                                                           |
-   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`                                                                                                     |
-   | **Force S3 path style** | This value is required for MinIO.                                                                                                                                               |
+   | **S3 Bucket**           | The name of the S3 bucket you created in the object store.                                                                                                                      |
+   | **Region**              | The region where the storage server is configured. Example: `us-east-1`                                                                                                         |
+   | **Endpoint URL**        | The endpoint URL of your S3-compatible object storage. For MinIO, this is the object storage console URL. Example: `http://12.123.234.567:0000`                                 |
+   | **Force S3 path style** | This value is required for S3-compatible storage.                                                                                                                               |
 
    :::warning
 
-   Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object
+   Ensure you select the **Force S3 path style** checkbox. S3 path style is required by Velero to access the object
    storage. Palette uses [Velero](https://velero.io/docs) to create backups.
 
    :::
 
-5. Next, provide the access key for the MiniIO user. The access key has two parts - the _access key ID_ and the _secret
-   key_.
+5. Next, provide the access key for the user. The access key has two parts - the _access key ID_ and the _secret key_.
 
 6. Click on the **Create** button.
 

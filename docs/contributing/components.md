@@ -224,6 +224,11 @@ Partials are customized using properties which can be read using the `{props.fie
 Once your partial has been created, run the `make generate-partials` command to make your partial available for use.
 This command will also be invoked during the `make start` and `make build` commands.
 
+Partials are shared across every version of a product's documentation. A page in a frozen version renders the current
+partial, so editing a partial changes what already-released versions display. To pin a partial to a single version,
+create a copy under `versioned_partials/version-<version>/` and that copy takes precedence for that version only. Refer
+to [Product Documentation Versions](./release-process.md#product-documentation-versions) for more information.
+
 Finally, you can reference your partial in any `*.md` file by using the `PartialsComponent`, together with the specified
 category and name of the partial:
 

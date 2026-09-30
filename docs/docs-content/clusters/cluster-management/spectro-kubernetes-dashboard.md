@@ -7,27 +7,21 @@ sidebar_position: 210
 tags: ["clusters", "cluster management", "dashboard"]
 ---
 
+:::warning
+
+Avoid using the Spectro Kubernetes Dashboard because it is built on the deprecated Kubernetes Dashboard project. Use
+[Headlamp](./headlamp.md) instead as your web-based UI for Kubernetes clusters.
+
+:::
+
 The Spectro Kubernetes Dashboard is a customized version of the open source
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
 web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the
 cluster itself. For more information about the Kubernetes Dashboard, visit the
 [Official Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) page.
 
-<!-- prettier-ignore-start -->
-
-The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS 
-<VersionedLink text="pack" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> that can be added to your cluster
-profile. The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources
-and roles.
-
-:::tip
-
-If you want to learn how to deploy the standard Kubernetes Dashboard instead, visit the
-<VersionedLink text="Kubernetes Dashboard pack page" url="/integrations/packs/?pack=k8s-dashboard"/>.
-
-:::
-
-<!-- prettier-ignore-end -->
+The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS pack that can be added to your cluster profile. The
+pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources and roles.
 
 ## Supported Cluster Types
 

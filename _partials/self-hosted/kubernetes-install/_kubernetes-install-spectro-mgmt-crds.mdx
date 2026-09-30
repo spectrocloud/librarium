@@ -1,0 +1,24 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-spectro-mgmt-crds
+---
+
+Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    {props.version}, including Traefik CRDs, and must be installed before the main {props.version} Helm chart. When the
+    chart is installed, the custom resource types are registered with the Kubernetes API server; no pods are deployed. 
+
+    ```shell
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Release "spectro-mgmt-crds" does not exist. Installing it now.
+    NAME: spectro-mgmt-crds
+    LAST DEPLOYED: Wed Jun 17 21:17:39 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```

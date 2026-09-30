@@ -1,16 +1,16 @@
 ---
 sidebar_label: "Architecture"
 title: "Architecture"
-description: "Learn about the architecture behind Launchpad for VMs and Palette VMO pack "
+description: "Learn about the architecture behind VM Launchpad and Palette VMO pack "
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "architecture", "Launchpad for VMs"]
+tags: ["vmo", "architecture", "VM Launchpad"]
 ---
 
-[Launchpad for VMs](launchpad-for-vms/install-vmla-iso.md) is the recommended way to deploy a new Palette Virtual
-Machine Orchestrator (VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a
-preconfigured VMO environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in
-a Kubernetes host cluster. You can also deploy the Palette VMO pack as an
+[VM Launchpad](vm-launchpad/install.md) is the recommended way to deploy a new Palette Virtual Machine Orchestrator
+(VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a preconfigured VMO
+environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host
+cluster. You can also deploy the Palette VMO pack as an
 [add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
 on an existing data center or edge cluster.
 

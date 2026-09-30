@@ -766,6 +766,196 @@ guide.
 
 Palette recreates all resources with the correct configuration.
 
+## Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade
+
+When you upgrade a self-hosted Palette or Palette VerteX management cluster to 4.8, the `mongo` Pods in the
+`hubble-system` namespace can fail to start and enter `CrashLoopBackOff`. Palette 4.8 ships MongoDB 8.0, which requires
+a MongoDB Feature Compatibility Version (FCV) of 7.0 or later. Clusters whose MongoDB data was first created on Palette
+4.5.x through 4.6.9 might still be at FCV 6.0.
+
+When an upgrade fails due to this problem, the following message is added to the `mongo` container log.
+
+```shell title="Example error output" hideClipboard
+"msg":"Wrong mongod version"
+UPGRADE PROBLEM: Found an invalid featureCompatibilityVersion document
+Invalid feature compatibility version value '6.0'; expected '7.0' or '7.3' or '8.0'
+```
+
+The number of affected members varies. Recovery depends on whether any member is still running the MongoDB 7 image and
+is Ready.
+
+### Debug Steps
+
+1. Log in to the Palette or Palette VerteX
+   [system console](../enterprise-version/system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal window and set `KUBECONFIG` to point to the kubeconfig file you downloaded.
+
+   ```shell
+   export KUBECONFIG=~/Downloads/spectro-mgmt-cluster.kubeconfig
+   ```
+
+5. Check which MongoDB Pods are still on the previous release's image.
+
+   ```shell
+   kubectl --namespace hubble-system get pods --selector role=mongo \
+     --output custom-columns='POD:.metadata.name,READY:.status.containerStatuses[0].ready,IMAGE:.spec.containers[0].image'
+   ```
+
+6. Choose the recovery path based on the output of the previous step.
+
+   - **If two Pods are still on the previous MongoDB 7 image**, proceed to step 7. The crash-looping Pod starts on its
+     next restart once the FCV is raised, and the upgrade continues. No image rollback or `helm rollback` is required.
+
+   - **If all three Pods are already on the MongoDB 8 image**, first roll the `mongo` container image back to the
+     previous MongoDB 7 tag and wait for the Pods to become Ready, then proceed to step 7. After the FCV is raised,
+     restore the MongoDB 8 image or re-run the upgrade.
+
+     :::warning
+
+     Rolling the image back is safe in this situation only because MongoDB 8 never completed startup and so never
+     upgraded the on-disk data files. Do not roll a MongoDB 7 image onto data that a MongoDB 8 server has already opened
+     successfully.
+
+     :::
+
+7. From the output of step 5, select any Pod that is Ready and still on the MongoDB 7 image, and save its name and an
+   environment variable.
+
+   ```shell
+   export MONGO_POD=mongo-0
+   ```
+
+8. Run the following command to find the current MongoDB FCV.
+
+   <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+   <TabItem label="Palette" value="palette">
+
+   ```shell
+   kubectl exec --namespace hubble-system "${MONGO_POD}" --container mongo -- bash -c \
+   'mongosh \
+      --username "$MONGO_INITDB_ROOT_USERNAME" \
+      --password "$MONGO_INITDB_ROOT_PASSWORD" \
+      admin --quiet \
+      --eval "printjson(db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 }))"'
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```shell
+   kubectl exec --namespace hubble-system "${MONGO_POD}" --container mongo -- bash -c \
+   'mongosh \
+      --username "$MONGODB_INITDB_ROOT_USERNAME" \
+      --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+      --host "$HOSTNAME" \
+      --tls \
+      --tlsCAFile /var/mongodb/tls/ca.crt \
+      --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+      --tlsAllowInvalidHostnames \
+      admin --quiet \
+      --eval "printjson(db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 }))"'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+9. If the value is `6.0`, you must raise it on the ReplicaSet primary. Run the following command to identify the primary
+   Pod and save its name to `MONGO_PRIMARY`.
+
+   <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+   <TabItem label="Palette" value="palette">
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec --namespace hubble-system "${MONGO_POD}" --container mongo -- bash -c \
+        'mongosh \
+           --username "$MONGO_INITDB_ROOT_USERNAME" \
+           --password "$MONGO_INITDB_ROOT_PASSWORD" \
+           admin --quiet \
+           --eval "print(JSON.stringify(rs.hello()))"' \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec --namespace hubble-system "${MONGO_POD}" --container mongo -- bash -c \
+        'mongosh \
+           --username "$MONGODB_INITDB_ROOT_USERNAME" \
+           --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+           --host "$HOSTNAME" \
+           --tls \
+           --tlsCAFile /var/mongodb/tls/ca.crt \
+           --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+           --tlsAllowInvalidHostnames \
+           admin --quiet \
+           --eval "print(JSON.stringify(rs.hello()))"' \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+10. Raise FCV to 7.0 on the primary Pod.
+
+::: warning Raising the feature compatibility version cannot be undone in place. Raise it to `7.0` only. Do not set a
+higher value. :::
+
+    <Tabs queryString="platform" defaultValue={props.edition === "Palette VerteX" ? "vertex" : "palette"}>
+
+    <TabItem label="Palette" value="palette">
+
+    ```shell
+    kubectl exec --namespace hubble-system "${MONGO_PRIMARY}" --container mongo -- bash -c \
+      'mongosh \
+         --username "$MONGO_INITDB_ROOT_USERNAME" \
+         --password "$MONGO_INITDB_ROOT_PASSWORD" \
+         admin --quiet \
+         --eval "printjson(db.adminCommand({ setFeatureCompatibilityVersion: \"7.0\", confirm: true }))"'
+    ```
+
+    </TabItem>
+
+    <TabItem label="Palette VerteX" value="vertex">
+
+    ```shell
+    kubectl exec --namespace hubble-system "${MONGO_PRIMARY}" --container mongo -- bash -c \
+      'mongosh \
+         --username "$MONGODB_INITDB_ROOT_USERNAME" \
+         --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+         --host "$HOSTNAME" \
+         --tls \
+         --tlsCAFile /var/mongodb/tls/ca.crt \
+         --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+         --tlsAllowInvalidHostnames \
+         admin --quiet \
+         --eval "printjson(db.adminCommand({ setFeatureCompatibilityVersion: \"7.0\", confirm: true }))"'
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+Confirm that the change replicated. Repeat the check command from step 8 for `mongo-0`, `mongo-1` and `mongo-2` in turn,
+substituting the Pod name, and confirm each returns `7.0` before you resume the upgrade.
+
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
 When attempting to upgrade the VerteX Management Appliance, the `linstor-satellite.*` and `linstor-csi-node.*` pods may

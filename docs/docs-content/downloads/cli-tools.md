@@ -23,10 +23,24 @@ using the Spectro Cloud CLI tool.
 
 ## Palette CLI
 
-The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
+Select the correct Palette CLI version for your operating system and chip architecture.
+
+<Tabs>
+
+<TabItem label="Linux AMD64" value="linux-amd64">
 
 | Palette Release <!-- palette-cli-version-table --> | Recommended CLI Version          | Download URL                                                            | Checksum (SHA256)                                                  |
 | -------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- cli-4.10.0 --> 4.10.13                        | 4.10.3                           | https://software.spectrocloud.com/palette-cli/v4.10.3/linux/cli/palette | `a974e8e63b43f1c6e0570fc182cee69de4f861c018f9c65909f770b4fb5b9113` |
+| <!-- cli-4.9.53 --> 4.9.53                         | 4.9.21                           | https://software.spectrocloud.com/palette-cli/v4.9.21/linux/cli/palette | `ad6e3e6b86db3aefa73a32f2bbbd89e8db70dcfca6b105e3db30844440d13154` |
+| <!-- cli-4.9.46 --> 4.9.46                         | 4.9.19                           | https://software.spectrocloud.com/palette-cli/v4.9.19/linux/cli/palette | `472aa53dc5dd2a7161aff367415e08b75a2efd666a900bef95315804b4103132` |
+| <!-- cli-4.9.43 --> 4.9.43                         | 4.9.18                           | https://software.spectrocloud.com/palette-cli/v4.9.18/linux/cli/palette | `999819c7520d14f4a7ff20a569d979b9aa1b9c2da30ba40a21b7cb1c6733231c` |
+| <!-- cli-4.9.c --> 4.9.38                          | 4.9.16                           | https://software.spectrocloud.com/palette-cli/v4.9.16/linux/cli/palette | `7032e347e97df641c22c5c30ad3ec94614380d28e546b80f94fb747a33ac9b48` |
+| <!-- cli-4.9.24 --> 4.9.24                         | 4.9.10                           | https://software.spectrocloud.com/palette-cli/v4.9.10/linux/cli/palette | `8eb9f8575b1b6b2a82389350dd0b8c86867181c6a489f4cd10b51048c61589ed` |
+| <!-- cli-4.9.23 --> 4.9.23                         | 4.9.9                            | https://software.spectrocloud.com/palette-cli/v4.9.9/linux/cli/palette  | `13a0beb305e8cf197f541c5981518f7b4bb179fbe7159fea59324289d57cb128` |
+| <!-- cli-4.9.b --> 4.9.22                          | 4.9.8                            | https://software.spectrocloud.com/palette-cli/v4.9.8/linux/cli/palette  | `cdaf494b40791b9b9d04228ad8981387c350e246d1cd77a4f3b1c84d78ba6c10` |
+| <!-- cli-4.9.18 --> 4.9.18                         | 4.9.7                            | https://software.spectrocloud.com/palette-cli/v4.9.7/linux/cli/palette  | `ced80618604938e3786b46eb0f7f45cfd97346184a5cb9d5ff855f2db210849c` |
+| <!-- cli-4.9.16 --> 4.9.16                         | 4.9.6                            | https://software.spectrocloud.com/palette-cli/v4.9.6/linux/cli/palette  | `cbdb5b3c0f66194f5523676b78b98cacc3bd1a6b109e13fc987554fc2e326ad2` |
 | <!-- cli-4.9.a --> 4.9.14                          | 4.9.5                            | https://software.spectrocloud.com/palette-cli/v4.9.5/linux/cli/palette  | `41427f5d4d58f85933f7cce8ab6b38c9899ec83b74285c15338c2dc0ec55e44a` |
 | <!-- cli-4.9.0 --> 4.9.5                           | 4.9.2                            | https://software.spectrocloud.com/palette-cli/v4.9.2/linux/cli/palette  | `5d1e004aa4b124029fedcc3eebe442af20a8a447cd95a4aad9e7357d0b28e516` |
 | <!-- cli-4-8-c --> 4.8.47                          | 4.8.10                           | https://software.spectrocloud.com/palette-cli/v4.8.10/linux/cli/palette | `06e3d139fcfec018830ab2a9e03ee0c760dfc8cd8b0283eca93a43c86ae68b24` |
@@ -53,6 +67,29 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 | 4.5.4                                              | 4.5.0                            | https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette  | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 | 4.5.3                                              | 4.5.0                            | https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette  | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 
+</TabItem>
+
+<TabItem label="Linux ARM64" value="linux-arm64">
+
+| Palette Release <!-- palette-cli-linux-arm64-table --> | Recommended CLI Version | Download URL                                                                  | Checksum (SHA256)                                                  |
+| ------------------------------------------------------ | ----------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- cli-4.10.0 --> 4.10.13                            | 4.10.3                  | https://software.spectrocloud.com/palette-cli/v4.10.3/linux-arm64/cli/palette | `1b28034b04158adac2a3edfb040b17bac31f997a20def49efe061b67ce6a04cd` |
+
+</TabItem>
+
+<TabItem label="macOS ARM64" value="macos-arm64">
+
+| Palette Release <!-- palette-cli-macos-arm64-table --> | Recommended CLI Version | Download URL                                                                   | Checksum (SHA256)                                                  |
+| ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| <!-- cli-4.10.0 --> 4.10.13                            | 4.10.3                  | https://software.spectrocloud.com/palette-cli/v4.10.3/darwin-arm64/cli/palette | `5f8830c6b6fad45d5977652bdb38b54a908fef3a1f735d72a38f7a4493dbf07c` |
+
+macOS blocks this binary until you remove its quarantine attribute. Refer to
+[Install](../automation/palette-cli/install-palette-cli.md#download-and-setup) for the command.
+
+</TabItem>
+
+</Tabs>
+
 ## Palette Edge CLI
 
 The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture. For Edge component
@@ -70,6 +107,8 @@ information.
 
 | Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
 | ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- edge-4.9.8 --> 4.9.8                   | 4.9.7                      | https://software.spectrocloud.com/stylus/v4.9.7/cli/linux/palette-edge  | `6e6245b97a8a6600189a93c49a4dbda2176b10caab41e73cc2d1f1f3a2ee4697` |
+| <!-- edge-4.9.6 --> 4.9.6                   | 4.9.6                      | https://software.spectrocloud.com/stylus/v4.9.6/cli/linux/palette-edge  | `474d977dbbb9098fb3dbb0caf39c24f93416dfb4e003f997c9648f7fea361191` |
 | <!-- edge-4.9.0 --> 4.9.5                   | 4.9.4                      | https://software.spectrocloud.com/stylus/v4.9.4/cli/linux/palette-edge  | `28c6ec3fe7b065d28554d738bcc5d87e655b4862bf3196ec30c3f527b8736321` |
 | <!-- edge-4-8-c --> 4.8.47                  | 4.8.18                     | https://software.spectrocloud.com/stylus/v4.8.18/cli/linux/palette-edge | `54f69d28e9cfd0f651c451ae2d008366cdb9da4be90ce2bcaccb743b488b3c73` |
 | <!-- edge-4.8.b --> 4.8.33                  | 4.8.10                     | https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge | `bc635479233dde1f5b966bb5d776a5f1fdeb9babe200666a8c8a1306546ce471` |

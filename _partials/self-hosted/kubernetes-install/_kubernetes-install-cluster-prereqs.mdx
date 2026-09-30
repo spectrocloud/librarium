@@ -1,0 +1,62 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-cluster-prereqs
+---
+
+- We recommend the following resources for {props.version}. Refer to our
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="Size Guidelines"
+    palettePath="/install-palette/#size-guidelines"
+    vertexPath="/install-palette-vertex/#size-guidelines"
+  /> for additional sizing information.
+
+  - A minimum of three AMD64 (x86_64) nodes. These can be worker nodes or three untainted control plane nodes.
+    - ARM-based nodes are not supported.
+
+  - 8 CPUs per node
+
+  - 16 GB of memory per node
+
+  - 110 GB of disk space per node
+
+- The following network ports must be accessible:
+
+  - **TCP/443** - Inbound and outbound to and from the {props.version} management cluster
+
+  - **TCP/6443** - Outbound traffic from the {props.version} management cluster to the deployed workload cluster's Kubernetes API server.
+
+- The following TLS/SSL certificate files for the domain name you will assign to {props.version}. You must enable HTTPS
+  encryption for {props.version}. Reach out to your network administrator or security team to obtain these files:
+
+  - x509 TLS/SSL certificate file in base64 format
+
+  - x509 TLS/SSL certificate key file in base64 format
+
+  - x509 TLS/SSL certificate authority file in base64 format
+
+- The Kubernetes cluster must use a Kubernetes version compatible with your {props.version} version. Refer to
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="Kubernetes Requirements"
+    palettePath="/install-palette/#kubernetes-requirements"
+    vertexPath="/install-palette-vertex/#kubernetes-requirements"
+  /> to locate the required Kubernetes version.
+
+- Ensure the Kubernetes cluster _does_ not have Cert Manager installed. {props.version} requires a unique Cert Manager
+  configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
+  uninstall it before installing {props.version}.
+
+- A Container Storage Interface (CSI) to create persistent volumes, which are used to store
+  persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. You can set a default storage class in your Kubernetes cluster using the
+  following `kubectl` command.
+
+  ```shell
+  kubectl patch storageclass <storageclass-name> --patch '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+  ```
+
+  To use a non-default storage class for the {props.version} installation, you must set the preferred storage class name
+  in the <code>{props.helm}/values.yaml</code> file using the `mongo.storageClass` parameter.

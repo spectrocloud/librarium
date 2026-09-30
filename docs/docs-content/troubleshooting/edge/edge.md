@@ -13,7 +13,7 @@ The following are common scenarios that you may encounter when using Edge.
 ## Scenario - Cluster Nodes Fail to Become `Ready` on Kubernetes v1.35.x
 
 On Edge clusters configured with Kubernetes v1.35.x, hosts running OSes that default to cgroup v1, such as Ubuntu 20.04
-and earlier and RHEL 7–8, may cause kubelet to fail to start, with nodes entering a restart loop.
+and earlier and RHEL 7–8, may cause Kubelet to fail to start, with nodes entering a restart loop.
 
 To resolve this issue, configure the host operating system to use cgroup v2.
 
@@ -54,6 +54,365 @@ stat --file-system --format=%T /sys/fs/cgroup
 ```bash hideClipboard title="Expected output"
 cgroup2fs
 ```
+
+## Scenario - Intermittent `ImagePullBackOff` Errors on Airgap Edge Clusters with Kubernetes v1.35.x
+
+<!-- prettier-ignore-start -->
+On airgap Edge clusters at Kubernetes v1.35.x or later, pods may intermittently fail to start with an
+`ImagePullBackOff` status, even though the image is already present on the node. All three Edge Kubernetes distributions
+are affected: <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />,
+<VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />, and
+<VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />. The issue
+most commonly affects the `palette-webhook` and `palette-lite-controller-manager` pods, and it
+also affects pods that use the `spectro-drive`, `crony`, and `spectro-import-presetup` images. The pod events show a
+timeout while reaching an external registry, similar to the following.
+<!-- prettier-ignore-end -->
+
+```bash hideClipboard title="Example output"
+Failed to pull image "<registry>/<image-name>:<tag>":
+Head "https://<registry>/v2/<image-name>/manifests/<tag>": dial tcp 192.0.2.10:443: i/o timeout
+```
+
+Kubernetes v1.35 enables the [Ensure Secret Pulled Images](https://kubernetes.io/docs/concepts/containers/images/)
+feature, which tracks whether each image was pulled using verified registry credentials. Kubelet, the Kubernetes node
+agent that manages the pods on each node, keeps these pull records on disk. Its default policy for this feature,
+`NeverVerifyPreloadedImages`, trusts images that were preloaded onto the node unless a pull record already exists for
+them.
+
+In an airgap deployment, images are loaded onto the node from the Palette content bundle instead of being pulled from a
+registry. Depending on the timing of the bundle import relative to when the first pod is scheduled, Kubelet can write a
+pull record for a bundle image that contains no credential mapping. From that point on, Kubelet stops treating the image
+as preloaded and forces a new pull from the image's original public registry, which cannot succeed in an airgap
+environment and times out. The failure is sticky, so it persists for every later pod that uses the image until you
+remove the record and restart Kubelet on the node, which clears its in-memory record cache. On K3s and RKE2, Kubelet runs
+inside the distribution's own process rather than as a separate service, so you restart that process instead of a
+Kubelet service.
+
+Because the behavior depends on import timing, the issue is intermittent, and some nodes or images are affected while
+others in the same cluster are not.
+
+The issue affects new cluster deployments and clusters that reach Kubernetes v1.35.x or later without the required
+Kubelet setting in place. An upgrade from Kubernetes v1.34.5 to v1.35.2 has been verified to complete without the issue
+when the target pack already carries that setting.
+
+On K3s and RKE2, pack version `1.35.6` includes an **Airgap** preset that applies the setting for you, and pack versions
+`1.35.2` and `1.35.3` need a manual values override instead. The preset is not enabled by default, so a cluster on pack
+version `1.35.6` remains exposed to the issue until you enable it. To apply the setting, refer to
+[Prevent the Issue on a New Cluster](#prevent-the-issue-on-a-new-cluster).
+
+On PXK-E, no released pack version includes the preset, so apply the setting as a manual values override on every
+affected pack version. PXK-E also requires a second file that K3s and RKE2 do not. PXK-E runs Kubelet as a standalone
+service that does not read the drop-in directory unless you point it there, so you must set the Kubelet `--config-dir`
+argument as well. Omitting it leaves the drop-in on disk but unread, which looks identical to the setting never having
+been applied.
+
+:::info
+
+If an affected pod also serves a webhook that manages a Custom Resource Definition (CRD) conversion, the control plane
+may return errors while reading cluster resources until that pod recovers. An upgrade can partially apply CRD changes
+before the new webhook pod starts, which leaves the control plane unable to read cluster resources through the webhook
+until you recover the pod.
+
+:::
+
+### Debug Steps
+
+#### Prevent the Issue on a New Cluster
+
+The required setting is a Kubelet configuration drop-in file that must exist before any images are imported onto the
+node. How you apply it depends on your Kubernetes pack and version.
+
+- **K3s or RKE2 pack version `1.35.6` or later** - In the **Presets** panel of the Kubernetes layer, set **Airgap** to
+  **Enable**. The preset name is `airgap`. This preset is not enabled by default, so you must select it explicitly.
+
+- **K3s or RKE2 pack versions `1.35.2` and `1.35.3`, or any PXK-E pack version** - These versions do not include the
+  preset. In the `values.yaml` file of the Kubernetes layer, add the configuration manually to the existing `initramfs`
+  stage, alongside any other `directories` or `files` entries.
+
+Select your Kubernetes distribution for the configuration to apply. For more information about cloud-init stages, refer
+to [Cloud-Init Stages](../../clusters/edge/edge-configuration/cloud-init.md).
+
+<Tabs groupId="k8s-distribution">
+
+<TabItem value="K3s">
+
+```yaml
+stages:
+  initramfs:
+    - directories:
+        - path: "/var/lib/rancher/k3s/agent/etc/kubelet.conf.d"
+          permissions: 0700
+      files:
+        - path: /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+          permissions: 0600
+          content: |
+            apiVersion: kubelet.config.k8s.io/v1beta1
+            kind: KubeletConfiguration
+            featureGates:
+              KubeletEnsureSecretPulledImages: true
+            imagePullCredentialsVerificationPolicy: NeverVerify
+```
+
+</TabItem>
+
+<TabItem value="RKE2">
+
+```yaml
+stages:
+  initramfs:
+    - directories:
+        - path: "/var/lib/rancher/rke2/agent/etc/kubelet.conf.d"
+          permissions: 0700
+      files:
+        - path: /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+          permissions: 0600
+          content: |
+            apiVersion: kubelet.config.k8s.io/v1beta1
+            kind: KubeletConfiguration
+            featureGates:
+              KubeletEnsureSecretPulledImages: true
+            imagePullCredentialsVerificationPolicy: NeverVerify
+```
+
+</TabItem>
+
+<TabItem value="PXK-E">
+
+```yaml
+stages:
+  initramfs:
+    - directories:
+        - path: "/etc/kubernetes/kubelet.conf.d"
+          permissions: 0700
+      files:
+        - path: /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf
+          permissions: 0600
+          content: |
+            apiVersion: kubelet.config.k8s.io/v1beta1
+            kind: KubeletConfiguration
+            featureGates:
+              KubeletEnsureSecretPulledImages: true
+            imagePullCredentialsVerificationPolicy: NeverVerify
+        - path: /etc/default/kubelet
+          permissions: 0644
+          content: |
+            KUBELET_EXTRA_ARGS="--config-dir=/etc/kubernetes/kubelet.conf.d"
+```
+
+:::warning
+
+The second entry replaces the entire contents of `/etc/default/kubelet`. If your cluster profile or user data already
+sets `KUBELET_EXTRA_ARGS`, add `--config-dir=/etc/kubernetes/kubelet.conf.d` to the existing value instead of
+overwriting the file, otherwise you lose the arguments already in place.
+
+:::
+
+</TabItem>
+
+</Tabs>
+
+Provision or upgrade the cluster as you normally would. This prevents the issue on both airgap and connected clusters,
+and you do not need the node-level steps described in
+[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster).
+
+:::warning
+
+Enabling the preset, or adding the override, in the cluster profile of a cluster that is already running does not
+resolve the issue on that cluster, because re-applying the profile does not regenerate the live Kubelet configuration on
+existing nodes. For a cluster that is already affected, use the steps in
+[Restore Nodes on an Affected Cluster](#restore-nodes-on-an-affected-cluster) instead.
+
+:::
+
+#### Restore Nodes on an Affected Cluster
+
+If a cluster is already reporting `ImagePullBackOff`, use the following steps on each affected node. These steps are a
+temporary, per-node mitigation.
+
+1. Log in to the affected node as a user with root privileges.
+
+2. Confirm that the image is already present on the node. Replace `<image-name>` with the name of the affected image,
+   and `<image-reference>` with the full image reference, including the registry and tag.
+
+   ```bash
+   crictl images | grep <image-name>
+   crictl inspecti <image-reference>
+   ```
+
+3. List the image pull records.
+
+   ```bash
+   ls /var/lib/kubelet/image_manager/pulled/
+   ```
+
+4. Inspect each record and identify the one that references the digest of the affected image and contains no
+   `credentialMapping` field. Replace `<record-file-name>` with the name of each file you inspect.
+
+   ```bash
+   cat /var/lib/kubelet/image_manager/pulled/<record-file-name>
+   ```
+
+5. Remove the record you identified in the previous step.
+
+   ```bash
+   rm /var/lib/kubelet/image_manager/pulled/<record-file-name>
+   ```
+
+   :::warning
+
+   Remove only records that contain no `credentialMapping` field and that belong to the affected image. Records for
+   other images, such as MetalLB, may contain a valid `credentialMapping`, and removing those can cause the
+   corresponding images to fail.
+
+   :::
+
+6. Create the Kubelet configuration drop-in file and set its permissions.
+
+   <Tabs groupId="k8s-distribution">
+
+   <TabItem value="K3s">
+
+   ```bash
+   mkdir --parents /var/lib/rancher/k3s/agent/etc/kubelet.conf.d
+   tee /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
+   apiVersion: kubelet.config.k8s.io/v1beta1
+   kind: KubeletConfiguration
+   featureGates:
+     KubeletEnsureSecretPulledImages: true
+   imagePullCredentialsVerificationPolicy: NeverVerify
+   EOF
+   chmod 0600 /var/lib/rancher/k3s/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+   ```
+
+   </TabItem>
+
+   <TabItem value="RKE2">
+
+   ```bash
+   mkdir --parents /var/lib/rancher/rke2/agent/etc/kubelet.conf.d
+   tee /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
+   apiVersion: kubelet.config.k8s.io/v1beta1
+   kind: KubeletConfiguration
+   featureGates:
+     KubeletEnsureSecretPulledImages: true
+   imagePullCredentialsVerificationPolicy: NeverVerify
+   EOF
+   chmod 0600 /var/lib/rancher/rke2/agent/etc/kubelet.conf.d/10-image-pull-creds.conf
+   ```
+
+   </TabItem>
+
+   <TabItem value="PXK-E">
+
+   PXK-E needs a second command that K3s and RKE2 do not, because its Kubelet does not read the drop-in directory
+   unless you set the `--config-dir` argument.
+
+   ```bash
+   mkdir --parents /etc/kubernetes/kubelet.conf.d
+   tee /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf << 'EOF'
+   apiVersion: kubelet.config.k8s.io/v1beta1
+   kind: KubeletConfiguration
+   featureGates:
+     KubeletEnsureSecretPulledImages: true
+   imagePullCredentialsVerificationPolicy: NeverVerify
+   EOF
+   chmod 0600 /etc/kubernetes/kubelet.conf.d/10-image-pull-creds.conf
+   ```
+
+   Add the `--config-dir` argument to `/etc/default/kubelet`. If the file already sets `KUBELET_EXTRA_ARGS`, append the
+   argument to the existing value rather than replacing the line.
+
+   ```bash
+   echo 'KUBELET_EXTRA_ARGS="--config-dir=/etc/kubernetes/kubelet.conf.d"' > /etc/default/kubelet
+   chmod 0644 /etc/default/kubelet
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+7. Restart Kubelet on the node and wait for the node to report a `Ready` status. Replace `<node-name>` with the name of
+   the node.
+
+   <Tabs groupId="k8s-distribution">
+
+   <TabItem value="K3s">
+
+   ```bash
+   systemctl restart k3s
+   kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
+   ```
+
+   </TabItem>
+
+   <TabItem value="RKE2">
+
+   On a control plane node, restart the `rke2-server` service. On a worker node, restart the `rke2-agent` service
+   instead.
+
+   ```bash
+   systemctl restart rke2-server
+   kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
+   ```
+
+   </TabItem>
+
+   <TabItem value="PXK-E">
+
+   ```bash
+   systemctl restart kubelet
+   kubectl wait --for=condition=Ready node/<node-name> --timeout=300s
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+8. Delete the affected pods so that they are rescheduled and use the local image. Replace `<cluster-namespace>` with the
+   namespace of your cluster. Delete any other pods that remain in an `ImagePullBackOff` status as well.
+
+   ```bash
+   kubectl delete pod --namespace palette-system --selector app=palette-webhook
+   kubectl delete pod --namespace <cluster-namespace> --selector control-plane=palette-lite-controller-manager
+   ```
+
+9. Confirm that the pods recover. The pod events should include a message stating that the image is already present on
+   the machine, and the pods should reach a `Running` status.
+
+   ```bash
+   kubectl get pods --namespace palette-system --selector app=palette-webhook
+   kubectl get events --namespace palette-system --sort-by=.lastTimestamp | grep palette-webhook
+   ```
+
+10. Confirm that the webhook service endpoints point to the new pod.
+
+    ```bash
+    kubectl get endpoints --namespace palette-system palette-webhook-service
+    ```
+
+    If the cluster was left in a partially upgraded state with a broken CRD conversion webhook, wait until the webhook
+    endpoints are healthy before you resume any control plane or cluster profile operations. Confirm that the cluster
+    resources are readable first. Replace `<cluster-namespace>` with the namespace of your cluster.
+
+    ```bash
+    kubectl get spc --namespace <cluster-namespace>
+    ```
+
+#### Verification
+
+Whether you enabled the preset, applied the values override, or ran the node-level steps, verify that the setting is in
+effect. Replace `<node-name>` with the name of the node.
+
+```bash
+kubectl get --raw "/api/v1/nodes/<node-name>/proxy/configz" | jq '.kubeletconfig.imagePullCredentialsVerificationPolicy'
+```
+
+```bash hideClipboard title="Expected output"
+"NeverVerify"
+```
+
+If the command returns `NeverVerifyPreloadedImages`, the setting has not reached the running Kubelet, and the node is
+still exposed to the issue.
 
 ## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
 
@@ -352,7 +711,7 @@ E0619 21:54:00.647219       1 leaderelection.go:327] error retrieving resource l
 ```
 
 Although DNS becomes available shortly after boot, `kube-vip` does not recover automatically. To fix this, stop and
-remove the container manually. The kubelet then restarts the component using the current system state.
+remove the container manually. The Kubelet then restarts the component using the current system state.
 
 ### Debug Steps
 
@@ -880,3 +1239,114 @@ incorrectly. This prevents the CNI that do not run as root, such as Cilium, from
 
 5. Save the changes as a new version of the cluster profile and update your agent mode cluster to use the updated
    profile. For more information, refer to [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+## Scenario - Shared Volumes Fail on Kernel 7.x Due to NFSv4.1 Directory Delegations
+
+On Edge clusters running Linux kernel 6.19 or later, shared Read-Write-Many (RWX) volumes served by an older NFS server
+fail to open with a remote I/O error (`EREMOTEIO`). Both the Longhorn share manager and the Piraeus RWX driver ship an
+NFS server that is affected. Kernels known to trigger the issue include Hadron `7.1.3` and Ubuntu `7.0.0-generic`, which
+is the kernel that Ubuntu 24.04 hosts pull in when `UPDATE_KERNEL=true` or a 7.x kernel pack is applied. Pre-6.19
+kernels such as stock Ubuntu 6.8 and RHEL 9 do not trigger the issue. Block, `hostPath`, Rook RBD, Rook CephFS, Ceph CSI
+RBD, Local Path Provisioner, Portworx, Hitachi HSPC, NetApp Trident, HPE CSI, and KubeVirt CSI volumes are also
+unaffected because they do not depend on the affected NFS server.
+
+Symptoms include:
+
+- The in-cluster <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> registry enters a
+  `CrashLoopBackOff` state because it cannot read its Longhorn shared volume.
+- Image pulls from the registry VIP fail with `connection refused` or `ImagePullBackOff`.
+- Kubernetes upgrades hang because the shared volume is broken at the NFS layer, and rebooting the node does not
+  recover.
+
+Linux kernel 6.19 and later enable NFSv4.1 directory delegations by default and send an optional `GET_DIR_DELEGATION`
+operation as part of each directory open. An NFS server that does not implement directory delegations must reply that
+the operation is not supported, so that the client retries without it. Older NFS server builds reply that the operation
+is illegal instead, which the client does not retry, and the user-space application reports a remote I/O error. The disk
+is fine; only the NFS handshake is wrong. This is why the same CSI pack works on stock Ubuntu 6.8 and RHEL 9 and fails
+on Hadron `7.1.3` or Ubuntu `7.0.0-generic`.
+
+<!-- prettier-ignore -->
+The durable fix is to upgrade the affected CSI pack. Use the <VersionedLink text="Longhorn CSI" url="/integrations/packs/?pack=csi-longhorn" /> pack
+at version `1.12.0`. Version `1.11.3` also contains the fix but requires Kubernetes v1.34 or later. Do not remain on
+Longhorn CSI `1.8.x` through `1.11.2` on kernel 6.19 or later. For Piraeus RWX, no fixed pack is available yet, so avoid
+Piraeus shared RWX volumes on kernel 6.19 or later. Read-Write-Once (RWO) and DRBD volumes are unaffected.
+
+Until you can move to a fixed pack, apply the following node-level workaround.
+
+### Debug Steps
+
+Apply the workaround on every node that mounts the shared volume, not only on the node running the CSI share manager.
+For example, if the affected workload is `zot`, the workaround must be present on the node hosting the `zot-0` pod. Skip
+the workaround on nodes running pre-6.19 kernels because those kernels do not trigger the issue.
+
+Choose the option that matches your host configuration.
+
+#### Option 1 - Set the Kernel Module Option on the Host
+
+On Ubuntu, Hadron, and RHEL hosts with a writable `/etc` directory, disable NFSv4 directory delegations through a
+`modprobe` drop-in file, then reboot the node.
+
+1. Log in to the affected node as a user with root privileges.
+
+2. Create the drop-in file.
+
+   ```bash
+   sudo tee /etc/modprobe.d/nfs-nodirdelegation.conf >/dev/null <<'EOF'
+   options nfsv4 directory_delegations=0
+   EOF
+   ```
+
+3. Reboot the node.
+
+   ```bash
+   sudo reboot
+   ```
+
+On Kairos or Hadron hosts, a file written directly to `/etc` might be lost during the next A/B upgrade. To persist the
+workaround across upgrades, apply the same drop-in through an OEM cloud-config file such as
+`/oem/90_nfs_workaround.yaml`.
+
+```yaml
+#cloud-config
+stages:
+  boot.before:
+    - name: "disable nfsv4 directory delegations"
+      files:
+        - path: /etc/modprobe.d/nfs-nodirdelegation.conf
+          permissions: 0644
+          content: |
+            options nfsv4 directory_delegations=0
+```
+
+#### Option 2 - Set the Kernel Command-Line Parameter in the UKI
+
+On trusted-boot or Unified Kernel Image (UKI) hosts where `/etc` is not writable, add the following token to the kernel
+command line in the UKI or [EdgeForge](../../clusters/edge/trusted-boot/edgeforge/edgeforge.md) image, then rebuild and
+redeploy the UKI.
+
+```text
+nfsv4.directory_delegations=0
+```
+
+Reboot the host after redeploying the UKI.
+
+#### Verify the Workaround
+
+After the node reboots, confirm that directory delegations are disabled and restart the affected workload.
+
+1. Confirm the kernel setting.
+
+   ```bash
+   cat /sys/module/nfsv4/parameters/directory_delegations
+   ```
+
+   The command must print `N`. If the `nfsv4` kernel module has not been loaded yet, the file at that path is missing
+   until something mounts NFS. The setting still applies the next time the module loads.
+
+2. Restart the affected workload. For example, restart the `zot-0` pod.
+
+   ```bash
+   kubectl --namespace zot-system delete pod zot-0
+   ```
+
+3. Confirm that shared volumes mount successfully and the workload reports a healthy state.

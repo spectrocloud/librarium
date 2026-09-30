@@ -25,6 +25,8 @@ Kubernetes.
 
 ### Specific Versions
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
+
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette VerteX" />
@@ -33,10 +35,14 @@ Kubernetes.
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette VerteX" />
+
 ## Prerequisites
 
+<PartialsComponent category="self-hosted" name="helm-client-version" />
+
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
-  available in your system.
+  available in your system. **Helm must be v3.14.0 or later.**
 
 - Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster through
   `kubectl` and have sufficient permissions to upgrade Palette VerteX. We recommend using a role with the cluster-admin
@@ -56,24 +62,27 @@ match your environment.
 
 :::
 
-1. Open a terminal session and navigate to the directory with the Palette VerteX installation zip file. Unzip the file
-   to a **palette-install** directory.
+1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX install ZIP file
+   provided by our support team. Unzip the file to a directory named `vertex-install`.
 
    ```shell
-   unzip release-*.zip -d palette-install
+   unzip charts.zip -d vertex-install
    ```
 
-2. Navigate to the release directory inside **palette-install**.
+2. Navigate to the `vertex-install` directory.
 
    ```shell
-   cd palette-install/charts/release-*
+   cd vertex-install
    ```
 
 3. Update the cert-manager chart using the following command.
 
    ```shell
-   helm upgrade --values extras/cert-manager/values.yaml \
-   cert-manager extras/cert-manager/cert-manager-*.tgz --install
+   helm upgrade --install cert-manager \
+     ./extras/cert-manager/cert-manager-*.tgz \
+     --namespace cert-manager \
+     --create-namespace \
+     --values ./extras/cert-manager/values.yaml
    ```
 
    You should receive an output similar to the following.
@@ -91,7 +100,9 @@ match your environment.
 4. Upgrade the Spectro Management CRDs chart.
 
    ```shell
-   helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+   helm upgrade --install spectro-mgmt-crds \
+     extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+     --values extras/spectro-mgmt-crds/values.yaml
    ```
 
    You should receive an output similar to the following.
@@ -121,15 +132,25 @@ match your environment.
    Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
    registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
-   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
-   :::
+- Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
+  that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
 
-6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step 5.
+- Include `/v2` in your endpoints if you are using a
+  [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+  Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+  registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls.
+
+  Including `/v2` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures.
+  For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
+
+  :::
+
+6. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+   with the following command. Point to the `vertex/values.yaml` file from step 5.
 
    ```shell
-   helm upgrade --values palette/values.yaml \
+   helm upgrade --values vertex/values.yaml \
    image-swap extras/image-swap/image-swap-*.tgz --install
    ```
 
@@ -145,12 +166,13 @@ match your environment.
    TEST SUITE: None
    ```
 
-7. If you are upgrading a Palette VerteX instance in an environment that requires network proxy configuration, upgrade
-   the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 5.
+7. _(Proxy environments only)_ If you are upgrading a Palette VerteX instance in an environment where a network proxy
+   must be configured for Palette VerteX to access the internet, upgrade the reach-system chart with the following
+   command. Point to the `vertex/values.yaml` file from step 5.
 
    ```shell
-   helm upgrade --values palette/values.yaml \
-   reach-system extras/reach-system/reach-system-\*.tgz --install
+   helm upgrade --values vertex/values.yaml \
+   reach-system extras/reach-system/reach-system-*.tgz --install
    ```
 
    You should receive an output similar to the following.
@@ -168,8 +190,8 @@ match your environment.
 8. Upgrade Palette VerteX with the following command.
 
    ```shell
-   helm upgrade --values palette/values.yaml \
-   hubble palette/spectro-mgmt-plane-\*.tgz --install
+   helm upgrade --values vertex/values.yaml \
+   hubble vertex/spectro-mgmt-plane-*.tgz --install
    ```
 
    You should receive an output similar to the following.

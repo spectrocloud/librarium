@@ -5,12 +5,44 @@ on:
   workflow_dispatch:
     inputs:
       jira_ticket:
-        description: "The Jira ticket for the patch release (e.g., DOC-2815)"
+        description: "Jira ticket for the patch release, for example DOC-2815."
         required: true
       base_branch:
-        description: "The base branch for the patch release PR (default: master)"
+        description: "Base branch for the pull request."
         required: true
         default: "master"
+      patch_version:
+        description: "Palette patch release version, for example 4.9.48. Use a placeholder such as 4.9.x while it is undecided. Empty takes the version from the candidates JQL."
+        required: false
+      patch_release_date:
+        description: "Palette patch release date as YYYY-MM-DD, for example 2026-09-14. Overrides the candidates JQL, which is not a reliable record of when a patch shipped. Enter pending to record it as PENDING. Empty takes the date from the candidates JQL, then the ticket due date."
+        required: false
+      candidate_issues:
+        description: "Final issue keys to document, for example \"PE-9345 PEM-11891\". Overrides the candidates JQL. Empty resolves them from the ticket, and leaves the body to be written by hand when the ticket names none."
+        required: false
+      component_updates:
+        description: "Tick when this patch adds a new CanvOS or Palette CLI version, or both. Leave clear to generate the release notes body only, in which case the fields below are ignored. Clearing it on a re-run also removes the rows an earlier run wrote."
+        required: false
+        type: boolean
+        default: false
+      nickfury_ref:
+        description: "nickfury branch or tag holding those versions, for example release-4.9 or v4.9.47-rc.2. Empty falls back to the two version fields below."
+        required: false
+      canvos_version:
+        description: "CanvOS (stylus) version, for example 4.6.21. Overrides nickfury. Enter same when this patch did not bump it, which removes any row an earlier run wrote. Empty records it as PENDING."
+        required: false
+      palette_cli_version:
+        description: "Palette CLI version, for example 4.9.21. Overrides nickfury. Enter same when this patch did not bump it, which removes any row an earlier run wrote. Empty records it as PENDING."
+        required: false
+      palette_cli_sha:
+        description: "Linux AMD64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
+      palette_cli_arm64_sha:
+        description: "Linux ARM64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
+      palette_cli_macos_sha:
+        description: "macOS ARM64 Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        required: false
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +68,7 @@ jobs:
     steps:
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -45,7 +77,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Librarium Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: 
           repository: spectrocloud/librarium
           ref: ${{ env.BASE_BRANCH }}
@@ -57,7 +89,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm" 
@@ -66,6 +98,20 @@ jobs:
           npm ci
       
       - name: Execute Script to Generate Patch Release Notes
+        env:
+          # The default GITHUB_TOKEN is scoped to this repository and cannot read the private
+          # nickfury repository that holds the component versions, so use the Vault token here.
+          GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          PATCH_RELEASE_VERSION: ${{ github.event.inputs.patch_version }}
+          PATCH_RELEASE_DATE: ${{ github.event.inputs.patch_release_date }}
+          PATCH_CANDIDATE_ISSUES: ${{ github.event.inputs.candidate_issues }}
+          NICKFURY_REF: ${{ github.event.inputs.nickfury_ref }}
+          PATCH_CANVOS_VERSION: ${{ github.event.inputs.canvos_version }}
+          PATCH_PALETTE_CLI_VERSION: ${{ github.event.inputs.palette_cli_version }}
+          PATCH_PALETTE_CLI_SHA: ${{ github.event.inputs.palette_cli_sha }}
+          PATCH_PALETTE_CLI_ARM64_SHA: ${{ github.event.inputs.palette_cli_arm64_sha }}
+          PATCH_PALETTE_CLI_MACOS_SHA: ${{ github.event.inputs.palette_cli_macos_sha }}
+          PATCH_COMPONENT_UPDATES: ${{ github.event.inputs.component_updates }}
         run: |
           touch .env
           PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
@@ -78,8 +124,13 @@ jobs:
           branch_name="${{ env.JIRA_TICKET }}-generate-patch-notes-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Commit and push the changes
-          git add docs/docs-content/release-notes/release-notes.md
+          # Commit and push the changes. A patch that bumps the CanvOS or Palette CLI version also
+          # updates the Edge Compatibility Matrix, the CLI Tools table, and the Palette CLI install
+          # page, so stage all four pages rather than only the release notes.
+          git add docs/docs-content/release-notes/release-notes.md \
+            docs/docs-content/clusters/edge/edge-compatibility-matrix.md \
+            docs/docs-content/downloads/cli-tools.md \
+            docs/docs-content/automation/palette-cli/install-palette-cli.md
           git commit -m "docs: add patch release notes for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 
@@ -96,7 +147,7 @@ jobs:
 
       - name: Success Slack Notification
         if: ${{ env.GITHUB_PATCH_RELEASE_NOTES_PR  != ''}}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
@@ -106,7 +157,7 @@ jobs:
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}

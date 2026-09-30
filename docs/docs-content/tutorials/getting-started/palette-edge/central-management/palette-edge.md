@@ -86,25 +86,25 @@ designed to guide you step-by-step, building on the concepts introduced in the p
       title: "Build Edge Artifacts",
       description: "Build the artifacts required for your Edge deployment.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/palette-edge/entral-management/build-edge-artifacts",
+      url: "/tutorials/getting-started/palette-edge/central-management/build-edge-artifacts",
     },
     {
       title: "Create Edge Cluster Profile",
       description: "Create an Edge native cluster profile to deploy Edge workloads.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/palette-edge/entral-management/edge-cluster-profile",
+      url: "/tutorials/getting-started/palette-edge/central-management/edge-cluster-profile",
     },
     {
       title: "Prepare Edge Host",
       description: "Install the Palette agent on your Edge host and register the host with Palette.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/palette-edge/entral-management/prepare-edge-host",
+      url: "/tutorials/getting-started/palette-edge/central-management/prepare-edge-host",
     },
     {
       title: "Deploy Edge Cluster",
       description: "Deploy an Edge cluster with Palette.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/palette-edge/entral-management/deploy-edge-cluster",
+      url: "/tutorials/getting-started/palette-edge/central-management/deploy-edge-cluster",
     },
   ]}
 />

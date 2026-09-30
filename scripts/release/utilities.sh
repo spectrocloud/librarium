@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Markers written into a documentation table or heading in place of a value that is not known yet.
+# Each names what is missing, so a reviewer can see what still needs filling and can grep the docs
+# for "PENDING". They live here because the script that decides a value is pending and the scripts
+# that write the rows are not the same script, and a marker that differs between them would publish
+# a cell that no later run recognises as still pending.
+PENDING_VERSION="VERSION PENDING"
+PENDING_URL="URL PENDING"
+PENDING_SHA="SHA PENDING"
+PENDING_DATE="DATE PENDING"
+PENDING_BODY="BODY PENDING"
+
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
 # $1 - template file, input file
@@ -83,6 +94,10 @@ generate_parameterised_file_local_vars() {
 insert_file_after() {
     local TEMP_FILE="scripts/release/temp_file.md"
 
+    # Start from an empty temp file. The loops below append to it, so a temp file left
+    # behind by an earlier failed run would otherwise be prepended to the target file.
+    : > "$TEMP_FILE"
+
     # Process the target file line by line
     local inserted=false
     while IFS= read -r line; do
@@ -114,6 +129,11 @@ insert_file_after() {
 # $4 - target file to insert into, example: downloads file
 insert_file_offset() {
     local TEMP_FILE="scripts/release/temp_file.md"
+
+    # Start from an empty temp file. The loop below appends to it, so a temp file left
+    # behind by an earlier failed run would otherwise be prepended to the target file.
+    : > "$TEMP_FILE"
+
     # Process the file line by line until we find the search term
     local inserted=false
     local line_counter=0
@@ -150,9 +170,28 @@ insert_file_offset() {
 # Params: 
 # $1 - search term, example: linux/cli/palette
 # $2 - target file to insert into, example: downloads file
+# The search term is matched literally, so the dots in a version string such as
+# "cli-4.9.4 -->" cannot act as regular expression wildcards and match "cli-4.9.48 -->".
 search_line() {
-    local line_number=$(grep -m1 -n "${1}" "$2" | cut -d: -f1)
+    local line_number=$(grep -m1 -nF "${1}" "$2" | cut -d: -f1)
     echo "$line_number"
+}
+
+# Utility function to search for a line within a bounded section of a target file. The scan
+# starts after the first line containing the anchor and stops at the first "</TabItem>", so
+# the same row anchor can exist in more than one tabbed table and each table stays searchable
+# in isolation. Prints the 1-based line number of the first match, or nothing when the needle
+# is not present between the anchor and the terminator. All matches are literal.
+# Params:
+# $1 - anchor whose line opens the search window, example: palette-cli-linux-arm64-table
+# $2 - literal needle to find after the anchor, example: cli-4.10.0 -->
+# $3 - target file to search
+search_line_after() {
+    awk -v anchor="$1" -v needle="$2" '
+      !found && index($0, anchor) { found = 1; next }
+      found && index($0, "</TabItem>") { exit }
+      found && index($0, needle) { print NR; exit }
+    ' "$3"
 }
 
 # Utility function to replace a line with a source file
@@ -182,35 +221,205 @@ replace_line() {
   mv "$tmp_file" "$target_file"
 }
 
+# Utility function to replace an inclusive region of a target file, delimited by a start and an end
+# marker, with the contents of a source file. Used to refresh a managed block of prose that a
+# re-run has to rewrite in full, such as a release note callout naming a component version that was
+# bumped on the day of release.
+#
+# A region rather than a single line, because Prettier reflows prose to 120 columns: the Automation
+# callout in the release notes runs past that and is published across two lines, so a replacement
+# keyed on one line would rewrite half a sentence.
+#
+# Both markers are matched literally, and nothing is changed unless both are present and the end
+# marker follows the start marker, so a half-marked block is left alone rather than mangled. The
+# markers themselves sit inside the region and are re-rendered from the template with it, which is
+# what lets the same region be replaced again on the next run.
+# Params:
+# $1 - literal start marker, example: <!-- release-notes-edge-callout-4.10.0-start -->
+# $2 - literal end marker, example: <!-- release-notes-edge-callout-4.10.0-end -->
+# $3 - source file whose contents replace the region, its own markers included
+# $4 - target file
+# Returns 0 if the region was replaced, 1 if it was not found.
+replace_region() {
+    local start_marker="$1"
+    local end_marker="$2"
+    local source_file="$3"
+    local target_file="$4"
+    local start_line end_line tmp_file
+
+    [[ -f "$target_file" ]] || return 1
+
+    start_line=$(search_line "$start_marker" "$target_file")
+    end_line=$(search_line "$end_marker" "$target_file")
+
+    if [[ -z "$start_line" || -z "$end_line" || "$end_line" -le "$start_line" ]]; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v start_line="$start_line" -v end_line="$end_line" -v source_file="$source_file" '
+      NR == start_line {
+        while ((getline line < source_file) > 0) {
+          print line
+        }
+        close(source_file)
+        next
+      }
+
+      NR > start_line && NR <= end_line { next }
+
+      { print }
+    ' "$target_file" > "$tmp_file"
+
+    mv "$tmp_file" "$target_file"
+}
+
 # Utility function to remove a file
-# Params: 
+# Params:
 # $1 - file name
 cleanup() {
     rm $1
 }
 
-# Utility function to fetch a single file's raw contents from a (private) GitHub
-# repository at a given ref, using a token-based REST call. Writes the raw file
-# body to stdout. Requires the GITHUB_TOKEN environment variable.
+# Utility function to delete every line of a file that contains a literal string. Used to drop
+# a table row that a later run has superseded, for example a placeholder row keyed on a release
+# version that has since been confirmed. Does nothing when no line matches.
+#
+# Every match is removed rather than only the first, because a row anchor can appear once per
+# tabbed table. The CLI Tools table carries one tab per Palette CLI architecture, so a superseded
+# release has a row under each, and leaving the later ones behind would strand placeholder rows in
+# every tab but the first.
+# Params:
+# $1 - literal search term, example: edge-compat-4.9.x -->
+# $2 - target file
+# Returns 0 if at least one line was removed, 1 if nothing matched.
+remove_line_containing() {
+    local search="$1"
+    local file="$2"
+    local tmp_file
+
+    if ! grep -qF "$search" "$file"; then
+        return 1
+    fi
+
+    tmp_file="$(mktemp)"
+
+    awk -v search="$search" '
+      index($0, search) { next }
+      { print }
+    ' "$file" > "$tmp_file"
+
+    mv "$tmp_file" "$file"
+}
+
+# Utility function to strip Super's inline citation markers from an answer, for example
+# {[5](https://spectrocloud.atlassian.net/browse/PE-9154)} or {[1](url), [2](url)}. Super started
+# appending these to sentences, and because the release scripts insert its answer verbatim they
+# land in the published release notes. Any leading space is taken with the marker so a sentence it
+# was appended to does not keep a trailing gap, and a line that held nothing but markers is dropped
+# rather than left blank. Real Markdown links are untouched because they are not brace-wrapped.
+# Reads the body on stdin, writes the stripped body to stdout.
+strip_super_citations() {
+    awk '
+      {
+        line = $0
+        had_content = (line ~ /[^ \t]/)
+
+        gsub(/[ \t]*\{[ \t]*(\[[0-9]+\](\([^()[:space:]]*\))?[,;[:space:]]*)+\}/, "", line)
+        sub(/[ \t]+$/, "", line)
+
+        if (line == "" && had_content) {
+          next
+        }
+
+        print line
+      }
+    '
+}
+
+# Utility function to normalise a Markdown body returned by Super before it is written into the
+# release notes. On top of stripping citation markers it puts a blank line either side of each
+# standalone HTML comment and then reflows the prose with Prettier, so a `<!-- ticket URL -->`
+# marker separates the bullets around it and list continuation lines are wrapped and indented.
+#
+# The blank lines have to be inserted before Prettier runs: while a comment sits directly under a
+# bullet, CommonMark absorbs it into that list item as an HTML block and Prettier then preserves
+# the whole list verbatim. Prettier also has to be told to use the Markdown parser, because
+# .prettierrc maps *.md to the MDX parser, which never reflows prose - that is why neither
+# `make format` nor a save in the editor corrects this after the fact.
+#
+# Consecutive comment lines are treated as one group and left packed together, matching how the
+# release notes already carry several ticket URLs above a single bullet.
+#
+# Reads the body on stdin, writes the normalised body to stdout.
+normalize_super_body() {
+    local stripped_file formatted_file
+    stripped_file="$(mktemp)"
+    formatted_file="$(mktemp)"
+
+    strip_super_citations | awk '
+      {
+        comment = ($0 ~ /^[ \t]*<!--.*-->[ \t]*$/)
+
+        if (comment && !prev_comment && printed && prev != "") {
+          print ""
+        }
+
+        if (!comment && prev_comment && $0 != "") {
+          print ""
+        }
+
+        print
+        prev = $0
+        prev_comment = comment
+        printed = 1
+      }
+    ' > "$stripped_file"
+
+    if npx --no-install prettier --config .prettierrc --parser markdown "$stripped_file" > "$formatted_file" 2>/dev/null; then
+        cat "$formatted_file"
+    else
+        echo "🟠 Prettier could not be run, so the Super response was inserted without prose wrapping. Run 'npm ci' and re-run this script, or wrap the new section by hand." >&2
+        cat "$stripped_file"
+    fi
+
+    rm -f "$stripped_file" "$formatted_file"
+}
+
+# Utility function to report whether the GitHub CLI can read a private Spectro Cloud repository.
+# Reading component versions from nickfury is always optional: it saves looking a version up by
+# hand, and every caller falls back to the values already in .env when it is not available. So this
+# is a capability check rather than a requirement, and a writer without the CLI is told what to set
+# up rather than being stopped.
+#
+# The CLI is used in place of a personal access token in .env, because Spectro Cloud issues
+# short-lived GitHub credentials through Bulwark rather than long-lived tokens. `gh` holds that
+# credential itself, and in CI it reads the token the workflow exports, so neither case needs a
+# token recorded in a file.
+github_cli_ready() {
+    command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1
+}
+
+# Utility function to fetch a single file's raw contents from a (private) GitHub repository at a
+# given ref, through the GitHub CLI. Writes the raw file body to stdout.
 # Params:
 # $1 - repository, example: spectrocloud/nickfury
 # $2 - ref (branch, tag, or SHA), example: v4.9.21
 # $3 - file path within the repo, example: release/spectro_versions.txt
+# Returns 1 if the CLI is unavailable or the file cannot be read.
 fetch_github_file() {
     local repo="$1"
     local ref="$2"
     local path="$3"
 
-    if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-        echo "🟠 GITHUB_TOKEN is empty or not set; cannot fetch $repo/$path." >&2
+    if ! github_cli_ready; then
+        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and run 'gh auth login' to look component versions up automatically." >&2
         return 1
     fi
 
-    curl -sfL \
-        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-        -H "Accept: application/vnd.github.raw" \
-        -H "X-GitHub-Api-Version: 2022-11-28" \
-        "https://api.github.com/repos/${repo}/contents/${path}?ref=${ref}"
+    gh api "repos/${repo}/contents/${path}?ref=${ref}" \
+        --header "Accept: application/vnd.github.raw" 2>/dev/null
 }
 
 # Utility function to read a "key=value" line from text on stdin and return the
@@ -222,16 +431,400 @@ get_keyed_value() {
     grep -m1 -E "^${1}=" | cut -d= -f2- | tr -d '[:space:]'
 }
 
+# Utility function to read a component version that is already documented in a Markdown
+# table, so a freshly sourced version can be compared against it. Reads the data rows of the table
+# that the "Palette Release" heading opens, skipping any row whose Palette Release cell matches the
+# release being generated. Skipping our own row is what lets a re-run compare against the previous
+# release rather than against the value it just wrote.
+#
+# The rows are ordered newest first across every release train, so 4.10.16 sits above 4.9.53. The
+# row that answers "what did the release before this one document" is therefore the newest row in
+# the same major.minor train, not the first row in the table: a 4.9 patch has to be compared
+# against 4.9.53, and comparing it against 4.10.16 would report every component as having moved and
+# resolve "the version already documented" to one from a newer train. The first row in the table is
+# used only when that train has no rows yet, which is the first patch documented in a new train.
+# Writes the trimmed cell value to stdout, or nothing if no such row exists.
+# Params:
+# $1 - Markdown file to read, example: docs/docs-content/clusters/edge/edge-compatibility-matrix.md
+# $2 - 1-based column number to return, example: 2 for CanvOS / Stylus / Edge Host Version
+# $3 - release to skip, example: 4.9.48. Its major.minor is the train that is preferred.
+# $4 - optional marker anchoring the table to read, example: palette-cli-linux-arm64-table.
+#      Defaults to the first release table in the file.
+# $5 - pass "any" to read the newest row in the table regardless of train, for a value that is not
+#      train-specific. Defaults to preferring the train named by $3.
+get_documented_table_version() {
+    local file="$1"
+    local column="$2"
+    local skip_release="$3"
+    local anchor="${4:-Palette Release}"
+    local scope="${5:-train}"
+    local train=""
+
+    [[ -f "$file" ]] || return 0
+
+    # Parameter expansion rather than a capture group, because BASH_REMATCH comes back empty under
+    # the bash 3.2 that ships with macOS while working under the bash 5 on the CI runner, and a
+    # train that silently resolves to empty reads the wrong row rather than failing.
+    if [[ "$scope" != "any" && "$skip_release" == *.*.* ]]; then
+        train="${skip_release%.*}."
+    fi
+
+    awk -v column="$column" -v skip_release="$skip_release" -v anchor="$anchor" -v train="$train" '
+      # The table starts at the heading row, and its separator row follows immediately.
+      !in_table && /^\|/ && index($0, "Palette Release") && index($0, anchor) { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        # Split on the pipes, which leaves field 1 empty and the cells in fields 2 onwards.
+        n = split($0, cells, "|")
+
+        release = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment, for example "<!-- edge-compat-4.9.38 -->", then trim.
+        gsub(/<!--[^>]*-->/, "", release)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release == skip_release) { next }
+
+        # Remember the newest row overall, in case this train has no rows at all.
+        if (newest == "") { newest = value }
+
+        if (train != "" && index(release, train) != 1) { next }
+
+        print value
+        found = 1
+        exit
+      }
+
+      END { if (!found) { print newest } }
+    ' "$file"
+}
+
+# Utility function to read a cell from the row a given release already occupies, so a re-run can
+# see what it is about to overwrite. This is the counterpart to get_documented_table_version, which
+# deliberately skips that row to find the previous release instead.
+# Writes the trimmed cell value to stdout, or nothing when the release has no row yet.
+#
+# A file can hold more than one release table, for example the CLI Tools table that carries a tab
+# per Palette CLI architecture. Pass the marker that anchors a particular table's heading row to
+# read that table rather than the first one in the file.
+# Params:
+# $1 - Markdown file to read
+# $2 - 1-based column number to return
+# $3 - the release whose row to read, example: 4.9.x
+# $4 - optional marker anchoring the table to read, example: palette-cli-linux-arm64-table.
+#      Defaults to the first release table in the file.
+get_table_cell_for_release() {
+    local file="$1"
+    local column="$2"
+    local release="$3"
+    local anchor="${4:-Palette Release}"
+
+    [[ -f "$file" ]] || return 0
+
+    awk -v column="$column" -v want="$release" -v anchor="$anchor" '
+      !in_table && /^\|/ && index($0, "Palette Release") && index($0, anchor) { in_table = 1; next }
+      !in_table { next }
+
+      # Skip the separator row between the heading and the data rows.
+      /^\|[ \t]*-+/ { next }
+
+      # A line that is not a table row ends the table.
+      !/^\|/ { exit }
+
+      {
+        n = split($0, cells, "|")
+
+        release_cell = cells[2]
+        value = cells[column + 1]
+
+        # Drop any anchor comment and the backticks a checksum cell is wrapped in, then trim.
+        gsub(/<!--[^>]*-->/, "", release_cell)
+        gsub(/<!--[^>]*-->/, "", value)
+        gsub(/`/, "", value)
+        gsub(/^[ \t]+|[ \t]+$/, "", release_cell)
+        gsub(/^[ \t]+|[ \t]+$/, "", value)
+
+        if (release_cell == want) {
+          print value
+          exit
+        }
+      }
+    ' "$file"
+}
+
+# Utility function to derive the SHA256 checksum of a published Palette CLI binary by
+# hashing it as it downloads, so the checksum column in the downloads table does not have
+# to be transcribed by hand. The binary is never written to disk. Sizes run from around
+# 300 MB to around 600 MB depending on the architecture, so the transfer is reported from
+# the Content-Length the availability check already returns rather than estimated.
+#
+# An unpublished version returns HTTP 403 with a short XML body, which would otherwise be
+# hashed into a plausible looking but wrong checksum, so the status code is checked before
+# the digest is trusted.
+# Params:
+# $1 - Palette CLI version, example: 4.9.19
+# $2 - optional URL suffix naming the architecture to hash, example: linux-arm64/cli/palette.
+#      Defaults to the Linux AMD64 binary.
+# Writes the checksum to stdout. Returns 1 if the binary is not available.
+fetch_palette_cli_sha() {
+    local version="$1"
+    local suffix="${2:-linux/cli/palette}"
+    local url="https://software.spectrocloud.com/palette-cli/v${version}/${suffix}"
+    local headers status bytes size_note digest
+
+    # Confirm the binary is published before downloading it, so a 403 response body is
+    # never hashed into a plausible looking but wrong checksum. The status code is appended
+    # to the headers so one request yields both it and the size reported below.
+    headers=$(curl -sS --head --write-out '\n%{http_code}' "$url" 2>/dev/null || printf '\n000')
+    status=$(printf '%s' "$headers" | tail -n 1)
+
+    if [[ "$status" != "200" ]]; then
+        echo "🟠 Palette CLI $version is not available at $url (HTTP $status)." >&2
+        return 1
+    fi
+
+    bytes=$(printf '%s' "$headers" | tr -d '\r' | awk 'tolower($1) == "content-length:" { print $2 }' | tail -n 1)
+
+    if [[ "$bytes" =~ ^[0-9]+$ ]]; then
+        size_note="around $((bytes / 1048576)) MB"
+    else
+        size_note="several hundred megabytes"
+    fi
+
+    echo "ℹ️  Downloading $url to derive its checksum. This transfers $size_note..." >&2
+
+    # shasum is the macOS spelling and sha256sum the usual Linux one, so accept either.
+    if command -v shasum >/dev/null 2>&1; then
+        digest=$(curl -sS --fail "$url" | shasum -a 256 | cut -d' ' -f1)
+    else
+        digest=$(curl -sS --fail "$url" | sha256sum | cut -d' ' -f1)
+    fi
+
+    if [[ ! "$digest" =~ ^[0-9a-f]{64}$ ]]; then
+        echo "🟠 Could not derive a checksum for $url." >&2
+        return 1
+    fi
+
+    printf '%s' "$digest"
+}
+
+# Utility function to format a YYYY-MM-DD date the way a release notes heading writes it, for
+# example "September 14, 2026". BSD date (macOS) is tried first and GNU date (Linux) second. An
+# empty date is refused rather than passed on, because the GNU fallback reads `date -d ""` as the
+# daylight saving time flag and silently returns today's date, which would date the release notes
+# wrongly instead of failing.
+# Params:
+# $1 - date in YYYY-MM-DD form
+# Prints the formatted date and returns 0, or returns 1 when the date cannot be parsed.
+format_release_date() {
+    local raw="$1"
+
+    if [[ -z "$raw" ]]; then
+        return 1
+    fi
+
+    if date -j -f "%Y-%m-%d" "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    if date -d "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    return 1
+}
+
+# Utility function to read issue keys out of arbitrary text, so a release ticket that names its
+# candidates in prose, as links, or as smart links rather than behind a saved search can still be
+# acted on. Matches the PROJECT-123 shape, and de-duplicates while keeping the order the keys were
+# written in, so the first mention decides where a key appears in the list.
+#
+# A key that is part of a longer word is skipped, because the shape also occurs inside URL path
+# segments and generated identifiers, and the security identifiers that share it, for example
+# CVE-2026, are skipped by prefix. awk does the matching rather than `grep -oE '\b...'`, because
+# the word boundary escape is a GNU extension and these scripts also run on macOS.
+# Reads text on stdin, writes one key per line to stdout.
+extract_issue_keys() {
+    awk '
+      {
+        line = $0
+
+        while (match(line, /[A-Z][A-Z0-9]+-[0-9]+/)) {
+          key = substr(line, RSTART, RLENGTH)
+          before = (RSTART > 1) ? substr(line, RSTART - 1, 1) : ""
+          line = substr(line, RSTART + RLENGTH)
+
+          if (before ~ /[A-Za-z0-9]/) { continue }
+          if (key ~ /^(CVE|CWE|CAPEC|CVSS|RFC|ISO|SOC|FIPS|NIST|UTF)-/) { continue }
+          if (seen[key]++) { continue }
+
+          print key
+        }
+      }
+    '
+}
+
+# Utility function to ask for a value on a terminal, offering what is already known as the default
+# so that confirming it costs one keystroke. This is the shape every release day question takes:
+# the script proposes the value it derived, and the writer either accepts it or replaces it with
+# what they have since been told.
+#
+# An empty reply takes the default, and so does a run with no terminal to prompt on, so an
+# unattended job never stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing default hint
+# $2 - default when the reply is empty or there is no terminal
+# Prints the answer to stdout. The prompt itself goes to stderr, so the answer can be captured
+# from a command substitution.
+prompt_with_default() {
+    local question="$1"
+    local default="$2"
+    local reply hint
+
+    if [[ -n "$default" ]]; then
+        hint=" [$default]"
+    else
+        hint=""
+    fi
+
+    if [[ ! -t 0 ]]; then
+        printf '%s' "$default"
+        return 0
+    fi
+
+    # bash writes a read prompt to standard error, so it is still seen when this function is
+    # called from a command substitution that captures standard output.
+    read -r -p "$question$hint: " reply || reply=""
+
+    printf '%s' "${reply:-$default}"
+}
+
+# Utility function to ask a yes or no question on a terminal, so a script can branch on what the
+# writer already knows rather than making them supply values that do not apply. An empty reply
+# takes the default, and so does a run with no terminal to prompt on, so an unattended job never
+# stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing "(y/n)"
+# $2 - default when the reply is empty or there is no terminal: "y" or "n"
+# Returns 0 for yes, 1 for no.
+confirm() {
+    local question="$1"
+    local default="$2"
+    local hint reply
+
+    if [[ "$default" == "y" ]]; then
+        hint="Y/n"
+    else
+        hint="y/N"
+    fi
+
+    if [[ ! -t 0 ]]; then
+        [[ "$default" == "y" ]] && return 0 || return 1
+    fi
+
+    while true; do
+        read -r -p "$question ($hint): " reply
+        reply="${reply:-$default}"
+
+        case "$reply" in
+            [Yy] | [Yy][Ee][Ss]) return 0 ;;
+            [Nn] | [Nn][Oo]) return 1 ;;
+            *) echo "   Answer y or n." >&2 ;;
+        esac
+    done
+}
+
 # Utility function to verify the presence of an environment variable
 # Params:
 # $1 - environment variable name
 check_env() {
     local var_name="$1"
 
-    if [[ -z "${!var_name}" ]]; then
+    if [[ -z "${!var_name:-}" ]]; then
         echo "🟠 '$var_name' is empty or not set."
         return 1
     fi
 
     return 0    
+}
+
+# Utility function to check whether the Super API currently accepts SUPER_API_TOKEN.
+# Super only issues personal API keys, and a key returns HTTP 401 until its owner has
+# signed in to https://app.super.work through SSO. The Super API has no unauthenticated
+# health endpoint to probe - routing happens before authentication, so every other path
+# returns 404 regardless of the token - so this sends a trivial question to the assistant.
+# Params:
+# $1 - Super assistant ID
+# Returns 0 if Super accepts the token, 1 if Super rejects it.
+check_super_auth() {
+    local assistant_id="$1"
+    local status
+
+    status=$(curl -s --max-time 60 \
+        --output /dev/null \
+        --write-out '%{http_code}' \
+        --request POST \
+        --url https://api.super.work/v1/super \
+        --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
+        --header "Content-Type: application/json" \
+        --data "$(jq -n --arg question "Reply with the single word OK." --arg assistantID "$assistant_id" '{question: $question, assistantId: $assistantID}')" || echo "000")
+
+    if [[ "$status" == "401" || "$status" == "403" ]]; then
+        return 1
+    fi
+
+    # Any other status, including a network failure reported as 000, is left for the
+    # calling script's own retry loop to handle.
+    return 0
+}
+
+# Utility function to confirm Super authentication before a script does any other work,
+# so a lapsed SSO session fails immediately instead of after every issue tracker call.
+# In an interactive terminal, a rejected token opens Super so that the SSO login can be
+# completed, waits, then checks again. There is no browser in CI, so the script stops.
+# Params:
+# $1 - Super assistant ID
+# Returns 0 if Super accepts the token, 1 if the script should stop.
+require_super_auth() {
+    local assistant_id="$1"
+
+    echo "Verifying that Super accepts SUPER_API_TOKEN..."
+
+    if check_super_auth "$assistant_id"; then
+        echo "✅ Super accepted SUPER_API_TOKEN."
+        return 0
+    fi
+
+    if [[ ! -t 0 || -n "${CI:-}" ]]; then
+        echo "❌ Super rejected SUPER_API_TOKEN (HTTP 401). Super API keys are personal and are only valid while their owner has a current SSO session. Sign in at https://app.super.work and run this job again." >&2
+        return 1
+    fi
+
+    echo "🔐 Super rejected SUPER_API_TOKEN (HTTP 401). Your Super SSO session has lapsed."
+
+    if command -v open >/dev/null 2>&1; then
+        open "https://app.super.work"
+    else
+        echo "ℹ️  Sign in to Super at https://app.super.work."
+    fi
+
+    read -r -p "Press Enter once you have signed in to Super: "
+
+    if check_super_auth "$assistant_id"; then
+        echo "✅ Super accepted SUPER_API_TOKEN."
+        return 0
+    fi
+
+    echo "❌ Super still rejects SUPER_API_TOKEN. Confirm that SUPER_API_TOKEN in your .env file matches a current key in your Super settings." >&2
+    return 1
 }

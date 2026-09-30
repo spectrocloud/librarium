@@ -26,6 +26,9 @@ This section contains documentation and guides for tools essential in automating
 
 - Palette MCP Server - Enables users to interact with the Palette APIs using natural language.
 
+- Documentation MCP Server - Enables users to query the Spectro Cloud documentation with natural language from any
+  MCP-capable AI tool.
+
 ## Resources
 
 - [Palette CLI](./palette-cli/palette-cli.md)
@@ -33,3 +36,4 @@ This section contains documentation and guides for tools essential in automating
 - [Palette Terraform Provider](./terraform/terraform.md)
 - [Palette Crossplane Provider](./crossplane/crossplane.md)
 - [Palette MCP Server](./palette-mcp/palette-mcp.md)
+- [Documentation MCP Server](./docs-mcp.md)

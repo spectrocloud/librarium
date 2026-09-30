@@ -40,6 +40,9 @@ axiosRetry(api, {
       case 404:
       case 501:
       case 429:
+      case 502:
+      case 503:
+      case 504:
         return true;
       default:
         return false;

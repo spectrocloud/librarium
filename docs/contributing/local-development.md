@@ -12,9 +12,9 @@ To contribute, we recommend having the following software installed locally on y
 
 - Git configured and access to the GitHub repository
 
-- Node.js v22 and npm.
+- Node.js v24 and npm.
 
-- [Vale](https://vale.sh/docs/vale-cli/installation/), version 3.6.0 or higher.
+- [Vale](https://docs.vale.sh/topics/quickstart), version 3.6.0 or higher.
 
 ## Local Development (Docker)
 

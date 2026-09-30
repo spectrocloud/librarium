@@ -25,6 +25,70 @@ if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
 
 let redirects = [
   {
+    from: `/vm-management/launchpad-for-vms/`,
+    to: `/vm-management/vm-launchpad/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/install-vmla-iso/`,
+    to: `/vm-management/vm-launchpad/install/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/getting-started-wiz/`,
+    to: `/vm-management/vm-launchpad/getting-started-wiz/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/quick-start/`,
+    to: `/vm-management/vm-launchpad/quick-start/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/troubleshooting/`,
+    to: `/vm-management/vm-launchpad/troubleshooting/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/vmo-networking/`,
+    to: `/vm-management/vm-launchpad/vmo-networking/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/vmo-overcommit-memory-optimization-appliance/`,
+    to: `/vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/creating/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/creating/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/managing/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/managing/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/templates/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/templates/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/golden-images/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/golden-images/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/image-customization/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/image-customization/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/instance-types/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/instance-types/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/snapshots/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/snapshots/`,
+  },
+  {
+    from: `/vm-management/launchpad-for-vms/virtual-machines/packages/`,
+    to: `/vm-management/vm-launchpad/virtual-machines/packages/`,
+  },
+  {
     from: `/api/`,
     to: `/api/introduction/`,
   },
@@ -1007,6 +1071,24 @@ let redirects = [
   {
     from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image/`,
     to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-rhel-stig-image/`,
+  },
+
+  // Image Pull Secret
+
+  {
+    from: `/enterprise-version/configure-image-pull-secret/`,
+    to: `/enterprise-version/system-management/configure-image-pull-secret/`,
+  },
+  {
+    from: `/vertex/configure-image-pull-secret/`,
+    to: `/vertex/system-management/configure-image-pull-secret/`,
+  },
+
+  // Palette MCP: Gemini CLI replaced by Antigravity CLI
+
+  {
+    from: `/automation/palette-mcp/setup/mcp-setup-gemini/`,
+    to: `/automation/palette-mcp/setup/mcp-setup-antigravity/`,
   },
 ];
 

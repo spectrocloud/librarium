@@ -96,15 +96,26 @@ management.
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
-   import a cluster definition file. The embedded config uses a cluster definition you included during the creation of
-   the ISO image you used to install Palette Edge on your Edge host. For local clusters, we recommend the profile for
-   your deployed cluster contain a primary registry to lower bandwidth usage and protect against outages. For more
-   information, refer to
+   import a cluster definition file. When the ISO contains embedded content, **embedded config** is selected by default.
+   The embedded config uses a cluster definition you included during the creation of the ISO image you used to install
+   Palette Edge on your Edge host. For local clusters, we recommend the profile for your deployed cluster contain a
+   primary registry to lower bandwidth usage and protect against outages. For more information, refer to
    [Deploy with a Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
    :::warning
 
    A primary registry is required for locally managed multi-node clusters without internet connectivity.
+
+   :::
+
+   :::info
+
+   On Edge hosts with an [`applianceType`](../../edge-configuration/installer-reference.md) of `paletteai`, `vertexai`,
+   `vm-launchpad`, `vm-launchpad-vertex`, `ai-launchpad`, or `ai-launchpad-vertex`, the **Import config** option is
+   hidden. These appliances always deploy from the content bundle and its embedded cluster definition. If no content is
+   available on the appliance, for example after a cluster deletion, the wizard blocks the redeploy and prompts you to
+   re-upload a content bundle or reinstall the appliance with an installer ISO that contains embedded content. Refer to
+   [Recover a Deleted Cluster](./delete-cluster.md#recover-a-deleted-cluster).
 
    :::
 
@@ -139,6 +150,16 @@ management.
    For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
    you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
    the control plane will be considered a leader node.
+
+   :::info
+
+   When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control
+   plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it
+   is automatically added again by the Palette Edge node agent. To keep the taint removed, add
+   `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in the OS pack before creating the cluster. For more
+   information, refer to [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+
+   :::
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.

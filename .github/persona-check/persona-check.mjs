@@ -60,7 +60,8 @@ function resolveBaseQuestion() {
   return config.questions[key] || config.questions[config.defaultQuestion];
 }
 
-const question = `${resolveBaseQuestion()}\n${config.formatSuffix}`;
+const baseQuestion = resolveBaseQuestion();
+const question = `${baseQuestion}\n${config.formatSuffix}`;
 
 // Pull the "## Simulation Response" body out of an Impersonaid output file.
 function extractResponse(md) {
@@ -73,6 +74,12 @@ function extractResponse(md) {
 function extractPersona(md) {
   const m = md.match(/^- \*\*Persona\*\*:\s*(.+)$/m);
   return m ? m[1].trim() : "unknown";
+}
+
+// Read the actual model name Impersonaid recorded in the output file header.
+function extractModel(md) {
+  const m = md.match(/^- \*\*Model\*\*:\s*(.+)$/m);
+  return m ? m[1].trim() : "";
 }
 
 function modelFlags() {
@@ -118,39 +125,86 @@ function reviewFile(relPath, index) {
     maxBuffer: 20 * 1024 * 1024,
   });
 
+  // Combined output, last lines only — Impersonaid logs the real reason here.
+  const combined = `${result.stdout || ""}\n${result.stderr || ""}`.trim();
+  const tail = combined.split("\n").filter(Boolean).slice(-20).join("\n") || "no output";
+
   if (result.status !== 0) {
-    const detail = (result.stderr || result.stdout || "no output").trim().split("\n").slice(-5).join("\n");
-    return { relPath, ok: false, persona: "—", body: `Impersonaid run failed:\n\n\`\`\`\n${detail}\n\`\`\`` };
+    console.error(`[persona-check] ${relPath}: exit ${result.status}\n${combined}`);
+    return { relPath, ok: false, persona: "—", body: `Impersonaid exited with code ${result.status}:\n\n\`\`\`\n${tail}\n\`\`\`` };
   }
 
   const files = fs.readdirSync(outDir).filter((f) => f.endsWith(".md"));
   if (files.length === 0) {
-    return { relPath, ok: false, persona: "—", body: "Impersonaid produced no output file." };
+    // Impersonaid returns 0 even when it aborts early (missing/invalid API key,
+    // document-fetch failure, invalid request). Surface its output so the cause
+    // is visible instead of a bare "no output file".
+    console.error(`[persona-check] ${relPath}: no output file (exit 0)\n${combined}`);
+    return {
+      relPath,
+      ok: false,
+      persona: "—",
+      body:
+        "Impersonaid exited cleanly but wrote no output file. This usually means the run aborted early " +
+        "(missing/invalid API key, document fetch failure, or invalid request). Impersonaid output:\n\n" +
+        `\`\`\`\n${tail}\n\`\`\``,
+    };
   }
   const md = fs.readFileSync(path.join(outDir, files[0]), "utf8");
-  return { relPath, ok: true, persona: extractPersona(md), body: extractResponse(md) };
+  return { relPath, ok: true, persona: extractPersona(md), model: extractModel(md), body: extractResponse(md) };
 }
+
+console.log(
+  `[persona-check] provider=${provider} ` +
+    `model=${modelOverride || config.defaultModel?.[provider] || "(impersonaid default)"} ` +
+    `files=${selected.length} ` +
+    `CLAUDE_API_KEY=${!!process.env.CLAUDE_API_KEY} ` +
+    `ANTHROPIC_API_KEY=${!!process.env.ANTHROPIC_API_KEY} ` +
+    `OPENAI_API_KEY=${!!process.env.OPENAI_API_KEY}`,
+);
 
 const results = selected.map((f, i) => reviewFile(f.path, i));
 
 // ---------------------------------------------------------------------------
 // Build the aggregated comment body.
 // ---------------------------------------------------------------------------
-const modelLabel = modelOverride || config.defaultModel?.[provider] || `${provider} default`;
+// Prefer the actual model name Impersonaid reported; fall back to any override
+// or configured default, then a generic label if every run failed.
+const realModel = results.find((r) => r.model)?.model || modelOverride || config.defaultModel?.[provider] || `${provider} default`;
+// "(default)" when the user did not pin a model (and we have a real name to mark).
+const defaultMarker = !modelOverride && !/default/i.test(realModel) ? " (default)" : "";
+
+// "YYYY-MM-DD HH:MM UTC" — the comment updates in place, so a stamp tells
+// reviewers when it last ran.
+const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
+
 const lines = [];
 lines.push(MARKER);
 lines.push("## 🤖 Persona check");
 lines.push("");
 lines.push(
   `Reviewed **${results.length}** file${results.length === 1 ? "" : "s"} using ` +
-    `provider \`${provider}\` (model: \`${modelLabel}\`)` +
+    `provider \`${provider}\` (model: \`${realModel}\`${defaultMarker}).` +
     (personaInput && personaInput.toLowerCase() !== "auto"
-      ? `, persona \`${personaInput}\`.`
-      : ", persona auto-selected per file.")
+      ? ` Persona: \`${personaInput}\`.`
+      : " Persona auto-selected per file.")
 );
 lines.push("");
+
+// Warn when files were dropped by the per-run cap so the omission is visible.
+const cappedCount = parseInt(env("PC_CAPPED", "0"), 10) || 0;
+if (cappedCount > 0) {
+  const cap = env("PC_CAP", "").trim();
+  lines.push(
+    `> ⚠️ **${cappedCount}** additional changed file${cappedCount === 1 ? "" : "s"} ` +
+      `${cappedCount === 1 ? "was" : "were"} not reviewed because the per-run limit` +
+      `${cap ? ` of ${cap}` : ""} was reached (the largest edits were reviewed first). ` +
+      "Re-run with `/persona-check max_files=<n>` to raise it (`0` = no limit).",
+  );
+  lines.push("");
+}
 lines.push(
-  `<sub>Triggered by ${trigger}. Powered by [Impersonaid](https://github.com/spectrocloud/impersonaid). This is automated UX feedback, not a substitute for human review.</sub>`
+  `<sub>Last updated ${stamp} · Triggered by ${trigger}. Powered by [Impersonaid](https://github.com/spectrocloud/impersonaid). This is automated UX feedback, not a substitute for human review.</sub>`
 );
 lines.push("");
 
@@ -160,11 +214,18 @@ for (const r of results) {
     : `⚠️ <code>${r.relPath}</code> — not reviewed`;
   lines.push(`<details><summary>${summary}</summary>`);
   lines.push("");
+  lines.push(`**Question asked:** ${baseQuestion}`);
+  lines.push("");
+  lines.push(r.ok ? "**Answer:**" : "**Result:**");
+  lines.push("");
   lines.push(r.body);
   lines.push("");
   lines.push("</details>");
   lines.push("");
 }
+
+lines.push(config.usage);
+lines.push("");
 
 fs.writeFileSync(outputPath, lines.join("\n"));
 console.log(`Wrote persona-check comment for ${results.length} file(s) to ${outputPath}`);

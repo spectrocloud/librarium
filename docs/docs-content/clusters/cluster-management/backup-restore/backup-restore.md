@@ -59,7 +59,7 @@ object storage solutions as backup locations.
 
 - Google Cloud Platform (GCP) bucket
 
-- MinIO S3 bucket
+- S3 Compatible Storage, such as a MinIO bucket
 
 - Azure blob storage
 
@@ -82,12 +82,12 @@ credentials for all cloud service providers. You can also use dynamic credential
 
 Review the table below to learn more about what cloud providers and credentials methods are supported.
 
-| **Service Provider** | **Static Credentials Support** | **Dynamic Credentials Support** |
-| -------------------- | ------------------------------ | ------------------------------- |
-| AWS                  | ✅                             | ✅                              |
-| GCP                  | ✅                             | ❌                              |
-| MinIO                | ✅                             | ❌                              |
-| Azure                | ✅                             | ❌                              |
+| **Service Provider**  | **Static Credentials Support** | **Dynamic Credentials Support** |
+| --------------------- | ------------------------------ | ------------------------------- |
+| AWS                   | ✅                             | ✅                              |
+| GCP                   | ✅                             | ❌                              |
+| S3 Compatible Storage | ✅                             | ❌                              |
+| Azure                 | ✅                             | ❌                              |
 
 To learn more about adding a backup location, check out the
 [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static)

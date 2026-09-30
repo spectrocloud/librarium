@@ -46,8 +46,8 @@ However, this process is also executed automatically when you build the Edge ins
 
 :::deprecated
 
-The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
-[Palette CLI](/automation/palette-cli/) CanvOS directory instead.
+The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the CanvOS
+directory instead.
 
 :::
 

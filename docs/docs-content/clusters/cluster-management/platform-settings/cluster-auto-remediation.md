@@ -15,6 +15,10 @@ feature will disable auto remediation. This feature can work under two scopes:
 
 - Project
 
+You can also override the default Machine Health Check settings per node pool on Palette eXtended Kubernetes (PXK)
+infrastructure clusters. Palette honors these per-pool overrides only when this feature is enabled at the tenant or
+project level. For more information, refer to [Node Pools](../node-pool.md#node-pool-configuration-settings).
+
 :::warning
 
 This feature does not apply to EKS or AKS clusters.

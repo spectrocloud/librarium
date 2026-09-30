@@ -12,6 +12,17 @@ tags: ["packs", "metallb", "network"]
 
 <RedirectPackPage packName="lb-metallb-helm" />
 
+:::info
+
+On Day-1 cluster provisioning, `helm history` for this pack may temporarily show multiple failed revisions
+before a successful revision. Helm 4.0 applies a chart's manifests in an order that can submit the
+`IPAddressPool` custom resource before the MetalLB validating webhook pod is ready, causing the early
+revisions to fail. The pack install completes on its own once the webhook becomes ready, and the final
+cluster state is healthy. This is a known Helm 4.0 behavior tied to in-chart manifest install order, not a
+product defect. Refer to [Known Issues](../release-notes/known-issues.md) for more information.
+
+:::
+
 ## Versions Supported
 
 <Tabs queryString="parent">

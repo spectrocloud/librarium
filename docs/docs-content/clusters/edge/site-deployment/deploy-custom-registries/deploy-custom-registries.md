@@ -30,7 +30,9 @@ You can use any OCI-compliant registry as the primary registry. Palette provides
 configuration with [Zot](https://zotregistry.dev) and [Harbor](https://goharbor.io/). For central Edge clusters, a
 primary registry can still help you reduce network bandwidth usage and protect against outages.
 
-For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md).
+For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md). To upgrade an
+existing cluster so that the in-cluster Zot primary registry rotates its TLS certificate automatically, refer to
+[Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](./enable-zot-cert-rotation.md).
 
 ## Provider Image Registry
 
@@ -42,7 +44,9 @@ from the provider image registry specified in the OS pack of the cluster profile
 Palette supports downloading provider images from authenticated registries. If your cluster needs to download provider
 images from a authenticated registry, you need to provide the credentials to access the registry in the OS pack of the
 cluster profile. For more information, refer to
-[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md).
+[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md). To pull provider images from a private
+Amazon ECR repository using token authentication, refer to
+[Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md).
 
 ## External Registry
 

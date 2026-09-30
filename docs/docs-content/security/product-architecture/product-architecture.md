@@ -80,7 +80,7 @@ Palette uses JSON Web Token (JWT)-based authentication and authorization for Rep
 access over HTTPS.
 
 The authentication token is valid for a limited time. If the token is about to expire, you can request a token refresh
-before making other API calls.
+before making other API calls. Tokens are revoked when a user logs out or changes their password.
 
 Palette has a common API gateway validation service that ensures there are no incorrect parameter values or potential
 vulnerabilities, such as Structured Query Language (SQL) injection or cross-site scripting.

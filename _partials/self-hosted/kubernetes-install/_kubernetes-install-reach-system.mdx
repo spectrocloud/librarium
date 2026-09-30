@@ -1,0 +1,44 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-reach-system
+---
+
+_(Proxy environments only)_ If you are installing {props.version} in an environment where a network proxy must be
+    configured for {props.version} to access the internet, install the Reach System chart using the following command.
+    
+    :::warning
+    
+    Ensure you
+    set `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in <code>{props.helm}/values.yaml</code> as well.
+
+    :::
+
+    <CodeBlock language="shell">{`helm upgrade --values ${props.helm}/values.yaml \\\n  reach-system extras/reach-system/reach-system-*.tgz --install`}</CodeBlock>
+
+    ```shell hideClipboard title="Example output"
+    Release "reach-system" does not exist. Installing it now.
+    NAME: reach-system
+    LAST DEPLOYED: Fri Jan 30 18:40:57 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+    <details>
+
+        <summary>Update containerd to use proxy configurations</summary>
+
+        If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+        settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+        configuration file is typically located at `/etc/systemd/system/containerd.service.d/http-proxy.conf`. The following example shows configured proxy settings. Replace the values with your proxy settings. Ask your network administrator for
+        guidance.
+
+        ```
+        [Service]
+        Environment="HTTP_PROXY=http://example.com:9090"
+        Environment="HTTPS_PROXY=http://example.com:9090"
+        Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+        ```
+
+    </details>

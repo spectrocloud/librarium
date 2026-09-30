@@ -577,8 +577,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    :::warning
 
    VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
-   [Launchpad for VMs appliance](../launchpad-for-vms/launchpad-for-vms.md), require explicit storage map settings for
-   migrated VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
+   [VM Launchpad](../vm-launchpad/vm-launchpad.md), require explicit storage map settings for migrated VM disks. Ensure
+   the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
 
    ```yaml {4-5}
    spec:
@@ -589,6 +589,18 @@ Follow this guide to create migration plans using the VM Migration Assistant.
            storageClass: vmo-sc
          source:
    ```
+
+   If the target storage class resolves to `Block` volume mode by default, setting these fields in the storage map alone
+   may not be enough. In that case, create a dedicated storage class that uses the same provisioner and parameters as
+   your default storage class, and patch its `StorageProfile` to force `Filesystem` volume mode, then map the source
+   storage to it.
+
+   Note the following tradeoff: on block-based storage such as LINSTOR/DRBD, `Filesystem` mode is `ReadWriteOnce`
+   (`RWO`) only. VMs migrated this way **cannot be live-migrated**, because KubeVirt live migration requires
+   `ReadWriteMany` (`RWX`), which is only available in `Block` mode on this storage.
+
+   If migrations fail during guest conversion with an `nbdkit` block-size error, refer to
+   [Troubleshooting VM Launchpad](../vm-launchpad/troubleshooting.md#scenario---vm-migration-fails-during-guest-conversion-on-block-based-storage).
 
    :::
 
