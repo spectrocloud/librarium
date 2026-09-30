@@ -335,7 +335,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-9521 -->
 
 - The **Edge Hosts** page now shows the Palette agent version installed on each Edge host and indicates when a newer
-  version is available, so you can see which hosts are behind and the version they would upgrade to. Refer to
+  version is available, so you can determine which hosts are behind and the version they would upgrade to. Refer to
   [Identify the Latest Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-latest-palette-agent-version)
   for more information.
 
