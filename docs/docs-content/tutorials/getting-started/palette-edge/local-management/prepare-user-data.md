@@ -43,15 +43,12 @@ main configuration blocks:
 - `stylus`:
   [Palette agent parameters](../../../../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters)
   that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions.
-  The following configuration snippet specifies that the Edge device will be locally managed, and the
-  [Terminal User Interface (TUI)](../../../../clusters/edge/site-deployment/site-installation/initial-setup.md) will be
-  installed.
+  The following configuration snippet specifies that the Edge device is locally managed.
 
   ```shell
   #cloud-config
   stylus:
     managementMode: local
-    includeTui: true
   ```
 
 - `install`: The `install` block allows you to configure bind mounts, disk partitions, and post-installation actions
@@ -142,7 +139,6 @@ cat << EOF > user-data
 #cloud-config
 stylus:
   managementMode: local
-  includeTui: true
 
 install:
   poweroff: true
@@ -181,7 +177,6 @@ example for both the username and password.
 #cloud-config
 stylus:
   managementMode: local
-  includeTui: true
 
 install:
   poweroff: true
