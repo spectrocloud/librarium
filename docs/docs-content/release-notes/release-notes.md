@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 1, 2026 - Release 4.10.17-patch.1
+
+<!-- PATCH RELEASE TICKET: DOC-3263 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.1 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12137 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12137 -->
+
+- Applied security fixes to improve the platform's security posture. We recommend upgrading to this release.
+
 ## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3241 -->
