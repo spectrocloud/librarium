@@ -12,7 +12,7 @@ export default function SecondaryMenuWrapper(props: Props): JSX.Element {
     <>
       <SecondaryMenu {...props} />
       <div className={styles.mobilePrimaryMenu}>
-        <PrimaryMenu className={styles.mobileMenu}></PrimaryMenu>
+        <PrimaryMenu className={styles.mobileMenu} excludeRightItems />
       </div>
     </>
   );

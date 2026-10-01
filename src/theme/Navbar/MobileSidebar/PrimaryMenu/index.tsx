@@ -9,16 +9,22 @@ function useNavbarItems() {
 }
 
 interface NavbarMobilePrimaryMenuProps {
-  className: string;
+  className?: string;
+  /** When true, omit right-position items (used by the docs-sidebar bottom strip). */
+  excludeRightItems?: boolean;
 }
 
 // The primary menu displays the navbar items
-export default function NavbarMobilePrimaryMenu({ className }: NavbarMobilePrimaryMenuProps): JSX.Element {
+export default function NavbarMobilePrimaryMenu({
+  className,
+  excludeRightItems = false,
+}: NavbarMobilePrimaryMenuProps): JSX.Element {
   const mobileSidebar = useNavbarMobileSidebar();
 
   // TODO how can the order be defined for mobile?
   // Should we allow providing a different list of items?
-  const [items] = splitNavbarItems(useNavbarItems());
+  const allItems = useNavbarItems();
+  const items = excludeRightItems ? splitNavbarItems(allItems)[0] : allItems;
 
   return (
     <ul className={`menu__list ${className ? className : ""}`}>

@@ -58,8 +58,23 @@ nav a,
   height: 2.5rem !important;
 }
 
-.navbar__link {
-  white-space: nowrap;
+// Wide desktop: keep labels on one line so they do not spill below the navbar.
+@media (min-width: 1300px) {
+  .navbar__link {
+    white-space: nowrap;
+  }
+}
+
+// Tablet widths: allow wrapping, hide the external link, and tighten spacing.
+@media (min-width: 997px) and (max-width: 1299px) {
+  .navbar__item {
+    padding-left: 0.375rem;
+    padding-right: 0.375rem;
+  }
+
+  .navbar__item.navbar-spectrocloud-link {
+    display: none;
+  }
 }
 
 .markdown h1:first-child {
