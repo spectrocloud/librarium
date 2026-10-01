@@ -20,6 +20,23 @@ runtime instead of embedding them in the provider image. This reduces provider i
 image serve multiple Kubernetes versions on the same host. This capability applies to appliance mode Edge clusters in
 both connected and airgapped environments.
 
+## How systemd Extensions Work
+
+With systemd extensions, the provider image no longer carries the Kubernetes and Palette Agent binaries. Palette
+packages each component as a system-extension image, a `.sysext.raw` file, and the Palette Edge agent (Stylus) applies
+it to the host at runtime.
+
+When the host boots, Stylus resolves the extensions that match the Kubernetes distribution and version in your cluster
+profile, pulls each extension, verifies its signature, and stages it under `/var/lib/extensions`. The `systemd-sysext`
+service then overlays the extensions onto the read-only `/usr` and `/opt` directories, so the Kubernetes and Palette
+Agent binaries become available on the host without modifying the base operating system.
+
+Because the binaries are delivered as overlays instead of being embedded in the provider image, a single minimal
+provider image can serve multiple Kubernetes versions. To change the Kubernetes version, you update the Kubernetes pack
+in the cluster profile, and Stylus applies the matching extension during the upgrade.
+
+<!-- TODO(DOC-3260): insert the systemd extensions architecture diagram here (draw.io export to webp). Diagram spec is in the PR description. -->
+
 ## Support Requirements
 
 - **Palette Edge agent 4.10.13** (Stylus) or later on the cluster. When Stylus is pinned to an earlier release, systemd
@@ -44,6 +61,15 @@ binaries when systemd extensions are available.
 
 ## Upgrade an Existing Cluster
 
+:::warning
+
+An operating system upgrade and a Kubernetes upgrade are separate operations. An operating system upgrade requires a
+provider image referenced through `system.uri`, and a Kubernetes upgrade is a separate change to the Kubernetes pack.
+Upgrading both the operating system and Kubernetes is therefore two separate operations with two maintenance windows.
+Plan your maintenance windows accordingly.
+
+:::
+
 The first upgrade after adopting CanvOS 4.10.3 requires a provider image that ships the aligned Palette Agent version.
 Subsequent Kubernetes upgrades run without a provider image.
 
@@ -62,6 +88,20 @@ Subsequent Kubernetes upgrades run without a provider image.
 Operating system package upgrades require a provider image built from a supported CanvOS release. Reference the image
 through `system.uri` in the BYOOS pack, and refer to [Support Requirements](#support-requirements) for the minimum
 version.
+
+## Container Runtime Configuration
+
+When systemd extensions deliver the container runtime, the host does not use a standalone `/etc/containerd/config.toml`
+file. The extension provides the base containerd configuration, and containerd loads additional settings from drop-in
+files in the `conf.d` directory.
+
+Apply any custom containerd configuration through the cluster profile as drop-in files rather than editing
+`/etc/containerd/config.toml` on the host. Configuration that you previously set in `config.toml` must move to a drop-in
+file, including:
+
+- **Registry mirroring.** Define registry mirror endpoints and their TLS settings in a drop-in file.
+- **GPU workloads.** Configure the NVIDIA container runtime as an additional or default runtime in a drop-in file.
+- **Virtual Machine Orchestrator (VMO).** Apply the containerd tuning that VM workloads require in a drop-in file.
 
 ## Unified Kernel Image (UKI) Considerations
 
