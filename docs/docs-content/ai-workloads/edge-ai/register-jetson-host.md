@@ -364,12 +364,8 @@ across restarts, add a storage layer to the cluster profile and mount a `Persist
 
 ## Next steps
 
-The Jetson device now runs a local AI model managed by Palette. To learn about ongoing operations, continue to
+The Jetson device now runs a local AI model managed by Palette. To learn about ongoing operations, continue to the Day 2
+operations guide. For a complete end-to-end guide, refer to the tutorial.
 
-<!-- TODO(DOC-3091): link the Day 2 operations page once it exists. -->
-
-the Day 2 operations guide. For a complete end-to-end guide, refer to
-
-<!-- TODO(DOC-3092): link the "Run a local AI model on a Jetson at the edge" tutorial once it exists. -->
-
-the tutorial.
+<!-- TODO(DOC-3091): link the Day 2 operations page (day-2-operations.md) here once it is merged. -->
+<!-- TODO(DOC-3092): link the Jetson Edge AI tutorial here once it is merged. -->

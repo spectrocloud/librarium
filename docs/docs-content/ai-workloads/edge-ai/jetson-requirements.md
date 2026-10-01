@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Jetson Requirements"
-title: "Jetson Requirements"
+sidebar_label: "Requirements"
+title: "Requirements for Edge AI on NVIDIA Jetson"
 description:
   "Hardware, operating system, and Palette requirements for running Edge AI workloads on an NVIDIA Jetson device."
 hide_table_of_contents: false
@@ -36,22 +36,24 @@ NAT is supported without inbound firewall rules or a [Private Cloud Gateway (PCG
 serves private-cloud data center environments where Palette reaches a private infrastructure API, which does not apply
 to an Edge host.
 
-The device requires outbound HTTPS access to the following:
+The device requires outbound HTTPS (TCP 443) access to the following:
 
 - The Palette SaaS endpoint, `console.spectrocloud.com`.
-- The image registries that host the packs and images your cluster profile uses.
+- The Palette image registries that host the agent image, packs, and images your cluster profile uses.
 
-If your network restricts egress, configure a proxy on the host with the `HTTP_PROXY`, `HTTPS_PROXY`, and
-`PROXY_CERT_PATH` settings.
+If your network restricts egress, export the proxy configuration in your terminal session before you install the agent.
+Set the `http_proxy` and `https_proxy` variables, in both lowercase and uppercase forms. Refer to the proxy step in
+[Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md#enablement) for the exact commands.
 
-<!-- VERIFY(DOC-3089): Confirm the exact outbound endpoints and ports the agent needs (Palette SaaS + image registries) against the Edge / agent-mode network requirements docs, and validate proxy behavior on the Thor once it registers. Follow-up: add a network diagram of the agent-mode outbound flow (Jetson on a private LAN making outbound HTTPS to Palette SaaS and the registries). -->
+<!-- Resolved (DOC-3089) 2026-09-14: outbound is HTTPS/443 to console.spectrocloud.com plus the Palette image registries (the agent image pulls from Palette's registry, confirmed in the Thor install log). Proxy variables corrected to http_proxy/https_proxy per install-agent-host.md (there is no PROXY_CERT_PATH in the agent-mode flow). Proxy behavior itself is not yet validated on the Thor (this unit is not behind a proxy). Follow-up TODO(DOC-3089): add a diagram of the agent-mode outbound flow (Jetson on a private LAN making outbound HTTPS to Palette SaaS and the registries). -->
 
 ## Hardware requirements
 
-The following table lists the agent mode minimum requirements alongside the specifications of the Jetson AGX Thor
-Developer Kit, which exceeds them comfortably.
+The following table lists the agent mode minimum requirements alongside the specifications of the NVIDIA Jetson AGX Thor
+Developer Kit, which exceeds them comfortably. The minimum values match the agent mode prerequisites on
+[Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md).
 
-<!-- VERIFY(DOC-3089): The "Minimum (agent mode)" column uses the prerequisite values from deployment-modes/agent-mode/install-agent-host.md (2 CPU / 8 GB / 100 GB). Note that deployment-modes/agent-mode/architecture.md lists different numbers (4 cores / 4 GB / 32 GB SSD). This is a discrepancy between two published pages; reconcile it (and confirm which is authoritative) before publishing. -->
+<!-- Resolved (DOC-3089) 2026-09-14: 2 CPU / 8 GB / 100 GB SSD is the authoritative agent-mode minimum, confirmed against install-agent-host.md and the engineering KB. The 4-core / 4 GB / 32 GB values on deployment-modes/agent-mode/architecture.md are outdated legacy guidance tracked for correction under DOC-1172; do not reconcile that here. -->
 
 | Component | Minimum (agent mode)  | Jetson AGX Thor Developer Kit                       |
 | --------- | --------------------- | --------------------------------------------------- |
@@ -60,22 +62,35 @@ Developer Kit, which exceeds them comfortably.
 | Storage   | 100 GB, SSD required  | 1 TB NVMe SSD                                       |
 | GPU       | Integrated NVIDIA GPU | NVIDIA Blackwell, 2,560 CUDA cores, 96 Tensor cores |
 
-## Operating system
+## Host Operating System
 
 The Jetson device runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which provides a Jetson Linux
 (L4T) operating system built on Ubuntu. For instructions on installing JetPack, refer to
 [Prepare the Jetson Host](./prepare-jetson-host.md).
 
-<!-- VERIFY(DOC-3089): Record the validated JetPack version, L4T (Linux for Tegra) version, Ubuntu base version, and CUDA version from the device. NVIDIA's current release is JetPack 7.2.1 (Jetson Linux L4T r39.2.1). The value 38.0.0-gcid-41245178 the device reports is the factory UEFI firmware version, not the JetPack/L4T version. Capture the real OS values with `cat /etc/nv_tegra_release`, `apt-cache show nvidia-jetpack`, and `lsb_release -a`, then confirm the supported combination with engineering (Rishi / DOC-3093). -->
+For more information about NVIDIA JetPack and Jetson Linux, including troubleshooting, refer to the
+[NVIDIA Jetson Software Documentation](https://docs.nvidia.com/jetson/index.html).
+
+This guide is validated on the operating system versions in the following table.
+
+| Component    | Validated version        |
+| ------------ | ------------------------ |
+| JetPack      | 7.2.1                    |
+| Jetson Linux | L4T r39.2.1              |
+| Ubuntu base  | 24.04 LTS (Noble Numbat) |
+
+<!-- Resolved (DOC-3089) 2026-09-14 on the Thor: /etc/nv_tegra_release reports R39 REVISION 2.1 (L4T r39.2.1); lsb_release reports Ubuntu 24.04.5 LTS (noble). JetPack 7.2.1 is the release that corresponds to L4T r39.2.1 per NVIDIA's mapping; the nvidia-jetpack meta-package was not installed on this base image, so JetPack is inferred from L4T. CUDA was not present on the base OS (no nvcc, version.json, or cuda-toolkit package); capture the CUDA version during the model-serving (Day 1 / tutorial) validation, where that layer matters. Thor support statement itself is still gated on DOC-3093 (Rishi). -->
 
 ## Supported Kubernetes distribution and CNI
 
-<!-- TODO(DOC-3093): The agent-mode verified-combinations table in install-agent-host.md lists AMD64 combinations only. Confirm the verified ARM64 combination for Jetson (Kubernetes distribution + CNI) with engineering and add the ARM64 row there. -->
+Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so you cannot use it on a Jetson device. This guide
+uses Palette Optimized K3s (`edge-k3s`) with the Flannel (`cni-flannel`) Container Network Interface (CNI), which is the
+combination validated on the Jetson AGX Thor. You configure these layers in the cluster profile when you register the
+host and deploy a cluster.
 
-Palette Optimized Canonical (edge-canonical) does not support ARM64. On Jetson, use a Kubernetes distribution verified
-for ARM64.
+<!-- TODO(DOC-3090): link the "Register a Jetson host and serve a model" (Day 1) page from the sentence above once that page lands on this branch. onBrokenLinks is "throw", so do not link register-jetson-host.md until it exists here. -->
 
-<!-- TODO(DOC-3089): State the specific distribution (K3s is the likely candidate) and CNI once validated on the Thor. -->
+<!-- Resolved (DOC-3089/3090) on the Thor 2026-09-14/18: K3s (edge-k3s) + Flannel (cni-flannel) deploy and run end to end on the Jetson AGX Thor (ARM64) — node Ready, K3s v1.36.2+k3s1, all system pods healthy. edge-canonical has no ARM64 build. Still open (DOC-3093, Rishi): the agent-mode verified-combinations table in install-agent-host.md lists AMD64 rows only; add the verified ARM64 row (K3s + Flannel) there once engineering signs off Thor support. -->
 
 ## GPU requirements
 
@@ -83,7 +98,14 @@ The <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvi
 dedicated NVIDIA GPU and does not support embedded products such as NVIDIA Jetson. Do not use the GPU Operator pack on
 Jetson devices.
 
-<!-- TODO(DOC-3089 / DOC-3090): Document the embedded-GPU enablement path for Jetson. This is not currently covered in librarium. Confirm with engineering how GPU workloads access the integrated GPU under JetPack (for example, the NVIDIA container runtime and a RuntimeClass, or the NVIDIA device plugin) and how that is expressed in the cluster profile. -->
+On a Jetson device, a workload reaches the integrated GPU through the NVIDIA container runtime that JetPack provides.
+You do not add a GPU layer to the cluster profile, and you do not install a device plugin. Palette detects the GPU when
+the host registers, but detection alone does not expose the GPU to your workloads. Instead, a pod requests the GPU in
+its specification. You configure this when you deploy a workload to the cluster.
+
+<!-- TODO(DOC-3090): link the "Enable GPU access for workloads" section of register-jetson-host.md from the sentence above once that page lands on this branch. onBrokenLinks is "throw", so do not add the link until the page exists here. -->
+
+<!-- Resolved (DOC-3089/3090) on the Thor 2026-09-14: GPU access on Jetson/K3s is workload-level, NOT a cluster-profile layer, NOT the GPU Operator (unsupported on embedded), and NOT a device plugin (nvidia.com/gpu capacity is empty, no device-plugin pod). K3s/containerd auto-creates the `nvidia` RuntimeClass because JetPack ships the NVIDIA container runtime. A pod reaches the GPU with runtimeClassName: nvidia + NVIDIA_VISIBLE_DEVICES=all + NVIDIA_DRIVER_CAPABILITIES=all (proven: /dev/nvidia* injected and nvidia-smi runs inside a plain ubuntu:24.04 image). Still worth a one-line confirm from Rishi that this is the blessed pattern (DOC-3093 Q3). -->
 
 ## Palette requirements
 

@@ -11,6 +11,463 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3241 -->
+
+This release delivers version 4.10.13 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.17.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1017 -->
+
+- PaletteAI VM Launchpad now ships as high-availability appliance variants backed by either Piraeus/LINSTOR or Portworx
+  storage. The Piraeus/LINSTOR variant is available in both FIPS and non-FIPS builds; the Portworx variant is available
+  as non-FIPS only. Refer to [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md) and
+  [Storage](../vm-management/vm-launchpad/infrastructure/storage.md) for variant selection and storage configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-852 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3234 -->
+
+- The appliance UI now includes a **Force Stop** action for virtual machines. Use **Force Stop** to immediately power
+  off a virtual machine whose guest operating system does not respond to a graceful **Stop**. Refer to
+  [Manage Virtual Machines](../vm-management/vm-launchpad/virtual-machines/managing.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-787 -->
+
+- PaletteAI VM Launchpad can now forward appliance metrics to Splunk, so you can retain metrics longer and view them in
+  your own tooling. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
+
+- The CDI upload proxy and KubeVirt export proxy are now exposed, so `virtctl image-upload` and virtual machine disk
+  exports work through the appliance.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-327 -->
+
+- The appliance now generates the OIDC client secrets for VMO, Headlamp, and the Keycloak admin account per appliance,
+  instead of setting them through hidden profile variables.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1101 -->
+
+- The virtual machine resource configuration form now includes a **Memory Limits** field, corrects a misleading CPU
+  request placeholder, and allows editing CPU and memory requests and limits on day 2.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-914 -->
+
+- The Local UI installation wizard now includes a verify-password field for the VMO password.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1189 -->
+
+- You can now set the Portworx activation ID from the appliance Local UI during Portworx storage setup. Refer to
+  [Install PaletteAI VM Launchpad](../vm-management/vm-launchpad/install.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1216 -->
+
+- The ephemeral-storage warning banner can now be dismissed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1187 -->
+
+- The appliance now bundles Palette VMM version 4.10.x.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1093 -->
+
+- All Helm hook workloads now run as non-root, with the exception of the privileged Multus cleanup job.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1094 -->
+
+- The `spectro-kubectl` images have been rebuilt on Go 1.26.7 to address security vulnerabilities.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1159 -->
+
+- Fixed an issue that caused the CDI upload proxy and KubeVirt export proxy ingress to unconditionally render a Traefik
+  configuration, which broke the Nginx reference architecture. This affected VMO pack versions 4.10.2 through 4.10.6.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1122 -->
+
+- Fixed an issue that caused failures when editing a virtual machine's CPU configuration.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1088 -->
+
+- Fixed an issue that caused cloud-init `networkData` to be silently dropped. The appliance now sets
+  `networkDataSecretRef` so the network configuration is applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
+
+- Fixed an issue that caused the virtual machine creation wizard to skip a network interface with `bootOrder=2` when
+  UEFI, Secure Boot, and TPM were enabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1012 -->
+
+- Fixed an issue that prevented Windows virtual machines using `windows.*` cluster preferences from scheduling on nodes
+  that did not have Hyper-V enlightenment labels.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1199 -->
+
+- Fixed an issue that prevented creating Windows virtual machines from a template.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-631 -->
+
+- Fixed an issue that prevented `Sysprep` from running when the QEMU guest agent installation was enabled on Windows.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1033 -->
+
+- Fixed an issue that caused golden images to build non-bootable disks, produce an invalid template, or ignore the EFI
+  boot checkbox.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1079 -->
+
+- Fixed an issue that caused the Golden Image Builder to mis-detect the guest operating system from the ISO filename.
+  Refer to [Golden Images](../vm-management/vm-launchpad/virtual-machines/golden-images.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-687 -->
+
+- Fixed an issue that caused DataVolumes to display `ImportScheduled` instead of `ImportInProgress` while an import was
+  running.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1107 -->
+
+- Fixed an issue that caused image upload in Direct mode to fail on MAAS and Edge clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1194 -->
+
+- Fixed an issue that caused registry (zot) images to disappear from the UI after a pod restart.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1081 -->
+
+- Fixed an issue that caused the **Storage HA Not Available** banner to appear on clusters that do not use LINSTOR.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1171 -->
+
+- Fixed an issue that caused some Traefik routes to be inaccessible.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1063 -->
+
+- Fixed an issue that caused Headlamp SSO to land on a 404 `tenantApps` URL after Keycloak login through direct load
+  balancer access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-822 -->
+
+- Fixed an issue that caused the Keycloak configure hook to extract the wrong client ID, which caused a
+  `CrashLoopBackOff`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1114 -->
+
+- Fixed an issue that caused the namespace list to include namespaces a user could not access. VMO Manager now scopes
+  the namespace list to the user's Kubernetes token.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1127 -->
+
+- Fixed an issue that prevented cAdvisor metrics from reaching Victoria Metrics, which caused missing dashboard
+  telemetry. This was a regression introduced in 4.9.16.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1075 -->
+
+- Fixed an issue that caused the audit cleanup pod to error out.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-988 -->
+
+- Fixed an issue that caused the **Resource Summary** to show usage against allocated resources instead of against
+  cluster capacity.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1001 -->
+
+- Fixed an issue that caused the **Total vCPUs** count to be miscalculated. The count now multiplies cores, sockets, and
+  threads.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-994 -->
+
+- Fixed an issue that caused the node CPU history chart to drop to false 0% values.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1002 -->
+
+- Fixed an issue that caused the dashboard **Issues** count to apply an incorrect virtual machine status filter when
+  selected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1074 -->
+
+- Fixed an issue that prevented dashboard widget changes from persisting in Palette mode.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-714 -->
+
+- Fixed an issue that caused transitional states, such as `Stopping`, to be counted under **Provisioning**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-989 -->
+
+- Fixed an issue that caused edit modals to show a false unsaved-changes prompt when pressing Escape.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1102 -->
+
+- Fixed an issue that caused incorrect breadcrumb labels and a stale **System** > **Storage** reference.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1080 -->
+
+- Fixed an issue that prevented special characters and uppercase letters from pasting correctly in the VNC console.
+
+## September 24, 2026 - Component Updates {#component-updates-2026-39}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3231 -->
+<!-- RELEASE DATE: September 24, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.2 -->
+
+The following components have been updated for Palette version 4.10.16 - 4.10.17.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.2  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2438 -->
+
+- Fixed an issue in the Spectro Cloud Terraform provider where concurrent resource reconciliation could leak the
+  `ProjectUid` header across tenant and project scopes, leading to permission errors when managing mixed-scope
+  resources.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.35.0 |
+| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.8 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.31.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
+## September 18, 2026 - Component Updates {#component-updates-2026-38}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3215 -->
+<!-- RELEASE DATE: September 18, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.17 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.4 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.1 -->
+
+The following components have been updated for Palette versions 4.10.16 - 4.10.17 and 4.9.51 - 4.10.17.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.4  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.1  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.17 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.17 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3215. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1061 -->
+
+- Palette now blocks access to production SaaS, Artifact Studio, and product downloads from comprehensively sanctioned
+  jurisdictions at the network edge, to meet export control compliance requirements.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3215. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.12.1 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.12.1 |
+| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.0 |
+| <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.22.0 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :x: | :white_check_mark: | 2.2.2 |
+| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `csi` | :white_check_mark: | :x: | 3.7.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.30.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.22 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
+## September 17, 2026 - Release 4.10.17
+
+<!-- PATCH RELEASE TICKET: DOC-3224 -->
+<!-- PATCH RELEASE VERSION: 4.10.17 -->
+<!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2408 PLT-2409 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2408 -->
+
+- Added FIPS provider images to the content bundle when building content with the `--fips` flag in Palette CLI.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-11308 -->
+
+- Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
+  containerd.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1071 -->
+
+- Fixed an issue where airgapped Enterprise Cluster installations failed to pull cert-manager images because the
+  generated manifest referenced the upstream registry and an unpublished image tag instead of the local registry.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
+
+- Fixed an issue that caused the Palette CLI shell completion command to fail.
+
+## September 11, 2026 - Component Updates {#component-updates-2026-37}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3191 -->
+<!-- RELEASE DATE: September 11, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.14 -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.1 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.16.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.1  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.14 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.14 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3191. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4686 -->
+
+- Added support for deploying the NVIDIA GPU operator in airgapped Edge clusters using provider images with
+  pre-installed NVIDIA drivers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4179 -->
+
+- Deprecated Portworx pack versions 3.3 and older to align with upstream vendor support lifecycle policies.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2355 -->
+
+- Made `admin_kube_config` reads during cluster `Read()` operations conditional, gracefully handling 403 forbidden
+  responses when users lack download permissions.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4497 -->
+
+- Fixed an issue in the Harbor pack where Palette-managed projects were created as public without a configuration
+  setting to set them to private.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1970 -->
+
+- Fixed an issue where running the Palette CLI shell completion command failed if the user had not first executed
+`palette login`.
+<!-- END COMPONENT UPDATES BODY: DOC-3191. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3191. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.8.2 |
+| <VersionedLink text="cni-antrea" url="/integrations/packs/?pack=cni-antrea" /> | `cni` | :white_check_mark: | :x: | 2.7.0 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.32.2 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.32.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.65.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.10.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.27.2 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 90.0.0 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.32.2 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.5.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3191. DO NOT DELETE. -->
+
+## September 10, 2026 - Release 4.10.16
+
+<!-- PATCH RELEASE TICKET: DOC-3205 -->
+<!-- PATCH RELEASE VERSION: 4.10.16 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9345 -->
+
+- Fixed an issue where `stylus-operator` did not retry the registry connection when the `zot-secret` appeared late,
+  which left pack images missing from Zot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9378 -->
+
+- Fixed an issue where Edge Kubernetes upgrades to version 1.33.5 stalled following a hostname-validation reboot due to
+  x509 certificate verification failures during Stylus pack download and edge login.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9382 -->
+
+- Fixed an issue on two-node Edge clusters where PostgreSQL failed to start after a provider image swap, because the TLS
+  key pair paths were split across persistent and ephemeral storage.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11869 -->
+
+- Fixed an issue where Private Cloud Gateway (PCG) migrations did not transfer IP pool ownership.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7543 -->
+
+- Fixed an issue where Ally upgrades retriggered on-boot operating system patching drains across nodes, causing nodes
+  with failed drains to remain cordoned indefinitely.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11890 -->
+
+- Fixed an issue during vSphere Private Cloud Gateway (PCG) migrations where the cloud account's overlord UID was not
+  transferred, preventing migrated clusters from being deleted.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9367 -->
+
+- Fixed an issue where two-node cluster creation deadlocked permanently when the API VIP was unavailable due to nodes
+  mutually fencing each other and evicting kube-vip.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.16 Palette release is 4.10.4.
+
+:::
+
 ## September 8, 2026 - Release 4.10.14
 
 <!-- PATCH RELEASE TICKET: DOC-3193 -->
@@ -238,18 +695,45 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4655 -->
 
-- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab. Only the first
-  line of the message was recorded, so an event displayed `"Reconciler error" err=<` while the description of the
-  failure that followed it, such as `NoCredentialProviders: no valid providers in chain`, was dropped. The complete
-  message is now recorded as a single event. Only error-level events were affected.
+- Fixed an issue that caused multi-line error messages to appear truncated in a cluster's **Events** tab, so an event
+  showed only `"Reconciler error" err=<` without the failure description that followed it. The complete message is now
+  recorded as a single event. Only error-level events were affected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7401 -->
 
 - Fixed an issue that caused changing a cluster-level tag on a healthy
-  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a misleading `ClusterUpgradeTriggered` event and
-  replace every node in the cluster's worker node pools. Pipelines that update tag values on each run, such as
-  compliance tagging, could therefore repave nodes repeatedly on a cluster that was never upgraded. Changing tags
-  directly on a worker node pool still replaces that pool's nodes.
+  [Amazon EKS cluster](../clusters/public-cloud/aws/eks.md) to emit a `ClusterUpgradeTriggered` event and replace every
+  node in the cluster's worker node pools. Pipelines that update tag values on each run, such as compliance tagging,
+  could therefore repave nodes repeatedly. Changing tags directly on a worker node pool still replaces that pool's
+  nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7524 -->
+
+- Fixed an issue that caused sustained high CPU usage by the Palette management plane. The management plane repeatedly
+  reconciled packs whose configuration had not changed, consuming approximately 1.3 vCPU per affected cluster
+  continuously. Cluster provisioning and pack functionality were not affected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7236 -->
+
+- Fixed an issue where [OS patching](../clusters/cluster-management/os-patching.md) on Ubuntu cluster nodes could leave
+  a node in `Ready,SchedulingDisabled` and unable to accept workloads, and could prevent scheduled patches from running.
+  Palette now requires OS patch schedules to run no more frequently than hourly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7245 -->
+
+- Fixed an issue that caused the [cert-manager](../clusters/cluster-management/cert-manager-addon.md) add-on pack to
+  fail with `ChartInstallFailed` when the pack enabled Gateway API support before the Gateway API custom resource
+  definitions existed on the cluster. Palette now applies the setting once those definitions are available.
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1570 -->
+
+- K3s is deprecated as a Palette Virtual Cluster distribution and will be removed in a future Palette release. K3s was
+  deprecated in Palette 4.8.0, when the cluster group distribution selector in the Palette UI began marking K3s as
+  deprecated and moved the Kubernetes distribution to the top of the list. Existing virtual clusters that use K3s
+  continue to run. Use the Kubernetes distribution when you create new cluster groups and virtual clusters. Refer to
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) for more information.
 
 ### Edge
 
@@ -305,14 +789,13 @@ troubleshooting scenario.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8648 -->
 
 - Edge clusters in appliance mode can now use systemd extensions to deliver Kubernetes and Palette Agent binaries at
-  runtime, instead of embedding those binaries in the provider image. This applies in both connected and airgapped
-  environments. On operating systems running systemd version 255 or later, provider images built with CanvOS 4.10.x
-  exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers them through systemd extensions.
-  Set `system.uri: NA` in the BYOOS pack for standard upgrades. The new `BUNDLE_K8S_AND_AGENT_PROVIDER` flag in the
-  CanvOS `.arg` file overrides the default when a specific flow requires the binaries embedded. Unified Kernel Image
+  runtime, instead of embedding those binaries in the provider image. This feature is a Technical Preview. This applies
+  in both connected and airgapped environments. On operating systems running systemd version 255 or later, provider
+  images built with CanvOS 4.10.x exclude the binaries by default, and Stylus (Palette Edge node agent) 4.10.x delivers
+  them through systemd extensions. Set `system.uri: NA` in the BYOOS pack for standard upgrades. Unified Kernel Image
   (UKI) deployments do not support systemd extensions and continue to receive these binaries embedded in the provider
   image. Refer to
-  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md#bundle-k8s-and-agent-provider-flag)
+  [Deliver Kubernetes and Agent Binaries via systemd Extensions](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
   for build and upgrade guidance.
 
 #### Improvements
@@ -347,14 +830,12 @@ troubleshooting scenario.
 - Fixed an issue that prevented digest-pinned application images from being redirected to the
   [local registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md) on airgapped Edge
   clusters. Pods that referenced an image by digest rather than by tag attempted to pull from the upstream registry and
-  remained in `ImagePullBackOff`, while the same image referenced by tag deployed successfully.
+  remained in `ImagePullBackOff`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9033 -->
 
 - Fixed an issue that caused packs whose name contains a forward slash, such as Helm OCI packs sourced from a private
-  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors. The
-  affected packs were never cached, and the cluster re-downloaded them every two minutes without reaching a steady
-  state.
+  registry, to fail to download on Edge hosts with `failed to rename pack: no such file or directory` errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9143 -->
 
@@ -375,9 +856,25 @@ troubleshooting scenario.
 
 - Fixed an issue that prevented the NTP servers configured on an Edge host through the
   [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) from being visible in Local UI. The
-  Edge host overview page now lists them in an **NTP Servers** field, so an operator working only in Local UI can
-  confirm the host's time synchronization settings. These servers remain specific to the host, and cluster-level NTP
-  configured in cluster settings continues to override them on every host in the cluster.
+  Edge host overview page now lists them in an **NTP Servers** field.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9302 -->
+
+- Fixed an issue that left a [two-node Edge cluster](../clusters/edge/architecture/two-node.md) without a Kubernetes API
+  server after the loss of the leader node. The surviving node did not complete its promotion, so the cluster virtual IP
+  served no traffic. Loss of the follower node was unaffected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9348 -->
+
+- Fixed an issue that could place the Kubernetes datastore of a
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) on ephemeral rather than persistent storage. Data
+  written since the last persistent snapshot was lost on reboot, and the node could not be promoted during failover.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9388 -->
+
+- Fixed an issue that prevented leader promotion from completing on a connected-mode
+  [two-node Edge cluster](../clusters/edge/architecture/two-node.md) while Palette was unreachable, leaving the local
+  control plane unavailable until connectivity was restored. Promotion now completes without Palette connectivity.
 
 ### VerteX
 
@@ -433,62 +930,10 @@ troubleshooting scenario.
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md) and
   [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md) for more information.
 
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.0}
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1190 -->
 
-- [PaletteAI VM Launchpad](../vm-management/vm-launchpad/vm-launchpad.md) version 4.10.0 is now available.
-
-##### Features
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1019 -->
-
-- The appliance exposes two forwarding surfaces on a new **Metrics and Logs** page under **Settings** and
-  **Configuration**. The **Metrics** section pushes appliance metrics to a Splunk HTTP Event Collector (HEC) endpoint
-  through a first-class network gate that stays airgap-safe until you supply a URL and token. The **Logs** section
-  records that a central logging system collects the appliance logs. The OpenTelemetry Collector, delivered through the
-  Palette VMO pack, ships the log stream to Splunk. Both toggles emit filterable audit events for compliance review.
-  Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md) for the full configuration reference.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-973 -->
-
-- A new
-  [Federate an External Identity Provider with Keycloak](../vm-management/vm-launchpad/access-management/oidc-federation.md)
-  guide is now available. The guide explains how to federate an external OIDC identity provider, such as Okta, into
-  PaletteAI VM Launchpad, and covers the email claim and group membership requirements that a federated account must
-  satisfy.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-779 -->
-
-- The CDI Upload Proxy and KubeVirt Export Proxy are now exposed on the appliance so that `virtctl image-upload`
-  transfers and virtual machine disk exports can reach the cluster from outside. Both services were previously reachable
-  only from inside the cluster.
-
-##### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-790 -->
-
-- The appliance audit trail now records a broader set of virtual machine lifecycle events, expanding the coverage
-  available to audit and compliance teams. Refer to [Audit Trail](../vm-management/vm-launchpad/system/audit.md) for the
-  full list of recorded events.
-
-##### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-987 -->
-
-- Fixed an issue in the **Snapshot Policies** creation and edit modal that caused the **Add label** action to silently
-  overwrite an existing label value after a middle label row was deleted. New label rows now receive unique keys, and
-  existing values are preserved.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1060 -->
-
-- Fixed an issue that caused the VMO Manager dashboard to under-report node CPU usage by up to 19 percentage points when
-  the appliance ran with an external metrics backend. Reported node CPU figures now match the values in the metrics
-  store.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1064 -->
-
-- Fixed an issue in the virtual machine creation wizard that caused the default network interface boot-order field to be
-  omitted from new virtual machines when UEFI Boot, Secure Boot, TPM Device, and Persistent TPM were all enabled. The
-  wizard now sets `bootOrder=2` on the network interface for this firmware configuration.
+- Fixed an issue that prevented a namespace created through the console from appearing in the UI until the page was
+  reloaded. New namespaces now appear immediately after they are created.
 
 ### Automation
 

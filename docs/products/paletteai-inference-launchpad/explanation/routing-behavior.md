@@ -53,8 +53,9 @@ answers?
 
 Each Tier map row has three columns.
 
-- **Alias prefix.** The name the client sends, matched by prefix. Presets are `claude-opus-`, `claude-sonnet-`, and
-  `claude-haiku-`. You can also add a custom prefix.
+- **Alias prefix.** The name the client sends, matched by prefix. Every Tier map starts with seven seeded presets, in
+  this order: `claude-fable-`, `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`. The
+  seeded rows cannot be removed. You can also add a custom prefix.
 - **Model.** A model the appliance serves, or the special picker value **Choose per request**. When Model is a served
   model, the Tier map settles the request in Stage 1. When Model is **Choose per request**, the alias is handed to the
   semantic router in Stage 2.
@@ -65,6 +66,14 @@ Each Tier map row has three columns.
 
 A client that names a model no row matches, and no other rule catches, falls back to the box's **Fallback for unmatched
 requests**. When that fallback is off, the appliance returns HTTP `404`.
+
+A client that has not edited its own Tier map inherits the appliance-wide table. For such a client, the console labels a
+seeded row the appliance-wide table leaves blank `Not mapped, so the box default <model> answers it.` A client that
+edits its own Tier map owns that map outright. For such a client, the connect panel warns that an alias left unmapped in
+that map makes an agent receive a `404`. The console computes that warning from the client's own map when the client has
+one, and from the appliance-wide table when it does not.
+
+{/* NEEDS REVIEW: how a matched-but-blank seeded row interacts with the box's Fallback for unmatched requests is unsettled for both cases, and only the console labels above are verified: for a client that inherits the appliance-wide table the console says the box default answers, and for a client that owns its own Tier map overlay the connect panel warns of a 404, but neither statement accounts for whether the box fallback is on or off. An SME should confirm both halves. */}
 
 ## What Reaches the Semantic Router
 
@@ -80,11 +89,18 @@ Any other request is settled by the Tier map or by the box fallback and never re
 :::warning
 
 A client that sends `auto` bypasses the Tier map entirely. The most common misconfiguration on the appliance is an
-operator who adds a Tier map row for a client such as Cursor, expecting that row to steer the request. Cursor sends
-`auto`, so it never matches a Tier map row. The request lands directly on the client's **Semantic routing** card
-instead. To steer this traffic, author a **Semantic routing** rule, not a Tier map row.
+operator who adds a Tier map row for a client such as Cursor, expecting that row to steer every request. Cursor sends
+`auto` whenever its model picker is left on **Auto**, and that request never matches a Tier map row. It lands directly
+on the client's **Semantic routing** card instead. To steer this traffic, author a **Semantic routing** rule, not a Tier
+map row.
+
+When an operator enables a model in Cursor and selects it explicitly, as
+[Use PaletteAI Inference Launchpad with Cursor](../how-to-guides/use-cursor.md) describes, Cursor sends that model name
+and the matching Tier map row does apply.
 
 :::
+
+{/* NEEDS REVIEW: the narrowed claim that Cursor sends the selected model name, rather than `auto`, when the operator enables and explicitly selects a model in Cursor's picker is taken from the connect panel's Cursor instructions and needs SME confirmation against Cursor's shipped client behavior. */}
 
 ## Categories and Complexity Bands
 

@@ -29,7 +29,8 @@ expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-qu
 
 2. On the **Clients & API tokens** page, select the client to open its detail panel.
 
-3. Select the **API tokens** section. Each token shows a state of **active**, **expired**, or **revoked**.
+3. Select the **API tokens** section. Each token shows a state of **active**, **expiring soon**, **expired**, or
+   **revoked**.
 
 The **Usage** page also shows a token's state in its per-token detail. For usage, refer to
 [View Client Usage](./view-client-usage.md).

@@ -32,3 +32,5 @@ The following components have been updated for Palette version {{RELEASE_COMPONE
 <!-- END PACKS LIST BODY: {{JIRA_TICKET}}. DO NOT DELETE. -->
 
 #### Pack Notes
+
+#### Deprecations and Removals

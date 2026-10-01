@@ -44,7 +44,9 @@ from the provider image registry specified in the OS pack of the cluster profile
 Palette supports downloading provider images from authenticated registries. If your cluster needs to download provider
 images from a authenticated registry, you need to provide the credentials to access the registry in the OS pack of the
 cluster profile. For more information, refer to
-[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md).
+[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md). To pull provider images from a private
+Amazon ECR repository using token authentication, refer to
+[Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md).
 
 ## External Registry
 

@@ -30,15 +30,15 @@ If an administrator already gave you an API token, you can use it and skip the f
 2. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
    **Overview** section.
 
-3. Select the **API tokens** section, and then select **Create Token**. The **Create API token** dialog opens.
+3. Select the **API tokens** section, and then select **Create token**. The **Create API token** dialog opens.
 
 4. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
    it.
 
-5. _(Optional)_ To set an expiration date, clear **Never expires**, and then choose an **Expires** date. By default, the
-   token does not expire.
+5. In the **Expires** field, choose the last day the token works. The field is required, and the console accepts a date
+   up to 366 days ahead. The token stops working at the end of the day you choose.
 
-6. Select **Create Token**.
+6. Select **Create token**.
 
 7. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
@@ -49,9 +49,13 @@ create a new one.
 
 :::
 
+Once a token is within seven days of its expiration date, the **API tokens** list marks it **expiring soon**. Create a
+replacement token before the current one expires, then update the coding assistant that uses it.
+
 ## Next Steps
 
-Use the token to connect a coding assistant to the appliance.
+Use the token to connect a coding assistant to the appliance. To read the connection steps without leaving the reveal
+dialog, select **Connect a Coding Agent**, and then select the tab for your agent.
 
 - [Use Claude Code](./use-claude-code.md)
 - [Use Cursor](./use-cursor.md)

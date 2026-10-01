@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Markers written into a documentation table in place of a value that is not known yet. Each names
-# what is missing, so a reviewer can see which cells still need filling and can grep the docs for
-# "PENDING". They live here because the script that decides a value is pending and the scripts that
-# write the rows are not the same script, and a marker that differs between them would publish a
-# cell that no later run recognises as still pending.
+# Markers written into a documentation table or heading in place of a value that is not known yet.
+# Each names what is missing, so a reviewer can see what still needs filling and can grep the docs
+# for "PENDING". They live here because the script that decides a value is pending and the scripts
+# that write the rows are not the same script, and a marker that differs between them would publish
+# a cell that no later run recognises as still pending.
 PENDING_VERSION="VERSION PENDING"
 PENDING_URL="URL PENDING"
 PENDING_SHA="SHA PENDING"
+PENDING_DATE="DATE PENDING"
+PENDING_BODY="BODY PENDING"
 
 # Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
@@ -430,25 +432,46 @@ get_keyed_value() {
 }
 
 # Utility function to read a component version that is already documented in a Markdown
-# table, so a freshly sourced version can be compared against it. Reads the first data row
-# of the table that the "Palette Release" heading opens, skipping any row whose Palette
-# Release cell matches the release being generated. Skipping our own row is what lets a
-# re-run compare against the previous release rather than against the value it just wrote.
+# table, so a freshly sourced version can be compared against it. Reads the data rows of the table
+# that the "Palette Release" heading opens, skipping any row whose Palette Release cell matches the
+# release being generated. Skipping our own row is what lets a re-run compare against the previous
+# release rather than against the value it just wrote.
+#
+# The rows are ordered newest first across every release train, so 4.10.16 sits above 4.9.53. The
+# row that answers "what did the release before this one document" is therefore the newest row in
+# the same major.minor train, not the first row in the table: a 4.9 patch has to be compared
+# against 4.9.53, and comparing it against 4.10.16 would report every component as having moved and
+# resolve "the version already documented" to one from a newer train. The first row in the table is
+# used only when that train has no rows yet, which is the first patch documented in a new train.
 # Writes the trimmed cell value to stdout, or nothing if no such row exists.
 # Params:
 # $1 - Markdown file to read, example: docs/docs-content/clusters/edge/edge-compatibility-matrix.md
 # $2 - 1-based column number to return, example: 2 for CanvOS / Stylus / Edge Host Version
-# $3 - release to skip, example: 4.9.48
+# $3 - release to skip, example: 4.9.48. Its major.minor is the train that is preferred.
+# $4 - optional marker anchoring the table to read, example: palette-cli-linux-arm64-table.
+#      Defaults to the first release table in the file.
+# $5 - pass "any" to read the newest row in the table regardless of train, for a value that is not
+#      train-specific. Defaults to preferring the train named by $3.
 get_documented_table_version() {
     local file="$1"
     local column="$2"
     local skip_release="$3"
+    local anchor="${4:-Palette Release}"
+    local scope="${5:-train}"
+    local train=""
 
     [[ -f "$file" ]] || return 0
 
-    awk -v column="$column" -v skip_release="$skip_release" '
+    # Parameter expansion rather than a capture group, because BASH_REMATCH comes back empty under
+    # the bash 3.2 that ships with macOS while working under the bash 5 on the CI runner, and a
+    # train that silently resolves to empty reads the wrong row rather than failing.
+    if [[ "$scope" != "any" && "$skip_release" == *.*.* ]]; then
+        train="${skip_release%.*}."
+    fi
+
+    awk -v column="$column" -v skip_release="$skip_release" -v anchor="$anchor" -v train="$train" '
       # The table starts at the heading row, and its separator row follows immediately.
-      !in_table && /^\|/ && index($0, "Palette Release") { in_table = 1; next }
+      !in_table && /^\|/ && index($0, "Palette Release") && index($0, anchor) { in_table = 1; next }
       !in_table { next }
 
       # Skip the separator row between the heading and the data rows.
@@ -472,9 +495,17 @@ get_documented_table_version() {
 
         if (release == skip_release) { next }
 
+        # Remember the newest row overall, in case this train has no rows at all.
+        if (newest == "") { newest = value }
+
+        if (train != "" && index(release, train) != 1) { next }
+
         print value
+        found = 1
         exit
       }
+
+      END { if (!found) { print newest } }
     ' "$file"
 }
 
@@ -587,6 +618,97 @@ fetch_palette_cli_sha() {
     printf '%s' "$digest"
 }
 
+# Utility function to format a YYYY-MM-DD date the way a release notes heading writes it, for
+# example "September 14, 2026". BSD date (macOS) is tried first and GNU date (Linux) second. An
+# empty date is refused rather than passed on, because the GNU fallback reads `date -d ""` as the
+# daylight saving time flag and silently returns today's date, which would date the release notes
+# wrongly instead of failing.
+# Params:
+# $1 - date in YYYY-MM-DD form
+# Prints the formatted date and returns 0, or returns 1 when the date cannot be parsed.
+format_release_date() {
+    local raw="$1"
+
+    if [[ -z "$raw" ]]; then
+        return 1
+    fi
+
+    if date -j -f "%Y-%m-%d" "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    if date -d "$raw" +"%B %-d, %Y" 2>/dev/null; then
+        return 0
+    fi
+
+    return 1
+}
+
+# Utility function to read issue keys out of arbitrary text, so a release ticket that names its
+# candidates in prose, as links, or as smart links rather than behind a saved search can still be
+# acted on. Matches the PROJECT-123 shape, and de-duplicates while keeping the order the keys were
+# written in, so the first mention decides where a key appears in the list.
+#
+# A key that is part of a longer word is skipped, because the shape also occurs inside URL path
+# segments and generated identifiers, and the security identifiers that share it, for example
+# CVE-2026, are skipped by prefix. awk does the matching rather than `grep -oE '\b...'`, because
+# the word boundary escape is a GNU extension and these scripts also run on macOS.
+# Reads text on stdin, writes one key per line to stdout.
+extract_issue_keys() {
+    awk '
+      {
+        line = $0
+
+        while (match(line, /[A-Z][A-Z0-9]+-[0-9]+/)) {
+          key = substr(line, RSTART, RLENGTH)
+          before = (RSTART > 1) ? substr(line, RSTART - 1, 1) : ""
+          line = substr(line, RSTART + RLENGTH)
+
+          if (before ~ /[A-Za-z0-9]/) { continue }
+          if (key ~ /^(CVE|CWE|CAPEC|CVSS|RFC|ISO|SOC|FIPS|NIST|UTF)-/) { continue }
+          if (seen[key]++) { continue }
+
+          print key
+        }
+      }
+    '
+}
+
+# Utility function to ask for a value on a terminal, offering what is already known as the default
+# so that confirming it costs one keystroke. This is the shape every release day question takes:
+# the script proposes the value it derived, and the writer either accepts it or replaces it with
+# what they have since been told.
+#
+# An empty reply takes the default, and so does a run with no terminal to prompt on, so an
+# unattended job never stalls waiting for an answer.
+# Params:
+# $1 - question text, without the trailing default hint
+# $2 - default when the reply is empty or there is no terminal
+# Prints the answer to stdout. The prompt itself goes to stderr, so the answer can be captured
+# from a command substitution.
+prompt_with_default() {
+    local question="$1"
+    local default="$2"
+    local reply hint
+
+    if [[ -n "$default" ]]; then
+        hint=" [$default]"
+    else
+        hint=""
+    fi
+
+    if [[ ! -t 0 ]]; then
+        printf '%s' "$default"
+        return 0
+    fi
+
+    # bash writes a read prompt to standard error, so it is still seen when this function is
+    # called from a command substitution that captures standard output.
+    read -r -p "$question$hint: " reply || reply=""
+
+    printf '%s' "${reply:-$default}"
+}
+
 # Utility function to ask a yes or no question on a terminal, so a script can branch on what the
 # writer already knows rather than making them supply values that do not apply. An empty reply
 # takes the default, and so does a run with no terminal to prompt on, so an unattended job never
@@ -628,7 +750,7 @@ confirm() {
 check_env() {
     local var_name="$1"
 
-    if [[ -z "${!var_name}" ]]; then
+    if [[ -z "${!var_name:-}" ]]; then
         echo "🟠 '$var_name' is empty or not set."
         return 1
     fi

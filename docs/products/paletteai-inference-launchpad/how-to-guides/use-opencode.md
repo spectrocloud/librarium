@@ -7,12 +7,27 @@ description:
 hide_table_of_contents: false
 sidebar_position: 12
 tags: ["paletteai-inference-launchpad", "opencode", "how-to"]
-keywords: ["launchpad", "ai", "opencode", "openai-compatible", "custom provider", "opencode.json", "api token"]
+keywords:
+  [
+    "launchpad",
+    "ai",
+    "opencode",
+    "openai-compatible",
+    "custom provider",
+    "opencode.json",
+    "api token",
+    "ca certificate",
+  ]
 ---
 
 This guide explains how to connect OpenCode to a PaletteAI Inference Launchpad appliance so that a model running on the
-appliance serves every request instead of a cloud provider. You add a custom provider to the OpenCode configuration file
-and confirm the connection.
+appliance serves every request instead of a cloud provider. OpenCode reaches the appliance through its OpenAI-compatible
+`/v1` API, so you trust the appliance certificate, add a custom provider to the OpenCode configuration file, and confirm
+the connection.
+
+The console assembles these values for you. In the **Connect a coding agent** panel, the **OpenCode** tab lists the
+steps and generates the configuration for `bash`, `zsh`, or PowerShell. For what each field does, refer to
+[OpenCode Configuration](../reference/opencode-reference.md).
 
 ## Prerequisites
 
@@ -22,23 +37,18 @@ and confirm the connection.
   refer to [Deploy a Model](./deploy-a-model.md).
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
   token an administrator generated for you.
+- Network access from your machine to the appliance. OpenCode sends each request from the machine it runs on, so an
+  appliance on a private network works.
+
+## Download the Platform CA Certificate
+
+<PartialsComponent category="paletteai-inference-launchpad" name="download-the-platform-ca" />
 
 ## Configure OpenCode
 
-OpenCode connects to any OpenAI-compatible endpoint through a custom provider. Add a provider for the appliance to the
-OpenCode configuration file. For a description of each field, refer to
-[OpenCode Configuration](../reference/opencode-reference.md).
-
-:::tip
-
-The console can generate a starter version of this file for you. Select **Connect coding agent** and open the
-**OpenCode** tab to copy an `opencode.json` snippet pre-filled with your appliance's endpoint. Review the `baseURL` and
-`models` values against the steps below before you save it.
-
-:::
-
-1. Add the following provider to the OpenCode configuration file at `~/.config/opencode/opencode.json`. Replace
-   `<appliance-host>` with your appliance address and `<lpai-token>` with the token you copied.
+1. Add the following provider to an `opencode.json` file. Use `~/.config/opencode/opencode.json` to apply the provider
+   to every project, or `opencode.json` in a project directory to apply it to that project only. Replace
+   `<appliance-host>` with your appliance address.
 
    ```json
    {
@@ -46,53 +56,58 @@ The console can generate a starter version of this file for you. Select **Connec
      "provider": {
        "launchpad": {
          "npm": "@ai-sdk/openai-compatible",
-         "name": "Launchpad",
+         "name": "PaletteAI Inference Launchpad",
          "options": {
            "baseURL": "https://<appliance-host>/v1",
-           "apiKey": "<lpai-token>"
+           "apiKey": "{env:LAUNCHPAD_API_KEY}"
          },
          "models": {
-           "glm-5.2": { "name": "GLM-5.2 (Launchpad)" }
+           "claude-opus-4-8": {
+             "name": "Claude Opus",
+             "tool_call": true,
+             "reasoning": true,
+             "modalities": { "input": ["text", "image"], "output": ["text"] },
+             "limit": { "context": 200000, "output": 64000 }
+           }
          }
        }
      }
    }
    ```
 
-2. Set `baseURL` to your appliance address with the `/v1` path appended.
+2. Run the following commands in your shell. The configuration file reads the token from the environment, so the token
+   never lands in the file. Replace `<lpai-token>` with your token.
 
-3. Set `apiKey` to your `lpai_` token.
+   ```bash
+   export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
+   export LAUNCHPAD_API_KEY=<lpai-token>
+   ```
 
-4. Under `models`, list each model id the appliance serves that you want to use, such as `glm-5.2`. The `launchpad` key
-   is a name you choose for the provider. OpenCode identifies a model by that provider name and a model id joined with a
-   slash, such as `launchpad/glm-5.2`, which you pass to the `--model` flag when you run OpenCode in the next section.
-
-5. We strongly recommend giving the appliance a DNS name and a valid, publicly trusted TLS certificate. The connection
-   uses HTTPS, so a valid certificate protects your token in transit.
-
-   :::warning
-
-   If the appliance uses a self-signed certificate, OpenCode rejects the connection by default because it runs on
-   Node.js. As a temporary measure for testing, set `NODE_TLS_REJECT_UNAUTHORIZED=0` before you start OpenCode. This
-   disables certificate verification, so do not use it outside short-lived testing.
-
-   :::
+   Include the `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. OpenCode runs on
+   Node.js, and this variable adds the platform CA to the certificates Node.js trusts, so certificate verification stays
+   on. Set it in the shell before you start OpenCode. On PowerShell, the panel writes the same path as
+   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
 
 ## Verify the Connection
 
-Run a single prompt to confirm the appliance answers. The `--model` flag takes a `provider/model` value that combines
-the provider key from your configuration file with a model id.
+1. Run a single prompt to confirm the appliance answers. The `--model` flag takes a `provider/model` value that combines
+   the provider key from your configuration file with a model name.
 
-```bash
-opencode run --model launchpad/glm-5.2 "reply with exactly OPENCODE_OK"
-```
+   ```bash
+   opencode run --model launchpad/claude-opus-4-8 "reply with exactly OPENCODE_OK"
+   ```
 
-```bash hideClipboard title="Expected output"
-OPENCODE_OK
-```
+   ```bash hideClipboard title="Expected output"
+   OPENCODE_OK
+   ```
 
-A reply confirms that the base URL, token, provider, and model routing all work. OpenCode splits the `--model` value on
-the first slash, so `launchpad/glm-5.2` selects the `glm-5.2` model from the `launchpad` provider.
+   A reply confirms that the certificate, base URL, token, provider, and model routing all work.
+
+2. Start an interactive session, and then select the `claude-opus-4-8` model.
+
+   ```bash
+   opencode
+   ```
 
 :::tip
 

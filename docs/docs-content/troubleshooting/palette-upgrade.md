@@ -449,8 +449,8 @@ upgrading Palette or Palette VerteX.
 
    :::info
 
-   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
-   are already defined within the MongoDB Pods.
+   The values for `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_ROOT_PASSWORD` do not need to be exported, as they are
+   already defined within the MongoDB Pods.
 
    :::
 
@@ -462,8 +462,8 @@ upgrading Palette or Palette VerteX.
          --container mongo \
          -- \
          mongosh \
-            --username "$MONGODB_INITDB_ROOT_USERNAME" \
-            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            --username "$MONGO_INITDB_ROOT_USERNAME" \
+            --password "$MONGO_INITDB_ROOT_PASSWORD" \
             admin \
             --quiet \
             --eval "print(JSON.stringify(rs.hello()))" \
@@ -542,8 +542,10 @@ upgrading Palette or Palette VerteX.
                --tlsAllowInvalidHostnames \
                admin \
                --quiet \
-               --eval "print(JSON.stringify(rs.isMaster()))"'
-   ) | jq --raw-output .primary | awk -F. '{print $1}'
+               --eval "print(JSON.stringify(rs.isMaster()))"' \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
    ```
 
 6. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health

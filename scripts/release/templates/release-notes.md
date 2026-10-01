@@ -92,15 +92,4 @@
 
 ### Docs and Education
 
-### Packs
-
-<!-- prettier-ignore-start -->
-
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-
-<!-- prettier-ignore-end -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
+{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}

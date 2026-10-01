@@ -7,81 +7,86 @@ description:
 hide_table_of_contents: false
 sidebar_position: 11
 tags: ["paletteai-inference-launchpad", "codex", "how-to"]
-keywords: ["launchpad", "ai", "openai codex", "codex cli", "responses api", "config.toml", "api token"]
+keywords:
+  ["launchpad", "ai", "openai codex", "codex cli", "responses api", "config.toml", "api token", "ca certificate"]
 ---
 
 This guide explains how to connect the OpenAI Codex CLI to a PaletteAI Inference Launchpad appliance so that a model
-running on the appliance serves every request instead of OpenAI's hosted API. You add a custom model provider to the
-Codex configuration file and confirm the connection.
+running on the appliance serves every request instead of OpenAI's hosted API. Codex connects to the appliance the same
+way it connects to an OpenAI endpoint, so you trust the appliance certificate, add a custom model provider to the Codex
+configuration file, and confirm the connection.
+
+The console assembles these values for you. In the **Connect a coding agent** panel, the **Codex CLI** tab lists the
+steps and generates the configuration for `bash`, `zsh`, or PowerShell. For what each field does, refer to
+[OpenAI Codex Configuration](../reference/codex-reference.md).
 
 ## Prerequisites
 
 - The OpenAI Codex CLI installed and already working. For installation, refer to the
-  [OpenAI Codex website](https://github.com/openai/codex).
+  [OpenAI Codex repository](https://github.com/openai/codex).
 - A running PaletteAI Inference Launchpad appliance with at least one model deployed and serving. To deploy a model,
   refer to [Deploy a Model](./deploy-a-model.md).
 - An API token for the appliance. To create one, refer to [Generate an API Token](./generate-an-api-token.md), or use a
   token an administrator generated for you.
-- The appliance reachable at a DNS hostname with a valid, publicly trusted TLS certificate. Codex validates TLS strictly
-  and cannot skip certificate verification, so a self-signed certificate does not work.
+- Network access from your machine to the appliance. Codex sends each request from the machine it runs on, so an
+  appliance on a private network works.
+
+## Download the Platform CA Certificate
+
+<PartialsComponent category="paletteai-inference-launchpad" name="download-the-platform-ca" />
 
 ## Configure Codex
 
-Codex uses the Responses API, so you add a custom model provider that points at the appliance. For a description of each
-field, refer to [OpenAI Codex Configuration](../reference/codex-reference.md).
-
-:::tip
-
-The console can generate a starter version of this configuration for you. Select **Connect coding agent** and open the
-**Codex** tab to copy a `config.toml` snippet pre-filled with your appliance's endpoint. Review the model and provider
-values against the steps below before you save it.
-
-:::
-
-1. Add the following custom provider to the Codex configuration file at `~/.codex/config.toml`. Replace
-   `<appliance-host>` with your appliance address.
+1. Add the following custom provider to the Codex configuration file at `~/.codex/config.toml`. Use the home folder, not
+   a project folder. Replace `<appliance-host>` with your appliance address.
 
    ```toml
-   model = "glm-5.2"            # a model the appliance serves, not "auto"
-   model_provider = "lpai"
+   model = "gpt-5.6"
+   model_provider = "launchpad"
 
-   [model_providers.lpai]
-   name = "Launchpad"
+   [model_providers.launchpad]
+   name = "PaletteAI Inference Launchpad"
    base_url = "https://<appliance-host>/v1"
-   env_key = "LPAI_KEY"
-   wire_api = "responses"       # Codex uses the Responses API
+   wire_api = "responses"
+   env_key = "LAUNCHPAD_API_KEY"
    ```
 
-   Set `model` to a model the appliance serves, such as `glm-5.2`. Do not use `auto`, because the Responses API passes
-   the model straight to the engine. Set `base_url` to your appliance address with the `/v1` path appended.
-
-2. Set the environment variable named in `env_key` to your API token so that Codex can authenticate. In this example,
-   `env_key` is `LPAI_KEY`. Replace `<lpai-token>` with the token you copied.
+2. Run the following commands in your shell. Codex fails to parse an `export` line inside `config.toml`, so both values
+   stay in the shell. Replace `<lpai-token>` with your token.
 
    ```bash
-   export LPAI_KEY=<lpai-token>
+   export CODEX_CA_CERTIFICATE=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
+   export LAUNCHPAD_API_KEY=<lpai-token>
    ```
 
-{/* NEEDS REVIEW: this guide says `model` must be a real served id (not an alias) because the Responses API passes the model straight to the engine, but the console's "Connect coding agent" > Codex snippet sets `model = "claude-opus-4-8"`, a tier-map alias. Confirm with an SME whether the tier map resolves aliases over the Responses API. */}
+   Include the `CODEX_CA_CERTIFICATE` line only when the panel shows the **CA certificate** step. Codex layers that
+   certificate on top of the system trust store, so certificate verification stays on. On PowerShell, the panel writes
+   the same path as `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
 
 ## Verify the Connection
 
-Run a single prompt to confirm the appliance answers.
+1. Run a single prompt to confirm the appliance answers. The `--skip-git-repo-check` flag lets you run the test outside
+   a git repository.
 
-```bash
-codex exec --skip-git-repo-check "reply with exactly CODEX_OK and nothing else"
-```
+   ```bash
+   codex exec --skip-git-repo-check "reply with exactly CODEX_OK and nothing else"
+   ```
 
-```bash hideClipboard title="Expected output"
-CODEX_OK
-```
+   ```bash hideClipboard title="Expected output"
+   CODEX_OK
+   ```
 
-A reply confirms that the base URL, token, provider, and model routing all work. The `--skip-git-repo-check` flag lets
-you run the test outside a git repository.
+   A reply confirms that the certificate, base URL, token, provider, and model routing all work.
+
+2. Start an interactive session.
+
+   ```bash
+   codex
+   ```
 
 :::info
 
-Codex may print a `Model metadata for glm-5.2 not found` warning. This warning is cosmetic and does not affect the
+Codex may print a `Model metadata for <model> not found` warning. This warning is cosmetic and does not affect the
 request.
 
 :::
