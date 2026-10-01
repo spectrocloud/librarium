@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 1, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-3263 -->
+<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE CANDIDATES: PEM-11853 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11853 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## September 22, 2026 - Release 4.9.60
 
 <!-- PATCH RELEASE TICKET: DOC-3229 -->
