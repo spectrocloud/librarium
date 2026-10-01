@@ -79,8 +79,6 @@ with each other.
    hosts. The base-64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
    minutes. Once a token expires, the leader generates another token automatically.
 
-   If you have already made the
-
 4. Click the **Copy** button to copy the token.
 
 5. Log in to [Local UI](../host-management/access-console.md) on the host that you want to link to the leader host.
