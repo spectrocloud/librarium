@@ -49,7 +49,7 @@ with each other.
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
 - For hosts that are deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md), all hosts must
-  share the same Operating System (OS).
+  share the same OS.
 
 - You cannot update the IP address of a linked host.
 
