@@ -22,7 +22,7 @@ Each device where you install the VM Launchpad ISO must meet the following hardw
 | **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                                    | -                                                                                                                      |
 | **RAM**              | 24 GB                                                             | 256 GB or more                                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                         |
 | **Network Adapters** | 4 x 1 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | 4 x 10 Gbps <br /> (2 bonded for management, 2 bonded for VM data) | Cilium bridges VMs onto the data NICs. Review [Network Configuration Considerations](./vmo-networking.md) for details. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot                      | -                                                                                                                      |
+| **Disks**            | Local disk of at least 750 GB for the OS boot                     | Local disk of at least 750 GB for the OS boot                      | Provision at least 750 GB before you install the appliance. The installer partitions this disk automatically.          |
 
 :::info
 
@@ -58,7 +58,7 @@ configuration.
 
 ## Install VM Launchpad {#install}
 
-1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **VM Launchpad** ISO.
 
 2. In the **VM Launchpad** section, use the drop-down menu to select the version and appliance variant, and select
    **Show Artifacts**.
@@ -84,22 +84,14 @@ configuration.
 
 3. The following table describes the artifacts available for VM Launchpad.
 
-   | **Artifact**                          | **Description**                                                                                                   |
-   | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs.           |
-   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Requires uploading the content bundle separately after installation. |
-   | **Appliance ISO with Content**        | Full ISO with an embedded content bundle. Does not require a separate content bundle upload.                      |
-   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                                   |
+   | **Artifact**                          | **Description**                                                                                         |
+   | ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Upload the content bundle separately after installation.   |
+   | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs. |
+   | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                         |
 
-4. Download the **Appliance ISO with Content**, or download both the **Appliance ISO** and **Content bundle (including
-   Ubuntu)**. Download the **MOK Key for Secure Boot** if you use secure boot on your host.
-
-   :::info
-
-   Starting with VM Launchpad 4.9.15, the **Appliance ISO with Content** will no longer be available. Download the slim
-   **Appliance ISO** and the **Content bundle (including Ubuntu)** separately.
-
-   :::
+4. Download both the **Appliance ISO** and the **Content bundle (including Ubuntu)**. Download the **MOK Key for Secure
+   Boot** if you use secure boot on your host.
 
 5. Boot your device using the VM Launchpad ISO. On the Grand Unified Bootloader (GRUB) menu, allow the VM Launchpad to
    select the **Palette Edge Interactive Installer** boot option automatically
