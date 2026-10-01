@@ -16,8 +16,8 @@ This page describes how to prepare an NVIDIA Jetson device so it can register wi
 
 ## Prepare the operating system
 
-The Jetson AGX Thor Developer Kit runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which provides a
-Jetson Linux (L4T) operating system built on Ubuntu. Install or update JetPack on the device following the
+The NVIDIA Jetson AGX Thor Developer Kit runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which
+provides a Jetson Linux (L4T) operating system built on Ubuntu. Install or update JetPack on the device following the
 [NVIDIA Jetson AGX Thor Developer Kit Quick Start Guide](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html).
 For the Thor Developer Kit, download the NVIDIA installer image from
 [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), write it to a USB drive, then select **Install on
@@ -126,8 +126,7 @@ available for the registration step.
 
 ## Next steps
 
-The device is now ready to register with Palette and run an AI model. Continue to
+The device is now ready to register with Palette and run an AI model. Continue to the Day 1 registration guide to
+register the device and serve a model.
 
-<!-- TODO(DOC-3090): link the Day 1 "Register a Jetson host and serve a model" page once it exists. -->
-
-the Day 1 registration guide.
+<!-- TODO(DOC-3090): link ./register-jetson-host.md here once the Day 1 page is merged. -->

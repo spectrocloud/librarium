@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Jetson Requirements"
-title: "Jetson Requirements"
+sidebar_label: "Requirements"
+title: "Requirements for Edge AI on NVIDIA Jetson"
 description:
   "Hardware, operating system, and Palette requirements for running Edge AI workloads on an NVIDIA Jetson device."
 hide_table_of_contents: false
@@ -49,7 +49,7 @@ Set the `http_proxy` and `https_proxy` variables, in both lowercase and uppercas
 
 ## Hardware requirements
 
-The following table lists the agent mode minimum requirements alongside the specifications of the Jetson AGX Thor
+The following table lists the agent mode minimum requirements alongside the specifications of the NVIDIA Jetson AGX Thor
 Developer Kit, which exceeds them comfortably. The minimum values match the agent mode prerequisites on
 [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md).
 
@@ -67,6 +67,9 @@ Developer Kit, which exceeds them comfortably. The minimum values match the agen
 The Jetson device runs [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack), which provides a Jetson Linux
 (L4T) operating system built on Ubuntu. For instructions on installing JetPack, refer to
 [Prepare the Jetson Host](./prepare-jetson-host.md).
+
+For more information about NVIDIA JetPack and Jetson Linux, including troubleshooting, refer to the
+[NVIDIA Jetson Software Documentation](https://docs.nvidia.com/jetson/index.html).
 
 This guide is validated on the operating system versions in the following table.
 
