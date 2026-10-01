@@ -21,7 +21,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12137 -->
 
-- Applied security fixes to improve the platform's security posture. We recommend upgrading to this release.
+- Applied security fixes to improve the platform's security posture.
 
 ## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
 
