@@ -7,6 +7,14 @@ sidebar_position: 60
 tags: ["clusters", "cluster management"]
 ---
 
+:::info
+
+This page covers OS patching for clusters that Palette provisioned from a Palette-built VM image. If you brought your
+own host and installed the Palette agent on it, refer to
+[Configure OS Upgrades](../../deployment-modes/agent-mode/manage-agent/os-upgrades.md) instead.
+
+:::
+
 Palette deploys Kubernetes clusters using pre-built VM images. The operating system (OS) on these images is the latest
 patch version when building the image for the supported major-minor streams. For example, if Ubuntu 18.04 is selected
 for the OS layer during provisioning, the OS on the cluster nodes might be using 18.04.3 LTE, assuming that was the
