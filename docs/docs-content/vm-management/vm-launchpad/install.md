@@ -86,8 +86,8 @@ configuration.
 
    | **Artifact**                          | **Description**                                                                                         |
    | ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Upload the content bundle separately after installation.   |
    | **Content bundle (including Ubuntu)** | Content bundle to pair with the slim **Appliance ISO**. Includes the OS content and VM Launchpad packs. |
+   | **Appliance ISO**                     | Slim ISO without an embedded content bundle. Upload the content bundle separately after installation.   |
    | **MOK Key for Secure Boot**           | Machine Owner Key (MOK) to use for secure boot with MokManager.                                         |
 
 4. Download both the **Appliance ISO** and the **Content bundle (including Ubuntu)**. Download the **MOK Key for Secure
