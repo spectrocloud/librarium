@@ -1201,7 +1201,7 @@
   },
   {
     "name": "dra-driver-nvidia-gpu",
-    "description": "The DRA Driver for NVIDIA GPUs enables Dynamic Resource Allocation (DRA) for NVIDIA GPUs in Kubernetes. It allocates GPUs through DeviceClass and ResourceClaim resources with Common Expression Language (CEL) device selection, replacing the traditional device plugin approach. This pack deploys the driver from the Kubernetes community repository."
+    "description": "The DRA Driver for NVIDIA GPUs enables Dynamic Resource Allocation (DRA) for NVIDIA GPUs in Kubernetes. It allocates GPUs through DeviceClass and ResourceClaim resources with Common Expression Language (CEL) device selection, replacing the traditional device plugin approach. This pack deploys a release from the Kubernetes community project, which NVIDIA moved the driver to."
   },
   {
     "name": "f5-bigip-ctlr",
@@ -1245,7 +1245,7 @@
   },
   {
     "name": "nvidia-dra-driver",
-    "description": "The NVIDIA DRA Driver for GPUs enables Dynamic Resource Allocation (DRA) for NVIDIA GPUs in Kubernetes. It allocates GPUs through DeviceClass and ResourceClaim resources with Common Expression Language (CEL) device selection, replacing the traditional device plugin approach. This pack deploys the driver from the NVIDIA repository."
+    "description": "The NVIDIA DRA Driver for GPUs enables Dynamic Resource Allocation (DRA) for NVIDIA GPUs in Kubernetes. It allocates GPUs through DeviceClass and ResourceClaim resources with Common Expression Language (CEL) device selection, replacing the traditional device plugin approach. This pack deploys a release published by NVIDIA before the project moved to the Kubernetes community."
   },
   {
     "name": "nvidia-kai-scheduler",
