@@ -35,7 +35,7 @@ Because the binaries are delivered as overlays instead of being embedded in the 
 provider image can serve multiple Kubernetes versions. To change the Kubernetes version, you update the Kubernetes pack
 in the cluster profile, and Stylus applies the matching extension during the upgrade.
 
-<!-- TODO(DOC-3260): insert the systemd extensions architecture diagram here (draw.io export to webp). Diagram spec is in the PR description. -->
+![Diagram showing Stylus resolving, pulling, and overlaying systemd extensions onto an Edge host's read-only /usr and /opt at runtime, so one minimal provider image serves multiple Kubernetes versions.](/systemd-extensions_architecture.webp)
 
 ## Support Requirements
 
