@@ -217,15 +217,43 @@ kubectl -n piraeus-system exec deploy/linstor-controller -- \
 
 ### Verify PostgreSQL
 
-Confirm that every connection reports an `Ok` state. Then select a running PostgreSQL pod and run a query to confirm the
-database serves requests. A `pg_isready` check only confirms that the database accepts connections, so run an actual
-query instead.
+Confirm that every connection reports an `Ok` state. Then connect to the primary PostgreSQL pod over TCP as the
+`keycloak` user and run a query to confirm the database serves requests. A `pg_isready` check only confirms that the
+database accepts connections, so run an actual query instead.
+
+The FIPS and non-FIPS profiles differ only in the pod name and the Secret that holds the `keycloak` password. Set the
+values for your variant.
 
 ```bash
 kubectl -n "$NS" get pods
-DB_POD=REPLACE_WITH_POSTGRES_POD
+```
 
-kubectl -n "$NS" exec "$DB_POD" -c postgres -- \
-  env PGCONNECT_TIMEOUT=5 psql --username keycloak --dbname keycloak --tuples-only --no-align \
-  --command "SET statement_timeout=5000; SELECT 1"
+Set these values for the FIPS profile.
+
+```bash
+DB_POD=postgres-0
+DB_SECRET=keycloak-db-credentials
+DB_SECRET_KEY=POSTGRES_PASSWORD
+```
+
+Set these values for the non-FIPS CloudNativePG profile.
+
+```bash
+DB_POD=$(kubectl -n "$NS" get pod --selector cnpg.io/instanceRole=primary \
+  -o jsonpath='{.items[0].metadata.name}')
+DB_SECRET=keycloak-db-app
+DB_SECRET_KEY=password
+```
+
+Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your shell
+history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the same command
+works on both profiles.
+
+```bash
+kubectl -n "$NS" get secret "$DB_SECRET" \
+  -o jsonpath="{.data.$DB_SECRET_KEY}" | base64 --decode | \
+  kubectl -n "$NS" exec --stdin "$DB_POD" -c postgres -- \
+  sh -c 'PGCONNECT_TIMEOUT=5 PGPASSWORD="$(cat)" \
+    psql --host 127.0.0.1 --username keycloak --dbname keycloak --tuples-only --no-align \
+    --command "SET statement_timeout=5000; SELECT 1"'
 ```
