@@ -246,6 +246,42 @@ configuration.
 
    :::
 
+## Upload the Content Bundle {#upload-content-bundle}
+
+If you installed the appliance from the slim [**Appliance ISO**](#install), upload the content bundle before you create
+a cluster. The content bundle provides the OS content and VM Launchpad packs that the cluster profile requires. If you
+installed from the **Appliance ISO with Content**, the content bundle is already embedded, so skip this section and
+continue to [Create VM Launchpad Cluster](#create-cluster).
+
+The recommended method is to upload the bundle from the **Content** tab in the appliance's Local UI.
+
+1. Log in to the appliance's
+   [Local UI](../../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui).
+
+2. From the left main menu, select **Content**.
+
+3. In the upper right, select **Actions** > **Upload Content**.
+
+   ![Screenshot of the Content tab with the Actions menu open and Upload Content selected](/vmo/vm-management_vm-launchpad_content-upload-4-10.webp)
+
+4. Select the content bundle file, such as `launchpad-for-vms-<version>.tar.zst`, and upload it. The upload might take
+   several minutes because the bundle is large.
+
+5. Confirm the upload. The **Content** page displays the latest upload file, upload time, size, and checksum, and
+   updates the **Disk Usage** and syncing status. The registry content appears on this page only after the cluster is up
+   and the content has loaded into the local registry.
+
+After the upload finishes, continue to [Create VM Launchpad Cluster](#create-cluster).
+
+### Alternative Upload Methods
+
+- **Palette CLI (scripted).** For automated or repeatable uploads, use the
+  [`content upload`](../../automation/palette-cli/commands/content.md#upload) command of the Palette CLI.
+
+- **Local UI reference.** For the full Local UI upload reference, including prerequisites and the Local UI port, refer
+  to
+  [Upload Content Bundle with Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle).
+
 ## Create VM Launchpad Cluster {#create-cluster}
 
 1. From the left main menu, select **Cluster**.
@@ -264,9 +300,8 @@ configuration.
 
    :::info
 
-   If your installation is using the [**Appliance ISO**](#install), upload the content bundle using
-   [Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
+   If you installed the appliance from the slim [**Appliance ISO**](#install), upload the content bundle before this
+   step. Refer to [Upload the Content Bundle](#upload-content-bundle).
 
    :::
 
