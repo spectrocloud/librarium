@@ -238,12 +238,29 @@ configuration.
 
    :::
 
+## Link Edge Hosts
+
+For a multi-node cluster, link the hosts together after you configure their network settings and before you upload the
+content bundle. Linking gives the hosts the network and security infrastructure to identify each other and communicate
+securely. If you deploy a single-node cluster, skip this section and continue to
+[Upload the Content Bundle](#upload-content-bundle).
+
+You designate one host as the leader and link the remaining hosts to it as followers. You upload the content bundle to
+the leader, which syncs it to the followers, and you create the cluster from the leader.
+
+The VM Launchpad appliance enables multi-node support by default, so you don't need to edit user data to link hosts.
+Skip the user-data prerequisites on the Link Hosts page and start at the procedure: from the leader's Local UI, select
+**Linked Edge Hosts**, generate a token, and enter that token on each follower host to link it. For the full steps,
+refer to [Link Hosts](../../clusters/edge/local-ui/cluster-management/link-hosts.md#link-hosts).
+
+After every host appears in the **Linked Edge Hosts** table on the leader, continue to
+[Upload the Content Bundle](#upload-content-bundle).
+
 ## Upload the Content Bundle {#upload-content-bundle}
 
-If you installed the appliance from the slim [**Appliance ISO**](#install), upload the content bundle before you create
-a cluster. The content bundle provides the OS content and VM Launchpad packs that the cluster profile requires. If you
-installed from the **Appliance ISO with Content**, the content bundle is already embedded, so skip this section and
-continue to [Create VM Launchpad Cluster](#create-cluster).
+Before you create a cluster, upload the content bundle. The content bundle provides the OS content and VM Launchpad
+packs that the cluster profile requires. For a multi-node cluster, upload the bundle to the leader host, which syncs it
+to the linked follower hosts.
 
 The recommended method is to upload the bundle from the **Content** tab in the appliance's Local UI.
 
