@@ -13,9 +13,9 @@ tags: ["edge"]
 rather than a static username and password. This guide describes how to configure an Edge cluster to pull provider
 images from a private Amazon ECR repository, both when the cluster is first created and when it is later upgraded.
 
-This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution deployed in agent mode, and
-it covers provider images only. It does not configure ECR for application workload images, and it does not cover
-appliance mode or other Kubernetes distributions. Refer to [Limitations](#limitations) for the full scope.
+This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution, and it covers provider
+images only. It does not configure ECR for application workload images, and it does not cover other Kubernetes
+distributions. Refer to [Limitations](#limitations) for the full scope.
 
 ## Provider Image Pull Paths
 
@@ -47,8 +47,8 @@ change those credentials later, which is what makes credential rotation possible
 
 ## Limitations
 
-- This configuration applies to the PXK-E (kubeadm) Kubernetes distribution in agent mode only. Appliance mode and other
-  Kubernetes distributions are not covered.
+- This configuration applies to the PXK-E (kubeadm) Kubernetes distribution. Other Kubernetes distributions are not
+  covered.
 
 - The configuration covers provider images only. Application workload images are not covered.
 
