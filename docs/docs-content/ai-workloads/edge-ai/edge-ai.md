@@ -40,8 +40,10 @@ running life-critical AI workloads on edge Kubernetes with Palette.
 - [Prepare the Jetson Host](./prepare-jetson-host.md) - Install the software prerequisites and prepare the device so it
   can register with Palette.
 
+- [Run a Local AI Model on a Jetson Thor](../../tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor.md) - Follow an
+  end-to-end tutorial that takes a Jetson AGX Thor from a bare device to a local AI model served on the device GPU.
+
 <!-- prettier-ignore-end -->
 
 <!-- TODO(DOC-3090): add "Register a Jetson host and serve a model" (Day 1) card once that page exists. -->
 <!-- TODO(DOC-3091): add "Day 2 operations for Jetson Edge AI" card once that page exists. -->
-<!-- TODO(DOC-3092): add "Run a local AI model on a Jetson at the edge" tutorial card once that page exists. -->
