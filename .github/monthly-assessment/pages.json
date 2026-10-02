@@ -2,51 +2,51 @@
   {
     "path": "/paletteai-inference-launchpad",
     "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad",
-    "views": 664
-  },
-  {
-    "path": "/vm-management",
-    "url": "https://docs.spectrocloud.com/vm-management",
-    "views": 351
+    "views": 477
   },
   {
     "path": "/tutorials/getting-started",
     "url": "https://docs.spectrocloud.com/tutorials/getting-started",
-    "views": 259
+    "views": 241
+  },
+  {
+    "path": "/downloads/cli-tools",
+    "url": "https://docs.spectrocloud.com/downloads/cli-tools",
+    "views": 205
   },
   {
     "path": "/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
     "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
-    "views": 243
+    "views": 198
   },
   {
-    "path": "/clusters/public-cloud/aws/required-iam-policies",
-    "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
-    "views": 229
-  },
-  {
-    "path": "/paletteai-inference-launchpad/reference/certified-models-by-hardware",
-    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/reference/certified-models-by-hardware",
-    "views": 194
+    "path": "/vertex",
+    "url": "https://docs.spectrocloud.com/vertex",
+    "views": 187
   },
   {
     "path": "/architecture/architecture-overview",
     "url": "https://docs.spectrocloud.com/architecture/architecture-overview",
-    "views": 191
-  },
-  {
-    "path": "/enterprise-version/install-palette",
-    "url": "https://docs.spectrocloud.com/enterprise-version/install-palette",
-    "views": 181
+    "views": 184
   },
   {
     "path": "/paletteai-inference-launchpad/how-to-guides",
     "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides",
-    "views": 172
+    "views": 183
   },
   {
     "path": "/clusters",
     "url": "https://docs.spectrocloud.com/clusters",
     "views": 172
+  },
+  {
+    "path": "/clusters/public-cloud/aws/required-iam-policies",
+    "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
+    "views": 170
+  },
+  {
+    "path": "/deployment-modes/agent-mode/install-agent-host",
+    "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
+    "views": 159
   }
 ]
