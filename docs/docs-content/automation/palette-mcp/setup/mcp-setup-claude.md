@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Set Up MCP Server with Claude Code"
 title: "Set Up MCP Server with Claude Code"
-description: "Learn how to setup the Palette MCP server with Claude Code."
+description: "Learn how to set up the Palette MCP server with Claude Code."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
@@ -19,7 +19,7 @@ server manually as a container. We recommend the plugin install for most Claude 
 
 - A Palette account.
 
-- A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
+- A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   guide for more information.
 
 - If you plan to configure the MCP server manually, a container engine, such as
@@ -28,8 +28,7 @@ server manually as a container. We recommend the plugin install for most Claude 
 ## Set Up with the Palette Agent Toolkit Plugin
 
 The Palette Agent Toolkit plugin bundles the MCP server configuration and four diagnostic skills (`diagnose-cluster`,
-`diagnose-edge`, `health-overview`, and `access-review`) in a single install. This is the recommended setup path for
-Claude Code and Claude Desktop.
+`diagnose-edge`, `health-overview`, and `access-review`).
 
 1. Start Claude Code in a terminal. Ensure that you authenticate with Claude by following the prompts.
 
@@ -49,8 +48,6 @@ Claude Code and Claude Desktop.
    /plugin install palette@palette-agent-toolkit
    ```
 
-   The plugin installs the MCP server configuration and the four diagnostic skills.
-
 4. Configure your Palette connection. Open the plugin menu, select the **palette** plugin, and choose **Configure
    options**.
 
@@ -65,13 +62,12 @@ Claude Code and Claude Desktop.
    | **Palette host**        | Required. Your tenant URL, for example `example.spectrocloud.com`.                       |
    | **Palette API key**     | Required unless you use an auth token. Create one under **User Menu** > **My API Keys**. |
    | **Palette auth token**  | JWT alternative to an API key. Provide an API key **or** an auth token, not both.        |
-   | **Default project UID** | Optional. Scopes all calls to one project; omit for tenant-wide access.                  |
    | **Custom CA file path** | Optional. Path to a CA bundle for a self-hosted Palette behind a private CA.             |
 
    You must set the **Palette host** and either the **Palette API key** or the **Palette auth token**. Claude Code
    stores the API key and auth token in your operating system credential store, such as the macOS Keychain, Windows
    Credential Manager, or Linux Secret Service. Where no credential store is available, Claude Code falls back to
-   `~/.claude/.credentials.json` with `0600` permissions. You don't need to export shell variables or create a `.env`
+   `~/.claude/.credentials.json` with `0600` permissions. You do not need to export shell variables or create a `.env`
    file.
 
    To provision the plugin without prompts, such as in a CI pipeline, pass the options as repeatable `--config` flags at
@@ -97,14 +93,14 @@ Use this path if you prefer to configure the container image directly instead of
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
 4. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
-   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file, if you have
+   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env-mcp` file, if you have
    configured one.
 
    If you want to use Podman, replace the command `docker` with `podman`.
 
    <Tabs groupId="mcp-setup">
 
-   <TabItem label=".env.mcp File" value="env_file">
+   <TabItem label=".env-mcp File" value="env_file">
 
    ```shell {2}
    claude mcp add --transport stdio palette -- \
@@ -120,13 +116,12 @@ Use this path if you prefer to configure the container image directly instead of
 
    Replace the environment variable values in the snippet below with your own values.
 
-   ```shell {2,4,5,6}
+   ```shell {2,4,5}
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
        --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
        -e PALETTE_HOST=<palette-api-endpoint> \
        -e PALETTE_API_KEY=<palette-api-key> \
-       -e PALETTE_PROJECT_UID=<palette-project-id> \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
@@ -143,14 +138,14 @@ Use this path if you prefer to configure the container image directly instead of
 
    :::warning
 
-   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server
-   automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
+   The Palette MCP server automatically removes the kubeconfig files from the mounted `/tmp/kubeconfig` folder when the
+   container stops.
+
+   A kubeconfig contains cluster credentials. When you retrieve one with `read_cluster_kubeconfig`, pass `write_path`
+   (requires `--allow-write`) to have the server save it locally with `0600` permissions, and treat the saved file as
+   sensitive.
 
    :::
-
-   ```shell hideClipboard title="Example Output"
-   Added stdio MCP server palette with command: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest to local config
-   ```
 
 5. Issue the following command to ensure that the MCP server was set up successfully.
 
@@ -167,12 +162,6 @@ Use this path if you prefer to configure the container image directly instead of
 
    ```shell
    claude
-   ```
-
-   ```shell hideClipboard title="Example Output"
-   Welcome to Claude Code
-
-   ›
    ```
 
 7. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
@@ -212,7 +201,7 @@ You can now use the Palette MCP server with Claude Code.
    ```shell title="Example Output"
    ⏺ palette - read_clusters (MCP)(filters: { states: ["Running"] })
 
-   ⏺ You have 1 active cluster in Palette:
+   ⏺ You have 1 active cluster in Palette.
 
    ┌──────────────────┬───────┬─────────┬─────────┬──────────────┐
    │       Name       │ Cloud │  State  │ Health  │   Location   │
