@@ -11,6 +11,62 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 2, 2026 - Release 4.8.70
+
+<!-- PATCH RELEASE TICKET: DOC-3269 -->
+<!-- PATCH RELEASE VERSION: 4.8.70 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12156 PEM-12154 PEM-12144 PEM-12032 -->
+
+### Breaking Changes {#breaking-changes-4-8-70}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12032 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- Palette now validates the callback URL on every authentication request when it acts as an identity provider (IdP).
+  Earlier releases accepted any callback URL. A tenant admin must register callback URLs that Palette does not allow by
+  default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URL, with
+  some exceptions.
+
+  You do not need to register the callback URLs after upgrade in the following situations.
+
+  - The callback URL is on your Palette domain.
+  - The callback URL is on the local machine, such as `localhost` or `127.0.0.1`.
+  - The callback URL belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
+    of the upgrade with its address set to a literal value or a variable.
+
+    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URLs automatically at
+    upgrade, including an address set with a variable. However, Palette cannot resolve an address set with a
+    [macro](../clusters/cluster-management/macros.md), so sign-in to those clusters fails until a tenant admin registers
+    the address. If you change a cluster's callback URL after the upgrade, you must register the new value.
+
+  For more information, refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12156 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12154 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12144 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.70 Palette release is 4.8.30.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.70 Palette release is
+4.8.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## September 22, 2026 - Release 4.8.67
 
 <!-- PATCH RELEASE TICKET: DOC-3222 -->
