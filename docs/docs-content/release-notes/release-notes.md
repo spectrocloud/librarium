@@ -11,6 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 2, 2026 - Release 4.10.17-patch.2
+
+<!-- PATCH RELEASE TICKET: DOC-3271 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.2 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12152 PEM-12151 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12152 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12151 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## October 1, 2026 - Release 4.10.17-patch.1
 
 <!-- PATCH RELEASE TICKET: DOC-3263 -->
