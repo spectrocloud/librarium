@@ -105,6 +105,10 @@ The table below lists the parameters used to configure a MongoDB deployment.
 | `cpuLimit`         | Specifies the CPU limit for each MongoDB Enterprise member.                                                                                                                                                                                                                                                                                                                                                                                          | String   | `2000m`                                     |
 | `pvcSize`          | The storage settings for the MongoDB Enterprise database. Use increments of `5Gi` when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is `replicas` \* `pvcSize`.                                                                                                                                                                                                            | string   | `20Gi`                                      |
 | `storageClass`     | The storage class for the MongoDB Enterprise database.                                                                                                                                                                                                                                                                                                                                                                                               | String   | `""`                                        |
+| `nodeSelector`     | A map of node labels that constrains the MongoDB pods to nodes with matching labels. An empty map is omitted from the StatefulSet.                                                                                                                                                                                                                                                                                                                   | Object   | `{}`                                        |
+| `nodeAffinity`     | A Kubernetes node affinity specification that gives you finer-grained control than `nodeSelector` over which nodes the MongoDB pods can schedule onto. An empty map is omitted from the StatefulSet.                                                                                                                                                                                                                                                 | Object   | `{}`                                        |
+| `tolerations`      | A list of Kubernetes tolerations that allow the MongoDB pods to schedule onto nodes with matching taints. Pair it with `nodeSelector` or `nodeAffinity` to reserve dedicated, tainted nodes for MongoDB. An empty list is omitted from the StatefulSet.                                                                                                                                                                                              | Array    | `[]`                                        |
+| `podAntiAffinity`  | A Kubernetes pod anti-affinity specification that controls how the MongoDB replicas spread across nodes. By default, the replicas spread across separate hosts using the `kubernetes.io/hostname` topology key. Override this parameter to change the spread behavior, or set it to `{}` to disable anti-affinity.                                                                                                                                   | Object   | Spreads replicas across hosts               |
 
 ```yaml
 mongo:
@@ -116,7 +120,24 @@ mongo:
   memoryLimit: "4Gi"
   pvcSize: "20Gi"
   storageClass: ""
+  nodeSelector: {}
+  nodeAffinity: {}
+  tolerations: []
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: role
+              operator: In
+              values:
+                - mongo
+        topologyKey: kubernetes.io/hostname
 ```
+
+To keep the MongoDB replicas on dedicated nodes, label and taint those nodes. Use `nodeSelector` or `nodeAffinity` to
+target the node labels, and a `tolerations` entry to tolerate the node taint. Because these settings are part of the
+Helm values, they persist across `helm upgrade` operations, unlike changes applied directly to the StatefulSet with
+`kubectl patch`.
 
 ## Config
 
@@ -519,3 +540,7 @@ Due to node affinity configurations, you must set `scheduleOnControlPlane: false
 [GCP GKE](../../../clusters/public-cloud/gcp/create-gcp-gke-cluster.md).
 
 :::
+
+## Observability
+
+<PartialsComponent category="self-hosted" name="helm-ref-observability" edition="vertex" version="Palette VerteX" />

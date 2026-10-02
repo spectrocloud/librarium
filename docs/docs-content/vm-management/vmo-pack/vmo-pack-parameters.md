@@ -102,6 +102,23 @@ The parameters in this table are relative to `charts.virtual-machine-orchestrato
 
 Enable `vmo-manager.networkPolicy.enabled` only on clusters that use Cilium as the CNI.
 
+### Bridge VLAN Filtering Parameters
+
+<!-- SCAFFOLD (PVM-1183): key paths and defaults below need confirmation against the shipped 4.10.a pack values before publish. -->
+
+When you enable `vlanFiltering.enabled`, the following parameters tune NAD-based bridge VLAN filtering. Refer to
+[Bridge VLAN Filtering](../vm-launchpad/infrastructure/networking.md#bridge-vlan-filtering) for the feature behavior.
+
+| Parameter                            | Description                                                                                   | Default   |
+| ------------------------------------ | --------------------------------------------------------------------------------------------- | --------- |
+| `vlanFiltering.env.nadDiscovery`     | Derive permitted VLANs from NADs. Set to `false` to restore allowlist-only behavior.          | `true`    |
+| `vlanFiltering.env.allowedVlans`     | Static VLAN allowlist. VMO adds these VLANs to the NAD-derived set.                           | _(empty)_ |
+| `vlanFiltering.env.vlanRange`        | Tenant VLAN range that NAD-declared VLANs must fall within when enforcement is enabled.       | _(empty)_ |
+| `vlanFiltering.env.enforceVlanRange` | Refuse and report NAD VLANs that fall outside `vlanRange`.                                    | `false`   |
+| `admissionControl.enabled`           | Register VMO admission validation (fail-open overcommit feedback and NAD network validation). | `true`    |
+
+<!-- VERIFY(PVM-1183): confirm each key path (vlanFiltering.env.* vs top-level), the admissionControl.enabled parent, and all defaults against the shipped 4.10.a pack. -->
+
 ## Next Steps
 
 Refer to [Create a VMO Profile](./create-vmo-profile.md) to apply these parameters in an add-on cluster profile.

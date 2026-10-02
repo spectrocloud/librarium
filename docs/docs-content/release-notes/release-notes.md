@@ -11,6 +11,490 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 4, 2026 - Release 4.10.a {#release-notes-4.10.a}
+
+### Security Notices
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- To improve the security posture of using Palette as an identity provider, Palette now validates the callback URL on
+  every authentication request. Refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.10.a}
+
+#### Breaking Changes {#breaking-changes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11997 -->
+
+- Palette now enforces authorization checks on five APIs that previously required no permission. Automation that calls
+  these endpoints must use a principal that holds the required permission. Otherwise, the request fails with an
+  authorization error.
+
+  | API                                                   | Required permission                      |
+  | ----------------------------------------------------- | ---------------------------------------- |
+  | `PATCH /v1/cloudaccounts/{uid}/geoLocation`           | Update permission on the cloud account   |
+  | `POST /v1/spectroclusters/{uid}/workloads/sync`       | Update permission on the cluster         |
+  | `GET /v1/users/assets/vsphere/dnsMapping`             | Get permission on the DNS mapping object |
+  | `GET /v1/tenants/{tenantUid}/subscriptions/metadata`  | Tenant Admin role on the tenant          |
+  | `GET /v1/tenants/{tenantUid}/subscriptions/aws/{uid}` | Tenant Admin role on the tenant          |
+
+  The related endpoint `POST /v1/spectroclusters/{uid}/workloads/{kind}/sync`, which syncs a single workload kind,
+  requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
+  above.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
+
+- Palette now validates the callback URL on every authentication request when it acts as an identity provider (IdP).
+  Earlier releases accepted any callback URL. A tenant admin must register callback URLs that Palette does not allow by
+  default. Authentication that succeeded before the upgrade fails until a tenant admin registers the callback URL, with
+  some exceptions.
+
+  You do not need to register the callback URLs after upgrade in the following situations.
+
+  - The callback URL is on your Palette domain.
+  - The callback URL is on the local machine, such as `localhost` or `127.0.0.1`.
+  - The callback URL belongs to a Virtual Machine Orchestrator or VM Migration Assistant cluster that exists at the time
+    of the upgrade with its address set to a literal value or a variable.
+
+    Palette registers the Virtual Machine Orchestrator and VM Migration Assistant callback URLs automatically at
+    upgrade, including an address set with a variable. However, Palette cannot resolve an address set with a
+    [macro](../clusters/cluster-management/macros.md), so sign-in to those clusters fails until a tenant admin registers
+    the address. If you change a cluster's callback URL after the upgrade, you must register the new value.
+
+  For more information, refer to
+  [Register OIDC Callback URLs](../user-management/saml-sso/register-oidc-callback-urls.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11651 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11832 -->
+
+- To improve security, Palette SaaS now rejects Splunk audit trail endpoints that point at private or reserved IP
+  addresses. Palette checks the HTTP Event Collector (HEC) URL when you create, update, or validate a Splunk audit
+  trail, and each time it sends audit logs to Splunk. Palette rejects a URL that is, or resolves to, a private (RFC
+  1918), localhost, link-local, multicast, carrier-grade NAT (`100.64.0.0/10`), or unspecified address, including the
+  cloud instance metadata address `169.254.169.254`, as well as a hostname that it cannot resolve. A rejected request
+  returns the `InvalidParam` error code, and an existing audit trail that points at a blocked address stops delivering
+  logs after the upgrade. Self-hosted Palette and Palette VerteX are not affected. If you use Palette SaaS with a Splunk
+  instance on an internal IP address, expose a publicly routable HEC endpoint and update the audit trail to use it.
+  Refer to
+  [Push Audit Trails to Amazon CloudWatch or Splunk](../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11701 -->
+
+- Palette now requires a role name when you create, update, or clone a role. A request with an empty or whitespace-only
+  `metadata.name` fails with an HTTP 400 response and the `InvalidName` error code. Palette does not modify existing
+  roles, but you must add a name to any unnamed role the next time you update it. Update any automation that creates or
+  modifies roles through the API and might pass an unset name. The Spectro Cloud Terraform provider already requires a
+  role name, so this change does not affect Terraform configurations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11955 -->
+
+- Registry names must now be unique when you rename a pack or Helm registry, consistent with the existing check when you
+  create a registry. Renaming a registry to a name that another registry in the same tenant already uses through
+  `PUT /v1/registries/pack/{uid}` or `PUT /v1/registries/helm/{uid}` fails with an HTTP 409 response and the
+  `ResourceNameAlreadyExists` error code. Name matching is case-insensitive and applies across all registry types, so a
+  pack registry cannot take the name of a Helm or OCI registry. If two registries already share a name, rename one of
+  them to a unique name. Update any automation or Terraform configuration that renames registries so that it uses unique
+  names.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11848 -->
+
+- The private and synchronization settings of a Helm registry are now fixed when you create the registry, because
+  Palette determines synchronization support from the private setting at creation. The Palette UI no longer offers the
+  **Synchronization** toggle when you edit an existing Helm registry. A `PUT /v1/registries/helm/{uid}` request that
+  changes `spec.isPrivate` fails with an HTTP 400 response and the `HelmRegistryImmutableField` error code. A request
+  that omits `isPrivate` is treated as public, so an update to a private registry must include `"isPrivate": true`. To
+  change either setting, delete the registry, add it again with the setting you need, and update any cluster profiles
+  that reference it. Refer to
+  [Synchronization Behavior](../registries-and-packs/registries/helm-charts.md#synchronization-behavior) for more
+  information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- K3s is no longer a supported distribution for virtual clusters and cluster groups. You cannot create new K3s cluster
+  groups, and you cannot upgrade existing K3s cluster groups to vCluster 0.36.x. Existing K3s virtual clusters continue
+  to run on their current vCluster version. To move to vCluster 0.36.x, create a new Kubernetes-based cluster group and
+  migrate your workloads. Refer to
+  [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md#upgrade-cluster-group) for more information.
+
+#### Upgrade Notes {#upgrade-notes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
+
+- Self-hosted Palette and VerteX now warn you to configure the image pull secret before you upgrade or install. If your
+  installation pulls images from the Spectro Cloud registry instead of a local registry and the secret is not
+  configured, Local UI (for appliances) and the system console (for Enterprise Clusters) display a warning. The warning
+  is not enforced and does not block the upgrade or installation: the installation stays available and existing workload
+  clusters are unaffected. However, new cluster deployments and day-2 operations that pull Spectro Cloud images fail
+  until you configure the pull secret. Airgapped installations and installations that use a mirrored registry are not
+  affected. For more information, refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- If you have cluster groups on the K3s distribution, you cannot upgrade them to vCluster 0.36.x or later, because K3s
+  is no longer a supported virtual cluster distribution. Existing K3s virtual clusters continue to run on their current
+  vCluster version. Refer to [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) for more
+  information.
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5872 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7379 -->
+
+- EKS and GKE clusters now support dedicating a worker node pool for system pods, both Palette and non-Palette. Select
+  **Dedicate node pool for system pods** in the pool configuration to keep non-system workloads off the pool, reserving
+  the other node pools in the cluster for your own workloads. Refer to
+  [Dedicated node pool for system pods](../clusters/cluster-management/node-pool.md#dedicated-system-pod-pool) for more
+  information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11993 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2410 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2428 -->
+
+- You can now attach a running, Palette-provisioned cluster to an existing cluster template through the Palette UI or
+  the Spectro Cloud Terraform provider, bringing the cluster under template governance for future upgrades and policy
+  enforcement. Refer to
+  [Attach an Existing Cluster to a Cluster Template](../cluster-templates/attach-cluster-to-template.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8670 -->
+
+- Self-hosted Palette and VerteX can now export platform metrics to an external observability stack, such as Splunk,
+  using an OpenTelemetry collector. You configure and manage the export from the **Metrics** tab in the system console.
+  For more information, refer to [Export Platform Metrics](../enterprise-version/system-management/export-metrics.md).
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11745 -->
+
+- Beneath the pull secret configuration field, the system console now shows who configured the image pull secret and
+  when.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-4901 -->
+
+- When adding a worker node pool to a running cluster, you can now click **Copy from Control Plane Pool** to reuse the
+  control plane pool's configuration in the new pool. The copied fields remain editable.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5295 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5296 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5297 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5298 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5299 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7615 -->
+
+- Palette upgraded the Cluster API providers that it uses internally, including the AWS, vSphere, Azure, and GCP
+  providers. For the current provider versions, refer to
+  [Cluster API Versions](../architecture/orchestration-spectrocloud.md#cluster-api-versions).
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3503 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11990 -->
+
+- Fixed an issue that caused [cluster backups](../clusters/cluster-management/backup-restore/create-cluster-backup.md)
+  that Velero reported as `PartiallyFailed` to display as **Completed** in Palette. These backups now display as
+  **Partially Failed** in the **Backups** tab, where you can still delete or restore them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7402 -->
+
+- Fixed an issue that caused **Additional Labels** configured on [EKS](../clusters/public-cloud/aws/eks.md) worker node
+  pools to reach new nodes only after the nodes joined the cluster. Workloads that selected nodes by these labels could
+  fail to schedule, and node pool updates could time out while draining nodes. Palette now applies the labels when it
+  creates the nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7403 -->
+
+- Fixed an issue that caused the `AWSManagedMachinePool` resource of [EKS](../clusters/public-cloud/aws/eks.md) worker
+  node pools to list each Availability Zone twice when the node pool specified both Availability Zones and subnets.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7458 -->
+
+- Fixed an issue that could prevent Palette from applying
+  [add-on pack changes](../clusters/cluster-management/cluster-updates.md) to EKS clusters and other clusters with
+  managed worker node pools after a worker node pool recovered from a cloud provider failure, such as a deleted EC2
+  launch template version.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7532 -->
+
+- Fixed an issue that caused Palette to retry a [pack](../clusters/cluster-management/cluster-updates.md) uninstall
+  indefinitely when the uninstall could not complete, for example, when removing the VMO pack from a cluster that still
+  had virtual machines. Palette now stops after 12 failed attempts and reports a pack error with the reason
+  `PackUninstallStalled`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11972 -->
+
+- Fixed an issue that caused [audit trail](../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk)
+  events pushed to Splunk to omit the event time from the event body, so records exported or forwarded from Splunk did
+  not show when the action occurred. The event body now includes a `timestamp` field in UTC.
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11589 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11995 -->
+
+- EKS Hybrid Nodes, deprecated in May 2026, are now disabled. Hybrid node configuration controls are greyed out in the
+  Palette UI on imported EKS clusters, and API requests that enable or configure hybrid nodes are rejected. Existing
+  clusters with hybrid nodes continue to operate, but you cannot add or modify hybrid configuration. Deploy your
+  workloads to [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7430 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7616 -->
+<!-- https://spectrocloud.atlassian.net/browse/PFR-946 -->
+
+- The MicroK8s pack is no longer available in Palette and Palette VerteX. Use
+  <VersionedLink text="Canonical Kubernetes (CK8s)" url="/integrations/packs/?pack=kubernetes-ck8s" /> instead.
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->
+
+- K3s is no longer a supported distribution for Palette and Palette VerteX virtual clusters or cluster groups. Palette
+  and Palette VerteX virtual clusters now run on vCluster 0.36.x, and upstream vCluster removed K3s in 0.33. Existing
+  K3s virtual clusters continue to run on their current vCluster version, but their cluster groups cannot be upgraded to
+  newer vCluster versions. To move to a newer vCluster version, create a new Kubernetes-based cluster group and migrate
+  your workloads.
+
+### Edge
+
+<!-- release-notes-edge-callout-4.10.a-start -->
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.a Palette release is 4.10.a.
+
+:::
+
+<!-- release-notes-edge-callout-4.10.a-end -->
+
+#### Breaking Changes {#breaking-changes-edge-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10966 -->
+
+- Palette now validates the control plane virtual IP (VIP) address of Edge Native clusters on cluster creation and day-2
+  updates. When the control plane endpoint type is VIP, the host must be a valid IPv4 address or a Fully Qualified
+  Domain Name (FQDN). Otherwise, the request fails with an HTTP 400 response and the `InvalidAddress` error code. After
+  a cluster is provisioned, you cannot change its control plane endpoint type or host. A day-2 update through
+  `PUT /v1/cloudconfigs/edge-native/{configUid}/clusterConfig` that changes either value fails with an HTTP 403 response
+  and the `ControlPlaneEndpointUpdateForbidden` error code. The Palette UI already enforces these rules. Update any
+  Terraform configuration or automation that passes an invalid VIP or changes the VIP of a provisioned Edge Native
+  cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8470 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9555 -->
+
+- When you update an Edge Native node pool through the
+  `PUT /v1/cloudconfigs/edge-native/{configUid}/machinePools/{machinePoolName}` endpoint, the number of entries in
+  `cloudConfig.edgeHosts` must now match `poolConfig.size`. This safeguard prevents a partial host list from removing
+  Edge hosts from the pool unintentionally, and applies to control plane and worker node pools. A request whose host
+  count does not match the pool size fails with an HTTP 400 response and the `ShouldBeEqualToValue` error code. If your
+  automation updates node-level taints or labels on some of the hosts in a pool, include every host in the pool in the
+  request. To remove a host, reduce `poolConfig.size` and omit the host from `cloudConfig.edgeHosts`. Refer to
+  [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
+  for more information.
+
+#### Upgrade Notes {#upgrade-notes-edge-4.10.a}
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8470 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9523 -->
+
+- On connected Edge Native clusters, you can now assign taints and labels to individual Edge hosts, so hosts in the same
+  node pool can play different roles without needing separate pools. Set the values on each host row inside a pool's
+  **Edge Hosts** section, either during cluster creation or when you edit a pool on an existing cluster. This supports
+  patterns such as a three-node control plane where two hosts run application workloads and a third, lightweight host
+  participates only in etcd quorum. Refer to
+  [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9066 -->
+
+- The Palette UI now supports adding a temporary fourth control plane host to an Edge cluster node pool, so you can
+  replace a control plane Edge host by adding the replacement before you remove the original and maintain etcd quorum
+  throughout the operation. While the node pool contains four control plane hosts, Palette displays a warning that the
+  cluster is in a temporary intermediate state. Refer to
+  [Replace a Control Plane Edge Host](../clusters/edge/cluster-management/control-plane-host-replacement.md) for the
+  procedure, including how to verify etcd membership health before you remove the original host.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9592 -->
+
+- The HTTPS certificate that Edge hosts generate for [Local UI](../clusters/edge/local-ui/local-ui.md) is now valid for
+  10 years instead of 5 years. Edge hosts that already have a Local UI certificate keep their existing certificate.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9521 -->
+
+- The **Edge Hosts** page now shows the Palette agent version installed on each Edge host and indicates when a newer
+  version is available, so you can determine which hosts are behind and the version they would upgrade to. Refer to
+  [Identify the Latest Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-latest-palette-agent-version)
+  for more information.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9109 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9526 -->
+
+- Fixed an issue where the Edge [Local UI](../clusters/edge/local-ui/host-management/access-console.md) reported an
+  expired OS password as incorrect credentials at login. The login page now detects an expired password, whether an
+  administrator or a PAM policy expired it, and lets you change the password there instead of requiring SSH or Palette
+  TUI console access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7493 -->
+
+- Fixed an issue that prevented add-on packs whose name contains a forward slash, such as packs sourced from a namespace
+  in an [OCI registry](../registries-and-packs/registries/oci-registry/oci-registry.md), from deploying to Edge
+  clusters. The cluster reported `FailedToDownloadPack` events with `failed to locate pack` errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9044 -->
+
+- Fixed an issue that caused Kubernetes to fail to start, with errors such as `bind: cannot assign requested address`,
+  after a single-node Edge cluster with an [overlay network](../clusters/edge/networking/vxlan-overlay.md) rebooted
+  while the Edge host could not connect to Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9196 -->
+
+- Fixed an issue that prevented OS and Kubernetes [upgrades](../clusters/edge/cluster-management/upgrade-behavior.md)
+  from starting on Edge clusters when the OS pack values in the cluster profile could not be parsed, for example,
+  because of incorrect YAML indentation. The cluster now reports an `OSPackValuesValid` condition that includes the
+  parsing error and line number.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9590 -->
+
+- Fixed an issue that prevented Kubernetes upgrades on Edge clusters that do not use
+  [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and were first deployed with Palette agent version 4.8.8
+  or earlier. The upgrade pods were rejected with the error
+  `maximum memory usage per Container is 1Gi, but limit is 1536Mi`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9598 -->
+
+- Fixed an issue that could prevent Edge hosts from resetting and returning to registration mode after their
+  [cluster was deleted](../clusters/cluster-management/remove-clusters.md), if a cleanup step failed during the reset.
+  Affected hosts could not reconnect to Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9600 -->
+
+- Fixed an issue that caused the [certificate check](../clusters/edge/cluster-management/certificate-renewal.md) that
+  runs during Edge cluster creation to restart control plane components, including `kube-apiserver`, on clusters that
+  use Palette eXtended Kubernetes - Edge (PXK-E). The restart could interrupt add-on packs that were still installing.
+
+#### Deprecations and Removals
+
+### VerteX
+
+#### Breaking Changes {#breaking-changes-vertex-4.10.a}
+
+#### Upgrade Notes {#upgrade-notes-vertex-4.10.a}
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.10.a) for more details.
+
+#### Improvements
+
+#### Bug Fixes
+
+### Virtual Machine Orchestrator (VMO)
+
+#### VMO Pack
+
+##### Breaking Changes {#breaking-changes-vmo-pack-4.10.a}
+
+##### Features
+
+##### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-918 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1182 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3019 -->
+
+- VM migrations now support VDDK 9 for source VMs on VMware vSphere 7.0 and 8.0. Because Broadcom has removed public
+  VDDK downloads, downloading VDDK requires a Broadcom account with the appropriate product entitlements and an active
+  vSphere subscription.
+
+##### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1133 -->
+
+- Fixed an issue that caused the removal of the [VMO pack](../vm-management/vmo-pack/vmo-pack.md) to delete the
+  Containerized Data Importer (CDI) even when KubeVirt blocked the removal because virtual machines still existed on the
+  cluster and the uninstall strategy was `BlockUninstallIfWorkloadsExist`. The removal now stops before it deletes any
+  components, so disk imports, cloning, and VM provisioning continue to work.
+
+##### Deprecations and Removals
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.a}
+
+##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.a}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+### Automation
+
+<!-- release-notes-automation-callout-4.10.a-start -->
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.a Palette release is
+4.10.a. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
+<!-- release-notes-automation-callout-4.10.a-end -->
+
+#### Breaking Changes {#breaking-changes-automation-4.10.a}
+
+#### Features
+
+<!-- release-notes-automation-features-4.10.a-start -->
+
+- Terraform version 4.10.a of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 4.10.a of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+<!-- release-notes-automation-features-4.10.a-end -->
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Docs and Education
+
+### Packs
+
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+<!-- prettier-ignore-end -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## October 1, 2026 - Release 4.10.17-patch.1
 
 <!-- PATCH RELEASE TICKET: DOC-3263 -->
@@ -272,10 +756,6 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
@@ -327,10 +807,6 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## September 17, 2026 - Release 4.10.17
 
