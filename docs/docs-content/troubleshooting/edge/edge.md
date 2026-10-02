@@ -10,6 +10,34 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Missing `multipath-tools` Package on Edge Images
+
+Edge hosts that rely on multipath storage configurations may experience storage accessibility issues because the
+`multipath-tools` package is missing from Edge installer and provider images built with
+[CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) 4.8.8 and later on the [Kairos](https://kairos.io/)
+v3.5.9 base image. A system cleanup step in Kairos v3.5.9 removes the package. CanvOS 4.10.3 and later, which correspond
+to Palette 4.10.13 and later, use a Kairos version that includes `multipath-tools` on Ubuntu 22.04 and later.
+
+To resolve this issue on earlier CanvOS versions, add `multipath-tools` to your images.
+
+### Debug Steps
+
+1. Add `multipath-tools` to your CanvOS `Dockerfile` before building the installer ISO or provider images. For example,
+   add the following line for Ubuntu-based builds.
+
+   ```dockerfile
+   RUN apt-get update && apt-get install --yes multipath-tools
+   ```
+
+   For FIPS builds, add the package to the base image Dockerfile for the respective operating system.
+
+   The `multipath-tools` package is known to cause issues on Ubuntu 20.04. If unexpected behavior occurs, remove
+   `multipath-tools`.
+
+2. Build the installer ISO and provider images. Refer to
+   [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for more information
+   on customizing your `Dockerfile`.
+
 ## Scenario - Cluster Nodes Fail to Become `Ready` on Kubernetes v1.35.x
 
 On Edge clusters configured with Kubernetes v1.35.x, hosts running OSes that default to cgroup v1, such as Ubuntu 20.04
