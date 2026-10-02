@@ -11,6 +11,207 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
+
+On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
+PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
+Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible, even though the
+Keycloak and PostgreSQL pods report a `Ready` status.
+
+This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
+suspends database I/O. Use the following steps to restore the connection manually.
+
+VM Launchpad ships two Piraeus storage variants, and some values in this scenario differ between them. Select your
+variant in the tabs throughout the procedure. The FIPS profile stores PostgreSQL data in a `pgdata-postgres-0` volume,
+while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` volume.
+
+### Prerequisites
+
+- You have `kubectl` access to the affected VM Launchpad cluster. From the cluster **Overview** tab, download the
+  [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+  to point to it.
+
+- Run every command in this scenario from the same terminal session. The steps set environment variables, such as `NS`,
+  `RESOURCE`, `NODE_A`, and `NODE_B`, that later steps reuse.
+
+### Identify the LINSTOR Resource
+
+Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm that at least one replica reports an
+`UpToDate` state. If no replica is `UpToDate`, investigate replica health instead of changing the path.
+
+1. Set the namespace that hosts Keycloak.
+
+   ```bash
+   NS=keycloak
+   ```
+
+2. List the persistent volume claims in the namespace.
+
+   ```bash
+   kubectl --namespace "$NS" get pvc
+   ```
+
+3. Assign the PostgreSQL data PVC to a variable, based on your storage variant.
+
+   <Tabs groupId="piraeus-profile">
+
+   <TabItem value="fips" label="FIPS">
+
+   ```bash
+   PVC=pgdata-postgres-0
+   ```
+
+   </TabItem>
+
+   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
+
+   Replace `<postgres-data-pvc>` with the `keycloak-db-*` claim name from the previous step.
+
+   ```bash
+   PVC=<postgres-data-pvc>
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+4. Resolve the claim to its persistent volume.
+
+   ```bash
+   PV=$(kubectl --namespace "$NS" get pvc "$PVC" --output jsonpath='{.spec.volumeName}')
+   ```
+
+5. Resolve the persistent volume to its LINSTOR resource.
+
+   ```bash
+   RESOURCE=$(kubectl get pv "$PV" --output jsonpath='{.spec.csi.volumeHandle}')
+   ```
+
+6. List the LINSTOR resource and confirm that at least one replica reports an `UpToDate` state.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- \
+     linstor resource list --resources "$RESOURCE"
+   ```
+
+7. List the resource connections, grouped by source and target.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- \
+     linstor resource-connection list "$RESOURCE" --groupby source target properties port
+   ```
+
+### Inspect the DRBD Connection Paths
+
+List every declared connection path and its interface, then inspect the interfaces on each source and target node pair.
+
+1. List every connection path and its interface.
+
+   ```bash
+   kubectl get linstornodeconnection \
+     --output go-template='{{printf "PATH_NAME\tINTERFACE\n"}}{{range .items}}{{range .spec.paths}}{{printf "%s\t%s\n" .name .interface}}{{end}}{{end}}'
+   ```
+
+2. Assign the path name, interface, and node names to variables. Replace `<path-name>` with the connection path,
+   `<interface>` with the DRBD interface, and `<source-node>` and `<target-node>` with the peer node names from the
+   previous step.
+
+   ```bash
+   PATH_NAME=<path-name>
+   DRBD_IF=<interface>
+   NODE_A=<source-node>
+   NODE_B=<target-node>
+   ```
+
+3. Inspect the interfaces on the source node.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_A"
+   ```
+
+4. Inspect the interfaces on the target node.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_B"
+   ```
+
+5. List the existing connection path for the node pair.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- \
+     linstor resource-connection path list "$NODE_A" "$NODE_B" "$RESOURCE"
+   ```
+
+### Restore the Connection Path
+
+If either node is missing the DRBD interface, inspect the `piraeus-netiface-builder` DaemonSet. To change the storage
+node interface, update the `csi.storageNodeInterface` variable in the `piraeus-operator` pack in your cluster profile,
+and then redeploy the pack. Otherwise, create or correct each declared path. You can safely rerun the command for the
+same path name.
+
+```bash
+kubectl --namespace piraeus-system exec deploy/linstor-controller -- \
+  linstor resource-connection path create "$NODE_A" "$NODE_B" "$RESOURCE" "$PATH_NAME" "$DRBD_IF" "$DRBD_IF"
+```
+
+### Verify PostgreSQL
+
+After you restore the path, confirm that the connection recovers and that the database serves requests. A `pg_isready`
+check only confirms that the database accepts connections, so run an actual query instead.
+
+1. Confirm that every connection for the resource reports an `Ok` state.
+
+   ```bash
+   kubectl --namespace piraeus-system exec deploy/linstor-controller -- \
+     linstor resource-connection list "$RESOURCE"
+   ```
+
+2. List the PostgreSQL pods.
+
+   ```bash
+   kubectl --namespace "$NS" get pods
+   ```
+
+3. Set the database pod and credential values for your storage variant.
+
+   <Tabs groupId="piraeus-profile">
+
+   <TabItem value="fips" label="FIPS">
+
+   ```bash
+   DB_POD=postgres-0
+   DB_SECRET=keycloak-db-credentials
+   DB_SECRET_KEY=POSTGRES_PASSWORD
+   ```
+
+   </TabItem>
+
+   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
+
+   ```bash
+   DB_POD=$(kubectl --namespace "$NS" get pod --selector cnpg.io/instanceRole=primary \
+     --output jsonpath='{.items[0].metadata.name}')
+   DB_SECRET=keycloak-db-app
+   DB_SECRET_KEY=password
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
+   shell history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the
+   command is the same for both variants.
+
+   ```bash
+   kubectl --namespace "$NS" get secret "$DB_SECRET" \
+     --output jsonpath="{.data.$DB_SECRET_KEY}" | base64 --decode | \
+     kubectl --namespace "$NS" exec --stdin "$DB_POD" --container postgres -- \
+     sh -c 'PGCONNECT_TIMEOUT=5 PGPASSWORD="$(cat)" \
+       psql --host 127.0.0.1 --username keycloak --dbname keycloak --tuples-only --no-align \
+       --command "SET statement_timeout=5000; SELECT 1"'
+   ```
+
 ## Scenario - Federated LDAP Users Cannot Access VM Launchpad
 
 Federated LDAP users sign in to Keycloak successfully, but they have no access once they reach VM Launchpad. The
@@ -147,113 +348,3 @@ block-based storage such as LINSTOR/DRBD.
 
 5. Start the migration plan. Confirm that guest conversion completes without the `nbdkit` block-size error, and that the
    migrated VMs support live migration on the destination storage.
-
-## Scenario - Keycloak, VMO, and Headlamp UIs Become Inaccessible on Piraeus Storage
-
-On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
-PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
-Machine Orchestrator and Headlamp consoles authenticate through Keycloak, those UIs also become inaccessible, even
-though the Keycloak and PostgreSQL pods report a `Ready` status.
-
-The underlying cause is a PostgreSQL DRBD resource path that is missing or that uses different network interfaces on its
-peer nodes, which suspends database I/O. Until a permanent fix is available, you can restore the connection manually.
-
-:::info
-
-These steps apply to the Piraeus storage variants of VM Launchpad. The FIPS profile uses a `pgdata-postgres-0` data
-volume, while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` data volume. Substitute the values for your
-variant where indicated.
-
-:::
-
-### Identify the LINSTOR Resource
-
-Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm that at least one replica reports an
-`UpToDate` state. If no replica is `UpToDate`, investigate replica health instead of changing the path.
-
-```bash
-NS=keycloak
-kubectl -n "$NS" get pvc
-PVC=REPLACE_WITH_POSTGRES_DATA_PVC
-PV=$(kubectl -n "$NS" get pvc "$PVC" -o jsonpath='{.spec.volumeName}')
-RESOURCE=$(kubectl get pv "$PV" -o jsonpath='{.spec.csi.volumeHandle}')
-
-kubectl -n piraeus-system exec deploy/linstor-controller -- \
-  linstor resource list --resources "$RESOURCE"
-kubectl -n piraeus-system exec deploy/linstor-controller -- \
-  linstor resource-connection list "$RESOURCE" -g source target properties port
-```
-
-### Inspect the DRBD Connection Paths
-
-List every declared connection path and its interface, then inspect the interfaces on each source and target node pair.
-
-```bash
-kubectl get linstornodeconnection \
-  -o go-template='{{printf "PATH_NAME\tINTERFACE\n"}}{{range .items}}{{range .spec.paths}}{{printf "%s\t%s\n" .name .interface}}{{end}}{{end}}'
-
-PATH_NAME=REPLACE_WITH_PATH_NAME
-DRBD_IF=REPLACE_WITH_INTERFACE
-NODE_A=REPLACE_WITH_SOURCE_NODE
-NODE_B=REPLACE_WITH_TARGET_NODE
-
-kubectl -n piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_A"
-kubectl -n piraeus-system exec deploy/linstor-controller -- linstor node interface list "$NODE_B"
-kubectl -n piraeus-system exec deploy/linstor-controller -- \
-  linstor resource-connection path list "$NODE_A" "$NODE_B" "$RESOURCE"
-```
-
-### Restore the Connection Path
-
-If either node is missing the DRBD interface, inspect the `piraeus-netiface-builder` DaemonSet. To change the storage
-node interface, update the `csi.storageNodeInterface` variable in the Palette profile and redeploy the pack. Otherwise,
-create or correct each declared path. The command is idempotent for the same path name, so you can repeat it for every
-affected path and node pair.
-
-```bash
-kubectl -n piraeus-system exec deploy/linstor-controller -- \
-  linstor resource-connection path create "$NODE_A" "$NODE_B" "$RESOURCE" "$PATH_NAME" "$DRBD_IF" "$DRBD_IF"
-```
-
-### Verify PostgreSQL
-
-Confirm that every connection reports an `Ok` state. Then connect to the primary PostgreSQL pod over TCP as the
-`keycloak` user and run a query to confirm the database serves requests. A `pg_isready` check only confirms that the
-database accepts connections, so run an actual query instead.
-
-The FIPS and non-FIPS profiles differ only in the pod name and the Secret that holds the `keycloak` password. Set the
-values for your variant.
-
-```bash
-kubectl -n "$NS" get pods
-```
-
-Set these values for the FIPS profile.
-
-```bash
-DB_POD=postgres-0
-DB_SECRET=keycloak-db-credentials
-DB_SECRET_KEY=POSTGRES_PASSWORD
-```
-
-Set these values for the non-FIPS CloudNativePG profile.
-
-```bash
-DB_POD=$(kubectl -n "$NS" get pod --selector cnpg.io/instanceRole=primary \
-  -o jsonpath='{.items[0].metadata.name}')
-DB_SECRET=keycloak-db-app
-DB_SECRET_KEY=password
-```
-
-Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your shell
-history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the same command
-works on both profiles.
-
-```bash
-kubectl -n "$NS" get secret "$DB_SECRET" \
-  -o jsonpath="{.data.$DB_SECRET_KEY}" | base64 --decode | \
-  kubectl -n "$NS" exec --stdin "$DB_POD" -c postgres -- \
-  sh -c 'PGCONNECT_TIMEOUT=5 PGPASSWORD="$(cat)" \
-    psql --host 127.0.0.1 --username keycloak --dbname keycloak --tuples-only --no-align \
-    --command "SET statement_timeout=5000; SELECT 1"'
-```
