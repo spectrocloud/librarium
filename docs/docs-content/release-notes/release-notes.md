@@ -50,6 +50,23 @@ tags: ["release-notes"]
 
 - Applied security fixes to improve the platform's security posture.
 
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.70 Palette release is 4.8.30.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.70 Palette release is
+4.8.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## September 22, 2026 - Release 4.8.67
 
 <!-- PATCH RELEASE TICKET: DOC-3222 -->
