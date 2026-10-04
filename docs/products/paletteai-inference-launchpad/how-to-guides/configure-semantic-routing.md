@@ -23,7 +23,9 @@ keywords:
 
 This guide explains how a platform administrator sets and overrides the appliance's semantic routing rules on a
 PaletteAI Inference Launchpad appliance. For what the semantic router does, how it combines with the Tier map, and how a
-client inherits from the box, refer to [Routing Behavior](../explanation/routing-behavior.md).
+client inherits from the box, refer to [Routing Behavior](../explanation/routing-behavior.md). For a diagram of how a
+request resolves to a model, refer to
+[Model Resolution Decision Tree](../explanation/routing-behavior.md#model-resolution-decision-tree).
 
 ## Prerequisites
 
