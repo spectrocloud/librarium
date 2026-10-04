@@ -122,3 +122,4 @@ For the full sequence, including what **Reached limit** and the preview dialog s
 
 - [Manage a Client's Model Access](./manage-client-model-access.md)
 - [View Client Usage](./view-client-usage.md)
+- [Quota Model](../reference/quota-model.md)
