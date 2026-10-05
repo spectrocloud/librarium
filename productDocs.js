@@ -30,7 +30,7 @@
 //   - .prettierignore / .vale.ini               (wildcarded, so covered)
 //   - .vale.ini per-file rule exceptions        (only if the product needs any)
 //
-// KNOWN CEILING: the navbar is already crowded with one product. Before adding
+// KNOWN CEILING: the navbar is already crowded with two products. Before adding
 // a third, group product tabs under a single "Products" dropdown rather than
 // adding more top-level tabs.
 
@@ -68,6 +68,15 @@ const PRODUCTS = [
       // Example, once a version is cut:
       // "1.0.x": { label: "v1.0.x" },
     },
+  },
+  {
+    id: "agentic-launchpad",
+    label: "PaletteAI Agentic Launchpad",
+    routeBasePath: "paletteai-agentic-launchpad",
+    contentPath: "docs/products/paletteai-agentic-launchpad",
+    sidebarPath: "./agenticLaunchpadSidebar.js",
+    sidebarId: "agenticLaunchpadSidebar",
+    versionOverrides: {},
   },
 ];
 
