@@ -2,7 +2,8 @@
 # The workflow is triggered by the nightly Docker build workflow.
 # Only images that are older than 1 day are pruned. This helps ensure that only the latest images are retained.
 # This workflow supports on-demand execution using the workflow_dispatch event.
-# Set the dry-run input to true to list the images that would be pruned without deleting them.
+# Manual runs default to a dry run that lists the images that would be pruned without deleting them.
+# Clear the dry-run input to prune for real.
 
 name: Container Image Cleanup
 
@@ -18,7 +19,7 @@ on:
       dry-run:
         description: "List the images that would be pruned without deleting them."
         type: boolean
-        default: false
+        default: true
 
 
 
@@ -38,7 +39,9 @@ jobs:
         tag-selection: both
         cut-off: 1d
         timestamp-to-use: created_at
-        keep-n-most-recent: 1
+        # Keep the newest cosign signature tags (sha256-<digest>, about 5 per build), so a prune that runs
+        # without a fresh build never removes the signatures for the current nightly image.
+        keep-n-most-recent: 10
         dry-run: ${{ inputs.dry-run }}
 
     - name: Slack Notification
