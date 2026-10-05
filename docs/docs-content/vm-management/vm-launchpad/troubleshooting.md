@@ -11,6 +11,66 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs
+
+When you deploy the Portworx variant of VM Launchpad on VMware vSphere virtual machines (VMs), for example, for a proof
+of concept, the Portworx `StorageCluster` does not finish initializing.
+
+This occurs because vSphere virtual disks report to the guest operating system as rotational disks by default. Portworx
+requires the system metadata device that backs its internal key-value database to report as non-rotational. When the
+device reports as rotational, Portworx classifies it as a `MAGNETIC` device and does not initialize.
+
+Use one of the following options. Marking the virtual disks as SSD in vSphere persists across reboots, so it is the
+preferred fix when you provision the VMs. Overriding the setting on each node takes effect immediately, but it does not
+persist across reboots.
+
+### Mark the Virtual Disks as SSD in vSphere
+
+1. Power off the VM.
+
+2. Add the following advanced configuration parameter to the VM for each virtual disk that Portworx uses.
+
+   ```text
+   scsi<controller-id>:<disk-id>.virtualSSD = 1
+   ```
+
+   Replace `<controller-id>` with the ID of the SCSI controller and `<disk-id>` with the ID of the virtual disk on that
+   controller. For example, `scsi0:1.virtualSSD = 1` marks the second disk on the first SCSI controller as an SSD. Refer
+   to
+   [How to Emulate an SSD Virtual Disk on a Virtual Machine](https://knowledge.broadcom.com/external/article/328830/how-to-emulate-an-ssd-virtual-disk-on-a.html)
+   for details.
+
+3. Power on the VM.
+
+4. Repeat steps 1 - 3 for every VM in the cluster.
+
+### Override the Rotational Setting on Each Node
+
+1. Use SSH to sign in to a cluster node.
+
+2. List the disks and their rotational setting. A value of `1` in the `ROTA` column means that the disk reports as
+   rotational.
+
+   ```shell
+   lsblk --nodeps --output NAME,ROTA,SIZE
+   ```
+
+3. Set each disk that Portworx uses to non-rotational.
+
+   ```shell
+   echo 0 | sudo tee /sys/block/<device-name>/queue/rotational
+   ```
+
+   Replace `<device-name>` with the disk name, such as `sda` or `sdb`. Use the name of the whole disk, even if Portworx
+   uses a partition on it, such as `sda6`.
+
+4. Repeat steps 1 - 3 on every node in the cluster.
+
+5. Confirm that the storage cluster finishes initializing. From the VMO left main menu, select **Infrastructure** >
+   **Storage** > **Portworx Storage Clusters**, and then select the storage cluster to review its status.
+
+The override does not persist across reboots. To keep the setting, mark the virtual disks as SSD in vSphere.
+
 ## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
 
 On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
