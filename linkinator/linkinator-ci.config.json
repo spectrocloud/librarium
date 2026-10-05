@@ -30,6 +30,7 @@
     "^https://cursor\\.com.*$$",
     "^https://platform\\.openai\\.com.*$$",
     "^https://www\\.raspberrypi\\.com.*$$",
+    "^https://docs\\.ansible\\.com.*$$",
     "^https://portal\\.azure\\.com.*$$",
     "^https://entra\\.microsoft\\.com.*$$"
   ],
