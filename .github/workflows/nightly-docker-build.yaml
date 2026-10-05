@@ -4,7 +4,7 @@
 # Visit https://docs.spectrocloud.com/vertex/install-palette-vertex/airgap/offline-docs/ to learn more about the offline Documentation experience.
 # This workflow supports on-demand execution using the workflow_dispatch event.
 
-name: Nighly Docker Build
+name: Nightly Docker Build
 
 on:
   schedule:
