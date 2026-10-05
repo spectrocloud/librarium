@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.8.69
+## October 5, 2026 - Release 4.8.69
 
 <!-- PATCH RELEASE TICKET: DOC-3233 -->
 <!-- PATCH RELEASE VERSION: 4.8.69 -->
-<!-- PATCH RELEASE CANDIDATES: PLT-2449 -->
+<!-- PATCH RELEASE CANDIDATES: PLT-2449 PLT-2455 -->
 
 ### Bug Fixes
 
@@ -23,6 +23,20 @@ tags: ["release-notes"]
 
 - Fixed an issue where the Palette CLI configuration wizard displayed debug messages during VMware Private Cloud Gateway
   deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2455 -->
+
+- Fixed an issue where the Palette CLI `login` command rejected valid API keys and reported
+  `Invalid Spectro Cloud credentials`.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.69 Palette release is
+4.8.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 22, 2026 - Release 4.8.67
 
