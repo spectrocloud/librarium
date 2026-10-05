@@ -7,6 +7,9 @@
 Welcome to the Spectro Cloud documentation repository. This repository contains the source for
 [docs.spectrocloud.com](https://docs.spectrocloud.com).
 
+The PaletteAI product has its own documentation site. Refer to the
+[PaletteAI documentation](https://docs.palette-ai.com/).
+
 Use this README as a quick start for contributing. For deeper guidance, see the contributor guides linked below.
 
 For internal Spectro Cloud users, review the
