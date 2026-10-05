@@ -50,11 +50,35 @@ tags: ["release-notes"]
 
 - Applied security fixes to improve the platform's security posture.
 
+## September 25, 2026 - Release 4.8.69
+
+<!-- PATCH RELEASE TICKET: DOC-3233 -->
+<!-- PATCH RELEASE VERSION: 4.8.69 -->
+<!-- PATCH RELEASE CANDIDATES: PLT-2449 PLT-2455 PS-2898 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PS-2898 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2449 -->
+
+- Fixed an issue where the Palette CLI configuration wizard displayed debug messages during VMware Private Cloud Gateway
+  deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2455 -->
+
+- Fixed an issue where the Palette CLI `login` command rejected valid API keys and reported
+  `Invalid Spectro Cloud credentials`.
+
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.70 Palette release is 4.8.30.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.69 Palette release is 4.8.30.
 
 :::
 
@@ -62,7 +86,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.70 Palette release is
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.69 Palette release is
 4.8.21. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
