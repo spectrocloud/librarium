@@ -109,47 +109,36 @@ provides an example that shows how you might customize the image pull behavior o
 
 7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
 
-8. (PXK-E Only) In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage to adjust
-   the containerd configuration to supports reading additional files, which you will use to configure the redirect
-   behavior and provide registry credentials.
+8. (PXK-E Only) In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage. They add a
+   containerd drop-in file that points containerd at the `/etc/containerd/certs.d` directory, which you use to configure
+   the redirect behavior and provide registry credentials.
 
    ```yaml
    stages:
      initramfs:
        - name: "Manage containerd config"
          files:
-           - path: /etc/containerd/config.toml
+           - path: /etc/containerd/conf.d/registry-config-path.toml
              permissions: 0644
              owner: 0
              group: 0
              content: |-
                version = 2
-               imports = ["/etc/containerd/conf.d/*.toml"]
-               [plugins]
-                 [plugins."io.containerd.grpc.v1.cri"]
-                   sandbox_image = "registry.k8s.io/pause:3.9"
-                   enable_unprivileged_ports = true
-                   enable_unprivileged_icmp = true
-                 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-                   runtime_type = "io.containerd.runc.v2"
-                 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-                   SystemdCgroup = true
-                 [plugins."io.containerd.grpc.v1.cri".registry]
-                   config_path = "/etc/containerd/certs.d"
+               [plugins."io.containerd.grpc.v1.cri".registry]
+                 config_path = "/etc/containerd/certs.d"
    ```
 
    :::info
 
-   This configuration change is only needed to PXK-E. Since it changes the `initramfs` stage, this will require a reboot
-   of the node. If you are using K3s or RKE2, the ability fo read additional files is enabled by default and you don't
-   need to add this configuration.
+   This configuration change is only needed for PXK-E. Because it changes the `initramfs` stage, it requires a reboot of
+   the node. K3s and RKE2 read these files by default, so you do not need to add this configuration on K3s or RKE2
+   clusters.
 
-   If your PXK-E cluster uses
-   [systemd extensions](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md), containerd
-   does not read `/etc/containerd/config.toml`. Instead of writing that file, add a drop-in file under
-   `/etc/containerd/conf.d/` that sets `config_path = "/etc/containerd/certs.d"`. Refer to
+   Use a drop-in file instead of replacing `/etc/containerd/config.toml`. A complete file replaces the containerd
+   configuration that Palette ships, and containerd does not read it on clusters that use
+   [systemd extensions](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md). Refer to
    [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration)
-   for an example.
+   for details.
 
    :::
 

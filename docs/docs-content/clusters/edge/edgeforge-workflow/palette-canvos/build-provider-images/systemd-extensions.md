@@ -88,38 +88,38 @@ binaries when systemd extensions are available.
 
 ## Move an Existing Cluster to systemd Extensions
 
-Complete the following steps in order. On PXK-E clusters, move your containerd settings to drop-in files before you
-change the Kubernetes pack version. RKE2 and K3s clusters skip the PXK-E steps. Refer to
-[Container Runtime Configuration](#container-runtime-configuration) for details.
+Complete the following steps in order. On PXK-E and Canonical clusters, move your containerd settings to drop-in files
+before you change the Kubernetes pack version. RKE2 and K3s clusters skip the steps marked for PXK-E and Canonical.
+Refer to [Container Runtime Configuration](#container-runtime-configuration) for details.
 
-1. Build a provider image with a supported CanvOS release and set `system.uri: <provider-image>` in the BYOOS pack. This
-   first upgrade replaces the `kairos-agent` on the system with the aligned Palette Agent version. Refer to
+1. Build a provider image with a supported CanvOS release, keeping `BUNDLE_K8S_AND_AGENT_PROVIDER=true`, the default.
+   Set `system.uri: <provider-image>` in the BYOOS pack. This first upgrade replaces the `kairos-agent` on the system
+   with the aligned Palette Agent version. The cluster moves to systemd extensions in step 6. Refer to
    [Support Requirements](#support-requirements) for the minimum CanvOS release.
 
-2. (PXK-E only) Record the current containerd configuration on the host.
+2. (PXK-E and Canonical) Record the current containerd configuration and the systemd drop-ins on the host.
 
    ```shell
    sudo cat /etc/containerd/config.toml
    sudo ls -l /etc/containerd/conf.d/
    sudo ls -l /etc/containerd/certs.d/
    sudo ls -l /etc/systemd/system/containerd.service.d/
+   sudo ls -l /etc/systemd/system/kubelet.service.d/
    ```
 
-3. (PXK-E only) Identify every setting that differs from the Palette default configuration, including
+3. (PXK-E and Canonical) Identify every setting that differs from the Palette default configuration, including
    `registry.config_path` and every runtime handler.
 
-4. (PXK-E only) Move each of those settings into a drop-in file under `/etc/containerd/conf.d/`. Do not copy the whole
-   `config.toml` file.
+4. (PXK-E and Canonical) Move each of those settings into a drop-in file under `/etc/containerd/conf.d/`. Do not copy
+   the whole `config.toml` file.
 
-5. (PXK-E only) In the cluster profile, stop writing `/etc/containerd/config.toml`. You can keep the existing stage and
-   change only the path and the content.
+5. (PXK-E and Canonical) In the cluster profile, stop writing `/etc/containerd/config.toml`. You can keep the existing
+   stage and change only the path and the content.
 
 6. Set `system.uri: NA` in the BYOOS pack, then update the Kubernetes pack in the cluster profile to the target version.
    Palette delivers the new Kubernetes binaries through systemd extensions, and each node repaves and reboots.
 
-7. (PXK-E only) After the upgrade, confirm that your containerd settings still apply.
-
-<!-- TODO(DOC-3260): PE-9698 step 6 gives no verification command. Ask Arun for the supported check. -->
+7. (PXK-E and Canonical) After the upgrade, confirm that your containerd settings still apply.
 
 If the Palette Edge agent remains pinned to an earlier release, systemd extensions are not available on the cluster.
 Build provider images from a supported CanvOS release and use one for every upgrade.
@@ -149,9 +149,6 @@ Palette delivers the new Kubernetes binaries through systemd extensions.
 
 ### Patch the Operating System and Upgrade Kubernetes
 
-<!-- TODO(DOC-3260): PE-9698 §2.3 (Arun, 2026-10-05) says one profile revision = one repave and one reboot. The
-previous callout (Chris Paap, 2026-09-30) said two maintenance windows. Confirm with Arun/Santhosh before publishing. -->
-
 1. Set `system.uri` in the BYOOS pack to the new provider image.
 
 2. In the same cluster profile revision, update the Kubernetes pack to the target version.
@@ -169,12 +166,15 @@ node.
 
 ## Container Runtime Configuration
 
-This section applies to PXK-E clusters. RKE2 and K3s manage containerd themselves and write their own containerd
-configuration under `/var/lib/rancher/`, so RKE2 and K3s clusters need no changes.
+This section applies to PXK-E and Canonical clusters, with or without systemd extensions. RKE2 and K3s manage containerd
+themselves and write their own containerd configuration under `/var/lib/rancher/`, so RKE2 and K3s clusters need no
+changes.
 
-On PXK-E clusters that use systemd extensions, the containerd configuration that Palette ships moves to
-`/usr/lib/containerd/config.toml`, and containerd does not read `/etc/containerd/config.toml`. A cluster profile that
-writes a complete `/etc/containerd/config.toml` file has no effect.
+Do not write a complete `/etc/containerd/config.toml` file from the cluster profile. A complete file replaces the
+containerd configuration that Palette ships, including settings such as the containerd root directory and the `runc`
+binary path, and can break when the shipped configuration changes. On PXK-E clusters that use systemd extensions, the
+containerd configuration that Palette ships moves to `/usr/lib/containerd/config.toml`, and containerd does not read
+`/etc/containerd/config.toml` at all, so a complete file there has no effect.
 
 Put your custom settings in their own drop-in files under `/etc/containerd/conf.d/` instead. containerd reads this
 directory with and without systemd extensions, so a drop-in file works both before and after you move a cluster to
@@ -182,8 +182,8 @@ systemd extensions, and it persists through Kubernetes pack updates.
 
 Follow these rules for each drop-in file:
 
-- Use the same configuration version and plugin key as the main configuration file, `version = 2` and
-  `io.containerd.grpc.v1.cri`.
+- Use `version = 2` and the `io.containerd.grpc.v1.cri` plugin key, the same as the main configuration file. Drop-in
+  files that use configuration version 3 or 4 are not compatible with the version 2 main file.
 - If the cluster uses image mirrors or a private registry, set `config_path = "/etc/containerd/certs.d"` in the
   `[plugins."io.containerd.grpc.v1.cri".registry]` table. The containerd configuration that Palette ships reads
   `/etc/containerd/conf.d/` but not `/etc/containerd/certs.d/`. Without this setting, the mirror rules in
