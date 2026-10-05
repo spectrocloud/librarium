@@ -8,19 +8,15 @@ tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode"]
 ---
 
 This section guides you through running local AI models at the edge on
-[NVIDIA Jetson](https://docs.nvidia.com/jetson/index.html) devices managed by Palette. Because Palette manages the
-Jetson device as an Edge host, you can model the operating system and Kubernetes distribution as a cluster profile,
-deploy it the same way you manage the rest of your Edge fleet, and then run the AI serving workload on the cluster.
-
-:::info
+[NVIDIA Jetson](https://docs.nvidia.com/jetson/index.html) devices managed by Palette. Palette manages each Jetson
+device as an Edge host. You define the Kubernetes distribution and network in a cluster profile, deploy it the same way
+as the rest of your Edge fleet, and then run the AI serving workload on the cluster.
 
 On ARM64 devices such as the Jetson family, Palette registers the host using
 [agent mode](../../deployment-modes/agent-mode/agent-mode.md). Appliance mode is not available on ARM64. Refer to
 [Edge Hardware Requirements](../../clusters/edge/hardware-requirements.md) for the current ARM64 support statement.
 
-:::
-
-## When to use Edge AI
+## Edge AI Use Cases
 
 Edge AI runs model inference on hardware at the edge, close to where data is generated, instead of sending that data to
 a data center or the cloud. It suits environments that need low-latency inference, operate with limited or intermittent
@@ -30,12 +26,12 @@ equipment, real-time analysis in the field, and AI-assisted decisions where a ro
 For a real-world example, refer to the [RapidAI case study](https://spectrocloud.com/customers/rapidai), which describes
 running life-critical AI workloads on edge Kubernetes with Palette.
 
-## Get started
+## Get Started
 
 <!-- prettier-ignore-start -->
 
-- [Requirements](./jetson-requirements.md) - Review the hardware, operating system, and Palette requirements for
-  running Edge AI workloads on an NVIDIA Jetson device.
+- [Jetson Requirements](./jetson-requirements.md) - Review the hardware, operating system, and Palette requirements
+  for running Edge AI workloads on an NVIDIA Jetson device.
 
 - [Prepare the Jetson Host](./prepare-jetson-host.md) - Install the software prerequisites and prepare the device so it
   can register with Palette.
