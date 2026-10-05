@@ -7,18 +7,17 @@ sidebar_position: 110
 tags: ["edge"]
 ---
 
-Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great flexibility
-in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
-the hosts. This can lead to inconsistencies, missed updates, or operational risks.
-
 :::info
 
 This page covers OS upgrades for agent mode clusters, where you supply the host and own the operating system. For
 clusters that Palette provisioned from a Palette-built VM image, for example on AWS, Azure, GCP, VMware, or MAAS, refer
-to [OS Patching](../../../clusters/cluster-management/os-patching.md) instead. That page uses the wizard-level **Patch
-OS on boot** option and Palette-managed scheduling.
+to [OS Patching](../../../clusters/cluster-management/os-patching.md) instead. 
 
 :::
+
+Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great flexibility
+in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
+the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
 This page demonstrates how to perform an OS upgrade by leveraging cluster profiles. You will learn how to create your
 own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then be selected based on
