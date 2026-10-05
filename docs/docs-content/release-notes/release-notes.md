@@ -11,13 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 2, 2026 - Release 4.9.61
+## October 4, 2026 - Release 4.9.62
 
 <!-- PATCH RELEASE TICKET: DOC-3270 -->
-<!-- PATCH RELEASE VERSION: 4.9.61 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12157 PEM-12155 PEM-12143 PEM-12031 -->
+<!-- PATCH RELEASE VERSION: 4.9.62 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12171 PEM-12168 PEM-12165 PEM-12157 PEM-12155 PEM-12143 PEM-12031 -->
 
-### Breaking Changes {#breaking-changes-4-9-61}
+### Breaking Changes {#breaking-changes-4-9-62}
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12031 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
@@ -44,6 +44,9 @@ tags: ["release-notes"]
 
 ### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12171 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12168 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12165 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12157 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12155 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12143 -->
@@ -76,6 +79,15 @@ tags: ["release-notes"]
   image tags that are not published in the airgap bundle, such as the cert-manager acme solver, `spectro-reach`, and
   `kube-rbac-proxy`.
 
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.60 Palette release is
+4.9.24. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## September 18, 2026 - Release 4.9.59
 
 <!-- PATCH RELEASE TICKET: DOC-3223 -->
@@ -94,6 +106,23 @@ tags: ["release-notes"]
 
 - Fixed an issue where mixed compression formats in `spectro-ui` container image manifests caused unpack failures in
   containerd.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.59 Palette release is 4.9.42.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.59 Palette release is
+4.9.23. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 4, 2026 - Release 4.9.54
 
