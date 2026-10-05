@@ -495,6 +495,33 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Deprecations and Removals
 
+## October 3, 2026 - Release 4.10.17-patch.4
+
+<!-- PATCH RELEASE TICKET: DOC-3272 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.4 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12166 PEM-12162 PEM-12158 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12166 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12162 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12158 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+## October 2, 2026 - Release 4.10.17-patch.2
+
+<!-- PATCH RELEASE TICKET: DOC-3271 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.2 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12152 PEM-12151 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12152 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12151 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## October 1, 2026 - Release 4.10.17-patch.1
 
 <!-- PATCH RELEASE TICKET: DOC-3263 -->
@@ -835,6 +862,15 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
 
 - Fixed an issue that caused the Palette CLI shell completion command to fail.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.17 Palette release is
+4.10.4. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
