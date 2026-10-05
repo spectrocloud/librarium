@@ -144,6 +144,13 @@ provides an example that shows how you might customize the image pull behavior o
    of the node. If you are using K3s or RKE2, the ability fo read additional files is enabled by default and you don't
    need to add this configuration.
 
+   If your PXK-E cluster uses
+   [systemd extensions](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md), containerd
+   does not read `/etc/containerd/config.toml`. Instead of writing that file, add a drop-in file under
+   `/etc/containerd/conf.d/` that sets `config_path = "/etc/containerd/certs.d"`. Refer to
+   [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration)
+   for an example.
+
    :::
 
 9. In the Kubernetes layer of the profile, include the following lines in the reconcile stage. For more information,
