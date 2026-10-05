@@ -41,8 +41,8 @@ has the necessary network connectivity for VerteX to operate successfully.
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
   `hubble` with the permission `readWriteAnyDatabase`. Refer to the
-  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
-  database user in Atlas.
+  [Configure Database Users](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/) guide for guidance on how
+  to create a database user in Atlas.
 
 - We recommend the following resources for VerteX. Refer to the
   [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
