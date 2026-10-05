@@ -11,6 +11,20 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 3, 2026 - Release 4.10.17-patch.4
+
+<!-- PATCH RELEASE TICKET: DOC-3272 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.4 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12166 PEM-12162 PEM-12158 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12166 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12162 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12158 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## October 2, 2026 - Release 4.10.17-patch.2
 
 <!-- PATCH RELEASE TICKET: DOC-3271 -->
@@ -285,10 +299,6 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
@@ -341,10 +351,6 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 
 <!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 17, 2026 - Release 4.10.17
 
 <!-- PATCH RELEASE TICKET: DOC-3224 -->
@@ -372,6 +378,15 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
 
 - Fixed an issue that caused the Palette CLI shell completion command to fail.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.17 Palette release is
+4.10.4. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
