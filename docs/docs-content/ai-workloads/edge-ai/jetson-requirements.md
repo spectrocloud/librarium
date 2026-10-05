@@ -79,10 +79,8 @@ This guide is validated on the operating system versions in the following table.
 
 Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so you cannot use it on a Jetson device. This guide
 uses Palette Optimized K3s (`edge-k3s`) with the Flannel (`cni-flannel`) Container Network Interface (CNI), which is the
-combination validated on the Jetson AGX Thor. You configure these layers in the cluster profile when you register the
-host and deploy a cluster.
-
-<!-- TODO(DOC-3090): link the "Register a Jetson host and serve a model" (Day 1) page from the sentence above once that page lands on this branch. onBrokenLinks is "throw", so do not link register-jetson-host.md until it exists here. -->
+combination validated on the Jetson AGX Thor. You configure these layers in the cluster profile when you
+[register the host and deploy a cluster](./register-jetson-host.md).
 
 <!-- Resolved (DOC-3089/3090) on the Thor 2026-09-14/18: K3s (edge-k3s) + Flannel (cni-flannel) deploy and run end to end on the Jetson AGX Thor (ARM64) — node Ready, K3s v1.36.2+k3s1, all system pods healthy. edge-canonical has no ARM64 build. The ARM64 row (Ubuntu, K3s, Flannel) is in the install-agent-host.md verified-combinations table (DOC-3093). -->
 
@@ -96,9 +94,8 @@ On a Jetson device, a workload reaches the integrated GPU through the NVIDIA con
 You do not add a GPU layer to the cluster profile, and you do not install a device plugin. Palette detects the GPU when
 the host registers, but detection alone does not expose the GPU to your workloads. To give a pod access to the GPU, set
 `runtimeClassName: nvidia` in the pod specification, and set the `NVIDIA_VISIBLE_DEVICES` and
-`NVIDIA_DRIVER_CAPABILITIES` environment variables to `all`.
-
-<!-- TODO(DOC-3090): link the "Enable GPU access for workloads" section of register-jetson-host.md from the sentence above once that page lands on this branch. onBrokenLinks is "throw", so do not add the link until the page exists here. -->
+`NVIDIA_DRIVER_CAPABILITIES` environment variables to `all`. Refer to
+[Enable GPU Access for Workloads](./register-jetson-host.md#enable-gpu-access-for-workloads) for an example.
 
 <!-- Resolved (DOC-3089/3090) on the Thor 2026-09-14: GPU access on Jetson/K3s is workload-level, NOT a cluster-profile layer, NOT the GPU Operator (unsupported on embedded), and NOT a device plugin (nvidia.com/gpu capacity is empty, no device-plugin pod). K3s/containerd auto-creates the `nvidia` RuntimeClass because JetPack ships the NVIDIA container runtime. A pod reaches the GPU with runtimeClassName: nvidia + NVIDIA_VISIBLE_DEVICES=all + NVIDIA_DRIVER_CAPABILITIES=all (proven: /dev/nvidia* injected and nvidia-smi runs inside a plain ubuntu:24.04 image). Still worth a one-line confirm from Rishi that this is the blessed pattern (DOC-3093 Q3). -->
 

@@ -9,8 +9,8 @@ tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode"]
 
 This section guides you through running local AI models at the edge on
 [NVIDIA Jetson](https://docs.nvidia.com/jetson/index.html) devices managed by Palette. Palette manages each Jetson
-device as an Edge host. You define the Kubernetes distribution, network, and AI serving workload in a cluster profile
-and deploy it the same way as the rest of your Edge fleet.
+device as an Edge host. You define the Kubernetes distribution and network in a cluster profile, deploy it the same way
+as the rest of your Edge fleet, and then run the AI serving workload on the cluster.
 
 On ARM64 devices such as the Jetson family, Palette registers the host using
 [agent mode](../../deployment-modes/agent-mode/agent-mode.md). Appliance mode is not available on ARM64. Refer to
@@ -36,8 +36,9 @@ running life-critical AI workloads on edge Kubernetes with Palette.
 - [Prepare the Jetson Host](./prepare-jetson-host.md) - Install the software prerequisites and prepare the device so it
   can register with Palette.
 
-<!-- prettier-ignore-end -->
+- [Register a Jetson Host and Serve a Model](./register-jetson-host.md) - Register the device with Palette in agent
+  mode, deploy an Edge Native cluster profile, and serve a local AI model on the device GPU.
 
-<!-- TODO(DOC-3090): add "Register a Jetson host and serve a model" (Day 1) card once that page exists. -->
+<!-- prettier-ignore-end -->
 <!-- TODO(DOC-3091): add "Day 2 operations for Jetson Edge AI" card once that page exists. -->
 <!-- TODO(DOC-3092): add "Run a local AI model on a Jetson at the edge" tutorial card once that page exists. -->
