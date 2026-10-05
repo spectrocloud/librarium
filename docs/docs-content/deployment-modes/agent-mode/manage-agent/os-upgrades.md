@@ -11,7 +11,7 @@ tags: ["edge"]
 
 This page covers OS upgrades for agent mode clusters, where you supply the host and own the operating system. For
 clusters that Palette provisioned from a Palette-built VM image, for example on AWS, Azure, GCP, VMware, or MAAS, refer
-to [OS Patching](../../../clusters/cluster-management/os-patching.md) instead. 
+to [OS Patching](../../../clusters/cluster-management/os-patching.md) instead.
 
 :::
 
