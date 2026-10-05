@@ -47,8 +47,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
   `hubble` with the permission `readWriteAnyDatabase`. Refer to the
-  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
-  database user in Atlas.
+  [Configure Database Users](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/) guide for guidance on how
+  to create a database user in Atlas.
 
 - We recommended the following resources for Palette. Refer to the
   [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
