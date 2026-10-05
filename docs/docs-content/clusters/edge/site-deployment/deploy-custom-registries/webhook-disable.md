@@ -109,9 +109,12 @@ provides an example that shows how you might customize the image pull behavior o
 
 7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
 
-8. (PXK-E Only) In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage. They add a
-   containerd drop-in file that points containerd at the `/etc/containerd/certs.d` directory, which you use to configure
-   the redirect behavior and provide registry credentials.
+8. _(PXK-E only)_ In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage. They add
+   a containerd drop-in file that points containerd at the `/etc/containerd/certs.d` directory, which you use to
+   configure the redirect behavior and provide registry credentials. Use a drop-in file instead of replacing
+   `/etc/containerd/config.toml`, because a complete file replaces the containerd configuration that Palette ships.
+   Refer to
+   [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration).
 
    ```yaml
    stages:
@@ -131,14 +134,7 @@ provides an example that shows how you might customize the image pull behavior o
    :::info
 
    This configuration change is only needed for PXK-E. Because it changes the `initramfs` stage, it requires a reboot of
-   the node. K3s and RKE2 read these files by default, so you do not need to add this configuration on K3s or RKE2
-   clusters.
-
-   Use a drop-in file instead of replacing `/etc/containerd/config.toml`. A complete file replaces the containerd
-   configuration that Palette ships, and containerd does not read it on clusters that use
-   [systemd extensions](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md). Refer to
-   [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration)
-   for details.
+   the node. K3s and RKE2 already read separate containerd configuration files by default and do not need this change.
 
    :::
 
