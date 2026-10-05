@@ -11,11 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 5, 2026 - Release 4.8.69
+## September 25, 2026 - Release 4.8.69
 
 <!-- PATCH RELEASE TICKET: DOC-3233 -->
 <!-- PATCH RELEASE VERSION: 4.8.69 -->
-<!-- PATCH RELEASE CANDIDATES: PLT-2449 PLT-2455 -->
+<!-- PATCH RELEASE CANDIDATES: PLT-2449 PLT-2455 PS-2898 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PS-2898 -->
+
+- Applied security fixes to improve the platform's security posture.
 
 ### Bug Fixes
 
@@ -28,6 +34,14 @@ tags: ["release-notes"]
 
 - Fixed an issue where the Palette CLI `login` command rejected valid API keys and reported
   `Invalid Spectro Cloud credentials`.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.69 Palette release is 4.8.30.
+
+:::
 
 ### Automation
 
