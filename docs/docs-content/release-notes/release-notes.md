@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## October 9, 2026 - PaletteAI VM Launchpad 4.10.15 {#vm-launchpad-4.10.15}
 
-<!-- VM LAUNCHPAD RELEASE NOTES TICKET: TBD -->
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
 
 This release delivers version 4.10.15 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.17-patch.5.
 
