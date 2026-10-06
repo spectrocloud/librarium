@@ -23,22 +23,47 @@ export proxy through the Ingress or `LoadBalancer` configuration described on th
 
 :::
 
+## Prerequisites
+
+- A workload cluster with the VMO pack deployed. Refer to [Create a VMO Profile](./create-vmo-profile.md) for guidance.
+
+- Kubectl installed and access to the **kubeconfig** file for the VMO cluster. Refer to the
+  [Kubectl](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to set up
+  `kubectl` and get the **kubeconfig** file. Export its path so that the commands on this page can use it, and run the
+  commands in the same terminal session.
+
+  ```shell
+  export KUBECONFIG=<path-to-kubeconfig>
+  ```
+
+  Replace `<path-to-kubeconfig>` with the path to the kubeconfig file for the VMO cluster.
+
+- The [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) command-line tool installed on your
+  workstation.
+
+- To export a virtual machine disk, the following permissions in the `virtual-machines` namespace.
+
+  - `create`, `get`, and `delete` on `virtualmachineexports.export.kubevirt.io`.
+  - `get` on Secrets, because the export token is stored in a Secret.
+  - `get` on the source virtual machine, PersistentVolumeClaim, and DataVolume.
+
 ## Choose an Exposure Method
 
 The VMO UI route is separate from the CDI and KubeVirt proxy endpoints. Enabling the VMO UI Ingress does not expose CDI
 upload or virtual machine export on its own. Configure one of the following methods.
 
-| Method                            | CDI upload                       | Virtual machine export                        | Manual routes required |
-| --------------------------------- | -------------------------------- | --------------------------------------------- | ---------------------- |
-| Native Ingress                    | CDI Ingress on `/v1beta1/upload` | KubeVirt Ingress on `/api/export.kubevirt.io` | No                     |
-| `LoadBalancer` Services           | `cdi-uploadproxy-lb` Service     | `virt-exportproxy-lb` Service                 | No                     |
-| `virtctl vmexport --port-forward` | Not applicable                   | Local port forward through the Kubernetes API | No                     |
+| Method                            | CDI upload                       | Virtual machine export                        |
+| --------------------------------- | -------------------------------- | --------------------------------------------- |
+| Native Ingress                    | CDI Ingress on `/v1beta1/upload` | KubeVirt Ingress on `/api/export.kubevirt.io` |
+| `LoadBalancer` Services           | `cdi-uploadproxy-lb` Service     | `virt-exportproxy-lb` Service                 |
+| `virtctl vmexport --port-forward` | Not applicable                   | Local port forward through the Kubernetes API |
+
+None of these methods requires a manual route.
 
 ## Expose the Proxies with Ingress
 
-Add one of the following overrides to the VMO pack values. Replace the placeholder addresses with the address or DNS
-name that clients use to reach your ingress controller. Do not append `/v1beta1/upload` to either CDI URL value, because
-VMO and `virtctl` append the upload API path.
+Add one of the following overrides to the VMO pack values. Do not append `/v1beta1/upload` to either CDI URL value,
+because VMO and `virtctl` append the upload API path.
 
 <Tabs>
 
@@ -77,6 +102,8 @@ charts:
               - path: /api/export.kubevirt.io
                 pathType: ImplementationSpecific
 ```
+
+Replace `<vmo-external-address>` with the address or DNS name that clients use to reach your ingress controller.
 
 When the resolved class is Traefik, the chart creates the required `ServersTransport` objects and HTTPS Service
 annotations. Do not create those objects manually.
@@ -126,7 +153,10 @@ charts:
                 pathType: ImplementationSpecific
 ```
 
-Retain the unlimited request-body setting, the 600-second read and send timeouts, and the disabled request buffering. A
+Replace `cdi-upload.example.com` and `vm-export.example.com` with the DNS names that clients use to reach your ingress
+controller.
+
+Retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering turned off. A
 disk image upload can be large, and a proxy with lower request-size or timeout limits causes the upload to fail.
 
 </TabItem>
@@ -144,50 +174,54 @@ route is required.
 
 ## Expose the Proxies with `LoadBalancer` Services
 
-As an alternative to Ingress, disable native Ingress and expose both proxies directly through `LoadBalancer` Services.
+As an alternative to Ingress, expose both proxies directly through `LoadBalancer` Services.
 
-```yaml
-charts:
-  virtual-machine-orchestrator:
-    cdi:
-      ingress:
-        enabled: false
-      service:
-        type: LoadBalancer
-        port: 443
-        targetPort: 8443
+1. Add the following overrides to the VMO pack values to turn off native Ingress and create the `LoadBalancer` Services.
 
-    kubevirt:
-      ingress:
-        enabled: false
-      service:
-        type: LoadBalancer
-        port: 443
-        targetPort: 8443
-```
+   ```yaml
+   charts:
+     virtual-machine-orchestrator:
+       cdi:
+         ingress:
+           enabled: false
+         service:
+           type: LoadBalancer
+           port: 443
+           targetPort: 8443
 
-The chart creates the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the `virt-exportproxy-lb` Service in the
-`kubevirt` namespace. Obtain their external addresses.
+       kubevirt:
+         ingress:
+           enabled: false
+         service:
+           type: LoadBalancer
+           port: 443
+           targetPort: 8443
+   ```
 
-```bash
-kubectl get service cdi-uploadproxy-lb --namespace cdi
-kubectl get service virt-exportproxy-lb --namespace kubevirt
-```
+2. Obtain the external addresses of the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the
+   `virt-exportproxy-lb` Service in the `kubevirt` namespace.
 
-After the CDI Service receives an external address, publish that exact address to VMO and CDI. Do not append
-`/v1beta1/upload` to either value.
+   ```bash
+   kubectl get service cdi-uploadproxy-lb --namespace cdi
+   kubectl get service virt-exportproxy-lb --namespace kubevirt
+   ```
 
-```yaml
-charts:
-  virtual-machine-orchestrator:
-    vmo-manager:
-      platform:
-        cdiExternalUploadUrl: "https://<cdi-loadbalancer-address>"
-    cdi:
-      cdiResource:
-        additionalConfig:
-          uploadProxyURLOverride: "https://<cdi-loadbalancer-address>"
-```
+3. After the CDI Service receives an external address, add that address to the VMO pack values for both VMO and CDI. Do
+   not append `/v1beta1/upload` to either value.
+
+   ```yaml
+   charts:
+     virtual-machine-orchestrator:
+       vmo-manager:
+         platform:
+           cdiExternalUploadUrl: "https://<cdi-loadbalancer-address>"
+       cdi:
+         cdiResource:
+           additionalConfig:
+             uploadProxyURLOverride: "https://<cdi-loadbalancer-address>"
+   ```
+
+   Replace `<cdi-loadbalancer-address>` with the external address of the `cdi-uploadproxy-lb` Service.
 
 ## Verify the External CDI URL
 
@@ -199,70 +233,75 @@ kubectl get cdiconfig config \
   --kubeconfig="$KUBECONFIG"
 ```
 
-The result must be the externally reachable CDI base URL, for example `https://cdi.example.com`.
+The result must be the externally reachable CDI base URL, without `/v1beta1/upload`. For example, with the Nginx
+configuration on this page, the command returns the following output.
+
+```text hideClipboard title="Example Output"
+https://cdi-upload.example.com
+```
 
 ## Upload a Disk Image
 
-Before you upload, confirm the access mode and volume mode that your StorageClass supports. CDI must write the
-destination volume during upload, so a read-only access mode does not work. The following combinations apply to the
-`linstor-lvm-storage` StorageClass.
+1. Confirm the access mode and volume mode that your StorageClass supports. CDI must write the destination volume during
+   upload, so a read-only access mode does not work. The following combinations apply to the `linstor-lvm-storage`
+   StorageClass.
 
-| Access mode     | Volume mode  | Upload support                                                                              |
-| --------------- | ------------ | ------------------------------------------------------------------------------------------- |
-| `ReadWriteOnce` | `filesystem` | Supported                                                                                   |
-| `ReadWriteOnce` | `block`      | Supported when the StorageProfile advertises the `ReadWriteOnce` and `Block` pair           |
-| `ReadWriteMany` | `filesystem` | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Filesystem` pair |
-| `ReadWriteMany` | `block`      | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Block` pair      |
-| `ReadOnlyMany`  | Either       | Not supported                                                                               |
+   | Access mode     | Volume mode  | Upload support                                                                              |
+   | --------------- | ------------ | ------------------------------------------------------------------------------------------- |
+   | `ReadWriteOnce` | `filesystem` | Supported                                                                                   |
+   | `ReadWriteOnce` | `block`      | Supported when the StorageProfile advertises the `ReadWriteOnce` and `Block` pair           |
+   | `ReadWriteMany` | `filesystem` | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Filesystem` pair |
+   | `ReadWriteMany` | `block`      | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Block` pair      |
+   | `ReadOnlyMany`  | Either       | Not supported                                                                               |
 
-Check the exact combinations that the StorageClass advertises.
+2. Check the exact combinations that the StorageClass advertises.
 
-```bash
-kubectl get storageprofile linstor-lvm-storage \
-  --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}' \
-  --kubeconfig="$KUBECONFIG"
-```
+   ```bash
+   kubectl get storageprofile linstor-lvm-storage \
+     --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}' \
+     --kubeconfig="$KUBECONFIG"
+   ```
 
-Use only a pair that this command prints. The Kubernetes API uses `Filesystem` and `Block`, and the corresponding
-`virtctl` flag values are `filesystem` and `block`.
+   Use only a pair that this command prints. The Kubernetes API uses `Filesystem` and `Block`, and the corresponding
+   `virtctl` flag values are `filesystem` and `block`.
 
-Upload the image. The following example uploads an Ubuntu cloud image to a `10Gi` DataVolume named `ubuntu-image` in the
-`virtual-machines` namespace.
+3. Upload the image. The following example uploads an Ubuntu cloud image to a `10Gi` DataVolume named `ubuntu-image` in
+   the `virtual-machines` namespace.
 
-```bash
-virtctl image-upload dv ubuntu-image \
-  --namespace=virtual-machines \
-  --size=10Gi \
-  --storage-class=linstor-lvm-storage \
-  --access-mode=ReadWriteOnce \
-  --volume-mode=filesystem \
-  --image-path="ubuntu-24.04-server-cloudimg-amd64.img" \
-  --insecure \
-  --force-bind \
-  --retry=10 \
-  --wait-secs=600 \
-  --kubeconfig="$KUBECONFIG"
-```
+   ```bash
+   virtctl image-upload dv ubuntu-image \
+     --namespace=virtual-machines \
+     --size=10Gi \
+     --storage-class=linstor-lvm-storage \
+     --access-mode=ReadWriteOnce \
+     --volume-mode=filesystem \
+     --image-path="ubuntu-24.04-server-cloudimg-amd64.img" \
+     --insecure \
+     --force-bind \
+     --retry=10 \
+     --wait-secs=600 \
+     --kubeconfig="$KUBECONFIG"
+   ```
 
-:::warning
+   :::warning
 
-The `--insecure` flag skips certificate verification and is intended for an endpoint that presents a certificate the
-client does not trust. In production, install a certificate that the client trusts and remove `--insecure`.
+   The `--insecure` flag skips certificate verification and is intended for an endpoint that presents a certificate the
+   client does not trust. In production, install a certificate that the client trusts and remove `--insecure`.
 
-:::
+   :::
 
-To upload to a block-mode volume instead, change only `--volume-mode=block`, and use it only when the StorageProfile
-advertises the `ReadWriteOnce` and `Block` pair.
+   To upload to a block-mode volume instead, change only `--volume-mode=block`, and use it only when the StorageProfile
+   advertises the `ReadWriteOnce` and `Block` pair.
 
-Confirm that the DataVolume completed.
+4. Confirm that the DataVolume completed.
 
-```bash
-kubectl get datavolume ubuntu-image \
-  --namespace virtual-machines \
-  --kubeconfig="$KUBECONFIG"
-```
+   ```bash
+   kubectl get datavolume ubuntu-image \
+     --namespace virtual-machines \
+     --kubeconfig="$KUBECONFIG"
+   ```
 
-The DataVolume phase must be `Succeeded`.
+   The `PHASE` column must show `Succeeded`.
 
 ## Create a Virtual Machine from the Uploaded Disk
 
@@ -293,45 +332,39 @@ machine during export.
 
 ## Export a Virtual Machine Disk
 
-Export the disk with port forwarding. This path requires no external KubeVirt Ingress, `LoadBalancer` Service, DNS
-record, or route.
+1. Export the disk with port forwarding. This path requires no external KubeVirt Ingress, `LoadBalancer` Service, DNS
+   record, or route.
 
-```bash
-virtctl vmexport download example-vm-export \
-  --vm=example-vm \
-  --namespace=virtual-machines \
-  --volume=ubuntu-image \
-  --format=gzip \
-  --output=example-vm-disk.img.gz \
-  --insecure \
-  --port-forward \
-  --delete-vme \
-  --readiness-timeout=10m \
-  --kubeconfig="$KUBECONFIG"
-```
+   ```bash
+   virtctl vmexport download example-vm-export \
+     --vm=example-vm \
+     --namespace=virtual-machines \
+     --volume=ubuntu-image \
+     --format=gzip \
+     --output=example-vm-disk.img.gz \
+     --insecure \
+     --port-forward \
+     --delete-vme \
+     --readiness-timeout=10m \
+     --kubeconfig="$KUBECONFIG"
+   ```
 
-The command creates a temporary `VirtualMachineExport`, waits for the export service, opens a local port forward,
-downloads the volume, and deletes the temporary export. Validate the downloaded file.
+   The command creates a temporary `VirtualMachineExport`, waits for the export service, opens a local port forward,
+   downloads the volume, and deletes the temporary export.
 
-```bash
-file example-vm-disk.img.gz
-gzip --test example-vm-disk.img.gz
-```
+2. Validate the downloaded file.
 
-The `file` command must report gzip-compressed data. An HTML document indicates that the request reached an incorrect
-route or a proxy error page.
+   ```bash
+   file example-vm-disk.img.gz
+   gzip --test example-vm-disk.img.gz
+   ```
 
-### Required Export Permissions
-
-The user that runs `virtctl vmexport` must have the following permissions in the `virtual-machines` namespace.
-
-- `create`, `get`, and `delete` on `virtualmachineexports.export.kubevirt.io`.
-- `get` on Secrets, because the export token is stored in a Secret.
-- `get` on the source virtual machine, PersistentVolumeClaim, and DataVolume.
+   The `file` command must report gzip-compressed data. An HTML document indicates that the request reached an incorrect
+   route or a proxy error page.
 
 ## Troubleshooting
 
-### virtctl image-upload Cannot Discover the Upload Proxy
+### Image Upload Cannot Discover the Upload Proxy
 
 Confirm the advertised upload proxy URL.
 
@@ -352,9 +385,9 @@ scheme and address. Do not include `/v1beta1/upload`.
 
 ### The Image Upload Times Out
 
-For Nginx, retain the unlimited request-body setting, the 600-second read and send timeouts, and the disabled request
-buffering shown in the Nginx example. Do not send a large upload through a proxy whose request-size or timeout limits
-are lower.
+For Nginx, retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering
+turned off, as shown in [Expose the Proxies with Ingress](#expose-the-proxies-with-ingress). Do not send a large upload
+through a proxy whose request-size or timeout limits are lower.
 
 ### The Export Remains Pending
 
@@ -370,6 +403,9 @@ kubectl get virtualmachineexport example-vm-export \
   --kubeconfig="$KUBECONFIG" \
   --output yaml
 ```
+
+In the first command's output, the `STATUS` column must show `Stopped`. In the second command's output, the
+`status.conditions` list shows why the export is not ready.
 
 ## Next Steps
 
