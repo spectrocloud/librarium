@@ -1,0 +1,128 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-create-cluster
+---
+
+The management cluster hosts the {props.version} core components and provisions the workload clusters that you deploy
+with {props.version}. You create the management cluster in Local UI on the leader Edge host, using the linked Edge hosts
+as its nodes.
+
+1. On the left main menu of the Local UI, click **Cluster**.
+
+2. Click **Create cluster**.
+
+3. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
+
+4. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
+    with the {props.app}. These applications are pre-configured and used to deploy your {props.version} management
+    cluster.
+
+    Leave the default options in place and click **Next**.
+
+5. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for
+    the available options.
+
+    ##### Cluster Profile Options
+
+    | **Option**                        | **Description**                                                                                                                                 | **Type**      | **Default**          |
+    | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------- |
+    | **Pod CIDR**                      | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster.                                               | CIDR notation | **`100.64.0.0/18`** |
+    | **Service CIDR**                  | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster.                                       | CIDR notation | **`100.64.64.0/18`** |
+    | **Ubuntu Pro Token (Optional)**   | The token for your [Ubuntu Pro](https://ubuntu.com/pro) subscription.                                                                           | String        | _No default_         |
+    | **Image pull secret (Optional)** | The image pull secret provided by Spectro Cloud support, encoded in Base64, that authenticates image pulls from Spectro Cloud OCI registries. The value is masked in Local UI. Leave the field blank if your appliance is airgapped and all workload clusters use mirror registries or image swap, or if you plan to add the secret later through the system console. Refer to <PaletteVertexUrlMapper edition={props.edition} text="Configure Image Pull Secret" url="/system-management/configure-image-pull-secret" /> for more information. | Base64 encoded string | _No default_ |
+    | **Storage Pool Drive (Optional)** | The storage pool device to use for the cluster. As mentioned in the [Prerequisites](#prerequisites), assign this to your second storage device. | String        | **`/dev/sdb`**       |
+    | **CSI Placement Count** | The number of replicas for the Container Storage Interface (CSI) Persistent Volumes (PVs). The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the CSI volumes. _This value must match the **MongoDB Replicas** value._ | Integer       | **`3`**              |
+
+    ##### Registry Options
+
+    | **Option**                                    | **Description**                                                                                                                                                                                                                                                                                              | **Type**              | **Default**                               |
+    | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------------------------------------- |
+    | **In Cluster Registry (Optional)**            | - `True` - Use internal Zot registry <br /> - `False` - Use external registry.                                                                                                                                                                                                                                     | Boolean               | **True**                                  |
+    | **Registry Endpoint**                         | The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry.                                                                                          | String                | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Registry Port**                             | The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry.                                                                                                                                                                             | Integer               | **`30003`**                               |
+    | **OCI Registry Base Content Path (Optional)** | The base path for the registry content for the internal or external registry. {props.version} packs will be stored in this directory.                                                                                                                                                                                | String                | **`spectro-content`**                     |
+    | **OCI Pack Registry Username**                         | If using the internal Zot registry, leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username.                                                                                                                                          | String                | **`admin`**                               |
+    | **OCI Pack Registry Password**                | If using the internal Zot registry, enter a password to your requirements. If using an external registry, provide the appropriate password.                                                                                                                                                               | String                | _No default - must be provided._                              |
+    | **OCI Registry Storage Size (GiB) (Optional)** | The size of the storage for the OCI registry. This is used to store the images and packs in the registry. The default value is set to 100 GiB, but this should be increased to at least **250** GiB for production environments. | Integer               | **`100`**                                 |
+    | **OCI Pack Registry Ca Cert (Optional)**      | - Internal Zot registry - Not required. <br /> - External registry - The CA certificate that was used to sign the external registry certificate.                                                                                                                                                                           | Base64 encoded string | _No default_                              |
+    | **Image Replacement Rules (Optional)**        | Set rules for replacing image references when using an external registry. For example, `all: oci-registry-ip:oci-registry-port/spectro-content`. Leave empty if using the internal Zot registry.                                                                                                                                  | String                | _No default_                              |
+    | **Root Domain (Optional)**                    | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). If using an external registry, adjust this to the appropriate domain. | String                | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Mongo Replicas** | The number of MongoDB replicas to create for the cluster. The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the MongoDB database. _This value must match the **CSI Placement Count** value._ | Integer               | **`3`**                                   |
+
+    If you need to change how the Distributed Replicated Block Device (DRBD) kernel module is loaded on the nodes, refer
+    to [DRBD Kernel Module Loading](#drbd-kernel-module-loading) before you deploy the cluster.
+
+6. Click **Next** when you are done.
+
+7. In **Cluster Config**, configure the following options.
+
+    ##### Cluster Config Options
+
+    | **Option**                                 | **Description**                                                                                | **Type** | **Default**  |
+    | ------------------------------------------ | ---------------------------------------------------------------------------------------------- | -------- | ------------ |
+    | **Network Time Protocol (NTP) (Optional)** | The NTP servers to synchronize time within the cluster.                                        | String   | _No default_ |
+    | **SSH Keys (Optional)**                    | The public SSH keys to access the cluster nodes. Add additional keys by clicking **Add Item**. | String   | _No default_ |
+    | **Virtual IP Address (VIP)**               | The virtual IP address for the cluster. This is used for load balancing and high availability. | String   | _No default_ |
+
+    Click **Next** when you are done.
+
+8. In **Node Config**, configure the following options.
+
+    :::important
+
+    You must assign at least three control plane nodes for high availability. You can remove the worker node
+    pool as it is not required for the {props.version} management cluster. When doing this, ensure that the
+    **Allow worker capability** option is enabled for the control plane node pool.
+
+    :::
+
+    ##### Node Pool Options
+
+    <Tabs>
+
+    <TabItem value="control-plane-pool-options" label="Control Plane Pool Options">
+
+    | **Option**                                       | **Description**                                                                                                                                                       | **Type**                                             | **Default**              |
+    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------ |
+    | **Node pool name**                               | The name of the control plane node pool. This will be used to identify the node pool in {props.version}.                                                                      | String                                               | **`control-plane-pool`** |
+    | **Allow worker capability (Optional)**           | Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster.                 | Boolean                                              | **True**                 |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in {props.version}.                                                  | String                                               | _No default_             |
+    | **Taints**                                       | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | - **Key** = string <br />- **Value** = string<br />- **Effect** = string (enum) | _No default_             |
+
+    </TabItem>
+
+    <TabItem value="worker-pool-options" label="Worker Pool Options">
+
+    | **Option**                                       | **Description**                                                                                                                                                       | **Type**                                             | **Default**       |
+    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------- |
+    | **Node pool name**                               | The name of the worker node pool. This will be used to identify the node pool in {props.version}.                                                                             | String                                               | **`worker-pool`** |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in {props.version}.                                                  | String                                               | _No default_      |
+    | **Taints**                                       | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | - **Key** = string <br />- **Value** = string<br />- **Effect** = string (enum) | _No default_      |
+
+    </TabItem>
+
+    </Tabs>
+
+    ###### Pool Configuration
+
+    The following options are available for both the control plane and worker node pools. You can configure these
+    options to your requirements. You can also remove worker pools if not needed.
+
+    | **Option**               | **Description**                                                                                                                                                                           | **Type**      | **Default**                                                                                      |
+    | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------ |
+    | **Architecture**         | The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes.                                                                       | String (enum) | **`amd64`**                                                                                      |
+    | **Add Edge Hosts**       | Click **Add Item** and select the other Edge hosts that you installed using the Appliance ISO. These Edge hosts will be added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current Edge host selected_ <br /> - **Worker Pool** = _No Edge host selected_ |
+    | **NIC Name**             | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu.        | N/A           | **Auto**                                                                                         |
+    | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements.                   | String        | **`edge-*`**                                                                                     |
+
+9. Click **Next** when you are done.
+
+10. In **Review**, check that your configuration is correct. If you need to make changes, click on any of the sections
+    in the left sidebar to go back and edit the configuration.
+
+    When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation
+    process.
+
+    The cluster creation process will take 20 to 30 minutes to complete. You can monitor progress from the **Overview** tab
+    on the **Cluster** page in the left main menu. The cluster is fully provisioned when the status changes to
+    **Running** and the health status is **Healthy**.

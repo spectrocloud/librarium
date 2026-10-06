@@ -1,0 +1,19 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-download
+---
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/), Spectro Cloud's artifact download portal,
+   and log in. Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for
+   instructions on how to access and download artifacts.
+
+2. Under **Install {props.iso}**, select the version to install and click **Show Artifacts**.
+
+3. Download the following artifacts.
+
+   - **Appliance ISO**. The slim installer ISO, without an embedded content bundle. You boot each Edge host from it in
+     [Boot Edge Hosts from ISO and Run the Installer](#boot-edge-hosts-from-iso-and-run-the-installer).
+   - **Content bundle**. The {props.version} packs that pair with the **Appliance ISO**. You upload it after you link
+     the Edge hosts, in [Upload Content Bundle to the Leader Edge Host](#upload-content-bundle-to-the-leader-edge-host).
+   - (Secure Boot only) **MOK Key for Secure Boot**. The Machine Owner Key (MOK) certificate that you enroll on Edge
+     hosts that use Secure Boot.

@@ -1,0 +1,17 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-upload-content
+---
+
+1. Upload the **Content bundle (including Ubuntu)** to Local UI on the leader Edge host. The content bundle syncs to the rest of the linked Edge hosts. Refer to <VersionedLink text="Upload Content Bundle with Local UI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-content-bundle-with-local-ui"/> or <VersionedLink text="Upload Content Bundle with Palette CLI" url="/clusters/edge/local-ui/cluster-management/upload-content-bundle#upload-bundle"/> for the upload steps.
+
+2. Confirm that all linked Edge hosts appear in the **Linked Edge Hosts** table. The following columns should show the
+   required statuses.
+
+   | **Column**  | **Status** |
+   | ----------- | ---------- |
+   | **Status**  | Ready      |
+   | **Content** | Synced     |
+   | **Health**  | Healthy    |
+
+   The **Content** column will not show **Synced** until the content bundle is uploaded and synchronized. Content synchronization will take at least five minutes to complete, depending on your network resources.

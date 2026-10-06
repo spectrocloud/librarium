@@ -1,0 +1,53 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-boot
+---
+
+1. Load the Appliance ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://etcher.balena.io/).
+
+   - For VMware vSphere, you can upload the Appliance ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-storage.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
+   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the Appliance ISO to the Edge host, or use a USB drive to
+     boot the Edge host from the ISO.
+   - For Machine as a Service (MAAS), you can upload and deploy ISOs using Packer. Refer to the [MAAS documentation](https://maas.io/docs/about-images#p-17467-custom-images) for more information.
+
+   Ensure that the Appliance ISO is accessible to all Edge hosts that will be part of the {props.version} management cluster.
+
+2. Attach the Appliance ISO to the first Edge host and ensure the boot order is set to boot from the Appliance ISO first. 
+
+   For example, in VMware vSphere, the VMs will have the Appliance ISO in **CD/DVD drive 1**. Refer to the documentation of your infrastructure provider for specific instructions on how to attach and boot from an ISO.
+
+3. Restart the Edge host to start the installation process.
+
+4. Once the Edge host has rebooted and entered the GRand Unified Bootloader (GRUB) menu, allow {props.version} to select the **Palette Edge Interactive Installer** boot option automatically.
+
+    :::danger
+
+   During the bootstrap process, the TUI performs a pre-installation check that checks all disks for partitions left
+   behind by previous Kairos installations. This helps prevent stale partitions from causing unpredictable
+   installation behavior.
+
+   If any disks are affected, they are pre-selected for wiping; you can select additional disks
+   as well. Wiping disks is optional and must be confirmed on the following screen. Carefully verify the selected disks before proceeding.
+
+    :::
+
+5. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
+
+6. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
+
+    :::danger
+
+    Ensure you select the correct disk. The installation process erases all content on the target disk.
+
+    :::
+
+7. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
+
+8. Review the **Installation Summary**.
+
+9. Press **ENTER** to start the installation.
+
+10. Wait for the installation process to complete before continuing with this Edge host. This will take at least 15 minutes, depending on the resources
+    available on the Edge host. If you have multiple Edge hosts, repeat this boot and installation procedure for your other Edge hosts while waiting.
+    
+    If you selected the **reboot** option in step 7, the Edge host will reboot and display the Palette TUI after completion. If you chose the **poweroff** action in step 7, power on the Edge host when installation is complete.

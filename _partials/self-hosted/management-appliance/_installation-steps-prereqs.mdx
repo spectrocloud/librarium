@@ -5,7 +5,7 @@ partial_name: installation-steps-prereqs
 
 - ISO management software installed on your local machine, such as [`mkisofs`](https://linux.die.net/man/8/mkisofs) or [`genisoimage`](https://linux.die.net/man/1/genisoimage).
 
-- Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the slim {props.iso} ISO and the accompanying content bundle.
+- Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the slim Appliance ISO and the accompanying content bundle.
 
   :::tip
 
@@ -13,8 +13,8 @@ partial_name: installation-steps-prereqs
 
   :::
 
-- {props.edition} can be installed on a single node or on three nodes. For production environments, we recommend that three nodes be provisioned in advance for the Palette installation. We recommended the following
-  resources for each node. Refer to the Palette <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
+- We recommend the following resources for each node. You can install {props.version} on one or three nodes. For
+  production environments, provision three nodes in advance. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -22,7 +22,11 @@ partial_name: installation-steps-prereqs
 
   - Two disks per node.
 
-    - The installation disk must be 300 GB minimum and 500 GB is recommended. This disk is used for the {props.version} ISO stack.
+    - The disk used for installation must be 300 GB minimum and 500 GB is recommended. This disk is used for the Appliance ISO stack.
+
+      <details>
+
+      <summary> Prepare the installation disk </summary>
 
       You specify the device in the TUI as guided during the **Install {props.version}** steps.
 
@@ -44,7 +48,9 @@ partial_name: installation-steps-prereqs
 
       :::
 
-    - Another disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
+      </details>
+
+    - The second disk, which is used for the storage pool, must be at least 500 GB. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
       :::danger
 
@@ -52,29 +58,31 @@ partial_name: installation-steps-prereqs
 
       :::
 
-  - At least one removable media connection must be available to attach the {props.iso} ISO. This can be a physical or virtual connection depending on your infrastructure provider.
+  - At least one removable media connection must be available to attach the Appliance ISO. This can be a physical or virtual connection depending on your infrastructure provider.
 
-- The following network ports must be accessible on each node for Palette to operate successfully.
+- TCP/5080 must be accessible on each Edge host so that you can access Local UI during the installation. This is the
+  default Local UI port. For additional network ports required to operate {props.version}, refer to
+  <VersionedLink text="Self-Hosted Network Communications and Ports" url="/architecture/networking-ports#self-hosted-network-communications-and-ports"/>.
 
-  - TCP/443: Must be open between all Palette nodes and accessible for user connections to the Palette management
-    cluster.
+- SSH access to the Edge hosts if you plan to upload the content bundle with the Palette CLI or enroll the Secure Boot
+  key with MokManager.
 
-  - TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server.
-
-- SSH access must be available to the nodes used for Palette installation.
-
-- Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to
+- Relevant permissions to install {props.version} on the Edge hosts including permission to attach or mount the Appliance ISO and set Edge hosts to
   boot from it.
 
   :::warning
 
-  The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
+  The Appliance ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the Edge hosts to boot from the ISO in UEFI mode.
 
   :::
 
 - If you are using Proxmox Virtual Environment (VE) as the infrastructure provider for Palette, set the VM CPU type to `host`. The default setting in the Proxmox UI is typically different, and leaving it unchanged can result in MongoDB compatibility issues. For more information on CPU types, refer to the [Proxmox VE documentation](https://pve.proxmox.com/pve-docs/chapter-qm.html#_cpu_type). 
 
-- You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
+- If using an external registry instead of the internal Zot registry that is provided, you will need to provide the following information during the Palette installation process.
+
+  <details>
+
+  <summary> External registry requirements </summary>
 
   - The DNS/IP endpoint and port for the external registry.
     - Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
@@ -82,26 +90,19 @@ partial_name: installation-steps-prereqs
   - The password for the registry.
   - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
 
-  <br />
+    You can get the Base64 encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
 
-  <details>
-
-  <summary> How to get Base64 encoded entries for a certificate </summary>
-
-  You can get the Base64 encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
-
-  ```bash
-  base64 --wrap 0 <certificate-file>
-  ```
+    ```bash
+    base64 --wrap 0 <certificate-file>
+    ```
 
   </details>
 
 - If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
   Palette installation process. This is optional but recommended for security and compliance purposes.
 
-- A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette
-  installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in
-  the Palette management cluster.
+- A virtual IP address (VIP) must be available for the {props.version} management cluster. You specify the VIP when you create the cluster. The VIP is used for load balancing and high availability and must be
+  accessible to all nodes in the {props.version} management cluster.
 
   <details>
 

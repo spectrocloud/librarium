@@ -1,0 +1,32 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-login
+---
+
+1. Once the cluster is provisioned, access the {props.version} system console using the virtual IP address (VIP) you configured
+    earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you
+    configured for the cluster.
+
+    The first time you visit the system console, a warning message about an untrusted TLS certificate may appear. This
+    is expected, as you have not yet uploaded your TLS certificate. You can ignore this warning message and proceed.
+
+2. You will be prompted to log in to {props.version} system console. Use `admin` as the username and `admin` as the password.
+    You will be prompted to change the password after logging in.
+
+3. In the **Account Info** window, provide the following information.
+
+    | **Field**                | **Description**    |
+    |--------------------------|--------------------|
+    | **Email address**        | This is used for notifications and password recovery as well as logging in to the {props.version} system console. This will not be active until you <PaletteVertexUrlMapper edition={props.edition} text="configure SMTP settings" url="/system-management/smtp"/> in {props.version} system console and verify your email address. |
+    | **Current password**     | Use `admin` as the current password. |
+    | **New password**         | Enter a new password for the account. |
+    | **Confirm new password** | Re-enter the new password for confirmation. |
+
+    Refer to <PaletteVertexUrlMapper edition={props.edition} text="Password Requirements and Security" url="/system-management/account-management/credentials#password-requirements-and-security"/> to learn about password requirements.
+
+After logging in, a summary page is displayed. You now have access to the {props.version} system console, where you can manage your
+{props.version} environment.
+
+If you are accessing the {props.version} system console for the first time, a security warning may be displayed in your web
+browser. This is because {props.version} is configured with a self-signed certificate. You can replace the self-signed
+certificate with your own SSL certificates as guided later in [Next Steps](#next-steps).
