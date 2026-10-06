@@ -33,6 +33,9 @@ The Palette Management Appliance can be used on the following infrastructure pla
 
 Follow the instructions to install Palette using the Palette Management Appliance on your infrastructure platform.
 
+This guide refers to the machines that you install Palette on as Edge hosts. When you create the management cluster,
+each Edge host that you add to a node pool becomes a node in the cluster.
+
 ### Prerequisites
 
 <PartialsComponent
@@ -51,9 +54,6 @@ Follow the instructions to install Palette using the Palette Management Applianc
   [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
 
 ### Install Palette {#install}
-
-This guide refers to the machines that you install Palette on as Edge hosts. When you create the management cluster,
-each Edge host that you add to a node pool becomes a node in the cluster.
 
 Installing Palette consists of the following tasks.
 

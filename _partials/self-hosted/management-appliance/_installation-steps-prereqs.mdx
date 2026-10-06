@@ -13,14 +13,14 @@ partial_name: installation-steps-prereqs
 
   :::
 
-- We recommend the following resources for each node. You can install {props.version} on one or three nodes. For
-  production environments, provision three nodes in advance. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
+- We recommend the following resources for each Edge host. You can install {props.version} on one or three Edge hosts. For
+  production environments, provision three Edge hosts in advance. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
-  - 8 CPUs per node.
+  - 8 CPUs per Edge host.
 
-  - 16 GB memory per node.
+  - 16 GB memory per Edge host.
 
-  - Two disks per node.
+  - Two disks per Edge host.
 
     - The disk used for installation must be 300 GB minimum and 500 GB is recommended. This disk is used for the Appliance ISO stack.
 
@@ -85,7 +85,7 @@ partial_name: installation-steps-prereqs
   <summary> External registry requirements </summary>
 
   - The DNS/IP endpoint and port for the external registry.
-    - Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
+    - Ensure the nodes used to host the {props.version} management cluster have network access to the external registry server.
   - The username for the registry.
   - The password for the registry.
   - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.

@@ -33,6 +33,9 @@ The VerteX Management Appliance can be used on the following infrastructure plat
 
 Follow the instructions to install Palette VerteX using the VerteX Management Appliance on your infrastructure platform.
 
+This guide refers to the machines that you install Palette VerteX on as Edge hosts. When you create the management
+cluster, each Edge host that you add to a node pool becomes a node in the cluster.
+
 ### Prerequisites
 
 <PartialsComponent
@@ -51,9 +54,6 @@ Follow the instructions to install Palette VerteX using the VerteX Management Ap
   [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
 
 ### Install Palette VerteX {#install}
-
-This guide refers to the machines that you install Palette VerteX on as Edge hosts. When you create the management
-cluster, each Edge host that you add to a node pool becomes a node in the cluster.
 
 Installing Palette VerteX consists of the following tasks.
 
