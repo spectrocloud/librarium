@@ -20,26 +20,22 @@ This release delivers version 4.10.15 of the PaletteAI VM Launchpad appliance, w
 ### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-827 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
 
 - PaletteAI VM Launchpad can now forward appliance metrics and logs to any OpenTelemetry Protocol (OTLP) over HTTP
-  backend, in addition to Splunk HTTP Event Collector (HEC). The forwarding URL determines the protocol. A URL that ends
-  in `/services/collector`, or a URL with no path, uses Splunk HEC. Any other path uses OTLP, and OTLP URLs must end in
-  `/v1/metrics` or `/v1/logs`.
+  backend, in addition to Splunk HTTP Event Collector (HEC). The forwarding URL determines the protocol. The **Logs**
+  section of the **Metrics and Logs** page now controls log delivery and has its own **Forwarding Token** and **CA
+  Certificate** settings. Both the **Metrics** and **Logs** sections have a new **Skip TLS Verification** setting, which
+  is off by default. When **Metrics Forwarding** is enabled, the appliance also forwards its logs to the metrics
+  receiver unless you configure the **Logs** section. Refer to
+  [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
 
 ### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
-
-- Log forwarding now has its own **Forwarding Token** and **CA Certificate** settings, and both metrics forwarding and
-  log forwarding have a new **Skip TLS Verification** setting. When a log forwarding URL, token, or CA certificate is
-  blank, log forwarding uses the metrics forwarding value. On FIPS appliances, **Skip TLS Verification** is off by
-  default, so the appliance verifies the receiver's TLS certificate. If the receiver uses a certificate that the
-  appliance does not trust, add its CA certificate in **CA Certificate**.
-
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1236 -->
 
-- Non-FIPS appliances now use hardened images for the MetalLB, local path provisioner, Traefik, and Piraeus operator
-  packs, and for the VMO pack components where a hardened image is available.
+- Non-FIPS appliances now use hardened images for the MetalLB, Local Path Provisioner, Traefik, Piraeus, and Registry
+  Connect packs, and for the VMO pack components where a hardened image is available.
 
 ### Bug Fixes
 
@@ -68,6 +64,12 @@ This release delivers version 4.10.15 of the PaletteAI VM Launchpad appliance, w
   `Block` PVC when the root disk of a virtual machine template imports from a container registry. The disk import failed
   with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`. Virtual machines
   created from an edited template also no longer fail with `disks[0].Name 'datavolume-os' not found`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1294 -->
+
+- Fixed an issue that prevented virtual machines on non-FIPS Portworx appliances from attaching a ReadWriteMany (RWX)
+  storage class, which also caused live migration to fail. The appliance image now includes the NFS packages that
+  Portworx requires.
 
 ## October 3, 2026 - Release 4.10.17-patch.4
 
