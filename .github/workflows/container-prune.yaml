@@ -2,12 +2,24 @@
 # The workflow is triggered by the nightly Docker build workflow.
 # Only images that are older than 1 day are pruned. This helps ensure that only the latest images are retained.
 # This workflow supports on-demand execution using the workflow_dispatch event.
+# Manual runs default to a dry run that lists the images that would be pruned without deleting them.
+# Clear the dry-run input to prune for real.
 
 name: Container Image Cleanup
 
 on:
   workflow_call:
+    inputs:
+      dry-run:
+        description: "List the images that would be pruned without deleting them."
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "List the images that would be pruned without deleting them."
+        type: boolean
+        default: true
 
 
 
@@ -17,18 +29,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: snok/container-retention-policy@b56f4ff7539c1f94f01e5dc726671cd619aa8072 # v2
+    - uses: snok/container-retention-policy@d3bdcf5ce9b05f685154e4a16c39233b245e3d53 # v3.1.0
       with:
-        image-names: librarium
-        cut-off: 1 day ago UTC
-        timestamp-to-use: created_at
-        account-type: personal
-        org-name: spectrocloud
-        keep-at-least: 1
-        skip-tags: nightly
-        dry-run: false
-        token-type: github-token
+        account: spectrocloud
         token: ${{ secrets.GITHUB_TOKEN }}
+        image-names: librarium
+        # Protect the nightly tag. Untagged versions bypass this filter, so they are still pruned.
+        image-tags: "!nightly"
+        tag-selection: both
+        cut-off: 1d
+        timestamp-to-use: created_at
+        # Keep the newest cosign signature tags (sha256-<digest>, about 5 per build), so a prune that runs
+        # without a fresh build never removes the signatures for the current nightly image.
+        keep-n-most-recent: 10
+        dry-run: ${{ inputs.dry-run }}
 
     - name: Slack Notification
       if: ${{ failure() }}
