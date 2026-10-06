@@ -95,14 +95,16 @@ Storage Policy** steps. Portworx stores VM disks in a Portworx storage cluster i
    claims.
 
 3. Wait until the storage cluster is running. On the **Portworx Storage Clusters** tab, select the storage cluster to
-   review its status. When the storage cluster is running, Portworx creates its CSI StorageClasses, such as `px-csi-db`.
+   review its status. Check the status even if the **Getting Started** wizard already shows the step as complete,
+   because Portworx can still be initializing. When the storage cluster is running, Portworx creates its CSI
+   StorageClasses, such as `px-csi-db`.
 
 4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
 
 5. Choose a StorageClass for your VMs. VMs can use only StorageClasses that are enabled for VM workloads.
 
    - To use a StorageClass that Portworx created, check its **VM Workloads** column. If the class is not enabled, select
-     **Enable for VM Workloads** from the actions for that class.
+     **Enable for VM Workloads**. To find the action, right-click the class or open its detail page.
 
    - To create a StorageClass, select **Create Storage Class**, and confirm that **Allow for VMs** is selected. Refer to
      [Create a StorageClass](./infrastructure/storage.md#create-a-storageclass) for the fields and the Portworx
