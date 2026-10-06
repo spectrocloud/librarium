@@ -21,6 +21,8 @@ This guide walks you through the **Getting Started** wizard.
 Complete the following required configuration steps before you [create your first VM](./quick-start.md). The storage
 steps in the **Getting Started** wizard depend on the storage backend of your [appliance variant](./install.md#install).
 
+### Open the Getting Started Wizard
+
 1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
    If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If
    you changed the default port, replace `5080` with your configured Local UI port.
@@ -66,12 +68,6 @@ steps in the **Getting Started** wizard depend on the storage backend of your [a
 
 5. Select **Create Storage Class**, enter the following values, and select **Create Storage Class**.
 
-   :::info
-
-   The initial benchmark used a single-replica storage class.
-
-   :::
-
    | **Parameter**             | **Description**                                                                                                                                                        |
    | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Class Name**            | Name for the storage class.                                                                                                                                            |
@@ -90,24 +86,24 @@ Storage Policy** steps. Portworx stores VM disks in a Portworx storage cluster i
 
 1. Select **Create a Portworx Storage Cluster**. The wizard opens the **New Portworx Storage Cluster** form.
 
-2. Create one storage cluster for the VM Launchpad cluster. Refer to
-   [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and the disks that Portworx
-   claims.
+2. Complete the form, and then select **Save** in the upper-right corner. You need only one storage cluster for each VM
+   Launchpad cluster. Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and
+   the disks that Portworx claims.
 
-3. Wait until the storage cluster is running. On the **Portworx Storage Clusters** tab, select the storage cluster to
-   review its status. Check the status even if the **Getting Started** wizard already shows the step as complete,
-   because Portworx can still be initializing. When the storage cluster is running, Portworx creates its CSI
-   StorageClasses, such as `px-csi-db`.
+3. Wait until the storage cluster is running. From the VMO left main menu, select **Infrastructure** > **Storage** >
+   **Portworx Storage Clusters**, and then select the storage cluster to review its status. Check the status even if the
+   **Getting Started** wizard already shows the step as complete, because Portworx might still be initializing. When the
+   storage cluster is running, Portworx creates its CSI StorageClasses, such as `px-csi-db`.
 
 4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
 
 5. Choose a StorageClass for your VMs. VMs can use only StorageClasses that are enabled for VM workloads.
 
-   - To use a StorageClass that Portworx created, check its **VM Workloads** column. If the class is not enabled, select
-     **Enable for VM Workloads**. To find the action, right-click the class or open its detail page.
+   - To use a StorageClass that Portworx created, check its **VM Workloads** column. If the class is not enabled,
+     right-click the class or open its detail page, and then select **Enable for VM Workloads**.
 
-   - To create a StorageClass, select **Create Storage Class**, and confirm that **Allow for VMs** is selected. Refer to
-     [Create a StorageClass](./infrastructure/storage.md#create-a-storageclass) for the fields and the Portworx
+   - To create a StorageClass, select **Create Storage Class**, and then confirm that **Allow for VMs** is selected.
+     Refer to [Create a StorageClass](./infrastructure/storage.md#create-a-storageclass) for the fields and the Portworx
      parameters.
 
 </TabItem>

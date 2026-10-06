@@ -52,8 +52,8 @@ perform the following StorageClass operations.
 VMs can use only StorageClasses that are enabled for VM workloads. On the Portworx variant, Portworx creates its own CSI
 StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. To use one of
 them for VMs, check its **VM Workloads** column. If the class is not enabled, right-click the class or open its detail
-page, and select **Enable for VM Workloads**. You can also [create a StorageClass](#create-a-storageclass) with **Allow
-for VMs** selected.
+page, and then select **Enable for VM Workloads**. You can also [create a StorageClass](#create-a-storageclass) with
+**Allow for VMs** selected.
 
 ### Create a StorageClass
 
