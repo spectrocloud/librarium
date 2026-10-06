@@ -43,17 +43,18 @@ on the device makes an outbound connection to Palette. Appliance mode is not ava
 
 ## Prerequisites
 
-- An NVIDIA Jetson AGX Thor Developer Kit, with its power supply and either a monitor and USB keyboard or a headless
-  setup.
+- An NVIDIA Jetson AGX Thor Developer Kit, with its power supply, a monitor, and a USB keyboard.
 
-- A USB drive, 16 GB or larger, for the JetPack installer. Its contents are erased.
+- An empty USB drive, 16 GB or larger, for the JetPack installer.
 
 - A workstation with a disk-imaging tool, such as [Etcher](https://etcher.balena.io/), to write the installer image.
 
-- The [kubectl](https://kubernetes.io/docs/reference/kubectl/) command-line tool on your workstation.
+- The [kubectl](https://kubernetes.io/docs/reference/kubectl/) command-line tool on a workstation with network access to
+  the Jetson.
 
-- A Palette tenant, a project that you can register hosts into, and permissions to create cluster profiles and deploy
-  clusters.
+- A Palette tenant and a project that you can register hosts into, with the **Project Admin** role in that project or a
+  custom role with the same permissions to register Edge hosts, create cluster profiles, and deploy clusters. Refer to
+  [Project Scope Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md).
 
 - A Palette Edge host
   [registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
@@ -64,8 +65,8 @@ on the device makes an outbound connection to Palette. Appliance mode is not ava
 ## Flash JetPack and Install the Operating System
 
 Write an NVIDIA installer image to a USB drive, boot the Thor from it, and install the operating system onto the
-on-board NVMe SSD. This tutorial was validated on JetPack 7.2.1, which includes NVIDIA Jetson Linux (L4T) r39.2.1. For
-the authoritative procedure, refer to NVIDIA's
+on-board NVMe SSD. This tutorial uses JetPack 7.2.1, which includes NVIDIA Jetson Linux (L4T) r39.2.1. For the
+authoritative procedure, refer to NVIDIA's
 [Jetson AGX Thor Developer Kit Quick Start Guide](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html).
 
 1. On your workstation, download the AGX Thor installer image from the
@@ -74,8 +75,7 @@ the authoritative procedure, refer to NVIDIA's
 2. Write the image to your USB drive with Etcher. Select the image, select the USB drive, and then flash it. You must
    write the image with an imaging tool. Copying the image file onto the drive does not create a bootable installer.
 
-3. Plug the USB drive into the Thor, connect a monitor and keyboard or set up a headless connection, and then press the
-   power button.
+3. Plug the USB drive into the Thor, connect a monitor and keyboard, and then press the power button.
 
 4. At the pre-boot prompt, press **ENTER** or wait for the timeout to boot the installer.
 
@@ -90,11 +90,19 @@ the authoritative procedure, refer to NVIDIA's
 7. Remove the USB drive as soon as the device reboots, so that it does not boot into the installer again.
 
 8. Complete the Ubuntu first-boot wizard to set the keyboard layout, license, network, time zone, and a local username
-   and password.
+   and password. Palette does not require Ubuntu Pro. If you turn on Ubuntu Pro, do not enable the FIPS kernel, FIPS
+   updates, or real-time kernel services, because those services try to replace the Jetson Linux (L4T) kernel.
 
-The device reports a firmware string, such as `38.0.0-gcid-...`, at first boot. That value is the UEFI firmware version,
-not the JetPack or L4T version. To confirm the operating system after setup, run `cat /etc/nv_tegra_release` for the L4T
-release and `lsb_release --all` for the Ubuntu base version, which is 24.04.
+9. Confirm the operating system versions. The first command reports the Jetson Linux (L4T) release, and the second
+   command reports the Ubuntu base version, which is 24.04.
+
+   ```shell
+   cat /etc/nv_tegra_release
+   lsb_release --all
+   ```
+
+   The device reports a firmware string, such as `38.0.0-gcid-...`, at first boot. That value is the UEFI firmware
+   version, not the JetPack or L4T version.
 
 ## Prepare the Host
 
@@ -115,20 +123,9 @@ packages and enable the required services. For the full host-preparation referen
    sudo systemctl enable --now systemd-timesyncd
    sudo systemctl enable --now systemd-resolved
    sudo systemctl enable --now rsyslog
-   sudo systemctl enable --now systemd-networkd
    ```
 
-   :::warning
-
-   Enabling `systemd-networkd` can take over an interface that NetworkManager manages and drop your SSH session. Enable
-   it from a console session, or configure `systemd-networkd` with your network settings before you enable it so that
-   the interface stays up. If the SSH session stops responding, press **ENTER**, and then type `~.` to close it.
-
-   :::
-
-Use the non-FIPS Palette agent on JetPack, because the FIPS-compliant build is available only for Red Hat Enterprise
-Linux and Rocky Linux. Ubuntu Pro is not required. On a Jetson, the device runs the L4T kernel, so kernel-level Ubuntu
-Pro features do not apply even if you enable Pro.
+   JetPack already runs `systemd-networkd`, so you do not need to enable it.
 
 ## Register the Jetson Host with Palette
 
@@ -172,8 +169,8 @@ including optional settings for a Jetson device, refer to
      host loses its connection to Palette, use this account to sign in over SSH, at the host terminal, or through
      [Local UI](../../../clusters/edge/local-ui/local-ui.md).
 
-   Refer to [Edge Installer User Data](../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for
-   the full list of options.
+   Refer to [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md)
+   for the full list of configuration options.
 
 2. Export the path to the `user-data` file.
 
@@ -181,11 +178,11 @@ including optional settings for a Jetson device, refer to
    export USERDATA=./user-data
    ```
 
-3. Download the non-FIPS Palette agent installation script for Palette SaaS, and then grant it execute permission. Find
-   the exact download command in step 6 of the **Enablement** section on the
-   [Install Agent on a Host](../../../deployment-modes/agent-mode/install-agent-host.md#enablement) page.
+3. Download the non-FIPS Palette agent installation script for Palette SaaS, and then grant it execute permission. The
+   FIPS build is available only for Red Hat Enterprise Linux and Rocky Linux 8.
 
    ```shell
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
    chmod +x ./palette-agent-install.sh
    ```
 
@@ -195,20 +192,20 @@ including optional settings for a Jetson device, refer to
    sudo --preserve-env ./palette-agent-install.sh
    ```
 
-   The installer downloads the agent, configures the systemd service, and starts registration. The installer might log
-   messages about skipping a metadata or user-data source, such as `Pull userdata: no metadata/userdata found`. These
-   messages are expected on a bare Jetson and do not indicate a failed install. The installer reports
-   `palette edge installation completed successfully` when it finishes, and then the host reboots.
+   The installer downloads the agent, configures the systemd service, and starts registration. You can ignore messages
+   about skipping a metadata or user-data source, such as `Pull userdata: no metadata/userdata found`. When the
+   installer reports `palette edge installation completed successfully`, the host reboots.
 
 5. After the host reboots, log in to [Palette](https://console.spectrocloud.com). From the left main menu, select
    **Clusters**, and then select the **Edge Hosts** tab.
 
-6. Switch to the project that you set in `projectName`. The Jetson appears as a new Edge host. Use the **Architecture**
-   filter to confirm that it is an ARM64 host.
+6. Switch to the project that you set in `projectName` or, if you omitted it, the project associated with your
+   registration token. The Jetson appears as a new Edge host. Use the **Architecture** filter to confirm that it is an
+   ARM64 host.
 
-   Once the host connects, it shows a **Ready** status and a **Healthy** state, and Palette detects the device GPU. The
-   integrated GPU reports `0.00 GB` of GPU memory, which is expected on a Jetson, because the GPU shares system memory
-   instead of having dedicated memory. This is not a detection failure.
+   After the host connects, the **Status** column shows **Ready**, the **Health** column shows **Healthy**, and the
+   **GPU** column lists the device GPU with `0.00 GB` of memory. This value is expected, because the Jetson GPU shares
+   system memory instead of using dedicated memory.
 
 ## Create the Cluster Profile
 
@@ -222,13 +219,14 @@ Jetson. Use a **Full** profile so that you can add add-on layers later, such as 
 
 3. For the **Cloud Type**, select **Edge Native**, and then select **Next**.
 
-4. Add the following core layers. For each layer, select a pack version that supports ARM64.
+4. Add the following core layers. For each layer, select a pack version that supports ARM64. This tutorial does not need
+   a storage layer.
 
-   | Layer      | Pack                               | Configuration                                                                                                                                                                              |
-   | ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | OS         | BYOOS (Edge) (`edge-native-byoi`)  | In the pack **Values**, expand **Presets** and select **Agent Mode**. This sets `options.system.uri` to `NA`, because agent mode manages the operating system that is already on the host. |
-   | Kubernetes | Palette Optimized K3s (`edge-k3s`) | Palette Optimized Canonical (`edge-canonical`) has no ARM64 build, so use K3s on a Jetson.                                                                                                 |
-   | Network    | Flannel (`cni-flannel`)            | Flannel is the verified Container Network Interface (CNI) for K3s.                                                                                                                         |
+   | Layer      | Pack                                   | Configuration                                                                                                                                                                              |
+   | ---------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | OS         | **BYOOS (Edge)** (`edge-native-byoi`)  | In the pack **Values**, expand **Presets** and select **Agent Mode**. This sets `options.system.uri` to `NA`, because agent mode manages the operating system that is already on the host. |
+   | Kubernetes | **Palette Optimized K3s** (`edge-k3s`) | **Palette Optimized Canonical** (`edge-canonical`) has no ARM64 build, so use K3s on a Jetson.                                                                                             |
+   | Network    | **Flannel** (`cni-flannel`)            | Flannel is the verified Container Network Interface (CNI) for K3s.                                                                                                                         |
 
 5. Complete the profile and save it.
 
@@ -249,19 +247,12 @@ plane and your workloads.
 4. Select the cluster profile that you created, and then continue through the profile layers.
 
 5. In the node pool configuration, set the pool **Architecture** to **ARM64**, and then add the registered Jetson host
-   to the pool.
-
-   :::warning
-
-   The **Architecture** field defaults to **AMD64**. The registered Jetson host does not appear in the list of available
-   hosts until you set the architecture to **ARM64**, because Palette filters the available hosts by architecture. If
-   you miss this step, the Jetson seems to be missing even though it registered correctly.
-
-   :::
+   to the pool. The **Architecture** field defaults to **AMD64**, and the Jetson host appears in the list of available
+   hosts only after you select **ARM64**.
 
 6. Review the settings and deploy the cluster.
 
-When the deployment finishes, the cluster reaches a **Running** state and a **Healthy** status.
+When the deployment finishes, the cluster status is **Running** and its health is **Healthy**.
 
 ## Enable GPU Access for a Workload
 
@@ -287,7 +278,8 @@ support embedded devices such as the Jetson.
 <!-- prettier-ignore-end -->
 
 A workload reaches the GPU when its pod specification sets `runtimeClassName` to `nvidia` and requests the GPU with the
-`NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` environment variables.
+`NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` environment variables. A pod that omits these environment
+variables does not receive the GPU.
 
 1. Create a file named `gpu-check.yaml` with the following content.
 
@@ -350,10 +342,6 @@ A workload reaches the GPU when its pod specification sets `runtimeClassName` to
    |  No running processes found                                                             |
    +-----------------------------------------------------------------------------------------+
    ```
-
-   When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device
-   even though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU,
-   because the NVIDIA container runtime injects the GPU only when the workload requests it.
 
 5. Delete the test pod.
 
@@ -494,16 +482,24 @@ across restarts, add a storage layer to the cluster profile and mount a `Persist
 
 Remove the resources that you created in this tutorial.
 
-1. Delete the workloads from the cluster.
+1. Stop the port forward. In the first terminal, press **CTRL + C**.
+
+2. Delete the workloads from the cluster.
 
    ```shell
    kubectl delete --filename ollama.yaml
    ```
 
-2. In Palette, from the left main menu, select **Clusters**, select the cluster that you deployed, and then delete it.
-   Deleting the cluster releases the Jetson host.
+3. From the left main menu, select **Clusters**, and then select the cluster that you deployed. Select **Settings** >
+   **Delete Cluster**, and then enter the cluster name to confirm. Deleting the cluster releases the Jetson host.
 
-3. _(Optional)_ To reuse the Jetson for another deployment, reset the host. Refer to
+4. From the left main menu, select **Profiles**. Open the three-dot menu for the cluster profile that you created, and
+   then select **Delete**.
+
+5. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Open the three-dot menu for the
+   Jetson host, and then select **Delete**.
+
+6. _(Optional)_ To reuse the Jetson for another deployment, reset the host. Refer to
    [Reset an Edge Host](../../../clusters/edge/cluster-management/reset-host.md) for the procedure.
 
 ## Wrap-Up

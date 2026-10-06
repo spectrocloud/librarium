@@ -73,8 +73,8 @@ This set registers the host and creates a local administrator account. Note the 
   that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
   registration token instead, omit `projectName`.
 - The `stages.initramfs.users` block creates a local administrator account named `kairos` in the `sudo` group. If the
-  host loses its connection to Palette, use this account to sign in over SSH, at the Palette Terminal User Interface
-  (TUI), or through [Local UI](../../clusters/edge/local-ui/local-ui.md). You can change the username.
+  host loses its connection to Palette, use this account to sign in over SSH, at the host terminal, or through
+  [Local UI](../../clusters/edge/local-ui/local-ui.md). You can change the username.
 - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
 - You do not need the disk-partitioning fields under `install:` that appliance-mode installer images use, because the
   agent runs on the existing host operating system.
