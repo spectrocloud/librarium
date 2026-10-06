@@ -49,7 +49,7 @@ with each other.
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
 - For hosts that are deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md), all hosts must
-  share the same Operating System (OS).
+  share the same OS.
 
 - You cannot update the IP address of a linked host.
 
@@ -78,8 +78,6 @@ with each other.
 3. Click **Generate token**. This will make the host start generating tokens you will use to link this host with other
    hosts. The base-64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
    minutes. Once a token expires, the leader generates another token automatically.
-
-   If you have already made the
 
 4. Click the **Copy** button to copy the token.
 

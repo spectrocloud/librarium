@@ -11,6 +11,45 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 3, 2026 - Release 4.10.17-patch.4
+
+<!-- PATCH RELEASE TICKET: DOC-3272 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.4 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12166 PEM-12162 PEM-12158 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12166 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12162 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12158 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+## October 2, 2026 - Release 4.10.17-patch.2
+
+<!-- PATCH RELEASE TICKET: DOC-3271 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.2 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12152 PEM-12151 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12152 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12151 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+## October 1, 2026 - Release 4.10.17-patch.1
+
+<!-- PATCH RELEASE TICKET: DOC-3263 -->
+<!-- PATCH RELEASE VERSION: 4.10.17-patch.1 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12137 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12137 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## September 25, 2026 - PaletteAI VM Launchpad 4.10.13 {#vm-launchpad-4.10.13}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3241 -->
@@ -236,6 +275,30 @@ The following components have been updated for Palette version 4.10.16 - 4.10.17
 
 <!-- END COMPONENT UPDATES BODY: DOC-3231. DO NOT DELETE. -->
 
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.0 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.35.0 |
+| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.8 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.1 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.31.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.4.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3231. DO NOT DELETE. -->
+
 ## September 18, 2026 - Component Updates {#component-updates-2026-38}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3215 -->
@@ -288,10 +351,6 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 
 <!-- END PACKS LIST BODY: DOC-3215. DO NOT DELETE. -->
 
-#### Pack Notes
-
-#### Deprecations and Removals
-
 ## September 17, 2026 - Release 4.10.17
 
 <!-- PATCH RELEASE TICKET: DOC-3224 -->
@@ -319,6 +378,15 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2409 -->
 
 - Fixed an issue that caused the Palette CLI shell completion command to fail.
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.17 Palette release is
+4.10.4. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## September 11, 2026 - Component Updates {#component-updates-2026-37}
 
