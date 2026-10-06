@@ -18,7 +18,8 @@ This guide walks you through the **Getting Started** wizard.
 
 ## Initial VM Launchpad Configuration
 
-Complete the following required configuration steps before you [create your first VM](./quick-start.md).
+Complete the following required configuration steps before you [create your first VM](./quick-start.md). The storage
+steps in the **Getting Started** wizard depend on the storage backend of your [appliance variant](./install.md#install).
 
 1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
    If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If
@@ -32,11 +33,17 @@ Complete the following required configuration steps before you [create your firs
 
    ![Screenshot of the getting started icon](/vmo/vm-management_vm-launchpad_getstart-icon-4-9.webp)
 
-4. Select **Set Up a Storage Pool**. The appliance creates **Set Up a Storage Pool** during deployment, so the wizard
+### Configure Storage
+
+<Tabs groupId="storage-backend">
+
+<TabItem value="piraeus" label="Piraeus/LINSTOR">
+
+1. Select **Set Up a Storage Pool**. The appliance creates **Set Up a Storage Pool** during deployment, so the wizard
    marks it complete by default.
 
-5. To create more storage pools, select **+ Create Storage Pool**, enter the following values, and select **Create
-   Storage Pool**.
+2. To create more storage pools, select **Create Storage Pool**, enter the following values, and select **Create Storage
+   Pool**.
 
    | **Parameter**    | **Description**                                                                                   |
    | ---------------- | ------------------------------------------------------------------------------------------------- |
@@ -52,17 +59,18 @@ Complete the following required configuration steps before you [create your firs
 
    ![Screenshot of getting started storage pool creation](/vmo/vm-management_vm-launchpad_getstart-storage-pool-4-9.webp)
 
-6. Select **Review Storage Policy** to display the default **Piraeus DRBD Performance Tuning** storage policy. You can
+3. Select **Review Storage Policy** to display the default **Piraeus DRBD Performance Tuning** storage policy. You can
    add more policies here.
 
-7. On the **Getting Started** wizard pop-up, select **Set Up a Storage Class**.
+4. On the **Getting Started** wizard pop-up, select **Set Up a Storage Class**.
 
-8. Select **+ Create Storage Class**, enter the following values, and select **Create Storage Class**.
+5. Select **Create Storage Class**, enter the following values, and select **Create Storage Class**.
 
    :::info
 
-   The initial benchmark used a single-replica storage class. We are continuing to run additional benchmarks with
-   multiple replicas for each PVC setting, and will share updates as those results become available. :::
+   The initial benchmark used a single-replica storage class.
+
+   :::
 
    | **Parameter**             | **Description**                                                                                                                                                        |
    | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -70,43 +78,77 @@ Complete the following required configuration steps before you [create your firs
    | **Storage Class Options** | The storage class enables **Allow Expansion** and **Allow for VMs** by default. Select **Default Class** to make this storage class the default.                       |
    | **Reclaim Policy**        | Select the behavior to reclaim storage. Defaults to `Delete`. You can also select `Retain`.                                                                            |
    | **Binding Mode**          | Select `WaitForFirstConsumer` or `Immediate`.                                                                                                                          |
-   | **Select a Policy**       | From the drop-down menu, select **No Policy (manual parameters)** or **Piraeus DRBD Performance Tuning (11 parameters)**. Policies created in Step 6 also appear here. |
+   | **Select a Policy**       | From the drop-down menu, select **No Policy (manual parameters)** or **Piraeus DRBD Performance Tuning (11 parameters)**. Policies created in step 3 also appear here. |
    | **Storage Pool**          | From the drop-down menu, select `-Select a pool-` or `lvm-thin`. Storage pools created earlier also appear here.                                                       |
 
-9. Return to the **Getting Started** wizard, and select **Create Networks**.
+</TabItem>
 
-10. On the **Network Attachment Definitions** page, select **+ Create NAD**.
+<TabItem value="portworx" label="Portworx">
 
-11. On the **Create Network Attachment Definition** page, enter the following information, and select **Create**.
+On the Portworx variant, the **Getting Started** wizard does not include the **Set Up a Storage Pool** and **Review
+Storage Policy** steps. Portworx stores VM disks in a Portworx storage cluster instead of LINSTOR storage pools.
 
-    | **Parameter**          | **Description**                                                                                                                                                             |
-    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Name**               | Name of the NAD.                                                                                                                                                            |
-    | **Namespace**          | Namespace for the NAD. The appliance creates the `default`, `virtual-machines`, and `vmo-golden-images` namespaces. To add namespaces, select **Create Namespace**.         |
-    | **Network Type**       | Defaults to `Linux Bridge`. Other options include `macvlan`, `ipvlan`, `SR-IOV`, and `Custom JSON`.                                                                         |
-    | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the VM Launchpad node.                                                                         |
-    | **VLAN Mode**          | Defaults to `Access` for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select `Trunk` to support more than one VLAN for one NAD. |
-    | **Tagged VLANs**       | Optional. Enter one or more comma-separated VLAN IDs.                                                                                                                       |
-    | **IPAM Configuration** | Optional JSON.                                                                                                                                                              |
-    | **Generated Config**   | Displays a preview of the NAD JSON.                                                                                                                                         |
+1. Select **Create a Portworx Storage Cluster**. The wizard opens the **New Portworx Storage Cluster** form.
 
-    :::info
+2. Create one storage cluster for the VM Launchpad cluster. Refer to
+   [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and the disks that Portworx
+   claims.
 
-    If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and
-    select **Add Existing**.
+3. Wait until the storage cluster is running. On the **Portworx Storage Clusters** tab, select the storage cluster to
+   review its status. When the storage cluster is running, Portworx creates its CSI StorageClasses, such as `px-csi-db`.
 
-    :::
+4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
 
-12. Return to the **Getting Started** wizard, and select **Add Namespaces**.
+5. Choose a StorageClass for your VMs. VMs can use only StorageClasses that are enabled for VM workloads.
 
-13. By default, the **Namespaces** page displays three namespaces: `default`, `virtual-machines`, and
-    `vmo-golden-images`. To create another namespace, select **Create Namespace**.
+   - To use a StorageClass that Portworx created, check its **VM Workloads** column. If the class is not enabled, select
+     **Enable for VM Workloads** from the actions for that class.
+
+   - To create a StorageClass, select **Create Storage Class**, and confirm that **Allow for VMs** is selected. Refer to
+     [Create a StorageClass](./infrastructure/storage.md#create-a-storageclass) for the fields and the Portworx
+     parameters.
+
+</TabItem>
+
+</Tabs>
+
+### Configure Networks and Namespaces
+
+1. Return to the **Getting Started** wizard, and select **Create Networks**.
+
+2. On the **Network Attachment Definitions** page, select **Create NAD**.
+
+3. On the **Create Network Attachment Definition** page, enter the following information, and select **Create**.
+
+   | **Parameter**          | **Description**                                                                                                                                                             |
+   | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**               | Name of the NAD.                                                                                                                                                            |
+   | **Namespace**          | Namespace for the NAD. The appliance creates the `default`, `virtual-machines`, and `vmo-golden-images` namespaces. To add namespaces, select **Create Namespace**.         |
+   | **Network Type**       | Defaults to `Linux Bridge`. Other options include `macvlan`, `ipvlan`, `SR-IOV`, and `Custom JSON`.                                                                         |
+   | **Bridge Name**        | Defaults to `br0`. The appliance creates `virbr0`. More bridges may exist on the VM Launchpad node.                                                                         |
+   | **VLAN Mode**          | Defaults to `Access` for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select `Trunk` to support more than one VLAN for one NAD. |
+   | **Tagged VLANs**       | Optional. Enter one or more comma-separated VLAN IDs.                                                                                                                       |
+   | **IPAM Configuration** | Optional JSON.                                                                                                                                                              |
+   | **Generated Config**   | Displays a preview of the NAD JSON.                                                                                                                                         |
+
+   :::info
+
+   If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and
+   select **Add Existing**.
+
+   :::
+
+4. Return to the **Getting Started** wizard, and select **Add Namespaces**.
+
+5. By default, the **Namespaces** page displays three namespaces: `default`, `virtual-machines`, and
+   `vmo-golden-images`. To create another namespace, select **Create Namespace**.
 
 ## Verify
 
 1. Navigate to the **Getting Started** pop-up.
 
-2. The **Storage, Networks, & Namespaces** section displays all five steps crossed out.
+2. The **Storage, Networks, & Namespaces** section displays every step crossed out. The section has five steps on the
+   Piraeus/LINSTOR variants and four steps on the Portworx variant.
 
 ## Next Steps
 
