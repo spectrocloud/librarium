@@ -496,11 +496,12 @@ Remove the resources that you created in this tutorial.
 4. From the left main menu, select **Profiles**. Open the three-dot menu for the cluster profile that you created, and
    then select **Delete**.
 
-5. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Open the three-dot menu for the
-   Jetson host, and then select **Delete**.
+5. On the Jetson, uninstall the Palette agent so that the host does not register with Palette again. Refer to
+   [Uninstall Palette Agent](../../../deployment-modes/agent-mode/install-agent-host.md#uninstall-palette-agent) for the
+   procedure.
 
-6. _(Optional)_ To reuse the Jetson for another deployment, reset the host. Refer to
-   [Reset an Edge Host](../../../clusters/edge/cluster-management/reset-host.md) for the procedure.
+6. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Open the three-dot menu for the
+   Jetson host, and then select **Delete**.
 
 ## Wrap-Up
 
