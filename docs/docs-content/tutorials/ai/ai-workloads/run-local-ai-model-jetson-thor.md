@@ -448,7 +448,7 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
 
    ```text hideClipboard title="Example Output"
    NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
-   llama3.2:1b  baf6a787fdff    1.3 GB    100% GPU     131072     4 minutes from now
+   llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
    ```
 
 6. To reach the model over its HTTP API from your workstation, forward the `Service` port.
