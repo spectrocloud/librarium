@@ -482,18 +482,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 ### Docs and Education
 
-### Packs
-
-<!-- prettier-ignore-start -->
-
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
-
-<!-- prettier-ignore-end -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
+<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
 ## October 3, 2026 - Release 4.10.17-patch.4
 
