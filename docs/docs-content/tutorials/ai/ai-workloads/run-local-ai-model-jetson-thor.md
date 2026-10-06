@@ -328,7 +328,28 @@ A workload reaches the GPU when its pod specification sets `runtimeClassName` to
    kubectl logs gpu-check
    ```
 
-   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the nvidia-smi output from the next Thor run. -->
+   ```text hideClipboard title="Example Output"
+   Tue Oct  6 12:13:37 2026
+   +-----------------------------------------------------------------------------------------+
+   | NVIDIA-SMI 595.78                 Driver Version: 595.78         CUDA Version: 13.2     |
+   +-----------------------------------------+------------------------+----------------------+
+   | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+   |                                         |                        |               MIG M. |
+   |=========================================+========================+======================|
+   |   0  NVIDIA Thor                    Off |   00000000:01:00.0 Off |                  N/A |
+   | N/A   35C  N/A               1W /  N/A  | Not Supported          |      0%      Default |
+   |                                         |                        |             Disabled |
+   +-----------------------------------------+------------------------+----------------------+
+
+   +-----------------------------------------------------------------------------------------+
+   | Processes:                                                                              |
+   |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+   |        ID   ID                                                               Usage      |
+   |=========================================================================================|
+   |  No running processes found                                                             |
+   +-----------------------------------------------------------------------------------------+
+   ```
 
    When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device
    even though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU,
@@ -411,7 +432,11 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
    ```
 
-   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the ollama run response from the next Thor run. -->
+   ```text hideClipboard title="Example Output"
+   Edge computing is a computing model where processing and analysis of data
+   occur at the edge of a network, closer to the data source, rather than at
+   a central server or cloud.
+   ```
 
 5. Confirm that the model runs on the GPU. Because `ollama ps` lists only loaded models, run it after step 4. In the
    output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU instead of the
@@ -440,7 +465,23 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
      --data '{"model":"llama3.2:1b","prompt":"In one short sentence, what is edge computing?","stream":false}'
    ```
 
-   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the /api/generate JSON response from the next Thor run. -->
+   ```json hideClipboard title="Example Output"
+   {
+     "model": "llama3.2:1b",
+     "created_at": "2026-10-06T12:30:58.015015559Z",
+     "response": "Edge computing is a method of processing and analyzing data at the edge of the network, closer to the source of the data, rather than at a centralized server.",
+     "done": true,
+     "done_reason": "stop",
+     "context": [128006, 9125, 128007, ...],
+     "total_duration": 335386715,
+     "load_duration": 2898824,
+     "prompt_eval_count": 35,
+     "prompt_eval_cached_count": 34,
+     "prompt_eval_duration": 30516000,
+     "eval_count": 33,
+     "eval_duration": 298859000
+   }
+   ```
 
 :::info
 
