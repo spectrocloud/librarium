@@ -16,17 +16,21 @@ common platform for edge AI. Palette manages a Jetson as an Edge host, so you de
 and its AI workloads on the device with the same profile-driven workflow you use everywhere else.
 
 In this tutorial, you take an NVIDIA Jetson AGX Thor Developer Kit from a bare device to a running large language model
-(LLM) that answers prompts on the device GPU, all managed by Palette. You flash the operating system, register the
-device with Palette in agent mode, build an Edge Native cluster profile, deploy a single-node cluster, give a workload
-access to the GPU, and serve a model with [Ollama](https://ollama.com/).
+(LLM) that answers prompts on the device GPU, all managed by Palette. You serve the model with
+[Ollama](https://ollama.com/).
 
 The tutorial covers the following stages:
 
 - Flash JetPack onto the Jetson and install the operating system.
+
 - Prepare the host with the Palette agent prerequisites.
+
 - Register the device with Palette as an Edge host in agent mode.
+
 - Create an Edge Native cluster profile and deploy a single-node cluster.
+
 - Enable GPU access for a workload and serve a local AI model.
+
 - Clean up the resources you created.
 
 :::info
@@ -41,21 +45,27 @@ on the device makes an outbound connection to Palette. Appliance mode is not ava
 
 - An NVIDIA Jetson AGX Thor Developer Kit, with its power supply and either a monitor and USB keyboard or a headless
   setup.
+
 - A USB drive, 16 GB or larger, for the JetPack installer. Its contents are erased.
+
 - A workstation with a disk-imaging tool, such as [Etcher](https://etcher.balena.io/), to write the installer image.
+
 - The [kubectl](https://kubernetes.io/docs/reference/kubectl/) command-line tool on your workstation.
+
 - A Palette tenant, a project that you can register hosts into, and permissions to create cluster profiles and deploy
   clusters.
+
 - A Palette Edge host
   [registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
+
 - Outbound HTTPS connectivity from the Jetson to `console.spectrocloud.com` and the Palette pack and image registries.
   Because agent mode is outbound only, a device behind NAT works without inbound firewall rules.
 
 ## Flash JetPack and Install the Operating System
 
 Write an NVIDIA installer image to a USB drive, boot the Thor from it, and install the operating system onto the
-on-board NVMe SSD. This tutorial was validated on JetPack 7.2.1 (Jetson Linux L4T r39.2.1). For the authoritative
-procedure, refer to NVIDIA's
+on-board NVMe SSD. This tutorial was validated on JetPack 7.2.1, which includes NVIDIA Jetson Linux (L4T) r39.2.1. For
+the authoritative procedure, refer to NVIDIA's
 [Jetson AGX Thor Developer Kit Quick Start Guide](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html).
 
 1. On your workstation, download the AGX Thor installer image from the
@@ -67,11 +77,12 @@ procedure, refer to NVIDIA's
 3. Plug the USB drive into the Thor, connect a monitor and keyboard or set up a headless connection, and then press the
    power button.
 
-4. At the pre-boot prompt, press **Enter** or wait for the timeout to boot the installer. If the device does not boot
-   from USB, press **Esc** at the NVIDIA logo to enter the UEFI setup, open **Boot Manager**, move the USB drive to the
-   top of the boot order, and then select **Save & Exit**.
+4. At the pre-boot prompt, press **ENTER** or wait for the timeout to boot the installer.
 
-5. (Optional) If the device prompts you to update the firmware capsule, confirm the update and wait for it to finish.
+   If the device does not boot from USB, press **ESC** at the NVIDIA logo to enter the UEFI setup. Open **Boot
+   Manager**, move the USB drive to the top of the boot order, and then select **Save & Exit**.
+
+5. _(Optional)_ If the device prompts you to update the firmware capsule, confirm the update and wait for it to finish.
 
 6. At the GRUB menu, select **Install on NVMe**. The installation runs for approximately 10 minutes and then reboots the
    device.
@@ -87,8 +98,8 @@ release and `lsb_release --all` for the Ubuntu base version, which is 24.04.
 
 ## Prepare the Host
 
-Install the Palette agent prerequisites on the Jetson. JetPack is Ubuntu-based, so you use `apt` to install the packages
-and enable the required services. For the full host-preparation reference, refer to
+Install the Palette agent prerequisites on the Jetson. JetPack is Ubuntu-based, so you use `apt-get` to install the
+packages and enable the required services. For the full host-preparation reference, refer to
 [Prepare the Jetson Host](../../../ai-workloads/edge-ai/prepare-jetson-host.md).
 
 1. Connect to the Thor over SSH or use the local terminal, and then install the prerequisite packages.
@@ -109,23 +120,24 @@ and enable the required services. For the full host-preparation reference, refer
 
    :::warning
 
-   Enabling `systemd-networkd` can take over an interface that NetworkManager currently manages and drop your SSH
-   session. Enable it from a console session, or configure `systemd-networkd` with your network settings before you
-   enable it so that the interface stays up. If a session hangs, the SSH escape sequence `~.` closes it.
+   Enabling `systemd-networkd` can take over an interface that NetworkManager manages and drop your SSH session. Enable
+   it from a console session, or configure `systemd-networkd` with your network settings before you enable it so that
+   the interface stays up. If the SSH session stops responding, press **ENTER**, and then type `~.` to close it.
 
    :::
 
 Use the non-FIPS Palette agent on JetPack, because the FIPS-compliant build is available only for Red Hat Enterprise
-Linux and Rocky Linux. Ubuntu Pro is not required. On a Jetson, the device runs the NVIDIA Jetson Linux (L4T) kernel, so
-kernel-level Ubuntu Pro features do not apply even if you enable Pro.
+Linux and Rocky Linux. Ubuntu Pro is not required. On a Jetson, the device runs the L4T kernel, so kernel-level Ubuntu
+Pro features do not apply even if you enable Pro.
 
 ## Register the Jetson Host with Palette
 
 Register the prepared device with your Palette tenant. In agent mode, the Palette agent installer reads a `user-data`
-file to register the host, then Palette adds it to your Edge host inventory.
+file to register the host, and then Palette adds it to your Edge host inventory. For the full registration reference,
+including optional settings for a Jetson device, refer to
+[Register a Jetson Host and Serve a Model](../../../ai-workloads/edge-ai/register-jetson-host.md).
 
-1. On the Thor, create a `user-data` file in your working directory. Replace `<your-registration-token>` with your
-   registration token and `<strong-password>` with a strong password.
+1. On the Thor, create a `user-data` file in your working directory with the following content.
 
    ```yaml
    #cloud-config
@@ -145,15 +157,20 @@ file to register the host, then Palette adds it to your Edge host inventory.
              passwd: "<strong-password>"
    ```
 
+   Replace `<your-registration-token>` with your registration token and `<strong-password>` with a strong password.
+
    Note the following about this file:
 
    - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
+
    - `install.reboot` set to `true` reboots the host after the agent installs. Registration completes on that reboot.
+
    - `projectName` must be an existing Palette project that the registration token can access. A project name that does
      not exist fails silently, and the host never appears in Palette. To use the token's own project, omit the field.
-   - The `stages.initramfs.users` block creates a local administrator account, named `kairos` here, so that you keep a
-     break-glass login over SSH, at the host terminal, and through
-     [Local UI](../../../clusters/edge/local-ui/local-ui.md) if the host loses its connection to Palette.
+
+   - The `stages.initramfs.users` block creates a local administrator account named `kairos` in the `sudo` group. If the
+     host loses its connection to Palette, use this account to sign in over SSH, at the host terminal, or through
+     [Local UI](../../../clusters/edge/local-ui/local-ui.md).
 
    Refer to [Edge Installer User Data](../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for
    the full list of options.
@@ -183,7 +200,7 @@ file to register the host, then Palette adds it to your Edge host inventory.
    messages are expected on a bare Jetson and do not indicate a failed install. The installer reports
    `palette edge installation completed successfully` when it finishes, and then the host reboots.
 
-5. After the host reboots, log in to [Palette](https://console.spectrocloud.com). From the left **Main Menu**, select
+5. After the host reboots, log in to [Palette](https://console.spectrocloud.com). From the left main menu, select
    **Clusters**, and then select the **Edge Hosts** tab.
 
 6. Switch to the project that you set in `projectName`. The Jetson appears as a new Edge host. Use the **Architecture**
@@ -196,9 +213,10 @@ file to register the host, then Palette adds it to your Edge host inventory.
 ## Create the Cluster Profile
 
 Create an Edge Native cluster profile that models the operating system, Kubernetes distribution, and network for the
-Jetson. Use a **Full** profile so that you can add the model-serving workload to the same profile.
+Jetson. Use a **Full** profile so that you can add add-on layers later, such as the storage layer described in
+[Serve a Model on the GPU](#serve-a-model-on-the-gpu).
 
-1. From the left **Main Menu**, select **Profiles**, and then select **Add Cluster Profile**.
+1. From the left main menu, select **Profiles**, and then select **Add Cluster Profile**.
 
 2. Enter a name, select the **Full** profile type, and then select **Next**.
 
@@ -214,7 +232,7 @@ Jetson. Use a **Full** profile so that you can add the model-serving workload to
 
 5. Complete the profile and save it.
 
-You do not add a layer to enable the GPU. For the full profile-creation flow, refer to
+For the full profile-creation flow, refer to
 [Create an Edge Native Cluster Profile](../../../clusters/edge/site-deployment/model-profile.md).
 
 ## Deploy the Cluster
@@ -222,9 +240,9 @@ You do not add a layer to enable the GPU. For the full profile-creation flow, re
 Deploy the cluster profile to the registered Jetson host to create a single-node Edge cluster that runs both the control
 plane and your workloads.
 
-1. From the left **Main Menu**, select **Clusters**, and then select **Add New Cluster**.
+1. From the left main menu, select **Clusters**, and then select **Add New Cluster**.
 
-2. Select **Edge Native** as the cluster type, and then start the Edge Native configuration.
+2. Select **Edge Native**, and then select **Start Edge Native Configuration**.
 
 3. Enter the cluster basic information, and then select **Next**.
 
@@ -243,19 +261,30 @@ plane and your workloads.
 
 6. Review the settings and deploy the cluster.
 
-The cluster deploys as a single node that runs both the control plane and workloads. When the deployment finishes, the
-cluster reaches a **Running** state and a **Healthy** status. Download the cluster kubeconfig from its **Overview** tab
-so that you can run `kubectl` against the cluster in the following sections.
+When the deployment finishes, the cluster reaches a **Running** state and a **Healthy** status.
 
 ## Enable GPU Access for a Workload
+
+Run the `kubectl` commands in this tutorial from your workstation, in the same terminal session. Download the cluster
+kubeconfig file from the cluster **Overview** page, and then export its path. Refer to
+[Kubeconfig](../../../clusters/cluster-management/kubeconfig.md) for details.
+
+```shell
+export KUBECONFIG=<path-to-kubeconfig>
+```
+
+Replace `<path-to-kubeconfig>` with the path to the kubeconfig file you downloaded.
+
+<!-- prettier-ignore-start -->
 
 Palette detects the Jetson GPU when the host registers, but detection does not expose the GPU to your workloads. On
 JetPack, the K3s container runtime automatically registers an `nvidia`
 [RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) that routes a pod through the NVIDIA
 container runtime. You do not add a GPU layer to the cluster profile, and you do not use the
-
 <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack, which does not
 support embedded devices such as the Jetson.
+
+<!-- prettier-ignore-end -->
 
 A workload reaches the GPU when its pod specification sets `runtimeClassName` to `nvidia` and requests the GPU with the
 `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` environment variables.
@@ -281,18 +310,31 @@ A workload reaches the GPU when its pod specification sets `runtimeClassName` to
          command: ["bash", "-lc", "nvidia-smi"]
    ```
 
-2. Apply the pod and review its logs.
+2. Apply the pod.
 
    ```shell
    kubectl apply --filename gpu-check.yaml
+   ```
+
+3. Wait for the pod to finish.
+
+   ```shell
+   kubectl wait pod/gpu-check --for=jsonpath='{.status.phase}'=Succeeded --timeout=120s
+   ```
+
+4. Review the pod logs. The `nvidia-smi` output lists the Jetson GPU.
+
+   ```shell
    kubectl logs gpu-check
    ```
+
+   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the nvidia-smi output from the next Thor run. -->
 
    When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device
    even though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU,
    because the NVIDIA container runtime injects the GPU only when the workload requests it.
 
-3. Delete the test pod.
+5. Delete the test pod.
 
    ```shell
    kubectl delete --filename gpu-check.yaml
@@ -301,7 +343,8 @@ A workload reaches the GPU when its pod specification sets `runtimeClassName` to
 ## Serve a Model on the GPU
 
 Deploy a model server that runs on the GPU, pull a model, and confirm that it responds. This example uses Ollama, which
-serves local models over an HTTP API. The serving pod uses the same GPU access pattern as the previous section.
+serves local models over an HTTP API. The serving pod uses the same GPU access pattern as
+[Enable GPU Access for a Workload](#enable-gpu-access-for-a-workload).
 
 1. Create a file named `ollama.yaml` with the following content.
 
@@ -368,15 +411,17 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
    ```
 
-5. Confirm that the model runs on the GPU. Because `ollama ps` lists only loaded models, run it after the previous step.
-   In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU instead
-   of the CPU.
+   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the ollama run response from the next Thor run. -->
+
+5. Confirm that the model runs on the GPU. Because `ollama ps` lists only loaded models, run it after step 4. In the
+   output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU instead of the
+   CPU.
 
    ```shell
    kubectl exec deployment/ollama -- ollama ps
    ```
 
-   ```text hideClipboard title="Example output"
+   ```text hideClipboard title="Example Output"
    NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
    llama3.2:1b  baf6a787fdff    1.3 GB    100% GPU     131072     4 minutes from now
    ```
@@ -395,6 +440,8 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
      --data '{"model":"llama3.2:1b","prompt":"In one short sentence, what is edge computing?","stream":false}'
    ```
 
+   <!-- TODO(DOC-3092): add a hideClipboard title="Example Output" block with the /api/generate JSON response from the next Thor run. -->
+
 :::info
 
 Without a persistent volume, the pulled model is stored in the pod and is lost if the pod restarts. To keep models
@@ -412,18 +459,18 @@ Remove the resources that you created in this tutorial.
    kubectl delete --filename ollama.yaml
    ```
 
-2. In Palette, from the left **Main Menu**, select **Clusters**, select the cluster that you deployed, and then delete
-   it. Deleting the cluster releases the Jetson host.
+2. In Palette, from the left main menu, select **Clusters**, select the cluster that you deployed, and then delete it.
+   Deleting the cluster releases the Jetson host.
 
-3. (Optional) To reuse the Jetson for another deployment, reset the host. Refer to
+3. _(Optional)_ To reuse the Jetson for another deployment, reset the host. Refer to
    [Reset an Edge Host](../../../clusters/edge/cluster-management/reset-host.md) for the procedure.
 
-## Wrap-up
+## Wrap-Up
 
 In this tutorial, you flashed an NVIDIA Jetson AGX Thor, registered it with Palette in agent mode, deployed a
 single-node Edge Native cluster, and served a local AI model that runs on the device GPU. Because Palette manages the
-device with a cluster profile, you can version the operating system, Kubernetes, and model-serving layers and roll
-changes out to the device the same way you manage clusters elsewhere.
+device with a cluster profile, you can version the operating system and Kubernetes layers and roll changes out to the
+device the same way you manage clusters elsewhere.
 
 To learn more about running Edge AI workloads on Jetson devices, refer to the
 [Jetson Edge AI](../../../ai-workloads/edge-ai/edge-ai.md) guide, which covers the host requirements, host preparation,
