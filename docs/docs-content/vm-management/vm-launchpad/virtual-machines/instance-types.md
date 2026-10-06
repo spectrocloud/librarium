@@ -29,9 +29,9 @@ preference.
 
 ### Built-in and Custom Instance Types
 
-VM Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Cluster
-administrators can add custom instance types through the Custom Resource Definition (CRD) or the Instance Types page
-under **Workloads** > **Instance Types**.
+VM Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Users
+with the Platform Admin VMO role can add custom instance types through the Custom Resource Definition (CRD) or the
+Instance Types page under **Workloads** > **Instance Types**.
 
 ### Prefix Conventions
 
@@ -149,6 +149,10 @@ When both are selected:
 Manage both resource types from the **Workloads** menu. They use the generic CRD resource UI, so you can list, create,
 edit, and delete them the same way. Changes apply to newly created VMs and templates. Existing VMs are not modified.
 
+Only the Platform Admin [VMO role](../access-management/vmo-roles.md) can create, edit, or delete instance types and
+preferences. Other roles can view the lists but not change them, and Editors can still select instance types and
+preferences when they create VMs and templates.
+
 | Resource       | Manage from                        | Example custom names                    |
 | -------------- | ---------------------------------- | --------------------------------------- |
 | Instance types | **Workloads** > **Instance Types** | `app-small`, `app-medium`, `db-large`   |
@@ -156,8 +160,8 @@ edit, and delete them the same way. Changes apply to newly created VMs and templ
 
 ### Create a Custom Instance Type
 
-Create a custom instance type when the built-in profiles do not match your sizing needs. This task requires cluster
-administrator permissions.
+Create a custom instance type when the built-in profiles do not match your sizing needs. This task requires the Platform
+Admin VMO role.
 
 1. From the left main menu, select **Workloads** > **Instance Types**.
 
@@ -217,7 +221,7 @@ The new instance type appears in the **Instance Types** list and becomes availab
 ### Create a Custom Preference
 
 Create a custom preference to define OS-specific hardware and device defaults, such as `rhel9-secure` or
-`windows-2022-standard`. This task requires cluster administrator permissions.
+`windows-2022-standard`. This task requires the Platform Admin VMO role.
 
 1. From the left main menu, select **Workloads** > **Preferences**.
 
