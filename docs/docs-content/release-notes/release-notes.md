@@ -11,6 +11,64 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 9, 2026 - PaletteAI VM Launchpad 4.10.15 {#vm-launchpad-4.10.15}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: TBD -->
+
+This release delivers version 4.10.15 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.17-patch.5.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-827 -->
+
+- PaletteAI VM Launchpad can now forward appliance metrics and logs to any OpenTelemetry Protocol (OTLP) over HTTP
+  backend, in addition to Splunk HTTP Event Collector (HEC). The forwarding URL determines the protocol. A URL that ends
+  in `/services/collector`, or a URL with no path, uses Splunk HEC. Any other path uses OTLP, and OTLP URLs must end in
+  `/v1/metrics` or `/v1/logs`.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
+
+- Log forwarding now has its own **Forwarding Token** and **CA Certificate** settings, and both metrics forwarding and
+  log forwarding have a new **Skip TLS Verification** setting. When a log forwarding URL, token, or CA certificate is
+  blank, log forwarding uses the metrics forwarding value. On FIPS appliances, **Skip TLS Verification** is off by
+  default, so the appliance verifies the receiver's TLS certificate. If the receiver uses a certificate that the
+  appliance does not trust, add its CA certificate in **CA Certificate**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1236 -->
+
+- Non-FIPS appliances now use hardened images for the MetalLB, local path provisioner, Traefik, and Piraeus operator
+  packs, and for the VMO pack components where a hardened image is available.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
+
+- Fixed an issue that allowed users with the Editor VMO role to create, edit, and delete cluster-scoped instance types
+  and preferences. Only the Platform Admin role can change them, and Editors can still view and select them. Refer to
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1221 -->
+
+- Fixed an issue that caused the namespace list in the **Upload ISO** form to include namespaces that the user could not
+  access, so the upload failed with a permission error after it started. The namespace lists in the **Upload ISO** and
+  **Build Golden Image** forms now show only namespaces that the user can access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1272 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1266 -->
+
+- Fixed an issue that caused uploaded images to be deleted about 30 minutes after the upload started, including disks
+  that virtual machines used. Uploads that remain in the `UploadReady` phase are no longer deleted automatically, so
+  remove abandoned uploads manually.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused the **Create VM** wizard to create a `Filesystem` PersistentVolumeClaim (PVC) instead of a
+  `Block` PVC when the root disk of a virtual machine template imports from a container registry. The disk import failed
+  with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`. Virtual machines
+  created from an edited template also no longer fail with `disks[0].Name 'datavolume-os' not found`.
+
 ## October 3, 2026 - Release 4.10.17-patch.4
 
 <!-- PATCH RELEASE TICKET: DOC-3272 -->
