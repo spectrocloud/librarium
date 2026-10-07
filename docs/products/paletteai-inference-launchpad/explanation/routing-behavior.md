@@ -116,8 +116,9 @@ A request reaches the semantic router in exactly three cases.
 - The request names an alias whose Tier map row is set to **Use Semantic Router rules**. The alias contributes its
   Thinking directive as the inherited reasoning depth.
 
-Any other request is settled by the Tier map, or by the box default model, and never reaches the semantic router's
-rules.
+Any other request is settled before the semantic router picks a model, by the served model it names, by a Tier map row,
+by a request hint, or by the box default model. The **Usage** page reports these requests in its **Answered without
+routing** table.
 
 :::warning
 

@@ -62,8 +62,9 @@ that split. Four are per client; the fifth is appliance-wide.
 3. **Per-provider egress budget.** A daily cost cap per client per provider. With `on_exceed=local`, an exhausted budget
    serves locally instead and stamps `X-AIBox-Frontier: budget-exhausted` on the response. With `on_exceed=refuse`, the
    appliance returns HTTP 429.
-4. **Egress capability toggle.** A single **Enable egress** switch per client. Off pauses frontier access without
-   deleting any key; on restores egress with the same setup.
+4. **Egress capability toggle.** A single **Enable external inferencing** switch per client, which reads **Disable
+   external inferencing** when on. Off pauses frontier access without deleting any key; on restores egress with the same
+   setup.
 5. **Sovereignty (appliance-wide).** A single switch above every client's egress. When armed, no request leaves the box
    regardless of what any client is permitted to do; the client's egress chip reads **Blocked by sovereignty** until an
    operator disarms it under **Access & Policy → Sovereignty**. Refer to

@@ -559,8 +559,9 @@ Defense deployments.
 ### Tier Map
 
 A routing overlay that governs which model handles a client's requests when the request names a model by name or alias.
-The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. Each
-row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
+The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. The
+Tier map is also set on the **Routing** step of a [policy](#policy), and a client follows its policy's Tier map unless
+it has its own. Each row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
 [Use Semantic Router Rules](#use-semantic-router-rules) hands the alias to the semantic router instead of settling it in
 the Tier map. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
