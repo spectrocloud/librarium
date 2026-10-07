@@ -482,6 +482,17 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 ### Docs and Education
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7756 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3288 -->
+
+- The documented **PaletteControllersEKSPolicy** AWS IAM policy now includes the `iam:ListRoles` action. Palette
+  requires this action to delete the IAM Roles for Service Accounts (IRSA) roles it manages when you delete an EKS
+  cluster. If your EKS clusters use the `irsaRoles` field of the EKS pack, add `iam:ListRoles` to your copy of the
+  policy. IRSA roles of clusters deleted without this permission remain in your AWS account. You can identify them by
+  the `palette.spectrocloud.com/cluster-uid` tag and delete them manually. Refer to
+  [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
+  for the updated policy.
+
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
 ## October 6, 2026 - Release 4.10.17-patch.5
