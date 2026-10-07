@@ -141,9 +141,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
 
-- The Palette and VerteX management appliances can now rotate the TLS certificate of the in-cluster Zot registry
-  automatically. Rotation is turned off by default on new installations and upgrades. After you upgrade, resume any
-  paused agent upgrades, wait for the Palette agent upgrade to complete, and then turn on rotation. If you leave
+- The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS certificate of their Zot
+  registry automatically. Rotation is turned off by default on new installations and upgrades. After you upgrade, resume
+  any paused agent upgrades, wait for the Palette agent upgrade to complete, and then turn on rotation. If you leave
   rotation turned off, the registry certificate eventually expires. Refer to the Upgrade Notes for
   [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
   [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
