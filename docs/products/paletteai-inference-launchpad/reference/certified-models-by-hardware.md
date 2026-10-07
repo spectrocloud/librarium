@@ -57,6 +57,11 @@ your hardware, [contact Spectro Cloud](https://www.spectrocloud.com/contact).
 
 </Tabs>
 
+The semantic router runs on the same GPUs as the main model and shares them, so some models need at least two GPUs to
+leave room for it. For those minimums, refer to [Suggested Hardware](./hardware-requirements.md#gpu).
+
+{/* NEEDS REVIEW: hardware owner to confirm the supported GPU list and card counts for running the semantic router beside each certified model. It has run on RTX PRO 6000, H200, and MI325X, and the other values are worked out from sizes. */}
+
 ## Vision Models
 
 The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To
@@ -81,7 +86,7 @@ percent, leaving roughly 10 percent headroom. The remaining memory is not spare 
 For how the request path works, refer to [Vision Preprocessing](../explanation/vision-preprocessing.md). To deploy the
 pairing, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
-The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as `glm-5.2-shared`
-and `qwen-3.5-9B-shared`. Each carries per-GPU-family variants for MI325X, B200, and H200, with the memory-budget,
-tensor-parallel, and engine-argument settings that were validated on the hardware above. Operators do not edit these
-directly; deploying the two catalog entries is enough.
+The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as
+`glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision`. Each carries per-GPU-family variants for MI325X, B200, and H200,
+with the memory-budget, tensor-parallel, and engine-argument settings that were validated on the hardware above.
+Operators do not edit these directly; deploying the two catalog entries is enough.

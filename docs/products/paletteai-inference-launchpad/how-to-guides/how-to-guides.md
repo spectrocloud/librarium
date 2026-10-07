@@ -22,7 +22,7 @@ you the steps to do it without teaching background concepts.
 | [Replace a Model](./replace-a-model.md)                                                 | Remove a model from a node, then deploy a newer version or a different model.                                  |
 | [Upload a Model](./upload-a-model.md)                                                   | Download a model on a jumpbox and upload it to the appliance.                                                  |
 | [Bring Your Own Model](./bring-your-own-model.md)                                       | Author metadata for a model that is not certified, then upload and deploy it.                                  |
-| [Configure Semantic Routing](./configure-semantic-routing.md)                           | Set the Complexity threshold, author category rules, override both per client, and turn on Decision recording. |
+| [Configure Semantic Routing](./configure-semantic-routing.md)                           | Turn the semantic router on or off, set routing for a policy and for a client, and turn on Decision recording. |
 | [Set the Thinking Directive for a Tier](./set-tier-thinking.md)                         | Choose off, on, or an effort level per tier on the Tier Map.                                                   |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)                         | Deploy a vision model and turn on image-to-text preprocessing for a text-only model.                           |
 | [Create a Client](./create-a-client.md)                                                 | Create a client and issue its first API token.                                                                 |

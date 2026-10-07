@@ -36,8 +36,16 @@ on **8 x MI325X, 8 x B200, and 8 x H200** hardware. Other pairings can work when
 certified text models, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
 
 The tuned deploy configurations for both halves, covering memory budgets, tensor-parallel widths, and engine arguments,
-ship in the catalog as `glm-5.2-shared` and `qwen-3.5-9B-shared`, with per-GPU-family variants for MI325X, B200, and
-H200. Operators choose the two catalog entries from the console; the appliance selects the right variant for the node.
+ship in the catalog as `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision`, with per-GPU-family variants for MI325X,
+B200, and H200. Operators choose the two catalog entries from the console; the appliance selects the right variant for
+the node.
+
+Vision preprocessing needs a vision-mode text model. A text model whose catalog entry ends in `-shared-with-vision`
+shares its GPUs with the vision model of its group, whose entry ends in `-vision`. The semantic router shares the same
+GPUs, so an appliance runs either text-mode models or vision-mode models, not both. For how the mode is decided, refer
+to [One Mode per Box](./routing-behavior.md#one-mode-per-box).
+
+{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example. Confirm the shipped entry names for the validated pairing. */}
 
 Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs for
 its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes each
@@ -61,6 +69,9 @@ vision model.
 
 Only images added in the current turn go to the vision model. Images from earlier turns are already text in the
 conversation, so they are not processed again. Raw images never reach the text model.
+
+An image request that sends `auto` is routed by the semantic router like any other `auto` request. For how the semantic
+router picks a model, refer to [Routing Behavior](./routing-behavior.md).
 
 ## What Changes on the Client
 

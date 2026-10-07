@@ -50,6 +50,17 @@ The reference GPU is the NVIDIA H100 80 GB. The appliance supports both NVIDIA a
 installs GPU drivers automatically. For the models certified on each GPU configuration, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md).
 
+The semantic router runs on the same GPUs as the main model and shares them. Some models need at least two GPUs so that
+the semantic router fits beside them.
+
+| **Model**             | **GPU**      | **Minimum GPUs** |
+| --------------------- | ------------ | ---------------- |
+| `gemma-4`             | H100 or L40S | 2                |
+| `gpt-oss-120b`        | H100         | 2                |
+| `qwen3.6-35b-a3b-fp8` | L40S         | 2                |
+
+{/* NEEDS REVIEW: hardware owner to confirm. The semantic router has run beside the main model on RTX PRO 6000, H200, and MI325X, and the values for the other GPUs are worked out from sizes. Confirm the supported GPU list and card counts before this section publishes. */}
+
 ### Required BIOS Settings
 
 On a server with GPUs, two BIOS settings must be enabled before you boot the slim ISO. They are required for every GPU

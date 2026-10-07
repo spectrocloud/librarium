@@ -31,7 +31,8 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 
 2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
 
-3. Open the **Model** drop-down menu and select the model to deploy.
+3. Open the **Model** drop-down menu and select the model to deploy. The menu lists only models of the appliance's
+   current mode. For the two modes, refer to [One Mode per Box](../explanation/routing-behavior.md#one-mode-per-box).
 
 4. _(Optional)_ Open the **Engine** drop-down menu and select an engine. Leave it on **auto** to let the appliance
    choose the engine. For what an engine is and when you would override the automatic choice, refer to
@@ -60,6 +61,19 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 The appliance writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready
 stages on each chosen node. For that lifecycle, refer to
 [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
+
+When the semantic router is on, it moves onto the new model's GPUs. Its engine restarts once, and routing pauses briefly
+while it does.
+
+If the model belongs to the other mode, the appliance refuses the deploy with a message such as the following.
+
+```text hideClipboard
+<model> runs as text-router-vision, and this box already runs text-router. One box runs one mode, because the semantic router shares one set of GPUs: remove the text-router models first, or move this model into the text-router group.
+```
+
+In the message, `<model>` is the model you selected, and the two mode names are swapped when the appliance runs the
+vision mode. Remove the models of the current mode first, or deploy a model whose catalog entry belongs to the current
+mode.
 
 :::info
 
