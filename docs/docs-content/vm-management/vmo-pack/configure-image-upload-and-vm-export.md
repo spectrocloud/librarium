@@ -67,9 +67,11 @@ upload or virtual machine export on its own. Configure one of the following meth
 
 None of these methods requires a manual route.
 
-The export procedure on this page uses `--port-forward`, which does not need the KubeVirt Ingress or the
-`virt-exportproxy-lb` Service. Configure the KubeVirt part of either method only if clients download exports without
-port forwarding.
+CDI upload works with either method. For virtual machine export, `virtctl` can download without `--port-forward` only
+when the export proxy is exposed on a hostname, for example through an Ingress behind an AWS load balancer, because
+`virtctl` detects the export host. If the export proxy is exposed on an IP address, such as through an IP-based
+`LoadBalancer` Service, always use `--port-forward`. The export procedure on this page uses `--port-forward`, so it
+works with either method.
 
 ## Expose the Proxies with Ingress
 
