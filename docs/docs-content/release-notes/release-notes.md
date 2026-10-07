@@ -508,6 +508,20 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 <!-- PATCH RELEASE TICKET: DOC-3275 -->
 <!-- PATCH RELEASE VERSION: 4.10.17-patch.5 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12176 PEM-12175 PEM-12174 -->
+<!-- DOC-3286 folded the earlier 4.10.17 security patches into this section: 4.10.17-patch.4 (DOC-3272), 4.10.17-patch.2 (DOC-3271), and 4.10.17-patch.1 (DOC-3263). -->
+
+Palette 4.10.17-patch.5 is a cumulative security update for Palette 4.10.17. It includes every fix from the earlier
+4.10.17 security patches, so upgrading to 4.10.17-patch.5 also applies those fixes. The patch suffix is a build sequence
+number. It is not a severity rating or a count of fixes.
+
+The following table lists the release date of each patch in this update.
+
+| Version         | Release Date    |
+| --------------- | --------------- |
+| 4.10.17-patch.5 | October 6, 2026 |
+| 4.10.17-patch.4 | October 3, 2026 |
+| 4.10.17-patch.2 | October 2, 2026 |
+| 4.10.17-patch.1 | October 1, 2026 |
 
 ### Breaking Changes {#breaking-changes-4-10-17-patch-5}
 
@@ -527,44 +541,11 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12176 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12175 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12174 -->
-
-- Applied security fixes to improve the platform's security posture.
-
-## October 3, 2026 - Release 4.10.17-patch.4
-
-<!-- PATCH RELEASE TICKET: DOC-3272 -->
-<!-- PATCH RELEASE VERSION: 4.10.17-patch.4 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12166 PEM-12162 PEM-12158 -->
-
-### Improvements
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12166 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12162 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12158 -->
-
-- Applied security fixes to improve the platform's security posture.
-
-## October 2, 2026 - Release 4.10.17-patch.2
-
-<!-- PATCH RELEASE TICKET: DOC-3271 -->
-<!-- PATCH RELEASE VERSION: 4.10.17-patch.2 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12152 PEM-12151 -->
-
-### Improvements
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12152 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12151 -->
-
-- Applied security fixes to improve the platform's security posture.
-
-## October 1, 2026 - Release 4.10.17-patch.1
-
-<!-- PATCH RELEASE TICKET: DOC-3263 -->
-<!-- PATCH RELEASE VERSION: 4.10.17-patch.1 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12137 -->
-
-### Improvements
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12137 -->
 
 - Applied security fixes to improve the platform's security posture.
