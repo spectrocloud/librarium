@@ -10,48 +10,103 @@ tags: ["paletteai-inference-launchpad", "reference", "models"]
 keywords: ["launchpad", "ai", "palette cli", "model upload", "metadata", "huggingface", "air-gapped"]
 ---
 
-This reference lists the flags for the Palette CLI model commands and the fields of the model metadata file. It supports
-the [Upload a Model](../how-to-guides/upload-a-model.md) how-to and
-[Bring Your Own Model](../how-to-guides/bring-your-own-model.md).
+This reference lists the flags for the Palette CLI model commands, the model recipe archive, and the fields of the model
+metadata file. It supports the [Upload a Model](../how-to-guides/upload-a-model.md) how-to and
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md). For what a model recipe is and why it exists, refer to
+[Model Recipes](../explanation/model-recipes.md).
 
 {/* NEEDS REVIEW: `palette content model download` and `palette content model upload` are a new command surface from the engineering source and are not yet in the published Palette CLI reference. Confirm the command names, flags, and defaults before publishing. */}
+
+## Model Recipe Archive
+
+A model recipe is a Palette content archive that Spectro Cloud publishes to Artifact Studio for each certified model and
+GPU vendor. It holds the model metadata file and the inference engine image that the metadata names. It holds no model
+weights.
+
+| **Property**  | **Value**                                                                                                       |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| Format        | Palette content archive, compressed with Zstandard. The Palette CLI accepts `.tar.zst` or `.zst`.               |
+| Contents      | One model metadata file and one inference engine image.                                                         |
+| Model weights | Not included. Download them with `palette content model download` or `palette content model upload --download`. |
+| GPU vendor    | One vendor per recipe. NVIDIA and AMD recipes are separate artifacts.                                           |
+| Source        | Artifact Studio. Recipes are published for certified models only.                                               |
+
+One recipe drives two commands. No single command uploads both the engine image and the weights.
+
+| **Command**                      | **What it uses from the recipe**                                                                                                                                        |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `palette content upload`         | The whole archive. The appliance loads the engine image and places `metadata.yaml` in the model's directory. Uploading the recipe through Local UI has the same result. |
+| `palette content model download` | The metadata file only, with `--model-recipe`. The engine image is ignored.                                                                                             |
+| `palette content model upload`   | The metadata file only, with `--model-recipe`. The engine image is ignored.                                                                                             |
+
+For the `palette content upload` flags, refer to [Upload](/automation/palette-cli/commands/content#upload) in the
+Palette CLI reference.
+
+Between the content upload and the weights upload, the model's directory on the appliance holds only `metadata.yaml`,
+and the model does not appear in the deploy catalog. The model appears on the next catalog scan after the weights land.
 
 ## palette content model download
 
 Downloads a model from Hugging Face into a local directory on a connected workstation and records a completion manifest
 that a later upload validates against.
 
-| **Flag**                   | **Description**                                                                                                                                                                   | **Required** |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `--metadata`, `-f`         | Path to the model metadata YAML (from Artifact Studio), or a `.tar.gz` bundle of the metadata and files.                                                                          | Yes          |
-| `--model-dir`              | Parent directory to download into. Not the model's own directory: the model lands at `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from the metadata YAML. | Yes          |
-| `--hf-token` (`$HF_TOKEN`) | Hugging Face token for gated or private repositories.                                                                                                                             | No           |
+| **Flag**                   | **Description**                                                                                                                                                                                                                    | **Required**                            |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `--model-recipe`           | Path to a model recipe archive (`.tar.zst` or `.zst`). The command reads the metadata file from the recipe and downloads the weights it names. Mutually exclusive with `--metadata`.                                               | One of `--model-recipe` or `--metadata` |
+| `--metadata`, `-f`         | Path to a model metadata YAML file, or a `.tar.gz` or `.tgz` bundle of the metadata and a logo. The prior flow, used for a model you bring yourself or a metadata file you already have. Mutually exclusive with `--model-recipe`. | One of `--model-recipe` or `--metadata` |
+| `--model-dir`              | Parent directory to download into. Not the model's own directory: the model lands at `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from the model metadata.                                                 | Yes                                     |
+| `--hf-token` (`$HF_TOKEN`) | Hugging Face token for gated or private repositories.                                                                                                                                                                              | No                                      |
 
 ## palette content model upload
 
 Ships an already-downloaded model directory to one appliance node over `rsync` and SSH. By default the upload never
 contacts Hugging Face and fails if `--model-dir` is missing or incomplete; pass `--download` to fetch the model first.
+With `--model-recipe`, the command uploads the weights only and ignores the engine image in the recipe, so upload the
+recipe with `palette content upload` or Local UI first.
 
 **Required flags**
 
-| **Flag**                        | **Description**                                                                                                                                                                                                                                                        |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--metadata`, `-f`              | Path to the model metadata YAML, or a `.tar.gz` bundle of the metadata and files.                                                                                                                                                                                      |
-| `--model-dir`                   | Parent directory holding the model at `<model-dir>/<name>/<version>/`. Not the model's own directory: passing the `<name>/` directory yields `model dir <...>/<name>/<name>/<version>/ is not a complete download`. Required unless `--download` or `--metadata-only`. |
-| `--ssh-user`                    | SSH user on the target appliance node.                                                                                                                                                                                                                                 |
-| `--ssh-host`                    | Address (IP or DNS name) of the target appliance node.                                                                                                                                                                                                                 |
-| `--ssh-key` or `--ssh-password` | SSH authentication. Mutually exclusive; `--ssh-password` is supported on Unix workstations only.                                                                                                                                                                       |
+| **Flag**                               | **Description**                                                                                                                                                                                                                                                                                                                                       |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--model-recipe` or `--metadata`, `-f` | The model metadata source. Pass exactly one. `--model-recipe` takes a model recipe archive (`.tar.zst` or `.zst`) and reads the metadata file from it. `--metadata` takes a metadata YAML file, or a `.tar.gz` or `.tgz` bundle of the metadata and a logo, and is the prior flow. Either way, the model name and version set the remote destination. |
+| `--model-dir`                          | Parent directory holding the model at `<model-dir>/<name>/<version>/`. Not the model's own directory: passing the `<name>/` directory yields `model dir <...>/<name>/<name>/<version>/ is not a complete download`. Required unless `--download` or `--metadata-only`.                                                                                |
+| `--ssh-user`                           | SSH user on the target appliance node.                                                                                                                                                                                                                                                                                                                |
+| `--ssh-host`                           | Address (IP or DNS name) of the target appliance node.                                                                                                                                                                                                                                                                                                |
+| `--ssh-key` or `--ssh-password`        | SSH authentication. Mutually exclusive; `--ssh-password` is supported on Unix workstations only.                                                                                                                                                                                                                                                      |
 
 **Optional flags**
 
-| **Flag**                         | **Description**                                                                                                                                     |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--download`                     | Fetch (or resume) the model from Hugging Face when `--model-dir` is not already complete, then upload. Mutually exclusive with `--metadata-only`.   |
-| `--metadata-only`                | Sync only `metadata.yaml` (and any logo); skip the weights. Mutually exclusive with `--download`.                                                   |
-| `--ssh-port`                     | SSH port. Defaults to `22`.                                                                                                                         |
-| `--hf-token` (`$HF_TOKEN`)       | Hugging Face token, used with `--download` or to fetch a logo hosted on Hugging Face.                                                               |
-| `--keep-model-dir`               | Retain a temporary model directory after a successful upload. Applies only when `--model-dir` is omitted; an explicit `--model-dir` is always kept. |
-| `--insecure-skip-host-key-check` | Disable SSH host key verification.                                                                                                                  |
+| **Flag**                         | **Description**                                                                                                                                                                                                                                     |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--download`                     | Fetch (or resume) the model from Hugging Face when `--model-dir` is not already complete, then upload, so one command replaces the separate download. Works with `--model-recipe` and with `--metadata`. Mutually exclusive with `--metadata-only`. |
+| `--metadata-only`                | Sync only `metadata.yaml` (and any logo); skip the weights. Mutually exclusive with `--download`.                                                                                                                                                   |
+| `--ssh-port`                     | SSH port. Defaults to `22`.                                                                                                                                                                                                                         |
+| `--hf-token` (`$HF_TOKEN`)       | Hugging Face token, used with `--download` or to fetch a logo hosted on Hugging Face.                                                                                                                                                               |
+| `--keep-model-dir`               | Retain a temporary model directory after a successful upload. Applies only when `--model-dir` is omitted; an explicit `--model-dir` is always kept.                                                                                                 |
+| `--insecure-skip-host-key-check` | Disable SSH host key verification.                                                                                                                                                                                                                  |
+
+### Metadata Source Flags
+
+Both `palette content model download` and `palette content model upload` take the model metadata from exactly one of two
+flags.
+
+| **Flags set**                          | **Result**                                                                                   |
+| -------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `--model-recipe` only                  | The command reads `metadata.yaml` from the recipe.                                           |
+| `--metadata` only                      | The command reads the metadata YAML file or `.tar.gz` bundle. This is the prior flow.        |
+| Both `--model-recipe` and `--metadata` | The command fails before it downloads or uploads anything. The flags are mutually exclusive. |
+| Neither flag                           | The command fails before it downloads or uploads anything. One of the two is required.       |
+
+### Command Forms
+
+The following table pairs each command form that uses a model recipe with the prior form that uses a metadata file. Each
+upload form also takes `--ssh-user`, `--ssh-host`, and either `--ssh-key` or `--ssh-password`.
+
+| **Task**                           | **Model recipe form**                                                                                | **Prior metadata file form**                                                                 |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Download the weights               | `palette content model download --model-recipe <model-recipe-file> --model-dir <model-dir>`          | `palette content model download --metadata <metadata-file> --model-dir <model-dir>`          |
+| Upload downloaded weights          | `palette content model upload --model-recipe <model-recipe-file> --model-dir <model-dir>`            | `palette content model upload --metadata <metadata-file> --model-dir <model-dir>`            |
+| Download and upload in one command | `palette content model upload --model-recipe <model-recipe-file> --model-dir <model-dir> --download` | `palette content model upload --metadata <metadata-file> --model-dir <model-dir> --download` |
 
 ## Model Metadata File
 
@@ -165,13 +220,13 @@ The following `serve` fields are the ones a serving recipe most often sets.
 After a successful upload, the model directory on the appliance node has the following layout.
 
 ```text
-/usr/local/spectrocloud/content/models/<name>/<version>/
+/opt/data/spectrocloud/models/<name>/<version>/
 ├── ...model files...   # written first (per huggingface.files globs)
 ├── metadata.yaml       # written last—readiness signal
 └── logo.<ext>          # optional (local or Hugging Face-sourced)
 ```
 
-{/* NEEDS REVIEW: the appliance path /usr/local/spectrocloud/content/models/<name>/<version>/ is from the engineering source. Confirm before publishing. */}
+{/* NEEDS REVIEW: the appliance path changed from /usr/local/spectrocloud/content/models to /opt/data/spectrocloud/models to match the model recipe epic, the Palette CLI ticket, and the Palette CLI source. Confirm before publishing. */}
 
 ## Upload behavior
 
@@ -180,7 +235,8 @@ verifies file checksums during the transfer and resumes an interrupted download 
 than starting over.
 
 The CLI writes the weight files first and `metadata.yaml` last, so the presence of `metadata.yaml` on the appliance node
-is the "upload complete" signal for that host.
+is the "upload complete" signal for that host. In the model recipe flow, the recipe upload places `metadata.yaml` before
+any weights arrive, so the appliance also requires at least one weight file before it lists the model.
 
 On a multi-node cluster, the CLI uploads to a single node. The appliance then synchronizes the model to the other hosts,
 reconciling about every two minutes. In the deploy catalog, a model shows one of the following states, and only
