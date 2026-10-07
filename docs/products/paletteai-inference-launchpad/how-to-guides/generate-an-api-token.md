@@ -25,22 +25,25 @@ and model access, start with [Create a Client](./create-a-client.md).
 
 If an administrator already gave you an API token, you can use it and skip the following steps.
 
-1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+1. In the console header, set the workspace picker to the workspace that holds the client.
 
-2. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
+2. From the left main menu, select **Access & Policy**. Inside a workspace, the page offers **Clients** alone, and the
+   **Clients** list opens.
+
+3. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
    **Overview** section.
 
-3. Select the **API tokens** section, and then select **Create token**. The **Create API token** dialog opens.
+4. Select the **API tokens** section, and then select **Create token**. The **Create API token** dialog opens.
 
-4. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
+5. _(Optional)_ In the **Label** field, enter a name that identifies the token, such as the coding assistant that uses
    it.
 
-5. In the **Expires** field, choose the last day the token works. The field is required, and the console accepts a date
+6. In the **Expires** field, choose the last day the token works. The field is required, and the console accepts a date
    up to 366 days ahead. The token stops working at the end of the day you choose.
 
-6. Select **Create token**.
+7. Select **Create token**.
 
-7. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
+8. When the console reveals the token, select **Copy**. The token begins with `lpai_`.
 
 :::warning
 

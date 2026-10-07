@@ -14,8 +14,8 @@ keywords:
 This glossary defines the key AI, product, and platform terms used across the PaletteAI Inference Launchpad
 documentation. Use it to look up an unfamiliar term without leaving the guide you are reading.
 
-**Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) ·
-[M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v)
+**Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) ·
+[L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v) · [W](#w)
 
 ## A
 
@@ -219,6 +219,14 @@ A cloud-hosted, state-of-the-art model reached through an external provider's AP
 The appliance can route to a frontier model when [egress](#egress) is enabled and routing policy calls for it. Frontier
 usage incurs per-token API costs, unlike a [local model](#local-model).
 
+## G
+
+### Grant
+
+The binding that gives a [role](#role) its reach. A grant binds one role to one subject, a person or a group, over one
+or more named [workspaces](#workspace). The console shows a grant as a [member](#member) of a workspace. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+
 ## H
 
 ### Helm and Helm Chart
@@ -337,6 +345,12 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 
 ## M
 
+### Member
+
+A person or a group holding one [role](#role) in one [workspace](#workspace). You add, change, and remove members on the
+workspace itself. A member's role is **Workspace administrator** or **Operator**. Refer to
+[Manage Access and Policy](../how-to-guides/manage-access-and-policy.md).
+
 ### Model
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
@@ -411,7 +425,8 @@ tools can point at the appliance by changing only the base URL and the API token
 ### Operator
 
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
-models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console).
+models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console). The console
+also ships a [role](#role) named **Operator**, which is a separate concept.
 
 ### OTP
 
@@ -446,6 +461,12 @@ Palette TUI after quitting, run `palette-tui` on the node.
 The storage layer inside the appliance that provisions and manages the volumes used for [model weights](#model-weights)
 and the [KV cache](#kv-cache). Piraeus stripes a data pool across the appliance's NVMe drives to combine their read and
 write bandwidth.
+
+### Policy
+
+The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) may spend
+and what they may reach. A policy belongs to a workspace, so every client in that workspace inherits one policy. Refer
+to [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
 
 ### Prompt
 
@@ -483,6 +504,12 @@ already configured still applies until you remove it.
 The ability of some models to work through a problem in intermediate steps before producing a final answer. A model that
 does this is called a reasoning model, and the depth of that effort can sometimes be tuned. Reasoning steps consume
 [tokens](#token-and-tokenization) like any other output.
+
+### Role
+
+A named set of permissions that ships with the appliance and carries no scope of its own. A [grant](#grant) gives a role
+its reach. The console lists three roles, **Platform administrator**, **Workspace administrator**, and **Operator**,
+read only. Refer to [Access and Policy Reference](./access-and-policy-reference.md#roles).
 
 ## S
 
@@ -576,3 +603,12 @@ model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) a
 An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is the GPU-serving
 engine the appliance currently runs, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the Kubernetes
 cluster.
+
+## W
+
+### Workspace
+
+The boundary between the appliance and a team. A workspace holds its own [clients](#client) and follows one
+[policy](#policy), and its [members](#member) decide who may act in it. Every appliance ships with one workspace,
+**Default**, which cannot be removed. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).

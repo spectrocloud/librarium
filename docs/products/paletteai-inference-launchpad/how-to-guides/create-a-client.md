@@ -21,42 +21,48 @@ To generate an API token by itself, without stepping through the full client set
 
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
 - Console access with permission to manage clients. Managing clients can require operator access.
+- A workspace to hold the client. To give a team its own workspace, refer to
+  [Manage Access and Policy](./manage-access-and-policy.md).
 
 ## Create a Client
 
 Create a client through the **Add client** wizard. The wizard names the client, optionally sets a quota, optionally
 grants model access, and optionally issues the client's first API token.
 
-1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+1. In the console header, set the workspace picker to the workspace that holds the client. Clients are added inside a
+   workspace, not from **All workspaces**.
 
-2. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
+2. From the left main menu, select **Access & Policy**. Inside a workspace, the page offers **Clients** alone, and the
+   **Clients** list opens.
 
-3. On the **Overview** step, enter a **Client name**, and then select **Next step**. The appliance assigns the client an
+3. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
+
+4. On the **Overview** step, enter a **Client name**, and then select **Next step**. The appliance assigns the client an
    immutable identifier and registers it as active.
 
-4. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
+5. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
    refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
 
-5. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external models, including
+6. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external models, including
    built-in frontier providers and registered external inference endpoints, and then select **Next step**. External
    access is denied by default. To add a provider key or authorize a registered endpoint, and to set a daily spend cap,
    refer to [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
    To register an endpoint first, refer to
    [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
-6. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
+7. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
    default model routing, or edit the **Tier map** to route the client's model aliases to specific models. Then select
    **Next step**. For details, refer to
    [Manage a Client's Model Access](./manage-client-model-access.md#route-a-client-to-specific-models).
 
-7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**,
+8. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, optionally enter a **Label**,
    choose an **Expires** date, and then select **Add Token**. **Expires** is required, and the console accepts a date up
    to 366 days ahead. The token stops working at the end of the day you choose.
 
-8. Select **Create client**.
+9. Select **Create client**.
 
-9. When the console reveals the token, select **Copy**. The token begins with `lpai_`. To read the connection steps for
-   a coding assistant without leaving the dialog, select **Connect Agent**.
+10. When the console reveals the token, select **Copy**. The token begins with `lpai_`. To read the connection steps for
+    a coding assistant without leaving the dialog, select **Connect Agent**.
 
 :::warning
 
@@ -72,9 +78,10 @@ A client can hold more than one API token. To add another token to a client late
 
 Confirm that the appliance registered the client and its API token.
 
-1. From the left main menu, select **Access & Policy**.
+1. In the console header, confirm that the workspace picker names the workspace that holds the client, and then from the
+   left main menu, select **Access & Policy**.
 
-2. On the **Clients & API tokens** page, confirm the new client appears in the list under the name you gave it.
+2. On the **Clients** list, confirm that the new client appears under the name you gave it.
 
 3. Select the client to open its detail panel, and then select the **API tokens** section.
 
