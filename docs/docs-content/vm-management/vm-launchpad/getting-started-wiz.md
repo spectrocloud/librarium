@@ -87,13 +87,16 @@ Storage Policy** steps. Portworx stores VM disks in a Portworx storage cluster i
 1. Select **Create a Portworx Storage Cluster**. The wizard opens the **New Portworx Storage Cluster** form.
 
 2. Complete the form, and then select **Save** in the upper-right corner. You need only one storage cluster for each VM
-   Launchpad cluster. Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and
-   the disks that Portworx claims.
+   Launchpad cluster. The cluster must have three control plane nodes, or one control plane node and three worker nodes.
+   Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and the disks that
+   Portworx claims.
 
 3. Wait until the storage cluster is running. From the VMO left main menu, select **Infrastructure** > **Storage** >
-   **Portworx Storage Clusters**, and then select the storage cluster to review its status. Check the status even if the
-   **Getting Started** wizard already shows the step as complete, because Portworx might still be initializing. When the
-   storage cluster is running, Portworx creates its CSI StorageClasses, such as `px-csi-db`.
+   **Portworx Storage Clusters**, and check the **Phase** of your storage cluster. The **Phase** is `initializing` while
+   Portworx starts and `running` when the storage cluster is ready. A `degraded` phase means that the installation
+   failed or that you are deleting the storage cluster. Check the **Phase** even if the **Getting Started** wizard
+   already shows the step as complete, because Portworx might still be initializing. When the storage cluster is
+   running, Portworx creates its CSI StorageClasses, such as `px-csi-db`.
 
 4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
 

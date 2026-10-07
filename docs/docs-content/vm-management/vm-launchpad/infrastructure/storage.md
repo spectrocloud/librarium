@@ -208,8 +208,9 @@ configuration. Refer to [Storage Pools](#storage-pools) for more information.
 On appliances that use the Portworx storage backend, the **Storage** page includes an extra **Portworx Storage
 Clusters** tab that does not appear on Piraeus/LINSTOR appliances. The Portworx pack installs the Portworx operator
 without deploying a cluster, so you create the Portworx `StorageCluster` with the **New Portworx Storage Cluster**
-wizard. Create one storage cluster for each VM Launchpad cluster. When the storage cluster is running, Portworx creates
-its CSI StorageClasses. Refer to [StorageClasses](#storageclasses) to make one of them available for VM workloads.
+wizard. Create one storage cluster for each VM Launchpad cluster. The cluster must have three control plane nodes, or
+one control plane node and three worker nodes. When the storage cluster is running, Portworx creates its CSI
+StorageClasses. Refer to [StorageClasses](#storageclasses) to make one of them available for VM workloads.
 
 **Create a Portworx Storage Cluster**
 
@@ -262,7 +263,8 @@ nothing you need before you save the cluster.
 1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
 
 2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
-   cluster size, capacity used, and capacity total.
+   cluster size, capacity used, and capacity total. The **Phase** is `initializing` while Portworx starts, `running`
+   when the storage cluster is ready, and `degraded` if the installation failed or while you delete the storage cluster.
 
 </TabItem>
 
