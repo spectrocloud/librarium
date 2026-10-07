@@ -485,7 +485,7 @@ creation because the console and Grafana do not exist until the cluster is deplo
 
 :::
 
-If the cluster does not reach a **Running** and **Healthy** state, or if the GPUs do not enumerate as expected, refer to
+If the cluster does not reach a **Running** and **Healthy** state, refer to
 [Known Issues](../reference/known-issues.md).
 
 ## Upload Your Model
