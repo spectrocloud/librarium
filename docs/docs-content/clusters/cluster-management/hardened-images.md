@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Prepare Clusters for Security-Hardened Images"
+sidebar_label: "Security-Hardened Images"
 title: "Prepare Clusters for Security-Hardened Images"
 description: "Learn which requirements your workload clusters must meet to use security-hardened images."
 hide_table_of_contents: false
-sidebar_position: 55
+sidebar_position: 25
 tags: ["clusters", "cluster management", "hardened images", "security"]
 keywords: ["hardened images", "containerd", "palette agent", "image pull secret"]
 ---
