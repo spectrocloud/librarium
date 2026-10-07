@@ -358,14 +358,6 @@ Palette CLI is not available on the jumpbox.
 
 ## Deploy the Cluster
 
-:::warning HPE hardware
-
-On HPE servers, confirm the GPUs are visible to the operating system before you deploy. The cluster installs the GPU
-driver pack during deployment, so if the GPUs do not enumerate on the PCI bus, apply the PCI workaround first. Refer to
-[Known Issues: GPUs do not enumerate on HPE servers](../reference/known-issues.md#gpus-do-not-enumerate-on-hpe-servers).
-
-:::
-
 1. From the left main menu, select **Cluster** > **Create cluster**.
 2. Complete **Basic Information** (cluster name and tags), then select **Next**.
 3. In **Cluster Profile**, review the default PaletteAI Inference Launchpad profile. It bundles the edge OS, Kubernetes,
