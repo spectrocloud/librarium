@@ -21,6 +21,14 @@ of a Palette instance, as well as how to specify a Palette agent package in the 
 profile. This is useful for upgrading the Palette agent on a local Edge cluster and for launching new centrally managed
 clusters while using an older version of the Palette agent.
 
+:::warning
+
+To use security-hardened images, clusters require Palette agent version 4.9.23 or later. If you specify an earlier agent
+version in the OS pack, the transition to security-hardened images might affect your clusters. Refer to
+[Prepare Clusters for Security-Hardened Images](../../cluster-management/hardened-images.md) for more information.
+
+:::
+
 ## Prerequisites
 
 - An active Edge cluster.
