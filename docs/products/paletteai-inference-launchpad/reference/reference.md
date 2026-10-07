@@ -19,7 +19,7 @@ is configured, not how to accomplish a task.
 | [Bond Configuration](./bond-configuration.md)                     | Field-by-field reference for the Local UI bond form used during installation.                   |
 | [Cluster Profile Variables](./profile-variables.md)               | Every variable the Profile Config wizard collects, with types, defaults, and validation rules.  |
 | [Certified Models by Hardware](./certified-models-by-hardware.md) | Which models are certified for each supported NVIDIA and AMD GPU configuration.                 |
-| [Model Upload Reference](./model-upload-reference.md)             | Palette CLI model download and upload flags, and the model metadata file fields.                |
+| [Model Upload Reference](./model-upload-reference.md)             | Palette CLI model download and upload flags, the model recipe archive, and the metadata fields. |
 | [Usage Metrics Reference](./usage-metrics-reference.md)           | Every filter, metric, table column, and export field on the Usage page.                         |
 | [Thinking Directive Modes](./thinking-modes.md)                   | Thinking modes and effort levels, per-engine interpretation, and console override states.       |
 | [Claude Code Configuration](./claude-code-reference.md)           | Environment variables and values for pointing Claude Code at the appliance.                     |

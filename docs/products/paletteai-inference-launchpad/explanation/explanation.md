@@ -21,6 +21,7 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router combine to pick the model that answers each request.                      |
 | [Frontier Providers](./frontier-providers.md)               | Where provider keys live, the credential patterns, the levers that keep frontier traffic occasional, and bursting. |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                        |
+| [Model Recipes](./model-recipes.md)                         | What a model recipe contains, why recipes exist, and why the model is not in the catalog between the two uploads.  |
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.             |
 | [Installation Architecture](./installation-architecture.md) | How the appliance installs, why the network uses a bond, and how day-two upgrades stay in Local UI.                |
 | [The Thinking Directive](./thinking-directive.md)           | How the Thinking directive on the Tier Map controls reasoning depth by effort level and how each engine reacts.    |
