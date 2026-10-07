@@ -101,11 +101,6 @@ missing minor.
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.9.59       |      4.10.17       | :white_check_mark: |
-|       4.9.56       |      4.10.17       | :white_check_mark: |
-|       4.9.56       |      4.10.16       | :white_check_mark: |
-|       4.9.55       |      4.10.17       | :white_check_mark: |
-|       4.9.55       |      4.10.16       | :white_check_mark: |
-|       4.9.55       |      4.10.14       | :white_check_mark: |
 |       4.9.54       |      4.10.17       | :white_check_mark: |
 |       4.9.54       |      4.10.16       | :white_check_mark: |
 |       4.9.54       |      4.10.14       | :white_check_mark: |
@@ -129,7 +124,6 @@ missing minor.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.9.55       |       4.9.60       | :white_check_mark: |
 |       4.9.14       |       4.9.60       | :white_check_mark: |
 |       4.9.14       |       4.9.51       | :white_check_mark: |
 |       4.9.14       |       4.9.46       | :white_check_mark: |
@@ -1142,7 +1136,6 @@ after a few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.9.55       |       4.9.60       | :white_check_mark: |
 |       4.9.14       |       4.9.60       | :white_check_mark: |
 |       4.9.14       |       4.9.51       | :white_check_mark: |
 |       4.9.14       |       4.9.46       | :white_check_mark: |
