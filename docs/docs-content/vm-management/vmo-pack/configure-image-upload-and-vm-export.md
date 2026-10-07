@@ -120,7 +120,7 @@ Traefik needs. Do not create them manually.
 
 Use explicit DNS names and the following controller settings.
 
-```yaml
+````yaml
 charts:
   virtual-machine-orchestrator:
     vmo-manager:
@@ -197,7 +197,7 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
            type: LoadBalancer
            port: 443
            targetPort: 8443
-   ```
+````
 
 2. Get the external addresses of the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the `virt-exportproxy-lb`
    Service in the `kubevirt` namespace.
@@ -261,7 +261,9 @@ https://cdi-upload.example.com
    kubectl get storageprofile <storage-class-name> \
      --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}' \
      --kubeconfig="$KUBECONFIG"
-   
+
+
+   ```
 
 3. Upload the image. The following example uploads an Ubuntu cloud image to a `10Gi` DataVolume named `ubuntu-image` in
    the `virtual-machines` namespace.
@@ -279,7 +281,9 @@ https://cdi-upload.example.com
      --retry=10 \
      --wait-secs=600 \
      --kubeconfig="$KUBECONFIG"
-   
+
+
+   ```
 
 4. Confirm that the DataVolume completed.
 
@@ -310,7 +314,6 @@ kubectl apply \
 ```
 
 The command returns the following output.
-
 
 :::warning
 
