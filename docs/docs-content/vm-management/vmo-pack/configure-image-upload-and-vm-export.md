@@ -25,7 +25,8 @@ export proxy through the Ingress or `LoadBalancer` configuration described on th
 
 ## Prerequisites
 
-- A workload cluster with the VMO pack deployed. Refer to [Create a VMO Profile](./create-vmo-profile.md) for guidance.
+- A workload cluster with VMO pack version 4.10.7 or later deployed. Refer to
+  [Create a VMO Profile](./create-vmo-profile.md) for guidance.
 
 - Kubectl installed and access to the **kubeconfig** file for the VMO cluster. Refer to the
   [Kubectl](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to set up
@@ -41,10 +42,15 @@ export proxy through the Ingress or `LoadBalancer` configuration described on th
 - The [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) command-line tool installed on your
   workstation.
 
+- An Ubuntu cloud image on your workstation, such as `ubuntu-24.04-server-cloudimg-amd64.img` from
+  [Ubuntu Cloud Images](https://cloud-images.ubuntu.com/).
+
 - To export a virtual machine disk, the following permissions in the `virtual-machines` namespace.
 
   - `create`, `get`, and `delete` on `virtualmachineexports.export.kubevirt.io`.
+
   - `get` on Secrets, because the export token is stored in a Secret.
+
   - `get` on the source virtual machine, PersistentVolumeClaim, and DataVolume.
 
 ## Choose an Exposure Method
@@ -52,7 +58,7 @@ export proxy through the Ingress or `LoadBalancer` configuration described on th
 The VMO UI route is separate from the CDI and KubeVirt proxy endpoints. Enabling the VMO UI Ingress does not expose CDI
 upload or virtual machine export on its own. Configure one of the following methods.
 
-| Method                            | CDI upload                       | Virtual machine export                        |
+| **Method**                        | **CDI upload**                   | **Virtual machine export**                    |
 | --------------------------------- | -------------------------------- | --------------------------------------------- |
 | Native Ingress                    | CDI Ingress on `/v1beta1/upload` | KubeVirt Ingress on `/api/export.kubevirt.io` |
 | `LoadBalancer` Services           | `cdi-uploadproxy-lb` Service     | `virt-exportproxy-lb` Service                 |
@@ -105,8 +111,8 @@ charts:
 
 Replace `<vmo-external-address>` with the address or DNS name that clients use to reach your ingress controller.
 
-When the resolved class is Traefik, the chart creates the required `ServersTransport` objects and HTTPS Service
-annotations. Do not create those objects manually.
+When the ingress class is `traefik`, the chart creates the `ServersTransport` objects and HTTPS Service annotations that
+Traefik needs. Do not create them manually.
 
 </TabItem>
 
@@ -119,7 +125,7 @@ charts:
   virtual-machine-orchestrator:
     vmo-manager:
       platform:
-        cdiExternalUploadUrl: "https://cdi-upload.example.com"
+        cdiExternalUploadUrl: "https://<cdi-upload-dns-name>"
 
     cdi:
       ingress:
@@ -132,13 +138,13 @@ charts:
           nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
           nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
         hosts:
-          - host: cdi-upload.example.com
+          - host: "<cdi-upload-dns-name>"
             paths:
               - path: /v1beta1/upload
                 pathType: Prefix
       cdiResource:
         additionalConfig:
-          uploadProxyURLOverride: "https://cdi-upload.example.com"
+          uploadProxyURLOverride: "https://<cdi-upload-dns-name>"
 
     kubevirt:
       ingress:
@@ -147,14 +153,10 @@ charts:
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         hosts:
-          - host: vm-export.example.com
+          - host: "<vm-export-dns-name>"
             paths:
               - path: /api/export.kubevirt.io
                 pathType: ImplementationSpecific
-```
-
-Replace `cdi-upload.example.com` and `vm-export.example.com` with the DNS names that clients use to reach your ingress
-controller.
 
 Retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering turned off. A
 disk image upload can be large, and a proxy with lower request-size or timeout limits causes the upload to fail.
@@ -163,14 +165,13 @@ disk image upload can be large, and a proxy with lower request-size or timeout l
 
 </Tabs>
 
-Set `className` and `ingressClassName` explicitly when the cluster has more than one ingress controller. With native
-Ingress enabled, the chart creates the following resources, and no separate `IngressRoute`, route, or VMO application
-route is required.
+Set `className` and `ingressClassName` explicitly when the cluster has more than one ingress controller. When you enable
+native Ingress, the chart creates the following resources.
 
-| Resource                                                                   | Namespace  |
-| -------------------------------------------------------------------------- | ---------- |
-| CDI Ingress `cdi-uploadproxy` and Service `cdi-uploadproxy-ingress`        | `cdi`      |
-| KubeVirt Ingress `virt-exportproxy` and Service `virt-exportproxy-ingress` | `kubevirt` |
+| **Resource**                                                               | **Namespace** |
+| -------------------------------------------------------------------------- | ------------- |
+| CDI Ingress `cdi-uploadproxy` and Service `cdi-uploadproxy-ingress`        | `cdi`         |
+| KubeVirt Ingress `virt-exportproxy` and Service `virt-exportproxy-ingress` | `kubevirt`    |
 
 ## Expose the Proxies with `LoadBalancer` Services
 
@@ -198,8 +199,8 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
            targetPort: 8443
    ```
 
-2. Obtain the external addresses of the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the
-   `virt-exportproxy-lb` Service in the `kubevirt` namespace.
+2. Get the external addresses of the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the `virt-exportproxy-lb`
+   Service in the `kubevirt` namespace.
 
    ```bash
    kubectl get service cdi-uploadproxy-lb --namespace cdi
@@ -233,8 +234,8 @@ kubectl get cdiconfig config \
   --kubeconfig="$KUBECONFIG"
 ```
 
-The result must be the externally reachable CDI base URL, without `/v1beta1/upload`. For example, with the Nginx
-configuration on this page, the command returns the following output.
+The result must be the externally reachable CDI base URL, without `/v1beta1/upload`. For example, if
+`<cdi-upload-dns-name>` is `cdi-upload.example.com`, the command returns the following output.
 
 ```text hideClipboard title="Example Output"
 https://cdi-upload.example.com
@@ -243,27 +244,24 @@ https://cdi-upload.example.com
 ## Upload a Disk Image
 
 1. Confirm the access mode and volume mode that your StorageClass supports. CDI must write the destination volume during
-   upload, so a read-only access mode does not work. The following combinations apply to the `linstor-lvm-storage`
-   StorageClass.
+   upload, so a read-only access mode does not work. For example, the `linstor-lvm-storage` StorageClass supports the
+   following combinations.
 
-   | Access mode     | Volume mode  | Upload support                                                                              |
-   | --------------- | ------------ | ------------------------------------------------------------------------------------------- |
-   | `ReadWriteOnce` | `filesystem` | Supported                                                                                   |
-   | `ReadWriteOnce` | `block`      | Supported when the StorageProfile advertises the `ReadWriteOnce` and `Block` pair           |
-   | `ReadWriteMany` | `filesystem` | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Filesystem` pair |
-   | `ReadWriteMany` | `block`      | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Block` pair      |
-   | `ReadOnlyMany`  | Either       | Not supported                                                                               |
+   | **Access mode** | **Volume mode** | **Upload support**                                                                          |
+   | --------------- | --------------- | ------------------------------------------------------------------------------------------- |
+   | `ReadWriteOnce` | `filesystem`    | Supported                                                                                   |
+   | `ReadWriteOnce` | `block`         | Supported when the StorageProfile advertises the `ReadWriteOnce` and `Block` pair           |
+   | `ReadWriteMany` | `filesystem`    | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Filesystem` pair |
+   | `ReadWriteMany` | `block`         | Supported only when the StorageProfile advertises the `ReadWriteMany` and `Block` pair      |
+   | `ReadOnlyMany`  | Either          | Not supported                                                                               |
 
 2. Check the exact combinations that the StorageClass advertises.
 
    ```bash
-   kubectl get storageprofile linstor-lvm-storage \
+   kubectl get storageprofile <storage-class-name> \
      --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}' \
      --kubeconfig="$KUBECONFIG"
-   ```
-
-   Use only a pair that this command prints. The Kubernetes API uses `Filesystem` and `Block`, and the corresponding
-   `virtctl` flag values are `filesystem` and `block`.
+   
 
 3. Upload the image. The following example uploads an Ubuntu cloud image to a `10Gi` DataVolume named `ubuntu-image` in
    the `virtual-machines` namespace.
@@ -272,7 +270,7 @@ https://cdi-upload.example.com
    virtctl image-upload dv ubuntu-image \
      --namespace=virtual-machines \
      --size=10Gi \
-     --storage-class=linstor-lvm-storage \
+     --storage-class=<storage-class-name> \
      --access-mode=ReadWriteOnce \
      --volume-mode=filesystem \
      --image-path="ubuntu-24.04-server-cloudimg-amd64.img" \
@@ -281,17 +279,7 @@ https://cdi-upload.example.com
      --retry=10 \
      --wait-secs=600 \
      --kubeconfig="$KUBECONFIG"
-   ```
-
-   :::warning
-
-   The `--insecure` flag skips certificate verification and is intended for an endpoint that presents a certificate the
-   client does not trust. In production, install a certificate that the client trusts and remove `--insecure`.
-
-   :::
-
-   To upload to a block-mode volume instead, change only `--volume-mode=block`, and use it only when the StorageProfile
-   advertises the `ReadWriteOnce` and `Block` pair.
+   
 
 4. Confirm that the DataVolume completed.
 
@@ -321,12 +309,13 @@ kubectl apply \
   --filename -
 ```
 
-The command returns `virtualmachine.kubevirt.io/example-vm created`.
+The command returns the following output.
+
 
 :::warning
 
-Keep the virtual machine halted while you export the disk. A `ReadWriteOnce` disk cannot be mounted by a running virtual
-machine during export.
+Keep the virtual machine halted while you export the disk. The export cannot mount a `ReadWriteOnce` disk that a running
+virtual machine is using.
 
 :::
 
@@ -364,7 +353,7 @@ machine during export.
 
 ## Troubleshooting
 
-### Image Upload Cannot Discover the Upload Proxy
+### Scenario - Image Upload Cannot Discover the Upload Proxy
 
 Confirm the advertised upload proxy URL.
 
@@ -374,22 +363,25 @@ kubectl get cdiconfig config \
   --kubeconfig="$KUBECONFIG"
 ```
 
-If the result is empty or incorrect, set `cdi.cdiResource.additionalConfig.uploadProxyURLOverride` to the exact external
+If the result is empty or incorrect, set
+`charts.virtual-machine-orchestrator.cdi.cdiResource.additionalConfig.uploadProxyURLOverride` to the exact external
 scheme and address. Do not include `/v1beta1/upload`.
 
-### Ingress Returns HTTP 500 or 502
+### Scenario - Ingress Returns HTTP 500 or 502
 
-- Traefik: confirm that both ingress-class fields are `traefik`, so the chart creates the backend `ServersTransport`
-  resources.
-- Nginx: confirm that both proxy Ingresses use the `nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"` annotation.
+- If you use Traefik, confirm that `className` and `ingressClassName` are both set to `traefik` so that the chart
+  creates the backend `ServersTransport` resources.
 
-### The Image Upload Times Out
+- If you use Nginx, confirm that both proxy Ingresses use the `nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"`
+  annotation.
+
+### Scenario - The Image Upload Times Out
 
 For Nginx, retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering
 turned off, as shown in [Expose the Proxies with Ingress](#expose-the-proxies-with-ingress). Do not send a large upload
 through a proxy whose request-size or timeout limits are lower.
 
-### The Export Remains Pending
+### Scenario - The Export Remains Pending
 
 Confirm that the virtual machine is halted and that no pod mounts the source disk.
 
@@ -404,8 +396,9 @@ kubectl get virtualmachineexport example-vm-export \
   --output yaml
 ```
 
-In the first command's output, the `STATUS` column must show `Stopped`. In the second command's output, the
-`status.conditions` list shows why the export is not ready.
+In the first command's output, the `STATUS` column must show `Stopped`. If it shows `Running`, stop the virtual machine
+with `virtctl stop example-vm --namespace virtual-machines`. In the second command's output, the `status.conditions`
+list shows why the export is not ready.
 
 ## Next Steps
 
