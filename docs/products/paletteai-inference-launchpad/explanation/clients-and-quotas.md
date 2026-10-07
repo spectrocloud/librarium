@@ -166,7 +166,8 @@ Access to models depends on whether a model runs locally on the appliance or is 
 
 Sovereignty is a separate switch that overrides every client's egress. When it is armed for the appliance, no request
 leaves the box regardless of any client's permission, and a client's egress chip reads **Blocked by sovereignty** until
-an operator disarms it under **Access & Policy → Sovereignty**.
+an operator disarms it on the **Sovereignty** card of the **Clients** tab under **Access & Policy**, with the workspace
+picker set to **All workspaces**.
 
 ## Workspaces and Access {#workspaces-and-access}
 

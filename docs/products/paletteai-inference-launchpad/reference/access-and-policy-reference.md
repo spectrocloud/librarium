@@ -27,16 +27,16 @@ the person signed in may read it.
 | **All workspaces** | **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and **Groups**                   |
 | One workspace      | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. |
 
-<!-- vale on -->
+| **Tab**        | **Where it appears**             | **What it holds**                                                                                                                           |
+| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Clients**    | All workspaces and one workspace | At **All workspaces**, the **Sovereignty** card and every client on the appliance, read only. Inside a workspace, that workspace's clients. |
+| **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                                                                              |
+| **Policies**   | All workspaces                   | The policies a workspace can follow.                                                                                                        |
+| **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                                                                                   |
+| **Users**      | All workspaces                   | The people the identity provider serves.                                                                                                    |
+| **Groups**     | All workspaces                   | The groups the identity provider serves.                                                                                                    |
 
-| **Tab**        | **Where it appears**             | **What it holds**                                                                |
-| -------------- | -------------------------------- | -------------------------------------------------------------------------------- |
-| **Clients**    | All workspaces and one workspace | Every client on the appliance, or the clients of the workspace the picker names. |
-| **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                   |
-| **Policies**   | All workspaces                   | The policies a workspace can follow.                                             |
-| **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                        |
-| **Users**      | All workspaces                   | The people the identity provider serves.                                         |
-| **Groups**     | All workspaces                   | The groups the identity provider serves.                                         |
+<!-- vale on -->
 
 ## Roles
 
