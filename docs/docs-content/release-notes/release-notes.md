@@ -146,6 +146,17 @@ tags: ["release-notes"]
   vCluster version. Refer to [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7756 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3288 -->
+
+- If your EKS clusters use the `irsaRoles` field of the EKS pack, add the `iam:ListRoles` action to the
+  **PaletteControllersEKSPolicy** AWS IAM policy. Palette requires this action to delete the IAM Roles for Service
+  Accounts (IRSA) roles it manages when you delete an EKS cluster. IRSA roles of clusters deleted without this
+  permission remain in your AWS account. You can identify them by the `palette.spectrocloud.com/cluster-uid` tag and
+  delete them manually. Refer to
+  [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
+  for the updated policy.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5872 -->
@@ -485,13 +496,10 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7756 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3288 -->
 
-- The documented **PaletteControllersEKSPolicy** AWS IAM policy now includes the `iam:ListRoles` action. Palette
-  requires this action to delete the IAM Roles for Service Accounts (IRSA) roles it manages when you delete an EKS
-  cluster. If your EKS clusters use the `irsaRoles` field of the EKS pack, add `iam:ListRoles` to your copy of the
-  policy. IRSA roles of clusters deleted without this permission remain in your AWS account. You can identify them by
-  the `palette.spectrocloud.com/cluster-uid` tag and delete them manually. Refer to
+- The documented
   [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
-  for the updated policy.
+  now includes the `iam:ListRoles` action, which Palette uses to delete the IRSA roles it manages when you delete an EKS
+  cluster. Refer to the [Upgrade Notes](#upgrade-notes-4.10.a) for the action required on existing EKS clusters.
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
