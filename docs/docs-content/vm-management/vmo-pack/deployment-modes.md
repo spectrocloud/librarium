@@ -78,7 +78,7 @@ pack provides remote access to the UI. This is the default selection.
 | `caCert.enabled`                                           | `true`                                                                                                    |
 | `caCert.configMapName`                                     | `platform-ca-cert`                                                                                        |
 | `ingressRoute.enabled`                                     | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
-| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
+| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`. In pack version 4.10.7 and later, this route no longer carries CDI uploads or VM export           |
 
 :::warning
 

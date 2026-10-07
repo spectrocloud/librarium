@@ -17,9 +17,10 @@ upload an Ubuntu disk image, create a virtual machine from the uploaded disk, an
 
 :::warning
 
-The `directAccess` mechanism that earlier pack versions used for these proxies is deprecated. Keep
-`charts.virtual-machine-orchestrator.directAccess.enabled` set to `false`, and expose the CDI upload proxy and KubeVirt
-export proxy through the Ingress or `LoadBalancer` configuration described on this page.
+In VMO pack version 4.10.7 and later, the `directAccess` Traefik route no longer exposes the CDI upload proxy or the
+KubeVirt export proxy. Expose both proxies through the Ingress or `LoadBalancer` configuration on this page. If you use
+[Direct](./deployment-modes.md#direct) mode, keep `directAccess` enabled, because Direct mode still uses it for the VM
+dashboard route.
 
 :::
 
@@ -66,107 +67,125 @@ upload or virtual machine export on its own. Configure one of the following meth
 
 None of these methods requires a manual route.
 
+The export procedure on this page uses `--port-forward`, which does not need the KubeVirt Ingress or the
+`virt-exportproxy-lb` Service. Configure the KubeVirt part of either method only if clients download exports without
+port forwarding.
+
 ## Expose the Proxies with Ingress
 
-Add one of the following overrides to the VMO pack values. Do not append `/v1beta1/upload` to either CDI URL value,
-because VMO and `virtctl` append the upload API path.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-<Tabs>
+2. From the left main menu, select **Clusters**, and then select your VMO cluster.
 
-<TabItem label="Traefik" value="traefik">
+3. Select the **Profile** tab. Then, select the **Virtual Machine Orchestrator** layer and select **Values**. The values
+   editor appears.
 
-Use Ingress rules on a shared external address. This configuration does not require separate CDI or KubeVirt DNS
-records.
+4. Add one of the following overrides to the values. Do not append `/v1beta1/upload` to either CDI URL value, because
+   VMO and `virtctl` append the upload API path.
 
-```yaml
-charts:
-  virtual-machine-orchestrator:
-    vmo-manager:
-      platform:
-        cdiExternalUploadUrl: "https://<vmo-external-address>"
+   <Tabs>
 
-    cdi:
-      ingress:
-        enabled: true
-        className: traefik
-        hosts:
-          - host: "<vmo-external-address>"
-            paths:
-              - path: /v1beta1/upload
-                pathType: Prefix
-      cdiResource:
-        additionalConfig:
-          uploadProxyURLOverride: "https://<vmo-external-address>"
+   <TabItem label="Traefik" value="traefik">
 
-    kubevirt:
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-        hosts:
-          - host: <vmo-external-address>
-            paths:
-              - path: /api/export.kubevirt.io
-                pathType: ImplementationSpecific
-```
+   Use Ingress rules on a shared external address. This configuration does not require separate CDI or KubeVirt DNS
+   records.
 
-Replace `<vmo-external-address>` with the address or DNS name that clients use to reach your ingress controller.
+   ```yaml
+   charts:
+     virtual-machine-orchestrator:
+       vmo-manager:
+         platform:
+           cdiExternalUploadUrl: "https://<vmo-external-address>"
 
-When the ingress class is `traefik`, the chart creates the `ServersTransport` objects and HTTPS Service annotations that
-Traefik needs. Do not create them manually.
+       cdi:
+         ingress:
+           enabled: true
+           className: traefik
+           hosts:
+             - host: "<vmo-external-address>"
+               paths:
+                 - path: /v1beta1/upload
+                   pathType: Prefix
+         cdiResource:
+           additionalConfig:
+             uploadProxyURLOverride: "https://<vmo-external-address>"
 
-</TabItem>
+       kubevirt:
+         ingress:
+           enabled: true
+           ingressClassName: traefik
+           hosts:
+             - host: <vmo-external-address>
+               paths:
+                 - path: /api/export.kubevirt.io
+                   pathType: ImplementationSpecific
+   ```
 
-<TabItem label="Nginx" value="nginx">
+   Replace `<vmo-external-address>` with the address or DNS name that clients use to reach your ingress controller.
 
-Use explicit DNS names and the following controller settings.
+   When the ingress class is `traefik`, the chart creates the `ServersTransport` objects and HTTPS Service annotations
+   that Traefik needs. Do not create them manually.
 
-````yaml
-charts:
-  virtual-machine-orchestrator:
-    vmo-manager:
-      platform:
-        cdiExternalUploadUrl: "https://<cdi-upload-dns-name>"
+   </TabItem>
 
-    cdi:
-      ingress:
-        enabled: true
-        className: nginx
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-          nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-          nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-          nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-        hosts:
-          - host: "<cdi-upload-dns-name>"
-            paths:
-              - path: /v1beta1/upload
-                pathType: Prefix
-      cdiResource:
-        additionalConfig:
-          uploadProxyURLOverride: "https://<cdi-upload-dns-name>"
+   <TabItem label="Nginx" value="nginx">
 
-    kubevirt:
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        hosts:
-          - host: "<vm-export-dns-name>"
-            paths:
-              - path: /api/export.kubevirt.io
-                pathType: ImplementationSpecific
+   Use explicit DNS names and the following controller settings.
 
-Retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering turned off. A
-disk image upload can be large, and a proxy with lower request-size or timeout limits causes the upload to fail.
+   ```yaml
+   charts:
+     virtual-machine-orchestrator:
+       vmo-manager:
+         platform:
+           cdiExternalUploadUrl: "https://<cdi-upload-dns-name>"
 
-</TabItem>
+       cdi:
+         ingress:
+           enabled: true
+           className: nginx
+           annotations:
+             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+             nginx.ingress.kubernetes.io/proxy-body-size: "0"
+             nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+             nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+             nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+           hosts:
+             - host: "<cdi-upload-dns-name>"
+               paths:
+                 - path: /v1beta1/upload
+                   pathType: Prefix
+         cdiResource:
+           additionalConfig:
+             uploadProxyURLOverride: "https://<cdi-upload-dns-name>"
 
-</Tabs>
+       kubevirt:
+         ingress:
+           enabled: true
+           ingressClassName: nginx
+           annotations:
+             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+           hosts:
+             - host: "<vm-export-dns-name>"
+               paths:
+                 - path: /api/export.kubevirt.io
+                   pathType: ImplementationSpecific
+   ```
 
-Set `className` and `ingressClassName` explicitly when the cluster has more than one ingress controller. When you enable
-native Ingress, the chart creates the following resources.
+   Replace `<cdi-upload-dns-name>` and `<vm-export-dns-name>` with the DNS names that clients use to reach your ingress
+   controller.
+
+   Retain the unlimited request-body setting, the 600-second read and send timeouts, and request buffering turned off. A
+   disk image upload can be large, and a proxy with lower request-size or timeout limits causes the upload to fail.
+
+   </TabItem>
+
+   </Tabs>
+
+   Set `className` and `ingressClassName` explicitly when the cluster has more than one ingress controller.
+
+5. Select **Save**. Wait for Palette to finish updating the cluster.
+
+When you enable native Ingress, the chart creates the following resources.
 
 | **Resource**                                                               | **Namespace** |
 | -------------------------------------------------------------------------- | ------------- |
@@ -177,7 +196,9 @@ native Ingress, the chart creates the following resources.
 
 As an alternative to Ingress, expose both proxies directly through `LoadBalancer` Services.
 
-1. Add the following overrides to the VMO pack values to turn off native Ingress and create the `LoadBalancer` Services.
+1. Open the values editor of the **Virtual Machine Orchestrator** layer, as described in steps 1 through 3 of
+   [Expose the Proxies with Ingress](#expose-the-proxies-with-ingress). Add the following overrides to turn off native
+   Ingress and create the `LoadBalancer` Services.
 
    ```yaml
    charts:
@@ -197,7 +218,9 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
            type: LoadBalancer
            port: 443
            targetPort: 8443
-````
+   ```
+
+   Select **Save**. Wait for Palette to finish updating the cluster.
 
 2. Get the external addresses of the `cdi-uploadproxy-lb` Service in the `cdi` namespace and the `virt-exportproxy-lb`
    Service in the `kubevirt` namespace.
@@ -207,8 +230,9 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
    kubectl get service virt-exportproxy-lb --namespace kubevirt
    ```
 
-3. After the CDI Service receives an external address, add that address to the VMO pack values for both VMO and CDI. Do
-   not append `/v1beta1/upload` to either value.
+3. After the CDI Service receives an external address, update the profile a second time. In the values editor of the
+   **Virtual Machine Orchestrator** layer, add that address for both VMO and CDI. Do not append `/v1beta1/upload` to
+   either value.
 
    ```yaml
    charts:
@@ -224,14 +248,15 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
 
    Replace `<cdi-loadbalancer-address>` with the external address of the `cdi-uploadproxy-lb` Service.
 
+   Select **Save**. Wait for Palette to finish updating the cluster.
+
 ## Verify the External CDI URL
 
 Confirm that CDI advertises the address that you configured.
 
 ```bash
 kubectl get cdiconfig config \
-  --output jsonpath='{.status.uploadProxyURL}{"\n"}' \
-  --kubeconfig="$KUBECONFIG"
+  --output jsonpath='{.status.uploadProxyURL}{"\n"}'
 ```
 
 The result must be the externally reachable CDI base URL, without `/v1beta1/upload`. For example, if
@@ -259,11 +284,12 @@ https://cdi-upload.example.com
 
    ```bash
    kubectl get storageprofile <storage-class-name> \
-     --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}' \
-     --kubeconfig="$KUBECONFIG"
-
-
+     --output jsonpath='{range .status.claimPropertySets[*]}accessModes={.accessModes}, volumeMode={.volumeMode}{"\n"}{end}'
    ```
+
+   Replace `<storage-class-name>` with the name of your StorageClass. Use only a pair that this command prints. The
+   Kubernetes API uses `Filesystem` and `Block`, and the corresponding `virtctl` flag values are `filesystem` and
+   `block`.
 
 3. Upload the image. The following example uploads an Ubuntu cloud image to a `10Gi` DataVolume named `ubuntu-image` in
    the `virtual-machines` namespace.
@@ -279,18 +305,24 @@ https://cdi-upload.example.com
      --insecure \
      --force-bind \
      --retry=10 \
-     --wait-secs=600 \
-     --kubeconfig="$KUBECONFIG"
-
-
+     --wait-secs=600
    ```
+
+   Replace `<storage-class-name>` with the name of your StorageClass. To upload to a block-mode volume, set
+   `--volume-mode=block`. Use block mode only if the command in step 2 lists the `ReadWriteOnce` and `Block` pair.
+
+   :::warning
+
+   The `--insecure` flag skips certificate verification and is intended for an endpoint that presents a certificate that
+   the client does not trust. In production, install a certificate that the client trusts and remove `--insecure`.
+
+   :::
 
 4. Confirm that the DataVolume completed.
 
    ```bash
    kubectl get datavolume ubuntu-image \
-     --namespace virtual-machines \
-     --kubeconfig="$KUBECONFIG"
+     --namespace virtual-machines
    ```
 
    The `PHASE` column must show `Succeeded`.
@@ -309,11 +341,14 @@ virtctl create vm \
   --volume-pvc=src:ubuntu-image |
 kubectl apply \
   --namespace virtual-machines \
-  --kubeconfig="$KUBECONFIG" \
   --filename -
 ```
 
 The command returns the following output.
+
+```text hideClipboard title="Example Output"
+virtualmachine.kubevirt.io/example-vm created
+```
 
 :::warning
 
@@ -337,8 +372,7 @@ virtual machine is using.
      --insecure \
      --port-forward \
      --delete-vme \
-     --readiness-timeout=10m \
-     --kubeconfig="$KUBECONFIG"
+     --readiness-timeout=10m
    ```
 
    The command creates a temporary `VirtualMachineExport`, waits for the export service, opens a local port forward,
@@ -351,8 +385,8 @@ virtual machine is using.
    gzip --test example-vm-disk.img.gz
    ```
 
-   The `file` command must report gzip-compressed data. An HTML document indicates that the request reached an incorrect
-   route or a proxy error page.
+   The `file` command must report gzip-compressed data. If you download without `--port-forward`, an HTML document
+   indicates that the request reached an incorrect route or a proxy error page.
 
 ## Troubleshooting
 
@@ -362,8 +396,7 @@ Confirm the advertised upload proxy URL.
 
 ```bash
 kubectl get cdiconfig config \
-  --output jsonpath='{.status.uploadProxyURL}{"\n"}' \
-  --kubeconfig="$KUBECONFIG"
+  --output jsonpath='{.status.uploadProxyURL}{"\n"}'
 ```
 
 If the result is empty or incorrect, set
@@ -390,12 +423,10 @@ Confirm that the virtual machine is halted and that no pod mounts the source dis
 
 ```bash
 kubectl get vm example-vm \
-  --namespace virtual-machines \
-  --kubeconfig="$KUBECONFIG"
+  --namespace virtual-machines
 
 kubectl get virtualmachineexport example-vm-export \
   --namespace virtual-machines \
-  --kubeconfig="$KUBECONFIG" \
   --output yaml
 ```
 
