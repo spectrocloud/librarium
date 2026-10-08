@@ -3,9 +3,9 @@ partial_category: self-hosted
 partial_name: zot-certificate-rotation
 ---
 
-**(Any to 4.10.a+)** {props.edition} can now rotate the TLS certificate of its Zot registry automatically. Rotation
-is turned off by default on new installations and upgrades. Do not turn it on during the upgrade. After the upgrade
-completes, use the following steps to turn it on.
+**(Any to 4.10.a+)** {props.edition} can now rotate the TLS certificate of its Zot registry automatically. Rotation is
+turned off by default when you upgrade. Do not turn it on during the upgrade, because the clusters that use the registry
+can then fail to pull images. After the upgrade completes, use the following steps to turn it on.
 
 1. _(Paused agent upgrades only)_ Resume agent upgrades for the clusters where they are paused. Rotation does not work
    while agent upgrades are paused. Refer to
@@ -13,9 +13,11 @@ completes, use the following steps to turn it on.
 
 2. Wait for the Palette agent upgrade to complete on your clusters.
 
-3. Set the `<variable-name>` profile variable to `true`.
+3. In the Local UI, from the left main menu, select **Cluster**, and then select the **Configuration** tab.
 
-   {/* TODO(DOC-3290): replace <variable-name> and add where to set it, from Gaurav's screenshot of the toggle. */}
+4. In the **Palette Addon Profile** section, turn on **Enable Certificate Rotation**, and then select **Update**.
+
+   {/* TODO(DOC-3290): confirm on Gaurav's 4.10.25-rc.2 instance (C0C7JF8K39Q) how Update applies the change (directly, or through Review Changes first). */}
 
 If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires. Clusters can then
 fail to pull images from the registry.
