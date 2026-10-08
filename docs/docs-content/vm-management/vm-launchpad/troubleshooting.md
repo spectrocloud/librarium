@@ -21,9 +21,14 @@ requires the disks that it uses to report as non-rotational. When a disk reports
 as a `MAGNETIC` device, and the storage cluster does not initialize.
 
 Use one of the following options before you create the Portworx storage cluster. Apply the option on each node where
-Portworx is installed. For consistency, you can apply it on every node in the cluster. In vSphere, you can mark each
-virtual disk as a Solid-State Drive (SSD). The setting persists across reboots, so it is the preferred fix when you
-provision the VMs. Overriding the setting on each node takes effect immediately, but it does not persist across reboots.
+Portworx is installed. For consistency, you can apply it on every node in the cluster.
+
+- [Mark the Virtual Disks as SSD in vSphere](#mark-the-virtual-disks-as-ssd-in-vsphere). This option marks each virtual
+  disk as a Solid-State Drive (SSD). The setting persists across reboots, so it is the preferred fix when you provision
+  the VMs.
+- [Override the Rotational Setting on Each Node](#override-the-rotational-setting-on-each-node). This option changes the
+  setting from inside each node, without powering off the VMs. It takes effect immediately, but it does not persist
+  across reboots.
 
 ### Mark the Virtual Disks as SSD in vSphere
 
