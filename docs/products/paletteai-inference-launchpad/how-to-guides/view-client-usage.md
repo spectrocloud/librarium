@@ -90,6 +90,10 @@ on the client detail view, refer to
   consumers, and the Grafana dashboards.
 - [Usage Metrics Reference](../reference/usage-metrics-reference.md) defines every metric, column, quota status label,
   and export field on the **Usage** page.
+- [Usage Pricing](../explanation/usage-pricing.md) explains how the estimated cost and cached tokens on the **By
+  Client** tab are calculated.
+- [Estimated Savings](../explanation/estimated-savings.md) explains how the estimated savings on the **By Client** tab
+  are calculated.
 
 ## Next Steps
 

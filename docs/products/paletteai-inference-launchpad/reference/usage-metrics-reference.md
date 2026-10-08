@@ -41,31 +41,53 @@ Usage** tab, which reports configured limits rather than usage over a period.
 
 ### Totals
 
-| **Tile**          | **Definition**                                                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **requests**      | Every request the appliance handled in the period, both local and external.                                                                                                    |
-| **input tokens**  | Tokens sent to the model, including the prompt, the system prompt, and the conversation history.                                                                               |
-| **output tokens** | Tokens the model generated.                                                                                                                                                    |
-| **total tokens**  | Input tokens plus output tokens across every request in the period.                                                                                                            |
-| **est. cost**     | Tokens multiplied by the per-model rate set under **Settings** > **Pricing**. Models hosted on the appliance are priced at `0`, so this figure reflects external traffic only. |
+| **Tile**          | **Definition**                                                                                                                                                                                                                                                                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **requests**      | Every request the appliance handled in the period, both local and external.                                                                                                                                                                                                                           |
+| **input tokens**  | Tokens sent to the model, including the prompt, the system prompt, and the conversation history.                                                                                                                                                                                                      |
+| **output tokens** | Tokens the model generated.                                                                                                                                                                                                                                                                           |
+| **total tokens**  | Input tokens plus output tokens across every request in the period.                                                                                                                                                                                                                                   |
+| **est. cost**     | The estimated cost of every request in the period, both local and external. The appliance multiplies each request's tokens by the per-model rates in effect when it served the request, with cached prompt tokens at the cache-read rate. Refer to [How Cost Is Calculated](#how-cost-is-calculated). |
+
+### How Cost Is Calculated
+
+Every model carries four rates, each in dollars per 1 million tokens. The estimated cost of a request is the sum of each
+token count multiplied by its rate.
+
+| **Rate**        | **Applies to**                                                                               | **Default for hosted models**       |
+| --------------- | -------------------------------------------------------------------------------------------- | ----------------------------------- |
+| **Input**       | Fresh input, which is the prompt tokens the engine computed rather than answered from cache. | $0.15                               |
+| **Cache read**  | Prompt tokens answered from cache.                                                           | $0.015, one tenth of the input rate |
+| **Output**      | Tokens the model generated.                                                                  | $0.60                               |
+| **Cache write** | Prompt tokens written into a frontier provider's cache. Applies to egress only.              | Not applicable                      |
+
+The appliance prices models routed to a frontier provider from that provider's published list prices. To view or
+override the rate for any model, open **Settings** > **Pricing**. A blank **Cache read** or **Cache write** rate prices
+those tokens at the input rate. A response cache hit adds $0, and the appliance records its tokens as cache reads.
+
+The **Usage** page shows every dollar figure rounded to the cent. An amount greater than $0 but less than half a cent
+shows as `<$0.01`, and a response cache hit, which costs $0, shows as `$0.00`.
+
+For why the rates differ, how each level of caching is priced, and worked examples, refer to
+[Usage Pricing](../explanation/usage-pricing.md).
 
 ### On-Box Token Breakdown
 
-These tiles report cache reuse on the appliance's own engines. A total prompt figure much larger than the fresh input
-figure indicates cache reuse, not traffic leaving the appliance.
+The card description reads "How much of each prompt was answered from cache on this box instead of computed again." A
+total prompt figure much larger than the fresh input figure indicates cache reuse, not traffic leaving the appliance.
 
-| **Tile**                       | **Definition**                                                                                                                                                                         |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **total prompt (incl. cache)** | Every prompt token processed on the appliance, including tokens answered from cache.                                                                                                   |
-| **cache reads, on-box**        | Prompt tokens answered from the engine's own key-value cache in the period. These tokens never left the appliance. The tile also reports the share of the total prompt they represent. |
-| **fresh input**                | Prompt tokens the engine computed fresh, which is the total prompt minus the cache reads.                                                                                              |
-| **egress**                     | Prompt and output tokens routed to an external provider or a registered external endpoint. This is a separate count from the on-box prompt total.                                      |
+| **Tile**                       | **Definition**                                                                                                                                                                                                                                                                      |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **total prompt (incl. cache)** | Every prompt token processed on the appliance, including tokens answered from cache.                                                                                                                                                                                                |
+| **cache reads — on-box**       | Prompt tokens answered from cache on the appliance in the period, from the engine's prefix cache or, when it is turned on, the response cache. These tokens never left the appliance. The caption reads `<n>% of prompt · answered from cache`, or `no cache reads in this period`. |
+| **fresh input**                | Prompt tokens computed fresh on the appliance, which is the total prompt minus the cache reads, including response cache hits. The caption reads `newly computed on-box (total − cache reads)`.                                                                                     |
+| **egress**                     | Prompt and output tokens routed to an external provider or a registered external endpoint. This is a separate count from the on-box prompt total.                                                                                                                                   |
 
 ### Local vs External
 
 | **Tile**                      | **Definition**                                                                                                                                                                               |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **kept on the Launchpad**     | The share of tokens served by the appliance's own engines, with the token count and a cost of `$0.00`.                                                                                       |
+| **kept on the Launchpad**     | The share of tokens served by the appliance's own engines, with the token count and the estimated cost of that locally served traffic.                                                       |
 | **routed externally**         | The share of tokens routed to an external provider, with the token count and the cost.                                                                                                       |
 | **external providers in use** | The number of distinct external providers that served traffic in the period.                                                                                                                 |
 | **spilled at capacity**       | The share of requests that asked for local serving and went to an external provider because the appliance was at capacity. This tile appears only when the appliance reports capacity spill. |
@@ -98,14 +120,14 @@ Which model handled each request category, as classified by the semantic router.
 
 One row per model that the appliance knows about. Selecting a row opens the clients that used that model.
 
-| **Column**                | **Definition**                                                                                              |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Model**                 | The model identifier.                                                                                       |
-| **Location**              | Whether the model runs on the appliance, with its GPU hardware, or is reached through an external provider. |
-| **Requests**              | Requests the model served in the period.                                                                    |
-| **Input / Output Tokens** | Input tokens and output tokens, reported as a pair. The figures are not summed.                             |
-| **Est. cost**             | Estimated cost for the model. Models hosted on the appliance are priced at `0`.                             |
-| **Avg latency**           | Average request latency in milliseconds.                                                                    |
+| **Column**                | **Definition**                                                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Model**                 | The model identifier.                                                                                           |
+| **Location**              | Whether the model runs on the appliance, with its GPU hardware, or is reached through an external provider.     |
+| **Requests**              | Requests the model served in the period.                                                                        |
+| **Input / Output Tokens** | Input tokens and output tokens, reported as a pair. The figures are not summed.                                 |
+| **Est. cost**             | Estimated cost for the model, at the model's rates. Refer to [How Cost Is Calculated](#how-cost-is-calculated). |
+| **Avg latency**           | Average request latency in milliseconds.                                                                        |
 
 A model that served no requests in the period renders dimmed, with `—` in place of its figures.
 
@@ -127,16 +149,16 @@ alongside rows for built-in frontier providers. The tab does not split those two
 
 One row per registered client. Selecting a row opens the client's API tokens.
 
-| **Column**                  | **Definition**                                                                                                       |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Client**                  | The client name. A client that has reached a quota limit also carries a blocked icon that names each limit reached.  |
-| **API Keys**                | The number of API tokens issued to the client, or `none`.                                                            |
-| **Local / Egress Requests** | Requests served on the appliance and requests routed externally, reported as a pair.                                 |
-| **Local / Egress Tokens**   | Tokens served on the appliance and tokens routed externally, reported as a pair.                                     |
-| **Total Local Quota**       | The client's total local token entitlement across the period, or `Unlimited` when the client carries no token limit. |
-| **Local Quota Used**        | The share of that entitlement the client has spent. Reads `—` when there is no entitlement to measure against.       |
-| **$ Cost Local / Egress**   | Local cost and external cost, reported as a pair.                                                                    |
-| **$ Savings**               | The estimated amount avoided by serving on the appliance instead of a benchmark external model.                      |
+| **Column**                  | **Definition**                                                                                                                                                                                                                                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Client**                  | The client name. A client that has reached a quota limit also carries a blocked icon that names each limit reached.                                                                                                                                                                                     |
+| **API Keys**                | The number of API tokens issued to the client, or `none`.                                                                                                                                                                                                                                               |
+| **Local / Egress Requests** | Requests served on the appliance and requests routed externally, reported as a pair.                                                                                                                                                                                                                    |
+| **Local / Egress Tokens**   | Tokens served on the appliance and tokens routed externally, reported as a pair.                                                                                                                                                                                                                        |
+| **Total Local Quota**       | The client's total local token entitlement across the period, or `Unlimited` when the client carries no token limit.                                                                                                                                                                                    |
+| **Local Quota Used**        | The share of that entitlement the client has spent. Reads `—` when there is no entitlement to measure against.                                                                                                                                                                                          |
+| **$ Cost Local / Egress**   | Local cost and external cost, reported as a pair.                                                                                                                                                                                                                                                       |
+| **$ Savings**               | A coarser estimate of the amount avoided by serving the client on the appliance. It prices the client's whole served prompt at the comparison model's fresh input rate, without the split between fresh and cached tokens, so on cache-heavy traffic it can read higher than the appliance-wide figure. |
 
 Local and external figures are paired rather than summed, because a local quota and an external spend cap are separate
 budgets. Hold the pointer over a paired cell to display which figure is which. **Egress** covers traffic to built-in
@@ -145,8 +167,11 @@ a request, open the **By Model** tab and look for the **External · egress** lab
 
 The columns on this tab do not sort. To rank clients, export the table and sort it in a spreadsheet.
 
-Above the table, the appliance reports total savings against two benchmark external models, measured since the appliance
-first started. That figure covers all clients and is not a per-client figure.
+The appliance also reports estimated savings across all clients, against two comparison frontier models, measured since
+the appliance first started. It reads, "Serving on-box instead of `<model>` has avoided about `<amount>` across all
+clients since this appliance was first started. Against `<other-model>` the figure is `<amount>`." The figure is never
+negative. Unlike the per-client **$ Savings** column, it prices cache reads separately from fresh input. For the
+calculation and a worked example, refer to [Estimated Savings](../explanation/estimated-savings.md).
 
 ### Client Detail View
 
@@ -189,18 +214,18 @@ the client's total.
 
 Selecting an API token row opens a dialog reporting that token's usage over the selected period.
 
-| **Tile**               | **Definition**                                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------------------------ |
-| **requests**           | Requests made with this token.                                                                   |
-| **input tokens**       | Input tokens for this token.                                                                     |
-| **output tokens**      | Output tokens for this token.                                                                    |
-| **total tokens**       | Input plus output tokens.                                                                        |
-| **cached tokens**      | Input tokens answered from cache, with the share of input they represent.                        |
-| **est. cost**          | Estimated cost of this token's traffic.                                                          |
-| **avg / request**      | Average total tokens per request.                                                                |
-| **avg cost / request** | Average estimated cost per request.                                                              |
-| **output : input**     | The ratio of output tokens to input tokens.                                                      |
-| **share of user**      | This token's share of the owning client's total tokens, compared with the client's other tokens. |
+| **Tile**               | **Definition**                                                                                                                                     |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **requests**           | Requests made with this token.                                                                                                                     |
+| **input tokens**       | Input tokens for this token.                                                                                                                       |
+| **output tokens**      | Output tokens for this token.                                                                                                                      |
+| **total tokens**       | Input plus output tokens.                                                                                                                          |
+| **cached tokens**      | Input tokens read from cache, on the appliance or on egress, including response cache hits. The detail reads `<n>% of input`, or `no cache reads`. |
+| **est. cost**          | Estimated cost of this token's traffic.                                                                                                            |
+| **avg / request**      | Average total tokens per request.                                                                                                                  |
+| **avg cost / request** | Average estimated cost per request.                                                                                                                |
+| **output : input**     | The ratio of output tokens to input tokens.                                                                                                        |
+| **share of user**      | This token's share of the owning client's total tokens, compared with the client's other tokens.                                                   |
 
 {/* NEEDS REVIEW: the tile label reads share of user, while every other surface on the page uses the term Client. Confirm whether the label is being renamed before this page publishes, or whether the docs should keep quoting user here. */}
 
@@ -283,6 +308,24 @@ terms refer to the same traffic: requests and tokens that left the appliance.
 The two formats differ in how they carry values. CSV cells hold bare numbers so a spreadsheet can total or pivot them.
 PDF cells hold the formatted value with its unit, for a reader.
 
+## Usage Fields in API Responses
+
+API responses report the split between fresh and cached prompt tokens the same way the meter does.
+
+<!-- vale Vale.Spelling = NO -->
+
+| **Field**                             | **Meaning**                                                                                               |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `prompt_tokens_details.cached_tokens` | In OpenAI-compatible responses, the prompt tokens answered from cache.                                    |
+| `input_tokens`                        | In Anthropic-compatible `/v1/messages` responses, only the uncached part of the prompt.                   |
+| `cache_read_input_tokens`             | In Anthropic-compatible `/v1/messages` responses, the prompt tokens read from cache.                      |
+| `cache_creation_input_tokens`         | In Anthropic-compatible `/v1/messages` responses, the prompt tokens written to a cache, where it applies. |
+
+In Anthropic-compatible responses, `input_tokens`, `cache_read_input_tokens`, and `cache_creation_input_tokens` always
+add up to the total prompt the engine served.
+
+<!-- vale Vale.Spelling = YES -->
+
 ## Period Coverage Notes
 
 Not every figure can always cover the period requested. When a figure covers a shorter span, the console displays a note
@@ -298,3 +341,5 @@ limit there reports when its own window resets.
 - [View Client Usage](../how-to-guides/view-client-usage.md)
 - [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md)
 - [Clients and Quotas](../explanation/clients-and-quotas.md)
+- [Usage Pricing](../explanation/usage-pricing.md)
+- [Estimated Savings](../explanation/estimated-savings.md)
