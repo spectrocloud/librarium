@@ -32,7 +32,6 @@ This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, w
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1213 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1297 -->
-<!-- TODO(PVM-1297): confirm the UI labels on Shubham's FlashArray environment. -->
 
 - Portworx appliances now support Everpure FlashArray as a storage backend for the Portworx storage cluster. Refer to
   [Storage](../vm-management/vm-launchpad/infrastructure/storage.md#storage-clusters).
