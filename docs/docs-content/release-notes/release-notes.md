@@ -327,9 +327,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9194 -->
 
-- Connected Edge clusters now support Hadron, Spectro Cloud's minimal, immutable Edge operating system built on the CNCF
-  Kairos project. Use the EdgeForge workflow to build Hadron-based installer ISOs and provider images. This feature is a
-  Tech Preview. Refer to
+- <TpBadge /> Connected Edge clusters now support Hadron, Spectro Cloud's minimal, immutable Edge operating system built
+  on the CNCF Kairos project. Use the EdgeForge workflow to build Hadron-based installer ISOs and provider images. Refer
+  to
   [Build Hadron Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-hadron-image.md)
   for more information.
 
