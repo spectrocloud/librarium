@@ -30,7 +30,7 @@ Your workload clusters must meet the following requirements.
 ### Containerd Version
 
 Cluster nodes must use containerd 2.0 or later. The containerd version depends on the Kubernetes version of your
-cluster. The following table lists the Kubernetes versions that include containerd 2.0 or later. 
+cluster. The following table lists the Kubernetes versions that include containerd 2.0 or later.
 
 For each minor version, use the listed patch version or a later one.
 
