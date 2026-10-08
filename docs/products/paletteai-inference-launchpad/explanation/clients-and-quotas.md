@@ -145,8 +145,8 @@ If the appliance has kept less history than the window you asked for, the card s
 Windows reset on the UTC clock. That is not an operator action, and it does not require a confirmation.
 
 **Increase limit** on **Quota Usage** is the operator action. It raises one window's ceiling and keeps the usage already
-counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require
-permission to manage clients.
+counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require a
+role that may override a client's limits, which is **Platform administrator** or **Workspace administrator**.
 
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
