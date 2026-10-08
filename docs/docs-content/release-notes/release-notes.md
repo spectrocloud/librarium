@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.8.71
+## October 9, 2026 - Release 4.8.71
 
 <!-- PATCH RELEASE TICKET: DOC-3277 -->
 <!-- PATCH RELEASE VERSION: 4.8.71 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12182 PEM-12180 PEM-12178 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12216 PEM-12214 PEM-12182 PEM-12180 PEM-12178 -->
 
 ### Breaking Changes {#breaking-changes-4-8-71}
 
@@ -32,6 +32,8 @@ tags: ["release-notes"]
 
 ### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12216 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12214 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12180 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12178 -->
