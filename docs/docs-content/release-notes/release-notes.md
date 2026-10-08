@@ -532,7 +532,91 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   now includes the `iam:ListRoles` action, which Palette uses to delete the IRSA roles it manages when you delete an EKS
   cluster. Refer to the [Upgrade Notes](#upgrade-notes-4.10.a) for the action required on existing EKS clusters.
 
-<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+### October 9, 2026 - Component Updates {#component-updates-2026-41}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3276 -->
+<!-- RELEASE DATE: October 9, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: NA -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.17.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | NA      |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | NA      |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4794 -->
+
+- Updated Kubernetes core and edge pack distributions across supported minor versions to include pause image
+  enhancements and upgrade constraints.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4830 -->
+
+- Updated Kubernetes pack distributions with the latest maintenance releases and configuration improvements.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1156 -->
+
+- Added support for deploying the `spectro-mgmt-plane` management chart on Amazon EKS 1.36 clusters.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4795 -->
+
+- Fixed an issue in MetalLB 0.16.1 Helm packs where liveness and readiness probe ports could not be customized.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4834 -->
+
+- Fixed an issue in Piraeus where RWX (NFS) volumes remained unmountable on single-node clusters when creating multiple
+  RWX persistent volume claims simultaneously.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2463 -->
+
+- Fixed a Terraform provider issue where EKS clusters were destroyed and recreated on every apply when
+  `cloud_config.azs` was configured.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
+
+#### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3276. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.2 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.6 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.1 |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.23.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.23.2 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.1 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.36.0 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.13.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.13.0 |
+| <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.23.0 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.0 |
+| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.7.1 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.35.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.8.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.9.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.1 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :x: | 0.1.125 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3276. DO NOT DELETE. -->
+
+##### Pack Notes
+
+##### Deprecations and Removals
 
 ## October 6, 2026 - Release 4.10.17-patch.5
 
