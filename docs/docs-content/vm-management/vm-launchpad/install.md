@@ -73,7 +73,7 @@ configuration.
    | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
    | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                |
    | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS. |
-   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Pure Storage arrays.  |
+   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Everpure FlashArray.  |
 
    :::info
 

@@ -208,9 +208,21 @@ configuration. Refer to [Storage Pools](#storage-pools) for more information.
 On appliances that use the Portworx storage backend, the **Storage** page includes an extra **Portworx Storage
 Clusters** tab that does not appear on Piraeus/LINSTOR appliances. The Portworx pack installs the Portworx operator
 without deploying a cluster, so you create the Portworx `StorageCluster` with the **New Portworx Storage Cluster**
-wizard. Create one storage cluster for each VM Launchpad cluster. The cluster must have three control plane nodes, or
-one control plane node and three worker nodes. When the storage cluster is running, Portworx creates its CSI
-StorageClasses. Refer to [StorageClasses](#storageclasses) to make one of them available for VM workloads.
+wizard. Create one storage cluster for each VM Launchpad cluster. The **New Portworx Storage Cluster** button is
+unavailable while a storage cluster exists, because the Portworx operator supports one storage cluster for each
+Kubernetes cluster. The cluster must have three control plane nodes, or one control plane node and three worker nodes.
+When the storage cluster is running, Portworx creates its CSI StorageClasses. Refer to [StorageClasses](#storageclasses)
+to make one of them available for VM workloads.
+
+The storage cluster uses one of the following storage backends:
+
+- **Local disks (software-defined)**: Portworx claims block devices on each node.
+
+- **Pure FlashArray**: Portworx provisions cloud drives on an Everpure (formerly Pure Storage) FlashArray. You need the
+  management endpoint and an API token of each FlashArray, and the cluster nodes must reach the FlashArray over iSCSI or
+  Fibre Channel.
+
+<!-- TODO(PVM-1297): confirm with Shubham which host prerequisites (iSCSI initiator, multipath, Fibre Channel) the Portworx appliance image already includes, and whether readers must set anything up on the nodes. -->
 
 **Create a Portworx Storage Cluster**
 
@@ -230,31 +242,50 @@ for instructions.
    cluster requires, such as `portworx.io/misc-args`, `portworx.io/pvc-controller-port`, and
    `portworx.io/pvc-controller-secure-port`.
 
-5. Confirm the **Storage backend** shows **Local disks (software-defined)** and that the **Run on control plane**
-   configuration preset is enabled.
+5. Select a **Storage backend**, and confirm that the **Run on control plane** configuration preset is enabled. With
+   **Pure FlashArray**, the form adds a **Pure FlashArray credentials** panel and replaces the **Storage** and **Nodes**
+   sections with **Cloud Storage** and **Pure Platform**.
 
-6. Configure the wizard sections from the left panel. The following table describes the most common fields. The
-   **Summary** and **Validation** panels on the right update as you go.
+6. _(Pure FlashArray only)_ In the **Pure FlashArray credentials** panel, enter the **Management endpoint** and **API
+   token** of each FlashArray. Select **Add FlashArray** to add another array. Portworx reads these connection details
+   from a Secret named `px-pure-secret` in the `portworx` namespace. When the Secret exists, the panel reports that it
+   is present.
 
-   | **Section**         | **What you configure**                                                                                                                                                                                                                                                                                                                                                                                                          |
-   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **General**         | **Secrets Provider**: `k8s` stores Portworx credentials as Kubernetes secrets.<br />**Custom Image Registry**: a registry prefix prepended to every Portworx image, required for airgapped clusters and left empty on connected clusters to pull from `docker.io`.<br />**Image**: the Portworx image.                                                                                                                          |
-   | **Storage**         | The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions. |
-   | **Nodes**           | Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                          |
-   | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                 |
-   | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                               |
-   | **Network**         | The **Data Interface** Portworx uses for storage traffic and the **Mgmt Interface** it uses for management traffic.                                                                                                                                                                                                                                                                                                             |
-   | **Volumes**         | Default settings applied to new Portworx volumes.                                                                                                                                                                                                                                                                                                                                                                               |
-   | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                       |
-   | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                  |
+   <!-- TODO(PVM-1297): confirm with Shubham what the panel shows when px-pure-secret does not exist yet (the button name, and whether the panel creates the Secret or the reader creates it first). -->
+
+7. _(Pure FlashArray only)_ In the **Cloud Storage** section, under **Device Specs**, set the **Size** of each storage
+   pool in GiB. Select **Add pool** to add a pool. Keep the **Provider** set to `pure`.
+
+8. _(Pure FlashArray only)_ To connect to the FlashArray over Fibre Channel instead of iSCSI, select the **Env** section
+   and add the `PURE_FLASHARRAY_SAN_TYPE` environment variable with the value `FC`.
+
+   <!-- TODO(PVM-1297): confirm with Shubham that iSCSI is the default and that Fibre Channel is set through the Env section. -->
+
+9. Configure the remaining wizard sections from the left panel. The following table describes the most common fields.
+   The **Summary** and **Validation** panels on the right update as you go.
+
+   | **Section**         | **What you configure**                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **General**         | **Secrets Provider**: `k8s` stores Portworx credentials as Kubernetes secrets.<br />**Custom Image Registry**: a registry prefix prepended to every Portworx image, required for airgapped clusters and left empty on connected clusters to pull from `docker.io`.<br />**Image**: the Portworx image.                                                                                                                                               |
+   | **Storage**         | _(Local disks only)_ The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions. |
+   | **Nodes**           | _(Local disks only)_ Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                          |
+   | **Cloud Storage**   | _(Pure FlashArray only)_ The **Device Specs** storage pools, sized in GiB, the **Kvdb Device Spec** and **System Metadata Device Spec** sizes, optional **Journal Device Spec** and **Capacity Specs**, and the cloud drive **Provider**, `pure`.                                                                                                                                                                                                    |
+   | **Pure Platform**   | _(Pure FlashArray only)_ Optional **Fusion** and **Integration Operator** settings.                                                                                                                                                                                                                                                                                                                                                                  |
+   | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                                      |
+   | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Network**         | The **Data Interface** Portworx uses for storage traffic and the **Mgmt Interface** it uses for management traffic.                                                                                                                                                                                                                                                                                                                                  |
+   | **Volumes**         | Default settings applied to new Portworx volumes.                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                                            |
+   | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                                       |
+   | **Env**             | Environment variables that the storage cluster passes to Portworx, such as `PURE_FLASHARRAY_SAN_TYPE`.                                                                                                                                                                                                                                                                                                                                               |
 
    If you use a V1 Storage Cluster, you do not need to create a separate metadata device. Portworx uses one unmounted
    partition or a raw unmounted disk that you provide.
 
-7. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
+10. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
 
-8. Review the **Summary** and confirm that **Validation** reports no issues, and then select **Save** in the upper-right
-   corner.
+11. Review the **Summary** and confirm that **Validation** reports no issues, and then select **Save** in the
+    upper-right corner.
 
 :::warning
 
@@ -270,6 +301,22 @@ nothing you need before you save the cluster.
 2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
    cluster size, capacity used, and capacity total. The **Phase** is `initializing` while Portworx starts, `running`
    when the storage cluster is ready, and `degraded` if the installation failed or while you delete the storage cluster.
+
+**Rotate Pure FlashArray Credentials**
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
+
+2. Select **Edit** next to your storage cluster.
+
+3. In the **Pure FlashArray credentials** panel, select **Edit**.
+
+4. Update the **Management endpoint** or **API token** of each FlashArray. The form never displays stored tokens. Leave
+   an **API token** blank to keep the stored token for that endpoint.
+
+5. Select **Rotate credentials**. The change updates only the `pure.json` key of the `px-pure-secret` Secret, not the
+   storage cluster.
+
+<!-- TODO(PVM-1297): confirm with Shubham whether Portworx picks up rotated credentials without a restart, and whether the reader then leaves the storage cluster form with Cancel. -->
 
 </TabItem>
 
