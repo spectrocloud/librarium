@@ -79,20 +79,50 @@ filter. The chart legend selects which series are drawn.
 
 ### Semantic Routing
 
-Which model handled each request category, as classified by the semantic router.
+Which model answered each category and complexity band, as routed. Each row is one routing rule. Categories recorded
+before a routing change keep the vocabulary they were routed under.
 
 <!-- vale off -->
 
-| **Column**    | **Definition**                                                        |
-| ------------- | --------------------------------------------------------------------- |
-| **Category**  | The category the classifier assigned to the conversation.             |
-| **Model**     | The model that handled requests in that category.                     |
-| **Requests**  | Requests in that category.                                            |
-| **Total tok** | Input plus output tokens for that category.                           |
-| **Cost**      | Estimated cost for that category.                                     |
-| **Avg conf**  | The classifier's average confidence in the category, as a percentage. |
+| **Column**             | **Definition**                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Category**           | The category the semantic router assigned to the request.                                                                                         |
+| **Complexity**         | The complexity band the request was routed under, either `Simple` or `Complex`. A request the semantic router could not score shows `Not scored`. |
+| **Source**             | How the request reached the appliance, which is `Coding agent`, `Model alias`, or `API`.                                                          |
+| **Model**              | The model that answered requests under that rule.                                                                                                 |
+| **Requests**           | Requests routed under that rule.                                                                                                                  |
+| **Total tok**          | Input plus output tokens for that rule.                                                                                                           |
+| **Cost**               | Estimated cost for that rule.                                                                                                                     |
+| **Average confidence** | The semantic router's average confidence in the category, as a percentage.                                                                        |
 
 <!-- vale on -->
+
+{/* NEEDS REVIEW: the ticket's Usage screenshot shows categories such as Code Development in this table, while the routing editors show the six categories in sentence case, such as Code development. Confirm that the two read the same. */}
+
+### Answered without Routing
+
+The requests that were settled before the semantic router ran, so they carry no category. The **Semantic routing** card
+ends with a line that counts them, followed by a table of those requests. Together with the **Semantic routing** table,
+they account for every request in the period.
+
+| **Line**                                                        | **When it appears**                                                                                        |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `<n> requests were answered without routing`                    | At least one request in the period was settled before the semantic router ran. The table follows the line. |
+| `Every request in this period went through the semantic router` | The semantic router handled every request in the period. No table follows the line.                        |
+
+In the first line, `<n>` is the number of requests settled before the semantic router ran. For a single request, the
+line reads `1 request was answered without routing`.
+
+The table has these columns.
+
+| **Column**    | **Definition**                                                                                                                                                                                                   |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Source**    | How the request reached the appliance, which is `Coding agent`, `Model alias`, or `API`.                                                                                                                         |
+| **Chosen by** | What settled the request, which is `Named model` for a request that named a served model, `Alias rule` for a Tier map row, `Request hint` for a hint on the request, or `Box default` for the box default model. |
+| **Model**     | The model that answered.                                                                                                                                                                                         |
+| **Requests**  | Requests settled this way.                                                                                                                                                                                       |
+| **Total tok** | Input plus output tokens for those requests.                                                                                                                                                                     |
+| **Cost**      | Estimated cost for those requests.                                                                                                                                                                               |
 
 ## By Model Tab
 

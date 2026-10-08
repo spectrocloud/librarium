@@ -26,16 +26,24 @@ keep calling the text model they already use. For what the feature does and what
   **8 x MI325X, 8 x B200, and 8 x H200**. Both models run on the same physical GPUs; no manual GPU reservation is
   needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
-- The catalog entries `glm-5.2-shared` (text half) and `qwen-3.5-9B-shared` (vision half). You deploy these two entries
-  in the steps below and do not edit their settings by hand. For the per-GPU-family variants each entry carries, refer
-  to [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
+- The catalog entries `glm-5.2-shared-with-vision` (text half) and `qwen-3.5-9B-vision` (vision half). Vision
+  preprocessing needs a vision-mode text model, which is an entry whose name ends in `-shared-with-vision`, deployed
+  with its `-vision` model. You deploy these two entries in the steps below and do not edit their settings by hand. For
+  the per-GPU-family variants each entry carries, refer to
+  [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
+
+- An appliance that runs no text-mode model. An appliance runs its models in one mode, so the deploy picker offers the
+  vision-mode entries only when no text-mode model is deployed. For how a model's catalog entry decides its mode, refer
+  to [One Mode per Box](../explanation/routing-behavior.md#one-mode-per-box).
+
+{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example and its screenshots show `glm-5.3-shared-with-vision` serving. Confirm which text entry the validated vision pairing ships with. */}
 
 ## Deploy Both Models
 
 Vision preprocessing needs two models serving at the same time: the text model that answers users, and the vision model
 that converts images to text. Deploy the text model first, then the vision model. On the validated pairing, choose
-`glm-5.2-shared` as the text half and `qwen-3.5-9B-shared` as the vision half. Those are the catalog entries whose
-per-hardware variants carry the tuned deploy configuration.
+`glm-5.2-shared-with-vision` as the text half and `qwen-3.5-9B-vision` as the vision half. Those are the catalog entries
+whose per-hardware variants carry the tuned deploy configuration.
 
 1. From the left main menu, select **Cluster**.
 
@@ -85,7 +93,8 @@ on this appliance. Free capacity, choose a smaller vision model, or
 7. Select **Turn on vision preprocessing**.
 
 The setting applies to new requests. Requests already in progress are not changed. Text-only requests never use the
-vision model, whether the setting is on or off.
+vision model, whether the setting is on or off. On this vision-mode appliance, image requests that send `auto` are
+routed by the semantic router too, and the **Overview** page shows a **Vision preprocessing** card.
 
 ## Verify Image Requests
 

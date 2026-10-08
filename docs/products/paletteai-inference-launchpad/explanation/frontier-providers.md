@@ -31,9 +31,10 @@ Each provider becomes an engine on a client only when the client itself holds a 
 slot means the provider does not exist as an engine for that client. Filling the slot makes the engine appear live with
 no restart, and clearing it makes the engine disappear live, again with no restart.
 
-Provider keys live under **Access & Policy** > **Clients** > _client_ > **Egress**, in one slot per provider per client.
-Two clients on the same appliance can hold two different Anthropic keys, or one can hold a key and the other none, with
-no interaction between them.
+Provider keys live under **Access & Policy** > **Clients** > _client_ > **External inferencing**, in one slot per
+provider per client. Two clients on the same appliance can hold two different Anthropic keys, or one can hold a key and
+the other none, with no interaction between them. A client can hold more than one provider key, and the routing pickers
+list the live models of each key, with a separate list per provider.
 
 ## Three Credential Patterns
 
@@ -54,17 +55,20 @@ that split. Four are per client; the fifth is appliance-wide.
 1. **Tier alias.** Rewrites the client's requested model name to the model the appliance will serve. Sending
    `claude-sonnet-*` to a local GLM and reserving `claude-opus-*` for Anthropic pulls the bulk of traffic on-box before
    any other lever runs. Refer to [Routing Behavior](routing-behavior.md#the-tier-map).
-2. **Classifier policy.** When a tier resolves to `auto`, the semantic router picks the model from a category and a
-   complexity band. Lowering the complexity threshold moves more turns to frontier; raising it does the reverse. Refer
-   to [Routing Behavior](routing-behavior.md#categories-and-complexity-bands).
+2. **Semantic routing rules.** When a request sends `auto`, or names an alias set to **Use Semantic Router rules**, the
+   semantic router picks the model from a category and a complexity band. Where a rule's **Complex** row names a
+   frontier model, lowering the client's or the policy's complexity threshold moves more turns to frontier; raising it
+   does the reverse. Refer to [Routing Behavior](routing-behavior.md#categories-and-complexity-bands).
 3. **Per-provider egress budget.** A daily cost cap per client per provider. With `on_exceed=local`, an exhausted budget
    serves locally instead and stamps `X-AIBox-Frontier: budget-exhausted` on the response. With `on_exceed=refuse`, the
    appliance returns HTTP 429.
-4. **Egress capability toggle.** A single **Enable egress** switch per client. Off pauses frontier access without
-   deleting any key; on restores egress with the same setup.
-5. **Sovereignty (appliance-wide).** A single switch above every client's egress. When armed, no request leaves the box
-   regardless of what any client is permitted to do; the client's egress chip reads **Blocked by sovereignty** until an
-   operator disarms it under **Access & Policy → Sovereignty**. Refer to
+4. **Egress capability toggle.** A single **Enable external inferencing** switch per client, which reads **Disable
+   external inferencing** when on. Off pauses frontier access without deleting any key; on restores egress with the same
+   setup.
+5. **Sovereignty (appliance-wide).** A single switch above every client's egress, on the **Sovereignty** card of
+   **Access & Policy** > **Clients** with **All workspaces** selected. After an operator selects **Block all external
+   inferencing**, no request leaves the box regardless of what any client is permitted to do, and the client's egress
+   chip reads **Blocked by sovereignty** until an operator selects **Permit external inferencing**. Refer to
    [Clients and Quotas](clients-and-quotas.md#sovereignty-and-egress).
 
 For the recipe that composes these levers for the common enterprise shape, refer to

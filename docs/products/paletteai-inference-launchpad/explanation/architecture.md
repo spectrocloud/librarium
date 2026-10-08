@@ -71,8 +71,19 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
 the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
-from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
-the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives,
+on the policy a workspace follows and per client, refer to [Routing Behavior](./routing-behavior.md).
+
+The semantic router runs on the appliance's GPUs, sharing the cards with the main model. The appliance deploys it at
+installation, before any local model, so an appliance that answers only through frontier providers still routes
+semantically. When you deploy a main model, the semantic router moves onto that model's GPUs. Because it needs room
+beside the main model, some models need at least two GPUs on some hardware. Refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
+
+Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. One mode is a text
+model with the semantic router, and the other is a text model with the semantic router and a vision model. The deploy
+picker offers only models of the appliance's current mode. For how a model's catalog entry decides its mode, refer to
+[One Mode per Box](./routing-behavior.md#one-mode-per-box).
 
 When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
 restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
