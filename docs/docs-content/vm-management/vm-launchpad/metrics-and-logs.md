@@ -209,7 +209,8 @@ Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** i
      bearer token.
 
    - One or more comma-separated `Key=Value` pairs, which VMO sends as literal HTTP headers. Use this for a receiver
-     that needs a specific header, such as Datadog (`DD-API-KEY=<api-key>`) or New Relic (`api-key=<license-key>`).
+     that needs a specific header, such as Datadog (`DD-API-KEY=<api-key>`), Grafana Cloud
+     (`Authorization=Basic <credentials>`), or New Relic (`api-key=<license-key>`).
 
 3. (Optional) If the receiver presents a TLS certificate issued by a private or internal CA, select **Add** next to **CA
    Certificate**, paste its PEM CA-signing certificate, and select the save icon. Public receivers such as Datadog,
@@ -241,18 +242,28 @@ The following steps forward metrics to Datadog.
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and, when you set a
 cluster name, `k8s.cluster.name:<name>`.
 
-Datadog does not accept the appliance logs with a `DD-API-KEY` credential. To forward logs, point the **Logs** section
-at a receiver that accepts a bearer token or a Splunk HEC token. Refer to
-[Configure Log Forwarding](#configure-log-forwarding).
+Forwarding logs to Datadog is not supported. The log side sends its credential only as a bearer token, and Datadog log
+intake requires a `DD-API-KEY` header. To forward logs, point the **Logs** section at a receiver that accepts a bearer
+token or a Splunk HEC token. Refer to [Configure Log Forwarding](#configure-log-forwarding).
 
 The following table lists other OTLP receivers and their credential formats.
 
 | Receiver                | Forwarding URL                                                                           | Forwarding Token                        |
 | ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
 | Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<api-key>`                  |
-| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | Plain token, sent as a Bearer token     |
+| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | `Authorization=Basic <credentials>`     |
 | New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`  | `api-key=<license-key>`                 |
 | OpenTelemetry Collector | `https://<your-collector>/v1/metrics`                                                    | Plain token or `Key=Value` header pairs |
+
+Grafana Cloud rejects a plain token sent as a bearer token. For Grafana Cloud, replace `<credentials>` with the Base64
+encoding of your Grafana Cloud instance ID and API token, joined by a colon. Use the following command to generate the
+value.
+
+```shell
+echo -n '<instance-id>:<api-token>' | base64
+```
+
+Replace `<instance-id>` with your Grafana Cloud instance ID and `<api-token>` with your Grafana Cloud API token.
 
 To label the forwarded metrics with a recognizable cluster name, set the `clusterName` pack value
 (`charts.virtual-machine-orchestrator.vmo-manager.clusterName`). VMO emits it as the `k8s.cluster.name` resource
