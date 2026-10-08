@@ -19,6 +19,10 @@ cluster deployment.
 
 The supported Hadron version is `v0.5.1`.
 
+:::preview
+
+:::
+
 ## Limitations
 
 - Hadron support applies to connected Edge clusters only. Air-gapped and appliance deployments are a separate effort and

@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 4, 2026 - Release 4.10.a {#release-notes-4.10.a}
+## October 9, 2026 - Release 4.10.a {#release-notes-4.10.a}
 
 ### Security Notices
 
@@ -156,6 +156,17 @@ tags: ["release-notes"]
   vCluster version. Refer to [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7756 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3288 -->
+
+- If your EKS clusters use the `irsaRoles` field of the EKS pack, add the `iam:ListRoles` action to the
+  **PaletteControllersEKSPolicy** AWS IAM policy. Palette requires this action to delete the IAM Roles for Service
+  Accounts (IRSA) roles it manages when you delete an EKS cluster. IRSA roles of clusters deleted without this
+  permission remain in your AWS account. You can identify them by the `palette.spectrocloud.com/cluster-uid` tag and
+  delete them manually. Refer to
+  [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
+  for the updated policy.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5872 -->
@@ -240,6 +251,21 @@ tags: ["release-notes"]
   indefinitely when the uninstall could not complete, for example, when removing the VMO pack from a cluster that still
   had virtual machines. Palette now stops after 12 failed attempts and reports a pack error with the reason
   `PackUninstallStalled`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7662 -->
+
+- Fixed an issue that could cause Palette to
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes in
+  clusters first deployed with Palette 4.7 or earlier, after an upgrade of the cluster's Palette agent. The repave
+  started with the next change that should not repave nodes, such as updating `clientConfig.oidc-client-secret` in the
+  Kubernetes pack values or scaling the control plane node pool.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7737 -->
+
+- Fixed an issue that caused sustained high CPU usage by the `palette-controller-manager` pod in clusters with add-on
+  packs from the legacy **Public Repo** [registry](../registries-and-packs/registries/registries.md),
+  `registry.spectrocloud.com`. Palette reconciled these packs every few seconds even when their configuration had not
+  changed. Add-on packs from OCI registries were not affected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11972 -->
 
@@ -335,6 +361,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Replace a Control Plane Edge Host](../clusters/edge/cluster-management/control-plane-host-replacement.md) for the
   procedure, including how to verify etcd membership health before you remove the original host.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9194 -->
+
+- <TpBadge /> Connected Edge clusters now support Hadron, Spectro Cloud's minimal, immutable Edge operating system built
+  on the CNCF Kairos project. Use the EdgeForge workflow to build Hadron-based installer ISOs and provider images. Refer
+  to [Build Hadron
+  Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-hadron-image.md) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9592 -->
@@ -396,6 +430,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue that caused the [certificate check](../clusters/edge/cluster-management/certificate-renewal.md) that
   runs during Edge cluster creation to restart control plane components, including `kube-apiserver`, on clusters that
   use Palette eXtended Kubernetes - Edge (PXK-E). The restart could interrupt add-on packs that were still installing.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9703 -->
+
+- Fixed an issue that prevented automatic and manual
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md) on Edge clusters when any aggregated
+  `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
+  remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
+  `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
 
 #### Deprecations and Removals
 
@@ -491,6 +533,14 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 #### Deprecations and Removals
 
 ### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7756 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3288 -->
+
+- The documented
+  [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy)
+  now includes the `iam:ListRoles` action, which Palette uses to delete the IRSA roles it manages when you delete an EKS
+  cluster. Refer to the [Upgrade Notes](#upgrade-notes-4.10.a) for the action required on existing EKS clusters.
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 

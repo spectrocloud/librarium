@@ -25,9 +25,7 @@ Kubernetes.
 
 ### Specific Versions
 
-- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
-
-- <PartialsComponent category="self-hosted" name="certificate-loss" />
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette VerteX" />
 
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette VerteX" />
 
@@ -35,7 +33,9 @@ Kubernetes.
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
-- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette VerteX" />
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
+
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
 
 ## Prerequisites
 
