@@ -4,7 +4,7 @@ partial_name: upgrade-palette-upgrade-notes
 ---
 
 - **(4.7.27 to 4.7.29+)** If upgrading from version **4.7.27**, you must run an additional script before upgrading
-  {props.version}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely
+  {props.edition}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely
   recreates the PVC while preserving data.
 
   :::warning 
@@ -239,7 +239,7 @@ partial_name: upgrade-palette-upgrade-notes
   </details>
 
 - **(4.7.15 to 4.7.16+)** If upgrading from version **4.7.15**, you must run an additional script before upgrading
-  {props.version}. This script changes the access mode of the `zot` deployment's PersistentVolumeClaim (PVC) from `RWX`
+  {props.edition}. This script changes the access mode of the `zot` deployment's PersistentVolumeClaim (PVC) from `RWX`
   (ReadWriteMany) to `RWO` (ReadWriteOnce), which is required for the upgrade process.
 
   <details>
