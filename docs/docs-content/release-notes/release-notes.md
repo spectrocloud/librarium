@@ -536,16 +536,18 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- COMPONENT UPDATES TICKET: DOC-3276 -->
 <!-- RELEASE DATE: October 9, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: NA -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.a -->
 <!-- RELEASE ARTIFACT STUDIO:  -->
-<!-- RELEASE TERRAFORM VERSION:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.3 -->
 
-The following components have been updated for Palette version 4.10.13 - 4.10.17.
+The following components have been updated for Palette version 4.10.a.
 
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | NA      |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | NA      |
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.3  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.3  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.a  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.a  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
 
@@ -597,13 +599,24 @@ The following components have been updated for Palette version 4.10.13 - 4.10.17
 | <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.23.2 |
 | <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
 | <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0-rev1 |
 | <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.1 |
 | <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.36.0 |
-| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.13.0 |
-| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.13.0 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
 | <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.23.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.11.0 |
 | <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.0 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.2-rev2 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.0 |
+| <VersionedLink text="lb-metallb-helm" url="/integrations/packs/?pack=lb-metallb-helm" /> | `addon` | :white_check_mark: | :x: | 0.16.1-rev2 |
 | <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.7.1 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.0.2 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.12.0 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.12.0 |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.35.0 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.8.1 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.9.0 |
