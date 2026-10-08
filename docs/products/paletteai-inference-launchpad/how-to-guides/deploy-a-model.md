@@ -75,6 +75,10 @@ In the message, `<model>` is the model you selected, and the two mode names are 
 vision mode. Remove the models of the current mode first, or deploy a model whose catalog entry belongs to the current
 mode.
 
+A model whose catalog entry names no GPU count and no group, such as a model you bring yourself, follows the mode the
+appliance already runs. The **GPU sharing** step of the **Deploy model** dialog opens on the group the appliance runs,
+including the semantic router's group on an appliance that serves no other model.
+
 :::info
 
 A deploy from the console always records the nodes you selected. The model runs only on that list. It does not start

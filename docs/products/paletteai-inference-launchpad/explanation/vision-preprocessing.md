@@ -45,7 +45,7 @@ shares its GPUs with the vision model of its group, whose entry ends in `-vision
 GPUs, so an appliance runs either text-mode models or vision-mode models, not both. For how the mode is decided, refer
 to [One Mode per Box](./routing-behavior.md#one-mode-per-box).
 
-{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example. Confirm the shipped entry names for the validated pairing. */}
+{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example and its screenshots show `glm-5.3-shared-with-vision` serving. Confirm which text entry the validated vision pairing ships with. */}
 
 Both models run on the same physical GPUs at the same time, not on separate GPUs. The text model uses all eight GPUs for
 its tensor-parallel computation. The vision model uses the first four of those same eight GPUs. The appliance sizes each

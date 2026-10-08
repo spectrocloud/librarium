@@ -97,12 +97,23 @@ before a routing change keep the vocabulary they were routed under.
 
 <!-- vale on -->
 
-{/* NEEDS REVIEW: this table capitalizes only the first letter of the stored category key, while the routing editors show the six categories in sentence case, such as Code development. Confirm that the two read the same. */}
+{/* NEEDS REVIEW: the ticket's Usage screenshot shows categories such as Code Development in this table, while the routing editors show the six categories in sentence case, such as Code development. Confirm that the two read the same. */}
 
 ### Answered without Routing
 
-The requests that were settled before the semantic router ran, so they carry no category. A line under the **Semantic
-routing** table counts them, and together the two tables account for every request in the period.
+The requests that were settled before the semantic router ran, so they carry no category. The **Semantic routing** card
+ends with a line that counts them, followed by a table of those requests. Together with the **Semantic routing** table,
+they account for every request in the period.
+
+| **Line**                                                        | **When it appears**                                                                                        |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `<n> requests were answered without routing`                    | At least one request in the period was settled before the semantic router ran. The table follows the line. |
+| `Every request in this period went through the semantic router` | The semantic router handled every request in the period. No table follows the line.                        |
+
+In the first line, `<n>` is the number of requests settled before the semantic router ran. For a single request, the
+line reads `1 request was answered without routing`.
+
+The table has these columns.
 
 | **Column**    | **Definition**                                                                                                                                                                                                   |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

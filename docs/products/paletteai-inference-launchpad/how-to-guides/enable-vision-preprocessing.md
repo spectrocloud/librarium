@@ -36,7 +36,7 @@ keep calling the text model they already use. For what the feature does and what
   vision-mode entries only when no text-mode model is deployed. For how a model's catalog entry decides its mode, refer
   to [One Mode per Box](../explanation/routing-behavior.md#one-mode-per-box).
 
-{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example. Confirm the shipped entry names for the validated pairing. */}
+{/* NEEDS REVIEW: the catalog entry names `glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision` are taken from the console source, while the ticket gives `glm-5.3-shared-with-vision` as its example and its screenshots show `glm-5.3-shared-with-vision` serving. Confirm which text entry the validated vision pairing ships with. */}
 
 ## Deploy Both Models
 

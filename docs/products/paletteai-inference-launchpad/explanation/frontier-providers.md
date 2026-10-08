@@ -65,9 +65,10 @@ that split. Four are per client; the fifth is appliance-wide.
 4. **Egress capability toggle.** A single **Enable external inferencing** switch per client, which reads **Disable
    external inferencing** when on. Off pauses frontier access without deleting any key; on restores egress with the same
    setup.
-5. **Sovereignty (appliance-wide).** A single switch above every client's egress. When armed, no request leaves the box
-   regardless of what any client is permitted to do; the client's egress chip reads **Blocked by sovereignty** until an
-   operator disarms it under **Access & Policy → Sovereignty**. Refer to
+5. **Sovereignty (appliance-wide).** A single switch above every client's egress, on the **Sovereignty** card of
+   **Access & Policy** > **Clients** with **All workspaces** selected. After an operator selects **Block all external
+   inferencing**, no request leaves the box regardless of what any client is permitted to do, and the client's egress
+   chip reads **Blocked by sovereignty** until an operator selects **Permit external inferencing**. Refer to
    [Clients and Quotas](clients-and-quotas.md#sovereignty-and-egress).
 
 For the recipe that composes these levers for the common enterprise shape, refer to

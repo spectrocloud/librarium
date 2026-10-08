@@ -71,8 +71,9 @@ defaults** removes the client's own rules, and the client follows what it inheri
 
 <!-- vale on -->
 
-At the box level, an operator turns the semantic router on or off on **Settings** > **Configurations**. For what the
-switch does, refer to [The Semantic Router on the GPU](#the-semantic-router-on-the-gpu).
+At the box level, an operator turns the semantic router and its two guard checks on or off on **Settings** >
+**Configurations**. For what the switches do, refer to [The Guard](#the-guard) and
+[The Semantic Router on the GPU](#the-semantic-router-on-the-gpu).
 
 ## The Tier Map
 
@@ -117,8 +118,8 @@ A request reaches the semantic router in exactly three cases.
   Thinking directive as the inherited reasoning depth.
 
 Any other request is settled before the semantic router picks a model, by the served model it names, by a Tier map row,
-by a request hint, or by the box default model. The **Usage** page reports these requests in its **Answered without
-routing** table.
+by a request hint, or by the box default model. The **Usage** page counts these requests in a line such as
+`21 requests were answered without routing`, and lists them in a table after that line.
 
 :::warning
 
@@ -157,7 +158,7 @@ The semantic router reads each routed turn and keys every rule on two axes.
 The appliance owns the category vocabulary, and a later release may add or rename categories. A box configured before
 this release may still show **Coding** and **Everything else** as extra rows marked `kept from an earlier setup`.
 
-{/* NEEDS REVIEW: the routing editors show the six categories in sentence case, such as Code development, while the Usage table capitalizes only the first letter of the stored key. Confirm that the two read the same before the docs settle on one form. */}
+{/* NEEDS REVIEW: the routing editors show the six categories in sentence case, such as Code development, while the ticket's Usage screenshot shows Code Development in the Semantic routing table. Confirm that the two read the same before the docs settle on one form. */}
 
 {/* NEEDS REVIEW: this release was built and tested as a clean install. Confirm the upgrade path from 1.1.x with the release owner, including what an upgraded box shows for rules authored under the earlier Coding and Everything else categories. */}
 
@@ -229,8 +230,8 @@ that follows the default reads `Using the default of 50%.` under the slider. A c
 
 ## The Guard
 
-The same read that picks a request's category also screens each routed turn. This screen is the guard, and it is on by
-default.
+The same read that picks a request's category also screens each routed turn. This screen is the guard. It makes two
+checks, and both are on by default.
 
 - **Prompt attacks.** A turn read as a prompt attack is refused with HTTP `403`, whichever route it would have taken.
 
@@ -239,6 +240,13 @@ default.
   that a local model answers is not held back for personal data.
 
 Ordinary coding and general work is not flagged.
+
+Each check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**.
+
+| **Toggle**                                                   | **When on**                                                                                            | **When off**                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| **Refuse jailbreak attempts**                                | A turn the semantic router reads as a jailbreak attempt is refused.                                    | Turns are no longer refused as jailbreak attempts. |
+| **Scan prompts for personal data before they leave the box** | A prompt bound for a provider is read in full first, and a prompt with personal data stays on the box. | No scan runs, and prompts reach providers unread.  |
 
 ## The Semantic Router on the GPU
 
@@ -277,13 +285,17 @@ a vision model. A model's catalog entry decides its mode.
 
 | **Catalog entry name**        | **Mode**                                                                                     |
 | ----------------------------- | -------------------------------------------------------------------------------------------- |
-| Ends in `-shared-with-vision` | A text model that shares its GPUs with a vision model, such as `glm-5.2-shared-with-vision`. |
+| Ends in `-shared-with-vision` | A text model that shares its GPUs with a vision model, such as `glm-5.3-shared-with-vision`. |
 | Ends in `-vision`             | The vision model of that group, such as `qwen-3.5-9B-vision`.                                |
-| A plain name                  | A text model that runs in text mode, such as `glm-5.2`.                                      |
+| A plain name                  | A text model that runs in text mode, such as `glm-5.3`.                                      |
 
 The deploy picker offers only models of the appliance's current mode. A deploy of a model in the other mode is refused
 with a message that names both modes and says to remove the current models first, or to move the model into the current
 mode's group. For the deploy steps, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md).
+
+A model whose catalog entry names no GPU count and no group, such as a model you bring yourself, does not set a mode of
+its own. The deploy dialog opens it on the group the appliance already runs, so it shares the GPUs with that group. On
+an appliance that serves only the semantic router, that group is the semantic router's own.
 
 Vision preprocessing needs a vision-mode text model. On a vision-mode appliance, image requests that send `auto` are
 routed too, and the **Overview** page shows a **Vision preprocessing** card. For how image requests are handled, refer
@@ -297,12 +309,15 @@ The **Usage** page reports where routed traffic went and why.
   the request reached the box, the model that answered, and the requests, tokens, cost, and average confidence for the
   row. A request the semantic router could not score shows `Not scored` as its band.
 
-- The **Answered without routing** table lists the requests that were settled before the semantic router ran. Its
-  **Chosen by** column says why, which is a named model, an alias rule, a request hint, or the box default.
+- The **Semantic routing** card ends with a line that counts the requests settled before the semantic router ran, such
+  as `21 requests were answered without routing`, followed by a table of those requests. Its **Chosen by** column says
+  why, which is a named model, an alias rule, a request hint, or the box default. When the semantic router handled every
+  request, the line reads `Every request in this period went through the semantic router`.
 
 - The **Local vs external** card reports how much traffic left the box.
 
-Together, the two tables account for every request in the period. For the exact column names and values, refer to
+Together, the **Semantic routing** table and the requests answered without routing account for every request in the
+period. For the exact column names and values, refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md#semantic-routing).
 
 ## Decision Recording

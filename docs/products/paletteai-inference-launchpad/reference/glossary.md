@@ -239,8 +239,10 @@ usage incurs per-token API costs, unlike a [local model](#local-model).
 ### Guard
 
 The screen the [semantic router](#semantic-routing) applies to each routed turn, in the same read that picks its
-[category](#category). The guard is on by default. It refuses a prompt attack with HTTP `403` on every route, and it
-refuses a turn that carries personal data with HTTP `403` only when that turn would leave the appliance. Refer to
+[category](#category). Both of its checks are on by default. It refuses a prompt attack with HTTP `403` on every route,
+and it refuses a turn that carries personal data with HTTP `403` only when that turn would leave the appliance. Each
+check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**, which are **Refuse
+jailbreak attempts** and **Scan prompts for personal data before they leave the box**. Refer to
 [Routing Behavior](../explanation/routing-behavior.md#the-guard).
 
 ## H
