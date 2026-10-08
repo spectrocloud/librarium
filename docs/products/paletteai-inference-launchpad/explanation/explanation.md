@@ -18,6 +18,8 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Model Placement](./model-placement.md)                     | How a model is placed on cluster nodes, when to pin it to a subset, and how the Cluster view reports placement.    |
 | [Vision Preprocessing](./vision-preprocessing.md)           | How a text-only model answers questions about images by converting them to text first.                             |
 | [Clients and Quotas](./clients-and-quotas.md)               | What a client is, how quotas meter usage, and how utilization, consumption, and historical windows are reported.   |
+| [Usage Pricing](./usage-pricing.md)                         | How estimated cost, per-model rates, and cache reads are calculated.                                               |
+| [Estimated Savings](./estimated-savings.md)                 | How the estimated savings figure compares serving on the appliance with a frontier model.                          |
 | [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router combine to pick the model that answers each request.                      |
 | [Frontier Providers](./frontier-providers.md)               | Where provider keys live, the credential patterns, the levers that keep frontier traffic occasional, and bursting. |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                        |

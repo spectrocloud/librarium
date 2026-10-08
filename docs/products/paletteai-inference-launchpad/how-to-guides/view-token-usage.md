@@ -62,14 +62,15 @@ The **Overview** tab reports the whole appliance for the selected period.
 2. Select the **Overview** tab.
 
 3. Read the **Totals** card for the headline figures: requests, input tokens, output tokens, total tokens, and estimated
-   cost.
+   cost. For how the estimated cost is calculated, refer to [Usage Pricing](../explanation/usage-pricing.md).
 
 4. _(Optional)_ Select the information button on any tile to display a description of that figure.
 
 The tab also reports the following.
 
-- **On-box token breakdown**, which separates the prompt tokens the engine answered from its own cache from the tokens
-  it computed fresh, and reports the tokens that left the appliance.
+- **On-box token breakdown**, which separates the prompt tokens answered from cache from the tokens computed fresh, and
+  reports the tokens that left the appliance. For how cache reads are priced, refer to
+  [Usage Pricing](../explanation/usage-pricing.md#three-levels-of-caching).
 
 - **Local vs external**, which reports the share of traffic that stayed on your own engines against the share routed to
   an external provider.
@@ -94,9 +95,10 @@ header.
 
 :::info
 
-The **Location** column separates models running on the appliance from models reached through an external provider. Only
-external traffic carries a cost, because models you host are priced at `0`. To set the per-model rates that produce the
-cost figures, go to **Settings** > **Pricing**.
+The **Location** column separates models running on the appliance from models reached through an external provider. Both
+carry an estimated cost at the model's own rates. To set the per-model rates that produce the cost figures, go to
+**Settings** > **Pricing**. For how those rates produce the cost figures, refer to
+[Usage Pricing](../explanation/usage-pricing.md).
 
 :::
 
@@ -106,7 +108,8 @@ cost figures, go to **Settings** > **Pricing**.
 
 2. Select the **By Client** tab. Each row is one registered client, with its API token count, its local and external
    requests and tokens, its quota entitlement and the share of that entitlement it has spent, its local and external
-   cost, and its estimated savings.
+   cost, and its estimated savings. For how the cost and savings figures are calculated, refer to
+   [Usage Pricing](../explanation/usage-pricing.md) and [Estimated Savings](../explanation/estimated-savings.md).
 
 3. Select a client row to display its API tokens and their individual consumption.
 

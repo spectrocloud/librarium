@@ -95,7 +95,8 @@ A quota is a consumption limit attached to a client. The appliance enforces quot
 
 - **Requests.** The number of calls a client makes.
 - **Tokens.** The number of tokens a client's requests process.
-- **Cost.** The computed cost of a client's requests.
+- **Cost.** The computed cost of a client's requests. For how the appliance prices tokens, refer to
+  [Usage Pricing](./usage-pricing.md).
 
 When you add a limit, the console offers **hour** and **day** windows. Day limits reset at midnight UTC. Hour limits
 reset at the top of each UTC hour. There is no monthly or billing-cycle window. A client that already has a per-second
@@ -190,6 +191,8 @@ quotas, so it is ready to run on every request.
   per-client consumption.
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md) walks through connecting a
   coding assistant to a client with an API token.
+- [Usage Pricing](./usage-pricing.md) explains how estimated cost and cache reads are calculated.
+- [Estimated Savings](./estimated-savings.md) explains how the estimated savings figure is calculated.
 - [Architecture Overview](./architecture.md) explains how the appliance routes requests and where its components sit.
 - [Model Certification](./model-certification.md) explains which models a client can call and how you choose them.
 - [Glossary](../reference/glossary.md) defines the client, API token, quota, and routing terms used throughout this
