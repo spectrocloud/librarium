@@ -12,7 +12,7 @@ Spectro Cloud is transitioning workload clusters to security-hardened images to 
 clusters. Security-hardened images contain only the components that an application needs at runtime.
 
 To avoid disruption to existing clusters and new clusters that you deploy, verify that your workload clusters meet the
-[requirements](#requirements) on this page. 
+[requirements](#requirements) on this page.
 
 ## Image Pull Secret
 
