@@ -232,6 +232,15 @@ As an alternative to Ingress, expose both proxies directly through `LoadBalancer
    kubectl get service virt-exportproxy-lb --namespace kubevirt
    ```
 
+   The `EXTERNAL-IP` column shows the external address of each Service.
+
+   ```text hideClipboard title="Example Output"
+   NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
+   cdi-uploadproxy-lb   LoadBalancer   10.100.5.141   192.0.2.93    443:31874/TCP   25h
+   NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
+   virt-exportproxy-lb   LoadBalancer   10.102.131.217   192.0.2.92    443:30698/TCP   25h
+   ```
+
 3. After the CDI Service receives an external address, update the profile a second time. In the values editor of the
    **Virtual Machine Orchestrator** layer, add that address for both VMO and CDI. Do not append `/v1beta1/upload` to
    either value.
@@ -313,6 +322,19 @@ https://cdi-upload.example.com
    Replace `<storage-class-name>` with the name of your StorageClass. To upload to a block-mode volume, set
    `--volume-mode=block`. Use block mode only if the command in step 2 lists the `ReadWriteOnce` and `Block` pair.
 
+   The following example shows the command output without the upload progress bar.
+
+   ```text hideClipboard title="Example Output"
+   PVC virtual-machines/ubuntu-image not found
+   DataVolume virtual-machines/ubuntu-image created
+   Waiting for PVC ubuntu-image upload pod to be ready...
+   Pod now ready
+   Uploading data to https://192.0.2.93
+   Uploading data completed successfully, waiting for processing to complete, you can hit ctrl-c without interrupting the progress
+   Processing completed successfully
+   Uploading ubuntu-24.04-server-cloudimg-amd64.img completed successfully
+   ```
+
    :::warning
 
    The `--insecure` flag skips certificate verification and is intended for an endpoint that presents a certificate that
@@ -328,6 +350,11 @@ https://cdi-upload.example.com
    ```
 
    The `PHASE` column must show `Succeeded`.
+
+   ```text hideClipboard title="Example Output"
+   NAME           PHASE       PROGRESS   RESTARTS   AGE
+   ubuntu-image   Succeeded   N/A                   115s
+   ```
 
 ## Create a Virtual Machine from the Uploaded Disk
 
@@ -350,6 +377,20 @@ The command returns the following output.
 
 ```text hideClipboard title="Example Output"
 virtualmachine.kubevirt.io/example-vm created
+```
+
+Confirm that the virtual machine is halted.
+
+```bash
+kubectl get vm example-vm \
+  --namespace virtual-machines
+```
+
+The `STATUS` column must show `Stopped`.
+
+```text hideClipboard title="Example Output"
+NAME         AGE   STATUS    READY
+example-vm   1s    Stopped   False
 ```
 
 :::warning
@@ -378,7 +419,20 @@ virtual machine is using.
    ```
 
    The command creates a temporary `VirtualMachineExport`, waits for the export service, opens a local port forward,
-   downloads the volume, and deletes the temporary export.
+   downloads the volume, and deletes the temporary export. The following example shows the command output without the
+   download progress bar.
+
+   ```text hideClipboard title="Example Output"
+   VirtualMachineExport 'virtual-machines/example-vm-export' created succesfully
+   waiting for VM Export example-vm-export status to be ready...
+   service virt-export-example-vm-export is ready for port-forwarding
+   Forwarding from 127.0.0.1:61055 -> 8443
+   Forwarding from [::1]:61055 -> 8443
+   Port forwarding is ready.
+   Handling connection for 61055
+   Download finished succesfully
+   VirtualMachineExport 'virtual-machines/example-vm-export' deleted succesfully
+   ```
 
 2. Validate the downloaded file.
 
@@ -387,8 +441,13 @@ virtual machine is using.
    gzip --test example-vm-disk.img.gz
    ```
 
-   The `file` command must report gzip-compressed data. If you download without `--port-forward`, an HTML document
-   indicates that the request reached an incorrect route or a proxy error page.
+   The `file` command must report gzip-compressed data, and `gzip --test` prints nothing when the archive is intact. If
+   you download without `--port-forward`, an HTML document indicates that the request reached an incorrect route or a
+   proxy error page.
+
+   ```text hideClipboard title="Example Output"
+   example-vm-disk.img.gz: gzip compressed data, original size modulo 2^32 2057306112
+   ```
 
 ## Troubleshooting
 
