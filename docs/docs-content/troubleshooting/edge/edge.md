@@ -32,10 +32,13 @@ that Palette ships. Clusters that you move on version 4.10.a or later are not af
    sudo ls --recursive /opt/.extensions/migrations/backups/kubeadm-sysext-migrations
    ```
 
-3. Identify your custom drop-in files in the output. Do not copy back files with the same names as the drop-in files
-   that Palette ships.
+3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
+   a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
+   drop-in files.
 
-   <!-- TODO(DOC-3260): confirm with Arun Sharma how a reader identifies the drop-in files that Palette ships, for example by listing the palette-sysext drop-ins under /usr/lib/systemd/system/<service>.service.d/. -->
+   ```shell
+   ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
+   ```
 
 4. Copy each custom drop-in file back to its original directory.
 
