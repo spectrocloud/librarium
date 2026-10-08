@@ -218,9 +218,10 @@ where you provision the cluster yourself.
 
 **Create a Portworx Storage Cluster**
 
-On VMware vSphere VMs, the disks that Portworx uses must report as non-rotational, or the storage cluster does not
-initialize. Refer to
-[Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs](../troubleshooting.md#scenario---portworx-storage-cluster-does-not-initialize-on-vmware-vsphere-vms).
+On VMware vSphere VMs, set the disks that Portworx uses to non-rotational before you create the storage cluster.
+Otherwise, the storage cluster does not initialize. Refer to
+[Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs](../troubleshooting.md#scenario---portworx-storage-cluster-does-not-initialize-on-vmware-vsphere-vms)
+for instructions.
 
 1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
 

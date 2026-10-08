@@ -20,9 +20,10 @@ This occurs because vSphere virtual disks report to the guest operating system a
 requires the disks that it uses to report as non-rotational. When a disk reports as rotational, Portworx classifies it
 as a `MAGNETIC` device, and the storage cluster does not initialize.
 
-Use one of the following options. In vSphere, you can mark each virtual disk as a Solid-State Drive (SSD). The setting
-persists across reboots, so it is the preferred fix when you provision the VMs. Overriding the setting on each node
-takes effect immediately, but it does not persist across reboots.
+Use one of the following options before you create the Portworx storage cluster. Apply the option on each node where
+Portworx is installed. For consistency, you can apply it on every node in the cluster. In vSphere, you can mark each
+virtual disk as a Solid-State Drive (SSD). The setting persists across reboots, so it is the preferred fix when you
+provision the VMs. Overriding the setting on each node takes effect immediately, but it does not persist across reboots.
 
 ### Mark the Virtual Disks as SSD in vSphere
 
@@ -39,7 +40,13 @@ takes effect immediately, but it does not persist across reboots.
 
 3. Power on the VM.
 
-4. Repeat steps 1 - 3 for every VM in the cluster.
+4. Repeat steps 1 - 3 for each VM where Portworx is installed.
+
+5. Create the Portworx storage cluster. Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for
+   instructions.
+
+6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
+   that the **Phase** of the storage cluster is `Running` or `Online`.
 
 ### Override the Rotational Setting on Each Node
 
@@ -69,12 +76,15 @@ This override takes effect immediately, but it does not persist across reboots. 
    ```
 
    Replace `<device-name>` with the disk name, such as `sda` or `sdb`. Use the name of the whole disk, even if Portworx
-   uses a partition on it, such as `sda6`. Run the command once for each disk. The **Storage** section of the storage
-   cluster configuration lists the devices that Portworx uses.
+   uses a partition on it, such as `sda6`. Run the command once for each disk. Use the disks that you plan to select in
+   the **Storage** section of the storage cluster configuration.
 
-4. Repeat steps 1 - 3 on every node in the cluster.
+4. Repeat steps 1 - 3 on each node where Portworx is installed.
 
-5. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
+5. Create the Portworx storage cluster. Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for
+   instructions.
+
+6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
    that the **Phase** of the storage cluster is `Running` or `Online`.
 
 ## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
