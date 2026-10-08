@@ -11,6 +11,35 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 9, 2026 - Release 4.8.71
+
+<!-- PATCH RELEASE TICKET: DOC-3277 -->
+<!-- PATCH RELEASE VERSION: 4.8.71 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12216 PEM-12214 PEM-12182 PEM-12180 PEM-12178 -->
+
+### Breaking Changes {#breaking-changes-4-8-71}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
+
+- To improve security, virtual machine operations now also require permissions on the cluster that hosts the virtual
+  machine. Viewing virtual machines and snapshots requires the `cluster.get` permission, and all other operations, such
+  as starting, stopping, cloning, migrating, and creating snapshots, require the `cluster.update` permission
+  (`virtualCluster.get` and `virtualCluster.update` for virtual clusters). Users assigned the Virtual Machine Power User
+  or Virtual Machine User role together with the Cluster Viewer role can still view virtual machines but can no longer
+  perform other operations on them. Assign these users the Cluster Editor role, or a custom role that includes
+  `cluster.update`, in the cluster's project. Refer to
+  [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for more information.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12216 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12214 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12180 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12178 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## October 4, 2026 - Release 4.8.70
 
 <!-- PATCH RELEASE TICKET: DOC-3269 -->
