@@ -351,6 +351,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Replace a Control Plane Edge Host](../clusters/edge/cluster-management/control-plane-host-replacement.md) for the
   procedure, including how to verify etcd membership health before you remove the original host.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9194 -->
+
+- <TpBadge /> Connected Edge clusters now support Hadron, Spectro Cloud's minimal, immutable Edge operating system built
+  on the CNCF Kairos project. Use the EdgeForge workflow to build Hadron-based installer ISOs and provider images. Refer
+  to [Build Hadron
+  Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-hadron-image.md) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9592 -->
