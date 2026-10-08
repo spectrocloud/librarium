@@ -109,12 +109,12 @@ provides an example that shows how you might customize the image pull behavior o
 
 7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
 
-8. _(PXK-E only)_ In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage. They add
-   a containerd drop-in file that points containerd at the `/etc/containerd/certs.d` directory, which you use to
-   configure the redirect behavior and provide registry credentials. Use a drop-in file instead of replacing
-   `/etc/containerd/config.toml`, because a complete file replaces the containerd configuration that Palette ships.
-   Refer to
-   [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration).
+8. _(PXK-E only)_ In the Kubernetes layer of the profile, add the following lines to the `initramfs` stage. They add a
+   containerd drop-in file that points containerd at the `/etc/containerd/certs.d` directory, where you configure the
+   redirect behavior and registry credentials. Do not replace `/etc/containerd/config.toml` with a complete file. Refer
+   to
+   [Container Runtime Configuration](../../edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration)
+   for details.
 
    ```yaml
    stages:
@@ -133,8 +133,8 @@ provides an example that shows how you might customize the image pull behavior o
 
    :::info
 
-   This configuration change is only needed for PXK-E. Because it changes the `initramfs` stage, it requires a reboot of
-   the node. K3s and RKE2 already read separate containerd configuration files by default and do not need this change.
+   Because this change edits the `initramfs` stage, it requires a reboot of the node. K3s and RKE2 manage their own
+   containerd configuration and do not need this change.
 
    :::
 

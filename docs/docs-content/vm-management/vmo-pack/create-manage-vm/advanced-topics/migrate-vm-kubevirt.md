@@ -73,10 +73,11 @@ This migration method uses the [Palette CLI](../../../../automation/palette-cli/
               SystemdCgroup = true
   ```
 
-  On PXK-E Edge clusters that use
+  On PXK-E and Canonical Edge clusters, do not write a complete `/etc/containerd/config.toml` file. Set
+  `device_ownership_from_security_context = true` in a drop-in file under `/etc/containerd/conf.d/` instead. On clusters
+  that use
   [systemd extensions](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md),
-  containerd does not read `/etc/containerd/config.toml`. Set `device_ownership_from_security_context = true` in a
-  drop-in file under `/etc/containerd/conf.d/` instead. Refer to
+  containerd does not read `/etc/containerd/config.toml`. Refer to
   [Container Runtime Configuration](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md#container-runtime-configuration)
   for details.
 

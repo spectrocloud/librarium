@@ -23,29 +23,28 @@ both connected and airgapped environments.
 ## How systemd Extensions Work
 
 With systemd extensions, the provider image no longer carries the Kubernetes and Palette agent binaries. Palette
-packages each component as a system-extension image, a `.sysext.raw` file, and the Palette Edge agent (Stylus) applies
-it to the host at runtime.
+packages each component as a system extension image (a `.sysext.raw` file), and the Palette Edge agent applies it to the
+host at runtime.
 
 When the host boots, the Palette Edge agent resolves the extensions that match the Kubernetes distribution and version
-in your cluster profile, pulls each extension, verifies its signature, and stages it under `/var/lib/extensions`. The
+in your cluster profile. It pulls each extension, verifies its signature, and stages it under `/var/lib/extensions`. The
 `systemd-sysext` service then overlays the extensions onto the read-only `/usr` and `/opt` directories, so the
 Kubernetes and Palette agent binaries become available on the host without modifying the base operating system.
 
-Because the binaries are delivered as overlays instead of being embedded in the provider image, a single minimal
-provider image can serve multiple Kubernetes versions. To change the Kubernetes version, you update the Kubernetes pack
-in the cluster profile, and the Palette Edge agent applies the matching extension during the upgrade.
+To change the Kubernetes version, update the Kubernetes pack in the cluster profile. The Palette Edge agent applies the
+matching extension during the upgrade.
 
 ![Diagram showing the Palette Edge agent resolving, pulling, and overlaying systemd extensions onto an Edge host's read-only /usr and /opt at runtime, so one minimal provider image serves multiple Kubernetes versions.](/systemd-extensions_architecture.webp)
 
 ## Support Requirements
 
-- **Palette Edge agent 4.10.13** (Stylus) or later on the cluster. When Stylus is pinned to an earlier release, systemd
-  extensions are not available on the cluster regardless of the operating system or Kubernetes pack settings, and the
-  cluster falls back to the pre-systemd-extensions behavior.
+- **Palette Edge agent 4.10.13** or later on the cluster. When the Palette Edge agent is pinned to an earlier release,
+  systemd extensions are not available on the cluster regardless of the operating system or Kubernetes pack settings,
+  and the cluster falls back to the pre-systemd-extensions behavior.
 - An operating system with **systemd version 255 or later**. Ubuntu 24 and RHEL 10 are the tested and verified operating
   systems, and any operating system with systemd 255 or later is supported.
-- **CanvOS 4.10.3** or later to build provider images. Set `BUNDLE_K8S_AND_AGENT_PROVIDER=false` when you build provider
-  images for clusters that use systemd extensions. Refer to [Build Provider Images](#build-provider-images).
+- **CanvOS 4.10.3** or later to build provider images for clusters that use systemd extensions. Refer to
+  [Build Provider Images](#build-provider-images).
 - Palette delivers all supported Kubernetes distributions through systemd extensions. In airgapped environments, RKE2 is
   supported starting with Palette 4.10.a. Earlier releases do not support systemd-extension delivery for RKE2 in
   airgapped environments.
@@ -92,12 +91,15 @@ Complete the following steps in order. On PXK-E and Canonical clusters, move you
 before you change the Kubernetes pack version. RKE2 and K3s clusters skip the steps marked for PXK-E and Canonical.
 Refer to [Container Runtime Configuration](#container-runtime-configuration) for details.
 
-1. Build a provider image with a supported CanvOS release, keeping `BUNDLE_K8S_AND_AGENT_PROVIDER=true`, the default.
-   Set `system.uri: <provider-image>` in the BYOOS pack. This first upgrade replaces the `kairos-agent` on the system
-   with the aligned Palette agent version. The cluster moves to systemd extensions in step 6. Refer to
-   [Support Requirements](#support-requirements) for the minimum CanvOS release.
+1. Build a provider image with a supported CanvOS release. Keep `BUNDLE_K8S_AND_AGENT_PROVIDER` at its default value,
+   `true`. Refer to [Support Requirements](#support-requirements) for the minimum CanvOS release.
 
-2. _(PXK-E and Canonical only)_ Record the current containerd configuration and the systemd drop-ins on the host.
+2. Set `system.uri: <provider-image>` in the BYOOS pack, and then apply the profile change to the cluster. This upgrade
+   replaces the `kairos-agent` on the system with the aligned Palette agent version. The cluster moves to systemd
+   extensions in step 6.
+
+3. _(PXK-E and Canonical only)_ Establish an SSH connection to an Edge host in the cluster, and then record the current
+   containerd configuration and the systemd drop-in files.
 
    ```shell
    sudo cat /etc/containerd/config.toml
@@ -107,23 +109,26 @@ Refer to [Container Runtime Configuration](#container-runtime-configuration) for
    sudo ls --format=long /etc/systemd/system/kubelet.service.d/
    ```
 
-3. _(PXK-E and Canonical only)_ Identify every setting that differs from the Palette default configuration, including
-   `registry.config_path` and every runtime handler.
+4. _(PXK-E and Canonical only)_ Identify the settings that you added to `/etc/containerd/config.toml`, such as
+   `registry.config_path` and custom runtime handlers. The table in
+   [Container Runtime Configuration](#container-runtime-configuration) lists the settings that most clusters add.
 
-4. _(PXK-E and Canonical only)_ Move each of those settings into a drop-in file under `/etc/containerd/conf.d/`. Do not
-   copy the whole `config.toml` file.
+5. _(PXK-E and Canonical only)_ In the Kubernetes layer of the cluster profile, change the stage that writes
+   `/etc/containerd/config.toml` so that it writes only those settings to a drop-in file under
+   `/etc/containerd/conf.d/`. Do not copy the whole `config.toml` file. Refer to
+   [Container Runtime Configuration](#container-runtime-configuration) for an example.
 
-5. _(PXK-E and Canonical only)_ In the cluster profile, stop writing `/etc/containerd/config.toml`. You can keep the
-   existing stage and change only the path and the content.
-
-6. Set `system.uri: NA` in the BYOOS pack, and then update the Kubernetes pack in the cluster profile to the target
-   version. Palette delivers the new Kubernetes binaries through systemd extensions, and each node repaves and reboots.
+6. Set `system.uri: NA` in the BYOOS pack, update the Kubernetes pack in the cluster profile to the target version, and
+   then apply the profile change to the cluster. Palette delivers the new Kubernetes binaries through systemd
+   extensions, and each node repaves and reboots.
 
 7. _(PXK-E and Canonical only)_ After the upgrade, confirm that your containerd settings still apply, for example, that
    image pulls through your registry mirrors succeed and that workloads that use a custom runtime handler start.
 
-If the Palette Edge agent remains pinned to an earlier release, systemd extensions are not available on the cluster.
-Build provider images from a supported CanvOS release and use one for every upgrade.
+   If the host had custom files in `/etc/systemd/system/containerd.service.d/` or
+   `/etc/systemd/system/kubelet.service.d/` and your Palette version is earlier than 4.10.a, refer to
+   [Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions](../../../../../troubleshooting/edge/edge.md#scenario---custom-systemd-drop-in-files-do-not-apply-after-migration-to-systemd-extensions)
+   to restore them.
 
 ## Upgrade a Cluster That Uses systemd Extensions
 
@@ -150,12 +155,14 @@ Palette delivers the new Kubernetes binaries through systemd extensions.
 
 ### Patch the Operating System and Upgrade Kubernetes
 
-1. Build a new provider image with `BUNDLE_K8S_AND_AGENT_PROVIDER=false`, and then set `system.uri` in the BYOOS pack to
-   the new provider image.
+1. Build a new provider image with `BUNDLE_K8S_AND_AGENT_PROVIDER=false`. Refer to
+   [Build Provider Images](#build-provider-images).
 
-2. In the same cluster profile revision, update the Kubernetes pack to the target version.
+2. Set `system.uri` in the BYOOS pack to the new provider image.
 
-3. Apply the profile change to the cluster.
+3. In the same cluster profile revision, update the Kubernetes pack to the target version.
+
+4. Apply the profile change to the cluster.
 
 Both changes apply with one repave and one reboot of each node. If you make the changes in two separate revisions, each
 node repaves and reboots twice.
@@ -169,8 +176,8 @@ changes.
 Do not write a complete `/etc/containerd/config.toml` file from the cluster profile. A complete file replaces the
 containerd configuration that Palette ships, including settings such as the containerd root directory and the `runc`
 binary path. It also stops matching the shipped configuration when an upgrade changes it. On PXK-E clusters that use
-systemd extensions, the shipped configuration moves to `/usr/lib/containerd/config.toml`, and containerd does not read
-`/etc/containerd/config.toml`, so a complete file there has no effect.
+systemd extensions, the shipped configuration moves to `/usr/lib/containerd/config.toml`. On those clusters, containerd
+does not read `/etc/containerd/config.toml`, so a complete file there has no effect.
 
 Put your custom settings in their own drop-in files under `/etc/containerd/conf.d/` instead. The containerd runtime
 reads this directory with and without systemd extensions, so a drop-in file works both before and after you move a
@@ -192,7 +199,7 @@ stages:
   initramfs:
     - name: "Manage containerd config"
       files:
-        - path: /etc/containerd/conf.d/registry-mirror.toml
+        - path: /etc/containerd/conf.d/registry-config-path.toml
           permissions: 0644
           owner: 0
           group: 0

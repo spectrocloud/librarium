@@ -10,7 +10,7 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
-## Scenario - Custom systemd Drop-In Files Stop Applying After Moving to systemd Extensions
+## Scenario - Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions
 
 After you move a PXK-E Edge cluster to
 [systemd extensions](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
@@ -40,9 +40,10 @@ that Palette ships. Clusters that you move on version 4.10.a or later are not af
    ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
    ```
 
-4. Copy each custom drop-in file back to its original directory.
+4. Re-create the original directory, and then copy each custom drop-in file back to it.
 
    ```shell
+   sudo mkdir --parents /etc/systemd/system/<service-name>.service.d/
    sudo cp <backup-file-path> /etc/systemd/system/<service-name>.service.d/
    ```
 
