@@ -222,8 +222,6 @@ The storage cluster uses one of the following storage backends:
   management endpoint and an API token of each FlashArray, and the cluster nodes must reach the FlashArray over iSCSI or
   Fibre Channel.
 
-<!-- TODO(PVM-1297): confirm with Shubham which host prerequisites (iSCSI initiator, multipath, Fibre Channel) the Portworx appliance image already includes, and whether readers must set anything up on the nodes. -->
-
 **Create a Portworx Storage Cluster**
 
 On VMware vSphere VMs, set the disks that Portworx uses to non-rotational before you create the storage cluster.
@@ -248,18 +246,18 @@ for instructions.
 
 6. _(Pure FlashArray only)_ In the **Pure FlashArray credentials** panel, enter the **Management endpoint** and **API
    token** of each FlashArray. Select **Add FlashArray** to add another array. Portworx reads these connection details
-   from a Secret named `px-pure-secret` in the `portworx` namespace. When the Secret exists, the panel reports that it
-   is present.
+   from a Secret named `px-pure-secret` in the `portworx` namespace. If the Secret does not exist yet, the panel offers
+   a button to create it. If the Secret exists, the panel reports that it is present, and you can change it with
+   **Edit**.
 
-   <!-- TODO(PVM-1297): confirm with Shubham what the panel shows when px-pure-secret does not exist yet (the button name, and whether the panel creates the Secret or the reader creates it first). -->
+   <!-- TODO(PVM-1297): add the label of the button that creates px-pure-secret (Sharada: it appears where Edit appears when the Secret exists). -->
 
 7. _(Pure FlashArray only)_ In the **Cloud Storage** section, under **Device Specs**, set the **Size** of each storage
    pool in GiB. Select **Add pool** to add a pool. Keep the **Provider** set to `pure`.
 
-8. _(Pure FlashArray only)_ To connect to the FlashArray over Fibre Channel instead of iSCSI, select the **Env** section
-   and add the `PURE_FLASHARRAY_SAN_TYPE` environment variable with the value `FC`.
-
-   <!-- TODO(PVM-1297): confirm with Shubham that iSCSI is the default and that Fibre Channel is set through the Env section. -->
+8. _(Pure FlashArray only)_ Portworx connects to the FlashArray over iSCSI by default. If your nodes connect to the
+   FlashArray over Fibre Channel cabling and switches, select the **Env** section and add the `PURE_FLASHARRAY_SAN_TYPE`
+   environment variable with the value `FC`.
 
 9. Configure the remaining wizard sections from the left panel. The following table describes the most common fields.
    The **Summary** and **Validation** panels on the right update as you go.
