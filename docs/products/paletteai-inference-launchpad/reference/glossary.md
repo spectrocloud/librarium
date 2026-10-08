@@ -426,7 +426,9 @@ tools can point at the appliance by changing only the base URL and the API token
 
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
 models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console). The console
-also ships a [role](#role) named **Operator**, which is a separate concept.
+also ships a [role](#role) named **Operator**, which is a separate concept. The **Operator** role cannot deploy models
+or override a client's limits. Refer to
+[Access and Policy Reference](./access-and-policy-reference.md#what-each-role-may-change).
 
 ### OTP
 

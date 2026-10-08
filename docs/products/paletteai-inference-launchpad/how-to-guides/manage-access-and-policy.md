@@ -49,6 +49,10 @@ Create a workspace for the team, name who may act in it and with which role, and
 6. Choose a **Type** of **Group** or **User**. For a group, enter the **Group name**. For a user, enter the **Email or
    sign-in name**. Select a **Role** of **Workspace administrator** or **Operator**, and then select **Add**.
 
+   Choose **Workspace administrator** for a person who sets what the clients in the workspace may spend and reach, and
+   **Operator** for a person who works with their own clients only. For what each role may change, refer to
+   [Access and Policy Reference](../reference/access-and-policy-reference.md#what-each-role-may-change).
+
    Grant the role to a group where you can, so that access does not end when one person leaves the team.
 
 7. Repeat steps 5 and 6 for each person or group the workspace needs.

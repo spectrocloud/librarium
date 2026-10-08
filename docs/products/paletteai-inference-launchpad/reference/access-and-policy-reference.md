@@ -72,6 +72,26 @@ The **Scope** column on the **Roles** tab reads one of the following values.
 
 Usage figures and client lists narrow to the workspaces the person may read.
 
+### What Each Role May Change
+
+{/* NEEDS REVIEW: The Operator's read-only access to models and routing rules follows AIL-988. The model row and the override row follow product changes merged after the AIL-806 briefing whose tickets do not describe the role split. The client row follows the Own clients scope in AIL-806, although AIL-988 asks for a read-only Operator. Confirm each row on a live appliance. */}
+
+| **Action**                                                                  | **Platform administrator** | **Workspace administrator** | **Operator**        |
+| --------------------------------------------------------------------------- | -------------------------- | --------------------------- | ------------------- |
+| Deploy, configure, or remove a model                                        | ✅                         | ❌                          | ❌                  |
+| Create, change, or delete a client and its API tokens                       | ✅                         | ✅                          | ✅ Own clients only |
+| Override a client's limits, external inferencing, or routing                | ✅                         | ✅                          | ❌                  |
+| Read a client's routing rules                                               | ✅                         | ✅                          | ✅                  |
+| Create workspaces and policies, change members, and manage users and groups | ✅                         | ❌                          | ❌                  |
+
+The console hides the controls for an action the person's role does not hold. A person without the right to deploy a
+model reads the model list without its deploy and remove controls, and a person without the right to override a client's
+routing reads the client's routing rules without the controls to change them.
+
+A client override replaces the workspace policy's value for that client, whether it is higher or lower than the policy.
+For how overrides relate to the policy, refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+
 ### Role Permission Grid
 
 Selecting a role on the **Roles** tab opens a drawer titled with the role's name. The drawer shows one row per
@@ -154,6 +174,23 @@ name** for a user. One subject can hold a given role in a workspace only once.
 | **Create policy** | Opens the **Create policy** wizard, with the **Overview**, **Quotas**, **Egress**, and **Routing** steps. |
 | **Edit**          | Opens the **Edit policy** drawer, with **Save changes**.                                                  |
 | **Delete**        | Removes the policy after confirmation. Unavailable while any workspace follows the policy.                |
+
+### Provider Keys and Bursting in a Policy
+
+When a policy turns on external inferencing, the **Egress** step of **Create policy** checks each provider key you
+enter.
+
+| **When**                                       | **What the console does**                                                                                                                                                                                          |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| You select **Next** on the **Egress** step     | Checks each new provider key with its provider, showing `Checking this key with <provider>.` while it waits.                                                                                                       |
+| The provider accepts the key                   | Shows `This key works. <provider> lists <count> models, and bursting can reach them.` under the key.                                                                                                               |
+| The provider refuses the key                   | Shows the provider's reason under the key and keeps you on the **Egress** step until you correct it.                                                                                                               |
+| The appliance cannot reach the provider        | Shows the reason under the key and lets you continue.                                                                                                                                                              |
+| You turn on **Enable bursting**                | Checks the keys at once, and offers the models that accepted keys reach in the **Frontier model** list. For a stored key the console cannot read back, you select the **Provider** and type the **Model** instead. |
+| You select **Save changes** on **Edit policy** | Checks each new key before saving. A refused key stops the save with `The provider refused a key. Correct the key marked on the Egress section, then save again.`                                                  |
+
+In these messages, `<provider>` is the provider's name and `<count>` is the number of models the key reaches. A policy's
+provider keys reach the **Bursting** target only. The models they list are not offered on the policy's **Routing** step.
 
 ## Users Tab
 

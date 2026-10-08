@@ -196,11 +196,19 @@ the page offers that workspace's clients alone.
 
 A policy sets what clients may spend and what they may reach, including their limits and whether they may use external
 inferencing. A policy belongs to a workspace, not to a person or a group, so every client in a workspace inherits one
-policy. Changing the policy a workspace follows changes what all of its clients may spend and reach.
+policy. Changing the policy a workspace follows changes what its clients may spend and reach, except where a client
+overrides a value.
 
 Because the policy attaches to the workspace, a person who belongs to several groups never has two policies competing
-for the same client. The appliance needs no rule to pick the higher or the lower of two limits. Where one client needs a
-different limit from the rest of its workspace, you override it on that client.
+for the same client. The appliance needs no rule to pick the higher or the lower of two limits.
+
+Where one client needs a different limit from the rest of its workspace, you override it on that client. The policy is a
+default for its clients, not a ceiling. A client override of the limits, the external inferencing settings, or the
+routing replaces the policy's value for that client, whether the override is higher or lower than the policy. A client
+keeps the policy's value for anything it does not override. Only a **Platform administrator** or a **Workspace
+administrator** can override these values. An **Operator** cannot.
+
+{/* NEEDS REVIEW: A product change merged after the AIL-806 briefing makes the workspace policy a default that a client override may exceed. Its ticket, AIL-971, describes only hour-versus-day quota validation, and AIL-806 says only that the override is per client. Confirm that a client override above the workspace policy ships in 1.2.0. */}
 
 ### Roles and Grants
 
@@ -208,6 +216,11 @@ A role is a named set of permissions. It says what a person may do, such as crea
 no scope of its own. The appliance ships its roles, and the console lists them read only. You assign roles. You do not
 author them. The console lists three roles, which are **Platform administrator**, **Workspace administrator**, and
 **Operator**.
+
+The roles divide the decisions on the appliance. Only a **Platform administrator** decides which models the appliance
+serves. A **Workspace administrator** decides what the clients in its workspaces may spend and reach. An **Operator**
+works with its own clients and their API tokens, and reads the models and each client's routing rules without changing
+them.
 
 A grant gives a role its reach. It binds one role to one subject, a person or a group, over one or more named
 workspaces. Authority therefore comes from the grant, not from the person. The same person can hold **Workspace
