@@ -203,39 +203,43 @@ serving cannot answer requests, so the verification later in this tutorial would
 Claude Code needs a credential, and a credential belongs to a client. Create both here, and tell the appliance which
 model answers the requests this client sends.
 
-1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+1. In the console header, set the workspace picker to **Default**, the workspace the appliance ships with. A platform
+   administrator's picker starts on **All workspaces**, where the **Clients** tab is read only.
 
-2. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
+2. From the left main menu, select **Access & Policy**. Inside a workspace, the page offers **Clients** alone, and the
+   **Clients** list opens.
 
-3. Enter `coding-agent` as the **Client name**, and then select **Next**.
+3. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
 
-4. On the **Quotas** step, select **Next** without adding a limit.
+4. Enter `coding-agent` as the **Client name**, and then select **Next**.
 
-5. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
+5. On the **Quotas** step, select **Next** without adding a limit.
+
+6. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
    appliance, so this client never needs to reach an external model.
 
-6. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
+7. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
    **Next**. The wizard requires every alias to be mapped before it lets you continue.
 
    ![Routing step with all seven Tier map rows mapped to the deployed model.](/assets/docs/images/run-claude-code_routing-mapped.webp)
 
-7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
+8. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, select a date within the next year in **Expires**, and then select **Add Token**.
 
-8. Select **Create**.
+9. Select **Create**.
 
-9. The console reveals the token, which begins with `lpai_`.
+10. The console reveals the token, which begins with `lpai_`.
 
-   ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
+    ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
 
-   :::warning
+    :::warning
 
-   The console shows the token once and stores only a hash. Keep this modal open until you finish **Point Claude Code at
-   the Appliance**.
+    The console shows the token once and stores only a hash. Keep this modal open until you finish **Point Claude Code
+    at the Appliance**.
 
-   :::
+    :::
 
-10. In the same modal, select **Connect Agent**. The coding-agent setup expands inline.
+11. In the same modal, select **Connect Agent**. The coding-agent setup expands inline.
 
 ## Point Claude Code at the Appliance
 
@@ -370,14 +374,15 @@ Undo the changes the tutorial made.
 
    </Tabs>
 
-4. From the left main menu, select **Access & Policy**.
+4. In the console header, confirm that the workspace picker is set to **Default**.
 
-5. On the **Clients & API tokens** page, find the `coding-agent` row and select the three-dot menu at the end of the
-   row.
+5. From the left main menu, select **Access & Policy**.
+
+6. In the **Clients** list, find the `coding-agent` row and select the three-dot menu at the end of the row.
 
    ![Clients and API tokens page with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/run-claude-code_three-dot-menu.webp)
 
-6. Select **Delete** and confirm.
+7. Select **Delete** and confirm.
 
    <img
      src="/assets/docs/images/run-claude-code_delete-menu.webp"

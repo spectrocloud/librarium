@@ -25,6 +25,7 @@ you the steps to do it without teaching background concepts.
 | [Configure Semantic Routing](./configure-semantic-routing.md)                           | Set the Complexity threshold, author category rules, override both per client, and turn on Decision recording. |
 | [Set the Thinking Directive for a Tier](./set-tier-thinking.md)                         | Choose off, on, or an effort level per tier on the Tier Map.                                                   |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)                         | Deploy a vision model and turn on image-to-text preprocessing for a text-only model.                           |
+| [Manage Access and Policy](./manage-access-and-policy.md)                               | Give a team its own workspace, and manage workspace members, users, and groups.                                |
 | [Create a Client](./create-a-client.md)                                                 | Create a client and issue its first API token.                                                                 |
 | [Generate an API Token](./generate-an-api-token.md)                                     | Create an API token that clients use to authenticate to the appliance.                                         |
 | [Set and Manage Client Quotas](./manage-client-quotas.md)                               | Set, edit, raise, and remove a client's request, token, and cost limits.                                       |

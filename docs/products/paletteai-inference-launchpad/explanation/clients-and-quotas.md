@@ -4,7 +4,7 @@ title: "Clients and Quotas"
 description:
   "An explanation of clients, API tokens, and quotas in PaletteAI Inference Launchpad: what a client is, why the
   appliance serves many clients such as AI coding assistants, and how it meters usage, reports utilization, and limits
-  consumption."
+  consumption. It also covers how workspaces, roles, and grants decide who administers which clients."
 hide_table_of_contents: false
 sidebar_position: 2
 tags: ["paletteai-inference-launchpad", "explanation", "clients", "quotas"]
@@ -20,6 +20,9 @@ keywords:
     "claude code",
     "usage",
     "utilization",
+    "workspace",
+    "role",
+    "grant",
   ]
 ---
 
@@ -139,11 +142,11 @@ If the appliance has kept less history than the window you asked for, the card s
 
 ### Limit Ceiling Increases
 
-Windows reset on the UTC clock. That is not an operator action, and it does not require a confirmation.
+Windows reset on the UTC clock. That is not an administrator action, and it does not require a confirmation.
 
-**Increase limit** on **Quota Usage** is the operator action. It raises one window's ceiling and keeps the usage already
-counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require
-permission to manage clients.
+**Increase limit** on **Quota Usage** is the administrator action. It raises one window's ceiling and keeps the usage
+already counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes
+require a role that may override a client's limits, which is **Platform administrator** or **Workspace administrator**.
 
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
 
@@ -163,7 +166,84 @@ Access to models depends on whether a model runs locally on the appliance or is 
 
 Sovereignty is a separate switch that overrides every client's egress. When it is armed for the appliance, no request
 leaves the box regardless of any client's permission, and a client's egress chip reads **Blocked by sovereignty** until
-an operator disarms it under **Access & Policy → Sovereignty**.
+an operator disarms it on the **Sovereignty** card of the **Clients** tab under **Access & Policy**, with the workspace
+picker set to **All workspaces**.
+
+## Workspaces and Access {#workspaces-and-access}
+
+Clients answer the question of who sends a request. Workspaces, roles, and grants answer a different question. They
+decide which people may administer which clients. This section explains how the appliance divides itself between teams
+and how it decides what a person signed in to the console may do.
+
+### Workspaces
+
+A workspace is the boundary between the appliance and a team. Each workspace holds its own clients and follows one
+policy. The members of a workspace work with the clients in that workspace, while the appliance's models, hardware, and
+settings stay shared across every workspace.
+
+Every appliance ships with one workspace, **Default**, which cannot be removed. You create a workspace for each team
+that needs its own clients and its own limits.
+
+<!-- vale off -->
+
+The workspace picker in the console header sets which workspace the console shows. **All workspaces** shows the whole
+appliance, so the **Access & Policy** tabs that answer for the whole appliance appear only there. Inside one workspace,
+the page offers that workspace's clients alone.
+
+<!-- vale on -->
+
+### Policies
+
+A policy sets what clients may spend and what they may reach, including their limits and whether they may use external
+inferencing. A policy belongs to a workspace, not to a person or a group, so every client in a workspace inherits one
+policy. Changing the policy a workspace follows changes what its clients may spend and reach, except where a client
+overrides a value.
+
+Because the policy attaches to the workspace, a person who belongs to several groups never has two policies competing
+for the same client. The appliance needs no rule to pick the higher or the lower of two limits.
+
+Where one client needs a different limit from the rest of its workspace, you override it on that client. The policy is a
+default for its clients, not a ceiling. A client override of the limits, the external inferencing settings, or the
+routing replaces the policy's value for that client, whether the override is higher or lower than the policy. A client
+keeps the policy's value for anything it does not override. Only a **Platform administrator** or a **Workspace
+administrator** can override these values. An **Operator** cannot.
+
+{/* NEEDS REVIEW: A product change merged after the AIL-806 briefing makes the workspace policy a default that a client override may exceed. Its ticket, AIL-971, describes only hour-versus-day quota validation, and AIL-806 says only that the override is per client. Confirm that a client override above the workspace policy ships in 1.2.0. */}
+
+### Roles and Grants
+
+A role is a named set of permissions. It says what a person may do, such as create clients or read usage, but it carries
+no scope of its own. The appliance ships its roles, and the console lists them read only. You assign roles. You do not
+author them. The console lists three roles, which are **Platform administrator**, **Workspace administrator**, and
+**Operator**.
+
+The roles divide the decisions on the appliance. Only a **Platform administrator** decides which models the appliance
+serves. A **Workspace administrator** decides what the clients in its workspaces may spend and reach. An **Operator**
+works with its own clients and their API tokens, and reads the models and each client's routing rules without changing
+them.
+
+A grant gives a role its reach. It binds one role to one subject, a person or a group, over one or more named
+workspaces. Authority therefore comes from the grant, not from the person. The same person can hold **Workspace
+administrator** in one workspace and a narrower role in another, because those are two separate grants.
+
+On the console, a grant appears as a workspace member. A member is a person or a group holding one role in one
+workspace, and you add, change, and remove members on the workspace itself. **Platform administrator** reaches the
+entire appliance, so it is not handed out per workspace.
+
+### The Directory and Authority
+
+The people and groups on the **Users** and **Groups** tabs come from the identity provider. The appliance reads its
+directory from the identity provider, and writes authority on the workspace. These are two separate jobs.
+
+Adding a person to the directory, or putting them in a group, gives them no access by itself. A person gains access when
+they, or a group they are in, become a member of a workspace. Granting roles to groups rather than to individual people
+keeps access stable as people join and leave a team.
+
+The appliance also keeps a few groups of its own for sign-in and platform access. The console does not list them, and
+they cannot be renamed, given a new description, or deleted from the console.
+
+For the steps, refer to [Manage Access and Policy](../how-to-guides/manage-access-and-policy.md). For every role, scope,
+and column, refer to [Access and Policy Reference](../reference/access-and-policy-reference.md).
 
 ## How It Fits Together
 
@@ -180,6 +260,8 @@ quotas, so it is ready to run on every request.
 
 ## Resources
 
+- [Manage Access and Policy](../how-to-guides/manage-access-and-policy.md) walks through giving a team its own workspace
+  and managing members, users, and groups.
 - [Create a Client](../how-to-guides/create-a-client.md) walks through creating a client and issuing its first API
   token.
 - [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md) walks through setting limits, turning

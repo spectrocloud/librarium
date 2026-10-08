@@ -64,8 +64,8 @@ that split. Four are per client; the fifth is appliance-wide.
    deleting any key; on restores egress with the same setup.
 5. **Sovereignty (appliance-wide).** A single switch above every client's egress. When armed, no request leaves the box
    regardless of what any client is permitted to do; the client's egress chip reads **Blocked by sovereignty** until an
-   operator disarms it under **Access & Policy → Sovereignty**. Refer to
-   [Clients and Quotas](clients-and-quotas.md#sovereignty-and-egress).
+   operator disarms it on the **Sovereignty** card of the **Clients** tab under **Access & Policy**, with the workspace
+   picker set to **All workspaces**. Refer to [Clients and Quotas](clients-and-quotas.md#sovereignty-and-egress).
 
 For the recipe that composes these levers for the common enterprise shape, refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md#recommended-setup-for-enterprise-anthropic).
