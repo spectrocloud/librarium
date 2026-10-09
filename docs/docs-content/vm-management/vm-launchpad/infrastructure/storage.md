@@ -52,14 +52,15 @@ perform the following StorageClass operations.
 ### Enable a StorageClass for VM Workloads
 
 VMs can use only StorageClasses that are enabled for VM workloads. On the Portworx variant, Portworx creates its own CSI
-StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. You can also
-[create a StorageClass](#create-a-storageclass) with **Allow for VMs** selected.
+StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. To make a new
+StorageClass available for VMs instead, [create a StorageClass](#create-a-storageclass) with **Allow for VMs** selected.
 
 1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Classes**.
 
-2. Check the **VM Workloads** column of the StorageClass.
+2. Check the **VM Workloads** column of the StorageClass. If the StorageClass is already enabled, you do not need to
+   continue.
 
-3. If the StorageClass is not enabled, right-click it or open its detail page, and then select **Enable for VM
+3. Open the detail page of the StorageClass, or right-click the StorageClass, and then select **Enable for VM
    Workloads**.
 
 ### Create a StorageClass
@@ -223,7 +224,7 @@ one control plane node and three worker nodes. When the storage cluster is runni
 StorageClasses. Refer to [Enable a StorageClass for VM Workloads](#enable-a-storageclass-for-vm-workloads) to make one
 of them available for VM workloads.
 
-The storage cluster uses one of the following storage backends:
+The **Storage backend** field of the wizard offers the following options:
 
 - **Local disks (software-defined)**: Portworx claims block devices on each node.
 
@@ -249,24 +250,27 @@ for instructions.
    cluster requires, such as `portworx.io/misc-args`, `portworx.io/pvc-controller-port`, and
    `portworx.io/pvc-controller-secure-port`.
 
-5. Select a **Storage backend**, and confirm that the **Run on control plane** configuration preset is enabled. With
-   **Pure FlashArray**, the form adds a **Pure FlashArray credentials** panel and replaces the **Storage** and **Nodes**
-   sections with **Cloud Storage** and **Pure Platform**.
+5. In **Storage backend**, select **Local disks (software-defined)** or **Pure FlashArray**, and confirm that the **Run
+   on control plane** configuration preset is enabled. If you select **Pure FlashArray**, the wizard adds a **Pure
+   FlashArray credentials** panel and replaces the **Storage** and **Nodes** sections with **Cloud Storage** and **Pure
+   Platform**.
 
-6. _(Pure FlashArray only)_ In the **Pure FlashArray credentials** panel, enter the **Management endpoint** and **API
-   token** of each FlashArray. Select **Add FlashArray** to add another array. Portworx reads these connection details
-   from a Secret named `px-pure-secret` in the `portworx` namespace. If the Secret does not exist yet, the panel offers
-   a button to create it. If the Secret exists, the panel reports that it is present, and you can change it with
-   **Edit**.
+6. _(Pure FlashArray only)_ In the **Pure FlashArray credentials** panel, provide the connection details of each
+   FlashArray. Portworx reads them from the `px-pure-secret` Secret in the `portworx` namespace.
 
-   <!-- TODO(PVM-1297): add the label of the button that creates px-pure-secret (Sharada: it appears where Edit appears when the Secret exists). -->
+   - If the Secret does not exist, enter the **Management endpoint** and **API token** of each FlashArray, and then
+     select the button that creates the Secret. To add another array, select **Add FlashArray**.
 
-7. _(Pure FlashArray only)_ In the **Cloud Storage** section, under **Device Specs**, set the **Size** of each storage
-   pool in GiB. Select **Add pool** to add a pool. Keep the **Provider** set to `pure`.
+   - If the panel reports that the Secret is present, you can change the stored credentials with **Edit**.
 
-8. _(Pure FlashArray only)_ Portworx connects to the FlashArray over iSCSI by default. If your nodes connect to the
-   FlashArray over Fibre Channel cabling and switches, select the **Env** section and add the `PURE_FLASHARRAY_SAN_TYPE`
-   environment variable with the value `FC`.
+   <!-- TODO(PVM-1297): replace "the button that creates the Secret" with the button label (Sharada: it appears where Edit appears when the Secret exists). -->
+
+7. _(Pure FlashArray only)_ In the **Cloud Storage** section, under **Device Specs**, set the **Size** in GiB of each
+   pool. To add a pool, select **Add pool**. Keep the **Provider** set to `pure`.
+
+8. _(Pure FlashArray with Fibre Channel only)_ Portworx connects to the FlashArray over iSCSI by default. To use Fibre
+   Channel, select the **Env** section, and then add the `PURE_FLASHARRAY_SAN_TYPE` environment variable with the value
+   `FC`.
 
 9. Configure the remaining wizard sections from the left panel. The following table describes the most common fields.
    The **Summary** and **Validation** panels on the right update as you go.
@@ -276,7 +280,7 @@ for instructions.
    | **General**         | **Secrets Provider**: `k8s` stores Portworx credentials as Kubernetes secrets.<br />**Custom Image Registry**: a registry prefix prepended to every Portworx image, required for airgapped clusters and left empty on connected clusters to pull from `docker.io`.<br />**Image**: the Portworx image.                                                                                                                                               |
    | **Storage**         | _(Local disks only)_ The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions. |
    | **Nodes**           | _(Local disks only)_ Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                          |
-   | **Cloud Storage**   | _(Pure FlashArray only)_ The **Device Specs** storage pools, sized in GiB, the **Kvdb Device Spec** and **System Metadata Device Spec** sizes, optional **Journal Device Spec** and **Capacity Specs**, and the cloud drive **Provider**, `pure`.                                                                                                                                                                                                    |
+   | **Cloud Storage**   | _(Pure FlashArray only)_ The size in GiB of each **Device Specs** pool, the **Kvdb Device Spec** and **System Metadata Device Spec** sizes, the optional **Journal Device Spec** and **Capacity Specs**, and the cloud drive **Provider** (`pure`).                                                                                                                                                                                                  |
    | **Pure Platform**   | _(Pure FlashArray only)_ Optional **Fusion** and **Integration Operator** settings.                                                                                                                                                                                                                                                                                                                                                                  |
    | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                                      |
    | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                                                    |
@@ -320,8 +324,8 @@ nothing you need before you save the cluster.
 4. Update the **Management endpoint** or **API token** of each FlashArray. The form never displays stored tokens. Leave
    an **API token** blank to keep the stored token for that endpoint.
 
-5. Select **Rotate credentials**. The change updates only the `pure.json` key of the `px-pure-secret` Secret, not the
-   storage cluster.
+5. Select **Rotate credentials**. VMO updates the `px-pure-secret` Secret and does not change the storage cluster
+   configuration.
 
 <!-- TODO(PVM-1297): confirm with Shubham whether Portworx picks up rotated credentials without a restart, and whether the reader then leaves the storage cluster form with Cancel. -->
 

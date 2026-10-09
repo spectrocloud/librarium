@@ -69,11 +69,11 @@ configuration.
    identical in the list, so use the **FIPS** label to tell them apart. Choose the variant that matches your compliance
    and storage requirements.
 
-   | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                           |
-   | ----------------- | ------------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
-   | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                |
-   | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS. |
-   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Everpure FlashArray.  |
+   | **Variant**       | **FIPS Compliance** | **Appliance Storage Backend**            | **Choose This Variant When**                                                                  |
+   | ----------------- | ------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------- |
+   | FIPS Piraeus      | FIPS-compliant      | Piraeus/LINSTOR replicated block storage | You require a FIPS-compliant appliance.                                                       |
+   | Non-FIPS Piraeus  | Not FIPS-compliant  | Piraeus/LINSTOR replicated block storage | You want open source replicated block storage and do not require FIPS.                        |
+   | Non-FIPS Portworx | Not FIPS-compliant  | Portworx enterprise distributed storage  | Your organization is standardized on Portworx or Everpure (formerly Pure Storage) FlashArray. |
 
    :::info
 
