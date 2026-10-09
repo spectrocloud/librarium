@@ -12,6 +12,89 @@ This page covers common debugging scenarios for nodes and clusters after they ha
 
 ## Nodes
 
+### Scenario - Unexpected Node Repave After a Palette Agent Upgrade
+
+On clusters whose nodes were deployed with Palette 4.7 or earlier, an upgrade of the cluster's Palette agent can cause
+Palette to repave all control plane nodes, and in some cases worker nodes. The agent upgrade itself does not repave the
+nodes. The repave starts with the next change to the cluster, including changes that do not normally repave nodes, such
+as updating a value in the `clientConfig` section of the Kubernetes pack or scaling the control plane node pool. This
+happens because the upgraded agent generates a different `kubeadm` configuration from the one the nodes were deployed
+with.
+
+Palette 4.10.a and later include a fix that prevents this issue. The fix does not stop a repave that has already
+started. A cluster receives the fix when its Palette agent is upgraded. If
+[agent upgrades are paused](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) for a
+cluster whose nodes were deployed with Palette 4.7 or earlier, keep them paused until Palette is upgraded to version
+4.10.a or later, and then resume them. The cluster's agent is then upgraded directly to a version that includes the fix.
+
+A repave cannot complete if the infrastructure cannot provide an additional node. Palette keeps retrying to provision
+the replacement node, and the existing nodes continue to run. For example, on
+[MAAS](../../clusters/data-center/maas/maas.md) clusters, the replacement machine fails with an
+`Unable to allocate machine: status: 409` error.
+
+#### Debug Steps
+
+Use the following steps to check whether a cluster is affected and to complete a repave that has already started.
+
+1. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the cluster.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
+
+2. Check the cluster for `KubeadmUpgradeDetected` warning events.
+
+   ```shell
+   kubectl get events --all-namespaces --field-selector type=Warning | grep KubeadmUpgradeDetected
+   ```
+
+   An event with the reason `KubeadmUpgradeDetected: controlplane` or `KubeadmUpgradeDetected: Worker` and the message
+   `Pack values change detected but not performing an upgrade as hubble hash is not updated` indicates that the
+   configuration of the cluster's nodes differs from the configuration that its Palette agent generates. The next change
+   to the cluster repaves the affected nodes. Kubernetes retains events for a limited time, so the absence of this event
+   does not confirm that a cluster is unaffected. Use the next step to check the controller logs as well.
+
+3. Check the `palette-controller-manager` logs for the same condition. First, identify the namespace of the
+   `palette-controller-manager` deployment, which uses the format `cluster-<cluster-uid>`.
+
+   ```shell
+   kubectl get deployments --all-namespaces --field-selector metadata.name=palette-controller-manager
+   ```
+
+   ```shell hideClipboard title="Example Output"
+   NAMESPACE                          NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+   cluster-68e3b1c2a4f5d6e7f8091a2b   palette-controller-manager   1/1     1            1           412d
+   ```
+
+   Then, search the deployment logs from the last 24 hours.
+
+   ```shell
+   kubectl logs deployment/palette-controller-manager --namespace <cluster-namespace> --container manager --since=24h \
+     | grep --max-count=1 'KCP spec changed but not triggering an upgrade'
+   ```
+
+   Replace `<cluster-namespace>` with the namespace returned by the previous command. If the cluster is affected, the
+   command returns a log line similar to the following. The line also contains the current and desired `kubeadm`
+   configuration of the nodes, which is shortened to `{...}` in this example.
+
+   ```shell hideClipboard title="Example Output"
+   I1009 14:32:07.512304       1 controlplane.go:786] "msg"="KCP spec changed but not triggering an upgrade as hubble SPC hash has not changed" "current"={...} "desired"={...} "logger"="controllers.SpectroCluster"
+   ```
+
+   A matching log line indicates the same condition as the `KubeadmUpgradeDetected` event, and the next change to the
+   cluster repaves the affected nodes.
+
+4. If the cluster is affected and a repave has not started, avoid making changes to the cluster until Palette is
+   upgraded to version 4.10.a or later and the cluster's Palette agent is upgraded.
+
+5. If a repave has already started, let it complete. Upgrading Palette or the cluster's Palette agent does not stop a
+   repave that is in progress. If the replacement node cannot be provisioned, add capacity for one additional node to
+   the infrastructure that hosts the node pool. For example, add a machine that matches the constraints in the error
+   message to the MAAS resource pool. Palette replaces the nodes one at a time, and the existing nodes continue to run
+   until their replacements are ready.
+
 ### Scenario - Repaved Nodes
 
 Palette performs a rolling upgrade on nodes when it detects a change in the `kubeadm` config. Below are some actions
