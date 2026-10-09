@@ -327,8 +327,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
   for more information.
 
-#### Upgrade Notes {#upgrade-notes-edge-4.10.a}
-
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8470 -->
@@ -429,30 +427,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
 
-#### Deprecations and Removals
-
 ### VerteX
-
-#### Breaking Changes {#breaking-changes-vertex-4.10.a}
-
-#### Upgrade Notes {#upgrade-notes-vertex-4.10.a}
 
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.a) for more details.
 
-#### Improvements
-
-#### Bug Fixes
-
 ### Virtual Machine Orchestrator (VMO)
 
 #### VMO Pack
-
-##### Breaking Changes {#breaking-changes-vmo-pack-4.10.a}
-
-##### Features
 
 ##### Improvements
 
@@ -473,20 +457,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   cluster and the uninstall strategy was `BlockUninstallIfWorkloadsExist`. The removal now stops before it deletes any
   components, so disk imports, cloning, and VM provisioning continue to work.
 
-##### Deprecations and Removals
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.a}
-
-##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.a}
-
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-##### Deprecations and Removals
-
 ### Automation
 
 <!-- release-notes-automation-callout-4.10.a-start -->
@@ -499,8 +469,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 :::
 
 <!-- release-notes-automation-callout-4.10.a-end -->
-
-#### Breaking Changes {#breaking-changes-automation-4.10.a}
 
 #### Features
 
@@ -515,12 +483,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   now available.
 
 <!-- release-notes-automation-features-4.10.a-end -->
-
-#### Improvements
-
-#### Bug Fixes
-
-#### Deprecations and Removals
 
 ### Docs and Education
 
