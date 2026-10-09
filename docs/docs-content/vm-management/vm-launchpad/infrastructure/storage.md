@@ -259,11 +259,9 @@ for instructions.
    FlashArray. Portworx reads them from the `px-pure-secret` Secret in the `portworx` namespace.
 
    - If the Secret does not exist, enter the **Management endpoint** and **API token** of each FlashArray, and then
-     select the button that creates the Secret. To add another array, select **Add FlashArray**.
+     select **Create secret**. To add another array, select **Add FlashArray**.
 
    - If the panel reports that the Secret is present, you can change the stored credentials with **Edit**.
-
-   <!-- TODO(PVM-1297): replace "the button that creates the Secret" with the button label (Sharada: it appears where Edit appears when the Secret exists). -->
 
 7. _(Pure FlashArray only)_ In the **Cloud Storage** section, under **Device Specs**, set the **Size** in GiB of each
    pool. To add a pool, select **Add pool**. Keep the **Provider** set to `pure`.
@@ -324,10 +322,9 @@ nothing you need before you save the cluster.
 4. Update the **Management endpoint** or **API token** of each FlashArray. The form never displays stored tokens. Leave
    an **API token** blank to keep the stored token for that endpoint.
 
-5. Select **Rotate credentials**. VMO updates the `px-pure-secret` Secret and does not change the storage cluster
-   configuration.
+5. Select **Rotate credentials**.
 
-<!-- TODO(PVM-1297): confirm with Shubham whether Portworx picks up rotated credentials without a restart, and whether the reader then leaves the storage cluster form with Cancel. -->
+6. Select **Save** in the upper-right corner. Portworx uses the new credentials without a restart.
 
 </TabItem>
 
