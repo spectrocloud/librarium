@@ -185,6 +185,17 @@ deploy a VM.
 
     :::info
 
+    A VM that keeps persistent firmware state, with **Persistent EFI Variables** enabled or a **TPM** that uses
+    persistent state, stores that state on a PersistentVolumeClaim (PVC). KubeVirt creates the PVC from the StorageClass
+    set in `vmStateStorageClass` on the `KubeVirt` resource, or from the cluster's default StorageClass when that
+    setting is empty. Use a StorageClass that supports the `Filesystem` volume mode. If neither StorageClass is
+    available, the VM does not start. To set `vmStateStorageClass`, refer to
+    [KubeVirt Configuration](../kubevirt-configuration.md).
+
+    :::
+
+    :::info
+
     The **CPU Model** drop-down menu lists only the models the cluster supports and preserves unsupported values rather
     than dropping them. Refer to [CPU Model Field](./instance-types.md#cpu-model-field) for details on dynamic
     discovery, caching, and the unavailable-model warnings.
