@@ -276,8 +276,8 @@ nothing you need before you save the cluster.
 1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
 
 2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
-   cluster size, capacity used, and capacity total. The **Phase** is `initializing` while Portworx starts, `running`
-   when the storage cluster is ready, and `degraded` if the installation failed or while you delete the storage cluster.
+   cluster size, capacity used, and capacity total. The **Phase** is `Initializing` while Portworx starts, `Running`
+   when the storage cluster is ready, and `Degraded` if the installation failed or while you delete the storage cluster.
 
 </TabItem>
 
