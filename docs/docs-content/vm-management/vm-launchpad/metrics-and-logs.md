@@ -14,7 +14,7 @@ The PaletteAI VM Launchpad appliance forwards its metrics and logs from the **Me
 and **Configuration**. The **Metrics** section sends appliance metrics, and the **Logs** section sends appliance logs.
 Each section can send to a Splunk HTTP Event Collector (HEC) endpoint or to any backend that accepts the OpenTelemetry
 Protocol (OTLP) over HTTP. VMO detects the protocol from the **Forwarding URL**, so you do not select it. Both toggles
-emit audit events, and changes apply without a pod restart.
+emit audit events. Metrics changes apply without a pod restart.
 
 The two sections share their settings by default:
 
@@ -125,12 +125,15 @@ VMO configures the Collector's log exporters from the **Logs** settings. It writ
 certificate, and **Skip TLS Verification** value into the `splunk-hec-credentials` Secret in the `kube-system`
 namespace, and then restarts the Collector DaemonSet. VMO checks the settings about every 60 seconds.
 
+VMO selects the log exporter from the URL:
+
 - A Splunk HEC URL routes logs through the `splunk_hec/vmo-logs` exporter under `sourcetype=vmo:log`.
 
 - An OTLP URL routes logs through the `otlphttp/vmo-logs` exporter. If the URL ends in `/v1/metrics`, VMO replaces that
   suffix with `/v1/logs`. If the URL has no signal suffix, VMO appends `/v1/logs`.
 
-Logs leave the appliance only when a URL and a token resolve, and one of the following is also true:
+Logs leave the appliance only when a URL and a token are set, either in the **Logs** section or through the metrics
+values, and one of the following is also true:
 
 - **Metrics Forwarding** is enabled. Any log setting that you leave empty uses its metrics value.
 
@@ -144,8 +147,8 @@ Enabling **Log Forwarding** without setting the log **Forwarding URL** does not 
   receiver, the `filelog/vmo` log receiver, the `otlphttp/vmo` metrics exporter that feeds `vmo-manager`, and the log
   exporters that VMO configures.
 
-- A receiver for the metrics and logs: a Splunk HEC endpoint and token, or an endpoint that accepts OTLP over HTTP and
-  its credential.
+- A Splunk HEC endpoint and token, or an endpoint that accepts OTLP over HTTP and its credential, to receive the metrics
+  and logs.
 
 - Network connectivity from the `vmo-manager` StatefulSet to the metrics receiver, and from the OpenTelemetry Collector
   DaemonSet to the logs receiver.
@@ -197,34 +200,42 @@ or a generic OpenTelemetry Collector. It uses the same **Forwarding URL**, **For
 Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** includes a path other than
 `/services/collector`.
 
-1. In the **Metrics** section, select **Add** next to **Forwarding URL**, enter the receiver's OTLP metrics endpoint
+1. Sign in to VMO.
+
+2. From the left main menu, select **Settings** > **Configuration** > **Metrics and Logs**.
+
+3. In the **Metrics** section, select **Add** next to **Forwarding URL**, enter the receiver's OTLP metrics endpoint
    including the explicit path, for example `https://<receiver-host>/v1/metrics`, and select the save icon.
 
    Replace `<receiver-host>` with the host name of your OTLP receiver.
 
-2. Select **Add** next to **Forwarding Token**, enter the receiver's credential, and select the save icon. The field
+   :::warning
+
+   A URL with no path, such as `https://otlp.example.com`, is treated as Splunk HEC and posted to
+   `/services/collector/event`, which an OTLP receiver rejects.
+
+   :::
+
+4. Select **Add** next to **Forwarding Token**, enter the receiver's credential, and select the save icon. The field
    accepts two formats:
 
    - A plain token, which VMO sends as an `Authorization: Bearer <token>` header. Use this for a receiver that expects a
      bearer token.
 
    - One or more comma-separated `Key=Value` pairs, which VMO sends as literal HTTP headers. Use this for a receiver
-     that needs a specific header, such as Datadog (`DD-API-KEY=<api-key>`), Grafana Cloud
+     that needs a specific header, such as Datadog (`DD-API-KEY=<datadog-api-key>`), Grafana Cloud
      (`Authorization=Basic <credentials>`), or New Relic (`api-key=<license-key>`).
 
-3. (Optional) If the receiver presents a TLS certificate issued by a private or internal CA, select **Add** next to **CA
-   Certificate**, paste its PEM CA-signing certificate, and select the save icon. Public receivers such as Datadog,
-   Grafana Cloud, and New Relic use publicly trusted certificates and do not need this.
+5. (Optional) If the receiver presents a TLS certificate issued by a private or internal CA, select **Add** next to **CA
+   Certificate**, paste the PEM-encoded CA-signing certificate, and select the save icon. Public receivers such as
+   Datadog, Grafana Cloud, and New Relic use publicly trusted certificates and do not need this.
 
-4. Flip the **Metrics Forwarding** toggle to **Enabled**.
+6. Leave **Skip TLS Verification** off. When it is on, the appliance accepts the receiver's certificate without
+   verifying it. Turn it on only to test against a receiver whose certificate you cannot verify.
 
-:::warning
+7. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
-The **Forwarding URL** must include the receiver's path segment. A URL with no path, such as `https://otlp.example.com`,
-is treated as Splunk HEC and posted to `/services/collector/event`, which an OTLP receiver rejects. Always include the
-path, such as `/v1/metrics`.
-
-:::
+#### Forward Metrics to Datadog
 
 The following steps forward metrics to Datadog.
 
@@ -239,22 +250,25 @@ The following steps forward metrics to Datadog.
 
 3. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
-The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and, when you set a
-cluster name, `k8s.cluster.name:<name>`.
+The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
-Forwarding logs to Datadog or Grafana Cloud is not supported. The log side sends its credential only as a plain bearer
-token, and the log intake of both services requires a different header. Datadog requires `DD-API-KEY`, and Grafana Cloud
-requires Basic authentication. To forward logs, point the **Logs** section at a receiver that accepts a plain bearer
-token or a Splunk HEC token. Refer to [Configure Log Forwarding](#configure-log-forwarding).
+Log forwarding to Datadog or Grafana Cloud is not supported, because log forwarding sends its credential only as a plain
+bearer token. To forward logs, point the **Logs** section at a receiver that accepts a plain bearer token or a Splunk
+HEC token. Refer to [Configure Log Forwarding](#configure-log-forwarding).
 
-The following table lists other OTLP receivers and their credential formats.
+#### OTLP Receiver Formats
 
-| Receiver                | Forwarding URL                                                                           | Forwarding Token                        |
+The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers.
+
+| **Receiver**            | **Forwarding URL**                                                                       | **Forwarding Token**                    |
 | ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
-| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<api-key>`                  |
+| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<datadog-api-key>`          |
 | Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | `Authorization=Basic <credentials>`     |
 | New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`  | `api-key=<license-key>`                 |
-| OpenTelemetry Collector | `https://<your-collector>/v1/metrics`                                                    | Plain token or `Key=Value` header pairs |
+| OpenTelemetry Collector | `https://<receiver-host>/v1/metrics`                                                     | Plain token or `Key=Value` header pairs |
+
+Replace `<datadog-api-key>` with your Datadog API key, `<region>` with your Grafana Cloud region, `<license-key>` with
+your New Relic license key, and `<receiver-host>` with the host name of your OpenTelemetry Collector.
 
 Grafana Cloud rejects a plain token sent as a bearer token. For Grafana Cloud, replace `<credentials>` with the Base64
 encoding of your Grafana Cloud instance ID and API token, joined by a colon. Use the following command to generate the
@@ -268,8 +282,8 @@ Replace `<instance-id>` with your Grafana Cloud instance ID and `<api-token>` wi
 
 To label the forwarded metrics with a recognizable cluster name, set the `clusterName` pack value
 (`charts.virtual-machine-orchestrator.vmo-manager.clusterName`). VMO emits it as the `k8s.cluster.name` resource
-attribute on each OTLP payload. If you leave it empty, VMO discovers the name from the cluster's `kubeadm-config`
-ConfigMap, then falls back to `local` if that lookup is also empty, which is indistinguishable across a multi-cluster
+attribute on each OTLP payload. If you leave the value empty, VMO reads the name from the cluster's `kubeadm-config`
+ConfigMap. If that lookup also returns nothing, VMO uses `local`, which is the same on every cluster in a multi-cluster
 fleet.
 
 :::info
@@ -297,8 +311,8 @@ receiver, or to change the log format.
 4. Select **Add** next to the log **Forwarding URL**, enter the receiver's URL, and select the save icon. For an OTLP
    receiver, include the `/v1/logs` path. For Splunk HEC, a base URL such as `https://splunk.example.com:8088` works.
 
-   To send logs to the metrics receiver, enter the metrics URL. Setting the log **Forwarding URL** is what allows the
-   **Log Forwarding** toggle to start delivery.
+   The **Log Forwarding** toggle sends logs only when the log **Forwarding URL** is set. To send logs to the metrics
+   receiver while **Metrics Forwarding** is off, enter the metrics URL.
 
    :::warning
 
@@ -331,13 +345,13 @@ storage in the `VMOConfig` custom resource.
 
 ### Metrics Section
 
-| **Setting**               | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                              |
-| ------------------------- | -------------------------------------------- | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Metrics Forwarding**    | `monitoring.splunk_hec_enabled`              | `false`     | No            | Network gate. When enabled with a URL set, `vmo-manager` POSTs each metric point to the receiver. Also starts log delivery for any empty log setting. Emits `monitoring.splunk_hec.toggled`. |
-| **Forwarding URL**        | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HEC or OTLP receiver URL. The path decides the protocol. An empty value disables the metrics push regardless of the toggle state.                                                     |
-| **Forwarding Token**      | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token, or the OTLP credential as a plain bearer token or `Key=Value` header pairs. Masked in GET responses; the UI renders `(set)` in place of the value.                         |
-| **CA Certificate**        | `monitoring.splunk_hec_ca_cert`              | Empty       | No            | Optional PEM CA-signing certificate used to verify the receiver's TLS certificate. An empty value verifies against the container's system trust store.                                       |
-| **Skip TLS Verification** | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | When enabled, the metrics push accepts the receiver's TLS certificate without verification. Leave it off in production.                                                                      |
+| **Setting**               | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                                                       |
+| ------------------------- | -------------------------------------------- | ----------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Metrics Forwarding**    | `monitoring.splunk_hec_enabled`              | `false`     | No            | Network gate. When enabled with a URL set, `vmo-manager` POSTs each metric point to the receiver. Also starts log delivery, and each empty log setting uses its metrics value. Emits `monitoring.splunk_hec.toggled`. |
+| **Forwarding URL**        | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HEC or OTLP receiver URL. The path decides the protocol. An empty value disables the metrics push regardless of the toggle state.                                                                              |
+| **Forwarding Token**      | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token, or the OTLP credential as a plain bearer token or `Key=Value` header pairs. Masked in GET responses; the UI renders `(set)` in place of the value.                                                  |
+| **CA Certificate**        | `monitoring.splunk_hec_ca_cert`              | Empty       | No            | Optional PEM CA-signing certificate used to verify the receiver's TLS certificate. An empty value verifies against the container's system trust store.                                                                |
+| **Skip TLS Verification** | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | When enabled, the metrics push accepts the receiver's TLS certificate without verification. Leave it off in production.                                                                                               |
 
 ### Logs Section
 
@@ -429,17 +443,13 @@ Replace `<path-to-appliance-kubeconfig>` with the path to the appliance cluster'
 
 ## Considerations
 
-| **Behavior**                     | **What to know**                                                                                                                                                                                                                                                                                             |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Metrics forwarding airgap safety | The toggle is the network gate. If the toggle is off, or the URL is empty, `vmo-manager` sends zero bytes to the receiver for metrics.                                                                                                                                                                       |
-| Logs follow metrics              | Enabling **Metrics Forwarding** also starts log delivery. Each empty log setting uses its metrics value, so logs go to the metrics receiver unless you set the log **Forwarding URL**.                                                                                                                       |
-| Separate log receivers           | Set the log **Forwarding URL**, **Forwarding Token**, or **CA Certificate** to send logs to a different receiver or tenant.                                                                                                                                                                                  |
-| Log authentication over OTLP     | The log side sends its credential only as a plain bearer token and does not support `Key=Value` header pairs. A receiver that requires a different header or authentication scheme for log intake, such as Datadog or Grafana Cloud, does not receive logs. Metrics forwarding to that receiver still works. |
-| TLS verification default         | **Skip TLS Verification** is off by default in both sections, so forwarding verifies the receiver's certificate. The log setting never uses the metrics value.                                                                                                                                               |
-| Rejected URLs                    | VMO rejects receiver URLs that point at the local host, such as `localhost`, `127.0.0.1`, or `::1`, at link-local and cloud metadata addresses such as `169.254.169.254`, or at `0.0.0.0`. VMO also rejects URLs with a scheme other than HTTP or HTTPS.                                                     |
-| Removing a metrics setting       | A new metrics value applies immediately. Removing a value can take up to 15 seconds, during which metrics forwarding to the previous receiver can continue. To stop forwarding metrics immediately, turn off **Metrics Forwarding** instead.                                                                 |
-| Multi-replica log format changes | A **Log Format** change made in the UI applies to the replica that handled the request. The remaining replicas keep their previous encoding until they restart. To apply an encoding change across every replica at once, restart the `vmo-manager` StatefulSet after you save it.                           |
-| Metrics URL scheme               | `monitoring.splunk_hec_url` supports HTTP or HTTPS. Use HTTPS in production. Use HTTP only for testing against a local receiver that does not expose TLS.                                                                                                                                                    |
+| **Behavior**                     | **What to know**                                                                                                                                                                                                                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Metrics forwarding airgap safety | The toggle is the network gate. If the toggle is off, or the URL is empty, `vmo-manager` sends zero bytes to the receiver for metrics.                                                                                                                                             |
+| Rejected URLs                    | VMO rejects receiver URLs that point at `localhost`, `127.0.0.1`, `::1`, `0.0.0.0`, or a link-local or cloud metadata address, such as `169.254.169.254`. VMO also rejects URLs with a scheme other than HTTP or HTTPS.                                                            |
+| Removing a metrics setting       | A new metrics value applies immediately. Removing a value can take up to 15 seconds, during which metrics forwarding to the previous receiver can continue. To stop forwarding metrics immediately, turn off **Metrics Forwarding** instead.                                       |
+| Multi-replica log format changes | A **Log Format** change made in the UI applies to the replica that handled the request. The remaining replicas keep their previous encoding until they restart. To apply an encoding change across every replica at once, restart the `vmo-manager` StatefulSet after you save it. |
+| Metrics URL scheme               | `monitoring.splunk_hec_url` supports HTTP or HTTPS. Use HTTPS in production. Use HTTP only for testing against a receiver that does not expose TLS.                                                                                                                                |
 
 ## Palette Audit Trail Forwarding
 
