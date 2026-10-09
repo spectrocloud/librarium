@@ -64,6 +64,10 @@ layer of the cluster profile has **Palette** selected as the OIDC identity provi
 Because Palette injects the OIDC configuration at deploy time, the values match the OIDC flags that the cluster's
 Kubernetes API server was started with. You do not need to select a preset or enter any values for this to work.
 
+Palette validates the callback URL at sign-in. If the callback URL points to an address outside your Palette domain, a
+tenant admin must register that address before users can sign in. Refer to
+[Register OIDC Callback URLs](../../user-management/saml-sso/register-oidc-callback-urls.md) for more information.
+
 :::info
 
 Local authentication is turned off in the pack base values, so Palette-managed OIDC is the only sign-in path in this
