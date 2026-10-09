@@ -30,17 +30,16 @@ Your workload clusters must meet the following requirements.
 ### Containerd Version
 
 Cluster nodes must use containerd 2.0 or later. The containerd version depends on the Kubernetes version of your
-cluster. The following table lists the Kubernetes versions that include containerd 2.0 or later.
+cluster. The following table lists the earliest patch version of each Kubernetes minor version that includes containerd
+2.0 or later. Use the listed patch version or a later one.
 
-For each minor version, use the listed patch version or a later one.
-
-| Kubernetes Distribution                      | Kubernetes Versions                                                       |
+| **Kubernetes Distribution**                  | **Kubernetes Versions**                                                   |
 | -------------------------------------------- | ------------------------------------------------------------------------- |
 | Palette eXtended Kubernetes (PXK)            | 1.30.11, 1.31.7, 1.32.3, or any version from 1.33 onward                  |
 | Palette eXtended Kubernetes - Edge (PXK-E)   | 1.27.2, 1.28.2, 1.30.4, 1.31.6, 1.32.2, 1.33.1, 1.34.2, 1.35.2, or 1.36.2 |
 | K3s                                          | 1.31.14, 1.32.13, 1.33.13, 1.34.9, 1.35.6, or 1.36.2                      |
 | RKE2                                         | 1.31.14, 1.32.13, 1.33.13, 1.34.9, 1.35.6, or 1.36.2                      |
-| Canonical Kubernetes (CK8s)                  | Any version from 1.32 onward                                              |
+| Canonical Kubernetes                         | Any version from 1.32 onward                                              |
 | Managed Kubernetes, such as EKS, AKS, or GKE | Select an OS image version that uses containerd 2.0 or later.             |
 
 To change the Kubernetes version of a cluster, update the Kubernetes layer of its cluster profile. Refer to
