@@ -11,13 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 9, 2026 - PaletteAI VM Launchpad 4.10.19 {#vm-launchpad-4.10.19}
+## October 9, 2026 - PaletteAI VM Launchpad 4.10.20 {#vm-launchpad-4.10.20}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
 
-This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.24.
+This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.25.
 
-### Breaking Changes {#breaking-changes-vm-launchpad-4.10.19}
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.20}
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
 
@@ -106,6 +106,12 @@ This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, w
 
 - Fixed an issue that caused VMO Manager to run out of memory and restart when multiple users logged in at the same
   time. Each restart logged out every user.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1321 -->
+
+- Fixed an issue that caused a stopped virtual machine to show **Stopping** indefinitely, with no error, when its disk
+  could not be provisioned. The virtual machine now shows **Stopped**, and a banner explains why the disk cannot be
+  provisioned.
 
 ## October 6, 2026 - Release 4.10.17-patch.5
 
