@@ -49,11 +49,18 @@ perform the following StorageClass operations.
 | **Set default**             | Mark one StorageClass as the cluster default. New PVCs that do not specify a StorageClass use the default.                            |
 | **Enable for VM Workloads** | Make an existing StorageClass available for VM disks and volumes. The **VM Workloads** column shows which StorageClasses are enabled. |
 
+### Enable a StorageClass for VM Workloads
+
 VMs can use only StorageClasses that are enabled for VM workloads. On the Portworx variant, Portworx creates its own CSI
-StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. To use one of
-them for VMs, check its **VM Workloads** column. If the class is not enabled, right-click the class or open its detail
-page, and then select **Enable for VM Workloads**. You can also [create a StorageClass](#create-a-storageclass) with
-**Allow for VMs** selected.
+StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. You can also
+[create a StorageClass](#create-a-storageclass) with **Allow for VMs** selected.
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Classes**.
+
+2. Check the **VM Workloads** column of the StorageClass.
+
+3. If the StorageClass is not enabled, right-click it or open its detail page, and then select **Enable for VM
+   Workloads**.
 
 ### Create a StorageClass
 
@@ -208,11 +215,13 @@ configuration. Refer to [Storage Pools](#storage-pools) for more information.
 On appliances that use the Portworx storage backend, the **Storage** page includes an extra **Portworx Storage
 Clusters** tab that does not appear on Piraeus/LINSTOR appliances. The Portworx pack installs the Portworx operator
 without deploying a cluster, so you create the Portworx `StorageCluster` with the **New Portworx Storage Cluster**
-wizard. Create one storage cluster for each VM Launchpad cluster. The **New Portworx Storage Cluster** button is
-unavailable while a storage cluster exists, because the Portworx operator supports one storage cluster for each
-Kubernetes cluster. The cluster must have three control plane nodes, or one control plane node and three worker nodes.
-When the storage cluster is running, Portworx creates its CSI StorageClasses. Refer to [StorageClasses](#storageclasses)
-to make one of them available for VM workloads.
+wizard.
+
+The Portworx operator supports one storage cluster for each Kubernetes cluster, so the **New Portworx Storage Cluster**
+button is unavailable while a storage cluster exists. The VM Launchpad cluster must have three control plane nodes, or
+one control plane node and three worker nodes. When the storage cluster is running, Portworx creates its CSI
+StorageClasses. Refer to [Enable a StorageClass for VM Workloads](#enable-a-storageclass-for-vm-workloads) to make one
+of them available for VM workloads.
 
 The storage cluster uses one of the following storage backends:
 
