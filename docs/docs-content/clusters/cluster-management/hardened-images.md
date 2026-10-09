@@ -53,6 +53,10 @@ Palette instance is upgraded, except in the following cases:
 - You paused agent upgrades for the cluster, its project, or its tenant. Resume agent upgrades so that the agent can
   upgrade. Refer to [Pause Agent Upgrades](./platform-settings/pause-platform-upgrades.md) for more information.
 
-- You specified a Palette agent version in the OS pack of the cluster profile. Specify version 4.9.23 or later, or
-  remove the agent version from the OS pack. Refer to
+- On an Edge cluster, you specified a Palette agent version in the OS pack of the cluster profile. Specify version
+  4.9.23 or later, or remove the agent version from the OS pack. Refer to
+  [Configure Palette Agent Version](../edge/cluster-management/agent-upgrade-airgap.md) for more information.
+
+- The cluster is a local Edge cluster. The Palette agent upgrades only when you update the cluster with a cluster
+  definition and content bundle built on the upgraded Palette instance. Refer to
   [Configure Palette Agent Version](../edge/cluster-management/agent-upgrade-airgap.md) for more information.
