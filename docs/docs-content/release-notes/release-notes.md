@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 9, 2026 - Release 4.10.a {#release-notes-4.10.a}
+## October 9, 2026 - Release 4.10.25 {#release-notes-4.10.a}
 
 ### Security Notices
 
@@ -295,7 +295,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.a Palette release is 4.10.a.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.25 Palette release is 4.10.8.
 
 :::
 
@@ -326,8 +326,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   request. To remove a host, reduce `poolConfig.size` and omit the host from `cloudConfig.edgeHosts`. Refer to
   [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
   for more information.
-
-#### Upgrade Notes {#upgrade-notes-edge-4.10.a}
 
 #### Features
 
@@ -429,30 +427,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
 
-#### Deprecations and Removals
-
 ### VerteX
-
-#### Breaking Changes {#breaking-changes-vertex-4.10.a}
-
-#### Upgrade Notes {#upgrade-notes-vertex-4.10.a}
 
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.a) for more details.
 
-#### Improvements
-
-#### Bug Fixes
-
 ### Virtual Machine Orchestrator (VMO)
 
 #### VMO Pack
-
-##### Breaking Changes {#breaking-changes-vmo-pack-4.10.a}
-
-##### Features
 
 ##### Improvements
 
@@ -473,54 +457,32 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   cluster and the uninstall strategy was `BlockUninstallIfWorkloadsExist`. The removal now stops before it deletes any
   components, so disk imports, cloning, and VM provisioning continue to work.
 
-##### Deprecations and Removals
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.a}
-
-##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.a}
-
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-##### Deprecations and Removals
-
 ### Automation
 
 <!-- release-notes-automation-callout-4.10.a-start -->
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.a Palette release is
-4.10.a. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.25 Palette release is
+4.10.9. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
 <!-- release-notes-automation-callout-4.10.a-end -->
 
-#### Breaking Changes {#breaking-changes-automation-4.10.a}
-
 #### Features
 
 <!-- release-notes-automation-features-4.10.a-start -->
 
-- Terraform version 4.10.a of the
+- Terraform version 0.30.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.10.a of the
+- Crossplane version 0.30.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 <!-- release-notes-automation-features-4.10.a-end -->
-
-#### Improvements
-
-#### Bug Fixes
-
-#### Deprecations and Removals
 
 ### Docs and Education
 

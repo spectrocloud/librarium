@@ -14,13 +14,13 @@ The following are common scenarios that you may encounter when using Edge.
 
 After you move a PXK-E Edge cluster to
 [systemd extensions](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
-on a Palette version earlier than 4.10.a, custom drop-in files for the containerd and Kubelet services stop applying,
+on a Palette version earlier than 4.10.25, custom drop-in files for the containerd and Kubelet services stop applying,
 and no error is reported. For example, image pulls from a private registry that uses a Kubelet credential provider fail,
 or a containerd HTTP proxy stops applying.
 
 This occurs because the migration moves the entire `/etc/systemd/system/containerd.service.d/` and
 `/etc/systemd/system/kubelet.service.d/` directories to a backup directory, instead of moving only the drop-in files
-that Palette ships. Clusters that you move on version 4.10.a or later are not affected.
+that Palette ships. Clusters that you move on version 4.10.25 or later are not affected.
 
 ### Debug Steps
 
