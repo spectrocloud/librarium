@@ -46,7 +46,7 @@ matching extension during the upgrade.
 - **CanvOS 4.10.3** or later to build provider images for clusters that use systemd extensions. Refer to
   [Build Provider Images](#build-provider-images).
 - Palette delivers all supported Kubernetes distributions through systemd extensions. In airgapped environments, RKE2 is
-  supported starting with Palette 4.10.a. Earlier releases do not support systemd-extension delivery for RKE2 in
+  supported starting with Palette 4.10.25. Earlier releases do not support systemd-extension delivery for RKE2 in
   airgapped environments.
 
 Unified Kernel Image (UKI) deployments and two-node clusters do not support systemd extensions. Refer to
@@ -131,7 +131,7 @@ Refer to [Container Runtime Configuration](#container-runtime-configuration) for
    image pulls through your registry mirrors succeed and that workloads that use a custom runtime handler start.
 
    If the host had custom files in `/etc/systemd/system/containerd.service.d/` or
-   `/etc/systemd/system/kubelet.service.d/` and your Palette version is earlier than 4.10.a, refer to
+   `/etc/systemd/system/kubelet.service.d/` and your Palette version is earlier than 4.10.25, refer to
    [Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions](../../../../../troubleshooting/edge/edge.md#scenario---custom-systemd-drop-in-files-do-not-apply-after-migration-to-systemd-extensions)
    to restore them.
 
