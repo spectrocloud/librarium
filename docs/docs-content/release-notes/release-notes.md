@@ -126,6 +126,17 @@ tags: ["release-notes"]
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+
+- **User action required:** The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS
+  certificate of their internal Zot registry automatically. Rotation is turned off by default when you upgrade. After
+  you upgrade, resume any paused agent upgrades, wait for the Palette agent upgrade to complete, and then turn on
+  **Enable Certificate Rotation** in the Local UI. If you leave rotation turned off, the registry certificate eventually
+  expires, unless you rotate it manually. Refer to the Upgrade Notes for
+  [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
 
@@ -137,16 +148,6 @@ tags: ["release-notes"]
   until you configure the pull secret. Airgapped installations and installations that use a mirrored registry are not
   affected. For more information, refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md).
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-
-- The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS certificate of their internal
-  Zot registry automatically. Rotation is turned off by default when you upgrade. After you upgrade, resume any paused
-  agent upgrades, wait for the Palette agent upgrade to complete, and then turn on **Enable Certificate Rotation** in
-  the Local UI. If you leave rotation turned off, the registry certificate eventually expires. Refer to the Upgrade
-  Notes for [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
-  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1605 -->
 <!-- https://spectrocloud.atlassian.net/browse/PPD-1619 -->

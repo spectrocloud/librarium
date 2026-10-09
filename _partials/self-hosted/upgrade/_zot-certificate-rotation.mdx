@@ -17,7 +17,5 @@ the registry can then fail to pull images. After the upgrade completes, use the 
 
 4. In the **Palette Addon Profile** section, turn on **Enable Certificate Rotation**, and then select **Update**.
 
-   {/* TODO(DOC-3290): confirm on Gaurav's 4.10.25-rc.2 instance (C0C7JF8K39Q) how Update applies the change (directly, or through Review Changes first). */}
-
-If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires. Clusters can then
-fail to pull images from the registry.
+If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires, unless you rotate it
+manually. Clusters can then fail to pull images from the registry.
