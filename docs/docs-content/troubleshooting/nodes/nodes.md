@@ -63,6 +63,11 @@ Use the following steps to check whether a cluster is affected and to complete a
    kubectl get deployments --all-namespaces --field-selector metadata.name=palette-controller-manager
    ```
 
+   ```shell hideClipboard title="Example Output"
+   NAMESPACE                          NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+   cluster-68e3b1c2a4f5d6e7f8091a2b   palette-controller-manager   1/1     1            1           412d
+   ```
+
    Then, search the deployment logs from the last 24 hours.
 
    ```shell
@@ -70,8 +75,16 @@ Use the following steps to check whether a cluster is affected and to complete a
      | grep --max-count=1 'KCP spec changed but not triggering an upgrade'
    ```
 
-   Replace `<cluster-namespace>` with the namespace returned by the previous command. A matching log line indicates the
-   same condition as the `KubeadmUpgradeDetected` event, and the next change to the cluster repaves the affected nodes.
+   Replace `<cluster-namespace>` with the namespace returned by the previous command. If the cluster is affected, the
+   command returns a log line similar to the following. The line also contains the current and desired `kubeadm`
+   configuration of the nodes, which is shortened to `{...}` in this example.
+
+   ```shell hideClipboard title="Example Output"
+   I1009 14:32:07.512304       1 controlplane.go:786] "msg"="KCP spec changed but not triggering an upgrade as hubble SPC hash has not changed" "current"={...} "desired"={...} "logger"="controllers.SpectroCluster"
+   ```
+
+   A matching log line indicates the same condition as the `KubeadmUpgradeDetected` event, and the next change to the
+   cluster repaves the affected nodes.
 
 4. If the cluster is affected and a repave has not started, avoid making changes to the cluster until Palette is
    upgraded to version 4.10.a or later and the cluster's Palette agent is upgraded.
