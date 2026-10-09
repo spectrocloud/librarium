@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 9, 2026 - Release 4.10.a {#release-notes-4.10.a}
+## October 9, 2026 - Release 4.10.25 {#release-notes-4.10.a}
 
 ### Security Notices
 
@@ -295,7 +295,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.a Palette release is 4.10.a.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.25 Palette release is 4.10.8.
 
 :::
 
@@ -493,8 +493,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.a Palette release is
-4.10.a. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.25 Palette release is
+4.10.9. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
@@ -506,11 +506,11 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- release-notes-automation-features-4.10.a-start -->
 
-- Terraform version 4.10.a of the
+- Terraform version 0.30.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.10.a of the
+- Crossplane version 0.30.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
