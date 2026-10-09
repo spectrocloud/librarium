@@ -10,6 +10,62 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions
+
+After you move a PXK-E Edge cluster to
+[systemd extensions](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
+on a Palette version earlier than 4.10.a, custom drop-in files for the containerd and Kubelet services stop applying,
+and no error is reported. For example, image pulls from a private registry that uses a Kubelet credential provider fail,
+or a containerd HTTP proxy stops applying.
+
+This occurs because the migration moves the entire `/etc/systemd/system/containerd.service.d/` and
+`/etc/systemd/system/kubelet.service.d/` directories to a backup directory, instead of moving only the drop-in files
+that Palette ships. Clusters that you move on version 4.10.a or later are not affected.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+2. List the drop-in files that the migration moved to the backup directory.
+
+   ```shell
+   sudo ls --recursive /opt/.extensions/migrations/backups/kubeadm-sysext-migrations
+   ```
+
+3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
+   a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
+   drop-in files.
+
+   ```shell
+   ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
+   ```
+
+4. Re-create the original directory, and then copy each custom drop-in file back to it.
+
+   ```shell
+   sudo mkdir --parents /etc/systemd/system/<service-name>.service.d/
+   sudo cp <backup-file-path> /etc/systemd/system/<service-name>.service.d/
+   ```
+
+   Replace `<backup-file-path>` with the path to the custom drop-in file in the backup directory. Replace
+   `<service-name>` with `containerd` or `kubelet`, depending on the directory that the file came from.
+
+5. Reload systemd, and then restart the containerd and Kubelet services.
+
+   ```shell
+   sudo systemctl daemon-reload
+   sudo systemctl restart containerd kubelet
+   ```
+
+6. Confirm that systemd applies your custom drop-in files. The output lists each file that applies to a service in a
+   comment line that starts with `#`, followed by the path to the file.
+
+   ```shell
+   systemctl cat containerd kubelet
+   ```
+
+7. Repeat steps 1 - 6 on each Edge host in the cluster.
+
 ## Scenario - Missing `multipath-tools` Package on Edge Images
 
 Edge hosts that rely on multipath storage configurations may experience storage accessibility issues because the
