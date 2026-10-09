@@ -53,6 +53,11 @@ Unified Kernel Image (UKI) deployments and two-node clusters do not support syst
 [Unified Kernel Image (UKI) Considerations](#unified-kernel-image-uki-considerations) and
 [Two-Node Cluster Considerations](#two-node-cluster-considerations) for the behavior on those hosts.
 
+Airgapped clusters that pull their Kubernetes packs from an external registry, such as Zot, do not support systemd
+extensions when you populate that registry with pack bundles from
+[Artifact Studio](../../../../../downloads/artifact-studio.md#download-a-pack-bundle). These pack bundles do not include
+the systemd extension images, so the Palette Edge agent cannot pull them from the registry.
+
 ## Build Provider Images
 
 The CanvOS `BUNDLE_K8S_AND_AGENT_PROVIDER` argument controls whether a provider image includes the Kubernetes and
