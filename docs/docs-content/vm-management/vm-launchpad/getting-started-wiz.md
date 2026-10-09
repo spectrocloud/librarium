@@ -103,16 +103,16 @@ cluster does not initialize. Refer to
    :::
 
 3. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and wait until
-   the **Phase** of your storage cluster is `running`. Check the **Phase** even if the **Getting Started** wizard
+   the **Phase** of your storage cluster is `Running`. Check the **Phase** even if the **Getting Started** wizard
    already shows the step as complete, because Portworx might still be initializing.
 
    | **Phase**      | **Description**                                                                                                           |
    | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
-   | `initializing` | Portworx is starting.                                                                                                     |
-   | `running`      | The storage cluster is ready. Portworx creates its Container Storage Interface (CSI) StorageClasses, such as `px-csi-db`. |
-   | `degraded`     | The installation failed, or you are deleting the storage cluster.                                                         |
+   | `Initializing` | Portworx is starting.                                                                                                     |
+   | `Running`      | The storage cluster is ready. Portworx creates its Container Storage Interface (CSI) StorageClasses, such as `px-csi-db`. |
+   | `Degraded`     | The installation failed, or you are deleting the storage cluster.                                                         |
 
-   If the **Phase** is `degraded` and you are not deleting the storage cluster, refer to
+   If the **Phase** is `Degraded` and you are not deleting the storage cluster, refer to
    [Troubleshooting](./troubleshooting.md).
 
 4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
