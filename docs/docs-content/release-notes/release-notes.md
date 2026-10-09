@@ -17,18 +17,26 @@ tags: ["release-notes"]
 
 This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.24.
 
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.19}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
+
+- Only the Platform Admin VMO role can now create, edit, and delete cluster-scoped instance types and preferences. Users
+  with the Editor role can still view and select them, but can no longer change them. Assign the Platform Admin role to
+  users who manage cluster-scoped instance types and preferences. Refer to
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md).
+
 ### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-827 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
 
-- PaletteAI VM Launchpad can now forward appliance metrics and logs to any OpenTelemetry Protocol (OTLP) over HTTP
-  backend, in addition to Splunk HTTP Event Collector (HEC). The forwarding URL determines the protocol. The **Logs**
-  section of the **Metrics and Logs** page now controls log delivery and has its own **Forwarding Token** and **CA
-  Certificate** settings. Both the **Metrics** and **Logs** sections have a new **Skip TLS Verification** setting, which
-  is off by default. When **Metrics Forwarding** is enabled, the appliance also forwards its logs to the metrics
-  receiver unless you configure the **Logs** section. Refer to
-  [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+- PaletteAI VM Launchpad can now forward appliance metrics and logs to backends that accept the OpenTelemetry Protocol
+  (OTLP) over HTTP, as well as to Splunk HTTP Event Collector (HEC). The **Forwarding URL** determines the protocol. The
+  **Logs** section of the **Metrics and Logs** page now controls log delivery and has its own **Forwarding Token** and
+  **CA Certificate** settings. Both sections have a new **Skip TLS Verification** setting, which is off by default. When
+  **Metrics Forwarding** is enabled, the appliance also forwards its logs to the metrics receiver unless you configure
+  the **Logs** section. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1213 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1297 -->
@@ -47,14 +55,8 @@ This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, w
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1100 -->
 
-- Fixed an issue that caused namespaces enabled for virtual machines to disappear from the VMO UI after any update to
-  the VMO pack, even an update that did not change the namespace list. Only the `default` namespace remained.
-
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
-
-- Fixed an issue that allowed users with the Editor VMO role to create, edit, and delete cluster-scoped instance types
-  and preferences. Only the Platform Admin role can change them, and Editors can still view and select them. Refer to
-  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md).
+- Fixed an issue that caused namespaces enabled for virtual machines to disappear from the VMO UI after an update to the
+  VMO pack, leaving only the `default` namespace.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1221 -->
 
@@ -75,22 +77,25 @@ This release delivers version 4.10.19 of the PaletteAI VM Launchpad appliance, w
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1272 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1266 -->
 
-- Fixed an issue that caused uploaded images to be deleted about 30 minutes after the upload started, including disks
-  that virtual machines used. Uploads that remain in the `UploadReady` phase are no longer deleted automatically, so
-  remove abandoned uploads manually.
+- Fixed an issue that caused VMO to delete uploaded images about 30 minutes after the upload started. VMO no longer
+  deletes uploads that remain in the `UploadReady` phase, so remove abandoned uploads manually.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
 
 - Fixed an issue that caused the **Create VM** wizard to create a `Filesystem` PersistentVolumeClaim (PVC) instead of a
   `Block` PVC when the root disk of a virtual machine template imports from a container registry. The disk import failed
-  with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`. Virtual machines
-  created from an edited template also no longer fail with `disks[0].Name 'datavolume-os' not found`.
+  with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused virtual machines created from an edited template to fail with
+  `disks[0].Name 'datavolume-os' not found`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1294 -->
 
-- Fixed an issue that prevented virtual machines on non-FIPS Portworx appliances from attaching a ReadWriteMany (RWX)
-  storage class, which also caused live migration to fail. The appliance image now includes the NFS packages that
-  Portworx requires, for both new installations and upgraded appliances.
+- Fixed an issue that prevented virtual machines on non-FIPS Portworx appliances from attaching volumes from a
+  ReadWriteMany (RWX) storage class, which also caused live migration to fail. The appliance image now includes the NFS
+  packages that Portworx requires, for both new installations and upgraded appliances.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1301 -->
 
