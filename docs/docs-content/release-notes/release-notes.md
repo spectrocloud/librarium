@@ -11,6 +11,108 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 9, 2026 - PaletteAI VM Launchpad 4.10.20 {#vm-launchpad-4.10.20}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
+
+This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.25.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.20}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
+
+- Only the Platform Admin VMO role can now create, edit, and delete cluster-scoped instance types and preferences. Users
+  with the Editor role can still view and select them, but can no longer change them. Assign the Platform Admin role to
+  users who manage cluster-scoped instance types and preferences. Refer to
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md).
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-827 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
+
+- PaletteAI VM Launchpad can now forward appliance metrics and logs to backends that accept the OpenTelemetry Protocol
+  (OTLP) over HTTP, as well as to Splunk HTTP Event Collector (HEC). The **Forwarding URL** determines the protocol. The
+  **Logs** section of the **Metrics and Logs** page now controls log delivery and has its own **Forwarding Token** and
+  **CA Certificate** settings. Both sections have a new **Skip TLS Verification** setting, which is off by default. When
+  **Metrics Forwarding** is enabled, the appliance also forwards its logs to the metrics receiver unless you configure
+  the **Logs** section. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1213 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1297 -->
+
+- Portworx appliances now support Everpure FlashArray as a storage backend for the Portworx storage cluster. Refer to
+  [Storage](../vm-management/vm-launchpad/infrastructure/storage.md#storage-clusters).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1236 -->
+
+- Non-FIPS appliances now use hardened images for the MetalLB, Local Path Provisioner, Traefik, Piraeus, and Registry
+  Connect packs, and for the VMO pack components where a hardened image is available.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1100 -->
+
+- Fixed an issue that caused namespaces enabled for virtual machines to disappear from the VMO UI after an update to the
+  VMO pack, leaving only the `default` namespace.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1221 -->
+
+- Fixed an issue that caused the namespace list in the **Upload ISO** form to include namespaces that the user could not
+  access, so the upload failed with a permission error after it started. The namespace lists in the **Upload ISO** and
+  **Build Golden Image** forms now show only namespaces that the user can access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1265 -->
+
+- Fixed an issue that prevented single-node non-FIPS Piraeus appliances from storing images in the appliance registry,
+  so cluster bootstrap failed and pods remained in `ImagePullBackOff`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1268 -->
+
+- Fixed an issue that hid the sub-steps and tips of a **Getting Started** wizard step after you completed the step. You
+  can now reopen them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1272 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1266 -->
+
+- Fixed an issue that caused VMO to delete uploaded images about 30 minutes after the upload started. VMO no longer
+  deletes uploads that remain in the `UploadReady` phase, so remove abandoned uploads manually.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused the **Create VM** wizard to create a `Filesystem` PersistentVolumeClaim (PVC) instead of a
+  `Block` PVC when the root disk of a virtual machine template imports from a container registry. The disk import failed
+  with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused virtual machines created from an edited template to fail with
+  `disks[0].Name 'datavolume-os' not found`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1294 -->
+
+- Fixed an issue that prevented virtual machines on non-FIPS Portworx appliances from attaching volumes from a
+  ReadWriteMany (RWX) storage class, which also caused live migration to fail. The appliance image now includes the NFS
+  packages that Portworx requires, for both new installations and upgraded appliances.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1301 -->
+
+- Fixed an issue that marked the **Set Up a Storage Class** step of the **Getting Started** wizard as complete when you
+  opened the **Create Storage Class** wizard and canceled it without creating a StorageClass.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1310 -->
+
+- Fixed an issue that caused VMO Manager to run out of memory and restart when multiple users logged in at the same
+  time. Each restart logged out every user.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1321 -->
+
+- Fixed an issue that caused a stopped virtual machine to show **Stopping** indefinitely, with no error, when its disk
+  could not be provisioned. The virtual machine now shows **Stopped**, and a banner explains why the disk cannot be
+  provisioned.
+
 ## October 9, 2026 - Release 4.10.25 {#release-notes-4.10.a}
 
 ### Security Notices
