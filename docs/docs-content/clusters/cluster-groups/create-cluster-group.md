@@ -78,10 +78,8 @@ Downstream consumers can use the cluster group when using Palette in
 
    #### Palette Virtual Cluster Configuration
 
-   The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution
-   you want all virtual clusters to use. Use the **Advanced Config** for further customization.
-
-   ![A view of the Kubernetes distribution selection menu](/clusters_cluster-groups_create-cluster-group_virtual-cluster-distro.webp)
+   The configuration is applied to all virtual clusters launched into the host clusters. Virtual clusters use the CNCF
+   Kubernetes distribution. Use the **Advanced Config** for further customization.
 
    The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
 

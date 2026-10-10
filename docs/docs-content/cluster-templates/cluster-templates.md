@@ -109,8 +109,7 @@ guide.
 
 ## Limitations
 
-- Cluster templates can be used to deploy new clusters only. Certain Day-2 operations, such as attaching a cluster
-  template to an existing cluster and detaching clusters from cluster templates, are not supported at this time.
+- Detaching a cluster from a cluster template is not supported at this time.
 
 - Rollbacks are not supported at this time.
 

@@ -24,6 +24,8 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 
 ### Specific Versions
 
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette" />
+
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette" />
@@ -31,8 +33,6 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
-
-- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette" />
 
 ## Prerequisites
 

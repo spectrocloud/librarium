@@ -808,6 +808,78 @@
         ]
       }
     },
+    "/v1/edge-mgmt/cluster/{clusterName}/machine-pools/{poolName}/hosts/{hostUid}/overrides": {
+      "put": {
+        "description": "Sets the taints and labels that apply to a single host, leaving the rest of the cluster\nconfiguration untouched. An empty taint list or label map clears them.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Set the taints and labels for a single host",
+        "operationId": "v1SetHostOverrides",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the cluster the host belongs to",
+            "name": "clusterName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Name of the machine pool the host belongs to",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Uid of the host to configure",
+            "name": "hostUid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeHostOverrides"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "Cluster, machine pool or host not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/v1/edge-mgmt/clusters/archive/embedded/details": {
       "get": {
         "description": "parses the cluster-config archive.",
@@ -4837,6 +4909,9 @@
             "$ref": "#/definitions/v1PackInfo"
           }
         },
+        "tags": {
+          "type": "string"
+        },
         "type": {
           "type": "string"
         },
@@ -5507,6 +5582,13 @@
           "default": false,
           "x-omitempty": false
         },
+        "additionalLabels": {
+          "description": "Additional labels applied to this host's node only. These are merged with the labels declared on the machine pool, with the value here winning where both declare the same key.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "caCert": {
           "description": "CACert for TLS connections",
           "type": "string"
@@ -5557,6 +5639,13 @@
           },
           "x-omitempty": true
         },
+        "taints": {
+          "description": "Taints applied to this host's node only. A taint here replaces the machine pool taint sharing its key and effect.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
+        },
         "twoNodeCandidatePriority": {
           "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
           "type": "string",
@@ -5564,6 +5653,26 @@
             "primary",
             "secondary"
           ]
+        }
+      }
+    },
+    "v1EdgeNativeHostOverrides": {
+      "description": "The taints and labels that apply to a single host, on top of its machine pool's",
+      "type": "object",
+      "properties": {
+        "additionalLabels": {
+          "description": "Additional labels applied to this host's node only, merged with the machine pool's",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "taints": {
+          "description": "Taints applied to this host's node only, replacing a machine pool taint with the same key and effect",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
         }
       }
     },
