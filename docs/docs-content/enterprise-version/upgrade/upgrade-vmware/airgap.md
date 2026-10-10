@@ -23,19 +23,22 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 ### Specific Versions
 
-- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
-
-- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 - **(4.8.x to 4.9.23+)** Direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported, because they
   skip a Kubernetes minor version. Upgrade to a `4.9.x` release on Kubernetes `1.33.10` first (we recommend `4.9.14`),
   then upgrade to your target `4.9.23` or later release. Refer to the
   [Kubernetes Version Constraint](../upgrade.md#kubernetes-version-constraint) section for details.
+
+- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+
 - **(pre-4.6.32 to 4.6.32)** When upgrading airgapped self-hosted Palette to version 4.6.32, the IPAM controller may
   report an `Exhausted IP Pools` error despite having available IP addresses, preventing the cluster from upgrading.
   This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this,
   delete the orphaned IP claim and re-run the upgrade. Refer to
   [Scenario - IP Pool Exhausted During Airgapped Upgrade](../../../troubleshooting/enterprise-install.md#scenario---ip-pool-exhausted-during-airgapped-upgrade)
   for additional information.
+
 - **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette version that is older than 4.4.14, ensure that you
   have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to
   the [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
