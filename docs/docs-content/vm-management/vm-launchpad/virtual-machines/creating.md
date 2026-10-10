@@ -160,7 +160,7 @@ deploy a VM.
     | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
     | **Devices**          | **Headless**                  | Create the VM without a graphics device.                                                                      |
     | **Devices**          | **Video Type**                | Select **VGA**, **Virtio**, or **Bochs**.                                                                     |
-    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
+    | **Devices**          | **TPM Device**                | Add a Trusted Platform Module. Select **Persistent TPM State** to keep the TPM state in persistent storage.   |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
     | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
     | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
@@ -182,6 +182,19 @@ deploy a VM.
     a signed guest boot chain, or leave both settings disabled so that the VM uses BIOS.
 
     :::
+
+    If you enable **Persistent EFI Variables** or **Persistent TPM State**, KubeVirt stores that state on a
+    PersistentVolumeClaim (PVC). **Secure Boot** alone does not need one. The StorageClass for the PVC must support the
+    `Filesystem` volume mode. KubeVirt uses the first StorageClass that it finds in the following order:
+
+    - The StorageClass set in `spec.configuration.vmStateStorageClass` on the `KubeVirt` resource. To set it, select
+      **Open YAML** on the [KubeVirt Configuration](../kubevirt-configuration.md#configure-kubevirt) page.
+
+    - The StorageClass annotated with `storageclass.kubevirt.io/is-default-virt-class: "true"`.
+
+    - The cluster's default StorageClass.
+
+    If KubeVirt finds none of these StorageClasses, the VM does not start.
 
     :::info
 
