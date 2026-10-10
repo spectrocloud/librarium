@@ -41,12 +41,26 @@ through LINSTOR [storage pools](#storage-pools). On the Portworx variant, create
 StorageClasses define how VMO provisions PersistentVolumeClaims (PVCs). From **Infrastructure** > **Storage**, you can
 perform the following StorageClass operations.
 
-| Operation       | Description                                                                                                                      |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **List**        | View all StorageClasses in the cluster.                                                                                          |
-| **Create**      | Create a new StorageClass, when the underlying provider supports it.                                                             |
-| **Delete**      | Remove a StorageClass. If any PVCs or DataVolumes use the StorageClass, VMO blocks the deletion and lists the dependent volumes. |
-| **Set default** | Mark one StorageClass as the cluster default. New PVCs that do not specify a StorageClass use the default.                       |
+| Operation                   | Description                                                                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **List**                    | View all StorageClasses in the cluster.                                                                                               |
+| **Create**                  | Create a new StorageClass, when the underlying provider supports it.                                                                  |
+| **Delete**                  | Remove a StorageClass. If any PVCs or DataVolumes use the StorageClass, VMO blocks the deletion and lists the dependent volumes.      |
+| **Set default**             | Mark one StorageClass as the cluster default. New PVCs that do not specify a StorageClass use the default.                            |
+| **Enable for VM Workloads** | Make an existing StorageClass available for VM disks and volumes. The **VM Workloads** column shows which StorageClasses are enabled. |
+
+### Enable a StorageClass for VM Workloads
+
+VMs can use only StorageClasses that are enabled for VM workloads. On the Portworx variant, Portworx creates its own CSI
+StorageClasses, such as `px-csi-db`, when the [Portworx storage cluster](#storage-clusters) is running. You can also
+[create a StorageClass](#create-a-storageclass) with **Allow for VMs** selected.
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Storage Classes**.
+
+2. Check the **VM Workloads** column of the StorageClass.
+
+3. If the StorageClass is not enabled, right-click it or open its detail page, and then select **Enable for VM
+   Workloads**.
 
 ### Create a StorageClass
 
@@ -185,11 +199,6 @@ On the Portworx variant, you manage node-local devices through the [Storage Clus
 Only the Portworx storage backend uses a Kubernetes `StorageCluster` object. The storage-cluster operations available to
 you depend on the [appliance variant](../install.md#install) you install.
 
-<!-- TODO(PVM-1184): the vmo-manager handoff describes this tab as read-focused with the appliance overlay setting
-deployCluster: false so VMO owns the StorageCluster, but Yin's walkthrough shows a manual New Portworx Storage Cluster
-wizard (Sumit flagged that recording as a vCenter/POC scenario). Confirm with Sumit/Engineering when the manual create
-path applies vs. when VMO auto-provisions the cluster on the HA appliance, before this PR moves out of Draft. -->
-
 <Tabs groupId="storage-backend">
 
 <TabItem value="piraeus" label="Piraeus/LINSTOR">
@@ -205,16 +214,11 @@ configuration. Refer to [Storage Pools](#storage-pools) for more information.
 
 On appliances that use the Portworx storage backend, the **Storage** page includes an extra **Portworx Storage
 Clusters** tab that does not appear on Piraeus/LINSTOR appliances. The Portworx pack installs the Portworx operator
-without deploying a cluster, and VMO manages the resulting Portworx `StorageCluster`. Use this tab to review the
-cluster's configuration and status. The tab also provides a **New Portworx Storage Cluster** wizard for deployments
-where you provision the cluster yourself.
-
-**Review a Portworx Storage Cluster**
-
-1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
-
-2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
-   cluster size, capacity used, and capacity total.
+without deploying a cluster, so you create the Portworx `StorageCluster` with the **New Portworx Storage Cluster**
+wizard. Create one storage cluster for each VM Launchpad cluster. The VM Launchpad cluster must have three control plane
+nodes, or one control plane node and three worker nodes. When the storage cluster is running, Portworx creates its CSI
+StorageClasses. Refer to [Enable a StorageClass for VM Workloads](#enable-a-storageclass-for-vm-workloads) to use one of
+them for VMs.
 
 **Create a Portworx Storage Cluster**
 
@@ -257,7 +261,8 @@ for instructions.
 
 7. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
 
-8. Review the **Summary** and confirm **Validation** reports no issues, then select **Save**.
+8. Review the **Summary** and confirm that **Validation** reports no issues, and then select **Save** in the upper-right
+   corner.
 
 :::warning
 
@@ -265,6 +270,14 @@ Portworx claims and formats the disks and devices you select in the **Storage** 
 nothing you need before you save the cluster.
 
 :::
+
+**Review a Portworx Storage Cluster**
+
+1. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**.
+
+2. Select a Portworx `StorageCluster` to review its configuration, status, and cluster metrics such as nodes online,
+   cluster size, capacity used, and capacity total. The **Phase** is `Initializing` while Portworx starts, `Running`
+   when the storage cluster is ready, and `Degraded` if the installation failed or while you delete the storage cluster.
 
 </TabItem>
 
