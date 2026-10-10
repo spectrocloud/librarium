@@ -31,6 +31,8 @@ This guide takes you through the process of upgrading a self-hosted Palette Vert
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
+
 - **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that
   you have executed the utility script to make the CNS mapping unique for the associated PVC. For more information,
   refer to the

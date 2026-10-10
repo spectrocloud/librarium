@@ -35,6 +35,8 @@ Kubernetes.
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette VerteX" />
+
 ## Prerequisites
 
 <PartialsComponent category="self-hosted" name="helm-client-version" />
