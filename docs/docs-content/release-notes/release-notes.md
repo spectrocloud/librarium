@@ -498,7 +498,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- COMPONENT UPDATES TICKET: DOC-3276 -->
 <!-- RELEASE DATE: October 9, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.a -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
 <!-- RELEASE ARTIFACT STUDIO:  -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.3 -->
 
@@ -508,8 +508,6 @@ The following components have been updated for Palette version 4.10.25.
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.3  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.3  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.25 |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.25 |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
 
