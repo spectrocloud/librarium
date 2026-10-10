@@ -16,6 +16,8 @@ This guide walks you through the **Getting Started** wizard.
 - Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
   admin credentials configured during cluster creation.
 
+- On the Portworx variant, a cluster with three control plane nodes, or one control plane node and three worker nodes.
+
 ## Initial VM Launchpad Configuration
 
 Complete the following required configuration steps before you [create your first VM](./quick-start.md). The storage
@@ -84,40 +86,41 @@ steps in the **Getting Started** wizard depend on the storage backend of your [a
 The Portworx variant's **Getting Started** wizard does not include the **Set Up a Storage Pool** and **Review Storage
 Policy** steps, because Portworx stores VM disks in a Portworx storage cluster instead of LINSTOR storage pools.
 
-Before you start, make sure that the VM Launchpad cluster has three control plane nodes, or one control plane node and
-three worker nodes. On VMware vSphere VMs, also set the disks that Portworx uses to non-rotational. Otherwise, the
-storage cluster does not initialize. Refer to
+On VMware vSphere VMs, set the disks that Portworx uses to non-rotational before you start. Otherwise, the storage
+cluster does not initialize. Refer to
 [Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs](./troubleshooting.md#scenario---portworx-storage-cluster-does-not-initialize-on-vmware-vsphere-vms).
 
 1. Select **Create a Portworx Storage Cluster**. The wizard opens the **New Portworx Storage Cluster** form.
 
-2. Complete the form, and then select **Save** in the upper-right corner. Create one storage cluster for each VM
-   Launchpad cluster. Refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters) for the form fields and
-   the disks that Portworx claims.
+2. Complete the form, and then select **Save** in the upper-right corner. For the form fields and the Pure FlashArray
+   settings, refer to [Storage Clusters](./infrastructure/storage.md#storage-clusters).
 
    :::warning
 
-   Portworx claims and formats the disks and devices that you select in the **Storage** section. Confirm that each disk
-   carries nothing you need before you save the storage cluster.
+   If you select **Local disks (software-defined)**, Portworx claims and formats the disks and devices that you select
+   in the **Storage** section. Confirm that each disk carries nothing you need before you save the storage cluster.
 
    :::
 
-3. Wait until the storage cluster is running. From the VMO left main menu, select **Infrastructure** > **Storage** >
-   **Portworx Storage Clusters**, and check the **Phase** of your storage cluster. Check it even if the **Getting
-   Started** wizard already marks this step complete, because Portworx might still be initializing.
+3. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and wait until
+   the **Phase** of your storage cluster is `Running`. Check the **Phase** even if the **Getting Started** wizard
+   already shows the step as complete, because Portworx might still be initializing.
 
-   | **Phase**      | **Meaning**                                                                                         |
-   | -------------- | --------------------------------------------------------------------------------------------------- |
-   | `Initializing` | Portworx is starting.                                                                               |
-   | `Running`      | The storage cluster is ready, and Portworx has created its CSI StorageClasses, such as `px-csi-db`. |
-   | `Degraded`     | The installation failed, or you are deleting the storage cluster.                                   |
+   | **Phase**      | **Description**                                                                                                           |
+   | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
+   | `Initializing` | Portworx is starting.                                                                                                     |
+   | `Running`      | The storage cluster is ready. Portworx creates its Container Storage Interface (CSI) StorageClasses, such as `px-csi-db`. |
+   | `Degraded`     | The installation failed, or you are deleting the storage cluster.                                                         |
+
+   If the **Phase** is `Degraded` and you are not deleting the storage cluster, refer to
+   [Troubleshooting](./troubleshooting.md).
 
 4. Return to the **Getting Started** wizard, and select **Set Up a Storage Class**.
 
 5. Choose a StorageClass for your VMs. VMs can use only StorageClasses that are enabled for VM workloads.
 
-   - To use a StorageClass that Portworx created, check its **VM Workloads** column. If the class is not enabled,
-     right-click the class or open its detail page, and then select **Enable for VM Workloads**.
+   - To use a StorageClass that Portworx created, enable it for VM workloads. Refer to
+     [Enable a StorageClass for VM Workloads](./infrastructure/storage.md#enable-a-storageclass-for-vm-workloads).
 
    - To create a StorageClass, select **Create Storage Class**, and then confirm that **Allow for VMs** is selected.
      Refer to [Create a StorageClass](./infrastructure/storage.md#create-a-storageclass) for the fields and the Portworx
