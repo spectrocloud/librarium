@@ -196,8 +196,8 @@ Charts.
 Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF)
 distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure
 providers, public cloud providers, and private data center providers. This is the default distribution when deploying a
-Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s,
-Konvoy, and more, should you want to consume a different Kubernetes distribution.
+Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as Konvoy and
+more, should you want to consume a different Kubernetes distribution.
 
 PXK is different from the upstream open source Kubernetes version primarily because of the carefully reviewed and
 applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
@@ -205,10 +205,10 @@ to using an OS configuration that follows industry best practices. Our recompile
 common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
-plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as MicroK8s,
-RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable
-different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional
-overhead or complexity needed from your side.
+plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as RKE2 and K3s,
+come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different
+interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or
+complexity needed from your side.
 
 There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open
 source Kubernetes distribution.
@@ -239,8 +239,8 @@ PXK-E manages the underlying OS and the Kubernetes layer together, which reduces
 maintaining two separate components.
 
 PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces
-(CNI). Other open source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
-is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
+(CNI). Other open source Kubernetes distributions such as RKE2 and K3s come with a default CSI and CNI. There is
+additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
 distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and
 complexity.
 

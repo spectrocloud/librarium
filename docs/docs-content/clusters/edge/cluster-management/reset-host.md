@@ -35,7 +35,9 @@ If your Edge host is part of a cluster, resetting the Edge host will bring down 
 your cluster architecture, this may disrupt your cluster workloads or even bring down your entire cluster with limited
 options for recovery. If possible, always
 [remove the node from the cluster first through scaling down](../../cluster-management/node-pool.md#change-a-node-pool)
-before resetting the node.
+before resetting the node. To replace a control plane host, refer to
+[Replace a Control Plane Edge Host](control-plane-host-replacement.md) instead, which preserves etcd quorum throughout
+the replacement.
 
 ## Prerequisites
 
