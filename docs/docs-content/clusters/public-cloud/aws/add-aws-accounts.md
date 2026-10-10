@@ -497,4 +497,3 @@ learn how to get started with deploying Kubernetes clusters to AWS, check out th
 
 - [Create and Manage AWS IaaS Cluster](create-cluster.md)
 - [Create and Manage AWS EKS Cluster](eks.md)
-- [EKS Hybrid Nodes](./eks-hybrid-nodes/eks-hybrid-nodes.md)
