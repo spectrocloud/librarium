@@ -11,7 +11,109 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 9, 2026 - Release 4.10.a {#release-notes-4.10.a}
+## October 9, 2026 - PaletteAI VM Launchpad 4.10.20 {#vm-launchpad-4.10.20}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
+
+This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.25.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.20}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1220 -->
+
+- Only the Platform Admin VMO role can now create, edit, and delete cluster-scoped instance types and preferences. Users
+  with the Editor role can still view and select them, but can no longer change them. Assign the Platform Admin role to
+  users who manage cluster-scoped instance types and preferences. Refer to
+  [VMO Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md).
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-827 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1256 -->
+
+- PaletteAI VM Launchpad can now forward appliance metrics and logs to backends that accept the OpenTelemetry Protocol
+  (OTLP) over HTTP, as well as to Splunk HTTP Event Collector (HEC). The **Forwarding URL** determines the protocol. The
+  **Logs** section of the **Metrics and Logs** page now controls log delivery and has its own **Forwarding Token** and
+  **CA Certificate** settings. Both sections have a new **Skip TLS Verification** setting, which is off by default. When
+  **Metrics Forwarding** is enabled, the appliance also forwards its logs to the metrics receiver unless you configure
+  the **Logs** section. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1213 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1297 -->
+
+- Portworx appliances now support Everpure FlashArray as a storage backend for the Portworx storage cluster. Refer to
+  [Storage](../vm-management/vm-launchpad/infrastructure/storage.md#storage-clusters).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1236 -->
+
+- Non-FIPS appliances now use hardened images for the MetalLB, Local Path Provisioner, Traefik, Piraeus, and Registry
+  Connect packs, and for the VMO pack components where a hardened image is available.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1100 -->
+
+- Fixed an issue that caused namespaces enabled for virtual machines to disappear from the VMO UI after an update to the
+  VMO pack, leaving only the `default` namespace.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1221 -->
+
+- Fixed an issue that caused the namespace list in the **Upload ISO** form to include namespaces that the user could not
+  access, so the upload failed with a permission error after it started. The namespace lists in the **Upload ISO** and
+  **Build Golden Image** forms now show only namespaces that the user can access.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1265 -->
+
+- Fixed an issue that prevented single-node non-FIPS Piraeus appliances from storing images in the appliance registry,
+  so cluster bootstrap failed and pods remained in `ImagePullBackOff`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1268 -->
+
+- Fixed an issue that hid the sub-steps and tips of a **Getting Started** wizard step after you completed the step. You
+  can now reopen them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1272 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1266 -->
+
+- Fixed an issue that caused VMO to delete uploaded images about 30 minutes after the upload started. VMO no longer
+  deletes uploads that remain in the `UploadReady` phase, so remove abandoned uploads manually.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused the **Create VM** wizard to create a `Filesystem` PersistentVolumeClaim (PVC) instead of a
+  `Block` PVC when the root disk of a virtual machine template imports from a container registry. The disk import failed
+  with `qemu-img: Could not create '/data/disk.img': Permission denied`, or the PVC remained `Pending`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1278 -->
+
+- Fixed an issue that caused virtual machines created from an edited template to fail with
+  `disks[0].Name 'datavolume-os' not found`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1294 -->
+
+- Fixed an issue that prevented virtual machines on non-FIPS Portworx appliances from attaching volumes from a
+  ReadWriteMany (RWX) storage class, which also caused live migration to fail. The appliance image now includes the NFS
+  packages that Portworx requires, for both new installations and upgraded appliances.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1301 -->
+
+- Fixed an issue that marked the **Set Up a Storage Class** step of the **Getting Started** wizard as complete when you
+  opened the **Create Storage Class** wizard and canceled it without creating a StorageClass.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1310 -->
+
+- Fixed an issue that caused VMO Manager to run out of memory and restart when multiple users logged in at the same
+  time. Each restart logged out every user.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1321 -->
+
+- Fixed an issue that caused a stopped virtual machine to show **Stopping** indefinitely, with no error, when its disk
+  could not be provisioned. The virtual machine now shows **Stopped**, and a banner explains why the disk cannot be
+  provisioned.
+
+## October 9, 2026 - Release 4.10.25 {#release-notes-4.10.a}
 
 ### Security Notices
 
@@ -125,17 +227,6 @@ tags: ["release-notes"]
   [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md#upgrade-cluster-group) for more information.
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-
-- **User action required:** The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS
-  certificate of their internal Zot registry automatically. Rotation is turned off by default when you upgrade. After
-  you upgrade, resume any paused agent upgrades, wait for the Palette agent upgrade to complete, and then turn on
-  **Enable Certificate Rotation** in the Local UI. If you leave rotation turned off, the registry certificate eventually
-  expires, unless you rotate it manually. Refer to the Upgrade Notes for
-  [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
-  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
@@ -306,7 +397,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.a Palette release is 4.10.a.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.25 Palette release is 4.10.8.
 
 :::
 
@@ -337,8 +428,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   request. To remove a host, reduce `poolConfig.size` and omit the host from `cloudConfig.edgeHosts`. Refer to
   [Node-level Taints and Labels for Edge Native](../clusters/cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native)
   for more information.
-
-#### Upgrade Notes {#upgrade-notes-edge-4.10.a}
 
 #### Features
 
@@ -440,30 +529,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
 
-#### Deprecations and Removals
-
 ### VerteX
-
-#### Breaking Changes {#breaking-changes-vertex-4.10.a}
-
-#### Upgrade Notes {#upgrade-notes-vertex-4.10.a}
 
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.a) for more details.
 
-#### Improvements
-
-#### Bug Fixes
-
 ### Virtual Machine Orchestrator (VMO)
 
 #### VMO Pack
-
-##### Breaking Changes {#breaking-changes-vmo-pack-4.10.a}
-
-##### Features
 
 ##### Improvements
 
@@ -484,54 +559,32 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   cluster and the uninstall strategy was `BlockUninstallIfWorkloadsExist`. The removal now stops before it deletes any
   components, so disk imports, cloning, and VM provisioning continue to work.
 
-##### Deprecations and Removals
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.a}
-
-##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.a}
-
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-##### Deprecations and Removals
-
 ### Automation
 
 <!-- release-notes-automation-callout-4.10.a-start -->
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.a Palette release is
-4.10.a. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.25 Palette release is
+4.10.9. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
 <!-- release-notes-automation-callout-4.10.a-end -->
 
-#### Breaking Changes {#breaking-changes-automation-4.10.a}
-
 #### Features
 
 <!-- release-notes-automation-features-4.10.a-start -->
 
-- Terraform version 4.10.a of the
+- Terraform version 0.30.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.10.a of the
+- Crossplane version 0.30.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 <!-- release-notes-automation-features-4.10.a-end -->
-
-#### Improvements
-
-#### Bug Fixes
-
-#### Deprecations and Removals
 
 ### Docs and Education
 
@@ -543,7 +596,98 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   now includes the `iam:ListRoles` action, which Palette uses to delete the IRSA roles it manages when you delete an EKS
   cluster. Refer to the [Upgrade Notes](#upgrade-notes-4.10.a) for the action required on existing EKS clusters.
 
-<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+### October 9, 2026 - Component Updates {#component-updates-2026-41}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3276 -->
+<!-- RELEASE DATE: October 9, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.3 -->
+
+The following components have been updated for Palette version 4.10.25.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.3  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.3  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4794 -->
+
+- Updated Kubernetes core and edge pack distributions across supported minor versions to include pause image
+  enhancements and upgrade constraints.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4830 -->
+
+- Updated Kubernetes pack distributions with the latest maintenance releases and configuration improvements.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1156 -->
+
+- Added support for deploying the `spectro-mgmt-plane` management chart on Amazon EKS 1.36 clusters.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4795 -->
+
+- Fixed an issue in MetalLB 0.16.1 Helm packs where liveness and readiness probe ports could not be customized.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4834 -->
+
+- Fixed an issue in Piraeus where RWX (NFS) volumes remained unmountable on single-node clusters when creating multiple
+  RWX persistent volume claims simultaneously.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2463 -->
+
+- Fixed a Terraform provider issue where EKS clusters were destroyed and recreated on every apply when
+  `cloud_config.azs` was configured.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
+
+#### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3276. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.2 |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.9.6 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.1 |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.23.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.23.2 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0-rev1 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.1 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.36.0 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
+| <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.23.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.11.0 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.0 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.2-rev2 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.0 |
+| <VersionedLink text="lb-metallb-helm" url="/integrations/packs/?pack=lb-metallb-helm" /> | `addon` | :white_check_mark: | :x: | 0.16.1-rev2 |
+| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.7.1 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.0.2 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.12.0 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.12.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.35.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.8.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 91.9.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.6.1 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :x: | 0.1.125 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3276. DO NOT DELETE. -->
 
 ## October 6, 2026 - Release 4.10.17-patch.5
 
