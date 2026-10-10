@@ -2683,7 +2683,7 @@
       "type": "object"
     },
     "v1AwsCloudHybridConfigEntity": {
-      "description": "AWS cloud hybrid config entity",
+      "description": "Deprecated: EKS Hybrid Nodes is deprecated. AWS cloud hybrid config entity",
       "properties": {
         "hybridConfig": {
           "$ref": "#/definitions/v1AwsHybridConfig"
@@ -2704,7 +2704,7 @@
         },
         "hybridConfig": {
           "$ref": "#/definitions/v1AwsHybridConfig",
-          "description": "AWS hybrid cluster config"
+          "description": "Deprecated: EKS Hybrid Nodes is deprecated. AWS hybrid cluster config"
         },
         "overrideClusterAPIConfig": {
           "description": "YAML override for CAPI properties at cluster level.\nOverrides pack-level and Palette-managed values. See PCP-4787.\n",
@@ -2860,7 +2860,7 @@
       "type": "object"
     },
     "v1AwsHybridConfig": {
-      "description": "AwsHybridConfig specifies the AWS Hybrid configuration for the cluster",
+      "description": "Deprecated: EKS Hybrid Nodes is deprecated. AwsHybridConfig specifies the AWS Hybrid configuration for the cluster.",
       "properties": {
         "awsVpcCidr": {
           "description": "AWS VPC CIDR is the CIDR of the AWS/EKS cluster's VPC",
@@ -3236,6 +3236,11 @@
             "spot"
           ],
           "type": "string"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "hostResourceGroupArn": {
           "description": "ARN of AWS Host Resource Group for node placement on dedicated hosts",
@@ -4429,6 +4434,11 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
@@ -9210,6 +9220,7 @@
           "enum": [
             "Created",
             "Pending",
+            "Attached",
             "InProgress",
             "Applied",
             "Failed"
@@ -9249,6 +9260,7 @@
           "enum": [
             "Created",
             "Pending",
+            "Attached",
             "InProgress",
             "Applied",
             "Failed"
@@ -9684,6 +9696,66 @@
         },
         "status": {
           "$ref": "#/definitions/v1ClusterTemplateStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterTemplateAttachFilter": {
+      "properties": {
+        "clusterTemplateName": {
+          "$ref": "#/definitions/v1FilterString"
+        },
+        "clusterUid": {
+          "description": "The UID of the target cluster the templates are evaluated against",
+          "type": "string"
+        },
+        "includeInEligibleTemplates": {
+          "default": false,
+          "description": "When true, returns both eligible and ineligible templates with per-item reasons; when false, only eligible templates are returned",
+          "type": "boolean"
+        },
+        "tags": {
+          "$ref": "#/definitions/v1FilterArray"
+        }
+      },
+      "required": [
+        "clusterUid"
+      ],
+      "type": "object"
+    },
+    "v1ClusterTemplateAttachItem": {
+      "description": "A cluster template with its attach eligibility for the target cluster",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterTemplateSummarySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ClusterTemplateAttachStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterTemplateAttachStatus": {
+      "description": "Indicates whether this cluster template can accept the target cluster",
+      "properties": {
+        "inUseClusters": {
+          "items": {
+            "$ref": "#/definitions/v1ObjectEntity"
+          },
+          "type": "array"
+        },
+        "isEligible": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -10228,6 +10300,40 @@
       },
       "required": [
         "profiles"
+      ],
+      "type": "object"
+    },
+    "v1ClusterTemplatesAttachFilterSpec": {
+      "description": "Filter and sort spec for the attach-eligible cluster templates list",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1ClusterTemplateAttachFilter"
+        },
+        "sort": {
+          "items": {
+            "$ref": "#/definitions/v1ClusterTemplatesSortSpec"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      }
+    },
+    "v1ClusterTemplatesAttachSummary": {
+      "description": "Cluster templates evaluated for attach to a specific cluster",
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1ClusterTemplateAttachItem"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      },
+      "required": [
+        "items"
       ],
       "type": "object"
     },
@@ -13339,6 +13445,13 @@
           "type": "boolean",
           "x-omitempty": false
         },
+        "additionalLabels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Per-host additional labels. Merged with pool-level additionalLabels; host-level values win on key collision.\n",
+          "type": "object"
+        },
         "caCert": {
           "description": "CACert for TLS connections",
           "type": "string"
@@ -13366,6 +13479,13 @@
         "staticIP": {
           "description": "Deprecated. Edge host static IP",
           "type": "string"
+        },
+        "taints": {
+          "description": "Per-host taints. Combined with pool-level taints; a host-level taint overrides a pool-level taint with the same key and effect.\n",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          },
+          "type": "array"
         },
         "twoNodeCandidatePriority": {
           "description": "Sets the Edge Host candidate priority as either primary or secondary. This field is applicable only when the Edge Host is nominated as a two-node candidate. To enable priority assignment, ensure that 'isTwoNodeCluster' is set to true.\n",
@@ -13561,6 +13681,11 @@
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
         },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "hosts": {
           "items": {
             "$ref": "#/definitions/v1EdgeNativeHost"
@@ -13668,6 +13793,13 @@
     },
     "v1EdgeNativeMachinePoolHostEntity": {
       "properties": {
+        "additionalLabels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Per-host additional labels. Merged with pool-level additionalLabels; host-level values win on key collision.\n",
+          "type": "object"
+        },
         "hostName": {
           "description": "Edge host name",
           "type": "string"
@@ -13687,6 +13819,13 @@
         "staticIP": {
           "description": "Deprecated - Edge host static IP",
           "type": "string"
+        },
+        "taints": {
+          "description": "Per-host taints. Combined with pool-level taints; a host-level taint overrides a pool-level taint with the same key and effect.\n",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          },
+          "type": "array"
         },
         "twoNodeCandidatePriority": {
           "description": "Sets the Edge Host candidate priority as either primary or secondary. This field is applicable only when the Edge Host is nominated as a two-node candidate. To enable priority assignment, ensure that 'isTwoNodeCluster' is set to true.\n",
@@ -14209,6 +14348,11 @@
             "spot"
           ],
           "type": "string"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "enableAwsLaunchTemplate": {
           "description": "flag to know if aws launch template is enabled",
@@ -15297,6 +15441,11 @@
           },
           "type": "array"
         },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -15936,6 +16085,10 @@
           "type": "string"
         },
         "sha": {
+          "type": "string"
+        },
+        "version": {
+          "description": "Parsed service version extracted from content",
           "type": "string"
         }
       },
@@ -18503,6 +18656,11 @@
           },
           "type": "array"
         },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "instanceType": {
           "$ref": "#/definitions/v1MaasInstanceType",
           "description": "InstanceType defines the required CPU, Memory"
@@ -19079,6 +19237,11 @@
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
         },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -19184,6 +19347,11 @@
           },
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "isControlPlane": {
           "description": "Whether this pool is for control plane",
@@ -21384,6 +21552,76 @@
       },
       "type": "object"
     },
+    "v1ObservabilityConfig": {
+      "description": "Observability metric sink configuration (response, secrets masked)",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isObservabilityInstalled": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "splunk": {
+          "$ref": "#/definitions/v1ObservabilitySplunkSink"
+        }
+      },
+      "type": "object"
+    },
+    "v1ObservabilityConfigEnabled": {
+      "description": "Partial observability config patch — toggle enabled only",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "type": "object"
+    },
+    "v1ObservabilityConfigEntity": {
+      "description": "Observability metric sink configuration (request)",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "splunk": {
+          "$ref": "#/definitions/v1ObservabilitySplunkSink"
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "type": "object"
+    },
+    "v1ObservabilitySplunkSink": {
+      "description": "Splunk HEC metric sink settings",
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "eventsIndex": {
+          "type": "string"
+        },
+        "metricsIndex": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "tls": {
+          "$ref": "#/definitions/v1TlsConfig"
+        },
+        "token": {
+          "format": "password",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1OciImageRegistry": {
       "description": "Oci Image Registry",
       "properties": {
@@ -21578,6 +21816,33 @@
         },
         "scope": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1OidcCallbackUrls": {
+      "description": "Tenant OIDC callback URLs. allowed entries are complete callback URLs (scheme, host, optional port and path) that OIDC authorization redirects may target; matching semantics are decided by the OIDC authentication layer.",
+      "properties": {
+        "allowWildcard": {
+          "default": false,
+          "description": "When true, allowed entries may use a leading-wildcard host matching any host under that suffix. Default false.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "allowed": {
+          "description": "Registered callback URLs allowed for this tenant, stored as the complete endpoint the admin submits (scheme and host lowercased; port and path preserved; userinfo and fragment rejected; query is preserved). Entries may use a leading-wildcard host (e.g. https://*.sso.example.com) when allowWildcard is true. An empty list clears the registrations; the tenant then allows only the platform defaults (loopback and Palette-domain callbacks) while isEnforced is true.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true,
+          "x-omitempty": false
+        },
+        "isEnforced": {
+          "default": true,
+          "description": "When false, every redirect_uri is allowed for this tenant (no reject). Default true.",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -27757,6 +28022,65 @@
       },
       "type": "object"
     },
+    "v1SpectroClusterAttachEligibilityResponse": {
+      "description": "Cluster template attach eligibility response",
+      "properties": {
+        "isEligible": {
+          "description": "Whether the cluster is eligible to attach to a cluster template",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "reasons": {
+          "description": "Reasons for ineligibility (empty when eligible)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroClusterAttachTemplateEntity": {
+      "description": "Request body for attaching an existing cluster to a cluster template.\nCarries optional per-profile variable values that override the template's\nAssignStrategy=cluster variables at attach time. cluster-strategy variables\nnot supplied here remain UnResolved and can be provided later via the\nexisting update-cluster-template-variables endpoint.\n",
+      "properties": {
+        "spec": {
+          "properties": {
+            "profiles": {
+              "description": "Per-profile variable values to apply at attach.",
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterAttachTemplateProfileEntity"
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroClusterAttachTemplateProfileEntity": {
+      "description": "Per-profile variable values for the attach API.",
+      "properties": {
+        "profileUid": {
+          "description": "UID of the cluster profile whose variables are being set.",
+          "type": "string"
+        },
+        "variables": {
+          "description": "cluster-strategy variables to set on this profile at attach.",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterVariable"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "profileUid"
+      ],
+      "type": "object"
+    },
     "v1SpectroClusterCloudCost": {
       "description": "Spectro cluster cloud cost information",
       "properties": {
@@ -28725,6 +29049,10 @@
           },
           "type": "array",
           "uniqueItems": true
+        },
+        "profileVersion": {
+          "description": "Cluster profile version set by the user, in semantic version format",
+          "type": "string"
         },
         "relatedObject": {
           "$ref": "#/definitions/v1ObjectReference",
@@ -31873,12 +32201,28 @@
       },
       "type": "object"
     },
+    "v1SystemConfigImagePullSecretConfiguredBy": {
+      "description": "who last configured the system DHI image pull secret",
+      "properties": {
+        "name": {
+          "description": "display name of the admin who last configured the secret",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1SystemConfigImagePullSecretSpec": {
       "description": "system DHI image pull secret config spec",
       "properties": {
+        "configuredBy": {
+          "$ref": "#/definitions/v1SystemConfigImagePullSecretConfiguredBy"
+        },
         "imagePullSecret": {
           "description": "base64 encoded docker config JSON",
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
         },
         "tenants": {
           "additionalProperties": {
@@ -34217,6 +34561,32 @@
       },
       "type": "object"
     },
+    "v1TlsConfig": {
+      "properties": {
+        "ca": {
+          "type": "string"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
+        },
+        "key": {
+          "type": "string"
+        },
+        "scheme": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1TlsConfiguration": {
       "description": "TLS configuration",
       "properties": {
@@ -35869,6 +36239,11 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "instanceType": {
           "$ref": "#/definitions/v1VirtualInstanceType",
@@ -39948,6 +40323,11 @@
           },
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
+        },
+        "dedicateNodePoolForSystemPods": {
+          "description": "If enabled, this node pool is dedicated to Palette system pods. Palette applies the reserved taint node.spectrocloud.com/dedicated=true:NoExecute to the pool and its system pods carry the matching toleration. Custom taints cannot be set on a dedicated pool. Supported on EKS and GKE only.",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "instanceType": {
           "$ref": "#/definitions/v1VsphereInstanceType",
@@ -47252,6 +47632,7 @@
         }
       ],
       "put": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1AwsCloudConfigsUidHybridConfig",
         "parameters": [
           {
@@ -47298,6 +47679,7 @@
         }
       ],
       "post": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "V1AwsCloudConfigsEdgeNativeUidMachinePoolCreate",
         "parameters": [
           {
@@ -47344,6 +47726,7 @@
     },
     "/v1/cloudconfigs/aws/{configUid}/edge-native/machinePools/{machinePoolName}": {
       "delete": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolDelete",
         "parameters": [
           {
@@ -47372,6 +47755,7 @@
         ]
       },
       "get": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolGet",
         "parameters": [
           {
@@ -47419,6 +47803,7 @@
         }
       ],
       "put": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolUpdate",
         "parameters": [
           {
@@ -61014,6 +61399,68 @@
         ]
       }
     },
+    "/v1/dashboard/clusterTemplates/attach": {
+      "post": {
+        "operationId": "v1DashboardClusterTemplatesAttach",
+        "parameters": [
+          {
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "maximum": 50,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterTemplatesAttachFilterSpec"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster templates with per-item attach eligibility",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterTemplatesAttachSummary"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves cluster templates eligible for attach to the given cluster. Supported filter fields - [\"clusterUid\", \"includeInEligibleTemplates\"] Supported sort fields - [\"clusterTemplateName\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
     "/v1/dashboard/clusterTemplates/metadata": {
       "get": {
         "operationId": "v1ClusterTemplatesMetadataGet",
@@ -73087,6 +73534,48 @@
         }
       ]
     },
+    "/v1/spectroclusters/clusterTemplates/{uid}/profiles/packs/manifests": {
+      "get": {
+        "operationId": "V1SpectroClustersClusterTemplatesUIDProfilesPacksManifestsGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterProfilesPacksManifests"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the packs and manifests for all the profiles of the specified cluster template",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster template uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/spectroclusters/clusterTemplates/{uid}/validate/repave": {
       "parameters": [
         {
@@ -76194,6 +76683,109 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/clusterTemplates/attach/validate": {
+      "get": {
+        "description": "Read-only check of whether a cluster is eligible to be attached to a\ncluster template. No cluster or template state is modified.\n",
+        "operationId": "v1SpectroClustersAttachValidate",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eligibility check result",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterAttachEligibilityResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Validate cluster eligibility for cluster template attach",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/clusterTemplates/{templateUid}/attach": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Cluster template uid to attach",
+          "in": "path",
+          "name": "templateUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "description": "Binds an existing Palette-provisioned cluster to a cluster template so it comes\nunder template governance. Attach only binds; the target profile set is applied\nby the template's batch reconciler at the next maintenance window. Optional per-\nprofile variable values in the body carry AssignStrategy=cluster variable\noverrides. See the design doc for eligibility rules and error semantics.\n",
+        "operationId": "v1SpectroClustersAttachClusterTemplate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterAttachTemplateEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Attach an existing cluster to a cluster template",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
     "/v1/spectroclusters/{uid}/config/namespaces": {
       "get": {
         "operationId": "v1SpectroClustersUidConfigNamespacesGet",
@@ -78012,6 +78604,7 @@
     },
     "/v1/spectroclusters/{uid}/hybridPools/metadata": {
       "get": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1SpectroClustersGetHybridPoolsMetadata",
         "parameters": [
           {
@@ -78063,6 +78656,7 @@
         }
       ],
       "patch": {
+        "description": "Deprecated: EKS Hybrid Nodes is deprecated. Existing clusters continue to operate; new hybrid configuration is rejected.",
         "operationId": "v1SpectroClustersUidHybridSettings",
         "parameters": [
           {
@@ -83254,7 +83848,7 @@
         "operationId": "V1SystemConfigImagePullSecretGet",
         "responses": {
           "200": {
-            "description": "(empty)",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/v1SystemConfigImagePullSecretSpec"
             }
@@ -84892,6 +85486,134 @@
           }
         ],
         "summary": "Update system login banner settings",
+        "tags": [
+          "system"
+        ]
+      }
+    },
+    "/v1/system/observability/config": {
+      "get": {
+        "operationId": "V1SystemObservabilityConfigGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ObservabilityConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the observability metric sink configuration",
+        "tags": [
+          "system"
+        ]
+      },
+      "put": {
+        "operationId": "V1SystemObservabilityConfigUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ObservabilityConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates or replaces the observability metric sink configuration",
+        "tags": [
+          "system"
+        ]
+      }
+    },
+    "/v1/system/observability/config/enabled": {
+      "patch": {
+        "operationId": "V1SystemObservabilityConfigEnabled",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ObservabilityConfigEnabled"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Toggles the enabled flag on the observability metric sink config without altering sink data",
+        "tags": [
+          "system"
+        ]
+      }
+    },
+    "/v1/system/observability/config/validate": {
+      "post": {
+        "operationId": "V1SystemObservabilityConfigValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ObservabilityConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Validates an observability metric sink configuration without applying it",
         "tags": [
           "system"
         ]
@@ -88968,6 +89690,74 @@
           }
         ],
         "summary": "Update tenant fips setting",
+        "tags": [
+          "tenants"
+        ]
+      }
+    },
+    "/v1/tenants/{tenantUid}/preferences/oidc/callbackUrls": {
+      "get": {
+        "operationId": "v1TenantOidcCallbackUrlsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1OidcCallbackUrls"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get tenant OIDC callback URLs",
+        "tags": [
+          "tenants"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantOidcCallbackUrlsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1OidcCallbackUrls"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update tenant OIDC callback URLs",
         "tags": [
           "tenants"
         ]

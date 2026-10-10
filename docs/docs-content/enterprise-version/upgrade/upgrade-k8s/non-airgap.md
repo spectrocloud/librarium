@@ -24,7 +24,7 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 
 ### Specific Versions
 
-- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
+- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
 
@@ -34,7 +34,7 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
 
-- <PartialsComponent category="self-hosted" name="reach-system-take-ownership" edition="Palette" />
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
 
 ## Prerequisites
 
