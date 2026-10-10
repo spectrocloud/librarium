@@ -11,6 +11,10 @@ A highly available (HA) two-node cluster can withstand the failure of one node a
 However, when a node fails, it is important to either restore the health of the failed node or replace it with a new one
 to maintain high availability. This guide teaches you how to replace a failed node.
 
+This procedure applies to two-node HA clusters. To replace a control plane host in a three-node or five-node centrally
+managed Edge cluster, refer to [Replace a Control Plane Edge Host](control-plane-host-replacement.md) instead, which
+adds the replacement host before removing the original to preserve etcd quorum.
+
 ## Prerequisites
 
 - An active two-node cluster with one of the nodes experiencing failure.
