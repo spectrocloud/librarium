@@ -160,7 +160,7 @@ deploy a VM.
     | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
     | **Devices**          | **Headless**                  | Create the VM without a graphics device.                                                                      |
     | **Devices**          | **Video Type**                | Select **VGA**, **Virtio**, or **Bochs**.                                                                     |
-    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
+    | **Devices**          | **TPM Device**                | Add a Trusted Platform Module. Select **Persistent TPM State** to keep the TPM state in persistent storage.   |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
     | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
     | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
@@ -183,16 +183,18 @@ deploy a VM.
 
     :::
 
-    :::info
+    If you enable **Persistent EFI Variables** or **Persistent TPM State**, KubeVirt stores that state on a
+    PersistentVolumeClaim (PVC). **Secure Boot** alone does not need one. The StorageClass for the PVC must support the
+    `Filesystem` volume mode. KubeVirt uses the first StorageClass that it finds in the following order:
 
-    A VM that keeps persistent firmware state, with **Persistent EFI Variables** enabled or a **TPM** that uses
-    persistent state, stores that state on a PersistentVolumeClaim (PVC). KubeVirt creates the PVC from the StorageClass
-    set in `vmStateStorageClass` on the `KubeVirt` resource, or from the cluster's default StorageClass when that
-    setting is empty. Use a StorageClass that supports the `Filesystem` volume mode. If neither StorageClass is
-    available, the VM does not start. To set `vmStateStorageClass`, refer to
-    [KubeVirt Configuration](../kubevirt-configuration.md).
+    - The StorageClass set in `spec.configuration.vmStateStorageClass` on the `KubeVirt` resource. To set it, select
+      **Open YAML** on the [KubeVirt Configuration](../kubevirt-configuration.md#configure-kubevirt) page.
 
-    :::
+    - The StorageClass annotated with `storageclass.kubevirt.io/is-default-virt-class: "true"`.
+
+    - The cluster's default StorageClass.
+
+    If KubeVirt finds none of these StorageClasses, the VM does not start.
 
     :::info
 
