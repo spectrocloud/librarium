@@ -52,7 +52,15 @@ Machines (VMs) that need to be migrated.
   destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the
   target storage.
 
-  - The VDDK version used must be **8.0.2.1** or earlier.
+  :::warning
+
+  Broadcom no longer offers public VDDK downloads. Downloading VDDK requires a Broadcom account with the appropriate
+  product entitlements and an active vSphere subscription. If you cannot access the download, contact your Broadcom
+  account team or support representative.
+
+  :::
+
+  - Use VDDK 9. The migration engine supports VDDK 9 for migrating source VMs from VMware vSphere 7.0 and 8.0.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
@@ -67,8 +75,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Non-Airgap" value="non-airgap">
 
-    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
-       required.
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). A Broadcom account
+       with the appropriate product entitlements is required.
 
     2. Decompress the downloaded image.
 
@@ -107,8 +115,8 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). An account is
-       required.
+    1. Download the VDDK image from the [Broadcom Developer Portal](https://developer.broadcom.com/). A Broadcom account
+       with the appropriate product entitlements is required.
 
     2. Copy or move the VDDK image to another Linux environment inside your airgap environment.
 
