@@ -22,6 +22,8 @@ remain operational.
 
 ## Upgrade Notes
 
+- <PartialsComponent category="self-hosted" name="zot-certificate-rotation" edition="Palette VerteX" />
+
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
