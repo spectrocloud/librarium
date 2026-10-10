@@ -51,7 +51,7 @@ Portworx is installed. For consistency, you can apply it on every node in the cl
    instructions.
 
 6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
-   that the **Phase** of the storage cluster is `Running` or `Online`.
+   that the **Phase** of the storage cluster is `Running`.
 
 ### Override the Rotational Setting on Each Node
 
@@ -90,7 +90,7 @@ This override takes effect immediately, but it does not persist across reboots. 
    instructions.
 
 6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
-   that the **Phase** of the storage cluster is `Running` or `Online`.
+   that the **Phase** of the storage cluster is `Running`.
 
 ## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
 
