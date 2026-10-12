@@ -1,14 +1,28 @@
+// Fill the panel so that the section links sit at the bottom even when the sidebar is short.
+.secondaryPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+// Sticky rather than absolute, so that the strip takes up space and the last sidebar items scroll into view above it.
 .mobilePrimaryMenu {
-  position: absolute;
-  bottom: 0px;
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
   background: var(--ifm-background-color);
   border-top: 1px solid #f0f0f0;
   width: 100%;
   padding: 0.5rem 0;
-  overflow-x: scroll;
   .mobileMenu {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 0.25rem;
+    > li {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
   }
 }
