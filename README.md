@@ -29,11 +29,18 @@ The recommended local development path uses Docker.
    make init
    ```
 
-3. Add your Palette API key to the `.env` file.
+3. (Optional) To preview pack pages locally, add your Palette API key to the `.env` file and change
+   `DISABLE_PACKS_INTEGRATIONS` to `false`. Without these values, the server still starts and pack pages redirect to the
+   Integrations page.
 
    ```shell
    PALETTE_API_KEY="<your-palette-api-key>"
+   DISABLE_PACKS_INTEGRATIONS=false
    ```
+
+   Replace `<your-palette-api-key>` with your Palette API key. Refer to the
+   [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
+   how to create one.
 
 4. Start the Docker-based local development server.
 
@@ -47,10 +54,18 @@ For the non-Docker setup, refer to [Local Development](./docs/contributing/local
 
 ## Make Documentation Changes
 
-Create a branch for your changes.
+Update your local `master` branch and create a branch for your changes.
 
 ```shell
+git checkout master
+git pull
 git checkout -b <branch_name>
+```
+
+Dependencies change often, so refresh your local Node.js modules to match `package-lock.json`.
+
+```shell
+make ci-local
 ```
 
 Most documentation pages are in the [docs/docs-content](./docs/docs-content/) folder. Products that release on their own
@@ -61,6 +76,9 @@ works. Make changes to the relevant Markdown or MDX files, then preview them loc
 ```shell
 make start
 ```
+
+If you use the Docker setup, run `make docker-start` instead of `make start`. The Docker image installs dependencies
+from `package-lock.json` each time it builds.
 
 When your changes are ready, stage and commit them.
 
@@ -75,11 +93,10 @@ semantic-release prefixes unless you intentionally need to trigger a version cha
 
 Run the checks that match your change before opening a pull request.
 
-| Check               | Command              | More information                                                       |
-| ------------------- | -------------------- | ---------------------------------------------------------------------- |
-| Writing style       | `make check-writing` | [Checks and CI](./docs/contributing/checks-and-ci.md#check-writing)    |
-| Formatting          | `make format-check`  | [Checks and CI](./docs/contributing/checks-and-ci.md#check-formatting) |
-| Full local CI setup | `make ci-local`      | [Release Process](./docs/contributing/release-process.md#commands)     |
+| Check         | Command              | More information                                                       |
+| ------------- | -------------------- | ---------------------------------------------------------------------- |
+| Writing style | `make check-writing` | [Checks and CI](./docs/contributing/checks-and-ci.md#check-writing)    |
+| Formatting    | `make format-check`  | [Checks and CI](./docs/contributing/checks-and-ci.md#check-formatting) |
 
 The content in this repository requires approval from the documentation team. Approval rules are defined in
 [CODEOWNERS](./CODEOWNERS).
