@@ -183,9 +183,13 @@ deploy a VM.
 
     :::
 
-    If you enable **Persistent EFI Variables** or **Persistent TPM State**, KubeVirt stores that state on a
-    PersistentVolumeClaim (PVC). **Secure Boot** alone does not need one. The StorageClass for the PVC must support the
-    `Filesystem` volume mode. KubeVirt uses the first StorageClass that it finds in the following order:
+    **Persistent EFI Variables** and **Persistent TPM State** require the `VMPersistentState` feature gate. If the
+    wizard displays **Requires the VMPersistentState feature gate** under either option, add the gate on the
+    [KubeVirt Configuration](../kubevirt-configuration.md#developer-configuration) page.
+
+    If you enable either option, KubeVirt stores that state on a PersistentVolumeClaim (PVC). **Secure Boot** alone does
+    not need one. The StorageClass for the PVC must support the `Filesystem` volume mode. KubeVirt uses the first
+    StorageClass that it finds in the following order:
 
     - The StorageClass set in `spec.configuration.vmStateStorageClass` on the `KubeVirt` resource. To set it, select
       **Open YAML** on the [KubeVirt Configuration](../kubevirt-configuration.md#configure-kubevirt) page.
