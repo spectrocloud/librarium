@@ -173,7 +173,7 @@ The **Proxied** and **Direct** modes set `tls.certManager.selfSigned` to `true`,
 when the cluster is created with the platform CA components enabled.
 
 In **Custom** mode, either configure your own issuer or set `tls.existingSecret` to the name of a Secret that holds your
-certificate.
+certificate. Refer to [Configure TLS and CA Certificates](./configure-tls-ca-certificates.md) for guidance.
 
 ### Scenario - The Spectro Proxy Does Not Connect
 
