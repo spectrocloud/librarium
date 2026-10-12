@@ -346,11 +346,12 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7662 -->
 
-- Fixed an issue that could cause Palette to
-  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes in
-  clusters first deployed with Palette 4.7 or earlier, after an upgrade of the cluster's Palette agent. The repave
-  started with the next change that should not repave nodes, such as updating `clientConfig.oidc-client-secret` in the
-  Kubernetes pack values or scaling the control plane node pool.
+- Fixed an issue that caused Palette to unexpectedly
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes after
+  a cluster change that should not trigger a repave. This affected clusters first deployed with Palette 4.7 or earlier
+  whose Palette agent was upgraded to version 4.8 or later. The agent upgrade itself did not trigger the repave.
+  Instead, the repave started with the next cluster change, such as updating `clientConfig.oidc-client-secret` in the
+  Kubernetes pack values. With this fix, these changes no longer repave control plane nodes.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7737 -->
 
