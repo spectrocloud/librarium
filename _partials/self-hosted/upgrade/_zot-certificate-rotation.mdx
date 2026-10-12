@@ -3,7 +3,7 @@ partial_category: self-hosted
 partial_name: zot-certificate-rotation
 ---
 
-**(Any to 4.10.a+)** {props.edition} can now rotate the TLS certificate of its internal Zot registry automatically.
+**(Any to 4.10.25+)** {props.edition} can now rotate the TLS certificate of its internal Zot registry automatically.
 Rotation is turned off by default when you upgrade. Do not turn it on during the upgrade, because the clusters that use
 the registry can then fail to pull images. After the upgrade completes, use the following steps to turn it on.
 
@@ -15,7 +15,19 @@ the registry can then fail to pull images. After the upgrade completes, use the 
 
 3. In the Local UI, from the left main menu, select **Cluster**, and then select the **Configuration** tab.
 
-4. In the **Palette Addon Profile** section, turn on **Enable Certificate Rotation**, and then select **Update**.
+4. In **Applications Config**, expand **Container Registry**, turn on **Enable Certificate Rotation**, and then select
+   **Update**.
+
+5. Run the registry CA update script so that {props.edition} trusts the new registry certificate.
+
+   {/* TODO(DOC-3290): Zulfi is uploading the script (group DM C0C8JNS2WE6, 2026-10-12). Add the download link, the
+   script name, its prerequisites (Python 3 and any packages, kubectl access), and when to run it (once after you turn on
+   rotation, or after every rotation). Gaurav's PCOM-934 comment runs it against the appliance kubeconfig:
+   `export KUBECONFIG=<kubeconfig>` then `python3 update_registry_ca.py`. Readers get the kubeconfig from Cluster >
+   Environment > Admin Kubeconfig File. */}
+
+After you turn on rotation, {props.edition} rotates the registry certificate and propagates it to the clusters that it
+manages, so you do not need to update those clusters.
 
 If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires, unless you rotate it
 manually. Clusters can then fail to pull images from the registry.
