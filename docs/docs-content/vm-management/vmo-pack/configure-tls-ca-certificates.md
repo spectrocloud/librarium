@@ -110,16 +110,12 @@ do not need to replace it.
 
 VMO Manager trusts the CAs in its container image, the CA of its Kubernetes cluster, and the CAs in the `ca.crt` key of
 the ConfigMap that `vmo-manager.caCert.configMapName` names. This ConfigMap is `platform-ca-cert` in the `vm-dashboard`
-namespace by default, and the **Proxied** and **Direct** modes always set this name. VMO Manager reads these CAs when it
-starts.
+namespace by default, and the **Proxied** and **Direct** modes always set this name. Palette does not create or manage
+this ConfigMap, so you create it yourself. VMO Manager reads these CAs when it starts.
 
 If your OIDC IdP, such as a self-hosted Palette or Palette VerteX instance, presents a certificate that a private CA
 signed, add that CA to the ConfigMap. Otherwise, VMO Manager cannot reach the IdP, and the `vmo-manager` pod restarts
 with a `Failed to initialize OIDC provider` error that includes `x509: certificate signed by unknown authority`.
-
-<!-- TODO(DOC-3164): confirm with Ahmed or Shubham whether Palette creates or manages platform-ca-cert in vm-dashboard
-on a workload cluster, and whether it already holds the self-hosted Palette or VerteX CA. If Palette manages the
-ConfigMap, these steps must not edit it. -->
 
 1. Export the DNS name of your IdP, without the `https://` prefix. For a self-hosted Palette or Palette VerteX IdP, use
    the DNS name of the instance.
@@ -167,7 +163,7 @@ ConfigMap, these steps must not edit it. -->
    cp cert-01.pem root-ca.pem
    ```
 
-6. Check whether the `platform-ca-cert` ConfigMap already exists.
+6. Check whether the `platform-ca-cert` ConfigMap already exists, for example because you added another CA earlier.
 
    ```shell
    kubectl get configmap platform-ca-cert --namespace vm-dashboard
