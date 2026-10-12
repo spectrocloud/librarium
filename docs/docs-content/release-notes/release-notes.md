@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 9, 2026 - Release 4.8.71
+## October 12, 2026 - Release 4.8.71
 
 <!-- PATCH RELEASE TICKET: DOC-3277 -->
 <!-- PATCH RELEASE VERSION: 4.8.71 -->
