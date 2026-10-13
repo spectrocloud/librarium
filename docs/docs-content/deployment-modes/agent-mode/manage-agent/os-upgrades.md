@@ -275,10 +275,6 @@ the `spectro-task-xxx` namespace.
    kubectl get jobs --namespace $SYSTEM_UPGRADE_NAMESPACE --watch
    ```
 
-   Each node produces one Job named `apply-os-upgrade-plan-on-<node>`. The Job completes once the script exits
-   successfully. If a reboot is required, the first pod on that node ends as a failed attempt when the node goes down,
-   and a replacement pod runs after the node comes back. This is the expected sequence.
-
 9. Confirm which nodes finished.
 
    ```bash
