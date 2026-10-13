@@ -433,6 +433,7 @@ const config = {
           {
             type: "html",
             position: "right",
+            className: "navbar-spectrocloud-link",
             value:
               '<a href="https://spectrocloud.com" target="_blank" rel="noopener noreferrer" aria-label="Go to Spectro Cloud homepage (opens in a new tab)">spectrocloud.com <span aria-hidden="true">↗</span></a>',
           },
