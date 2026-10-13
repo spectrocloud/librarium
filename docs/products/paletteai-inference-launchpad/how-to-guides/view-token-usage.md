@@ -108,8 +108,7 @@ carry an estimated cost at the model's own rates. To set the per-model rates tha
 
 2. Select the **By Client** tab. Each row is one registered client, with its API token count, its local and external
    requests and tokens, its quota entitlement and the share of that entitlement it has spent, its local and external
-   cost, and its estimated savings. For how the cost and savings figures are calculated, refer to
-   [Usage Pricing](../explanation/usage-pricing.md) and [Estimated Savings](../explanation/estimated-savings.md).
+   cost. For how the cost figures are calculated, refer to [Usage Pricing](../explanation/usage-pricing.md).
 
 3. Select a client row to display its API tokens and their individual consumption.
 

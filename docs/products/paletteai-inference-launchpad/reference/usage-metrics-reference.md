@@ -149,16 +149,15 @@ alongside rows for built-in frontier providers. The tab does not split those two
 
 One row per registered client. Selecting a row opens the client's API tokens.
 
-| **Column**                  | **Definition**                                                                                                                                                                                                                                                                                          |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Client**                  | The client name. A client that has reached a quota limit also carries a blocked icon that names each limit reached.                                                                                                                                                                                     |
-| **API Keys**                | The number of API tokens issued to the client, or `none`.                                                                                                                                                                                                                                               |
-| **Local / Egress Requests** | Requests served on the appliance and requests routed externally, reported as a pair.                                                                                                                                                                                                                    |
-| **Local / Egress Tokens**   | Tokens served on the appliance and tokens routed externally, reported as a pair.                                                                                                                                                                                                                        |
-| **Total Local Quota**       | The client's total local token entitlement across the period, or `Unlimited` when the client carries no token limit.                                                                                                                                                                                    |
-| **Local Quota Used**        | The share of that entitlement the client has spent. Reads `—` when there is no entitlement to measure against.                                                                                                                                                                                          |
-| **$ Cost Local / Egress**   | Local cost and external cost, reported as a pair.                                                                                                                                                                                                                                                       |
-| **$ Savings**               | A coarser estimate of the amount avoided by serving the client on the appliance. It prices the client's whole served prompt at the comparison model's fresh input rate, without the split between fresh and cached tokens, so on cache-heavy traffic it can read higher than the appliance-wide figure. |
+| **Column**                  | **Definition**                                                                                                       |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Client**                  | The client name. A client that has reached a quota limit also carries a blocked icon that names each limit reached.  |
+| **API Keys**                | The number of API tokens issued to the client, or `none`.                                                            |
+| **Local / Egress Requests** | Requests served on the appliance and requests routed externally, reported as a pair.                                 |
+| **Local / Egress Tokens**   | Tokens served on the appliance and tokens routed externally, reported as a pair.                                     |
+| **Total Local Quota**       | The client's total local token entitlement across the period, or `Unlimited` when the client carries no token limit. |
+| **Local Quota Used**        | The share of that entitlement the client has spent. Reads `—` when there is no entitlement to measure against.       |
+| **$ Cost Local / Egress**   | Local cost and external cost, reported as a pair.                                                                    |
 
 Local and external figures are paired rather than summed, because a local quota and an external spend cap are separate
 budgets. Hold the pointer over a paired cell to display which figure is which. **Egress** covers traffic to built-in
@@ -170,8 +169,8 @@ The columns on this tab do not sort. To rank clients, export the table and sort 
 The appliance also reports estimated savings across all clients, against two comparison frontier models, measured since
 the appliance first started. It reads, "Serving on-box instead of `<model>` has avoided about `<amount>` across all
 clients since this appliance was first started. Against `<other-model>` the figure is `<amount>`." The figure is never
-negative. Unlike the per-client **$ Savings** column, it prices cache reads separately from fresh input. For the
-calculation and a worked example, refer to [Estimated Savings](../explanation/estimated-savings.md).
+negative, and it prices cache reads separately from fresh input. For the calculation and a worked example, refer to
+[Estimated Savings](../explanation/estimated-savings.md).
 
 ### Client Detail View
 
@@ -296,7 +295,6 @@ the one requested, and the time the file was generated.
 | **Local quota used (%)** | The share of that entitlement spent. Empty when there is no entitlement. |
 | **Cost local (USD)**     | Cost of locally served traffic.                                          |
 | **Cost frontier (USD)**  | Cost of externally routed traffic.                                       |
-| **Savings (USD)**        | Estimated amount avoided by serving on the appliance.                    |
 | **Limits reached**       | Whether the client has reached a quota limit.                            |
 
 Local and external figures are separate columns because they are separate budgets. Adding them together is not

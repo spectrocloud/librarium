@@ -179,8 +179,7 @@ In the console, this request shows as `<$0.01`, because the **Usage** page
 
 Cost, cache reads, and savings each appear in more than one place on the **Usage** page. Every figure comes from the
 same record of each request's fresh input, cache reads, and output tokens. The appliance prices that record at the rates
-in effect when it served the request, so the figures agree with each other. The per-client **Savings** column is the
-exception, because it uses a coarser calculation.
+in effect when it served the request, so the figures agree with each other.
 
 Estimated cost appears as **est. cost** on the **Overview** tab, per model on the **By Model** tab, and per API key. The
 **kept on the Launchpad** tile and the **By Client** tab report the cost of locally served traffic. Cache reads appear

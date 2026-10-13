@@ -2,8 +2,8 @@
 sidebar_label: "Estimated Savings"
 title: "Estimated Savings"
 description:
-  "An explanation of the estimated savings figure in PaletteAI Inference Launchpad: where it appears, how it compares
-  serving on the appliance with a frontier model, and how the per-client Savings column differs."
+  "An explanation of the estimated savings figure in PaletteAI Inference Launchpad: where it appears and how it compares
+  serving on the appliance with a frontier model."
 hide_table_of_contents: false
 sidebar_position: 2.6
 tags: ["paletteai-inference-launchpad", "explanation", "usage", "savings", "cost"]
@@ -23,21 +23,16 @@ keywords:
 
 The **By Client** tab of the **Usage** page reports what serving on the appliance saved, compared with sending the same
 traffic to a frontier model. The figure is an estimated saving. It is a comparison, not money returned. This page
-explains where the figure appears, how the appliance calculates it, and how far you can trust each version of it.
+explains where the figure appears and how the appliance calculates it.
 
 The savings figure builds on the estimated cost of each request, which depends on the four per-model rates and on how
 the appliance prices cache reads. For those, refer to [Usage Pricing](./usage-pricing.md).
 
 ## Where the Savings Figure Appears
 
-The estimated savings figure appears in two places.
-
-- A sentence under the **By Client** table covers every client. It reads, "Serving on-box instead of `<model>` has
-  avoided about `<amount>` across all clients since this appliance was first started." A second sentence gives the
-  figure against the other comparison model.
-
-- A per-client **Savings** column reports an estimate for each client, using the coarser calculation described in
-  [Per-Client Savings Column](#per-client-savings-column).
+The estimated savings figure appears as a sentence under the **By Client** table. It reads, "Serving on-box instead of
+`<model>` has avoided about `<amount>` across all clients since this appliance was first started." A second sentence
+gives the figure against the other comparison model.
 
 ## How the Savings Figure Is Calculated
 
@@ -87,20 +82,13 @@ charge for it either, and the example's cache-write rate does not apply.
 Earlier releases priced every prompt token in the comparison at the fresh input rate, which inflated the savings by the
 share of the prompt answered from cache. The lower figure is the accurate one.
 
-## Per-Client Savings Column
-
-The per-client **Savings** column is a coarser estimate than the sentence under the table. It prices a client's whole
-served prompt at the comparison model's fresh input rate, without the split between fresh and cached tokens. On
-cache-heavy traffic, the per-client figures can therefore add up to more than the appliance-wide figure. Treat the
-appliance-wide sentence as the accurate figure and the per-client column as an estimate.
-
 ## Resources
 
 - [Usage Pricing](./usage-pricing.md) explains what estimated cost is, the four per-model rates, and how cache reads are
   priced.
 
-- [Usage Metrics Reference](../reference/usage-metrics-reference.md#by-client-tab) defines the **$ Savings** column and
-  the appliance-wide savings figure on the **By Client** tab.
+- [Usage Metrics Reference](../reference/usage-metrics-reference.md#by-client-tab) defines the appliance-wide savings
+  figure on the **By Client** tab.
 
 - [View Client Usage](../how-to-guides/view-client-usage.md) walks through reading usage and savings for each client.
 
