@@ -177,15 +177,16 @@ In the console, this request shows as `<$0.01`, because the **Usage** page
 
 ## Where Each Figure Appears
 
-Cost, cache reads, and savings each appear in more than one place on the **Usage** page. Every figure comes from the
-same record of each request's fresh input, cache reads, and output tokens. The appliance prices that record at the rates
-in effect when it served the request, so the figures agree with each other.
+Cost and cache reads each appear in more than one place on the **Usage** page. Every figure comes from the same record
+of each request's fresh input, cache reads, and output tokens. The appliance prices that record at the rates in effect
+when it served the request, so the figures agree with each other.
 
 Estimated cost appears as **est. cost** on the **Overview** tab, per model on the **By Model** tab, and per API key. The
 **kept on the Launchpad** tile and the **By Client** tab report the cost of locally served traffic. Cache reads appear
-in the **On-box token breakdown** card and in the **cached tokens** tile for each API key. For where the savings figures
-appear, refer to [Estimated Savings](./estimated-savings.md#where-the-savings-figure-appears). For the tile-by-tile
-definitions, refer to [Usage Metrics Reference](../reference/usage-metrics-reference.md).
+in the **On-box token breakdown** card and in the **cached tokens** tile for each API key. Estimated savings appear in
+the **Estimated savings** card on the **Overview** page. For details, refer to
+[Estimated Savings](./estimated-savings.md#where-the-savings-figure-appears). For the tile-by-tile definitions, refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 When the appliance answers a request, the response includes a usage summary that the client application reads, such as
 Claude Code. The summary splits the prompt into fresh input and cache reads the same way the **Usage** page does. For

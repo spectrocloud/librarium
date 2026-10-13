@@ -92,8 +92,8 @@ on the client detail view, refer to
   and export field on the **Usage** page.
 - [Usage Pricing](../explanation/usage-pricing.md) explains how the estimated cost and cached tokens on the **By
   Client** tab are calculated.
-- [Estimated Savings](../explanation/estimated-savings.md) explains how the estimated savings on the **By Client** tab
-  are calculated.
+- [Estimated Savings](../explanation/estimated-savings.md) explains how the estimated savings in the **By Client**
+  export are calculated.
 
 ## Next Steps
 

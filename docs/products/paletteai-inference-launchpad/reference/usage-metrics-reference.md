@@ -166,12 +166,6 @@ a request, open the **By Model** tab and look for the **External · egress** lab
 
 The columns on this tab do not sort. To rank clients, export the table and sort it in a spreadsheet.
 
-The appliance also reports estimated savings across all clients, against two comparison frontier models, measured since
-the appliance first started. It reads, "Serving on-box instead of `<model>` has avoided about `<amount>` across all
-clients since this appliance was first started. Against `<other-model>` the figure is `<amount>`." The figure is never
-negative, and it prices cache reads separately from fresh input. For the calculation and a worked example, refer to
-[Estimated Savings](../explanation/estimated-savings.md).
-
 ### Client Detail View
 
 Four tiles summarize the open client.
@@ -281,7 +275,11 @@ The **By Client** tab exports as CSV or PDF. Both formats carry the same columns
 period on screen. Files are named `usage-by-client-<timestamp>.<extension>`.
 
 Each file opens with the report name, the period the figures cover, a note when the figures cover a shorter period than
-the one requested, and the time the file was generated.
+the one requested, and the time the file was generated. The header also carries the estimated savings against Opus 4.8
+and against GPT-5, the same figures as the **Estimated savings** card on the **Overview** page. When the savings cover a
+different period from the table, the header names that period. A savings figure that the appliance could not measure
+reads `not measured`. For how the savings are calculated, refer to
+[Estimated Savings](../explanation/estimated-savings.md).
 
 | **Field**                | **Definition**                                                           |
 | ------------------------ | ------------------------------------------------------------------------ |
