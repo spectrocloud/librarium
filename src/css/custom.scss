@@ -283,7 +283,6 @@ p img.markdown-image {
   cursor: pointer;
   transition: background-color 0.3s;
   display: inline-flex;
-  flex-shrink: 0;
   align-items: center;
   gap: 0.5rem;
 
@@ -309,7 +308,7 @@ p img.markdown-image {
 // widths. Below 997px, Docusaurus switches to the mobile menu.
 
 @media (min-width: 997px) {
-  .navbar {
+  :root {
     --ifm-navbar-padding-horizontal: 1rem;
   }
 
@@ -317,25 +316,35 @@ p img.markdown-image {
     flex-shrink: 0;
   }
 
-  .navbar__item,
-  .navbar__link {
+  // Keep "latest" next to its caret. Other labels can still wrap, so that when a reader's font size or text spacing
+  // makes the items too wide, they wrap instead of drawing on top of each other.
+  .navbar__item.dropdown > .navbar__link {
     white-space: nowrap;
   }
 }
 
-@media (min-width: 997px) and (max-width: 1439px) {
+// Each upper bound has an em twin, so that the tiers also move when a reader sets a larger default font size.
+@media (min-width: 997px) and (max-width: 1439px), (min-width: 997px) and (max-width: 89.99em) {
   .navbar {
     --ifm-navbar-item-padding-horizontal: 0.5rem;
   }
 }
 
-@media (min-width: 997px) and (max-width: 1299px) {
+// Tighter again below 1024px, so a classic scrollbar (counted by media queries but not by the navbar) still fits.
+@media (min-width: 997px) and (max-width: 1023px), (min-width: 997px) and (max-width: 63.99em) {
+  .navbar {
+    --ifm-navbar-item-padding-horizontal: 0.375rem;
+  }
+}
+
+// 1319px rather than 1299px leaves room for a classic scrollbar.
+@media (min-width: 997px) and (max-width: 1319px), (min-width: 997px) and (max-width: 82.49em) {
   .navbar-spectrocloud-link {
     display: none;
   }
 }
 
-@media (min-width: 997px) and (max-width: 1199px) {
+@media (min-width: 997px) and (max-width: 1199px), (min-width: 997px) and (max-width: 74.99em) {
   .navbar .DocSearch-Button-Placeholder,
   .navbar .DocSearch-Button-Keys {
     display: none;
