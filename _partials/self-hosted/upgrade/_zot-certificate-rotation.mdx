@@ -18,13 +18,38 @@ the registry can then fail to pull images. After the upgrade completes, use the 
 4. In **Applications Config**, expand **Container Registry**, turn on **Enable Certificate Rotation**, and then select
    **Update**.
 
-5. Run the registry CA update script so that {props.edition} trusts the new registry certificate.
+5. Select the **Overview** tab. In the **Environment** section, select the **Admin Kubeconfig File** link to download
+   the kubeconfig file of the management cluster.
 
-   {/* TODO(DOC-3290): Zulfi is uploading the script (group DM C0C8JNS2WE6, 2026-10-12). Add the download link, the
-   script name, its prerequisites (Python 3 and any packages, kubectl access), and when to run it (once after you turn on
-   rotation, or after every rotation). Gaurav's PCOM-934 comment runs it against the appliance kubeconfig:
-   `export KUBECONFIG=<kubeconfig>` then `python3 update_registry_ca.py`. Readers get the kubeconfig from Cluster >
-   Environment > Admin Kubeconfig File. */}
+6. On a machine that has Python 3 and `kubectl` installed, export the path to the kubeconfig file.
+
+   ```shell
+   export KUBECONFIG="<path-to-kubeconfig>"
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file that you downloaded in step 5.
+
+7. Download the registry CA update script. If the machine has no internet access, download the script on a machine
+   that does, and then copy it over.
+
+   ```shell
+   curl --location --output update_registry_ca.py https://software.spectrocloud.com/scripts/zot-cert-rotation/update_registry_ca.py
+   ```
+
+8. Run the script so that {props.edition} trusts the new registry certificate. The script updates the registry
+   certificate authority (CA) that {props.edition} uses and restarts the `specman` StatefulSet. It saves a backup of the
+   previous value to `ociPackRegistry.backup.yaml` in the current directory.
+
+   ```shell
+   python3 update_registry_ca.py
+   ```
+
+   The script displays `done.` when it completes. If the registry CA is already up to date, the script makes no
+   changes.
+
+{/* TODO(DOC-3290): confirm with Zulfi whether readers rerun the script after every rotation. The script describes
+itself as "the one remaining manual step" in the rotation automation, so it might be needed whenever the CA changes. If
+so, add that to the next paragraph. */}
 
 After you turn on rotation, {props.edition} rotates the registry certificate and propagates it to the clusters that it
 manages, so you do not need to update those clusters.
