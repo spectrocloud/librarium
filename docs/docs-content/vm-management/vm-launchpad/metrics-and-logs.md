@@ -105,8 +105,8 @@ restart.
 The `vmo-node-agent` DaemonSet scrapes each node and ships OTLP metrics to the per-node OpenTelemetry Collector. The
 Collector forwards the metrics to Victoria Metrics for the built-in dashboards and to the `vmo-manager` service's OTLP
 receiver. Inside `vmo-manager`, a ring buffer receives every point. When the **Metrics Forwarding** toggle is enabled
-and **Forwarding URL** is set, the ring buffer POSTs each point to the receiver. `vmo-manager` detects the protocol from
-the **Forwarding URL** path:
+and **Forwarding URL** is set, the ring buffer sends each point to the receiver in a POST request. `vmo-manager` detects
+the protocol from the **Forwarding URL** path:
 
 - A URL that contains `/services/collector`, or a URL with no path, is treated as Splunk HEC. `vmo-manager` posts the
   points under `sourcetype=vmo:metric`.
@@ -345,13 +345,13 @@ storage in the `VMOConfig` custom resource.
 
 ### Metrics Section
 
-| **Setting**               | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                                                       |
-| ------------------------- | -------------------------------------------- | ----------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Metrics Forwarding**    | `monitoring.splunk_hec_enabled`              | `false`     | No            | Network gate. When enabled with a URL set, `vmo-manager` POSTs each metric point to the receiver. Also starts log delivery, and each empty log setting uses its metrics value. Emits `monitoring.splunk_hec.toggled`. |
-| **Forwarding URL**        | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HEC or OTLP receiver URL. The path decides the protocol. An empty value disables the metrics push regardless of the toggle state.                                                                              |
-| **Forwarding Token**      | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token, or the OTLP credential as a plain bearer token or `Key=Value` header pairs. Masked in GET responses; the UI renders `(set)` in place of the value.                                                  |
-| **CA Certificate**        | `monitoring.splunk_hec_ca_cert`              | Empty       | No            | Optional PEM CA-signing certificate used to verify the receiver's TLS certificate. An empty value verifies against the container's system trust store.                                                                |
-| **Skip TLS Verification** | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | When enabled, the metrics push accepts the receiver's TLS certificate without verification. Leave it off in production.                                                                                               |
+| **Setting**               | **Configuration Key**                        | **Default** | **Sensitive** | **Description**                                                                                                                                                                                                                         |
+| ------------------------- | -------------------------------------------- | ----------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Metrics Forwarding**    | `monitoring.splunk_hec_enabled`              | `false`     | No            | Network gate. When enabled with a URL set, `vmo-manager` sends each metric point to the receiver in a POST request. Also starts log delivery, and each empty log setting uses its metrics value. Emits `monitoring.splunk_hec.toggled`. |
+| **Forwarding URL**        | `monitoring.splunk_hec_url`                  | Empty       | No            | Splunk HEC or OTLP receiver URL. The path decides the protocol. An empty value disables the metrics push regardless of the toggle state.                                                                                                |
+| **Forwarding Token**      | `monitoring.splunk_hec_token`                | Empty       | **Yes**       | Splunk HEC token, or the OTLP credential as a plain bearer token or `Key=Value` header pairs. Masked in GET responses; the UI renders `(set)` in place of the value.                                                                    |
+| **CA Certificate**        | `monitoring.splunk_hec_ca_cert`              | Empty       | No            | Optional PEM CA-signing certificate used to verify the receiver's TLS certificate. An empty value verifies against the container's system trust store.                                                                                  |
+| **Skip TLS Verification** | `monitoring.splunk_hec_insecure_skip_verify` | `false`     | No            | When enabled, the metrics push accepts the receiver's TLS certificate without verification. Leave it off in production.                                                                                                                 |
 
 ### Logs Section
 
