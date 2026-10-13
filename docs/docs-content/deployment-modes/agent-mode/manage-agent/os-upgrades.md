@@ -100,30 +100,30 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
 
 <!-- vale off -->
 
-   ```shell
-   cat << 'EOF' > upgrades.sh
-   #!/bin/sh
-   set -e
-   export DEBIAN_FRONTEND=noninteractive
-   apt-get --assume-yes update
-   apt-get --option Dpkg::Options::="--force-confold" dist-upgrade --yes
-   if [ -f /var/run/reboot-required ]; then
-     echo "Reboot required. Rebooting while the node is still drained."
-     systemctl reboot
-     # The node goes down here. After it boots, the Job starts a new pod that reruns this
-     # script. Updates are already installed and /var/run/reboot-required is cleared at
-     # boot, so the rerun exits 0.
-     sleep 600
-     exit 1
-   fi
-   EOF
-   ```
+```shell
+cat << 'EOF' > upgrades.sh
+#!/bin/sh
+set -e
+export DEBIAN_FRONTEND=noninteractive
+apt-get --assume-yes update
+apt-get --option Dpkg::Options::="--force-confold" dist-upgrade --yes
+if [ -f /var/run/reboot-required ]; then
+  echo "Reboot required. Rebooting while the node is still drained."
+  systemctl reboot
+  # The node goes down here. After it boots, the Job starts a new pod that reruns this
+  # script. Updates are already installed and /var/run/reboot-required is cleared at
+  # boot, so the rerun exits 0.
+  sleep 600
+  exit 1
+fi
+EOF
+```
 
 <!-- vale on -->
 
-   The example checks `/var/run/reboot-required`, which is specific to Ubuntu and Debian hosts. On RHEL-family hosts,
-   use `needs-restarting --reboothint` from the `yum-utils` package instead. It exits `1` when a reboot is required and
-   `0` otherwise.
+The example checks `/var/run/reboot-required`, which is specific to Ubuntu and Debian hosts. On RHEL-family hosts, use
+`needs-restarting --reboothint` from the `yum-utils` package instead. It exits `1` when a reboot is required and `0`
+otherwise.
 
 10. Execute the following commands to create the `upgrades.yaml` file using your namespace, label, and upgrade script
     variables.
