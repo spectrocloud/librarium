@@ -68,7 +68,7 @@ those tokens at the input rate. A response cache hit adds $0, and the appliance 
 The **Usage** page shows every dollar figure rounded to the cent. An amount greater than $0 but less than half a cent
 shows as `<$0.01`, and a response cache hit, which costs $0, shows as `$0.00`.
 
-For why the rates differ, how each level of caching is priced, and worked examples, refer to
+For why the rates differ, how each level of caching is priced, and examples, refer to
 [Usage Pricing](../explanation/usage-pricing.md).
 
 ### On-Box Token Breakdown

@@ -155,7 +155,7 @@ Filling the engine's own caches costs nothing on the appliance, so locally serve
 charge. Cache-write charges arise only on egress, for frontier providers that charge to write a prompt into their cache.
 The appliance prices those tokens at the model's **Cache write** rate.
 
-## Worked Example: Estimated Cost
+## Example: Estimated Cost
 
 This example uses the default rates for a model hosted on the appliance, $0.15 per 1 million input tokens, $0.015 per 1
 million cache-read tokens, and $0.60 per 1 million output tokens. A request sends a 10,000-token prompt, of which the
@@ -189,9 +189,9 @@ the **Estimated savings** card on the **Overview** page. For details, refer to
 
 When the appliance answers a request, the response includes a usage summary that the client application reads, such as
 Claude Code. The summary splits the prompt into fresh input and cache reads the same way the **Usage** page does. For
-the request in [Worked Example: Estimated Cost](#worked-example-estimated-cost), it reports 9,600 cached tokens and 400
-fresh input tokens. A coding agent that tracks its own usage therefore shows the same split as the **Usage** page. For
-the exact field names in each API format, refer to
+the request in [Example: Estimated Cost](#example-estimated-cost), it reports 9,600 cached tokens and 400 fresh input
+tokens. A coding agent that tracks its own usage therefore shows the same split as the **Usage** page. For the exact
+field names in each API format, refer to
 [Usage Fields in API Responses](../reference/usage-metrics-reference.md#usage-fields-in-api-responses).
 
 ## How It Fits Together

@@ -56,7 +56,7 @@ The comparison model's rates are the same provider list prices the appliance use
 and the estimated egress cost quote the same numbers. If an operator overrides the comparison model's rates under
 **Settings** > **Pricing**, the savings figure uses the override.
 
-## Worked Example: Estimated Savings
+## Example: Estimated Savings
 
 This example uses illustrative rates for the Opus 4.8 comparison of $5.00 per 1 million input tokens, $0.50 per 1
 million cache-read tokens, and $6.25 per 1 million cache-write tokens. These are example rates, not current list prices.
