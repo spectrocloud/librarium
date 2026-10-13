@@ -35,7 +35,7 @@ For the definition of each tile and column that reports these figures, refer to
 
 ## What Estimated Cost Is
 
-The estimated cost, shown as **est. cost** in the console, is the number of tokens a request used multiplied by the
+The estimated cost, shown as **est. cost** in the console, is the number of tokens that a request used multiplied by the
 rates in effect when the appliance served that request. It is an estimate for planning and visibility. It is not a bill,
 and the appliance does not issue invoices.
 
@@ -105,14 +105,14 @@ prompt. It then writes the answer one token at a time. The appliance reuses work
 in which of those jobs they skip, what has to match, and how long they keep their work. Two of them count toward the
 cache reads that the **Usage** page reports.
 
-| **Aspect**            | **Response cache**                                                                | **Prefix cache**                                                    | **KV cache**                                                           |
-| --------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| **What it keeps**     | A whole stored answer.                                                            | The engine's reading of the opening of an earlier prompt.           | The engine's reading of the prompt and of the answer so far.           |
-| **When it is reused** | The same client sends an identical request. One character differs, and it misses. | A later prompt starts with the same tokens as an earlier one.       | For every token the engine writes, within one request.                 |
-| **Work it skips**     | Both jobs. The engine does not run.                                               | Reading the repeated opening. The engine still writes a new answer. | Rereading the prompt and the answer so far for each new token.         |
-| **How long it lasts** | 60 minutes by default.                                                            | Until the engine needs the memory for other requests.               | Until the request finishes.                                            |
-| **Default**           | Off.                                                                              | On.                                                                 | Always on.                                                             |
-| **On the Usage page** | Counted as cache reads, at $0.                                                    | Counted as cache reads, at the cache-read rate.                     | Not reported. Each engine keeps its own, and the meter cannot read it. |
+| **Aspect**            | **Response cache**                                                               | **Prefix cache**                                                    | **KV cache**                                                           |
+| --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **What it keeps**     | A whole stored answer.                                                           | The engine's reading of the opening of an earlier prompt.           | The engine's reading of the prompt and of the answer so far.           |
+| **When it is reused** | The same client sends an identical request. If one character differs, it misses. | A later prompt starts with the same tokens as an earlier one.       | For every token the engine writes, within one request.                 |
+| **Work it skips**     | Both jobs. The engine does not run.                                              | Reading the repeated opening. The engine still writes a new answer. | Rereading the prompt and the answer so far for each new token.         |
+| **How long it lasts** | 60 minutes by default.                                                           | Until the engine needs the memory for other requests.               | Until the request finishes.                                            |
+| **Default**           | Off.                                                                             | On.                                                                 | Always on.                                                             |
+| **On the Usage page** | Counted as cache reads, at $0.                                                   | Counted as cache reads, at the cache-read rate.                     | Not reported. Each engine keeps its own, and the meter cannot read it. |
 
 The prefix cache and the KV cache hold the same kind of data. The prefix cache is the part of a finished request's KV
 cache that the engine keeps, so that a later prompt with the same opening can reuse it.
@@ -130,11 +130,8 @@ providers price cached input.
 <!-- vale Vale.Spelling = NO -->
 
 This matters most for coding agents. A coding agent resends its long conversation context on every turn, so most of each
-prompt is a prefix the engine has already seen. On that kind of traffic, cache reads make up most of the prompt, and the
-cache-read rate lowers the estimated cost substantially. Earlier releases priced cached tokens at the full input rate,
-so the estimated cost of a cache-heavy workload is several times lower than it was in those releases. On a real
-repeated-prompt workload, the measured drop was about six times. The lower figure is correct and does not indicate a
-metering fault.
+prompt is a prefix that the engine has already seen. On that kind of traffic, cache reads make up most of the prompt,
+and the cache-read rate lowers the estimated cost substantially.
 
 <!-- vale Vale.Spelling = YES -->
 
@@ -164,13 +161,15 @@ This example uses the default rates for a model hosted on the appliance, $0.15 p
 million cache-read tokens, and $0.60 per 1 million output tokens. A request sends a 10,000-token prompt, of which the
 engine answers 9,600 tokens from cache, and the model generates 60 output tokens.
 
-| **Pricing**                                 | **Calculation**                                 | **Estimated cost** |
-| ------------------------------------------- | ----------------------------------------------- | ------------------ |
-| Cached tokens priced at the input rate      | 10,000 × $0.15/M + 60 × $0.60/M                 | About $0.00154     |
-| Cached tokens priced at the cache-read rate | 400 × $0.15/M + 9,600 × $0.015/M + 60 × $0.60/M | About $0.00024     |
+| **Tokens**  | **Calculation**  | **Estimated cost** |
+| ----------- | ---------------- | ------------------ |
+| Fresh input | 400 × $0.15/M    | $0.00006           |
+| Cache reads | 9,600 × $0.015/M | $0.000144          |
+| Output      | 60 × $0.60/M     | $0.000036          |
+| Total       |                  | About $0.00024     |
 
-Pricing the 9,600 cached tokens at the cache-read rate makes the request about six times cheaper to estimate. The first
-row is how earlier releases priced the same request.
+Priced at the input rate instead, the 9,600 cached tokens alone would cost about $0.00144, and the request about six
+times more.
 
 In the console, this request shows as `<$0.01`, because the **Usage** page
 [rounds dollar figures to the cent](../reference/usage-metrics-reference.md#how-cost-is-calculated).
@@ -203,8 +202,8 @@ A single coding-agent turn served on the appliance ties these ideas together.
 
 1. The agent resends its conversation with one new message. Most of the prompt is a prefix the engine has already seen.
 
-2. If the response cache is on and an identical request arrived within the expiry, the appliance replays the stored
-   answer. The appliance records the tokens as cache reads at $0.
+2. If the response cache is on and an identical request arrived before the stored answer expired, the appliance replays
+   the stored answer. The appliance records the tokens as cache reads at $0.
 
 3. Otherwise, the engine answers the repeated prefix from its prefix cache and computes only the new part fresh.
 

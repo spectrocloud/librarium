@@ -73,9 +73,6 @@ fresh, with no output. To isolate the comparison, the example sets the request's
 The comparison has no cache-write term. The appliance never charges to fill its own cache, so the comparison does not
 charge for it either, and the example's cache-write rate does not apply.
 
-Earlier releases priced every prompt token in the comparison at the fresh input rate, which inflated the savings by the
-share of the prompt answered from cache. The lower figure is the accurate one.
-
 ## Where to Find Your Savings
 
 To view the figure, select **Overview** from the left main menu. The **Estimated savings** card reports two figures,

@@ -318,7 +318,7 @@ API responses report the split between fresh and cached prompt tokens the same w
 | `cache_creation_input_tokens`         | In Anthropic-compatible `/v1/messages` responses, the prompt tokens written to a cache, where it applies. |
 
 In Anthropic-compatible responses, `input_tokens`, `cache_read_input_tokens`, and `cache_creation_input_tokens` always
-add up to the total prompt the engine served.
+add up to the total prompt that the engine served.
 
 <!-- vale Vale.Spelling = YES -->
 

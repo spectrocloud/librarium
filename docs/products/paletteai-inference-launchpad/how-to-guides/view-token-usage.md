@@ -68,8 +68,8 @@ The **Overview** tab reports the whole appliance for the selected period.
 
 The tab also reports the following.
 
-- **On-box token breakdown**, which separates the prompt tokens answered from cache from the tokens computed fresh, and
-  reports the tokens that left the appliance. For how cache reads are priced, refer to
+- **On-box token breakdown**, which separates the prompt tokens that were answered from cache from the tokens computed
+  fresh, and reports the tokens that left the appliance. For how cache reads are priced, refer to
   [Usage Pricing](../explanation/usage-pricing.md#three-levels-of-caching).
 
 - **Local vs external**, which reports the share of traffic that stayed on your own engines against the share routed to
