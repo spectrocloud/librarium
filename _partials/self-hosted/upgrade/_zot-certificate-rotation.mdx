@@ -48,7 +48,7 @@ the registry can then fail to pull images. After the upgrade completes, use the 
    `nothing to do` and makes no changes.
 
 After you turn on rotation, {props.edition} rotates the registry certificate and propagates it to the clusters that it
-manages, so you do not need to update those clusters.
+manages. You do not need to update those clusters or run the script again.
 
 If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires, unless you rotate it
 manually. Clusters can then fail to pull images from the registry.
