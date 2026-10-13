@@ -98,6 +98,8 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
    on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify them
    to work according to your host operating system. The command creates the `upgrades.sh` file in your local directory.
 
+   <!-- vale off -->
+
    ```shell
    cat << 'EOF' > upgrades.sh
    #!/bin/sh
@@ -116,6 +118,8 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
    fi
    EOF
    ```
+
+   <!-- vale on -->
 
    The example checks `/var/run/reboot-required`, which is specific to Ubuntu and Debian hosts. On RHEL-family hosts,
    use `needs-restarting --reboothint` from the `yum-utils` package instead. It exits `1` when a reboot is required and
