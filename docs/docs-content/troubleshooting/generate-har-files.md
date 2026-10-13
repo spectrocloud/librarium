@@ -36,8 +36,8 @@ contain.
   <TabItem value="chrome" label="Chrome" default>
     1. Open the page with issues in Chrome.
     2. On your keyboard, open Developer Tools:
-       - For Windows and Linux, press **F12** or **Ctrl + Shift + I**.
-       - For Mac, press **Fn + F12** or **Cmd + Option + I**.
+       - For Windows and Linux, press **F12** or **CTRL + SHIFT + I**.
+       - For Mac, press **FN + F12** or **CMD + OPTION + I**.
 
        For alternative methods to open Developer Tools, refer to [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open).
     3. In Developer Tools, select the **Network** tab, and, on the **Network** pane:
@@ -69,8 +69,8 @@ contain.
   <TabItem value="firefox" label="Firefox">
     1. Open the page with issues in Firefox.
     2. On your keyboard, open DevTools:
-       - For Windows and Linux, press **F12** or **Ctrl + Shift + I**.
-       - For Mac, press **Fn + F12** or **Cmd + Option + I**.
+       - For Windows and Linux, press **F12** or **CTRL + SHIFT + I**.
+       - For Mac, press **FN + F12** or **CMD + OPTION + I**.
 
        For alternative methods to open DevTools, refer to [Firefox DevTools User Docs](https://firefox-source-docs.mozilla.org/devtools-user/).
 
