@@ -21,16 +21,16 @@ keywords:
   ]
 ---
 
-Every request a PaletteAI Inference Launchpad appliance serves carries an estimated cost. The figure depends on how the
+Every request a PaletteAI Inference Launchpad appliance serves carries an estimated cost. That cost depends on how the
 appliance prices each kind of token, and on how much of each prompt was answered from cache instead of computed again.
 This page explains what the estimated cost is, the four rates that produce it, and how each level of caching affects it.
-Read it to interpret the cost figures on the **Usage** page, or before you change the rates under **Settings** >
+Read it to interpret the costs that the **Usage** page reports, or before you change the rates under **Settings** >
 **Pricing**.
 
-The **Usage** page also reports what serving on the appliance saved compared with a frontier model. For how that figure
-is calculated, refer to [Estimated Savings](./estimated-savings.md).
+The **Overview** page also reports how much you save by serving on the appliance instead of a frontier model. For how
+that estimate is calculated, refer to [Estimated Savings](./estimated-savings.md).
 
-For the definition of each tile and column that reports these figures, refer to
+For the definition of each tile and column that reports these values, refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 ## What Estimated Cost Is
@@ -40,7 +40,7 @@ rates in effect when the appliance served that request. It is an estimate for pl
 and the appliance does not issue invoices.
 
 The estimate covers every request the appliance handles. Models hosted on the appliance carry their own rates, so the
-figure includes locally served traffic as well as traffic routed to a frontier provider or a registered external
+estimated cost includes locally served traffic as well as traffic routed to a frontier provider or a registered external
 endpoint.
 
 ## Four Per-Model Rates
@@ -83,16 +83,16 @@ rates in effect on your appliance, open **Settings** > **Pricing**.
 A model hosted on the appliance runs on hardware and software that you already own, so its estimated cost is not money
 that you pay. The appliance still prices its tokens, for two reasons.
 
-The first reason is cost limits. A client can carry a quota on the **cost** dimension, and that limit counts the
-estimated cost of the client's traffic. If hosted models had no rate, every locally served request would add $0 to that
-count, so a cost limit could never restrict traffic that stays on the appliance. A rate for hosted models makes a cost
-limit apply to local traffic as well as to traffic that leaves the appliance. For how quotas work, refer to
-[Quotas](./clients-and-quotas.md#quotas).
+- **Cost limits.** A client can carry a quota on the **cost** dimension, and that limit counts the estimated cost of the
+  client's traffic. If hosted models had no rate, every locally served request would add $0 to that count, so a cost
+  limit could never restrict traffic that stays on the appliance. A rate for hosted models makes a cost limit apply to
+  local traffic as well as to traffic that leaves the appliance. For how quotas work, refer to
+  [Quotas](./clients-and-quotas.md#quotas).
 
-The second reason is shared capacity. The appliance's GPUs serve every client, so the tokens that one client uses take
-capacity that another client cannot use at the same time. The default rates are a generic estimate of what that shared
-capacity costs per token. The estimated cost then shows how much of the appliance each client consumes, in the same unit
-as traffic routed to a frontier provider.
+- **Shared capacity.** The appliance's GPUs serve every client, so the tokens that one client uses take capacity that
+  another client cannot use at the same time. The default rates are a generic estimate of what that shared capacity
+  costs per token. The estimated cost then shows how much of the appliance each client consumes, in the same unit as
+  traffic routed to a frontier provider.
 
 Because the default rates are an estimate, an operator can override the rates for any hosted model under **Settings** >
 **Pricing**, and a deployment can set different defaults at install time. Lower rates for hosted models also lower the
@@ -100,19 +100,23 @@ estimated cost that counts toward each client's cost limits.
 
 ## Three Levels of Caching
 
-To answer a request, the engine does two jobs. It first reads the whole prompt, which is the expensive step for a long
-prompt. It then writes the answer one token at a time. The appliance reuses work at three levels, and the levels differ
-in which of those jobs they skip, what has to match, and how long they keep their work. Two of them count toward the
-cache reads that the **Usage** page reports.
+To answer a request, the engine does two jobs.
 
-| **Aspect**            | **Response cache**                                                               | **Prefix cache**                                                    | **KV cache**                                                           |
-| --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| **What it keeps**     | A whole stored answer.                                                           | The engine's reading of the opening of an earlier prompt.           | The engine's reading of the prompt and of the answer so far.           |
-| **When it is reused** | The same client sends an identical request. If one character differs, it misses. | A later prompt starts with the same tokens as an earlier one.       | For every token the engine writes, within one request.                 |
-| **Work it skips**     | Both jobs. The engine does not run.                                              | Reading the repeated opening. The engine still writes a new answer. | Rereading the prompt and the answer so far for each new token.         |
-| **How long it lasts** | 60 minutes by default.                                                           | Until the engine needs the memory for other requests.               | Until the request finishes.                                            |
-| **Default**           | Off.                                                                             | On.                                                                 | Always on.                                                             |
-| **On the Usage page** | Counted as cache reads, at $0.                                                   | Counted as cache reads, at the cache-read rate.                     | Not reported. Each engine keeps its own, and the meter cannot read it. |
+- **Reading the prompt.** The engine processes the whole prompt. For a long prompt, this is the expensive step.
+
+- **Writing the answer.** The engine generates the answer one token at a time.
+
+The appliance reuses work at three levels, and the levels differ in which of those jobs they skip, what has to match,
+and how long they keep their work. Two of them count toward the cache reads that the **Usage** page reports.
+
+| **Aspect**            | **Response cache**                                                               | **Prefix cache**                                                    | **KV cache**                                                                  |
+| --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **What it keeps**     | A whole stored answer.                                                           | The engine's reading of the opening of an earlier prompt.           | The engine's reading of the prompt and of the answer so far.                  |
+| **When it is reused** | The same client sends an identical request. If one character differs, it misses. | A later prompt starts with the same tokens as an earlier one.       | Within one request, each time the engine writes the next token of the answer. |
+| **Work it skips**     | Both jobs. The engine does not run.                                              | Reading the repeated opening. The engine still writes a new answer. | Rereading the prompt and the answer so far for each new token.                |
+| **How long it lasts** | 60 minutes by default.                                                           | Until the engine needs the memory for other requests.               | Until the request finishes.                                                   |
+| **Default**           | Off.                                                                             | On.                                                                 | Always on.                                                                    |
+| **On the Usage page** | Counted as cache reads, at $0.                                                   | Counted as cache reads, at the cache-read rate.                     | Not reported. Each engine keeps its own, and the meter cannot read it.        |
 
 The prefix cache and the KV cache hold the same kind of data. The prefix cache is the part of a finished request's KV
 cache that the engine keeps, so that a later prompt with the same opening can reuse it.
@@ -157,9 +161,14 @@ The appliance prices those tokens at the model's **Cache write** rate.
 
 ## Example: Estimated Cost
 
-This example uses the default rates for a model hosted on the appliance, $0.15 per 1 million input tokens, $0.015 per 1
-million cache-read tokens, and $0.60 per 1 million output tokens. A request sends a 10,000-token prompt, of which the
-engine answers 9,600 tokens from cache, and the model generates 60 output tokens.
+This example uses the default rates for a model hosted on the appliance.
+
+- **Input:** $0.15 per 1 million tokens.
+- **Cache read:** $0.015 per 1 million tokens.
+- **Output:** $0.60 per 1 million tokens.
+
+A request sends a 10,000-token prompt, of which the engine answers 9,600 tokens from cache, and the model generates 60
+output tokens.
 
 | **Tokens**  | **Calculation**  | **Estimated cost** |
 | ----------- | ---------------- | ------------------ |
@@ -172,13 +181,13 @@ Priced at the input rate instead, the 9,600 cached tokens alone would cost about
 times more.
 
 In the console, this request shows as `<$0.01`, because the **Usage** page
-[rounds dollar figures to the cent](../reference/usage-metrics-reference.md#how-cost-is-calculated).
+[rounds dollar amounts to the cent](../reference/usage-metrics-reference.md#how-cost-is-calculated).
 
-## Where Each Figure Appears
+## Where Cost and Cache Reads Appear
 
-Cost and cache reads each appear in more than one place on the **Usage** page. Every figure comes from the same record
-of each request's fresh input, cache reads, and output tokens. The appliance prices that record at the rates in effect
-when it served the request, so the figures agree with each other.
+Cost and cache reads each appear in more than one place on the **Usage** page. Every value comes from the same record of
+each request's fresh input, cache reads, and output tokens. The appliance prices that record at the rates in effect when
+it served the request, so the values agree with each other.
 
 Estimated cost appears as **est. cost** on the **Overview** tab, per model on the **By Model** tab, and per API key. The
 **kept on the Launchpad** tile and the **By Client** tab report the cost of locally served traffic. Cache reads appear
@@ -221,8 +230,8 @@ appliance.
 
 ## Resources
 
-- [Estimated Savings](./estimated-savings.md) explains how the estimated savings figure is calculated and how far you
-  can trust it.
+- [Estimated Savings](./estimated-savings.md) explains how much you save by serving on the appliance and how the
+  estimate is calculated.
 
 - [Usage Metrics Reference](../reference/usage-metrics-reference.md) defines every tile, column, and export field that
   reports cost, cache reads, and savings.
