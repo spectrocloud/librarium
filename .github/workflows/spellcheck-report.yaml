@@ -40,9 +40,10 @@ jobs:
             exit 1
           fi
 
-          # Download the latest Vale release for the detected architecture
-          latest_version=$(curl -s https://api.github.com/repos/vale-cli/vale/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-          wget https://github.com/vale-cli/vale/releases/download/$latest_version/vale_${latest_version:1}_$arch.tar.gz -O vale.tar.gz
+          # Download a pinned Vale release for the detected architecture. Results differ between Vale versions, so
+          # update this version deliberately and re-baseline vale-spellcheck-ignore.txt when you do.
+          vale_version=v3.24.0
+          wget https://github.com/vale-cli/vale/releases/download/$vale_version/vale_${vale_version:1}_$arch.tar.gz -O vale.tar.gz
 
           # Extract the binary
           tar -xzf vale.tar.gz

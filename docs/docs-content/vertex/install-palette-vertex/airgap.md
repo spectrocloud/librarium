@@ -21,8 +21,8 @@ VerteX installation steps, you must download the following artifacts.
 
 - Palette VerteX packs.
 
-The other significant change is that VerteX's default public OCI registry is not used. Instead, a private OCI registry
-is utilized for storing images and packs.
+The other significant change is that VerteX does not use its default public OCI registry. Instead, a private OCI
+registry is utilized for storing images and packs.
 
 ## Overview
 

@@ -9,7 +9,7 @@ tags: ["user-management", "saml-sso", "saml", "sso", "security"]
 ---
 
 Palette supports encrypted Security Assertion Markup Language (SAML) assertions by advertising an encryption key in its
-Service Provider (SP) metadata. When configured with the SP’s public key, the Identity Provider (IdP) can encrypt the
+Service Provider (SP) metadata. When configured with the SP public key, the Identity Provider (IdP) can encrypt the
 entire SAML assertion, ensuring user attributes and identity data are protected in transit.
 
 This guide demonstrates how to configure your IdP to encrypt SAML assertions for Palette Single Sign-On (SSO). The
