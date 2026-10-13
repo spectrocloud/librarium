@@ -26,5 +26,5 @@ is configured, not how to accomplish a task.
 | [Cursor Configuration](./cursor-reference.md)                     | Settings and values for pointing Cursor at the appliance.                                       |
 | [OpenAI Codex Configuration](./codex-reference.md)                | Configuration file fields and values for pointing Codex at the appliance.                       |
 | [OpenCode Configuration](./opencode-reference.md)                 | Configuration file fields and values for pointing OpenCode at the appliance.                    |
-| [Known Issues](./known-issues.md)                                 | Known installation issues and their workarounds, including HPE PCI enumeration.                 |
+| [Known Issues](./known-issues.md)                                 | Known installation issues and their workarounds.                                                |
 | [Open Source Licenses](./oss-licenses.md)                         | AGPL, GPL, and LGPL components in the appliance, with the license and upstream source for each. |
