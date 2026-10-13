@@ -185,7 +185,7 @@ Estimated cost appears as **est. cost** on the **Overview** tab, per model on th
 **kept on the Launchpad** tile and the **By Client** tab report the cost of locally served traffic. Cache reads appear
 in the **On-box token breakdown** card and in the **cached tokens** tile for each API key. Estimated savings appear in
 the **Estimated savings** card on the **Overview** page. For details, refer to
-[Estimated Savings](./estimated-savings.md#where-the-savings-figure-appears). For the tile-by-tile definitions, refer to
+[Estimated Savings](./estimated-savings.md#where-to-find-your-savings). For the tile-by-tile definitions, refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md).
 
 When the appliance answers a request, the response includes a usage summary that the client application reads, such as

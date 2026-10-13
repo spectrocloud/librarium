@@ -2,8 +2,8 @@
 sidebar_label: "Estimated Savings"
 title: "Estimated Savings"
 description:
-  "An explanation of the estimated savings figure in PaletteAI Inference Launchpad: where it appears and how it compares
-  serving on the appliance with a frontier model."
+  "An explanation of estimated savings in PaletteAI Inference Launchpad: how the appliance compares serving on the
+  appliance with a frontier model, and where to find the figure."
 hide_table_of_contents: false
 sidebar_position: 2.6
 tags: ["paletteai-inference-launchpad", "explanation", "usage", "savings", "cost"]
@@ -21,24 +21,14 @@ keywords:
   ]
 ---
 
-The **Estimated savings** card on the **Overview** page reports what serving on the appliance saved, compared with
-sending the same traffic to a frontier model. The figure is an estimated saving. It is a comparison, not money returned.
-This page explains where the figure appears and how the appliance calculates it.
+PaletteAI Inference Launchpad estimates how much you save by serving inference on the appliance instead of sending the
+same traffic to a frontier model. The estimate is a comparison, not money returned. This page explains how the appliance
+calculates it and where to find it.
 
 The savings figure builds on the estimated cost of each request, which depends on the four per-model rates and on how
 the appliance prices cache reads. For those, refer to [Usage Pricing](./usage-pricing.md).
 
-## Where the Savings Figure Appears
-
-To view the figure, select **Overview** from the left main menu. The **Estimated savings** card reports two figures,
-**saved vs Opus 4.8** and **saved vs GPT-5**, for the period selected on the page. A chart beside them plots both
-figures across that period. The card does not appear when the appliance served no requests in the period. The **Edit
-Model Pricing** link on the card opens **Settings** > **Pricing**.
-
-The **By Client** export on the **Usage** page also carries both figures in its header. For the export layout, refer to
-[Usage Metrics Reference](../reference/usage-metrics-reference.md#export-fields).
-
-## How the Savings Figure Is Calculated
+## How Estimated Savings Are Calculated
 
 The comparison is against two fixed frontier models, Anthropic Claude Opus 4.8 and OpenAI GPT-5. Client model aliases do
 not change which models the comparison uses.
@@ -86,6 +76,16 @@ charge for it either, and the example's cache-write rate does not apply.
 Earlier releases priced every prompt token in the comparison at the fresh input rate, which inflated the savings by the
 share of the prompt answered from cache. The lower figure is the accurate one.
 
+## Where to Find Your Savings
+
+To view the figure, select **Overview** from the left main menu. The **Estimated savings** card reports two figures,
+**saved vs Opus 4.8** and **saved vs GPT-5**, for the period selected on the page. A chart beside them plots both
+figures across that period. The card does not appear when the appliance served no requests in the period. The **Edit
+Model Pricing** link on the card opens **Settings** > **Pricing**.
+
+The **By Client** export on the **Usage** page also carries both figures in its header. For the export layout, refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md#export-fields).
+
 ## Resources
 
 - [Usage Pricing](./usage-pricing.md) explains what estimated cost is, the four per-model rates, and how cache reads are
@@ -94,6 +94,6 @@ share of the prompt answered from cache. The lower figure is the accurate one.
 - [Usage Metrics Reference](../reference/usage-metrics-reference.md#export-fields) describes the savings figures in the
   **By Client** export.
 
-- [View Client Usage](../how-to-guides/view-client-usage.md) walks through reading usage and savings for each client.
+- [View Client Usage](../how-to-guides/view-client-usage.md) walks through reading usage for each client.
 
 - [Frontier Providers](./frontier-providers.md) explains how traffic reaches a frontier provider.
