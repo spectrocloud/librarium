@@ -22,11 +22,11 @@ operational.
 
 ## Upgrade Notes
 
-- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
-
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="certificate-loss" />
+
+- <PartialsComponent category="self-hosted" name="mongodb-fcv-precheck" edition="Palette" />
 
 <PartialsComponent category="self-hosted" name="upgrade-palette-upgrade-notes" edition="Palette" />
 

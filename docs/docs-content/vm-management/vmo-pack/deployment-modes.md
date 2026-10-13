@@ -78,7 +78,15 @@ pack provides remote access to the UI. This is the default selection.
 | `caCert.enabled`                                           | `true`                                                                                                    |
 | `caCert.configMapName`                                     | `platform-ca-cert`                                                                                        |
 | `ingressRoute.enabled`                                     | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
-| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
+| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`. In pack version 4.10.7 and later, this route no longer carries CDI uploads or VM export           |
+
+:::warning
+
+In VMO pack version 4.10.7 and later, expose the CDI upload proxy and KubeVirt export proxy through native Ingress or
+`LoadBalancer` Services instead of the `directAccess` Traefik route. Refer to
+[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance.
+
+:::
 
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
 self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every

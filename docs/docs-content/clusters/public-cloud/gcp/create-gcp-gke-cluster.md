@@ -16,6 +16,10 @@ to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
 - GPU machine types cannot be used to configure node pools.
 
+- New GKE clusters use the Regular release channel by default, which supports Kubernetes 1.34 and later. To deploy an
+  earlier Kubernetes version, set a different release channel at the cluster level with a
+  [CAPI override](../../../architecture/override-capi-properties/gcp-capi-override-reference.md#cluster-level-1).
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.
@@ -104,12 +108,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     Review the [Override CAPI Properties](../../../architecture/override-capi-properties/override-capi-properties.md)
     documentation to learn more about this feature.
 
-12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on
-    existing clusters. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more.
-    Toggle the **Taint** button to create a label.
+12. If you want the node pool to run system pods only, click **Dedicate node pool for system pods**. Refer to
+    [Dedicated node pool for system pods](../../cluster-management/node-pool.md#dedicated-system-pod-pool) for more
+    information.
 
-13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
-    parameters.
+13. To apply a [taint](../../cluster-management/taints.md) to the node pool, click **Add New Taint**. When adding a
+    taint, you need to provide values for the following parameters.
 
     | **Parameter** | **Description**                                                                                                                          |
     | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -121,7 +125,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     | **Parameter**        | **Description**                                                                                                                                                      |
     | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                                                                   |
+    | **NoSchedule**       | A pod that cannot tolerate the node taint will not be scheduled to the node.                                                                                         |
     | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                                          |
     | **NoExecute**        | New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 

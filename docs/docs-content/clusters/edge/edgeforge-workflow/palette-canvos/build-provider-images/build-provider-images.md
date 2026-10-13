@@ -33,6 +33,7 @@ generic procedure on this page:
 - [Build MAAS Images](./build-maas-image.md)
 - [Build RHEL 9 STIG Images](./build-rhel-stig-image.md)
 - [Build Ubuntu 24.04 STIG Images](./build-ubuntu-stig-image.md)
+- [Build Hadron Images](./build-hadron-image.md)
 
 ## Build Custom Provider Images
 

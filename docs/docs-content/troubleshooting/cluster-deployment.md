@@ -10,6 +10,38 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - GCP IaaS Control Plane Repaved Repeatedly
+
+[GCP IaaS clusters](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md) deployed with Palette versions earlier than
+4.9.38 can take much longer to provision than expected because the control plane node is repaved repeatedly. The health
+check on the API server load balancer does not mark the control plane node as healthy before `kubeadm init` times out,
+so the node never registers with the cluster and is replaced. Palette 4.9.38 and later configure the health check to
+mark the control plane node as healthy sooner.
+
+Use the following steps to lower the health check thresholds on an affected cluster.
+
+### Debug Steps
+
+1. Open a terminal session and ensure you have the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+   installed and authenticated with access to the GCP project that hosts the cluster.
+
+2. Update the health check of the cluster's API server load balancer to use a lower healthy threshold and check
+   interval.
+
+   ```shell
+   gcloud compute health-checks update https <cluster-name>-apiserver \
+     --global \
+     --project=<project-id> \
+     --healthy-threshold=2 \
+     --check-interval=5
+   ```
+
+   Replace `<cluster-name>` with the name of your cluster and `<project-id>` with the ID of the GCP project that hosts
+   the cluster.
+
+3. Wait for the next control plane repave. With the lower thresholds, the new control plane node completes
+   `kubeadm init` and the cluster finishes provisioning.
+
 ## Scenario - Insufficient Resources for `palette-controller-manager` and `cluster-management-agent` Pods
 
 Palette deploys system components such as `palette-controller-manager` and `cluster-management-agent` to each workload

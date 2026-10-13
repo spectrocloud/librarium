@@ -42,6 +42,7 @@ running life-critical AI workloads on edge Kubernetes with Palette.
 - [Day 2 Operations](./day-2-operations.md) - Monitor, upgrade, back up, troubleshoot, and decommission a Jetson Edge AI
   deployment after it is registered and serving a model.
 
-<!-- prettier-ignore-end -->
+- [Run a Local AI Model on a Jetson Thor](../../tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor.md) - Follow an
+  end-to-end tutorial that takes a Jetson AGX Thor from a bare device to a local AI model served on the device GPU.
 
-<!-- TODO(DOC-3092): add "Run a local AI model on a Jetson at the edge" tutorial card once that page exists. -->
+<!-- prettier-ignore-end -->

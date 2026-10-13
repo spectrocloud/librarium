@@ -73,8 +73,8 @@ This set registers the host and creates a local administrator account. Note the 
   that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
   registration token instead, omit `projectName`.
 - The `stages.initramfs.users` block creates a local administrator account named `kairos` in the `sudo` group. If the
-  host loses its connection to Palette, use this account to sign in over SSH, at the Palette Terminal User Interface
-  (TUI), or through [Local UI](../../clusters/edge/local-ui/local-ui.md). You can change the username.
+  host loses its connection to Palette, use this account to sign in over SSH, at the host terminal, or through
+  [Local UI](../../clusters/edge/local-ui/local-ui.md). You can change the username.
 - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
 - You do not need the disk-partitioning fields under `install:` that appliance-mode installer images use, because the
   agent runs on the existing host operating system.
@@ -267,7 +267,28 @@ Use a test pod to confirm that a workload reaches the GPU.
    kubectl logs gpu-check
    ```
 
-   <!-- TODO(DOC-3090): add a hideClipboard title="Example output" block with the nvidia-smi output from the next Thor run. -->
+   ```text hideClipboard title="Example Output"
+   Tue Oct  6 12:13:37 2026
+   +-----------------------------------------------------------------------------------------+
+   | NVIDIA-SMI 595.78                 Driver Version: 595.78         CUDA Version: 13.2     |
+   +-----------------------------------------+------------------------+----------------------+
+   | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+   |                                         |                        |               MIG M. |
+   |=========================================+========================+======================|
+   |   0  NVIDIA Thor                    Off |   00000000:01:00.0 Off |                  N/A |
+   | N/A   35C  N/A               1W /  N/A  | Not Supported          |      0%      Default |
+   |                                         |                        |             Disabled |
+   +-----------------------------------------+------------------------+----------------------+
+
+   +-----------------------------------------------------------------------------------------+
+   | Processes:                                                                              |
+   |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+   |        ID   ID                                                               Usage      |
+   |=========================================================================================|
+   |  No running processes found                                                             |
+   +-----------------------------------------------------------------------------------------+
+   ```
 
 When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device even
 though the image is not a CUDA image. A pod that omits the two environment variables does not receive the GPU, because
@@ -345,6 +366,12 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
    ```
 
+   ```text hideClipboard title="Example Output"
+   Edge computing is a computing model where processing and analysis of data
+   occur at the edge of a network, closer to the data source, rather than at
+   a central server or cloud.
+   ```
+
 5. Confirm the model runs on the GPU. Because `ollama ps` lists only loaded models, run it only after step 4 loads the
    model. In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU
    instead of the CPU.
@@ -353,7 +380,7 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    kubectl exec deployment/ollama -- ollama ps
    ```
 
-   ```text hideClipboard title="Example output"
+   ```text hideClipboard title="Example Output"
    NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
    llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
    ```
@@ -372,7 +399,23 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
      --data '{"model":"llama3.2:1b","prompt":"In one short sentence, what is edge computing?","stream":false}'
    ```
 
-   <!-- TODO(DOC-3090): add a hideClipboard title="Example output" block with the /api/generate JSON response from the next Thor run. -->
+   ```json hideClipboard title="Example Output"
+   {
+     "model": "llama3.2:1b",
+     "created_at": "2026-10-06T12:30:58.015015559Z",
+     "response": "Edge computing is a method of processing and analyzing data at the edge of the network, closer to the source of the data, rather than at a centralized server.",
+     "done": true,
+     "done_reason": "stop",
+     "context": [128006, 9125, 128007, ...],
+     "total_duration": 335386715,
+     "load_duration": 2898824,
+     "prompt_eval_count": 35,
+     "prompt_eval_cached_count": 34,
+     "prompt_eval_duration": 30516000,
+     "eval_count": 33,
+     "eval_duration": 298859000
+   }
+   ```
 
 :::info
 
@@ -384,6 +427,5 @@ across restarts, add a storage layer to the cluster profile and mount a `Persist
 ## Next Steps
 
 The Jetson device now runs a local AI model managed by Palette. To learn about ongoing operations, continue to
-[Day 2 Operations for Jetson Edge AI](./day-2-operations.md). For a complete end-to-end guide, refer to the tutorial.
-
-<!-- TODO(DOC-3092): link the Jetson Edge AI tutorial here once it is merged. -->
+[Day 2 Operations for Jetson Edge AI](./day-2-operations.md). For a complete end-to-end guide, refer to
+[Run a Local AI Model on a Jetson Thor at the Edge](../../tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor.md).

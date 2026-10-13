@@ -110,10 +110,15 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     :::info
 
-        When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it is automatically added again by the Palette Edge node agent. To keep the taint removed, add `DisableWorkerNodeCapReconcile` to
+    When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control
+    plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it
+    is automatically added again by the Palette Edge node agent. To keep the taint removed, add
+    `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in the OS pack before creating the cluster. For more
+    information, refer to [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
 
-    `stylus.featureGate` in the OS pack before creating the cluster. For more information, refer to
-    [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
+    To keep the pool default in place but let workloads run on a specific control plane node (or block workloads on a
+    specific worker node), apply a node-level taint on that node instead. Refer to
+    [Node-level Taints and Labels for Edge Native](../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
 
     :::
 
@@ -224,11 +229,21 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     :::
 
-13. <PartialsComponent category="clusters" name="cluster-settings" />
+13. (Optional) When you assign Edge hosts to node pools, you can apply node-level taints and labels to individual nodes
+    in the pool. Expand a node's row in the **Edge Hosts** section, then:
 
-14. Select **Validate** to review your cluster configurations and settings.
+    - Under **Taints**, click **Add New Taint** and enter a **Key**, an optional **Value**, and an **Effect**
+      (`NoSchedule`, `PreferNoSchedule`, or `NoExecute`). Repeat to add more taints.
+    - Under **Additional Labels**, enter each label in the format `key:value`. Separate multiple labels with a space.
 
-15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+    For more information, refer to
+    [Node-level Taints and Labels for Edge Native](../../cluster-management/node-pool.md#node-level-taints-and-labels-for-edge-native).
+
+14. <PartialsComponent category="clusters" name="cluster-settings" />
+
+15. Select **Validate** to review your cluster configurations and settings.
+
+16. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
@@ -281,6 +296,10 @@ When adding a new Edge host to an existing cluster, ensure you are not creating 
 [etcd](https://etcd.io/) could fail in establishing a quorum. Quorum failures typically result when there is an even
 number of control plane nodes. To learn more, check out the resource from the etcd documentation titled
 [Why an odd number of cluster members](https://etcd.io/docs/v3.3/faq/#why-an-odd-number-of-cluster-members).
+
+The exception is a planned control plane host replacement, where you temporarily run a fourth control plane host to
+avoid dropping below quorum while you swap a host. Refer to
+[Replace a Control Plane Edge Host](../cluster-management/control-plane-host-replacement.md) for that procedure.
 
 :::
 

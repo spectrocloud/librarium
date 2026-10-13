@@ -23,6 +23,7 @@ CanvOS, Stylus, and the Edge host version refer to the same Edge host software r
 
 | Palette Release                      | CanvOS / Stylus / Edge Host Version | Palette CLI Version | Palette Edge CLI Status                              |
 | ------------------------------------ | ----------------------------------- | ------------------- | ---------------------------------------------------- |
+| <!-- edge-compat-4.10.a --> 4.10.25  | 4.10.8                              | 4.10.9              | Deprecated. Use Palette CLI for supported workflows. |
 | <!-- edge-compat-4.10.17 --> 4.10.17 | 4.10.4                              | 4.10.4              | Deprecated. Use Palette CLI for supported workflows. |
 | <!-- edge-compat-4.10.16 --> 4.10.16 | 4.10.4                              | 4.10.3              | Deprecated. Use Palette CLI for supported workflows. |
 | <!-- edge-compat-4.10.0 --> 4.10.13  | 4.10.3                              | 4.10.3              | Deprecated. Use Palette CLI for supported workflows. |

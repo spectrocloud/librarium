@@ -172,6 +172,5 @@ Refer to [Back Up, Reset, and Recover](#back-up-reset-and-recover).
 ## Next Steps
 
 For host preparation and registration, refer to [Prepare the Jetson Host](./prepare-jetson-host.md) and
-[Register a Jetson Host and Serve a Model](./register-jetson-host.md).
-
-<!-- TODO(DOC-3092): link the "Run a local AI model on a Jetson at the edge" tutorial once that page exists. -->
+[Register a Jetson Host and Serve a Model](./register-jetson-host.md). For a complete end-to-end guide, refer to
+[Run a Local AI Model on a Jetson Thor at the Edge](../../tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor.md).
