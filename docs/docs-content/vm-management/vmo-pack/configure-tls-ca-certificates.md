@@ -26,35 +26,34 @@ Pack version 4.9.x and earlier configures certificates differently. If your clus
 - A workload cluster with VMO pack version 4.10.x or later deployed. Refer to
   [Create a VMO Profile](./create-vmo-profile.md) for guidance.
 
-- Kubectl installed and access to the **kubeconfig** file for the VMO cluster. Refer to the
+- Kubectl installed and access to the kubeconfig file for the VMO cluster. Refer to the
   [Kubectl](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to set up
-  `kubectl` and get the **kubeconfig** file. Export its path so that the commands on this page can use it, and run the
+  `kubectl` and get the kubeconfig file. Export its path so that the commands on this page can use it, and run the
   commands in the same terminal session.
 
   ```shell
-  export KUBECONFIG=<path-to-kubeconfig>
+  export KUBECONFIG="<path-to-kubeconfig>"
   ```
 
-  Replace `<path-to-kubeconfig>` with the path to the **kubeconfig** file of your VMO cluster.
+  Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your VMO cluster.
 
 ## Use Your Own Serving Certificate
 
-In [Direct](./deployment-modes.md#direct) mode, users reach the VMO UI through a `LoadBalancer` or `NodePort` Service,
-and VMO Manager serves TLS itself. By default, Direct mode issues a self-signed certificate that covers only the
-in-cluster Service names, so browsers display a certificate warning. Use a certificate that your users' browsers trust
-instead.
+In [**Direct**](./deployment-modes.md#direct) mode, users reach the VMO UI through a `LoadBalancer` or `NodePort`
+Service, and VMO Manager serves TLS itself. By default, **Direct** mode issues a self-signed certificate that covers
+only the in-cluster Service names, so browsers display a certificate warning. Use a certificate that your users'
+browsers trust instead.
 
-In [Proxied](./deployment-modes.md#proxied) mode, only the in-cluster Spectro Proxy uses the serving certificate, so you
-do not need to replace it.
+In [**Proxied**](./deployment-modes.md#proxied) mode, only the in-cluster Spectro Proxy uses the serving certificate, so
+you do not need to replace it.
 
 1. Obtain a TLS certificate and its private key in PEM format. The certificate's Subject Alternative Names (SANs) must
-   include the DNS name or IP address that users reach the VMO UI at, which is the address in
+   include the DNS name or IP address of the VMO UI. This is the address in
    `charts.virtual-machine-orchestrator.vmo-manager.platform.baseUrl`. If an intermediate CA signed the certificate,
    append the intermediate certificates to the certificate file so that clients receive the full chain.
 
-2. Create a Secret of type `kubernetes.io/tls` in the `vm-dashboard` namespace. The Secret holds only the certificate
-   and the private key, in the `tls.crt` and `tls.key` keys. Unlike pack version 4.9.x and earlier, it does not hold a
-   CA certificate.
+2. Create a Secret of type `kubernetes.io/tls` in the `vm-dashboard` namespace that holds the certificate and the
+   private key.
 
    ```shell
    kubectl create secret tls vmo-tls \
@@ -72,13 +71,14 @@ do not need to replace it.
 
 3. Log in to [Palette](https://console.spectrocloud.com).
 
-4. From the left main menu, select **Clusters**, and select your VMO cluster.
+4. From the left main menu, select **Clusters**, and then select your VMO cluster.
 
 5. Select the **Profile** tab, select the **Virtual Machine Orchestrator** layer, and then select **Values**. The values
    editor appears.
 
 6. Set `charts.virtual-machine-orchestrator.vmo-manager.tls.existingSecret` to the name of the Secret that you created
-   in step 2.
+   in step 2. In [**Custom**](./deployment-modes.md#custom) mode, also set `tls.enabled` to `true`, because TLS is off
+   in the pack's base values. The **Proxied** and **Direct** modes set it for you.
 
    ```yaml hideClipboard title="Example"
    charts:
@@ -89,11 +89,10 @@ do not need to replace it.
            existingSecret: "vmo-tls"
    ```
 
-   When `existingSecret` is set, VMO does not request a certificate from cert-manager, and the `tls.certManager.*`
-   values have no effect. In [Custom](./deployment-modes.md#custom) mode, also set `tls.certManager.enabled` to `false`,
-   so that the cluster does not switch back to cert-manager if you remove `existingSecret` later.
+7. _(Custom mode only)_ If `tls.certManager.enabled` is `true`, set it to `false` so that the cluster does not switch
+   back to cert-manager if you remove `existingSecret` later.
 
-7. Select **Save**. Wait for Palette to complete the cluster update.
+8. Select **Save**. Wait for Palette to complete the cluster update.
 
 ### Validate
 
@@ -109,19 +108,23 @@ do not need to replace it.
 ## Trust a Private Certificate Authority
 
 VMO Manager trusts the CAs in its container image, the CA of its Kubernetes cluster, and the CAs in the `ca.crt` key of
-the ConfigMap that `vmo-manager.caCert.configMapName` names. This ConfigMap is `platform-ca-cert` in the `vm-dashboard`
-namespace by default, and the **Proxied** and **Direct** modes always set this name. Palette does not create or manage
-this ConfigMap, so you create it yourself. VMO Manager reads these CAs when it starts.
+the `platform-ca-cert` ConfigMap in the `vm-dashboard` namespace. Palette does not create or manage this ConfigMap, so
+you create it yourself. VMO Manager reads the ConfigMap only when it starts.
 
-If your OIDC IdP, such as a self-hosted Palette or Palette VerteX instance, presents a certificate that a private CA
-signed, add that CA to the ConfigMap. Otherwise, VMO Manager cannot reach the IdP, and the `vmo-manager` pod restarts
-with a `Failed to initialize OIDC provider` error that includes `x509: certificate signed by unknown authority`.
+In **Custom** mode, you can store the CAs in a ConfigMap with a different name. Set
+`charts.virtual-machine-orchestrator.vmo-manager.caCert.configMapName` to the ConfigMap name and
+`charts.virtual-machine-orchestrator.vmo-manager.caCert.key` to the key that holds the CAs, and use those names in the
+following steps. Leave `charts.virtual-machine-orchestrator.vmo-manager.caCert.enabled` at its default, `true`.
+
+If a private CA signed the certificate of your OIDC IdP, such as a self-hosted Palette or Palette VerteX instance, add
+that CA to the ConfigMap. Without it, VMO Manager cannot reach the IdP, and the VMO Manager pod restarts with a
+`Failed to initialize OIDC provider` error that includes `x509: certificate signed by unknown authority`.
 
 1. Export the DNS name of your IdP, without the `https://` prefix. For a self-hosted Palette or Palette VerteX IdP, use
    the DNS name of the instance.
 
    ```shell
-   export IDP_DNS_NAME=<idp-dns-name>
+   export IDP_DNS_NAME="<idp-dns-name>"
    ```
 
    Replace `<idp-dns-name>` with the DNS name of your IdP, such as `palette.example.com`.
@@ -155,13 +158,17 @@ with a `Failed to initialize OIDC provider` error that includes `x509: certifica
    subject=C=US, O=Example Corp, CN=Example Intermediate CA
    ```
 
-5. Save the root CA certificate to a file named `root-ca.pem`. The root CA is the last certificate in the chain, the one
-   whose issuer is not the subject of another certificate in the output. If the chain does not include the root CA,
-   obtain it from your certificate administrator.
+5. Save the root CA certificate to a file named `root-ca.pem`. A root CA certificate is self-signed, so its issuer and
+   subject match. Servers often leave the root CA out of the chain that they present. If no certificate in the output is
+   self-signed, as in the example output, get the root CA certificate from your certificate administrator. In the
+   example output, the issuer of the last certificate, `Example Root CA`, is the root CA to ask for.
 
    ```shell
-   cp cert-01.pem root-ca.pem
+   cp <root-ca-file> root-ca.pem
    ```
+
+   Replace `<root-ca-file>` with the path to the root CA certificate file, either the self-signed `cert-<number>.pem`
+   file from step 4 or the file from your certificate administrator.
 
 6. Check whether the `platform-ca-cert` ConfigMap already exists, for example because you added another CA earlier.
 
@@ -169,7 +176,11 @@ with a `Failed to initialize OIDC provider` error that includes `x509: certifica
    kubectl get configmap platform-ca-cert --namespace vm-dashboard
    ```
 
-   If the output contains `NotFound`, the ConfigMap does not exist. Otherwise, it exists.
+   If the ConfigMap does not exist, the output contains `NotFound`, and you can skip step 7.
+
+   ```shell hideClipboard title="Example Output"
+   Error from server (NotFound): configmaps "platform-ca-cert" not found
+   ```
 
 7. _(Existing ConfigMap only)_ Combine the CAs that the ConfigMap already holds with your root CA, so that VMO Manager
    keeps trusting them.
@@ -196,10 +207,6 @@ with a `Failed to initialize OIDC provider` error that includes `x509: certifica
    ```shell
    kubectl rollout restart deployment vmo-manager --namespace vm-dashboard
    ```
-
-In Custom mode, you can store the CAs in a ConfigMap with a different name. Set
-`charts.virtual-machine-orchestrator.vmo-manager.caCert.configMapName` to the ConfigMap name, and
-`charts.virtual-machine-orchestrator.vmo-manager.caCert.key` to the key that holds the CAs.
 
 ### Validate
 
