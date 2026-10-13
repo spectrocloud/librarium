@@ -231,7 +231,7 @@ The following checks were performed on each of these signatures:
       "owner": "Spectro Cloud",
       "ref": "e597f70be238369ce4f0e5778492a155e23fec17",
       "repo": "spectrocloud/librarium",
-      "workflow": "Nighly Docker Build"
+      "workflow": "Nightly Docker Build"
     }
   }
 ]

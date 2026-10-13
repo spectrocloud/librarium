@@ -55,6 +55,8 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
 
    ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.webp)
 
+<!-- prettier-ignore-start -->
+
 10. Update the `system.uri` parameter in the pack editor. Use the provider image you created in the EdgeForge process.
     If you have not built the image yet, fill the parameter with where the image will be uploaded to or fill it with a
     placeholder value and update it when you upload the image.
@@ -90,11 +92,12 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
     You can customize the node drainage behavior and specify additional images that you may have created that are part
     of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
     `- image: ` entry for each image you need to specify. Refer to the
-
     <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" /> resource to learn more about the
     pack details.
 
     :::
+
+<!-- prettier-ignore-end -->
 
 11. Specify any cloud-init stages in your OS pack. Cloud-init stages allow you to configure your OS declaratively. For
     more information about cloud-init stages, refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).

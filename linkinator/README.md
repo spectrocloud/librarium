@@ -43,6 +43,15 @@ the old Chrome/79 spoof removed in DOC-3126. Removing these would surface false 
 | `dev.mysql.com`         | 403                          |
 | `github.com`            | Rate-limited on bulk checks. |
 
+### Hosts blocked from CI only
+
+These hosts return 200 to every client tested locally, but the weekly production check reports them as broken when it
+runs from GitHub Actions, so the block applies to CI traffic only.
+
+| Host               | Evidence                                                                                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docs.ansible.com` | Read the Docs behind Cloudflare. The linked page returns 200 directly, with no redirect, but was reported broken in the 2026-09-21 and 2026-10-05 production reports after DOC-3175 removed this entry. |
+
 ### Login walls
 
 | Host                  | Reason                                                    |

@@ -10,6 +10,90 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions
+
+After you move a PXK-E Edge cluster to
+[systemd extensions](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/systemd-extensions.md)
+on a Palette version earlier than 4.10.25, custom drop-in files for the containerd and Kubelet services stop applying,
+and no error is reported. For example, image pulls from a private registry that uses a Kubelet credential provider fail,
+or a containerd HTTP proxy stops applying.
+
+This occurs because the migration moves the entire `/etc/systemd/system/containerd.service.d/` and
+`/etc/systemd/system/kubelet.service.d/` directories to a backup directory, instead of moving only the drop-in files
+that Palette ships. Clusters that you move on version 4.10.25 or later are not affected.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+2. List the drop-in files that the migration moved to the backup directory.
+
+   ```shell
+   sudo ls --recursive /opt/.extensions/migrations/backups/kubeadm-sysext-migrations
+   ```
+
+3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
+   a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
+   drop-in files.
+
+   ```shell
+   ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
+   ```
+
+4. Re-create the original directory, and then copy each custom drop-in file back to it.
+
+   ```shell
+   sudo mkdir --parents /etc/systemd/system/<service-name>.service.d/
+   sudo cp <backup-file-path> /etc/systemd/system/<service-name>.service.d/
+   ```
+
+   Replace `<backup-file-path>` with the path to the custom drop-in file in the backup directory. Replace
+   `<service-name>` with `containerd` or `kubelet`, depending on the directory that the file came from.
+
+5. Reload systemd, and then restart the containerd and Kubelet services.
+
+   ```shell
+   sudo systemctl daemon-reload
+   sudo systemctl restart containerd kubelet
+   ```
+
+6. Confirm that systemd applies your custom drop-in files. The output lists each file that applies to a service in a
+   comment line that starts with `#`, followed by the path to the file.
+
+   ```shell
+   systemctl cat containerd kubelet
+   ```
+
+7. Repeat steps 1 - 6 on each Edge host in the cluster.
+
+## Scenario - Missing `multipath-tools` Package on Edge Images
+
+Edge hosts that rely on multipath storage configurations may experience storage accessibility issues because the
+`multipath-tools` package is missing from Edge installer and provider images built with
+[CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) 4.8.8 and later on the [Kairos](https://kairos.io/)
+v3.5.9 base image. A system cleanup step in Kairos v3.5.9 removes the package. CanvOS 4.10.3 and later, which correspond
+to Palette 4.10.13 and later, use a Kairos version that includes `multipath-tools` on Ubuntu 22.04 and later.
+
+To resolve this issue on earlier CanvOS versions, add `multipath-tools` to your images.
+
+### Debug Steps
+
+1. Add `multipath-tools` to your CanvOS `Dockerfile` before building the installer ISO or provider images. For example,
+   add the following line for Ubuntu-based builds.
+
+   ```dockerfile
+   RUN apt-get update && apt-get install --yes multipath-tools
+   ```
+
+   For FIPS builds, add the package to the base image Dockerfile for the respective operating system.
+
+   The `multipath-tools` package is known to cause issues on Ubuntu 20.04. If unexpected behavior occurs, remove
+   `multipath-tools`.
+
+2. Build the installer ISO and provider images. Refer to
+   [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for more information
+   on customizing your `Dockerfile`.
+
 ## Scenario - Cluster Nodes Fail to Become `Ready` on Kubernetes v1.35.x
 
 On Edge clusters configured with Kubernetes v1.35.x, hosts running OSes that default to cgroup v1, such as Ubuntu 20.04
@@ -809,7 +893,7 @@ the **user-data** file causes cluster creation to fail as it cannot find
 :::tip
 
 Refer to
-[Identify the Target Agent Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-target-agent-version)
+[Identify the Latest Palette Agent Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-latest-palette-agent-version)
 for guidance in retrieving your Palette agent version number.
 
 :::
