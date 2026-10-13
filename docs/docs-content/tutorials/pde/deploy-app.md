@@ -321,7 +321,7 @@ Once the app is successfully deployed, the cluster details page will expose the 
 
 ![Cluster 2's details page](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-2-details-page.webp)
 
-Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
+Click on the UI service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
 ![View of the self-hosted version of Hello Universe](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.webp)
 
@@ -1195,7 +1195,7 @@ hyperlink for port 8080 and port 3000 is available.
 
 ![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy_scenario-2-overview.webp)
 
-Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
+Click on the UI service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
 <br />
 
