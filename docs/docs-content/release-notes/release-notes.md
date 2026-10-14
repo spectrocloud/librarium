@@ -11,6 +11,113 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 15, 2026 - Release 4.10.26
+
+<!-- PATCH RELEASE TICKET: DOC-3303 -->
+<!-- PATCH RELEASE VERSION: 4.10.26 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12187 PEM-12301 PEM-12279 PCP-7779 PE-9761 PEM-12199 PE-9758 PEM-12197 PEM-12184 PEM-12183 PE-9700 PCP-7705 -->
+
+### Breaking Changes {#breaking-changes-4-10-26}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12187 -->
+
+- To improve security, Palette now checks permissions against the specific Edge host for the following Edge host API
+  operations. Update any scripts or automation that rely on the earlier behavior.
+
+  - Edge host registration requests to `POST /v1/edgehosts/register` must include a registration token in the
+    `hostAuthToken` field, including when you re-register an existing vSphere Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Create a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) in the Edge
+    host's project and include it in the request.
+  - If a registration request includes the `associateClusterUid` annotation, the cluster must exist in the same tenant
+    and project as the Edge host. Otherwise, registration fails with a `ResourceAccessDenied` error. This applies to
+    both manual and auto registration, and earlier releases ignored the annotation during auto registration. Set the
+    annotation only to a cluster in the registration token's project, or remove it and associate the Edge host with a
+    cluster after registration.
+  - System-scope roles no longer grant Edge host permissions. Edge host access now comes only from project-scope roles,
+    and requests that rely on a system-scope role fail with an `OperationForbidden` error. Assign a project-scope role
+    that includes the required `edgeHost` permissions instead.
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access, so requests made outside the Edge host's project context
+    fail with an `OperationForbidden` error. Make these requests in the Edge host's project context.
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the SSH user key in `sshUserCredentials`. If you need the
+    key later, store it on the client side.
+
+  Edge hosts that register with a valid registration token are not affected if any `associateClusterUid` annotation
+  refers to a cluster in the same project. Users with the Project Admin, Project Editor, or Tenant Admin role who work
+  in the Edge host's project are also not affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12187 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12184 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12183 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12197 -->
+
+- Fixed an issue where changing the number of nodes in a node pool from the cluster's **Nodes** tab turned off the
+  [**Skip worker node update (Optional)**](../clusters/cluster-management/node-pool.md#skip-worker-node-update) option
+  for that node pool. As a result, the next Kubernetes upgrade also upgraded the node pool's worker nodes. Editing the
+  node pool configuration did not change the option.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7779 -->
+
+- Fixed an issue where control plane updates failed on clusters whose Kubernetes pack `extraArgs` include an unquoted
+  integer of 1,000,000 or greater, such as `quota-backend-bytes: 4294967296`. After a Palette agent upgrade to version
+  4.10, the next cluster profile or pack change rolled out control plane nodes with the value converted to scientific
+  notation, such as `4.294967296e+09`, and the new nodes failed to join the cluster with the error
+  `etcd-join: the etcd member is not started`. Palette now preserves integer values. Affected clusters
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) their control plane nodes once
+  after the upgrade to apply the corrected values.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12279 -->
+
+- Fixed an issue where self-hosted Palette and Palette VerteX instances could not deploy new clusters when an
+  administrator turned on certificate rotation after upgrading from version 4.9. Cluster deployments failed with the
+  error `failed to get in-cluster registry: in-cluster registry credential not found`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12199 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9758 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12301 -->
+
+- Fixed an issue where Palette kept duplicate machine records for an Edge host after its node re-registered with a new
+  Kubernetes node UID, for example, after running `kubectl delete node` and restarting the Kubelet. The duplicate
+  records appeared as extra nodes in Palette, and removing an outdated record could release the Edge host from its
+  cluster and reset it. Palette now rejects a second machine record for an Edge host that already has a running machine
+  in the same node pool, and the Edge agent no longer deletes the machine record of a running node. Palette also removes
+  existing duplicate machine records automatically after the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7705 -->
+
+- Fixed an issue on Edge clusters configured with a proxy where Palette task pods, such as those that apply OS patches
+  or update NTP and SSH key settings, remained in the `Terminating` state and the tasks did not complete. The task jobs
+  reported the error `pod updates may not change fields other than`. Palette now injects proxy settings only when a pod
+  is created, and it merges the node affinity rules it adds with the pod's existing affinity rules instead of replacing
+  them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9700 -->
+
+- Fixed an issue on [two-node](../clusters/edge/architecture/two-node.md) Edge clusters where, after a failover, a
+  demoted node could stop replicating data from the leader while the cluster continued to report a healthy status. A
+  later failover could then promote the node with out-of-date data. Palette now stops the node's local Kubernetes and
+  datastore processes before demoting it, and it generates an Error audit event when replication stalls and an Info
+  audit event when replication recovers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9761 -->
+
+- Fixed an issue on locally managed Edge clusters and Edge clusters that use Canonical Kubernetes where a temporary
+  failure during bootstrap, such as DNS or the Kubernetes API server not being ready, prevented the creation of the
+  node's `<node>-public-key` secret in the `spectro-system` namespace, while the task still reported success. Services
+  that validate [Local UI](../clusters/edge/local-ui/local-ui.md) tokens then rejected users on that node, and
+  `/var/log/public-key-manager.log` showed the error `Failed to create secret <node>-public-key`. The task now retries
+  until the secret exists.
+
 ## October 9, 2026 - PaletteAI VM Launchpad 4.10.20 {#vm-launchpad-4.10.20}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
