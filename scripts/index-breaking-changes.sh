@@ -14,10 +14,10 @@ TEMP_ARCHIVE_FILE="$DOCS_ROOT/archiveVersions_temp.json"
 
 # Oldest version branch whose breaking changes are indexed. Older branches are skipped.
 #
-# This is intentionally lower than the build and backport floor (BUILD_FLOOR_BRANCH in
-# .github/workflows/netlify-version-release.yaml). Customers upgrade from versions that are no
-# longer built or backported to, and they still need every breaking change between their version
-# and their upgrade target. Raise each floor on its own schedule. Do not merge them into one value.
+# This is intentionally lower than the build and backport floor, the oldest branch that is
+# still rebuilt and backported to. Customers upgrade from versions that are no longer built or
+# backported to, and they still need every breaking change between their version and their
+# upgrade target. Raise each floor on its own schedule. Do not merge them into one value.
 INDEX_FLOOR_BRANCH="version-4-5"
 
 # Worktree strategy:
