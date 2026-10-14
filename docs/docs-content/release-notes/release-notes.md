@@ -27,8 +27,8 @@ tags: ["release-notes"]
   - Edge host registration requests to `POST /v1/edgehosts/register` must include a registration token in the
     `hostAuthToken` field, including when you re-register an existing vSphere Edge host. Requests without a token fail
     with the error `Parameter 'hostAuthToken' should not be empty`. Create a
-    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) in the Edge
-    host's project and include it in the request.
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project and include it in the request.
   - If a registration request includes the `associateClusterUid` annotation, the cluster must exist in the same tenant
     and project as the Edge host. Otherwise, registration fails with a `ResourceAccessDenied` error. This applies to
     both manual and auto registration, and earlier releases ignored the annotation during auto registration. Set the
