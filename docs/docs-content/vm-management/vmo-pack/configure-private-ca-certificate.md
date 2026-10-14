@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Configure Private CA Certificate"
+sidebar_label: "Configure Private CA Certificate (4.9.x and Earlier)"
 title: "Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX"
 description:
   "Learn how to configure a private CA certificate for VMO that enables trust with your self-hosted Palette TLS
@@ -11,6 +11,9 @@ tags: ["vmo"]
 This guide provides step-by-step instructions on how to configure a private CA certificate for the Virtual Machine
 Orchestrator (VMO) that enables trust with your self-hosted Palette or Palette VerteX TLS certificate. This is necessary
 to ensure that VMO can securely communicate with your self-hosted Palette or Palette VerteX instance.
+
+This page applies to VMO pack version 4.9.x and earlier. For pack version 4.10.x and later, refer to
+[Configure TLS and CA Certificates](./configure-tls-ca-certificates.md).
 
 ## Prerequisites
 
