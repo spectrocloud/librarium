@@ -1,14 +1,42 @@
+// Fill the panel so that the section links sit at the bottom even when the sidebar is short.
+.secondaryPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+// Sticky rather than absolute, so that the strip takes up space and the last sidebar items scroll into view above it.
 .mobilePrimaryMenu {
-  position: absolute;
-  bottom: 0px;
+  position: sticky;
+  // Infima pads the panel (.navbar-sidebar__item) by 0.5rem, and sticky offsets are measured inside that padding.
+  // Offset it so that the strip sits flush with the panel's bottom edge and no sidebar items show below it.
+  bottom: -0.5rem;
+  margin-top: auto;
   background: var(--ifm-background-color);
   border-top: 1px solid #f0f0f0;
   width: 100%;
   padding: 0.5rem 0;
-  overflow-x: scroll;
   .mobileMenu {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+}
+
+// On a short screen, such as a desktop browser at 400% zoom, a sticky strip would cover most of the panel, so let it
+// scroll with the sidebar instead.
+@media (max-height: 20em) {
+  .mobilePrimaryMenu {
+    position: static;
+  }
+}
+
+// Tab does not scroll a sidebar link that is in view but under the sticky strip, so keep focused links above it.
+// 11rem covers the strip at phone widths (up to 172px) plus the panel's 0.5rem bottom padding.
+@media (min-height: 20.01em) {
+  :global(.navbar-sidebar__item):has(> .secondaryPanel) {
+    scroll-padding-bottom: 11rem;
   }
 }

@@ -9,17 +9,30 @@ function useNavbarItems() {
   return useThemeConfig().navbar.items as NavbarItemConfig[];
 }
 
+// A section link is a left-hand navbar item that opens a part of the site, such as Docs or Tutorials. Version
+// drop-down menus and right-hand items, such as GitHub and Ask AI, are not section links.
+function isSectionLink(item: NavbarItemConfig): boolean {
+  const { position, type } = item as { position?: string; type?: string };
+  return position === "left" && type !== "docsVersionDropdown";
+}
+
 interface NavbarMobilePrimaryMenuProps {
   className: string;
+  // Render only the section links. The strip at the bottom of the docs sidebar panel uses this, so that it stays
+  // short. The main mobile menu renders every navbar item.
+  sectionLinksOnly?: boolean;
 }
 
 // The primary menu displays the navbar items
-export default function NavbarMobilePrimaryMenu({ className }: NavbarMobilePrimaryMenuProps): JSX.Element {
+export default function NavbarMobilePrimaryMenu({
+  className,
+  sectionLinksOnly = false,
+}: NavbarMobilePrimaryMenuProps): JSX.Element {
   const mobileSidebar = useNavbarMobileSidebar();
 
   // TODO how can the order be defined for mobile?
   // Should we allow providing a different list of items?
-  const items = useNavbarItems();
+  const items = useNavbarItems().filter((item) => !sectionLinksOnly || isSectionLink(item));
 
   return (
     <ul className={`menu__list ${className ? className : ""}`}>
