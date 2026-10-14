@@ -11,6 +11,68 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 15, 2026 - Release 4.8.72
+
+<!-- PATCH RELEASE TICKET: DOC-3302 -->
+<!-- PATCH RELEASE VERSION: 4.8.72 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12273 PEM-12104 PCP-7754 PE-9813 -->
+
+### Breaking Changes {#breaking-changes-4-8-72}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12273 -->
+
+- To improve security, Palette now checks permissions against the specific Edge host for the following Edge host API
+  operations. Update any scripts or automation that rely on the earlier behavior.
+
+  - Edge host registration requests to `POST /v1/edgehosts/register` must include a registration token in the
+    `hostAuthToken` field, including when you re-register an existing vSphere Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Create a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) in the Edge
+    host's project and include it in the request.
+  - System-scope roles no longer grant Edge host permissions. Edge host access now comes only from project-scope roles,
+    and requests that rely on a system-scope role fail with an `OperationForbidden` error. Assign a project-scope role
+    that includes the required `edgeHost` permissions instead.
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access, so requests made outside the Edge host's project context
+    fail with an `OperationForbidden` error. Make these requests in the Edge host's project context.
+  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.update` permission on the Edge
+    host, as well as the existing cluster permission. Users who have cluster permissions but not `edgeHost.update` on
+    the Edge host can no longer reset it. Make these requests in the Edge host's project context with a role that grants
+    `edgeHost.update`.
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the SSH user key in `sshUserCredentials`. If you need the
+    key later, store it on the client side.
+
+  Edge hosts that register with a valid registration token are not affected. Users with the Project Admin, Project
+  Editor, or Tenant Admin role who work in the Edge host's project are also not affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12273 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12104 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7754 -->
+
+- Fixed an issue that caused Palette to unexpectedly
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes after
+  a cluster change that should not trigger a repave. This affected clusters first deployed with Palette 4.7 or earlier
+  whose Palette agent was upgraded to version 4.8 or later. The agent upgrade itself did not trigger the repave.
+  Instead, the repave started with the next cluster change, such as updating `clientConfig.oidc-client-secret` in the
+  Kubernetes pack values. With this fix, these changes no longer repave control plane nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9813 -->
+
+- Fixed an issue that prevented automatic and manual
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md) on Edge clusters when any aggregated
+  `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
+  remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
+  `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
+
 ## October 4, 2026 - Release 4.8.70
 
 <!-- PATCH RELEASE TICKET: DOC-3269 -->
