@@ -98,32 +98,7 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
    on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify them
    to work according to your host operating system. The command creates the `upgrades.sh` file in your local directory.
 
-<!-- vale off -->
-
-```shell
-cat << 'EOF' > upgrades.sh
-#!/bin/sh
-set -e
-export DEBIAN_FRONTEND=noninteractive
-apt-get --assume-yes update
-apt-get --option Dpkg::Options::="--force-confold" dist-upgrade --yes
-if [ -f /var/run/reboot-required ]; then
-  echo "Reboot required. Rebooting while the node is still drained."
-  systemctl reboot
-  # The node goes down here. After it boots, the Job starts a new pod that reruns this
-  # script. Updates are already installed and /var/run/reboot-required is cleared at
-  # boot, so the rerun exits 0.
-  sleep 600
-  exit 1
-fi
-EOF
-```
-
-<!-- vale on -->
-
-The example checks `/var/run/reboot-required`, which is specific to Ubuntu and Debian hosts. On RHEL-family hosts, use
-`needs-restarting --reboothint` from the `yum-utils` package instead. It exits `1` when a reboot is required and `0`
-otherwise.
+   
 
 10. Execute the following commands to create the `upgrades.yaml` file using your namespace, label, and upgrade script
     variables.
@@ -183,9 +158,9 @@ otherwise.
     | `Secret`            | `os-upgrade-script` | Stores the `upgrade.sh` shell script, which defines the upgrade logic to be executed on target nodes. This script is mounted into the upgrade pod via a secret volume.                                     |
     | `SpectroSystemTask` | `os-upgrade-plan`   | Describes the upgrade. Palette reconciles the task, drains each labeled node in turn, runs the script against the host filesystem, and returns the node to service when the script completes successfully. |
 
-    The `tolerations` list covers the standard control-plane taints applied by current and older Kubernetes versions. If
-    your nodes carry additional taints, for example on GPU nodes or on dedicated node pools, add those keys to the same
-    list so the upgrade pod can schedule on them.
+    The `tolerations` list covers the standard control plane taints that current and earlier Kubernetes versions apply.
+    If your nodes carry other taints, such as on GPU nodes or dedicated node pools, add a matching toleration for each
+    taint. Otherwise, the upgrade pod cannot be scheduled on those nodes.
 
 11. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left main
     menu.
@@ -270,8 +245,8 @@ the `spectro-task-xxx` namespace.
    spectrosystemtask.cluster.spectrocloud.com/stylus-upgrade         41m
    ```
 
-   The `cert-renewal-task` and `stylus-upgrade` tasks are created by Palette on every cluster. The task that you created
-   is `os-upgrade-plan`.
+   Palette creates the `cert-renewal-task` and `stylus-upgrade` tasks on every cluster. The task that you created is
+   `os-upgrade-plan`.
 
 8. Watch the per-node upgrade Jobs as they run.
 
@@ -288,16 +263,18 @@ the `spectro-task-xxx` namespace.
    Palette labels each node with the task name and content hash once that node's Job succeeds. A node without the label
    has not completed yet.
 
-10. On any node that rebooted, confirm the reboot happened.
+10. _(Rebooted nodes only)_ Log in to each node that rebooted, and issue the following command to display when the node
+    last booted.
 
-    ```bash
-    uptime --since
-    ```
+    
 
-    The timestamp should be after the Job for that node started.
+### Recover a Failed Node
 
-### If a node fails
+If the script fails, the node stays cordoned, and the Job retries up to 99 times. To recover the node, use one of the
+following methods.
 
-If the script fails, the node stays cordoned and the Job retries up to 99 times. To recover, either fix the script,
-which triggers a rerun, or delete the task and run `kubectl uncordon <node>` to return the node to a schedulable state.
-Deleting the task on its own does not return the node to a schedulable state.
+- Fix the script. Updating the script triggers a rerun.
+
+- Delete the task, and then return the node to service. Deleting the task without this step leaves the node cordoned.
+
+  

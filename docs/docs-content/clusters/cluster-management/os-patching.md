@@ -9,8 +9,8 @@ tags: ["clusters", "cluster management"]
 
 :::info
 
-This page covers OS patching for clusters that Palette provisioned from a Palette-built VM image. If you brought your
-own host and installed the Palette agent on it, refer to
+This page covers OS patching for clusters that Palette provisioned from a Palette-built VM image. For agent mode
+clusters, where you supply the host and own the operating system, refer to
 [Configure OS Upgrades](../../deployment-modes/agent-mode/manage-agent/os-upgrades.md) instead.
 
 :::
