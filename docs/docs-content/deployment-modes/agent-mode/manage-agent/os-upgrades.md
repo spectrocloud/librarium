@@ -98,8 +98,6 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
    on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify them
    to work according to your host operating system. The command creates the `upgrades.sh` file in your local directory.
 
-   
-
 10. Execute the following commands to create the `upgrades.yaml` file using your namespace, label, and upgrade script
     variables.
 
@@ -266,8 +264,6 @@ the `spectro-task-xxx` namespace.
 10. _(Rebooted nodes only)_ Log in to each node that rebooted, and issue the following command to display when the node
     last booted.
 
-    
-
 ### Recover a Failed Node
 
 If the script fails, the node stays cordoned, and the Job retries up to 99 times. To recover the node, use one of the
@@ -276,5 +272,3 @@ following methods.
 - Fix the script. Updating the script triggers a rerun.
 
 - Delete the task, and then return the node to service. Deleting the task without this step leaves the node cordoned.
-
-  
