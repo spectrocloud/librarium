@@ -27,8 +27,8 @@ tags: ["release-notes"]
   - Edge host registration requests to `POST /v1/edgehosts/register` must include a registration token in the
     `hostAuthToken` field, including when you re-register an existing vSphere Edge host. Requests without a token fail
     with the error `Parameter 'hostAuthToken' should not be empty`. Create a
-    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) in the Edge
-    host's project and include it in the request.
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project and include it in the request.
   - System-scope roles no longer grant Edge host permissions. Edge host access now comes only from project-scope roles,
     and requests that rely on a system-scope role fail with an `OperationForbidden` error. Assign a project-scope role
     that includes the required `edgeHost` permissions instead.
