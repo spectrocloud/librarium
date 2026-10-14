@@ -20,14 +20,13 @@ tags: ["release-notes"]
 ### Breaking Changes {#breaking-changes-4-8-71}
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12226 -->
 
-- To improve security, virtual machine operations now also require permissions on the cluster that hosts the virtual
-  machine. Viewing virtual machines and snapshots requires the `cluster.get` permission, and all other operations, such
-  as starting, stopping, cloning, migrating, and creating snapshots, require the `cluster.update` permission
-  (`virtualCluster.get` and `virtualCluster.update` for virtual clusters). Users assigned the Virtual Machine Power User
-  or Virtual Machine User role together with the Cluster Viewer role can still view virtual machines but can no longer
-  perform other operations on them. Assign these users the Cluster Editor role, or a custom role that includes
-  `cluster.update`, in the cluster's project. Refer to
+- To improve security, virtual machine operations now also require the `cluster.get` permission on the cluster that
+  hosts the virtual machine (`virtualCluster.get` for virtual clusters). Users who have a virtual machine role, such as
+  Virtual Machine Power User or Virtual Machine User, but no role that includes `cluster.get` in the cluster's project
+  can no longer view or manage the virtual machines on that cluster. Assign these users the Cluster Viewer role, or a
+  custom role that includes `cluster.get`, in the cluster's project. Refer to
   [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for more information.
 
 ### Improvements
