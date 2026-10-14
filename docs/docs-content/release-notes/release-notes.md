@@ -156,9 +156,7 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   hosts the virtual machine (`virtualCluster.get` for virtual clusters). Users who have a virtual machine role, such as
   Virtual Machine Power User or Virtual Machine User, but no role that includes `cluster.get` in the cluster's project
   can no longer view or manage the virtual machines on that cluster. Assign these users the Cluster Viewer role, or a
-  custom role that includes `cluster.get`, in the cluster's project. If you upgrade from
-  [Palette 4.10.17-patch.5](#breaking-changes-4-10-17-patch-5), operations other than viewing no longer require the
-  `cluster.update` permission, so these users no longer need the Cluster Editor role. Refer to
+  custom role that includes `cluster.get`, in the cluster's project. If you upgrade from [Palette 4.10.17-patch.5](#breaking-changes-4-10-17-patch-5), operations other than viewing no longer require the `cluster.update` permission. Users who have the Cluster Editor role only for virtual machine operations now need only the Cluster Viewer role. Refer to
   [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
