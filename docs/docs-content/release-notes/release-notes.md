@@ -81,15 +81,14 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12279 -->
 
-- Fixed an issue where self-hosted Palette and Palette VerteX management appliances could not deploy new clusters when
-  an administrator turned on **Enable Certificate Rotation** for the internal Zot registry after upgrading from version
-  4.9. Cluster deployments failed with the error
+- Fixed an issue where the Palette Management Appliance and VerteX Management Appliance could not deploy new clusters
+  when an administrator turned on **Enable Certificate Rotation** for the internal Zot registry after upgrading from
+  version 4.9. Cluster deployments failed with the error
   `failed to get in-cluster registry: in-cluster registry credential not found`. Palette and Palette VerteX now update
-  the registry certificate authority (CA) automatically, so the manual update script is required only on version
-  4.10.25. Refer to the upgrade notes for the
+  the registry certificate authority (CA) automatically, so the registry CA update script is required only on version
+  4.10.25. Refer to the Upgrade Notes for
   [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
-  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) management appliances for more
-  information.
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12199 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9758 -->
