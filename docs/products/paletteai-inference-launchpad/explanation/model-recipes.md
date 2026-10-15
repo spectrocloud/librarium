@@ -44,9 +44,9 @@ A recipe decouples model support from the product release cycle. Spectro Cloud p
 engine is ready, and you add it to a running appliance without upgrading the platform. Switching a model to a different
 engine build, such as a vendor-optimized one, changes the recipe only.
 
-Recipes also give you one artifact to work from. The recipe is the only model artifact you download for a certified
-model. Its metadata drives the weights download, and its engine image travels with it, so the metadata and the engine it
-names cannot drift apart.
+Recipes also give you one artifact to work from. The recipe is the only model artifact you download from Artifact Studio
+for a certified model. Its metadata drives the weights download, and its engine image travels with it, so the metadata
+and the engine it names cannot drift apart.
 
 ## Where Model Recipes Come From
 
@@ -61,10 +61,10 @@ For how certified models and your own models differ, refer to [Model Certificati
 A certified model reaches the appliance in two uploads. The first is the recipe. The second is the model weights, which
 the recipe does not contain. The recipe's metadata tells the Palette CLI which weights to download.
 
-| **Upload** | **What it carries**                                                                                                          | **Command**                                                         |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Recipe     | The recipe, uploaded as content. The appliance loads the engine image and places the metadata file in the model's directory. | `palette content upload`, or a content upload in Local UI           |
-| Weights    | The model weights, downloaded from Hugging Face on the jumpbox and transferred to the appliance over SSH.                    | `palette content model download` and `palette content model upload` |
+| **Upload** | **What it carries**                                                                                                                           | **Command**                                                         |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Recipe     | The recipe, uploaded as content. The appliance loads the engine image and places the metadata file in the model's directory.                  | `palette content upload`, or a content upload in Local UI           |
+| Weights    | The model weights, downloaded from Hugging Face on the [jumpbox](../reference/glossary.md#jumpbox) and transferred to the appliance over SSH. | `palette content model download` and `palette content model upload` |
 
 The two uploads use different paths for practical reasons. The recipe carries a container image, so it uploads as
 content, the same way the content bundle reaches the appliance, and the appliance loads the image into its local
@@ -92,13 +92,13 @@ is by design, not a failure.
 
 The appliance lists a model once its version directory holds the metadata file and at least one other file, which it
 counts as weights. After the recipe upload, the directory holds only `metadata.yaml`, so the appliance does not list the
-model. An engine started on an empty model directory fails. Because one weight file is enough, the model can appear in
-the catalog before the weights upload finishes.
+model, because an engine started on an empty model directory fails. Because one weight file is enough, the model can
+appear in the catalog before the weights upload finishes.
 
 ## Model Recipes and Metadata Files
 
-For a certified model, the recipe is the only file you download. The `--model-recipe` flag on the model download and
-upload commands reads the metadata out of the recipe, so you do not keep a separate metadata file.
+For a certified model, the recipe is the only file you download from Artifact Studio. The `--model-recipe` flag on the
+model download and upload commands reads the metadata out of the recipe, so you do not keep a separate metadata file.
 
 The `--metadata` flag passes a metadata file directly. You use it for a model you bring yourself, and you can keep using
 a metadata file you already have. A metadata file does not carry an engine image, so that flow relies on an engine image

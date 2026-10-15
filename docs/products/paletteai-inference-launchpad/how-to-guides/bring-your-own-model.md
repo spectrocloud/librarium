@@ -12,8 +12,8 @@ keywords: ["launchpad", "ai", "bring your own model", "metadata", "huggingface",
 
 This guide explains how to bring a model that is not in the certified catalog onto a PaletteAI Inference Launchpad
 appliance. A certified model comes with a model recipe from Artifact Studio. A model you bring yourself has no recipe,
-so you author its metadata file. That file tells the appliance which weights to fetch and what the model needs to run.
-You then download, upload, and deploy the model with the metadata file instead of a recipe.
+so you author its metadata file. That file tells the Palette CLI which weights to download and tells the appliance how
+to serve the model. You then download, upload, and deploy the model with the metadata file instead of a recipe.
 
 Spectro Cloud has not tested a model you bring yourself on your hardware. Confirming that it loads, serves requests, and
 answers acceptably is yours to do. For what certification covers and how the two paths differ, refer to
@@ -28,7 +28,7 @@ answers acceptably is yours to do. For what certification covers and how the two
 
 - The Hugging Face repository that holds the model, and an access token if the repository is gated or private.
 
-- Enough free GPU memory on the appliance for the model. Refer to
+- Enough free GPU memory on your hardware for the model. Refer to
   [Suggested Hardware](../reference/hardware-requirements.md).
 
 ## Author the Metadata File
@@ -113,8 +113,7 @@ A certified model arrives as a model recipe, but a model you bring yourself has 
 file to the download and upload commands as `--metadata`. A metadata file does not carry an engine image, so the model
 runs on an engine image that is already on the appliance, such as the default engine that the content bundle installs.
 For more, refer to [Model Recipes and Metadata Files](../explanation/model-recipes.md#model-recipes-and-metadata-files).
-For the full flag list, password authentication, and the one-step `--download` form, refer to
-[Upload a Model](./upload-a-model.md#upload-with-a-metadata-file).
+For every flag, refer to [Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
 
 1. On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS
    mount.
@@ -127,16 +126,10 @@ For the full flag list, password authentication, and the one-step `--download` f
 
    The model lands at `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from your metadata file.
 
-2. _(Gated or private Hugging Face repositories)_ Provide a Hugging Face token through the `HF_TOKEN` environment
-   variable instead.
+   For a gated or private Hugging Face repository, set the `HF_TOKEN` environment variable to your Hugging Face access
+   token before you run the command.
 
-   ```bash
-   HF_TOKEN=<hugging-face-token> palette content model download \
-       --metadata my-model.yaml \
-       --model-dir ./models
-   ```
-
-3. Upload the downloaded directory to the appliance over SSH. On a multi-node appliance, upload to a single node, and
+2. Upload the downloaded directory to the appliance over SSH. On a multi-node appliance, upload to a single node, and
    the appliance syncs the model to the remaining nodes.
 
    ```bash
@@ -154,8 +147,9 @@ For the full flag list, password authentication, and the one-step `--download` f
 
 ## Deploy and Validate the Model
 
-1. Deploy the model by following [Deploy a Model](./deploy-a-model.md). The model appears in the deploy catalog on the
-   next catalog scan after the upload finishes, and only a model in the `Available` state can be deployed.
+1. Deploy the model by following [Deploy a Model](./deploy-a-model.md). The model can appear in the deploy catalog
+   before the upload finishes, so wait until the upload command reports `Uploaded <name>@<version>`. Only a model in the
+   `Available` state can be deployed.
 
 2. Confirm the model reaches the `ready` or `serving` state and reports `N/N healthy`. If it does not, refer to
    [Troubleshoot a Model That Does Not Deploy](#troubleshoot-a-model-that-does-not-deploy).
