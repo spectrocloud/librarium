@@ -63,7 +63,7 @@ One recipe drives two uploads, and no single command does both.
 | **Upload**  | **What it carries**                                                                                                          | **Command**                                                         |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Recipe  | The recipe, uploaded as content. The appliance loads the engine image and places the metadata file in the model's directory. | `palette content upload`, or a content upload in Local UI           |
-| The weights | The model weights, downloaded from Hugging Face on the jumpbox and transferred to the appliance over SSH.                    | `palette content model download` and `palette content model upload` |
+| Weights | The model weights, downloaded from Hugging Face on the jumpbox and transferred to the appliance over SSH.                    | `palette content model download` and `palette content model upload` |
 
 The two uploads use different paths for practical reasons. The recipe carries a container image, so it uploads as
 content, the same way the content bundle reaches the appliance, and the appliance loads the image into its local
