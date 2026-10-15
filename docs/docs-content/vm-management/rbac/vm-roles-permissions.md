@@ -18,9 +18,14 @@ also lists the corresponding Palette roles.
 | Cluster Role            | Description                                                                 | Restrictions                                                                                                                        | Palette Role                                                                                             |
 | ----------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `spectro-vm-admin`      | Has admin privileges to manage the Kubernetes cluster, VMs, and templates.  | None                                                                                                                                | Cluster Admin or<br />Editor<br /><br />Cluster Profile Admin or Editor<br /><br />Virtual Machine Admin |
-| `spectro-vm-power-user` | Can perform most VM operations, but does not handle infrastructure aspects. | Cannot manage or administer the<br />Kubernetes cluster.<br /><br />Cannot manage or update VM templates.                           | Cluster Editor<br /><br />Virtual Machine Power User                                                     |
-| `spectro-vm-user`       | Primarily uses VMs created by others.                                       | Cannot launch new VMs or clone existing ones.<br /><br />Cannot delete VMs.<br /><br />Cannot migrate VMs from one node to another. | Cluster Editor<br /><br />Virtual Machine User                                                           |
+| `spectro-vm-power-user` | Can perform most VM operations, but does not handle infrastructure aspects. | Cannot manage or administer the<br />Kubernetes cluster.<br /><br />Cannot manage or update VM templates.                           | Cluster Viewer<br /><br />Virtual Machine Power User                                                     |
+| `spectro-vm-user`       | Primarily uses VMs created by others.                                       | Cannot launch new VMs or clone existing ones.<br /><br />Cannot delete VMs.<br /><br />Cannot migrate VMs from one node to another. | Cluster Viewer<br /><br />Virtual Machine User                                                           |
 | `spectro-vm-viewer`     | A view-only role.                                                           | Cannot perform any of the operations offered to the above users.                                                                    | Cluster Viewer<br /><br />Virtual Machine Viewer                                                         |
+
+Pair each Palette virtual machine role with a role that includes the `cluster.get` permission in the host cluster's
+project, as the Palette Role column shows. Palette 4.10.17-patch.5 also requires the `cluster.update` permission for
+virtual machine operations other than viewing. If you use that release, assign the Cluster Editor role instead of
+Cluster Viewer to users with the Virtual Machine Power User or Virtual Machine User role.
 
 :::warning
 
