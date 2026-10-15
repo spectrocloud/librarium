@@ -241,6 +241,17 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+
+- **User action required:** The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS
+  certificate of their internal Zot registry automatically. Rotation is turned off by default when you upgrade. After
+  you upgrade, resume any paused agent upgrades, wait for the Palette agent upgrade to complete, turn on **Enable
+  Certificate Rotation** in the Local UI, and then run the registry certificate authority (CA) update script. If you
+  leave rotation turned off, the registry certificate eventually expires, unless you rotate it manually. Refer to the
+  Upgrade Notes for [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
 
@@ -652,11 +663,6 @@ The following components have been updated for Palette version 4.10.25.
 
 - Fixed an issue in Piraeus where RWX (NFS) volumes remained unmountable on single-node clusters when creating multiple
   RWX persistent volume claims simultaneously.
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2463 -->
-
-- Fixed a Terraform provider issue where EKS clusters were destroyed and recreated on every apply when
-  `cloud_config.azs` was configured.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
 
