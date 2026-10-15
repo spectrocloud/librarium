@@ -149,6 +149,19 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
   above.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12176 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12226 -->
+
+- To improve security, virtual machine operations now also require the `cluster.get` permission on the cluster that
+  hosts the virtual machine (`virtualCluster.get` for virtual clusters). Users who have a virtual machine role, such as
+  Virtual Machine Power User or Virtual Machine User, but no role that includes `cluster.get` in the cluster's project
+  can no longer view or manage the virtual machines on that cluster. Assign these users the Cluster Viewer role, or a
+  custom role that includes `cluster.get`, in the cluster's project. If you upgrade from
+  [Palette 4.10.17-patch.5](#breaking-changes-4-10-17-patch-5), operations other than viewing no longer require the
+  `cluster.update` permission. Users who have the Cluster Editor role only for virtual machine operations now need only
+  the Cluster Viewer role. Refer to [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for
+  more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
 
@@ -227,6 +240,17 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md#upgrade-cluster-group) for more information.
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+
+- **User action required:** The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS
+  certificate of their internal Zot registry automatically. Rotation is turned off by default when you upgrade. After
+  you upgrade, resume any paused agent upgrades, wait for the Palette agent upgrade to complete, turn on **Enable
+  Certificate Rotation** in the Local UI, and then run the registry certificate authority (CA) update script. If you
+  leave rotation turned off, the registry certificate eventually expires, unless you rotate it manually. Refer to the
+  Upgrade Notes for [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
@@ -639,11 +663,6 @@ The following components have been updated for Palette version 4.10.25.
 
 - Fixed an issue in Piraeus where RWX (NFS) volumes remained unmountable on single-node clusters when creating multiple
   RWX persistent volume claims simultaneously.
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2463 -->
-
-- Fixed a Terraform provider issue where EKS clusters were destroyed and recreated on every apply when
-  `cloud_config.azs` was configured.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
 
