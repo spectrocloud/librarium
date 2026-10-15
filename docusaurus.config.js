@@ -8,7 +8,7 @@ const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
 const {
   docsPlugins: productDocsPlugins,
-  navbarTabs: productNavbarTabs,
+  productsDropdownItems,
   versionDropdowns: productVersionDropdowns,
   paletteNavbarActiveBaseRegex,
 } = require("./productDocs");
@@ -399,13 +399,35 @@ const config = {
           srcDark: getDarkLogoPath(),
         },
         items: [
+          // A label with no link of its own, so selecting it only opens the menu.
           {
-            to: "/",
-            type: "docSidebar",
-            sidebarId: "docSidebar",
-            label: "Docs",
+            type: "dropdown",
+            label: "Products",
             position: "left",
-            activeBaseRegex: paletteNavbarActiveBaseRegex,
+            items: [
+              // Links to What is Palette? and stays highlighted on every page in the Palette sidebar. No
+              // `activeBaseRegex`: on mobile it would expand this menu on almost every page, filling the short strip of
+              // section links at the bottom of the sidebar.
+              {
+                type: "doc",
+                docId: "introduction/introduction",
+                label: "Palette",
+              },
+              {
+                to: "/vertex/",
+                label: "Palette VerteX",
+              },
+              // One entry per independently versioned product. See productDocs.js.
+              ...productsDropdownItems,
+              {
+                to: "/vm-management/vm-launchpad/",
+                label: "PaletteAI VM Launchpad",
+              },
+              {
+                href: "https://docs.palette-ai.com/",
+                label: "PaletteAI",
+              },
+            ],
           },
           {
             to: "/tutorials",
@@ -415,8 +437,6 @@ const config = {
             position: "left",
             activeBaseRegex: paletteNavbarActiveBaseRegex,
           },
-          // One tab per independently versioned product. See productDocs.js.
-          ...productNavbarTabs,
           {
             to: "/downloads",
             type: "docSidebar",
