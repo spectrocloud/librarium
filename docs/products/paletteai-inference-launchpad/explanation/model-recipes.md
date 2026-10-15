@@ -16,8 +16,8 @@ and what happens on the appliance as a recipe is uploaded. It gives you the back
 
 ## Model Recipe Overview
 
-A model recipe is a single archive that carries everything that the appliance needs to serve a certified model, except the
-model weights. It holds two things:
+A model recipe is a single archive that carries everything that the appliance needs to serve a certified model, except
+the model weights. It holds two things:
 
 - The model metadata file, `metadata.yaml`, which names the model and its version, tells the Palette CLI which weights
   to download from Hugging Face, and tells the appliance how to serve the model.
