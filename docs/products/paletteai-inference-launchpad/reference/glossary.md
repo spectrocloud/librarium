@@ -354,9 +354,10 @@ collides with their own catalog.
 ### Model Metadata
 
 A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
-from Hugging Face and upload them to the appliance. For a [certified model](#certified-model), the metadata ships inside
-the [model recipe](#model-recipe) that you download from Artifact Studio. For a model you bring yourself, you author the
-file. Refer to [Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
+from Hugging Face and upload them to the appliance, and how the appliance serves the model. For a
+[certified model](#certified-model), the metadata ships inside the [model recipe](#model-recipe) that you download from
+Artifact Studio. For a model you bring yourself, you author the file. Refer to
+[Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
 [Model Upload Reference](./model-upload-reference.md#model-metadata-file).
 
 ### Model Recipe

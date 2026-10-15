@@ -43,7 +43,8 @@ For the `palette content upload` flags, refer to [Upload](/automation/palette-cl
 Palette CLI reference.
 
 Between the content upload and the weights upload, the model's directory on the appliance holds only `metadata.yaml`,
-and the model does not appear in the deploy catalog. The model appears on the next catalog scan after the weights land.
+and the model does not appear in the deploy catalog. The model appears on the next catalog scan after the first weight
+file lands.
 
 ## palette content model download
 
@@ -90,19 +91,19 @@ recipe with `palette content upload` or Local UI first.
 Both `palette content model download` and `palette content model upload` take the model metadata from exactly one of two
 flags.
 
-| **Flags set**                          | **Result**                                                                                   |
-| -------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `--model-recipe` only                  | The command reads `metadata.yaml` from the recipe.                                           |
-| `--metadata` only                      | The command reads the metadata YAML file or `.tar.gz` bundle. This is the prior flow.        |
-| Both `--model-recipe` and `--metadata` | The command fails before it downloads or uploads anything. The flags are mutually exclusive. |
-| Neither flag                           | The command fails before it downloads or uploads anything. One of the two is required.       |
+| **Flags set**                          | **Result**                                                                                                                                        |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--model-recipe` only                  | The command reads `metadata.yaml` from the recipe.                                                                                                |
+| `--metadata` only                      | The command reads the metadata YAML file or `.tar.gz` bundle. Use it for a model you bring yourself. For a certified model, it is the prior flow. |
+| Both `--model-recipe` and `--metadata` | The command fails before it downloads or uploads anything. The flags are mutually exclusive.                                                      |
+| Neither flag                           | The command fails before it downloads or uploads anything. One of the two is required.                                                            |
 
 ### Command Forms
 
-The following table pairs each command form that uses a model recipe with the prior form that uses a metadata file. Each
+The following table pairs each command form that uses a model recipe with the form that uses a metadata file. Each
 upload form also takes `--ssh-user`, `--ssh-host`, and either `--ssh-key` or `--ssh-password`.
 
-| **Task**                           | **Model recipe form**                                                                                | **Prior metadata file form**                                                                 |
+| **Task**                           | **Model recipe form**                                                                                | **Metadata file form**                                                                       |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Download the weights               | `palette content model download --model-recipe <model-recipe-file> --model-dir <model-dir>`          | `palette content model download --metadata <metadata-file> --model-dir <model-dir>`          |
 | Upload downloaded weights          | `palette content model upload --model-recipe <model-recipe-file> --model-dir <model-dir>`            | `palette content model upload --metadata <metadata-file> --model-dir <model-dir>`            |
@@ -160,7 +161,7 @@ launchpad: # optional: serving recipe, shipped verbatim by the Palette CLI
   min_engine_version: "0.23.0"
   variants:
     - vendor: amd
-      gpu_product: MI325X
+      gpu_product: AMD_Instinct_MI325_OAM
       vram_gb: 256
       min_gpus: 8
       serve:
@@ -221,8 +222,8 @@ After a successful upload, the model directory on the appliance node has the fol
 
 ```text
 /opt/data/spectrocloud/models/<name>/<version>/
-├── ...model files...   # written first (per huggingface.files globs)
-├── metadata.yaml       # written last—readiness signal
+├── ...model files...   # weights (per huggingface.files globs)
+├── metadata.yaml       # model metadata; listed once at least one weight file is present
 └── logo.<ext>          # optional (local or Hugging Face-sourced)
 ```
 

@@ -30,9 +30,8 @@ download from Artifact Studio. You upload the recipe to the appliance, then down
 and upload them to the appliance over SSH, after which the model appears in the appliance's deploy catalog. For what a
 recipe contains and why the upload takes two steps, refer to [Model Recipes](../explanation/model-recipes.md).
 
-This guide is for a certified model, which comes with a model recipe. If you bring your own model, start with
-[Bring Your Own Model](./bring-your-own-model.md) instead. It has you author `metadata.yaml`, then sends you back to
-[Upload with a Metadata File](#upload-with-a-metadata-file) on this page.
+This guide is for a certified model, which comes with a model recipe. If you bring your own model, follow
+[Bring Your Own Model](./bring-your-own-model.md) instead.
 
 After the upload, the model appears in the deploy catalog, and you serve it by following
 [Deploy a Model](./deploy-a-model.md). For the full command flags and metadata file fields, refer to
@@ -61,7 +60,7 @@ downloads models itself. For how to provision the jumpbox, refer to
   upload token and to transfer the weights.
 
 - Network access from the jumpbox to the appliance node on TCP port `5082`, which the Palette CLI uses to upload the
-  model recipe to the node's Local UI API.
+  model recipe to the node's Local UI API, or on TCP port `5080` to upload it from Local UI in a browser.
 
 - Access to Artifact Studio, Spectro Cloud's artifact download portal, to download the model recipe.
 
@@ -175,7 +174,7 @@ mount. The Palette CLI reads the model name, version, and Hugging Face source fr
 ## Upload the Model to the Appliance
 
 Ship the downloaded weights from the jumpbox to the appliance over SSH. On a multi-node appliance, upload to a single
-node; the appliance syncs the model to the remaining nodes automatically.
+node; the appliance syncs the model to the remaining nodes automatically. You can use the leader node again.
 
 1. Run the upload command with the recipe, the model directory, and the appliance's SSH details.
 
@@ -255,9 +254,9 @@ are missing from the model directory, then transfers them to the appliance.
 
 2. Select **Deploy Model** to open the **Deploy a model** dialog.
 
-3. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
-   `<Name> · <N>+GPU · <size>GB`. The model can appear in the list before all its weights have landed. Wait until the
-   upload command reports `Uploaded <name>@<version>` before you deploy it.
+3. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry shows the model name, followed
+   by details such as its engine and size. The model can appear in the list before all its weights have landed. Wait
+   until the upload command reports `Uploaded <name>@<version>` before you deploy it.
 
 4. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
 
