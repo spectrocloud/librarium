@@ -77,6 +77,15 @@ If you want to use the latest version of vCluster on your virtual clusters, you 
 cluster group at a time that suits you. Refer to [Upgrade Cluster Groups](../cluster-groups/vcluster-upgrades.md) for
 guidance.
 
+:::warning
+
+The Palette agent on a virtual cluster upgrades separately from its vCluster version, and it must not upgrade before the
+Palette agent on its host cluster. Refer to
+[Agent Upgrades for Virtual Clusters](../cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-virtual-clusters)
+for the order to follow.
+
+:::
+
 ## Resources
 
 - [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md)
