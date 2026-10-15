@@ -35,7 +35,7 @@ Refer to [The `launchpad` Block](../reference/model-upload-reference.md#the-laun
 
 ## Why Model Recipes Exist
 
-New models and new inference engine versions arrive far more often than PaletteAI Inference Launchpad releases. Before
+New models and new inference engine versions arrive more often than PaletteAI Inference Launchpad releases. Before
 recipes, the engine image shipped inside the content bundle that installs the appliance, so moving to a new engine
 version meant waiting for a product release, even when the change only mattered to one model.
 
