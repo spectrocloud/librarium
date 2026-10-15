@@ -24,8 +24,7 @@ the model weights. It holds two things:
 
 - The inference engine image that the metadata file names, such as a vLLM build for one GPU vendor.
 
-A recipe holds no model weights. Weights are often hundreds of gigabytes, so they travel separately, on the same
-download and upload path that the Palette CLI has always used for weights.
+A recipe holds no model weights. Weights are often hundreds of gigabytes, so they get downloaded and uploaded separately.
 
 Each recipe targets one GPU vendor, because the engine image differs between NVIDIA and AMD GPUs even when the model
 metadata is the same. A model certified for both vendors has two recipes, and you use the one that matches the GPUs in
