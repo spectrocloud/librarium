@@ -24,7 +24,8 @@ the model weights. It holds two things:
 
 - The inference engine image that the metadata file names, such as a vLLM build for one GPU vendor.
 
-A recipe holds no model weights. Weights are often hundreds of gigabytes, so they get downloaded and uploaded separately.
+A recipe holds no model weights. Weights are often hundreds of gigabytes, so they get downloaded and uploaded
+separately.
 
 Each recipe targets one GPU vendor, because the engine image differs between NVIDIA and AMD GPUs even when the model
 metadata is the same. A model certified for both vendors has two recipes, and you use the one that matches the GPUs in
@@ -60,10 +61,10 @@ For how certified models and your own models differ, refer to [Model Certificati
 
 One recipe drives two uploads, and no single command does both.
 
-| **Upload**  | **What it carries**                                                                                                          | **Command**                                                         |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Recipe  | The recipe, uploaded as content. The appliance loads the engine image and places the metadata file in the model's directory. | `palette content upload`, or a content upload in Local UI           |
-| Weights | The model weights, downloaded from Hugging Face on the jumpbox and transferred to the appliance over SSH.                    | `palette content model download` and `palette content model upload` |
+| **Upload** | **What it carries**                                                                                                          | **Command**                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Recipe     | The recipe, uploaded as content. The appliance loads the engine image and places the metadata file in the model's directory. | `palette content upload`, or a content upload in Local UI           |
+| Weights    | The model weights, downloaded from Hugging Face on the jumpbox and transferred to the appliance over SSH.                    | `palette content model download` and `palette content model upload` |
 
 The two uploads use different paths for practical reasons. The recipe carries a container image, so it uploads as
 content, the same way the content bundle reaches the appliance, and the appliance loads the image into its local
