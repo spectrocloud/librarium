@@ -28,22 +28,21 @@ A recipe holds no model weights. Weights are often hundreds of gigabytes, so the
 separately.
 
 Each recipe targets one GPU vendor, because the engine image differs between NVIDIA and AMD GPUs even when the model
-metadata is the same. A model certified for both vendors has two recipes, and you use the one that matches the GPUs in
-your appliance.
+metadata is the same. A model certified for both vendors has two recipes, and you use the one that matches the GPU
+vendor of your hardware.
 
 A model recipe is not the serving recipe, which is the `launchpad` block of engine settings inside the metadata file.
 Refer to [The `launchpad` Block](../reference/model-upload-reference.md#the-launchpad-block).
 
 ## Why Model Recipes Exist
 
-New models and new inference engine versions arrive more often than PaletteAI Inference Launchpad releases. Before
-recipes, the engine image shipped inside the content bundle that installs the appliance, so moving to a new engine
-version meant waiting for a product release, even when the change only mattered to one model.
+New models and new inference engine versions arrive more often than PaletteAI Inference Launchpad releases. The content
+bundle that installs the appliance carries one default engine, so a recipe is how any other engine version reaches the
+appliance.
 
 A recipe decouples model support from the product release cycle. Spectro Cloud publishes a recipe when a model or its
 engine is ready, and you add it to a running appliance without upgrading the platform. Switching a model to a different
-engine build, such as a vendor-optimized one, changes the recipe only. The content bundle keeps its default engine, and
-every other engine version reaches the appliance through a recipe.
+engine build, such as a vendor-optimized one, changes the recipe only.
 
 Recipes also give you one artifact to work from. The recipe is the only model artifact you download for a certified
 model. Its metadata drives the weights download, and its engine image travels with it, so the metadata and the engine it
@@ -57,9 +56,10 @@ releases. NVIDIA and AMD recipes are separate artifacts. You do not build or edi
 A model you bring yourself has no recipe. You author its metadata file and upload the weights with that file instead.
 For how certified models and your own models differ, refer to [Model Certification](./model-certification.md).
 
-## How a Recipe Reaches the Appliance
+## How a Model Reaches the Appliance
 
-One recipe drives two uploads, and no single command does both.
+A certified model reaches the appliance in two uploads. The first is the recipe. The second is the model weights, which
+the recipe does not contain. The recipe's metadata tells the Palette CLI which weights to download.
 
 | **Upload** | **What it carries**                                                                                                          | **Command**                                                         |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -72,28 +72,38 @@ registry. The weights are too large for a reliable content upload, so they use t
 which survives a broken connection. The weights upload reads the model name and version from the recipe, so you do not
 keep a separate copy of the metadata file.
 
+### Two Commands or One for the Weights
+
+The Palette CLI moves the weights in two commands or in one. With two commands, `palette content model download` stages
+the weights on the jumpbox, and `palette content model upload` transfers them to the appliance as a separate step. With
+one command, `palette content model upload --download` downloads any weights that are missing from the model directory,
+then transfers them. Both forms use the same model directory, and a finished download leaves a `.download-complete`
+marker, so neither form repeats a download that already completed.
+
+The two-command form keeps the download and the transfer apart. You can confirm that the download finished before the
+transfer starts, run the two at different times, and upload the same downloaded weights to more than one appliance. The
+one-command form saves a step when you upload to a single appliance and the jumpbox can reach both Hugging Face and the
+appliance in the same session.
+
 ## The State Between the Two Uploads
 
 After the recipe upload and before the weights upload, the model does not appear in the appliance's deploy catalog. This
 is by design, not a failure.
 
-The appliance lists a model only when its version directory holds both the metadata file and at least one weight file.
-After the recipe upload, the directory holds only `metadata.yaml`, so the appliance waits for the weights rather than
-offering a model that cannot load. When the weights upload finishes, the model appears on the next catalog scan.
-
-The order matters for the same reason during an ordinary weights upload. The Palette CLI writes the weight files first
-and the metadata file last, so the metadata file marks a finished upload.
+The appliance lists a model once its version directory holds the metadata file and at least one other file, which it
+counts as weights. After the recipe upload, the directory holds only `metadata.yaml`, so the appliance does not list the
+model. An engine started on an empty model directory fails. Because one weight file is enough, the model can appear in
+the catalog before the weights upload finishes.
 
 ## Model Recipes and Metadata Files
 
-Before recipes, Artifact Studio published a standalone metadata file for each certified model, and you passed it to the
-Palette CLI with `--metadata`. The recipe replaces that download. The `--model-recipe` flag on the model download and
-upload commands reads the metadata out of the recipe, so the recipe is the only file you keep.
+For a certified model, the recipe is the only file you download. The `--model-recipe` flag on the model download and
+upload commands reads the metadata out of the recipe, so you do not keep a separate metadata file.
 
-The `--metadata` flag still works. You use it for a model you bring yourself, and you can keep using a metadata file you
-already have. A metadata file does not carry an engine image, so that flow relies on an engine image that is already on
-the appliance, such as the default engine in the content bundle. For the commands in both flows, refer to
-[Upload a Model](../how-to-guides/upload-a-model.md).
+The `--metadata` flag passes a metadata file directly. You use it for a model you bring yourself, and you can keep using
+a metadata file you already have. A metadata file does not carry an engine image, so that flow relies on an engine image
+that is already on the appliance, such as the default engine in the content bundle. For the commands in both flows,
+refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 ## Resources
 

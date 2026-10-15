@@ -11,9 +11,9 @@ keywords: ["launchpad", "ai", "bring your own model", "metadata", "huggingface",
 ---
 
 This guide explains how to bring a model that is not in the certified catalog onto a PaletteAI Inference Launchpad
-appliance. The download, upload, and deploy steps are the same as in the metadata file flow for a certified model. The
-addition is the metadata file. Because there is no Artifact Studio download for an uncertified model, you author the
-file yourself, and that file is where you tell the appliance which weights to fetch and what the model needs to run.
+appliance. A certified model comes with a model recipe from Artifact Studio. A model you bring yourself has no recipe,
+so you author its metadata file. That file tells the appliance which weights to fetch and what the model needs to run.
+You then download, upload, and deploy the model with the metadata file instead of a recipe.
 
 Spectro Cloud has not tested a model you bring yourself on your hardware. Confirming that it loads, serves requests, and
 answers acceptably is yours to do. For what certification covers and how the two paths differ, refer to
@@ -110,8 +110,11 @@ unless you know the exact label your nodes publish.
 ## Download and Upload the Model
 
 A certified model arrives as a model recipe, but a model you bring yourself has no recipe, so you pass your authored
-file to the download and upload commands as `--metadata`. For the full flag list, password authentication, and the
-one-step `--download` form, refer to [Upload a Model](./upload-a-model.md#upload-with-a-metadata-file).
+file to the download and upload commands as `--metadata`. A metadata file does not carry an engine image, so the model
+runs on an engine image that is already on the appliance, such as the default engine that the content bundle installs.
+For more, refer to [Model Recipes and Metadata Files](../explanation/model-recipes.md#model-recipes-and-metadata-files).
+For the full flag list, password authentication, and the one-step `--download` form, refer to
+[Upload a Model](./upload-a-model.md#upload-with-a-metadata-file).
 
 1. On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS
    mount.
@@ -166,14 +169,14 @@ one-step `--download` form, refer to [Upload a Model](./upload-a-model.md#upload
 A model whose metadata does not match your hardware is never hidden. It appears in the deploy catalog marked as not
 deployable, with a reason. Use the following table to map the reason to the field to change.
 
-| **What you observe**                                                                                                                   | **What it means**                                                                                                                                                                                   | **What to change**                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| The model does not appear in the deploy catalog at all.                                                                                | The upload has not finished, or the file sets no `name` or `version`. The appliance treats `metadata.yaml` as the last file of an upload, so the model surfaces only once the weights are in place. | Confirm the upload completed, and confirm the file sets both `name` and `version`.                          |
-| The model is listed as not deployable, with a reason such as `needs 8+ GPU NVIDIA-H200 141GB VRAM; this node has 4x NVIDIA-L40S 46GB`. | No variant in your file fits the node.                                                                                                                                                              | Lower `min_gpus`, correct `gpu_product` or `vendor`, or remove those two pins so the variant fits any node. |
-| The deployment is blocked with `no node in this cluster advertises GPU product <product>`.                                             | `gpu_product` is not a label any node in the cluster publishes.                                                                                                                                     | Correct the value to the node's exact GPU product label, or remove the field.                               |
-| The deployment is blocked with `MinVRAMGB <n> exceeds the <memory> per GPU advertised by nodes running <product>`.                     | `vram_gb` is higher than the per-GPU memory your GPUs advertise.                                                                                                                                    | Lower `vram_gb` to the memory your GPUs provide.                                                            |
-| The deployment is blocked with `no node advertises a driver version; MinDriver <version> cannot be verified`.                          | `min_driver` is set, but the appliance cannot read a driver version from any node.                                                                                                                  | Remove `min_driver`, or confirm the GPU driver is installed and reporting its version.                      |
-| The model deploys but reaches the `failed` or `verification failed` state.                                                             | The engine started but never became ready. For an uncertified model, the usual cause is that the weights and the requested context length do not fit the GPU memory.                                | Lower `serve.max_model_len`, or raise `serve.tensor_parallel_size` to spread the model across more GPUs.    |
+| **What you observe**                                                                                                                   | **What it means**                                                                                                                                                                | **What to change**                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| The model does not appear in the deploy catalog at all.                                                                                | The upload has not finished, or the file sets no `name` or `version`. The appliance lists a model once its version directory holds `metadata.yaml` and at least one weight file. | Confirm the upload completed, and confirm the file sets both `name` and `version`.                          |
+| The model is listed as not deployable, with a reason such as `needs 8+ GPU NVIDIA-H200 141GB VRAM; this node has 4x NVIDIA-L40S 46GB`. | No variant in your file fits the node.                                                                                                                                           | Lower `min_gpus`, correct `gpu_product` or `vendor`, or remove those two pins so the variant fits any node. |
+| The deployment is blocked with `no node in this cluster advertises GPU product <product>`.                                             | `gpu_product` is not a label any node in the cluster publishes.                                                                                                                  | Correct the value to the node's exact GPU product label, or remove the field.                               |
+| The deployment is blocked with `MinVRAMGB <n> exceeds the <memory> per GPU advertised by nodes running <product>`.                     | `vram_gb` is higher than the per-GPU memory your GPUs advertise.                                                                                                                 | Lower `vram_gb` to the memory your GPUs provide.                                                            |
+| The deployment is blocked with `no node advertises a driver version; MinDriver <version> cannot be verified`.                          | `min_driver` is set, but the appliance cannot read a driver version from any node.                                                                                               | Remove `min_driver`, or confirm the GPU driver is installed and reporting its version.                      |
+| The model deploys but reaches the `failed` or `verification failed` state.                                                             | The engine started but never became ready. For an uncertified model, the usual cause is that the weights and the requested context length do not fit the GPU memory.             | Lower `serve.max_model_len`, or raise `serve.tensor_parallel_size` to spread the model across more GPUs.    |
 
 For deploy reasons that are about cluster capacity rather than your metadata, refer to
 [Resolve a Blocked Deployment](./deploy-a-model.md#resolve-a-blocked-deployment).

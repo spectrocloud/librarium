@@ -30,10 +30,12 @@ download from Artifact Studio. You upload the recipe to the appliance, then down
 and upload them to the appliance over SSH, after which the model appears in the appliance's deploy catalog. For what a
 recipe contains and why the upload takes two steps, refer to [Model Recipes](../explanation/model-recipes.md).
 
-This guide comes before [Deploy a Model](./deploy-a-model.md): the upload puts the model in the catalog, and the deploy
-serves it. For a model that is not in the certified catalog, author `metadata.yaml` first, then follow
-[Upload with a Metadata File](#upload-with-a-metadata-file). Refer to [Bring Your Own Model](./bring-your-own-model.md).
-For the full command flags and metadata file fields, refer to
+This guide is for a certified model, which comes with a model recipe. If you bring your own model, start with
+[Bring Your Own Model](./bring-your-own-model.md) instead. It has you author `metadata.yaml`, then sends you back to
+[Upload with a Metadata File](#upload-with-a-metadata-file) on this page.
+
+After the upload, the model appears in the deploy catalog, and you serve it by following
+[Deploy a Model](./deploy-a-model.md). For the full command flags and metadata file fields, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
 :::info
@@ -70,15 +72,17 @@ downloads models itself. For how to provision the jumpbox, refer to
 ## Download the Model Recipe
 
 1. In Artifact Studio, download the model recipe for the model you intend to run. NVIDIA and AMD recipes are separate
-   artifacts, so choose the recipe that matches the GPU vendor of your appliance.
+   artifacts, so choose the recipe that matches the GPU vendor of your hardware.
 
-2. Save the recipe on the jumpbox. You use the same file for both uploads in this guide.
+2. Save the recipe on the jumpbox. You use it twice. First, you upload the recipe to the appliance. Then the weights
+   commands read the model's name, version, and Hugging Face source from it.
 
 ## Upload the Model Recipe
 
 Upload the recipe to the appliance as content. The appliance loads the inference engine image from the recipe and places
-the model's metadata file in the model's directory. You can upload with the Palette CLI or from Local UI. Select the tab
-for your method.
+the model's metadata file in the model's directory. On a multi-node appliance, upload the recipe to the
+[leader](../reference/glossary.md#leader) node. Content uploaded on the leader synchronizes automatically to every
+linked host. You can upload with the Palette CLI or from Local UI. Select the tab for your method.
 
 <Tabs groupId="method">
 
@@ -86,21 +90,17 @@ for your method.
 
 The Palette CLI authenticates to the node with a per-node upload token, so you do not sign in to Palette for this step.
 
-1. From the jumpbox, read the upload token from the node and store it in an environment variable.
+1. From the jumpbox, read the upload token from the leader node and store it in an environment variable.
 
    ```bash
    export AIL_NODE_TOKEN=$(ssh <ssh-user>@<appliance-host> sudo cat /opt/spectrocloud/.upload-auth-token)
    ```
 
-   Replace `<ssh-user>` with the appliance's SSH user and `<appliance-host>` with the node's address.
-
-   ```bash hideClipboard title="Expected output"
-
-   ```
+   Replace `<ssh-user>` with the appliance's SSH user and `<appliance-host>` with the leader node's address.
 
    The command prints nothing when it succeeds. If SSH prompts for a password, enter the SSH user's password.
 
-2. Upload the recipe to the node.
+2. Upload the recipe to the leader node.
 
    ```bash
    palette content upload \
@@ -109,8 +109,8 @@ The Palette CLI authenticates to the node with a per-node upload token, so you d
      <appliance-host>
    ```
 
-   Replace `<model-recipe-file>` with the path to the recipe on the jumpbox and `<appliance-host>` with the node's
-   address. The command targets port `5082` by default.
+   Replace `<model-recipe-file>` with the path to the recipe on the jumpbox and `<appliance-host>` with the leader
+   node's address. The command targets port `5082` by default.
 
    ```bash hideClipboard title="Expected output"
    response: Uploaded content successfully
@@ -123,8 +123,8 @@ The Palette CLI authenticates to the node with a per-node upload token, so you d
 
 <TabItem label="Local UI" value="ui">
 
-1. Open Local UI on the node at `https://<appliance-host>:5080` and sign in. Replace `<appliance-host>` with the node's
-   address.
+1. Open Local UI on the leader node at `https://<appliance-host>:5080` and sign in. Replace `<appliance-host>` with the
+   leader node's address.
 
 2. From the left main menu, select **Content** > **Actions** > **Upload Content**.
 
@@ -141,6 +141,11 @@ The Palette CLI authenticates to the node with a per-node upload token, so you d
 After the recipe upload, the model does not appear in the deploy catalog until its weights arrive. This is expected. For
 the reason, refer to
 [The State Between the Two Uploads](../explanation/model-recipes.md#the-state-between-the-two-uploads).
+
+You can download and upload the weights as two commands, in this section and in
+[Upload the Model to the Appliance](#upload-the-model-to-the-appliance), or as one command, in
+[Download and Upload in One Command](#download-and-upload-in-one-command). For when to use each, refer to
+[Two Commands or One for the Weights](../explanation/model-recipes.md#two-commands-or-one-for-the-weights).
 
 On the jumpbox, download the model weights from Hugging Face into a writable local directory. Do not use a read-only NFS
 mount. The Palette CLI reads the model name, version, and Hugging Face source from the recipe.
@@ -164,23 +169,8 @@ mount. The Palette CLI reads the model name, version, and Hugging Face source fr
    The model downloads to `<model-dir>/<name>/<version>/`, where `<name>` and `<version>` come from the metadata inside
    the recipe.
 
-2. _(Gated or private Hugging Face repositories)_ Provide a Hugging Face token through the `HF_TOKEN` environment
-   variable.
-
-   ```bash
-   HF_TOKEN=<hugging-face-token> palette content model download \
-     --model-recipe <model-recipe-file> \
-     --model-dir ./models
-   ```
-
-   Replace `<hugging-face-token>` with your Hugging Face access token and `<model-recipe-file>` with the path to the
-   recipe.
-
-   ```bash hideClipboard title="Expected output"
-   Model: <name>@<version> (HuggingFace: <hugging-face-repository>@<revision>)
-   ...
-   Downloaded <name>@<version> to models/<name>/<version>
-   ```
+   For a gated or private Hugging Face repository, set the `HF_TOKEN` environment variable to your Hugging Face access
+   token before you run the command.
 
 ## Upload the Model to the Appliance
 
@@ -217,15 +207,23 @@ node; the appliance syncs the model to the remaining nodes automatically.
    `--model-dir` points at the parent directory that _contains_ `<name>/<version>/`, not at the directory named after
    the model. The Palette CLI composes the model path as `<model-dir>/<name>/<version>/` from the `name` and `version`
    fields in the model metadata. For a model at `./models/my-model/1.0.0/`, pass `--model-dir ./models`. Passing
-   `--model-dir ./models/my-model` produces the error
-   `model dir ./models/my-model/my-model/1.0.0 is not a complete download for my-model@1.0.0`, with the model name
-   doubled in the path.
+   `--model-dir ./models/my-model` produces an error that begins
+   `model dir models/my-model/my-model/1.0.0 is not a complete download for my-model@1.0.0`, with the model name doubled
+   in the path.
 
    :::
 
-2. _(Optional)_ To download and upload the weights in one command instead of running the download command first, add
-   `--download`. This example uses password authentication, which needs `--insecure-skip-host-key-check` when the
-   jumpbox does not yet trust the node's SSH host key.
+The upload command accepts other flags, including metadata-only sync (`--metadata-only`). For the full list, refer to
+[Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
+
+## Download and Upload in One Command
+
+Use this section instead of [Download the Model Weights](#download-the-model-weights) and
+[Upload the Model to the Appliance](#upload-the-model-to-the-appliance). The upload command downloads any weights that
+are missing from the model directory, then transfers them to the appliance.
+
+1. Run the upload command with `--download`. This example uses password authentication, which needs
+   `--insecure-skip-host-key-check` when the jumpbox does not yet trust the node's SSH host key.
 
    ```bash
    palette content model upload \
@@ -241,6 +239,9 @@ node; the appliance syncs the model to the remaining nodes automatically.
    Replace `<model-recipe-file>` with the path to the recipe, `<ssh-user>` and `<appliance-host>` with the appliance's
    SSH user and address, and `<ssh-password>` with the SSH user's password.
 
+   For a gated or private Hugging Face repository, set the `HF_TOKEN` environment variable to your Hugging Face access
+   token before you run the command.
+
    ```bash hideClipboard title="Expected output"
    Model: <name>@<version> (HuggingFace: <hugging-face-repository>@<revision>)
    ...
@@ -248,29 +249,22 @@ node; the appliance syncs the model to the remaining nodes automatically.
    Uploaded <name>@<version> to <appliance-host>:/opt/data/spectrocloud/models/<name>/<version> (full)
    ```
 
-The upload command accepts other flags, including metadata-only sync (`--metadata-only`). For the full list, refer to
-[Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
-
 ## Verify the Model and Deploy It
 
-1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab and **Deploy New
-   Model** to open the **Deploy model** dialog.
+1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab.
 
-2. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
-   `<Name> · <N>+GPU · <size>GB`. The model appears on the next catalog scan after the weights upload finishes.
+2. Select **Deploy Model** to open the **Deploy a model** dialog.
 
-3. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
+3. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry renders as
+   `<Name> · <N>+GPU · <size>GB`. The model can appear in the list before all its weights have landed. Wait until the
+   upload command reports `Uploaded <name>@<version>` before you deploy it.
 
-## Upload with a Metadata File
+4. Deploy the model by following [Deploy a Model](./deploy-a-model.md).
 
-Before model recipes, you downloaded a standalone metadata file and passed it to the Palette CLI with `--metadata`. This
-prior flow still works. Use it for a model you bring yourself, which has no recipe, or for a metadata file you already
-have. The `--metadata` and `--model-recipe` flags are mutually exclusive, so pass exactly one of them.
+## Move from a Metadata File to a Model Recipe
 
-### Move from a Metadata File to a Model Recipe
-
-Artifact Studio publishes a model recipe in place of the standalone metadata file. If you used to download
-`metadata.yaml`, change your workflow as follows.
+Artifact Studio publishes a model recipe in place of the standalone metadata file. If your workflow downloads
+`metadata.yaml` for a certified model, change it as follows.
 
 1. Download the model recipe for your GPU vendor instead of the metadata file.
 
@@ -284,7 +278,11 @@ A metadata file that you already have keeps working with `--metadata`. It does n
 runs only if the engine image it names is already on the appliance. For a certified model that has a recipe, use the
 recipe.
 
-### Download and Upload with a Metadata File
+## Upload with a Metadata File
+
+Use a metadata file for a model you bring yourself, which has no recipe. For a certified model, this is the prior flow,
+which the recipe replaces. The `--metadata` and `--model-recipe` flags are mutually exclusive, so pass exactly one of
+them.
 
 1. On the jumpbox, download the model from Hugging Face with the path to your metadata file.
 
@@ -295,7 +293,7 @@ recipe.
    ```
 
    Replace `<metadata-file>` with the path to your metadata file. For a gated or private Hugging Face repository, set
-   the `HF_TOKEN` environment variable.
+   the `HF_TOKEN` environment variable to your Hugging Face access token before you run the command.
 
    ```bash hideClipboard title="Expected output"
    Model: <name>@<version> (HuggingFace: <hugging-face-repository>@<revision>)
@@ -325,8 +323,9 @@ recipe.
    Uploaded <name>@<version> to <appliance-host>:/opt/data/spectrocloud/models/<name>/<version> (full)
    ```
 
-   To download and upload in one command, add `--download`. Then verify and deploy the model as described in
-   [Verify the Model and Deploy It](#verify-the-model-and-deploy-it).
+   To download and upload in one command, add `--download`. For when to use each form, refer to
+   [Two Commands or One for the Weights](../explanation/model-recipes.md#two-commands-or-one-for-the-weights). Then
+   verify and deploy the model as described in [Verify the Model and Deploy It](#verify-the-model-and-deploy-it).
 
 ## Next Steps
 
