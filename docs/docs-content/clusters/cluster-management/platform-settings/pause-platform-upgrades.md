@@ -98,22 +98,25 @@ upgrade the Palette agent on the host cluster yet, keep **Pause Agent Upgrades**
 
 :::
 
-Change the setting on each cluster individually. Resuming agent upgrades at the project or tenant scope resumes the host
-cluster and its virtual clusters at the same time. To find the setting on a cluster, refer to the **Single Cluster** tab
-in [Enablement](#enablement).
+For the most control over the order, change the setting on each cluster individually. If you resume agent upgrades at
+the project or tenant scope instead, the host cluster and its virtual clusters all upgrade, in no set order. To find the
+setting on a cluster, refer to the **Single Cluster** tab in [Enablement](#enablement).
 
 Use the following order to upgrade the Palette agents on a host cluster and its virtual clusters.
 
 1. Enable **Pause Agent Upgrades** on each virtual cluster that runs on the host cluster, if it is not already enabled.
 
-2. Disable **Pause Agent Upgrades** on the host cluster.
+2. On the host cluster's **Overview** tab, note the version in the **Agent version** field.
 
-3. Wait for the host cluster's agent upgrade to complete and for the host cluster to report a **Healthy** status.
+3. Disable **Pause Agent Upgrades** on the host cluster.
 
-4. Disable **Pause Agent Upgrades** on the virtual clusters.
+4. Wait until the **Agent version** field on the host cluster's **Overview** tab shows a newer version. The host
+   cluster's agent upgrade is then complete.
 
-If a host cluster is already affected, disable **Pause Agent Upgrades** on the host cluster. The host cluster recovers
-after its agent upgrade completes.
+5. Disable **Pause Agent Upgrades** on the virtual clusters.
+
+If a host cluster is already affected, disable **Pause Agent Upgrades** on the host cluster. After its agent upgrade
+completes, the host cluster recovers, and its virtual clusters can finish their agent upgrades.
 
 ## Limitations
 
