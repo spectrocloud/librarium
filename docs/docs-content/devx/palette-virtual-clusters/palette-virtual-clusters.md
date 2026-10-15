@@ -97,9 +97,9 @@ process must be performed in [cluster mode](../../deployment-modes/deployment-mo
 
 :::warning
 
-The Palette agent on a virtual cluster upgrades separately from its vCluster version, and it must not upgrade before the
-Palette agent on its host cluster. Refer to
+The Palette agent on a virtual cluster upgrades separately from the vCluster version of its cluster group. Do not let
+the Palette agent on a virtual cluster upgrade before the Palette agent on its host cluster. Refer to
 [Agent Upgrades for Virtual Clusters](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-virtual-clusters)
-for the order to follow.
+for the upgrade order.
 
 :::

@@ -87,20 +87,22 @@ lower scopes, and changing the setting at the lower scope will override the sett
 
 A [Palette Virtual Cluster](../../palette-virtual-clusters/palette-virtual-clusters.md) runs on a host cluster in its
 cluster group. The Palette agent on a virtual cluster installs some components into the host cluster that the host
-cluster's own Palette agent also manages. If the virtual cluster's agent upgrades before the host cluster's agent, those
-shared components move ahead of the host cluster. The host cluster can then no longer scale, repave, or replace its
+cluster's own Palette agent also manages. If the virtual cluster's agent upgrades first, it upgrades those shared
+components before the host cluster's agent does. The host cluster can then no longer scale, repave, or replace its
 nodes, and its virtual clusters stop applying cluster profile changes. Workloads continue to run.
 
 :::warning
 
 Do not let the Palette agent on a virtual cluster upgrade before the Palette agent on its host cluster. If you cannot
-upgrade the host cluster yet, keep **Pause Agent Upgrades** enabled on its virtual clusters.
+upgrade the Palette agent on the host cluster yet, keep **Pause Agent Upgrades** enabled on its virtual clusters.
 
 :::
 
-Use the following order to upgrade the Palette agents on a host cluster and its virtual clusters. Change the setting on
-each cluster individually. If you resume agent upgrades at the project or tenant scope, the host cluster and its virtual
-clusters resume at the same time, and the virtual clusters do not wait for the host cluster.
+Change the setting on each cluster individually. Resuming agent upgrades at the project or tenant scope resumes the host
+cluster and its virtual clusters at the same time. To find the setting on a cluster, refer to the **Single Cluster** tab
+in [Enablement](#enablement).
+
+Use the following order to upgrade the Palette agents on a host cluster and its virtual clusters.
 
 1. Enable **Pause Agent Upgrades** on each virtual cluster that runs on the host cluster, if it is not already enabled.
 
@@ -109,6 +111,9 @@ clusters resume at the same time, and the virtual clusters do not wait for the h
 3. Wait for the host cluster's agent upgrade to complete and for the host cluster to report a **Healthy** status.
 
 4. Disable **Pause Agent Upgrades** on the virtual clusters.
+
+If a host cluster is already affected, disable **Pause Agent Upgrades** on the host cluster. The host cluster recovers
+after its agent upgrade completes.
 
 ## Limitations
 
