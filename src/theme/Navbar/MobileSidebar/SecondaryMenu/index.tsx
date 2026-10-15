@@ -9,11 +9,11 @@ type Props = WrapperProps<typeof SecondaryMenuType>;
 
 export default function SecondaryMenuWrapper(props: Props): JSX.Element {
   return (
-    <>
+    <div className={styles.secondaryPanel}>
       <SecondaryMenu {...props} />
       <div className={styles.mobilePrimaryMenu}>
-        <PrimaryMenu className={styles.mobileMenu}></PrimaryMenu>
+        <PrimaryMenu className={styles.mobileMenu} sectionLinksOnly></PrimaryMenu>
       </div>
-    </>
+    </div>
   );
 }
