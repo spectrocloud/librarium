@@ -2,8 +2,8 @@
 sidebar_label: "Artifact Studio v2"
 title: "Artifact Studio v2 (Early Access)"
 description:
-  "Sign in to Artifact Studio v2, download appliances, packs, and profile bundles, and manage your organization and
-  access keys."
+  "Use Artifact Studio v2 to download appliances, packs, and profile bundles, and to manage your organization and access
+  keys."
 hide_table_of_contents: false
 sidebar_position: 11
 tags: ["downloads", "artifact-studio"]
@@ -23,14 +23,14 @@ previous version, refer to [Artifact Studio](./artifact-studio.md).
 
 ## Differences from the Previous Version
 
-| Area          | What changed in Artifact Studio v2                                                                                                                                                                                  |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Access        | You create your own account or sign in with Google. Your organization's entitlements determine which artifacts you can download. Organization entitlements replace the access keys that unlocked exclusive content. |
-| Downloads     | You can browse the catalog without an account, but you must sign in to download an artifact, add it to a bundle, or copy its URL. The reCAPTCHA check is removed.                                                   |
-| Pack bundles  | A single bundle builder replaces the multi-step wizard. The builder supports Agent and Controller modes.                                                                                                            |
-| Profiles      | **Profile bundles** replaces Profiles Hub and PaletteAI Studio. It lists both Palette cluster profiles and PaletteAI profile bundles.                                                                               |
-| Organizations | Organization admins invite members, create access tokens, and review the organization's download history.                                                                                                           |
-| Automation    | Personal access keys authenticate requests to the Artifact Studio API.                                                                                                                                              |
+| **Area**      | **What changed in Artifact Studio v2**                                                                                                                                                                                            |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Access        | You create your own account or sign in with Google. Your organization's entitlements determine which artifacts you can download. Organization entitlements replace the **Unlock with access key** option of the previous version. |
+| Downloads     | You can browse the catalog without an account, but you must sign in to download an artifact, add it to a bundle, or copy its URL. The reCAPTCHA check is removed.                                                                 |
+| Pack bundles  | A single bundle builder replaces the multi-step wizard. The builder supports Agent and Controller modes.                                                                                                                          |
+| Profiles      | **Profile bundles** replaces **Profiles Hub** and **PaletteAI Studio**. It lists both Palette cluster profiles and PaletteAI profile bundles.                                                                                     |
+| Organizations | Organization admins invite members, create access tokens, and review the organization's download history.                                                                                                                         |
+| Automation    | Personal access keys authenticate requests to the Artifact Studio API.                                                                                                                                                            |
 
 ## Sign In
 
@@ -39,11 +39,11 @@ sign in.
 
 1. In Artifact Studio v2, select **Sign in** in the header.
 
-2. Select **Continue with Google**, or enter your **Work email** and **Password** and sign in.
+2. Select **Continue with Google**, or sign in with your **Work email** and **Password**.
 
    If you do not have an account, select **Create an account**. Enter your **Email**, **First name**, and **Last name**,
-   and a **Password** that is at least 12 characters long and contains a number and a symbol. You can also sign up with
-   Google.
+   and a **Password** that is at least 12 characters long and contains a number and a symbol. Then select **Create
+   account**. You can also sign up with Google.
 
    If you forget your password, select **Forgot Password?** to reset it.
 
@@ -83,15 +83,15 @@ If the invitation link has expired or was already used, ask your organization ad
 
 4. Next to each artifact you need, select **Download**. The artifacts available depend on the appliance and version.
 
-   | Artifact                   | Description                                                                                                              |
-   | -------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-   | Appliance ISO              | A bootable host image without bundled content. Download it together with the content bundle for airgapped installations. |
-   | Appliance ISO with content | A bootable host image that includes the content bundle, for a single download.                                           |
-   | Content Bundle             | Packs, profiles, and dependencies that the appliance installs beyond the OS image.                                       |
-   | Helm Chart                 | Chart that deploys the product onto an existing Kubernetes cluster.                                                      |
-   | Machine Owner Key          | Secure Boot enrollment key. Download it only if your hosts boot with Secure Boot enabled.                                |
-   | vSphere Appliance          | OVA for VMware vSphere.                                                                                                  |
-   | Palette CLI                | Palette CLI for appliance management.                                                                                    |
+   | **Artifact**               | **Description**                                                                                                                                                              |
+   | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Appliance ISO              | A bootable host image without bundled content. Download it together with the content bundle for airgapped installations.                                                     |
+   | Appliance ISO with content | A bootable host image that includes the content bundle, for a single download.                                                                                               |
+   | Content Bundle             | Packs, profiles, and dependencies that the appliance installs beyond the OS image.                                                                                           |
+   | Helm Chart                 | Chart that deploys the product onto an existing Kubernetes cluster.                                                                                                          |
+   | Machine Owner Key          | Secure Boot enrollment key. Download it only if your hosts boot with Secure Boot enabled. On the Launchpad appliances, this artifact is labeled **MOK Key for Secure Boot**. |
+   | vSphere Appliance          | OVA for VMware vSphere.                                                                                                                                                      |
+   | Palette CLI                | Command-line interface for managing the appliance.                                                                                                                           |
 
    For PaletteAI Inference Launchpad, Artifact Studio groups the artifacts by GPU build. Select **Show artifacts** for
    the build you need.
@@ -105,8 +105,7 @@ pack bundle for a cluster profile in the bundle builder.
 
 :::tip
 
-When you download more than one item, your browser might block the pop-up windows that Artifact Studio opens. Allow
-pop-ups for Artifact Studio to download all files.
+If you download more than one item, allow pop-ups for Artifact Studio so that your browser does not block the downloads.
 
 :::
 
@@ -119,7 +118,7 @@ pop-ups for Artifact Studio to download all files.
 
 3. On the pack card, select **Details**. The **Pack details** drawer opens.
 
-4. From **Select version**, choose the pack version, and select **Download**.
+4. From **Select version**, choose the pack version, and then select **Download**.
 
    To download the pack later with another tool, select **Full page**, and then select the **URLs** tab. The tab lists
    the direct URLs and the SHA-256 checksum of the pack archive and its signature. Select **Copy all URLs** to copy
@@ -159,7 +158,7 @@ The bundle builder assembles the packs for a cluster profile into a single bundl
 
 2. In **Bundle configuration**, select the **Product**, the **Profile type**, and the Palette **Version**.
 
-   | Option       | Values                                       |
+   | **Option**   | **Values**                                   |
    | ------------ | -------------------------------------------- |
    | Product      | **Palette Enterprise** or **Palette VerteX** |
    | Profile type | **Infrastructure**, **Add-on**, or **Full**  |
@@ -174,7 +173,7 @@ The bundle builder assembles the packs for a cluster profile into a single bundl
 
 5. Review the **Selected packs** list, and select **Download selected artifacts** or **Copy all URLs**.
 
-6. (Optional) To finish the bundle later, select **Save profile draft**, enter a **Draft name**, and select **Save
+6. _(Optional)_ To finish the bundle later, select **Save profile draft**, enter a **Draft name**, and select **Save
    draft**. To resume a draft, select **Drafts** and then **Resume**.
 
 ## Verify Downloads
@@ -187,7 +186,8 @@ Artifact Studio displays **Post-download verification instructions**.
 1. Select **Download the public key file**.
 
 2. Select **Copy verification command**, and run the command in the directory that contains the downloaded artifact, its
-   signature file, and the public key file. Replace the artifact name in the command if prompted.
+   signature file, and the public key file. If the command contains a placeholder, such as `pack-name`, replace it with
+   the name of the file that you downloaded.
 
 3. Confirm that the command output is `Verified OK`.
 
@@ -199,7 +199,7 @@ Spectro Cloud signs artifacts, refer to [Artifact Signatures](../security/artifa
 Organization admins manage members, access tokens, and download history on the **Organization settings** page. Other
 members have a read-only view of the page. To open the page, select **Org settings** in the **User Menu**.
 
-| Tab          | Purpose                                                                                      |
+| **Tab**      | **Purpose**                                                                                  |
 | ------------ | -------------------------------------------------------------------------------------------- |
 | Overview     | Organization details and shortcuts to common admin tasks.                                    |
 | Members      | Members of the organization, their roles, and pending invitations.                           |
@@ -217,9 +217,9 @@ members have a read-only view of the page. To open the page, select **Org settin
 3. Select **Add member**. Artifact Studio emails the invitation, and the member is listed as **Invited** until they
    accept it.
 
-To manage a member or an invitation, open the actions menu for the member on the **Members** tab.
+To manage a member or an invitation, open the three-dot menu for the member on the **Members** tab.
 
-| Action                                 | Result                                                                                         |
+| **Action**                             | **Result**                                                                                     |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **Resend invite** or **Revoke invite** | Sends the invitation again, or cancels it so that the current invitation link no longer works. |
 | **Promote to admin**                   | Gives the member organization admin permissions.                                               |
@@ -230,7 +230,8 @@ An organization must always have at least one organization admin, and you cannot
 
 ### Create an Organization Access Token
 
-Organization access tokens unlock specific artifact classes without a sign-in. Share tokens through a secure channel.
+Organization access tokens give access to specific artifact classes without signing in. Share each token through a
+secure channel.
 
 <!-- TODO(DOC-3257): Ask Shashank how a recipient uses an organization access token before publishing this section. -->
 
@@ -251,7 +252,7 @@ immediately.
 ## Create a Personal Access Key
 
 Personal access keys authenticate requests to the Artifact Studio API, for example, to automate downloads in a CI
-pipeline. A key can only access the artifacts that your organization is entitled to, and it stays tied to the
+pipeline. A key can access only the artifacts that your organization is entitled to. The key stays tied to the
 organization that is active when you create it.
 
 <!-- TODO(DOC-3257): Link to the Artifact Studio API reference (DOC-3256) and add a usage example once the spec and host name are final. -->
@@ -285,17 +286,17 @@ working immediately.
 
 To open the **Account** page, select **My account** in the **User Menu**.
 
-| Tab                   | Purpose                                                            |
+| **Tab**               | **Purpose**                                                        |
 | --------------------- | ------------------------------------------------------------------ |
 | Profile               | Your display name, email address, and the **Danger zone** actions. |
 | Saved Profile bundles | Profile bundles that you saved in the bundle builder.              |
 | My downloads          | Your downloads from the last 90 days.                              |
-| Sessions              | Devices currently signed in to your account.                       |
+| Sessions              | Devices signed in to your account.                                 |
 | API access keys       | Your personal access keys.                                         |
 
 The **Danger zone** section of the **Profile** tab contains the following actions.
 
-| Action                  | Result                                                                                                                                                                |
+| **Action**              | **Result**                                                                                                                                                            |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Sign out everywhere** | Ends all active sessions, including the current one.                                                                                                                  |
 | **Leave org**           | Removes you from the organization. You keep your account, but you lose the organization's entitlements, and Artifact Studio revokes your tokens for the organization. |
