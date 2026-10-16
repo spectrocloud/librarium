@@ -11,6 +11,61 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 16, 2026 - Component Updates {#component-updates-2026-42}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3304 -->
+<!-- RELEASE DATE: October 16,  2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.25 -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.27.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.10.25 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.10.25 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3304. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4871 -->
+
+- Updated Palette Kubernetes packs for the 2026-42 release cycle.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3304. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3304. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.10.3 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.33.0 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.33.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.1 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.27.1 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.0 |
+| <VersionedLink text="opentelemetry" url="/integrations/packs/?pack=opentelemetry" /> | `addon` | :white_check_mark: | :x: | 0.159.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.36.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.3.0 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.7.1 |
+| <VersionedLink text="victoria-metrics" url="/integrations/packs/?pack=victoria-metrics" /> | `addon` | :white_check_mark: | :x: | 0.52.0 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :x: | :white_check_mark: | 0.1.125 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3304. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## October 15, 2026 - Release 4.10.27
 
 <!-- PATCH RELEASE TICKET: DOC-3303 -->
