@@ -32,7 +32,7 @@ The following components have been updated for Palette version 4.10.13 - 4.10.27
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4871 -->
 
-- Added Kubernetes 1.37.0 to the Palette eXtended Kubernetes - Edge pack, and updated the RKE2 pack to Kubernetes
+- Added Kubernetes 1.37.0 to the Palette eXtended Kubernetes - Edge pack and updated the RKE2 pack to Kubernetes
   1.33.13, 1.34.10, 1.35.7, and 1.36.3.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3304. DO NOT DELETE. -->
