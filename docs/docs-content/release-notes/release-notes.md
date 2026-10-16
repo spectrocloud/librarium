@@ -11,6 +11,34 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 15, 2026 - Release 4.8.71
+
+<!-- PATCH RELEASE TICKET: DOC-3277 -->
+<!-- PATCH RELEASE VERSION: 4.8.71 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12216 PEM-12214 PEM-12182 PEM-12180 PEM-12178 -->
+
+### Breaking Changes {#breaking-changes-4-8-71}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12226 -->
+
+- To improve security, virtual machine operations now also require the `cluster.get` permission on the cluster that
+  hosts the virtual machine (`virtualCluster.get` for virtual clusters). Users who have a virtual machine role, such as
+  Virtual Machine Power User or Virtual Machine User, but no role that includes `cluster.get` in the cluster's project
+  can no longer view or manage the virtual machines on that cluster. Assign these users the Cluster Viewer role, or a
+  custom role that includes `cluster.get`, in the cluster's project. Refer to
+  [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for more information.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12216 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12214 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12182 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12180 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12178 -->
+
+- Applied security fixes to improve the platform's security posture.
+
 ## October 4, 2026 - Release 4.8.70
 
 <!-- PATCH RELEASE TICKET: DOC-3269 -->
