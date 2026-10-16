@@ -1,0 +1,54 @@
+---
+partial_category: self-hosted
+partial_name: zot-certificate-rotation
+---
+
+**(Any to 4.10.25+)** {props.edition} can now rotate the TLS certificate of its internal Zot registry automatically.
+Rotation is turned off by default when you upgrade. Do not turn it on during the upgrade, because the clusters that use
+the registry can then fail to pull images. After the upgrade completes, use the following steps to turn it on.
+
+1. _(Paused agent upgrades only)_ Resume agent upgrades for the clusters where they are paused. Rotation does not work
+   while agent upgrades are paused. Refer to
+   [Pause Agent Upgrades](/clusters/cluster-management/platform-settings/pause-platform-upgrades/) for guidance.
+
+2. Wait for the Palette agent upgrade to complete on your clusters.
+
+3. In the Local UI, from the left main menu, select **Cluster**, and then select the **Configuration** tab.
+
+4. In **Applications Config**, expand **Container Registry**, turn on **Enable Certificate Rotation**, and then select
+   **Update**.
+
+5. Select the **Overview** tab. In the **Environment** section, select the **Admin Kubeconfig File** link to download
+   the kubeconfig file of the management cluster.
+
+6. On a machine that has Python 3 and `kubectl` installed, export the path to the kubeconfig file.
+
+   ```shell
+   export KUBECONFIG="<path-to-kubeconfig>"
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file that you downloaded in step 5.
+
+7. Download the script that updates the registry certificate authority (CA). If the machine has no internet access,
+   download the script on a machine that does, and then copy it to this machine.
+
+   ```shell
+   curl --location --output update_registry_ca.py https://software.spectrocloud.com/scripts/zot-cert-rotation/update_registry_ca.py
+   ```
+
+8. Run the script so that {props.edition} trusts the new registry certificate. The script updates the registry CA that
+   {props.edition} uses and restarts the `specman` StatefulSet. It saves a backup of the previous value to
+   `ociPackRegistry.backup.yaml` in the current directory.
+
+   ```shell
+   python3 update_registry_ca.py
+   ```
+
+   When the script completes, it displays `done.`. If the registry CA is already up to date, the script displays
+   `nothing to do` and makes no changes.
+
+After you turn on rotation, {props.edition} rotates the registry certificate and propagates it to the clusters that it
+manages. You do not need to update those clusters or run the script again.
+
+If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires, unless you rotate it
+manually. Clusters can then fail to pull images from the registry.
