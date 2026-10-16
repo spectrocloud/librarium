@@ -21,6 +21,9 @@ env:
   AWS_DEFAULT_REGION: us-west-2
   NODE_VERSION: "24"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Get Packs data
