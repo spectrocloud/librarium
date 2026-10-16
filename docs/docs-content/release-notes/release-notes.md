@@ -11,6 +11,98 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 16, 2026 - Release 4.9.64
+
+<!-- PATCH RELEASE TICKET: DOC-3301 -->
+<!-- PATCH RELEASE VERSION: 4.9.64 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12272 PEM-12185 PEM-12194 PEM-12105 PEM-12309 PEM-12312 PCP-7755 PCP-7792 PE-9775 PE-9817 PE-9822 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12272 -->
+
+- Strengthened the authorization checks on the Edge host APIs. Palette now verifies permissions against the specific
+  Edge host in each request. If you call these APIs from scripts or automation, review the following changes in
+  behavior.
+
+  - Registration requests to `POST /v1/edgehosts/register` must include a registration token in the `hostAuthToken`
+    field for every Edge host type, including when you re-register an existing Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Include a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project in the request.
+
+  - System-scope roles no longer grant Edge host permissions. Use a project-scope role that includes the required
+    `edgeHost` permissions instead.
+
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access outside the Edge host's project context.
+
+  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
+    as well as the existing cluster permission.
+
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. Remote
+    Shell sessions that you open in Palette are not affected.
+
+  Edge hosts that register with a valid registration token are not affected. Apart from the masked `sshKey` value, users
+  with the Project Admin, Project Editor, or Tenant Admin role who work in the Edge host's project are also not
+  affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12194 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12185 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12105 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7755 -->
+
+- Fixed an issue that caused Palette to unexpectedly
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes after
+  a cluster change that should not trigger a repave. This affected clusters first deployed with Palette 4.7 or earlier
+  whose Palette agent was upgraded to version 4.8 or later. The agent upgrade itself did not trigger the repave.
+  Instead, the repave started with the next cluster change, such as updating `clientConfig.oidc-client-secret` in the
+  Kubernetes pack values. With this fix, these changes no longer repave control plane nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12309 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9817 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12312 -->
+
+- Fixed an issue where Palette kept duplicate machine records for an Edge host after its node re-registered with a new
+  Kubernetes node UID, for example, after running `kubectl delete node` and restarting the Kubelet. The duplicate
+  records appeared as extra nodes in Palette, and removing an outdated record could release the Edge host from its
+  cluster and reset it. Palette now rejects a second machine record for an Edge host that already has a running machine
+  in the same node pool, and the Palette agent no longer deletes the machine record of a running node. Palette also
+  removes existing duplicate machine records automatically after the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7792 -->
+
+- Fixed an issue on clusters that use a proxy server, including Edge clusters, where Palette task pods remained in the
+  `Terminating` state and their tasks did not complete. Affected tasks include collecting node logs, applying OS
+  patches, and updating NTP and SSH key settings, and the task jobs reported the error
+  `pod updates may not change fields other than`. Palette now injects proxy settings, such as environment variables and
+  CA certificates, only when a pod is created. Palette also keeps a pod's existing pod affinity and pod anti-affinity
+  rules when it adds node affinity rules.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9775 -->
+
+- Fixed an issue that prevented automatic and manual
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md) on Edge clusters when any aggregated
+  `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
+  remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
+  `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9822 -->
+
+- Fixed an issue on locally managed Edge clusters and Edge clusters that use Canonical Kubernetes where the node's
+  `<node>-public-key` secret in the `spectro-system` namespace was not created if bootstrap hit a temporary failure,
+  such as DNS or the Kubernetes API server not being ready. The task still reported success. Services that validate
+  [Local UI](../clusters/edge/local-ui/local-ui.md) tokens then rejected users on that node, and
+  `/var/log/public-key-manager.log` showed the error `Failed to create secret <node>-public-key`. The task now retries
+  until the secret exists.
+
 ## October 12, 2026 - Release 4.9.63
 
 <!-- PATCH RELEASE TICKET: DOC-3278 -->
