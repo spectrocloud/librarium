@@ -13,8 +13,8 @@ tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "day 2"]
 
 This page describes Day 2 of running Edge AI workloads on an NVIDIA Jetson device. Starting from a registered host that
 serves a model, as described in [Register a Jetson Host and Serve a Model](./register-jetson-host.md), you monitor the
-deployment, apply updates, back up and recover the device, troubleshoot common issues, and decommission the host when
-you are finished.
+deployment, apply updates, reset and recover the device, troubleshoot common issues, and decommission the host when you
+are finished.
 
 Because Palette manages the Jetson device in [agent mode](../../deployment-modes/agent-mode/agent-mode.md) with a
 bring-your-own operating system (BYOOS), you perform some Day 2 tasks through Palette and others on the device. Each
@@ -51,14 +51,22 @@ those on the host and in the workload.
 | GPU utilization         | Use the NVIDIA host tools on the device, such as `nvidia-smi` and `tegrastats`, or run `nvidia-smi` inside a GPU-enabled pod. Palette does not display GPU metrics.               |
 | Model activity          | Run `kubectl exec deployment/ollama -- ollama ps` to confirm that the model is loaded and runs on the GPU.                                                                        |
 
+Palette does not include a monitoring solution for GPU and system metrics. To view these metrics in a dashboard such as
+Grafana, set up a metrics exporter and Grafana yourself. For a Jetson monitoring tool, you can explore
+[jetson-stats](https://developer.nvidia.com/embedded/community/jetson-projects/jetson_stats).
+
 <!-- VERIFY(DOC-3091): validate the exact monitoring commands on the kit. `nvidia-smi` and `ollama ps` are validated (Day 1); `kubectl top` (metrics-server) and `tegrastats` are NOT yet run on the Thor. Capture representative output. Demo metrics already captured 2026-09-14 (llama3.1:8b via Open WebUI): GPU util 98%, ~42 W GPU, ~112 W board, ~72 C — decide whether to include a metrics example. -->
 
 ## Update Kubernetes and Packs
 
-You update Kubernetes and packs through Palette. Update the cluster profile to a new pack version, and Palette
-reconciles the change to the cluster.
+You update Kubernetes and packs through Palette. Update the cluster profile to a new pack version, and the Palette agent
+applies the change to the cluster. The same applies to GPU components that you deploy on Kubernetes, such as GPU drivers
+or device plugins. You do not need to take any manual action, but the change might interrupt workloads while it applies.
 
-<!-- TODO(DOC-3091): write the K3s/pack update flow for the single-node Jetson, referencing the cluster-profile version-update procedure. VALIDATE on the kit (semi-destructive): change a pack version, observe the single-node reconcile and downtime, confirm the model returns. Open eng question (DOC-3093 candidate): is an in-place K3s upgrade supported on a single-node Jetson, and what downtime should the reader expect? -->
+Palette upgrades K3s in place on a single-node Jetson device. The served model is unavailable during the upgrade. The
+downtime depends on how long the host takes to restart and how long K3s takes to become ready.
+
+<!-- VERIFY(DOC-3091): validate on the kit (semi-destructive): change a pack version, observe the single-node reconcile and downtime, and confirm that the model returns. In-place K3s upgrade and the no-manual-action behavior confirmed by Rishi, 2026-10-16. -->
 
 For how Edge clusters apply updates and what to expect during reconciliation, refer to
 [Upgrade Behavior](../../clusters/edge/cluster-management/upgrade-behavior.md). In an airgap deployment, the agent and
@@ -67,11 +75,18 @@ content are updated differently. Refer to
 
 ## Update JetPack and the Operating System
 
-You update JetPack and Jetson Linux (L4T) on the device, outside Palette. Palette does not upgrade the operating system
-on a BYOOS host, so you update JetPack with NVIDIA's tooling, as described in
+You update JetPack and Jetson Linux (L4T) on the device, outside Palette. In agent mode, you manage the operating system
+and all its dependencies, so you update JetPack with NVIDIA's tooling, as described in
 [Prepare the Jetson Host](./prepare-jetson-host.md).
 
-<!-- TODO(DOC-3091): document the host-side JetPack/OS update path and its relationship to the registered host. Open eng questions (DOC-3093 candidates): (1) is a JetPack update an in-place apt upgrade or a reflash? (2) does the host need to re-register with Palette after an OS update, or does the agent persist? (3) does a GPU driver/L4T change affect the nvidia RuntimeClass or the running model? VALIDATE last (destructive: a reflash wipes the device). -->
+The host does not need to register with Palette again after a JetPack or operating system update. The Palette agent
+keeps its connection to Palette.
+
+A JetPack or L4T update can change the GPU driver on the host. This affects the `nvidia` runtime class and can interrupt
+workloads that use the GPU, including the served model. After the update, confirm that the model still runs on the GPU.
+Refer to [Monitor the Host, Cluster, and Model](#monitor-the-host-cluster-and-model).
+
+<!-- VERIFY(DOC-3091): validate a JetPack update on the kit LAST (destructive: a reflash wipes the device). Answers from Rishi, 2026-10-16: the user manages the OS in agent mode, no re-registration, and an L4T or driver change affects the nvidia RuntimeClass and the running model. -->
 
 ## Update or Swap the Served Model
 
@@ -113,9 +128,7 @@ cluster profile instead of changing it directly on the cluster. Palette then app
 update, which keeps the device's configuration in one managed place. For the serving workload that this page starts
 from, refer to [Serve and Verify the Model](./register-jetson-host.md#serve-and-verify-the-model).
 
-<!-- TODO(DOC-3091): expand the cluster-profile path once the blessed pattern is confirmed (eng/PM) - is the model-serving workload modeled as a manifest or add-on layer so model updates go through a profile version? -->
-
-## Back Up, Reset, and Recover
+## Reset and Recover
 
 A single-node Edge device has no control-plane high availability, so recovery differs from a multi-node cluster.
 
@@ -126,7 +139,7 @@ To return a host to a clean state, refer to [Reset an Edge Host](../../clusters/
 To renew the cluster certificates, refer to
 [Certificate Renewal](../../clusters/edge/cluster-management/certificate-renewal.md).
 
-<!-- TODO(DOC-3091): document backup/reset/recovery for the single-node Jetson. Open eng question (DOC-3093 candidate): is backup/restore (for example, Velero) supported on a single-node Edge ARM64 device? Note that replace-failed-node.md (../../clusters/edge/cluster-management/replace-failed-node.md) is a multi-node flow and may NOT apply to a single-node device — confirm before linking it as guidance. VALIDATE reset on the kit LAST (destructive). -->
+<!-- DOC-3091: backup and restore (for example, Velero) and replace-failed-node are left out until they are verified on a single-node ARM64 device (Rishi, 2026-10-16). VERIFY reset on the kit LAST (destructive). -->
 
 ## Troubleshoot Common Issues
 
@@ -155,8 +168,7 @@ Confirm that the serving pod is running, and then send a request to load the mod
 ## Decommission the Host
 
 When you finish with the deployment, decommission it in the following order so that Palette releases the host and you
-can reuse the device. Before you delete the cluster, back up any model data or configuration that you want to keep.
-Refer to [Back Up, Reset, and Recover](#back-up-reset-and-recover).
+can reuse the device. Before you delete the cluster, save any model data or configuration that you want to keep.
 
 1. From the left main menu, select **Clusters**, select the cluster, and then delete it. Deleting the cluster stops the
    served model, removes the workloads, and releases the Jetson host back to your Edge host inventory.
