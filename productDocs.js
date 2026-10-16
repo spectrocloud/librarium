@@ -179,11 +179,14 @@ function toDocsPlugin(product) {
  * open the Products dropdown on this product's pages, which fills the short
  * strip of section links at the bottom of the sidebar.
  *
+ * There is no `to` for the same reason. `DocSidebarNavbarItem` replaces it with
+ * the sidebar's own link, so only the mobile dropdown reads it, and that opens
+ * the menu on the page the `to` points at.
+ *
  * @param {ProductDocs} product
  */
 function toProductsDropdownItem(product) {
   return {
-    to: `/${product.routeBasePath}`,
     type: "docSidebar",
     docsPluginId: product.id,
     sidebarId: product.sidebarId,
