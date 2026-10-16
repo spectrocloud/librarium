@@ -361,17 +361,17 @@ After the upload finishes, continue to [Create VM Launchpad Cluster](#create-clu
 
    <!-- vale spectrocloud-docs-internal.headings-title = YES -->
 
-   | **Parameter**                              | **Description**                                                                                                                           |
-   | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Pod Network Range**                      | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
-   | **Service Network Range**                  | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
-   | **Platform IP Address**                    | A single unused IP address on your network that exposes cluster services externally.                                                      |
-   | **Cluster Network Interface**              | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
-   | **Restrict Allowed VLANs (Optional)**      | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
-   | **VM VLAN Range**                          | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
-   | **VM Bridge Interface**                    | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network.                                             |
-   | **Use br0 for Cluster Traffic (Optional)** | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
-   | **Br0 VLAN Sub-Interface**                 | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
+   | **Parameter**                              | **Description**                                                                                                                                                                                                                                        |
+   | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Pod Network Range**                      | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                                                                                                                             |
+   | **Service Network Range**                  | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.                                                                                                                   |
+   | **Platform IP Address**                    | A single unused IP address on your network that exposes cluster services externally.                                                                                                                                                                   |
+   | **Cluster Network Interface**              | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                                                                                                                              |
+   | **Restrict Allowed VLANs (Optional)**      | Turns on bridge VLAN filtering. The bridge then permits only the node's own VLANs and the VLANs in **VM VLAN Range** that a network uses. Refer to [Bridge VLAN Filtering](./infrastructure/networking.md#bridge-vlan-filtering) for details.          |
+   | **VM VLAN Range**                          | VLAN IDs that VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`. When **Restrict Allowed VLANs** is on, VMO programs a VLAN from this range only while a network uses it, and rejects networks on any other VLAN. |
+   | **VM Bridge Interface**                    | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network.                                                                                                                                                          |
+   | **Use br0 for Cluster Traffic (Optional)** | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                                                                                                                                     |
+   | **br0 VLAN Sub-interfaces**                | The VLAN IDs that the nodes themselves use on `br0`, such as the VLANs of `br0.10` sub-interfaces. Always include the node's untagged VLAN, which is usually `1`. Do not add the VM VLAN range. For example, `1,10,20`.                                |
 
    ### OS and Metrics
 
