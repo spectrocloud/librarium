@@ -14,7 +14,9 @@ This reference lists the Thinking directive modes on the [Tier Map](./glossary.m
 Launchpad appliance, the effort levels, how each engine family interprets the level, and the console states that
 override the setting. For the concept behind the directive, refer to
 [The Thinking Directive](../explanation/thinking-directive.md). For the steps to set the directive, refer to
-[Set the Thinking Directive for a Tier](../how-to-guides/set-tier-thinking.md).
+[Set the Thinking Directive for a Tier](../how-to-guides/set-tier-thinking.md). For where the directive rides the
+resolved model in the wider routing flow, refer to
+[Model Resolution Decision Tree](../explanation/routing-behavior.md#model-resolution-decision-tree).
 
 ## Modes
 
