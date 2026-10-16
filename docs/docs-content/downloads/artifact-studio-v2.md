@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Artifact Studio v2"
-title: "Artifact Studio v2 (Early Access)"
+title: "Artifact Studio v2 (Tech Preview)"
 description:
   "Use Artifact Studio v2 to download appliances, packs, and profile bundles, and to manage your organization and access
   keys."
@@ -9,17 +9,21 @@ sidebar_position: 11
 tags: ["downloads", "artifact-studio"]
 ---
 
-<!-- TODO(DOC-3257): Confirm the Early Access dates, the production host name, and the previous-version end date with Shashank before publishing. -->
-
 Artifact Studio v2 is the new version of [Artifact Studio](https://artifact-studio.spectrocloud.com/). It adds
 self-service accounts, organizations that control which artifacts you can download, and access keys for automated
 downloads. It also replaces the multi-step pack bundle wizard with a single bundle builder.
 
-Artifact Studio v2 is available in Early Access. The previous version of Artifact Studio is still the default. To try
-Artifact Studio v2, open [Artifact Studio](https://artifact-studio.spectrocloud.com/) and select **Switch to the new
-Artifact Studio** in the banner at the top of the page. To return to the previous version, select **Switch to previous
-version** in the header. Artifact Studio stores your choice in a browser cookie, so allow cookies for the site. For the
-previous version, refer to [Artifact Studio](./artifact-studio.md).
+The previous version of Artifact Studio is still the default. To try Artifact Studio v2, open
+[Artifact Studio](https://artifact-studio.spectrocloud.com/) and select **Switch to the new Artifact Studio** in the
+banner at the top of the page. To return to the previous version, select **Switch to previous version** in the header.
+Artifact Studio stores your choice in a browser cookie, so allow cookies for the site. For the previous version, refer
+to [Artifact Studio](./artifact-studio.md).
+
+:::preview
+
+Artifact Studio v2 is a Tech Preview feature and is subject to change.
+
+:::
 
 ## Differences from the Previous Version
 
@@ -47,17 +51,19 @@ sign in.
 
    If you forget your password, select **Forgot Password?** to reset it.
 
-<!-- TODO(DOC-3257): Confirm what a user without an organization can download in production. On as2.dev, every catalog pack is gated. -->
-
 ### Access to Artifacts
 
 Spectro Cloud creates your organization and invites its first organization admin. The organization admin then invites
 other members. Your organization's entitlements determine which appliances, packs, and profile bundles you can download.
 Only Spectro Cloud can change your organization's entitlements.
 
-If your organization is not entitled to an artifact, Artifact Studio displays **Entitlement required** when you try to
-download it. Contact your organization admin or [Spectro Cloud support](mailto:support@spectrocloud.com) to request
-access.
+Every download requires an organization. If you create an account but do not belong to an organization, you can browse
+the catalog, but you cannot download any artifacts. To join an organization, ask its organization admin for an
+invitation.
+
+Artifacts that your organization is not entitled to remain visible in the catalog. If you try to download one, Artifact
+Studio displays **Entitlement required**. Contact your organization admin or
+[Spectro Cloud support](mailto:support@spectrocloud.com) to request access.
 
 ### Accept an Invitation
 
@@ -95,8 +101,6 @@ If the invitation link has expired or was already used, ask your organization ad
 
    For PaletteAI Inference Launchpad, Artifact Studio groups the artifacts by GPU build. Select **Show artifacts** for
    the build you need.
-
-To verify the download, refer to [Verify Downloads](#verify-downloads).
 
 ## Download Packs and Profile Bundles
 
@@ -178,10 +182,9 @@ The bundle builder assembles the packs for a cluster profile into a single bundl
 
 ## Verify Downloads
 
-Spectro Cloud signs all bundles and ISO files that you download from Artifact Studio. After a bundle download starts,
-Artifact Studio displays **Post-download verification instructions**.
-
-<!-- TODO(DOC-3257): Confirm the verification method with Shashank, including for appliance downloads. The v2 home page also mentions Cosign signatures. -->
+Artifact Studio v2 provides verification instructions for packs, profiles, and profile bundles. It does not provide
+verification instructions for appliance downloads. After a bundle download starts, Artifact Studio displays
+**Post-download verification instructions**.
 
 1. Select **Download the public key file**.
 
@@ -230,10 +233,10 @@ An organization must always have at least one organization admin, and you cannot
 
 ### Create an Organization Access Token
 
-Organization access tokens give access to specific artifact classes without signing in. Share each token through a
-secure channel.
-
-<!-- TODO(DOC-3257): Ask Shashank how a recipient uses an organization access token before publishing this section. -->
+Organization access tokens belong to the organization rather than to a member, so use them for automation, such as a
+service account in a CI pipeline. A token can access only the artifact classes that you select when you create it. Use
+an organization access token in API requests the same way as a personal access key. For more information, refer to
+[Create a Personal Access Key](#create-a-personal-access-key). Share each token through a secure channel.
 
 1. On the **Tokens** tab, select **Create token**.
 
@@ -254,8 +257,6 @@ immediately.
 Personal access keys authenticate requests to the Artifact Studio API, for example, to automate downloads in a CI
 pipeline. A key can access only the artifacts that your organization is entitled to. The key stays tied to the
 organization that is active when you create it.
-
-<!-- TODO(DOC-3257): Link to the Artifact Studio API reference (DOC-3256) and add a usage example once the spec and host name are final. -->
 
 1. In the **User Menu**, select **API access keys**.
 
