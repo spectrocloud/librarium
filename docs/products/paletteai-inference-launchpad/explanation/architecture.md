@@ -69,10 +69,24 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 ## Request Routing
 
+<!-- vale off -->
+
 The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
 the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
-from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
-the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+from a category and a complexity band. For how the two controls combine and where each rule lives, on a workspace's
+policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
+
+<!-- vale on -->
+
+The semantic router runs on your GPUs and shares them with the main model. The appliance deploys it at installation,
+before any local model, so an appliance that answers only through frontier providers still routes semantically. When you
+deploy a main model, the semantic router moves onto that model's GPUs. For the GPU requirements, refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
+
+Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. Text mode runs a
+text model with the semantic router. Vision mode runs a text model with the semantic router and a vision model. The
+deploy picker offers only models of the appliance's current mode. For how a model's catalog entry decides its mode,
+refer to [One Mode per Box](./routing-behavior.md#one-mode-per-box).
 
 When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
 restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
@@ -103,9 +117,9 @@ cannot be changed after registration, and it cannot collide with a built-in fron
 `gemini`); registration refuses a colliding id. The **Endpoint URL** can be an origin or an origin followed by a path
 prefix; the appliance appends the OpenAI-compatible request paths itself, so the URL does not include `/v1`.
 
-The credential for an endpoint is stored once for the appliance and is never held per client, which is why the client
-drawer shows `box-managed` in place of a per-client key for that row. The credential can be an API key, one or more
-custom headers, or both. The appliance sends any custom headers on both the model-catalog probe and every routed
+The credential for an endpoint is stored once for the appliance and is never held per client, which is why the client's
+detail panel shows `box-managed` in place of a per-client key for that row. The credential can be an API key, one or
+more custom headers, or both. The appliance sends any custom headers on both the model-catalog probe and every routed
 request.
 
 The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
