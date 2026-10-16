@@ -12,17 +12,18 @@ They cover design decisions, component relationships, and trade-offs rather than
 
 ## Contents
 
-| **Topic**                                                   | **What you understand**                                                                                            |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [Architecture Overview](./architecture.md)                  | The component stack, request routing, model provisioning lifecycle, network topology, and data residency model.    |
-| [Model Placement](./model-placement.md)                     | How a model is placed on cluster nodes, when to pin it to a subset, and how the Cluster view reports placement.    |
-| [Vision Preprocessing](./vision-preprocessing.md)           | How a text-only model answers questions about images by converting them to text first.                             |
-| [Clients and Quotas](./clients-and-quotas.md)               | What a client is, how quotas meter usage, and how utilization, consumption, and historical windows are reported.   |
-| [Usage Pricing](./usage-pricing.md)                         | How estimated cost, per-model rates, and cache reads are calculated.                                               |
-| [Estimated Savings](./estimated-savings.md)                 | How much you save by serving on the appliance instead of a frontier model, and how the estimate is calculated.     |
-| [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router combine to pick the model that answers each request.                      |
-| [Frontier Providers](./frontier-providers.md)               | Where provider keys live, the credential patterns, the levers that keep frontier traffic occasional, and bursting. |
-| [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                        |
-| [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.             |
-| [Installation Architecture](./installation-architecture.md) | How the appliance installs, why the network uses a bond, and how day-two upgrades stay in Local UI.                |
-| [The Thinking Directive](./thinking-directive.md)           | How the Thinking directive on the Tier Map controls reasoning depth by effort level and how each engine reacts.    |
+| **Topic**                                                   | **What you understand**                                                                                                |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| [Architecture Overview](./architecture.md)                  | The component stack, request routing, model provisioning lifecycle, network topology, and data residency model.        |
+| [Model Placement](./model-placement.md)                     | How a model is placed on cluster nodes, when to pin it to a subset, and how the Cluster view reports placement.        |
+| [Vision Preprocessing](./vision-preprocessing.md)           | How a text-only model answers questions about images by converting them to text first.                                 |
+| [Clients and Quotas](./clients-and-quotas.md)               | What a client is, how quotas meter usage, and how utilization, consumption, and historical windows are reported.       |
+| [Usage Pricing](./usage-pricing.md)                         | How estimated cost, per-model rates, and cache reads are calculated.                                                   |
+| [Estimated Savings](./estimated-savings.md)                 | How much you save by serving on the appliance instead of a frontier model, and how the estimate is calculated.         |
+| [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router pick the model for each request, and why the appliance runs one mode per box. |
+| [Semantic Router Guard](./semantic-router-guard.md)         | The two checks the semantic router makes on each request it reads, and when it refuses a request with HTTP `403`.      |
+| [Frontier Providers](./frontier-providers.md)               | Where provider keys live, the credential patterns, the levers that keep frontier traffic occasional, and bursting.     |
+| [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                            |
+| [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and when to override it.                 |
+| [Installation Architecture](./installation-architecture.md) | How the appliance installs, why the network uses a bond, and how day-two upgrades stay in Local UI.                    |
+| [The Thinking Directive](./thinking-directive.md)           | How the Thinking directive on the Tier Map controls reasoning depth by effort level and how each engine reacts.        |

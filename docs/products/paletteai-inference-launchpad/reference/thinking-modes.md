@@ -2,8 +2,8 @@
 sidebar_label: "Thinking Directive Modes"
 title: "Thinking Directive Modes"
 description:
-  "Reference of the Thinking directive modes on the Tier Map, the effort levels, per-engine interpretation, and the
-  console states that override the setting."
+  "Reference of the Thinking directive modes on the Tier Map, the effort levels, per-engine interpretation, the console
+  states that override the setting, and the Thinking values of semantic routing rules."
 hide_table_of_contents: false
 sidebar_position: 4.8
 tags: ["paletteai-inference-launchpad", "routing", "tier-map", "thinking", "reference"]
@@ -53,3 +53,18 @@ override the setting. For the concept behind the directive, refer to
 | ------------------------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `off` is disabled                                 | The tier resolves to an OpenAI o-series or GPT-5 family model.             | The selector does not offer **off** for that tier.                |
 | Grey chip reading `ignored — no thinking surface` | The tier's resolved model runs on an engine that has no reasoning surface. | The engine ignores the directive; the request is served normally. |
+
+<!-- vale off -->
+
+## Thinking Values on Semantic Routing Rules
+
+<!-- vale on -->
+
+Each rule on the **Semantic routing** card has a **Thinking** column, which offers the following values.
+
+| **Value**     | **What the rule does**                                                                                                                  |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **Inherited** | Uses the depth set on the Tier map alias that handed the request to the semantic router. The rule shows it as `from tier map: <level>`. |
+| **off**       | Turns reasoning off for this rule, whatever the alias says.                                                                             |
+| **on**        | Turns reasoning on for this rule, whatever the alias says.                                                                              |
+| **effort**    | Sets the reasoning level for this rule to **low**, **medium**, **high**, **xhigh**, or **max**, whatever the alias says.                |
