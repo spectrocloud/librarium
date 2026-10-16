@@ -15,46 +15,37 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-3301 -->
 <!-- PATCH RELEASE VERSION: 4.9.64 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12272 PEM-12105 PEM-12309 PEM-12312 PCP-7755 PCP-7792 PE-9775 PE-9817 PE-9822 -->
-
-### Breaking Changes {#breaking-changes-4-9-64}
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12272 -->
-
-- To improve security, Palette now checks permissions against the specific Edge host for the following Edge host API
-  operations. Update any scripts or automation that rely on the earlier behavior.
-
-  - Edge host registration requests to `POST /v1/edgehosts/register` must include a registration token in the
-    `hostAuthToken` field for every Edge host type, including when you re-register an existing Edge host. Requests
-    without a token fail with the error `Parameter 'hostAuthToken' should not be empty`. Create a
-    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
-    with the Edge host's project and include it in the request.
-  - If a registration request for an Edge host that already exists in Palette includes the `associateClusterUid`
-    annotation, the cluster must exist in the same tenant and project as the Edge host. Otherwise, registration fails
-    with a `ResourceAccessDenied` error. Set the annotation only to a cluster in the Edge host's project, or remove it
-    and associate the Edge host with a cluster after registration.
-  - System-scope roles no longer grant Edge host permissions. Edge host access now comes only from project-scope roles,
-    and requests that rely on a system-scope role fail with an `OperationForbidden` error. Assign a project-scope role
-    that includes the required `edgeHost` permissions instead.
-  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
-    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
-    The Tenant Admin role alone no longer grants this access, so requests made outside the Edge host's project context
-    fail with an `OperationForbidden` error. Make these requests in the Edge host's project context.
-  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
-    as well as the existing cluster permission. Users who have cluster permissions but not `edgeHost.get` on the Edge
-    host can no longer reset it. Make these requests in the Edge host's project context with a role that grants
-    `edgeHost.get`.
-  - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. If you
-    need the key later, store it on the client side. Remote Shell sessions that you open in Palette are not affected.
-
-  Edge hosts that register with a valid registration token are not affected if any `associateClusterUid` annotation
-  refers to a cluster in the same project. Users with the Project Admin, Project Editor, or Tenant Admin role who work
-  in the Edge host's project are also not affected. For more information, refer to
-  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+<!-- PATCH RELEASE CANDIDATES: PEM-12272 PEM-12185 PEM-12194 PEM-12105 PEM-12309 PEM-12312 PCP-7755 PCP-7792 PE-9775 PE-9817 PE-9822 -->
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12272 -->
+
+- Strengthened the authorization checks on the Edge host APIs. Palette now verifies permissions against the specific
+  Edge host in each request. If you call these APIs from scripts or automation, review the following changes in
+  behavior.
+
+  - Registration requests to `POST /v1/edgehosts/register` must include a registration token in the `hostAuthToken`
+    field for every Edge host type, including when you re-register an existing Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Include a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project in the request.
+  - System-scope roles no longer grant Edge host permissions. Use a project-scope role that includes the required
+    `edgeHost` permissions instead.
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access outside the Edge host's project context.
+  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
+    as well as the existing cluster permission.
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. Remote
+    Shell sessions that you open in Palette are not affected.
+
+  Edge hosts that register with a valid registration token, and users with the Project Admin, Project Editor, or Tenant
+  Admin role who work in the Edge host's project, are not affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12194 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12185 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12105 -->
 
 - Applied security fixes to improve the platform's security posture.
