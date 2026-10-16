@@ -39,7 +39,7 @@ running life-critical AI workloads on edge Kubernetes with Palette.
 - [Register a Jetson Host and Serve a Model](./register-jetson-host.md) - Register the device with Palette in agent
   mode, deploy an Edge Native cluster profile, and serve a local AI model on the device GPU.
 
-- [Day 2 Operations](./day-2-operations.md) - Monitor, upgrade, back up, troubleshoot, and decommission a Jetson Edge AI
+- [Day 2 Operations](./day-2-operations.md) - Monitor, update, reset, troubleshoot, and decommission a Jetson Edge AI
   deployment after it is registered and serving a model.
 
 - [Run a Local AI Model on a Jetson Thor](../../tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor.md) - Follow an
