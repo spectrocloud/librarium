@@ -11,6 +11,195 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 16, 2026 - Component Updates {#component-updates-2026-42}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3304 -->
+<!-- RELEASE DATE: October 16, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.25 -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.27.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.10.25 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.10.25 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3304. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4871 -->
+
+- Added Kubernetes 1.37.0 to the Palette eXtended Kubernetes - Edge pack and updated the RKE2 pack to Kubernetes
+  1.33.13, 1.34.10, 1.35.7, and 1.36.3.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3304. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3304. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.10.3 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.33.0 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.33.0 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.1 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.27.1 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.0 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.0 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.33.13-rke2r1-build20260612 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.34.10-rke2r1-build20260723 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.35.7-rke2r1-build20260723 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.36.3-rke2r1-build20260723 |
+| <VersionedLink text="opentelemetry" url="/integrations/packs/?pack=opentelemetry" /> | `addon` | :white_check_mark: | :x: | 0.159.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.36.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.3.0 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.7.1 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :x: | :white_check_mark: | 0.1.125 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3304. DO NOT DELETE. -->
+
+## October 15, 2026 - Release 4.10.27
+
+<!-- PATCH RELEASE TICKET: DOC-3303 -->
+<!-- PATCH RELEASE VERSION: 4.10.27 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12187 PEM-12302 PEM-12301 PEM-12279 PCP-7779 PE-9761 PEM-12199 PE-9758 PEM-12197 PEM-12184 PEM-12183 PE-9700 PCP-7705 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12187 -->
+
+- Strengthened the authorization checks on the Edge host APIs. Palette now verifies permissions against the specific
+  Edge host in each request. If you call these APIs from scripts or automation, review the following changes in
+  behavior.
+
+  - Registration requests to `POST /v1/edgehosts/register` must include a registration token in the `hostAuthToken`
+    field for every Edge host type, including when you re-register an existing Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Include a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project in the request.
+
+  - System-scope roles no longer grant Edge host permissions. Use a project-scope role that includes the required
+    `edgeHost` permissions instead.
+
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access outside the Edge host's project context.
+
+  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
+    as well as the existing cluster permission.
+
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. Remote
+    Shell sessions that you open in Palette are not affected.
+
+  Edge hosts that register with a valid registration token are not affected. Apart from the masked `sshKey` value, users
+  with the Project Admin, Project Editor, or Tenant Admin role who work in the Edge host's project are also not
+  affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12184 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12183 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12197 -->
+
+- Fixed an issue where changing the number of nodes in a node pool from the cluster's **Nodes** tab turned off the
+  [**Skip worker node update (Optional)**](../clusters/cluster-management/node-pool.md#skip-worker-node-update) option
+  for that node pool. As a result, the next Kubernetes upgrade also upgraded the node pool's worker nodes. Changing the
+  node count by editing the node pool configuration did not turn off the option.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12302 -->
+
+- Fixed an issue where the **Teams** tab on the **Users & Teams** page did not load for tenants with 100 or more
+  [teams](../user-management/users-and-teams/create-a-team.md). The tab stayed on a loading indicator, and the user
+  service logs showed the error `BSONObj exceeds maximum nested object depth`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7779 -->
+
+- Fixed an issue where control plane updates failed on clusters whose Kubernetes pack `extraArgs` include an unquoted
+  integer of 1,000,000 or greater, such as `quota-backend-bytes: 4294967296`. After an upgrade to Palette agent version
+  4.10, the next cluster profile or pack change converted the value to scientific notation, such as `4.294967296e+09`.
+  The new control plane nodes then failed to join the cluster with the error
+  `etcd-join: the etcd member is not started`. Palette now preserves integer values. Affected clusters
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) their control plane nodes once
+  after the upgrade to apply the corrected values.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12279 -->
+
+- Fixed an issue where the Palette Management Appliance and VerteX Management Appliance could not deploy new clusters
+  when an administrator turned on **Enable Certificate Rotation** for the internal Zot registry after upgrading from
+  version 4.9. Cluster deployments failed with the error
+  `failed to get in-cluster registry: in-cluster registry credential not found`. Palette and Palette VerteX now update
+  the registry certificate authority (CA) automatically, so the registry CA update script is required only on version
+  4.10.25. Refer to the Upgrade Notes for
+  [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12199 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9758 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12301 -->
+
+- Fixed an issue where Palette kept duplicate machine records for an Edge host after its node re-registered with a new
+  Kubernetes node UID, for example, after running `kubectl delete node` and restarting the Kubelet. The duplicate
+  records appeared as extra nodes in Palette, and removing an outdated record could release the Edge host from its
+  cluster and reset it. Palette now rejects a second machine record for an Edge host that already has a running machine
+  in the same node pool, and the Palette agent no longer deletes the machine record of a running node. Palette also
+  removes existing duplicate machine records automatically after the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7705 -->
+
+- Fixed an issue on clusters that use a proxy server, including Edge clusters, where Palette task pods remained in the
+  `Terminating` state and their tasks did not complete. Affected tasks include collecting node logs, applying OS
+  patches, and updating NTP and SSH key settings, and the task jobs reported the error
+  `pod updates may not change fields other than`. Palette now injects proxy settings, such as environment variables and
+  CA certificates, only when a pod is created. Palette also keeps a pod's existing pod affinity and pod anti-affinity
+  rules when it adds node affinity rules.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9700 -->
+
+- Fixed an issue on [two-node](../clusters/edge/architecture/two-node.md) Edge clusters where, after a failover, a
+  demoted node could stop replicating data from the leader while the cluster continued to report a healthy status. A
+  later failover could then promote the node with out-of-date data. Palette now stops the node's local Kubernetes and
+  datastore processes before demoting it. Palette also generates an Error audit event when replication stalls and an
+  Info audit event when replication recovers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9761 -->
+
+- Fixed an issue on locally managed Edge clusters and Edge clusters that use Canonical Kubernetes where the node's
+  `<node>-public-key` secret in the `spectro-system` namespace was not created if bootstrap hit a temporary failure,
+  such as DNS or the Kubernetes API server not being ready. The task still reported success. Services that validate
+  [Local UI](../clusters/edge/local-ui/local-ui.md) tokens then rejected users on that node, and
+  `/var/log/public-key-manager.log` showed the error `Failed to create secret <node>-public-key`. The task now retries
+  until the secret exists.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.27 Palette release is 4.10.9.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.27 Palette release is
+4.10.10. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 9, 2026 - PaletteAI VM Launchpad 4.10.20 {#vm-launchpad-4.10.20}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3285 -->
@@ -149,6 +338,19 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   requires the same Update permission on the cluster as `POST /v1/spectroclusters/{uid}/workloads/sync` in the table
   above.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12176 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12226 -->
+
+- To improve security, virtual machine operations now also require the `cluster.get` permission on the cluster that
+  hosts the virtual machine (`virtualCluster.get` for virtual clusters). Users who have a virtual machine role, such as
+  Virtual Machine Power User or Virtual Machine User, but no role that includes `cluster.get` in the cluster's project
+  can no longer view or manage the virtual machines on that cluster. Assign these users the Cluster Viewer role, or a
+  custom role that includes `cluster.get`, in the cluster's project. If you upgrade from
+  [Palette 4.10.17-patch.5](#breaking-changes-4-10-17-patch-5), operations other than viewing no longer require the
+  `cluster.update` permission. Users who have the Cluster Editor role only for virtual machine operations now need only
+  the Cluster Viewer role. Refer to [VM User Roles and Permissions](../vm-management/rbac/vm-roles-permissions.md) for
+  more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11704 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3230 -->
 
@@ -227,6 +429,17 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md#upgrade-cluster-group) for more information.
 
 #### Upgrade Notes {#upgrade-notes-4.10.a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-934 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+
+- **User action required:** The Palette Management Appliance and VerteX Management Appliance can now rotate the TLS
+  certificate of their internal Zot registry automatically. Rotation is turned off by default when you upgrade. After
+  you upgrade, resume any paused agent upgrades, wait for the Palette agent upgrade to complete, turn on **Enable
+  Certificate Rotation** in the Local UI, and then run the registry certificate authority (CA) update script. If you
+  leave rotation turned off, the registry certificate eventually expires, unless you rotate it manually. Refer to the
+  Upgrade Notes for [Palette](../enterprise-version/upgrade/palette-management-appliance.md#upgrade-notes) and
+  [Palette VerteX](../vertex/upgrade/vertex-management-appliance.md#upgrade-notes) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8756 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11013 -->
@@ -639,11 +852,6 @@ The following components have been updated for Palette version 4.10.25.
 
 - Fixed an issue in Piraeus where RWX (NFS) volumes remained unmountable on single-node clusters when creating multiple
   RWX persistent volume claims simultaneously.
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2463 -->
-
-- Fixed a Terraform provider issue where EKS clusters were destroyed and recreated on every apply when
-  `cloud_config.azs` was configured.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3276. DO NOT DELETE. -->
 
