@@ -44,7 +44,7 @@ To learn about the requirements for Edge hosts deployed in agent mode, refer to
 
 ### ARM64 Architecture Devices
 
-ARM64 support is verified for the NVIDIA Jetson Orin and NVIDIA Jetson Thor device families.
+ARM64 support is verified in agent mode for the NVIDIA Jetson Orin and NVIDIA Jetson Thor device families.
 
 For a guided workflow to run local AI models on a Jetson device managed by Palette, refer to
 [Edge AI on NVIDIA Jetson](../../ai-workloads/edge-ai/edge-ai.md).
