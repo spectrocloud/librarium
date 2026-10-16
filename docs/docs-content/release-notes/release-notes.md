@@ -52,19 +52,15 @@ The following components have been updated for Palette version 4.10.13 - 4.10.27
 | <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.27.1 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.0 |
 | <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.0 |
-| `keycloakx` | `addon` | :white_check_mark: | :white_check_mark: | 7.3.2-shi |
-| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.33.13 |
-| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.34.10 |
-| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.35.7 |
-| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.36.3 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.33.13-rke2r1-build20260612 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.34.10-rke2r1-build20260723 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.35.7-rke2r1-build20260723 |
+| <VersionedLink text="kubernetes-rke2" url="/integrations/packs/?pack=kubernetes-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.36.3-rke2r1-build20260723 |
 | <VersionedLink text="opentelemetry" url="/integrations/packs/?pack=opentelemetry" /> | `addon` | :white_check_mark: | :x: | 0.159.0 |
-| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :white_check_mark: | 2.12.0-shi |
-| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.12.0-shi |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.36.1 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.3.0 |
 | <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.0 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 41.7.1 |
-| `victoria-metrics` | `addon` | :white_check_mark: | :x: | 0.52.0 |
 | <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :x: | :white_check_mark: | 0.1.125 |
 
 <!-- prettier-ignore-end -->
