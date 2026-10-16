@@ -1,0 +1,35 @@
+flowchart LR
+    settings[QuotaSettings<br/>cluster singleton<br/>quotaEnabled on or off]:::neutral
+
+    client([Client<br/>ModelClient CR]):::start
+
+    key[API token<br/>ModelGroupAPIKey CR<br/>scope: allow-list of models]:::dataplane
+
+    secret[(Secret<br/>token value)]:::neutral
+
+    quota[Quota<br/>ModelGroupQuota CR<br/>modelSelector: labels]:::control
+
+    frontier[Frontier egress<br/>provider keys + budget<br/>optional]:::frontier
+
+    model[Model<br/>Model CR]:::local
+
+    settings -.->|owns via ownerRef| key
+    client -->|1 client, N keys via clientRef| key
+    key -->|apiKeySecretRef| secret
+    key -->|N keys, 1 quota via modelGroupQuotaRef| quota
+    quota -->|modelSelector matches labels| model
+    quota -.->|spec.frontier| frontier
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef dataplane fill:#eef6ff,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef control fill:#eef2ff,stroke:#4f46e5,color:#0f172a,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef frontier fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef neutral fill:#f8fafc,stroke:#cbd5e1,color:#0f172a,stroke-width:2px;
+
+    linkStyle 0 stroke:#4f46e5,stroke-width:2px,stroke-dasharray:6 4;
+    linkStyle 1 stroke:#2563eb,stroke-width:2px;
+    linkStyle 2 stroke:#cbd5e1,stroke-width:2px;
+    linkStyle 3 stroke:#4f46e5,stroke-width:2px;
+    linkStyle 4 stroke:#16a34a,stroke-width:2px;
+    linkStyle 5 stroke:#d97706,stroke-width:2px,stroke-dasharray:6 4;

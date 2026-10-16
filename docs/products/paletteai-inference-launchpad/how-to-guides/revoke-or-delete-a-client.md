@@ -70,3 +70,4 @@ To restore a suspended client, select **Resume** in the **Overview** section.
 
 - [Create a Client](./create-a-client.md)
 - [Generate an API Token](./generate-an-api-token.md)
+- [Quota Model](../reference/quota-model.md)

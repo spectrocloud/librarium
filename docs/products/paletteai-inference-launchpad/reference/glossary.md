@@ -370,8 +370,7 @@ order of hundreds of gigabytes for a larger model, which is why the appliance si
 The internal Kubernetes custom resource that represents a [quota](#quota) budget on the appliance's cluster. It selects
 the models it covers with label selectors and tracks usage across every dimension and time window. Operators interact
 with quotas through the [appliance console](#appliance-console); ModelGroupQuota is the underlying enforcement object.
-
-{/* NEEDS REVIEW: ModelGroupQuota is an internal CRD name from the source glossary and does not appear in any shipped PAIIL doc. Confirm whether it should be exposed to readers before publishing. */}
+For the full console-to-CRD map, refer to [Quota Model](./quota-model.md).
 
 ### Multimodal Preprocessing
 
