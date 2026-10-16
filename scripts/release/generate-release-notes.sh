@@ -41,13 +41,15 @@ REFRESH_ONLY="${REFRESH_ONLY:-false}"
 if [[ "$REFRESH_ONLY" == "true" ]]; then
     REQUIRED_VARS=(RELEASE_DATE RELEASE_NAME RELEASE_VERSION)
 else
+    # Listed in the order `make init-release` writes them to .env, so the values shown for
+    # confirmation below can be compared with that file line by line.
     REQUIRED_VARS=(
-        RELEASE_DATE
         RELEASE_NAME
+        RELEASE_VERSION
+        RELEASE_DATE
         RELEASE_CANVOS
         RELEASE_PALETTE_CLI_VERSION
         RELEASE_TERRAFORM_VERSION
-        RELEASE_VERSION
     )
 fi
 
@@ -89,6 +91,33 @@ fi
 if [[ ! -f "$RELEASE_NOTES_FILE" ]]; then
     echo "❌ Release notes file $RELEASE_NOTES_FILE not found. Nothing was generated."
     exit 1
+fi
+
+# .env still holds the previous release's values when a cycle starts, so a run that misses one
+# drafts a block naming the last release with nothing to say so. The values are shown and confirmed
+# before anything is written, so a stale one is caught at the prompt rather than in review.
+#
+# Each value is shown with its surrounding quotes stripped. make reads .env with the quotes as part
+# of the value and generate_parameterised_file strips them, so what is shown is what the block says.
+#
+# An empty reply answers no, because the point is to stop a run nobody has checked, and running it
+# again costs nothing. Answering no exits non-zero so that make stops before its formatting pass.
+#
+# Refresh-only mode is not asked. `make generate-release` runs it alongside eight other generators
+# that read the same .env without asking, so a prompt here would confirm only some of the values
+# that target uses. Nor is a run with no terminal, which keeps the convention the other release
+# prompts follow of never stalling an unattended job.
+if [[ "$REFRESH_ONLY" != "true" && -t 0 ]]; then
+    echo "ℹ️  The release notes in $RELEASE_NOTES_FILE will be generated with these values:"
+    for var in "${REQUIRED_VARS[@]}"; do
+        value="${!var#\"}"; value="${value%\"}"
+        echo "     $var=$value"
+    done
+
+    if ! confirm "Are these values correct?" n; then
+        echo "❌ Nothing was generated. Update the values in your .env file, then run 'make generate-release-notes' again."
+        exit 1
+    fi
 fi
 
 # The heading and the component version sections are held in their own templates, because a later
