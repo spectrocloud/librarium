@@ -18,10 +18,10 @@ the registry can then fail to pull images. After the upgrade completes, use the 
 4. In **Applications Config**, expand **Container Registry**, turn on **Enable Certificate Rotation**, and then select
    **Update**.
 
-5. Select the **Overview** tab. In the **Environment** section, select the **Admin Kubeconfig File** link to download
-   the kubeconfig file of the management cluster.
+5. _(4.10.25 only)_ Select the **Overview** tab. In the **Environment** section, select the **Admin Kubeconfig File**
+   link to download the kubeconfig file of the management cluster.
 
-6. On a machine that has Python 3 and `kubectl` installed, export the path to the kubeconfig file.
+6. _(4.10.25 only)_ On a machine that has Python 3 and `kubectl` installed, export the path to the kubeconfig file.
 
    ```shell
    export KUBECONFIG="<path-to-kubeconfig>"
@@ -29,16 +29,16 @@ the registry can then fail to pull images. After the upgrade completes, use the 
 
    Replace `<path-to-kubeconfig>` with the path to the kubeconfig file that you downloaded in step 5.
 
-7. Download the script that updates the registry certificate authority (CA). If the machine has no internet access,
-   download the script on a machine that does, and then copy it to this machine.
+7. _(4.10.25 only)_ Download the script that updates the registry certificate authority (CA). If the machine has no
+   internet access, download the script on a machine that does, and then copy it to this machine.
 
    ```shell
    curl --location --output update_registry_ca.py https://software.spectrocloud.com/scripts/zot-cert-rotation/update_registry_ca.py
    ```
 
-8. Run the script so that {props.edition} trusts the new registry certificate. The script updates the registry CA that
-   {props.edition} uses and restarts the `specman` StatefulSet. It saves a backup of the previous value to
-   `ociPackRegistry.backup.yaml` in the current directory.
+8. _(4.10.25 only)_ Run the script so that {props.edition} trusts the new registry certificate. The script updates the
+   registry CA that {props.edition} uses and restarts the `specman` StatefulSet. It saves a backup of the previous value
+   to `ociPackRegistry.backup.yaml` in the current directory.
 
    ```shell
    python3 update_registry_ca.py
@@ -48,7 +48,7 @@ the registry can then fail to pull images. After the upgrade completes, use the 
    `nothing to do` and makes no changes.
 
 After you turn on rotation, {props.edition} rotates the registry certificate and propagates it to the clusters that it
-manages. You do not need to update those clusters or run the script again.
+manages, so you do not need to update those clusters. On version 4.10.25, the script needs to run only once.
 
 If you leave rotation turned off, the Zot registry certificate is not renewed and eventually expires, unless you rotate it
 manually. Clusters can then fail to pull images from the registry.
