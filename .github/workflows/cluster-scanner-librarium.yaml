@@ -63,7 +63,7 @@ jobs:
             {
               echo 'LOG_MESSAGE<<EOF'
               echo "Palette Environment: ${{ matrix.environment }}"
-              sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,/$/p' | sed 's/"//g'
+              sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,$p' | sed 's/"//g'
               echo EOF
             } >> "$GITHUB_ENV"
           fi
