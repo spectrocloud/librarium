@@ -12,8 +12,8 @@ toc_max_heading_level: 2
 
 Edge locations increasingly run AI inference locally, close to where data is generated, instead of sending that data to
 a central cloud. NVIDIA Jetson devices pair a power-efficient ARM64 system with an integrated GPU, which makes them a
-common platform for edge AI. Palette manages a Jetson as an Edge host, so you deploy and operate a Kubernetes cluster
-and its AI workloads on the device with the same profile-driven workflow you use everywhere else.
+common platform for Edge AI. Palette manages a Jetson as an Edge host, so you deploy and operate a Kubernetes cluster on
+the device with the same profile-driven workflow that you use for the rest of your Edge fleet.
 
 In this tutorial, you take an NVIDIA Jetson AGX Thor Developer Kit from a bare device to a running large language model
 (LLM) that answers prompts on the device GPU, all managed by Palette. You serve the model with
@@ -54,13 +54,14 @@ on the device makes an outbound connection to Palette. Appliance mode is not ava
 
 - A Palette tenant and a project that you can register hosts into, with the **Project Admin** role in that project or a
   custom role with the same permissions to register Edge hosts, create cluster profiles, and deploy clusters. Refer to
-  [Project Scope Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md).
+  [Project Roles](../../../user-management/palette-rbac/project-scope-roles-permissions.md).
 
 - A Palette Edge host
   [registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
 
 - Outbound HTTPS connectivity from the Jetson to `console.spectrocloud.com` and the Palette pack and image registries.
-  Because agent mode is outbound only, a device behind NAT works without inbound firewall rules.
+  Because agent mode is outbound only, a device behind Network Address Translation (NAT) works without inbound firewall
+  rules.
 
 ## Flash JetPack and Install the Operating System
 
@@ -79,8 +80,9 @@ authoritative procedure, refer to NVIDIA's
 
 4. At the pre-boot prompt, press **ENTER** or wait for the timeout to boot the installer.
 
-   If the device does not boot from USB, press **ESC** at the NVIDIA logo to enter the UEFI setup. Open **Boot
-   Manager**, move the USB drive to the top of the boot order, and then select **Save & Exit**.
+   If the device does not boot from USB, press **ESC** at the NVIDIA logo to enter the Unified Extensible Firmware
+   Interface (UEFI) setup. Open **Boot Manager**, move the USB drive to the top of the boot order, and then select
+   **Save & Exit**.
 
 5. _(Optional)_ If the device prompts you to update the firmware capsule, confirm the update and wait for it to finish.
 
@@ -154,7 +156,8 @@ including optional settings for a Jetson device, refer to
              passwd: "<strong-password>"
    ```
 
-   Replace `<your-registration-token>` with your registration token and `<strong-password>` with a strong password.
+   Replace `<your-registration-token>` with your registration token, `Default` with the Palette project to register the
+   host in, and `<strong-password>` with a strong password.
 
    Note the following about this file:
 
@@ -192,9 +195,10 @@ including optional settings for a Jetson device, refer to
    sudo --preserve-env ./palette-agent-install.sh
    ```
 
-   The installer downloads the agent, configures the systemd service, and starts registration. You can ignore messages
-   about skipping a metadata or user-data source, such as `Pull userdata: no metadata/userdata found`. When the
-   installer reports `palette edge installation completed successfully`, the host reboots.
+   The installer downloads the agent, configures the systemd service, and starts registration. You can ignore the
+   `skipping /system/oem/80_stylus_agent_mode.yaml because it has no valid header` and
+   `Pull userdata: no metadata/userdata found` messages. When the installer reports
+   `palette edge installation completed successfully`, the host reboots.
 
 5. After the host reboots, log in to [Palette](https://console.spectrocloud.com). From the left main menu, select
    **Clusters**, and then select the **Edge Hosts** tab.
@@ -222,16 +226,16 @@ Jetson. Use a **Full** profile so that you can add add-on layers later, such as 
 4. Add the following core layers. For each layer, select a pack version that supports ARM64. This tutorial does not need
    a storage layer.
 
-   | Layer      | Pack                                   | Configuration                                                                                                                                                                              |
-   | ---------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | OS         | **BYOOS (Edge)** (`edge-native-byoi`)  | In the pack **Values**, expand **Presets** and select **Agent Mode**. This sets `options.system.uri` to `NA`, because agent mode manages the operating system that is already on the host. |
-   | Kubernetes | **Palette Optimized K3s** (`edge-k3s`) | **Palette Optimized Canonical** (`edge-canonical`) has no ARM64 build, so use K3s on a Jetson.                                                                                             |
-   | Network    | **Flannel** (`cni-flannel`)            | Flannel is the verified Container Network Interface (CNI) for K3s.                                                                                                                         |
+   | Layer      | Pack                                   | Configuration                                                                                                                                                                                     |
+   | ---------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | OS         | **BYOOS (Edge)** (`edge-native-byoi`)  | In the pack **Values**, expand **Presets** and select **Agent Mode**. This sets `options.system.uri` to `NA`, because agent mode uses the operating system that is already installed on the host. |
+   | Kubernetes | **Palette Optimized K3s** (`edge-k3s`) | **Palette Optimized Canonical** (`edge-canonical`) has no ARM64 build, so use K3s on a Jetson.                                                                                                    |
+   | Network    | **Flannel** (`cni-flannel`)            | Flannel is the verified Container Network Interface (CNI) for K3s.                                                                                                                                |
 
 5. Complete the profile and save it.
 
 For the full profile-creation flow, refer to
-[Create an Edge Native Cluster Profile](../../../clusters/edge/site-deployment/model-profile.md).
+[Model Edge Native Cluster Profile](../../../clusters/edge/site-deployment/model-profile.md).
 
 ## Deploy the Cluster
 
@@ -507,9 +511,9 @@ Remove the resources that you created in this tutorial.
 
 In this tutorial, you flashed an NVIDIA Jetson AGX Thor, registered it with Palette in agent mode, deployed a
 single-node Edge Native cluster, and served a local AI model that runs on the device GPU. Because Palette manages the
-device with a cluster profile, you can version the operating system and Kubernetes layers and roll changes out to the
-device the same way you manage clusters elsewhere.
+cluster with a cluster profile, you can version the Kubernetes and network layers and roll changes out to the device the
+same way you manage clusters elsewhere.
 
 To learn more about running Edge AI workloads on Jetson devices, refer to the
-[Jetson Edge AI](../../../ai-workloads/edge-ai/edge-ai.md) guide, which covers the host requirements, host preparation,
-and ongoing operations in more detail.
+[Edge AI on NVIDIA Jetson](../../../ai-workloads/edge-ai/edge-ai.md) guide, which covers the host requirements, host
+preparation, and ongoing operations in more detail.

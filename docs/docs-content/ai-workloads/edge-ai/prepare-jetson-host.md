@@ -2,13 +2,14 @@
 sidebar_label: "Prepare the Jetson Host"
 title: "Prepare the Jetson Host"
 description:
-  "Install the software prerequisites and prepare an NVIDIA Jetson device so it can register with Palette in agent mode."
+  "Install the software prerequisites and prepare an NVIDIA Jetson device so that it can register with Palette in agent
+  mode."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "host preparation"]
 ---
 
-This page describes how to prepare an NVIDIA Jetson device so it can register with Palette as an Edge host in
+This page describes how to prepare an NVIDIA Jetson device so that it can register with Palette as an Edge host in
 [agent mode](../../deployment-modes/agent-mode/agent-mode.md).
 
 ## Prerequisites
@@ -17,7 +18,7 @@ This page describes how to prepare an NVIDIA Jetson device so it can register wi
   NVIDIA Jetson AGX Thor Developer Kit.
 
 - Console access to the device, such as a monitor and keyboard. You use the console to complete the operating system
-  setup, and to reconnect if a network change drops your SSH session.
+  setup and to reconnect if a network change drops your SSH session.
 
 - A USB drive for the JetPack installer image.
 
@@ -29,8 +30,8 @@ only for Red Hat Enterprise Linux and Rocky Linux 8. On a JetPack (Ubuntu) host,
 
 1. Install JetPack by following the
    [NVIDIA Jetson AGX Thor Developer Kit Quick Start Guide](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html).
-   Download the installer image from the JetPack page, write it to a USB drive, and then select **Install on NVMe** to
-   install the operating system on the NVMe SSD.
+   Download the installer image from the [JetPack download page](https://developer.nvidia.com/embedded/jetpack), write
+   it to a USB drive, and then select **Install on NVMe** to install the operating system on the NVMe SSD.
 
 2. Complete the operating system setup. During setup, the installer prompts you to enable
    [Ubuntu Pro](https://ubuntu.com/pro). Palette does not require Ubuntu Pro. On a Jetson device, only the `esm-infra`
@@ -38,7 +39,7 @@ only for Red Hat Enterprise Linux and Rocky Linux 8. On a JetPack (Ubuntu) host,
    services try to replace the Jetson Linux (L4T) kernel.
 
 3. Install the following packages, which the Palette agent requires. This list matches the prerequisites in
-   [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md#prerequisites).
+   [Install Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#prerequisites).
 
    - [bash](https://www.gnu.org/software/bash/), configured as the default shell
    - [jq](https://jqlang.github.io/jq/download/)
@@ -72,10 +73,9 @@ only for Red Hat Enterprise Linux and Rocky Linux 8. On a JetPack (Ubuntu) host,
    sudo systemctl enable --now rsyslog
    ```
 
-   JetPack already runs `systemd-networkd`, so you do not need to enable it. Configure `systemd-networkd` only if you
-   set up an overlay network, as described in the next step.
+   JetPack already runs `systemd-networkd`, so you do not need to enable it.
 
-5. If you plan to use overlay networks, or you want Palette to manage DNS or static IP addresses, configure
+5. _(Optional)_ If you plan to use overlay networks, or you want Palette to manage DNS or static IP addresses, configure
    `systemd-resolved` and `systemd-networkd`. Refer to
    [Configure networkd to Prepare Host for Overlay Network](../../deployment-modes/agent-mode/overlay-preparation.md).
 
@@ -119,12 +119,6 @@ version.
    On the base operating system, the package is not installed. Compare the L4T release with the
    [validated versions](./jetson-requirements.md#host-operating-system), or look up the matching JetPack version in the
    [JetPack Archive](https://developer.nvidia.com/embedded/jetpack-archive).
-
-<!-- Validation notes (DOC-3089), Jetson AGX Thor, 2026-09-14 and 2026-09-18.
-Ubuntu Pro (`pro status --all`, kernel 6.8.12-1021-tegra): esm-infra and esm-apps enabled; livepatch and fips report n/a; fips-updates and realtime-kernel report "disabled (entitled)" and must not be enabled because they would try to swap the L4T kernel. Validated with the free personal Pro tier; an org token has the same service availability.
-Versions: /etc/nv_tegra_release = R39 REVISION 2.1 (L4T r39.2.1); lsb_release = Ubuntu 24.04 LTS (noble). The nvidia-jetpack meta-package is not installed on the base image, so /etc/nv_tegra_release is the authoritative check. JetPack 7.2.1 corresponds to L4T r39.2.1 per NVIDIA's mapping.
-Packages: all install on JetPack (Ubuntu ARM64). bash, jq, zstd, rsync, iptables, and rsyslog were already current; conntrack installed new; the systemd stack upgraded. pam-auth-update prints cosmetic, non-fatal Perl "uninitialized value" warnings during libpam-systemd setup.
-Networking: systemd-networkd is already active on JetPack, but every interface is unmanaged; NetworkManager owns the NIC. A bare `systemctl enable --now systemd-networkd` does not drop SSH. The drop happens only when networkd is configured to manage the interface the SSH session uses. -->
 
 ## Next Steps
 

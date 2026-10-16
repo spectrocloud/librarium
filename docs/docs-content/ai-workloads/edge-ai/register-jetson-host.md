@@ -13,22 +13,18 @@ This page describes Day 1 of running Edge AI workloads on an NVIDIA Jetson devic
 [Prepare the Jetson Host](./prepare-jetson-host.md). First, you register the device with Palette as an Edge host in
 [agent mode](../../deployment-modes/agent-mode/agent-mode.md). Next, you build an Edge Native cluster profile with the
 operating system, Kubernetes distribution, and network layers, and deploy the profile to the device. Finally, you deploy
-a model server to the cluster and confirm the model responds.
-
-:::info
-
-Appliance mode is not available on ARM64 devices. Refer to [Jetson Requirements](./jetson-requirements.md) for the full
-requirements.
-
-:::
+a model server to the cluster and confirm that the model responds.
 
 ## Prerequisites
 
 - A Jetson device prepared as described in [Prepare the Jetson Host](./prepare-jetson-host.md), with the software
   prerequisites installed.
+
 - A Palette tenant
   [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
+
 - Permissions to create cluster profiles and deploy clusters in your Palette project.
+
 - `kubectl` installed on a workstation with network access to the Jetson device.
 
 ## Create the User-Data File
@@ -61,30 +57,35 @@ stages:
           passwd: "<strong-password>"
 ```
 
-Replace `<your-registration-token>` with your Palette registration token and `<strong-password>` with a password for the
-local administrator account. If you use a self-hosted Palette instance, replace the `paletteEndpoint` value with your
-Palette endpoint.
+Replace `<your-registration-token>` with your Palette registration token, `Default` with the Palette project to register
+the host in, and `<strong-password>` with a password for the local administrator account. If you use a self-hosted
+Palette instance, replace the `paletteEndpoint` value with your Palette endpoint.
 
-This set registers the host and creates a local administrator account. Note the following:
+This configuration registers the host and creates a local administrator account. Note the following:
 
 - `install.reboot` set to `true` reboots the host after the agent installs. Registration completes on that reboot. If
   you omit it, reboot the host manually after the installer finishes.
+
 - `projectName` must be an existing Palette project that the registration token can access. If you specify a project
   that does not exist, the host does not register and does not appear in Palette. To use the project associated with the
   registration token instead, omit `projectName`.
+
 - The `stages.initramfs.users` block creates a local administrator account named `kairos` in the `sudo` group. If the
   host loses its connection to Palette, use this account to sign in over SSH, at the host terminal, or through
   [Local UI](../../clusters/edge/local-ui/local-ui.md). You can change the username.
+
 - The `#cloud-config` header on the first line is required. Without it, cloud-init skips the block.
+
 - You do not need the disk-partitioning fields under `install:` that appliance-mode installer images use, because the
   agent runs on the existing host operating system.
 
 Two optional settings are useful on a Jetson device:
 
-- `stylus.path` - Redirect the agent's persistent data to an NVMe drive or SSD instead of the default root filesystem.
-  This avoids exhausting the on-board eMMC storage. Custom `stylus.path` values can cause deployment issues in some
-  configurations, so review the warning in
+- `stylus.path` - If the host's root filesystem is on the on-board eMMC storage, redirect the agent's persistent data to
+  an NVMe drive or SSD so that it does not fill the eMMC. Custom `stylus.path` values can cause deployment issues in
+  some configurations, so review the warning in
   [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) first.
+
 - `stylus.site.caCerts` - Required only if your Palette endpoint presents a certificate signed by a private certificate
   authority (CA).
 
@@ -110,7 +111,7 @@ registration.
    ```
 
    For a self-hosted Palette instance, use the **Self-Hosted** command in
-   [Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md#enablement).
+   [Install Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#enablement).
 
 3. Grant execute permission to the script.
 
@@ -125,13 +126,13 @@ registration.
    ```
 
 5. Watch the installer output. The installation is complete when the output shows
-   `palette edge installation completed successfully`. You can ignore messages about
-   `/system/oem/80_stylus_agent_mode.yaml`, such as `because it has no valid header` or `no metadata/userdata found`.
+   `palette edge installation completed successfully`. You can ignore the
+   `skipping /system/oem/80_stylus_agent_mode.yaml because it has no valid header` and
+   `Pull userdata: no metadata/userdata found` messages.
 
 After the host registers, Palette reconciles the agent to the version that matches your Palette instance, so you do not
-need to pin an agent version. Refer to
-[Install Agent on a Host](../../deployment-modes/agent-mode/install-agent-host.md) for the full agent-mode install
-reference, including the SaaS and self-hosted download commands.
+need to pin an agent version. Refer to [Install Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md)
+for the full agent-mode install reference, including the SaaS and self-hosted download commands.
 
 ## Verify the Host Registers
 
@@ -143,7 +144,7 @@ inventory.
 2. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab.
 
 3. Switch to the project you set in `projectName`, or the project associated with your registration token. The Jetson
-   appears as a new Edge host. Use the **Architecture** filter to confirm it is an ARM64 host.
+   appears as a new Edge host. Use the **Architecture** filter to confirm that it is an ARM64 host.
 
 After the host connects to Palette, the **Status** column shows **Ready** and the **Health** column shows **Healthy**.
 The **GPU** column lists the device GPU with `0.00 GB` of memory. This value is expected, because the Jetson GPU shares
@@ -176,7 +177,7 @@ Jetson device. Use a **Full** profile so that you can add add-on layers later, s
 
 You do not add a layer to enable the GPU. Refer to [Enable GPU Access for Workloads](#enable-gpu-access-for-workloads)
 for how a workload reaches the device GPU. For the full profile-creation flow, refer to
-[Create an Edge Native Cluster Profile](../../clusters/edge/site-deployment/model-profile.md).
+[Model Edge Native Cluster Profile](../../clusters/edge/site-deployment/model-profile.md).
 
 ## Deploy the Cluster
 
@@ -200,8 +201,8 @@ When the deployment finishes, the cluster status is **Running** and its health i
 
 ## Enable GPU Access for Workloads
 
-Run the `kubectl` commands on this page from a workstation that can reach the cluster. Download the cluster kubeconfig
-file from the cluster **Overview** page, and then export its path. Refer to
+Run the `kubectl` commands on this page from a workstation that can reach the cluster, in the same terminal session.
+Download the cluster kubeconfig file from the cluster **Overview** page, and then export its path. Refer to
 [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) for details.
 
 ```shell
@@ -224,6 +225,7 @@ support embedded devices such as the Jetson.
 A workload reaches the GPU when its pod specification does both of the following:
 
 - Sets `runtimeClassName` to `nvidia`.
+
 - Requests the GPU with the `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` environment variables.
 
 Use a test pod to confirm that a workload reaches the GPU.
@@ -288,6 +290,12 @@ Use a test pod to confirm that a workload reaches the GPU.
    |=========================================================================================|
    |  No running processes found                                                             |
    +-----------------------------------------------------------------------------------------+
+   ```
+
+5. Delete the test pod.
+
+   ```shell
+   kubectl delete --filename gpu-check.yaml
    ```
 
 When the runtime injects the GPU, the container has the `/dev/nvidia*` devices, and `nvidia-smi` reports the device even
