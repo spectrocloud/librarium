@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 15, 2026 - Release 4.9.64
+## October 16, 2026 - Release 4.9.64
 
 <!-- PATCH RELEASE TICKET: DOC-3301 -->
 <!-- PATCH RELEASE VERSION: 4.9.64 -->
