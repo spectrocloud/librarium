@@ -30,18 +30,23 @@ tags: ["release-notes"]
     with the error `Parameter 'hostAuthToken' should not be empty`. Include a
     [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
     with the Edge host's project in the request.
+
   - System-scope roles no longer grant Edge host permissions. Use a project-scope role that includes the required
     `edgeHost` permissions instead.
+
   - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
     `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
     The Tenant Admin role alone no longer grants this access outside the Edge host's project context.
+
   - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
     as well as the existing cluster permission.
+
   - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. Remote
     Shell sessions that you open in Palette are not affected.
 
-  Edge hosts that register with a valid registration token, and users with the Project Admin, Project Editor, or Tenant
-  Admin role who work in the Edge host's project, are not affected. For more information, refer to
+  Edge hosts that register with a valid registration token are not affected. Apart from the masked `sshKey` value, users
+  with the Project Admin, Project Editor, or Tenant Admin role who work in the Edge host's project are also not
+  affected. For more information, refer to
   [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12195 -->
