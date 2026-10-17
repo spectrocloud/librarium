@@ -51,11 +51,11 @@ namespace is only visible from that specific namespace.
 
 3. Configure the common fields.
 
-   | **Field**        | **Description**                                                                                   |
-   | ---------------- | ------------------------------------------------------------------------------------------------- |
-   | **Name**         | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens. |
-   | **Namespace**    | The namespace in which the appliance creates the NAD.                                             |
-   | **Network Type** | Linux Bridge, `macvlan`, `ipvlan`, SR-IOV, or Custom JSON.                                        |
+   | **Field**        | **Description**                                                                                                                                                                             |
+   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**         | The NAD name. The name must follow Kubernetes naming rules: lowercase, alphanumeric, and hyphens. If you enter a VLAN ID in **Access** mode, VMO adds the ID to this name. Refer to step 5. |
+   | **Namespace**    | The namespace in which the appliance creates the NAD.                                                                                                                                       |
+   | **Network Type** | Linux Bridge, `macvlan`, `ipvlan`, SR-IOV, or Custom JSON.                                                                                                                                  |
 
 4. Configure the fields for the selected **Network Type**.
 
@@ -63,41 +63,41 @@ namespace is only visible from that specific namespace.
 
    <TabItem value="linux-bridge" label="Linux Bridge">
 
-   | **Field**                           | **Description**                                                                                                                                          |
-   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Bridge Name**                     | The Linux bridge on the host. The bridge must already exist on the nodes.                                                                                |
-   | **VLAN Mode**                       | **Access** for a single untagged VLAN. **Trunk** carries many tagged VLANs and creates one NAD per VLAN ID you enter.                                    |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                             |
+   | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Bridge Name**                     | The Linux bridge on the host. The bridge must already exist on the nodes.                                                                                                                                                                                                                                   |
+   | **VLAN Mode**                       | **Access** carries one untagged VLAN. If you enter more than one VLAN ID, VMO creates one NAD per VLAN ID. Refer to [Create NADs for Multiple VLANs](#create-nads-for-multiple-vlans). **Trunk** creates one NAD that carries all the tagged VLANs you enter, and the VM manages the 802.1Q sub-interfaces. |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). In **Trunk** mode, this field is named **Tagged VLANs**.                                                                                                                        |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing.                                                                                                                                                    |
 
    </TabItem>
 
    <TabItem value="macvlan" label="macvlan">
 
-   | **Field**                           | **Description**                                                                                                                                          |
-   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **Field**                           | **Description**                                                                                                                                                           |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Master Interface**                | The host network interface to attach to.                                                                                                                                  |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). More than one ID creates one NAD per VLAN ID. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing.                  |
 
    </TabItem>
 
    <TabItem value="ipvlan" label="ipvlan">
 
-   | **Field**                           | **Description**                                                                                                                                          |
-   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Master Interface**                | The host network interface to attach to.                                                                                                                 |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **Field**                           | **Description**                                                                                                                                                           |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Master Interface**                | The host network interface to attach to.                                                                                                                                  |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). More than one ID creates one NAD per VLAN ID. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing.                  |
 
    </TabItem>
 
    <TabItem value="sr-iov" label="SR-IOV">
 
-   | **Field**                           | **Description**                                                                                                                                          |
-   | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`).                              |
-   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing. |
+   | **Field**                           | **Description**                                                                                                                                                           |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). More than one ID creates one NAD per VLAN ID. |
+   | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing.                  |
 
    :::info
 
@@ -129,21 +129,42 @@ namespace is only visible from that specific namespace.
    For all network types except Custom JSON, the **Generated Config (preview)** panel updates as you edit the fields so
    you can review the resulting NAD configuration before you create it.
 
-### Bulk Create VLANs
+5. (Optional) If you entered a VLAN ID in **Access** mode, select a **Naming Format**. VMO adds the VLAN ID to the NAD
+   name in the format you select. Each option shows an example built from your name and the first VLAN ID.
 
-For environments that need many VLANs, VMO supports bulk creation.
+   | **Naming Format**         | **Example for Name `prod` and VLAN ID `100`** |
+   | ------------------------- | --------------------------------------------- |
+   | `<name>-<id>` _(Default)_ | `prod-100`                                    |
+   | `vlan-<id>-<name>`        | `vlan-100-prod`                               |
 
-1. On the **Networks** page, select **Bulk Create**.
+6. Select **Create**. If you entered more than one VLAN ID in **Access** mode, the button is **Preview N NADs**, where N
+   is the number of VLAN IDs. Continue with [Create NADs for Multiple VLANs](#create-nads-for-multiple-vlans).
 
-2. Specify the base NAD name, namespace, and bridge or host interface.
+### Create NADs for Multiple VLANs
 
-3. Enter a VLAN range, for example, `100-110`.
+In **Access** mode, each NAD carries one VLAN. To create a NAD for each of several VLANs at once, enter more than one
+VLAN ID when you create a network. VMO names each NAD with the **Naming Format** you select.
 
-4. VMO creates one NAD per VLAN ID, named `{base}-vlan{id}`.
+1. Complete steps 1 - 5 of [Create a NAD](#create-a-nad). In step 4, enter more than one ID in **VLAN ID**, for example,
+   `100-110` or `100,200,300`. For **Linux Bridge**, set **VLAN Mode** to **Access** first. The field displays how many
+   VLANs VMO creates.
+
+2. Select **Preview N NADs**, where N is the number of VLAN IDs. The **Bulk Create NADs** dialog lists the name, VLAN,
+   type, and bridge or host interface of each NAD.
+
+3. Review the list, and select **Create N NADs**. To change the form first, select **Back**.
+
+   VMO creates the NADs one at a time and displays the status of each NAD and the number created.
+
+4. (Optional) If some NADs fail, the dialog lists each failure with its error. To delete the NADs that this batch
+   already created, select **Clean Up N Created**. This option requires the `vmo:network:delete` permission.
+
+5. Select **Done**.
 
 :::tip
 
-Bulk VLAN creation is useful for environments with pre-configured trunk ports where each VLAN needs its own NAD.
+Use **Access** mode with several VLAN IDs when each VLAN needs its own NAD, for example, to connect VMs on the same
+bridge to different VLANs. Use **Trunk** mode when one VM interface needs several tagged VLANs.
 
 :::
 
