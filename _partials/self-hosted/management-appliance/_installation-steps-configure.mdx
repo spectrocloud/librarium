@@ -1,0 +1,54 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-configure
+---
+
+1. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the Edge host.
+
+    | **Field**                | **Description**                            |
+    |--------------------------|--------------------------------------------|
+    | **Username**             | Provide a username to use for the account. |
+    | **Password**             | Enter a password for the account.          |
+    | **Confirm Password**     | Re-enter the password for confirmation.    |
+
+    Press **ENTER** to continue.
+
+2. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
+    Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
+    to apply the change. Use **ESC** to go back.
+
+3. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
+
+4. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
+    automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
+    block of an adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an
+    individual adapter.
+
+    There are a few options you can configure for each network adapter.
+
+    - You can change the IP addressing scheme of the adapter and choose static IP instead of DHCP. In Static IP mode,
+      you need to provide a static IP address, subnet mask, and the address of the default gateway. Specifying
+      a static IP removes the existing DHCP settings.
+
+    - If desired, specify the VLAN ID. A VLAN ID enables you to logically segment network traffic on the same physical
+      network interface, providing network isolation and enhanced traffic management. If you assign a VLAN ID, the
+      Edge host tags all outgoing packets from that adapter with the specified VLAN identifier.
+
+    - You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size,
+      in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
+
+5. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally
+    specify a search domain.
+
+6. After you are satisfied with the configurations, navigate to **Quit** and press **ENTER** to finish the
+    configuration. Press **ENTER** again on the confirmation prompt.
+
+    After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through Local UI.
+
+    :::tip
+
+    If you need to access the Palette TUI again, issue the `palette-tui` command in the terminal.
+
+    :::
+
+7. Ensure you complete the configuration on each Edge host before proceeding to [Link Edge Hosts](#link-edge-hosts).

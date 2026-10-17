@@ -1,0 +1,41 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-link
+---
+
+1. Decide on the Edge host that you plan to use as the leader of the group. Refer to <VersionedLink text="Link Hosts" url="/clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts"/> for more information about leader Edge hosts.
+
+2. Access the Local UI of the leader Edge host. Local UI is used to manage the {props.version} Edge hosts and perform administrative
+    tasks. It provides a web-based interface for managing the {props.version} management cluster.
+
+    In your web browser, go to `https://<edge-host-ip>:5080`. Replace `<edge-host-ip>` with the IP address of your Edge host. If you
+    have changed the default port of the console, replace `5080` with the Local UI port. The address of the Local UI console
+    is also displayed on the terminal screen of the Edge host.
+
+    If you are accessing Local UI for the first time, a security warning may be displayed in your web browser. This
+    is because Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to Local
+    UI.
+
+3. Log in to Local UI using the credentials you provided in [Configure Edge Hosts](#configure-edge-hosts).
+
+4. (Optional) If you need to configure a HTTP proxy server for the Edge host, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
+
+5. From the left main menu, click **Linked Edge Hosts**.
+
+6. Click **Generate token**. The leader Edge host begins generating tokens that you will use to link it with other
+    Edge hosts. The Base64 encoded token contains the IP address of the leader Edge host, as well as an OTP that will expire in two
+    minutes. Once a token expires, the leader generates another token automatically.
+
+7. Click the **Copy** button to copy the token.
+
+8. Log in to Local UI on the Edge host that you want to link to the leader Edge host.
+
+9. From the left main menu, click **Linked Edge Hosts**.
+
+10. Click **Link this device to another**.
+
+11. In the pop-up box that appears, enter the token you copied from the leader Edge host.
+
+12. Click **Confirm**.
+
+13. Repeat steps 8-12 for every Edge host you want to link to the leader Edge host.
