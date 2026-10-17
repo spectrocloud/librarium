@@ -10,6 +10,73 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
+
+On Palette versions earlier than 4.10.25, a reset removes `kube-vip.tar`, the kube-vip image archive, from
+[agent mode](../../deployment-modes/agent-mode/agent-mode.md) Edge hosts. A reset occurs, for example, when you delete a
+cluster, remove a host from its node pool, or reset the host. When you add a reset host to a new cluster, the Palette
+agent cannot import the kube-vip image, so kube-vip does not start and the control plane virtual IP (VIP) address of the
+cluster is not claimed. The remaining hosts cannot join the cluster, and cluster provisioning does not complete. Palette
+does not report an error, but the Palette agent logs the warning `failed to link kube-vip image tar after retries`.
+
+Hosts that you have not reset, and hosts that you reset on version 4.10.25 or later, are not affected.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+2. Check whether the kube-vip image archive is present.
+
+   ```shell
+   sudo ls --format=long --dereference /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+   If the output lists the file, this host is not affected, and you can continue with the next Edge host in the cluster.
+   If the output contains `No such file or directory`, continue to the next step.
+
+3. Find the version directory of the active Palette agent.
+
+   ```shell
+   sudo readlink /opt/spectrocloud/bin/stylus-agent
+   ```
+
+   The version directory is the path segment that follows `/opt/spectrocloud/updates/`, such as `4.10.4` in the
+   following example output.
+
+   ```shell hideClipboard title="Example Output"
+   /opt/spectrocloud/updates/4.10.4/opt/spectrocloud/bin/stylus-agent
+   ```
+
+   If the command does not return any output, the Palette agent on this host has not been upgraded since you installed
+   it, and the reset removed the only copy of the archive. In this case, contact Spectro Cloud support at
+   [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+4. Copy the kube-vip image archive from the version directory. Deleting the existing link without copying the archive
+   does not resolve the issue, because the Palette agent re-creates the same link when it restarts.
+
+   ```shell
+   sudo cp --force /opt/spectrocloud/updates/<version>/usr/local/spectrocloud/content/images/kube-vip.tar /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+   Replace `<version>` with the version directory from step 3.
+
+5. Restart the Palette agent service.
+
+   ```shell
+   sudo systemctl restart spectro-stylus-agent.service
+   ```
+
+6. Confirm that the kube-vip image archive is present. The output lists the file.
+
+   ```shell
+   sudo ls --format=long --dereference /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+7. Repeat steps 1 - 6 on each Edge host in the cluster.
+
+The copied archive persists after a Palette agent upgrade, but not after another reset. If you reset the host again on a
+version earlier than 4.10.25, repeat these steps.
+
 ## Scenario - Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions
 
 After you move a PXK-E Edge cluster to
