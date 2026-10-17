@@ -4,7 +4,7 @@ title: "Clients and Quotas"
 description:
   "An explanation of clients, API tokens, and quotas in PaletteAI Inference Launchpad: what a client is, why the
   appliance serves many clients such as AI coding assistants, and how it meters usage, reports utilization, and limits
-  consumption."
+  consumption. It also covers how workspaces, roles, and grants decide who administers which clients."
 hide_table_of_contents: false
 sidebar_position: 2
 tags: ["paletteai-inference-launchpad", "explanation", "clients", "quotas"]
@@ -20,6 +20,9 @@ keywords:
     "claude code",
     "usage",
     "utilization",
+    "workspace",
+    "role",
+    "grant",
   ]
 ---
 
@@ -166,6 +169,70 @@ Sovereignty is a separate switch that overrides every client's egress. When it i
 leaves the box regardless of any client's permission, and a client's egress chip reads **Blocked by sovereignty** until
 an operator disarms it under **Access & Policy → Sovereignty**.
 
+## Workspaces and Access {#workspaces-and-access}
+
+Clients answer the question of who sends a request. Workspaces, roles, and grants answer a different question. They
+decide which people may administer which clients. This section explains how the appliance divides itself between teams
+and how it decides what a person signed in to the console may do.
+
+### Workspaces
+
+A workspace is the boundary between the appliance and a team. Each workspace holds its own clients and follows one
+policy. The members of a workspace work with the clients in that workspace.
+
+Every appliance ships with one workspace, **Default**, which cannot be removed. You create a workspace for each team
+that needs its own clients and its own policy.
+
+<!-- vale off -->
+
+The workspace picker in the console header sets which workspace the console shows. **All workspaces** shows the whole
+appliance, so the **Access & Policy** tabs that answer for the whole appliance appear only there. Inside one workspace,
+the page offers that workspace's clients alone.
+
+<!-- vale on -->
+
+### Policies
+
+A policy sets what clients may spend and what they may reach, including their limits and whether they may use external
+inferencing. A policy belongs to a workspace, not to a person or a group, so every client in a workspace inherits one
+policy.
+
+Because the policy attaches to the workspace, a person who belongs to several groups never has two policies competing
+for the same client. The appliance needs no rule to pick the higher or the lower of two limits.
+
+There is no policy override per person. Where one client needs a different value from the rest of its workspace, you
+override it on that client.
+
+### Roles and Grants
+
+A role is a named set of permissions, and it carries no scope of its own. The appliance ships its roles, and the console
+lists them read only. You assign roles. You do not author them. The **Roles** tab lists three roles, each with its
+scope. A **Platform administrator** reaches the entire appliance. A **Workspace administrator** reaches its workspaces.
+An **Operator** reaches its own clients.
+
+A grant gives a role its reach. It binds one role to one subject (a person or a group) over one or more named
+workspaces. Authority therefore comes from the grant, not from the person. The same person can hold **Workspace
+administrator** in one workspace and a narrower role in another, because those are two separate grants.
+
+On the console, a grant appears as a workspace member. A member is a person or a group holding one role in one
+workspace, and the membership lives on the workspace itself. **Platform administrator** reaches the entire appliance, so
+it is not handed out per workspace.
+
+### The Directory and Authority
+
+The people and groups on the **Users** and **Groups** tabs come from the identity provider. The appliance reads its
+directory from the identity provider and writes authority on the workspace. These are two separate jobs.
+
+A person gains access to a workspace when they, or a group they are in, become a member of that workspace.
+
+The appliance also keeps a few groups of its own for sign-in and platform access. The console does not list them, and
+they cannot be renamed, given a new description, or deleted from the console.
+
+For the steps, refer to [Create a Workspace](../how-to-guides/create-a-workspace.md),
+[Manage Workspace Members](../how-to-guides/manage-workspace-members.md),
+[Manage Users](../how-to-guides/manage-users.md), and [Manage Groups](../how-to-guides/manage-groups.md). For every
+role, scope, and column, refer to [Access and Policy Reference](../reference/access-and-policy-reference.md).
+
 ## How It Fits Together
 
 A single request from a coding assistant ties these ideas together.
@@ -181,6 +248,9 @@ quotas, so it is ready to run on every request.
 
 ## Resources
 
+- [Create a Workspace](../how-to-guides/create-a-workspace.md) walks through giving a team its own workspace.
+- [Manage Workspace Members](../how-to-guides/manage-workspace-members.md) walks through changing who may act in a
+  workspace.
 - [Create a Client](../how-to-guides/create-a-client.md) walks through creating a client and issuing its first API
   token.
 - [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md) walks through setting limits, turning
