@@ -1,0 +1,39 @@
+---
+partial_category: self-hosted
+partial_name: export-metrics-manage
+---
+
+## Pause Export
+
+To pause export, disable the **Export** toggle on the **Metrics** tab. Your Splunk settings are retained, so when you
+enable the toggle again, export resumes immediately without re-entering the connection details.
+
+## Exported Metrics
+
+Self-hosted {props.version} collects platform metrics through OpenTelemetry receivers and exports them to your Splunk
+destination. The exported set comes from the following receivers. Refer to each receiver's upstream documentation for
+the complete list of metrics it produces.
+
+- [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md):
+  host-level CPU, memory, disk, filesystem, and network metrics.
+
+- [Kubelet Stats receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/README.md):
+  node, pod, and container resource metrics reported by the kubelet.
+
+- [Kubernetes Cluster receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/README.md):
+  cluster-level metrics for Kubernetes objects and resources.
+
+- [MongoDB receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/mongodbreceiver/README.md):
+  health and performance metrics for the {props.version} MongoDB database.
+
+## Uninstall the Observability Stack
+
+To remove the observability stack, set `observability.enabled` to `false` and upgrade the environment.
+
+```yaml
+observability:
+  enabled: false
+```
+
+When the observability stack is not installed, the backend APIs that support export return an error, and the **Metrics**
+tab is read-only.

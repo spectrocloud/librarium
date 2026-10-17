@@ -92,4 +92,4 @@
 
 ### Docs and Education
 
-{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}
+<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->

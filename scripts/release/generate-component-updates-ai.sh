@@ -35,6 +35,62 @@ demote_block_headings() {
   ' "$file" > "$tmp" && mv "$tmp" "$file"
 }
 
+# Shift every Markdown ATX heading in a body by the same amount so its shallowest heading sits at
+# the given level, skipping lines inside fenced code blocks. Reads the body on stdin, writes it to
+# stdout. Super is asked for "###" sections, but a refresh also shows it the existing body, which a
+# release run has already demoted to "####", and it can echo either level back. Normalizing to "###"
+# first means demote_block_headings always lands a release-run body at "####", whatever Super
+# returned, instead of leaving it at "###" or demoting it twice. A body without headings is
+# unchanged.
+normalize_heading_levels() {
+  local target="$1"
+  awk -v target="$target" '
+    { line[NR] = $0 }
+    /^(```|~~~)/ { in_fence = !in_fence; next }
+    !in_fence && match($0, /^#+ /) && RLENGTH <= 7 {
+      if (min == 0 || RLENGTH - 1 < min) min = RLENGTH - 1
+    }
+    END {
+      shift = (min == 0) ? 0 : target - min
+      in_fence = 0
+      for (n = 1; n <= NR; n++) {
+        l = line[n]
+        if (l ~ /^(```|~~~)/) { in_fence = !in_fence; print l; continue }
+        if (!in_fence && shift != 0 && match(l, /^#+ /) && RLENGTH <= 7) {
+          level = RLENGTH - 1 + shift
+          if (level < 1) level = 1
+          if (level > 6) level = 6
+          hashes = ""
+          for (h = 0; h < level; h++) hashes = hashes "#"
+          l = hashes substr(l, RLENGTH)
+        }
+        print l
+      }
+    }
+  '
+}
+
+# Print the ticket keys already documented in one release section, one per line. The section runs
+# from the "## " heading carrying the given anchor to the next "## " heading. Keys inside this
+# ticket's own Component Updates body are left out, because a refresh regenerates that body and has
+# to keep sending its tickets to Super. The whole key is matched up to the closing "-->", so PEM-1104
+# never matches PEM-11049.
+release_section_documented_keys() {
+  local file="$1" anchor="$2" ticket="$3"
+  awk -v anchor="$anchor" -v ticket="$ticket" '
+    /^## / { if (in_section) exit; if (index($0, anchor)) in_section = 1; next }
+    !in_section { next }
+    $0 == "<!-- BEGIN COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->" { in_body = 1; next }
+    $0 == "<!-- END COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->" { in_body = 0; next }
+    in_body { next }
+    match($0, /browse\/[A-Z][A-Z0-9]*-[0-9]+ *-->/) {
+      key = substr($0, RSTART + 7, RLENGTH - 7)
+      sub(/ *-->$/, "", key)
+      print key
+    }
+  ' "$file" | sort -u
+}
+
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
     exit 1
@@ -164,6 +220,29 @@ if (( ${#LINKED_ISSUES[@]} == 0 )); then
 fi
 
 echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]}"
+
+# On a release run the block lands inside the release section, which the release-notes-bug-fixes
+# skill and the writers usually fill first. A pack or Palette CLI fix often carries the release
+# fixVersion and a link from this ticket, and Super only sees this ticket's own body, so it would
+# document that fix a second time. Drop every linked issue that the release section already
+# documents outside this ticket's body, and keep the entry that is already there.
+if [[ "$IS_RELEASE_RUN" == true ]]; then
+  RELEASE_ANCHOR="{#release-notes-${RELEASE_VERSION}}"
+  if grep -qF "$RELEASE_ANCHOR" "$RELEASE_NOTES_FILE"; then
+    DOCUMENTED_KEYS=$(release_section_documented_keys "$RELEASE_NOTES_FILE" "$RELEASE_ANCHOR" "$JIRA_TICKET")
+    UNDOCUMENTED_ISSUES=()
+    for issue in "${LINKED_ISSUES[@]}"; do
+      if grep -qxF "$issue" <<< "$DOCUMENTED_KEYS"; then
+        echo "ℹ️ Skipping $issue: the $RELEASE_VERSION release section already documents it."
+      else
+        UNDOCUMENTED_ISSUES+=("$issue")
+      fi
+    done
+    LINKED_ISSUES=(${UNDOCUMENTED_ISSUES[@]+"${UNDOCUMENTED_ISSUES[@]}"})
+  else
+    echo "⚠️ No release section with the anchor $RELEASE_ANCHOR in $RELEASE_NOTES_FILE, so linked issues are not checked against entries the release already has." >&2
+  fi
+fi
 
 # Fetch only Platone tickets to create the packs list in the release notes
 PLATONE_ISSUES=()
@@ -301,6 +380,16 @@ cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
 
 SUPER_QUESTION=""
 
+# On a release run, every linked issue can already be documented elsewhere in the release section
+# (see the check after the linked issues are fetched). There is then nothing for Super to write, but
+# the heading, component table, packs list, and appliance tables still need updating, so skip only
+# the Super call and leave the body empty.
+SUPER_ATTEMPTS=$MAX_RETRIES
+if (( ${#LINKED_ISSUES[@]} == 0 )); then
+  SUPER_ATTEMPTS=0
+  echo "ℹ️ The $RELEASE_VERSION release section already documents every issue linked to $JIRA_TICKET, so Super is not called and the Component Updates body is left empty."
+fi
+
 # Construct the Super API question
 if [[ -z "$COMPONENT_UPDATES_EXISTING_BODY" ]]; then
   echo "ℹ️  No existing component updates body found for $JIRA_TICKET."
@@ -308,14 +397,14 @@ if [[ -z "$COMPONENT_UPDATES_EXISTING_BODY" ]]; then
   SUPER_QUESTION=$(cat <<EOF
 Generate documentation for these tickets:
 
-${LINKED_ISSUES[*]}
+${LINKED_ISSUES[*]:-}
 EOF
 )
 else
   SUPER_QUESTION=$(cat <<EOF
 Generate documentation for these tickets:
 
-${LINKED_ISSUES[*]}
+${LINKED_ISSUES[*]:-}
 
 Existing documentation body for $JIRA_TICKET:
 $COMPONENT_UPDATES_EXISTING_BODY
@@ -327,7 +416,7 @@ SUPER_COMPONENT_UPDATES_BODY=""
 
 SUPER_RESPONSE_FILE="$(mktemp)"
 
-for ((i=1; i<=MAX_RETRIES; i++)); do
+for ((i=1; i<=SUPER_ATTEMPTS; i++)); do
   echo "Attempt Super POST call $i/$MAX_RETRIES..."
 
   HTTP_STATUS=$(
@@ -372,17 +461,19 @@ done
 
 rm -f "$SUPER_RESPONSE_FILE"
 
-if [[ -z "$SUPER_COMPONENT_UPDATES_BODY" ]]; then
+if (( SUPER_ATTEMPTS > 0 )) && [[ -z "$SUPER_COMPONENT_UPDATES_BODY" ]]; then
   echo "❌ Failed to retrieve SUPER_COMPONENT_UPDATES_BODY after $MAX_RETRIES attempts" >&2
   exit 1
 fi
 
 # Strip the inline citation markers Super appends to sentences, which would otherwise be inserted
-# verbatim into the release notes. Unlike the patch release notes body, this one is left otherwise
-# untouched: it carries JSX and prettier-ignore regions that must reach the file exactly as written.
-SUPER_COMPONENT_UPDATES_BODY=$(printf '%s\n' "$SUPER_COMPONENT_UPDATES_BODY" | strip_super_citations)
+# verbatim into the release notes, and normalize the body's headings to "###" so a release run can
+# demote them exactly one level (see normalize_heading_levels). Unlike the patch release notes body,
+# this one is left otherwise untouched: it carries JSX and prettier-ignore regions that must reach
+# the file exactly as written.
+SUPER_COMPONENT_UPDATES_BODY=$(printf '%s\n' "$SUPER_COMPONENT_UPDATES_BODY" | strip_super_citations | normalize_heading_levels 3)
 
-if [[ -z "$SUPER_COMPONENT_UPDATES_BODY" ]]; then
+if (( SUPER_ATTEMPTS > 0 )) && [[ -z "$SUPER_COMPONENT_UPDATES_BODY" ]]; then
   echo "❌ Stripping citations from the Super response left an empty component updates body" >&2
   exit 1
 fi
@@ -391,6 +482,14 @@ fi
 if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   tmp_body_file="$(mktemp)"
   printf '%s' "$SUPER_COMPONENT_UPDATES_BODY" > "$tmp_body_file"
+
+  # A first run on a release demotes the whole rendered block (below), so the body nests under the
+  # block's "###" heading. A refresh only replaces the body, so demote it here to match. Without
+  # this, a refreshed body's "### Bug Fixes" would sit beside the block heading and pull the block's
+  # "#### Packs" under it.
+  if [[ "$IS_RELEASE_RUN" == true ]]; then
+    demote_block_headings "$tmp_body_file"
+  fi
 
   awk -v body_file="$tmp_body_file" -v ticket="$JIRA_TICKET" '
     {
@@ -470,7 +569,10 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
     # scripts/release/templates/release-notes.md) instead of adding a new top-level section after
     # <ReleaseNotesVersions />. The block carries its own "### Packs" (with markers keyed to the
     # component-updates ticket), so the scaffold's markerless "### Packs" was removed to leave a
-    # single packs table. DOC-3195 Phase C.
+    # single packs table. DOC-3195 Phase C. The scaffold wraps the placeholder in an HTML comment,
+    # because Docusaurus reads a bare {{ ... }} as an MDX expression and fails the build of every PR
+    # into the release branch until this run fills it. search_line matches the placeholder inside the
+    # comment, and replace_line swaps the whole line, comment markers included.
     demote_block_headings "$COMPONENT_UPDATES_OUTPUT_FILE"
     placeholder_line=$(search_line "{{ WEEKLY_COMPONENT_RELEASE_UPDATES }}" "$RELEASE_NOTES_FILE")
     if [[ -z "$placeholder_line" || "$placeholder_line" -eq 0 ]]; then

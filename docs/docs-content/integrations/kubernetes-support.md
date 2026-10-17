@@ -18,12 +18,12 @@ example, if the current release is 1.29, we support 1.28, 1.27, and 1.26.
 
 The table below lists the Kubernetes distributions we support and the duration of support.
 
-| Kubernetes Distribution                    | Supported Minor Versions | Support Duration | Notes                                                                                                                                                       |
-| ------------------------------------------ | ------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CNCF Kubernetes                            | N-3                      | 14 months        | The official open source version of [Kubernetes](https://kubernetes.io/).                                                                                   |
-| Palette eXtended Kubernetes (PXK)          | N-3                      | 14 months        | Additional support may be extended. Discuss this with our support team if you need additional support.                                                      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | N-3                      | 14 months        | Additional support may be extended. Discuss this with our support team if you need additional support.                                                      |
-| Other                                      | N-3                      | EOL              | Other distributions available in Palette such as K3s, Microk8s, and RKE2, we only support until their official EOL. The EOL is set by the respective owner. |
+| Kubernetes Distribution                    | Supported Minor Versions | Support Duration | Notes                                                                                                                                            |
+| ------------------------------------------ | ------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CNCF Kubernetes                            | N-3                      | 14 months        | The official open source version of [Kubernetes](https://kubernetes.io/).                                                                        |
+| Palette eXtended Kubernetes (PXK)          | N-3                      | 14 months        | Additional support may be extended. Discuss this with our support team if you need additional support.                                           |
+| Palette eXtended Kubernetes - Edge (PXK-E) | N-3                      | 14 months        | Additional support may be extended. Discuss this with our support team if you need additional support.                                           |
+| Other                                      | N-3                      | EOL              | Other distributions available in Palette such as K3s and RKE2, we only support until their official EOL. The EOL is set by the respective owner. |
 
 :::info
 
@@ -54,8 +54,8 @@ You can contact our support team at [support@spectrocloud.com](mailto:support@sp
 
 ## Other Kubernetes Distributions
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by
-the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more
+We support other Kubernetes distributions such as K3s and RKE2 until their official EOL. The EOL is set by the
+respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more
 about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
 
 ![Diagram of other Kubernetes Support Lifecycle. Other distributions are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.webp)

@@ -49,10 +49,6 @@ each Edge host that you add to a node pool becomes a node in the cluster.
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette" />
 
-- (Secure Boot only) Keep the `LB_HOW` setting of the `piraeus-operator` pack at the default value of `shipped_modules`.
-  The `compile` mode is not compatible with Secure Boot. For more information, refer to
-  [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
-
 ### Install Palette {#install}
 
 Installing Palette consists of the following tasks.
@@ -252,10 +248,10 @@ Follow the instructions to upload the Third Party packs to your Palette instance
 
 ## Architecture of the Appliance ISO
 
-The Appliance ISO is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI),
-and Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance ISO.
-Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create
-cluster profiles.
+The Appliance ISO is built with the OS, Kubernetes distribution, Container Network Interface (CNI), and Container
+Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance ISO. Zot is a
+lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster
+profiles.
 
 The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
@@ -268,21 +264,10 @@ The following table displays the infrastructure profile for the self-hosted Pale
 | **Registry**   | Zot                                           |
 
 Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For how the module is
-loaded, refer to [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
+loaded, refer to [Piraeus CSI](../../integrations/piraeus-csi.mdx#drbd-kernel-module-loading).
 
 Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
 of each component as they may be updated between releases.
-
-### DRBD Kernel Module Loading
-
-<PartialsComponent
-  category="self-hosted"
-  name="drbd-module-loading"
-  edition="Palette"
-  version="Palette"
-  iso="Palette Enterprise"
-  app="Palette Management Appliance"
-/>
 
 ## Next Steps
 

@@ -27,7 +27,7 @@ The VerteX Management Appliance can be used on the following infrastructure plat
 
 ## Limitations
 
-- Only public image registries are supported if you are choosing to use an external registry for your pack bundles.
+- If you are choosing to use an external registry for your pack bundles, only public image registries are supported.
 
 ## Installation Steps
 
@@ -48,10 +48,6 @@ cluster, each Edge host that you add to a node pool becomes a node in the cluste
 />
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette VerteX" />
-
-- (Secure Boot only) Keep the `LB_HOW` setting of the `piraeus-operator` pack at the default value of `shipped_modules`.
-  The `compile` mode is not compatible with Secure Boot. For more information, refer to
-  [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
 
 ### Install Palette VerteX {#install}
 
@@ -252,10 +248,10 @@ Follow the instructions to upload the Third Party packs to your Palette VerteX i
 
 ## Architecture of the Appliance ISO
 
-The Appliance ISO is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI),
-and Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance ISO.
-Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create
-cluster profiles.
+The Appliance ISO is built with the OS, Kubernetes distribution, Container Network Interface (CNI), and Container
+Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance ISO. Zot is a
+lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster
+profiles.
 
 This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal
 Information Processing Standards (FIPS). The following table displays the infrastructure profile for the Palette VerteX
@@ -269,22 +265,12 @@ appliance.
 | **CSI**        | Piraeus                                       | :white_check_mark: |
 | **Registry**   | Zot                                           | :white_check_mark: |
 
-Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For how the module is
-loaded, refer to [DRBD Kernel Module Loading](#drbd-kernel-module-loading).
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For Edge hosts with secure
+boot, the DRBD Compile Mode option must be set to `shipped_modules'. For how the module is loaded, refer to
+[Piraeus CSI](../../integrations/piraeus-csi.mdx#drbd-kernel-module-loading).
 
 Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
 of each component as they may be updated between releases.
-
-### DRBD Kernel Module Loading
-
-<PartialsComponent
-  category="self-hosted"
-  name="drbd-module-loading"
-  edition="VerteX"
-  version="Palette VerteX"
-  iso="Palette VerteX"
-  app="VerteX Management Appliance"
-/>
 
 ## Next Steps
 

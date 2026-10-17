@@ -78,7 +78,15 @@ pack provides remote access to the UI. This is the default selection.
 | `caCert.enabled`                                           | `true`                                                                                                    |
 | `caCert.configMapName`                                     | `platform-ca-cert`                                                                                        |
 | `ingressRoute.enabled`                                     | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
-| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
+| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`. In pack version 4.10.7 and later, this route no longer carries CDI uploads or VM export           |
+
+:::warning
+
+In VMO pack version 4.10.7 and later, expose the CDI upload proxy and KubeVirt export proxy through native Ingress or
+`LoadBalancer` Services instead of the `directAccess` Traefik route. Refer to
+[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance.
+
+:::
 
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
 self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every
@@ -159,13 +167,18 @@ traffic to the service. Verify that the cluster network allows inbound connectio
 
 ### Scenario - TLS Certificate Errors
 
-The **Proxied** and **Direct** modes set `tls.certManager.selfSigned` to `true`, which avoids a dependency on a
-`platform-ca-issuer` that might be missing. If you set `tls.certManager.selfSigned` to `false`, ensure that both the
-`platform-ca-issuer` ClusterIssuer and the `platform-ca-cert` ConfigMap exist in the cluster. Palette provisions these
-when the cluster is created with the platform CA components enabled.
+The **Proxied** and **Direct** modes set `tls.certManager.selfSigned` to `true`, so the pack creates its own self-signed
+ClusterIssuer for the serving certificate. If you set `tls.certManager.selfSigned` to `false`, cert-manager requests the
+certificate from the ClusterIssuer in `tls.certManager.issuerName`, which defaults to `platform-ca-issuer`. The pack
+does not create this ClusterIssuer, so ensure that it exists in the cluster.
+
+If VMO Manager cannot connect to a service whose certificate a private CA signed, such as your OIDC identity provider,
+add that CA to the `platform-ca-cert` ConfigMap. Refer to
+[Trust a Private Certificate Authority](./configure-tls-ca-certificates.md#trust-a-private-certificate-authority).
 
 In **Custom** mode, either configure your own issuer or set `tls.existingSecret` to the name of a Secret that holds your
-certificate.
+certificate. Refer to
+[Configure TLS and CA Certificates](./configure-tls-ca-certificates.md#use-your-own-serving-certificate) for guidance.
 
 ### Scenario - The Spectro Proxy Does Not Connect
 

@@ -101,10 +101,15 @@ Use the following steps to update the PCG reference point mapping to a different
 
 7. Click **Migrate**.
 
-We recommend you remove the cloud account created by the PCG that you migrated. This will prevent any future cluster
-deployments from using the cloud account associated with the migrated PCG. During a cluster deployment, if you
-accidentally select the cloud account mapped to the former PCG, Palette will automatically ensure the newly specified
-PCG is used as the PCG reference point instead of the former PCG that belongs to the cloud account selected.
+Migrating a PCG does not create a new cloud account. Palette creates a cloud account for each PCG when you deploy it, so
+the new PCG already has its own cloud account. The migration reassigns the cloud accounts of the migrated PCG to the new
+PCG, which is then associated with both its own cloud account and the reassigned ones. Clusters deployed with the
+reassigned cloud accounts continue to use them. If you select a reassigned cloud account when you deploy a new cluster,
+Palette uses the new PCG as the PCG reference point.
+
+Removing the reassigned cloud accounts is optional. Palette does not allow you to remove a cloud account while clusters
+still use it, so you can only remove one after you delete all clusters deployed with it. To avoid adding clusters to a
+cloud account that you plan to remove, use the cloud account of the new PCG for new cluster deployments.
 
 ## Validate
 
