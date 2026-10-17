@@ -21,8 +21,8 @@ the hosts. This can lead to inconsistencies, missed updates, or operational risk
 
 This page demonstrates how to perform an OS upgrade by leveraging cluster profiles. You will learn how to create your
 own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then be selected based on
-configured node labels and upgraded in a single rolling pass. To run the upgrade again, change the script or the
-`SpectroSystemTask` spec, for example by updating `spec.version`. Re-applying unchanged manifests does nothing.
+configured node labels and upgraded in a single rolling pass. To run the upgrade again, refer to
+[Run the Upgrade Again](#run-the-upgrade-again). Re-applying unchanged manifests does nothing.
 
 ## Prerequisites
 
@@ -82,21 +82,37 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
    kubectl label node REPLACE-ME $SYSTEM_UPGRADE_NODE_LABEL=
    ```
 
-   :::info
-
-   Palette does not reboot nodes. If an upgrade requires a reboot, your script must perform it. Reboot synchronously, as
-   in the example below: the node stays drained during the reboot, and the task re-runs the script after the node comes
-   back to finish that node before it moves on. The first attempt on a rebooted node shows as a failed pod. This is
-   expected.
-
-   Keep `concurrency: 1` on control-plane nodes so that only one etcd member is down at a time. Ensure that your cluster
-   has enough resources to perform rolling upgrades in order to avoid outages.
-
-   :::
-
 9. Save your upgrade scripts to a file titled `upgrades.sh`. You can provide any instructions that you want to execute
    on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify them
    to work according to your host operating system. The command creates the `upgrades.sh` file in your local directory.
+
+   Palette does not reboot nodes. If an upgrade requires a reboot, your script must reboot the node synchronously, as
+   the example script does. The node stays drained during the reboot. After the node restarts, the task runs the script
+   again to finish the upgrade on that node before it moves to the next node. The first attempt on a rebooted node
+   appears as a failed pod, which is expected.
+
+   ```shell
+   cat << 'EOF' > upgrades.sh
+   #!/bin/sh
+   set -e
+   export DEBIAN_FRONTEND=noninteractive
+   apt-get --assume-yes update
+   apt-get --option Dpkg::Options::="--force-confold" dist-upgrade --yes
+   if [ -f /var/run/reboot-required ]; then
+     echo "Reboot required. Rebooting while the node is still drained."
+     systemctl reboot
+     # The node goes down here. After it boots, the Job starts a new pod that reruns this
+     # script. Updates are already installed and /var/run/reboot-required is cleared at
+     # boot, so the rerun exits 0.
+     sleep 600
+     exit 1
+   fi
+   EOF
+   ```
+
+   The example checks `/var/run/reboot-required`, which is specific to Ubuntu and Debian hosts. On RHEL-family hosts,
+   use `needs-restarting --reboothint` from the `yum-utils` package instead. It exits `1` when a reboot is required and
+   `0` otherwise.
 
 10. Execute the following commands to create the `upgrades.yaml` file using your namespace, label, and upgrade script
     variables.
@@ -159,6 +175,13 @@ configured node labels and upgraded in a single rolling pass. To run the upgrade
     The `tolerations` list covers the standard control plane taints that current and earlier Kubernetes versions apply.
     If your nodes carry other taints, such as on GPU nodes or dedicated node pools, add a matching toleration for each
     taint. Otherwise, the upgrade pod cannot be scheduled on those nodes.
+
+    :::warning
+
+    Keep `concurrency: 1` when the task targets control plane nodes so that only one etcd member is down at a time.
+    Ensure that your cluster has enough resources to perform rolling upgrades in order to avoid outages.
+
+    :::
 
 11. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left main
     menu.
@@ -264,6 +287,12 @@ the `spectro-task-xxx` namespace.
 10. _(Rebooted nodes only)_ Log in to each node that rebooted, and issue the following command to display when the node
     last booted.
 
+    ```bash
+    uptime --since
+    ```
+
+    The timestamp should be after the Job for that node started.
+
 ### Recover a Failed Node
 
 If the script fails, the node stays cordoned, and the Job retries up to 99 times. To recover the node, use one of the
@@ -272,3 +301,24 @@ following methods.
 - Fix the script. Updating the script triggers a rerun.
 
 - Delete the task, and then return the node to service. Deleting the task without this step leaves the node cordoned.
+
+## Run the Upgrade Again
+
+Palette only re-runs the upgrade when the `SpectroSystemTask` manifest changes. To trigger another run, update
+`spec.version` on the task, publish the change as a new cluster profile version, and apply that version to the cluster.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Select **Profiles** from the left main menu and open the cluster profile that contains your `upgrades.yaml` manifest.
+
+3. Click on the version drop-down menu and select **Create new version**. Fill in the **Version** input and click
+   **Confirm**. The new profile version opens.
+
+4. Open the manifest you created in the Enablement section. Change `spec.version` on the `SpectroSystemTask` to a new
+   value, for example by incrementing the current value. Click **Confirm Updates**, then click **Save Changes**.
+
+5. Navigate to the left main menu and select **Clusters**. Select your cluster to access the cluster details page.
+
+6. Click the **Profiles** tab, select the newly created version of your cluster profile, and click **Save**.
+
+Palette applies the updated profile, which re-runs the upgrade script on every labeled node.
