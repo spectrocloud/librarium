@@ -115,8 +115,8 @@ authoritative procedure, refer to NVIDIA's
    Codename:       noble
    ```
 
-   The device reports a firmware string, such as `38.0.0-gcid-...`, at first boot. That value is the UEFI firmware
-   version, not the JetPack or L4T version.
+   In this example, the release `R39` and the revision `2.1` identify L4T r39.2.1. The device reports a firmware string,
+   such as `38.0.0-gcid-...`, at first boot. That value is the UEFI firmware version, not the JetPack or L4T version.
 
 ## Prepare the Host
 

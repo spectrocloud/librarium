@@ -22,9 +22,9 @@ section notes where you perform the task.
 
 The Jetson device runs a single-node Edge cluster, with the control plane and your workloads on the same node, so the
 cluster has no high availability. Any operation that restarts the host, such as a Kubernetes upgrade, interrupts the
-served model. Plan for downtime. A restart of the serving pod also removes any model that you pulled, unless you store
-the model data on a persistent volume. After the cluster returns to the **Running** status, pull the model again. To
-keep models across restarts, refer to
+served model. Plan for downtime. A host restart also restarts the serving pod, and the pod loses any model that you
+pulled unless you store the model data on a persistent volume. After the cluster returns to the **Running** status and
+the serving pod is ready, pull the model again. To keep models across restarts, refer to
 [Change the Model Directly on the Cluster](#change-the-model-directly-on-the-cluster).
 
 :::
@@ -63,10 +63,10 @@ device, so you do not need to take any action on the host, but the change might 
 The Jetson GPU driver ships with JetPack, not with a pack. Refer to
 [Update JetPack and the Operating System](#update-jetpack-and-the-operating-system).
 
-A Kubernetes version upgrade restarts the host, so the served model is unavailable until the host restarts and K3s
-becomes ready. Palette reports the upgrade type as a repave in the cluster's **Upgrade Details**, but the device keeps
-its cluster configuration and workloads. Other pack updates do not always restart the host. For example, a network pack
-update restarts only the network pods, which can briefly interrupt connections to the model.
+A Kubernetes version upgrade restarts the host, so the served model is unavailable until the host finishes restarting
+and K3s becomes ready. Palette reports the upgrade type as a repave in the cluster's **Upgrade Details**, but the device
+keeps its cluster configuration and workloads. Other pack updates do not always restart the host. For example, a
+**Flannel** pack update replaces only the Flannel pod, which can briefly interrupt connections to the model.
 
 For how Edge clusters apply updates and what to expect during reconciliation, refer to
 [Edge Cluster Upgrade Behavior](../../clusters/edge/cluster-management/upgrade-behavior.md). On a centrally managed
@@ -175,8 +175,8 @@ sudo journalctl --boot --unit 'spectro-*' --no-pager | tail --lines 20
 
 If the logs repeat `EdgeHostToken is mandatory`, the agent did not read your `user-data` file. Confirm that
 `#cloud-config` is the first line of the file, with no spaces before it, as described in
-[Create the User-Data File](./register-jetson-host.md#create-the-user-data-file). Then run the installer again with
-`sudo --preserve-env` from the same session where you export `USERDATA`. Refer to
+[Create the User-Data File](./register-jetson-host.md#create-the-user-data-file). Export `USERDATA` again, and then run
+the installer with `sudo --preserve-env` in the same terminal session. Refer to
 [Install the Palette Agent](./register-jetson-host.md#install-the-palette-agent).
 
 ### Model Does Not Respond
