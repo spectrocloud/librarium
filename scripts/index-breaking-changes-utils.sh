@@ -124,9 +124,14 @@ persist_partial_files () {
 # - Matches against archiveVersions.json entries like "v4.7.x"
 # - Ignores patch version intentionally
 # - Returns the first matching legacy domain URL
+# - If the release's major.minor has no entry (for example, it was pruned from the version
+#   dropdowns), returns the nearest newer listed legacy site instead, the closest snapshot
+#   of the pages the release linked to
+# - If there is no newer entry either, returns the current docs domain
 #
 # Notes:
-# - If no match is found, function returns non-zero
+# - Always returns zero. Callers run under set -e, so a failed lookup would abort the build.
+# - Fallbacks log a warning to stderr, which keeps them out of the captured URL
 # - Used to rewrite links to legacy documentation paths
 #
 # Params:
@@ -142,6 +147,11 @@ find_legacy_domain() {
   release_maj=$(echo "$release_version" | cut -d . -f1)
   release_min=$(echo "$release_version" | cut -d . -f2)
 
+  # Lowest entry that is newer than the release, used if there is no exact match
+  local fallback_maj=""
+  local fallback_min=""
+  local fallback_url=""
+
   # name like "v4.7.x" or "v3.4.x and prior"
   while IFS=$'\t' read -r name url; do
     local entry_maj
@@ -153,9 +163,25 @@ find_legacy_domain() {
       printf '%s\n' "$url"
       return 0
     fi
+
+    if (( entry_maj > release_maj || (entry_maj == release_maj && entry_min > release_min) )); then
+      if [ -z "$fallback_url" ] || (( entry_maj < fallback_maj || (entry_maj == fallback_maj && entry_min < fallback_min) )); then
+        fallback_maj=$entry_maj
+        fallback_min=$entry_min
+        fallback_url=$url
+      fi
+    fi
   done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$archive_versions_path")
 
-  return 1
+  if [ -n "$fallback_url" ]; then
+    echo "⚠️ No legacy site for $release_maj.$release_min in archiveVersions.json. Linking $release_version to the nearest newer legacy site: $fallback_url" >&2
+    printf '%s\n' "$fallback_url"
+    return 0
+  fi
+
+  echo "⚠️ No legacy site for $release_maj.$release_min or any newer version in archiveVersions.json. Linking $release_version to the current docs: https://docs.spectrocloud.com" >&2
+  printf '%s\n' "https://docs.spectrocloud.com"
+  return 0
 }
 
 # Function to add breaking changes body to the partials file
