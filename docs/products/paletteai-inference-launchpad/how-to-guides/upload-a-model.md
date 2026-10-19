@@ -135,19 +135,26 @@ The Palette CLI authenticates to the node with a per-node upload token, so you d
 
 </Tabs>
 
-## Download the Model Weights
+## Download and Upload the Model Weights
 
 After the recipe upload, the model does not appear in the deploy catalog until its weights arrive. This is expected. For
 the reason, refer to
 [The State Between the Two Uploads](../explanation/model-recipes.md#the-state-between-the-two-uploads).
 
-You can download and upload the weights as two commands, in this section and in
-[Upload the Model to the Appliance](#upload-the-model-to-the-appliance), or as one command, in
-[Download and Upload in One Command](#download-and-upload-in-one-command). For when to use each, refer to
+Choose one of the following options. Both options download the weights from Hugging Face onto the jumpbox and upload
+them to the appliance over SSH, so use only one. For when to use each, refer to
 [Two Commands or One for the Weights](../explanation/model-recipes.md#two-commands-or-one-for-the-weights).
 
-On the jumpbox, download the model weights from Hugging Face into a writable local directory. Do not use a read-only NFS
-mount. The Palette CLI reads the model name, version, and Hugging Face source from the recipe.
+- [Option 1: Download, Then Upload](#option-1-download-then-upload) runs two commands.
+- [Option 2: Download and Upload in One Command](#option-2-download-and-upload-in-one-command) runs one command.
+
+On a multi-node appliance, upload the weights to a single node; the appliance syncs the model to the remaining nodes
+automatically. You can use the leader node again.
+
+### Option 1: Download, Then Upload
+
+Download the weights into a writable local directory on the jumpbox, then ship them to the appliance. Do not use a
+read-only NFS mount. The Palette CLI reads the model name, version, and Hugging Face source from the recipe.
 
 1. Run the download command with the path to the recipe and the directory to download into.
 
@@ -171,12 +178,7 @@ mount. The Palette CLI reads the model name, version, and Hugging Face source fr
    For a gated or private Hugging Face repository, set the `HF_TOKEN` environment variable to your Hugging Face access
    token before you run the command.
 
-## Upload the Model to the Appliance
-
-Ship the downloaded weights from the jumpbox to the appliance over SSH. On a multi-node appliance, upload to a single
-node; the appliance syncs the model to the remaining nodes automatically. You can use the leader node again.
-
-1. Run the upload command with the recipe, the model directory, and the appliance's SSH details.
+2. Run the upload command with the recipe, the model directory, and the appliance's SSH details.
 
    ```bash
    palette content model upload \
@@ -215,11 +217,10 @@ node; the appliance syncs the model to the remaining nodes automatically. You ca
 The upload command accepts other flags, including metadata-only sync (`--metadata-only`). For the full list, refer to
 [Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
 
-## Download and Upload in One Command
+### Option 2: Download and Upload in One Command
 
-Use this section instead of [Download the Model Weights](#download-the-model-weights) and
-[Upload the Model to the Appliance](#upload-the-model-to-the-appliance). The upload command downloads any weights that
-are missing from the model directory, then transfers them to the appliance.
+Use this option instead of [Option 1](#option-1-download-then-upload). The upload command downloads any weights that are
+missing from the model directory, then transfers them to the appliance.
 
 1. Run the upload command with `--download`. This example uses password authentication, which needs
    `--insecure-skip-host-key-check` when the jumpbox does not yet trust the node's SSH host key.
