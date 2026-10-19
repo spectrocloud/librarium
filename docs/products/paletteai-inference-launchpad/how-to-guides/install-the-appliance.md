@@ -13,7 +13,7 @@ keywords: ["launchpad", "ai", "install", "appliance", "hardware", "iso", "edge",
 This guide explains how to install the PaletteAI Inference Launchpad appliance on bare hardware, from an administrative
 workstation (a [jumpbox](../reference/glossary.md#jumpbox)). You download the
 [slim ISO](../reference/glossary.md#slim-iso), [content bundle](../reference/glossary.md#content-bundle), and model
-metadata from Artifact Studio, install the edge OS on the node, configure the network in the Palette text-based user
+recipes from Artifact Studio, install the edge OS on the node, configure the network in the Palette text-based user
 interface (TUI) and Local UI, upload the content bundle, deploy the cluster, and upload a model. By the end, you will
 have a running, reachable appliance console with a model ready to deploy. For the two-stage architecture and design
 rationale, refer to [Installation Architecture](../explanation/installation-architecture.md).
@@ -67,10 +67,11 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
   boot the node from it.
 - **Content bundle (more than 20 GB)**. the platform and application layers. You upload it through the Palette CLI
   (recommended) or Local UI after the node is on the network.
-- **Model metadata (`metadata.yaml`, a few KB)**. one file per model you intend to deploy. It is a separate download,
-  not part of the ISO or content bundle. You use it later, with the Palette CLI, to download the model weights from
-  Hugging Face and upload them to the appliance. For a certified model, download it from Artifact Studio. For a model
-  that is not certified, author the file. Refer to [Bring Your Own Model](./bring-your-own-model.md).
+- **Model recipe**. one per model you intend to deploy. It is a separate download, not part of the ISO or content
+  bundle. A recipe pairs the model metadata with the vLLM engine image for one GPU vendor, so choose the recipe that
+  matches your hardware. You use it later, with the Palette CLI, to upload the engine image, download the model weights
+  from Hugging Face, and upload them to the appliance. A model that is not certified has no recipe, so you author a
+  metadata file instead. Refer to [Bring Your Own Model](./bring-your-own-model.md).
 
 ## Install the OS
 
@@ -492,15 +493,19 @@ If the cluster does not reach a **Running** and **Healthy** state, refer to
 
 Uploading a model is a day-two operation, separate from the day-zero appliance install. You can run it in parallel with
 cluster deployment; it does not need to wait for validation. Models are uploaded separately from the content bundle,
-from the jumpbox to an appliance node, using the Palette CLI. The jumpbox needs `rsync` 3.2.3 or later and OpenSSH 8.4
-or later.
+from the jumpbox to an appliance node, using the Palette CLI. The jumpbox needs outbound internet access to download the
+model weights from Hugging Face, plus `rsync` 3.2.3 or later and OpenSSH 8.4 or later.
 
-For the full flag list, the metadata file schema, the on-appliance layout, and the deploy-catalog states, refer to
+For every step in detail, refer to [Upload a Model](./upload-a-model.md). For the full flag list, the metadata file
+schema, the on-appliance layout, and the deploy-catalog states, refer to
 [Model Upload Reference](../reference/model-upload-reference.md).
 
-1. Download the model metadata (`metadata.yaml`) from Artifact Studio. For a model that is not certified, author the
-   file instead. Refer to [Bring Your Own Model](./bring-your-own-model.md).
-2. On the jumpbox, download the model to a writable local directory, for example `/home/ubuntu/downloads`. Do not use an
+1. Download the model recipe from Artifact Studio onto the jumpbox. For a model that is not certified, author a metadata
+   file instead and follow [Bring Your Own Model](./bring-your-own-model.md).
+2. Upload the recipe to the leader node as content, with the Palette CLI or Local UI. This brings the model's engine
+   image to the appliance. For the steps, refer to
+   [Upload the Model Recipe](./upload-a-model.md#upload-the-model-recipe).
+3. On the jumpbox, download the model to a writable local directory, for example `/home/ubuntu/downloads`. Do not use an
    NFS share, which may be mounted read-only. The model lands at `<model-dir>/<name>/<version>/`.
 
    <Tabs groupId="os">
@@ -509,7 +514,7 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    ```bash
    palette content model download \
-     --metadata model.yaml \
+     --model-recipe <model-recipe-file> \
      --model-dir ./models
    ```
 
@@ -519,7 +524,7 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    ```powershell
    palette content model download `
-     --metadata model.yaml `
+     --model-recipe <model-recipe-file> `
      --model-dir .\models
    ```
 
@@ -527,9 +532,10 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    </Tabs>
 
-   For gated or private Hugging Face repos, set `HF_TOKEN`.
+   Replace `<model-recipe-file>` with the path to the recipe on the jumpbox. For gated or private Hugging Face
+   repositories, set `HF_TOKEN`.
 
-3. Upload the model to an appliance node. We recommend using SSH key authentication (`--ssh-key`). If you do not have a
+4. Upload the model to an appliance node. We recommend using SSH key authentication (`--ssh-key`). If you do not have a
    key on the node, use `--ssh-password` for password authentication (supported on a Unix jumpbox only), and add
    `--insecure-skip-host-key-check` if the node's host key is not yet known.
 
@@ -539,7 +545,7 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    ```bash
    palette content model upload \
-     --metadata model.yaml \
+     --model-recipe <model-recipe-file> \
      --model-dir ./models \
      --ssh-user <user> \
      --ssh-host <node-ip> \
@@ -552,7 +558,7 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    ```powershell
    palette content model upload `
-     --metadata model.yaml `
+     --model-recipe <model-recipe-file> `
      --model-dir .\models `
      --ssh-user <user> `
      --ssh-host <node-ip> `
@@ -563,7 +569,7 @@ For the full flag list, the metadata file schema, the on-appliance layout, and t
 
    </Tabs>
 
-4. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
+5. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
    select the **Models** tab and **Deploy New Model** to open the **Deploy model** dialog. Open the **Model** drop-down
    menu. Each entry renders as `<Name> · <N>+GPU · <size>GB`. The model you uploaded appears on the next catalog scan
    after the upload finishes. The dialog then asks you to choose which nodes run the model. For that procedure, refer to
