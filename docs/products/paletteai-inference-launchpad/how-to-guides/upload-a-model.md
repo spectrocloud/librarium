@@ -40,8 +40,9 @@ After the upload, the model appears in the deploy catalog, and you serve it by f
 :::info
 
 You run every step in this guide from a **jumpbox**: a separate machine (also called the administrative workstation)
-with network access to your model source, such as Hugging Face, and SSH access to the appliance. The appliance never
-downloads models itself. For how to provision the jumpbox, refer to
+with outbound internet access and SSH access to the appliance. The jumpbox downloads the model recipe, which includes
+the vLLM engine image, and the model weights from the internet. The appliance never downloads models itself. For how to
+provision the jumpbox, refer to
 [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation).
 
 :::
@@ -49,8 +50,10 @@ downloads models itself. For how to provision the jumpbox, refer to
 ## Prerequisites
 
 - A **jumpbox** (administrative workstation) on the appliance network, provisioned with the Palette CLI, an SSH client
-  and key pair (or password authentication), enough local disk to stage model downloads, and network access to your
-  model source, such as Hugging Face. For details, refer to
+  and key pair (or password authentication), and enough local disk to stage model downloads.
+
+- Outbound internet access from the jumpbox. The jumpbox downloads the model recipe, including its vLLM engine image,
+  from Artifact Studio and the model weights from Hugging Face. For details, refer to
   [Administrative Workstation](../reference/hardware-requirements.md#administrative-workstation) and
   [Model Download Access](../reference/hardware-requirements.md#model-download-access-recommended).
 
@@ -274,15 +277,24 @@ Artifact Studio publishes a model recipe in place of the standalone metadata fil
 3. In the download and upload commands, replace `--metadata <metadata-file>` with `--model-recipe <model-recipe-file>`.
    Every other flag stays the same.
 
-A metadata file that you already have keeps working with `--metadata`. It does not carry an engine image, so the model
-runs only if the engine image it names is already on the appliance. For a certified model that has a recipe, use the
-recipe.
+A metadata file that you already have keeps working with `--metadata`. It does not carry an engine image. For what that
+means for the appliance's network access, refer to [Upload with a Metadata File](#upload-with-a-metadata-file). For a
+certified model that has a recipe, use the recipe.
 
 ## Upload with a Metadata File
 
 Use a metadata file for a model you bring yourself, which has no recipe. For a certified model, this is the prior flow,
 which the recipe replaces. The `--metadata` and `--model-recipe` flags are mutually exclusive, so pass exactly one of
 them.
+
+:::warning
+
+A metadata file does not carry the vLLM engine image that the model runs on, and the appliance's air-gapped content
+includes no vLLM image. The engine image must be downloaded from the internet, so this flow works only in an environment
+with internet access. The jumpbox also needs internet access to download the model weights from Hugging Face. For a
+certified model, use the model recipe, which brings the engine image to the appliance.
+
+:::
 
 1. On the jumpbox, download the model from Hugging Face with the path to your metadata file.
 

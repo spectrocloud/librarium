@@ -37,8 +37,8 @@ Refer to [The `launchpad` Block](../reference/model-upload-reference.md#the-laun
 ## Why Model Recipes Exist
 
 New models and new inference engine versions arrive more often than PaletteAI Inference Launchpad releases. The content
-bundle that installs the appliance carries one default engine, so a recipe is how any other engine version reaches the
-appliance.
+bundle that installs the appliance includes no vLLM image, so a recipe is how a model's engine image reaches an
+air-gapped appliance.
 
 A recipe decouples model support from the product release cycle. Spectro Cloud publishes a recipe when a model or its
 engine is ready, and you add it to a running appliance without upgrading the platform. Switching a model to a different
@@ -101,9 +101,9 @@ For a certified model, the recipe is the only file you download from Artifact St
 model download and upload commands reads the metadata out of the recipe, so you do not keep a separate metadata file.
 
 The `--metadata` flag passes a metadata file directly. You use it for a model you bring yourself, and you can keep using
-a metadata file you already have. A metadata file does not carry an engine image, so that flow relies on an engine image
-that is already on the appliance, such as the default engine in the content bundle. For the commands in both flows,
-refer to [Upload a Model](../how-to-guides/upload-a-model.md).
+a metadata file you already have. A metadata file does not carry an engine image, and the content bundle includes no
+vLLM image, so that flow must download the engine image from the internet and works only in an environment with internet
+access. For the commands in both flows, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 ## Resources
 

@@ -110,10 +110,11 @@ unless you know the exact label your nodes publish.
 ## Download and Upload the Model
 
 A certified model arrives as a model recipe, but a model you bring yourself has no recipe, so you pass your authored
-file to the download and upload commands as `--metadata`. A metadata file does not carry an engine image, so the model
-runs on an engine image that is already on the appliance, such as the default engine that the content bundle installs.
-For more, refer to [Model Recipes and Metadata Files](../explanation/model-recipes.md#model-recipes-and-metadata-files).
-For every flag, refer to [Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
+file to the download and upload commands as `--metadata`. A metadata file does not carry an engine image, and the
+content bundle includes no vLLM image, so the engine image must be downloaded from the internet. Bringing your own model
+works only in an environment with internet access. For more, refer to
+[Model Recipes and Metadata Files](../explanation/model-recipes.md#model-recipes-and-metadata-files). For every flag,
+refer to [Model Upload Reference](../reference/model-upload-reference.md#palette-content-model-upload).
 
 1. On the jumpbox, download the model from Hugging Face into a writable local directory. Do not use a read-only NFS
    mount.
