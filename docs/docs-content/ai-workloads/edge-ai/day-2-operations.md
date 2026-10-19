@@ -149,8 +149,6 @@ reinstall the agent. Refer to
 To renew the cluster certificates, refer to
 [Renew Cluster PKI Certificates](../../clusters/cluster-management/certificate-management.md).
 
-<!-- VERIFY(DOC-3091): backup and restore (for example, Velero) and replace-failed-node are out of scope until they are verified on a single-node ARM64 device. Validate the agent uninstall and reinstall on the kit LAST (destructive). -->
-
 ## Troubleshoot Common Issues
 
 The following issues are common on a Jetson Edge AI deployment.
@@ -219,8 +217,6 @@ can reuse the device. Before you delete the cluster, save any model data or conf
 
 3. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Open the three-dot menu for the
    Jetson host, and then select **Delete**.
-
-<!-- VERIFY(DOC-3091): validate the decommission flow on the kit LAST. It tears down the environment needed for the other Day 2 validations. -->
 
 ## Next Steps
 
