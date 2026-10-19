@@ -36,20 +36,22 @@ To understand how clients and models relate, refer to [Clients and Quotas](../ex
 
 Use a client's tier map to route the client's model aliases to the models you choose.
 
-1. From the left main menu, select **Access & Policy**.
+1. In the console header, set the workspace picker to the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Routing** section.
+3. Select the client to open its detail panel.
 
-4. In the **Tier map**, select **Add alias rule**, or edit an existing row.
+4. Select the **Routing** section.
 
-5. Set the **Alias prefix**, such as `claude-opus-`, and the **Model** it routes to. Local models, frontier targets, and
+5. In the **Tier map**, select **Add alias rule**, or edit an existing row.
+
+6. Set the **Alias prefix**, such as `claude-opus-`, and the **Model** it routes to. Local models, frontier targets, and
    models from a registered external inference endpoint appear in the picker. Endpoint models are listed as
    `<id> / <model>`. The **Tier map** starts with seven seeded alias prefixes, `claude-fable-`, `claude-opus-`,
    `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`, which you can map but not remove.
 
-6. Save the client.
+7. Save the client.
 
 The tier map applies to the selected client. Requests from other clients follow their own tier maps, so they are not
 routed to that model unless you configure their tier maps as well. For requests the tier map does not settle, such as a
@@ -62,24 +64,26 @@ controls combine, refer to [Routing Behavior](../explanation/routing-behavior.md
 
 Enable egress, then add each provider or registered endpoint the client may use.
 
-1. From the left main menu, select **Access & Policy**.
+1. In the console header, set the workspace picker to the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Egress** section.
+3. Select the client to open its detail panel.
 
-4. Select **Enable egress**.
+4. Select the **Egress** section.
 
-5. Select **Add provider key**.
+5. Select **Enable egress**.
 
-6. In **Provider**, select a built-in frontier provider or a registered endpoint id.
+6. Select **Add provider key**.
+
+7. In **Provider**, select a built-in frontier provider or a registered endpoint id.
 
    - For a frontier provider, enter the provider key.
    - For a registered endpoint, the **Key** field is hidden. The credential was set when you registered the endpoint,
      and the table shows **box-managed**. To register an endpoint first, refer to
      [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
-7. Set a positive **Daily limit**, and then select **Save**. Egress is fail-closed on the cap, so a limit of `$0` blocks
+8. Set a positive **Daily limit**, and then select **Save**. Egress is fail-closed on the cap, so a limit of `$0` blocks
    that provider or endpoint for the client, and the table shows **$0 blocked**.
 
 Frontier-model bursting is configured separately and is out of scope for this guide.
