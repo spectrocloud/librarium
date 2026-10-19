@@ -4,7 +4,7 @@ partial_name: installation-steps-create-cluster
 ---
 
 The management cluster hosts the {props.version} core components and provisions the workload clusters that you deploy
-with {props.version}. You create the management cluster in Local UI on the leader Edge host, using the linked Edge hosts
+with {props.version}. You create the management cluster in Local UI on the leader host, using the linked hosts
 as its nodes.
 
 1. On the left main menu of the Local UI, click **Cluster**.
@@ -43,7 +43,7 @@ as its nodes.
     | ----------------------- | ------------------------------------------------------------ | ------------- | --------------------- |
     | **Storage Pool Drive**  | The storage pool device to use for the cluster. As mentioned in the [Prerequisites](#prerequisites), assign this to your second storage device. | String        | **`/dev/sdb`**        |
     | **CSI Placement Count** | The number of replicas for the Container Storage Interface (CSI) Persistent Volumes (PVs). The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the CSI volumes. _This value must match the **Mongo Replicas** value._ | Integer       | **`3`**               |
-    | **DRBD Compile Mode**   | The mode that loads the Distributed Replicated Block Device (DRBD) kernel module on each node. Keep the default, `shipped_modules`, unless your OS image includes kernel headers that match the running kernel. Do not select `compile` on Edge hosts with Secure Boot enabled. For details about each mode, refer to [Piraeus CSI](/integrations/piraeus-csi#drbd-kernel-module-loading). | String (enum) | **`shipped_modules`** |
+    | **DRBD Compile Mode**   | The mode that loads the Distributed Replicated Block Device (DRBD) kernel module on each node. Keep the default, `shipped_modules`, unless your OS image includes kernel headers that match the running kernel. Do not select `compile` on hosts with Secure Boot enabled. For details about each mode, refer to [Piraeus CSI](/integrations/piraeus-csi#drbd-kernel-module-loading). | String (enum) | **`shipped_modules`** |
 
     ##### Container Registry
 
@@ -127,7 +127,7 @@ as its nodes.
     | **Option**               | **Description**                                                                                                                                                                           | **Type**      | **Default**                                                                                      |
     | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------ |
     | **Architecture**         | The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes.                                                                       | String (enum) | **`amd64`**                                                                                      |
-    | **Add Edge Hosts**       | Click **Add Item** and select the other Edge hosts that you installed using the Appliance ISO. These Edge hosts will be added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current Edge host selected_ <br /> - **Worker Pool** = _No Edge host selected_ |
+    | **Add Edge Hosts**       | Click **Add Item** and select the other hosts that you installed using the Appliance ISO. These hosts will be added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
     | **NIC Name**             | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu.        | N/A           | **Auto**                                                                                         |
     | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements.                   | String        | **`edge-*`**                                                                                     |
 

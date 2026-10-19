@@ -13,14 +13,14 @@ partial_name: installation-steps-prereqs
 
   :::
 
-- We recommend the following resources for each Edge host. You can install {props.version} on one or three Edge hosts. For
-  production environments, provision three Edge hosts in advance. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
+- We recommend the following resources for each host. You can install {props.version} on one or three hosts. For
+  production environments, provision three hosts in advance. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
-  - 8 CPUs per Edge host.
+  - 8 CPUs per host.
 
-  - 16 GB memory per Edge host.
+  - 16 GB memory per host.
 
-  - Two disks per Edge host.
+  - Two disks per host.
 
     - The disk used for installation must be 300 GB minimum and 500 GB is recommended. This disk is used for the Appliance ISO stack.
 
@@ -60,19 +60,19 @@ partial_name: installation-steps-prereqs
 
   - At least one removable media connection must be available to attach the Appliance ISO. This can be a physical or virtual connection depending on your infrastructure provider.
 
-- TCP/5080 must be accessible on each Edge host so that you can access Local UI during the installation. This is the
+- TCP/5080 must be accessible on each host so that you can access Local UI during the installation. This is the
   default Local UI port. For additional network ports required to operate {props.version}, refer to
   <VersionedLink text="Self-Hosted Network Communications and Ports" url="/architecture/networking-ports#self-hosted-network-communications-and-ports"/>.
 
-- SSH access to the Edge hosts if you plan to upload the content bundle with the Palette CLI or enroll the Secure Boot
+- SSH access to the hosts if you plan to upload the content bundle with the Palette CLI or enroll the Secure Boot
   key with MokManager.
 
-- Relevant permissions to install {props.version} on the Edge hosts including permission to attach or mount the Appliance ISO and set Edge hosts to
+- Relevant permissions to install {props.version} on the hosts including permission to attach or mount the Appliance ISO and set hosts to
   boot from it.
 
   :::warning
 
-  The Appliance ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the Edge hosts to boot from the ISO in UEFI mode.
+  The Appliance ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the hosts to boot from the ISO in UEFI mode.
 
   :::
 

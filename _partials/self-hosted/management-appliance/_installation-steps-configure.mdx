@@ -3,7 +3,7 @@ partial_category: self-hosted
 partial_name: installation-steps-configure
 ---
 
-1. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the Edge host.
+1. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the host.
 
     | **Field**                | **Description**                            |
     |--------------------------|--------------------------------------------|
@@ -32,7 +32,7 @@ partial_name: installation-steps-configure
 
     - If desired, specify the VLAN ID. A VLAN ID enables you to logically segment network traffic on the same physical
       network interface, providing network isolation and enhanced traffic management. If you assign a VLAN ID, the
-      Edge host tags all outgoing packets from that adapter with the specified VLAN identifier.
+      host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
     - You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size,
       in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
@@ -51,4 +51,4 @@ partial_name: installation-steps-configure
 
     :::
 
-7. Ensure you complete the configuration on each Edge host before proceeding to [Link Edge Hosts](#link-edge-hosts).
+7. Ensure you complete the configuration on each host before proceeding to [Link Hosts](#link-hosts).

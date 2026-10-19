@@ -9,10 +9,9 @@ tags: ["verteX management appliance", "self-hosted", "vertex"]
 sidebar_position: 20
 ---
 
-The VerteX Management Appliance is a solution for installing Palette VerteX on your infrastructure, including bare metal
-Edge devices. The appliance ships as a slim **Appliance ISO** paired with a separate **Content bundle**. For the
-components included in the Appliance ISO and their FIPS compliance, refer to
-[Architecture of the Appliance ISO](#architecture-of-the-appliance-iso).
+The VerteX Management Appliance is a solution for installing Palette VerteX on your infrastructure. The appliance ships
+as a slim **Appliance ISO** that is used to boot your host along with a separate **Content bundle** that gets uploaded
+to the host.
 
 After you install Palette VerteX, you upload pack bundles to the internal Zot registry or an external registry. You use
 these packs to create cluster profiles and deploy workload clusters with Palette VerteX.
@@ -27,14 +26,15 @@ The VerteX Management Appliance can be used on the following infrastructure plat
 
 ## Limitations
 
-- If you are choosing to use an external registry for your pack bundles, only public image registries are supported.
+- If you use an external registry for your pack bundles, only public image registries are supported.
 
 ## Installation Steps
 
 Follow the instructions to install Palette VerteX using the VerteX Management Appliance on your infrastructure platform.
 
-This guide refers to the machines that you install Palette VerteX on as Edge hosts. When you create the management
-cluster, each Edge host that you add to a node pool becomes a node in the cluster.
+This guide refers to the machines that you install Palette VerteX on as hosts. When you create the management cluster,
+each host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on edge
+devices, other parts of the Spectro Cloud documentation refer to these machines as Edge hosts.
 
 ### Prerequisites
 
@@ -54,10 +54,10 @@ cluster, each Edge host that you add to a node pool becomes a node in the cluste
 Installing Palette VerteX consists of the following tasks.
 
 - [Download the Artifacts](#download-the-artifacts)
-- [Boot Edge Hosts from ISO and Run the Installer](#boot-edge-hosts-from-iso-and-run-the-installer)
-- [Configure Edge Hosts](#configure-edge-hosts)
-- [Link Edge Hosts](#link-edge-hosts)
-- [Upload Content Bundle to the Leader Edge Host](#upload-content-bundle-to-the-leader-edge-host)
+- [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer)
+- [Configure Hosts](#configure-hosts)
+- [Link Hosts](#link-hosts)
+- [Upload Content Bundle to the Leader Host](#upload-content-bundle-to-the-leader-host)
 - [Create the Management Cluster](#create-the-management-cluster)
 - [Log In to the System Console](#log-in-to-the-system-console)
 
@@ -72,7 +72,7 @@ Installing Palette VerteX consists of the following tasks.
   app="VerteX Management Appliance"
 />
 
-#### Boot Edge Hosts from ISO and Run the Installer
+#### Boot Hosts from ISO and Run the Installer
 
 <PartialsComponent
   category="self-hosted"
@@ -83,7 +83,7 @@ Installing Palette VerteX consists of the following tasks.
   app="VerteX Management Appliance"
 />
 
-#### Configure Edge Hosts
+#### Configure Hosts
 
 <PartialsComponent
   category="self-hosted"
@@ -94,7 +94,7 @@ Installing Palette VerteX consists of the following tasks.
   app="VerteX Management Appliance"
 />
 
-#### Link Edge Hosts
+#### Link Hosts
 
 <PartialsComponent
   category="self-hosted"
@@ -105,7 +105,7 @@ Installing Palette VerteX consists of the following tasks.
   app="VerteX Management Appliance"
 />
 
-#### Upload Content Bundle to the Leader Edge Host
+#### Upload Content Bundle to the Leader Host
 
 <PartialsComponent
   category="self-hosted"
@@ -265,8 +265,8 @@ appliance.
 | **CSI**        | Piraeus                                       | :white_check_mark: |
 | **Registry**   | Zot                                           | :white_check_mark: |
 
-Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For Edge hosts with secure
-boot, the DRBD Compile Mode option must be set to `shipped_modules'. For how the module is loaded, refer to
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For hosts with secure boot,
+the DRBD Compile Mode option must be set to `shipped_modules`. For how the module is loaded, refer to
 [Piraeus CSI](../../integrations/piraeus-csi.mdx#drbd-kernel-module-loading).
 
 Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
