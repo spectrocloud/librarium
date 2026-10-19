@@ -104,10 +104,27 @@ version.
    cat /etc/nv_tegra_release
    ```
 
+   ```text hideClipboard title="Example Output"
+   # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+   # KERNEL_VARIANT: oot
+   TARGET_USERSPACE_LIB_DIR=nvidia
+   TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+   ```
+
+   In this example, the release `R39` and the revision `2.1` identify L4T r39.2.1.
+
 2. Check the Ubuntu base version.
 
    ```shell
    lsb_release --all
+   ```
+
+   ```text hideClipboard title="Example Output"
+   No LSB modules are available.
+   Distributor ID: Ubuntu
+   Description:    Ubuntu 24.04.4 LTS
+   Release:        24.04
+   Codename:       noble
    ```
 
 3. If you installed the JetPack SDK meta-package, check the JetPack version.

@@ -331,7 +331,7 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
          runtimeClassName: nvidia
          containers:
            - name: ollama
-             image: ollama/ollama:latest
+             image: ollama/ollama:0.40.6
              ports:
                - containerPort: 11434
              env:
@@ -389,8 +389,8 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    ```
 
    ```text hideClipboard title="Example Output"
-   NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
-   llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
+   NAME           ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL
+   llama3.2:1b    baf6a787fdff    6.4 GB    100% GPU     131072     llamacpp    4 minutes from now
    ```
 
 6. To reach the model over its HTTP API from your workstation, forward the `Service` port.

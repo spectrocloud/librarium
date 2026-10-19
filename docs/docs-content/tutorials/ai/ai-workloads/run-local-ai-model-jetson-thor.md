@@ -103,6 +103,18 @@ authoritative procedure, refer to NVIDIA's
    lsb_release --all
    ```
 
+   ```text hideClipboard title="Example Output"
+   # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+   # KERNEL_VARIANT: oot
+   TARGET_USERSPACE_LIB_DIR=nvidia
+   TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+   No LSB modules are available.
+   Distributor ID: Ubuntu
+   Description:    Ubuntu 24.04.4 LTS
+   Release:        24.04
+   Codename:       noble
+   ```
+
    The device reports a firmware string, such as `38.0.0-gcid-...`, at first boot. That value is the UEFI firmware
    version, not the JetPack or L4T version.
 
@@ -381,7 +393,7 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
          runtimeClassName: nvidia
          containers:
            - name: ollama
-             image: ollama/ollama:latest
+             image: ollama/ollama:0.40.6
              ports:
                - containerPort: 11434
              env:
@@ -439,8 +451,8 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    ```
 
    ```text hideClipboard title="Example Output"
-   NAME         ID              SIZE      PROCESSOR    CONTEXT    UNTIL
-   llama3.2:1b  baf6a787fdff    6.4 GB    100% GPU     131072     4 minutes from now
+   NAME           ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL
+   llama3.2:1b    baf6a787fdff    6.4 GB    100% GPU     131072     llamacpp    4 minutes from now
    ```
 
 6. To reach the model over its HTTP API from your workstation, forward the `Service` port.

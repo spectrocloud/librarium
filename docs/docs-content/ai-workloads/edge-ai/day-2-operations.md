@@ -21,12 +21,13 @@ section notes where you perform the task.
 :::warning
 
 The Jetson device runs a single-node Edge cluster, with the control plane and your workloads on the same node, so the
-cluster has no high availability. Any operation that reboots or reconciles the node, such as a Kubernetes upgrade,
-interrupts the served model until the cluster returns to the **Running** status. Plan for downtime.
+cluster has no high availability. Any operation that restarts the host, such as a Kubernetes upgrade, interrupts the
+served model. Plan for downtime. A restart of the serving pod also removes any model that you pulled, unless you store
+the model data on a persistent volume. After the cluster returns to the **Running** status, pull the model again. To
+keep models across restarts, refer to
+[Change the Model Directly on the Cluster](#change-the-model-directly-on-the-cluster).
 
 :::
-
-<!-- VERIFY(DOC-3091): confirm the single-node no-HA, downtime-on-reconcile behavior on the kit during the upgrade validation. -->
 
 ## Prerequisites
 
@@ -53,8 +54,6 @@ To view GPU and system metrics over time in a dashboard such as Grafana, set up 
 For a Jetson monitoring tool, you can explore
 [jetson-stats](https://developer.nvidia.com/embedded/community/jetson-projects/jetson_stats).
 
-<!-- VERIFY(DOC-3091): validate the exact monitoring commands on the kit. `nvidia-smi` and `ollama ps` are validated (Day 1); `kubectl top` (metrics-server) and `tegrastats` are NOT yet run on the Thor. Capture representative output. Demo metrics already captured 2026-09-14 (llama3.1:8b via Open WebUI): GPU util 98%, ~42 W GPU, ~112 W board, ~72 C. Decide whether to include a metrics example. -->
-
 ## Update Kubernetes and Packs
 
 You update Kubernetes and packs through Palette. Create a new version of the cluster profile with the new pack versions,
@@ -64,10 +63,10 @@ device, so you do not need to take any action on the host, but the change might 
 The Jetson GPU driver ships with JetPack, not with a pack. Refer to
 [Update JetPack and the Operating System](#update-jetpack-and-the-operating-system).
 
-Palette upgrades K3s in place on a single-node Jetson device. The served model is unavailable during the upgrade. The
-downtime depends on how long the host takes to restart and how long K3s takes to become ready.
-
-<!-- VERIFY(DOC-3091): validate on the kit (semi-destructive): change a pack version, observe the single-node reconcile and downtime, and confirm that the model returns. -->
+A Kubernetes version upgrade restarts the host, so the served model is unavailable until the host restarts and K3s
+becomes ready. Palette reports the upgrade type as a repave in the cluster's **Upgrade Details**, but the device keeps
+its cluster configuration and workloads. Other pack updates do not always restart the host. For example, a network pack
+update restarts only the network pods, which can briefly interrupt connections to the model.
 
 For how Edge clusters apply updates and what to expect during reconciliation, refer to
 [Edge Cluster Upgrade Behavior](../../clusters/edge/cluster-management/upgrade-behavior.md). On a centrally managed
@@ -80,14 +79,15 @@ You update JetPack and Jetson Linux (L4T) on the device, outside Palette. In age
 and all its dependencies, so you update JetPack with NVIDIA's tooling. Refer to the
 [NVIDIA JetPack](https://developer.nvidia.com/embedded/jetpack) documentation.
 
-The host does not need to register with Palette again after a JetPack or operating system update. The Palette agent
-keeps its connection to Palette.
+After an in-place JetPack or operating system update, the host does not need to register with Palette again, because the
+Palette agent keeps its connection to Palette. Flashing a new image onto the device erases the operating system and the
+Palette agent. After you flash the device, prepare and register the host again, as described in
+[Prepare the Jetson Host](./prepare-jetson-host.md) and
+[Register a Jetson Host and Serve a Model](./register-jetson-host.md).
 
 A JetPack or L4T update can change the GPU driver on the host. A driver change can affect the `nvidia` RuntimeClass and
 interrupt workloads that use the GPU, including the served model. After the update, confirm that the model still runs on
 the GPU. Refer to [Monitor the Host, Cluster, and Model](#monitor-the-host-cluster-and-model).
-
-<!-- VERIFY(DOC-3091): validate a JetPack update on the kit LAST (destructive: a reflash wipes the device). -->
 
 ## Update or Swap the Served Model
 
@@ -123,7 +123,10 @@ storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/ro
    kubectl exec deployment/ollama -- ollama ps
    ```
 
-   <!-- TODO(DOC-3091): add a hideClipboard title="Example Output" block with the ollama ps output for the new model from the next Thor run. -->
+   ```text hideClipboard title="Example Output"
+   NAME           ID              SIZE     PROCESSOR    CONTEXT    RUNNER      UNTIL
+   llama3.2:3b    a80c4f17acd5    17 GB    100% GPU     131072     llamacpp    4 minutes from now
+   ```
 
 ### Manage the Model through the Cluster Profile
 
@@ -165,6 +168,18 @@ Confirm that `projectName` in your `user-data` file matches an existing Palette 
 the agent installed. Refer to [Verify the Host Registers](./register-jetson-host.md#verify-the-host-registers). For
 on-device troubleshooting, sign in to [Local UI](../../clusters/edge/local-ui/local-ui.md) with the local administrator
 account that you created in the `user-data` file.
+
+If the host still does not appear, check the Palette agent logs on the device.
+
+```shell
+sudo journalctl --boot --unit 'spectro-*' --no-pager | tail --lines 20
+```
+
+If the logs repeat `EdgeHostToken is mandatory`, the agent did not read your `user-data` file. Confirm that
+`#cloud-config` is the first line of the file, with no spaces before it, as described in
+[Create the User-Data File](./register-jetson-host.md#create-the-user-data-file). Then run the installer again with
+`sudo --preserve-env` from the same session where you export `USERDATA`. Refer to
+[Install the Palette Agent](./register-jetson-host.md#install-the-palette-agent).
 
 ### Model Does Not Respond
 
