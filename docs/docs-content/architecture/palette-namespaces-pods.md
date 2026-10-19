@@ -46,7 +46,7 @@ The following table gives the namespace to pod mapping for Palette Tenant Cluste
 |                              | kube-vip-vmdynamictest-cp-< random-hash >                     |                                                                                                                                                                                                         |
 | palette-system               | palette-webhook-< random-hash >                               | Palette webhook that validates and defaults Palette custom resources. May be present depending on the installation type.                                                                                |
 | reach-system                 | reach-controller-manager-< random-hash >                      | Reach controller manager responsible for communication between Palette and workload clusters.                                                                                                           |
-| spectro-task-< random-hash > | crony-< random-hash >                                         | Component responsible for OS upgrades and patching on cluster nodes.                                                                                                                                    |
+| spectro-task-< random-hash > | crony-< random-hash >                                         | `crony` controller that runs OS upgrade and patching tasks on cluster nodes.                                                                                                                            |
 
 ## Palette PCG NameSpaces with Pods
 
@@ -86,7 +86,7 @@ The following table gives the namespace to pod mapping for Palette vSphere Gatew
 |                              | vsphere-csi-node-< random-hash >                              |                                                                                                                                                                                                                                                      |
 | palette-system               | palette-webhook-< random-hash >                               | Palette webhook that validates and defaults Palette custom resources. May be present depending on the installation type.                                                                                                                             |
 | reach-system                 | reach-controller-manager-< random-hash >                      | Reach controller manager responsible for communication between Palette and workload clusters.                                                                                                                                                        |
-| spectro-task-< random-hash > | crony-< random-hash >                                         | Component responsible for OS upgrades and patching on cluster nodes.                                                                                                                                                                                 |
+| spectro-task-< random-hash > | crony-< random-hash >                                         | `crony` controller that runs OS upgrade and patching tasks on cluster nodes.                                                                                                                                                                         |
 
 ## Enterprise NameSpaces with Pods
 
