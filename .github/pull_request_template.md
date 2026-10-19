@@ -11,6 +11,9 @@ Before submitting your PR for review, please complete this checklist to ensure q
 - [ ] **Preview links** are for all affected pages are provided in the [Changed Pages](#-changed-pages). _If this PR
       makes no user-facing changes, please indicate so in this section._
 - [ ] Conduct a **self-review** for your pages using your preview links. Verify grammar, clarity, and accuracy.
+- [ ] Run a **review buddy check** with `/pr-review-buddy <PR URL>` in a separate context window (for example, a new
+      Claude Code session), not the one you used to make the changes. Address its findings. _A fresh context reviews
+      your diff without the assumptions you made while writing it._
 - [ ] **Check formatting** for your pages
   - [ ] Verify indentations, admonitions, and tables (if applicable).
   - [ ] Verify all images display.
