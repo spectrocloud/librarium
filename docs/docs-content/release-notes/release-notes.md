@@ -11,6 +11,86 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 19, 2026 - Release 4.8.72
+
+<!-- PATCH RELEASE TICKET: DOC-3302 -->
+<!-- PATCH RELEASE VERSION: 4.8.72 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12273 PEM-12186 PEM-12195 PEM-12104 PCP-7754 PE-9813 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12273 -->
+
+- Strengthened the authorization checks on the Edge host APIs. Palette now verifies permissions against the specific
+  Edge host in each request. If you call these APIs from scripts or automation, review the following changes in
+  behavior.
+
+  - Registration requests to `POST /v1/edgehosts/register` must include a registration token in the `hostAuthToken`
+    field for every Edge host type, including when you re-register an existing Edge host. Requests without a token fail
+    with the error `Parameter 'hostAuthToken' should not be empty`. Include a
+    [registration token](../clusters/edge/site-deployment/site-installation/create-registration-token.md) associated
+    with the Edge host's project in the request.
+
+  - System-scope roles no longer grant Edge host permissions. Use a project-scope role that includes the required
+    `edgeHost` permissions instead.
+
+  - Updating the pairing key with `PATCH /v1/edgehosts/{uid}/hostPairingKey` or the checksum with
+    `PATCH /v1/edgehosts/{uid}/hostCheckSum` requires the `edgeHost.update` permission on the Edge host in its project.
+    The Tenant Admin role alone no longer grants this access outside the Edge host's project context.
+
+  - Resetting an Edge host with `PUT /v1/edgehosts/{uid}/reset` requires the `edgeHost.get` permission on the Edge host,
+    as well as the existing cluster permission.
+
+  - `GET /v1/edgehosts/{uid}` now returns a masked value for the temporary SSH user's key in the `sshKey` field. Remote
+    Shell sessions that you open in Palette are not affected.
+
+  Edge hosts that register with a valid registration token are not affected. Apart from the masked `sshKey` value, users
+  with the Project Admin, Project Editor, or Tenant Admin role who work in the Edge host's project are also not
+  affected. For more information, refer to
+  [Edge Host Registration](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12195 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12186 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12104 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7754 -->
+
+- Fixed an issue that caused Palette to unexpectedly
+  [repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) all control plane nodes after
+  a cluster change that should not trigger a repave. This affected clusters first deployed with Palette 4.7 or earlier
+  whose Palette agent was upgraded to version 4.8 or later. The agent upgrade itself did not trigger the repave.
+  Instead, the repave started with the next cluster change, such as updating `clientConfig.oidc-client-secret` in the
+  Kubernetes pack values. With this fix, these changes no longer repave control plane nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9813 -->
+
+- Fixed an issue that prevented automatic and manual
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md) on Edge clusters when any aggregated
+  `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
+  remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
+  `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.72 Palette release is 4.8.31.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.72 Palette release is
+4.8.22. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 15, 2026 - Release 4.8.71
 
 <!-- PATCH RELEASE TICKET: DOC-3277 -->
