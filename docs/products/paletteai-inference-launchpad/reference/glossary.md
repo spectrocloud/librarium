@@ -15,7 +15,7 @@ This glossary defines the key AI, product, and platform terms used across the Pa
 documentation. Use it to look up an unfamiliar term without leaving the guide you are reading.
 
 **Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) ·
-[L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v) · [W](#w)
+[L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w)
 
 ## A
 
@@ -68,6 +68,14 @@ bandwidth of the data NICs, using dynamic Link Aggregation (802.3ad) and LACP. R
 
 ## C
 
+### Category
+
+The prompt type that the [semantic router](#semantic-routing) assigns to a routed request. Each category has a
+[Simple](#simple), a [Complex](#complex), and a [Fallback](#fallback) routing rule. The console shows six categories,
+which are **Code planning**, **Code development**, **Code refactoring**, **Code review**, **Code test generation**, and
+**General**. The appliance owns the category vocabulary. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#categories-and-complexity-bands).
+
 ### Central Mode
 
 A deployment mode in which the appliance's built-in inference engine is turned off and the [gateway](#launchpad-gateway)
@@ -90,13 +98,6 @@ infrastructure costs back to the teams or workloads that consumed them. Per-clie
 makes chargeback possible.
 
 {/* NEEDS REVIEW: chargeback is defined in the source glossary but does not yet appear in any shipped PAIIL doc. Confirm the term and framing with an SME before publishing. */}
-
-### Choose per Request
-
-The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
-[semantic routing](#semantic-routing) card instead of settling the request in the Tier map. The alias contributes its
-Thinking directive to whichever model the semantic router picks. Refer to
-[Routing Behavior](../explanation/routing-behavior.md).
 
 ### Client
 
@@ -131,10 +132,11 @@ The [semantic routing](#semantic-routing) band applied to a prompt whose complex
 
 ### Complexity Threshold
 
-The boundary between the [Simple](#simple) band and the [Complex](#complex) band on the
-[semantic routing](#semantic-routing) card. The console shows the value as a percentage. `0` is the simplest prompt and
-`1` is the most complex, so a lower threshold sends more traffic to the **Complex** rule. Refer to
-[Routing Behavior](../explanation/routing-behavior.md).
+The boundary between the [Simple](#simple) band and the [Complex](#complex) band of the
+[semantic routing](#semantic-routing) rules. A [policy](#policy) sets it for the clients that follow it, and each
+[client](#client) can set its own. The console shows the value as a slider with a percentage, and the default is 50%. A
+request that scores at or above the threshold goes to the **Complex** rule, so a lower threshold sends more traffic
+there. Refer to [Routing Behavior](../explanation/routing-behavior.md#the-complexity-threshold).
 
 ### Content Bundle
 
@@ -152,11 +154,17 @@ Different models have different context window sizes.
 
 ### Decision Recording
 
-An operator-tuning feature that writes one CSV row per classification the [semantic router](#semantic-routing) makes, so
-the recorded prompts can be used to tune the categories and the [Complexity threshold](#complexity-threshold) against
-real traffic. The switch is off by default, survives a restart, and the console offers **Download** and **Delete**
-actions on the CSV. Refer to
-[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording).
+<!-- vale Vale.Spelling = NO -->
+
+An operator-tuning feature that writes one row per request the [semantic router](#semantic-routing) classifies, so that
+the recorded requests can be used to tune the [categories](#category) and the
+[Complexity threshold](#complexity-threshold) against real traffic. The workspace's [policy](#policy) sets it. A
+[client](#client) can be excluded from it on the **Decision recording** card at the end of the client's **Routing** tab.
+That card also offers **Download CSV** and **Delete records**. Recording is off by default and needs the semantic router
+running. Only a platform administrator can set it or read the recorded requests. Refer to
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording-for-a-policy).
+
+<!-- vale Vale.Spelling = YES -->
 
 ### Default Model
 
@@ -194,12 +202,12 @@ trusts individually. Refer to
 
 ## F
 
-### Fallback for Unmatched Requests
+### Fallback
 
-The box-wide model that answers any request no other control settles: a request no [Tier map](#tier-map) row matches, a
-request the [semantic router](#semantic-routing) finds no rule for, or a request that names a model the appliance does
-not serve. When the fallback is off, the appliance returns HTTP `404` for these requests. Refer to
-[The Default Model](../explanation/architecture.md#the-default-model).
+The [semantic routing](#semantic-routing) rule of a [category](#category) that answers a request the semantic router
+could not score, or a request whose [Simple](#simple) or [Complex](#complex) rule names no model. Each category has its
+own **Fallback** rule beside its **Simple** and **Complex** rules. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#how-the-lookup-works).
 
 ### FIPS
 
@@ -226,6 +234,15 @@ usage incurs per-token API costs, unlike a [local model](#local-model).
 The record of one [role](#role) given to one person or group over one or more named [workspaces](#workspace). Adding a
 workspace [member](#member) creates a grant. The console shows members, not grants. Refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+
+### Guard
+
+The two checks the [semantic router](#semantic-routing) runs on each routed request when it picks the request's
+[category](#category). Both of its checks are on by default. It refuses a prompt attack with HTTP `403` on every route,
+and it refuses a request that carries personal data with HTTP `403` only when that request would leave the appliance.
+Each check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**. The toggles are
+**Refuse jailbreak attempts** and **Scan prompts for personal data before they leave the box**. Refer to
+[Semantic Router Guard](../explanation/semantic-router-guard.md).
 
 ## H
 
@@ -472,9 +489,12 @@ write bandwidth.
 
 ### Policy
 
-The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) can spend
-and what they can reach. A policy belongs to a workspace, so every client in that workspace inherits one policy. Refer
-to [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) can spend,
+what they can reach, and how their requests are routed. A workspace follows one policy, so every client in that
+workspace inherits it. A client runs under its policy's [Tier map](#tier-map) and [semantic routing](#semantic-routing)
+rules unless the client sets rules of its own. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access) and
+[Routing Behavior](../explanation/routing-behavior.md#where-routing-rules-live).
 
 ### Prompt
 
@@ -523,11 +543,11 @@ workspaces where a [member](#member) holds it. Refer to
 
 ### Semantic Routing
 
-The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The router
-keys every rule on two axes: a category the appliance derives for the prompt, such as **Coding** or **Everything else**,
-and a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex). The card lives on the box-wide
-**Semantic routing** card under **Settings** > **Configurations**, and on each client's **Routing** section for
-per-client overrides. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The semantic
+router runs on the appliance's GPUs and keys every rule on two axes. One is a [category](#category), such as **Code
+review** or **General**. The other is a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex).
+Rules live on the **Routing** step of the [policy](#policy) a workspace follows and on each client's **Routing** tab,
+which overrides the policy. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
 [Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md).
 
 <!-- vale off -->
@@ -563,10 +583,11 @@ Defense deployments.
 ### Tier Map
 
 A routing overlay that governs which model handles a client's requests when the request names a model by name or alias.
-The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. Each
-row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
-[Choose per Request](#choose-per-request) hands the alias to the semantic router instead of settling it in the Tier map.
-Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+The card lives on each client's **Routing** tab, alongside the [semantic routing](#semantic-routing) card. The Tier map
+is also set on the **Routing** step of a [policy](#policy), and a client follows its policy's Tier map unless it has its
+own. Each row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
+[Use Semantic Router Rules](#use-semantic-router-rules) hands the alias to the semantic router instead of settling it in
+the Tier map. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Token and Tokenization
@@ -581,6 +602,15 @@ are counted.
 The process of counting and tracking token consumption per request, per model, per [API token](#api-token), and per time
 window. The appliance meters input tokens, output tokens, and derived cost for every request, which is what enforces
 [quotas](#quota), gives operators usage visibility on the **Usage** page, and enables [chargeback](#chargeback).
+
+## U
+
+### Use Semantic Router Rules
+
+The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
+[semantic routing](#semantic-routing) rules instead of settling the request in the Tier map. The rule that answers takes
+the alias's Thinking directive as its inherited reasoning depth. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#what-reaches-the-semantic-router).
 
 ## V
 
