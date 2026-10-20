@@ -29,9 +29,11 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 
 1. From the left main menu, select **Cluster**. The page opens on the **Nodes** tab.
 
-2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
+2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy a model** dialog opens.
 
-3. Open the **Model** drop-down menu and select the model to deploy.
+3. Open the **Model** drop-down menu and select the model to deploy. The menu lists only models of the appliance's
+   current mode. For the two modes, refer to
+   [One Mode per Appliance](../explanation/routing-behavior.md#one-mode-per-appliance).
 
 4. _(Optional)_ Open the **Engine** drop-down menu and select an engine. Leave it on **auto** to let the appliance
    choose the engine. For what an engine is and when you would override the automatic choice, refer to
@@ -49,7 +51,7 @@ dialog. For why you would pin a model to some nodes and not others, refer to
    model arrive pre-selected and locked as **Already deployed**, and **Deploy** is available without any further
    selection.
 
-   ![Deploy model dialog with a Nodes list for control-plane and worker-1, each showing hardware and free GPUs, and a Choose at least one node message.](/assets/docs/images/deploy-a-model_node-picker.webp)
+   ![Deploy a model dialog with a Nodes list for control-plane and worker-1, each showing hardware and free GPUs, and a Choose at least one node message.](/assets/docs/images/deploy-a-model_node-picker.webp)
 
 6. _(Optional)_ To select every node that can run the model right now, select **Select all eligible**. That choice is a
    snapshot. A node you add to the cluster later does not receive this model until you add it, as described in
@@ -60,6 +62,22 @@ dialog. For why you would pin a model to some nodes and not others, refer to
 The appliance writes nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready
 stages on each chosen node. For that lifecycle, refer to
 [Model Provisioning Lifecycle](../explanation/architecture.md#model-provisioning-lifecycle).
+
+When the semantic router is on, it moves onto the new model's GPUs. Its engine restarts once, and routing pauses briefly
+while it does. The **Models** tab lists the semantic router as **Semantic Router**, beside the models you deploy.
+
+If the model belongs to the other mode, the appliance refuses the deploy with a message such as the following.
+
+```text hideClipboard title="Example message"
+<model> runs as text-router-vision, and this box already runs text-router. One box runs one mode, because the semantic router shares one set of GPUs: remove the text-router models first, or move this model into the text-router group.
+```
+
+In the message, `<model>` is the model you selected. On an appliance that already runs vision-mode models, the message
+swaps the two mode names. Remove the models of the current mode first, or deploy a model whose catalog entry belongs to
+the current mode.
+
+If the model's catalog entry names no GPU count and no group, the **GPU sharing** step opens on the group the appliance
+already runs. For why, refer to [One Mode per Appliance](../explanation/routing-behavior.md#one-mode-per-appliance).
 
 :::info
 
@@ -100,12 +118,12 @@ For why a model becomes routable only after it passes its smoke test, refer to
 
 ## Review or Change an Engine Argument That Uses JSON
 
-When a `{ } JSON` chip appears on an **Extra arguments** row in the **Deploy model** panel, use the JSON argument editor
-to review or change the value for this deploy. For background on when the recipe carries a JSON-valued argument, refer
-to [Engine Arguments](../explanation/inference-engines.md#engine-arguments).
+When a `{ } JSON` chip appears on an **Extra arguments** row in the **Deploy a model** dialog, use the JSON argument
+editor to review or change the value for this deploy. For background on when the recipe carries a JSON-valued argument,
+refer to [Engine Arguments](../explanation/inference-engines.md#engine-arguments).
 
-1. On the **Cluster** page, select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** panel
-   opens.
+1. On the **Cluster** page, select the **Models** tab, and then select **Deploy New Model**. The **Deploy a model**
+   dialog opens.
 
 2. Choose the model in the **Model** drop-down menu, then expand the **Serving overrides** card.
 

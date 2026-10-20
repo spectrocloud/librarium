@@ -77,7 +77,10 @@ The tab also reports the following.
 
 - **Usage over time**, a chart of input, output, and total tokens across the selected period.
 
-- **Semantic routing**, a table of which model handled each request category.
+- **Semantic routing**, a table of which model answered each category and complexity band, with one row per routing
+  rule. The card ends with a count of the requests answered without routing, such as
+  `21 requests were answered without routing`, and a table of those requests. That table's **Chosen by** column shows
+  what settled each request.
 
 To scope every card on the tab to a single client, select that client in the **Client** drop-down menu in the page
 header.
