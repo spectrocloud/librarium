@@ -94,7 +94,9 @@ host to a new cluster.
    ```
 
    If the command returns a path, the agent has been upgraded, and its version directory keeps a copy of the archive.
-   You do not need a backup. If the command does not return any output, continue to the next step.
+   You do not need a backup, but after the reset, restore the archive from the version directory. Refer to
+   [Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset](#scenario---agent-mode-edge-hosts-do-not-claim-the-control-plane-vip-after-a-reset).
+   If the command does not return any output, continue to the next step.
 
 3. Back up the archive to a location that the reset does not remove.
 
