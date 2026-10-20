@@ -79,8 +79,8 @@ policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
 <!-- vale Vale.Spelling = YES -->
 
 The semantic router runs on your GPUs and shares them with the main model. The appliance deploys it at installation,
-before any local model, so an appliance that answers only through frontier providers still routes semantically. When you
-deploy a main model, the semantic router moves onto that model's GPUs. For the GPU requirements, refer to
+before any local model, so an appliance that answers only through frontier providers still routes semantically. When a
+deploy starts a new GPU sharing group, the semantic router moves into that group. For the GPU requirements, refer to
 [Suggested Hardware](../reference/hardware-requirements.md#gpu).
 
 Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. Text mode runs a

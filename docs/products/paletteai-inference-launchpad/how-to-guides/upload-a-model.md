@@ -256,7 +256,7 @@ missing from the model directory, then transfers them to the appliance.
 
 1. In the appliance console, select **Cluster** from the left main menu, then select the **Models** tab.
 
-2. Select **Deploy Model** to open the **Deploy a model** dialog.
+2. Select **Deploy Model** to open the **Deploy a model** wizard.
 
 3. Open the model drop-down menu and confirm the model you uploaded is listed. Each entry shows the model name, followed
    by details such as its engine and size. The model can appear in the list before all its weights have landed. Wait
