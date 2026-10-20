@@ -13,7 +13,7 @@ Artifact Studio v2 is the new version of [Artifact Studio](https://artifact-stud
 self-service accounts, organizations that control which artifacts you can download, and access keys for automated
 downloads. It also replaces the multi-step pack bundle wizard with a single bundle builder.
 
-The previous version of Artifact Studio is the default. To try Artifact Studio v2, open
+The previous version of Artifact Studio (v1) is the default. To try Artifact Studio v2, open
 [Artifact Studio](https://artifact-studio.spectrocloud.com/) and select **Switch to the new Artifact Studio** in the
 banner at the top of the page. To return to the previous version, select **Switch to previous version** in the header.
 Artifact Studio stores your choice in a browser cookie, so allow cookies for the site. For the previous version, refer
@@ -89,15 +89,14 @@ If the invitation link has expired or was already used, ask your organization ad
 4. Next to each artifact that you need, select **Download**. The artifacts available depend on the appliance and
    version.
 
-   | **Artifact**                   | **Description**                                                                                                                                                              |
-   | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Appliance ISO**              | A bootable host image without bundled content. Download it together with the content bundle for airgapped installations.                                                     |
-   | **Appliance ISO with content** | A bootable host image that includes the content bundle, for a single download.                                                                                               |
-   | **Content Bundle**             | Packs, profiles, and dependencies that the appliance installs beyond the OS image.                                                                                           |
-   | **Helm Chart**                 | Chart that deploys the product onto an existing Kubernetes cluster.                                                                                                          |
-   | **Machine Owner Key**          | Secure Boot enrollment key. Download it only if your hosts boot with Secure Boot enabled. On the Launchpad appliances, this artifact is labeled **MOK Key for Secure Boot**. |
-   | **vSphere Appliance**          | OVA for VMware vSphere.                                                                                                                                                      |
-   | **Palette CLI**                | Command-line interface for managing the appliance.                                                                                                                           |
+   | **Artifact**          | **Description**                                                                                                                                                              |
+   | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Appliance ISO**     | A bootable host image without bundled content. Download it together with the content bundle for airgapped installations.                                                     |
+   | **Content Bundle**    | Packs, profiles, and dependencies that the appliance installs beyond the OS image.                                                                                           |
+   | **Helm Chart**        | Chart that deploys the product onto an existing Kubernetes cluster.                                                                                                          |
+   | **Machine Owner Key** | Secure Boot enrollment key. Download it only if your hosts boot with Secure Boot enabled. On the Launchpad appliances, this artifact is labeled **MOK Key for Secure Boot**. |
+   | **vSphere Appliance** | OVA for VMware vSphere.                                                                                                                                                      |
+   | **Palette CLI**       | Command-line interface for managing the appliance.                                                                                                                           |
 
    For PaletteAI Inference Launchpad, Artifact Studio groups the artifacts by GPU build. Select **Show artifacts** for
    the build that you need.
@@ -207,13 +206,13 @@ Spectro Cloud signs artifacts, refer to [Artifact Signatures](../security/artifa
 Organization admins manage members, access tokens, and download history on the **Organization settings** page. Other
 members have a read-only view of the page. To open the page, select **Org settings** in the **User Menu**.
 
-| **Tab**          | **Purpose**                                                                                  |
-| ---------------- | -------------------------------------------------------------------------------------------- |
-| **Overview**     | Organization details and shortcuts to common admin tasks.                                    |
-| **Members**      | Members of the organization, their roles, and pending invitations.                           |
-| **Tokens**       | Organization access tokens.                                                                  |
-| **Downloads**    | Downloads by members of the organization in the last 30 days, including the download method. |
-| **Entitlements** | Artifact classes that your organization can access. Only Spectro Cloud can change them.      |
+| **Tab**          | **Purpose**                                                                                                                                                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Overview**     | Organization details and shortcuts to common admin tasks.                                                                                                                                                                 |
+| **Members**      | Members of the organization, their roles, and pending invitations.                                                                                                                                                        |
+| **Tokens**       | Organization access tokens.                                                                                                                                                                                               |
+| **Downloads**    | Downloads by members of the organization in the last 30 days, including the download method.                                                                                                                              |
+| **Entitlements** | The artifact classes that your organization can access. Artifact classes group artifacts by type and product, such as **Packs**, **Palette VerteX packs**, or **Palette installers**. Only Spectro Cloud can change them. |
 
 ### Add a Member
 
@@ -231,7 +230,7 @@ To manage a member or an invitation, open the three-dot menu for the member on t
 | -------------------- | ------------------------------------------------------------------------ |
 | **Resend invite**    | Sends the invitation again.                                              |
 | **Revoke invite**    | Cancels the invitation so that its link no longer works.                 |
-| **Promote to admin** | Gives the member organization admin permissions.                         |
+| **Promote to admin** | Gives organization admin permissions to the member.                      |
 | **Demote to member** | Removes organization admin permissions.                                  |
 | **Remove from org**  | Removes the member, who loses access to the organization's entitlements. |
 
