@@ -28,7 +28,8 @@ partial_name: installation-steps-prereqs
 
       <summary> Prepare the installation disk </summary>
 
-      You specify the device in the TUI as guided during the **Install {props.version}** steps.
+      You select the installation disk in the Palette Edge Interactive Installer, as described in
+      [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer).
 
       :::warning
 
@@ -67,7 +68,7 @@ partial_name: installation-steps-prereqs
 - SSH access to the hosts if you plan to upload the content bundle with the Palette CLI or enroll the Secure Boot
   key with MokManager.
 
-- Relevant permissions to install {props.version} on the hosts including permission to attach or mount the Appliance ISO and set hosts to
+- Relevant permissions to install {props.version} on the hosts, including permission to attach or mount the Appliance ISO and set hosts to
   boot from it.
 
   :::warning
@@ -76,9 +77,9 @@ partial_name: installation-steps-prereqs
 
   :::
 
-- If you are using Proxmox Virtual Environment (VE) as the infrastructure provider for Palette, set the VM CPU type to `host`. The default setting in the Proxmox UI is typically different, and leaving it unchanged can result in MongoDB compatibility issues. For more information on CPU types, refer to the [Proxmox VE documentation](https://pve.proxmox.com/pve-docs/chapter-qm.html#_cpu_type). 
+- If you are using Proxmox Virtual Environment (VE) as the infrastructure provider for {props.version}, set the VM CPU type to `host`. The default setting in the Proxmox UI is typically different, and leaving it unchanged can result in MongoDB compatibility issues. For more information on CPU types, refer to the [Proxmox VE documentation](https://pve.proxmox.com/pve-docs/chapter-qm.html#_cpu_type). 
 
-- If using an external registry instead of the internal Zot registry that is provided, you will need to provide the following information during the Palette installation process.
+- If you use an external registry instead of the internal Zot registry, you must provide the following information when you create the {props.version} management cluster.
 
   <details>
 
@@ -90,7 +91,7 @@ partial_name: installation-steps-prereqs
   - The password for the registry.
   - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
 
-    You can get the Base64 encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
+    You can get the Base64-encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
 
     ```bash
     base64 --wrap 0 <certificate-file>
@@ -98,8 +99,8 @@ partial_name: installation-steps-prereqs
 
   </details>
 
-- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
-  Palette installation process. This is optional but recommended for security and compliance purposes.
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token when you
+  create the {props.version} management cluster. This is optional but recommended for security and compliance purposes.
 
 - A virtual IP address (VIP) must be available for the {props.version} management cluster. You specify the VIP when you create the cluster. The VIP is used for load balancing and high availability and must be
   accessible to all nodes in the {props.version} management cluster.

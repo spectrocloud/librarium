@@ -13,6 +13,10 @@ The Palette Management Appliance is a solution for installing self-hosted Palett
 ships as a slim **Appliance ISO** that is used to boot your host along with a separate **Content bundle** that gets
 uploaded to the host.
 
+This guide refers to the machines that you install Palette on as hosts. When you create the management cluster, each
+host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on edge
+devices, these machines are also known as Edge hosts.
+
 After you install Palette, you upload pack bundles to the internal Zot registry or an external registry. You use these
 packs to create cluster profiles and deploy workload clusters with Palette.
 
@@ -31,10 +35,6 @@ The Palette Management Appliance can be used on the following infrastructure pla
 ## Installation Steps
 
 Follow the instructions to install Palette using the Palette Management Appliance on your infrastructure platform.
-
-This guide refers to the machines that you install Palette on as hosts. When you create the management cluster, each
-host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on edge
-devices, other parts of the Spectro Cloud documentation refer to these machines as Edge hosts.
 
 ### Prerequisites
 
@@ -246,29 +246,33 @@ Follow the instructions to upload the Third Party packs to your Palette instance
   app="Palette Management Appliance"
 />
 
-## Architecture of the Appliance ISO
+## Artifact Components
 
-The Appliance ISO is built with the OS, Kubernetes distribution, Container Network Interface (CNI), and Container
-Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance ISO. Zot is a
-lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster
-profiles.
+The **Appliance ISO** is a slim installer that contains the OS, Palette agent, and Kubernetes distribution needed to
+install a host.
 
-The following table displays the infrastructure profile for the self-hosted Palette appliance.
+The **Content bundle** contains all the components of the Palette management cluster, including the OS, Kubernetes
+distribution, Container Network Interface (CNI), Container Storage Interface (CSI), and a
+[Zot registry](https://zotregistry.dev/). Zot is a lightweight, OCI-compliant container image registry that is used to
+store the Palette packs needed to create cluster profiles. The content bundle also includes those packs.
 
-| **Layer**      | **Component**                                 |
-| -------------- | --------------------------------------------- |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) |
-| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      |
-| **CNI**        | Calico                                        |
-| **CSI**        | Piraeus                                       |
-| **Registry**   | Zot                                           |
+The following table displays the components of the self-hosted Palette appliance and which artifact contains each
+component.
 
-Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For hosts with secure boot,
+| **Layer**      | **Component**                                 | **Appliance ISO**  | **Content Bundle** |
+| -------------- | --------------------------------------------- | ------------------ | ------------------ |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | :white_check_mark: | :white_check_mark: |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | :white_check_mark: | :white_check_mark: |
+| **CNI**        | Calico                                        | :x:                | :white_check_mark: |
+| **CSI**        | Piraeus                                       | :x:                | :white_check_mark: |
+| **Registry**   | Zot                                           | :x:                | :white_check_mark: |
+
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For hosts with Secure Boot,
 the DRBD Compile Mode option must be set to `shipped_modules`. For how the module is loaded, refer to
 [Piraeus CSI](../../integrations/piraeus-csi.mdx#drbd-kernel-module-loading).
 
 Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
-of each component as they may be updated between releases.
+of each component as they might be updated between releases.
 
 ## Next Steps
 
