@@ -24,9 +24,23 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 Confirm with Sumit which appliance versions are affected and which version to upgrade through. QA upgraded 4.10.20 to
 4.10.21-rc.7 without VM restarts. -->
 
-- If your appliance runs a 4.9 version, upgrade it to 4.10.20 before you upgrade to this release. Upgrading directly
-  from a 4.9 version, which uses KubeVirt 1.8.3, to the KubeVirt 1.9.0 in this release can cause running virtual
-  machines to crash.
+- This release upgrades KubeVirt to version 1.9.0. Upgrading an appliance directly from a 4.9 version, which uses
+  KubeVirt 1.8.3, can cause running virtual machines to crash. Upgrade 4.9 appliances to version 4.10.20 first, and then
+  upgrade to this release.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
+<!-- VERIFY(DOC-3345): Same question as the Upgrade Considerations in #12056: which earlier releases had the separate
+VLAN range settings (engineering cites 4.10.19 and 4.10.20), and whether anyone could have turned VLAN filtering on in
+them. If nobody could have, remove this entry. -->
+<!-- TODO(DOC-3345): Link to #upgrade-considerations after PVM-1183 (#12056) merges into the drop branch. -->
+
+- If you turned on VLAN filtering (`vlanFiltering.enabled`) in an earlier release, review its settings before you
+  upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the `vlanFiltering.env.vlanRange` and
+  `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values without a warning. After the upgrade,
+  the VLAN agent removes VLANs that no NetworkAttachmentDefinition (NAD) references, and it stops programming NAD VLANs
+  that are outside the range. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
+  upgrade. Refer to [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
 
 ### Features
 
@@ -35,19 +49,18 @@ Confirm with Sumit which appliance versions are affected and which version to up
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
 <!-- TODO(DOC-3345): Link to #bridge-vlan-filtering after PVM-1183 (#12056) merges into the drop branch. -->
 
-- PaletteAI VM Launchpad now supports VLAN filtering on Linux bridge networks. Virtual machines (VMs) receive only the
-  VLANs that their NetworkAttachmentDefinitions (NADs) assign, and only when the **allowedVlans** list permits them. The
-  appliance protects the VLANs that the nodes use for their own traffic, and the **Networks** page shows a **VLAN
-  filtering** panel when a node has a problem. Refer to
-  [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
+- PaletteAI VM Launchpad now supports VLAN filtering on Linux Bridge networks. Virtual machines receive only the VLANs
+  that their NADs assign, and only when the **VM VLAN Range** permits them. The appliance protects the VLANs that the
+  nodes use for their own traffic, and the **Networks** page shows a **VLAN filtering** panel when a node has a problem.
+  Refer to [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1188 -->
 
-- VMO now uses KubeVirt 1.9.0. Because KubeVirt 1.9.0 turns on its Beta features by default, VMO keeps the Beta features
-  that it has not qualified yet turned off, on new installations and on upgrades. The KubeVirt configuration page has a
-  new **Disabled feature gates** field that lists them. Refer to
+- VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
+  not qualified, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
+  the **KubeVirt Configuration** page. Refer to
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
@@ -57,41 +70,40 @@ Confirm with Sumit which appliance versions are affected and which version to up
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1322 -->
 
-- The log **Forwarding Token** now accepts a single `Key=Value` header, such as `DD-API-KEY=<datadog-api-key>` for
-  Datadog, `api-key=<license-key>` for New Relic, or `Authorization=Basic <credentials>` for Grafana Cloud, so you can
-  forward logs to these backends. Comma-separated header pairs still apply only to metrics. Refer to
-  [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+- The **Forwarding Token** in the **Logs** section of the **Metrics and Logs** page now accepts a single `Key=Value`
+  header, so you can forward logs to Datadog (`DD-API-KEY=<datadog-api-key>`), New Relic (`api-key=<license-key>`), or
+  Grafana Cloud (`Authorization=Basic <credentials>`). Only the **Metrics** section accepts more than one
+  comma-separated `Key=Value` pair. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1317 -->
 
-- Fixed an issue that caused a blank disk hot-plugged to a running VM to always use the `ReadWriteMany` access mode and
-  the `Block` volume mode, so the DataVolume never became ready on storage that allows only the `Filesystem` volume
-  mode. The **Create New Blank Disk** form now has **Access Mode** and **Volume Mode** settings. **Access Mode**
-  defaults to `ReadWriteMany`, and **Volume Mode** defaults to **Auto (from StorageProfile)**, which uses the volume
-  mode from the StorageProfile of the StorageClass.
+- Fixed an issue that caused a blank disk hot-plugged to a running virtual machine to always use the `ReadWriteMany`
+  access mode and the `Block` volume mode. On storage that allows only the `Filesystem` volume mode, the DataVolume
+  never became ready. The **Create New Blank Disk** form now has **Access Mode** and **Volume Mode** settings. **Access
+  Mode** defaults to `ReadWriteMany`, and **Volume Mode** defaults to **Auto (from StorageProfile)**, which uses the
+  volume mode from the StorageProfile of the StorageClass.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1333 -->
 
 - Fixed an issue that caused a DataVolume to show the **Unknown** phase, with no reason, when its PersistentVolumeClaim
-  (PVC) could not be provisioned, for example because the storage backend was full or offline. The DataVolume now shows
-  a warning with the reason, and its details list the DataVolume conditions and the PVC events. Uploads to such a
-  DataVolume now fail with the reason instead of timing out after two minutes.
+  (PVC) could not be provisioned, such as when the storage backend was full or offline. The DataVolume now shows a
+  warning with the reason, and its details list the DataVolume conditions and the PVC events. Uploads to a DataVolume in
+  this state now fail with the reason instead of timing out after 2 minutes.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1305 -->
 
 - Fixed an issue that caused the confirmation dialog to grow taller than the browser window when you deleted a resource
-  that is in use, such as a Portworx StorageClass with attached DataVolumes, so the warning, the list of attached
-  resources, and the **OK** button were cut off. The dialog now fits the window, and long lists scroll.
+  that is in use, such as a Portworx StorageClass with attached DataVolumes. This cut off the warning, the list of
+  attached resources, and the **OK** button. The dialog now fits the window, and long lists scroll.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1279 -->
 
 - Fixed an issue that caused long error messages to overflow their notification and hide its close button. Error
-  notifications now also stay visible for five seconds.
+  notifications now also stay visible for 5 seconds.
 
-<!-- VERIFY(DOC-3345): PVM-1335 is a security fix (namespace values in API requests were not validated). Ask Sumit
-whether and how to publish it before adding an entry. -->
+<!-- VERIFY(DOC-3345): Ask Sumit whether PVM 1335 gets an entry, and how to word it. -->
 
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
