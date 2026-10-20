@@ -98,7 +98,7 @@ jobs:
           # via the GitHub CLI on a release run, so it needs an authenticated token here too.
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           # The script checks each pack against the pack registry, so packs without an integrations
-          # page are not linked, and writes a report of skipped and changed rows for the PR body.
+          # page are not linked, and writes a Generator Report for the PR body.
           PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
           COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
@@ -122,13 +122,13 @@ jobs:
           git commit -m "docs: add component updates for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 
-          # Create the pull request. The script's packs table report lists the skipped issues and the
+          # Create the pull request. The script's Generator Report lists the skipped issues and the
           # rows it changed, so the reviewer sees them without reading the job log.
           pr_body_file="$RUNNER_TEMP/component-updates-pr-body.md"
           {
             echo "## Describe the Change"
             echo ""
-            echo "This PR adds the component updates for the Jira ticket \`${{ env.JIRA_TICKET }}\` to the \`release-notes.md\` file."
+            echo "This PR adds the component updates for the Jira ticket \`$JIRA_TICKET\` to the \`release-notes.md\` file."
             if [[ -s "$COMPONENT_UPDATES_REPORT_FILE" ]]; then
               echo ""
               cat "$COMPONENT_UPDATES_REPORT_FILE"

@@ -9,7 +9,8 @@
 # an empty scratch directory. PALETTE_API_KEY is optional: without it, the registry check is skipped
 # and every pack is linked, as before DOC-3336.
 
-PACK_REGISTRY_API="${PALETTE_API_URL:-https://api.spectrocloud.com}"
+# The production pack registry, the same one the docs site builds its integrations pages from.
+PACK_REGISTRY_API="https://api.spectrocloud.com"
 
 # A Platone task summary, for example:
 #   [Platone] piraeus-operator 2.12.0 · week 2026-42 · csi · FIPS
@@ -41,7 +42,9 @@ fetch_platone_children() {
   local jql token="" response
   jql="parent in ($(IFS=,; echo "$*"))"
   while :; do
-    response=$(
+    # Command substitution turns off set -e inside this function, so check each page explicitly.
+    # A failed search would otherwise read as "no [Platone] tasks" and empty the packs table.
+    if ! response=$(
       curl --fail-with-body -sS --get \
         --url "${JIRA_DOMAIN}/rest/api/3/search/jql" \
         --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
@@ -50,7 +53,14 @@ fetch_platone_children() {
         --data-urlencode "fields=summary,status,parent" \
         --data-urlencode "maxResults=100" \
         ${token:+--data-urlencode "nextPageToken=${token}"}
-    )
+    ); then
+      echo "❌ The Jira search for the [Platone] children of the linked issues failed: $(head -c 300 <<< "$response")" >&2
+      return 1
+    fi
+    if ! jq -e '.issues | type == "array"' <<< "$response" >/dev/null 2>&1; then
+      echo "❌ The Jira search for the [Platone] children of the linked issues returned an unexpected response: $(head -c 300 <<< "$response")" >&2
+      return 1
+    fi
     jq -r '
       .issues[]
       | select(.fields.summary | contains("[Platone]"))
@@ -62,8 +72,8 @@ fetch_platone_children() {
   done
 }
 
-# Record a line for one section of the run report. Sections: shi, skipped, unlinked, expanded,
-# not_in_registry, notes.
+# Record a line for one section of the run report. Sections: epics, skipped, shi, other_week,
+# unlinked, expanded, ambiguous, not_in_registry, notes.
 report_add() {
   printf '%s\n' "$2" >> "${COMPONENT_UPDATES_WORK_DIR}/report-${1}.txt"
 }
@@ -106,7 +116,7 @@ load_documented_pack_rules() {
 
 # Look a pack up in the documented registries once, and cache the result in the work directory:
 #   <slug>.status    linked, unlinked, or unknown (the lookup failed, so the pack stays linked)
-#   <slug>.versions  every version the registry lists for the pack, one per line
+#   <slug>.versions  every version the documented registries list for the pack, one per line
 registry_lookup() {
   local slug="$1" cache="${COMPONENT_UPDATES_WORK_DIR}/registry-$1" response pick uid layer cloud_type
 
@@ -138,8 +148,8 @@ registry_lookup() {
   fi
 
   # Keep the packs the docs site lists: a documented registry, and a layer or add-on type the site
-  # shows. Prefer the registries in the order docusaurus.config.js lists them.
-  pick=$(
+  # shows. One line per documented registry that holds the pack.
+  if ! pick=$(
     jq -r \
       --arg name "$slug" \
       --argjson registries "$DOCUMENTED_PACK_REGISTRIES" \
@@ -156,27 +166,37 @@ registry_lookup() {
             layer: $spec.layer,
             cloudType: (if (($spec.cloudTypes // []) | index("all")) or (($spec.cloudTypes // []) | length == 0) then "all" else $spec.cloudTypes[0] end),
             rank: (.name as $n | $registries | index($n)) } ]
+      | unique_by(.uid)
       | sort_by(.rank)
-      | first // empty
+      | .[]
       | [.uid, .layer, .cloudType]
       | @tsv
-    ' <<< "$response"
-  )
+    ' <<< "$response" 2>/dev/null
+  ); then
+    echo "⚠️ The pack registry returned an unreadable response for $slug; leaving it linked." >&2
+    report_add notes "The registry returned an unreadable response for \`$slug\`, so it is linked without a check."
+    echo unknown > "${cache}.status"
+    return 0
+  fi
 
   if [[ -z "$pick" ]]; then
     echo unlinked > "${cache}.status"
     return 0
   fi
 
+  # The integrations page combines the versions of every documented registry, so read them all.
   echo linked > "${cache}.status"
-  IFS=$'\t' read -r uid layer cloud_type <<< "$pick"
-  curl --fail-with-body -sS --max-time 120 --get \
-    --url "${PACK_REGISTRY_API}/v1/packs/${slug}/registries/${uid}" \
-    --header "ApiKey: ${PALETTE_API_KEY}" \
-    --data-urlencode "cloudType=${cloud_type}" \
-    --data-urlencode "layer=${layer}" 2>/dev/null \
-    | jq -r '[.tags[]?.version | select(. != null)] | unique | .[]' > "${cache}.versions" 2>/dev/null \
-    || : > "${cache}.versions"
+  while IFS=$'\t' read -r uid layer cloud_type; do
+    [[ -n "$uid" ]] || continue
+    curl --fail-with-body -sS --max-time 120 --get \
+      --url "${PACK_REGISTRY_API}/v1/packs/${slug}/registries/${uid}" \
+      --header "ApiKey: ${PALETTE_API_KEY}" \
+      --data-urlencode "cloudType=${cloud_type}" \
+      --data-urlencode "layer=${layer}" 2>/dev/null \
+      | jq -r '.tags[]?.version | select(. != null)' >> "${cache}.versions" 2>/dev/null \
+      || true
+  done <<< "$pick"
+  sort -u -o "${cache}.versions" "${cache}.versions"
 }
 
 # Print the version to show for a pack. A Platone summary can shorten a registry version, for
@@ -198,6 +218,12 @@ registry_version() {
     return 0
   fi
 
+  if [[ "$count" -gt 1 ]]; then
+    report_add ambiguous "| \`$slug\` | $version | $(printf '%s\n' "$matches" | paste -sd, - | sed 's/,/, /g') |"
+    printf '%s' "$version"
+    return 0
+  fi
+
   report_add not_in_registry "| \`$slug\` | $version |"
   printf '%s' "$version"
 }
@@ -206,7 +232,7 @@ registry_version() {
 # wrapper that release-notes.md expects between the PACKS LIST BODY markers.
 render_packs_table() {
   local rows_file="$1" parsed="${COMPONENT_UPDATES_WORK_DIR}/packs-parsed.tsv"
-  local issue summary pack_name version layer variant normalized_pack status
+  local issue summary pack_name version week layer variant normalized_pack status
 
   : > "$parsed"
   load_documented_pack_rules
@@ -221,6 +247,7 @@ render_packs_table() {
 
     pack_name="${BASH_REMATCH[2]}"
     version="${BASH_REMATCH[3]}"
+    week="${BASH_REMATCH[4]}"
     # Summaries write the layer in either case (K8S, k8s); the published tables use lowercase.
     layer=$(printf '%s' "${BASH_REMATCH[5]}" | tr '[:upper:]' '[:lower:]')
     variant="${BASH_REMATCH[6]}"
@@ -231,6 +258,12 @@ render_packs_table() {
       echo "ℹ️ Excluding SHI build $issue: $pack_name $version" >&2
       report_add shi "| $issue | \`$pack_name\` | $version |"
       continue
+    fi
+
+    # A task from another week is usually a carry-over that ships this week, so keep it, but list it
+    # for the reviewer to confirm. COMPONENT_UPDATES_WEEK is the ticket's week, for example 2026-42.
+    if [[ -n "${COMPONENT_UPDATES_WEEK:-}" && "$week" != "$COMPONENT_UPDATES_WEEK" ]]; then
+      report_add other_week "| $issue | \`$pack_name\` | $version | $week |"
     fi
 
     # Remove trailing -fips so FIPS/non-FIPS variants can be merged
@@ -250,6 +283,10 @@ render_packs_table() {
       "$variant" \
       "$status" >> "$parsed"
   done < "$rows_file"
+
+  if [[ ! -s "$parsed" ]]; then
+    report_add notes "Every [Platone] task was skipped or excluded, so the packs table has no rows. Add rows by hand, or remove the empty table and its heading."
+  fi
 
   echo "<!-- prettier-ignore-start -->"
   echo ""
@@ -300,7 +337,7 @@ write_packs_report() {
   local out="${COMPONENT_UPDATES_WORK_DIR}/report.md"
 
   {
-    echo "### Packs Table Report"
+    echo "### Generator Report"
     echo ""
 
     if report_has epics; then
@@ -326,6 +363,15 @@ write_packs_report() {
       echo ""
     fi
 
+    if report_has other_week; then
+      echo "**Tasks from another week.** These tasks carry a different week than the ticket, usually because they carried over. They are in the table; confirm that each one ships this week."
+      echo ""
+      echo "| Issue | Pack | Version | Week |"
+      echo "| ----- | ---- | ------- | ---- |"
+      report_lines other_week
+      echo ""
+    fi
+
     if report_has unlinked; then
       echo "**Packs without a link.** These packs are not in a documented pack registry, so the table names them in backticks instead of linking them. A pack that never reached the registry might also be rejected in Platone, so confirm each one before you keep its row."
       echo ""
@@ -339,6 +385,15 @@ write_packs_report() {
       echo "| Pack | Summary version | Registry version |"
       echo "| ---- | --------------- | ---------------- |"
       report_lines expanded
+      echo ""
+    fi
+
+    if report_has ambiguous; then
+      echo "**Several registry versions match.** The table keeps the Platone summary version. Replace it with the registry version that shipped this week."
+      echo ""
+      echo "| Pack | Summary version | Registry versions |"
+      echo "| ---- | --------------- | ----------------- |"
+      report_lines ambiguous
       echo ""
     fi
 

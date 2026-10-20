@@ -42,6 +42,20 @@ jobs:
           else
             echo "run=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Refuse pull requests from forks
+        if: steps.check.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          # The steps below check out the PR head and run it with the Jira, Super, Palette, and GitHub
+          # secrets in the environment, so only regenerate on a branch of this repository.
+          HEAD_REPO=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '.head.repo.full_name // ""')
+          if [[ "$HEAD_REPO" != "$GITHUB_REPOSITORY" ]]; then
+            echo "❌ The pull request's head is in '${HEAD_REPO:-a deleted repository}', not $GITHUB_REPOSITORY, so the component updates are not regenerated." >&2
+            exit 1
+          fi
       
       - name: Retrieve Credentials
         if: steps.check.outputs.run == 'true'
@@ -155,7 +169,7 @@ jobs:
           # via the GitHub CLI on a release run, so it needs an authenticated token here too.
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           # The script checks each pack against the pack registry, so packs without an integrations
-          # page are not linked, and writes a report of skipped and changed rows for the PR comment.
+          # page are not linked, and writes a Generator Report for the PR comment.
           PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
           COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
