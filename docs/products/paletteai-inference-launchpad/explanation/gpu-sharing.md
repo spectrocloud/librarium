@@ -43,9 +43,9 @@ column.
 
 ### One Group per Appliance
 
-A group holds the GPUs that it claims. The semantic router refuses a second group on the same appliance, so one
-appliance runs one group. The group's name, such as `text-router`, matches the appliance's mode, unless the appliance
-names the group after a model. For the two modes and how a model's catalog entry decides its mode, refer to
+A group holds the GPUs that it claims. The deploy refuses a second group on the same appliance, so one appliance runs
+one group. The group's name, such as `text-router`, matches the appliance's mode, unless the appliance names the group
+after a model. For the two modes and how a model's catalog entry decides its mode, refer to
 [One Mode per Appliance](./routing-behavior.md#one-mode-per-appliance).
 
 ### How the Appliance Names the Group
@@ -70,6 +70,10 @@ the name.
 A GPU memory share is a model's part of one GPU's memory, in percent. Every share in a group is a percentage of the same
 single GPU's memory, so the shares of all members add up to one total. The console judges that total against 100 percent
 of one GPU.
+
+A model's share holds the model weights, the KV cache, and the engine's compute graphs. The panel judges only the total
+of the shares, so a share can fit the total and still be too small for its model. When a share is too small to run the
+model, the deploy can fail.
 
 The **Shared GPU memory** panel on the **GPU sharing** step lists every member of the group with its share. A **Free**
 row shows the part of the GPU that is left, and a bar draws each share and the free part.
@@ -110,8 +114,9 @@ The shares of the other members of the group are not fixed. In the **Shared GPU 
 of a model that already runs to make room for a new model. A model whose share changes restarts with its new share.
 Before the appliance writes the change, a dialog names each model that restarts.
 
-A member whose share the appliance sets is marked **not editable**. Its share counts in the total, and you cannot change
-it.
+Only the semantic router's share is marked **not editable**. The appliance deploys the semantic router at installation
+and sets its share. For how the semantic router counts in the total, refer to
+[The Semantic Router as a Group Member](#the-semantic-router-as-a-group-member).
 
 ## The Semantic Router as a Group Member
 

@@ -41,7 +41,8 @@ wizard. For why you would pin a model to some nodes and not others, refer to
    across. Leave it on **The recipe's default** to use the width that the model's recipe sets.
 
 5. In **Nodes**, select every node that should run the model. You cannot select a node whose GPUs are all in use, or
-   that has fewer free GPUs than the GPU width. For the full list of reasons a node cannot run a model, refer to
+   that has fewer free GPUs than the GPU width. If the model joins a GPU sharing group that already holds the GPUs on a
+   node, you can select that node. For the full list of reasons a node cannot run a model, refer to
    [Why a Node Cannot Be Chosen](../explanation/model-placement.md#why-a-node-cannot-be-chosen).
 
 6. Select **Next**. The **Serving** step opens.

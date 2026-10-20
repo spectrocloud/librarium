@@ -220,9 +220,10 @@ The semantic router runs on the appliance's GPUs and shares them with the main m
 installation, before any local model. An appliance that answers only through frontier providers therefore still routes
 semantically.
 
-When a deploy starts a new GPU sharing group, the semantic router moves into that group. Its engine restarts once, and
-routing pauses briefly while it does. For how groups form, refer to [GPU Sharing](./gpu-sharing.md). For the GPU
-requirements, refer to [Suggested Hardware](../reference/hardware-requirements.md#gpu).
+When a deploy starts a new GPU sharing group, the semantic router moves into that group, and its engine restarts once.
+The appliance routes the requests that arrive during the restart without semantic classification. For how groups form,
+refer to [GPU Sharing](./gpu-sharing.md). For the GPU requirements, refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
 
 An operator can turn the semantic router off. Its engine stops and frees its GPU memory, while the main model keeps
 serving without a restart. Without the semantic router, the category and **Thinking** columns of the routing rules have

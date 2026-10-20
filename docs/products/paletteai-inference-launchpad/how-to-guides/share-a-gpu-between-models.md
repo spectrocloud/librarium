@@ -47,13 +47,20 @@ calls each GPU an accelerator. For how groups, shares, and the semantic router f
 9. In the **Shared GPU memory** panel, enter the model's share in its **GPU memory share** field. The share is a
    percentage of one GPU's memory.
 
+   :::warning
+
+   The share must be large enough to hold the model weights, the KV cache, and the engine's compute graphs. If the share
+   is too small to run the model, the deploy can fail.
+
+   :::
+
 10. Review the total that the panel reports under the bar. The panel reads
     `The shares add up to <total> of one accelerator, which fits.` when the plan fits. In the message, `<total>` is the
     sum of the shares, in percent. If the panel reports a problem instead, refer to
     [Resolve a Refused Sharing Plan](#resolve-a-refused-sharing-plan).
 
 11. _(Optional)_ To make room for the new model, lower the share of another member of the group in its **GPU memory
-    share** field. A member marked **not editable**, such as the **Semantic Router**, keeps its share.
+    share** field. The **Semantic Router** row is marked **not editable** and keeps its share.
 
 12. Select **Deploy**. If the deploy changes the share of another model, a confirmation names each model that restarts.
     Select **Deploy** again to confirm.
@@ -61,8 +68,8 @@ calls each GPU an accelerator. For how groups, shares, and the semantic router f
 The model appears on the **Models** tab, and its **Group** column names the group that it joined. The console shows a
 message such as `glm-5.3-shared-with-vision is being deployed. Its state shows when it can serve.`
 
-If the deploy starts a new group, the semantic router moves into it, and routing pauses briefly while its engine
-restarts.
+If the deploy starts a new group, the semantic router moves into it, and its engine restarts. The appliance routes the
+requests that arrive during the restart without semantic classification.
 
 ### Verify the Shared Deploy
 
@@ -82,8 +89,8 @@ restarts.
    that the model runs with today.
 
 3. In the **Shared GPU memory** panel, change the model's share in its **GPU memory share** field. You can also change
-   the share of any other member, except a member marked **not editable**. **Save** becomes available after you change a
-   value.
+   the share of any other member, except the **Semantic Router**, which is marked **not editable**. **Save** becomes
+   available after you change a value.
 
 4. Review the total that the panel reports. If the panel reports a problem, refer to
    [Resolve a Refused Sharing Plan](#resolve-a-refused-sharing-plan).
