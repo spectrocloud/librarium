@@ -151,9 +151,13 @@ jobs:
           RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
           RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
           RELEASE_BASE_BRANCH: ${{ env.RELEASE_BASE_BRANCH }}
-          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # The script reads the appliance Kubernetes version from spectrocloud/appliance-palette
           # via the GitHub CLI on a release run, so it needs an authenticated token here too.
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          # The script checks each pack against the pack registry, so packs without an integrations
+          # page are not linked, and writes a report of skipped and changed rows for the PR comment.
+          PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+          COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
           touch .env
           make generate-component-updates
@@ -199,7 +203,16 @@ jobs:
         if: steps.check.outputs.run == 'true' && success() && github.event.issue.pull_request
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
+          comment_file="$RUNNER_TEMP/component-updates-comment.md"
+          {
+            echo "✅ Component updates updated successfully."
+            if [[ -s "$COMPONENT_UPDATES_REPORT_FILE" ]]; then
+              echo ""
+              cat "$COMPONENT_UPDATES_REPORT_FILE"
+            fi
+          } > "$comment_file"
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -f body="✅ Component updates updated successfully."
+            -F body=@"$comment_file"
