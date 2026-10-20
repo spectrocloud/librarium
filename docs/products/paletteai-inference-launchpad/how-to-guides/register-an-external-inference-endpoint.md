@@ -68,19 +68,21 @@ fail-safe behavior that catches a routing rule still pointing at a disabled or r
 
 ## Authorize a Client
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Egress** section, and then select **Enable egress**.
+3. Select the client to open its detail panel.
 
-4. Select **Add provider key**. The **Add provider key** dialog opens.
+4. Select the **Egress** section, and then select **Enable egress**.
 
-5. In **Provider**, select the endpoint id you registered. The dialog hides the **Key** field for a registered endpoint
+5. Select **Add provider key**. The **Add provider key** dialog opens.
+
+6. In **Provider**, select the endpoint id you registered. The dialog hides the **Key** field for a registered endpoint
    and shows a **box-managed** chip on the row instead. For why, refer to
    [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
-6. Set a positive **Daily limit**, and then select **Save**. A limit of `$0` blocks the client from that endpoint, and
+7. Set a positive **Daily limit**, and then select **Save**. A limit of `$0` blocks the client from that endpoint, and
    the table shows **$0 blocked**.
 
 Repeat for each client that should reach the endpoint. Refer to

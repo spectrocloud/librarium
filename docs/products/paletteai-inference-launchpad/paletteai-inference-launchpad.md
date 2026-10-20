@@ -133,6 +133,9 @@ Whatever brought you here, these are the fastest paths in.
   [Replace a model](./how-to-guides/replace-a-model.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Configure semantic routing](./how-to-guides/configure-semantic-routing.md) •
+  [Create a workspace](./how-to-guides/create-a-workspace.md) •
+  [Manage workspace members](./how-to-guides/manage-workspace-members.md) •
+  [Manage users](./how-to-guides/manage-users.md) • [Manage groups](./how-to-guides/manage-groups.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
   [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •

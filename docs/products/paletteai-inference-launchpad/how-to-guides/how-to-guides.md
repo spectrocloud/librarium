@@ -25,6 +25,10 @@ you the steps to do it without teaching background concepts.
 | [Configure Semantic Routing](./configure-semantic-routing.md)                           | Set the Complexity threshold, author category rules, override both per client, and turn on Decision recording. |
 | [Set the Thinking Directive for a Tier](./set-tier-thinking.md)                         | Choose off, on, or an effort level per tier on the Tier Map.                                                   |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)                         | Deploy a vision model and turn on image-to-text preprocessing for a text-only model.                           |
+| [Create a Workspace](./create-a-workspace.md)                                           | Give a team its own workspace, and choose who can act in it.                                                   |
+| [Manage Workspace Members](./manage-workspace-members.md)                               | Add, change, and remove the members of a workspace.                                                            |
+| [Manage Users](./manage-users.md)                                                       | Add, change, deactivate, and delete users, and set their passwords.                                            |
+| [Manage Groups](./manage-groups.md)                                                     | Add, change, and delete groups.                                                                                |
 | [Create a Client](./create-a-client.md)                                                 | Create a client and issue its first API token.                                                                 |
 | [Generate an API Token](./generate-an-api-token.md)                                     | Create an API token that clients use to authenticate to the appliance.                                         |
 | [Set and Manage Client Quotas](./manage-client-quotas.md)                               | Set, edit, raise, and remove a client's request, token, and cost limits.                                       |
