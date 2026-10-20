@@ -20,7 +20,7 @@ Before you begin, you need Spectro Cloud's `MOK.der` certificate file on the ser
    scp <downloaded-filename>.der <username>@<host-ip>:/tmp/MOK.der
    ```
 
-5. On your server, copy `mmx64.efi` to the EFI boot partition. The appliance includes the file at `/usr/lib/shim/mmx64.efi`, but it might not be automatically copied to the EFI partition. MokManager needs this file at `EFI/boot/mmx64.efi` in order to launch at reboot. If your host uses a different disk, use `lsblk -f` to identify the FAT32 EFI partition, and replace `/dev/sda1` in the following code block with the correct partition.
+5. On your server, copy `mmx64.efi` to the EFI boot partition. The appliance includes the file at `/usr/lib/shim/mmx64.efi`, but it might not be automatically copied to the EFI partition. MokManager needs this file at `EFI/boot/mmx64.efi` in order to launch at reboot. If your host uses a different disk, use `lsblk --fs` to identify the FAT32 EFI partition, and replace `/dev/sda1` in the following code block with the correct partition.
 
    ```bash {3}
    MP=/tmp/cos_grub_fix
