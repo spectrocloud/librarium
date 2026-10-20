@@ -9,7 +9,7 @@ function useNavbarItems() {
   return useThemeConfig().navbar.items as NavbarItemConfig[];
 }
 
-// A section link is a left-hand navbar item that opens a part of the site, such as Docs or Tutorials. Version
+// A section link is a left-hand navbar item that opens a part of the site, such as Products or Tutorials. Version
 // drop-down menus and right-hand items, such as GitHub and Ask AI, are not section links.
 function isSectionLink(item: NavbarItemConfig): boolean {
   const { position, type } = item as { position?: string; type?: string };
