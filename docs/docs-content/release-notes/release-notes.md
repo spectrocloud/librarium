@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 16, 2026 - Release 4.8.72
+## October 19, 2026 - Release 4.8.72
 
 <!-- PATCH RELEASE TICKET: DOC-3302 -->
 <!-- PATCH RELEASE VERSION: 4.8.72 -->
@@ -73,6 +73,23 @@ tags: ["release-notes"]
   `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.72 Palette release is 4.8.31.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.72 Palette release is
+4.8.22. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## October 15, 2026 - Release 4.8.71
 
