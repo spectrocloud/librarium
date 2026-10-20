@@ -20,7 +20,7 @@ address of the cluster is not claimed, the remaining hosts cannot join the clust
 complete. Palette does not report an error, but the Palette agent logs the warning
 `failed to link kube-vip image tar after retries`.
 
-Hosts that you have not reset, and hosts that you reset on version 4.10.25 or later, are not affected.
+This issue does not affect hosts that you have not reset or hosts that you reset on Palette version 4.10.25 or later.
 
 ### Debug Steps
 
@@ -77,7 +77,7 @@ Hosts that you have not reset, and hosts that you reset on version 4.10.25 or la
 7. Repeat steps 1 - 6 on each Edge host in the cluster.
 
 The copied archive persists after a Palette agent upgrade, but not after another reset. If you reset the host again on a
-version earlier than 4.10.25, repeat these steps.
+Palette version earlier than 4.10.25, repeat these steps.
 
 ### Back Up the kube-vip Image Archive before a Reset
 
@@ -94,7 +94,9 @@ host, and restore it before you add the host to a new cluster.
    ```
 
    If the command returns a path, the agent has been upgraded, and its version directory keeps a copy of the archive.
-   You do not need a backup. If the command does not return any output, continue to the next step.
+   You do not need a backup, but after the reset, restore the archive from the version directory. Refer to
+   [Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset](#scenario---agent-mode-edge-hosts-do-not-claim-the-control-plane-vip-after-a-reset).
+   If the command does not return any output, continue to the next step.
 
 3. Back up the archive to a location that the reset does not remove.
 
