@@ -10,8 +10,8 @@ keywords: ["launchpad", "ai", "release notes", "changelog"]
 
 ## Version 1.2.0 - October 20, 2026 {#version-1-2-0}
 
-PaletteAI Inference Launchpad 1.2.0 lets teams share one appliance. Each team gets a workspace with its own policy.
-Models can share a GPU. Semantic routing rules now live in policies. Certified models ship as model recipes.
+PaletteAI Inference Launchpad 1.2.0 improves how teams share one appliance. Each team gets a workspace with its own
+policy. Models can share a GPU. Semantic routing rules now live in policies. Certified models ship as model recipes.
 
 ### New Features
 
