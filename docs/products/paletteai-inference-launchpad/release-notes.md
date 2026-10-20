@@ -8,6 +8,90 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
+## Version 1.2.0 - October 20, 2026 {#version-1-2-0}
+
+PaletteAI Inference Launchpad 1.2.0 lets teams share one appliance under their own rules. Workspaces, roles, and
+policies decide who can act and what each team's clients can spend and reach. Semantic routing rules move into those
+policies, and models can share a GPU, so one appliance serves more models than it has GPUs. Certified models now arrive
+as model recipes. Estimated cost prices cached prompt tokens at their own rate, and a platform administrator sets up
+external inference endpoints in one place.
+
+### New Features
+
+- The **Access & Policy** page now controls who can act on the appliance. A platform administrator creates a workspace
+  for each team, selects the policy that the workspace follows, and gives people or groups a role in that workspace. The
+  **Users** and **Groups** tabs add and maintain the people and groups that hold those roles. Refer to
+  [Clients and Quotas](./explanation/clients-and-quotas.md#workspaces-and-access),
+  [Create a Workspace](./how-to-guides/create-a-workspace.md),
+  [Manage Workspace Members](./how-to-guides/manage-workspace-members.md),
+  [Manage Users](./how-to-guides/manage-users.md), [Manage Groups](./how-to-guides/manage-groups.md), and
+  [Access and Policy Reference](./reference/access-and-policy-reference.md) for more information.
+
+- You can now deploy a model that shares a GPU with other models instead of taking whole GPUs of its own. Each model in
+  a GPU sharing group reserves its own share of the GPU memory, so a small model, such as the semantic router, no longer
+  holds a large GPU alone. The **Deploy Model** flow is now a three-step wizard, **Model and placement**, **Serving**,
+  and **GPU sharing**, and its **Shared GPU memory** panel shows each member's share and refuses plans that do not fit.
+  You can also change the share of a model that already runs. Refer to [GPU Sharing](./explanation/gpu-sharing.md),
+  [Share a GPU Between Models](./how-to-guides/share-a-gpu-between-models.md), and
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+
+- Semantic routing rules are now set per workspace policy, and each client can override its policy's rules and
+  complexity threshold. These rules replace the appliance-wide **Semantic routing** card. The semantic router reads each
+  routed request into one of six categories and one of two complexity bands, and each rule also sets a reasoning depth.
+  The semantic router now runs on the appliance's GPUs and is on from installation. Refer to
+  [Routing Behavior](./explanation/routing-behavior.md),
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md), and
+  [Semantic Routing Reference](./reference/semantic-routing-reference.md) for more information.
+
+- The semantic router guard checks each request that the semantic router reads. It refuses prompt attacks, such as
+  jailbreak attempts, and scans prompts for personal data before a request leaves the appliance. Both checks are on by
+  default, and each has its own toggle under **Settings** > **Configurations**. Refer to
+  [Semantic Router Guard](./explanation/semantic-router-guard.md) for more information.
+
+- Decision recording writes one row for each request that the semantic router classifies, so that you can tune the
+  categories and the complexity threshold against the traffic that your clients send. You turn recording on for a
+  policy, exclude individual clients, and download or delete the recorded requests. Refer to
+  [Decision Recording](./explanation/routing-behavior.md#decision-recording) and
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md#turn-on-decision-recording-for-a-policy)
+  for more information.
+
+- Certified models now ship as model recipes. A model recipe is a single archive from Artifact Studio that holds the
+  model metadata file and the inference engine image for one GPU vendor, without the model weights. The
+  `palette content model download` and `palette content model upload` commands accept the recipe through the new
+  `--model-recipe` flag. A metadata file that you already have keeps working with `--metadata`. Refer to
+  [Model Recipes](./explanation/model-recipes.md), [Upload a Model](./how-to-guides/upload-a-model.md), and
+  [Move from a Metadata File to a Model Recipe](./how-to-guides/upload-a-model.md#move-from-a-metadata-file-to-a-model-recipe)
+  for more information.
+
+### Improvements
+
+- Estimated cost now prices prompt tokens answered from cache at a **Cache read** rate instead of the input rate, the
+  same way that frontier providers price cached input. Each model carries four rates, **Input**, **Cache read**,
+  **Output**, and **Cache write**, and you can override each one under **Settings** > **Pricing**. Refer to
+  [Usage Pricing](./explanation/usage-pricing.md) for more information.
+
+  On cache-heavy traffic, such as coding agents that resend their context on every turn, the estimated cost is lower
+  than in earlier releases. On a repeated-prompt workload, it measured about six times lower. This drop is expected and
+  is not a metering error, because earlier releases priced cached tokens at the full input rate.
+
+- The **Estimated savings** card on the **Overview** page compares locally served traffic against two fixed frontier
+  models, Anthropic Claude Opus 4.8 and OpenAI GPT-5. The comparison prices cached tokens at each frontier model's cache
+  rates, so savings on cache-heavy traffic are no longer overstated. Refer to
+  [Estimated Savings](./explanation/estimated-savings.md) for more information.
+
+- External inference endpoints are now set up in one place. A platform administrator adds an endpoint and its key under
+  **Integrations**, and a policy or a client selects an endpoint that already exists. The endpoint list no longer offers
+  an endpoint that is not set up, so a request can no longer fall back to a local model without notice. When
+  **Integrations** holds a key for the selected endpoint, the **Key** field says so, and a key that you paste there
+  applies to that policy or client only. Every screen writes an external model target as `<endpoint> / <model>`, with a
+  marker that shows that the request leaves the appliance. Refer to
+  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
+  information.
+
+- The documentation now lists the open source components that the appliance distributes under GNU licenses, with a link
+  to each component's upstream source. Refer to [Open Source Licenses](./reference/oss-licenses.md) for more
+  information.
+
 ## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
 
 PaletteAI Inference Launchpad 1.1.3 broadens what a single appliance can serve. Operators pick where each model runs and
