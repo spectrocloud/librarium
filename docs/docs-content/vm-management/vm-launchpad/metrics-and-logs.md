@@ -252,13 +252,15 @@ The following steps forward metrics to Datadog.
 
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
-Log forwarding to Datadog or Grafana Cloud is not supported, because log forwarding sends its credential only as a plain
-bearer token. To forward logs, point the **Logs** section at a receiver that accepts a plain bearer token or a Splunk
-HEC token. Refer to [Configure Log Forwarding](#configure-log-forwarding).
+Because each empty log setting uses its metrics value, the appliance also sends its logs to Datadog, at
+`https://api.datadoghq.com/api/v2/otlp/v1/logs`. This works only when the **Forwarding Token** holds a single
+`Key=Value` pair. If it holds more than one, set the log **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. Refer
+to [Configure Log Forwarding](#configure-log-forwarding).
 
 #### OTLP Receiver Formats
 
-The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers.
+The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers. The
+log **Forwarding Token** takes the same formats, but accepts only one `Key=Value` pair.
 
 | **Receiver**            | **Forwarding URL**                                                                       | **Forwarding Token**                    |
 | ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -322,8 +324,17 @@ receiver, or to change the log format.
    :::
 
 5. (Optional) If the log receiver needs a different credential from the metrics receiver, select **Add** next to the log
-   **Forwarding Token**, enter the credential, and select the save icon. The log side accepts a bearer token for an OTLP
-   receiver, or a Splunk HEC token for a Splunk HEC URL.
+   **Forwarding Token**, enter the credential, and select the save icon. The field accepts two formats:
+
+   - A plain token. VMO sends it as an `Authorization: Bearer <token>` header to an OTLP receiver, and as a Splunk HEC
+     token to a Splunk HEC URL.
+
+   - A single `Key=Value` pair, which VMO sends as a literal HTTP header. Use this for a receiver that needs a specific
+     header, such as Datadog (`DD-API-KEY=<datadog-api-key>`), Grafana Cloud (`Authorization=Basic <credentials>`), or
+     New Relic (`api-key=<license-key>`).
+
+   Unlike the metrics **Forwarding Token**, the log **Forwarding Token** does not accept more than one comma-separated
+   `Key=Value` pair.
 
 6. (Optional) If the log receiver presents a certificate issued by a private or internal CA, select **Add** next to the
    log **CA Certificate**, paste the PEM-encoded CA-signing certificate, and select the save icon. Leave it empty to use
@@ -360,7 +371,7 @@ storage in the `VMOConfig` custom resource.
 | **Log Format**            | `logging.format`                          | `text`      | Encoding of the appliance logs. Accepts `text` and `json`. Applied immediately without a pod restart.                                                |
 | **Log Forwarding**        | `logging.forwarding_enabled`              | `false`     | Starts log delivery when the log **Forwarding URL** is also set. On its own, does not send logs. Emits `logging.forwarding.toggled` on every change. |
 | **Forwarding URL**        | `logging.forwarding_endpoint`             | Empty       | Splunk HEC or OTLP receiver URL for logs. The path decides the protocol. An empty value uses the metrics **Forwarding URL**.                         |
-| **Forwarding Token**      | `logging.forwarding_token`                | Empty       | Bearer token for an OTLP receiver, or a Splunk HEC token. An empty value uses the metrics **Forwarding Token**.                                      |
+| **Forwarding Token**      | `logging.forwarding_token`                | Empty       | Bearer token or a single `Key=Value` header for an OTLP receiver, or a Splunk HEC token. An empty value uses the metrics **Forwarding Token**.       |
 | **CA Certificate**        | `logging.forwarding_ca_cert`              | Empty       | Optional PEM CA-signing certificate for the log receiver. An empty value uses the metrics **CA Certificate**.                                        |
 | **Skip TLS Verification** | `logging.forwarding_insecure_skip_verify` | `false`     | When enabled, log delivery accepts the receiver's TLS certificate without verification. Does not use the metrics value. Leave it off in production.  |
 

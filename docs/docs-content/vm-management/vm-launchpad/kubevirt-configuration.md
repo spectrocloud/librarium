@@ -38,14 +38,14 @@ through OIDC.
 
 The page is organized into the following sections, each of which maps to a part of the `KubeVirt` resource.
 
-| **Section**                                             | **Description**                                                                       | **Resource fields**                                                                                     |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [**Developer Configuration**](#developer-configuration) | CPU emulation, cluster-wide overcommit ratios, and the list of enabled feature gates. | `spec.configuration.developerConfiguration`, including `featureGates`                                   |
-| [**Strategies**](#strategies)                           | Cluster defaults for eviction, VM rollout, and uninstall behavior.                    | `spec.configuration.evictionStrategy`, `spec.configuration.vmRolloutStrategy`, `spec.uninstallStrategy` |
-| [**Live Migration**](#live-migration)                   | Concurrency, bandwidth, and timeout limits that apply to live migration.              | `spec.configuration.migrations`                                                                         |
-| [**Workload Updates**](#workload-updates)               | How KubeVirt applies updates to VMs that are already running.                         | `spec.workloadUpdateStrategy`                                                                           |
-| [**KSM Configuration**](#ksm-configuration)             | Node label selector that determines where KSM runs.                                   | `spec.configuration.ksmConfiguration`                                                                   |
-| [**Ownership**](#ownership)                             | Read-only list of the controllers that own fields on the resource.                    | `metadata.managedFields`                                                                                |
+| **Section**                                             | **Description**                                                                                     | **Resource fields**                                                                                     |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [**Developer Configuration**](#developer-configuration) | CPU emulation, cluster-wide overcommit ratios, and the lists of enabled and disabled feature gates. | `spec.configuration.developerConfiguration`, including `featureGates` and `disabledFeatureGates`        |
+| [**Strategies**](#strategies)                           | Cluster defaults for eviction, VM rollout, and uninstall behavior.                                  | `spec.configuration.evictionStrategy`, `spec.configuration.vmRolloutStrategy`, `spec.uninstallStrategy` |
+| [**Live Migration**](#live-migration)                   | Concurrency, bandwidth, and timeout limits that apply to live migration.                            | `spec.configuration.migrations`                                                                         |
+| [**Workload Updates**](#workload-updates)               | How KubeVirt applies updates to VMs that are already running.                                       | `spec.workloadUpdateStrategy`                                                                           |
+| [**KSM Configuration**](#ksm-configuration)             | Node label selector that determines where KSM runs.                                                 | `spec.configuration.ksmConfiguration`                                                                   |
+| [**Ownership**](#ownership)                             | Read-only list of the controllers that own fields on the resource.                                  | `metadata.managedFields`                                                                                |
 
 ## Configure KubeVirt
 
@@ -71,16 +71,47 @@ Select **Reload** at any point to discard your draft and fetch the current resou
 
 ### Developer Configuration
 
-| **Field**                       | **Description**                                                                                                                                                                                                             | **Default** |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| **Enable CPU emulation**        | Falls back to software CPU emulation when the host does not provide hardware virtualization extensions. Intended for lab and development environments.                                                                      | Cleared     |
-| **Memory overcommit ratio (%)** | Sets the cluster-wide level of memory overcommit. At `100`, the memory request of a VM equals its guest memory. Higher values reduce the request proportionally, so `200` requests about half and allows more VMs per node. | `100`       |
-| **CPU allocation ratio**        | Defines how much physical CPU is reserved per vCPU. Lower values give each vCPU more guaranteed CPU. Higher values increase VM density with less CPU per VM.                                                                | `10`        |
-| **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | _Varies_    |
+| **Field**                       | **Description**                                                                                                                                                                                                             | **Default**  |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| **Enable CPU emulation**        | Falls back to software CPU emulation when the host does not provide hardware virtualization extensions. Intended for lab and development environments.                                                                      | Cleared      |
+| **Memory overcommit ratio (%)** | Sets the cluster-wide level of memory overcommit. At `100`, the memory request of a VM equals its guest memory. Higher values reduce the request proportionally, so `200` requests about half and allows more VMs per node. | `100`        |
+| **CPU allocation ratio**        | Defines how much physical CPU is reserved per vCPU. Lower values give each vCPU more guaranteed CPU. Higher values increase VM density with less CPU per VM.                                                                | `10`         |
+| **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | _Varies_     |
+| **Disabled feature gates**      | Beta feature gates that stay off even though KubeVirt turns its Beta features on by default. Refer to [Disabled Feature Gates](#disabled-feature-gates).                                                                    | _Set by VMO_ |
 
 To enable a feature gate, enter its name in the **Add a gate** field and select **Add**. To disable a gate, select the
 **x** on the gate. VMO submits the list as you entered it, so the KubeVirt admission webhook rejects a name it does not
 recognize when you apply.
+
+#### Disabled Feature Gates
+
+KubeVirt 1.9.0 and later turn on every Beta feature gate by default. The **Disabled feature gates** list turns
+individual Beta gates off. VMO fills the list with the Beta gates that it has not qualified, both on new installations
+and when the cluster upgrades to KubeVirt 1.9.0. VMO fills the list only when the cluster does not have one, so your
+changes to the list stay in place across restarts and upgrades.
+
+To keep a Beta gate off, add it to **Disabled feature gates**. To let KubeVirt turn a gate on, select the **x** on the
+gate. The field suggests only Beta gates, because GA gates cannot be turned off and Alpha gates are already off. On a
+cluster that runs an earlier KubeVirt version, the field suggests no gates. A gate cannot be in both **Feature gates**
+and **Disabled feature gates**, so each field refuses a gate that is already in the other.
+
+VMO turns off the following Beta gates by default.
+
+| **Gate**                                                                | **Why VMO turns it off**                                                                                                                 |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `Template`                                                              | Deploys the `virt-template-apiserver` and `virt-template-controller` images, which are not in the airgap content and have no FIPS build. |
+| `ExternalNetResourceInjection`                                          | Changes how KubeVirt reads NetworkAttachmentDefinitions. VMO has not validated it with secondary networks.                               |
+| `PodSecondaryInterfaceNamingUpgrade`                                    | Migrates existing VMs away from the earlier naming of their pod network interfaces.                                                      |
+| `ImageVolume`, `NodeRestriction`, `GPUsWithDRA`, `HostDevicesWithDRA`   | Depends on Kubernetes feature gates that might not be on in the appliance.                                                               |
+| `KubevirtSeccompProfile`, `PasstBinding`, `LibvirtHooksServerAndClient` | Adds new runtime behavior, such as a custom `seccomp` profile, the `passt` network binding, and migration hooks.                         |
+
+:::warning
+
+Before you remove a gate from **Disabled feature gates**, check what it needs. `Template` needs images that are not in
+the airgap content, and `ImageVolume`, `NodeRestriction`, and the DRA gates need a matching Kubernetes feature gate. On
+an airgapped or FIPS appliance, removing one of these gates leaves the affected pods unable to start.
+
+:::
 
 :::info
 
@@ -179,8 +210,10 @@ To review the permissions that each built-in role holds, refer to
 ## Feature Gate Considerations
 
 The `DeclarativeHotplugVolumes` gate is required to define a CD-ROM drive that has no ISO mounted when you create a VM.
-Without the gate, VMO omits empty CD-ROM entries from the manifest it generates. For more information about adding
-CD-ROM drives, refer to [Create a VM](./virtual-machines/creating.md).
+Without the gate, VMO omits empty CD-ROM entries from the manifest it generates. On KubeVirt 1.9.0 and later, the gate
+is a Beta gate that is on by default, so it does not need to be in **Feature gates**, and VMO does not add it to
+**Disabled feature gates**. On earlier KubeVirt versions, the gate must be in **Feature gates**. For more information
+about adding CD-ROM drives, refer to [Create a VM](./virtual-machines/creating.md).
 
 `HotplugVolumes` and `DeclarativeHotplugVolumes` can both appear in the list without the admission webhook rejecting
 them. When the list contains both gates, `HotplugVolumes` takes precedence for the imperative hotplug API, while
@@ -189,7 +222,9 @@ remove `HotplugVolumes` and keep `DeclarativeHotplugVolumes`.
 
 :::warning
 
-Before you remove `DeclarativeHotplugVolumes`, attach an ISO to every VM that has an empty CD-ROM drive, or remove the
-empty drive from those VMs. VMs that keep an empty CD-ROM drive after you remove the gate can enter a degraded state.
+Before you turn off `DeclarativeHotplugVolumes`, attach an ISO to every VM that has an empty CD-ROM drive, or remove the
+empty drive from those VMs. On KubeVirt 1.9.0 and later, you turn the gate off by adding it to **Disabled feature
+gates**. On earlier versions, you remove it from **Feature gates**. VMs that keep an empty CD-ROM drive after you turn
+off the gate can enter a degraded state.
 
 :::
