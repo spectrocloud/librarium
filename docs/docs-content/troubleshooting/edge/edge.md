@@ -15,9 +15,10 @@ The following are common scenarios that you may encounter when using Edge.
 On Palette versions earlier than 4.10.25, a reset removes `kube-vip.tar`, the kube-vip image archive, from
 [agent mode](../../deployment-modes/agent-mode/agent-mode.md) Edge hosts. A reset occurs, for example, when you delete a
 cluster, remove a host from its node pool, or reset the host. When you add a reset host to a new cluster, the Palette
-agent cannot import the kube-vip image, so kube-vip does not start and the control plane virtual IP (VIP) address of the
-cluster is not claimed. The remaining hosts cannot join the cluster, and cluster provisioning does not complete. Palette
-does not report an error, but the Palette agent logs the warning `failed to link kube-vip image tar after retries`.
+agent cannot import the kube-vip image, so kube-vip does not start. As a result, the control plane virtual IP (VIP)
+address of the cluster is not claimed, the remaining hosts cannot join the cluster, and cluster provisioning does not
+complete. Palette does not report an error, but the Palette agent logs the warning
+`failed to link kube-vip image tar after retries`.
 
 Hosts that you have not reset, and hosts that you reset on version 4.10.25 or later, are not affected.
 
@@ -53,11 +54,10 @@ Hosts that you have not reset, and hosts that you reset on version 4.10.25 or la
    been upgraded, back up the archive before you reset them. Refer to
    [Back Up the kube-vip Image Archive before a Reset](#back-up-the-kube-vip-image-archive-before-a-reset).
 
-4. Copy the kube-vip image archive from the version directory. Deleting the existing link without copying the archive
-   does not resolve the issue, because the Palette agent re-creates the same link when it restarts.
+4. Copy the kube-vip image archive from the version directory.
 
    ```shell
-   sudo cp --force /opt/spectrocloud/updates/<version>/usr/local/spectrocloud/content/images/kube-vip.tar /usr/local/spectrocloud/content/images/kube-vip.tar
+   sudo cp --remove-destination /opt/spectrocloud/updates/<version>/usr/local/spectrocloud/content/images/kube-vip.tar /usr/local/spectrocloud/content/images/kube-vip.tar
    ```
 
    Replace `<version>` with the version directory from step 3.
@@ -81,9 +81,9 @@ version earlier than 4.10.25, repeat these steps.
 
 ### Back Up the kube-vip Image Archive before a Reset
 
-If the Palette agent on an agent mode Edge host has not been upgraded since you installed it, a reset removes the only
-copy of the kube-vip image archive. On versions earlier than 4.10.25, back up the archive before you reset a host like
-this, and restore it before you add the host to a new cluster.
+On Palette versions earlier than 4.10.25, a reset removes the only copy of the kube-vip image archive from an agent mode
+Edge host whose Palette agent has not been upgraded since you installed it. Back up the archive before you reset the
+host, and restore it before you add the host to a new cluster.
 
 1. Establish an SSH connection to the Edge host.
 
@@ -93,9 +93,8 @@ this, and restore it before you add the host to a new cluster.
    sudo readlink /opt/spectrocloud/bin/stylus-agent
    ```
 
-   If the command returns a path, the agent has been upgraded, and you do not need a backup, because the version
-   directory of the agent keeps a copy of the archive. If the command does not return any output, continue to the next
-   step.
+   If the command returns a path, the agent has been upgraded, and its version directory keeps a copy of the archive.
+   You do not need a backup. If the command does not return any output, continue to the next step.
 
 3. Back up the archive to a location that the reset does not remove.
 
@@ -109,7 +108,7 @@ this, and restore it before you add the host to a new cluster.
 5. Before you add the host to a new cluster, restore the archive.
 
    ```shell
-   sudo cp --force /opt/spectrocloud/kube-vip.tar.backup /usr/local/spectrocloud/content/images/kube-vip.tar
+   sudo cp --remove-destination /opt/spectrocloud/kube-vip.tar.backup /usr/local/spectrocloud/content/images/kube-vip.tar
    ```
 
 6. Restart the Palette agent service.
