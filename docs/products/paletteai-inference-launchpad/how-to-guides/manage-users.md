@@ -23,7 +23,8 @@ or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
 ## Add a User
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Users** tab, and then select **Add User**. The **Add user** wizard opens on the **Identity** step.
 
@@ -65,7 +66,8 @@ or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Users** tab. Confirm that each person you added appears with the **Groups** they are in and the
    **State** you set.

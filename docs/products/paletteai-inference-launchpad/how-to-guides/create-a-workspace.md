@@ -26,7 +26,7 @@ Give a team its own workspace on the **Access & Policy** page. For the concepts,
 
 1. From the left main menu, select **Access & Policy**.
 
-2. In the console header, set the workspace picker to **All workspaces**.
+2. In the workspace drop-down menu in the console header, select **All workspaces**.
 
 3. Select the **Workspaces** tab, and then select **Create Workspace**. The **Create workspace** wizard opens on the
    **Overview** step.
@@ -48,18 +48,19 @@ Give a team its own workspace on the **Access & Policy** page. For the concepts,
 9. _(Optional)_ If a person the workspace needs is not on the **Users** tab yet, add them. For the steps, refer to
    [Add a User](./manage-users.md#add-a-user).
 
-10. In the console header, set the workspace picker to the new workspace, and then from the left main menu, select
-    **Access & Policy**. Create the team's clients there. For the steps, refer to
+10. In the workspace drop-down menu in the console header, select the new workspace, and then from the left main menu,
+    select **Access & Policy**. Create the team's clients there. For the steps, refer to
     [Create a Client](./create-a-client.md).
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Workspaces** tab. Confirm that the new workspace appears with its **Policy**, its **Limit**, whether
    **External inferencing** is on, and the number of **Clients** it holds.
 
-3. Open the workspace picker in the console header, and confirm that the new workspace is listed.
+3. Open the workspace drop-down menu in the console header, and confirm that the new workspace is listed.
 
 ## Next Steps
 

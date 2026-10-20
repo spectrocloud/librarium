@@ -68,7 +68,7 @@ fail-safe behavior that catches a routing rule still pointing at a disabled or r
 
 ## Authorize a Client
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 

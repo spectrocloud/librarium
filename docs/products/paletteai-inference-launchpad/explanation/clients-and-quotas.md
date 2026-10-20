@@ -195,8 +195,8 @@ that needs its own clients and its own policy.
 
 <!-- vale Vale.Spelling = NO -->
 
-The workspace picker in the console header sets which workspace the console shows. The **Access & Policy** page changes
-with it:
+The workspace drop-down menu in the console header sets which workspace the console shows. The **Access & Policy** page
+changes with it:
 
 - At **All workspaces**, the page shows the **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and
   **Groups** tabs. Every tab except **Clients** covers the whole appliance.

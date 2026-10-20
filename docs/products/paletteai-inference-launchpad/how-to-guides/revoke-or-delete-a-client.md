@@ -25,7 +25,7 @@ clients and API tokens relate, refer to [Clients and Quotas](../explanation/clie
 The console shows each token's state, so you can find expired or revoked tokens. For how the appliance enforces token
 expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -41,7 +41,7 @@ The **Usage** page also shows a token's state in its per-token detail. For usage
 
 ## Revoke an API Token
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -62,7 +62,7 @@ which revokes all its API tokens and cannot be undone. For what each action keep
 
 Both actions are in the **Overview** section of the client's detail panel, each behind a confirmation.
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 

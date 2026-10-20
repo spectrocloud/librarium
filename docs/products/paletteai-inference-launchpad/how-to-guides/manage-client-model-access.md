@@ -36,7 +36,7 @@ To understand how clients and models relate, refer to [Clients and Quotas](../ex
 
 Use a client's tier map to route the client's model aliases to the models you choose.
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -64,7 +64,7 @@ controls combine, refer to [Routing Behavior](../explanation/routing-behavior.md
 
 Enable egress, then add each provider or registered endpoint the client may use.
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 

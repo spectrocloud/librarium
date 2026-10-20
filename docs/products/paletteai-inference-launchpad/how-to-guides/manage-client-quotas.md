@@ -52,7 +52,7 @@ clearing a backlog, and turn it back on afterward.
 
 ## Set a Client Quota
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -82,7 +82,7 @@ client.
 
 ## Edit or Remove a Quota
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 

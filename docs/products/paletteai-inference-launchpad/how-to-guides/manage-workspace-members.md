@@ -23,7 +23,8 @@ Change who can act in an existing workspace, and with which role. For what a mem
 
 ## Add, Change, or Remove Workspace Members
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Workspaces** tab.
 

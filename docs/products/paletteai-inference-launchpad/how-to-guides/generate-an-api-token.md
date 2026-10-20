@@ -25,7 +25,7 @@ and model access, start with [Create a Client](./create-a-client.md).
 
 If an administrator already gave you an API token, you can use it and skip the following steps.
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 

@@ -29,7 +29,7 @@ To generate an API token by itself, without stepping through the full client set
 Create a client through the **Add client** wizard. The wizard names the client, optionally sets a quota, optionally
 grants model access, and optionally issues the client's first API token.
 
-1. In the console header, set the workspace picker to the workspace that holds the client.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -76,8 +76,8 @@ A client can hold more than one API token. To add another token to a client late
 
 Confirm that the appliance registered the client and its API token.
 
-1. In the console header, confirm that the workspace picker names the workspace that holds the client, and then from the
-   left main menu, select **Access & Policy**.
+1. In the console header, confirm that the workspace drop-down menu shows the workspace that holds the client, and then
+   from the left main menu, select **Access & Policy**.
 
 2. On the **Clients** list, confirm that the new client appears under the name you gave it.
 

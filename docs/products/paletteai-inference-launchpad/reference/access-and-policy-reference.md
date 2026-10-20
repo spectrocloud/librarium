@@ -17,16 +17,16 @@ appliance console. It supports the [Create a Workspace](../how-to-guides/create-
 how workspaces, members, and policies relate, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
 
-## Tab Bar and Workspace Picker
+## Tab Bar and Workspace Drop-Down Menu
 
-The workspace picker in the console header decides which tabs **Access & Policy** offers.
+The workspace drop-down menu in the console header decides which tabs **Access & Policy** offers.
 
 <!-- vale off -->
 
-| **Picker setting** | **Tabs offered**                                                                                  |
-| ------------------ | ------------------------------------------------------------------------------------------------- |
-| **All workspaces** | **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and **Groups**                   |
-| One workspace      | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. |
+| **Drop-down menu selection** | **Tabs offered**                                                                                  |
+| ---------------------------- | ------------------------------------------------------------------------------------------------- |
+| **All workspaces**           | **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and **Groups**                   |
+| One workspace                | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. |
 
 | **Tab**        | **Where it appears**             | **What it holds**                                                                                   |
 | -------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -62,7 +62,7 @@ The **Scope** column on the **Roles** tab reads one of the following values.
 
 ### What Each Role Sees
 
-| **Role**                    | **Workspaces in the picker**           | **Clients visible**               |
+| **Role**                    | **Workspaces in the drop-down menu**   | **Clients visible**               |
 | --------------------------- | -------------------------------------- | --------------------------------- |
 | **Platform administrator**  | Every workspace and **All workspaces** | Every client in every workspace.  |
 | **Workspace administrator** | The workspaces where the role is held  | Every client in those workspaces. |

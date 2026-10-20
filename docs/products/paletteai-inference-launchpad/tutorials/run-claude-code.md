@@ -203,7 +203,7 @@ serving cannot answer requests, so the verification later in this tutorial would
 Claude Code needs a credential, and a credential belongs to a client. Create both here, and tell the appliance which
 model answers the requests this client sends.
 
-1. In the console header, set the workspace picker to **Default**, the workspace the appliance ships with.
+1. In the workspace drop-down menu in the console header, select **Default**, the workspace the appliance ships with.
 
 2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
@@ -372,7 +372,7 @@ Undo the changes the tutorial made.
 
    </Tabs>
 
-4. In the console header, confirm that the workspace picker is set to **Default**.
+4. In the console header, confirm that the workspace drop-down menu shows **Default**.
 
 5. From the left main menu, select **Access & Policy**.
 

@@ -21,7 +21,8 @@ as a [workspace member](./manage-workspace-members.md).
 
 ## Add a Group
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Groups** tab, and then select **Add Group**. The **Add group** drawer opens.
 
@@ -45,7 +46,8 @@ as a [workspace member](./manage-workspace-members.md).
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and set the workspace picker to **All workspaces**.
+1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
+   menu.
 
 2. Select the **Groups** tab. Confirm that each group appears with its **Description** and its number of **Members**.
 
