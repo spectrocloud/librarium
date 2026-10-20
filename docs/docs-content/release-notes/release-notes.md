@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 16, 2026 - Release 4.9.64
+## October 19, 2026 - Release 4.9.64
 
 <!-- PATCH RELEASE TICKET: DOC-3301 -->
 <!-- PATCH RELEASE VERSION: 4.9.64 -->
@@ -102,6 +102,23 @@ tags: ["release-notes"]
   [Local UI](../clusters/edge/local-ui/local-ui.md) tokens then rejected users on that node, and
   `/var/log/public-key-manager.log` showed the error `Failed to create secret <node>-public-key`. The task now retries
   until the secret exists.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.64 Palette release is 4.9.43.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.64 Palette release is
+4.9.26. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## October 12, 2026 - Release 4.9.63
 
