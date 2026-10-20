@@ -21343,6 +21343,33 @@
       },
       "type": "object"
     },
+    "v1OidcCallbackUrls": {
+      "description": "Tenant OIDC callback URLs. allowed entries are complete callback URLs (scheme, host, optional port and path) that OIDC authorization redirects may target; matching semantics are decided by the OIDC authentication layer.",
+      "properties": {
+        "allowWildcard": {
+          "default": false,
+          "description": "When true, allowed entries may use a leading-wildcard host matching any host under that suffix. Default false.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "allowed": {
+          "description": "Registered callback URLs allowed for this tenant, stored as the complete endpoint the admin submits (scheme and host lowercased; port and path preserved; userinfo and fragment rejected; query is preserved). Entries may use a leading-wildcard host (e.g. https://*.sso.example.com) when allowWildcard is true. An empty list clears the registrations; the tenant then allows only the platform defaults (loopback and Palette-domain callbacks) while isEnforced is true.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true,
+          "x-omitempty": false
+        },
+        "isEnforced": {
+          "default": true,
+          "description": "When false, every redirect_uri is allowed for this tenant (no reject). Default true.",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1OidcIssuerTls": {
       "properties": {
         "caCertificateBase64": {
@@ -88707,6 +88734,74 @@
           }
         ],
         "summary": "Update tenant fips setting",
+        "tags": [
+          "tenants"
+        ]
+      }
+    },
+    "/v1/tenants/{tenantUid}/preferences/oidc/callbackUrls": {
+      "get": {
+        "operationId": "v1TenantOidcCallbackUrlsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1OidcCallbackUrls"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get tenant OIDC callback URLs",
+        "tags": [
+          "tenants"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantOidcCallbackUrlsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1OidcCallbackUrls"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update tenant OIDC callback URLs",
         "tags": [
           "tenants"
         ]

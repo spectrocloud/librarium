@@ -229537,6 +229537,122 @@
         }
       ]
     },
+    "/v1/tenants/{tenantUid}/preferences/oidc/callbackUrls": {
+      "get": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get tenant OIDC callback URLs",
+        "operationId": "v1TenantOidcCallbackUrlsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "description": "Tenant OIDC callback URLs. allowed entries are complete callback URLs (scheme, host, optional port and path) that OIDC authorization redirects may target; matching semantics are decided by the OIDC authentication layer.",
+              "type": "object",
+              "properties": {
+                "allowWildcard": {
+                  "description": "When true, allowed entries may use a leading-wildcard host matching any host under that suffix. Default false.",
+                  "type": "boolean",
+                  "default": false,
+                  "x-omitempty": false
+                },
+                "allowed": {
+                  "description": "Registered callback URLs allowed for this tenant, stored as the complete endpoint the admin submits (scheme and host lowercased; port and path preserved; userinfo and fragment rejected; query is preserved). Entries may use a leading-wildcard host (e.g. https://*.sso.example.com) when allowWildcard is true. An empty list clears the registrations; the tenant then allows only the platform defaults (loopback and Palette-domain callbacks) while isEnforced is true.",
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  },
+                  "x-omitempty": false
+                },
+                "isEnforced": {
+                  "description": "When false, every redirect_uri is allowed for this tenant (no reject). Default true.",
+                  "type": "boolean",
+                  "default": true,
+                  "x-omitempty": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update tenant OIDC callback URLs",
+        "operationId": "v1TenantOidcCallbackUrlsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "description": "Tenant OIDC callback URLs. allowed entries are complete callback URLs (scheme, host, optional port and path) that OIDC authorization redirects may target; matching semantics are decided by the OIDC authentication layer.",
+              "type": "object",
+              "properties": {
+                "allowWildcard": {
+                  "description": "When true, allowed entries may use a leading-wildcard host matching any host under that suffix. Default false.",
+                  "type": "boolean",
+                  "default": false,
+                  "x-omitempty": false
+                },
+                "allowed": {
+                  "description": "Registered callback URLs allowed for this tenant, stored as the complete endpoint the admin submits (scheme and host lowercased; port and path preserved; userinfo and fragment rejected; query is preserved). Entries may use a leading-wildcard host (e.g. https://*.sso.example.com) when allowWildcard is true. An empty list clears the registrations; the tenant then allows only the platform defaults (loopback and Palette-domain callbacks) while isEnforced is true.",
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  },
+                  "x-omitempty": false
+                },
+                "isEnforced": {
+                  "description": "When false, every redirect_uri is allowed for this tenant (no reject). Default true.",
+                  "type": "boolean",
+                  "default": true,
+                  "x-omitempty": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/tenants/{tenantUid}/rateConfig": {
       "get": {
         "security": [
@@ -339616,6 +339732,33 @@
         },
         "scope": {
           "type": "string"
+        }
+      }
+    },
+    "v1OidcCallbackUrls": {
+      "description": "Tenant OIDC callback URLs. allowed entries are complete callback URLs (scheme, host, optional port and path) that OIDC authorization redirects may target; matching semantics are decided by the OIDC authentication layer.",
+      "type": "object",
+      "properties": {
+        "allowWildcard": {
+          "description": "When true, allowed entries may use a leading-wildcard host matching any host under that suffix. Default false.",
+          "type": "boolean",
+          "default": false,
+          "x-omitempty": false
+        },
+        "allowed": {
+          "description": "Registered callback URLs allowed for this tenant, stored as the complete endpoint the admin submits (scheme and host lowercased; port and path preserved; userinfo and fragment rejected; query is preserved). Entries may use a leading-wildcard host (e.g. https://*.sso.example.com) when allowWildcard is true. An empty list clears the registrations; the tenant then allows only the platform defaults (loopback and Palette-domain callbacks) while isEnforced is true.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": false
+        },
+        "isEnforced": {
+          "description": "When false, every redirect_uri is allowed for this tenant (no reject). Default true.",
+          "type": "boolean",
+          "default": true,
+          "x-omitempty": false
         }
       }
     },
