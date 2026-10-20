@@ -11,6 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 23, 2026 - PaletteAI VM Launchpad TBD {#vm-launchpad-tbd}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-TBD -->
+
+This release delivers version TBD of the PaletteAI VM Launchpad appliance, which runs on Palette TBD.
+
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3304 -->
