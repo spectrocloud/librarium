@@ -73,6 +73,10 @@ Models can share a GPU. Semantic routing rules now live in policies. Certified m
 - A new reference page lists the open source components that ship under GNU licenses. Refer to
   [Open Source Licenses](./reference/oss-licenses.md) for more information.
 
+### Upgrade
+
+To upgrade a running appliance to 1.2.0, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+
 ## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
 
 PaletteAI Inference Launchpad 1.1.3 broadens what a single appliance can serve. Operators pick where each model runs and
