@@ -252,15 +252,15 @@ The following steps forward metrics to Datadog.
 
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
-Because each empty log setting uses its metrics value, the appliance also sends its logs to Datadog, at
-`https://api.datadoghq.com/api/v2/otlp/v1/logs`. This works only when the **Forwarding Token** holds a single
+Because each empty log setting uses its metrics value, the appliance also sends its logs to Datadog at
+`https://api.datadoghq.com/api/v2/otlp/v1/logs`. This works only when the metrics **Forwarding Token** holds a single
 `Key=Value` pair. If it holds more than one, set the log **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. Refer
 to [Configure Log Forwarding](#configure-log-forwarding).
 
 #### OTLP Receiver Formats
 
 The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers. The
-log **Forwarding Token** takes the same formats, but accepts only one `Key=Value` pair.
+log **Forwarding Token** takes the same formats but accepts only one `Key=Value` pair.
 
 | **Receiver**            | **Forwarding URL**                                                                       | **Forwarding Token**                    |
 | ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -326,15 +326,12 @@ receiver, or to change the log format.
 5. (Optional) If the log receiver needs a different credential from the metrics receiver, select **Add** next to the log
    **Forwarding Token**, enter the credential, and select the save icon. The field accepts two formats:
 
-   - A plain token. VMO sends it as an `Authorization: Bearer <token>` header to an OTLP receiver, and as a Splunk HEC
-     token to a Splunk HEC URL.
+   - A plain token, which VMO sends as an `Authorization: Bearer <token>` header to an OTLP receiver, or as the Splunk
+     HEC token to a Splunk HEC URL.
 
    - A single `Key=Value` pair, which VMO sends as a literal HTTP header. Use this for a receiver that needs a specific
      header, such as Datadog (`DD-API-KEY=<datadog-api-key>`), Grafana Cloud (`Authorization=Basic <credentials>`), or
      New Relic (`api-key=<license-key>`).
-
-   Unlike the metrics **Forwarding Token**, the log **Forwarding Token** does not accept more than one comma-separated
-   `Key=Value` pair.
 
 6. (Optional) If the log receiver presents a certificate issued by a private or internal CA, select **Add** next to the
    log **CA Certificate**, paste the PEM-encoded CA-signing certificate, and select the save icon. Leave it empty to use
