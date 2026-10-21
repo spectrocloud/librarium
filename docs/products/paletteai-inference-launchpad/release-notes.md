@@ -26,6 +26,8 @@ policy. Models can share a GPU. Semantic routing rules now live in policies. Cer
 - Models can now share a GPU. Each model in a GPU sharing group reserves part of the GPU memory. The **Deploy Model**
   wizard has three steps, **Model and placement**, **Serving**, and **GPU sharing**. The **Shared GPU memory** panel
   shows each model's share. You can also change the share of a running model. Refer to
+  [GPU Sharing](./explanation/gpu-sharing.md),
+  [Share a GPU Between Models](./how-to-guides/share-a-gpu-between-models.md), and
   [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
 
 - You now set semantic routing rules in a workspace policy. Each client can override them. The appliance-wide **Semantic
