@@ -46,6 +46,29 @@ The appliance decides which model answers a request in two stages, in this order
 Both stages have a per-client overlay under **Access & Policy** > **Clients** > **Routing**. A client that leaves a
 value untouched follows the appliance-wide setting on **Settings** > **Configurations**.
 
+## Model Resolution Decision Tree
+
+The following diagram traces one request from the model field on the wire to the model that answers it. Read the
+branches from the top down, and follow the label on each arrow to reach the terminal that matches the request.
+
+![Decision tree that starts at a request with a model field and splits on auto or empty versus a named model. The auto branch checks for a client pin, otherwise walks the semantic router through a category policy claim and a claimed target. The named branch checks for a served name, otherwise a tier prefix match, otherwise the box fallback for unmatched requests. Terminals include five local model outcomes in green, one frontier or external endpoint in amber, and HTTP 404 and HTTP 429 in red. A side annotation notes that the matched tier row's Thinking directive rides the resolved model.](/assets/docs/images/routing-behavior_model-resolution.webp)
+
+Three properties of the diagram frame everything the later sections say about individual branches.
+
+- The model field the client sent is the branch that determines every other choice. A request that sent `auto` or an
+  empty field flows down the left; a request that named a model flows down the right. Refer to
+  [What Reaches the Semantic Router](#what-reaches-the-semantic-router) for the exact conditions on each branch.
+- The semantic router only re-points a request the client left to the box. A named request never reaches the semantic
+  router, so a category rule cannot override a client that picked a model by name. Refer to
+  [The Tier Map](#the-tier-map) for how the map settles a named request.
+- The Thinking directive from the matched Tier map row rides the resolved model rather than steering the choice. Refer
+  to [The Thinking Directive](./thinking-directive.md) for how the directive is interpreted at request time.
+
+Each green terminal is a local model that answers the request. The amber terminal is a frontier or external endpoint
+that answers the request after the egress gate allows it. The red terminals are refusals: `HTTP 404` for an alias that
+no rule and no fallback claims, and `HTTP 429` when the client's egress budget is exhausted for a claimed frontier
+target.
+
 ## The Tier Map
 
 The Tier map answers this question: when a client asks for a model by name, which model on the appliance actually
