@@ -11,6 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 23, 2026 - PaletteAI VM Launchpad TBD {#vm-launchpad-tbd}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-TBD -->
+
+This release delivers version TBD of the PaletteAI VM Launchpad appliance, which runs on Palette TBD.
+
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3304 -->
@@ -742,6 +748,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   `APIService` in the cluster was unavailable, for example, when `metrics-server` was not ready or an `APIService`
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9607 -->
+
+- Fixed an issue that prevented kube-vip from starting on [agent mode](../deployment-modes/agent-mode/agent-mode.md)
+  Edge hosts that were added to a new cluster after a reset, for example, after their previous cluster was deleted. The
+  control plane VIP of the new cluster was not claimed, and cluster provisioning did not complete.
 
 ### VerteX
 
