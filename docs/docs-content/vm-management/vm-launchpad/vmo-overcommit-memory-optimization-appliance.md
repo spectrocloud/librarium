@@ -251,6 +251,114 @@ spec:
 
 ```
 
+## Node Memory Reservation
+
+Each node in a VM Launchpad cluster keeps part of its memory back for host services, so VMs cannot use the full memory
+of the node. The memory that VMs and other pods can request is the node's _allocatable_ memory, which is lower than its
+total memory. Kubernetes places a VM only on a node that has enough allocatable memory left after the pods that already
+run on it.
+
+The following table lists the memory that each node keeps back.
+
+| Reservation                                                  | Applies To                        | Memory      |
+| ------------------------------------------------------------ | --------------------------------- | ----------- |
+| Host services, such as Portworx, containerd, and the Kubelet | Every node                        | About 3 GiB |
+| Eviction threshold                                           | Every node on non-FIPS appliances | 1 GiB       |
+| etcd memory request                                          | Control plane nodes               | 1 GiB       |
+| Kubernetes API server memory request                         | Control plane nodes               | 2 GiB       |
+
+Without these reservations, a large VM can take the memory that the control plane needs, and the node can become
+`NotReady`. If a VM does not start because no node has enough allocatable memory, refer to
+[Scenario - Large VM Stays Pending with Insufficient Memory](./troubleshooting.md#scenario---large-vm-stays-pending-with-insufficient-memory).
+
+### Check Node Memory Before You Upgrade
+
+<!-- TODO(DOC-3349): Name the first VM Launchpad version that reserves this memory once the drop seven version is confirmed. -->
+
+When you upgrade an existing appliance to a version that adds this reservation, the upgrade changes how much memory each
+node can give to pods:
+
+- On non-FIPS appliances, the allocatable memory of each node drops by about 4 GiB, and its allocatable ephemeral
+  storage drops by 10 GiB. The Kubelet restarts once on each node.
+
+- On FIPS and non-FIPS appliances, each control plane node gains 3 GiB of etcd and Kubernetes API server memory
+  requests. The etcd and API server pods restart once on each control plane node.
+
+A non-FIPS node that already uses more memory than its new allocatable memory can reject or evict pods when the Kubelet
+restarts. On FIPS appliances, allocatable memory does not change, so you only need to confirm that each control plane
+node has room for the new memory requests.
+
+Before you upgrade, check each node. You need `kubectl` access to the cluster. From the cluster **Overview** tab,
+download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG`
+environment variable to point to it.
+
+1. List the total memory, allocatable memory, and allocatable ephemeral storage of each node.
+
+   ```shell
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,CAPACITY:.status.capacity.memory,ALLOCATABLE:.status.allocatable.memory,EPHEMERAL:.status.allocatable.ephemeral-storage
+   ```
+
+2. Check the memory that the pods on each node request.
+
+   ```shell
+   kubectl describe nodes | grep --after-context=6 "Allocated resources"
+   ```
+
+   For each control plane node, add 3 GiB to the requested memory. On non-FIPS appliances, the result must fit within
+   the allocatable memory of the node from step 1 minus 4 GiB. On FIPS appliances, it must fit within the allocatable
+   memory of the node. If it does not fit, stop or migrate VMs on the node before you upgrade.
+
+3. On non-FIPS appliances, check the memory that the pods on each node use. Use SSH to sign in to the node with the
+   account that you created when you [installed VM Launchpad](./install.md#install), and then read the memory usage of
+   all pods, in bytes.
+
+   ```shell
+   cat /sys/fs/cgroup/kubepods.slice/memory.current
+   ```
+
+   The value must stay below the total memory of the node from step 1 minus 4 GiB. If it does not, stop or migrate VMs
+   on the node before you upgrade.
+
+4. On non-FIPS appliances, confirm that the ephemeral storage that the pods on each node request stays below the
+   allocatable ephemeral storage of the node from step 1 minus 10 GiB. The output of step 2 lists `ephemeral-storage`
+   under `Allocated resources`.
+
+### Verify Node Memory After You Upgrade
+
+1. Confirm that every node reports a `Ready` status.
+
+   ```shell
+   kubectl get nodes
+   ```
+
+2. On non-FIPS appliances, confirm that the allocatable memory and ephemeral storage of each node dropped by about 4 GiB
+   and 10 GiB, compared with the values that you listed in
+   [Check Node Memory Before You Upgrade](#check-node-memory-before-you-upgrade).
+
+   ```shell
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,ALLOCATABLE:.status.allocatable.memory,EPHEMERAL:.status.allocatable.ephemeral-storage
+   ```
+
+3. Confirm that the etcd and Kubernetes API server pods on each control plane node request `1Gi` and `2Gi` of memory.
+
+   ```shell
+   kubectl get pods --namespace kube-system --selector component=etcd --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
+   kubectl get pods --namespace kube-system --selector component=kube-apiserver --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
+   ```
+
+   During a Kubernetes version upgrade, these requests might be missing for a short time. They return when the upgrade
+   finishes.
+
+4. Confirm that the Kubelet restart did not reject or evict any pods, and that no container ran out of memory. Both
+   commands print nothing when no pod is affected.
+
+   ```shell
+   kubectl get pods --all-namespaces --field-selector=status.phase=Failed | grep --ignore-case --extended-regexp "OutOf|UnexpectedAdmission|Evicted"
+   kubectl get pods --all-namespaces --output jsonpath='{range .items[*]}{.metadata.namespace}{" "}{.metadata.name}{" "}{.status.containerStatuses[*].lastState.terminated.reason}{"\n"}{end}' | grep OOMKilled
+   ```
+
+   A pod that failed before the upgrade can also appear in the output. Check when the pod restarted to tell them apart.
+
 ## Best Practices
 
 Consider the following guidance when planning overcommit and optimization strategies:

@@ -11,6 +11,35 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Large VM Stays Pending with Insufficient Memory
+
+A VM with a large memory size, such as a 16 GiB VM on nodes with 32 GiB of memory, does not start. Its `virt-launcher`
+pod stays in the `Pending` state, and the pod events show `0/3 nodes are available: 3 Insufficient memory`.
+
+This occurs because Kubernetes places a VM only on a node that has enough _allocatable_ memory left after the pods that
+already run on it. Allocatable memory is lower than the total memory of the node, because each node keeps memory back
+for host services, and each control plane node also keeps memory back for etcd and the Kubernetes API server. Refer to
+[Node Memory Reservation](./vmo-overcommit-memory-optimization-appliance.md#node-memory-reservation) for the amounts.
+
+### Make Room for the VM
+
+You need `kubectl` access to the affected VM Launchpad cluster. From the cluster **Overview** tab, download the
+[Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+to point to it.
+
+1. Check how much memory each node can still give to new pods. The first command lists the memory that the pods on each
+   node request, and the second command lists the allocatable memory of each node.
+
+   ```shell
+   kubectl describe nodes | grep --after-context=6 "Allocated resources"
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,ALLOCATABLE:.status.allocatable.memory
+   ```
+
+2. Free memory for the VM. Stop or migrate other VMs on a node, lower the memory size of the VM, or add nodes to the
+   cluster.
+
+3. Confirm that the `virt-launcher` pod of the VM is scheduled and that the VM reaches the `Running` status.
+
 ## Scenario - Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs
 
 When you deploy the Portworx variant of VM Launchpad on VMware vSphere VMs, such as for a proof of concept, the Portworx
