@@ -242,6 +242,6 @@ appliance.
 
 - [Clients and Quotas](./clients-and-quotas.md) explains how the appliance meters each client's usage, including cost.
 
-- [Frontier Providers](./frontier-providers.md) explains how traffic reaches a frontier provider.
+- [External Inferencing](./frontier-providers.md) explains how traffic reaches an external inference endpoint.
 
 - [Glossary](../reference/glossary.md) defines the KV cache and other terms used on this page.

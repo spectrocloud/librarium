@@ -175,10 +175,11 @@ The model the appliance routes a request to when the request does not name a spe
 
 ### Egress
 
-A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model) or to a
-registered [external inference endpoint](#external-inference-endpoint). Egress denies by default: a new client cannot
-reach external providers or registered endpoints until an operator enables it. Usage labels this combined traffic
-**Egress**. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A client's ability to send requests off the appliance to an [external inference endpoint](#external-inference-endpoint).
+Egress denies by default: a new client cannot reach any endpoint until an operator enables
+[external inferencing](#external-inferencing) on the client's policy, or on the client itself when it overrides its
+policy. Usage labels this traffic **Egress**. Refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Embedding
 
@@ -193,12 +194,26 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 
 ### External Inference Endpoint
 
-An OpenAI-compatible inference host registered on the appliance as an appliance-wide [egress](#egress) target. The host
-can be a hosted router, a partner API, a second appliance, or an in-house inference server. After you register it, its
-models appear in a client's routing picker, and traffic to it is metered as egress. The host can authenticate the
-appliance with a key, custom headers, or both, and can present a self-signed or private-CA certificate the appliance
-trusts individually. Refer to
+An [egress](#egress) target outside the appliance, which a platform administrator sets up once for the whole appliance
+under **Integrations**. Three endpoints are built in, for Anthropic, OpenAI, and Gemini, and are not available until
+they are set up. Any other OpenAI-compatible host can be registered as an endpoint, such as a hosted router, a partner
+API, a second appliance, or an in-house inference server. A [policy](#policy) or a [client](#client) selects an endpoint
+that is already set up and never defines one. Its models appear in the routing picker as `<endpoint> / <model>`, and
+traffic to it is metered as egress. The host can authenticate the appliance with a key, custom headers, or both, and can
+present a self-signed or private-CA certificate the appliance trusts individually. Refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+
+<!-- vale Vale.Terms = NO -->
+
+### External Inferencing
+
+<!-- vale Vale.Terms = YES -->
+
+The console's name for sending a request to a model outside the appliance through an
+[external inference endpoint](#external-inference-endpoint). A policy, or a client that overrides its policy, turns it
+on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored
+under **Integrations**, unless the policy or client overrides that key for itself alone. Refer to
+[External Inferencing](../explanation/frontier-providers.md).
 
 ## F
 
@@ -223,9 +238,11 @@ completes.
 
 ### Frontier Model
 
-A cloud-hosted, state-of-the-art model reached through an external provider's API rather than served on the appliance.
-The appliance can route to a frontier model when [egress](#egress) is enabled and routing policy calls for it. Frontier
-usage incurs per-token API costs, unlike a [local model](#local-model).
+A cloud-hosted, state-of-the-art model, such as one from Anthropic, OpenAI, or Gemini, reached through a built-in
+[external inference endpoint](#external-inference-endpoint) rather than served on the appliance. The console lists it as
+an external model, such as `anthropic / claude-opus-4-8`. The appliance can route to a frontier model when
+[egress](#egress) is enabled and routing policy calls for it. Frontier usage incurs per-token API costs, unlike a
+[local model](#local-model).
 
 ## G
 
