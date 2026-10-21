@@ -35,18 +35,18 @@ grants model access, and optionally issues the client's first API token.
 
 3. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
 
-4. On the **Overview** step, enter a **Client name**, and then select **Next step**. The appliance assigns the client an
+4. On the **Overview** step, enter a **Client name**. To give the client its own egress and routing settings instead of
+   its policy's, turn on **Override policy settings**. Then select **Next step**. The appliance assigns the client an
    immutable identifier and registers it as active.
 
 5. _(Optional)_ On the **Quotas** step, add usage limits for the client, and then select **Next step**. For details,
    refer to [Set and Manage Client Quotas](./manage-client-quotas.md).
 
-6. _(Optional)_ On the **Egress** step, select **Enable egress** to let the client reach external models, including
-   built-in frontier providers and registered external inference endpoints, and then select **Next step**. External
-   access is denied by default. To add a provider key or authorize a registered endpoint, and to set a daily spend cap,
-   refer to [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
-   To register an endpoint first, refer to
-   [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
+6. _(Override policy settings only)_ On the **Egress** step, turn on **Enable external inferencing**, and add each
+   external inference endpoint the client can reach. Then select **Next step**. Without **Override policy settings**,
+   the client follows its workspace policy's external inferencing settings. For the endpoint table, the **Key** field,
+   and the **Daily limit**, refer to
+   [Manage a Client's Model Access](./manage-client-model-access.md#allow-a-client-to-reach-external-models).
 
 7. _(Optional)_ On the **Routing** step, leave the **Tier map** unchanged to route the client with the appliance's
    default model routing, or edit the **Tier map** to route the client's model aliases to specific models. Then select

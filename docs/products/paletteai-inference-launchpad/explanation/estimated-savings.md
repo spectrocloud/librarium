@@ -98,4 +98,4 @@ The **By Client** export on the **Usage** page also carries both amounts in its 
 
 - [View Client Usage](../how-to-guides/view-client-usage.md) walks through reading usage for each client.
 
-- [Frontier Providers](./frontier-providers.md) explains how traffic reaches a frontier provider.
+- [External Inferencing](./frontier-providers.md) explains how traffic reaches an external inference endpoint.

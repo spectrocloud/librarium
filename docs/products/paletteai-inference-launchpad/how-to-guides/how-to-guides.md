@@ -34,7 +34,7 @@ you the steps to do it without teaching background concepts.
 | [Generate an API Token](./generate-an-api-token.md)                                     | Create an API token that clients use to authenticate to the appliance.                                                |
 | [Set and Manage Client Quotas](./manage-client-quotas.md)                               | Set, edit, raise, and remove a client's request, token, and cost limits.                                              |
 | [Manage a Client's Model Access](./manage-client-model-access.md)                       | Route a client to models and allow it to reach external models.                                                       |
-| [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md) | Register an OpenAI-compatible host, authorize a client, and route to its models.                                      |
+| [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md) | Register an OpenAI-compatible host under Integrations, authorize a policy, and route to its models.                   |
 | [View Token Usage](./view-token-usage.md)                                               | Find token usage by model and by client, and open the metrics dashboards.                                             |
 | [View Client Usage](./view-client-usage.md)                                             | View quota utilization, historical consumption, and per-token usage.                                                  |
 | [Revoke or Delete a Client](./revoke-or-delete-a-client.md)                             | Find expired keys, revoke a token, or delete a client.                                                                |
