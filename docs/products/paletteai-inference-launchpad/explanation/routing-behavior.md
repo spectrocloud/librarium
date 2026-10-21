@@ -81,11 +81,11 @@ The Tier map decides which model on the appliance answers when a client asks for
 
 Each Tier map row has the following columns.
 
-| **Column**       | **What it holds**                                                                                                                                                                                                                                                                                                                                                             |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Alias prefix** | The name the client sends, matched by prefix. Every Tier map starts with seven seeded presets, in this order: `claude-fable-`, `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`. The seeded rows cannot be removed. You can also add a custom prefix.                                                                                        |
-| **Model**        | A model the appliance serves, or the special picker value **Use Semantic Router rules**. When Model is a served model, the Tier map settles the request in Stage 1. When Model is **Use Semantic Router rules**, the alias is handed to the semantic router in Stage 2.                                                                                                       |
-| **Thinking**     | A directive attached to the chosen model that tells a reasoning-capable model how much reasoning to do before it answers. When the Tier map hands the alias to the semantic router, the directive becomes the inherited reasoning depth of the rule that answers. For the modes, levels, and per-engine behavior, refer to [The Thinking Directive](./thinking-directive.md). |
+| **Column**       | **What it holds**                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Alias prefix** | The name the client sends, matched by prefix. Every Tier map starts with seven seeded presets, in this order: `claude-fable-`, `claude-opus-`, `claude-sonnet-`, `claude-haiku-`, `gpt-`, `gemini-`, and `grok-`. The seeded rows cannot be removed. You can also add a custom prefix.                                                                                                                                                                       |
+| **Model**        | A model the appliance serves, an external model, or the special picker value **Use Semantic Router rules**. An external model is written as `<endpoint> / <model>`, such as `gemini / gemini-2.5-pro`, with a marker that shows the request leaves the appliance. When Model is a served or external model, the Tier map settles the request in Stage 1. When Model is **Use Semantic Router rules**, the alias is handed to the semantic router in Stage 2. |
+| **Thinking**     | A directive attached to the chosen model that tells a reasoning-capable model how much reasoning to do before it answers. When the Tier map hands the alias to the semantic router, the directive becomes the inherited reasoning depth of the rule that answers. For the modes, levels, and per-engine behavior, refer to [The Thinking Directive](./thinking-directive.md).                                                                                |
 
 <!-- vale Vale.Spelling = NO -->
 
@@ -167,9 +167,10 @@ rule in this order.
 The **Fallback** rule keeps a category's traffic on a model you chose when scoring is unavailable or a banded rule is
 empty. If a category has banded rules but no fallback model, the console warns you to pick one.
 
-A rule can name a model the appliance serves locally, or a frontier model from one of the client's provider keys. Every
-rule that sends a request off the appliance still follows the client's external inferencing settings and daily limit. A
-rule that names a frontier model works only for a client with external inferencing enabled.
+A rule can name a model the appliance serves locally, or an external model from an endpoint the policy or client lists,
+written as `<endpoint> / <model>`. Every rule that sends a request off the appliance still follows the client's external
+inferencing settings and daily limit. A rule that names an external model works only for a client with external
+inferencing enabled.
 
 <!-- vale off -->
 
@@ -190,15 +191,15 @@ alias the request came through.
 The following table shows four requests from one client, each answered by a different rule. The client's Complexity
 threshold is the default of 50%.
 
-| **Category and rule**              | **Model and Thinking**                                                        | **What happens**                                                                                                                                                                                                           |
-| ---------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code refactoring** / **Complex** | `deepseek-v4-pro`, Thinking **Inherited**                                     | A coding agent sends `auto` and asks to restructure a module across several files. The prompt scores at or above 50%. The router picks `deepseek-v4-pro`.                                                                  |
-| **Code development** / **Simple**  | `gemma-4`, Thinking **off**                                                   | A coding agent sends `auto` and asks for a short helper function. The prompt scores below 50%. The router picks `gemma-4` and turns reasoning off.                                                                         |
-| **Code planning** / **Complex**    | A frontier model from the client's provider key, Thinking **effort** **high** | A request names `claude-opus-4-8`, whose alias is set to **Use Semantic Router rules**, and asks for a migration plan. The prompt scores at or above 50%. The router sends it off the appliance at a high reasoning level. |
-| **General** / **Fallback**         | `glm-5.2`                                                                     | A request sends `auto`, and the semantic router cannot score it. The category's **Fallback** rule answers with `glm-5.2`.                                                                                                  |
+| **Category and rule**              | **Model and Thinking**                                      | **What happens**                                                                                                                                                                                                           |
+| ---------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Code refactoring** / **Complex** | `deepseek-v4-pro`, Thinking **Inherited**                   | A coding agent sends `auto` and asks to restructure a module across several files. The prompt scores at or above 50%. The router picks `deepseek-v4-pro`.                                                                  |
+| **Code development** / **Simple**  | `gemma-4`, Thinking **off**                                 | A coding agent sends `auto` and asks for a short helper function. The prompt scores below 50%. The router picks `gemma-4` and turns reasoning off.                                                                         |
+| **Code planning** / **Complex**    | `anthropic / claude-opus-4-8`, Thinking **effort** **high** | A request names `claude-opus-4-8`, whose alias is set to **Use Semantic Router rules**, and asks for a migration plan. The prompt scores at or above 50%. The router sends it off the appliance at a high reasoning level. |
+| **General** / **Fallback**         | `glm-5.2`                                                   | A request sends `auto`, and the semantic router cannot score it. The category's **Fallback** rule answers with `glm-5.2`.                                                                                                  |
 
-The rules in this table are illustrative. Real rules depend on the models the appliance serves and the provider keys its
-clients hold.
+The rules in this table are illustrative. Real rules depend on the models the appliance serves and the external
+inference endpoints its policies and clients list.
 
 ## The Complexity Threshold
 
