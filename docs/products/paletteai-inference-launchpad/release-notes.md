@@ -8,7 +8,7 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
-## Version 1.2.0 - October 20, 2026 {#version-1-2-0}
+## Version 1.2.0 - October 21, 2026 {#version-1-2-0}
 
 PaletteAI Inference Launchpad 1.2.0 improves how teams share one appliance. Each team gets a workspace with its own
 policy. Models can share a GPU. Semantic routing rules now live in policies. Certified models ship as model recipes.
@@ -52,6 +52,17 @@ policy. Models can share a GPU. Semantic routing rules now live in policies. Cer
   flag still works. Refer to [Model Recipes](./explanation/model-recipes.md) and
   [Upload a Model](./how-to-guides/upload-a-model.md) for more information.
 
+- GLM 5.3 is now a certified model.
+
+<!-- vale Vale.Spelling = NO -->
+
+- A new **Vision preprocessing** card reports the images extracted, the extractions that failed, and the turns over the
+  image cap. The card counts each image against the client that sent the turn, so inside a workspace, the card shows
+  only that workspace's figures. The card appears after a vision model first answers. Refer to
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) for more information.
+
+<!-- vale Vale.Spelling = YES -->
+
 ### Improvements
 
 - Estimated cost now prices cached prompt tokens at a lower **Cache read** rate. You can change each rate under
@@ -73,9 +84,22 @@ policy. Models can share a GPU. Semantic routing rules now live in policies. Cer
 - A new reference page lists the open source components that ship under GNU licenses. Refer to
   [Open Source Licenses](./reference/oss-licenses.md) for more information.
 
-### Upgrade
+### Security Notices
 
-To upgrade a running appliance to 1.2.0, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+- The password reset flow no longer allows an account takeover (CVE-2026-18963).
+
+- Image URL fetching no longer allows server-side request forgery.
+
+- The embedding and classification endpoints now require authentication.
+
+- Integration probes can no longer scan internal cluster addresses.
+
+- The console now hides and protects the appliance's own identity groups.
+
+### Breaking Changes
+
+- Version 1.2.0 supports new installations only. You cannot upgrade an appliance from 1.1.5 to 1.2.0. Refer to
+  [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
 
 ## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
 
