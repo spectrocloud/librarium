@@ -42,6 +42,16 @@ them. If nobody could have, remove this entry. -->
   that are outside the range. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
   upgrade. Refer to [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
+<!-- TODO(DOC-3349): Link to #check-node-memory-before-you-upgrade after DOC-3349 (#12296) merges into the drop branch. -->
+
+- Each appliance node now reserves memory for host services, and each control plane node reserves memory for etcd and
+  the Kubernetes API server. This prevents a large virtual machine from taking the memory that the control plane needs.
+  On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about 4 GiB and its allocatable
+  ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods when the Kubelet restarts
+  during the upgrade. Before you upgrade, confirm that each node has room for the reservation. Refer to
+  [VM Overcommitment and Memory Optimization](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md).
+
 ### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-952 -->
