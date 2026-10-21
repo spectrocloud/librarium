@@ -94,9 +94,13 @@ jobs:
       
       - name: Execute Script to Generate Component Updates
         env:
-          # The script reads the appliance Kubernetes version from spectrocloud/spectro-appliance-builder
+          # The script reads the appliance Kubernetes version from spectrocloud/appliance-palette
           # via the GitHub CLI on a release run, so it needs an authenticated token here too.
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          # The script checks each pack against the pack registry, so packs without an integrations
+          # page are not linked, and writes a Generator Report for the PR body.
+          PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+          COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
           touch .env
           JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" RELEASE_BASE_BRANCH="${{ env.BASE_BRANCH }}" make generate-component-updates
@@ -104,6 +108,7 @@ jobs:
       - name: Create a PR with generated component updates
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
           # Create a new branch
           branch_name="${{ env.JIRA_TICKET }}-generate-component-updates-$(date +%Y%m%d%H%M%S)"
@@ -117,11 +122,19 @@ jobs:
           git commit -m "docs: add component updates for ${{ env.JIRA_TICKET }}"
           git push origin $branch_name
 
-          # Create the pull request
-          pr_body='
-          ## Describe the Change
-          This PR adds the component updates for the Jira ticket `${{ env.JIRA_TICKET }}` to the `release-notes.md` file.'
-          output=$(gh pr create --base "${{ env.BASE_BRANCH }}" --title "docs: add component updates for ${{ env.JIRA_TICKET }}" --body "$pr_body")
+          # Create the pull request. The script's Generator Report lists the skipped issues and the
+          # rows it changed, so the reviewer sees them without reading the job log.
+          pr_body_file="$RUNNER_TEMP/component-updates-pr-body.md"
+          {
+            echo "## Describe the Change"
+            echo ""
+            echo "This PR adds the component updates for the Jira ticket \`$JIRA_TICKET\` to the \`release-notes.md\` file."
+            if [[ -s "$COMPONENT_UPDATES_REPORT_FILE" ]]; then
+              echo ""
+              cat "$COMPONENT_UPDATES_REPORT_FILE"
+            fi
+          } > "$pr_body_file"
+          output=$(gh pr create --base "${{ env.BASE_BRANCH }}" --title "docs: add component updates for ${{ env.JIRA_TICKET }}" --body-file "$pr_body_file")
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
           echo "PR successfully created $pr_url."
 
