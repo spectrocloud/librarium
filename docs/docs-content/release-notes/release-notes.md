@@ -743,6 +743,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   remained after uninstalling an add-on such as `prometheus-adapter`. Renewal failed with the error
   `unable to retrieve the complete list of server APIs`, and the certificates were not renewed.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9607 -->
+
+- Fixed an issue that prevented kube-vip from starting on [agent mode](../deployment-modes/agent-mode/agent-mode.md)
+  Edge hosts that were added to a new cluster after a reset, for example, after their previous cluster was deleted. The
+  control plane VIP of the new cluster was not claimed, and cluster provisioning did not complete.
+
 ### VerteX
 
 #### Features
