@@ -30,5 +30,12 @@ are also covered in this section.
       buttonText: "Learn more",
       url: "/tutorials/ai/palette-mcp/integrate-palette-mcp-agentic/",
     },
+    {
+      title: "Run a Local AI Model on a Jetson Thor at the Edge",
+      description:
+        "Flash an NVIDIA Jetson AGX Thor, register it with Palette in agent mode, deploy an Edge Native cluster, and serve a local AI model on the device GPU.",
+      buttonText: "Learn more",
+      url: "/tutorials/ai/ai-workloads/run-local-ai-model-jetson-thor/",
+    },
   ]}
 />
