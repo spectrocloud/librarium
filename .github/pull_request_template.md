@@ -23,7 +23,7 @@ Before submitting your PR for review, please complete this checklist to ensure q
         _This can be done later, but leave a note if required._
 - [ ] All **CI jobs** have completed successfully.
 - [ ] Add **Backport labels** if the change should be reflected in previous versions. _If required, remember to add the
-      `auto-backport` label, as well as the `backport-version-**` labels._
+      `auto-backport` label, as well as the `backport-version-**` labels. The oldest supported branch is `version-4-7`._
 - [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (for
       example, Engineering, Product, etc.)
 - [ ] Add the `notify-slack` label once this checklist has been completed. The team will be notified and review your PR.
