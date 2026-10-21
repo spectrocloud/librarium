@@ -5,7 +5,7 @@ description:
   "Step-by-step guidance for platform operators on how to upload a model recipe and the model weights from a jumpbox to
   a PaletteAI Inference Launchpad appliance with the Palette CLI, so that the model appears in the deploy catalog."
 hide_table_of_contents: false
-sidebar_position: 1.5
+sidebar_position: 0.9
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
 keywords:
   [
