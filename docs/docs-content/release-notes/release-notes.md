@@ -23,9 +23,8 @@ tags: ["release-notes"]
 
 - Improved the load times of the **Users** and **Teams** tabs on the **Users & Teams** page for tenants with a large
   number of [users and teams](../user-management/users-and-teams/users-and-teams.md). Palette now retrieves users and
-  teams one page at a time through the new `POST /v2/users/summary` and `POST /v2/teams/summary` API endpoints, which
-  return paginated results. The `POST /v1/users/summary` and `POST /v1/teams/summary` endpoints continue to work as
-  before.
+  teams through the new paginated `POST /v2/users/summary` and `POST /v2/teams/summary` API endpoints. The
+  `POST /v1/users/summary` and `POST /v1/teams/summary` endpoints continue to work as before.
 
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
