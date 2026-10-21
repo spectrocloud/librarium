@@ -14,8 +14,8 @@ keywords:
 This glossary defines the key AI, product, and platform terms used across the PaletteAI Inference Launchpad
 documentation. Use it to look up an unfamiliar term without leaving the guide you are reading.
 
-**Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) ·
-[M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [V](#v)
+**Go to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) ·
+[L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w)
 
 ## A
 
@@ -68,6 +68,14 @@ bandwidth of the data NICs, using dynamic Link Aggregation (802.3ad) and LACP. R
 
 ## C
 
+### Category
+
+The prompt type that the [semantic router](#semantic-routing) assigns to a routed request. Each category has a
+[Simple](#simple), a [Complex](#complex), and a [Fallback](#fallback) routing rule. The console shows six categories,
+which are **Code planning**, **Code development**, **Code refactoring**, **Code review**, **Code test generation**, and
+**General**. The appliance owns the category vocabulary. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#categories-and-complexity-bands).
+
 ### Central Mode
 
 A deployment mode in which the appliance's built-in inference engine is turned off and the [gateway](#launchpad-gateway)
@@ -90,13 +98,6 @@ infrastructure costs back to the teams or workloads that consumed them. Per-clie
 makes chargeback possible.
 
 {/* NEEDS REVIEW: chargeback is defined in the source glossary but does not yet appear in any shipped PAIIL doc. Confirm the term and framing with an SME before publishing. */}
-
-### Choose per Request
-
-The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
-[semantic routing](#semantic-routing) card instead of settling the request in the Tier map. The alias contributes its
-Thinking directive to whichever model the semantic router picks. Refer to
-[Routing Behavior](../explanation/routing-behavior.md).
 
 ### Client
 
@@ -131,10 +132,11 @@ The [semantic routing](#semantic-routing) band applied to a prompt whose complex
 
 ### Complexity Threshold
 
-The boundary between the [Simple](#simple) band and the [Complex](#complex) band on the
-[semantic routing](#semantic-routing) card. The console shows the value as a percentage. `0` is the simplest prompt and
-`1` is the most complex, so a lower threshold sends more traffic to the **Complex** rule. Refer to
-[Routing Behavior](../explanation/routing-behavior.md).
+The boundary between the [Simple](#simple) band and the [Complex](#complex) band of the
+[semantic routing](#semantic-routing) rules. A [policy](#policy) sets it for the clients that follow it, and each
+[client](#client) can set its own. The console shows the value as a slider with a percentage, and the default is 50%. A
+request that scores at or above the threshold goes to the **Complex** rule, so a lower threshold sends more traffic
+there. Refer to [Routing Behavior](../explanation/routing-behavior.md#the-complexity-threshold).
 
 ### Content Bundle
 
@@ -152,11 +154,17 @@ Different models have different context window sizes.
 
 ### Decision Recording
 
-An operator-tuning feature that writes one CSV row per classification the [semantic router](#semantic-routing) makes, so
-the recorded prompts can be used to tune the categories and the [Complexity threshold](#complexity-threshold) against
-real traffic. The switch is off by default, survives a restart, and the console offers **Download** and **Delete**
-actions on the CSV. Refer to
-[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording).
+<!-- vale Vale.Spelling = NO -->
+
+An operator-tuning feature that writes one row per request the [semantic router](#semantic-routing) classifies, so that
+the recorded requests can be used to tune the [categories](#category) and the
+[Complexity threshold](#complexity-threshold) against real traffic. The workspace's [policy](#policy) sets it. A
+[client](#client) can be excluded from it on the **Decision recording** card at the end of the client's **Routing** tab.
+That card also offers **Download CSV** and **Delete records**. Recording is off by default and needs the semantic router
+running. Only a platform administrator can set it or read the recorded requests. Refer to
+[Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md#turn-on-decision-recording-for-a-policy).
+
+<!-- vale Vale.Spelling = YES -->
 
 ### Default Model
 
@@ -167,10 +175,11 @@ The model the appliance routes a request to when the request does not name a spe
 
 ### Egress
 
-A client's ability to send requests off the appliance to an [external, or frontier, model](#frontier-model) or to a
-registered [external inference endpoint](#external-inference-endpoint). Egress denies by default: a new client cannot
-reach external providers or registered endpoints until an operator enables it. Usage labels this combined traffic
-**Egress**. Refer to [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
+A client's ability to send requests off the appliance to an [external inference endpoint](#external-inference-endpoint).
+Egress denies by default: a new client cannot reach any endpoint until an operator enables
+[external inferencing](#external-inferencing) on the client's policy, or on the client itself when it overrides its
+policy. Usage labels this traffic **Egress**. Refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Embedding
 
@@ -185,21 +194,35 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 
 ### External Inference Endpoint
 
-An OpenAI-compatible inference host registered on the appliance as an appliance-wide [egress](#egress) target. The host
-can be a hosted router, a partner API, a second appliance, or an in-house inference server. After you register it, its
-models appear in a client's routing picker, and traffic to it is metered as egress. The host can authenticate the
-appliance with a key, custom headers, or both, and can present a self-signed or private-CA certificate the appliance
-trusts individually. Refer to
+An [egress](#egress) target outside the appliance, which a platform administrator sets up once for the whole appliance
+under **Integrations**. Three endpoints are built in, for Anthropic, OpenAI, and Gemini, and are not available until
+they are set up. Any other OpenAI-compatible host can be registered as an endpoint, such as a hosted router, a partner
+API, a second appliance, or an in-house inference server. A [policy](#policy) or a [client](#client) selects an endpoint
+that is already set up and never defines one. Its models appear in the routing picker as `<endpoint> / <model>`, and
+traffic to it is metered as egress. The host can authenticate the appliance with a key, custom headers, or both, and can
+present a self-signed or private-CA certificate the appliance trusts individually. Refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+
+<!-- vale Vale.Terms = NO -->
+
+### External Inferencing
+
+<!-- vale Vale.Terms = YES -->
+
+The console's name for sending a request to a model outside the appliance through an
+[external inference endpoint](#external-inference-endpoint). A policy, or a client that overrides its policy, turns it
+on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored
+under **Integrations**, unless the policy or client overrides that key for itself alone. Refer to
+[External Inferencing](../explanation/frontier-providers.md).
 
 ## F
 
-### Fallback for Unmatched Requests
+### Fallback
 
-The box-wide model that answers any request no other control settles: a request no [Tier map](#tier-map) row matches, a
-request the [semantic router](#semantic-routing) finds no rule for, or a request that names a model the appliance does
-not serve. When the fallback is off, the appliance returns HTTP `404` for these requests. Refer to
-[The Default Model](../explanation/architecture.md#the-default-model).
+The [semantic routing](#semantic-routing) rule of a [category](#category) that answers a request the semantic router
+could not score, or a request whose [Simple](#simple) or [Complex](#complex) rule names no model. Each category has its
+own **Fallback** rule beside its **Simple** and **Complex** rules. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#how-the-lookup-works).
 
 ### FIPS
 
@@ -215,9 +238,46 @@ completes.
 
 ### Frontier Model
 
-A cloud-hosted, state-of-the-art model reached through an external provider's API rather than served on the appliance.
-The appliance can route to a frontier model when [egress](#egress) is enabled and routing policy calls for it. Frontier
-usage incurs per-token API costs, unlike a [local model](#local-model).
+A cloud-hosted, state-of-the-art model, such as one from Anthropic, OpenAI, or Gemini, reached through a built-in
+[external inference endpoint](#external-inference-endpoint) rather than served on the appliance. The console lists it as
+an external model, such as `anthropic / claude-opus-4-8`. The appliance can route to a frontier model when
+[egress](#egress) is enabled and routing policy calls for it. Frontier usage incurs per-token API costs, unlike a
+[local model](#local-model).
+
+## G
+
+### GPU Memory Share
+
+A model's part of one GPU's memory, in percent, when the model shares a GPU with the other models of a
+[GPU sharing group](#gpu-sharing-group). The shares of every member add up to a total that must not exceed 100 percent
+of one GPU. The console calls each GPU an accelerator. Refer to [GPU Sharing](../explanation/gpu-sharing.md).
+
+### GPU Sharing
+
+The setting that lets two or more models load onto the same GPU, with each model holding its own
+[GPU memory share](#gpu-memory-share). The **GPU sharing** toggle on the deploy wizard turns it on for a model. Refer to
+[GPU Sharing](../explanation/gpu-sharing.md).
+
+### GPU Sharing Group
+
+The set of models that share the same GPUs. One appliance runs one group, and the appliance names the group. The
+operator never types a group name. While its engine runs, the [semantic router](#semantic-routing) is a member of the
+group. Refer to [GPU Sharing](../explanation/gpu-sharing.md#gpu-sharing-groups).
+
+### Grant
+
+The record of one [role](#role) given to one person or group over one or more named [workspaces](#workspace). Adding a
+workspace [member](#member) creates a grant. The console shows members, not grants. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+
+### Guard
+
+The two checks the [semantic router](#semantic-routing) runs on each routed request when it picks the request's
+[category](#category). Both of its checks are on by default. It refuses a prompt attack with HTTP `403` on every route,
+and it refuses a request that carries personal data with HTTP `403` only when that request would leave the appliance.
+Each check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**. The toggles are
+**Refuse jailbreak attempts** and **Scan prompts for personal data before they leave the box**. Refer to
+[Semantic Router Guard](../explanation/semantic-router-guard.md).
 
 ## H
 
@@ -337,6 +397,11 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 
 ## M
 
+### Member
+
+A person or a group holding one [role](#role) in one [workspace](#workspace). A member's role is **Workspace
+administrator** or **Operator**. Refer to [Manage Workspace Members](../how-to-guides/manage-workspace-members.md).
+
 ### Model
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
@@ -354,10 +419,18 @@ collides with their own catalog.
 ### Model Metadata
 
 A small YAML file, `metadata.yaml`, one per model, that describes how the Palette CLI should fetch the model's weights
-from Hugging Face and upload them to the appliance. For a [certified model](#certified-model), the metadata is
-downloaded from Artifact Studio. For a model you bring yourself, you author the file. Refer to
+from Hugging Face and upload them to the appliance, and how the appliance serves the model. For a
+[certified model](#certified-model), the metadata ships inside the [model recipe](#model-recipe) that you download from
+Artifact Studio. For a model you bring yourself, you author the file. Refer to
 [Bring Your Own Model](../how-to-guides/bring-your-own-model.md) and
 [Model Upload Reference](./model-upload-reference.md#model-metadata-file).
+
+### Model Recipe
+
+A Palette content archive that pairs a certified model's [metadata](#model-metadata) with the inference engine image
+that the metadata names. It carries no [model weights](#model-weights). Spectro Cloud publishes recipes to Artifact
+Studio, with separate NVIDIA and AMD artifacts, so that new models and engine versions reach the appliance without a
+product release. Refer to [Model Recipes](../explanation/model-recipes.md).
 
 ### Model Weights
 
@@ -411,7 +484,9 @@ tools can point at the appliance by changing only the base URL and the API token
 ### Operator
 
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
-models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console).
+models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console). The console
+also ships a [role](#role) named **Operator**, which is a separate concept. The **Operator** role reaches only the
+person's own clients. Refer to [Access and Policy Reference](./access-and-policy-reference.md#roles).
 
 ### OTP
 
@@ -446,6 +521,15 @@ Palette TUI after quitting, run `palette-tui` on the node.
 The storage layer inside the appliance that provisions and manages the volumes used for [model weights](#model-weights)
 and the [KV cache](#kv-cache). Piraeus stripes a data pool across the appliance's NVMe drives to combine their read and
 write bandwidth.
+
+### Policy
+
+The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) can spend,
+what they can reach, and how their requests are routed. A workspace follows one policy, so every client in that
+workspace inherits it. A client runs under its policy's [Tier map](#tier-map) and [semantic routing](#semantic-routing)
+rules unless the client sets rules of its own. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access) and
+[Routing Behavior](../explanation/routing-behavior.md#where-routing-rules-live).
 
 ### Prompt
 
@@ -484,15 +568,21 @@ The ability of some models to work through a problem in intermediate steps befor
 does this is called a reasoning model, and the depth of that effort can sometimes be tuned. Reasoning steps consume
 [tokens](#token-and-tokenization) like any other output.
 
+### Role
+
+A named set of permissions that ships with the appliance. A role names no workspaces of its own. It applies in the
+workspaces where a [member](#member) holds it. Refer to
+[Access and Policy Reference](./access-and-policy-reference.md#roles).
+
 ## S
 
 ### Semantic Routing
 
-The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The router
-keys every rule on two axes: a category the appliance derives for the prompt, such as **Coding** or **Everything else**,
-and a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex). The card lives on the box-wide
-**Semantic routing** card under **Settings** > **Configurations**, and on each client's **Routing** section for
-per-client overrides. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+The appliance's on-box path that picks a model for a request when no [Tier map](#tier-map) row settles it. The semantic
+router runs on the appliance's GPUs and keys every rule on two axes. One is a [category](#category), such as **Code
+review** or **General**. The other is a [complexity band](#complex), either [Simple](#simple) or [Complex](#complex).
+Rules live on the **Routing** step of the [policy](#policy) a workspace follows and on each client's **Routing** tab,
+which overrides the policy. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
 [Configure Semantic Routing](../how-to-guides/configure-semantic-routing.md).
 
 <!-- vale off -->
@@ -528,10 +618,11 @@ Defense deployments.
 ### Tier Map
 
 A routing overlay that governs which model handles a client's requests when the request names a model by name or alias.
-The card lives in the client drawer under **Routing**, alongside the [semantic routing](#semantic-routing) card. Each
-row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
-[Choose per Request](#choose-per-request) hands the alias to the semantic router instead of settling it in the Tier map.
-Refer to [Routing Behavior](../explanation/routing-behavior.md) and
+The card lives on each client's **Routing** tab, alongside the [semantic routing](#semantic-routing) card. The Tier map
+is also set on the **Routing** step of a [policy](#policy), and a client follows its policy's Tier map unless it has its
+own. Each row maps an alias prefix to a Model and attaches a Thinking directive. A row whose Model is set to
+[Use Semantic Router Rules](#use-semantic-router-rules) hands the alias to the semantic router instead of settling it in
+the Tier map. Refer to [Routing Behavior](../explanation/routing-behavior.md) and
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 ### Token and Tokenization
@@ -546,6 +637,15 @@ are counted.
 The process of counting and tracking token consumption per request, per model, per [API token](#api-token), and per time
 window. The appliance meters input tokens, output tokens, and derived cost for every request, which is what enforces
 [quotas](#quota), gives operators usage visibility on the **Usage** page, and enables [chargeback](#chargeback).
+
+## U
+
+### Use Semantic Router Rules
+
+The special picker value on a [Tier map](#tier-map) row's Model column that hands the alias to the
+[semantic routing](#semantic-routing) rules instead of settling the request in the Tier map. The rule that answers takes
+the alias's Thinking directive as its inherited reasoning depth. Refer to
+[Routing Behavior](../explanation/routing-behavior.md#what-reaches-the-semantic-router).
 
 ## V
 
@@ -576,3 +676,11 @@ model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) a
 An open source, high-throughput [inference engine](#inference-engine) for large language models. vLLM is the GPU-serving
 engine the appliance currently runs, exposing an [OpenAI-compatible endpoint](#openai-compatible-api) on the Kubernetes
 cluster.
+
+## W
+
+### Workspace
+
+The boundary between the appliance and a team. A workspace holds its own [clients](#client) and follows one
+[policy](#policy), and its [members](#member) are the people and groups who can act in it. Refer to
+[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
