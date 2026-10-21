@@ -9,22 +9,21 @@ sidebar_position: 40
 tags: ["ai workloads", "edge", "nvidia", "jetson", "agent mode", "day 2"]
 ---
 
-This page describes Day 2 of running Edge AI workloads on an NVIDIA Jetson device. Starting from a registered host that
-serves a model, as described in [Register a Jetson Host and Serve a Model](./register-jetson-host.md), you monitor the
+This page describes Day 2 of running Edge AI workloads on an NVIDIA Jetson device. You start from a registered host that
+serves a model, as described in [Register a Jetson Host and Serve a Model](./register-jetson-host.md). You monitor the
 deployment, apply updates, reset the host and renew its certificates, troubleshoot common issues, and decommission the
 host when you are finished.
 
 Because Palette manages the Jetson device in [agent mode](../../deployment-modes/agent-mode/agent-mode.md) with a
-bring-your-own operating system (BYOOS), you perform some Day 2 tasks through Palette and others on the device. Each
-section notes where you perform the task.
+bring-your-own operating system, you perform some Day 2 tasks through Palette and others on the device. Each section
+notes where you perform the task.
 
 :::warning
 
 The Jetson device runs a single-node Edge cluster, with the control plane and your workloads on the same node, so the
 cluster has no high availability. Any operation that restarts the host, such as a Kubernetes upgrade, interrupts the
-served model. Plan for downtime. A host restart also restarts the serving pod, and the pod loses any model that you
-pulled unless you store the model data on a persistent volume. After the cluster returns to the **Running** status and
-the serving pod is ready, pull the model again. To keep models across restarts, refer to
+served model, and the serving pod loses any model that you pulled. After the cluster returns to the **Running** status
+and the serving pod is ready, pull the model again, as described in
 [Change the Model Directly on the Cluster](#change-the-model-directly-on-the-cluster).
 
 :::
@@ -34,9 +33,9 @@ the serving pod is ready, pull the model again. To keep models across restarts, 
 - A Jetson device registered with Palette and serving a model, as described in
   [Register a Jetson Host and Serve a Model](./register-jetson-host.md).
 
-- `kubectl` installed on a workstation that can reach the cluster, with the cluster kubeconfig file exported. Refer to
-  [Enable GPU Access for Workloads](./register-jetson-host.md#enable-gpu-access-for-workloads) for how to download and
-  export the kubeconfig file.
+- `kubectl` installed on a workstation that can reach the cluster, with the cluster kubeconfig file exported in the
+  terminal session that you use for the commands on this page. Refer to
+  [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) for how to download the file and export its path.
 
 ## Monitor the Host, Cluster, and Model
 
@@ -50,8 +49,8 @@ those on the host and in the workload.
 | GPU utilization         | Use the NVIDIA host tools on the device, such as `nvidia-smi` and `tegrastats`, or run `nvidia-smi` inside a GPU-enabled pod.                                                                                                    |
 | Model activity          | Run `kubectl exec deployment/ollama -- ollama ps` to confirm that the model is loaded and runs on the GPU.                                                                                                                       |
 
-To view GPU and system metrics over time in a dashboard such as Grafana, set up a metrics exporter and Grafana yourself.
-For a Jetson monitoring tool, you can explore
+To view GPU and system metrics over time, deploy a metrics exporter and a dashboard such as Grafana. To monitor the
+device from its terminal, you can use
 [jetson-stats](https://developer.nvidia.com/embedded/community/jetson-projects/jetson_stats).
 
 ## Update Kubernetes and Packs
@@ -59,16 +58,15 @@ For a Jetson monitoring tool, you can explore
 You update Kubernetes and packs through Palette. Create a new version of the cluster profile with the new pack versions,
 and then update the cluster to that version. Refer to
 [Update a Cluster](../../clusters/cluster-management/cluster-updates.md). The Palette agent applies the change on the
-device, so you do not need to take any action on the host, but the change might interrupt workloads while it applies.
-The Jetson GPU driver ships with JetPack, not with a pack. Refer to
-[Update JetPack and the Operating System](#update-jetpack-and-the-operating-system).
+device, so you do not need to take any action on the host. The Jetson GPU driver ships with JetPack, not with a pack.
+Refer to [Update JetPack and the Operating System](#update-jetpack-and-the-operating-system).
 
 A Kubernetes version upgrade restarts the host, so the served model is unavailable until the host finishes restarting
 and K3s becomes ready. Palette reports the upgrade type as a repave in the cluster's **Upgrade Details**, but the device
 keeps its cluster configuration and workloads. Other pack updates do not always restart the host. For example, a
 **Flannel** pack update replaces only the Flannel pod, which can briefly interrupt connections to the model.
 
-For how Edge clusters apply updates and what to expect during reconciliation, refer to
+To learn how Edge clusters apply updates and what to expect during reconciliation, refer to
 [Edge Cluster Upgrade Behavior](../../clusters/edge/cluster-management/upgrade-behavior.md). On a centrally managed
 host, the Palette agent upgrades automatically unless you
 [pause agent upgrades](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
@@ -89,17 +87,15 @@ A JetPack or L4T update can change the GPU driver on the host. A driver change c
 interrupt workloads that use the GPU, including the served model. After the update, confirm that the model still runs on
 the GPU. Refer to [Monitor the Host, Cluster, and Model](#monitor-the-host-cluster-and-model).
 
-## Update or Swap the Served Model
+## Change the Served Model
 
-You can change the model that the device serves in two ways.
+You change the model that the device serves directly on the cluster with `kubectl`. You can also manage the model server
+through the cluster profile, so that Palette versions and applies it.
 
 ### Change the Model Directly on the Cluster
 
 Pull a different model into the running server with `kubectl`. This approach is immediate, but Palette does not track
-the change.
-
-Without a persistent volume, a pulled model is lost when the serving pod restarts. To keep models across restarts, add a
-storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/root/.ollama`.
+the change, and the serving pod loses the model when it restarts. After a restart, pull the model again.
 
 1. Pull the new model into the running server.
 
@@ -109,7 +105,7 @@ storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/ro
 
    Replace `<model-name>` with the model you want, such as `llama3.2:3b`.
 
-2. Load and exercise the new model. Ollama loads a model into the GPU on the first request.
+2. Send a prompt to the new model. Ollama loads a model into the GPU on the first request.
 
    ```shell
    kubectl exec deployment/ollama -- ollama run <model-name> "In one short sentence, what is edge computing?"
@@ -128,11 +124,13 @@ storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/ro
    llama3.2:3b    a80c4f17acd5    17 GB    100% GPU     131072     llamacpp    4 minutes from now
    ```
 
-### Manage the Model through the Cluster Profile
+### Manage the Model Server through the Cluster Profile
 
-To keep model changes versioned and applied by Palette, define the serving workload as a manifest or Helm chart layer in
-the cluster profile instead of changing it directly on the cluster. Palette then applies a model change as a cluster
-profile update, which keeps the device configuration in one managed place. To add the layer, refer to
+To keep the model server versioned and applied by Palette, define the Ollama `Deployment` and `Service` as a manifest or
+Helm chart layer in the cluster profile instead of applying them with `kubectl`. Palette then applies changes to the
+server, such as a new Ollama image, as a cluster profile update. The layer does not include the model. After Palette
+applies the layer, pull the model as described in
+[Change the Model Directly on the Cluster](#change-the-model-directly-on-the-cluster). To add the layer, refer to
 [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
 or
 [Add a Helm Chart](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md).
@@ -141,8 +139,9 @@ For the `Deployment` and `Service` to use, refer to
 
 ## Reset the Host and Renew Certificates
 
-To return the host to a clean state, uninstall the Palette agent. To register the host with Palette again afterward,
-reinstall the agent. Refer to
+To return the host to a clean state, uninstall the Palette agent. If the host still belongs to a cluster, delete the
+cluster first, as described in [Decommission the Host](#decommission-the-host). To register the host with Palette again
+afterward, reinstall the agent. Refer to
 [Uninstall Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#uninstall-palette-agent) and
 [Reinstall Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#reinstall-palette-agent).
 
@@ -160,24 +159,25 @@ A pod reaches the GPU only when its specification sets `runtimeClassName: nvidia
 not expose the GPU to pods. Refer to
 [Enable GPU Access for Workloads](./register-jetson-host.md#enable-gpu-access-for-workloads).
 
-### Host Does Not Appear or Is Disconnected
+### Host Does Not Appear in Palette
 
-Confirm that `projectName` in your `user-data` file matches an existing Palette project and that the host rebooted after
-the agent installed. Refer to [Verify the Host Registers](./register-jetson-host.md#verify-the-host-registers). For
-on-device troubleshooting, sign in to [Local UI](../../clusters/edge/local-ui/local-ui.md) with the local administrator
-account that you created in the `user-data` file.
+To troubleshoot on the device, sign in to [Local UI](../../clusters/edge/local-ui/local-ui.md) with the local
+administrator account that you created in the `user-data` file.
 
-If the host still does not appear, check the Palette agent logs on the device.
+1. Confirm that `projectName` in your `user-data` file matches an existing Palette project, and that the host rebooted
+   after the agent installed. Refer to [Verify the Host Registers](./register-jetson-host.md#verify-the-host-registers).
 
-```shell
-sudo journalctl --boot --unit 'spectro-*' --no-pager | tail --lines 20
-```
+2. Check the Palette agent logs on the device.
 
-If the logs repeat `EdgeHostToken is mandatory`, the agent did not read your `user-data` file. Confirm that
-`#cloud-config` is the first line of the file, with no spaces before it, as described in
-[Create the User-Data File](./register-jetson-host.md#create-the-user-data-file). Export `USERDATA` again, and then run
-the installer with `sudo --preserve-env` in the same terminal session. Refer to
-[Install the Palette Agent](./register-jetson-host.md#install-the-palette-agent).
+   ```shell
+   sudo journalctl --boot --unit 'spectro-*' --no-pager | tail --lines 20
+   ```
+
+3. If the logs repeat `EdgeHostToken is mandatory`, the agent did not read your `user-data` file. Confirm that
+   `#cloud-config` is the first line of the file, with no spaces before it, as described in
+   [Create the User-Data File](./register-jetson-host.md#create-the-user-data-file). Export `USERDATA` again, and then
+   run the installer with `sudo --preserve-env` in the same terminal session. Refer to
+   [Install the Palette Agent](./register-jetson-host.md#install-the-palette-agent).
 
 ### Model Does Not Respond
 
@@ -200,6 +200,9 @@ the installer with `sudo --preserve-env` in the same terminal session. Refer to
    ```shell
    kubectl exec deployment/ollama -- ollama ps
    ```
+
+   If the `PROCESSOR` column shows any CPU share, such as `100% CPU`, refer to
+   [Workload Does Not Reach the GPU](#workload-does-not-reach-the-gpu).
 
 For more information, refer to [Serve and Verify the Model](./register-jetson-host.md#serve-and-verify-the-model).
 

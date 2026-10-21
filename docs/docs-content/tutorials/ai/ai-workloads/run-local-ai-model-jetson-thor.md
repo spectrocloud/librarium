@@ -15,8 +15,8 @@ a central cloud. NVIDIA Jetson devices pair a power-efficient ARM64 system with 
 common platform for Edge AI. Palette manages a Jetson as an Edge host, so you deploy and operate a Kubernetes cluster on
 the device with the same profile-driven workflow that you use for the rest of your Edge fleet.
 
-In this tutorial, you take an NVIDIA Jetson AGX Thor Developer Kit from a bare device to a running large language model
-(LLM) that answers prompts on the device GPU, all managed by Palette. You serve the model with
+In this tutorial, you take an NVIDIA Jetson AGX Thor Developer Kit from a bare device to a large language model (LLM)
+that answers prompts on the device GPU. Palette manages each stage, and you serve the model with
 [Ollama](https://ollama.com/).
 
 The tutorial covers the following stages:
@@ -33,13 +33,9 @@ The tutorial covers the following stages:
 
 - Clean up the resources you created.
 
-:::info
-
-Palette manages a Jetson in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md), in which the Palette agent
-on the device makes an outbound connection to Palette. Appliance mode is not available on ARM64 devices. Refer to
-[Jetson Requirements](../../../ai-workloads/edge-ai/jetson-requirements.md) for the full requirements.
-
-:::
+Palette manages a Jetson in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md). Appliance mode is not
+available on ARM64 devices. Refer to [Jetson Requirements](../../../ai-workloads/edge-ai/jetson-requirements.md) for the
+full requirements.
 
 ## Prerequisites
 
@@ -52,12 +48,11 @@ on the device makes an outbound connection to Palette. Appliance mode is not ava
 - The [kubectl](https://kubernetes.io/docs/reference/kubectl/) command-line tool on a workstation with network access to
   the Jetson.
 
-- A Palette tenant and a project that you can register hosts into, with the **Project Admin** role in that project or a
-  custom role with the same permissions to register Edge hosts, create cluster profiles, and deploy clusters. Refer to
+- A Palette project where you have the **Project Admin** role, or a custom role that can register Edge hosts, create
+  cluster profiles, and deploy clusters. Refer to
   [Project Roles](../../../user-management/palette-rbac/project-scope-roles-permissions.md).
 
-- A Palette Edge host
-  [registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
+- A [Palette registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md).
 
 - Outbound HTTPS connectivity from the Jetson to `console.spectrocloud.com` and the Palette pack and image registries.
   Because agent mode is outbound only, a device behind Network Address Translation (NAT) works without inbound firewall
@@ -73,8 +68,8 @@ authoritative procedure, refer to NVIDIA's
 1. On your workstation, download the AGX Thor installer image from the
    [JetPack download page](https://developer.nvidia.com/embedded/jetpack).
 
-2. Write the image to your USB drive with Etcher. Select the image, select the USB drive, and then flash it. You must
-   write the image with an imaging tool. Copying the image file onto the drive does not create a bootable installer.
+2. Write the image to your USB drive with Etcher. Select the image, select the USB drive, and then flash it. Copying the
+   image file onto the drive does not create a bootable installer.
 
 3. Plug the USB drive into the Thor, connect a monitor and keyboard, and then press the power button.
 
@@ -91,12 +86,12 @@ authoritative procedure, refer to NVIDIA's
 
 7. Remove the USB drive as soon as the device reboots, so that it does not boot into the installer again.
 
-8. Complete the Ubuntu first-boot wizard to set the keyboard layout, license, network, time zone, and a local username
-   and password. Palette does not require Ubuntu Pro. If you turn on Ubuntu Pro, do not enable the FIPS kernel, FIPS
-   updates, or real-time kernel services, because those services try to replace the Jetson Linux (L4T) kernel.
+8. Complete the Ubuntu first-boot wizard to accept the license and set the keyboard layout, network, time zone, and a
+   local username and password. Palette does not require Ubuntu Pro. If you turn on Ubuntu Pro, do not enable the FIPS
+   kernel, FIPS updates, or real-time kernel services, because those services try to replace the L4T kernel.
 
-9. Confirm the operating system versions. The first command reports the Jetson Linux (L4T) release, and the second
-   command reports the Ubuntu base version, which is 24.04.
+9. Confirm the operating system versions. The first command reports the L4T release, and the second command reports the
+   Ubuntu base version, which is 24.04.
 
    ```shell
    cat /etc/nv_tegra_release
@@ -120,8 +115,8 @@ authoritative procedure, refer to NVIDIA's
 
 ## Prepare the Host
 
-Install the Palette agent prerequisites on the Jetson. JetPack is Ubuntu-based, so you use `apt-get` to install the
-packages and enable the required services. For the full host-preparation reference, refer to
+Install the Palette agent prerequisites on the Jetson. JetPack is based on Ubuntu, so you install the packages with
+`apt-get` and enable the required services with `systemctl`. For the full host-preparation reference, refer to
 [Prepare the Jetson Host](../../../ai-workloads/edge-ai/prepare-jetson-host.md).
 
 1. Connect to the Thor over SSH or use the local terminal, and then install the prerequisite packages.
@@ -187,14 +182,14 @@ including optional settings for a Jetson device, refer to
    Refer to [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md)
    for the full list of configuration options.
 
-2. Export the path to the `user-data` file.
+2. Export the path to the `user-data` file. Run this command and the installer in step 4 in the same terminal session.
 
    ```shell
    export USERDATA=./user-data
    ```
 
 3. Download the non-FIPS Palette agent installation script for Palette SaaS, and then grant it execute permission. The
-   FIPS build is available only for Red Hat Enterprise Linux and Rocky Linux 8.
+   FIPS build is not available on JetPack.
 
    ```shell
    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
@@ -212,12 +207,11 @@ including optional settings for a Jetson device, refer to
    `Pull userdata: no metadata/userdata found` messages. When the installer reports
    `palette edge installation completed successfully`, the host reboots.
 
-5. After the host reboots, log in to [Palette](https://console.spectrocloud.com). From the left main menu, select
-   **Clusters**, and then select the **Edge Hosts** tab.
+5. After the host reboots, log in to [Palette](https://console.spectrocloud.com), and then switch to the project that
+   you set in `projectName` or, if you omitted it, the project associated with your registration token.
 
-6. Switch to the project that you set in `projectName` or, if you omitted it, the project associated with your
-   registration token. The Jetson appears as a new Edge host. Use the **Architecture** filter to confirm that it is an
-   ARM64 host.
+6. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. The Jetson appears as a new
+   Edge host. Use the **Architecture** filter to confirm that it is an ARM64 host.
 
    After the host connects, the **Status** column shows **Ready**, the **Health** column shows **Healthy**, and the
    **GPU** column lists the device GPU with `0.00 GB` of memory. This value is expected, because the Jetson GPU shares
@@ -226,8 +220,7 @@ including optional settings for a Jetson device, refer to
 ## Create the Cluster Profile
 
 Create an Edge Native cluster profile that models the operating system, Kubernetes distribution, and network for the
-Jetson. Use a **Full** profile so that you can add add-on layers later, such as the storage layer described in
-[Serve a Model on the GPU](#serve-a-model-on-the-gpu).
+Jetson. Use a **Full** profile so that you can add more layers later, such as a storage layer for model data.
 
 1. From the left main menu, select **Profiles**, and then select **Add Cluster Profile**.
 
@@ -266,7 +259,7 @@ plane and your workloads.
    to the pool. The **Architecture** field defaults to **AMD64**, and the Jetson host appears in the list of available
    hosts only after you select **ARM64**.
 
-6. Review the settings and deploy the cluster.
+6. Review the settings, and then select **Finish Configuration** to deploy the cluster.
 
 When the deployment finishes, the cluster status is **Running** and its health is **Healthy**.
 
@@ -315,7 +308,7 @@ variables does not receive the GPU.
              value: "all"
            - name: NVIDIA_DRIVER_CAPABILITIES
              value: "all"
-         command: ["bash", "-lc", "nvidia-smi"]
+         command: ["bash", "--login", "-c", "nvidia-smi"]
    ```
 
 2. Apply the pod.
@@ -430,7 +423,7 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    kubectl exec deployment/ollama -- ollama pull llama3.2:1b
    ```
 
-4. Send a request to load and exercise the model. The response confirms that the model serves inference.
+4. Send a prompt to load the model. The response confirms that the model serves inference.
 
    ```shell
    kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
@@ -442,9 +435,7 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    a central server or cloud.
    ```
 
-5. Confirm that the model runs on the GPU. Because `ollama ps` lists only loaded models, run it after step 4. In the
-   output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU instead of the
-   CPU.
+5. Confirm that the model runs on the GPU. In the output, the `PROCESSOR` column reads `100% GPU`.
 
    ```shell
    kubectl exec deployment/ollama -- ollama ps
@@ -461,8 +452,8 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
    kubectl port-forward service/ollama 11434:11434
    ```
 
-7. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the
-   endpoint serves inference from the device GPU.
+7. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the API
+   endpoint works.
 
    ```shell
    curl http://localhost:11434/api/generate \
@@ -486,13 +477,6 @@ serves local models over an HTTP API. The serving pod uses the same GPU access p
      "eval_duration": 298859000
    }
    ```
-
-:::info
-
-Without a persistent volume, the pulled model is stored in the pod and is lost if the pod restarts. To keep models
-across restarts, add a storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/root/.ollama`.
-
-:::
 
 ## Cleanup
 
@@ -529,3 +513,6 @@ same way you manage clusters elsewhere.
 To learn more about running Edge AI workloads on Jetson devices, refer to the
 [Edge AI on NVIDIA Jetson](../../../ai-workloads/edge-ai/edge-ai.md) guide, which covers the host requirements, host
 preparation, and ongoing operations in more detail.
+
+For tasks after deployment, such as pulling the model again after a restart or changing the served model, refer to
+[Day 2 Operations for Jetson Edge AI](../../../ai-workloads/edge-ai/day-2-operations.md).

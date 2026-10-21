@@ -156,8 +156,7 @@ after the agent installed.
 ## Create the Cluster Profile
 
 Create an Edge Native cluster profile that models the operating system, Kubernetes distribution, and network for the
-Jetson device. Use a **Full** profile so that you can add add-on layers later, such as the storage layer described in
-[Serve and Verify the Model](#serve-and-verify-the-model).
+Jetson device. Use a **Full** profile so that you can add more layers later, such as a storage layer for model data.
 
 1. From the left main menu, select **Profiles**, and then select **Add Cluster Profile**.
 
@@ -195,7 +194,7 @@ plane and your workloads.
 5. In the node pool configuration, set the pool **Architecture** to **ARM64** first, and then add the registered Jetson
    host to the pool. The host appears in the list of hosts to add only after you set the architecture to **ARM64**.
 
-6. Review the settings and deploy the cluster.
+6. Review the settings, and then select **Finish Configuration** to deploy the cluster.
 
 When the deployment finishes, the cluster status is **Running** and its health is **Healthy**.
 
@@ -248,7 +247,7 @@ Use a test pod to confirm that a workload reaches the GPU.
              value: "all"
            - name: NVIDIA_DRIVER_CAPABILITIES
              value: "all"
-         command: ["bash", "-lc", "nvidia-smi"]
+         command: ["bash", "--login", "-c", "nvidia-smi"]
    ```
 
 2. Apply the pod.
@@ -368,7 +367,7 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    kubectl exec deployment/ollama -- ollama pull llama3.2:1b
    ```
 
-4. Send a request to load and exercise the model. The response confirms that the model serves inference.
+4. Send a prompt to load the model. The response confirms that the model serves inference.
 
    ```shell
    kubectl exec deployment/ollama -- ollama run llama3.2:1b "In one short sentence, what is edge computing?"
@@ -380,9 +379,7 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    a central server or cloud.
    ```
 
-5. Confirm the model runs on the GPU. Because `ollama ps` lists only loaded models, run it only after step 4 loads the
-   model. In the output, the `PROCESSOR` column reads `100% GPU`, which confirms that the model runs on the Jetson GPU
-   instead of the CPU.
+5. Confirm that the model runs on the GPU. In the output, the `PROCESSOR` column reads `100% GPU`.
 
    ```shell
    kubectl exec deployment/ollama -- ollama ps
@@ -399,8 +396,8 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    kubectl port-forward service/ollama 11434:11434
    ```
 
-7. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the
-   endpoint serves inference from the device GPU.
+7. In a second terminal, call the Ollama API. The response contains the model completion, which confirms that the API
+   endpoint works.
 
    ```shell
    curl http://localhost:11434/api/generate \
@@ -425,12 +422,8 @@ pattern described in [Enable GPU Access for Workloads](#enable-gpu-access-for-wo
    }
    ```
 
-:::info
-
-Without a persistent volume, the pulled model is stored in the pod and is lost if the pod restarts. To keep models
-across restarts, add a storage layer to the cluster profile and mount a `PersistentVolumeClaim` at `/root/.ollama`.
-
-:::
+The serving pod does not keep a pulled model when it restarts. After a restart, pull the model again, as described in
+step 3.
 
 ## Next Steps
 
