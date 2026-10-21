@@ -49,15 +49,15 @@ whose per-hardware variants carry the tuned deploy configuration.
 
 1. From the left main menu, select **Cluster**.
 
-2. If the text model is not already serving, select **Deploy model**, choose the text model, and complete the deploy
-   flow. Refer to [Deploy a Model](./deploy-a-model.md).
+2. If the text model is not already serving, select **Deploy Model**, choose the text model, and complete the deploy
+   flow with **GPU sharing** turned on. Refer to [Share a GPU Between Models](./share-a-gpu-between-models.md).
 
 3. Wait until the text model health reads `N/N healthy` and its state reaches `ready` or `serving`. A large text model
    such as GLM 5.2 can take **5 to 10 minutes on the first-ever cold start** while it loads weights, compiles kernels,
    and captures CUDA graphs. Do not cancel the deploy during this window. Subsequent restarts reuse the compiled kernels
    from the on-appliance cache and start faster.
 
-4. Select **Deploy model** again, choose the vision model, and complete the deploy flow.
+4. Select **Deploy Model** again, choose the vision model, and complete the deploy flow with **GPU sharing** turned on.
 
 5. Wait until the vision model also reaches `ready` or `serving`. The vision model is small and starts in under two
    minutes on validated hardware.

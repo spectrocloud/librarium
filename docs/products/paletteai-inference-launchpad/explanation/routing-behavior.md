@@ -220,8 +220,9 @@ The semantic router runs on the appliance's GPUs and shares them with the main m
 installation, before any local model. An appliance that answers only through frontier providers therefore still routes
 semantically.
 
-When you deploy a main model, the semantic router moves onto that model's GPUs. Its engine restarts once, and routing
-pauses briefly while it does. For the GPU requirements, refer to
+When a deploy starts a new GPU sharing group, the semantic router moves into that group, and its engine restarts once.
+The appliance routes the requests that arrive during the restart without semantic classification. For how groups form,
+refer to [GPU Sharing](./gpu-sharing.md). For the GPU requirements, refer to
 [Suggested Hardware](../reference/hardware-requirements.md#gpu).
 
 An operator can turn the semantic router off. Its engine stops and frees its GPU memory, while the main model keeps
@@ -247,8 +248,8 @@ appliance refuses it. The message names both modes and tells you to remove the c
 into the current mode's group. For the deploy steps, refer to [Deploy a Model](../how-to-guides/deploy-a-model.md).
 
 A model whose catalog entry names no GPU count and no group, such as a model you bring yourself, does not set a mode of
-its own. The deploy dialog opens it on the group the appliance already runs, so it shares the GPUs with that group. On
-an appliance that serves only the semantic router, that group is the semantic router's own.
+its own. The deploy wizard's **GPU sharing** step opens it on the group the appliance already runs, so it shares the
+GPUs with that group. On an appliance that serves only the semantic router, that group is the semantic router's own.
 
 Vision preprocessing needs a vision-mode text model. On a vision-mode appliance, image requests that send `auto` are
 routed too, and the **Overview** page shows a **Vision preprocessing** card. For how image requests are handled, refer
