@@ -288,8 +288,8 @@ can give to pods:
   API server pods restart once on each control plane node.
 
 A non-FIPS node that already uses more memory than its new allocatable memory can reject or evict pods when the Kubelet
-restarts. On FIPS appliances, allocatable memory does not change, so you only need to confirm that each control plane
-node has room for the new memory requests.
+restarts. On FIPS appliances, allocatable memory does not change, but each control plane node still needs room for the
+new memory requests.
 
 Before you upgrade, check each node. You need `kubectl` access to the cluster. From the cluster **Overview** tab,
 download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG`
@@ -323,9 +323,8 @@ environment variable to point to it.
    - On FIPS appliances, the requested memory of each control plane node, plus 3 GiB, must fit within its allocatable
      memory from step 1.
 
-3. _(Non-FIPS appliances only)_ Check the memory that the pods on each node use. Use SSH to sign in to the node with the
-   account that you created when you [installed VM Launchpad](./install.md#install), and then read the memory usage of
-   all pods.
+3. Check the memory that the pods on each node use. Use SSH to sign in to the node with the account that you created
+   when you [installed VM Launchpad](./install.md#install), and then read the memory usage of all pods.
 
    ```shell
    cat /sys/fs/cgroup/kubepods.slice/memory.current
@@ -334,9 +333,34 @@ environment variable to point to it.
    The value is in bytes. Divide it by 1073741824 to convert it to GiB. The value must stay below the total memory of
    the node from step 1 minus 4 GiB. If it does not, stop or migrate VMs on the node before you upgrade.
 
-4. _(Non-FIPS appliances only)_ Check the ephemeral storage that the pods on each node request. The output of step 2
-   lists it as `ephemeral-storage` under `Allocated resources`. The value must stay below the allocatable ephemeral
-   storage of the node from step 1 minus 10 GiB.
+4. Check the ephemeral storage that the pods on each node request. The output of step 2 lists it as `ephemeral-storage`
+   under `Allocated resources`. The value must stay below the allocatable ephemeral storage of the node from step 1,
+   minus 10 GiB on non-FIPS appliances.
+
+   If the value does not stay below that limit, lower the ephemeral storage requests on the node before you upgrade. The
+   check compares requests, not disk usage, so deleting files on the node does not help.
+
+   1. List the pods on the node and the ephemeral storage that each one requests.
+
+      ```shell
+      kubectl get pods --all-namespaces --field-selector spec.nodeName=<node-name> --output custom-columns=NAMESPACE:.metadata.namespace,POD:.metadata.name,EPHEMERAL:.spec.containers[*].resources.requests.ephemeral-storage
+      ```
+
+      Replace `<node-name>` with the name of the node.
+
+   2. Cordon the node so that Kubernetes does not schedule new pods on it.
+
+      ```shell
+      kubectl cordon <node-name>
+      ```
+
+   3. Move the pods with the largest requests to another node. Delete them so that Kubernetes schedules them on another
+      node, or migrate the VMs that run in them. You can also lower their ephemeral storage requests.
+
+   4. If no other node has room, add disk to the node before you upgrade.
+
+   After the upgrade, confirm that the node accepts pods again. If `kubectl get nodes` lists the node as
+   `SchedulingDisabled`, run `kubectl uncordon <node-name>`.
 
 ### Verify Node Memory After You Upgrade
 
