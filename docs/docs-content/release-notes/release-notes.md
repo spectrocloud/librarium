@@ -59,7 +59,7 @@ them. If nobody could have, remove this entry. -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1188 -->
 
 - VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
-  not qualified, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
+  not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
   the **KubeVirt Configuration** page. Refer to
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
 
