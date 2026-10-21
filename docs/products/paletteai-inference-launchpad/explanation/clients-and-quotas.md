@@ -194,3 +194,5 @@ quotas, so it is ready to run on every request.
 - [Model Certification](./model-certification.md) explains which models a client can call and how you choose them.
 - [Glossary](../reference/glossary.md) defines the client, API token, quota, and routing terms used throughout this
   page.
+- [Quota Model](../reference/quota-model.md) shows the hierarchy diagram and console-to-CRD map for Clients, API tokens,
+  quotas, and models.
