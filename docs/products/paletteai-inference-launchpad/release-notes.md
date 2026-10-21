@@ -78,8 +78,10 @@ policy. Models can share a GPU. Semantic routing rules now live in policies. Cer
 - You now set up external inference endpoints only under **Integrations**. A policy or a client selects an endpoint that
   already exists. It can also override the endpoint's key. Requests no longer fall back to a local model without notice.
   External model targets appear as `<endpoint> / <model>` on every screen. Refer to
-  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) for more
-  information.
+  [External Inferencing](./explanation/frontier-providers.md),
+  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md), and
+  [Manage a Client's Model Access](./how-to-guides/manage-client-model-access.md#allow-a-client-to-reach-external-models)
+  for more information.
 
 - A new reference page lists the open source components that ship under GNU licenses. Refer to
   [Open Source Licenses](./reference/oss-licenses.md) for more information.
