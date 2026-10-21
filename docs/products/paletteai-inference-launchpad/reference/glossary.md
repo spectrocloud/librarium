@@ -229,6 +229,24 @@ usage incurs per-token API costs, unlike a [local model](#local-model).
 
 ## G
 
+### GPU Memory Share
+
+A model's part of one GPU's memory, in percent, when the model shares a GPU with the other models of a
+[GPU sharing group](#gpu-sharing-group). The shares of every member add up to a total that must not exceed 100 percent
+of one GPU. The console calls each GPU an accelerator. Refer to [GPU Sharing](../explanation/gpu-sharing.md).
+
+### GPU Sharing
+
+The setting that lets two or more models load onto the same GPU, with each model holding its own
+[GPU memory share](#gpu-memory-share). The **GPU sharing** toggle on the deploy wizard turns it on for a model. Refer to
+[GPU Sharing](../explanation/gpu-sharing.md).
+
+### GPU Sharing Group
+
+The set of models that share the same GPUs. One appliance runs one group, and the appliance names the group. The
+operator never types a group name. While its engine runs, the [semantic router](#semantic-routing) is a member of the
+group. Refer to [GPU Sharing](../explanation/gpu-sharing.md#gpu-sharing-groups).
+
 ### Grant
 
 The record of one [role](#role) given to one person or group over one or more named [workspaces](#workspace). Adding a

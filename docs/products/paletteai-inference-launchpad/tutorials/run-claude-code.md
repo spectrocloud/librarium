@@ -30,7 +30,7 @@ is faster than stopping at **Create a Client and Its API Token**.
 
 On the appliance:
 
-- PaletteAI Inference Launchpad 1.1.5 or later. To check, in the console look at the bottom of the left main menu.
+- PaletteAI Inference Launchpad 1.2.0 or later. To check, in the console look at the bottom of the left main menu.
   Anything earlier does not have the surfaces this tutorial uses. To upgrade, refer to
   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
 
@@ -43,12 +43,10 @@ On the appliance:
 
   ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/run-claude-code_cluster-models-deployed.webp)
 
-  If the table is empty, select **Deploy New Model**, confirm the **Model** drop-down is not empty, and then select
-  **Cancel**. You deploy the model later in **Deploy a Model**.
+  If the table is empty, select **Deploy Model**, confirm that the **Model** drop-down menu is not empty, and then close
+  the wizard. You deploy the model later in **Deploy a Model**.
 
-  ![The Deploy model dialog with the Model drop-down open, listing two available models.](/assets/docs/images/run-claude-code_deploy-model-dropdown.webp)
-
-  If the drop-down is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
+  If the drop-down menu is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 On your own machine:
 
@@ -135,7 +133,8 @@ Give those GPUs something to do.
 
 1. In the console, select **Cluster** from the left main menu. The page opens on the **Nodes** tab.
 
-2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
+2. Select the **Models** tab, and then select **Deploy Model**. The **Deploy a model** wizard opens on the **Model and
+   placement** step.
 
 3. Open the **Model** drop-down menu and select a model that serves chat requests. A smaller model finishes loading
    sooner. A vision preprocessing sidecar is not a chat model, so do not choose one here.
@@ -143,12 +142,13 @@ Give those GPUs something to do.
    The catalog lists only models whose weights are already on a node in this appliance, so your list is specific to your
    hardware.
 
-4. Leave **Engine** on **auto**.
+4. In **Nodes**, confirm that your node is selected. If it is not, select it.
 
-5. In **Nodes**, select your node. On a first deploy, no node is selected, and **Deploy** stays unavailable until you
-   choose one.
+5. Select **Next** twice. The **GPU sharing** step opens.
 
-6. Select **Deploy**, review the preview, and then select **Confirm & Apply**.
+6. Select **Deploy** without changing the **GPU sharing** toggle. The step sets the toggle for your appliance. When the
+   toggle is on, the step states the group that your model joins, and your model shares a GPU with the models of that
+   group, such as the semantic router. For how that works, refer to [GPU Sharing](../explanation/gpu-sharing.md).
 
 The model appears in the **Model** table. Its state reads `Deploying` while the appliance brings it up.
 

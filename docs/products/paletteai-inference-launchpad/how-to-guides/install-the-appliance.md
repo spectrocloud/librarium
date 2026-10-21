@@ -570,10 +570,11 @@ schema, the on-appliance layout, and the deploy-catalog states, refer to
    </Tabs>
 
 5. Confirm the model is ready to deploy. In the appliance console, select **Cluster** from the left main menu, then
-   select the **Models** tab and **Deploy New Model** to open the **Deploy model** dialog. Open the **Model** drop-down
-   menu. Each entry renders as `<Name> · <N>+GPU · <size>GB`. The model you uploaded appears on the next catalog scan
-   after the upload finishes. The dialog then asks you to choose which nodes run the model. For that procedure, refer to
-   [Deploy a Model](./deploy-a-model.md).
+   select the **Models** tab and **Deploy Model** to open the **Deploy a model** wizard. Open the **Model** drop-down
+   menu. Each entry shows the model name, its engine, and its size, such as
+   `glm-5.3-shared-with-vision · vllm · 106 GB`. When the model's recipe names a group, the entry also shows the group.
+   The model you uploaded appears on the next catalog scan after the upload finishes. The wizard also asks you to choose
+   which nodes run the model. For that procedure, refer to [Deploy a Model](./deploy-a-model.md).
 
 ## Next Steps
 

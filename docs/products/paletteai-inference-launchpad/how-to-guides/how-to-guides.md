@@ -19,6 +19,7 @@ you the steps to do it without teaching background concepts.
 | [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md)                     | Index the Local UI tasks for day-two cluster infrastructure operations.                                               |
 | [Upgrade the Platform](./upgrade-the-platform.md)                                       | Upload a newer content bundle from Artifact Studio and apply **Update** in Local UI.                                  |
 | [Deploy a Model](./deploy-a-model.md)                                                   | Deploy an LLM, choose which nodes run it, and verify it is serving.                                                   |
+| [Share a GPU Between Models](./share-a-gpu-between-models.md)                           | Deploy a model that shares a GPU with a group, and change a running model's GPU memory share.                         |
 | [Replace a Model](./replace-a-model.md)                                                 | Remove a model from a node, then deploy a newer version or a different model.                                         |
 | [Upload a Model](./upload-a-model.md)                                                   | Upload a model recipe, then download the model weights on a jumpbox and upload them to the appliance.                 |
 | [Bring Your Own Model](./bring-your-own-model.md)                                       | Author metadata for a model that is not certified, then upload and deploy it.                                         |
