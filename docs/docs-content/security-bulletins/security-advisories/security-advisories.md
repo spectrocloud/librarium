@@ -20,8 +20,6 @@ advisories are published.
 
 :::
 
-<!-- vale off -->
-
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
@@ -100,8 +98,6 @@ d) Customers are advised to monitor and audit outbound connections and watch for
 - [eMudhra intermediate CA compromise disclosure and affected-certificate list](https://pages.ubuntu.com/index.php/email/emailWebview?email=MDY2LUVPVi0zMzUAAAGk_S30_XSWMHDaLMex5Embq656LtcJgVxRqamKoeYg90j8Fu2L9_EhkWddrEUrP_mGrUWphu-CnbolCVgP7QQ6J5glmpN21LcMeg)
 - [CWE-295: Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)
 - [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
-
-<!-- vale on -->
 
 ## Security Advisory 018 - Multiple Container Runtime Vulnerabilities
 
