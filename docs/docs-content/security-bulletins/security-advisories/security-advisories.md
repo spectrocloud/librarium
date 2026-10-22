@@ -20,6 +20,10 @@ advisories are published.
 
 :::
 
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
+
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
@@ -34,6 +38,10 @@ The private keys of eight eMudhra intermediate Certificate Authority (CA) certif
 by anyone, due to a key-generation flaw during their creation in April 2025. These intermediates chain to two publicly
 trusted roots: emSign ECC Root CA - G3 and AAA Certificate Services (the legacy Comodo/Sectigo root, which cross-signs
 the same keys).
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
 
 An attacker holding one of these keys can issue a fraudulent X.509 certificate for any hostname. Any TLS client that
 still trusts one of these roots, and that an attacker can position themselves to intercept, will accept the forged
@@ -87,17 +95,33 @@ b) Workload Clusters: Patch all underlying host operating systems used in:
 For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
 documentation.
 
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
+
 c) MTSaas and DSaas environments will be patched by the spectrocloud team.
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
 
 ### References
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
 
 - [CVE-2026-111943](https://www.cve.org/CVERecord?id=CVE-2026-111943): Go crypto/x509 rejects the compromised eMudhra
   intermediate keys (Go 1.26.10 and 1.27.3)
 - [eMudhra intermediate CA compromise disclosure and affected-certificate list](https://pages.ubuntu.com/index.php/email/emailWebview?email=MDY2LUVPVi0zMzUAAAGk_S30_XSWMHDaLMex5Embq656LtcJgVxRqamKoeYg90j8Fu2L9_EhkWddrEUrP_mGrUWphu-CnbolCVgP7QQ6J5glmpN21LcMeg)
 - [CWE-295: Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)
 - [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
 
 ## Security Advisory 018 - Multiple Container Runtime Vulnerabilities
 
