@@ -48,7 +48,7 @@ All Palette deployment models are affected: MTSaaS and DSaaS, self-hosted Palett
 clusters on cloud infrastructure (EKS, AKS, GKE) and PXK, RKE2, and K3s clusters managed through Palette, and edge
 clusters.
 
-The exposure is narrow and client-side only:
+The exposure is narrow and client-side only.
 
 - Not affected:
   - Inbound and serving traffic. When a Palette deployment acts as a server, such as the console or an API endpoint, it
