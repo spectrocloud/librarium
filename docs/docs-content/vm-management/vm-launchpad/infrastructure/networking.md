@@ -387,8 +387,6 @@ network. Use an ID from `1` to `4094`, or leave **VLAN ID** empty for an untagge
 
 #### Upgrade Considerations
 
-<!-- VERIFY(PVM-1183): confirm which VM Launchpad release ships PVM-1306 and PVM-1432, and the earlier versions that had the separate VLAN range (engineering cites 4.10.19 and 4.10.20). -->
-
 Review the following changes before you upgrade from a release that used the earlier VLAN filtering settings.
 
 - `allowedVlans` replaces the separate VM VLAN range settings, `vlanFiltering.env.vlanRange` and
