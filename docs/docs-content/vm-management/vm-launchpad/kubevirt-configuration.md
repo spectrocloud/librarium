@@ -222,10 +222,11 @@ rejecting them. When the list contains both gates, `HotplugVolumes` takes preced
 while `DeclarativeHotplugVolumes` still allows empty CD-ROM drives at creation time. To move fully to the declarative
 model, remove `HotplugVolumes` and keep `DeclarativeHotplugVolumes`.
 
-KubeVirt 1.9.0 deprecates `HotplugVolumes`, and VMO does not remove it from **Feature gates** when you upgrade. If you
-added it, remove it after the upgrade. Disk hot-plug keeps working without it, because KubeVirt accepts hot-plug
-requests when either gate is on. Do not remove it before the upgrade unless `DeclarativeHotplugVolumes` is also in
-**Feature gates**, because earlier KubeVirt versions do not turn `DeclarativeHotplugVolumes` on by default.
+KubeVirt 1.9.0 deprecates `HotplugVolumes`. VMO includes it in **Feature gates** by default, on new installations and
+upgrades alike, so remove it once your cluster runs KubeVirt 1.9.0. Disk hot-plug keeps working without it, because
+KubeVirt accepts hot-plug requests when either gate is on. On earlier KubeVirt versions, keep it unless
+`DeclarativeHotplugVolumes` is also in **Feature gates**, because those versions do not turn `DeclarativeHotplugVolumes`
+on by default.
 
 :::warning
 
