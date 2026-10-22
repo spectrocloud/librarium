@@ -6,6 +6,7 @@ description:
   Launchpad."
 icon: " "
 hide_table_of_contents: false
+toc_max_heading_level: 4
 sidebar_position: 10
 tags: ["vmo", "vm launchpad", "infrastructure", "networking"]
 ---
@@ -67,7 +68,7 @@ namespace is only visible from that specific namespace.
    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Bridge Name**                     | The Linux bridge on the host. The bridge must already exist on the nodes.                                                                                                                                                                                                                                                                               |
    | **VLAN Mode**                       | **Access** connects the VM to one VLAN, and the VM receives the traffic untagged. If you enter more than one VLAN ID, VMO creates one NAD per VLAN ID. Refer to [Create NADs for Multiple VLANs](#create-nads-for-multiple-vlans). **Trunk** creates one NAD that carries all the tagged VLANs you enter, and the VM manages the 802.1Q sub-interfaces. |
-   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). In **Trunk** mode, this field is named **Tagged VLANs**.                                                                                                                                                                    |
+   | **VLAN ID** _(Optional)_            | The 802.1Q VLAN tag. Accepts a single ID (for example, `100`), a comma-separated list, or a range (for example, `100-105`). In **Trunk** mode, this field is named **Tagged VLANs**. Do not enter `0`, which VMO rejects when admission validation is on. Leave the field empty for an untagged network.                                                |
    | **IPAM Configuration** _(Optional)_ | An IPAM plugin configuration in JSON, for example, `{"type": "host-local", "subnet": "192.0.2.0/24"}`. Leave empty to rely on manual or DHCP addressing.                                                                                                                                                                                                |
 
    </TabItem>
@@ -173,15 +174,15 @@ filtering makes the bridge VLAN-aware so that each port forwards only the VLAN I
 
 VLAN filtering is optional. When you turn it on with the `vlanFiltering.enabled` pack parameter, VMO deploys the VLAN
 filtering agent as a DaemonSet that runs on every node. The agent manages one bridge, which `vlanFiltering.env.bridgeIF`
-sets to `br0` by default. It reconciles the bridge every 30 seconds and whenever a NAD changes. The agent ignores NADs
-that name a different bridge and reports them as out of scope in the node status.
+sets to `br0` by default. It reconciles the bridge whenever a NAD changes, and every 30 seconds by default. The agent
+ignores NADs that name a different bridge and reports them as out of scope in the node status.
 
 The agent, the VMO UI, and error messages refer to two kinds of VLAN.
 
-| **VLAN Type** | **Description**                                                                                                                   |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Node VLAN     | A VLAN that carries the node's own traffic on the bridge. It is either untagged or tagged on a sub-interface, such as `br0.3900`. |
-| VM VLAN       | A VLAN that a NAD gives to VMs.                                                                                                   |
+| **VLAN Type** | **Description**                                                                                                                                                                                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Node VLAN     | A VLAN that carries the node's own traffic on the bridge. The untagged node VLAN is `nativeVlan` if you set it, or the bridge's port VLAN ID (PVID) otherwise. Tagged node VLANs are the VLANs of bridge sub-interfaces that have an IP address, such as `br0.3900`. |
+| VM VLAN       | A VLAN that a NAD gives to VMs.                                                                                                                                                                                                                                      |
 
 The `allowedVlans` parameter is the source of truth for VM VLANs. The agent programs a VLAN from that list on the bridge
 uplinks only while a NAD on the bridge references it, and removes the VLAN after you delete the last NAD that uses it.
@@ -189,7 +190,7 @@ For example, if VLAN 300 is in `allowedVlans`, creating a NAD on VLAN 300 permit
 reconciliation pass. You do not need to edit the cluster profile or redeploy the cluster.
 
 On the VM Launchpad appliance, the following fields in the **Networking** section of the cluster configuration set the
-VLAN filtering parameters. Refer to [Install VM Launchpad](../install.md) for the other networking fields.
+VLAN filtering parameters. For the other networking fields, refer to [Install VM Launchpad](../install.md#networking).
 
 | **Appliance Field**             | **Parameter**                          |
 | ------------------------------- | -------------------------------------- |
@@ -209,46 +210,96 @@ before you turn on VLAN filtering.
 
 #### VLAN Filtering Parameters
 
-The following parameters are relative to `charts.virtual-machine-orchestrator`. Set each `env` value as a quoted string.
+The parameters in the following table are relative to `charts.virtual-machine-orchestrator` in the VMO pack values. Set
+each `env` value as a quoted string. The following example turns on VLAN filtering and permits VM VLANs 21 - 100.
 
 ```yaml
-vlanFiltering:
-  enabled: true
-  env:
-    allowedVlans: "21-100"
+charts:
+  virtual-machine-orchestrator:
+    vlanFiltering:
+      enabled: true
+      env:
+        allowedVlans: "21-100"
 ```
 
-| **Parameter**                                    | **Default**            | **Description**                                                                                                                                                                                                                                   |
-| ------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vlanFiltering.enabled`                          | `false`                | Deploys the VLAN filtering agent on every node.                                                                                                                                                                                                   |
-| `vlanFiltering.env.bridgeIF`                     | `"br0"`                | The bridge that the agent manages.                                                                                                                                                                                                                |
-| `vlanFiltering.env.allowedVlans`                 | `"1"`                  | The VM VLANs that NADs can use, as IDs or ranges, for example, `"21-100"`. The agent programs only these VLANs on the bridge uplinks, and each one only while a NAD references it.                                                                |
-| `vlanFiltering.env.allowVlansOnSelf`             | `"true"`               | Programs `allowedVlansOnSelf` on the bridge's own port. Keep it set to `"true"` when the node's IP address is on the bridge.                                                                                                                      |
-| `vlanFiltering.env.allowedVlansOnSelf`           | `"1"`                  | The VLANs that the node itself uses on the bridge, such as the VLANs of `br0.10` sub-interfaces. The agent programs them on the bridge's own port only. NADs never add VLANs here. Always include the node's untagged VLAN, which is usually `1`. |
-| `vlanFiltering.env.nativeVlan`                   | `""`                   | The node's untagged VLAN. Leave it empty so that the agent detects it. Set a value only to pin a specific VLAN.                                                                                                                                   |
-| `vlanFiltering.env.vlanDesiredStateSync`         | `"true"`               | Removes VM VLANs that no NAD references. Set it to `"false"` to make the agent add-only. The agent never removes node VLANs.                                                                                                                      |
-| `vlanFiltering.env.connectivityCheckOnEnable`    | `"true"`               | Probes connectivity while filtering is on, and turns filtering off if the probe keeps failing. Set it to `"false"` to turn off both the probe and the automatic revert.                                                                           |
-| `vlanFiltering.env.connectivityTestIpv4`         | `""`                   | The IPv4 address to probe. Leave it empty to probe the node's default gateway.                                                                                                                                                                    |
-| `vlanFiltering.env.connectivityFailureThreshold` | `"3"`                  | The number of consecutive failed probes before the agent turns filtering off.                                                                                                                                                                     |
-| `vlanFiltering.env.publishNodeStatus`            | `"true"`               | Writes the `vmo-manager/vlan-filtering-status` node annotation. The **VLAN filtering** panel and the NAD admission checks read this annotation.                                                                                                   |
-| `vlanFiltering.env.failureRetentionSeconds`      | `"0"`                  | How long a failed VLAN stays in the node status. `"0"` keeps it until the problem clears or an administrator clears it. `"-1"` shows it once. A positive value, such as `"3600"`, shows it for that many seconds.                                 |
-| `vlanFiltering.env.sleepSecs`                    | `"30"`                 | The number of seconds between reconciliation passes.                                                                                                                                                                                              |
-| `vlanFiltering.stateHostPath`                    | `/usr/local/vlan-mgmt` | The directory on each node where the agent keeps its state. It must persist across pod restarts and reboots.                                                                                                                                      |
+| **Parameter**                                    | **Default**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vlanFiltering.enabled`                          | `false`                | Deploys the VLAN filtering agent on every node.                                                                                                                                                                                                                                                                                                                                                    |
+| `vlanFiltering.env.bridgeIF`                     | `"br0"`                | The bridge that the agent manages.                                                                                                                                                                                                                                                                                                                                                                 |
+| `vlanFiltering.env.allowedVlans`                 | `"1"`                  | The VM VLANs that NADs can use, as IDs or ranges, for example, `"21-100"`. The agent programs only these VLANs on the bridge uplinks, and each one only while a NAD references it.                                                                                                                                                                                                                 |
+| `vlanFiltering.env.allowVlansOnSelf`             | `"true"`               | Programs `allowedVlansOnSelf` on the bridge's own port. Keep it set to `"true"` when the node's IP address is on the bridge.                                                                                                                                                                                                                                                                       |
+| `vlanFiltering.env.allowedVlansOnSelf`           | `"1"`                  | The VLANs that the node itself uses on the bridge, such as the VLANs of `br0.10` sub-interfaces. The agent programs them on the bridge's own port only. NADs never add VLANs here. Always include the node's untagged VLAN, which is usually `1`.                                                                                                                                                  |
+| `vlanFiltering.env.nativeVlan`                   | `""`                   | The node's untagged VLAN. Leave it empty so that the agent detects it. Set a value only to pin a specific VLAN.                                                                                                                                                                                                                                                                                    |
+| `vlanFiltering.env.vlanDesiredStateSync`         | `"true"`               | Removes VM VLANs that no NAD references. Set it to `"false"` to make the agent add-only. The agent never removes node VLANs.                                                                                                                                                                                                                                                                       |
+| `vlanFiltering.env.connectivityCheckOnEnable`    | `"true"`               | Probes connectivity while filtering is on, and turns filtering off if the probe keeps failing. Set it to `"false"` to turn off both the probe and the automatic revert.                                                                                                                                                                                                                            |
+| `vlanFiltering.env.connectivityTestIpv4`         | `""`                   | The IPv4 address to probe. Leave it empty to probe the node's default gateway.                                                                                                                                                                                                                                                                                                                     |
+| `vlanFiltering.env.connectivityFailureThreshold` | `"3"`                  | The number of consecutive failed probes before the agent turns filtering off.                                                                                                                                                                                                                                                                                                                      |
+| `vlanFiltering.env.publishNodeStatus`            | `"true"`               | Writes the `vmo-manager/vlan-filtering-status` node annotation. The **VLAN filtering** panel and the NAD admission checks read this annotation.                                                                                                                                                                                                                                                    |
+| `vlanFiltering.env.failureRetentionSeconds`      | `"0"`                  | How long a failed VLAN stays in the node status. `"0"` keeps it until the problem clears or you clear it with a [retry request](#retry-vlan-filtering-after-a-revert). `"-1"` shows it in one status update only, so it disappears at the next reconciliation pass. A positive value, such as `"3600"`, shows it for that many seconds. The agent's state file keeps every failed VLAN either way. |
+| `vlanFiltering.env.sleepSecs`                    | `"30"`                 | The number of seconds between reconciliation passes.                                                                                                                                                                                                                                                                                                                                               |
+| `vlanFiltering.stateHostPath`                    | `/usr/local/vlan-mgmt` | The directory on each node where the agent keeps its state. It must persist across pod restarts and reboots.                                                                                                                                                                                                                                                                                       |
 
 #### Node Protection
 
 The agent includes the following safeguards against cutting a node off the network.
 
-| **Safeguard**                           | **Behavior**                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node VLANs are never removed            | The agent detects the node VLANs and keeps them on every uplink and on the bridge's own port, whatever the other parameters specify. The untagged node VLAN is `nativeVlan` if you set it. Otherwise, the agent detects it from the bridge's port VLAN ID (PVID). Tagged node VLANs are the VLANs of bridge sub-interfaces that have an IP address, such as `br0.3900`. The agent remembers each node VLAN, so it stays protected after a reboot or after the sub-interface is removed. |
-| Filtering waits for the node VLANs      | The agent does not turn on filtering while a node VLAN is missing from an uplink or from the bridge's own port. It records the reason as a failed VLAN instead.                                                                                                                                                                                                                                                                                                                         |
-| VM VLANs stay off the node's own path   | The agent applies VM VLANs to the bridge uplinks only. The bridge's own port carries only the VLANs in `allowedVlansOnSelf` and the node VLANs, so creating a NAD cannot cut the node's own traffic.                                                                                                                                                                                                                                                                                    |
-| Connectivity probe and automatic revert | While filtering is on, the agent probes the node's default gateway, or the address in `connectivityTestIpv4`, on every pass. After three consecutive failures, it turns filtering off on that node and records the VLAN changes made since the last successful probe as failed VLANs. The node stays reverted, across pod restarts and reboots, until an administrator requests a retry.                                                                                                |
-| No changes when the view is incomplete  | If the agent cannot read the NADs during a pass, it neither adds nor removes VM VLANs in that pass. It still repairs the node VLANs.                                                                                                                                                                                                                                                                                                                                                    |
+| **Safeguard**                           | **Behavior**                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Node VLANs are never removed            | The agent detects the node VLANs and keeps them on every uplink and on the bridge's own port, whatever the other parameters specify. The agent remembers each node VLAN, so it stays protected after a reboot or after the sub-interface is removed.                                                                                                                                                                                                           |
+| Filtering waits for the node VLANs      | The agent does not turn on filtering while a node VLAN is missing from an uplink or from the bridge's own port. It records the reason as a failed VLAN instead.                                                                                                                                                                                                                                                                                                |
+| VM VLANs stay off the node's own path   | The agent applies VM VLANs to the bridge uplinks only. The bridge's own port carries only the VLANs in `allowedVlansOnSelf` and the node VLANs, so creating a NAD cannot cut the node's own traffic.                                                                                                                                                                                                                                                           |
+| Connectivity probe and automatic revert | While filtering is on, the agent probes the node's default gateway, or the address in `connectivityTestIpv4`, on every pass. After `connectivityFailureThreshold` consecutive failures (three by default), it turns filtering off on that node and records the VLAN changes made since the last successful probe as failed VLANs. The node stays reverted, across pod restarts and reboots, until you [request a retry](#retry-vlan-filtering-after-a-revert). |
+| No changes when the view is incomplete  | If the agent cannot read the NADs during a pass, it neither adds nor removes VM VLANs in that pass. It still repairs the node VLANs.                                                                                                                                                                                                                                                                                                                           |
 
 If you set `connectivityCheckOnEnable` to `"false"`, nothing reverts a wrong `allowedVlans` or `allowedVlansOnSelf`
 value. Verify both values against the uplink and node VLANs of each node before you turn on VLAN filtering.
+
+#### Check VLAN Filtering Status
+
+The **VLAN filtering** panel appears on **Infrastructure** > **Networks** when a node reports any of the following
+problems.
+
+- Filtering is off or reverted on the node.
+
+- A VLAN failed.
+
+- A node VLAN is missing from `allowedVlansOnSelf`.
+
+The panel lists each node with its node VLANs, its filtering state, and every VLAN that the agent could not program. The
+panel stays hidden while every node is healthy, and when `vlanFiltering.enabled` is `false`. It also requires
+`publishNodeStatus` set to `"true"`.
+
+Each node also carries a `vmo-manager/vlan-filtering-status` annotation that summarizes what the agent applied,
+including whether filtering was reverted. Reading the annotation requires `kubectl` access to the cluster.
+
+```shell
+export KUBECONFIG=<path-to-kubeconfig>
+```
+
+Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your cluster. Then use the following command to
+read the annotation.
+
+```shell
+kubectl get node <node-name> --output jsonpath='{.metadata.annotations.vmo-manager/vlan-filtering-status}'
+```
+
+Replace `<node-name>` with the name of the node.
+
+If a node cannot reach the API server, read the agent's state file on the node instead. The file records the node VLANs,
+every failed VLAN, whether filtering was reverted, and the VM VLANs that the last pass programmed on the uplinks (the
+`applied` field). The agent does not act on this file.
+
+```shell
+cat /usr/local/vlan-mgmt/vlan-state.json
+```
+
+If you changed `vlanFiltering.stateHostPath`, replace `/usr/local/vlan-mgmt` with that directory.
+
+To check the VLANs that the bridge carries, use the following command.
+
+```shell
+bridge vlan show
+```
 
 #### Retry VLAN Filtering After a Revert
 
@@ -275,57 +326,64 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your clus
    Replace `<node-name>` with the name of the reverted node. The **VLAN filtering** panel shows this command with the
    node name filled in, ready to copy.
 
-   To clear only specific failed VLANs, add a `vlans` list to the JSON object, for example,
-   `{"generation":<generation>,"vlans":[300,301]}`.
+   To clear only specific failed VLANs, add a `vlans` list to the request.
+
+   ```shell
+   kubectl annotate node <node-name> --overwrite \
+     vmo-manager/vlan-filtering-enable="{\"generation\":$(date +%s),\"vlans\":[<vlan-ids>]}"
+   ```
+
+   Replace `<vlan-ids>` with a comma-separated list of the failed VLAN IDs to clear, such as `300,301`.
 
 3. Wait for the next reconciliation pass. The agent processes each request once and retries filtering without a pod
    restart.
 
-#### Check VLAN Filtering Status
+   Use the **VLAN filtering** panel or the node annotation to confirm that filtering is back on for the node. Refer to
+   [Check VLAN Filtering Status](#check-vlan-filtering-status).
 
-The **VLAN filtering** panel appears on **Infrastructure** > **Networks** when a node has a problem: filtering is off or
-reverted, a VLAN failed, or a node VLAN is missing from `allowedVlansOnSelf`. The panel lists each node with its node
-VLANs, its filtering state, and every VLAN that the agent could not program. The panel stays hidden while every node is
-healthy, and when VLAN filtering is turned off. It requires `publishNodeStatus` set to `"true"`.
-
-Each node also carries a `vmo-manager/vlan-filtering-status` annotation that summarizes what the agent applied,
-including whether filtering was reverted. Use the following command to read it.
-
-```shell
-kubectl get node <node-name> --output jsonpath='{.metadata.annotations.vmo-manager/vlan-filtering-status}'
-```
-
-Replace `<node-name>` with the name of the node.
-
-If a node cannot reach the API server, read the agent's state file on the node instead. The file records the node VLANs,
-every failed VLAN, whether filtering was reverted, and `applied`, the VM VLANs that the last pass programmed on the
-uplinks. The file is for reference only, and the agent does not act on it. To check the VLANs that the bridge carries,
-use the `bridge vlan show` command.
-
-```shell
-cat /usr/local/vlan-mgmt/vlan-state.json
-```
-
-#### Restrict Which VLANs VMs Can Use
+#### VLAN Restrictions for VMs
 
 `allowedVlans` is an upper limit. The agent never programs a VLAN outside that list on the bridge uplinks, so users who
 can create NADs can open only the VLANs in the list.
 
-When admission validation is on, VMO rejects a bridge NAD on a VLAN outside `allowedVlans`, and the error lists the
-VLANs that the bridge allows. This check requires `vmo-manager.admissionControl.enabled` and `publishNodeStatus` set to
-`"true"`. If such a NAD exists anyway, for example because admission validation is off, the agent does not program its
-VLAN. The **VLAN filtering** panel lists it as a failed VM VLAN until you delete the NAD or add the VLAN to
-`allowedVlans`.
+Admission validation is on by default on the VM Launchpad appliance and off by default in the VMO pack. The admission
+webhook requires `vmo-manager.tls.enabled`, which the pack leaves off. The `vmo-manager.admissionControl.enabled`
+parameter turns on both VM overcommit feedback and NAD validation.
 
-VMO also rejects VLAN ID `0` on Linux Bridge networks. The bridge CNI plugin treats `0` as untagged, which would place
-the VM on the bridge's default VLAN, usually the node's own network. Use an ID from `1` to `4094`, or leave **VLAN ID**
-empty for an untagged network.
+When admission validation and VLAN filtering are both on, VMO rejects a bridge NAD on a VLAN outside `allowedVlans`, and
+the error lists the VLANs that the bridge allows. A bridge NAD with no VLAN ID places VMs on the bridge's default VLAN,
+so VMO also rejects it unless that VLAN is in `allowedVlans`. These checks require `publishNodeStatus` set to `"true"`.
+If such a NAD exists anyway, for example because admission validation is off, the agent does not program its VLAN. The
+**VLAN filtering** panel lists it as a failed VM VLAN until you delete the NAD or add the VLAN to `allowedVlans`.
 
-Admission validation is on by default on the VM Launchpad appliance and off by default in the VMO pack, because the
-admission webhook requires `vmo-manager.tls.enabled`, which the pack leaves off. The
-`vmo-manager.admissionControl.enabled` parameter turns on both VM overcommit feedback and NAD validation. When it is on,
-a bridge NAD must name a bridge that the VLAN filtering agents report. To use a bridge that you manage outside VMO, add
-the `vmo.spectrocloud.com/allow-unknown-bridge: "true"` annotation to the NAD. VMO then accepts the NAD with a warning.
+With both settings on, a bridge NAD must also name a bridge that the VLAN filtering agents report. Until the agents
+report their bridges, for example while they start, VMO accepts the NAD with a warning. To use a bridge that you manage
+outside VMO, add the `vmo.spectrocloud.com/allow-unknown-bridge: "true"` annotation to the NAD. VMO then accepts the NAD
+with a warning. The **Create Network** form cannot set annotations, so create the NAD from a manifest instead.
+
+```yaml
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <nad-name>
+  namespace: <namespace>
+  annotations:
+    vmo.spectrocloud.com/allow-unknown-bridge: "true"
+spec:
+  config: '{"cniVersion": "0.3.1", "type": "bridge", "bridge": "<bridge-name>", "vlan": <vlan-id>}'
+```
+
+Replace `<nad-name>`, `<namespace>`, `<bridge-name>`, and `<vlan-id>` with your values, and then apply the manifest.
+
+```shell
+kubectl apply --filename <nad-manifest>
+```
+
+Replace `<nad-manifest>` with the path to your manifest file.
+
+Admission validation also rejects VLAN ID `0` on every Linux Bridge network, even when VLAN filtering is off. The bridge
+CNI plugin treats `0` as untagged, which would place the VM on the bridge's default VLAN, usually the node's own
+network. Use an ID from `1` to `4094`, or leave **VLAN ID** empty for an untagged network.
 
 #### Upgrade Considerations
 
