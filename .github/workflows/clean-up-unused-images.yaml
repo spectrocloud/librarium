@@ -15,6 +15,9 @@ concurrency:
   group: clean-up-images-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   find_unused_images:
     runs-on: ubuntu-latest
