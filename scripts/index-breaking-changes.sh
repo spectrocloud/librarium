@@ -7,11 +7,18 @@ set -e
 
 DOCS_ROOT="$(git rev-parse --show-toplevel)"
 RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
-OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
 ARCHIVE_GH_PATH="https://raw.githubusercontent.com/spectrocloud/librarium/refs/heads/master/archiveVersions.json"
 TEMP_ARCHIVE_FILE="$DOCS_ROOT/archiveVersions_temp.json"
+
+# Oldest version branch whose breaking changes are indexed. Older branches are skipped.
+#
+# This is intentionally lower than the build and backport floor, the oldest branch that is
+# still rebuilt and backported to. Customers upgrade from versions that are no longer built or
+# backported to, and they still need every breaking change between their version and their
+# upgrade target. Raise each floor on its own schedule. Do not merge them into one value.
+INDEX_FLOOR_BRANCH="version-4-5"
 
 # Worktree strategy:
 # - Each version branch is processed in an isolated git worktree
@@ -44,24 +51,42 @@ if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
   exit 0
 fi
 
-wget -qO "$TEMP_ARCHIVE_FILE" "$ARCHIVE_GH_PATH" || { echo "❌ Failed to fetch archiveVersions.json from master: $ARCHIVE_GH_PATH"; exit 1; }
-echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
+# Every branch reads master's archiveVersions.json, so that link rewriting uses the current list of live legacy sites.
+# For local testing, set ARCHIVE_VERSIONS_FILE to a local copy instead, for example a pruned one that is not on master yet.
+if [ -n "${ARCHIVE_VERSIONS_FILE:-}" ]; then
+  cp "$ARCHIVE_VERSIONS_FILE" "$TEMP_ARCHIVE_FILE" || { echo "❌ Failed to copy local archiveVersions.json: $ARCHIVE_VERSIONS_FILE"; exit 1; }
+  echo "⚠️ Using local archiveVersions.json from ARCHIVE_VERSIONS_FILE: $ARCHIVE_VERSIONS_FILE"
+else
+  wget -qO "$TEMP_ARCHIVE_FILE" "$ARCHIVE_GH_PATH" || { echo "❌ Failed to fetch archiveVersions.json from master: $ARCHIVE_GH_PATH"; exit 1; }
+  echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
+fi
 
-# Fetch all branches from the remote
-# Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags,
-# and explicitly exclude version-3-4 with a negative refspec.
-git fetch --prune --no-tags --depth=1 origin \
-  '+refs/heads/version-*:refs/remotes/origin/version-*'
+# List the remote version-X-Y branches at or above INDEX_FLOOR_BRANCH without fetching them, so the
+# branches below the floor are never downloaded. Compare the major and minor numerically, and sort by
+# version so two-digit minors order naturally (version-4-9 before version-4-10, not after version-4-1).
+floor_major=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f2)
+floor_minor=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f3)
+branches="$(git ls-remote --heads origin 'refs/heads/version-*' \
+  | sed 's|.*refs/heads/||' \
+  | grep -E '^version-[0-9]+-[0-9]+$' \
+  | awk -F - -v maj="$floor_major" -v min="$floor_minor" '$2+0 > maj+0 || ($2+0 == maj+0 && $3+0 >= min+0)' \
+  | sort -V -u)"
+# An empty list means the listing failed, and a fetch with no refspecs would fetch the default ones instead.
+if [ -z "$branches" ]; then
+  echo "❌ Found no version branches at or above $INDEX_FLOOR_BRANCH on origin."
+  exit 1
+fi
+echo "ℹ️ Indexing branches at or above $INDEX_FLOOR_BRANCH: $(echo "$branches" | tr '\n' ' ')"
 
-# Get remote version branches (no locals, no HEAD), exclude version-3-4. Sort by version so
-# two-digit minors order naturally (version-4-9 before version-4-10, not after version-4-1).
- branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
-   | grep -v '^HEAD$' \
-   | grep -v '^version-3-4$' \
-   | sort -V -u)"
-
-# Leave this commented. To be used when doing local testing. 
+# Leave this commented. To be used when doing local testing.
 # branches="version-4-7 version-4-8"
+
+# Pull *only* those branches into refs/remotes/origin/, shallow, skip tags.
+refspecs=()
+for branch in $branches; do
+  refspecs+=("+refs/heads/$branch:refs/remotes/origin/$branch")
+done
+git fetch --no-tags --depth=1 origin "${refspecs[@]}"
 
 # Remove files for repeatable runs. Linus added quotes to avoid issues with blank spaces
 rm -rf "$BREAKING_CHANGES_PARTIALS_PATH"
@@ -73,12 +98,6 @@ mkdir -p "$BREAKING_CHANGES_PARTIALS_PATH"
 
 for branch in $branches; do
   echo "ℹ️ Checking branch: $branch"
-  release_notes_path="$RELEASE_NOTES_PATH"
-  # Match exact branch names. Unanchored globs would also match version-4-10
-  # and later two-digit minors, routing them to the pre-4.2 release notes path.
-  if [[ $branch == "version-4-0" || $branch == "version-4-1" ]]; then
-    release_notes_path="$OLD_RELEASE_NOTES_PATH"
-  fi
 
   wt_path="$WORKTREES_DIR/$branch"
   git worktree add --force --detach "$wt_path" "origin/$branch"
@@ -305,7 +324,7 @@ for branch in $branches; do
       fi
     fi
 
-  done < "$wt_path/$release_notes_path"
+  done < "$wt_path/$RELEASE_NOTES_PATH"
 
   # If we finished the file and have a left over partial, copy it to the current working directory.
   if [ "$partial_created" == "true" ]; then

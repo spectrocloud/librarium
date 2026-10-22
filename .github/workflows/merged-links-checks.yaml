@@ -24,11 +24,18 @@ env:
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
   url-checks:
     name: Broken URL check
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pull-requests: read # url-checker.sh looks up the PR for the branch.
     steps:
       - id: checkout
         name: Checkout Repository

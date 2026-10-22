@@ -6,6 +6,9 @@ on:
     - cron: "0 17 * * 2,5"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   scan-clusters:
     name: cluster-scan
@@ -48,6 +51,8 @@ jobs:
         env:
           PALETTE_API_KEY: ${{ env.PALETTE_API_KEY }}
           PALETTE_HOST: ${{ env.PALETTE_HOST }}
+          # Scan only public cloud clusters, which incur costs. Edge devices and other cloud types are skipped.
+          SCAN_CLOUD_TYPES: "aws,eks,azure,aks,gcp,gke"
         run: |
           set -euo pipefail
           go build -o cluster-scanner
@@ -61,7 +66,7 @@ jobs:
             {
               echo 'LOG_MESSAGE<<EOF'
               echo "Palette Environment: ${{ matrix.environment }}"
-              sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,/$/p' | sed 's/"//g'
+              sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,$p' | sed 's/"//g'
               echo EOF
             } >> "$GITHUB_ENV"
           fi

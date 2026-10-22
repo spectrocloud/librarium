@@ -90,8 +90,11 @@ confirmation before it force stops a VM.
 ### Live Migration
 
 **Migrate** [live-migrates](https://kubevirt.io/user-guide/compute/live_migration/) the VM to another node. The VM
-continues running during migration with minimal downtime. This requires the cluster to have live migration enabled and
-appropriate storage, such as shared storage or storage migration support.
+continues running during migration with minimal downtime. Every disk backed by a PersistentVolumeClaim (PVC), including
+hot-plugged volumes, must use the `ReadWriteMany` access mode. If any of these disks uses `ReadWriteOnce` or
+`ReadOnlyMany`, VM Launchpad disables **Migrate** and displays the reason next to it. To create `ReadWriteMany` disks,
+use a StorageClass that supports that access mode. Refer to
+[Create a StorageClass](../infrastructure/storage.md#create-a-storageclass) for the StorageClass options.
 
 Migration status can be viewed in the VM detail page or via the migrations API.
 

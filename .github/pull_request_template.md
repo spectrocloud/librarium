@@ -11,6 +11,9 @@ Before submitting your PR for review, please complete this checklist to ensure q
 - [ ] **Preview links** are for all affected pages are provided in the [Changed Pages](#-changed-pages). _If this PR
       makes no user-facing changes, please indicate so in this section._
 - [ ] Conduct a **self-review** for your pages using your preview links. Verify grammar, clarity, and accuracy.
+- [ ] Run a **review buddy check** with `/pr-review-buddy <PR URL>` in a separate context window (for example, a new
+      Claude Code session), not the one you used to make the changes. Address its findings. _A fresh context reviews
+      your diff without the assumptions you made while writing it._
 - [ ] **Check formatting** for your pages
   - [ ] Verify indentations, admonitions, and tables (if applicable).
   - [ ] Verify all images display.
@@ -20,7 +23,7 @@ Before submitting your PR for review, please complete this checklist to ensure q
         _This can be done later, but leave a note if required._
 - [ ] All **CI jobs** have completed successfully.
 - [ ] Add **Backport labels** if the change should be reflected in previous versions. _If required, remember to add the
-      `auto-backport` label, as well as the `backport-version-**` labels._
+      `auto-backport` label, as well as the `backport-version-**` labels. The oldest supported branch is `version-4-7`._
 - [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (for
       example, Engineering, Product, etc.)
 - [ ] Add the `notify-slack` label once this checklist has been completed. The team will be notified and review your PR.

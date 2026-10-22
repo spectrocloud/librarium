@@ -124,9 +124,16 @@ persist_partial_files () {
 # - Matches against archiveVersions.json entries like "v4.7.x"
 # - Ignores patch version intentionally
 # - Returns the first matching legacy domain URL
+# - If the release's major.minor has no entry (for example, it was pruned from the version
+#   dropdowns), returns the nearest newer listed legacy site instead, the closest snapshot
+#   of the pages the release linked to
+# - If there is no newer entry either, returns the current docs domain
 #
 # Notes:
-# - If no match is found, function returns non-zero
+# - Always returns zero. Callers run under set -e, so a failed lookup would abort the build.
+# - The nearest newer fallback logs a notice, because it is expected for every release between
+#   INDEX_FLOOR_BRANCH and the oldest archiveVersions.json entry. The current docs fallback logs a
+#   warning. Both go to stderr, which keeps them out of the captured URL
 # - Used to rewrite links to legacy documentation paths
 #
 # Params:
@@ -142,6 +149,11 @@ find_legacy_domain() {
   release_maj=$(echo "$release_version" | cut -d . -f1)
   release_min=$(echo "$release_version" | cut -d . -f2)
 
+  # Lowest entry that is newer than the release, used if there is no exact match
+  local fallback_maj=""
+  local fallback_min=""
+  local fallback_url=""
+
   # name like "v4.7.x" or "v3.4.x and prior"
   while IFS=$'\t' read -r name url; do
     local entry_maj
@@ -153,9 +165,49 @@ find_legacy_domain() {
       printf '%s\n' "$url"
       return 0
     fi
+
+    if (( entry_maj > release_maj || (entry_maj == release_maj && entry_min > release_min) )); then
+      if [ -z "$fallback_url" ] || (( entry_maj < fallback_maj || (entry_maj == fallback_maj && entry_min < fallback_min) )); then
+        fallback_maj=$entry_maj
+        fallback_min=$entry_min
+        fallback_url=$url
+      fi
+    fi
   done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$archive_versions_path")
 
-  return 1
+  if [ -n "$fallback_url" ]; then
+    echo "ℹ️ No legacy site for $release_maj.$release_min in archiveVersions.json. Linking $release_version to the nearest newer legacy site: $fallback_url" >&2
+    printf '%s\n' "$fallback_url"
+    return 0
+  fi
+
+  echo "⚠️ No legacy site for $release_maj.$release_min or any newer version in archiveVersions.json. Linking $release_version to the current docs: https://docs.spectrocloud.com" >&2
+  printf '%s\n' "https://docs.spectrocloud.com"
+  return 0
+}
+
+# Function to resolve the legacy domain once per version
+#
+# Purpose:
+# - Run the archiveVersions.json lookup, and log its fallback message, once per release instead of
+#   once per body line
+#
+# What this does:
+# - Calls find_legacy_domain only when the version differs from the previous call
+# - Stores the result in legacy_domain_cache and the version in legacy_domain_cache_version
+#
+# Notes:
+# - Call it directly, not in $(...). A command substitution runs in a subshell, which discards the cache.
+# - The archiveVersions.json path is the same for the whole run, so it is not part of the cache key
+#
+# Params:
+# $1 - release version, example: 4.7.10
+# $2 - archiveVersions.json path
+resolve_legacy_domain() {
+  if [ "$1" != "$legacy_domain_cache_version" ]; then
+    legacy_domain_cache=$(find_legacy_domain "$1" "$2")
+    legacy_domain_cache_version=$1
+  fi
 }
 
 # Function to add breaking changes body to the partials file
@@ -206,7 +258,8 @@ add_breaking_changes_body() {
   if [ -n "$release_number" ]; then
     replaced=$(echo "$release_number" | tr '.' '_')
     filename="$breaking_changes_partials_path/br_$replaced.mdx"
-    legacy_domain=$(find_legacy_domain "$release_number" "$archive_file_path")
+    resolve_legacy_domain "$release_number" "$archive_file_path"
+    legacy_domain=$legacy_domain_cache
   fi
 
   if [ -n "$component_updates_identifier" ]; then
@@ -215,7 +268,8 @@ add_breaking_changes_body() {
     if [ -n "$component_updates_range" ]; then
       first_version=$(echo "$component_updates_range" | grep -Eo '^[0-9]+(\.[0-9]+){2}')
       if [ -n "$first_version" ]; then
-        legacy_domain=$(find_legacy_domain "$first_version" "$archive_file_path" || true)
+        resolve_legacy_domain "$first_version" "$archive_file_path" || true
+        legacy_domain=$legacy_domain_cache
       fi
     fi
   fi
