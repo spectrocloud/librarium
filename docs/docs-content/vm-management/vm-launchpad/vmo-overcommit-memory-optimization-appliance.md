@@ -302,6 +302,13 @@ environment variable to point to it.
    kubectl get nodes --output custom-columns=NODE:.metadata.name,CAPACITY:.status.capacity.memory,ALLOCATABLE:.status.allocatable.memory,EPHEMERAL:.status.allocatable.ephemeral-storage
    ```
 
+   ```shell hideClipboard title="Example Output"
+   NODE   CAPACITY      ALLOCATABLE   EPHEMERAL
+   cp-1   791164024Ki   791061624Ki   3015913437925
+   cp-2   791163884Ki   791061484Ki   464118175795
+   cp-3   792130500Ki   792028100Ki   3015913437925
+   ```
+
    Kubernetes reports node memory with the `Ki` suffix and might report ephemeral storage in bytes. 1 GiB is 1048576 Ki,
    or 1073741824 bytes.
 
@@ -370,13 +377,23 @@ environment variable to point to it.
    kubectl get nodes
    ```
 
-2. _(Non-FIPS appliances only)_ Confirm that the allocatable memory and allocatable ephemeral storage of each node
-   dropped by about 4 GiB and 10 GiB, respectively, compared with the values that you listed in
+2. _(Non-FIPS appliances only)_ Confirm that the allocatable memory of each node is 4 GiB (4194304 Ki) below its total
+   memory, and that its allocatable ephemeral storage dropped by about 10 GiB compared with the value that you listed in
    [Check Node Memory Before You Upgrade](#check-node-memory-before-you-upgrade).
 
    ```shell
-   kubectl get nodes --output custom-columns=NODE:.metadata.name,ALLOCATABLE:.status.allocatable.memory,EPHEMERAL:.status.allocatable.ephemeral-storage
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,CAPACITY:.status.capacity.memory,ALLOCATABLE:.status.allocatable.memory,EPHEMERAL:.status.allocatable.ephemeral-storage
    ```
+
+   ```shell hideClipboard title="Example Output"
+   NODE   CAPACITY     ALLOCATABLE   EPHEMERAL
+   cp-1   49280452Ki   45086148Ki    137887767511
+   cp-2   49280464Ki   45086160Ki    137887767511
+   cp-3   49280468Ki   45086164Ki    137887767511
+   ```
+
+   In this example, the allocatable memory of each node is 4194304 Ki below its capacity. Compare the difference between
+   the two values rather than the values themselves, because the difference is the same on every node.
 
 3. Confirm that the etcd and Kubernetes API server pods on each control plane node request `1Gi` and `2Gi` of memory,
    respectively.
@@ -384,6 +401,15 @@ environment variable to point to it.
    ```shell
    kubectl get pods --namespace kube-system --selector component=etcd --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
    kubectl get pods --namespace kube-system --selector component=kube-apiserver --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
+   ```
+
+   ```shell hideClipboard title="Example Output"
+   cp-1 1Gi
+   cp-2 1Gi
+   cp-3 1Gi
+   cp-1 2Gi
+   cp-2 2Gi
+   cp-3 2Gi
    ```
 
    During a Kubernetes version upgrade, these requests might be missing for a short time. They return when the upgrade
