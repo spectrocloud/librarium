@@ -19,15 +19,6 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 
 ### Breaking Changes {#breaking-changes-vm-launchpad-tbd}
 
-<!-- https://spectrocloud.atlassian.net/browse/PVM-1188 -->
-<!-- VERIFY(DOC-3345): Vadim (PVM-1188, 2026-09-17) says a direct move from KubeVirt 1.8.3 (VMO 4.9) to 1.9.0 crashes VMs.
-Confirm with Sumit which appliance versions are affected and which version to upgrade through. QA upgraded 4.10.20 to
-4.10.21-rc.7 without VM restarts. -->
-
-- This release upgrades KubeVirt to version 1.9.0. Upgrading an appliance directly from a 4.9 version, which uses
-  KubeVirt 1.8.3, can cause running virtual machines to crash. Upgrade 4.9 appliances to version 4.10.20 first, and then
-  upgrade to this release.
-
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
 <!-- VERIFY(DOC-3345): Same question as the Upgrade Considerations in #12056: which earlier releases had the separate
@@ -70,7 +61,9 @@ them. If nobody could have, remove this entry. -->
 
 - VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
   not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
-  the **KubeVirt Configuration** page. Refer to
+  the **KubeVirt Configuration** page. KubeVirt 1.9.0 also deprecates the `HotplugVolumes` feature gate in favor of
+  `DeclarativeHotplugVolumes`, which is on by default. VMO does not remove `HotplugVolumes` from **Feature gates**
+  during the upgrade, so if you added it, remove it after the upgrade. Disk hot-plug keeps working without it. Refer to
   [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
@@ -84,6 +77,10 @@ them. If nobody could have, remove this entry. -->
   header, so you can forward logs to Datadog (`DD-API-KEY=<datadog-api-key>`), New Relic (`api-key=<license-key>`), or
   Grafana Cloud (`Authorization=Basic <credentials>`). Only the **Metrics** section accepts more than one
   comma-separated `Key=Value` pair. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1335 -->
+
+- Applied critical security fixes to improve the appliance's security posture.
 
 ### Bug Fixes
 
@@ -112,8 +109,6 @@ them. If nobody could have, remove this entry. -->
 
 - Fixed an issue that caused long error messages to overflow their notification and hide its close button. Error
   notifications now also stay visible for 5 seconds.
-
-<!-- VERIFY(DOC-3345): Ask Sumit whether PVM 1335 gets an entry, and how to word it. -->
 
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
