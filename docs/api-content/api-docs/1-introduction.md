@@ -446,6 +446,9 @@ Send an Artifact Studio personal access key or an organization access token as a
 header. You create personal access keys on the **API access keys** tab of your account. Organization admins create
 organization access tokens on the **Tokens** tab of the **Organization settings** page.
 
+The catalog and search operations do not require a token. Without one, they return public and gated artifacts only.
+Downloads, profile bundles, and the current user operations require a token.
+
 <!-- TODO(DOC-3256): Link "personal access keys" to /downloads/artifact-studio-v2/#create-a-personal-access-key and "organization access tokens" to /downloads/artifact-studio-v2/#create-an-organization-access-token once #12239 merges. Until then, the links break the build. -->
 
 The following curl command is an example. Replace `<access-key>` with your access key or token.
