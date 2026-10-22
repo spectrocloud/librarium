@@ -3,7 +3,7 @@
 # Function to create partials file for breaking changes
 # Params:
 # $1 - breaking changes partials path
-# $2 - release number, example: 4.0.0
+# $2 - release number, example: 4.0.0 or 4.10.17-patch.5 (file br_4_10_17-patch_5.mdx)
 create_partials_file () {
   breaking_changes_partials_path=$1
   release_number=$2

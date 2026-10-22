@@ -138,7 +138,9 @@ for branch in $branches; do
     # - Extracts the version from headings like:
     #   • "## Release 4.7.10"
     #   • "## Release 4.7.8 - 4.7.10"
+    #   • "## Release 4.10.17-patch.5"
     # - Always selects the final version in a range
+    # - Keeps a -patch.N suffix, so a patch release does not share a version, and a partial, with its base release
     # - Resets component updates tracking for the new release
     if echo "$line" | grep -q "##.*Release"; then
       # If we were already processing a file, copy it to the current working directory.
@@ -152,8 +154,8 @@ for branch in $branches; do
         cut -c4- |
         sed -E 's/\{#.*\}//' |                                   # Remove markdown anchor fragments
         sed -E 's/.*Release[[:space:]]+//' |                     # Remove everything before 'Release'
-        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
-        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
+        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/' |  # Extract last version in range
+        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/'               # Extract version if no range
       )
       ## Reset component updates tracking variables for new release.
       component_updates_identifier=""
