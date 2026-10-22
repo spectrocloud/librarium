@@ -61,24 +61,32 @@ else
   echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
 fi
 
-# Fetch all branches from the remote
-# Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags.
-git fetch --prune --no-tags --depth=1 origin \
-  '+refs/heads/version-*:refs/remotes/origin/version-*'
-
-# Get remote version-X-Y branches (no locals, no HEAD) at or above INDEX_FLOOR_BRANCH. Compare the
-# major and minor numerically, and sort by version so two-digit minors order naturally
-# (version-4-9 before version-4-10, not after version-4-1).
+# List the remote version-X-Y branches at or above INDEX_FLOOR_BRANCH without fetching them, so the
+# branches below the floor are never downloaded. Compare the major and minor numerically, and sort by
+# version so two-digit minors order naturally (version-4-9 before version-4-10, not after version-4-1).
 floor_major=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f2)
 floor_minor=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f3)
-branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
+branches="$(git ls-remote --heads origin 'refs/heads/version-*' \
+  | sed 's|.*refs/heads/||' \
   | grep -E '^version-[0-9]+-[0-9]+$' \
   | awk -F - -v maj="$floor_major" -v min="$floor_minor" '$2+0 > maj+0 || ($2+0 == maj+0 && $3+0 >= min+0)' \
   | sort -V -u)"
+# An empty list means the listing failed, and a fetch with no refspecs would fetch the default ones instead.
+if [ -z "$branches" ]; then
+  echo "❌ Found no version branches at or above $INDEX_FLOOR_BRANCH on origin."
+  exit 1
+fi
 echo "ℹ️ Indexing branches at or above $INDEX_FLOOR_BRANCH: $(echo "$branches" | tr '\n' ' ')"
 
-# Leave this commented. To be used when doing local testing. 
+# Leave this commented. To be used when doing local testing.
 # branches="version-4-7 version-4-8"
+
+# Pull *only* those branches into refs/remotes/origin/, shallow, skip tags.
+refspecs=()
+for branch in $branches; do
+  refspecs+=("+refs/heads/$branch:refs/remotes/origin/$branch")
+done
+git fetch --no-tags --depth=1 origin "${refspecs[@]}"
 
 # Remove files for repeatable runs. Linus added quotes to avoid issues with blank spaces
 rm -rf "$BREAKING_CHANGES_PARTIALS_PATH"
