@@ -131,7 +131,9 @@ persist_partial_files () {
 #
 # Notes:
 # - Always returns zero. Callers run under set -e, so a failed lookup would abort the build.
-# - Fallbacks log a warning to stderr, which keeps them out of the captured URL
+# - The nearest newer fallback logs a notice, because it is expected for every release between
+#   INDEX_FLOOR_BRANCH and the oldest archiveVersions.json entry. The current docs fallback logs a
+#   warning. Both go to stderr, which keeps them out of the captured URL
 # - Used to rewrite links to legacy documentation paths
 #
 # Params:
@@ -174,7 +176,7 @@ find_legacy_domain() {
   done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$archive_versions_path")
 
   if [ -n "$fallback_url" ]; then
-    echo "⚠️ No legacy site for $release_maj.$release_min in archiveVersions.json. Linking $release_version to the nearest newer legacy site: $fallback_url" >&2
+    echo "ℹ️ No legacy site for $release_maj.$release_min in archiveVersions.json. Linking $release_version to the nearest newer legacy site: $fallback_url" >&2
     printf '%s\n' "$fallback_url"
     return 0
   fi
@@ -182,6 +184,30 @@ find_legacy_domain() {
   echo "⚠️ No legacy site for $release_maj.$release_min or any newer version in archiveVersions.json. Linking $release_version to the current docs: https://docs.spectrocloud.com" >&2
   printf '%s\n' "https://docs.spectrocloud.com"
   return 0
+}
+
+# Function to resolve the legacy domain once per version
+#
+# Purpose:
+# - Run the archiveVersions.json lookup, and log its fallback message, once per release instead of
+#   once per body line
+#
+# What this does:
+# - Calls find_legacy_domain only when the version differs from the previous call
+# - Stores the result in legacy_domain_cache and the version in legacy_domain_cache_version
+#
+# Notes:
+# - Call it directly, not in $(...). A command substitution runs in a subshell, which discards the cache.
+# - The archiveVersions.json path is the same for the whole run, so it is not part of the cache key
+#
+# Params:
+# $1 - release version, example: 4.7.10
+# $2 - archiveVersions.json path
+resolve_legacy_domain() {
+  if [ "$1" != "$legacy_domain_cache_version" ]; then
+    legacy_domain_cache=$(find_legacy_domain "$1" "$2")
+    legacy_domain_cache_version=$1
+  fi
 }
 
 # Function to add breaking changes body to the partials file
@@ -232,7 +258,8 @@ add_breaking_changes_body() {
   if [ -n "$release_number" ]; then
     replaced=$(echo "$release_number" | tr '.' '_')
     filename="$breaking_changes_partials_path/br_$replaced.mdx"
-    legacy_domain=$(find_legacy_domain "$release_number" "$archive_file_path")
+    resolve_legacy_domain "$release_number" "$archive_file_path"
+    legacy_domain=$legacy_domain_cache
   fi
 
   if [ -n "$component_updates_identifier" ]; then
@@ -241,7 +268,8 @@ add_breaking_changes_body() {
     if [ -n "$component_updates_range" ]; then
       first_version=$(echo "$component_updates_range" | grep -Eo '^[0-9]+(\.[0-9]+){2}')
       if [ -n "$first_version" ]; then
-        legacy_domain=$(find_legacy_domain "$first_version" "$archive_file_path" || true)
+        resolve_legacy_domain "$first_version" "$archive_file_path" || true
+        legacy_domain=$legacy_domain_cache
       fi
     fi
   fi
