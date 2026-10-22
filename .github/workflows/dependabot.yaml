@@ -45,6 +45,10 @@ env:
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   NODE_VERSION: "24"
 
+permissions:
+  contents: read
+  actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
+
 jobs:
   dependabot_build:
     name: Dependabot Build
