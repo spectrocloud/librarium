@@ -69,19 +69,33 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 ## Request Routing
 
+<!-- vale Vale.Spelling = NO -->
+
 The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
 the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
-from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
-the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+from a category and a complexity band. For how the two controls combine and where each rule lives, on a workspace's
+policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
+
+<!-- vale Vale.Spelling = YES -->
+
+The semantic router runs on your GPUs and shares them with the main model. The appliance deploys it at installation,
+before any local model, so an appliance that answers only through frontier providers still routes semantically. When a
+deploy starts a new GPU sharing group, the semantic router moves into that group. For the GPU requirements, refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
+
+Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. Text mode runs a
+text model with the semantic router. Vision mode runs a text model with the semantic router and a vision model. The
+deploy picker offers only models of the appliance's current mode. For how a model's catalog entry decides its mode,
+refer to [One Mode per Appliance](./routing-behavior.md#one-mode-per-appliance).
 
 When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
 restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
 assigned model, and the new configuration applies only to later requests.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
-quotas. When routing policy sends a request off the appliance, the gateway can reach a built-in frontier provider or a
-registered external inference endpoint. That traffic is metered as egress. For how clients, API tokens, and quotas work
-together, refer to [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
+quotas. When routing policy sends a request off the appliance, the gateway reaches an external inference endpoint. That
+traffic is metered as egress. For how clients, API tokens, and quotas work together, refer to
+[Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
@@ -97,16 +111,24 @@ appliance sets the default; there is no operator control to change which model i
 
 ### External Inference Endpoints {#external-inference-endpoints}
 
-An external inference endpoint is a box-wide OpenAI-compatible host that an operator registers so the gateway can route
-tier traffic to it as egress. Each endpoint carries a short **Endpoint id** that becomes the routing prefix. The id
-cannot be changed after registration, and it cannot collide with a built-in frontier provider (`anthropic`, `openai`,
-`gemini`); registration refuses a colliding id. The **Endpoint URL** can be an origin or an origin followed by a path
-prefix; the appliance appends the OpenAI-compatible request paths itself, so the URL does not include `/v1`.
+An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
+Three endpoints are built in, `anthropic`, `openai`, and `gemini`, and a platform administrator can register any
+OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance under
+**Integrations**, and a built-in endpoint is not available until that happens.
 
-The credential for an endpoint is stored once for the appliance and is never held per client, which is why the client
-drawer shows `box-managed` in place of a per-client key for that row. The credential can be an API key, one or more
-custom headers, or both. The appliance sends any custom headers on both the model-catalog probe and every routed
-request.
+A policy or a client selects an endpoint that is already set up, and never defines one, so an endpoint that is not set
+up is not offered to a policy or a client.
+
+Each registered endpoint carries a short **Endpoint id**. The id names the endpoint wherever the console lists an
+external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The id cannot be
+changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding id. The
+**Endpoint URL** can be an origin or an origin followed by a path prefix; the appliance appends the OpenAI-compatible
+request paths itself, so the URL does not include `/v1`.
+
+The credential for an endpoint is stored once on the endpoint, under **Integrations**, and every policy and client that
+lists the endpoint uses it. A policy or a client can override the key for itself alone by typing one in its **Key**
+field; the **Integrations** key does not change. The credential can be an API key, one or more custom headers, or both.
+The appliance sends any custom headers on both the model-catalog probe and every routed request.
 
 The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
 connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
@@ -151,19 +173,20 @@ That permission is [egress](../reference/glossary.md#egress), and it denies by d
 destination outside the appliance until an operator enables it. Refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
-Once an operator enables egress, a client can reach two kinds of destination:
+Once an operator enables egress on a policy, or on a client that overrides its policy, a client can reach each
+[external inference endpoint](#external-inference-endpoints) that the policy or client lists. An endpoint is one of the
+following:
 
-- A built-in [frontier model](../reference/glossary.md#frontier-model), which is a model hosted by an external provider
-  rather than served from the appliance.
+- A built-in endpoint for Anthropic, OpenAI, or Gemini, which serves a
+  [frontier model](../reference/glossary.md#frontier-model) hosted by that vendor rather than served from the appliance.
 
-- A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
-  operator has added to the appliance.
+- A registered endpoint, which is any OpenAI-compatible host a platform administrator has added under **Integrations**.
 
-Egress is not only a destination a client asks for. An operator can arm frontier-model bursting for a client, which
-sends a request that asked for local serving to an external provider once the client exhausts its local quota rather
-than refusing it. Naming a local model is therefore not on its own what keeps a prompt on the box. Bursting is still
-egress and runs through the same permission, so a client that cannot reach an external destination cannot burst to one
-either.
+Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
+overrides its policy, which sends a request that asked for local serving to an external inference endpoint once the
+client exhausts its local quota rather than refusing it. Naming a local model is therefore not on its own what keeps a
+prompt on the appliance. Bursting is still egress and runs through the same permission, so a client that cannot reach an
+external destination cannot burst to one either.
 
 Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
 it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency

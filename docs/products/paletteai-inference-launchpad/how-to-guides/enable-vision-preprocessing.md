@@ -18,36 +18,46 @@ keep calling the text model they already use. For what the feature does and what
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
-- A text-only model in the appliance catalog, ready to deploy or already serving. GLM 5.2 is the validated text model
-  for this path. To place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
+
+- A text-only model in the appliance catalog, ready to deploy. GLM 5.2 is the validated text model for this path. To
+  place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
   [Deploy a Model](./deploy-a-model.md).
+
 - A vision model in the appliance catalog. Qwen 3.5 9B multimodal is the validated vision model for this path.
+
 - Hardware that can run both models on the same node. Spectro Cloud has validated GLM 5.2 with Qwen 3.5 9B multimodal on
   **8 x MI325X, 8 x B200, and 8 x H200**. Both models run on the same physical GPUs; no manual GPU reservation is
   needed. For certified text models by GPU, refer to
   [Certified Models by Hardware](../reference/certified-models-by-hardware.md).
-- The catalog entries `glm-5.2-shared` (text half) and `qwen-3.5-9B-shared` (vision half). You deploy these two entries
-  in the steps below and do not edit their settings by hand. For the per-GPU-family variants each entry carries, refer
-  to [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
+
+- The catalog entries `glm-5.2-shared-with-vision` (text half) and `qwen-3.5-9B-vision` (vision half). Vision
+  preprocessing needs a vision-mode text model, which is a text model whose catalog entry ends in `-shared-with-vision`.
+  It runs with the `-vision` model of its group. You deploy these two entries in
+  [Deploy Both Models](#deploy-both-models) and do not edit their settings by hand. For the per-GPU-family variants each
+  entry carries, refer to [Certified Models by Hardware](../reference/certified-models-by-hardware.md#vision-models).
+
+- An appliance that runs no text-mode model. An appliance runs its models in one mode, so the deploy picker offers the
+  vision-mode entries only when no text-mode model is deployed. For how a model's catalog entry decides its mode, refer
+  to [One Mode per Appliance](../explanation/routing-behavior.md#one-mode-per-appliance).
 
 ## Deploy Both Models
 
 Vision preprocessing needs two models serving at the same time: the text model that answers users, and the vision model
 that converts images to text. Deploy the text model first, then the vision model. On the validated pairing, choose
-`glm-5.2-shared` as the text half and `qwen-3.5-9B-shared` as the vision half. Those are the catalog entries whose
-per-hardware variants carry the tuned deploy configuration.
+`glm-5.2-shared-with-vision` as the text half and `qwen-3.5-9B-vision` as the vision half. Those are the catalog entries
+whose per-hardware variants carry the tuned deploy configuration.
 
 1. From the left main menu, select **Cluster**.
 
-2. If the text model is not already serving, select **Deploy model**, choose the text model, and complete the deploy
-   flow. Refer to [Deploy a Model](./deploy-a-model.md).
+2. If the text model is not already serving, select **Deploy Model**, choose the text model, and complete the deploy
+   flow with **GPU sharing** turned on. Refer to [Share a GPU Between Models](./share-a-gpu-between-models.md).
 
 3. Wait until the text model health reads `N/N healthy` and its state reaches `ready` or `serving`. A large text model
    such as GLM 5.2 can take **5 to 10 minutes on the first-ever cold start** while it loads weights, compiles kernels,
    and captures CUDA graphs. Do not cancel the deploy during this window. Subsequent restarts reuse the compiled kernels
    from the on-appliance cache and start faster.
 
-4. Select **Deploy model** again, choose the vision model, and complete the deploy flow.
+4. Select **Deploy Model** again, choose the vision model, and complete the deploy flow with **GPU sharing** turned on.
 
 5. Wait until the vision model also reaches `ready` or `serving`. The vision model is small and starts in under two
    minutes on validated hardware.
@@ -85,7 +95,8 @@ on this appliance. Free capacity, choose a smaller vision model, or
 7. Select **Turn on vision preprocessing**.
 
 The setting applies to new requests. Requests already in progress are not changed. Text-only requests never use the
-vision model, whether the setting is on or off.
+vision model, whether the setting is on or off. On this vision-mode appliance, image requests that send `auto` are
+routed by the semantic router too, and the **Overview** page shows a **Vision preprocessing** card.
 
 ## Verify Image Requests
 
