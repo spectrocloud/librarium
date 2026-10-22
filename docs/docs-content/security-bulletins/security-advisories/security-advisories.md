@@ -20,6 +20,109 @@ advisories are published.
 
 :::
 
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
+
+## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
+
+- **Release Date**: October 21, 2026
+- **Last Updated**: October 21, 2026
+- **Severity**: High
+- **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
+- **CVEs**: CVE-2026-111943
+
+### Summary
+
+The private keys of eight eMudhra intermediate Certificate Authority (CA) certificates have been found to be recoverable
+by anyone, due to a key-generation flaw during their creation in April 2025. These intermediates chain to two publicly
+trusted roots: emSign ECC Root CA - G3 and AAA Certificate Services (the legacy Comodo/Sectigo root, which cross-signs
+the same keys).
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
+
+An attacker holding one of these keys can issue a fraudulent X.509 certificate for any hostname. Any TLS client that
+still trusts one of these roots, and that an attacker can position themselves to intercept, will accept the forged
+certificate as valid. This enables an attacker-in-the-middle to impersonate a TLS endpoint and compromise the
+confidentiality and integrity of the connection, regardless of which CA the legitimate endpoint uses.
+
+### Affected Deployments
+
+All Palette deployment models are affected: MTSaaS and DSaaS, self-hosted Palette Enterprise and VerteX, workload
+clusters on cloud infrastructure (EKS, AKS, GKE) and PXK, RKE2, and K3s clusters managed through Palette, and edge
+clusters.
+
+The exposure is narrow and client-side only.
+
+- Not affected:
+  - Inbound and serving traffic. When a Palette deployment acts as a server, such as the console or an API endpoint, it
+    presents its own certificate and consults no trust store. The compromised roots play no part.
+  - Internal traffic between management-plane components. These connections authenticate with private, platform-issued
+    certificates (pinned mutual TLS), not the public system trust store, so the compromised roots are not consulted.
+  - Palette's own certificates. By default Palette does not use certificates issued by these CAs.
+- Affected:
+  - outbound client connections where a Palette component validates the other end's certificate against a trust store
+    that still trusts the compromised roots. An attacker able to intercept such a connection could present a forged
+    certificate and have it accepted.
+
+### Impact
+
+Where an attacker holds a leaked key and an interception position, successful exploitation could allow them to:
+
+- Intercept and alter the edge-to-management control channel, including theft of the cluster service authentication
+  token.
+- Impersonate the management plane and inject control responses to an edge or on-premises cluster.
+- Intercept container image pulls on affected nodes, which can lead to a malicious image and node-level code execution.
+- Intercept other outbound TLS connections that rely on the system trust store, exposing credentials or data carried on
+  them.
+
+Unauthenticated exploitation of a Palette endpoint is not possible through this issue; it requires both a leaked key and
+a network interception position.
+
+### Recommended Actions
+
+a) Palette & VerteX Enterprise: Patched versions of Palette/VerteX are being worked on and the advisory will be updated.
+All customers are advised to upgrade to the patched version as soon as they can.
+
+b) Workload Clusters: Patch all underlying host operating systems used in:
+
+- Kubernetes clusters
+- Managed node pools
+- Edge and on-prem deployments
+
+For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
+documentation.
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
+
+c) MTSaas and DSaas environments will be patched by the spectrocloud team.
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
+
+d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
+
+### References
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- vale Vale.Terms = NO -->
+
+- [CVE-2026-111943](https://www.cve.org/CVERecord?id=CVE-2026-111943): Go crypto/x509 rejects the compromised eMudhra
+  intermediate keys (Go 1.26.10 and 1.27.3)
+- [eMudhra intermediate CA compromise disclosure and affected-certificate list](https://pages.ubuntu.com/index.php/email/emailWebview?email=MDY2LUVPVi0zMzUAAAGk_S30_XSWMHDaLMex5Embq656LtcJgVxRqamKoeYg90j8Fu2L9_EhkWddrEUrP_mGrUWphu-CnbolCVgP7QQ6J5glmpN21LcMeg)
+- [CWE-295: Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)
+- [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+
+<!-- vale Vale.Spelling = YES -->
+
+<!-- vale Vale.Terms = YES -->
+
 ## Security Advisory 018 - Multiple Container Runtime Vulnerabilities
 
 - **Release Date**: June 24, 2026
