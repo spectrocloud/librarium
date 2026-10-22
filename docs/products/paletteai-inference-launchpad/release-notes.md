@@ -8,6 +8,101 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
+## Version 1.2.0 - October 21, 2026 {#version-1-2-0}
+
+PaletteAI Inference Launchpad 1.2.0 improves how teams share one appliance. Each team gets a workspace with its own
+policy. Models can share a GPU. Semantic routing rules now live in policies. Certified models ship as model recipes.
+
+### New Features
+
+- You can now manage access from the **Access & Policy** page. A platform administrator creates a workspace for each
+  team. Each workspace follows a policy. People and groups get a role in a workspace. Refer to
+  [Clients and Quotas](./explanation/clients-and-quotas.md#workspaces-and-access),
+  [Create a Workspace](./how-to-guides/create-a-workspace.md),
+  [Manage Workspace Members](./how-to-guides/manage-workspace-members.md),
+  [Manage Users](./how-to-guides/manage-users.md), [Manage Groups](./how-to-guides/manage-groups.md), and
+  [Access and Policy Reference](./reference/access-and-policy-reference.md) for more information.
+
+- Models can now share a GPU. Each model in a GPU sharing group reserves part of the GPU memory. The **Deploy Model**
+  wizard has three steps, **Model and placement**, **Serving**, and **GPU sharing**. The **Shared GPU memory** panel
+  shows each model's share. You can also change the share of a running model. Refer to
+  [GPU Sharing](./explanation/gpu-sharing.md),
+  [Share a GPU Between Models](./how-to-guides/share-a-gpu-between-models.md), and
+  [Deploy a Model](./how-to-guides/deploy-a-model.md) for more information.
+
+- You now set semantic routing rules in a workspace policy. Each client can override them. The appliance-wide **Semantic
+  routing** card is gone. The semantic router uses six categories and two complexity bands. Each rule also sets a
+  reasoning depth. The semantic router runs on the appliance's GPUs and is on by default. Refer to
+  [Routing Behavior](./explanation/routing-behavior.md),
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md), and
+  [Semantic Routing Reference](./reference/semantic-routing-reference.md) for more information.
+
+- The semantic router guard adds two checks. One refuses prompt attacks, such as jailbreak attempts. The other scans
+  prompts for personal data before a request leaves the appliance. Both checks are on by default. Refer to
+  [Semantic Router Guard](./explanation/semantic-router-guard.md) for more information.
+
+- Decision recording saves one row for each request that the semantic router classifies. Use it to tune your routing
+  rules. You turn it on per policy and can exclude clients. Refer to
+  [Decision Recording](./explanation/routing-behavior.md#decision-recording) and
+  [Configure Semantic Routing](./how-to-guides/configure-semantic-routing.md#turn-on-decision-recording-for-a-policy)
+  for more information.
+
+- Certified models now ship as model recipes. A recipe holds the model metadata file and the inference engine image. It
+  does not hold the model weights. Use the new `--model-recipe` flag to download and upload a recipe. The `--metadata`
+  flag still works. Refer to [Model Recipes](./explanation/model-recipes.md) and
+  [Upload a Model](./how-to-guides/upload-a-model.md) for more information.
+
+- GLM 5.3 is now a certified model.
+
+<!-- vale Vale.Spelling = NO -->
+
+- A new **Vision preprocessing** card reports the images extracted, the extractions that failed, and the turns over the
+  image cap. The card counts each image against the client that sent the turn, so inside a workspace, the card shows
+  only that workspace's figures. The card appears after a vision model first answers. Refer to
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) for more information.
+
+<!-- vale Vale.Spelling = YES -->
+
+### Improvements
+
+- Estimated cost now prices cached prompt tokens at a lower **Cache read** rate. You can change each rate under
+  **Settings** > **Pricing**. Refer to [Usage Pricing](./explanation/usage-pricing.md) for more information.
+
+  Expect a lower estimated cost on cache-heavy traffic, such as coding agents. One test workload measured about six
+  times lower. This is not a metering error. Earlier releases priced cached tokens at the full input rate.
+
+- The **Estimated savings** card compares your traffic against Anthropic Claude Opus 4.8 and OpenAI GPT-5. It now prices
+  cached tokens at their cache rates. Savings on cache-heavy traffic are no longer overstated. Refer to
+  [Estimated Savings](./explanation/estimated-savings.md) for more information.
+
+- You now set up external inference endpoints only under **Integrations**. A policy or a client selects an endpoint that
+  already exists. It can also override the endpoint's key. Requests no longer fall back to a local model without notice.
+  External model targets appear as `<endpoint> / <model>` on every screen. Refer to
+  [External Inferencing](./explanation/frontier-providers.md),
+  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md), and
+  [Manage a Client's Model Access](./how-to-guides/manage-client-model-access.md#allow-a-client-to-reach-external-models)
+  for more information.
+
+- A new reference page lists the open source components that ship under GNU licenses. Refer to
+  [Open Source Licenses](./reference/oss-licenses.md) for more information.
+
+### Security Notices
+
+- The password reset flow no longer allows an account takeover (CVE-2026-18963).
+
+- Image URL fetching no longer allows server-side request forgery.
+
+- The embedding and classification endpoints now require authentication.
+
+- Integration probes can no longer scan internal cluster addresses.
+
+- The console now hides and protects the appliance's own identity groups.
+
+### Breaking Changes
+
+- Version 1.2.0 supports new installations only. You cannot upgrade an appliance from 1.1.5 to 1.2.0. Refer to
+  [Install the Appliance](./how-to-guides/install-the-appliance.md) for more information.
+
 ## Version 1.1.3 - August 28, 2026 {#version-1-1-3}
 
 PaletteAI Inference Launchpad 1.1.3 broadens what a single appliance can serve. Operators pick where each model runs and

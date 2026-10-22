@@ -57,10 +57,14 @@ your hardware, [contact Spectro Cloud](https://www.spectrocloud.com/contact).
 
 </Tabs>
 
+The semantic router runs on the same GPUs as the main model and shares them. For the GPU requirements, refer to
+[Suggested Hardware](./hardware-requirements.md#gpu).
+
 ## Vision Models
 
-The table above lists certified text models. A text-only model cannot read screenshots or other images on its own. To
-answer questions about images, deploy a small vision model next to the text model and turn on vision preprocessing.
+The certified-model tables on this page list text models only. A text-only model cannot read screenshots or other images
+on its own. To answer questions about images, deploy a small vision model next to the text model and turn on vision
+preprocessing.
 
 The certified pairing is **GLM 5.2** as the text model and **Qwen 3.5 9B multimodal** as the vision model. Spectro Cloud
 has validated this pairing on the following configurations.
@@ -81,7 +85,7 @@ percent, leaving roughly 10 percent headroom. The remaining memory is not spare 
 For how the request path works, refer to [Vision Preprocessing](../explanation/vision-preprocessing.md). To deploy the
 pairing, refer to [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
-The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as `glm-5.2-shared`
-and `qwen-3.5-9B-shared`. Each carries per-GPU-family variants for MI325X, B200, and H200, with the memory-budget,
-tensor-parallel, and engine-argument settings that were validated on the hardware above. Operators do not edit these
-directly; deploying the two catalog entries is enough.
+The tuned deploy configurations for both halves of the pairing live in the appliance model catalog as
+`glm-5.2-shared-with-vision` and `qwen-3.5-9B-vision`. Each carries per-GPU-family variants for MI325X, B200, and H200,
+with the memory-budget, tensor-parallel, and engine-argument settings validated on those GPU families. Operators do not
+edit these directly; deploying the two catalog entries is enough.
