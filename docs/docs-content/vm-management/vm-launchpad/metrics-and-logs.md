@@ -239,9 +239,10 @@ Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** i
 
 The following steps forward metrics to Datadog.
 
-1. Select **Add** next to **Forwarding URL**, enter `https://api.datadoghq.com/api/v2/otlp/v1/metrics`, and select the
-   save icon. For a Datadog site other than US1, use your site's API host. Refer to the
-   [Datadog OTLP documentation](https://docs.datadoghq.com/opentelemetry/) for the exact host.
+1. Select **Add** next to **Forwarding URL**, enter `https://otlp.<datadog-site>/v1/metrics`, and select the save icon.
+
+   Replace `<datadog-site>` with your Datadog site, such as `us3.datadoghq.com` for US3 or `datadoghq.com` for US1. For
+   the list of sites, refer to the [Datadog OTLP documentation](https://docs.datadoghq.com/opentelemetry/).
 
 2. Select **Add** next to **Forwarding Token**, enter `DD-API-KEY=<datadog-api-key>`, and select the save icon. VMO
    sends it as a literal `DD-API-KEY` header.
@@ -253,24 +254,25 @@ The following steps forward metrics to Datadog.
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
 Because each empty log setting uses its metrics value, the appliance also sends its logs to Datadog at
-`https://api.datadoghq.com/api/v2/otlp/v1/logs`. This works only when the metrics **Forwarding Token** holds a single
-`Key=Value` pair. If it holds more than one, set the log **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. Refer
-to [Configure Log Forwarding](#configure-log-forwarding).
+`https://otlp.<datadog-site>/v1/logs`. This works only when the metrics **Forwarding Token** holds a single `Key=Value`
+pair. If it holds more than one, set the log **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. Refer to
+[Configure Log Forwarding](#configure-log-forwarding).
 
 #### OTLP Receiver Formats
 
 The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers. The
 log **Forwarding Token** takes the same formats but accepts only one `Key=Value` pair.
 
-| **Receiver**            | **Forwarding URL**                                                                       | **Forwarding Token**                    |
-| ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
-| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<datadog-api-key>`          |
-| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | `Authorization=Basic <credentials>`     |
-| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`  | `api-key=<license-key>`                 |
-| OpenTelemetry Collector | `https://<receiver-host>/v1/metrics`                                                     | Plain token or `Key=Value` header pairs |
+| **Receiver**            | **Forwarding URL**                                                                            | **Forwarding Token**                    |
+| ----------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Datadog                 | `https://otlp.<datadog-site>/v1/metrics`, such as `https://otlp.us3.datadoghq.com/v1/metrics` | `DD-API-KEY=<datadog-api-key>`          |
+| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                                   | `Authorization=Basic <credentials>`     |
+| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`       | `api-key=<license-key>`                 |
+| OpenTelemetry Collector | `https://<receiver-host>/v1/metrics`                                                          | Plain token or `Key=Value` header pairs |
 
-Replace `<datadog-api-key>` with your Datadog API key, `<region>` with your Grafana Cloud region, `<license-key>` with
-your New Relic license key, and `<receiver-host>` with the host name of your OpenTelemetry Collector.
+Replace `<datadog-site>` with your Datadog site, `<datadog-api-key>` with your Datadog API key, `<region>` with your
+Grafana Cloud region, `<license-key>` with your New Relic license key, and `<receiver-host>` with the host name of your
+OpenTelemetry Collector.
 
 Grafana Cloud rejects a plain token sent as a bearer token. For Grafana Cloud, replace `<credentials>` with the Base64
 encoding of your Grafana Cloud instance ID and API token, joined by a colon. Use the following command to generate the
