@@ -24,36 +24,34 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 <!-- VERIFY(DOC-3345): Same question as the Upgrade Considerations in #12056: which earlier releases had the separate
 VLAN range settings (engineering cites 4.10.19 and 4.10.20), and whether anyone could have turned VLAN filtering on in
 them. If nobody could have, remove this entry. -->
-<!-- TODO(DOC-3345): Link to #upgrade-considerations after PVM-1183 (#12056) merges into the drop branch. -->
 
 - If you turned on VLAN filtering (`vlanFiltering.enabled`) in an earlier release, review its settings before you
   upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the `vlanFiltering.env.vlanRange` and
   `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values without a warning. After the upgrade,
   the VLAN agent removes VLANs that no NetworkAttachmentDefinition (NAD) references, and it stops programming NAD VLANs
   that are outside the range. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
-  upgrade. Refer to [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
+  upgrade. Refer to
+  [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
-<!-- TODO(DOC-3349): Link to #check-node-memory-before-you-upgrade after DOC-3349 (#12296) merges into the drop branch. -->
 
 - Each appliance node now reserves memory for host services, and etcd and the Kubernetes API server now request memory
   on each control plane node. This prevents a large virtual machine from taking the memory that the control plane needs.
   On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about 4 GiB and its allocatable
   ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods when the Kubelet restarts
   during the upgrade. Before you upgrade, confirm that each node has room for the reservation. Refer to
-  [VM Overcommitment and Memory Optimization](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md).
+  [Check Node Memory Before You Upgrade](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md#check-node-memory-before-you-upgrade).
 
 ### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-952 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
-<!-- TODO(DOC-3345): Link to #bridge-vlan-filtering after PVM-1183 (#12056) merges into the drop branch. -->
 
 - PaletteAI VM Launchpad now supports VLAN filtering on Linux Bridge networks. Virtual machines receive only the VLANs
   that their NADs assign, and only when the **VM VLAN Range** permits them. The appliance protects the VLANs that the
   nodes use for their own traffic, and the **Networks** page shows a **VLAN filtering** panel when a node has a problem.
-  Refer to [Networking](../vm-management/vm-launchpad/infrastructure/networking.md).
+  Refer to [Bridge VLAN Filtering](../vm-management/vm-launchpad/infrastructure/networking.md#bridge-vlan-filtering).
 
 ### Improvements
 
