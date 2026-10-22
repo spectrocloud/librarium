@@ -11,7 +11,7 @@ keywords: ["launchpad", "ai", "replace", "upgrade", "model", "version", "weights
 ---
 
 The appliance does not support in-place replacement. To change the model or version a node serves, remove the current
-model and then deploy the replacement from **Deploy New Model**.
+model and then deploy the replacement from **Deploy Model**.
 
 ## Prerequisites
 
@@ -51,11 +51,14 @@ model and then deploy the replacement from **Deploy New Model**.
 
 ## Deploy the Replacement
 
-1. Select **Deploy New Model**. The **Deploy model** dialog opens.
-2. Select the newer version or the different model.
+1. Select **Deploy Model**. The **Deploy a model** wizard opens on the **Model and placement** step.
+2. In **Model**, select the newer version or the different model.
 3. In **Nodes**, select the node or nodes you just freed.
-4. Select **Deploy**, review the preview, and then select **Confirm & apply**.
-5. Wait until the replacement is running on each node you selected. Refer to
+4. Select **Next** twice. The **GPU sharing** step opens.
+5. To give the replacement whole GPUs, turn off the **GPU sharing** toggle. To share a GPU instead, follow
+   [Share a GPU Between Models](./share-a-gpu-between-models.md).
+6. Select **Deploy**.
+7. Wait until the replacement is running on each node you selected. Refer to
    [Verify the Model Is Serving](./deploy-a-model.md#verify-the-model-is-serving).
 
 If a node is not selectable, it is missing the model's weights or has too few free GPUs. If **Deploy** is unavailable,
@@ -67,7 +70,7 @@ finish removing the previous model or free capacity, then try again. Refer to
 1. Expand the model row.
 2. On the node that is still deploying, select **Abort**. In the confirmation, select **Abort** again.
 
-That node returns to a deployable state. Redeploy from **Deploy New Model**.
+That node returns to a deployable state. Redeploy from **Deploy Model**.
 
 ## Verify the Replacement
 
