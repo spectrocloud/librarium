@@ -77,7 +77,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
   - For warm migrations, your VMs must not have any snapshots in vSphere. Delete all snapshots of each VM before you
-    create the migration plan. You can delete the snapshots while the VM is running.
+    start the migration. You can delete the snapshots while the VM is running. A warm migration of a VM that still has
+    snapshots fails.
 
 - We recommend using a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) to uninstall [VMware Tools](https://docs.vmware.com/en/VMware-Tools/index.html), and install the [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent) and [VirtiIO drivers](https://github.com/virtio-win/kvm-guest-drivers-windows) on your migrated VMs. Installing the QEMU agent and Virtio drivers enhances compatibility with VMO, and enables advanced features like live migration and accurate reporting of guest status.
   
@@ -686,12 +687,6 @@ If you want to explore all additional plan settings, refer to
 5. In the **Details** tab, the plan status displays as **Ready for migration**.
 
    ![Plan Ready Status](/vm-migration-assistant/create-migration-plans_plan-ready.webp)
-
-   <!-- VERIFY(DOC-3350): confirm with Sharada where the VM Migration Assistant UI shows this condition and its exact wording. Source: Forklift VMHasSnapshots plan condition (kubev2v/forklift#2397). -->
-
-   If a VM in a warm migration plan has snapshots, the plan does not become ready and displays the message
-   `VM has pre-existing snapshots which are incompatible with warm migration`. Delete the snapshots of the VM in
-   vSphere, or change the plan to a cold migration.
 
 ## Next Steps
 
