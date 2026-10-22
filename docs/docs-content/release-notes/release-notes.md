@@ -60,9 +60,9 @@ them. If nobody could have, remove this entry. -->
 - VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
   not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
   the **KubeVirt Configuration** page. KubeVirt 1.9.0 also deprecates the `HotplugVolumes` feature gate in favor of
-  `DeclarativeHotplugVolumes`, which is on by default. VMO does not remove `HotplugVolumes` from **Feature gates**
-  during the upgrade, so if you added it, remove it after the upgrade. Disk hot-plug keeps working without it. Refer to
-  [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
+  `DeclarativeHotplugVolumes`, which is on by default. VMO includes `HotplugVolumes` in **Feature gates** by default and
+  does not remove it during the upgrade, so remove it after the upgrade. Disk hot-plug keeps working without it. Refer
+  to [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
 
