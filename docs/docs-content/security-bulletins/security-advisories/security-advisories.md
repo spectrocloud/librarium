@@ -50,19 +50,16 @@ clusters.
 
 The exposure is narrow and client-side only:
 
-Not affected:
-
-- Inbound and serving traffic. When a Palette deployment acts as a server, such as the console or an API endpoint, it
-  presents its own certificate and consults no trust store. The compromised roots play no part.
-- Internal traffic between management-plane components. These connections authenticate with private, platform-issued
-  certificates (pinned mutual TLS), not the public system trust store, so the compromised roots are not consulted.
-- Palette's own certificates. By default Palette does not use certificates issued by these CAs.
-
-Affected:
-
-- outbound client connections where a Palette component validates the other end's certificate against a trust store that
-  still trusts the compromised roots. An attacker able to intercept such a connection could present a forged certificate
-  and have it accepted.
+- Not affected:
+  - Inbound and serving traffic. When a Palette deployment acts as a server, such as the console or an API endpoint, it
+    presents its own certificate and consults no trust store. The compromised roots play no part.
+  - Internal traffic between management-plane components. These connections authenticate with private, platform-issued
+    certificates (pinned mutual TLS), not the public system trust store, so the compromised roots are not consulted.
+  - Palette's own certificates. By default Palette does not use certificates issued by these CAs.
+- Affected:
+  - outbound client connections where a Palette component validates the other end's certificate against a trust store
+    that still trusts the compromised roots. An attacker able to intercept such a connection could present a forged
+    certificate and have it accepted.
 
 ### Impact
 
