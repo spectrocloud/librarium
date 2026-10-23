@@ -29,6 +29,12 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11844 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12375 -->
+
+- Fixed an issue that caused cluster cost, resource usage, and workload summary data to stop updating for clusters whose
+  stored data exceeded the MongoDB document size limit.
+
 #### Deprecations and Removals
 
 ### Edge
