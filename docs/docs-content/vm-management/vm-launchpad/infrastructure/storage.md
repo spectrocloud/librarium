@@ -102,15 +102,15 @@ StorageClass available for VMs instead, [create a StorageClass](#create-a-storag
    Portworx StorageClasses expose the Portworx volume options. The provisioner determines the full set of available
    parameters. The following options are the most common.
 
-   | **Field**                            | **Description**                                                                                                                                                                                                            |
-   | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Replication Factor**               | The number of synchronous volume replicas across nodes (Portworx `repl`), typically `1`, `2`, or `3`.                                                                                                                      |
-   | **IO Profile**                       | The Portworx IO profile (`io_profile`) that tunes the volume for the workload, such as `auto` or `db_remote`.                                                                                                              |
-   | **IO Priority**                      | The relative IO priority (`io_priority`): `high`, `medium`, or `low`.                                                                                                                                                      |
-   | **Filesystem**                       | The volume filesystem (`fs`), such as `ext4` or `xfs`.                                                                                                                                                                     |
-   | **Encryption**                       | Enable Portworx volume encryption (`secure`).                                                                                                                                                                              |
-   | **Shared (RWX)**                     | Enable Portworx shared volumes (`sharedv4`). Portworx requires this option only for `ReadWriteMany` volumes in `Filesystem` volume mode. `ReadWriteMany` volumes in `Block` volume mode support live migration without it. |
-   | **Advanced Parameters** _(Optional)_ | Expand to configure other Portworx parameters as key-value pairs.                                                                                                                                                          |
+   | **Field**                            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Replication Factor**               | The number of synchronous volume replicas across nodes (Portworx `repl`), typically `1`, `2`, or `3`.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | **IO Profile**                       | The Portworx IO profile (`io_profile`) that tunes the volume for the workload, such as `auto` or `db_remote`.                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **IO Priority**                      | The relative IO priority (`io_priority`): `high`, `medium`, or `low`.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | **Filesystem**                       | The volume filesystem (`fs`), such as `ext4` or `xfs`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   | **Encryption**                       | Enable Portworx volume encryption (`secure`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **Shared v4 (RWX)**                  | Enable Portworx shared volumes (`sharedv4`). Keep it set to `false`, the default, for `Block` volume mode, which VM disks use. Portworx shares `ReadWriteMany` volumes in `Block` volume mode without it, and they support live migration. With `true`, Portworx rejects clones of `ReadWriteOnce` volumes in the class (`sharedv4 does not match`), so VMs that you create from images or templates do not finish provisioning. Portworx requires `true` only for `ReadWriteMany` volumes in `Filesystem` volume mode. |
+   | **Advanced Parameters** _(Optional)_ | Expand to configure other Portworx parameters as key-value pairs.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
    </TabItem>
 
@@ -405,8 +405,12 @@ holders.
 
 Storage Policies are reusable parameter presets for StorageClass creation. When creating a StorageClass, select a policy
 from the **Select a Policy** drop-down to fill in provider-specific parameters instead of entering them manually. VMO
-ships with a built-in **Piraeus DRBD Performance Tuning** policy for Piraeus/LINSTOR workloads with live-migration
-support.
+ships with two built-in policies:
+
+- **Piraeus DRBD Performance Tuning**, for Piraeus/LINSTOR workloads with live-migration support.
+
+- **Portworx VM Workload Defaults**, for Portworx VM disks. It sets **Replication Factor** to `3`, **IO Priority** to
+  `high`, **Shared v4 (RWX)** to `false`, and **Filesystem** to `ext4`.
 
 ### Create a Storage Policy
 
@@ -421,10 +425,11 @@ support.
    | **Policy Name**              | The policy name. Follow Kubernetes naming rules (lowercase, alphanumeric, hyphens); up to 128 characters.                        |
    | **Display Name**             | A human-readable name for the policy. Shown in the Storage Policies list and in the Storage Class **Select a Policy** drop-down. |
    | **Description** _(Optional)_ | A short description of the policy.                                                                                               |
-   | **Provider**                 | The storage provider the policy applies to (for example, `piraeus`).                                                             |
+   | **Provider**                 | The storage provider the policy applies to (for example, `piraeus` or `portworx`).                                               |
 
 4. Use **Add Group** and **Add Parameter** to define the parameters the policy sets. VMO applies these parameters when
-   you select the policy during StorageClass creation.
+   you select the policy during StorageClass creation. For a Portworx policy for `Block` volumes, keep `sharedv4` set to
+   `false`.
 
 5. Select **Save**.
 
