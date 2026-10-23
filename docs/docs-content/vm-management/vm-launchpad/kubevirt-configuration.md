@@ -76,8 +76,8 @@ Select **Reload** at any point to discard your draft and fetch the current resou
 | **Enable CPU emulation**        | Falls back to software CPU emulation when the host does not provide hardware virtualization extensions. Intended for lab and development environments.                                                                      | Cleared      |
 | **Memory overcommit ratio (%)** | Sets the cluster-wide level of memory overcommit. At `100`, the memory request of a VM equals its guest memory. Higher values reduce the request proportionally, so `200` requests about half and allows more VMs per node. | `100`        |
 | **CPU allocation ratio**        | Defines how much physical CPU is reserved per vCPU. Lower values give each vCPU more guaranteed CPU. Higher values increase VM density with less CPU per VM.                                                                | `10`         |
-| **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | _Varies_     |
-| **Disabled feature gates**      | Beta feature gates that stay off even though KubeVirt turns its Beta features on by default. Refer to [Disabled Feature Gates](#disabled-feature-gates).                                                                    | _Set by VMO_ |
+| **Feature gates**               | KubeVirt feature gates turned on explicitly for the cluster. On KubeVirt 1.9.0 and later, Beta gates are also on unless they are in **Disabled feature gates**.                                                             | _Varies_     |
+| **Disabled feature gates**      | Beta feature gates that stay off on KubeVirt 1.9.0 and later, which turn every Beta gate on by default. Refer to [Disabled Feature Gates](#disabled-feature-gates).                                                         | _Set by VMO_ |
 
 :::info
 
@@ -87,9 +87,9 @@ refer to [VM Overcommitment and Memory Optimization](./vmo-overcommit-memory-opt
 :::
 
 To enable a feature gate, enter its name in the **Add a gate** field and select **Add**. To remove a gate, select the
-**x** on the gate. On KubeVirt 1.9.0 and later, removing a Beta gate from **Feature gates** does not turn it off. To
-turn off a Beta gate, add it to **Disabled feature gates**. VMO submits the list as you entered it, so the KubeVirt
-admission webhook rejects a name it does not recognize when you apply.
+**x** on the gate. VMO submits the list as you entered it, so the KubeVirt admission webhook rejects a name it does not
+recognize when you apply. On KubeVirt 1.9.0 and later, removing a Beta gate from **Feature gates** does not turn it off.
+To turn off a Beta gate, refer to [Disabled Feature Gates](#disabled-feature-gates).
 
 #### Disabled Feature Gates
 
@@ -98,27 +98,27 @@ individual Beta gates off. VMO fills the list with the Beta gates that it has no
 and when the cluster upgrades to KubeVirt 1.9.0. VMO fills the list only when the cluster does not have one, so your
 changes to the list stay in place across restarts and upgrades.
 
-To keep a Beta gate off, add it to **Disabled feature gates**. To let KubeVirt turn a gate on, select the **x** on the
-gate. The field suggests only Beta gates, because GA gates cannot be turned off and Alpha gates are already off. On a
-cluster that runs an earlier KubeVirt version, the field suggests no gates. A gate cannot be in both **Feature gates**
-and **Disabled feature gates**, so each field refuses a gate that is already in the other.
+To keep a Beta gate off, enter its name in the **Add a gate** field of **Disabled feature gates** and select **Add**. To
+let KubeVirt turn a gate on, select the **x** on the gate. The field suggests only Beta gates, because GA gates cannot
+be turned off and Alpha gates are already off. On a cluster that runs an earlier KubeVirt version, the field suggests no
+gates. A gate cannot be in both **Feature gates** and **Disabled feature gates**, so each field refuses a gate that is
+already in the other.
 
 VMO turns off the following Beta gates by default.
 
-| **Gate**                                                                | **Why VMO turns it off**                                                                                                                 |
-| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `Template`                                                              | Deploys the `virt-template-apiserver` and `virt-template-controller` images, which are not in the airgap content and have no FIPS build. |
-| `ExternalNetResourceInjection`                                          | Changes how KubeVirt reads Network Attachment Definitions. VMO has not validated it with secondary networks.                             |
-| `PodSecondaryInterfaceNamingUpgrade`                                    | Migrates existing VMs away from the earlier naming of their pod network interfaces.                                                      |
-| `ImageVolume`, `NodeRestriction`, `GPUsWithDRA`, `HostDevicesWithDRA`   | Depends on Kubernetes feature gates that might not be on in the appliance.                                                               |
-| `KubevirtSeccompProfile`, `PasstBinding`, `LibvirtHooksServerAndClient` | Adds new runtime behavior, such as a custom `seccomp` profile, the `passt` network binding, and migration hooks.                         |
+| **Gate**                                                                | **Why VMO turns it off**                                                                                                                   |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Template`                                                              | Deploys the `virt-template-apiserver` and `virt-template-controller` images, which are not in the airgap content and have no FIPS build.   |
+| `ExternalNetResourceInjection`                                          | Changes how KubeVirt reads Network Attachment Definitions. VMO has not validated it with secondary networks.                               |
+| `PodSecondaryInterfaceNamingUpgrade`                                    | Changes existing VMs by migrating them away from the earlier naming of their pod network interfaces.                                       |
+| `ImageVolume`, `NodeRestriction`, `GPUsWithDRA`, `HostDevicesWithDRA`   | Depend on Kubernetes feature gates that might not be on in the appliance.                                                                  |
+| `KubevirtSeccompProfile`, `PasstBinding`, `LibvirtHooksServerAndClient` | Add new runtime behavior that VMO has not validated, such as a custom `seccomp` profile, the `passt` network binding, and migration hooks. |
 
 :::warning
 
-Before you remove a gate from **Disabled feature gates**, confirm that the appliance meets its requirement. On an
-airgapped or FIPS appliance, removing `Template` leaves the `virt-template-apiserver` and `virt-template-controller`
-pods unable to start. `ImageVolume`, `NodeRestriction`, `GPUsWithDRA`, and `HostDevicesWithDRA` need the matching
-Kubernetes feature gate turned on in the appliance.
+Before you remove a gate from **Disabled feature gates**, confirm that the appliance meets its requirement. For example,
+on an airgapped or FIPS appliance, removing `Template` leaves the `virt-template-apiserver` and
+`virt-template-controller` pods unable to start.
 
 :::
 
@@ -219,20 +219,21 @@ CD-ROM drives, refer to [Create a VM](./virtual-machines/creating.md).
 
 `HotplugVolumes` and `DeclarativeHotplugVolumes` can both appear in **Feature gates** without the admission webhook
 rejecting them. When the list contains both gates, `HotplugVolumes` takes precedence for the imperative hot-plug API,
-while `DeclarativeHotplugVolumes` still allows empty CD-ROM drives at creation time. To move fully to the declarative
-model, remove `HotplugVolumes` and keep `DeclarativeHotplugVolumes`.
+while `DeclarativeHotplugVolumes` still allows empty CD-ROM drives at creation time.
 
 KubeVirt 1.9.0 deprecates `HotplugVolumes`, but VMO includes it in **Feature gates** by default on both new
-installations and upgrades. On KubeVirt 1.9.0 and later, remove `HotplugVolumes` from **Feature gates**. Disk hot-plug
-keeps working as long as `DeclarativeHotplugVolumes` stays on, because KubeVirt accepts hot-plug requests when either
-gate is on. On earlier KubeVirt versions, keep `HotplugVolumes` unless `DeclarativeHotplugVolumes` is also in **Feature
-gates**.
+installations and upgrades. KubeVirt accepts hot-plug requests when either gate is on, so disk hot-plug keeps working
+without `HotplugVolumes` as long as `DeclarativeHotplugVolumes` stays on.
+
+- On KubeVirt 1.9.0 and later, remove `HotplugVolumes` from **Feature gates**.
+
+- On earlier KubeVirt versions, keep `HotplugVolumes` unless `DeclarativeHotplugVolumes` is also in **Feature gates**.
 
 :::warning
 
 Before you turn off `DeclarativeHotplugVolumes`, attach an ISO to every VM that has an empty CD-ROM drive, or remove the
-empty drive from those VMs. On KubeVirt 1.9.0 and later, turn off the gate by adding it to **Disabled feature gates**.
-On earlier versions, remove it from **Feature gates**. VMs that keep an empty CD-ROM drive after you turn off the gate
-can enter a degraded state.
+empty drive from those VMs. VMs that keep an empty CD-ROM drive after you turn off the gate can enter a degraded state.
+On KubeVirt 1.9.0 and later, turn off the gate by adding it to **Disabled feature gates**. On earlier versions, remove
+it from **Feature gates**.
 
 :::

@@ -237,7 +237,7 @@ Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** i
 
 #### Forward Metrics and Logs to Datadog
 
-The following steps forward metrics to Datadog.
+The following steps forward metrics and logs to Datadog.
 
 1. Select **Add** next to **Forwarding URL**, enter `https://otlp.<datadog-site>/v1/metrics`, and select the save icon.
 
@@ -253,10 +253,10 @@ The following steps forward metrics to Datadog.
 
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
-Because each empty log setting uses its metrics value, the appliance also sends its logs to Datadog at
-`https://otlp.<datadog-site>/v1/logs`. This works only when the metrics **Forwarding Token** holds a single `Key=Value`
-pair. If it holds more than one, set the log **Forwarding Token** to `DD-API-KEY=<datadog-api-key>`. Refer to
-[Configure Log Forwarding](#configure-log-forwarding).
+If you leave the log **Forwarding URL** empty, the appliance also sends its logs to Datadog at
+`https://otlp.<datadog-site>/v1/logs`, because each empty log setting uses its metrics value. This works only when the
+metrics **Forwarding Token** holds a single `Key=Value` pair. If it holds more than one, set the log **Forwarding
+Token** to `DD-API-KEY=<datadog-api-key>`. Refer to [Configure Log Forwarding](#configure-log-forwarding).
 
 #### OTLP Receiver Formats
 
