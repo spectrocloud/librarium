@@ -11,15 +11,16 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.10.30
+## October 22, 2026 - Release 4.10.32
 
 <!-- PATCH RELEASE TICKET: DOC-3340 -->
-<!-- PATCH RELEASE VERSION: 4.10.30 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12317 -->
+<!-- PATCH RELEASE VERSION: 4.10.32 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12317 PEM-12387 -->
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12317 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12387 -->
 
 - Improved the load times of the **Users** and **Teams** tabs on the **Users & Teams** page for tenants with a large
   number of [users and teams](../user-management/users-and-teams/users-and-teams.md). Palette now retrieves users and
