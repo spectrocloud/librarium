@@ -11,6 +11,130 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 6, 2026 - Release 4.10.b {#release-notes-4.10.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.10.b}
+
+#### Breaking Changes {#breaking-changes-4.10.b}
+
+#### Upgrade Notes {#upgrade-notes-4.10.b}
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Edge
+
+<!-- release-notes-edge-callout-4.10.b-start -->
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.b Palette release is 4.10.b.
+
+:::
+
+<!-- release-notes-edge-callout-4.10.b-end -->
+
+#### Breaking Changes {#breaking-changes-edge-4.10.b}
+
+#### Upgrade Notes {#upgrade-notes-edge-4.10.b}
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### VerteX
+
+#### Breaking Changes {#breaking-changes-vertex-4.10.b}
+
+#### Upgrade Notes {#upgrade-notes-vertex-4.10.b}
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.10.b) for more details.
+
+#### Improvements
+
+#### Bug Fixes
+
+### Virtual Machine Orchestrator (VMO)
+
+#### VMO Pack
+
+##### Breaking Changes {#breaking-changes-vmo-pack-4.10.b}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.b}
+
+##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.b}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+### Automation
+
+<!-- release-notes-automation-callout-4.10.b-start -->
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.b Palette release is
+4.10.b. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
+<!-- release-notes-automation-callout-4.10.b-end -->
+
+#### Breaking Changes {#breaking-changes-automation-4.10.b}
+
+#### Features
+
+<!-- release-notes-automation-features-4.10.b-start -->
+
+- Terraform version 4.10.b of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 4.10.b of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+<!-- release-notes-automation-features-4.10.b-end -->
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Docs and Education
+
+<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+
 ## October 22, 2026 - Release 4.10.32
 
 <!-- PATCH RELEASE TICKET: DOC-3340 -->
