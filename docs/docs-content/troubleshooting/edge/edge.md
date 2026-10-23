@@ -10,6 +10,61 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Provider Image Download Times Out on Slow Network Connections
+
+Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
+provisioning or agent upgrades.
+
+Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit
+of 45 minutes. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
+beginning, because it does not resume partially completed downloads.
+
+If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
+upgrade may not complete.
+
+### Debug Steps
+
+1. Check the Palette agent logs on the affected Edge host to identify provider image download failures.
+
+   ```shell
+   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
+   ```
+
+   Review the logs for the following messages:
+
+   - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
+     the provider image over the network.
+   - `context deadline exceeded` indicates that an attempt reached the 45-minute time limit.
+   - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
+     complete.
+
+   If these messages repeat at intervals of approximately 45 minutes, the download is consistently exceeding the time
+   limit.
+
+2. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
+
+   Use [`palette content build`](../../automation/palette-cli/commands/content.md#build) to package the required
+   provider image into a [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
+   on a machine with a fast connection to the image registry. Transfer the content bundle to the affected Edge host and
+   extract it into the local bundle store. For new Edge hosts, you can instead
+   [include the content bundle in the Edge Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle).
+
+   The Palette agent then uses the local provider image instead of downloading it, so the time limit no longer applies.
+
+3. Verify that the provider image is available locally.
+
+   Run the command from step 1 again and review the Palette agent logs. The logs should show the following message.
+
+   ```text hideClipboard title="Example Output"
+   found image <image-reference> in local bundle
+   ```
+
+   This confirms that the Palette agent found the image locally instead of starting another network download. Verify
+   that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
+
+If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host so
+that the download and extraction complete within the time limit.
+
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 
 On Palette versions earlier than 4.10.25, a reset removes `kube-vip.tar`, the kube-vip image archive, from
