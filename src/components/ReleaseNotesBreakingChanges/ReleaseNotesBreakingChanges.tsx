@@ -9,6 +9,7 @@ import Admonition from "@theme/Admonition";
 import Link from "@docusaurus/Link";
 import PartialsComponent from "../PartialsComponent";
 import * as partialsExports from "@site/_partials";
+import { compareVersions, isComponentUpdatesInRange, isGreaterVersion, isVersionInRange } from "./VersionUtils";
 
 interface VersionOption {
   label: string;
@@ -42,68 +43,6 @@ const CustomOption: React.FC<CustomOptionProps> = (props) => {
   return <components.Option {...props}>{label}</components.Option>;
 };
 
-function compareVersions(a: string, b: string, direction: "ASC" | "DESC" = "DESC"): number {
-  // Handle component-updates-* versions by extracting the starting version of the range
-  if (a.includes("component-updates-")) {
-    const range = a.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
-    const [rangeFrom, _] = range.split("-");
-    a = rangeFrom;
-  }
-  if (b.includes("component-updates-")) {
-    const range = b.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
-    const [rangeFrom, _] = range.split("-");
-    b = rangeFrom;
-  }
-
-  const aParts = a.split(".").map(Number);
-  const bParts = b.split(".").map(Number);
-
-  for (let i = 0; i < 3; i++) {
-    const aVal = aParts[i] || 0;
-    const bVal = bParts[i] || 0;
-
-    if (aVal !== bVal) {
-      return direction === "ASC" ? aVal - bVal : bVal - aVal;
-    }
-  }
-
-  return 0; // equal
-}
-
-function isGreaterVersion(a: string, b: string): boolean {
-  const aParts = a.split(".").map(Number);
-  const bParts = b.split(".").map(Number);
-
-  for (let i = 0; i < 3; i++) {
-    const aVal = aParts[i] || 0;
-    const bVal = bParts[i] || 0;
-    if (aVal > bVal) return true;
-    if (aVal < bVal) return false;
-  }
-
-  return false; // equal
-}
-
-function isVersionInRange(input: string, from: string, to: string): boolean {
-  const parse = (v: string) => v.split(".").map(Number);
-
-  const [iMajor, iMinor, iPatch] = parse(input);
-  const [fMajor, fMinor, fPatch] = parse(from);
-  const [tMajor, tMinor, tPatch] = parse(to);
-
-  const isStrictlyGreaterThanFrom =
-    iMajor > fMajor ||
-    (iMajor === fMajor && iMinor > fMinor) ||
-    (iMajor === fMajor && iMinor === fMinor && iPatch > fPatch);
-
-  const isLessThanOrEqualToTo =
-    iMajor < tMajor ||
-    (iMajor === tMajor && iMinor < tMinor) ||
-    (iMajor === tMajor && iMinor === tMinor && iPatch <= tPatch);
-
-  return isStrictlyGreaterThanFrom && isLessThanOrEqualToTo;
-}
-
 function getVersionsFromFile(): string[] {
   const versions: string[] = Versions;
   versions.sort((a, b) => compareVersions(a, b, "DESC"));
@@ -119,9 +58,7 @@ function getBreakingChangesBetweenVersions(from: string, to: string): string[] {
     const nameFrontMatter = currentPartial.frontMatter.partial_name.toString();
     if (catFrontMatter == "breaking-changes") {
       if (nameFrontMatter.includes("component-updates-")) {
-        const range = nameFrontMatter.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
-        const [rangeFrom, rangeTo] = range.split("-");
-        if (isVersionInRange(rangeFrom, from, to) || isVersionInRange(rangeTo, from, to)) {
+        if (isComponentUpdatesInRange(nameFrontMatter, from, to)) {
           breakingVersionsList.push(nameFrontMatter);
         }
       } else if (isVersionInRange(nameFrontMatter, from, to)) {
