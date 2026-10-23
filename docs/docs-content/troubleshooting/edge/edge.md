@@ -1583,9 +1583,19 @@ practice, you need more to account for protocol overhead and other traffic on th
      [Build Installer ISO with Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle)
      for guidance.
 
-   - For existing Edge hosts, build a content bundle that contains the provider image and upload it through Local UI.
-     Refer to [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for
-     guidance.
+   - For existing Edge hosts, use the [`palette content build`](../../automation/palette-cli/commands/content.md#build)
+     command on a machine with a fast connection to the registry that hosts the provider image to build a content bundle
+     that contains the provider image. Copy the resulting `.tar.zst` file to the Edge host, and then issue the following
+     command on the host as the root user to extract the bundle into the local bundle store. Keep the `.tar.zst` file
+     extension, because the command uses the extension to detect the compression format.
+
+     ```shell
+     /opt/spectrocloud/bin/palette-agent content-extract --source <path-to-content-bundle>.tar.zst
+     ```
+
+     You cannot use Local UI to upload content bundles to centrally managed Edge hosts. Refer to
+     [Local UI Cluster Management](../../clusters/edge/local-ui/cluster-management/cluster-management.md) for more
+     information.
 
    - Alternatively, increase the bandwidth available to the Edge host for the duration of the download.
 
