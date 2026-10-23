@@ -218,7 +218,7 @@ const config = {
           async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const { docs } = args;
             const filteredDocs = docs.filter((doc) => {
-              return true;
+              return doc.id !== "introduction/landing";
             });
             const sidebarItems = await defaultSidebarItemsGenerator({
               ...args,
