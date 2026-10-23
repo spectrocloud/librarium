@@ -230,7 +230,8 @@ charts:
 | `vlanFiltering.env.allowVlansOnSelf`             | `"true"`               | Programs `allowedVlansOnSelf` on the bridge's own port. Keep it set to `"true"` when the node's IP address is on the bridge.                                                                                                                                                                                                                                                                       |
 | `vlanFiltering.env.allowedVlansOnSelf`           | `"1"`                  | The VLANs that the node itself uses on the bridge, such as the VLANs of `br0.10` sub-interfaces. The agent programs them on the bridge's own port only. NADs never add VLANs here. Always include the node's untagged VLAN, which is usually `1`.                                                                                                                                                  |
 | `vlanFiltering.env.nativeVlan`                   | `""`                   | The node's untagged VLAN. Leave it empty so that the agent detects it. Set a value only to pin a specific VLAN.                                                                                                                                                                                                                                                                                    |
-| `vlanFiltering.env.vlanDesiredStateSync`         | `"true"`               | Removes VM VLANs that no NAD references. Set it to `"false"` to make the agent add-only. The agent never removes node VLANs.                                                                                                                                                                                                                                                                       |
+| `vlanFiltering.env.nadDiscovery`                 | `"true"`               | Deprecated. Keep it set to `"true"` so that the agent programs a VLAN from `allowedVlans` only while a NAD references it. `"false"` programs every VLAN in `allowedVlans` on the bridge uplinks up front, and the agent stops reading NADs.                                                                                                                                                        |
+| `vlanFiltering.env.vlanDesiredStateSync`         | `"true"`               | Deprecated. While `nadDiscovery` is `"true"`, the agent ignores this parameter and always removes VM VLANs that no NAD references. With `nadDiscovery` set to `"false"`, `"true"` removes VLANs that are not in `allowedVlans` or `allowedVlansOnSelf`, and `"false"` makes the agent add-only. The agent never removes node VLANs.                                                                |
 | `vlanFiltering.env.connectivityCheckOnEnable`    | `"true"`               | Probes connectivity while filtering is on, and turns filtering off if the probe keeps failing. Set it to `"false"` to turn off both the probe and the automatic revert.                                                                                                                                                                                                                            |
 | `vlanFiltering.env.connectivityTestIpv4`         | `""`                   | The IPv4 address to probe. Leave it empty to probe the node's default gateway.                                                                                                                                                                                                                                                                                                                     |
 | `vlanFiltering.env.connectivityFailureThreshold` | `"3"`                  | The number of consecutive failed probes before the agent turns filtering off.                                                                                                                                                                                                                                                                                                                      |
@@ -269,15 +270,16 @@ The panel lists each node with its node VLANs, its filtering state, and every VL
 panel stays hidden while every node is healthy, and when `vlanFiltering.enabled` is `false`. It also requires
 `publishNodeStatus` set to `"true"`.
 
-Each node also carries a `vmo-manager/vlan-filtering-status` annotation that summarizes what the agent applied,
-including whether filtering was reverted. Reading the annotation requires `kubectl` access to the cluster.
+The agent also publishes the status of each node in the `vmo-manager/vlan-filtering-status` node annotation. The node
+status summarizes what the agent applied, including whether filtering was reverted. Reading the node status requires
+`kubectl` access to the cluster.
 
 ```shell
 export KUBECONFIG=<path-to-kubeconfig>
 ```
 
 Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your cluster. Then use the following command to
-read the annotation.
+read the node status.
 
 ```shell
 kubectl get node <node-name> --output jsonpath='{.metadata.annotations.vmo-manager/vlan-filtering-status}'
@@ -326,19 +328,10 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your clus
    Replace `<node-name>` with the name of the reverted node. The **VLAN filtering** panel shows this command with the
    node name filled in, ready to copy.
 
-   To clear only specific failed VLANs, add a `vlans` list to the request.
-
-   ```shell
-   kubectl annotate node <node-name> --overwrite \
-     vmo-manager/vlan-filtering-enable="{\"generation\":$(date +%s),\"vlans\":[<vlan-ids>]}"
-   ```
-
-   Replace `<vlan-ids>` with a comma-separated list of the failed VLAN IDs to clear, such as `300,301`.
-
 3. Wait for the next reconciliation pass. The agent processes each request once and retries filtering without a pod
    restart.
 
-   Use the **VLAN filtering** panel or the node annotation to confirm that filtering is back on for the node. Refer to
+   Use the **VLAN filtering** panel or the node status to confirm that filtering is back on for the node. Refer to
    [Check VLAN Filtering Status](#check-vlan-filtering-status).
 
 #### VLAN Restrictions for VMs
@@ -394,11 +387,17 @@ Review the following changes before you upgrade from a release that used the ear
   range into `allowedVlans`, and remove the old values from your cluster profile. VMO ignores the old values without a
   warning.
 
-- `vlanFiltering.env.nadDiscovery` is removed. The agent always reads NADs.
+- NAD discovery (`vlanFiltering.env.nadDiscovery`) is now on by default, and `allowedVlans` is now an upper limit. In
+  earlier releases, NAD discovery added the VLAN of each NAD to the bridge uplinks on top of `allowedVlans`, including
+  VLANs outside it. After the upgrade, the agent removes every VM VLAN outside `allowedVlans` from the bridge uplinks.
+  Before you upgrade, add every VLAN that your NADs use to `allowedVlans`.
 
-- `vlanDesiredStateSync` now defaults to `"true"`. After the upgrade, the agent removes VLANs in `allowedVlans` that no
-  NAD references, and stops programming NAD VLANs outside `allowedVlans`. Add every VLAN that your VM networks use to
-  `allowedVlans` before you upgrade.
+- `nadDiscovery` is deprecated. If your cluster profile sets it to `"false"`, the agent keeps programming every VLAN in
+  `allowedVlans` up front and does not read NADs. Set it to `"true"`.
+
+- `vlanDesiredStateSync` is deprecated and now defaults to `"true"`. While NAD discovery is on, the agent ignores it:
+  after the upgrade, the agent removes VLANs in `allowedVlans` that no NAD references, even if you set
+  `vlanDesiredStateSync` to `"false"`.
 
 - On the VM Launchpad appliance, `allowedVlansOnSelf` no longer includes the VM VLAN range, so the agent removes VM
   VLANs from the bridge's own port. A node VLAN that has an IP address on a `br0.N` sub-interface stays protected, and
