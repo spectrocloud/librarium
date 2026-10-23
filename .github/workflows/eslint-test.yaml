@@ -19,6 +19,9 @@ concurrency:
 
 env:
   NODE_VERSION: "24"
+permissions:
+  contents: read
+
 jobs:
   run-ci:
     runs-on: ubuntu-latest

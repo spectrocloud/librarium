@@ -50,12 +50,19 @@ concurrency:
   group: production-${{ github.workflow }}
   cancel-in-progress: true  
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
 # This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
   build-self-hosted-runner:
     if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
     name: Build Website (Self-Hosted Runner)
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    permissions:
+      contents: read
+      actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -123,6 +130,9 @@ jobs:
     runs-on: 
       group: 'Doc Runners'
       labels: docbot
+    permissions:
+      contents: read
+      actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -216,6 +226,8 @@ jobs:
     if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success')
     needs: [build-self-hosted-runner,build-large-runner]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # semantic-release pushes the release tag over the checkout's persisted GITHUB_TOKEN credentials.
     steps:
       - id: checkout
         name: Checkout Repository
@@ -268,6 +280,9 @@ jobs:
     name: "Post Release Processing"
     needs: [release]
     if: ${{ always() && needs.release.result == 'success' }}
+    permissions:
+      contents: read
+      actions: read # Must cover what post_release.yaml requests.
     uses: ./.github/workflows/post_release.yaml
     secrets: inherit
 
