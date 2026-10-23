@@ -31,6 +31,17 @@
   color: var(--simpleCardSubtle);
 }
 
+.simpleCardTags {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--simpleCardSubtle);
+
+  strong {
+    font-weight: 600;
+    color: var(--ifm-font-color-base);
+  }
+}
+
 .simpleCardHeader {
   display: flex;
   justify-content: flex-start;
