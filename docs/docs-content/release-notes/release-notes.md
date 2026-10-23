@@ -27,6 +27,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7459 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12369 -->
+
+- Palette now records an audit log entry whenever someone downloads a kubeconfig file for a cluster or virtual cluster
+  from the Palette UI or the API. Each entry shows who downloaded the file, the cluster, which kubeconfig file they
+  downloaded, and whether the download succeeded. Refer to
+  [Kubeconfig Downloads](../audit-logs/audit-logs.md#kubeconfig-downloads).
+
 #### Bug Fixes
 
 #### Deprecations and Removals

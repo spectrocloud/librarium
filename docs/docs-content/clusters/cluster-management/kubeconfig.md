@@ -53,6 +53,9 @@ available. Kubeconfig availability depends on OIDC configuration and your Palett
 
 :::
 
+Palette records an audit log entry each time someone downloads either file from the Palette UI or the API. Refer to
+[Kubeconfig Downloads](../../audit-logs/audit-logs.md#kubeconfig-downloads).
+
 ## Permission Requirements {#cluster-admin}
 
 Palette has its own RBAC system that is separate from the
