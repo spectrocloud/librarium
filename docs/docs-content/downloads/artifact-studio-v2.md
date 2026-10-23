@@ -31,7 +31,7 @@ Artifact Studio v2 is a Tech Preview feature and is subject to change.
 | Access        | You create your own account or sign in with Google. Your organization's entitlements determine which artifacts you can download. Organization entitlements replace the **Unlock with access key** option of the previous version. |
 | Downloads     | You can browse the catalog without an account, but you must sign in to download an artifact, add it to a bundle, or copy its URL. The reCAPTCHA check is removed.                                                                 |
 | Pack bundles  | A single bundle builder replaces the multi-step wizard. The builder supports agent mode and controller mode.                                                                                                                      |
-| Profiles      | A single profiles catalog replaces **Profiles Hub** and **PaletteAI Studio**. It includes both Palette and VerteX cluster profiles and PaletteAI profile bundles. To open it, select **Profile bundles** in the header.           |
+| Profiles      | A single profiles catalog replaces **Profiles Hub** and **PaletteAI Studio**. It lists PaletteAI profile bundles alongside Palette and Palette VerteX cluster profiles. To open it, select **Profile bundles** in the header.     |
 | Organizations | Organization admins invite members, create access tokens for the Artifact Studio API, and review the organization's download history.                                                                                             |
 | Automation    | Personal access keys authenticate requests to the Artifact Studio API.                                                                                                                                                            |
 
@@ -57,7 +57,7 @@ other members. Your organization's entitlements determine which appliances, pack
 Spectro Cloud can change your organization's entitlements.
 
 You must also belong to an organization to download artifacts. To join an organization, ask its organization admin for
-an invitation. If you need help creating an organization account, contact
+an invitation. If your company does not have an organization in Artifact Studio yet, contact
 [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 The catalog also lists artifacts that your organization is not entitled to. If you try to download one, Artifact Studio
@@ -132,14 +132,14 @@ If you download more than one item, allow pop-ups for Artifact Studio so that yo
 
 1. In the header, select **Profile bundles**. The profiles catalog opens.
 
-2. Under **Artifact type**, select **Cluster profiles** for Palette and VerteX cluster profiles or **Profile bundles**
-   for PaletteAI profile bundles. Use the remaining filters and the search bar to narrow the results.
+2. Under **Artifact type**, select **Cluster profiles** for Palette and Palette VerteX cluster profiles or **Profile
+   bundles** for PaletteAI profile bundles. Use the remaining filters and the search bar to narrow the results.
 
 3. Select a profile, and then select **Full details**.
 
 4. Choose the profile version and build, and download the profile.
 
-   - For a Palette cluster profile, select **Download profile**.
+   - For a cluster profile, select **Download profile**.
 
    - For a PaletteAI profile bundle, select the build variant, and then select **Download Profile Bundle**.
 
@@ -181,8 +181,8 @@ The bundle builder assembles the packs for a cluster profile into a single bundl
 
 ## Verify Downloads
 
-Artifact Studio v2 shows verification instructions for packs, profiles, and profile bundles, but not for appliance
-downloads. To verify an appliance ISO or content bundle, refer to
+Artifact Studio v2 shows verification instructions for packs, cluster profiles, and profile bundles, but not for
+appliance downloads. To verify an appliance ISO or content bundle, refer to
 [Verify Signatures](./artifact-studio.md#verify-signatures) on the previous version's page.
 
 After a bundle download starts, Artifact Studio displays **Post-download verification instructions**.
@@ -298,7 +298,7 @@ To open the **Account** page, select **My account** in the **User Menu**.
 | ---------------------- | ------------------------------------------------------------------ |
 | **Profile**            | Your display name, email address, and the **Danger zone** actions. |
 | **Saved Pack Bundles** | Drafts that you saved in the bundle builder.                       |
-| **My downloads**       | Your downloads.                                                    |
+| **My downloads**       | Your download history.                                             |
 | **Sessions**           | Devices signed in to your account.                                 |
 | **API access keys**    | Your personal access keys.                                         |
 
@@ -317,14 +317,15 @@ organization.
 
 ### When Does Artifact Studio v2 Become the Default?
 
-During the Tech Preview, the previous version is the default, and Artifact Studio v2 is available through **Switch to
-the new Artifact Studio**. Artifact Studio v2 is scheduled to become the default on November 13, 2026. After that date,
-you can still select **Switch to previous version** until the previous version is retired on December 4, 2026.
+Artifact Studio v2 is scheduled to become the default on November 13, 2026. Until the previous version is retired on
+December 4, 2026, you can select **Switch to previous version** in the header to return to it.
 
 ### Do You Need to Migrate Anything?
 
-No. Artifact Studio v2 offers the same packs, versions, and catalogs as the previous version. The previous version does
-not store any of your data, so you lose nothing when you switch.
+No data migration is required. Artifact Studio v2 offers the same packs and versions as the previous version, and the
+previous version does not store any of your data. To download artifacts in Artifact Studio v2, you must sign in and
+belong to your organization, because organization entitlements replace the **Unlock with access key** option. Refer to
+[Access to Artifacts](#access-to-artifacts).
 
 ### How Do You Automate Downloads?
 
@@ -332,7 +333,7 @@ Use a personal access key or an organization access token to authenticate reques
 [Create a Personal Access Key](#create-a-personal-access-key) and
 [Create an Organization Access Token](#create-an-organization-access-token).
 
-### Can You Switch Versions Without Signing In?
+### Can You Switch Versions Without an Account?
 
 Yes. You can switch between versions without an account.
 
@@ -344,7 +345,7 @@ Studio v2. Other links open the Artifact Studio v2 home page.
 
 ### What If Your Team Needs More Time Before the Previous Version Is Retired?
 
-Contact your Spectro Cloud customer success manager as early as possible.
+Contact your Spectro Cloud representative as early as possible.
 
 ### Why Do You Need to Sign In to Download?
 
@@ -353,9 +354,8 @@ Artifact Studio can enforce your organization's entitlements. You can still brow
 
 ### How Do You Get an Account?
 
-Spectro Cloud invites your organization's designated organization admin, who then invites the rest of your team. You can
-also create an account yourself, and then ask your organization admin to add you to your company's organization. Refer
-to [Sign In](#sign-in) and [Accept an Invitation](#accept-an-invitation).
+Your organization admin can invite you, or you can create an account yourself and then ask your organization admin to
+add you to your company's organization. Refer to [Sign In](#sign-in) and [Accept an Invitation](#accept-an-invitation).
 
 ### How Does Your Team Get Access?
 
@@ -366,11 +366,11 @@ the **Organization settings** page. Refer to [Add a Member](#add-a-member).
 
 Check the following:
 
-- **Your active organization.** If you belong to more than one organization, select **Switch organization** in the
-  **User Menu**, and select your company's organization.
+- If you belong to more than one organization, select **Switch organization** in the **User Menu**, and then select your
+  company's organization.
 
-- **Your membership.** If you created your account without an invitation, you might not belong to your company's
-  organization yet. Ask your organization admin to invite you. Refer to [Accept an Invitation](#accept-an-invitation).
+- If you created your account without an invitation, you might not belong to your company's organization yet. Ask your
+  organization admin to invite you. Refer to [Accept an Invitation](#accept-an-invitation).
 
 If Artifact Studio still displays **Entitlement required**, contact your organization admin or
 [open a support ticket](https://support.spectrocloud.io/).
@@ -378,11 +378,10 @@ If Artifact Studio still displays **Entitlement required**, contact your organiz
 ### What Is an Entitlement?
 
 An entitlement determines which artifacts your organization can download. Palette, Palette VerteX, PaletteAI, and the
-appliances each have their own entitlements. The catalog also lists artifacts that your organization is not entitled to,
-and Artifact Studio displays **Entitlement required** if you try to download one. Refer to
-[Access to Artifacts](#access-to-artifacts).
+appliances each have their own entitlements. The **Entitlements** tab of the **Organization settings** page lists your
+organization's entitlements as artifact classes. Refer to [Access to Artifacts](#access-to-artifacts).
 
 ### How Do You Verify What You Downloaded?
 
-After you download a pack, profile, or profile bundle, Artifact Studio v2 shows the verification instructions and the
-commands to run. Refer to [Verify Downloads](#verify-downloads).
+Artifact Studio v2 shows verification instructions for packs, cluster profiles, and profile bundles, but not for
+appliances. Refer to [Verify Downloads](#verify-downloads).
