@@ -138,7 +138,9 @@ for branch in $branches; do
     # - Extracts the version from headings like:
     #   • "## Release 4.7.10"
     #   • "## Release 4.7.8 - 4.7.10"
+    #   • "## Release 4.10.17-patch.5"
     # - Always selects the final version in a range
+    # - Keeps a -patch.N suffix, so a patch release does not share a version, and a partial, with its base release
     # - Resets component updates tracking for the new release
     if echo "$line" | grep -q "##.*Release"; then
       # If we were already processing a file, copy it to the current working directory.
@@ -152,8 +154,8 @@ for branch in $branches; do
         cut -c4- |
         sed -E 's/\{#.*\}//' |                                   # Remove markdown anchor fragments
         sed -E 's/.*Release[[:space:]]+//' |                     # Remove everything before 'Release'
-        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
-        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
+        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/' |  # Extract last version in range
+        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/'               # Extract version if no range
       )
       ## Reset component updates tracking variables for new release.
       component_updates_identifier=""
@@ -187,25 +189,57 @@ for branch in $branches; do
       continue
     fi
 
+    # End the current section at any other H2 heading
+    #
+    # What this does:
+    # - Treats an H2 that is neither a release nor a Component Updates heading, such as
+    #   "## October 9, 2026 - PaletteAI VM Launchpad 4.10.20", as a section boundary
+    # - Resets the release and component updates tracking, so a Breaking Changes section under that heading is never
+    #   written to the partial of the release above it
+    #
+    # Notes:
+    # - VM Launchpad breaking changes are left out on purpose. VM Launchpad versions reuse Palette version strings, so
+    #   they cannot share versions.json. The Find Breaking Changes page points readers to the VM Launchpad release notes.
+    if [ "$in_code_section" != "true" ] && echo "$line" | grep -qE '^##[[:space:]]'; then
+      # If we were already processing a file, copy it to the current working directory.
+      if [ "$partial_created" == "true" ]; then
+        persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+        partial_created=false
+      fi
+
+      release_number=""
+      component_updates_identifier=""
+      component_updates_title=""
+      component_updates_range=""
+      in_breaking_changes=false
+      continue
+    fi
+
     # Detect component updates version range
     #
     # What this does:
     # - Matches the exact sentence describing component update versions
-    # - Extracts a single version or version range (e.g. 4.7.21 - 4.7.23)
+    # - Extracts a single version or version range (e.g. 4.7.21 - 4.7.23 or 4.10.17-patch.5 - 4.10.27)
+    # - Normalizes an en or em dash between the two versions to a hyphen, which the component splits on
     #
     # Notes:
     # - This match is intentionally strict
-    # - The phrasing must remain unchanged or this will fail
+    # - The phrasing must remain unchanged or this will fail. scripts/release/templates/component-updates.md writes
+    #   it. The plural "for Palette versions A - B and C - D." form is not supported, so do not write it by hand.
     # - No alternative reliable identifier exists for this line
+    # - The dash is an alternation, not a bracket expression, so en and em dashes also match in a non-UTF-8 locale
 
     # THIS PHRASING MUST MATCH EXACTLY TO CATCH THE COMPONENT UPDATES RANGE.
     # I HAVE NO OTHER WAY TO UNIQUELY IDENTIFY THIS LINE.
-    if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE '^The following components have been updated for Palette version [0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?\.$'; then
+    cu_version='[0-9]+(\.[0-9]+){2}(-patch\.[0-9]+)?'
+    cu_range="$cu_version([[:space:]]*(-|–|—)[[:space:]]*$cu_version)?"
+    if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE "^The following components have been updated for Palette version $cu_range\.\$"; then
       component_updates_range=$(
         echo "$line" |
-        grep -Eo '[0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?'
+        grep -Eo "$cu_range" |
+        sed -E 's/[[:space:]]*(–|—)[[:space:]]*/-/'
       )
-      continue 
+      continue
     fi
 
     # Enter breaking changes section for a release
@@ -229,6 +263,21 @@ for branch in $branches; do
       in_breaking_changes=true
       create_partials_file_component_updates "$BREAKING_CHANGES_PARTIALS_PATH" "$component_updates_identifier" "$component_updates_range" "$component_updates_title"
       partial_created=true
+      continue
+    fi
+
+    # Warn about a component updates breaking changes section that has no recognized version line
+    #
+    # Purpose:
+    # - Without a version range, the section cannot be placed in Find Breaking Changes, so it is not indexed.
+    #   Say so instead of skipping it silently.
+    if [ -n "$component_updates_identifier" ] && [ -z "$component_updates_range" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
+      warning="$branch: the $component_updates_identifier Component Updates section has a Breaking Changes heading but no recognized \"The following components have been updated for Palette version ...\" line, so its breaking changes are not indexed."
+      if [ "${GITHUB_ACTIONS:-}" == "true" ]; then
+        echo "::warning::$warning"
+      else
+        echo "⚠️ $warning"
+      fi
       continue
     fi
 

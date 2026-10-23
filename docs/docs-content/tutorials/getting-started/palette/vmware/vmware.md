@@ -42,7 +42,7 @@ Once your cluster is deployed, you can update it using cluster profile updates.
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/palette/create-cluster-profile",
+      url: "/tutorials/getting-started/palette/vmware/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
