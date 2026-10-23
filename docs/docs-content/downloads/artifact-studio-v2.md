@@ -2,8 +2,7 @@
 sidebar_label: "Artifact Studio v2"
 title: "Artifact Studio v2"
 description:
-  "Use Artifact Studio v2 to download appliances, packs, and profile bundles, and to manage your organization and access
-  keys."
+  "Use Artifact Studio v2 to download appliances, packs, and profiles, and to manage your organization and access keys."
 hide_table_of_contents: false
 sidebar_position: 11
 tags: ["downloads", "artifact-studio"]
@@ -32,8 +31,8 @@ Artifact Studio v2 is a Tech Preview feature and is subject to change.
 | Access        | You create your own account or sign in with Google. Your organization's entitlements determine which artifacts you can download. Organization entitlements replace the **Unlock with access key** option of the previous version. |
 | Downloads     | You can browse the catalog without an account, but you must sign in to download an artifact, add it to a bundle, or copy its URL. The reCAPTCHA check is removed.                                                                 |
 | Pack bundles  | A single bundle builder replaces the multi-step wizard. The builder supports agent mode and controller mode.                                                                                                                      |
-| Profiles      | **Profile bundles** replaces **Profiles Hub** and **PaletteAI Studio**. It lists both Palette cluster profiles and PaletteAI profile bundles.                                                                                     |
-| Organizations | Organization admins invite members, create access tokens, and review the organization's download history.                                                                                                                         |
+| Profiles      | A single profiles catalog replaces **Profiles Hub** and **PaletteAI Studio**. It includes both Palette and VerteX cluster profiles and PaletteAI profile bundles. To open it, select **Profile bundles** in the header.           |
+| Organizations | Organization admins invite members, create access tokens for the Artifact Studio API, and review the organization's download history.                                                                                             |
 | Automation    | Personal access keys authenticate requests to the Artifact Studio API.                                                                                                                                                            |
 
 ## Sign In
@@ -54,11 +53,12 @@ sign in.
 ### Access to Artifacts
 
 Spectro Cloud creates your organization and invites its first organization admin. The organization admin then invites
-other members. Your organization's entitlements determine which appliances, packs, and profile bundles you can download.
-Only Spectro Cloud can change your organization's entitlements.
+other members. Your organization's entitlements determine which appliances, packs, and profiles you can download. Only
+Spectro Cloud can change your organization's entitlements.
 
 You must also belong to an organization to download artifacts. To join an organization, ask its organization admin for
-an invitation.
+an invitation. If you need help creating an organization account, contact
+[support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 The catalog also lists artifacts that your organization is not entitled to. If you try to download one, Artifact Studio
 displays **Entitlement required**. Contact your organization admin or
@@ -95,8 +95,6 @@ If the invitation link has expired or was already used, ask your organization ad
    | **Content Bundle**    | Packs, profiles, and dependencies that the appliance installs beyond the OS image.                                                                                           |
    | **Helm Chart**        | Chart that deploys the product onto an existing Kubernetes cluster.                                                                                                          |
    | **Machine Owner Key** | Secure Boot enrollment key. Download it only if your hosts boot with Secure Boot enabled. On the Launchpad appliances, this artifact is labeled **MOK Key for Secure Boot**. |
-   | **vSphere Appliance** | OVA for VMware vSphere.                                                                                                                                                      |
-   | **Palette CLI**       | Command-line interface for managing the appliance.                                                                                                                           |
 
    For PaletteAI Inference Launchpad, Artifact Studio groups the artifacts by GPU build. Select **Show artifacts** for
    the build that you need.
@@ -104,10 +102,10 @@ If the invitation link has expired or was already used, ask your organization ad
 To verify an appliance ISO or content bundle, refer to [Verify Signatures](./artifact-studio.md#verify-signatures) on
 the previous version's page.
 
-## Download Packs and Profile Bundles
+## Download Packs and Profiles
 
-You can download individual packs and profile bundles, collect them into a single bundle from the catalogs, or build a
-pack bundle for a cluster profile in the bundle builder.
+You can download individual packs and profiles, collect them into a single bundle from the catalogs, or build a pack
+bundle for a cluster profile in the bundle builder.
 
 :::tip
 
@@ -130,12 +128,12 @@ If you download more than one item, allow pop-ups for Artifact Studio so that yo
    the direct URLs and the SHA-256 checksum of the pack archive and its signature. Select **Copy all URLs** to copy
    them.
 
-### Download a Profile Bundle
+### Download a Profile
 
-1. In the header, select **Profile bundles**.
+1. In the header, select **Profile bundles**. The profiles catalog opens.
 
-2. Under **Artifact type**, select **Palette profile** for Palette cluster profiles or **AI Profile bundle** for
-   PaletteAI profile bundles. Use the remaining filters and the search bar to narrow the results.
+2. Under **Artifact type**, select **Cluster profiles** for Palette and VerteX cluster profiles or **Profile bundles**
+   for PaletteAI profile bundles. Use the remaining filters and the search bar to narrow the results.
 
 3. Select a profile, and then select **Full details**.
 
@@ -147,8 +145,7 @@ If you download more than one item, allow pop-ups for Artifact Studio so that yo
 
 ### Download Items as a Bundle
 
-1. In the **Packs catalog** or **Profile bundles** catalog, select **Add** on each pack or profile that you want to
-   include.
+1. In the **Packs catalog** or the profiles catalog, select **Add** on each pack or profile that you want to include.
 
 2. After you add all the items, select **Review bundle**. Artifact Studio displays the bundle contents and the **Bundle
    summary**.
@@ -210,8 +207,8 @@ members have a read-only view of the page. To open the page, select **Org settin
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Overview**     | Organization details and shortcuts to common admin tasks.                                                                                                                                                                 |
 | **Members**      | Members of the organization, their roles, and pending invitations.                                                                                                                                                        |
-| **Tokens**       | Organization access tokens.                                                                                                                                                                                               |
-| **Downloads**    | Downloads by members of the organization in the last 30 days, including the download method.                                                                                                                              |
+| **Tokens**       | Organization access tokens for use in CI/CD pipelines and other automation.                                                                                                                                               |
+| **Downloads**    | Downloads by members of the organization, including the download method.                                                                                                                                                  |
 | **Entitlements** | The artifact classes that your organization can access. Artifact classes group artifacts by type and product, such as **Packs**, **Palette VerteX packs**, or **Palette installers**. Only Spectro Cloud can change them. |
 
 ### Add a Member
@@ -297,13 +294,13 @@ working immediately.
 
 To open the **Account** page, select **My account** in the **User Menu**.
 
-| **Tab**                   | **Purpose**                                                        |
-| ------------------------- | ------------------------------------------------------------------ |
-| **Profile**               | Your display name, email address, and the **Danger zone** actions. |
-| **Saved Profile bundles** | Drafts that you saved in the bundle builder.                       |
-| **My downloads**          | Your downloads from the last 90 days.                              |
-| **Sessions**              | Devices signed in to your account.                                 |
-| **API access keys**       | Your personal access keys.                                         |
+| **Tab**                | **Purpose**                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| **Profile**            | Your display name, email address, and the **Danger zone** actions. |
+| **Saved Pack Bundles** | Drafts that you saved in the bundle builder.                       |
+| **My downloads**       | Your downloads.                                                    |
+| **Sessions**           | Devices signed in to your account.                                 |
+| **API access keys**    | Your personal access keys.                                         |
 
 The **Danger zone** section of the **Profile** tab contains the following actions.
 
@@ -315,3 +312,77 @@ The **Danger zone** section of the **Profile** tab contains the following action
 
 If you belong to more than one organization, select **Switch organization** in the **User Menu** to change the active
 organization.
+
+## Frequently Asked Questions
+
+### When Does Artifact Studio v2 Become the Default?
+
+During the Tech Preview, the previous version is the default, and Artifact Studio v2 is available through **Switch to
+the new Artifact Studio**. Artifact Studio v2 is scheduled to become the default on November 13, 2026. After that date,
+you can still select **Switch to previous version** until the previous version is retired on December 4, 2026.
+
+### Do You Need to Migrate Anything?
+
+No. Artifact Studio v2 offers the same packs, versions, and catalogs as the previous version. The previous version does
+not store any of your data, so you lose nothing when you switch.
+
+### How Do You Automate Downloads?
+
+Use a personal access key or an organization access token to authenticate requests to the Artifact Studio API. Refer to
+[Create a Personal Access Key](#create-a-personal-access-key) and
+[Create an Organization Access Token](#create-an-organization-access-token).
+
+### Can You Switch Versions Without Signing In?
+
+Yes. You can switch between versions without an account.
+
+### Do Bookmarks Still Work?
+
+After Artifact Studio v2 becomes the default, links to `https://artifact-studio.spectrocloud.com` open Artifact Studio
+v2. Links to a specific pack, cluster profile, PaletteAI profile bundle, or appliance open the same item in Artifact
+Studio v2. Other links open the Artifact Studio v2 home page.
+
+### What If Your Team Needs More Time Before the Previous Version Is Retired?
+
+Contact your Spectro Cloud customer success manager as early as possible.
+
+### Why Do You Need to Sign In to Download?
+
+Signing in ties each download to your organization. Your organization admin can then review who downloaded what, and
+Artifact Studio can enforce your organization's entitlements. You can still browse the catalog without an account.
+
+### How Do You Get an Account?
+
+Spectro Cloud invites your organization's designated organization admin, who then invites the rest of your team. You can
+also create an account yourself, and then ask your organization admin to add you to your company's organization. Refer
+to [Sign In](#sign-in) and [Accept an Invitation](#accept-an-invitation).
+
+### How Does Your Team Get Access?
+
+After your organization admin accepts the invitation from Spectro Cloud, they invite the other members of your team from
+the **Organization settings** page. Refer to [Add a Member](#add-a-member).
+
+### What If You Cannot Download an Artifact That Your Organization Is Entitled To?
+
+Check the following:
+
+- **Your active organization.** If you belong to more than one organization, select **Switch organization** in the
+  **User Menu**, and select your company's organization.
+
+- **Your membership.** If you created your account without an invitation, you might not belong to your company's
+  organization yet. Ask your organization admin to invite you. Refer to [Accept an Invitation](#accept-an-invitation).
+
+If Artifact Studio still displays **Entitlement required**, contact your organization admin or
+[open a support ticket](https://support.spectrocloud.io/).
+
+### What Is an Entitlement?
+
+An entitlement determines which artifacts your organization can download. Palette, Palette VerteX, PaletteAI, and the
+appliances each have their own entitlements. The catalog also lists artifacts that your organization is not entitled to,
+and Artifact Studio displays **Entitlement required** if you try to download one. Refer to
+[Access to Artifacts](#access-to-artifacts).
+
+### How Do You Verify What You Downloaded?
+
+After you download a pack, profile, or profile bundle, Artifact Studio v2 shows the verification instructions and the
+commands to run. Refer to [Verify Downloads](#verify-downloads).
