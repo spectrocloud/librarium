@@ -50,3 +50,26 @@ Therefore, when using `LB_HOW=compile`, ensure that you follow these guidelines.
 
 </TabItem>
 </Tabs>
+
+## DRBD Kernel Module Loading
+
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. The `drbd-module-loader` init
+container in the `linstor-satellite` pod loads this module using the mode set by the `LB_HOW` environment variable in the
+`piraeus-operator` pack. On the Palette Management Appliance and VerteX Management Appliance, you select the mode with the **DRBD
+Compile Mode** option when you create the management cluster in Local UI. Starting with Palette and Palette VerteX
+4.9.14, the following modes are available.
+
+| **Value**                         | **Description**                                                                                                          | **Requirements**                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **`shipped_modules`** _(Default)_ | Installs prebuilt, presigned DRBD `.deb` packages from the container image.                                            | Compatible with Secure Boot.                                                                             |
+| **`compile`**                     | Builds the DRBD kernel module from source on the target node at install time using Dynamic Kernel Module Support (DKMS). | The OS image must include kernel headers that match the running kernel. Not compatible with Secure Boot. |
+
+:::warning
+
+Do not select `compile` on nodes with Secure Boot enabled. Modules compiled on the node are unsigned, and the kernel
+refuses to load them. This causes the `drbd-module-loader` init container to fail and the installation to stall.
+
+:::
+
+Most deployments should keep the default value, `shipped_modules`. For the container image requirements of `compile`
+mode, refer to [Versions Supported](#versions-supported).
