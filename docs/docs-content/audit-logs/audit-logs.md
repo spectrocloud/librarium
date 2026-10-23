@@ -11,8 +11,8 @@ Palette captures audit logs to track user interaction with the application resou
 certain resources, the system-level modifications are also captured in the audit logs.
 
 The audit log contains information about the resource and the user who performed the action. Each user or system action
-on a resource has a log type, such as _Create_, _Update_, _Delete_, or _Action_. Every resource is categorized as a type
-that helps the user to scope down the audit logs.
+on a resource has a log type, such as **Create**, **Update**, **Delete**, or **Action**. Each resource also has a
+resource type, which you can use to filter the audit logs.
 
 ## View Audit Logs
 
@@ -43,10 +43,10 @@ across all projects and tenant actions. The project scope audits show the activi
 ## Kubeconfig Downloads
 
 Palette records an audit log entry each time someone downloads a kubeconfig file for a cluster or virtual cluster from
-the Palette UI or the API. Each entry shows who downloaded the file, the cluster, and which file they downloaded:
-`admin kubeconfig` for the **Admin Kubeconfig** file or `user kubeconfig` for the **Kubeconfig** file. Palette also
-records failed and denied download attempts. To learn about the two files, refer to
-[Kubeconfig](../clusters/cluster-management/kubeconfig.md#kubeconfig-files).
+the Palette UI or the API. Each entry identifies the user, the cluster, and the file. In each entry, `admin kubeconfig`
+refers to the **Admin Kubeconfig** file, and `user kubeconfig` refers to the **Kubeconfig** file. Palette also records
+failed and denied download attempts. To learn about the two files, refer to
+[Types of Kubeconfig Files](../clusters/cluster-management/kubeconfig.md#kubeconfig-files).
 
 To find these entries, set the **Log Type** filter to **Action** and the **Resource Type** filter to **Cluster** or
 **Virtual Cluster**.
