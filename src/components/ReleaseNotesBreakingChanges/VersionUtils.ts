@@ -34,23 +34,37 @@ export function parseComponentUpdatesRange(name: string): [string, string] {
   return [from, to ?? from];
 }
 
-// isComponentUpdatesInRange reports whether either end of a Component Updates range falls in the upgrade range,
-// using the same rule as isVersionInRange.
+// The Component Updates generator sets the start of a range to the first release of the line and the end to the newest
+// release when it runs, so the update ships just after the end release.
+
+// isComponentUpdatesInRange reports whether a Component Updates range overlaps the upgrade range. Unlike
+// isVersionInRange, the end of the range may equal from: a reader on the end release may not have the update yet.
 export function isComponentUpdatesInRange(name: string, from: string, to: string): boolean {
   const [rangeFrom, rangeTo] = parseComponentUpdatesRange(name);
-  return isVersionInRange(rangeFrom, from, to) || isVersionInRange(rangeTo, from, to);
+  return diffVersions(rangeFrom, to) <= 0 && diffVersions(rangeTo, from) >= 0;
+}
+
+function isComponentUpdates(name: string): boolean {
+  return name.includes("component-updates-");
+}
+
+// sortVersion returns the version an entry sorts by. A Component Updates entry sorts by the end of its range.
+function sortVersion(name: string): string {
+  return isComponentUpdates(name) ? parseComponentUpdatesRange(name)[1] : name;
 }
 
 export function compareVersions(a: string, b: string, direction: "ASC" | "DESC" = "DESC"): number {
-  // Handle component-updates-* versions by extracting the starting version of the range
-  if (a.includes("component-updates-")) {
-    a = parseComponentUpdatesRange(a)[0];
-  }
-  if (b.includes("component-updates-")) {
-    b = parseComponentUpdatesRange(b)[0];
+  let diff = diffVersions(sortVersion(a), sortVersion(b));
+
+  // At the same version, a Component Updates entry comes after the release, and two Component Updates entries keep the
+  // order of their identifiers, which start with the year and week.
+  if (diff === 0 && isComponentUpdates(a) !== isComponentUpdates(b)) {
+    diff = isComponentUpdates(a) ? 1 : -1;
+  } else if (diff === 0 && isComponentUpdates(a)) {
+    diff = a.localeCompare(b);
   }
 
-  return direction === "ASC" ? diffVersions(a, b) : diffVersions(b, a);
+  return direction === "ASC" ? diff : -diff;
 }
 
 export function isGreaterVersion(a: string, b: string): boolean {

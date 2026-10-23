@@ -29,11 +29,29 @@ describe("compareVersions", () => {
     ]);
   });
 
-  it("orders component updates by the start of their range", () => {
-    const componentUpdates = "component-updates-2026-07-TITLE-{February 13, 2026}-RANGE-4.8.6-4.8.27";
-    expect(compareVersions(componentUpdates, "4.8.7", "ASC")).toBeLessThan(0);
-    expect(compareVersions(componentUpdates, "4.8.5", "ASC")).toBeGreaterThan(0);
-    expect(compareVersions(componentUpdates, "4.8.6", "ASC")).toBe(0);
+  it("orders component updates by the end of their range, just after that release", () => {
+    const feb6 = "component-updates-2026-06-TITLE-{February 6, 2026}-RANGE-4.8.6-4.8.27";
+    const feb13 = "component-updates-2026-07-TITLE-{February 13, 2026}-RANGE-4.8.6-4.8.27";
+    const apr10 = "component-updates-2026-15-TITLE-{April 10, 2026}-RANGE-4.8.6-4.8.47";
+    const entries = ["4.8.47", feb13, "4.8.25", apr10, "4.8.33", feb6, "4.8.27"];
+    expect([...entries].sort((a, b) => compareVersions(a, b, "ASC"))).toEqual([
+      "4.8.25",
+      "4.8.27",
+      feb6,
+      feb13,
+      "4.8.33",
+      "4.8.47",
+      apr10,
+    ]);
+    expect([...entries].sort((a, b) => compareVersions(a, b, "DESC"))).toEqual([
+      apr10,
+      "4.8.47",
+      "4.8.33",
+      feb13,
+      feb6,
+      "4.8.27",
+      "4.8.25",
+    ]);
   });
 });
 
@@ -99,7 +117,32 @@ describe("isComponentUpdatesInRange", () => {
     const name = componentUpdates("4.10.17-patch.5-4.10.27");
     expect(isComponentUpdatesInRange(name, "4.10.17-patch.1", "4.10.17-patch.5")).toBe(true);
     expect(isComponentUpdatesInRange(name, "4.10.25", "4.10.27")).toBe(true);
-    expect(isComponentUpdatesInRange(name, "4.10.27", "4.10.30")).toBe(false);
+    expect(isComponentUpdatesInRange(name, "4.10.27", "4.10.30")).toBe(true);
+    expect(isComponentUpdatesInRange(name, "4.10.30", "4.10.33")).toBe(false);
+  });
+
+  // The expected results recorded on the ticket, using the two 4.8 entries with breaking changes.
+  it.each<[string, string, boolean, boolean]>([
+    ["4.8.8", "4.8.25", true, true],
+    ["4.8.27", "4.8.33", true, true],
+    ["4.8.47", "4.8.52", false, true],
+    ["4.7.48", "4.8.9", true, true],
+    ["4.8.8", "4.8.9", true, true],
+    ["4.8.51", "4.8.52", false, false],
+    ["4.7.40", "4.7.48", false, false],
+  ])("from %s to %s shows February 13: %s, April 10: %s", (from, to, feb13, apr10) => {
+    expect(isComponentUpdatesInRange(componentUpdates("4.8.6-4.8.27"), from, to)).toBe(feb13);
+    expect(isComponentUpdatesInRange(componentUpdates("4.8.6-4.8.47"), from, to)).toBe(apr10);
+  });
+
+  it("includes a range that encloses the whole upgrade range", () => {
+    expect(isComponentUpdatesInRange(componentUpdates("4.10.13-4.10.27"), "4.10.16", "4.10.25")).toBe(true);
+  });
+
+  it("includes a range that ends at a patch release for readers on that patch release", () => {
+    const name = componentUpdates("4.10.13-4.10.17-patch.5");
+    expect(isComponentUpdatesInRange(name, "4.10.17-patch.5", "4.10.25")).toBe(true);
+    expect(isComponentUpdatesInRange(name, "4.10.25", "4.10.27")).toBe(false);
   });
 
   it("does not throw for a single-version range outside the upgrade range", () => {
@@ -110,8 +153,8 @@ describe("isComponentUpdatesInRange", () => {
 });
 
 describe("compareVersions with patch ranges", () => {
-  it("orders a component updates range by its start, keeping the -patch.N suffix", () => {
-    expect(compareVersions(componentUpdates("4.10.17-patch.5-4.10.27"), "4.10.17-patch.1", "ASC")).toBeGreaterThan(0);
-    expect(compareVersions(componentUpdates("4.10.17-patch.5-4.10.27"), "4.10.18", "ASC")).toBeLessThan(0);
+  it("orders a component updates range by its end, keeping the -patch.N suffix", () => {
+    expect(compareVersions(componentUpdates("4.10.13-4.10.17-patch.5"), "4.10.17-patch.5", "ASC")).toBeGreaterThan(0);
+    expect(compareVersions(componentUpdates("4.10.13-4.10.17-patch.5"), "4.10.18", "ASC")).toBeLessThan(0);
   });
 });
