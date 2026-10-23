@@ -21,6 +21,22 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
+
+- To improve security, Palette now restricts the following user API requests. Update any automation that sends them.
+
+  - `GET /v1/users` and `GET /v1/tenants` no longer accept `status.login.mode` or `status.isActive` in the `filters` or
+    `orderBy` query parameters. Requests that use these fields fail with `400 FilterValidationFailure`.
+
+  - `PATCH /v1/users/{uid}` accepts only the `add`, `replace`, `remove`, and `test` operations on the `/spec/firstName`,
+    `/spec/lastName`, `/spec/emailId`, and `/spec/roles` paths. Requests to patch other paths fail with
+    `400 UserPatchPathNotAllowed`, and the `move` and `copy` operations fail with `400 UserPatchOpNotAllowed`.
+
+  - On self-hosted Palette and Palette VerteX, reading the activation link of another user now requires the
+    `user.create` permission. Requests from users without this permission fail with `403 Forbidden`. Reading your own
+    activation link is unchanged.
+
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
 #### Features
