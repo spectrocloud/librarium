@@ -79,17 +79,17 @@ Select **Reload** at any point to discard your draft and fetch the current resou
 | **Feature gates**               | KubeVirt feature gates enabled on the cluster.                                                                                                                                                                              | _Varies_     |
 | **Disabled feature gates**      | Beta feature gates that stay off even though KubeVirt turns its Beta features on by default. Refer to [Disabled Feature Gates](#disabled-feature-gates).                                                                    | _Set by VMO_ |
 
-To enable a feature gate, enter its name in the **Add a gate** field and select **Add**. To remove a gate, select the
-**x** on the gate. On KubeVirt 1.9.0 and later, removing a Beta gate from **Feature gates** does not turn it off. To
-turn off a Beta gate, add it to **Disabled feature gates**. VMO submits the list as you entered it, so the KubeVirt
-admission webhook rejects a name it does not recognize when you apply.
-
 :::info
 
 The overcommit ratios change resource density across the whole cluster. To review the trade-offs before you adjust them,
 refer to [VM Overcommitment and Memory Optimization](./vmo-overcommit-memory-optimization-appliance.md).
 
 :::
+
+To enable a feature gate, enter its name in the **Add a gate** field and select **Add**. To remove a gate, select the
+**x** on the gate. On KubeVirt 1.9.0 and later, removing a Beta gate from **Feature gates** does not turn it off. To
+turn off a Beta gate, add it to **Disabled feature gates**. VMO submits the list as you entered it, so the KubeVirt
+admission webhook rejects a name it does not recognize when you apply.
 
 #### Disabled Feature Gates
 
@@ -218,15 +218,15 @@ feature gates**. On earlier KubeVirt versions, the gate must be in **Feature gat
 CD-ROM drives, refer to [Create a VM](./virtual-machines/creating.md).
 
 `HotplugVolumes` and `DeclarativeHotplugVolumes` can both appear in **Feature gates** without the admission webhook
-rejecting them. When the list contains both gates, `HotplugVolumes` takes precedence for the imperative hotplug API,
+rejecting them. When the list contains both gates, `HotplugVolumes` takes precedence for the imperative hot-plug API,
 while `DeclarativeHotplugVolumes` still allows empty CD-ROM drives at creation time. To move fully to the declarative
 model, remove `HotplugVolumes` and keep `DeclarativeHotplugVolumes`.
 
-KubeVirt 1.9.0 deprecates `HotplugVolumes`. VMO includes it in **Feature gates** by default, on new installations and
-upgrades alike, so remove it once your cluster runs KubeVirt 1.9.0. Disk hot-plug keeps working without it, because
-KubeVirt accepts hot-plug requests when either gate is on. On earlier KubeVirt versions, keep it unless
-`DeclarativeHotplugVolumes` is also in **Feature gates**, because those versions do not turn `DeclarativeHotplugVolumes`
-on by default.
+KubeVirt 1.9.0 deprecates `HotplugVolumes`, but VMO includes it in **Feature gates** by default on both new
+installations and upgrades. On KubeVirt 1.9.0 and later, remove `HotplugVolumes` from **Feature gates**. Disk hot-plug
+keeps working as long as `DeclarativeHotplugVolumes` stays on, because KubeVirt accepts hot-plug requests when either
+gate is on. On earlier KubeVirt versions, keep `HotplugVolumes` unless `DeclarativeHotplugVolumes` is also in **Feature
+gates**.
 
 :::warning
 

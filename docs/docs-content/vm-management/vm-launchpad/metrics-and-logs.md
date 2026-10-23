@@ -235,14 +235,14 @@ Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** i
 
 7. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
-#### Forward Metrics to Datadog
+#### Forward Metrics and Logs to Datadog
 
 The following steps forward metrics to Datadog.
 
 1. Select **Add** next to **Forwarding URL**, enter `https://otlp.<datadog-site>/v1/metrics`, and select the save icon.
 
    Replace `<datadog-site>` with your Datadog site, such as `us3.datadoghq.com` for US3 or `datadoghq.com` for US1. For
-   the list of sites, refer to the [Datadog OTLP documentation](https://docs.datadoghq.com/opentelemetry/).
+   the list of sites, refer to [Getting Started with Datadog Sites](https://docs.datadoghq.com/getting_started/site/).
 
 2. Select **Add** next to **Forwarding Token**, enter `DD-API-KEY=<datadog-api-key>`, and select the save icon. VMO
    sends it as a literal `DD-API-KEY` header.
