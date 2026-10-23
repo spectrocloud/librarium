@@ -37,8 +37,7 @@ The following components have been updated for Palette version 4.10.13 - 4.10.32
 
 - Deprecated the `override_kubeadm_configuration` machine pool parameter for EKS, AKS, and GKE clusters in the Spectro
   Cloud Terraform and Crossplane providers. Palette does not support this parameter for managed Kubernetes clusters, so
-  it has no effect. The Terraform provider now displays a warning when you set it. A future release removes the
-  parameter.
+  it has no effect. The Terraform provider now displays a warning when you set it.
 
 <!-- https://spectrocloud.atlassian.net/browse/PSOPS-282 -->
 
