@@ -8,11 +8,7 @@ jest.mock("./SimpleCardFooterArrow", () => {
   });
 });
 
-jest.mock("../VersionedLink", () => {
-  return jest.fn(({ url, component }) => {
-    return <a href={url}>{component}</a>;
-  });
-});
+jest.mock("@docusaurus/Link");
 
 describe("Display SimpleCardGrid", () => {
   interface testCard {
