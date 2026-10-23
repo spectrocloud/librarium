@@ -11,6 +11,9 @@ on:
     - cron: "0 17 * * 2"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   get-branches:
     runs-on: ubuntu-latest
