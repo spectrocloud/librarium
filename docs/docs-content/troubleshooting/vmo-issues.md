@@ -12,11 +12,11 @@ The following are common scenarios that you may encounter when using Virtual Mac
 
 ## Scenario - Hot-Plugged Blank Disk Never Becomes Ready
 
-On PaletteAI VM Launchpad and VMO pack versions earlier than TBD, when you hot-plug a disk to a running virtual machine
-and select **Create New Blank Disk**, the VMO UI creates the DataVolume with the `ReadWriteMany` access mode and the
-`Block` volume mode. If the StorageClass cannot provision `Block` volumes, for example because its StorageProfile allows
-only the `Filesystem` volume mode, the DataVolume never becomes ready. The virtual machine cannot use the disk, even
-though VMO displays a message that the volume is attached.
+On PaletteAI VM Launchpad versions earlier than TBD, and on VMO pack versions earlier than TBD-PACK, when you hot-plug a
+disk to a running virtual machine and select **Create New Blank Disk**, the VMO UI creates the DataVolume with the
+`ReadWriteMany` access mode and the `Block` volume mode. If the StorageClass cannot provision `Block` volumes, for
+example because its StorageProfile allows only the `Filesystem` volume mode, the DataVolume never becomes ready. The
+virtual machine cannot use the disk, even though VMO displays a message that the volume is attached.
 
 To work around this issue, create the DataVolume first, and then attach it as an existing DataVolume.
 

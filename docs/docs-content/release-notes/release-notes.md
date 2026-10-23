@@ -22,21 +22,23 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
 
-- If you turned on VLAN filtering (`vlanFiltering.enabled`) in an earlier release, review its settings before you
-  upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the `vlanFiltering.env.vlanRange` and
-  `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values without a warning. After the upgrade,
-  the VLAN agent removes VLANs that no NetworkAttachmentDefinition (NAD) references. It also removes NAD VLANs that are
-  outside the range, including VLANs that NAD discovery added in an earlier release. Add every VLAN that your virtual
-  machine networks use to the **VM VLAN Range** before you upgrade. Refer to
-  [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
+- If you turned on **Restrict Allowed VLANs** (`vlanFiltering.enabled`) in an earlier release, review its settings
+  before you upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the
+  `vlanFiltering.env.vlanRange` and `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values
+  without a warning. After the upgrade, the VLAN filtering agent removes VLANs that no Network Attachment Definition
+  (NAD) references. It also removes NAD VLANs that are outside the **VM VLAN Range**, including VLANs that NAD discovery
+  added in an earlier release. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
+  upgrade. The `vlanFiltering.env.nadDiscovery` and `vlanFiltering.env.vlanDesiredStateSync` parameters are deprecated.
+  Refer to [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
 
-- Each appliance node now reserves memory for host services, and etcd and the Kubernetes API server now request memory
-  on each control plane node. This prevents a large virtual machine from taking the memory that the control plane needs.
-  On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about 4 GiB and its allocatable
-  ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods when the Kubelet restarts
-  during the upgrade. Before you upgrade, confirm that each node has room for the reservation. Refer to
+- Nodes on non-FIPS appliances now reserve memory for host services, and etcd and the Kubernetes API server now request
+  memory on each control plane node of every appliance. This prevents a large virtual machine from taking the memory
+  that the control plane needs. On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about
+  4 GiB and its allocatable ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods
+  when the Kubelet restarts during the upgrade. Before you upgrade, confirm that each node has room for the reservation
+  and the new memory requests. Refer to
   [Check Node Memory Before You Upgrade](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md#check-node-memory-before-you-upgrade).
 
 ### Features
@@ -57,9 +59,10 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 - VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
   not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
   the **KubeVirt Configuration** page. KubeVirt 1.9.0 also deprecates the `HotplugVolumes` feature gate in favor of
-  `DeclarativeHotplugVolumes`, which is on by default. VMO includes `HotplugVolumes` in **Feature gates** by default and
-  does not remove it during the upgrade, so remove it after the upgrade. Disk hot-plug keeps working without it. Refer
-  to [KubeVirt Configuration](../vm-management/vm-launchpad/kubevirt-configuration.md).
+  `DeclarativeHotplugVolumes`, which is on by default. VMO still includes `HotplugVolumes` in **Feature gates** by
+  default on both new installations and upgrades, so remove it from **Feature gates**. Disk hot-plug keeps working as
+  long as `DeclarativeHotplugVolumes` stays on. Refer to
+  [Feature Gate Considerations](../vm-management/vm-launchpad/kubevirt-configuration.md#feature-gate-considerations).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
 
