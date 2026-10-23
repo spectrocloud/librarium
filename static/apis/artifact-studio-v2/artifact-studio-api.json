@@ -2384,7 +2384,7 @@
     "paths": {
         "/v2/download/installer/{versionid}/{type}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads one component of a Palette or Vertex installer version. versionid is the installer version id (versions[].id from GET /v2/installers/palette/versions) and identifies the product and variant on its own, so no other selectors are needed. type is the component name (for example zst). Use artifact to download the component (url, the default), its binary signature (signature_bin_url), or its signature file (signature_url). The component links in GET /v2/installers/palette/versions/{version}/binaries already point here. Requires sign-in. Gated and private installers also require your organization to be entitled to one of the installer's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads one component of a Palette or Vertex installer version. versionid is the installer version id (versions[].id from GET /v2/installers/palette/versions) and identifies the product and variant on its own, so no other selectors are needed. type is the component name (for example zst). Use artifact to download the component (url, the default), its binary signature (signature_bin_url), or its signature file (signature_url). The component links in GET /v2/installers/palette/versions/{version}/binaries already point here. Requires a token. Gated and private installers also require your organization to be entitled to one of the installer's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadInstaller",
                 "parameters": [
                     {
@@ -2531,7 +2531,7 @@
         },
         "/v2/download/installer/{versionid}/{type}/{slug}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads one component of a Palette or Vertex installer version. versionid is the installer version id (versions[].id from GET /v2/installers/palette/versions) and identifies the product and variant on its own, so no other selectors are needed. type is the component name (for example zst). Use artifact to download the component (url, the default), its binary signature (signature_bin_url), or its signature file (signature_url). The component links in GET /v2/installers/palette/versions/{version}/binaries already point here. Requires sign-in. Gated and private installers also require your organization to be entitled to one of the installer's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads one component of a Palette or Vertex installer version. versionid is the installer version id (versions[].id from GET /v2/installers/palette/versions) and identifies the product and variant on its own, so no other selectors are needed. type is the component name (for example zst). Use artifact to download the component (url, the default), its binary signature (signature_bin_url), or its signature file (signature_url). The component links in GET /v2/installers/palette/versions/{version}/binaries already point here. Requires a token. Gated and private installers also require your organization to be entitled to one of the installer's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadInstallerWithFilename",
                 "parameters": [
                     {
@@ -2687,7 +2687,7 @@
         },
         "/v2/download/pack/{versionid}/{type}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one pack version: the pack archive (download_url), its signature (signature_bin_url), or its Helm chart (helm_url). versionid is the pack version id (versions[].id in pack catalog responses); a version id is needed because the FIPS, non-FIPS, and per-architecture builds of a pack can share a version number. The download_url, signature_bin_url, and helm_url fields in pack catalog responses already point here. Requires sign-in. Gated and private packs also require your organization to be entitled to one of the pack's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one pack version: the pack archive (download_url), its signature (signature_bin_url), or its Helm chart (helm_url). versionid is the pack version id (versions[].id in pack catalog responses); a version id is needed because the FIPS, non-FIPS, and per-architecture builds of a pack can share a version number. The download_url, signature_bin_url, and helm_url fields in pack catalog responses already point here. Requires a token. Gated and private packs also require your organization to be entitled to one of the pack's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadPack",
                 "parameters": [
                     {
@@ -2825,7 +2825,7 @@
         },
         "/v2/download/pack/{versionid}/{type}/{slug}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one pack version: the pack archive (download_url), its signature (signature_bin_url), or its Helm chart (helm_url). versionid is the pack version id (versions[].id in pack catalog responses); a version id is needed because the FIPS, non-FIPS, and per-architecture builds of a pack can share a version number. The download_url, signature_bin_url, and helm_url fields in pack catalog responses already point here. Requires sign-in. Gated and private packs also require your organization to be entitled to one of the pack's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one pack version: the pack archive (download_url), its signature (signature_bin_url), or its Helm chart (helm_url). versionid is the pack version id (versions[].id in pack catalog responses); a version id is needed because the FIPS, non-FIPS, and per-architecture builds of a pack can share a version number. The download_url, signature_bin_url, and helm_url fields in pack catalog responses already point here. Requires a token. Gated and private packs also require your organization to be entitled to one of the pack's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadPackWithFilename",
                 "parameters": [
                     {
@@ -2972,7 +2972,7 @@
         },
         "/v2/download/profile/ai/{versionid}/{type}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one PaletteAI profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (profileVersionId in PaletteAI profile responses) and is unique on its own. The artifact.url fields in PaletteAI profile responses already point here. Requires sign-in. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one PaletteAI profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (profileVersionId in PaletteAI profile responses) and is unique on its own. The artifact.url fields in PaletteAI profile responses already point here. Requires a token. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadAiProfile",
                 "parameters": [
                     {
@@ -3109,7 +3109,7 @@
         },
         "/v2/download/profile/ai/{versionid}/{type}/{slug}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one PaletteAI profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (profileVersionId in PaletteAI profile responses) and is unique on its own. The artifact.url fields in PaletteAI profile responses already point here. Requires sign-in. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one PaletteAI profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (profileVersionId in PaletteAI profile responses) and is unique on its own. The artifact.url fields in PaletteAI profile responses already point here. Requires a token. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadAiProfileWithFilename",
                 "parameters": [
                     {
@@ -3255,7 +3255,7 @@
         },
         "/v2/download/profile/hub/{versionid}/{type}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one Profiles Hub profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (versions[].id from GET /v2/profiles/hub/catalog); a version id is needed because the FIPS and non-FIPS variants of a profile can share a version number. The download_url and signature_bin_url fields in Profiles Hub catalog responses already point here. Requires sign-in. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one Profiles Hub profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (versions[].id from GET /v2/profiles/hub/catalog); a version id is needed because the FIPS and non-FIPS variants of a profile can share a version number. The download_url and signature_bin_url fields in Profiles Hub catalog responses already point here. Requires a token. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadHubProfile",
                 "parameters": [
                     {
@@ -3392,7 +3392,7 @@
         },
         "/v2/download/profile/hub/{versionid}/{type}/{slug}": {
             "get": {
-                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one Profiles Hub profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (versions[].id from GET /v2/profiles/hub/catalog); a version id is needed because the FIPS and non-FIPS variants of a profile can share a version number. The download_url and signature_bin_url fields in Profiles Hub catalog responses already point here. Requires sign-in. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
+                "description": "Returns a short-lived signed download URL: a 302 redirect by default, or a JSON body {\"url\": \"...\", \"expires_at\": \"...\"} when the request sends Accept: application/json. Downloads a file for one Profiles Hub profile version: the profile archive (download_url) or its signature (signature_bin_url). versionid is the profile version id (versions[].id from GET /v2/profiles/hub/catalog); a version id is needed because the FIPS and non-FIPS variants of a profile can share a version number. The download_url and signature_bin_url fields in Profiles Hub catalog responses already point here. Requires a token. Gated and private profiles also require your organization to be entitled to one of the profile's entitledClasses. The trailing slug is the file name shown in the browser and on error pages; it does not change which file is returned. Errors are returned as the v2 JSON error envelope when the request accepts application/json or application/problem+json, otherwise as an HTML page.",
                 "operationId": "downloadHubProfileWithFilename",
                 "parameters": [
                     {
@@ -3939,7 +3939,7 @@
         },
         "/v2/me": {
             "get": {
-                "description": "Returns the signed-in user's profile, active organization, the organizations they belong to or are invited to, and pending invitations (so invitees can see them without the email link). The active organization is the earliest-joined active membership. If you were invited before you had an account, or your sign-in identity changed, your account is matched by verified email. scope lists the access scopes on this request; capabilities is the cap:* subset of scope, for deciding which features to show in a client (API routes still enforce scopes). Requires sign-in.",
+                "description": "Returns the signed-in user's profile, active organization, the organizations they belong to or are invited to, and pending invitations (so invitees can see them without the email link). The active organization is the earliest-joined active membership. If you were invited before you had an account, or your sign-in identity changed, your account is matched by verified email. scope lists the access scopes on this request; capabilities is the cap:* subset of scope, for deciding which features to show in a client (API routes still enforce scopes). Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "getCurrentUser",
                 "responses": {
                     "200": {
@@ -5262,7 +5262,7 @@
         },
         "/v2/profile-bundles": {
             "get": {
-                "description": "Returns your profile bundles, newest first, with cursor pagination (next, prev, and limit from 1 to 50, default 25). Requires sign-in.",
+                "description": "Returns your profile bundles, newest first, with cursor pagination (next, prev, and limit from 1 to 50, default 25). Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "listProfileBundles",
                 "parameters": [
                     {
@@ -5346,7 +5346,7 @@
                 ]
             },
             "post": {
-                "description": "Creates a draft profile bundle owned by you, with a name, pack_count, pack_size, and a JSON payload. The request body can be at most 1 MiB. Requires sign-in.",
+                "description": "Creates a draft profile bundle owned by you, with a name, pack_count, pack_size, and a JSON payload. The request body can be at most 1 MiB. Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "createProfileBundle",
                 "requestBody": {
                     "content": {
@@ -5419,7 +5419,7 @@
         },
         "/v2/profile-bundles/{id}": {
             "delete": {
-                "description": "Deletes one of your profile bundles by id. Deleting a bundle that is already gone also returns 200 with the id. Requires sign-in.",
+                "description": "Deletes one of your profile bundles by id. Deleting a bundle that is already gone also returns 200 with the id. Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "deleteProfileBundle",
                 "parameters": [
                     {
@@ -5498,7 +5498,7 @@
                 ]
             },
             "get": {
-                "description": "Returns one of your profile bundles by id. Requires sign-in.",
+                "description": "Returns one of your profile bundles by id. Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "getProfileBundle",
                 "parameters": [
                     {
@@ -5577,7 +5577,7 @@
                 ]
             },
             "patch": {
-                "description": "Updates one of your profile bundles. Fields you omit are unchanged; sending payload replaces the whole stored payload (send {} to clear it). Returns 409 if another request changes the bundle at the same time; fetch it and retry. Requires sign-in.",
+                "description": "Updates one of your profile bundles. Fields you omit are unchanged; sending payload replaces the whole stored payload (send {} to clear it). Returns 409 if another request changes the bundle at the same time; fetch it and retry. Requires a token; an API access key acts as the user who owns it (for an organization key, the user who created it).",
                 "operationId": "updateProfileBundle",
                 "parameters": [
                     {
@@ -5737,14 +5737,6 @@
                         }
                     },
                     {
-                        "description": "Customer download token used to include matching private profiles",
-                        "in": "query",
-                        "name": "token",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
                         "description": "Cursor token for the next page",
                         "in": "query",
                         "name": "next",
@@ -5845,14 +5837,6 @@
                         "schema": {
                             "type": "string"
                         }
-                    },
-                    {
-                        "description": "Customer download token used to include matching private profiles",
-                        "in": "query",
-                        "name": "token",
-                        "schema": {
-                            "type": "string"
-                        }
                     }
                 ],
                 "responses": {
@@ -5936,14 +5920,6 @@
                         "in": "path",
                         "name": "version-id",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "Customer download token used to include matching private profiles",
-                        "in": "query",
-                        "name": "token",
                         "schema": {
                             "type": "string"
                         }
@@ -6260,7 +6236,7 @@
         },
         "/v2/profiles/catalog/{catalogid}": {
             "get": {
-                "description": "Returns one profile from the Cluster Profiles catalog by composite id (palette-ai:{sourceId} or profiles-hub:{sourceId}), bare sourceId, or name. The response holds the Profiles Hub details under hub or the PaletteAI details under ai: the same payloads as GET /v2/profiles/hub/catalog/{catalogid} and GET /v2/profiles/ai/{id}. The ai payload includes tags and resource requirements from the first visible profile in the default variant. fips and palette_version apply to Profiles Hub profiles; token applies to PaletteAI profiles. Authentication is optional. Downloading any item requires a token, and gated items also require your organization to be entitled to them.",
+                "description": "Returns one profile from the Cluster Profiles catalog by composite id (palette-ai:{sourceId} or profiles-hub:{sourceId}), bare sourceId, or name. The response holds the Profiles Hub details under hub or the PaletteAI details under ai: the same payloads as GET /v2/profiles/hub/catalog/{catalogid} and GET /v2/profiles/ai/{id}. The ai payload includes tags and resource requirements from the first visible profile in the default variant. fips and palette_version apply to Profiles Hub profiles. Authentication is optional. Downloading any item requires a token, and gated items also require your organization to be entitled to them.",
                 "operationId": "getCatalogProfile",
                 "parameters": [
                     {
@@ -6292,14 +6268,6 @@
                                 "type": "string"
                             },
                             "type": "array"
-                        }
-                    },
-                    {
-                        "description": "Customer download token; applies to PaletteAI profiles",
-                        "in": "query",
-                        "name": "token",
-                        "schema": {
-                            "type": "string"
                         }
                     }
                 ],
@@ -6367,7 +6335,7 @@
         },
         "/v2/profiles/catalog/{catalogid}/{versionid}": {
             "get": {
-                "description": "Returns one version of a Cluster Profiles catalog profile by composite id (or sourceId or name) and version id. The response holds the Profiles Hub version under hub or the PaletteAI profile version under ai. fips and palette_version apply to Profiles Hub profiles; token applies to PaletteAI profiles. Authentication is optional. Downloading any item requires a token, and gated items also require your organization to be entitled to them.",
+                "description": "Returns one version of a Cluster Profiles catalog profile by composite id (or sourceId or name) and version id. The response holds the Profiles Hub version under hub or the PaletteAI profile version under ai. fips and palette_version apply to Profiles Hub profiles. Authentication is optional. Downloading any item requires a token, and gated items also require your organization to be entitled to them.",
                 "operationId": "getCatalogProfileVersion",
                 "parameters": [
                     {
@@ -6408,14 +6376,6 @@
                                 "type": "string"
                             },
                             "type": "array"
-                        }
-                    },
-                    {
-                        "description": "Customer download token; applies to PaletteAI profiles",
-                        "in": "query",
-                        "name": "token",
-                        "schema": {
-                            "type": "string"
                         }
                     }
                 ],
@@ -6975,7 +6935,7 @@
         },
         "/v2/search": {
             "get": {
-                "description": "Searches packs, PaletteAI profiles, and Profiles Hub profiles by prefix match on name, display name, description, tags, and variants. Results include public and gated items, plus private items your organization is entitled to. Customer download tokens (?token= or Authorization: Token) are not accepted here; use GET /v2/profiles/ai/catalog with token to find private PaletteAI profiles. Authentication is optional; with a token, results also include private items your organization is entitled to.",
+                "description": "Searches packs, PaletteAI profiles, and Profiles Hub profiles by prefix match on name, display name, description, tags, and variants. Results include public and gated items, plus private items your organization is entitled to. Authentication is optional; with a token, results also include private items your organization is entitled to.",
                 "operationId": "searchCatalog",
                 "parameters": [
                     {
