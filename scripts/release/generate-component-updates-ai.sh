@@ -182,14 +182,17 @@ RELEASE_COMPONENT_WEEK=${VERSION##*-}
 echo "ℹ️ JIRA ticket $JIRA_TICKET corresponds to year: $RELEASE_COMPONENT_YEAR, week: $RELEASE_COMPONENT_WEEK"
 
 # Extract the start and end versions for the component update from the release notes file. The start version is the last heading in the release notes file that matches the pattern "## .* - Release X.Y.Z" and the end version is the first heading that matches this pattern.
+# Both keep a -patch.N suffix (for example, 4.10.17-patch.5), so the range ends at a patch release when it is the newest.
+# The breaking changes page shows a Component Updates entry to readers on its end version, so dropping the suffix would
+# hide the entry from readers on that patch release.
 RELEASE_COMPONENT_START_VERSION=$(
   grep -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" |
   tail -n1 |
-  sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+  sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/'
 )
 RELEASE_COMPONENT_END_VERSION=$(
   grep -m1 -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" \
-  | sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*$/\1/'
+  | sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*$/\1/'
 )
 
 echo "ℹ️ Release component start version: $RELEASE_COMPONENT_START_VERSION"

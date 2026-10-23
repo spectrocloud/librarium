@@ -38,6 +38,11 @@ concurrency:
   group: preview-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
+  pull-requests: write # Posts or updates a comment on the PR.
+
 jobs:
   build:
     name: Build

@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 22, 2026 - Release 4.10.32
+
+<!-- PATCH RELEASE TICKET: DOC-3340 -->
+<!-- PATCH RELEASE VERSION: 4.10.32 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12317 PEM-12387 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12317 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12387 -->
+
+- Improved the load times of the **Users** and **Teams** tabs on the **Users & Teams** page for tenants with a large
+  number of [users and teams](../user-management/users-and-teams/users-and-teams.md). Palette now retrieves users and
+  teams through the new paginated `POST /v2/users/summary` and `POST /v2/teams/summary` API endpoints. The
+  `POST /v1/users/summary` and `POST /v1/teams/summary` endpoints continue to work as before.
+
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3304 -->
@@ -1690,17 +1706,29 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- release-notes-edge-callout-4.10.0-end -->
 
-:::warning
+#### Breaking Changes {#breaking-changes-edge-4.10.0}
 
-<!-- prettier-ignore -->
-On Edge clusters running Linux kernel 6.19 or later, including Hadron `7.1.3` and Ubuntu `7.0.0-generic`, shared
-Read-Write-Many (RWX) volumes served by the <VersionedLink text="Longhorn CSI" url="/integrations/packs/?pack=csi-longhorn" /> pack
-at versions `1.8.x` through `1.11.2`, or by the Piraeus RWX driver, can fail to open with a remote I/O error. Upgrade
-the Longhorn CSI pack to `1.12.0`. For the affected combinations, symptoms, and a node-level workaround, refer to the
-[shared volumes fail on kernel 7.x](../troubleshooting/edge/edge.md#scenario---shared-volumes-fail-on-kernel-7x-due-to-nfsv41-directory-delegations)
-troubleshooting scenario.
+<!-- https://spectrocloud.atlassian.net/browse/PE-9208 -->
 
-:::
+- The Palette agent now applies a fixed 45-minute time limit to each attempt to download and extract the provider image
+  on an Edge host. The agent does not resume partial downloads, so each new attempt starts from the beginning. On
+  connections with limited bandwidth, attempts can repeatedly reach the limit, which leaves the cluster in the
+  **Provisioning** state or prevents the agent upgrade from completing. If your Edge hosts have limited bandwidth, make
+  the provider image available on the host instead of downloading it. For the symptoms and steps, refer to the
+  [provider image download times out](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections)
+  troubleshooting scenario.
+
+#### Upgrade Notes {#upgrade-notes-edge-4.10.0}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9328 -->
+
+- Upgrade the <VersionedLink text="Longhorn CSI" url="/integrations/packs/?pack=csi-longhorn" /> pack to `1.12.0` if
+  your Edge clusters run Linux kernel 6.19 or later, including Hadron `7.1.3` and Ubuntu `7.0.0-generic`. Because of a
+  [known issue](./known-issues.md) on these kernels, shared Read-Write-Many (RWX) volumes served by Longhorn CSI
+  versions `1.8.x` through `1.11.2`, or by the Piraeus RWX driver, can fail to open with a remote I/O error. For the
+  affected combinations, symptoms, and a node-level workaround, refer to the
+  [shared volumes fail on kernel 7.x](../troubleshooting/edge/edge.md#scenario---shared-volumes-fail-on-kernel-7x-due-to-nfsv41-directory-delegations)
+  troubleshooting scenario.
 
 #### Features
 
