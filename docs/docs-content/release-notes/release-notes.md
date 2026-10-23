@@ -21,16 +21,13 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
-<!-- VERIFY(DOC-3345): Same question as the Upgrade Considerations in #12056: which earlier releases had the separate
-VLAN range settings (engineering cites 4.10.19 and 4.10.20), and whether anyone could have turned VLAN filtering on in
-them. If nobody could have, remove this entry. -->
 
 - If you turned on VLAN filtering (`vlanFiltering.enabled`) in an earlier release, review its settings before you
   upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the `vlanFiltering.env.vlanRange` and
   `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values without a warning. After the upgrade,
-  the VLAN agent removes VLANs that no NetworkAttachmentDefinition (NAD) references, and it stops programming NAD VLANs
-  that are outside the range. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
-  upgrade. Refer to
+  the VLAN agent removes VLANs that no NetworkAttachmentDefinition (NAD) references. It also removes NAD VLANs that are
+  outside the range, including VLANs that NAD discovery added in an earlier release. Add every VLAN that your virtual
+  machine networks use to the **VM VLAN Range** before you upgrade. Refer to
   [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
