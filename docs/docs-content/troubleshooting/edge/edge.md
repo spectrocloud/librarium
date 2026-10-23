@@ -1552,53 +1552,58 @@ After the node reboots, confirm that directory delegations are disabled and rest
 
 3. Confirm that shared volumes mount successfully and the workload reports a healthy state.
 
-## Scenario - Provider Image Download Times Out on Slow Connections
+## Scenario - Provider Image Download Times Out on Slow Network Connections
 
-Edge hosts on slow network connections may fail to download the provider image. The Palette agent version 4.10.0 and
-later limits each attempt to download and extract the provider image to 45 minutes. You cannot configure the limit, and
-each retry starts the download from the beginning. If the connection cannot transfer the image within 45 minutes, the
-attempts keep failing, and the cluster remains in the **Provisioning** state or the upgrade does not complete.
+Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
+provisioning or agent upgrades.
 
-To estimate whether a connection can finish within the limit, divide the image size in bits by 2,700 seconds, the number
-of seconds in 45 minutes. For example, a 3.6 GB image requires a sustained throughput of at least 10.7 Mbps. In
-practice, you need more to account for protocol overhead and other traffic on the connection.
+Starting with Palette agent version 4.10.0, each provider image download and extraction attempt has a fixed time limit
+of 45 minutes. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
+beginning, because it does not currently resume partially completed downloads.
+
+If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
+upgrade may not complete.
 
 ### Debug Steps
 
-1. Issue the following command on the Edge host to review the Palette agent logs for the download attempts.
+1. **Check the Palette agent logs** on the affected Edge host to identify provider image download failures.
 
    ```shell
    journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
    ```
 
-   If the host downloads the image over the network, the logs show `downloading image` followed by
-   `image <image-reference> not found locally`. When an attempt reaches the limit, roughly 45 minutes after it started,
-   the logs show `context deadline exceeded`, `failed to apply archive`, and `failed to apply os upgrade`, and a new
-   attempt starts.
+   Review the logs for the following messages:
 
-2. Provide the provider image to the Edge host so that it does not download the image over the network.
+   - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
+     the provider image over the network.
+   - `context deadline exceeded` indicates that an attempt reached the 45-minute time limit.
+   - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
+     complete.
 
-   - For new Edge hosts, build the provider image into a content bundle and include the content bundle in the Edge
-     Installer ISO. Refer to
-     [Build Installer ISO with Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle)
-     for guidance.
+   If these messages repeat at intervals of approximately 45 minutes, the download is consistently exceeding the time
+   limit.
 
-   - For existing Edge hosts, use the [`palette content build`](../../automation/palette-cli/commands/content.md#build)
-     command on a machine with a fast connection to the registry that hosts the provider image to build a content bundle
-     that contains the provider image. Copy the resulting `.tar.zst` file to the Edge host, and then issue the following
-     command on the host as the root user to extract the bundle into the local bundle store. Keep the `.tar.zst` file
-     extension, because the command uses the extension to detect the compression format.
+2. **Make the provider image available locally** to avoid downloading it over a bandwidth-constrained connection.
 
-     ```shell
-     /opt/spectrocloud/bin/palette-agent content-extract --source <path-to-content-bundle>.tar.zst
-     ```
+   Use [`palette content build`](../../automation/palette-cli/commands/content.md#build) to package the required
+   provider image into a [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
+   on a machine with a fast connection to the image registry. Transfer the generated artifact to the affected Edge host
+   and extract it into the local bundle store. For new Edge hosts, you can instead
+   [include the content bundle in the Edge Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle).
 
-     You cannot use Local UI to upload content bundles to centrally managed Edge hosts. Refer to
-     [Local UI Cluster Management](../../clusters/edge/local-ui/cluster-management/cluster-management.md) for more
-     information.
+   This allows the Palette agent to use the provider image locally instead of downloading it over the network, so the
+   45-minute time limit no longer affects the download.
 
-   - Alternatively, increase the bandwidth available to the Edge host for the duration of the download.
+   Alternatively, increase the network bandwidth available to the Edge host so that the download and extraction can
+   complete within the time limit.
 
-3. After the host loads the content bundle, issue the command from the previous step again. The logs show
-   `found image <image-reference> in local bundle` instead of `not found locally`, and the Palette agent no longer
-   downloads the image over the network.
+3. **Verify that the provider image is available locally.**
+
+   Run the command from step 1 again and review the Palette agent logs. The logs should show the following message.
+
+   ```text
+   found image <image-reference> in local bundle
+   ```
+
+   This confirms that the Palette agent found the image locally instead of starting another network download. Verify
+   that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.

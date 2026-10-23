@@ -1702,11 +1702,11 @@ troubleshooting scenario.
 
 :::warning
 
-Starting with this release, the Palette agent limits each attempt to download the provider image on an Edge host to 45
-minutes. You cannot configure the limit, and each retry starts the download from the beginning. Edge hosts on slow
-connections, for example a 10 Mbps connection with a 3.6 GB provider image, may not finish the download. For symptoms
-and ways to provide the image to the host without downloading it, refer to the
-[provider image download times out](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-connections)
+Starting with this release, the Palette agent applies a fixed 45-minute time limit to each attempt to download and
+extract the provider image on an Edge host. On connections with limited bandwidth, an attempt may not complete within
+that time, and the next attempt starts the download from the beginning. For symptoms and ways to make the provider image
+available to the host without downloading it, refer to the
+[provider image download times out](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections)
 troubleshooting scenario.
 
 :::
