@@ -9,7 +9,7 @@ import Admonition from "@theme/Admonition";
 import Link from "@docusaurus/Link";
 import PartialsComponent from "../PartialsComponent";
 import * as partialsExports from "@site/_partials";
-import { compareVersions, isGreaterVersion, isVersionInRange } from "./VersionUtils";
+import { compareVersions, isComponentUpdatesInRange, isGreaterVersion, isVersionInRange } from "./VersionUtils";
 
 interface VersionOption {
   label: string;
@@ -58,9 +58,7 @@ function getBreakingChangesBetweenVersions(from: string, to: string): string[] {
     const nameFrontMatter = currentPartial.frontMatter.partial_name.toString();
     if (catFrontMatter == "breaking-changes") {
       if (nameFrontMatter.includes("component-updates-")) {
-        const range = nameFrontMatter.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
-        const [rangeFrom, rangeTo] = range.split("-");
-        if (isVersionInRange(rangeFrom, from, to) || isVersionInRange(rangeTo, from, to)) {
+        if (isComponentUpdatesInRange(nameFrontMatter, from, to)) {
           breakingVersionsList.push(nameFrontMatter);
         }
       } else if (isVersionInRange(nameFrontMatter, from, to)) {
