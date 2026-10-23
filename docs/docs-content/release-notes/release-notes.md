@@ -27,6 +27,13 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12367 -->
+
+- When you add a GCP backup location, you can now upload the JSON key file of the service account instead of pasting its
+  contents, which matches the workflow for adding a GCP cloud account. Refer to
+  [Add a Backup Location using Static Credentials](../clusters/cluster-management/backup-restore/add-backup-location-static.md#add-a-gcp-bucket).
+
 #### Bug Fixes
 
 #### Deprecations and Removals
