@@ -48,6 +48,9 @@ refers to the **Admin Kubeconfig** file, and `user kubeconfig` refers to the **K
 failed and denied download attempts. To learn about the two files, refer to
 [Types of Kubeconfig Files](../clusters/cluster-management/kubeconfig.md#kubeconfig-files).
 
+Palette components also download the admin kubeconfig in some situations, such as during cleanup. These entries show
+`cluster-agent` as the user.
+
 To find these entries, set the **Log Type** filter to **Action** and the **Resource Type** filter to **Cluster** or
 **Virtual Cluster**.
 
