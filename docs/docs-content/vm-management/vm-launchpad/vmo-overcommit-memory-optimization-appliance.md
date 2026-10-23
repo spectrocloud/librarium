@@ -402,27 +402,7 @@ environment variable to point to it.
    In this example, the allocatable memory of each node is 4194304 Ki below its capacity. Compare the difference between
    the two values rather than the values themselves, because the difference is the same on every node.
 
-3. Confirm that the etcd and Kubernetes API server pods on each control plane node request `1Gi` and `2Gi` of memory,
-   respectively.
-
-   ```shell
-   kubectl get pods --namespace kube-system --selector component=etcd --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
-   kubectl get pods --namespace kube-system --selector component=kube-apiserver --output jsonpath='{range .items[*]}{.spec.nodeName}{" "}{.spec.containers[0].resources.requests.memory}{"\n"}{end}'
-   ```
-
-   ```shell hideClipboard title="Example Output"
-   cp-1 1Gi
-   cp-2 1Gi
-   cp-3 1Gi
-   cp-1 2Gi
-   cp-2 2Gi
-   cp-3 2Gi
-   ```
-
-   During a Kubernetes version upgrade, these requests might be missing for a short time. They return when the upgrade
-   finishes.
-
-4. Confirm that the Kubelet restart did not reject or evict any pods, and that no container ran out of memory. Both
+3. Confirm that the Kubelet restart did not reject or evict any pods, and that no container ran out of memory. Both
    commands print nothing when no pod is affected.
 
    ```shell
