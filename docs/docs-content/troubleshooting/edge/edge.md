@@ -1551,3 +1551,44 @@ After the node reboots, confirm that directory delegations are disabled and rest
    ```
 
 3. Confirm that shared volumes mount successfully and the workload reports a healthy state.
+
+## Scenario - Provider Image Download Times Out on Slow Connections
+
+Edge hosts on slow network connections may fail to download the provider image. The Palette agent version 4.10.0 and
+later limits each attempt to download and extract the provider image to 45 minutes. You cannot configure the limit, and
+each retry starts the download from the beginning. If the connection cannot transfer the image within 45 minutes, the
+attempts keep failing, and the cluster remains in the **Provisioning** state or the upgrade does not complete.
+
+To estimate whether a connection can finish within the limit, divide the image size in bits by 2,700 seconds, the number
+of seconds in 45 minutes. For example, a 3.6 GB image requires a sustained throughput of at least 10.7 Mbps. In
+practice, you need more to account for protocol overhead and other traffic on the connection.
+
+### Debug Steps
+
+1. Issue the following command on the Edge host to review the Palette agent logs for the download attempts.
+
+   ```shell
+   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
+   ```
+
+   If the host downloads the image over the network, the logs show `downloading image` followed by
+   `image <image-reference> not found locally`. When an attempt reaches the limit, roughly 45 minutes after it started,
+   the logs show `context deadline exceeded`, `failed to apply archive`, and `failed to apply os upgrade`, and a new
+   attempt starts.
+
+2. Provide the provider image to the Edge host so that it does not download the image over the network.
+
+   - For new Edge hosts, build the provider image into a content bundle and include the content bundle in the Edge
+     Installer ISO. Refer to
+     [Build Installer ISO with Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle)
+     for guidance.
+
+   - For existing Edge hosts, build a content bundle that contains the provider image and upload it through Local UI.
+     Refer to [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for
+     guidance.
+
+   - Alternatively, increase the bandwidth available to the Edge host for the duration of the download.
+
+3. After the host loads the content bundle, issue the command from the previous step again. The logs show
+   `found image <image-reference> in local bundle` instead of `not found locally`, and the Palette agent no longer
+   downloads the image over the network.
