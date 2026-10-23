@@ -187,6 +187,32 @@ for branch in $branches; do
       continue
     fi
 
+    # End the current section at any other H2 heading
+    #
+    # What this does:
+    # - Treats an H2 that is neither a release nor a Component Updates heading, such as
+    #   "## October 9, 2026 - PaletteAI VM Launchpad 4.10.20", as a section boundary
+    # - Resets the release and component updates tracking, so a Breaking Changes section under that heading is never
+    #   written to the partial of the release above it
+    #
+    # Notes:
+    # - VM Launchpad breaking changes are left out on purpose. VM Launchpad versions reuse Palette version strings, so
+    #   they cannot share versions.json. The Find Breaking Changes page points readers to the VM Launchpad release notes.
+    if [ "$in_code_section" != "true" ] && echo "$line" | grep -qE '^##[[:space:]]'; then
+      # If we were already processing a file, copy it to the current working directory.
+      if [ "$partial_created" == "true" ]; then
+        persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+        partial_created=false
+      fi
+
+      release_number=""
+      component_updates_identifier=""
+      component_updates_title=""
+      component_updates_range=""
+      in_breaking_changes=false
+      continue
+    fi
+
     # Detect component updates version range
     #
     # What this does:
