@@ -54,9 +54,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-6925 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9863 -->
 
-- Palette and Local UI now display a warning when you create an Edge cluster with overlay networking turned off, because
-  IP address changes in a DHCP network can cause cluster instability. Refer to
-  [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network).
+- Palette and Local UI now display a warning when you create an Edge cluster without an overlay network, because IP
+  address changes in a Dynamic Host Configuration Protocol (DHCP) network can cause cluster instability. Refer to
+  [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
+  for guidance on when to enable an overlay network.
 
 #### Bug Fixes
 
