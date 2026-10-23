@@ -13,9 +13,100 @@ tags: ["release-notes"]
 
 ## October 23, 2026 - PaletteAI VM Launchpad TBD {#vm-launchpad-tbd}
 
-<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-TBD -->
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3345 -->
 
 This release delivers version TBD of the PaletteAI VM Launchpad appliance, which runs on Palette TBD.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-tbd}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
+
+- If you turned on **Restrict Allowed VLANs** (`vlanFiltering.enabled`) in an earlier release, review its settings
+  before you upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the
+  `vlanFiltering.env.vlanRange` and `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values
+  without a warning. After the upgrade, the VLAN filtering agent removes VLANs that no Network Attachment Definition
+  (NAD) references. It also removes NAD VLANs that are outside the **VM VLAN Range**, including VLANs that NAD discovery
+  added in an earlier release. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
+  upgrade. The `vlanFiltering.env.nadDiscovery` and `vlanFiltering.env.vlanDesiredStateSync` parameters are deprecated.
+  Refer to [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
+
+- Nodes on non-FIPS appliances now reserve memory for host services, and etcd and the Kubernetes API server now request
+  memory on each control plane node of every appliance. This prevents a large virtual machine from taking the memory
+  that the control plane needs. On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about
+  4 GiB and its allocatable ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods
+  when the Kubelet restarts during the upgrade. Before you upgrade, confirm that each node has room for the reservation
+  and the new memory requests. Refer to
+  [Check Node Memory Before You Upgrade](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md#check-node-memory-before-you-upgrade).
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-952 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
+
+- PaletteAI VM Launchpad now supports VLAN filtering on Linux Bridge networks. Virtual machines receive only the VLANs
+  that their NADs assign, and only when the **VM VLAN Range** permits them. The appliance protects the VLANs that the
+  nodes use for their own traffic, and the **Networks** page shows a **VLAN filtering** panel when a node has a problem.
+  Refer to [Bridge VLAN Filtering](../vm-management/vm-launchpad/infrastructure/networking.md#bridge-vlan-filtering).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1188 -->
+
+- VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
+  not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
+  the **KubeVirt Configuration** page. KubeVirt 1.9.0 also deprecates the `HotplugVolumes` feature gate in favor of
+  `DeclarativeHotplugVolumes`, which is on by default. VMO still includes `HotplugVolumes` in **Feature gates** by
+  default on both new installations and upgrades, so remove it from **Feature gates**. Disk hot-plug keeps working as
+  long as `DeclarativeHotplugVolumes` stays on. Refer to
+  [Feature Gate Considerations](../vm-management/vm-launchpad/kubevirt-configuration.md#feature-gate-considerations).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
+
+- VMO now uses Containerized Data Importer (CDI) 1.66.1, which fixes importing a disk image to a DataVolume on a block
+  device with a 4K sector size.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1322 -->
+
+- The **Forwarding Token** in the **Logs** section of the **Metrics and Logs** page now accepts a single `Key=Value`
+  header, so you can forward logs to Datadog (`DD-API-KEY=<datadog-api-key>`), New Relic (`api-key=<license-key>`), or
+  Grafana Cloud (`Authorization=Basic <credentials>`). Only the **Metrics** section accepts more than one
+  comma-separated `Key=Value` pair. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1335 -->
+
+- Applied critical security fixes to improve the appliance's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1317 -->
+
+- Fixed an issue that caused a blank disk hot-plugged to a running virtual machine to always use the `ReadWriteMany`
+  access mode and the `Block` volume mode. On storage that allows only the `Filesystem` volume mode, the DataVolume
+  never became ready. The **Create New Blank Disk** form now has **Access Mode** and **Volume Mode** settings. **Access
+  Mode** defaults to `ReadWriteMany`, and **Volume Mode** defaults to **Auto (from StorageProfile)**, which uses the
+  volume mode from the StorageProfile of the StorageClass.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1333 -->
+
+- Fixed an issue that caused a DataVolume to show the **Unknown** phase, with no reason, when its PersistentVolumeClaim
+  (PVC) could not be provisioned, such as when the storage backend was full or offline. The DataVolume now shows a
+  warning with the reason, and its details list the DataVolume conditions and the PVC events. Uploads to a DataVolume in
+  this state now fail with the reason instead of timing out after 2 minutes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1305 -->
+
+- Fixed an issue that caused the confirmation dialog to grow taller than the browser window when you deleted a resource
+  that is in use, such as a Portworx StorageClass with attached DataVolumes. This cut off the warning, the list of
+  attached resources, and the **OK** button. The dialog now fits the window, and long lists scroll.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1279 -->
+
+- Fixed an issue that caused long error messages to overflow their notification and hide its close button. Error
+  notifications now also stay visible for 5 seconds.
 
 ## October 16, 2026 - Component Updates {#component-updates-2026-42}
 
