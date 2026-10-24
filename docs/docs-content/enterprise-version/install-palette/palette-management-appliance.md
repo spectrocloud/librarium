@@ -14,7 +14,7 @@ ships as a slim **Appliance ISO** and a separate **Content bundle**. You boot ea
 upload the content bundle to the leader host after you link the hosts.
 
 This guide refers to the machines that you install Palette on as hosts. When you create the management cluster, each
-host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on edge
+host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on Edge
 devices, these machines are also known as Edge hosts.
 
 After you install Palette, you upload pack bundles to the internal Zot registry or an external registry. You use these
