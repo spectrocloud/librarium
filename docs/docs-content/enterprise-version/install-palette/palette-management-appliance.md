@@ -273,9 +273,14 @@ component.
 | **CSI**        | Piraeus                                       | :x:                | :white_check_mark: |
 | **Registry**   | Zot                                           | :x:                | :white_check_mark: |
 
-Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. For hosts with Secure Boot,
-the DRBD Compile Mode option must be set to `shipped_modules`. For how the module is loaded, refer to
-[Piraeus CSI](../../integrations/piraeus-csi.mdx#drbd-kernel-module-loading).
+<!-- prettier-ignore-start -->
+
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. On hosts with Secure Boot
+enabled, keep the **DRBD Compile Mode** option set to `shipped_modules`. For more information about how each mode loads
+the module, refer to the **Additional Details** tab of the
+<VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi&tab=custom#drbd-kernel-module-loading" /> pack.
+
+<!-- prettier-ignore-end -->
 
 Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
 of each component as they might be updated between releases.
