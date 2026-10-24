@@ -24,18 +24,8 @@ partial_name: installation-steps-prereqs
 
     - The disk used for installation must be 300 GB minimum and 500 GB is recommended. This disk is used for the Appliance ISO stack.
 
-      <details>
-
-      <summary> Prepare the installation disk </summary>
-
       You select the installation disk in the Palette Edge Interactive Installer, as described in
       [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer).
-
-      :::warning
-
-      On legacy BIOS systems, the firmware attempts to boot devices in the order listed in the BIOS screen. To boot from the installed OS, the selected disk must be either the first device in the BIOS boot order or the only bootable device.
-
-      :::
 
       If there are any partitions on the device you plan to use for the installation, you must delete them. For example, if the device is `/dev/sda`, issue the following command to delete all partitions on the device.
 
@@ -49,7 +39,11 @@ partial_name: installation-steps-prereqs
 
       :::
 
-      </details>
+      :::warning
+
+      On legacy BIOS systems, the firmware attempts to boot devices in the order listed in the BIOS screen. To boot from the installed OS, the selected disk must be either the first device in the BIOS boot order or the only bootable device.
+
+      :::
 
     - The second disk, which is used for the storage pool, must be at least 500 GB. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
