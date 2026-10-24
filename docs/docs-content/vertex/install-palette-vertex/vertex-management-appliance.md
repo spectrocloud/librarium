@@ -10,8 +10,8 @@ sidebar_position: 20
 ---
 
 The VerteX Management Appliance is a solution for installing Palette VerteX on your infrastructure. The appliance ships
-as a slim **Appliance ISO** that is used to boot your host along with a separate **Content bundle** that gets uploaded
-to the host.
+as a slim **Appliance ISO** and a separate **Content bundle**. You boot each host from the Appliance ISO, and then
+upload the content bundle to the leader host after you link the hosts.
 
 This guide refers to the machines that you install Palette VerteX on as hosts. When you create the management cluster,
 each host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on edge
