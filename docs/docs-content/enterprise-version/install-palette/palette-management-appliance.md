@@ -53,13 +53,19 @@ Follow the instructions to install Palette using the Palette Management Applianc
 
 Installing Palette consists of the following tasks.
 
-- [Download the Artifacts](#download-the-artifacts)
-- [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer)
-- [Configure Hosts](#configure-hosts)
-- [Link Hosts](#link-hosts)
-- [Upload Content Bundle to the Leader Host](#upload-content-bundle-to-the-leader-host)
-- [Create the Management Cluster](#create-the-management-cluster)
-- [Log In to the System Console](#log-in-to-the-system-console)
+1. [Download the Artifacts](#download-the-artifacts)
+
+2. [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer)
+
+3. [Configure Hosts](#configure-hosts)
+
+4. [Link Hosts](#link-hosts)
+
+5. [Upload Content Bundle to the Leader Host](#upload-content-bundle-to-the-leader-host)
+
+6. [Create the Management Cluster](#create-the-management-cluster)
+
+7. [Log In to the System Console](#log-in-to-the-system-console)
 
 #### Download the Artifacts
 
