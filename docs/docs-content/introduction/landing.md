@@ -7,11 +7,7 @@ hide_table_of_contents: true
 slug: /
 ---
 
-<AskAI />
-
-Use this page to find documentation for all Spectro Cloud products. Start with what you want to run, and then choose the
-card that matches how and where you run it. _Air-gapped_ means you can install and operate a product without an internet
-connection.
+<AskAI placeholder="Ask AI about Spectro Cloud products..." />
 
 <!-- vale off -->
 
