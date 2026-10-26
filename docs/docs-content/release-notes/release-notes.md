@@ -83,9 +83,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12373 -->
 
-- Sorting the Edge hosts grid view by a column now orders all Edge hosts, so the order continues across pages instead of
-  restarting on each page. This applies to the **Edge Hosts** tab and to the grid view that appears when you create an
-  Edge cluster or add Edge hosts to an existing cluster. Refer to
+- When you sort the Edge host grid view by a column, Palette now orders all Edge hosts, so the order continues across
+  pages instead of restarting on each page. This applies to the **Edge Hosts** tab and to the grid view that appears
+  when you create an Edge cluster or add Edge hosts to an existing cluster. Refer to
   [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) for more information.
 
 #### Bug Fixes
