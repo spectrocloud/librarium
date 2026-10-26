@@ -36,9 +36,10 @@ tags: ["release-notes"]
     response and the `UserPatchPathNotAllowed` error code. The `move` and `copy` operations fail with an HTTP 400
     response and the `UserPatchOpNotAllowed` error code.
 
-  - On self-hosted Palette and Palette VerteX, reading another user's activation link now requires the `user.create`
-    permission. Requests from users without this permission fail with an HTTP 403 response. Reading your own activation
-    link is unchanged.
+  - On self-hosted Palette and Palette VerteX, `GET /v1/users/{uid}/activationlink` now requires the `user.create`
+    permission to read another user's activation link. Requests from users without this permission fail with an HTTP 403
+    response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
+    has the `user.create` permission.
 
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
