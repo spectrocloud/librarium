@@ -57,7 +57,18 @@ partial_name: aws-deployment-policy
         "ec2:DescribeInstances",
         "ec2:DescribeVolumes",
         "ec2:DetachVolume",
-        "ec2:ModifyVolume"
+        "ec2:ModifyVolume",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:UpdateAssumeRolePolicy",
+        "iam:GetPolicyVersion",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:ListStackResources",
+        "cloudformation:GetTemplate",
+        "cloudformation:ContinueUpdateRollback"
       ],
       "Resource": "*"
     }

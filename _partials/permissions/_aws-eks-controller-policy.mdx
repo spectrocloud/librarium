@@ -56,7 +56,22 @@ partial_name: aws-eks-controller-policy
         "iam:DeleteOpenIDConnectProvider",
         "iam:ListOpenIDConnectProviders",
         "iam:UpdateOpenIDConnectProviderThumbprint",
-        "iam:GetOpenIDConnectProvider"
+        "iam:GetOpenIDConnectProvider",
+        "iam:TagOpenIDConnectProvider"
+      ],
+      "Resource": ["*"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "eks:CreateAccessEntry",
+        "eks:DeleteAccessEntry",
+        "eks:DescribeAccessEntry",
+        "eks:UpdateAccessEntry",
+        "eks:ListAccessEntries",
+        "eks:AssociateAccessPolicy",
+        "eks:DisassociateAccessPolicy",
+        "eks:ListAssociatedAccessPolicies"
       ],
       "Resource": ["*"],
       "Effect": "Allow"
