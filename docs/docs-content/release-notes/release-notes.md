@@ -21,6 +21,34 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12191 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12377 -->
+
+- To improve security, Palette now enforces new permission and credential checks on the registry APIs. Automation that
+  calls the following endpoints must use a principal that holds the required permission. Otherwise, the request fails
+  with an authorization error.
+
+  | API                                                                     | Required permission                                                                                     |
+  | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+  | `GET /v1/registries/oci/{uid}`                                          | `packRegistry.get` on the registry, and read permission on the cluster if the request sets `clusterUid` |
+  | `GET /v1/registries/metadata`                                           | `packRegistry.list`                                                                                     |
+  | `POST /v1/registries/pack/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+  | `POST /v1/registries/helm/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+  | `POST /v1/registries/oci/basic/validate` with a saved password or token | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+
+  `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
+
+  Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
+  the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
+  HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code.
+
+  Palette also no longer validates a saved private Helm registry with its saved credentials, even for a principal with
+  `packRegistry.update`. The `POST /v1/registries/helm/validate` request fails with an HTTP 400 response and the
+  `HelmRegistryValidationForbidden` error code. Enter the credentials in the request instead.
+
+  Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
+  a masked value. A masked value indicates that the secret is set.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
 
@@ -510,8 +538,10 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11997 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12202 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12377 -->
 
-- Palette now enforces authorization checks on five APIs that previously required no permission. Automation that calls
+- Palette now enforces authorization checks on nine APIs that previously required no permission. Automation that calls
   these endpoints must use a principal that holds the required permission. Otherwise, the request fails with an
   authorization error.
 
@@ -519,7 +549,11 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   | ----------------------------------------------------- | ---------------------------------------- |
   | `PATCH /v1/cloudaccounts/{uid}/geoLocation`           | Update permission on the cloud account   |
   | `POST /v1/spectroclusters/{uid}/workloads/sync`       | Update permission on the cluster         |
+  | `GET /v1/spectroclusters/{uid}/edge-native/edgeHosts` | Get permission on the cluster            |
   | `GET /v1/users/assets/vsphere/dnsMapping`             | Get permission on the DNS mapping object |
+  | `GET /v1/users/assets/vsphere/dnsMappings`            | List permission on DNS mapping objects   |
+  | `GET /v1/registries/oci/summary`                      | List permission on registries            |
+  | `GET /v1/packs/{packName}/registries/{registryUid}`   | Get permission on the registry           |
   | `GET /v1/tenants/{tenantUid}/subscriptions/metadata`  | Tenant Admin role on the tenant          |
   | `GET /v1/tenants/{tenantUid}/subscriptions/aws/{uid}` | Tenant Admin role on the tenant          |
 
