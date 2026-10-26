@@ -18,6 +18,10 @@ concurrency:
   group: image-${{ github.ref }}
   cancel-in-progress: true
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
   run-ci:
     runs-on: ubuntu-latest
@@ -41,6 +45,9 @@ jobs:
       labels: docbot
     # Skip draft PRs here as well
     if: ${{ !github.event.pull_request.draft }}
+    permissions:
+      contents: write # The action commits compressed images with this token.
+      pull-requests: write # The action comments its results on the PR.
     steps:
       - name: Retrieve Credentials
         id: import-secrets

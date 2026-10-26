@@ -10,6 +10,178 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Provider Image Download Times Out on Slow Network Connections
+
+Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
+provisioning or agent upgrades.
+
+Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit
+of 45 minutes. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
+beginning, because it does not resume partially completed downloads.
+
+If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
+upgrade may not complete.
+
+### Debug Steps
+
+1. Check the Palette agent logs on the affected Edge host to identify provider image download failures.
+
+   ```shell
+   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
+   ```
+
+   Review the logs for the following messages:
+
+   - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
+     the provider image over the network.
+   - `context deadline exceeded` indicates that an attempt reached the 45-minute time limit.
+   - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
+     complete.
+
+   If these messages repeat at intervals of approximately 45 minutes, the download is consistently exceeding the time
+   limit.
+
+2. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
+
+   Use [`palette content build`](../../automation/palette-cli/commands/content.md#build) to package the required
+   provider image into a [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
+   on a machine with a fast connection to the image registry. Transfer the content bundle to the affected Edge host and
+   extract it into the local bundle store. For new Edge hosts, you can instead
+   [include the content bundle in the Edge Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#build-content-bundle).
+
+   The Palette agent then uses the local provider image instead of downloading it, so the time limit no longer applies.
+
+3. Verify that the provider image is available locally.
+
+   Run the command from step 1 again and review the Palette agent logs. The logs should show the following message.
+
+   ```text hideClipboard title="Example Output"
+   found image <image-reference> in local bundle
+   ```
+
+   This confirms that the Palette agent found the image locally instead of starting another network download. Verify
+   that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
+
+If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host so
+that the download and extraction complete within the time limit.
+
+## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
+
+On Palette versions earlier than 4.10.25, a reset removes `kube-vip.tar`, the kube-vip image archive, from
+[agent mode](../../deployment-modes/agent-mode/agent-mode.md) Edge hosts. A reset occurs, for example, when you delete a
+cluster, remove a host from its node pool, or reset the host. When you add a reset host to a new cluster, the Palette
+agent cannot import the kube-vip image, so kube-vip does not start. As a result, the control plane virtual IP (VIP)
+address of the cluster is not claimed, the remaining hosts cannot join the cluster, and cluster provisioning does not
+complete. Palette does not report an error, but the Palette agent logs the warning
+`failed to link kube-vip image tar after retries`.
+
+This issue does not affect hosts that you have not reset or hosts that you reset on Palette version 4.10.25 or later.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+2. Check whether the kube-vip image archive is present.
+
+   ```shell
+   sudo ls --format=long --dereference /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+   If the output lists the file, this host is not affected, and you can continue with the next Edge host in the cluster.
+   If the output contains `No such file or directory`, continue to the next step.
+
+3. Find the version directory of the active Palette agent.
+
+   ```shell
+   sudo readlink /opt/spectrocloud/bin/stylus-agent
+   ```
+
+   The version directory is the path segment that follows `/opt/spectrocloud/updates/`, such as `4.10.4` in the
+   following example output.
+
+   ```shell hideClipboard title="Example Output"
+   /opt/spectrocloud/updates/4.10.4/opt/spectrocloud/bin/stylus-agent
+   ```
+
+   If the command does not return any output, the Palette agent on this host has not been upgraded since you installed
+   it, and the reset removed the only copy of the archive. In this case, contact Spectro Cloud support at
+   [support@spectrocloud.com](mailto:support@spectrocloud.com). To avoid this on other hosts whose Palette agent has not
+   been upgraded, back up the archive before you reset them. Refer to
+   [Back Up the kube-vip Image Archive before a Reset](#back-up-the-kube-vip-image-archive-before-a-reset).
+
+4. Copy the kube-vip image archive from the version directory.
+
+   ```shell
+   sudo cp --remove-destination /opt/spectrocloud/updates/<version>/usr/local/spectrocloud/content/images/kube-vip.tar /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+   Replace `<version>` with the version directory from step 3.
+
+5. Restart the Palette agent service.
+
+   ```shell
+   sudo systemctl restart spectro-stylus-agent.service
+   ```
+
+6. Confirm that the kube-vip image archive is present. The output lists the file.
+
+   ```shell
+   sudo ls --format=long --dereference /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+7. Repeat steps 1 - 6 on each Edge host in the cluster.
+
+The copied archive persists after a Palette agent upgrade, but not after another reset. If you reset the host again on a
+Palette version earlier than 4.10.25, repeat these steps.
+
+### Back Up the kube-vip Image Archive before a Reset
+
+On Palette versions earlier than 4.10.25, a reset removes the only copy of the kube-vip image archive from an agent mode
+Edge host whose Palette agent has not been upgraded since you installed it. Back up the archive before you reset the
+host, and restore it before you add the host to a new cluster.
+
+1. Establish an SSH connection to the Edge host.
+
+2. Check whether the Palette agent on the host has been upgraded since you installed it.
+
+   ```shell
+   sudo readlink /opt/spectrocloud/bin/stylus-agent
+   ```
+
+   If the command returns a path, the agent has been upgraded, and its version directory keeps a copy of the archive.
+   You do not need a backup, but after the reset, restore the archive from the version directory. Refer to
+   [Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset](#scenario---agent-mode-edge-hosts-do-not-claim-the-control-plane-vip-after-a-reset).
+   If the command does not return any output, continue to the next step.
+
+3. Back up the archive to a location that the reset does not remove.
+
+   ```shell
+   sudo cp /usr/local/spectrocloud/content/images/kube-vip.tar /opt/spectrocloud/kube-vip.tar.backup
+   ```
+
+4. Delete the cluster, remove the host from its node pool, or reset the host. After the reset completes, establish an
+   SSH connection to the Edge host again.
+
+5. Before you add the host to a new cluster, restore the archive.
+
+   ```shell
+   sudo cp --remove-destination /opt/spectrocloud/kube-vip.tar.backup /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+6. Restart the Palette agent service.
+
+   ```shell
+   sudo systemctl restart spectro-stylus-agent.service
+   ```
+
+7. Confirm that the kube-vip image archive is present. The output lists the file.
+
+   ```shell
+   sudo ls --format=long --dereference /usr/local/spectrocloud/content/images/kube-vip.tar
+   ```
+
+Keep the backup file. The reset does not remove it, so you can repeat steps 4 - 7 each time you reset the host.
+
 ## Scenario - Custom systemd Drop-In Files Do Not Apply After Migration to systemd Extensions
 
 After you move a PXK-E Edge cluster to

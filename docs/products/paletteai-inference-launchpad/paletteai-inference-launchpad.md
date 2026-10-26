@@ -122,7 +122,8 @@ Whatever brought you here, these are the fastest paths in.
   [Upload a model](./how-to-guides/upload-a-model.md) • [Bring your own model](./how-to-guides/bring-your-own-model.md)
   • [Deploy your first model](./how-to-guides/deploy-a-model.md)
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
-  [Model Placement](./explanation/model-placement.md) • [Vision Preprocessing](./explanation/vision-preprocessing.md) •
+  [Model Placement](./explanation/model-placement.md) • [GPU Sharing](./explanation/gpu-sharing.md) •
+  [Vision Preprocessing](./explanation/vision-preprocessing.md) •
   [Clients and Quotas](./explanation/clients-and-quotas.md) • [Routing Behavior](./explanation/routing-behavior.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •
@@ -131,8 +132,12 @@ Whatever brought you here, these are the fastest paths in.
 - **Operate day to day**: [Manage cluster infrastructure](./how-to-guides/manage-cluster-infrastructure.md) •
   [Upgrade the platform](./how-to-guides/upgrade-the-platform.md) •
   [Replace a model](./how-to-guides/replace-a-model.md) •
+  [Share a GPU between models](./how-to-guides/share-a-gpu-between-models.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Configure semantic routing](./how-to-guides/configure-semantic-routing.md) •
+  [Create a workspace](./how-to-guides/create-a-workspace.md) •
+  [Manage workspace members](./how-to-guides/manage-workspace-members.md) •
+  [Manage users](./how-to-guides/manage-users.md) • [Manage groups](./how-to-guides/manage-groups.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
   [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •

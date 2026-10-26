@@ -5,6 +5,7 @@ set -euo pipefail
 
 # Import utility functions
 source scripts/release/utilities.sh
+source scripts/release/component-updates-packs.sh
 source .env
 
 JIRA_DOMAIN=https://spectrocloud.atlassian.net/
@@ -181,45 +182,90 @@ RELEASE_COMPONENT_WEEK=${VERSION##*-}
 echo "ℹ️ JIRA ticket $JIRA_TICKET corresponds to year: $RELEASE_COMPONENT_YEAR, week: $RELEASE_COMPONENT_WEEK"
 
 # Extract the start and end versions for the component update from the release notes file. The start version is the last heading in the release notes file that matches the pattern "## .* - Release X.Y.Z" and the end version is the first heading that matches this pattern.
+# Both keep a -patch.N suffix (for example, 4.10.17-patch.5), so the range ends at a patch release when it is the newest.
+# The breaking changes page shows a Component Updates entry to readers on its end version, so dropping the suffix would
+# hide the entry from readers on that patch release.
 RELEASE_COMPONENT_START_VERSION=$(
   grep -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" |
   tail -n1 |
-  sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+  sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/'
 )
 RELEASE_COMPONENT_END_VERSION=$(
   grep -m1 -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" \
-  | sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*$/\1/'
+  | sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*$/\1/'
 )
 
 echo "ℹ️ Release component start version: $RELEASE_COMPONENT_START_VERSION"
 echo "ℹ️ Release component end version: $RELEASE_COMPONENT_END_VERSION"
 
-# Fetch linked issues, excluding PRM- tickets, Platone and Pack Updates tickets
-LINKED_ISSUES=()
+COMPONENT_UPDATES_WORK_DIR="$(mktemp -d)"
+trap 'rm -rf "$COMPONENT_UPDATES_WORK_DIR"' EXIT
+
+# Fetch the ticket's issue links once. The prose issues for Super, the [Platone] tasks for the packs
+# table, and the pack epics are all derived from this response.
+TICKET_LINKS=$(fetch_ticket_links "$JIRA_TICKET")
+
+# Linked issues that can carry prose: everything except PRM- tickets, Platone tasks, and issues
+# closed as Not a Bug.
+LINK_CANDIDATES=()
 while IFS= read -r issue; do
-  LINKED_ISSUES+=("$issue")
+  [[ -n "$issue" ]] && LINK_CANDIDATES+=("$issue")
 done < <(
-  curl --fail-with-body \
-    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=issuelinks" \
-    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
-    --header "Accept: application/json" \
-  | jq -r '
-      .fields.issuelinks[]
-      | (.outwardIssue // .inwardIssue)
-      | select(.key | startswith("PRM-") | not)
-      | select(.fields.summary | contains("Pack Updates") | not)
-      | select(.fields.summary | contains("[Platone]") | not)
-      | select(.fields.status.name | ascii_downcase != "not a bug")
-      | .key
-    '
+  jq -r '
+    .[]
+    | select(.key | startswith("PRM-") | not)
+    | select(.summary | contains("[Platone]") | not)
+    | select(.status != "not a bug")
+    | .key
+  ' <<< "$TICKET_LINKS"
 )
 
-if (( ${#LINKED_ISSUES[@]} == 0 )); then
+# "<key>\t<summary>" for every [Platone] task the packs table is built from: the tasks linked to the
+# ticket directly, plus the [Platone] children of every linked epic (below).
+PLATONE_ROWS_FILE="${COMPONENT_UPDATES_WORK_DIR}/platone-rows.tsv"
+jq -r '
+  .[]
+  | select(.summary | contains("[Platone]"))
+  | select(.status != "not a bug")
+  | [.key, .summary]
+  | @tsv
+' <<< "$TICKET_LINKS" > "$PLATONE_ROWS_FILE"
+
+# Any linked epic can hold the week's [Platone] tasks, not only the one named "Pack Updates". In
+# week 2026-42, PAC-4871 "Kubernetes updates" held the kubernetes-rke2 and edge-k8s builds. Read the
+# [Platone] children of every linked issue into the packs table. DOC-3336.
+#
+# The "Pack Updates" epic stays out of the Super input, as before: the packs table covers it. Any other
+# pack epic still goes to Super, because it usually earns its own bullet, and its non-SHI task
+# summaries go with it so that the bullet names the versions the table lists.
+PACK_UPDATES_FILE="${COMPONENT_UPDATES_WORK_DIR}/pack-updates-epics.txt"
+PACK_EPIC_TASKS_FILE="${COMPONENT_UPDATES_WORK_DIR}/pack-epic-tasks.tsv"
+jq -r '.[] | select(.summary | contains("Pack Updates")) | .key' <<< "$TICKET_LINKS" > "$PACK_UPDATES_FILE"
+: > "$PACK_EPIC_TASKS_FILE"
+if (( ${#LINK_CANDIDATES[@]} > 0 )); then
+  CHILDREN=$(fetch_platone_children "${LINK_CANDIDATES[@]}")
+  if [[ -n "$CHILDREN" ]]; then
+    cut -f1,2 <<< "$CHILDREN" >> "$PLATONE_ROWS_FILE"
+    awk -F'\t' '$2 !~ / [^ ]*-shi[^ ]* · week / { print $3 "\t" $2 }' <<< "$CHILDREN" | sort -u > "$PACK_EPIC_TASKS_FILE"
+  fi
+fi
+sort -t $'\t' -k1,1 -u -o "$PLATONE_ROWS_FILE" "$PLATONE_ROWS_FILE"
+
+LINKED_ISSUES=()
+for issue in ${LINK_CANDIDATES[@]+"${LINK_CANDIDATES[@]}"}; do
+  if grep -qxF "$issue" "$PACK_UPDATES_FILE"; then
+    report_add epics "$issue (Pack Updates)"
+    continue
+  fi
+  LINKED_ISSUES+=("$issue")
+done
+
+if (( ${#LINKED_ISSUES[@]} == 0 )) && [[ ! -s "$PLATONE_ROWS_FILE" ]]; then
   echo "❌  No linked issues found for ticket: $JIRA_TICKET" >&2
   exit 1
 fi
 
-echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]}"
+echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]:-}"
 
 # On a release run the block lands inside the release section, which the release-notes-bug-fixes
 # skill and the writers usually fill first. A pack or Palette CLI fix often carries the release
@@ -231,7 +277,7 @@ if [[ "$IS_RELEASE_RUN" == true ]]; then
   if grep -qF "$RELEASE_ANCHOR" "$RELEASE_NOTES_FILE"; then
     DOCUMENTED_KEYS=$(release_section_documented_keys "$RELEASE_NOTES_FILE" "$RELEASE_ANCHOR" "$JIRA_TICKET")
     UNDOCUMENTED_ISSUES=()
-    for issue in "${LINKED_ISSUES[@]}"; do
+    for issue in ${LINKED_ISSUES[@]+"${LINKED_ISSUES[@]}"}; do
       if grep -qxF "$issue" <<< "$DOCUMENTED_KEYS"; then
         echo "ℹ️ Skipping $issue: the $RELEASE_VERSION release section already documents it."
       else
@@ -244,76 +290,14 @@ if [[ "$IS_RELEASE_RUN" == true ]]; then
   fi
 fi
 
-# Fetch only Platone tickets to create the packs list in the release notes
-PLATONE_ISSUES=()
-while IFS= read -r issue; do
-  PLATONE_ISSUES+=("$issue")
-done < <(
-  curl --fail-with-body \
-    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=issuelinks" \
-    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
-    --header "Accept: application/json" \
-  | jq -r '
-      .fields.issuelinks[]
-      | (.outwardIssue // .inwardIssue)
-      | select(.fields.summary | contains("[Platone]"))
-      | select(.fields.status.name | ascii_downcase != "not a bug")
-      | .key
-    '
-)
+# Report the pack epics that still go to Super, now that the release filter has run.
+for issue in ${LINKED_ISSUES[@]+"${LINKED_ISSUES[@]}"}; do
+  if cut -f1 "$PACK_EPIC_TASKS_FILE" | grep -qxF "$issue"; then
+    report_add epics "$issue (also sent to Super with its task summaries)"
+  fi
+done
 
-# Find the "Pack Updates" ticket linked to the component update ticket.
-PACK_UPDATES_TICKET=$(
-  curl --fail-with-body \
-    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=issuelinks" \
-    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
-    --header "Accept: application/json" \
-  | jq -r '
-      [ .fields.issuelinks[]
-        | (.outwardIssue // .inwardIssue)
-        | select(.fields.summary | contains("Pack Updates"))
-        | select(.fields.status.name | ascii_downcase != "not a bug")
-        | .key
-      ] | first // empty
-    '
-)
-
-# Fetch the child tickets of the Pack Updates ticket whose summary contains
-# "[Platone]" and add them to the Platone issues list, then dedupe.
-if [[ -n "$PACK_UPDATES_TICKET" ]]; then
-  echo "ℹ️ Pack Updates ticket linked to $JIRA_TICKET: $PACK_UPDATES_TICKET"
-  while IFS= read -r issue; do
-    [[ -n "$issue" ]] && PLATONE_ISSUES+=("$issue")
-  done < <(
-    curl --fail-with-body \
-      --get \
-      --url "${JIRA_DOMAIN}/rest/api/3/search/jql" \
-      --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
-      --header "Accept: application/json" \
-      --data-urlencode "jql=parent = ${PACK_UPDATES_TICKET}" \
-      --data-urlencode "fields=summary,status" \
-      --data-urlencode "maxResults=100" \
-    | jq -r '
-        .issues[]
-        | select(.fields.summary | contains("[Platone]"))
-        | select(.fields.status.name | ascii_downcase != "not a bug")
-        | .key
-      '
-  )
-else
-  echo "⚠️ No Pack Updates ticket linked to $JIRA_TICKET." >&2
-fi
-
-# Dedupe the combined Platone issues list.
-if (( ${#PLATONE_ISSUES[@]} > 0 )); then
-  DEDUPED_ISSUES=()
-  while IFS= read -r issue; do
-    [[ -n "$issue" ]] && DEDUPED_ISSUES+=("$issue")
-  done < <(printf '%s\n' "${PLATONE_ISSUES[@]}" | sort -u)
-  PLATONE_ISSUES=("${DEDUPED_ISSUES[@]}")
-fi
-
-echo "ℹ️ Platone issues retrieved: ${PLATONE_ISSUES[*]:-}"
+echo "ℹ️ Platone issues retrieved: $(cut -f1 "$PLATONE_ROWS_FILE" | paste -sd' ' -)"
 
 # Check if release notes section for this component update ticket already exists in the release notes file
 COMPONENT_UPDATES_EXISTING_BODY=""
@@ -380,14 +364,15 @@ cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
 
 SUPER_QUESTION=""
 
-# On a release run, every linked issue can already be documented elsewhere in the release section
-# (see the check after the linked issues are fetched). There is then nothing for Super to write, but
-# the heading, component table, packs list, and appliance tables still need updating, so skip only
-# the Super call and leave the body empty.
+# No issue can be left for Super: on a release run, the release section can already document every
+# linked issue (see the check after the linked issues are fetched), and any week can link only pack
+# epics and [Platone] tasks. There is then nothing for Super to write, but the heading, component
+# table, packs list, and appliance tables still need updating, so skip only the Super call and leave
+# the body empty.
 SUPER_ATTEMPTS=$MAX_RETRIES
 if (( ${#LINKED_ISSUES[@]} == 0 )); then
   SUPER_ATTEMPTS=0
-  echo "ℹ️ The $RELEASE_VERSION release section already documents every issue linked to $JIRA_TICKET, so Super is not called and the Component Updates body is left empty."
+  echo "ℹ️ No issue linked to $JIRA_TICKET is left for Super to document, so Super is not called and the Component Updates body is left empty."
 fi
 
 # Construct the Super API question
@@ -408,6 +393,24 @@ ${LINKED_ISSUES[*]:-}
 
 Existing documentation body for $JIRA_TICKET:
 $COMPONENT_UPDATES_EXISTING_BODY
+EOF
+)
+fi
+
+# Give Super the [Platone] task summaries of the pack epics it documents, so its bullet names the
+# same versions as the packs table instead of a generic "updated the packs" line.
+SUPER_PACK_CONTEXT=$(
+  for issue in ${LINKED_ISSUES[@]+"${LINKED_ISSUES[@]}"}; do
+    awk -F'\t' -v epic="$issue" '$1 == epic { print epic ": " $2 }' "$PACK_EPIC_TASKS_FILE"
+  done
+)
+if [[ -n "$SUPER_PACK_CONTEXT" ]]; then
+  SUPER_QUESTION+=$(cat <<EOF
+
+
+These are the [Platone] tasks of the linked pack epics. When you describe an epic, name these packs and versions:
+
+${SUPER_PACK_CONTEXT}
 EOF
 )
 fi
@@ -478,8 +481,18 @@ if (( SUPER_ATTEMPTS > 0 )) && [[ -z "$SUPER_COMPONENT_UPDATES_BODY" ]]; then
   exit 1
 fi
 
+# A weekly run can link only pack epics and [Platone] tasks, so Super is not called. On a refresh of
+# such a week, keep the body that is already there (a reviewer might have written it by hand) instead
+# of replacing it with an empty one. A release run keeps the earlier behavior: there, an empty body
+# means the release section already documents every linked issue.
+KEEP_EXISTING_BODY=false
+if (( SUPER_ATTEMPTS == 0 )) && [[ "$IS_RELEASE_RUN" != true && -n "${COMPONENT_UPDATES_EXISTING_BODY//[[:space:]]/}" ]]; then
+  KEEP_EXISTING_BODY=true
+  echo "ℹ️ Super was not called, so the existing Component Updates body for $JIRA_TICKET is kept."
+fi
+
 # If the release notes section for this component update ticket already exists, will replace the existing body with the new one generated by Super, otherwise will insert a new section for this component update ticket.
-if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
+if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE" && [[ "$KEEP_EXISTING_BODY" != true ]]; then
   tmp_body_file="$(mktemp)"
   printf '%s' "$SUPER_COMPONENT_UPDATES_BODY" > "$tmp_body_file"
 
@@ -595,21 +608,25 @@ fi
 # On a release run that coincides with a Management Appliance release, prepend a newest-first row to
 # the Palette and VerteX "... Management Appliance" Kubernetes Requirements tables. The Palette Version
 # column is RELEASE_MANAGEMENT_APPLIANCE (a form input); the Kubernetes Version is derived from the
-# spectro-appliance-builder RC values so it is never transcribed by hand. A RELEASE_MANAGEMENT_APPLIANCE
+# appliance-palette release data so it is never transcribed by hand. A RELEASE_MANAGEMENT_APPLIANCE
 # of "NA" or empty means no appliance shipped this release, so the tables are left untouched. Deriving
 # the version and comparing it against the current top row also makes reruns idempotent.
 # ---------------------------------------------------------------------------------------------------
 
-APPLIANCE_BUILDER_REPO="spectrocloud/spectro-appliance-builder"
-APPLIANCE_BUILDER_REF="main"
+# The management appliances build from spectrocloud/appliance-builder, which reads each Palette
+# minor's data from a release-<major>.<minor> branch of spectrocloud/appliance-palette (release-4.10
+# for 4.10.b). The spectro-appliance-builder@main values this used to read still say 1.34.9, while
+# 4.10.25 shipped with 1.35.8. DOC-3336.
+APPLIANCE_DATA_REPO="spectrocloud/appliance-palette"
+APPLIANCE_DATA_REF="release-${RELEASE_VERSION%.*}"
 INSTALL_PALETTE_FILE="docs/docs-content/enterprise-version/install-palette/install-palette.md"
 INSTALL_VERTEX_FILE="docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md"
 
-# Derive the Kubernetes version from a spectro-appliance-builder k8s.yaml. Prefer the explicit
+# Derive the Kubernetes version from an appliance-palette k8s.yaml. Prefer the explicit
 # kubernetesVersion field; fall back to the kube-apiserver image tag. Strips the leading v.
 derive_appliance_k8s_version() {
   local values_path="$1" contents k8s
-  contents=$(fetch_github_file "$APPLIANCE_BUILDER_REPO" "$APPLIANCE_BUILDER_REF" "$values_path") || return 1
+  contents=$(fetch_github_file "$APPLIANCE_DATA_REPO" "$APPLIANCE_DATA_REF" "$values_path") || return 1
   k8s=$(printf '%s\n' "$contents" | grep -m1 -E '^[[:space:]]*kubernetesVersion:' | sed -E 's/.*kubernetesVersion:[[:space:]]*v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
   if [[ -z "$k8s" ]]; then
     k8s=$(printf '%s\n' "$contents" | grep -m1 -E 'kube-apiserver:v?[0-9]+\.[0-9]+\.[0-9]+' | sed -E 's/.*kube-apiserver:v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
@@ -647,7 +664,8 @@ prepend_appliance_row() {
 update_appliance_table() {
   local edition_label="$1" file="$2" values_path="$3" k8s top
   if ! k8s=$(derive_appliance_k8s_version "$values_path"); then
-    echo "⚠️ Could not derive the $edition_label Kubernetes version from $APPLIANCE_BUILDER_REPO ($values_path); leaving $file unchanged." >&2
+    echo "⚠️ Could not derive the $edition_label Kubernetes version from $APPLIANCE_DATA_REPO@$APPLIANCE_DATA_REF ($values_path); leaving $file unchanged." >&2
+    report_add notes "The $edition_label Management Appliance Kubernetes version could not be read from \`$APPLIANCE_DATA_REPO@$APPLIANCE_DATA_REF\`, so \`$file\` was not updated. Add the $RELEASE_MANAGEMENT_APPLIANCE row by hand."
     return 0
   fi
   top=$(appliance_table_top_version "$file")
@@ -662,101 +680,21 @@ update_appliance_table() {
 
 if [[ "$IS_RELEASE_RUN" == true && -n "$RELEASE_MANAGEMENT_APPLIANCE" && "$RELEASE_MANAGEMENT_APPLIANCE" != "NA" ]]; then
   echo "ℹ️ Release run with Management Appliance $RELEASE_MANAGEMENT_APPLIANCE; checking the appliance Kubernetes Requirements tables."
-  update_appliance_table "Palette" "$INSTALL_PALETTE_FILE" "values-yaml/rc/palette-values/k8s.yaml"
-  update_appliance_table "VerteX" "$INSTALL_VERTEX_FILE" "values-yaml/rc/vertex-values/k8s.yaml"
+  update_appliance_table "Palette" "$INSTALL_PALETTE_FILE" "appliance-data/palette/values-yaml/infra/k8s.yaml"
+  update_appliance_table "VerteX" "$INSTALL_VERTEX_FILE" "appliance-data/vertex/values-yaml/infra/k8s.yaml"
 fi
 
-# Process the Platone issues to generate the packs list in the release notes
-if (( ${#PLATONE_ISSUES[@]} == 0 )); then
+# Build the packs list from the [Platone] tasks and fill it in between the PACKS LIST BODY markers.
+if [[ ! -s "$PLATONE_ROWS_FILE" ]]; then
   echo "ℹ️  No Platone issues found for ticket: $JIRA_TICKET. Nothing to do here." >&2
+  report_add notes "No [Platone] tasks are linked to $JIRA_TICKET or to its linked epics, so the packs table was not updated."
+  write_packs_report
   exit 0
 fi
 
-PACKS_LIST_FILE="$(mktemp)"
-TMP_PACKS="$(mktemp)"
-
-cleanup_tmp_packs() {
-  rm -f "$PACKS_LIST_FILE" "$TMP_PACKS"
-}
-trap cleanup_tmp_packs EXIT
-
-for issue in "${PLATONE_ISSUES[@]}"; do
-  issue_name=$(
-    curl --fail-with-body \
-      -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
-      -H "Accept: application/json" \
-      "${JIRA_DOMAIN}/rest/api/3/issue/$issue" \
-      | jq -r '.fields.summary'
-  )
-
-  if [[ "$issue_name" =~ ^\[([^]]+)\]\ ([^[:space:]]+)\ ([0-9]+\.[0-9]+\.[0-9]+)\ ·\ week\ ([0-9]{4}-[0-9]{2})\ ·\ ([^[:space:]]+)\ ·\ (non-FIPS|FIPS)$ ]]; then
-    pack_name="${BASH_REMATCH[2]}"
-    version="${BASH_REMATCH[3]}"
-    layer="${BASH_REMATCH[5]}"
-    variant="${BASH_REMATCH[6]}"
-
-    # Remove trailing -fips so FIPS/non-FIPS variants can be merged
-    normalized_pack="${pack_name%-fips}"
-
-    printf '%s\t%s\t%s\t%s\n' \
-      "$normalized_pack" \
-      "$layer" \
-      "$version" \
-      "$variant" >> "$TMP_PACKS"
-  else
-    echo "⚠️ Skipping issue $issue because summary does not match expected format: $issue_name" >&2
-  fi
-done
-
-{
-  echo "<!-- prettier-ignore-start -->"
-  echo ""
-  echo "| Pack Name | Layer | Non-FIPS | FIPS | New Version |"
-  echo "| --------- | ----- | -------- | ---- | ----------- |"
-
-  awk -F'\t' '
-  {
-    key = $1 "|" $3
-
-    pack[key] = $1
-    layer[key] = $2
-    version[key] = $3
-
-    if ($4 == "non-FIPS") {
-      nonfips[key] = ":white_check_mark:"
-    } else if ($4 == "FIPS") {
-      fips[key] = ":white_check_mark:"
-    }
-  }
-
-  END {
-    for (key in pack) {
-      if (key in nonfips) {
-        nf = nonfips[key]
-      } else {
-        nf = ":x:"
-      }
-
-      if (key in fips) {
-        fp = fips[key]
-      } else {
-        fp = ":x:"
-      }
-
-      printf "| <VersionedLink text=\"%s\" url=\"/integrations/packs/?pack=%s\" /> | `%s` | %s | %s | %s |\n",
-        pack[key],
-        pack[key],
-        layer[key],
-        nf,
-        fp,
-        version[key]
-    }
-  }' "$TMP_PACKS" | sort
-
-  echo ""
-  echo "<!-- prettier-ignore-end -->"
-  echo ""
-} > "$PACKS_LIST_FILE"
+PACKS_LIST_FILE="${COMPONENT_UPDATES_WORK_DIR}/packs-list.md"
+COMPONENT_UPDATES_WEEK="${RELEASE_COMPONENT_YEAR}-${RELEASE_COMPONENT_WEEK}" \
+  render_packs_table "$PLATONE_ROWS_FILE" > "$PACKS_LIST_FILE"
 
 awk -v body_file="$PACKS_LIST_FILE" -v ticket="$JIRA_TICKET" '
   BEGIN {
@@ -791,3 +729,5 @@ awk -v body_file="$PACKS_LIST_FILE" -v ticket="$JIRA_TICKET" '
     && mv "${RELEASE_NOTES_FILE}.tmp" "$RELEASE_NOTES_FILE"
 
 echo "✅ Packs list updated for $JIRA_TICKET in $RELEASE_NOTES_FILE."
+
+write_packs_report

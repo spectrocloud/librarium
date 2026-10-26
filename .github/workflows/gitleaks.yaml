@@ -21,6 +21,10 @@ concurrency:
   group: sync-gitleaksignore
   cancel-in-progress: false
 
+permissions:
+  contents: write # Pushes the sync branch.
+  pull-requests: write # Opens the sync PR.
+
 jobs:
   sync-gitleaksignore:
     runs-on: ubuntu-latest

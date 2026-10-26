@@ -29,6 +29,10 @@ env:
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   NODE_VERSION: "24"
 
+permissions:
+  contents: read
+  pull-requests: write # Posts or updates a comment on the PR.
+
 jobs:
   backport:
     name: Format API PR
