@@ -110,8 +110,8 @@ the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sig
 automatically.
 
 Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
-CloudFormation, not Palette, uses these actions to tag the IAM roles in the Palette CloudFormation stack, and stack
-updates fail without them.
+CloudFormation, not Palette, uses these actions to tag the IAM roles in the CloudFormation stack that Palette uses, and
+stack updates fail without them.
 
 <PartialsComponent category="permissions" name="aws-cloudformation-stack-permissions" />
 
