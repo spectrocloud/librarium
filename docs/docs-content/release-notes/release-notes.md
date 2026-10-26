@@ -44,6 +44,14 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12371 -->
+
+- Palette removes the deprecated `GET /v1/clusterprofiles` endpoint. Use `POST /v1/dashboard/clusterprofiles` to list
+  cluster profiles instead. Other `/v1/clusterprofiles` endpoints, such as those that create, update, and publish
+  cluster profiles, continue to work. Update any automation, script, or integration that calls `GET /v1/clusterprofiles`
+  before you upgrade, because those calls fail after the upgrade.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.b-start -->
