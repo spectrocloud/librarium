@@ -74,6 +74,24 @@ content bundle from the [Content](./upload-content-bundle.md) page and redeploy 
 
    :::
 
+## Kubernetes Version Limits
+
+Local UI rejects a cluster update that changes the Kubernetes version in either of the following ways:
+
+- The update moves Kubernetes more than one minor version ahead of the version last applied to the cluster. For example,
+  an update from 1.32 to 1.34 is rejected.
+
+- The update moves Kubernetes to a lower minor version than the version running on the control plane nodes, after a
+  successful upgrade.
+
+Local UI displays an error that explains the block, and the cluster stays on its current configuration. The Edge host
+runs this check, so it applies to every Kubernetes distribution and to airgapped clusters. To upgrade by more than one
+minor version, upload a cluster profile version for each minor version in turn, and let each update finish before you
+upload the next one.
+
+If you automate cluster updates through the Edge Management API, `PUT /v1/edge-mgmt/cluster/{clusterName}` returns an
+HTTP 400 response with the `K8sMultiMinorUpgradeNotSupported` or `K8sDowngradeAfterUpgradeNotSupported` error code.
+
 ## Deferred Worker Node Upgrades
 
 On a locally managed cluster that uses Palette eXtended Kubernetes Edge (PXK-E) or Canonical Kubernetes, you can defer
@@ -82,7 +100,8 @@ the Kubernetes upgrade of individual worker pools while the control plane advanc
 any pool without the toggle, while pools with the toggle stay at their current version. K3s and RKE2 clusters are not
 supported.
 
-This is useful when crossing several Kubernetes minor versions, because it reduces how many times worker nodes repave.
+This is useful when you upgrade through more than one Kubernetes minor version, one update at a time, because it reduces
+how many times worker nodes repave.
 
 Two constraints apply while the toggle is enabled.
 

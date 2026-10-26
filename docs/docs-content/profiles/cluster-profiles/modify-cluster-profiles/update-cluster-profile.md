@@ -235,7 +235,10 @@ Ensure you follow these practices when updating to a new pack version.
 - You should not copy the pack configuration from one version to another, as the newer version often contains
   customizations. Instead, you should integrate your changes manually in the new version. Use the **Keep** button to
   copy the lines from the current configuration to the new version.
-- Update to a newer Kubernetes version incrementally, one minor version at a time.
+- Update to a newer Kubernetes version incrementally, one minor version at a time. If clusters use the cluster profile,
+  Palette rejects a Kubernetes version that is more than one minor version ahead of the oldest Kubernetes version
+  running on those clusters, with the `K8sUpgradeNotSupported` error. If a cluster has fallen behind the profile,
+  Palette can reject even a change of one minor version in the profile.
 - Select a specific target version instead of a group that ends in `.x`
 - We do not recommend downgrading packs to the previous version.
 

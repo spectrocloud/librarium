@@ -37,7 +37,9 @@ replaced, they cannot be restored.
   [repaved](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
 
 Not every template can be attached to a given cluster. The template picker marks each template as compatible or not,
-with the reason for the ones that are not.
+with the reason for the ones that are not. Palette also rejects attaching a cluster to a template whose Kubernetes
+version is more than one minor version ahead of the cluster's, with the `K8sUpgradeNotSupported` error. Upgrade the
+cluster one minor version at a time before you attach it.
 
 After attachment, you can still add, update, and remove machine pools. You cannot edit the cluster's profiles or
 variable values directly; those come from the template.
