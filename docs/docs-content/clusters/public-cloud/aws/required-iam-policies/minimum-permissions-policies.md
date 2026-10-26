@@ -43,10 +43,6 @@ AWS EKS clusters through Palette.
 The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
 for deploying AWS Infrastructure as a Service (IaaS) clusters through Palette.
 
-Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
-CloudFormation, not Palette, uses these actions to tag the IAM roles in the Palette CloudFormation stack, and stack
-updates fail without them.
-
 <PartialsComponent category="permissions" name="aws-iaas-dynamic-permissions" />
 
 </TabItem>
