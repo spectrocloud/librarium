@@ -39,6 +39,10 @@ env:
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
   NODE_VERSION: "24"
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
   run-ci:
     # runs-on: ubuntu-latest
@@ -56,6 +60,9 @@ jobs:
   vale:
     name: Writing Checks
     needs: [run-ci]
+    permissions:
+      contents: read
+      pull-requests: write # The Vale action posts review comments with this token.
     uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@3ac6b47577beaee726a785a95fb8b513d35c072e # v0.0.106
 
   prettier:
@@ -108,6 +115,10 @@ jobs:
     name: Build
     needs: [run-ci, prettier]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
+      pull-requests: write # Posts or updates a comment on the PR.
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.

@@ -26,6 +26,10 @@ env:
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
   NODE_VERSION: "24"
 
+permissions:
+  contents: read
+  actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
+
 jobs:
 
   create-assets:
