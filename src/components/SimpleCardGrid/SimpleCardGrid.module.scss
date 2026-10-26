@@ -137,3 +137,164 @@
     min-width: 280px;
   }
 }
+
+// Compact variant (opt-in with the compact prop), used only by the docs homepage.
+// Every selector below needs a compact class, so the default cards on other pages are unchanged.
+// Column counts follow the nearest CSS size container (.landing-section). Without one, the grid stays at 2 columns.
+
+.simpleCardGrid.simpleCardGridCompact {
+  grid-gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: none;
+
+  > a {
+    display: block;
+    border-radius: 12px;
+    color: inherit;
+  }
+
+  > a:focus-visible {
+    outline: 3px solid var(--ifm-color-primary);
+    outline-offset: 3px;
+  }
+}
+
+@container (min-width: 960px) {
+  .simpleCardGrid.simpleCardGridCompact[data-columns="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .simpleCardGrid.simpleCardGridCompact[data-columns="4"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container (max-width: 599px) {
+  .simpleCardGrid.simpleCardGridCompact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .simpleCardGrid.simpleCardGridCompact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.simpleCard.simpleCardCompact {
+  position: relative;
+  min-width: 0;
+  padding: 18px 16px 14px;
+  gap: 10px;
+  justify-content: flex-start;
+  overflow: hidden;
+  border-color: var(--landingCardBorder);
+  background: var(--landingCardBackground);
+  box-shadow: var(--landingCardShadow);
+
+  // Section accent bar. The .landing-section--* panel sets --landing-accent; other pages fall back to the brand teal.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--landing-accent, var(--simpleCardPrimary)),
+      var(--landingAccentEnd, var(--simpleCardSecondary))
+    );
+  }
+
+  .simpleCardHeader {
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--ifm-heading-color);
+  }
+
+  .simpleCardIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--landingIconColor);
+    background: linear-gradient(135deg, var(--landingIconFrom), var(--landingIconTo));
+    box-shadow: var(--landingIconShadow);
+  }
+
+  .simpleCardBody {
+    flex-grow: 1;
+  }
+
+  .simpleCardDescription {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .simpleCardFooter {
+    justify-content: space-between;
+    gap: 4px 12px;
+  }
+
+  .simpleCardTags {
+    font-size: 12.5px;
+    line-height: 18px;
+  }
+}
+
+.simpleCardGridCompact > a:hover .simpleCardCompact,
+.simpleCardGridCompact > a:focus-visible .simpleCardCompact {
+  border-color: var(--landing-accent, var(--simpleCardPrimary));
+  box-shadow: var(--landingCardShadowHover);
+}
+
+.simpleCardTagValue {
+  white-space: nowrap;
+}
+
+.simpleCardFooterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  color: var(--ifm-color-primary);
+
+  .simpleCardFooterArrow {
+    height: 0.85em;
+    fill: currentColor;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .simpleCard.simpleCardCompact {
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .simpleCardGridCompact > a:hover .simpleCardCompact,
+  .simpleCardGridCompact > a:focus-visible .simpleCardCompact {
+    transform: translateY(-3px);
+  }
+
+  .simpleCardFooterLink .simpleCardFooterArrow {
+    transition: transform 150ms ease;
+  }
+
+  .simpleCardGridCompact > a:hover .simpleCardFooterLink .simpleCardFooterArrow {
+    transform: translateX(3px);
+  }
+}
+
+@media (forced-colors: active) {
+  .simpleCard.simpleCardCompact .simpleCardIcon {
+    border: 1px solid CanvasText;
+  }
+}

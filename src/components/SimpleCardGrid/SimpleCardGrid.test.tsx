@@ -91,3 +91,33 @@ describe("Display SimpleCardGrid", () => {
     });
   });
 });
+
+describe("Display SimpleCardGrid in compact mode", () => {
+  const compactCards = [
+    {
+      title: "First Card",
+      description: "Card 1",
+      buttonText: "Learn more 1",
+      url: "/first",
+      tags: ["Edge", "Air-gapped"],
+    },
+    {
+      title: "Second Card",
+      description: "Card 2",
+      buttonText: "Learn more 2",
+      url: "/second",
+    },
+  ];
+
+  it("renders text links instead of buttons", () => {
+    const { container } = render(<SimpleCardGrid compact cards={compactCards} />);
+
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    compactCards.forEach((card) => {
+      expect(screen.getByText(card.title)).toBeInTheDocument();
+      expect(screen.getByText(card.buttonText, { selector: "span" })).toBeInTheDocument();
+    });
+    expect(screen.getByText("Air-gapped")).toBeInTheDocument();
+    expect(container.firstElementChild).toHaveAttribute("data-columns", "2");
+  });
+});

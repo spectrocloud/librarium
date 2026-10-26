@@ -1,0 +1,161 @@
+// Homepage hero band. Dark teal in both color modes, so its text contrast does not change with the theme.
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 24px;
+  padding: 40px 48px 36px;
+  border: 1px solid var(--landingHeroBorder);
+  border-radius: 20px;
+  color: var(--landingHeroText);
+  background:
+    radial-gradient(60% 80% at 85% 10%, var(--landingHeroMeshA), transparent 70%),
+    radial-gradient(50% 70% at 10% 100%, var(--landingHeroMeshB), transparent 70%),
+    radial-gradient(40% 60% at 100% 100%, var(--landingHeroMeshC), transparent 70%), var(--landingHeroBackground);
+  box-shadow: var(--landingHeroShadow);
+
+  // Dot-grid texture that fades in toward the motif side.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(var(--landingHeroDots) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(105deg, transparent 35%, #000 85%);
+    mask-image: linear-gradient(105deg, transparent 35%, #000 85%);
+    pointer-events: none;
+  }
+}
+
+.motif {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: -24px;
+  width: min(44%, 520px);
+  height: auto;
+  transform: translateY(-50%);
+  color: var(--landingHeroMotif);
+  pointer-events: none;
+}
+
+.edges line {
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  opacity: 0.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.hexes polygon {
+  fill: currentColor;
+  fill-opacity: 0.06;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-opacity: 0.75;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.nodes circle {
+  fill: currentColor;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+// :global(.markdown) outranks `.markdown h1:first-child` (0,2,1) in custom.scss.
+:global(.markdown) .hero .title {
+  --ifm-h1-font-size: 2.5rem;
+  margin: 0 0 10px;
+  font-size: var(--ifm-h1-font-size);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--landingHeroText);
+}
+
+:global(.markdown) .hero .lead {
+  max-width: 600px;
+  margin: 0 0 20px;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--landingHeroMuted);
+}
+
+.ask {
+  filter: drop-shadow(0 10px 24px var(--landingHeroAskGlow));
+
+  // Drop the AskAI root's own margin (1rem 0 1.5rem) inside the hero.
+  > div {
+    margin: 0;
+  }
+}
+
+// Motion plays only while the reader hovers over or focuses inside the hero, never on its own.
+@keyframes landingHeroPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero:hover .pulse,
+  .hero:focus-within .pulse {
+    animation: landingHeroPulse 3.2s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding: 32px 28px 28px;
+  }
+
+  .motif {
+    top: -10%;
+    right: -25%;
+    width: 80%;
+    transform: none;
+    opacity: 0.3;
+  }
+
+  :global(.markdown) .hero .title {
+    --ifm-h1-font-size: 2.125rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 28px 20px 22px;
+    border-radius: 16px;
+  }
+
+  :global(.markdown) .hero .title {
+    --ifm-h1-font-size: 1.75rem;
+  }
+
+  :global(.markdown) .hero .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .hero {
+    border: 1px solid CanvasText;
+  }
+
+  .motif,
+  .hero::after {
+    display: none;
+  }
+}

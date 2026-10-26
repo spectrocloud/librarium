@@ -1,23 +1,28 @@
 ---
 title: "Spectro Cloud Documentation"
 description:
-  "Find Spectro Cloud documentation by what you want to deploy: AI and machine learning workloads, Kubernetes clusters,
-  and virtual machines."
+  "Find Spectro Cloud documentation by what you want to deploy, from AI and machine learning workloads to Kubernetes
+  clusters and virtual machines."
+hide_title: true
 hide_table_of_contents: true
 slug: /
 ---
 
-<div className="margin-bottom--lg">
+<LandingHero
+  title="Spectro Cloud Documentation"
+  description="Find documentation by what you want to deploy, from AI and machine learning workloads to Kubernetes clusters and virtual machines."
+>
   <AskAI placeholder="Ask AI about Spectro Cloud products..." />
-</div>
+</LandingHero>
 
 <!-- vale off -->
 
-<div className="landing-section">
+<div className="landing-section landing-section--ai">
 
 ## Deploy AI and Machine Learning Workloads
 
 <SimpleCardGrid
+  compact
   hideNumber
   cards={[
     {
@@ -39,11 +44,12 @@ slug: /
 
 </div>
 
-<div className="landing-section">
+<div className="landing-section landing-section--k8s">
 
 ## Deploy Kubernetes Clusters
 
 <SimpleCardGrid
+  compact
   hideNumber
   cards={[
     {
@@ -82,11 +88,12 @@ slug: /
 
 </div>
 
-<div className="landing-section">
+<div className="landing-section landing-section--vm">
 
 ## Deploy Virtual Machines
 
 <SimpleCardGrid
+  compact
   hideNumber
   cards={[
     {

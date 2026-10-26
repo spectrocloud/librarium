@@ -255,17 +255,149 @@ p img.markdown-image {
   display: none !important;
 }
 
-// Group a heading and its cards in a bordered panel on the docs homepage
+// Homepage section panels (docs/docs-content/introduction/landing.md).
+// Each panel is a size container. Below 1150px the heading is a band above the cards; at 1150px and wider it is a rail on the left.
+// The glyphs are decorative and white, because every rail gradient is dark teal in both color modes.
+
+$landing-glyph-ai: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M10 2.5l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2z'/%3E%3Cpath d='M18 13l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z'/%3E%3C/svg%3E");
+$landing-glyph-k8s: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3Cpath d='M12 2.5v6.9M12 14.6v6.9M3.8 7.25l5.95 3.45M14.25 13.3l5.95 3.45M20.2 7.25l-5.95 3.45M9.75 13.3l-5.95 3.45'/%3E%3C/svg%3E");
+$landing-glyph-vm: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M7 4.5h12a2 2 0 0 1 2 2v9'/%3E%3Crect x='3' y='8.5' width='14' height='11' rx='2'/%3E%3Cpath d='M3 12.5h14M6 10.5h.01M8.5 10.5h.01'/%3E%3C/svg%3E");
 
 .landing-section {
-  border: 1px solid var(--simpleCardBorder);
-  border-radius: 16px;
-  padding: 20px 24px 28px;
-  margin-bottom: 24px;
+  --landing-rail-start: var(--landingK8sRailStart);
+  --landing-rail-end: var(--landingK8sRailEnd);
+  --landing-accent: var(--landingK8sAccent);
+  --landing-glyph: #{$landing-glyph-k8s};
 
-  h2 {
-    --ifm-h2-font-size: 1.75rem;
-    margin: 0 0 20px;
+  container: landing-section / inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--landingSectionBorder);
+  border-radius: 16px;
+  background: var(--landingSectionBackground);
+
+  > * {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  // The card grid. The 16px padding also keeps card focus outlines inside overflow: hidden.
+  > :not(h2) {
+    padding: 16px;
+  }
+
+  > h2 {
+    --ifm-h2-font-size: 1.375rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    padding: 14px 18px;
+    overflow: hidden;
+    line-height: 1.25;
+    color: var(--landingRailText);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.13) 1px, transparent 0) 0 0 / 14px 14px,
+      linear-gradient(135deg, var(--landing-rail-start), var(--landing-rail-end));
+
+    // Glyph tile
+    &::before {
+      content: "";
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.14) var(--landing-glyph) center / 24px no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+    }
+
+    // Watermark
+    &::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      width: 110px;
+      height: 110px;
+      background: var(--landing-glyph) center / contain no-repeat;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .hash-link {
+      color: inherit;
+      opacity: 0;
+    }
+
+    &:hover .hash-link,
+    .hash-link:focus-visible {
+      opacity: 1;
+    }
+  }
+}
+
+.landing-section--ai {
+  --landing-rail-start: var(--landingAiRailStart);
+  --landing-rail-end: var(--landingAiRailEnd);
+  --landing-accent: var(--landingAiAccent);
+  --landing-glyph: #{$landing-glyph-ai};
+}
+
+.landing-section--k8s {
+  --landing-rail-start: var(--landingK8sRailStart);
+  --landing-rail-end: var(--landingK8sRailEnd);
+  --landing-accent: var(--landingK8sAccent);
+  --landing-glyph: #{$landing-glyph-k8s};
+}
+
+.landing-section--vm {
+  --landing-rail-start: var(--landingVmRailStart);
+  --landing-rail-end: var(--landingVmRailEnd);
+  --landing-accent: var(--landingVmAccent);
+  --landing-glyph: #{$landing-glyph-vm};
+}
+
+@container landing-section (min-width: 1150px) {
+  .landing-section > h2 {
+    flex: 0 0 224px;
+    display: block;
+    padding: 20px;
+  }
+
+  .landing-section > h2::before {
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .landing-section > h2::after {
+    right: -34px;
+    bottom: -40px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .landing-section > :not(h2) {
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-section > :not(h2) {
+    padding: 12px;
+  }
+}
+
+@media (forced-colors: active) {
+  .landing-section > h2 {
+    background: none;
+  }
+
+  .landing-section > h2::before,
+  .landing-section > h2::after {
+    display: none;
   }
 }
 
