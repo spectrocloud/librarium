@@ -21,6 +21,54 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12191 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12377 -->
+
+- To improve security, Palette now enforces new permission and credential checks on the registry APIs. Automation that
+  calls the following endpoints must use a principal that holds the required permission. Otherwise, the request fails
+  with an authorization error.
+
+  | API                                                                     | Required permission                                                                                     |
+  | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+  | `GET /v1/registries/oci/{uid}`                                          | `packRegistry.get` on the registry, and read permission on the cluster if the request sets `clusterUid` |
+  | `GET /v1/registries/metadata`                                           | `packRegistry.list`                                                                                     |
+  | `POST /v1/registries/pack/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+  | `POST /v1/registries/helm/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+  | `POST /v1/registries/oci/basic/validate` with a saved password or token | `packRegistry.update` on the registry that `registryUid` identifies                                     |
+
+  `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
+
+  Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
+  the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
+  HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code.
+
+  Palette also no longer validates a saved private Helm registry with its saved credentials, even for a principal with
+  `packRegistry.update`. The `POST /v1/registries/helm/validate` request fails with an HTTP 400 response and the
+  `HelmRegistryValidationForbidden` error code. Enter the credentials in the request instead.
+
+  Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
+  a masked value. A masked value indicates that the secret is set.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
+
+- To improve security, Palette now restricts the following user and tenant API requests. Update any automation that
+  sends them.
+
+  - `GET /v1/users` and `GET /v1/tenants` no longer accept `status.login.mode` or `status.isActive` in the `filters` or
+    `orderBy` query parameters. Requests that use these fields fail with an HTTP 400 response and the
+    `FilterValidationFailure` error code.
+
+  - `PATCH /v1/users/{uid}` accepts only the `add`, `replace`, `remove`, and `test` operations on the `/spec/firstName`,
+    `/spec/lastName`, `/spec/emailId`, and `/spec/roles` paths. Requests to patch other paths fail with an HTTP 400
+    response and the `UserPatchPathNotAllowed` error code. The `move` and `copy` operations fail with an HTTP 400
+    response and the `UserPatchOpNotAllowed` error code.
+
+  - On self-hosted Palette and Palette VerteX, `GET /v1/users/{uid}/activationlink` now requires the `user.create`
+    permission to read another user's activation link. Requests from users without this permission fail with an HTTP 403
+    response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
+    has the `user.create` permission.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-6294 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
 
@@ -102,6 +150,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Features
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12373 -->
+
+- When you sort the Edge host grid view by a column, Palette now orders all Edge hosts, so the order continues across
+  pages instead of restarting on each page. This applies to the **Edge Hosts** tab and to the grid view that appears
+  when you create an Edge cluster or add Edge hosts to an existing cluster. Refer to
+  [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) for more information.
 
 #### Bug Fixes
 
@@ -186,6 +242,67 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 ### Docs and Education
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+
+## October 23, 2026 - Component Updates {#component-updates-2026-43}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3342 -->
+<!-- RELEASE DATE: October 23, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.27 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.5 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.4 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.32.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.5  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.4  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.27 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.27 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3342. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2475 -->
+
+- Deprecated the `override_kubeadm_configuration` machine pool parameter for EKS, AKS, and GKE clusters in the Spectro
+  Cloud Terraform and Crossplane providers. Palette does not support this parameter for managed Kubernetes clusters, so
+  it has no effect. The Terraform provider now displays a warning when you set it.
+
+<!-- https://spectrocloud.atlassian.net/browse/PSOPS-282 -->
+
+- Built and published Launchpad AI model recipes as standalone content archives in Artifact Studio, allowing new model
+  support and vLLM inference engine updates to ship independently of core product release cycles.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3342. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3342. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.10.5 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.2 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.23.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.3 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.10 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.2 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :x: | :white_check_mark: | 1.13.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :x: | :white_check_mark: | 1.13.0 |
+| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: | :white_check_mark: | 3.8.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.13.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.37.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.11.0 |
+| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: | :x: | 8.7.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3342. DO NOT DELETE. -->
 
 ## October 22, 2026 - Release 4.10.32
 
@@ -513,8 +630,10 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11961 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11997 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12202 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12377 -->
 
-- Palette now enforces authorization checks on five APIs that previously required no permission. Automation that calls
+- Palette now enforces authorization checks on nine APIs that previously required no permission. Automation that calls
   these endpoints must use a principal that holds the required permission. Otherwise, the request fails with an
   authorization error.
 
@@ -522,7 +641,11 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   | ----------------------------------------------------- | ---------------------------------------- |
   | `PATCH /v1/cloudaccounts/{uid}/geoLocation`           | Update permission on the cloud account   |
   | `POST /v1/spectroclusters/{uid}/workloads/sync`       | Update permission on the cluster         |
+  | `GET /v1/spectroclusters/{uid}/edge-native/edgeHosts` | Get permission on the cluster            |
   | `GET /v1/users/assets/vsphere/dnsMapping`             | Get permission on the DNS mapping object |
+  | `GET /v1/users/assets/vsphere/dnsMappings`            | List permission on DNS mapping objects   |
+  | `GET /v1/registries/oci/summary`                      | List permission on registries            |
+  | `GET /v1/packs/{packName}/registries/{registryUid}`   | Get permission on the registry           |
   | `GET /v1/tenants/{tenantUid}/subscriptions/metadata`  | Tenant Admin role on the tenant          |
   | `GET /v1/tenants/{tenantUid}/subscriptions/aws/{uid}` | Tenant Admin role on the tenant          |
 
@@ -1071,6 +1194,8 @@ The following components have been updated for Palette version 4.10.25.
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0-rev1 |
 | <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.1 |
 | <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.36.0 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.13.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.13.0 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
 | <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.23.0 |
