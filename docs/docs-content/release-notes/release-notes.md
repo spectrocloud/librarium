@@ -112,7 +112,7 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 
 <!-- COMPONENT UPDATES TICKET: DOC-3342 -->
 <!-- RELEASE DATE: October 23, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.32 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.27 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.10.5 -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.4 -->
 
@@ -123,8 +123,8 @@ The following components have been updated for Palette version 4.10.13 - 4.10.32
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.5  |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.4  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.4  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.32 |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.32 |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.27 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.27 |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3342. DO NOT DELETE. -->
 
