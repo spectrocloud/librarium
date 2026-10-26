@@ -49,15 +49,64 @@ tags: ["release-notes"]
   Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
   a masked value. A masked value indicates that the secret is set.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
+
+- To improve security, Palette now restricts the following user and tenant API requests. Update any automation that
+  sends them.
+
+  - `GET /v1/users` and `GET /v1/tenants` no longer accept `status.login.mode` or `status.isActive` in the `filters` or
+    `orderBy` query parameters. Requests that use these fields fail with an HTTP 400 response and the
+    `FilterValidationFailure` error code.
+
+  - `PATCH /v1/users/{uid}` accepts only the `add`, `replace`, `remove`, and `test` operations on the `/spec/firstName`,
+    `/spec/lastName`, `/spec/emailId`, and `/spec/roles` paths. Requests to patch other paths fail with an HTTP 400
+    response and the `UserPatchPathNotAllowed` error code. The `move` and `copy` operations fail with an HTTP 400
+    response and the `UserPatchOpNotAllowed` error code.
+
+  - On self-hosted Palette and Palette VerteX, `GET /v1/users/{uid}/activationlink` now requires the `user.create`
+    permission to read another user's activation link. Requests from users without this permission fail with an HTTP 403
+    response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
+    has the `user.create` permission.
+
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
 #### Features
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12367 -->
+
+- When you add a GCP backup location, you can now upload the JSON key file of the service account instead of pasting its
+  contents. This matches how you add a GCP cloud account. For more information, refer to
+  [Add a Backup Location using Static Credentials](../clusters/cluster-management/backup-restore/add-backup-location-static.md#add-a-gcp-bucket).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7459 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12369 -->
+
+- Palette now records an audit log entry each time someone downloads a kubeconfig file for a cluster or virtual cluster
+  from the Palette UI or the API, including failed and denied attempts. Each entry identifies the user, the cluster, and
+  the kubeconfig file. For more information, refer to
+  [Kubeconfig Downloads](../audit-logs/audit-logs.md#kubeconfig-downloads).
+
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11844 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12375 -->
+
+- Fixed an issue that caused [cluster cost](../clusters/cluster-management/cloud-cost.md), resource usage, and workload
+  summary data to stop updating for clusters whose data grew past the 16 MB MongoDB document size limit.
+
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12371 -->
+
+- Palette removes the deprecated `GET /v1/clusterprofiles` endpoint. Use `POST /v1/dashboard/clusterprofiles` to list
+  cluster profiles instead. Other `/v1/clusterprofiles` endpoints, such as those that create, update, and publish
+  cluster profiles, continue to work. Update any automation, script, or integration that calls `GET /v1/clusterprofiles`
+  before you upgrade, because those calls fail after the upgrade.
 
 ### Edge
 
