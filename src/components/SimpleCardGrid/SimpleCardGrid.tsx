@@ -2,6 +2,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import styles from "./SimpleCardGrid.module.scss";
 import SimpleCardFooterArrow from "./SimpleCardFooterArrow";
+import IconMapper from "../IconMapper/IconMapper";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
@@ -16,11 +17,13 @@ interface SimpleCard {
   url: string;
   hideNumber?: boolean;
   tags?: string[];
+  icon?: string;
 }
 interface SimpleCardHeader {
   index?: number;
   hideNumber?: boolean;
   title: string;
+  icon?: string;
 }
 
 export default function SimpleCardGrid({ cards = [], hideNumber = false }: SimpleCardProps) {
@@ -36,14 +39,15 @@ export default function SimpleCardGrid({ cards = [], hideNumber = false }: Simpl
           url={card.url}
           hideNumber={hideNumber}
           tags={card.tags}
+          icon={card.icon}
         />
       ))}
     </div>
   );
 }
 
-function SimpleCard({ title, index, description, buttonText = "Learn more", url, hideNumber, tags }: SimpleCard) {
-  const body = SimpleCardBody(title, description, buttonText, index, hideNumber, tags);
+function SimpleCard({ title, index, description, buttonText = "Learn more", url, hideNumber, tags, icon }: SimpleCard) {
+  const body = SimpleCardBody(title, description, buttonText, index, hideNumber, tags, icon);
   return <Link to={url}>{body}</Link>;
 }
 
@@ -53,20 +57,21 @@ function SimpleCardBody(
   buttonText: string,
   index?: number,
   hideNumber?: boolean,
-  tags?: string[]
+  tags?: string[],
+  icon?: string
 ) {
   return (
     <div className={styles.simpleCard}>
-      <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
+      <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} icon={icon} />
       <div className={styles.simpleCardBody}>
         <p className={styles.simpleCardDescription}>{description}</p>
+      </div>
+      <div className={styles.simpleCardFooter}>
         {tags && (
           <div className={styles.simpleCardTags}>
             <strong>Environments:</strong>&ensp;{tags.join("\u2002·\u2002")}
           </div>
         )}
-      </div>
-      <div className={styles.simpleCardFooter}>
         <button className={styles.simpleCardFooterBtn}>
           {buttonText}
           <SimpleCardFooterArrow index={index} />
@@ -76,7 +81,17 @@ function SimpleCardBody(
   );
 }
 
-function SimpleCardHeader({ index, hideNumber, title }: SimpleCardHeader) {
+function SimpleCardHeader({ index, hideNumber, title, icon }: SimpleCardHeader) {
+  if (icon) {
+    return (
+      <div className={styles.simpleCardHeader}>
+        <div className={styles.simpleCardIcon}>
+          <IconMapper type={icon} />
+        </div>
+        <div className={styles.simpleCardTitle}>{title}</div>
+      </div>
+    );
+  }
   if (!hideNumber) {
     return (
       <div className={styles.simpleCardHeader}>

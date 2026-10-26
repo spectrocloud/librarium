@@ -255,6 +255,20 @@ p img.markdown-image {
   display: none !important;
 }
 
+// Group a heading and its cards in a bordered panel on the docs homepage
+
+.landing-section {
+  border: 1px solid var(--simpleCardBorder);
+  border-radius: 16px;
+  padding: 20px 24px 28px;
+  margin-bottom: 24px;
+
+  h2 {
+    --ifm-h2-font-size: 1.75rem;
+    margin: 0 0 20px;
+  }
+}
+
 // Reduce the spacing between lines in code blocks
 
 .theme-code-block code {
