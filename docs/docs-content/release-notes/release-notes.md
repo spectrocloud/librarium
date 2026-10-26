@@ -29,6 +29,12 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11844 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12375 -->
+
+- Fixed an issue that caused [cluster cost](../clusters/cluster-management/cloud-cost.md), resource usage, and workload
+  summary data to stop updating for clusters whose data grew past the 16 MB MongoDB document size limit.
+
 #### Deprecations and Removals
 
 ### Edge
