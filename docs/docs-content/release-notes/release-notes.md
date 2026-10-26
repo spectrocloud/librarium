@@ -34,6 +34,14 @@ tags: ["release-notes"]
   contents. This matches how you add a GCP cloud account. For more information, refer to
   [Add a Backup Location using Static Credentials](../clusters/cluster-management/backup-restore/add-backup-location-static.md#add-a-gcp-bucket).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7459 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12369 -->
+
+- Palette now records an audit log entry each time someone downloads a kubeconfig file for a cluster or virtual cluster
+  from the Palette UI or the API, including failed and denied attempts. Each entry identifies the user, the cluster, and
+  the kubeconfig file. For more information, refer to
+  [Kubeconfig Downloads](../audit-logs/audit-logs.md#kubeconfig-downloads).
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11844 -->
