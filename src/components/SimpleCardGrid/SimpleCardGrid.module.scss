@@ -137,3 +137,9 @@
     min-width: 280px;
   }
 }
+
+@media (max-width: 374px) {
+  :global(.landing-section) .simpleCard {
+    min-width: 0;
+  }
+}
