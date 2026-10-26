@@ -7,13 +7,15 @@ hide_table_of_contents: true
 slug: /
 ---
 
-<AskAI placeholder="Ask AI about Spectro Cloud products..." />
+<div className="margin-bottom--lg">
+  <AskAI placeholder="Ask AI about Spectro Cloud products..." />
+</div>
 
 <!-- vale off -->
 
 ## Run AI and Machine Learning Workloads
 
-<div className="margin-bottom--lg">
+<div className="margin-top--md margin-bottom--xl">
   <SimpleCardGrid
     hideNumber
     cards={[
@@ -35,7 +37,7 @@ slug: /
 
 ## Run Kubernetes Clusters
 
-<div className="margin-bottom--lg">
+<div className="margin-top--md margin-bottom--xl">
   <SimpleCardGrid
     hideNumber
     cards={[
@@ -72,20 +74,22 @@ slug: /
 
 ## Run Virtual Machines
 
-<SimpleCardGrid
-  hideNumber
-  cards={[
-    {
-      title: "PaletteAI VM Launchpad for VMs on a Standalone Appliance",
-      description: "Install a bootable ISO on bare metal or Edge devices and manage VMs from a dedicated UI.",
-      tags: ["Data center", "Edge", "Air-gapped"],
-      url: "/vm-management/vm-launchpad/",
-    },
-    {
-      title: "Palette Virtual Machine Orchestrator for VMs on Your Kubernetes Clusters",
-      description: "Run VMs alongside containers on Palette-managed or imported Kubernetes clusters.",
-      tags: ["Data center", "Edge", "Air-gapped"],
-      url: "/vm-management/vmo-pack/",
-    },
-  ]}
-/>
+<div className="margin-top--md">
+  <SimpleCardGrid
+    hideNumber
+    cards={[
+      {
+        title: "PaletteAI VM Launchpad for VMs on a Standalone Appliance",
+        description: "Install a bootable ISO on bare metal or Edge devices and manage VMs from a dedicated UI.",
+        tags: ["Data center", "Edge", "Air-gapped"],
+        url: "/vm-management/vm-launchpad/",
+      },
+      {
+        title: "Palette Virtual Machine Orchestrator for VMs on Your Kubernetes Clusters",
+        description: "Run VMs alongside containers on Palette-managed or imported Kubernetes clusters.",
+        tags: ["Data center", "Edge", "Air-gapped"],
+        url: "/vm-management/vmo-pack/",
+      },
+    ]}
+  />
+</div>
