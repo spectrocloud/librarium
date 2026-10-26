@@ -19,8 +19,8 @@ If you are using the [Minimum Permissions Policies](./minimum-permissions-polici
 is _not_ required.
 
 Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
-CloudFormation, not Palette, uses these actions to tag the IAM roles in the Palette CloudFormation stack, and stack
-updates fail without them.
+CloudFormation, not Palette, uses these actions to tag the IAM roles in the CloudFormation stack that Palette uses, and
+stack updates fail without them.
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
