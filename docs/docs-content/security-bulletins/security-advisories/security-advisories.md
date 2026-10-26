@@ -110,10 +110,11 @@ d) Customers are advised to monitor and audit outbound connections and watch for
 ### Mitigation Status
 
 Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. The following table lists the
-patch status of other components. Spectro Cloud updates this advisory as each patch is released.
+patch status of the remaining components. Spectro Cloud updates this advisory as each patch is released.
 
 | Component                                                                         | Status           |
 | --------------------------------------------------------------------------------- | ---------------- |
+| Remaining Palette 4.10 images                                                     | Not yet released |
 | Palette 4.8 and 4.9                                                               | Not yet released |
 | Kubernetes versions                                                               | Not yet released |
 | Palette Management Appliance and VerteX Management Appliance (4.10, 4.9, and 4.8) | Not yet released |
