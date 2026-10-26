@@ -83,8 +83,8 @@ a network interception position.
 
 ### Recommended Actions
 
-a) Palette & VerteX Enterprise: Patched versions of Palette/VerteX are being worked on and the advisory will be updated.
-All customers are advised to upgrade to the patched version as soon as they can.
+a) Palette & VerteX Enterprise: Upgrade to a patched version when one is available for your release. Refer to
+[Mitigation Status](#mitigation-status) for the patched versions.
 
 b) Workload Clusters: Patch all underlying host operating systems used in:
 
@@ -109,20 +109,18 @@ d) Customers are advised to monitor and audit outbound connections and watch for
 
 ### Mitigation Status
 
-Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. Spectro Cloud expects to release
-patches for the remaining 4.10.x images by October 30, 2026.
+Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. The following table lists the
+patch status of other components. Spectro Cloud updates this advisory as each patch is released.
 
-The following table lists the expected availability of patches for other components.
+| Component                                                                         | Status           |
+| --------------------------------------------------------------------------------- | ---------------- |
+| Palette 4.8 and 4.9                                                               | Not yet released |
+| Kubernetes versions                                                               | Not yet released |
+| Palette Management Appliance and VerteX Management Appliance (4.10, 4.9, and 4.8) | Not yet released |
+| Verified packs with upstream fixes                                                | Not yet released |
 
-| Component                                                                                 | Expected Availability                                       |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Palette 4.8.x and 4.9.x releases                                                          | October 30, 2026                                            |
-| Patched Kubernetes versions                                                               | November 1, 2026                                            |
-| Palette Management Appliance and VerteX Management Appliance for 4.10.x, 4.9.x, and 4.8.x | November 1, 2026                                            |
-| Verified packs with upstream fixes                                                        | In phases, with the first set available by November 1, 2026 |
-
-Appliance mode Edge hosts that run Ubuntu can use an interim workaround to remove the affected root certificates from
-the host trust store. Refer to
+Appliance mode Edge hosts that run Ubuntu can use a workaround to remove the affected root certificates from the host
+trust store. Refer to
 [Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
 for the steps.
 

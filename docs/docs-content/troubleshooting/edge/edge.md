@@ -21,7 +21,7 @@ compromised eMudhra intermediate certificate authorities (CAs) chain to. For mor
 
 <!-- vale Vale.Spelling = YES -->
 
-As an interim workaround, add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected
+To work around this issue, add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected
 root certificates as distrusted and rebuilds the trust store each time the Edge host boots. This workaround applies to
 Edge hosts that run Ubuntu.
 
@@ -34,9 +34,9 @@ Edge hosts that run Ubuntu.
 3. Select the cluster profile that your Edge cluster uses, and
    [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
 
-4. In the new profile version, select the OS layer and add the following cloud-init stage to its YAML. If the YAML
-   already contains a `stages` section, add the `boot.before` stage to the existing section instead of creating a second
-   one.
+4. In the new profile version, select the OS layer, and then add the following cloud-init stage to its YAML. If the YAML
+   already contains a `stages` section, add the `boot.before` stage to it instead of creating a second one. If it also
+   contains a `boot.before` stage, add the `emudhra-distrust-debian` entry to that stage's list.
 
    ```yaml
    stages:
@@ -50,9 +50,9 @@ Edge hosts that run Ubuntu.
                  echo "emudhra-distrust: $conf not found" >&2
                  exit 1
              fi
-             sed -i 's/\r$//' "$conf"
+             sed --in-place 's/\r$//' "$conf"
              for f in emSign_ECC_Root_CA_-_G3.crt emSign_Root_TLS_CA_-_G3.crt Comodo_AAA_Services_root.crt AAA_Certificate_Services.crt; do
-                 sed -i "s|^mozilla/$f\$|!&|" "$conf"
+                 sed --in-place "s|^mozilla/$f\$|!&|" "$conf"
              done
              if [ -x /usr/sbin/update-ca-certificates ]; then
                  /usr/sbin/update-ca-certificates --fresh
@@ -60,9 +60,6 @@ Edge hosts that run Ubuntu.
                  update-ca-certificates --fresh
              fi
    ```
-
-   The stage adds a `!` prefix to the entries for the affected root certificates in `/etc/ca-certificates.conf`, which
-   marks them as distrusted, and then rebuilds the trust store.
 
 5. Save your changes.
 
@@ -90,8 +87,8 @@ Edge hosts with limited network bandwidth may fail to download and extract the p
 provisioning or agent upgrades.
 
 Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit.
-The limit is 45 minutes in Palette agent versions 4.10.3 through 4.10.9, and six hours in version 4.10.10 and later. If
-an attempt does not complete within that time, the Palette agent starts the next attempt from the beginning, because it
+The limit is 45 minutes in Palette agent versions 4.10.3 through 4.10.9, and 6 hours in version 4.10.10 and later. If an
+attempt does not complete within that time, the Palette agent starts the next attempt from the beginning, because it
 does not resume partially completed downloads.
 
 If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent

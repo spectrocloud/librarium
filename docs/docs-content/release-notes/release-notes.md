@@ -38,8 +38,8 @@ tags: ["release-notes"]
 
 - Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the interim
-  workaround in
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
+  in
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
 
 <!-- vale Vale.Spelling = YES -->
@@ -50,7 +50,7 @@ tags: ["release-notes"]
 
 - Fixed an issue where provider image downloads on Edge hosts with limited network bandwidth repeatedly failed after 45
   minutes with the error `context deadline exceeded`. The cluster remained in the **Provisioning** state, or the agent
-  upgrade did not complete. The time limit for each download and extraction attempt is now six hours. For more
+  upgrade did not complete. The time limit for each download and extraction attempt is now 6 hours. For more
   information, refer to
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
 
