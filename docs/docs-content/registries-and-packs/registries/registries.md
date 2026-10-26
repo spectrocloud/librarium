@@ -79,7 +79,8 @@ registries in Palette SaaS; the other registries were added manually.
 
     ![Default registries compared to manually added registries](/registries_default-registries.webp)
 
-If you edit a registry and change its endpoint, you must re-enter its password or token.
+If you edit a registry and change its endpoint, re-enter its password or token. Otherwise, validating or saving the
+registry fails.
 
 ## Resources
 
