@@ -25,15 +25,21 @@ is _not_ required.
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you
 create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included.
 
-This is _not_ required when using [Minimum Permissions Policies](./minimum-permissions-policies.md).
+For EKS clusters, attaching **AmazonEBSCSIDriverPolicy** through **Add IAM policies** is not enough. Configure IAM Roles
+for Service Accounts (IRSA) for the Amazon EBS CSI instead. Refer to the **Configure IRSA for Amazon EBS CSI** steps in
+the [Prerequisites](../eks.md#prerequisites) section.
+
+This is _not_ required when using [Minimum Permissions Policies](./minimum-permissions-policies.md). If you use the
+minimum permissions policies and want to use the **Add IAM policies** option, add the `iam:ListPolicies` permission to
+the IAM User or Role that Palette uses. Palette also needs the `iam:GetPolicy` permission on each policy you attach.
 
 Use the following steps to add node-level policies.
 
 1. Log in to Palette.
-2. Switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the main menu.
-3. Click on **Cloud Accounts**.
+2. Switch to the **Tenant Admin** project, and select **Tenant Settings** from the left main menu.
+3. Select **Cloud Accounts**.
 4. Add an AWS account if one does not exist.
-5. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional Amazon
+5. After validation of the AWS credentials, ensure **Add IAM policies** is enabled. You can specify additional Amazon
    Resource Names (ARNs) to be attached. The attached policies will be included to all the clusters launched with this
    specific AWS cloud Account.
 
