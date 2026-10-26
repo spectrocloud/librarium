@@ -175,12 +175,6 @@
   }
 }
 
-@media (max-width: 600px) {
-  .simpleCardGrid.simpleCardGridCompact {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 .simpleCard.simpleCardCompact {
   position: relative;
   min-width: 0;

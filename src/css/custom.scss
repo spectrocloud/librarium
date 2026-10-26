@@ -346,13 +346,6 @@ $landing-glyph-vm: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/
   --landing-glyph: #{$landing-glyph-ai};
 }
 
-.landing-section--k8s {
-  --landing-rail-start: var(--landingK8sRailStart);
-  --landing-rail-end: var(--landingK8sRailEnd);
-  --landing-accent: var(--landingK8sAccent);
-  --landing-glyph: #{$landing-glyph-k8s};
-}
-
 .landing-section--vm {
   --landing-rail-start: var(--landingVmRailStart);
   --landing-rail-end: var(--landingVmRailEnd);

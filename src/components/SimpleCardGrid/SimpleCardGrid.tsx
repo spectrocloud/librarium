@@ -83,7 +83,7 @@ function SimpleCardBody(
         <p className={styles.simpleCardDescription}>{description}</p>
       </div>
       <div className={styles.simpleCardFooter}>
-        {tags && <SimpleCardTags tags={tags} compact={compact} />}
+        {tags && <SimpleCardTags tags={tags} />}
         {compact ? (
           // A text link look. The whole card is already a link, so it is not a second interactive element.
           <span className={styles.simpleCardFooterLink}>
@@ -101,19 +101,17 @@ function SimpleCardBody(
   );
 }
 
-// Environments are plain text, never chips. Compact cards keep each value on one line, so "Air-gapped" never splits.
-function SimpleCardTags({ tags, compact }: { tags: string[]; compact?: boolean }) {
+// Environments are plain text, never chips. Each value stays on one line, so "Air-gapped" never splits.
+function SimpleCardTags({ tags }: { tags: string[] }) {
   return (
     <div className={styles.simpleCardTags}>
       <strong>Environments:</strong>&ensp;
-      {compact
-        ? tags.map((tag, i) => (
-            <React.Fragment key={tag}>
-              {i > 0 && " · "}
-              <span className={styles.simpleCardTagValue}>{tag}</span>
-            </React.Fragment>
-          ))
-        : tags.join(" · ")}
+      {tags.map((tag, i) => (
+        <React.Fragment key={tag}>
+          {i > 0 && " · "}
+          <span className={styles.simpleCardTagValue}>{tag}</span>
+        </React.Fragment>
+      ))}
     </div>
   );
 }
