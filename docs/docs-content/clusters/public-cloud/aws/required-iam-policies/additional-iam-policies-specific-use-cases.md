@@ -18,6 +18,10 @@ If you plan to deploy Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)
 If you are using the [Minimum Permissions Policies](./minimum-permissions-policies.md) for EKS (static or dynamic), this
 is _not_ required.
 
+Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
+CloudFormation, not Palette, uses these actions to tag the IAM roles in the Palette CloudFormation stack, and stack
+updates fail without them.
+
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
 ## Global Role Additional Policies
