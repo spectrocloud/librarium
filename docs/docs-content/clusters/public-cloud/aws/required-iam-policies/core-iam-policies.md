@@ -42,6 +42,10 @@ access your AWS account.
 
 <TabItem label="PaletteDeploymentPolicy" value="palette-deployment-policy">
 
+Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
+CloudFormation, not Palette, uses these actions to tag the IAM roles in the Palette CloudFormation stack, and stack
+updates fail without them.
+
 <PartialsComponent category="permissions" name="aws-deployment-policy" />
 
 </TabItem>
