@@ -23,6 +23,9 @@ on:
 
 
 
+permissions:
+  packages: write # Deletes old librarium image versions from GHCR.
+
 jobs:
   prune:
     name: Prune Container Images

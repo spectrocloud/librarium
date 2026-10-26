@@ -27,9 +27,17 @@ env:
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
   NODE_VERSION: "24"
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read # The cached-build fallback lists and downloads artifacts from earlier runs.
+      packages: write # Pushes the nightly image to GHCR.
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -115,5 +123,7 @@ jobs:
     name: "Container Image Cleanup"
     needs: [build]
     if: ${{ needs.build.result == 'success' }}
+    permissions:
+      packages: write # Must cover what container-prune.yaml requests.
     uses: ./.github/workflows/container-prune.yaml
     secrets: inherit

@@ -6,6 +6,9 @@ on:
     - cron: "0 17 * * 2,5"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   scan-clusters:
     name: cluster-scan

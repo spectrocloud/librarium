@@ -3,7 +3,7 @@
 # Function to create partials file for breaking changes
 # Params:
 # $1 - breaking changes partials path
-# $2 - release number, example: 4.0.0
+# $2 - release number, example: 4.0.0 or 4.10.17-patch.5 (file br_4_10_17-patch_5.mdx)
 create_partials_file () {
   breaking_changes_partials_path=$1
   release_number=$2
@@ -230,6 +230,7 @@ resolve_legacy_domain() {
     #   • strips leading ./, ../, or /
     #   • removes fragments (#...) and file extensions (.md/.mdx)
     #   • removes duplicate trailing path segments (e.g. foo/foo.md)
+    #   • points same-page links (#...) to the release notes page and keeps their fragment
 # - Rewrites internal links to use legacy documentation paths
 #
 # Notes:
@@ -312,6 +313,14 @@ add_breaking_changes_body() {
 
     clean_link="$link_url"
 
+    # A same-page link points to a heading on the release notes page. The fragment is its whole target,
+    # so keep it. Without this, the link would point to the root of the legacy site.
+    fragment=""
+    if [[ $clean_link == "#"* ]]; then
+      fragment="$clean_link"
+      clean_link="release-notes"
+    fi
+
     # Strip leading ./, ../ or /
     [[ $clean_link == ../* ]] && clean_link="${clean_link#../}"
     [[ $clean_link == /*  ]] && clean_link="${clean_link#/}"
@@ -332,7 +341,7 @@ add_breaking_changes_body() {
       clean_link=$(IFS='/'; echo "${segments[*]}")
     fi
 
-    replacement="[$link_text]($legacy_domain/$clean_link)"
+    replacement="[$link_text]($legacy_domain/$clean_link$fragment)"
     new_line="${new_line//"$match"/$replacement}"
   done < <(printf '%s\n' "$new_line" | grep -oE '\[[^]]+\]\([^)]*\)')
 

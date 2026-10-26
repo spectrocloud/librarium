@@ -18,6 +18,9 @@ env:
   ALGOLIA_CRAWLER_API_KEY: ${{ secrets.ALGOLIA_CRAWLER_V3_API_KEY }}
   CRAWLER_ID: ${{ secrets.ALGOLIA_CRAWLER_V3_ID }}
 
+permissions:
+  contents: read
+
 jobs:
   docsearch:
     runs-on: ubuntu-latest
