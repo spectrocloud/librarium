@@ -2,7 +2,7 @@
 sidebar_label: "What is Palette?"
 title: "What is Palette?"
 description:
-  "Learn what Spectro Cloud's Palette platform is, and how it reduce the complexities your encounter today with
+  "Learn what Spectro Cloud's Palette platform is and how it reduces the complexities you encounter today with
   Kubernetes."
 icon: ""
 hide_table_of_contents: false
