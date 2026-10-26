@@ -27,7 +27,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: October 21, 2026
+- **Last Updated**: October 26, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -106,6 +106,25 @@ c) MTSaas and DSaas environments will be patched by the spectrocloud team.
 <!-- vale Vale.Terms = YES -->
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
+
+### Mitigation Status
+
+Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. Spectro Cloud expects to release
+patches for the remaining 4.10.x images by October 30, 2026.
+
+The following table lists the expected availability of patches for other components.
+
+| Component                                                                                 | Expected Availability                                       |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Palette 4.8.x and 4.9.x releases                                                          | October 30, 2026                                            |
+| Patched Kubernetes versions                                                               | November 1, 2026                                            |
+| Palette Management Appliance and VerteX Management Appliance for 4.10.x, 4.9.x, and 4.8.x | November 1, 2026                                            |
+| Verified packs with upstream fixes                                                        | In phases, with the first set available by November 1, 2026 |
+
+Appliance mode Edge hosts that run Ubuntu can use an interim workaround to remove the affected root certificates from
+the host trust store. Refer to
+[Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
+for the steps.
 
 ### References
 
