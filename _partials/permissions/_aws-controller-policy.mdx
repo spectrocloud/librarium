@@ -119,7 +119,13 @@ partial_name: aws-controller-policy
         "elasticloadbalancing:DescribeTargetHealth",
         "elasticloadbalancing:RegisterTargets",
         "elasticloadbalancing:DeleteListener",
-        "sts:AssumeRole"
+        "sts:AssumeRole",
+        "autoscaling:PutLifecycleHook",
+        "autoscaling:DeleteLifecycleHook",
+        "autoscaling:DescribeLifecycleHooks",
+        "ec2:RevokeSecurityGroupEgress",
+        "ec2:GetSecurityGroupsForVpc",
+        "elasticloadbalancing:DeregisterTargets"
       ],
       "Resource": ["*"],
       "Effect": "Allow"
@@ -131,7 +137,8 @@ partial_name: aws-controller-policy
         "autoscaling:CreateOrUpdateTags",
         "autoscaling:StartInstanceRefresh",
         "autoscaling:DeleteAutoScalingGroup",
-        "autoscaling:DeleteTags"
+        "autoscaling:DeleteTags",
+        "autoscaling:CancelInstanceRefresh"
       ],
       "Resource": [
         "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
@@ -195,7 +202,13 @@ partial_name: aws-controller-policy
         "s3:PutBucketPolicy",
         "s3:PutBucketPublicAccessBlock",
         "s3:PutObjectAcl",
-        "s3:PutObject"
+        "s3:PutObject",
+        "s3:ListBucket",
+        "s3:PutLifecycleConfiguration",
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetObject",
+        "s3:PutBucketTagging"
       ],
       "Resource": ["arn:*:s3:::*"],
       "Effect": "Allow"

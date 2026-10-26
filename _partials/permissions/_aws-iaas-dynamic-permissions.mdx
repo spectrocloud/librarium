@@ -13,6 +13,7 @@ partial_name: aws-iaas-dynamic-permissions
             "Effect": "Allow",
             "Action": [
                 "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:GetInstanceMetadataDefaults",
                 "ec2:DeleteSubnet",
                 "ec2:DescribeAddresses",
                 "ec2:DescribeInstances",
@@ -69,6 +70,7 @@ partial_name: aws-iaas-dynamic-permissions
                 "elasticloadbalancing:ConfigureHealthCheck",
                 "elasticloadbalancing:AddTags",
                 "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
                 "elasticloadbalancing:ModifyLoadBalancerAttributes"
             ],
             "Resource": "*"
@@ -77,6 +79,29 @@ partial_name: aws-iaas-dynamic-permissions
             "Sid": "IAMPassRole",
             "Effect": "Allow",
             "Action": "iam:PassRole",
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+            ]
+        },
+        {
+            "Sid": "IAMBootstrapDriftProbe",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:GetInstanceProfile"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io",
+                "arn:*:iam::*:instance-profile/*.cluster-api-provider-aws.sigs.k8s.io"
+            ]
+        },
+        {
+            "Sid": "IAMBootstrapStackTagging",
+            "Effect": "Allow",
+            "Action": [
+                "iam:TagRole",
+                "iam:UntagRole"
+            ],
             "Resource": [
                 "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
             ]
