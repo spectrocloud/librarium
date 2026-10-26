@@ -27,6 +27,13 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12367 -->
+
+- When you add a GCP backup location, you can now upload the JSON key file of the service account instead of pasting its
+  contents. This matches how you add a GCP cloud account. For more information, refer to
+  [Add a Backup Location using Static Credentials](../clusters/cluster-management/backup-restore/add-backup-location-static.md#add-a-gcp-bucket).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7459 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12369 -->
 
@@ -37,7 +44,21 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11844 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12375 -->
+
+- Fixed an issue that caused [cluster cost](../clusters/cluster-management/cloud-cost.md), resource usage, and workload
+  summary data to stop updating for clusters whose data grew past the 16 MB MongoDB document size limit.
+
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12371 -->
+
+- Palette removes the deprecated `GET /v1/clusterprofiles` endpoint. Use `POST /v1/dashboard/clusterprofiles` to list
+  cluster profiles instead. Other `/v1/clusterprofiles` endpoints, such as those that create, update, and publish
+  cluster profiles, continue to work. Update any automation, script, or integration that calls `GET /v1/clusterprofiles`
+  before you upgrade, because those calls fail after the upgrade.
 
 ### Edge
 
