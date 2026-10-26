@@ -32,6 +32,7 @@
 }
 
 .simpleCardTags {
+  margin-right: auto;
   font-size: 13px;
   line-height: 20px;
   color: var(--simpleCardSubtle);
@@ -63,6 +64,8 @@
 
 .simpleCardFooter {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   justify-content: flex-end;
   align-items: center;
 }
@@ -98,6 +101,19 @@
   background-color: var(--simpleCardPrimary);
   color: var(--ifm-background-color);
   border-radius: 4px;
+}
+
+.simpleCardIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: var(--simpleCardSecondary);
+  color: var(--ifm-font-color-base);
+  border-radius: 8px;
 }
 
 .simpleCard:hover {
