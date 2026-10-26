@@ -39,10 +39,10 @@ tags: ["release-notes"]
   `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
 
   Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
-  the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with
-  `400 RegistryMaskedCredentialEndpointMismatch`. Palette also no longer validates a saved private Helm registry with
-  its saved credentials, and returns `400 HelmRegistryValidationForbidden`. Enter the credentials in the request
-  instead.
+  the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
+  HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code. Palette also no longer validates a
+  saved private Helm registry with its saved credentials. The request fails with an HTTP 400 response and the
+  `HelmRegistryValidationForbidden` error code. Enter the credentials in the request instead.
 
   Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
   a masked value. A masked value indicates that the secret is set.
