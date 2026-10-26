@@ -212,6 +212,67 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
+## October 23, 2026 - Component Updates {#component-updates-2026-43}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3342 -->
+<!-- RELEASE DATE: October 23, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.27 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.5 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.4 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.32.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.5  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.4  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.27 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.27 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3342. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2475 -->
+
+- Deprecated the `override_kubeadm_configuration` machine pool parameter for EKS, AKS, and GKE clusters in the Spectro
+  Cloud Terraform and Crossplane providers. Palette does not support this parameter for managed Kubernetes clusters, so
+  it has no effect. The Terraform provider now displays a warning when you set it.
+
+<!-- https://spectrocloud.atlassian.net/browse/PSOPS-282 -->
+
+- Built and published Launchpad AI model recipes as standalone content archives in Artifact Studio, allowing new model
+  support and vLLM inference engine updates to ship independently of core product release cycles.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3342. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3342. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.10.5 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.2 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :x: | :white_check_mark: | 1.23.2 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.3 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :white_check_mark: | 0.28.10 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.2 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :x: | :white_check_mark: | 1.13.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :x: | :white_check_mark: | 1.13.0 |
+| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: | :white_check_mark: | 3.8.0 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.13.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.37.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.11.0 |
+| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: | :x: | 8.7.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3342. DO NOT DELETE. -->
+
 ## October 22, 2026 - Release 4.10.32
 
 <!-- PATCH RELEASE TICKET: DOC-3340 -->
@@ -1102,6 +1163,8 @@ The following components have been updated for Palette version 4.10.25.
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.66.0-rev1 |
 | <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.1 |
 | <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.36.0 |
+| <VersionedLink text="csi-longhorn" url="/integrations/packs/?pack=csi-longhorn" /> | `csi` | :white_check_mark: | :x: | 1.13.0 |
+| <VersionedLink text="csi-longhorn-addon" url="/integrations/packs/?pack=csi-longhorn-addon" /> | `addon` | :white_check_mark: | :x: | 1.13.0 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.4 |
 | <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.23.0 |
