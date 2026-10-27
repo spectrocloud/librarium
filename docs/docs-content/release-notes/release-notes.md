@@ -136,6 +136,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   when you create an Edge cluster or add Edge hosts to an existing cluster. Refer to
   [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-6925 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9863 -->
+
+- Palette and Local UI now display a warning when you create an Edge cluster without an overlay network, because IP
+  address changes in a Dynamic Host Configuration Protocol (DHCP) network can cause cluster instability. Refer to
+  [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
+  for guidance on when to enable an overlay network.
+
 #### Bug Fixes
 
 #### Deprecations and Removals
