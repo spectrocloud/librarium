@@ -22,16 +22,16 @@ is _not_ required.
 
 ## Global Role Additional Policies
 
-There may be situations where additional node-level policies must be added to your deployment. For instance, when you
-create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included.
+There may be situations where additional node-level policies must be added to your deployment.
 
-For EKS clusters, attaching **AmazonEBSCSIDriverPolicy** through **Add IAM policies** is not enough. Configure IAM Roles
-for Service Accounts (IRSA) for the Amazon EBS CSI instead. Refer to the **Configure IRSA for Amazon EBS CSI** steps in
-the [Prerequisites](../eks.md#prerequisites) section.
+This is _not_ required when using [Minimum Permissions Policies](./minimum-permissions-policies.md).
 
-This is _not_ required when using [Minimum Permissions Policies](./minimum-permissions-policies.md). If you use the
-minimum permissions policies and want to use the **Add IAM policies** option, add the `iam:ListPolicies` permission to
-the IAM User or Role that Palette uses. Palette also needs the `iam:GetPolicy` permission on each policy you attach.
+:::info
+
+To use the **Add IAM policies** option, add the `iam:ListPolicies` permission to the IAM User or Role that Palette uses.
+Palette also needs the `iam:GetPolicy` permission on each policy you attach.
+
+:::
 
 Use the following steps to add node-level policies.
 
@@ -42,10 +42,6 @@ Use the following steps to add node-level policies.
 5. After validation of the AWS credentials, ensure **Add IAM policies** is enabled. You can specify additional Amazon
    Resource Names (ARNs) to be attached. The attached policies will be included to all the clusters launched with this
    specific AWS cloud Account.
-
-**AmazonEBSCSIDriverPolicy:**
-
-<PartialsComponent category="permissions" name="aws-ebs-csi-driver-policy" />
 
 ## Host Resource Groups Policy
 
