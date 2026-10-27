@@ -164,6 +164,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5627 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
+
+- You can now add the Cert Manager pack to the cluster profiles of Edge clusters to customize Cert Manager, either when
+  you deploy the cluster or later. The pack takes over the default Cert Manager installation from Palette, and Palette
+  restores its default configuration if you remove the pack. Refer to
+  [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
