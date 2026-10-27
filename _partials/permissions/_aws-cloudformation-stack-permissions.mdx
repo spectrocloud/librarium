@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-cloudformation-stack-permissions
 ---
-**Last Update**: February 21, 2026
+**Last Update**: October 27, 2026
 
 ```json
 {
@@ -14,7 +14,12 @@ partial_name: aws-cloudformation-stack-permissions
             "Action": [
                 "cloudformation:CreateStack",
                 "cloudformation:DescribeStacks",
-                "cloudformation:UpdateStack"
+                "cloudformation:UpdateStack",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:ListStackResources",
+                "cloudformation:GetTemplate",
+                "cloudformation:ContinueUpdateRollback"
             ],
             "Resource": "*"
         },
@@ -23,7 +28,18 @@ partial_name: aws-cloudformation-stack-permissions
             "Effect": "Allow",
             "Action": [
                 "iam:CreateRole",
-                "iam:AttachRolePolicy"
+                "iam:AttachRolePolicy",
+                "iam:TagRole",
+                "iam:UntagRole",
+                "iam:UpdateAssumeRolePolicy",
+                "iam:GetPolicyVersion",
+                "iam:CreatePolicyVersion",
+                "iam:DeletePolicyVersion",
+                "iam:GetPolicy",
+                "iam:ListPolicyVersions",
+                "iam:GetRole",
+                "iam:GetInstanceProfile",
+                "iam:DetachRolePolicy"
             ],
             "Resource": "*"
         }
