@@ -126,6 +126,15 @@ tags: ["release-notes"]
   cluster profiles, continue to work. Update any automation, script, or integration that calls `GET /v1/clusterprofiles`
   before you upgrade, because those calls fail after the upgrade.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12360 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12379 -->
+
+- The Palette API endpoints for web-based kubectl are deprecated. Web-based kubectl is no longer available in Palette,
+  and the `GET /v1/system/config/kubectl`, `PUT /v1/system/config/kubectl`,
+  `GET /v1/users/kubectl/session/{sessionUid}`, and `GET /v1/spectroclusters/{uid}/kubectl/redirect` endpoints have no
+  replacement. Remove any calls to these endpoints from your automation, scripts, and integrations. Refer to the
+  [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.b-start -->
