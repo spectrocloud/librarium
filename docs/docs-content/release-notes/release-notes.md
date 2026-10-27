@@ -69,6 +69,24 @@ tags: ["release-notes"]
     response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
     has the `user.create` permission.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6294 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
+
+- Palette now rejects Kubernetes upgrades that skip a minor version or change the major version. Upgrade one minor
+  version at a time, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
+
+  - Cluster updates, including pending and scheduled cluster template updates.
+
+  - Updates to a cluster profile that clusters use. The profile cannot move more than one minor version ahead of the
+    oldest Kubernetes version running on those clusters.
+
+  - Cluster profile changes in a cluster template, and attaching a cluster to a cluster template.
+
+  Rejected requests from the Palette UI, API, Terraform, and Crossplane fail with an HTTP 400 response and the
+  `K8sUpgradeNotSupported` error code, and the cluster stays on its current version. Patch upgrades and imported
+  clusters are not affected. Refer to [Update a Cluster](../clusters/cluster-management/cluster-updates.md#limitations)
+  for more information.
+
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
 #### Features
@@ -121,6 +139,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- release-notes-edge-callout-4.10.b-end -->
 
 #### Breaking Changes {#breaking-changes-edge-4.10.b}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9338 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9866 -->
+
+- Local UI now rejects cluster updates that move Kubernetes more than one minor version ahead of the version last
+  applied to the cluster or that downgrade Kubernetes after a successful upgrade. Local UI displays an error, and the
+  cluster stays on its current configuration. To upgrade by more than one minor version, upload a cluster profile
+  version for each minor version in turn. Requests to the Edge Management API fail with an HTTP 400 response and the
+  `K8sMultiMinorUpgradeNotSupported` or `K8sDowngradeAfterUpgradeNotSupported` error code. Refer to
+  [Update Local Cluster](../clusters/edge/local-ui/cluster-management/update-cluster.md#kubernetes-version-limits) for
+  more information.
 
 #### Upgrade Notes {#upgrade-notes-edge-4.10.b}
 
