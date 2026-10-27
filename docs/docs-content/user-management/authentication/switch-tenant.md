@@ -33,6 +33,10 @@ having to log in again. This feature is available to self-hosted Palette, VerteX
 
    ![A view of the tenant switch menu](/user-management_authentication_switch-tenant_tenant-selection.webp)
 
+5. _(Tenants that enforce passkeys only)_ If prompted, verify your passkey or add one. If you already verified a passkey
+   in your current session, Palette does not prompt you again. Refer to
+   [Passkey Verification](./ui-autentication.md#passkey-verification) for more information.
+
 You are now switched to the selected tenant and can access its resources and configurations. Keep in mind that your
 access is limited to the permissions assigned to your user account in the tenant.
 

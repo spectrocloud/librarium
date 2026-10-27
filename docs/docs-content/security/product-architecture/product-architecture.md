@@ -67,7 +67,9 @@ Palette fully supports RBAC and two authentication modes:
 
 - **Local Authentication and Password Policy** - With local authentication, a user email serves as the ID, and a
   password is compared with the one-way hash stored in the database to authenticate users to a tenant. The platform
-  administrator can set password policy to control the requirements for password length, rule, and expiration.
+  administrator can set password policy to control the requirements for password length, rule, and expiration. Tenant
+  admins can also require users who sign in with a password to verify a passkey as a second factor. Refer to
+  [Passkey Enforcement](../../tenant-settings/passkeys.md) for more information.
 
 - **Single Sign-On (SSO) and Multi-Factor Authentication (MFA)** - In these modes, the tenant is configured to have
   Security Assertion Markup Language (SAML) 2.0 Identify Provider (IDP) integrations. If the IDP requires MFA, you are
