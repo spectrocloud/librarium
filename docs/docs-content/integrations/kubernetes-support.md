@@ -74,8 +74,8 @@ using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to v
 the official Kubernetes upgrade guidelines in the
 [Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page. Palette enforces this guideline for the
 clusters it manages, including PXK and PXK-E clusters, and rejects an upgrade that skips a minor version or changes the
-major version. Refer to [Update a Cluster](../clusters/cluster-management/cluster-updates.md#limitations) for more
-information.
+major version. Patch upgrades and imported clusters are not affected. Refer to
+[Update a Cluster](../clusters/cluster-management/cluster-updates.md#limitations) for more information.
 
 :::tip
 

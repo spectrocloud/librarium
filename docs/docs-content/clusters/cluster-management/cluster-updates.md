@@ -38,11 +38,11 @@ upgrading, you review the information provided in the
   [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
 - You cannot skip a minor version or change the major version when you upgrade the Kubernetes version of a cluster.
-  Upgrade one minor version at a time, for example from 1.33 to 1.34 and then to 1.35. Palette rejects an update that
-  skips a minor version with the `K8sUpgradeNotSupported` error, and the cluster stays on its current version. This
-  applies to updates through the Palette UI, API, Terraform, and Crossplane, including pending and scheduled cluster
-  template updates. Patch upgrades and imported clusters are not affected. Local UI enforces the same rule for locally
-  managed Edge clusters. Refer to
+  Upgrade one minor version at a time, for example from 1.33 to 1.34 and then to 1.35. Palette rejects these updates
+  with the `K8sUpgradeNotSupported` error code, and the cluster stays on its current version. This check applies to
+  updates through the Palette UI, API, Terraform, and Crossplane, including pending and scheduled cluster template
+  updates. Patch upgrades and imported clusters are not affected. Local UI applies its own Kubernetes version limits to
+  locally managed Edge clusters. Refer to
   [Update Local Cluster](../edge/local-ui/cluster-management/update-cluster.md#kubernetes-version-limits) for more
   information. For upgrade guidance, refer to the documentation of your Kubernetes distribution.
 

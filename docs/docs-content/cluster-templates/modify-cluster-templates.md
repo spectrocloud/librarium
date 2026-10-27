@@ -126,9 +126,9 @@ make changes to a cluster profile attached to a cluster template, you must
 profile and update the version referenced in the cluster template. Cluster profiles are modified the same way,
 regardless of whether a cluster is or is not deployed using the cluster template.
 
-If clusters are attached to the cluster template, Palette rejects a profile version update or replacement that would
-move an attached cluster more than one Kubernetes minor version ahead, with the `K8sUpgradeNotSupported` error. Change
-the Kubernetes version of the template one minor version at a time.
+If clusters are attached to the cluster template, Palette rejects a profile version update or replacement that moves an
+attached cluster more than one Kubernetes minor version ahead of its current version. The request fails with the
+`K8sUpgradeNotSupported` error code. Change the Kubernetes version of the template one minor version at a time.
 
 ##### Update Cluster Profile Version
 
