@@ -39,11 +39,11 @@ the tenant name. Ask your Palette system administrator for the custom Palette UR
 ## Passkey Verification
 
 If you sign in with an email address and password to a tenant that enforces passkeys, Palette checks for a passkey after
-you enter your password. Tenant admins turn on enforcement. Refer to
+you enter your password. Tenant administrators turn on enforcement. Refer to
 [Passkey Enforcement](../../tenant-settings/passkeys.md) for more information.
 
 - If you have a passkey, Palette prompts you to choose one. Select the passkey and verify it with your authenticator to
-  complete the sign in.
+  complete the sign-in.
 
 - If you do not have a passkey and your grace period is not yet over, Palette prompts you to add one. Select **Add
   passkey** to add one now, or select **Skip** to continue without one. Your **My Profile** > **Security** tab displays
