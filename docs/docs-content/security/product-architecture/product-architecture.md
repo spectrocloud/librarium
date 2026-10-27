@@ -72,7 +72,7 @@ Palette fully supports RBAC and two authentication modes:
   [Passkey Enforcement](../../tenant-settings/passkeys.md) for more information.
 
 - **Single Sign-On (SSO) and Multi-Factor Authentication (MFA)** - In these modes, the tenant is configured to have
-  Security Assertion Markup Language (SAML) 2.0 Identify Provider (IDP) integrations. If the IDP requires MFA, you are
+  Security Assertion Markup Language (SAML) 2.0 Identity Provider (IDP) integrations. If the IDP requires MFA, you are
   redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the
   tenant.
 

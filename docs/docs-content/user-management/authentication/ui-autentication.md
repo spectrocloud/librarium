@@ -51,7 +51,7 @@ you enter your password. Tenant administrators turn on enforcement. Refer to
 
 - If you do not have a passkey and your grace period is over, you must add a passkey before you can continue.
 
-If you cancel the passkey prompt, or Palette cannot verify the passkey, Palette does not sign you in. Palette does not
+If you cancel the passkey prompt or Palette cannot verify the passkey, Palette does not sign you in. Palette does not
 ask for a passkey when you sign in through SSO. To add or delete passkeys, refer to [Manage Passkeys](./passkeys.md).
 
 ## Switch Tenant

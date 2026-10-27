@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Passkeys"
+sidebar_label: "Passkey Enforcement"
 title: "Passkey Enforcement"
 description: "Require users who sign in to your Palette tenant with a password to also verify a passkey."
 icon: ""
@@ -12,8 +12,8 @@ Tenant administrators can require every user who signs in to the tenant with an 
 verify a passkey. A passkey is a second authentication factor that uses the
 [WebAuthn](https://www.w3.org/TR/webauthn-2/) standard. Users create passkeys with an authenticator, such as a hardware
 security key, a platform authenticator, or a password manager. When you turn on passkey enforcement, Palette asks for a
-passkey after the password each time a user signs in to the tenant, and gives users without a passkey a grace period in
-which to add one.
+passkey after the password each time a user signs in to the tenant. Users without a passkey get a grace period in which
+to add one.
 
 Users add and delete their own passkeys. Refer to [Manage Passkeys](../user-management/authentication/passkeys.md) for
 the user procedures.
@@ -34,7 +34,7 @@ Enforcement also behaves in the following ways.
 
 - Each user's grace period starts on the date you turned on enforcement or the date the user account was created,
   whichever is later. A user added after you turn on enforcement gets the full grace period. During the grace period,
-  users find the date their grace period ends on their **My Profile** > **Security** tab.
+  users can find its end date on their **My Profile** > **Security** tab.
 
 - Changing the grace period restarts it for every user from the date of the change, including users whose grace period
   had already ended.
@@ -49,9 +49,9 @@ Enforcement also behaves in the following ways.
 
 Passkey enforcement does not apply to the following authentication methods.
 
-- Signing in through SSO. Your identity provider handles multi-factor authentication for these users.
+- Signing in through Single Sign-On (SSO). Your identity provider handles multi-factor authentication for these users.
 
-- API requests authenticated with an [API key](../user-management/authentication/api-key/api-key.md).
+- Authenticating API requests with an [API key](../user-management/authentication/api-key/api-key.md).
 
 - Signing in with `kubectl` to a cluster whose Kubernetes layer uses **Palette** as the OpenID Connect (OIDC) identity
   provider. These sign-ins use the password only.
@@ -59,8 +59,8 @@ Passkey enforcement does not apply to the following authentication methods.
 :::danger
 
 Tenant administrators cannot reset another user's passkeys. A user who loses all their passkeys cannot sign in to a
-tenant that enforces passkeys, so we recommend that every user, including tenant administrators, adds at least two
-passkeys. Contact the support team to discuss recovery options.
+tenant that enforces passkeys. We recommend that every user, including tenant administrators, add at least two passkeys.
+Contact the support team to discuss recovery options.
 
 :::
 
