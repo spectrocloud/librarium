@@ -304,6 +304,18 @@ page if the headings and titles are unique.
 
 - Do not use verbs ending with _-ing_ (gerund).
 
+When a heading repeats on a page, such as a Validate section under each procedure or a Debug Steps section under each
+troubleshooting scenario, keep the heading text and give each heading a section-specific anchor ID with a `{#custom-id}`
+suffix. Without an ID, Docusaurus numbers duplicate anchors by position (`#validate`, `#validate-1`), so a link lands on
+a different section once sections are added or reordered. Use lowercase kebab-case IDs that name the parent section.
+
+| Good ✅                                                                             | Bad ❌                           |
+| ----------------------------------------------------------------------------------- | -------------------------------- |
+| `### Validate {#validate-add-passkey}`<br>`### Validate {#validate-delete-passkey}` | `### Validate`<br>`### Validate` |
+
+Adding an ID to a published heading removes its old anchor, so update every link that points to it. Headings that the
+release scripts generate from `scripts/release/templates/` keep their template anchors.
+
 ### Headline Style
 
 Use title case for headings. Below are some helpful tips.
