@@ -130,9 +130,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12379 -->
 
 - The `POST /v1/users/kubectl/session`, `GET /v1/users/kubectl/session/{sessionUid}`, and
-  `DELETE /v1/users/kubectl/session/{sessionUid}` Palette API endpoints are deprecated. These endpoints supported
-  web-based kubectl, which is no longer available in Palette, so they have no replacement. Remove any calls to these
-  endpoints from your automation, scripts, and integrations. Refer to the
+  `DELETE /v1/users/kubectl/session/{sessionUid}` Palette [API endpoints](/api/introduction) are now deprecated. These
+  endpoints supported web-based `kubectl`, which is no longer available in Palette, so they have no replacement. Remove
+  any calls to these endpoints from your automation, scripts, and integrations. Refer to the
   [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### Edge
