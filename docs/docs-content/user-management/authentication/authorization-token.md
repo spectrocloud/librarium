@@ -75,3 +75,27 @@ curl --location 'https://api.spectrocloud.com/v1/auth/refresh/eyJhbGc..........'
   "Authorization": "eyJhbGc.........."
 }
 ```
+
+## Authorization Tokens and Passkeys
+
+If your tenant [enforces passkeys](../../tenant-settings/passkeys.md), the `v1/auth/authenticate` endpoint returns a
+restricted authorization token in the following cases.
+
+- If you have a passkey, the token allows you only to complete passkey verification.
+
+- If you do not have a passkey and your grace period is over, the token allows you only to add a passkey.
+
+You cannot use a restricted token for any other API request. The response shows whether the token is restricted. The
+`isMfa` field is `true` when passkey verification is required, and the `mfaEnrollment` field is `required` when you must
+add a passkey. The following example shows the response for a user who must verify a passkey.
+
+```json hideClipboard
+{
+  "Authorization": "eyJhbGc..........",
+  "isMfa": true,
+  "mfaEnrollment": "none"
+}
+```
+
+To authenticate API requests for automation in a tenant that enforces passkeys, use an [API key](./api-key/api-key.md)
+instead. Passkey enforcement does not apply to API keys.

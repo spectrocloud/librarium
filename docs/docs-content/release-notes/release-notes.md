@@ -91,6 +91,15 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11804 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12372 -->
+
+- Tenant administrators can now require users who sign in to the tenant with a password to also verify a passkey as a
+  second authentication factor. Users without a passkey get a configurable grace period (14 days by default) in which to
+  add one from their **My Profile** > **Security** tab. Passkey enforcement does not apply to SSO sign-ins or to API
+  requests authenticated with API keys. For more information, refer to
+  [Passkey Enforcement](../tenant-settings/passkeys.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
