@@ -129,10 +129,10 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12360 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12379 -->
 
-- The Palette API endpoints for web-based kubectl are deprecated. Web-based kubectl is no longer available in Palette,
-  and the `GET /v1/system/config/kubectl`, `PUT /v1/system/config/kubectl`,
-  `GET /v1/users/kubectl/session/{sessionUid}`, and `GET /v1/spectroclusters/{uid}/kubectl/redirect` endpoints have no
-  replacement. Remove any calls to these endpoints from your automation, scripts, and integrations. Refer to the
+- The `POST /v1/users/kubectl/session`, `GET /v1/users/kubectl/session/{sessionUid}`, and
+  `DELETE /v1/users/kubectl/session/{sessionUid}` Palette API endpoints are deprecated. These endpoints supported
+  web-based kubectl, which is no longer available in Palette, so they have no replacement. Remove any calls to these
+  endpoints from your automation, scripts, and integrations. Refer to the
   [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### Edge
