@@ -131,7 +131,7 @@ jobs:
           ## Describe the Change
           This PR updates the docs IAM permission files for branch `${{ matrix.target }}` according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository (branch: `${{ matrix.source }}`). 
           The files are compared using the `scripts/permissions-sync.sh` script.
-          Please review this PR carefully before merging it and update the **Last Update** line for the permission that has been updated.'
+          The **Last Update** line of each updated file is set to the date of this run. Please review this PR carefully before merging it.'
           output=$(gh pr create --base ${{ matrix.target }} --title "docs: update IAM permissions for ${{ matrix.target }}" --body "$pr_body")
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
           echo "PR successfully created $pr_url."
