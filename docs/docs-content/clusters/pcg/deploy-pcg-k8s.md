@@ -98,7 +98,8 @@ development and testing environments.
   Refer to [Use Azure Managed Identities](../public-cloud/azure/azure-managed-identities.md) for more information.
 
   - At least three nodes.
-  - The management identity attached to every node.
+  - The [management identity](../public-cloud/azure/azure-managed-identities.md#managed-identities) attached to every
+    node.
   - If the PCG uses a proxy, `169.254.169.254` in the `NO_PROXY` list.
   - No component that intercepts Azure Instance Metadata Service (IMDS) requests, such as `aad-pod-identity`.
 

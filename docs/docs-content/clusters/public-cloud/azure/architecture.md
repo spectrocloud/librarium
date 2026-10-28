@@ -197,7 +197,9 @@ Use the following resource links below to enable and manage proxy configurations
    to the [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md) guide.
 
 2. Configure the PCG with the proxy server details. For instructions on how to do this, refer to the
-   [Enable and Manage Proxy Configurations](../../pcg/manage-pcg/configure-proxy.md) guide.
+   [Enable and Manage Proxy Configurations](../../pcg/manage-pcg/configure-proxy.md) guide. For **Managed identity**
+   cloud accounts, add `169.254.169.254` to the `NO_PROXY` list so that the PCG can reach the Azure Instance Metadata
+   Service (IMDS).
 
 3. Configure your Azure account to use the PCG. When adding an Azure account to Palette, select the **Connect Private
    Cloud Gateway** option and select the PCG cluster you deployed. For **Managed identity** cloud accounts, select the
