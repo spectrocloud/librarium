@@ -94,40 +94,74 @@ Headlamp on a virtual cluster differs from Headlamp on a host cluster in the fol
 
 - In **Proxied** mode, Palette deploys the Spectro Proxy pack in the `default` namespace of the virtual cluster.
 
-- Palette uses the first OIDC identity provider that it finds, in the following order.
+- Palette uses the first OIDC identity provider that it finds, in the following order. You do not need to configure an
+  identity provider in the virtual cluster or cluster group settings for Headlamp.
 
-  1. The identity provider selected in the Headlamp pack.
-     <!-- TODO(DOC-3370) Sadath Q2: where users set an explicit identity provider for Headlamp on a virtual cluster. -->
-
-  2. The OIDC configuration of the virtual cluster. Refer to
+  1. The OIDC configuration of the virtual cluster. Refer to
      [Configure OIDC for a Virtual Cluster](../palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
-  3. The OIDC configuration of the host cluster.
+  2. The OIDC configuration of the host cluster.
 
-  4. Palette OIDC, if none of these is configured.
+  3. Palette OIDC, if neither is configured.
 
 ### Prerequisites
 
 - A Palette Virtual Cluster that uses the Kubernetes distribution.
-  <!-- TODO(DOC-3370) Sadath Q5: anything needed for virtual clusters created before 4.10.b (cert-manager, template defaults). -->
 
-- The Headlamp pack version 0.44.0 or later. <!-- TODO(DOC-3370) Sadath Q1: is 0.45.0 also supported? -->
+- cert-manager installed in the virtual cluster. Headlamp requires cert-manager. Palette installs cert-manager in new
+  virtual clusters by default.
+  <!-- TODO(DOC-3370) Sadath: do virtual clusters created before 4.10.b need cert-manager (and the TokenReview RBAC and PriorityClass sync defaults) added by hand, and how? -->
 
-- If you use a **Custom** OIDC identity provider, the OIDC values configured in both the Kubernetes layer of the host
-  cluster and the Headlamp pack.
-  <!-- TODO(DOC-3370) Sadath Q3: which Headlamp fields, and the callback URL for Proxied and Direct access. -->
+- The Headlamp pack version 0.44.0.
+
+- If Palette resolves the identity provider to **Custom**, an OIDC app in your identity provider and the OIDC values
+  configured in the Kubernetes layer of the host cluster. Refer to [Configure Custom OIDC](#configure-custom-oidc).
+
+### Configure Custom OIDC
+
+When Palette resolves the identity provider to **Palette** or **Inherit from Tenant**, it configures the Headlamp OIDC
+values for you. When it resolves to **Custom**, Palette does not configure them, and you must enter the OIDC values in
+the Headlamp pack.
+
+<!-- TODO(DOC-3370) Sadath: callback URL for Direct access. The URL below is for Proxied access. -->
+
+1. In the OIDC app of your identity provider, add the following URL as a redirect URI. Replace `<palette-host>` with the
+   hostname of your Palette instance.
+
+   ```text
+   https://<palette-host>/v1/tenantApps/spectroclusters/dashboard/idp/callback
+   ```
+
+   This URL is different from the callback URL that you use for [SSO](../../user-management/saml-sso/saml-sso.md) in
+   your tenant settings.
+
+2. When you add the Headlamp pack to your add-on cluster profile, set the following OIDC values in the pack YAML.
+   Replace the placeholders with the values of your OIDC app.
+
+   ```yaml
+   charts:
+     headlamp:
+       config:
+         oidc:
+           clientID: "<oidc-client-id>"
+           clientSecret: "<oidc-client-secret>"
+           issuerURL: "<oidc-issuer-url>"
+           scopes: "openid,profile,email"
+           callbackURL: "https://<palette-host>/v1/tenantApps/spectroclusters/dashboard/idp/callback"
+   ```
 
 ### Deploy Headlamp on a Virtual Cluster
 
 1. Follow steps 1 - 4 of [Enablement](#enablement) to create an add-on cluster profile with the Headlamp pack. In the
-   Headlamp pack, select the **Access** mode for the virtual cluster.
+   Headlamp pack, select the **Access** mode for the virtual cluster. If Palette resolves the identity provider to
+   **Custom**, set the OIDC values from [Configure Custom OIDC](#configure-custom-oidc).
 
-2. Create role bindings for the users who access Headlamp. Refer to
+2. Create role bindings for the users who access Headlamp. The roles that you bind determine what users can view in
+   Headlamp. For example, to view the entire virtual cluster, bind the `cluster-admin` role. Refer to
    [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings).
-   <!-- TODO(DOC-3370) Sadath Q6: which roles and bindings users need before they select Connect. -->
 
-3. From the left main menu, select **Clusters**, and then select your virtual cluster.
-   <!-- TODO(DOC-3370) Confirm in the UI that virtual clusters attach add-on profiles from the Profile tab. -->
+3. From the left main menu, select **Clusters**. Select the **Virtual Clusters** tab, and then select your virtual
+   cluster.
 
 4. Follow steps 6 - 8 of [Enablement](#enablement) to add the Headlamp add-on cluster profile to the virtual cluster.
 
@@ -147,6 +181,7 @@ Some configuration changes take effect only after you reattach the Headlamp add-
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left main menu, select **Clusters**, and then select your virtual cluster.
+2. From the left main menu, select **Clusters**. Select the **Virtual Clusters** tab, and then select your virtual
+   cluster.
 
 3. Select **Connect** in the **Headlamp Dashboard** row. The Headlamp dashboard opens.
