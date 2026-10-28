@@ -14,16 +14,16 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
 
-Appliance mode Edge hosts validate outbound TLS connections, such as connections to Palette and to image registries,
-against the trust store of the host operating system. This trust store can still trust the root certificates that the
-compromised eMudhra intermediate certificate authorities (CAs) chain to. For more information, refer to
+[Appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge hosts validate outbound TLS connections,
+such as connections to Palette and to image registries, against the trust store of the host operating system. This trust
+store can still trust the root certificates that the compromised eMudhra intermediate certificate authorities (CAs)
+chain to. For more information, refer to
 [Security Advisory 024](../../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure).
 
 <!-- vale Vale.Spelling = YES -->
 
-To work around this issue, add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected
-root certificates as distrusted and rebuilds the trust store each time the Edge host boots. This workaround applies to
-Edge hosts that run Ubuntu.
+This workaround applies to Edge hosts that run Ubuntu. Add a cloud-init stage to the OS pack of your cluster profile.
+The stage marks the affected root certificates as distrusted and rebuilds the trust store each time the Edge host boots.
 
 ### Debug Steps
 
