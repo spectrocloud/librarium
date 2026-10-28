@@ -112,8 +112,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12374 -->
 
 - Palette now provides system macros that resolve to the OIDC configuration of a cluster, including the issuer URL,
-  client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values as
-  `{{.spectro.system.oidc.<key>}}` to place OIDC settings in the keys and format that your Kubernetes distribution
+  client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values, for example
+  `{{.spectro.system.oidc.issuerurl}}`, to place OIDC settings in the keys and format that your Kubernetes distribution
   requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
 
 #### Improvements
