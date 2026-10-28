@@ -99,7 +99,9 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 4. Add an Azure cloud account and select **Managed identity** as the **Authentication method**. In **Private Cloud
    Gateway**, select the PCG that you deployed, and enter the client ID of the management identity in **Managed identity
    client ID**. Select **Validate**, and then select **Confirm**. Refer to
-   [Register and Manage Azure Cloud Accounts](./azure-cloud.md#azure-commercial-cloud).
+   [Register and Manage Azure Cloud Accounts](./azure-cloud.md#azure-commercial-cloud). You can also add managed
+   identity cloud accounts with the
+   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
    If validation fails, check that the management identity is attached to every PCG node and that it has the roles in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
