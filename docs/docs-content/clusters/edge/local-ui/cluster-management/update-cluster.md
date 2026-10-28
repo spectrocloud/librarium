@@ -20,6 +20,25 @@ content bundle from the [Content](./upload-content-bundle.md) page and redeploy 
 
 :::
 
+## Kubernetes Version Limits
+
+Local UI rejects a cluster update that changes the Kubernetes version in either of the following ways:
+
+- The update moves Kubernetes more than one minor version ahead of the version last applied to the cluster. For example,
+  an update from 1.32 to 1.34 is rejected.
+
+- After a successful upgrade, the update moves Kubernetes back to a lower minor version than the version running on the
+  control plane nodes. For example, after an upgrade from 1.33 to 1.34 finishes, an update back to 1.33 is rejected.
+
+If an uploaded configuration crosses either limit, the **Configuration** tab displays an error, and Local UI disables
+**Update** so that you cannot apply the change. These limits apply to every Kubernetes distribution and to airgapped
+clusters. To upgrade by more than one minor version, upload a cluster profile version for each minor version in turn,
+and let each update finish before you upload the next one.
+
+If you automate cluster updates through the [Edge Management API](/api/introduction/#edge-management-api),
+`PUT /v1/edge-mgmt/cluster/{clusterName}` returns an HTTP 400 response with the `K8sMultiMinorUpgradeNotSupported` or
+`K8sDowngradeAfterUpgradeNotSupported` error code.
+
 ## Prerequisites
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
@@ -82,7 +101,8 @@ the Kubernetes upgrade of individual worker pools while the control plane advanc
 any pool without the toggle, while pools with the toggle stay at their current version. K3s and RKE2 clusters are not
 supported.
 
-This is useful when crossing several Kubernetes minor versions, because it reduces how many times worker nodes repave.
+This is useful when you upgrade through more than one Kubernetes minor version, one update at a time, because it reduces
+how many times worker nodes repave.
 
 Two constraints apply while the toggle is enabled.
 

@@ -36,6 +36,24 @@ the tenant name. Ask your Palette system administrator for the custom Palette UR
 
 :::
 
+## Passkey Verification
+
+If you sign in with an email address and password to a tenant that enforces passkeys, Palette checks for a passkey after
+you enter your password. Tenant administrators turn on enforcement. Refer to
+[Passkey Enforcement](../../tenant-settings/passkeys.md) for more information.
+
+- If you have a passkey, Palette prompts you to choose one. Select the passkey and verify it with your authenticator to
+  complete the sign-in.
+
+- If you do not have a passkey and your grace period is not yet over, Palette prompts you to add one. Select **Add
+  passkey** to add one now, or select **Skip** to continue without one. Your **My Profile** > **Security** tab displays
+  the date your grace period ends.
+
+- If you do not have a passkey and your grace period is over, you must add a passkey before you can continue.
+
+If you cancel the passkey prompt or Palette cannot verify the passkey, Palette does not sign you in. Palette does not
+ask for a passkey when you sign in through SSO. To add or delete passkeys, refer to [Manage Passkeys](./passkeys.md).
+
 ## Switch Tenant
 
 If you are a member of multiple tenants, you can switch between tenants in Palette without logging out. Check out the
