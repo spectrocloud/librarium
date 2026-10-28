@@ -105,27 +105,26 @@ Headlamp on a virtual cluster differs from Headlamp on a host cluster in the fol
 
   You do not need to configure an identity provider in the virtual cluster or cluster group settings for Headlamp.
 
-### Virtual Cluster Prerequisites
+### Prerequisites {#prerequisites-virtual-clusters}
 
 - A Palette Virtual Cluster that uses the Kubernetes distribution.
 
-- cert-manager installed in the virtual cluster. Palette installs cert-manager in virtual clusters by default. If your
-  virtual cluster does not have cert-manager, for example because it was created with an earlier version of Palette, add
-  the **Cert Manager** pack to it through an add-on cluster profile before you deploy Headlamp. For pack settings, refer
-  to [Cert Manager Add-On](./cert-manager-addon.md).
+- cert-manager installed in the virtual cluster. Palette installs cert-manager in virtual clusters by default, but
+  virtual clusters created with an earlier version of Palette might not have it. If your virtual cluster does not have
+  cert-manager, add the **Cert Manager** pack to it through an add-on cluster profile before you deploy Headlamp. For
+  pack settings, refer to [Cert Manager Add-On](./cert-manager-addon.md).
 
 - The Headlamp pack version 0.44.0.
 
-- _(Custom identity provider only)_ An OIDC app in your identity provider, and the OIDC values configured in the
+- _(Custom identity provider only)_ An OIDC app in your identity provider and the OIDC values configured in the
   Kubernetes layer of the host cluster. To register the Headlamp redirect URI and set the pack values, refer to
   [Configure Custom OIDC](#configure-custom-oidc).
 
 ### Configure Custom OIDC
 
-When Palette resolves the identity provider to the **Palette** or **Inherit from Tenant** option of the **OIDC Identity
-Provider** setting, it configures the Headlamp OIDC values for you. When it resolves to **Custom**, Palette does not
-configure them, and you must enter the OIDC values in the Headlamp pack. The steps are the same for **Proxied** and
-**Direct** access.
+Palette configures the Headlamp OIDC values for you when it uses the **Palette** or **Inherit from Tenant** identity
+provider. With a custom identity provider (the **Custom** option of the **OIDC Identity Provider** setting), you must
+enter the OIDC values in the Headlamp pack. The steps are the same for **Proxied** and **Direct** access.
 
 1. In the OIDC app of your identity provider, add the following URL as a redirect URI.
 
@@ -155,9 +154,9 @@ configure them, and you must enter the OIDC values in the Headlamp pack. The ste
 
 ### Deploy Headlamp on a Virtual Cluster
 
-1. Follow steps 1 - 4 of [Enablement](#enablement) to create an add-on cluster profile with the Headlamp pack. If
-   Palette resolves the identity provider to **Custom**, also set the OIDC values from
-   [Configure Custom OIDC](#configure-custom-oidc).
+1. Follow steps 1 - 4 of [Enablement](#enablement) to create an add-on cluster profile with the Headlamp pack. If you
+   use a custom identity provider, set the OIDC values from [Configure Custom OIDC](#configure-custom-oidc) in the pack
+   YAML before you select **Confirm & Create**.
 
 2. Create role bindings for the users who access Headlamp. The roles that you bind determine what users can view and do
    in Headlamp. For example, to give users full access to the virtual cluster, bind the `cluster-admin` role. Refer to
@@ -168,7 +167,7 @@ configure them, and you must enter the OIDC values in the Headlamp pack. The ste
 
 4. Follow steps 6 - 8 of [Enablement](#enablement) to add the Headlamp add-on cluster profile to the virtual cluster.
 
-### Validate the Virtual Cluster Deployment
+### Validate {#validate-virtual-clusters}
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -179,12 +178,14 @@ configure them, and you must enter the OIDC values in the Headlamp pack. The ste
 
 ### Change the Headlamp Configuration
 
-Some configuration changes take effect only after you reattach Headlamp. To reattach Headlamp, remove the Headlamp
-add-on cluster profile from the virtual cluster, and then add it back. Wait a few minutes for Headlamp to redeploy
-before you select **Connect**.
+Some configuration changes take effect only after you reattach Headlamp. Reattach Headlamp after you change any of the
+following:
 
-| **Change**                                                                           | **Action**                                                                   |
-| ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| You change the OIDC identity provider of the host cluster.                           | Reattach Headlamp.                                                           |
-| You change the **Access** mode.                                                      | Reattach Headlamp to recreate the Headlamp service and the **Connect** link. |
-| You change the OIDC values in the Headlamp pack, such as the callback URL or secret. | Reattach Headlamp.                                                           |
+- The OIDC identity provider of the host cluster.
+
+- The **Access** mode. Reattaching recreates the Headlamp service and the **Connect** link.
+
+- The OIDC values in the Headlamp pack, such as `callbackURL` or `clientSecret`.
+
+To reattach Headlamp, remove the Headlamp add-on cluster profile from the virtual cluster, and then add it back. Wait a
+few minutes for Headlamp to redeploy before you select **Connect**.
