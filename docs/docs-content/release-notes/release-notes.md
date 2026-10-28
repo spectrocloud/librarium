@@ -11,6 +11,45 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## DATE PENDING - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-3359 -->
+<!-- PATCH RELEASE VERSION: 4.8.x -->
+<!-- PATCH RELEASE CANDIDATES: PE-9922 PEM-12395 -->
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12395 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9922 -->
+
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
+  in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.x Palette release is
+`VERSION PENDING`.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.8.x Palette release is
+`VERSION PENDING`. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 19, 2026 - Release 4.8.72
 
 <!-- PATCH RELEASE TICKET: DOC-3302 -->
