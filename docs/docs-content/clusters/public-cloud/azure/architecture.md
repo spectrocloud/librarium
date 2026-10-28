@@ -200,8 +200,9 @@ Use the following resource links below to enable and manage proxy configurations
    [Enable and Manage Proxy Configurations](../../pcg/manage-pcg/configure-proxy.md) guide.
 
 3. Configure your Azure account to use the PCG. When adding an Azure account to Palette, select the **Connect Private
-   Cloud Gateway** option and select the PCG cluster you deployed. Refer to the
-   [Add Azure Cloud Account](./azure-cloud.md) guide for instructions on how to do this.
+   Cloud Gateway** option and select the PCG cluster you deployed. For **Managed identity** cloud accounts, select the
+   PCG in **Private Cloud Gateway** instead. Refer to the [Add Azure Cloud Account](./azure-cloud.md) guide for
+   instructions on how to do this.
 
 4. [Create a cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) for the
    Azure cluster you will deploy. Any pack layer that needs to use proxy configurations should include a
