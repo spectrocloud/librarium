@@ -171,7 +171,23 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Upgrade Notes {#upgrade-notes-edge-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5627 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
+
+- After you upgrade the Palette agent on an existing Edge cluster, Palette manages its default Cert Manager installation
+  with Helm so that you can replace it with the [Cert Manager](../clusters/cluster-management/cert-manager-addon.md)
+  pack. The Cert Manager pods might restart once during the change. Certificates that Cert Manager has already issued
+  remain valid.
+
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5627 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
+
+- You can now add the Cert Manager pack to the cluster profiles of Edge clusters to customize Cert Manager, either when
+  you deploy the cluster or later. The pack takes over the default Cert Manager installation from Palette, and Palette
+  restores its default configuration if you remove the pack. Refer to
+  [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
 #### Improvements
 
