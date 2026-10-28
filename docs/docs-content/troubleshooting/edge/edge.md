@@ -10,6 +10,77 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+<!-- vale Vale.Spelling = NO -->
+
+## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
+
+[Appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge hosts validate outbound TLS connections,
+such as connections to Palette and to image registries, against the trust store of the host operating system. This trust
+store can still trust the root certificates that the compromised eMudhra intermediate certificate authorities (CAs)
+chain to. For more information, refer to
+[Security Advisory 024](../../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure).
+
+<!-- vale Vale.Spelling = YES -->
+
+This workaround applies to Edge hosts that run Ubuntu. Add a cloud-init stage to the OS pack of your cluster profile.
+The stage marks the affected root certificates as distrusted and rebuilds the trust store each time the Edge host boots.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select the cluster profile that your Edge cluster uses, and
+   [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
+
+4. In the new profile version, select the OS layer, and then add the following cloud-init stage to its YAML. If the YAML
+   already contains a `stages` section, add the `boot.before` stage to it instead of creating a second one. If it also
+   contains a `boot.before` stage, add the `emudhra-distrust-debian` entry to that stage's list.
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-debian
+         commands:
+           - |
+             set -e
+             conf=/etc/ca-certificates.conf
+             if [ ! -f "$conf" ]; then
+                 echo "emudhra-distrust: $conf not found" >&2
+                 exit 1
+             fi
+             sed --in-place 's/\r$//' "$conf"
+             for f in emSign_ECC_Root_CA_-_G3.crt emSign_Root_TLS_CA_-_G3.crt Comodo_AAA_Services_root.crt AAA_Certificate_Services.crt; do
+                 sed --in-place "s|^mozilla/$f\$|!&|" "$conf"
+             done
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates --fresh
+             else
+                 update-ca-certificates --fresh
+             fi
+   ```
+
+5. Save your changes.
+
+6. [Update your cluster](../../clusters/cluster-management/cluster-updates.md#update-a-cluster) to use the new profile
+   version.
+
+   :::warning
+
+   Applying the updated OS pack reboots the Edge hosts in the cluster. Plan the update for a maintenance window.
+
+   :::
+
+7. After the Edge hosts reboot, connect to an Edge host using SSH, and issue the following command to check whether the
+   trust store still contains the affected root certificates.
+
+   ```shell
+   ls /etc/ssl/certs/ | grep --extended-regexp 'emSign_ECC_Root_CA_-_G3|emSign_Root_TLS_CA_-_G3|Comodo_AAA_Services_root|AAA_Certificate_Services'
+   ```
+
+   If the command returns no output, the Edge host no longer trusts these root certificates.
+
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 
 A reset removes `kube-vip.tar`, the kube-vip image archive, from
