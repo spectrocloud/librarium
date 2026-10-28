@@ -103,9 +103,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PPD-510 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3370 -->
 
-- You can now deploy the Headlamp dashboard to Palette Virtual Clusters that use the Kubernetes distribution, in Proxied
-  or Direct access mode. Headlamp authenticates through the OIDC configuration of the virtual cluster, or of its host
-  cluster if the virtual cluster has none. For more information, refer to
+- You can now deploy the Headlamp dashboard to Palette Virtual Clusters that use the Kubernetes distribution, in
+  **Proxied** or **Direct** access mode. Headlamp authenticates through the OIDC configuration of the virtual cluster or
+  its host cluster, or through Palette OIDC if neither has one. For more information, refer to
   [Headlamp](../clusters/cluster-management/headlamp.md#virtual-clusters).
 
 #### Improvements
