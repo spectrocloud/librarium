@@ -119,8 +119,8 @@ beginning.
      and stopped the attempt.
    - `resuming layer <layer-digest> at byte <offset> of <size>` indicates that an attempt resumed a partially completed
      download.
-   - `not enough free space in /usr/local/spectrocloud/.download-cache for the download cache` indicates that the Edge
-     host does not have enough free disk space to keep partially completed downloads.
+   - `not enough free space in /usr/local/spectrocloud/.download-cache for the download cache: need <required-mb> MB, have <available-mb> MB`
+     indicates that the Edge host does not have enough free disk space to keep partially completed downloads.
    - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
      complete.
 
@@ -134,8 +134,8 @@ beginning.
    df --human-readable /usr/local/spectrocloud
    ```
 
-   If the available space is less than about three times the compressed size of the provider image, free up disk space
-   on the Edge host so that later attempts resume the download instead of starting from the beginning.
+   The log message reports how much space the Palette agent needs and how much is available, in MB. Free up at least the
+   difference on the Edge host so that later attempts resume the download instead of starting from the beginning.
 
 3. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
 
@@ -159,7 +159,7 @@ beginning.
    that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
 
 If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host. On
-Palette agent versions that apply a time limit, the download and extraction must complete within that limit.
+Palette agent versions earlier than 4.10.b, the download and extraction must complete within the time limit.
 
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 

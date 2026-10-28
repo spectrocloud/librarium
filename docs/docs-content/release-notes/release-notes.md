@@ -222,7 +222,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Fixed an issue that caused provider image downloads on Edge hosts with limited network bandwidth to fail repeatedly.
   The Palette agent no longer applies a fixed time limit to each download attempt. Instead, it stops an attempt only
-  when it receives no data for 5 minutes, and the next attempt resumes the download. For more information, refer to
+  when it receives no data for 5 minutes, and the next attempt resumes the download. To resume a download, the Edge host
+  needs free disk space of about three times the compressed size of the provider image. For more information, refer to
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
 
 #### Deprecations and Removals
