@@ -86,20 +86,28 @@ The stage marks the affected root certificates as distrusted and rebuilds the tr
 Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
 provisioning or agent upgrades.
 
-Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit.
-The limit is 45 minutes in Palette agent versions 4.10.3 through 4.10.9, and 6 hours in version 4.10.10 and later. If an
-attempt does not complete within that time, the Palette agent starts the next attempt from the beginning, because it
-does not resume partially completed downloads.
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
+
+Palette agent versions 4.10.3 and later, but earlier than 4.10.b, apply a fixed time limit to each provider image
+download and extraction attempt. The limit is 45 minutes in versions 4.10.3 through 4.10.9, and 6 hours in version
+4.10.10 and later. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
+beginning, because these versions do not resume partially completed downloads.
 
 If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
 upgrade may not complete.
+
+Starting with Palette agent version 4.10.b, the Palette agent no longer applies a fixed time limit to each download
+attempt. It stops an attempt only when it receives no data for 5 minutes, and the next attempt resumes the download from
+where the previous attempt stopped. To keep partially completed downloads, the Edge host needs free disk space of about
+three times the compressed size of the provider image. If less space is available, each new attempt starts from the
+beginning.
 
 ### Debug Steps
 
 1. Check the Palette agent logs on the affected Edge host to identify provider image download failures.
 
    ```shell
-   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
+   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|image download stalled|resuming layer|not enough free space|failed to apply'
    ```
 
    Review the logs for the following messages:
@@ -107,13 +115,29 @@ upgrade may not complete.
    - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
      the provider image over the network.
    - `context deadline exceeded` indicates that an attempt reached the time limit.
+   - `image download stalled: no data received for 5m0s` indicates that the Palette agent received no data for 5 minutes
+     and stopped the attempt.
+   - `resuming layer <layer-digest> at byte <offset> of <size>` indicates that an attempt resumed a partially completed
+     download.
+   - `not enough free space in /usr/local/spectrocloud/.download-cache for the download cache` indicates that the Edge
+     host does not have enough free disk space to keep partially completed downloads.
    - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
      complete.
 
    If these messages repeat at intervals that match the time limit for your Palette agent version, the download is
    consistently exceeding the time limit.
 
-2. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
+2. If the logs contain `not enough free space`, check the free disk space on the file system that contains
+   `/usr/local/spectrocloud`.
+
+   ```shell
+   df --human-readable /usr/local/spectrocloud
+   ```
+
+   If the available space is less than about three times the compressed size of the provider image, free up disk space
+   on the Edge host so that later attempts resume the download instead of starting from the beginning.
+
+3. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
 
    Use [`palette content build`](../../automation/palette-cli/commands/content.md#build) to package the required
    provider image into a [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
@@ -123,7 +147,7 @@ upgrade may not complete.
 
    The Palette agent then uses the local provider image instead of downloading it, so the time limit no longer applies.
 
-3. Verify that the provider image is available locally.
+4. Verify that the provider image is available locally.
 
    Run the command from step 1 again and review the Palette agent logs. The logs should show the following message.
 
@@ -134,8 +158,8 @@ upgrade may not complete.
    This confirms that the Palette agent found the image locally instead of starting another network download. Verify
    that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
 
-If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host so
-that the download and extraction complete within the time limit.
+If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host. On
+Palette agent versions that apply a time limit, the download and extraction must complete within that limit.
 
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 
