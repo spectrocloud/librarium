@@ -30,7 +30,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: October 21, 2026
+- **Last Updated**: October 28, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -86,8 +86,8 @@ a network interception position.
 
 ### Recommended Actions
 
-a) Palette & VerteX Enterprise: Patched versions of Palette/VerteX are being worked on and the advisory will be updated.
-All customers are advised to upgrade to the patched version as soon as they can.
+a) Palette & VerteX Enterprise: Upgrade to a patched version. Refer to [Mitigation Status](#mitigation-status) for the
+patched versions.
 
 b) Workload Clusters: Patch all underlying host operating systems used in:
 
@@ -109,6 +109,24 @@ c) MTSaas and DSaas environments will be patched by the spectrocloud team.
 <!-- vale Vale.Terms = YES -->
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
+
+### Mitigation Status
+
+Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. The following table lists the
+patch status of other components. Spectro Cloud updates this advisory as each patch is released.
+
+| Component                                                                  | Status              |
+| -------------------------------------------------------------------------- | ------------------- |
+| Palette Management Appliance and VerteX Management Appliance (4.10)        | Released in 4.10.33 |
+| Palette 4.8 and 4.9                                                        | Not yet released    |
+| Palette Management Appliance and VerteX Management Appliance (4.8 and 4.9) | Not yet released    |
+| Kubernetes versions                                                        | Not yet released    |
+| Verified packs with upstream fixes                                         | Not yet released    |
+
+Appliance mode Edge hosts that run Ubuntu can use a workaround to remove the affected root certificates from the host
+trust store. Refer to
+[Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
+for the steps.
 
 ### References
 
