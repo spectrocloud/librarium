@@ -66,17 +66,20 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.35       |       4.8.71       | :white_check_mark: |
 |       4.8.35       |       4.8.70       | :white_check_mark: |
 |       4.8.35       |       4.8.69       | :white_check_mark: |
 |       4.8.35       |       4.8.51       | :white_check_mark: |
 |       4.8.35       |       4.8.47       | :white_check_mark: |
 |       4.8.35       |       4.8.37       | :white_check_mark: |
+|       4.8.33       |       4.8.71       | :white_check_mark: |
 |       4.8.33       |       4.8.70       | :white_check_mark: |
 |       4.8.33       |       4.8.69       | :white_check_mark: |
 |       4.8.33       |       4.8.51       | :white_check_mark: |
 |       4.8.33       |       4.8.47       | :white_check_mark: |
 |       4.8.33       |       4.8.37       | :white_check_mark: |
 |       4.8.33       |       4.8.35       | :white_check_mark: |
+|       4.8.25       |       4.8.71       | :white_check_mark: |
 |       4.8.25       |       4.8.70       | :white_check_mark: |
 |       4.8.25       |       4.8.69       | :white_check_mark: |
 |       4.8.25       |       4.8.51       | :white_check_mark: |
@@ -84,6 +87,7 @@ few hours.
 |       4.8.25       |       4.8.37       | :white_check_mark: |
 |       4.8.25       |       4.8.35       | :white_check_mark: |
 |       4.8.25       |       4.8.33       | :white_check_mark: |
+|       4.8.22       |       4.8.71       | :white_check_mark: |
 |       4.8.22       |       4.8.70       | :white_check_mark: |
 |       4.8.22       |       4.8.69       | :white_check_mark: |
 |       4.8.22       |       4.8.51       | :white_check_mark: |
@@ -92,6 +96,7 @@ few hours.
 |       4.8.22       |       4.8.35       | :white_check_mark: |
 |       4.8.22       |       4.8.33       | :white_check_mark: |
 |       4.8.22       |       4.8.25       | :white_check_mark: |
+|       4.8.16       |       4.8.71       | :white_check_mark: |
 |       4.8.16       |       4.8.70       | :white_check_mark: |
 |       4.8.16       |       4.8.69       | :white_check_mark: |
 |       4.8.16       |       4.8.51       | :white_check_mark: |
@@ -101,6 +106,7 @@ few hours.
 |       4.8.16       |       4.8.33       | :white_check_mark: |
 |       4.8.16       |       4.8.25       | :white_check_mark: |
 |       4.8.16       |       4.8.21       | :white_check_mark: |
+|       4.8.12       |       4.8.71       | :white_check_mark: |
 |       4.8.12       |       4.8.70       | :white_check_mark: |
 |       4.8.12       |       4.8.69       | :white_check_mark: |
 |       4.8.12       |       4.8.51       | :white_check_mark: |
@@ -111,6 +117,7 @@ few hours.
 |       4.8.12       |       4.8.25       | :white_check_mark: |
 |       4.8.12       |       4.8.21       | :white_check_mark: |
 |       4.8.12       |       4.8.16       | :white_check_mark: |
+|       4.8.9        |       4.8.71       | :white_check_mark: |
 |       4.8.9        |       4.8.70       | :white_check_mark: |
 |       4.8.9        |       4.8.69       | :white_check_mark: |
 |       4.8.9        |       4.8.51       | :white_check_mark: |
@@ -122,6 +129,7 @@ few hours.
 |       4.8.9        |       4.8.21       | :white_check_mark: |
 |       4.8.9        |       4.8.16       | :white_check_mark: |
 |       4.8.9        |       4.8.12       | :white_check_mark: |
+|       4.8.8        |       4.8.71       | :white_check_mark: |
 |       4.8.8        |       4.8.70       | :white_check_mark: |
 |       4.8.8        |       4.8.69       | :white_check_mark: |
 |       4.8.8        |       4.8.51       | :white_check_mark: |
@@ -134,7 +142,9 @@ few hours.
 |       4.8.8        |       4.8.16       | :white_check_mark: |
 |       4.8.8        |       4.8.12       | :white_check_mark: |
 |       4.8.8        |       4.8.9        | :white_check_mark: |
+|       4.7.48       |       4.8.71       | :white_check_mark: |
 |       4.7.48       |       4.8.70       | :white_check_mark: |
+|       4.7.38       |       4.8.71       | :white_check_mark: |
 |       4.7.38       |       4.8.70       | :white_check_mark: |
 |       4.7.38       |       4.8.69       | :white_check_mark: |
 |       4.7.38       |       4.8.51       | :white_check_mark: |
@@ -142,6 +152,7 @@ few hours.
 |       4.7.38       |       4.8.37       | :white_check_mark: |
 |       4.7.38       |       4.8.35       | :white_check_mark: |
 |       4.7.38       |       4.8.33       | :white_check_mark: |
+|       4.7.29       |       4.8.71       | :white_check_mark: |
 |       4.7.29       |       4.8.70       | :white_check_mark: |
 |       4.7.29       |       4.8.69       | :white_check_mark: |
 |       4.7.29       |       4.8.51       | :white_check_mark: |
@@ -155,6 +166,7 @@ few hours.
 |       4.7.29       |       4.8.12       | :white_check_mark: |
 |       4.7.29       |       4.8.9        | :white_check_mark: |
 |       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.71       | :white_check_mark: |
 |       4.7.27       |       4.8.70       | :white_check_mark: |
 |       4.7.27       |       4.8.69       | :white_check_mark: |
 |       4.7.27       |       4.8.51       | :white_check_mark: |
@@ -413,24 +425,29 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.51       |       4.8.71       | :white_check_mark: |
 |       4.8.51       |       4.8.70       | :white_check_mark: |
 |       4.8.51       |       4.8.69       | :white_check_mark: |
 |       4.8.51       |       4.8.52       | :white_check_mark: |
+|       4.8.47       |       4.8.71       | :white_check_mark: |
 |       4.8.47       |       4.8.70       | :white_check_mark: |
 |       4.8.47       |       4.8.69       | :white_check_mark: |
 |       4.8.47       |       4.8.52       | :white_check_mark: |
 |       4.8.47       |       4.8.51       | :white_check_mark: |
+|       4.8.39       |       4.8.71       | :white_check_mark: |
 |       4.8.39       |       4.8.70       | :white_check_mark: |
 |       4.8.39       |       4.8.69       | :white_check_mark: |
 |       4.8.39       |       4.8.52       | :white_check_mark: |
 |       4.8.39       |       4.8.51       | :white_check_mark: |
 |       4.8.39       |       4.8.47       | :white_check_mark: |
+|       4.8.37       |       4.8.71       | :white_check_mark: |
 |       4.8.37       |       4.8.70       | :white_check_mark: |
 |       4.8.37       |       4.8.69       | :white_check_mark: |
 |       4.8.37       |       4.8.52       | :white_check_mark: |
 |       4.8.37       |       4.8.51       | :white_check_mark: |
 |       4.8.37       |       4.8.47       | :white_check_mark: |
 |       4.8.37       |       4.8.39       | :white_check_mark: |
+|       4.8.35       |       4.8.71       | :white_check_mark: |
 |       4.8.35       |       4.8.70       | :white_check_mark: |
 |       4.8.35       |       4.8.69       | :white_check_mark: |
 |       4.8.35       |       4.8.52       | :white_check_mark: |
@@ -438,6 +455,7 @@ few hours.
 |       4.8.35       |       4.8.47       | :white_check_mark: |
 |       4.8.35       |       4.8.39       | :white_check_mark: |
 |       4.8.35       |       4.8.37       | :white_check_mark: |
+|       4.8.33       |       4.8.71       | :white_check_mark: |
 |       4.8.33       |       4.8.70       | :white_check_mark: |
 |       4.8.33       |       4.8.69       | :white_check_mark: |
 |       4.8.33       |       4.8.52       | :white_check_mark: |
@@ -446,6 +464,7 @@ few hours.
 |       4.8.33       |       4.8.39       | :white_check_mark: |
 |       4.8.33       |       4.8.37       | :white_check_mark: |
 |       4.8.33       |       4.8.35       | :white_check_mark: |
+|       4.8.25       |       4.8.71       | :white_check_mark: |
 |       4.8.25       |       4.8.70       | :white_check_mark: |
 |       4.8.25       |       4.8.69       | :white_check_mark: |
 |       4.8.25       |       4.8.52       | :white_check_mark: |
@@ -455,6 +474,7 @@ few hours.
 |       4.8.25       |       4.8.37       | :white_check_mark: |
 |       4.8.25       |       4.8.35       | :white_check_mark: |
 |       4.8.25       |       4.8.33       | :white_check_mark: |
+|       4.8.22       |       4.8.71       | :white_check_mark: |
 |       4.8.22       |       4.8.70       | :white_check_mark: |
 |       4.8.22       |       4.8.69       | :white_check_mark: |
 |       4.8.22       |       4.8.52       | :white_check_mark: |
@@ -465,6 +485,7 @@ few hours.
 |       4.8.22       |       4.8.35       | :white_check_mark: |
 |       4.8.22       |       4.8.33       | :white_check_mark: |
 |       4.8.22       |       4.8.25       | :white_check_mark: |
+|       4.8.16       |       4.8.71       | :white_check_mark: |
 |       4.8.16       |       4.8.70       | :white_check_mark: |
 |       4.8.16       |       4.8.69       | :white_check_mark: |
 |       4.8.16       |       4.8.52       | :white_check_mark: |
@@ -476,6 +497,7 @@ few hours.
 |       4.8.16       |       4.8.33       | :white_check_mark: |
 |       4.8.16       |       4.8.25       | :white_check_mark: |
 |       4.8.16       |       4.8.21       | :white_check_mark: |
+|       4.8.12       |       4.8.71       | :white_check_mark: |
 |       4.8.12       |       4.8.70       | :white_check_mark: |
 |       4.8.12       |       4.8.69       | :white_check_mark: |
 |       4.8.12       |       4.8.52       | :white_check_mark: |
@@ -488,6 +510,7 @@ few hours.
 |       4.8.12       |       4.8.25       | :white_check_mark: |
 |       4.8.12       |       4.8.21       | :white_check_mark: |
 |       4.8.12       |       4.8.16       | :white_check_mark: |
+|       4.8.9        |       4.8.71       | :white_check_mark: |
 |       4.8.9        |       4.8.70       | :white_check_mark: |
 |       4.8.9        |       4.8.69       | :white_check_mark: |
 |       4.8.9        |       4.8.52       | :white_check_mark: |
@@ -501,6 +524,7 @@ few hours.
 |       4.8.9        |       4.8.21       | :white_check_mark: |
 |       4.8.9        |       4.8.16       | :white_check_mark: |
 |       4.8.9        |       4.8.12       | :white_check_mark: |
+|       4.8.8        |       4.8.71       | :white_check_mark: |
 |       4.8.8        |       4.8.70       | :white_check_mark: |
 |       4.8.8        |       4.8.69       | :white_check_mark: |
 |       4.8.8        |       4.8.52       | :white_check_mark: |
@@ -515,15 +539,18 @@ few hours.
 |       4.8.8        |       4.8.16       | :white_check_mark: |
 |       4.8.8        |       4.8.12       | :white_check_mark: |
 |       4.8.8        |       4.8.9        | :white_check_mark: |
+|       4.7.39       |       4.8.71       | :white_check_mark: |
 |       4.7.39       |       4.8.70       | :white_check_mark: |
 |       4.7.39       |       4.8.69       | :white_check_mark: |
 |       4.7.39       |       4.8.52       | :white_check_mark: |
 |       4.7.39       |       4.8.51       | :white_check_mark: |
+|       4.7.38       |       4.8.71       | :white_check_mark: |
 |       4.7.38       |       4.8.70       | :white_check_mark: |
 |       4.7.38       |       4.8.69       | :white_check_mark: |
 |       4.7.38       |       4.8.52       | :white_check_mark: |
 |       4.7.38       |       4.8.51       | :white_check_mark: |
 |       4.7.38       |       4.8.47       | :white_check_mark: |
+|       4.7.31       |       4.8.71       | :white_check_mark: |
 |       4.7.31       |       4.8.70       | :white_check_mark: |
 |       4.7.31       |       4.8.69       | :white_check_mark: |
 |       4.7.31       |       4.8.52       | :white_check_mark: |
@@ -533,6 +560,7 @@ few hours.
 |       4.7.31       |       4.8.37       | :white_check_mark: |
 |       4.7.31       |       4.8.35       | :white_check_mark: |
 |       4.7.31       |       4.8.33       | :white_check_mark: |
+|       4.7.29       |       4.8.71       | :white_check_mark: |
 |       4.7.29       |       4.8.70       | :white_check_mark: |
 |       4.7.29       |       4.8.69       | :white_check_mark: |
 |       4.7.29       |       4.8.52       | :white_check_mark: |
@@ -548,6 +576,7 @@ few hours.
 |       4.7.29       |       4.8.12       | :white_check_mark: |
 |       4.7.29       |       4.8.9        | :white_check_mark: |
 |       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.71       | :white_check_mark: |
 |       4.7.27       |       4.8.70       | :white_check_mark: |
 |       4.7.27       |       4.8.69       | :white_check_mark: |
 |       4.7.27       |       4.8.52       | :white_check_mark: |
@@ -791,6 +820,7 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.12       |       4.8.71       | :white_check_mark: |
 |       4.8.12       |       4.8.70       | :white_check_mark: |
 |       4.8.12       |       4.8.69       | :white_check_mark: |
 |       4.8.12       |       4.8.51       | :white_check_mark: |
@@ -799,6 +829,7 @@ few hours.
 |       4.8.12       |       4.8.25       | :white_check_mark: |
 |       4.8.12       |       4.8.23       | :white_check_mark: |
 |       4.8.12       |       4.8.21       | :white_check_mark: |
+|       4.8.8        |       4.8.71       | :white_check_mark: |
 |       4.8.8        |       4.8.70       | :white_check_mark: |
 |       4.8.8        |       4.8.69       | :white_check_mark: |
 |       4.8.8        |       4.8.51       | :white_check_mark: |
@@ -809,6 +840,7 @@ few hours.
 |       4.8.8        |       4.8.23       | :white_check_mark: |
 |       4.8.8        |       4.8.21       | :white_check_mark: |
 |       4.8.8        |       4.8.12       | :white_check_mark: |
+|       4.7.29       |       4.8.71       | :white_check_mark: |
 |       4.7.29       |       4.8.70       | :white_check_mark: |
 |       4.7.29       |       4.8.69       | :white_check_mark: |
 |       4.7.29       |       4.8.51       | :white_check_mark: |
