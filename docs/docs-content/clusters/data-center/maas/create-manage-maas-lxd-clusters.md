@@ -260,6 +260,193 @@ To protect your data, we recommend creating a backup of your MAAS cluster before
 infrastructure changes. Review our [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) guide
 for additional information.
 
+## Manage LXD Host Maintenance
+
+When you need to service an LXD host, such as applying firmware updates, replacing hardware, or rebooting the machine,
+you can place the host into maintenance so that Palette stops scheduling new LXD VMs on it. Palette controls this
+behavior through MAAS tags that you apply to the host machine in MAAS. The Cluster API provider for MAAS reads these
+tags when it selects a host for a new control plane LXD VM, and skips any host that is under maintenance.
+
+You apply these tags to the LXD _host_ machine in MAAS, not to a cluster or node pool in Palette. Palette-managed LXD
+hosts follow the `lxd-host-<name>` naming convention in MAAS, which helps you identify the correct machine. For more
+information about MAAS tags, review the [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags)
+documentation.
+
+### Host Maintenance Tags
+
+The following tags control the maintenance state of an LXD host.
+
+| **Tag**                     | **Purpose**                                                                        | **When to Apply**                                                                                     |
+| --------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `maas-lxd-host-noschedule`  | Cordons the host so that Palette does not place new LXD VMs on it.                 | Apply when you want to stop new control plane VMs from being scheduled on the host.                   |
+| `maas-lxd-host-maintenance` | Marks the host as a drain source so that Palette evacuates its control plane VMs.  | Apply together with the other two tags when you want to move existing control plane VMs off the host. |
+| `maas-lxd-hcp-op-<id>`      | Identifies a single maintenance operation, where `<id>` is a unique value you set. | Apply together with the other two tags to start a full maintenance operation.                         |
+
+:::info
+
+A host is excluded from new LXD VM placement when it carries either the `maas-lxd-host-noschedule` tag or the
+`maas-lxd-host-maintenance` tag. The control plane VMs that are already running on the host continue to run until you
+start a full maintenance operation.
+
+:::
+
+### Cordon a Host
+
+Cordon a host when you want to prevent new LXD VMs from landing on it while leaving the control plane VMs that are
+already running on the host in place. This is the recommended first step before you service a host.
+
+<Tabs groupId="cordon-host">
+
+<TabItem label="MAAS UI" value="maas-ui">
+
+1. Log in to the MAAS web console.
+
+2. From the left main menu, select **Machines**.
+
+3. Select the LXD host you want to cordon. Palette-managed hosts use the `lxd-host-<name>` naming convention.
+
+4. Select the **Configuration** tab.
+
+5. In the **Tags** section, select **Edit**.
+
+6. Enter `maas-lxd-host-noschedule` in the tag field. If the tag does not exist yet, select the option to create it.
+
+7. Select **Save** to apply the tag to the host.
+
+</TabItem>
+
+<TabItem label="MAAS CLI" value="maas-cli">
+
+1. Log in to MAAS. Replace the profile name, MAAS URL, and API key with your own values. You can find your API key in
+   the MAAS console under your user preferences.
+
+   ```bash
+   maas login admin http://<maas-host>:5240/MAAS <api-key>
+   ```
+
+2. Create the cordon tag in the MAAS inventory. This command succeeds even if the tag already exists.
+
+   ```bash
+   maas admin tags create name=maas-lxd-host-noschedule comment="Block new LXD VM placement"
+   ```
+
+3. Identify the system ID of the LXD host you want to cordon.
+
+   ```bash
+   maas admin machines read | jq -r '.[] | select(.hostname | startswith("lxd-host-")) | "\(.hostname) \(.system_id)"'
+   ```
+
+4. Apply the tag to the host. Replace `<system-id>` with the value from the previous step.
+
+   ```bash
+   maas admin tag update-nodes maas-lxd-host-noschedule add=<system-id>
+   ```
+
+5. Verify that the tag is assigned to the host.
+
+   ```bash
+   maas admin machine read <system-id> | jq '.tag_names'
+   ```
+
+</TabItem>
+
+</Tabs>
+
+After you cordon the host, Palette no longer schedules new LXD VMs on it. To resume scheduling, follow the steps in
+[Lift Host Maintenance](#lift-host-maintenance).
+
+### Place a Host Under Full Maintenance
+
+Full maintenance cordons the host _and_ evacuates the control plane LXD VMs that are already running on it. Palette
+moves each control plane VM to another eligible host so that you can safely take the host offline.
+
+:::warning
+
+Before you start a full maintenance operation, ensure that the affected host and workload clusters are configured for
+high availability, with at least three nodes per cluster spread across different availability zones. Evacuating control
+plane VMs from a cluster that is not highly available can disrupt the control plane.
+
+:::
+
+To start a full maintenance operation, apply all three of the following tags to the host:
+
+- `maas-lxd-host-noschedule`
+- `maas-lxd-host-maintenance`
+- `maas-lxd-hcp-op-<id>`, where `<id>` is a unique identifier for the operation, such as a Universally Unique Identifier
+  (UUID).
+
+The following example uses the MAAS CLI to apply all three tags. Use the same login and host identification steps
+described in [Cordon a Host](#cordon-a-host).
+
+```bash
+# Generate a unique operation ID.
+OP_ID=$(uuidgen | tr '[:upper:]' '[:lower:]')
+
+# Create the maintenance tags in the MAAS inventory.
+maas admin tags create name=maas-lxd-host-maintenance comment="Drain LXD VMs from host"
+maas admin tags create name=maas-lxd-hcp-op-${OP_ID} comment="Maintenance operation ${OP_ID}"
+
+# Apply all three tags to the host. Replace <system-id> with your host system ID.
+maas admin tag update-nodes maas-lxd-host-noschedule add=<system-id>
+maas admin tag update-nodes maas-lxd-host-maintenance add=<system-id>
+maas admin tag update-nodes maas-lxd-hcp-op-${OP_ID} add=<system-id>
+```
+
+:::warning
+
+Enter the tag names exactly as shown. Palette matches these tag names literally, so a typo prevents the host from
+entering maintenance.
+
+:::
+
+After you apply the tags, Palette detects the maintenance state and begins evacuating the control plane VMs from the
+host. Monitor the affected clusters from the **Clusters** page in Palette to confirm that new control plane VMs come up
+on other hosts and that each cluster remains healthy before you take the host offline.
+
+### Lift Host Maintenance
+
+When you finish servicing the host, remove the maintenance tags to return the host to the pool of eligible hosts.
+Palette resumes scheduling new LXD VMs on the host after you remove the tags.
+
+<Tabs groupId="lift-maintenance">
+
+<TabItem label="MAAS UI" value="maas-ui">
+
+1. Log in to the MAAS web console.
+
+2. From the left main menu, select **Machines**.
+
+3. Select the LXD host that is under maintenance.
+
+4. Select the **Configuration** tab.
+
+5. In the **Tags** section, select **Edit**.
+
+6. Remove the maintenance tags that are assigned to the host, and then select **Save**.
+
+</TabItem>
+
+<TabItem label="MAAS CLI" value="maas-cli">
+
+1. Remove the maintenance tags from the host. Replace `<system-id>` and `<id>` with your own values. Omit the tags that
+   you did not apply.
+
+   ```bash
+   maas admin tag update-nodes maas-lxd-host-noschedule remove=<system-id>
+   maas admin tag update-nodes maas-lxd-host-maintenance remove=<system-id>
+   maas admin tag update-nodes maas-lxd-hcp-op-<id> remove=<system-id>
+   ```
+
+2. Verify that the maintenance tags are no longer assigned to the host.
+
+   ```bash
+   maas admin machine read <system-id> | jq '.tag_names'
+   ```
+
+</TabItem>
+
+</Tabs>
+
 ## Delete a MAAS Cluster
 
 :::warning
