@@ -28,8 +28,10 @@ This is _not_ required when using [Minimum Permissions Policies](./minimum-permi
 
 :::info
 
-To use the **Add IAM policies** option, add the `iam:ListPolicies` permission to the IAM User or Role that Palette uses.
-Palette also needs the `iam:GetPolicy` permission on each policy you attach.
+The **Add IAM policies** option requires the `iam:ListPolicies` and `iam:GetPolicy` permissions. The
+**PaletteDeploymentPolicy** in the [Core IAM Policies](./core-iam-policies.md) includes both. If you use the
+[Minimum Permissions Policies](./minimum-permissions-policies.md), add `iam:ListPolicies` to the IAM User or Role that
+Palette uses, and make sure it has `iam:GetPolicy` on each policy that you attach.
 
 :::
 
