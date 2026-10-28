@@ -1648,6 +1648,14 @@
                         "example": "nvidia",
                         "type": "string"
                     },
+                    "modelType": {
+                        "enum": [
+                            "zst",
+                            "yaml"
+                        ],
+                        "example": "zst",
+                        "type": "string"
+                    },
                     "name": {
                         "example": "palette-ai-launchpad",
                         "type": "string"
