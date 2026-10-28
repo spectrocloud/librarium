@@ -24,7 +24,7 @@ tags: ["release-notes"]
 - To improve security, the `GET /v1/spectroclusters/{uid}/assets/frpKubeconfig` API endpoint now requires the
   `cluster.adminKubeconfigDownload` permission, the same permission that the admin kubeconfig endpoint requires. Users
   who have only the `cluster.get` permission, such as users assigned the Cluster Viewer role, can no longer download a
-  kubeconfig file through this endpoint, and their requests fail with the `OperationForbidden` error. If your automation
+  kubeconfig file through this endpoint. Their requests fail with the `OperationForbidden` error. If your automation
   calls this endpoint, use an API key that belongs to a user with the Cluster Admin role or a custom role that includes
   the `cluster.adminKubeconfigDownload` permission. Refer to
   [Kubeconfig](../clusters/cluster-management/kubeconfig.md#cluster-admin) for more information.
