@@ -105,6 +105,9 @@ for detailed instructions.
 - [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
   must be enabled on your VMs.
 
+- Your VMs must not have any snapshots in vSphere. Delete all snapshots of each VM before you start the migration. You
+  can delete the snapshots while the VM is running. A warm migration of a VM that still has snapshots fails.
+
 ### Start Warm Migration
 
 1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
