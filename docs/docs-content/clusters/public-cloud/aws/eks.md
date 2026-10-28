@@ -624,8 +624,8 @@ Keep the following rules in mind when you update the CIDR ranges:
 
 - Each field must contain at least one CIDR range. To allow access from any IP address, use `0.0.0.0/0`.
 
-- In **Public Access CIDRs**, use publicly routable CIDR ranges. Amazon EKS rejects reserved ranges, such as the ranges
-  reserved for documentation, and Palette does not display the error that EKS returns.
+- In **Public Access CIDRs**, use publicly routable CIDR ranges. Amazon EKS rejects reserved ranges, such as the
+  documentation range `203.0.113.0/24`, and Palette does not display the error that EKS returns.
 
 Use the following steps to update the endpoint access CIDRs.
 
@@ -644,15 +644,14 @@ Use the following steps to update the endpoint access CIDRs.
 
 ### Validate the CIDR Update
 
-The following steps use the AWS CLI. Configure your AWS CLI credentials for the AWS account that hosts the cluster. The
-credentials need the `eks:DescribeCluster` permission. Refer to
+The following steps use the AWS CLI to confirm a change to **Public Access CIDRs**. Configure your AWS CLI credentials
+for the AWS account that hosts the cluster. The credentials need the `eks:DescribeCluster` permission. Refer to
 [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 for guidance.
 
 1. Wait a few minutes for Palette to apply the change to the EKS cluster endpoint.
 
-2. To confirm a change to **Public Access CIDRs**, use the AWS CLI to list the public access CIDR ranges of the EKS
-   cluster.
+2. Use the AWS CLI to list the public access CIDR ranges of the EKS cluster.
 
    ```shell
    aws eks describe-cluster --name <eks-cluster-name> --region <region> --query "cluster.resourcesVpcConfig.publicAccessCidrs" --output json
@@ -662,14 +661,16 @@ for guidance.
    region of the cluster.
 
 3. Verify that the output lists the CIDR ranges that you saved in Palette. Amazon EKS might list the ranges in a
-   different order. If the output still lists the previous ranges, check that each range in **Public Access CIDRs** is
-   publicly routable, and then save the ranges again.
+   different order.
 
    ```shell hideClipboard title="Example Output"
    [
        "0.0.0.0/0"
    ]
    ```
+
+   If the output still lists the previous ranges, check that each range in **Public Access CIDRs** is publicly routable,
+   and then save the ranges again.
 
 ## Next Steps
 
