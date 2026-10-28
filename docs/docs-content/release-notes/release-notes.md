@@ -100,6 +100,14 @@ tags: ["release-notes"]
   requests authenticated with API keys. For more information, refer to
   [Passkey Enforcement](../tenant-settings/passkeys.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PPD-510 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3370 -->
+
+- You can now deploy the Headlamp dashboard to Palette Virtual Clusters that use the Kubernetes distribution, in
+  **Proxied** or **Direct** access mode. Headlamp authenticates through the OIDC configuration of the virtual cluster or
+  its host cluster, or through Palette OIDC if neither has one. For more information, refer to
+  [Headlamp](../clusters/cluster-management/headlamp.md#virtual-clusters).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
