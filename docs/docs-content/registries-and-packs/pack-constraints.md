@@ -632,8 +632,8 @@ user:
 | `{{.spectro.system.clusterprofile.infra.version}}` | The version of the cluster profile.                                                                                                                                            |
 | `{{.spectro.system.cluster.kubevip}}`              | The IP address of the virtual IP (VIP) assigned to the cluster and load balancer for the control plane. This macro is only available for Edge and vSphere cluster deployments. |
 | `{{.spectro.system.oidc.issuerurl}}`               | The issuer URL of the cluster's OpenID Connect (OIDC) identity provider. Refer to [OIDC Macros](#oidc-macros).                                                                 |
-| `{{.spectro.system.oidc.clientid}}`                | The client ID of the cluster's OIDC identity provider.                                                                                                                         |
-| `{{.spectro.system.oidc.clientsecret}}`            | The client secret of the cluster's OIDC identity provider. Palette masks this value in cluster API responses.                                                                  |
+| `{{.spectro.system.oidc.clientid}}`                | The client ID that the cluster uses to authenticate with its OIDC identity provider.                                                                                           |
+| `{{.spectro.system.oidc.clientsecret}}`            | The client secret that the cluster uses to authenticate with its OIDC identity provider. Palette masks this value in cluster API responses.                                    |
 | `{{.spectro.system.oidc.usernameclaim}}`           | The OIDC claim that Kubernetes uses as the username.                                                                                                                           |
 | `{{.spectro.system.oidc.groupsclaim}}`             | The OIDC claim that Kubernetes uses as the user's groups.                                                                                                                      |
 | `{{.spectro.system.oidc.extrascopes}}`             | The extra OIDC scopes to request, as a comma-separated list.                                                                                                                   |
@@ -646,12 +646,17 @@ Kubernetes pack in the cluster profile. Use them to place OIDC settings in the k
 distribution requires, such as `kube-apiserver` arguments prefixed with `--`. Palette resolves the macros when it
 deploys the cluster and when you update the pack values.
 
-| **OIDC Identity Provider** | **Macro Values**                                                                                                                                                                                                                                         |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Palette**                | The Palette OIDC configuration of your tenant. `clientid` is the tenant UID, `clientsecret` is a hash that Palette generates, `extrascopes` is `profile,email,openid`, `usernameclaim` is `email`, and `groupsclaim` is `groups`.                        |
-| **Inherit from Tenant**    | The OIDC configuration in **Tenant Settings** > **SSO**, including the client secret and the claim mappings of your identity provider.                                                                                                                   |
-| **Custom**                 | The `clientConfig` section of the Kubernetes pack. `usernameclaim`, `groupsclaim`, and `idpconfigname` resolve to empty strings. Use literal values in `clientConfig`, because macros that you reference inside `clientConfig` resolve to empty strings. |
-| **None**                   | All OIDC macros resolve to empty strings.                                                                                                                                                                                                                |
+The following table lists the values that the OIDC macros resolve to for each **OIDC Identity Provider** option.
+
+| **OIDC Identity Provider** | **Resolved Values**                                                                                                                                                                                                               |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Palette**                | The Palette OIDC configuration of your tenant. `clientid` is the tenant UID, `clientsecret` is a hash that Palette generates, `extrascopes` is `profile,email,openid`, `usernameclaim` is `email`, and `groupsclaim` is `groups`. |
+| **Inherit from Tenant**    | The OIDC configuration in **Tenant Settings** > **SSO**, including the client secret and claim mappings that you entered there.                                                                                                   |
+| **Custom**                 | The `clientConfig` section of the Kubernetes pack. `usernameclaim`, `groupsclaim`, and `idpconfigname` resolve to empty strings.                                                                                                  |
+| **None**                   | All OIDC macros resolve to empty strings.                                                                                                                                                                                         |
+
+With **Custom**, use literal values in the `clientConfig` section of the Kubernetes pack. OIDC macros that you reference
+inside `clientConfig` resolve to empty strings.
 
 :::warning
 
