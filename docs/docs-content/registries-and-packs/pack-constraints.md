@@ -580,6 +580,136 @@ presets.
 
 </Tabs>
 
+## Pack Readiness Checks
+
+Palette marks a pack as ready when the resources that it deploys are ready. By default, Palette checks Deployments,
+ReplicaSets, StatefulSets, Jobs, `LoadBalancer` Services, Argo CD Applications, and Ingresses. Palette does not know
+when a custom resource is ready. For example, an operator pack can be ready while the `CephCluster` or `LinstorCluster`
+that the operator manages has not finished its setup.
+
+Use the `readinessCheck` section of the pack values to make Palette wait until a custom resource reaches the state that
+you specify. A pack is ready only when the default checks and every readiness check pass. Packs with a later
+[install order](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md#install-order)
+wait until the pack is ready.
+
+Pack authors can include `readinessCheck` in the `values.yaml` file of a pack. You can also add, change, or remove it in
+the YAML of a cluster profile layer, including Helm chart layers.
+
+:::warning
+
+Palette passes the `readinessCheck` section to Helm charts as part of the chart values. If a Helm chart has a values
+schema that rejects unknown keys, adding `readinessCheck` to its layer might cause the chart installation to fail.
+
+:::
+
+<!-- TODO(DOC-2019) Engineering: confirm that a strict chart values schema rejects readinessCheck, and whether Palette should strip it the way it strips the pack key (BET 5438). -->
+
+The following example shows the structure of a readiness check.
+
+```yaml
+readinessCheck:
+  v1beta1:
+    - name: "<resource-name>"
+      namespace: "<resource-namespace>"
+      group: "<api-group>"
+      version: "<api-version>"
+      kind: "<resource-kind>"
+      keysToCheck:
+        - keyToCheck: "<field-path>"
+          expectedValue: "<expected-value>"
+```
+
+Replace the placeholders with the values that the following table describes.
+
+### Readiness Check Attributes
+
+| **Attribute**   | **Description**                                                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `v1beta1`       | The list of resources to check. Every entry must pass for the pack to be ready.                                                |
+| `name`          | The name of the resource. You can use [macros](#pack-macros).                                                                  |
+| `namespace`     | (Optional) The namespace of the resource. If you omit it, Palette uses the namespace of the pack.                              |
+| `group`         | The API group of the resource, such as `ceph.rook.io`.                                                                         |
+| `version`       | The API version of the resource, such as `v1`.                                                                                 |
+| `kind`          | The kind of the resource, such as `CephCluster`.                                                                               |
+| `keysToCheck`   | The list of fields to check. Each item has a `keyToCheck` and an `expectedValue`. Define at least one item.                    |
+| `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`. |
+| `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                        |
+
+<!-- TODO(DOC-2019) Engineering: readinessCheck.timeout exists in the values schema, but only edge-libvirt reads it. Leave it out, or document that Palette ignores it? -->
+
+Older packs might set a single `keyToCheck` and `expectedValue` directly on an entry, instead of in `keysToCheck`.
+Palette still supports this form and checks the pair together with any items in `keysToCheck`. Use `keysToCheck` for new
+packs.
+
+### How Palette Evaluates Readiness Checks
+
+1. Palette fetches the resource by its group, version, kind, name, and namespace. If the resource does not exist yet,
+   the check fails.
+
+2. Palette reads each `keyToCheck` from the resource, converts the value to text, and compares it to `expectedValue`.
+   The comparison is case-sensitive.
+
+3. An entry passes when all of its keys match. The pack is ready when every entry and the default checks pass.
+
+4. Until the pack is ready, Palette checks it again every 30 seconds.
+
+<!-- TODO(DOC-2019) Engineering: confirm the 30-second interval, what a user sees when the resource does not exist yet, and where users see that a pack is waiting on its readiness check. -->
+
+### Expected Values
+
+Palette compares the text form of the field value, so write `expectedValue` the way the value prints.
+
+| **Field Value in the Resource**              | **Text That Palette Compares** | **Matching `expectedValue`** |
+| -------------------------------------------- | ------------------------------ | ---------------------------- |
+| A boolean, such as `ready: true`             | `true`                         | `"true"`                     |
+| A condition status, such as `status: "True"` | `True`                         | `"True"`                     |
+| A number, such as `replicas: 3`              | `3`                            | `"3"`                        |
+| A string, such as `phase: Available`         | `Available`                    | `"Available"`                |
+
+If a pack never becomes ready, check that each `expectedValue` matches the field value exactly, including
+capitalization. For example, `expectedValue: "True"` never matches a boolean field whose value is `true`.
+
+A key such as `status.conditions[0].status` depends on the order of the conditions in the resource. Confirm the order in
+the resource before you use an index.
+
+<!-- TODO(DOC-2019) Engineering: recommend index keys or a JSONPath filter expression for conditions? A filter returns a list, so the expected value would be [True]. -->
+
+### Readiness Check Examples
+
+The following example waits until a Rook `CephCluster` reports the `Ready` phase.
+
+```yaml
+readinessCheck:
+  v1beta1:
+    - name: "rook-ceph"
+      namespace: "rook-ceph"
+      group: "ceph.rook.io"
+      version: "v1"
+      kind: "CephCluster"
+      keysToCheck:
+        - keyToCheck: "status.phase"
+          expectedValue: "Ready"
+```
+
+The following example waits until the first three conditions of a Piraeus `LinstorCluster` are `True`. It omits
+`namespace`, so Palette uses the namespace of the pack.
+
+```yaml
+readinessCheck:
+  v1beta1:
+    - name: "linstorcluster"
+      group: "piraeus.io"
+      version: "v1"
+      kind: "LinstorCluster"
+      keysToCheck:
+        - keyToCheck: "status.conditions[0].status"
+          expectedValue: "True"
+        - keyToCheck: "status.conditions[1].status"
+          expectedValue: "True"
+        - keyToCheck: "status.conditions[2].status"
+          expectedValue: "True"
+```
+
 ## Pack Macros
 
 Pack macros are the variables defined in the Cluster profile or in Cluster pack values, and these variables are resolved
