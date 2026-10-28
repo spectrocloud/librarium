@@ -631,6 +631,34 @@ user:
 | `{{.spectro.system.clusterprofile.infra.uid}}`     | The unique identifier of the cluster profile.                                                                                                                                  |
 | `{{.spectro.system.clusterprofile.infra.version}}` | The version of the cluster profile.                                                                                                                                            |
 | `{{.spectro.system.cluster.kubevip}}`              | The IP address of the virtual IP (VIP) assigned to the cluster and load balancer for the control plane. This macro is only available for Edge and vSphere cluster deployments. |
+| `{{.spectro.system.oidc.issuerurl}}`               | The issuer URL of the OIDC identity provider of the cluster. Refer to [OIDC Macros](#oidc-macros).                                                                             |
+| `{{.spectro.system.oidc.clientid}}`                | The client ID of the OIDC identity provider of the cluster.                                                                                                                    |
+| `{{.spectro.system.oidc.clientsecret}}`            | The client secret of the OIDC identity provider of the cluster. Palette masks this value in cluster API responses.                                                             |
+| `{{.spectro.system.oidc.usernameclaim}}`           | The OIDC claim that Kubernetes uses as the username.                                                                                                                           |
+| `{{.spectro.system.oidc.groupsclaim}}`             | The OIDC claim that Kubernetes uses as the groups of the user.                                                                                                                 |
+| `{{.spectro.system.oidc.extrascopes}}`             | The additional OIDC scopes to request, as a comma-separated list.                                                                                                              |
+| `{{.spectro.system.oidc.idpconfigname}}`           | The name of the OIDC identity provider configuration. This macro is only available for Amazon EKS and Azure AKS clusters.                                                      |
+
+#### OIDC Macros
+
+The OIDC macros resolve to the OIDC configuration of the cluster, based on the **OIDC Identity Provider** setting of the
+Kubernetes pack in the cluster profile. Use them to place OIDC settings in the keys and format that your Kubernetes
+distribution requires, such as `--` prefixed `kube-apiserver` arguments. Palette resolves the macros when it deploys the
+cluster and when you update the pack values.
+
+| **OIDC Identity Provider** | **Macro Values**                                                                                                                                                                                                                                         |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Palette**                | The Palette OIDC configuration of your tenant. `clientid` is the tenant UID, `clientsecret` is a hash that Palette generates, `extrascopes` is `profile,email,openid`, `usernameclaim` is `email`, and `groupsclaim` is `groups`.                        |
+| **Inherit from Tenant**    | The OIDC configuration in **Tenant Settings** > **SSO**, including the client secret and the claim mappings of your identity provider.                                                                                                                   |
+| **Custom**                 | The `clientConfig` section of the Kubernetes pack. `usernameclaim`, `groupsclaim`, and `idpconfigname` resolve to empty strings. Use literal values in `clientConfig`, because macros that you reference inside `clientConfig` resolve to empty strings. |
+| **None**                   | All OIDC macros resolve to empty strings.                                                                                                                                                                                                                |
+
+:::warning
+
+If Palette cannot resolve the OIDC configuration of the cluster, all OIDC macros resolve to empty strings. Palette does
+not display an error, and the cluster deploys with empty OIDC values.
+
+:::
 
 </TabItem>
 
@@ -640,6 +668,16 @@ user:
 user:
  name: "{{ .spectro.system.user.name }}"
  uid: "{{ .spectro.system.user.uid}}"
+```
+
+The following example places the OIDC macros in `--` prefixed `kube-apiserver` arguments.
+
+```yaml
+extraKubeAPIServerArgs:
+  --oidc-issuer-url: "{{ .spectro.system.oidc.issuerurl }}"
+  --oidc-client-id: "{{ .spectro.system.oidc.clientid }}"
+  --oidc-username-claim: "{{ .spectro.system.oidc.usernameclaim }}"
+  --oidc-groups-claim: "{{ .spectro.system.oidc.groupsclaim }}"
 ```
 
 </TabItem>

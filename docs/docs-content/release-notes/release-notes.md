@@ -108,6 +108,14 @@ tags: ["release-notes"]
   its host cluster, or through Palette OIDC if neither has one. For more information, refer to
   [Headlamp](../clusters/cluster-management/headlamp.md#virtual-clusters).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11828 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12374 -->
+
+- Palette now provides system macros that resolve to the OIDC configuration of a cluster, including the issuer URL,
+  client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values as
+  `{{.spectro.system.oidc.<key>}}` to place OIDC settings in the keys and format that your Kubernetes distribution
+  requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
