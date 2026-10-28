@@ -11,10 +11,10 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
 updates to the clusters themselves.
 
-If you specify a Palette agent image to use in the operating system pack of your cluster profile using the
-`stylusPackage` parameter, pausing platform upgrades will have no effect on that cluster. It will always use the Palette
-agent image specified in the pack. For more information, refer to
-[Configure Palette Agent Version](../../edge/cluster-management/agent-upgrade-airgap.md).
+If you specify a Palette agent image in the operating system pack of your cluster profile using the `stylusPackage`
+parameter, the Edge host installs that agent version when Palette applies the cluster profile. The `stylusPackage`
+parameter alone does not keep the agent on that version. Unless you pause agent upgrades, Palette continues to upgrade
+the agent automatically. To keep the agent on its current version, enable **Pause Agent Upgrades**.
 
 ## Pause Agent Upgrade Scopes
 
@@ -72,6 +72,10 @@ that are not part of a cluster have their agent upgrades managed at the project 
 pausing or resuming agent upgrades at the tenant level will automatically pause or resume agent upgrades for all
 projects within that tenant. However, you can override the tenant level setting by manually changing the upgrade setting
 at the project level.
+
+If you delete an Edge host's cluster or reset the Edge host, the cluster-level setting no longer applies, and the Edge
+host follows the project-level or tenant-level setting. To keep the agent on its current version after a cluster
+deletion or an Edge host reset, enable **Pause Agent Upgrades** at the project or tenant level.
 
 The following is a table showing the scopes at which you can pause agent upgrades for different objects. The same
 relationship between the scopes applies: Changing the setting in a higher scope will trigger a one-time change to the
