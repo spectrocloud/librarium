@@ -100,6 +100,22 @@ tags: ["release-notes"]
   requests authenticated with API keys. For more information, refer to
   [Passkey Enforcement](../tenant-settings/passkeys.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PPD-510 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3370 -->
+
+- You can now deploy the Headlamp dashboard to Palette Virtual Clusters that use the Kubernetes distribution, in
+  **Proxied** or **Direct** access mode. Headlamp authenticates through the OIDC configuration of the virtual cluster or
+  its host cluster, or through Palette OIDC if neither has one. For more information, refer to
+  [Headlamp](../clusters/cluster-management/headlamp.md#virtual-clusters).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11828 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12374 -->
+
+- Palette now provides system macros that resolve to the OIDC configuration of a cluster, including the issuer URL,
+  client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values, for example
+  `{{.spectro.system.oidc.issuerurl}}`, to place OIDC settings in the keys and format that your Kubernetes distribution
+  requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
@@ -171,7 +187,23 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Upgrade Notes {#upgrade-notes-edge-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5627 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
+
+- After you upgrade the Palette agent on an existing Edge cluster, Palette manages its default Cert Manager installation
+  with Helm so that you can replace it with the [Cert Manager](../clusters/cluster-management/cert-manager-addon.md)
+  pack. The Cert Manager pods might restart once during the change. Certificates that Cert Manager has already issued
+  remain valid.
+
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5627 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
+
+- You can now add the Cert Manager pack to the cluster profiles of Edge clusters to customize Cert Manager, either when
+  you deploy the cluster or later. The pack takes over the default Cert Manager installation from Palette, and Palette
+  restores its default configuration if you remove the pack. Refer to
+  [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9218 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9865 -->
@@ -284,6 +316,66 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 ### Docs and Education
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+
+## October 24, 2026 - Release 4.10.33
+
+<!-- PATCH RELEASE TICKET: DOC-3358 -->
+<!-- PATCH RELEASE VERSION: 4.10.33 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9889 PEM-12393 PE-9895 PEM-12400 -->
+
+### Breaking Changes {#breaking-changes-4-10-33}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12400 -->
+
+- To improve security, the `GET /v1/spectroclusters/{uid}/assets/frpKubeconfig` API endpoint now requires the
+  `cluster.adminKubeconfigDownload` permission, the same permission that the admin kubeconfig endpoint requires. Users
+  who have only the `cluster.get` permission, such as users assigned the Cluster Viewer role, can no longer download a
+  kubeconfig file through this endpoint. Their requests fail with the `OperationForbidden` error. If your automation
+  calls this endpoint, use an API key that belongs to a user with the Cluster Admin role or a custom role that includes
+  the `cluster.adminKubeconfigDownload` permission. Refer to
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md#cluster-admin) for more information.
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12393 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9889 -->
+
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
+  in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9895 -->
+
+- Fixed an issue where provider image downloads on Edge hosts with limited network bandwidth repeatedly failed after 45
+  minutes with the error `context deadline exceeded`. The cluster remained in the **Provisioning** state, or the agent
+  upgrade did not complete. The time limit for each download and extraction attempt is now 6 hours. For more
+  information, refer to
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.33 Palette release is 4.10.10.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.33 Palette release is
+4.10.11. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## October 23, 2026 - Component Updates {#component-updates-2026-43}
 
