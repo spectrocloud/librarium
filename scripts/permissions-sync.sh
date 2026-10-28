@@ -27,6 +27,9 @@ if [[ ! -f "$permissions_map" ]]; then
     exit 1
 fi
 
+# Date stamped into the "**Last Update**:" line of each updated MDX file, for example "October 26, 2026"
+last_update=$(LC_ALL=C date -u '+%B %-d, %Y')
+
 # Track if any changes are detected with a temp file, as variables don't persist in subshells
 echo "false" > found_changes.txt
 
@@ -49,6 +52,13 @@ jq -r 'to_entries[] | "\(.key) \(.value)"' "$permissions_map" | while read -r js
     if ! diff -q "$repo_permissions/$json_file" mdx_extracted.json; then       
         echo "true" > found_changes.txt
         echo "Changes detected in $json_file. Updating $mdx_file..."
+
+        # Set the "**Last Update**:" line in the header to today's date
+        if echo "$partials_header" | grep -q '^\*\*Last Update\*\*:'; then
+            partials_header=$(echo "$partials_header" | sed -E "s/^\*\*Last Update\*\*:.*/**Last Update**: $last_update/")
+        else
+            echo "Warning: no '**Last Update**:' line found in $mdx_file. Date not updated."
+        fi
 
         # Update the MDX file with the JSON content
         echo "$partials_header" > $repo_librarium/$mdx_file
