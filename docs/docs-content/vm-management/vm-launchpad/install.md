@@ -262,7 +262,12 @@ Before you create a cluster, upload the content bundle. The content bundle provi
 packs that the cluster profile requires. For a multi-node cluster, upload the bundle to the leader host, which syncs it
 to the linked follower hosts.
 
-The recommended method is to upload the bundle from the **Content** tab in the appliance's Local UI.
+You can upload the bundle from the appliance's [Local UI](#upload-with-local-ui) or with the
+[Palette CLI](#upload-with-palette-cli). Use the Palette CLI if you reach the appliance over a VPN or a slow connection.
+A browser upload of a large bundle is unreliable on those connections, while the Palette CLI uploads the bundle in
+parallel chunks and resumes an interrupted upload.
+
+### Upload with Local UI
 
 1. Log in to the appliance's
    [Local UI](../../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui).
@@ -280,16 +285,91 @@ The recommended method is to upload the bundle from the **Content** tab in the a
    updates the **Disk Usage** and syncing status. The registry content appears on this page only after the cluster is up
    and the content has loaded into the local registry.
 
+For the full Local UI upload reference, including prerequisites and the Local UI port, refer to
+[Upload Content Bundle with Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-content-bundle-with-local-ui).
 After the upload finishes, continue to [Create VM Launchpad Cluster](#create-cluster).
 
-### Alternative Upload Methods
+### Upload with Palette CLI
 
-- **Palette CLI (scripted).** For automated or repeatable uploads, use the
-  [`content upload`](../../automation/palette-cli/commands/content.md#upload) command of the Palette CLI.
+The Palette CLI runs on a workstation and sends the bundle to the leader host over the network. It authenticates with an
+upload token that the host generates, so you do not need a Palette account or `palette login` for this upload. For a
+single-node cluster, use your only host wherever these steps refer to the leader host.
 
-- **Local UI reference.** For the full Local UI upload reference, including prerequisites and the Local UI port, refer
-  to
-  [Upload Content Bundle with Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle).
+Before you start, confirm the following:
+
+- You have a Linux or macOS workstation where you can run `sudo`. The Palette CLI supports Linux on AMD64 and ARM64, and
+  macOS on ARM64.
+
+- The workstation can reach the leader host's IP address on TCP port 5082. The upload service uses this port, not the
+  Local UI port (5080 by default).
+
+- The content bundle you downloaded from Artifact Studio is on the workstation.
+
+- You can SSH to the leader host with the account you created in the Palette TUI. Reading the upload token requires
+  `sudo` on the host.
+
+1. In the [Palette CLI](../../downloads/cli-tools.md#palette-cli) section of the CLI Tools page, select the tab for your
+   workstation's operating system and architecture, and copy the **Download URL** from the first row. The first row
+   lists the highest Palette CLI version, which also works with earlier VM Launchpad versions.
+
+2. Download the Palette CLI, make it executable, move it to a directory in your `PATH`, and confirm that it runs.
+
+   ```shell
+   curl --location --output palette <download-url>
+   chmod +x palette
+   sudo mv palette /usr/local/bin/palette
+   palette version
+   ```
+
+   Replace `<download-url>` with the URL you copied.
+
+3. SSH to the leader host.
+
+   ```shell
+   ssh <username>@<host-ip>
+   ```
+
+   Replace `<username>` with the username of the account that you created in the Palette TUI and `<host-ip>` with the
+   leader host's IP address.
+
+4. Read the upload token, and copy it.
+
+   ```shell
+   sudo cat /opt/spectrocloud/.upload-auth-token
+   ```
+
+   Close the SSH session after you copy the token. The host generates a new token each time its Palette agent restarts,
+   so read the token right before you upload.
+
+5. Upload the content bundle to the leader host.
+
+   ```shell
+   palette content upload --file <bundle-path> --token <upload-token> <host-ip>
+   ```
+
+   Replace `<bundle-path>` with the path to the content bundle, such as `launchpad-for-vms-<version>.tar.zst`,
+   `<upload-token>` with the token from step 4, and `<host-ip>` with the leader host's IP address.
+
+   If the upload is interrupted, run the same command again, and the Palette CLI resumes the upload instead of starting
+   over. If the CLI reports that the host rejected the token, repeat step 4 to read the current token, and then run the
+   command again with it.
+
+   If you host the bundle on a web server or object store that the workstation can reach, you can stream it instead of
+   copying it to the workstation. In the command, replace `--file <bundle-path>` with `--src-url <bundle-url>`, where
+   `<bundle-url>` is the URL of the bundle. The URL must support HTTP range requests. For all supported flags, refer to
+   [`content upload`](../../automation/palette-cli/commands/content.md#upload).
+
+6. Wait for the Palette CLI to finish. After the transfer reaches 100 percent, the host extracts the bundle and imports
+   its content into the local registry, which can take up to 30 minutes for a large bundle. The CLI waits for this step
+   and displays the following message when it finishes.
+
+   ```shell hideClipboard title="Example Output"
+   extraction complete: content is ready on the host
+   ```
+
+After the Palette CLI reports that the content is ready, log in to the leader host's
+[Local UI](../../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) and continue to
+[Create VM Launchpad Cluster](#create-cluster).
 
 ## Create VM Launchpad Cluster {#create-cluster}
 
