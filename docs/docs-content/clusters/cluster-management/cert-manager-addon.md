@@ -42,8 +42,8 @@ certificate expires as necessary.
 <!-- The Edge agent version in this section is a release placeholder. Replace it with the final Edge agent version
 once it is known. -->
 
-- Cert Manager customizations are only supported in clusters running Palette agent version 4.8.9 or later. Edge clusters
-  require Palette agent version 4.10.b or later.
+- Cert Manager customizations require Palette agent version 4.8.9 or later. Edge clusters require Palette agent version
+  4.10.b or later.
 
 - Imported clusters do not support Cert Manager customizations.
 
@@ -55,8 +55,8 @@ cluster.
 
 - The pack version applies to the cluster even when it is earlier than the default version that Palette installs.
 
-- On Edge clusters, Palette creates its default Cert Manager installation when the cluster first starts, and the pack
-  takes it over when Palette deploys the add-on layers.
+- On Edge clusters, Palette creates its default Cert Manager installation when the cluster first starts, and the Cert
+  Manager pack takes it over when Palette deploys the pack.
 
 - If you remove the pack from the cluster profile, Palette restores its default Cert Manager configuration. Palette does
   not uninstall Cert Manager, so Cert Manager continues to issue and renew certificates.
