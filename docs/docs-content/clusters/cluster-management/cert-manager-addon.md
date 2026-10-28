@@ -49,13 +49,14 @@ once it is known. -->
 
 ## Default Cert Manager Installation
 
-Palette installs a default Cert Manager on every cluster it manages. When you add the Cert Manager pack to the cluster
-profile, the pack takes over this installation, and Palette applies your pack configuration to the cluster.
+Palette creates a default Cert Manager installation on every cluster that it manages. When you add the Cert Manager pack
+to the cluster profile, the pack takes over this installation, and Palette applies your pack configuration to the
+cluster.
 
 - The pack version applies to the cluster even when it is earlier than the default version that Palette installs.
 
-- On Edge clusters, Palette installs its default Cert Manager when the cluster first starts, and the pack takes it over
-  when Palette deploys the add-on layers.
+- On Edge clusters, Palette creates its default Cert Manager installation when the cluster first starts, and the pack
+  takes it over when Palette deploys the add-on layers.
 
 - If you remove the pack from the cluster profile, Palette restores its default Cert Manager configuration. Palette does
   not uninstall Cert Manager, so Cert Manager continues to issue and renew certificates.

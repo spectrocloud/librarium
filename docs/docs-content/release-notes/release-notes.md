@@ -166,9 +166,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7841 -->
 
 - After you upgrade the Palette agent on an existing Edge cluster, Palette manages its default Cert Manager installation
-  with Helm, so that you can replace it with the [Cert Manager](../clusters/cluster-management/cert-manager-addon.md)
-  pack. If the Helm installation uses different Cert Manager images from the existing installation, the Cert Manager
-  pods restart once during the change. Certificates that Cert Manager has already issued remain valid.
+  with Helm so that you can replace it with the [Cert Manager](../clusters/cluster-management/cert-manager-addon.md)
+  pack. The Cert Manager pods might restart once during the change. Certificates that Cert Manager has already issued
+  remain valid.
 
 #### Features
 
