@@ -109,8 +109,9 @@ Headlamp on a virtual cluster differs from Headlamp on a host cluster in the fol
 - A Palette Virtual Cluster that uses the Kubernetes distribution.
 
 - cert-manager installed in the virtual cluster. Headlamp requires cert-manager. Palette installs cert-manager in new
-  virtual clusters by default.
-  <!-- TODO(DOC-3370) Sadath: do virtual clusters created before 4.10.b need cert-manager (and the TokenReview RBAC and PriorityClass sync defaults) added by hand, and how? -->
+  virtual clusters by default. If an existing virtual cluster does not have cert-manager, add the Cert Manager pack to
+  the virtual cluster through an add-on cluster profile before you deploy Headlamp. Refer to
+  [Cert Manager Add-On](./cert-manager-addon.md).
 
 - The Headlamp pack version 0.44.0.
 
@@ -121,9 +122,7 @@ Headlamp on a virtual cluster differs from Headlamp on a host cluster in the fol
 
 When Palette resolves the identity provider to **Palette** or **Inherit from Tenant**, it configures the Headlamp OIDC
 values for you. When it resolves to **Custom**, Palette does not configure them, and you must enter the OIDC values in
-the Headlamp pack.
-
-<!-- TODO(DOC-3370) Sadath: callback URL for Direct access. The URL below is for Proxied access. -->
+the Headlamp pack. The steps are the same for **Proxied** and **Direct** access.
 
 1. In the OIDC app of your identity provider, add the following URL as a redirect URI. Replace `<palette-host>` with the
    hostname of your Palette instance.
@@ -167,9 +166,9 @@ the Headlamp pack.
 
 ### Change the Headlamp Configuration
 
-Some configuration changes take effect only after you reattach the Headlamp add-on cluster profile or restart Headlamp.
-
-<!-- TODO(DOC-3370) Define "reattach" (remove and re-add the add-on profile?) with Sadath or Himabindu. -->
+Some configuration changes take effect only after you reattach Headlamp or restart the Headlamp deployment. To reattach
+Headlamp, remove the Headlamp add-on cluster profile from the virtual cluster, and then add it back. Wait a few minutes
+for Headlamp to redeploy before you select **Connect**.
 
 | **Change**                                                                           | **Action**                                                                   |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
