@@ -441,6 +441,7 @@ const config = {
               },
             ],
           },
+          // `hideOnHomepage` leaves the item out on the homepage. See src/theme/NavbarItem/index.js.
           {
             to: "/tutorials",
             type: "docSidebar",
@@ -448,6 +449,7 @@ const config = {
             label: "Tutorials",
             position: "left",
             activeBaseRegex: paletteNavbarActiveBaseRegex,
+            hideOnHomepage: true,
           },
           {
             to: "/downloads",
@@ -456,11 +458,13 @@ const config = {
             label: "Downloads",
             position: "left",
             activeBaseRegex: paletteNavbarActiveBaseRegex,
+            hideOnHomepage: true,
           },
           {
             to: "/api/introduction",
             label: "API",
             position: "left",
+            hideOnHomepage: true,
           },
           {
             type: "html",
@@ -491,6 +495,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "left",
             docsPluginId: "default",
+            hideOnHomepage: true,
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
                 href: versionUrl,
