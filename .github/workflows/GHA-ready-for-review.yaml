@@ -1,5 +1,6 @@
-# This workflow will post to Slack when a PR is labeled with "notify-slack". 
-# It will notify the appropriate reviewers based on the current UTC hour.
+# This workflow posts to the #docs-pr-review Slack channel when a PR is labeled with "notify-slack".
+# It adds one emoji for each size and urgency label on the PR (monster-pr, small-pr, urgent, not-urgent),
+# and it mentions the reviewers whose working hours include the current UTC hour.
 # It also ensures that Slack is not notified multiple times for the same PR.
 # The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
 # After notifying, it records the notification in the PR comments and securely deletes the reviewers file.
@@ -82,23 +83,49 @@ jobs:
 
           echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
 
+      - name: Check the review channel webhook
+        if: steps.check.outputs.notified == 'false'
+        env:
+          WEBHOOK: ${{ secrets.SLACK_PR_REVIEW_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "::error::The SLACK_PR_REVIEW_WEBHOOK secret is not set, so the review request can't be posted to #docs-pr-review."
+            exit 1
+          fi
+
+      - name: Map size and urgency labels to emoji
+        if: steps.check.outputs.notified == 'false'
+        id: emoji
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          # Size first, then urgency. Matching ignores case.
+          L=",$(printf '%s' "$LABELS" | tr '[:upper:]' '[:lower:]'),"
+          E=""
+          [[ "$L" == *",monster-pr,"* ]] && E+=":t-rex: "
+          [[ "$L" == *",small-pr,"* ]] && E+=":ant: "
+          [[ "$L" == *",urgent,"* ]] && E+=":rotating_light: "
+          [[ "$L" == *",not-urgent,"* ]] && E+=":turtle: "
+          echo "Label emoji: ${E:-none}"
+          echo "emoji=$E" >> "$GITHUB_OUTPUT"
+
       - name: Notify Slack
         if: steps.check.outputs.notified == 'false'
         uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PR_REVIEW_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: "#A020F0"
           SLACK_MESSAGE: |
-            :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+            ${{ steps.emoji.outputs.emoji }}:review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
 
       - name: Create or Update Slack comment manually
         if: steps.check.outputs.notified == 'false'
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          BODY="✅ Slack reviewers notified at $TIMESTAMP \n <!-- slack-notified -->"
+          BODY="✅ Review request posted to #docs-pr-review at $TIMESTAMP \n <!-- slack-notified -->"
 
           if [ -n "${{ steps.check.outputs.comment_id }}" ]; then
             echo "Updating existing comment..."
