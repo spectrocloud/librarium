@@ -30,7 +30,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: October 28, 2026
+- **Last Updated**: October 29, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -123,7 +123,7 @@ deployments where each version is available.
 | ------- | ---------------------------------------------------------------------------------------- | -------------- | ---------------------------------------- |
 | 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released       | Not yet released                         |
 | 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released       | Released                                 |
-| 4.9.65  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable | Released                                 |
+| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable | Not yet released                         |
 | 4.8.x   | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable | Not yet released                         |
 
 #### Kubernetes Versions and Packs
