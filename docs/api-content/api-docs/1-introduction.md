@@ -447,8 +447,6 @@ Downloads, profile bundles, and the current user operations require a token.
 
 The following curl command is an example. Replace `<access-key>` with your access key or token.
 
-<!-- TODO(DOC-3256): Run both curl examples against production after the October 26 launch. On October 22, production still serves the previous version for /v2 paths. -->
-
 ```shell
 curl --header "Authorization: Bearer <access-key>" \
   "https://artifact-studio.spectrocloud.com/v2/packs/catalog?q=edge-k8s&limit=10"
