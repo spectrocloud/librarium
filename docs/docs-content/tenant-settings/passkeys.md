@@ -1,19 +1,19 @@
 ---
 sidebar_label: "Passkey Enforcement"
 title: "Passkey Enforcement"
-description: "Require users who sign in to your Palette tenant with a password to also verify a passkey."
+description: "Require users who sign in to your Palette tenant with a password to add a passkey."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 45
 tags: ["tenant-administration", "security", "authentication", "passkeys"]
 ---
 
-Tenant administrators can require every user who signs in to the tenant with an email address and password to also
-verify a passkey. A passkey is a second authentication factor that uses the
-[WebAuthn](https://www.w3.org/TR/webauthn-2/) standard. Users create passkeys with an authenticator, such as a hardware
-security key, a platform authenticator, or a password manager. When you turn on passkey enforcement, users without a
-passkey must add one, and they get a grace period in which to do so. Users who have a passkey verify it after the
-password each time they sign in, whether or not the tenant enforces passkeys.
+Tenant administrators can require every user who signs in to the tenant with an email address and password to add a
+passkey. A passkey is a second authentication factor that uses the [WebAuthn](https://www.w3.org/TR/webauthn-2/)
+standard. Users create passkeys with an authenticator, such as a hardware security key, a platform authenticator, or a
+password manager. When you turn on passkey enforcement, users without a passkey must add one before their grace period
+ends. Users who have a passkey verify it after the password each time they sign in, whether or not the tenant enforces
+passkeys.
 
 Users add and delete their own passkeys. Refer to [Manage Passkeys](../user-management/authentication/passkeys.md) for
 the user procedures.
@@ -50,7 +50,7 @@ Enforcement also behaves in the following ways.
 - While any tenant a user belongs to enforces passkeys, that user cannot delete their last passkey. If none of the
   user's tenants enforces passkeys, the user can delete all their passkeys and sign in with a password only.
 
-Passkey enforcement does not apply to the following authentication methods.
+Palette does not ask for a passkey for the following authentication methods.
 
 - Signing in through Single Sign-On (SSO). Your identity provider handles multi-factor authentication for these users.
 
@@ -134,5 +134,5 @@ every user in the tenant from the date of the change.
 
 4. Turn off **Enable passkey enforcement**. Palette saves the change immediately.
 
-After you disable enforcement, users no longer need a passkey to sign in to this tenant. Users keep the passkeys they
-added, and Palette continues to ask users who have a passkey to verify it when they sign in.
+After you disable enforcement, users without a passkey no longer need to add one to sign in to this tenant. Users keep
+the passkeys they added, and Palette continues to ask for a passkey when those users sign in.

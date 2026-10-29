@@ -97,8 +97,8 @@ tags: ["release-notes"]
 - Users who sign in to a Palette tenant with a password can now add a passkey as a second authentication factor from
   their **My Profile** > **Security** tab. After a user adds a passkey, Palette asks for it each time the user signs in
   with a password, in any tenant the user belongs to. Tenant administrators can also require every user who signs in to
-  the tenant with a password to add a passkey, with a configurable grace period (14 days by default). Passkeys do not
-  apply to SSO sign-ins or to API requests authenticated with API keys. For more information, refer to
+  the tenant with a password to add a passkey within a configurable grace period (14 days by default). Palette does not
+  ask for a passkey for SSO sign-ins or for API requests authenticated with API keys. For more information, refer to
   [Manage Passkeys](../user-management/authentication/passkeys.md) and
   [Passkey Enforcement](../tenant-settings/passkeys.md).
 

@@ -19,8 +19,8 @@ administrators can also enforce passkeys, which requires every user in the tenan
 (SSO), your identity provider handles multi-factor authentication instead.
 
 Your passkeys belong to your user account, not to a tenant. If you belong to more than one tenant, you use the same
-passkeys in each one, and Palette asks for a passkey when you sign in to any of them, including tenants that do not
-enforce passkeys.
+passkeys in each one, and Palette asks for a passkey when you sign in to any of them with your password, including
+tenants that do not enforce passkeys.
 
 :::danger
 
@@ -67,7 +67,7 @@ The passkey appears in the list of passkeys on the **Security** tab.
 
 1. Log out of Palette.
 
-2. Log in to Palette with your email address and password.
+2. Log in to [Palette](https://console.spectrocloud.com) with your email address and password.
 
 3. After you enter your password, select the passkey you added, and verify it with your authenticator.
 
