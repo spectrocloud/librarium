@@ -5,6 +5,8 @@ description:
   "Use Artifact Studio v2 to download appliances, packs, and profiles, and to manage your organization and access keys."
 hide_table_of_contents: false
 sidebar_position: 11
+sidebar_custom_props:
+  icon: "layer-group"
 tags: ["downloads", "artifact-studio"]
 ---
 
