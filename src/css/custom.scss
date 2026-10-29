@@ -255,6 +255,139 @@ p img.markdown-image {
   display: none !important;
 }
 
+// Homepage section panels (docs/docs-content/introduction/landing.md).
+// Each panel is a size container. Below 1150px the heading is a band above the cards; at 1150px and wider it is a rail on the left.
+// Every rail is a Deep Teal sheet, so teal stays the core color. The section accent shows in a folded plane, a folded
+// corner, and the cards. Folds run at the brand fold angle of 38.5 degrees, and the corner flap is the cut-off corner
+// reflected across the crease. The glyphs are decorative and Paper colored, because every rail is dark in both color modes.
+// Fold constants: tan(38.5°) = 0.7954, sin(77°) = 0.9744, cos(77°) = 0.225, and 1 - 1 / (2cos²(38.5°)) = 0.1836.
+
+.landing-section {
+  // Teal defaults, so a panel without a modifier class still gets its dark rail.
+  --landing-accent: #1f7a78;
+  --landing-plane: #005b5b;
+  --landing-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f7f1ed' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3Cpath d='M12 2.5v6.9M12 14.6v6.9M3.8 7.25l5.95 3.45M14.25 13.3l5.95 3.45M20.2 7.25l-5.95 3.45M9.75 13.3l-5.95 3.45'/%3E%3C/svg%3E");
+
+  container: landing-section / inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--landingBorder);
+  border-radius: 16px;
+  background: var(--landingSectionBackground);
+
+  > * {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  // The card grid. The 16px padding also keeps card focus outlines inside overflow: hidden.
+  > :not(h2) {
+    padding: 16px;
+  }
+
+  > h2 {
+    --ifm-h2-font-size: 1.375rem;
+    --landing-plane-size: 88px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    padding: 14px 18px;
+    line-height: 1.25;
+    color: #f7f1ed;
+    // The folded plane: a right triangle whose long edge rises at 38.5 degrees, on the Dark Teal sheet.
+    background: linear-gradient(to top left, var(--landing-plane) 50%, transparent calc(50% + 1px)) right bottom /
+      var(--landing-plane-size) calc(var(--landing-plane-size) * 0.7954) no-repeat #043736;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22.27px), calc(100% - 28px) 100%, 0 100%);
+
+    // Glyph tile, with its top-right corner folded away at 38.5 degrees.
+    &::before {
+      content: "";
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(247, 241, 237, 0.14) var(--landing-glyph) center / 24px no-repeat;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 9.545px, 100% 100%, 0 100%);
+    }
+
+    // Corner flap
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 28px;
+      height: 27.28px;
+      background: var(--landing-accent);
+      clip-path: polygon(0 100%, 100% 18.36%, 22.5% 0);
+    }
+
+    .hash-link {
+      color: inherit;
+      opacity: 0;
+    }
+
+    &:hover .hash-link,
+    .hash-link:focus-visible {
+      opacity: 1;
+    }
+  }
+}
+
+// Section accents from the brand palette, the same in both color modes: the accent for the corner flap, icon tiles, and
+// card folds, and its dark variant for the folded plane.
+.landing-section--ai {
+  --landing-accent: #7e5c8e;
+  --landing-plane: #441647;
+  --landing-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f7f1ed'%3E%3Cpath d='M10 2.5l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2z'/%3E%3Cpath d='M18 13l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z'/%3E%3C/svg%3E");
+}
+
+.landing-section--vm {
+  --landing-accent: #b94b01;
+  --landing-plane: #851a01;
+  --landing-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f7f1ed' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M7 4.5h12a2 2 0 0 1 2 2v9'/%3E%3Crect x='3' y='8.5' width='14' height='11' rx='2'/%3E%3Cpath d='M3 12.5h14M6 10.5h.01M8.5 10.5h.01'/%3E%3C/svg%3E");
+}
+
+@container landing-section (min-width: 1150px) {
+  .landing-section > h2 {
+    --landing-plane-size: 120px;
+    flex: 0 0 224px;
+    display: block;
+    padding: 20px;
+  }
+
+  .landing-section > h2::before {
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .landing-section > :not(h2) {
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-section > :not(h2) {
+    padding: 12px;
+  }
+}
+
+@media (forced-colors: active) {
+  .landing-section > h2 {
+    background: none;
+    clip-path: none;
+  }
+
+  .landing-section > h2::before,
+  .landing-section > h2::after {
+    display: none;
+  }
+}
+
 // Reduce the spacing between lines in code blocks
 
 .theme-code-block code {

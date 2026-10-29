@@ -110,3 +110,186 @@
     min-width: 280px;
   }
 }
+
+// Compact variant (opt-in with the compact prop), used only by the docs homepage.
+// Every selector below needs a compact class, so the default cards on other pages are unchanged. Tags and icons are
+// styled only here, because only the homepage uses them.
+// Column counts follow the nearest CSS size container (.landing-section). Without one, the grid stays at 2 columns.
+
+.simpleCardGrid.simpleCardGridCompact {
+  grid-gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: none;
+
+  > a {
+    border-radius: 12px;
+  }
+
+  > a:focus-visible {
+    outline: 3px solid var(--ifm-color-primary);
+    outline-offset: 3px;
+  }
+}
+
+@container (min-width: 960px) {
+  .simpleCardGrid.simpleCardGridCompact[data-columns="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .simpleCardGrid.simpleCardGridCompact[data-columns="4"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container (max-width: 599px) {
+  .simpleCardGrid.simpleCardGridCompact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// Folded corner on compact cards. The crease runs at the brand fold angle of 38.5 degrees, and the flap is the cut-off
+// corner reflected across it, so its depth and tip come from the doubled angle: tan(38.5°) = 0.7954, sin(77°) = 0.9744,
+// cos(77°) = 0.225, and 1 / (2cos²(38.5°)) = 0.8164.
+.simpleCard.simpleCardCompact {
+  --fold: 20px;
+
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: 18px 16px 14px;
+  justify-content: flex-start;
+  border-color: var(--landingBorder);
+  border-radius: 8px;
+  color: var(--landingCardText);
+  background: var(--landingCardBackground);
+  box-shadow: none;
+  clip-path: polygon(0 0, calc(100% - var(--fold)) 0, 100% calc(var(--fold) * 0.7954), 100% 100%, 0 100%);
+
+  // The flap, in the section accent and under the title text. Other pages fall back to the brand teal.
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: var(--fold);
+    height: calc(var(--fold) * 0.9744);
+    background: var(--landing-accent, var(--simpleCardPrimary));
+    clip-path: polygon(0 0, 100% 81.64%, 22.5% 100%);
+  }
+
+  .simpleCardHeader {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  .simpleCardIcon {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    color: #f7f1ed;
+    background: var(--landing-accent, var(--simpleCardPrimary));
+    border-radius: 8px;
+  }
+
+  .simpleCardBody {
+    flex-grow: 1;
+  }
+
+  .simpleCardDescription {
+    margin: 0;
+    color: var(--landingCardMuted);
+  }
+
+  .simpleCardFooter {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+  }
+
+  .simpleCardTags {
+    font-size: 12.5px;
+    line-height: 18px;
+    color: var(--landingCardMuted);
+
+    strong {
+      font-weight: 600;
+      color: var(--landingCardText);
+    }
+  }
+}
+
+.simpleCardGridCompact > a:hover .simpleCardCompact,
+.simpleCardGridCompact > a:focus-visible .simpleCardCompact {
+  --fold: 26px;
+
+  border-color: var(--landing-accent, var(--simpleCardPrimary));
+  // An inset ring doubles the visible border to 2px without shifting the card content.
+  box-shadow: inset 0 0 0 1px var(--landing-accent, var(--simpleCardPrimary));
+}
+
+.simpleCardTagValue {
+  white-space: nowrap;
+}
+
+.simpleCardFooterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  color: var(--ifm-color-primary);
+
+  .simpleCardFooterArrow {
+    height: 0.85em;
+    fill: currentColor;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .simpleCard.simpleCardCompact,
+  .simpleCard.simpleCardCompact::before {
+    transition:
+      transform 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      clip-path 150ms ease,
+      width 150ms ease,
+      height 150ms ease;
+  }
+
+  .simpleCardGridCompact > a:hover .simpleCardCompact,
+  .simpleCardGridCompact > a:focus-visible .simpleCardCompact {
+    transform: translateY(-3px);
+  }
+
+  .simpleCardFooterLink .simpleCardFooterArrow {
+    transition: transform 150ms ease;
+  }
+
+  .simpleCardGridCompact > a:hover .simpleCardFooterLink .simpleCardFooterArrow {
+    transform: translateX(3px);
+  }
+}
+
+@media (forced-colors: active) {
+  .simpleCard.simpleCardCompact {
+    clip-path: none;
+  }
+
+  .simpleCard.simpleCardCompact::before {
+    display: none;
+  }
+
+  .simpleCard.simpleCardCompact .simpleCardIcon {
+    border: 1px solid CanvasText;
+  }
+}

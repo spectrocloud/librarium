@@ -162,7 +162,7 @@ component automatically displays the correct badge color for the active light or
 
 This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
 scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
-`VersionedLink` under the covers.
+Docusaurus `Link` component under the covers, so card URLs can point to internal pages or external sites.
 
 ```js
 <SimpleCardGrid
