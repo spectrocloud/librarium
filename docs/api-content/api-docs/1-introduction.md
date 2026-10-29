@@ -420,7 +420,7 @@ The following is a list of endpoints that are only available to Edge hosts that 
 ## Artifact Studio API
 
 Use the Artifact Studio API to browse the Spectro Cloud artifact catalog and to download the artifacts that your
-organization is entitled to from your own scripts and CI pipelines. The API covers packs, cluster profiles, PaletteAI
+organization is entitled to from your own scripts and CI pipelines. The API includes packs, cluster profiles, PaletteAI
 profiles, Palette installers, and your saved profile bundles.
 
 :::preview
@@ -443,13 +443,14 @@ The base URL of the Artifact Studio API is `https://artifact-studio.spectrocloud
 ### Authentication
 
 Send an Artifact Studio personal access key or an organization access token as a bearer token in the `Authorization`
-header. You create personal access keys on the **API access keys** tab of your account. Organization admins create
-organization access tokens on the **Tokens** tab of the **Organization settings** page.
+header. In Artifact Studio, you create personal access keys on the **API access keys** tab, which you open from the
+**User Menu**. Organization admins create organization access tokens on the **Tokens** tab of the **Organization
+settings** page. For the steps, refer to
+[Create a Personal Access Key](/downloads/artifact-studio-v2#create-a-personal-access-key) and
+[Create an Organization Access Token](/downloads/artifact-studio-v2#create-an-organization-access-token).
 
 The catalog and search operations do not require a token. Without one, they return public and gated artifacts only.
 Downloads, profile bundles, and the current user operations require a token.
-
-<!-- TODO(DOC-3256): Link "personal access keys" to /downloads/artifact-studio-v2/#create-a-personal-access-key and "organization access tokens" to /downloads/artifact-studio-v2/#create-an-organization-access-token once #12239 merges. Until then, the links break the build. -->
 
 The following curl command is an example. Replace `<access-key>` with your access key or token.
 
