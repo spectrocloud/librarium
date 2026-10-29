@@ -11,10 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 28, 2026 - Release 4.9.65
+## October 29, 2026 - Release 4.9.66
 
 <!-- PATCH RELEASE TICKET: DOC-3360 -->
-<!-- PATCH RELEASE VERSION: 4.9.65 -->
+<!-- PATCH RELEASE VERSION: 4.9.66 -->
 <!-- PATCH RELEASE CANDIDATES: PE-9921 PEM-12394 -->
 
 ### Improvements
@@ -36,8 +36,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.65 Palette release is
-`VERSION PENDING`.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.66 Palette release is 4.9.44.
 
 :::
 
@@ -45,8 +44,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.65 Palette release is
-`VERSION PENDING`. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.66 Palette release is
+4.9.28. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
