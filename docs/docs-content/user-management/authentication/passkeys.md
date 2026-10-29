@@ -75,9 +75,9 @@ A successful sign-in confirms that the passkey works.
 
 ## Delete a Passkey
 
-While any tenant you belong to enforces passkeys, you cannot delete your last passkey. To replace it, add the new
-passkey first, and then delete the old one. If none of your tenants enforces passkeys, you can delete all your passkeys
-to sign in with your password only.
+While any tenant you belong to enforces passkeys, you cannot delete your last passkey, and its trash can icon is
+unavailable. To replace it, add the new passkey first, and then delete the old one. If none of your tenants enforces
+passkeys, you can delete all your passkeys to sign in with your password only.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
