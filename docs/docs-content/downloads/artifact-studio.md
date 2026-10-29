@@ -15,6 +15,9 @@ installers to be used with self-hosted [Palette](../enterprise-version/enterpris
 [Palette VerteX](../vertex/vertex.md). It provides a single location for packs and images, streamlining access and
 management.
 
+Artifact Studio v2 is available as a Tech Preview. For more information, refer to
+[Artifact Studio v2](./artifact-studio-v2.md).
+
 ## Use Cases
 
 Use the Palette or VerteX Management Appliance or Helm chart to instantiate or upgrade your self-hosted environment.
