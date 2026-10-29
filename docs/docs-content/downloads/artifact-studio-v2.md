@@ -276,16 +276,16 @@ organization is entitled to. The key stays tied to the organization that is acti
 6. Select **Copy key**, and then store the key in your secrets manager. Artifact Studio displays the key only once.
    Select **Done**.
 
-<!-- TODO(DOC-3256): Link the Artifact Studio API reference and name the API host once the spec is final. -->
-
-Pass the key as a bearer token in the `Authorization` header of your API requests.
+Pass the key as a bearer token in the `Authorization` header of your API requests. The following example searches the
+pack catalog for `edge-k8s`.
 
 ```shell
-curl --header "Authorization: Bearer <access-key>" <artifact-studio-api-url>
+curl --header "Authorization: Bearer <access-key>" \
+  "https://artifact-studio.spectrocloud.com/v2/packs/catalog?q=edge-k8s&limit=10"
 ```
 
-Replace `<access-key>` with your access key and `<artifact-studio-api-url>` with the URL of the API endpoint you want to
-call.
+Replace `<access-key>` with your access key. For the base URL, authentication, and available endpoints, refer to the
+[Artifact Studio API](/api/introduction#artifact-studio-api) section of the API documentation.
 
 To revoke a key, select **Revoke** next to the key on the **API access keys** tab. Any pipeline that uses the key stops
 working immediately.
