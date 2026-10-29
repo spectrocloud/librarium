@@ -153,6 +153,13 @@ tags: ["release-notes"]
   cluster profiles, continue to work. Update any automation, script, or integration that calls `GET /v1/clusterprofiles`
   before you upgrade, because those calls fail after the upgrade.
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4496 -->
+<!-- https://spectrocloud.atlassian.net/browse/PFR-1126 -->
+<!-- https://spectrocloud.atlassian.net/browse/PFR-949 -->
+
+- The Spectro Kubernetes Dashboard and Kubernetes Dashboard packs, deprecated in January 2026, are no longer available
+  in Palette and Palette VerteX.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12360 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12379 -->
 
