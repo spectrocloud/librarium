@@ -102,8 +102,7 @@ where the previous attempt stopped. To keep partially completed downloads, the E
 three times the compressed size of the provider image. If less space is available, each new attempt starts from the
 beginning.
 
-If a cluster update changes the provider image of a deployed cluster, the Palette agent downloads the image in an
-upgrade job that Palette stops after 15 minutes. Each download attempt during such an update ends after 15 minutes,
+If a cluster update changes the provider image of a deployed cluster, each download attempt ends after 15 minutes,
 regardless of the Palette agent version.
 
 ### Debug Steps
@@ -128,8 +127,8 @@ regardless of the Palette agent version.
    - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
      complete.
 
-   If these messages repeat at intervals that match the time limit for your Palette agent version, the download is
-   consistently exceeding the time limit.
+   If `context deadline exceeded` messages repeat at intervals that match the time limit for your Palette agent version,
+   the download is consistently exceeding the time limit.
 
    In Palette agent version 4.10.b and later, you can also follow provider image downloads during cluster provisioning
    in Palette. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Select the Edge
@@ -141,6 +140,8 @@ regardless of the Palette agent version.
    ```shell
    df --human-readable /usr/local/spectrocloud
    ```
+
+   The `Avail` column of the output shows the free disk space on that file system.
 
    The log message reports how much space the Palette agent needs and how much is available, in MB. Free up at least the
    difference on the Edge host so that later attempts resume the download instead of starting from the beginning.
