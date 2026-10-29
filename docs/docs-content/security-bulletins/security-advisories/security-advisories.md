@@ -27,7 +27,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: October 28, 2026
+- **Last Updated**: October 29, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -109,20 +109,34 @@ d) Customers are advised to monitor and audit outbound connections and watch for
 
 ### Mitigation Status
 
-Palette 4.10.33, released on October 24, 2026, includes patches for this vulnerability. The following table lists the
-patch status of other components. Spectro Cloud updates this advisory as each patch is released.
+Spectro Cloud updates this advisory as each patch is released.
 
-| Component                                                                  | Status              |
-| -------------------------------------------------------------------------- | ------------------- |
-| Palette Management Appliance and VerteX Management Appliance (4.10)        | Released in 4.10.33 |
-| Remaining Palette 4.10 images                                              | Not yet released    |
-| Palette 4.8 and 4.9                                                        | Not yet released    |
-| Palette Management Appliance and VerteX Management Appliance (4.8 and 4.9) | Not yet released    |
-| Kubernetes versions                                                        | Not yet released    |
-| Verified packs with upstream fixes                                         | Not yet released    |
+#### Palette and VerteX Releases
 
-Appliance mode Edge hosts that run Ubuntu can use a workaround to remove the affected root certificates from the host
-trust store. Refer to
+The following table lists the patch status of each Palette and VerteX version, what each version includes, and the
+deployments where each version is available.
+
+| Version | Includes                                                                                 | SaaS           | Palette and VerteX Management Appliances |
+| ------- | ---------------------------------------------------------------------------------------- | -------------- | ---------------------------------------- |
+| 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released       | Not yet released                         |
+| 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released       | Released                                 |
+| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable | Not yet released                         |
+| 4.8.x   | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable | Not yet released                         |
+
+#### Kubernetes Versions and Packs
+
+The following table lists the patch status of Kubernetes versions and packs.
+
+| Component                          | Status           |
+| ---------------------------------- | ---------------- |
+| Kubernetes versions                | Not yet released |
+| Verified packs with upstream fixes | Not yet released |
+
+#### Edge Hosts
+
+Provider images and Edge installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root
+certificates. Appliance mode Edge hosts that run Ubuntu and use images built with an earlier CanvOS version can use a
+workaround to remove the affected root certificates from the host trust store. Refer to
 [Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
 for the steps.
 
