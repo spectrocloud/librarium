@@ -14,7 +14,7 @@ updates to the clusters themselves.
 If you specify a Palette agent image in the operating system pack of your cluster profile using the `stylusPackage`
 parameter, the Edge host installs that agent version when Palette applies the cluster profile. The `stylusPackage`
 parameter alone does not keep the agent on that version. Unless you pause agent upgrades, Palette continues to upgrade
-the agent automatically. To keep the agent on its current version, enable **Pause Agent Upgrades**.
+the agent automatically even if you set `stylusPackage`.
 
 ## Pause Agent Upgrade Scopes
 
