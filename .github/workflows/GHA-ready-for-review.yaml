@@ -1,5 +1,5 @@
 # This workflow posts to the #docs-pr-review Slack channel when a PR is labeled with "notify-slack".
-# It adds one emoji for each size and urgency label on the PR (monster-pr, small-pr, urgent, non-urgent),
+# It adds one emoji for each size and urgency label on the PR (monster-pr, small-pr, urgent, not-urgent),
 # and it mentions the reviewers whose working hours include the current UTC hour.
 # It also ensures that Slack is not notified multiple times for the same PR.
 # The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
@@ -105,7 +105,7 @@ jobs:
           [[ "$L" == *",monster-pr,"* ]] && E+=":t-rex: "
           [[ "$L" == *",small-pr,"* ]] && E+=":ant: "
           [[ "$L" == *",urgent,"* ]] && E+=":rotating_light: "
-          [[ "$L" == *",non-urgent,"* ]] && E+=":turtle: "
+          [[ "$L" == *",not-urgent,"* ]] && E+=":turtle: "
           echo "Label emoji: ${E:-none}"
           echo "emoji=$E" >> "$GITHUB_OUTPUT"
 
