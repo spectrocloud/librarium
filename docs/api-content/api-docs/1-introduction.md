@@ -8,7 +8,7 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-The API documentation section includes documentation for Palette API and Edge Management API.
+The API documentation section includes documentation for Palette API, Edge Management API, and Artifact Studio API.
 
 ## Palette API
 
@@ -409,3 +409,70 @@ The following is a list of endpoints that are only available to Edge hosts that 
 - `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles`
 - `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/settings`
 - `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles/variables/validate`
+
+## Artifact Studio API
+
+Use the Artifact Studio API to browse the Spectro Cloud artifact catalog and to download the artifacts that your
+organization is entitled to from your own scripts and CI pipelines. The API includes packs, cluster profiles, PaletteAI
+profiles, Palette installers, and your saved profile bundles.
+
+:::preview
+
+Artifact Studio v2 and the Artifact Studio API are a Tech Preview feature and are subject to change.
+
+:::
+
+<!-- prettier-ignore-start -->
+
+You can find the OpenAPI specification for the Artifact Studio API at the following location: <FullUrlLink path="/apis/artifact-studio-v2/artifact-studio-api.json" />
+
+<!-- prettier-ignore-end -->
+
+### Paths
+
+The base URL of the Artifact Studio API is `https://artifact-studio.spectrocloud.com`, and every path has the prefix
+`/v2/`, such as `/v2/packs/catalog`.
+
+### Authentication
+
+Send an Artifact Studio personal access key or an organization access token as a bearer token in the `Authorization`
+header. In Artifact Studio, you create personal access keys on the **API access keys** tab, which you open from the
+**User Menu**. Organization admins create organization access tokens on the **Tokens** tab of the **Organization
+settings** page. For the steps, refer to
+[Create a Personal Access Key](/downloads/artifact-studio-v2#create-a-personal-access-key) and
+[Create an Organization Access Token](/downloads/artifact-studio-v2#create-an-organization-access-token).
+
+The catalog and search operations do not require a token. Without one, they return public and gated artifacts only.
+Downloads, profile bundles, and the current user operations require a token.
+
+The following curl command is an example. Replace `<access-key>` with your access key or token.
+
+<!-- TODO(DOC-3256): Run both curl examples against production after the October 26 launch. On October 22, production still serves the previous version for /v2 paths. -->
+
+```shell
+curl --header "Authorization: Bearer <access-key>" \
+  "https://artifact-studio.spectrocloud.com/v2/packs/catalog?q=edge-k8s&limit=10"
+```
+
+A key or token can access only the artifacts that your organization is entitled to. A request for a gated or private
+artifact outside those entitlements returns HTTP `403`.
+
+### Downloads
+
+The `/v2/download/` endpoints return a short-lived signed URL for an artifact. By default, the response is an HTTP `302`
+redirect to the signed URL. To receive a JSON body with the `url` and its `expires_at` time instead, set the `Accept`
+header to `application/json`.
+
+```shell
+curl --header "Authorization: Bearer <access-key>" \
+  --header "Accept: application/json" \
+  "https://artifact-studio.spectrocloud.com/v2/download/pack/<version-id>/download_url"
+```
+
+Replace `<version-id>` with the `id` of a pack version from the `versions` list of a pack catalog entry.
+
+### Pagination
+
+List endpoints use cursor-based pagination. Use the `limit` query parameter to set the page size. The `pagination`
+object in each response contains a `next_cursor` and a `prev_cursor` value. To request the next or previous page, pass
+that value in the `next` or `prev` query parameter.
