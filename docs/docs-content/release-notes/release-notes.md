@@ -11,13 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 23, 2026 - PaletteAI VM Launchpad TBD {#vm-launchpad-tbd}
+## October 29, 2026 - PaletteAI VM Launchpad 4.10.25 {#vm-launchpad-4.10.25}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3345 -->
 
-This release delivers version TBD of the PaletteAI VM Launchpad appliance, which runs on Palette TBD.
+This release delivers version 4.10.25 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.34.
 
-### Breaking Changes {#breaking-changes-vm-launchpad-tbd}
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.25}
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->

@@ -285,8 +285,8 @@ Without these reservations, a large VM can take the memory that the control plan
 
 ### Check Node Memory Before You Upgrade
 
-When you upgrade an existing appliance from a version earlier than TBD, the upgrade changes how much memory each node
-can give to pods:
+When you upgrade an existing appliance from a version earlier than 4.10.25, the upgrade changes how much memory each
+node can give to pods:
 
 - On non-FIPS appliances, the allocatable memory of each node drops by about 4 GiB, and its allocatable ephemeral
   storage drops by 10 GiB. The Kubelet restarts once on each node.
