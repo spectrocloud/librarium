@@ -30,7 +30,7 @@ on.
 | No passkey, grace period not yet over | Palette prompts the user to add a passkey. The user can skip the prompt until their grace period ends. |
 | No passkey, grace period over         | The user must add a passkey before Palette completes the sign-in.                                      |
 
-Enforcement also behaves in the following ways.
+Passkeys and passkey enforcement also behave in the following ways.
 
 - Each user's grace period starts on the date you turned on enforcement or the date the user account was created,
   whichever is later. A user added after you turn on enforcement gets the full grace period. During the grace period,
