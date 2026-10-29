@@ -35,10 +35,16 @@ certificates as distrusted and rebuilds the trust store each time the Edge host 
 3. Select the cluster profile that your Edge cluster uses, and
    [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
 
-4. In the new profile version, select the OS layer, and then add the cloud-init stage for the operating system of your
-   Edge hosts to its YAML. If the YAML already contains a `stages` section, add the `boot.before` stage to it instead of
-   creating a second one. If it also contains a `boot.before` stage, add the entry from the tab for your operating
-   system (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to that stage's list.
+4. In the new profile version, select the OS layer, and then add the cloud-init stage from the tab for the operating
+   system of your Edge hosts to its YAML. If the YAML has no `stages` section, add the example as shown. Otherwise,
+   merge the example into the existing YAML.
+
+   - If the YAML contains a `stages` section but no `boot.before` stage, add the `boot.before` stage to the existing
+     `stages` section.
+
+   - If the YAML already contains a `boot.before` stage, add only the list entry for your operating system
+     (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to the existing `boot.before`
+     list.
 
    <Tabs groupId="emudhra-edge-host-os">
 
