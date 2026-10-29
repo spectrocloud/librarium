@@ -317,8 +317,8 @@ organization.
 
 ### When Does Artifact Studio v2 Become the Default?
 
-Artifact Studio v2 is scheduled to become the default on November 13, 2026. Until the previous version is retired on
-December 4, 2026, you can select **Switch to previous version** in the header to return to it.
+Artifact Studio v2 becomes the default before the previous version is retired on December 4, 2026. Until then, you can
+select **Switch to previous version** in the header to return to the previous version.
 
 ### Do You Need to Migrate Anything?
 
