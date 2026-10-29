@@ -37,8 +37,8 @@ certificates as distrusted and rebuilds the trust store each time the Edge host 
 
 4. In the new profile version, select the OS layer, and then add the cloud-init stage for the operating system of your
    Edge hosts to its YAML. If the YAML already contains a `stages` section, add the `boot.before` stage to it instead of
-   creating a second one. If it also contains a `boot.before` stage, add the `emudhra-distrust` entry for your operating
-   system to that stage's list.
+   creating a second one. If it also contains a `boot.before` stage, add the entry from the tab for your operating
+   system (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to that stage's list.
 
    <Tabs groupId="emudhra-edge-host-os">
 
@@ -130,16 +130,21 @@ certificates as distrusted and rebuilds the trust store each time the Edge host 
                  echo "emudhra-distrust: trust not found" >&2
                  exit 1
              fi
+
              dirs="/etc/pki/ca-trust/source/blacklist /etc/pki/ca-trust/source/blocklist"
              for dir in $dirs; do
                  mkdir --parents "$dir"
              done
-             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" "Comodo AAA Services root:AAA_Certificate_Services"; do
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
                  label=${pair%%:*}
                  name=${pair##*:}
                  enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
                  tmp=$(mktemp /tmp/emudhra.XXXXXX)
-                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
                      chmod 0644 "$tmp"
                      for dir in $dirs; do
                          cp "$tmp" "$dir/$name.pem"
@@ -150,6 +155,7 @@ certificates as distrusted and rebuilds the trust store each time the Edge host 
                      echo "emudhra-distrust: label not found: $label" >&2
                  fi
              done
+
              if [ -x /usr/bin/update-ca-trust ]; then
                  /usr/bin/update-ca-trust
              else
