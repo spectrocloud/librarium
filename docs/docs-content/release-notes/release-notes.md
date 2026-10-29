@@ -49,6 +49,25 @@ tags: ["release-notes"]
   Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
   a masked value. A masked value indicates that the secret is set.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3381 -->
+
+- To improve security, Palette now validates the property names in the `filters` and `orderBy` query parameters of
+  Palette API list endpoints. A request fails with an HTTP 400 response and the `FilterValidationFailure` error code if
+  a property name meets any of the following conditions:
+
+  - It is empty or longer than 256 characters.
+
+  - It contains characters other than letters, numbers, underscores (`_`), hyphens (`-`), forward slashes (`/`), and
+    periods (`.`).
+
+  - It contains an empty segment, such as `metadata..name`, or a segment that begins with a hyphen.
+
+  - It references a protected field, such as a field that stores a password, key, or token, or a field nested under a
+    protected field.
+
+  Filters and sort keys on other properties, such as `metadata.name`, are unaffected. Update any automation that filters
+  or sorts on a property that meets these conditions.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
 
