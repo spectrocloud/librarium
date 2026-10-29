@@ -108,6 +108,46 @@ This release delivers version TBD of the PaletteAI VM Launchpad appliance, which
 - Fixed an issue that caused long error messages to overflow their notification and hide its close button. Error
   notifications now also stay visible for 5 seconds.
 
+## October 28, 2026 - Release 4.10.34
+
+<!-- PATCH RELEASE TICKET: DOC-3363 -->
+<!-- PATCH RELEASE VERSION: 4.10.34 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9913 PE-9875 PEM-12433 -->
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12433 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9913 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9875 -->
+
+- Applied further fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
+  installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root certificates. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu and use images built
+  with an earlier CanvOS version can use the workaround in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34 Palette release is 4.10.11.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.34 Palette release is
+4.10.12. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 24, 2026 - Release 4.10.33
 
 <!-- PATCH RELEASE TICKET: DOC-3358 -->
