@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 6, 2026 - Release 4.10.b {#release-notes-4.10.b}
+## November 15, 2026 - Release 4.10.b {#release-notes-4.10.b}
 
 ### Security Notices
 
