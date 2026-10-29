@@ -11,6 +11,106 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 28, 2026 - Release 4.10.34
+
+<!-- PATCH RELEASE TICKET: DOC-3363 -->
+<!-- PATCH RELEASE VERSION: 4.10.34 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9913 PE-9875 PEM-12433 -->
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12433 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9913 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9875 -->
+
+- Applied further fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
+  installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root certificates. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu and use images built
+  with an earlier CanvOS version can use the workaround in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34 Palette release is 4.10.11.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.34 Palette release is
+4.10.12. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
+## October 24, 2026 - Release 4.10.33
+
+<!-- PATCH RELEASE TICKET: DOC-3358 -->
+<!-- PATCH RELEASE VERSION: 4.10.33 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9889 PEM-12393 PE-9895 PEM-12400 -->
+
+### Breaking Changes {#breaking-changes-4-10-33}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12400 -->
+
+- To improve security, the `GET /v1/spectroclusters/{uid}/assets/frpKubeconfig` API endpoint now requires the
+  `cluster.adminKubeconfigDownload` permission, the same permission that the admin kubeconfig endpoint requires. Users
+  who have only the `cluster.get` permission, such as users assigned the Cluster Viewer role, can no longer download a
+  kubeconfig file through this endpoint. Their requests fail with the `OperationForbidden` error. If your automation
+  calls this endpoint, use an API key that belongs to a user with the Cluster Admin role or a custom role that includes
+  the `cluster.adminKubeconfigDownload` permission. Refer to
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md#cluster-admin) for more information.
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12393 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9889 -->
+
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
+  in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9895 -->
+
+- Fixed an issue where provider image downloads on Edge hosts with limited network bandwidth repeatedly failed after 45
+  minutes with the error `context deadline exceeded`. The cluster remained in the **Provisioning** state, or the agent
+  upgrade did not complete. The time limit for each download and extraction attempt is now 6 hours. For more
+  information, refer to
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.33 Palette release is 4.10.10.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.33 Palette release is
+4.10.11. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 23, 2026 - Component Updates {#component-updates-2026-43}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3342 -->
