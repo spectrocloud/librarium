@@ -10,14 +10,222 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+<!-- vale Vale.Spelling = NO -->
+
+## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
+
+[Appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge hosts validate outbound TLS connections,
+such as connections to Palette and to image registries, against the trust store of the host operating system. This trust
+store can still trust the root certificates that the compromised eMudhra intermediate certificate authorities (CAs)
+chain to. For more information, refer to
+[Security Advisory 024](../../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure).
+
+<!-- vale Vale.Spelling = YES -->
+
+This workaround applies to Edge hosts that run Ubuntu, SUSE Linux Enterprise Micro (SLE Micro), Red Hat Enterprise Linux
+(RHEL), or Rocky Linux. Add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected root
+certificates as distrusted and rebuilds the trust store each time the Edge host boots.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select the cluster profile that your Edge cluster uses, and
+   [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
+
+4. In the new profile version, select the OS layer, and then add the cloud-init stage from the tab for the operating
+   system of your Edge hosts to its YAML. If the YAML has no `stages` section, add the example as shown. Otherwise,
+   merge the example into the existing YAML.
+
+   - If the YAML contains a `stages` section but no `boot.before` stage, add the `boot.before` stage to the existing
+     `stages` section.
+
+   - If the YAML already contains a `boot.before` stage, add only the list entry for your operating system
+     (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to the existing `boot.before`
+     list.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-debian
+         commands:
+           - |
+             set -e
+             conf=/etc/ca-certificates.conf
+             if [ ! -f "$conf" ]; then
+                 echo "emudhra-distrust: $conf not found" >&2
+                 exit 1
+             fi
+             sed --in-place 's/\r$//' "$conf"
+             for f in emSign_ECC_Root_CA_-_G3.crt emSign_Root_TLS_CA_-_G3.crt Comodo_AAA_Services_root.crt AAA_Certificate_Services.crt; do
+                 sed --in-place "s|^mozilla/$f\$|!&|" "$conf"
+             done
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates --fresh
+             else
+                 update-ca-certificates --fresh
+             fi
+   ```
+
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-suse
+         commands:
+           - |
+             set -eu
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/trust/blacklist /etc/pki/trust/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates
+             else
+                 update-ca-certificates
+             fi
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-rhel
+         commands:
+           - |
+             set -e
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/ca-trust/source/blacklist /etc/pki/ca-trust/source/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/bin/update-ca-trust ]; then
+                 /usr/bin/update-ca-trust
+             else
+                 update-ca-trust
+             fi
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+5. Save your changes.
+
+6. [Update your cluster](../../clusters/cluster-management/cluster-updates.md#update-a-cluster) to use the new profile
+   version.
+
+   :::warning
+
+   Applying the updated OS pack reboots the Edge hosts in the cluster. Plan the update for a maintenance window.
+
+   :::
+
+7. After the Edge hosts reboot, connect to an Edge host using SSH, and issue the command for its operating system to
+   check whether the trust store still contains the affected root certificates.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
+
+   ```shell
+   ls /etc/ssl/certs/ | grep --extended-regexp 'emSign_ECC_Root_CA_-_G3|emSign_Root_TLS_CA_-_G3|Comodo_AAA_Services_root|AAA_Certificate_Services'
+   ```
+
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   If the command returns no output, the Edge host no longer trusts these root certificates.
+
 ## Scenario - Provider Image Download Times Out on Slow Network Connections
 
 Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
 provisioning or agent upgrades.
 
-Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit
-of 45 minutes. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
-beginning, because it does not resume partially completed downloads.
+Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit.
+The limit is 45 minutes in Palette agent versions 4.10.3 through 4.10.9, and 6 hours in version 4.10.10 and later. If an
+attempt does not complete within that time, the Palette agent starts the next attempt from the beginning, because it
+does not resume partially completed downloads.
 
 If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
 upgrade may not complete.
@@ -34,12 +242,12 @@ upgrade may not complete.
 
    - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
      the provider image over the network.
-   - `context deadline exceeded` indicates that an attempt reached the 45-minute time limit.
+   - `context deadline exceeded` indicates that an attempt reached the time limit.
    - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
      complete.
 
-   If these messages repeat at intervals of approximately 45 minutes, the download is consistently exceeding the time
-   limit.
+   If these messages repeat at intervals that match the time limit for your Palette agent version, the download is
+   consistently exceeding the time limit.
 
 2. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
 
