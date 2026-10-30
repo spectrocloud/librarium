@@ -199,8 +199,7 @@ links.
 #### When to Add a Diagram
 
 Add a diagram when a mental model is faster to grasp visually than in prose. Good candidates include sequence-of-events
-flows, decision trees, entity relationships, and physical topologies. Do not inline a diagram inside a how-to guide.
-How-to guides keep to the steps and link to the diagram on its Explanation or Reference page.
+flows, decision trees, entity relationships, and physical topologies.
 
 #### Write for the Page's Reader
 
