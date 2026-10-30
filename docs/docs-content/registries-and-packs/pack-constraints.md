@@ -597,12 +597,12 @@ the YAML of a cluster profile layer, including Helm chart layers.
 
 :::warning
 
-Palette passes the `readinessCheck` section to Helm charts as part of the chart values. If a Helm chart has a values
-schema that rejects unknown keys, adding `readinessCheck` to its layer might cause the chart installation to fail.
+In a Helm chart layer, Palette passes the `readinessCheck` section to Helm together with the chart values. If the chart
+has a values schema that rejects keys it does not define, Helm rejects the values and the chart installation fails. In
+that case, remove `readinessCheck` from the layer. This does not affect packs, because Palette passes only the values
+under `charts` to Helm.
 
 :::
-
-<!-- TODO(DOC-2019) Engineering: confirm that a strict chart values schema rejects readinessCheck, and whether Palette should strip it the way it strips the pack key (BET 5438). -->
 
 The following example shows the structure of a readiness check.
 
@@ -635,7 +635,8 @@ Replace the placeholders with the values that the following table describes.
 | `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`. |
 | `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                        |
 
-<!-- TODO(DOC-2019) Engineering: readinessCheck.timeout exists in the values schema, but only edge-libvirt reads it. Leave it out, or document that Palette ignores it? -->
+The `readinessCheck` section also accepts a `timeout` attribute, but Palette ignores it. Palette keeps checking the pack
+until it is ready.
 
 Older packs might set a single `keyToCheck` and `expectedValue` directly on an entry, instead of in `keysToCheck`.
 Palette still supports this form and checks the pair together with any items in `keysToCheck`. Use `keysToCheck` for new
@@ -644,16 +645,19 @@ packs.
 ### How Palette Evaluates Readiness Checks
 
 1. Palette fetches the resource by its group, version, kind, name, and namespace. If the resource does not exist yet,
-   the check fails.
+   Palette reports an error for the pack with the reason `ServiceReconcileFailed` and tries again.
 
 2. Palette reads each `keyToCheck` from the resource, converts the value to text, and compares it to `expectedValue`.
    The comparison is case-sensitive.
 
-3. An entry passes when all of its keys match. The pack is ready when every entry and the default checks pass.
+3. An entry passes when every key matches. The pack is ready when every entry and the default checks pass.
 
 4. Until the pack is ready, Palette checks it again every 30 seconds.
 
-<!-- TODO(DOC-2019) Engineering: confirm the 30-second interval, what a user sees when the resource does not exist yet, and where users see that a pack is waiting on its readiness check. -->
+Palette shows the installation status of each pack in a cluster. For more information, refer to
+[Pack Monitoring](../clusters/cluster-management/pack-monitoring.md). In the cluster, the `Pack` resource of the pack
+records the results in its `status.conditions` and `status.servicesStatus` fields. Palette records an event only when a
+check returns an error, such as a missing resource.
 
 ### Expected Values
 
@@ -669,10 +673,10 @@ Palette compares the text form of the field value, so write `expectedValue` the 
 If a pack never becomes ready, check that each `expectedValue` matches the field value exactly, including
 capitalization. For example, `expectedValue: "True"` never matches a boolean field whose value is `true`.
 
-A key such as `status.conditions[0].status` depends on the order of the conditions in the resource. Confirm the order in
-the resource before you use an index.
-
-<!-- TODO(DOC-2019) Engineering: recommend index keys or a JSONPath filter expression for conditions? A filter returns a list, so the expected value would be [True]. -->
+To check a field in a list, such as a condition, use an index key, such as `status.conditions[0].status`. An index key
+depends on the order of the items in the list, so confirm the order in the resource before you use it. Avoid filter
+expressions, such as `status.conditions[?(@.type=="Ready")].status`. A filter returns a list instead of a single value,
+so its text form includes brackets, such as `[True]`.
 
 ### Readiness Check Examples
 

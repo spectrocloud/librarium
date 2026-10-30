@@ -41,8 +41,6 @@ passes. Once the readiness check passes, Palette installs the add-on packs with 
 Palette wait until a custom resource of a pack is ready, refer to
 [Pack Readiness Checks](../../../../registries-and-packs/pack-constraints.md#pack-readiness-checks).
 
-<!-- TODO(DOC-2019) Engineering: confirm the 30-second interval (the docs said two minutes; the pack and install-priority controllers requeue every 30 seconds). -->
-
 A cluster profile containing several different install order values will take a few minutes longer to install versus a
 cluster profile with the same install order for all add-on packs.
 
