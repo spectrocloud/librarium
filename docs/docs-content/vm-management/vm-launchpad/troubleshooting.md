@@ -336,10 +336,6 @@ check only confirms that the database accepts connections, so run an actual quer
 
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
-<!-- TODO(DOC-3396): Have the appliance owner (Sadath) validate the commands, prerequisites, stop conditions, and the
-CloudNativePG version they apply to before Ready. Also ask whether users delete the retained PV after the upgrade, and how.
-PVM 1483 tracks the permanent fix. -->
-
 On non-FIPS VM Launchpad appliances, the Keycloak database runs as a CloudNativePG cluster of one primary and two
 replicas. Each instance stores its data on a volume, and a local volume ties that data to a single node. If both
 replicas store their data on the same node, an appliance upgrade can stall when it drains that node.
@@ -472,7 +468,8 @@ kubectl patch pv "$PV" --type json \
 kubectl get pv "$PV" --output 'custom-columns=PV:.metadata.name,RECLAIM:.spec.persistentVolumeReclaimPolicy'
 ```
 
-Continue only when `RECLAIM` shows `Retain`.
+Continue only when `RECLAIM` shows `Retain`. Keep the old volume through the upgrade and the checks in
+[Verify Recovery](#verify-recovery). This procedure does not delete it.
 
 ### Rebuild the Pending Replica
 
