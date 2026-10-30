@@ -399,27 +399,31 @@ intermediate PNG, or the review files that Archify writes.
 
 ##### Regenerate a Diagram
 
-The following steps regenerate the PaletteAI Inference Launchpad architecture diagram. For another diagram, use its JSON
-source and image paths.
-
 1. Validate the JSON source and render it to a temporary HTML file. The `finalize` command fails if a component or a
    label overlaps another, if two connections cross, or if a source citation does not exist at the pinned revision.
 
    ```sh
-   node ~/archify-v3.2.0/archify/bin/archify.mjs finalize architecture \
-     docs/products/paletteai-inference-launchpad/explanation/archify/architecture-overview.architecture.json \
-     /tmp/architecture-overview.html \
+   node ~/archify-v3.2.0/archify/bin/archify.mjs finalize <diagram-type> <json-source> /tmp/<diagram-name>.html \
      --quality showcase --repo-root <path-to-product-source> --out-dir /tmp/archify-review
    ```
 
-   Replace `<path-to-product-source>` with the path to a local clone of the product's source repository that contains
-   the pinned revision. For a diagram that does not cite its sources, use `--quality standard` and leave out
-   `--repo-root`.
+   Replace the following placeholders:
+
+   - `<diagram-type>` with the diagram's type, such as `architecture`.
+
+   - `<json-source>` with the path to the diagram's JSON source.
+
+   - `<diagram-name>` with a short name for the temporary files, such as the JSON file's name without its extensions.
+
+   - `<path-to-product-source>` with the path to a local clone of the product's source repository that contains the
+     pinned revision.
+
+   For a diagram that does not cite its sources, use `--quality standard` and leave out `--repo-root`.
 
    ```bash hideClipboard title="Expected output"
-   finalize pass: /tmp/architecture-overview.html
+   finalize pass: /tmp/<diagram-name>.html
    gates validate:pass deliver:pass check:pass browser-check:pass
-   receipt /tmp/archify-review/architecture-overview.finalize.json
+   receipt /tmp/archify-review/<diagram-name>.finalize.json
    perceptual visual review not-requested
    ```
 
@@ -427,20 +431,25 @@ source and image paths.
    dark theme.
 
    ```sh
-   node scripts/archify-export.mjs /tmp/architecture-overview.html \
-     static/assets/docs/images/architecture_inference-launchpad-overview.webp
-   node scripts/archify-export.mjs /tmp/architecture-overview.html \
-     static/assets/docs/images/architecture_inference-launchpad-overview-dark.webp dark
+   node scripts/archify-export.mjs /tmp/<diagram-name>.html \
+     static/assets/docs/images/<markdown-file-name>_<image-description>.webp
+   node scripts/archify-export.mjs /tmp/<diagram-name>.html \
+     static/assets/docs/images/<markdown-file-name>_<image-description>-dark.webp dark
    ```
+
+   Replace `<markdown-file-name>` with the name of the page's Markdown file and `<image-description>` with a short
+   description of the diagram, as described in [Tooling](#tooling).
 
    The script removes Archify's title, frame, and grid, paints the canvas in the docs site's page color, enlarges the
    text and arrows, and renders the image at twice its size, so that the diagram stays legible after the docs site
    scales it down.
 
    ```bash hideClipboard title="Expected output"
-   exported paletteai-inference-launchpad-light.svg (theme=light) -> static/assets/docs/images/architecture_inference-launchpad-overview.webp
-   exported paletteai-inference-launchpad-dark.svg (theme=dark) -> static/assets/docs/images/architecture_inference-launchpad-overview-dark.webp
+   exported <diagram-title>-light.svg (theme=light) -> static/assets/docs/images/<markdown-file-name>_<image-description>.webp
+   exported <diagram-title>-dark.svg (theme=dark) -> static/assets/docs/images/<markdown-file-name>_<image-description>-dark.webp
    ```
+
+   The first file name on each line is the intermediate SVG that the Archify viewer exports. You can ignore it.
 
    A line that starts with `warning:` means that enlarged text overflows its component or a connection label overlaps a
    component. Fix the JSON source, and then run both steps again until the export prints no warnings.
