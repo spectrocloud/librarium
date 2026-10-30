@@ -1,0 +1,49 @@
+%%{init: {"flowchart": {"wrappingWidth": 320}}}%%
+flowchart TD
+    ingress([Request enters gateway]):::start
+    sovereignty{Sovereignty<br/>armed?}:::decision
+    tier{Tier alias resolves to<br/>external or local?}:::decision
+
+    blocked_sovereignty[Blocked by sovereignty<br/>appliance-wide egress override]:::deny
+    served_local[Served locally<br/>no X-AIBox-Frontier]:::local
+
+    egress_cap{External inferencing<br/>enabled for the client?}:::decision
+    key_present{Key available<br/>for the endpoint?}:::decision
+    budget{Per-endpoint egress<br/>budget remaining?}:::decision
+    endpoint_ok{Endpoint answered<br/>within timeout?}:::decision
+    on_exceed{on_exceed setting}:::decision
+
+    denied_no_key[HTTP 401 · OutcomeDenied<br/>missing endpoint credential]:::deny
+    refused[HTTP 429<br/>egress refused]:::deny
+    served_external[External response<br/>X-AIBox-Frontier: anthropic #124; openai #124; gemini]:::external
+    endpoint_fell_back[Served locally<br/>X-AIBox-Frontier: fell-back]:::fallback
+    budget_fell_back[Served locally<br/>X-AIBox-Frontier: budget-exhausted]:::fallback
+
+    ingress --> sovereignty
+    sovereignty -- yes --> blocked_sovereignty
+    sovereignty -- no --> tier
+
+    tier -- local --> served_local
+    tier -- external --> egress_cap
+
+    egress_cap -- no --> refused
+    egress_cap -- yes --> key_present
+
+    key_present -- no --> denied_no_key
+    key_present -- yes --> budget
+
+    budget -- yes --> endpoint_ok
+    budget -- no --> on_exceed
+
+    endpoint_ok -- yes --> served_external
+    endpoint_ok -- no --> endpoint_fell_back
+
+    on_exceed -- "local (default)" --> budget_fell_back
+    on_exceed -- refuse --> refused
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef decision fill:#eef2ff,stroke:#4f46e5,color:#0f172a,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef external fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef fallback fill:#f0fdfa,stroke:#0f766e,color:#0f172a,stroke-width:2px;
+    classDef deny fill:#fee2e2,stroke:#b91c1c,color:#0f172a,stroke-width:2px;
