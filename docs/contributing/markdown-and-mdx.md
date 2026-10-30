@@ -189,8 +189,9 @@ image with high priority so LCP (Largest Contentful Paint) for the page is not a
 
 Architecture diagrams follow their own conventions so that readers who move between pages recognize the same concept
 without re-learning what shapes and colors mean. Every new diagram in the docs site is authored as
-[Archify](https://github.com/tt-a1i/archify) JSON source, exported to a webp image, and referenced from the page like
-any other image asset. The JSON source is the source of truth. The webp is the rendered output that ships with the docs.
+[Archify](https://github.com/tt-a1i/archify) JSON source and exported to two webp images, one for the site's light theme
+and one for its dark theme. The JSON source is the source of truth. The webp images are the rendered output that ships
+with the docs.
 
 Archify also renders an interactive HTML version of each diagram. Use it locally to review the layout and the source
 links, but do not commit it or embed it in the docs site.
@@ -272,28 +273,53 @@ connection has to run along the inside edge of the boundary, so that the connect
 #### Label Style
 
 Component labels are short noun phrases. Sub-labels below the component name carry one short detail, such as _admin web
-UI_ or _keys, quotas, cache_. Keep a sub-label to about 25 characters so that it fits on one line of a 170-pixel-wide
-component. Never write a sentence inside a component. A sentence belongs in the prose next to the diagram.
+UI_ or _keys, quotas, cache_. The export script enlarges the text, so keep a label, including any callout number, to
+about 21 characters and a sub-label to about 23 characters. Longer text does not fit on one line of a 170-pixel-wide
+component, and the script warns when it overflows. Never write a sentence inside a component. A sentence belongs in the
+prose next to the diagram.
+
+Keep connection labels to one or two short words where the connection crosses the gap between two columns, because the
+enlarged label must fit in that gap. A longer label fits on a connection that runs vertically.
 
 Archify `cards` appear in the interactive HTML but not in the exported image. Put anything you would write in a card in
 the page prose instead.
 
 #### Layout
 
-Archify uses fixed font sizes, and the docs site scales a diagram down to the width of the page. The wider the canvas,
-the smaller its text appears on the page. Keep the canvas to about 1,000 pixels wide, which is four columns of
-components, and grow the diagram downward instead of sideways.
+The docs site scales a diagram down to the width of the page column, which is about 700 pixels at desktop size. The
+wider the canvas, the smaller its text appears on the page. Keep the canvas to three columns of components, about 800
+pixels wide, and grow the diagram downward instead of sideways.
 
 Place components with `pos` on a grid so that rows and columns line up, and give every component the same `size`, such
-as `[170, 64]`. Columns 240 pixels apart, starting at `x` 40, and rows 140 pixels apart leave room for connection
-labels.
+as `[170, 64]`. Columns at `x` 60, 300, and 540, and rows 140 pixels apart, starting at `y` 40, leave room for
+connection labels.
 
-Lay out the main request path from left to right in one row, with the people and clients outside the product in the
-first column. Put the control plane and other supporting components in the rows below it, and external services in a row
-above it, outside the product boundary.
+Arrange the three columns so that the diagram reads from top to bottom and from left to right:
+
+- Put the people and clients outside the product in the top row, above the product boundary.
+- Run the main request path down the middle column.
+- Put the administration side, such as the console, identity provider, and control plane, in the left column.
+- Put the destinations of a request, such as local compute and external services, in the right column. External services
+  go in the top row, outside the product boundary.
+
+If Archify places a connection label on top of a component, set `labelAt` to an `[x, y]` point in the gap between two
+rows.
 
 Keep the diagram to a single canvas. If a diagram feels too dense to fit, split it into two diagrams on separate anchors
 rather than shrinking the components. Two clear pictures always beat one crowded one.
+
+#### Numbered Callouts
+
+When the page walks the reader through the diagram, number the components the walkthrough describes, in the order a
+request reaches them. Put the number at the start of the component label, such as `"label": "2. Gateway"`, and follow
+the diagram with a numbered list in which each item describes the component with the same number. Name the component in
+the item's sentence. Do not start the item with a bold label.
+
+Not every component needs a number. Actors outside the product, and components that an item already covers, such as the
+identity provider behind the console, can stay unnumbered.
+
+The numbers live in two places, the JSON source and the page. Change both in the same commit. Keep the image's alt text
+short, describe the overall layout, and point to the list instead of repeating it.
 
 #### Source Evidence
 
@@ -307,7 +333,7 @@ update the diagram for a new release.
   the default branch.
 - Give each component up to three `sources`, each with a `path`, a `line`, an optional `end_line`, and a short `label`.
 
-Citations do not appear in the exported image. They appear as links in the interactive HTML.
+Citations do not appear in the exported images. They appear as links in the interactive HTML.
 
 For a diagram that cites its sources, refer to the PaletteAI Inference Launchpad architecture diagram source,
 [`architecture-overview.architecture.json`](../products/paletteai-inference-launchpad/explanation/archify/architecture-overview.architecture.json).
@@ -319,8 +345,9 @@ The docs repo authors diagrams with [Archify](https://github.com/tt-a1i/archify)
 [`cwebp`](https://developers.google.com/speed/webp/download).
 
 The JSON source for each diagram lives in an `archify/` subdirectory next to the page it belongs to, named
-`<diagram-name>.<diagram-type>.json`. The exported webp lands under `static/assets/docs/images/` per the standard image
-naming convention (`<markdown-file-name>_<image-description>.webp`). Do not commit the interactive HTML, any
+`<diagram-name>.<diagram-type>.json`. The exported webp images land under `static/assets/docs/images/` per the standard
+image naming convention, as `<markdown-file-name>_<image-description>.webp` for the light theme and
+`<markdown-file-name>_<image-description>-dark.webp` for the dark theme. Do not commit the interactive HTML, any
 intermediate PNG, or the review files that Archify writes.
 
 ##### Prerequisites
@@ -351,19 +378,65 @@ intermediate PNG, or the review files that Archify writes.
    `--repo-root <path-to-product-source>`, where the path is a local clone of the source repository that contains the
    pinned revision.
 
-2. Export the rendered diagram to its final webp path.
+2. Export the rendered diagram to its final webp path, once for each theme. Add `dark` as the third argument for the
+   dark theme.
 
    ```sh
-   node scripts/archify-export.mjs /tmp/diagramming-conventions-sample.html \
-     static/assets/docs/images/diagramming-conventions_sample.webp
+   node scripts/archify-export.mjs /tmp/architecture-overview.html \
+     static/assets/docs/images/architecture_inference-launchpad-overview.webp
+   node scripts/archify-export.mjs /tmp/architecture-overview.html \
+     static/assets/docs/images/architecture_inference-launchpad-overview-dark.webp dark
    ```
 
-   The script exports the diagram in the light theme, without the title and frame that the Archify viewer adds to its
-   own image exports, so that the diagram fills the page width. It renders the diagram at twice its size so that it
-   stays crisp on high-density displays.
+   The script makes the following changes to the image that the Archify viewer exports:
 
-Commit both the updated JSON source and the regenerated webp in the same change so that the source and the image stay in
-sync.
+   - It removes the title and frame and the dotted canvas grid, and paints the canvas in the docs site's page color for
+     the theme, so that the diagram sits on the page without a box around it.
+   - It enlarges the component labels, sub-labels, connection labels, and arrows, because Archify's text sizes are fixed
+     for its own viewer and too small once the docs site scales the diagram down.
+   - It renders the diagram at twice its size so that it stays crisp on high-density displays.
+
+   The script prints a warning when enlarged text overflows its component or a connection label overlaps a component.
+   Fix the JSON source and run both steps again until the export prints no warnings.
+
+Commit the updated JSON source and both regenerated webp images in the same change so that the source and the images
+stay in sync.
+
+##### Maintain a Diagram
+
+Edit a diagram through its JSON source, never through its images. Update the diagram in the same change as the page
+whenever any of the following happens:
+
+- The product renames a component, or the console or the docs start using a different name for it.
+- The product adds, removes, or reconnects a component that the diagram shows.
+- A new release of the product ships, and the docs version that the diagram belongs to moves to it.
+
+For a new release, set `meta.repository.revision` to the full commit SHA of the new release, then run `finalize` with
+`--repo-root`. The command fails for every source citation whose file or line range no longer exists at that revision.
+Update each failing citation, then check whether the component it supports changed too. When the components change,
+update the numbered list on the page to match. Then regenerate both images, as described in
+[Regenerating a Diagram](#regenerating-a-diagram).
+
+##### Add the Diagram to a Page
+
+Use the `ThemedImage` component so that the page shows the image that matches the reader's theme. Import the component
+after the page's front matter, and wrap it in a paragraph with the `markdown-image` class so that the diagram gets the
+same centering, rounded corners, and click-to-zoom as other images.
+
+```mdx
+import ThemedImage from "@theme/ThemedImage";
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Architecture diagram of the appliance with eight numbered areas, each described in the list that follows it."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+```
 
 ##### Mermaid Diagrams Already in the Docs
 
@@ -379,10 +452,11 @@ cwebp -q 90 /tmp/<image-description>.png -o static/assets/docs/images/<markdown-
 
 #### Sample
 
-The following diagram uses every color role, every arrow variant, and a nested boundary. Use it as a reference when you
-introduce a new component and are unsure which role it belongs to.
+The following diagram uses every color role, every arrow variant, a nested boundary, and the three-column layout. Use it
+as a reference when you introduce a new component and are unsure which role it belongs to. GitHub renders this guide,
+not the docs site, so the sample ships only its light-theme image.
 
-![Conventions sample: users reach a cyan ingress and API service inside a product boundary, which send requests to green workloads on worker nodes, with a dashed egress arrow to an amber third-party service that is off by default, a rose identity provider for sign-in, a violet control plane that configures the API service and deploys the workloads, and orange dashboards that collect metrics from the workloads.](../../static/assets/docs/images/diagramming-conventions_sample.webp)
+![Conventions sample: users at the top reach a cyan ingress and API service that run down the middle of a product boundary and send requests to green workloads on worker nodes, with a dashed egress arrow to an amber third-party service at the top right that is off by default. On the left, a rose identity provider handles sign-in from the ingress, and a violet control plane applies settings to the API service and deploys the workloads. Orange dashboards at the bottom collect metrics from the workloads.](../../static/assets/docs/images/diagramming-conventions_sample.webp)
 
 The JSON source for this sample lives at
 [`docs/contributing/archify/diagramming-conventions-sample.architecture.json`](./archify/diagramming-conventions-sample.architecture.json).

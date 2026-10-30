@@ -39,7 +39,7 @@
       "type": "external",
       "label": "Users",
       "sublabel": "browser or CLI",
-      "pos": [40, 200],
+      "pos": [300, 40],
       "size": [170, 64]
     },
     {
@@ -47,7 +47,7 @@
       "type": "frontend",
       "label": "Ingress",
       "sublabel": "one HTTPS address",
-      "pos": [280, 200],
+      "pos": [300, 180],
       "size": [170, 64]
     },
     {
@@ -55,7 +55,7 @@
       "type": "frontend",
       "label": "API service",
       "sublabel": "auth and routing",
-      "pos": [520, 200],
+      "pos": [300, 320],
       "size": [170, 64]
     },
     {
@@ -63,7 +63,7 @@
       "type": "backend",
       "label": "Workloads",
       "sublabel": "local compute",
-      "pos": [760, 200],
+      "pos": [300, 460],
       "size": [170, 64]
     },
     {
@@ -71,7 +71,7 @@
       "type": "messagebus",
       "label": "Dashboards",
       "sublabel": "metrics",
-      "pos": [760, 480],
+      "pos": [300, 600],
       "size": [170, 64]
     },
     {
@@ -79,7 +79,7 @@
       "type": "cloud",
       "label": "Third-party service",
       "sublabel": "off by default",
-      "pos": [760, 40],
+      "pos": [540, 40],
       "size": [170, 64]
     },
     {
@@ -87,7 +87,7 @@
       "type": "security",
       "label": "Identity provider",
       "sublabel": "sign-in",
-      "pos": [280, 340],
+      "pos": [60, 180],
       "size": [170, 64]
     },
     {
@@ -95,7 +95,7 @@
       "type": "database",
       "label": "Control plane",
       "sublabel": "applies settings",
-      "pos": [520, 340],
+      "pos": [60, 320],
       "size": [170, 64]
     }
   ],
@@ -118,7 +118,8 @@
       "from": "users",
       "to": "ingress",
       "label": "HTTPS",
-      "variant": "emphasis"
+      "variant": "emphasis",
+      "labelAt": [385, 142]
     },
     {
       "from": "ingress",
@@ -129,35 +130,34 @@
       "from": "api",
       "to": "workloads",
       "label": "requests",
-      "variant": "emphasis"
+      "variant": "emphasis",
+      "labelAt": [385, 422]
     },
     {
       "from": "api",
       "to": "service",
       "label": "egress, if enabled",
       "variant": "dashed",
-      "fromSide": "top",
-      "toSide": "left"
+      "fromSide": "right",
+      "toSide": "bottom"
     },
     {
       "from": "workloads",
       "to": "dashboards",
       "label": "metrics",
       "variant": "dashed",
-      "fromSide": "right",
-      "toSide": "right"
+      "labelAt": [385, 562]
     },
     {
       "from": "ingress",
       "to": "idp",
       "label": "sign-in",
-      "variant": "security",
-      "labelDy": 24
+      "variant": "security"
     },
     {
       "from": "control",
       "to": "api",
-      "label": "configures",
+      "label": "applies",
       "variant": "dashed"
     },
     {
@@ -165,8 +165,8 @@
       "to": "workloads",
       "label": "deploys",
       "variant": "dashed",
-      "fromSide": "right",
-      "toSide": "bottom"
+      "fromSide": "bottom",
+      "toSide": "left"
     }
   ]
 }
