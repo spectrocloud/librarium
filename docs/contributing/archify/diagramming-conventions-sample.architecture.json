@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Diagramming Conventions Sample",
+    "locale": "en",
+    "output": "diagramming-conventions-sample.html",
+    "quality_profile": "standard",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "external": {
+          "label": "Outside the product"
+        },
+        "frontend": {
+          "label": "Entry and request path"
+        },
+        "backend": {
+          "label": "Local compute"
+        },
+        "cloud": {
+          "label": "External or opt-in service"
+        },
+        "database": {
+          "label": "Control plane and state"
+        },
+        "security": {
+          "label": "Identity and access"
+        },
+        "messagebus": {
+          "label": "Monitoring"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "Users",
+      "sublabel": "browser or CLI",
+      "pos": [40, 260],
+      "size": [170, 64]
+    },
+    {
+      "id": "ingress",
+      "type": "frontend",
+      "label": "Ingress",
+      "sublabel": "one HTTPS address",
+      "pos": [290, 260],
+      "size": [170, 64]
+    },
+    {
+      "id": "api",
+      "type": "frontend",
+      "label": "API service",
+      "sublabel": "auth and routing",
+      "pos": [540, 260],
+      "size": [170, 64]
+    },
+    {
+      "id": "workloads",
+      "type": "backend",
+      "label": "Workloads",
+      "sublabel": "local compute",
+      "pos": [790, 260],
+      "size": [170, 64]
+    },
+    {
+      "id": "dashboards",
+      "type": "messagebus",
+      "label": "Dashboards",
+      "sublabel": "metrics",
+      "pos": [1040, 260],
+      "size": [170, 64]
+    },
+    {
+      "id": "service",
+      "type": "cloud",
+      "label": "Third-party service",
+      "sublabel": "off by default",
+      "pos": [1300, 100],
+      "size": [170, 64]
+    },
+    {
+      "id": "idp",
+      "type": "security",
+      "label": "Identity provider",
+      "sublabel": "sign-in",
+      "pos": [290, 420],
+      "size": [170, 64]
+    },
+    {
+      "id": "control",
+      "type": "database",
+      "label": "Control plane",
+      "sublabel": "applies settings",
+      "pos": [540, 420],
+      "size": [170, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Product",
+      "pad": 22,
+      "wraps": ["ingress", "api", "workloads", "dashboards", "idp", "control"]
+    },
+    {
+      "kind": "region",
+      "label": "Worker nodes",
+      "pad": 12,
+      "wraps": ["workloads"]
+    }
+  ],
+  "connections": [
+    {
+      "from": "users",
+      "to": "ingress",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "from": "ingress",
+      "to": "api",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api",
+      "to": "workloads",
+      "label": "requests",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api",
+      "to": "service",
+      "label": "egress, if enabled",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "top"
+    },
+    {
+      "from": "workloads",
+      "to": "dashboards",
+      "label": "metrics",
+      "variant": "dashed"
+    },
+    {
+      "from": "ingress",
+      "to": "idp",
+      "label": "sign-in",
+      "variant": "security",
+      "labelDy": 24
+    },
+    {
+      "from": "control",
+      "to": "api",
+      "label": "configures",
+      "variant": "dashed"
+    },
+    {
+      "from": "control",
+      "to": "workloads",
+      "label": "deploys",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    }
+  ]
+}
