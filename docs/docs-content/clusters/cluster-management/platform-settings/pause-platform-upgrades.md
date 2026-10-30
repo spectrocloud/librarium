@@ -11,10 +11,10 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
 updates to the clusters themselves.
 
-If you specify a Palette agent image to use in the operating system pack of your cluster profile using the
-`stylusPackage` parameter, pausing platform upgrades will have no effect on that cluster. It will always use the Palette
-agent image specified in the pack. For more information, refer to
-[Configure Palette Agent Version](../../edge/cluster-management/agent-upgrade-airgap.md).
+If you specify a Palette agent image in the operating system pack of your cluster profile using the `stylusPackage`
+parameter, the Edge host installs that agent version when Palette applies the cluster profile. The `stylusPackage`
+parameter alone does not keep the agent on that version. Unless you pause agent upgrades, Palette continues to upgrade
+the agent automatically even if you set `stylusPackage`.
 
 ## Pause Agent Upgrade Scopes
 
