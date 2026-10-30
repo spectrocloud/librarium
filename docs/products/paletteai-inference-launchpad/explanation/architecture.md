@@ -16,6 +16,28 @@ Launchpad.
 
 ## Component Stack
 
+The following diagram shows the components that make up the appliance, the path a request takes through them, and the
+one path by which a request can leave the appliance.
+
+![Architecture diagram of the appliance. Agents and apps outside the appliance send HTTPS requests to the Platform IP, which passes the model API to the gateway. The gateway sends requests to local models on the GPUs, sends auto requests to the semantic router on the same GPUs, and has a dashed path to external inference endpoints outside the appliance that is off by default and passes a personal data check. Administrators reach the console through the Platform IP. The console signs in through the identity provider and passes settings to the control plane, which configures the gateway and deploys models. Local models send metrics to the Grafana dashboards.](/assets/docs/images/architecture_inference-launchpad-overview.webp)
+
+Coding agents and applications send requests to the Platform IP Address, the single HTTPS address the appliance serves.
+Behind it, the gateway authenticates the calling client from its API token, enforces the client's quotas, and routes the
+request to a local model. A request that sends `auto` as the model goes to the semantic router, which runs on your GPUs
+and picks the model. When the response cache is on, the gateway answers a request identical to an earlier one without
+sending it to a model. For how routing works, refer to [Request Routing](#request-routing).
+
+A request reaches an external inference endpoint only when an operator allows egress, and by default a
+[personal data check](./semantic-router-guard.md#the-two-checks) scans the prompt before it leaves. Refer to
+[Data Residency and Isolation](#data-residency-and-isolation).
+
+Administrators work in the console, which signs them in through the appliance's identity provider. The settings they
+save pass to the control plane, which configures the gateway and deploys models to the GPUs. The Grafana dashboards
+collect usage and GPU metrics.
+
+Local UI does not appear in the diagram. The node's operating system serves it outside the Platform IP, so it stays
+reachable when platform services are unavailable. Refer to [Network Topology](#network-topology).
+
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
 engine kinds the appliance supports and how it selects one, refer to [Inference Engines](./inference-engines.md).
