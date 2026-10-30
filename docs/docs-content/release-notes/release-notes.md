@@ -31,16 +31,18 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 
 ### Improvements
 
-- Artifact Studio v2 is available as a Tech Preview. It adds self-service accounts, organization entitlements that
-  control which appliances, packs, and profiles you can download, and the Artifact Studio API, whose `/v2/` endpoints
-  support pagination. Artifact Studio v1 is still the default. Refer to
-  [Artifact Studio v2](../downloads/artifact-studio-v2.md) and the
-  [Artifact Studio API](/api/introduction#artifact-studio-api) for more information.
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3257 -->
+
+- <TpBadge /> Artifact Studio v2 is available as a Tech Preview. It adds self-service accounts, organization
+  entitlements, and the Artifact Studio API. Your organization's entitlements determine which appliances, packs, and
+  profiles you can download, and the API's `/v2/` endpoints support pagination. Artifact Studio v1 is the default. Refer
+  to [Artifact Studio v2](../downloads/artifact-studio-v2.md) and the [Artifact Studio
+  API](/api/introduction#artifact-studio-api) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4969 -->
 
-- Added Kubernetes 1.37 for Amazon EKS and Azure AKS clusters through the `kubernetes-eks` and `kubernetes-aks` packs,
-  in FIPS and non-FIPS versions.
+- Added Kubernetes 1.37 to the FIPS and non-FIPS variants of the `kubernetes-eks` and `kubernetes-aks` packs for Amazon
+  EKS and Azure AKS clusters.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
 
