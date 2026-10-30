@@ -286,7 +286,8 @@ curl --header "Authorization: Bearer <access-key>" \
   "https://artifact-studio.spectrocloud.com/v2/packs/catalog?q=edge-k8s&limit=10"
 ```
 
-Replace `<access-key>` with your access key.
+Replace `<access-key>` with your access key. For the base URL, authentication, and available endpoints, refer to the
+[Artifact Studio API](/api/introduction#artifact-studio-api) section of the API documentation.
 
 To revoke a key, select **Revoke** next to the key on the **API access keys** tab. Any pipeline that uses the key stops
 working immediately.
