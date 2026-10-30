@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 6, 2026 - Release 4.10.b {#release-notes-4.10.b}
+## November 15, 2026 - Release 4.10.b {#release-notes-4.10.b}
 
 ### Security Notices
 
@@ -94,10 +94,12 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11804 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12372 -->
 
-- Tenant administrators can now require users who sign in to the tenant with a password to also verify a passkey as a
-  second authentication factor. Users without a passkey get a configurable grace period (14 days by default) in which to
-  add one from their **My Profile** > **Security** tab. Passkey enforcement does not apply to SSO sign-ins or to API
-  requests authenticated with API keys. For more information, refer to
+- Users who sign in to a Palette tenant with a password can now add a passkey as a second authentication factor from
+  their **My Profile** > **Security** tab. After a user adds a passkey, Palette asks for it each time the user signs in
+  with a password, in any tenant the user belongs to. Tenant administrators can also require every user who signs in to
+  the tenant with a password to add a passkey within a configurable grace period (14 days by default). Palette does not
+  ask for a passkey for SSO sign-ins or for API requests authenticated with API keys. For more information, refer to
+  [Manage Passkeys](../user-management/authentication/passkeys.md) and
   [Passkey Enforcement](../tenant-settings/passkeys.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PPD-510 -->
@@ -234,6 +236,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   for guidance on when to enable an overlay network.
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9881 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9938 -->
+
+- Fixed an issue that caused provider image downloads on Edge hosts with limited network bandwidth to fail repeatedly.
+  The Palette agent now stops a download attempt only when it receives no data for 5 minutes, and the next attempt
+  resumes the download. During a cluster update that changes the provider image, each download attempt still ends after
+  15 minutes. To resume a download, the Edge host needs free disk space of about three times the compressed size of the
+  provider image. Palette also displays Edge host events during cluster provisioning when a provider image download
+  starts, resumes, retries, or completes. For more information, refer to
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
 
 #### Deprecations and Removals
 
