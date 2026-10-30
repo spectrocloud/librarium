@@ -23,8 +23,7 @@ clusters while using an older version of the Palette agent.
 
 In centrally managed clusters, the agent version that you specify in the OS pack applies only when Palette applies the
 cluster profile. To keep the agent on that version afterward, you must also
-[pause agent upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md). To keep the version after
-a cluster deletion or an Edge host reset, pause agent upgrades at the project or tenant level.
+[pause agent upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
 
 ## Prerequisites
 

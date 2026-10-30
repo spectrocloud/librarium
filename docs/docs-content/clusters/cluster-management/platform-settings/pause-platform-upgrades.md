@@ -73,10 +73,6 @@ pausing or resuming agent upgrades at the tenant level will automatically pause 
 projects within that tenant. However, you can override the tenant level setting by manually changing the upgrade setting
 at the project level.
 
-If you delete an Edge host's cluster or reset the Edge host, the cluster-level setting no longer applies, and the Edge
-host follows the project-level or tenant-level setting. To keep the agent on its current version after a cluster
-deletion or an Edge host reset, enable **Pause Agent Upgrades** at the project or tenant level.
-
 The following is a table showing the scopes at which you can pause agent upgrades for different objects. The same
 relationship between the scopes applies: Changing the setting in a higher scope will trigger a one-time change to the
 lower scopes, and changing the setting at the lower scope will override the setting in the higher scope.
