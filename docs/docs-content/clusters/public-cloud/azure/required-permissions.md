@@ -16,6 +16,9 @@ service principal you want to use with Palette and the appropriate
 and VerteX can deploy and manage clusters on Azure in all use cases, use a subscription as the scope level for the role
 assignment.
 
+This page covers cloud accounts that use **Service principal** authentication. For the roles that **Managed identity**
+cloud accounts and their identities need, refer to [Use Azure Managed Identities](./azure-managed-identities.md).
+
 :::warning
 
 We recommend against assigning the built-in Azure
@@ -46,6 +49,10 @@ If you want to enable
 [Microsoft Entra ID integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
 for your AKS clusters, you need to assign the **Azure Kubernetes Service RBAC Cluster Admin** built-in role to the
 service principal you want to use with Palette.
+
+To look up Microsoft Entra admin groups for AKS clusters, the identity that calls Microsoft Graph also needs the
+Microsoft Graph `Group.Read.All` permission. For **Service principal** cloud accounts, this is the service principal of
+the cloud account. For **Managed identity** cloud accounts, this is the management identity.
 
 Review the
 [Microsoft Entra ID Integration - Prerequisites](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md#prerequisites)

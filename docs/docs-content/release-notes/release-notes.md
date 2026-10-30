@@ -118,6 +118,18 @@ tags: ["release-notes"]
   `{{.spectro.system.oidc.issuerurl}}`, to place OIDC settings in the keys and format that your Kubernetes distribution
   requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3804 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3806 -->
+<!-- TODO(PCP-3806) Release day: confirm that the Terraform provider change (PLT-2489) shipped. -->
+
+- You can now authenticate Azure cloud accounts with a user-assigned managed identity instead of a service principal and
+  client secret. Managed identity cloud accounts store no secret and work through a self-hosted Private Cloud Gateway
+  (PCG) deployed in Azure. You can also assign managed identities to Azure IaaS and AKS clusters, so that the clusters
+  access Azure without static credentials. The
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) also
+  supports managed identity cloud accounts. For more information, refer to
+  [Use Azure Managed Identities](../clusters/public-cloud/azure/azure-managed-identities.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5953 -->
