@@ -24,7 +24,7 @@ PaletteAI Inference Launchpad 1.2.1 is a patch release that fixes a security iss
 
 ### Upgrade {#upgrade-1-2-1}
 
-To upgrade a running appliance to 1.2.1, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+To upgrade a running 1.2.0 appliance to 1.2.1, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
 
 ## Version 1.2.0 - October 21, 2026 {#version-1-2-0}
 
