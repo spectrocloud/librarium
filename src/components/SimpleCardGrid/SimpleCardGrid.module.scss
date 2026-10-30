@@ -114,7 +114,7 @@
 // Compact variant (opt-in with the compact prop), used only by the docs homepage.
 // Every selector below needs a compact class, so the default cards on other pages are unchanged. Tags and icons are
 // styled only here, because only the homepage uses them.
-// Column counts follow the nearest CSS size container (.landing-section). Without one, the grid stays at 2 columns.
+// The grid has 2 columns, and 1 when the nearest CSS size container (.landing-section) is narrower than 600px.
 
 .simpleCardGrid.simpleCardGridCompact {
   grid-gap: 12px;
@@ -128,16 +128,6 @@
   > a:focus-visible {
     outline: 3px solid var(--ifm-color-primary);
     outline-offset: 3px;
-  }
-}
-
-@container (min-width: 960px) {
-  .simpleCardGrid.simpleCardGridCompact[data-columns="3"] {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .simpleCardGrid.simpleCardGridCompact[data-columns="4"] {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -254,7 +244,7 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
   .simpleCard.simpleCardCompact,
   .simpleCard.simpleCardCompact::before {
     transition:

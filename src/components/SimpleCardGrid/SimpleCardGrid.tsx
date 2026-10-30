@@ -31,7 +31,7 @@ interface SimpleCardHeader {
 export default function SimpleCardGrid({ cards = [], hideNumber = false, compact = false }: SimpleCardProps) {
   const gridClassName = compact ? `${styles.simpleCardGrid} ${styles.simpleCardGridCompact}` : styles.simpleCardGrid;
   return (
-    <div className={gridClassName} data-columns={compact ? Math.min(cards.length, 4) : undefined}>
+    <div className={gridClassName}>
       {cards.map((card, index) => (
         <SimpleCard
           title={card.title}

@@ -93,7 +93,7 @@ describe("Display SimpleCardGrid", () => {
 
   it("compact cards render text links and tags", () => {
     const compactCards = [{ ...testCards[0], tags: ["Edge", "Air-gapped"] }, testCards[1]];
-    const { container } = render(<SimpleCardGrid compact cards={compactCards} />);
+    render(<SimpleCardGrid compact cards={compactCards} />);
 
     expect(screen.queryAllByRole("button")).toHaveLength(0);
     compactCards.forEach((card) => {
@@ -101,6 +101,5 @@ describe("Display SimpleCardGrid", () => {
       expect(screen.getByText(card.buttonText, { selector: "span" })).toBeInTheDocument();
     });
     expect(screen.getByText("Air-gapped")).toBeInTheDocument();
-    expect(container.firstElementChild).toHaveAttribute("data-columns", "2");
   });
 });

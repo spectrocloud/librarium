@@ -149,6 +149,12 @@
     padding: 28px 20px 22px;
   }
 
+  // Smaller input text on phones, with an ellipsis instead of a clipped word.
+  .ask input {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+  }
+
   :global(.markdown) .hero .title {
     --ifm-h1-font-size: 1.75rem;
   }

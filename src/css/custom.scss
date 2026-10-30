@@ -371,6 +371,10 @@ p img.markdown-image {
 }
 
 @media (max-width: 600px) {
+  .landing-section > h2 {
+    --ifm-h2-font-size: 1.125rem;
+  }
+
   .landing-section > :not(h2) {
     padding: 12px;
   }
