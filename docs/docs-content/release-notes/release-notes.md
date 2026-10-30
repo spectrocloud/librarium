@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 <!-- COMPONENT UPDATES TICKET: DOC-3365 -->
 <!-- RELEASE DATE: October 30, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: N/A -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.33 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.10.6 -->
 <!-- RELEASE TERRAFORM VERSION:  -->
 
@@ -24,18 +24,18 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | Component                                                                                             | Version |
 | ----------------------------------------------------------------------------------------------------- | ------- |
 | [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.10.6  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | N/A     |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | N/A     |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.10.33 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.10.33 |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
 
 ### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-4969 -->
-
-- Updated Kubernetes packs for release week 2026-44, including FIPS and non-FIPS versions of edge-k8s (1.34.12, 1.34.13,
-  1.35.9, 1.35.10), edge-rke2 (1.34.11, 1.35.8, and non-FIPS 1.36.4), kubernetes (1.34.12, 1.35.9), kubernetes-aks
-  (1.37), and kubernetes-eks (1.37).
+- Artifact Studio v2 is available as a Tech Preview. It adds self-service accounts, organization entitlements that
+  control which appliances, packs, and profiles you can download, and the Artifact Studio API, whose `/v2/` endpoints
+  support pagination. Artifact Studio v1 is still the default. Refer to
+  [Artifact Studio v2](../downloads/artifact-studio-v2.md) and the
+  [Artifact Studio API](/api/introduction#artifact-studio-api) for more information.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
 
@@ -50,20 +50,9 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.1 |
 | <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.2 |
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.1 |
-| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.12 |
-| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
-| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
-| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.9 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.11 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.8 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.36.4 |
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.14.0 |
 | <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.1 |
 | <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.4 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.12 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.9 |
-| <VersionedLink text="kubernetes-aks" url="/integrations/packs/?pack=kubernetes-aks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
-| <VersionedLink text="kubernetes-eks" url="/integrations/packs/?pack=kubernetes-eks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
 | <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.2 |
 | <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.0.3 |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.39.0 |
@@ -73,10 +62,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3365. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## October 29, 2026 - PaletteAI VM Launchpad 4.10.25 {#vm-launchpad-4.10.25}
 
