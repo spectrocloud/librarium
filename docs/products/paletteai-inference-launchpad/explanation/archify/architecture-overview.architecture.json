@@ -45,7 +45,7 @@
       "type": "external",
       "label": "Administrators",
       "sublabel": "web browser",
-      "pos": [40, 200],
+      "pos": [60, 40],
       "size": [170, 64],
       "sources": [
         {
@@ -61,7 +61,7 @@
       "type": "external",
       "label": "Agents and apps",
       "sublabel": "OpenAI or Anthropic API",
-      "pos": [40, 340],
+      "pos": [300, 40],
       "size": [170, 64],
       "sources": [
         {
@@ -75,9 +75,9 @@
     {
       "id": "platform",
       "type": "frontend",
-      "label": "Platform IP",
+      "label": "1. Platform IP",
       "sublabel": "one HTTPS address",
-      "pos": [280, 340],
+      "pos": [300, 180],
       "size": [170, 64],
       "sources": [
         {
@@ -97,9 +97,9 @@
     {
       "id": "gateway",
       "type": "frontend",
-      "label": "Gateway",
+      "label": "2. Gateway",
       "sublabel": "keys, quotas, cache",
-      "pos": [520, 340],
+      "pos": [300, 320],
       "size": [170, 64],
       "sources": [
         {
@@ -124,9 +124,9 @@
     {
       "id": "semantic",
       "type": "backend",
-      "label": "Semantic router",
+      "label": "3. Semantic router",
       "sublabel": "picks a model for auto",
-      "pos": [760, 200],
+      "pos": [540, 460],
       "size": [170, 64],
       "sources": [
         {
@@ -146,9 +146,9 @@
     {
       "id": "engines",
       "type": "backend",
-      "label": "Local models",
+      "label": "4. Local models",
       "sublabel": "inference engines",
-      "pos": [760, 340],
+      "pos": [300, 460],
       "size": [170, 64],
       "sources": [
         {
@@ -174,9 +174,9 @@
     {
       "id": "dashboards",
       "type": "messagebus",
-      "label": "Grafana dashboards",
+      "label": "8. Grafana dashboards",
       "sublabel": "usage and GPU metrics",
-      "pos": [760, 620],
+      "pos": [300, 600],
       "size": [170, 64],
       "sources": [
         {
@@ -195,9 +195,9 @@
     {
       "id": "external",
       "type": "cloud",
-      "label": "External endpoints",
+      "label": "5. External endpoints",
       "sublabel": "built-in or registered",
-      "pos": [760, 40],
+      "pos": [540, 40],
       "size": [170, 64],
       "sources": [
         {
@@ -217,9 +217,9 @@
     {
       "id": "console",
       "type": "frontend",
-      "label": "Console",
+      "label": "6. Console",
       "sublabel": "admin web UI",
-      "pos": [280, 480],
+      "pos": [60, 180],
       "size": [170, 64],
       "sources": [
         {
@@ -238,9 +238,9 @@
     {
       "id": "control",
       "type": "database",
-      "label": "Control plane",
+      "label": "7. Control plane",
       "sublabel": "applies your settings",
-      "pos": [520, 480],
+      "pos": [60, 460],
       "size": [170, 64],
       "sources": [
         {
@@ -266,7 +266,7 @@
       "type": "security",
       "label": "Identity provider",
       "sublabel": "console sign-in",
-      "pos": [280, 620],
+      "pos": [60, 320],
       "size": [170, 64],
       "sources": [
         {
@@ -297,16 +297,25 @@
       "from": "clients",
       "to": "platform",
       "label": "HTTPS",
-      "variant": "emphasis",
+      "variant": "emphasis"
+    },
+    {
+      "from": "admin",
+      "to": "platform",
+      "label": "HTTPS",
       "fromSide": "right",
-      "toSide": "left",
-      "route": "straight"
+      "toSide": "top"
     },
     {
       "from": "platform",
       "to": "gateway",
       "label": "model API",
       "variant": "emphasis"
+    },
+    {
+      "from": "platform",
+      "to": "console",
+      "label": "console"
     },
     {
       "from": "gateway",
@@ -319,33 +328,15 @@
       "to": "semantic",
       "label": "auto",
       "fromSide": "right",
-      "toSide": "left"
+      "toSide": "top"
     },
     {
       "from": "gateway",
       "to": "external",
       "label": "off by default, personal data check",
       "variant": "dashed",
-      "fromSide": "top",
-      "toSide": "left"
-    },
-    {
-      "from": "engines",
-      "to": "dashboards",
-      "label": "metrics",
-      "variant": "dashed",
       "fromSide": "right",
-      "toSide": "right"
-    },
-    {
-      "from": "admin",
-      "to": "platform",
-      "label": "HTTPS"
-    },
-    {
-      "from": "platform",
-      "to": "console",
-      "label": "console"
+      "toSide": "bottom"
     },
     {
       "from": "console",
@@ -356,13 +347,10 @@
     {
       "from": "console",
       "to": "control",
-      "label": "settings"
-    },
-    {
-      "from": "control",
-      "to": "gateway",
-      "label": "configures",
-      "variant": "dashed"
+      "label": "settings",
+      "fromSide": "left",
+      "toSide": "left",
+      "labelAt": [36, 422]
     },
     {
       "from": "control",
@@ -370,7 +358,21 @@
       "label": "deploys models",
       "variant": "dashed",
       "fromSide": "right",
-      "toSide": "bottom"
+      "toSide": "left"
+    },
+    {
+      "from": "control",
+      "to": "gateway",
+      "label": "configures",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "from": "engines",
+      "to": "dashboards",
+      "label": "metrics",
+      "variant": "dashed"
     }
   ]
 }
