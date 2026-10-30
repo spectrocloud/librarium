@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "PaletteAI Inference Launchpad Architecture",
+    "locale": "en",
+    "output": "architecture-overview.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/spectrocloud/launchpad-ai",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "876d9b4d63bc2d537a69f4b30b265899d66acee7"
+    },
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "external": {
+          "label": "Outside the appliance"
+        },
+        "frontend": {
+          "label": "Entry and request path"
+        },
+        "backend": {
+          "label": "Local inference on GPUs"
+        },
+        "cloud": {
+          "label": "External endpoints (opt-in)"
+        },
+        "database": {
+          "label": "Control plane"
+        },
+        "security": {
+          "label": "Identity"
+        },
+        "messagebus": {
+          "label": "Monitoring"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "admin",
+      "type": "external",
+      "label": "Administrators",
+      "sublabel": "web browser",
+      "pos": [60, 40],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/traefik-ingress.yaml",
+          "line": 165,
+          "label": "console route",
+          "end_line": 200
+        }
+      ]
+    },
+    {
+      "id": "clients",
+      "type": "external",
+      "label": "Agents and apps",
+      "sublabel": "OpenAI or Anthropic API",
+      "pos": [300, 40],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/traefik-ingress.yaml",
+          "line": 112,
+          "label": "model API allowlist",
+          "end_line": 150
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "type": "frontend",
+      "label": "1. Platform IP",
+      "sublabel": "one HTTPS address",
+      "pos": [300, 180],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/traefik-ingress.yaml",
+          "line": 81,
+          "label": "ingress routes",
+          "end_line": 200
+        },
+        {
+          "path": "appliance-data/nvidia-values-yaml/addon/metallb.yaml",
+          "line": 27,
+          "label": "address pool",
+          "end_line": 34
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "type": "frontend",
+      "label": "2. Gateway",
+      "sublabel": "tokens, quotas, cache",
+      "pos": [300, 320],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/launchpad-router.yaml",
+          "line": 24,
+          "label": "gateway Deployment"
+        },
+        {
+          "path": "launchpad-router/pkg/pipeline/doc.go",
+          "line": 1,
+          "label": "request pipeline",
+          "end_line": 40
+        },
+        {
+          "path": "launchpad-router/pkg/cache/doc.go",
+          "line": 1,
+          "label": "response cache",
+          "end_line": 12
+        }
+      ]
+    },
+    {
+      "id": "semantic",
+      "type": "backend",
+      "label": "3. Semantic router",
+      "sublabel": "picks a model for auto",
+      "pos": [540, 460],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/spectrolabe-model.yaml",
+          "line": 40,
+          "label": "classifier model",
+          "end_line": 67
+        },
+        {
+          "path": "launchpad-router/pkg/spectrolabe/decoder/transport.go",
+          "line": 60,
+          "label": "classify call",
+          "end_line": 70
+        }
+      ]
+    },
+    {
+      "id": "engines",
+      "type": "backend",
+      "label": "4. Local models",
+      "sublabel": "inference engines",
+      "pos": [300, 460],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "launchpad-operator-apis/launchpad.spectrocloud.com/v1alpha1/model_types.go",
+          "line": 60,
+          "label": "engine kinds",
+          "end_line": 68
+        },
+        {
+          "path": "launchpad-operator/pkg/recipe/recipe.go",
+          "line": 281,
+          "label": "engine Deployment",
+          "end_line": 290
+        },
+        {
+          "path": "launchpad-router/pkg/router/models/target.go",
+          "line": 21,
+          "label": "gateway target",
+          "end_line": 59
+        }
+      ]
+    },
+    {
+      "id": "dashboards",
+      "type": "messagebus",
+      "label": "8. Grafana dashboards",
+      "sublabel": "usage and GPU metrics",
+      "pos": [300, 600],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/observability-grafana.yaml",
+          "line": 158,
+          "label": "Grafana Deployment"
+        },
+        {
+          "path": "chart/templates/observability-dashboards.yaml",
+          "line": 1,
+          "label": "dashboards",
+          "end_line": 31
+        }
+      ]
+    },
+    {
+      "id": "external",
+      "type": "cloud",
+      "label": "5. External endpoints",
+      "sublabel": "built-in or registered",
+      "pos": [540, 40],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "launchpad-router/pkg/externalinferencing/doc.go",
+          "line": 1,
+          "label": "egress decision",
+          "end_line": 20
+        },
+        {
+          "path": "launchpad-router/pkg/boot/external_inferencing.go",
+          "line": 1,
+          "label": "egress engines",
+          "end_line": 12
+        }
+      ]
+    },
+    {
+      "id": "console",
+      "type": "frontend",
+      "label": "6. Console",
+      "sublabel": "admin web UI",
+      "pos": [60, 180],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/ui.yaml",
+          "line": 3,
+          "label": "console Deployment"
+        },
+        {
+          "path": "chart/templates/traefik-ingress.yaml",
+          "line": 165,
+          "label": "console route",
+          "end_line": 200
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "type": "database",
+      "label": "7. Control plane",
+      "sublabel": "applies your settings",
+      "pos": [60, 460],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "chart/templates/management.yaml",
+          "line": 1,
+          "label": "management plane",
+          "end_line": 14
+        },
+        {
+          "path": "chart/templates/launchpad-operator.yaml",
+          "line": 32,
+          "label": "operator Deployment"
+        },
+        {
+          "path": "launchpad-operator-apis/launchpad.spectrocloud.com/v1alpha1/modelclient_types.go",
+          "line": 204,
+          "label": "client resource"
+        }
+      ]
+    },
+    {
+      "id": "idp",
+      "type": "security",
+      "label": "Identity provider",
+      "sublabel": "console sign-in",
+      "pos": [60, 320],
+      "size": [170, 64],
+      "sources": [
+        {
+          "path": "appliance-data/nvidia-values-yaml/addon/keycloakx.yaml",
+          "line": 1,
+          "label": "identity pack",
+          "end_line": 12
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Appliance",
+      "pad": 40,
+      "wraps": ["platform", "gateway", "semantic", "engines", "dashboards", "console", "control", "idp"]
+    },
+    {
+      "kind": "region",
+      "label": "GPUs",
+      "pad": 12,
+      "wraps": ["semantic", "engines"]
+    }
+  ],
+  "connections": [
+    {
+      "from": "clients",
+      "to": "platform",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "from": "admin",
+      "to": "platform",
+      "label": "HTTPS",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "platform",
+      "to": "gateway",
+      "label": "model API",
+      "variant": "emphasis"
+    },
+    {
+      "from": "platform",
+      "to": "console",
+      "label": "console"
+    },
+    {
+      "from": "gateway",
+      "to": "engines",
+      "label": "requests",
+      "variant": "emphasis"
+    },
+    {
+      "from": "gateway",
+      "to": "semantic",
+      "label": "auto",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "gateway",
+      "to": "external",
+      "label": "off by default",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "from": "console",
+      "to": "idp",
+      "label": "sign-in",
+      "variant": "security"
+    },
+    {
+      "from": "console",
+      "to": "control",
+      "label": "settings",
+      "fromSide": "left",
+      "toSide": "left",
+      "labelAt": [36, 422]
+    },
+    {
+      "from": "control",
+      "to": "engines",
+      "label": "deploys models",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "from": "control",
+      "to": "gateway",
+      "label": "configures",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "from": "engines",
+      "to": "dashboards",
+      "label": "metrics",
+      "variant": "dashed"
+    }
+  ]
+}

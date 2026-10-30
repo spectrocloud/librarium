@@ -10,11 +10,55 @@ tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
 the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
 Launchpad.
 
 ## Component Stack
+
+The following diagram shows the components that make up the appliance, the path a request takes through them, and the
+one path by which a request can leave the appliance. The numbers in the diagram match the list that follows it.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Architecture diagram of the appliance with eight numbered areas, each described in the list that follows it. Coding agents, applications, and administrators sit outside the appliance and reach it over HTTPS."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+
+1. Coding agents and applications send requests to the Platform IP Address, the single HTTPS address the appliance
+   serves. Administrators reach the console through the same address.
+
+2. The gateway authenticates the calling client from its API token, enforces the client's quotas, and routes the
+   request. When the response cache is on, the gateway answers a request identical to an earlier one without sending it
+   to a model. For how routing works, refer to [Request Routing](#request-routing).
+
+3. A request that sends `auto` as the model, or no model, goes to the semantic router, which runs on your GPUs and picks
+   the model. For every case, refer to
+   [What Reaches the Semantic Router](./routing-behavior.md#what-reaches-the-semantic-router).
+
+4. The chosen local model answers the request on the appliance's GPUs.
+
+5. A request reaches an external inference endpoint only when an operator allows egress. When the semantic router reads
+   a request that would leave the appliance, its [personal data check](./semantic-router-guard.md#the-two-checks) scans
+   the prompt first, by default. Refer to [Data Residency and Isolation](#data-residency-and-isolation).
+
+6. Administrators work in the console, which signs them in through the appliance's identity provider.
+
+7. The settings that administrators save in the console pass to the control plane, which configures the gateway and
+   deploys models to the GPUs.
+
+8. The Grafana dashboards show usage and GPU metrics. Refer to
+   [Open the Metrics Dashboards](../how-to-guides/view-token-usage.md#open-the-metrics-dashboards).
+
+Local UI does not appear in the diagram, because the node's operating system serves it outside the Platform IP. Refer to
+[Network Topology](#network-topology).
 
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
