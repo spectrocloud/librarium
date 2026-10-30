@@ -229,6 +229,23 @@ node ~/archify-v3.2.0/archify/bin/archify.mjs guide "<diagram-question>"
 
 Replace `<diagram-question>` with a short description of what the diagram must explain.
 
+For example, the following command asks which type suits a diagram of the calls that one chat request makes. Phrase the
+question the way the diagram answers it, such as _who calls whom, in what order_. A question that matches none of
+Archify's scenarios returns `System overview [architecture]` with low confidence.
+
+```sh
+node ~/archify-v3.2.0/archify/bin/archify.mjs guide "who calls whom, in what order, when a client sends a chat request"
+```
+
+```bash hideClipboard title="Expected output"
+Recommendation: API request chain  [sequence]
+Confidence: medium
+Question answered: Who calls whom, in what order, and what returns?
+```
+
+The output also lists when to use the type, what the diagram must include, and a ready-to-use prompt for an AI coding
+agent.
+
 The conventions in [Color Roles](#color-roles), [Arrow Vocabulary](#arrow-vocabulary), and [Boundaries](#boundaries)
 apply to `architecture` diagrams. For other types, follow the type's schema and keep the same component names.
 
