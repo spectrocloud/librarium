@@ -283,8 +283,8 @@ Follow the steps below to create a custom pack.
           <manifest2 parameters>
    ```
 
-   If your pack deploys custom resources, such as the resources that an operator manages, add a `readinessCheck` section
-   so that Palette waits until they are ready. Refer to
+   If your pack deploys custom resources, such as the resources that an operator manages, add a top-level
+   `readinessCheck` section to `values.yaml` so that Palette waits until they are ready. Refer to
    [Pack Readiness Checks](./pack-constraints.md#pack-readiness-checks).
 
 4. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,

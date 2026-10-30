@@ -583,24 +583,25 @@ presets.
 ## Pack Readiness Checks
 
 Palette marks a pack as ready when the resources that it deploys are ready. By default, Palette checks Deployments,
-ReplicaSets, StatefulSets, Jobs, `LoadBalancer` Services, Argo CD Applications, and Ingresses. Palette does not know
-when a custom resource is ready. For example, an operator pack can be ready while the `CephCluster` or `LinstorCluster`
-that the operator manages has not finished its setup.
+ReplicaSets, StatefulSets, Jobs, `LoadBalancer` Services, Argo CD Applications, and Ingresses. The default checks do not
+cover custom resources. For example, Palette can mark an operator pack as ready while the `CephCluster` or
+`LinstorCluster` that the operator manages has not finished its setup.
 
 Use the `readinessCheck` section of the pack values to make Palette wait until a custom resource reaches the state that
-you specify. A pack is ready only when the default checks and every readiness check pass. Packs with a later
+you specify. A pack is ready only when the default checks and every readiness check pass. Packs with a higher
 [install order](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md#install-order)
-wait until the pack is ready.
+value wait until the pack is ready.
 
-Pack authors can include `readinessCheck` in the `values.yaml` file of a pack. You can also add, change, or remove it in
-the YAML of a cluster profile layer, including Helm chart layers.
+Pack authors can add `readinessCheck` as a top-level key in the `values.yaml` file of a pack, at the same level as
+`pack` and `charts`. You can also add, change, or remove it in the YAML of a cluster profile layer, including Helm chart
+layers.
 
 :::warning
 
 In a Helm chart layer, Palette passes the `readinessCheck` section to Helm together with the chart values. If the chart
-has a values schema that rejects keys it does not define, Helm rejects the values and the chart installation fails. In
-that case, remove `readinessCheck` from the layer. This does not affect packs, because Palette passes only the values
-under `charts` to Helm.
+includes a `values.schema.json` file that allows only the keys it defines, the chart installation fails because Helm
+rejects the values. In that case, remove `readinessCheck` from the layer. This does not affect packs, because Palette
+passes only the values under `charts` to Helm.
 
 :::
 
@@ -619,21 +620,24 @@ readinessCheck:
           expectedValue: "<expected-value>"
 ```
 
-Replace the placeholders with the values that the following table describes.
+Replace `<resource-name>`, `<resource-namespace>`, `<api-group>`, `<api-version>`, and `<resource-kind>` with the values
+that identify the resource to check. Replace `<field-path>` with the path to the field and `<expected-value>` with the
+value that the field must have. For details about each attribute, refer to
+[Readiness Check Attributes](#readiness-check-attributes).
 
 ### Readiness Check Attributes
 
-| **Attribute**   | **Description**                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `v1beta1`       | The list of resources to check. Every entry must pass for the pack to be ready.                                                |
-| `name`          | The name of the resource. You can use [macros](#pack-macros).                                                                  |
-| `namespace`     | (Optional) The namespace of the resource. If you omit it, Palette uses the namespace of the pack.                              |
-| `group`         | The API group of the resource, such as `ceph.rook.io`.                                                                         |
-| `version`       | The API version of the resource, such as `v1`.                                                                                 |
-| `kind`          | The kind of the resource, such as `CephCluster`.                                                                               |
-| `keysToCheck`   | The list of fields to check. Each item has a `keyToCheck` and an `expectedValue`. Define at least one item.                    |
-| `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`. |
-| `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                        |
+| **Attribute**   | **Description**                                                                                                                                                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v1beta1`       | The list of resources to check.                                                                                                                                                                                                                                                   |
+| `name`          | The name of the resource. You can use [macros](#pack-macros).                                                                                                                                                                                                                     |
+| `namespace`     | (Optional) The namespace of the resource. Set it for every resource that has a namespace. If you omit it, Palette looks in `cluster-<cluster-uid>`, the namespace of the `Pack` resource, not in the namespace that the pack installs into. Omit it for cluster-scoped resources. |
+| `group`         | The API group of the resource, such as `ceph.rook.io`.                                                                                                                                                                                                                            |
+| `version`       | The API version of the resource, such as `v1`.                                                                                                                                                                                                                                    |
+| `kind`          | The kind of the resource, such as `CephCluster`.                                                                                                                                                                                                                                  |
+| `keysToCheck`   | The list of fields to check. Each item has a `keyToCheck` and an `expectedValue`. Each entry must have at least one field to check.                                                                                                                                               |
+| `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`.                                                                                                                                                    |
+| `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                                                                                                                                                                           |
 
 The `readinessCheck` section also accepts a `timeout` attribute, but Palette ignores it. Palette keeps checking the pack
 until it is ready.
@@ -648,20 +652,28 @@ packs.
    Palette reports an error for the pack with the reason `ServiceReconcileFailed` and tries again.
 
 2. Palette reads each `keyToCheck` from the resource, converts the value to text, and compares it to `expectedValue`.
-   The comparison is case-sensitive.
+   The comparison is case-sensitive. If a field does not exist yet, Palette also reports an error and tries again.
 
 3. An entry passes when every key matches. The pack is ready when every entry and the default checks pass.
 
 4. Until the pack is ready, Palette checks it again every 30 seconds.
 
 Palette shows the installation status of each pack in a cluster. For more information, refer to
-[Pack Monitoring](../clusters/cluster-management/pack-monitoring.md). In the cluster, the `Pack` resource of the pack
-records the results in its `status.conditions` and `status.servicesStatus` fields. Palette records an event only when a
-check returns an error, such as a missing resource.
+[Pack Monitoring](../clusters/cluster-management/pack-monitoring.md). In the cluster, each pack has a matching `Pack`
+resource in the `cluster-<cluster-uid>` namespace. Palette writes the results of the checks to the `status.conditions`
+and `status.servicesStatus` fields of that resource. Palette records an event only when a check returns an error, such
+as a missing resource or field.
+
+To view the `Pack` resource, use the following command. Replace `<pack-name>` with the name of the pack and
+`<cluster-uid>` with the unique identifier of your cluster.
+
+```shell
+kubectl get pack <pack-name> --namespace cluster-<cluster-uid> --output yaml
+```
 
 ### Expected Values
 
-Palette compares the text form of the field value, so write `expectedValue` the way the value prints.
+Palette converts the field value to text before the comparison, so write `expectedValue` as that text.
 
 | **Field Value in the Resource**              | **Text That Palette Compares** | **Matching `expectedValue`** |
 | -------------------------------------------- | ------------------------------ | ---------------------------- |
@@ -673,10 +685,10 @@ Palette compares the text form of the field value, so write `expectedValue` the 
 If a pack never becomes ready, check that each `expectedValue` matches the field value exactly, including
 capitalization. For example, `expectedValue: "True"` never matches a boolean field whose value is `true`.
 
-To check a field in a list, such as a condition, use an index key, such as `status.conditions[0].status`. An index key
-depends on the order of the items in the list, so confirm the order in the resource before you use it. Avoid filter
-expressions, such as `status.conditions[?(@.type=="Ready")].status`. A filter returns a list instead of a single value,
-so its text form includes brackets, such as `[True]`.
+To check a field in a list, use an index key, such as `status.conditions[0].status` for the status of the first
+condition. An index key depends on the order of the items in the list, so confirm the order in the resource before you
+use it. Avoid filter expressions, such as `status.conditions[?(@.type=="Ready")].status`. A filter returns a list
+instead of a single value, so the comparison depends on how the list converts to text.
 
 ### Readiness Check Examples
 
@@ -695,8 +707,8 @@ readinessCheck:
           expectedValue: "Ready"
 ```
 
-The following example waits until the first three conditions of a Piraeus `LinstorCluster` are `True`. It omits
-`namespace`, so Palette uses the namespace of the pack.
+The following example waits until the first three conditions of a Piraeus `LinstorCluster` are `True`. `LinstorCluster`
+is a cluster-scoped resource, so the example omits `namespace`.
 
 ```yaml
 readinessCheck:
