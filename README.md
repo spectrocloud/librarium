@@ -92,18 +92,22 @@ semantic-release prefixes unless you intentionally need to trigger a version cha
 ## Create or Update a Diagram
 
 Architecture diagrams are authored with [Archify](https://github.com/tt-a1i/archify) as JSON source and exported to a
-light and a dark webp image. The [Diagrams](./docs/contributing/markdown-and-mdx.md#diagrams) section of the Markdown
+light and a dark WEBP image. The [Diagrams](./docs/contributing/markdown-and-mdx.md#diagrams) section of the Markdown
 and MDX guide holds the full conventions. In short:
 
-1. Install the prerequisites once: Node.js, Google Chrome, `cwebp`, and the Archify v3.2.0 command-line tool. Refer to
+1. Install Node.js, Google Chrome, `cwebp`, and the Archify v3.2.0 command-line tool. Refer to
    [Prerequisites](./docs/contributing/markdown-and-mdx.md#prerequisites).
+
 2. Write or edit the diagram's JSON source in the `archify/` folder next to its page. For a new diagram, start from the
    [sample](./docs/contributing/archify/diagramming-conventions-sample.architecture.json) and follow the color, layout,
    and label conventions.
-3. Validate the source with Archify's `finalize` command, then export both images with `scripts/archify-export.mjs`.
-   Refer to [Regenerating a Diagram](./docs/contributing/markdown-and-mdx.md#regenerating-a-diagram).
+
+3. Validate the source with Archify's `finalize` command, and then export both images with `scripts/archify-export.mjs`.
+   Refer to [Regenerate a Diagram](./docs/contributing/markdown-and-mdx.md#regenerate-a-diagram).
+
 4. Add a new diagram to its page with the `ThemedImage` component. Refer to
    [Add the Diagram to a Page](./docs/contributing/markdown-and-mdx.md#add-the-diagram-to-a-page).
+
 5. Commit the JSON source and both images together.
 
 Never edit a diagram's images directly. To keep a diagram current when the product changes or ships a new release, refer

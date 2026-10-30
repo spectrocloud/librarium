@@ -98,7 +98,7 @@
       "id": "gateway",
       "type": "frontend",
       "label": "2. Gateway",
-      "sublabel": "keys, quotas, cache",
+      "sublabel": "tokens, quotas, cache",
       "pos": [300, 320],
       "size": [170, 64],
       "sources": [
@@ -333,7 +333,7 @@
     {
       "from": "gateway",
       "to": "external",
-      "label": "off by default, personal data check",
+      "label": "off by default",
       "variant": "dashed",
       "fromSide": "right",
       "toSide": "bottom"
