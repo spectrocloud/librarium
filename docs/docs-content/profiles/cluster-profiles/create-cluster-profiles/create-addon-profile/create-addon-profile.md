@@ -25,8 +25,9 @@ The next sections provide guidance in creating each type of these add-on profile
 
 You can specify the install order of each add-on pack layer in a cluster profile. The install order value accepts
 negative and positive numbers and 0. The default install order value is 0. The install order determines the order in
-which manifests in the profile are applied. The lowest-numbered packs will be installed first. Palette will wait a few
-moments when installing layers to ensure the readiness checks pass.
+which Palette applies the manifests in the profile. Palette installs the packs with the lowest install order value
+first. Before it installs the packs with the next install order value, Palette waits until the readiness checks of the
+current packs pass.
 
 To set the install order for an add-on pack layer, add the `spectrocloud.com/install-priority` annotation to the pack
 layer YAML. Replace the number with the desired install order value.
@@ -36,19 +37,14 @@ pack:
   spectrocloud.com/install-priority: "30"
 ```
 
-If a readiness check for an add-on pack layer fails, Palette will keep checking the status every two minutes until the
-check passes. Once the readiness check passes for a pack with a lower priority, add-on layer packs with higher install
-priority will be installed.
+If a readiness check for an add-on pack layer fails, Palette checks the status again every 30 seconds until the check
+passes. After the readiness check passes, Palette installs the add-on packs with the next install order value. To make
+Palette wait until a custom resource that a pack deploys is ready, refer to
+[Pack Readiness Checks](../../../../registries-and-packs/pack-constraints.md#pack-readiness-checks).
 
-A cluster profile containing several different install order values will take a few minutes longer to install versus a
-cluster profile with the same install order for all add-on packs.
-
-:::info
-
-Palette will deploy together all packs that have the same install order. Palette will wait for all pack readiness checks
-to pass before moving to the next install order.
-
-:::
+Palette deploys all packs that have the same install order value together. A cluster profile with more than one install
+order value takes a few minutes longer to install than a cluster profile with the same install order value for all
+add-on packs.
 
 ## Deletion Order
 
