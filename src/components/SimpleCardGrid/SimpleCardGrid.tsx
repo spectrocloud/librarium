@@ -101,7 +101,7 @@ function SimpleCardBody(
   );
 }
 
-// Environments are plain text, never chips. Each value stays on one line, so "Air-gapped" never splits.
+// Environments are plain text, never chips. Each value stays on one line, so "Data center" never splits.
 function SimpleCardTags({ tags }: { tags: string[] }) {
   return (
     <div className={styles.simpleCardTags}>

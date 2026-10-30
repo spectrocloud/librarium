@@ -29,9 +29,9 @@ slug: /
       url: "https://docs.palette-ai.com/",
     },
     {
-      title: "PaletteAI Inference Launchpad for Serving LLMs on Your Own Hardware",
-      description: "Boot a single appliance image and serve models on NVIDIA or AMD GPUs.",
-      tags: ["Data center", "Air-gapped"],
+      title: "PaletteAI Inference Launchpad for LLMs on Your Own Hardware",
+      description: "Boot a single appliance image and serve large language models (LLMs) on NVIDIA or AMD GPUs.",
+      tags: ["Data center", "Airgap"],
       icon: "microchip",
       url: "/paletteai-inference-launchpad/",
     },
@@ -58,7 +58,7 @@ slug: /
       title: "Palette Edge for Remote Edge Sites",
       description:
         "Provision, scale, and upgrade Kubernetes clusters on Edge hosts at remote sites, such as grocery stores and restaurants.",
-      tags: ["Edge", "Air-gapped"],
+      tags: ["Edge", "Airgap"],
       icon: "hdd",
       url: "/clusters/edge/",
     },
@@ -66,15 +66,15 @@ slug: /
       title: "Palette VerteX for Regulated Environments",
       description:
         "Deploy Kubernetes clusters that integrate validated Federal Information Processing Standards (FIPS) 140-3 cryptographic modules.",
-      tags: ["Public cloud", "Data center", "Edge", "Air-gapped"],
+      tags: ["Public cloud", "Data center", "Edge", "Airgap"],
       icon: "shield",
       url: "/vertex/",
     },
     {
       title: "Self-Hosted Palette for Your Own Infrastructure",
       description:
-        "Manage Kubernetes clusters from a self-hosted instance in your own data center or public cloud account, including air-gapped environments.",
-      tags: ["Public cloud", "Data center", "Air-gapped"],
+        "Manage Kubernetes clusters from a self-hosted instance in your own data center or public cloud account, including airgap environments.",
+      tags: ["Public cloud", "Data center", "Airgap"],
       icon: "warehouse",
       url: "/enterprise-version/",
     },
@@ -93,14 +93,15 @@ slug: /
     {
       title: "PaletteAI VM Launchpad for VMs on a Standalone Appliance",
       description: "Install a bootable ISO on bare metal or Edge devices and manage VMs from a dedicated UI.",
-      tags: ["Data center", "Edge", "Air-gapped"],
+      tags: ["Data center", "Edge", "Airgap"],
       icon: "server",
       url: "/vm-management/vm-launchpad/",
     },
     {
-      title: "Palette Virtual Machine Orchestrator for VMs on Your Kubernetes Clusters",
-      description: "Deploy VMs alongside containers on Palette-managed or imported Kubernetes clusters.",
-      tags: ["Data center", "Edge", "Air-gapped"],
+      title: "VMO Pack for VMs on Your Kubernetes Clusters",
+      description:
+        "Deploy the Virtual Machine Orchestrator (VMO) pack to run VMs alongside containers on Palette-managed or imported Kubernetes clusters.",
+      tags: ["Data center", "Edge", "Airgap"],
       icon: "cubes",
       url: "/vm-management/vmo-pack/",
     },
