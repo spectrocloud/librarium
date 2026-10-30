@@ -68,6 +68,43 @@ Each package is listed with the following columns.
 | **Size**         | The package file size.                                                                                                                                                                                               |
 | **Uploaded**     | The date and time the package was uploaded.                                                                                                                                                                          |
 
+## Package Storage
+
+VM Launchpad stores the files of uploaded packages, along with its branding images (the logo and favicon), in a package
+store, an S3-compatible bucket. The package details, such as the name, version, and checksum, are Kubernetes custom
+resources, so the **Packages** page lists a package even when its file is missing.
+
+| **Deployment**         | **Package Store**                                                      | **Uploaded Files After a Pod Restart** |
+| ---------------------- | ---------------------------------------------------------------------- | -------------------------------------- |
+| VM Launchpad appliance | The appliance's SeaweedFS, configured automatically.                   | Kept                                   |
+| VMO pack               | Off by default. VM Launchpad keeps uploaded files only on its own pod. | Lost                                   |
+
+VM Launchpad restores the built-in packages, such as the QEMU guest agent, every time it starts, with or without a
+package store. The [Virtio Windows ISO](#virtio-windows-iso) is the exception. VM Launchpad downloads it only when a
+package store is configured, and without it you cannot create Windows VMs.
+
+### Configure a Package Store for the VMO Pack
+
+To keep uploaded packages and branding images when the VM Launchpad pod restarts, add the SeaweedFS pack to the cluster
+profile that contains the VMO pack, and set the following values in the VMO pack.
+
+<!-- TODO(DOC-3274): Confirm with Ahmed Kadri before Ready: the SeaweedFS pack name in the Palette registry, where users
+find the secret key of the identity that accessKey names, and the multi-pod Service. The SeaweedFS pack runs three pods by
+default, and vmo-manager needs an endpoint with ClientIP session affinity (the appliances' seaweedfs-s3 Service), or
+multipart uploads can fail with a 404. Source: vmo-manager docs/user/image-catalog/packages.md, Package storage. -->
+
+```yaml
+integrations:
+  packageStore:
+    enabled: true
+    endpoint: "http://seaweedfs.seaweedfs.svc.cluster.local:8333"
+    accessKey: "seaweedfs-zot-access-key"
+    secretKey: "<secret-key>"
+```
+
+Replace `<secret-key>` with the secret key of the SeaweedFS identity that `accessKey` names. VM Launchpad creates the
+`vmo-packages` bucket if it does not exist.
+
 ## Upload a Package
 
 1. Navigate to **Image Catalog** > **Packages**.
@@ -187,3 +224,212 @@ provides Virtio disk and network drivers so Windows can boot from Virtio devices
 
 The Virtio ISO is managed as part of package seeding. Ensure the package is seeded and the PVC is bound before building
 Windows golden images.
+
+## Upgrade Considerations
+
+<!-- TODO(DOC-3274): Name the first release without a data volume (drop eight, VM Launchpad 4.10.TBD) once Platone
+promotes it, and link the Breaking Changes entry in the drop-eight release notes. -->
+
+Earlier VM Launchpad releases stored uploaded package files and branding images on a data volume. VM Launchpad no longer
+uses a data volume and stores these files in a [package store](#package-storage) instead. The upgrade does not copy
+anything from the data volume. VM Launchpad restores the built-in packages automatically, but you must upload your
+custom packages and branding images again. This applies to the VM Launchpad appliance and to VMO pack deployments that
+turned on persistent storage.
+
+### Before You Upgrade
+
+Keep a copy of every custom package and branding image that you uploaded. The following steps require `kubectl` access
+to the cluster that runs VM Launchpad.
+
+```shell
+export KUBECONFIG=<path-to-kubeconfig>
+```
+
+Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
+
+1. List your custom packages and keep the original file of each one. Custom packages show `false` in the `BUILTIN`
+   column.
+
+   ```shell
+   kubectl get vmopackages --namespace <vmo-namespace> \
+     --output custom-columns=ID:.metadata.name,NAME:.spec.name,FILE:.spec.fileName,BUILTIN:.spec.builtIn
+   ```
+
+   Replace `<vmo-namespace>` with the namespace of VM Launchpad. On the VM Launchpad appliance, the namespace is
+   `vm-dashboard`.
+
+2. Save your logo and favicon. Open `https://<vm-launchpad-host>/api/v1/branding/assets/logo` and
+   `https://<vm-launchpad-host>/api/v1/branding/assets/favicon` in a browser and save each image.
+
+   Replace `<vm-launchpad-host>` with the host name of VM Launchpad.
+
+If you upgrade without a copy, you can still copy the files out of the previous data volume. Refer to
+[Recover Files From the Previous Data Volume](#recover-files-from-the-previous-data-volume).
+
+### Upload Packages and Branding Images Again
+
+After the upgrade, your custom packages stay listed on the **Packages** page, but VM Launchpad no longer serves their
+files. A VM that installs one of them receives a `404` error.
+
+If you use the VMO pack, configure a package store before you upload anything. Otherwise, you lose the files that you
+upload the next time the VM Launchpad pod restarts. Refer to
+[Configure a Package Store for the VMO Pack](#configure-a-package-store-for-the-vmo-pack).
+
+1. Navigate to **Image Catalog** > **Packages**.
+
+2. Select the rows of your custom packages, and select **Delete**. You cannot upload a package with the same name, OS
+   type, and architecture while its previous row exists.
+
+3. Upload each package again. Refer to [Upload a Package](#upload-a-package). VM Launchpad rejects filenames that
+   contain a space, a non-ASCII character, or any of the characters `/`, `%`, `?`, `#`, and `\`. Earlier releases
+   accepted these names, so rename any such file before you upload it.
+
+4. Select **Rebuild Repository**.
+
+5. Upload your logo and favicon through the VM Launchpad API. Use an [API key](../access-management/api-keys.md) of a
+   user with the `vmo:branding:write` permission, such as a Platform Admin.
+
+   ```shell
+   curl --header "Authorization: Bearer <api-key>" --form target=logo --form file=@<logo-file> \
+     https://<vm-launchpad-host>/api/v1/branding/upload
+   curl --header "Authorization: Bearer <api-key>" --form target=favicon --form file=@<favicon-file> \
+     https://<vm-launchpad-host>/api/v1/branding/upload
+   ```
+
+   Replace `<api-key>` with your API key, `<logo-file>` and `<favicon-file>` with the paths to your image files, and
+   `<vm-launchpad-host>` with the host name of VM Launchpad. If VM Launchpad uses a self-signed certificate, add
+   `--cacert <ca-certificate>` to each command and replace `<ca-certificate>` with the path to its CA certificate.
+
+6. (Optional) To generate the favicon from your logo instead of uploading one, issue the following command.
+
+   ```shell
+   curl --request POST --header "Authorization: Bearer <api-key>" \
+     https://<vm-launchpad-host>/api/v1/branding/generate-favicon
+   ```
+
+### Restore the Virtio Windows ISO
+
+<!-- TODO(DOC-3274): The vmo-manager notes say the reset and both refill paths are covered by unit tests but have not
+been run on a cluster. Verify on a drop-eight build, or confirm with Ahmed Kadri, before Ready. -->
+
+Follow these steps only if VM Launchpad downloaded the [Virtio Windows ISO](#virtio-windows-iso), or you uploaded it,
+before the upgrade. After the upgrade, its package row still records a file that is no longer stored. This blocks the
+automatic download and the **Upload Image** action, you cannot delete the row, and the Windows VM wizard reports the
+Virtio drivers as not available.
+
+1. Reset the package row.
+
+   ```shell
+   kubectl patch vmopackages.virtualization.spectrocloud.com builtin-virtio-win --namespace <vmo-namespace> \
+     --type merge --patch '{"spec":{"fileSize":0,"sha256":""}}'
+   ```
+
+   Replace `<vmo-namespace>` with the namespace of VM Launchpad.
+
+2. Restore the ISO.
+
+   - In a connected environment, navigate to **Image Catalog** > **Packages** and select **Check for Updates**. VM
+     Launchpad downloads the ISO in the background within two minutes. This requires a
+     [package store](#package-storage).
+
+   - In an airgap environment, right-click the Virtio Windows ISO row, select **Upload Image**, and upload the ISO. Keep
+     the filename `virtio-win.iso`, and enter the ISO version if it differs from the one displayed.
+
+### Recover Files From the Previous Data Volume
+
+VM Launchpad keeps the previous data volume, but it no longer mounts it, so you can copy files out of it before you
+upload them again. The volume is the `vmo-manager-data` PersistentVolumeClaim (PVC), or `data-vmo-manager-<N>` on older
+StatefulSet installations. Nothing deletes it, so delete it yourself when you finish.
+
+The volume stores packages at `packages/<id>/<file-name>` and branding images at `branding/logo.<extension>` and
+`branding/favicon.<extension>`. The following steps require `kubectl` access to the cluster that runs VM Launchpad.
+
+1. Find the PVC.
+
+   ```shell
+   kubectl get pvc --namespace <vmo-namespace>
+   ```
+
+   If the PVC uses node-local storage or the `ReadWriteOnce` access mode, find the node that its volume is pinned to.
+
+   ```shell
+   kubectl get pvc <pvc-name> --namespace <vmo-namespace> \
+     --output jsonpath='{.metadata.annotations.volume\.kubernetes\.io/selected-node}{"\n"}'
+   ```
+
+   Replace `<vmo-namespace>` with the namespace of VM Launchpad and `<pvc-name>` with the name of the PVC.
+
+2. Create a file named `vmo-data-reader.yaml` with the following helper pod, which mounts the PVC read-only. The pod
+   runs as user `65534`, the user that earlier releases wrote the files as.
+
+   ```yaml
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: vmo-data-reader
+     namespace: <vmo-namespace>
+   spec:
+     nodeName: <node-name>
+     restartPolicy: Never
+     securityContext:
+       runAsNonRoot: true
+       runAsUser: 65534
+       runAsGroup: 65534
+       seccompProfile:
+         type: RuntimeDefault
+     containers:
+       - name: reader
+         image: busybox:1.36
+         command: ["sleep", "3600"]
+         securityContext:
+           allowPrivilegeEscalation: false
+           capabilities:
+             drop: ["ALL"]
+         volumeMounts:
+           - name: old-data
+             mountPath: /legacy
+             readOnly: true
+     volumes:
+       - name: old-data
+         persistentVolumeClaim:
+           claimName: <pvc-name>
+           readOnly: true
+   ```
+
+   Replace `<vmo-namespace>` with the namespace of VM Launchpad and `<pvc-name>` with the name of the PVC. Replace
+   `<node-name>` with the node from step 1, or remove the `nodeName` line if you did not need to find a node. The
+   `kubectl cp` command requires `tar` in the image. In an airgap environment, use an image from your registry that
+   includes `tar`.
+
+3. Create the helper pod.
+
+   ```shell
+   kubectl apply --filename vmo-data-reader.yaml
+   ```
+
+4. Match your packages to their directories, and copy the files out of the volume.
+
+   ```shell
+   kubectl get vmopackages --namespace <vmo-namespace> \
+     --output custom-columns=ID:.metadata.name,NAME:.spec.name,FILE:.spec.fileName
+   kubectl exec vmo-data-reader --namespace <vmo-namespace> -- ls /legacy/packages /legacy/branding
+   kubectl cp <vmo-namespace>/vmo-data-reader:/legacy/packages/<id>/<file-name> ./<file-name>
+   kubectl cp <vmo-namespace>/vmo-data-reader:/legacy/branding ./branding
+   ```
+
+   Replace `<id>` with the package ID and `<file-name>` with its filename, as listed by the first command.
+
+5. Upload the packages and branding images again. Refer to
+   [Upload Packages and Branding Images Again](#upload-packages-and-branding-images-again).
+
+6. Delete the helper pod.
+
+   ```shell
+   kubectl delete pod vmo-data-reader --namespace <vmo-namespace>
+   ```
+
+7. After you copy everything you need, delete the previous PVC.
+
+   ```shell
+   kubectl delete pvc <pvc-name> --namespace <vmo-namespace>
+   ```
