@@ -353,21 +353,10 @@ short, describe the overall layout, and point to the list instead of repeating i
 
 #### Source Evidence
 
-When you have access to the product's source code, cite where each component is defined. Archify checks every citation.
-Citations show reviewers where each claim comes from, and they show you what moved when you update the diagram for a new
-release.
-
-- Set `meta.repository` to the source repository's HTTPS URL, with `"provider": "github"` and `"link_mode": "web"`.
-  Archify rejects SSH URLs.
-
-- Set `meta.repository.revision` to the full commit SHA of the release that the docs version describes, not the tip of
-  the default branch.
-
-- Give each component up to three `sources`, each with a `path`, a `line`, an optional `end_line`, and a short `label`.
-
-Citations do not appear in the exported images. They appear as links in the interactive HTML.
-
-For a diagram that cites its sources, refer to the PaletteAI Inference Launchpad architecture diagram source,
+When you have the product's source code, you can cite where each component is defined, and Archify checks each citation
+when it validates the diagram. Use the repository's HTTPS URL, because Archify rejects SSH URLs. Set
+`meta.repository.revision` to the commit of the release that the docs describe, not the tip of the default branch. For
+the format, refer to the PaletteAI Inference Launchpad diagram source,
 [`architecture-overview.architecture.json`](../products/paletteai-inference-launchpad/explanation/archify/architecture-overview.architecture.json).
 
 #### Tooling
