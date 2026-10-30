@@ -11,6 +11,193 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
+
+On non-FIPS VM Launchpad appliances, an appliance upgrade can stall while it drains a node. The node shows the
+`SchedulingDisabled` status, and one `keycloak-db-<n>` pod stays in the `Pending` state.
+
+This occurs because both replicas of the Keycloak database store their data on the drained node. The Keycloak database
+runs as a CloudNativePG cluster of one primary and two replicas. Each instance stores its data on a volume, and a local
+volume ties that data to a single node. When the upgrade drains the node, one replica stops and cannot start on another
+node, because its volume is tied to the drained node. The PodDisruptionBudget of the database requires at least one
+healthy replica, and the primary does not count toward it, so the upgrade cannot stop the second replica either.
+
+Use the following steps to rebuild the `Pending` replica on another node. The steps keep its old volume and leave the
+primary running.
+
+:::warning
+
+This procedure covers only a CloudNativePG cluster with three instances, where two instances are healthy, one replica is
+`Pending`, and that replica uses a single data volume. If your cluster has a different number of instances, the replica
+uses more than one volume, or anything in the following steps does not match what you observe, stop and contact your
+Spectro Cloud support representative.
+
+Do not delete the database's PodDisruptionBudget to unblock the upgrade.
+
+:::
+
+### Prerequisites {#prerequisites-database-replicas}
+
+- You have `kubectl` access to the affected VM Launchpad cluster. From the cluster **Overview** tab, download the
+  [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+  to point to it.
+
+- Run every command in this scenario from the same terminal session. The steps set environment variables, such as `NS`,
+  `CLUSTER`, `POD`, `PVC`, and `PV`, that later steps reuse.
+
+### Confirm the Cause
+
+1. List the CloudNativePG clusters. On VM Launchpad appliances, the output lists the `keycloak-db` cluster in the
+   `keycloak` namespace.
+
+   ```bash
+   kubectl get clusters.postgresql.cnpg.io --all-namespaces
+   ```
+
+2. Set the namespace and the name of the Keycloak database cluster.
+
+   ```bash
+   NS=keycloak
+   CLUSTER=keycloak-db
+   ```
+
+3. List the database pods with their roles and nodes.
+
+   ```bash
+   kubectl --namespace "$NS" get pods --selector "cnpg.io/cluster=$CLUSTER" \
+     --output wide --label-columns cnpg.io/instanceRole
+   ```
+
+   Identify the primary and the two replicas. One replica is `Pending`. A `Pending` pod might not show a node. You
+   confirm its node through its volume in
+   [Find the Volume of the Pending Replica](#find-the-volume-of-the-pending-replica).
+
+4. Check the cluster status.
+
+   ```bash
+   kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" \
+     --output 'custom-columns=PRIMARY:.status.currentPrimary,TARGET:.status.targetPrimary,READY:.status.readyInstances,INSTANCES:.spec.instances'
+   ```
+
+   Continue only if `INSTANCES` is `3`, `READY` is `2`, and `PRIMARY` and `TARGET` show the same pod.
+
+5. List the nodes.
+
+   ```bash
+   kubectl get nodes --output wide
+   ```
+
+   The node that the upgrade is draining shows `SchedulingDisabled` in the `STATUS` column, such as
+   `Ready,SchedulingDisabled`.
+
+### Find the Volume of the Pending Replica
+
+1. Set the name of the `Pending` replica pod. Select the replica, not the primary.
+
+   ```bash
+   POD="<pending-replica-pod>"
+   ```
+
+   Replace `<pending-replica-pod>` with the name of the `Pending` replica, such as `keycloak-db-1`.
+
+2. List the volumes of the pod.
+
+   ```bash
+   kubectl --namespace "$NS" get pod "$POD" \
+     --output jsonpath='{range .spec.volumes[*]}{.name}{"\t"}{.persistentVolumeClaim.claimName}{"\n"}{end}'
+   ```
+
+   Stop if any volume other than `pgdata` shows a claim name in the second column.
+
+3. Find the data PVC and the PersistentVolume (PV) bound to it.
+
+   ```bash
+   PVC=$(kubectl --namespace "$NS" get pod "$POD" \
+     --output jsonpath='{.spec.volumes[?(@.name=="pgdata")].persistentVolumeClaim.claimName}')
+   PV=$(kubectl --namespace "$NS" get pvc "$PVC" --output jsonpath='{.spec.volumeName}')
+   printf 'Pod: %s\nPVC: %s\nPV: %s\n' "$POD" "$PVC" "$PV"
+   kubectl --namespace "$NS" get pvc "$PVC" --output wide
+   kubectl describe pv "$PV"
+   ```
+
+   Stop if `PVC` or `PV` is empty, or if the PVC is not `Bound`.
+
+4. In the PV output, check the `Node Affinity` field. Confirm that it names the same node as the other replica, that the
+   volume uses local storage, and that this node is the `SchedulingDisabled` node from
+   [Confirm the Cause](#confirm-the-cause).
+
+### Back Up the Resource Definitions
+
+Save the cluster, pod, PVC, and PV definitions to a new local directory.
+
+```bash
+umask 077
+BACKUP="./cnpg-rebuild-backup-$(date +%Y%m%d%H%M%S)"
+mkdir "$BACKUP"
+kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" --output json > "$BACKUP/cluster.json"
+kubectl --namespace "$NS" get pod "$POD" --output json > "$BACKUP/pod.json"
+kubectl --namespace "$NS" get pvc "$PVC" --output json > "$BACKUP/pvc.json"
+kubectl get pv "$PV" --output json > "$BACKUP/pv.json"
+printf 'Backups: %s\n' "$BACKUP"
+ls -l "$BACKUP"
+```
+
+Continue only when the directory lists `cluster.json`, `pod.json`, `pvc.json`, and `pv.json`.
+
+### Keep the Old Volume
+
+Set the reclaim policy of the PV to `Retain`, so that Kubernetes keeps its files when you delete its claim.
+
+```bash
+kubectl patch pv "$PV" --type json \
+  --patch '[{"op":"replace","path":"/spec/persistentVolumeReclaimPolicy","value":"Retain"}]'
+kubectl get pv "$PV" --output 'custom-columns=PV:.metadata.name,RECLAIM:.spec.persistentVolumeReclaimPolicy'
+```
+
+Continue only when `RECLAIM` shows `Retain`. Keep the old volume through the upgrade and the checks in
+[Verify Recovery](#verify-recovery). This procedure does not delete it.
+
+### Rebuild the Pending Replica
+
+1. Check the cluster and the pod again.
+
+   ```bash
+   kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" \
+     --output 'custom-columns=PRIMARY:.status.currentPrimary,TARGET:.status.targetPrimary,READY:.status.readyInstances,INSTANCES:.spec.instances'
+   kubectl --namespace "$NS" get pod "$POD" --output wide --label-columns cnpg.io/instanceRole
+   ```
+
+   Confirm that the pod is still the same `Pending` replica, that it is neither `PRIMARY` nor `TARGET`, and that two
+   database instances are still healthy. If anything changed, stop and contact your Spectro Cloud support
+   representative.
+
+2. Delete the claim of the replica, and then the replica pod.
+
+   ```bash
+   kubectl --namespace "$NS" delete pvc "$PVC" --wait=false
+   kubectl --namespace "$NS" delete pod "$POD" --wait=false
+   ```
+
+   CloudNativePG recreates the replica with a new volume on another eligible node. The Kubernetes scheduler chooses the
+   node. The commands do not move the old volume.
+
+### Verify Recovery
+
+1. Check the database pods and the cluster status.
+
+   ```bash
+   kubectl --namespace "$NS" get pods --selector "cnpg.io/cluster=$CLUSTER" \
+     --output wide --label-columns cnpg.io/instanceRole
+   kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" \
+     --output 'custom-columns=PRIMARY:.status.currentPrimary,READY:.status.readyInstances,INSTANCES:.spec.instances'
+   ```
+
+   Rerun the commands until three database pods are healthy, each on a separate node, and `READY` is `3`.
+
+2. Sign in to VM Launchpad to confirm that Keycloak authentication works.
+
+3. Let the upgrade continue.
+
 ## Scenario - Large VM Stays Pending with Insufficient Memory
 
 A VM with a large memory size, such as a 16 GiB VM on nodes with 32 GiB of memory, does not start, and `kubectl get vm`
