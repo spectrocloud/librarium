@@ -149,6 +149,16 @@ You can follow these steps to validate all cluster update approaches.
 
 4. Confirm that the cluster is now using an updated profile.
 
+5. If you updated an Edge cluster with [appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) hosts,
+   do the following:
+
+   1. Log in to [Local UI](../edge/local-ui/host-management/access-console.md) on an Edge host.
+
+   2. From the left **Main Menu**, select **Cluster**.
+
+   3. Verify that no **OS upgrade failed** banner appears. If the banner appears, refer to
+      [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image).
+
 ## Trigger Worker Node Upgrade
 
 If you have enabled the [**Skip worker node update (Optional)**](./node-pool.md#skip-worker-node-update) option for
