@@ -288,6 +288,18 @@ const config = {
             // Customize API MDX with mustache template
             hideSendButton: true,
           },
+          artifactStudio: {
+            specPath: "static/apis/artifact-studio-v2/artifact-studio-api.json",
+            outputDir: "docs/api-content/api-docs/artifact-studio-v2",
+            downloadUrl: "/apis/artifact-studio-v2/artifact-studio-api.json",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            template: "api.mustache",
+            // Customize API MDX with mustache template
+            hideSendButton: true,
+          },
         },
       },
     ],
