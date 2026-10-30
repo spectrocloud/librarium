@@ -207,6 +207,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   restores its default configuration if you remove the pack. Refer to
   [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9218 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9865 -->
+
+- Local UI now lists the Local UI server certificate, the per-node mutual TLS (mTLS) certificates, and the in-cluster
+  registry certificate alongside the Kubernetes certificates of a cluster, with the expiration date of each certificate
+  and whether Palette Edge renews it automatically. Local UI also warns you when certificates are close to their
+  expiration date or have expired. Refer to
+  [View Cluster Certificates](../clusters/edge/cluster-management/certificate-renewal.md#view-cluster-certificates) for
+  more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
