@@ -16,9 +16,9 @@ PaletteAI Inference Launchpad 1.2.1 is a patch release that fixes a security iss
 
 <!-- vale Vale.Spelling = NO -->
 
-- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority compromise. Refer to
   [Security Advisory 024](/security-bulletins/security-advisories/#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions.
+  for more information about the vulnerability.
 
 <!-- vale Vale.Spelling = YES -->
 
