@@ -188,7 +188,7 @@ image with high priority so LCP (Largest Contentful Paint) for the page is not a
 ### Diagrams
 
 Architecture diagrams follow their own conventions so that readers who move between pages recognize the same concept
-without re-learning what shapes and colors mean. Every new diagram in the docs site is authored as
+without re-learning what shapes and colors mean. New diagrams may be authored as
 [Archify](https://github.com/tt-a1i/archify) JSON source and exported to two WEBP images, one for the site's light theme
 and one for its dark theme. The JSON source is the source of truth. The WEBP images are the rendered output that ships
 with the docs.
