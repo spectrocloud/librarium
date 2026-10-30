@@ -160,9 +160,10 @@ component automatically displays the correct badge color for the active light or
 
 ## Simple Card Grid
 
-This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
-scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
-Docusaurus `Link` component under the covers, so card URLs can point to internal pages or external sites.
+This is a custom component that creates a grid of simple text cards, styled according to our color scheme. The grid has
+two columns by default, and the rows of cards are dynamically created according to the list of specified cards. The
+component renders each card with the Docusaurus `Link` component, so card URLs can point to internal pages or external
+sites.
 
 ```js
 <SimpleCardGrid
@@ -188,6 +189,15 @@ Docusaurus `Link` component under the covers, so card URLs can point to internal
   ]}
 />
 ```
+
+The component also accepts the following optional properties.
+
+| **Property** | **Set On** | **Description**                                                                                                                                                                         |
+| ------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `compact`    | Grid       | Renders the homepage card layout: an icon, an **Environments** line, and a text link in place of the footer button.                                                                     |
+| `buttonText` | Card       | The text in the card footer. Defaults to `Learn more`.                                                                                                                                  |
+| `icon`       | Card       | Compact cards only. A Font Awesome icon name, such as `brain`, displayed before the title. If no sidebar uses the icon, add its name to the `icons` array in `plugins/font-awesome.js`. |
+| `tags`       | Card       | Compact cards only. A list of environments, such as `["Data center", "Airgap"]`, displayed after **Environments:** in the card footer.                                                  |
 
 ## Partials Component
 

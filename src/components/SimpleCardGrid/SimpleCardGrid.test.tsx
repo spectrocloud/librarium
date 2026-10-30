@@ -8,7 +8,11 @@ jest.mock("./SimpleCardFooterArrow", () => {
   });
 });
 
-jest.mock("@docusaurus/Link");
+jest.mock("@docusaurus/Link", () => {
+  return jest.fn(({ to, children }) => {
+    return <a href={to}>{children}</a>;
+  });
+});
 
 describe("Display SimpleCardGrid", () => {
   interface testCard {
@@ -92,7 +96,7 @@ describe("Display SimpleCardGrid", () => {
   });
 
   it("compact cards render text links and tags", () => {
-    const compactCards = [{ ...testCards[0], tags: ["Edge", "Air-gapped"] }, testCards[1]];
+    const compactCards = [{ ...testCards[0], tags: ["Edge", "Airgap"] }, testCards[1]];
     render(<SimpleCardGrid compact cards={compactCards} />);
 
     expect(screen.queryAllByRole("button")).toHaveLength(0);
@@ -100,6 +104,6 @@ describe("Display SimpleCardGrid", () => {
       expect(screen.getByText(card.title)).toBeInTheDocument();
       expect(screen.getByText(card.buttonText, { selector: "span" })).toBeInTheDocument();
     });
-    expect(screen.getByText("Air-gapped")).toBeInTheDocument();
+    expect(screen.getByText("Airgap")).toBeInTheDocument();
   });
 });
