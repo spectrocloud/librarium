@@ -1,17 +1,18 @@
-// Export an Archify diagram the same way the viewer's Export menu does, headlessly, in the light theme.
+// Export an Archify diagram headlessly, in the light theme, without the title and frame the viewer's image export adds.
 // See the Diagrams section of docs/contributing/markdown-and-mdx.md.
 // Usage: node scripts/archify-export.mjs <diagram.html> <out.webp|out.png|out.svg>
-// A .webp output is the viewer's 4x PNG converted with cwebp at half its width, so cwebp must be on PATH.
+// The viewer's SVG export is the bare diagram. A raster output is that SVG drawn at twice its size on a white
+// background, and a .webp output is then converted with cwebp, so cwebp must be on PATH.
 import { execFileSync, spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { extname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const [htmlArg, outArg] = process.argv.slice(2);
-const formats = { ".webp": "png", ".png": "png", ".svg": "svg-light" };
-const format = formats[extname(outArg || "").toLowerCase()];
-if (!htmlArg || !format) {
+const SCALE = 2;
+const ext = extname(outArg || "").toLowerCase();
+if (!htmlArg || ![".webp", ".png", ".svg"].includes(ext)) {
   console.error("usage: archify-export.mjs <diagram.html> <out.webp|out.png|out.svg>");
   process.exit(2);
 }
@@ -77,7 +78,8 @@ try {
   await send("Page.enable", {}, sessionId);
   await send("Page.navigate", { url }, sessionId);
 
-  // Wait for the viewer runtime, then capture the blob the export's synthetic download click carries.
+  // Wait for the viewer runtime, capture the SVG blob the export's synthetic download click carries, and, for a
+  // raster output, draw that SVG onto a canvas.
   const expression = `(async () => {
     for (let i = 0; i < 200 && !(window.Archify && Archify.exportMenu); i++) await new Promise(r => setTimeout(r, 50));
     if (!(window.Archify && Archify.exportMenu)) throw new Error('Archify viewer runtime not found');
@@ -89,9 +91,23 @@ try {
         else orig.call(this);
       };
     });
-    await Archify.exportMenu.run(${JSON.stringify(format)});
+    await Archify.exportMenu.run('svg-light');
     const { href, name } = await captured;
-    const bytes = new Uint8Array(await (await fetch(href)).arrayBuffer());
+    let blob = await (await fetch(href)).blob();
+    if (${JSON.stringify(ext !== ".svg")}) {
+      const img = new Image();
+      img.src = URL.createObjectURL(blob);
+      await img.decode();
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.naturalWidth * ${SCALE});
+      canvas.height = Math.round(img.naturalHeight * ${SCALE});
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      blob = await new Promise((ok) => canvas.toBlob(ok, 'image/png'));
+    }
+    const bytes = new Uint8Array(await blob.arrayBuffer());
     let bin = '';
     for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
     return JSON.stringify({ name, theme: document.documentElement.getAttribute('data-theme'), b64: btoa(bin) });
@@ -101,12 +117,10 @@ try {
     throw new Error(res.result.exceptionDetails.exception?.description || "export failed");
   const { name, theme: rendered, b64 } = JSON.parse(res.result.result.value);
   const bytes = Buffer.from(b64, "base64");
-  if (extname(outArg).toLowerCase() === ".webp") {
+  if (ext === ".webp") {
     const png = join(profile, "export.png");
     writeFileSync(png, bytes);
-    // A PNG's width is the big-endian uint32 at byte 16 of its IHDR chunk.
-    const width = readFileSync(png).readUInt32BE(16);
-    execFileSync("cwebp", ["-quiet", "-q", "90", "-resize", String(Math.round(width / 2)), "0", png, "-o", outArg]);
+    execFileSync("cwebp", ["-quiet", "-q", "90", png, "-o", outArg]);
   } else {
     writeFileSync(outArg, bytes);
   }

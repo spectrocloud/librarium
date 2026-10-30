@@ -39,7 +39,7 @@
       "type": "external",
       "label": "Users",
       "sublabel": "browser or CLI",
-      "pos": [40, 260],
+      "pos": [40, 200],
       "size": [170, 64]
     },
     {
@@ -47,7 +47,7 @@
       "type": "frontend",
       "label": "Ingress",
       "sublabel": "one HTTPS address",
-      "pos": [290, 260],
+      "pos": [280, 200],
       "size": [170, 64]
     },
     {
@@ -55,7 +55,7 @@
       "type": "frontend",
       "label": "API service",
       "sublabel": "auth and routing",
-      "pos": [540, 260],
+      "pos": [520, 200],
       "size": [170, 64]
     },
     {
@@ -63,7 +63,7 @@
       "type": "backend",
       "label": "Workloads",
       "sublabel": "local compute",
-      "pos": [790, 260],
+      "pos": [760, 200],
       "size": [170, 64]
     },
     {
@@ -71,7 +71,7 @@
       "type": "messagebus",
       "label": "Dashboards",
       "sublabel": "metrics",
-      "pos": [1040, 260],
+      "pos": [760, 480],
       "size": [170, 64]
     },
     {
@@ -79,7 +79,7 @@
       "type": "cloud",
       "label": "Third-party service",
       "sublabel": "off by default",
-      "pos": [1300, 100],
+      "pos": [760, 40],
       "size": [170, 64]
     },
     {
@@ -87,7 +87,7 @@
       "type": "security",
       "label": "Identity provider",
       "sublabel": "sign-in",
-      "pos": [290, 420],
+      "pos": [280, 340],
       "size": [170, 64]
     },
     {
@@ -95,7 +95,7 @@
       "type": "database",
       "label": "Control plane",
       "sublabel": "applies settings",
-      "pos": [540, 420],
+      "pos": [520, 340],
       "size": [170, 64]
     }
   ],
@@ -103,7 +103,7 @@
     {
       "kind": "region",
       "label": "Product",
-      "pad": 22,
+      "pad": 40,
       "wraps": ["ingress", "api", "workloads", "dashboards", "idp", "control"]
     },
     {
@@ -137,13 +137,15 @@
       "label": "egress, if enabled",
       "variant": "dashed",
       "fromSide": "top",
-      "toSide": "top"
+      "toSide": "left"
     },
     {
       "from": "workloads",
       "to": "dashboards",
       "label": "metrics",
-      "variant": "dashed"
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "right"
     },
     {
       "from": "ingress",

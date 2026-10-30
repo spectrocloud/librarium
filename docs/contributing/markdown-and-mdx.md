@@ -266,6 +266,9 @@ Components outside the product, such as users and third-party services, stay out
 it for a hardware grouping, such as the components that run on GPUs. Use a `security-group` boundary for a network or
 trust boundary.
 
+A boundary's `pad` sets the space between the boundary and the components it wraps. Raise it, such as to `40`, when a
+connection has to run along the inside edge of the boundary, so that the connection stays inside it.
+
 #### Label Style
 
 Component labels are short noun phrases. Sub-labels below the component name carry one short detail, such as _admin web
@@ -277,11 +280,17 @@ the page prose instead.
 
 #### Layout
 
-Place components with `pos` on a grid so that rows and columns line up, and give every component the same `size`, such
-as `[170, 64]`. Columns about 250 pixels apart and rows about 160 pixels apart leave room for connection labels.
+Archify uses fixed font sizes, and the docs site scales a diagram down to the width of the page. The wider the canvas,
+the smaller its text appears on the page. Keep the canvas to about 1,000 pixels wide, which is four columns of
+components, and grow the diagram downward instead of sideways.
 
-Lay out the main request path from left to right in one row. Put the control plane and other supporting components in
-the rows below it, and external services to the right, outside the product boundary.
+Place components with `pos` on a grid so that rows and columns line up, and give every component the same `size`, such
+as `[170, 64]`. Columns 240 pixels apart, starting at `x` 40, and rows 140 pixels apart leave room for connection
+labels.
+
+Lay out the main request path from left to right in one row, with the people and clients outside the product in the
+first column. Put the control plane and other supporting components in the rows below it, and external services in a row
+above it, outside the product boundary.
 
 Keep the diagram to a single canvas. If a diagram feels too dense to fit, split it into two diagrams on separate anchors
 rather than shrinking the components. Two clear pictures always beat one crowded one.
@@ -349,8 +358,9 @@ intermediate PNG, or the review files that Archify writes.
      static/assets/docs/images/diagramming-conventions_sample.webp
    ```
 
-   The script exports the diagram in the light theme at four times its size, then converts it to webp at half that size
-   so that it stays crisp on high-density displays.
+   The script exports the diagram in the light theme, without the title and frame that the Archify viewer adds to its
+   own image exports, so that the diagram fills the page width. It renders the diagram at twice its size so that it
+   stays crisp on high-density displays.
 
 Commit both the updated JSON source and the regenerated webp in the same change so that the source and the image stay in
 sync.
