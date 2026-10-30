@@ -37,6 +37,11 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
   [Artifact Studio v2](../downloads/artifact-studio-v2.md) and the
   [Artifact Studio API](/api/introduction#artifact-studio-api) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4969 -->
+
+- Added Kubernetes 1.37 for Amazon EKS and Azure AKS clusters through the `kubernetes-eks` and `kubernetes-aks` packs,
+  in FIPS and non-FIPS versions.
+
 <!-- END COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
 
 ### Packs
@@ -53,10 +58,13 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.14.0 |
 | <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.1 |
 | <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.4 |
+| <VersionedLink text="kubernetes-aks" url="/integrations/packs/?pack=kubernetes-aks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
+| <VersionedLink text="kubernetes-eks" url="/integrations/packs/?pack=kubernetes-eks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
 | <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.2 |
 | <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.0.3 |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.39.0 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.14.1 |
+| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.2.3 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.1.3 |
 
 <!-- prettier-ignore-end -->
