@@ -125,3 +125,6 @@ For the full behavior, refer to
 2. From the left **Main Menu**, select **Cluster**.
 
 3. Verify that your cluster is in the **Running** status.
+
+4. Verify that no **OS upgrade failed** banner appears at the top of the page. If the banner appears, refer to
+   [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../../../../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image).
