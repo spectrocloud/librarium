@@ -1,0 +1,942 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/vmo-pack/environment-setup/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  219 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 219 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 219 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 219 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 219 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+                - list [ref=e138]:
+                  - listitem [ref=e139]:
+                    - link "Architecture" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Launchpad" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "VMO Pack" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Environment Setup" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/environment-setup/
+                      - listitem [ref=e152]:
+                        - link "Install VMO in Airgap Environments" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/install-vmo-in-airgap/
+                      - listitem [ref=e154]:
+                        - link "Create a VMO Profile" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - listitem [ref=e156]:
+                        - link "Deployment Modes" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/deployment-modes/
+                      - listitem [ref=e158]:
+                        - link "Authentication Options" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/authentication-options/
+                      - listitem [ref=e160]:
+                        - link "Configure External OIDC" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-external-oidc/
+                      - listitem [ref=e162]:
+                        - link "VMO Pack Parameters" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/vmo-pack-parameters/
+                      - listitem [ref=e164]:
+                        - link "Image Upload and VM Export" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-image-upload-and-vm-export/
+                      - listitem [ref=e166]:
+                        - link "Configure TLS and CA Certificates" [ref=e167] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-tls-ca-certificates/
+                      - listitem [ref=e168]:
+                        - link "Configure Private CA Certificate (4.9.x and Earlier)" [ref=e169] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-private-ca-certificate/
+                      - listitem [ref=e170]:
+                        - link "Configure Direct Access to VM Dashboard" [ref=e171] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-console-base-address/
+                      - listitem [ref=e172]:
+                        - link "Upgrade the VMO Pack" [ref=e173] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/upgrade-vmo-pack/
+                      - listitem [ref=e174]:
+                        - generic [ref=e175]:
+                          - link "Create and Manage VMs" [ref=e176] [cursor=pointer]:
+                            - /url: /vm-management/vmo-pack/create-manage-vm/
+                          - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e177] [cursor=pointer]
+                      - listitem [ref=e178]:
+                        - link "Troubleshooting" [ref=e179] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/troubleshooting/
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "RBAC" [ref=e182] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "VM Migration Assistant" [ref=e186] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Workspaces" [ref=e190] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e192]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Packs List" [ref=e197] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e199]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "User & Role Management" [ref=e204] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e206]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Registries and Packs" [ref=e211] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e213]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Security" [ref=e218] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e220]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Audit Logs" [ref=e225] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e227]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Self-Hosted Palette" [ref=e232] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e234]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Palette VerteX" [ref=e239] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e241]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Tenant Administration" [ref=e246] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e248]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Automation" [ref=e253] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e255]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Troubleshooting" [ref=e260] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e262]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - link "Glossary" [ref=e266] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e268]
+                  - text: Glossary
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Compliance & Legal" [ref=e272] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e274]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - button "Privacy Settings" [ref=e278] [cursor=pointer]:
+                  - img [ref=e279]
+                  - text: Privacy Settings
+      - main [ref=e281]:
+        - generic [ref=e283]:
+          - generic [ref=e285]:
+            - article [ref=e286]:
+              - navigation "Breadcrumbs" [ref=e287]:
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - link "Home page" [ref=e290] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e291]
+                  - listitem [ref=e293]:
+                    - link "Virtual Machine Orchestrator" [ref=e294] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e295]:
+                    - link "VMO Pack" [ref=e296] [cursor=pointer]:
+                      - /url: /vm-management/vmo-pack/
+                  - listitem [ref=e297]:
+                    - generic [ref=e298]: Environment Setup
+              - generic [ref=e299]:
+                - heading "Environment Setup" [level=1] [ref=e301]
+                - paragraph [ref=e302]: This page provides reference specifications for the Palette Virtual Machine Orchestrator (VMO) hardware and network resources.
+                - heading "Hardware ResourcesDirect link to Hardware Resources" [level=2] [ref=e303]:
+                  - text: Hardware Resources
+                  - link "Direct link to Hardware Resources" [ref=e304] [cursor=pointer]:
+                    - /url: "#hardware-resources"
+                    - text: "#"
+                - paragraph [ref=e305]: The following sections list the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
+                - heading "Worker NodesDirect link to Worker Nodes" [level=3] [ref=e306]:
+                  - text: Worker Nodes
+                  - link "Direct link to Worker Nodes" [ref=e307] [cursor=pointer]:
+                    - /url: "#worker-nodes"
+                    - text: "#"
+                - paragraph [ref=e308]: Refer to the following table for the minimum and recommended hardware specifications for the worker nodes of the cluster.
+                - table [ref=e309]:
+                  - rowgroup [ref=e310]:
+                    - row "Component Minimum Recommended Comments" [ref=e311]:
+                      - columnheader "Component" [ref=e312]
+                      - columnheader "Minimum" [ref=e313]
+                      - columnheader "Recommended" [ref=e314]
+                      - columnheader "Comments" [ref=e315]
+                  - rowgroup [ref=e316]:
+                    - row "Form Factor The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC). 2U Rackmount Chassis" [ref=e317]:
+                      - cell "Form Factor" [ref=e318]:
+                        - strong [ref=e319]: Form Factor
+                      - cell "The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC)." [ref=e320]
+                      - cell "2U Rackmount Chassis" [ref=e321]
+                      - cell [ref=e322]
+                    - row "CPU Intel or AMD x64 CPU with 8 cores Intel or AMD x64 CPU with 8 cores" [ref=e323]:
+                      - cell "CPU" [ref=e324]:
+                        - strong [ref=e325]: CPU
+                      - cell "Intel or AMD x64 CPU with 8 cores" [ref=e326]
+                      - cell "Intel or AMD x64 CPU with 8 cores" [ref=e327]
+                      - cell [ref=e328]
+                    - row "RAM 24 GB 256 GB or more Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM." [ref=e329]:
+                      - cell "RAM" [ref=e330]:
+                        - strong [ref=e331]: RAM
+                      - cell "24 GB" [ref=e332]
+                      - cell "256 GB or more" [ref=e333]
+                      - cell "Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM." [ref=e334]
+                    - row "Network Adapters 2 x 10 Gbps (data + management) 2 x 10 Gbps (data) 2 x 10 Gbps (management) Pod overlay operates on the management network." [ref=e335]:
+                      - cell "Network Adapters" [ref=e336]:
+                        - strong [ref=e337]: Network Adapters
+                      - cell "2 x 10 Gbps (data + management)" [ref=e338]:
+                        - text: 2 x 10 Gbps
+                        - text: (data + management)
+                      - cell "2 x 10 Gbps (data) 2 x 10 Gbps (management)" [ref=e339]:
+                        - text: 2 x 10 Gbps (data)
+                        - text: 2 x 10 Gbps (management)
+                      - cell "Pod overlay operates on the management network." [ref=e340]
+                    - row "Storage Adapters 2 x 16 Gbps FC 2 x 16 Gbps FC Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer." [ref=e341]:
+                      - cell "Storage Adapters" [ref=e342]:
+                        - strong [ref=e343]: Storage Adapters
+                      - cell "2 x 16 Gbps FC" [ref=e344]
+                      - cell "2 x 16 Gbps FC" [ref=e345]
+                      - cell "Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer." [ref=e346]
+                    - row "Disks Local disk for the OS boot (SAN boot is supported) Local disk for the OS boot Boot from SAN requires special consideration due to the multi-path configuration." [ref=e347]:
+                      - cell "Disks" [ref=e348]:
+                        - strong [ref=e349]: Disks
+                      - cell "Local disk for the OS boot (SAN boot is supported)" [ref=e350]
+                      - cell "Local disk for the OS boot" [ref=e351]
+                      - cell "Boot from SAN requires special consideration due to the multi-path configuration." [ref=e352]
+                - heading "Control Plane NodesDirect link to Control Plane Nodes" [level=3] [ref=e353]:
+                  - text: Control Plane Nodes
+                  - link "Direct link to Control Plane Nodes" [ref=e354] [cursor=pointer]:
+                    - /url: "#control-plane-nodes"
+                    - text: "#"
+                - paragraph [ref=e355]: Typically, the cluster control plane nodes do not operate any VMO workloads. As a result, they can have lighter hardware specifications in terms of CPU and RAM. For example, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification control plane node. The rest of the hardware requirements for control plane nodes remain the same as worker nodes.
+                - table [ref=e356]:
+                  - rowgroup [ref=e357]:
+                    - row "Component Minimum Recommended Comments" [ref=e358]:
+                      - columnheader "Component" [ref=e359]
+                      - columnheader "Minimum" [ref=e360]
+                      - columnheader "Recommended" [ref=e361]
+                      - columnheader "Comments" [ref=e362]
+                  - rowgroup [ref=e363]:
+                    - row "Form Factor The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC). 2U Rackmount Chassis" [ref=e364]:
+                      - cell "Form Factor" [ref=e365]:
+                        - strong [ref=e366]: Form Factor
+                      - cell "The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC)." [ref=e367]
+                      - cell "2U Rackmount Chassis" [ref=e368]
+                      - cell [ref=e369]
+                    - row "Network Adapters 2 x 10 Gbps (data + management) 2 x 10 Gbps (data) 2 x 10 Gbps (management) Pod overlay operates on the management network." [ref=e370]:
+                      - cell "Network Adapters" [ref=e371]:
+                        - strong [ref=e372]: Network Adapters
+                      - cell "2 x 10 Gbps (data + management)" [ref=e373]:
+                        - text: 2 x 10 Gbps
+                        - text: (data + management)
+                      - cell "2 x 10 Gbps (data) 2 x 10 Gbps (management)" [ref=e374]:
+                        - text: 2 x 10 Gbps (data)
+                        - text: 2 x 10 Gbps (management)
+                      - cell "Pod overlay operates on the management network." [ref=e375]
+                    - row "Storage Adapters 2 x 16 Gbps FC 2 x 16 Gbps FC Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer." [ref=e376]:
+                      - cell "Storage Adapters" [ref=e377]:
+                        - strong [ref=e378]: Storage Adapters
+                      - cell "2 x 16 Gbps FC" [ref=e379]
+                      - cell "2 x 16 Gbps FC" [ref=e380]
+                      - cell "Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer." [ref=e381]
+                    - row "Disks Local disk for the OS boot (SAN boot is supported) Local disk for the OS boot Boot from SAN requires special consideration due to the multi-path configuration." [ref=e382]:
+                      - cell "Disks" [ref=e383]:
+                        - strong [ref=e384]: Disks
+                      - cell "Local disk for the OS boot (SAN boot is supported)" [ref=e385]
+                      - cell "Local disk for the OS boot" [ref=e386]
+                      - cell "Boot from SAN requires special consideration due to the multi-path configuration." [ref=e387]
+                - paragraph [ref=e388]: The CPU and RAM requirements for control plane nodes increase with the number of worker nodes and namespaces in the cluster. Refer to the following table for guidance on control plane node sizing.
+                - generic [ref=e389]:
+                  - generic [ref=e390]:
+                    - img [ref=e392]
+                    - text: warning
+                  - paragraph [ref=e395]: These recommendations assume that each cluster has at least three control plane nodes.
+                - table [ref=e396]:
+                  - rowgroup [ref=e397]:
+                    - row "Worker Nodes Namespaces CPU Cores Memory (GB)" [ref=e398]:
+                      - columnheader "Worker Nodes" [ref=e399]
+                      - columnheader "Namespaces" [ref=e400]
+                      - columnheader "CPU Cores" [ref=e401]
+                      - columnheader "Memory (GB)" [ref=e402]
+                  - rowgroup [ref=e403]:
+                    - row "10 100 4 8" [ref=e404]:
+                      - cell "10" [ref=e405]
+                      - cell "100" [ref=e406]
+                      - cell "4" [ref=e407]
+                      - cell "8" [ref=e408]
+                    - row "25 500 4 16" [ref=e409]:
+                      - cell "25" [ref=e410]
+                      - cell "500" [ref=e411]
+                      - cell "4" [ref=e412]
+                      - cell "16" [ref=e413]
+                    - row "100 1000 8 32" [ref=e414]:
+                      - cell "100" [ref=e415]
+                      - cell "1000" [ref=e416]
+                      - cell "8" [ref=e417]
+                      - cell "32" [ref=e418]
+                    - row "250 2000 16 64" [ref=e419]:
+                      - cell "250" [ref=e420]
+                      - cell "2000" [ref=e421]
+                      - cell "16" [ref=e422]
+                      - cell "64" [ref=e423]
+                    - row "500 4000 32 128" [ref=e424]:
+                      - cell "500" [ref=e425]
+                      - cell "4000" [ref=e426]
+                      - cell "32" [ref=e427]
+                      - cell "128" [ref=e428]
+                - heading "Network ConfigurationDirect link to Network Configuration" [level=2] [ref=e429]:
+                  - text: Network Configuration
+                  - link "Direct link to Network Configuration" [ref=e430] [cursor=pointer]:
+                    - /url: "#network-configuration"
+                    - text: "#"
+                - paragraph [ref=e431]: Compared to the standard Kubernetes clusters, networking for Palette VMO can require additional configuration, especially if your VMs need to be accessible on the existing VLANs. As this configuration requires bypassing the typical Kubernetes pod networking stack, we use Multus for networking in Palette VMO.
+                - paragraph [ref=e432]: This also implies additional requirements for the host network configuration of worker nodes in order to have valid network targets for the VMs.
+                - paragraph [ref=e433]: Refer to the following table for an example of network configuration.
+                - table [ref=e434]:
+                  - rowgroup [ref=e435]:
+                    - row "Network VLAN ID Network CIDR Gateway" [ref=e436]:
+                      - columnheader "Network" [ref=e437]
+                      - columnheader "VLAN ID" [ref=e438]
+                      - columnheader "Network CIDR" [ref=e439]
+                      - columnheader "Gateway" [ref=e440]
+                  - rowgroup [ref=e441]:
+                    - row "Bare Metal Deployment 0 (native) 192.168.0.0/22" [ref=e442]:
+                      - cell "Bare Metal Deployment" [ref=e443]:
+                        - strong [ref=e444]: Bare Metal Deployment
+                      - cell "0 (native)" [ref=e445]
+                      - cell "192.168.0.0/22" [ref=e446]
+                      - cell [ref=e447]
+                    - row "Kubernetes Hosts (management) 10 172.16.0.0/22" [ref=e448]:
+                      - cell "Kubernetes Hosts (management)" [ref=e449]:
+                        - strong [ref=e450]: Kubernetes Hosts (management)
+                      - cell "10" [ref=e451]
+                      - cell "172.16.0.0/22" [ref=e452]
+                      - cell [ref=e453]
+                    - row "End-user Access (data) 20 10.20.30.0/16 10.20.30.1" [ref=e454]:
+                      - cell "End-user Access (data)" [ref=e455]:
+                        - strong [ref=e456]: End-user Access (data)
+                      - cell "20" [ref=e457]
+                      - cell "10.20.30.0/16" [ref=e458]
+                      - cell "10.20.30.1" [ref=e459]
+                    - row "Pod Overlay N/A (virtual) 100.64.0.0/18" [ref=e460]:
+                      - cell "Pod Overlay" [ref=e461]:
+                        - strong [ref=e462]: Pod Overlay
+                      - cell "N/A (virtual)" [ref=e463]
+                      - cell "100.64.0.0/18" [ref=e464]
+                      - cell [ref=e465]
+                    - row "Cluster Services N/A (virtual) 100.64.64.0/18" [ref=e466]:
+                      - cell "Cluster Services" [ref=e467]:
+                        - strong [ref=e468]: Cluster Services
+                      - cell "N/A (virtual)" [ref=e469]
+                      - cell "100.64.64.0/18" [ref=e470]
+                      - cell [ref=e471]
+                    - row "Existing VM VLANs 21 – 100" [ref=e472]:
+                      - cell "Existing VM VLANs" [ref=e473]:
+                        - strong [ref=e474]: Existing VM VLANs
+                      - cell "21 – 100" [ref=e475]
+                      - cell [ref=e476]
+                      - cell [ref=e477]
+                - paragraph [ref=e478]:
+                  - text: MetalLB can use the
+                  - strong [ref=e479]: End-user Access
+                  - text: "network to publish non-virtualized apps in the following ways:"
+                - list [ref=e480]:
+                  - listitem [ref=e481]:
+                    - paragraph [ref=e482]:
+                      - text: As a network on which to advertise IP addresses, as
+                      - link "Layer 2 advertisements" [ref=e483] [cursor=pointer]:
+                        - /url: https://metallb.universe.tf/concepts/layer2/
+                      - text: .
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]:
+                      - text: As a BGP network where it can
+                      - link "advertise BGP addresses" [ref=e486] [cursor=pointer]:
+                        - /url: https://access.redhat.com/webassets/avalon/d/OpenShift_Container_Platform-4.10-Networking-en-US/images/afe4598d665b24b7a193bfd5b4440d48/209_OpenShift_BGP_0122.png
+                      - text: to BGP routers.
+                - paragraph [ref=e487]: You can select either approach depending on your network equipment.
+                - generic [ref=e488]:
+                  - generic [ref=e489]:
+                    - img [ref=e491]
+                    - text: tip
+                  - paragraph [ref=e494]: We recommend using a dedicated VLAN for end-user access and not sharing it with VLANs used by VMs.
+                - paragraph [ref=e495]: Refer to the following table for an example of a host network configuration, which uses a total of 4 NICs in 2 bonds and fits with our recommended VMO network configuration.
+                - table [ref=e496]:
+                  - rowgroup [ref=e497]:
+                    - row "Interface Type Contents VLAN CIDR Gateway" [ref=e498]:
+                      - columnheader "Interface" [ref=e499]
+                      - columnheader "Type" [ref=e500]
+                      - columnheader "Contents" [ref=e501]
+                      - columnheader "VLAN" [ref=e502]
+                      - columnheader "CIDR" [ref=e503]
+                      - columnheader "Gateway" [ref=e504]
+                  - rowgroup [ref=e505]:
+                    - row "bond_management Bond enp1s0 enp2s0 Native 192.168.0.0/22" [ref=e506]:
+                      - cell "bond_management" [ref=e507]:
+                        - code [ref=e508]: bond_management
+                      - cell "Bond" [ref=e509]
+                      - cell "enp1s0 enp2s0" [ref=e510]:
+                        - text: enp1s0
+                        - text: enp2s0
+                      - cell "Native" [ref=e511]
+                      - cell "192.168.0.0/22" [ref=e512]
+                      - cell [ref=e513]
+                    - row "bond_management.10 VLAN bond_management 10 172.16.0.0/22" [ref=e514]:
+                      - cell "bond_management.10" [ref=e515]:
+                        - code [ref=e516]: bond_management.10
+                      - cell "VLAN" [ref=e517]
+                      - cell "bond_management" [ref=e518]:
+                        - code [ref=e519]: bond_management
+                      - cell "10" [ref=e520]
+                      - cell "172.16.0.0/22" [ref=e521]
+                      - cell [ref=e522]
+                    - row "bond_data Bond enp1s1 enp2s1 Native" [ref=e523]:
+                      - cell "bond_data" [ref=e524]:
+                        - code [ref=e525]: bond_data
+                      - cell "Bond" [ref=e526]
+                      - cell "enp1s1 enp2s1" [ref=e527]:
+                        - text: enp1s1
+                        - text: enp2s1
+                      - cell "Native" [ref=e528]
+                      - cell [ref=e529]
+                      - cell [ref=e530]
+                    - row "bond_data.20 VLAN bond_data 20 10.20.30.0/16 10.20.30.1" [ref=e531]:
+                      - cell "bond_data.20" [ref=e532]:
+                        - code [ref=e533]: bond_data.20
+                      - cell "VLAN" [ref=e534]
+                      - cell "bond_data" [ref=e535]:
+                        - code [ref=e536]: bond_data
+                      - cell "20" [ref=e537]
+                      - cell "10.20.30.0/16" [ref=e538]
+                      - cell "10.20.30.1" [ref=e539]
+                    - row "br0 Bridge bond_data Native" [ref=e540]:
+                      - cell "br0" [ref=e541]:
+                        - strong [ref=e542]: br0
+                      - cell "Bridge" [ref=e543]
+                      - cell "bond_data" [ref=e544]:
+                        - code [ref=e545]: bond_data
+                      - cell "Native" [ref=e546]
+                      - cell [ref=e547]
+                      - cell [ref=e548]
+                - paragraph [ref=e549]:
+                  - text: The
+                  - strong [ref=e550]: br0
+                  - text: bridge interface is used as a primary interface by Multus to automatically create VLAN interfaces for VMs. In this scenario, the primary interface must be a bridge, as no other type will work.
+                - paragraph [ref=e551]: This setup also assumes that the physical servers (the worker nodes) have four physical network interfaces that are connected to the switch, as described in the following table.
+                - table [ref=e552]:
+                  - rowgroup [ref=e553]:
+                    - row "Physical Port Name in OS Purpose Switchport Configuration" [ref=e554]:
+                      - columnheader "Physical Port" [ref=e555]
+                      - columnheader "Name in OS" [ref=e556]
+                      - columnheader "Purpose" [ref=e557]
+                      - columnheader "Switchport Configuration" [ref=e558]
+                  - rowgroup [ref=e559]:
+                    - row "NIC 1, Port 1 enp1s0 PXE boot for OS deployment Management network Trunk (allowing 0, 10)" [ref=e560]:
+                      - cell "NIC 1, Port 1" [ref=e561]:
+                        - strong [ref=e562]: NIC 1, Port 1
+                      - cell "enp1s0" [ref=e563]
+                      - cell "PXE boot for OS deployment Management network" [ref=e564]:
+                        - text: PXE boot for OS deployment
+                        - text: Management network
+                      - cell "Trunk (allowing 0, 10)" [ref=e565]
+                    - row "NIC 1, Port 2 enp2s0 Management network Trunk (allowing 0, 10)" [ref=e566]:
+                      - cell "NIC 1, Port 2" [ref=e567]:
+                        - strong [ref=e568]: NIC 1, Port 2
+                      - cell "enp2s0" [ref=e569]
+                      - cell "Management network" [ref=e570]
+                      - cell "Trunk (allowing 0, 10)" [ref=e571]
+                    - row "NIC 2, Port 1 enp1s1 Data network Trunk (allowing 20-100)" [ref=e572]:
+                      - cell "NIC 2, Port 1" [ref=e573]:
+                        - strong [ref=e574]: NIC 2, Port 1
+                      - cell "enp1s1" [ref=e575]
+                      - cell "Data network" [ref=e576]
+                      - cell "Trunk (allowing 20-100)" [ref=e577]
+                    - row "NIC 2, Port 2 enp2s1 Data network Trunk (allowing 20-100)" [ref=e578]:
+                      - cell "NIC 2, Port 2" [ref=e579]:
+                        - strong [ref=e580]: NIC 2, Port 2
+                      - cell "enp2s1" [ref=e581]
+                      - cell "Data network" [ref=e582]
+                      - cell "Trunk (allowing 20-100)" [ref=e583]
+                - paragraph [ref=e584]: For PXE boot, you can use both an untagged or native VLAN 0 network and a tagged network, such as VLAN 5. However, to ensure a successful PXE boot on a tagged network, we recommend setting the native VLAN network to the tagged VLAN ID on the switch port (in our example, this would be 5), so that the PXE boot can work with untagged traffic.
+                - paragraph [ref=e585]:
+                  - text: Alternatively, if the server supports UEFI PXE boot and allows you to set the VLAN ID for PXE boot directly, you can also use this option. In this case, you need to adjust the configuration for
+                  - code [ref=e586]: bond_management
+                  - text: to operate the
+                  - code [ref=e587]: 192.168.0.0/22
+                  - text: CIDR on a
+                  - code [ref=e588]: bond_management.5
+                  - text: subinterface. However, because it is difficult to achieve PXE boot on a tagged VLAN, we recommend using a native or untagged VLAN for PXE.
+                - paragraph [ref=e589]:
+                  - text: The
+                  - code [ref=e590]: bond_data.20
+                  - text: subinterface provides outbound connectivity, as it has the default gateway. This is the primary way to publish services from container workloads to the end users. If there are any specific data center networks that you want to reach over the
+                  - code [ref=e591]: bond_management.10
+                  - text: subinterface instead, you can configure them through static routes on the
+                  - code [ref=e592]: 172.16.0.0/22
+                  - text: subnet in Canonical MAAS. Those routes will be automatically applied by MAAS upon server installation.
+                - paragraph [ref=e593]: "For publishing workloads from VMs, you have the following ways:"
+                - list [ref=e594]:
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]:
+                      - text: Operating the VM on the pod network like containers and publishing the individual VM ports as Kubernetes services on the
+                      - strong [ref=e597]: bond_data.20
+                      - text: network. In this case, you can use MetalLB to assign IP addresses.
+                  - listitem [ref=e598]:
+                    - paragraph [ref=e599]:
+                      - text: Placing the entire VM on a VLAN and using Multus to assign the VM to a VLAN on top of the
+                      - strong [ref=e600]: br0
+                      - text: interface. In this case, it's the responsibility of the VM (for static IPs) or the network (for DHCP) to assign IP addresses.
+                - heading "Limited AlternativeDirect link to Limited Alternative" [level=3] [ref=e601]:
+                  - text: Limited Alternative
+                  - link "Direct link to Limited Alternative" [ref=e602] [cursor=pointer]:
+                    - /url: "#limited-alternative"
+                    - text: "#"
+                - paragraph [ref=e603]: If your setup is limited to two physical network interfaces, you will need to make some adjustments. Assuming the same networks and VLANs are used, consider the following network configuration example (configured through Canonical MAAS).
+                - table [ref=e604]:
+                  - rowgroup [ref=e605]:
+                    - row "Interface Type Contents VLAN CIDR Gateway" [ref=e606]:
+                      - columnheader "Interface" [ref=e607]
+                      - columnheader "Type" [ref=e608]
+                      - columnheader "Contents" [ref=e609]
+                      - columnheader "VLAN" [ref=e610]
+                      - columnheader "CIDR" [ref=e611]
+                      - columnheader "Gateway" [ref=e612]
+                  - rowgroup [ref=e613]:
+                    - row "bond0 Bond enp1s0 enp2s0 Native" [ref=e614]:
+                      - cell "bond0" [ref=e615]:
+                        - strong [ref=e616]: bond0
+                      - cell "Bond" [ref=e617]
+                      - cell "enp1s0 enp2s0" [ref=e618]:
+                        - text: enp1s0
+                        - text: enp2s0
+                      - cell "Native" [ref=e619]
+                      - cell [ref=e620]
+                      - cell [ref=e621]
+                    - row "bond0.10 VLAN bond0 10 172.16.0.0/22" [ref=e622]:
+                      - cell "bond0.10" [ref=e623]:
+                        - strong [ref=e624]: bond0.10
+                      - cell "VLAN" [ref=e625]
+                      - cell "bond0" [ref=e626]
+                      - cell "10" [ref=e627]
+                      - cell "172.16.0.0/22" [ref=e628]
+                      - cell [ref=e629]
+                    - row "bond0.20 VLAN bond0 20 10.20.30.0/16 10.20.30.1" [ref=e630]:
+                      - cell "bond0.20" [ref=e631]:
+                        - strong [ref=e632]: bond0.20
+                      - cell "VLAN" [ref=e633]
+                      - cell "bond0" [ref=e634]
+                      - cell "20" [ref=e635]
+                      - cell "10.20.30.0/16" [ref=e636]
+                      - cell "10.20.30.1" [ref=e637]
+                    - row "br0 Bridge bond0 Native 192.168.0.0/22" [ref=e638]:
+                      - cell "br0" [ref=e639]:
+                        - strong [ref=e640]: br0
+                      - cell "Bridge" [ref=e641]
+                      - cell "bond0" [ref=e642]
+                      - cell "Native" [ref=e643]
+                      - cell "192.168.0.0/22" [ref=e644]
+                      - cell [ref=e645]
+                - paragraph [ref=e646]: For this setup, it is assumed that the physical servers (worker nodes) are connected to the switch, as described in the following table.
+                - table [ref=e647]:
+                  - rowgroup [ref=e648]:
+                    - row "Physical Port Name in OS Purpose Switchport Configuration" [ref=e649]:
+                      - columnheader "Physical Port" [ref=e650]
+                      - columnheader "Name in OS" [ref=e651]
+                      - columnheader "Purpose" [ref=e652]
+                      - columnheader "Switchport Configuration" [ref=e653]
+                  - rowgroup [ref=e654]:
+                    - row "NIC 1, Port 1 enp1s0 PXE boot for OS deployment Management network Data network Trunk (allowing 0, 10, 20-100)" [ref=e655]:
+                      - cell "NIC 1, Port 1" [ref=e656]:
+                        - strong [ref=e657]: NIC 1, Port 1
+                      - cell "enp1s0" [ref=e658]
+                      - cell "PXE boot for OS deployment Management network Data network" [ref=e659]:
+                        - text: PXE boot for OS deployment
+                        - text: Management network
+                        - text: Data network
+                      - cell "Trunk (allowing 0, 10, 20-100)" [ref=e660]
+                    - row "NIC 1, Port 2 enp2s0 Management network Data network Trunk (allowing 0, 10, 20-100)" [ref=e661]:
+                      - cell "NIC 1, Port 2" [ref=e662]:
+                        - strong [ref=e663]: NIC 1, Port 2
+                      - cell "enp2s0" [ref=e664]
+                      - cell "Management network Data network" [ref=e665]:
+                        - text: Management network
+                        - text: Data network
+                      - cell "Trunk (allowing 0, 10, 20-100)" [ref=e666]
+                - paragraph [ref=e667]:
+                  - text: In this configuration, VLANs 10 (management) and 20 (data) are not available for use by VMs on the
+                  - strong [ref=e668]: br0
+                  - text: interface because the VLAN subinterfaces on the bridge primary interface and VLAN subinterfaces on the bridge are mutually exclusive.
+                - paragraph [ref=e669]: If you need to operate VMs on the same VLAN as either the management (10) or the data (20) VLAN, you can facilitate this by changing the network configuration as follows.
+                - table [ref=e670]:
+                  - rowgroup [ref=e671]:
+                    - row "Interface Type Contents VLAN CIDR Gateway" [ref=e672]:
+                      - columnheader "Interface" [ref=e673]
+                      - columnheader "Type" [ref=e674]
+                      - columnheader "Contents" [ref=e675]
+                      - columnheader "VLAN" [ref=e676]
+                      - columnheader "CIDR" [ref=e677]
+                      - columnheader "Gateway" [ref=e678]
+                  - rowgroup [ref=e679]:
+                    - row "bond0 Bond enp1s0 enp2s0 Native" [ref=e680]:
+                      - cell "bond0" [ref=e681]:
+                        - strong [ref=e682]: bond0
+                      - cell "Bond" [ref=e683]
+                      - cell "enp1s0 enp2s0" [ref=e684]:
+                        - text: enp1s0
+                        - text: enp2s0
+                      - cell "Native" [ref=e685]
+                      - cell [ref=e686]
+                      - cell [ref=e687]
+                    - row "bond0.10 VLAN bond0 10 172.16.0.0/22" [ref=e688]:
+                      - cell "bond0.10" [ref=e689]:
+                        - strong [ref=e690]: bond0.10
+                      - cell "VLAN" [ref=e691]
+                      - cell "bond0" [ref=e692]
+                      - cell "10" [ref=e693]
+                      - cell "172.16.0.0/22" [ref=e694]
+                      - cell [ref=e695]
+                    - row "br0 Bridge bond0 Native 192.168.0.0/22" [ref=e696]:
+                      - cell "br0" [ref=e697]:
+                        - strong [ref=e698]: br0
+                      - cell "Bridge" [ref=e699]
+                      - cell "bond0" [ref=e700]
+                      - cell "Native" [ref=e701]
+                      - cell "192.168.0.0/22" [ref=e702]
+                      - cell [ref=e703]
+                    - row "br0.20 VLAN br0 20 10.20.30.0/16 10.20.30.1" [ref=e704]:
+                      - cell "br0.20" [ref=e705]:
+                        - strong [ref=e706]: br0.20
+                      - cell "VLAN" [ref=e707]
+                      - cell "br0" [ref=e708]
+                      - cell "20" [ref=e709]
+                      - cell "10.20.30.0/16" [ref=e710]
+                      - cell "10.20.30.1" [ref=e711]
+                - paragraph [ref=e712]:
+                  - text: In this example, VLAN 20 is defined as a subinterface of
+                  - strong [ref=e713]: br0
+                  - text: instead of on
+                  - strong [ref=e714]: bond0
+                  - text: . This configuration allows virtual machines to also operate on VLAN 20 without conflicts.
+              - generic [ref=e715]:
+                - generic [ref=e717]:
+                  - text: "Tags:"
+                  - list [ref=e718]:
+                    - listitem [ref=e719]:
+                      - link "vmo" [ref=e720] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e721]:
+                      - link "environment-setup" [ref=e722] [cursor=pointer]:
+                        - /url: /tags/environment-setup/
+                - link "Edit this page" [ref=e725] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vmo-pack/environment-setup.md
+                  - img [ref=e726]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e730]:
+              - link "Previous « VMO Pack" [ref=e731] [cursor=pointer]:
+                - /url: /vm-management/vmo-pack/
+                - generic [ref=e732]: Previous
+                - generic [ref=e733]: « VMO Pack
+              - link "Next Install VMO in Airgap Environments »" [ref=e734] [cursor=pointer]:
+                - /url: /vm-management/vmo-pack/install-vmo-in-airgap/
+                - generic [ref=e735]: Next
+                - generic [ref=e736]: Install VMO in Airgap Environments »
+          - list [ref=e739]:
+            - listitem [ref=e740]:
+              - link "Hardware Resources" [ref=e741] [cursor=pointer]:
+                - /url: "#hardware-resources"
+              - list [ref=e742]:
+                - listitem [ref=e743]:
+                  - link "Worker Nodes" [ref=e744] [cursor=pointer]:
+                    - /url: "#worker-nodes"
+                - listitem [ref=e745]:
+                  - link "Control Plane Nodes" [ref=e746] [cursor=pointer]:
+                    - /url: "#control-plane-nodes"
+            - listitem [ref=e747]:
+              - link "Network Configuration" [ref=e748] [cursor=pointer]:
+                - /url: "#network-configuration"
+              - list [ref=e749]:
+                - listitem [ref=e750]:
+                  - link "Limited Alternative" [ref=e751] [cursor=pointer]:
+                    - /url: "#limited-alternative"
+  - button "Project Logo Ask AI" [ref=e752] [cursor=pointer]:
+    - generic [ref=e755]:
+      - img "Project Logo" [ref=e756]
+      - paragraph [ref=e757]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

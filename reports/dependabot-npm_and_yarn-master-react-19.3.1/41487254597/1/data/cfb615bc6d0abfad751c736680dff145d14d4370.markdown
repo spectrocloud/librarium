@@ -1,0 +1,719 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /clusters/cluster-management/remove-clusters/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  152 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                  - listitem [ref=e125]:
+                    - generic [ref=e126]:
+                      - link "Edge" [ref=e127] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e129]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Palette Virtual Clusters" [ref=e134] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e136]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e138] [cursor=pointer]
+                  - listitem [ref=e139]:
+                    - generic [ref=e140]:
+                      - link "Imported Clusters" [ref=e141] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e143]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e145] [cursor=pointer]
+                  - listitem [ref=e146]:
+                    - generic [ref=e147]:
+                      - link "Manage Clusters" [expanded] [ref=e148] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e150]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e152] [cursor=pointer]
+                    - list [ref=e153]:
+                      - listitem [ref=e154]:
+                        - generic [ref=e155]:
+                          - link "SSH" [ref=e156] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e157] [cursor=pointer]
+                      - listitem [ref=e158]:
+                        - link "Update a Cluster" [ref=e159] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e160]:
+                        - link "Security-Hardened Images" [ref=e161] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/hardened-images/
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Cluster Monitoring" [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e165] [cursor=pointer]
+                      - listitem [ref=e166]:
+                        - link "Cluster Health Alerts" [ref=e167] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e168]:
+                        - generic [ref=e169]:
+                          - link "Backup and Restore" [ref=e170] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e171] [cursor=pointer]
+                      - listitem [ref=e172]:
+                        - link "Cert Manager Add-On" [ref=e173] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cert-manager-addon/
+                      - listitem [ref=e174]:
+                        - link "Renew Cluster PKI Certificates" [ref=e175] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e176]:
+                        - link "Compliance Scan" [ref=e177] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e178]:
+                        - link "OS Patching" [ref=e179] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e180]:
+                        - link "Cost Visibility" [ref=e181] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e182]:
+                        - link "Workload Visibility" [ref=e183] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e184]:
+                        - link "Node Labels" [ref=e185] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e186]:
+                        - link "Taints and Tolerations" [ref=e187] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e188]:
+                        - link "RBAC and Namespace Support" [ref=e189] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e190]:
+                        - link "Namespace Management" [ref=e191] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e192]:
+                        - link "Palette Macros" [ref=e193] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e194]:
+                        - link "Pack Monitoring" [ref=e195] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e196]:
+                        - link "Kubeconfig" [ref=e197] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e198]:
+                        - link "Kubectl" [ref=e199] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "Platform Settings" [ref=e202] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e203] [cursor=pointer]
+                      - listitem [ref=e204]:
+                        - link "Map and Filter Clusters" [ref=e205] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e206]:
+                        - link "Node Pools" [ref=e207] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e208]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e209] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e210]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e211] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e212]:
+                        - link "Headlamp" [ref=e213] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/headlamp/
+                      - listitem [ref=e214]:
+                        - link "Cluster Removal" [ref=e215] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e216]:
+                        - link "Image Swap" [ref=e217] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e218]:
+                        - link "Maintenance Mode" [ref=e219] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - link "Cluster Groups" [ref=e222] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e224]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Private Cloud Gateway" [ref=e229] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e231]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e236] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e238]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Palette Dev Engine" [ref=e243] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e245]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "AI Workloads" [ref=e250] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e252]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Virtual Machine Orchestrator" [ref=e257] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e259]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Workspaces" [ref=e264] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e266]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Packs List" [ref=e271] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e273]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "User & Role Management" [ref=e278] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e280]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Registries and Packs" [ref=e285] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e287]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Security" [ref=e292] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e294]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Audit Logs" [ref=e299] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e301]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - generic [ref=e305]:
+                  - link "Self-Hosted Palette" [ref=e306] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e308]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Palette VerteX" [ref=e313] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e315]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - generic [ref=e319]:
+                  - link "Tenant Administration" [ref=e320] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e322]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e324] [cursor=pointer]
+              - listitem [ref=e325]:
+                - generic [ref=e326]:
+                  - link "Automation" [ref=e327] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e329]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e331] [cursor=pointer]
+              - listitem [ref=e332]:
+                - generic [ref=e333]:
+                  - link "Troubleshooting" [ref=e334] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e336]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e338] [cursor=pointer]
+              - listitem [ref=e339]:
+                - link "Glossary" [ref=e340] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e342]
+                  - text: Glossary
+              - listitem [ref=e344]:
+                - generic [ref=e345]:
+                  - link "Compliance & Legal" [ref=e346] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e348]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e350] [cursor=pointer]
+              - listitem [ref=e351]:
+                - button "Privacy Settings" [ref=e352] [cursor=pointer]:
+                  - img [ref=e353]
+                  - text: Privacy Settings
+      - main [ref=e355]:
+        - generic [ref=e357]:
+          - generic [ref=e359]:
+            - article [ref=e360]:
+              - navigation "Breadcrumbs" [ref=e361]:
+                - list [ref=e362]:
+                  - listitem [ref=e363]:
+                    - link "Home page" [ref=e364] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e365]
+                  - listitem [ref=e367]:
+                    - link "Clusters" [ref=e368] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e369]:
+                    - link "Manage Clusters" [ref=e370] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e371]:
+                    - generic [ref=e372]: Cluster Removal
+              - generic [ref=e373]:
+                - heading "Cluster Removal" [level=1] [ref=e375]
+                - paragraph [ref=e376]: When you delete a cluster it results in the removal of all compute instances and associated resources created for the cluster. Use the following steps to delete a cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e377]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e378] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e379]:
+                  - listitem [ref=e380]: A host cluster.
+                - heading "RemovalDirect link to Removal" [level=2] [ref=e381]:
+                  - text: Removal
+                  - link "Direct link to Removal" [ref=e382] [cursor=pointer]:
+                    - /url: "#removal"
+                    - text: "#"
+                - list [ref=e383]:
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: Log in to
+                      - link "Palette" [ref=e386] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and ensure you are in the correct project scope.
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: Navigate to the left
+                      - strong [ref=e389]: Main Menu
+                      - text: and click on
+                      - strong [ref=e390]: Clusters
+                      - text: .
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]: Click on the cluster you want to delete.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: Click on the
+                      - strong [ref=e395]: Settings drop-down Menu
+                      - text: .
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: Click on
+                      - strong [ref=e398]: Delete Cluster
+                      - text: .
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: Type the cluster name and click on
+                      - strong [ref=e401]: OK
+                      - text: .
+                - paragraph [ref=e402]:
+                  - text: The cluster status is updated to
+                  - strong [ref=e403]: Deleting
+                  - text: while cluster resources are removed. When all resources are successfully deleted, the cluster status is updated to
+                  - strong [ref=e404]: Deleted
+                  - text: ", and the cluster is removed from the cluster list."
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e405]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e406] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e407]: To validate the host cluster is deleted, use the following steps.
+                - list [ref=e408]:
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: Log in to
+                      - link "Palette" [ref=e411] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Navigate to the left
+                      - strong [ref=e414]: Main Menu
+                      - text: and click on
+                      - strong [ref=e415]: Cluster
+                      - text: .
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]:
+                      - text: Check the box labeled
+                      - strong [ref=e418]: Deleted only
+                      - text: to view all the clusters deleted in the last 72 hours.
+                - paragraph [ref=e419]: The cluster you deleted is now listed along with other previously deleted clusters.
+                - heading "Force Delete a ClusterDirect link to Force Delete a Cluster" [level=2] [ref=e420]:
+                  - text: Force Delete a Cluster
+                  - link "Direct link to Force Delete a Cluster" [ref=e421] [cursor=pointer]:
+                    - /url: "#force-delete-a-cluster"
+                    - text: "#"
+                - paragraph [ref=e422]:
+                  - text: If a cluster is stuck in the
+                  - strong [ref=e423]: Deleting
+                  - text: state for 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+                - paragraph [ref=e424]:
+                  - text: To force delete a cluster, follow the steps to delete the cluster. After 15 minutes, a
+                  - strong [ref=e425]: Force Delete Cluster
+                  - text: option is available in the
+                  - strong [ref=e426]: Settings Menu
+                  - text: . The
+                  - strong [ref=e427]: drop-down Menu
+                  - text: will provide you with an estimated remaining time left before the force deletion becomes available.
+                - generic [ref=e428]:
+                  - generic [ref=e429]:
+                    - img [ref=e431]
+                    - text: tip
+                  - paragraph [ref=e434]: To ensure a complete cleanup of all associated resources, verify that your cloud credentials are valid and correctly configured. Force-deleting a cluster may leave some cloud resources behind if your cloud account credentials are invalid.
+                - heading "Remove Lingering ResourcesDirect link to Remove Lingering Resources" [level=3] [ref=e435]:
+                  - text: Remove Lingering Resources
+                  - link "Direct link to Remove Lingering Resources" [ref=e436] [cursor=pointer]:
+                    - /url: "#remove-lingering-resources"
+                    - text: "#"
+                - paragraph [ref=e437]: A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources by visiting the deployed resources in the target cluster's infrastructure provider environment. Use one of the following lists for your environment to help you identify resources to remove.
+                - generic [ref=e438]:
+                  - generic [ref=e439]:
+                    - img [ref=e441]
+                    - text: warning
+                  - paragraph [ref=e444]: Failure to remove provisioned resources can result in unexpected costs.
+                - heading "AzureDirect link to Azure" [level=4] [ref=e445]:
+                  - text: Azure
+                  - link "Direct link to Azure" [ref=e446] [cursor=pointer]:
+                    - /url: "#azure"
+                    - text: "#"
+                - list [ref=e447]:
+                  - listitem [ref=e448]: Virtual Network (VNet)
+                  - listitem [ref=e449]: Static Public IP addresses
+                  - listitem [ref=e450]: Virtual Network Interfaces
+                  - listitem [ref=e451]: Load Balancers
+                  - listitem [ref=e452]: Virtual Hard Disk (VHD)
+                  - listitem [ref=e453]: Managed Disks
+                  - listitem [ref=e454]: Virtual Network Gateway
+                - heading "AWSDirect link to AWS" [level=4] [ref=e455]:
+                  - text: AWS
+                  - link "Direct link to AWS" [ref=e456] [cursor=pointer]:
+                    - /url: "#aws"
+                    - text: "#"
+                - list [ref=e457]:
+                  - listitem [ref=e458]: VPC
+                  - listitem [ref=e459]: Elastic IP addresses
+                  - listitem [ref=e460]: Elastic Network Interfaces
+                  - listitem [ref=e461]: Internet Gateway
+                  - listitem [ref=e462]: Elastic Load Balancers
+                  - listitem [ref=e463]: EBS Volumes
+                  - listitem [ref=e464]: Network Address Translation (NAT) Gateway
+                - heading "GCPDirect link to GCP" [level=4] [ref=e465]:
+                  - text: GCP
+                  - link "Direct link to GCP" [ref=e466] [cursor=pointer]:
+                    - /url: "#gcp"
+                    - text: "#"
+                - list [ref=e467]:
+                  - listitem [ref=e468]: Virtual Private Cloud (VPC) Network
+                  - listitem [ref=e469]: Static External IP addresses
+                  - listitem [ref=e470]: Network Interfaces
+                  - listitem [ref=e471]: Cloud NAT
+                  - listitem [ref=e472]: Cloud Load Balancing
+                  - listitem [ref=e473]: Persistent Disks
+                  - listitem [ref=e474]: Cloud Router
+                - heading "VMwareDirect link to VMware" [level=4] [ref=e475]:
+                  - text: VMware
+                  - link "Direct link to VMware" [ref=e476] [cursor=pointer]:
+                    - /url: "#vmware"
+                    - text: "#"
+                - list [ref=e477]:
+                  - listitem [ref=e478]: "VMs: control planes, workers, High Availability Proxy (HAProxy), and Load Balancers"
+                  - listitem [ref=e479]: VM Templates
+                  - listitem [ref=e480]: VM Clones
+                  - listitem [ref=e481]: Cluster-specific VM Folders
+                  - listitem [ref=e482]: Static IP and Virtual IP (VIP) address reservations
+                  - listitem [ref=e483]: IP and VIP Addresses in use
+                  - listitem [ref=e484]: Domain Name System (DNS) Records
+                  - listitem [ref=e485]: "Datastore leftovers: orphaned VM Disk (VMDK) files and VM directories"
+                  - listitem [ref=e486]: VM and Storage Snapshots
+                  - listitem [ref=e487]: Load Balancers (NSX, Avi, or others specific to the deployment)
+                  - listitem [ref=e488]: Firewall Sections and Rules
+                  - listitem [ref=e489]: Resource Pools
+                  - listitem [ref=e490]: Template Folders
+                  - listitem [ref=e491]: Installation ISO Images
+              - generic [ref=e492]:
+                - generic [ref=e494]:
+                  - text: "Tags:"
+                  - list [ref=e495]:
+                    - listitem [ref=e496]:
+                      - link "clusters" [ref=e497] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e498]:
+                      - link "cluster management" [ref=e499] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e502] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/remove-clusters.md
+                  - img [ref=e503]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e507]:
+              - link "Previous « Headlamp" [ref=e508] [cursor=pointer]:
+                - /url: /clusters/cluster-management/headlamp/
+                - generic [ref=e509]: Previous
+                - generic [ref=e510]: « Headlamp
+              - link "Next Image Swap »" [ref=e511] [cursor=pointer]:
+                - /url: /clusters/cluster-management/image-swap/
+                - generic [ref=e512]: Next
+                - generic [ref=e513]: Image Swap »
+          - list [ref=e516]:
+            - listitem [ref=e517]:
+              - link "Prerequisites" [ref=e518] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e519]:
+              - link "Removal" [ref=e520] [cursor=pointer]:
+                - /url: "#removal"
+            - listitem [ref=e521]:
+              - link "Validate" [ref=e522] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e523]:
+              - link "Force Delete a Cluster" [ref=e524] [cursor=pointer]:
+                - /url: "#force-delete-a-cluster"
+              - list [ref=e525]:
+                - listitem [ref=e526]:
+                  - link "Remove Lingering Resources" [ref=e527] [cursor=pointer]:
+                    - /url: "#remove-lingering-resources"
+  - button "Project Logo Ask AI" [ref=e528] [cursor=pointer]:
+    - generic [ref=e531]:
+      - img "Project Logo" [ref=e532]
+      - paragraph [ref=e533]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

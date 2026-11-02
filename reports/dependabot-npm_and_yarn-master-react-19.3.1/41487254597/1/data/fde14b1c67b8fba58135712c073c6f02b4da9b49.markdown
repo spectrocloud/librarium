@@ -1,0 +1,599 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vertex/system-management/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  157 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 157 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 157 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 157 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 157 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - link "Workspaces" [ref=e140] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e142]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "User & Role Management" [ref=e154] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e156]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Registries and Packs" [ref=e161] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e163]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Security" [ref=e168] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e170]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Audit Logs" [ref=e175] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e177]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Self-Hosted Palette" [ref=e182] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e184]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette VerteX" [expanded] [ref=e189] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e191]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e193] [cursor=pointer]
+                - list [ref=e194]:
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "FIPS" [ref=e197] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Installation" [ref=e201] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - link "Activate VerteX" [ref=e204] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e205]:
+                    - link "Supported Platforms" [ref=e206] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "System Management" [expanded] [ref=e209] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e210] [cursor=pointer]
+                    - list [ref=e211]:
+                      - listitem [ref=e212]:
+                        - generic [ref=e213]:
+                          - link "Account Management" [ref=e214] [cursor=pointer]:
+                            - /url: /vertex/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e215] [cursor=pointer]
+                      - listitem [ref=e216]:
+                        - link "Add System-Level Registry" [ref=e217] [cursor=pointer]:
+                          - /url: /vertex/system-management/add-registry/
+                      - listitem [ref=e218]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e219] [cursor=pointer]:
+                          - /url: /vertex/system-management/configure-aws-sts-account/
+                      - listitem [ref=e220]:
+                        - link "Configure Image Pull Secret" [ref=e221] [cursor=pointer]:
+                          - /url: /vertex/system-management/configure-image-pull-secret/
+                      - listitem [ref=e222]:
+                        - link "Configure SMTP" [ref=e223] [cursor=pointer]:
+                          - /url: /vertex/system-management/smtp/
+                      - listitem [ref=e224]:
+                        - link "Export Platform Metrics" [ref=e225] [cursor=pointer]:
+                          - /url: /vertex/system-management/export-metrics/
+                      - listitem [ref=e226]:
+                        - link "Configure Reverse Proxy" [ref=e227] [cursor=pointer]:
+                          - /url: /vertex/system-management/reverse-proxy/
+                      - listitem [ref=e228]:
+                        - generic [ref=e229]:
+                          - link "Enable non-FIPS Settings" [ref=e230] [cursor=pointer]:
+                            - /url: /vertex/system-management/enable-non-fips-settings/
+                          - button "Toggle the collapsible sidebar category 'Enable non-FIPS Settings'" [ref=e231] [cursor=pointer]
+                      - listitem [ref=e232]:
+                        - link "Customize Interface" [ref=e233] [cursor=pointer]:
+                          - /url: /vertex/system-management/customize-interface/
+                      - listitem [ref=e234]:
+                        - link "Feature Flags" [ref=e235] [cursor=pointer]:
+                          - /url: /vertex/system-management/feature-flags/
+                      - listitem [ref=e236]:
+                        - link "System Address Management" [ref=e237] [cursor=pointer]:
+                          - /url: /vertex/system-management/ssl-certificate-management/
+                      - listitem [ref=e238]:
+                        - link "Tenant Management" [ref=e239] [cursor=pointer]:
+                          - /url: /vertex/system-management/tenant-management/
+                      - listitem [ref=e240]:
+                        - link "Banners" [ref=e241] [cursor=pointer]:
+                          - /url: /vertex/system-management/login-banner/
+                      - listitem [ref=e242]:
+                        - link "Override Registry Configuration" [ref=e243] [cursor=pointer]:
+                          - /url: /vertex/system-management/registry-override/
+                      - listitem [ref=e244]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e245] [cursor=pointer]:
+                          - /url: /vertex/system-management/scar-migration/
+                      - listitem [ref=e246]:
+                        - link "Modify Cloud Provider Configuration" [ref=e247] [cursor=pointer]:
+                          - /url: /vertex/system-management/change-cloud-config/
+                  - listitem [ref=e248]:
+                    - generic [ref=e249]:
+                      - link "Upgrade" [ref=e250] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "Tenant Administration" [ref=e254] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e256]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Automation" [ref=e261] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e263]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Troubleshooting" [ref=e268] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e270]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - link "Glossary" [ref=e274] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e276]
+                  - text: Glossary
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Compliance & Legal" [ref=e280] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e282]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - button "Privacy Settings" [ref=e286] [cursor=pointer]:
+                  - img [ref=e287]
+                  - text: Privacy Settings
+      - main [ref=e289]:
+        - generic [ref=e291]:
+          - generic [ref=e293]:
+            - article [ref=e294]:
+              - navigation "Breadcrumbs" [ref=e295]:
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - link "Home page" [ref=e298] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e299]
+                  - listitem [ref=e301]:
+                    - link "Palette VerteX" [ref=e302] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e303]:
+                    - generic [ref=e304]: System Management
+              - generic [ref=e305]:
+                - heading "System Management" [level=1] [ref=e307]
+                - paragraph [ref=e308]:
+                  - text: Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are available at the system level and are applied to all
+                  - link "tenants" [ref=e309] [cursor=pointer]:
+                    - /url: /glossary-all/#tenant
+                  - text: in the system.
+                - heading "System ConsoleDirect link to System Console" [level=2] [ref=e310]:
+                  - text: System Console
+                  - link "Direct link to System Console" [ref=e311] [cursor=pointer]:
+                    - /url: "#system-console"
+                    - text: "#"
+                - paragraph [ref=e312]: The system console enables you to complete the initial setup and onboarding and manage the overall Palette environment.
+                - heading "Access the System ConsoleDirect link to Access the System Console" [level=3] [ref=e313]:
+                  - text: Access the System Console
+                  - link "Direct link to Access the System Console" [ref=e314] [cursor=pointer]:
+                    - /url: "#access-the-system-console"
+                    - text: "#"
+                - paragraph [ref=e315]:
+                  - text: You can access the system setting by visiting the IP address or the custom domain name assigned to your Palette VerteX cluster and appending the
+                  - code [ref=e316]: /system
+                  - text: path to the URL. For example, if your Palette VerteX cluster is hosted at
+                  - code [ref=e317]: https://vertex.abc.com
+                  - text: ", you can access the system settings at"
+                  - code [ref=e318]: https://vertex.abc.com/system
+                  - text: .
+                - paragraph [ref=e319]:
+                  - img "View of the VerteX system console landing page." [ref=e320]
+                - heading "Administration and ManagementDirect link to Administration and Management" [level=2] [ref=e321]:
+                  - text: Administration and Management
+                  - link "Direct link to Administration and Management" [ref=e322] [cursor=pointer]:
+                    - /url: "#administration-and-management"
+                    - text: "#"
+                - paragraph [ref=e323]: "System administrators can use the system console to perform the following operations:"
+                - list [ref=e324]:
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - link "Create and Manage System Accounts" [ref=e327] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management/
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]: Manage FIPS enforcement behaviors and settings.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - link "Configure and manage SMTP settings" [ref=e332] [cursor=pointer]:
+                        - /url: /vertex/system-management/smtp/
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - link "Configure and manage pack registries" [ref=e335] [cursor=pointer]:
+                        - /url: /vertex/system-management/add-registry/
+                      - text: .
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - link "Configure and manage SSL certificates" [ref=e338] [cursor=pointer]:
+                        - /url: /vertex/system-management/ssl-certificate-management/
+                      - text: .
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: Configure DNS settings.
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]: Setup alerts and notifications.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]: Enable metrics collection.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - link "Manage feature flags" [ref=e347] [cursor=pointer]:
+                        - /url: /vertex/system-management/feature-flags/
+                      - text: .
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - link "Manage VerteX platform upgrades" [ref=e350] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - text: .
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - link "Configure login banner" [ref=e353] [cursor=pointer]:
+                        - /url: /vertex/system-management/login-banner/
+                      - text: .
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - link "Manage tenants" [ref=e356] [cursor=pointer]:
+                        - /url: /vertex/system-management/tenant-management/
+                      - text: .
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - link "Override Registry Configuration" [ref=e359] [cursor=pointer]:
+                        - /url: /vertex/system-management/registry-override/
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]: Manage the Enterprise cluster and the profile layers and pack integrations that makeup the Enterprise cluster.
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - link "Customize the login screen and dashboard interface" [ref=e364] [cursor=pointer]:
+                        - /url: /vertex/system-management/customize-interface/
+                      - text: .
+                - paragraph [ref=e365]: Check out the following resources to learn more about these operations.
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - img [ref=e369]
+                    - text: warning
+                  - paragraph [ref=e372]: Exercise caution when changing system settings as the changes will be applied to all tenants in the system.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e373]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e374] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e375]:
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - link "Account Management" [ref=e378] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management/
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - link "Add a Registry" [ref=e381] [cursor=pointer]:
+                        - /url: /vertex/system-management/add-registry/
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - link "Enable non-FIPS Settings" [ref=e384] [cursor=pointer]:
+                        - /url: /vertex/system-management/enable-non-fips-settings/
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - link "Tenant Management" [ref=e387] [cursor=pointer]:
+                        - /url: /vertex/system-management/tenant-management/
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - link "SSL Certificate Management" [ref=e390] [cursor=pointer]:
+                        - /url: /vertex/system-management/ssl-certificate-management/
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - link "Configure and manage pack registries" [ref=e393] [cursor=pointer]:
+                        - /url: /vertex/system-management/add-registry/
+                      - text: .
+              - generic [ref=e394]:
+                - generic [ref=e396]:
+                  - text: "Tags:"
+                  - list [ref=e397]:
+                    - listitem [ref=e398]:
+                      - link "vertex" [ref=e399] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e400]:
+                      - link "management" [ref=e401] [cursor=pointer]:
+                        - /url: /tags/management/
+                - link "Edit this page" [ref=e404] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/system-management/system-management.md
+                  - img [ref=e405]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e409]:
+              - link "Previous « Supported Platforms" [ref=e410] [cursor=pointer]:
+                - /url: /vertex/supported-platforms/
+                - generic [ref=e411]: Previous
+                - generic [ref=e412]: « Supported Platforms
+              - link "Next Account Management »" [ref=e413] [cursor=pointer]:
+                - /url: /vertex/system-management/account-management/
+                - generic [ref=e414]: Next
+                - generic [ref=e415]: Account Management »
+          - list [ref=e418]:
+            - listitem [ref=e419]:
+              - link "System Console" [ref=e420] [cursor=pointer]:
+                - /url: "#system-console"
+              - list [ref=e421]:
+                - listitem [ref=e422]:
+                  - link "Access the System Console" [ref=e423] [cursor=pointer]:
+                    - /url: "#access-the-system-console"
+            - listitem [ref=e424]:
+              - link "Administration and Management" [ref=e425] [cursor=pointer]:
+                - /url: "#administration-and-management"
+            - listitem [ref=e426]:
+              - link "Resources" [ref=e427] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e428] [cursor=pointer]:
+    - generic [ref=e431]:
+      - img "Project Logo" [ref=e432]
+      - paragraph [ref=e433]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

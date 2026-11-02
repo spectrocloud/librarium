@@ -1,0 +1,2146 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /integrations/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  2630 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 2630 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 2630 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - link "Workspaces" [ref=e140] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e142]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [expanded] [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+                - list [ref=e152]:
+                  - listitem [ref=e153]:
+                    - link "Maintenance Policy" [ref=e154] [cursor=pointer]:
+                      - /url: /integrations/maintenance-policy/
+                  - listitem [ref=e155]:
+                    - link "Pack CVE Policy" [ref=e156] [cursor=pointer]:
+                      - /url: /integrations/cve-policy/
+                  - listitem [ref=e157]:
+                    - link "Kubernetes Support Lifecycle" [ref=e158] [cursor=pointer]:
+                      - /url: /integrations/kubernetes-support/
+                  - listitem [ref=e159]:
+                    - link "Verified Packs" [ref=e160] [cursor=pointer]:
+                      - /url: /integrations/verified_packs/
+                  - listitem [ref=e161]:
+                    - link "Community Packs" [ref=e162] [cursor=pointer]:
+                      - /url: /integrations/community_packs/
+                  - listitem [ref=e163]:
+                    - link "Deprecated Packs" [ref=e164] [cursor=pointer]:
+                      - /url: /integrations/deprecated-packs/
+              - listitem [ref=e165]:
+                - generic [ref=e166]:
+                  - link "User & Role Management" [ref=e167] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e169]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "Registries and Packs" [ref=e174] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e176]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Security" [ref=e181] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e183]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Audit Logs" [ref=e188] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e190]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Self-Hosted Palette" [ref=e195] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e197]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Palette VerteX" [ref=e202] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e204]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Tenant Administration" [ref=e209] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e211]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Automation" [ref=e216] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e218]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Troubleshooting" [ref=e223] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e225]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - link "Glossary" [ref=e229] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e231]
+                  - text: Glossary
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Compliance & Legal" [ref=e235] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e237]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - button "Privacy Settings" [ref=e241] [cursor=pointer]:
+                  - img [ref=e242]
+                  - text: Privacy Settings
+      - main [ref=e244]:
+        - generic [ref=e248]:
+          - article [ref=e249]:
+            - navigation "Breadcrumbs" [ref=e250]:
+              - list [ref=e251]:
+                - listitem [ref=e252]:
+                  - link "Home page" [ref=e253] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e254]
+                - listitem [ref=e256]:
+                  - generic [ref=e257]: Packs List
+            - generic [ref=e258]:
+              - heading "Packs List" [level=1] [ref=e260]
+              - paragraph [ref=e261]: Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs and add-on packs to extend Kubernetes functionality. Each pack you add to a cluster profile is considered a layer in the profile.
+              - paragraph [ref=e262]:
+                - text: "When you create a cluster profile, you choose the type of pack you want to add:"
+                - strong [ref=e263]: Full
+                - text: ","
+                - strong [ref=e264]: Infrastructure
+                - text: ", or"
+                - strong [ref=e265]: Add-on
+                - text: .
+                - strong [ref=e266]: Full
+                - text: refers to the combination of
+                - strong [ref=e267]: Infrastructure
+                - text: and
+                - strong [ref=e268]: Add-on
+                - text: packs.
+              - paragraph [ref=e269]:
+                - text: When you choose
+                - strong [ref=e270]: Infrastructure
+                - text: or
+                - strong [ref=e271]: Add-on
+                - text: ", Palette presents only packs that provide functionality for the selected pack type. When you choose"
+                - strong [ref=e272]: Full
+                - text: ", Palette presents all the packs so you can build your cluster profile from the base layer up. To learn more about cluster profiles, check out the"
+                - link "Cluster Profiles" [ref=e273] [cursor=pointer]:
+                  - /url: /profiles/cluster-profiles/
+                - text: reference.
+              - paragraph [ref=e274]:
+                - text: To learn more about individual packs, use the search bar below to find a specific option. Alternatively, you can use the filter buttons to display available options. To learn about pack update and deprecation schedules, review
+                - link "Maintenance Policy" [ref=e275] [cursor=pointer]:
+                  - /url: /integrations/maintenance-policy/
+                - text: .
+              - generic [ref=e276]:
+                - generic [ref=e277]:
+                  - img [ref=e279]
+                  - text: info
+                - paragraph [ref=e282]:
+                  - text: Spectro Cloud verified packs are scanned for known Common Vulnerabilities and Exposures (CVEs) as part of our build and validation process. To learn more about how Spectro Cloud handles CVEs, check out the
+                  - link "Pack CVE Handling Policy" [ref=e283] [cursor=pointer]:
+                    - /url: /integrations/cve-policy/
+                  - text: reference.
+              - generic [ref=e284]:
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]: Type
+                    - generic [ref=e289] [cursor=pointer]:
+                      - generic [ref=e291]:
+                        - combobox [ref=e295]
+                        - generic: Search
+                      - generic:
+                        - img:
+                          - img
+                  - generic [ref=e296]:
+                    - generic [ref=e297]: Registry
+                    - generic [ref=e299] [cursor=pointer]:
+                      - generic [ref=e301]:
+                        - combobox [ref=e305]
+                        - generic: Search
+                      - generic:
+                        - img:
+                          - img
+                  - generic [ref=e306]:
+                    - generic [ref=e307]: Cloud Provider
+                    - generic [ref=e309] [cursor=pointer]:
+                      - generic [ref=e311]:
+                        - combobox [ref=e313]
+                        - generic: Search
+                      - generic:
+                        - img:
+                          - img
+                  - generic [ref=e314]:
+                    - generic [ref=e315]: Source
+                    - generic [ref=e317] [cursor=pointer]:
+                      - generic [ref=e319]:
+                        - combobox [ref=e321]
+                        - generic "All" [ref=e322]
+                      - generic:
+                        - img:
+                          - img
+                      - img [ref=e324]:
+                        - img [ref=e325]
+                - generic [ref=e327]:
+                  - img [ref=e328]
+                  - textbox "Search for integration..." [ref=e330]
+                  - img [ref=e331]
+                - generic [ref=e334]:
+                  - generic [ref=e335]:
+                    - button "expanded AI" [expanded] [ref=e336] [cursor=pointer]:
+                      - img "expanded" [ref=e338]:
+                        - img [ref=e339]
+                      - generic [ref=e341]:
+                        - img [ref=e342]
+                        - text: AI
+                    - generic [ref=e348]:
+                      - link "AI Nodeprep" [ref=e350] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ai-nodeprep&version=1.0.1&parent=1.0.x&tab=main
+                        - generic [ref=e351]:
+                          - img [ref=e353]
+                          - generic [ref=e354]: AI Nodeprep
+                      - link "AMD GPU Operator" [ref=e356] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=amd-gpu-operator-ai&version=1.5.1&parent=1.5.x&tab=main
+                        - generic [ref=e357]:
+                          - img [ref=e359]
+                          - generic [ref=e360]: AMD GPU Operator
+                      - link "DRA driver for NVIDIA GPUs" [ref=e362] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=dra-driver-nvidia-gpu&version=0.5.0&parent=0.5.x&tab=main
+                        - generic [ref=e363]:
+                          - img [ref=e365]
+                          - generic [ref=e366]: DRA driver for NVIDIA GPUs
+                      - link "KAI Scheduler" [ref=e368] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kai-scheduler-ai&version=0.10.0&parent=0.10.x&tab=main
+                        - generic [ref=e369]:
+                          - img [ref=e371]
+                          - generic [ref=e372]: KAI Scheduler
+                      - link "Knative Operator" [ref=e374] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=knative-operator&version=1.23.1&parent=1.23.x&tab=main
+                        - generic [ref=e375]:
+                          - img [ref=e377]
+                          - generic [ref=e378]: Knative Operator
+                      - link "Kubeflow CRDs" [ref=e380] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-crds&version=1.9.1&parent=1.9.x&tab=main
+                        - generic [ref=e381]:
+                          - img [ref=e383]
+                          - generic [ref=e384]: Kubeflow CRDs
+                      - link "kubeflow-trainer" [ref=e386] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-trainer&version=2.3.0&parent=2.3.x&tab=main
+                        - generic [ref=e387]:
+                          - img [ref=e389]
+                          - generic [ref=e390]: kubeflow-trainer
+                      - link "kubeflow-training-operator" [ref=e392] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-training-operator&version=1.9.3&parent=1.9.x&tab=main
+                        - generic [ref=e393]:
+                          - img [ref=e395]
+                          - generic [ref=e396]: kubeflow-training-operator
+                      - link "KubeRay Operator" [ref=e398] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kuberay-operator&version=1.5.1&parent=1.5.x&tab=main
+                        - generic [ref=e399]:
+                          - img [ref=e401]
+                          - generic [ref=e402]: KubeRay Operator
+                      - link "LeaderWorkerSet" [ref=e404] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=lws&version=0.11.1&parent=0.11.x&tab=main
+                        - generic [ref=e405]:
+                          - img [ref=e407]
+                          - generic [ref=e408]: LeaderWorkerSet
+                      - link "Nvidia Cluster Readiness Engine" [ref=e410] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-nvcre&version=0.5.0&parent=0.5.x&tab=main
+                        - generic [ref=e411]:
+                          - img [ref=e413]
+                          - generic [ref=e414]: Nvidia Cluster Readiness Engine
+                      - link "NVIDIA DRA driver" [ref=e416] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-dra-driver&version=25.8.1&parent=25.8.x&tab=main
+                        - generic [ref=e417]:
+                          - img [ref=e419]
+                          - generic [ref=e420]: NVIDIA DRA driver
+                      - link "Nvidia Fleet Intelligence" [ref=e422] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-fleet-intelligence&version=1.5.1-rc.1&parent=1.5.x&tab=main
+                        - generic [ref=e423]:
+                          - img [ref=e425]
+                          - generic [ref=e426]: Nvidia Fleet Intelligence
+                      - link "Nvidia GPU Operator" [ref=e428] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-gpu-operator-ai&version=26.7.1&parent=26.7.x&tab=main
+                        - generic [ref=e429]:
+                          - img [ref=e431]
+                          - generic [ref=e432]: Nvidia GPU Operator
+                      - link "Nvidia NVSentinel" [ref=e434] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-nvsentinel&version=1.25.0&parent=1.25.x&tab=main
+                        - generic [ref=e435]:
+                          - img [ref=e437]
+                          - generic [ref=e438]: Nvidia NVSentinel
+                      - link "sedai-smart-agent" [ref=e440] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sedai-smart-agent&version=1.4.41&parent=1.4.x&tab=main
+                        - generic [ref=e441]:
+                          - img [ref=e443]
+                          - generic [ref=e444]: sedai-smart-agent
+                  - generic [ref=e445]:
+                    - button "expanded App Services" [expanded] [ref=e446] [cursor=pointer]:
+                      - img "expanded" [ref=e448]:
+                        - img [ref=e449]
+                      - generic [ref=e451]:
+                        - img [ref=e452]
+                        - text: App Services
+                    - generic [ref=e455]:
+                      - link "Apache2 (Canonical)" [ref=e457] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-apache2&version=2.4.10&parent=2.4.x&tab=main
+                        - generic [ref=e458]:
+                          - img [ref=e460]
+                          - generic [ref=e461]: Apache2 (Canonical)
+                      - link "Hello Universe" [ref=e463] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=hello-universe&version=1.1.1&parent=1.1.x&tab=main
+                        - generic [ref=e464]:
+                          - img [ref=e466]
+                          - generic [ref=e467]: Hello Universe
+                      - link "Juju Charms deployer (Canonical)" [ref=e469] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-charms-deployer&version=1.1.0&parent=1.1.x&tab=main
+                        - generic [ref=e470]:
+                          - img [ref=e472]
+                          - generic [ref=e473]: Juju Charms deployer (Canonical)
+                      - link "Juju OLM (Canonical)" [ref=e475] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-juju-olm&version=2.9.37&parent=2.9.x&tab=main
+                        - generic [ref=e476]:
+                          - img [ref=e478]
+                          - generic [ref=e479]: Juju OLM (Canonical)
+                      - link "Kubernetes Off-The-Shelf (KOTS)" [ref=e481] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kotsadm&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e482]:
+                          - img [ref=e484]
+                          - generic [ref=e485]: Kubernetes Off-The-Shelf (KOTS)
+                      - link "MySQL (Canonical)" [ref=e487] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-mysql&version=8.0.27&parent=8.0.x&tab=main
+                        - generic [ref=e488]:
+                          - img [ref=e490]
+                          - generic [ref=e491]: MySQL (Canonical)
+                      - link "Postgres (Canonical)" [ref=e493] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-postgres&version=12.9.0&parent=12.9.x&tab=main
+                        - generic [ref=e494]:
+                          - img [ref=e496]
+                          - generic [ref=e497]: Postgres (Canonical)
+                      - link "Redis (Canonical)" [ref=e499] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=canonical-redis&version=6.0.10&parent=6.0.x&tab=main
+                        - generic [ref=e500]:
+                          - img [ref=e502]
+                          - generic [ref=e503]: Redis (Canonical)
+                  - generic [ref=e504]:
+                    - button "expanded Authentication" [expanded] [ref=e505] [cursor=pointer]:
+                      - img "expanded" [ref=e507]:
+                        - img [ref=e508]
+                      - generic [ref=e510]:
+                        - img [ref=e511]
+                        - text: Authentication
+                    - generic [ref=e515]:
+                      - link "AWS EKS OIDC" [ref=e517] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-eks-oidc&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e518]:
+                          - img [ref=e520]
+                          - generic [ref=e521]: AWS EKS OIDC
+                      - link "Dex" [ref=e523] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=dex&version=2.42.0&parent=2.42.x&tab=main
+                        - generic [ref=e524]:
+                          - img [ref=e526]
+                          - generic [ref=e527]: Dex
+                      - link "External Secrets" [ref=e529] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=external-secrets&version=8.5.0&parent=8.5.x&tab=main
+                        - generic [ref=e530]:
+                          - img [ref=e532]
+                          - generic [ref=e533]: External Secrets
+                      - link "External Secrets Operator" [ref=e535] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=external-secrets-operator&version=2.14.0&parent=2.14.x&tab=main
+                        - generic [ref=e536]:
+                          - img [ref=e538]
+                          - generic [ref=e539]: External Secrets Operator
+                      - link "Fairwinds RBAC Manager" [ref=e541] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=rbac-manager&version=1.9.0&parent=1.9.x&tab=main
+                        - generic [ref=e542]:
+                          - img [ref=e544]
+                          - generic [ref=e545]: Fairwinds RBAC Manager
+                      - link "OAauth2 Proxy" [ref=e547] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=oauth2-proxy&version=8.2.0&parent=8.2.x&tab=main
+                        - generic [ref=e548]:
+                          - img [ref=e550]
+                          - generic [ref=e551]: OAauth2 Proxy
+                      - link "Permission Manager" [ref=e553] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=permission-manager&version=1.9.0&parent=1.9.x&tab=main
+                        - generic [ref=e554]:
+                          - img [ref=e556]
+                          - generic [ref=e557]: Permission Manager
+                      - link "Spectro Proxy" [ref=e559] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-proxy&version=2.1.1&parent=2.1.x&tab=main
+                        - generic [ref=e560]:
+                          - img [ref=e562]
+                          - generic [ref=e563]: Spectro Proxy
+                      - link "Spectro RBAC" [ref=e565] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-rbac&version=1.0.2&parent=1.0.x&tab=main
+                        - generic [ref=e566]:
+                          - img [ref=e568]
+                          - generic [ref=e569]: Spectro RBAC
+                  - generic [ref=e570]:
+                    - button "expanded Ingress" [expanded] [ref=e571] [cursor=pointer]:
+                      - img "expanded" [ref=e573]:
+                        - img [ref=e574]
+                      - generic [ref=e576]:
+                        - img [ref=e577]
+                        - text: Ingress
+                    - generic [ref=e581]:
+                      - link "Ambassador" [ref=e583] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ambassador&version=6.6.0&parent=6.6.x&tab=main
+                        - generic [ref=e584]:
+                          - img [ref=e586]
+                          - generic [ref=e587]: Ambassador
+                      - link "Gloo" [ref=e589] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=gloo&version=1.2.18&parent=1.2.x&tab=main
+                        - generic [ref=e590]:
+                          - img [ref=e592]
+                          - generic [ref=e593]: Gloo
+                      - link "HAProxy Ingress Controller" [ref=e595] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=haproxy-ingress&version=1.49.0&parent=1.49.x&tab=main
+                        - generic [ref=e596]:
+                          - img [ref=e598]
+                          - generic [ref=e599]: HAProxy Ingress Controller
+                      - link "Kong" [ref=e601] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kong&version=3.4.1&parent=3.4.x&tab=main
+                        - generic [ref=e602]:
+                          - img [ref=e604]
+                          - generic [ref=e605]: Kong
+                      - link "ngrok Ingress Controller" [ref=e607] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ngrok-ingress-controller&version=0.9.0&parent=0.9.x&tab=main
+                        - generic [ref=e608]:
+                          - img [ref=e610]
+                          - generic [ref=e611]: ngrok Ingress Controller
+                      - link "Traefik" [ref=e613] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=traefik&version=42.1.3&parent=42.1.x&tab=main
+                        - generic [ref=e614]:
+                          - img [ref=e616]
+                          - generic [ref=e617]: Traefik
+                  - generic [ref=e618]:
+                    - button "expanded Integration" [expanded] [ref=e619] [cursor=pointer]:
+                      - img "expanded" [ref=e621]:
+                        - img [ref=e622]
+                      - generic [ref=e624]:
+                        - img [ref=e625]
+                        - text: Integration
+                    - generic [ref=e628]:
+                      - link "Headlamp" [ref=e630] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=headlamp&version=0.45.0&parent=0.45.x&tab=main
+                        - generic [ref=e631]:
+                          - img [ref=e633]
+                          - generic [ref=e634]: Headlamp
+                      - link "Virtual Machine Migration Assistant Pack" [ref=e636] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vm-migration-assistant&version=4.10.5&parent=4.10.x&tab=main
+                        - generic [ref=e637]:
+                          - img [ref=e639]
+                          - generic [ref=e640]: Virtual Machine Migration Assistant Pack
+                      - link "Virtual Machine Orchestrator" [ref=e642] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=virtual-machine-orchestrator&version=4.10.25&parent=4.10.x&tab=main
+                        - generic [ref=e643]:
+                          - img [ref=e645]
+                          - generic [ref=e646]: Virtual Machine Orchestrator
+                  - generic [ref=e647]:
+                    - button "expanded Kubernetes" [expanded] [ref=e648] [cursor=pointer]:
+                      - img "expanded" [ref=e650]:
+                        - img [ref=e651]
+                      - generic [ref=e653]:
+                        - img [ref=e654]
+                        - text: Kubernetes
+                    - generic [ref=e657]:
+                      - link "Canonical Kubernetes" [ref=e659] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-ck8s&version=1.35&parent=1.35.x&tab=main
+                        - generic [ref=e660]:
+                          - img [ref=e662]
+                          - generic [ref=e663]: Canonical Kubernetes
+                      - link "GKE" [ref=e665] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-gke&version=1.35&parent=1.35.x&tab=main
+                        - generic [ref=e666]:
+                          - img [ref=e668]
+                          - generic [ref=e669]: GKE
+                      - link "Konvoy" [ref=e671] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-konvoy&version=1.27.6&parent=1.27.x&tab=main
+                        - generic [ref=e672]:
+                          - img [ref=e674]
+                          - generic [ref=e675]: Konvoy
+                      - link "Kubernetes (AKS)" [ref=e677] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-aks&version=1.37&parent=1.37.x&tab=main
+                        - generic [ref=e678]:
+                          - img [ref=e680]
+                          - generic [ref=e681]: Kubernetes (AKS)
+                      - link "Kubernetes (EKS)" [ref=e683] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-eks&version=1.37&parent=1.37.x&tab=main
+                        - generic [ref=e684]:
+                          - img [ref=e686]
+                          - generic [ref=e687]: Kubernetes (EKS)
+                      - link "Kubernetes for Custom Cloud" [ref=e689] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-custom&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e690]:
+                          - img [ref=e692]
+                          - generic [ref=e693]: Kubernetes for Custom Cloud
+                      - link "MicroK8s" [ref=e695] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-microk8s&version=1.30&parent=1.30.x&tab=main
+                        - generic [ref=e696]:
+                          - img [ref=e698]
+                          - generic [ref=e699]: MicroK8s
+                      - link "MicroK8s (Edge)" [ref=e701] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-microk8s&version=1.25&parent=1.25.x&tab=main
+                        - generic [ref=e702]:
+                          - img [ref=e704]
+                          - generic [ref=e705]: MicroK8s (Edge)
+                      - link "Nodeadm" [ref=e707] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-nodeadm&version=1.31.0&parent=1.31.x&tab=main
+                        - generic [ref=e708]:
+                          - img [ref=e710]
+                          - generic [ref=e711]: Nodeadm
+                      - link "Openshift" [ref=e713] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=openshift&version=4.20.13&parent=4.20.x&tab=main
+                        - generic [ref=e714]:
+                          - img [ref=e716]
+                          - generic [ref=e717]: Openshift
+                      - link "Palette eXtended Kubernetes (PXK)" [ref=e719] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes&version=1.37.0&parent=1.37.x&tab=main
+                        - generic [ref=e720]:
+                          - img [ref=e722]
+                          - generic [ref=e723]: Palette eXtended Kubernetes (PXK)
+                      - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e725] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-k8s&version=1.37.0&parent=1.37.x&tab=main
+                        - generic [ref=e726]:
+                          - img [ref=e728]
+                          - generic [ref=e729]: Palette eXtended Kubernetes Edge (PXK-E)
+                      - link "Palette Optimized Canonical" [ref=e731] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-canonical&version=1.35.8&parent=1.35.x&tab=main
+                        - generic [ref=e732]:
+                          - img [ref=e734]
+                          - generic [ref=e735]: Palette Optimized Canonical
+                      - link "Palette Optimized K3S" [ref=e737] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-k3s&version=1.36.2&parent=1.36.x&tab=main
+                        - generic [ref=e738]:
+                          - img [ref=e740]
+                          - generic [ref=e741]: Palette Optimized K3S
+                      - link "Palette Optimized RKE2" [ref=e743] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-rke2&version=1.36.2&parent=1.36.x&tab=main
+                        - generic [ref=e744]:
+                          - img [ref=e746]
+                          - generic [ref=e747]: Palette Optimized RKE2
+                      - link "RKE2" [ref=e749] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-rke2&version=1.36.3-rke2r1-build20260723&parent=1.36.x&tab=main
+                        - generic [ref=e750]:
+                          - img [ref=e752]
+                          - generic [ref=e753]: RKE2
+                  - generic [ref=e754]:
+                    - button "expanded Load Balancer" [expanded] [ref=e755] [cursor=pointer]:
+                      - img "expanded" [ref=e757]:
+                        - img [ref=e758]
+                      - generic [ref=e760]:
+                        - img [ref=e761]
+                        - text: Load Balancer
+                    - generic [ref=e766]:
+                      - link "AVI AKO Operator" [ref=e768] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=avi-ako&version=1.3.4&parent=1.3.x&tab=main
+                        - generic [ref=e769]:
+                          - img [ref=e771]
+                          - generic [ref=e772]: AVI AKO Operator
+                      - link "Avi Kubernetes Operator" [ref=e774] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=avi&version=1.9.2&parent=1.9.x&tab=main
+                        - generic [ref=e775]:
+                          - img [ref=e777]
+                          - generic [ref=e778]: Avi Kubernetes Operator
+                      - link "AWS Application Loadbalancer" [ref=e780] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-alb&version=3.6.2&parent=3.6.x&tab=main
+                        - generic [ref=e781]:
+                          - img [ref=e783]
+                          - generic [ref=e784]: AWS Application Loadbalancer
+                      - link "Citrix ADC" [ref=e786] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=lb-citrix-adc&version=1.7.6&parent=1.7.x&tab=main
+                        - generic [ref=e787]:
+                          - img [ref=e789]
+                          - generic [ref=e790]: Citrix ADC
+                      - link "ExternalDNS" [ref=e792] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=external-dns&version=0.23.0&parent=0.23.x&tab=main
+                        - generic [ref=e793]:
+                          - img [ref=e795]
+                          - generic [ref=e796]: ExternalDNS
+                      - link "F5" [ref=e798] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=f5&version=0.26.1&parent=0.26.x&tab=main
+                        - generic [ref=e799]:
+                          - img [ref=e801]
+                          - generic [ref=e802]: F5
+                      - link "f5-bigip-ctlr" [ref=e804] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=f5-bigip-ctlr&version=0.0.38&parent=0.0.x&tab=main
+                        - generic [ref=e805]:
+                          - img [ref=e807]
+                          - generic [ref=e808]: f5-bigip-ctlr
+                      - link "HAProxy Unified Gateway" [ref=e810] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=haproxy-unified-gateway&version=1.0.1&parent=1.0.x&tab=main
+                        - generic [ref=e811]:
+                          - img [ref=e813]
+                          - generic [ref=e814]: HAProxy Unified Gateway
+                      - link "kgateway" [ref=e816] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kgateway&version=v2.2.2&parent=2.2.x&tab=main
+                        - generic [ref=e817]:
+                          - img [ref=e819]
+                          - generic [ref=e820]: kgateway
+                      - link "MetalLB" [ref=e822] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=lb-metallb&version=0.13.7&parent=0.13.x&tab=main
+                        - generic [ref=e823]:
+                          - img [ref=e825]
+                          - generic [ref=e826]: MetalLB
+                      - link "MetalLB (Helm)" [ref=e828] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=lb-metallb-helm&version=0.16.1&parent=0.16.x&tab=main
+                        - generic [ref=e829]:
+                          - img [ref=e831]
+                          - generic [ref=e832]: MetalLB (Helm)
+                  - generic [ref=e833]:
+                    - button "expanded Logging" [expanded] [ref=e834] [cursor=pointer]:
+                      - img "expanded" [ref=e836]:
+                        - img [ref=e837]
+                      - generic [ref=e839]:
+                        - img [ref=e840]
+                        - text: Logging
+                    - generic [ref=e843]:
+                      - link "Datadog" [ref=e845] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=datadog&version=7.0.0&parent=7.0.x&tab=main
+                        - generic [ref=e846]:
+                          - img [ref=e848]
+                          - generic [ref=e849]: Datadog
+                      - link "ECK Operator" [ref=e851] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=elastic-operator&version=3.5.0&parent=3.5.x&tab=main
+                        - generic [ref=e852]:
+                          - img [ref=e854]
+                          - generic [ref=e855]: ECK Operator
+                      - link "ECK Stack" [ref=e857] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=elastic-stack&version=0.20.0&parent=0.20.x&tab=main
+                        - generic [ref=e858]:
+                          - img [ref=e860]
+                          - generic [ref=e861]: ECK Stack
+                      - link "Elasticsearch-Fluentd-Kibana" [ref=e863] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=elastic-fluentd-kibana&version=7.17.3&parent=7.17.x&tab=main
+                        - generic [ref=e864]:
+                          - img [ref=e866]
+                          - generic [ref=e867]: Elasticsearch-Fluentd-Kibana
+                      - link "Fluentbit" [ref=e869] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=fluentbit&version=5.1.1&parent=5.1.x&tab=main
+                        - generic [ref=e870]:
+                          - img [ref=e872]
+                          - generic [ref=e873]: Fluentbit
+                      - link "Splunk Connect for Kubernetes" [ref=e875] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=splunk&version=1.4.3&parent=1.4.x&tab=main
+                        - generic [ref=e876]:
+                          - img [ref=e878]
+                          - generic [ref=e879]: Splunk Connect for Kubernetes
+                  - generic [ref=e880]:
+                    - button "expanded Monitoring" [expanded] [ref=e881] [cursor=pointer]:
+                      - img "expanded" [ref=e883]:
+                        - img [ref=e884]
+                      - generic [ref=e886]:
+                        - img [ref=e887]
+                        - text: Monitoring
+                    - generic [ref=e890]:
+                      - link "AppDynamics" [ref=e892] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=appd&version=4.5.15&parent=4.5.x&tab=main
+                        - generic [ref=e893]:
+                          - img [ref=e895]
+                          - generic [ref=e896]: AppDynamics
+                      - link "Appdynamics Collector" [ref=e898] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=appdynamics-collector&version=1.13.684&parent=1.13.x&tab=main
+                        - generic [ref=e899]:
+                          - img [ref=e901]
+                          - generic [ref=e902]: Appdynamics Collector
+                      - link "Appdynamics Operator" [ref=e904] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=appdynamics-operator&version=1.14.168&parent=1.14.x&tab=main
+                        - generic [ref=e905]:
+                          - img [ref=e907]
+                          - generic [ref=e908]: Appdynamics Operator
+                      - link "Cilium Tetragon" [ref=e910] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=tetragon&version=1.7.1&parent=1.7.x&tab=main
+                        - generic [ref=e911]:
+                          - img [ref=e913]
+                          - generic [ref=e914]: Cilium Tetragon
+                      - link "Cisco AppDynamics Collectors" [ref=e916] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cisco-appdynamics-collectors&version=1.22.1287&parent=1.22.x&tab=main
+                        - generic [ref=e917]:
+                          - img [ref=e919]
+                          - generic [ref=e920]: Cisco AppDynamics Collectors
+                      - link "Cisco AppDynamics Operators" [ref=e922] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cisco-appdynamics-operators&version=1.22.374&parent=1.22.x&tab=main
+                        - generic [ref=e923]:
+                          - img [ref=e925]
+                          - generic [ref=e926]: Cisco AppDynamics Operators
+                      - link "CKS Kube Bench" [ref=e928] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kube-bench&version=0.6.7&parent=0.6.x&tab=main
+                        - generic [ref=e929]:
+                          - img [ref=e931]
+                          - generic [ref=e932]: CKS Kube Bench
+                      - link "Heartbeat" [ref=e934] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=heartbeat&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e935]:
+                          - img [ref=e937]
+                          - generic [ref=e938]: Heartbeat
+                      - link "Jaeger" [ref=e940] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=jaeger&version=4.13.1&parent=4.13.x&tab=main
+                        - generic [ref=e941]:
+                          - img [ref=e943]
+                          - generic [ref=e944]: Jaeger
+                      - link "Kubecost" [ref=e946] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cost-analyzer&version=1.103.3&parent=1.103.x&tab=main
+                        - generic [ref=e947]:
+                          - img [ref=e949]
+                          - generic [ref=e950]: Kubecost
+                      - link "KubeHunter" [ref=e952] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubehunter&version=0.6.5&parent=0.6.x&tab=main
+                        - generic [ref=e953]:
+                          - img [ref=e955]
+                          - generic [ref=e956]: KubeHunter
+                      - link "Kubevious" [ref=e958] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevious&version=1.0.10&parent=1.0.x&tab=main
+                        - generic [ref=e959]:
+                          - img [ref=e961]
+                          - generic [ref=e962]: Kubevious
+                      - link "KubeWatch" [ref=e964] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubewatch&version=1.0.7&parent=1.0.x&tab=main
+                        - generic [ref=e965]:
+                          - img [ref=e967]
+                          - generic [ref=e968]: KubeWatch
+                      - link "Loki" [ref=e970] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=loki&version=3.6.7&parent=3.6.x&tab=main
+                        - generic [ref=e971]:
+                          - img [ref=e973]
+                          - generic [ref=e974]: Loki
+                      - link "Medik8s" [ref=e976] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=medik8s&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e977]:
+                          - img [ref=e979]
+                          - generic [ref=e980]: Medik8s
+                      - link "Metrics Server" [ref=e982] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=metrics-server&version=3.13.1&parent=3.13.x&tab=main
+                        - generic [ref=e983]:
+                          - img [ref=e985]
+                          - generic [ref=e986]: Metrics Server
+                      - link "New Relic" [ref=e988] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=newrelic&version=1.13.2&parent=1.13.x&tab=main
+                        - generic [ref=e989]:
+                          - img [ref=e991]
+                          - generic [ref=e992]: New Relic
+                      - link "OpenObserve" [ref=e994] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=openobserve&version=1.0.3&parent=1.0.x&tab=main
+                        - generic [ref=e995]:
+                          - img [ref=e997]
+                          - generic [ref=e998]: OpenObserve
+                      - link "Opentelemetry" [ref=e1000] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=opentelemetry&version=0.159.0&parent=0.159.x&tab=main
+                        - generic [ref=e1001]:
+                          - img [ref=e1003]
+                          - generic [ref=e1004]: Opentelemetry
+                      - link "Outcold Solutions" [ref=e1006] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=outcold-monitoring&version=5.0.0&parent=5.0.x&tab=main
+                        - generic [ref=e1007]:
+                          - img [ref=e1009]
+                          - generic [ref=e1010]: Outcold Solutions
+                      - link "postgresql" [ref=e1012] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=postgresql&version=1.29.0&parent=1.29.x&tab=main
+                        - generic [ref=e1013]:
+                          - img [ref=e1015]
+                          - generic [ref=e1016]: postgresql
+                      - link "Prometheus - Grafana" [ref=e1018] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=prometheus-operator&version=92.14.1&parent=92.14.x&tab=main
+                        - generic [ref=e1019]:
+                          - img [ref=e1021]
+                          - generic [ref=e1022]: Prometheus - Grafana
+                      - link "Prometheus Agent" [ref=e1024] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=prometheus-agent&version=29.39.0&parent=29.39.x&tab=main
+                        - generic [ref=e1025]:
+                          - img [ref=e1027]
+                          - generic [ref=e1028]: Prometheus Agent
+                      - link "Reloader" [ref=e1030] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=reloader&version=1.4.22&parent=1.4.x&tab=main
+                        - generic [ref=e1031]:
+                          - img [ref=e1033]
+                          - generic [ref=e1034]: Reloader
+                      - link "SignalFX" [ref=e1036] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=signalfx&version=4.19.2&parent=4.19.x&tab=main
+                        - generic [ref=e1037]:
+                          - img [ref=e1039]
+                          - generic [ref=e1040]: SignalFX
+                      - link "Spectro Cluster Metrics" [ref=e1042] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-cluster-metrics&version=4.4.0-rev1&parent=4.4.x&tab=main
+                        - generic [ref=e1043]:
+                          - img [ref=e1045]
+                          - generic [ref=e1046]: Spectro Cluster Metrics
+                      - link "Spectro Grafana Dashboards" [ref=e1048] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-grafana-dashboards&version=4.0.0&parent=4.0.x&tab=main
+                        - generic [ref=e1049]:
+                          - img [ref=e1051]
+                          - generic [ref=e1052]: Spectro Grafana Dashboards
+                      - link "Spectrocloud Grafana Dashboards" [ref=e1054] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectrocloud-grafana-dashboards&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1055]:
+                          - img [ref=e1057]
+                          - generic [ref=e1058]: Spectrocloud Grafana Dashboards
+                      - link "StormForge Agent" [ref=e1060] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=stormforge-agent&version=2.28.5&parent=2.28.x&tab=main
+                        - generic [ref=e1061]:
+                          - img [ref=e1063]
+                          - generic [ref=e1064]: StormForge Agent
+                      - link "Stormforge-Optimize-Live" [ref=e1066] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=stormforge-optimize-live&version=0.7.2&parent=0.7.x&tab=main
+                        - generic [ref=e1067]:
+                          - img [ref=e1069]
+                          - generic [ref=e1070]: Stormforge-Optimize-Live
+                      - link "Sumo Logic" [ref=e1072] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sumologic&version=0.14.0&parent=0.14.x&tab=main
+                        - generic [ref=e1073]:
+                          - img [ref=e1075]
+                          - generic [ref=e1076]: Sumo Logic
+                      - link "Thanos" [ref=e1078] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=thanos&version=17.6.0&parent=17.6.x&tab=main
+                        - generic [ref=e1079]:
+                          - img [ref=e1081]
+                          - generic [ref=e1082]: Thanos
+                      - link "unCtl" [ref=e1084] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=unctl&version=1.1.0&parent=1.1.x&tab=main
+                        - generic [ref=e1085]:
+                          - img [ref=e1087]
+                          - generic [ref=e1088]: unCtl
+                  - generic [ref=e1089]:
+                    - button "expanded Network" [expanded] [ref=e1090] [cursor=pointer]:
+                      - img "expanded" [ref=e1092]:
+                        - img [ref=e1093]
+                      - generic [ref=e1095]:
+                        - img [ref=e1096]
+                        - text: Network
+                    - generic [ref=e1099]:
+                      - link "Antrea" [ref=e1101] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=antrea&version=1.9.0&parent=1.9.x&tab=main
+                        - generic [ref=e1102]:
+                          - img [ref=e1104]
+                          - generic [ref=e1105]: Antrea
+                      - link "Antrea" [ref=e1107] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-antrea&version=2.7.0&parent=2.7.x&tab=main
+                        - generic [ref=e1108]:
+                          - img [ref=e1110]
+                          - generic [ref=e1111]: Antrea
+                      - link "AWS VPC CNI" [ref=e1113] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-aws-vpc-eks&version=1.0&parent=1.0.x&tab=main
+                        - generic [ref=e1114]:
+                          - img [ref=e1116]
+                          - generic [ref=e1117]: AWS VPC CNI
+                      - link "AWS VPC CNI (Helm)" [ref=e1119] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-aws-vpc-eks-helm&version=1.23.2&parent=1.23.x&tab=main
+                        - generic [ref=e1120]:
+                          - img [ref=e1122]
+                          - generic [ref=e1123]: AWS VPC CNI (Helm)
+                      - link "Azure CNI" [ref=e1125] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-azure&version=1.7.9-1&parent=1.7.x&tab=main
+                        - generic [ref=e1126]:
+                          - img [ref=e1128]
+                          - generic [ref=e1129]: Azure CNI
+                      - link "Calico" [ref=e1131] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-calico&version=3.33.0&parent=3.33.x&tab=main
+                        - generic [ref=e1132]:
+                          - img [ref=e1134]
+                          - generic [ref=e1135]: Calico
+                      - link "Calico (Azure)" [ref=e1137] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-calico-azure&version=3.33.0&parent=3.33.x&tab=main
+                        - generic [ref=e1138]:
+                          - img [ref=e1140]
+                          - generic [ref=e1141]: Calico (Azure)
+                      - link "Cilium" [ref=e1143] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-cilium-oss&version=1.20.3&parent=1.20.x&tab=main
+                        - generic [ref=e1144]:
+                          - img [ref=e1146]
+                          - generic [ref=e1147]: Cilium
+                      - link "Cilium CNI (Canonical K8s)" [ref=e1149] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-cilium-canonical&version=1.16.3&parent=1.16.x&tab=main
+                        - generic [ref=e1150]:
+                          - img [ref=e1152]
+                          - generic [ref=e1153]: Cilium CNI (Canonical K8s)
+                      - link "Custom CNI" [ref=e1155] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-custom&version=0.2.0&parent=0.2.x&tab=main
+                        - generic [ref=e1156]:
+                          - img [ref=e1158]
+                          - generic [ref=e1159]: Custom CNI
+                      - link "Flannel" [ref=e1161] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-flannel&version=0.28.10&parent=0.28.x&tab=main
+                        - generic [ref=e1162]:
+                          - img [ref=e1164]
+                          - generic [ref=e1165]: Flannel
+                      - link "GKE VPC Native CNI" [ref=e1167] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-vpc-native-gke&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1168]:
+                          - img [ref=e1170]
+                          - generic [ref=e1171]: GKE VPC Native CNI
+                      - link "Kubenet" [ref=e1173] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-kubenet&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1174]:
+                          - img [ref=e1176]
+                          - generic [ref=e1177]: Kubenet
+                      - link "Nvidia OVN-Kubernetes" [ref=e1179] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-nvidia-ovn-kubernetes&version=25.7.0&parent=25.7.x&tab=main
+                        - generic [ref=e1180]:
+                          - img [ref=e1182]
+                          - generic [ref=e1183]: Nvidia OVN-Kubernetes
+                      - link "ovn-kubernetes" [ref=e1185] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ovn-kubernetes&version=4.20.13&parent=4.20.x&tab=main
+                        - generic [ref=e1186]:
+                          - img [ref=e1188]
+                          - generic [ref=e1189]: ovn-kubernetes
+                      - link "OVN-Kubernetes CNI for OCP" [ref=e1191] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ovn-kubernetes-ocp&version=1.2.0&parent=1.2.x&tab=main
+                        - generic [ref=e1192]:
+                          - img [ref=e1194]
+                          - generic [ref=e1195]: OVN-Kubernetes CNI for OCP
+                      - link "Romana" [ref=e1197] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-romana&version=2.0.0&parent=2.0.x&tab=main
+                        - generic [ref=e1198]:
+                          - img [ref=e1200]
+                          - generic [ref=e1201]: Romana
+                      - link "Tigera Operator" [ref=e1203] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=tigera-operator&version=3.33.0&parent=3.33.x&tab=main
+                        - generic [ref=e1204]:
+                          - img [ref=e1206]
+                          - generic [ref=e1207]: Tigera Operator
+                      - link "Weave Net" [ref=e1209] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-weavenet&version=2.6.0&parent=2.6.x&tab=main
+                        - generic [ref=e1210]:
+                          - img [ref=e1212]
+                          - generic [ref=e1213]: Weave Net
+                  - generic [ref=e1214]:
+                    - button "expanded Operating System" [expanded] [ref=e1215] [cursor=pointer]:
+                      - img "expanded" [ref=e1217]:
+                        - img [ref=e1218]
+                      - generic [ref=e1220]:
+                        - img [ref=e1221]
+                        - text: Operating System
+                    - generic [ref=e1224]:
+                      - link "Amazon EKS optimized Linux" [ref=e1226] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=amazon-linux-eks&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1227]:
+                          - img [ref=e1229]
+                          - generic [ref=e1230]: Amazon EKS optimized Linux
+                      - link "Azure Kubenetes Service OS" [ref=e1232] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=azure-linux&version=3.0&parent=3.0.x&tab=main
+                        - generic [ref=e1233]:
+                          - img [ref=e1235]
+                          - generic [ref=e1236]: Azure Kubenetes Service OS
+                      - link "Bring Your Own Openshift OS (BYOOS)" [ref=e1238] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=openshift-byoi&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1239]:
+                          - img [ref=e1241]
+                          - generic [ref=e1242]: Bring Your Own Openshift OS (BYOOS)
+                      - link "Bring Your Own OS (BYOOS)" [ref=e1244] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=generic-byoi&version=2.0.0&parent=2.0.x&tab=main
+                        - generic [ref=e1245]:
+                          - img [ref=e1247]
+                          - generic [ref=e1248]: Bring Your Own OS (BYOOS)
+                      - link "BYOOS (Edge - Agent Mode)" [ref=e1250] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=byoi-agent-mode&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1251]:
+                          - img [ref=e1253]
+                          - generic [ref=e1254]: BYOOS (Edge - Agent Mode)
+                      - link "BYOOS (Edge)" [ref=e1256] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=edge-native-byoi&version=2.1.0&parent=2.1.x&tab=main
+                        - generic [ref=e1257]:
+                          - img [ref=e1259]
+                          - generic [ref=e1260]: BYOOS (Edge)
+                      - link "CentOS" [ref=e1262] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=centos-gcp&version=8.0.1905&parent=8.0.x&tab=main
+                        - generic [ref=e1263]:
+                          - img [ref=e1265]
+                          - generic [ref=e1266]: CentOS
+                      - link "Container-Optimized OS" [ref=e1268] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cos-gke&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1269]:
+                          - img [ref=e1271]
+                          - generic [ref=e1272]: Container-Optimized OS
+                      - link "Linux" [ref=e1274] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-aks&version=22.04&parent=22.04.x&tab=main
+                        - generic [ref=e1275]:
+                          - img [ref=e1277]
+                          - generic [ref=e1278]: Linux
+                      - link "Operating System for Custom Cloud" [ref=e1280] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=custom_os&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1281]:
+                          - img [ref=e1283]
+                          - generic [ref=e1284]: Operating System for Custom Cloud
+                      - link "RHEL" [ref=e1286] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=rhel-vmware&version=8.1&parent=8.1.x&tab=main
+                        - generic [ref=e1287]:
+                          - img [ref=e1289]
+                          - generic [ref=e1290]: RHEL
+                      - link "Ubuntu (AWS)" [ref=e1292] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-aws&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1293]:
+                          - img [ref=e1295]
+                          - generic [ref=e1296]: Ubuntu (AWS)
+                      - link "Ubuntu (Azure)" [ref=e1298] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-azure&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1299]:
+                          - img [ref=e1301]
+                          - generic [ref=e1302]: Ubuntu (Azure)
+                      - link "Ubuntu (Cloudstack)" [ref=e1304] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-cloudstack&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1305]:
+                          - img [ref=e1307]
+                          - generic [ref=e1308]: Ubuntu (Cloudstack)
+                      - link "Ubuntu (Edge)" [ref=e1310] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-edge&version=20.04&parent=20.04.x&tab=main
+                        - generic [ref=e1311]:
+                          - img [ref=e1313]
+                          - generic [ref=e1314]: Ubuntu (Edge)
+                      - link "Ubuntu (GCP)" [ref=e1316] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-gcp&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1317]:
+                          - img [ref=e1319]
+                          - generic [ref=e1320]: Ubuntu (GCP)
+                      - link "Ubuntu (MAAS)" [ref=e1322] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-maas&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1323]:
+                          - img [ref=e1325]
+                          - generic [ref=e1326]: Ubuntu (MAAS)
+                      - link "Ubuntu (vSphere)" [ref=e1328] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-vsphere&version=24.04&parent=24.04.x&tab=main
+                        - generic [ref=e1329]:
+                          - img [ref=e1331]
+                          - generic [ref=e1332]: Ubuntu (vSphere)
+                      - link "Ubuntu for Canonical K8s (MAAS)" [ref=e1334] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ubuntu-maas-ck8s&version=22.04&parent=22.04.x&tab=main
+                        - generic [ref=e1335]:
+                          - img [ref=e1337]
+                          - generic [ref=e1338]: Ubuntu for Canonical K8s (MAAS)
+                  - generic [ref=e1339]:
+                    - button "expanded Registry" [expanded] [ref=e1340] [cursor=pointer]:
+                      - img "expanded" [ref=e1342]:
+                        - img [ref=e1343]
+                      - generic [ref=e1345]:
+                        - img [ref=e1346]
+                        - text: Registry
+                    - generic [ref=e1349]:
+                      - link "Harbor" [ref=e1351] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=harbor&version=1.19.4&parent=1.19.x&tab=main
+                        - generic [ref=e1352]:
+                          - img [ref=e1354]
+                          - generic [ref=e1355]: Harbor
+                      - link "Harbor Edge-Native Config" [ref=e1357] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=harbor-edge-native-config&version=1.1.2&parent=1.1.x&tab=main
+                        - generic [ref=e1358]:
+                          - img [ref=e1360]
+                          - generic [ref=e1361]: Harbor Edge-Native Config
+                      - link "Registry Connect" [ref=e1363] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=registry-connect&version=0.2.3&parent=0.2.x&tab=main
+                        - generic [ref=e1364]:
+                          - img [ref=e1366]
+                          - generic [ref=e1367]: Registry Connect
+                      - link "Registry Credentials" [ref=e1369] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=registry-creds&version=1.10.0&parent=1.10.x&tab=main
+                        - generic [ref=e1370]:
+                          - img [ref=e1372]
+                          - generic [ref=e1373]: Registry Credentials
+                      - link "Spegel" [ref=e1375] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spegel&version=0.7.4&parent=0.7.x&tab=main
+                        - generic [ref=e1376]:
+                          - img [ref=e1378]
+                          - generic [ref=e1379]: Spegel
+                      - link "Trow" [ref=e1381] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=trow&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1382]:
+                          - img [ref=e1384]
+                          - generic [ref=e1385]: Trow
+                      - link "Zot Registry" [ref=e1387] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=zot-registry&version=0.1.125&parent=0.1.x&tab=main
+                        - generic [ref=e1388]:
+                          - img [ref=e1390]
+                          - generic [ref=e1391]: Zot Registry
+                  - generic [ref=e1392]:
+                    - button "expanded Security" [expanded] [ref=e1393] [cursor=pointer]:
+                      - img "expanded" [ref=e1395]:
+                        - img [ref=e1396]
+                      - generic [ref=e1398]:
+                        - img [ref=e1399]
+                        - text: Security
+                    - generic [ref=e1402]:
+                      - link "Amazon EKS Pod Identity Agent" [ref=e1404] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=eks-pod-identity-agent&version=1.2.0&parent=1.2.x&tab=main
+                        - generic [ref=e1405]:
+                          - img [ref=e1407]
+                          - generic [ref=e1408]: Amazon EKS Pod Identity Agent
+                      - link "Archivista" [ref=e1410] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=archivista&version=0.8.0&parent=0.8.x&tab=main
+                        - generic [ref=e1411]:
+                          - img [ref=e1413]
+                          - generic [ref=e1414]: Archivista
+                      - link "Calico Network Policy" [ref=e1416] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=calico-network-policy&version=3.33.0&parent=3.33.x&tab=main
+                        - generic [ref=e1417]:
+                          - img [ref=e1419]
+                          - generic [ref=e1420]: Calico Network Policy
+                      - link "Cert Manager" [ref=e1422] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=certmanager&version=1.9.1&parent=1.9.x&tab=main
+                        - generic [ref=e1423]:
+                          - img [ref=e1425]
+                          - generic [ref=e1426]: Cert Manager
+                      - link "Cert Manager" [ref=e1428] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cert-manager&version=1.21.2&parent=1.21.x&tab=main
+                        - generic [ref=e1429]:
+                          - img [ref=e1431]
+                          - generic [ref=e1432]: Cert Manager
+                      - link "CKS Gvisor" [ref=e1434] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=gvisor&version=0.1.0&parent=0.1.x&tab=main
+                        - generic [ref=e1435]:
+                          - img [ref=e1437]
+                          - generic [ref=e1438]: CKS Gvisor
+                      - link "CKS Kubesec" [ref=e1440] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubesec&version=2.11.4&parent=2.11.x&tab=main
+                        - generic [ref=e1441]:
+                          - img [ref=e1443]
+                          - generic [ref=e1444]: CKS Kubesec
+                      - link "CKS Seccomp" [ref=e1446] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=seccomp&version=0.4.2&parent=0.4.x&tab=main
+                        - generic [ref=e1447]:
+                          - img [ref=e1449]
+                          - generic [ref=e1450]: CKS Seccomp
+                      - link "cks-gatekeeper" [ref=e1452] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=gatekeeper&version=3.8.0&parent=3.8.x&tab=main
+                        - generic [ref=e1453]:
+                          - img [ref=e1455]
+                          - generic [ref=e1456]: cks-gatekeeper
+                      - link "Cloudanix" [ref=e1458] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cloudanix&version=0.0.2&parent=0.0.x&tab=main
+                        - generic [ref=e1459]:
+                          - img [ref=e1461]
+                          - generic [ref=e1462]: Cloudanix
+                      - link "Falco" [ref=e1464] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=falco&version=9.2.1&parent=9.2.x&tab=main
+                        - generic [ref=e1465]:
+                          - img [ref=e1467]
+                          - generic [ref=e1468]: Falco
+                      - link "KubeArmor" [ref=e1470] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubearmor&version=1.4.6&parent=1.4.x&tab=main
+                        - generic [ref=e1471]:
+                          - img [ref=e1473]
+                          - generic [ref=e1474]: KubeArmor
+                      - link "Kubebench" [ref=e1476] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubebench&version=0.16.7&parent=0.16.x&tab=main
+                        - generic [ref=e1477]:
+                          - img [ref=e1479]
+                          - generic [ref=e1480]: Kubebench
+                      - link "OpenPolicyAgent" [ref=e1482] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=open-policy-agent&version=3.23.1&parent=3.23.x&tab=main
+                        - generic [ref=e1483]:
+                          - img [ref=e1485]
+                          - generic [ref=e1486]: OpenPolicyAgent
+                      - link "Prisma Cloud Compute" [ref=e1488] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=prismacloud&version=20.09.0&parent=20.09.x&tab=main
+                        - generic [ref=e1489]:
+                          - img [ref=e1491]
+                          - generic [ref=e1492]: Prisma Cloud Compute
+                      - link "Sysdig" [ref=e1494] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sysdig&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1495]:
+                          - img [ref=e1497]
+                          - generic [ref=e1498]: Sysdig
+                      - link "Trivy" [ref=e1500] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=trivy&version=0.4.12&parent=0.4.x&tab=main
+                        - generic [ref=e1501]:
+                          - img [ref=e1503]
+                          - generic [ref=e1504]: Trivy
+                      - link "Twistlock" [ref=e1506] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=twistlock&version=19.7.0&parent=19.7.x&tab=main
+                        - generic [ref=e1507]:
+                          - img [ref=e1509]
+                          - generic [ref=e1510]: Twistlock
+                      - link "Vault" [ref=e1512] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vault&version=0.34.1&parent=0.34.x&tab=main
+                        - generic [ref=e1513]:
+                          - img [ref=e1515]
+                          - generic [ref=e1516]: Vault
+                  - generic [ref=e1517]:
+                    - button "expanded Service Mesh" [expanded] [ref=e1518] [cursor=pointer]:
+                      - img "expanded" [ref=e1520]:
+                        - img [ref=e1521]
+                      - generic [ref=e1523]:
+                        - img [ref=e1524]
+                        - text: Service Mesh
+                    - generic [ref=e1527]:
+                      - link "Consul" [ref=e1529] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=consul&version=0.16.2&parent=0.16.x&tab=main
+                        - generic [ref=e1530]:
+                          - img [ref=e1532]
+                          - generic [ref=e1533]: Consul
+                      - link "Istio" [ref=e1535] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=istio&version=1.30.4&parent=1.30.x&tab=main
+                        - generic [ref=e1536]:
+                          - img [ref=e1538]
+                          - generic [ref=e1539]: Istio
+                      - link "Linkerd" [ref=e1541] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=linkerd&version=2.7.0&parent=2.7.x&tab=main
+                        - generic [ref=e1542]:
+                          - img [ref=e1544]
+                          - generic [ref=e1545]: Linkerd
+                      - link "Linkerd Control Plane" [ref=e1547] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=linkerd-control-plane&version=26.8.4&parent=26.8.x&tab=main
+                        - generic [ref=e1548]:
+                          - img [ref=e1550]
+                          - generic [ref=e1551]: Linkerd Control Plane
+                  - generic [ref=e1552]:
+                    - button "expanded Storage" [expanded] [ref=e1553] [cursor=pointer]:
+                      - img "expanded" [ref=e1555]:
+                        - img [ref=e1556]
+                      - generic [ref=e1558]:
+                        - img [ref=e1559]
+                        - text: Storage
+                    - generic [ref=e1562]:
+                      - link "Amazon Cloud Native" [ref=e1564] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-aws&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1565]:
+                          - img [ref=e1567]
+                          - generic [ref=e1568]: Amazon Cloud Native
+                      - link "Amazon EBS CSI" [ref=e1570] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-aws-ebs&version=1.67.1&parent=1.67.x&tab=main
+                        - generic [ref=e1571]:
+                          - img [ref=e1573]
+                          - generic [ref=e1574]: Amazon EBS CSI
+                      - link "Amazon EFS" [ref=e1576] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-aws-efs&version=3.5.2&parent=3.5.x&tab=main
+                        - generic [ref=e1577]:
+                          - img [ref=e1579]
+                          - generic [ref=e1580]: Amazon EFS
+                      - link "Azure Disk" [ref=e1582] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-azure&version=1.36.0&parent=1.36.x&tab=main
+                        - generic [ref=e1583]:
+                          - img [ref=e1585]
+                          - generic [ref=e1586]: Azure Disk
+                      - link "Ceph CSI RBD" [ref=e1588] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ceph-rbd&version=3.11.0&parent=3.11.x&tab=main
+                        - generic [ref=e1589]:
+                          - img [ref=e1591]
+                          - generic [ref=e1592]: Ceph CSI RBD
+                      - link "Cloudstack CSI driver" [ref=e1594] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cloudstack-csi-driver&version=2.5.0&parent=2.5.x&tab=main
+                        - generic [ref=e1595]:
+                          - img [ref=e1597]
+                          - generic [ref=e1598]: Cloudstack CSI driver
+                      - link "CSI for custom cloud" [ref=e1600] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=custom-csi&version=2.0.0&parent=2.0.x&tab=main
+                        - generic [ref=e1601]:
+                          - img [ref=e1603]
+                          - generic [ref=e1604]: CSI for custom cloud
+                      - link "Dell CSM Operator" [ref=e1606] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-dell-csm-operator&version=1.12.1&parent=1.12.x&tab=main
+                        - generic [ref=e1607]:
+                          - img [ref=e1609]
+                          - generic [ref=e1610]: Dell CSM Operator
+                      - link "GCE Persistent Disk" [ref=e1612] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-gcp&version=1.0&parent=1.0.x&tab=main
+                        - generic [ref=e1613]:
+                          - img [ref=e1615]
+                          - generic [ref=e1616]: GCE Persistent Disk
+                      - link "GCE Persistent Disk CSI" [ref=e1618] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-gcp-driver&version=1.27.1&parent=1.27.x&tab=main
+                        - generic [ref=e1619]:
+                          - img [ref=e1621]
+                          - generic [ref=e1622]: GCE Persistent Disk CSI
+                      - link "GKE Managed GCE Persistent Disk CSI" [ref=e1624] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=gke-csi-gcp-driver&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1625]:
+                          - img [ref=e1627]
+                          - generic [ref=e1628]: GKE Managed GCE Persistent Disk CSI
+                      - link "Gluster" [ref=e1630] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-gluster&version=1.2.0&parent=1.2.x&tab=main
+                        - generic [ref=e1631]:
+                          - img [ref=e1633]
+                          - generic [ref=e1634]: Gluster
+                      - link "Hitachi Storage Plug-in for Containers" [ref=e1636] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-hitachi-hspc&version=3.18.3&parent=3.18.x&tab=main
+                        - generic [ref=e1637]:
+                          - img [ref=e1639]
+                          - generic [ref=e1640]: Hitachi Storage Plug-in for Containers
+                      - link "HPE CSI Driver for Kubernetes" [ref=e1642] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=hpe-csi-driver&version=3.3.0&parent=3.3.x&tab=main
+                        - generic [ref=e1643]:
+                          - img [ref=e1645]
+                          - generic [ref=e1646]: HPE CSI Driver for Kubernetes
+                      - link "Local Path Provisioner" [ref=e1648] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-local-path-provisioner&version=0.0.37&parent=0.0.x&tab=main
+                        - generic [ref=e1649]:
+                          - img [ref=e1651]
+                          - generic [ref=e1652]: Local Path Provisioner
+                      - link "Longhorn" [ref=e1654] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-longhorn&version=1.13.0&parent=1.13.x&tab=main
+                        - generic [ref=e1655]:
+                          - img [ref=e1657]
+                          - generic [ref=e1658]: Longhorn
+                      - link "MaaS No-Provisioner" [ref=e1660] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-maas-volume&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1661]:
+                          - img [ref=e1663]
+                          - generic [ref=e1664]: MaaS No-Provisioner
+                      - link "NFS" [ref=e1666] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-nfs&version=3.1.0&parent=3.1.x&tab=main
+                        - generic [ref=e1667]:
+                          - img [ref=e1669]
+                          - generic [ref=e1670]: NFS
+                      - link "NFS CSI Driver" [ref=e1672] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-driver-nfs&version=4.13.2&parent=4.13.x&tab=main
+                        - generic [ref=e1673]:
+                          - img [ref=e1675]
+                          - generic [ref=e1676]: NFS CSI Driver
+                      - link "NFS Subdir External" [ref=e1678] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-nfs-subdir-external&version=4.0.13&parent=4.0.x&tab=main
+                        - generic [ref=e1679]:
+                          - img [ref=e1681]
+                          - generic [ref=e1682]: NFS Subdir External
+                      - link "Nutanix CSI" [ref=e1684] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nutanix-csi&version=2.6.6&parent=2.6.x&tab=main
+                        - generic [ref=e1685]:
+                          - img [ref=e1687]
+                          - generic [ref=e1688]: Nutanix CSI
+                      - link "Openstack Cinder CSI" [ref=e1690] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-openstack-cinder&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1691]:
+                          - img [ref=e1693]
+                          - generic [ref=e1694]: Openstack Cinder CSI
+                      - link "Piraeus CSI" [ref=e1696] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=piraeus-csi&version=2.8.0&parent=2.8.x&tab=main
+                        - generic [ref=e1697]:
+                          - img [ref=e1699]
+                          - generic [ref=e1700]: Piraeus CSI
+                      - link "Piraeus Operator" [ref=e1702] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=piraeus-operator&version=2.12.0&parent=2.12.x&tab=main
+                        - generic [ref=e1703]:
+                          - img [ref=e1705]
+                          - generic [ref=e1706]: Piraeus Operator
+                      - link "Portworx with Operator" [ref=e1708] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-portworx-generic&version=3.7.0&parent=3.7.x&tab=main
+                        - generic [ref=e1709]:
+                          - img [ref=e1711]
+                          - generic [ref=e1712]: Portworx with Operator
+                      - link "Rook-Ceph" [ref=e1714] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-rook-ceph&version=1.18.0&parent=1.18.x&tab=main
+                        - generic [ref=e1715]:
+                          - img [ref=e1717]
+                          - generic [ref=e1718]: Rook-Ceph
+                      - link "Rook-Ceph (Helm)" [ref=e1720] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-rook-ceph-helm&version=1.20.7&parent=1.20.x&tab=main
+                        - generic [ref=e1721]:
+                          - img [ref=e1723]
+                          - generic [ref=e1724]: Rook-Ceph (Helm)
+                      - link "Trident" [ref=e1726] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-trident&version=26.06.0&parent=26.06.x&tab=main
+                        - generic [ref=e1727]:
+                          - img [ref=e1729]
+                          - generic [ref=e1730]: Trident
+                      - link "vSphere CSI" [ref=e1732] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-vsphere-csi&version=3.8.0&parent=3.8.x&tab=main
+                        - generic [ref=e1733]:
+                          - img [ref=e1735]
+                          - generic [ref=e1736]: vSphere CSI
+                      - link "vSphere No-Provisioner" [ref=e1738] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-vsphere-noprovisioner&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1739]:
+                          - img [ref=e1741]
+                          - generic [ref=e1742]: vSphere No-Provisioner
+                      - link "vSphere Storage Class - CSI Driver" [ref=e1744] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-vsphere&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1745]:
+                          - img [ref=e1747]
+                          - generic [ref=e1748]: vSphere Storage Class - CSI Driver
+                      - link "vSphere Volume" [ref=e1750] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-vsphere-volume&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1751]:
+                          - img [ref=e1753]
+                          - generic [ref=e1754]: vSphere Volume
+                      - link "WEKA Operator" [ref=e1756] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=weka-operator&version=v1.12.0&parent=v1.12.x&tab=main
+                        - generic [ref=e1757]:
+                          - img [ref=e1759]
+                          - generic [ref=e1760]: WEKA Operator
+                  - generic [ref=e1761]:
+                    - button "expanded System App" [expanded] [ref=e1762] [cursor=pointer]:
+                      - img "expanded" [ref=e1764]:
+                        - img [ref=e1765]
+                      - generic [ref=e1767]:
+                        - img [ref=e1768]
+                        - text: System App
+                    - generic [ref=e1771]:
+                      - link "Amazon EFS" [ref=e1773] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-efs&version=3.5.2&parent=3.5.x&tab=main
+                        - generic [ref=e1774]:
+                          - img [ref=e1776]
+                          - generic [ref=e1777]: Amazon EFS
+                      - link "Argo CD" [ref=e1779] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=argo-cd&version=10.11.6&parent=10.11.x&tab=main
+                        - generic [ref=e1780]:
+                          - img [ref=e1782]
+                          - generic [ref=e1783]: Argo CD
+                      - link "Argo-Rollouts" [ref=e1785] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=argo-rollouts&version=1.10.0&parent=1.10.x&tab=main
+                        - generic [ref=e1786]:
+                          - img [ref=e1788]
+                          - generic [ref=e1789]: Argo-Rollouts
+                      - link "AWS Cluster Autoscaler" [ref=e1791] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-cluster-autoscaler&version=1.35.0&parent=1.35.x&tab=main
+                        - generic [ref=e1792]:
+                          - img [ref=e1794]
+                          - generic [ref=e1795]: AWS Cluster Autoscaler
+                      - link "AWS SSM Agent" [ref=e1797] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-ssm-agent&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1798]:
+                          - img [ref=e1800]
+                          - generic [ref=e1801]: AWS SSM Agent
+                      - link "BYO Manifest" [ref=e1803] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-byo-manifest&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1804]:
+                          - img [ref=e1806]
+                          - generic [ref=e1807]: BYO Manifest
+                      - link "Calico (EKS)" [ref=e1809] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=aws-eks-calico&version=1.19.0&parent=1.19.x&tab=main
+                        - generic [ref=e1810]:
+                          - img [ref=e1812]
+                          - generic [ref=e1813]: Calico (EKS)
+                      - link "Ceph CSI RBD" [ref=e1815] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=ceph-rbd-addon&version=3.11.0&parent=3.11.x&tab=main
+                        - generic [ref=e1816]:
+                          - img [ref=e1818]
+                          - generic [ref=e1819]: Ceph CSI RBD
+                      - link "CloudCasa Kubernetes Agent" [ref=e1821] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cloudcasa&version=3.1.0&parent=3.1.x&tab=main
+                        - generic [ref=e1822]:
+                          - img [ref=e1824]
+                          - generic [ref=e1825]: CloudCasa Kubernetes Agent
+                      - link "CloudNativePG" [ref=e1827] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cloudnative-pg&version=0.29.0&parent=0.29.x&tab=main
+                        - generic [ref=e1828]:
+                          - img [ref=e1830]
+                          - generic [ref=e1831]: CloudNativePG
+                      - link "Coder" [ref=e1833] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=coder-chart&version=2.23.3&parent=2.23.x&tab=main
+                        - generic [ref=e1834]:
+                          - img [ref=e1836]
+                          - generic [ref=e1837]: Coder
+                      - link "Crossplane" [ref=e1839] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=crossplane&version=1.7.0&parent=1.7.x&tab=main
+                        - generic [ref=e1840]:
+                          - img [ref=e1842]
+                          - generic [ref=e1843]: Crossplane
+                      - link "CSI Snapshotter" [ref=e1845] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=external-snapshotter&version=4.0.1&parent=4.0.x&tab=main
+                        - generic [ref=e1846]:
+                          - img [ref=e1848]
+                          - generic [ref=e1849]: CSI Snapshotter
+                      - link "Default storage classes" [ref=e1851] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=konvoy-defaultstorageclass&version=0.0.6&parent=0.0.x&tab=main
+                        - generic [ref=e1852]:
+                          - img [ref=e1854]
+                          - generic [ref=e1855]: Default storage classes
+                      - link "Dell CSM Operator" [ref=e1857] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csm-operator-addon&version=1.5.0&parent=1.5.x&tab=main
+                        - generic [ref=e1858]:
+                          - img [ref=e1860]
+                          - generic [ref=e1861]: Dell CSM Operator
+                      - link "Dell CSM Operator" [ref=e1863] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=dell-csm-operator-addon&version=1.11.2&parent=1.11.x&tab=main
+                        - generic [ref=e1864]:
+                          - img [ref=e1866]
+                          - generic [ref=e1867]: Dell CSM Operator
+                      - link "Falcon Sensor" [ref=e1869] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=falcon-sensor&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e1870]:
+                          - img [ref=e1872]
+                          - generic [ref=e1873]: Falcon Sensor
+                      - link "Flux2" [ref=e1875] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=flux-cd&version=2.19.1&parent=2.19.x&tab=main
+                        - generic [ref=e1876]:
+                          - img [ref=e1878]
+                          - generic [ref=e1879]: Flux2
+                      - link "Generic VM vSphere" [ref=e1881] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=generic-vm-vsphere&version=1.0.10&parent=1.0.x&tab=main
+                        - generic [ref=e1882]:
+                          - img [ref=e1884]
+                          - generic [ref=e1885]: Generic VM vSphere
+                      - link "Hipster Commerce" [ref=e1887] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sapp-hipster&version=4.0.0&parent=4.0.x&tab=main
+                        - generic [ref=e1888]:
+                          - img [ref=e1890]
+                          - generic [ref=e1891]: Hipster Commerce
+                      - link "Hypershift Operator" [ref=e1893] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-hypershift-operator&version=4.20.0&parent=4.20.x&tab=main
+                        - generic [ref=e1894]:
+                          - img [ref=e1896]
+                          - generic [ref=e1897]: Hypershift Operator
+                      - link "Image Swap" [ref=e1899] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=image-swap&version=1.5.3&parent=1.5.x&tab=main
+                        - generic [ref=e1900]:
+                          - img [ref=e1902]
+                          - generic [ref=e1903]: Image Swap
+                      - link "k8gb" [ref=e1905] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=k8gb&version=0.12.2&parent=0.12.x&tab=main
+                        - generic [ref=e1906]:
+                          - img [ref=e1908]
+                          - generic [ref=e1909]: k8gb
+                      - link "K8sGPT Operator" [ref=e1911] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=k8sgpt-operator&version=0.0.20&parent=0.0.x&tab=main
+                        - generic [ref=e1912]:
+                          - img [ref=e1914]
+                          - generic [ref=e1915]: K8sGPT Operator
+                      - link "Karpenter" [ref=e1917] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=karpenter&version=1.15.0&parent=1.15.x&tab=main
+                        - generic [ref=e1918]:
+                          - img [ref=e1920]
+                          - generic [ref=e1921]: Karpenter
+                      - link "KubeFlow" [ref=e1923] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow&version=1.9.1&parent=1.9.x&tab=main
+                        - generic [ref=e1924]:
+                          - img [ref=e1926]
+                          - generic [ref=e1927]: KubeFlow
+                      - link "Kubeflow Full" [ref=e1929] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-full&version=1.5&parent=1.5.x&tab=main
+                        - generic [ref=e1930]:
+                          - img [ref=e1932]
+                          - generic [ref=e1933]: Kubeflow Full
+                      - link "Kubeflow Pipelines" [ref=e1935] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-pipelines&version=1.5&parent=1.5.x&tab=main
+                        - generic [ref=e1936]:
+                          - img [ref=e1938]
+                          - generic [ref=e1939]: Kubeflow Pipelines
+                      - link "Kubeflow Serving" [ref=e1941] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-serving&version=1.5&parent=1.5.x&tab=main
+                        - generic [ref=e1942]:
+                          - img [ref=e1944]
+                          - generic [ref=e1945]: Kubeflow Serving
+                      - link "Kubeflow Training" [ref=e1947] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubeflow-training&version=1.5&parent=1.5.x&tab=main
+                        - generic [ref=e1948]:
+                          - img [ref=e1950]
+                          - generic [ref=e1951]: Kubeflow Training
+                      - link "KubeVirt" [ref=e1953] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevirt&version=0.59.0&parent=0.59.x&tab=main
+                        - generic [ref=e1954]:
+                          - img [ref=e1956]
+                          - generic [ref=e1957]: KubeVirt
+                      - link "Kubevirt CSI Driver" [ref=e1959] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevirt-csi-driver&version=1.0.3&parent=1.0.x&tab=main
+                        - generic [ref=e1960]:
+                          - img [ref=e1962]
+                          - generic [ref=e1963]: Kubevirt CSI Driver
+                      - link "Kubevirt CSI Driver Infra add-on" [ref=e1965] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevirt-csi-driver-infra&version=1.0.1&parent=1.0.x&tab=main
+                        - generic [ref=e1966]:
+                          - img [ref=e1968]
+                          - generic [ref=e1969]: Kubevirt CSI Driver Infra add-on
+                      - link "KubeVirt-CDI" [ref=e1971] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevirt-cdi&version=1.55.2&parent=1.55.x&tab=main
+                        - generic [ref=e1972]:
+                          - img [ref=e1974]
+                          - generic [ref=e1975]: KubeVirt-CDI
+                      - link "KubeVirtBMC" [ref=e1977] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubevirtbmc&version=0.6.0&parent=0.6.x&tab=main
+                        - generic [ref=e1978]:
+                          - img [ref=e1980]
+                          - generic [ref=e1981]: KubeVirtBMC
+                      - link "Kyverno" [ref=e1983] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kyverno&version=1.19.2&parent=1.19.x&tab=main
+                        - generic [ref=e1984]:
+                          - img [ref=e1986]
+                          - generic [ref=e1987]: Kyverno
+                      - link "Local Path Provisioner" [ref=e1989] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-local-path-provisioner-addon&version=0.0.37&parent=0.0.x&tab=main
+                        - generic [ref=e1990]:
+                          - img [ref=e1992]
+                          - generic [ref=e1993]: Local Path Provisioner
+                      - link "LocalAI" [ref=e1995] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=local-ai&version=2.1.1&parent=2.1.x&tab=main
+                        - generic [ref=e1996]:
+                          - img [ref=e1998]
+                          - generic [ref=e1999]: LocalAI
+                      - link "Longhorn" [ref=e2001] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-longhorn-addon&version=1.13.0&parent=1.13.x&tab=main
+                        - generic [ref=e2002]:
+                          - img [ref=e2004]
+                          - generic [ref=e2005]: Longhorn
+                      - link "Minio" [ref=e2007] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=minio&version=8.0.10&parent=8.0.x&tab=main
+                        - generic [ref=e2008]:
+                          - img [ref=e2010]
+                          - generic [ref=e2011]: Minio
+                      - link "Multus" [ref=e2013] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=cni-multus&version=3.9.0&parent=3.9.x&tab=main
+                        - generic [ref=e2014]:
+                          - img [ref=e2016]
+                          - generic [ref=e2017]: Multus
+                      - link "Multus CNI Plugin" [ref=e2019] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=multus-cni&version=2.2.21&parent=2.2.x&tab=main
+                        - generic [ref=e2020]:
+                          - img [ref=e2022]
+                          - generic [ref=e2023]: Multus CNI Plugin
+                      - link "NFS CSI Driver" [ref=e2025] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-driver-nfs-addon&version=4.13.2&parent=4.13.x&tab=main
+                        - generic [ref=e2026]:
+                          - img [ref=e2028]
+                          - generic [ref=e2029]: NFS CSI Driver
+                      - link "Nodes Task Handler" [ref=e2031] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-nodes-task-handler&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2032]:
+                          - img [ref=e2034]
+                          - generic [ref=e2035]: Nodes Task Handler
+                      - link "Nvidia DPF Deployment" [ref=e2037] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=dpf-deployment&version=25.10.1&parent=25.10.x&tab=main
+                        - generic [ref=e2038]:
+                          - img [ref=e2040]
+                          - generic [ref=e2041]: Nvidia DPF Deployment
+                      - link "Nvidia DPF Operator" [ref=e2043] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=dpf-operator&version=25.10.1&parent=25.10.x&tab=main
+                        - generic [ref=e2044]:
+                          - img [ref=e2046]
+                          - generic [ref=e2047]: Nvidia DPF Operator
+                      - link "Nvidia DPF Prereqs" [ref=e2049] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-dpf-prereqs&version=25.10.1&parent=25.10.x&tab=main
+                        - generic [ref=e2050]:
+                          - img [ref=e2052]
+                          - generic [ref=e2053]: Nvidia DPF Prereqs
+                      - link "Nvidia GPU Operator" [ref=e2055] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-gpu-operator&version=25.3.1&parent=25.3.x&tab=main
+                        - generic [ref=e2056]:
+                          - img [ref=e2058]
+                          - generic [ref=e2059]: Nvidia GPU Operator
+                      - link "Nvidia GPU plugin" [ref=e2061] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=konvoy-nvidia&version=0.4.4&parent=0.4.x&tab=main
+                        - generic [ref=e2062]:
+                          - img [ref=e2064]
+                          - generic [ref=e2065]: Nvidia GPU plugin
+                      - link "Nvidia KAI Scheduler" [ref=e2067] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-kai-scheduler&version=0.10.2&parent=0.10.x&tab=main
+                        - generic [ref=e2068]:
+                          - img [ref=e2070]
+                          - generic [ref=e2071]: Nvidia KAI Scheduler
+                      - link "Nvidia Network Operator" [ref=e2073] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=network-operator&version=26.7.0&parent=26.7.x&tab=main
+                        - generic [ref=e2074]:
+                          - img [ref=e2076]
+                          - generic [ref=e2077]: Nvidia Network Operator
+                      - link "NVIDIA OSMO" [ref=e2079] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2080]:
+                          - img [ref=e2082]
+                          - generic [ref=e2083]: NVIDIA OSMO
+                      - link "Nvidia OSMO Backend Operator" [ref=e2085] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo-backend-operator&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2086]:
+                          - img [ref=e2088]
+                          - generic [ref=e2089]: Nvidia OSMO Backend Operator
+                      - link "Nvidia OSMO Robotic Rack" [ref=e2091] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo-robotic-rack&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2092]:
+                          - img [ref=e2094]
+                          - generic [ref=e2095]: Nvidia OSMO Robotic Rack
+                      - link "Nvidia OSMO Router" [ref=e2097] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo-router&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2098]:
+                          - img [ref=e2100]
+                          - generic [ref=e2101]: Nvidia OSMO Router
+                      - link "Nvidia Osmo Service" [ref=e2103] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo-service&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2104]:
+                          - img [ref=e2106]
+                          - generic [ref=e2107]: Nvidia Osmo Service
+                      - link "Nvidia Osmo Web UI" [ref=e2109] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=osmo-web-ui&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2110]:
+                          - img [ref=e2112]
+                          - generic [ref=e2113]: Nvidia Osmo Web UI
+                      - link "NVIDIA VSS Application (VSS 2.4.1)" [ref=e2115] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-vss-application&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2116]:
+                          - img [ref=e2118]
+                          - generic [ref=e2119]: NVIDIA VSS Application (VSS 2.4.1)
+                      - link "NVIDIA VSS Core NIMs (VSS 2.4.1)" [ref=e2121] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nvidia-vss-core-nims&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2122]:
+                          - img [ref=e2124]
+                          - generic [ref=e2125]: NVIDIA VSS Core NIMs (VSS 2.4.1)
+                      - link "OAM App Controller" [ref=e2127] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=oam-app-controller&version=0.0.1&parent=0.0.x&tab=main
+                        - generic [ref=e2128]:
+                          - img [ref=e2130]
+                          - generic [ref=e2131]: OAM App Controller
+                      - link "openSuSE-K3s" [ref=e2133] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=opensuse-k3s&version=1.22.9-k3s0&parent=1.22.x&tab=main
+                        - generic [ref=e2134]:
+                          - img [ref=e2136]
+                          - generic [ref=e2137]: openSuSE-K3s
+                      - link "OpsPortal" [ref=e2139] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=konvoy-opsportal&version=0.9.5&parent=0.9.x&tab=main
+                        - generic [ref=e2140]:
+                          - img [ref=e2142]
+                          - generic [ref=e2143]: OpsPortal
+                      - link "Pfsense VM vsphere" [ref=e2145] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=pfsense-vm-vsphere&version=1.0.11&parent=1.0.x&tab=main
+                        - generic [ref=e2146]:
+                          - img [ref=e2148]
+                          - generic [ref=e2149]: Pfsense VM vsphere
+                      - link "Piraeus Operator" [ref=e2151] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-piraeus-operator&version=2.7.1&parent=2.7.x&tab=main
+                        - generic [ref=e2152]:
+                          - img [ref=e2154]
+                          - generic [ref=e2155]: Piraeus Operator
+                      - link "Piraeus Operator" [ref=e2157] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=piraeus-operator-addon&version=2.12.0&parent=2.12.x&tab=main
+                        - generic [ref=e2158]:
+                          - img [ref=e2160]
+                          - generic [ref=e2161]: Piraeus Operator
+                      - link "Portworx with Operator" [ref=e2163] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=portworx-add-on&version=3.7.0&parent=3.7.x&tab=main
+                        - generic [ref=e2164]:
+                          - img [ref=e2166]
+                          - generic [ref=e2167]: Portworx with Operator
+                      - link "PostgreSQL" [ref=e2169] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=db-postgresql&version=10.5.3&parent=10.5.x&tab=main
+                        - generic [ref=e2170]:
+                          - img [ref=e2172]
+                          - generic [ref=e2173]: PostgreSQL
+                      - link "Qualys Cloud Agent" [ref=e2175] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=qualys-agent&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2176]:
+                          - img [ref=e2178]
+                          - generic [ref=e2179]: Qualys Cloud Agent
+                      - link "RabbitMQ" [ref=e2181] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=rabbitmq&version=4.3.5&parent=4.3.x&tab=main
+                        - generic [ref=e2182]:
+                          - img [ref=e2184]
+                          - generic [ref=e2185]: RabbitMQ
+                      - link "Rook-Ceph" [ref=e2187] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-rook-ceph-addon&version=1.18.0&parent=1.18.x&tab=main
+                        - generic [ref=e2188]:
+                          - img [ref=e2190]
+                          - generic [ref=e2191]: Rook-Ceph
+                      - link "Rook-Ceph (Helm)" [ref=e2193] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-rook-ceph-helm-addon&version=1.20.7&parent=1.20.x&tab=main
+                        - generic [ref=e2194]:
+                          - img [ref=e2196]
+                          - generic [ref=e2197]: Rook-Ceph (Helm)
+                      - link "Sealed Secrets" [ref=e2199] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sealed-secrets&version=2.19.3&parent=2.19.x&tab=main
+                        - generic [ref=e2200]:
+                          - img [ref=e2202]
+                          - generic [ref=e2203]: Sealed Secrets
+                      - link "SeaweedFS" [ref=e2205] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=seaweedfs&version=4.43&parent=4.43.x&tab=main
+                        - generic [ref=e2206]:
+                          - img [ref=e2208]
+                          - generic [ref=e2209]: SeaweedFS
+                      - link "SLE Micro-RKE2" [ref=e2211] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=slem-rke2&version=1.22.9&parent=1.22.x&tab=main
+                        - generic [ref=e2212]:
+                          - img [ref=e2214]
+                          - generic [ref=e2215]: SLE Micro-RKE2
+                      - link "Spectro Namespace Labeler" [ref=e2217] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-namespace-labeler&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2218]:
+                          - img [ref=e2220]
+                          - generic [ref=e2221]: Spectro Namespace Labeler
+                      - link "Spectro Pack Status Checker" [ref=e2223] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spectro-pack-status-check&version=1.0.0&parent=1.0.x&tab=main
+                        - generic [ref=e2224]:
+                          - img [ref=e2226]
+                          - generic [ref=e2227]: Spectro Pack Status Checker
+                      - link "Spot.io Controller (Helm)" [ref=e2229] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=spotinst-kubernetes-cluster-controller&version=1.0.117&parent=1.0.x&tab=main
+                        - generic [ref=e2230]:
+                          - img [ref=e2232]
+                          - generic [ref=e2233]: Spot.io Controller (Helm)
+                      - link "SR-IOV" [ref=e2235] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sr-iov&version=3.4.0&parent=3.4.x&tab=main
+                        - generic [ref=e2236]:
+                          - img [ref=e2238]
+                          - generic [ref=e2239]: SR-IOV
+                      - link "SR-IOV Network Operator" [ref=e2241] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=sriov-network-operator&version=1.6.0&parent=1.6.x&tab=main
+                        - generic [ref=e2242]:
+                          - img [ref=e2244]
+                          - generic [ref=e2245]: SR-IOV Network Operator
+                      - link "Strimzi Kafka" [ref=e2247] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=strimzi-kafka&version=1.1.0&parent=1.1.x&tab=main
+                        - generic [ref=e2248]:
+                          - img [ref=e2250]
+                          - generic [ref=e2251]: Strimzi Kafka
+                      - link "System Upgrade Controller" [ref=e2253] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=suc&version=0.8.0&parent=0.8.x&tab=main
+                        - generic [ref=e2254]:
+                          - img [ref=e2256]
+                          - generic [ref=e2257]: System Upgrade Controller
+                      - link "Tekton Chains" [ref=e2259] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=tekton-chains&version=0.12.0&parent=0.12.x&tab=main
+                        - generic [ref=e2260]:
+                          - img [ref=e2262]
+                          - generic [ref=e2263]: Tekton Chains
+                      - link "Tekton Operator" [ref=e2265] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=tekton-operator&version=0.61.0&parent=0.61.x&tab=main
+                        - generic [ref=e2266]:
+                          - img [ref=e2268]
+                          - generic [ref=e2269]: Tekton Operator
+                      - link "Tekton Pipelines" [ref=e2271] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=tekton-pipelines&version=1.16.0&parent=1.16.x&tab=main
+                        - generic [ref=e2272]:
+                          - img [ref=e2274]
+                          - generic [ref=e2275]: Tekton Pipelines
+                      - link "TopoLVM" [ref=e2277] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-topolvm-addon&version=11.0.0&parent=11.0.x&tab=main
+                        - generic [ref=e2278]:
+                          - img [ref=e2280]
+                          - generic [ref=e2281]: TopoLVM
+                      - link "TopoLVM" [ref=e2283] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-topolvm&version=11.1.1&parent=11.1.x&tab=main
+                        - generic [ref=e2284]:
+                          - img [ref=e2286]
+                          - generic [ref=e2287]: TopoLVM
+                      - link "Trident" [ref=e2289] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-trident-addon&version=26.06.0&parent=26.06.x&tab=main
+                        - generic [ref=e2290]:
+                          - img [ref=e2292]
+                          - generic [ref=e2293]: Trident
+                      - link "trident-operator" [ref=e2295] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=trident-operator&version=25.10.0&parent=25.10.x&tab=main
+                        - generic [ref=e2296]:
+                          - img [ref=e2298]
+                          - generic [ref=e2299]: trident-operator
+                      - link "TrilioVault" [ref=e2301] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=triliovault&version=2.9.1&parent=2.9.x&tab=main
+                        - generic [ref=e2302]:
+                          - img [ref=e2304]
+                          - generic [ref=e2305]: TrilioVault
+                      - link "Upbound Crossplane" [ref=e2307] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=upbound-crossplane&version=2.1.0-up.2&parent=2.1.x&tab=main
+                        - generic [ref=e2308]:
+                          - img [ref=e2310]
+                          - generic [ref=e2311]: Upbound Crossplane
+                      - link "VAST COSI Driver (S3)" [ref=e2313] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vast-cosi&version=2.6.5&parent=2.6.x&tab=main
+                        - generic [ref=e2314]:
+                          - img [ref=e2316]
+                          - generic [ref=e2317]: VAST COSI Driver (S3)
+                      - link "VAST CSI Block Driver (NVMe/TCP)" [ref=e2319] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vast-block&version=2.6.5&parent=2.6.x&tab=main
+                        - generic [ref=e2320]:
+                          - img [ref=e2322]
+                          - generic [ref=e2323]: VAST CSI Block Driver (NVMe/TCP)
+                      - link "VAST CSI Driver (NFS)" [ref=e2325] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vast-csi&version=2.6.5&parent=2.6.x&tab=main
+                        - generic [ref=e2326]:
+                          - img [ref=e2328]
+                          - generic [ref=e2329]: VAST CSI Driver (NFS)
+                      - link "Veeam Kasten" [ref=e2331] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=veeamkasten&version=8.0.14&parent=8.0.x&tab=main
+                        - generic [ref=e2332]:
+                          - img [ref=e2334]
+                          - generic [ref=e2335]: Veeam Kasten
+                      - link "Velero" [ref=e2337] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=velero&version=1.5.3&parent=1.5.x&tab=main
+                        - generic [ref=e2338]:
+                          - img [ref=e2340]
+                          - generic [ref=e2341]: Velero
+                      - link "Velero Bundle" [ref=e2343] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=velero-seaweedfs&version=1.18.1&parent=1.18.x&tab=main
+                        - generic [ref=e2344]:
+                          - img [ref=e2346]
+                          - generic [ref=e2347]: Velero Bundle
+                      - link "Victoria Metrics Operator" [ref=e2349] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=victoria-metrics-operator&version=0.66.2&parent=0.66.x&tab=main
+                        - generic [ref=e2350]:
+                          - img [ref=e2352]
+                          - generic [ref=e2353]: Victoria Metrics Operator
+                      - link "VMO Namespace Management" [ref=e2355] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=vmo-ns-mgmt&version=1.0.4&parent=1.0.x&tab=main
+                        - generic [ref=e2356]:
+                          - img [ref=e2358]
+                          - generic [ref=e2359]: VMO Namespace Management
+                      - link "Volume-Snapshot-controller" [ref=e2361] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=volume-snapshot-controller&version=8.7.0&parent=8.7.x&tab=main
+                        - generic [ref=e2362]:
+                          - img [ref=e2364]
+                          - generic [ref=e2365]: Volume-Snapshot-controller
+                      - link "WEKA Operator" [ref=e2367] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=weka-operator-addon&version=v1.12.0&parent=v1.12.x&tab=main
+                        - generic [ref=e2368]:
+                          - img [ref=e2370]
+                          - generic [ref=e2371]: WEKA Operator
+                      - link "WekaFS Plugin" [ref=e2373] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-wekafsplugin&version=2.5.1&parent=2.5.x&tab=main
+                        - generic [ref=e2374]:
+                          - img [ref=e2376]
+                          - generic [ref=e2377]: WekaFS Plugin
+                      - link "WordPress" [ref=e2379] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=wordpress-chart&version=5.4.1&parent=5.4.x&tab=main
+                        - generic [ref=e2380]:
+                          - img [ref=e2382]
+                          - generic [ref=e2383]: WordPress
+            - generic [ref=e2384]:
+              - generic [ref=e2386]:
+                - text: "Tags:"
+                - list [ref=e2387]:
+                  - listitem [ref=e2388]:
+                    - link "packs" [ref=e2389] [cursor=pointer]:
+                      - /url: /tags/packs/
+              - link "Edit this page" [ref=e2392] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/integrations/integrations.mdx
+                - img [ref=e2393]
+                - text: Edit this page
+          - navigation "Docs pages" [ref=e2397]:
+            - link "Previous « Restrict Container Images" [ref=e2398] [cursor=pointer]:
+              - /url: /workspace/workspace-mgmt/restrict-images/
+              - generic [ref=e2399]: Previous
+              - generic [ref=e2400]: « Restrict Container Images
+            - link "Next Maintenance Policy »" [ref=e2401] [cursor=pointer]:
+              - /url: /integrations/maintenance-policy/
+              - generic [ref=e2402]: Next
+              - generic [ref=e2403]: Maintenance Policy »
+  - button "Project Logo Ask AI" [ref=e2404] [cursor=pointer]:
+    - generic [ref=e2407]:
+      - img "Project Logo" [ref=e2408]
+      - paragraph [ref=e2409]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
