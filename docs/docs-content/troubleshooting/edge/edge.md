@@ -16,7 +16,7 @@ The following are common scenarios that you may encounter when using Edge.
 
 When an OS upgrade fails on an [appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge host, the
 Edge host rolls back to its previous provider image. Local UI displays an **OS upgrade failed** banner on the **Edge
-Host** page and on the **Overview** tab of the **Cluster** page. This applies to both Palette-managed and locally
+Host** page and on the **Overview** tab of the **Cluster** page. This applies to both centrally managed and locally
 managed clusters. The banner stays until a later OS upgrade succeeds on the Edge host.
 
 ### Debug Steps - Palette-Managed Clusters
