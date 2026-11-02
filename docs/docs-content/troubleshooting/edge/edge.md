@@ -22,8 +22,9 @@ chain to. For more information, refer to
 
 <!-- vale Vale.Spelling = YES -->
 
-This workaround applies to Edge hosts that run Ubuntu. Add a cloud-init stage to the OS pack of your cluster profile.
-The stage marks the affected root certificates as distrusted and rebuilds the trust store each time the Edge host boots.
+This workaround applies to Edge hosts that run Ubuntu, SUSE Linux Enterprise Micro (SLE Micro), Red Hat Enterprise Linux
+(RHEL), or Rocky Linux. Add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected root
+certificates as distrusted and rebuilds the trust store each time the Edge host boots.
 
 ### Debug Steps
 
@@ -34,9 +35,20 @@ The stage marks the affected root certificates as distrusted and rebuilds the tr
 3. Select the cluster profile that your Edge cluster uses, and
    [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
 
-4. In the new profile version, select the OS layer, and then add the following cloud-init stage to its YAML. If the YAML
-   already contains a `stages` section, add the `boot.before` stage to it instead of creating a second one. If it also
-   contains a `boot.before` stage, add the `emudhra-distrust-debian` entry to that stage's list.
+4. In the new profile version, select the OS layer, and then add the cloud-init stage from the tab for the operating
+   system of your Edge hosts to its YAML. If the YAML has no `stages` section, add the example as shown. Otherwise,
+   merge the example into the existing YAML.
+
+   - If the YAML contains a `stages` section but no `boot.before` stage, add the `boot.before` stage to the existing
+     `stages` section.
+
+   - If the YAML already contains a `boot.before` stage, add only the list entry for your operating system
+     (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to the existing `boot.before`
+     list.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
 
    ```yaml
    stages:
@@ -61,6 +73,106 @@ The stage marks the affected root certificates as distrusted and rebuilds the tr
              fi
    ```
 
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-suse
+         commands:
+           - |
+             set -eu
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/trust/blacklist /etc/pki/trust/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates
+             else
+                 update-ca-certificates
+             fi
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-rhel
+         commands:
+           - |
+             set -e
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/ca-trust/source/blacklist /etc/pki/ca-trust/source/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/bin/update-ca-trust ]; then
+                 /usr/bin/update-ca-trust
+             else
+                 update-ca-trust
+             fi
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
 5. Save your changes.
 
 6. [Update your cluster](../../clusters/cluster-management/cluster-updates.md#update-a-cluster) to use the new profile
@@ -72,12 +184,36 @@ The stage marks the affected root certificates as distrusted and rebuilds the tr
 
    :::
 
-7. After the Edge hosts reboot, connect to an Edge host using SSH, and issue the following command to check whether the
-   trust store still contains the affected root certificates.
+7. After the Edge hosts reboot, connect to an Edge host using SSH, and issue the command for its operating system to
+   check whether the trust store still contains the affected root certificates.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
 
    ```shell
    ls /etc/ssl/certs/ | grep --extended-regexp 'emSign_ECC_Root_CA_-_G3|emSign_Root_TLS_CA_-_G3|Comodo_AAA_Services_root|AAA_Certificate_Services'
    ```
+
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
    If the command returns no output, the Edge host no longer trusts these root certificates.
 

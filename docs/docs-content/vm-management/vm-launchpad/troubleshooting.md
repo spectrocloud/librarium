@@ -11,6 +11,47 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Large VM Stays Pending with Insufficient Memory
+
+A VM with a large memory size, such as a 16 GiB VM on nodes with 32 GiB of memory, does not start, and `kubectl get vm`
+reports its status as `ErrorUnschedulable`. Its `virt-launcher` pod stays in the `Pending` state, and the pod events
+show a message such as `0/3 nodes are available: 3 Insufficient memory`.
+
+This occurs because Kubernetes places a VM only on a node that has enough _allocatable_ memory left after the memory
+requests of the pods that already run on it. Allocatable memory is lower than the total memory of the node, because each
+node reserves memory for host services. On each control plane node, etcd and the Kubernetes API server also request part
+of the allocatable memory. Refer to
+[Node Memory Reservation](./vmo-overcommit-memory-optimization-appliance.md#node-memory-reservation) for the amounts.
+
+### Make Room for the VM
+
+You need `kubectl` access to the affected VM Launchpad cluster. From the cluster **Overview** tab, download the
+[Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+to point to it.
+
+1. Check how much memory each node can still give to new pods. The loop lists the memory that the pods on each node
+   request, and the last command lists the allocatable memory of each node.
+
+   ```shell
+   for node in $(kubectl get nodes --output name); do
+     echo "$node"
+     kubectl describe "$node" | grep --after-context=6 "Allocated resources"
+   done
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,ALLOCATABLE:.status.allocatable.memory
+   ```
+
+2. Free memory for the VM. Stop or migrate other VMs on a node, lower the memory size of the VM, or add nodes to the
+   cluster.
+
+3. Confirm that the VM reaches the `Running` status.
+
+   ```shell
+   kubectl get vm <vm-name> --namespace <vm-namespace>
+   ```
+
+   Replace `<vm-name>` with the name of the VM and `<vm-namespace>` with the namespace of the VM. The `STATUS` column
+   shows `Running` when the VM starts.
+
 ## Scenario - Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs
 
 When you deploy the Portworx variant of VM Launchpad on VMware vSphere VMs, such as for a proof of concept, the Portworx

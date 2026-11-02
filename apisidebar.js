@@ -16,6 +16,8 @@ function loadSidebar(path) {
 const sidebarItems = loadSidebar(sidebarFilePath);
 const sidebarEmcFilePath = "./docs/api-content/api-docs/edge-v1/sidebar.ts";
 const emcSidebarItems = loadSidebar(sidebarEmcFilePath);
+const sidebarArtifactStudioFilePath = "./docs/api-content/api-docs/artifact-studio-v2/sidebar.ts";
+const artifactStudioSidebarItems = loadSidebar(sidebarArtifactStudioFilePath);
 
 module.exports = {
   apiSidebar: [
@@ -33,6 +35,12 @@ module.exports = {
       label: "Edge Management API V1",
       link: { type: "generated-index", title: "Edge Management API V1" },
       items: emcSidebarItems,
+    },
+    {
+      type: "category",
+      label: "Artifact Studio API V2",
+      link: { type: "generated-index", title: "Artifact Studio API V2" },
+      items: artifactStudioSidebarItems,
     },
   ],
 };

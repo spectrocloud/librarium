@@ -24,7 +24,7 @@ const assetIcons = {
 };
 
 // add fontawesome icon names to dynamically populate in the dynamicFontAwesomeimports
-const icons = [];
+const icons = ["microchip"];
 
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);

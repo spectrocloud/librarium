@@ -43,6 +43,12 @@ html[data-theme="dark"] {
   --simpleCardSubtle: var(--ifm-color-success-contrast-foreground);
   --simpleCardButtonIcon: #f3f0ee;
   --simpleCardBorder: #0b3433;
+  --landingHeroBorder: #1e3332;
+  --landingSectionBackground: var(--ifm-background-color);
+  --landingBorder: #1e3332;
+  --landingCardBackground: #012121;
+  --landingCardText: #f7f1ed;
+  --landingCardMuted: #beb9b6;
   --custom-table-header-color: var(--ifm-dropdown-background-color);
   --custom-release-notes-background-color: var(--ifm-breadcrumb-item-background-active);
   --custom-release-notes-background-font-color: var(--ifm-navbar-link-color);
