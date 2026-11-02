@@ -95,15 +95,9 @@ b) Workload Clusters: Patch all underlying host operating systems used in:
 For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
 documentation.
 
-<!-- vale Vale.Spelling = NO -->
-
-<!-- vale Vale.Terms = NO -->
-
-c) MTSaas and DSaas environments will be patched by the spectrocloud team.
-
-<!-- vale Vale.Spelling = YES -->
-
-<!-- vale Vale.Terms = YES -->
+c) Spectro Cloud patches Multi-Tenant SaaS and Dedicated SaaS environments. Multi-Tenant SaaS requires no action.
+Spectro Cloud upgrades each Dedicated SaaS instance to the patched version for its release line in an agreed maintenance
+window. Contact your Spectro Cloud representative to confirm your window.
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
 
@@ -114,16 +108,20 @@ Spectro Cloud updates this advisory as each patch is released.
 #### Palette and VerteX Releases
 
 The following table lists the patch status of each Palette and VerteX version, what each version includes, and the
-deployments where each version is available. Spectro Cloud upgrades each Dedicated SaaS instance in a maintenance window
-scheduled with you, so Released in the Dedicated SaaS column means that the version is available for your instance, not
-that your instance runs it yet.
+deployments where each version is available. Spectro Cloud upgrades Multi-Tenant SaaS for all tenants at once. Each
+Dedicated SaaS instance stays on its release line until Spectro Cloud upgrades it in a maintenance window agreed with
+you, so Available means you can schedule the upgrade to that version.
 
-| Version | Includes                                                                                 | Multi-Tenant SaaS | Dedicated SaaS   | Palette and VerteX Management Appliances |
-| ------- | ---------------------------------------------------------------------------------------- | ----------------- | ---------------- | ---------------------------------------- |
-| 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released          | Released         | Released                                 |
-| 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released          | Not applicable   | Released                                 |
-| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable    | Released         | Released                                 |
-| 4.8.x   | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable    | Not yet released | Not yet released                         |
+<!-- vale spectrocloud-docs-internal.future = NO -->
+
+| Version | Includes                                                                                 | Multi-Tenant SaaS | Dedicated SaaS    | Palette and VerteX Management Appliances |
+| ------- | ---------------------------------------------------------------------------------------- | ----------------- | ----------------- | ---------------------------------------- |
+| 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released          | Available         | Released                                 |
+| 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released          | Not applicable    | Released                                 |
+| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable    | Available         | Released                                 |
+| 4.8.x   | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable    | Not yet available | Not yet released                         |
+
+<!-- vale spectrocloud-docs-internal.future = YES -->
 
 #### Kubernetes Versions and Packs
 
