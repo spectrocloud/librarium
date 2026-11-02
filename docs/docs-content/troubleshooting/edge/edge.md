@@ -30,7 +30,7 @@ managed clusters. The banner stays until a later OS upgrade succeeds on the Edge
 
 ### Debug Steps - Locally Managed Clusters
 
-1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile of the cluster.
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile that the cluster uses.
 
 2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
 
