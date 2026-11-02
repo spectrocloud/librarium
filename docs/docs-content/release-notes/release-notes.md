@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 29, 2026 - Release 4.9.66
+## November 2, 2026 - Release 4.9.66
 
 <!-- PATCH RELEASE TICKET: DOC-3360 -->
 <!-- PATCH RELEASE VERSION: 4.9.66 -->
@@ -24,10 +24,12 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12394 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9921 -->
 
-- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
+  installer ISOs that you build with CanvOS 4.9.44 or later no longer trust the affected root certificates. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
-  in
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu, SUSE Linux Enterprise
+  Micro, Red Hat Enterprise Linux, or Rocky Linux and use images built with an earlier CanvOS version can use the
+  workaround in
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
 
 <!-- vale Vale.Spelling = YES -->
