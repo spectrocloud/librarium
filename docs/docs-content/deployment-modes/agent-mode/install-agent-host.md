@@ -62,7 +62,7 @@ Take the following steps to install the Palette agent on an Edge host for the fi
 
   - [bash](https://www.gnu.org/software/bash/) - Must be configured as the default shell.
   - [jq](https://jqlang.github.io/jq/download/)
-  - [Zstandard](https://facebook.github.io/zstd/)
+  - [Zstandard](https://meta.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd](https://systemd.io/)
   - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) -
