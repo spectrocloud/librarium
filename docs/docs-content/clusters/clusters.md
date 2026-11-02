@@ -363,7 +363,7 @@ The following are the attributes of a cluster that are displayed in the cluster 
 
 You can take the following actions to organize your clusters in the grid view.
 
-![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
+![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the grid view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
 
 | Action                  | Description                                                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
