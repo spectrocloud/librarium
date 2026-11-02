@@ -132,7 +132,7 @@ management mode to manage configurations, updates, and workloads.
 
   - [bash](https://www.gnu.org/software/bash/)
   - [jq](https://jqlang.github.io/jq/download/)
-  - [Zstandard](https://facebook.github.io/zstd/)
+  - [Zstandard](https://meta.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd](https://systemd.io/)
   - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) -
