@@ -154,7 +154,7 @@ You can follow these steps to validate all cluster update approaches.
 
    1. Log in to [Local UI](../edge/local-ui/host-management/access-console.md) on an Edge host.
 
-   2. From the left **Main Menu**, select **Cluster**.
+   2. From the left main menu, select **Cluster**.
 
    3. Verify that no **OS upgrade failed** banner appears. If the banner appears, refer to
       [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image).
