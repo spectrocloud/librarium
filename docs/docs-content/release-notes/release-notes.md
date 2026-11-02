@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 6, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
+## November 13, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: TBD -->
 
