@@ -14,23 +14,22 @@ This page provides troubleshooting guidance for common scenarios you may encount
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
 On non-FIPS VM Launchpad appliances, an appliance upgrade can stall while it drains a node. The node shows the
-`SchedulingDisabled` status, and one `keycloak-db-<n>` pod stays in the `Pending` state.
+`SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
 
 This occurs because both replicas of the Keycloak database store their data on the drained node. The Keycloak database
 runs as a CloudNativePG cluster of one primary and two replicas. Each instance stores its data on a volume, and a local
 volume ties that data to a single node. When the upgrade drains the node, one replica stops and cannot start on another
 node, because its volume is tied to the drained node. The PodDisruptionBudget of the database requires at least one
-healthy replica, and the primary does not count toward it, so the upgrade cannot stop the second replica either.
+healthy replica and does not count the primary. As a result, the upgrade cannot stop the second replica either.
 
 Use the following steps to rebuild the `Pending` replica on another node. The steps keep its old volume and leave the
 primary running.
 
 :::warning
 
-This procedure covers only a CloudNativePG cluster with three instances, where two instances are healthy, one replica is
-`Pending`, and that replica uses a single data volume. If your cluster has a different number of instances, the replica
-uses more than one volume, or anything in the following steps does not match what you observe, stop and contact your
-Spectro Cloud support representative.
+This procedure covers only a CloudNativePG cluster with three instances, where two instances are healthy and one
+`Pending` replica uses a single data volume. If your cluster differs, or if anything in the following steps does not
+match what you observe, stop and contact your Spectro Cloud support representative.
 
 Do not delete the database's PodDisruptionBudget to unblock the upgrade.
 
@@ -131,9 +130,8 @@ Do not delete the database's PodDisruptionBudget to unblock the upgrade.
 Save the cluster, pod, PVC, and PV definitions to a new local directory.
 
 ```bash
-umask 077
 BACKUP="./cnpg-rebuild-backup-$(date +%Y%m%d%H%M%S)"
-mkdir "$BACKUP"
+(umask 077 && mkdir "$BACKUP")
 kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" --output json > "$BACKUP/cluster.json"
 kubectl --namespace "$NS" get pod "$POD" --output json > "$BACKUP/pod.json"
 kubectl --namespace "$NS" get pvc "$PVC" --output json > "$BACKUP/pvc.json"
@@ -178,8 +176,7 @@ Continue only when `RECLAIM` shows `Retain`. Keep the old volume through the upg
    kubectl --namespace "$NS" delete pod "$POD" --wait=false
    ```
 
-   CloudNativePG recreates the replica with a new volume on another eligible node. The Kubernetes scheduler chooses the
-   node. The commands do not move the old volume.
+   CloudNativePG recreates the replica with a new volume on another eligible node.
 
 ### Verify Recovery
 
