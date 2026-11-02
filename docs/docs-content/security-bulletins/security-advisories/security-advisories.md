@@ -95,8 +95,8 @@ b) Workload Clusters: Patch all underlying host operating systems used in:
 For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
 documentation.
 
-c) Spectro Cloud patches Multi-Tenant SaaS and Dedicated SaaS environments. Multi-Tenant SaaS requires no action.
-Spectro Cloud upgrades each Dedicated SaaS instance to the patched version for its release line in an agreed maintenance
+c) Spectro Cloud patches multi-tenant SaaS and dedicated SaaS environments. Multi-tenant SaaS requires no action.
+Spectro Cloud upgrades each dedicated SaaS instance to the patched version for its release line in an agreed maintenance
 window. Contact your Spectro Cloud representative to confirm your window.
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
@@ -108,9 +108,9 @@ Spectro Cloud updates this advisory as each patch is released.
 #### Palette and VerteX Releases
 
 The following table lists the patch status of each Palette and VerteX version, what each version includes, and the
-deployments where each version is available. Spectro Cloud upgrades Multi-Tenant SaaS for all tenants at once. Each
-Dedicated SaaS instance stays on its release line until Spectro Cloud upgrades it in a maintenance window agreed with
-you, so Available means you can schedule the upgrade to that version.
+deployments where each version is available. Spectro Cloud upgrades multi-tenant SaaS for all tenants at once. Each
+dedicated SaaS instance stays on its release line until Spectro Cloud upgrades it in a maintenance window agreed with
+you. In the Dedicated SaaS column, _Available_ means that you can schedule the upgrade to that version.
 
 <!-- vale spectrocloud-docs-internal.future = NO -->
 
