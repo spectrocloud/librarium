@@ -38,7 +38,7 @@ managed clusters. The banner stays until a later OS upgrade succeeds on the Edge
    [Build Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
 4. In Local UI, upload the content bundle to the cluster. For more information, refer to
-   [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md).
+   [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md).
 
 ## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
 
