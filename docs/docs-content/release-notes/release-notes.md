@@ -187,8 +187,9 @@ This release delivers version 4.10.25 of the PaletteAI VM Launchpad appliance, w
 - Applied further fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
   installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root certificates. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu and use images built
-  with an earlier CanvOS version can use the workaround in
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu, SUSE Linux Enterprise
+  Micro, Red Hat Enterprise Linux, or Rocky Linux and use images built with an earlier CanvOS version can use the
+  workaround in
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
 
 <!-- vale Vale.Spelling = YES -->
@@ -237,8 +238,8 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 - Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
-  in
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu, SUSE Linux Enterprise
+  Micro, Red Hat Enterprise Linux, or Rocky Linux can use the workaround in
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
 
 <!-- vale Vale.Spelling = YES -->
