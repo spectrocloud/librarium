@@ -100,8 +100,8 @@ expire. You can follow the steps below to check when the next automatic renewal 
 ### Validate
 
 In **Overview**, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
-certificates that your cluster uses. You can confirm that the certificates have been renewed by looking at the _expiry_
-date of certificates. The issue date of the certificates will not change after certificate renewal.
+certificates that your cluster uses. Confirm that the renewed certificates show a new **Issued Date** and a later
+**Expiration Date**.
 
 ## Manual Renewal
 
@@ -177,6 +177,6 @@ Management API.
 
 ### Validate
 
-In **Overview**, click **View Certificates** in the **Kubernetes Certificates** row. This will display all the
-certificates currently in use by your cluster. You can confirm that the certificates have been renewed by looking at the
-_expiry_ date of certificates. The issue date of the certificates will not change after certificate renewal.
+In **Overview**, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
+certificates that your cluster uses. Confirm that the renewed certificates show a new **Issued Date** and a later
+**Expiration Date**.
