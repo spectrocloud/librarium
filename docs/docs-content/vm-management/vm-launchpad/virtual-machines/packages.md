@@ -85,25 +85,55 @@ package store is configured, and without it you cannot create Windows VMs.
 
 ### Configure a Package Store for the VMO Pack
 
-To keep uploaded packages and branding images when the VM Launchpad pod restarts, add the SeaweedFS pack to the cluster
-profile that contains the VMO pack, and set the following values in the VMO pack.
+To keep uploaded packages and branding images when the VM Launchpad pod restarts, configure a package store in the
+cluster profile that contains the VMO pack.
 
-<!-- TODO(DOC-3274): Confirm with Ahmed Kadri before Ready: the SeaweedFS pack name in the Palette registry, where users
-find the secret key of the identity that accessKey names, and the multi-pod Service. The SeaweedFS pack runs three pods by
-default, and vmo-manager needs an endpoint with ClientIP session affinity (the appliances' seaweedfs-s3 Service), or
-multipart uploads can fail with a 404. Source: vmo-manager docs/user/image-catalog/packages.md, Package storage. -->
+<!-- TODO(DOC-3274): Confirm with the SeaweedFS pack owners (Vishwanath Sastry, Yinzhe or Srinivas) before Ready. Ahmed
+Kadri (2026-11-02): the appliance profiles pin seaweedfs 4.43.0-rev2 (non-FIPS) and 4.43 (FIPS). 4.43.0-rev2 ships no S3
+identity, so users define one and choose its key; 4.43 ships a published default key that users must rotate. The
+effective value lives in the seaweedfs-s3-config Secret. Document which pack version to add and how to define or rotate
+the identity, and confirm that the pack installs in the seaweedfs namespace with the pod labels the Service selects. -->
 
-```yaml
-integrations:
-  packageStore:
-    enabled: true
-    endpoint: "http://seaweedfs.seaweedfs.svc.cluster.local:8333"
-    accessKey: "seaweedfs-zot-access-key"
-    secretKey: "<secret-key>"
-```
+1. Add the SeaweedFS pack (`seaweedfs`) to the cluster profile.
 
-Replace `<secret-key>` with the secret key of the SeaweedFS identity that `accessKey` names. VM Launchpad creates the
-`vmo-packages` bucket if it does not exist.
+2. Add the following manifest to the cluster profile. Refer to
+   [Add a Manifest](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for guidance. The SeaweedFS pack runs three pods by default, and each pod keeps its own file metadata. The Service of
+   the pack spreads the requests of a single upload across the pods, so uploads can fail with a `404` error. This
+   Service keeps the requests of each VM Launchpad pod on one SeaweedFS pod.
+
+   ```yaml
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: seaweedfs-s3
+     namespace: seaweedfs
+   spec:
+     type: ClusterIP
+     sessionAffinity: ClientIP
+     selector:
+       app.kubernetes.io/name: seaweedfs
+       app.kubernetes.io/component: master
+     ports:
+       - name: s3
+         port: 8333
+         targetPort: s3
+         protocol: TCP
+   ```
+
+3. Set the following values in the VMO pack.
+
+   ```yaml
+   integrations:
+     packageStore:
+       enabled: true
+       endpoint: "http://seaweedfs-s3.seaweedfs.svc.cluster.local:8333"
+       accessKey: "<access-key>"
+       secretKey: "<secret-key>"
+   ```
+
+   Replace `<access-key>` and `<secret-key>` with the access key and secret key of an S3 identity in SeaweedFS. VM
+   Launchpad creates the `vmo-packages` bucket if it does not exist.
 
 ## Upload a Package
 
@@ -287,7 +317,8 @@ upload the next time the VM Launchpad pod restarts. Refer to
 4. Select **Rebuild Repository**.
 
 5. Upload your logo and favicon through the VM Launchpad API. Use an [API key](../access-management/api-keys.md) of a
-   user with the `vmo:branding:write` permission, such as a Platform Admin.
+   Platform Admin whose role binding covers **All Namespaces**. Each image can be up to 2 MB, in PNG, JPG, GIF, SVG, or
+   ICO format.
 
    ```shell
    curl --header "Authorization: Bearer <api-key>" --form target=logo --form file=@<logo-file> \
@@ -310,7 +341,8 @@ upload the next time the VM Launchpad pod restarts. Refer to
 ### Restore the Virtio Windows ISO
 
 <!-- TODO(DOC-3274): The vmo-manager notes say the reset and both refill paths are covered by unit tests but have not
-been run on a cluster. Verify on a drop-eight build, or confirm with Ahmed Kadri, before Ready. -->
+been run on a cluster. Ahmed Kadri (2026-11-02): check with QA (Abirami) before documenting; otherwise hold this section.
+-->
 
 Follow these steps only if VM Launchpad downloaded the [Virtio Windows ISO](#virtio-windows-iso), or you uploaded it,
 before the upgrade. After the upgrade, its package row still records a file that is no longer stored. This blocks the
