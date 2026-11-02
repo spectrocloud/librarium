@@ -19,7 +19,7 @@ Edge host rolls back to its previous provider image. Local UI displays an **OS u
 Host** page and on the **Overview** tab of the **Cluster** page. This applies to both centrally managed and locally
 managed clusters. The banner stays until a later OS upgrade succeeds on the Edge host.
 
-### Debug Steps - Palette-Managed Clusters
+### Debug Steps - Centrally Managed Clusters
 
 1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile of the cluster.
 
