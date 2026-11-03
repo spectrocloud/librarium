@@ -58,8 +58,6 @@ VMO Pack is appropriate in the following scenarios:
   for guidance. Cluster profiles and clusters that include the VMO pack show the partial FIPS compliance icon. Refer to
   [FIPS Status Icons](../../vertex/fips/fips-status-icons.md) for more information.
 
-<!-- TODO(DOC-3412): confirm whether the FIPS VM Launchpad appliance uses FIPS builds of these images. If it does not, the FIPS Piraeus row of the variant table in vm-launchpad/install.md needs the same caveat. -->
-
 ## Get Started
 
 1. Review the [Architecture](../architecture.md) page to learn about the components included in the VMO pack.

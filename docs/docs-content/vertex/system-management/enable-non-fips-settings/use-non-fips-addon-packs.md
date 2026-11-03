@@ -39,10 +39,9 @@ guidance on adding a registry at the tenant scope, check out
 :::
 
 Some packs in the VerteX pack registries are also not FIPS-compliant, such as the Virtual Machine Orchestrator (VMO)
-pack. To add these packs to a cluster profile, you must enable **Allow non-FIPS packs**. Refer to
-[VMO Pack](../../../vm-management/vmo-pack/vmo-pack.md#limitations) for more information.
-
-<!-- TODO(DOC-3412): confirm that the VMO pack is in the VerteX pack registries, so that enabling Allow non-FIPS packs is enough without adding the non-FIPS registries above. -->
+pack. To add these packs to a cluster profile, you must enable **Allow non-FIPS packs**. You do not need to add the
+non-FIPS registries to use these packs. Refer to [VMO Pack](../../../vm-management/vmo-pack/vmo-pack.md#limitations) for
+more information.
 
 The screenshot below shows the icon that VerteX displays next to FIPS-compliant infrastructure components to indicate
 full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant
