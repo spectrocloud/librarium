@@ -1,0 +1,506 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /devx/services/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  232 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 232 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 232 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 232 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 232 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [expanded] [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+                - list [ref=e124]:
+                  - listitem [ref=e125]:
+                    - link "Use Cases" [ref=e126] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e127]:
+                    - generic [ref=e128]:
+                      - link "Apps" [ref=e129] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e130] [cursor=pointer]
+                  - listitem [ref=e131]:
+                    - generic [ref=e132]:
+                      - link "Palette Virtual Clusters" [ref=e133] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Dev Engine" [ref=e137] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e138] [cursor=pointer]
+                  - listitem [ref=e139]:
+                    - generic [ref=e140]:
+                      - link "Services" [expanded] [ref=e141] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e142] [cursor=pointer]
+                    - list [ref=e143]:
+                      - listitem [ref=e144]:
+                        - link "Service Connectivity" [ref=e145] [cursor=pointer]:
+                          - /url: /devx/services/connectivity/
+                      - listitem [ref=e146]:
+                        - link "Databases" [ref=e147] [cursor=pointer]:
+                          - /url: /devx/services/db-services/
+                      - listitem [ref=e148]:
+                        - generic [ref=e149]:
+                          - link "Available Services" [ref=e150] [cursor=pointer]:
+                            - /url: /devx/services/service-listings/
+                          - button "Toggle the collapsible sidebar category 'Available Services'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "AI Workloads" [ref=e154] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e156]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Virtual Machine Orchestrator" [ref=e161] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e163]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Workspaces" [ref=e168] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e170]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Packs List" [ref=e175] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e177]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "User & Role Management" [ref=e182] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e184]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Registries and Packs" [ref=e189] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e191]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Security" [ref=e196] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e198]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Audit Logs" [ref=e203] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e205]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Self-Hosted Palette" [ref=e210] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e212]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Palette Dev Engine" [ref=e272] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e273]:
+                    - generic [ref=e274]: Services
+              - generic [ref=e275]:
+                - heading "Services" [level=1] [ref=e277]
+                - paragraph [ref=e278]: Palette offers you different types of services to help you model all the dependencies and resources required to deploy an application. You can choose from several different service types in Palette.
+                - heading "Container DeploymentDirect link to Container Deployment" [level=2] [ref=e279]:
+                  - text: Container Deployment
+                  - link "Direct link to Container Deployment" [ref=e280] [cursor=pointer]:
+                    - /url: "#container-deployment"
+                    - text: "#"
+                - paragraph [ref=e281]:
+                  - link "Containers" [ref=e282] [cursor=pointer]:
+                    - /url: https://www.docker.com/resources/what-container/
+                  - text: are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to
+                  - link "Container Deployment" [ref=e283] [cursor=pointer]:
+                    - /url: /profiles/app-profiles/create-app-profiles/container-deployment/
+                  - text: .
+                - heading "HelmDirect link to Helm" [level=2] [ref=e284]:
+                  - text: Helm
+                  - link "Direct link to Helm" [ref=e285] [cursor=pointer]:
+                    - /url: "#helm"
+                    - text: "#"
+                - paragraph [ref=e286]:
+                  - text: Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit
+                  - link "Palette Helm Registry" [ref=e287] [cursor=pointer]:
+                    - /url: /registries-and-packs/registries/helm-charts/
+                  - text: .
+                - heading "ManifestDirect link to Manifest" [level=2] [ref=e288]:
+                  - text: Manifest
+                  - link "Direct link to Manifest" [ref=e289] [cursor=pointer]:
+                    - /url: "#manifest"
+                    - text: "#"
+                - paragraph [ref=e290]: You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require the creation of secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
+                - heading "Out-of-the-box ServicesDirect link to Out-of-the-box Services" [level=2] [ref=e291]:
+                  - text: Out-of-the-box Services
+                  - link "Direct link to Out-of-the-box Services" [ref=e292] [cursor=pointer]:
+                    - /url: "#out-of-the-box-services"
+                    - text: "#"
+                - paragraph [ref=e293]: Palette also offers a set of common services or resources that application authors frequently use to expand or add capabilities to an application. These services are managed by Palette and help reduce the burden of maintaining and deploying resources required by your application.
+                - heading "Messaging System ServicesDirect link to Messaging System Services" [level=3] [ref=e294]:
+                  - text: Messaging System Services
+                  - link "Direct link to Messaging System Services" [ref=e295] [cursor=pointer]:
+                    - /url: "#messaging-system-services"
+                    - text: "#"
+                - paragraph [ref=e296]: A messaging system service is a platform that enables the exchange of messages between users. It allows people to send and receive messages in real time using different devices and communication channels.
+                - heading "Object Storage ServicesDirect link to Object Storage Services" [level=3] [ref=e297]:
+                  - text: Object Storage Services
+                  - link "Direct link to Object Storage Services" [ref=e298] [cursor=pointer]:
+                    - /url: "#object-storage-services"
+                    - text: "#"
+                - paragraph [ref=e299]: Object storage is a data storage solution for unlimited, unstructured data like images, videos, and backups. Uploaded data is managed as objects, not files or blocks, and is scalable and durable.
+                - heading "Database ServicesDirect link to Database Services" [level=3] [ref=e300]:
+                  - text: Database Services
+                  - link "Direct link to Database Services" [ref=e301] [cursor=pointer]:
+                    - /url: "#database-services"
+                    - text: "#"
+                - paragraph [ref=e302]: A database stores structured data electronically for fast search and retrieval. It's commonly used for applications and websites to store information such as user data, transactions, and analytics.
+                - heading "Available ServicesDirect link to Available Services" [level=2] [ref=e303]:
+                  - text: Available Services
+                  - link "Direct link to Available Services" [ref=e304] [cursor=pointer]:
+                    - /url: "#available-services"
+                    - text: "#"
+                - paragraph [ref=e305]:
+                  - text: Check out the available service offerings in Palette by visiting the
+                  - link "Service Listings" [ref=e306] [cursor=pointer]:
+                    - /url: /devx/services/service-listings/
+                  - text: resource.
+              - generic [ref=e307]:
+                - generic [ref=e309]:
+                  - text: "Tags:"
+                  - list [ref=e310]:
+                    - listitem [ref=e311]:
+                      - link "devx" [ref=e312] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e313]:
+                      - link "app mode" [ref=e314] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e315]:
+                      - link "pde" [ref=e316] [cursor=pointer]:
+                        - /url: /tags/pde/
+                - link "Edit this page" [ref=e319] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/services/services.md
+                  - img [ref=e320]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e324]:
+              - link "Previous « Manage Single Sign-On (SSO)" [ref=e325] [cursor=pointer]:
+                - /url: /devx/manage-dev-engine/sso/
+                - generic [ref=e326]: Previous
+                - generic [ref=e327]: « Manage Single Sign-On (SSO)
+              - link "Next Service Connectivity »" [ref=e328] [cursor=pointer]:
+                - /url: /devx/services/connectivity/
+                - generic [ref=e329]: Next
+                - generic [ref=e330]: Service Connectivity »
+          - list [ref=e333]:
+            - listitem [ref=e334]:
+              - link "Container Deployment" [ref=e335] [cursor=pointer]:
+                - /url: "#container-deployment"
+            - listitem [ref=e336]:
+              - link "Helm" [ref=e337] [cursor=pointer]:
+                - /url: "#helm"
+            - listitem [ref=e338]:
+              - link "Manifest" [ref=e339] [cursor=pointer]:
+                - /url: "#manifest"
+            - listitem [ref=e340]:
+              - link "Out-of-the-box Services" [ref=e341] [cursor=pointer]:
+                - /url: "#out-of-the-box-services"
+              - list [ref=e342]:
+                - listitem [ref=e343]:
+                  - link "Messaging System Services" [ref=e344] [cursor=pointer]:
+                    - /url: "#messaging-system-services"
+                - listitem [ref=e345]:
+                  - link "Object Storage Services" [ref=e346] [cursor=pointer]:
+                    - /url: "#object-storage-services"
+                - listitem [ref=e347]:
+                  - link "Database Services" [ref=e348] [cursor=pointer]:
+                    - /url: "#database-services"
+            - listitem [ref=e349]:
+              - link "Available Services" [ref=e350] [cursor=pointer]:
+                - /url: "#available-services"
+  - button "Project Logo Ask AI" [ref=e351] [cursor=pointer]:
+    - generic [ref=e354]:
+      - img "Project Logo" [ref=e355]
+      - paragraph [ref=e356]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

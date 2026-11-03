@@ -1,0 +1,414 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /legal-licenses/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  110 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 110 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 110 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 110 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 110 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - link "Workspaces" [ref=e140] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e142]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "User & Role Management" [ref=e154] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e156]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Registries and Packs" [ref=e161] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e163]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Security" [ref=e168] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e170]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Audit Logs" [ref=e175] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e177]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Self-Hosted Palette" [ref=e182] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e184]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette VerteX" [ref=e189] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e191]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Tenant Administration" [ref=e196] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e198]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Automation" [ref=e203] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e205]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Troubleshooting" [ref=e210] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e212]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - link "Glossary" [ref=e216] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e218]
+                  - text: Glossary
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Compliance & Legal" [expanded] [ref=e222] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e224]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e226] [cursor=pointer]
+                - list [ref=e227]:
+                  - listitem [ref=e228]:
+                    - link "Compliance" [ref=e229] [cursor=pointer]:
+                      - /url: /legal-licenses/compliance/
+                  - listitem [ref=e230]:
+                    - generic [ref=e231]:
+                      - link "Open Source Licenses" [ref=e232] [cursor=pointer]:
+                        - /url: /legal-licenses/oss-licenses-index/
+                      - button "Toggle the collapsible sidebar category 'Open Source Licenses'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - button "Privacy Settings" [ref=e235] [cursor=pointer]:
+                  - img [ref=e236]
+                  - text: Privacy Settings
+      - main [ref=e238]:
+        - generic [ref=e240]:
+          - generic [ref=e242]:
+            - article [ref=e243]:
+              - navigation "Breadcrumbs" [ref=e244]:
+                - list [ref=e245]:
+                  - listitem [ref=e246]:
+                    - link "Home page" [ref=e247] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e248]
+                  - listitem [ref=e250]:
+                    - generic [ref=e251]: Compliance & Legal
+              - generic [ref=e252]:
+                - heading "Compliance & Legal" [level=1] [ref=e254]
+                - paragraph [ref=e255]:
+                  - text: This section contains legal information and acknowledgments for Palette and Palette VerteX. If you have any questions or concerns, please contact us at
+                  - link "contact@spectrocloud.com" [ref=e256] [cursor=pointer]:
+                    - /url: mailto:contact@spectrocloud.com
+                  - text: .
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e257]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e258] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e259]:
+                  - listitem [ref=e260]:
+                    - link "About Us" [ref=e261] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/company
+                  - listitem [ref=e262]:
+                    - link "Compliance" [ref=e263] [cursor=pointer]:
+                      - /url: /legal-licenses/compliance/
+                  - listitem [ref=e264]:
+                    - link "Open-Source Licenses" [ref=e265] [cursor=pointer]:
+                      - /url: /legal-licenses/oss-licenses-index/
+                  - listitem [ref=e266]:
+                    - link "Partners" [ref=e267] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/partners
+                  - listitem [ref=e268]:
+                    - link "Security Bulletins" [ref=e269] [cursor=pointer]:
+                      - /url: /security-bulletins/
+              - generic [ref=e270]:
+                - generic [ref=e272]:
+                  - text: "Tags:"
+                  - list [ref=e273]:
+                    - listitem [ref=e274]:
+                      - link "legal" [ref=e275] [cursor=pointer]:
+                        - /url: /tags/legal/
+                    - listitem [ref=e276]:
+                      - link "licenses" [ref=e277] [cursor=pointer]:
+                        - /url: /tags/licenses/
+                - link "Edit this page" [ref=e280] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/legal-licenses/legal-licenses.md
+                  - img [ref=e281]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e285]:
+              - link "Previous « Glossary" [ref=e286] [cursor=pointer]:
+                - /url: /glossary-all/
+                - generic [ref=e287]: Previous
+                - generic [ref=e288]: « Glossary
+              - link "Next Compliance »" [ref=e289] [cursor=pointer]:
+                - /url: /legal-licenses/compliance/
+                - generic [ref=e290]: Next
+                - generic [ref=e291]: Compliance »
+          - list [ref=e294]:
+            - listitem [ref=e295]:
+              - link "Resources" [ref=e296] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e297] [cursor=pointer]:
+    - generic [ref=e300]:
+      - img "Project Logo" [ref=e301]
+      - paragraph [ref=e302]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

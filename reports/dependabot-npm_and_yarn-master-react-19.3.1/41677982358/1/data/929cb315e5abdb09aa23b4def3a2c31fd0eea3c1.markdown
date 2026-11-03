@@ -1,0 +1,647 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /clusters/data-center/cloudstack/add-cloudstack-accounts/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  152 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [expanded] [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                    - list [ref=e125]:
+                      - listitem [ref=e126]:
+                        - generic [ref=e127]:
+                          - link "MAAS" [ref=e128] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e129] [cursor=pointer]
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Nutanix" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "CloudStack" [expanded] [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/data-center/cloudstack/
+                          - button "Toggle the collapsible sidebar category 'CloudStack'" [ref=e137] [cursor=pointer]
+                        - list [ref=e138]:
+                          - listitem [ref=e139]:
+                            - link "Architecture" [ref=e140] [cursor=pointer]:
+                              - /url: /clusters/data-center/cloudstack/architecture/
+                          - listitem [ref=e141]:
+                            - link "Add CloudStack Accounts" [ref=e142] [cursor=pointer]:
+                              - /url: /clusters/data-center/cloudstack/add-cloudstack-accounts/
+                          - listitem [ref=e143]:
+                            - link "Create and Manage CloudStack Clusters" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/data-center/cloudstack/create-manage-cloudstack-clusters/
+                          - listitem [ref=e145]:
+                            - link "Required Permissions" [ref=e146] [cursor=pointer]:
+                              - /url: /clusters/data-center/cloudstack/required-permissions/
+                      - listitem [ref=e147]:
+                        - generic [ref=e148]:
+                          - link "VMware" [ref=e149] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e150] [cursor=pointer]
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]:
+                      - link "Edge" [ref=e153] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e155]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e157] [cursor=pointer]
+                  - listitem [ref=e158]:
+                    - generic [ref=e159]:
+                      - link "Palette Virtual Clusters" [ref=e160] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e162]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e164] [cursor=pointer]
+                  - listitem [ref=e165]:
+                    - generic [ref=e166]:
+                      - link "Imported Clusters" [ref=e167] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e169]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "Manage Clusters" [ref=e174] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e176]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e178] [cursor=pointer]
+                  - listitem [ref=e179]:
+                    - generic [ref=e180]:
+                      - link "Cluster Groups" [ref=e181] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e183]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e185] [cursor=pointer]
+                  - listitem [ref=e186]:
+                    - generic [ref=e187]:
+                      - link "Private Cloud Gateway" [ref=e188] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e190]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e195] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e197]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Palette Dev Engine" [ref=e202] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e204]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "AI Workloads" [ref=e209] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e211]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Virtual Machine Orchestrator" [ref=e216] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e218]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Workspaces" [ref=e223] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e225]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Packs List" [ref=e230] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e232]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "User & Role Management" [ref=e237] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e239]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Registries and Packs" [ref=e244] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e246]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - generic [ref=e250]:
+                  - link "Security" [ref=e251] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e253]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e255] [cursor=pointer]
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Audit Logs" [ref=e258] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e260]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - link "Self-Hosted Palette" [ref=e265] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e267]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e269] [cursor=pointer]
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Palette VerteX" [ref=e272] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e274]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - generic [ref=e278]:
+                  - link "Tenant Administration" [ref=e279] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e281]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - generic [ref=e285]:
+                  - link "Automation" [ref=e286] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e288]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e290] [cursor=pointer]
+              - listitem [ref=e291]:
+                - generic [ref=e292]:
+                  - link "Troubleshooting" [ref=e293] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e295]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e297] [cursor=pointer]
+              - listitem [ref=e298]:
+                - link "Glossary" [ref=e299] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e301]
+                  - text: Glossary
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Compliance & Legal" [ref=e305] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e307]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - button "Privacy Settings" [ref=e311] [cursor=pointer]:
+                  - img [ref=e312]
+                  - text: Privacy Settings
+      - main [ref=e314]:
+        - generic [ref=e316]:
+          - generic [ref=e318]:
+            - article [ref=e319]:
+              - navigation "Breadcrumbs" [ref=e320]:
+                - list [ref=e321]:
+                  - listitem [ref=e322]:
+                    - link "Home page" [ref=e323] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e324]
+                  - listitem [ref=e326]:
+                    - link "Clusters" [ref=e327] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e328]:
+                    - link "Data Center Clusters" [ref=e329] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e330]:
+                    - link "CloudStack" [ref=e331] [cursor=pointer]:
+                      - /url: /clusters/data-center/cloudstack/
+                  - listitem [ref=e332]:
+                    - generic [ref=e333]: Add CloudStack Accounts
+              - generic [ref=e334]:
+                - heading "Add CloudStack Accounts to Palette" [level=1] [ref=e336]
+                - paragraph [ref=e337]: You can register Apache CloudStack accounts in Palette to create and manage Kubernetes clusters in your CloudStack environment.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e338]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e339] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e340]:
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: An installed
+                      - link "Private Cloud Gateway (PCG)" [ref=e343] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                      - text: that connects to your CloudStack environment. Review
+                      - link "Deploy a PCG in CloudStack" [ref=e344] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg/cloudstack/
+                      - text: for guidance.
+                    - generic [ref=e345]:
+                      - generic [ref=e346]:
+                        - img [ref=e348]
+                        - text: info
+                      - paragraph [ref=e351]:
+                        - text: If you have a self-hosted Palette or VerteX instance with network connectivity to the CloudStack environment, you can use a System Private Gateway to add CloudStack accounts. Refer to the
+                        - link "System Private Gateway" [ref=e352] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/#system-private-gateway
+                        - text: guide to learn more.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: A CloudStack user account with the required permissions to deploy workload clusters in the CloudStack environment. Review
+                      - link "Required Permissions for CloudStack" [ref=e355] [cursor=pointer]:
+                        - /url: /clusters/data-center/cloudstack/required-permissions/
+                      - text: to learn more about the required permissions.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]: "Access to your CloudStack environment with the following information:"
+                    - list [ref=e358]:
+                      - listitem [ref=e359]:
+                        - paragraph [ref=e360]:
+                          - text: The CloudStack API endpoint URL. For example,
+                          - code [ref=e361]: https://cloudstack.example.com:8443/client/api
+                          - text: or
+                          - code [ref=e362]: https://management-server-ip:8080/client/api
+                          - text: .
+                      - listitem [ref=e363]:
+                        - paragraph [ref=e364]:
+                          - text: A CloudStack API key and Secret key for the user account that will be used to deploy workload clusters. Refer to the
+                          - link "Using API Key and Secret Key based Authentication" [ref=e365] [cursor=pointer]:
+                            - /url: https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#using-api-key-and-secret-key-based-authentication
+                          - text: guide about API and Secret keys.
+                      - listitem [ref=e366]:
+                        - paragraph [ref=e367]:
+                          - text: The
+                          - link "CloudStack domain" [ref=e368] [cursor=pointer]:
+                            - /url: https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains
+                          - text: name for the user account that will be used to deploy workload clusters.
+                      - listitem [ref=e369]:
+                        - paragraph [ref=e370]: The Certificate Authority (CA) certificate for your CloudStack environment if it uses a custom or self-signed TLS certificate.
+                - heading "Register a CloudStack AccountDirect link to Register a CloudStack Account" [level=2] [ref=e371]:
+                  - text: Register a CloudStack Account
+                  - link "Direct link to Register a CloudStack Account" [ref=e372] [cursor=pointer]:
+                    - /url: "#register-a-cloudstack-account"
+                    - text: "#"
+                - list [ref=e373]:
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: Log in to Palette as a tenant admin.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: From the left main menu, select
+                      - strong [ref=e378]: Tenant Settings > Infrastructure > Cloud Accounts
+                      - text: .
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - text: Locate
+                      - strong [ref=e381]: CloudStack
+                      - text: and click
+                      - strong [ref=e382]: Add CloudStack Account
+                      - text: .
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Fill out the following input values and click
+                      - strong [ref=e385]: Confirm
+                      - text: to continue.
+                    - table [ref=e386]:
+                      - rowgroup [ref=e387]:
+                        - row "Field Description" [ref=e388]:
+                          - columnheader "Field" [ref=e389]:
+                            - strong [ref=e390]: Field
+                          - columnheader "Description" [ref=e391]:
+                            - strong [ref=e392]: Description
+                      - rowgroup [ref=e393]:
+                        - row "Account name A custom name for the CloudStack account. This is used by Palette to identify the account." [ref=e394]:
+                          - cell "Account name" [ref=e395]:
+                            - strong [ref=e396]: Account name
+                          - cell "A custom name for the CloudStack account. This is used by Palette to identify the account." [ref=e397]
+                        - row "select private cloud gateway Select the PCG from the list of deployed PCGs in your setup." [ref=e398]:
+                          - cell "select private cloud gateway" [ref=e399]:
+                            - strong [ref=e400]: select private cloud gateway
+                          - cell "Select the PCG from the list of deployed PCGs in your setup." [ref=e401]
+                        - row "API URL Enter the CloudStack API endpoint URL. For example, https://cloudstack.example.com:8443/client/api or https://management-server-ip:8080/client/api." [ref=e402]:
+                          - cell "API URL" [ref=e403]:
+                            - strong [ref=e404]: API URL
+                          - cell "Enter the CloudStack API endpoint URL. For example, https://cloudstack.example.com:8443/client/api or https://management-server-ip:8080/client/api." [ref=e405]:
+                            - text: Enter the CloudStack API endpoint URL. For example,
+                            - code [ref=e406]: https://cloudstack.example.com:8443/client/api
+                            - text: or
+                            - code [ref=e407]: https://management-server-ip:8080/client/api
+                            - text: .
+                        - row "API Key Enter the CloudStack API key for the user account that has permissions to deploy workload clusters." [ref=e408]:
+                          - cell "API Key" [ref=e409]:
+                            - strong [ref=e410]: API Key
+                          - cell "Enter the CloudStack API key for the user account that has permissions to deploy workload clusters." [ref=e411]
+                        - row "Secret Key Enter the CloudStack Secret key for the user account that has permissions to deploy workload clusters. Click Validate to verify the connection." [ref=e412]:
+                          - cell "Secret Key" [ref=e413]:
+                            - strong [ref=e414]: Secret Key
+                          - cell "Enter the CloudStack Secret key for the user account that has permissions to deploy workload clusters. Click Validate to verify the connection." [ref=e415]:
+                            - text: Enter the CloudStack Secret key for the user account that has permissions to deploy workload clusters. Click
+                            - strong [ref=e416]: Validate
+                            - text: to verify the connection.
+                        - row "Domain Enter the CloudStack domain name for the user account that has permissions to deploy workload clusters." [ref=e417]:
+                          - cell "Domain" [ref=e418]:
+                            - strong [ref=e419]: Domain
+                          - cell "Enter the CloudStack domain name for the user account that has permissions to deploy workload clusters." [ref=e420]:
+                            - text: Enter the CloudStack
+                            - link "domain" [ref=e421] [cursor=pointer]:
+                              - /url: https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains
+                            - text: name for the user account that has permissions to deploy workload clusters.
+                        - row "Allow Insecure Connection Enable this option if you want to skip TLS certificate verification for your CloudStack environment." [ref=e422]:
+                          - cell "Allow Insecure Connection" [ref=e423]:
+                            - strong [ref=e424]: Allow Insecure Connection
+                          - cell "Enable this option if you want to skip TLS certificate verification for your CloudStack environment." [ref=e425]
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: After filling out the required information, click
+                      - strong [ref=e428]: Confirm
+                      - text: to add the CloudStack account to Palette.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e429]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e430] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e431]:
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]: Log in to Palette as a tenant admin.
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]:
+                      - text: From the left main menu, select
+                      - strong [ref=e436]: Tenant Settings > Infrastructure > Cloud Accounts
+                      - text: .
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]: Verify that the CloudStack account you added appears in the CloudStack accounts list.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e439]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e440] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - list [ref=e441]:
+                  - listitem [ref=e442]:
+                    - text: Learn how to
+                    - link "Create and Manage CloudStack Clusters" [ref=e443] [cursor=pointer]:
+                      - /url: /clusters/data-center/cloudstack/create-manage-cloudstack-clusters/
+                    - text: in Palette.
+              - generic [ref=e444]:
+                - generic [ref=e446]:
+                  - text: "Tags:"
+                  - list [ref=e447]:
+                    - listitem [ref=e448]:
+                      - link "data center" [ref=e449] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e450]:
+                      - link "cloudstack" [ref=e451] [cursor=pointer]:
+                        - /url: /tags/cloudstack/
+                - link "Edit this page" [ref=e454] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/cloudstack/add-cloudstack-accounts.md
+                  - img [ref=e455]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e459]:
+              - link "Previous « Architecture" [ref=e460] [cursor=pointer]:
+                - /url: /clusters/data-center/cloudstack/architecture/
+                - generic [ref=e461]: Previous
+                - generic [ref=e462]: « Architecture
+              - link "Next Create and Manage CloudStack Clusters »" [ref=e463] [cursor=pointer]:
+                - /url: /clusters/data-center/cloudstack/create-manage-cloudstack-clusters/
+                - generic [ref=e464]: Next
+                - generic [ref=e465]: Create and Manage CloudStack Clusters »
+          - list [ref=e468]:
+            - listitem [ref=e469]:
+              - link "Prerequisites" [ref=e470] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e471]:
+              - link "Register a CloudStack Account" [ref=e472] [cursor=pointer]:
+                - /url: "#register-a-cloudstack-account"
+            - listitem [ref=e473]:
+              - link "Validate" [ref=e474] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e475]:
+              - link "Next Steps" [ref=e476] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e477] [cursor=pointer]:
+    - generic [ref=e480]:
+      - img "Project Logo" [ref=e481]
+      - paragraph [ref=e482]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

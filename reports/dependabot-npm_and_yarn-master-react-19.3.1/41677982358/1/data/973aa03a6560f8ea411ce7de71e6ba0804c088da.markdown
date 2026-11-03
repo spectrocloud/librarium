@@ -1,0 +1,748 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/vm-migration-assistant/create-source-providers/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  152 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+                - list [ref=e138]:
+                  - listitem [ref=e139]:
+                    - link "Architecture" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Launchpad" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "VMO Pack" [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "RBAC" [ref=e151] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e152] [cursor=pointer]
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "VM Migration Assistant" [expanded] [ref=e155] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e156] [cursor=pointer]
+                    - list [ref=e157]:
+                      - listitem [ref=e158]:
+                        - link "Create a VM Migration Assistant Profile" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - listitem [ref=e160]:
+                        - link "Create Source Providers" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                      - listitem [ref=e162]:
+                        - link "Create Migration Plans" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - listitem [ref=e164]:
+                        - link "Start Migration Plans" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                      - listitem [ref=e166]:
+                        - link "Cancel Active Migration Plans" [ref=e167] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                      - listitem [ref=e168]:
+                        - link "Additional Configuration" [ref=e169] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Workspaces" [ref=e172] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e174]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Packs List" [ref=e179] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e181]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "User & Role Management" [ref=e186] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e188]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Registries and Packs" [ref=e193] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e195]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Security" [ref=e200] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e202]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Audit Logs" [ref=e207] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e209]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Self-Hosted Palette" [ref=e214] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e216]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette VerteX" [ref=e221] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e223]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Tenant Administration" [ref=e228] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e230]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Automation" [ref=e235] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e237]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Troubleshooting" [ref=e242] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e244]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - link "Glossary" [ref=e248] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e250]
+                  - text: Glossary
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "Compliance & Legal" [ref=e254] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e256]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - button "Privacy Settings" [ref=e260] [cursor=pointer]:
+                  - img [ref=e261]
+                  - text: Privacy Settings
+      - main [ref=e263]:
+        - generic [ref=e265]:
+          - generic [ref=e267]:
+            - article [ref=e268]:
+              - navigation "Breadcrumbs" [ref=e269]:
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - link "Home page" [ref=e272] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e273]
+                  - listitem [ref=e275]:
+                    - link "Virtual Machine Orchestrator" [ref=e276] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e277]:
+                    - link "VM Migration Assistant" [ref=e278] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                  - listitem [ref=e279]:
+                    - generic [ref=e280]: Create Source Providers
+              - generic [ref=e281]:
+                - heading "Create Source Providers" [level=1] [ref=e283]
+                - paragraph [ref=e284]: Follow this guide to create source providers using the VM Migration Assistant. Source providers host the Virtual Machines (VMs) that need to be migrated.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e285]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e286] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - text: The
+                    - link "Virtual Machine Migration Assistant" [ref=e289] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=vm-migration-assistant
+                    - text: pack must be added to your cluster profile. Refer to
+                    - link "Create a VM Migration Assistant Cluster Profile" [ref=e290] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                    - text: for guidance.
+                - list [ref=e291]:
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]: The VM Migration Assistant service console must be accessible from a web browser.
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - text: A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the
+                      - link "Create a VMO Profile" [ref=e296] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - text: for further guidance.
+                    - list [ref=e297]:
+                      - listitem [ref=e298]: The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]: A vCenter user account with the following necessary privileges to perform migrations.
+                    - table [ref=e301]:
+                      - rowgroup [ref=e302]:
+                        - row "Privileges Description" [ref=e303]:
+                          - columnheader "Privileges" [ref=e304]:
+                            - strong [ref=e305]: Privileges
+                          - columnheader "Description" [ref=e306]:
+                            - strong [ref=e307]: Description
+                      - rowgroup [ref=e308]:
+                        - row "Virtual Machine Interaction Privileges (all) Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations." [ref=e309]:
+                          - cell "Virtual Machine Interaction Privileges (all)" [ref=e310]:
+                            - link "Virtual Machine Interaction Privileges (all)" [ref=e311] [cursor=pointer]:
+                              - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security/defined-privileges/virtual-machine-interaction-privileges.html
+                              - strong [ref=e312]: Virtual Machine Interaction Privileges
+                              - text: (all)
+                          - cell "Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations." [ref=e313]
+                        - row "Virtual machine.Snapshot management.Create snapshot Allows capturing the current state of a virtual machine as a snapshot." [ref=e314]:
+                          - cell "Virtual machine.Snapshot management.Create snapshot" [ref=e315]:
+                            - strong [ref=e316]:
+                              - link "Virtual machine.Snapshot management.Create snapshot" [ref=e317] [cursor=pointer]:
+                                - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security/defined-privileges/virtual-machine-snapshot-management-privileges.html
+                          - cell "Allows capturing the current state of a virtual machine as a snapshot." [ref=e318]
+                        - row "Virtual machine.Snapshot management.Remove Snapshot Permits deletion of a snapshot from the snapshot history." [ref=e319]:
+                          - cell "Virtual machine.Snapshot management.Remove Snapshot" [ref=e320]:
+                            - strong [ref=e321]:
+                              - link "Virtual machine.Snapshot management.Remove Snapshot" [ref=e322] [cursor=pointer]:
+                                - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security/defined-privileges/virtual-machine-snapshot-management-privileges.html
+                          - cell "Permits deletion of a snapshot from the snapshot history." [ref=e323]
+                    - list [ref=e324]:
+                      - listitem [ref=e325]:
+                        - paragraph [ref=e326]:
+                          - text: If you want to browse resources using the vCenter UI, you may require additional privileges. Refer to the
+                          - link "Required vCenter Server Privileges for Common Tasks" [ref=e327] [cursor=pointer]:
+                            - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security/vsphere-permissions-and-user-management-tasks/required-privileges-for-common-tasks.html
+                          - text: documentation for more information.
+                      - listitem [ref=e328]:
+                        - paragraph [ref=e329]: Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the
+                      - link "virt-v2v supported guest systems" [ref=e332] [cursor=pointer]:
+                        - /url: https://libguestfs.org/virt-v2v-support.1.html
+                      - text: list.
+                    - list [ref=e333]:
+                      - listitem [ref=e334]: For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
+                      - listitem [ref=e335]:
+                        - text: For warm migrations,
+                        - link "Changed Block Tracking" [ref=e336] [cursor=pointer]:
+                          - /url: https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html
+                        - text: must be enabled on your VMs.
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]: A VMware Virtual Disk Development Kit (VDDK) image is required for migrations. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
+                    - generic [ref=e339]:
+                      - generic [ref=e340]:
+                        - img [ref=e342]
+                        - text: warning
+                      - paragraph [ref=e345]: Broadcom no longer offers public VDDK downloads. Downloading VDDK requires a Broadcom account with the appropriate product entitlements and an active vSphere subscription. If you cannot access the download, contact your Broadcom account team or support representative.
+                    - list [ref=e346]:
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]: Use VDDK 9. The migration engine supports VDDK 9 for migrating source VMs from VMware vSphere 7.0 and 8.0.
+                      - listitem [ref=e349]:
+                        - paragraph [ref=e350]: You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO cluster for migrations.
+                        - group [ref=e351]:
+                          - generic "Example steps to build and upload VDDK image" [ref=e352] [cursor=pointer]
+                      - listitem [ref=e353]:
+                        - paragraph [ref=e354]:
+                          - text: If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be created in the namespace where the VMs will be migrated to, and the
+                          - code [ref=e355]: metadata.name
+                          - text: value must be
+                          - code [ref=e356]: vddk-image-pull-secret
+                          - text: .
+                        - group [ref=e357]:
+                          - generic "Example Secret Creation" [ref=e358] [cursor=pointer]
+                - heading "Create Source ProviderDirect link to Create Source Provider" [level=2] [ref=e359]:
+                  - text: Create Source Provider
+                  - link "Direct link to Create Source Provider" [ref=e360] [cursor=pointer]:
+                    - /url: "#create-source-provider"
+                    - text: "#"
+                - list [ref=e361]:
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - link "Access the VM Migration Assistant service console" [ref=e364] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]:
+                      - text: From the left main menu, select
+                      - strong [ref=e367]: Providers
+                      - text: ", then click"
+                      - strong [ref=e368]: Create provider
+                      - text: in the top-right corner.
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]:
+                      - text: On the
+                      - strong [ref=e371]: Create provider
+                      - text: page, select the
+                      - strong [ref=e372]: Provider namespace
+                      - text: from the drop-down.
+                    - paragraph [ref=e373]: The provider namespace is the Kubernetes namespace where the provider credentials and configuration will be stored. This should be the same namespace where you plan to migrate your VMs to.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - text: Select the
+                      - strong [ref=e376]: VMware vSphere
+                      - text: from the
+                      - strong [ref=e377]: Provider type
+                      - text: drop-down. Once you select a provider type, additional fields appear. The following table describes the details to fill in for the provider.
+                    - generic [ref=e378]:
+                      - generic [ref=e379]:
+                        - img [ref=e381]
+                        - text: warning
+                      - paragraph [ref=e384]: The Open Virtual Appliance (OVA) provider type is not supported.
+                    - heading "Provider SettingsDirect link to Provider Settings" [level=4] [ref=e385]:
+                      - text: Provider Settings
+                      - link "Direct link to Provider Settings" [ref=e386] [cursor=pointer]:
+                        - /url: "#provider-settings"
+                        - text: "#"
+                    - table [ref=e387]:
+                      - rowgroup [ref=e388]:
+                        - row "Setting Description" [ref=e389]:
+                          - columnheader "Setting" [ref=e390]
+                          - columnheader "Description" [ref=e391]
+                      - rowgroup [ref=e392]:
+                        - row "Provider name A unique name for your provider." [ref=e393]:
+                          - cell "Provider name" [ref=e394]:
+                            - strong [ref=e395]: Provider name
+                          - cell "A unique name for your provider." [ref=e396]
+                        - row "vSphere endpoint Select the type of endpoint to configure the connection. Choose vCenter if managing multiple hosts through a central server, or ESXi if connecting directly to a standalone host." [ref=e397]:
+                          - cell "vSphere endpoint" [ref=e398]:
+                            - strong [ref=e399]: vSphere endpoint
+                          - cell "Select the type of endpoint to configure the connection. Choose vCenter if managing multiple hosts through a central server, or ESXi if connecting directly to a standalone host." [ref=e400]:
+                            - text: Select the type of endpoint to configure the connection. Choose
+                            - strong [ref=e401]: vCenter
+                            - text: if managing multiple hosts through a central server, or
+                            - strong [ref=e402]: ESXi
+                            - text: if connecting directly to a standalone host.
+                        - row "API endpoint URL Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Fully Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/sdk." [ref=e403]:
+                          - cell "API endpoint URL" [ref=e404]:
+                            - strong [ref=e405]: API endpoint URL
+                          - cell "Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Fully Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/sdk." [ref=e406]:
+                            - text: Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Fully Qualified Domain Name (FQDN) or an IP address. For example,
+                            - code [ref=e407]: https://vcenter.mycompany.com/sdk
+                            - text: .
+                        - row "Virtual Disk Development Kit (VDDK) setup Select the option to Manually specify the VDDK image URL. A VDDK image is required for VM migrations. Refer to the Prerequisites for more information." [ref=e408]:
+                          - cell "Virtual Disk Development Kit (VDDK) setup" [ref=e409]:
+                            - strong [ref=e410]: Virtual Disk Development Kit (VDDK) setup
+                          - cell "Select the option to Manually specify the VDDK image URL. A VDDK image is required for VM migrations. Refer to the Prerequisites for more information." [ref=e411]:
+                            - text: Select the option to
+                            - strong [ref=e412]: Manually specify the VDDK image URL
+                            - text: . A VDDK image is required for VM migrations. Refer to the
+                            - link "Prerequisites" [ref=e413] [cursor=pointer]:
+                              - /url: "#prerequisites"
+                            - text: for more information.
+                        - row "Upload a VDDK archive to generate the image URL Unsupported method." [ref=e414]:
+                          - cell "Upload a VDDK archive to generate the image URL" [ref=e415]:
+                            - strong [ref=e416]: Upload a VDDK archive to generate the image URL
+                          - cell "Unsupported method." [ref=e417]:
+                            - emphasis [ref=e418]: Unsupported method
+                            - text: .
+                        - row "Manually specify the VDDK image URL Provide the registry URL to the VDDK image in the VDDK init image field. Specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e419]:
+                          - cell "Manually specify the VDDK image URL" [ref=e420]:
+                            - strong [ref=e421]: Manually specify the VDDK image URL
+                          - cell "Provide the registry URL to the VDDK image in the VDDK init image field. Specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e422]:
+                            - text: Provide the registry URL to the VDDK image in the
+                            - strong [ref=e423]: VDDK init image
+                            - text: field. Specify the registry URL without the HTTP scheme
+                            - code [ref=e424]: https://
+                            - text: or
+                            - code [ref=e425]: http://
+                            - text: . For example,
+                            - code [ref=e426]: docker.io/myorganization/vddk:v8.0.3
+                            - text: .
+                        - row "Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization When enabled, this option uses asynchronous input/output operations to process multiple disk read/write requests simultaneously during VM migration, rather than sequentially. This can significantly improve disk transfer speeds, particularly for environments with high-latency storage or high-bandwidth networks, but increases memory usage on the VMware ESXi host's Network File Copy (NFC) server." [ref=e427]:
+                          - cell "Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization" [ref=e428]:
+                            - strong [ref=e429]: Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization
+                          - cell "When enabled, this option uses asynchronous input/output operations to process multiple disk read/write requests simultaneously during VM migration, rather than sequentially. This can significantly improve disk transfer speeds, particularly for environments with high-latency storage or high-bandwidth networks, but increases memory usage on the VMware ESXi host's Network File Copy (NFC) server." [ref=e430]
+                        - row "Convert Disk When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the Provider Credentials." [ref=e431]:
+                          - cell "Convert Disk" [ref=e432]:
+                            - strong [ref=e433]: Convert Disk
+                          - cell "When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the Provider Credentials." [ref=e434]:
+                            - text: When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the
+                            - link "Provider Credentials" [ref=e435] [cursor=pointer]:
+                              - /url: "#provider-credentials"
+                            - text: .
+                    - heading "Provider CredentialsDirect link to Provider Credentials" [level=4] [ref=e436]:
+                      - text: Provider Credentials
+                      - link "Direct link to Provider Credentials" [ref=e437] [cursor=pointer]:
+                        - /url: "#provider-credentials"
+                        - text: "#"
+                    - table [ref=e438]:
+                      - rowgroup [ref=e439]:
+                        - row "Setting Description" [ref=e440]:
+                          - columnheader "Setting" [ref=e441]
+                          - columnheader "Description" [ref=e442]
+                      - rowgroup [ref=e443]:
+                        - row "Username Your vSphere / ESXi account username. For example, user@vsphere.local." [ref=e444]:
+                          - cell "Username" [ref=e445]:
+                            - strong [ref=e446]: Username
+                          - cell "Your vSphere / ESXi account username. For example, user@vsphere.local." [ref=e447]:
+                            - text: Your vSphere / ESXi account username. For example,
+                            - code [ref=e448]: user@vsphere.local
+                            - text: .
+                        - row "Password Your vSphere / ESXi account password." [ref=e449]:
+                          - cell "Password" [ref=e450]:
+                            - strong [ref=e451]: Password
+                          - cell "Your vSphere / ESXi account password." [ref=e452]
+                        - row "Certificate validation Configure certificate validation for your vSphere / ESXi provider or Skip certificate validation." [ref=e453]:
+                          - cell "Certificate validation" [ref=e454]:
+                            - strong [ref=e455]: Certificate validation
+                          - cell "Configure certificate validation for your vSphere / ESXi provider or Skip certificate validation." [ref=e456]:
+                            - strong [ref=e457]: Configure certificate validation
+                            - text: for your vSphere / ESXi provider or
+                            - strong [ref=e458]: Skip certificate validation
+                            - text: .
+                        - row "Configure certificate validation Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi." [ref=e459]:
+                          - cell "Configure certificate validation" [ref=e460]:
+                            - strong [ref=e461]: Configure certificate validation
+                          - cell "Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi." [ref=e462]
+                        - row "Skip certificate validation Enabling this option bypasses x509 CA verification." [ref=e463]:
+                          - cell "Skip certificate validation" [ref=e464]:
+                            - strong [ref=e465]: Skip certificate validation
+                          - cell "Enabling this option bypasses x509 CA verification." [ref=e466]
+                  - listitem [ref=e467]:
+                    - paragraph [ref=e468]:
+                      - text: Click
+                      - strong [ref=e469]: Create Provider
+                      - text: .
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]:
+                      - text: On the provider details page, if you need to change a setting, click the
+                      - strong [ref=e472]: Edit
+                      - text: icon next to each value and adjust it in the pop-up window. Click
+                      - strong [ref=e473]: Save
+                      - text: after making changes.
+                - paragraph [ref=e474]:
+                  - text: If you want to explore additional settings, refer to
+                  - link "Additional Configuration - Provider Settings" [ref=e475] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/additional-configuration/#provider-settings
+                  - text: for guidance.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e476]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e477] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e478]:
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - link "Access the VM Migration Assistant service console" [ref=e481] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: From the left main menu, select
+                      - strong [ref=e484]: Providers
+                      - text: .
+                  - listitem [ref=e485]:
+                    - paragraph [ref=e486]:
+                      - text: All namespaces are displayed by default. If you want to view a specific namespace, use the
+                      - strong [ref=e487]: Namespace
+                      - text: drop-down in the top-left corner to select your Kubernetes namespace for the migration.
+                  - listitem [ref=e488]:
+                    - paragraph [ref=e489]: Find your provider in the table and click the provider name to view its details. You can use the table filters to help locate your provider if needed.
+                  - listitem [ref=e490]:
+                    - paragraph [ref=e491]:
+                      - text: On the
+                      - strong [ref=e492]: Details
+                      - text: tab, the provider status displays as
+                      - strong [ref=e493]: Ready
+                      - text: .
+                    - paragraph [ref=e494]:
+                      - img "Provider Ready Status" [ref=e495]
+                    - paragraph [ref=e496]:
+                      - text: If the provider status is not
+                      - strong [ref=e497]: Ready
+                      - text: ", check the"
+                      - strong [ref=e498]: Conditions
+                      - text: section of the
+                      - strong [ref=e499]: Details
+                      - text: tab for any failed conditions.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e500]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e501] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - list [ref=e502]:
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]:
+                      - text: You can now create migration plans in the VM Migration Assistant. Refer to the
+                      - link "Create Migration Plans" [ref=e505] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - text: guide to start creating your plans.
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - text: If you want to explore additional provider settings, refer to
+                      - link "Additional Configuration - Provider Settings" [ref=e508] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/additional-configuration/#provider-settings
+                      - text: for guidance.
+              - generic [ref=e509]:
+                - generic [ref=e511]:
+                  - text: "Tags:"
+                  - list [ref=e512]:
+                    - listitem [ref=e513]:
+                      - link "vmo" [ref=e514] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e515]:
+                      - link "vm migration assistant" [ref=e516] [cursor=pointer]:
+                        - /url: /tags/vm-migration-assistant/
+                - link "Edit this page" [ref=e519] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-migration-assistant/create-source-providers.md
+                  - img [ref=e520]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e524]:
+              - link "Previous « Create a VM Migration Assistant Profile" [ref=e525] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                - generic [ref=e526]: Previous
+                - generic [ref=e527]: « Create a VM Migration Assistant Profile
+              - link "Next Create Migration Plans »" [ref=e528] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                - generic [ref=e529]: Next
+                - generic [ref=e530]: Create Migration Plans »
+          - list [ref=e533]:
+            - listitem [ref=e534]:
+              - link "Prerequisites" [ref=e535] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e536]:
+              - link "Create Source Provider" [ref=e537] [cursor=pointer]:
+                - /url: "#create-source-provider"
+            - listitem [ref=e538]:
+              - link "Validate" [ref=e539] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e540]:
+              - link "Next Steps" [ref=e541] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e542] [cursor=pointer]:
+    - generic [ref=e545]:
+      - img "Project Logo" [ref=e546]
+      - paragraph [ref=e547]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

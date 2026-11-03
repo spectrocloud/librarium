@@ -1,0 +1,519 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /paletteai-inference-launchpad/how-to-guides/manage-users/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  152 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Overview" [ref=e44] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Tutorials" [ref=e47] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/tutorials/
+                  - button "Toggle the collapsible sidebar category 'Tutorials'" [ref=e48] [cursor=pointer]
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "How-to Guides" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - button "Toggle the collapsible sidebar category 'How-to Guides'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Install the Appliance" [ref=e55] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/install-the-appliance/
+                  - listitem [ref=e56]:
+                    - link "Manage Cluster Infrastructure" [ref=e57] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-cluster-infrastructure/
+                  - listitem [ref=e58]:
+                    - link "Upgrade the Platform" [ref=e59] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upgrade-the-platform/
+                  - listitem [ref=e60]:
+                    - link "Upload a Model" [ref=e61] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/upload-a-model/
+                  - listitem [ref=e62]:
+                    - link "Deploy a Model" [ref=e63] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/deploy-a-model/
+                  - listitem [ref=e64]:
+                    - link "Share a GPU Between Models" [ref=e65] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/share-a-gpu-between-models/
+                  - listitem [ref=e66]:
+                    - link "Replace a Model" [ref=e67] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/replace-a-model/
+                  - listitem [ref=e68]:
+                    - link "Bring Your Own Model" [ref=e69] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/bring-your-own-model/
+                  - listitem [ref=e70]:
+                    - link "Configure Semantic Routing" [ref=e71] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/configure-semantic-routing/
+                  - listitem [ref=e72]:
+                    - link "Enable Vision Preprocessing" [ref=e73] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/enable-vision-preprocessing/
+                  - listitem [ref=e74]:
+                    - link "Set the Thinking Directive for a Tier" [ref=e75] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/set-tier-thinking/
+                  - listitem [ref=e76]:
+                    - link "Create a Workspace" [ref=e77] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-workspace/
+                  - listitem [ref=e78]:
+                    - link "Manage Workspace Members" [ref=e79] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-workspace-members/
+                  - listitem [ref=e80]:
+                    - link "Manage Users" [ref=e81] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-users/
+                  - listitem [ref=e82]:
+                    - link "Manage Groups" [ref=e83] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-groups/
+                  - listitem [ref=e84]:
+                    - link "Create a Client" [ref=e85] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/create-a-client/
+                  - listitem [ref=e86]:
+                    - link "Generate an API Token" [ref=e87] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/generate-an-api-token/
+                  - listitem [ref=e88]:
+                    - link "Set and Manage Client Quotas" [ref=e89] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-quotas/
+                  - listitem [ref=e90]:
+                    - link "Manage a Client's Model Access" [ref=e91] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/manage-client-model-access/
+                  - listitem [ref=e92]:
+                    - link "Register an External Inference Endpoint" [ref=e93] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/register-an-external-inference-endpoint/
+                  - listitem [ref=e94]:
+                    - link "View Token Usage" [ref=e95] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-token-usage/
+                  - listitem [ref=e96]:
+                    - link "View Client Usage" [ref=e97] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/view-client-usage/
+                  - listitem [ref=e98]:
+                    - link "Revoke or Delete a Client" [ref=e99] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/revoke-or-delete-a-client/
+                  - listitem [ref=e100]:
+                    - link "Use Claude Code" [ref=e101] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-claude-code/
+                  - listitem [ref=e102]:
+                    - link "Use Cursor" [ref=e103] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-cursor/
+                  - listitem [ref=e104]:
+                    - link "Use OpenAI Codex" [ref=e105] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-codex/
+                  - listitem [ref=e106]:
+                    - link "Use OpenCode" [ref=e107] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/use-opencode/
+              - listitem [ref=e108]:
+                - generic [ref=e109]:
+                  - link "Explanation" [ref=e110] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/explanation/
+                  - button "Toggle the collapsible sidebar category 'Explanation'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Reference" [ref=e114] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/reference/
+                  - button "Toggle the collapsible sidebar category 'Reference'" [ref=e115] [cursor=pointer]
+              - listitem [ref=e116]:
+                - link "Release Notes" [ref=e117] [cursor=pointer]:
+                  - /url: /paletteai-inference-launchpad/release-notes/
+              - listitem [ref=e118]:
+                - button "Privacy Settings" [ref=e119] [cursor=pointer]
+      - main [ref=e120]:
+        - generic [ref=e122]:
+          - generic [ref=e124]:
+            - article [ref=e125]:
+              - navigation "Breadcrumbs" [ref=e126]:
+                - list [ref=e127]:
+                  - listitem [ref=e128]:
+                    - link "Home page" [ref=e129] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e130]
+                  - listitem [ref=e132]:
+                    - link "How-to Guides" [ref=e133] [cursor=pointer]:
+                      - /url: /paletteai-inference-launchpad/how-to-guides/
+                  - listitem [ref=e134]:
+                    - generic [ref=e135]: Manage Users
+              - generic [ref=e136]:
+                - heading "Manage Users" [level=1] [ref=e138]
+                - paragraph [ref=e139]:
+                  - text: Add and maintain people on the
+                  - strong [ref=e140]: Users
+                  - text: tab. Adding a user gives no workspace access. To give access, add the person, or a group they are in, as a
+                  - link "workspace member" [ref=e141] [cursor=pointer]:
+                    - /url: /paletteai-inference-launchpad/how-to-guides/manage-workspace-members/
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e142]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e143] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e144]:
+                  - listitem [ref=e145]:
+                    - paragraph [ref=e146]: A running PaletteAI Inference Launchpad appliance, with the console reachable.
+                  - listitem [ref=e147]:
+                    - paragraph [ref=e148]:
+                      - text: Console access as a person who holds the
+                      - strong [ref=e149]: Platform administrator
+                      - text: role.
+                  - listitem [ref=e150]:
+                    - paragraph [ref=e151]:
+                      - text: An identity provider configured for the appliance. Without one, the
+                      - strong [ref=e152]: Users
+                      - text: tab shows a message instead of a list.
+                - heading "Add a UserDirect link to Add a User" [level=2] [ref=e153]:
+                  - text: Add a User
+                  - link "Direct link to Add a User" [ref=e154] [cursor=pointer]:
+                    - /url: "#add-a-user"
+                    - text: "#"
+                - list [ref=e155]:
+                  - listitem [ref=e156]:
+                    - paragraph [ref=e157]:
+                      - text: From the left main menu, select
+                      - strong [ref=e158]: Access & Policy
+                      - text: ", and then select"
+                      - strong [ref=e159]: All workspaces
+                      - text: in the workspace drop-down menu.
+                  - listitem [ref=e160]:
+                    - paragraph [ref=e161]:
+                      - text: Select the
+                      - strong [ref=e162]: Users
+                      - text: tab, and then select
+                      - strong [ref=e163]: Add User
+                      - text: . The
+                      - strong [ref=e164]: Add user
+                      - text: wizard opens on the
+                      - strong [ref=e165]: Identity
+                      - text: step.
+                  - listitem [ref=e166]:
+                    - paragraph [ref=e167]:
+                      - text: "On"
+                      - strong [ref=e168]: Who they are
+                      - text: ", enter the person's"
+                      - strong [ref=e169]: Email
+                      - text: ", and optionally their"
+                      - strong [ref=e170]: First Name
+                      - text: and
+                      - strong [ref=e171]: Last Name
+                      - text: . Leave
+                      - strong [ref=e172]: Active
+                      - text: on to create the person in the
+                      - strong [ref=e173]: Active
+                      - text: state. Select
+                      - strong [ref=e174]: Next
+                      - text: .
+                  - listitem [ref=e175]:
+                    - paragraph [ref=e176]:
+                      - emphasis [ref=e177]: (Optional)
+                      - text: "On"
+                      - strong [ref=e178]: How they sign in
+                      - text: ", set a password for the person, and choose whether the password is temporary. Select"
+                      - strong [ref=e179]: Next
+                      - text: .
+                  - listitem [ref=e180]:
+                    - paragraph [ref=e181]:
+                      - emphasis [ref=e182]: (Optional)
+                      - text: "On"
+                      - strong [ref=e183]: Which groups they are in
+                      - text: ", select the groups the person belongs to."
+                  - listitem [ref=e184]:
+                    - paragraph [ref=e185]:
+                      - text: Select
+                      - strong [ref=e186]: Save
+                      - text: .
+                - heading "Set a PasswordDirect link to Set a Password" [level=2] [ref=e187]:
+                  - text: Set a Password
+                  - link "Direct link to Set a Password" [ref=e188] [cursor=pointer]:
+                    - /url: "#set-a-password"
+                    - text: "#"
+                - list [ref=e189]:
+                  - listitem [ref=e190]:
+                    - paragraph [ref=e191]:
+                      - text: On the
+                      - strong [ref=e192]: Users
+                      - text: tab, open the three-dot menu in the person's row, and then select
+                      - strong [ref=e193]: Set password
+                      - text: . The
+                      - strong [ref=e194]: Set a password for
+                      - text: dialog opens with the person's email address in its title.
+                  - listitem [ref=e195]:
+                    - paragraph [ref=e196]: Enter the password, and choose whether the password is temporary.
+                  - listitem [ref=e197]:
+                    - paragraph [ref=e198]:
+                      - text: Select
+                      - strong [ref=e199]: Save
+                      - text: .
+                - heading "Change or Deactivate a UserDirect link to Change or Deactivate a User" [level=2] [ref=e200]:
+                  - text: Change or Deactivate a User
+                  - link "Direct link to Change or Deactivate a User" [ref=e201] [cursor=pointer]:
+                    - /url: "#change-or-deactivate-a-user"
+                    - text: "#"
+                - list [ref=e202]:
+                  - listitem [ref=e203]:
+                    - paragraph [ref=e204]:
+                      - text: On the
+                      - strong [ref=e205]: Users
+                      - text: tab, open the three-dot menu in the person's row, and then select
+                      - strong [ref=e206]: Manage
+                      - text: . The
+                      - strong [ref=e207]: Manage user
+                      - text: drawer opens.
+                  - listitem [ref=e208]:
+                    - paragraph [ref=e209]: Change the person's name or groups.
+                  - listitem [ref=e210]:
+                    - paragraph [ref=e211]:
+                      - emphasis [ref=e212]: (Optional)
+                      - text: To make the person inactive, turn off
+                      - strong [ref=e213]: Active
+                      - text: .
+                  - listitem [ref=e214]:
+                    - paragraph [ref=e215]:
+                      - text: Select
+                      - strong [ref=e216]: Save
+                      - text: .
+                - heading "Delete a UserDirect link to Delete a User" [level=2] [ref=e217]:
+                  - text: Delete a User
+                  - link "Direct link to Delete a User" [ref=e218] [cursor=pointer]:
+                    - /url: "#delete-a-user"
+                    - text: "#"
+                - list [ref=e219]:
+                  - listitem [ref=e220]:
+                    - paragraph [ref=e221]:
+                      - text: On the
+                      - strong [ref=e222]: Users
+                      - text: tab, open the three-dot menu in the person's row, and then select
+                      - strong [ref=e223]: Delete
+                      - text: .
+                  - listitem [ref=e224]:
+                    - paragraph [ref=e225]: In the confirmation dialog, confirm the delete.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e226]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e227] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e228]:
+                  - listitem [ref=e229]:
+                    - paragraph [ref=e230]:
+                      - text: From the left main menu, select
+                      - strong [ref=e231]: Access & Policy
+                      - text: ", and then select"
+                      - strong [ref=e232]: All workspaces
+                      - text: in the workspace drop-down menu.
+                  - listitem [ref=e233]:
+                    - paragraph [ref=e234]:
+                      - text: Select the
+                      - strong [ref=e235]: Users
+                      - text: tab. Confirm that each person you added appears with the
+                      - strong [ref=e236]: Groups
+                      - text: they are in and the
+                      - strong [ref=e237]: State
+                      - text: you set.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e238]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e239] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - list [ref=e240]:
+                  - listitem [ref=e241]:
+                    - paragraph [ref=e242]:
+                      - link "Manage Workspace Members" [ref=e243] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/manage-workspace-members/
+                      - text: to give a person access to a workspace.
+                  - listitem [ref=e244]:
+                    - paragraph [ref=e245]:
+                      - link "Manage Groups" [ref=e246] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/how-to-guides/manage-groups/
+                      - text: to put people in groups.
+                  - listitem [ref=e247]:
+                    - paragraph [ref=e248]:
+                      - link "Access and Policy Reference" [ref=e249] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/reference/access-and-policy-reference/#users-tab
+                      - text: describes the
+                      - strong [ref=e250]: Users
+                      - text: tab and the
+                      - strong [ref=e251]: Add user
+                      - text: wizard.
+              - generic [ref=e252]:
+                - generic [ref=e254]:
+                  - text: "Tags:"
+                  - list [ref=e255]:
+                    - listitem [ref=e256]:
+                      - link "paletteai-inference-launchpad" [ref=e257] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/paletteai-inference-launchpad/
+                    - listitem [ref=e258]:
+                      - link "access" [ref=e259] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/access/
+                    - listitem [ref=e260]:
+                      - link "users" [ref=e261] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/users/
+                    - listitem [ref=e262]:
+                      - link "how-to" [ref=e263] [cursor=pointer]:
+                        - /url: /paletteai-inference-launchpad/tags/how-to/
+                - link "Edit this page" [ref=e266] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/products/paletteai-inference-launchpad/how-to-guides/manage-users.md
+                  - img [ref=e267]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e271]:
+              - link "Previous « Manage Workspace Members" [ref=e272] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/manage-workspace-members/
+                - generic [ref=e273]: Previous
+                - generic [ref=e274]: « Manage Workspace Members
+              - link "Next Manage Groups »" [ref=e275] [cursor=pointer]:
+                - /url: /paletteai-inference-launchpad/how-to-guides/manage-groups/
+                - generic [ref=e276]: Next
+                - generic [ref=e277]: Manage Groups »
+          - list [ref=e280]:
+            - listitem [ref=e281]:
+              - link "Prerequisites" [ref=e282] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e283]:
+              - link "Add a User" [ref=e284] [cursor=pointer]:
+                - /url: "#add-a-user"
+            - listitem [ref=e285]:
+              - link "Set a Password" [ref=e286] [cursor=pointer]:
+                - /url: "#set-a-password"
+            - listitem [ref=e287]:
+              - link "Change or Deactivate a User" [ref=e288] [cursor=pointer]:
+                - /url: "#change-or-deactivate-a-user"
+            - listitem [ref=e289]:
+              - link "Delete a User" [ref=e290] [cursor=pointer]:
+                - /url: "#delete-a-user"
+            - listitem [ref=e291]:
+              - link "Validate" [ref=e292] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e293]:
+              - link "Next Steps" [ref=e294] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e295] [cursor=pointer]:
+    - generic [ref=e298]:
+      - img "Project Logo" [ref=e299]
+      - paragraph [ref=e300]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

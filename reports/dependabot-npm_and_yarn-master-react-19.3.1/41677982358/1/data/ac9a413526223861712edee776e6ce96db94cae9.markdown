@@ -1,0 +1,533 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /profiles/profile-customization/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  309 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 309 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 309 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 250ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 309 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 500ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 309 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [expanded] [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+                - list [ref=e85]:
+                  - listitem [ref=e86]:
+                    - generic [ref=e87]:
+                      - link "Cluster Profiles" [ref=e88] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e89] [cursor=pointer]
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]:
+                      - link "App Profiles" [ref=e92] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e93] [cursor=pointer]
+                  - listitem [ref=e94]:
+                    - link "Profile Customization" [ref=e95] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Cluster Templates" [ref=e98] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e100]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Deployment Modes" [ref=e105] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e107]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Clusters" [ref=e112] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e114]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e123] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e125]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Palette Dev Engine" [ref=e130] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e132]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "AI Workloads" [ref=e137] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e139]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Virtual Machine Orchestrator" [ref=e144] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e146]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Workspaces" [ref=e151] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e153]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Packs List" [ref=e158] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e160]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "User & Role Management" [ref=e165] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e167]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Registries and Packs" [ref=e172] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e174]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Security" [ref=e179] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e181]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Audit Logs" [ref=e186] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e188]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Self-Hosted Palette" [ref=e193] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e195]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Palette VerteX" [ref=e200] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e202]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Tenant Administration" [ref=e207] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e209]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Automation" [ref=e214] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e216]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Troubleshooting" [ref=e221] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e223]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - link "Glossary" [ref=e227] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e229]
+                  - text: Glossary
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Compliance & Legal" [ref=e233] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e235]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - button "Privacy Settings" [ref=e239] [cursor=pointer]:
+                  - img [ref=e240]
+                  - text: Privacy Settings
+      - main [ref=e242]:
+        - generic [ref=e244]:
+          - generic [ref=e246]:
+            - article [ref=e247]:
+              - navigation "Breadcrumbs" [ref=e248]:
+                - list [ref=e249]:
+                  - listitem [ref=e250]:
+                    - link "Home page" [ref=e251] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e252]
+                  - listitem [ref=e254]:
+                    - link "Profiles" [ref=e255] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e256]:
+                    - generic [ref=e257]: Profile Customization
+              - generic [ref=e258]:
+                - heading "Profile Customization" [level=1] [ref=e260]
+                - heading "Pack Labels and AnnotationsDirect link to Pack Labels and Annotations" [level=2] [ref=e261]:
+                  - text: Pack Labels and Annotations
+                  - link "Direct link to Pack Labels and Annotations" [ref=e262] [cursor=pointer]:
+                    - /url: "#pack-labels-and-annotations"
+                    - text: "#"
+                - paragraph [ref=e263]: Namespace labels and annotations are used to customize packs. This section explains how to apply them in a pack YAML configuration.
+                - paragraph [ref=e264]: You can specify namespace labels and annotations to add-on packs, and packs for Container Storage Interfaces (CSI) and Container Network Interfaces (CNI) drivers. These labels and annotations are applied to the namespace the pack is deployed to or to a specific namespace if specified. You can apply labels and annotations to the pack's YAML file.
+                - paragraph [ref=e265]: "The following parameters are available to specify namespace labels and annotations:"
+                - table [ref=e266]:
+                  - rowgroup [ref=e267]:
+                    - row "Parameter Description Type" [ref=e268]:
+                      - columnheader "Parameter" [ref=e269]:
+                        - strong [ref=e270]: Parameter
+                      - columnheader "Description" [ref=e271]:
+                        - strong [ref=e272]: Description
+                      - columnheader "Type" [ref=e273]:
+                        - strong [ref=e274]: Type
+                  - rowgroup [ref=e275]:
+                    - row "namespace The namespace that the pack is deployed to. If the namespace does not exist, Palette will create it. The namespace must follow the regex format [a-z0-9]([-a-z0-9]*[a-z0-9])?; only lowercase, alphanumeric characters and hyphens are allowed, and the namespace must start and end with an alphanumeric character. string" [ref=e276]:
+                      - cell "namespace" [ref=e277]:
+                        - code [ref=e278]: namespace
+                      - cell "The namespace that the pack is deployed to. If the namespace does not exist, Palette will create it. The namespace must follow the regex format [a-z0-9]([-a-z0-9]*[a-z0-9])?; only lowercase, alphanumeric characters and hyphens are allowed, and the namespace must start and end with an alphanumeric character." [ref=e279]:
+                        - text: The namespace that the pack is deployed to. If the namespace does not exist, Palette will create it. The namespace must follow the regex format
+                        - code [ref=e280]: "[a-z0-9]([-a-z0-9]*[a-z0-9])?"
+                        - text: ; only lowercase, alphanumeric characters and hyphens are allowed, and the namespace must start and end with an alphanumeric character.
+                      - cell "string" [ref=e281]
+                    - row "additionalNamespaces A list of additional namespaces that Palette will create. additionalNamespace values must follow the same name regex format as namespace. map" [ref=e282]:
+                      - cell "additionalNamespaces" [ref=e283]:
+                        - code [ref=e284]: additionalNamespaces
+                      - cell "A list of additional namespaces that Palette will create. additionalNamespace values must follow the same name regex format as namespace." [ref=e285]:
+                        - text: A list of additional namespaces that Palette will create.
+                        - code [ref=e286]: additionalNamespace
+                        - text: values must follow the same name regex format as
+                        - code [ref=e287]: namespace
+                        - text: .
+                      - cell "map" [ref=e288]
+                    - row "namespaceLabels A list of key-value pairs for labels applied to the namespace. map" [ref=e289]:
+                      - cell "namespaceLabels" [ref=e290]:
+                        - code [ref=e291]: namespaceLabels
+                      - cell "A list of key-value pairs for labels applied to the namespace." [ref=e292]
+                      - cell "map" [ref=e293]
+                    - row "namespaceAnnotations A list of key-value pairs for annotations applied to the namespace. map" [ref=e294]:
+                      - cell "namespaceAnnotations" [ref=e295]:
+                        - code [ref=e296]: namespaceAnnotations
+                      - cell "A list of key-value pairs for annotations applied to the namespace." [ref=e297]
+                      - cell "map" [ref=e298]
+                    - row "spectrocloud.com/install-priority The install order of the pack. The lower the number, the higher the priority. Refer to the Install Order section to learn more. string" [ref=e299]:
+                      - cell "spectrocloud.com/install-priority" [ref=e300]:
+                        - code [ref=e301]: spectrocloud.com/install-priority
+                      - cell "The install order of the pack. The lower the number, the higher the priority. Refer to the Install Order section to learn more." [ref=e302]:
+                        - text: The install order of the pack. The lower the number, the higher the priority. Refer to the
+                        - link "Install Order" [ref=e303] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/#install-order
+                        - text: section to learn more.
+                      - cell "string" [ref=e304]
+                - paragraph [ref=e305]:
+                  - text: The following example shows how to specify namespace labels and annotations for an add-on pack, a CSI pack, and a CNI pack. In the example pack YAML configuration, the
+                  - code [ref=e306]: wordpress
+                  - text: namespace is created. An additional namespace titled
+                  - code [ref=e307]: wordpress-storage
+                  - text: is also created. In the parameters sections,
+                  - code [ref=e308]: namespaceLabels
+                  - text: and
+                  - code [ref=e309]: namespaceAnnotations
+                  - text: ", each entry has a key and a value. The key is the name of the target namespace, and the value is the value of the label or annotation."
+                - generic [ref=e311]:
+                  - code [ref=e313]:
+                    - generic [ref=e314]: "pack:"
+                    - generic [ref=e315]: "namespace: \"wordpress\""
+                    - generic [ref=e316]: "additionalNamespaces: \"wordpress-storage\""
+                    - generic [ref=e317]: "namespaceLabels:"
+                    - generic [ref=e318]: "\"monitoring\": \"org=spectro,team=dev\""
+                    - generic [ref=e319]: "\"wordpress-storage\": \"user=demo-user\""
+                    - generic [ref=e320]: "\"default\": \"user=demo-user\""
+                    - generic [ref=e321]: "namespaceAnnotations:"
+                    - generic [ref=e322]: "\"monitoring\": \"monitoring.io/enable=true\""
+                    - generic [ref=e323]: "\"wordpress-storage\": \"storage.metrics.io/format=json\""
+                  - button "Copy code to clipboard" [ref=e325] [cursor=pointer]:
+                    - generic [ref=e326]:
+                      - img [ref=e327]
+                      - img [ref=e329]
+                - heading "Namespace ConsiderationsDirect link to Namespace Considerations" [level=2] [ref=e331]:
+                  - text: Namespace Considerations
+                  - link "Direct link to Namespace Considerations" [ref=e332] [cursor=pointer]:
+                    - /url: "#namespace-considerations"
+                    - text: "#"
+                - paragraph [ref=e333]: When deploying Helm charts or other manifests to your cluster outside of the context of Palette, it is important you understand the expected behavior of how Palette manages namespaces and its resources.
+                - paragraph [ref=e334]: If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all resources within that namespace. This includes resources that were not deployed by Palette.
+                - paragraph [ref=e335]: Here is an example scenario.
+                - paragraph [ref=e336]:
+                  - text: A cluster has the following two packs and Helm chart installed in the
+                  - code [ref=e337]: hello-universe
+                  - text: "namespace:"
+                - list [ref=e338]:
+                  - listitem [ref=e339]: Hello Universe (Palette-managed pack)
+                  - listitem [ref=e340]: Kubecost (Palette-managed pack)
+                  - listitem [ref=e341]: kubernetes-dashboard (helm chart added outside of Palette)
+                - paragraph [ref=e342]: Initial state of the namespace.
+                - generic [ref=e344]:
+                  - code [ref=e346]:
+                    - generic [ref=e347]: kubectl get pods --namespace hello-universe
+                    - generic [ref=e348]: NAME READY STATUS RESTARTS AGE
+                    - generic [ref=e349]: hello-universe-deployment-5b4ffc8f97-r5nhb 1/1 Running 0 3m50s
+                    - generic [ref=e350]: cost-analyzer-cost-analyzer-59bf7cc86-tzdgs 2/2 Running 0 7m47s
+                    - generic [ref=e351]: cost-analyzer-cost-analyzer-kube-state-metrics-8b6dbd76b-scjbj 1/1 Running 0 7m47s
+                    - generic [ref=e352]: cost-analyzer-cost-analyzer-prometheus-server-7b4c66596f-fb5f2 1/1 Running 0 7m47s
+                    - generic [ref=e353]: kubernetes-dashboard-7b544877d5-j8r4x 1/1 Running 0 10m13s
+                    - generic [ref=e354]: dashboard-metrics-scraper-7bc864c59-n2j4m 1/1 Running 0 10m13s
+                  - generic [ref=e355]:
+                    - button "Toggle word wrap" [ref=e356] [cursor=pointer]:
+                      - img [ref=e357]
+                    - button "Copy code to clipboard" [ref=e359] [cursor=pointer]:
+                      - generic [ref=e360]:
+                        - img [ref=e361]
+                        - img [ref=e363]
+                - paragraph [ref=e365]:
+                  - text: If you remove the Kubecost pack through Palette, all resources in the
+                  - code [ref=e366]: hello-universe
+                  - text: namespace will be destroyed, including the namespace.
+                - generic [ref=e368]:
+                  - code [ref=e370]:
+                    - generic [ref=e371]: kubectl get pods --namespace hello-universe
+                    - generic [ref=e372]: No resources found in hello-universe namespace.
+                  - button "Copy code to clipboard" [ref=e374] [cursor=pointer]:
+                    - generic [ref=e375]:
+                      - img [ref=e376]
+                      - img [ref=e378]
+                - paragraph [ref=e380]: We recommend using separate namespaces for all cluster profile layers, including resources manually deployed outside Palette. Separating resources into namespaces prevents unintended deletions.
+              - generic [ref=e381]:
+                - generic [ref=e383]:
+                  - text: "Tags:"
+                  - list [ref=e384]:
+                    - listitem [ref=e385]:
+                      - link "profiles" [ref=e386] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e387]:
+                      - link "cluster profiles" [ref=e388] [cursor=pointer]:
+                        - /url: /tags/cluster-profiles/
+                    - listitem [ref=e389]:
+                      - link "app profiles" [ref=e390] [cursor=pointer]:
+                        - /url: /tags/app-profiles/
+                    - listitem [ref=e391]:
+                      - link "system profiles" [ref=e392] [cursor=pointer]:
+                        - /url: /tags/system-profiles/
+                - link "Edit this page" [ref=e395] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/profile-customization.md
+                  - img [ref=e396]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e400]:
+              - link "Previous « Output Variables" [ref=e401] [cursor=pointer]:
+                - /url: /profiles/app-profiles/app-profile-output-vars/
+                - generic [ref=e402]: Previous
+                - generic [ref=e403]: « Output Variables
+              - link "Next Cluster Templates »" [ref=e404] [cursor=pointer]:
+                - /url: /cluster-templates/
+                - generic [ref=e405]: Next
+                - generic [ref=e406]: Cluster Templates »
+          - list [ref=e409]:
+            - listitem [ref=e410]:
+              - link "Pack Labels and Annotations" [ref=e411] [cursor=pointer]:
+                - /url: "#pack-labels-and-annotations"
+            - listitem [ref=e412]:
+              - link "Namespace Considerations" [ref=e413] [cursor=pointer]:
+                - /url: "#namespace-considerations"
+  - button "Project Logo Ask AI" [ref=e414] [cursor=pointer]:
+    - generic [ref=e417]:
+      - img "Project Logo" [ref=e418]
+      - paragraph [ref=e419]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
