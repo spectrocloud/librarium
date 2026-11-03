@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-deployment-policy
 ---
-**Last Update**: October 27, 2026
+**Last Update**: November 3, 2026
 
 ```json
 {
@@ -68,7 +68,11 @@ partial_name: aws-deployment-policy
         "cloudformation:DescribeStackResources",
         "cloudformation:ListStackResources",
         "cloudformation:GetTemplate",
-        "cloudformation:ContinueUpdateRollback"
+        "cloudformation:ContinueUpdateRollback",
+        "iam:DeleteRole",
+        "iam:TagPolicy",
+        "iam:TagInstanceProfile",
+        "cloudformation:DeleteStack"
       ],
       "Resource": "*"
     }
