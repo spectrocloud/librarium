@@ -88,19 +88,36 @@ package store is configured, and without it you cannot create Windows VMs.
 To keep uploaded packages and branding images when the VM Launchpad pod restarts, configure a package store in the
 cluster profile that contains the VMO pack.
 
-<!-- TODO(DOC-3274): Confirm with the SeaweedFS pack owners (Vishwanath Sastry, Yinzhe or Srinivas) before Ready. Ahmed
-Kadri (2026-11-02): the appliance profiles pin seaweedfs 4.43.0-rev2 (non-FIPS) and 4.43 (FIPS). 4.43.0-rev2 ships no S3
-identity, so users define one and choose its key; 4.43 ships a published default key that users must rotate. The
-effective value lives in the seaweedfs-s3-config Secret. Document which pack version to add and how to define or rotate
-the identity, and confirm that the pack installs in the seaweedfs namespace with the pod labels the Service selects. -->
+1. Add the SeaweedFS pack (`seaweedfs`) to the cluster profile. Use version `4.43.0-rev2` in Palette or
+   `4.43.0-shi-rev1` in Palette VerteX. The pack runs three pods by default, each on a separate node, so the cluster
+   needs at least three worker nodes.
 
-1. Add the SeaweedFS pack (`seaweedfs`) to the cluster profile.
+   The pack ships no S3 identity, so S3 clients cannot authenticate until you add one. In the pack values, define an
+   identity for VM Launchpad.
+
+   ```yaml
+   charts:
+     seaweedfs:
+       s3:
+         identities:
+           - name: vmo
+             credentials:
+               - accessKey: "<access-key>"
+                 secretKey: "<secret-key>"
+             actions:
+               - Admin
+   ```
+
+   Replace `<access-key>` and `<secret-key>` with an access key and a secret key that you choose. VM Launchpad needs the
+   `Admin` action, because it creates its own bucket and uploads large files in parts.
 
 2. Add the following manifest to the cluster profile. Refer to
    [Add a Manifest](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
-   for guidance. The SeaweedFS pack runs three pods by default, and each pod keeps its own file metadata. The Service of
-   the pack spreads the requests of a single upload across the pods, so uploads can fail with a `404` error. This
-   Service keeps the requests of each VM Launchpad pod on one SeaweedFS pod.
+   for guidance. Each SeaweedFS pod keeps its own file metadata. The Service of the pack spreads the requests of a
+   single upload across the pods, so uploads can fail with a `404` error. This Service keeps the requests of each VM
+   Launchpad pod on one SeaweedFS pod.
+
+   <!-- vale spectrocloud-docs-internal.inclusive = NO -->
 
    ```yaml
    apiVersion: v1
@@ -121,6 +138,8 @@ the identity, and confirm that the pack installs in the seaweedfs namespace with
          protocol: TCP
    ```
 
+   <!-- vale spectrocloud-docs-internal.inclusive = YES -->
+
 3. Set the following values in the VMO pack.
 
    ```yaml
@@ -132,8 +151,11 @@ the identity, and confirm that the pack installs in the seaweedfs namespace with
        secretKey: "<secret-key>"
    ```
 
-   Replace `<access-key>` and `<secret-key>` with the access key and secret key of an S3 identity in SeaweedFS. VM
+   Replace `<access-key>` and `<secret-key>` with the access key and secret key of the identity from step 1. VM
    Launchpad creates the `vmo-packages` bucket if it does not exist.
+
+To change the keys later, update them in both packs, and then restart the SeaweedFS pods. SeaweedFS reads its identities
+only when its pods start.
 
 ## Upload a Package
 
