@@ -62,6 +62,15 @@ For reference materials not covered in this guide, defer to the
   - [Supplemental Information](#supplemental-information)
   - [Next Steps](#next-steps)
   - [Resources List](#resources-list)
+- [Diagrams](#diagrams)
+  - [When to Add a Diagram](#when-to-add-a-diagram)
+  - [Write for the Page's Reader](#write-for-the-pages-reader)
+  - [Color Roles](#color-roles)
+  - [Arrows](#arrows)
+  - [Boundaries](#boundaries)
+  - [Labels](#labels)
+  - [Layout](#layout)
+  - [Numbered Callouts](#numbered-callouts)
 - [Image File Naming Standard](#image-file-naming-standard)
 
 # Inclusive English for a Global Audience
@@ -949,6 +958,134 @@ enhances the user experience, it should be the last section and use a Level 2 he
 
 - [VM Roles and Permissions](/vm-management/vm-roles-permissions)
 ```
+
+# Diagrams
+
+Diagrams follow shared conventions so that readers who move between pages recognize the same concept without re-learning
+what shapes and colors mean. This section covers what to draw and how a diagram reads. To build, export, and add a
+diagram to a page, refer to the [Diagrams](./docs/contributing/markdown-and-mdx.md#diagrams) section of the Markdown and
+MDX contributor guide.
+
+## When to Add a Diagram
+
+Add a diagram when a mental model is faster to grasp visually than in prose. Good candidates include sequence-of-events
+flows, decision trees, entity relationships, and physical topologies.
+
+## Write for the Page's Reader
+
+A diagram on a product page is for the people who read that page, the customers who evaluate, install, or use the
+product. Draw what they use and act on, in the words the console and the rest of the docs use.
+
+- Use the product's names for components, not internal service names, code paths, or package names. If the product's own
+  terminology changes, the diagram changes with it.
+
+- Leave out port numbers, versions, and other details that change between releases, unless the page is about them.
+
+- Collapse internals the reader never operates into one component. For example, draw one _Control plane_ component
+  instead of the controllers and custom resources behind it.
+
+- Show what matters for the reader's decisions, such as what stays on their infrastructure and what can leave it.
+
+## Color Roles
+
+Each component's color names its role. Pick the role that fits the component, not the color that looks best next to its
+neighbors.
+
+| **Role**                   | **Color** | **When to Use**                                                                      |
+| -------------------------- | --------- | ------------------------------------------------------------------------------------ |
+| Outside the product        | Slate     | Users, administrators, client applications, and anything else outside the product.   |
+| Entry and request path     | Cyan      | Components that handle a live request, such as an ingress, a gateway, or a console.  |
+| Local compute              | Green     | Workloads that run on the customer's own hardware, such as inference engines.        |
+| External or opt-in service | Amber     | Third-party services the product can reach, and anything that is off by default.     |
+| Control plane and state    | Violet    | Components that store configuration or state and apply it to the rest of the system. |
+| Identity and access        | Rose      | Identity providers, sign-in, and access control.                                     |
+| Monitoring                 | Orange    | Metrics, logs, traces, and dashboards.                                               |
+
+In a physical topology, use slate for network hardware outside the product, such as a data center switch, cyan for
+network interfaces and management ports, green for GPUs and other compute, and violet for disks.
+
+Name each role in the diagram's legend. Use the role name from the table, or the product's own word for it, such as
+_Local inference on GPUs_ for local compute. Across a product's diagrams, use the same legend label for a color that
+plays the same role. When a color plays a different role in a diagram, such as violet for disks in a physical topology,
+label the role it plays there.
+
+## Arrows
+
+The style of an arrow signals what kind of interaction it is.
+
+| **Arrow**    | **Meaning**                                                                                   |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| Green, solid | The main request path. Reserve it for the path the reader cares about most.                   |
+| Slate, solid | Any other call, such as an administrator opening the console.                                 |
+| Violet, dash | A reconcile or deploy loop, a metrics or telemetry hop, or an optional or off-by-default hop. |
+| Rose, solid  | Sign-in, token checks, and other identity traffic.                                            |
+
+Label an arrow only when the label adds information the reader cannot infer from the components. Prefer short verbs or
+conditions, such as _deploys_ or _off by default_.
+
+A label has no room for exceptions. When a behavior applies only to some requests, label the arrow with what always
+holds, such as _off by default_, and explain which requests the behavior covers in the page text.
+
+## Boundaries
+
+Wrap the components that run inside the product in a boundary named after the product or the appliance. Components
+outside the product, such as users and third-party services, stay outside it. Nest a smaller boundary inside it for a
+hardware grouping, such as the components that run on GPUs. Draw a network or trust boundary in its own style, so that
+it does not read as a hardware grouping.
+
+## Labels
+
+Component labels are short noun phrases. Sub-labels below the component name carry one short detail, such as _admin web
+UI_ or _tokens, quotas, cache_. Keep a label, including any callout number, to about 21 characters and a sub-label to
+about 23 characters, so that each fits on one line of its component. Never write a sentence inside a component. A
+sentence belongs in the prose next to the diagram.
+
+Keep arrow labels to one or two short words where the arrow crosses the gap between two columns. A longer label fits on
+an arrow that runs vertically.
+
+## Layout
+
+The docs site scales a diagram down to the width of the page column, which is about 700 pixels at desktop size. The
+wider the diagram, the smaller its text appears on the page. Keep a diagram to three columns of components, about 800
+pixels wide, and grow it downward instead of sideways. Line components up on a grid, and give every component the same
+size.
+
+Arrange the three columns so that the diagram reads from top to bottom and from left to right.
+
+- Put the people and clients outside the product in the top row, above the product boundary.
+
+- Run the main request path down the middle column.
+
+- Put the administration side, such as the console, identity provider, and control plane, in the left column.
+
+- Put the destinations of a request, such as local compute and external services, in the right column. External services
+  go in the top row, outside the product boundary.
+
+This arrangement suits a diagram of how a request moves. For a physical topology, such as the hardware that an engineer
+racks and connects, keep the grid and the top row, and place the parts of each server together.
+
+A boundary draws its rectangle around every component that it wraps, so any other component inside that rectangle looks
+like part of the boundary. Put the components of a nested boundary in adjacent cells that form a rectangle, and keep
+every other component out of it.
+
+Keep the diagram to a single canvas. If a diagram feels too dense to fit, split it into two diagrams on separate anchors
+rather than shrinking the components. Two clear diagrams are easier to read than one crowded diagram.
+
+## Numbered Callouts
+
+When the page walks the reader through the diagram, number the components the walkthrough describes, in the order a
+request reaches them. Put the number at the start of the component label, such as _2. Gateway_, and follow the diagram
+with a numbered list in which each item describes the component with the same number. Name the component in the item's
+sentence. Do not start the item with a bold label.
+
+In a physical topology, some parts are not on the request path, such as a boot drive or a management port. Number the
+parts on the request path first, in the order a request reaches them, and then the rest from top to bottom and left to
+right.
+
+Not every component needs a number. Actors outside the product, and components that an item already covers, such as the
+identity provider behind the console, can stay unnumbered.
+
+Keep the image's alt text short, describe the overall layout, and point to the list instead of repeating it.
 
 # Image File Naming Standard
 
