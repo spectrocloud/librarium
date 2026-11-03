@@ -133,18 +133,21 @@ This override takes effect immediately, but it does not persist across reboots. 
 6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
    that the **Phase** of the storage cluster is `Running`.
 
-## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
+<!-- vale Vale.Terms = NO -->
+
+## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on FIPS Appliances {#scenario---keycloak-vmo-and-headlamp-consoles-become-inaccessible-on-piraeus-storage}
+
+<!-- vale Vale.Terms = YES -->
 
 On FIPS VM Launchpad appliances, which use Piraeus storage, network disruptions can cause the DRBD replicas that back
-the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because
-the Virtual Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible,
-even though the Keycloak and PostgreSQL pods report a `Ready` status.
+the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops responding.
+The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak and
+PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
-suspends database I/O. Use the following steps to restore the connection manually.
-
-This scenario applies only to FIPS appliances. Non-FIPS appliances, including the Non-FIPS Piraeus variant, store the
-Keycloak database on node-local storage instead of DRBD replicas.
+suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
+the Keycloak database on node-local storage instead of DRBD replicas. Use the following steps to restore the connection
+manually.
 
 ### Prerequisites
 
@@ -166,7 +169,7 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    NS=keycloak
    ```
 
-2. List the persistent volume claims in the namespace.
+2. List the persistent volume claims in the namespace, and confirm that the list includes the `pgdata-postgres-0` claim.
 
    ```bash
    kubectl --namespace "$NS" get pvc
@@ -269,7 +272,7 @@ check only confirms that the database accepts connections, so run an actual quer
      linstor resource-connection list "$RESOURCE"
    ```
 
-2. List the PostgreSQL pods.
+2. List the pods in the namespace, and confirm that the list includes the `postgres-0` pod.
 
    ```bash
    kubectl --namespace "$NS" get pods
