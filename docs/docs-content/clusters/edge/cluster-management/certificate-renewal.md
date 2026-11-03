@@ -56,8 +56,8 @@ you can check their expiration dates without connecting to the Edge host over SS
    | **Type**                  | The certificate type, such as **Kubernetes**, **Local UI**, or **mTLS**.                                                                                                                                           |
    | **Issued Date**           | The date when the CA issued the certificate.                                                                                                                                                                       |
    | **Expiration Date**       | The date when the certificate expires, and the number of days until it expires. Local UI highlights the number of days as a warning when fewer than 30 days remain, and as an error after the certificate expires. |
-   | **Renewal**               | **Automatic** if Palette Edge renews the certificate before it expires. **Not available** if you must renew the certificate manually.                                                                              |
-   | **Upcoming renewal date** | The date when Palette Edge renews the certificate, 30 days before it expires. This column is empty for certificates that you must renew manually.                                                                  |
+   | **Renewal**               | **Automatic** if Palette Edge renews the certificate before it expires. **Not available** if Palette Edge does not renew the certificate.                                                                          |
+   | **Upcoming renewal date** | The date when Palette Edge renews the certificate, 30 days before it expires. This column is empty for certificates that Palette Edge does not renew.                                                              |
    | **Source**                | The Edge host that the certificate belongs to, for per-node certificates.                                                                                                                                          |
 
 Local UI warns you when one or more certificates are close to their expiration date or have expired:
@@ -66,8 +66,8 @@ Local UI warns you when one or more certificates are close to their expiration d
 - A banner in the **Certificates** window.
 - A banner and a warning icon on the **Cluster** card of the **Edge Host** page.
 
-When certificates expire, the cluster might stop running. Renew them manually to restore normal operation. Refer to
-[Manual Renewal](#manual-renewal).
+When Kubernetes certificates expire, the cluster might stop running. Renew them manually to restore normal operation.
+Refer to [Manual Renewal](#manual-renewal).
 
 To retrieve the same certificate details programmatically, use the
 [`GET /v1/edge-mgmt/cluster/certificates`](/api/edge-v1/v-1-certificate-details/) endpoint of the Edge Management API.
@@ -130,10 +130,7 @@ Management API.
    your cluster uses.
 
 5. Select **Renew all available certificates**, and then select **Confirm**. Local UI renews the Kubernetes certificates
-   of the control plane nodes. It does not renew certificates that show **Not available** in the **Renewal** column,
-   which you must renew manually.
-
-   <!-- TODO(PE-9865) Link the certificate inventory from PE-9821 for how to renew each certificate marked Not available. -->
+   of the control plane nodes. It does not renew certificates that show **Not available** in the **Renewal** column.
 
 </TabItem>
 
