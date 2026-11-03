@@ -6,6 +6,7 @@ const lightCodeTheme = themes.oceanicNext;
 const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
+const { archivedVersionHref } = require("./utils/helpers/archived-versions");
 const {
   docsPlugins: productDocsPlugins,
   productsDropdownItems,
@@ -498,7 +499,7 @@ const config = {
             hideOnHomepage: true,
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
+                href: archivedVersionHref(versionName, versionUrl),
                 label: versionName,
               })),
             ],
@@ -509,7 +510,7 @@ const config = {
             docsPluginId: "api",
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
+                href: archivedVersionHref(versionName, versionUrl),
                 label: versionName,
               })),
             ],

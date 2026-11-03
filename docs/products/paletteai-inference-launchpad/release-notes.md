@@ -8,6 +8,24 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
+## Version 1.2.1 - October 30, 2026 {#version-1-2-1}
+
+PaletteAI Inference Launchpad 1.2.1 is a patch release that fixes a security issue.
+
+### Security Notices {#security-notices-1-2-1}
+
+<!-- vale Vale.Spelling = NO -->
+
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority compromise. Refer to
+  [Security Advisory 024](/security-bulletins/security-advisories/#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for more information about the vulnerability.
+
+<!-- vale Vale.Spelling = YES -->
+
+### Upgrade {#upgrade-1-2-1}
+
+To upgrade a running 1.2.0 appliance to 1.2.1, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+
 ## Version 1.2.0 - October 21, 2026 {#version-1-2-0}
 
 PaletteAI Inference Launchpad 1.2.0 improves how teams share one appliance. Each team gets a workspace with its own
