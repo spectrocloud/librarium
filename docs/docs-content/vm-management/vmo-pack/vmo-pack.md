@@ -55,7 +55,7 @@ VMO Pack is appropriate in the following scenarios:
   have FIPS-compliant builds. To add the pack to a cluster profile in VerteX, a tenant admin must first enable **Allow
   non-FIPS packs**. Refer to
   [Use non-FIPS Packs](../../vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs.md#allow-non-fips-packs)
-  for guidance. VerteX shows the **Not FIPS-compliant** icon next to the pack, so cluster profiles and clusters that
+  for guidance. VerteX shows the _Not FIPS-compliant_ icon next to the pack, so cluster profiles and clusters that
   include it do not show full FIPS compliance. Refer to [FIPS Status Icons](../../vertex/fips/fips-status-icons.md) for
   more information.
 

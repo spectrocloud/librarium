@@ -38,10 +38,10 @@ guidance on adding a registry at the tenant scope, check out
 
 :::
 
-Some packs in the VerteX pack registries are also not FIPS-compliant, such as the Virtual Machine Orchestrator (VMO)
-pack. To add these packs to a cluster profile, you must enable **Allow non-FIPS packs**. You do not need to add the
-non-FIPS registries to use these packs. Refer to [VMO Pack](../../../vm-management/vmo-pack/vmo-pack.md#limitations) for
-more information.
+Some packs in the VerteX pack registries, such as the Virtual Machine Orchestrator (VMO) pack, are also not
+FIPS-compliant. To add these packs to a cluster profile, you must enable **Allow non-FIPS packs**. You do not need to
+add the non-FIPS registries to use these packs. Refer to
+[VMO Pack](../../../vm-management/vmo-pack/vmo-pack.md#limitations) for more information.
 
 The screenshot below shows the icon that VerteX displays next to FIPS-compliant infrastructure components to indicate
 full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant
@@ -55,13 +55,12 @@ Use the following steps to enable non-FIPS packs.
 
 - Tenant admin permission to enable this feature.
 
-- Non-FIPS OCI pack registries added in VerteX and required credentials to access them. Review
-  [Add a Registry](../add-registry.md) for guidance.
+- Non-FIPS OCI pack registries added in VerteX and the required credentials to access them. This applies only to packs
+  from those registries, not to packs such as the VMO pack. Review [Add a Registry](../add-registry.md) for guidance.
 
 ## Allow Non-FIPS Packs
 
-1. Log in to the Palette VerteX system console. Refer to
-   [Access the System Console](../system-management.md#access-the-system-console) guide.
+1. Log in to Palette VerteX as a tenant admin.
 
 2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
 
@@ -85,8 +84,9 @@ Use these steps to verify non-FIPS packs are available.
 
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
-3. Try creating a cluster profile and verify the registry you added is available and packs are displayed. For guidance,
-   review the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
+3. Start creating a cluster profile and verify that the non-FIPS packs are displayed. If you added the non-FIPS
+   registries, verify that they are available. For guidance, review the
+   [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 VerteX will display the appropriate FIPS status icon next to each pack layer.
 
