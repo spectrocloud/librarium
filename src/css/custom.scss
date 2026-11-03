@@ -325,16 +325,6 @@ p img.markdown-image {
       background: var(--landing-accent);
       clip-path: polygon(0 100%, 100% 18.36%, 22.5% 0);
     }
-
-    .hash-link {
-      color: inherit;
-      opacity: 0;
-    }
-
-    &:hover .hash-link,
-    .hash-link:focus-visible {
-      opacity: 1;
-    }
   }
 }
 

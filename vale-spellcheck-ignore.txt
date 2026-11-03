@@ -24,3 +24,4 @@ docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.
 docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md:247:13:Vale.Spelling:Did you really mean 'reachability'?
 docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md:413:22:Vale.Spelling:Did you really mean 'QA's'?
 docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md:538:38:Vale.Spelling:Did you really mean 'repos'?
+docs/products/paletteai-inference-launchpad/reference/usage-metrics-reference.md:143:11:Vale.Spelling:Did you really mean 'tok'?
