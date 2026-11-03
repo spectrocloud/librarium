@@ -67,15 +67,28 @@ Do not delete the database's PodDisruptionBudget to unblock the upgrade.
      --output wide --label-columns cnpg.io/instanceRole
    ```
 
+   ```shell hideClipboard title="Example Output"
+   NAME            READY   STATUS    RESTARTS   AGE     IP            NODE                                    NOMINATED NODE   READINESS GATES   INSTANCEROLE
+   keycloak-db-1   0/1     Pending   0          14m     <none>        <none>                                  <none>           <none>            replica
+   keycloak-db-2   1/1     Running   0          6h18m   192.0.2.172   edge-000000000000000000000000000000b2   <none>           <none>            primary
+   keycloak-db-3   1/1     Running   0          5h47m   192.0.2.62    edge-000000000000000000000000000000a1   <none>           <none>            replica
+   ```
+
    Identify the primary and the two replicas. One replica is `Pending`. A `Pending` pod might not show a node. You
    confirm its node through its volume in
-   [Find the Volume of the Pending Replica](#find-the-volume-of-the-pending-replica).
+   [Find the Volume of the Pending Replica](#find-the-volume-of-the-pending-replica). In the example output,
+   `keycloak-db-2` is the primary, `keycloak-db-1` is the `Pending` replica, and `keycloak-db-3` is the other replica.
 
 4. Check the cluster status.
 
    ```bash
    kubectl --namespace "$NS" get cluster.postgresql.cnpg.io "$CLUSTER" \
      --output 'custom-columns=PRIMARY:.status.currentPrimary,TARGET:.status.targetPrimary,READY:.status.readyInstances,INSTANCES:.spec.instances'
+   ```
+
+   ```shell hideClipboard title="Example Output"
+   PRIMARY         TARGET          READY   INSTANCES
+   keycloak-db-2   keycloak-db-2   2       3
    ```
 
    Continue only if `INSTANCES` is `3`, `READY` is `2`, and `PRIMARY` and `TARGET` show the same pod.
@@ -121,9 +134,31 @@ Do not delete the database's PodDisruptionBudget to unblock the upgrade.
 
    Stop if `PVC` or `PV` is empty, or if the PVC is not `Bound`.
 
-4. In the PV output, check the `Node Affinity` field. Confirm that it names the same node as the other replica, that the
-   volume uses local storage, and that this node is the `SchedulingDisabled` node from
-   [Confirm the Cause](#confirm-the-cause).
+4. In the `kubectl describe pv` output, confirm the following. If any check fails, stop and contact your Spectro Cloud
+   support representative.
+
+   - The `Node Affinity` field names the `SchedulingDisabled` node from [Confirm the Cause](#confirm-the-cause).
+
+   - The other replica runs on that same node, as listed in step 3 of [Confirm the Cause](#confirm-the-cause).
+
+   - The `StorageClass` field is `spectro-storage-class`, the node-local storage class of non-FIPS appliances.
+
+   The following example output shows only the relevant fields.
+
+   ```shell hideClipboard title="Example Output"
+   Name:              pvc-92c5ac6e-8fb0-41cc-a70f-514aa0a420ed
+   StorageClass:      spectro-storage-class
+   Status:            Bound
+   Claim:             keycloak/keycloak-db-1
+   Reclaim Policy:    Delete
+   Access Modes:      RWO
+   Node Affinity:
+     Required Terms:
+       Term 0:        kubernetes.io/hostname in [edge-000000000000000000000000000000a1]
+   Source:
+       Type:  LocalVolume (a persistent volume backed by local storage on a node)
+       Path:  /opt/local-path-provisioner/pvc-92c5ac6e-8fb0-41cc-a70f-514aa0a420ed_keycloak_keycloak-db-1
+   ```
 
 ### Back Up the Resource Definitions
 
@@ -193,7 +228,7 @@ Continue only when `RECLAIM` shows `Retain`. Keep the old volume through the upg
 
 2. Sign in to VM Launchpad to confirm that Keycloak authentication works.
 
-3. Let the upgrade continue.
+The appliance upgrade then resumes on its own.
 
 ## Scenario - Large VM Stays Pending with Insufficient Memory
 
