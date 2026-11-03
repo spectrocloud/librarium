@@ -13,10 +13,10 @@ tags: ["release-notes"]
 
 ## November 13, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
 
-<!-- VM LAUNCHPAD RELEASE NOTES TICKET: TBD -->
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3411 -->
 
 <!-- TODO(DOC-3274): Drop eight. On release day, set the ship date, the VM Launchpad and Palette versions from the
-promoted Platone records, both anchors, and the release notes ticket. -->
+promoted Platone records, and both anchors. -->
 
 This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.TBD.
 
