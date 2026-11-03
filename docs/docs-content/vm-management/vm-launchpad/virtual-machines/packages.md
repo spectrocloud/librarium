@@ -92,8 +92,8 @@ cluster profile that contains the VMO pack.
    `4.43.0-shi-rev1` in Palette VerteX. The pack runs three pods by default, each on a separate node, so the cluster
    needs at least three worker nodes.
 
-   The pack ships no S3 identity, so S3 clients cannot authenticate until you add one. In the pack values, define an
-   identity for VM Launchpad.
+   In the pack values, define an S3 identity for VM Launchpad. This step is required. The pack ships no identity, and
+   without one, SeaweedFS turns off S3 authentication and gives anyone full admin access to its storage.
 
    ```yaml
    charts:
@@ -154,8 +154,12 @@ cluster profile that contains the VMO pack.
    Replace `<access-key>` and `<secret-key>` with the access key and secret key of the identity from step 1. VM
    Launchpad creates the `vmo-packages` bucket if it does not exist.
 
-To change the keys later, update them in both packs, and then restart the SeaweedFS pods. SeaweedFS reads its identities
-only when its pods start.
+To change the keys later, update them in both packs of the cluster profile. VM Launchpad restarts with the new values,
+but SeaweedFS reads its identities only when its pods start, so restart SeaweedFS after the profile update.
+
+```shell
+kubectl --namespace seaweedfs rollout restart statefulset
+```
 
 ## Upload a Package
 
