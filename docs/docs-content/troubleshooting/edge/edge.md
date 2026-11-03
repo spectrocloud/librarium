@@ -34,11 +34,16 @@ managed clusters. The banner stays until a later OS upgrade succeeds on the Edge
 
 2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
 
-3. Build a new content bundle. For more information, refer to
+3. Build a new content bundle that includes the cluster definition. For more information, refer to
    [Build Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
-4. In Local UI, upload the content bundle to the cluster. For more information, refer to
+4. In Local UI, upload the content bundle. For more information, refer to
    [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md).
+
+5. From the left main menu, select **Cluster**, and then select the **Configuration** tab. Because the content bundle
+   includes the cluster definition, the new configuration appears on the tab automatically.
+
+6. Click **Update Configuration**.
 
 ## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
 
