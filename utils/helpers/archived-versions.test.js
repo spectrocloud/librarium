@@ -1,7 +1,7 @@
 const { archivedVersionHref } = require("./archived-versions");
 
 describe("archivedVersionHref", () => {
-  it("should keep the site root for v4.7.x through v4.10.x", () => {
+  it("should keep the site root for v4.7.x through v4.10.x, the versions without the product directory", () => {
     const versionsWithPaletteAtRoot = {
       "v4.10.x": "https://version-4-10.legacy.docs.spectrocloud.com",
       "v4.9.x": "https://version-4-9.legacy.docs.spectrocloud.com",
@@ -13,15 +13,7 @@ describe("archivedVersionHref", () => {
     }
   });
 
-  it("should keep the site root for v4.10.x, the newest version without the product directory", () => {
-    const url = "https://version-4-10.legacy.docs.spectrocloud.com";
-    expect(archivedVersionHref("v4.10.x", url)).toBe(url);
-  });
-
   it("should keep the site root for older versions, even when text follows vX.Y, as in 'v3.4.x and prior'", () => {
-    expect(archivedVersionHref("v4.7.x", "https://version-4-7.legacy.docs.spectrocloud.com")).toBe(
-      "https://version-4-7.legacy.docs.spectrocloud.com"
-    );
     expect(archivedVersionHref("v3.4.x and prior", "https://version-3-4.legacy.docs.spectrocloud.com")).toBe(
       "https://version-3-4.legacy.docs.spectrocloud.com"
     );
