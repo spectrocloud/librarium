@@ -68,6 +68,23 @@ tags: ["release-notes"]
   Filters and sort keys on other properties, such as `metadata.name`, are unaffected. Update any automation that filters
   or sorts on a property that meets these conditions.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12229 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12208 -->
+
+- To improve security, the following system configuration API endpoints now return stored secrets as `********` instead
+  of in clear text.
+
+  | API endpoint                                      | Masked field                                                                        |
+  | ------------------------------------------------- | ----------------------------------------------------------------------------------- |
+  | `GET /v1/system/config/sso`                       | `authSpec.github.clientSecretKey` and `authSpec.oidcAuthSpecs.<name>.clientSecret`. |
+  | `GET /v1/system/config/azure/storage`             | `spec.accessKey`                                                                    |
+  | `GET /v1/system/config/registries/{registryName}` | `spec.auth.password` and `spec.auth.token`                                          |
+  | `GET /v1/system/config/registries/oci/image`      | `password`                                                                          |
+
+  A secret that was never set still returns an empty string. Automation that reads a secret from these endpoints must
+  take it from its source instead, such as the identity provider, Azure storage account, or registry. To keep a stored
+  secret when you update one of these configurations, send `********` in the matching `PUT` request.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
 
