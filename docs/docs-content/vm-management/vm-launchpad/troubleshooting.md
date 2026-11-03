@@ -425,8 +425,8 @@ block-based storage such as LINSTOR/DRBD.
    in its place. Your Spectro Cloud support representative can guide you through this step for your environment.
 
 3. Upload the updated content bundle to the cluster. Use either the
-   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-content-bundle-with-local-ui)
+   or the [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
 4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default `Block`-mode
    storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the workaround. Refer
