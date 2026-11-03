@@ -11,6 +11,46 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 1, 2026 - Release 4.9.66
+
+<!-- PATCH RELEASE TICKET: DOC-3360 -->
+<!-- PATCH RELEASE VERSION: 4.9.66 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9921 PEM-12394 -->
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12394 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9921 -->
+
+- Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
+  installer ISOs that you build with CanvOS 4.9.44 or later no longer trust the affected root certificates. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu, SUSE Linux Enterprise
+  Micro, Red Hat Enterprise Linux, or Rocky Linux and use images built with an earlier CanvOS version can use the
+  workaround in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+
+<!-- vale Vale.Spelling = YES -->
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.66 Palette release is 4.9.44.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.66 Palette release is
+4.9.28. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 19, 2026 - Release 4.9.64
 
 <!-- PATCH RELEASE TICKET: DOC-3301 -->
