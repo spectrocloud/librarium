@@ -67,11 +67,12 @@ Create the management identity, deploy a PCG in Azure that carries it, and then 
 
 Assign the following roles to the management identity.
 
-| **Role**                         | **Scope**                                                                                                             |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| **Contributor**                  | The subscription, or each resource group where you create clusters. Refer to [Limit Permissions](#limit-permissions). |
-| **Managed Identity Operator**    | Each cluster, Kubelet, AKS service, and pool identity that is outside the scope of the **Contributor** role.          |
-| **Private DNS Zone Contributor** | Your private DNS zones. Required only for private clusters.                                                           |
+| **Role**                         | **Scope**                                                                                                                                                                     |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Contributor**                  | The subscription, or each resource group where you create clusters. Refer to [Limit Permissions](#limit-permissions).                                                         |
+| **Reader**                       | The subscription. Required for AKS clusters. Refer to [AKS Clusters](#aks-clusters). It also lets you browse resource groups, networks, and virtual machine sizes in Palette. |
+| **Managed Identity Operator**    | Each cluster, Kubelet, AKS service, and pool identity that is outside the scope of the **Contributor** role.                                                                  |
+| **Private DNS Zone Contributor** | Your private DNS zones. Required only for private clusters.                                                                                                                   |
 
 To look up Microsoft Entra admin groups for AKS clusters that use
 [Microsoft Entra ID integration](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md), the management identity
@@ -192,11 +193,19 @@ Assign the following roles.
 | AKS service  | **Private DNS Zone Contributor** | Your custom private DNS zone. Required only for private clusters.                                       |
 | Kubelet      | **Contributor**                  | The cluster resource group.                                                                             |
 | Kubelet      | **Network Contributor**          | The VNet resource group, if it is separate from the cluster resource group.                             |
+| Kubelet      | **Reader**                       | The subscription.                                                                                       |
 
 AKS grants the AKS service identity the **Contributor** role on the node resource group, but on nothing outside it. The
 AKS service identity needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster
 resource group. Assign all roles before you create the cluster, because role assignments can take up to 60 minutes to
 take effect.
+
+AKS creates the node pools in a separate node resource group, named `SPC_MC_<resource-group>_<cluster-name>_<region>`,
+and shortens long names. AKS creates this resource group together with the cluster, so you cannot assign roles on it in
+advance. Palette reads the node pools in this resource group as the management identity while it creates the cluster,
+and as the Kubelet identity afterward, so both identities need the **Reader** role on the subscription. Without it, the
+cluster stays at `worker nodes are creating` even though Azure shows the node pools as succeeded, and Azure returns
+`403 AuthorizationFailed` errors for `Microsoft.Compute/virtualMachineScaleSets/read`.
 
 For the procedure, refer to [Create and Manage Azure AKS Cluster](./aks.md).
 
@@ -248,8 +257,10 @@ use the following approach.
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity) and
    [Assign Identities to Clusters](#assign-identities-to-clusters).
 
-4. _(Optional)_ To browse resource groups, networks, and virtual machine sizes outside those resource groups in Palette,
-   assign the management identity the **Reader** role on the subscription.
+4. Assign the management identity the **Reader** role on the subscription. For AKS clusters, also assign the role to the
+   Kubelet identity. AKS clusters require this role, because Palette reads their node pools in the node resource group.
+   Refer to [AKS Clusters](#aks-clusters). For Azure IaaS clusters, the role is optional and lets you browse resource
+   groups, networks, and virtual machine sizes outside your resource groups in Palette.
 
 5. _(Optional)_ For stronger isolation, use one cluster identity per resource group. A shared identity is simpler, but
    it can reach every resource group where it has a role.
