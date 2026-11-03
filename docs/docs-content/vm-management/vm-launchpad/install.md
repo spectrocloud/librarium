@@ -245,8 +245,8 @@ configuration.
    :::info
 
    If your installation is using the [**Appliance ISO**](#install), upload the content bundle using
-   [Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
+   [Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-content-bundle-with-local-ui)
+   or the [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
 
    :::
 
