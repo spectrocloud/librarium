@@ -51,6 +51,14 @@ VMO Pack is appropriate in the following scenarios:
 - Golden image building, snapshot policies, and air-gap package management are not available. These capabilities are
   exclusive to the [VM Launchpad](../vm-launchpad/vm-launchpad.md).
 
+- Palette VerteX marks the VMO pack as not FIPS-compliant, because some of the upstream images that the pack uses do not
+  have FIPS-compliant builds. To add the pack to a cluster profile in VerteX, a tenant admin must first enable **Allow
+  non-FIPS packs**. Refer to
+  [Use non-FIPS Packs](../../vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs.md#allow-non-fips-packs)
+  for guidance. VerteX shows the _Not FIPS-compliant_ icon next to the pack, so cluster profiles and clusters that
+  include it do not show full FIPS compliance. Refer to [FIPS Status Icons](../../vertex/fips/fips-status-icons.md) for
+  more information.
+
 ## Get Started
 
 1. Review the [Architecture](../architecture.md) page to learn about the components included in the VMO pack.
