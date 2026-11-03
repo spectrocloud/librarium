@@ -30,7 +30,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: October 29, 2026
+- **Last Updated**: November 3, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -98,15 +98,9 @@ b) Workload Clusters: Patch all underlying host operating systems used in:
 For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
 documentation.
 
-<!-- vale Vale.Spelling = NO -->
-
-<!-- vale Vale.Terms = NO -->
-
-c) MTSaas and DSaas environments will be patched by the spectrocloud team.
-
-<!-- vale Vale.Spelling = YES -->
-
-<!-- vale Vale.Terms = YES -->
+c) Spectro Cloud patches multi-tenant SaaS and dedicated SaaS environments. Multi-tenant SaaS requires no action.
+Spectro Cloud upgrades each dedicated SaaS instance to the patched version for its release line in an agreed maintenance
+window. Contact your Spectro Cloud representative to confirm your window.
 
 d) Customers are advised to monitor and audit outbound connections and watch for anomalous activities.
 
@@ -117,14 +111,16 @@ Spectro Cloud updates this advisory as each patch is released.
 #### Palette and VerteX Releases
 
 The following table lists the patch status of each Palette and VerteX version, what each version includes, and the
-deployments where each version is available.
+deployments where each version is available. Spectro Cloud upgrades multi-tenant SaaS for all tenants at once. Each
+dedicated SaaS instance stays on its release line until Spectro Cloud upgrades it in a maintenance window agreed with
+you. In the Dedicated SaaS column, _Available_ means that you can schedule the upgrade to that version.
 
-| Version | Includes                                                                                 | SaaS           | Palette and VerteX Management Appliances |
-| ------- | ---------------------------------------------------------------------------------------- | -------------- | ---------------------------------------- |
-| 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released       | Not yet released                         |
-| 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released       | Released                                 |
-| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable | Not yet released                         |
-| 4.8.x   | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable | Not yet released                         |
+| Version | Includes                                                                                 | Multi-Tenant SaaS | Dedicated SaaS | Palette and VerteX Management Appliances |
+| ------- | ---------------------------------------------------------------------------------------- | ----------------- | -------------- | ---------------------------------------- |
+| 4.10.34 | Rebuilt the remaining Palette and VerteX 4.10 images. Includes all patches from 4.10.33. | Released          | Available      | Not yet released                         |
+| 4.10.33 | Rebuilt most Palette and VerteX 4.10 images with updated trust stores.                   | Released          | Not applicable | Released                                 |
+| 4.9.66  | Rebuilt the Palette and VerteX 4.9 images with updated trust stores.                     | Not applicable    | Available      | Not yet released                         |
+| 4.8.74  | Rebuilt the Palette and VerteX 4.8 images with updated trust stores.                     | Not applicable    | Available      | Not yet released                         |
 
 #### Kubernetes Versions and Packs
 
@@ -137,10 +133,11 @@ The following table lists the patch status of Kubernetes versions and packs.
 
 #### Edge Hosts
 
-Provider images and Edge installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root
-certificates. Appliance mode Edge hosts that use images built with an earlier CanvOS version can use a workaround to
-remove the affected root certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE
-Linux Enterprise Micro, Red Hat Enterprise Linux, or Rocky Linux. Refer to
+Provider images and Edge installer ISOs that you build with one of the following CanvOS versions no longer trust the
+affected root certificates: 4.10.11 or later, 4.9.44 or a later 4.9 version, or 4.8.32 or a later 4.8 version. Appliance
+mode Edge hosts that use images built with an earlier CanvOS version can use a workaround to remove the affected root
+certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE Linux Enterprise Micro,
+Red Hat Enterprise Linux, or Rocky Linux. Refer to
 [Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
 for the steps.
 
