@@ -135,17 +135,16 @@ This override takes effect immediately, but it does not persist across reboots. 
 
 ## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
 
-On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
-PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
-Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible, even though the
-Keycloak and PostgreSQL pods report a `Ready` status.
+On FIPS VM Launchpad appliances, which use Piraeus storage, network disruptions can cause the DRBD replicas that back
+the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because
+the Virtual Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible,
+even though the Keycloak and PostgreSQL pods report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
 suspends database I/O. Use the following steps to restore the connection manually.
 
-VM Launchpad ships two Piraeus storage variants, and some values in this scenario differ between them. Select your
-variant in the tabs throughout the procedure. The FIPS profile stores PostgreSQL data in a `pgdata-postgres-0` volume,
-while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` volume.
+This scenario applies only to FIPS appliances. Non-FIPS appliances, including the Non-FIPS Piraeus variant, store the
+Keycloak database on node-local storage instead of DRBD replicas.
 
 ### Prerequisites
 
@@ -173,29 +172,11 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    kubectl --namespace "$NS" get pvc
    ```
 
-3. Assign the PostgreSQL data PVC to a variable, based on your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Assign the PostgreSQL data PVC, `pgdata-postgres-0`, to a variable.
 
    ```bash
    PVC=pgdata-postgres-0
    ```
-
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   Replace `<postgres-data-pvc>` with the `keycloak-db-*` claim name from the previous step.
-
-   ```bash
-   PVC=<postgres-data-pvc>
-   ```
-
-   </TabItem>
-
-   </Tabs>
 
 4. Resolve the claim to its persistent volume.
 
@@ -294,11 +275,7 @@ check only confirms that the database accepts connections, so run an actual quer
    kubectl --namespace "$NS" get pods
    ```
 
-3. Set the database pod and credential values for your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Set the database pod and credential values.
 
    ```bash
    DB_POD=postgres-0
@@ -306,24 +283,8 @@ check only confirms that the database accepts connections, so run an actual quer
    DB_SECRET_KEY=POSTGRES_PASSWORD
    ```
 
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   ```bash
-   DB_POD=$(kubectl --namespace "$NS" get pod --selector cnpg.io/instanceRole=primary \
-     --output jsonpath='{.items[0].metadata.name}')
-   DB_SECRET=keycloak-db-app
-   DB_SECRET_KEY=password
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
 4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
-   shell history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the
-   command is the same for both variants.
+   shell history and the command arguments.
 
    ```bash
    kubectl --namespace "$NS" get secret "$DB_SECRET" \
