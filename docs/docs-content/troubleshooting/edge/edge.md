@@ -12,6 +12,39 @@ The following are common scenarios that you may encounter when using Edge.
 
 <!-- vale Vale.Spelling = NO -->
 
+## Scenario - OS Upgrade Fails and Edge Host Rolls Back to Previous Image
+
+When an OS upgrade fails on an [appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge host, the
+Edge host rolls back to its previous provider image. Local UI displays an **OS upgrade failed** banner on the **Edge
+Host** page and on the **Overview** tab of the **Cluster** page. This applies to both centrally managed and locally
+managed clusters. The banner stays until a later OS upgrade succeeds on the Edge host.
+
+### Debug Steps - Centrally Managed Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile that the cluster uses.
+
+2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
+
+3. Apply the updated cluster profile to the cluster. For more information, refer to
+   [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+### Debug Steps - Locally Managed Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile that the cluster uses.
+
+2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
+
+3. Build a new content bundle that includes the cluster definition. For more information, refer to
+   [Build Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+4. In Local UI, upload the content bundle. For more information, refer to
+   [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md).
+
+5. From the left main menu, select **Cluster**, and then select the **Configuration** tab. Because the content bundle
+   includes the cluster definition, the new configuration appears on the tab automatically.
+
+6. Click **Update Configuration**.
+
 ## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
 
 [Appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge hosts validate outbound TLS connections,
