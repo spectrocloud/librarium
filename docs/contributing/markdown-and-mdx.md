@@ -292,6 +292,19 @@ when it validates the diagram. Use the repository's HTTPS URL, because Archify r
 the format of `meta.repository` and each component's `sources`, refer to the schemas in the Archify `archify/schemas`
 folder.
 
+The docs repository is public, so commit citations only when the product's source repository is public too. Citations to
+a private repository would publish its name, its file paths, and its commit IDs. For a private repository, complete the
+following steps.
+
+1. Cite the sources in a copy of the JSON source outside the docs repository, and run `finalize` on that copy with
+   `--repo-root`, as described in [Regenerate a Diagram](#regenerate-a-diagram).
+
+2. Commit the JSON source without `meta.repository` and without any component's `sources`. Leave `meta.quality_profile`
+   as it is, because the profile changes where Archify places connection labels.
+
+3. Record the repository, the revision, and each component's citations in the diagram's Jira ticket, so that the next
+   writer can check them against a new release.
+
 #### Tooling
 
 The docs repository authors diagrams with [Archify](https://github.com/tt-a1i/archify) v3.2.0, exports them with the
@@ -324,9 +337,8 @@ changes, refer to [Maintain a Diagram](#maintain-a-diagram).
 
 ##### Create a Diagram With an AI Agent
 
-The `diagram-from-source` skill in [docs-ai-context](https://github.com/spectrocloud/docs-ai-context) runs the steps in
-this section for you in Claude Code. Given a Jira ticket and a local clone of the product's source repository, the skill
-does the following:
+The docs team's internal `diagram-from-source` skill runs the steps in this section for you in Claude Code. Given a Jira
+ticket and a local clone of the product's source repository, the skill does the following:
 
 - Builds an inventory of the components, with source citations pinned to the release that the docs describe.
 
@@ -337,10 +349,12 @@ does the following:
 - Runs Prettier and Vale, and reports its decisions, a source trace, SME questions, and the time the diagram took.
 
 The skill does not commit, push, or change Jira. Review its diagram, its source trace, and its SME questions before you
-open a pull request, and get SME sign-off as you would for any diagram.
+open a pull request, and get SME sign-off as you would for any diagram. When the product's source repository is private,
+the skill leaves the citations out of the JSON source, as described in [Source Evidence](#source-evidence), so record
+its source trace in the Jira ticket.
 
-To install the skill, sync `.claude/` from docs-ai-context with the `sync-docs-ai-context` skill. The skill needs the
-same [Prerequisites](#prerequisites). Then ask Claude Code to run it for the ticket.
+Docs team members install the skill with the team's other Claude Code skills. The skill needs the same
+[Prerequisites](#prerequisites). Then ask Claude Code to run it for the ticket.
 
 ```text
 Use the diagram-from-source skill for DOC-1234.
@@ -432,12 +446,15 @@ whenever any of the following happens:
 
 - A new release of the product ships, and the docs version that the diagram belongs to moves to it.
 
-For a new release, set `meta.repository.revision` to the full commit SHA of the new release, and then run `finalize`
-with `--repo-root`. The command fails for every source citation whose file or line range no longer exists at that
-revision. Update each failing citation, and then check whether the component it supports changed too. When the
-components change, update the numbered list on the page to match. Callout numbers appear in both the JSON source and the
-page, so change both in the same commit. Then regenerate both images, as described in
-[Regenerate a Diagram](#regenerate-a-diagram).
+For a new release, check the diagram's source citations against it. When the product's source repository is private,
+first add the citations from the diagram's Jira ticket to a copy of the JSON source outside the docs repository, as
+described in [Source Evidence](#source-evidence). The commit history of the JSON source names the ticket. Set
+`meta.repository.revision` to the full commit SHA of the new release, and then run `finalize` with `--repo-root`. The
+command fails for every source citation whose file or line range no longer exists at that revision. Update each failing
+citation, and then check whether the component it supports changed too. For a private repository, record the updated
+citations in your change's Jira ticket. When the components change, update the numbered list on the page to match.
+Callout numbers appear in both the JSON source and the page, so change both in the same commit. Then regenerate both
+images, as described in [Regenerate a Diagram](#regenerate-a-diagram).
 
 ##### Add the Diagram to a Page
 
