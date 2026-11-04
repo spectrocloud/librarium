@@ -11,6 +11,109 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Image Pulls and Package Uploads Fail After a Registry Password Change
+
+<!-- TODO(DOC-3410): confirm whether changing the registry password after installation is a supported action, and where users change it. If it is, link that page from the first sentence. -->
+
+After the registry password of a VM Launchpad appliance changes, image pulls through the Zot registry fail, and package
+uploads and downloads in VM Launchpad fail. The Zot and VM Launchpad logs show S3 errors, such as
+`SignatureDoesNotMatch`, `InvalidAccessKeyId`, or `AccessDenied`.
+
+This occurs because Zot and VM Launchpad store their data in the SeaweedFS object store, and both use the registry
+password as their SeaweedFS secret key. When the registry password changes, Zot and VM Launchpad restart and use the new
+password. SeaweedFS reads the password only when it starts, so it keeps the old password and rejects both until it
+restarts. This applies to FIPS and non-FIPS appliances.
+
+During an upgrade of a non-FIPS appliance, the same errors might appear for a few minutes while SeaweedFS restarts. If
+they continue after every SeaweedFS pod has restarted, use the following steps.
+
+### Prerequisites {#prerequisites-registry-password}
+
+- You have `kubectl` access to the VM Launchpad cluster. From the cluster **Overview** tab, download the
+  [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+  to point to it.
+
+### Confirm the Cause {#confirm-the-cause-registry-password}
+
+1. Check the Zot logs for S3 errors.
+
+   ```bash
+   kubectl --namespace zot-system logs deployment/zot --since=1h | grep --extended-regexp 'SignatureDoesNotMatch|InvalidAccessKeyId|AccessDenied'
+   ```
+
+2. Check the VM Launchpad logs for the same errors.
+
+   ```bash
+   kubectl --namespace vm-dashboard logs deployment/vmo-manager --since=1h | grep --extended-regexp 'SignatureDoesNotMatch|InvalidAccessKeyId|AccessDenied'
+   ```
+
+   Continue if either log lists one of these errors. If neither log lists them, this scenario does not apply.
+
+3. List the SeaweedFS pods.
+
+   ```bash
+   kubectl --namespace seaweedfs get pods
+   ```
+
+   Check the `AGE` column. If the SeaweedFS pods started before the registry password changed, they still use the old
+   password.
+
+### Restart SeaweedFS
+
+1. Restart SeaweedFS. Image pulls through Zot fail until the restart finishes.
+
+   ```bash
+   kubectl --namespace seaweedfs rollout restart statefulset/seaweedfs
+   ```
+
+2. Wait for the restart to finish. The command returns when every SeaweedFS pod runs with the new password, and the last
+   line of its output starts with `statefulset rolling update complete`.
+
+   ```bash
+   kubectl --namespace seaweedfs rollout status statefulset/seaweedfs
+   ```
+
+3. On a FIPS appliance, check whether a `zot-legacy` pod exists. Skip this step and the next one on a non-FIPS
+   appliance.
+
+   ```bash
+   kubectl --namespace zot-system get pod zot-legacy
+   ```
+
+   If the output is `Error from server (NotFound)`, skip the next step.
+
+4. Delete the `zot-legacy` pod. It reads the password only when it starts, and Palette re-creates it.
+
+   ```bash
+   kubectl --namespace zot-system delete pod zot-legacy
+   ```
+
+5. (Optional) Restart Zot. Zot pods that failed while SeaweedFS restarted recover on their own, but a restart skips
+   their back-off delay.
+
+   ```bash
+   kubectl --namespace zot-system rollout restart deployment/zot
+   ```
+
+### Verify Image Pulls and Package Uploads
+
+1. Check the Zot logs for S3 errors since the restart.
+
+   ```bash
+   kubectl --namespace zot-system logs deployment/zot --since=5m | grep --extended-regexp 'SignatureDoesNotMatch|InvalidAccessKeyId|AccessDenied'
+   ```
+
+   The command returns no output.
+
+2. In VM Launchpad, retry the action that failed, such as a package upload in **Image Catalog** > **Packages**. The
+   action succeeds.
+
+3. If package uploads or downloads still fail, restart VM Launchpad, and then retry the action.
+
+   ```bash
+   kubectl --namespace vm-dashboard rollout restart deployment/vmo-manager
+   ```
+
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
 On non-FIPS VM Launchpad appliances, an appliance upgrade can stall while it drains a node. The node shows the
