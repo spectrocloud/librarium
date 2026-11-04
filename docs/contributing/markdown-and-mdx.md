@@ -305,7 +305,7 @@ following steps.
 3. Record the repository, the revision, and each component's citations in the diagram's Jira ticket, so that the next
    writer can check them against a new release.
 
-#### Tooling
+#### Create or Update a Diagram
 
 The docs repository authors diagrams with [Archify](https://github.com/tt-a1i/archify) v3.2.0, exports them with the
 [`scripts/archify-export.mjs`](../../scripts/archify-export.mjs) script, and converts them to WEBP with
@@ -335,6 +335,28 @@ To have Claude Code complete steps 2 to 4 for you, use the `diagram-from-source`
 [Create a Diagram With an AI Agent](#create-a-diagram-with-an-ai-agent). To keep a diagram current when the product
 changes, refer to [Maintain a Diagram](#maintain-a-diagram).
 
+##### Prerequisites
+
+- Node.js v24, as described in [Local Development](./local-development.md).
+
+- Google Chrome. The export script uses the default macOS install location, then `google-chrome` on `PATH`. Set
+  `CHROME_PATH` to use a different browser binary.
+
+- `cwebp` on `PATH`. Install with `brew install webp` on macOS.
+
+- The Archify v3.2.0 command-line tool, cloned outside the docs repository and checked out at the commit that the
+  `v3.2.0` tag points to.
+
+  ```sh
+  git clone https://github.com/tt-a1i/archify.git ~/archify-v3.2.0
+  git -C ~/archify-v3.2.0 -c advice.detachedHead=false checkout 208acba8d412335185b2056fedf54b3405df43fb
+  ```
+
+  ```bash hideClipboard title="Expected output"
+  Cloning into '/Users/<username>/archify-v3.2.0'...
+  HEAD is now at 208acba8 Merge pull request #1002 from tt-a1i/codex/promote-dev-20261018
+  ```
+
 ##### Create a Diagram With an AI Agent
 
 The docs team's internal `diagram-from-source` skill runs the steps in this section for you in Claude Code. Given a Jira
@@ -359,21 +381,6 @@ Docs team members install the skill with the team's other Claude Code skills. Th
 ```text
 Use the diagram-from-source skill for DOC-1234.
 ```
-
-##### Prerequisites
-
-- Node.js 18 or later.
-
-- Google Chrome. The export script uses the default macOS install location, then `google-chrome` on `PATH`. Set
-  `CHROME_PATH` to use a different browser binary.
-
-- `cwebp` on `PATH`. Install with `brew install webp` on macOS.
-
-- The Archify v3.2.0 command-line tool, cloned outside the docs repository.
-
-  ```sh
-  git clone --depth 1 --branch v3.2.0 https://github.com/tt-a1i/archify.git ~/archify-v3.2.0
-  ```
 
 ##### Regenerate a Diagram
 
@@ -416,7 +423,7 @@ Use the diagram-from-source skill for DOC-1234.
    ```
 
    Replace `<markdown-file-name>` with the name of the page's Markdown file and `<image-description>` with a short
-   description of the diagram, as described in [Tooling](#tooling).
+   description of the diagram, as described in [Create or Update a Diagram](#create-or-update-a-diagram).
 
    The script removes Archify's title, frame, and grid, paints the canvas in the docs site's page color, enlarges the
    text and arrows, and renders the image at twice its size, so that the diagram stays legible after the docs site
