@@ -187,7 +187,7 @@ image with high priority so LCP (Largest Contentful Paint) for the page is not a
 
 ### Diagrams
 
-New diagrams may be authored as [Archify](https://github.com/tt-a1i/archify) JSON source and exported to two WEBP
+You can author a new diagram as [Archify](https://github.com/tt-a1i/archify) JSON source and export it to two WEBP
 images, one for the site's light theme and one for its dark theme. The JSON source is the source of truth. The WEBP
 images are the rendered output that ships with the docs. Archify also renders an interactive HTML version of each
 diagram. Use it locally to review the layout and the source links.
@@ -202,7 +202,7 @@ Archify also renders `sequence`, `workflow`, `dataflow`, `lifecycle`, `erd`, `tr
 `waterfall` diagrams. Each type has its own schema in the Archify `archify/schemas` folder. To find the right type for a
 question, run the Archify `guide` command.
 
-```sh
+```shell
 node ~/archify-v3.2.0/archify/bin/archify.mjs guide "<diagram-question>"
 ```
 
@@ -212,7 +212,7 @@ For example, the following command asks which type suits a diagram of the calls 
 question the way the diagram answers it, such as _who calls whom, in what order_. A question that matches none of
 Archify's scenarios returns `System overview [architecture]` with low confidence.
 
-```sh
+```shell
 node ~/archify-v3.2.0/archify/bin/archify.mjs guide "who calls whom, in what order, when a client sends a chat request"
 ```
 
@@ -259,12 +259,12 @@ the page prose instead.
 Set the `variant` of every connection to match its arrow style in the style guide's
 [Arrows](../../style-guide.md#arrows).
 
-| **Arrow**    | **Archify `variant`** |
-| ------------ | --------------------- |
-| Green, solid | `emphasis`            |
-| Slate, solid | `default`             |
-| Violet, dash | `dashed`              |
-| Rose, solid  | `security`            |
+| **Arrow**      | **Archify `variant`** |
+| -------------- | --------------------- |
+| Green, solid   | `emphasis`            |
+| Slate, solid   | `default`             |
+| Violet, dashed | `dashed`              |
+| Rose, solid    | `security`            |
 
 If Archify's automatic routing makes two connections cross, set `fromSide`, `toSide`, or `route` on one of them. If
 Archify places a connection label on top of a component, set `labelAt` to an `[x, y]` point in the gap between two rows.
@@ -347,7 +347,7 @@ changes, refer to [Maintain a Diagram](#maintain-a-diagram).
 - The Archify v3.2.0 command-line tool, cloned outside the docs repository and checked out at the commit that the
   `v3.2.0` tag points to.
 
-  ```sh
+  ```shell
   git clone https://github.com/tt-a1i/archify.git ~/archify-v3.2.0
   git -C ~/archify-v3.2.0 -c advice.detachedHead=false checkout 208acba8d412335185b2056fedf54b3405df43fb
   ```
@@ -387,7 +387,7 @@ Use the diagram-from-source skill for DOC-1234.
 1. Validate the JSON source and render it to a temporary HTML file. The `finalize` command fails if a component or a
    label overlaps another, if two connections cross, or if a source citation does not exist at the pinned revision.
 
-   ```sh
+   ```shell
    node ~/archify-v3.2.0/archify/bin/archify.mjs finalize <diagram-type> <json-source> /tmp/<diagram-name>.html \
      --quality showcase --repo-root <path-to-product-source> --out-dir /tmp/archify-review
    ```
@@ -415,7 +415,7 @@ Use the diagram-from-source skill for DOC-1234.
 2. Export the rendered diagram to its final WEBP path, once for each theme. Add `dark` as the third argument for the
    dark theme.
 
-   ```sh
+   ```shell
    node scripts/archify-export.mjs /tmp/<diagram-name>.html \
      static/assets/docs/images/<markdown-file-name>_<image-description>.webp
    node scripts/archify-export.mjs /tmp/<diagram-name>.html \
@@ -493,7 +493,7 @@ The following diagram uses every color role, every arrow variant, a nested bound
 as a reference when you introduce a new component and are unsure which role it belongs to. GitHub renders this guide,
 not the docs site, so the sample ships only its light-theme image.
 
-![Conventions sample: users at the top reach a cyan ingress and API service that run down the middle of a product boundary and send requests to green workloads on worker nodes, with a dashed egress arrow to an amber third-party service at the top right that is off by default. On the left, a rose identity provider handles sign-in from the ingress, and a violet control plane applies settings to the API service and deploys the workloads. Orange dashboards at the bottom collect metrics from the workloads.](../../static/assets/docs/images/markdown-and-mdx_diagram-sample.webp)
+![Conventions sample: an architecture diagram that uses every color role, every arrow style, and a nested boundary in the three-column layout.](../../static/assets/docs/images/markdown-and-mdx_diagram-sample.webp)
 
 The JSON source for this sample lives at
 [`docs/contributing/archify/diagramming-conventions-sample.architecture.json`](./archify/diagramming-conventions-sample.architecture.json).

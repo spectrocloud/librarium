@@ -1001,8 +1001,15 @@ neighbors.
 | Identity and access        | Rose      | Identity providers, sign-in, and access control.                                     |
 | Monitoring                 | Orange    | Metrics, logs, traces, and dashboards.                                               |
 
-In a physical topology, use slate for network hardware outside the product, such as a data center switch, cyan for
-network interfaces and management ports, green for GPUs and other compute, and violet for disks.
+In a physical topology, use the following colors:
+
+- Slate for network hardware outside the product, such as a data center switch.
+
+- Cyan for network interfaces and management ports.
+
+- Green for GPUs and other compute.
+
+- Violet for disks.
 
 Name each role in the diagram's legend. Use the role name from the table, or the product's own word for it, such as
 _Local inference on GPUs_ for local compute. Across a product's diagrams, use the same legend label for a color that
@@ -1013,12 +1020,12 @@ label the role it plays there.
 
 The style of an arrow signals what kind of interaction it is.
 
-| **Arrow**    | **Meaning**                                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| Green, solid | The main request path. Reserve it for the path the reader cares about most.                   |
-| Slate, solid | Any other call, such as an administrator opening the console.                                 |
-| Violet, dash | A reconcile or deploy loop, a metrics or telemetry hop, or an optional or off-by-default hop. |
-| Rose, solid  | Sign-in, token checks, and other identity traffic.                                            |
+| **Arrow**      | **Meaning**                                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------- |
+| Green, solid   | The main request path. Reserve it for the path the reader cares about most.                   |
+| Slate, solid   | Any other call, such as an administrator opening the console.                                 |
+| Violet, dashed | A reconcile or deploy loop, a metrics or telemetry hop, or an optional or off-by-default hop. |
+| Rose, solid    | Sign-in, token checks, and other identity traffic.                                            |
 
 Label an arrow only when the label adds information the reader cannot infer from the components. Prefer short verbs or
 conditions, such as _deploys_ or _off by default_.

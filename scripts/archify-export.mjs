@@ -1,8 +1,8 @@
 // Export an Archify diagram headlessly, without the title and frame the viewer's image export adds.
 // See the Diagrams section of docs/contributing/markdown-and-mdx.md.
 // Usage: node scripts/archify-export.mjs <diagram.html> <out.webp|out.png|out.svg> [light|dark]
-// The viewer's SVG export is the bare diagram. A raster output is that SVG drawn at twice its size on a white
-// background, and a .webp output is then converted with cwebp, so cwebp must be on PATH.
+// The viewer's SVG export is the bare diagram. A raster output is that SVG drawn at twice its size on the docs
+// site's page color for the theme, and a .webp output is then converted with cwebp, so cwebp must be on PATH.
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -160,8 +160,8 @@ try {
     });
     await Archify.exportMenu.run('svg-${theme}');
     const { href, name } = await captured;
-    // Paint the canvas in the docs site's light-mode page color and drop the dot grid, so the diagram sits on the page
-    // without a visible box around it.
+    // Paint the canvas in the docs site's page color for the theme and drop the dot grid, so the diagram sits on the
+    // page without a visible box around it.
     const exported = (await (await fetch(href)).text())
       .replace(/(<rect x="0" y="0" width="[0-9.]+" height="[0-9.]+" fill=")#[0-9a-fA-F]{6}("\\/>)/, '$1${PAGE_BG}$2')
       .replace('<rect width="100%" height="100%" fill="url(#grid)"/>', '');
