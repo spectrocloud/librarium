@@ -40,6 +40,9 @@ env:
   MODEL: "claude-opus-5-5"
   MAX_BUDGET_USD: "3"
   AGENT_DIR: .github/link-fix-agent
+  # npm ci installs the husky hooks, and the pre-commit hook fails in CI on the
+  # missing algolia.appId. This job only makes throwaway local commits.
+  HUSKY: "0"
 
 jobs:
   fix-links:
