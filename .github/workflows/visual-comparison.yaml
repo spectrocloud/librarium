@@ -201,7 +201,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: "build"
           path: |
@@ -319,7 +319,7 @@ jobs:
 
       - name: Upload blob report to GitHub Actions Artifacts
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7 as of May 6, 2026
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7 as of May 6, 2026
         with:
           name: blob-report-${{ matrix.shardIndex }}
           path: blob-report
@@ -366,7 +366,7 @@ jobs:
 
     - name: Upload Report
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7 as of May 6, 2026
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7 as of May 6, 2026
       id: report
       with:
         name: "report"
