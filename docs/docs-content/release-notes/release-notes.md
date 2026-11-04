@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 1, 2026 - Release 4.9.66
+## October 29, 2026 - Release 4.9.66
 
 <!-- PATCH RELEASE TICKET: DOC-3360 -->
 <!-- PATCH RELEASE VERSION: 4.9.66 -->
@@ -51,7 +51,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 :::
 
-## October 19, 2026 - Release 4.9.64
+## October 16, 2026 - Release 4.9.64
 
 <!-- PATCH RELEASE TICKET: DOC-3301 -->
 <!-- PATCH RELEASE VERSION: 4.9.64 -->
@@ -160,7 +160,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 :::
 
-## October 12, 2026 - Release 4.9.63
+## October 9, 2026 - Release 4.9.63
 
 <!-- PATCH RELEASE TICKET: DOC-3278 -->
 <!-- PATCH RELEASE VERSION: 4.9.63 -->
@@ -188,7 +188,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 - Applied security fixes to improve the platform's security posture.
 
-## October 9, 2026 - Release 4.9.62
+## October 4, 2026 - Release 4.9.62
 
 <!-- PATCH RELEASE TICKET: DOC-3270 -->
 <!-- PATCH RELEASE VERSION: 4.9.62 -->
