@@ -68,7 +68,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Packs
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: "build-packs"
           path: |
@@ -78,7 +78,7 @@ jobs:
           retention-days: 7
 
       - name: Upload Built Security Bulletins
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: "security-bulletins"
           path: .docusaurus/security-bulletins/default/data.json
@@ -86,7 +86,7 @@ jobs:
           retention-days: 7
 
       - name: Upload Built Pack CVEs
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: "pack-cves"
           path: .docusaurus/pack-cves/default/data.json

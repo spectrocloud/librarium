@@ -155,7 +155,7 @@ jobs:
 
       - name: Upload Build
         if: ${{ env.BUILD_EXIT_CODE == '0' || steps.cached_packs.outputs['build-exit-code'] == '0' || steps.cached_cves.outputs['build-exit-code'] == '0' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: "build"
           path: |
@@ -228,7 +228,7 @@ jobs:
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
 
       - name: Upload Screenshots
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         id: screenshots
         with:
           name: screenshots-${{ matrix.shardIndex }}
@@ -257,7 +257,7 @@ jobs:
         merge-multiple: true
 
     - name: Upload Screenshots
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
       id: screenshots
       with:
         name: "screenshots"
