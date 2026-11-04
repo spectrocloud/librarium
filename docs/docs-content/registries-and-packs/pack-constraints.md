@@ -662,7 +662,8 @@ Palette shows the installation status of each pack in a cluster. For more inform
 [Pack Monitoring](../clusters/cluster-management/pack-monitoring.md). In the cluster, each pack has a matching `Pack`
 resource in the `cluster-<cluster-uid>` namespace. Palette writes the results of the checks to the `status.conditions`
 and `status.servicesStatus` fields of that resource. Palette records an event only when a check returns an error, such
-as a missing resource or field.
+as a missing resource or field. It records a `Warning` event on the `Pack` resource, with the reason
+`ServiceReconcileFailed` or `ReconcileError`. The event also appears on the **Events** tab of the cluster in Palette.
 
 To view the `Pack` resource, use the following command. Replace `<pack-name>` with the name of the pack and
 `<cluster-uid>` with the unique identifier of your cluster.
