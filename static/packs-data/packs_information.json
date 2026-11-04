@@ -1273,7 +1273,7 @@
   },
   {
     "name": "seaweedfs",
-    "description": "SeaweedFS is an Apache 2.0-licensed, S3-compatible object storage system. This pack runs SeaweedFS as a single all-in-one pod on a persistent volume and provides the S3 storage backend for an in-cluster Zot registry."
+    "description": "SeaweedFS is an Apache 2.0-licensed, S3-compatible object storage system. This pack runs SeaweedFS as a StatefulSet of all-in-one pods, three by default, and provides a general-purpose S3 storage backend, such as for an in-cluster Zot registry or the VM Launchpad package store."
   },
   {
     "name": "spectro-hypershift-operator",
