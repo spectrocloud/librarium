@@ -69,6 +69,12 @@ Local UI warns you when one or more certificates are close to their expiration d
 When Kubernetes certificates expire, the cluster might stop running. Renew them manually to restore normal operation.
 Refer to [Manual Renewal](#manual-renewal).
 
+Palette Edge does not renew certificates that show **Not available**. The Local UI server certificate is valid for 10
+years, and you can renew it manually. Refer to
+[Renew the Local UI Server Certificate](#renew-the-local-ui-server-certificate).
+
+<!-- TODO(PE-9865): registry certificates. Confirm whether the Zot and Harbor cert-manager rotation pages apply to the registry rows that show Not available, and add a pointer if they do. -->
+
 To retrieve the same certificate details programmatically, use the
 [`GET /v1/edge-mgmt/cluster/certificates`](/api/edge-v1/v-1-certificate-details/) endpoint of the Edge Management API.
 
@@ -177,3 +183,49 @@ Management API.
 In **Overview**, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
 certificates that your cluster uses. Confirm that the renewed certificates show a new **Issued Date** and a later
 **Expiration Date**.
+
+## Renew the Local UI Server Certificate
+
+The Local UI server certificate secures the HTTPS connection to Local UI on each Edge host. Palette Edge does not renew
+it, and **Renew all available certificates** does not include it. When the Palette agent starts, it creates a new
+certificate if the current certificate is missing or expired, or if it does not include the IP address of the Edge host.
+The CA that signs the certificate does not change, so browsers that trust the CA continue to trust Local UI.
+
+### Prerequisites {#prerequisites-local-ui-certificate}
+
+- You have the credentials and network access to establish an SSH connection to your Edge host, and you can run commands
+  with `sudo`.
+
+### Renew the Certificate
+
+1. Establish an SSH connection to the Edge host.
+
+2. Back up the current certificate and key.
+
+   ```shell
+   sudo cp /opt/spectrocloud/certs/stylus-agent/server.pem /opt/spectrocloud/certs/stylus-agent/server.key /root/
+   ```
+
+3. Remove the certificate and key.
+
+   ```shell
+   sudo rm /opt/spectrocloud/certs/stylus-agent/server.pem /opt/spectrocloud/certs/stylus-agent/server.key
+   ```
+
+4. Restart the Palette agent service. The agent creates a new certificate and key when it starts. Local UI is
+   unavailable until the agent restarts.
+
+   ```shell
+   sudo systemctl restart spectro-stylus-agent.service
+   ```
+
+5. Repeat these steps on each Edge host whose Local UI server certificate you want to renew.
+
+### Validate {#validate-local-ui-certificate}
+
+1. Log in to [Local UI](../local-ui/host-management/access-console.md).
+
+2. From the left **Main Menu**, select **Cluster**, and then select the **Overview** tab.
+
+3. In the **Certificates** row, select **View Certificates**. Confirm that the **Local UI** certificate shows a new
+   **Issued Date** and a later **Expiration Date**.
