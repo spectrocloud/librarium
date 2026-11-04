@@ -1054,12 +1054,13 @@ Arrange the three columns so that the diagram reads from top to bottom and from 
 
 - Put the people and clients outside the product in the top row, above the product boundary.
 
-- Run the main request path down the middle column.
+- Run the main request path down the middle column, and end it at the component that serves the request, such as local
+  compute.
 
 - Put the administration side, such as the console, identity provider, and control plane, in the left column.
 
-- Put the destinations of a request, such as local compute and external services, in the right column. External services
-  go in the top row, outside the product boundary.
+- Put the other destinations of a request, such as external services, in the right column. External services go in the
+  top row, outside the product boundary.
 
 This arrangement suits a diagram of how a request moves. For a physical topology, such as the hardware that an engineer
 racks and connects, keep the grid and the top row, and place the parts of each server together.
