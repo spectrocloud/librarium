@@ -13,16 +13,18 @@ This page provides troubleshooting guidance for common scenarios you may encount
 
 ## Scenario - Image Pulls and Package Uploads Fail After a Registry Password Change
 
-<!-- TODO(DOC-3410): confirm whether changing the registry password after installation is a supported action, and where users change it. If it is, link that page from the first sentence. -->
-
 After the registry password of a VM Launchpad appliance changes, image pulls through the Zot registry fail, and package
-uploads and downloads in VM Launchpad fail. The Zot and VM Launchpad logs show S3 errors, such as
-`SignatureDoesNotMatch`, `InvalidAccessKeyId`, or `AccessDenied`.
+uploads and downloads in VM Launchpad fail with an error that starts with `Upload failed:`. The Zot pods might restart
+repeatedly and show as not ready, and VM Launchpad might also show a banner that starts with
+`Package storage is ephemeral`. The Zot and VM Launchpad logs show the S3 error `SignatureDoesNotMatch`. Local UI does
+not report the problem, because SeaweedFS stays ready.
 
 This occurs because Zot and VM Launchpad store their data in the SeaweedFS object store, and both use the registry
-password as their SeaweedFS secret key. When the registry password changes, Zot and VM Launchpad restart and use the new
-password. SeaweedFS reads the password only when it starts, so it keeps the old password and rejects both until it
-restarts. This applies to FIPS and non-FIPS appliances.
+password as their SeaweedFS secret key. You can change the registry password after installation, in the **Registry
+Password** field of the [Container Registry](./install.md#container-registry) settings or in the matching cluster
+profile variable in Palette. When it changes, Zot and VM Launchpad restart and use the new password. SeaweedFS reads the
+password only when it starts, so it keeps the old password and rejects both until it restarts. This applies to FIPS and
+non-FIPS appliances.
 
 During an upgrade of a non-FIPS appliance, the same errors might appear for a few minutes while SeaweedFS restarts. If
 they continue after every SeaweedFS pod has restarted, use the following steps.
