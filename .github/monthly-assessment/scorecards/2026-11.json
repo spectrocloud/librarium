@@ -1,0 +1,145 @@
+{
+  "month": "2026-11",
+  "generatedAt": "2026-11-01T08:16:25.209Z",
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "pages": [
+    {
+      "path": "/palette",
+      "url": "https://docs.spectrocloud.com/palette",
+      "views": 462,
+      "persona": "Product Evaluator",
+      "model": "claude-opus-5-5",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page gives me a clear, low-jargon picture of what Palette does, where it runs, and who it serves, but it reads as marketing positioning: it has no GA/Tech Preview status, support tiers, known limitations, licensing or pricing, or sizing signals, so I can't make a go/no-go or scope a POC from it alone.",
+      "gaps": [
+        "The page never states production-readiness or support details, such as GA versus preview status per environment (Edge, PaletteAI, CloudStack), support tiers/SLAs, or known limitations, so these are blocking unknowns for my risk assessment.",
+        "The page claims lower TCO and less lock-in but gives no evidence, such as a pricing/licensing model, deployment options (SaaS vs. self-hosted), integration effort, or a case study, and no POC success criteria or deep links beyond the Architecture and VerteX/FIPS pages."
+      ]
+    },
+    {
+      "path": "/paletteai-inference-launchpad",
+      "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad",
+      "views": 336,
+      "persona": "Product Evaluator",
+      "model": "claude-opus-5-5",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page gives me a clear executive picture of what the appliance is, how it differs from PaletteAI, and its cost story, but it never states GA vs. Tech Preview status, support tiers, or licensing and pricing, so I cannot make a go/no-go call or scope a POC from it.",
+      "gaps": [
+        "The page never states the product's production-readiness status (GA, Tech Preview, or beta), any support SLA, or its known limitations, and pushes commercial support and plans to an external product page, so the primary adoption risk is unresolved.",
+        "The \"fixed, predictable cost\" claim has no licensing model, hardware sizing baseline, or TCO figures behind it, and the bring-your-own-model and outbound-routing caveats leave the ownership and data-residency risk unquantified on this page."
+      ]
+    },
+    {
+      "path": "/tutorials/getting-started",
+      "url": "https://docs.spectrocloud.com/tutorials/getting-started",
+      "views": 223,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "FAIL",
+      "score": 2,
+      "summary": "This is a navigation landing page with marketing framing (\"book a demo\") and two routing cards; it gives me no prerequisites, required permissions, ports, versions, setup steps, IaC samples, or validation checks, so I can't stand up anything from it and have to click through to the \"Palette\" or \"Palette Edge\" sub-pages.",
+      "gaps": [
+        "There is no prerequisites or required-inputs checklist (account/tenant access, cloud IAM permissions, network CIDRs/ports, supported Kubernetes versions) for either the Palette or Palette Edge path, and the page doesn't say where these live.",
+        "Terraform deployment is mentioned only as an \"advanced topic\" with no link, module reference, or provider version, and Crossplane, RBAC setup, and install validation are not covered at all."
+      ]
+    },
+    {
+      "path": "/architecture/architecture-overview",
+      "url": "https://docs.spectrocloud.com/architecture/architecture-overview",
+      "views": 217,
+      "persona": "Product Evaluator",
+      "model": "claude-opus-5-5",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page gives me a clear high-level view of the three deployment models (multi-tenant SaaS, dedicated SaaS, and self-hosted) and their regional availability, which is enough to shortlist an option, but it never states production-readiness or support status, licensing, sizing, or how responsibilities are split between my teams and Spectro Cloud, so I can't reach a go/no-go or scope a POC from it alone.",
+      "gaps": [
+        "The page has no production-readiness or support signals, such as GA status per deployment model and edition, support tiers, SLAs, or known limitations. VerteX not being offered in the EU or as dedicated SaaS is the only real constraint mentioned, and it raises compliance and data-residency questions the page doesn't answer.",
+        "There is no TCO, sizing, or ownership guidance per model. The page doesn't cover licensing differences, infrastructure footprint for self-hosted, which teams must operate the Private Cloud Gateway or a private package registry, or what \"Spectro Cloud manages the instance\" covers. Without this I can't estimate time-to-value, coordination overhead, or POC success criteria."
+      ]
+    },
+    {
+      "path": "/clusters/public-cloud/aws/required-iam-policies",
+      "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
+      "views": 201,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The page works as a decision overview and tells me which roles and policies Palette creates on EKS and IaaS clusters, but it has no policy JSON, no trust or role setup, and no IaC or validation steps, so I can't fully prepare my IAM principal from this page.",
+      "gaps": [
+        "The page says I can choose between Core and Minimum Permissions (dynamic or static) policies, but gives no policy documents, trust policy, or Terraform sample here, and it never explains how to choose or what prerequisites each option requires.",
+        "The two warnings about the 10-policy limit contradict each other: one says to combine policies into a custom policy, the other says to request a quota increase. The page also doesn't say how many policies Palette itself attaches per role, including those added by storage or network packs, so I can't budget against the limit before deploying."
+      ]
+    },
+    {
+      "path": "/clusters",
+      "url": "https://docs.spectrocloud.com/clusters",
+      "views": 201,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "UNKNOWN",
+      "score": null,
+      "summary": "",
+      "gaps": []
+    },
+    {
+      "path": "/api/category/palette-api-v1",
+      "url": "https://docs.spectrocloud.com/api/category/palette-api-v1",
+      "views": 166,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "FAIL",
+      "score": 2,
+      "summary": "I came to script Day-0 onboarding (cloud account registration, edge host registration, cluster creation, and RBAC setup) against the Palette API, but this page is only a category index: 40 endpoint groups with item counts (e.g., Cloudaccounts 54, Spectroclusters 200, Edgehosts 29, Teams 15, Roles 6) and no auth requirements, base URL, prerequisites, call ordering, or IaC hooks, so I can't execute anything from it.",
+      "gaps": [
+        "The page gives no prerequisites or dependency order, such as which calls must come first (Api Keys/Auth → Tenants/Projects → Cloudaccounts → Clusterprofiles → Spectroclusters) and what permissions or scopes each group needs, so I can't plan a least-privilege bootstrap sequence.",
+        "Groups like Overlords, Pcg, Spc Policies, Cloudconfigs, and Grpc appear with no description of what they configure, and there's no pointer to Terraform/Crossplane equivalents, so I can't map them to my onboarding workflow without leaving the page; only the \"Introduction\" link and the \"Postman Collection\" previous-page link hint at where that context might live."
+      ]
+    },
+    {
+      "path": "/deployment-modes/agent-mode/install-agent-host",
+      "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
+      "views": 163,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "FAIL",
+      "score": 1,
+      "summary": "I came to install the Palette Agent on a host, but the page I got is a truncated fragment. It starts mid-way through an SELinux policy file, skips the actual cgroup v2 enablement steps (there's an \"...\" right after the tmpfs check), and cuts off mid-command in the firewall rules (`--zone=\"$`). It never shows an agent install command, required inputs, or a validation step.",
+      "gaps": [
+        "The prerequisites and their order are missing. There's no OS/version matrix, no context for the SELinux rsync policy (the `.te` filename and module header are cut off), no actual steps to enable cgroup v2 after detecting `tmpfs`, and `$ZONE` is never defined.",
+        "The install itself is absent. The page never names the agent artifact or command, the required credentials or registration token, how it connects to Palette, or any check to confirm the host registered. The firewall port list also stops mid-line at the Cilium IPsec rule and never reloads firewalld."
+      ]
+    },
+    {
+      "path": "/deployment-modes",
+      "url": "https://docs.spectrocloud.com/deployment-modes",
+      "views": 161,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "PARTIAL",
+      "score": 3,
+      "summary": "The comparison table and per-mode explanations let me pick a deployment mode for my cloud, data center, and edge onboarding, but nothing here lets me validate prerequisites or begin setup without jumping to other pages.",
+      "gaps": [
+        "The page gives no per-mode prerequisites checklist, such as network connectivity or ports the Palette agent needs to reach the management plane, supported OS/Kubernetes version matrices for agent mode, or hardware requirements for appliance mode. It names the dependency order (EdgeForge → provider images/installer ISO → agent install → Local UI or Palette) only at a high level.",
+        "The page states that controller mode needs \"all the necessary permissions and credentials\" but only links out to provider pages, and only gives AWS as an example. It also does not say what credentials or registration tokens appliance and agent modes need to pair with Palette, so I can't scope least-privilege IAM/RBAC up front."
+      ]
+    },
+    {
+      "path": "/downloads",
+      "url": "https://docs.spectrocloud.com/downloads",
+      "views": 159,
+      "persona": "Platform Engineer",
+      "model": "claude-opus-5-5",
+      "verdict": "FAIL",
+      "score": 2,
+      "summary": "This page only routes to six download categories (CLI Tools, Self-Hosted Palette, Palette VerteX, Agent Mode, CAPI Image Builder, Offline Documentation), so I can't download or validate anything for an airgapped Day-0 setup from it.",
+      "gaps": [
+        "No prerequisites, version matrix, or compatibility info is shown, so I can't tell which CLI, pack, or OVA version matches my target Palette or VerteX release before I click through.",
+        "No direct artifacts, copy-pasteable download commands, checksums, or access requirements (credentials, network egress, permissions) are stated, which matters most for airgapped installs."
+      ]
+    }
+  ]
+}

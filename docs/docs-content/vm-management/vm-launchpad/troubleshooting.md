@@ -352,19 +352,21 @@ This override takes effect immediately, but it does not persist across reboots. 
 6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
    that the **Phase** of the storage cluster is `Running`.
 
-## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
+<!-- vale Vale.Terms = NO -->
 
-On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
-PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
-Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible, even though the
-Keycloak and PostgreSQL pods report a `Ready` status.
+## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on FIPS Appliances {#scenario---keycloak-vmo-and-headlamp-consoles-become-inaccessible-on-piraeus-storage}
+
+<!-- vale Vale.Terms = YES -->
+
+On FIPS VM Launchpad appliances, which use Piraeus storage, network disruptions can cause the DRBD replicas that back
+the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops responding.
+The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak and
+PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
-suspends database I/O. Use the following steps to restore the connection manually.
-
-VM Launchpad ships two Piraeus storage variants, and some values in this scenario differ between them. Select your
-variant in the tabs throughout the procedure. The FIPS profile stores PostgreSQL data in a `pgdata-postgres-0` volume,
-while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` volume.
+suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
+the Keycloak database on node-local storage instead of DRBD replicas. Use the following steps to restore the connection
+manually.
 
 ### Prerequisites
 
@@ -386,35 +388,17 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    NS=keycloak
    ```
 
-2. List the persistent volume claims in the namespace.
+2. List the persistent volume claims in the namespace, and confirm that the list includes the `pgdata-postgres-0` claim.
 
    ```bash
    kubectl --namespace "$NS" get pvc
    ```
 
-3. Assign the PostgreSQL data PVC to a variable, based on your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Assign the PostgreSQL data PVC, `pgdata-postgres-0`, to a variable.
 
    ```bash
    PVC=pgdata-postgres-0
    ```
-
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   Replace `<postgres-data-pvc>` with the `keycloak-db-*` claim name from the previous step.
-
-   ```bash
-   PVC=<postgres-data-pvc>
-   ```
-
-   </TabItem>
-
-   </Tabs>
 
 4. Resolve the claim to its persistent volume.
 
@@ -507,17 +491,13 @@ check only confirms that the database accepts connections, so run an actual quer
      linstor resource-connection list "$RESOURCE"
    ```
 
-2. List the PostgreSQL pods.
+2. List the pods in the namespace, and confirm that the list includes the `postgres-0` pod.
 
    ```bash
    kubectl --namespace "$NS" get pods
    ```
 
-3. Set the database pod and credential values for your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Set the database pod and credential values.
 
    ```bash
    DB_POD=postgres-0
@@ -525,24 +505,8 @@ check only confirms that the database accepts connections, so run an actual quer
    DB_SECRET_KEY=POSTGRES_PASSWORD
    ```
 
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   ```bash
-   DB_POD=$(kubectl --namespace "$NS" get pod --selector cnpg.io/instanceRole=primary \
-     --output jsonpath='{.items[0].metadata.name}')
-   DB_SECRET=keycloak-db-app
-   DB_SECRET_KEY=password
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
 4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
-   shell history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the
-   command is the same for both variants.
+   shell history and the command arguments.
 
    ```bash
    kubectl --namespace "$NS" get secret "$DB_SECRET" \
@@ -680,8 +644,8 @@ block-based storage such as LINSTOR/DRBD.
    in its place. Your Spectro Cloud support representative can guide you through this step for your environment.
 
 3. Upload the updated content bundle to the cluster. Use either the
-   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-content-bundle-with-local-ui)
+   or the [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
 4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default `Block`-mode
    storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the workaround. Refer

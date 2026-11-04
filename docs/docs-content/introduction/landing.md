@@ -14,9 +14,11 @@ slug: /
 
 <!-- vale off -->
 
+<!-- Keep the section headings as HTML h2 elements so that Docusaurus does not add heading anchor links to them. Do not hide the anchor links with CSS instead, because the site keeps them visible for accessibility. -->
+
 <div className="landing-section landing-section--ai">
 
-## Deploy AI and Machine Learning Workloads
+<h2 id="deploy-ai-and-machine-learning-workloads">Deploy AI and Machine Learning Workloads</h2>
 
 <SimpleCardGrid
   compact
@@ -42,7 +44,7 @@ slug: /
 
 <div className="landing-section">
 
-## Deploy Kubernetes Clusters
+<h2 id="deploy-kubernetes-clusters">Deploy Kubernetes Clusters</h2>
 
 <SimpleCardGrid
   compact
@@ -85,7 +87,7 @@ slug: /
 
 <div className="landing-section landing-section--vm">
 
-## Deploy Virtual Machines
+<h2 id="deploy-virtual-machines">Deploy Virtual Machines</h2>
 
 <SimpleCardGrid
   compact
