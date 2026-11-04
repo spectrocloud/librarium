@@ -10,11 +10,66 @@ tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
 the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
 Launchpad.
 
 ## Component Stack
+
+The following diagram shows the components of the appliance, the path that a request takes through them, and where a
+request can leave the appliance. The numbers in the diagram match the list that follows it.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Architecture diagram of the appliance, with the request path down the middle from coding agents to local models on GPUs, the administration side on the left, and external endpoints at the top right. The list after the diagram describes each numbered component."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+
+1. Coding agents and applications send their requests to the Platform IP, the single HTTPS address that serves the API.
+   Administrators reach the console through the same address. For how the address reaches the node, refer to
+   [Network Topology](#network-topology).
+
+2. The gateway authenticates the calling client from its API token, enforces the client's quotas, and routes the request
+   to a model. When an administrator turns on the response cache, the gateway replays the stored answer to an identical
+   request from the same client, without sending it to a model. Refer to [Request Routing](#request-routing) and
+   [The Response Cache](./usage-pricing.md#the-response-cache).
+
+3. When a request sends `auto` as the model, sends no model, or names a Tier map alias set to **Use Semantic Router
+   rules**, the gateway asks the semantic router to pick a model. The semantic router runs on the same GPUs as the local
+   models. For details, refer to
+   [What Reaches the Semantic Router](./routing-behavior.md#what-reaches-the-semantic-router).
+
+4. The chosen local model answers the request on the appliance's GPUs. For how the appliance places each model on the
+   cluster's nodes, refer to [Model Placement](./model-placement.md).
+
+5. Egress is off by default, so a request leaves the appliance for an external inference endpoint only when an operator
+   allows it. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an OpenAI-compatible host that a
+   platform administrator registered. Refer to [External Inference Endpoints](#external-inference-endpoints) and
+   [Data Residency and Isolation](#data-residency-and-isolation).
+
+6. Administrators work in the appliance console, where they deploy models, manage clients and quotas, set routing, and
+   view usage. Refer to
+   [Local UI and the Appliance Console](../paletteai-inference-launchpad.md#local-ui-and-the-appliance-console).
+
+7. The appliance's control plane, which is separate from the Kubernetes control plane, applies the settings that
+   administrators save in the console. It configures the gateway and deploys each model to the GPUs. It also signs
+   administrators in through the appliance's identity provider, which holds the users and groups that the console lists.
+   Refer to [Model Provisioning Lifecycle](#model-provisioning-lifecycle) and
+   [Users, Groups, and Access](./clients-and-quotas.md#users-groups-and-access).
+
+8. The Grafana dashboards show infrastructure metrics over time, such as GPU utilization and engine throughput. Token
+   and cost accounting stays on the console's **Usage** page. Refer to
+   [Open the Metrics Dashboards](../how-to-guides/view-token-usage.md#open-the-metrics-dashboards).
+
+Local UI does not appear in the diagram because the node's operating system serves it on the Host IP, not on the
+Platform IP, as [Network Topology](#network-topology) describes.
 
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the

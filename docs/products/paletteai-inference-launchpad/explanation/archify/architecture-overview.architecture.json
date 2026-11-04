@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "PaletteAI Inference Launchpad Architecture",
+    "locale": "en",
+    "output": "architecture-overview.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "external": {
+          "label": "Outside the appliance"
+        },
+        "frontend": {
+          "label": "Entry and request path"
+        },
+        "backend": {
+          "label": "Local inference on GPUs"
+        },
+        "cloud": {
+          "label": "External endpoints"
+        },
+        "database": {
+          "label": "Control plane"
+        },
+        "security": {
+          "label": "Identity"
+        },
+        "messagebus": {
+          "label": "Monitoring"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "admin",
+      "type": "external",
+      "label": "Administrators",
+      "sublabel": "web browser",
+      "pos": [60, 40],
+      "size": [170, 64]
+    },
+    {
+      "id": "clients",
+      "type": "external",
+      "label": "Agents and apps",
+      "sublabel": "OpenAI or Anthropic API",
+      "pos": [300, 40],
+      "size": [170, 64]
+    },
+    {
+      "id": "external",
+      "type": "cloud",
+      "label": "5. External endpoints",
+      "sublabel": "built-in or registered",
+      "pos": [540, 40],
+      "size": [170, 64]
+    },
+    {
+      "id": "console",
+      "type": "frontend",
+      "label": "6. Console",
+      "sublabel": "admin web UI",
+      "pos": [60, 180],
+      "size": [170, 64]
+    },
+    {
+      "id": "platform",
+      "type": "frontend",
+      "label": "1. Platform IP",
+      "sublabel": "one HTTPS address",
+      "pos": [300, 180],
+      "size": [170, 64]
+    },
+    {
+      "id": "control",
+      "type": "database",
+      "label": "7. Control plane",
+      "sublabel": "applies your settings",
+      "pos": [60, 320],
+      "size": [170, 64]
+    },
+    {
+      "id": "gateway",
+      "type": "frontend",
+      "label": "2. Gateway",
+      "sublabel": "tokens, quotas, cache",
+      "pos": [300, 320],
+      "size": [170, 64]
+    },
+    {
+      "id": "idp",
+      "type": "security",
+      "label": "Identity provider",
+      "sublabel": "users and groups",
+      "pos": [60, 460],
+      "size": [170, 64]
+    },
+    {
+      "id": "engines",
+      "type": "backend",
+      "label": "4. Local models",
+      "sublabel": "inference engines",
+      "pos": [300, 460],
+      "size": [170, 64]
+    },
+    {
+      "id": "semantic",
+      "type": "backend",
+      "label": "3. Semantic router",
+      "sublabel": "picks a model",
+      "pos": [540, 460],
+      "size": [170, 64]
+    },
+    {
+      "id": "dashboards",
+      "type": "messagebus",
+      "label": "8. Grafana dashboards",
+      "sublabel": "GPU and engine metrics",
+      "pos": [300, 600],
+      "size": [170, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Appliance",
+      "pad": 40,
+      "wraps": ["console", "platform", "control", "gateway", "idp", "engines", "semantic", "dashboards"]
+    },
+    {
+      "kind": "region",
+      "label": "GPUs",
+      "pad": 12,
+      "wraps": ["engines", "semantic"]
+    }
+  ],
+  "connections": [
+    {
+      "from": "clients",
+      "to": "platform",
+      "variant": "emphasis"
+    },
+    {
+      "from": "admin",
+      "to": "platform",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "platform",
+      "to": "gateway",
+      "variant": "emphasis"
+    },
+    {
+      "from": "platform",
+      "to": "console"
+    },
+    {
+      "from": "gateway",
+      "to": "engines",
+      "variant": "emphasis"
+    },
+    {
+      "from": "gateway",
+      "to": "semantic",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "gateway",
+      "to": "external",
+      "label": "off by default",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "from": "console",
+      "to": "control"
+    },
+    {
+      "from": "control",
+      "to": "idp",
+      "label": "sign-in",
+      "variant": "security"
+    },
+    {
+      "from": "control",
+      "to": "gateway",
+      "variant": "dashed"
+    },
+    {
+      "from": "control",
+      "to": "engines",
+      "label": "deploys",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "from": "engines",
+      "to": "dashboards",
+      "variant": "dashed"
+    }
+  ]
+}
