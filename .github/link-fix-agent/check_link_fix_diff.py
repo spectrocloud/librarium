@@ -59,12 +59,16 @@ def check_with_linkinator(repo, linkinator, new_urls):
             f.writelines(f"- [link]({u})\n" for u in new_urls)
         # The CI config sets verbosity "error", which lists only failures. Ask
         # for every link so a crashed run can't pass as "nothing broken".
-        out = subprocess.run(
+        proc = subprocess.run(
             [*linkinator.split(), "new-links.md", "--config", os.path.join(repo, "linkinator/linkinator-ci.config.json"),
              "--verbosity", "info"],
             cwd=tmp, capture_output=True, text=True,
-        ).stdout
-    return {defrag(link["url"]): (link["state"], link.get("status")) for link in json.loads(out)["links"]}
+        )
+    try:
+        links = json.loads(proc.stdout)["links"]
+    except (json.JSONDecodeError, KeyError):
+        sys.exit(f"linkinator produced no usable report (exit {proc.returncode}):\n{proc.stderr[-2000:]}")
+    return {defrag(link["url"]): (link["state"], link.get("status")) for link in links}
 
 
 def verdict(state, status):
@@ -78,7 +82,8 @@ def verdict(state, status):
 
 
 def main():
-    repo, report_path = sys.argv[1], sys.argv[2]
+    # Absolute, because linkinator runs from a temp directory.
+    repo, report_path = os.path.abspath(sys.argv[1]), sys.argv[2]
     network = "--no-network" not in sys.argv
     linkinator = os.environ.get("LINKINATOR", "npx linkinator")
     reported = {e["url"] for e in json.load(open(report_path))}
