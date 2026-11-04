@@ -282,11 +282,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9251 -->
 
-- Fixed an issue that caused the Palette agent to reset Edge hosts removed from a node pool without draining them, so
-  Kubernetes did not enforce PodDisruptionBudgets, including those that Longhorn uses to protect the last replica of a
-  volume. The Palette agent now drains each removed host before it resets the host. If a PodDisruptionBudget blocks the
-  drain, the host stays cordoned in the cluster until the drain can complete, for example after you move the blocking
-  workload to another node.
+- Fixed an issue in which the Palette agent did not drain an Edge host removed from a node pool before it reset the
+  host, so Kubernetes did not enforce PodDisruptionBudgets. The Palette agent now drains each removed host before it
+  resets the host. If a PodDisruptionBudget blocks the drain, the host stays cordoned in the cluster until the drain can
+  complete, for example, after you move the blocking workload to another node.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9587 -->
 
@@ -299,17 +298,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9779 -->
 
-- Fixed an issue that caused a control plane node to repeatedly fail to join an Edge cluster that uses Palette eXtended
-  Kubernetes - Edge (PXK-E) after a failed join attempt. The node kept the cluster's virtual IP (VIP) address from the
+- Fixed an issue that prevented a control plane node from joining an Edge cluster that uses Palette eXtended
+  Kubernetes - Edge (PXK-E) after a join attempt failed. The node kept the cluster's virtual IP (VIP) address from the
   failed attempt, so each retry failed with `connect: connection refused` errors for the VIP. This was most likely to
   occur when two control plane nodes joined the cluster at the same time.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9782 -->
 
 - Fixed an issue that caused Local UI to display only the message `Client sent an HTTP request to an HTTPS server.` when
-  you opened it over HTTP, for example at `http://HOST_IP:5080`. Local UI now redirects HTTP requests on its port to
-  HTTPS. Refer to [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for
-  more information.
+  you opened it with an `http://` address. Local UI now redirects HTTP requests on its port to HTTPS. Refer to
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for more
+  information.
 
 #### Deprecations and Removals
 
