@@ -15,7 +15,7 @@ name: "Link Fix Agent (pilot)"
 #
 # SECURITY: the agent gets Read/Edit/Grep/Glob/Write/WebFetch/WebSearch only. No
 # Bash, no GitHub token (persist-credentials: false), and a per-run budget cap.
-# Fetched web pages are untrusted input; check_link_fix_diff.py, not the prompt,
+# Fetched web pages are untrusted input; check-link-fix-diff.mjs, not the prompt,
 # decides whether the edits are acceptable.
 
 on:
@@ -37,7 +37,6 @@ concurrency:
 env:
   NODE_VERSION: "24"
   CLAUDE_CODE_VERSION: "2.1.311"
-  LINKINATOR_VERSION: "8.0.3" # Keep identical to package-lock.json.
   MODEL: "claude-opus-5-5"
   MAX_BUDGET_USD: "3"
   AGENT_DIR: .github/link-fix-agent
@@ -66,6 +65,12 @@ jobs:
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      # linkinator comes from package-lock.json, the same version the weekly
+      # report uses. The diff check imports it as a library.
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Prepare workspace
         env:
@@ -99,7 +104,7 @@ jobs:
             | sed 's|^\./||' \
             | sed '/security-bulletins/d;/cve-reports/d;/oss-licenses/d;/deprecated/d' > "$WORK/paths.txt"
           # shellcheck disable=SC2046 # one argument per path, as in the Makefile
-          npx --yes "linkinator@${LINKINATOR_VERSION}" $(cat "$WORK/paths.txt") \
+          npx linkinator $(cat "$WORK/paths.txt") \
             --config ./linkinator/linkinator-ci.config.json > "$WORK/raw.json" || true
           jq -e 'has("links")' "$WORK/raw.json" > /dev/null || { echo "linkinator produced no usable report"; exit 1; }
           jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' "$WORK/raw.json" > "$WORK/link_report.json"
@@ -155,8 +160,7 @@ jobs:
         if: ${{ steps.report.outputs.count != '0' }}
         run: |
           set +e
-          LINKINATOR="npx --yes linkinator@${LINKINATOR_VERSION}" \
-            python3 -I "$AGENT_DIR/check_link_fix_diff.py" . "$WORK/link_report.json" | tee "$WORK/out/diff-check.txt"
+          node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check.txt"
           echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
           git diff > "$WORK/out/fix.patch"
           git diff --stat
