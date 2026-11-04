@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-cloudformation-stack-permissions
 ---
-**Last Update**: October 27, 2026
+**Last Update**: November 3, 2026
 
 ```json
 {
@@ -19,7 +19,8 @@ partial_name: aws-cloudformation-stack-permissions
                 "cloudformation:DescribeStackResources",
                 "cloudformation:ListStackResources",
                 "cloudformation:GetTemplate",
-                "cloudformation:ContinueUpdateRollback"
+                "cloudformation:ContinueUpdateRollback",
+                "cloudformation:DeleteStack"
             ],
             "Resource": "*"
         },
@@ -39,7 +40,16 @@ partial_name: aws-cloudformation-stack-permissions
                 "iam:ListPolicyVersions",
                 "iam:GetRole",
                 "iam:GetInstanceProfile",
-                "iam:DetachRolePolicy"
+                "iam:DetachRolePolicy",
+                "iam:CreatePolicy",
+                "iam:TagPolicy",
+                "iam:CreateInstanceProfile",
+                "iam:AddRoleToInstanceProfile",
+                "iam:TagInstanceProfile",
+                "iam:DeletePolicy",
+                "iam:DeleteRole",
+                "iam:DeleteInstanceProfile",
+                "iam:RemoveRoleFromInstanceProfile"
             ],
             "Resource": "*"
         }
