@@ -282,26 +282,26 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9251 -->
 
-- Fixed an issue in which the Palette agent did not drain an Edge host removed from a node pool before it reset the
-  host, so Kubernetes did not enforce PodDisruptionBudgets. The Palette agent now drains each removed host before it
-  resets the host. If a PodDisruptionBudget blocks the drain, the host stays cordoned in the cluster until the drain can
+- Fixed an issue that caused the Palette agent to reset an Edge host removed from a node pool without draining it first,
+  so Kubernetes did not enforce PodDisruptionBudgets. The Palette agent now drains each removed host before it resets
+  the host. If a PodDisruptionBudget blocks the drain, the host stays cordoned in the cluster until the drain can
   complete, for example, after you move the blocking workload to another node.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9587 -->
 
 - Fixed an issue that caused the
   [Palette Edge Interactive Installer](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) to offer to continue
-  an installation after its installation media, such as a virtual CD or USB drive, was disconnected. The disk wipe
-  failed with `fork/exec /usr/sbin/wipefs: input/output error`, and the installation later failed with a `mount failed`
-  error. The installer now stops the installation and prompts you to reconnect the installation media and reboot the
-  host.
+  after the installation media, such as a virtual CD or USB drive, was disconnected. The disk wipe failed with
+  `fork/exec /usr/sbin/wipefs: input/output error`, and the installation later failed with a `mount failed` error. The
+  installer now stops the installation and prompts you to reconnect the installation media and reboot the host.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9779 -->
 
 - Fixed an issue that prevented a control plane node from joining an Edge cluster that uses Palette eXtended
   Kubernetes - Edge (PXK-E) after a join attempt failed. The node kept the cluster's virtual IP (VIP) address from the
   failed attempt, so each retry failed with `connect: connection refused` errors for the VIP. This was most likely to
-  occur when two control plane nodes joined the cluster at the same time.
+  occur when two control plane nodes joined the cluster at the same time. A control plane node no longer keeps the VIP
+  after a failed join attempt.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9782 -->
 
