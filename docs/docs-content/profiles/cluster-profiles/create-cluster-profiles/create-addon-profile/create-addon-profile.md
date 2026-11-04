@@ -26,8 +26,7 @@ The next sections provide guidance in creating each type of these add-on profile
 You can specify the install order of each add-on pack layer in a cluster profile. The install order value accepts
 negative and positive numbers and 0. The default install order value is 0. The install order determines the order in
 which Palette applies the manifests in the profile. Palette installs the packs with the lowest install order value
-first. Before it installs the packs with the next install order value, Palette waits until the readiness checks of the
-current packs pass.
+first. Before it installs the packs with the next install order value, Palette waits until the current packs are ready.
 
 To set the install order for an add-on pack layer, add the `spectrocloud.com/install-priority` annotation to the pack
 layer YAML. Replace the number with the desired install order value.
@@ -37,9 +36,8 @@ pack:
   spectrocloud.com/install-priority: "30"
 ```
 
-If a readiness check for an add-on pack layer fails, Palette checks the status again every 30 seconds until the check
-passes. After the readiness check passes, Palette installs the add-on packs with the next install order value. To make
-Palette wait until a custom resource that a pack deploys is ready, refer to
+Until an add-on pack is ready, Palette checks it again every 30 seconds. To make Palette also wait until a custom
+resource that a pack deploys is ready, refer to
 [Pack Readiness Checks](../../../../registries-and-packs/pack-constraints.md#pack-readiness-checks).
 
 Palette deploys all packs that have the same install order value together. A cluster profile with more than one install
@@ -48,9 +46,9 @@ add-on packs.
 
 ## Deletion Order
 
-When you delete a cluster, Palette removes the add-on pack layers in the reverse order of their installation. Packs with
-the highest installation priority are deleted first, while those with the lowest priority are deleted last. This
-approach ensures that dependent resources are cleaned up in the correct order, avoiding issues during deletion.
+When you delete a cluster, Palette removes the add-on pack layers in the reverse order of their installation. Palette
+deletes the packs with the highest install order value first and the packs with the lowest install order value last.
+This approach ensures that dependent resources are cleaned up in the correct order, avoiding issues during deletion.
 
 ## Resources
 

@@ -627,17 +627,17 @@ value that the field must have. For details about each attribute, refer to
 
 ### Readiness Check Attributes
 
-| **Attribute**   | **Description**                                                                                                                                                                                                                                                                   |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `v1beta1`       | The list of resources to check.                                                                                                                                                                                                                                                   |
-| `name`          | The name of the resource. You can use [macros](#pack-macros).                                                                                                                                                                                                                     |
-| `namespace`     | (Optional) The namespace of the resource. Set it for every resource that has a namespace. If you omit it, Palette looks in `cluster-<cluster-uid>`, the namespace of the `Pack` resource, not in the namespace that the pack installs into. Omit it for cluster-scoped resources. |
-| `group`         | The API group of the resource, such as `ceph.rook.io`.                                                                                                                                                                                                                            |
-| `version`       | The API version of the resource, such as `v1`.                                                                                                                                                                                                                                    |
-| `kind`          | The kind of the resource, such as `CephCluster`.                                                                                                                                                                                                                                  |
-| `keysToCheck`   | The list of fields to check. Each item has a `keyToCheck` and an `expectedValue`. Each entry must have at least one field to check.                                                                                                                                               |
-| `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`.                                                                                                                                                    |
-| `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                                                                                                                                                                           |
+| **Attribute**   | **Description**                                                                                                                                                                                                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v1beta1`       | The list of resources to check. Each entry identifies one resource and the fields to check on it.                                                                                                                                                                                                     |
+| `name`          | The name of the resource. You can use [macros](#pack-macros).                                                                                                                                                                                                                                         |
+| `namespace`     | (Optional) The namespace of the resource. Set it for every namespaced resource, and omit it for cluster-scoped resources. If you omit it for a namespaced resource, Palette looks in `cluster-<cluster-uid>`, the namespace of the `Pack` resource, not in the namespace that the pack installs into. |
+| `group`         | The API group of the resource, such as `ceph.rook.io`.                                                                                                                                                                                                                                                |
+| `version`       | The API version of the resource, such as `v1`.                                                                                                                                                                                                                                                        |
+| `kind`          | The kind of the resource, such as `CephCluster`.                                                                                                                                                                                                                                                      |
+| `keysToCheck`   | The list of fields to check. Each item has a `keyToCheck` and an `expectedValue`. Each entry must have at least one field to check.                                                                                                                                                                   |
+| `keyToCheck`    | The path to the field in the resource, such as `status.phase` or `status.conditions[0].status`. Do not include a leading `$.`.                                                                                                                                                                        |
+| `expectedValue` | The value that the field must have for the check to pass. Refer to [Expected Values](#expected-values).                                                                                                                                                                                               |
 
 The `readinessCheck` section also accepts a `timeout` attribute, but Palette ignores it. Palette keeps checking the pack
 until it is ready.
@@ -659,18 +659,22 @@ packs.
 4. Until the pack is ready, Palette checks it again every 30 seconds.
 
 Palette shows the installation status of each pack in a cluster. For more information, refer to
-[Pack Monitoring](../clusters/cluster-management/pack-monitoring.md). In the cluster, each pack has a matching `Pack`
-resource in the `cluster-<cluster-uid>` namespace. Palette writes the results of the checks to the `status.conditions`
-and `status.servicesStatus` fields of that resource. Palette records an event only when a check returns an error, such
-as a missing resource or field. It records a `Warning` event on the `Pack` resource, with the reason
-`ServiceReconcileFailed` or `ReconcileError`. The event also appears on the **Events** tab of the cluster in Palette.
+[Pack Monitoring](../clusters/cluster-management/pack-monitoring.md).
 
-To view the `Pack` resource, use the following command. Replace `<pack-name>` with the name of the pack and
-`<cluster-uid>` with the unique identifier of your cluster.
+In the cluster, each pack has a matching `Pack` resource in the `cluster-<cluster-uid>` namespace. Palette writes the
+results of the checks to the `status.conditions` and `status.servicesStatus` fields of that resource. Palette records a
+`Warning` event on the `Pack` resource only when a check returns an error, such as a missing resource or field. The
+event reason is `ServiceReconcileFailed` or `ReconcileError`, and the event also appears on the **Events** tab of the
+cluster in Palette.
+
+To view the `Pack` resource, use the following command with the
+[kubeconfig](../clusters/cluster-management/kubeconfig.md) file of the cluster.
 
 ```shell
 kubectl get pack <pack-name> --namespace cluster-<cluster-uid> --output yaml
 ```
+
+Replace `<pack-name>` with the name of the pack and `<cluster-uid>` with the unique identifier of your cluster.
 
 ### Expected Values
 
