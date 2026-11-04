@@ -1,52 +1,52 @@
 [
   {
+    "path": "/palette",
+    "url": "https://docs.spectrocloud.com/palette",
+    "views": 462
+  },
+  {
     "path": "/paletteai-inference-launchpad",
     "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad",
-    "views": 477
+    "views": 336
   },
   {
     "path": "/tutorials/getting-started",
     "url": "https://docs.spectrocloud.com/tutorials/getting-started",
-    "views": 241
-  },
-  {
-    "path": "/downloads/cli-tools",
-    "url": "https://docs.spectrocloud.com/downloads/cli-tools",
-    "views": 205
-  },
-  {
-    "path": "/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
-    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides/install-the-appliance",
-    "views": 198
-  },
-  {
-    "path": "/vertex",
-    "url": "https://docs.spectrocloud.com/vertex",
-    "views": 187
+    "views": 223
   },
   {
     "path": "/architecture/architecture-overview",
     "url": "https://docs.spectrocloud.com/architecture/architecture-overview",
-    "views": 184
-  },
-  {
-    "path": "/paletteai-inference-launchpad/how-to-guides",
-    "url": "https://docs.spectrocloud.com/paletteai-inference-launchpad/how-to-guides",
-    "views": 183
-  },
-  {
-    "path": "/clusters",
-    "url": "https://docs.spectrocloud.com/clusters",
-    "views": 172
+    "views": 217
   },
   {
     "path": "/clusters/public-cloud/aws/required-iam-policies",
     "url": "https://docs.spectrocloud.com/clusters/public-cloud/aws/required-iam-policies",
-    "views": 170
+    "views": 201
+  },
+  {
+    "path": "/clusters",
+    "url": "https://docs.spectrocloud.com/clusters",
+    "views": 201
+  },
+  {
+    "path": "/api/category/palette-api-v1",
+    "url": "https://docs.spectrocloud.com/api/category/palette-api-v1",
+    "views": 166
   },
   {
     "path": "/deployment-modes/agent-mode/install-agent-host",
     "url": "https://docs.spectrocloud.com/deployment-modes/agent-mode/install-agent-host",
+    "views": 163
+  },
+  {
+    "path": "/deployment-modes",
+    "url": "https://docs.spectrocloud.com/deployment-modes",
+    "views": 161
+  },
+  {
+    "path": "/downloads",
+    "url": "https://docs.spectrocloud.com/downloads",
     "views": 159
   }
 ]

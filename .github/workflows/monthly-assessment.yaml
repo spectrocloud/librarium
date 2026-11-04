@@ -45,7 +45,7 @@ env:
   # Pinned Impersonaid commit (private repo, no tags). Kept current by the
   # "Bump Impersonaid SHA" workflow (bump-impersonaid-sha.yaml). Keep this value
   # identical to IMPERSONAID_REF in persona-check.yaml.
-  IMPERSONAID_REF: "78062e8e9b55dad139128bc62a24083257411337" # spectrocloud/impersonaid main, last bumped 2026-10-26
+  IMPERSONAID_REF: "5266e349e38aadf235159d34dccc6be282322a9b" # spectrocloud/impersonaid main, last bumped 2026-11-02
   MA_DIR: .github/monthly-assessment
   PR_BRANCH: chore/monthly-assessment
 
@@ -193,7 +193,7 @@ jobs:
 
       - name: Report Slack Notification
         if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -205,7 +205,7 @@ jobs:
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
