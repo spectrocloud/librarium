@@ -1,0 +1,184 @@
+name: "Link Fix Agent (pilot)"
+
+# Pilot: run the fix-broken-links skill headless on a GitHub runner instead of a
+# laptop. It reuses the persona-check conventions (repo-secret Claude key, pinned
+# actions, trusted scripts only) and proves the pieces later agent jobs share:
+# the key, a no-shell agent run, a deterministic diff check, and the artifacts.
+#
+# DRY RUN: the agent's edits are uploaded as a patch and summarized. Nothing is
+# pushed and no PR is opened, so this job needs no Vault token or write scope.
+#
+# Two cases run side by side:
+#   live          today's docs, scanned the same way as merged-links-checks.yaml
+#   replay-nov02  the docs as they were before 516ac87b5 (Linus's Nov 2 fix), so
+#                 the agent's patch can be compared with a human answer key
+#
+# SECURITY: the agent gets Read/Edit/Grep/Glob/Write/WebFetch/WebSearch only. No
+# Bash, no GitHub token (persist-credentials: false), and a per-run budget cap.
+# Fetched web pages are untrusted input; check_link_fix_diff.py, not the prompt,
+# decides whether the edits are acceptable.
+
+on:
+  push:
+    branches:
+      - link-fix-agent-pilot
+    paths:
+      - ".github/workflows/link-fix-agent.yaml"
+      - ".github/link-fix-agent/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-fix-agent-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
+  CLAUDE_CODE_VERSION: "2.1.311"
+  LINKINATOR_VERSION: "8.0.3" # Keep identical to package-lock.json.
+  MODEL: "claude-opus-5-5"
+  MAX_BUDGET_USD: "3"
+  AGENT_DIR: .github/link-fix-agent
+
+jobs:
+  fix-links:
+    name: Fix broken links (${{ matrix.case }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - case: live
+            docs_ref: ""
+          - case: replay-nov02
+            docs_ref: 516ac87b5e6c46634519291b6237175e6987b15a
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Prepare workspace
+        env:
+          DOCS_REF: ${{ matrix.docs_ref }}
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/link-fix"
+          mkdir -p "$WORK/out"
+          echo "WORK=$WORK" >> "$GITHUB_ENV"
+
+          # Replay: swap in the docs as they were before the human fix, and
+          # commit them locally so the diff check compares against that tree.
+          if [[ -n "$DOCS_REF" ]]; then
+            git fetch --quiet --depth=2 origin "$DOCS_REF"
+            git rm -rq docs _partials linkinator
+            git checkout "${DOCS_REF}^" -- docs _partials linkinator
+            git -c user.name=link-fix-agent -c user.email=link-fix-agent@local \
+              commit -qm "replay baseline ${DOCS_REF}^"
+          fi
+
+          # .claude/ is gitignored, so the skill never shows up in the diff.
+          mkdir -p .claude/skills
+          cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
+
+      - name: Build the broken-link report
+        id: report
+        run: |
+          set -euo pipefail
+          # Same file list, config, and filter as `make verify-url-links-ci`.
+          find ./docs ./_partials \( -name "*.md" -o -name "*.mdx" \) \
+            | sed 's|^\./||' \
+            | sed '/security-bulletins/d;/cve-reports/d;/oss-licenses/d;/deprecated/d' > "$WORK/paths.txt"
+          # shellcheck disable=SC2046 # one argument per path, as in the Makefile
+          npx --yes "linkinator@${LINKINATOR_VERSION}" $(cat "$WORK/paths.txt") \
+            --config ./linkinator/linkinator-ci.config.json > "$WORK/raw.json" || true
+          jq -e 'has("links")' "$WORK/raw.json" > /dev/null || { echo "linkinator produced no usable report"; exit 1; }
+          jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' "$WORK/raw.json" > "$WORK/link_report.json"
+          rm "$WORK/raw.json"
+          count=$(jq length "$WORK/link_report.json")
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Broken external links: $count"
+          jq -r '.[] | "\(.status) \(.url) <- \(.parent)"' "$WORK/link_report.json"
+
+      - name: Install Claude Code
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+
+      - name: Run the agent
+        if: ${{ steps.report.outputs.count != '0' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          start=$(date +%s)
+          claude --bare -p "/fix-broken-links $WORK/link_report.json $WORK/out/fix-report.md" \
+            --model "$MODEL" \
+            --allowedTools Read Grep Glob Edit Write WebFetch WebSearch \
+            --disallowedTools Bash \
+            --add-dir "$WORK" \
+            --max-budget-usd "$MAX_BUDGET_USD" \
+            --output-format json \
+            --no-session-persistence \
+            > "$WORK/out/run.json"
+          echo "Agent finished in $(( $(date +%s) - start ))s"
+          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/run.json"
+
+      - name: Check the agent's diff
+        id: check
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: |
+          set +e
+          LINKINATOR="npx --yes linkinator@${LINKINATOR_VERSION}" \
+            python3 -I "$AGENT_DIR/check_link_fix_diff.py" . "$WORK/link_report.json" | tee "$WORK/out/diff-check.txt"
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          git diff > "$WORK/out/fix.patch"
+          git diff --stat
+
+      - name: Write the job summary
+        if: ${{ always() && steps.report.outputs.count != '' }}
+        env:
+          CASE: ${{ matrix.case }}
+          COUNT: ${{ steps.report.outputs.count }}
+          CHECK_EXIT: ${{ steps.check.outputs.exit }}
+        run: |
+          {
+            echo "## Link fix agent: ${CASE}"
+            echo
+            echo "Broken external links reported: **${COUNT}**"
+            if [[ -f "$WORK/out/run.json" ]]; then
+              jq -r '"Agent: \(.num_turns) turns, $\(.total_cost_usd * 100 | round / 100), \(.duration_ms / 1000 | round)s"' "$WORK/out/run.json"
+            fi
+            echo
+            echo "### Diff check (exit ${CHECK_EXIT:-not run})"
+            echo
+            echo '```text'
+            cat "$WORK/out/diff-check.txt" 2>/dev/null || echo "not run"
+            echo '```'
+            echo
+            cat "$WORK/out/fix-report.md" 2>/dev/null || echo "No fix report."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: link-fix-${{ matrix.case }}
+          path: |
+            ${{ env.WORK }}/link_report.json
+            ${{ env.WORK }}/out/
+          if-no-files-found: warn
+
+      - name: Fail if the diff check failed
+        if: ${{ steps.check.outputs.exit != '' && steps.check.outputs.exit != '0' }}
+        run: |
+          echo "::error::The diff check rejected the agent's edits. See the job summary."
+          exit 1
