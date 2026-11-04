@@ -13,15 +13,19 @@ This page provides troubleshooting guidance for common scenarios you may encount
 
 ## Scenario - Image Pulls and Package Uploads Fail After a Registry Password Change
 
-After the registry password of a VM Launchpad appliance changes, image pulls through the Zot registry fail, and package
-uploads and downloads in VM Launchpad fail with an error that starts with `Upload failed:`. The Zot pods might restart
-repeatedly and show as not ready, and VM Launchpad might also show a banner that starts with
-`Package storage is ephemeral`. The Zot and VM Launchpad logs show the S3 error `SignatureDoesNotMatch`. Local UI does
-not report the problem, because SeaweedFS stays ready.
+After the registry password of a VM Launchpad appliance changes, one or more of the following symptoms occur.
+
+- Image pulls through the Zot registry fail.
+- Package uploads and downloads in VM Launchpad fail with an error that starts with `Upload failed:`.
+- The Zot pods restart repeatedly and show as not ready.
+- VM Launchpad shows a banner that starts with `Package storage is ephemeral`.
+- The Zot and VM Launchpad logs show the S3 error `SignatureDoesNotMatch`.
+
+Local UI does not report the problem, because SeaweedFS stays ready.
 
 This occurs because Zot and VM Launchpad store their data in the SeaweedFS object store, and both use the registry
-password as their SeaweedFS secret key. You can change the registry password after installation, in the **Registry
-Password** field of the [Container Registry](./install.md#container-registry) settings or in the matching cluster
+password as their SeaweedFS secret key. You can change the registry password after installation in the **Registry
+Password** field of the [Container Registry](./install.md#container-registry) settings, or in the matching cluster
 profile variable in Palette. When it changes, Zot and VM Launchpad restart and use the new password. SeaweedFS reads the
 password only when it starts, so it keeps the old password and rejects both until it restarts. This applies to FIPS and
 non-FIPS appliances.
@@ -37,7 +41,7 @@ they continue after every SeaweedFS pod has restarted, use the following steps.
 
 ### Confirm the Cause {#confirm-the-cause-registry-password}
 
-1. Check the Zot logs for S3 errors.
+1. Check the Zot logs for the S3 errors `SignatureDoesNotMatch`, `InvalidAccessKeyId`, and `AccessDenied`.
 
    ```bash
    kubectl --namespace zot-system logs deployment/zot --since=1h | grep --extended-regexp 'SignatureDoesNotMatch|InvalidAccessKeyId|AccessDenied'
@@ -58,7 +62,8 @@ they continue after every SeaweedFS pod has restarted, use the following steps.
    ```
 
    Check the `AGE` column. If the SeaweedFS pods started before the registry password changed, they still use the old
-   password.
+   password. If they started after it, for example during a non-FIPS upgrade, and the errors continue, restart SeaweedFS
+   anyway.
 
 ### Restart SeaweedFS
 
@@ -75,23 +80,23 @@ they continue after every SeaweedFS pod has restarted, use the following steps.
    kubectl --namespace seaweedfs rollout status statefulset/seaweedfs
    ```
 
-3. On a FIPS appliance, check whether a `zot-legacy` pod exists. Skip this step and the next one on a non-FIPS
-   appliance.
+3. On a FIPS appliance, check whether a `zot-legacy` pod exists. On a non-FIPS appliance, skip to step 5.
 
    ```bash
    kubectl --namespace zot-system get pod zot-legacy
    ```
 
-   If the output is `Error from server (NotFound)`, skip the next step.
+   If the output starts with `Error from server (NotFound)`, skip to step 5.
 
-4. Delete the `zot-legacy` pod. It reads the password only when it starts, and Palette re-creates it.
+4. On a FIPS appliance, delete the `zot-legacy` pod. It reads the password only when it starts, and Palette recreates
+   it.
 
    ```bash
    kubectl --namespace zot-system delete pod zot-legacy
    ```
 
-5. (Optional) Restart Zot. Zot pods that failed while SeaweedFS restarted recover on their own, but a restart skips
-   their back-off delay.
+5. _(Optional)_ Restart Zot to skip the back-off delay of Zot pods that failed during the SeaweedFS restart. Without a
+   restart, the pods recover on their own.
 
    ```bash
    kubectl --namespace zot-system rollout restart deployment/zot
@@ -99,13 +104,13 @@ they continue after every SeaweedFS pod has restarted, use the following steps.
 
 ### Verify Image Pulls and Package Uploads
 
-1. Check the Zot logs for S3 errors since the restart.
+1. Wait 5 minutes after the SeaweedFS restart finishes, and then check the Zot logs for S3 errors.
 
    ```bash
    kubectl --namespace zot-system logs deployment/zot --since=5m | grep --extended-regexp 'SignatureDoesNotMatch|InvalidAccessKeyId|AccessDenied'
    ```
 
-   The command returns no output.
+   The command returns no output. If it still lists errors, contact your Spectro Cloud support representative.
 
 2. In VM Launchpad, retry the action that failed, such as a package upload in **Image Catalog** > **Packages**. The
    action succeeds.
