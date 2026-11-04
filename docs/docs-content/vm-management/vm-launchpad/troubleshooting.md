@@ -21,17 +21,20 @@ After the registry password of a VM Launchpad appliance changes, one or more of 
 - VM Launchpad shows a banner that starts with `Package storage is ephemeral`.
 - The Zot and VM Launchpad logs show the S3 error `SignatureDoesNotMatch`.
 
-Local UI does not report the problem, because SeaweedFS stays ready.
+Local UI does not report a problem.
 
-This occurs because Zot and VM Launchpad store their data in the SeaweedFS object store, and both use the registry
-password as their SeaweedFS secret key. You can change the registry password after installation in the **Registry
-Password** field of the [Container Registry](./install.md#container-registry) settings, or in the matching cluster
-profile variable in Palette. When it changes, Zot and VM Launchpad restart and use the new password. SeaweedFS reads the
-password only when it starts, so it keeps the old password and rejects both until it restarts. This applies to FIPS and
-non-FIPS appliances.
+This occurs because SeaweedFS, the object store where Zot and VM Launchpad keep their data, still uses the old password.
+Zot and VM Launchpad use the registry password as their SeaweedFS secret key. You change the registry password in the
+**Registry Password** field of the [Container Registry](./install.md#container-registry) settings, or in the matching
+cluster profile variable in Palette. Zot and VM Launchpad then restart and use the new password. SeaweedFS reads the
+password only when it starts, so it keeps the old password and rejects both, while it still shows as ready. This applies
+to FIPS and non-FIPS appliances.
 
-During an upgrade of a non-FIPS appliance, the same errors might appear for a few minutes while SeaweedFS restarts. If
-they continue after every SeaweedFS pod has restarted, use the following steps.
+To resolve the issue, restart SeaweedFS so that it reads the new password, as described in the following steps.
+
+An upgrade of a non-FIPS appliance can also change the SeaweedFS secret key. In that case, the upgrade restarts
+SeaweedFS by itself, and the symptoms might appear for a few minutes until every SeaweedFS pod has restarted. Use the
+following steps only if the symptoms continue after that.
 
 ### Prerequisites {#prerequisites-registry-password}
 
