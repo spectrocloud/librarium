@@ -261,6 +261,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
   for guidance on when to enable an overlay network.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9835 -->
+
+- When you create a cluster in Local UI, you can now enter a Fully Qualified Domain Name (FQDN) in the **Virtual IP
+  Address (VIP)** field, in addition to an IPv4 address. Refer to
+  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9881 -->
@@ -273,6 +279,37 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   provider image. Palette also displays Edge host events during cluster provisioning when a provider image download
   starts, resumes, retries, or completes. For more information, refer to
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9251 -->
+
+- Fixed an issue that caused the Palette agent to reset Edge hosts removed from a node pool without draining them, so
+  Kubernetes did not enforce PodDisruptionBudgets, including those that Longhorn uses to protect the last replica of a
+  volume. The Palette agent now drains each removed host before it resets the host. If a PodDisruptionBudget blocks the
+  drain, the host stays cordoned in the cluster until the drain can complete, for example after you move the blocking
+  workload to another node.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9587 -->
+
+- Fixed an issue that caused the
+  [Palette Edge Interactive Installer](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) to offer to continue
+  an installation after its installation media, such as a virtual CD or USB drive, was disconnected. The disk wipe
+  failed with `fork/exec /usr/sbin/wipefs: input/output error`, and the installation later failed with a `mount failed`
+  error. The installer now stops the installation and prompts you to reconnect the installation media and reboot the
+  host.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9779 -->
+
+- Fixed an issue that caused a control plane node to repeatedly fail to join an Edge cluster that uses Palette eXtended
+  Kubernetes - Edge (PXK-E) after a failed join attempt. The node kept the cluster's virtual IP (VIP) address from the
+  failed attempt, so each retry failed with `connect: connection refused` errors for the VIP. This was most likely to
+  occur when two control plane nodes joined the cluster at the same time.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9782 -->
+
+- Fixed an issue that caused Local UI to display only the message `Client sent an HTTP request to an HTTPS server.` when
+  you opened it over HTTP, for example at `http://HOST_IP:5080`. Local UI now redirects HTTP requests on its port to
+  HTTPS. Refer to [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for
+  more information.
 
 #### Deprecations and Removals
 

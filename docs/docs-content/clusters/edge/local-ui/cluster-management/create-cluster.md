@@ -133,11 +133,11 @@ management.
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify an NTP server and an SSH public key.
 
-   | Parameter                   | Description                                                                              |
-   | --------------------------- | ---------------------------------------------------------------------------------------- |
-   | Virtual IP Address (VIP)    | Provide the virtual IP address to be used by the cluster.                                |
-   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
-   | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
+   | Parameter                   | Description                                                                                                                                                       |
+   | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Virtual IP Address (VIP)    | Provide the virtual IP address of the cluster as an IPv4 address, such as `192.168.1.10`, or a Fully Qualified Domain Name (FQDN), such as `cluster.example.com`. |
+   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                                                                                             |
+   | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host.                                                                          |
 
    <PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
 
