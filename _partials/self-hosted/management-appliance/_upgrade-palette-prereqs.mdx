@@ -21,3 +21,5 @@ partial_name: upgrade-palette-prereqs
 
 - Check that your upgrade path is supported by referring to the <PaletteVertexUrlMapper edition={props.edition} text="Supported Upgrade Paths" url="/upgrade#supported-upgrade-paths"/>.
 
+- Check that your upgrade does not skip a Kubernetes minor version. Each {props.app} release bundles a specific Kubernetes version, and an upgrade that skips a minor version may fail and leave the management cluster in an unrecoverable state. Compare the Kubernetes versions of your current and target releases in the <PaletteVertexUrlMapper edition={props.edition} text="Kubernetes Version Constraint" url="/upgrade#kubernetes-version-constraint"/> table. If they are two or more minor versions apart, upgrade to an intermediate release first.
+
