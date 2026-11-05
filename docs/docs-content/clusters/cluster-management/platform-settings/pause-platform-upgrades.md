@@ -9,7 +9,8 @@ tags: ["clusters", "cluster management"]
 
 Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from having their
 Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
-updates to the clusters themselves.
+updates to the clusters themselves. To hold cluster profile updates on connected Edge Native clusters until an operator
+releases them at the device, use the [update lock](../../edge/cluster-management/lock-profile-updates.md).
 
 If you specify a Palette agent image in the operating system pack of your cluster profile using the `stylusPackage`
 parameter, the Edge host installs that agent version when Palette applies the cluster profile. The `stylusPackage`
