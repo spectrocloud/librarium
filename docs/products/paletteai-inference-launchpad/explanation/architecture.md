@@ -32,9 +32,9 @@ request can leave the appliance. The numbers in the diagram match the list that 
   />
 </p>
 
-1. Coding agents and applications send their requests to the Platform IP, the single HTTPS address that serves the API.
-   Administrators reach the console through the same address. For how the address reaches the node, refer to
-   [Network Topology](#network-topology).
+1. Coding agents and applications send their requests to the Platform IP, the single HTTPS address that serves the
+   OpenAI-compatible and Anthropic Messages APIs. Administrators reach the console through the same address. For how the
+   address reaches the node, refer to [Network Topology](#network-topology).
 
 2. The gateway authenticates the calling client from its API token, enforces the client's quotas, and routes the request
    to a model. When an administrator turns on the response cache, the gateway replays the stored answer to an identical
