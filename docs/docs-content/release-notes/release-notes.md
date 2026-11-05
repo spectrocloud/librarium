@@ -108,13 +108,13 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12420 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3417 -->
 
-- Changing the cluster profiles of a cluster template now requires a request in the same scope as the template. A
-  `PUT /v1/clusterTemplates/{uid}/profiles` request made in a project scope, for example with a `ProjectUid` header,
-  against a tenant-scoped cluster template fails with an HTTP 403 response and the `ResOperationForbidden` error code.
-  In the Palette UI, change the profiles of a tenant-scoped cluster template from the **Tenant Admin** scope. Through
-  the API, use a tenant-level request without the `ProjectUid` header for tenant-scoped templates, and a request in the
-  project of the template for project-scoped templates. Refer to
-  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md#cluster-profiles).
+- Palette now rejects changes to the cluster profiles of a cluster template when the request comes from a different
+  scope than the template. For example, a `PUT /v1/clusterTemplates/{uid}/profiles` request with a `ProjectUid` header
+  fails against a tenant-scoped cluster template with an HTTP 403 response and the `ResOperationForbidden` error code.
+  In the Palette UI, change the profiles of a tenant-scoped cluster template from the **Tenant Admin** scope. In API
+  requests, omit the `ProjectUid` header for a tenant-scoped template, and set it to the UID of the project that owns a
+  project-scoped template. Refer to
+  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md#prerequisites).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-6294 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
