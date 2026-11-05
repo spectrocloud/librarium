@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 // Commits the fix, pushes it to the rolling bot branch, and opens or updates its PR.
+// It first turns off any auto-merge that an earlier run left on the open PR, so
+// that only this run's merge step can turn it back on.
 //
 // Usage: node open-pr.mjs <work-dir>
 // Env: GH_TOKEN (the Vault org token), PR_BRANCH, PR_TITLE, GITHUB_REPOSITORY.
@@ -28,13 +30,46 @@ export function strictGh(gh) {
   };
 }
 
+/** Returns the number of the open PR from `branch`, or "" when there is none. */
+export function findOpenPr({ branch, gh }) {
+  return strictGh(gh)([
+    "pr",
+    "list",
+    "--head",
+    branch,
+    "--state",
+    "open",
+    "--json",
+    "number",
+    "--jq",
+    ".[0].number // empty",
+  ]);
+}
+
+/**
+ * Turns auto-merge off on the open PR from `branch`, if there is one. gh can
+ * fail when auto-merge is already off, so a failure counts only when the PR
+ * still has auto-merge on.
+ */
+export function disableAutoMerge({ branch, gh }) {
+  const number = findOpenPr({ branch, gh });
+  if (!number || gh(["pr", "merge", number, "--disable-auto"]).code === 0) return;
+  const stillOn = strictGh(gh)([
+    "pr",
+    "view",
+    number,
+    "--json",
+    "autoMergeRequest",
+    "--jq",
+    ".autoMergeRequest != null",
+  ]);
+  if (stillOn !== "false") throw new Error(`Could not turn off auto-merge on PR #${number}.`);
+}
+
 /** Opens a PR from `branch`, or updates the open one, and returns its number. */
 export function openOrUpdatePr({ branch, title, bodyFile, repo, gh }) {
   const ghStrict = strictGh(gh);
-  const findOpenPr = () =>
-    ghStrict(["pr", "list", "--head", branch, "--state", "open", "--json", "number", "--jq", ".[0].number // empty"]);
-
-  let number = findOpenPr();
+  let number = findOpenPr({ branch, gh });
   if (number) {
     ghStrict([
       "api",
@@ -49,7 +84,7 @@ export function openOrUpdatePr({ branch, title, bodyFile, repo, gh }) {
     console.log(`Updated the open PR #${number}.`);
   } else {
     ghStrict(["pr", "create", "--base", "master", "--head", branch, "--title", title, "--body-file", bodyFile]);
-    number = findOpenPr();
+    number = findOpenPr({ branch, gh });
   }
   if (!number) throw new Error(`Could not find the PR for ${branch}.`);
   return number;
@@ -100,6 +135,7 @@ function commitAndPush(branch, title, token) {
 function main([workDir]) {
   const { GH_TOKEN, PR_BRANCH, PR_TITLE, GITHUB_REPOSITORY } = process.env;
   const out = path.join(workDir, "out");
+  disableAutoMerge({ branch: PR_BRANCH, gh: runGh });
   commitAndPush(PR_BRANCH, PR_TITLE, GH_TOKEN);
 
   const repo = GITHUB_REPOSITORY;

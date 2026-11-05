@@ -151,8 +151,8 @@ jobs:
           } >> "$GITHUB_ENV"
 
           # Move docs-ai-context out of the working tree, so it never shows up
-          # in the diff.
-          mv .docs-ai-context "$WORK/docs-ai-context"
+          # in the diff, and out of $WORK, which the fixer can read.
+          mv .docs-ai-context "$RUNNER_TEMP/docs-ai-context"
 
           # Replay: swap in the docs as they were before the human fix, and
           # commit them locally so the diff check compares against that tree.
@@ -176,8 +176,6 @@ jobs:
           # .claude/ is gitignored, so the skills never show up in the diff.
           mkdir -p .claude/skills
           cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
-          cp -R "$WORK/docs-ai-context/.claude/skills/pr-review-buddy" \
-            "$WORK/docs-ai-context/.claude/skills/style-guide" .claude/skills/
 
       - name: Build the broken-link report
         id: report
@@ -262,6 +260,11 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
+          # The private skills exist only during this step, so the fixer, whose
+          # transcripts the artifacts publish, never sees them.
+          trap 'rm -rf .claude/skills/pr-review-buddy .claude/skills/style-guide' EXIT
+          cp -R "$RUNNER_TEMP/docs-ai-context/.claude/skills/pr-review-buddy" \
+            "$RUNNER_TEMP/docs-ai-context/.claude/skills/style-guide" .claude/skills/
           # A fresh session on a smaller model, as the PR template asks.
           claude -p "/pr-review-buddy $WORK/review" \
             --model "$REVIEW_MODEL" \

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { addLabels, openOrUpdatePr, prLabels, setLabels, strictGh } from "../open-pr.mjs";
+import { addLabels, disableAutoMerge, findOpenPr, openOrUpdatePr, prLabels, setLabels, strictGh } from "../open-pr.mjs";
 
 const REPO = "spectrocloud/librarium";
 const BRANCH = "bot/fix-broken-links";
@@ -42,6 +42,65 @@ describe("strictGh", () => {
     assert.throws(() => strictGh(gh)(["pr", "create", "--title", "x"]), {
       message: "gh pr create failed: HTTP 401: Bad credentials",
     });
+  });
+});
+
+describe("findOpenPr", () => {
+  it("returns the number of the open PR from the branch", () => {
+    const { calls, gh } = fakeGh({ stdout: "42\n" });
+    assert.equal(findOpenPr({ branch: BRANCH, gh }), "42");
+    assert.deepEqual(calls, [
+      ["pr", "list", "--head", BRANCH, "--state", "open", "--json", "number", "--jq", ".[0].number // empty"],
+    ]);
+  });
+
+  it("returns an empty string when no PR is open", () => {
+    const { gh } = fakeGh({ stdout: "" });
+    assert.equal(findOpenPr({ branch: BRANCH, gh }), "");
+  });
+});
+
+describe("disableAutoMerge", () => {
+  const LIST = { stdout: "42\n" };
+  const DISABLE = ["pr", "merge", "42", "--disable-auto"];
+
+  it("turns off auto-merge on the open PR", () => {
+    const { calls, gh } = fakeGh(LIST, { code: 0 });
+    disableAutoMerge({ branch: BRANCH, gh });
+    assert.deepEqual(calls.slice(1), [DISABLE]);
+  });
+
+  it("does nothing when no PR is open", () => {
+    const { calls, gh } = fakeGh({ stdout: "" });
+    disableAutoMerge({ branch: BRANCH, gh });
+    assert.equal(calls.length, 1);
+  });
+
+  it("ignores a failure when auto-merge is already off", () => {
+    const { calls, gh } = fakeGh(LIST, { code: 1, stderr: "auto-merge is not enabled" }, { stdout: "false\n" });
+    disableAutoMerge({ branch: BRANCH, gh });
+    assert.deepEqual(calls.slice(1), [
+      DISABLE,
+      ["pr", "view", "42", "--json", "autoMergeRequest", "--jq", ".autoMergeRequest != null"],
+    ]);
+  });
+
+  it("throws when auto-merge is still on after the failure", () => {
+    const { gh } = fakeGh(LIST, { code: 1, stderr: "HTTP 403: Forbidden" }, { stdout: "true\n" });
+    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), {
+      message: "Could not turn off auto-merge on PR #42.",
+    });
+  });
+
+  it("throws when gh cannot tell whether auto-merge is still on", () => {
+    const { gh } = fakeGh(LIST, { code: 1 }, { code: 1, stderr: "HTTP 502" });
+    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), /gh pr view failed: HTTP 502/);
+  });
+
+  it("throws when gh cannot list the PRs", () => {
+    const { calls, gh } = fakeGh({ code: 4, stderr: "authentication required" });
+    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), /gh pr list failed: authentication required/);
+    assert.equal(calls.length, 1);
   });
 });
 

@@ -28,7 +28,8 @@ into a PR.
 passed, and the fixer was confident both after the review and after its preview test. The master ruleset requires a
 docs-education code-owner approval and allows no bypass, so the direct merge fails today. The job then turns on
 auto-merge, and the PR merges on its first approval. If the bot ever gets a bypass, the same step merges with no code
-change.
+change. Before a run pushes to the rolling PR, it turns off any auto-merge that an earlier run left on, so an approval
+cannot merge the new commits before this run's checks pass.
 
 **Dry runs.** A PR that changes this folder or the workflow runs the whole flow without pushing or opening a PR, in two
 cases: `live` (today's docs) and `replay-nov02` (the docs before the human fix in 516ac87b5, as an answer key).
@@ -74,4 +75,7 @@ The workflow runs them before every agent run.
   has no shell, and it can edit only docs, partials, the two linkinator configs, and its report. The scripts that later
   run with the Vault token, and the link report that the diff check reads, stay out of its reach. The reviewer's shell
   runs only Vale and `printf`.
+- The reviewer's skills come from the private docs-ai-context repo. They are on disk only while the reviewer runs, and
+  the reviewer's transcript stays out of the uploaded artifacts, so their text never reaches this public repo's
+  artifacts.
 - Fetched web pages are untrusted input. The diff check and the preview check decide, not the prompts.
