@@ -11,7 +11,6 @@ review directory named in the prompt:
 - `added/<path with / replaced by __>.txt`: the added line numbers for each changed file.
 - `vale-errors.txt` and `vale-all.txt`: Vale alerts on added lines only. `vale sync` already ran.
 - `versionedlink-splits.txt`: the output of the VersionedLink split check. Empty means no hits.
-- `style-guide.md`: the full style guide. Read it here, not at the repository root.
 
 The working tree is the PR head. Wherever the skill says `git show pr-$N:<path>`, read `<path>` from the working tree.
 Its line numbers are the PR-head line numbers.

@@ -169,7 +169,6 @@ jobs:
           cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
           cp -R "$WORK/docs-ai-context/.claude/skills/pr-review-buddy" \
             "$WORK/docs-ai-context/.claude/skills/style-guide" .claude/skills/
-          cp "$WORK/docs-ai-context/style-guide.md" "$WORK/review/"
 
       - name: Build the broken-link report
         id: report
@@ -560,7 +559,6 @@ jobs:
             ${{ env.WORK }}/link_report.json
             ${{ env.WORK }}/out/
             ${{ env.WORK }}/review/
-            !${{ env.WORK }}/review/style-guide.md
           if-no-files-found: warn
 
       - name: Fail if the final diff check failed
