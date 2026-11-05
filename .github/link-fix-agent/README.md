@@ -28,7 +28,7 @@ Each agent starts a fresh session with only the inputs and tools that its job ne
 
 | Agent           | Model | Tools                                         | Inputs                                                    | Output                         |
 | --------------- | ----- | --------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
-| Researcher      | Opus  | WebFetch, WebSearch                           | One URL and the docs lines that use it, in the prompt     | `prompts/research.schema.json` |
+| Researcher      | Opus  | WebFetch, WebSearch                           | One URL, and the docs lines and sections that use it      | `prompts/research.schema.json` |
 | Guidance editor | Opus  | Read, and Edit on the files that use the link | `guidance-tasks.json`, in the prompt                      | A summary for the PR           |
 | Reviewer        | Haiku | Read, Grep, Glob, Skill, and Vale and printf  | The `gather-review.mjs` output                            | The review report              |
 | Responder       | Opus  | Read, and Edit on the changed docs files      | The review, the diff check, and the fix report            | `prompts/decision.schema.json` |

@@ -11,6 +11,7 @@ import {
   researchPrompt,
   summarizeRuns,
   unresolved,
+  usageFragments,
 } from "../research-links.mjs";
 
 const OLD = "https://old.example.com/guide";
@@ -18,11 +19,14 @@ const NEW = "https://new.example.com/guide";
 const KEEP = "https://keep.example.com/page";
 const INTERNAL = "https://docs.spectrocloud.com/clusters/";
 const TOOLS = "WebFetch,WebSearch";
+const VSPHERE = "https://image-builder.sigs.k8s.io/capi/providers/vsphere";
+const VSPHERE_NEW = "https://image-builder.sigs.k8s.io/capi/providers/vsphere.html";
 
 /** A valid researcher result: a replace, unless `fields` says otherwise. */
 const research = (fields = {}) => ({
   outcome: "replace",
   replacement: NEW,
+  fragments: [],
   evidence: "The old page redirects to the new guide.",
   guidance: "",
   sources: [],
@@ -93,17 +97,38 @@ describe("findUsages", () => {
     { path: "_partials/_b.mdx", text: `Read [the guide](${OLD}).` },
   ];
 
-  it("finds each line that links to the URL, with its file and 1-based line number", () => {
+  it("finds each line that links to the URL, with its file, 1-based line number, and fragment", () => {
     assert.deepEqual(findUsages(files, OLD), [
-      { file: "docs/docs-content/a.md", line: 3, text: `See [the guide](${OLD}#setup).` },
-      { file: "_partials/_b.mdx", line: 1, text: `Read [the guide](${OLD}).` },
+      { file: "docs/docs-content/a.md", line: 3, fragment: "setup", text: `See [the guide](${OLD}#setup).` },
+      { file: "_partials/_b.mdx", line: 1, fragment: "", text: `Read [the guide](${OLD}).` },
     ]);
+  });
+
+  it("records each section that the docs link to, and an empty fragment for a link with none", () => {
+    const docs = [
+      {
+        path: "docs/docs-content/vsphere.md",
+        text: [
+          `Use [remote VMs](${VSPHERE}#accessing-remote-vms).`,
+          `Use [the clone builder](${VSPHERE}#vsphere-clone-builder).`,
+          `Read [the provider guide](${VSPHERE}).`,
+        ].join("\n"),
+      },
+    ];
+    assert.deepEqual(
+      findUsages(docs, VSPHERE).map(({ line, fragment }) => ({ line, fragment })),
+      [
+        { line: 1, fragment: "accessing-remote-vms" },
+        { line: 2, fragment: "vsphere-clone-builder" },
+        { line: 3, fragment: "" },
+      ]
+    );
   });
 
   it("matches a bare domain in the docs to the URL with its trailing slash", () => {
     const docs = [{ path: "docs/w.md", text: "Intro.\nVisit [Weave](https://www.weave.works) now." }];
     assert.deepEqual(findUsages(docs, "https://www.weave.works/"), [
-      { file: "docs/w.md", line: 2, text: "Visit [Weave](https://www.weave.works) now." },
+      { file: "docs/w.md", line: 2, fragment: "", text: "Visit [Weave](https://www.weave.works) now." },
     ]);
   });
 
@@ -112,9 +137,23 @@ describe("findUsages", () => {
     assert.deepEqual(findUsages(docs, OLD), []);
   });
 
-  it("lists a line once when it links to the URL twice", () => {
-    const docs = [{ path: "docs/x.md", text: `[a](${OLD}) and [b](${OLD}#faq)` }];
-    assert.equal(findUsages(docs, OLD).length, 1);
+  it("lists a line once when it links to the same section twice", () => {
+    const docs = [{ path: "docs/x.md", text: `[a](${OLD}#faq) and [b](${OLD}#faq)` }];
+    assert.deepEqual(
+      findUsages(docs, OLD).map((usage) => usage.fragment),
+      ["faq"]
+    );
+  });
+
+  it("lists a line once for each section when it links to two sections, so that no section goes unmapped", () => {
+    const docs = [{ path: "docs/x.md", text: `[a](${OLD}) and [b](${OLD}#faq) and [c](${OLD}#faq)` }];
+    assert.deepEqual(
+      findUsages(docs, OLD).map(({ line, fragment }) => ({ line, fragment })),
+      [
+        { line: 1, fragment: "" },
+        { line: 1, fragment: "faq" },
+      ]
+    );
   });
 
   it("trims each line and cuts it to 300 characters", () => {
@@ -129,11 +168,23 @@ describe("findUsages", () => {
   });
 });
 
+describe("usageFragments", () => {
+  it("returns each section once, in the order of first use, without the links that have none", () => {
+    const usages = [{ fragment: "b" }, { fragment: "" }, { fragment: "a" }, { fragment: "b" }];
+    assert.deepEqual(usageFragments(usages), ["b", "a"]);
+  });
+
+  it("returns nothing when no usage links to a section", () => {
+    assert.deepEqual(usageFragments([{ fragment: "" }]), []);
+    assert.deepEqual(usageFragments([]), []);
+  });
+});
+
 describe("researchPrompt", () => {
-  it("gives the URL, its statuses, and each docs line that uses it", () => {
+  it("gives the URL, its statuses, each docs line that uses it, and the sections they link to", () => {
     const usages = [
-      { file: "docs/docs-content/a.md", line: 3, text: `See [the guide](${OLD}).` },
-      { file: "_partials/_b.mdx", line: 1, text: `Read [it](${OLD}).` },
+      { file: "docs/docs-content/a.md", line: 3, fragment: "", text: `See [the guide](${OLD}).` },
+      { file: "_partials/_b.mdx", line: 1, fragment: "setup", text: `Read [it](${OLD}#setup).` },
     ];
     assert.equal(
       researchPrompt({ url: OLD, statuses: [404, 500], usages }),
@@ -143,15 +194,29 @@ describe("researchPrompt", () => {
         "",
         "Docs lines that use it:",
         `- docs/docs-content/a.md:3: See [the guide](${OLD}).`,
-        `- _partials/_b.mdx:1: Read [it](${OLD}).`,
+        `- _partials/_b.mdx:1: Read [it](${OLD}#setup).`,
+        "",
+        "Sections the docs link to:",
+        "- #setup",
       ].join("\n")
     );
   });
 
-  it("says when no docs line uses the URL", () => {
+  it("lists a line that links to two sections once, and both of its sections", () => {
+    const text = `[a](${OLD}#faq) [b](${OLD}#setup)`;
+    const usages = findUsages([{ path: "docs/x.md", text }], OLD);
+    assert.match(
+      researchPrompt({ url: OLD, statuses: [404], usages }),
+      new RegExp(
+        `Docs lines that use it:\\n- docs/x\\.md:1: [^\\n]+\\n\\nSections the docs link to:\\n- #faq\\n- #setup$`
+      )
+    );
+  });
+
+  it("says when no docs line uses the URL, and when no line links to a section", () => {
     assert.match(
       researchPrompt({ url: OLD, statuses: [404], usages: [] }),
-      /Docs lines that use it:\n- \(none found\)$/
+      /Docs lines that use it:\n- \(none found\)\n\nSections the docs link to:\n- \(none\)$/
     );
   });
 });
@@ -186,38 +251,85 @@ describe("isValidResearch", () => {
       research({ outcome: "skip-pattern", replacement: "", skipPattern: "^https://blocked\\.example\\.com" }),
       research({ outcome: "error", replacement: "", notes: "Every fetch timed out." }),
     ]) {
-      assert.equal(isValidResearch(result), true, result.outcome);
+      assert.equal(isValidResearch(result, []), true, result.outcome);
     }
   });
 
   it("accepts the error result that unresolved builds", () => {
-    assert.equal(isValidResearch(unresolved("error", "The researcher failed.")), true);
+    assert.equal(isValidResearch(unresolved("error", "The researcher failed."), []), true);
   });
 
   it("rejects a replace without a replacement", () => {
-    assert.equal(isValidResearch(research({ replacement: "" })), false);
+    assert.equal(isValidResearch(research({ replacement: "" }), []), false);
   });
 
   it("rejects an update-guidance without guidance or without sources", () => {
     const update = { outcome: "update-guidance", replacement: "" };
-    assert.equal(isValidResearch(research({ ...update, guidance: "", sources: ["https://s.example.com/"] })), false);
-    assert.equal(isValidResearch(research({ ...update, guidance: "Renamed.", sources: [] })), false);
+    assert.equal(
+      isValidResearch(research({ ...update, guidance: "", sources: ["https://s.example.com/"] }), []),
+      false
+    );
+    assert.equal(isValidResearch(research({ ...update, guidance: "Renamed.", sources: [] }), []), false);
   });
 
   it("rejects a skip-pattern without a pattern", () => {
-    assert.equal(isValidResearch(research({ outcome: "skip-pattern", replacement: "", skipPattern: "" })), false);
+    assert.equal(isValidResearch(research({ outcome: "skip-pattern", replacement: "", skipPattern: "" }), []), false);
   });
 
   it("rejects a replacement that is not one clean URL, whatever the outcome", () => {
     for (const replacement of [`${NEW})`, `${NEW} ${KEEP}`, `${NEW}\nmore`, "new.example.com/guide"]) {
-      assert.equal(isValidResearch(research({ replacement })), false, JSON.stringify(replacement));
+      assert.equal(isValidResearch(research({ replacement }), []), false, JSON.stringify(replacement));
     }
-    assert.equal(isValidResearch(research({ outcome: "no-change", replacement: `${NEW})` })), false);
+    assert.equal(isValidResearch(research({ outcome: "no-change", replacement: `${NEW})` }), []), false);
   });
 
   it("rejects an unknown outcome, including needs-human, which only the script sets", () => {
     for (const outcome of ["needs-human", "fixed", "", "REPLACE"]) {
-      assert.equal(isValidResearch(research({ outcome })), false, outcome);
+      assert.equal(isValidResearch(research({ outcome }), []), false, outcome);
+    }
+  });
+
+  it("accepts a mapping for every section, including one to the top of the new page", () => {
+    const fragments = [
+      { from: "accessing-remote-vms", to: "accessing-remote-vms" },
+      { from: "vsphere-clone-builder", to: "" },
+    ];
+    const sections = ["accessing-remote-vms", "vsphere-clone-builder"];
+    assert.equal(isValidResearch(research({ replacement: VSPHERE_NEW, fragments }), sections), true);
+    const guidance = { outcome: "update-guidance", guidance: "Moved.", sources: ["https://s.example.com/"] };
+    assert.equal(isValidResearch(research({ ...guidance, replacement: VSPHERE_NEW, fragments }), sections), true);
+    assert.equal(isValidResearch(research({ ...guidance, replacement: "", fragments }), sections), true);
+  });
+
+  it("rejects a replace or update-guidance that leaves a section the docs link to unmapped", () => {
+    const fragments = [{ from: "accessing-remote-vms", to: "accessing-remote-vms" }];
+    const sections = ["accessing-remote-vms", "vsphere-clone-builder"];
+    const guidance = { outcome: "update-guidance", guidance: "Moved.", sources: ["https://s.example.com/"] };
+    assert.equal(isValidResearch(research({ fragments }), sections), false);
+    assert.equal(isValidResearch(research({ ...guidance, fragments }), sections), false);
+    assert.equal(isValidResearch(research({ ...guidance, replacement: "", fragments: [] }), ["faq"]), false);
+    assert.equal(isValidResearch(research({ fragments: [{ from: "#faq", to: "faq" }] }), ["faq"]), false);
+  });
+
+  it("does not ask the outcomes that change no URL to map the sections", () => {
+    for (const result of [
+      research({ outcome: "no-change", replacement: "" }),
+      research({ outcome: "skip-pattern", replacement: "", skipPattern: "^https://blocked\\.example\\.com" }),
+      research({ outcome: "error", replacement: "" }),
+    ]) {
+      assert.equal(isValidResearch(result, ["faq"]), true, result.outcome);
+    }
+  });
+
+  it("rejects a replacement with a fragment, because the script adds each link's anchor", () => {
+    assert.equal(isValidResearch(research({ replacement: `${NEW}#setup` }), []), false);
+    assert.equal(isValidResearch(research({ replacement: `${NEW}#` }), []), false);
+  });
+
+  it("rejects an anchor that holds a # or would cut the new URL short", () => {
+    for (const to of ["#setup", "a#b", "set up", "setup)", 'setup"', "setup]", "setup`"]) {
+      const fragments = [{ from: "setup", to }];
+      assert.equal(isValidResearch(research({ fragments }), ["setup"]), false, JSON.stringify(to));
     }
   });
 
@@ -225,6 +337,7 @@ describe("isValidResearch", () => {
     for (const key of [
       "outcome",
       "replacement",
+      "fragments",
       "evidence",
       "guidance",
       "skipPattern",
@@ -234,7 +347,7 @@ describe("isValidResearch", () => {
     ]) {
       const result = research();
       delete result[key];
-      assert.equal(isValidResearch(result), false, `without ${key}`);
+      assert.equal(isValidResearch(result, []), false, `without ${key}`);
     }
     for (const fields of [
       { replacement: null },
@@ -243,14 +356,21 @@ describe("isValidResearch", () => {
       { sources: [1] },
       { attempts: {} },
       { attempts: [null] },
+      { fragments: {} },
+      { fragments: [null] },
+      { fragments: ["setup"] },
+      { fragments: [{ from: "setup" }] },
+      { fragments: [{ to: "setup" }] },
+      { fragments: [{ from: 1, to: "setup" }] },
+      { fragments: [{ from: "setup", to: null }] },
     ]) {
-      assert.equal(isValidResearch(research(fields)), false, JSON.stringify(fields));
+      assert.equal(isValidResearch(research(fields), []), false, JSON.stringify(fields));
     }
   });
 
   it("rejects a result that is not an object", () => {
     for (const result of [null, undefined, "replace", 42, []]) {
-      assert.equal(isValidResearch(result), false, JSON.stringify(result));
+      assert.equal(isValidResearch(result, []), false, JSON.stringify(result));
     }
   });
 });
@@ -260,6 +380,7 @@ describe("unresolved", () => {
     assert.deepEqual(unresolved("needs-human", "An internal link."), {
       outcome: "needs-human",
       replacement: "",
+      fragments: [],
       evidence: "",
       guidance: "",
       sources: [],
@@ -323,6 +444,32 @@ describe("researchAll", () => {
     );
     assert.match(calls.find((call) => call.index === 0).prompt, /^- docs\/old\.md:7: \[link\]\(https:\/\/old\./m);
     assert.match(calls.find((call) => call.index === 1).prompt, /^- docs\/keep\.md:7: \[link\]\(https:\/\/keep\./m);
+  });
+
+  it("lists the sections that the usages link to in the prompt, and accepts a result that maps them all", async () => {
+    const usages = [
+      { file: "docs/a.md", line: 1, fragment: "accessing-remote-vms", text: "a" },
+      { file: "docs/a.md", line: 2, fragment: "vsphere-clone-builder", text: "b" },
+      { file: "docs/a.md", line: 3, fragment: "", text: "c" },
+    ];
+    const result = research({
+      replacement: VSPHERE_NEW,
+      fragments: [
+        { from: "accessing-remote-vms", to: "accessing-remote-vms" },
+        { from: "vsphere-clone-builder", to: "" },
+      ],
+    });
+    const { calls, runAgent } = fakeAgent(() => output(result));
+    const { entries } = await researchAll([group(VSPHERE)], { usagesFor: () => usages, runAgent, tools: TOOLS });
+    assert.match(calls[0].prompt, /Sections the docs link to:\n- #accessing-remote-vms\n- #vsphere-clone-builder$/);
+    assert.deepEqual(entries[0].result, result);
+  });
+
+  it("records an error result when the researcher leaves a section the docs link to unmapped", async () => {
+    const usages = [{ file: "docs/a.md", line: 1, fragment: "vsphere-clone-builder", text: "a" }];
+    const { runAgent } = fakeAgent(() => output(research({ replacement: VSPHERE_NEW })));
+    const { entries } = await researchAll([group(VSPHERE)], { usagesFor: () => usages, runAgent, tools: TOOLS });
+    assert.deepEqual(entries[0].result, unresolved("error", "The researcher returned no valid result."));
   });
 
   it("marks an internal URL as needing a human without running a researcher", async () => {

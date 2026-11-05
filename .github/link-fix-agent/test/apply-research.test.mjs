@@ -14,11 +14,25 @@ const TOOL_NEW = "https://tool.example.com/v2/install";
 const NOTES = "https://notes.example.com/release";
 const BLOCKED = "https://blocked.example.com/";
 const PATTERN = "^https://blocked\\.example\\.com";
+const VSPHERE = "https://image-builder.sigs.k8s.io/capi/providers/vsphere";
+const VSPHERE_NEW = "https://image-builder.sigs.k8s.io/capi/providers/vsphere.html";
+const VSPHERE_DOC = [
+  `Use [remote VMs](${VSPHERE}#accessing-remote-vms).`,
+  `Use [the clone builder](${VSPHERE}#vsphere-clone-builder).`,
+  `Read [the provider guide](${VSPHERE}).`,
+  "",
+].join("\n");
+/** The researcher's mapping for VSPHERE_DOC's two sections: one kept, and one with no match on the new page. */
+const VSPHERE_FRAGMENTS = [
+  { from: "accessing-remote-vms", to: "remote-access" },
+  { from: "vsphere-clone-builder", to: "" },
+];
 
 /** A researcher result: a replace, unless `fields` says otherwise. */
 const research = (fields = {}) => ({
   outcome: "replace",
   replacement: NEW,
+  fragments: [],
   evidence: "",
   guidance: "",
   sources: [],
@@ -33,14 +47,44 @@ const entry = (url, result, usages = [usage("docs/docs-content/a.md")]) => ({ ur
 
 describe("replaceUrl", () => {
   it("replaces the URL and its forms with a fragment, and counts the swaps", () => {
-    assert.deepEqual(replaceUrl(`See [a](${OLD}) and [b](${OLD}#setup).\n`, OLD, NEW), {
+    assert.deepEqual(replaceUrl(`See [a](${OLD}) and [b](${OLD}#setup).\n`, OLD, NEW, [{ from: "setup", to: "" }]), {
       text: `See [a](${NEW}) and [b](${NEW}).\n`,
       count: 2,
     });
   });
 
+  it("gives each link to a section the anchor that its fragment maps to, and a link with none the bare URL", () => {
+    assert.deepEqual(replaceUrl(VSPHERE_DOC, VSPHERE, VSPHERE_NEW, VSPHERE_FRAGMENTS), {
+      text: [
+        `Use [remote VMs](${VSPHERE_NEW}#remote-access).`,
+        `Use [the clone builder](${VSPHERE_NEW}).`,
+        `Read [the provider guide](${VSPHERE_NEW}).`,
+        "",
+      ].join("\n"),
+      count: 3,
+    });
+  });
+
+  it("keeps two sections apart when both have an anchor on the new page", () => {
+    const fragments = [
+      { from: "accessing-remote-vms", to: "remote-access" },
+      { from: "vsphere-clone-builder", to: "clone-builder" },
+    ];
+    const { text } = replaceUrl(VSPHERE_DOC, VSPHERE, VSPHERE_NEW, fragments);
+    assert.match(text, /\[remote VMs\]\([^)]+\.html#remote-access\)/);
+    assert.match(text, /\[the clone builder\]\([^)]+\.html#clone-builder\)/);
+  });
+
+  it("gives a link with no fragment the bare URL, even when the mapping has an anchor for an empty section", () => {
+    assert.equal(replaceUrl(`[a](${OLD})`, OLD, NEW, [{ from: "", to: "intro" }]).text, `[a](${NEW})`);
+  });
+
+  it("gives a link the bare URL when the mapping has no entry for its fragment", () => {
+    assert.equal(replaceUrl(`[a](${OLD}#faq)`, OLD, NEW, [{ from: "setup", to: "install" }]).text, `[a](${NEW})`);
+  });
+
   it("replaces a bare domain when the URL is its form with a trailing slash", () => {
-    assert.deepEqual(replaceUrl("Visit [Weave](https://www.weave.works).", "https://www.weave.works/", NEW), {
+    assert.deepEqual(replaceUrl("Visit [Weave](https://www.weave.works).", "https://www.weave.works/", NEW, []), {
       text: `Visit [Weave](${NEW}).`,
       count: 1,
     });
@@ -48,16 +92,16 @@ describe("replaceUrl", () => {
 
   it("leaves other URLs alone, including longer ones that start the same way", () => {
     const text = `[a](${OLD}/more) [b](${KEEP}) [c](${OLD}s) [d](${OLD}?v=2)`;
-    assert.deepEqual(replaceUrl(text, OLD, NEW), { text, count: 0 });
+    assert.deepEqual(replaceUrl(text, OLD, NEW, []), { text, count: 0 });
   });
 
   it("returns the text unchanged and a count of zero when the URL is not there", () => {
-    assert.deepEqual(replaceUrl("No links here.", OLD, NEW), { text: "No links here.", count: 0 });
+    assert.deepEqual(replaceUrl("No links here.", OLD, NEW, []), { text: "No links here.", count: 0 });
   });
 
   it("inserts a replacement that holds dollar signs as it is", () => {
     const replacement = "https://new.example.com/a$&b$1";
-    assert.equal(replaceUrl(`[a](${OLD})`, OLD, replacement).text, `[a](${replacement})`);
+    assert.equal(replaceUrl(`[a](${OLD})`, OLD, replacement, []).text, `[a](${replacement})`);
   });
 });
 
@@ -132,7 +176,7 @@ describe("guidanceTasks", () => {
 describe("fixReport", () => {
   it("lists each outcome in its own section, and counts what was fixed", () => {
     const entries = [
-      entry(OLD, research({ evidence: "Redirects to the new guide." }), [
+      entry(OLD, research({ evidence: "Redirects to the new guide.", fragments: [{ from: "setup", to: "install" }] }), [
         usage("docs/docs-content/a.md", 3),
         usage("docs/docs-content/a.md", 9),
         usage("_partials/_b.mdx"),
@@ -144,6 +188,7 @@ describe("fixReport", () => {
           replacement: "",
           guidance: "The CLI was renamed.",
           sources: ["https://tool.example.com/changelog", "https://tool.example.com/blog"],
+          fragments: [{ from: "flags", to: "" }],
         })
       ),
       entry(
@@ -169,15 +214,15 @@ describe("fixReport", () => {
       [
         "## Fixed",
         "",
-        "| Old URL | New URL | Evidence | Files |",
-        "| --- | --- | --- | --- |",
-        `| ${OLD} | ${NEW} | Redirects to the new guide. | 2 |`,
+        "| Old URL | New URL | Anchors | Evidence | Files |",
+        "| --- | --- | --- | --- | --- |",
+        `| ${OLD} | ${NEW} | #setup → #install | Redirects to the new guide. | 2 |`,
         "",
         "## Guidance to update",
         "",
-        "| URL | New URL | What changed | Sources | Files |",
-        "| --- | --- | --- | --- | --- |",
-        `| ${TOOL_OLD} | none | The CLI was renamed. | https://tool.example.com/changelog https://tool.example.com/blog | 1 |`,
+        "| URL | New URL | Anchors | What changed | Sources | Files |",
+        "| --- | --- | --- | --- | --- | --- |",
+        `| ${TOOL_OLD} | none | #flags → none | The CLI was renamed. | https://tool.example.com/changelog https://tool.example.com/blog | 1 |`,
         "",
         "## Skip patterns added",
         "",
@@ -214,9 +259,9 @@ describe("fixReport", () => {
       [
         "## Fixed",
         "",
-        "| Old URL | New URL | Evidence | Files |",
-        "| --- | --- | --- | --- |",
-        `| ${OLD} | ${NEW} | Redirect. | 1 |`,
+        "| Old URL | New URL | Anchors | Evidence | Files |",
+        "| --- | --- | --- | --- | --- |",
+        `| ${OLD} | ${NEW} |  | Redirect. | 1 |`,
         "",
         "Fixed 1 of 1 reported URLs. 0 errors. 0 need a human.",
       ].join("\n")
@@ -236,7 +281,17 @@ describe("fixReport", () => {
     });
     assert.match(
       fixReport([entry(TOOL_OLD, result)]),
-      new RegExp(`\\| ${TOOL_OLD} \\| ${TOOL_NEW} \\| Renamed\\. \\| s \\| 1 \\|`)
+      new RegExp(`\\| ${TOOL_OLD} \\| ${TOOL_NEW} \\|  \\| Renamed\\. \\| s \\| 1 \\|`)
+    );
+  });
+
+  it("shows where each section of a fixed link now points", () => {
+    const result = research({ replacement: VSPHERE_NEW, fragments: VSPHERE_FRAGMENTS, evidence: "Title." });
+    assert.match(
+      fixReport([entry(VSPHERE, result)]),
+      new RegExp(
+        `\\| ${VSPHERE_NEW} \\| #accessing-remote-vms → #remote-access, #vsphere-clone-builder → none \\| Title\\. \\|`
+      )
     );
   });
 
@@ -255,7 +310,10 @@ describe("apply-research.mjs command line", () => {
   const C = `Install [the tool](${TOOL_OLD}).\n`;
   const D = `Read [the notes](${NOTES}).\n`;
   const ENTRIES = [
-    entry(OLD, research({ evidence: "Redirect." }), [usage("docs/docs-content/a.md", 1), usage("_partials/_b.mdx")]),
+    entry(OLD, research({ evidence: "Redirect.", fragments: [{ from: "setup", to: "install" }] }), [
+      usage("docs/docs-content/a.md", 1),
+      usage("_partials/_b.mdx"),
+    ]),
     entry(
       TOOL_OLD,
       research({
@@ -316,7 +374,7 @@ describe("apply-research.mjs command line", () => {
   it("swaps the URLs of replace and update-guidance results in the files that use them, and nothing else", () => {
     const result = apply(ENTRIES);
     assert.equal(result.status, 0, result.stderr);
-    assert.equal(readRepo("docs/docs-content/a.md"), `See [the guide](${NEW}) and [this page](${KEEP}).\n`);
+    assert.equal(readRepo("docs/docs-content/a.md"), `See [the guide](${NEW}#install) and [this page](${KEEP}).\n`);
     assert.equal(readRepo("_partials/_b.mdx"), `Read [the guide](${NEW}).\n`);
     assert.equal(readRepo("docs/docs-content/c.md"), `Install [the tool](${TOOL_NEW}).\n`);
     assert.equal(readRepo("docs/docs-content/d.md"), D);
@@ -327,6 +385,25 @@ describe("apply-research.mjs command line", () => {
       " M linkinator/linkinator-ci.config.json",
       " M linkinator/linkinator.config.json",
     ]);
+  });
+
+  it("keeps each section of a page apart, with the anchor the researcher mapped it to", () => {
+    writeFiles(repo, { "docs/docs-content/vsphere.md": VSPHERE_DOC });
+    const usages = [1, 2, 3].map((line) => usage("docs/docs-content/vsphere.md", line));
+    const result = apply([
+      entry(VSPHERE, research({ replacement: VSPHERE_NEW, fragments: VSPHERE_FRAGMENTS }), usages),
+    ]);
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(
+      readRepo("docs/docs-content/vsphere.md"),
+      [
+        `Use [remote VMs](${VSPHERE_NEW}#remote-access).`,
+        `Use [the clone builder](${VSPHERE_NEW}).`,
+        `Read [the provider guide](${VSPHERE_NEW}).`,
+        "",
+      ].join("\n")
+    );
+    assert.match(readOut("fix-report.md"), /#accessing-remote-vms → #remote-access, #vsphere-clone-builder → none/);
   });
 
   it("adds each skip pattern to both linkinator configs, in their format", () => {
@@ -360,7 +437,7 @@ describe("apply-research.mjs command line", () => {
     assert.equal(fs.readFileSync(githubOutput, "utf8"), "");
     assert.equal(readOut("guidance-tasks.json"), "[]\n");
     assert.equal(readOut("guidance-files.txt"), "");
-    assert.equal(readRepo("docs/docs-content/a.md"), `See [the guide](${NEW}) and [this page](${KEEP}).\n`);
+    assert.equal(readRepo("docs/docs-content/a.md"), `See [the guide](${NEW}#install) and [this page](${KEEP}).\n`);
   });
 
   it("changes no file when no result swaps a URL or adds a pattern", () => {

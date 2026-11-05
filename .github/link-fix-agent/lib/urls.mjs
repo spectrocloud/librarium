@@ -24,6 +24,12 @@ export function urlKey(url) {
   }
 }
 
+/** Returns the part of a URL after its first #, or an empty string when it has no fragment. */
+export function fragmentOf(url) {
+  const hash = url.indexOf("#");
+  return hash === -1 ? "" : url.slice(hash + 1);
+}
+
 /** Compares two URL sets and returns the sorted URLs removed from `before` and added in `after`. */
 export function urlChanges(before, after) {
   return {

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { findUrls, lcsDiff, urlChanges, urlDiff, urlKey } from "../lib/urls.mjs";
+import { findUrls, fragmentOf, lcsDiff, urlChanges, urlDiff, urlKey } from "../lib/urls.mjs";
 
 describe("findUrls", () => {
   it("finds the URL in a Markdown link and stops at the closing parenthesis", () => {
@@ -66,6 +66,19 @@ describe("urlKey", () => {
 
   it("drops only the fragment of text that does not parse as a URL", () => {
     assert.equal(urlKey("https://[bad-host/page#section"), "https://[bad-host/page");
+  });
+});
+
+describe("fragmentOf", () => {
+  it("returns the part after the first #", () => {
+    assert.equal(fragmentOf("https://example.com/guide#setup"), "setup");
+    assert.equal(fragmentOf("https://example.com/guide?a=1#step-2"), "step-2");
+    assert.equal(fragmentOf("https://example.com/guide#a#b"), "a#b");
+  });
+
+  it("returns an empty string for a URL with no fragment or an empty one", () => {
+    assert.equal(fragmentOf("https://example.com/guide"), "");
+    assert.equal(fragmentOf("https://example.com/guide#"), "");
   });
 });
 

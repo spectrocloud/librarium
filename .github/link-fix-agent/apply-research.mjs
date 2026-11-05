@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Applies the researchers' results to the docs, with no agent involved.
 //
-// It swaps each replaced URL in every docs file that uses it, adds proposed
-// skip patterns to both linkinator configs, and lists the guidance changes for
-// the guidance editor, the only agent that edits text. Then it writes the fix
-// report that the PR description shows.
+// It swaps each replaced URL in every docs file that uses it, and gives each
+// link to a section the anchor that the researcher found on the new page. It
+// adds proposed skip patterns to both linkinator configs, and lists the
+// guidance changes for the guidance editor, the only agent that edits text.
+// Then it writes the fix report that the PR description shows.
 //
 // Usage: node apply-research.mjs <research.json> <repo-dir> <out-dir>
 // Writes <out-dir>/fix-report.md, <out-dir>/guidance-tasks.json, and
@@ -16,15 +17,20 @@ import path from "node:path";
 
 import { LINKINATOR_CONFIGS } from "./check-link-fix-diff.mjs";
 import { isMain, setOutput, writeLines } from "./lib/cli.mjs";
-import { URL_PATTERN, urlKey } from "./lib/urls.mjs";
+import { URL_PATTERN, fragmentOf, urlKey } from "./lib/urls.mjs";
 
-/** Replaces every URL in `text` that matches `url` (by urlKey) with `replacement`, and counts the swaps. */
-export function replaceUrl(text, url, replacement) {
+/**
+ * Replaces every URL in `text` that matches `url` (by urlKey) with `replacement`, and counts the swaps. A URL with a
+ * #fragment gets the anchor that `fragments` ([{ from, to }]) maps its fragment to, or none when `to` is empty.
+ */
+export function replaceUrl(text, url, replacement, fragments) {
   let count = 0;
   const replaced = text.replace(URL_PATTERN, (found) => {
     if (urlKey(found) !== url) return found;
     count++;
-    return replacement;
+    const fragment = fragmentOf(found);
+    const to = fragment && fragments.find((mapping) => mapping.from === fragment)?.to;
+    return to ? `${replacement}#${to}` : replacement;
   });
   return { text: replaced, count };
 }
@@ -62,6 +68,11 @@ function cell(text) {
     .replace(/\s*\n\s*/g, " ");
 }
 
+/** Describes where a result sends each section, such as "#old → #new, #gone → none". */
+function anchors(result) {
+  return result.fragments.map(({ from, to }) => `#${from} → ${to ? `#${to}` : "none"}`).join(", ");
+}
+
 function table(headers, rows) {
   return [
     `| ${headers.join(" | ")} |`,
@@ -77,15 +88,16 @@ export function fixReport(entries) {
   const sections = [
     [
       "Fixed",
-      ["Old URL", "New URL", "Evidence", "Files"],
-      byOutcome("replace").map((e) => [e.url, e.result.replacement, e.result.evidence, files(e)]),
+      ["Old URL", "New URL", "Anchors", "Evidence", "Files"],
+      byOutcome("replace").map((e) => [e.url, e.result.replacement, anchors(e.result), e.result.evidence, files(e)]),
     ],
     [
       "Guidance to update",
-      ["URL", "New URL", "What changed", "Sources", "Files"],
+      ["URL", "New URL", "Anchors", "What changed", "Sources", "Files"],
       byOutcome("update-guidance").map((e) => [
         e.url,
         e.result.replacement || "none",
+        anchors(e.result),
         e.result.guidance,
         e.result.sources.join(" "),
         files(e),
@@ -134,10 +146,10 @@ function main([researchPath, repoArg, outDir]) {
 
   // A guidance change can come with a new link too, so its URL swap happens here as well.
   for (const entry of entries) {
-    const { outcome, replacement } = entry.result;
+    const { outcome, replacement, fragments } = entry.result;
     if (!replacement || !["replace", "update-guidance"].includes(outcome)) continue;
     for (const file of usageFiles(entry)) {
-      const { text, count } = replaceUrl(readRepoFile(file), entry.url, replacement);
+      const { text, count } = replaceUrl(readRepoFile(file), entry.url, replacement, fragments);
       if (count) writeRepoFile(file, text);
     }
   }

@@ -21,7 +21,7 @@ import path from "node:path";
 import { hasExactTools, parseRun } from "./agent-run.mjs";
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
-import { URL_PATTERN, urlKey } from "./lib/urls.mjs";
+import { URL_PATTERN, fragmentOf, urlKey } from "./lib/urls.mjs";
 
 const INTERNAL_HOSTS = new Set(["docs.spectrocloud.com"]);
 const OUTCOMES = new Set(["replace", "update-guidance", "no-change", "skip-pattern", "error"]);
@@ -49,28 +49,43 @@ export function isInternal(url) {
   }
 }
 
-/** Finds every docs line that links to `url`. `files` holds each docs file's path and text. */
+/**
+ * Finds every docs line that links to `url`, with the #fragment that the line's link uses, or an empty string.
+ * A line that links to two sections of the page is listed once for each. `files` holds each docs file's path and text.
+ */
 export function findUsages(files, url) {
   const usages = [];
   for (const { path: file, text } of files) {
     text.split("\n").forEach((line, index) => {
-      if ((line.match(URL_PATTERN) ?? []).some((found) => urlKey(found) === url)) {
-        usages.push({ file, line: index + 1, text: line.trim().slice(0, MAX_USAGE_TEXT) });
+      const links = (line.match(URL_PATTERN) ?? []).filter((found) => urlKey(found) === url);
+      for (const fragment of new Set(links.map(fragmentOf))) {
+        usages.push({ file, line: index + 1, fragment, text: line.trim().slice(0, MAX_USAGE_TEXT) });
       }
     });
   }
   return usages;
 }
 
+/** Returns the distinct sections that the usages link to, in order, without the links that have no fragment. */
+export function usageFragments(usages) {
+  return [...new Set(usages.map((usage) => usage.fragment).filter(Boolean))];
+}
+
 /** Builds the researcher's prompt. Docs lines are quoted, because they are data. */
 export function researchPrompt({ url, statuses, usages }) {
-  const lines = usages.map((u) => `- ${u.file}:${u.line}: ${u.text}`).join("\n");
+  const lines = [...new Set(usages.map((u) => `- ${u.file}:${u.line}: ${u.text}`))].join("\n");
+  const fragments = usageFragments(usages)
+    .map((fragment) => `- #${fragment}`)
+    .join("\n");
   return [
     `Broken URL: ${url}`,
     `Status in the weekly report: ${statuses.join(", ")}`,
     "",
     "Docs lines that use it:",
     lines || "- (none found)",
+    "",
+    "Sections the docs link to:",
+    fragments || "- (none)",
   ].join("\n");
 }
 
@@ -79,8 +94,20 @@ export function isCleanUrl(url) {
   return /^https?:\/\//.test(url) && url.match(URL_PATTERN)?.[0] === url;
 }
 
-/** True when a researcher's result follows the schema and its outcome has what it needs. */
-export function isValidResearch(result) {
+/** True when the replacement has no fragment, and it is one clean URL both alone and with each anchor. */
+function writesCleanUrls({ replacement, fragments }) {
+  const anchors = fragments.map(({ to }) => to).filter(Boolean);
+  return (
+    ![replacement, ...anchors].some((text) => text.includes("#")) &&
+    [replacement, ...anchors.map((to) => `${replacement}#${to}`)].every(isCleanUrl)
+  );
+}
+
+/**
+ * True when a researcher's result follows the schema and its outcome has what it needs. A replace or an
+ * update-guidance must map each of `fragments`, the sections that the docs link to.
+ */
+export function isValidResearch(result, fragments) {
   const strings = ["outcome", "replacement", "evidence", "guidance", "skipPattern", "notes"];
   const lists = ["sources", "attempts"];
   if (!result || typeof result !== "object") return false;
@@ -88,8 +115,12 @@ export function isValidResearch(result) {
   if (!lists.every((key) => Array.isArray(result[key]) && result[key].every((item) => typeof item === "string"))) {
     return false;
   }
+  const isMapping = (item) => typeof item?.from === "string" && typeof item.to === "string";
+  if (!Array.isArray(result.fragments) || !result.fragments.every(isMapping)) return false;
   if (!OUTCOMES.has(result.outcome)) return false;
-  if (result.replacement && !isCleanUrl(result.replacement)) return false;
+  if (result.replacement && !writesCleanUrls(result)) return false;
+  const mapped = new Set(result.fragments.map(({ from }) => from));
+  if (["replace", "update-guidance"].includes(result.outcome) && !fragments.every((f) => mapped.has(f))) return false;
   if (result.outcome === "replace") return Boolean(result.replacement);
   if (result.outcome === "update-guidance") return Boolean(result.guidance) && result.sources.length > 0;
   if (result.outcome === "skip-pattern") return Boolean(result.skipPattern);
@@ -98,7 +129,17 @@ export function isValidResearch(result) {
 
 /** A result for a URL that the agents did not settle. */
 export function unresolved(outcome, notes) {
-  return { outcome, replacement: "", evidence: "", guidance: "", sources: [], skipPattern: "", attempts: [], notes };
+  return {
+    outcome,
+    replacement: "",
+    fragments: [],
+    evidence: "",
+    guidance: "",
+    sources: [],
+    skipPattern: "",
+    attempts: [],
+    notes,
+  };
 }
 
 /** Adds up the turns, cost, and time of the researchers' runs. */
@@ -143,7 +184,9 @@ export async function researchAll(groups, { usagesFor, runAgent, tools, concurre
       }
       runs.push(output.result);
       const result = output.result.structured_output;
-      entry.result = isValidResearch(result) ? result : unresolved("error", "The researcher returned no valid result.");
+      entry.result = isValidResearch(result, usageFragments(entry.usages))
+        ? result
+        : unresolved("error", "The researcher returned no valid result.");
     }
   }
 
