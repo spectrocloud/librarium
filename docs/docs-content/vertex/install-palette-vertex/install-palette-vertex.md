@@ -60,10 +60,17 @@ distribution OVA.
 
 <TabItem label="VerteX Management Appliance" value="VerteX Management Appliance">
 
+Before you upgrade, refer to [Kubernetes Version Constraint](../upgrade/upgrade.md#kubernetes-version-constraint) to
+check whether your upgrade path skips a Kubernetes minor version.
+
 | **Palette Version** | **Kubernetes Version** |
 | ------------------- | ---------------------- |
+| 4.10.33             | 1.35.8                 |
+| 4.10.27             | 1.35.8                 |
 | 4.10.25             | 1.35.8                 |
-| 4.10.11             | 1.34.9                 |
+| 4.10.17             | 1.35.6                 |
+| 4.10.16             | 1.35.6                 |
+| 4.10.14             | 1.35.6                 |
 | 4.9.36              | 1.34.9                 |
 | 4.9.14              | 1.34.6                 |
 | 4.9.5               | 1.34.6                 |
