@@ -14,10 +14,9 @@ linked to each other, you can create multi-node clusters consisting of the linke
 
 Cluster operations in Local UI are only available to locally managed Edge hosts. You cannot use Local UI to create or
 manage clusters, upload content bundles, or cluster definition on a centrally managed Edge host. You must use Palette to
-manage the cluster instead. For more information, refer to
-[Create Cluster Definition](../../site-deployment/cluster-deployment.md). The exception is the update lock of a
-connected Edge Native cluster, which you review and release in Local UI. Refer to
-[Lock Profile Updates](../../cluster-management/lock-profile-updates.md).
+manage the cluster instead. The exception is the [update lock](../../cluster-management/lock-profile-updates.md) of a
+centrally managed Edge Native cluster, which you review and release in Local UI. For more information, refer to
+[Create Cluster Definition](../../site-deployment/cluster-deployment.md).
 
 Refer to the following resources to learn how to upload content and create a cluster using Local UI:
 
