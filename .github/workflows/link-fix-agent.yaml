@@ -40,6 +40,8 @@ env:
   MODEL: "claude-opus-5-5"
   MAX_BUDGET_USD: "3"
   AGENT_DIR: .github/link-fix-agent
+  # The agent's exact tool set: no Bash, no subagents, no scheduling.
+  AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,ToolSearch,WebFetch,WebSearch,Write"
   # npm ci installs the husky hooks, and the pre-commit hook fails in CI on the
   # missing algolia.appId. This job only makes throwaway local commits.
   HUSKY: "0"
@@ -65,7 +67,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Nodejs
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -130,10 +132,12 @@ jobs:
           start=$(date +%s)
           # Not --bare: bare mode drops Write, WebSearch, and the ToolSearch that
           # loads WebFetch, and the agent then guesses URLs from memory.
+          # --tools is the exact tool set; --allowedTools approves them without a prompt.
           claude -p "/fix-broken-links $WORK/link_report.json $WORK/out/fix-report.md" \
             --model "$MODEL" \
             --setting-sources project \
             --strict-mcp-config \
+            --tools "$AGENT_TOOLS" \
             --allowedTools Read Grep Glob Edit Write WebFetch WebSearch \
             --disallowedTools Bash \
             --add-dir "$WORK" \
@@ -152,11 +156,10 @@ jobs:
           set -euo pipefail
           # The prompt can't enforce this: an agent without web access still
           # "fixes" links, from memory. Fail before the diff check if it lacked them.
-          tools=$(head -n 1 "$WORK/out/run.jsonl" | jq -c '.tools')
+          tools=$(head -n 1 "$WORK/out/run.jsonl" | jq -c '.tools | sort')
           echo "Agent tools: $tools"
-          echo "$tools" | jq -e 'index("Read") and index("Edit") and index("Write") and index("WebSearch")
-            and (index("WebFetch") or index("ToolSearch")) and (index("Bash") | not)' > /dev/null \
-            || { echo "::error::The agent ran without its required tools, or with Bash."; exit 1; }
+          echo "$tools" | jq -e --arg want "$AGENT_TOOLS" '. == ($want | split(",") | sort)' > /dev/null \
+            || { echo "::error::The agent's tools are not exactly $AGENT_TOOLS."; exit 1; }
 
       - name: Check the agent's diff
         id: check
@@ -194,7 +197,7 @@ jobs:
 
       - name: Upload results
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: link-fix-${{ matrix.case }}
           path: |
