@@ -109,7 +109,9 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
 
 - Palette now rejects Kubernetes upgrades that skip a minor version or change the major version. Upgrade one minor
-  version at a time, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
+  version at a time, as the
+  [Kubernetes version skew policy](https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order)
+  requires, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
 
   - Cluster updates, including pending and scheduled cluster template updates.
 
