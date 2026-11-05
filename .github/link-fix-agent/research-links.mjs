@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Researches each broken URL with its own agent, a few at a time.
 //
-// Each researcher gets one URL and the docs lines that use it. It has only the
-// web tools, so it can neither read nor edit files, and it returns a result
-// that prompts/research.schema.json describes. apply-research.mjs then makes
-// the edits. Internal links skip research, because the web cannot say why a
+// Each researcher gets one URL, the docs lines that use it, and the sections
+// (#fragments) that those lines link to. It has only the web tools, so it can
+// neither read nor edit files, and it returns a result that
+// prompts/research.schema.json describes. apply-research.mjs then makes the
+// edits. Internal links skip research, because the web cannot say why a
 // Spectro Cloud page went away.
 //
 // Usage: node research-links.mjs <link_report.json> <repo-dir> <out-dir>
