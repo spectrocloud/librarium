@@ -610,13 +610,52 @@ describe("checkChanges rule 3, file by file", () => {
   });
 });
 
-describe("checkChanges rule 3, copy by copy", () => {
+describe("checkChanges rule 3, link by link", () => {
   const ATTACKER = "https://attacker.example.com/a/";
   const page = (before, after) => ({ path: "docs/docs-content/a.md", status: "M", before, after });
+  const unreported = (urls) => [`removed URLs that were not in the report: ${JSON.stringify(urls)}`];
+
+  it("fails when the fix gives an unreported link a new URL and moves its old URL to a reported link", () => {
+    const before = `See [the concepts](${KEEP}). Install [the tool](${OLD}).`;
+    const after = `See [the concepts](${ATTACKER}). Install [the tool](${KEEP}).`;
+    const result = checkChanges([page(before, after)], new Set([OLD]));
+    assert.deepEqual(result.failures, unreported([KEEP]));
+    assert.equal(result.proseChanged, false);
+    assert.deepEqual(result.removed, [OLD, KEEP].sort());
+    assert.deepEqual(result.added, [ATTACKER, KEEP].sort());
+  });
+
+  it("passes a reported URL swap, and keeps the unreported links matched", () => {
+    const result = checkChanges(
+      [page(`See [a](${KEEP}). Read [b](${OLD}).`, `See [a](${KEEP}). Read [b](${NEW}).`)],
+      new Set([OLD])
+    );
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(result.removed, [OLD]);
+    assert.deepEqual(result.added, [NEW]);
+  });
+
+  it("passes a reflow that keeps the links in order", () => {
+    const before = `See the\n[guide](${OLD}) and [this page](${KEEP})\nfor details.`;
+    const after = `See the [guide](${NEW})\nand [this page](${KEEP}) for\n  details.`;
+    const result = checkChanges([page(before, after)], new Set([OLD]));
+    assert.deepEqual(result.failures, []);
+    assert.equal(result.proseChanged, false);
+    assert.deepEqual(result.removed, [OLD]);
+    assert.deepEqual(result.added, [NEW]);
+  });
+
+  it("fails when the fix moves an unreported link elsewhere in the file", () => {
+    const before = `See [a](${KEEP}).\n\nRead [b](${OLD}).`;
+    const after = `Read [b](${OLD}).\n\nSee [a](${KEEP}).`;
+    const result = checkChanges([page(before, after)], new Set());
+    assert.equal(result.failures.length, 1);
+    assert.match(result.failures[0], /^removed URLs that were not in the report: /);
+  });
 
   it("fails when the fix swaps one copy of an unreported URL that the file links twice", () => {
     const result = checkChanges([page(`[a](${KEEP}) [b](${KEEP})`, `[a](${KEEP}) [b](${ATTACKER})`)], new Set());
-    assert.deepEqual(result.failures, [`removed URLs that were not in the report: ${JSON.stringify([KEEP])}`]);
+    assert.deepEqual(result.failures, unreported([KEEP]));
     assert.deepEqual(result.removed, [KEEP]);
     assert.deepEqual(result.added, [ATTACKER]);
   });
@@ -628,17 +667,20 @@ describe("checkChanges rule 3, copy by copy", () => {
     assert.deepEqual(result.added, [NEW]);
   });
 
-  it("lists a URL as added for rule 4 when the file gains another copy of it", () => {
+  it("lists a URL as added for rule 4 when a reported link takes another link's URL", () => {
     const result = checkChanges([page(`[a](${OLD}) [b](${KEEP})`, `[a](${KEEP}) [b](${KEEP})`)], new Set([OLD]));
     assert.deepEqual(result.failures, []);
     assert.deepEqual(result.removed, [OLD]);
     assert.deepEqual(result.added, [KEEP]);
   });
 
-  it("passes when the copies of a URL only move within the file", () => {
-    const result = checkChanges([page(`[a](${KEEP})\n\n[b](${OLD})`, `[b](${OLD})\n\n[a](${KEEP})`)], new Set());
+  it("passes when the fix unlinks a reported URL and keeps its text", () => {
+    const before = `Read [the tool guide](${OLD}) first. See [the concepts](${KEEP}).`;
+    const after = `Read the tool guide first. See [the concepts](${KEEP}).`;
+    const result = checkChanges([page(before, after)], new Set([OLD]));
     assert.deepEqual(result.failures, []);
-    assert.deepEqual(result.removed, []);
+    assert.equal(result.proseChanged, true);
+    assert.deepEqual(result.removed, [OLD]);
     assert.deepEqual(result.added, []);
   });
 });

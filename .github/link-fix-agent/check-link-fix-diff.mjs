@@ -5,8 +5,9 @@
 // opens only when every rule passes:
 //   1. Only docs pages and the linkinator skip lists change.
 //   2. docs/deprecated/ stays untouched, because the weekly scan skips it.
-//   3. Only URLs that the report flagged are removed, and each copy of a URL
-//      in a file counts.
+//   3. Only URLs that the report flagged are removed. Each file's links are
+//      compared in document order, so giving a link another link's URL
+//      removes its own.
 //   4. Every URL new to a file passes linkinator with the CI config. A site
 //      that blocks bots is retried, and then flagged instead of failing, so a
 //      human merges the PR.
@@ -25,7 +26,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
-import { URL_PATTERN, countUrls, urlCountChanges, urlKey } from "./lib/urls.mjs";
+import { URL_PATTERN, urlDiff, urlKey } from "./lib/urls.mjs";
 
 export const LINKINATOR_CONFIGS = ["linkinator/linkinator.config.json", "linkinator/linkinator-ci.config.json"];
 const CI_CONFIG = "linkinator/linkinator-ci.config.json";
@@ -88,9 +89,8 @@ export function skipListsMatch(configTexts) {
 
 /**
  * Applies rules 1 to 3 to the changed files, and returns the URLs that each
- * file lost and gained. A file loses a URL when it has fewer copies of it, and
- * gains one when it has more. Rule 4 needs the network, so verifyNewUrls runs
- * it on the URLs gained.
+ * file lost and gained, by urlDiff, which ties each URL to its place in the
+ * text. Rule 4 needs the network, so verifyNewUrls runs it on the URLs gained.
  */
 export function checkChanges(changes, reportedUrls) {
   const failures = [];
@@ -115,7 +115,7 @@ export function checkChanges(changes, reportedUrls) {
       continue;
     }
     // Rules 3 and 4 apply to each file, so moving a URL to another page removes it from one and adds it to the other.
-    const fileUrls = urlCountChanges(countUrls(change.before), countUrls(change.after));
+    const fileUrls = urlDiff(change.before, change.after);
     fileUrls.removed.forEach((url) => removed.add(url));
     fileUrls.added.forEach((url) => added.add(url));
     unreportedRemovals(fileUrls.removed, reportedUrls).forEach((url) => unreported.add(url));
