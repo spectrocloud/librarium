@@ -34,8 +34,8 @@ or pool identity of a cluster that Palette deploys.
 
 ## Limitations
 
-- Managed identity cloud accounts support Azure Commercial cloud. They do not support Azure Government Secret cloud.
-  <!-- TODO(PCP-3806) List Azure Government once its verification finishes. -->
+- Managed identity cloud accounts support Azure Commercial cloud and
+  [Azure Government cloud](./azure-cloud.md#azure-government-cloud). They do not support Azure Government Secret cloud.
 
 - You cannot change the authentication method or the PCG of an existing cloud account, and Palette does not move
   existing clusters to managed identities. To use managed identities, add a new cloud account.
@@ -100,8 +100,9 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 4. Add an Azure cloud account and select **Managed identity** as the **Authentication method**. In **Private Cloud
    Gateway**, select the PCG that you deployed, and enter the client ID of the management identity in **Managed identity
    client ID**. Select **Validate**, and then select **Confirm**. Refer to
-   [Register and Manage Azure Cloud Accounts](./azure-cloud.md#azure-commercial-cloud). You can also add managed
-   identity cloud accounts with the
+   [Azure Commercial Cloud](./azure-cloud.md#azure-commercial-cloud) or
+   [Azure Government Cloud](./azure-cloud.md#azure-government-cloud). You can also add managed identity cloud accounts
+   with the
    [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
    If validation fails, check that the management identity is attached to every PCG node and that it has the roles in
