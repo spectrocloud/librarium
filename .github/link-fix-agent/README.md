@@ -75,7 +75,7 @@ The workflow runs them before every agent run.
   has no shell, and it can edit only docs, partials, the two linkinator configs, and its report. The scripts that later
   run with the Vault token, and the link report that the diff check reads, stay out of its reach. The reviewer's shell
   runs only Vale and `printf`.
-- The reviewer's skills come from the private docs-ai-context repo. They are on disk only while the reviewer runs, and
-  the reviewer's transcript stays out of the uploaded artifacts, so their text never reaches this public repo's
-  artifacts.
+- The reviewer's skills come from the private docs-ai-context repo. The job checks it out after the fixer's first run
+  and deletes it when the reviewer step ends, so no fixer session can read it. The reviewer's transcript stays out of
+  the uploaded artifacts, so the private text never reaches this public repo's artifacts.
 - Fetched web pages are untrusted input. The diff check and the preview check decide, not the prompts.

@@ -130,15 +130,6 @@ jobs:
           exportEnv: false
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
-      - name: Checkout docs-ai-context
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: spectrocloud/docs-ai-context
-          ref: ${{ env.DOCS_AI_CONTEXT_REF }}
-          path: .docs-ai-context
-          token: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
-          persist-credentials: false
-
       - name: Prepare workspace
         run: |
           set -euo pipefail
@@ -149,10 +140,6 @@ jobs:
             echo "SESSION_ID=$(cat /proc/sys/kernel/random/uuid)"
             echo "PR_TITLE=docs: fix broken external links ($(date -u +'%b %-d') report)"
           } >> "$GITHUB_ENV"
-
-          # Move docs-ai-context out of the working tree, so it never shows up
-          # in the diff, and out of $WORK, which the fixer can read.
-          mv .docs-ai-context "$RUNNER_TEMP/docs-ai-context"
 
           # Replay: swap in the docs as they were before the human fix, and
           # commit them locally so the diff check compares against that tree.
@@ -254,17 +241,28 @@ jobs:
         if: ${{ steps.first-check.outputs.changed == 'true' }}
         run: node "$AGENT_DIR/gather-review.mjs" "$WORK/review" "$PR_TITLE"
 
+      # Checked out only now, after the fixer's first run, and deleted when the
+      # reviewer step ends.
+      - name: Checkout docs-ai-context
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: spectrocloud/docs-ai-context
+          ref: ${{ env.DOCS_AI_CONTEXT_REF }}
+          path: .docs-ai-context
+          token: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          persist-credentials: false
+
       - name: Run the reviewer agent
         if: ${{ steps.first-check.outputs.changed == 'true' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          # The private skills exist only during this step, so the fixer, whose
-          # transcripts the artifacts publish, never sees them.
-          trap 'rm -rf .claude/skills/pr-review-buddy .claude/skills/style-guide' EXIT
-          cp -R "$RUNNER_TEMP/docs-ai-context/.claude/skills/pr-review-buddy" \
-            "$RUNNER_TEMP/docs-ai-context/.claude/skills/style-guide" .claude/skills/
+          # The private checkout and its skills exist only during this step, so
+          # the fixer, whose transcripts the artifacts publish, never sees them.
+          trap 'rm -rf .docs-ai-context .claude/skills/pr-review-buddy .claude/skills/style-guide' EXIT
+          cp -R .docs-ai-context/.claude/skills/pr-review-buddy .docs-ai-context/.claude/skills/style-guide .claude/skills/
           # A fresh session on a smaller model, as the PR template asks.
           claude -p "/pr-review-buddy $WORK/review" \
             --model "$REVIEW_MODEL" \
