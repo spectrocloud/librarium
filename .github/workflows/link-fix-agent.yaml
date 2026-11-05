@@ -255,12 +255,15 @@ jobs:
           curl -fsSL "https://github.com/vale-cli/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION#v}_Linux_64-bit.tar.gz" \
             | sudo tar -xz -C /usr/local/bin vale
           vale --version
-          # The style packages download from GitHub, which sometimes answers 504.
-          for attempt in 1 2 3; do
-            vale sync && break
-            [[ $attempt == 3 ]] && exit 1
-            sleep 15
+          # The style packages download from GitHub, which sometimes answers 504
+          # for minutes at a time. A missing lint result must not stop the fix, so
+          # after the last attempt the reviewer is told that Vale did not run.
+          for attempt in 1 2 3 4 5; do
+            vale sync && exit 0
+            sleep $((attempt * 15))
           done
+          echo "::warning::vale sync failed 5 times, so the reviewer runs without Vale."
+          echo "Vale did not run: its style packages could not be downloaded." > "$WORK/review/vale-unavailable.txt"
 
       - name: Gather the review inputs
         if: ${{ steps.first-check.outputs.changed == 'true' }}

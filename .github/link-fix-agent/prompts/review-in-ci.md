@@ -9,7 +9,9 @@ review directory named in the prompt:
 - `pr.json`: the planned title, base branch, and changed files.
 - `pr.diff`: the PR diff.
 - `added/<path with / replaced by __>.txt`: the added line numbers for each changed file.
-- `vale-errors.txt` and `vale-all.txt`: Vale alerts on added lines only. `vale sync` already ran.
+- `vale-errors.txt` and `vale-all.txt`: Vale alerts on added lines only. `vale sync` already ran. If
+  `vale-unavailable.txt` exists, Vale did not run, so empty alert files mean nothing: say so in the report, and rely on
+  the manual pass.
 - `versionedlink-splits.txt`: the output of the VersionedLink split check. Empty means no hits.
 
 The working tree is the PR head. Wherever the skill says `git show pr-$N:<path>`, read `<path>` from the working tree.
