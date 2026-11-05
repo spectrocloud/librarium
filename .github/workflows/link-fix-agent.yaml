@@ -1,33 +1,53 @@
-name: "Link Fix Agent (pilot)"
+name: "Link Fix Agent"
 
-# Pilot: run the fix-broken-links skill headless on a GitHub runner instead of a
-# laptop. It reuses the persona-check conventions (repo-secret Claude key, pinned
-# actions, trusted scripts only) and proves the pieces later agent jobs share:
-# the key, a no-shell agent run, a deterministic diff check, and the artifacts.
+# Fixes the broken external links from the weekly link report with a headless
+# Claude Code agent, reviews the fix in a separate context, and opens a PR.
 #
-# DRY RUN: the agent's edits are uploaded as a patch and summarized. Nothing is
-# pushed and no PR is opened, so this job needs no Vault token or write scope.
+# Flow (a live run on master, weekly or by manual dispatch):
+#   1. Build the broken-link report the same way as merged-links-checks.yaml.
+#   2. The fixer agent edits the docs with the fix-broken-links skill.
+#   3. check-link-fix-diff.mjs checks the edits.
+#   4. A reviewer agent on a smaller model runs pr-review-buddy (docs-ai-context)
+#      in a fresh context.
+#   5. The fixer resumes its session, addresses the review and any diff check
+#      failures, and decides whether it is confident that the PR can merge.
+#   6. check-link-fix-diff.mjs runs again. The check, not the agent, decides
+#      whether a PR opens at all.
+#   7. Open or update the bot/fix-broken-links PR with backport labels, and
+#      post the review and the fixer's responses as a comment.
+#   8. Wait for every CI check, including the Netlify deploy preview.
+#   9. check-preview.mjs fetches each changed page from the preview. The fixer
+#      resumes once more, tests the preview, and decides again.
+#  10. When CI passed, the preview check passed, and the fixer is confident,
+#      merge. The master ruleset requires a docs-education code-owner approval
+#      and allows no bypass, so the direct merge fails and the step turns on
+#      auto-merge instead: the PR merges on its first approval. Otherwise the PR
+#      waits for a human. Either way, notify-slack goes on last.
 #
-# Two cases run side by side:
-#   live          today's docs, scanned the same way as merged-links-checks.yaml
-#   replay-nov02  the docs as they were before 516ac87b5 (Linus's Nov 2 fix), so
-#                 the agent's patch can be compared with a human answer key
+# Pull requests that change the agent get a dry run instead: the live case plus
+# a replay of the docs before 516ac87b5 (Linus's Nov 2 fix), so the patch can be
+# compared with a human answer key. The replay tests the production site, which
+# carries the human fix, in place of a deploy preview. A dry run never pushes
+# or opens a PR.
 #
-# SECURITY: the agent gets Read/Edit/Grep/Glob/Write/WebFetch/WebSearch only. No
-# Bash, no GitHub token (persist-credentials: false), and a per-run budget cap.
-# Fetched web pages are untrusted input; check-link-fix-diff.mjs, not the prompt,
-# decides whether the edits are acceptable.
+# SECURITY: neither agent holds a GitHub token (persist-credentials: false, and
+# the Vault token stays in step outputs that only the checkout and PR steps
+# read). The fixer has no shell. The reviewer's shell runs only vale, printf,
+# and read-only git subcommands. Fetched web pages are untrusted input, so the
+# diff check, not the prompt, decides whether the edits are acceptable.
 
 on:
-  push:
-    branches:
-      - link-fix-agent-pilot
+  schedule:
+    - cron: "0 15 * * 1" # Mondays, an hour after the weekly URL checks
+  workflow_dispatch:
+  pull_request:
     paths:
       - ".github/workflows/link-fix-agent.yaml"
       - ".github/link-fix-agent/**"
-  workflow_dispatch:
 
 permissions:
+  # Pushing, labeling, and auto-merge use the Vault-issued org token, so the
+  # default GITHUB_TOKEN needs no write scope.
   contents: read
 
 concurrency:
@@ -38,27 +58,43 @@ env:
   NODE_VERSION: "24"
   CLAUDE_CODE_VERSION: "2.1.311"
   MODEL: "claude-opus-5-5"
+  REVIEW_MODEL: "claude-haiku-5-5"
   MAX_BUDGET_USD: "3"
+  REVIEW_BUDGET_USD: "1"
   AGENT_DIR: .github/link-fix-agent
-  # The agent's exact tool set: no Bash, no subagents, no scheduling.
-  AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,ToolSearch,WebFetch,WebSearch,Write"
+  # Exact tool sets. The fixer has no shell; the reviewer's Bash is limited by
+  # the --allowedTools patterns in its step.
+  AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,WebFetch,WebSearch,Write"
+  REVIEW_TOOLS: "Bash,Glob,Grep,Read,Skill"
+  # Pinned docs-ai-context commit (private repo) for the pr-review-buddy and
+  # style-guide skills.
+  DOCS_AI_CONTEXT_REF: "56ad3a796e146f87120687a2ff78e5ae4e0e52eb" # main, 2026-11-04
+  # The same Vale release as spellcheck-report.yaml.
+  VALE_VERSION: "v3.24.0"
+  # The oldest supported version branch, from the PR template.
+  OLDEST_BACKPORT: version-4-7
+  PR_BRANCH: bot/fix-broken-links
   # npm ci installs the husky hooks, and the pre-commit hook fails in CI on the
-  # missing algolia.appId. This job only makes throwaway local commits.
+  # missing algolia.appId.
   HUSKY: "0"
 
 jobs:
   fix-links:
     name: Fix broken links (${{ matrix.case }})
+    # Pull request runs need the repo secrets, so only branches in this
+    # repository get them.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # About 10 minutes of agent work, plus 15 to 30 minutes of CI and Netlify.
+    timeout-minutes: 75
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - case: live
-            docs_ref: ""
-          - case: replay-nov02
-            docs_ref: 516ac87b5e6c46634519291b6237175e6987b15a
+        case: ${{ fromJSON(github.event_name == 'pull_request' && '["live","replay-nov02"]' || '["live"]') }}
+    env:
+      # Only a live run on master opens a PR.
+      DRY_RUN: ${{ github.ref != 'refs/heads/master' || matrix.case != 'live' }}
+      DOCS_REF: ${{ matrix.case == 'replay-nov02' && '516ac87b5e6c46634519291b6237175e6987b15a' || '' }}
 
     steps:
       - name: Checkout repository
@@ -77,14 +113,41 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Retrieve org GitHub token
+        id: vault
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          # Keep the token in this step's outputs, out of the agents' environment.
+          exportEnv: false
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout docs-ai-context
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: spectrocloud/docs-ai-context
+          ref: ${{ env.DOCS_AI_CONTEXT_REF }}
+          path: .docs-ai-context
+          token: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          persist-credentials: false
+
       - name: Prepare workspace
-        env:
-          DOCS_REF: ${{ matrix.docs_ref }}
         run: |
           set -euo pipefail
           WORK="$RUNNER_TEMP/link-fix"
-          mkdir -p "$WORK/out"
-          echo "WORK=$WORK" >> "$GITHUB_ENV"
+          mkdir -p "$WORK/out" "$WORK/review"
+          {
+            echo "WORK=$WORK"
+            echo "SESSION_ID=$(cat /proc/sys/kernel/random/uuid)"
+            echo "PR_TITLE=docs: fix broken external links ($(date -u +'%b %-d') report)"
+          } >> "$GITHUB_ENV"
+
+          # Move docs-ai-context out of the working tree, so it never shows up
+          # in the diff.
+          mv .docs-ai-context "$WORK/docs-ai-context"
 
           # Replay: swap in the docs as they were before the human fix, and
           # commit them locally so the diff check compares against that tree.
@@ -94,11 +157,19 @@ jobs:
             git checkout "${DOCS_REF}^" -- docs _partials linkinator
             git -c user.name=link-fix-agent -c user.email=link-fix-agent@local \
               commit -qm "replay baseline ${DOCS_REF}^"
+            # Production carries the human fix, so it stands in for the deploy
+            # preview when the agent tests it.
+            echo "PREVIEW_BASE=https://docs.spectrocloud.com" >> "$GITHUB_ENV"
+            echo "Dry run: no PR, so no CI checks ran. The production site stands in for the deploy preview." \
+              > "$WORK/out/pr-checks.txt"
           fi
 
-          # .claude/ is gitignored, so the skill never shows up in the diff.
+          # .claude/ is gitignored, so the skills never show up in the diff.
           mkdir -p .claude/skills
           cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
+          cp -R "$WORK/docs-ai-context/.claude/skills/pr-review-buddy" \
+            "$WORK/docs-ai-context/.claude/skills/style-guide" .claude/skills/
+          cp "$WORK/docs-ai-context/style-guide.md" "$WORK/review/"
 
       - name: Build the broken-link report
         id: report
@@ -123,18 +194,19 @@ jobs:
         if: ${{ steps.report.outputs.count != '0' }}
         run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
 
-      - name: Run the agent
+      - name: Run the fixer agent
         if: ${{ steps.report.outputs.count != '0' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          start=$(date +%s)
           # Not --bare: bare mode drops Write, WebSearch, and the ToolSearch that
           # loads WebFetch, and the agent then guesses URLs from memory.
           # --tools is the exact tool set; --allowedTools approves them without a prompt.
+          # The session persists so that the agent can address the review later.
           claude -p "/fix-broken-links $WORK/link_report.json $WORK/out/fix-report.md" \
             --model "$MODEL" \
+            --session-id "$SESSION_ID" \
             --setting-sources project \
             --strict-mcp-config \
             --tools "$AGENT_TOOLS" \
@@ -144,32 +216,285 @@ jobs:
             --max-budget-usd "$MAX_BUDGET_USD" \
             --output-format stream-json \
             --verbose \
-            --no-session-persistence \
             > "$WORK/out/run.jsonl"
-          echo "Agent finished in $(( $(date +%s) - start ))s"
           tail -n 1 "$WORK/out/run.jsonl" > "$WORK/out/run.json"
           jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/run.json"
 
-      - name: Check the agent had its tools
+      - name: Check the fixer had exactly its tools
         if: ${{ steps.report.outputs.count != '0' }}
         run: |
           set -euo pipefail
           # The prompt can't enforce this: an agent without web access still
           # "fixes" links, from memory. Fail before the diff check if it lacked them.
           tools=$(head -n 1 "$WORK/out/run.jsonl" | jq -c '.tools | sort')
-          echo "Agent tools: $tools"
+          echo "Fixer tools: $tools"
           echo "$tools" | jq -e --arg want "$AGENT_TOOLS" '. == ($want | split(",") | sort)' > /dev/null \
-            || { echo "::error::The agent's tools are not exactly $AGENT_TOOLS."; exit 1; }
+            || { echo "::error::The fixer's tools are not exactly $AGENT_TOOLS."; exit 1; }
 
-      - name: Check the agent's diff
-        id: check
+      # The first check only informs the fixer's second pass. The final check
+      # after it decides.
+      - name: Check the fixer's first diff
+        id: first-check
         if: ${{ steps.report.outputs.count != '0' }}
+        run: |
+          node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check-1.txt" || true
+          if [[ -n "$(git status --porcelain)" ]]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Install Vale
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://github.com/vale-cli/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION#v}_Linux_64-bit.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin vale
+          vale --version
+          vale sync
+
+      - name: Gather the review inputs
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        run: bash "$AGENT_DIR/gather-review.sh" "$WORK/review" "$PR_TITLE"
+
+      - name: Run the reviewer agent
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          # A fresh session on a smaller model, as the PR template asks. Its
+          # shell is limited to Vale and read-only git, and it holds no GitHub token.
+          claude -p "/pr-review-buddy $WORK/review" \
+            --model "$REVIEW_MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$REVIEW_TOOLS" \
+            --allowedTools Read Grep Glob "Bash(vale *)" "Bash(printf *)" \
+              "Bash(git show *)" "Bash(git grep *)" "Bash(git log *)" "Bash(git diff *)" \
+            --append-system-prompt-file "$AGENT_DIR/review-in-ci.md" \
+            --add-dir "$WORK/review" \
+            --max-budget-usd "$REVIEW_BUDGET_USD" \
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/review-run.jsonl"
+          tail -n 1 "$WORK/out/review-run.jsonl" > "$WORK/out/review-run.json"
+          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/review-run.json"
+          jq -r '.result' "$WORK/out/review-run.json" > "$WORK/review/review.md"
+          tools=$(head -n 1 "$WORK/out/review-run.jsonl" | jq -c '.tools | sort')
+          echo "Reviewer tools: $tools"
+          echo "$tools" | jq -e --arg want "$REVIEW_TOOLS" '. == ($want | split(",") | sort)' > /dev/null \
+            || { echo "::error::The reviewer's tools are not exactly $REVIEW_TOOLS."; exit 1; }
+
+      - name: Address the review
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          export REVIEW_FILE="$WORK/review/review.md" CHECK_FILE="$WORK/out/diff-check-1.txt" FIX_REPORT="$WORK/out/fix-report.md"
+          # shellcheck disable=SC2016 # envsubst takes the variable names literally
+          prompt=$(envsubst '$REVIEW_FILE $CHECK_FILE $FIX_REPORT' < "$AGENT_DIR/address-review.md")
+          claude -p "$prompt" \
+            --resume "$SESSION_ID" \
+            --model "$MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$AGENT_TOOLS" \
+            --allowedTools Read Grep Glob Edit Write WebFetch WebSearch \
+            --disallowedTools Bash \
+            --add-dir "$WORK" \
+            --max-budget-usd "$MAX_BUDGET_USD" \
+            --json-schema "$(cat "$AGENT_DIR/decision.schema.json")" \
+            --output-format json \
+            > "$WORK/out/address-run.json"
+          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/address-run.json"
+          jq '.structured_output' "$WORK/out/address-run.json" > "$WORK/out/decision.json"
+          jq -e '.confident | type == "boolean"' "$WORK/out/decision.json" > /dev/null \
+            || { echo "::error::The fixer returned no merge decision."; exit 1; }
+          jq -r '"confident=\(.confident): \(.reason)"' "$WORK/out/decision.json"
+
+      - name: Check the final diff
+        id: check
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
         run: |
           set +e
           node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check.txt"
           echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          if [[ -n "$(git status --porcelain)" ]]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
           git diff > "$WORK/out/fix.patch"
           git diff --stat
+
+      - name: Pick backport labels
+        if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: bash "$AGENT_DIR/backport-labels.sh" "$WORK/out/fix.patch" "$OLDEST_BACKPORT" "$WORK/out"
+
+      - name: Write the PR description
+        if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: bash "$AGENT_DIR/write-pr-text.sh" "$WORK"
+
+      - name: Open or update the PR
+        id: pr
+        if: ${{ env.DRY_RUN == 'false' && steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$PR_BRANCH"
+          git commit -qam "$PR_TITLE"
+          # The checkout kept no credentials, so pass the token for this push only.
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            push --force origin "HEAD:refs/heads/$PR_BRANCH"
+
+          PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -z "$PR" ]]; then
+            gh pr create --base master --head "$PR_BRANCH" --title "$PR_TITLE" --body-file "$WORK/out/pr-body.md"
+            PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          else
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$PR" -f title="$PR_TITLE" -F body=@"$WORK/out/pr-body.md" > /dev/null
+            echo "Updated the open PR #$PR."
+          fi
+          [[ -n "$PR" ]] || { echo "::error::Could not resolve the PR number."; exit 1; }
+          gh pr comment "$PR" --body-file "$WORK/out/pr-comment.md"
+
+          # notify-slack waits until the agent has tested the deploy preview.
+          labels=(small-pr not-urgent)
+          while IFS= read -r label; do labels+=("$label"); done < "$WORK/out/backport-labels.txt"
+          [[ -s "$WORK/out/backport-labels.txt" ]] && labels+=(auto-backport)
+          args=()
+          for label in "${labels[@]}"; do args+=(-f "labels[]=$label"); done
+          gh api --method POST "repos/$GITHUB_REPOSITORY/issues/$PR/labels" "${args[@]}" > /dev/null
+          {
+            echo "number=$PR"
+            echo "url=$(gh pr view "$PR" --json url --jq .url)"
+          } >> "$GITHUB_OUTPUT"
+          # The fix is committed now, so later diffs compare against master.
+          echo "DIFF_BASE=HEAD~1" >> "$GITHUB_ENV"
+
+      - name: Wait for CI and the deploy preview
+        id: ci
+        if: ${{ steps.pr.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+        run: |
+          set -uo pipefail
+          # Wait for the checks to register, and then for every check to finish.
+          for _ in $(seq 1 30); do
+            gh pr checks "$PR" 2>&1 | grep -q 'no checks reported' || break
+            sleep 20
+          done
+          gh pr checks "$PR" --watch --interval 60 > /dev/null 2>&1
+          gh pr checks "$PR" > "$WORK/out/pr-checks.txt" 2>&1
+          ci_exit=$?
+          cat "$WORK/out/pr-checks.txt"
+          if [[ $ci_exit == 0 ]]; then echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+          if grep -q $'^netlify/docs-spectrocloud/deploy-preview\tpass' "$WORK/out/pr-checks.txt"; then
+            echo "PREVIEW_BASE=https://deploy-preview-${PR}--docs-spectrocloud.netlify.app" >> "$GITHUB_ENV"
+          fi
+
+      - name: Check the deploy preview
+        id: preview
+        if: ${{ env.PREVIEW_BASE != '' && steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: |
+          set +e
+          node "$AGENT_DIR/check-preview.mjs" . "$PREVIEW_BASE" "$WORK/out/preview-check.json" "${DIFF_BASE:-HEAD}" \
+            | tee "$WORK/out/preview-check.txt"
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Test the deploy preview
+        if: ${{ steps.preview.outputs.exit != '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          export PREVIEW_BASE PREVIEW_FILE="$WORK/out/preview-check.txt" CHECKS_FILE="$WORK/out/pr-checks.txt"
+          # shellcheck disable=SC2016 # envsubst takes the variable names literally
+          prompt=$(envsubst '$PREVIEW_BASE $PREVIEW_FILE $CHECKS_FILE' < "$AGENT_DIR/test-preview.md")
+          # The PR is already pushed, so this pass can read and fetch but not edit.
+          claude -p "$prompt" \
+            --resume "$SESSION_ID" \
+            --model "$MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "Glob,Grep,Read,WebFetch" \
+            --allowedTools Read Grep Glob WebFetch \
+            --add-dir "$WORK" \
+            --max-budget-usd "$MAX_BUDGET_USD" \
+            --json-schema "$(cat "$AGENT_DIR/decision.schema.json")" \
+            --output-format json \
+            > "$WORK/out/preview-run.json"
+          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/preview-run.json"
+          jq '.structured_output' "$WORK/out/preview-run.json" > "$WORK/out/final-decision.json"
+          jq -e '.confident | type == "boolean"' "$WORK/out/final-decision.json" > /dev/null \
+            || { echo "::error::The fixer returned no merge decision after the preview test."; exit 1; }
+          jq -r '"confident=\(.confident): \(.reason)"' "$WORK/out/final-decision.json"
+
+      # Merge only when every CI check passed, the preview check passed, and the
+      # agent is still confident after testing the preview. The master ruleset
+      # requires a docs code owner's approval and allows no bypass, so the
+      # direct merge fails today, and auto-merge makes the first approval merge it.
+      - name: Merge or hand off
+        if: ${{ always() && steps.pr.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+          CI_OK: ${{ steps.ci.outputs.ok }}
+          PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
+        run: |
+          set -euo pipefail
+          decision="$WORK/out/final-decision.json"
+          blockers=()
+          [[ "$CI_OK" == "true" ]] || blockers+=("Not every CI check passed.")
+          [[ -n "${PREVIEW_BASE:-}" ]] || blockers+=("The Netlify deploy preview did not build, so the agent could not test it.")
+          [[ "$PREVIEW_EXIT" == "0" ]] || blockers+=("The deploy preview check failed or did not run.")
+          if [[ ! -f "$decision" ]]; then
+            blockers+=("The agent did not finish its deploy preview test.")
+          elif [[ "$(jq -r '.confident' "$decision")" != "true" ]]; then
+            blockers+=("The agent is not confident: $(jq -r '.reason' "$decision")")
+          fi
+
+          merged=false
+          if [[ ${#blockers[@]} -eq 0 ]]; then
+            if gh pr merge "$PR" --squash; then
+              merged=true
+              outcome="The agent merged this PR."
+            else
+              gh pr merge "$PR" --squash --auto || true
+              if [[ "$(gh pr view "$PR" --json autoMergeRequest --jq '.autoMergeRequest != null')" == "true" ]]; then
+                outcome="The agent turned on auto-merge. The master ruleset requires a docs code owner's approval, so this PR merges when one approves it."
+              else
+                outcome="The agent could not merge this PR or turn on auto-merge. A docs code owner approves and merges it."
+              fi
+            fi
+          else
+            gh pr merge "$PR" --disable-auto > /dev/null 2>&1 || true
+            outcome="The agent handed this PR off. A docs code owner reviews, approves, and merges it."
+          fi
+
+          {
+            echo "## Deploy preview test"
+            echo
+            if [[ -f "$WORK/out/preview-check.txt" ]]; then
+              echo "Preview: ${PREVIEW_BASE}"
+              echo
+              echo '```text'
+              cat "$WORK/out/preview-check.txt"
+              echo '```'
+              echo
+            fi
+            [[ -f "$decision" ]] && jq -r '"**The agent:** \(.reason)"' "$decision" && echo
+            echo "**Outcome:** ${outcome}"
+            if [[ ${#blockers[@]} -gt 0 ]]; then
+              echo
+              printf -- '- %s\n' "${blockers[@]}"
+            fi
+          } > "$WORK/out/merge-comment.md"
+          gh pr comment "$PR" --body-file "$WORK/out/merge-comment.md"
+          cat "$WORK/out/merge-comment.md"
+          if [[ "$merged" != "true" ]]; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/issues/$PR/labels" -f "labels[]=notify-slack" > /dev/null
+          fi
 
       - name: Write the job summary
         if: ${{ always() && steps.report.outputs.count != '' }}
@@ -177,16 +502,47 @@ jobs:
           CASE: ${{ matrix.case }}
           COUNT: ${{ steps.report.outputs.count }}
           CHECK_EXIT: ${{ steps.check.outputs.exit }}
+          PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
+          PR_URL: ${{ steps.pr.outputs.url }}
         run: |
           {
             echo "## Link fix agent: ${CASE}"
             echo
             echo "Broken external links reported: **${COUNT}**"
-            if [[ -f "$WORK/out/run.json" ]]; then
-              jq -r '"Agent: \(.num_turns) turns, $\(.total_cost_usd * 100 | round / 100), \(.duration_ms / 1000 | round)s"' "$WORK/out/run.json"
+            echo
+            for run in run review-run address-run preview-run; do
+              [[ -f "$WORK/out/$run.json" ]] || continue
+              jq -r --arg run "$run" '"- \($run): \(.num_turns) turns, $\(.total_cost_usd * 100 | round / 100), \(.duration_ms / 1000 | round)s"' "$WORK/out/$run.json"
+            done
+            for d in decision final-decision; do
+              [[ -f "$WORK/out/$d.json" ]] || continue
+              echo
+              jq -r --arg d "$d" '"**\($d):** confident=\(.confident). \(.reason)"' "$WORK/out/$d.json"
+            done
+            if [[ -n "$PR_URL" ]]; then
+              echo
+              echo "**PR:** $PR_URL"
+              [[ -f "$WORK/out/merge-comment.md" ]] && { echo; cat "$WORK/out/merge-comment.md"; }
+            elif [[ -f "$WORK/out/pr-body.md" ]]; then
+              echo
+              echo "**Dry run:** the PR description and comments are in the artifacts. CI is not checked in a dry run."
+              echo "Backport labels: $(paste -sd ' ' "$WORK/out/backport-labels.txt")"
+              if [[ "$PREVIEW_EXIT" == "0" && "$(jq -r '.confident' "$WORK/out/final-decision.json" 2>/dev/null)" == "true" ]]; then
+                echo "Would merge once CI passes."
+              else
+                echo "Would hand off to a human."
+              fi
+              if [[ -f "$WORK/out/preview-check.txt" ]]; then
+                echo
+                echo "### Preview check (exit ${PREVIEW_EXIT}) against ${PREVIEW_BASE}"
+                echo
+                echo '```text'
+                cat "$WORK/out/preview-check.txt"
+                echo '```'
+              fi
             fi
             echo
-            echo "### Diff check (exit ${CHECK_EXIT:-not run})"
+            echo "### Final diff check (exit ${CHECK_EXIT:-not run})"
             echo
             echo '```text'
             cat "$WORK/out/diff-check.txt" 2>/dev/null || echo "not run"
@@ -203,10 +559,22 @@ jobs:
           path: |
             ${{ env.WORK }}/link_report.json
             ${{ env.WORK }}/out/
+            ${{ env.WORK }}/review/
+            !${{ env.WORK }}/review/style-guide.md
           if-no-files-found: warn
 
-      - name: Fail if the diff check failed
+      - name: Fail if the final diff check failed
         if: ${{ steps.check.outputs.exit != '' && steps.check.outputs.exit != '0' }}
         run: |
           echo "::error::The diff check rejected the agent's edits. See the job summary."
           exit 1
+
+      - name: Failure Slack Notification
+        if: ${{ failure() && env.DRY_RUN == 'false' }}
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The Link Fix Agent job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
