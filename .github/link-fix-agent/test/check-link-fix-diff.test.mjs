@@ -14,7 +14,7 @@ import {
   verdict,
   verifyNewUrls,
 } from "../check-link-fix-diff.mjs";
-import { FAKE, git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
+import { FAKE, assertLine, git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const OLD = "https://old.example.com/guide";
 const NEW = "https://new.example.com/guide";
@@ -35,9 +35,9 @@ describe("fileRuleFailure", () => {
 
   it("fails when a file is added, deleted, renamed, or untracked", () => {
     for (const status of ["A", "D", "R", "??"]) {
-      assert.match(
+      assert.equal(
         fileRuleFailure({ path: "docs/docs-content/a.md", status }),
-        new RegExp(`only modifications are allowed \\(status ${status.replace(/\?/g, "\\?")}\\)`)
+        `docs/docs-content/a.md: only modifications are allowed (status ${status})`
       );
     }
   });
@@ -483,7 +483,7 @@ describe("check-link-fix-diff.mjs command line", () => {
     const result = check();
     assert.equal(result.status, 0, result.stdout + result.stderr);
     assert.match(result.stdout, /^Changed files: 2 {2}URLs removed: 1 {2}URLs added: 1$/m);
-    assert.match(result.stdout, new RegExp(`note: not checked \\(offline\\): ${NEW}`));
+    assertLine(result.stdout, `note: not checked (offline): ${NEW}`);
     assert.match(result.stdout, /^PROSE_CHANGED=0$/m);
     assert.match(result.stdout, /^UNVERIFIED_LINKS=0$/m);
     assert.match(result.stdout, /^SKIP_PATTERNS_ADDED=0$/m);
@@ -516,7 +516,7 @@ describe("check-link-fix-diff.mjs command line", () => {
     edit({ "docs/docs-content/a.md": PAGE.replace(KEEP, NEW) });
     const result = check();
     assert.equal(result.status, 1);
-    assert.match(result.stdout, new RegExp(`FAIL: removed URLs that were not in the report: \\["${KEEP}"\\]`));
+    assertLine(result.stdout, `FAIL: removed URLs that were not in the report: ${JSON.stringify([KEEP])}`);
   });
 
   it("fails when the fix adds an untracked file", () => {
@@ -566,7 +566,7 @@ describe("check-link-fix-diff.mjs command line", () => {
     edit({ "docs/docs-content/a.md": `${PAGE}\nRead [this page](https://attacker.example.com/) again.\n` });
     const result = check();
     assert.equal(result.status, 1, result.stdout);
-    assert.match(result.stdout, new RegExp(`FAIL: removed URLs that were not in the report: \\["${KEEP}"\\]`));
+    assertLine(result.stdout, `FAIL: removed URLs that were not in the report: ${JSON.stringify([KEEP])}`);
     assert.match(result.stdout, /note: not checked \(offline\): https:\/\/attacker\.example\.com\//);
   });
 
@@ -605,7 +605,7 @@ describe("check-link-fix-diff.mjs command line", () => {
     });
     const result = check();
     assert.match(result.stdout, /^Changed files: 2 {2}URLs removed: 1 {2}URLs added: 2$/m);
-    assert.match(result.stdout, new RegExp(`note: not checked \\(offline\\): ${KEEP}`));
+    assertLine(result.stdout, `note: not checked (offline): ${KEEP}`);
   });
 });
 

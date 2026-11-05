@@ -1,5 +1,6 @@
 // Fixtures that the tests share: temporary folders, git repos, script runs, and fake credentials.
 
+import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
@@ -24,6 +25,15 @@ export const FAKE = {
 export function privateKeyWith(fill) {
   const label = ["RSA", "PRIVATE", "KEY"].join(" ");
   return `-----BEGIN ${label}-----\n${fill.repeat(64)}\n-----END ${label}-----`;
+}
+
+/**
+ * Asserts that one line of `text`, without its surrounding whitespace, is exactly
+ * `expected`. It compares plain text, so URLs need no regex escaping.
+ */
+export function assertLine(text, expected) {
+  const found = text.split("\n").some((line) => line.trim() === expected);
+  assert.ok(found, `Expected the line ${JSON.stringify(expected)} in:\n${text}`);
 }
 
 /** Creates an empty temporary folder. The caller removes it. */

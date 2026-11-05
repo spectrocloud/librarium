@@ -4,7 +4,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, it } from "node:test";
 
 import { addSkipPattern, fixReport, guidanceTasks, replaceUrl, usageFiles } from "../apply-research.mjs";
-import { git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
+import { assertLine, git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const OLD = "https://old.example.com/guide";
 const NEW = "https://new.example.com/guide";
@@ -279,19 +279,14 @@ describe("fixReport", () => {
       guidance: "Renamed.",
       sources: ["s"],
     });
-    assert.match(
-      fixReport([entry(TOOL_OLD, result)]),
-      new RegExp(`\\| ${TOOL_OLD} \\| ${TOOL_NEW} \\|  \\| Renamed\\. \\| s \\| 1 \\|`)
-    );
+    assertLine(fixReport([entry(TOOL_OLD, result)]), `| ${TOOL_OLD} | ${TOOL_NEW} |  | Renamed. | s | 1 |`);
   });
 
   it("shows where each section of a fixed link now points", () => {
     const result = research({ replacement: VSPHERE_NEW, fragments: VSPHERE_FRAGMENTS, evidence: "Title." });
-    assert.match(
+    assertLine(
       fixReport([entry(VSPHERE, result)]),
-      new RegExp(
-        `\\| ${VSPHERE_NEW} \\| #accessing-remote-vms → #remote-access, #vsphere-clone-builder → none \\| Title\\. \\|`
-      )
+      `| ${VSPHERE} | ${VSPHERE_NEW} | #accessing-remote-vms → #remote-access, #vsphere-clone-builder → none | Title. | 1 |`
     );
   });
 

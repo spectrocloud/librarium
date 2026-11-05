@@ -191,7 +191,7 @@ describe("urlDiff", () => {
 
   it("catches a URL that moves to an adjacent link with no words between them", () => {
     const { removed } = urlDiff(`[a](${U})[b](${R})`, `[a](${ATT})[b](${U})`);
-    assert.ok(removed.includes(U), JSON.stringify(removed));
+    assert.ok(new Set(removed).has(U), JSON.stringify(removed));
   });
 
   it("ignores a reflow that keeps the links in order", () => {
