@@ -50,9 +50,10 @@ If you want to enable
 for your AKS clusters, you need to assign the **Azure Kubernetes Service RBAC Cluster Admin** built-in role to the
 service principal you want to use with Palette.
 
-To look up Microsoft Entra admin groups for AKS clusters, the identity that calls Microsoft Graph also needs the
-Microsoft Graph `Group.Read.All` permission. For **Service principal** cloud accounts, this is the service principal of
-the cloud account. For **Managed identity** cloud accounts, this is the management identity.
+To look up Microsoft Entra admin groups for AKS clusters, the service principal also needs the Microsoft Graph
+`Group.Read.All` permission. For **Managed identity** cloud accounts, the management identity needs this permission
+instead. Refer to
+[Assign Roles to the Management Identity](./azure-managed-identities.md#assign-roles-to-the-management-identity).
 
 Review the
 [Microsoft Entra ID Integration - Prerequisites](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md#prerequisites)

@@ -48,8 +48,8 @@ or pool identity of a cluster that Palette deploys.
 
 ## Set Up Managed Identity Authentication
 
-Create the management identity, deploy a PCG in Azure that carries it, and then add the cloud account. You can also add
-managed identity cloud accounts with the
+Create the management identity, attach it to the nodes of a Kubernetes cluster in Azure, deploy a PCG to that cluster,
+and then add the cloud account. You can also add managed identity cloud accounts with the
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Prerequisites
@@ -74,8 +74,9 @@ Assign the following roles to the management identity.
 | **Role**                         | **Scope**                                                                                                                                                                     |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Contributor**                  | The subscription, or each resource group where you create clusters. Refer to [Limit Permissions](#limit-permissions).                                                         |
-| **Reader**                       | The subscription. Required for AKS clusters. Refer to [AKS Clusters](#aks-clusters). It also lets you browse resource groups, networks, and virtual machine sizes in Palette. |
+| **Reader**                       | The subscription. Required for AKS clusters. It also lets you browse resource groups, networks, and virtual machine sizes in Palette. Refer to [AKS Clusters](#aks-clusters). |
 | **Managed Identity Operator**    | Each cluster, Kubelet, AKS service, and pool identity that is outside the scope of the **Contributor** role.                                                                  |
+| **Network Contributor**          | The VNet resource group, if it is outside the scope of the **Contributor** role.                                                                                              |
 | **Private DNS Zone Contributor** | Your private DNS zones. Required only for private clusters.                                                                                                                   |
 
 To look up Microsoft Entra admin groups for AKS clusters that use
@@ -100,7 +101,8 @@ also needs the Microsoft Graph `Group.Read.All` permission.
      Replace `<resource-group>` and `<cluster-name>` with the resource group and name of the AKS cluster, and
      `<control-plane-identity-id>` and `<management-identity-id>` with the resource IDs of the identities.
 
-   - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine.
+   - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine or
+     scale set.
 
 3. Deploy a self-hosted PCG to the cluster. Refer to
    [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md). Wait until the **Cluster Status** of
@@ -131,7 +133,7 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 ## Assign Identities to Clusters
 
 When you deploy a cluster with a managed identity cloud account, select its identities in the cluster configuration
-step. Palette lists the user-assigned managed identities that the PCG can access and looks up their client IDs.
+step. Palette lists the user-assigned managed identities that the PCG can access.
 
 ### Azure IaaS Clusters
 
@@ -149,21 +151,21 @@ Assign the following roles.
 | Cluster      | **Managed Identity Operator**       | Itself and any pool identities that are outside its **Contributor** scope.                    |
 | Pool         | The roles that your workloads need. | The resources that your workloads access.                                                     |
 
-You can also turn on **Exclude cluster identity** for a worker pool so that its nodes carry only the pool identities. If
-you do, taint the pool. Refer to
+You can also turn on **Exclude cluster identity** for a worker pool so that its nodes have only the pool identities
+attached. If you do, taint the pool. Refer to
 [Taint Worker Pools That Exclude the Cluster Identity](#taint-worker-pools-that-exclude-the-cluster-identity).
 
 For the procedure, refer to [Create and Manage Azure IaaS Cluster](./create-azure-cluster.md).
 
 ### Taint Worker Pools That Exclude the Cluster Identity
 
-When you turn on **Exclude cluster identity** for a worker pool, the nodes of that pool do not carry the cluster
-identity. Palette management components authenticate to Azure as the cluster identity, so they cannot get a token on
+When you turn on **Exclude cluster identity** for a worker pool, the nodes of that pool do not have the cluster identity
+attached. Palette management components authenticate to Azure as the cluster identity, so they cannot get a token on
 these nodes. The same applies to any add-on that uses the cluster identity. If Kubernetes schedules one of these
 components on the pool, the component fails. Palette does not keep these components off the pool, so add a
 [taint](../../cluster-management/taints.md) to the pool.
 
-1. When you create the pool, add the following taint in **Taints**.
+1. When you create the pool, select **Add New Taint** and enter the following values.
 
    | **Parameter** | **Value**                                                      |
    | ------------- | -------------------------------------------------------------- |
@@ -179,8 +181,8 @@ components on the pool, the component fails. Palette does not keep these compone
 2. Add a toleration that matches the taint to the workloads that must run on the pool, typically the workloads that use
    the pool identities. To keep them on the pool, also add a node selector or node affinity.
 
-3. Keep at least one worker pool that carries the cluster identity, with enough capacity for the Palette management
-   components.
+3. Keep at least one worker pool whose nodes have the cluster identity attached, with enough capacity for the Palette
+   management components.
 
 Some DaemonSets tolerate every taint, so they still run on the pool and keep working without the cluster identity. These
 include the Container Network Interface (CNI) plugin, `kube-proxy`, the Azure cloud node manager, and the Container
@@ -193,8 +195,8 @@ Storage Interface (CSI) node plugin.
 | AKS service identity | **AKS service identity**, in the cluster configuration | Yes                                                |
 | Kubelet identity     | **Kubelet identity**, in the cluster configuration     | Yes. It must differ from the AKS service identity. |
 
-Assign the following roles before you create the cluster, because role assignments can take up to 60 minutes to take
-effect.
+Assign the following roles before you create the cluster, because a role assignment can take up to 60 minutes to become
+active.
 
 | **Identity** | **Role**                         | **Scope**                                                                                               |
 | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -236,9 +238,8 @@ use the following approach.
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity) and
    [Assign Identities to Clusters](#assign-identities-to-clusters).
 
-4. Assign the management identity the **Reader** role on the subscription. For AKS clusters, also assign the role to the
-   Kubelet identity. AKS clusters require this role, because Palette reads their node pools in the node resource group.
-   Refer to [AKS Clusters](#aks-clusters). For Azure IaaS clusters, the role is optional and lets you browse resource
+4. For AKS clusters, assign the management identity and the Kubelet identity the **Reader** role on the subscription.
+   Refer to [AKS Clusters](#aks-clusters). For Azure IaaS clusters, the role is optional. It lets you browse resource
    groups, networks, and virtual machine sizes outside your resource groups in Palette.
 
 5. _(Optional)_ For stronger isolation, use one cluster identity per resource group. A shared identity is simpler, but

@@ -160,9 +160,7 @@ to learn more about the ports used for communication.
 
             <summary> Azure Managed Identity </summary>
 
-            This setting assigns only the AKS service identity, which is the control plane identity of the cluster. AKS uses only the first entry and creates its own Kubelet identity.
-
-            With a **Service principal** cloud account, this setting is the only way to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity). Populate
+            With a **Service principal** cloud account, this setting is the only way to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity) for the AKS control plane. Populate
             the following configuration template and add the configuration to your Kubernetes cluster profile layer.
 
                   ```yaml
@@ -172,6 +170,8 @@ to learn more about the ports used for communication.
                   ```
 
             Replace `<provider-id>` with your user-assigned identity ID in the format of `azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+
+            AKS uses only the first `providerID` entry as the control plane identity, and it creates its own Kubelet identity.
 
             With a **Managed identity** cloud account, use the **AKS service identity** and **Kubelet identity** fields in the cluster configuration instead. Refer to [AKS Clusters](./azure-managed-identities.md#aks-clusters). If you also keep this setting, its first entry must match the **AKS service identity**, or provisioning fails.
 
