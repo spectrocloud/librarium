@@ -43,7 +43,7 @@ only for Red Hat Enterprise Linux and Rocky Linux 8. On a JetPack (Ubuntu) host,
 
    - [bash](https://www.gnu.org/software/bash/), configured as the default shell
    - [jq](https://jqlang.github.io/jq/download/)
-   - [Zstandard](https://facebook.github.io/zstd/)
+   - [Zstandard](https://meta.github.io/zstd/)
    - [rsync](https://github.com/RsyncProject/rsync)
    - [systemd](https://systemd.io/), with `systemd-timesyncd`, `systemd-resolved`, and `systemd-networkd`
    - [conntrack](https://conntrack-tools.netfilter.org/downloads.html)

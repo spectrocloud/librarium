@@ -26,6 +26,7 @@ import AccordionPanel from "@site/src/components/AccordionPanel";
 import RedirectPackPage from "@site/src/components/RedirectPackPage";
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
 import AskAI from "@site/src/components/AskAI/index";
+import LandingHero from "@site/src/components/LandingHero/LandingHero";
 import FullUrlLink from "@site/src/components/FullUrlLink";
 
 export default {
@@ -55,5 +56,6 @@ export default {
   OsCveTable,
   ReleaseNotesBreakingChanges,
   AskAI,
+  LandingHero,
   FullUrlLink,
 };
