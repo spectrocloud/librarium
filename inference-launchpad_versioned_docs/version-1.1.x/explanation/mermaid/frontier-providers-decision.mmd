@@ -1,0 +1,48 @@
+flowchart TD
+    ingress([Request enters gateway]):::start
+    sovereignty{Sovereignty<br/>armed?}:::decision
+    tier{Tier alias resolves to<br/>frontier or local?}:::decision
+
+    blocked_sovereignty[Blocked by sovereignty<br/>appliance-wide egress override]:::deny
+    served_local[Served locally<br/>no X-AIBox-Frontier]:::local
+
+    egress_cap{Client egress<br/>capability enabled?}:::decision
+    key_present{Provider key<br/>present for client?}:::decision
+    budget{Per-provider egress<br/>budget remaining?}:::decision
+    provider_ok{Provider answered<br/>within timeout?}:::decision
+    on_exceed{on_exceed setting}:::decision
+
+    denied_no_key[HTTP 401 · OutcomeDenied<br/>missing provider credential]:::deny
+    refused[HTTP 429<br/>egress refused]:::deny
+    served_frontier[Frontier response<br/>X-AIBox-Frontier: anthropic &#124; openai &#124; gemini]:::frontier
+    provider_fell_back[Served locally<br/>X-AIBox-Frontier: fell-back]:::fallback
+    budget_fell_back[Served locally<br/>X-AIBox-Frontier: budget-exhausted]:::fallback
+
+    ingress --> sovereignty
+    sovereignty -- yes --> blocked_sovereignty
+    sovereignty -- no --> tier
+
+    tier -- local --> served_local
+    tier -- frontier --> egress_cap
+
+    egress_cap -- no --> refused
+    egress_cap -- yes --> key_present
+
+    key_present -- no --> denied_no_key
+    key_present -- yes --> budget
+
+    budget -- yes --> provider_ok
+    budget -- no --> on_exceed
+
+    provider_ok -- yes --> served_frontier
+    provider_ok -- no --> provider_fell_back
+
+    on_exceed -- "local (default)" --> budget_fell_back
+    on_exceed -- refuse --> refused
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef decision fill:#eef2ff,stroke:#4f46e5,color:#0f172a,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef frontier fill:#ffedd5,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef fallback fill:#f0fdfa,stroke:#0f766e,color:#0f172a,stroke-width:2px;
+    classDef deny fill:#fee2e2,stroke:#b91c1c,color:#0f172a,stroke-width:2px;

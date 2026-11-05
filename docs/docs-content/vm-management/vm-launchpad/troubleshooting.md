@@ -11,6 +11,47 @@ tags: ["vmo", "vm launchpad", "troubleshooting"]
 This page provides troubleshooting guidance for common scenarios you may encounter when using the
 [PaletteAI VM Launchpad](./vm-launchpad.md).
 
+## Scenario - Large VM Stays Pending with Insufficient Memory
+
+A VM with a large memory size, such as a 16 GiB VM on nodes with 32 GiB of memory, does not start, and `kubectl get vm`
+reports its status as `ErrorUnschedulable`. Its `virt-launcher` pod stays in the `Pending` state, and the pod events
+show a message such as `0/3 nodes are available: 3 Insufficient memory`.
+
+This occurs because Kubernetes places a VM only on a node that has enough _allocatable_ memory left after the memory
+requests of the pods that already run on it. Allocatable memory is lower than the total memory of the node, because each
+node reserves memory for host services. On each control plane node, etcd and the Kubernetes API server also request part
+of the allocatable memory. Refer to
+[Node Memory Reservation](./vmo-overcommit-memory-optimization-appliance.md#node-memory-reservation) for the amounts.
+
+### Make Room for the VM
+
+You need `kubectl` access to the affected VM Launchpad cluster. From the cluster **Overview** tab, download the
+[Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file, and then set the `KUBECONFIG` environment variable
+to point to it.
+
+1. Check how much memory each node can still give to new pods. The loop lists the memory that the pods on each node
+   request, and the last command lists the allocatable memory of each node.
+
+   ```shell
+   for node in $(kubectl get nodes --output name); do
+     echo "$node"
+     kubectl describe "$node" | grep --after-context=6 "Allocated resources"
+   done
+   kubectl get nodes --output custom-columns=NODE:.metadata.name,ALLOCATABLE:.status.allocatable.memory
+   ```
+
+2. Free memory for the VM. Stop or migrate other VMs on a node, lower the memory size of the VM, or add nodes to the
+   cluster.
+
+3. Confirm that the VM reaches the `Running` status.
+
+   ```shell
+   kubectl get vm <vm-name> --namespace <vm-namespace>
+   ```
+
+   Replace `<vm-name>` with the name of the VM and `<vm-namespace>` with the namespace of the VM. The `STATUS` column
+   shows `Running` when the VM starts.
+
 ## Scenario - Portworx Storage Cluster Does Not Initialize on VMware vSphere VMs
 
 When you deploy the Portworx variant of VM Launchpad on VMware vSphere VMs, such as for a proof of concept, the Portworx
@@ -92,19 +133,21 @@ This override takes effect immediately, but it does not persist across reboots. 
 6. From the VMO left main menu, select **Infrastructure** > **Storage** > **Portworx Storage Clusters**, and confirm
    that the **Phase** of the storage cluster is `Running`.
 
-## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on Piraeus Storage
+<!-- vale Vale.Terms = NO -->
 
-On appliances that use Piraeus storage, network disruptions can cause the DRBD replicas that back the Keycloak
-PostgreSQL database to lose their connection. When this happens, the Keycloak login page hangs, and because the Virtual
-Machine Orchestrator and Headlamp consoles authenticate through Keycloak, they also become inaccessible, even though the
-Keycloak and PostgreSQL pods report a `Ready` status.
+## Scenario - Keycloak, VMO, and Headlamp Consoles Become Inaccessible on FIPS Appliances {#scenario---keycloak-vmo-and-headlamp-consoles-become-inaccessible-on-piraeus-storage}
+
+<!-- vale Vale.Terms = YES -->
+
+On FIPS VM Launchpad appliances, which use Piraeus storage, network disruptions can cause the DRBD replicas that back
+the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops responding.
+The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak and
+PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
-suspends database I/O. Use the following steps to restore the connection manually.
-
-VM Launchpad ships two Piraeus storage variants, and some values in this scenario differ between them. Select your
-variant in the tabs throughout the procedure. The FIPS profile stores PostgreSQL data in a `pgdata-postgres-0` volume,
-while the non-FIPS CloudNativePG profile uses a `keycloak-db-*` volume.
+suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
+the Keycloak database on node-local storage instead of DRBD replicas. Use the following steps to restore the connection
+manually.
 
 ### Prerequisites
 
@@ -126,35 +169,17 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    NS=keycloak
    ```
 
-2. List the persistent volume claims in the namespace.
+2. List the persistent volume claims in the namespace, and confirm that the list includes the `pgdata-postgres-0` claim.
 
    ```bash
    kubectl --namespace "$NS" get pvc
    ```
 
-3. Assign the PostgreSQL data PVC to a variable, based on your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Assign the PostgreSQL data PVC, `pgdata-postgres-0`, to a variable.
 
    ```bash
    PVC=pgdata-postgres-0
    ```
-
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   Replace `<postgres-data-pvc>` with the `keycloak-db-*` claim name from the previous step.
-
-   ```bash
-   PVC=<postgres-data-pvc>
-   ```
-
-   </TabItem>
-
-   </Tabs>
 
 4. Resolve the claim to its persistent volume.
 
@@ -247,17 +272,13 @@ check only confirms that the database accepts connections, so run an actual quer
      linstor resource-connection list "$RESOURCE"
    ```
 
-2. List the PostgreSQL pods.
+2. List the pods in the namespace, and confirm that the list includes the `postgres-0` pod.
 
    ```bash
    kubectl --namespace "$NS" get pods
    ```
 
-3. Set the database pod and credential values for your storage variant.
-
-   <Tabs groupId="piraeus-profile">
-
-   <TabItem value="fips" label="FIPS">
+3. Set the database pod and credential values.
 
    ```bash
    DB_POD=postgres-0
@@ -265,24 +286,8 @@ check only confirms that the database accepts connections, so run an actual quer
    DB_SECRET_KEY=POSTGRES_PASSWORD
    ```
 
-   </TabItem>
-
-   <TabItem value="non-fips" label="Non-FIPS (CloudNativePG)">
-
-   ```bash
-   DB_POD=$(kubectl --namespace "$NS" get pod --selector cnpg.io/instanceRole=primary \
-     --output jsonpath='{.items[0].metadata.name}')
-   DB_SECRET=keycloak-db-app
-   DB_SECRET_KEY=password
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
 4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
-   shell history and the command arguments. Connecting with `--host` uses TCP and password authentication, so the
-   command is the same for both variants.
+   shell history and the command arguments.
 
    ```bash
    kubectl --namespace "$NS" get secret "$DB_SECRET" \
@@ -420,8 +425,8 @@ block-based storage such as LINSTOR/DRBD.
    in its place. Your Spectro Cloud support representative can guide you through this step for your environment.
 
 3. Upload the updated content bundle to the cluster. Use either the
-   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or the
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+   [Local UI upload flow](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-content-bundle-with-local-ui)
+   or the [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
 4. Recreate the failed migration plan. In the **Storage map** step, map the source storage to your default `Block`-mode
    storage class and remove the `Filesystem`/`ReadWriteOnce` overrides that were added as part of the workaround. Refer

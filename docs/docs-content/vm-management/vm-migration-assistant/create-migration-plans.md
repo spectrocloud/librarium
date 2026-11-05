@@ -76,6 +76,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   - For warm migrations,
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
+  - For warm migrations, your VMs must not have any snapshots in vSphere. Delete all snapshots of each VM before you
+    start the migration. You can delete the snapshots while the VM is running. A warm migration of a VM that still has
+    snapshots fails.
 
 - We recommend using a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) to uninstall [VMware Tools](https://docs.vmware.com/en/VMware-Tools/index.html), and install the [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent) and [VirtiIO drivers](https://github.com/virtio-win/kvm-guest-drivers-windows) on your migrated VMs. Installing the QEMU agent and Virtio drivers enhances compatibility with VMO, and enables advanced features like live migration and accurate reporting of guest status.
   
@@ -625,10 +628,10 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
     #### Migration Types
 
-    | Type               | Description                                                                                                                                                                                                                                                                                       |
-    | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Cold migration** | VMs are shut down prior to migration.                                                                                                                                                                                                                                                             |
-    | **Warm migration** | Active VMs are migrated while they are running and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs before starting a warm migration. |
+    | Type               | Description                                                                                                                                                                                                                                                                                                                       |
+    | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cold migration** | VMs are shut down prior to migration.                                                                                                                                                                                                                                                                                             |
+    | **Warm migration** | Active VMs are migrated while they are running and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs and that they have no snapshots before starting a warm migration. |
 
 12. Click **Next**.
 

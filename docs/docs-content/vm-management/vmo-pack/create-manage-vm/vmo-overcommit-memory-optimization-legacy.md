@@ -105,8 +105,14 @@ additionalDevConfig:
 You can apply per-VM memory settings to individual VMs or to a VM template so that all VMs provisioned from the template
 inherit consistent optimization settings.
 
-spec: terminationGracePeriodSeconds: 30 domain: resources: overcommitGuestOverhead: true requests: memory: 1024M
-
+```yaml
+spec:
+  terminationGracePeriodSeconds: 30
+  domain:
+    resources:
+      overcommitGuestOverhead: true
+      requests:
+        memory: 1024M
 ```
 
 #### YAML Configuration
@@ -119,6 +125,7 @@ spec: terminationGracePeriodSeconds: 30 domain: resources: overcommitGuestOverhe
 The following is an example of per-VM memory configuration. In this example, Kubernetes reserves 4 Gi for the pod, but
 the guest OS sees 6 Gi of available memory.
 
+```yaml
 spec:
   domain:
     resources:

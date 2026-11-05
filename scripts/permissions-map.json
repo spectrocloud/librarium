@@ -9,7 +9,6 @@
   "aws/MinimumEKSStaticPermissions.json": "_partials/permissions/_aws-eks-static-permissions.mdx",
   "aws/MinimumAWSCloudFormationStackPermissions.json": "_partials/permissions/_aws-cloudformation-stack-permissions.mdx",
   "aws/AWSPaletteCloudFormationInputTemplate.yaml": "_partials/permissions/_aws-palette-cloud-formation-input-template.mdx",
-  "aws/AmazonEBSCSIDriverPolicy.yaml": "_partials/permissions/_aws-ebs-csi-driver-policy.mdx",
   "aws/ControllersEKSPolicy.json": "_partials/permissions/_aws-eks-controller-policy.mdx",
   "aws/HostResourceGroupsPolicy.json": "_partials/permissions/_aws-host-resource-groups-policy.mdx",
   "azure/iaas/dynamic-placement/rg_sub_role.json": "_partials/permissions/_azure-iaas-dynamic-rg-sub-role.mdx",

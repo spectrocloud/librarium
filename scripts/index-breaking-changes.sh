@@ -61,24 +61,32 @@ else
   echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
 fi
 
-# Fetch all branches from the remote
-# Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags.
-git fetch --prune --no-tags --depth=1 origin \
-  '+refs/heads/version-*:refs/remotes/origin/version-*'
-
-# Get remote version-X-Y branches (no locals, no HEAD) at or above INDEX_FLOOR_BRANCH. Compare the
-# major and minor numerically, and sort by version so two-digit minors order naturally
-# (version-4-9 before version-4-10, not after version-4-1).
+# List the remote version-X-Y branches at or above INDEX_FLOOR_BRANCH without fetching them, so the
+# branches below the floor are never downloaded. Compare the major and minor numerically, and sort by
+# version so two-digit minors order naturally (version-4-9 before version-4-10, not after version-4-1).
 floor_major=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f2)
 floor_minor=$(echo "$INDEX_FLOOR_BRANCH" | cut -d - -f3)
-branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
+branches="$(git ls-remote --heads origin 'refs/heads/version-*' \
+  | sed 's|.*refs/heads/||' \
   | grep -E '^version-[0-9]+-[0-9]+$' \
   | awk -F - -v maj="$floor_major" -v min="$floor_minor" '$2+0 > maj+0 || ($2+0 == maj+0 && $3+0 >= min+0)' \
   | sort -V -u)"
+# An empty list means the listing failed, and a fetch with no refspecs would fetch the default ones instead.
+if [ -z "$branches" ]; then
+  echo "❌ Found no version branches at or above $INDEX_FLOOR_BRANCH on origin."
+  exit 1
+fi
 echo "ℹ️ Indexing branches at or above $INDEX_FLOOR_BRANCH: $(echo "$branches" | tr '\n' ' ')"
 
-# Leave this commented. To be used when doing local testing. 
+# Leave this commented. To be used when doing local testing.
 # branches="version-4-7 version-4-8"
+
+# Pull *only* those branches into refs/remotes/origin/, shallow, skip tags.
+refspecs=()
+for branch in $branches; do
+  refspecs+=("+refs/heads/$branch:refs/remotes/origin/$branch")
+done
+git fetch --no-tags --depth=1 origin "${refspecs[@]}"
 
 # Remove files for repeatable runs. Linus added quotes to avoid issues with blank spaces
 rm -rf "$BREAKING_CHANGES_PARTIALS_PATH"
@@ -130,7 +138,9 @@ for branch in $branches; do
     # - Extracts the version from headings like:
     #   • "## Release 4.7.10"
     #   • "## Release 4.7.8 - 4.7.10"
+    #   • "## Release 4.10.17-patch.5"
     # - Always selects the final version in a range
+    # - Keeps a -patch.N suffix, so a patch release does not share a version, and a partial, with its base release
     # - Resets component updates tracking for the new release
     if echo "$line" | grep -q "##.*Release"; then
       # If we were already processing a file, copy it to the current working directory.
@@ -144,8 +154,8 @@ for branch in $branches; do
         cut -c4- |
         sed -E 's/\{#.*\}//' |                                   # Remove markdown anchor fragments
         sed -E 's/.*Release[[:space:]]+//' |                     # Remove everything before 'Release'
-        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
-        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
+        sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/' |  # Extract last version in range
+        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+(-patch\.[0-9]+)?).*/\1/'               # Extract version if no range
       )
       ## Reset component updates tracking variables for new release.
       component_updates_identifier=""
@@ -179,25 +189,57 @@ for branch in $branches; do
       continue
     fi
 
+    # End the current section at any other H2 heading
+    #
+    # What this does:
+    # - Treats an H2 that is neither a release nor a Component Updates heading, such as
+    #   "## October 9, 2026 - PaletteAI VM Launchpad 4.10.20", as a section boundary
+    # - Resets the release and component updates tracking, so a Breaking Changes section under that heading is never
+    #   written to the partial of the release above it
+    #
+    # Notes:
+    # - VM Launchpad breaking changes are left out on purpose. VM Launchpad versions reuse Palette version strings, so
+    #   they cannot share versions.json. The Find Breaking Changes page points readers to the VM Launchpad release notes.
+    if [ "$in_code_section" != "true" ] && echo "$line" | grep -qE '^##[[:space:]]'; then
+      # If we were already processing a file, copy it to the current working directory.
+      if [ "$partial_created" == "true" ]; then
+        persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+        partial_created=false
+      fi
+
+      release_number=""
+      component_updates_identifier=""
+      component_updates_title=""
+      component_updates_range=""
+      in_breaking_changes=false
+      continue
+    fi
+
     # Detect component updates version range
     #
     # What this does:
     # - Matches the exact sentence describing component update versions
-    # - Extracts a single version or version range (e.g. 4.7.21 - 4.7.23)
+    # - Extracts a single version or version range (e.g. 4.7.21 - 4.7.23 or 4.10.17-patch.5 - 4.10.27)
+    # - Normalizes an en or em dash between the two versions to a hyphen, which the component splits on
     #
     # Notes:
     # - This match is intentionally strict
-    # - The phrasing must remain unchanged or this will fail
+    # - The phrasing must remain unchanged or this will fail. scripts/release/templates/component-updates.md writes
+    #   it. The plural "for Palette versions A - B and C - D." form is not supported, so do not write it by hand.
     # - No alternative reliable identifier exists for this line
+    # - The dash is an alternation, not a bracket expression, so en and em dashes also match in a non-UTF-8 locale
 
     # THIS PHRASING MUST MATCH EXACTLY TO CATCH THE COMPONENT UPDATES RANGE.
     # I HAVE NO OTHER WAY TO UNIQUELY IDENTIFY THIS LINE.
-    if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE '^The following components have been updated for Palette version [0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?\.$'; then
+    cu_version='[0-9]+(\.[0-9]+){2}(-patch\.[0-9]+)?'
+    cu_range="$cu_version([[:space:]]*(-|–|—)[[:space:]]*$cu_version)?"
+    if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE "^The following components have been updated for Palette version $cu_range\.\$"; then
       component_updates_range=$(
         echo "$line" |
-        grep -Eo '[0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?'
+        grep -Eo "$cu_range" |
+        sed -E 's/[[:space:]]*(–|—)[[:space:]]*/-/'
       )
-      continue 
+      continue
     fi
 
     # Enter breaking changes section for a release
@@ -221,6 +263,21 @@ for branch in $branches; do
       in_breaking_changes=true
       create_partials_file_component_updates "$BREAKING_CHANGES_PARTIALS_PATH" "$component_updates_identifier" "$component_updates_range" "$component_updates_title"
       partial_created=true
+      continue
+    fi
+
+    # Warn about a component updates breaking changes section that has no recognized version line
+    #
+    # Purpose:
+    # - Without a version range, the section cannot be placed in Find Breaking Changes, so it is not indexed.
+    #   Say so instead of skipping it silently.
+    if [ -n "$component_updates_identifier" ] && [ -z "$component_updates_range" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
+      warning="$branch: the $component_updates_identifier Component Updates section has a Breaking Changes heading but no recognized \"The following components have been updated for Palette version ...\" line, so its breaking changes are not indexed."
+      if [ "${GITHUB_ACTIONS:-}" == "true" ]; then
+        echo "::warning::$warning"
+      else
+        echo "⚠️ $warning"
+      fi
       continue
     fi
 

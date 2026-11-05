@@ -51,7 +51,7 @@ the serving recipe and who establishes that the model works on the hardware.
 
 | **Aspect**                | **Certified model**                                                                                                         | **Your own model**                                                                  |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| **Metadata file**         | Spectro Cloud authors it, and you download it from Artifact Studio.                                                         | You author it.                                                                      |
+| **Metadata file**         | Spectro Cloud authors it and ships it inside the model recipe that you download from Artifact Studio.                       | You author it.                                                                      |
 | **Hardware fit**          | Validated on the GPU configurations listed in [Certified Models by Hardware](../reference/certified-models-by-hardware.md). | You state what the model needs, and you confirm it fits your GPUs.                  |
 | **Serving configuration** | Tuned per GPU configuration by Spectro Cloud.                                                                               | You choose the inference engine, the tensor-parallel width, and the context length. |
 | **Validation**            | Spectro Cloud tests that the model loads and serves on the listed configurations.                                           | You test the model on your hardware.                                                |

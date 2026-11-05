@@ -30,7 +30,7 @@ is faster than stopping at **Create a Client and Its API Token**.
 
 On the appliance:
 
-- PaletteAI Inference Launchpad 1.1.5 or later. To check, in the console look at the bottom of the left main menu.
+- PaletteAI Inference Launchpad 1.2.0 or later. To check, in the console look at the bottom of the left main menu.
   Anything earlier does not have the surfaces this tutorial uses. To upgrade, refer to
   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
 
@@ -43,12 +43,10 @@ On the appliance:
 
   ![Cluster Models tab with a single row for qwen3.6-35b-a3b-fp8, showing 1 of 1 node and a 1 of 1 healthy chip.](/assets/docs/images/run-claude-code_cluster-models-deployed.webp)
 
-  If the table is empty, select **Deploy New Model**, confirm the **Model** drop-down is not empty, and then select
-  **Cancel**. You deploy the model later in **Deploy a Model**.
+  If the table is empty, select **Deploy Model**, confirm that the **Model** drop-down menu is not empty, and then close
+  the wizard. You deploy the model later in **Deploy a Model**.
 
-  ![The Deploy model dialog with the Model drop-down open, listing two available models.](/assets/docs/images/run-claude-code_deploy-model-dropdown.webp)
-
-  If the drop-down is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
+  If the drop-down menu is also empty, refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 On your own machine:
 
@@ -135,7 +133,8 @@ Give those GPUs something to do.
 
 1. In the console, select **Cluster** from the left main menu. The page opens on the **Nodes** tab.
 
-2. Select the **Models** tab, and then select **Deploy New Model**. The **Deploy model** dialog opens.
+2. Select the **Models** tab, and then select **Deploy Model**. The **Deploy a model** wizard opens on the **Model and
+   placement** step.
 
 3. Open the **Model** drop-down menu and select a model that serves chat requests. A smaller model finishes loading
    sooner. A vision preprocessing sidecar is not a chat model, so do not choose one here.
@@ -143,12 +142,13 @@ Give those GPUs something to do.
    The catalog lists only models whose weights are already on a node in this appliance, so your list is specific to your
    hardware.
 
-4. Leave **Engine** on **auto**.
+4. In **Nodes**, confirm that your node is selected. If it is not, select it.
 
-5. In **Nodes**, select your node. On a first deploy, no node is selected, and **Deploy** stays unavailable until you
-   choose one.
+5. Select **Next** twice. The **GPU sharing** step opens.
 
-6. Select **Deploy**, review the preview, and then select **Confirm & Apply**.
+6. Select **Deploy** without changing the **GPU sharing** toggle. The step sets the toggle for your appliance. When the
+   toggle is on, the step states the group that your model joins, and your model shares a GPU with the models of that
+   group, such as the semantic router. For how that works, refer to [GPU Sharing](../explanation/gpu-sharing.md).
 
 The model appears in the **Model** table. Its state reads `Deploying` while the appliance brings it up.
 
@@ -203,39 +203,41 @@ serving cannot answer requests, so the verification later in this tutorial would
 Claude Code needs a credential, and a credential belongs to a client. Create both here, and tell the appliance which
 model answers the requests this client sends.
 
-1. From the left main menu, select **Access & Policy**. The **Clients & API tokens** page opens.
+1. In the workspace drop-down menu in the console header, select **Default**, the workspace the appliance ships with.
 
-2. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Enter `coding-agent` as the **Client name**, and then select **Next**.
+3. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
 
-4. On the **Quotas** step, select **Next** without adding a limit.
+4. Enter `coding-agent` as the **Client name**, and then select **Next**.
 
-5. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
+5. On the **Quotas** step, select **Next** without adding a limit.
+
+6. On the **Egress** step, select **Next** without enabling egress. Every request in this tutorial is answered on the
    appliance, so this client never needs to reach an external model.
 
-6. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
+7. On the **Routing** step, set every row in the **Tier map** to the model deployed on your appliance, and then select
    **Next**. The wizard requires every alias to be mapped before it lets you continue.
 
    ![Routing step with all seven Tier map rows mapped to the deployed model.](/assets/docs/images/run-claude-code_routing-mapped.webp)
 
-7. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
+8. On the **API tokens** step, select **Add API Token**. In the **Add API token** dialog, enter `tutorial` as the
    **Label**, select a date within the next year in **Expires**, and then select **Add Token**.
 
-8. Select **Create**.
+9. Select **Create**.
 
-9. The console reveals the token, which begins with `lpai_`.
+10. The console reveals the token, which begins with `lpai_`.
 
-   ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
+    ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
 
-   :::warning
+    :::warning
 
-   The console shows the token once and stores only a hash. Keep this modal open until you finish **Point Claude Code at
-   the Appliance**.
+    The console shows the token once and stores only a hash. Keep this modal open until you finish **Point Claude Code
+    at the Appliance**.
 
-   :::
+    :::
 
-10. In the same modal, select **Connect Agent**. The coding-agent setup expands inline.
+11. In the same modal, select **Connect Agent**. The coding-agent setup expands inline.
 
 ## Point Claude Code at the Appliance
 
@@ -370,14 +372,15 @@ Undo the changes the tutorial made.
 
    </Tabs>
 
-4. From the left main menu, select **Access & Policy**.
+4. In the console header, confirm that the workspace drop-down menu shows **Default**.
 
-5. On the **Clients & API tokens** page, find the `coding-agent` row and select the three-dot menu at the end of the
-   row.
+5. From the left main menu, select **Access & Policy**.
+
+6. In the **Clients** list, find the `coding-agent` row and select the three-dot menu at the end of the row.
 
    ![Clients and API tokens page with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/run-claude-code_three-dot-menu.webp)
 
-6. Select **Delete** and confirm.
+7. Select **Delete** and confirm.
 
    <img
      src="/assets/docs/images/run-claude-code_delete-menu.webp"
