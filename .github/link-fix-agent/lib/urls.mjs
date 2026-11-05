@@ -48,12 +48,14 @@ function tokens(text) {
 }
 
 /**
- * Compares the links of two versions of a text by their place in it. Both
- * texts become lists of words and URLs, and the lists are aligned by their
- * longest common subsequence, so the words around a link anchor its URL.
- * Returns the URLs outside that subsequence, in document order: `removed`
- * from `before`, and `added` in `after`. Whitespace changes, such as a
- * Prettier reflow, change nothing.
+ * Compares the links of two versions of a text by their place among the
+ * surrounding words. Both texts become lists of words and URLs, and the lists
+ * are aligned by their longest common subsequence. Returns the URLs outside
+ * that subsequence, in document order: `removed` from `before`, and `added` in
+ * `after`. A URL swapped in place, or a link given another link's URL, falls
+ * outside it. A deliberate reshuffle that moves a URL across surrounding text
+ * can still keep it inside. Whitespace changes, such as a Prettier reflow,
+ * change nothing.
  */
 export function urlDiff(before, after) {
   const a = tokens(before);
