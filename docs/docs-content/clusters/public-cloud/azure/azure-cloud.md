@@ -38,10 +38,10 @@ managing clusters using Azure Government cloud, use [Palette VerteX](../../../ve
 Azure cloud accounts authenticate to Azure with one of the following methods. You select the method when you add the
 cloud account, and you cannot change it later.
 
-| **Method**            | **Description**                                                                                                                                                                                                                                                                   |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Service principal** | Palette authenticates with the client ID and client secret of a Microsoft Entra application that you create and manage.                                                                                                                                                           |
-| **Managed identity**  | Palette authenticates through a self-hosted PCG in Azure that carries a user-assigned managed identity, so the cloud account stores no secret. Available for Azure Commercial and Azure Government cloud. Refer to [Use Azure Managed Identities](./azure-managed-identities.md). |
+| **Method**            | **Description**                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Service principal** | Palette authenticates with the client ID and client secret of a Microsoft Entra application that you create and manage.                                                                                                                                                                                                                |
+| **Managed identity**  | Palette authenticates through a self-hosted [Private Cloud Gateway (PCG)](../../pcg/architecture.md) in Azure that carries a user-assigned managed identity, so the cloud account stores no secret. Available for Azure Commercial and Azure Government cloud. Refer to [Use Azure Managed Identities](./azure-managed-identities.md). |
 
 ## Add Azure Cloud Account
 
@@ -62,7 +62,8 @@ across a wide range of global regions with standard Azure services.
   provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
   [Required Permissions](./required-permissions.md) guide for more information.
 
-- For **Service principal** authentication, an [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview)
+- For **Service principal** authentication, a
+  [Microsoft Entra application](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals)
   with valid credentials.
 
 - For **Managed identity** authentication, a management identity and a self-hosted PCG in Azure that carries it. Refer
@@ -94,7 +95,7 @@ Take the following steps to add an Azure Commercial cloud account in Palette or 
    | **Managed identity client ID**    | **Managed identity** accounts only. Enter the client ID of the management identity. To change the management identity later, refer to [Change the Management Identity](./azure-managed-identities.md#change-the-management-identity).                                                                                                 |
    | **Tenant Name (Optional)**        | (Optional) Enter the name of your Azure tenant, if desired.                                                                                                                                                                                                                                                                           |
    | **Disable Properties**            | Prevent Palette or Palette VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify pre-existing VNets, subnets, and security groups when creating clusters.                                             |
-   | **Connect Private Cloud Gateway** | **Service principal** accounts only. Select this option to deploy clusters to Azure Commercial cloud through a [Private Cloud Gateway (PCG)](../../pcg/architecture.md). The PCG must be deployed and registered with Palette or Palette VerteX to select it from the drop-down menu. **Managed identity** accounts always use a PCG. |
+   | **Connect Private Cloud Gateway** | **Service principal** accounts only. Select this option to deploy clusters to Azure Commercial cloud through a [PCG](../../pcg/architecture.md). The PCG must be deployed and registered with Palette or Palette VerteX to select it from the drop-down menu. **Managed identity** accounts always use a PCG.                         |
 
 6. After providing the required values, select **Validate**. For **Service principal** accounts, Palette validates the
    combination of your **Tenant ID**, **Client ID**, and **Client Secret**. For **Managed identity** accounts, Palette
@@ -138,7 +139,8 @@ The procedures in this section apply to the Palette VerteX UI only.
   provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
   [Required Permissions](./required-permissions.md) guide for more information.
 
-- For **Service principal** authentication, an [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview)
+- For **Service principal** authentication, a
+  [Microsoft Entra application](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals)
   with valid credentials.
 
 - For **Managed identity** authentication, a management identity and a self-hosted PCG in Azure that carries it. Refer
@@ -170,7 +172,7 @@ Take the following steps to add an Azure Government cloud account in Palette Ver
    | **Managed identity client ID**    | **Managed identity** accounts only. Enter the client ID of the management identity. To change the management identity later, refer to [Change the Management Identity](./azure-managed-identities.md#change-the-management-identity).                                                                                                 |
    | **Tenant Name (Optional)**        | (Optional) Enter the name of your Azure tenant, if desired.                                                                                                                                                                                                                                                                           |
    | **Disable Properties**            | Prevent Palette VerteX from creating Azure VNets and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify pre-existing VNets, subnets, and security groups when creating clusters.                                                                           |
-   | **Connect Private Cloud Gateway** | **Service principal** accounts only. Select this option to deploy clusters to Azure Government cloud through a [PCG](../../pcg/architecture.md). The PCG must be deployed and registered with Palette VerteX in order to select it from the drop-down.                                                                                |
+   | **Connect Private Cloud Gateway** | **Service principal** accounts only. Select this option to deploy clusters to Azure Government cloud through a [PCG](../../pcg/architecture.md). The PCG must be deployed and registered with Palette VerteX to select it from the drop-down menu. **Managed identity** accounts always use a PCG.                                    |
 
 6. After providing the required values, select **Validate**. For **Service principal** accounts, Palette validates the
    combination of your **Tenant ID**, **Client ID**, and **Client Secret**. For **Managed identity** accounts, Palette

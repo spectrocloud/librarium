@@ -47,11 +47,13 @@ or pool identity of a cluster that Palette deploys.
 
 ## Set Up Managed Identity Authentication
 
-Create the management identity, deploy a PCG in Azure that carries it, and then add the cloud account.
+Create the management identity, deploy a PCG in Azure that carries it, and then add the cloud account. You can also add
+managed identity cloud accounts with the
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Prerequisites
 
-- Tenant admin access to Palette.
+- Tenant admin access to Palette or Palette VerteX.
 
 - Permissions in your Azure subscription to create user-assigned managed identities and assign Azure roles.
 
@@ -85,32 +87,38 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 
 2. Attach the management identity to every node of the Kubernetes cluster that hosts the PCG.
 
-   - On AKS, set it as the Kubelet identity of the cluster, for example with
-     `az aks create --assign-identity <control-plane-identity-id> --assign-kubelet-identity <management-identity-id>`.
-     The control plane identity of the cluster needs the **Managed Identity Operator** role on the management identity.
+   - On AKS, set it as the Kubelet identity of the cluster. The control plane identity of the cluster needs the
+     **Managed Identity Operator** role on the management identity. For example, use the following command.
+
+     ```shell
+     az aks create --resource-group <resource-group> --name <cluster-name> \
+       --assign-identity <control-plane-identity-id> --assign-kubelet-identity <management-identity-id>
+     ```
+
+     Replace `<resource-group>` and `<cluster-name>` with the resource group and name of the AKS cluster, and
+     `<control-plane-identity-id>` and `<management-identity-id>` with the resource IDs of the identities.
 
    - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine.
-
-   Replace `<control-plane-identity-id>` and `<management-identity-id>` with the resource IDs of the identities.
 
 3. Deploy a self-hosted PCG to the cluster. Refer to
    [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md). Wait until the **Cluster Status** of
    the PCG is **Running**.
 
-4. Add an Azure cloud account and select **Managed identity** as the **Authentication method**. In **Private Cloud
-   Gateway**, select the PCG that you deployed, and enter the client ID of the management identity in **Managed identity
-   client ID**. Select **Validate**, and then select **Confirm**. Refer to
+4. Add an Azure cloud account, and select **Managed identity** as the **Authentication method**. Refer to
    [Azure Commercial Cloud](./azure-cloud.md#azure-commercial-cloud) or
-   [Azure Government Cloud](./azure-cloud.md#azure-government-cloud). You can also add managed identity cloud accounts
-   with the
-   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+   [Azure Government Cloud](./azure-cloud.md#azure-government-cloud).
+
+5. In **Private Cloud Gateway**, select the PCG that you deployed. In **Managed identity client ID**, enter the client
+   ID of the management identity.
+
+6. Select **Validate**, and then select **Confirm**.
 
    If validation fails, check that the management identity is attached to every PCG node and that it has the roles in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
 
 ### Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
 2. From the left main menu, select **Tenant Settings**.
 
@@ -137,7 +145,7 @@ Assign the following roles.
 | Cluster      | **Contributor**                     | The cluster resource group.                                                                   |
 | Cluster      | **Network Contributor**             | The Virtual Network (VNet) resource group, if it is separate from the cluster resource group. |
 | Cluster      | **Managed Identity Operator**       | Itself and any pool identities that are outside its **Contributor** scope.                    |
-| Pool         | The roles that your workloads need. | Not applicable.                                                                               |
+| Pool         | The roles that your workloads need. | The resources that your workloads access.                                                     |
 
 You can also turn on **Exclude cluster identity** for a worker pool so that its nodes carry only the pool identities. If
 you do, taint the pool. Refer to
@@ -153,8 +161,7 @@ these nodes. The same applies to any add-on that uses the cluster identity. If K
 components on the pool, the component fails. Palette does not keep these components off the pool, so add a
 [taint](../../cluster-management/taints.md) to the pool.
 
-1. When you create the pool, add the following taint in **Taints**. A taint that you add later does not move the pods
-   that already run on the pool.
+1. When you create the pool, add the following taint in **Taints**.
 
    | **Parameter** | **Value**                                                      |
    | ------------- | -------------------------------------------------------------- |
@@ -164,18 +171,18 @@ components on the pool, the component fails. Palette does not keep these compone
 
    Do not use `PreferNoSchedule`. Kubernetes treats it as a preference and can still schedule pods on the pool.
 
-2. Add a matching toleration to the workloads that must run on the pool, and a node selector or node affinity so that
-   they run only there. These are typically workloads that use the pool identities.
+   If you add the taint to an existing pool, `NoSchedule` does not move the pods that already run on it. Use `NoExecute`
+   to evict them, or restart them after you add the taint.
+
+2. Add a toleration that matches the taint to the workloads that must run on the pool, typically the workloads that use
+   the pool identities. To keep them on the pool, also add a node selector or node affinity.
 
 3. Keep at least one worker pool that carries the cluster identity, with enough capacity for the Palette management
    components.
 
-Some DaemonSets tolerate every taint and still run on the pool. These include the Container Network Interface (CNI)
-plugin, `kube-proxy`, the Azure cloud node manager, and the Container Storage Interface (CSI) node plugin, and they keep
-working on pools that exclude the cluster identity.
-
-A `NoSchedule` taint that you add to an existing pool does not move the pods that already run on it. Use `NoExecute` to
-evict them, or restart them after you add the taint.
+Some DaemonSets tolerate every taint, so they still run on the pool and keep working without the cluster identity. These
+include the Container Network Interface (CNI) plugin, `kube-proxy`, the Azure cloud node manager, and the Container
+Storage Interface (CSI) node plugin.
 
 ### AKS Clusters
 
@@ -196,17 +203,16 @@ Assign the following roles.
 | Kubelet      | **Network Contributor**          | The VNet resource group, if it is separate from the cluster resource group.                             |
 | Kubelet      | **Reader**                       | The subscription.                                                                                       |
 
-AKS grants the AKS service identity the **Contributor** role on the node resource group, but on nothing outside it. The
-AKS service identity needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster
-resource group. Assign all roles before you create the cluster, because role assignments can take up to 60 minutes to
-take effect.
+AKS creates the node pools in a separate node resource group named `SPC_MC_<resource-group>_<cluster-name>_<region>`,
+and shortens long names. Because AKS creates this resource group together with the cluster, you cannot assign roles on
+it in advance. Palette reads the node pools in this resource group as the management identity during cluster creation,
+and as the Kubelet identity afterward. Both identities therefore need the **Reader** role on the subscription. Without
+this role, the cluster stays at `worker nodes are creating` even though Azure shows the node pools as succeeded. Azure
+also returns `403 AuthorizationFailed` errors for `Microsoft.Compute/virtualMachineScaleSets/read`.
 
-AKS creates the node pools in a separate node resource group, named `SPC_MC_<resource-group>_<cluster-name>_<region>`,
-and shortens long names. AKS creates this resource group together with the cluster, so you cannot assign roles on it in
-advance. Palette reads the node pools in this resource group as the management identity while it creates the cluster,
-and as the Kubelet identity afterward, so both identities need the **Reader** role on the subscription. Without it, the
-cluster stays at `worker nodes are creating` even though Azure shows the node pools as succeeded, and Azure returns
-`403 AuthorizationFailed` errors for `Microsoft.Compute/virtualMachineScaleSets/read`.
+AKS grants the AKS service identity the **Contributor** role on the node resource group only. The AKS service identity
+needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster resource group. Assign all
+roles before you create the cluster, because role assignments can take up to 60 minutes to take effect.
 
 For the procedure, refer to [Create and Manage Azure AKS Cluster](./aks.md).
 
@@ -237,8 +243,9 @@ For AKS clusters, a `POST /v1/spectroclusters/aks` request sets `aksServiceIdent
 ```
 
 Replace `<aks-service-identity-resource-id>` and `<kubelet-identity-resource-id>` with the resource IDs of your AKS
-service identity and Kubelet identity. Pool identities, `excludeClusterIdentity`, and pool taints go in the
-`cloudConfig` and `poolConfig` of each entry in `spec.machinepoolconfig`.
+service identity and Kubelet identity. For Azure IaaS worker pools, set the pool identities in
+`cloudConfig.userAssignedIdentities`, the **Exclude cluster identity** setting in `cloudConfig.excludeClusterIdentity`,
+and the pool taints in `poolConfig.taints`, for each entry in `spec.machinepoolconfig`.
 
 ## Limit Permissions
 
@@ -249,12 +256,13 @@ use the following approach.
    that resource group. The **Contributor** role on a resource group cannot create new resource groups. If the VNet is
    in a different resource group, also assign the management identity the **Network Contributor** role there.
 
-2. Assign the cluster identity or the Kubelet identity the **Contributor** role on that resource group only. If the VNet
-   is in a different resource group, also assign the **Network Contributor** role on the VNet resource group. For AKS
-   clusters, also assign the AKS service identity the **Network Contributor** role on the AKS subnet.
+2. Create the identities in the cluster resource group. Assign the cluster identity or the Kubelet identity the
+   **Contributor** role on that resource group only. If the VNet is in a different resource group, also assign the
+   **Network Contributor** role on the VNet resource group. For AKS clusters, also assign the AKS service identity the
+   **Network Contributor** role on the AKS subnet.
 
-3. Create the identities in the cluster resource group. For any identity outside it, assign the **Managed Identity
-   Operator** role on that identity, as listed in
+3. For any identity outside the cluster resource group, assign the **Managed Identity Operator** role on that identity
+   to the management identity, and to the cluster identity or AKS service identity, as listed in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity) and
    [Assign Identities to Clusters](#assign-identities-to-clusters).
 
@@ -273,10 +281,15 @@ You can change the management identity of a cloud account.
 1. Attach the new identity to every PCG node, and assign it the roles in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
 
-2. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+2. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
 3. From the left main menu, select **Tenant Settings**.
 
 4. From the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-5. Edit the cloud account, and enter the client ID of the new identity in **Managed identity client ID**.
+5. In the **Azure** section, select the three-dot menu next to the cloud account, and then select **Edit**.
+
+6. In **Managed identity client ID**, enter the client ID of the new identity. You cannot change the authentication
+   method or the PCG.
+
+7. Select **Validate**. When the message **Credentials validated** is displayed, select **Confirm**.
