@@ -264,7 +264,7 @@ Set the `variant` of every connection to match its arrow style in the style guid
 | Green, solid   | `emphasis`            |
 | Slate, solid   | `default`             |
 | Violet, dashed | `dashed`              |
-| Rose, solid    | `security`            |
+| Rose, dashed   | `security`            |
 
 If Archify's automatic routing makes two connections cross, set `fromSide`, `toSide`, or `route` on one of them. If
 Archify places a connection label on top of a component, set `labelAt` to an `[x, y]` point in the gap between two rows.

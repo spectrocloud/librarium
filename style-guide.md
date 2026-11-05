@@ -1025,7 +1025,7 @@ The style of an arrow signals what kind of interaction it is.
 | Green, solid   | The main request path. Reserve it for the path the reader cares about most.                   |
 | Slate, solid   | Any other call, such as an administrator opening the console.                                 |
 | Violet, dashed | A reconcile or deploy loop, a metrics or telemetry hop, or an optional or off-by-default hop. |
-| Rose, solid    | Sign-in, token checks, and other identity traffic.                                            |
+| Rose, dashed   | Sign-in, token checks, and other identity traffic.                                            |
 
 Label an arrow only when the label adds information the reader cannot infer from the components. Prefer short verbs or
 conditions, such as _deploys_ or _off by default_.
