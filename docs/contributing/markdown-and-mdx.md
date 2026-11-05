@@ -331,7 +331,7 @@ To create or update a diagram, complete the following steps.
 
 5. Commit the JSON source and both images together.
 
-To have Claude Code complete steps 2 to 4 for you, use the `diagram-from-source` skill, as described in
+To have Claude Code complete steps 2 to 4 for you, use the `docs-diagram-from-source` skill, as described in
 [Create a Diagram With an AI Agent](#create-a-diagram-with-an-ai-agent). To keep a diagram current when the product
 changes, refer to [Maintain a Diagram](#maintain-a-diagram).
 
@@ -359,8 +359,8 @@ changes, refer to [Maintain a Diagram](#maintain-a-diagram).
 
 ##### Create a Diagram With an AI Agent
 
-The docs team's internal `diagram-from-source` skill runs the steps in this section for you in Claude Code. Given a Jira
-ticket and a local clone of the product's source repository, the skill does the following:
+The docs team's internal `docs-diagram-from-source` skill runs the steps in this section for you in Claude Code. Given a
+Jira ticket and a local clone of the product's source repository, the skill does the following:
 
 - Builds an inventory of the components, with source citations pinned to the release that the docs describe.
 
@@ -379,7 +379,7 @@ Docs team members install the skill with the team's other Claude Code skills. Th
 [Prerequisites](#prerequisites). Then ask Claude Code to run it for the ticket.
 
 ```text
-Use the diagram-from-source skill for DOC-1234.
+Use the docs-diagram-from-source skill for DOC-1234.
 ```
 
 ##### Regenerate a Diagram
