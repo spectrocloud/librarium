@@ -120,7 +120,6 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-3804 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-3806 -->
-<!-- TODO(PCP-3806) Release day: confirm that the Terraform provider change (PLT-2489) shipped. -->
 
 - You can now authenticate Azure cloud accounts with a user-assigned managed identity instead of a service principal and
   client secret. Managed identity cloud accounts store no secret and work through a self-hosted Private Cloud Gateway
