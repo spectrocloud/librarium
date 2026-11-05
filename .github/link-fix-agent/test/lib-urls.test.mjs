@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { findUrls, urlChanges, urlKey } from "../lib/urls.mjs";
+import { countUrls, findUrls, urlChanges, urlCountChanges, urlKey } from "../lib/urls.mjs";
 
 describe("findUrls", () => {
   it("finds the URL in a Markdown link and stops at the closing parenthesis", () => {
@@ -83,5 +83,53 @@ describe("urlChanges", () => {
     const urls = new Set(["https://example.com"]);
     assert.deepEqual(urlChanges(urls, new Set(urls)), { removed: [], added: [] });
     assert.deepEqual(urlChanges(new Set(), new Set()), { removed: [], added: [] });
+  });
+});
+
+describe("countUrls", () => {
+  it("counts each URL's copies, and keeps each fragment as its own URL", () => {
+    const text = "[a](https://a.example.com) [b](https://a.example.com) [c](https://a.example.com#x)";
+    assert.deepEqual(
+      countUrls(text),
+      new Map([
+        ["https://a.example.com", 2],
+        ["https://a.example.com#x", 1],
+      ])
+    );
+  });
+
+  it("returns an empty map for text without URLs", () => {
+    assert.deepEqual(countUrls("No links."), new Map());
+  });
+});
+
+describe("urlCountChanges", () => {
+  const A = "https://a.example.com";
+  const B = "https://b.example.com";
+
+  it("lists a URL that lost one of its copies as removed, and the URL that replaced it as added", () => {
+    assert.deepEqual(urlCountChanges(countUrls(`${A} ${A}`), countUrls(`${A} ${B}`)), { removed: [A], added: [B] });
+  });
+
+  it("lists a URL that gained a copy as added", () => {
+    assert.deepEqual(urlCountChanges(countUrls(`${A} ${B}`), countUrls(`${A} ${A}`)), { removed: [B], added: [A] });
+  });
+
+  it("returns sorted lists of URLs that are gone or new", () => {
+    assert.deepEqual(
+      urlCountChanges(countUrls(`${B} ${A}`), countUrls("https://d.example.com https://c.example.com")),
+      {
+        removed: [A, B],
+        added: ["https://c.example.com", "https://d.example.com"],
+      }
+    );
+  });
+
+  it("returns empty lists when every URL keeps its count, even when the copies move", () => {
+    assert.deepEqual(urlCountChanges(countUrls(`${A} ${B} ${A}`), countUrls(`${A} ${A} ${B}`)), {
+      removed: [],
+      added: [],
+    });
+    assert.deepEqual(urlCountChanges(new Map(), new Map()), { removed: [], added: [] });
   });
 });

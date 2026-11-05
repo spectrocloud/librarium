@@ -9,7 +9,6 @@ import {
   planPages,
   previewPassed,
   rendersPartial,
-  resolveRoute,
   routeForDocFile,
   sitemapPaths,
 } from "../check-preview.mjs";
@@ -96,27 +95,6 @@ describe("sitemapPaths", () => {
 
   it("throws on a <loc> that is not an absolute URL", () => {
     assert.throws(() => sitemapPaths("<loc>/relative/</loc>"), TypeError);
-  });
-});
-
-describe("resolveRoute", () => {
-  const paths = new Set(["/clusters/", "/clusters/backup/", "/custom-slug/install/", "/a/overview/", "/b/overview/"]);
-
-  it("returns the route when the sitemap lists it", () => {
-    assert.equal(resolveRoute("/clusters/backup/", paths), "/clusters/backup/");
-  });
-
-  it("falls back to the one sitemap path that ends in the same segment", () => {
-    assert.equal(resolveRoute("/getting-started/install/", paths), "/custom-slug/install/");
-  });
-
-  it("returns null when several sitemap paths end in the same segment", () => {
-    assert.equal(resolveRoute("/c/overview/", paths), null);
-  });
-
-  it("returns null when nothing matches", () => {
-    assert.equal(resolveRoute("/missing/", paths), null);
-    assert.equal(resolveRoute("/clusters/backup/", new Set()), null);
   });
 });
 
@@ -237,14 +215,36 @@ describe("planPages", () => {
     assert.deepEqual(missing, ["_partials/clusters/_unused.mdx: no page renders this partial"]);
   });
 
-  it("reports a page that has no single preview page", () => {
+  it("reports a page whose route the sitemap does not list", () => {
     const { pages, missing } = planPages([swap("docs/docs-content/c/overview.md")], {
       sitemap,
       pagesUsingPartial: () => [],
     });
     assert.equal(pages.size, 0);
     assert.deepEqual(missing, [
-      "docs/docs-content/c/overview.md: no single preview page for docs/docs-content/c/overview.md (tried /c/overview/)",
+      "docs/docs-content/c/overview.md: no preview page for docs/docs-content/c/overview.md (tried /c/overview/)",
+    ]);
+  });
+
+  it("reports a page with a custom slug instead of matching another page that ends in the same segment", () => {
+    const { pages, missing } = planPages([swap("docs/docs-content/getting-started/install.md")], {
+      sitemap: new Set(["/custom-slug/install/"]),
+      pagesUsingPartial: () => [],
+    });
+    assert.equal(pages.size, 0);
+    assert.deepEqual(missing, [
+      "docs/docs-content/getting-started/install.md: no preview page for docs/docs-content/getting-started/install.md (tried /getting-started/install/)",
+    ]);
+  });
+
+  it("reports a partial's page whose route the sitemap does not list, and keeps its other pages", () => {
+    const { pages, missing } = planPages([swap("_partials/clusters/_shared.mdx")], {
+      sitemap,
+      pagesUsingPartial: () => ["docs/docs-content/clusters/backup.md", "docs/docs-content/clusters/gone.md"],
+    });
+    assert.deepEqual([...pages.keys()], ["/clusters/backup/"]);
+    assert.deepEqual(missing, [
+      "_partials/clusters/_shared.mdx: no preview page for docs/docs-content/clusters/gone.md (tried /clusters/gone/)",
     ]);
   });
 });
@@ -380,6 +380,6 @@ describe("routeForDocFile outside docs-content", () => {
       pagesUsingPartial: () => [],
     });
     assert.equal(pages.size, 0);
-    assert.deepEqual(missing, ["docs/other/a.md: no single preview page for docs/other/a.md (tried no route)"]);
+    assert.deepEqual(missing, ["docs/other/a.md: no preview page for docs/other/a.md (tried no route)"]);
   });
 });

@@ -63,18 +63,6 @@ export function sitemapPaths(xml) {
   return new Set((xml.match(/<loc>[^<]+/g) ?? []).map((loc) => new URL(loc.slice("<loc>".length)).pathname));
 }
 
-/**
- * Returns the sitemap path for `route`, or null. When the route is not in the
- * sitemap, as for docs outside docs-content or a page with a custom slug, a
- * single sitemap path that ends in the same segment matches instead.
- */
-export function resolveRoute(route, paths) {
-  if (paths.has(route)) return route;
-  const lastSegment = `/${route.split("/").at(-2)}/`;
-  const matches = [...paths].filter((p) => p.endsWith(lastSegment));
-  return matches.length === 1 ? matches[0] : null;
-}
-
 /** Returns the URLs in `html` as urlKey values. The built HTML escapes & as &amp;. */
 export function linkedUrls(html) {
   return new Set([...findUrls(html.replaceAll("&amp;", "&"))].map(urlKey));
@@ -83,7 +71,9 @@ export function linkedUrls(html) {
 /**
  * Groups the changed files by the preview page that renders them.
  * `changes` holds each file's path and its text before and after the fix.
- * `pagesUsingPartial` returns the docs files that render a partial.
+ * `pagesUsingPartial` returns the docs files that render a partial. A docs file
+ * whose route the sitemap does not list, such as a page with a custom slug, is
+ * missing, so a human checks it.
  */
 export function planPages(changes, { sitemap, pagesUsingPartial }) {
   const pages = new Map();
@@ -93,10 +83,9 @@ export function planPages(changes, { sitemap, pagesUsingPartial }) {
     const docFiles = file.startsWith(PARTIALS_ROOT) ? pagesUsingPartial(file) : [file];
     if (docFiles.length === 0) missing.push(`${file}: no page renders this partial`);
     for (const docFile of docFiles) {
-      const expectedRoute = routeForDocFile(docFile);
-      const route = expectedRoute && resolveRoute(expectedRoute, sitemap);
-      if (!route) {
-        missing.push(`${file}: no single preview page for ${docFile} (tried ${expectedRoute ?? "no route"})`);
+      const route = routeForDocFile(docFile);
+      if (!route || !sitemap.has(route)) {
+        missing.push(`${file}: no preview page for ${docFile} (tried ${route ?? "no route"})`);
         continue;
       }
       const page = pages.get(route) ?? { sources: new Set(), added: new Set(), removed: new Set() };

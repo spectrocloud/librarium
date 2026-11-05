@@ -14,7 +14,8 @@ const READY = {
   previewExit: "0",
   reviewDecision: CONFIDENT,
   decision: CONFIDENT,
-  diffCheck: "Changed files: 1  URLs removed: 1  URLs added: 1\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=0\n",
+  diffCheck:
+    "Changed files: 1  URLs removed: 1  URLs added: 1\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=0\nSKIP_PATTERNS_ADDED=0\n",
 };
 
 /** A fake gh that answers each call with the next reply and records the arguments. */
@@ -69,6 +70,20 @@ describe("mergeBlockers", () => {
     ]);
   });
 
+  it("blocks when the agent added a linkinator skip pattern, so a person approves it", () => {
+    const diffCheck =
+      '  note: linkinator/linkinator.config.json: skip patterns added: ["^https://a"]\nSKIP_PATTERNS_ADDED=1\n';
+    assert.deepEqual(mergeBlockers({ ...READY, diffCheck }), [
+      "The agent added a linkinator skip pattern, and a person approves every skip-list change.",
+    ]);
+  });
+
+  it("does not block on a skip pattern flag that is off or not on its own line", () => {
+    for (const diffCheck of ["SKIP_PATTERNS_ADDED=0\n", "  note: SKIP_PATTERNS_ADDED=1 was here\n"]) {
+      assert.deepEqual(mergeBlockers({ ...READY, diffCheck }), [], diffCheck);
+    }
+  });
+
   it("does not block on a missing diff check output", () => {
     assert.deepEqual(mergeBlockers({ ...READY, diffCheck: undefined }), []);
   });
@@ -95,9 +110,9 @@ describe("mergeBlockers", () => {
       previewExit: "",
       reviewDecision: null,
       decision: null,
-      diffCheck: "UNVERIFIED_LINKS=1",
+      diffCheck: "UNVERIFIED_LINKS=1\nSKIP_PATTERNS_ADDED=1",
     });
-    assert.equal(blockers.length, 6);
+    assert.equal(blockers.length, 7);
   });
 });
 

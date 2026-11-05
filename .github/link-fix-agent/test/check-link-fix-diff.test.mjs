@@ -73,7 +73,14 @@ describe("checkConfigChange", () => {
     assert.deepEqual(checkConfigChange({ path: file, before, after }), {
       failure: null,
       note: `${file}: skip patterns added: ["^https://b"]`,
+      added: ["^https://b"],
     });
+  });
+
+  it("returns no added patterns when the fix only removes one", () => {
+    const before = JSON.stringify({ skip: ["^https://a", "^https://b"] });
+    const after = JSON.stringify({ skip: ["^https://a"] });
+    assert.deepEqual(checkConfigChange({ path: file, before, after }).added, []);
   });
 
   it("treats a missing skip array as empty", () => {
@@ -168,7 +175,14 @@ describe("checkChanges", () => {
 
   it("passes a reported URL swap and lists the removed and added URLs", () => {
     const result = checkChanges([page(`[a](${OLD}) [b](${KEEP})`, `[a](${NEW}) [b](${KEEP})`)], new Set([OLD]));
-    assert.deepEqual(result, { failures: [], notes: [], proseChanged: false, removed: [OLD], added: [NEW] });
+    assert.deepEqual(result, {
+      failures: [],
+      notes: [],
+      proseChanged: false,
+      skipPatternsAdded: false,
+      removed: [OLD],
+      added: [NEW],
+    });
   });
 
   it("passes but flags the page when the text changed beyond the URL swap", () => {
@@ -204,6 +218,19 @@ describe("checkChanges", () => {
     assert.deepEqual(result.notes, [
       'linkinator/linkinator.config.json: skip patterns added: ["^https://blocked.example.com"]',
     ]);
+    assert.equal(result.skipPatternsAdded, true);
+  });
+
+  it("does not flag a linkinator config change that adds no skip pattern", () => {
+    const config = {
+      path: "linkinator/linkinator.config.json",
+      status: "M",
+      before: '{"skip":["^https://a.example.com","^https://b.example.com"]}',
+      after: '{"skip":["^https://a.example.com"]}',
+    };
+    const result = checkChanges([config], new Set());
+    assert.deepEqual(result.failures, []);
+    assert.equal(result.skipPatternsAdded, false);
   });
 
   it("returns no failures for no changes", () => {
@@ -211,6 +238,7 @@ describe("checkChanges", () => {
       failures: [],
       notes: [],
       proseChanged: false,
+      skipPatternsAdded: false,
       removed: [],
       added: [],
     });
@@ -348,6 +376,7 @@ describe("formatReport", () => {
       failures: ["a failure"],
       proseChanged: true,
       unverified: false,
+      skipPatternsAdded: true,
     });
     assert.equal(
       report,
@@ -357,6 +386,7 @@ describe("formatReport", () => {
         "  FAIL: a failure",
         "PROSE_CHANGED=1",
         "UNVERIFIED_LINKS=0",
+        "SKIP_PATTERNS_ADDED=1",
       ].join("\n")
     );
   });
@@ -370,8 +400,12 @@ describe("formatReport", () => {
       failures: [],
       proseChanged: false,
       unverified: true,
+      skipPatternsAdded: false,
     });
-    assert.equal(report, "Changed files: 0  URLs removed: 0  URLs added: 0\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=1");
+    assert.equal(
+      report,
+      "Changed files: 0  URLs removed: 0  URLs added: 0\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=1\nSKIP_PATTERNS_ADDED=0"
+    );
   });
 });
 
@@ -421,6 +455,7 @@ describe("check-link-fix-diff.mjs command line", () => {
     assert.match(result.stdout, new RegExp(`note: not checked \\(offline\\): ${NEW}`));
     assert.match(result.stdout, /^PROSE_CHANGED=0$/m);
     assert.match(result.stdout, /^UNVERIFIED_LINKS=0$/m);
+    assert.match(result.stdout, /^SKIP_PATTERNS_ADDED=0$/m);
     assert.doesNotMatch(result.stdout, /FAIL/);
   });
 
@@ -491,6 +526,17 @@ describe("check-link-fix-diff.mjs command line", () => {
     const result = check();
     assert.equal(result.status, 0, result.stdout);
     assert.match(result.stdout, /skip patterns added: \["\^https:\/\/blocked\.example\.com"\]/);
+    assert.match(result.stdout, /^SKIP_PATTERNS_ADDED=1$/m);
+  });
+
+  it("fails when the fix swaps one copy of an unreported URL that a page links twice", () => {
+    edit({ "docs/docs-content/a.md": `${PAGE}\nRead [this page](${KEEP}) again.\n` });
+    git(repo, "commit", "-qam", "link the page twice");
+    edit({ "docs/docs-content/a.md": `${PAGE}\nRead [this page](https://attacker.example.com/) again.\n` });
+    const result = check();
+    assert.equal(result.status, 1, result.stdout);
+    assert.match(result.stdout, new RegExp(`FAIL: removed URLs that were not in the report: \\["${KEEP}"\\]`));
+    assert.match(result.stdout, /note: not checked \(offline\): https:\/\/attacker\.example\.com\//);
   });
 
   it("fails when the fix deletes a docs page", () => {
@@ -561,5 +607,38 @@ describe("checkChanges rule 3, file by file", () => {
       { path: "docs/docs-content/a.md", status: "M", before: `${page(OTHER)}${page(OLD)}`, after: page(OTHER) },
     ];
     assert.deepEqual(checkChanges(changes, new Set([OLD])).added, []);
+  });
+});
+
+describe("checkChanges rule 3, copy by copy", () => {
+  const ATTACKER = "https://attacker.example.com/a/";
+  const page = (before, after) => ({ path: "docs/docs-content/a.md", status: "M", before, after });
+
+  it("fails when the fix swaps one copy of an unreported URL that the file links twice", () => {
+    const result = checkChanges([page(`[a](${KEEP}) [b](${KEEP})`, `[a](${KEEP}) [b](${ATTACKER})`)], new Set());
+    assert.deepEqual(result.failures, [`removed URLs that were not in the report: ${JSON.stringify([KEEP])}`]);
+    assert.deepEqual(result.removed, [KEEP]);
+    assert.deepEqual(result.added, [ATTACKER]);
+  });
+
+  it("passes when the fix swaps every copy of a reported URL", () => {
+    const result = checkChanges([page(`[a](${OLD}) [b](${OLD})`, `[a](${NEW}) [b](${NEW})`)], new Set([OLD]));
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(result.removed, [OLD]);
+    assert.deepEqual(result.added, [NEW]);
+  });
+
+  it("lists a URL as added for rule 4 when the file gains another copy of it", () => {
+    const result = checkChanges([page(`[a](${OLD}) [b](${KEEP})`, `[a](${KEEP}) [b](${KEEP})`)], new Set([OLD]));
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(result.removed, [OLD]);
+    assert.deepEqual(result.added, [KEEP]);
+  });
+
+  it("passes when the copies of a URL only move within the file", () => {
+    const result = checkChanges([page(`[a](${KEEP})\n\n[b](${OLD})`, `[b](${OLD})\n\n[a](${KEEP})`)], new Set());
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(result.removed, []);
+    assert.deepEqual(result.added, []);
   });
 });

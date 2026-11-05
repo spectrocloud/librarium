@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Writes the job summary: what each agent run cost, its decisions, the PR or
-// the dry-run plan, and the check results.
+// Writes the job summary: what each agent run cost, its decisions, the PR (or
+// why its update was skipped) or the dry-run plan, and the check results.
 //
 // Usage: node job-summary.mjs <work-dir> >> "$GITHUB_STEP_SUMMARY"
 // Env: CASE, COUNT, CHECK_EXIT, PREVIEW_EXIT, PREVIEW_BASE, PR_URL.
@@ -29,7 +29,8 @@ function fenced(text) {
 
 /** Builds the summary from the run's results. Every input except caseName and count is optional. */
 export function jobSummary(input) {
-  const { caseName, count, runs = [], decisions = [], prUrl, mergeComment, prBodyWritten, backportLabels = [] } = input;
+  const { caseName, count, runs = [], decisions = [], prUrl, skipComment, mergeComment, prBodyWritten } = input;
+  const { backportLabels = [] } = input;
   const { diffCheck, checkExit, previewReport, previewExit, previewBase, fixReport } = input;
   const sections = [`## Link fix agent: ${caseName}`, `Broken external links reported: **${count}**`];
 
@@ -40,6 +41,7 @@ export function jobSummary(input) {
 
   if (prUrl) {
     sections.push(`**PR:** ${prUrl}`);
+    if (skipComment) sections.push(`**Update skipped:** ${skipComment.trim()}`);
     if (mergeComment) sections.push(mergeComment.trim());
   } else if (prBodyWritten) {
     const decisionAfter = (file) => decisions.find((d) => d.label === DECISIONS[file])?.decision;
@@ -89,6 +91,7 @@ function main([workDir]) {
       runs,
       decisions,
       prUrl: PR_URL,
+      skipComment: readText(path.join(out, "skip-comment.md")),
       mergeComment: readText(path.join(out, "merge-comment.md")),
       prBodyWritten: Boolean(readText(path.join(out, "pr-body.md"))),
       backportLabels: readLines(path.join(out, "backport-labels.txt")),

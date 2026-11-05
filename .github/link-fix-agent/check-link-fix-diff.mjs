@@ -5,12 +5,15 @@
 // opens only when every rule passes:
 //   1. Only docs pages and the linkinator skip lists change.
 //   2. docs/deprecated/ stays untouched, because the weekly scan skips it.
-//   3. Only URLs that the report flagged are removed.
+//   3. Only URLs that the report flagged are removed, and each copy of a URL
+//      in a file counts.
 //   4. Every URL new to a file passes linkinator with the CI config. A site
 //      that blocks bots is retried, and then flagged instead of failing, so a
 //      human merges the PR.
 //   5. Both linkinator configs keep the same skip list.
 // Text changes beyond URL swaps pass, but are flagged with PROSE_CHANGED=1.
+// New skip patterns pass, but are flagged with SKIP_PATTERNS_ADDED=1, because
+// a person approves every skip-list change.
 //
 // Usage: node check-link-fix-diff.mjs <repo-dir> <link_report.json> [--no-network]
 // Exit 0: the PR may open. Exit 1: a rule failed.
@@ -22,7 +25,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
-import { URL_PATTERN, findUrls, urlChanges, urlKey } from "./lib/urls.mjs";
+import { URL_PATTERN, countUrls, urlCountChanges, urlKey } from "./lib/urls.mjs";
 
 export const LINKINATOR_CONFIGS = ["linkinator/linkinator.config.json", "linkinator/linkinator-ci.config.json"];
 const CI_CONFIG = "linkinator/linkinator-ci.config.json";
@@ -48,14 +51,16 @@ export function fileRuleFailure({ path: file, status }) {
   return null;
 }
 
-/** Checks a linkinator config change, where only the skip array may change. */
+/** Checks a linkinator config change, where only the skip array may change, and returns the skip patterns added. */
 export function checkConfigChange({ path: file, before, after }) {
   const { skip: oldSkip = [], ...oldRest } = JSON.parse(before);
   const { skip: newSkip = [], ...newRest } = JSON.parse(after);
   const onlySkipChanged = JSON.stringify(oldRest) === JSON.stringify(newRest);
+  const added = newSkip.filter((s) => !oldSkip.includes(s));
   return {
     failure: onlySkipChanged ? null : `${file}: changed something other than the skip array`,
-    note: `${file}: skip patterns added: ${JSON.stringify(newSkip.filter((s) => !oldSkip.includes(s)))}`,
+    note: `${file}: skip patterns added: ${JSON.stringify(added)}`,
+    added,
   };
 }
 
@@ -83,13 +88,15 @@ export function skipListsMatch(configTexts) {
 
 /**
  * Applies rules 1 to 3 to the changed files, and returns the URLs that each
- * file lost and gained. Rule 4 needs the network, so verifyNewUrls runs it on
- * the URLs gained.
+ * file lost and gained. A file loses a URL when it has fewer copies of it, and
+ * gains one when it has more. Rule 4 needs the network, so verifyNewUrls runs
+ * it on the URLs gained.
  */
 export function checkChanges(changes, reportedUrls) {
   const failures = [];
   const notes = [];
   let proseChanged = false;
+  let skipPatternsAdded = false;
   const removed = new Set();
   const added = new Set();
   const unreported = new Set();
@@ -103,11 +110,12 @@ export function checkChanges(changes, reportedUrls) {
     if (LINKINATOR_CONFIGS.includes(change.path)) {
       const config = checkConfigChange(change);
       if (config.failure) failures.push(config.failure);
+      if (config.added.length) skipPatternsAdded = true;
       notes.push(config.note);
       continue;
     }
     // Rules 3 and 4 apply to each file, so moving a URL to another page removes it from one and adds it to the other.
-    const fileUrls = urlChanges(findUrls(change.before), findUrls(change.after));
+    const fileUrls = urlCountChanges(countUrls(change.before), countUrls(change.after));
     fileUrls.removed.forEach((url) => removed.add(url));
     fileUrls.added.forEach((url) => added.add(url));
     unreportedRemovals(fileUrls.removed, reportedUrls).forEach((url) => unreported.add(url));
@@ -120,7 +128,14 @@ export function checkChanges(changes, reportedUrls) {
   if (unreported.size) {
     failures.push(`removed URLs that were not in the report: ${JSON.stringify([...unreported].sort())}`);
   }
-  return { failures, notes, proseChanged, removed: [...removed].sort(), added: [...added].sort() };
+  return {
+    failures,
+    notes,
+    proseChanged,
+    skipPatternsAdded,
+    removed: [...removed].sort(),
+    added: [...added].sort(),
+  };
 }
 
 // Rule 4: new URLs must load.
@@ -199,14 +214,27 @@ export function linkinatorChecker(repo) {
 
 // Output.
 
-/** Formats the check's result. The workflow and the agent's prompts read the FAIL, PROSE_CHANGED, and UNVERIFIED_LINKS lines. */
-export function formatReport({ changedFiles, removed, added, notes, failures, proseChanged, unverified }) {
+/**
+ * Formats the check's result. The workflow and the agent's prompts read the
+ * FAIL, PROSE_CHANGED, UNVERIFIED_LINKS, and SKIP_PATTERNS_ADDED lines.
+ */
+export function formatReport({
+  changedFiles,
+  removed,
+  added,
+  notes,
+  failures,
+  proseChanged,
+  unverified,
+  skipPatternsAdded,
+}) {
   return [
     `Changed files: ${changedFiles}  URLs removed: ${removed.length}  URLs added: ${added.length}`,
     ...notes.map((note) => `  note: ${note}`),
     ...failures.map((failure) => `  FAIL: ${failure}`),
     `PROSE_CHANGED=${Number(proseChanged)}`,
     `UNVERIFIED_LINKS=${Number(unverified)}`,
+    `SKIP_PATTERNS_ADDED=${Number(skipPatternsAdded)}`,
   ].join("\n");
 }
 
@@ -258,6 +286,7 @@ async function main([repoArg, reportPath, ...flags]) {
       failures,
       proseChanged: fileCheck.proseChanged,
       unverified: urlCheck.unverified,
+      skipPatternsAdded: fileCheck.skipPatternsAdded,
     })
   );
   return failures.length ? 1 : 0;

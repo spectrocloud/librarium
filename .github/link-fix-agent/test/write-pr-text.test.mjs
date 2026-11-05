@@ -33,8 +33,14 @@ describe("diffCheckFlags", () => {
     assert.match(flags[1], /could not verify at least one new URL/);
   });
 
+  it("says a person approves an added skip pattern", () => {
+    assert.deepEqual(diffCheckFlags("PROSE_CHANGED=0\nUNVERIFIED_LINKS=0\nSKIP_PATTERNS_ADDED=1\n"), [
+      "- The agent added a linkinator skip pattern. A person approves every skip-list change.",
+    ]);
+  });
+
   it("returns no notes when the flags are off, missing, or not on their own line", () => {
-    assert.deepEqual(diffCheckFlags("PROSE_CHANGED=0\nUNVERIFIED_LINKS=0"), []);
+    assert.deepEqual(diffCheckFlags("PROSE_CHANGED=0\nUNVERIFIED_LINKS=0\nSKIP_PATTERNS_ADDED=0"), []);
     assert.deepEqual(diffCheckFlags(""), []);
     assert.deepEqual(diffCheckFlags("  note: PROSE_CHANGED=1 was here"), []);
   });

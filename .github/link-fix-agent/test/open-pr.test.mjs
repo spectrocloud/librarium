@@ -1,10 +1,38 @@
 import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import fs from "node:fs";
+import path from "node:path";
+import { afterEach, beforeEach, describe, it } from "node:test";
 
-import { addLabels, disableAutoMerge, findOpenPr, openOrUpdatePr, prLabels, setLabels, strictGh } from "../open-pr.mjs";
+import {
+  BOT_EMAIL,
+  addLabels,
+  disableAutoMerge,
+  findOpenPr,
+  hasHumanCommits,
+  openOrUpdatePr,
+  prLabels,
+  publishFix,
+  setLabels,
+  skipComment,
+  strictGh,
+} from "../open-pr.mjs";
+import { tempDir, writeFiles } from "./helpers.mjs";
 
 const REPO = "spectrocloud/librarium";
 const BRANCH = "bot/fix-broken-links";
+const LIST_CALL = ["pr", "list", "--head", BRANCH, "--state", "open", "--json", "number,isCrossRepository"];
+
+/** A `gh pr list` reply that lists `prs`. */
+const listReply = (...prs) => ({ stdout: `${JSON.stringify(prs)}\n` });
+const BOT_PR = { number: 42, isCrossRepository: false };
+const FORK_PR = { number: 50, isCrossRepository: true };
+
+const BOT = { name: "github-actions[bot]", email: BOT_EMAIL, login: "github-actions" };
+const PERSON = { name: "A Writer", email: "writer@example.com", login: "writer" };
+/** A `gh pr view --json commits` reply with one commit for each list of authors. */
+const commitsReply = (...authorLists) => ({
+  stdout: JSON.stringify({ commits: authorLists.map((authors, i) => ({ oid: `c${i}`, authors })) }),
+});
 
 /** A fake gh that answers each call with the next reply and records the arguments. */
 function fakeGh(...replies) {
@@ -47,110 +75,143 @@ describe("strictGh", () => {
 
 describe("findOpenPr", () => {
   it("returns the number of the open PR from the branch", () => {
-    const { calls, gh } = fakeGh({ stdout: "42\n" });
+    const { calls, gh } = fakeGh(listReply(BOT_PR));
     assert.equal(findOpenPr({ branch: BRANCH, gh }), "42");
-    assert.deepEqual(calls, [
-      ["pr", "list", "--head", BRANCH, "--state", "open", "--json", "number", "--jq", ".[0].number // empty"],
-    ]);
+    assert.deepEqual(calls, [LIST_CALL]);
   });
 
   it("returns an empty string when no PR is open", () => {
-    const { gh } = fakeGh({ stdout: "" });
+    const { gh } = fakeGh(listReply());
     assert.equal(findOpenPr({ branch: BRANCH, gh }), "");
+  });
+
+  it("skips a fork's PR from a branch with the same name, even when gh lists it first", () => {
+    const { gh } = fakeGh(listReply(FORK_PR, BOT_PR));
+    assert.equal(findOpenPr({ branch: BRANCH, gh }), "42");
+  });
+
+  it("returns an empty string when only a fork's PR is open", () => {
+    const { gh } = fakeGh(listReply(FORK_PR));
+    assert.equal(findOpenPr({ branch: BRANCH, gh }), "");
+  });
+
+  it("throws when gh cannot list the PRs", () => {
+    const { gh } = fakeGh({ code: 4, stderr: "authentication required" });
+    assert.throws(() => findOpenPr({ branch: BRANCH, gh }), /gh pr list failed: authentication required/);
+  });
+});
+
+describe("hasHumanCommits", () => {
+  it("is false when the bot, or the Pre-merge Prettier job as the bot, made every commit", () => {
+    const { calls, gh } = fakeGh(commitsReply([BOT], [BOT]));
+    assert.equal(hasHumanCommits({ pr: "42", gh }), false);
+    assert.deepEqual(calls, [["pr", "view", "42", "--json", "commits"]]);
+  });
+
+  it("is true when a person made a commit", () => {
+    const { gh } = fakeGh(commitsReply([BOT], [PERSON]));
+    assert.equal(hasHumanCommits({ pr: "42", gh }), true);
+  });
+
+  it("is true when a person co-authored a commit", () => {
+    const { gh } = fakeGh(commitsReply([BOT, PERSON]));
+    assert.equal(hasHumanCommits({ pr: "42", gh }), true);
+  });
+
+  it("is true for a commit with the bot's name but another email", () => {
+    const { gh } = fakeGh(commitsReply([{ ...BOT, email: "someone@example.com" }]));
+    assert.equal(hasHumanCommits({ pr: "42", gh }), true);
+  });
+
+  it("throws when gh cannot read the commits", () => {
+    const { gh } = fakeGh({ code: 1, stderr: "HTTP 502" });
+    assert.throws(() => hasHumanCommits({ pr: "42", gh }), /gh pr view failed: HTTP 502/);
   });
 });
 
 describe("disableAutoMerge", () => {
-  const LIST = { stdout: "42\n" };
   const DISABLE = ["pr", "merge", "42", "--disable-auto"];
 
-  it("turns off auto-merge on the open PR", () => {
-    const { calls, gh } = fakeGh(LIST, { code: 0 });
-    disableAutoMerge({ branch: BRANCH, gh });
-    assert.deepEqual(calls.slice(1), [DISABLE]);
-  });
-
-  it("does nothing when no PR is open", () => {
-    const { calls, gh } = fakeGh({ stdout: "" });
-    disableAutoMerge({ branch: BRANCH, gh });
-    assert.equal(calls.length, 1);
+  it("turns off auto-merge on the PR", () => {
+    const { calls, gh } = fakeGh({ code: 0 });
+    disableAutoMerge({ pr: "42", gh });
+    assert.deepEqual(calls, [DISABLE]);
   });
 
   it("ignores a failure when auto-merge is already off", () => {
-    const { calls, gh } = fakeGh(LIST, { code: 1, stderr: "auto-merge is not enabled" }, { stdout: "false\n" });
-    disableAutoMerge({ branch: BRANCH, gh });
-    assert.deepEqual(calls.slice(1), [
+    const { calls, gh } = fakeGh({ code: 1, stderr: "auto-merge is not enabled" }, { stdout: "false\n" });
+    disableAutoMerge({ pr: "42", gh });
+    assert.deepEqual(calls, [
       DISABLE,
       ["pr", "view", "42", "--json", "autoMergeRequest", "--jq", ".autoMergeRequest != null"],
     ]);
   });
 
   it("throws when auto-merge is still on after the failure", () => {
-    const { gh } = fakeGh(LIST, { code: 1, stderr: "HTTP 403: Forbidden" }, { stdout: "true\n" });
-    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), {
-      message: "Could not turn off auto-merge on PR #42.",
-    });
+    const { gh } = fakeGh({ code: 1, stderr: "HTTP 403: Forbidden" }, { stdout: "true\n" });
+    assert.throws(() => disableAutoMerge({ pr: "42", gh }), { message: "Could not turn off auto-merge on PR #42." });
   });
 
   it("throws when gh cannot tell whether auto-merge is still on", () => {
-    const { gh } = fakeGh(LIST, { code: 1 }, { code: 1, stderr: "HTTP 502" });
-    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), /gh pr view failed: HTTP 502/);
-  });
-
-  it("throws when gh cannot list the PRs", () => {
-    const { calls, gh } = fakeGh({ code: 4, stderr: "authentication required" });
-    assert.throws(() => disableAutoMerge({ branch: BRANCH, gh }), /gh pr list failed: authentication required/);
-    assert.equal(calls.length, 1);
+    const { gh } = fakeGh({ code: 1 }, { code: 1, stderr: "HTTP 502" });
+    assert.throws(() => disableAutoMerge({ pr: "42", gh }), /gh pr view failed: HTTP 502/);
   });
 });
 
 describe("openOrUpdatePr", () => {
   const options = { branch: BRANCH, title: "docs: fix broken links", bodyFile: "/work/out/pr-body.md", repo: REPO };
+  const createCall = [
+    "pr",
+    "create",
+    "--base",
+    "master",
+    "--head",
+    BRANCH,
+    "--title",
+    "docs: fix broken links",
+    "--body-file",
+    "/work/out/pr-body.md",
+  ];
 
   it("updates the open PR's title and body", (t) => {
     const log = t.mock.method(console, "log", () => {});
-    const { calls, gh } = fakeGh({ stdout: "42\n" }, {});
+    const { calls, gh } = fakeGh(listReply(BOT_PR), {});
     assert.equal(openOrUpdatePr({ ...options, gh }), "42");
-    assert.equal(calls.length, 2);
-    assert.deepEqual(calls[0].slice(0, 7), ["pr", "list", "--head", BRANCH, "--state", "open", "--json"]);
-    assert.deepEqual(calls[1], [
-      "api",
-      "--method",
-      "PATCH",
-      `repos/${REPO}/pulls/42`,
-      "-f",
-      "title=docs: fix broken links",
-      "-F",
-      "body=@/work/out/pr-body.md",
+    assert.deepEqual(calls, [
+      LIST_CALL,
+      [
+        "api",
+        "--method",
+        "PATCH",
+        `repos/${REPO}/pulls/42`,
+        "-f",
+        "title=docs: fix broken links",
+        "-F",
+        "body=@/work/out/pr-body.md",
+      ],
     ]);
     assert.deepEqual(log.mock.calls[0].arguments, ["Updated the open PR #42."]);
   });
 
   it("opens a PR against master when none is open, and returns its number", () => {
-    const { calls, gh } = fakeGh({ stdout: "" }, {}, { stdout: "43\n" });
+    const { calls, gh } = fakeGh(listReply(), {}, listReply({ number: 43, isCrossRepository: false }));
     assert.equal(openOrUpdatePr({ ...options, gh }), "43");
-    assert.deepEqual(calls[1], [
-      "pr",
-      "create",
-      "--base",
-      "master",
-      "--head",
-      BRANCH,
-      "--title",
-      "docs: fix broken links",
-      "--body-file",
-      "/work/out/pr-body.md",
-    ]);
-    assert.equal(calls[2][1], "list");
+    assert.deepEqual(calls, [LIST_CALL, createCall, LIST_CALL]);
+  });
+
+  it("opens its own PR instead of updating a fork's PR from a branch with the same name", () => {
+    const { calls, gh } = fakeGh(listReply(FORK_PR), {}, listReply(FORK_PR, { number: 43, isCrossRepository: false }));
+    assert.equal(openOrUpdatePr({ ...options, gh }), "43");
+    assert.deepEqual(calls, [LIST_CALL, createCall, LIST_CALL]);
   });
 
   it("throws when the new PR cannot be found", () => {
-    const { gh } = fakeGh({ stdout: "" }, {}, { stdout: "" });
+    const { gh } = fakeGh(listReply(), {}, listReply());
     assert.throws(() => openOrUpdatePr({ ...options, gh }), { message: `Could not find the PR for ${BRANCH}.` });
   });
 
   it("throws when gh cannot create the PR", () => {
-    const { calls, gh } = fakeGh({ stdout: "" }, { code: 1, stderr: "a pull request already exists" });
+    const { calls, gh } = fakeGh(listReply(), { code: 1, stderr: "a pull request already exists" });
     assert.throws(() => openOrUpdatePr({ ...options, gh }), /gh pr create failed: a pull request already exists/);
     assert.equal(calls.length, 2);
   });
@@ -235,5 +296,141 @@ describe("setLabels", () => {
   it("throws when gh cannot read the PR's labels", () => {
     const { gh } = fakeGh({ code: 1, stderr: "no pull requests found" });
     assert.throws(() => setLabels({ pr: "42", labels: prLabels([]), repo: REPO, gh }), /gh pr view failed/);
+  });
+});
+
+describe("publishFix", () => {
+  let out;
+  beforeEach(() => {
+    out = tempDir();
+    writeFiles(out, {
+      "pr-body.md": "# PR\n",
+      "pr-comment.md": "## Review buddy\n",
+      "backport-labels.txt": "backport-version-4-7\n",
+    });
+  });
+  afterEach(() => fs.rmSync(out, { recursive: true, force: true }));
+
+  /** Runs publishFix with a fake gh and a push that records when it ran among the gh calls. */
+  function publish(...replies) {
+    const { calls, gh } = fakeGh(...replies);
+    const events = [];
+    const result = publishFix({
+      branch: BRANCH,
+      title: "docs: fix broken links",
+      out,
+      repo: REPO,
+      gh: (args) => {
+        events.push(args.slice(0, 2).join(" "));
+        return gh(args);
+      },
+      push: () => events.push("push"),
+    });
+    return { result, calls, events };
+  }
+
+  it("turns off auto-merge on the bot's open PR before it pushes, then updates, comments on, and labels the PR", (t) => {
+    t.mock.method(console, "log", () => {});
+    const { result, calls, events } = publish(
+      listReply(BOT_PR),
+      commitsReply([BOT], [BOT]),
+      { code: 0 },
+      listReply(BOT_PR),
+      {},
+      {},
+      { stdout: "" },
+      {}
+    );
+    assert.deepEqual(result, { pr: "42", skipped: false });
+    assert.deepEqual(events, [
+      "pr list",
+      "pr view",
+      "pr merge",
+      "push",
+      "pr list",
+      "api --method",
+      "pr comment",
+      "pr view",
+      "api --method",
+    ]);
+    assert.deepEqual(calls[2], ["pr", "merge", "42", "--disable-auto"]);
+    assert.deepEqual(calls[5], ["pr", "comment", "42", "--body-file", path.join(out, "pr-comment.md")]);
+    assert.deepEqual(calls.at(-1).slice(-4), ["-f", "labels[]=backport-version-4-7", "-f", "labels[]=auto-backport"]);
+  });
+
+  it("leaves a PR that a person has committed to alone, and comments why", (t) => {
+    t.mock.method(console, "log", () => {});
+    const { result, calls, events } = publish(listReply(BOT_PR), commitsReply([BOT], [PERSON]), {});
+    assert.deepEqual(result, { pr: "42", skipped: true });
+    assert.deepEqual(events, ["pr list", "pr view", "pr comment"]);
+    const commentFile = path.join(out, "skip-comment.md");
+    assert.deepEqual(calls[2], ["pr", "comment", "42", "--body-file", commentFile]);
+    assert.equal(fs.readFileSync(commentFile, "utf8"), skipComment(BRANCH));
+  });
+
+  it("opens a new PR without checking commits or auto-merge when no bot PR is open", () => {
+    const { result, events, calls } = publish(
+      listReply(FORK_PR),
+      listReply(FORK_PR),
+      {},
+      listReply(FORK_PR, { number: 43, isCrossRepository: false }),
+      {},
+      { stdout: "" },
+      {}
+    );
+    assert.deepEqual(result, { pr: "43", skipped: false });
+    assert.deepEqual(events, [
+      "pr list",
+      "push",
+      "pr list",
+      "pr create",
+      "pr list",
+      "pr comment",
+      "pr view",
+      "api --method",
+    ]);
+    assert.ok(
+      calls.every((args) => !args.includes("50")),
+      "never touches the fork's PR"
+    );
+  });
+
+  it("does not push when gh cannot read the open PR's commits", () => {
+    const pushed = [];
+    const { gh } = fakeGh(listReply(BOT_PR), { code: 1, stderr: "HTTP 502" });
+    const options = { branch: BRANCH, title: "t", out, repo: REPO, gh, push: () => pushed.push(true) };
+    assert.throws(() => publishFix(options), /gh pr view failed: HTTP 502/);
+    assert.deepEqual(pushed, []);
+  });
+
+  it("does not push when auto-merge stays on", () => {
+    const pushed = [];
+    const { gh } = fakeGh(
+      listReply(BOT_PR),
+      commitsReply([BOT]),
+      { code: 1, stderr: "HTTP 403" },
+      { stdout: "true\n" }
+    );
+    const options = { branch: BRANCH, title: "t", out, repo: REPO, gh, push: () => pushed.push(true) };
+    assert.throws(() => publishFix(options), { message: "Could not turn off auto-merge on PR #42." });
+    assert.deepEqual(pushed, []);
+  });
+
+  it("stops before it updates the PR when the push fails", () => {
+    const { calls, gh } = fakeGh(listReply(BOT_PR), commitsReply([BOT]), { code: 0 });
+    const push = () => {
+      throw new Error("git push to bot/fix-broken-links failed: rejected");
+    };
+    assert.throws(() => publishFix({ branch: BRANCH, title: "t", out, repo: REPO, gh, push }), /rejected/);
+    assert.equal(calls.length, 3);
+  });
+});
+
+describe("skipComment", () => {
+  it("names the branch, says nothing changed on the PR, and says the links come back next week", () => {
+    const comment = skipComment(BRANCH);
+    assert.match(comment, /a person has committed to `bot\/fix-broken-links`/);
+    assert.match(comment, /did not push, retitle, relabel, or change auto-merge/);
+    assert.match(comment, /come back in next week's report/);
   });
 });

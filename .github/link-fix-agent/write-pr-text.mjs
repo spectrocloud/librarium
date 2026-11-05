@@ -33,6 +33,9 @@ export function diffCheckFlags(diffCheck) {
       "- The link checker could not verify at least one new URL. The diff check output in the job summary lists it."
     );
   }
+  if (/^SKIP_PATTERNS_ADDED=1$/m.test(diffCheck)) {
+    flags.push("- The agent added a linkinator skip pattern. A person approves every skip-list change.");
+  }
   return flags;
 }
 

@@ -24,12 +24,14 @@ The workflow is `.github/workflows/link-fix-agent.yaml`. This folder holds every
 The agents decide what to edit. The scripts decide whether the edits are acceptable, so a bad fix cannot talk its way
 into a PR.
 
-**Merging.** The PR merges only when every CI check passed, the link checker verified every new URL, the preview check
-passed, and the fixer was confident both after the review and after its preview test. The master ruleset requires a
-docs-education code-owner approval and allows no bypass, so the direct merge fails today. The job then turns on
-auto-merge, and the PR merges on its first approval. If the bot ever gets a bypass, the same step merges with no code
-change. Before a run pushes to the rolling PR, it turns off any auto-merge that an earlier run left on, so an approval
-cannot merge the new commits before this run's checks pass.
+**Merging.** The PR merges only when every CI check passed, the link checker verified every new URL, the fixer added no
+linkinator skip pattern, the preview check passed, and the fixer was confident both after the review and after its
+preview test. A person approves every skip-list change. The master ruleset requires a docs-education code-owner approval
+and allows no bypass, so the direct merge fails today. The job then turns on auto-merge, and the PR merges on its first
+approval. If the bot ever gets a bypass, the same step merges with no code change. Before a run pushes to the rolling
+PR, it turns off any auto-merge that an earlier run left on, so an approval cannot merge the new commits before this
+run's checks pass. If a person has committed to the rolling PR, the run leaves that PR alone and comments that this
+week's update was skipped. The skipped links come back in next week's report.
 
 **Dry runs.** A PR that changes this folder or the workflow runs the whole flow without pushing or opening a PR, in two
 cases: `live` (today's docs) and `replay-nov02` (the docs before the human fix in 516ac87b5, as an answer key).
@@ -75,6 +77,9 @@ The workflow runs them before every agent run.
   has no shell, and it can edit only docs, partials, the two linkinator configs, and its report. The scripts that later
   run with the Vault token, and the link report that the diff check reads, stay out of its reach. The reviewer's shell
   runs only Vale and `printf`.
+- Every agent run denies Read, Grep, and Glob under `/proc` and `/sys`, so a fetched page cannot talk an agent into
+  reading the Claude key from the process environment. A dedicated, spend-capped Claude key for this workflow is the
+  recommended backstop. That is a follow-up for whoever manages the `CLAUDE_API_KEY` secret.
 - The reviewer's skills come from the private docs-ai-context repo. The job checks it out after the fixer's first run
   and deletes it when the reviewer step ends, so no fixer session can read it. The reviewer's transcript stays out of
   the uploaded artifacts, so the private text never reaches this public repo's artifacts.

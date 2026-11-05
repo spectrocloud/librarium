@@ -2,8 +2,8 @@
 // Merges the bot PR, or hands it to a human, and says why in a PR comment.
 //
 // The PR merges only when every CI check passed, the link checker verified
-// every new URL, the preview check passed, and the agent was confident both
-// after the review and after it tested the preview. The master ruleset
+// every new URL, no skip pattern was added, the preview check passed, and the
+// agent was confident both after the review and after it tested the preview. The master ruleset
 // requires a docs code owner's approval and allows no bypass, so the direct
 // merge fails today. Auto-merge then makes the first approval merge the PR.
 //
@@ -38,6 +38,9 @@ export function mergeBlockers({ ciOk, previewBase, previewExit, reviewDecision, 
   if (!ciOk) blockers.push("Not every CI check passed.");
   if (/^UNVERIFIED_LINKS=1$/m.test(diffCheck)) {
     blockers.push("The link checker could not verify at least one new URL, so a human checks it.");
+  }
+  if (/^SKIP_PATTERNS_ADDED=1$/m.test(diffCheck)) {
+    blockers.push("The agent added a linkinator skip pattern, and a person approves every skip-list change.");
   }
   if (!previewBase) blockers.push("The Netlify deploy preview did not build, so the agent could not test it.");
   if (previewExit !== "0") blockers.push("The deploy preview check failed or did not run.");

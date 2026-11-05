@@ -104,10 +104,26 @@ describe("jobSummary", () => {
       { previewExit: "1" },
       { previewBase: "" },
       { diffCheck: "PROSE_CHANGED=0\nUNVERIFIED_LINKS=1\n" },
+      { diffCheck: "PROSE_CHANGED=0\nUNVERIFIED_LINKS=0\nSKIP_PATTERNS_ADDED=1\n" },
     ]) {
       assert.match(jobSummary({ ...input, ...change }), /Would hand off to a human\./, JSON.stringify(change));
     }
     assert.match(jobSummary({ ...input }), /Backport labels: none/);
+  });
+
+  it("says the PR update was skipped, and why", () => {
+    const summary = jobSummary({
+      caseName: "live",
+      count: 2,
+      prUrl: "https://github.com/spectrocloud/librarium/pull/42",
+      skipComment: "A person has committed to the branch.\n",
+      prBodyWritten: true,
+    });
+    assert.match(
+      summary,
+      /\*\*PR:\*\* https:\/\/github\.com\/spectrocloud\/librarium\/pull\/42\n\n\*\*Update skipped:\*\* A person has committed to the branch\.\n/
+    );
+    assert.doesNotMatch(summary, /Dry run|Outcome/);
   });
 
   it("leaves out the dry-run plan when no PR body was written", () => {
@@ -170,6 +186,19 @@ describe("job-summary.mjs command line", () => {
       /\*\*PR:\*\* https:\/\/github\.com\/o\/r\/pull\/42\n\n\*\*Outcome:\*\* The agent merged this PR\./
     );
     assert.doesNotMatch(result.stdout, /Dry run/);
+  });
+
+  it("says the PR update was skipped when open-pr.mjs left the PR alone", () => {
+    writeFiles(work, {
+      "out/skip-comment.md": "The link fix agent skipped this week's update to this PR.\n",
+      "out/pr-body.md": "# PR\n",
+    });
+    const result = runScript("job-summary.mjs", [work], { env: { ...env, PR_URL: "https://github.com/o/r/pull/42" } });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(
+      result.stdout,
+      /\*\*PR:\*\* https:\/\/github\.com\/o\/r\/pull\/42\n\n\*\*Update skipped:\*\* The link fix agent skipped this week's update/
+    );
   });
 
   it("prints placeholders when the run wrote no files", () => {

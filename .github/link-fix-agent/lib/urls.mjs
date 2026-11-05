@@ -31,3 +31,20 @@ export function urlChanges(before, after) {
     added: [...after].filter((url) => !before.has(url)).sort(),
   };
 }
+
+/** Counts how many times each URL appears in `text`. */
+export function countUrls(text) {
+  const counts = new Map();
+  for (const url of text.match(URL_PATTERN) ?? []) counts.set(url, (counts.get(url) ?? 0) + 1);
+  return counts;
+}
+
+/**
+ * Compares two URL counts from countUrls, and returns the sorted URLs that
+ * appear fewer times in `after` (removed) and more times (added). Swapping one
+ * copy of a URL that appears twice removes it, though the other copy stays.
+ */
+export function urlCountChanges(before, after) {
+  const fewerIn = (a, b) => [...b].filter(([url, count]) => (a.get(url) ?? 0) < count).map(([url]) => url);
+  return { removed: fewerIn(after, before).sort(), added: fewerIn(before, after).sort() };
+}
