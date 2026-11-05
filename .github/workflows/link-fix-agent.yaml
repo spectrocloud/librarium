@@ -1,40 +1,20 @@
 name: "Link Fix Agent"
 
 # Fixes the broken external links from the weekly link report with a headless
-# Claude Code agent, reviews the fix in a separate context, and opens a PR.
+# Claude Code agent, reviews the fix in a separate context, opens a PR, tests
+# the deploy preview, and merges when every check agrees.
+# .github/link-fix-agent/README.md explains the flow, the files, and the tests.
 #
-# Flow (a live run on master, weekly or by manual dispatch):
-#   1. Build the broken-link report the same way as merged-links-checks.yaml.
-#   2. The fixer agent edits the docs with the fix-broken-links skill.
-#   3. check-link-fix-diff.mjs checks the edits.
-#   4. A reviewer agent on a smaller model runs pr-review-buddy (docs-ai-context)
-#      in a fresh context.
-#   5. The fixer resumes its session, addresses the review and any diff check
-#      failures, and decides whether it is confident that the PR can merge.
-#   6. check-link-fix-diff.mjs runs again. The check, not the agent, decides
-#      whether a PR opens at all.
-#   7. Open or update the bot/fix-broken-links PR with backport labels, and
-#      post the review and the fixer's responses as a comment.
-#   8. Wait for every CI check, including the Netlify deploy preview.
-#   9. check-preview.mjs fetches each changed page from the preview. The fixer
-#      resumes once more, tests the preview, and decides again.
-#  10. When CI passed, the preview check passed, and the fixer is confident,
-#      merge. The master ruleset requires a docs-education code-owner approval
-#      and allows no bypass, so the direct merge fails and the step turns on
-#      auto-merge instead: the PR merges on its first approval. Otherwise the PR
-#      waits for a human. Either way, notify-slack goes on last.
+# A live run (weekly on master, or by manual dispatch) opens a PR. A pull
+# request that changes the agent gets a dry run instead, which never pushes or
+# opens a PR: the live case plus a replay of the docs before 516ac87b5 (Linus's
+# Nov 2 fix), so the agent's patch can be compared with a human answer key.
 #
-# Pull requests that change the agent get a dry run instead: the live case plus
-# a replay of the docs before 516ac87b5 (Linus's Nov 2 fix), so the patch can be
-# compared with a human answer key. The replay tests the production site, which
-# carries the human fix, in place of a deploy preview. A dry run never pushes
-# or opens a PR.
-#
-# SECURITY: neither agent holds a GitHub token (persist-credentials: false, and
-# the Vault token stays in step outputs that only the checkout and PR steps
-# read). The fixer has no shell. The reviewer's shell runs only vale, printf,
-# and read-only git subcommands. Fetched web pages are untrusted input, so the
-# diff check, not the prompt, decides whether the edits are acceptable.
+# SECURITY: neither agent holds a GitHub token. The checkout keeps no
+# credentials, and the Vault token stays in step outputs that only the checkout
+# and GitHub steps read. Each agent gets an exact tool set; the fixer has no
+# shell, and the reviewer's shell runs only Vale and read-only git. Fetched web
+# pages are untrusted input, so deterministic checks, not prompts, decide.
 
 on:
   schedule:
@@ -46,7 +26,7 @@ on:
       - ".github/link-fix-agent/**"
 
 permissions:
-  # Pushing, labeling, and auto-merge use the Vault-issued org token, so the
+  # Pushing, labeling, and merging use the Vault-issued org token, so the
   # default GITHUB_TOKEN needs no write scope.
   contents: read
 
@@ -62,7 +42,7 @@ env:
   MAX_BUDGET_USD: "3"
   REVIEW_BUDGET_USD: "1"
   AGENT_DIR: .github/link-fix-agent
-  # Exact tool sets. The fixer has no shell; the reviewer's Bash is limited by
+  # Exact tool sets. The fixer has no shell. The reviewer's Bash is limited by
   # the --allowedTools patterns in its step.
   AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,WebFetch,WebSearch,Write"
   REVIEW_TOOLS: "Bash,Glob,Grep,Read,Skill"
@@ -79,8 +59,27 @@ env:
   HUSKY: "0"
 
 jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Run the unit tests
+        run: node --test "$AGENT_DIR/test/*.test.mjs"
+
   fix-links:
     name: Fix broken links (${{ matrix.case }})
+    needs: test
     # Pull request runs need the repo secrets, so only branches in this
     # repository get them.
     if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
@@ -97,6 +96,8 @@ jobs:
       DOCS_REF: ${{ matrix.case == 'replay-nov02' && '516ac87b5e6c46634519291b6237175e6987b15a' || '' }}
 
     steps:
+      # Setup
+
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -151,17 +152,16 @@ jobs:
 
           # Replay: swap in the docs as they were before the human fix, and
           # commit them locally so the diff check compares against that tree.
+          # Production carries the human fix, so it stands in for the deploy
+          # preview, and no CI runs.
           if [[ -n "$DOCS_REF" ]]; then
             git fetch --quiet --depth=2 origin "$DOCS_REF"
             git rm -rq docs _partials linkinator
             git checkout "${DOCS_REF}^" -- docs _partials linkinator
             git -c user.name=link-fix-agent -c user.email=link-fix-agent@local \
               commit -qm "replay baseline ${DOCS_REF}^"
-            # Production carries the human fix, so it stands in for the deploy
-            # preview when the agent tests it.
             echo "PREVIEW_BASE=https://docs.spectrocloud.com" >> "$GITHUB_ENV"
-            echo "Dry run: no PR, so no CI checks ran. The production site stands in for the deploy preview." \
-              > "$WORK/out/pr-checks.txt"
+            echo "Dry run: no PR, so no CI checks ran." > "$WORK/out/pr-checks.txt"
           fi
 
           # .claude/ is gitignored, so the skills never show up in the diff.
@@ -189,6 +189,8 @@ jobs:
           echo "Broken external links: $count"
           jq -r '.[] | "\(.status) \(.url) <- \(.parent)"' "$WORK/link_report.json"
 
+      # Fix
+
       - name: Install Claude Code
         if: ${{ steps.report.outputs.count != '0' }}
         run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
@@ -199,10 +201,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          # Not --bare: bare mode drops Write, WebSearch, and the ToolSearch that
-          # loads WebFetch, and the agent then guesses URLs from memory.
-          # --tools is the exact tool set; --allowedTools approves them without a prompt.
-          # The session persists so that the agent can address the review later.
+          # Not --bare: bare mode drops Write, WebSearch, and WebFetch, and the
+          # agent then guesses URLs from memory. The session persists, so the
+          # agent can address the review and test the preview later.
           claude -p "/fix-broken-links $WORK/link_report.json $WORK/out/fix-report.md" \
             --model "$MODEL" \
             --session-id "$SESSION_ID" \
@@ -217,18 +218,7 @@ jobs:
             --verbose \
             > "$WORK/out/run.jsonl"
           tail -n 1 "$WORK/out/run.jsonl" > "$WORK/out/run.json"
-          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/run.json"
-
-      - name: Check the fixer had exactly its tools
-        if: ${{ steps.report.outputs.count != '0' }}
-        run: |
-          set -euo pipefail
-          # The prompt can't enforce this: an agent without web access still
-          # "fixes" links, from memory. Fail before the diff check if it lacked them.
-          tools=$(head -n 1 "$WORK/out/run.jsonl" | jq -c '.tools | sort')
-          echo "Fixer tools: $tools"
-          echo "$tools" | jq -e --arg want "$AGENT_TOOLS" '. == ($want | split(",") | sort)' > /dev/null \
-            || { echo "::error::The fixer's tools are not exactly $AGENT_TOOLS."; exit 1; }
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/run.jsonl" --tools "$AGENT_TOOLS"
 
       # The first check only informs the fixer's second pass. The final check
       # after it decides.
@@ -238,6 +228,8 @@ jobs:
         run: |
           node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check-1.txt" || true
           if [[ -n "$(git status --porcelain)" ]]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      # Review
 
       - name: Install Vale
         if: ${{ steps.first-check.outputs.changed == 'true' }}
@@ -250,7 +242,7 @@ jobs:
 
       - name: Gather the review inputs
         if: ${{ steps.first-check.outputs.changed == 'true' }}
-        run: bash "$AGENT_DIR/gather-review.sh" "$WORK/review" "$PR_TITLE"
+        run: node "$AGENT_DIR/gather-review.mjs" "$WORK/review" "$PR_TITLE"
 
       - name: Run the reviewer agent
         if: ${{ steps.first-check.outputs.changed == 'true' }}
@@ -258,8 +250,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          # A fresh session on a smaller model, as the PR template asks. Its
-          # shell is limited to Vale and read-only git, and it holds no GitHub token.
+          # A fresh session on a smaller model, as the PR template asks.
           claude -p "/pr-review-buddy $WORK/review" \
             --model "$REVIEW_MODEL" \
             --setting-sources project \
@@ -267,7 +258,7 @@ jobs:
             --tools "$REVIEW_TOOLS" \
             --allowedTools Read Grep Glob "Bash(vale *)" "Bash(printf *)" \
               "Bash(git show *)" "Bash(git grep *)" "Bash(git log *)" "Bash(git diff *)" \
-            --append-system-prompt-file "$AGENT_DIR/review-in-ci.md" \
+            --append-system-prompt-file "$AGENT_DIR/prompts/review-in-ci.md" \
             --add-dir "$WORK/review" \
             --max-budget-usd "$REVIEW_BUDGET_USD" \
             --output-format stream-json \
@@ -275,12 +266,8 @@ jobs:
             --no-session-persistence \
             > "$WORK/out/review-run.jsonl"
           tail -n 1 "$WORK/out/review-run.jsonl" > "$WORK/out/review-run.json"
-          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/review-run.json"
-          jq -r '.result' "$WORK/out/review-run.json" > "$WORK/review/review.md"
-          tools=$(head -n 1 "$WORK/out/review-run.jsonl" | jq -c '.tools | sort')
-          echo "Reviewer tools: $tools"
-          echo "$tools" | jq -e --arg want "$REVIEW_TOOLS" '. == ($want | split(",") | sort)' > /dev/null \
-            || { echo "::error::The reviewer's tools are not exactly $REVIEW_TOOLS."; exit 1; }
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/review-run.jsonl" \
+            --tools "$REVIEW_TOOLS" --result-to "$WORK/review/review.md"
 
       - name: Address the review
         if: ${{ steps.first-check.outputs.changed == 'true' }}
@@ -290,7 +277,7 @@ jobs:
           set -euo pipefail
           export REVIEW_FILE="$WORK/review/review.md" CHECK_FILE="$WORK/out/diff-check-1.txt" FIX_REPORT="$WORK/out/fix-report.md"
           # shellcheck disable=SC2016 # envsubst takes the variable names literally
-          prompt=$(envsubst '$REVIEW_FILE $CHECK_FILE $FIX_REPORT' < "$AGENT_DIR/address-review.md")
+          prompt=$(envsubst '$REVIEW_FILE $CHECK_FILE $FIX_REPORT' < "$AGENT_DIR/prompts/address-review.md")
           claude -p "$prompt" \
             --resume "$SESSION_ID" \
             --model "$MODEL" \
@@ -301,14 +288,10 @@ jobs:
             --disallowedTools Bash \
             --add-dir "$WORK" \
             --max-budget-usd "$MAX_BUDGET_USD" \
-            --json-schema "$(cat "$AGENT_DIR/decision.schema.json")" \
+            --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
             --output-format json \
             > "$WORK/out/address-run.json"
-          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/address-run.json"
-          jq '.structured_output' "$WORK/out/address-run.json" > "$WORK/out/decision.json"
-          jq -e '.confident | type == "boolean"' "$WORK/out/decision.json" > /dev/null \
-            || { echo "::error::The fixer returned no merge decision."; exit 1; }
-          jq -r '"confident=\(.confident): \(.reason)"' "$WORK/out/decision.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/address-run.json" --decision-to "$WORK/out/decision.json"
 
       - name: Check the final diff
         id: check
@@ -321,13 +304,15 @@ jobs:
           git diff > "$WORK/out/fix.patch"
           git diff --stat
 
+      # PR
+
       - name: Pick backport labels
         if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
-        run: bash "$AGENT_DIR/backport-labels.sh" "$WORK/out/fix.patch" "$OLDEST_BACKPORT" "$WORK/out"
+        run: node "$AGENT_DIR/backport-labels.mjs" "$WORK/out/fix.patch" "$OLDEST_BACKPORT" "$WORK/out"
 
       - name: Write the PR description
         if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
-        run: bash "$AGENT_DIR/write-pr-text.sh" "$WORK"
+        run: node "$AGENT_DIR/write-pr-text.mjs" "$WORK"
 
       - name: Open or update the PR
         id: pr
@@ -335,40 +320,11 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B "$PR_BRANCH"
-          git commit -qam "$PR_TITLE"
-          # The checkout kept no credentials, so pass the token for this push only.
-          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
-          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
-            push --force origin "HEAD:refs/heads/$PR_BRANCH"
-
-          PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
-          if [[ -z "$PR" ]]; then
-            gh pr create --base master --head "$PR_BRANCH" --title "$PR_TITLE" --body-file "$WORK/out/pr-body.md"
-            PR=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
-          else
-            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$PR" -f title="$PR_TITLE" -F body=@"$WORK/out/pr-body.md" > /dev/null
-            echo "Updated the open PR #$PR."
-          fi
-          [[ -n "$PR" ]] || { echo "::error::Could not resolve the PR number."; exit 1; }
-          gh pr comment "$PR" --body-file "$WORK/out/pr-comment.md"
-
-          # notify-slack waits until the agent has tested the deploy preview.
-          labels=(small-pr not-urgent)
-          while IFS= read -r label; do labels+=("$label"); done < "$WORK/out/backport-labels.txt"
-          [[ -s "$WORK/out/backport-labels.txt" ]] && labels+=(auto-backport)
-          args=()
-          for label in "${labels[@]}"; do args+=(-f "labels[]=$label"); done
-          gh api --method POST "repos/$GITHUB_REPOSITORY/issues/$PR/labels" "${args[@]}" > /dev/null
-          {
-            echo "number=$PR"
-            echo "url=$(gh pr view "$PR" --json url --jq .url)"
-          } >> "$GITHUB_OUTPUT"
+          node "$AGENT_DIR/open-pr.mjs" "$WORK"
           # The fix is committed now, so later diffs compare against master.
           echo "DIFF_BASE=HEAD~1" >> "$GITHUB_ENV"
+
+      # Deploy preview and merge
 
       - name: Wait for CI and the deploy preview
         id: ci
@@ -376,21 +332,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
           PR: ${{ steps.pr.outputs.number }}
-        run: |
-          set -uo pipefail
-          # Wait for the checks to register, and then for every check to finish.
-          for _ in $(seq 1 30); do
-            gh pr checks "$PR" 2>&1 | grep -q 'no checks reported' || break
-            sleep 20
-          done
-          gh pr checks "$PR" --watch --interval 60 > /dev/null 2>&1
-          gh pr checks "$PR" > "$WORK/out/pr-checks.txt" 2>&1
-          ci_exit=$?
-          cat "$WORK/out/pr-checks.txt"
-          if [[ $ci_exit == 0 ]]; then echo "ok=true" >> "$GITHUB_OUTPUT"; fi
-          if grep -q $'^netlify/docs-spectrocloud/deploy-preview\tpass' "$WORK/out/pr-checks.txt"; then
-            echo "PREVIEW_BASE=https://deploy-preview-${PR}--docs-spectrocloud.netlify.app" >> "$GITHUB_ENV"
-          fi
+        run: node "$AGENT_DIR/wait-for-ci.mjs" "$PR" "$WORK/out/pr-checks.txt"
 
       - name: Check the deploy preview
         id: preview
@@ -409,8 +351,8 @@ jobs:
           set -euo pipefail
           export PREVIEW_BASE PREVIEW_FILE="$WORK/out/preview-check.txt" CHECKS_FILE="$WORK/out/pr-checks.txt"
           # shellcheck disable=SC2016 # envsubst takes the variable names literally
-          prompt=$(envsubst '$PREVIEW_BASE $PREVIEW_FILE $CHECKS_FILE' < "$AGENT_DIR/test-preview.md")
-          # The PR is already pushed, so this pass can read and fetch but not edit.
+          prompt=$(envsubst '$PREVIEW_BASE $PREVIEW_FILE $CHECKS_FILE' < "$AGENT_DIR/prompts/test-preview.md")
+          # The PR is already pushed, so this pass can read and fetch, but not edit.
           claude -p "$prompt" \
             --resume "$SESSION_ID" \
             --model "$MODEL" \
@@ -420,19 +362,11 @@ jobs:
             --allowedTools Read Grep Glob WebFetch \
             --add-dir "$WORK" \
             --max-budget-usd "$MAX_BUDGET_USD" \
-            --json-schema "$(cat "$AGENT_DIR/decision.schema.json")" \
+            --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
             --output-format json \
             > "$WORK/out/preview-run.json"
-          jq -r '"cost_usd=\(.total_cost_usd) turns=\(.num_turns) is_error=\(.is_error)"' "$WORK/out/preview-run.json"
-          jq '.structured_output' "$WORK/out/preview-run.json" > "$WORK/out/final-decision.json"
-          jq -e '.confident | type == "boolean"' "$WORK/out/final-decision.json" > /dev/null \
-            || { echo "::error::The fixer returned no merge decision after the preview test."; exit 1; }
-          jq -r '"confident=\(.confident): \(.reason)"' "$WORK/out/final-decision.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/preview-run.json" --decision-to "$WORK/out/final-decision.json"
 
-      # Merge only when every CI check passed, the preview check passed, and the
-      # agent is still confident after testing the preview. The master ruleset
-      # requires a docs code owner's approval and allows no bypass, so the
-      # direct merge fails today, and auto-merge makes the first approval merge it.
       - name: Merge or hand off
         if: ${{ always() && steps.pr.outputs.number != '' }}
         env:
@@ -440,60 +374,9 @@ jobs:
           PR: ${{ steps.pr.outputs.number }}
           CI_OK: ${{ steps.ci.outputs.ok }}
           PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
-        run: |
-          set -euo pipefail
-          decision="$WORK/out/final-decision.json"
-          blockers=()
-          [[ "$CI_OK" == "true" ]] || blockers+=("Not every CI check passed.")
-          [[ -n "${PREVIEW_BASE:-}" ]] || blockers+=("The Netlify deploy preview did not build, so the agent could not test it.")
-          [[ "$PREVIEW_EXIT" == "0" ]] || blockers+=("The deploy preview check failed or did not run.")
-          if [[ ! -f "$decision" ]]; then
-            blockers+=("The agent did not finish its deploy preview test.")
-          elif [[ "$(jq -r '.confident' "$decision")" != "true" ]]; then
-            blockers+=("The agent is not confident: $(jq -r '.reason' "$decision")")
-          fi
+        run: node "$AGENT_DIR/merge-or-hand-off.mjs" "$WORK" "$PR"
 
-          merged=false
-          if [[ ${#blockers[@]} -eq 0 ]]; then
-            if gh pr merge "$PR" --squash; then
-              merged=true
-              outcome="The agent merged this PR."
-            else
-              gh pr merge "$PR" --squash --auto || true
-              if [[ "$(gh pr view "$PR" --json autoMergeRequest --jq '.autoMergeRequest != null')" == "true" ]]; then
-                outcome="The agent turned on auto-merge. The master ruleset requires a docs code owner's approval, so this PR merges when one approves it."
-              else
-                outcome="The agent could not merge this PR or turn on auto-merge. A docs code owner approves and merges it."
-              fi
-            fi
-          else
-            gh pr merge "$PR" --disable-auto > /dev/null 2>&1 || true
-            outcome="The agent handed this PR off. A docs code owner reviews, approves, and merges it."
-          fi
-
-          {
-            echo "## Deploy preview test"
-            echo
-            if [[ -f "$WORK/out/preview-check.txt" ]]; then
-              echo "Preview: ${PREVIEW_BASE}"
-              echo
-              echo '```text'
-              cat "$WORK/out/preview-check.txt"
-              echo '```'
-              echo
-            fi
-            [[ -f "$decision" ]] && jq -r '"**The agent:** \(.reason)"' "$decision" && echo
-            echo "**Outcome:** ${outcome}"
-            if [[ ${#blockers[@]} -gt 0 ]]; then
-              echo
-              printf -- '- %s\n' "${blockers[@]}"
-            fi
-          } > "$WORK/out/merge-comment.md"
-          gh pr comment "$PR" --body-file "$WORK/out/merge-comment.md"
-          cat "$WORK/out/merge-comment.md"
-          if [[ "$merged" != "true" ]]; then
-            gh api --method POST "repos/$GITHUB_REPOSITORY/issues/$PR/labels" -f "labels[]=notify-slack" > /dev/null
-          fi
+      # Reporting
 
       - name: Write the job summary
         if: ${{ always() && steps.report.outputs.count != '' }}
@@ -503,52 +386,7 @@ jobs:
           CHECK_EXIT: ${{ steps.check.outputs.exit }}
           PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
           PR_URL: ${{ steps.pr.outputs.url }}
-        run: |
-          {
-            echo "## Link fix agent: ${CASE}"
-            echo
-            echo "Broken external links reported: **${COUNT}**"
-            echo
-            for run in run review-run address-run preview-run; do
-              [[ -f "$WORK/out/$run.json" ]] || continue
-              jq -r --arg run "$run" '"- \($run): \(.num_turns) turns, $\(.total_cost_usd * 100 | round / 100), \(.duration_ms / 1000 | round)s"' "$WORK/out/$run.json"
-            done
-            for d in decision final-decision; do
-              [[ -f "$WORK/out/$d.json" ]] || continue
-              echo
-              jq -r --arg d "$d" '"**\($d):** confident=\(.confident). \(.reason)"' "$WORK/out/$d.json"
-            done
-            if [[ -n "$PR_URL" ]]; then
-              echo
-              echo "**PR:** $PR_URL"
-              [[ -f "$WORK/out/merge-comment.md" ]] && { echo; cat "$WORK/out/merge-comment.md"; }
-            elif [[ -f "$WORK/out/pr-body.md" ]]; then
-              echo
-              echo "**Dry run:** the PR description and comments are in the artifacts. CI is not checked in a dry run."
-              echo "Backport labels: $(paste -sd ' ' "$WORK/out/backport-labels.txt")"
-              if [[ "$PREVIEW_EXIT" == "0" && "$(jq -r '.confident' "$WORK/out/final-decision.json" 2>/dev/null)" == "true" ]]; then
-                echo "Would merge once CI passes."
-              else
-                echo "Would hand off to a human."
-              fi
-              if [[ -f "$WORK/out/preview-check.txt" ]]; then
-                echo
-                echo "### Preview check (exit ${PREVIEW_EXIT}) against ${PREVIEW_BASE}"
-                echo
-                echo '```text'
-                cat "$WORK/out/preview-check.txt"
-                echo '```'
-              fi
-            fi
-            echo
-            echo "### Final diff check (exit ${CHECK_EXIT:-not run})"
-            echo
-            echo '```text'
-            cat "$WORK/out/diff-check.txt" 2>/dev/null || echo "not run"
-            echo '```'
-            echo
-            cat "$WORK/out/fix-report.md" 2>/dev/null || echo "No fix report."
-          } >> "$GITHUB_STEP_SUMMARY"
+        run: node "$AGENT_DIR/job-summary.mjs" "$WORK" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload results
         if: ${{ always() }}

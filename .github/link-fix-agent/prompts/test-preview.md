@@ -11,4 +11,7 @@ Test the deploy preview. You can no longer edit files, so report problems instea
 Then decide again whether you are confident that the PR can merge. Be confident only when every CI check passed, the
 preview check passed, and your own tests found nothing wrong. Otherwise, the reason names what a human should check.
 
+In a dry run, the CI results file says that no CI checks ran. Judge everything else, and leave CI out of your decision,
+because the workflow checks CI itself before it merges.
+
 Answer with the structured output. Leave `findings` empty.

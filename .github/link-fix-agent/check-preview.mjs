@@ -1,37 +1,39 @@
 #!/usr/bin/env node
-// Checks a deploy preview for an agent-made broken-link fix.
+// Checks the deploy preview of the agent's broken-link fix.
 //
-// Finds the pages that render each changed file, fetches them from the
-// preview, and checks that every URL the fix added appears on the page and
-// every URL it removed is gone. The fixer agent reads the result when it tests
-// the preview, and the merge step requires it to pass.
+// For each changed docs file, it finds the pages that render the file, fetches
+// them from the preview, and checks that each URL the fix added is on the page
+// and each URL it removed is gone. The fixer agent reads the result when it
+// tests the preview, and the job merges only when every page passes.
 //
-// Usage: node check-preview.mjs <repo-dir> <preview-base-url> <out.json> [<base-ref>]
-// <base-ref> is the commit the fix applies to (default HEAD, for an uncommitted fix).
+// Usage: node check-preview.mjs <repo-dir> <preview-url> <out.json> [<base-ref>]
+// <base-ref> is the commit that the fix applies to: HEAD (the default) while the
+// fix is uncommitted, and HEAD~1 after the PR step commits it.
 // Exit 0: every page passed. Exit 1: a page failed or could not be found.
 
-import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-const URL_RE = /https?:\/\/[^\s)\]"'<>`]+/g;
+import { isMain } from "./lib/cli.mjs";
+import { git } from "./lib/run.mjs";
+import { findUrls, urlChanges, withoutFragment } from "./lib/urls.mjs";
+
 const DOCS_ROOT = "docs/docs-content/";
+// Each product's folder name is also its route prefix (productDocs.js).
+const PRODUCTS_ROOT = "docs/products/";
 const PARTIALS_ROOT = "_partials/";
 
-const git = (repo, ...args) => execFileSync("git", ["-C", repo, ...args], { encoding: "utf8" });
-const urls = (text) => new Set(text.match(URL_RE) ?? []);
-const defrag = (url) => url.split("#")[0];
-const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-// A URL is on the page when its href ends right after it. The built HTML may
-// leave attributes unquoted and escapes & as &amp;.
-const shown = (html, url) =>
-  [url, url.replaceAll("&", "&amp;")].some((u) => new RegExp(`${escapeRe(u)}(?=[\\s"'<>#]|$)`).test(html));
-
-// docs/docs-content/a/b/c.md is served at /a/b/c/. A folder's index file, or a
-// file named after its folder, is served at the folder.
-function route(file) {
+/**
+ * Returns the route that serves a docs file, or null for a file outside the
+ * docs. docs/docs-content/a/b/c.md is served at /a/b/c/, and
+ * docs/products/<product>/a.md at /<product>/a/. A folder's index.md, or a file
+ * named after its folder, is served at the folder.
+ */
+export function routeForDocFile(file) {
+  const root = [DOCS_ROOT, PRODUCTS_ROOT].find((r) => file.startsWith(r));
+  if (!root) return null;
   const parts = file
-    .slice(DOCS_ROOT.length)
+    .slice(root.length)
     .replace(/\.mdx?$/, "")
     .split("/");
   const last = parts.at(-1);
@@ -39,88 +41,162 @@ function route(file) {
   return `/${parts.join("/")}/`;
 }
 
-// _partials/<category>/_<name>.mdx renders wherever a page has
-// <PartialsComponent category="<category>" name="<name>" />.
-function partialUsers(repo, file) {
-  const category = path.dirname(file.slice(PARTIALS_ROOT.length));
-  const name = path
-    .basename(file)
-    .replace(/^_/, "")
-    .replace(/\.mdx?$/, "");
-  let hits = "";
-  try {
-    hits = git(repo, "grep", "-l", "-F", `name="${name}"`, "--", DOCS_ROOT);
-  } catch {
-    return [];
-  }
-  return hits
-    .split("\n")
-    .filter(Boolean)
-    .filter((f) => fs.readFileSync(path.join(repo, f), "utf8").includes(`category="${category}"`));
+/** Returns the category and name that a <PartialsComponent> uses for a partial: _partials/<category>/_<name>.mdx. */
+export function partialId(file) {
+  return {
+    category: path.dirname(file.slice(PARTIALS_ROOT.length)),
+    name: path
+      .basename(file)
+      .replace(/^_/, "")
+      .replace(/\.mdx?$/, ""),
+  };
 }
 
-async function main() {
-  const repo = path.resolve(process.argv[2]);
-  const base = process.argv[3].replace(/\/$/, "");
-  const outPath = process.argv[4];
-  const baseRef = process.argv[5] ?? "HEAD";
+/** True when one <PartialsComponent> on the page has both the partial's category and its name. */
+export function rendersPartial(pageText, { category, name }) {
+  const components = pageText.match(/<PartialsComponent\b[^>]*>/g) ?? [];
+  return components.some((tag) => tag.includes(`category="${category}"`) && tag.includes(`name="${name}"`));
+}
 
-  const sitemapXml = await (await fetch(`${base}/sitemap.xml`)).text();
-  const sitemap = new Set((sitemapXml.match(/<loc>[^<]+/g) ?? []).map((l) => new URL(l.slice(5)).pathname));
+/** Returns the pathnames that a sitemap lists. */
+export function sitemapPaths(xml) {
+  return new Set((xml.match(/<loc>[^<]+/g) ?? []).map((loc) => new URL(loc.slice("<loc>".length)).pathname));
+}
 
+/**
+ * Returns the sitemap path for `route`, or null. When the route is not in the
+ * sitemap, as for docs outside docs-content or a page with a custom slug, a
+ * single sitemap path that ends in the same segment matches instead.
+ */
+export function resolveRoute(route, paths) {
+  if (paths.has(route)) return route;
+  const lastSegment = `/${route.split("/").at(-2)}/`;
+  const matches = [...paths].filter((p) => p.endsWith(lastSegment));
+  return matches.length === 1 ? matches[0] : null;
+}
+
+/** True when `html` links to `url`. The built HTML can leave attributes unquoted and escapes & as &amp;. */
+export function linkShown(html, url) {
+  const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return [url, url.replaceAll("&", "&amp;")].some((form) =>
+    new RegExp(`${escapeRegExp(form)}(?=[\\s"'<>#]|$)`).test(html)
+  );
+}
+
+/**
+ * Groups the changed files by the preview page that renders them.
+ * `changes` holds each file's path and its text before and after the fix.
+ * `pagesUsingPartial` returns the docs files that render a partial.
+ */
+export function planPages(changes, { sitemap, pagesUsingPartial }) {
   const pages = new Map();
   const missing = [];
-  for (const file of git(repo, "diff", "--name-only", baseRef).split("\n").filter(Boolean)) {
-    if (!/\.mdx?$/.test(file)) continue;
-    const before = urls(git(repo, "show", `${baseRef}:${file}`));
-    const after = urls(fs.readFileSync(path.join(repo, file), "utf8"));
-    const docs = file.startsWith(PARTIALS_ROOT) ? partialUsers(repo, file) : [file];
-    if (docs.length === 0) missing.push(`${file}: no page renders this partial`);
-    for (const doc of docs) {
-      let r = route(doc);
-      if (!sitemap.has(r)) {
-        // Docs outside docs-content, or a page with a slug: match the last segment.
-        const tail = `/${r.split("/").at(-2)}/`;
-        const candidates = [...sitemap].filter((p) => p.endsWith(tail));
-        if (candidates.length !== 1) {
-          missing.push(`${file}: no single preview page for ${doc} (tried ${r})`);
-          continue;
-        }
-        r = candidates[0];
+  for (const { path: file, before, after } of changes) {
+    const { removed, added } = urlChanges(findUrls(before), findUrls(after));
+    const docFiles = file.startsWith(PARTIALS_ROOT) ? pagesUsingPartial(file) : [file];
+    if (docFiles.length === 0) missing.push(`${file}: no page renders this partial`);
+    for (const docFile of docFiles) {
+      const expectedRoute = routeForDocFile(docFile);
+      const route = expectedRoute && resolveRoute(expectedRoute, sitemap);
+      if (!route) {
+        missing.push(`${file}: no single preview page for ${docFile} (tried ${expectedRoute ?? "no route"})`);
+        continue;
       }
-      const page = pages.get(r) ?? { sources: new Set(), added: new Set(), removed: new Set() };
+      const page = pages.get(route) ?? { sources: new Set(), added: new Set(), removed: new Set() };
       page.sources.add(file);
-      after.forEach((u) => before.has(u) || page.added.add(defrag(u)));
-      before.forEach((u) => after.has(u) || page.removed.add(defrag(u)));
-      pages.set(r, page);
+      added.forEach((url) => page.added.add(withoutFragment(url)));
+      removed.forEach((url) => page.removed.add(withoutFragment(url)));
+      pages.set(route, page);
     }
   }
-
-  const results = [];
-  for (const [r, page] of pages) {
-    const res = await fetch(base + r);
-    const html = res.ok ? await res.text() : "";
-    const notShown = [...page.added].filter((u) => !shown(html, u));
-    const stillShown = [...page.removed].filter((u) => shown(html, u));
-    results.push({
-      url: base + r,
-      sources: [...page.sources],
-      status: res.status,
-      notShown,
-      stillShown,
-      ok: res.ok && notShown.length === 0 && stillShown.length === 0,
-    });
-  }
-
-  fs.writeFileSync(outPath, JSON.stringify({ base, pages: results, missing }, null, 2));
-  for (const p of results) {
-    console.log(`${p.ok ? "PASS" : "FAIL"} ${p.status} ${p.url}`);
-    p.notShown.forEach((u) => console.log(`  new URL not on the page: ${u}`));
-    p.stillShown.forEach((u) => console.log(`  removed URL still on the page: ${u}`));
-  }
-  missing.forEach((m) => console.log(`FAIL ${m}`));
-  console.log(`Pages checked: ${results.length}  Failed: ${results.filter((p) => !p.ok).length + missing.length}`);
-  return results.every((p) => p.ok) && missing.length === 0 && results.length > 0 ? 0 : 1;
+  return { pages, missing };
 }
 
-process.exitCode = await main();
+/** Fetches each page with `fetchPage(url)`, which returns { status, ok, text }, and checks its links. */
+export async function checkPages(pages, base, fetchPage) {
+  const results = [];
+  for (const [route, page] of pages) {
+    const response = await fetchPage(base + route);
+    const html = response.ok ? response.text : "";
+    const notShown = [...page.added].filter((url) => !linkShown(html, url));
+    const stillShown = [...page.removed].filter((url) => linkShown(html, url));
+    results.push({
+      url: base + route,
+      sources: [...page.sources],
+      status: response.status,
+      notShown,
+      stillShown,
+      ok: response.ok && notShown.length === 0 && stillShown.length === 0,
+    });
+  }
+  return results;
+}
+
+/** True when there was at least one page, every page passed, and every changed file had a page. */
+export function previewPassed(results, missing) {
+  return results.length > 0 && missing.length === 0 && results.every((result) => result.ok);
+}
+
+/** Formats the result. The fixer agent reads the PASS and FAIL lines. */
+export function formatResults(results, missing) {
+  const failed = results.filter((result) => !result.ok).length + missing.length;
+  return [
+    ...results.flatMap((result) => [
+      `${result.ok ? "PASS" : "FAIL"} ${result.status} ${result.url}`,
+      ...result.notShown.map((url) => `  new URL not on the page: ${url}`),
+      ...result.stillShown.map((url) => `  removed URL still on the page: ${url}`),
+    ]),
+    ...missing.map((line) => `FAIL ${line}`),
+    `Pages checked: ${results.length}  Failed: ${failed}`,
+  ].join("\n");
+}
+
+// Command line.
+
+async function fetchPage(url) {
+  const response = await fetch(url);
+  return { status: response.status, ok: response.ok, text: response.ok ? await response.text() : "" };
+}
+
+function readChanges(repo, baseRef) {
+  return git(repo, "diff", "--name-only", baseRef)
+    .split("\n")
+    .filter((file) => /\.mdx?$/.test(file))
+    .map((file) => ({
+      path: file,
+      before: git(repo, "show", `${baseRef}:${file}`),
+      after: fs.readFileSync(path.join(repo, file), "utf8"),
+    }));
+}
+
+function docsFilesUsingPartial(repo, partialFile) {
+  const id = partialId(partialFile);
+  let candidates = "";
+  try {
+    candidates = git(repo, "grep", "-l", "-F", `name="${id.name}"`, "--", DOCS_ROOT);
+  } catch {
+    return []; // git grep exits 1 when nothing matches.
+  }
+  return candidates
+    .split("\n")
+    .filter(Boolean)
+    .filter((file) => rendersPartial(fs.readFileSync(path.join(repo, file), "utf8"), id));
+}
+
+async function main([repoArg, previewUrl, outPath, baseRef = "HEAD"]) {
+  const repo = path.resolve(repoArg);
+  const base = previewUrl.replace(/\/$/, "");
+  const sitemap = sitemapPaths((await fetchPage(`${base}/sitemap.xml`)).text);
+
+  const { pages, missing } = planPages(readChanges(repo, baseRef), {
+    sitemap,
+    pagesUsingPartial: (file) => docsFilesUsingPartial(repo, file),
+  });
+  const results = await checkPages(pages, base, fetchPage);
+
+  fs.writeFileSync(outPath, JSON.stringify({ base, pages: results, missing }, null, 2));
+  console.log(formatResults(results, missing));
+  return previewPassed(results, missing) ? 0 : 1;
+}
+
+if (isMain(import.meta.url)) process.exitCode = await main(process.argv.slice(2));
