@@ -32,7 +32,8 @@ The following items are required to create a custom pack.
 ## JSON Schema
 
 Each pack contains a metadata file named `pack.json`. The table below explains in greater detail the JSON schema
-attributes.
+attributes. For the top-level keys of the `values.yaml` file of a pack, refer to
+[Pack Values Reference](./pack-values-reference.md).
 
 | Property Name   | Data type | Required | Description                                                                                                                                                                                                                                                                                                                                                                              |
 | --------------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
