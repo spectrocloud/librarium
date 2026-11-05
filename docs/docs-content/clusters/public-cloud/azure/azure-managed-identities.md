@@ -34,8 +34,9 @@ or pool identity of a cluster that Palette deploys.
 
 ## Limitations
 
-- Managed identity cloud accounts support Azure Commercial cloud and
-  [Azure Government cloud](./azure-cloud.md#azure-government-cloud). They do not support Azure Government Secret cloud.
+- Managed identity cloud accounts support Azure Commercial cloud in Palette and Palette VerteX, and
+  [Azure Government cloud](./azure-cloud.md#azure-government-cloud) in Palette VerteX. They do not support Azure
+  Government Secret cloud.
 
 - You cannot change the authentication method or the PCG of an existing cloud account, and Palette does not move
   existing clusters to managed identities. To use managed identities, add a new cloud account.
@@ -43,7 +44,7 @@ or pool identity of a cluster that Palette deploys.
 - You cannot change the cluster identity, the AKS service identity, or the Kubelet identity after you create a cluster.
 
 - You cannot change the pool identities or the **Exclude cluster identity** setting of a worker pool after you create
-  the pool. Worker pools that you add to an existing cluster can set them.
+  the pool. You can set them on new worker pools that you add to an existing cluster.
 
 ## Set Up Managed Identity Authentication
 
@@ -57,13 +58,14 @@ managed identity cloud accounts with the
 
 - Permissions in your Azure subscription to create user-assigned managed identities and assign Azure roles.
 
-- A Kubernetes cluster in Azure with at least three nodes to host the PCG. The cluster must meet the requirements in
+- A Kubernetes cluster in Azure with at least three nodes to host the PCG, or permissions to create one. The cluster
+  must meet the requirements in
   [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md#prerequisites).
 
-- If the PCG uses a proxy, `169.254.169.254` in its `NO_PROXY` list, so that the PCG can reach the
+- If the PCG uses a proxy, `169.254.169.254` added to its `NO_PROXY` list, so that the PCG can reach the
   [Azure Instance Metadata Service (IMDS)](https://learn.microsoft.com/en-us/azure/virtual-machines/instance-metadata-service).
 
-- No component that intercepts IMDS requests on the PCG nodes, such as `aad-pod-identity`.
+- No component on the PCG nodes that intercepts IMDS requests, such as `aad-pod-identity`.
 
 ### Assign Roles to the Management Identity
 
@@ -87,8 +89,8 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 
 2. Attach the management identity to every node of the Kubernetes cluster that hosts the PCG.
 
-   - On AKS, set it as the Kubelet identity of the cluster. The control plane identity of the cluster needs the
-     **Managed Identity Operator** role on the management identity. For example, use the following command.
+   - On AKS, set it as the Kubelet identity when you create the cluster. The control plane identity of the cluster needs
+     the **Managed Identity Operator** role on the management identity. For example, use the following command.
 
      ```shell
      az aks create --resource-group <resource-group> --name <cluster-name> \
@@ -111,7 +113,7 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 5. In **Private Cloud Gateway**, select the PCG that you deployed. In **Managed identity client ID**, enter the client
    ID of the management identity.
 
-6. Select **Validate**, and then select **Confirm**.
+6. Select **Validate**. When the message **Credentials validated** is displayed, select **Confirm**.
 
    If validation fails, check that the management identity is attached to every PCG node and that it has the roles in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
@@ -171,8 +173,8 @@ components on the pool, the component fails. Palette does not keep these compone
 
    Do not use `PreferNoSchedule`. Kubernetes treats it as a preference and can still schedule pods on the pool.
 
-   If you add the taint to an existing pool, `NoSchedule` does not move the pods that already run on it. Use `NoExecute`
-   to evict them, or restart them after you add the taint.
+   If the pool already exists, add the taint to it. `NoSchedule` does not evict pods that already run on the pool, so
+   use `NoExecute`, or restart those pods after you add the taint.
 
 2. Add a toleration that matches the taint to the workloads that must run on the pool, typically the workloads that use
    the pool identities. To keep them on the pool, also add a node selector or node affinity.
@@ -191,7 +193,8 @@ Storage Interface (CSI) node plugin.
 | AKS service identity | **AKS service identity**, in the cluster configuration | Yes                                                |
 | Kubelet identity     | **Kubelet identity**, in the cluster configuration     | Yes. It must differ from the AKS service identity. |
 
-Assign the following roles.
+Assign the following roles before you create the cluster, because role assignments can take up to 60 minutes to take
+effect.
 
 | **Identity** | **Role**                         | **Scope**                                                                                               |
 | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -203,49 +206,15 @@ Assign the following roles.
 | Kubelet      | **Network Contributor**          | The VNet resource group, if it is separate from the cluster resource group.                             |
 | Kubelet      | **Reader**                       | The subscription.                                                                                       |
 
-AKS creates the node pools in a separate node resource group named `SPC_MC_<resource-group>_<cluster-name>_<region>`,
-and shortens long names. Because AKS creates this resource group together with the cluster, you cannot assign roles on
-it in advance. Palette reads the node pools in this resource group as the management identity during cluster creation,
-and as the Kubelet identity afterward. Both identities therefore need the **Reader** role on the subscription. Without
-this role, the cluster stays at `worker nodes are creating` even though Azure shows the node pools as succeeded. Azure
-also returns `403 AuthorizationFailed` errors for `Microsoft.Compute/virtualMachineScaleSets/read`.
+AKS creates the node pools in a separate node resource group when it creates the cluster, so you cannot assign roles on
+that resource group in advance. Palette reads the node pools in this resource group, so the management identity and the
+Kubelet identity both need the **Reader** role on the subscription. Without it, the cluster stays at
+`worker nodes are creating`.
 
-AKS grants the AKS service identity the **Contributor** role on the node resource group only. The AKS service identity
-needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster resource group. Assign all
-roles before you create the cluster, because role assignments can take up to 60 minutes to take effect.
+The AKS service identity needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster
+resource group.
 
 For the procedure, refer to [Create and Manage Azure AKS Cluster](./aks.md).
-
-### Configure Identities with the Palette API
-
-To create clusters with the [Palette API](/api/introduction), set the identities by resource ID under
-`spec.cloudConfig.managedIdentity`. The following example sets the cluster identity of an Azure IaaS cluster in a
-`POST /v1/spectroclusters/azure` request.
-
-```json
-"managedIdentity": {
-  "clusterIdentity": {
-    "resourceId": "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>"
-  }
-}
-```
-
-Replace `<subscription-id>`, `<resource-group>`, and `<identity-name>` with the subscription ID, resource group, and
-name of your cluster identity.
-
-For AKS clusters, a `POST /v1/spectroclusters/aks` request sets `aksServiceIdentity` and `kubeletIdentity` instead.
-
-```json
-"managedIdentity": {
-  "aksServiceIdentity": { "resourceId": "<aks-service-identity-resource-id>" },
-  "kubeletIdentity": { "resourceId": "<kubelet-identity-resource-id>" }
-}
-```
-
-Replace `<aks-service-identity-resource-id>` and `<kubelet-identity-resource-id>` with the resource IDs of your AKS
-service identity and Kubelet identity. For Azure IaaS worker pools, set the pool identities in
-`cloudConfig.userAssignedIdentities`, the **Exclude cluster identity** setting in `cloudConfig.excludeClusterIdentity`,
-and the pool taints in `poolConfig.taints`, for each entry in `spec.machinepoolconfig`.
 
 ## Limit Permissions
 
@@ -261,8 +230,9 @@ use the following approach.
    **Network Contributor** role on the VNet resource group. For AKS clusters, also assign the AKS service identity the
    **Network Contributor** role on the AKS subnet.
 
-3. For any identity outside the cluster resource group, assign the **Managed Identity Operator** role on that identity
-   to the management identity, and to the cluster identity or AKS service identity, as listed in
+3. If an identity is outside the cluster resource group, assign the management identity the **Managed Identity
+   Operator** role on it. Also assign the role to the cluster identity for Azure IaaS clusters, or to the AKS service
+   identity for AKS clusters. Refer to
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity) and
    [Assign Identities to Clusters](#assign-identities-to-clusters).
 

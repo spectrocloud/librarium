@@ -100,8 +100,9 @@ development and testing environments.
   - At least three nodes.
   - The [management identity](../public-cloud/azure/azure-managed-identities.md#managed-identities) attached to every
     node.
-  - If the PCG uses a proxy, `169.254.169.254` in the `NO_PROXY` list.
-  - No component that intercepts Azure Instance Metadata Service (IMDS) requests, such as `aad-pod-identity`.
+  - If the PCG uses a proxy, `169.254.169.254` added to the `NO_PROXY` list.
+  - No component on the PCG nodes that intercepts Azure Instance Metadata Service (IMDS) requests, such as
+    `aad-pod-identity`.
 
 - (Optional) If you want Palette to display cluster metrics, ensure that the
   [metrics server](https://github.com/kubernetes-sigs/metrics-server) is installed in the cluster. You can install the
