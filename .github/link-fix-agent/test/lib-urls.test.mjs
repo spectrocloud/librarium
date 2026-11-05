@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { findUrls, urlChanges, withoutFragment } from "../lib/urls.mjs";
+import { findUrls, urlChanges, urlKey } from "../lib/urls.mjs";
 
 describe("findUrls", () => {
   it("finds the URL in a Markdown link and stops at the closing parenthesis", () => {
@@ -45,13 +45,27 @@ describe("findUrls", () => {
   });
 });
 
-describe("withoutFragment", () => {
+describe("urlKey", () => {
   it("drops the fragment", () => {
-    assert.equal(withoutFragment("https://example.com/page#section"), "https://example.com/page");
+    assert.equal(urlKey("https://example.com/page#section"), "https://example.com/page");
+    assert.equal(urlKey("https://example.com/page#"), "https://example.com/page");
   });
 
-  it("returns a URL without a fragment unchanged", () => {
-    assert.equal(withoutFragment("https://example.com/page?q=1"), "https://example.com/page?q=1");
+  it("returns a URL that is already in linkinator's form unchanged", () => {
+    assert.equal(urlKey("https://example.com/page?q=1&r=2"), "https://example.com/page?q=1&r=2");
+  });
+
+  it("gives a bare domain its trailing slash and lowercases the host, as linkinator reports it", () => {
+    assert.equal(urlKey("https://kubevirt.io"), "https://kubevirt.io/");
+    assert.equal(urlKey("https://WWW.Weave.Works#top"), "https://www.weave.works/");
+  });
+
+  it("percent-encodes the characters that linkinator encodes", () => {
+    assert.equal(urlKey("https://example.com/café"), "https://example.com/caf%C3%A9");
+  });
+
+  it("drops only the fragment of text that does not parse as a URL", () => {
+    assert.equal(urlKey("https://[bad-host/page#section"), "https://[bad-host/page");
   });
 });
 

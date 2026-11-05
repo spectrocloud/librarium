@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { addLabels, openOrUpdatePr, prLabels, strictGh } from "../open-pr.mjs";
+import { addLabels, openOrUpdatePr, prLabels, setLabels, strictGh } from "../open-pr.mjs";
 
 const REPO = "spectrocloud/librarium";
 const BRANCH = "bot/fix-broken-links";
@@ -126,5 +126,55 @@ describe("addLabels", () => {
       () => addLabels({ pr: "42", labels: ["x"], repo: REPO, gh }),
       /gh api --method failed: Label does not exist/
     );
+  });
+});
+
+describe("setLabels", () => {
+  const addCall = (labels) => [
+    "api",
+    "--method",
+    "POST",
+    `repos/${REPO}/issues/42/labels`,
+    ...labels.flatMap((l) => ["-f", `labels[]=${l}`]),
+  ];
+  const deleteCall = (label) => ["api", "--method", "DELETE", `repos/${REPO}/issues/42/labels/${label}`];
+
+  it("removes last week's backport labels that the new set leaves out, and keeps every other label", () => {
+    const current = "small-pr\nnot-urgent\nnotify-slack\nbackport-version-4-7\nbackport-version-4-8\nauto-backport\n";
+    const { calls, gh } = fakeGh({ stdout: current }, {}, {});
+    const labels = prLabels(["backport-version-4-8"]);
+    setLabels({ pr: "42", labels, repo: REPO, gh });
+    assert.deepEqual(calls, [
+      ["pr", "view", "42", "--json", "labels", "--jq", ".labels[].name"],
+      deleteCall("backport-version-4-7"),
+      addCall(labels),
+    ]);
+  });
+
+  it("removes auto-backport too when no version branch takes the new fix", () => {
+    const { calls, gh } = fakeGh({ stdout: "small-pr\nauto-backport\nbackport-version-4-7\n" }, {}, {}, {});
+    setLabels({ pr: "42", labels: prLabels([]), repo: REPO, gh });
+    assert.deepEqual(calls.slice(1), [
+      deleteCall("auto-backport"),
+      deleteCall("backport-version-4-7"),
+      addCall(["small-pr", "not-urgent"]),
+    ]);
+  });
+
+  it("only adds the labels to a new PR", () => {
+    const { calls, gh } = fakeGh({ stdout: "" }, {});
+    setLabels({ pr: "42", labels: prLabels(["backport-version-4-7"]), repo: REPO, gh });
+    assert.deepEqual(calls.slice(1), [addCall(prLabels(["backport-version-4-7"]))]);
+  });
+
+  it("throws, and adds nothing, when gh cannot remove a label", () => {
+    const { calls, gh } = fakeGh({ stdout: "backport-version-4-7\n" }, { code: 1, stderr: "HTTP 403: Forbidden" });
+    assert.throws(() => setLabels({ pr: "42", labels: prLabels([]), repo: REPO, gh }), /HTTP 403: Forbidden/);
+    assert.equal(calls.length, 2);
+  });
+
+  it("throws when gh cannot read the PR's labels", () => {
+    const { gh } = fakeGh({ code: 1, stderr: "no pull requests found" });
+    assert.throws(() => setLabels({ pr: "42", labels: prLabels([]), repo: REPO, gh }), /gh pr view failed/);
   });
 });

@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 // Merges the bot PR, or hands it to a human, and says why in a PR comment.
 //
-// The PR merges only when every CI check passed, the preview check passed, and
-// the agent is still confident after it tested the preview. The master ruleset
+// The PR merges only when every CI check passed, the link checker verified
+// every new URL, the preview check passed, and the agent was confident both
+// after the review and after it tested the preview. The master ruleset
 // requires a docs code owner's approval and allows no bypass, so the direct
 // merge fails today. Auto-merge then makes the first approval merge the PR.
 //
 // Usage: node merge-or-hand-off.mjs <work-dir> <pr-number>
 // Env: GH_TOKEN, CI_OK, PREVIEW_BASE, PREVIEW_EXIT.
-// Reads <work-dir>/out/{final-decision.json,preview-check.txt}. Writes <work-dir>/out/merge-comment.md.
+// Reads <work-dir>/out/{decision.json,final-decision.json,diff-check.txt,preview-check.txt}.
+// Writes <work-dir>/out/merge-comment.md.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -17,12 +19,31 @@ import { isMain, readText } from "./lib/cli.mjs";
 import { gh as runGh } from "./lib/run.mjs";
 import { isValidDecision } from "./agent-run.mjs";
 
-/** Lists what stops the merge. An empty list means the PR may merge. */
-export function mergeBlockers({ ciOk, previewBase, previewExit, decision }) {
+/** Reads a decision that agent-run.mjs wrote, or returns null when the file is missing or is not JSON. */
+export function readDecision(file) {
+  try {
+    return JSON.parse(readText(file, "null"));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Lists what stops the merge. An empty list means the PR may merge.
+ * `reviewDecision` is the agent's decision after the review, `decision` its
+ * decision after the preview test, and `diffCheck` the final diff check output.
+ */
+export function mergeBlockers({ ciOk, previewBase, previewExit, reviewDecision, decision, diffCheck = "" }) {
   const blockers = [];
   if (!ciOk) blockers.push("Not every CI check passed.");
+  if (/^UNVERIFIED_LINKS=1$/m.test(diffCheck)) {
+    blockers.push("The link checker could not verify at least one new URL, so a human checks it.");
+  }
   if (!previewBase) blockers.push("The Netlify deploy preview did not build, so the agent could not test it.");
   if (previewExit !== "0") blockers.push("The deploy preview check failed or did not run.");
+  if (!isValidDecision(reviewDecision)) blockers.push("The agent did not finish addressing the review.");
+  else if (!reviewDecision.confident)
+    blockers.push(`After the review, the agent was not confident: ${reviewDecision.reason}`);
   if (!isValidDecision(decision)) blockers.push("The agent did not finish its deploy preview test.");
   else if (!decision.confident) blockers.push(`The agent is not confident: ${decision.reason}`);
   return blockers;
@@ -68,15 +89,16 @@ export function mergeComment({ previewBase, previewReport, decision, outcome, bl
 
 function main([workDir, pr]) {
   const out = path.join(workDir, "out");
-  const decisionText = readText(path.join(out, "final-decision.json"));
-  const decision = decisionText ? JSON.parse(decisionText) : null;
+  const decision = readDecision(path.join(out, "final-decision.json"));
   const previewBase = process.env.PREVIEW_BASE ?? "";
 
   const blockers = mergeBlockers({
     ciOk: process.env.CI_OK === "true",
     previewBase,
     previewExit: process.env.PREVIEW_EXIT ?? "",
+    reviewDecision: readDecision(path.join(out, "decision.json")),
     decision,
+    diffCheck: readText(path.join(out, "diff-check.txt")),
   });
   const { merged, outcome } = mergeOrHandOff({ pr, blockers, gh: runGh });
   const comment = mergeComment({

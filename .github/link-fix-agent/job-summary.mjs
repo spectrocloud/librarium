@@ -9,6 +9,7 @@ import path from "node:path";
 
 import { isMain, readLines, readText } from "./lib/cli.mjs";
 import { parseRun } from "./agent-run.mjs";
+import { mergeBlockers } from "./merge-or-hand-off.mjs";
 
 // The agent runs in the order they happen, by output file name.
 const RUNS = ["run", "review-run", "address-run", "preview-run"];
@@ -41,8 +42,17 @@ export function jobSummary(input) {
     sections.push(`**PR:** ${prUrl}`);
     if (mergeComment) sections.push(mergeComment.trim());
   } else if (prBodyWritten) {
-    const finalDecision = decisions.find((d) => d.label === DECISIONS["final-decision"])?.decision;
-    const wouldMerge = previewExit === "0" && finalDecision?.confident === true;
+    const decisionAfter = (file) => decisions.find((d) => d.label === DECISIONS[file])?.decision;
+    // The same gate as the merge step, except CI, which a dry run does not run.
+    const wouldMerge =
+      mergeBlockers({
+        ciOk: true,
+        previewBase,
+        previewExit,
+        reviewDecision: decisionAfter("decision"),
+        decision: decisionAfter("final-decision"),
+        diffCheck,
+      }).length === 0;
     sections.push(
       [
         "**Dry run:** the PR description and comments are in the artifacts. CI does not run in a dry run.",

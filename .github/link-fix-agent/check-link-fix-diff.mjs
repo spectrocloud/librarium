@@ -6,8 +6,9 @@
 //   1. Only docs pages and the linkinator skip lists change.
 //   2. docs/deprecated/ stays untouched, because the weekly scan skips it.
 //   3. Only URLs that the report flagged are removed.
-//   4. Every new URL passes linkinator with the CI config. A site that blocks
-//      bots is retried, and then flagged for the reviewer instead of failing.
+//   4. Every URL new to a file passes linkinator with the CI config. A site
+//      that blocks bots is retried, and then flagged instead of failing, so a
+//      human merges the PR.
 //   5. Both linkinator configs keep the same skip list.
 // Text changes beyond URL swaps pass, but are flagged with PROSE_CHANGED=1.
 //
@@ -21,7 +22,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
-import { URL_PATTERN, findUrls, urlChanges, withoutFragment } from "./lib/urls.mjs";
+import { URL_PATTERN, findUrls, urlChanges, urlKey } from "./lib/urls.mjs";
 
 export const LINKINATOR_CONFIGS = ["linkinator/linkinator.config.json", "linkinator/linkinator-ci.config.json"];
 const CI_CONFIG = "linkinator/linkinator-ci.config.json";
@@ -69,9 +70,9 @@ export function changedBeyondUrls(before, after) {
 
 // Rules 3 and 5.
 
-/** Returns the removed URLs that the report did not flag (rule 3). */
+/** Returns the removed URLs that the report, given as urlKey values, did not flag (rule 3). */
 export function unreportedRemovals(removedUrls, reportedUrls) {
-  return removedUrls.filter((url) => !reportedUrls.has(withoutFragment(url)));
+  return removedUrls.filter((url) => !reportedUrls.has(urlKey(url)));
 }
 
 /** True when every linkinator config lists the same skip patterns (rule 5). */
@@ -80,13 +81,17 @@ export function skipListsMatch(configTexts) {
   return lists.every((list) => list === lists[0]);
 }
 
-/** Applies rules 1 to 3 to the changed files. Rule 4 needs the network, so verifyNewUrls runs it. */
+/**
+ * Applies rules 1 to 3 to the changed files, and returns the URLs that each
+ * file lost and gained. Rule 4 needs the network, so verifyNewUrls runs it on
+ * the URLs gained.
+ */
 export function checkChanges(changes, reportedUrls) {
   const failures = [];
   const notes = [];
   let proseChanged = false;
-  const urlsBefore = new Set();
-  const urlsAfter = new Set();
+  const removed = new Set();
+  const added = new Set();
   const unreported = new Set();
 
   for (const change of changes) {
@@ -101,25 +106,21 @@ export function checkChanges(changes, reportedUrls) {
       notes.push(config.note);
       continue;
     }
-    const fileUrlsBefore = findUrls(change.before);
-    const fileUrlsAfter = findUrls(change.after);
-    fileUrlsBefore.forEach((url) => urlsBefore.add(url));
-    fileUrlsAfter.forEach((url) => urlsAfter.add(url));
-    // Rule 3 applies to each file, so moving a URL to another page still counts as removing it.
-    unreportedRemovals(urlChanges(fileUrlsBefore, fileUrlsAfter).removed, reportedUrls).forEach((url) =>
-      unreported.add(url)
-    );
+    // Rules 3 and 4 apply to each file, so moving a URL to another page removes it from one and adds it to the other.
+    const fileUrls = urlChanges(findUrls(change.before), findUrls(change.after));
+    fileUrls.removed.forEach((url) => removed.add(url));
+    fileUrls.added.forEach((url) => added.add(url));
+    unreportedRemovals(fileUrls.removed, reportedUrls).forEach((url) => unreported.add(url));
     if (changedBeyondUrls(change.before, change.after)) {
       proseChanged = true;
       notes.push(`${change.path}: text changed beyond the URL swap`);
     }
   }
 
-  const { removed, added } = urlChanges(urlsBefore, urlsAfter);
   if (unreported.size) {
     failures.push(`removed URLs that were not in the report: ${JSON.stringify([...unreported].sort())}`);
   }
-  return { failures, notes, proseChanged, removed, added };
+  return { failures, notes, proseChanged, removed: [...removed].sort(), added: [...added].sort() };
 }
 
 // Rule 4: new URLs must load.
@@ -132,13 +133,13 @@ export function verdict({ state, status }) {
 }
 
 /**
- * Checks each new URL with `checkUrls`, which maps URLs (without fragments) to
+ * Checks each new URL with `checkUrls`, which maps URLs, as urlKey values, to
  * linkinator results. Bot-blocked URLs are checked again, `retries` times,
  * because the blocks are often brief.
  */
 export async function verifyNewUrls(urls, checkUrls, { retries = RETRIES, pause = () => sleep(RETRY_PAUSE_MS) } = {}) {
   const results = urls.length ? await checkUrls(urls) : new Map();
-  const isBlocked = (url) => BOT_BLOCK_CODES.has(results.get(withoutFragment(url))?.status);
+  const isBlocked = (url) => BOT_BLOCK_CODES.has(results.get(urlKey(url))?.status);
   for (let attempt = 0; attempt < retries; attempt++) {
     const blocked = urls.filter(isBlocked);
     if (!blocked.length) break;
@@ -150,7 +151,7 @@ export async function verifyNewUrls(urls, checkUrls, { retries = RETRIES, pause 
   const notes = [];
   let unverified = false;
   for (const url of urls) {
-    const result = results.get(withoutFragment(url)) ?? { state: "MISSING", status: "no result" };
+    const result = results.get(urlKey(url)) ?? { state: "MISSING", status: "no result" };
     const urlVerdict = verdict(result);
     if (urlVerdict === "BROKEN") {
       failures.push(`BROKEN ${result.status} ${url}`);
@@ -189,7 +190,7 @@ export function linkinatorChecker(repo) {
         // The CLI splits each skip entry on commas and whitespace, so this does too.
         linksToSkip: [flags.skip ?? []].flat().flatMap((entry) => entry.split(/[\s,]+/).filter(Boolean)),
       });
-      return new Map(links.map((link) => [withoutFragment(link.url), { state: link.state, status: link.status }]));
+      return new Map(links.map((link) => [urlKey(link.url), { state: link.state, status: link.status }]));
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
     }
@@ -229,7 +230,7 @@ async function main([repoArg, reportPath, ...flags]) {
   // Absolute, because linkinator serves its temporary page from another directory.
   const repo = path.resolve(repoArg);
   const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
-  const reportedUrls = new Set(report.map((entry) => withoutFragment(entry.url)));
+  const reportedUrls = new Set(report.map((entry) => urlKey(entry.url)));
 
   const changes = readChanges(repo);
   if (changes.length === 0) {

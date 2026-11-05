@@ -1,11 +1,21 @@
 import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import fs from "node:fs";
+import path from "node:path";
+import { afterEach, beforeEach, describe, it } from "node:test";
 
-import { mergeBlockers, mergeComment, mergeOrHandOff } from "../merge-or-hand-off.mjs";
+import { mergeBlockers, mergeComment, mergeOrHandOff, readDecision } from "../merge-or-hand-off.mjs";
+import { tempDir, writeFiles } from "./helpers.mjs";
 
 const PREVIEW = "https://deploy-preview-42--docs-spectrocloud.netlify.app";
 const CONFIDENT = { confident: true, reason: "The preview shows every new link.", findings: [] };
-const READY = { ciOk: true, previewBase: PREVIEW, previewExit: "0", decision: CONFIDENT };
+const READY = {
+  ciOk: true,
+  previewBase: PREVIEW,
+  previewExit: "0",
+  reviewDecision: CONFIDENT,
+  decision: CONFIDENT,
+  diffCheck: "Changed files: 1  URLs removed: 1  URLs added: 1\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=0\n",
+};
 
 /** A fake gh that answers each call with the next reply and records the arguments. */
 function fakeGh(...replies) {
@@ -52,8 +62,62 @@ describe("mergeBlockers", () => {
     assert.deepEqual(mergeBlockers({ ...READY, decision }), ["The agent is not confident: The Azure page redirects."]);
   });
 
+  it("blocks when the link checker could not verify a new URL", () => {
+    const diffCheck = "  note: ERROR after 4 attempts: 403 https://example.com\nPROSE_CHANGED=0\nUNVERIFIED_LINKS=1\n";
+    assert.deepEqual(mergeBlockers({ ...READY, diffCheck }), [
+      "The link checker could not verify at least one new URL, so a human checks it.",
+    ]);
+  });
+
+  it("does not block on a missing diff check output", () => {
+    assert.deepEqual(mergeBlockers({ ...READY, diffCheck: undefined }), []);
+  });
+
+  it("blocks when the agent did not finish addressing the review", () => {
+    for (const reviewDecision of [null, { confident: true }]) {
+      assert.deepEqual(mergeBlockers({ ...READY, reviewDecision }), [
+        "The agent did not finish addressing the review.",
+      ]);
+    }
+  });
+
+  it("blocks when the agent was not confident after the review, even if the preview test made it confident", () => {
+    const reviewDecision = { confident: false, reason: "An SME should check the Azure guidance.", findings: [] };
+    assert.deepEqual(mergeBlockers({ ...READY, reviewDecision }), [
+      "After the review, the agent was not confident: An SME should check the Azure guidance.",
+    ]);
+  });
+
   it("lists every blocker at once", () => {
-    assert.equal(mergeBlockers({ ciOk: false, previewBase: "", previewExit: "", decision: null }).length, 4);
+    const blockers = mergeBlockers({
+      ciOk: false,
+      previewBase: "",
+      previewExit: "",
+      reviewDecision: null,
+      decision: null,
+      diffCheck: "UNVERIFIED_LINKS=1",
+    });
+    assert.equal(blockers.length, 6);
+  });
+});
+
+describe("readDecision", () => {
+  let work;
+  beforeEach(() => {
+    work = tempDir();
+  });
+  afterEach(() => fs.rmSync(work, { recursive: true, force: true }));
+
+  it("reads a decision", () => {
+    writeFiles(work, { "decision.json": JSON.stringify(CONFIDENT, null, 2) });
+    assert.deepEqual(readDecision(path.join(work, "decision.json")), CONFIDENT);
+  });
+
+  it("returns null when the file is missing, holds null, or is not JSON", () => {
+    writeFiles(work, { "null.json": "null\n", "empty.json": "", "bad.json": "Error: not logged in\n" });
+    for (const file of ["missing.json", "null.json", "empty.json", "bad.json"]) {
+      assert.equal(readDecision(path.join(work, file)), null, file);
+    }
   });
 });
 

@@ -16,7 +16,7 @@ import path from "node:path";
 
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
-import { findUrls, urlChanges, withoutFragment } from "./lib/urls.mjs";
+import { findUrls, urlChanges, urlKey } from "./lib/urls.mjs";
 
 const DOCS_ROOT = "docs/docs-content/";
 // Each product's folder name is also its route prefix (productDocs.js).
@@ -75,12 +75,9 @@ export function resolveRoute(route, paths) {
   return matches.length === 1 ? matches[0] : null;
 }
 
-/** True when `html` links to `url`. The built HTML can leave attributes unquoted and escapes & as &amp;. */
-export function linkShown(html, url) {
-  const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return [url, url.replaceAll("&", "&amp;")].some((form) =>
-    new RegExp(`${escapeRegExp(form)}(?=[\\s"'<>#]|$)`).test(html)
-  );
+/** Returns the URLs in `html` as urlKey values. The built HTML escapes & as &amp;. */
+export function linkedUrls(html) {
+  return new Set([...findUrls(html.replaceAll("&amp;", "&"))].map(urlKey));
 }
 
 /**
@@ -104,8 +101,8 @@ export function planPages(changes, { sitemap, pagesUsingPartial }) {
       }
       const page = pages.get(route) ?? { sources: new Set(), added: new Set(), removed: new Set() };
       page.sources.add(file);
-      added.forEach((url) => page.added.add(withoutFragment(url)));
-      removed.forEach((url) => page.removed.add(withoutFragment(url)));
+      added.forEach((url) => page.added.add(urlKey(url)));
+      removed.forEach((url) => page.removed.add(urlKey(url)));
       pages.set(route, page);
     }
   }
@@ -117,9 +114,9 @@ export async function checkPages(pages, base, fetchPage) {
   const results = [];
   for (const [route, page] of pages) {
     const response = await fetchPage(base + route);
-    const html = response.ok ? response.text : "";
-    const notShown = [...page.added].filter((url) => !linkShown(html, url));
-    const stillShown = [...page.removed].filter((url) => linkShown(html, url));
+    const shown = linkedUrls(response.ok ? response.text : "");
+    const notShown = [...page.added].filter((url) => !shown.has(url));
+    const stillShown = [...page.removed].filter((url) => shown.has(url));
     results.push({
       url: base + route,
       sources: [...page.sources],

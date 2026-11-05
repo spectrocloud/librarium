@@ -12,9 +12,12 @@ name: "Link Fix Agent"
 #
 # SECURITY: neither agent holds a GitHub token. The checkout keeps no
 # credentials, and the Vault token stays in step outputs that only the checkout
-# and GitHub steps read. Each agent gets an exact tool set; the fixer has no
-# shell, and the reviewer's shell runs only Vale and read-only git. Fetched web
-# pages are untrusted input, so deterministic checks, not prompts, decide.
+# and GitHub steps read. Each agent gets an exact tool set. The fixer has no
+# shell, and it can edit only docs, partials, the two linkinator configs, and
+# its report, so the scripts that later run with the token and the link report
+# that the diff check reads stay out of its reach. The reviewer's shell runs
+# only Vale and printf. Fetched web pages are untrusted input, so deterministic
+# checks, not prompts, decide.
 
 on:
   schedule:
@@ -42,8 +45,9 @@ env:
   MAX_BUDGET_USD: "3"
   REVIEW_BUDGET_USD: "1"
   AGENT_DIR: .github/link-fix-agent
-  # Exact tool sets. The fixer has no shell. The reviewer's Bash is limited by
-  # the --allowedTools patterns in its step.
+  # Exact tool sets. The fixer has no shell, and the --allowedTools patterns in
+  # its steps limit Edit and Write to a few paths. The reviewer's Bash is
+  # limited by the --allowedTools patterns in its step.
   AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,WebFetch,WebSearch,Write"
   REVIEW_TOOLS: "Bash,Glob,Grep,Read,Skill"
   # Pinned docs-ai-context commit (private repo) for the pr-review-buddy and
@@ -164,6 +168,11 @@ jobs:
             echo "Dry run: no PR, so no CI checks ran." > "$WORK/out/pr-checks.txt"
           fi
 
+          # The fixer can write only inside the repo, so its report goes to a
+          # folder that git ignores and the diff check never sees.
+          mkdir -p link-fix-out
+          echo "/link-fix-out/" >> .git/info/exclude
+
           # .claude/ is gitignored, so the skills never show up in the diff.
           mkdir -p .claude/skills
           cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
@@ -204,13 +213,16 @@ jobs:
           # Not --bare: bare mode drops Write, WebSearch, and WebFetch, and the
           # agent then guesses URLs from memory. The session persists, so the
           # agent can address the review and test the preview later.
-          claude -p "/fix-broken-links $WORK/link_report.json $WORK/out/fix-report.md" \
+          claude -p "/fix-broken-links $WORK/link_report.json link-fix-out/fix-report.md" \
             --model "$MODEL" \
             --session-id "$SESSION_ID" \
             --setting-sources project \
             --strict-mcp-config \
             --tools "$AGENT_TOOLS" \
-            --allowedTools Read Grep Glob Edit Write WebFetch WebSearch \
+            --allowedTools Read Grep Glob WebFetch WebSearch \
+              "Edit(docs/**)" "Edit(_partials/**)" \
+              "Edit(linkinator/linkinator.config.json)" "Edit(linkinator/linkinator-ci.config.json)" \
+              "Edit(link-fix-out/**)" "Write(link-fix-out/**)" \
             --disallowedTools Bash \
             --add-dir "$WORK" \
             --max-budget-usd "$MAX_BUDGET_USD" \
@@ -257,7 +269,6 @@ jobs:
             --strict-mcp-config \
             --tools "$REVIEW_TOOLS" \
             --allowedTools Read Grep Glob "Bash(vale *)" "Bash(printf *)" \
-              "Bash(git show *)" "Bash(git grep *)" "Bash(git log *)" "Bash(git diff *)" \
             --append-system-prompt-file "$AGENT_DIR/prompts/review-in-ci.md" \
             --add-dir "$WORK/review" \
             --max-budget-usd "$REVIEW_BUDGET_USD" \
@@ -275,7 +286,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          export REVIEW_FILE="$WORK/review/review.md" CHECK_FILE="$WORK/out/diff-check-1.txt" FIX_REPORT="$WORK/out/fix-report.md"
+          export REVIEW_FILE="$WORK/review/review.md" CHECK_FILE="$WORK/out/diff-check-1.txt" FIX_REPORT="link-fix-out/fix-report.md"
           # shellcheck disable=SC2016 # envsubst takes the variable names literally
           prompt=$(envsubst '$REVIEW_FILE $CHECK_FILE $FIX_REPORT' < "$AGENT_DIR/prompts/address-review.md")
           claude -p "$prompt" \
@@ -284,7 +295,10 @@ jobs:
             --setting-sources project \
             --strict-mcp-config \
             --tools "$AGENT_TOOLS" \
-            --allowedTools Read Grep Glob Edit Write WebFetch WebSearch \
+            --allowedTools Read Grep Glob WebFetch WebSearch \
+              "Edit(docs/**)" "Edit(_partials/**)" \
+              "Edit(linkinator/linkinator.config.json)" "Edit(linkinator/linkinator-ci.config.json)" \
+              "Edit(link-fix-out/**)" "Write(link-fix-out/**)" \
             --disallowedTools Bash \
             --add-dir "$WORK" \
             --max-budget-usd "$MAX_BUDGET_USD" \
@@ -292,6 +306,11 @@ jobs:
             --output-format json \
             > "$WORK/out/address-run.json"
           node "$AGENT_DIR/agent-run.mjs" "$WORK/out/address-run.json" --decision-to "$WORK/out/decision.json"
+
+      # The later steps and the artifacts read the fix report from the work folder.
+      - name: Collect the fix report
+        if: ${{ always() && steps.report.outputs.count != '0' }}
+        run: if [[ -f link-fix-out/fix-report.md ]]; then cp link-fix-out/fix-report.md "$WORK/out/fix-report.md"; fi
 
       - name: Check the final diff
         id: check
@@ -397,6 +416,7 @@ jobs:
             ${{ env.WORK }}/link_report.json
             ${{ env.WORK }}/out/
             ${{ env.WORK }}/review/
+            !${{ env.WORK }}/out/review-run.jsonl
           if-no-files-found: warn
 
       - name: Fail if the final diff check failed

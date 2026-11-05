@@ -14,7 +14,7 @@ import {
   verdict,
   verifyNewUrls,
 } from "../check-link-fix-diff.mjs";
-import { makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
+import { git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const OLD = "https://old.example.com/guide";
 const NEW = "https://new.example.com/guide";
@@ -131,6 +131,16 @@ describe("unreportedRemovals", () => {
   it("returns the removed URLs that the report did not flag", () => {
     assert.deepEqual(unreportedRemovals([OLD, KEEP], new Set([OLD])), [KEEP]);
     assert.deepEqual(unreportedRemovals([KEEP], new Set()), [KEEP]);
+  });
+
+  it("matches a bare domain in the docs to the report's URL with its trailing slash", () => {
+    assert.deepEqual(unreportedRemovals(["https://www.weave.works"], new Set(["https://www.weave.works/"])), []);
+  });
+
+  it("still fails a bare domain that the report did not flag", () => {
+    assert.deepEqual(unreportedRemovals(["https://www.weave.works"], new Set(["https://weave.works/"])), [
+      "https://www.weave.works",
+    ]);
   });
 });
 
@@ -263,6 +273,27 @@ describe("verifyNewUrls", () => {
   it("fails a URL that linkinator returned no result for", async () => {
     const result = await verifyNewUrls([NEW], async () => new Map(), noPause);
     assert.deepEqual(result.failures, [`BROKEN no result ${NEW}`]);
+  });
+
+  it("finds linkinator's result for a bare domain, which linkinator reports with a trailing slash", async () => {
+    const checkUrls = async () => new Map([["https://kubevirt.io/", { state: "OK", status: 200 }]]);
+    const result = await verifyNewUrls(["https://kubevirt.io"], checkUrls, noPause);
+    assert.deepEqual(result, { failures: [], notes: ["OK 200 https://kubevirt.io"], unverified: false });
+  });
+
+  it("retries a bot-blocked bare domain by linkinator's form of the URL", async () => {
+    const replies = [
+      { state: "BROKEN", status: 403 },
+      { state: "OK", status: 200 },
+    ];
+    const calls = [];
+    const checkUrls = async (urls) => {
+      calls.push(urls);
+      return new Map([["https://kubevirt.io/", replies.shift()]]);
+    };
+    const result = await verifyNewUrls(["https://kubevirt.io"], checkUrls, noPause);
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(calls, [["https://kubevirt.io"], ["https://kubevirt.io"]]);
   });
 
   it("looks up a URL with a fragment by its URL without the fragment", async () => {
@@ -468,6 +499,27 @@ describe("check-link-fix-diff.mjs command line", () => {
     assert.equal(result.status, 1);
     assert.match(result.stdout, /FAIL: docs\/docs-content\/a\.md: only modifications are allowed \(status D\)/);
   });
+
+  it("passes the removal of a reported bare domain, which linkinator reports with a trailing slash", () => {
+    const WEAVE = "https://www.weave.works";
+    writeFiles(repo, { "docs/docs-content/a.md": `${PAGE}\nSee [Weave](${WEAVE}).\n` });
+    git(repo, "commit", "-qam", "add a bare domain");
+    fs.writeFileSync(report, JSON.stringify([{ url: `${WEAVE}/`, status: 404, parent: "docs/docs-content/a.md" }]));
+    edit({ "docs/docs-content/a.md": `${PAGE}\nSee [Weave](${NEW}).\n` });
+    const result = check();
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.doesNotMatch(result.stdout, /FAIL/);
+  });
+
+  it("checks a URL that the fix adds to a page even when another changed page already had it", () => {
+    edit({
+      "docs/docs-content/a.md": PAGE.replace(OLD, NEW),
+      "_partials/getting-started/_b.mdx": `Read [the guide](${OLD}) and [this page](${KEEP}).\n`,
+    });
+    const result = check();
+    assert.match(result.stdout, /^Changed files: 2 {2}URLs removed: 1 {2}URLs added: 2$/m);
+    assert.match(result.stdout, new RegExp(`note: not checked \\(offline\\): ${KEEP}`));
+  });
 });
 
 describe("checkChanges rule 3, file by file", () => {
@@ -483,11 +535,31 @@ describe("checkChanges rule 3, file by file", () => {
     assert.deepEqual(failures, [`removed URLs that were not in the report: ${JSON.stringify([OTHER])}`]);
   });
 
-  it("passes when the URL that moves away from a page is a reported one", () => {
+  it("passes when the URL that moves away from a page is a reported one, and lists it as added for rule 4", () => {
     const changes = [
       { path: "docs/docs-content/a.md", status: "M", before: page(OTHER), after: "Read the guide.\n" },
       { path: "docs/docs-content/b.md", status: "M", before: "Read the guide.\n", after: page(OTHER) },
     ];
-    assert.deepEqual(checkChanges(changes, new Set([OTHER])).failures, []);
+    const result = checkChanges(changes, new Set([OTHER]));
+    assert.deepEqual(result.failures, []);
+    assert.deepEqual(result.removed, [OTHER]);
+    assert.deepEqual(result.added, [OTHER]);
+  });
+
+  it("lists each URL once when several files gain or lose it", () => {
+    const changes = [
+      { path: "docs/docs-content/a.md", status: "M", before: page(OLD), after: page(NEW) },
+      { path: "docs/docs-content/b.md", status: "M", before: page(OLD), after: page(NEW) },
+    ];
+    const result = checkChanges(changes, new Set([OLD]));
+    assert.deepEqual(result.removed, [OLD]);
+    assert.deepEqual(result.added, [NEW]);
+  });
+
+  it("does not list a URL that a changed file keeps", () => {
+    const changes = [
+      { path: "docs/docs-content/a.md", status: "M", before: `${page(OTHER)}${page(OLD)}`, after: page(OTHER) },
+    ];
+    assert.deepEqual(checkChanges(changes, new Set([OLD])).added, []);
   });
 });

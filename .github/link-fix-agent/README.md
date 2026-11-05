@@ -24,10 +24,11 @@ The workflow is `.github/workflows/link-fix-agent.yaml`. This folder holds every
 The agents decide what to edit. The scripts decide whether the edits are acceptable, so a bad fix cannot talk its way
 into a PR.
 
-**Merging.** The PR merges only when every CI check passed, the preview check passed, and the fixer is still confident.
-The master ruleset requires a docs-education code-owner approval and allows no bypass, so the direct merge fails today.
-The job then turns on auto-merge, and the PR merges on its first approval. If the bot ever gets a bypass, the same step
-merges with no code change.
+**Merging.** The PR merges only when every CI check passed, the link checker verified every new URL, the preview check
+passed, and the fixer was confident both after the review and after its preview test. The master ruleset requires a
+docs-education code-owner approval and allows no bypass, so the direct merge fails today. The job then turns on
+auto-merge, and the PR merges on its first approval. If the bot ever gets a bypass, the same step merges with no code
+change.
 
 **Dry runs.** A PR that changes this folder or the workflow runs the whole flow without pushing or opening a PR, in two
 cases: `live` (today's docs) and `replay-nov02` (the docs before the human fix in 516ac87b5, as an answer key).
@@ -70,5 +71,7 @@ The workflow runs them before every agent run.
 - Neither agent holds a GitHub token. The checkout keeps no credentials, and the Vault token stays in step outputs that
   only the checkout and GitHub steps read.
 - Each agent gets an exact tool set, and `agent-run.mjs` fails the job if a run started with anything else. The fixer
-  has no shell. The reviewer's shell runs only Vale and read-only git.
+  has no shell, and it can edit only docs, partials, the two linkinator configs, and its report. The scripts that later
+  run with the Vault token, and the link report that the diff check reads, stay out of its reach. The reviewer's shell
+  runs only Vale and `printf`.
 - Fetched web pages are untrusted input. The diff check and the preview check decide, not the prompts.

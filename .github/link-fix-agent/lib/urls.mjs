@@ -9,9 +9,19 @@ export function findUrls(text) {
   return new Set(text.match(URL_PATTERN) ?? []);
 }
 
-/** Drops the #fragment. linkinator reports and checks URLs without it. */
-export function withoutFragment(url) {
-  return url.split("#")[0];
+/**
+ * Returns the URL as linkinator reports it: parsed, so a bare domain gains its
+ * trailing slash and the host is lowercased, and without the #fragment. Text
+ * that does not parse only loses its fragment.
+ */
+export function urlKey(url) {
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    return parsed.href;
+  } catch {
+    return url.split("#")[0];
+  }
 }
 
 /** Compares two URL sets and returns the sorted URLs removed from `before` and added in `after`. */

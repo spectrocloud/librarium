@@ -4,7 +4,7 @@ import { describe, it } from "node:test";
 import {
   checkPages,
   formatResults,
-  linkShown,
+  linkedUrls,
   partialId,
   planPages,
   previewPassed,
@@ -120,36 +120,38 @@ describe("resolveRoute", () => {
   });
 });
 
-describe("linkShown", () => {
+describe("linkedUrls", () => {
   it("finds a URL in a quoted or an unquoted attribute", () => {
-    assert.equal(linkShown(`<a href="${NEW}">guide</a>`, NEW), true);
-    assert.equal(linkShown(`<a href=${NEW} target=_blank>guide</a>`, NEW), true);
-    assert.equal(linkShown(`<a href=${NEW}>guide</a>`, NEW), true);
+    assert.deepEqual(linkedUrls(`<a href="${NEW}">guide</a>`), new Set([NEW]));
+    assert.deepEqual(linkedUrls(`<a href=${NEW} target=_blank>guide</a>`), new Set([NEW]));
+    assert.deepEqual(linkedUrls(`<a href=${NEW}>guide</a>`), new Set([NEW]));
   });
 
-  it("finds a URL followed by a fragment or at the end of the text", () => {
-    assert.equal(linkShown(`<a href="${NEW}#install">`, NEW), true);
-    assert.equal(linkShown(`see ${NEW}`, NEW), true);
+  it("drops the fragment, and finds a URL at the end of the text", () => {
+    assert.deepEqual(linkedUrls(`<a href="${NEW}#install">`), new Set([NEW]));
+    assert.deepEqual(linkedUrls(`see ${NEW}`), new Set([NEW]));
   });
 
   it("finds a URL whose & the HTML escapes as &amp;", () => {
-    assert.equal(linkShown('<a href="https://example.com/a?b=1&amp;c=2">', "https://example.com/a?b=1&c=2"), true);
+    assert.deepEqual(
+      linkedUrls('<a href="https://example.com/a?b=1&amp;c=2">'),
+      new Set(["https://example.com/a?b=1&c=2"])
+    );
   });
 
-  it("does not match a URL that is only the start of a longer one", () => {
-    assert.equal(linkShown(`<a href="${NEW}/v2">`, NEW), false);
-    assert.equal(linkShown(`<a href="${NEW}?page=2">`, NEW), false);
+  it("returns a bare domain in linkinator's form, with its trailing slash", () => {
+    assert.deepEqual(linkedUrls('<a href="https://kubevirt.io">KubeVirt</a>'), new Set(["https://kubevirt.io/"]));
   });
 
-  it("treats regular-expression characters in the URL literally", () => {
-    const url = "https://example.com/a+b(c).html?x=1";
-    assert.equal(linkShown(`<a href="${url}">`, url), true);
-    assert.equal(linkShown('<a href="https://example.com/aab(c)Xhtml?x=1">', url), false);
+  it("keeps a longer URL whole, so it does not count as the URL it starts with", () => {
+    const urls = linkedUrls(`<a href="${NEW}/v2"> <a href="${NEW}?page=2">`);
+    assert.deepEqual(urls, new Set([`${NEW}/v2`, `${NEW}?page=2`]));
+    assert.equal(urls.has(NEW), false);
   });
 
-  it("is false when the page does not link to the URL", () => {
-    assert.equal(linkShown(`<a href="${OLD}">`, NEW), false);
-    assert.equal(linkShown("", NEW), false);
+  it("returns an empty set for a page without links", () => {
+    assert.deepEqual(linkedUrls("<p>No links.</p>"), new Set());
+    assert.deepEqual(linkedUrls(""), new Set());
   });
 });
 
@@ -206,8 +208,24 @@ describe("planPages", () => {
     assert.equal(pages.size, 1);
     const page = pages.get("/clusters/backup/");
     assert.deepEqual(page.sources, new Set(["docs/docs-content/clusters/backup.md", "_partials/clusters/_shared.mdx"]));
-    assert.deepEqual(page.added, new Set([NEW, "https://b.example.com"]));
-    assert.deepEqual(page.removed, new Set([OLD, "https://a.example.com"]));
+    assert.deepEqual(page.added, new Set([NEW, "https://b.example.com/"]));
+    assert.deepEqual(page.removed, new Set([OLD, "https://a.example.com/"]));
+  });
+
+  it("keys the added and removed URLs as linkinator reports them", () => {
+    const { pages } = planPages(
+      [
+        {
+          path: "docs/docs-content/clusters/backup.md",
+          before: "[x](https://WWW.Weave.Works)",
+          after: "[x](https://kubevirt.io#a)",
+        },
+      ],
+      { sitemap, pagesUsingPartial: () => [] }
+    );
+    const page = pages.get("/clusters/backup/");
+    assert.deepEqual(page.added, new Set(["https://kubevirt.io/"]));
+    assert.deepEqual(page.removed, new Set(["https://www.weave.works/"]));
   });
 
   it("reports a partial that no page renders", () => {
@@ -261,6 +279,27 @@ describe("checkPages", () => {
     assert.equal(result.ok, false);
     assert.deepEqual(result.notShown, [NEW]);
     assert.deepEqual(result.stillShown, [OLD]);
+  });
+
+  it("passes a bare domain that the page links to without its trailing slash", async () => {
+    const { fetchPage } = fakeFetch({
+      [`${BASE}/a/`]: { status: 200, ok: true, text: '<a href="https://kubevirt.io">KubeVirt</a>' },
+    });
+    const [result] = await checkPages(
+      new Map([["/a/", page(["https://kubevirt.io/"], ["https://www.weave.works/"])]]),
+      BASE,
+      fetchPage
+    );
+    assert.equal(result.ok, true);
+  });
+
+  it("fails a page that still shows a removed bare domain", async () => {
+    const { fetchPage } = fakeFetch({
+      [`${BASE}/a/`]: { status: 200, ok: true, text: `<a href="${NEW}"> <a href="https://www.weave.works">` },
+    });
+    const [result] = await checkPages(new Map([["/a/", page([NEW], ["https://www.weave.works/"])]]), BASE, fetchPage);
+    assert.equal(result.ok, false);
+    assert.deepEqual(result.stillShown, ["https://www.weave.works/"]);
   });
 
   it("fails a page that did not load, and ignores its error page's text", async () => {

@@ -59,11 +59,15 @@ describe("jobSummary", () => {
     assert.match(summary, /## Fix report\n$/);
   });
 
-  it("says a dry run would merge when the preview passed and the agent is still confident", () => {
+  it("says a dry run would merge when the preview passed and the agent was confident after the review and the preview", () => {
     const summary = jobSummary({
       caseName: "replay-nov02",
       count: 2,
-      decisions: [{ label: "After the preview test", decision: CONFIDENT }],
+      decisions: [
+        { label: "After the review", decision: CONFIDENT },
+        { label: "After the preview test", decision: CONFIDENT },
+      ],
+      diffCheck: "PROSE_CHANGED=0\nUNVERIFIED_LINKS=0\n",
       prBodyWritten: true,
       backportLabels: ["backport-version-4-7"],
       previewReport: "PASS 200 /a/",
@@ -79,15 +83,30 @@ describe("jobSummary", () => {
     );
   });
 
-  it("says a dry run would hand off when the preview failed or the agent is not confident", () => {
-    const input = { caseName: "live", count: 1, prBodyWritten: true, previewExit: "0" };
-    const notConfident = [{ label: "After the preview test", decision: { ...CONFIDENT, confident: false } }];
-    const confident = [{ label: "After the preview test", decision: CONFIDENT }];
-    assert.match(jobSummary({ ...input, decisions: notConfident }), /Would hand off to a human\./);
-    assert.match(jobSummary({ ...input, decisions: confident, previewExit: "1" }), /Would hand off to a human\./);
-    // Only the decision after the preview test counts.
-    const reviewOnly = [{ label: "After the review", decision: CONFIDENT }];
-    assert.match(jobSummary({ ...input, decisions: reviewOnly }), /Would hand off to a human\./);
+  it("says a dry run would hand off when the merge step would", () => {
+    const afterReview = (decision) => ({ label: "After the review", decision });
+    const afterPreview = (decision) => ({ label: "After the preview test", decision });
+    const notConfident = { ...CONFIDENT, confident: false };
+    const input = {
+      caseName: "replay-nov02",
+      count: 1,
+      prBodyWritten: true,
+      previewExit: "0",
+      previewBase: "https://docs.spectrocloud.com",
+      decisions: [afterReview(CONFIDENT), afterPreview(CONFIDENT)],
+    };
+    assert.match(jobSummary(input), /Would merge once CI passes\./);
+    for (const change of [
+      { decisions: [afterReview(CONFIDENT), afterPreview(notConfident)] },
+      { decisions: [afterReview(notConfident), afterPreview(CONFIDENT)] },
+      { decisions: [afterReview(CONFIDENT)] },
+      { decisions: [afterPreview(CONFIDENT)] },
+      { previewExit: "1" },
+      { previewBase: "" },
+      { diffCheck: "PROSE_CHANGED=0\nUNVERIFIED_LINKS=1\n" },
+    ]) {
+      assert.match(jobSummary({ ...input, ...change }), /Would hand off to a human\./, JSON.stringify(change));
+    }
     assert.match(jobSummary({ ...input }), /Backport labels: none/);
   });
 

@@ -66,6 +66,21 @@ export function addLabels({ pr, labels, repo, gh }) {
   ]);
 }
 
+/**
+ * Adds `labels` to a PR, and removes the backport labels it already has that
+ * `labels` leaves out. The rolling PR can still carry last week's labels, and
+ * the Backport workflow acts on every one of them.
+ */
+export function setLabels({ pr, labels, repo, gh }) {
+  const ghStrict = strictGh(gh);
+  const current = ghStrict(["pr", "view", pr, "--json", "labels", "--jq", ".labels[].name"]).split("\n");
+  const isBackportLabel = (label) => label === "auto-backport" || label.startsWith("backport-");
+  for (const label of current.filter((l) => isBackportLabel(l) && !labels.includes(l))) {
+    ghStrict(["api", "--method", "DELETE", `repos/${repo}/issues/${pr}/labels/${encodeURIComponent(label)}`]);
+  }
+  addLabels({ pr, labels, repo, gh });
+}
+
 // Command line.
 
 /** Commits the working-tree fix and force-pushes it to `branch`, which the bot owns. */
@@ -96,7 +111,7 @@ function main([workDir]) {
     gh: runGh,
   });
   strictGh(runGh)(["pr", "comment", pr, "--body-file", path.join(out, "pr-comment.md")]);
-  addLabels({ pr, labels: prLabels(readLines(path.join(out, "backport-labels.txt"))), repo, gh: runGh });
+  setLabels({ pr, labels: prLabels(readLines(path.join(out, "backport-labels.txt"))), repo, gh: runGh });
 
   setOutput("number", pr);
   setOutput("url", strictGh(runGh)(["pr", "view", pr, "--json", "url", "--jq", ".url"]));
