@@ -14,7 +14,7 @@ import {
   verdict,
   verifyNewUrls,
 } from "../check-link-fix-diff.mjs";
-import { git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
+import { FAKE, git, makeRepo, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const OLD = "https://old.example.com/guide";
 const NEW = "https://new.example.com/guide";
@@ -231,6 +231,37 @@ describe("checkChanges", () => {
     const result = checkChanges([config], new Set());
     assert.deepEqual(result.failures, []);
     assert.equal(result.skipPatternsAdded, false);
+  });
+
+  it("fails a change that adds a credential, and names its kind without printing it", () => {
+    const result = checkChanges([page(`[a](${OLD})`, `[a](${NEW}) ${FAKE.anthropic}`)], new Set([OLD]));
+    assert.deepEqual(result.failures, ["docs/docs-content/a.md: adds a credential (Anthropic API key)"]);
+    assert.ok(!JSON.stringify(result).includes(FAKE.anthropic));
+  });
+
+  it("names each kind of credential that a change adds", () => {
+    const after = `[a](${OLD})\n${FAKE.github}\n${FAKE.privateKey}\n`;
+    assert.deepEqual(checkChanges([page(`[a](${OLD})\n`, after)], new Set()).failures, [
+      "docs/docs-content/a.md: adds a credential (GitHub token, private key)",
+    ]);
+  });
+
+  it("does not fail a change when its credential-like text was already in the file", () => {
+    const example = `Set the key: ${FAKE.anthropic}\n`;
+    const result = checkChanges([page(`${example}[a](${OLD})\n`, `${example}[a](${NEW})\n`)], new Set([OLD]));
+    assert.deepEqual(result.failures, []);
+  });
+
+  it("fails a linkinator config change that adds a credential", () => {
+    const config = {
+      path: "linkinator/linkinator.config.json",
+      status: "M",
+      before: '{"skip":[]}',
+      after: JSON.stringify({ skip: [`^https://a.example.com/?token=${FAKE.github}`] }),
+    };
+    assert.deepEqual(checkChanges([config], new Set()).failures, [
+      "linkinator/linkinator.config.json: adds a credential (GitHub token)",
+    ]);
   });
 
   it("returns no failures for no changes", () => {
@@ -555,6 +586,16 @@ describe("check-link-fix-diff.mjs command line", () => {
     const result = check();
     assert.equal(result.status, 0, result.stdout + result.stderr);
     assert.doesNotMatch(result.stdout, /FAIL/);
+  });
+
+  it("fails when the fix adds a credential to a page, and does not print it", () => {
+    edit({
+      "docs/docs-content/a.md": PAGE.replace(OLD, NEW).replace("for details.", `for details. ${FAKE.anthropic}`),
+    });
+    const result = check();
+    assert.equal(result.status, 1, result.stdout);
+    assert.match(result.stdout, /FAIL: docs\/docs-content\/a\.md: adds a credential \(Anthropic API key\)/);
+    assert.ok(!result.stdout.includes(FAKE.anthropic));
   });
 
   it("checks a URL that the fix adds to a page even when another changed page already had it", () => {

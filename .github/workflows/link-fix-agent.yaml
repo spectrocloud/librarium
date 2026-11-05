@@ -1,27 +1,37 @@
 name: "Link Fix Agent"
 
-# Fixes the broken external links from the weekly link report with a headless
-# Claude Code agent, reviews the fix in a separate context, opens a PR, tests
-# the deploy preview, and merges when every check agrees.
-# .github/link-fix-agent/README.md explains the flow, the files, and the tests.
+# Fixes the broken external links from the weekly link report with small,
+# single-purpose agents and scripts, opens a PR, tests the deploy preview, and
+# merges when every check agrees. .github/link-fix-agent/README.md explains the
+# flow, the files, and the tests.
+#
+# Each agent does one job with the least access that job needs:
+#   researcher       one per broken URL; web tools only, no file access
+#   guidance editor  only when a resource changed; edits only the files that
+#                    use its link, and cannot browse
+#   reviewer         pr-review-buddy on a smaller model; read-only, and its
+#                    shell runs only Vale and printf
+#   responder        answers the review; edits only the changed docs files,
+#                    and cannot browse
+#   preview tester   web fetch only
+# Scripts do everything else, including every URL swap (apply-research.mjs) and
+# every decision that gates a PR or a merge.
 #
 # A live run (weekly on master, or by manual dispatch) opens a PR. A pull
 # request that changes the agent gets a dry run instead, which never pushes or
 # opens a PR: the live case plus a replay of the docs before 516ac87b5 (Linus's
-# Nov 2 fix), so the agent's patch can be compared with a human answer key.
+# Nov 2 fix), so the result can be compared with a human answer key.
 #
-# SECURITY: neither agent holds a GitHub token. The checkout keeps no
-# credentials, and the Vault token stays in step outputs that only the checkout
-# and GitHub steps read. Each agent gets an exact tool set. The fixer has no
-# shell, and it can edit only docs, partials, the two linkinator configs, and
-# its report, so the scripts that later run with the token and the link report
-# that the diff check reads stay out of its reach. The reviewer's shell runs
-# only Vale and printf. Every agent run denies Read, Grep, and Glob under /proc
-# and /sys, so a fetched page cannot talk an agent into reading the Claude key
-# from the process environment. A dedicated, spend-capped Claude key for this
-# workflow is the recommended backstop, a follow-up for whoever manages the
-# CLAUDE_API_KEY secret. Fetched web pages are untrusted input, so
-# deterministic checks, not prompts, decide.
+# SECURITY: no agent holds a GitHub token. The checkout keeps no credentials,
+# and the Vault token stays in step outputs that only the checkout and GitHub
+# steps read. Each agent run gets an exact tool set, which agent-run.mjs and
+# research-links.mjs verify. The agents that read web pages cannot read or edit
+# files, and the agents that edit files cannot read the web. The agents that
+# can read files are denied /proc and /sys, where the Claude key lives in the
+# process environment. The diff check, the PR step, the job summary, and the
+# artifact upload all refuse text that holds a credential. A dedicated,
+# spend-capped Claude key for this workflow is the recommended backstop, a
+# follow-up for whoever manages the CLAUDE_API_KEY secret.
 
 on:
   schedule:
@@ -46,15 +56,18 @@ env:
   CLAUDE_CODE_VERSION: "2.1.311"
   MODEL: "claude-opus-5-5"
   REVIEW_MODEL: "claude-haiku-5-5"
-  MAX_BUDGET_USD: "3"
+  # Budgets per agent run. Each researcher handles one URL.
+  RESEARCH_BUDGET_USD: "1"
+  EDIT_BUDGET_USD: "2"
   REVIEW_BUDGET_USD: "1"
+  TEST_BUDGET_USD: "1"
   AGENT_DIR: .github/link-fix-agent
-  # Exact tool sets. The fixer has no shell, and the --allowedTools patterns in
-  # its steps limit Edit and Write to a few paths. The reviewer's Bash is
-  # limited by the --allowedTools patterns in its step. Each run's
-  # --disallowedTools patterns keep Read, Grep, and Glob out of /proc and /sys.
-  AGENT_TOOLS: "Edit,Glob,Grep,Read,Skill,WebFetch,WebSearch,Write"
+  # Exact tool sets, one per agent. Edit rules in each step limit the editors to
+  # named files, and the reviewer's Bash is limited to Vale and printf.
+  RESEARCH_TOOLS: "WebFetch,WebSearch"
+  EDIT_TOOLS: "Edit,Read"
   REVIEW_TOOLS: "Bash,Glob,Grep,Read,Skill"
+  TEST_TOOLS: "WebFetch"
   # Pinned docs-ai-context commit (private repo) for the pr-review-buddy and
   # style-guide skills.
   DOCS_AI_CONTEXT_REF: "56ad3a796e146f87120687a2ff78e5ae4e0e52eb" # main, 2026-11-04
@@ -142,7 +155,6 @@ jobs:
           mkdir -p "$WORK/out" "$WORK/review"
           {
             echo "WORK=$WORK"
-            echo "SESSION_ID=$(cat /proc/sys/kernel/random/uuid)"
             echo "PR_TITLE=docs: fix broken external links ($(date -u +'%b %-d') report)"
           } >> "$GITHUB_ENV"
 
@@ -159,15 +171,6 @@ jobs:
             echo "PREVIEW_BASE=https://docs.spectrocloud.com" >> "$GITHUB_ENV"
             echo "Dry run: no PR, so no CI checks ran." > "$WORK/out/pr-checks.txt"
           fi
-
-          # The fixer can write only inside the repo, so its report goes to a
-          # folder that git ignores and the diff check never sees.
-          mkdir -p link-fix-out
-          echo "/link-fix-out/" >> .git/info/exclude
-
-          # .claude/ is gitignored, so the skills never show up in the diff.
-          mkdir -p .claude/skills
-          cp -R "$AGENT_DIR/fix-broken-links" .claude/skills/
 
       - name: Build the broken-link report
         id: report
@@ -188,44 +191,55 @@ jobs:
           echo "Broken external links: $count"
           jq -r '.[] | "\(.status) \(.url) <- \(.parent)"' "$WORK/link_report.json"
 
-      # Fix
+      # Research and fix
 
       - name: Install Claude Code
         if: ${{ steps.report.outputs.count != '0' }}
         run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
 
-      - name: Run the fixer agent
+      # One researcher per broken URL, with web tools only. Not --bare: bare
+      # mode drops the web tools, and the agent then guesses URLs from memory.
+      - name: Research the broken links
         if: ${{ steps.report.outputs.count != '0' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: node "$AGENT_DIR/research-links.mjs" "$WORK/link_report.json" . "$WORK/out"
+
+      # A script, not an agent, makes every URL swap.
+      - name: Apply the research
+        id: apply
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: node "$AGENT_DIR/apply-research.mjs" "$WORK/out/research.json" . "$WORK/out"
+
+      - name: Run the guidance editor
+        if: ${{ steps.apply.outputs.guidance == 'true' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          # Not --bare: bare mode drops Write, WebSearch, and WebFetch, and the
-          # agent then guesses URLs from memory. The session persists, so the
-          # agent can address the review and test the preview later.
-          claude -p "/fix-broken-links $WORK/link_report.json link-fix-out/fix-report.md" \
+          # The editor can edit only the files that use a changed resource's link.
+          rules=()
+          while IFS= read -r file; do rules+=("Edit($file)"); done < "$WORK/out/guidance-files.txt"
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/edit-guidance.md" \
+            TASKS=@"$WORK/out/guidance-tasks.json")
+          claude -p "$prompt" \
             --model "$MODEL" \
-            --session-id "$SESSION_ID" \
             --setting-sources project \
             --strict-mcp-config \
-            --tools "$AGENT_TOOLS" \
-            --allowedTools Read Grep Glob WebFetch WebSearch \
-              "Edit(docs/**)" "Edit(_partials/**)" \
-              "Edit(linkinator/linkinator.config.json)" "Edit(linkinator/linkinator-ci.config.json)" \
-              "Edit(link-fix-out/**)" "Write(link-fix-out/**)" \
-            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" "Grep(//proc/**)" "Grep(//sys/**)" \
-              "Glob(//proc/**)" "Glob(//sys/**)" \
-            --add-dir "$WORK" \
-            --max-budget-usd "$MAX_BUDGET_USD" \
+            --tools "$EDIT_TOOLS" \
+            --allowedTools Read "${rules[@]}" \
+            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" \
+            --max-budget-usd "$EDIT_BUDGET_USD" \
             --output-format stream-json \
             --verbose \
-            > "$WORK/out/run.jsonl"
-          tail -n 1 "$WORK/out/run.jsonl" > "$WORK/out/run.json"
-          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/run.jsonl" --tools "$AGENT_TOOLS"
+            --no-session-persistence \
+            > "$WORK/out/guidance-run.jsonl"
+          tail -n 1 "$WORK/out/guidance-run.jsonl" > "$WORK/out/guidance-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/guidance-run.jsonl" \
+            --tools "$EDIT_TOOLS" --result-to "$WORK/out/guidance-summary.md"
 
-      # The first check only informs the fixer's second pass. The final check
-      # after it decides.
-      - name: Check the fixer's first diff
+      # The first check only informs the responder. The final check after it decides.
+      - name: Check the first diff
         id: first-check
         if: ${{ steps.report.outputs.count != '0' }}
         run: |
@@ -241,14 +255,18 @@ jobs:
           curl -fsSL "https://github.com/vale-cli/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION#v}_Linux_64-bit.tar.gz" \
             | sudo tar -xz -C /usr/local/bin vale
           vale --version
-          vale sync
+          # The style packages download from GitHub, which sometimes answers 504.
+          for attempt in 1 2 3; do
+            vale sync && break
+            [[ $attempt == 3 ]] && exit 1
+            sleep 15
+          done
 
       - name: Gather the review inputs
         if: ${{ steps.first-check.outputs.changed == 'true' }}
         run: node "$AGENT_DIR/gather-review.mjs" "$WORK/review" "$PR_TITLE"
 
-      # Checked out only now, after the fixer's first run, and deleted when the
-      # reviewer step ends.
+      # Checked out only now, and deleted when the reviewer step ends.
       - name: Checkout docs-ai-context
         if: ${{ steps.first-check.outputs.changed == 'true' }}
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -266,8 +284,9 @@ jobs:
         run: |
           set -euo pipefail
           # The private checkout and its skills exist only during this step, so
-          # the fixer, whose transcripts the artifacts publish, never sees them.
+          # no other agent, whose transcripts the artifacts publish, sees them.
           trap 'rm -rf .docs-ai-context .claude/skills/pr-review-buddy .claude/skills/style-guide' EXIT
+          mkdir -p .claude/skills
           cp -R .docs-ai-context/.claude/skills/pr-review-buddy .docs-ai-context/.claude/skills/style-guide .claude/skills/
           # A fresh session on a smaller model, as the PR template asks.
           claude -p "/pr-review-buddy $WORK/review" \
@@ -289,38 +308,35 @@ jobs:
           node "$AGENT_DIR/agent-run.mjs" "$WORK/out/review-run.jsonl" \
             --tools "$REVIEW_TOOLS" --result-to "$WORK/review/review.md"
 
-      - name: Address the review
+      - name: Run the review responder
         if: ${{ steps.first-check.outputs.changed == 'true' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          export REVIEW_FILE="$WORK/review/review.md" CHECK_FILE="$WORK/out/diff-check-1.txt" FIX_REPORT="link-fix-out/fix-report.md"
-          # shellcheck disable=SC2016 # envsubst takes the variable names literally
-          prompt=$(envsubst '$REVIEW_FILE $CHECK_FILE $FIX_REPORT' < "$AGENT_DIR/prompts/address-review.md")
+          # The responder can edit only the docs files that the fix changed.
+          mapfile -t files < <(git diff --name-only -- docs _partials | grep -E '\.mdx?$' | grep -v '^docs/deprecated/' || true)
+          rules=()
+          for file in "${files[@]}"; do rules+=("Edit($file)"); done
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/address-review.md" \
+            FILES="${files[*]:-none}" REVIEW=@"$WORK/review/review.md" \
+            DIFF_CHECK=@"$WORK/out/diff-check-1.txt" FIX_REPORT=@"$WORK/out/fix-report.md")
           claude -p "$prompt" \
-            --resume "$SESSION_ID" \
             --model "$MODEL" \
             --setting-sources project \
             --strict-mcp-config \
-            --tools "$AGENT_TOOLS" \
-            --allowedTools Read Grep Glob WebFetch WebSearch \
-              "Edit(docs/**)" "Edit(_partials/**)" \
-              "Edit(linkinator/linkinator.config.json)" "Edit(linkinator/linkinator-ci.config.json)" \
-              "Edit(link-fix-out/**)" "Write(link-fix-out/**)" \
-            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" "Grep(//proc/**)" "Grep(//sys/**)" \
-              "Glob(//proc/**)" "Glob(//sys/**)" \
-            --add-dir "$WORK" \
-            --max-budget-usd "$MAX_BUDGET_USD" \
+            --tools "$EDIT_TOOLS" \
+            --allowedTools Read "${rules[@]}" \
+            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" \
+            --max-budget-usd "$EDIT_BUDGET_USD" \
             --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
-            --output-format json \
-            > "$WORK/out/address-run.json"
-          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/address-run.json" --decision-to "$WORK/out/decision.json"
-
-      # The later steps and the artifacts read the fix report from the work folder.
-      - name: Collect the fix report
-        if: ${{ always() && steps.report.outputs.count != '0' }}
-        run: if [[ -f link-fix-out/fix-report.md ]]; then cp link-fix-out/fix-report.md "$WORK/out/fix-report.md"; fi
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/address-run.jsonl"
+          tail -n 1 "$WORK/out/address-run.jsonl" > "$WORK/out/address-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/address-run.jsonl" \
+            --tools "$EDIT_TOOLS" --decision-to "$WORK/out/decision.json"
 
       - name: Check the final diff
         id: check
@@ -369,31 +385,33 @@ jobs:
             | tee "$WORK/out/preview-check.txt"
           echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
 
-      - name: Test the deploy preview
+      - name: Run the preview tester
         if: ${{ steps.preview.outputs.exit != '' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           set -euo pipefail
-          export PREVIEW_BASE PREVIEW_FILE="$WORK/out/preview-check.txt" CHECKS_FILE="$WORK/out/pr-checks.txt"
-          # shellcheck disable=SC2016 # envsubst takes the variable names literally
-          prompt=$(envsubst '$PREVIEW_BASE $PREVIEW_FILE $CHECKS_FILE' < "$AGENT_DIR/prompts/test-preview.md")
-          # The PR is already pushed, so this pass can read and fetch, but not edit.
+          # The tester gets its inputs in the prompt, because it can only fetch web pages.
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/test-preview.md" \
+            PREVIEW_BASE="$PREVIEW_BASE" PREVIEW_CHECK=@"$WORK/out/preview-check.txt" \
+            CI_CHECKS=@"$WORK/out/pr-checks.txt" DIFF_CHECK=@"$WORK/out/diff-check.txt" \
+            FIX_REPORT=@"$WORK/out/fix-report.md")
           claude -p "$prompt" \
-            --resume "$SESSION_ID" \
             --model "$MODEL" \
             --setting-sources project \
             --strict-mcp-config \
-            --tools "Glob,Grep,Read,WebFetch" \
-            --allowedTools Read Grep Glob WebFetch \
-            --disallowedTools "Read(//proc/**)" "Read(//sys/**)" "Grep(//proc/**)" "Grep(//sys/**)" \
-              "Glob(//proc/**)" "Glob(//sys/**)" \
-            --add-dir "$WORK" \
-            --max-budget-usd "$MAX_BUDGET_USD" \
+            --tools "$TEST_TOOLS" \
+            --allowedTools WebFetch \
+            --disallowedTools Bash \
+            --max-budget-usd "$TEST_BUDGET_USD" \
             --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
-            --output-format json \
-            > "$WORK/out/preview-run.json"
-          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/preview-run.json" --decision-to "$WORK/out/final-decision.json"
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/preview-run.jsonl"
+          tail -n 1 "$WORK/out/preview-run.jsonl" > "$WORK/out/preview-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/preview-run.jsonl" \
+            --tools "$TEST_TOOLS" --decision-to "$WORK/out/final-decision.json"
 
       - name: Merge or hand off
         if: ${{ always() && steps.pr.outputs.number != '' }}
@@ -416,6 +434,11 @@ jobs:
           PR_URL: ${{ steps.pr.outputs.url }}
         run: node "$AGENT_DIR/job-summary.mjs" "$WORK" >> "$GITHUB_STEP_SUMMARY"
 
+      # The artifacts are public, so any file that holds a credential is deleted first.
+      - name: Keep credentials out of the artifacts
+        if: ${{ always() }}
+        run: node "$AGENT_DIR/scan-secrets.mjs" "$WORK"
+
       - name: Upload results
         if: ${{ always() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
@@ -431,7 +454,7 @@ jobs:
       - name: Fail if the final diff check failed
         if: ${{ steps.check.outputs.exit != '' && steps.check.outputs.exit != '0' }}
         run: |
-          echo "::error::The diff check rejected the agent's edits. See the job summary."
+          echo "::error::The diff check rejected the fix. See the job summary."
           exit 1
 
       - name: Failure Slack Notification

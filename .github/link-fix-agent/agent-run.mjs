@@ -25,9 +25,12 @@ export function parseRun(output) {
   }
 }
 
-/** True when the run had exactly the expected tools, given as "A,B,C". */
+// A run with --json-schema answers through this tool. It is an output channel, not a capability.
+const OUTPUT_TOOLS = new Set(["StructuredOutput"]);
+
+/** True when the run had exactly the expected tools, given as "A,B,C", besides its output tool. */
 export function hasExactTools(init, expected) {
-  const actual = [...(init?.tools ?? [])].sort();
+  const actual = (init?.tools ?? []).filter((tool) => !OUTPUT_TOOLS.has(tool)).sort();
   const wanted = expected.split(",").sort();
   return JSON.stringify(actual) === JSON.stringify(wanted);
 }

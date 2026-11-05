@@ -12,8 +12,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { isMain, readLines, setEnv, setOutput } from "./lib/cli.mjs";
+import { isMain, readLines, readText, setEnv, setOutput } from "./lib/cli.mjs";
 import { gh as runGh, git, run } from "./lib/run.mjs";
+import { findSecrets } from "./lib/secrets.mjs";
 
 // The notify-slack label goes on later, after the agent tests the deploy preview.
 const ALWAYS_LABELS = ["small-pr", "not-urgent"];
@@ -143,6 +144,17 @@ export function publishFix({ branch, title, out, repo, gh, push }) {
   return { pr, skipped: false };
 }
 
+/**
+ * Throws when any of the PR's texts, given as { name: text }, holds a
+ * credential. The PR is public, and agents wrote parts of its text.
+ */
+export function refuseSecrets(texts) {
+  for (const [name, text] of Object.entries(texts)) {
+    const secrets = findSecrets(text);
+    if (secrets.length) throw new Error(`${name} holds a credential (${secrets.join(", ")}), so no PR opens.`);
+  }
+}
+
 // Command line.
 
 /** Commits the working-tree fix and force-pushes it to `branch`, which the bot owns. */
@@ -161,6 +173,10 @@ function commitAndPush(branch, title, token) {
 
 function main([workDir]) {
   const { GH_TOKEN, PR_BRANCH, PR_TITLE, GITHUB_REPOSITORY } = process.env;
+  refuseSecrets({
+    "pr-body.md": readText(path.join(workDir, "out", "pr-body.md")),
+    "pr-comment.md": readText(path.join(workDir, "out", "pr-comment.md")),
+  });
   const { pr, skipped } = publishFix({
     branch: PR_BRANCH,
     title: PR_TITLE,

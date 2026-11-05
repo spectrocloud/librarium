@@ -61,6 +61,17 @@ describe("hasExactTools", () => {
   it("does not trim spaces around tool names", () => {
     assert.equal(hasExactTools(INIT, "Read, Edit, WebFetch"), false);
   });
+
+  it("ignores the StructuredOutput tool that a run with a JSON schema has", () => {
+    assert.equal(hasExactTools({ tools: ["StructuredOutput", ...INIT.tools] }, "Read,Edit,WebFetch"), true);
+    assert.equal(hasExactTools({ tools: ["WebSearch", "StructuredOutput", "WebFetch"] }, "WebFetch,WebSearch"), true);
+  });
+
+  it("still fails a run with StructuredOutput when it had an extra tool or lacked one", () => {
+    assert.equal(hasExactTools({ tools: [...INIT.tools, "StructuredOutput", "Bash"] }, "Read,Edit,WebFetch"), false);
+    assert.equal(hasExactTools({ tools: ["Read", "StructuredOutput"] }, "Read,Edit,WebFetch"), false);
+    assert.equal(hasExactTools({ tools: ["StructuredOutput"] }, "WebFetch"), false);
+  });
 });
 
 describe("costLine", () => {
@@ -164,6 +175,16 @@ describe("agent-run.mjs command line", () => {
     const result = agentRun(streamJson({ ...INIT, tools: ["Read"] }, RESULT), "--tools", "Edit,Read,WebFetch");
     assert.equal(result.status, 1);
     assert.match(result.stdout, /::error::/);
+  });
+
+  it("passes when the run's only tool beyond the expected ones is StructuredOutput", () => {
+    const result = agentRun(
+      streamJson({ ...INIT, tools: [...INIT.tools, "StructuredOutput"] }, RESULT),
+      "--tools",
+      "Edit,Read,WebFetch"
+    );
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.match(result.stdout, /^Tools: \["Edit","Read","StructuredOutput","WebFetch"\]$/m);
   });
 
   it("fails the tools check on json output, which lists no tools", () => {

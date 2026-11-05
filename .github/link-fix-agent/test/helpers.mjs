@@ -1,4 +1,4 @@
-// Fixtures that the command-line tests share: temporary folders, git repos, and script runs.
+// Fixtures that the tests share: temporary folders, git repos, script runs, and fake credentials.
 
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
@@ -7,6 +7,24 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const AGENT_DIR = fileURLToPath(new URL("..", import.meta.url));
+
+/**
+ * Fake credentials, one of each kind that lib/secrets.mjs finds. They are
+ * built at run time, so the repo holds no credential-shaped text for gitleaks
+ * to flag.
+ */
+export const FAKE = {
+  anthropic: "sk-ant-" + "a".repeat(30),
+  github: "ghp_" + "b".repeat(36),
+  githubFineGrained: "github_pat_" + "c".repeat(40),
+  privateKey: privateKeyWith("d"),
+};
+
+/** Builds a fake private key block whose base64 body repeats `fill`, so two fills give two different keys. */
+export function privateKeyWith(fill) {
+  const label = ["RSA", "PRIVATE", "KEY"].join(" ");
+  return `-----BEGIN ${label}-----\n${fill.repeat(64)}\n-----END ${label}-----`;
+}
 
 /** Creates an empty temporary folder. The caller removes it. */
 export function tempDir() {

@@ -3,7 +3,7 @@
 //
 // For each changed docs file, it finds the pages that render the file, fetches
 // them from the preview, and checks that each URL the fix added is on the page
-// and each URL it removed is gone. The fixer agent reads the result when it
+// and each URL it removed is gone. The preview tester agent reads the result when it
 // tests the preview, and the job merges only when every page passes.
 //
 // Usage: node check-preview.mjs <repo-dir> <preview-url> <out.json> [<base-ref>]
@@ -123,7 +123,7 @@ export function previewPassed(results, missing) {
   return results.length > 0 && missing.length === 0 && results.every((result) => result.ok);
 }
 
-/** Formats the result. The fixer agent reads the PASS and FAIL lines. */
+/** Formats the result. The preview tester agent reads the PASS and FAIL lines. */
 export function formatResults(results, missing) {
   const failed = results.filter((result) => !result.ok).length + missing.length;
   return [

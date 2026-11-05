@@ -9,10 +9,11 @@ import path from "node:path";
 
 import { isMain, readLines, readText } from "./lib/cli.mjs";
 import { parseRun } from "./agent-run.mjs";
+import { findSecrets } from "./lib/secrets.mjs";
 import { mergeBlockers } from "./merge-or-hand-off.mjs";
 
 // The agent runs in the order they happen, by output file name.
-const RUNS = ["run", "review-run", "address-run", "preview-run"];
+const RUNS = ["research-run", "guidance-run", "review-run", "address-run", "preview-run"];
 const DECISIONS = { decision: "After the review", "final-decision": "After the preview test" };
 
 /** Summarizes one agent run's turns, cost, and time. */
@@ -84,24 +85,27 @@ function main([workDir]) {
     .map(({ label, text }) => ({ label, decision: JSON.parse(text) }));
 
   const { CASE, COUNT, CHECK_EXIT, PREVIEW_EXIT, PREVIEW_BASE, PR_URL } = process.env;
+  const summary = jobSummary({
+    caseName: CASE,
+    count: COUNT,
+    runs,
+    decisions,
+    prUrl: PR_URL,
+    skipComment: readText(path.join(out, "skip-comment.md")),
+    mergeComment: readText(path.join(out, "merge-comment.md")),
+    prBodyWritten: Boolean(readText(path.join(out, "pr-body.md"))),
+    backportLabels: readLines(path.join(out, "backport-labels.txt")),
+    diffCheck: readText(path.join(out, "diff-check.txt")),
+    checkExit: CHECK_EXIT,
+    previewReport: readText(path.join(out, "preview-check.txt")),
+    previewExit: PREVIEW_EXIT,
+    previewBase: PREVIEW_BASE,
+    fixReport: readText(path.join(out, "fix-report.md")),
+  });
+  // The summary is public, and agents wrote parts of it.
+  const secrets = findSecrets(summary);
   process.stdout.write(
-    jobSummary({
-      caseName: CASE,
-      count: COUNT,
-      runs,
-      decisions,
-      prUrl: PR_URL,
-      skipComment: readText(path.join(out, "skip-comment.md")),
-      mergeComment: readText(path.join(out, "merge-comment.md")),
-      prBodyWritten: Boolean(readText(path.join(out, "pr-body.md"))),
-      backportLabels: readLines(path.join(out, "backport-labels.txt")),
-      diffCheck: readText(path.join(out, "diff-check.txt")),
-      checkExit: CHECK_EXIT,
-      previewReport: readText(path.join(out, "preview-check.txt")),
-      previewExit: PREVIEW_EXIT,
-      previewBase: PREVIEW_BASE,
-      fixReport: readText(path.join(out, "fix-report.md")),
-    })
+    secrets.length ? `The summary held a credential (${secrets.join(", ")}), so it was withheld.\n` : summary
   );
 }
 

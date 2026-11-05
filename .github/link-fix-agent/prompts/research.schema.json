@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "outcome": { "type": "string", "enum": ["replace", "update-guidance", "no-change", "skip-pattern", "error"] },
+    "replacement": { "type": "string", "description": "The new URL, fetched and verified. Empty when there is none." },
+    "evidence": { "type": "string", "description": "The replacement's page title, the redirect, or what loaded." },
+    "guidance": { "type": "string", "description": "For update-guidance: what changed and the smallest true edit." },
+    "sources": { "type": "array", "items": { "type": "string" } },
+    "skipPattern": { "type": "string", "description": "For skip-pattern: the anchored regex. Empty otherwise." },
+    "attempts": { "type": "array", "items": { "type": "string" }, "description": "The status of each fetch attempt." },
+    "notes": { "type": "string" }
+  },
+  "required": ["outcome", "replacement", "evidence", "guidance", "sources", "skipPattern", "attempts", "notes"],
+  "additionalProperties": false
+}

@@ -3,7 +3,7 @@ import fs from "node:fs";
 import { afterEach, beforeEach, describe, it } from "node:test";
 
 import { jobSummary, runLine } from "../job-summary.mjs";
-import { runScript, tempDir, writeFiles } from "./helpers.mjs";
+import { FAKE, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const RESULT = { type: "result", total_cost_usd: 1.2345, num_turns: 12, duration_ms: 95_400 };
 const CONFIDENT = { confident: true, reason: "All swaps verified.", findings: [] };
@@ -150,7 +150,7 @@ describe("job-summary.mjs command line", () => {
 
   it("summarizes the run's files", () => {
     writeFiles(work, {
-      "out/run.json": `${JSON.stringify(RESULT)}\n`,
+      "out/research-run.json": `${JSON.stringify(RESULT)}\n`,
       "out/review-run.json": JSON.stringify({ total_cost_usd: 0.05, num_turns: 3, duration_ms: 2000 }),
       "out/decision.json": JSON.stringify(CONFIDENT),
       "out/final-decision.json": "null\n",
@@ -163,7 +163,7 @@ describe("job-summary.mjs command line", () => {
     const result = runScript("job-summary.mjs", [work], { env });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /^## Link fix agent: live\n\nBroken external links reported: \*\*3\*\*/);
-    assert.match(result.stdout, /- run: 12 turns, \$1\.23, 95s\n- review-run: 3 turns, \$0\.05, 2s\n/);
+    assert.match(result.stdout, /- research-run: 12 turns, \$1\.23, 95s\n- review-run: 3 turns, \$0\.05, 2s\n/);
     assert.match(result.stdout, /\*\*After the review:\*\* confident=true\. All swaps verified\./);
     // final-decision.json holds null, so it is left out, and the dry run hands off.
     assert.doesNotMatch(result.stdout, /After the preview test/);
@@ -172,6 +172,49 @@ describe("job-summary.mjs command line", () => {
     assert.match(result.stdout, /### Preview check \(exit 0\) against https:\/\/deploy-preview-42/);
     assert.match(result.stdout, /### Final diff check \(exit 0\)/);
     assert.match(result.stdout, /## Fix report\n$/);
+  });
+
+  it("lists the agent runs in the order they happen, whatever files exist", () => {
+    const run = (turns) => JSON.stringify({ num_turns: turns, total_cost_usd: 0.1, duration_ms: 1000 });
+    writeFiles(work, {
+      "out/preview-run.json": run(5),
+      "out/address-run.json": run(4),
+      "out/review-run.json": run(3),
+      "out/guidance-run.json": run(2),
+      "out/research-run.json": run(1),
+      "out/run.json": run(99),
+    });
+    const result = runScript("job-summary.mjs", [work], { env });
+    assert.equal(result.status, 0, result.stderr);
+    const lines = result.stdout.split("\n").filter((line) => line.startsWith("- "));
+    assert.deepEqual(lines, [
+      "- research-run: 1 turns, $0.10, 1s",
+      "- guidance-run: 2 turns, $0.10, 1s",
+      "- review-run: 3 turns, $0.10, 1s",
+      "- address-run: 4 turns, $0.10, 1s",
+      "- preview-run: 5 turns, $0.10, 1s",
+    ]);
+  });
+
+  it("withholds the whole summary when it holds a credential", () => {
+    writeFiles(work, {
+      "out/research-run.json": JSON.stringify(RESULT),
+      "out/fix-report.md": `## Fixed\n\nEvidence: ${FAKE.anthropic}\n`,
+    });
+    const result = runScript("job-summary.mjs", [work], { env });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout, "The summary held a credential (Anthropic API key), so it was withheld.\n");
+  });
+
+  it("names each kind of credential that the summary held", () => {
+    writeFiles(work, {
+      "out/merge-comment.md": `**Outcome:** merged. ${FAKE.github}\n`,
+      "out/diff-check.txt": `${FAKE.privateKey}\n`,
+      "out/pr-body.md": "# PR\n",
+    });
+    const result = runScript("job-summary.mjs", [work], { env: { ...env, PR_URL: "https://github.com/o/r/pull/42" } });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout, "The summary held a credential (GitHub token, private key), so it was withheld.\n");
   });
 
   it("prints the PR and its merge comment for a live run", () => {
@@ -208,7 +251,7 @@ describe("job-summary.mjs command line", () => {
   });
 
   it("fails when a run's output is not valid JSON", () => {
-    writeFiles(work, { "out/run.json": "Error: not logged in\n" });
+    writeFiles(work, { "out/review-run.json": "Error: not logged in\n" });
     const result = runScript("job-summary.mjs", [work], { env });
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /SyntaxError/);

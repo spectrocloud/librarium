@@ -89,6 +89,22 @@ describe("prBody", () => {
     assert.doesNotMatch(body, /The agent changed text/);
     assert.match(body, /hands the PR to a human\.\n\n## Fix report/);
   });
+
+  it("adds the guidance editor's summary after the fix report", () => {
+    const body = prBody({ ...input, guidanceSummary: "\nUpdated the install step in a.md.\n\n" });
+    assert.match(
+      body,
+      /\| URL \| New URL \|\n\n## Guidance updated\n\nUpdated the install step in a\.md\.\n\n---\n\n## 💻 Changed Pages/
+    );
+  });
+
+  it("leaves out the guidance section when the summary is missing, empty, or blank", () => {
+    for (const guidanceSummary of [undefined, "", " \n\n "]) {
+      const body = prBody({ ...input, guidanceSummary });
+      assert.doesNotMatch(body, /Guidance updated/, JSON.stringify(guidanceSummary));
+      assert.match(body, /\| URL \| New URL \|\n\n---\n\n## 💻 Changed Pages/);
+    }
+  });
 });
 
 describe("reviewComment", () => {
@@ -168,7 +184,23 @@ describe("write-pr-text.mjs command line", () => {
     assert.equal(result.status, 0, result.stderr);
     assert.match(read("pr-body.md"), /No fix report\./);
     assert.match(read("pr-body.md"), /No version branch takes the fix cleanly\./);
+    assert.doesNotMatch(read("pr-body.md"), /Guidance updated/);
     assert.match(read("pr-comment.md"), /The reviewer wrote no report\./);
+  });
+
+  it("adds the guidance editor's summary from out/guidance-summary.md", () => {
+    writeFiles(work, {
+      "out/fix-report.md": "## Fixed\n",
+      "out/guidance-summary.md": "docs/docs-content/a.md: renamed the CLI command.\n",
+      "out/decision.json": JSON.stringify(CONFIDENT),
+    });
+    const result = writeText();
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(
+      read("pr-body.md"),
+      /## Fixed\n\n## Guidance updated\n\ndocs\/docs-content\/a\.md: renamed the CLI command\.\n\n---/
+    );
+    assert.doesNotMatch(read("pr-comment.md"), /renamed the CLI command/);
   });
 
   it("fails when decision.json is missing", () => {

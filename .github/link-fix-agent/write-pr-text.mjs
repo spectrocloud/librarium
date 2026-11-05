@@ -49,7 +49,16 @@ export function backportNote(labels, manualBranches) {
 }
 
 /** Builds the PR description from the librarium PR template. */
-export function prBody({ fixReport, decision, diffCheck, backportLabels, manualBackports, changedFiles, reviewModel }) {
+export function prBody({
+  fixReport,
+  guidanceSummary = "",
+  decision,
+  diffCheck,
+  backportLabels,
+  manualBackports,
+  changedFiles,
+  reviewModel,
+}) {
   const flags = diffCheckFlags(diffCheck);
   return `# ✅ Pull Request Checklist
 
@@ -76,7 +85,7 @@ The link fix agent opened this PR and checked the items it could do itself. A do
 **Merge plan:** ${MERGE_PLAN}
 
 ${flags.length ? `${flags.join("\n")}\n\n` : ""}${fixReport.trim()}
-
+${guidanceSummary.trim() ? `\n## Guidance updated\n\n${guidanceSummary.trim()}\n` : ""}
 ---
 
 ## 💻 Changed Pages
@@ -120,6 +129,7 @@ function main([workDir]) {
   const out = path.join(workDir, "out");
   const inputs = {
     fixReport: readText(path.join(out, "fix-report.md"), "No fix report."),
+    guidanceSummary: readText(path.join(out, "guidance-summary.md")),
     decision: JSON.parse(fs.readFileSync(path.join(out, "decision.json"), "utf8")),
     diffCheck: readText(path.join(out, "diff-check.txt")),
     backportLabels: readLines(path.join(out, "backport-labels.txt")),

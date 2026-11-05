@@ -9,13 +9,14 @@
 //      their place among the surrounding words, so a URL swapped in place, or
 //      a link given another link's URL, counts as a removal. A deliberate
 //      reshuffle that moves a URL across surrounding text can still evade
-//      this check, which is one reason a person approves every merge. The
-//      planned fix: a research agent with no write access proposes each URL
-//      swap, and a script applies only those swaps.
+//      this check. The URL swaps themselves come from apply-research.mjs, a
+//      script, so only the guidance editor and the review responder, which
+//      edit text, could attempt one, and a person approves every merge.
 //   4. Every URL new to a file passes linkinator with the CI config. A site
 //      that blocks bots is retried, and then flagged instead of failing, so a
 //      human merges the PR.
 //   5. Both linkinator configs keep the same skip list.
+//   6. No change adds a credential, such as an API key or a GitHub token.
 // Text changes beyond URL swaps pass, but are flagged with PROSE_CHANGED=1.
 // New skip patterns pass, but are flagged with SKIP_PATTERNS_ADDED=1, because
 // a person approves every skip-list change.
@@ -30,6 +31,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 
 import { isMain } from "./lib/cli.mjs";
 import { git } from "./lib/run.mjs";
+import { newSecrets } from "./lib/secrets.mjs";
 import { URL_PATTERN, urlDiff, urlKey } from "./lib/urls.mjs";
 
 export const LINKINATOR_CONFIGS = ["linkinator/linkinator.config.json", "linkinator/linkinator-ci.config.json"];
@@ -92,7 +94,7 @@ export function skipListsMatch(configTexts) {
 }
 
 /**
- * Applies rules 1 to 3 to the changed files, and returns the URLs that each
+ * Applies rules 1 to 3 and 6 to the changed files, and returns the URLs that each
  * file lost and gained, by urlDiff, which compares links by their place among
  * the surrounding words. Rule 4 needs the network, so verifyNewUrls runs it on
  * the URLs gained.
@@ -112,6 +114,8 @@ export function checkChanges(changes, reportedUrls) {
       failures.push(failure);
       continue;
     }
+    const leaked = newSecrets(change.before, change.after);
+    if (leaked.length) failures.push(`${change.path}: adds a credential (${leaked.join(", ")})`);
     if (LINKINATOR_CONFIGS.includes(change.path)) {
       const config = checkConfigChange(change);
       if (config.failure) failures.push(config.failure);

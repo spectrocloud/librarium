@@ -12,11 +12,12 @@ import {
   openOrUpdatePr,
   prLabels,
   publishFix,
+  refuseSecrets,
   setLabels,
   skipComment,
   strictGh,
 } from "../open-pr.mjs";
-import { tempDir, writeFiles } from "./helpers.mjs";
+import { FAKE, runScript, tempDir, writeFiles } from "./helpers.mjs";
 
 const REPO = "spectrocloud/librarium";
 const BRANCH = "bot/fix-broken-links";
@@ -432,5 +433,62 @@ describe("skipComment", () => {
     assert.match(comment, /a person has committed to `bot\/fix-broken-links`/);
     assert.match(comment, /did not push, retitle, relabel, or change auto-merge/);
     assert.match(comment, /come back in next week's report/);
+  });
+});
+
+describe("refuseSecrets", () => {
+  const clean = "## Fixed\n\n| Old URL | New URL |\n";
+
+  it("throws, naming the PR body, when the body holds a credential", () => {
+    assert.throws(() => refuseSecrets({ "pr-body.md": `${clean}${FAKE.anthropic}`, "pr-comment.md": clean }), {
+      message: "pr-body.md holds a credential (Anthropic API key), so no PR opens.",
+    });
+  });
+
+  it("throws, naming the comment, when the review comment holds a credential", () => {
+    assert.throws(() => refuseSecrets({ "pr-body.md": clean, "pr-comment.md": `token: ${FAKE.githubFineGrained}` }), {
+      message: "pr-comment.md holds a credential (GitHub fine-grained token), so no PR opens.",
+    });
+  });
+
+  it("names every kind of credential that the text holds, without the credential itself", () => {
+    assert.throws(
+      () => refuseSecrets({ "pr-body.md": `${FAKE.github}\n${FAKE.privateKey}` }),
+      (error) => {
+        assert.equal(error.message, "pr-body.md holds a credential (GitHub token, private key), so no PR opens.");
+        assert.ok(!error.message.includes(FAKE.github));
+        return true;
+      }
+    );
+  });
+
+  it("passes texts that hold no credential, empty texts, and no texts at all", () => {
+    assert.doesNotThrow(() => refuseSecrets({ "pr-body.md": clean, "pr-comment.md": "No findings to address.\n" }));
+    assert.doesNotThrow(() => refuseSecrets({ "pr-body.md": "", "pr-comment.md": "" }));
+    assert.doesNotThrow(() => refuseSecrets({}));
+  });
+});
+
+describe("open-pr.mjs command line", () => {
+  let work;
+  beforeEach(() => {
+    work = tempDir();
+  });
+  afterEach(() => fs.rmSync(work, { recursive: true, force: true }));
+
+  it("refuses to open a PR when its body holds a credential, before it runs git or gh", () => {
+    writeFiles(work, {
+      "out/pr-body.md": `## Fixed\n\n${FAKE.anthropic}\n`,
+      "out/pr-comment.md": "No findings to address.\n",
+      "bin/.keep": "",
+    });
+    // An empty PATH, so that the script could not reach gh or git even if the check let it through.
+    const result = runScript("open-pr.mjs", [work], {
+      cwd: work,
+      env: { PATH: path.join(work, "bin"), GH_TOKEN: "", PR_BRANCH: BRANCH, PR_TITLE: "t", GITHUB_REPOSITORY: REPO },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /pr-body\.md holds a credential \(Anthropic API key\), so no PR opens\./);
+    assert.ok(!result.stderr.includes(FAKE.anthropic));
   });
 });
