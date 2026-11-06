@@ -265,6 +265,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   restores its default configuration if you remove the pack. Refer to
   [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9586 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9867 -->
+
+- Centrally managed Edge Native clusters now support an update lock that holds cluster profile updates on the Edge hosts
+  until an operator releases them in Local UI or through the Edge Management API. Each release lets one update through,
+  and then the lock engages again. Turn on **Lock Profile Updates** when you create the cluster or later in the cluster
+  settings. Refer to [Lock Profile Updates](../clusters/edge/cluster-management/lock-profile-updates.md) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
