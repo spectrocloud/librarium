@@ -11,6 +11,68 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 6, 2026 - Component Updates {#component-updates-2026-45}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3404 -->
+<!-- RELEASE DATE: November 6, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.33 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.8 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.5 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.34.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.8  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.5  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.5  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.33 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.33 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5068 -->
+
+- Added support for edge-k3s versions 1.34.12, 1.35.9, 1.36.5, and 1.37.1 (non-FIPS).
+
+<!-- END COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.11.7 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.28.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.12 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.35.9 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.36.5 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.37.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :x: | :white_check_mark: | 2.19.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1-rev1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.20.0 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.5.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.40.3 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.17.1 |
+| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.2.3 |
+| <VersionedLink text="tetragon" url="/integrations/packs/?pack=tetragon" /> | `addon` | :white_check_mark: | :x: | 1.8.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.2.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## October 30, 2026 - Component Updates {#component-updates-2026-44}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3365 -->
