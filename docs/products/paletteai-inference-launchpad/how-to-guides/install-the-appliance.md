@@ -85,9 +85,6 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
    **Re-Size BAR Support** are enabled in the BIOS. Refer to
    [Known Issues: Slim ISO Does Not Boot on a GPU Server](../reference/known-issues.md#slim-iso-does-not-boot-on-a-gpu-server).
 4. In the interactive installer:
-   - When the installer prompts for the registration option after its first boot, select **Palette eXtended Kubernetes
-     (PXK)**. This registers the node with the edge Kubernetes distribution the appliance uses.
-     {/* NEEDS REVIEW: QA (2026-07-27) reports the PXK registration boot option is not applicable at this point and appears later in the flow. Confirm the correct step and timing under PE-8675 before publishing. */}
    - The installer inspects every disk and blocks the install if any disk still holds Kairos partitions from a prior
      install. It reports the offending disks by name.
    - If a disk still holds Kairos partitions, use the in-flow wipe-all-disks option to clear them, so you do not have to
@@ -107,12 +104,15 @@ begin. The slim ISO and content bundle must match the target hardware's GPU (NVI
 After the OS install and reboot, the node comes up in the Palette TUI, where you set the initial credentials and
 network. The hostname, DNS, and NTP settings are configured here in the TUI, not in Local UI.
 
-:::warning First-boot GRUB entry
+:::warning First boot after install
 
-On the first boot after install, the GRUB menu shows multiple boot entries with a short countdown timer. Select
-**Palette eXtended Kubernetes Edge** (the first, plain entry with no suffix). Do not select the **Registration** entry:
-it marks first-boot complete without launching the Palette TUI and leaves the node at a plain login prompt with no user
-account. If you miss the countdown and land at a plain login prompt, refer to
+On the first boot after install, the GRUB menu appears briefly and then boots the **Palette eXtended Kubernetes Edge
+Registration** entry by default. This is expected, so you do not need to select an entry. The screen can then stay blank
+for several minutes with no output while the Palette TUI starts. Wait for the TUI to appear instead of assuming that the
+node is stuck in a boot loop.
+
+If the screen stays blank and the TUI never appears, or the node keeps rebooting, power-cycle the node once from the
+BMC. If the node stops at a plain login prompt with no user account, refer to
 [Known Issues: Node stuck at login prompt after first boot](../reference/known-issues.md#node-stuck-at-login-prompt-after-first-boot)
 for recovery.
 
