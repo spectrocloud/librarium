@@ -29,9 +29,9 @@ preference.
 
 ### Built-in and Custom Instance Types
 
-VM Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Platform
-Admins can add custom instance types on the **Workloads** > **Instance Types** page. Cluster administrators can also
-create them through the Custom Resource Definition (CRD).
+PaletteAI VM Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`.
+Platform Admins can add custom instance types on the **Workloads** > **Instance Types** page. Cluster administrators can
+also create them through the Custom Resource Definition (CRD).
 
 ### Prefix Conventions
 
