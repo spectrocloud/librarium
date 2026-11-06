@@ -14,8 +14,8 @@ operator at the device releases them. When you turn on **Lock Profile Updates**,
 changes in Palette. However, the Edge hosts do not apply them until an operator reviews and releases the update in Local
 UI or through the Edge Management API. Each release lets one update through, and then the lock engages again.
 
-Use the update lock when an operator at the site must approve changes to a cluster, for example on devices that must not
-change while they are in use.
+Use the update lock when an operator at the site must approve changes to a cluster, for example, on devices that must
+not change while they are in use.
 
 ## How the Update Lock Works
 
@@ -28,22 +28,23 @@ The following table lists the changes that the update lock holds.
 | Changes to the version, tag, digest, values, parameters, or manifests of a pack | :white_check_mark:          |
 | Kubernetes and OS upgrades made through the cluster profile                     | :white_check_mark:          |
 | Node pool changes, such as adding, removing, or scaling nodes                   | :x:                         |
-| SSH keys and Network Time Protocol (NTP) servers                                | :x:                         |
+| Changes to SSH keys and Network Time Protocol (NTP) servers                     | :x:                         |
 | Palette agent upgrades                                                          | :x:                         |
 | Cluster deletion                                                                | :x:                         |
 
 Palette accepts every change and does not block **Updates** or **Review & Save** while the lock is engaged. The Edge
 hosts hold the update instead. While an update is held, the cluster page in Palette displays the **Update pending,
-awaiting local approval** banner. Neither the Palette UI nor the Palette API can release the lock. However, turning off
-the lock in Palette releases any held update. Refer to [Disable the Update Lock](#disable-the-update-lock).
+awaiting local approval** banner. You cannot release the lock from Palette, but turning off the lock releases any held
+update immediately. Refer to [Disable the Update Lock](#disable-the-update-lock).
 
 The update lock does not hold the initial deployment of the cluster. Palette applies the cluster profile and any changes
 that you make while you create the cluster, even when the lock is enabled. When you turn on the lock for an existing
 cluster, the lock adopts the cluster profile that the cluster is running, so it does not hold that profile.
 
-Each release lets one update through. After the Palette agent applies the released update, the lock engages again within
-about 1 minute, even while the rollout continues. A newer update that arrives before the lock engages again stays held
-until an operator releases the lock again.
+Each release lets one update through: the first update that reaches the cluster after the release, which is the held
+update when one is waiting. After the Palette agent applies the released update, the lock engages again within about 1
+minute, even while the rollout continues. A later update stays held until an operator releases it, even if it arrives
+before the lock engages again.
 
 The update lock does not affect Palette agent upgrades. To also control agent upgrades, use the update lock together
 with [Pause Agent Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
@@ -68,8 +69,7 @@ with [Pause Agent Upgrades](../../cluster-management/platform-settings/pause-pla
   Palette agent version that ships with Palette 4.10.b or later. An older agent ignores the setting and does not report
   an error.
 
-- The `cluster.update` permission in Palette to turn the update lock on or off in the Palette UI, or the
-  `cloudconfig.update` permission to use the Palette API.
+- The `cluster.update` permission in Palette to turn the update lock on or off.
 
 - An OS user account on a control plane host of the cluster and access to its Local UI, to review and release held
   updates. Refer to [Access Local UI](../local-ui/host-management/access-console.md).
@@ -78,7 +78,9 @@ with [Pause Agent Upgrades](../../cluster-management/platform-settings/pause-pla
 
 You can enable the update lock when you create a cluster or on an existing cluster.
 
-### Enable When You Create a Cluster
+<Tabs groupId="cluster-state">
+
+<TabItem label="New Cluster" value="new">
 
 1. Follow the steps in [Create Cluster Definition](../site-deployment/cluster-deployment.md) until you reach the
    **Cluster Settings** step.
@@ -87,7 +89,9 @@ You can enable the update lock when you create a cluster or on an existing clust
 
 3. Finish creating the cluster. The lock engages after the Edge hosts first reconcile the cluster.
 
-### Enable on an Existing Cluster
+</TabItem>
+
+<TabItem label="Existing Cluster" value="existing">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -100,20 +104,9 @@ You can enable the update lock when you create a cluster or on an existing clust
    Palette saves the change when you turn on the toggle. The lock adopts the cluster profile that the cluster is running
    and holds later updates.
 
-### Enable or Disable with the Palette API
+</TabItem>
 
-To turn the update lock on or off with the [Palette API](/api/introduction), send a
-`PATCH /v1/cloudconfigs/edge-native/{configUid}/updateLock` request with the following body. Use `disabled` to turn the
-lock off. Turning off the lock releases any held update immediately. Refer to
-[Disable the Update Lock](#disable-the-update-lock). The request requires the `cloudconfig.update` permission and
-returns an HTTP 204 response.
-
-```json
-{ "state": "enabled" }
-```
-
-Replace `{configUid}` with the UID of the cloud configuration of the cluster. To find the UID, refer to
-[Retrieve the Cluster Cloud Config Identifier](/api/samples#retrieve-the-cluster-cloud-config-identifier).
+</Tabs>
 
 ## Validate
 
@@ -123,7 +116,8 @@ Replace `{configUid}` with the UID of the cloud configuration of the cluster. To
 
 3. On the **Overview** tab, confirm that the **Update lock** card shows the **Engaged** status.
 
-4. In Palette, change the cluster profile of the cluster, for example by updating a pack value, and save the change.
+4. In Palette, change the cluster profile of the cluster, for example, by updating a pack value, and save the change.
+   Releasing the update in step 6 applies this change to the cluster, so use a change that you intend to apply.
 
 5. Confirm that the cluster page in Palette displays the **Update pending, awaiting local approval** banner, and that
    the **Update lock** card in Local UI shows a **Waiting since** time.
@@ -134,7 +128,8 @@ Replace `{configUid}` with the UID of the cloud configuration of the cluster. To
 
 When an update is held, release it from Local UI on a control plane host of the cluster. Release the lock only when an
 update is waiting. If you release the lock with no update waiting,
-[re-engage the lock manually](#re-engage-the-lock-manually).
+[re-engage the lock manually](#re-engage-the-lock-manually). To release or re-engage the lock without Local UI, use the
+Edge Management API on a control plane host. Refer to [Edge Management API](/api/introduction/#edge-management-api).
 
 1. Log in to Local UI on a control plane host of the cluster.
 
@@ -158,37 +153,6 @@ update is waiting. If you release the lock with no update waiting,
 
 On the **Update lock** card in Local UI, select **Re-engage lock now**. Local UI engages the lock immediately, without a
 confirmation.
-
-## Use the Edge Management API
-
-On the Edge host, you can also manage the lock through the Edge Management API instead of Local UI. Each control plane
-host serves the API at `https://<edge-host-ip>:5080`, and requests must use an OS user token. To get a token, refer to
-[Edge Management API](/api/introduction/#edge-management-api). Replace `<edge-host-ip>` with the IP address of a control
-plane host of the cluster. Use the following endpoints.
-
-| **Endpoint**                                         | **Description**                                                                                                              |
-| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `GET /v1/edge-mgmt/cluster/update-lock`              | Returns the lock state, including `enabled`, `gate`, `engagedAt`, `pending`, `pendingSince`, `unlockedAt`, and `unlockedBy`. |
-| `POST /v1/edge-mgmt/cluster/update-lock/gate`        | Releases or re-engages the lock. The body sets `gate` to `disengaged` to release the lock or `engaged` to re-engage it.      |
-| `GET /v1/edge-mgmt/cluster/update-lock/held-profile` | Returns the held update and its manifest changes. The arrays are empty when nothing is held.                                 |
-
-The following body releases the lock. The `reason` field is optional.
-
-```json
-{ "gate": "disengaged", "reason": "<reason>" }
-```
-
-Replace `<reason>` with a short note about why you release the lock.
-
-The `gate` request returns the following error responses.
-
-| **Response** | **Cause**                                             |
-| ------------ | ----------------------------------------------------- |
-| HTTP 400     | The lock is not enabled.                              |
-| HTTP 403     | The user is not an OS user.                           |
-| HTTP 422     | The `gate` field is missing or not a supported value. |
-
-Requests to worker hosts also return an HTTP 400 response, because only control plane hosts serve the cluster endpoints.
 
 ## Disable the Update Lock
 
