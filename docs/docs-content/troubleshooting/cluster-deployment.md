@@ -27,8 +27,8 @@ its primary, even briefly. On self-hosted Palette and Palette VerteX, for exampl
 overlapping node maintenance can cause this.
 
 Starting with Palette agent version 4.10.b, the agent does not delete these namespaces when the management plane loses
-access to its database. Each workload cluster is affected until its Palette agent is upgraded, including clusters with
-[paused agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
+access to its database. Workload clusters remain affected until their Palette agent is upgraded. This includes clusters
+with [paused agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
 
 To prevent the deletion until the Palette agent is upgraded, remove the label that marks each namespace as created by
 Palette. The Palette agent does not delete a namespace without this label and does not add the label back. As a result,
@@ -92,7 +92,7 @@ longer need one of these namespaces, delete it with `kubectl delete namespace <n
 After the Palette agent on a workload cluster is upgraded to version 4.10.b or later, you can restore the labels that
 you removed. Removing a namespace from the cluster RBAC or workspace settings then deletes it from the cluster again.
 
-:::warning
+:::danger
 
 Restore a label only on namespaces that are still listed in the cluster RBAC or workspace settings. If you restore the
 label on a namespace that you removed from these settings, the Palette agent deletes the namespace and all its resources
@@ -107,7 +107,13 @@ on its next reconciliation.
 3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.b or later. If it shows an earlier
    version, do not restore the labels on this cluster.
 
-4. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the workload cluster.
+4. On the **Workloads** > **Namespaces** tab, select **Manage Namespaces**, and then record the namespaces that the
+   **Namespaces** tab of the **Settings** pane lists.
+
+5. _(Clusters in a workspace only)_ From the left main menu, select **Workspaces**, and then select the workspace that
+   contains the cluster. Select **Settings** > **Namespaces**, and record the namespaces that the pane lists.
+
+6. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the workload cluster.
 
    ```shell
    export KUBECONFIG=<path-to-kubeconfig>
@@ -115,32 +121,31 @@ on its next reconciliation.
 
    Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the workload cluster.
 
-5. Add the cluster RBAC label back to the namespaces that you recorded in step 2 of the
-   [debug steps](#debug-steps-rbac-workspace-namespaces) and that are still listed in the cluster RBAC settings.
+7. Add the cluster RBAC label back to each namespace that you recorded both in step 2 of the
+   [debug steps](#debug-steps-rbac-workspace-namespaces) and in step 4.
 
    ```shell
-   kubectl label namespaces <namespace-name> spectrocloud.com/clusterRbac=true
+   kubectl label namespaces <namespace-names> spectrocloud.com/clusterRbac=true
    ```
 
-   Replace `<namespace-name>` with the namespace names, separated by spaces.
+   Replace `<namespace-names>` with the names of the namespaces, separated by spaces.
 
    ```text hideClipboard title="Example Output"
    namespace/team-a-dev labeled
    namespace/team-a-prod labeled
    ```
 
-6. Add the workspace label back to the namespaces that you recorded in step 3 of the debug steps and that are still
-   listed in the workspace settings.
+8. Add the workspace label back to each namespace that you recorded both in step 3 of the debug steps and in step 5.
 
    ```shell
-   kubectl label namespaces <namespace-name> spectrocloud.com/workspace=true
+   kubectl label namespaces <namespace-names> spectrocloud.com/workspace=true
    ```
 
-   Replace `<namespace-name>` with the namespace names, separated by spaces.
+   Replace `<namespace-names>` with the names of the namespaces, separated by spaces.
 
-7. Repeat steps 2 and 3 of the debug steps to confirm that the namespaces carry their labels again.
+9. Repeat steps 2 and 3 of the debug steps to confirm that the namespaces carry their labels again.
 
-8. Repeat steps 2 - 7 on each workload cluster.
+10. Repeat steps 2 - 9 on each workload cluster.
 
 ## Scenario - GCP IaaS Control Plane Repaved Repeatedly
 
