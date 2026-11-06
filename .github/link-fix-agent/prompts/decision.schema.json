@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "confident": { "type": "boolean" },
+    "reason": {
+      "type": "string",
+      "description": "One or two sentences. When not confident, what a human should check."
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "finding": { "type": "string" },
+          "action": { "type": "string", "enum": ["fixed", "declined"] },
+          "note": { "type": "string" }
+        },
+        "required": ["finding", "action", "note"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["confident", "reason", "findings"],
+  "additionalProperties": false
+}
