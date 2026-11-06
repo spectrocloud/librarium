@@ -17,13 +17,11 @@ You add the ECR repository to Palette as an image registry, and then select that
 issues short-lived ECR tokens to the Edge hosts, which use them to pull the provider image when the cluster is created
 and when it is upgraded. You do not need to store static AWS credentials on the Edge hosts.
 
-If your cluster cannot use token-based authentication, refer to
-[Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
-
 ## Limitations
 
 - Token-based authentication is supported only for connected clusters in appliance mode. Clusters in local mode ignore
-  the image registry selected for the cluster.
+  the image registry selected for the cluster. If your cluster cannot use token-based authentication, refer to
+  [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
 
 <!-- TODO: confirm with Sabir Ali (PE-9862). Which Kubernetes distributions and operating systems does token-based ECR
 authentication support? The epic names kubeadm on Ubuntu 24 as the initial priority, and testing covered PXK-E. -->
@@ -111,9 +109,7 @@ You can change the image registry in any cluster state. The change does not repa
 
 5. From the **Image registry** drop-down menu, select your registry.
 
-6. Save your changes.
-
-<!-- TODO: confirm the label of the save button on the Cluster Configuration page in a 4.10.b environment. -->
+6. Select **Save Changes**.
 
 ## Validate
 
