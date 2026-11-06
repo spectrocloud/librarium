@@ -17,7 +17,7 @@ Palette using the Spectro Proxy.
 
 :::tip
 
-We recommend using the [VM Launchpad](../vm-launchpad/vm-launchpad.md) for new VMO deployments. The
+We recommend using the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md) for new VMO deployments. The
 appliance provides a dedicated VM management UI with built-in golden image workflows, snapshot policies, airgapped package
 management, and identity management capabilities that are not available in Pack VMO. Refer to the [Deployment Approaches table](../vm-management.md#deployment-approaches) for a comparison between VM Launchpad and VMO Pack. 
 
