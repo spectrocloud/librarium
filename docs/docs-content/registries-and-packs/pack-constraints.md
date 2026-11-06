@@ -590,7 +590,8 @@ cover custom resources. For example, Palette can mark an operator pack as ready 
 Use the `readinessCheck` section of the pack values to make Palette wait until a custom resource reaches the state that
 you specify. A pack is ready only when the default checks and every readiness check pass. Packs with a higher
 [install order](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md#install-order)
-value wait until the pack is ready.
+value wait until the pack is ready. For the other top-level keys of the pack values, refer to
+[Pack Values Reference](./pack-values-reference.md).
 
 Pack authors can add `readinessCheck` as a top-level key in the `values.yaml` file of a pack, at the same level as
 `pack` and `charts`. You can also add, change, or remove it in the YAML of a cluster profile layer, including Helm chart
