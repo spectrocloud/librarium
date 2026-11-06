@@ -185,7 +185,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
 
 <!-- prettier-ignore-start -->
 
-Once you have verified GPU workloads can run on your cluster, you can review the <VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page for a full list of configurable values and make the necessary modifications to fit your needs. For additional information on the GPU Operator itself, including advanced configurations and known limitations, refer to the [NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
+Once you have verified GPU workloads can run on your cluster, you can review the <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page for a full list of configurable values and make the necessary modifications to fit your needs. For additional information on the GPU Operator itself, including advanced configurations and known limitations, refer to the [NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
 
 <!-- prettier-ignore-end -->
 
