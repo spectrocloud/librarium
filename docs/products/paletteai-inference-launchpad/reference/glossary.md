@@ -66,6 +66,11 @@ appliance carries cluster traffic and [Piraeus](#piraeus) storage replication ov
 bandwidth of the data NICs, using dynamic Link Aggregation (802.3ad) and LACP. Refer to
 [Install the Appliance](../how-to-guides/install-the-appliance.md#create-a-bond).
 
+### Box Default Model
+
+The model that answers a request when routing does not choose a model for it. The appliance chooses it automatically.
+Refer to [The Box Default Model](../explanation/routing-behavior.md#the-box-default-model).
+
 ## C
 
 ### Category
@@ -168,9 +173,7 @@ running. Only a platform administrator can set it or read the recorded requests.
 
 ### Default Model
 
-The model that answers a request when routing does not choose a model for it. It is also called the box default model.
-The appliance chooses it automatically. Refer to
-[The Box Default Model](../explanation/routing-behavior.md#the-box-default-model).
+Another name for the [box default model](#box-default-model). The console shows it as `Default model: <model>`.
 
 ## E
 
