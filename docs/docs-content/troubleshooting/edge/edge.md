@@ -412,6 +412,17 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    sudo ls --recursive /opt/.extensions/migrations/backups/kubeadm-sysext-migrations
    ```
 
+   ```text hideClipboard title="Example Output"
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations:
+   containerd.service  containerd.service.d  kubelet.service  kubelet.service.d
+
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations/containerd.service.d:
+   10-custom-opt-bin.conf  http-proxy.conf  max-tasks.conf  memory-pressure.conf
+
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations/kubelet.service.d:
+   10-kubeadm.conf  kubelet-credential-provider.conf
+   ```
+
 3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
    a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
    drop-in files.
@@ -419,6 +430,17 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    ```shell
    ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
    ```
+
+   ```text hideClipboard title="Example Output"
+   /usr/lib/systemd/system/containerd.service.d/:
+   10-custom-opt-bin.conf  max-tasks.conf  memory-pressure.conf
+
+   /usr/lib/systemd/system/kubelet.service.d/:
+   10-kubeadm.conf
+   ```
+
+   In this example, `http-proxy.conf` and `kubelet-credential-provider.conf` are in the backup directory but not in this
+   list, so they are your custom drop-in files.
 
 4. Re-create the original directory, and then copy each custom drop-in file back to it.
 
@@ -443,6 +465,30 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    ```shell
    systemctl cat containerd kubelet
    ```
+
+   ```text hideClipboard title="Example Output"
+   # /usr/lib/systemd/system/containerd.service
+   ...
+   # /usr/lib/systemd/system/containerd.service.d/10-custom-opt-bin.conf
+   ...
+   # /etc/systemd/system/containerd.service.d/http-proxy.conf
+   [Service]
+   Environment="HTTP_PROXY=http://proxy.example.com:3128"
+
+   # /usr/lib/systemd/system/containerd.service.d/max-tasks.conf
+   ...
+   # /usr/lib/systemd/system/containerd.service.d/memory-pressure.conf
+   ...
+
+   # /usr/lib/systemd/system/kubelet.service
+   ...
+   # /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+   ...
+   # /etc/systemd/system/kubelet.service.d/kubelet-credential-provider.conf
+   ...
+   ```
+
+   The paths under `/etc/systemd/system/` are the custom drop-in files that you copied back.
 
 7. Repeat steps 1 - 6 on each Edge host in the cluster.
 
