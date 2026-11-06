@@ -35,7 +35,14 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5068 -->
 
-- Added support for edge-k3s versions 1.34.12, 1.35.9, 1.36.5, and 1.37.1 (non-FIPS).
+- Added K3s 1.34.12, 1.35.9, 1.36.5, and 1.37.1 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2500 -->
+
+- Fixed an issue in the Spectro Cloud Terraform and Crossplane providers that caused Day-2 `cloud_config` updates to
+  `spectrocloud_cluster_edge_native` clusters to fail when `ssh_keys` was not set.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
 
@@ -61,17 +68,12 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.5.0 |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.40.3 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.17.1 |
-| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.2.3 |
 | <VersionedLink text="tetragon" url="/integrations/packs/?pack=tetragon" /> | `addon` | :white_check_mark: | :x: | 1.8.0 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.2.0 |
 
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## October 30, 2026 - Component Updates {#component-updates-2026-44}
 
