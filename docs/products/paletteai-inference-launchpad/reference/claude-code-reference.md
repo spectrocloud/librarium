@@ -60,7 +60,7 @@ The panel writes the path in the dialect you select in its shell picker. The `ba
 
 Claude Code requests a Claude alias, and the appliance maps that alias to the model it serves. You do not select a
 backend model directly. Every tier map seeds the following alias prefixes. A seeded prefix resolves for a client that
-inherits its Tier map. For the rule, refer to [Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
+inherits a Tier map. For the rule, refer to [Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
 
 | **Alias prefix** | **Claude Code tier** | **Example alias**   |
 | ---------------- | -------------------- | ------------------- |

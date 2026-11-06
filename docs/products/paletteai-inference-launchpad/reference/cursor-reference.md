@@ -62,7 +62,7 @@ they never consult your machine's trust store.
 ## Model Name
 
 The appliance seeds a `gpt-` alias prefix in every tier map, so the GPT model the panel names reaches the appliance. The
-seeded prefix resolves for a client that inherits its Tier map. For the rule, refer to
+seeded prefix resolves for a client that inherits a Tier map. For the rule, refer to
 [Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
 
 Cursor decides where to route a request by the model name, so a name that also exists in Cursor's own catalog can route
