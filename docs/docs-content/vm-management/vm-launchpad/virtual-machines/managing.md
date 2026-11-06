@@ -105,7 +105,8 @@ Migration status can be viewed in the VM detail page or via the migrations API.
 | **Add Volume**    | Attach a new volume to a running VM. The volume must be a DataVolume or PVC. The disk appears in the guest after attachment.    |
 | **Remove Volume** | Detach a volume from a running VM. The volume must support hot-unplug. Ensure the guest has unmounted the disk before removing. |
 
-Hot-plug requires the `HotplugVolumes` feature gate and appropriate storage configuration.
+Hot-plug requires the `HotplugVolumes` or `DeclarativeHotplugVolumes` feature gate and appropriate storage
+configuration. Refer to [Feature Gate Considerations](../kubevirt-configuration.md#feature-gate-considerations).
 
 ## VNC Console
 

@@ -34,6 +34,10 @@ flexible, version-driven management.
 
 - An existing [cluster template](./cluster-templates.md).
 
+- Access to the scope of the cluster template to change its cluster profiles. For example, change the profiles of a
+  tenant-scoped cluster template from the **Tenant Admin** scope, not from a project. Palette rejects profile changes
+  made from a different scope.
+
 ## Modify Cluster Templates
 
 Use the appropriate cluster template tab depending on the required modification.

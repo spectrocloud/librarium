@@ -31,6 +31,7 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-version-table --> | Recommended CLI Version          | Download URL                                                             | Checksum (SHA256)                                                  |
 | -------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| <!-- cli-4.10.34 --> 4.10.34                       | 4.10.12                          | https://software.spectrocloud.com/palette-cli/v4.10.12/linux/cli/palette | `b749de72d6bb4af64bc351064f467acdbe40b1e150f8309661212d8563bd0850` |
 | <!-- cli-4.10.33 --> 4.10.33                       | 4.10.11                          | https://software.spectrocloud.com/palette-cli/v4.10.11/linux/cli/palette | `0fdbd1206e3404a1f588d1b909c0b20490aff91ee3f241882f9b162855b1dcdf` |
 | <!-- cli-4.10.27 --> 4.10.27                       | 4.10.10                          | https://software.spectrocloud.com/palette-cli/v4.10.10/linux/cli/palette | `e0d904dfab5d7617f81c1b5a03141e5e06bd05c2087f43d336941d4fb1562098` |
 | <!-- cli-4.10.a --> 4.10.25                        | 4.10.9                           | https://software.spectrocloud.com/palette-cli/v4.10.9/linux/cli/palette  | `ca3541c8012b04770fe8d8dd3cdd2dcf09abcb43968cacae0b2a228e545ebecc` |
@@ -77,6 +78,7 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-linux-arm64-table --> | Recommended CLI Version | Download URL                                                                   | Checksum (SHA256)                                                  |
 | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| <!-- cli-4.10.34 --> 4.10.34                           | 4.10.12                 | https://software.spectrocloud.com/palette-cli/v4.10.12/linux-arm64/cli/palette | `0cd5792b19cbfac0145c20935d56e46310caefec2e7fa5a68812406561eb758c` |
 | <!-- cli-4.10.33 --> 4.10.33                           | 4.10.11                 | https://software.spectrocloud.com/palette-cli/v4.10.11/linux-arm64/cli/palette | `a3f6fc58efc4a27dd0c13f812736cf67ef5702f39f6a514bfec3fa5cf5b6d642` |
 | <!-- cli-4.10.27 --> 4.10.27                           | 4.10.10                 | https://software.spectrocloud.com/palette-cli/v4.10.10/linux-arm64/cli/palette | `212493fc97343b2f97363da14bf14e8e73c8877d324c9db18d23b6d533f1f1cb` |
 | <!-- cli-4.10.a --> 4.10.25                            | 4.10.9                  | https://software.spectrocloud.com/palette-cli/v4.10.9/linux-arm64/cli/palette  | `9305b3a529a300eca2ef1356fc21f172172d53e1eb199544cc8d9476a36b2d5b` |
@@ -89,6 +91,7 @@ Select the correct Palette CLI version for your operating system and chip archit
 
 | Palette Release <!-- palette-cli-macos-arm64-table --> | Recommended CLI Version | Download URL                                                                    | Checksum (SHA256)                                                  |
 | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- cli-4.10.34 --> 4.10.34                           | 4.10.12                 | https://software.spectrocloud.com/palette-cli/v4.10.12/darwin-arm64/cli/palette | `bb77f7bf7c89b45f965ba76b781b56375ccbe9ab8c9b2a00a47340b6ee9972a2` |
 | <!-- cli-4.10.33 --> 4.10.33                           | 4.10.11                 | https://software.spectrocloud.com/palette-cli/v4.10.11/darwin-arm64/cli/palette | `3eefcbd0c9f1eff02fb10bcec2489bc26ceb1265d1561a0edc8f22cc8bdc9bcf` |
 | <!-- cli-4.10.27 --> 4.10.27                           | 4.10.10                 | https://software.spectrocloud.com/palette-cli/v4.10.10/darwin-arm64/cli/palette | `bf215eb14f00c80f05ae8b372c62c8c99778b9b97ed92ddb5708f6d471b31a8b` |
 | <!-- cli-4.10.a --> 4.10.25                            | 4.10.9                  | https://software.spectrocloud.com/palette-cli/v4.10.9/darwin-arm64/cli/palette  | `e7c9e97d15cdf5dd7a6607077162b1d34ce16a8d3a7e88e0d65099576252c870` |

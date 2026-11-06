@@ -42,8 +42,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 <!-- prettier-ignore-end -->
 
-- [Two-node clusters](../architecture/two-node.md) operating in high availability mode only support K3s and Palette
-  Optimized Canonical Kubernetes. Other Kubernetes distributions are not supported.
+- [Two-node clusters](../architecture/two-node.md) operating in high availability mode only support K3s on Ubuntu 22.04
+  or Ubuntu 24.04 and do not support FIPS. Other Kubernetes distributions and operating systems are not supported.
 
 <!-- prettier-ignore-start -->
 
