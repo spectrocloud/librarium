@@ -189,8 +189,9 @@ uplinks only while a NAD on the bridge references it, and removes the VLAN after
 For example, if VLAN 300 is in `allowedVlans`, creating a NAD on VLAN 300 permits VLAN 300 on the bridge within one
 reconciliation pass. You do not need to edit the cluster profile or redeploy the cluster.
 
-On the VM Launchpad appliance, the following fields in the **Networking** section of the cluster configuration set the
-VLAN filtering parameters. For the other networking fields, refer to [Install VM Launchpad](../install.md#networking).
+On the PaletteAI VM Launchpad appliance, the following fields in the **Networking** section of the cluster configuration
+set the VLAN filtering parameters. For the other networking fields, refer to
+[Install VM Launchpad](../install.md#networking).
 
 | **Appliance Field**             | **Parameter**                          |
 | ------------------------------- | -------------------------------------- |
