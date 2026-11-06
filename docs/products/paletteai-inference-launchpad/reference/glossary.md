@@ -168,8 +168,9 @@ running. Only a platform administrator can set it or read the recorded requests.
 
 ### Default Model
 
-The model the appliance routes a request to when the request does not name a specific model. Refer to
-[The Default Model](../explanation/architecture.md#the-default-model).
+The model that answers a request when routing does not choose a model for it. It is also called the box default model.
+The appliance chooses it automatically. Refer to
+[The Box Default Model](../explanation/routing-behavior.md#the-box-default-model).
 
 ## E
 
