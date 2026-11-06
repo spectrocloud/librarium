@@ -84,19 +84,19 @@ For example, `logging.level` refers to `charts.virtual-machine-orchestrator.vmo-
 Every component in the pack can be turned on or off independently. This is useful when a component is already installed
 on the cluster or is managed by another team.
 
-| **Component**               | **Parameter**                       | **Default** |
-| --------------------------- | ----------------------------------- | ----------- |
-| VMO Manager                 | `vmo-manager.enabled`               | `true`      |
-| VMO Manager CRDs            | `vmo-manager-crds.enabled`          | `true`      |
-| KubeVirt                    | `kubevirt.enabled`                  | `true`      |
-| Containerized Data Importer | `cdi.enabled`                       | `true`      |
-| Multus                      | `multus.enabled`                    | `true`      |
-| Snapshot controller         | `snapshot-controller.enabled`       | `true`      |
-| Descheduler                 | `descheduler.enabled`               | `true`      |
-| Node agent DaemonSet        | `vmo-manager.nodeAgent.enabled`     | `true`      |
-| Cilium NetworkPolicy        | `vmo-manager.networkPolicy.enabled` | `false`     |
-| VLAN filtering DaemonSet    | `vlanFiltering.enabled`             | `false`     |
-| Post-delete cleanup job     | `cleanup.enabled`                   | `true`      |
+| **Component**                                                                                      | **Parameter**                       | **Default** |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
+| VMO Manager                                                                                        | `vmo-manager.enabled`               | `true`      |
+| VMO Manager CRDs                                                                                   | `vmo-manager-crds.enabled`          | `true`      |
+| KubeVirt                                                                                           | `kubevirt.enabled`                  | `true`      |
+| Containerized Data Importer                                                                        | `cdi.enabled`                       | `true`      |
+| Multus                                                                                             | `multus.enabled`                    | `true`      |
+| Snapshot controller                                                                                | `snapshot-controller.enabled`       | `true`      |
+| Descheduler                                                                                        | `descheduler.enabled`               | `true`      |
+| Node agent DaemonSet                                                                               | `vmo-manager.nodeAgent.enabled`     | `true`      |
+| Cilium NetworkPolicy                                                                               | `vmo-manager.networkPolicy.enabled` | `false`     |
+| [VLAN filtering DaemonSet](../vm-launchpad/infrastructure/networking.md#vlan-filtering-parameters) | `vlanFiltering.enabled`             | `false`     |
+| Post-delete cleanup job                                                                            | `cleanup.enabled`                   | `true`      |
 
 The parameters in this table are relative to `charts.virtual-machine-orchestrator`, not to the `vmo-manager` sub-chart.
 

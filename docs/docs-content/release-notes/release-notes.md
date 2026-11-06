@@ -36,8 +36,6 @@ tags: ["release-notes"]
   | `POST /v1/registries/helm/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
   | `POST /v1/registries/oci/basic/validate` with a saved password or token | `packRegistry.update` on the registry that `registryUid` identifies                                     |
 
-  `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
-
   Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
   the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
   HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code.
@@ -48,6 +46,42 @@ tags: ["release-notes"]
 
   Registry API responses now return an empty string for a password, token, or secret key that was never set, instead of
   a masked value. A masked value indicates that the secret is set.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3381 -->
+
+- To improve security, Palette now validates the property names in the `filters` and `orderBy` query parameters of
+  Palette API list endpoints. A request fails with an HTTP 400 response and the `FilterValidationFailure` error code if
+  a property name meets any of the following conditions:
+
+  - It is empty or longer than 256 characters.
+
+  - It contains characters other than letters, numbers, underscores (`_`), hyphens (`-`), forward slashes (`/`), and
+    periods (`.`).
+
+  - It contains an empty segment, such as `metadata..name`, or a segment that begins with a hyphen.
+
+  - It references a protected field, such as a field that stores a password, key, or token, or a field nested under a
+    protected field.
+
+  Filters and sort keys on other properties, such as `metadata.name`, are unaffected. Update any automation that filters
+  or sorts on a property that meets these conditions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12229 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12208 -->
+
+- To improve security, the following system configuration API endpoints now return stored secrets as `********` instead
+  of in clear text.
+
+  | API endpoint                                      | Masked field                                                                        |
+  | ------------------------------------------------- | ----------------------------------------------------------------------------------- |
+  | `GET /v1/system/config/sso`                       | `authSpec.github.clientSecretKey` and `authSpec.oidcAuthSpecs.<name>.clientSecret`. |
+  | `GET /v1/system/config/azure/storage`             | `spec.accessKey`                                                                    |
+  | `GET /v1/system/config/registries/{registryName}` | `spec.auth.password` and `spec.auth.token`                                          |
+  | `GET /v1/system/config/registries/oci/image`      | `password`                                                                          |
+
+  A secret that was never set still returns an empty string. Automation that reads a secret from these endpoints must
+  take it from its source instead, such as the identity provider, Azure storage account, or registry. To keep a stored
+  secret when you update one of these configurations, send `********` in the matching `PUT` request.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
@@ -69,11 +103,24 @@ tags: ["release-notes"]
     response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
     has the `user.create` permission.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12420 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3417 -->
+
+- Palette now rejects changes to the cluster profiles of a cluster template when the request comes from a different
+  scope than the template. For example, a `PUT /v1/clusterTemplates/{uid}/profiles` request with a `ProjectUid` header
+  fails against a tenant-scoped cluster template with an HTTP 403 response and the `ResOperationForbidden` error code.
+  In the Palette UI, change the profiles of a tenant-scoped cluster template from the **Tenant Admin** scope. In API
+  requests, omit the `ProjectUid` header for a tenant-scoped template, and set it to the UID of the project that owns a
+  project-scoped template. Refer to
+  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md#prerequisites).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-6294 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
 
 - Palette now rejects Kubernetes upgrades that skip a minor version or change the major version. Upgrade one minor
-  version at a time, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
+  version at a time, as the
+  [Kubernetes version skew policy](https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order)
+  requires, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
 
   - Cluster updates, including pending and scheduled cluster template updates.
 
@@ -117,6 +164,17 @@ tags: ["release-notes"]
   client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values, for example
   `{{.spectro.system.oidc.issuerurl}}`, to place OIDC settings in the keys and format that your Kubernetes distribution
   requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3804 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3806 -->
+
+- You can now authenticate Azure cloud accounts with a user-assigned managed identity instead of a service principal and
+  client secret. Managed identity cloud accounts store no secret and work through a self-hosted Private Cloud Gateway
+  (PCG) deployed in Azure. You can also assign managed identities to Azure IaaS and AKS clusters, so that the clusters
+  access Azure without static credentials. The
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) also
+  supports managed identity cloud accounts. For more information, refer to
+  [Use Azure Managed Identities](../clusters/public-cloud/azure/azure-managed-identities.md).
 
 #### Improvements
 
@@ -207,6 +265,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   restores its default configuration if you remove the pack. Refer to
   [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9586 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9867 -->
+
+- Centrally managed Edge Native clusters now support an update lock that holds cluster profile updates on the Edge hosts
+  until an operator releases them in Local UI or through the Edge Management API. Each release lets one update through,
+  and then the lock engages again. Turn on **Lock Profile Updates** when you create the cluster or later in the cluster
+  settings. Refer to [Lock Profile Updates](../clusters/edge/cluster-management/lock-profile-updates.md) for more
+  information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-9218 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9865 -->
 
@@ -235,6 +302,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
   for guidance on when to enable an overlay network.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9835 -->
+
+- When you create a cluster in Local UI, you can now enter a Fully Qualified Domain Name (FQDN) in the **Virtual IP
+  Address (VIP)** field, in addition to an IPv4 address. Refer to
+  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9881 -->
@@ -247,6 +320,36 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   provider image. Palette also displays Edge host events during cluster provisioning when a provider image download
   starts, resumes, retries, or completes. For more information, refer to
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9251 -->
+
+- Fixed an issue that caused the Palette agent to reset an Edge host removed from a node pool without draining it first,
+  so Kubernetes did not enforce PodDisruptionBudgets. The Palette agent now drains each removed host before it resets
+  the host. If a PodDisruptionBudget blocks the drain, the host stays cordoned in the cluster until the drain can
+  complete, for example, after you move the blocking workload to another node.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9587 -->
+
+- Fixed an issue that caused the
+  [Palette Edge Interactive Installer](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) to offer to continue
+  after the installation media, such as a virtual CD or USB drive, was disconnected. The disk wipe failed with
+  `fork/exec /usr/sbin/wipefs: input/output error`, and the installation later failed with a `mount failed` error. The
+  installer now stops the installation and prompts you to reconnect the installation media and reboot the host.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9779 -->
+
+- Fixed an issue that prevented a control plane node from joining an Edge cluster that uses Palette eXtended
+  Kubernetes - Edge (PXK-E) after a join attempt failed. The node kept the cluster's virtual IP (VIP) address from the
+  failed attempt, so each retry failed with `connect: connection refused` errors for the VIP. This was most likely to
+  occur when two control plane nodes joined the cluster at the same time. A control plane node no longer keeps the VIP
+  after a failed join attempt.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9782 -->
+
+- Fixed an issue that caused Local UI to display only the message `Client sent an HTTP request to an HTTPS server.` when
+  you opened it with an `http://` address. Local UI now redirects HTTP requests on its port to HTTPS. Refer to
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for more
+  information.
 
 #### Deprecations and Removals
 
@@ -330,6 +433,207 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
+## October 30, 2026 - Component Updates {#component-updates-2026-44}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3365 -->
+<!-- RELEASE DATE: October 30, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.33 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.6 -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.34.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.10.6  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.10.33 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.10.33 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3257 -->
+
+- <TpBadge /> Artifact Studio v2 is available as a Tech Preview. It adds self-service accounts, organization
+  entitlements, and the Artifact Studio API. Your organization's entitlements determine which appliances, packs, and
+  profiles you can download, and the API's `/v2/` endpoints support pagination. Artifact Studio v1 is the default. Refer
+  to [Artifact Studio v2](../downloads/artifact-studio-v2.md) and the [Artifact Studio
+  API](/api/introduction#artifact-studio-api) for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4969 -->
+
+- Added Kubernetes 1.37 to the FIPS and non-FIPS variants of the `kubernetes-eks` and `kubernetes-aks` packs for Amazon
+  EKS and Azure AKS clusters.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3365. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3365. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.11.6 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.1 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.2 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.1 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.14.0 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.1 |
+| <VersionedLink text="harbor" url="/integrations/packs/?pack=harbor" /> | `addon` | :white_check_mark: | :x: | 1.19.4 |
+| <VersionedLink text="kubernetes-aks" url="/integrations/packs/?pack=kubernetes-aks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
+| <VersionedLink text="kubernetes-eks" url="/integrations/packs/?pack=kubernetes-eks" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.19.2 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.0.3 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.39.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.14.1 |
+| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.2.3 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.1.3 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3365. DO NOT DELETE. -->
+
+## October 29, 2026 - PaletteAI VM Launchpad 4.10.25 {#vm-launchpad-4.10.25}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3345 -->
+
+This release delivers version 4.10.25 of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.34.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.25}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
+
+- If you turned on **Restrict Allowed VLANs** (`vlanFiltering.enabled`) in an earlier release, review its settings
+  before you upgrade. The **VM VLAN Range** (`vlanFiltering.env.allowedVlans`) replaces the
+  `vlanFiltering.env.vlanRange` and `vlanFiltering.env.enforceVlanRange` settings, and VMO ignores the old values
+  without a warning. After the upgrade, the VLAN filtering agent removes VLANs that no Network Attachment Definition
+  (NAD) references. It also removes NAD VLANs that are outside the **VM VLAN Range**, including VLANs that NAD discovery
+  added in an earlier release. Add every VLAN that your virtual machine networks use to the **VM VLAN Range** before you
+  upgrade. The `vlanFiltering.env.nadDiscovery` and `vlanFiltering.env.vlanDesiredStateSync` parameters are deprecated.
+  Refer to [Upgrade Considerations](../vm-management/vm-launchpad/infrastructure/networking.md#upgrade-considerations).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1444 -->
+
+- Nodes on non-FIPS appliances now reserve memory for host services, and etcd and the Kubernetes API server now request
+  memory on each control plane node of every appliance. This prevents a large virtual machine from taking the memory
+  that the control plane needs. On non-FIPS appliances, the upgrade lowers the allocatable memory of each node by about
+  4 GiB and its allocatable ephemeral storage by 10 GiB. A node that is already near its limit can reject or evict pods
+  when the Kubelet restarts during the upgrade. Before you upgrade, confirm that each node has room for the reservation
+  and the new memory requests. Refer to
+  [Check Node Memory Before You Upgrade](../vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance.md#check-node-memory-before-you-upgrade).
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-952 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1306 -->
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1432 -->
+
+- PaletteAI VM Launchpad now supports VLAN filtering on Linux Bridge networks. Virtual machines receive only the VLANs
+  that their NADs assign, and only when the **VM VLAN Range** permits them. The appliance protects the VLANs that the
+  nodes use for their own traffic, and the **Networks** page shows a **VLAN filtering** panel when a node has a problem.
+  Refer to [Bridge VLAN Filtering](../vm-management/vm-launchpad/infrastructure/networking.md#bridge-vlan-filtering).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1188 -->
+
+- VMO now uses KubeVirt 1.9.0, which turns on its Beta features by default. VMO disables the Beta features that it has
+  not validated, on both new installations and upgrades, and lists them in the new **Disabled feature gates** field on
+  the **KubeVirt Configuration** page. KubeVirt 1.9.0 also deprecates the `HotplugVolumes` feature gate in favor of
+  `DeclarativeHotplugVolumes`, which is on by default. VMO still includes `HotplugVolumes` in **Feature gates** by
+  default on both new installations and upgrades, so remove it from **Feature gates**. Disk hot-plug keeps working as
+  long as `DeclarativeHotplugVolumes` stays on. Refer to
+  [Feature Gate Considerations](../vm-management/vm-launchpad/kubevirt-configuration.md#feature-gate-considerations).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1259 -->
+
+- VMO now uses Containerized Data Importer (CDI) 1.66.1, which fixes importing a disk image to a DataVolume on a block
+  device with a 4K sector size.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1322 -->
+
+- The **Forwarding Token** in the **Logs** section of the **Metrics and Logs** page now accepts a single `Key=Value`
+  header, so you can forward logs to Datadog (`DD-API-KEY=<datadog-api-key>`), New Relic (`api-key=<license-key>`), or
+  Grafana Cloud (`Authorization=Basic <credentials>`). Only the **Metrics** section accepts more than one
+  comma-separated `Key=Value` pair. Refer to [Metrics and Logs](../vm-management/vm-launchpad/metrics-and-logs.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1335 -->
+
+- Applied critical security fixes to improve the appliance's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1317 -->
+
+- Fixed an issue that caused a blank disk hot-plugged to a running virtual machine to always use the `ReadWriteMany`
+  access mode and the `Block` volume mode. On storage that allows only the `Filesystem` volume mode, the DataVolume
+  never became ready. The **Create New Blank Disk** form now has **Access Mode** and **Volume Mode** settings. **Access
+  Mode** defaults to `ReadWriteMany`, and **Volume Mode** defaults to **Auto (from StorageProfile)**, which uses the
+  volume mode from the StorageProfile of the StorageClass.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1333 -->
+
+- Fixed an issue that caused a DataVolume to show the **Unknown** phase, with no reason, when its PersistentVolumeClaim
+  (PVC) could not be provisioned, such as when the storage backend was full or offline. The DataVolume now shows a
+  warning with the reason, and its details list the DataVolume conditions and the PVC events. Uploads to a DataVolume in
+  this state now fail with the reason instead of timing out after 2 minutes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1305 -->
+
+- Fixed an issue that caused the confirmation dialog to grow taller than the browser window when you deleted a resource
+  that is in use, such as a Portworx StorageClass with attached DataVolumes. This cut off the warning, the list of
+  attached resources, and the **OK** button. The dialog now fits the window, and long lists scroll.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1279 -->
+
+- Fixed an issue that caused long error messages to overflow their notification and hide its close button. Error
+  notifications now also stay visible for 5 seconds.
+
+## October 28, 2026 - Release 4.10.34
+
+<!-- PATCH RELEASE TICKET: DOC-3363 -->
+<!-- PATCH RELEASE VERSION: 4.10.34 -->
+<!-- PATCH RELEASE CANDIDATES: PE-9913 PE-9875 PEM-12433 -->
+
+### Improvements
+
+<!-- vale Vale.Spelling = NO -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12433 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9913 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9875 -->
+
+- Applied further fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
+  installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root certificates. Refer to
+  [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that use images built with an earlier
+  CanvOS version can use the workaround in
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
+  The workaround applies to hosts that run Ubuntu, SUSE Linux Enterprise Micro, Red Hat Enterprise Linux, or Rocky
+  Linux.
+
+<!-- vale Vale.Spelling = YES -->
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34 Palette release is 4.10.11.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.34 Palette release is
+4.10.12. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 24, 2026 - Release 4.10.33
 
 <!-- PATCH RELEASE TICKET: DOC-3358 -->
@@ -357,8 +661,8 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 - Applied fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
-  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu can use the workaround
-  in
+  for the affected deployments and recommended actions. Appliance mode Edge hosts that run Ubuntu, SUSE Linux Enterprise
+  Micro, Red Hat Enterprise Linux, or Rocky Linux can use the workaround in
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities).
 
 <!-- vale Vale.Spelling = YES -->

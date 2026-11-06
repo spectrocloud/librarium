@@ -14,6 +14,7 @@ operations for your Palette Edge cluster.
 ## Resources
 
 - [Edge Cluster Upgrade Behavior](upgrade-behavior.md)
+- [Lock Profile Updates](lock-profile-updates.md)
 - [Renew Certificates](certificate-renewal.md)
 - [Replace a Control Plane Edge Host](control-plane-host-replacement.md)
 - [Replace a Failed Node](replace-failed-node.md)

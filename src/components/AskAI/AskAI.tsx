@@ -47,14 +47,14 @@ function TypeableInput({
   );
 }
 
-export function AskAI(): JSX.Element | null {
+export function AskAI({ placeholder }: { placeholder?: string }): JSX.Element | null {
   const [text, setText] = React.useState("");
   return (
     <div className={styles.inputChangesContainer}>
       <TypeableInput
         value={text}
         onChange={setText}
-        placeholder="Ask AI to learn about Palette..."
+        placeholder={placeholder}
         onEnter={() => {
           // Open Kapa AI.
           // Skipping linting on the next line as getting the linter to pass is too complex.

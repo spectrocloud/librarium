@@ -6,6 +6,7 @@ const lightCodeTheme = themes.oceanicNext;
 const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
+const { archivedVersionHref } = require("./utils/helpers/archived-versions");
 const {
   docsPlugins: productDocsPlugins,
   productsDropdownItems,
@@ -218,7 +219,7 @@ const config = {
           async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const { docs } = args;
             const filteredDocs = docs.filter((doc) => {
-              return true;
+              return doc.id !== "introduction/landing";
             });
             const sidebarItems = await defaultSidebarItemsGenerator({
               ...args,
@@ -288,6 +289,18 @@ const config = {
             specPath: "static/apis/edge-v1/emc-api.json",
             outputDir: "docs/api-content/api-docs/edge-v1",
             downloadUrl: "/apis/edge-v1/emc-api.json",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            template: "api.mustache",
+            // Customize API MDX with mustache template
+            hideSendButton: true,
+          },
+          artifactStudio: {
+            specPath: "static/apis/artifact-studio-v2/artifact-studio-api.json",
+            outputDir: "docs/api-content/api-docs/artifact-studio-v2",
+            downloadUrl: "/apis/artifact-studio-v2/artifact-studio-api.json",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -429,6 +442,7 @@ const config = {
               },
             ],
           },
+          // `hideOnHomepage` leaves the item out on the homepage. See src/theme/NavbarItem/index.js.
           {
             to: "/tutorials",
             type: "docSidebar",
@@ -436,6 +450,7 @@ const config = {
             label: "Tutorials",
             position: "left",
             activeBaseRegex: paletteNavbarActiveBaseRegex,
+            hideOnHomepage: true,
           },
           {
             to: "/downloads",
@@ -444,11 +459,13 @@ const config = {
             label: "Downloads",
             position: "left",
             activeBaseRegex: paletteNavbarActiveBaseRegex,
+            hideOnHomepage: true,
           },
           {
             to: "/api/introduction",
             label: "API",
             position: "left",
+            hideOnHomepage: true,
           },
           {
             type: "html",
@@ -479,9 +496,10 @@ const config = {
             type: "docsVersionDropdown",
             position: "left",
             docsPluginId: "default",
+            hideOnHomepage: true,
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
+                href: archivedVersionHref(versionName, versionUrl),
                 label: versionName,
               })),
             ],
@@ -492,7 +510,7 @@ const config = {
             docsPluginId: "api",
             dropdownItemsAfter: [
               ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
+                href: archivedVersionHref(versionName, versionUrl),
                 label: versionName,
               })),
             ],
