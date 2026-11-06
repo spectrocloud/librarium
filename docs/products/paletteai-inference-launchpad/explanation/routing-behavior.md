@@ -99,8 +99,8 @@ for that one client. The console does not save a client's own Tier map until eve
 
 ## The Box Default Model
 
-The appliance chooses the box default model automatically. It chooses the running model with the largest weights. If two
-models have weights of the same size, it chooses the one that uses more GPUs. If no model is running, it chooses the
+The appliance chooses the box default model automatically. It chooses the serving model with the largest weights. If two
+models have weights of the same size, it chooses the one that uses more GPUs. If no model is serving, it chooses the
 deployed model with the largest weights, even one that is still starting. Until that model is ready, requests that reach
 it fail.
 
@@ -108,7 +108,7 @@ Vision preprocessing adds one exception. While vision preprocessing is on, the a
 that has **Only use this model for vision processing** turned on. That toggle is in the **Multimodal preprocessing**
 card on **Settings** > **Configurations**.
 
-The appliance chooses again each time a model is deployed, is removed, starts running, or stops running. As a result,
+The appliance chooses again each time a model is deployed, is removed, starts serving, or stops serving. As a result,
 the box default model can change without any action from an operator. There is no setting to choose or pin the box
 default model.
 
