@@ -15,6 +15,8 @@ keywords:
     "semantic routing",
     "semantic router",
     "tier map",
+    "box default model",
+    "default model",
     "complexity threshold",
     "policy",
     "workspace",
@@ -87,17 +89,45 @@ Each Tier map row has the following columns.
 | **Model**        | A model the appliance serves, an external model, or the special picker value **Use Semantic Router rules**. An external model is written as `<endpoint> / <model>`, such as `gemini / gemini-2.5-pro`, with a marker that shows the request leaves the appliance. When Model is a served or external model, the Tier map settles the request in Stage 1. When Model is **Use Semantic Router rules**, the alias is handed to the semantic router in Stage 2. |
 | **Thinking**     | A directive attached to the chosen model that tells a reasoning-capable model how much reasoning to do before it answers. When the Tier map hands the alias to the semantic router, the directive becomes the inherited reasoning depth of the rule that answers. For the modes, levels, and per-engine behavior, refer to [The Thinking Directive](./thinking-directive.md).                                                                                |
 
-<!-- vale Vale.Spelling = NO -->
+A client without its own Tier map inherits one. It follows the Tier map of its workspace's policy, or the default alias
+map if the policy has none. If an inherited Tier map leaves a seeded alias unmapped, the box default model answers
+requests for that alias. When the inherited Tier map comes from the policy, the console labels the row
+`Not mapped, so the box default <model> answers it.`
 
-A client that has no Tier map of its own follows the Tier map of its workspace's policy, or the default alias map when
-the policy sets none. When the inherited table leaves a seeded row blank, the console labels that row
-`Not mapped, so the box default <model> answers it.` For a client that edits its own Tier map, the connect panel warns
-that an alias left unmapped in that map makes an agent receive a `404`.
+The box default model never answers an unmapped alias in a client's own Tier map, because an operator writes that map
+for that one client. The console does not save a client's own Tier map until every alias in it is mapped.
 
-<!-- vale Vale.Spelling = YES -->
+## The Box Default Model
 
-The box default model is the largest model the appliance serves. If the appliance serves no model, a request that
-nothing else settles returns HTTP `404`.
+The appliance chooses the box default model automatically. It chooses the serving model with the largest weights. If two
+models have weights of the same size, it chooses the one that uses more GPUs. If no model is serving, it chooses the
+deployed model with the largest weights, even one that is still starting. Until that model is ready, requests that reach
+it fail.
+
+Vision preprocessing adds one exception. While vision preprocessing is on, the appliance never chooses a vision model
+that has **Only use this model for vision processing** turned on. That toggle is in the **Multimodal preprocessing**
+card on **Settings** > **Configurations**.
+
+The appliance chooses again each time a model is deployed, is removed, starts serving, or stops serving. As a result,
+the box default model can change without any action from an operator. There is no setting to choose or pin the box
+default model.
+
+To find the box default model, a platform administrator selects the heartbeat icon at the top right of the console. The
+console displays `Default model: <model>`.
+
+The box default model answers the following requests.
+
+- A request for an alias that the client's inherited Tier map leaves unmapped.
+
+- A request for a model name that the appliance does not serve and that no Tier map row matches. A misspelled model name
+  is one example.
+
+- A request that reaches the semantic router when no semantic routing rule gives it a model. For the lookup order, refer
+  to [How the Lookup Works](#how-the-lookup-works).
+
+- A request that sends `auto` or no model while the semantic router is off.
+
+If no model is deployed, the appliance answers these requests with an HTTP `404` response.
 
 ## What Reaches the Semantic Router
 
