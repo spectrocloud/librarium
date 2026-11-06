@@ -200,6 +200,53 @@ apt-get update && apt-get install netplan.io -y
 
 :::
 
+#### Create a File in a New Directory
+
+When a stage writes a file to a directory that does not exist, the stage creates the directory with the permissions of
+the file plus execute permission for the owner. For example, a file with `0644` permissions gets a parent directory with
+`0744` permissions, so only the root user can access the files inside it. Services that run as a different user cannot
+read the file.
+
+To give the directory the permissions that a service needs, add a `directories` entry to the same stage as the file. The
+stage creates the directories before it writes the files. If the directory already exists, the stage updates its
+permissions and ownership.
+
+The following example writes an NTP configuration file for `systemd-timesyncd`, which runs as the `systemd-timesync`
+user. The `directories` entry creates `/etc/systemd/timesyncd.conf.d` with `0755` permissions so that
+`systemd-timesyncd` can read the file.
+
+```yaml
+stages:
+  initramfs:
+    - name: "Configure NTP servers"
+      directories:
+        - path: /etc/systemd/timesyncd.conf.d
+          permissions: 0755
+          owner: 0
+          group: 0
+      files:
+        - path: /etc/systemd/timesyncd.conf.d/ntp.conf
+          permissions: 0644
+          owner: 0
+          group: 0
+          content: |
+            [Time]
+            NTP=<ntp-server>
+```
+
+Replace `<ntp-server>` with the address of your NTP server.
+
+Use the following rules when you configure a `directories` entry.
+
+- Specify `permissions` as an unquoted octal value, such as `0755`, or as a decimal value, such as `493`. A quoted
+  value, such as `"0755"`, causes the stage to fail to load.
+
+- Specify `owner` and `group` as numeric user and group IDs. The `directories` entry does not accept user or group
+  names.
+
+- Place the `directories` entry in the same stage as the file. If the stage of the file restarts a service, a later
+  stage runs after the service has already failed to read the file.
+
 #### Erase Partitions
 
 You can use the `before-install` stage to remove partitions if needed.
