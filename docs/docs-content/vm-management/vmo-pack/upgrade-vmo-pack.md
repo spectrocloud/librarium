@@ -30,8 +30,8 @@ versions, and how to perform the upgrade.
 
 ## Limitations
 
-- There is no in-place upgrade path from the VMO pack to the [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md).
-  This applies to all VMO pack versions. The VM Launchpad is installed from a bootable ISO and manages its own cluster
+- There is no in-place upgrade path from the VMO pack to the [VM Launchpad](../vm-launchpad/vm-launchpad.md). This
+  applies to all VMO pack versions. The VM Launchpad is installed from a bootable ISO and manages its own cluster
   lifecycle, so moving to it requires a new cluster.
 
 - Upgrading from 4.9.x does not migrate local user accounts, because the VM Dashboard has no local authentication.
