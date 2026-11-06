@@ -12,6 +12,8 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 ## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
 
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
+
 If the Palette management plane briefly loses access to its database, the Palette agent on a workload cluster can delete
 the namespaces that Palette created through
 [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
@@ -24,10 +26,15 @@ The management plane can lose access to its database during Palette upgrades or 
 its primary, even briefly. On self-hosted Palette and Palette VerteX, for example, a MongoDB crash, a failover, or
 overlapping node maintenance can cause this.
 
-To prevent the deletion, remove the label that marks each namespace as created by Palette. The Palette agent does not
-delete a namespace without this label and does not add the label back. As a result, removing the namespace from the
-cluster RBAC or workspace settings no longer deletes it from the cluster. If you no longer need one of these namespaces,
-delete it with `kubectl delete namespace <namespace-name>`, replacing `<namespace-name>` with the name of the namespace.
+Starting with Palette agent version 4.10.b, the agent does not delete these namespaces when the management plane loses
+access to its database. Each workload cluster is affected until its Palette agent is upgraded, including clusters with
+[paused agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
+
+To prevent the deletion until the Palette agent is upgraded, remove the label that marks each namespace as created by
+Palette. The Palette agent does not delete a namespace without this label and does not add the label back. As a result,
+removing the namespace from the cluster RBAC or workspace settings no longer deletes it from the cluster. If you no
+longer need one of these namespaces, delete it with `kubectl delete namespace <namespace-name>`, replacing
+`<namespace-name>` with the name of the namespace.
 
 ### Debug Steps {#debug-steps-rbac-workspace-namespaces}
 
@@ -79,6 +86,61 @@ delete it with `kubectl delete namespace <namespace-name>`, replacing `<namespac
 6. Repeat steps 2 and 3 to confirm that no namespaces carry either label. Both commands return `No resources found`.
 
 7. Repeat steps 1 - 6 on each workload cluster.
+
+### Restore the Labels After the Agent Upgrade
+
+After the Palette agent on a workload cluster is upgraded to version 4.10.b or later, you can restore the labels that
+you removed. Removing a namespace from the cluster RBAC or workspace settings then deletes it from the cluster again.
+
+:::warning
+
+Restore a label only on namespaces that are still listed in the cluster RBAC or workspace settings. If you restore the
+label on a namespace that you removed from these settings, the Palette agent deletes the namespace and all its resources
+on its next reconciliation.
+
+:::
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Clusters**, and then select the workload cluster.
+
+3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.b or later. If it shows an earlier
+   version, do not restore the labels on this cluster.
+
+4. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the workload cluster.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the workload cluster.
+
+5. Add the cluster RBAC label back to the namespaces that you recorded in step 2 of the
+   [debug steps](#debug-steps-rbac-workspace-namespaces) and that are still listed in the cluster RBAC settings.
+
+   ```shell
+   kubectl label namespaces <namespace-name> spectrocloud.com/clusterRbac=true
+   ```
+
+   Replace `<namespace-name>` with the namespace names, separated by spaces.
+
+   ```text hideClipboard title="Example Output"
+   namespace/team-a-dev labeled
+   namespace/team-a-prod labeled
+   ```
+
+6. Add the workspace label back to the namespaces that you recorded in step 3 of the debug steps and that are still
+   listed in the workspace settings.
+
+   ```shell
+   kubectl label namespaces <namespace-name> spectrocloud.com/workspace=true
+   ```
+
+   Replace `<namespace-name>` with the namespace names, separated by spaces.
+
+7. Repeat steps 2 and 3 of the debug steps to confirm that the namespaces carry their labels again.
+
+8. Repeat steps 2 - 7 on each workload cluster.
 
 ## Scenario - GCP IaaS Control Plane Repaved Repeatedly
 
