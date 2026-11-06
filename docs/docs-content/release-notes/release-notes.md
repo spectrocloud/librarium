@@ -41,8 +41,8 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2500 -->
 
-- Fixed an issue in the Spectro Cloud Terraform and Crossplane providers that caused Day-2 `cloud_config` updates to
-  `spectrocloud_cluster_edge_native` clusters to fail when `ssh_keys` was not set.
+- Fixed an issue in the Spectro Cloud Terraform and Crossplane providers that caused Day-2 `cloud_config` updates to the
+  `spectrocloud_cluster_edge_native` resource to fail when `ssh_keys` was not set.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
 
