@@ -115,8 +115,8 @@ The appliance chooses again each time a model is deployed, is removed, starts ru
 the box default model can change without any action from an operator. There is no setting to choose or pin the box
 default model.
 
-The console shows which model is the box default model. A platform administrator sees it after selecting the heartbeat
-icon at the top right of the console. The line reads `Default model: <model>`.
+To find the box default model, a platform administrator selects the heartbeat icon at the top right of the console. The
+console displays `Default model: <model>`.
 
 The box default model answers the following requests.
 
