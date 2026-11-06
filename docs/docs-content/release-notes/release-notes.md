@@ -36,8 +36,6 @@ tags: ["release-notes"]
   | `POST /v1/registries/helm/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
   | `POST /v1/registries/oci/basic/validate` with a saved password or token | `packRegistry.update` on the registry that `registryUid` identifies                                     |
 
-  `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
-
   Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
   the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
   HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code.
