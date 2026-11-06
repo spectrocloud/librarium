@@ -15,15 +15,14 @@ The following steps will help you troubleshoot errors in the event issues arise 
 If the Palette management plane briefly loses access to its database, the Palette agent on a workload cluster can delete
 the namespaces that Palette created through
 [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
-[workspace](../workspace/workspace.md). The agent recreates the namespaces on its next reconciliation after the
-management plane regains access to its database (the agent reconciles every 2 minutes), but it recreates them empty. The
-deletion removes all resources in the namespaces, including workloads, Helm releases, ConfigMaps, and Secrets, and the
-agent does not restore them. The agent does not delete namespaces that existed on the cluster before you added them in
-Palette.
+[workspace](../workspace/workspace.md). After the management plane regains access to its database, the agent recreates
+the namespaces empty on its next reconciliation, which runs every 2 minutes. The deletion removes all resources in the
+namespaces, including workloads, Helm releases, ConfigMaps, and Secrets. Recreating the namespaces does not restore
+them. The agent does not delete namespaces that existed on the cluster before you added them in Palette.
 
-The management plane can lose access to its database during Palette upgrades, or whenever the MongoDB replica set loses
-its primary, even briefly. For example, a MongoDB crash, a failover, or overlapping node maintenance on self-hosted
-Palette and Palette VerteX can cause this.
+The management plane can lose access to its database during Palette upgrades or whenever the MongoDB replica set loses
+its primary, even briefly. On self-hosted Palette and Palette VerteX, for example, a MongoDB crash, a failover, or
+overlapping node maintenance can cause this.
 
 To prevent the deletion, remove the label that marks each namespace as created by Palette. The Palette agent does not
 delete a namespace without this label and does not add the label back. As a result, removing the namespace from the
