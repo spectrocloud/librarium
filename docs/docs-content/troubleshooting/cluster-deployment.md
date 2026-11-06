@@ -10,6 +10,76 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
+
+If the Palette management plane briefly loses access to its database, the Palette agent on a workload cluster can delete
+the namespaces that Palette created through
+[cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
+[workspace](../workspace/workspace.md). After the management plane regains access to its database, the agent recreates
+the namespaces empty on its next reconciliation, which runs every 2 minutes. The deletion removes all resources in the
+namespaces, including workloads, Helm releases, ConfigMaps, and Secrets. Recreating the namespaces does not restore
+them. The agent does not delete namespaces that existed on the cluster before you added them in Palette.
+
+The management plane can lose access to its database during Palette upgrades or whenever the MongoDB replica set loses
+its primary, even briefly. On self-hosted Palette and Palette VerteX, for example, a MongoDB crash, a failover, or
+overlapping node maintenance can cause this.
+
+To prevent the deletion, remove the label that marks each namespace as created by Palette. The Palette agent does not
+delete a namespace without this label and does not add the label back. As a result, removing the namespace from the
+cluster RBAC or workspace settings no longer deletes it from the cluster. If you no longer need one of these namespaces,
+delete it with `kubectl delete namespace <namespace-name>`, replacing `<namespace-name>` with the name of the namespace.
+
+### Debug Steps {#debug-steps-rbac-workspace-namespaces}
+
+1. Open a terminal session and set the `KUBECONFIG` environment variable to the
+   [kubeconfig](../clusters/cluster-management/kubeconfig.md) file of the workload cluster.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the workload cluster.
+
+2. List the namespaces that Palette created through cluster RBAC settings, and record the namespace names so that you
+   can delete the namespaces yourself when you no longer need them.
+
+   ```shell
+   kubectl get namespaces --selector spectrocloud.com/clusterRbac=true
+   ```
+
+   ```text hideClipboard title="Example Output"
+   NAME          STATUS   AGE
+   team-a-dev    Active   41d
+   team-a-prod   Active   41d
+   ```
+
+3. List the namespaces that Palette created through workspaces, and record the namespace names.
+
+   ```shell
+   kubectl get namespaces --selector spectrocloud.com/workspace=true
+   ```
+
+4. Remove the cluster RBAC label from every namespace that step 2 returned.
+
+   ```shell
+   kubectl label namespaces --selector spectrocloud.com/clusterRbac=true spectrocloud.com/clusterRbac-
+   ```
+
+   ```text hideClipboard title="Example Output"
+   namespace/team-a-dev unlabeled
+   namespace/team-a-prod unlabeled
+   ```
+
+5. Remove the workspace label from every namespace that step 3 returned.
+
+   ```shell
+   kubectl label namespaces --selector spectrocloud.com/workspace=true spectrocloud.com/workspace-
+   ```
+
+6. Repeat steps 2 and 3 to confirm that no namespaces carry either label. Both commands return `No resources found`.
+
+7. Repeat steps 1 - 6 on each workload cluster.
+
 ## Scenario - GCP IaaS Control Plane Repaved Repeatedly
 
 [GCP IaaS clusters](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md) deployed with Palette versions earlier than
