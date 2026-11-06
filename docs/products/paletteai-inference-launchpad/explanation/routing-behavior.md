@@ -94,11 +94,8 @@ map if the policy has none. If an inherited Tier map leaves a seeded alias unmap
 requests for that alias. When the inherited Tier map comes from the policy, the console labels the row
 `Not mapped, so the box default <model> answers it.`
 
-The box default model never answers an alias that a client's own Tier map leaves unmapped. An operator sets those rows
-for that one client, so the appliance does not pick a model for a row that names no model. The console does not save a
-client's own Tier map until every alias in it is mapped. If a saved map still has an unmapped alias, requests for that
-alias fail. The connect panel warns that an agent that sends this alias receives an HTTP `404` response. The client's
-other requests still work.
+The box default model never answers an unmapped alias in a client's own Tier map, because an operator writes that map
+for that one client. The console does not save a client's own Tier map until every alias in it is mapped.
 
 ## The Box Default Model
 
