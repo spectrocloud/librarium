@@ -9,7 +9,7 @@ sidebar_position: 3
 tags: ["vmo", "vm launchpad", "upgrade"]
 ---
 
-<!-- TODO(DOC-3002): Draft built from internal upgrade evidence (PVM 797 upgrade automation, PVM 1472, appliance QA tickets). Confirm with Sumit Tiwari and Rob Eckhardt, and verify every UI label on an appliance, before this page goes Ready. -->
+<!-- TODO(DOC-3002): Draft built from internal upgrade evidence (PVM 797 upgrade automation, PVM 1472, appliance QA tickets). Sumit answered most questions on 2026-11-07 in the #vmo-docs thread; the open items are in the TODOs below. Verify every UI label on an appliance before this page goes Ready. -->
 
 To upgrade PaletteAI VM Launchpad, upload a newer content bundle for the same appliance variant, and then apply the
 update from the **Configuration** tab of the cluster in Local UI. You do not reinstall the appliance ISO or create a new
@@ -21,12 +21,14 @@ Refer to [Limitations](../vmo-pack/upgrade-vmo-pack.md#limitations).
 
 :::warning
 
-The upgrade reboots the nodes of the cluster one at a time, and Local UI is unavailable while a node reboots. Upgrade
-during a maintenance window.
+The upgrade reboots the nodes of the cluster one at a time, and Local UI is unavailable while a node reboots. On a
+multi-node cluster, KubeVirt handles the running VMs on each node according to their eviction strategy, which live
+migrates them to another node by default. Refer to [Strategies](./kubevirt-configuration.md#strategies). Upgrade during
+a maintenance window.
 
 :::
 
-<!-- TODO(DOC-3002): Q3 for Sumit and Rob: what happens to running VMs while a node reboots (live migration, VMs that cannot migrate such as GPU or host-device VMs, single-node appliances), and whether to stop any VMs first. -->
+<!-- TODO(DOC-3002): Sumit (2026-11-07): on multi-node clusters, VMs migrate based on the configured policy. Still open: VMs that cannot migrate (GPU or host-device VMs, PVM 1501) and single-node appliances. Do they restart with the node, or should customers stop them first? -->
 
 ## Upgrade Notes
 
@@ -37,6 +39,8 @@ release, refer to the VM Launchpad entries in the [Release Notes](../../release-
 
 - **(Non-FIPS appliances)** An upgrade can stall when both Keycloak database replicas run on the same node. Refer to
   [Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node](./troubleshooting.md#scenario---appliance-upgrade-stalls-when-keycloak-database-replicas-share-a-node).
+
+  <!-- TODO(DOC-3002): Sumit (2026-11-07): the PVM 1292 FIPS stack refactor (CloudNativePG) ships in drop eight. Asked: do FIPS appliances need extra upgrade steps, and can this Keycloak replica stall now happen on FIPS appliances too? If yes, drop "(Non-FIPS appliances)" here. -->
 
 - **(From a version earlier than 4.10.25)** Non-FIPS appliances reserve more memory and ephemeral storage on each node
   after the upgrade, and the Kubelet restarts once on each node. Check each node before you upgrade. Refer to
@@ -62,17 +66,19 @@ release, refer to the VM Launchpad entries in the [Release Notes](../../release-
   the same variant that you installed. For a description of each variant, refer to
   [Install VM Launchpad](./install.md#install).
 
-  <!-- TODO(DOC-3002): Q2 for Sumit and Rob: where Local UI shows the installed variant, and the supported recovery after an upload of the wrong variant (PVM 1472). -->
+  Local UI does not display the variant by name. To identify it, review the packs of the cluster in Local UI. The
+  storage pack is Piraeus or Portworx, and some packs show whether they are FIPS or non-FIPS.
+
+  <!-- TODO(DOC-3002): Sumit (2026-11-07): no explicit variant indicator; a few packs show FIPS or non-FIPS, and the CSI pack is Piraeus or Portworx. Verify on an appliance where Local UI lists the packs and which packs show FIPS, then name the location here. Still open: the supported recovery after an upload of the wrong variant (PVM 1472). -->
 
 - Access to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-- Enough free disk space on each node to store the new content bundle.
-
-  <!-- TODO(DOC-3002): Q3 for Sumit and Rob: free-space guidance (PVM 1425 saw about three times the bundle size used on the receiving node) and whether old bundles can be removed. -->
+- An OS boot disk of at least 750 GB on each node, to hold the new content bundle. Refer to
+  [Hardware Requirements](./install.md#hardware-requirements).
 
 - A supported upgrade path from the version that you run.
 
-  <!-- TODO(DOC-3002): Q1 for Sumit and Rob: can customers skip drops, what is the oldest version that can upgrade directly, and do 4.9.x appliances need an intermediate stop (PVM 1188)? -->
+  <!-- TODO(DOC-3002): Sumit (2026-11-07): 4.9.x appliances upgrade to the latest 4.9.x release first, and then to 4.10. Waiting for Shubham Rajvanshi or Abirami Subbiah to confirm. Asked: can a 4.10.x appliance (for example 4.10.13) go straight to drop eight, and does "4.10.0" mean the latest 4.10 drop? -->
 
 ## Upgrade VM Launchpad
 
@@ -110,14 +116,17 @@ bundle from the appliance. Refer to
    image pulls and package uploads fail until then. Refer to
    [Image Pulls and Package Uploads Fail After a Registry Password Change](./troubleshooting.md#scenario---image-pulls-and-package-uploads-fail-after-a-registry-password-change).
 
-   <!-- TODO(DOC-3002): Q2 for Sumit and Rob: confirm that customers must not regenerate the platform CA during an upgrade (PVM 1472). -->
+   <!-- TODO(DOC-3002): asked Sumit again on 2026-11-07: confirm that customers must not select Generate for the platform CA during an upgrade (PVM 1472). -->
 
 8. Select **Confirm Changes**, and then select **Update**.
 
 9. Monitor the progress on the **Overview** tab. Each node reboots in turn, and Local UI is unavailable while a node
    reboots. Log in again after each reboot.
 
-   <!-- TODO(DOC-3002): Q4 for Sumit and Rob: what to do if the update fails or a node rolls back, and what to back up before the upgrade. -->
+   Rolling back an upgrade to the previous version is not supported. If the upgrade fails, contact Spectro Cloud support
+   at [support@spectrocloud.com](mailto:support@spectrocloud.com) for help to complete the upgrade.
+
+   <!-- TODO(DOC-3002): Sumit (2026-11-07): no rollback; support helps customers through a failed upgrade. Still open: what customers should back up before the upgrade, for example VM snapshots. -->
 
 ## Validate
 
@@ -136,8 +145,6 @@ bundle from the appliance. Refer to
 
 5. If you upgraded from a version earlier than 4.10.25, check each node. Refer to
    [Verify Node Memory After You Upgrade](./vmo-overcommit-memory-optimization-appliance.md#verify-node-memory-after-you-upgrade).
-
-<!-- TODO(DOC-3002): Q5 for Sumit and Rob: PVM 1494 (upgraded clusters keep the KubeVirt and CDI CRD schema from their first install). Add a post-upgrade check here if the fix has not shipped. -->
 
 ## Next Steps
 
