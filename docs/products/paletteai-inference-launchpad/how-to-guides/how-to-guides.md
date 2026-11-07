@@ -25,6 +25,7 @@ you the steps to do it without teaching background concepts.
 | [Bring Your Own Model](./bring-your-own-model.md)                                       | Author metadata for a model that is not certified, then upload and deploy it.                                         |
 | [Configure Semantic Routing](./configure-semantic-routing.md)                           | Turn the semantic router and its guard checks on or off, set routing for a policy and a client, and record decisions. |
 | [Set the Thinking Directive for a Tier](./set-tier-thinking.md)                         | Choose off, on, or an effort level per tier on the Tier Map.                                                          |
+| [Set a System Prompt](./set-a-system-prompt.md)                                         | Set the default instruction for every model, give a model its own instruction, and remove an instruction.             |
 | [Enable Vision Preprocessing](./enable-vision-preprocessing.md)                         | Deploy a vision model and turn on image-to-text preprocessing for a text-only model.                                  |
 | [Create a Workspace](./create-a-workspace.md)                                           | Give a team its own workspace, and choose who can act in it.                                                          |
 | [Manage Workspace Members](./manage-workspace-members.md)                               | Add, change, and remove the members of a workspace.                                                                   |

@@ -617,6 +617,13 @@ The Security Technical Implementation Guides published by the U.S. Defense Infor
 prescribe hardened configurations for information systems. STIG compliance is required for certain U.S. Department of
 Defense deployments.
 
+### System Prompt
+
+An instruction that the appliance adds to a request that carries no system message of its own. A platform administrator
+sets one default instruction for every model and can give a model its own instruction, which replaces the default for
+that model. Refer to [System Prompts](../explanation/architecture.md#system-prompts) and
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
+
 ## T
 
 ### Tier Map
