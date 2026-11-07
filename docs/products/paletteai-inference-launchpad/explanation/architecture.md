@@ -109,6 +109,24 @@ this step. For the request path and how to turn the feature on, refer to
 The default model is the model the appliance routes a request to when the request does not name a specific model. The
 appliance sets the default; there is no operator control to change which model is the default.
 
+### System Prompts
+
+A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
+gateway puts it ahead of a request that carries no system message of its own, so the model answers that request with the
+administrator's instruction in place. A client that sends its own system message has already said how the model should
+answer, so the gateway keeps that message and adds nothing. Coding agents such as Claude Code send their own system
+message with every request. Requests that use the Responses API, as OpenAI Codex does, also reach the model without an
+instruction from the appliance.
+
+The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
+replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
+instruction after routing picks the model. A per-model instruction follows that model, not the model name that the
+client sent.
+
+A change applies to the next request. A new appliance has no instruction, so it adds nothing to any request until a
+platform administrator sets one. To set or remove an instruction, refer to
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
+
 ### External Inference Endpoints {#external-inference-endpoints}
 
 An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
