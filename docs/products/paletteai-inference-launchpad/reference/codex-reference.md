@@ -80,8 +80,8 @@ The panel writes the path in the dialect you select in its shell picker. The `ba
 ## Model Name
 
 The appliance seeds a `gpt-` alias prefix in every tier map, so the alias the panel emits works over the Responses API.
-The seeded prefix resolves for a client that inherits the appliance-wide table, and a client with its own Tier map can
-leave it unmapped. For the rule, refer to [Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
+The seeded prefix resolves for a client that inherits a Tier map. For the rule, refer to
+[Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
 
 A served model id, such as `glm-5.2`, also works. Do not use `auto`, because `auto` bypasses the Tier map and reaches
 the semantic router, so it names no model the Tier map can rewrite. The served model ids and the aliases both appear in
