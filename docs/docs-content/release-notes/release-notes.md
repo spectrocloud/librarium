@@ -15,9 +15,6 @@ tags: ["release-notes"]
 
 <!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3411 -->
 
-<!-- TODO(DOC-3274): Drop eight. On release day, set the ship date, the VM Launchpad and Palette versions from the
-promoted Platone records, and both anchors. -->
-
 This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.TBD.
 
 ### Breaking Changes {#breaking-changes-vm-launchpad-4.10.TBD}
@@ -25,11 +22,10 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
 
 - VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade does not
-  copy them. VM Launchpad restores most built-in packages automatically, but not the Virtio Windows ISO, custom
-  packages, or the logo and favicon. Before you upgrade, keep a copy of every custom package and branding image that you
-  uploaded, and upload them again after the upgrade. If you use the VMO pack, configure a package store before you
-  upload them, or VM Launchpad loses the files when its pod restarts. This applies to the VM Launchpad appliance and to
-  VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+  copy them. VM Launchpad does not restore custom packages or the logo and favicon. Before you upgrade, keep a copy of
+  every custom package and branding image that you uploaded, and upload them again after the upgrade. If you use the VMO
+  pack, configure a package store before you upload them, or VM Launchpad loses the files when its pod restarts. This
+  applies to the VM Launchpad appliance and to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
   [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
 
 - VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer uses a

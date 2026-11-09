@@ -284,15 +284,10 @@ Windows golden images.
 
 ## Upgrade Considerations
 
-<!-- TODO(DOC-3274): Name the first release without a data volume (drop eight, VM Launchpad 4.10.TBD) once Platone
-promotes it, and link the Breaking Changes entry in the drop-eight release notes. -->
-
 Earlier VM Launchpad releases stored uploaded package files and branding images on a data volume. VM Launchpad no longer
 uses a data volume and stores these files in a [package store](#package-storage) instead. The upgrade does not copy
-anything from the data volume. VM Launchpad restores the built-in packages automatically, except the
-[Virtio Windows ISO](#restore-the-virtio-windows-iso). You must upload your custom packages and branding images again.
-This applies to the VM Launchpad appliance and to VMO pack deployments that set `persistence.enabled` to `true` in the
-VMO pack values.
+anything from the data volume. You must upload your custom packages and branding images again. This applies to the VM
+Launchpad appliance and to VMO pack deployments that set `persistence.enabled` to `true` in the VMO pack values.
 
 ### Before You Upgrade
 
@@ -372,42 +367,6 @@ the package rows to find each file. Refer to
    ```
 
    Replace `<api-key>` and `<vm-launchpad-host>` with the same values as in step 5.
-
-### Restore the Virtio Windows ISO
-
-<!-- TODO(DOC-3274): Engineering notes say the reset and both refill paths are covered by unit tests but have not been
-run on a cluster. Check with QA before documenting. Otherwise, hold this section, and also remove the Virtio exception
-from Upgrade Considerations and the release note. -->
-
-Follow these steps only if, before the upgrade, VM Launchpad downloaded the [Virtio Windows ISO](#virtio-windows-iso) or
-you uploaded it. After the upgrade, the ISO's package row still records a file that is no longer stored. The stale row
-blocks the automatic download and the **Upload Image** action. You also cannot delete the row, and the Windows VM wizard
-reports the Virtio drivers as not available.
-
-The following steps require `kubectl` access to the cluster that runs VM Launchpad.
-
-```shell
-export KUBECONFIG=<path-to-kubeconfig>
-```
-
-Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
-
-1. Reset the package row.
-
-   ```shell
-   kubectl patch vmopackages.virtualization.spectrocloud.com builtin-virtio-win --namespace <vmo-namespace> \
-     --type merge --patch '{"spec":{"fileSize":0,"sha256":""}}'
-   ```
-
-   Replace `<vmo-namespace>` with the namespace of VM Launchpad.
-
-2. Restore the ISO.
-
-   - In a connected environment with a [package store](#package-storage), navigate to **Image Catalog** > **Packages**,
-     and select **Check for Updates**. VM Launchpad downloads the ISO in the background within 2 minutes.
-
-   - In an airgap environment, right-click the Virtio Windows ISO row, select **Upload Image**, and upload the ISO. Keep
-     the filename `virtio-win.iso`, and enter the ISO version if it differs from the one displayed.
 
 ### Recover Files from the Previous Data Volume
 
