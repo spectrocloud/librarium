@@ -9,7 +9,7 @@ sidebar_position: 3
 tags: ["vmo", "vm launchpad", "upgrade"]
 ---
 
-<!-- TODO(DOC-3002): Draft built from internal upgrade evidence (PVM 797 upgrade automation, PVM 1472, appliance QA tickets). Sumit answered most questions on 2026-11-07 in the #vmo-docs thread; the open items are in the TODOs below. Verify every UI label on an appliance before this page goes Ready. -->
+<!-- TODO(DOC-3002): Draft built from internal upgrade evidence (PVM 797 upgrade automation, PVM 1472, appliance QA tickets). Sumit answered most questions on 2026-11-07 and 2026-11-09 in the #vmo-docs thread; the open items are in the TODOs below. Verify every UI label on an appliance before this page goes Ready. -->
 
 To upgrade PaletteAI VM Launchpad, upload a newer content bundle for the same appliance variant, and then apply the
 update from the **Configuration** tab of the cluster in Local UI. You do not reinstall the appliance ISO or create a new
@@ -23,12 +23,13 @@ Refer to [Limitations](../vmo-pack/upgrade-vmo-pack.md#limitations).
 
 The upgrade reboots the nodes of the cluster one at a time, and Local UI is unavailable while a node reboots. On a
 multi-node cluster, KubeVirt handles the running VMs on each node according to their eviction strategy, which live
-migrates them to another node by default. Refer to [Strategies](./kubevirt-configuration.md#strategies). Upgrade during
-a maintenance window.
+migrates them to another node by default. VMs that cannot live migrate, such as VMs with GPUs or host devices, and the
+VMs on a single-node cluster restart when their node reboots. Refer to
+[Strategies](./kubevirt-configuration.md#strategies). Upgrade during a maintenance window.
 
 :::
 
-<!-- TODO(DOC-3002): Sumit (2026-11-07): on multi-node clusters, VMs migrate based on the configured policy. Still open: VMs that cannot migrate (GPU or host-device VMs, PVM 1501) and single-node appliances. Do they restart with the node, or should customers stop them first? -->
+<!-- TODO(DOC-3002): Sumit (2026-11-09): "VMs will restart after the Host reflash is my understanding." Hedged; confirm with VMO QA before Ready, or keep as is. -->
 
 ## Upgrade Notes
 
@@ -40,7 +41,7 @@ release, refer to the VM Launchpad entries in the [Release Notes](../../release-
 - **(Non-FIPS appliances)** An upgrade can stall when both Keycloak database replicas run on the same node. Refer to
   [Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node](./troubleshooting.md#scenario---appliance-upgrade-stalls-when-keycloak-database-replicas-share-a-node).
 
-  <!-- TODO(DOC-3002): Sumit (2026-11-07): the PVM 1292 FIPS stack refactor (CloudNativePG) ships in drop eight. Asked: do FIPS appliances need extra upgrade steps, and can this Keycloak replica stall now happen on FIPS appliances too? If yes, drop "(Non-FIPS appliances)" here. -->
+  <!-- TODO(DOC-3002): Sumit (2026-11-07): the PVM 1292 FIPS stack refactor (CloudNativePG) ships in drop eight. Asked: do FIPS appliances need extra upgrade steps, and can this Keycloak replica stall now happen on FIPS appliances too? If yes, drop "(Non-FIPS appliances)" here. Sumit (2026-11-09) answered only that PVM 1494 and PVM 1292 both go in the drop eight release notes; the two FIPS questions are still open. -->
 
 - **(From a version earlier than 4.10.25)** Non-FIPS appliances reserve more memory and ephemeral storage on each node
   after the upgrade, and the Kubelet restarts once on each node. Check each node before you upgrade. Refer to
@@ -67,18 +68,23 @@ release, refer to the VM Launchpad entries in the [Release Notes](../../release-
   [Install VM Launchpad](./install.md#install).
 
   Local UI does not display the variant by name. To identify it, review the packs of the cluster in Local UI. The
-  storage pack is Piraeus or Portworx, and some packs show whether they are FIPS or non-FIPS.
+  storage pack is Piraeus or Portworx, and some packs show whether they are FIPS or non-FIPS. If you upload the content
+  bundle for a different variant, upload the content bundle for your variant, and then start the update again.
 
-  <!-- TODO(DOC-3002): Sumit (2026-11-07): no explicit variant indicator; a few packs show FIPS or non-FIPS, and the CSI pack is Piraeus or Portworx. Verify on an appliance where Local UI lists the packs and which packs show FIPS, then name the location here. Still open: the supported recovery after an upload of the wrong variant (PVM 1472). -->
+  <!-- TODO(DOC-3002): Sumit (2026-11-07): no explicit variant indicator; a few packs show FIPS or non-FIPS, and the CSI pack is Piraeus or Portworx. Verify on an appliance where Local UI lists the packs and which packs show FIPS, then name the location here. Wrong-variant recovery (PVM 1472) answered 2026-11-09: "just reupload". -->
 
 - Access to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 - An OS boot disk of at least 750 GB on each node, to hold the new content bundle. Refer to
   [Hardware Requirements](./install.md#hardware-requirements).
 
-- A supported upgrade path from the version that you run.
+- A supported upgrade path. You can upgrade from any 4.10 release directly to a later 4.10 release. To upgrade from a
+  4.9 release, upgrade to the latest 4.9 release first.
 
-  <!-- TODO(DOC-3002): Sumit (2026-11-07): 4.9.x appliances upgrade to the latest 4.9.x release first, and then to 4.10. Waiting for Shubham Rajvanshi or Abirami Subbiah to confirm. Asked: can a 4.10.x appliance (for example 4.10.13) go straight to drop eight, and does "4.10.0" mean the latest 4.10 drop? -->
+  <!-- TODO(DOC-3002): Sumit (2026-11-09): any 4.10 to 4.10 upgrade is fine. Still open: for a 4.9.x appliance, after the latest 4.9.x, does the next hop go to the latest 4.10 drop or to a specific 4.10 release? (Sumit 2026-11-07 said "4.10.0"; PVM 1188 says 4.9.x straight to KubeVirt 1.9 can crash VMs.) Shubham Rajvanshi or Abirami Subbiah to confirm. -->
+
+- (Recommended) A snapshot of each VM. Rolling back an upgrade is not supported. Refer to
+  [Create a Snapshot](./virtual-machines/snapshots.md#create-a-snapshot).
 
 ## Upgrade VM Launchpad
 
@@ -110,13 +116,13 @@ bundle from the appliance. Refer to
    <!-- TODO(DOC-3002): verify the update controls on an appliance. Internal sources describe a green Update button; PaletteAI Inference Launchpad uses an Update drop-down with Review Changes, and its Overview tab shows Update available. -->
 
 7. Select **Update**, and review the incoming values in each section. Expand every section, and do not change any value.
-   The update keeps your existing settings, including passwords.
+   The update keeps your existing settings, including passwords. Do not generate or upload new certificates.
 
    Do not change the **Registry Password** during the upgrade. SeaweedFS keeps the old password until it restarts, and
    image pulls and package uploads fail until then. Refer to
    [Image Pulls and Package Uploads Fail After a Registry Password Change](./troubleshooting.md#scenario---image-pulls-and-package-uploads-fail-after-a-registry-password-change).
 
-   <!-- TODO(DOC-3002): asked Sumit again on 2026-11-07: confirm that customers must not select Generate for the platform CA during an upgrade (PVM 1472). -->
+   <!-- TODO(DOC-3002): Sumit (2026-11-09): "don't upload the certs". Once the update controls are verified on an appliance, name the platform CA setting and its Generate option here (PVM 1472). -->
 
 8. Select **Confirm Changes**, and then select **Update**.
 
@@ -125,8 +131,6 @@ bundle from the appliance. Refer to
 
    Rolling back an upgrade to the previous version is not supported. If the upgrade fails, contact Spectro Cloud support
    at [support@spectrocloud.com](mailto:support@spectrocloud.com) for help to complete the upgrade.
-
-   <!-- TODO(DOC-3002): Sumit (2026-11-07): no rollback; support helps customers through a failed upgrade. Still open: what customers should back up before the upgrade, for example VM snapshots. -->
 
 ## Validate
 
