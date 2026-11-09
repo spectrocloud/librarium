@@ -71,10 +71,10 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 <!-- vale Vale.Spelling = NO -->
 
-The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
-the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
-from a category and a complexity band. For how the two controls combine and where each rule lives, on a workspace's
-policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
+The gateway routes each request to a model in two stages. The Tier map rewrites a client-supplied model name to a model
+the appliance serves. Some requests that the Tier map does not settle then pass to the semantic router, which picks a
+model from a category and a complexity band. For how the two controls combine and where each rule lives, on a
+workspace's policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
 
 <!-- vale Vale.Spelling = YES -->
 
@@ -104,10 +104,11 @@ this step. For the request path and how to turn the feature on, refer to
 [Vision Preprocessing](./vision-preprocessing.md) and
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
-### The Default Model
+### The Box Default Model {#the-default-model}
 
-The default model is the model the appliance routes a request to when the request does not name a specific model. The
-appliance sets the default; there is no operator control to change which model is the default.
+The box default model answers a request when routing does not choose a model for it. The appliance chooses it
+automatically. There is no operator control to change it. For how the appliance chooses it, refer to
+[The Box Default Model](./routing-behavior.md#the-box-default-model).
 
 ### External Inference Endpoints {#external-inference-endpoints}
 
