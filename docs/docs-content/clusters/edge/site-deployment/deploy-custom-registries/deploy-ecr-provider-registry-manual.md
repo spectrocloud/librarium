@@ -9,10 +9,10 @@ sidebar_position: 46
 tags: ["edge"]
 ---
 
-[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) authenticates pulls with a short-lived token
-rather than a static username and password. This guide describes how to manually configure an Edge cluster to pull
-provider images from a private Amazon ECR repository, both when the cluster is first created and when it is later
-upgraded, by storing a static AWS access key on the Edge hosts and in the cluster profile.
+[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) is a managed AWS service for storing and
+distributing container images. This guide describes how to manually configure an Edge cluster to pull provider images
+from a private Amazon ECR repository, both when the cluster is first created and when it is later upgraded, by storing a
+static AWS access key on the Edge hosts and in the cluster profile.
 
 For connected clusters in appliance mode, Palette can issue ECR tokens to the Edge hosts instead, so no static AWS
 credentials are stored on the hosts. Refer to
@@ -74,6 +74,9 @@ change those credentials later, which is what makes credential rotation possible
 - A broken credential is silent. If a key is deactivated, deleted, or mistyped, the cluster stays healthy and no alert
   is raised. The failure surfaces only at the next pull, which might be when the next node is added or at the next
   upgrade. Verify the credential against ECR out of band on the same schedule that you rotate it.
+
+- Using this configuration and [token-based authentication](./deploy-ecr-provider-registry.md) together on the same
+  cluster has not been tested.
 
 ## Prerequisites
 
@@ -330,9 +333,6 @@ Keep the following in mind when you configure the profile:
 
 - Palette variable names cannot contain hyphens, because the template engine rejects them. Use `ecr_rotating_key_id`,
   not `ecr-rotating-key-id`.
-
-<!-- TODO: confirm with Sabir Ali (PE-9862). Palette 4.10.b adds `providerCredentials.registryUid` (PE-9651, PE-9685),
-which links provider credentials to a Palette registry. Does this advice still hold, and if not, what replaces it? -->
 
 - Do not set the `providerCredentials` field. It is a registry redirect rather than an authentication scope, and it
   rewrites provider image references.

@@ -9,9 +9,9 @@ sidebar_position: 45
 tags: ["edge"]
 ---
 
-[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) authenticates pulls with a short-lived token
-rather than a static username and password. This guide describes how to configure an Edge cluster to pull provider
-images from a private Amazon ECR repository with token-based authentication.
+[Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) is a managed AWS service for storing and
+distributing container images. This guide describes how to configure an Edge cluster to pull provider images from a
+private Amazon ECR repository with token-based authentication.
 
 You add the ECR repository to Palette as an image registry, and then select that registry for the cluster. Palette
 issues short-lived ECR tokens to the Edge hosts, which use them to pull the provider image when the cluster is created
@@ -23,16 +23,18 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
   the image registry selected for the cluster. If your cluster cannot use token-based authentication, refer to
   [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
 
-<!-- TODO: confirm with Sabir Ali (PE-9862). Which Kubernetes distributions and operating systems does token-based ECR
-authentication support? The epic names kubeadm on Ubuntu 24 as the initial priority, and testing covered PXK-E. -->
-
 - The image registry supplies credentials only for images on its own endpoint. Set the `system.uri` option in the OS
   layer of your cluster profile to a provider image on the registry's endpoint. Otherwise, the image is pulled without
   credentials, and the pull fails for a private repository.
 
 - The image registry covers provider images only. It does not supply credentials for application workload images.
 
+- ECR image registries support only AWS Security Token Service (STS) authentication.
+
 - You cannot change the provider type of a registry after you create it.
+
+- Using token-based authentication and the [manual configuration](./deploy-ecr-provider-registry-manual.md) together on
+  the same cluster has not been tested.
 
 ## Prerequisites
 
@@ -87,8 +89,7 @@ authentication support? The epic names kubeadm on Ubuntu 24 as the initial prior
 You can select the image registry when you create the cluster. You can also add or change the image registry on an
 existing cluster.
 
-If the Edge host user data or the OS layer of the cluster profile also sets `providerCredentials`, the image registry
-selected for the cluster takes precedence.
+You do not need to set `providerCredentials` in the Edge host user data or the cluster profile.
 
 ### Select the Image Registry for a New Cluster
 
