@@ -1,0 +1,30 @@
+Installation task,Field,Required?,Value,Notes
+Configure Hosts,Network adapter,If changing adapter settings,,Host network interface to configure.
+Configure Hosts,IP Address,If using a static IP,,Static IPv4 address for the host; also the Local UI address.
+Configure Hosts,Subnet Mask,If using a static IP,,Subnet mask for the host's static IP address.
+Configure Hosts,Default Gateway,If using a static IP,,"Router IP address, in the same subnet as the host."
+Configure Hosts,VLAN ID,If using VLAN tagging,,"VLAN for the adapter's traffic, from 1 to 4094."
+Configure Hosts,Maximum Transmission Unit,If using a non-standard MTU,,"Largest packet size, in bytes, for the adapter."
+Configure Hosts,Primary Nameserver,If configuring DNS,,IP address of the host's DNS server.
+Configure Hosts,Alternate Nameserver,Optional,,IP address of a second DNS server.
+Configure Hosts,Search,Optional,,"DNS search domains, comma-separated."
+Configure Hosts,NTP Servers,Optional,,"Time servers for the host, comma-separated; needed for multi-host clusters."
+Link Hosts,HTTP Endpoint,If using a proxy,,Proxy server address for HTTP traffic.
+Link Hosts,HTTPS Endpoint,If using a proxy,,Proxy server address for HTTPS traffic.
+Link Hosts,No Proxy,Optional,,"Addresses or domains that bypass the proxy, comma-separated."
+Link Hosts,CA Certificates,If proxy uses a private CA,,Base64-encoded certificate authority certificates for the proxy server.
+Create the Management Cluster,Ubuntu Pro Token,Optional,Do Not Record,Token for your Ubuntu Pro subscription.
+Create the Management Cluster,Image pull secret (Base64 format),If pulling images from Spectro Cloud registries,Do Not Record,Base64 secret from Spectro Cloud support.
+Create the Management Cluster,Storage Pool Drive,Has default,,"Second disk on each host, at least 500 GB; wiped during installation."
+Create the Management Cluster,OCI Pack Registry Endpoint,If using an external registry,,Hostname or IP address of your external registry.
+Create the Management Cluster,OCI Pack Registry Port,If using an external registry,,Port of your external registry.
+Create the Management Cluster,OCI Pack Registry Base Content Path,Has default,,Registry directory where packs are stored.
+Create the Management Cluster,OCI Pack Registry Username,If using an external registry,Do Not Record,Username for your external registry.
+Create the Management Cluster,OCI Pack Registry Password,If using an external registry,Do Not Record,Password for your external registry.
+Create the Management Cluster,OCI Pack Registry Ca Cert,If registry uses a private CA,,Base64 certificate authority certificate for an external registry.
+Create the Management Cluster,Root Domain,Has default,,Root domain for the Palette VerteX installation.
+Create the Management Cluster,Network Time Protocol (NTP),If using multiple hosts,,"Time servers for the cluster, space-separated."
+Create the Management Cluster,SSH Keys,Optional,Do Not Record,Public SSH keys for access to the cluster nodes.
+Create the Management Cluster,Virtual IP Address (VIP),Yes,,Unused IPv4 address or FQDN for load balancing and high availability; also the system console address.
+Create the Management Cluster,Architecture,Has default,,CPU architecture of the hosts: AMD64 or ARM64.
+Create the Management Cluster,NIC Name,Has default,,Network interface each node uses.
