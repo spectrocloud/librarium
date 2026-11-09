@@ -36,8 +36,6 @@ tags: ["release-notes"]
   | `POST /v1/registries/helm/validate` with a saved password or token      | `packRegistry.update` on the registry that `registryUid` identifies                                     |
   | `POST /v1/registries/oci/basic/validate` with a saved password or token | `packRegistry.update` on the registry that `registryUid` identifies                                     |
 
-  `GET /v1/registries/metadata` now returns only the registries in your tenant and the system registries.
-
   Palette uses the saved password or token of a registry only with the saved endpoint of that registry. If you change
   the endpoint of a registry, re-enter its password or token. Otherwise, the validate and update requests fail with an
   HTTP 400 response and the `RegistryMaskedCredentialEndpointMismatch` error code.
@@ -71,19 +69,11 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12229 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12208 -->
 
-- To improve security, the following system configuration API endpoints now return stored secrets as `********` instead
-  of in clear text.
-
-  | API endpoint                                      | Masked field                                                                        |
-  | ------------------------------------------------- | ----------------------------------------------------------------------------------- |
-  | `GET /v1/system/config/sso`                       | `authSpec.github.clientSecretKey` and `authSpec.oidcAuthSpecs.<name>.clientSecret`. |
-  | `GET /v1/system/config/azure/storage`             | `spec.accessKey`                                                                    |
-  | `GET /v1/system/config/registries/{registryName}` | `spec.auth.password` and `spec.auth.token`                                          |
-  | `GET /v1/system/config/registries/oci/image`      | `password`                                                                          |
-
-  A secret that was never set still returns an empty string. Automation that reads a secret from these endpoints must
-  take it from its source instead, such as the identity provider, Azure storage account, or registry. To keep a stored
-  secret when you update one of these configurations, send `********` in the matching `PUT` request.
+- To improve security, system API responses now return stored secrets, such as passwords, access keys, and client
+  secrets, as `********`. A secret that was never set still returns an empty string. Automation that reads a secret from
+  the system APIs must take it from its source instead, such as the identity provider, cloud storage account, or
+  registry. To keep a stored secret when you update a system configuration, send `********` in that field of the `PUT`
+  request.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
@@ -105,11 +95,24 @@ tags: ["release-notes"]
     response. Reading your own activation link is unchanged. To read other users' activation links, use an account that
     has the `user.create` permission.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12420 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3417 -->
+
+- Palette now rejects changes to the cluster profiles of a cluster template when the request comes from a different
+  scope than the template. For example, a `PUT /v1/clusterTemplates/{uid}/profiles` request with a `ProjectUid` header
+  fails against a tenant-scoped cluster template with an HTTP 403 response and the `ResOperationForbidden` error code.
+  In the Palette UI, change the profiles of a tenant-scoped cluster template from the **Tenant Admin** scope. In API
+  requests, omit the `ProjectUid` header for a tenant-scoped template, and set it to the UID of the project that owns a
+  project-scoped template. Refer to
+  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md#prerequisites).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-6294 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12368 -->
 
 - Palette now rejects Kubernetes upgrades that skip a minor version or change the major version. Upgrade one minor
-  version at a time, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
+  version at a time, as the
+  [Kubernetes version skew policy](https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order)
+  requires, for example from 1.33 to 1.34 and then to 1.35. The check applies to the following changes:
 
   - Cluster updates, including pending and scheduled cluster template updates.
 
@@ -153,6 +156,17 @@ tags: ["release-notes"]
   client ID, client secret, username and groups claims, and extra scopes. Reference them in pack values, for example
   `{{.spectro.system.oidc.issuerurl}}`, to place OIDC settings in the keys and format that your Kubernetes distribution
   requires. For more information, refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3804 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3806 -->
+
+- You can now authenticate Azure cloud accounts with a user-assigned managed identity instead of a service principal and
+  client secret. Managed identity cloud accounts store no secret and work through a self-hosted Private Cloud Gateway
+  (PCG) deployed in Azure. You can also assign managed identities to Azure IaaS and AKS clusters, so that the clusters
+  access Azure without static credentials. The
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) also
+  supports managed identity cloud accounts. For more information, refer to
+  [Use Azure Managed Identities](../clusters/public-cloud/azure/azure-managed-identities.md).
 
 #### Improvements
 
@@ -253,6 +267,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Deploy Cluster with an Amazon ECR Provider Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-ecr-provider-registry.md)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9586 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9867 -->
+
+- Centrally managed Edge Native clusters now support an update lock that holds cluster profile updates on the Edge hosts
+  until an operator releases them in Local UI or through the Edge Management API. Each release lets one update through,
+  and then the lock engages again. Turn on **Lock Profile Updates** when you create the cluster or later in the cluster
+  settings. Refer to [Lock Profile Updates](../clusters/edge/cluster-management/lock-profile-updates.md) for more
+  information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
@@ -271,6 +294,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
   for guidance on when to enable an overlay network.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9835 -->
+
+- When you create a cluster in Local UI, you can now enter a Fully Qualified Domain Name (FQDN) in the **Virtual IP
+  Address (VIP)** field, in addition to an IPv4 address. Refer to
+  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9881 -->
@@ -283,6 +312,36 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   provider image. Palette also displays Edge host events during cluster provisioning when a provider image download
   starts, resumes, retries, or completes. For more information, refer to
   [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---provider-image-download-times-out-on-slow-network-connections).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9251 -->
+
+- Fixed an issue that caused the Palette agent to reset an Edge host removed from a node pool without draining it first,
+  so Kubernetes did not enforce PodDisruptionBudgets. The Palette agent now drains each removed host before it resets
+  the host. If a PodDisruptionBudget blocks the drain, the host stays cordoned in the cluster until the drain can
+  complete, for example, after you move the blocking workload to another node.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9587 -->
+
+- Fixed an issue that caused the
+  [Palette Edge Interactive Installer](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) to offer to continue
+  after the installation media, such as a virtual CD or USB drive, was disconnected. The disk wipe failed with
+  `fork/exec /usr/sbin/wipefs: input/output error`, and the installation later failed with a `mount failed` error. The
+  installer now stops the installation and prompts you to reconnect the installation media and reboot the host.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9779 -->
+
+- Fixed an issue that prevented a control plane node from joining an Edge cluster that uses Palette eXtended
+  Kubernetes - Edge (PXK-E) after a join attempt failed. The node kept the cluster's virtual IP (VIP) address from the
+  failed attempt, so each retry failed with `connect: connection refused` errors for the VIP. This was most likely to
+  occur when two control plane nodes joined the cluster at the same time. A control plane node no longer keeps the VIP
+  after a failed join attempt.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9782 -->
+
+- Fixed an issue that caused Local UI to display only the message `Client sent an HTTP request to an HTTPS server.` when
+  you opened it with an `http://` address. Local UI now redirects HTTP requests on its port to HTTPS. Refer to
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for more
+  information.
 
 #### Deprecations and Removals
 
@@ -365,6 +424,70 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 ### Docs and Education
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+
+## November 6, 2026 - Component Updates {#component-updates-2026-45}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3404 -->
+<!-- RELEASE DATE: November 6, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.33 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.8 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.5 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.34.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.8  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.5  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.5  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.33 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.33 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5068 -->
+
+- Added K3s 1.34.12, 1.35.9, 1.36.5, and 1.37.1 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2500 -->
+
+- Fixed an issue in the Spectro Cloud Terraform and Crossplane providers that caused Day-2 `cloud_config` updates to the
+  `spectrocloud_cluster_edge_native` resource to fail when `ssh_keys` was not set.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.11.7 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.28.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.12 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.35.9 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.36.5 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.37.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :x: | :white_check_mark: | 2.19.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1-rev1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.20.0 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.5.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.40.3 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.17.1 |
+| <VersionedLink text="tetragon" url="/integrations/packs/?pack=tetragon" /> | `addon` | :white_check_mark: | :x: | 1.8.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.2.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
 
 ## October 30, 2026 - Component Updates {#component-updates-2026-44}
 
