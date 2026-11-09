@@ -105,37 +105,70 @@ Edge hosts.
    [Update a Cluster](../../../cluster-management/cluster-updates.md).
 
    Palette updates the image pull secrets in every namespace and the registry login on each Edge host in place. The new
-   Registry Connect credential does not reboot the Edge hosts or restart your pods.
+   Registry Connect credential does not reboot the Edge hosts, and you do not need to restart your workloads. Existing
+   pods use the new credential the next time they pull an image, for example when a container restarts or a pod is
+   rescheduled. This also applies when you add the Registry Connect pack to an existing cluster in step 3, because
+   Registry Connect writes the new credential to the image pull secret that the pods already use.
 
-8. If you added the Registry Connect pack to an existing cluster in step 3, restart the workloads on the cluster so that
-   their image pull secrets use the new credential.
+8. Confirm that the image pull secret contains the new credential. Registry Connect creates the secret in every
+   namespace and names it after the registry hostname, with each period replaced by a dash.
 
-   <!-- TODO(DOC-3369): Confirm the scope of the restart (all Deployments, DaemonSets, and StatefulSets, or only the
-   workloads that pull from the external registry). -->
+   ```shell
+   kubectl get secret <registry-hostname-with-dashes>-pull-secret --namespace default \
+     --output jsonpath='{.data.\.dockerconfigjson}' | base64 --decode
+   ```
 
-9. In the audit log of your registry, confirm that the Edge hosts pull images with the new credential.
+   Replace `<registry-hostname-with-dashes>` with the registry hostname, with each period replaced by a dash. For
+   example, the secret for `registry.example.com` is `registry-example-com-pull-secret`.
 
-10. Revoke the previous credential in your registry.
+   The output shows the new username. The audit log of your registry also shows pulls with the new credential, but only
+   for images that are not on the Edge hosts yet. When an image is already on a host, the registry receives only a check
+   request, which some registries do not log as a pull.
+
+9. Revoke the previous credential in your registry.
 
 ## Validate
 
-1. Start a test pod that pulls an image from the external registry. The `Always` pull policy forces a pull, even if the
-   image is already on the Edge host. Replace `<registry-hostname>/<image>:<tag>` with an image in your registry.
+Validate the rotation after you revoke the previous credential. While the previous credential is still active, a
+successful image pull does not show which credential the cluster used.
+
+1. Start a test pod that pulls an image from the external registry. With the `Always` pull policy, the Edge host checks
+   the image with the registry each time the pod starts, even if the image is already on the host. This check requires a
+   valid credential.
 
    ```shell
-   kubectl run registry-credential-test --image=<registry-hostname>/<image>:<tag> --image-pull-policy=Always --restart=Never
+   kubectl run registry-credential-test \
+     --image=<registry-hostname>/<repository>/<image>:<tag> \
+     --image-pull-policy=Always --restart=Never -- sleep 30
    ```
+
+   Replace `<registry-hostname>`, `<repository>`, `<image>`, and `<tag>` with the full path of an image in your
+   registry, as it is stored there. Do not use a short image name such as `busybox:1.36`. The image mapping rules
+   rewrite a short name to a different path, and the pull fails if the image does not exist at that path.
 
 2. Check the events of the test pod.
 
    ```shell
-   kubectl describe pod registry-credential-test
+   kubectl describe pod registry-credential-test | grep --extended-regexp "Pulled|Failed"
    ```
 
-   The **Events** section shows a `Pulled` event. An `ErrImagePull` or `ImagePullBackOff` event means that the cluster
-   still uses the previous credential.
+   | **Event**                                       | **Meaning**                                                                                                           |
+   | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+   | `Pulled`                                        | The cluster pulls images with the new credential.                                                                     |
+   | `Failed` with `401 Unauthorized`                | The credential is wrong or has not reached the cluster yet. Check the image pull secret again.                        |
+   | `Failed` with `not found` or `manifest unknown` | The image path does not exist in the registry, or a mapping rule points to a different path. The credential is valid. |
 
-3. Delete the test pod.
+3. If you also rotated the containerd mirror credential in step 5 of
+   [Rotate the Registry Credential](#rotate-the-registry-credential), restart CoreDNS and confirm that its pods return
+   to the `Running` state. CoreDNS does not use the image pull secret, so it pulls through the containerd mirror. The
+   restart briefly interrupts DNS lookups in the cluster.
+
+   ```shell
+   kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
+   kubectl get pods --namespace kube-system --selector k8s-app=kube-dns
+   ```
+
+4. Delete the test pod.
 
    ```shell
    kubectl delete pod registry-credential-test
