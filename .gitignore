@@ -27,6 +27,7 @@ node_modules
 *DS_Store
 *.env
 *.csv
+!static/assets/docs/csv/*.csv
 vale/styles/alex/
 vale/styles/Google/
 vale/styles/write-good/
