@@ -22,7 +22,7 @@ Create the Management Cluster,OCI Pack Registry Base Content Path,Has default,,R
 Create the Management Cluster,OCI Pack Registry Username,If using an external registry,Do Not Record,Username for your external registry.
 Create the Management Cluster,OCI Pack Registry Password,If using an external registry,Do Not Record,Password for your external registry.
 Create the Management Cluster,OCI Pack Registry Ca Cert,If registry uses a private CA,,Base64 certificate authority certificate for an external registry.
-Create the Management Cluster,Root Domain,Has default,,Root domain for the Palette VerteX installation.
+Create the Management Cluster,Root Domain,Has default,,Root domain for the installation.
 Create the Management Cluster,Network Time Protocol (NTP),If using multiple hosts,,"Time servers for the cluster, space-separated."
 Create the Management Cluster,SSH Keys,Optional,Do Not Record,Public SSH keys for access to the cluster nodes.
 Create the Management Cluster,Virtual IP Address (VIP),Yes,,Unused IPv4 address or FQDN for load balancing and high availability; also the system console address.
