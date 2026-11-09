@@ -69,19 +69,11 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12229 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12208 -->
 
-- To improve security, the following system configuration API endpoints now return stored secrets as `********` instead
-  of in clear text.
-
-  | API endpoint                                      | Masked field                                                                        |
-  | ------------------------------------------------- | ----------------------------------------------------------------------------------- |
-  | `GET /v1/system/config/sso`                       | `authSpec.github.clientSecretKey` and `authSpec.oidcAuthSpecs.<name>.clientSecret`. |
-  | `GET /v1/system/config/azure/storage`             | `spec.accessKey`                                                                    |
-  | `GET /v1/system/config/registries/{registryName}` | `spec.auth.password` and `spec.auth.token`                                          |
-  | `GET /v1/system/config/registries/oci/image`      | `password`                                                                          |
-
-  A secret that was never set still returns an empty string. Automation that reads a secret from these endpoints must
-  take it from its source instead, such as the identity provider, Azure storage account, or registry. To keep a stored
-  secret when you update one of these configurations, send `********` in the matching `PUT` request.
+- To improve security, system API responses now return stored secrets, such as passwords, access keys, and client
+  secrets, as `********`. A secret that was never set still returns an empty string. Automation that reads a secret from
+  the system APIs must take it from its source instead, such as the identity provider, cloud storage account, or
+  registry. To keep a stored secret when you update a system configuration, send `********` in that field of the `PUT`
+  request.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->
