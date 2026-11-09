@@ -41,10 +41,16 @@ log in again. The delay starts at one second and doubles with each subsequent fa
 mechanism begins after three unsuccessful login attempts.
 
 If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your
-user. By default, this lockout occurs after five consecutive failed attempts and lasts for 15 minutes.
+user. The lockout occurs when the number of failed attempts reaches the sum of the delay threshold and the maximum
+failed attempts setting. By default, this lockout occurs after eight consecutive failed attempts (three without a delay,
+then five with an increasing delay) and lasts for 15 minutes. Access is restored automatically when the lockout period
+ends.
 
 You can customize the default values in the `user-data` file for Edge hosts built with Palette agent version 4.7.16 or
-later. For more information, refer to the `stylus.localUI.login` parameters description in the
+later. For example, to block access after three consecutive failed attempts, set
+`stylus.localUI.login.attemptsBeforeExponentialDelayStarts` to `1` and
+`stylus.localUI.login.maxFailedAttemptsBeforeLockout` to `2`. For more information, refer to the `stylus.localUI.login`
+parameters description in the
 [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
 #### Change an Expired Password at Login
