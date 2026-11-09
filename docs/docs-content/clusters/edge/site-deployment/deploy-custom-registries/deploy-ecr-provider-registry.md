@@ -19,13 +19,13 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
 
 ## Limitations
 
-- Token-based authentication is supported only for connected clusters in appliance mode. Clusters in local mode ignore
-  the image registry selected for the cluster. If your cluster cannot use token-based authentication, refer to
-  [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
+- Token-based authentication is supported only for connected clusters in appliance mode. Clusters in local management
+  mode ignore the image registry selected for the cluster. If your cluster cannot use token-based authentication, refer
+  to [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
 
 - The image registry supplies credentials only for images on its own endpoint. Set the `system.uri` option in the OS
-  layer of your cluster profile to a provider image on the registry's endpoint. Otherwise, the image is pulled without
-  credentials, and the pull fails for a private repository.
+  layer of your cluster profile to a provider image on the registry's endpoint. Otherwise, the Edge host pulls the image
+  without credentials, and the pull fails for a private repository.
 
 - The image registry covers provider images only. It does not supply credentials for application workload images.
 
@@ -44,8 +44,7 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
   information, refer to [Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 - An IAM role in the AWS account that owns the repository, with read access to ECR. Palette assumes this role through
-  the AWS Security Token Service (STS). The Palette UI lists the required permissions and trust relationship when you
-  add the registry.
+  STS.
 
 - A cluster profile whose OS layer sets `system.uri` to the provider image in your ECR repository.
 
@@ -73,9 +72,8 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
 
    :::warning
 
-   You must add a trust relationship to the IAM role. Refer to the instructions in the side drawer next to the **ARN**
-   field to review the permissions and the IAM trust relationship to add to your IAM role. If the trust relationship is
-   missing, Palette cannot validate the registry.
+   You must add a trust relationship to the IAM role. The side drawer next to the **ARN** field lists the permissions
+   and the trust relationship to add. If the trust relationship is missing, Palette cannot validate the registry.
 
    :::
 

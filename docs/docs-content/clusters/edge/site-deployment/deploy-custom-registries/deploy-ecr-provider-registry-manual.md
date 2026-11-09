@@ -11,11 +11,11 @@ tags: ["edge"]
 
 [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) is a managed AWS service for storing and
 distributing container images. This guide describes how to manually configure an Edge cluster to pull provider images
-from a private Amazon ECR repository, both when the cluster is first created and when it is later upgraded, by storing a
-static AWS access key on the Edge hosts and in the cluster profile.
+from a private Amazon ECR repository by storing a static AWS access key on the Edge hosts and in the cluster profile.
+The configuration covers both cluster creation and later upgrades.
 
-For connected clusters in appliance mode, Palette can issue ECR tokens to the Edge hosts instead, so no static AWS
-credentials are stored on the hosts. Refer to
+For connected clusters in appliance mode, Palette can issue ECR tokens to the Edge hosts instead, so you do not need to
+store static AWS credentials on the hosts. Refer to
 [Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md).
 
 This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution, and it covers provider
