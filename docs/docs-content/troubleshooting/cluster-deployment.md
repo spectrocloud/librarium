@@ -90,7 +90,8 @@ longer need one of these namespaces, delete it with `kubectl delete namespace <n
 ### Restore the Labels After the Agent Upgrade
 
 After the Palette agent on a workload cluster is upgraded to version 4.10.b or later, you can restore the labels that
-you removed. Removing a namespace from the cluster RBAC or workspace settings then deletes it from the cluster again.
+you removed. With the labels restored, removing a namespace from the cluster RBAC or workspace settings deletes it from
+the cluster again.
 
 :::danger
 
@@ -107,11 +108,11 @@ on its next reconciliation.
 3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.b or later. If it shows an earlier
    version, do not restore the labels on this cluster.
 
-4. On the **Workloads** > **Namespaces** tab, select **Manage Namespaces**, and then record the namespaces that the
-   **Namespaces** tab of the **Settings** pane lists.
+4. On the **Workloads** > **Namespaces** tab, select **Manage Namespaces**, and then record the namespaces listed on the
+   **Namespaces** tab in the **Settings** pane.
 
 5. _(Clusters in a workspace only)_ From the left main menu, select **Workspaces**, and then select the workspace that
-   contains the cluster. Select **Settings** > **Namespaces**, and record the namespaces that the pane lists.
+   contains the cluster. Select **Settings** > **Namespaces**, and then record the namespaces listed in the pane.
 
 6. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the workload cluster.
 
@@ -135,7 +136,8 @@ on its next reconciliation.
    namespace/team-a-prod labeled
    ```
 
-8. Add the workspace label back to each namespace that you recorded both in step 3 of the debug steps and in step 5.
+8. _(Clusters in a workspace only)_ Add the workspace label back to each namespace that you recorded both in step 3 of
+   the debug steps and in step 5.
 
    ```shell
    kubectl label namespaces <namespace-names> spectrocloud.com/workspace=true
