@@ -9,50 +9,16 @@ tags: ["verteX management appliance", "self-hosted", "vertex"]
 sidebar_position: 20
 ---
 
-The VerteX Management Appliance is a solution for installing Palette VerteX on your infrastructure. It ships as a slim
-**Appliance ISO** paired with a **Content bundle** that you download separately. The ISO is used to boot the nodes,
-which are then clustered to form a Palette management cluster. You upload the content bundle after linking the nodes to
-provide the OS content and Palette VerteX packs needed to complete the installation.
+The VerteX Management Appliance is a solution for installing Palette VerteX on your infrastructure. The appliance ships
+as a slim **Appliance ISO** and a separate **Content bundle**. You boot each host from the Appliance ISO, and then
+upload the content bundle to the leader host after you link the hosts.
 
-Once Palette VerteX has been installed, you can download pack bundles and upload them to the internal Zot registry or an
-external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
-in your environment.
+This guide refers to the machines that you install Palette VerteX on as hosts. When you create the management cluster,
+each host that you add to a node pool becomes a node in the cluster. Because the appliance is often installed on Edge
+devices, these machines are also known as Edge hosts.
 
-## Third Party Packs
-
-There is an additional option to download and install the Third Party packs that provide complementary functionality to
-Palette VerteX. These packs are not required for Palette VerteX to function, but they do provide additional features and
-capabilities as described in the following table.
-
-| **Feature**                                                                                                                           | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
-| [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
-| [Configuration Security](../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
-| [Penetration Testing](../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
-| [Software Bill Of Materials (SBOM) scanning](../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
-| [Conformance Testing](../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
-
-## Architecture
-
-The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and
-Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance
-Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs
-needed to create cluster profiles.
-
-This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal
-Information Processing Standards (FIPS). The following table displays the infrastructure profile for the Palette VerteX
-appliance.
-
-| **Layer**      | **Component**                                 | **FIPS-compliant** |
-| -------------- | --------------------------------------------- | ------------------ |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | :white_check_mark: |
-| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | :white_check_mark: |
-| **CNI**        | Calico                                        | :white_check_mark: |
-| **CSI**        | Piraeus                                       | :white_check_mark: |
-| **Registry**   | Zot                                           | :white_check_mark: |
-
-Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
-of each component as they may be updated between releases.
+After you install Palette VerteX, you upload pack bundles to the internal Zot registry or an external registry. You use
+these packs to create cluster profiles and deploy workload clusters with Palette VerteX.
 
 ## Supported Platforms
 
@@ -64,7 +30,7 @@ The VerteX Management Appliance can be used on the following infrastructure plat
 
 ## Limitations
 
-- Only public image registries are supported if you are choosing to use an external registry for your pack bundles.
+- If you use an external registry for your pack bundles, only public image registries are supported.
 
 ## Installation Steps
 
@@ -85,9 +51,82 @@ Follow the instructions to install Palette VerteX using the VerteX Management Ap
 
 ### Install Palette VerteX {#install}
 
+Installing Palette VerteX consists of the following tasks.
+
+1. [Download the Artifacts](#download-the-artifacts)
+
+2. [Boot Hosts from ISO and Run the Installer](#boot-hosts-from-iso-and-run-the-installer)
+
+3. [Configure Hosts](#configure-hosts)
+
+4. [Link Hosts](#link-hosts)
+
+5. [Upload Content Bundle to the Leader Host](#upload-content-bundle-to-the-leader-host)
+
+6. [Create the Management Cluster](#create-the-management-cluster)
+
+7. [Log In to the System Console](#log-in-to-the-system-console)
+
+#### Download the Artifacts
+
 <PartialsComponent
   category="self-hosted"
-  name="installation-steps-enablement"
+  name="installation-steps-download"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+#### Boot Hosts from ISO and Run the Installer
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-boot"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+#### Configure Hosts
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-configure"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+#### Link Hosts
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-link"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+#### Upload Content Bundle to the Leader Host
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-upload-content"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+#### Create the Management Cluster
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-create-cluster"
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
@@ -102,6 +141,17 @@ information, refer to the
 guide.
 
 :::
+
+#### Log In to the System Console
+
+<PartialsComponent
+  category="self-hosted"
+  name="installation-steps-login"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
 
 ### Validate
 
@@ -155,9 +205,19 @@ environment.
 
 ## (Optional) Upload Third Party Packs
 
-Follow the instructions to upload the Third Party packs to your Palette VerteX instance. The Third Party packs contain
-additional functionality and capabilities that enhance the Palette VerteX experience, such as backup and restore,
-configuration scanning, penetration scanning, SBOM scanning, and conformance scanning.
+There is an additional option to download and install the Third Party packs that provide complementary functionality to
+Palette VerteX. These packs are not required for Palette VerteX to function, but they do provide additional features and
+capabilities as described in the following table.
+
+| **Feature**                                                                                                                           | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
+| [Configuration Security](../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
+| [Penetration Testing](../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
+| [Software Bill Of Materials (SBOM) scanning](../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
+| [Conformance Testing](../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
+
+Follow the instructions to upload the Third Party packs to your Palette VerteX instance.
 
 ### Prerequisites
 
@@ -191,6 +251,40 @@ configuration scanning, penetration scanning, SBOM scanning, and conformance sca
   iso="Palette VerteX"
   app="VerteX Management Appliance"
 />
+
+## Artifact Components
+
+The **Appliance ISO** is a slim installer that contains the OS, Palette agent, and Kubernetes distribution needed to
+install a host.
+
+The **Content bundle** contains all the components of the Palette VerteX management cluster, including the OS,
+Kubernetes distribution, Container Network Interface (CNI), Container Storage Interface (CSI), and a
+[Zot registry](https://zotregistry.dev/). Zot is a lightweight, OCI-compliant container image registry that is used to
+store the Palette VerteX packs needed to create cluster profiles. The content bundle also includes those packs.
+
+This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal
+Information Processing Standards (FIPS). The following table displays the components of the Palette VerteX appliance and
+which artifact contains each component.
+
+| **Layer**      | **Component**                                 | **Appliance ISO**  | **Content Bundle** | **FIPS-compliant** |
+| -------------- | --------------------------------------------- | ------------------ | ------------------ | ------------------ |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **CNI**        | Calico                                        | :x:                | :white_check_mark: | :white_check_mark: |
+| **CSI**        | Piraeus                                       | :x:                | :white_check_mark: | :white_check_mark: |
+| **Registry**   | Zot                                           | :x:                | :white_check_mark: | :white_check_mark: |
+
+<!-- prettier-ignore-start -->
+
+Piraeus requires the Distributed Replicated Block Device (DRBD) kernel module on each node. On hosts with Secure Boot
+enabled, keep the **DRBD Compile Mode** option set to `shipped_modules`. For more information about how each mode loads
+the module, refer to the **Additional Details** tab of the
+<VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi&tab=custom#drbd-kernel-module-loading" /> pack.
+
+<!-- prettier-ignore-end -->
+
+Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
+of each component as they might be updated between releases.
 
 ## Next Steps
 
