@@ -6,7 +6,7 @@
 NODE_OPTIONS = "--max_old_space_size=6144"
 
 # DOC 3427: deploy previews skip the pack pages to stay under the build machine's memory limit, unless the PR has the
-# pack-pr label or changes pack files. See scripts/netlify-preview-build.sh. Production (Release to Production) and the
+# pack-pr label or changes pack files. Refer to scripts/netlify-preview-build.sh. Production (Release to Production) and the
 # version-* branch deploys still build them.
 [context.deploy-preview]
   command = "./scripts/netlify-preview-build.sh"
