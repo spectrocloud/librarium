@@ -3,4 +3,9 @@
   command = "npm run build"
 
 [build.environment]
-NODE_OPTIONS = "--max_old_space_size=5120"
+NODE_OPTIONS = "--max_old_space_size=6144"
+
+# DOC 3427: deploy previews skip the pack pages to stay under the build machine's memory limit.
+# Production (Release to Production) and the version-* branch deploys still build them.
+[context.deploy-preview.environment]
+DISABLE_PACKS_INTEGRATIONS = "true"
