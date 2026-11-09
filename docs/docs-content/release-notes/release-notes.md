@@ -266,6 +266,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-10061 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3429 -->
+
+- You can now change how long each OS upgrade attempt can run on an Edge host with the `system.upgradeTimeoutMinutes`
+  option in the OS layer of the cluster profile. The default limit is 45 minutes. Increase the limit for Edge hosts that
+  download provider images over slow network connections. Refer to
+  [Configure the OS Upgrade Timeout](../clusters/edge/cluster-management/os-upgrade-timeout.md) for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12373 -->
 

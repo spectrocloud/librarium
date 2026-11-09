@@ -13,6 +13,7 @@ operations for your Palette Edge cluster.
 
 ## Resources
 
+- [Configure the OS Upgrade Timeout](os-upgrade-timeout.md)
 - [Edge Cluster Upgrade Behavior](upgrade-behavior.md)
 - [Lock Profile Updates](lock-profile-updates.md)
 - [Renew Certificates](certificate-renewal.md)
