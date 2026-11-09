@@ -37,7 +37,6 @@ import MiscIcon from "@site/static/assets/packs/misc_layer.svg";
 import BookIcon from "@site/static/assets/icons/book-solid-full.svg";
 import FlagIcon from "@site/static/assets/icons/flag-checkered-solid-full.svg";
 import UsersIcon from "@site/static/assets/icons/users-solid-full.svg";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { fontAwesomeIcons } from "./dynamicFontAwesomeImports";
 
 interface IconsMap {
@@ -88,7 +87,7 @@ export const icons: IconsMap = {
 
 function IconMapper({ type }: { type: string }): React.ReactElement {
   if (!icons[type]) {
-    return <FontAwesomeIcon icon={fontAwesomeIcons[type as keyof typeof fontAwesomeIcons] as IconProp} />;
+    return <FontAwesomeIcon icon={fontAwesomeIcons[type as keyof typeof fontAwesomeIcons]} />;
   }
 
   return icons[type];

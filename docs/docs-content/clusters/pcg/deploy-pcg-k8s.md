@@ -94,6 +94,16 @@ development and testing environments.
   - DNS can resolve the domain `api.spectrocloud.com` or the domain that you have configured for a self-hosted Palette
     installation.
 
+- _(Azure managed identity cloud accounts only)_ A Kubernetes cluster in Azure that meets the following requirements.
+  Refer to [Use Azure Managed Identities](../public-cloud/azure/azure-managed-identities.md) for more information.
+
+  - At least three nodes.
+  - The [management identity](../public-cloud/azure/azure-managed-identities.md#managed-identities) attached to every
+    node.
+  - If the PCG uses a proxy, `169.254.169.254` added to the `NO_PROXY` list.
+  - No component on the PCG nodes that intercepts Azure Instance Metadata Service (IMDS) requests, such as
+    `aad-pod-identity`.
+
 - (Optional) If you want Palette to display cluster metrics, ensure that the
   [metrics server](https://github.com/kubernetes-sigs/metrics-server) is installed in the cluster. You can install the
   metrics server using the following command.
