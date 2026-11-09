@@ -8,7 +8,8 @@ sidebar_position: 8
 tags: ["vmo", "vm launchpad", "snapshots"]
 ---
 
-VM Launchpad supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new identities.
+PaletteAI VM Launchpad supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new
+identities.
 
 ## Snapshots
 
