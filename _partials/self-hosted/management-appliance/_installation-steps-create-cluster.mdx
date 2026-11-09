@@ -72,8 +72,6 @@ as its nodes.
 
 7. In **Cluster Config**, configure the following options.
 
-    ##### Cluster Config Options
-
     | **Option**                                 | **Description**                                                                                | **Type** | **Default**  |
     | ------------------------------------------ | ---------------------------------------------------------------------------------------------- | -------- | ------------ |
     | **Network Time Protocol (NTP) (Optional)** | The NTP servers to synchronize time within the cluster.                                        | String   | _No default_ |
@@ -82,47 +80,21 @@ as its nodes.
 
     Click **Next** when you are done.
 
-8. In **Node Config**, configure the following options.
-
-    :::important
-
-    You must assign at least three control plane nodes for high availability. You can remove the worker node
-    pool as it is not required for the {props.version} management cluster. If you do this, you must enable the
-    **Allow worker capability** option for the control plane node pool.
-
-    :::
+8. In **Node Config**, configure the following options. For high availability, assign at least three control plane nodes.
 
     ##### Node Pool Options
-
-    <Tabs>
-
-    <TabItem value="control-plane-pool-options" label="Control Plane Pool Options">
 
     | **Option**                                       | **Description**                                                                                                                                                       | **Type**                                             | **Default**              |
     | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------ |
     | **Node pool name**                               | The name of the control plane node pool. This will be used to identify the node pool in {props.version}.                                                                      | String                                               | **`control-plane-pool`** |
-    | **Allow worker capability (Optional)**           | Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster.                 | Boolean                                              | **True**                 |
+    | **Allow worker capability**                      | Allow workloads to be scheduled on this control plane node pool. Required for the {props.version} Management Appliance because it does not have worker pools.                 | Boolean                                              | **True**                 |
     | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in {props.version}.                                                  | String                                               | _No default_             |
     | **Taints**                                       | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | - **Key** = string <br />- **Value** = string<br />- **Effect** = string (enum) | _No default_             |
 
-    </TabItem>
-
-    <TabItem value="worker-pool-options" label="Worker Pool Options">
-
-    | **Option**                                       | **Description**                                                                                                                                                       | **Type**                                             | **Default**       |
-    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------- |
-    | **Node pool name**                               | The name of the worker node pool. This will be used to identify the node pool in {props.version}.                                                                             | String                                               | **`worker-pool`** |
-    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in {props.version}.                                                  | String                                               | _No default_      |
-    | **Taints**                                       | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | - **Key** = string <br />- **Value** = string<br />- **Effect** = string (enum) | _No default_      |
-
-    </TabItem>
-
-    </Tabs>
-
     ###### Pool Configuration
 
-    The following options are available for both the control plane and worker node pools. You can configure these
-    options to your requirements. You can also remove worker pools if not needed.
+    The following options are available for the control plane. You can configure these
+    options to your requirements.
 
     | **Option**               | **Description**                                                                                                                                                                           | **Type**      | **Default**                                                                                      |
     | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------ |
