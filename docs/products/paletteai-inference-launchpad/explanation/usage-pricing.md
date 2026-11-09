@@ -121,6 +121,10 @@ and how long they keep their work. Two of them count toward the cache reads that
 The prefix cache and the KV cache hold the same kind of data. The prefix cache is the part of a finished request's KV
 cache that the engine keeps, so that a later prompt with the same opening can reuse it.
 
+A later prompt reuses the prefix cache only when its client shares the cache with the client that sent the earlier
+prompt. The workspace's policy decides who shares. By default, clients in the same workspace share. Clients in different
+workspaces never share. For the choices, refer to [Prompt Cache Sharing](./prompt-cache-sharing.md).
+
 The **Usage** page describes the combined reuse from the response cache and the prefix cache as tokens _answered from
 cache_. For more on the engine's working cache, refer to the [KV cache](../reference/glossary.md#kv-cache) entry in the
 Glossary.

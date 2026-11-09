@@ -13,9 +13,9 @@ keywords: ["launchpad", "ai", "access", "policy", "rbac", "workspace", "role", "
 This reference lists the tabs, roles, columns, fields, addresses, and messages on the **Access & Policy** page of the
 appliance console. It supports the [Create a Workspace](../how-to-guides/create-a-workspace.md),
 [Manage Workspace Members](../how-to-guides/manage-workspace-members.md),
-[Manage Users](../how-to-guides/manage-users.md), and [Manage Groups](../how-to-guides/manage-groups.md) how-tos. For
-how workspaces, members, and policies relate, refer to
-[Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
+[Manage Users](../how-to-guides/manage-users.md), [Manage Groups](../how-to-guides/manage-groups.md), and
+[Set Prompt Cache Sharing for a Policy](../how-to-guides/set-prompt-cache-sharing.md) how-tos. For how workspaces,
+members, and policies relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
 
 ## Tab Bar and Workspace Drop-Down Menu
 
@@ -141,14 +141,28 @@ name** for a user.
 | **Fallback**             | The policy's fallback setting.                              |
 | **Bursting**             | Whether the policy turns on bursting.                       |
 | **Web tools**            | Whether the policy turns on web tools.                      |
+| **Cache sharing**        | **Workspace** or **Each client**.                           |
 
 <!-- vale on -->
 
-| **Control**       | **Action**                                                                                                |
-| ----------------- | --------------------------------------------------------------------------------------------------------- |
-| **Create policy** | Opens the **Create policy** wizard, with the **Overview**, **Quotas**, **Egress**, and **Routing** steps. |
-| **Edit**          | Opens the **Edit policy** drawer, with **Save changes**.                                                  |
-| **Delete**        | Removes the policy. The appliance refuses it while a workspace follows the policy.                        |
+| **Control**       | **Action**                                                                                                                                                                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Create Policy** | Opens the **Create policy** wizard, with the **Overview**, **Quotas**, **External access**, **Cache sharing**, and **Routing** steps.                                                     |
+| **Edit**          | Opens the policy's own page, titled with the policy name. The page has the **Quotas**, **External access**, **Cache sharing**, and **Routing** sections, and saves with **Save changes**. |
+| **Delete**        | Removes the policy. The appliance refuses it while a workspace follows the policy.                                                                                                        |
+
+### Cache Sharing Section
+
+The **Cache sharing** step of the **Create policy** wizard and the **Cache sharing** section of a policy's page each
+have one field. For what each option means, refer to [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
+
+| **Element**                                             | **Value**                                                                                                       |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Prompt cache sharing**                                | A required drop-down menu with the **Share within the workspace** and **Each client is isolated** options.      |
+| Default                                                 | **Share within the workspace**, for a new policy and for a policy that has never had the field set.             |
+| Description for **Share within the workspace**          | `Clients reuse the prompt cache another client already processed.`                                              |
+| Description for **Each client is isolated**             | `Each client keeps its own prompt cache.`                                                                       |
+| Alert, while **Share within the workspace** is selected | `Cache sharing lets a client tell with a faster first response time that another client sent the same opening.` |
 
 ## Users Tab
 

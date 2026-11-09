@@ -98,11 +98,12 @@ policy, and then to make a workspace follow that policy.
 
 1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
 
-2. Select **Create policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
-   a new policy, complete the **Overview**, **Quotas**, and **Egress** steps.
+2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
+   a new policy, complete the **Overview**, **Quotas**, **External access**, and **Cache sharing** steps.
 
-3. On the **Routing** step, map every alias in the **Tier map** to a model. Set at least one alias to **Use Semantic
-   Router rules** so that the **Semantic routing** rules appear.
+3. On the **Routing** step of the wizard, or in the **Routing** section of the policy's page, map every alias in the
+   **Tier map** to a model. Set at least one alias to **Use Semantic Router rules** so that the **Semantic routing**
+   rules appear.
 
 4. In **Semantic routing**, set the **Complexity threshold** and the **Model** and **Thinking** for each category rule,
    as described in [Set a Client's Complexity Threshold](#set-a-clients-complexity-threshold) and
@@ -213,10 +214,10 @@ platform administrator can set recording, and it needs the semantic router runni
 
 1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
 
-2. Select **Create policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
+2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
 
-3. On the **Routing** step, in the **Decision recording** section, turn on **Record the classified turns of this
-   policy's clients**.
+3. On the **Routing** step of the wizard, or in the **Routing** section of the policy's page, in the **Decision
+   recording** section, turn on **Record the classified turns of this policy's clients**.
 
 4. _(Optional)_ In **Turns kept per client**, enter how many requests each client keeps. Leave it empty for the default
    of 1,000.

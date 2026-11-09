@@ -30,6 +30,7 @@ you the steps to do it without teaching background concepts.
 | [Manage Workspace Members](./manage-workspace-members.md)                               | Add, change, and remove the members of a workspace.                                                                   |
 | [Manage Users](./manage-users.md)                                                       | Add, change, deactivate, and delete users, and set their passwords.                                                   |
 | [Manage Groups](./manage-groups.md)                                                     | Add, change, and delete groups.                                                                                       |
+| [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md)                  | Choose whether the clients in a workspace share the prompt cache or each keep their own.                              |
 | [Create a Client](./create-a-client.md)                                                 | Create a client and issue its first API token.                                                                        |
 | [Generate an API Token](./generate-an-api-token.md)                                     | Create an API token that clients use to authenticate to the appliance.                                                |
 | [Set and Manage Client Quotas](./manage-client-quotas.md)                               | Set, edit, raise, and remove a client's request, token, and cost limits.                                              |

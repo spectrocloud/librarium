@@ -70,6 +70,22 @@ Confirm each prerequisite before starting:
 2. Open the appliance console and confirm that models are still serving. You do not re-upload model weights unless the
    release notes for that version say to.
 
+## Upgrade from Version 1.2
+
+In version 1.2, every client had its own prompt cache, and policies had no cache sharing field.
+
+After an upgrade to version 1.3.0, every policy from version 1.2 shares within its workspace. This has the following
+effects:
+
+- Clients in the same workspace start to share the [prompt cache](../reference/glossary.md#prompt-cache).
+
+- The [timing side channel](../explanation/prompt-cache-sharing.md#the-timing-side-channel) opens between them.
+
+Both changes happen without any action from an administrator.
+
+To keep the version 1.2 behavior, set each policy to **Each client is isolated**. For the steps, refer to
+[Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md).
+
 ## Next Steps
 
 - [Manage Cluster Infrastructure](./manage-cluster-infrastructure.md)

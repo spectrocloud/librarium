@@ -75,10 +75,10 @@ Authorize the endpoint on a policy so that every client in the workspaces that f
 
 2. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
 
-3. Select **Create policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
+3. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
    a new policy, complete the **Overview** and **Quotas** steps.
 
-4. Go to the **Egress** step of the wizard, or the **Egress** section of the **Edit policy** drawer.
+4. Go to the **External access** step of the wizard, or the **External access** section of the policy's page.
 
 5. Turn on **Enable external inferencing**.
 
@@ -106,7 +106,10 @@ Authorize the endpoint on a policy so that every client in the workspaces that f
     endpoint has a key, whether the key comes from **Integrations** or from the **Key** column. If no listed endpoint
     has a key, the section reads `Add an endpoint and its key first.`
 
-11. Go to the **Routing** step to route requests to the endpoint, as described in
+11. _(New policy only)_ On the **Cache sharing** step, in the **Prompt cache sharing** drop-down menu, select **Share
+    within the workspace** or **Each client is isolated**, and then select **Next**.
+
+12. Go to the **Routing** step to route requests to the endpoint, as described in
     [Route Requests to the Endpoint](#route-requests-to-the-endpoint). To save the policy without changing its routing,
     select **Create policy**, or **Save changes** if you are editing a policy.
 
@@ -116,7 +119,7 @@ Refer to
 
 ## Route Requests to the Endpoint
 
-Continue in the same policy, on the **Routing** step of the wizard or the **Routing** section of the drawer.
+Continue in the same policy, on the **Routing** step of the wizard or the **Routing** section of the policy's page.
 
 1. In the **Tier map**, select **Add alias rule**, or edit an existing row.
 
