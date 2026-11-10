@@ -9,8 +9,6 @@ sidebar_position: 25
 tags: ["packs", "profiles", "reference"]
 ---
 
-<!-- TODO(DOC-3379): Draft. Open questions for engineering are marked with TODO comments. -->
-
 Every pack has a `values.yaml` file that holds its configuration. When you add a pack to a cluster profile, Palette
 displays these values in the YAML editor of the profile layer, where you can review and change them. Palette reads a set
 of top-level keys from the values to decide how to install and configure the pack. It passes the rest of the values to
@@ -27,8 +25,6 @@ reads a top-level key, but other Palette components match the exact key name, an
 case-sensitive. For example, Spectro Cloud Kubernetes packs use `kubeadmconfig` in lowercase, so use the same spelling
 when you add or change Kubernetes settings.
 
-<!-- TODO(DOC-3379): Confirm with engineering that the docs should require exact key spellings. -->
-
 ## Top-Level Keys
 
 The following table lists the top-level keys that Palette reads and the packs that use them.
@@ -43,7 +39,7 @@ The following table lists the top-level keys that Palette reads and the packs th
 | [`canonicalK8sConfig`](#canonicalk8sconfig)                               | Canonical Kubernetes packs                         | Bootstrap and control plane settings of the cluster.                             |
 | [`cloud`](#cloud)                                                         | Kubernetes packs on AWS, Azure, and MAAS           | Infrastructure settings for the cloud that hosts the cluster.                    |
 | [`imageSwap`](#imageswap)                                                 | Kubernetes packs of managed Kubernetes clusters    | Registry mappings for the Image Swap webhook.                                    |
-| [`manageCloudFormationStackManually`](#managecloudformationstackmanually) | Kubernetes packs on AWS                            | Use a CloudFormation stack that you manage, instead of one that Palette creates. |
+| [`manageCloudFormationStackManually`](#managecloudformationstackmanually) | Kubernetes packs on AWS, including EKS             | Use a CloudFormation stack that you manage, instead of one that Palette creates. |
 | [`managedControlPlane`](#managedcontrolplane)                             | EKS and AKS packs                                  | Settings of the managed control plane.                                           |
 | [`managedMachinePool`](#managedmachinepool)                               | EKS and AKS packs                                  | Settings of the managed node pools.                                              |
 | [`nodeCustomization`](#nodecustomization)                                 | EKS packs                                          | Customizations to how EKS nodes bootstrap.                                       |
@@ -119,11 +115,14 @@ specify, before Palette marks the pack as ready. Refer to
 
 ### `kubeadmconfig`
 
+<!-- prettier-ignore-start -->
+
 PXK packs hold the kubeadm configuration of the cluster under `kubeadmconfig`. Its sub-keys include `apiServer`,
 `controllerManager`, `scheduler`, `kubeletExtraArgs`, `files`, `preKubeadmCommands`, and `postKubeadmCommands`. For the
 full set of options and examples, refer to the
-
 <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
+
+<!-- prettier-ignore-end -->
 
 ```yaml
 kubeadmconfig:
@@ -147,8 +146,6 @@ NodePort services, and `cloud.maas.customEndpoint` sets a custom API server endp
 [Custom Security Group Ingress Rules](../clusters/public-cloud/aws/architecture.md#custom-security-group-ingress-rules)
 and to the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
-<!-- TODO(DOC-3379): Confirm with engineering which cloud.azure and cloudControllerManager options customers can set, and document them here. -->
-
 ### `imageSwap`
 
 The `imageSwap` key maps image registries to mirror registries for the Image Swap webhook, which rewrites the image
@@ -157,10 +154,9 @@ references of the workloads in the cluster. Refer to [Image Swap](../clusters/cl
 ### `manageCloudFormationStackManually`
 
 Set `manageCloudFormationStackManually.enabled` to `true` to use a CloudFormation stack that you create and manage,
-instead of one that Palette creates. The setting of the cloud account takes precedence over the pack value. Refer to
+instead of one that Palette creates. Palette reads this key at the top level of the Kubernetes pack values of AWS IaaS
+and EKS clusters. The setting of the cloud account takes precedence over the pack value. Refer to
 [Step 2: Choose CloudFormation Stack Management Option](../clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies.md#step-2-choose-cloudformation-stack-management-option).
-
-<!-- TODO(DOC-3379): Confirm with engineering whether this key applies only to PXK packs, as the minimum permissions page says, or to all AWS Kubernetes packs. Fix the other page if needed. -->
 
 ## Keys for Managed Kubernetes Packs
 
@@ -186,10 +182,23 @@ comment out these settings by default.
 
 ### `nodeCustomization`
 
-EKS packs use `nodeCustomization` to customize how the nodes bootstrap, for example with a user data script for Amazon
-Linux 2023 nodes. Refer to the <VersionedLink text="Amazon EKS" url="/integrations/packs/?pack=kubernetes-eks" /> pack.
+EKS packs use `nodeCustomization` to customize how the worker nodes bootstrap. The packs do not include the key by
+default. Add it at the top level of the pack values. The following table describes the fields that Palette applies.
 
-<!-- TODO(DOC-3379): Confirm with engineering which nodeCustomization options are supported besides al2023.userDataScript, and document them here. -->
+| **Field**                   | **Node Type**     | **Description**                                                                              |
+| --------------------------- | ----------------- | -------------------------------------------------------------------------------------------- |
+| `al2.preKubeadmCommands`    | Amazon Linux 2    | A list of commands that run on each node before the node bootstraps.                         |
+| `al2.postKubeadmCommands`   | Amazon Linux 2    | A list of commands that run on each node after the node bootstraps.                          |
+| `al2023.userDataScript`     | Amazon Linux 2023 | A Bash script that runs on each node as part of the node bootstrap.                          |
+| `al2023.nodeConfig.kubelet` | Amazon Linux 2023 | Kubelet arguments as key-value pairs, which Palette passes to Kubelet as command-line flags. |
+
+<!-- prettier-ignore-start -->
+
+Changing `nodeCustomization` after you create the cluster repaves the worker node pools. For examples and the AMI types
+that these options apply to, refer to the
+<VersionedLink text="Amazon EKS" url="/integrations/packs/?pack=kubernetes-eks" /> pack.
+
+<!-- prettier-ignore-end -->
 
 ## Keys for Palette Dev Engine
 
@@ -226,17 +235,22 @@ Container tiers of an app profile use `containerService` to describe the contain
 
 ### `zarf`
 
-Zarf packs use the `zarf` key for Zarf initialization and deployment options. For Zarf packs, refer to
-[Add OCI Zarf Registry](./registries/oci-registry/add-oci-zarf.md).
+Zarf packs use the `zarf` key for the options that Palette passes to Zarf when it initializes Zarf on the cluster and
+deploys the Zarf package. The following table describes the sub-keys.
 
-<!-- TODO(DOC-3379): Confirm with engineering whether customers set zarf options or Palette sets them. -->
+| **Sub-Key**          | **Description**                                                                                                       |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `init`, `deploy`     | The Zarf init package and the Zarf package to deploy, with its `checksum`, `components`, and `cosignPubKey`.          |
+| `registry`, `git`    | The `url`, `username`, and `password` of the registry and Git server that Zarf uses, and whether they are `insecure`. |
+| `nodePort`           | The NodePort of the in-cluster registry that Zarf creates when it initializes.                                        |
+| `storageClass`       | The storage class of the in-cluster registry and Git server that Zarf creates when it initializes.                    |
+| `disableZarfWebhook` | Set to `true` to turn off the Zarf mutating webhook.                                                                  |
 
-### Reserved Keys
+For Zarf packs, refer to [Add OCI Zarf Registry](./registries/oci-registry/add-oci-zarf.md).
 
-Palette also recognizes the `palettePatch`, `cloudService`, `ansibleRoles`, and `microk8sConfig` keys. Palette reserves
-these keys for internal use. Do not add them to your packs.
+### `palettePatch`
 
-<!-- TODO(DOC-3379): Confirm with engineering that these keys are reserved for internal use. -->
+Palette uses the `palettePatch` key internally. Do not add it to your packs.
 
 Other Palette components read keys that this page does not cover, such as `cluster` in Edge Kubernetes packs and
 `stages` in OS packs.
