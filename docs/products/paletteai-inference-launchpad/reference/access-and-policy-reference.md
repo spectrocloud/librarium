@@ -159,7 +159,7 @@ have one field. For what each option means, refer to [Prompt Cache Sharing](../e
 | **Element**                                             | **Value**                                                                                                       |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | **Prompt cache sharing**                                | A required drop-down menu with the **Share within the workspace** and **Each client is isolated** options.      |
-| Default                                                 | **Share within the workspace**, for a new policy and for a policy that has never had the field set.             |
+| Default                                                 | **Share within the workspace**                                                                                  |
 | Description for **Share within the workspace**          | `Clients reuse the prompt cache another client already processed.`                                              |
 | Description for **Each client is isolated**             | `Each client keeps its own prompt cache.`                                                                       |
 | Alert, while **Share within the workspace** is selected | `Cache sharing lets a client tell with a faster first response time that another client sent the same opening.` |

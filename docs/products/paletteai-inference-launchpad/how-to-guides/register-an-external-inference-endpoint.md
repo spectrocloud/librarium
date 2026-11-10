@@ -106,8 +106,8 @@ Authorize the endpoint on a policy so that every client in the workspaces that f
     endpoint has a key, whether the key comes from **Integrations** or from the **Key** column. If no listed endpoint
     has a key, the section reads `Add an endpoint and its key first.`
 
-11. _(New policy only)_ On the **Cache sharing** step, in the **Prompt cache sharing** drop-down menu, select **Share
-    within the workspace** or **Each client is isolated**, and then select **Next**.
+11. _(New policy only)_ On the **Cache sharing** step, select **Next** to keep the default, **Share within the
+    workspace**. For the choices, refer to [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
 
 12. Go to the **Routing** step to route requests to the endpoint, as described in
     [Route Requests to the Endpoint](#route-requests-to-the-endpoint). To save the policy without changing its routing,

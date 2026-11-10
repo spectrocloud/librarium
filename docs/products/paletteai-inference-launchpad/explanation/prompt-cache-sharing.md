@@ -33,8 +33,9 @@ console labels, refer to [Access and Policy Reference](../reference/access-and-p
 
 ## Why Sharing Helps
 
-Coding assistants often start every request with the same long text, such as a system prompt and tool definitions.
-Sharing lets a second client reuse the work that the engine saved for the first client. This has two effects:
+[Coding assistants](../reference/glossary.md#coding-assistant) often start every request with the same long text, such
+as a system prompt and tool definitions. Sharing lets a second client reuse the work that the engine saved for the first
+client. This has two effects:
 
 - The second client gets the first part of its response sooner.
 
@@ -54,8 +55,8 @@ shows each choice as a shorter value.
 | **Share within the workspace** | **Workspace**    | All clients in the workspace share one prompt cache.         |
 | **Each client is isolated**    | **Each client**  | Each client reuses only the work saved for its own requests. |
 
-**Share within the workspace** is the default. A new policy starts with it. A policy that never had the field set also
-uses it.
+**Share within the workspace** is the default. Every policy uses it until an administrator selects **Each client is
+isolated**.
 
 These rules apply under both choices:
 
@@ -77,22 +78,21 @@ workspace of its own and give it new API tokens.
 ## The Timing Side Channel
 
 Sharing lets one client learn something about another client in the same workspace. If another client already sent the
-same opening, the engine skips that work. The client can notice this in two ways:
+same opening, the engine skips that work. The client that sends the later request can notice this in two ways:
 
 - The first part of the response arrives sooner.
 
 - The response reports cached tokens in its usage.
 
-The client cannot read the other client's text or answer. It learns that another client in its workspace already sent
-the same opening. For example, a client can send an opening that it thinks another client used. If the cached tokens in
-the response cover the guessed text, the guess was right.
+The client cannot read the other client's text or answer directly. It learns only that another client in its workspace
+already sent the same opening, which is enough to confirm a guess. For example, a client can send an opening that it
+thinks another client used. If the cached tokens in the response cover the guessed text, the guess was right.
 
 While **Share within the workspace** is selected, the console shows this risk in an alert above the **Prompt cache
 sharing** field.
 
 Choose **Each client is isolated** when the clients in one workspace must not learn this about each other. Put teams
-that must keep their work private from each other in separate workspaces. Separate workspaces never share, whatever
-their policy says.
+that must keep their work private from each other in separate workspaces.
 
 ## What Cache Sharing Does Not Cover
 
@@ -111,7 +111,7 @@ nothing needs to restart. Moving a workspace to a policy with a different choice
 
 After a change, the engine does not reuse work that it saved under the earlier choice. For the first request with a
 given opening, the engine reads that text again. If you switch back to an earlier choice, the engine can reuse work from
-that time that it still holds. The engine drops old saved work when it needs the memory.
+that time that it still holds.
 
 ## Resources
 

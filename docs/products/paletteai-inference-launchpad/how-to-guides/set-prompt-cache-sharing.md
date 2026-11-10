@@ -29,7 +29,7 @@ follows. For what each choice means and the risk that sharing brings, refer to
 
 3. Select the **Policies** tab.
 
-4. In the policy's row, note the workspaces that the **Followed by** column lists.
+4. In the policy's row, check the **Followed by** column for the workspaces whose clients the change affects.
 
 5. In the policy's row, open the three-dot menu, and then select **Edit**. The policy's page opens, titled with the
    policy name.
@@ -54,13 +54,14 @@ follows. For what each choice means and the risk that sharing brings, refer to
 4. Complete the **Overview**, **Quotas**, and **External access** steps.
 
 5. On the **Cache sharing** step, in the **Prompt cache sharing** drop-down menu, select **Share within the workspace**
-   or **Each client is isolated**.
+   or **Each client is isolated**, and then select **Next**.
 
 6. Complete the **Routing** step, and then select **Create policy**.
 
 7. Select the **Workspaces** tab.
 
-8. In the row of the workspace that should follow the new policy, open the three-dot menu, and then select **Manage**.
+8. In the row of the workspace that should follow every setting of the new policy, open the three-dot menu, and then
+   select **Manage**.
 
 9. In the **Policy** field, select the new policy, and then select **Save changes**.
 

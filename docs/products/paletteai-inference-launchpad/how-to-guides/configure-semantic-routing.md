@@ -216,7 +216,7 @@ platform administrator can set recording, and it needs the semantic router runni
 
 2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
 
-3. On the **Routing** step of the wizard, or in the **Routing** section of the policy's page, in the **Decision
+3. Go to the **Routing** step of the wizard, or the **Routing** section of the policy's page. In the **Decision
    recording** section, turn on **Record the classified turns of this policy's clients**.
 
 4. _(Optional)_ In **Turns kept per client**, enter how many requests each client keeps. Leave it empty for the default
