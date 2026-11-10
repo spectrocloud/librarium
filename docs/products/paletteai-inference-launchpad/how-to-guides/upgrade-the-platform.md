@@ -24,16 +24,8 @@ Confirm each prerequisite before starting:
   installation. The upgrade wizard requires you to re-enter this password.
 - A newer [content bundle](../reference/glossary.md#content-bundle) from Artifact Studio that matches the appliance's
   GPU vendor, NVIDIA or AMD.
-
-## Upgrade from Version 1.2
-
-In version 1.2, every client had its own prompt cache, and policies had no cache sharing field. After an upgrade to
-version 1.3.0, every existing policy uses **Share within the workspace**, with no action from an administrator. Clients
-in the same workspace start to share the [prompt cache](../reference/glossary.md#prompt-cache), and the
-[timing side channel](../explanation/prompt-cache-sharing.md#the-timing-side-channel) opens between them.
-
-To keep the version 1.2 behavior, set each policy to **Each client is isolated** right after the upgrade completes. For
-the steps, refer to [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md).
+- _(Upgrade from version 1.2 only)_ A decision on prompt cache sharing for each existing policy. For the choices and the
+  risk that sharing brings, refer to [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
 
 ## Upgrade the Platform
 
@@ -71,6 +63,10 @@ the steps, refer to [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-s
 
 10. Wait for the appliance cluster to return to the **Running** state. From the left main menu, select **Cluster** to
     watch progress. The appliance may reboot during the upgrade, which briefly makes Local UI unreachable.
+
+11. _(Upgrade from version 1.2 only)_ For each policy whose clients must keep their own prompt cache, set **Prompt cache
+    sharing** to **Each client is isolated**. For the steps, refer to
+    [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md).
 
 ## Validate
 
