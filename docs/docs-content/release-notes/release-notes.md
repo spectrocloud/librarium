@@ -337,10 +337,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12293 -->
 
 - The `PATCH /v1/edgehosts/{uid}/hostPairingKey` and `PATCH /v1/edgehosts/{uid}/hostCheckSum` Palette
-  [API endpoints](/api/introduction), and the `hostPairingKey` and `hostChecksum` fields in Edge host API requests and
-  responses, are now deprecated. They belong to an earlier Edge host pairing workflow and have no replacement. Update
-  any automation, scripts, and integrations that call these endpoints or set or read these fields. Refer to the
-  [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+  [API endpoints](/api/introduction) are now deprecated, along with the `hostPairingKey` and `hostChecksum` fields in
+  Edge host API requests and responses. They belong to an earlier Edge host pairing workflow and have no replacement.
+  Remove any calls to these endpoints and any use of these fields from your automation, scripts, and integrations. Refer
+  to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### VerteX
 
