@@ -11,10 +11,14 @@
 #
 # Production (Release to Production) and the version-* branch deploys do not use this script.
 #
+# The rspack persistent cache (node_modules/.cache/rspack, which Netlify restores between builds) is cleared when the
+# pack mode differs from the mode of the cached build. Refer to step 3.
+#
 # GITHUB_READ_TOKEN, when set, authenticates the label lookup (5,000 instead of 60 GitHub API requests an hour).
 #
-# Testing: PACK_PREVIEW_DRY_RUN=1 prints the decision without building. PACK_PREVIEW_LABEL, PACK_PREVIEW_BASE, and
-# PACK_PREVIEW_HEAD override the label name and the commits that the pack-file check compares.
+# Testing: PACK_PREVIEW_DRY_RUN=1 prints the decisions without building or clearing the cache. PACK_PREVIEW_LABEL,
+# PACK_PREVIEW_BASE, and PACK_PREVIEW_HEAD override the label name and the commits that the pack-file check compares.
+# PACK_PREVIEW_CACHE_DIR overrides the rspack cache directory.
 
 set -uo pipefail
 
@@ -94,9 +98,34 @@ else
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
 fi
 
-if [[ "${PACK_PREVIEW_DRY_RUN:-}" == "1" ]]; then
+# 3. The rspack persistent cache. Its key covers the Docusaurus version, the theme aliases, and the contents of
+# docusaurus.config.js, but not DISABLE_PACKS_INTEGRATIONS. A cache saved with the pack pages on and reused with them off,
+# or the other way around, makes rspack panic ("should mgm exist", exit code 134). Netlify saves the cache only after a
+# successful build, so a PR keeps failing until the cache is cleared. Record the pack mode next to the cache, and clear
+# the cache when the mode changes.
+cache_dir="${PACK_PREVIEW_CACHE_DIR:-node_modules/.cache/rspack}"
+mode_file="$(dirname "$cache_dir")/pack-preview-mode"
+if [[ "$build_packs" == true ]]; then mode="packs-on"; else mode="packs-off"; fi
+cached_mode=$(cat "$mode_file" 2>/dev/null) || cached_mode="unknown"
+dry_run=false
+[[ "${PACK_PREVIEW_DRY_RUN:-}" == "1" ]] && dry_run=true
+
+if [[ ! -d "$cache_dir" ]]; then
+  log "No rspack persistent cache to reuse."
+elif [[ "$cached_mode" == "$mode" ]]; then
+  log "Reusing the rspack persistent cache (${mode})."
+elif [[ "$dry_run" == true ]]; then
+  log "Dry run: would clear the rspack persistent cache (cached build: ${cached_mode}, this build: ${mode})."
+else
+  rm -rf "$cache_dir"
+  log "Cleared the rspack persistent cache (cached build: ${cached_mode}, this build: ${mode})."
+fi
+
+if [[ "$dry_run" == true ]]; then
   log "Dry run: DISABLE_PACKS_INTEGRATIONS=${DISABLE_PACKS_INTEGRATIONS}. Not building."
   exit 0
 fi
+
+mkdir -p "$(dirname "$mode_file")" && echo "$mode" >"$mode_file"
 
 exec npm run build
