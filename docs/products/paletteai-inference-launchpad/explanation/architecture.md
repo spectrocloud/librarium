@@ -110,17 +110,17 @@ The box default model answers a request when routing does not choose a model for
 automatically. There is no operator control to change it. For how the appliance chooses it, refer to
 [The Box Default Model](./routing-behavior.md#the-box-default-model).
 
-### System Prompts
+### System Prompts {#system-prompts}
 
 A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
-gateway adds it to a request that carries no system message of its own, so the model receives the administrator's
-instruction with that request. The following requests reach the model without the instruction:
+gateway adds it to a request that carries no system message of its own. The following requests reach the model without
+the instruction:
 
-- A request that carries its own system message. The client has already said how the model should answer, so the gateway
-  keeps that message and adds nothing. Coding agents such as Claude Code send their own system message with every
-  request.
+- A request that carries its own system message. That message already sets how the model answers, so the gateway keeps
+  it and does not add the instruction. [Coding assistants](../reference/glossary.md#coding-assistant) such as
+  [Claude Code](../how-to-guides/use-claude-code.md) send their own system message with every request.
 
-- A request that uses the Responses API, as OpenAI Codex does.
+- A request to the Responses API, the API that [OpenAI Codex](../reference/codex-reference.md) uses.
 
 The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
 replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the

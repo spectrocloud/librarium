@@ -77,14 +77,15 @@ refer to [System Prompts](../explanation/architecture.md#system-prompts).
 
 ## Validate
 
-Run this check from the console, not from a coding agent. For the requests that do not receive the instruction, refer to
-[System Prompts](../explanation/architecture.md#system-prompts).
+Run this check from the console, not from a [coding assistant](../reference/glossary.md#coding-assistant). For the
+requests that do not receive the instruction, refer to [System Prompts](../explanation/architecture.md#system-prompts).
 
 1. From the left main menu, select **Diagnose**.
 
 2. Select the **Chat** tab.
 
-3. From the **Model** drop-down menu, select a model that receives the instruction.
+3. From the **Model** drop-down menu, select a model that the instruction applies to. For a per-model instruction,
+   select that model. For the default instruction, select a model that has no instruction of its own.
 
 4. Send a message that the instruction affects. For example, with the instruction `Answer every question in Spanish.`,
    send `What is Kubernetes?`.
