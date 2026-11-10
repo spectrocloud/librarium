@@ -110,6 +110,27 @@ The box default model answers a request when routing does not choose a model for
 automatically. There is no operator control to change it. For how the appliance chooses it, refer to
 [The Box Default Model](./routing-behavior.md#the-box-default-model).
 
+### System Prompts {#system-prompts}
+
+A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
+gateway adds it to a request that carries no instruction of its own. The following requests reach the model without the
+instruction:
+
+- A request that already carries an instruction of its own. That instruction sets how the model answers, so the gateway
+  keeps it and adds nothing. [Coding assistants](../reference/glossary.md#coding-assistant) such as
+  [Claude Code](../how-to-guides/use-claude-code.md) send their own instruction with every request.
+
+- A request to the Responses API, the API that [OpenAI Codex](../reference/codex-reference.md) uses.
+
+The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
+replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
+instruction after routing picks the model. A per-model instruction applies to each request that routing sends to that
+model, whatever model name the client sent.
+
+A saved change applies to new requests. A new appliance has no instruction, so it adds nothing to any request until a
+platform administrator sets one. To set or remove an instruction, refer to
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
+
 ### External Inference Endpoints {#external-inference-endpoints}
 
 An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
