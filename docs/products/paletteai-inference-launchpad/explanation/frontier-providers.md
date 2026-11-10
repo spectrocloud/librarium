@@ -45,8 +45,8 @@ is not available until that happens.
 A policy or a client selects an endpoint that already exists, and it can never define one. A key is only half of what
 the appliance needs, because the address lives on the endpoint. A policy that named an endpoint nobody set up would
 reach nothing, and a local model would answer its requests instead. An endpoint that is not set up therefore does not
-appear in the endpoint list of a policy or a client. When no endpoint is set up at all, the **Egress** step says so and
-names who adds one.
+appear in the endpoint list of a policy or a client. When no endpoint is set up at all, the **External access** step of
+a policy, or the **Egress** step of a client, says so and names who adds one.
 
 A policy or a client that already names an endpoint keeps that endpoint on screen, even after the endpoint stops being
 offered. The rule that can no longer be reached stays visible, so an operator can act on it.

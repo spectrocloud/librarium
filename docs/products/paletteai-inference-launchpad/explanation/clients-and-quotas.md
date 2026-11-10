@@ -219,6 +219,11 @@ change that value on the client itself, not with a second policy. For the steps,
 [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md) and
 [Manage Client Model Access](../how-to-guides/manage-client-model-access.md).
 
+A policy also sets prompt cache sharing. This setting decides whether the clients in a workspace share the prompt cache
+or each keep their own. By default, they share. Clients in different workspaces never share, even when their workspaces
+follow the same policy. A client has no cache sharing setting of its own. For the choices and the risk that sharing
+brings, refer to [Prompt Cache Sharing](./prompt-cache-sharing.md).
+
 ### Roles and Members
 
 A role is a named set of permissions that ships with the appliance. You assign roles. You do not create or edit them.
@@ -286,6 +291,7 @@ quotas, so it is ready to run on every request.
   per-client consumption.
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md) walks through connecting a
   coding assistant to a client with an API token.
+- [Prompt Cache Sharing](./prompt-cache-sharing.md) explains which clients share cached prompts.
 - [Usage Pricing](./usage-pricing.md) explains how estimated cost and cache reads are calculated.
 - [Estimated Savings](./estimated-savings.md) explains how the estimated savings figure is calculated.
 - [Architecture Overview](./architecture.md) explains how the appliance routes requests and where its components sit.

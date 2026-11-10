@@ -73,6 +73,12 @@ Refer to [The Box Default Model](../explanation/routing-behavior.md#the-box-defa
 
 ## C
 
+### Cache Sharing
+
+The policy setting that decides which [clients](#client) share a [prompt cache](#prompt-cache). By default, the clients
+in one [workspace](#workspace) share it. A policy can give each client its own cache instead. Refer to
+[Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
+
 ### Category
 
 The prompt type that the [semantic router](#semantic-routing) assigns to a routed request. Each category has a
@@ -529,15 +535,23 @@ write bandwidth.
 ### Policy
 
 The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) can spend,
-what they can reach, and how their requests are routed. A workspace follows one policy, so every client in that
-workspace inherits it. A client runs under its policy's [Tier map](#tier-map) and [semantic routing](#semantic-routing)
-rules unless the client sets rules of its own. Refer to
+what they can reach, how their requests are routed, and whether they share a [prompt cache](#prompt-cache). A workspace
+follows one policy, so every client in that workspace inherits it. A client runs under its policy's
+[Tier map](#tier-map) and [semantic routing](#semantic-routing) rules unless the client sets rules of its own. Refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access) and
 [Routing Behavior](../explanation/routing-behavior.md#where-routing-rules-live).
 
 ### Prompt
 
 The input text sent to a model to elicit a response. A prompt consumes input [tokens](#token-and-tokenization).
+
+### Prompt Cache
+
+The work that an [inference engine](#inference-engine) saves from earlier [prompts](#prompt). A later prompt with the
+same opening reuses this work and does not read that text again. It is also called the prefix cache, and it is part of
+the [KV cache](#kv-cache). The [policy](#policy) that a workspace follows decides which clients share it. Refer to
+[Prompt Cache Sharing](../explanation/prompt-cache-sharing.md) and
+[Usage Pricing](../explanation/usage-pricing.md#three-levels-of-caching).
 
 ## Q
 
