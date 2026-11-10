@@ -31,8 +31,8 @@ are uploaded as
 [KubeVirt Containerized Data Importer (CDI) DataVolume](https://kubevirt.io/user-guide/storage/containerized_data_importer/),
 which manages the storage and lifecycle of a VM disk image.
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VMO Appliance host.
-   If you have access to the VMO Appliance host terminal, the Local UI address is displayed on the terminal screen. If
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VM Launchpad host.
+   If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If
    you changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
