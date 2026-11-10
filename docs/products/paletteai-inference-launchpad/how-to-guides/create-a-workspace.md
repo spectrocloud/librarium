@@ -68,6 +68,9 @@ Give a team its own workspace on the **Access & Policy** page. For the concepts,
 
 - [Manage Workspace Members](./manage-workspace-members.md) to add, change, and remove the members of the workspace.
 
+- [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md) to choose whether the clients in the workspace
+  share the prompt cache.
+
 - [Manage Users](./manage-users.md) and [Manage Groups](./manage-groups.md) to maintain the people and groups you add as
   members.
 

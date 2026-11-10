@@ -19,6 +19,7 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [GPU Sharing](./gpu-sharing.md)                             | How models share a GPU, how GPU memory shares are judged, and why one appliance runs one sharing group.                    |
 | [Vision Preprocessing](./vision-preprocessing.md)           | How a text-only model answers questions about images by converting them to text first.                                     |
 | [Clients and Quotas](./clients-and-quotas.md)               | What a client is, how quotas meter usage, and how utilization, consumption, and historical windows are reported.           |
+| [Prompt Cache Sharing](./prompt-cache-sharing.md)           | Which clients share cached prompts, why workspaces stay isolated, and the timing side channel.                             |
 | [Usage Pricing](./usage-pricing.md)                         | How estimated cost, per-model rates, and cache reads are calculated.                                                       |
 | [Estimated Savings](./estimated-savings.md)                 | How much you save by serving on the appliance instead of a frontier model, and how the estimate is calculated.             |
 | [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router pick the model for each request, and why each appliance runs one mode.            |
