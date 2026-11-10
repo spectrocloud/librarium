@@ -18,20 +18,22 @@ centrally managed Edge clusters, refer to
 
 ## Limitations
 
-- Automatic and manual renewal cover only the Kubernetes certificates of control plane nodes. Renewing the Kubernetes
+- Automatic renewal covers the Kubernetes certificates of control plane nodes and the per-node mutual TLS (mTLS)
+  certificates. Manual renewal covers only the Kubernetes certificates of control plane nodes. Renewing the Kubernetes
   certificates of worker nodes is not supported.
 - Kubernetes generates the Kubernetes certificates. You cannot use your own Kubernetes certificates.
 
 ## View Cluster Certificates
 
-In addition to the Kubernetes certificates, Local UI lists the following certificates if your cluster uses them, so that
-you can check their expiration dates without connecting to the Edge host over SSH.
+Local UI lists the certificates of your cluster with their expiration dates, so that you can check them without
+connecting to the Edge host over SSH. In addition to the Kubernetes certificates, the list includes the following
+certificates if your cluster uses them:
 
 - The Local UI server certificate.
-- The per-node mutual TLS (mTLS) certificates that secure the communication between Edge hosts.
-- The certificate of the in-cluster registry, such as Zot or Harbor.
+- The per-node mTLS certificates that secure the communication between Edge hosts.
+- The certificates of the in-cluster registry, such as Zot or Harbor.
 
-### Prerequisites
+### Prerequisites {#prerequisites-view-certificates}
 
 - You have an active cluster in a locally managed Edge host.
 - You have access to Local UI for the Edge host. For more information, refer to
@@ -60,6 +62,8 @@ you can check their expiration dates without connecting to the Edge host over SS
    | **Upcoming renewal date** | The date when Palette Edge renews the certificate, 30 days before it expires. This column is empty for certificates that Palette Edge does not renew.                                                              |
    | **Source**                | The Edge host that the certificate belongs to, for per-node certificates.                                                                                                                                          |
 
+### Certificate Warnings and Renewal Status
+
 Local UI warns you when one or more certificates are close to their expiration date or have expired:
 
 - A warning icon next to **View Certificates** on the **Overview** tab. Hover over the icon to view the details.
@@ -72,9 +76,13 @@ Refer to [Manual Renewal](#manual-renewal).
 The Local UI server certificate shows **Not available** in the **Renewal** column. It is valid for 10 years, and you can
 renew it manually. Refer to [Renew the Local UI Server Certificate](#renew-the-local-ui-server-certificate).
 
-The in-cluster registry certificates also show **Not available** in the **Renewal** column, even when the registry uses
-cert-manager to rotate its TLS certificate. With cert-manager rotation, cert-manager renews the registry server
-certificate automatically before it expires. Refer to
+The per-node mTLS certificates show **Automatic** in the **Renewal** column. They are valid for 10 years, and Palette
+Edge renews them 30 days before they expire.
+
+The in-cluster registry certificates also show **Not available** in the **Renewal** column, even when cert-manager
+rotates the registry server certificate. With TLS certificate rotation enabled on the registry, cert-manager renews the
+server certificate 15 days before it expires by default. Without rotation, the registry server certificate is valid for
+365 days. To enable rotation, refer to
 [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
 or
 [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md).
@@ -84,8 +92,8 @@ To retrieve the same certificate details programmatically, use the
 
 ## Automatic Renewal
 
-Palette Edge automatically renews the certificates that show **Automatic** in the **Renewal** column 30 days before they
-expire. Use the following steps to check when the next automatic renewal happens.
+Palette Edge automatically renews the certificates that show **Automatic** in the **Renewal** column. It renews them 30
+days before they expire. Use the following steps to check when the next automatic renewal happens.
 
 ### Prerequisite
 
@@ -104,12 +112,11 @@ expire. Use the following steps to check when the next automatic renewal happens
 4. In the **Certificates** row, select **View Certificates**. The **Certificates** window lists the certificates that
    your cluster uses.
 
-5. In the **Upcoming renewal date** column, check when Palette Edge renews each certificate. Palette Edge renews
-   certificates 30 days before they expire.
+5. In the **Upcoming renewal date** column, check when Palette Edge renews each certificate.
 
 ### Validate
 
-In **Overview**, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
+On the **Overview** tab, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
 certificates that your cluster uses. Confirm that the renewed certificates show a new **Issued Date** and a later
 **Expiration Date**.
 
@@ -139,8 +146,8 @@ Management API.
 4. In the **Certificates** row, select **View Certificates**. The **Certificates** window lists the certificates that
    your cluster uses.
 
-5. Select **Renew all available certificates**, and then select **Confirm**. Local UI renews the Kubernetes certificates
-   of the control plane nodes. It does not renew certificates that show **Not available** in the **Renewal** column.
+5. Select **Renew all available certificates**, and then select **Confirm**. Local UI renews only the Kubernetes
+   certificates of the control plane nodes.
 
 </TabItem>
 
@@ -176,8 +183,7 @@ Management API.
      --header "Authorization: *******"
    ```
 
-   The request renews the Kubernetes certificates of the control plane nodes. It does not renew certificates that show
-   **Not available** in the **Renewal** column.
+   The request renews only the Kubernetes certificates of the control plane nodes.
 
 </TabItem>
 
@@ -185,7 +191,7 @@ Management API.
 
 ### Validate
 
-In **Overview**, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
+On the **Overview** tab, select **View Certificates** in the **Certificates** row. The **Certificates** window lists the
 certificates that your cluster uses. Confirm that the renewed certificates show a new **Issued Date** and a later
 **Expiration Date**.
 
@@ -232,6 +238,6 @@ host. The CA that signs the certificate does not change, so browsers that trust 
 
 2. From the left **Main Menu**, select **Cluster**, and then select the **Overview** tab.
 
-3. In the **Certificates** row, select **View Certificates**. For each Edge host that you renewed, confirm that its
-   **Local UI** certificate shows a new **Issued Date** and a later **Expiration Date**. The **Source** column shows the
-   Edge host of each certificate.
+3. In the **Certificates** row, select **View Certificates**. Use the **Source** column to find the **Local UI**
+   certificate of each Edge host that you renewed, and confirm that it shows a new **Issued Date** and a later
+   **Expiration Date**.
