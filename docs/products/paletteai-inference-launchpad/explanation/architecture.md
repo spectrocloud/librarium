@@ -113,12 +113,12 @@ automatically. There is no operator control to change it. For how the appliance 
 ### System Prompts {#system-prompts}
 
 A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
-gateway adds it to a request that carries no system message of its own. The following requests reach the model without
-the instruction:
+gateway adds it to a request that carries no instruction of its own. The following requests reach the model without the
+instruction:
 
-- A request that carries its own system message. That message already sets how the model answers, so the gateway keeps
-  it and does not add the instruction. [Coding assistants](../reference/glossary.md#coding-assistant) such as
-  [Claude Code](../how-to-guides/use-claude-code.md) send their own system message with every request.
+- A request that already carries an instruction of its own. That instruction sets how the model answers, so the gateway
+  keeps it and adds nothing. [Coding assistants](../reference/glossary.md#coding-assistant) such as
+  [Claude Code](../how-to-guides/use-claude-code.md) send their own instruction with every request.
 
 - A request to the Responses API, the API that [OpenAI Codex](../reference/codex-reference.md) uses.
 

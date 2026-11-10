@@ -621,8 +621,9 @@ Defense deployments.
 
 The instruction that a [model](#model) receives ahead of the [prompt](#prompt), as a system message, to set how it
 answers. A [client](#client) can send its own system prompt with a request. When a request carries none, the appliance
-adds the instruction that a platform administrator sets. This is the model's own instruction or, when the model has
-none, the default instruction. Refer to [System Prompts](../explanation/architecture.md#system-prompts) and
+adds the instruction that a platform administrator sets, except on the Responses API. This is the model's own
+instruction or, when the model has none, the default instruction. Refer to
+[System Prompts](../explanation/architecture.md#system-prompts) and
 [Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
 
 ## T
