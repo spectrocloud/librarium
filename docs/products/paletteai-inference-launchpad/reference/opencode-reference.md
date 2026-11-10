@@ -108,8 +108,7 @@ OpenCode selects a model by a `provider/model` value, such as `launchpad/claude-
 first slash. The part before the slash is the provider key, and the part after it is a key you listed under `models`.
 That key can be an alias the appliance seeds, such as `claude-opus-4-8`, or a served model id, such as `glm-5.2`. Both
 appear in the console model list and in the appliance's `/v1/models` API response. A seeded prefix resolves for a client
-that inherits the appliance-wide table, and a client with its own Tier map can leave it unmapped. For the rule, refer to
-[Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
+that inherits a Tier map. For the rule, refer to [Routing Behavior](../explanation/routing-behavior.md#the-tier-map).
 
 ## Token Quotas
 
