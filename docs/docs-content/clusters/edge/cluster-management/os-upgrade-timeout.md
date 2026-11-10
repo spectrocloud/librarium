@@ -9,8 +9,6 @@ sidebar_position: 42
 tags: ["edge"]
 ---
 
-<!-- TODO(DOC-3429): Sources: DOC-3429 ticket description, Kiran Kilingar Nadumane (Slack DM, 2026-11-09), and QA verification on PE 10061 (65-minute limit on a throttled day-2 OS upgrade). -->
-
 When you upgrade the OS of an existing Edge cluster, each upgrade attempt on an Edge host has a time limit. The default
 limit is 45 minutes. An attempt includes the download of the new provider image, so Edge hosts with slow network
 connections might need more time. If an attempt does not finish in time, the upgrade is retried on that Edge host later.
@@ -28,8 +26,10 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 - When an attempt times out, the upgrade is retried on that Edge host after 1 hour. The wait doubles after each attempt
   that times out, up to 24 hours, and the retries continue until an attempt succeeds.
 
-- While an Edge host waits for its next attempt, Local UI displays an **Upgrade failed** banner. Local UI does not show
-  the pending retry. The banner clears when an attempt succeeds.
+- Palette does not show that an attempt timed out or that a retry is pending. In Local UI, while an Edge host waits for
+  its next attempt, the **Edge Host** page displays an **OS upgrade failed** banner, and the OS of the Edge host is
+  labeled **Upgrade failed**. Local UI does not show when the next attempt starts. The banner clears when an attempt
+  succeeds.
 
 - The limit is read when an OS upgrade starts. A new value applies to the next OS upgrade, not to an upgrade that is
   already running or waiting for a retry. To recover from an upgrade that keeps timing out, improve the network
@@ -38,17 +38,17 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 - Changing only `system.upgradeTimeoutMinutes` does not trigger a repave, reboot, or service restart. Refer to
   [Edge Cluster Upgrade Behavior](./upgrade-behavior.md#os-layer).
 
-<!-- TODO(DOC-3429): Kiran described the Local UI banner. Ask what Palette shows for a centrally managed cluster while an Edge host waits for a retry, and confirm the exact banner text in Local UI. -->
-
 ## Prerequisites
 
 - A Palette account with permission to update cluster profiles and clusters.
 
 - An Edge cluster profile, or an existing Edge cluster and the cluster profile that it uses.
 
-- Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.b or later.
+- Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.b or later. Earlier
+  versions of the agent ignore `system.upgradeTimeoutMinutes`.
 
-<!-- TODO(DOC-3429): Ask Kiran: does an older Palette agent ignore system.upgradeTimeoutMinutes, and what limit does it use? For locally managed clusters, is the option set the same way, in the OS layer of the cluster profile that is uploaded to Local UI? -->
+- _(Optional)_ Access to the cluster with kubectl, to check the limit that an OS upgrade uses. Refer to
+  [Access Cluster with CLI](../../cluster-management/palette-webctl.md).
 
 ## Configure the Upgrade Timeout
 
@@ -79,8 +79,10 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 
 7. Create a new cluster with the cluster profile, or update an existing cluster to use the new cluster profile version.
    Refer to [Create a Cluster](../site-deployment/cluster-deployment.md) or
-   [Update a Cluster](../../cluster-management/cluster-updates.md). The new limit applies to the next OS upgrade of the
-   cluster.
+   [Update a Cluster](../../cluster-management/cluster-updates.md). For a locally managed cluster, upload the new
+   cluster profile version in Local UI. Refer to
+   [Update Local Cluster](../local-ui/cluster-management/update-cluster.md). The new limit applies to the next OS
+   upgrade of the cluster.
 
 ## Validate
 
@@ -92,4 +94,13 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 
 4. Confirm that the `options` section shows `system.upgradeTimeoutMinutes` with the value that you set.
 
-<!-- TODO(DOC-3429): Ask Kiran whether the Edge host logs the limit in effect when an OS upgrade starts. If it does, add that check here. -->
+5. After the next OS upgrade of the cluster starts, issue the following command to display the limit that the upgrade
+   uses.
+
+   ```bash
+   kubectl get spectrosystemtasks --all-namespaces \
+     --output custom-columns='NAME:.metadata.name,DEADLINE_SECONDS:.metadata.annotations.spectrocloud\.com/job-active-deadline-seconds'
+   ```
+
+6. Confirm that the `control-plan` task, and the `worker-plan` task if the cluster has worker nodes, show the limit in
+   seconds. For example, a limit of 90 minutes displays as `5400`.
