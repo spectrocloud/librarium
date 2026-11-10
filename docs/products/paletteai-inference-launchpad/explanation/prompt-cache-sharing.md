@@ -50,10 +50,10 @@ client's request does not change. For how cache reads are priced, refer to [Usag
 The **Prompt cache sharing** field on a policy offers two choices. The **Cache sharing** column on the **Policies** tab
 shows each choice as a shorter value.
 
-| **Choice**                     | **Column value** | **Who reuses saved work**                                    |
-| ------------------------------ | ---------------- | ------------------------------------------------------------ |
-| **Share within the workspace** | **Workspace**    | All clients in the workspace share one prompt cache.         |
-| **Each client is isolated**    | **Each client**  | Each client reuses only the work saved for its own requests. |
+| **Choice**                     | **Column value** | **Who reuses saved work**                                     |
+| ------------------------------ | ---------------- | ------------------------------------------------------------- |
+| **Share within the workspace** | **Workspace**    | All clients in the workspace share one prompt cache per node. |
+| **Each client is isolated**    | **Each client**  | Each client reuses only the work saved for its own requests.  |
 
 **Share within the workspace** is the default. Every policy uses it until an administrator selects **Each client is
 isolated**.
@@ -69,11 +69,10 @@ These rules apply under both choices:
 
 - One model never reuses work that another model saved.
 
-- A client that is in no workspace keeps its own cache.
-
-There is no setting for a single client. To isolate one client while the rest of its team shares, create that client in
-a workspace of its own. A client cannot move between workspaces. To isolate an existing client, create a new client in a
-workspace of its own and give it new API tokens.
+There is no setting for a single client. To isolate some clients while the rest of their team shares, create those
+clients in a separate workspace. Make that workspace follow a policy that uses **Each client is isolated**. A client
+cannot move between workspaces. To isolate an existing client, create a new client in that workspace and give it new API
+tokens.
 
 ## The Timing Side Channel
 
@@ -106,8 +105,9 @@ The setting controls only the prompt cache on the appliance. It does not affect 
 
 ## When a Change Takes Effect
 
-A saved change reaches every workspace that follows the policy within 5 minutes. Clients keep their API tokens, and
-nothing needs to restart. Moving a workspace to a policy with a different choice works the same way.
+A saved change usually reaches every workspace that follows the policy within seconds. The appliance also checks for
+changes every 5 minutes. Clients keep their API tokens, and nothing needs to restart. Moving a workspace to a policy
+with a different choice works the same way.
 
 After a change, the engine does not reuse work that it saved under the earlier choice. For the first request with a
 given opening, the engine reads that text again. If you switch back to an earlier choice, the engine can reuse work from

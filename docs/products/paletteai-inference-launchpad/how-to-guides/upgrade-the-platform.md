@@ -25,7 +25,8 @@ Confirm each prerequisite before starting:
 - A newer [content bundle](../reference/glossary.md#content-bundle) from Artifact Studio that matches the appliance's
   GPU vendor, NVIDIA or AMD.
 - _(Upgrade from version 1.2 only)_ A decision on prompt cache sharing for each existing policy. For the choices and the
-  risk that sharing brings, refer to [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
+  risk that sharing brings, refer to
+  [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md#who-shares-the-prompt-cache).
 
 ## Upgrade the Platform
 
