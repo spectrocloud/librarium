@@ -72,7 +72,12 @@ Refer to [Manual Renewal](#manual-renewal).
 The Local UI server certificate shows **Not available** in the **Renewal** column. It is valid for 10 years, and you can
 renew it manually. Refer to [Renew the Local UI Server Certificate](#renew-the-local-ui-server-certificate).
 
-<!-- TODO(PE-9865): registry certificates. Confirm whether the Zot and Harbor cert-manager rotation pages apply to the registry rows that show Not available, and add a pointer if they do. -->
+The in-cluster registry certificates also show **Not available** in the **Renewal** column, even when the registry uses
+cert-manager to rotate its TLS certificate. With cert-manager rotation, cert-manager renews the registry server
+certificate automatically before it expires. Refer to
+[Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
+or
+[Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md).
 
 To retrieve the same certificate details programmatically, use the
 [`GET /v1/edge-mgmt/cluster/certificates`](/api/edge-v1/v-1-certificate-details/) endpoint of the Edge Management API.
