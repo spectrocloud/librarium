@@ -19,8 +19,8 @@ centrally managed Edge clusters, refer to
 ## Limitations
 
 - Automatic renewal covers the Kubernetes certificates of control plane nodes and the per-node mutual TLS (mTLS)
-  certificates. Manual renewal covers only the Kubernetes certificates of control plane nodes. Renewing the Kubernetes
-  certificates of worker nodes is not supported.
+  certificates. Renewing certificates from Local UI or through the Edge Management API covers only the Kubernetes
+  certificates of control plane nodes. Renewing the Kubernetes certificates of worker nodes is not supported.
 - Kubernetes generates the Kubernetes certificates. You cannot use your own Kubernetes certificates.
 
 ## View Cluster Certificates
@@ -31,7 +31,8 @@ certificates if your cluster uses them:
 
 - The Local UI server certificate.
 - The per-node mTLS certificates that secure the communication between Edge hosts.
-- The certificates of the in-cluster registry, such as Zot or Harbor.
+- The registry certificates in the **Registry Connect** pack, such as the certificates of a Zot or Harbor primary
+  registry.
 
 ### Prerequisites {#prerequisites-view-certificates}
 
@@ -43,7 +44,7 @@ certificates if your cluster uses them:
 
 1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
-2. From the left **Main Menu**, select **Cluster**.
+2. From the left main menu, select **Cluster**.
 
 3. Select the **Overview** tab on the **Cluster** page.
 
@@ -73,16 +74,16 @@ Local UI warns you when one or more certificates are close to their expiration d
 When Kubernetes certificates expire, the cluster might stop running. Renew them manually to restore normal operation.
 Refer to [Manual Renewal](#manual-renewal).
 
-The Local UI server certificate shows **Not available** in the **Renewal** column. It is valid for 10 years, and you can
-renew it manually. Refer to [Renew the Local UI Server Certificate](#renew-the-local-ui-server-certificate).
-
 The per-node mTLS certificates show **Automatic** in the **Renewal** column. They are valid for 10 years, and Palette
 Edge renews them 30 days before they expire.
 
-The in-cluster registry certificates also show **Not available** in the **Renewal** column, even when cert-manager
-rotates the registry server certificate. With TLS certificate rotation enabled on the registry, cert-manager renews the
-server certificate 15 days before it expires by default. Without rotation, the registry server certificate is valid for
-365 days. To enable rotation, refer to
+The Local UI server certificate shows **Not available** in the **Renewal** column. It is valid for 10 years, and you can
+renew it manually. Refer to [Renew the Local UI Server Certificate](#renew-the-local-ui-server-certificate).
+
+The registry certificates also show **Not available** in the **Renewal** column, even when cert-manager rotates the
+server certificate of a Zot or Harbor primary registry. With TLS certificate rotation enabled on the registry,
+cert-manager renews the server certificate 15 days before it expires by default. Without rotation, the Zot or Harbor
+server certificate is valid for 365 days. To enable rotation, refer to
 [Enable Automatic TLS Certificate Rotation on the Zot Primary Registry](../site-deployment/deploy-custom-registries/enable-zot-cert-rotation.md)
 or
 [Enable Automatic TLS Certificate Rotation on the Harbor Primary Registry](../site-deployment/deploy-custom-registries/enable-harbor-cert-rotation.md).
@@ -105,12 +106,12 @@ days before they expire. Use the following steps to check when the next automati
 
 1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
-2. From the left **Main Menu**, select **Cluster**.
+2. From the left main menu, select **Cluster**.
 
 3. Select the **Overview** tab on the **Cluster** page.
 
-4. In the **Certificates** row, select **View Certificates**. The **Certificates** window lists the certificates that
-   your cluster uses.
+4. In the **Certificates** row, select **View Certificates**. The **Certificates** window groups the certificates of
+   your cluster by the CA that issued them. Expand a CA to view its certificates.
 
 5. In the **Upcoming renewal date** column, check when Palette Edge renews each certificate.
 
@@ -139,7 +140,7 @@ Management API.
 
 1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
-2. From the left **Main Menu**, select **Cluster**.
+2. From the left main menu, select **Cluster**.
 
 3. Select the **Overview** tab on the **Cluster** page.
 
@@ -206,12 +207,16 @@ host. The CA that signs the certificate does not change, so browsers that trust 
 
 - You have the credentials and network access to establish an SSH connection to your Edge host, and you can run commands
   with `sudo`.
+- You have access to Local UI for the Edge host. For more information, refer to
+  [Access Local UI](../local-ui/host-management/access-console.md).
 
 ### Renew the Certificate
 
 1. Establish an SSH connection to the Edge host.
 
-2. Back up the current certificate and key.
+2. Back up the current certificate and key, so that you can restore them if the Palette agent cannot create a new
+   certificate. To restore them, copy them back to `/opt/spectrocloud/certs/stylus-agent/` and restart the Palette agent
+   service.
 
    ```shell
    sudo cp /opt/spectrocloud/certs/stylus-agent/server.pem /opt/spectrocloud/certs/stylus-agent/server.key /root/
@@ -236,8 +241,9 @@ host. The CA that signs the certificate does not change, so browsers that trust 
 
 1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
-2. From the left **Main Menu**, select **Cluster**, and then select the **Overview** tab.
+2. From the left main menu, select **Cluster**, and then select the **Overview** tab.
 
-3. In the **Certificates** row, select **View Certificates**. Use the **Source** column to find the **Local UI**
-   certificate of each Edge host that you renewed, and confirm that it shows a new **Issued Date** and a later
-   **Expiration Date**.
+3. In the **Certificates** row, select **View Certificates**.
+
+4. In the **Source** column, find the **Local UI** certificate of each Edge host that you renewed. Confirm that it shows
+   a new **Issued Date** and a later **Expiration Date**.

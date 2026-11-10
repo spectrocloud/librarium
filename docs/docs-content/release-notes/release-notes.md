@@ -277,10 +277,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-9218 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9865 -->
 
-- Local UI now lists the Local UI server certificate, the per-node mutual TLS (mTLS) certificates, and the in-cluster
-  registry certificates alongside the Kubernetes certificates of a cluster. For each certificate, Local UI shows the
-  expiration date and whether Palette Edge renews it automatically. Local UI also warns you when certificates are close
-  to their expiration date or have expired. Refer to
+- Local UI now lists the Local UI server certificate, the per-node mutual TLS (mTLS) certificates, and the registry
+  certificates alongside the Kubernetes certificates of a cluster. For each certificate, Local UI shows the expiration
+  date and whether Palette Edge renews it automatically. Local UI also warns you when certificates are close to their
+  expiration date or have expired. Refer to
   [View Cluster Certificates](../clusters/edge/cluster-management/certificate-renewal.md#view-cluster-certificates) for
   more information.
 
