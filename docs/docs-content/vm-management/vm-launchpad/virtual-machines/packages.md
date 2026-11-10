@@ -82,7 +82,7 @@ lists a package even when its file is missing.
 
 VM Launchpad restores the built-in packages, such as the QEMU guest agent, every time it starts, with or without a
 package store. The [Virtio Windows ISO](#virtio-windows-iso) is the exception. VM Launchpad downloads the ISO only when
-a package store is configured, and you need the ISO to create Windows VMs.
+a package store is configured, and you need the ISO to build Windows golden images.
 
 ### Configure a Package Store for the VMO Pack
 
@@ -312,9 +312,9 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
    `vm-dashboard`.
 
 2. Save your logo and favicon. Open `https://<vm-launchpad-host>/api/v1/branding/assets/logo` and
-   `https://<vm-launchpad-host>/api/v1/branding/assets/favicon` in a browser and save each image.
+   `https://<vm-launchpad-host>/api/v1/branding/assets/favicon` in a browser, and then save each image.
 
-   Replace `<vm-launchpad-host>` with the host name of VM Launchpad.
+   Replace `<vm-launchpad-host>` with the hostname of VM Launchpad.
 
 If you upgrade without a copy, you can still copy the files out of the previous data volume. Refer to
 [Recover Files from the Previous Data Volume](#recover-files-from-the-previous-data-volume).
@@ -328,7 +328,7 @@ If you use the VMO pack, configure a package store before you upload anything. O
 upload the next time the VM Launchpad pod restarts. Refer to
 [Configure a Package Store for the VMO Pack](#configure-a-package-store-for-the-vmo-pack).
 
-If you do not have a copy of a custom package, recover it before step 2 deletes its row, because the recovery steps use
+If you do not have a copy of a custom package, recover it before you delete its row in step 2. The recovery steps use
 the package rows to find each file. Refer to
 [Recover Files from the Previous Data Volume](#recover-files-from-the-previous-data-volume).
 
@@ -356,7 +356,7 @@ the package rows to find each file. Refer to
    ```
 
    Replace `<api-key>` with your API key, `<logo-file>` and `<favicon-file>` with the paths to your image files, and
-   `<vm-launchpad-host>` with the host name of VM Launchpad. If VM Launchpad uses a self-signed certificate, add
+   `<vm-launchpad-host>` with the hostname of VM Launchpad. If VM Launchpad uses a self-signed certificate, add
    `--cacert <ca-certificate>` to each command and replace `<ca-certificate>` with the path to its CA certificate.
 
 6. _(Optional)_ To generate the favicon from your logo, issue the following command.
@@ -470,14 +470,14 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
    Replace `<vmo-namespace>` with the namespace of VM Launchpad, and replace `<id>` and `<file-name>` with the ID and
    filename of each package from step 4.
 
-6. Upload the packages and branding images again. Refer to
-   [Upload Packages and Branding Images Again](#upload-packages-and-branding-images-again).
-
-7. Delete the helper pod.
+6. Delete the helper pod.
 
    ```shell
    kubectl delete pod vmo-data-reader --namespace <vmo-namespace>
    ```
+
+7. Upload the packages and branding images again. Refer to
+   [Upload Packages and Branding Images Again](#upload-packages-and-branding-images-again).
 
 8. After you confirm that VM Launchpad serves your packages and branding images again, delete the previous PVC.
 
