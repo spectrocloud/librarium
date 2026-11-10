@@ -21,15 +21,15 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
 
-- VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade does not
-  copy them. VM Launchpad does not restore custom packages or the logo and favicon. Before you upgrade, keep a copy of
-  every custom package and branding image that you uploaded, and upload them again after the upgrade. If you use the VMO
-  pack, configure a package store before you upload them, or VM Launchpad loses the files when its pod restarts. This
-  applies to the VM Launchpad appliance and to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade
+  does not copy them. Before you upgrade, keep a copy of every custom package and branding image that you uploaded, and
+  upload them again after the upgrade. If you use the VMO pack, configure a package store before you upload them, or
+  PaletteAI VM Launchpad loses the files when its pod restarts. This applies to the PaletteAI VM Launchpad appliance and
+  to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
   [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
 
-- VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer uses a
-  data volume. Update any automation that calls the following endpoints.
+- PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
+  uses a data volume. Update any automation that calls the following endpoints.
 
   - `GET /api/v1/system/storage/status`
 
