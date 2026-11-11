@@ -191,6 +191,93 @@ tags: ["release-notes"]
 - Fixed an issue that caused [cluster cost](../clusters/cluster-management/cloud-cost.md), resource usage, and workload
   summary data to stop updating for clusters whose data grew past the 16 MB MongoDB document size limit.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7094 -->
+
+- Fixed an issue that caused Palette to add an empty `auth` value, `Og==`, to the containerd configuration of
+  self-hosted Palette and Palette VerteX nodes when the
+  [custom image registry](../enterprise-version/system-management/registry-override.md) was configured with an empty
+  username and password. Palette now leaves out the authentication configuration when both values are empty.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7534 -->
+
+- Fixed an issue that caused cluster creation to stop before any worker nodes were provisioned when CNI pack pods that
+  cannot run on control plane nodes, such as Cilium Hubble Relay and Hubble UI, were still pending 30 minutes after the
+  CNI pack was installed. Pending CNI pack pods no longer block worker node creation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7588 -->
+
+- Fixed an issue that left the deprecated `capa-eks-control-plane-controller-manager` Deployment in the cluster
+  namespace of [EKS clusters](../clusters/public-cloud/aws/eks.md) without add-on packs, where its pod restarted
+  repeatedly. Palette now removes the Deployment and its other namespace-scoped resources.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7732 -->
+
+- Fixed an issue that caused a pack to stay in progress indefinitely when its Deployment rollout failed with
+  `ProgressDeadlineExceeded`, for example, after a cluster profile update with incorrect pack values. Palette now
+  reports the pack as failed and shows the error message from the Deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7801 -->
+
+- Fixed an issue that caused Palette and Cluster API controller pods to keep running on workload node pools after you
+  [dedicated a node pool for system pods](../clusters/cluster-management/node-pool.md#dedicated-system-pod-pool) on an
+  existing EKS cluster. Palette now labels the nodes in the dedicated node pool and schedules these controllers on them.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7888 -->
+
+- Fixed an issue that caused the Palette agent on a workload cluster to delete the namespaces that Palette created
+  through [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or
+  a workspace, and then recreate them empty, when the Palette management plane briefly lost access to its database.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7958 -->
+
+- Fixed an issue that prevented the cluster autoscaler pod from being scheduled on control plane nodes. When all worker
+  [node pools](../clusters/cluster-management/node-pool.md) carried a `NoSchedule` taint, the pod stayed `Pending` after
+  a node drain, repave, or upgrade, and node pool autoscaling stopped.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12109 -->
+
+- Fixed an issue that caused repeated `Operation 'cloudconfig.get' is forbidden` errors after you switched projects
+  while a cluster's details page was still loading. The errors appeared even though your role had the required
+  permissions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12447 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12452 -->
+
+- Fixed issues that caused clusters attached to a
+  [cluster template](../cluster-templates/modify-cluster-templates.md#update-cluster-profile-version) to revert to the
+  default values of their profile variables after the template's cluster profile version changed. The issues occurred
+  when you selected **Review & Save** on a tenant-scoped cluster template from a project, or when a Palette API or
+  Terraform request did not list every profile variable.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12454 -->
+
+- Fixed an issue that caused the Palette UI to reject valid [node pool](../clusters/cluster-management/node-pool.md)
+  **Additional Labels** whose value is a single character, such as `workload:a`, and to highlight the wrong label.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
+
+- Fixed an issue that caused Headlamp, opened from a cluster's **Connect** link through Spectro Proxy, to stay on its
+  loading screen when Palette took longer than 15 seconds to send a response, for example, over a slow network
+  connection.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12512 -->
+
+- Fixed an issue that caused cluster profile creation through the Palette API or Terraform to fail with
+  `ErrPackUidInvalid: Pack uid '<uid>' not found` when a pack was specified by registry, name, and version without a
+  pack UID, even though the requested pack version existed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12520 -->
+
+- Fixed an issue that caused clusters to remain marked as cluster group hosts after their
+  [cluster group](../clusters/cluster-groups/cluster-groups.md) was deleted. Palette now clears this state when a
+  cluster group is deleted, and clears it from affected clusters when Palette is upgraded.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12582 -->
+
+- Fixed an issue that caused clusters created from the Palette UI to have parallel worker pool updates
+  (`updateWorkerPoolsInParallel`) turned on, while clusters created through the Palette API or Terraform had them turned
+  off. Clusters created from the Palette UI now have parallel worker pool updates turned off by default.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
@@ -298,6 +385,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   Address (VIP)** field, in addition to an IPv4 address. Refer to
   [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-9630 -->
+
+- The mTLS certificates that Edge hosts use to secure communication with each other are now valid for 10 years instead
+  of 5 years. Refer to
+  [Renew Certificates for Local Clusters](../clusters/edge/cluster-management/certificate-renewal.md) for more
+  information.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9881 -->
@@ -340,6 +434,32 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   you opened it with an `http://` address. Local UI now redirects HTTP requests on its port to HTTPS. Refer to
   [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md#log-in-to-local-ui) for more
   information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9927 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9928 -->
+
+- Fixed issues that allowed a [Local UI](../clusters/edge/local-ui/local-ui.md) session to continue after it expired
+  because of inactivity, including from the login page without entering credentials. Local UI sessions now end after the
+  idle time set in `stylus.localUI.session.inactivityTimeoutInMinutes`, plus a 2-minute grace period, and
+  `stylus.localUI.session.refreshTimeoutInMinutes` now sets the maximum session length from login. Each token renewal
+  also returns a new refresh token, so Local UI API clients must use the refresh token from the latest renewal response.
+  Refer to [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more
+  information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9954 -->
+<!-- Release day: replace 4.10.b with the CanvOS version for 4.10.b. -->
+
+- Fixed an issue that caused containerized workloads that use `sudo` or PAM to fail with
+  `sudo: PAM account management error: Authentication service cannot retrieve authentication info` on Edge hosts built
+  from Ubuntu 24.04 [CanvOS](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) images whose
+  `/etc/shadow` file is hardened, for example, with file mode `0000`. Edge artifacts built with CanvOS version 4.10.b or
+  later include the fix.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12545 -->
+
+- Fixed an issue that caused [audit log](../audit-logs/audit-logs.md) entries for cloud configuration updates on Edge
+  clusters, such as NTP, VIP, or SSH key changes, to show the cluster UID instead of the cluster name in the **Resource
+  Name** field.
 
 #### Deprecations and Removals
 
