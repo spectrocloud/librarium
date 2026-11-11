@@ -200,15 +200,15 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7534 -->
 
-- Fixed an issue that caused cluster creation to stop before any worker nodes were provisioned when CNI pack pods that
-  cannot run on control plane nodes, such as Cilium Hubble Relay and Hubble UI, were still pending 30 minutes after the
-  CNI pack was installed. Pending CNI pack pods no longer block worker node creation.
+- Fixed an issue that stopped cluster creation before any worker nodes were provisioned. This occurred when CNI pack
+  pods that cannot run on control plane nodes, such as Cilium Hubble Relay and Hubble UI, were still pending 30 minutes
+  after the CNI pack was installed. Pending CNI pack pods no longer block worker node creation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7588 -->
 
 - Fixed an issue that left the deprecated `capa-eks-control-plane-controller-manager` Deployment in the cluster
-  namespace of [EKS clusters](../clusters/public-cloud/aws/eks.md) without add-on packs, where its pod restarted
-  repeatedly. Palette now removes the Deployment and its other namespace-scoped resources.
+  namespace of [EKS clusters](../clusters/public-cloud/aws/eks.md) without add-on packs. The Deployment's pod restarted
+  repeatedly. Palette now removes the Deployment and its related namespace-scoped resources.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7732 -->
 
@@ -224,9 +224,11 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7888 -->
 
-- Fixed an issue that caused the Palette agent on a workload cluster to delete the namespaces that Palette created
-  through [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or
-  a workspace, and then recreate them empty, when the Palette management plane briefly lost access to its database.
+- Fixed an issue that caused the Palette agent on a workload cluster to delete and recreate the namespaces that Palette
+  created through
+  [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
+  workspace. This occurred when the Palette management plane briefly lost access to its database, and the recreated
+  namespaces were empty.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7958 -->
 
@@ -256,27 +258,27 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
 
-- Fixed an issue that caused Headlamp, opened from a cluster's **Connect** link through Spectro Proxy, to stay on its
-  loading screen when Palette took longer than 15 seconds to send a response, for example, over a slow network
-  connection.
+- Fixed an issue that caused Headlamp to stay on its loading screen when you opened it from a cluster's **Connect** link
+  through Spectro Proxy. This occurred when Palette took longer than 15 seconds to respond, for example, over a slow
+  network connection.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12512 -->
 
 - Fixed an issue that caused cluster profile creation through the Palette API or Terraform to fail with
-  `ErrPackUidInvalid: Pack uid '<uid>' not found` when a pack was specified by registry, name, and version without a
-  pack UID, even though the requested pack version existed.
+  `ErrPackUidInvalid: Pack uid '<uid>' not found`, even though the requested pack version existed. This occurred when
+  the request specified a pack by registry, name, and version without a pack UID.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12520 -->
 
 - Fixed an issue that caused clusters to remain marked as cluster group hosts after their
   [cluster group](../clusters/cluster-groups/cluster-groups.md) was deleted. Palette now clears this state when a
-  cluster group is deleted, and clears it from affected clusters when Palette is upgraded.
+  cluster group is deleted. Upgrading Palette also clears it from clusters that are already affected.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12582 -->
 
-- Fixed an issue that caused clusters created from the Palette UI to have parallel worker pool updates
-  (`updateWorkerPoolsInParallel`) turned on, while clusters created through the Palette API or Terraform had them turned
-  off. Clusters created from the Palette UI now have parallel worker pool updates turned off by default.
+- Fixed an issue that caused clusters created from the Palette UI to have the **Update worker pools in parallel** option
+  (`updateWorkerPoolsInParallel`) turned on, while clusters created through the Palette API or Terraform had it turned
+  off. Clusters created from the Palette UI now have this option turned off by default.
 
 #### Deprecations and Removals
 
@@ -439,21 +441,22 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-9928 -->
 
 - Fixed issues that allowed a [Local UI](../clusters/edge/local-ui/local-ui.md) session to continue after it expired
-  because of inactivity, including from the login page without entering credentials. Local UI sessions now end after the
-  idle time set in `stylus.localUI.session.inactivityTimeoutInMinutes`, plus a 2-minute grace period, and
-  `stylus.localUI.session.refreshTimeoutInMinutes` now sets the maximum session length from login. Each token renewal
-  also returns a new refresh token, so Local UI API clients must use the refresh token from the latest renewal response.
-  Refer to [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more
-  information.
+  because of inactivity. Local UI sessions now end after the idle time set in
+  `stylus.localUI.session.inactivityTimeoutInMinutes` plus a 2-minute grace period. The
+  `stylus.localUI.session.refreshTimeoutInMinutes` parameter now sets the maximum session length from login. Each token
+  renewal also returns a new refresh token, so Edge Management API clients must use the refresh token from the latest
+  renewal response. Refer to
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters)
+  for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9954 -->
 <!-- Release day: replace 4.10.b with the CanvOS version for 4.10.b. -->
 
-- Fixed an issue that caused containerized workloads that use `sudo` or PAM to fail with
-  `sudo: PAM account management error: Authentication service cannot retrieve authentication info` on Edge hosts built
-  from Ubuntu 24.04 [CanvOS](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) images whose
-  `/etc/shadow` file is hardened, for example, with file mode `0000`. Edge artifacts built with CanvOS version 4.10.b or
-  later include the fix.
+- Fixed an issue that caused containerized workloads that use `sudo` or PAM to fail on Edge hosts built from Ubuntu
+  24.04 [CanvOS](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) images with a hardened
+  `/etc/shadow` file, for example, one with file mode `0000`. The workloads failed with
+  `sudo: PAM account management error: Authentication service cannot retrieve authentication info`. Edge artifacts built
+  with CanvOS version 4.10.b or later include the fix.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12545 -->
 
