@@ -5,205 +5,253 @@
     "title": "PaletteAI Inference Launchpad Architecture",
     "locale": "en",
     "output": "architecture-overview.html",
-    "quality_profile": "showcase",
+    "quality_profile": "standard",
     "legend": {
       "mode": "auto",
       "entries": {
         "external": {
           "label": "Outside the appliance"
         },
-        "frontend": {
-          "label": "Entry and request path"
-        },
-        "backend": {
-          "label": "Local inference on GPUs"
-        },
-        "cloud": {
-          "label": "External endpoints"
+        "messagebus": {
+          "label": "External inference endpoints"
         },
         "database": {
-          "label": "Control plane"
+          "label": "PaletteAI Inference Launchpad services"
         },
-        "security": {
-          "label": "Identity"
+        "frontend": {
+          "label": "Kubernetes"
         },
-        "messagebus": {
-          "label": "Monitoring"
+        "backend": {
+          "label": "Operating system"
+        },
+        "cloud": {
+          "label": "Hardware"
         }
       }
-    }
+    },
+    "viewBox": [756, 886]
   },
   "components": [
     {
-      "id": "admin",
+      "id": "operators",
       "type": "external",
-      "label": "Administrators",
-      "sublabel": "web browser",
-      "pos": [60, 40],
-      "size": [170, 64]
+      "label": "Operators",
+      "sublabel": "browser · console",
+      "pos": [32, 40],
+      "size": [222, 64]
     },
     {
-      "id": "clients",
+      "id": "apps",
       "type": "external",
-      "label": "Agents and apps",
-      "sublabel": "OpenAI or Anthropic API",
-      "pos": [300, 40],
-      "size": [170, 64]
+      "label": "AI applications",
+      "sublabel": "Claude Code · Codex",
+      "pos": [267, 40],
+      "size": [222, 64]
     },
     {
       "id": "external",
-      "type": "cloud",
-      "label": "5. External endpoints",
-      "sublabel": "built-in or registered",
-      "pos": [540, 40],
-      "size": [170, 64]
+      "type": "messagebus",
+      "label": "External inference endpoints",
+      "sublabel": "optional burst and fallback",
+      "pos": [502, 40],
+      "size": [222, 64]
     },
     {
       "id": "console",
-      "type": "frontend",
-      "label": "6. Console",
-      "sublabel": "admin web UI",
-      "pos": [60, 180],
-      "size": [170, 64]
+      "type": "database",
+      "label": "Console",
+      "sublabel": "configure · observe",
+      "pos": [32, 176],
+      "size": [222, 64]
     },
     {
-      "id": "platform",
-      "type": "frontend",
-      "label": "1. Platform IP",
-      "sublabel": "one HTTPS address",
-      "pos": [300, 180],
-      "size": [170, 64]
+      "id": "gateway",
+      "type": "database",
+      "label": "1. Gateway",
+      "sublabel": "OpenAI + Anthropic API",
+      "pos": [267, 176],
+      "size": [222, 64]
     },
     {
       "id": "control",
       "type": "database",
-      "label": "7. Control plane",
-      "sublabel": "applies your settings",
-      "pos": [60, 320],
-      "size": [170, 64]
+      "label": "Control plane",
+      "sublabel": "reconciles the box",
+      "pos": [502, 280],
+      "size": [222, 64]
     },
     {
-      "id": "gateway",
+      "id": "engine",
+      "type": "database",
+      "label": "2. vLLM engine · gated",
+      "sublabel": "vLLM · SGLang · Ollama",
+      "pos": [267, 280],
+      "size": [222, 64]
+    },
+    {
+      "id": "apiserver",
       "type": "frontend",
-      "label": "2. Gateway",
-      "sublabel": "tokens, quotas, cache",
-      "pos": [300, 320],
-      "size": [170, 64]
+      "label": "kube-apiserver + etcd",
+      "sublabel": "the only coordination point",
+      "pos": [32, 428],
+      "size": [222, 64]
     },
     {
-      "id": "idp",
-      "type": "security",
-      "label": "Identity provider",
-      "sublabel": "users and groups",
-      "pos": [60, 460],
-      "size": [170, 64]
+      "id": "kubelet",
+      "type": "frontend",
+      "label": "3. kubelet",
+      "sublabel": "node agent",
+      "pos": [267, 428],
+      "size": [222, 64]
     },
     {
-      "id": "engines",
+      "id": "gpuop",
+      "type": "frontend",
+      "label": "GPU Operator",
+      "sublabel": "one GPU per model",
+      "pos": [502, 428],
+      "size": [222, 64]
+    },
+    {
+      "id": "agent",
       "type": "backend",
-      "label": "4. Local models",
-      "sublabel": "inference engines",
-      "pos": [300, 460],
-      "size": [170, 64]
+      "label": "Palette agent",
+      "sublabel": "applies cluster profile",
+      "pos": [32, 576],
+      "size": [164, 64]
     },
     {
-      "id": "semantic",
+      "id": "containerd",
       "type": "backend",
-      "label": "3. Semantic router",
-      "sublabel": "picks a model",
-      "pos": [540, 460],
-      "size": [170, 64]
+      "label": "containerd",
+      "sublabel": "pulls and runs images",
+      "pos": [208, 576],
+      "size": [164, 64]
     },
     {
-      "id": "dashboards",
-      "type": "messagebus",
-      "label": "8. Grafana dashboards",
-      "sublabel": "GPU and engine metrics",
-      "pos": [300, 600],
-      "size": [170, 64]
+      "id": "drivers",
+      "type": "backend",
+      "label": "4. GPU drivers",
+      "sublabel": "NVIDIA · AMD · Intel",
+      "pos": [384, 576],
+      "size": [164, 64]
+    },
+    {
+      "id": "hostfs",
+      "type": "backend",
+      "label": "host filesystem",
+      "sublabel": "weights on local NVMe",
+      "pos": [560, 576],
+      "size": [164, 64]
+    },
+    {
+      "id": "cpu",
+      "type": "cloud",
+      "label": "CPU",
+      "pos": [32, 724],
+      "size": [128, 52]
+    },
+    {
+      "id": "memory",
+      "type": "cloud",
+      "label": "memory",
+      "pos": [173, 724],
+      "size": [128, 52]
+    },
+    {
+      "id": "gpu",
+      "type": "cloud",
+      "label": "5. GPU",
+      "pos": [314, 724],
+      "size": [128, 52]
+    },
+    {
+      "id": "network",
+      "type": "cloud",
+      "label": "network",
+      "pos": [455, 724],
+      "size": [128, 52]
+    },
+    {
+      "id": "nvme",
+      "type": "cloud",
+      "label": "local NVMe",
+      "pos": [596, 724],
+      "size": [128, 52]
     }
   ],
   "boundaries": [
     {
       "kind": "region",
-      "label": "Appliance",
-      "pad": 40,
-      "wraps": ["console", "platform", "control", "gateway", "idp", "engines", "semantic", "dashboards"]
+      "label": "PaletteAI Inference Launchpad",
+      "wraps": ["console", "gateway", "control", "engine"],
+      "pad": 20
     },
     {
       "kind": "region",
-      "label": "GPUs",
-      "pad": 12,
-      "wraps": ["engines", "semantic"]
+      "label": "Kubernetes · K3s",
+      "wraps": ["apiserver", "kubelet", "gpuop"],
+      "pad": 20
+    },
+    {
+      "kind": "region",
+      "label": "Operating system · Kairos",
+      "wraps": ["agent", "containerd", "drivers", "hostfs"],
+      "pad": 20
+    },
+    {
+      "kind": "region",
+      "label": "Hardware",
+      "wraps": ["cpu", "memory", "gpu", "network", "nvme"],
+      "pad": 20
     }
   ],
   "connections": [
     {
-      "from": "clients",
-      "to": "platform",
-      "variant": "emphasis"
+      "from": "operators",
+      "to": "console",
+      "variant": "default"
     },
     {
-      "from": "admin",
-      "to": "platform",
-      "fromSide": "right",
-      "toSide": "top"
-    },
-    {
-      "from": "platform",
+      "from": "apps",
       "to": "gateway",
       "variant": "emphasis"
     },
     {
-      "from": "platform",
-      "to": "console"
-    },
-    {
       "from": "gateway",
-      "to": "engines",
+      "to": "engine",
       "variant": "emphasis"
-    },
-    {
-      "from": "gateway",
-      "to": "semantic",
-      "fromSide": "right",
-      "toSide": "top"
     },
     {
       "from": "gateway",
       "to": "external",
-      "label": "off by default",
+      "label": "optional",
       "variant": "dashed",
       "fromSide": "right",
-      "toSide": "bottom"
+      "toSide": "bottom",
+      "via": [[613, 208]],
+      "labelAt": [613, 140]
     },
     {
-      "from": "console",
-      "to": "control"
+      "from": "kubelet",
+      "to": "engine",
+      "label": "starts pods",
+      "variant": "default",
+      "labelAt": [378, 386]
     },
     {
-      "from": "control",
-      "to": "idp",
-      "label": "sign-in",
-      "variant": "security"
+      "from": "containerd",
+      "to": "kubelet",
+      "label": "runtime",
+      "variant": "default",
+      "labelAt": [334, 534]
     },
     {
-      "from": "control",
-      "to": "gateway",
-      "variant": "dashed"
-    },
-    {
-      "from": "control",
-      "to": "engines",
-      "label": "deploys",
-      "variant": "dashed",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "from": "engines",
-      "to": "dashboards",
-      "variant": "dashed"
+      "from": "gpu",
+      "to": "drivers",
+      "label": "drivers",
+      "variant": "default",
+      "labelAt": [422, 682]
     }
   ]
 }
