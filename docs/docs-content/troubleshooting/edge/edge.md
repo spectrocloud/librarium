@@ -23,7 +23,7 @@ The drop-in file still appears correct when you view it as the root user, so che
 
 ### Debug Steps {#debug-steps-ntp-servers}
 
-1. Use SSH to log in to the affected Edge host.
+1. Establish an SSH connection to the affected Edge host.
 
 2. Check the permissions of the drop-in directory.
 
