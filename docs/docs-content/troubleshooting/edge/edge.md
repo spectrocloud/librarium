@@ -68,7 +68,8 @@ The drop-in file still appears correct when you view it as the root user, so che
 
 6. To prevent the issue, add a `directories` entry to the cloud-init stage that writes the drop-in file. Refer to
    [Create a File in a New Directory](../../clusters/edge/edge-configuration/cloud-init.md#create-a-file-in-a-new-directory)
-   for an example. Deployed Edge hosts apply an updated OS pack during the next cluster upgrade, and then reboot.
+   for an example. If the stage is in the OS pack, deployed Edge hosts apply the updated OS pack during the next cluster
+   upgrade and then reboot.
 
 <!-- vale Vale.Spelling = NO -->
 
