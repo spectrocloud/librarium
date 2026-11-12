@@ -45,20 +45,17 @@ installation can take extra time on the first boot, so wait before you treat a s
 
 **Symptom.** After the first boot following the OS install, the console shows a plain login prompt with a UUID-derived
 hostname (for example `edge-<uuid> login:`), and no user account exists. Every credential you try fails with
-`Login incorrect`. The Palette TUI never paints.
+`Login incorrect`. The Palette TUI never appears.
 
-**Root cause.** At the first-boot GRUB menu, the **Registration** entry was selected (either explicitly or by countdown
-timeout). Registration runs Kairos onboarding and marks first-boot complete without launching the Palette TUI, so no
-interactive account creation happens and the node is left at a login prompt with no account.
-
-**Workaround.** Boot the state-reset entry to clear the first-boot marker, then boot the primary entry.
+**Workaround.** Boot the state-reset entry, and then let the node boot its default entry.
 
 1. From the [baseboard management controller (BMC)](../reference/glossary.md#bmc), power-cycle the node.
-2. When the GRUB menu paints, press an arrow key immediately to freeze the countdown. Move the highlight to **Palette
+2. When the GRUB menu appears, press an arrow key immediately to freeze the countdown. Move the highlight to **Palette
    eXtended Kubernetes Edge state reset (auto)** and press **ENTER**. The node runs a state cleanup and reboots itself;
    do not intervene during the mid-cycle reboot.
-3. When the GRUB menu paints the second time, select **Palette eXtended Kubernetes Edge** (the first entry, with no
-   suffix) and press **ENTER**. The Palette TUI paints, and you can create the initial user account.
+3. When the GRUB menu appears the second time, do not press any key. After the countdown, the node boots its default
+   entry. The screen can stay blank for several minutes before the Palette TUI appears, and then you can create the
+   initial user account.
 
 If the state-reset entry does not restore first-boot behavior, boot the **recovery** entry, drop to a shell by editing
 the GRUB entry (press `e`, append `init=/bin/bash` to the `linux` line, and press **Ctrl-X** to boot), and run
