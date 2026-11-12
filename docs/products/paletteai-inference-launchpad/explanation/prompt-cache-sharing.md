@@ -94,7 +94,7 @@ The conversation stays there until its 1-hour window ends.
   The time of the first request does not change the minute.
 
 - The appliance works out the minute from a hash of the conversation's ID. That ID is the session ID. For requests with
-  no session ID, it is the client's ID. Different conversations get different minutes, so their windows end at different
+  no session ID, it is the client's ID. Conversations usually get different minutes, so their windows end at different
   times.
 
 - As a result, a new conversation can have less than 1 hour left on its node. For example, a conversation whose minute
