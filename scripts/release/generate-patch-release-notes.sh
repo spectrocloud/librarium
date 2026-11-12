@@ -986,7 +986,7 @@ if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
   # A pending version names no binary, so there is nothing to ask for or to download.
   if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
     if [[ -z "$RELEASE_PALETTE_CLI_SHA" && -t 0 ]]; then
-      echo "ℹ️  The SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION is published in ReTool. Look it up there."
+      echo "ℹ️  Spectro Cloud does not publish a SHA256 checksum for Palette CLI $RELEASE_PALETTE_CLI_VERSION, so derive it unless you already have it."
       read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " RELEASE_PALETTE_CLI_SHA
     fi
 
@@ -1024,7 +1024,7 @@ if [[ "$PALETTE_CLI_CHANGED" == true ]]; then
       fi
     else
       RELEASE_PALETTE_CLI_SHA="$PENDING_SHA"
-      echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+      echo "ℹ️  No checksum given, so the CLI Tools row records '$PENDING_SHA'. Once the binary is published, re-run this script with 'derive' as the checksum, or edit the row by hand to fill it in."
     fi
   fi
 
