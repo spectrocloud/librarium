@@ -12,11 +12,11 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
 
-Edge hosts might not use the NTP servers that you configure in a `systemd-timesyncd` drop-in file through a cloud-init
-stage in the Edge Installer user data or the OS pack. If the stage creates the `/etc/systemd/timesyncd.conf.d`
-directory, the directory gets permissions that only the root user can access. `systemd-timesyncd` runs as the
-`systemd-timesync` user, so it cannot read the file and uses its default NTP servers instead. If the default servers are
-unreachable, the clock of the Edge host does not synchronize.
+Edge hosts might ignore the Network Time Protocol (NTP) servers that you configure in a `systemd-timesyncd` drop-in
+file. This occurs when a cloud-init stage in the Edge Installer user data or the OS pack writes the drop-in file and
+creates the `/etc/systemd/timesyncd.conf.d` directory. The stage gives the directory permissions that only the root user
+can access. `systemd-timesyncd` runs as the `systemd-timesync` user, so it cannot read the file and uses its default NTP
+servers instead. If the default servers are unreachable, the clock of the Edge host does not synchronize.
 
 The drop-in file still appears correct when you view it as the root user, so check the directory permissions and the
 `systemd-timesyncd` logs instead.
