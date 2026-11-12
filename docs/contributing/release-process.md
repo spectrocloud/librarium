@@ -300,10 +300,11 @@ page.
 | `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
 Looking component versions up from the private `spectrocloud/nickfury` repository is optional, and needs no token in
-your `.env` file. The scripts read it through the [GitHub CLI](https://cli.github.com), so a machine that has run
-`gh auth login` against the organisation can look versions up, and one that has not is told so and falls back to the
-values you set yourself. Spectro Cloud issues short-lived GitHub credentials through Bulwark rather than long-lived
-personal access tokens, so authenticate the CLI with one of those rather than storing a token.
+your `.env` file. The scripts read it through the [GitHub CLI](https://cli.github.com), so a machine where `gh` is
+authenticated can look versions up, and one where it is not is told so and falls back to the values you set yourself.
+Spectro Cloud issues short-lived GitHub credentials through Bulwark rather than long-lived personal access tokens, so
+authenticate the CLI with a Bulwark token rather than storing one: run `bulwark token generate` once, then run
+`export GH_TOKEN=$(bulwark token get)` in the terminal where you run the scripts.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
@@ -400,7 +401,7 @@ default, so confirming it costs one keystroke.
 | Do you know the nickfury branch or tag name?                      | Yes, give the name. No, give the versions at the next two questions instead.                     | `NICKFURY_REF`                |
 | CanvOS version                                                    | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_CANVOS_VERSION`        |
 | Palette CLI version                                               | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_PALETTE_CLI_VERSION`   |
-| The Linux AMD64 Palette CLI checksum                              | Paste it from ReTool, type `derive`, or leave it empty to record it as pending.                  | `PATCH_PALETTE_CLI_SHA`       |
+| The Linux AMD64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_SHA`       |
 | The Linux ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_ARM64_SHA` |
 | The macOS ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_MACOS_SHA` |
 

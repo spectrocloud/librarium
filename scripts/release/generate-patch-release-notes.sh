@@ -743,7 +743,7 @@ if [[ "$COMPONENT_UPDATES" == false ]]; then
     echo "⚠️  A branch or tag, a component version, or a checksum was supplied but no new component versions were requested, so it is ignored. Answer yes to the component version question, or set PATCH_COMPONENT_UPDATES=true, to use it." >&2
   fi
 elif ! github_cli_ready; then
-  echo "ℹ️  The GitHub CLI is not set up, so $NICKFURY_REPO cannot be read. Supply the component versions at the prompts below, or install gh and run 'gh auth login' to look them up." >&2
+  echo "ℹ️  The GitHub CLI is not set up, so $NICKFURY_REPO cannot be read. Supply the component versions at the prompts below, or install gh and authenticate it with a Bulwark token ('bulwark token generate' once, then 'export GH_TOKEN=\$(bulwark token get)') to look them up." >&2
 fi
 
 if [[ "$COMPONENT_UPDATES" == true ]] && github_cli_ready; then
@@ -1005,7 +1005,7 @@ for spec in "${PALETTE_CLI_ARCHES[@]}"; do
     # A pending version names no binary, so there is nothing to ask for or to download.
     if [[ "$RELEASE_PALETTE_CLI_VERSION" != "$PENDING_VERSION" ]]; then
       if [[ -z "$arch_sha" && -t 0 ]]; then
-        echo "ℹ️  The SHA256 checksum for the $arch_name Palette CLI $RELEASE_PALETTE_CLI_VERSION binary is published in ReTool. Look it up there."
+        echo "ℹ️  Spectro Cloud does not publish a SHA256 checksum for the $arch_name Palette CLI $RELEASE_PALETTE_CLI_VERSION binary, so derive it unless you already have it."
         read -r -p "   Specify the checksum, type 'derive' to read it from the published binary, or leave blank to record it as pending: " arch_sha
       fi
 
@@ -1046,7 +1046,7 @@ for spec in "${PALETTE_CLI_ARCHES[@]}"; do
         fi
       else
         arch_sha="$PENDING_SHA"
-        echo "ℹ️  No $arch_name checksum given, so its CLI Tools row records '$PENDING_SHA'. Look the checksum up in ReTool, then re-run this script or edit the row by hand to fill it in."
+        echo "ℹ️  No $arch_name checksum given, so its CLI Tools row records '$PENDING_SHA'. Once the binary is published, re-run this script with 'derive' as the checksum, or edit the row by hand to fill it in."
       fi
     fi
 

@@ -414,7 +414,7 @@ fetch_github_file() {
     local path="$3"
 
     if ! github_cli_ready; then
-        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and run 'gh auth login' to look component versions up automatically." >&2
+        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and authenticate it with a Bulwark token ('bulwark token generate' once, then 'export GH_TOKEN=\$(bulwark token get)') to look component versions up automatically." >&2
         return 1
     fi
 
