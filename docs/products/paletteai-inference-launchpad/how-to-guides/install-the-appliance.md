@@ -111,8 +111,8 @@ Registration** entry by default. This is expected, so you do not need to select 
 for several minutes with no output while the Palette TUI starts. Wait for the TUI to appear instead of assuming that the
 node is stuck in a boot loop.
 
-If the screen stays blank and the TUI never appears, or the node keeps rebooting, power-cycle the node once from the
-BMC. If the node stops at a plain login prompt with no user account, refer to
+If the screen stays blank and the TUI never appears, power-cycle the node once from the BMC. If the node stops at a
+plain login prompt with no user account, refer to
 [Known Issues: Node stuck at login prompt after first boot](../reference/known-issues.md#node-stuck-at-login-prompt-after-first-boot)
 for recovery.
 
