@@ -14,8 +14,8 @@ distributing container images. This guide describes how to manually configure an
 from a private Amazon ECR repository by storing a static AWS access key on the Edge hosts and in the cluster profile.
 The configuration covers both cluster creation and later upgrades.
 
-For connected clusters in appliance mode, Palette can issue ECR tokens to the Edge hosts instead, so you do not need to
-store static AWS credentials on the hosts. Refer to
+For centrally managed clusters in appliance mode, Palette can issue ECR tokens to the Edge hosts instead, so you do not
+need to store static AWS credentials on the hosts. Refer to
 [Deploy Cluster with an Amazon ECR Provider Registry](./deploy-ecr-provider-registry.md).
 
 This procedure applies to Edge clusters that use the PXK-E (kubeadm) Kubernetes distribution, and it covers provider
