@@ -123,7 +123,7 @@ The console shows cache reads from the engine that answered the request. A reque
 work reports zero cache reads. This happens even when another node saved the same opening.
 
 This is expected, not a fault in the cache. It comes from how the appliance spreads requests across nodes. The console
-does not show which node answered a request. To compare the nodes, refer to
+does not show which node answered a request. To find the cause, refer to
 [Troubleshoot a Repeated Prompt with No Cache Reads](../how-to-guides/set-prompt-cache-sharing.md#troubleshoot-a-repeated-prompt-with-no-cache-reads).
 
 ## The Timing Side Channel

@@ -118,14 +118,8 @@ reads. For why this can happen, refer to
    - If the model runs on one node and the choice did not change, something is not working as expected. Contact Spectro
      Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
-   - If the model runs on two or more nodes, go to the next step.
-
-4. Open Grafana, as described in [Open the Metrics Dashboards](./view-token-usage.md#open-the-metrics-dashboards).
-
-5. In the engine dashboards, find the node that answered the second request, and check its prefix cache hits.
-
-   If that node shows no prefix cache hits, no action is required. The second request reached a node that did not hold
-   the saved opening.
+   - If the model runs on two or more nodes, no action is required. For why, refer to
+     [Why a Repeated Prompt Shows No Cache Reads](../explanation/prompt-cache-sharing.md#why-a-repeated-prompt-shows-no-cache-reads).
 
 ## Next Steps
 
