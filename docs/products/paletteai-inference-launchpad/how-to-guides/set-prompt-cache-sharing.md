@@ -95,15 +95,17 @@ cache reads, refer to
 
 ## Troubleshoot a Repeated Prompt with No Cache Reads
 
-Use these steps when a second client in the same workspace sends the same opening and gets zero cache reads. For why
-this can happen, refer to
+Use these steps when a second client in the same workspace sends the same opening to the same model and gets zero cache
+reads. For why this can happen, refer to
 [Models on Two or More Nodes](../explanation/prompt-cache-sharing.md#models-on-two-or-more-nodes).
 
 1. Check which choice the workspace's policy uses, as described in [Validate](#validate).
 
    - If it uses **Each client is isolated** on purpose, no action is required.
+
    - If it uses **Each client is isolated** and you want the clients to share, change the choice, as described in
      [Change Cache Sharing on a Policy](#change-cache-sharing-on-a-policy).
+
    - If it uses **Share within the workspace**, go to the next step.
 
 2. From the left main menu, select **Cluster**, and then select the **Models** tab.

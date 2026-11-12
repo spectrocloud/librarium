@@ -29,8 +29,8 @@ again. This saved work is the _prompt cache_. The [Usage Pricing](./usage-pricin
 it the prefix cache.
 
 The [policy](../reference/glossary.md#policy) that a workspace follows decides which clients can reuse each other's
-saved work. This page explains the two choices, the rules that always apply, and the risk that sharing brings. It also
-explains sharing on two or more nodes. To change the setting, refer to
+saved work. This page explains the two choices, the rules that always apply, sharing on two or more nodes, and the risk
+that sharing brings. To change the setting, refer to
 [Set Prompt Cache Sharing for a Policy](../how-to-guides/set-prompt-cache-sharing.md). For the console labels, refer to
 [Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab).
 
@@ -100,9 +100,9 @@ The conversation stays there until its 1-hour window ends.
 - As a result, a new conversation can have less than 1 hour left on its node. For example, a conversation whose minute
   is 17 minutes past sends its first request at 10:50. Its window ends at 11:17, so it has 27 minutes left.
 
-- When the window ends, the appliance picks a node again. The conversation may stay or move. After a move, the new node
-  does not have this conversation's saved work. The next request saves it there again. Later requests reuse the work
-  saved on that node.
+- When the window ends, the appliance picks a node again. The conversation might stay on its node or move to another
+  one. After a move, the new node does not have this conversation's saved work. The next request saves it there again.
+  Later requests reuse the work saved on that node.
 
 ### Who Shares on Two or More Nodes
 
@@ -117,7 +117,7 @@ Each choice applies on each node separately.
 On a model that runs on one node, every conversation reaches that node. The table in
 [Who Shares the Prompt Cache](#who-shares-the-prompt-cache) applies as written.
 
-### Why a Repeated Prompt Shows Zero Cache Reads
+### Why a Repeated Prompt Shows No Cache Reads
 
 The console shows cache reads from the engine that answered the request. A request that reaches a node without the saved
 work reports zero cache reads. This happens even when another node saved the same opening.
