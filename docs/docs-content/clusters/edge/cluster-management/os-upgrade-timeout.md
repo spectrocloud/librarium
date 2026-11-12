@@ -10,12 +10,13 @@ tags: ["edge"]
 ---
 
 When you upgrade the OS of an existing Edge cluster, each upgrade attempt on an Edge host has a time limit. The default
-limit is 45 minutes. In appliance mode, an attempt includes the download of the new provider image. In agent mode, it
+limit is 45 minutes. In [appliance mode](../../../deployment-modes/appliance-mode/appliance-mode.md), an attempt
+includes the download of the new provider image. In [agent mode](../../../deployment-modes/agent-mode/agent-mode.md), it
 includes the download of the Kubernetes image. Edge hosts with slow network connections might need more time. If an
 attempt does not finish in time, the upgrade is retried on that Edge host later.
 
-To change the limit, set the `system.upgradeTimeoutMinutes` option in the OS layer of the cluster profile. The option
-applies to both appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
+To change the limit, set the `system.upgradeTimeoutMinutes` parameter in the OS layer of the cluster profile. The
+parameter applies to both appliance mode and agent mode deployments.
 
 ## How the Upgrade Timeout Works
 
@@ -24,17 +25,22 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 - The limit applies to OS upgrades of control plane and worker nodes in existing clusters. It does not apply when you
   create a cluster.
 
+- In agent mode, Palette does not upgrade the OS of the Edge host. The limit applies to the upgrades that Palette runs
+  on the Edge host when you update the OS or Kubernetes layer of the cluster profile. It does not apply to
+  [custom OS upgrades](../../../deployment-modes/agent-mode/manage-agent/os-upgrades.md) that you run on agent mode
+  hosts.
+
 - When an attempt times out, the upgrade is retried on that Edge host after 1 hour. The wait doubles after each attempt
   that times out, up to 24 hours, and the retries continue until an attempt succeeds.
 
-- Palette does not show that an attempt timed out or that a retry is pending. In Local UI, while an Edge host waits for
-  its next attempt, an **OS upgrade failed** banner appears on the **Edge Host** page and on the **Overview** tab of the
-  **Cluster** page, and the OS of the Edge host is labeled **Upgrade failed**. Local UI does not show when the next
-  attempt starts. The banner clears when an attempt succeeds.
+- Palette does not show that an attempt timed out or that a retry is pending. While an Edge host waits for its next
+  attempt, Local UI displays an **OS upgrade failed** banner on the **Edge Host** page and on the **Overview** tab of
+  the **Cluster** page. Local UI also labels the OS of the Edge host **Upgrade failed**, but it does not show when the
+  next attempt starts. The banner clears when an attempt succeeds.
 
 - The limit is read when an OS upgrade starts. A new value applies to the next OS upgrade, not to an upgrade that is
   already running or waiting for a retry. To recover from an upgrade that keeps timing out, improve the network
-  connection of the Edge host, or wait for the next retry.
+  connection of the Edge host or wait for the next retry.
 
 - Changing only `system.upgradeTimeoutMinutes` does not trigger a repave, reboot, or service restart. Refer to
   [Edge Cluster Upgrade Behavior](./upgrade-behavior.md#os-layer).
@@ -48,7 +54,7 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 - Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.b or later. Earlier
   versions of the agent ignore `system.upgradeTimeoutMinutes` and limit each attempt to 15 minutes.
 
-- _(Optional)_ Access to the cluster with kubectl, to check the limit that an OS upgrade uses. Refer to
+- _(Optional)_ Access to the cluster with kubectl to check the limit that an OS upgrade uses. Refer to
   [Access Cluster with CLI](../../cluster-management/palette-webctl.md).
 
 ## Configure the Upgrade Timeout
@@ -63,7 +69,7 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 
 4. In the new cluster profile version, select the OS layer.
 
-5. In the `options` section, add the `system.upgradeTimeoutMinutes` option, and set it to the number of minutes that
+5. In the `options` section, add the `system.upgradeTimeoutMinutes` parameter, and set it to the number of minutes that
    each upgrade attempt can run.
 
    ```yaml {3}
@@ -91,7 +97,8 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 
 ## Validate
 
-Steps 1 through 4 apply to centrally managed clusters. For a locally managed cluster, use steps 5 and 6.
+Steps 1 through 4 apply to centrally managed clusters. Steps 5 and 6 are optional and apply to both centrally managed
+and locally managed clusters.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -102,13 +109,15 @@ Steps 1 through 4 apply to centrally managed clusters. For a locally managed clu
 4. Confirm that the `options` section shows `system.upgradeTimeoutMinutes` with the value that you set.
 
 5. _(Optional)_ After the next OS upgrade of the cluster starts, issue the following commands to display the limit that
-   the upgrade uses. Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
+   the upgrade uses.
 
    ```bash
    export KUBECONFIG=<path-to-kubeconfig>
    kubectl get spectrosystemtasks --all-namespaces \
      --output custom-columns='NAME:.metadata.name,DEADLINE_SECONDS:.metadata.annotations.spectrocloud\.com/job-active-deadline-seconds'
    ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
 
    ```bash hideClipboard title="Example Output"
    NAME           DEADLINE_SECONDS
