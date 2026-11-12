@@ -98,11 +98,12 @@ traffic is metered as egress. For how clients, API tokens, and quotas work toget
 [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
-When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
-converts each image to text, and the text model then answers as it would for any other prompt. Text-only requests skip
-this step. For the request path and how to turn the feature on, refer to
-[Vision Preprocessing](./vision-preprocessing.md) and
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+When vision preprocessing is on, a request that includes images is rewritten before that routing step. A reader converts
+each image to text, and the text model then answers as it would for any other prompt. The reader is a local vision model
+or a model on an external inference endpoint. Text-only requests skip this step. For the request path, refer to
+[Vision Preprocessing](./vision-preprocessing.md). To turn the feature on, refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md) or
+[Read Images with an External Model](../how-to-guides/read-images-with-an-external-model.md).
 
 ### The Box Default Model {#the-default-model}
 
@@ -188,11 +189,9 @@ platform services are unavailable, and why it is the surface for install and for
 
 ## Data Residency and Isolation
 
-Inference runs on the appliance, so a request and the model that answers it stay inside your environment by default.
-Nothing about a prompt leaves the appliance unless an operator gives a client permission to send it elsewhere.
-
-That permission is [egress](../reference/glossary.md#egress), and it denies by default. A new client cannot reach any
-destination outside the appliance until an operator enables it. Refer to
+Inference runs on the appliance, so requests and the models that answer them stay inside your environment by default. No
+part of a prompt leaves the appliance unless an operator gives the client [egress](../reference/glossary.md#egress).
+Egress is permission to send requests off the appliance. A new client has no egress. Refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 Once an operator enables egress on a policy, or on a client that overrides its policy, a client can reach each
@@ -205,10 +204,16 @@ following:
 - A registered endpoint, which is any OpenAI-compatible host a platform administrator has added under **Integrations**.
 
 Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
-overrides its policy, which sends a request that asked for local serving to an external inference endpoint once the
-client exhausts its local quota rather than refusing it. Naming a local model is therefore not on its own what keeps a
-prompt on the appliance. Bursting is still egress and runs through the same permission, so a client that cannot reach an
+overrides its policy. With bursting on, the appliance does not refuse a client that runs out of local quota. It sends
+the client's local requests to an external inference endpoint instead. As a result, a request that names a local model
+can still leave the appliance. Bursting is still egress and needs the same permission. A client that cannot reach an
 external destination cannot burst to one either.
+
+Vision preprocessing can also send data off the appliance. A platform administrator can choose an external reader. The
+appliance then sends the images in a client's current turn to the reader's endpoint. It also sends up to 4,096
+characters of the client's current question. Each read goes through the same egress checks as that client's own
+requests. A client that cannot reach the endpoint keeps its images on the appliance. Refer to
+[An External Reader](./vision-preprocessing.md#an-external-reader).
 
 Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
 it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency

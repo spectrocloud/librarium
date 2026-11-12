@@ -207,6 +207,19 @@ tokens. A coding agent that tracks its own usage therefore shows the same split 
 field names in each API format, refer to
 [Usage Fields in API Responses](../reference/usage-metrics-reference.md#usage-fields-in-api-responses).
 
+### Images Read by an External Model
+
+When vision preprocessing uses an external reader, each read goes to an external inference endpoint. The appliance
+prices the read at the rate of the endpoint's model, as it does any external request. The read counts as the client's
+external inferencing spend. It never counts against the client's local quota, and it never adds to estimated savings.
+
+On the **By Model** tab, the reads appear under the external model, with the location **External inferencing**. That row
+can show tokens and cost next to zero requests. This is because a read is part of the client's request, not a request of
+its own.
+
+On the **Overview** page, the **Vision preprocessing** card counts **images read by an external model**. For which
+clients the external reader serves, refer to [An External Reader](./vision-preprocessing.md#an-external-reader).
+
 ## How It Fits Together
 
 A single coding-agent turn served on the appliance ties these ideas together.
