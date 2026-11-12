@@ -444,8 +444,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   because of inactivity. Local UI sessions now end after the idle time set in
   `stylus.localUI.session.inactivityTimeoutInMinutes` plus a 2-minute grace period. The
   `stylus.localUI.session.refreshTimeoutInMinutes` parameter now sets the maximum session length from login. Each token
-  renewal also returns a new refresh token, so Edge Management API clients must use the refresh token from the latest
-  renewal response. Refer to
+  renewal now returns a new refresh token, and each refresh token expires after the same idle time and grace period.
+  Edge Management API clients must use the refresh token from the latest renewal response. Refer to
   [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters)
   for more information.
 
