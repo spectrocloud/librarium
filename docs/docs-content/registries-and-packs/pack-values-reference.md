@@ -38,14 +38,15 @@ The following table lists the top-level keys that Palette reads and the packs th
 | [`kubeadmconfig`](#kubeadmconfig)                                         | PXK packs                                                                                                      | The kubeadm configuration of the cluster.                                        |
 | [`canonicalK8sConfig`](#canonicalk8sconfig)                               | Canonical Kubernetes packs                                                                                     | Bootstrap and control plane settings of the cluster.                             |
 | [`cloud`](#cloud)                                                         | Kubernetes packs on AWS, Azure, and MAAS                                                                       | Infrastructure settings for the cloud that hosts the cluster.                    |
-| [`imageSwap`](#imageswap)                                                 | Kubernetes packs of managed Kubernetes clusters                                                                | Registry mappings for the Image Swap webhook.                                    |
-| [`manageCloudFormationStackManually`](#managecloudformationstackmanually) | PXK packs on AWS IaaS, and EKS packs                                                                           | Use a CloudFormation stack that you manage, instead of one that Palette creates. |
+| [`imageSwap`](#imageswap)                                                 | Kubernetes packs of managed clusters, and of all clusters on self-hosted Palette and VerteX                    | Registry mappings for the Image Swap webhook.                                    |
+| [`manageCloudFormationStackManually`](#managecloudformationstackmanually) | PXK packs on AWS IaaS, and EKS packs                                                                           | A CloudFormation stack that you manage, instead of one that Palette creates.     |
 | [`managedControlPlane`](#managedcontrolplane)                             | EKS and AKS packs                                                                                              | Settings of the managed control plane.                                           |
 | [`managedMachinePool`](#managedmachinepool)                               | EKS and AKS packs                                                                                              | Settings of the managed node pools.                                              |
 | [`nodeCustomization`](#nodecustomization)                                 | EKS packs                                                                                                      | Customizations to how EKS nodes bootstrap.                                       |
 | [`postReadinessHooks`](#postreadinesshooks)                               | Palette Dev Engine services                                                                                    | Output variables that a service exposes to the other services of an app profile. |
 | [`containerService`](#containerservice)                                   | Palette Dev Engine container services                                                                          | The container that the service deploys.                                          |
 | [`zarf`](#zarf)                                                           | Zarf packages                                                                                                  | Zarf deployment options.                                                         |
+| [`palettePatch`](#palettepatch)                                           | Palette internal use                                                                                           | Reserved for Palette. Do not add it to your packs.                               |
 
 Other Palette components read keys that this page does not cover, such as `cluster` in Edge Kubernetes packs and
 `stages` in OS packs.
@@ -81,8 +82,8 @@ Kubernetes packs also use `pack` for cluster networking, with the `podCIDR`, `se
 ### `charts`
 
 Helm chart packs nest the values of each chart under `charts.<chart-name>`. Palette passes these values to Helm when it
-installs the chart, in the same way as `helm install --values`. The following example sets a value of the `cilium`
-chart.
+installs the chart, in the same way as `helm install --values`. The following example shows where the values of the
+`cilium` chart go.
 
 ```yaml
 charts:
@@ -97,7 +98,7 @@ of the file. For more information, refer to [Helm Registries](./registries/helm-
 
 Manifest packs nest the values of each manifest under `manifests.<manifest-name>`, where `<manifest-name>` is the
 filename of the manifest without its extension. Palette substitutes these values into the manifest template before it
-applies the manifest. The following example sets the image values of the `calico` manifest.
+applies the manifest. The following example shows the image values of the `calico` manifest.
 
 ```yaml
 manifests:
@@ -140,10 +141,10 @@ kubeadmconfig:
 
 ### `canonicalK8sConfig`
 
-Canonical Kubernetes packs hold the bootstrap and control plane settings of the cluster under `canonicalK8sConfig`, such
-as `bootCommands`, `preRunCommands`, `postRunCommands`, `extraSANs`, `nodeTaints`, and `datastoreType`. The section is
-commented out in the pack by default. Changing it after you create the cluster repaves the nodes, and some fields, such
-as `datastoreType`, take effect only when you create the cluster.
+Canonical Kubernetes packs hold the bootstrap and control plane settings of the cluster under `canonicalK8sConfig`. Its
+sub-keys include `bootCommands`, `preRunCommands`, `postRunCommands`, `extraSANs`, `nodeTaints`, and `datastoreType`.
+The section is commented out in the pack by default. Changing it after you create the cluster repaves the nodes. Some
+sub-keys, such as `datastoreType`, take effect only when you create the cluster.
 
 ### `cloud`
 
@@ -159,11 +160,18 @@ section of the PXK pack.
 
 <!-- prettier-ignore-end -->
 
+### `imageSwap`
+
+The `imageSwap` key maps image registries to mirror registries for the Image Swap webhook, which rewrites the image
+references of the workloads in the cluster. Palette SaaS supports it for managed Kubernetes clusters, such as EKS, AKS,
+and GKE. Self-hosted Palette and Palette VerteX also support it for other clusters when you specify mirror registries
+during the installation. Refer to [Image Swap](../clusters/cluster-management/image-swap.md).
+
 ### `manageCloudFormationStackManually`
 
 Set `manageCloudFormationStackManually.enabled` to `true` to use a CloudFormation stack that you create and manage,
-instead of one that Palette creates. Add the key at the top level of the Kubernetes pack values. On AWS IaaS clusters,
-only PXK packs support the key. EKS packs also support it. Refer to
+instead of one that Palette creates. Add the key at the top level of the Kubernetes pack values. EKS packs support the
+key. On AWS IaaS clusters, only PXK packs support it. Refer to
 [Step 2: Choose CloudFormation Stack Management Option](../clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies.md#step-2-choose-cloudformation-stack-management-option).
 
 ## Keys for Managed Kubernetes Packs
@@ -194,14 +202,15 @@ managedControlPlane:
 
 EKS packs use `managedMachinePool.roleName` and `managedMachinePool.roleAdditionalPolicies` to set the Identity and
 Access Management (IAM) role of the worker node pools. AKS packs use `managedMachinePool.maxPodPerNode` to set the
-maximum number of pods on each node. The packs comment out these settings by default.
+maximum number of pods on each node. The packs comment out these settings by default. For the EKS role settings, refer
+to [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md).
 
 ### `nodeCustomization`
 
 EKS packs use `nodeCustomization` to customize how the worker nodes bootstrap. The packs do not include the key by
-default. Add it at the top level of the pack values. The following table describes the fields that Palette applies.
+default. Add it at the top level of the pack values. The following table describes the sub-keys that Palette applies.
 
-| **Field**                   | **Node Type**     | **Description**                                                                              |
+| **Sub-Key**                 | **Node Type**     | **Description**                                                                              |
 | --------------------------- | ----------------- | -------------------------------------------------------------------------------------------- |
 | `al2.preKubeadmCommands`    | Amazon Linux 2    | A list of commands that run on each node before the node bootstraps.                         |
 | `al2.postKubeadmCommands`   | Amazon Linux 2    | A list of commands that run on each node after the node bootstraps.                          |
@@ -209,28 +218,23 @@ default. Add it at the top level of the pack values. The following table describ
 | `al2023.nodeConfig.kubelet` | Amazon Linux 2023 | Kubelet arguments as key-value pairs, which Palette passes to Kubelet as command-line flags. |
 
 Palette no longer lets you select Amazon Linux 2 (AL2) Amazon Machine Images (AMIs) for EKS worker nodes, so the `al2`
-fields apply only to existing AL2 worker node pools. Refer to
+sub-keys apply only to existing AL2 worker node pools. Refer to
 [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md).
 
 <!-- prettier-ignore-start -->
 
 Changing `nodeCustomization` after you create the cluster repaves the worker node pools. For examples and the AMI
-types that these options apply to, refer to the
+types that these sub-keys apply to, refer to the
 <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization" /> section of the Kubernetes (EKS) pack.
 
 <!-- prettier-ignore-end -->
 
-### `imageSwap`
-
-The `imageSwap` key maps image registries to mirror registries for the Image Swap webhook, which rewrites the image
-references of the workloads in the cluster. Refer to [Image Swap](../clusters/cluster-management/image-swap.md).
-
-## Keys for Palette Dev Engine
+## Keys for Palette Dev Engine Services
 
 ### `postReadinessHooks`
 
-Palette Dev Engine services use `postReadinessHooks.outputParameters` to define output variables, such as the namespace
-of a service or a secret, that the other services of an app profile can consume. Each entry in `outputParameters` has a
+Palette Dev Engine services use `postReadinessHooks.outputParameters` to define output variables that the other services
+of an app profile can consume, such as the namespace of a service or a secret. Each entry in `outputParameters` has a
 `name`, a `type`, and a `spec`. The `type` is `lookupSecret`, `staticSecret`, or `dynamicSecret`. For how services
 consume output variables, refer to [Output Variables](../profiles/app-profiles/app-profile-output-vars.md).
 
@@ -265,12 +269,13 @@ Container services of an app profile use `containerService` to describe the cont
 
 ### `zarf`
 
-Zarf packages that you add to a cluster profile use the `zarf` key for the options that Palette passes to Zarf when it
-initializes Zarf on the cluster and deploys the package. The following table describes the sub-keys.
+Zarf packages that you add to a cluster profile use the `zarf` key to set the options that Palette passes to Zarf.
+Palette uses these options when it initializes Zarf on the cluster and when it deploys the package. The following table
+describes the sub-keys.
 
 | **Sub-Key**          | **Description**                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `init`, `deploy`     | The Zarf init package and the Zarf package to deploy, with its `checksum`, `components`, and `cosignPubKey`.          |
+| `init`, `deploy`     | The Zarf init package and the Zarf package to deploy, each with its `checksum`, `components`, and `cosignPubKey`.     |
 | `registry`, `git`    | The `url`, `username`, and `password` of the registry and Git server that Zarf uses, and whether they are `insecure`. |
 | `nodePort`           | The NodePort of the in-cluster registry that Zarf creates when it initializes.                                        |
 | `storageClass`       | The storage class of the in-cluster registry and Git server that Zarf creates when it initializes.                    |
