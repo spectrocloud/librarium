@@ -282,9 +282,9 @@ A model whose catalog entry names no GPU count and no group, such as a model you
 its own. The deploy wizard's **GPU sharing** step opens it on the group the appliance already runs, so it shares the
 GPUs with that group. On an appliance that serves only the semantic router, that group is the semantic router's own.
 
-Vision preprocessing needs a vision-mode text model. On a vision-mode appliance, image requests that send `auto` are
-routed too, and the **Overview** page shows a **Vision preprocessing** card. For how image requests are handled, refer
-to [Vision Preprocessing](./vision-preprocessing.md).
+A local reader needs a vision-mode text model. On a vision-mode appliance, the semantic router also routes image
+requests that send `auto`. After the appliance reads its first image, the **Overview** page shows a **Vision
+preprocessing** card. For how image requests are handled, refer to [Vision Preprocessing](./vision-preprocessing.md).
 
 ## Usage Reporting
 
