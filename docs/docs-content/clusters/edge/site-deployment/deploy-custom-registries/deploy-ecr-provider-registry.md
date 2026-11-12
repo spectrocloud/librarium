@@ -19,9 +19,9 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
 
 ## Limitations
 
-- Token-based authentication is supported only for connected clusters in appliance mode. Clusters in local management
-  mode ignore the image registry selected for the cluster. If your cluster cannot use token-based authentication, refer
-  to [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
+- Token-based authentication is supported only for centrally managed Edge Native clusters in appliance mode. Locally
+  managed clusters ignore the image registry selected for the cluster. If your cluster cannot use token-based
+  authentication, refer to [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
 
 - The image registry supplies credentials only for images on its own endpoint. Set the `system.uri` option in the OS
   layer of your cluster profile to a provider image on the registry's endpoint. Otherwise, the Edge host pulls the image
