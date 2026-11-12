@@ -27,9 +27,8 @@ In airgap clusters, VMs cannot reach external package repositories. VM Launchpad
 ### Workflow
 
 1. **Upload packages**. On a connected machine, download DEB/RPM/MSI/ISO files. Upload them to VM Launchpad from the
-   Packages page or API.
-2. **Rebuild metadata**. Trigger a repository metadata rebuild so APT/YUM clients detect the new packages.
-3. **Configure VMs**. Use cloud-init to add the VMO repository as a source and install packages, or enable **Install
+   Packages page or API. VM Launchpad updates the APT and YUM repository metadata automatically.
+2. **Configure VMs**. Use cloud-init to add the VMO repository as a source and install packages, or enable **Install
    QEMU Guest Agent** in the VM wizard to auto-inject the guest agent installation.
 
 ### Supported Formats
@@ -46,15 +45,15 @@ In airgap clusters, VMs cannot reach external package repositories. VM Launchpad
 Navigate to **Image Catalog** > **Packages** to view and manage uploaded packages. The page shows the current storage
 usage and the time the repository was last rebuilt, and provides the following controls.
 
-| **Control**            | **Description**                                                                            |
-| ---------------------- | ------------------------------------------------------------------------------------------ |
-| **Upload Package**     | Upload a new package. Refer to [Upload a Package](#upload-a-package).                      |
-| **Check for Updates**  | Check for newer versions of the built-in packages.                                         |
-| **Refresh**            | Reload the package list.                                                                   |
-| **Rebuild Repository** | Regenerate the APT and YUM repository metadata so VMs can install the current package set. |
-| **URLs**               | Display the repository URLs that VMs use as package sources.                               |
-| **Filters**            | Filter the package list. Use **Filter rows** to search by name.                            |
-| **Delete**             | Select one or more package rows, then select **Delete** to remove them.                    |
+| **Control**            | **Description**                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| **Upload Package**     | Upload a new package. Refer to [Upload a Package](#upload-a-package).                |
+| **Check for Updates**  | Check for newer versions of the built-in packages.                                   |
+| **Refresh**            | Reload the package list.                                                             |
+| **Rebuild Repository** | Optional. Restore missing built-in packages and regenerate the APT and YUM metadata. |
+| **URLs**               | Display the repository URLs that VMs use as package sources.                         |
+| **Filters**            | Filter the package list. Use **Filter rows** to search by name.                      |
+| **Delete**             | Select one or more package rows, then select **Delete** to remove them.              |
 
 Each package is listed with the following columns.
 
@@ -143,12 +142,15 @@ cluster profile that contains the VMO pack.
 4. Set the following values in the VMO pack.
 
    ```yaml
-   integrations:
-     packageStore:
-       enabled: true
-       endpoint: "http://seaweedfs-s3.seaweedfs.svc.cluster.local:8333"
-       accessKey: "<access-key>"
-       secretKey: "<secret-key>"
+   charts:
+     virtual-machine-orchestrator:
+       vmo-manager:
+         integrations:
+           packageStore:
+             enabled: true
+             endpoint: "http://seaweedfs-s3.seaweedfs.svc.cluster.local:8333"
+             accessKey: "<access-key>"
+             secretKey: "<secret-key>"
    ```
 
    Replace `<access-key>` and `<secret-key>` with the access key and secret key of the identity from step 2. VM
@@ -215,9 +217,9 @@ section), the generated cloud-init user-data includes:
 - Repository configuration pointing to the VMO package server.
 - Commands to install the guest agent, such as `apt-get install --yes qemu-guest-agent` for Debian/Ubuntu.
 
-The package server URL uses the in-cluster service name, such as
-`http://vmo-manager.vm-dashboard.svc.cluster.local:8080/serve/repo/`. VMs must be able to reach the VM Launchpad service
-from within the cluster.
+The package server URL is the in-cluster base URL of VM Launchpad followed by `/serve/repo/`, such as
+`https://vmo-manager.vm-dashboard.svc.cluster.local:443/serve/repo/` on the appliance. VMs must be able to reach the VM
+Launchpad service from within the cluster.
 
 :::tip
 
@@ -235,24 +237,29 @@ VM Launchpad generates APT and YUM repository metadata in pure Go. No external t
 
 ### Metadata Rebuild
 
-After uploading or deleting packages, trigger a metadata rebuild.
+VM Launchpad generates the APT `Packages` metadata and the YUM `repodata` metadata from its package catalog, so the
+metadata includes each upload and deletion without a rebuild. The VM Launchpad pod that handles an upload or deletion
+updates the metadata immediately, and the other VM Launchpad pods pick up the change within 15 seconds.
 
-1. Navigate to **Image Catalog** > **Packages**.
-2. Select **Rebuild Repository** or use the API `POST /api/v1/packages/repo/rebuild`.
-
-The rebuild scans the package directory and regenerates the APT `Packages` metadata and the YUM `repodata` metadata so
-clients can install the current package set.
+A rebuild is optional. It restores any missing built-in packages and regenerates the metadata. To start one, navigate to
+**Image Catalog** > **Packages** and select **Rebuild Repository**, or use the API `POST /api/v1/packages/repo/rebuild`.
 
 ### Serve Packages
 
-Packages are served at `/serve/repo/`. The path structure is compatible with APT and YUM.
+Packages are served at `<repo-base>/serve/repo/`, where `<repo-base>` is the in-cluster base URL of VM Launchpad. To
+find it, use the `repoBaseURL` field that `GET /api/v1/packages/repo/status` returns. The path structure is compatible
+with APT and YUM.
 
-| **Repository** | **URL**                                                                   |
-| -------------- | ------------------------------------------------------------------------- |
-| **APT**        | `http://<vmo-service>.<namespace>.svc.cluster.local:8080/serve/repo/apt/` |
-| **YUM**        | `http://<vmo-service>.<namespace>.svc.cluster.local:8080/serve/repo/yum/` |
+| **Repository** | **URL**                                                                                 |
+| -------------- | --------------------------------------------------------------------------------------- |
+| **APT**        | `<repo-base>/serve/repo/deb/<codename>/<arch>/` or `<repo-base>/serve/repo/deb/<arch>/` |
+| **YUM**        | `<repo-base>/serve/repo/rpm/<arch>/`                                                    |
 
-VMs add these URLs as package sources in `/etc/apt/sources.list` or `/etc/yum.repos.d/`.
+Replace `<codename>` with the codename of the distribution, such as `noble`, and `<arch>` with the architecture, such as
+`amd64` for APT or `x86_64` for YUM. The cloud-init that VM Launchpad generates tries the APT path with the codename
+first.
+
+VMs add these URLs as package sources in `/etc/apt/sources.list.d/` or `/etc/yum.repos.d/`.
 
 ## Cloud-Init Auto-Injection
 
@@ -341,10 +348,8 @@ the package rows to find each file. Refer to
    contain a space, a non-ASCII character, or any of the characters `/`, `%`, `?`, `#`, or `\`. Earlier releases
    accepted these names, so rename any such file before you upload it.
 
-4. Select **Rebuild Repository**.
-
-5. Upload your logo and favicon through the VM Launchpad API. To have VM Launchpad generate the favicon from your logo
-   instead, run only the logo command, and then complete step 6. Use an [API key](../access-management/api-keys.md) of a
+4. Upload your logo and favicon through the VM Launchpad API. To have VM Launchpad generate the favicon from your logo
+   instead, run only the logo command, and then complete step 5. Use an [API key](../access-management/api-keys.md) of a
    Platform Admin whose role binding covers **All Namespaces**. Each image can be up to 2 MB, in PNG, JPG, GIF, SVG, or
    ICO format.
 
@@ -359,20 +364,21 @@ the package rows to find each file. Refer to
    `<vm-launchpad-host>` with the hostname of VM Launchpad. If VM Launchpad uses a self-signed certificate, add
    `--cacert <ca-certificate>` to each command and replace `<ca-certificate>` with the path to its CA certificate.
 
-6. _(Optional)_ To generate the favicon from your logo, issue the following command.
+5. _(Optional)_ To generate the favicon from your logo, issue the following command.
 
    ```shell
    curl --request POST --header "Authorization: Bearer <api-key>" \
      https://<vm-launchpad-host>/api/v1/branding/generate-favicon
    ```
 
-   Replace `<api-key>` and `<vm-launchpad-host>` with the same values as in step 5.
+   Replace `<api-key>` and `<vm-launchpad-host>` with the same values as in step 4.
 
 ### Recover Files from the Previous Data Volume
 
 VM Launchpad keeps the previous data volume but no longer mounts it, so you can copy files out of the volume before you
 upload them again. The volume is the `vmo-manager-data` PersistentVolumeClaim (PVC), or `data-vmo-manager-<number>` on
-older StatefulSet installations. Nothing deletes it, so delete it yourself when you finish.
+older StatefulSet installations. Nothing deletes it. Keep it until you no longer need to roll back to an earlier
+release, because a rollback mounts this volume again and expects the files on it.
 
 The volume stores packages at `packages/<id>/<file-name>` and branding images at `branding/logo.<extension>` and
 `branding/favicon.<extension>`. The following steps require `kubectl` access to the cluster that runs VM Launchpad.
@@ -479,7 +485,15 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
 7. Upload the packages and branding images again. Refer to
    [Upload Packages and Branding Images Again](#upload-packages-and-branding-images-again).
 
-8. After you confirm that VM Launchpad serves your packages and branding images again, delete the previous PVC.
+8. After you confirm that VM Launchpad serves your packages and branding images again, and you no longer need to roll
+   back to an earlier release, delete the previous PVC.
+
+   :::warning
+
+   Deleting the PVC is irreversible. A rollback to an earlier release mounts this volume again and expects the files on
+   it.
+
+   :::
 
    ```shell
    kubectl delete pvc <pvc-name> --namespace <vmo-namespace>

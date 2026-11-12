@@ -29,13 +29,15 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
   [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
 
 - PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
-  uses a data volume. Update any automation that calls the following endpoints.
+  uses a data volume. Requests to these endpoints do not return an error. They return the PaletteAI VM Launchpad web
+  interface with a `200` status code, so a removed call can appear to succeed. Remove the following calls from your
+  automation.
 
   - `GET /api/v1/system/storage/status`
 
   - `POST /api/v1/system/storage/enable`
 
-  - `POST /api/v1/system/storage/resize`
+  - `PATCH /api/v1/system/storage/resize`
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
