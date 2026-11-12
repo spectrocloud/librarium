@@ -74,11 +74,11 @@ parameter applies to both appliance mode and agent mode deployments.
 
    ```yaml {3}
    options:
-     system.uri: "<existing-value>"
+     system.uri: "existing-value"
      system.upgradeTimeoutMinutes: 90
    ```
 
-   The `<existing-value>` placeholder stands for the current value of `system.uri`. Do not change it.
+   The `existing-value` placeholder stands for the current value of `system.uri`. Do not change it.
 
    | Parameter                      | Description                                                                                                                                                                                                                 | Default |
    | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
