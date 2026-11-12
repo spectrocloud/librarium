@@ -33,8 +33,8 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
 
 - You cannot change the provider type of a registry after you create it.
 
-- Using token-based authentication and the [manual configuration](./deploy-ecr-provider-registry-manual.md) together on
-  the same cluster has not been tested.
+- Spectro Cloud has not tested token-based authentication and the
+  [manual configuration](./deploy-ecr-provider-registry-manual.md) together on the same cluster.
 
 ## Prerequisites
 
