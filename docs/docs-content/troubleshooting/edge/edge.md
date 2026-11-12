@@ -21,7 +21,7 @@ servers instead. If the default servers are unreachable, the clock of the Edge h
 The drop-in file still appears correct when you view it as the root user, so check the directory permissions and the
 `systemd-timesyncd` logs instead.
 
-### Debug Steps
+### Debug Steps {#debug-steps-ntp-servers}
 
 1. Use SSH to log in to the affected Edge host.
 
