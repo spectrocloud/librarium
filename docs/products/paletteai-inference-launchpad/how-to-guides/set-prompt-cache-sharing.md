@@ -112,14 +112,14 @@ reads. For why this can happen, refer to
 
 3. Expand the model row, and then count the nodes that run the model.
 
+   - If the model runs on two or more nodes, no action is required. For why, refer to
+     [Why a Repeated Prompt Shows No Cache Reads](../explanation/prompt-cache-sharing.md#why-a-repeated-prompt-shows-no-cache-reads).
+
    - If the model runs on one node and the cache sharing choice changed between the two requests, no action is required.
      For why, refer to [When a Change Takes Effect](../explanation/prompt-cache-sharing.md#when-a-change-takes-effect).
 
    - If the model runs on one node and the choice did not change, something is not working as expected. Contact Spectro
      Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
-
-   - If the model runs on two or more nodes, no action is required. For why, refer to
-     [Why a Repeated Prompt Shows No Cache Reads](../explanation/prompt-cache-sharing.md#why-a-repeated-prompt-shows-no-cache-reads).
 
 ## Next Steps
 
