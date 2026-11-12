@@ -49,6 +49,15 @@ Follow the instructions to install Palette VerteX using the VerteX Management Ap
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette VerteX" />
 
+### Before You Begin
+
+<!-- prettier-ignore-start -->
+
+Use the following CSV worksheet to gather and record information that you need during installation. Fill in your value for each field.
+<a href="/assets/docs/csv/management-appliance-preinstall-worksheet.csv" download>Download appliance pre-installation worksheet</a>.
+
+<!-- prettier-ignore-end -->
+
 ### Install Palette VerteX {#install}
 
 Installing Palette VerteX consists of the following tasks.

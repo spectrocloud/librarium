@@ -231,6 +231,19 @@ p img.markdown-image {
   border-radius: 1vw;
 }
 
+// Download icon after links to downloadable files, sized and spaced like the theme's external link icon
+.markdown a[href$=".csv"]::after {
+  content: "";
+  display: inline-block;
+  width: 13.5px;
+  height: 13.5px;
+  margin-left: 0.3rem;
+  vertical-align: -0.1em;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
 .admonition-tech-preview {
   background-color: var(--custom-purple-alert-bg-color);
 }
