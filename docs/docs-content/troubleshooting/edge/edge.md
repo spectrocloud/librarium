@@ -12,18 +12,18 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
 
-Edge hosts might not use the NTP servers that you configure in a `systemd-timesyncd` drop-in file through a cloud-init
-stage in the Edge Installer user data or the OS pack. If the stage creates the `/etc/systemd/timesyncd.conf.d`
-directory, the directory gets permissions that only the root user can access. `systemd-timesyncd` runs as the
-`systemd-timesync` user, so it cannot read the file and uses its default NTP servers instead. If the default servers are
-unreachable, the clock of the Edge host does not synchronize.
+Edge hosts might ignore the Network Time Protocol (NTP) servers that you configure in a `systemd-timesyncd` drop-in
+file. This occurs when a cloud-init stage in the Edge Installer user data or the OS pack writes the drop-in file and
+creates the `/etc/systemd/timesyncd.conf.d` directory. The stage gives the directory permissions that only the root user
+can access. `systemd-timesyncd` runs as the `systemd-timesync` user, so it cannot read the file and uses its default NTP
+servers instead. If the default servers are unreachable, the clock of the Edge host does not synchronize.
 
 The drop-in file still appears correct when you view it as the root user, so check the directory permissions and the
 `systemd-timesyncd` logs instead.
 
-### Debug Steps
+### Debug Steps {#debug-steps-ntp-servers}
 
-1. Use SSH to log in to the affected Edge host.
+1. Establish an SSH connection to the affected Edge host.
 
 2. Check the permissions of the drop-in directory.
 
@@ -68,7 +68,8 @@ The drop-in file still appears correct when you view it as the root user, so che
 
 6. To prevent the issue, add a `directories` entry to the cloud-init stage that writes the drop-in file. Refer to
    [Create a File in a New Directory](../../clusters/edge/edge-configuration/cloud-init.md#create-a-file-in-a-new-directory)
-   for an example. Deployed Edge hosts apply an updated OS pack during the next cluster upgrade, and then reboot.
+   for an example. If the stage is in the OS pack, deployed Edge hosts apply the updated OS pack during the next cluster
+   upgrade and then reboot.
 
 <!-- vale Vale.Spelling = NO -->
 
