@@ -2,18 +2,31 @@
 sidebar_label: "Set Prompt Cache Sharing for a Policy"
 title: "Set Prompt Cache Sharing for a Policy"
 description:
-  "On a PaletteAI Inference Launchpad appliance, choose whether the clients in the workspaces that follow a policy share
-  the prompt cache or each keep their own."
+  "On a PaletteAI Inference Launchpad appliance, choose whether clients share the prompt cache or each keep their own.
+  Check why a repeated prompt shows no cache reads."
 hide_table_of_contents: false
 sidebar_position: 2.85
 tags: ["paletteai-inference-launchpad", "access", "policy", "cache", "how-to"]
-keywords: ["launchpad", "ai", "prompt cache", "cache sharing", "policy", "workspace", "isolation"]
+keywords:
+  [
+    "launchpad",
+    "ai",
+    "prompt cache",
+    "cache sharing",
+    "policy",
+    "workspace",
+    "isolation",
+    "cache reads",
+    "troubleshooting",
+  ]
 ---
 
 Choose whether clients share the prompt cache or each keep their own. You set this on the policy that their workspace
 follows. For what each choice means and the risk that sharing brings, refer to
 [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md). For the labels on the **Policies** tab, refer to
-[Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab).
+[Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab). If a repeated prompt shows no
+cache reads, refer to
+[Troubleshoot a Repeated Prompt with No Cache Reads](#troubleshoot-a-repeated-prompt-with-no-cache-reads).
 
 ## Prerequisites
 
@@ -79,6 +92,34 @@ follows. For what each choice means and the risk that sharing brings, refer to
    workspace**, or **Each client** for **Each client is isolated**.
 
 4. Confirm that the **Followed by** column lists the workspaces whose clients you meant to change.
+
+## Troubleshoot a Repeated Prompt with No Cache Reads
+
+Use these steps when a second client in the same workspace sends the same opening and gets zero cache reads. For why
+this can happen, refer to
+[Models on Two or More Nodes](../explanation/prompt-cache-sharing.md#models-on-two-or-more-nodes).
+
+1. Check which choice the workspace's policy uses, as described in [Validate](#validate).
+
+   - If it uses **Each client is isolated** on purpose, no action is required.
+   - If it uses **Each client is isolated** and you want the clients to share, change the choice, as described in
+     [Change Cache Sharing on a Policy](#change-cache-sharing-on-a-policy).
+   - If it uses **Share within the workspace**, go to the next step.
+
+2. From the left main menu, select **Cluster**, and then select the **Models** tab.
+
+3. Expand the model row, and then count the nodes that run the model.
+
+   - If the model runs on one node, the two clients share saved work. Zero cache reads means something is not working as
+     expected. Contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+   - If the model runs on two or more nodes, go to the next step.
+
+4. Open Grafana, as described in [Open the Metrics Dashboards](./view-token-usage.md#open-the-metrics-dashboards).
+
+5. In the engine dashboards, find the node that answered the second request, and check its prefix cache hits.
+
+   If that node shows no prefix cache hits, no action is required. The second request reached a node that did not hold
+   the saved opening.
 
 ## Next Steps
 
