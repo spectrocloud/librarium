@@ -126,6 +126,20 @@ tags: ["release-notes"]
 
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
+
+- **User action required:** After the upgrade, the AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers on
+  AKS clusters deployed with a service principal cloud account use the AKS cluster identity instead of the cloud
+  account's service principal. If these clusters use storage outside the AKS node resource group, grant the AKS cluster
+  identity access to that storage before the upgrade. This includes StorageClasses with a custom `resourceGroup`
+  parameter, static persistent volumes in other resource groups, and disk encryption sets. Otherwise, provisioning or
+  attaching these volumes fails with HTTP 403 errors. During the upgrade, Palette restarts the enabled CSI drivers on
+  each of these clusters, which takes a few minutes per cluster. While the drivers restart, volumes cannot be attached,
+  detached, or mounted, so pods that start or move during this time wait until the drivers are back. Running pods keep
+  their volumes. If Palette cannot restart the drivers, it raises a warning event on the cluster. Refer to
+  [AKS CSI Drivers Fail to Restart After Upgrade](../troubleshooting/cluster-deployment.md#scenario---aks-csi-drivers-fail-to-restart-after-upgrade)
+  for more information.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11804 -->
@@ -235,6 +249,17 @@ tags: ["release-notes"]
 - Fixed an issue that prevented the cluster autoscaler pod from being scheduled on control plane nodes. When all worker
   [node pools](../clusters/cluster-management/node-pool.md) carried a `NoSchedule` taint, the pod stayed `Pending` after
   a node drain, repave, or upgrade, and node pool autoscaling stopped.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
+
+- Fixed an issue that caused the AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers on AKS clusters
+  deployed with a service principal cloud account to use the cloud account's service principal instead of the AKS
+  cluster identity. The drivers read the service principal from the `azure-cloud-provider` secret that Palette created
+  in the `kube-system` namespace, so dynamic volume provisioning failed with HTTP 403 errors when only the AKS cluster
+  identity had storage permissions. Palette no longer creates this secret on AKS clusters. After the upgrade, Palette
+  removes the secret that it created and restarts the enabled CSI drivers so that they use the AKS cluster identity.
+  Persistent volume claims stuck in `Pending` then bind automatically. Refer to the
+  [Upgrade Notes](#upgrade-notes-4.10.b) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12109 -->
 

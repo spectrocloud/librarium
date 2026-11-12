@@ -10,6 +10,74 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - AKS CSI Drivers Fail to Restart After Upgrade
+
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette version for 4.10.b. -->
+
+Palette versions earlier than 4.10.b created the `azure-cloud-provider` secret in the `kube-system` namespace of AKS
+clusters deployed with a service principal cloud account. The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI
+drivers read this secret when they start, so they used the cloud account's service principal instead of the AKS cluster
+identity.
+
+When Palette is upgraded to 4.10.b or later, it removes the secret that it created and restarts the enabled CSI drivers
+on each of these clusters, so that the drivers use the AKS cluster identity. Palette tries the restart up to five times.
+If the restart does not complete, Palette raises one of the following warning events, which appear in the **Events** tab
+of the cluster.
+
+| Event                       | Description                                                                                                                                                                                                                                        |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AKSCSIDriversOff`          | Palette turned the drivers off but could not turn them back on, for example, because another AKS operation was in progress. Palette keeps retrying every 5 minutes until the drivers are back on. No action is required unless the event persists. |
+| `AKSCSIDriverRestartFailed` | Palette stopped retrying. The drivers are on, but they still use the cloud account's service principal. Use the following steps to restart the drivers manually.                                                                                   |
+
+### Debug Steps {#debug-steps-csi-driver-restart}
+
+While a CSI driver is turned off, volumes that use it cannot be attached, detached, or mounted. Pods that start or move
+during this time wait until the driver is back, and running pods keep their volumes.
+
+1. Open a terminal session, log in to the Azure CLI with an account that can update the AKS cluster, and set variables
+   for the cluster.
+
+   ```shell
+   az login
+   export RESOURCE_GROUP=<resource-group>
+   export CLUSTER_NAME=<cluster-name>
+   ```
+
+   Replace `<resource-group>` with the resource group of the AKS cluster and `<cluster-name>` with the name of the AKS
+   cluster.
+
+2. Check that the provisioning state of the cluster is `Succeeded`. If another operation is in progress, wait until it
+   completes.
+
+   ```shell
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query provisioningState --output tsv
+   ```
+
+3. If the Azure Files CSI driver is enabled on the cluster, turn it off and back on. AKS enables this driver by default.
+   Each command returns when the update completes.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-file-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-file-driver
+   ```
+
+4. If the Azure Disk CSI driver is enabled on the cluster, turn it off and back on. AKS enables this driver by default.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-disk-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-disk-driver
+   ```
+
+5. (Optional) If you enabled the Azure Blob CSI driver on the cluster, turn it off and back on.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-blob-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-blob-driver
+   ```
+
+After the drivers restart, they use the AKS cluster identity, and persistent volume claims stuck in `Pending` bind
+automatically.
+
 ## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
 
 <!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
