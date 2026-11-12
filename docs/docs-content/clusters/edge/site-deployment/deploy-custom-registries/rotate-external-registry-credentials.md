@@ -95,8 +95,9 @@ Edge hosts.
 
 5. If the OS or Kubernetes layer of the profile configures a containerd registry mirror with a credential for the same
    registry, for example in `/etc/rancher/k3s/registries.yaml` for K3s, update that credential too. Registry Connect
-   does not update the mirror credential. A change to the `stages` of either layer reboots each Edge host once. Refer to
-   [Edge Cluster Upgrade Behavior](../../cluster-management/upgrade-behavior.md#upgrade-behavior-by-change-location).
+   does not update the mirror credential. A change to the `stages` of either layer reboots each Edge host once. On RKE2
+   clusters, the change repaves each Edge host instead. Refer to
+   [Edge Cluster Upgrade Behavior](../../cluster-management/upgrade-behavior.md).
 
 6. Save the changes as a new version of the cluster profile.
 
