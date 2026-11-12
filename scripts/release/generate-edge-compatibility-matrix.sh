@@ -81,7 +81,7 @@ elif github_cli_ready; then
         echo "⚠️  Could not fetch $NICKFURY_VERSIONS_PATH from nickfury@$nickfury_ref, so only the .env values are available."
     fi
 else
-    echo "ℹ️  The GitHub CLI is not set up, so nickfury cannot be read and only the .env values are available. Install gh and run 'gh auth login' to look component versions up automatically."
+    echo "ℹ️  The GitHub CLI is not set up, so nickfury cannot be read and only the .env values are available. Install gh and authenticate it with a Bulwark token ('bulwark token generate' once, then 'export GH_TOKEN=\$(bulwark token get)') to look component versions up automatically."
 fi
 
 if [[ -z "$canvos_source" ]]; then

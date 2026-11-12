@@ -394,9 +394,9 @@ normalize_super_body() {
 # up rather than being stopped.
 #
 # The CLI is used in place of a personal access token in .env, because Spectro Cloud issues
-# short-lived GitHub credentials through Bulwark rather than long-lived tokens. `gh` holds that
-# credential itself, and in CI it reads the token the workflow exports, so neither case needs a
-# token recorded in a file.
+# short-lived GitHub credentials through Bulwark rather than long-lived tokens. `gh` reads that
+# credential from GH_TOKEN, which a writer exports from `bulwark token get`, or from the token the
+# workflow exports in CI, so neither case needs a token recorded in a file.
 github_cli_ready() {
     command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1
 }
@@ -414,7 +414,7 @@ fetch_github_file() {
     local path="$3"
 
     if ! github_cli_ready; then
-        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and run 'gh auth login' to look component versions up automatically." >&2
+        echo "🟠 The GitHub CLI is not set up, so $repo/$path cannot be read. Install gh and authenticate it with a Bulwark token ('bulwark token generate' once, then 'export GH_TOKEN=\$(bulwark token get)') to look component versions up automatically." >&2
         return 1
     fi
 
