@@ -1305,7 +1305,7 @@
   },
   {
     "name": "ai-nodeprep",
-    "description": "AI Nodeprep is a controller and privileged node agent that prepare worker nodes for AI workloads. You declare a NodePrepProfile resource, and AI Nodeprep installs host packages and network adapter firmware, configures node networking and host boot settings such as IOMMU and huge pages, and reboots nodes when a change requires it. A taint keeps workloads off each node until its preparation completes."
+    "description": "AI Nodeprep is a Kubernetes controller and a privileged node agent that together prepare worker nodes for AI workloads. When you declare a NodePrepProfile resource, AI Nodeprep installs host packages and network adapter firmware, configures node networking, and sets host boot options such as IOMMU and huge pages. It reboots nodes when a change requires it, and a taint keeps workloads off each node until its preparation completes."
   },
   {
     "name": "cloudnative-pg",
@@ -1313,19 +1313,19 @@
   },
   {
     "name": "knative-operator",
-    "description": "The Knative Operator is a Kubernetes operator that installs, upgrades, and configures Knative Serving and Knative Eventing. You declare a KnativeServing or KnativeEventing resource, and the operator deploys the matching Knative components at the version that the resource specifies. The pack installs only the operator."
+    "description": "The Knative Operator is a Kubernetes operator that installs, upgrades, and configures Knative Serving and Knative Eventing. You declare a KnativeServing or KnativeEventing resource, and the operator deploys the matching Knative components at the version that the resource specifies. The pack installs only the operator and its Custom Resource Definitions."
   },
   {
     "name": "kubeflow-trainer",
-    "description": "Kubeflow Trainer is a Kubernetes-native platform for distributed training and fine-tuning of AI models, including large language models. You submit a training job as a TrainJob resource that references a training runtime, such as PyTorch, DeepSpeed, MLX, or JAX distributed training."
+    "description": "Kubeflow Trainer is a Kubernetes-native platform for distributed training and fine-tuning of AI models, including large language models. You submit a training job as a TrainJob resource that references a training runtime for a framework such as PyTorch, DeepSpeed, MLX, or JAX."
   },
   {
     "name": "lws",
-    "description": "LeaderWorkerSet is a Kubernetes API that deploys a group of pods, a leader and its workers, as one unit that is scheduled and addressed together. It is used for multi-node inference serving, where one model runs across multiple pods. The pack deploys the LeaderWorkerSet controller and its Custom Resource Definitions."
+    "description": "LeaderWorkerSet is a Kubernetes API that deploys a group of pods, a leader and its workers, as one unit that is scheduled and addressed together. Multi-node inference serving uses LeaderWorkerSet to run one model across multiple pods. The pack deploys the LeaderWorkerSet controller and its Custom Resource Definitions."
   },
   {
     "name": "nvidia-fleet-intelligence",
-    "description": "The NVIDIA Fleet Intelligence pack deploys NVSentinel, which detects, classifies, and remediates hardware and software faults on GPU nodes. NVSentinel monitors GPU health, system logs, and cloud provider maintenance events, and then cordons faulty nodes, drains their workloads, and starts break-fix workflows."
+    "description": "NVIDIA Fleet Intelligence is a monitoring agent that runs on GPU nodes and collects GPU metrics, events, health checks, and hardware inventory for a Fleet Intelligence backend. The pack deploys the agent and, optionally, an OpenTelemetry gateway that forwards the agent data to the backend."
   },
   {
     "name": "nvidia-nvcre",
@@ -1337,6 +1337,6 @@
   },
   {
     "name": "victoria-metrics-operator",
-    "description": "The VictoriaMetrics Operator is a Kubernetes operator that deploys and manages VictoriaMetrics monitoring components, such as single-node and clustered databases, metrics agents, and alerting, from custom resources that you declare. It also converts existing Prometheus Operator objects, such as ServiceMonitor and PrometheusRule, into their VictoriaMetrics equivalents. The pack installs only the operator and its Custom Resource Definitions."
+    "description": "The VictoriaMetrics Operator is a Kubernetes operator that deploys and manages single-node and clustered VictoriaMetrics databases, metrics agents, and alerting components that you declare as custom resources. It also converts existing Prometheus Operator objects, such as ServiceMonitor and PrometheusRule, into their VictoriaMetrics equivalents. The pack installs only the operator and its Custom Resource Definitions."
   }
 ]
