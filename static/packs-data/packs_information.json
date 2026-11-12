@@ -1302,5 +1302,41 @@
   {
     "name": "velero-seaweedfs",
     "description": "The Velero Bundle provides backup and disaster recovery for Virtual Machine Orchestrator (VMO) clusters, including clusters in airgapped environments. It bundles Velero with an S3-compatible storage plugin and the KubeVirt plugin, and stores backups in SeaweedFS on a separate VM outside the cluster so that backups remain recoverable after a full cluster loss."
+  },
+  {
+    "name": "ai-nodeprep",
+    "description": "AI Nodeprep is a controller and privileged node agent that prepare worker nodes for AI workloads. You declare a NodePrepProfile resource, and AI Nodeprep installs host packages and network adapter firmware, configures node networking and host boot settings such as IOMMU and huge pages, and reboots nodes when a change requires it. A taint keeps workloads off each node until its preparation completes."
+  },
+  {
+    "name": "cloudnative-pg",
+    "description": "CloudNativePG is a Kubernetes operator that manages highly available PostgreSQL clusters. You declare a Cluster resource, and the operator handles provisioning, replication, automated failover, rolling updates, backups, and recovery. The pack installs only the operator and its Custom Resource Definitions."
+  },
+  {
+    "name": "knative-operator",
+    "description": "The Knative Operator is a Kubernetes operator that installs, upgrades, and configures Knative Serving and Knative Eventing. You declare a KnativeServing or KnativeEventing resource, and the operator deploys the matching Knative components at the version that the resource specifies. The pack installs only the operator."
+  },
+  {
+    "name": "kubeflow-trainer",
+    "description": "Kubeflow Trainer is a Kubernetes-native platform for distributed training and fine-tuning of AI models, including large language models. You submit a training job as a TrainJob resource that references a training runtime, such as PyTorch, DeepSpeed, MLX, or JAX distributed training."
+  },
+  {
+    "name": "lws",
+    "description": "LeaderWorkerSet is a Kubernetes API that deploys a group of pods, a leader and its workers, as one unit that is scheduled and addressed together. It is used for multi-node inference serving, where one model runs across multiple pods. The pack deploys the LeaderWorkerSet controller and its Custom Resource Definitions."
+  },
+  {
+    "name": "nvidia-fleet-intelligence",
+    "description": "The NVIDIA Fleet Intelligence pack deploys NVSentinel, which detects, classifies, and remediates hardware and software faults on GPU nodes. NVSentinel monitors GPU health, system logs, and cloud provider maintenance events, and then cordons faulty nodes, drains their workloads, and starts break-fix workflows."
+  },
+  {
+    "name": "nvidia-nvcre",
+    "description": "The NVIDIA Cluster Readiness Engine (NVCRE) is a Kubernetes controller that certifies GPU clusters before production workloads run on them. NVCRE runs training and GPU communication workloads across topology-aware groups of nodes, measures performance, and reports each failed node with a reason. It does not cordon, taint, or otherwise change a node."
+  },
+  {
+    "name": "vast-cosi",
+    "description": "The VAST COSI Driver is a Kubernetes Container Object Storage Interface (COSI) driver that provisions S3 buckets on a VAST Data cluster. The pack also installs the COSI Custom Resource Definitions and the COSI controller, so you can request buckets with BucketClaim resources without a separate COSI installation."
+  },
+  {
+    "name": "victoria-metrics-operator",
+    "description": "The VictoriaMetrics Operator is a Kubernetes operator that deploys and manages VictoriaMetrics monitoring components, such as single-node and clustered databases, metrics agents, and alerting, from custom resources that you declare. It also converts existing Prometheus Operator objects, such as ServiceMonitor and PrometheusRule, into their VictoriaMetrics equivalents. The pack installs only the operator and its Custom Resource Definitions."
   }
 ]
