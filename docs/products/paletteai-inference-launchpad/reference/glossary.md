@@ -225,6 +225,14 @@ on with **Enable external inferencing** and lists the endpoints it can use. Each
 under **Integrations**, unless the policy or client overrides that key for itself alone. Refer to
 [External Inferencing](../explanation/frontier-providers.md).
 
+### External Vision Reader
+
+A model on an [external inference endpoint](#external-inference-endpoint) that reads the images in a request for
+[vision preprocessing](#vision-preprocessing). A text-only [model](#model) on the appliance then answers. In the
+console, the external vision reader is the **External model** choice under **Reader**. Client images leave the
+appliance. Refer to [An External Reader](../explanation/vision-preprocessing.md#an-external-reader) and
+[Read Images with an External Model](../how-to-guides/read-images-with-an-external-model.md).
+
 ## F
 
 ### Fallback
@@ -458,8 +466,8 @@ with quotas through the [appliance console](#appliance-console); ModelGroupQuota
 
 ### Multimodal Preprocessing
 
-The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
-**Settings** > **Configurations**. Refer to
+The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card is on the
+**Multimodal Preprocessing** page. The page is under **Model Management** on the **Settings** menu. Refer to
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ## N
@@ -688,13 +696,16 @@ drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#sl
 
 ### Vision Model
 
-A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
-not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+A model on the appliance that can read images. For [vision preprocessing](#vision-preprocessing), a vision model
+converts images to text for a text-only [model](#model). It is either the local reader or the local fallback model for
+an [external vision reader](#external-vision-reader). It is not a general-purpose chat model. Refer to
+[Vision Preprocessing](../explanation/vision-preprocessing.md).
 
 ### Vision Preprocessing
 
 The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
-[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
+model called the reader does the conversion. The reader is a [vision model](#vision-model) on the appliance or an
+[external vision reader](#external-vision-reader). The text model then answers as usual. Clients keep calling the text
 model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
