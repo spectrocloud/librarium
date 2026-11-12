@@ -120,6 +120,8 @@ You can change the image registry in any cluster state. The change does not repa
 
 3. On the **Overview** tab, confirm that the **Cluster Status** field displays **Running**.
 
+For a new cluster, the **Running** status confirms that the Edge hosts pulled the provider image from your ECR registry.
+
 ## Next Steps
 
 To upgrade the cluster to a new provider image, push the image to the same ECR registry, update `system.uri` in the
