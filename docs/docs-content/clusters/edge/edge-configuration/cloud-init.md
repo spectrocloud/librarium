@@ -244,8 +244,8 @@ Use the following rules when you configure a `directories` entry.
 - Specify `owner` and `group` as numeric user and group IDs. The `directories` entry does not accept user or group
   names.
 
-- Place the `directories` entry in the same stage as the file. If the stage of the file restarts a service, a later
-  stage runs after the service has already failed to read the file.
+- Place the `directories` entry in the same stage as the file. A `directories` entry in a later stage changes the
+  permissions too late for any service that the stage of the file restarts, so the service still cannot read the file.
 
 #### Erase Partitions
 
