@@ -100,9 +100,11 @@ page.
 | `SUPER_API_TOKEN`        | Super API token.                                                                 | `XXX`                   |
 | `GITHUB_TOKEN`           | GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
 
-`GITHUB_TOKEN` is only needed to look up component versions. Set it in your `.env` file, the same as the other tokens.
-When it is not set, the scripts fall back to the token the GitHub CLI already holds, so a machine that has run
-`gh auth login` against the organisation needs no `.env` entry at all. The scripts say which of the two they used.
+`GITHUB_TOKEN` is only needed to look up component versions. When it is not set, the scripts fall back to the token the
+GitHub CLI holds, and they say which of the two they used. Spectro Cloud issues short-lived GitHub credentials through
+Bulwark rather than long-lived personal access tokens, so leave `GITHUB_TOKEN` empty and authenticate the CLI with a
+Bulwark token rather than storing one: run `bulwark token generate` once, then run
+`export GH_TOKEN=$(bulwark token get)` in the terminal where you run the scripts.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
@@ -177,7 +179,7 @@ default, so confirming it costs one keystroke.
 | Do you know the nickfury branch or tag name?                      | Yes, give the name. No, give the versions at the next two questions instead.                     | `NICKFURY_REF`              |
 | CanvOS version                                                    | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_CANVOS_VERSION`      |
 | Palette CLI version                                               | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_PALETTE_CLI_VERSION` |
-| The Palette CLI checksum                                          | Paste it from ReTool, type `derive`, or leave it empty to record it as pending.                  | `PATCH_PALETTE_CLI_SHA`     |
+| The Palette CLI checksum                                          | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_SHA`     |
 
 An unattended run answers from the environment variables alone. It generates the release notes body only, unless
 `NICKFURY_REF`, either component version variable, or `PATCH_PALETTE_CLI_SHA` is supplied, which is taken to mean the
