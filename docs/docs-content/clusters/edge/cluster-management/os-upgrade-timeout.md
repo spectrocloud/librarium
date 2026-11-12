@@ -10,9 +10,9 @@ tags: ["edge"]
 ---
 
 When you upgrade the OS of an existing Edge cluster, each upgrade attempt on an Edge host has a time limit. The default
-limit is 45 minutes. In appliance mode, an attempt includes the download of the new provider image, so Edge hosts with
-slow network connections might need more time. If an attempt does not finish in time, the upgrade is retried on that
-Edge host later.
+limit is 45 minutes. In appliance mode, an attempt includes the download of the new provider image. In agent mode, it
+includes the download of the Kubernetes image. Edge hosts with slow network connections might need more time. If an
+attempt does not finish in time, the upgrade is retried on that Edge host later.
 
 To change the limit, set the `system.upgradeTimeoutMinutes` option in the OS layer of the cluster profile. The option
 applies to both appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
@@ -46,7 +46,7 @@ applies to both appliance mode and [agent mode](../../../deployment-modes/agent-
 - An Edge cluster profile, or an existing Edge cluster and the cluster profile that it uses.
 
 - Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.b or later. Earlier
-  versions of the agent ignore `system.upgradeTimeoutMinutes`.
+  versions of the agent ignore `system.upgradeTimeoutMinutes` and limit each attempt to 15 minutes.
 
 - _(Optional)_ Access to the cluster with kubectl, to check the limit that an OS upgrade uses. Refer to
   [Access Cluster with CLI](../../cluster-management/palette-webctl.md).
@@ -108,6 +108,11 @@ Steps 1 through 4 apply to centrally managed clusters. For a locally managed clu
    export KUBECONFIG=<path-to-kubeconfig>
    kubectl get spectrosystemtasks --all-namespaces \
      --output custom-columns='NAME:.metadata.name,DEADLINE_SECONDS:.metadata.annotations.spectrocloud\.com/job-active-deadline-seconds'
+   ```
+
+   ```bash hideClipboard title="Example Output"
+   NAME           DEADLINE_SECONDS
+   control-plan   5400
    ```
 
 6. Confirm that the `DEADLINE_SECONDS` column shows the limit in seconds for the `control-plan` task, and for the
