@@ -10,6 +10,67 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
+
+Edge hosts might ignore the Network Time Protocol (NTP) servers that you configure in a `systemd-timesyncd` drop-in
+file. This occurs when a cloud-init stage in the Edge Installer user data or the OS pack writes the drop-in file and
+creates the `/etc/systemd/timesyncd.conf.d` directory. The stage gives the directory permissions that only the root user
+can access. `systemd-timesyncd` runs as the `systemd-timesync` user, so it cannot read the file and uses its default NTP
+servers instead. If the default servers are unreachable, the clock of the Edge host does not synchronize.
+
+The drop-in file still appears correct when you view it as the root user, so check the directory permissions and the
+`systemd-timesyncd` logs instead.
+
+### Debug Steps {#debug-steps-ntp-servers}
+
+1. Establish an SSH connection to the affected Edge host.
+
+2. Check the permissions of the drop-in directory.
+
+   ```bash
+   stat --format='%a %n' /etc/systemd/timesyncd.conf.d
+   ```
+
+   The issue affects the host if the permissions are `744`.
+
+   ```bash hideClipboard title="Example Output"
+   744 /etc/systemd/timesyncd.conf.d
+   ```
+
+3. Check the `systemd-timesyncd` logs for permission errors.
+
+   ```bash
+   sudo journalctl --unit systemd-timesyncd --no-pager | grep 'Permission denied'
+   ```
+
+   ```bash hideClipboard title="Example Output"
+   systemd-timesyncd[1234]: Failed to open configuration file '/etc/systemd/timesyncd.conf.d/ntp.conf': Permission denied
+   ```
+
+4. Give all users access to the directory, and then restart `systemd-timesyncd`.
+
+   ```bash
+   sudo chmod 755 /etc/systemd/timesyncd.conf.d
+   sudo systemctl restart systemd-timesyncd
+   ```
+
+5. Verify that `systemd-timesyncd` uses your NTP servers.
+
+   ```bash
+   timedatectl show-timesync --all | grep SystemNTPServers
+   ```
+
+   The output lists the NTP servers from your drop-in file.
+
+   ```bash hideClipboard title="Example Output"
+   SystemNTPServers=ntp.example.com
+   ```
+
+6. To prevent the issue, add a `directories` entry to the cloud-init stage that writes the drop-in file. Refer to
+   [Create a File in a New Directory](../../clusters/edge/edge-configuration/cloud-init.md#create-a-file-in-a-new-directory)
+   for an example. If the stage is in the OS pack, deployed Edge hosts apply the updated OS pack during the next cluster
+   upgrade and then reboot.
+
 <!-- vale Vale.Spelling = NO -->
 
 ## Scenario - OS Upgrade Fails and Edge Host Rolls Back to Previous Image
@@ -271,8 +332,10 @@ where the previous attempt stopped. To keep partially completed downloads, the E
 three times the compressed size of the provider image. If less space is available, each new attempt starts from the
 beginning.
 
-If a cluster update changes the provider image of a deployed cluster, each download attempt ends after 15 minutes,
-regardless of the Palette agent version.
+If a cluster update changes the provider image of a deployed cluster, the download is part of an OS upgrade attempt,
+which has a separate time limit. In Palette agent versions earlier than 4.10.b, each OS upgrade attempt ends after 15
+minutes. Starting with Palette agent version 4.10.b, the default limit is 45 minutes, and you can change it. Refer to
+[Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ### Debug Steps
 
@@ -337,7 +400,9 @@ regardless of the Palette agent version.
    that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
 
 If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host. On
-Palette agent versions earlier than 4.10.b, the download and extraction must complete within the time limit.
+Palette agent versions earlier than 4.10.b, the download and extraction must complete within the time limit. If a
+cluster update changes the provider image, you can also increase the OS upgrade timeout on Palette agent version 4.10.b
+and later. Refer to [Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 

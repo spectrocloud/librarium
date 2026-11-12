@@ -95,10 +95,10 @@ configuration.
 
 ### API Access
 
-Palette exposes two API endpoints for downloading kubeconfig files, which returns the files as text strings. Access is
+Palette exposes two API endpoints for downloading kubeconfig files, which return the files as text strings. Access is
 determined by your Palette permissions. Refer to the [Palette API](/api/introduction) documentation for more
 information.
 
 - **Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/kubeconfig`
 
-- **Admin Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminkubeconfig`
+- **Admin Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminKubeconfig`

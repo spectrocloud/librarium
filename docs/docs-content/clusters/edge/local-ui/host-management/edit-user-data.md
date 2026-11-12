@@ -33,6 +33,8 @@ After an edit has been made, the new settings will apply after the host reboots.
   - `stylus.localUI.login.disableRateLimiting`
   - `stylus.localUI.login.lockoutDurationInMinutes`
   - `stylus.localUI.login.maxFailedAttemptsBeforeLockout`
+  - `stylus.localUI.session.inactivityTimeoutInMinutes`
+  - `stylus.localUI.session.refreshTimeoutInMinutes`
   - `stylus.localUI.port`
   - `stylus.disableTui`
   - `stylus.debug`
