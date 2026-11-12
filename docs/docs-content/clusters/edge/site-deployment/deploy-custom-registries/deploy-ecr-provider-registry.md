@@ -44,8 +44,9 @@ credentials on the Edge hosts.
 - A private Amazon ECR repository that contains a provider image you built during the EdgeForge process. For more
   information, refer to [Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
-- An IAM role in the AWS account that owns the repository, with read access to ECR. Palette assumes this role through
-  STS.
+- An IAM role in the AWS account that owns the repository. The role needs permission to pull from the repository and a
+  trust relationship that allows Palette to assume it through STS. When you add the registry, the side drawer next to
+  the **ARN** field lists the permissions and the trust relationship to add.
 
 - A cluster profile whose OS layer sets `system.uri` to the provider image in your ECR repository.
 
