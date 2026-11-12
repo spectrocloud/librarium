@@ -126,8 +126,8 @@ following steps only if the symptoms continue after that.
 
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
-On non-FIPS VM Launchpad appliances, an appliance upgrade can stall while it drains a node. The node shows the
-`SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
+On non-FIPS VM Launchpad appliances earlier than version 4.10.TBD, an appliance upgrade can stall while it drains a
+node. The node shows the `SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
 
 This occurs because both replicas of the Keycloak database store their data on the drained node. The Keycloak database
 runs as a CloudNativePG cluster of one primary and two replicas. Each instance stores its data on a volume, and a local
@@ -135,8 +135,9 @@ volume ties that data to a single node. When the upgrade drains the node, one re
 node, because its volume is tied to the drained node. The PodDisruptionBudget of the database requires at least one
 healthy replica and does not count the primary. As a result, the upgrade cannot stop the second replica either.
 
-Use the following steps to rebuild the `Pending` replica on another node. The steps keep its old volume and leave the
-primary running.
+Starting with version 4.10.TBD, the replicas run on separate nodes, and the upgrade to version 4.10.TBD first moves
+replicas that share a node to separate nodes. If an upgrade to an earlier version stalls, use the following steps to
+rebuild the `Pending` replica on another node. The steps keep its old volume and leave the primary running.
 
 :::warning
 

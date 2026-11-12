@@ -57,6 +57,12 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
   `KubeVirt apiserver unreachable or returned invalid response` error. Upgrades now update both CRDs, including on
   clusters whose CRDs are already out of date. This applies to the PaletteAI VM Launchpad appliance and to the VMO pack.
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1483 -->
+
+- Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
+  Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade first
+  moves replicas that share a node to separate nodes.
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->
