@@ -35,7 +35,7 @@ on:
         description: "Palette CLI version, for example 4.9.22. Overrides nickfury. Enter same when this patch did not bump it, which removes any row an earlier run wrote. Empty records it as PENDING."
         required: false
       palette_cli_sha:
-        description: "Palette CLI SHA256 checksum, from ReTool. Enter derive to read it from the published binary. Empty records it as PENDING."
+        description: "Palette CLI SHA256 checksum. Enter derive to read it from the published binary. Empty records it as PENDING."
         required: false
 
 env:
