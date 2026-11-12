@@ -33,7 +33,7 @@ The drop-in file still appears correct when you view it as the root user, so che
 
    The issue affects the host if the permissions are `744`.
 
-   ```bash hideClipboard title="Example output"
+   ```bash hideClipboard title="Example Output"
    744 /etc/systemd/timesyncd.conf.d
    ```
 
@@ -43,7 +43,7 @@ The drop-in file still appears correct when you view it as the root user, so che
    sudo journalctl --unit systemd-timesyncd --no-pager | grep 'Permission denied'
    ```
 
-   ```bash hideClipboard title="Example output"
+   ```bash hideClipboard title="Example Output"
    systemd-timesyncd[1234]: Failed to open configuration file '/etc/systemd/timesyncd.conf.d/ntp.conf': Permission denied
    ```
 
@@ -62,7 +62,7 @@ The drop-in file still appears correct when you view it as the root user, so che
 
    The output lists the NTP servers from your drop-in file.
 
-   ```bash hideClipboard title="Example output"
+   ```bash hideClipboard title="Example Output"
    SystemNTPServers=ntp.example.com
    ```
 
