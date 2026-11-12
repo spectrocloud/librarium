@@ -136,7 +136,7 @@ function getProviders(packData: PackData) {
 }
 
 function generateNewHeadingId(props: { node: { children: { value: string }[] } }) {
-  const heading = (props?.node?.children?.[0] as { value: string })?.value;
+  const heading = props?.node?.children?.[0]?.value;
   const headingId = heading?.replace(/\s+/g, "-").toLowerCase();
   return { id: headingId, title: heading };
 }

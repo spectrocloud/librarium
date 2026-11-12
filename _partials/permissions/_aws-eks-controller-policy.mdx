@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-eks-controller-policy
 ---
-**Last Update**: October 27, 2026
+**Last Update**: November 3, 2026
 
 ```json
 {
@@ -94,6 +94,11 @@ partial_name: aws-eks-controller-policy
     {
       "Action": ["iam:ListRoles"],
       "Resource": ["*"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": ["iam:PutRolePolicy", "iam:DeleteRolePolicy"],
+      "Resource": ["arn:*:iam::*:role/*-iam-service-role", "arn:*:iam::*:role/ng-role_*"],
       "Effect": "Allow"
     },
     {
