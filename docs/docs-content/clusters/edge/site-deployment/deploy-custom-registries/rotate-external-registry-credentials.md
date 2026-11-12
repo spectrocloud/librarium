@@ -73,7 +73,10 @@ Edge hosts.
 
 2. From the left main menu, select **Profiles**, and then select the cluster profile that your Edge cluster uses.
 
-3. If the profile does not include the **Registry Connect** pack, add it as an add-on layer.
+3. If the profile does not include the **Registry Connect** pack, add it as an add-on layer. If the user data defines
+   `registryMappingRules` for the registry, copy the same rules, in the same format, to
+   `charts.registry-connect.config.registry.imageReplacementRules` in the pack values. After the Edge hosts join the
+   cluster, they take the mapping rules from Registry Connect, not from the user data.
 
 4. In the values of the **Registry Connect** pack, set the new credential for the registry hostname under
    `charts.registry-connect.config.registry.credentials`.
