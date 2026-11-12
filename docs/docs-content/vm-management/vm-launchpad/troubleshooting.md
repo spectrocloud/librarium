@@ -126,8 +126,8 @@ following steps only if the symptoms continue after that.
 
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
-On non-FIPS VM Launchpad appliances earlier than version 4.10.TBD, an appliance upgrade can stall while it drains a
-node. The node shows the `SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
+On non-FIPS VM Launchpad appliances, an upgrade to a version earlier than 4.10.TBD can stall while it drains a node. The
+node shows the `SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
 
 This occurs because both replicas of the Keycloak database store their data on the drained node. The Keycloak database
 runs as a CloudNativePG cluster of one primary and two replicas. Each instance stores its data on a volume, and a local
@@ -472,16 +472,16 @@ This override takes effect immediately, but it does not persist across reboots. 
 
 <!-- vale Vale.Terms = YES -->
 
-On FIPS VM Launchpad appliances earlier than version 4.10.TBD, which use Piraeus storage, network disruptions can cause
-the DRBD replicas that back the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak
-login page stops responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become
+FIPS VM Launchpad appliances use Piraeus storage. On FIPS appliances earlier than version 4.10.TBD, network disruptions
+can cause the DRBD replicas that back the Keycloak PostgreSQL database to lose their connection. When this happens, the
+Keycloak login page stops responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become
 inaccessible. The Keycloak and PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
 suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
 the Keycloak database on node-local storage instead of DRBD replicas. Starting with version 4.10.TBD, FIPS appliances
-run the Keycloak database as a CloudNativePG cluster, and the following steps do not apply. On earlier FIPS appliances,
-use the following steps to restore the connection manually.
+run the Keycloak database as a CloudNativePG cluster, and this procedure does not apply. On earlier FIPS appliances, use
+the following steps to restore the connection manually.
 
 ### Prerequisites
 
