@@ -39,7 +39,8 @@ or pool identity of a cluster that Palette deploys.
   Government Secret cloud.
 
 - You cannot change the authentication method or the PCG of an existing cloud account, and Palette does not move
-  existing clusters to managed identities. To use managed identities, add a new cloud account.
+  existing clusters to managed identities. To use managed identities, add a new cloud account. The new cloud account can
+  use a new PCG or an existing one. Refer to [Use an Existing PCG](#use-an-existing-pcg).
 
 - You cannot change the cluster identity, the AKS service identity, or the Kubelet identity after you create a cluster.
 
@@ -104,9 +105,9 @@ also needs the Microsoft Graph `Group.Read.All` permission.
    - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine or
      scale set.
 
-3. Deploy a self-hosted PCG to the cluster. Refer to
-   [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md). Wait until the **Cluster Status** of
-   the PCG is **Running**.
+3. Deploy a self-hosted PCG to the cluster, and apply the Ambit manifest along with the other PCG manifests. Refer to
+   [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md#install-pcg). Wait until the **Cluster
+   Status** of the PCG is **Running**.
 
 4. Add an Azure cloud account, and select **Managed identity** as the **Authentication method**. Refer to
    [Azure Commercial Cloud](./azure-cloud.md#azure-commercial-cloud) or
@@ -119,6 +120,62 @@ also needs the Microsoft Graph `Group.Read.All` permission.
 
    If validation fails, check that the management identity is attached to every PCG node and that it has the roles in
    [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
+
+### Use an Existing PCG
+
+A self-hosted PCG can serve managed identity and service principal cloud accounts at the same time. If you already have
+a self-hosted PCG in Azure that serves service principal cloud accounts, you can add managed identity cloud accounts to
+it instead of deploying a new PCG. Palette uses the Ambit service on the PCG only for managed identity cloud accounts,
+so the existing cloud accounts and their clusters are not affected.
+
+The PCG must meet the [prerequisites](#prerequisites) of this guide. You also need `kubectl` access to the cluster that
+hosts the PCG.
+
+:::warning
+
+On AKS, you attach the management identity by updating the Kubelet identity of the cluster that hosts the PCG. Azure
+upgrades the node pools of the cluster to apply the change, which can interrupt the PCG. Make the change during a
+maintenance window.
+
+:::
+
+1. In Azure, create the management identity and assign the roles in
+   [Assign Roles to the Management Identity](#assign-roles-to-the-management-identity).
+
+2. Attach the management identity to every node of the cluster that hosts the PCG.
+
+   - On AKS, update the Kubelet identity of the cluster. The control plane identity of the cluster needs the **Managed
+     Identity Operator** role on the management identity. For example, use the following command. For the requirements
+     of the update, refer to
+     [Update an existing cluster to use a kubelet managed identity](https://learn.microsoft.com/en-us/azure/aks/pre-created-kubelet-managed-identity#update-an-existing-cluster-to-use-a-kubelet-managed-identity).
+
+     ```shell
+     az aks update --resource-group <resource-group> --name <cluster-name> --enable-managed-identity \
+       --assign-identity <control-plane-identity-id> --assign-kubelet-identity <management-identity-id>
+     ```
+
+     Replace `<resource-group>` and `<cluster-name>` with the resource group and name of the AKS cluster, and
+     `<control-plane-identity-id>` and `<management-identity-id>` with the resource IDs of the identities.
+
+   - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine or
+     scale set.
+
+3. Download the Ambit manifest of the PCG with the Palette API, and apply it to the cluster that hosts the PCG.
+
+   ```shell
+   curl --silent --show-error --request GET \
+     "https://<palette-endpoint>/v1/pcg/<pcg-uid>/services/ambit/manifest" \
+     --header "ApiKey: <api-key>" \
+     --output "cluster-<pcg-uid>-ambit-manifest.yaml"
+   kubectl apply --filename "cluster-<pcg-uid>-ambit-manifest.yaml"
+   ```
+
+   Replace `<palette-endpoint>` with the endpoint of your Palette instance, `<pcg-uid>` with the unique ID of the PCG,
+   and `<api-key>` with your [Palette API key](/user-management/authentication/api-key/create-api-key/). To find the ID
+   of the PCG, refer to **Retrieve Manifests Manually** in [Install PCG](../../pcg/deploy-pcg-k8s.md#install-pcg).
+
+4. Complete steps 4 - 6 of [Deploy the PCG and Add the Cloud Account](#deploy-the-pcg-and-add-the-cloud-account). In
+   **Private Cloud Gateway**, select the existing PCG.
 
 ### Validate
 
