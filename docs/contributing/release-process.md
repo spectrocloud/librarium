@@ -101,10 +101,25 @@ page.
 | `GITHUB_TOKEN`           | GitHub token with read access to the private `spectrocloud/nickfury` repository. | `XXX`                   |
 
 `GITHUB_TOKEN` is only needed to look up component versions. When it is not set, the scripts fall back to the token the
-GitHub CLI holds, and they say which of the two they used. Spectro Cloud issues short-lived GitHub credentials through
-Bulwark rather than long-lived personal access tokens, so leave `GITHUB_TOKEN` empty and authenticate the CLI with a
-Bulwark token rather than storing one: run `bulwark token generate` once, then run
-`export GH_TOKEN=$(bulwark token get)` in the terminal where you run the scripts.
+GitHub CLI holds, and they say which of the two they used.
+
+Spectro Cloud issues short-lived GitHub credentials through Bulwark instead of long-lived personal access tokens, so
+leave `GITHUB_TOKEN` empty and use the following steps to give the GitHub CLI a Bulwark token.
+
+1. Generate a Bulwark token. You only need to do this once.
+
+   ```shell
+   bulwark token generate
+   ```
+
+2. In the terminal where you run the scripts, export the token for `gh`.
+
+   ```shell
+   export GH_TOKEN=$(bulwark token get)
+   ```
+
+   The exported token is short-lived, and GitHub rejects it once it expires. Run the `export` command again in each new
+   terminal session, and whenever the scripts cannot read nickfury.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
