@@ -48,7 +48,7 @@ and when it is upgraded. You do not need to store static AWS credentials on the 
 
 - A cluster profile whose OS layer sets `system.uri` to the provider image in your ECR repository.
 
-## Add the ECR Repository as an Image Registry
+## Add Amazon ECR as an Image Registry
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
 
