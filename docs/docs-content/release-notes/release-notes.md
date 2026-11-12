@@ -11,6 +11,34 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 13, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3411 -->
+
+This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.TBD.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.TBD}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
+
+- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade
+  does not copy them. Before you upgrade, keep a copy of every custom package and branding image that you uploaded, and
+  upload them again after the upgrade. If you use the VMO pack, configure a package store before you upload them, or
+  PaletteAI VM Launchpad loses the files when its pod restarts. This applies to the PaletteAI VM Launchpad appliance and
+  to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+  [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
+
+- PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
+  uses a data volume. Requests to these endpoints do not return an error. They return the PaletteAI VM Launchpad web
+  interface with a `200` status code, so a removed call can appear to succeed. Remove the following calls from your
+  automation.
+
+  - `GET /api/v1/system/storage/status`
+
+  - `POST /api/v1/system/storage/enable`
+
+  - `PATCH /api/v1/system/storage/resize`
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->
