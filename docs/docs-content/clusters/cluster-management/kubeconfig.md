@@ -124,7 +124,7 @@ Palette exposes two API endpoints that you can use to access the kubeconfig file
   permissions assigned to you in Palette. For additional information, refer to the
   [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section.
 
-- `GET https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminkubeconfig` Returns the admin kubeconfig
+- `GET https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminKubeconfig` Returns the admin kubeconfig
   file for the cluster. The admin kubeconfig file is returned as a text string. Only users with the Palette project role
   _Cluster Admin_ or with a custom Palette resource role with the resource key _cluster_ and the _delete_ permission can
   access the admin kubeconfig file for a cluster.
