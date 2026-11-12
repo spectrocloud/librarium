@@ -127,6 +127,7 @@ tags: ["release-notes"]
 #### Upgrade Notes {#upgrade-notes-4.10.b}
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3418 -->
 
 - **User action required:** The AKS-managed CSI drivers on AKS clusters deployed with a service principal cloud account
   now use the
@@ -135,7 +136,7 @@ tags: ["release-notes"]
   drivers. If these clusters use storage outside the AKS node resource group, grant the AKS control plane identity
   access to that storage. This includes StorageClasses with a custom `resourceGroup` parameter, static persistent
   volumes in other resource groups, and disk encryption sets. Otherwise, provisioning or attaching these volumes fails
-  with HTTP 403 errors. On self-hosted Palette, grant this access before you upgrade.
+  with HTTP 403 errors. On self-hosted Palette and Palette VerteX, grant this access before you upgrade.
 
   After the upgrade, Palette restarts the enabled CSI drivers on each of these clusters, which takes a few minutes per
   cluster. Pods that start or move during the restart wait until the drivers are back, and running pods keep their
@@ -254,6 +255,7 @@ tags: ["release-notes"]
   a node drain, repave, or upgrade, and node pool autoscaling stopped.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3418 -->
 
 - Fixed an issue that caused the AKS-managed CSI drivers on AKS clusters deployed with a service principal cloud account
   to use the cloud account's service principal instead of the AKS control plane identity. Dynamic volume provisioning

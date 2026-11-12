@@ -15,20 +15,21 @@ The following steps will help you troubleshoot errors in the event issues arise 
 <!-- Release day: replace each "4.10.b" in this scenario with the Palette version for 4.10.b. -->
 
 After Palette is upgraded to 4.10.b or later, an AKS cluster deployed with a service principal cloud account shows an
-`AKSCSIDriversOff` or `AKSCSIDriverRestartFailed` warning event on its **Events** tab.
+`AKSCSIDriversOff` or `AKSCSIDriverRestartFailed` warning event. To view the events of a cluster, log in to Palette.
+From the left main menu, select **Clusters**, select the cluster, and then select the **Events** tab.
 
 Palette versions earlier than 4.10.b created the `azure-cloud-provider` secret in the `kube-system` namespace of these
 clusters. The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers read this secret when they start, so they
 used the cloud account's service principal instead of the
 [AKS control plane identity](https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview#summary-of-managed-identities-used-by-aks).
 After the upgrade, Palette removes the secret that it created and restarts the enabled CSI drivers so that they use the
-AKS control plane identity. Palette tries the restart up to five times. If the restart does not complete, Palette raises
-one of the following warning events.
+AKS control plane identity. If a restart does not complete, Palette retries it and raises one of the following warning
+events.
 
-| Event                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Event**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AKSCSIDriversOff`          | Palette turned the drivers off but could not turn them back on, for example, because another AKS operation was in progress. Palette keeps retrying every 5 minutes until the drivers are back on. Use steps 1 - 3 of the [debug steps](#debug-steps-csi-driver-restart) to check the cluster. If the drivers are still off more than 5 minutes after the provisioning state of the cluster returns to `Succeeded`, contact Spectro Cloud support. |
-| `AKSCSIDriverRestartFailed` | Palette stopped retrying. The drivers are on, but they still use the cloud account's service principal. Use the following steps to restart the drivers manually.                                                                                                                                                                                                                                                                                  |
+| `AKSCSIDriverRestartFailed` | Palette stopped retrying after five attempts. The drivers are on, but they still use the cloud account's service principal. To restart the drivers manually, use the [debug steps](#debug-steps-csi-driver-restart).                                                                                                                                                                                                                              |
 
 ### Debug Steps {#debug-steps-csi-driver-restart}
 
