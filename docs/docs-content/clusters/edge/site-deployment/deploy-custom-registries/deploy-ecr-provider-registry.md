@@ -13,9 +13,10 @@ tags: ["edge"]
 distributing container images. This guide describes how to configure an Edge cluster to pull provider images from a
 private Amazon ECR repository with token-based authentication.
 
-You add the ECR repository to Palette as an image registry, and then select that registry for the cluster. Palette
-issues short-lived ECR tokens to the Edge hosts, which use them to pull the provider image when the cluster is created
-and when it is upgraded. You do not need to store static AWS credentials on the Edge hosts.
+You add your ECR registry to Palette as an OCI registry with the **Image** provider type (an image registry), and then
+select that image registry for the cluster. Palette issues short-lived ECR tokens to the Edge hosts, which use them to
+pull the provider image when the cluster is created and when it is upgraded. You do not need to store static AWS
+credentials on the Edge hosts.
 
 ## Limitations
 
