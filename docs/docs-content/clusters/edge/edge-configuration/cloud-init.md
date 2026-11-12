@@ -211,8 +211,8 @@ To give the directory the permissions that a service needs, add a `directories` 
 stage creates the directories before it writes the files. If the directory already exists, the stage updates its
 permissions and ownership.
 
-The following example writes an NTP configuration file for `systemd-timesyncd`, which runs as the `systemd-timesync`
-user. The `directories` entry creates `/etc/systemd/timesyncd.conf.d` with `0755` permissions so that
+The following example writes a Network Time Protocol (NTP) drop-in file for `systemd-timesyncd`, which runs as the
+`systemd-timesync` user. The `directories` entry creates `/etc/systemd/timesyncd.conf.d` with `0755` permissions so that
 `systemd-timesyncd` can read the file.
 
 ```yaml
