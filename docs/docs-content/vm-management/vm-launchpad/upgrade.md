@@ -38,10 +38,10 @@ release, refer to the VM Launchpad entries in the [Release Notes](../../release-
 
 <!-- TODO(DOC-3002): add the drop eight notes once #12453 merges into this branch, with the drop eight version number: package files and branding images move to the package store (link ./virtual-machines/packages.md#upgrade-considerations), and FIPS Zot moves onto SeaweedFS. -->
 
-- **(Non-FIPS appliances)** An upgrade can stall when both Keycloak database replicas run on the same node. Refer to
+- **(Non-FIPS appliances, to a version earlier than 4.10.TBD)** An upgrade can stall when both Keycloak database
+  replicas run on the same node. Starting with 4.10.TBD, the upgrade moves the replicas to separate nodes before it
+  drains the nodes. Refer to
   [Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node](./troubleshooting.md#scenario---appliance-upgrade-stalls-when-keycloak-database-replicas-share-a-node).
-
-  <!-- TODO(DOC-3002): Sumit (2026-11-07): the PVM 1292 FIPS stack refactor (CloudNativePG) ships in drop eight. Asked: do FIPS appliances need extra upgrade steps, and can this Keycloak replica stall now happen on FIPS appliances too? If yes, drop "(Non-FIPS appliances)" here. Sumit (2026-11-09) answered only that PVM 1494 and PVM 1292 both go in the drop eight release notes; the two FIPS questions are still open. -->
 
 - **(From a version earlier than 4.10.25)** Non-FIPS appliances reserve more memory and ephemeral storage on each node
   after the upgrade, and the Kubelet restarts once on each node. Check each node before you upgrade. Refer to
