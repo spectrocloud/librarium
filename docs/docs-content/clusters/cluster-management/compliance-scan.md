@@ -84,14 +84,17 @@ A conformance scan runs tests only when the node pools in the cluster meet the f
 - At least one node pool has no taints. Sonobuoy runs the conformance tests in pods that do not tolerate node pool
   taints.
 
-- No node pool has a custom taint with the `NoSchedule` or `NoExecute` effect. The Kubernetes conformance test framework
+- No node has a taint with the `NoSchedule` or `NoExecute` effect, except the `node-role.kubernetes.io/control-plane`
+  and `node.spectrocloud.com/dedicated` taints. This includes node pool taints,
+  [node-level taints](./node-pool.md#node-level-taints-and-labels-for-edge-native) on Edge Native clusters, and taints
+  that your cloud provider applies automatically, such as taints on GPU nodes. The Kubernetes conformance test framework
   does not start any tests while a node has such a taint.
 
-The `node.spectrocloud.com/dedicated` taint that Palette applies to a
-[node pool dedicated to system pods](./node-pool.md#dedicated-system-pod-pool) is not a custom taint, so it does not
-stop the scan. However, a dedicated node pool does not count as a node pool without taints, because the test pods do not
-tolerate its taint. For example, a cluster with a dedicated node pool and one node pool without taints meets these
-requirements, but a cluster with a dedicated node pool and only node pools with custom taints does not.
+Palette applies the `node.spectrocloud.com/dedicated` taint to a
+[node pool dedicated to system pods](./node-pool.md#dedicated-system-pod-pool). A dedicated node pool does not count
+toward the first requirement, because the test pods do not tolerate its taint. For example, a cluster with a dedicated
+node pool and one node pool without taints meets both requirements. A cluster with a dedicated node pool and only node
+pools with other taints does not.
 
 ## SBOM: Dependencies & Vulnerabilities
 
