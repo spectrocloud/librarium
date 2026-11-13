@@ -607,7 +607,7 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 <!-- RELEASE ARTIFACT STUDIO:  -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.6 -->
 
-The following components have been updated for Palette version 4.10.13 - 4.10.34.
+The following components have been updated for Palette version 4.10.41.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
