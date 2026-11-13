@@ -126,8 +126,8 @@ following steps only if the symptoms continue after that.
 
 ## Scenario - Appliance Upgrade Stalls When Keycloak Database Replicas Share a Node
 
-On non-FIPS VM Launchpad appliances, an appliance upgrade can stall while it drains a node. The node shows the
-`SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
+On non-FIPS VM Launchpad appliances, an upgrade to a version earlier than 4.10.TBD can stall while it drains a node. The
+node shows the `SchedulingDisabled` status, and one `keycloak-db-*` pod stays in the `Pending` state.
 
 This occurs because both replicas of the Keycloak database store their data on the drained node. The Keycloak database
 runs as a CloudNativePG cluster of one primary and two replicas. Each instance stores its data on a volume, and a local
@@ -135,8 +135,9 @@ volume ties that data to a single node. When the upgrade drains the node, one re
 node, because its volume is tied to the drained node. The PodDisruptionBudget of the database requires at least one
 healthy replica and does not count the primary. As a result, the upgrade cannot stop the second replica either.
 
-Use the following steps to rebuild the `Pending` replica on another node. The steps keep its old volume and leave the
-primary running.
+Starting with version 4.10.TBD, the replicas run on separate nodes, and the upgrade to version 4.10.TBD first moves
+replicas that share a node to separate nodes. If an upgrade to an earlier version stalls, use the following steps to
+rebuild the `Pending` replica on another node. The steps keep its old volume and leave the primary running.
 
 :::warning
 
@@ -471,15 +472,16 @@ This override takes effect immediately, but it does not persist across reboots. 
 
 <!-- vale Vale.Terms = YES -->
 
-On FIPS VM Launchpad appliances, which use Piraeus storage, network disruptions can cause the DRBD replicas that back
-the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops responding.
-The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak and
-PostgreSQL pods still report a `Ready` status.
+FIPS VM Launchpad appliances use Piraeus storage. On FIPS appliances earlier than version 4.10.TBD, network disruptions
+can cause the DRBD replicas that back the Keycloak PostgreSQL database to lose their connection. When this happens, the
+Keycloak login page stops responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become
+inaccessible. The Keycloak and PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
 suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
-the Keycloak database on node-local storage instead of DRBD replicas. Use the following steps to restore the connection
-manually.
+the Keycloak database on node-local storage instead of DRBD replicas. Starting with version 4.10.TBD, FIPS appliances
+run the Keycloak database as a CloudNativePG cluster, and this procedure does not apply. On earlier FIPS appliances, use
+the following steps to restore the connection manually.
 
 ### Prerequisites
 

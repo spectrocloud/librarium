@@ -39,6 +39,30 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
   - `PATCH /api/v1/system/storage/resize`
 
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
+
+- FIPS PaletteAI VM Launchpad appliances now run the Keycloak database as a CloudNativePG cluster. The upgrade moves the
+  database automatically, with no extra steps.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1494 -->
+
+- Fixed an issue that caused upgrades to leave the KubeVirt and Containerized Data Importer (CDI) Custom Resource
+  Definitions (CRDs) at the version that was first installed on the cluster. On clusters first installed with a 4.8
+  version of the VMO pack, the upgrade to KubeVirt 1.9.0 did not complete. On other clusters, saving a KubeVirt setting
+  that was added after the cluster was first installed failed with the
+  `KubeVirt apiserver unreachable or returned invalid response` error. Upgrades now update both CRDs, including on
+  clusters whose CRDs are already out of date. This applies to the PaletteAI VM Launchpad appliance and to the VMO pack.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1483 -->
+
+- Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
+  Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade to
+  version 4.10.TBD first moves replicas that share a node to separate nodes.
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->
