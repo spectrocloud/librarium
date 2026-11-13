@@ -2,8 +2,8 @@
 sidebar_label: "Enable Vision Preprocessing"
 title: "Enable Vision Preprocessing"
 description:
-  "Step-by-step guidance for platform operators on how to deploy a vision model alongside a text-only model and enable
-  multimodal preprocessing so image requests are answered on the appliance."
+  "Step-by-step guidance for platform administrators on how to deploy a vision model alongside a text-only model and
+  enable multimodal preprocessing so that image requests are answered on the appliance."
 hide_table_of_contents: false
 sidebar_position: 2.3
 tags: ["paletteai-inference-launchpad", "models", "vision", "how-to"]
@@ -13,11 +13,14 @@ keywords: ["launchpad", "ai", "vision", "multimodal", "preprocessing", "images",
 This guide explains how to enable vision preprocessing on a running PaletteAI Inference Launchpad appliance. After you
 finish, a text-only model such as GLM 5.2 can answer questions about screenshots and other images. Coding assistants
 keep calling the text model they already use. For what the feature does and what clients receive, refer to
-[Vision Preprocessing](../explanation/vision-preprocessing.md).
+[Vision Preprocessing](../explanation/vision-preprocessing.md). To have a model on an external inference endpoint read
+the images instead, refer to [Read Images with an External Model](./read-images-with-an-external-model.md).
 
 ## Prerequisites
 
-- A running PaletteAI Inference Launchpad appliance, with the admin console reachable and operator access.
+- A running PaletteAI Inference Launchpad appliance, with the console reachable.
+
+- Console access as a person who holds the **Platform administrator** role.
 
 - A text-only model in the appliance catalog, ready to deploy. GLM 5.2 is the validated text model for this path. To
   place a model in the catalog, refer to [Upload a Model](./upload-a-model.md). To deploy it, refer to
@@ -62,14 +65,6 @@ whose per-hardware variants carry the tuned deploy configuration.
 5. Wait until the vision model also reaches `ready` or `serving`. The vision model is small and starts in under two
    minutes on validated hardware.
 
-:::info
-
-The **Multimodal preprocessing** card on **Settings** > **Configurations** appears after a second model is available, or
-when vision preprocessing is already on. If the card does not appear, confirm both models are serving, then open
-**Settings** again.
-
-:::
-
 If the deploy panel reports that no node has enough free GPUs, the vision model cannot be placed next to the text model
 on this appliance. Free capacity, choose a smaller vision model, or
 [contact Spectro Cloud](https://www.spectrocloud.com/contact) to confirm a supported pairing for your hardware.
@@ -78,21 +73,20 @@ on this appliance. Free capacity, choose a smaller vision model, or
 
 1. From the left main menu, select **Settings**.
 
-2. Select the **Configurations** tab.
+2. On the **Settings** menu, under **Model Management**, select **Multimodal Preprocessing**.
 
-3. In the **Multimodal preprocessing** card, select **Enable vision preprocessing**.
+3. Turn on **Enable vision preprocessing**. If the switch is unavailable, confirm that the vision model is deployed.
 
-4. Open the **Vision engine** drop-down menu and select the engine that serves the vision model. The list is filled from
+4. Under **Reader**, select **Local model**.
+
+5. Open the **Vision engine** drop-down menu and select the engine that serves the vision model. The list is filled from
    the models that are currently serving.
 
-5. Open the **Vision model** drop-down menu and select the vision model. The field is marked optional. Set it anyway so
-   the appliance sends extracts to a named model.
+6. Open the **Vision model** drop-down menu and select the vision model.
 
-6. Leave **Max images per request** at `8`, or enter a different per-turn cap. If a turn includes more images than this
-   value, the appliance processes images up to the cap and skips the rest with a notice. It does not drop extra images
-   silently.
+7. Leave **Max images per request** at `8`, or enter a different per-turn cap.
 
-7. Select **Turn on vision preprocessing**.
+8. Select **Apply**.
 
 The setting applies to new requests. Requests already in progress are not changed. Text-only requests never use the
 vision model, whether the setting is on or off. On this vision-mode appliance, image requests that send `auto` are
@@ -129,11 +123,11 @@ appears.
 
 1. From the left main menu, select **Settings**.
 
-2. Select the **Configurations** tab.
+2. On the **Settings** menu, under **Model Management**, select **Multimodal Preprocessing**.
 
-3. In the **Multimodal preprocessing** card, clear the **Enable vision preprocessing** checkbox.
+3. Turn off **Enable vision preprocessing**.
 
-4. Select **Turn off vision preprocessing**.
+4. Select **Apply**.
 
 Image requests then fail until you turn the feature on again, or until you send the request without images. Text-only
 requests continue to work.

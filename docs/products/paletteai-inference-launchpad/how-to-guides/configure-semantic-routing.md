@@ -56,12 +56,14 @@ inherited from a workspace's policy, and how it combines with the Tier map, refe
 The semantic router is on from installation wherever the appliance can run it. Use these steps to turn it off, or to
 turn it back on.
 
-1. From the left main menu, select **Settings**, and then select the **Configurations** tab.
+1. From the left main menu, select **Settings**.
 
-2. On the **Semantic router** card, turn the **Run the semantic router on this box** toggle on or off.
+2. On the **Settings** menu, under **Request handling**, select **Semantic Router**.
 
-3. Select **Turn on semantic router** or **Turn off semantic router**. The console confirms the change with
-   `Started deploying the semantic router.` or `Stopped the semantic router. It stays deployed.`
+3. On the **Semantic router** card, turn the **Run the semantic router on this box** toggle on or off.
+
+4. Select **Apply**. The console confirms the change with `Started deploying the semantic router.` or
+   `Stopped the semantic router. It stays deployed.`
 
 If the toggle is unavailable, hover over or focus it to read the reason in the **Why the semantic router is
 unavailable** tooltip. For every reason, refer to
@@ -77,13 +79,15 @@ Both guard checks are on by default. For what each check does, refer to
 [Semantic Router Guard](../explanation/semantic-router-guard.md). For the state of each toggle, refer to
 [Guard Toggles](../reference/semantic-routing-reference.md#guard-toggles).
 
-1. From the left main menu, select **Settings**, and then select the **Configurations** tab.
+1. From the left main menu, select **Settings**.
 
-2. On the **Semantic router** card, turn the **Refuse jailbreak attempts** toggle on or off.
+2. On the **Settings** menu, under **Request handling**, select **Semantic Router**.
 
-3. Turn the **Scan prompts for personal data before they leave the box** toggle on or off.
+3. On the **Semantic router** card, turn the **Refuse jailbreak attempts** toggle on or off.
 
-4. Select **Apply semantic router settings**. The console confirms each change.
+4. Turn the **Scan prompts for personal data before they leave the box** toggle on or off.
+
+5. Select **Apply**. The console confirms each change.
 
 The two guard toggles are unavailable whenever the **Run the semantic router on this box** toggle is unavailable.
 
@@ -98,11 +102,12 @@ policy, and then to make a workspace follow that policy.
 
 1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
 
-2. Select **Create policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
-   a new policy, complete the **Overview**, **Quotas**, and **Egress** steps.
+2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
+   a new policy, complete the **Overview**, **Quotas**, **External access**, and **Cache sharing** steps.
 
-3. On the **Routing** step, map every alias in the **Tier map** to a model. Set at least one alias to **Use Semantic
-   Router rules** so that the **Semantic routing** rules appear.
+3. On the **Routing** step of the wizard, or in the **Routing** section of the policy's page, map every alias in the
+   **Tier map** to a model. Set at least one alias to **Use Semantic Router rules** so that the **Semantic routing**
+   rules appear.
 
 4. In **Semantic routing**, set the **Complexity threshold** and the **Model** and **Thinking** for each category rule,
    as described in [Set a Client's Complexity Threshold](#set-a-clients-complexity-threshold) and
@@ -213,10 +218,10 @@ platform administrator can set recording, and it needs the semantic router runni
 
 1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
 
-2. Select **Create policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
+2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
 
-3. On the **Routing** step, in the **Decision recording** section, turn on **Record the classified turns of this
-   policy's clients**.
+3. Go to the **Routing** step of the wizard, or the **Routing** section of the policy's page. In the **Decision
+   recording** section, turn on **Record the classified turns of this policy's clients**.
 
 4. _(Optional)_ In **Turns kept per client**, enter how many requests each client keeps. Leave it empty for the default
    of 1,000.
@@ -267,20 +272,22 @@ Deleting the recorded requests cannot be undone. Download them first if you need
 
 ## Validate
 
-1. From the left main menu, select **Settings**, and then select the **Configurations** tab. Confirm that the **Run the
-   semantic router on this box**, **Refuse jailbreak attempts**, and **Scan prompts for personal data before they leave
-   the box** toggles on the **Semantic router** card are in the states you set.
+1. From the left main menu, select **Settings**.
 
-2. In the workspace drop-down menu in the console header, select the client's workspace.
+2. On the **Settings** menu, under **Request handling**, select **Semantic Router**. Confirm that the **Run the semantic
+   router on this box**, **Refuse jailbreak attempts**, and **Scan prompts for personal data before they leave the box**
+   toggles on the **Semantic router** card are in the states you set.
 
-3. From the left main menu, select **Access & Policy**, and then select the **Clients** tab. Confirm that the
+3. In the workspace drop-down menu in the console header, select the client's workspace.
+
+4. From the left main menu, select **Access & Policy**, and then select the **Clients** tab. Confirm that the
    **Routing** column shows a count of routes, such as `3 routes`, for a client that has rules of its own. A client that
    inherits its routing shows `Default`, or a count followed by `· default`.
 
-4. From the client, send a request that sets the model to `auto` or that names an alias set to **Use Semantic Router
+5. From the client, send a request that sets the model to `auto` or that names an alias set to **Use Semantic Router
    rules**.
 
-5. From the left main menu, select **Usage**, and then select the **Overview** tab. Confirm that the **Semantic
+6. From the left main menu, select **Usage**, and then select the **Overview** tab. Confirm that the **Semantic
    routing** table shows a row with the request's category, its **Complexity** band, and the model your rule names.
 
 ## Next Steps

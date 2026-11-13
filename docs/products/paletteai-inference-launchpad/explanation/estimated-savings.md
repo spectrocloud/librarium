@@ -54,7 +54,7 @@ savings, not a loss.
 
 The comparison model's rates are the same provider list prices the appliance uses to price egress, so the savings
 estimate and the estimated egress cost quote the same numbers. If an operator overrides the comparison model's rates
-under **Settings** > **Pricing**, the savings estimate uses the override.
+under **Settings** > **Model Management** > **Model Pricing**, the savings estimate uses the override.
 
 ## Example: Estimated Savings
 
@@ -83,7 +83,7 @@ charge for it either, and the example's cache-write rate does not apply.
 To view your savings, select **Overview** from the left main menu. The **Estimated savings** card reports two amounts,
 **saved vs Opus 4.8** and **saved vs GPT-5**, for the period selected on the page. A chart beside them plots both
 amounts across that period. The card does not appear when the appliance served no requests in the period. The **Edit
-Model Pricing** link on the card opens **Settings** > **Pricing**.
+Model Pricing** option in the card's three-dot menu opens **Settings** > **Model Management** > **Model Pricing**.
 
 The **By Client** export on the **Usage** page also carries both amounts in its header. For the export layout, refer to
 [Usage Metrics Reference](../reference/usage-metrics-reference.md#export-fields).

@@ -98,11 +98,12 @@ traffic is metered as egress. For how clients, API tokens, and quotas work toget
 [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
-When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
-converts each image to text, and the text model then answers as it would for any other prompt. Text-only requests skip
-this step. For the request path and how to turn the feature on, refer to
-[Vision Preprocessing](./vision-preprocessing.md) and
-[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
+When vision preprocessing is on, a request that includes images is rewritten before that routing step. A reader converts
+each image to text, and the text model then answers as it would for any other prompt. The reader is a local vision model
+or a model on an external inference endpoint. Text-only requests skip this step. For the request path, refer to
+[Vision Preprocessing](./vision-preprocessing.md). To turn the feature on, refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md) or
+[Read Images with an External Model](../how-to-guides/read-images-with-an-external-model.md).
 
 ### The Box Default Model {#the-default-model}
 
@@ -110,35 +111,57 @@ The box default model answers a request when routing does not choose a model for
 automatically. There is no operator control to change it. For how the appliance chooses it, refer to
 [The Box Default Model](./routing-behavior.md#the-box-default-model).
 
+### System Prompts {#system-prompts}
+
+A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
+gateway adds it to a request that carries no instruction of its own. The following requests reach the model without the
+instruction:
+
+- A request that already carries an instruction of its own. That instruction sets how the model answers, so the gateway
+  keeps it and adds nothing. [Coding assistants](../reference/glossary.md#coding-assistant) such as
+  [Claude Code](../how-to-guides/use-claude-code.md) send their own instruction with every request.
+
+- A request to the Responses API, the API that [OpenAI Codex](../reference/codex-reference.md) uses.
+
+The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
+replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
+instruction after routing picks the model. A per-model instruction applies to each request that routing sends to that
+model, whatever model name the client sent.
+
+A saved change applies to new requests. A new appliance has no instruction, so it adds nothing to any request until a
+platform administrator sets one. To set or remove an instruction, refer to
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
+
 ### External Inference Endpoints {#external-inference-endpoints}
 
 An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
 Three endpoints are built in, `anthropic`, `openai`, and `gemini`, and a platform administrator can register any
-OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance under
-**Integrations**, and a built-in endpoint is not available until that happens.
+OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance,
+under **Settings** > **External access** > **Ext. Inference Endpoints**. A built-in endpoint is not available until that
+happens.
 
 A policy or a client selects an endpoint that is already set up, and never defines one, so an endpoint that is not set
 up is not offered to a policy or a client.
 
-Each registered endpoint carries a short **Endpoint id**. The id names the endpoint wherever the console lists an
-external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The id cannot be
-changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding id. The
+Each registered endpoint carries a short **Endpoint ID**. The ID names the endpoint wherever the console lists an
+external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The ID cannot be
+changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding ID. The
 **Endpoint URL** can be an origin or an origin followed by a path prefix; the appliance appends the OpenAI-compatible
 request paths itself, so the URL does not include `/v1`.
 
-The credential for an endpoint is stored once on the endpoint, under **Integrations**, and every policy and client that
-lists the endpoint uses it. A policy or a client can override the key for itself alone by typing one in its **Key**
-field; the **Integrations** key does not change. The credential can be an API key, one or more custom headers, or both.
-The appliance sends any custom headers on both the model-catalog probe and every routed request.
+The credential for an endpoint is stored once, on the endpoint, and every policy and client that lists the endpoint uses
+it. A policy or a client can override the key for itself alone by typing one in its **Key** field; the endpoint's key
+does not change. The credential can be an API key, one or more custom headers, or both. The appliance sends any custom
+headers on both the model-catalog probe and every routed request.
 
 The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
 connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
 presents on its own inbound console. Header values are stored as secrets, but a CA certificate is not; the appliance
 shows a stored CA certificate in full whenever an operator edits the endpoint.
 
-Disabling or removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at
-that endpoint falls back to the appliance's local serving in flight rather than returning an error. To register a host,
-refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+Removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at that endpoint
+falls back to the appliance's local serving in flight rather than returning an error. To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## Network Topology
 
@@ -167,11 +190,9 @@ platform services are unavailable, and why it is the surface for install and for
 
 ## Data Residency and Isolation
 
-Inference runs on the appliance, so a request and the model that answers it stay inside your environment by default.
-Nothing about a prompt leaves the appliance unless an operator gives a client permission to send it elsewhere.
-
-That permission is [egress](../reference/glossary.md#egress), and it denies by default. A new client cannot reach any
-destination outside the appliance until an operator enables it. Refer to
+Inference runs on the appliance, so requests and the models that answer them stay inside your environment by default. No
+part of a prompt leaves the appliance unless an operator gives the client [egress](../reference/glossary.md#egress).
+Egress is permission to send requests off the appliance. A new client has no egress. Refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
 Once an operator enables egress on a policy, or on a client that overrides its policy, a client can reach each
@@ -181,13 +202,19 @@ following:
 - A built-in endpoint for Anthropic, OpenAI, or Gemini, which serves a
   [frontier model](../reference/glossary.md#frontier-model) hosted by that vendor rather than served from the appliance.
 
-- A registered endpoint, which is any OpenAI-compatible host a platform administrator has added under **Integrations**.
+- A registered endpoint, which is any OpenAI-compatible host that a platform administrator has added.
 
 Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
-overrides its policy, which sends a request that asked for local serving to an external inference endpoint once the
-client exhausts its local quota rather than refusing it. Naming a local model is therefore not on its own what keeps a
-prompt on the appliance. Bursting is still egress and runs through the same permission, so a client that cannot reach an
+overrides its policy. With bursting on, the appliance does not refuse a client that runs out of local quota. It sends
+the client's local requests to an external inference endpoint instead. As a result, a request that names a local model
+can still leave the appliance. Bursting is still egress and needs the same permission. A client that cannot reach an
 external destination cannot burst to one either.
+
+Vision preprocessing can also send data off the appliance. A platform administrator can choose an external reader. The
+appliance then sends the images in a client's current turn to the reader's endpoint. It also sends up to 4,096
+characters of the client's current question. Each read goes through the same egress checks as that client's own
+requests. A client that cannot reach the endpoint keeps its images on the appliance. Refer to
+[An External Reader](./vision-preprocessing.md#an-external-reader).
 
 Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
 it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency
