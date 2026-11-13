@@ -104,9 +104,9 @@ also needs the Microsoft Graph `Group.Read.All` permission.
    - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine or
      scale set.
 
-3. Deploy a self-hosted PCG to the cluster. Refer to
-   [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md). Wait until the **Cluster Status** of
-   the PCG is **Running**.
+3. Deploy a self-hosted PCG to the cluster, and apply the Ambit manifest along with the other PCG manifests. Refer to
+   [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md#install-pcg). Wait until the **Cluster
+   Status** of the PCG is **Running**.
 
 4. Add an Azure cloud account, and select **Managed identity** as the **Authentication method**. Refer to
    [Azure Commercial Cloud](./azure-cloud.md#azure-commercial-cloud) or
@@ -215,6 +215,11 @@ Kubelet identity both need the **Reader** role on the subscription. Without it, 
 
 The AKS service identity needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster
 resource group.
+
+The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers call Azure as the AKS service identity. If the
+cluster uses storage outside the AKS node resource group, grant the AKS service identity access to that storage. This
+includes StorageClasses with a custom `resourceGroup` parameter, static persistent volumes in other resource groups, and
+disk encryption sets. Without this access, the drivers fail with HTTP 403 errors on these volumes.
 
 For the procedure, refer to [Create and Manage Azure AKS Cluster](./aks.md).
 
