@@ -15,7 +15,8 @@ private Amazon ECR repository with token-based authentication.
 
 You add your ECR registry to Palette as an OCI registry with the **Image** provider type (an image registry), and then
 select that image registry for the cluster. Palette issues short-lived ECR tokens to the Edge hosts, which use them to
-pull the provider image when the cluster is created and when it is upgraded. You do not need to store static AWS
+pull the provider image when the cluster is created and when it is upgraded. The Edge hosts fetch a fresh token at each
+pull, so a cluster that you upgrade months after you create it needs no extra steps. You do not need to store static AWS
 credentials on the Edge hosts.
 
 ## Limitations
