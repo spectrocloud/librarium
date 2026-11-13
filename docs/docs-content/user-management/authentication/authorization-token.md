@@ -80,8 +80,8 @@ curl --location 'https://api.spectrocloud.com/v1/auth/refresh/eyJhbGc..........'
 
 The `v1/auth/authenticate` endpoint returns a restricted authorization token in the following cases.
 
-- If you have a passkey, the token allows you only to complete passkey verification. This applies in every tenant,
-  whether or not the tenant enforces passkeys.
+- If you have a passkey, the token allows you only to complete passkey verification in the browser. This applies in
+  every tenant, whether or not the tenant enforces passkeys.
 
 - If your tenant [enforces passkeys](../../tenant-settings/passkeys.md), you do not have a passkey, and your grace
   period is over, the token allows you only to add a passkey.
