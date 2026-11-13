@@ -121,25 +121,16 @@ jobs:
             ${{ steps.emoji.outputs.emoji }}:review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
 
-      - name: Create or Update Slack comment manually
+      - name: Record the Slack notification on the PR
         if: steps.check.outputs.notified == 'false'
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          BODY="✅ Review request posted to #docs-pr-review at $TIMESTAMP \n <!-- slack-notified -->"
-
-          if [ -n "${{ steps.check.outputs.comment_id }}" ]; then
-            echo "Updating existing comment..."
-            curl -s -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              https://api.github.com/repos/${{ github.repository }}/issues/comments/${{ steps.check.outputs.comment_id }}
-          else
-            echo "Creating new comment..."
-            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
-          fi
+          # The marker on its own line is what the check step looks for to avoid posting twice.
+          BODY=$(printf '✅ Review request posted to #docs-pr-review at %s\n<!-- slack-notified -->' "$TIMESTAMP")
+          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
 
       - name: Securely overwrite and delete reviewers.json
         if: always()
@@ -157,7 +148,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
-            echo "✅ Job completed: Slack was already notified (comment updated if needed)."
+            echo "✅ Job completed: Slack was already notified, so nothing was posted."
           else
             echo "✅ Job completed: Slack notification was posted successfully."
           fi

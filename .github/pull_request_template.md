@@ -26,7 +26,13 @@ Before submitting your PR for review, please complete this checklist to ensure q
       `auto-backport` label, as well as the `backport-version-**` labels. The oldest supported branch is `version-4-7`._
 - [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (for
       example, Engineering, Product, etc.)
-- [ ] Add the `notify-slack` label once this checklist has been completed. The team will be notified and review your PR.
+- [ ] Add a **size or urgency label** if the PR needs one: `small-pr` or `monster-pr`, and `urgent` or `not-urgent`. A
+      medium PR with a 24-hour first review needs no label. For `urgent`, start the PR description with a one-line
+      reason, unless the PR is release, Component Updates, or security work.
+- [ ] Optional: add `pack-pr` to build pack pages in the deploy preview (retry the deploy after adding it), or
+      `visual-tests` to run the visual comparison tests.
+- [ ] Add the `notify-slack` label last, after you complete this checklist. It posts the review request to
+      #docs-pr-review once, so add any size or urgency label first.
 
 Good job! 👏👏👏
 
