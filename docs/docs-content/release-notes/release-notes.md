@@ -39,6 +39,22 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
   - `PATCH /api/v1/system/storage/resize`
 
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-451 -->
+
+- Platform Admins can now create custom VMO roles that grant only the permissions they choose, and assign them to users
+  and groups across the cluster or in selected namespaces. Built-in roles stay read-only, but you can clone one as a
+  starting point for a custom role. Refer to
+  [Custom Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md#custom-roles).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1313 -->
+
+- <TpBadge /> The VM Migration Assistant can now migrate VMs from Nutanix AHV, as a Tech Preview. When you create a
+  source provider, select **Nutanix AHV** and connect to Prism Element or Prism Central. Nutanix migrations are cold
+  migrations only. To verify the Prism certificate, upload its CA certificate, because **Fetch certificate from URL**
+  does not work in this release.
+
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
@@ -62,6 +78,14 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 - Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
   Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade to
   version 4.10.TBD first moves replicas that share a node to separate nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1514 -->
+
+- Fixed a security issue that allowed users who could reach the VM Migration Assistant console to open interactive
+  sessions, such as a pod terminal or a VM console, through the console's Kubernetes proxy. The console now refuses
+  these requests, and migration workflows keep working. If you deploy the VM Migration Assistant pack with console
+  authentication turned off, also turn on OIDC authentication. Refer to
+  [Configure Custom OIDC for VM Migration Assistant](../vm-management/rbac/configure_OIDC.md#configure-custom-oidc-for-vm-migration-assistant).
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 

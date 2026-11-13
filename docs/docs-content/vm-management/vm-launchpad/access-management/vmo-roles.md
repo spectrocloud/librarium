@@ -10,8 +10,9 @@ tags: ["vmo", "vm launchpad", "access management", "iam"]
 
 PaletteAI VM Launchpad ships with four built-in VMO IAM roles: **Platform Admin**, **Editor**, **Operator**, and
 **Viewer**. Each role is a named bundle of permissions that controls what a user can view and do in the platform UI.
-Roles are read-only in this release. Use them to assign VMO access to users on the [Users](./users.md) page or to groups
-on the [Groups](./groups.md) page.
+Built-in roles are read-only. When no built-in role fits, a Platform Admin can create a custom role with the permissions
+you choose. Refer to [Custom Roles](#custom-roles). Use roles to assign VMO access to users on the [Users](./users.md)
+page or to groups on the [Groups](./groups.md) page.
 
 ## Prerequisites
 
@@ -21,18 +22,21 @@ on the [Groups](./groups.md) page.
 
 ## VMO Roles Page
 
-From the left main menu, select **Settings** > **Access Management** > **VMO Roles** to view all built-in roles in the
-appliance.
+From the left main menu, select **Settings** > **Access Management** > **VMO Roles** to view all built-in and custom
+roles in the appliance.
 
 The **VMO Roles** table lists the following columns.
 
-| **Column**      | **Description**                                                      |
-| --------------- | -------------------------------------------------------------------- |
-| **Name**        | The role name.                                                       |
-| **Description** | A short summary of the role's intent.                                |
-| _(unlabeled)_   | Displays **Default** for built-in roles that ship with VM Launchpad. |
+| **Column**      | **Description**                                                               |
+| --------------- | ----------------------------------------------------------------------------- |
+| **Role**        | The role name.                                                                |
+| **Type**        | **Built-in** for the roles that ship with VM Launchpad, or **Custom**.        |
+| **Permissions** | The number of permissions that the role grants.                               |
+| **Mapped**      | The groups and users that hold the role.                                      |
+| **Kubernetes**  | The Kubernetes ClusterRole that grants the role's access to the KubeVirt API. |
 
-Select a column header to sort. Use the **Filter rows** search box to filter by any field.
+Select a column header to sort. Use the **Filter rows** search box to filter by any field. Each role offers **View** and
+**Clone**. Custom roles also offer **Edit** and **Delete**.
 
 ## Built-in Roles
 
@@ -46,11 +50,11 @@ role's permissions.
 | **Operator**       | Day-to-day operations. Own dashboards, read audit and system.         | VMs (read, operate, and snapshot), templates (read), dashboards (read), audit, and system and monitoring (read). No Image Catalog. No Infrastructure (network, storage, or namespace). No Settings access.                                                                                                                                                                                                                                                                                                                                                             |
 | **Viewer**         | Read-only with own dashboard config.                                  | VMs (read only), templates (read), dashboards (read), audit, and system and monitoring (read). No Image Catalog. No Infrastructure. No Settings. No operate or snapshot actions. No writes anywhere.                                                                                                                                                                                                                                                                                                                                                                   |
 
-You cannot create a custom role or modify a built-in role in this release. Both the UI and the API reject these
-operations.
+You cannot modify or delete a built-in role. Both the UI and the API reject these operations. To change what a built-in
+role grants, clone it into a custom role. Refer to [Custom Roles](#custom-roles).
 
-Each VMO role also binds a fixed Kubernetes ClusterRole that grants the underlying access to the KubeVirt API. VM
-Launchpad selects the matching ClusterRole automatically when you assign a role to a user or group.
+Each built-in VMO role also binds a fixed Kubernetes ClusterRole that grants the underlying access to the KubeVirt API.
+VM Launchpad selects the matching ClusterRole automatically when you assign a role to a user or group.
 
 | **VMO Role**   | **Kubernetes ClusterRole** |
 | -------------- | -------------------------- |
@@ -61,6 +65,63 @@ Launchpad selects the matching ClusterRole automatically when you assign a role 
 
 Local users are an exception. A local user receives the VMO role without a matching ClusterRole binding, because local
 authentication reaches the Kubernetes API through the VMO Manager pod's ServiceAccount instead of a per-user binding.
+
+## Custom Roles
+
+A custom role grants the VMO permissions that you choose. Use one when no built-in role fits, for example, to let a
+group operate VMs in one namespace without access to settings. Only the **Platform Admin** role can create, edit,
+delete, and assign custom roles.
+
+### Create a Custom Role
+
+1. From the left main menu, select **Settings** > **Access Management** > **VMO Roles**.
+
+2. Select **Create Role**. To start from the permissions of an existing role, select **Clone** on that role instead.
+
+3. Enter a **Role ID**, a **Display Name**, and an optional **Description**. The role ID must be a DNS-1123 label of up
+   to 63 characters, and it cannot start with `spectro-vm-`. You cannot change the role ID later.
+
+4. Under **App Console Permissions**, select at least one permission. You can grant only permissions that you hold.
+   Permissions reserved for Platform Admin, such as `vmo:roles:write` and `vmo:iam:write`, are not available.
+
+5. Select **Create Role**.
+
+VM Launchpad creates a Kubernetes ClusterRole named `spectro-vm-custom-<role-id>` for the role and keeps its rules in
+step with the role's permissions. Until the ClusterRole exists, the **Kubernetes** column shows a dash and you cannot
+assign the role. Do not edit the ClusterRole manually, because VM Launchpad reverts manual changes.
+
+### Assign a Custom Role
+
+Assign a custom role to a user or a group in the **Assign Member Role** step of the access wizard, or when you edit the
+user or group. Custom roles appear under **Custom Roles**. Choose **Cluster-wide access**, or the namespaces where the
+role applies.
+
+- A custom role adds to the built-in role of the user or group and to any other custom roles they hold. Custom roles
+  that a user receives directly and through groups also add up. Built-in roles still follow the rules in
+  [Users](./users.md) and [Groups](./groups.md).
+
+- In a namespace, a custom role grants only its VM, network, template read, storage read, and namespace read
+  permissions. Its other permissions, such as audit or settings access, apply only when you assign the role
+  cluster-wide.
+
+:::warning
+
+Assign custom roles to namespaces where you can. Assigned cluster-wide, a role with `vmo:vm:create` or `vmo:vm:update`
+can create and delete Secrets in every namespace, including the VMO namespace. A role with `vmo:namespace:delete` can
+delete any namespace, including system namespaces.
+
+:::
+
+### Edit or Delete a Custom Role
+
+- To change the display name, description, or permissions of a custom role, select **Edit**. You must hold every
+  permission that the role grants. Changes apply immediately to everyone who holds the role.
+
+- To delete a custom role, select **Delete** and type the role ID to confirm. VM Launchpad does not delete a role that
+  is still assigned, so remove its assignments first.
+
+`VMORole` resources that you create with `kubectl` also appear on the **VMO Roles** page as custom roles. If you delete
+one with `kubectl`, its role bindings remain. Remove them before you reuse the role ID.
 
 ## Permission Format
 
@@ -120,7 +181,7 @@ The following table lists every VMO permission domain and the actions each domai
 | `storage`       | `read`, `write`, `device-discovery`                         | StorageClasses, StoragePools, DataVolumes other than golden images, HA settings, and system storage resize. |
 | `network`       | `create`, `read`, `update`, `delete`                        | Network Attachment Definition (NAD) resources and network capabilities.                                     |
 | `namespace`     | `create`, `read`, `update`, `delete`                        | Namespaces and namespace policies.                                                                          |
-| `roles`         | `read`, `write`                                             | Built-in VMO role definitions. Roles are immutable in this release.                                         |
+| `roles`         | `read`, `write`                                             | VMO role definitions. `write` creates, edits, and deletes custom roles. Platform Admin only.                |
 | `features`      | `read`, `write`                                             | Feature flags.                                                                                              |
 | `kubevirt`      | `read`, `write`                                             | Cluster-level KubeVirt configuration.                                                                       |
 | `admission`     | `read`, `write`                                             | Admission control policies.                                                                                 |
