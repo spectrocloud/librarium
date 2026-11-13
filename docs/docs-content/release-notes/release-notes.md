@@ -39,6 +39,22 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
   - `PATCH /api/v1/system/storage/resize`
 
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-451 -->
+
+- Platform Admins can now create custom VMO roles that grant only the permissions they choose. They can assign custom
+  roles to users and groups cluster-wide or in selected namespaces. Built-in roles stay read-only, but you can clone one
+  as a starting point for a custom role. Refer to
+  [Custom Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md#custom-roles).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1313 -->
+
+- <TpBadge /> The VM Migration Assistant can now migrate VMs from Nutanix AHV, as a Tech Preview. When you create a
+  source provider, select **Nutanix AHV** and connect to Prism Element or Prism Central. Nutanix migrations are cold
+  migrations only. **Fetch certificate from URL** does not work for Nutanix AHV providers, so upload the Prism CA
+  certificate to verify the Prism certificate.
+
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
@@ -62,6 +78,15 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 - Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
   Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade to
   version 4.10.TBD first moves replicas that share a node to separate nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1514 -->
+
+- Fixed a security issue that allowed users who could reach the VM Migration Assistant service console to open
+  interactive sessions, such as a pod terminal or a VM console, through the service console's Kubernetes proxy. The
+  service console now refuses these requests, and migration workflows keep working. If your VM Migration Assistant
+  profile leaves `vm-migration-assistant-ui.console.deployment.env.userAuth` at its default value, `disabled`, set it to
+  `oidc`. Refer to
+  [Create the Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#create-the-profile).
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
