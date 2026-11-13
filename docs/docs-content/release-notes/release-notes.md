@@ -609,10 +609,8 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 The following components have been updated for Palette version 4.10.13 - 4.10.34.
 
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | NA      |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | NA      |
+| Component | Version |
+| --------- | ------- |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
 
@@ -620,9 +618,8 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5072 -->
 
-- Updated Kubernetes packs for release week 2026-46, including `edge-k8s` (versions 1.34.13 FIPS/non-FIPS, 1.35.10
-  FIPS/non-FIPS), `kubernetes` (versions 1.34.13 FIPS/non-FIPS, 1.35.10 FIPS/non-FIPS, 1.36.6 non-FIPS, 1.37.2
-  non-FIPS), and `kubernetes-gke` (version 1.36 non-FIPS).
+- Added Kubernetes 1.34.13 and 1.35.10 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
+- Added Kubernetes 1.36 to the `kubernetes-gke` pack for GKE clusters.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
 
@@ -635,20 +632,21 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | --------- | ----- | -------- | ---- | ----------- |
 | <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.17.2 |
 | <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.37.0 |
+| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.37.0-shi |
 | <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.3 |
 | <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.4 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :white_check_mark: | 1.20.4-shi |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
 | <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.2 |
 | <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :x: | :white_check_mark: | 2.20.0 |
 | <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.45.0-rev1 |
 | <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.1 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :x: | 1.36.6 |
-| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :x: | 1.37.2 |
+| `keycloakx` | `addon` | :white_check_mark: | :white_check_mark: | 7.4.0-shi-rev1 |
 | <VersionedLink text="kubernetes-gke" url="/integrations/packs/?pack=kubernetes-gke" /> | `k8s` | :white_check_mark: | :x: | 1.36 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.19.2-shi |
 | <VersionedLink text="lb-metallb-helm" url="/integrations/packs/?pack=lb-metallb-helm" /> | `addon` | :white_check_mark: | :x: | 0.16.2 |
+| <VersionedLink text="lb-metallb-helm" url="/integrations/packs/?pack=lb-metallb-helm" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.16.2-shi |
 | <VersionedLink text="opentelemetry" url="/integrations/packs/?pack=opentelemetry" /> | `addon` | :white_check_mark: | :x: | 0.162.0 |
 | `piraeus-netiface-builder` | `addon` | :x: | :white_check_mark: | 0.1.2 |
 | `piraeus-netiface-builder` | `addon` | :x: | :white_check_mark: | 0.1.3 |
@@ -657,15 +655,13 @@ The following components have been updated for Palette version 4.10.13 - 4.10.34
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.47.1 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 93.2.0 |
 | <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.23 |
+| <VersionedLink text="seaweedfs" url="/integrations/packs/?pack=seaweedfs" /> | `addon` | :x: | :white_check_mark: | 4.43.0-shi |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.3.0 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.132-shi |
 
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3428. DO NOT DELETE. -->
-
-##### Pack Notes
-
-##### Deprecations and Removals
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
