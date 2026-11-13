@@ -621,7 +621,7 @@ The following components have been updated for Palette version 4.10.41.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5072 -->
 
 - Added Kubernetes 1.34.13 and 1.35.10 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
-- Added Kubernetes 1.36 to the `kubernetes-gke` pack for GKE clusters.
+- Added Kubernetes 1.36 to the non-FIPS variant of the `kubernetes-gke` pack for GKE clusters.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
 
