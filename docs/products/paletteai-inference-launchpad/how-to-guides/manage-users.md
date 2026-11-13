@@ -13,6 +13,8 @@ keywords: ["launchpad", "ai", "access", "user", "directory", "password", "identi
 Add and maintain people on the **Users** tab. Adding a user gives no workspace access. To give access, add the person,
 or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
+To add many users at once, refer to [Import Users in Bulk](./import-users-in-bulk.md).
+
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
