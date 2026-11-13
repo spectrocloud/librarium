@@ -97,39 +97,49 @@ jobs:
       - name: Extract component updates variables
         if: steps.check.outputs.run == 'true'
         run: |
-          TICKET=$(grep -m1 -E '<!-- COMPONENT UPDATES TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*COMPONENT UPDATES TICKET: ([A-Z]+-[0-9]+).*/\1/')
-          DATE=$(
-            grep -m1 -E '<!-- RELEASE DATE: [A-Za-z]+ [0-9]{1,2}, [0-9]{4} -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE DATE: ([A-Za-z]+ [0-9]{1,2}, [0-9]{4}).*/\1/'
-          )
-          APPLIANCE=$(
-            grep -m1 -E '<!-- RELEASE MANAGEMENT APPLIANCE: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9._-]+).*/\1/'
-          )
-          ARTIFACT=$(
-            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]*).*/\1/'
-          )
-          TERRAFORM=$(
-            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]* -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]*).*/\1/'
-          )
+          # Read every value from the newest Component Updates block only: the metadata comments
+          # that directly follow its COMPONENT UPDATES TICKET comment. Searching the whole file for
+          # each comment fell through to an older block whenever the newest one left a value blank
+          # (DOC-3426).
+          RELEASE_NOTES=docs/docs-content/release-notes/release-notes.md
+          read_block_meta() {
+            awk -v key="$1" '
+              !started && /<!-- COMPONENT UPDATES TICKET: / { started = 1 }
+              !started { next }
+              !/^<!-- / { exit }
+              index($0, "<!-- " key ":") == 1 {
+                value = substr($0, length("<!-- " key ":") + 1)
+                sub(/-->[[:space:]]*$/, "", value)
+                gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
+                print value
+                exit
+              }
+            ' "$RELEASE_NOTES"
+          }
+          TICKET=$(read_block_meta "COMPONENT UPDATES TICKET")
+          DATE=$(read_block_meta "RELEASE DATE")
+          APPLIANCE=$(read_block_meta "RELEASE MANAGEMENT APPLIANCE")
+          ARTIFACT=$(read_block_meta "RELEASE ARTIFACT STUDIO")
+          TERRAFORM=$(read_block_meta "RELEASE TERRAFORM VERSION")
 
-          if [[ -z "$TICKET" ]]; then
+          if [[ ! "$TICKET" =~ ^[A-Z]+-[0-9]+$ ]]; then
             echo "❌ No COMPONENT UPDATES TICKET found" >&2
             exit 1
           fi
-          if [[ -z "$DATE" ]]; then
-            echo "❌ No RELEASE DATE found" >&2
+          if [[ ! "$DATE" =~ ^[A-Za-z]+\ [0-9]{1,2},\ [0-9]{4}$ ]]; then
+            echo "❌ No RELEASE DATE found in the $TICKET block" >&2
             exit 1
           fi
-          if [[ -z "$APPLIANCE" ]]; then
-            echo "❌ No RELEASE MANAGEMENT APPLIANCE found" >&2
-            exit 1
-          fi
-          # Artifact Studio and Terraform are optional (not every week releases them). An empty
-          # value is valid and its component-table row is dropped downstream, so do not fail here.
+          # The Management Appliance, Artifact Studio, and Terraform versions are optional (not every
+          # week releases them). An empty value is valid and its component-table rows are dropped
+          # downstream, so do not fail on it. Reject anything that is not a plain version string
+          # before it reaches GITHUB_ENV; NA and N/A pass and the script treats them as blank.
+          for value in "$APPLIANCE" "$ARTIFACT" "$TERRAFORM"; do
+            if [[ -n "$value" && ! "$value" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+              echo "❌ Unexpected version value '$value' in the $TICKET block" >&2
+              exit 1
+            fi
+          done
 
           {
             echo "JIRA_TICKET=$TICKET"

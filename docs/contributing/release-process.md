@@ -356,10 +356,10 @@ is set once and used by both.
 
 #### Component Updates
 
-| **Environment Variable**       | **Description**               | **Example Value** |
-| ------------------------------ | ----------------------------- | ----------------- |
-| `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version.      | `4.9.0`           |
-| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. | `4.9.8`           |
+| **Environment Variable**       | **Description**                                                                                                                                                                                                 | **Example Value** |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version. Optional: leave it blank on a week Artifact Studio did not release, and its row is dropped.                                                                                            | `4.9.0`           |
+| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. Optional: leave it blank on a week no Management Appliance was released, and both appliance rows are dropped. Do not enter a dummy version, `NA`, or the previous week's version. | `4.9.8`           |
 
 #### Other Release Updates
 

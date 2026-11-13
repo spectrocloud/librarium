@@ -112,16 +112,23 @@ if ! check_env "RELEASE_DATE"; then
     exit 1
 fi
 
-if ! check_env "RELEASE_MANAGEMENT_APPLIANCE"; then
-    echo "‼️  RELEASE_MANAGEMENT_APPLIANCE environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
+# The Management Appliance, Artifact Studio, and Terraform versions are optional: not every week
+# releases these components (DOC-3426 for the appliance). Normalize an unset variable to empty so
+# `set -u` does not trip, and so the matching component-table rows can be dropped when the version is
+# blank (see the render step below). Earlier runs entered NA or N/A as a stand-in for "no release";
+# treat those as blank too, so they never reach a component table or an appliance table.
+normalize_optional_version() {
+  local value="${1:-}"
+  value="${value//[[:space:]]/}"
+  case "$(printf '%s' "$value" | tr '[:lower:]' '[:upper:]')" in
+    NA | N/A) value="" ;;
+  esac
+  printf '%s' "$value"
+}
 
-# Artifact Studio and Terraform versions are optional: not every week releases these components.
-# Normalize an unset variable to empty so `set -u` does not trip, and so the corresponding
-# component-table row can be dropped when the version is blank (see the render step below).
-RELEASE_ARTIFACT_STUDIO="${RELEASE_ARTIFACT_STUDIO:-}"
-RELEASE_TERRAFORM_VERSION="${RELEASE_TERRAFORM_VERSION:-}"
+RELEASE_MANAGEMENT_APPLIANCE=$(normalize_optional_version "${RELEASE_MANAGEMENT_APPLIANCE:-}")
+RELEASE_ARTIFACT_STUDIO=$(normalize_optional_version "${RELEASE_ARTIFACT_STUDIO:-}")
+RELEASE_TERRAFORM_VERSION=$(normalize_optional_version "${RELEASE_TERRAFORM_VERSION:-}")
 
 # Release signal (DOC-3195). A Component Updates run is a "release run" when its base branch is a
 # release branch (docs-rel-<major>-<minor>-<0|a|b|c>) rather than master. The operator picks this
@@ -167,6 +174,38 @@ echo "ℹ️ Release management appliance: $RELEASE_MANAGEMENT_APPLIANCE"
 echo "ℹ️ Release artifact studio: $RELEASE_ARTIFACT_STUDIO"
 echo "ℹ️ Release terraform version: $RELEASE_TERRAFORM_VERSION"
 
+# List the dated release notes sections, other than this ticket's own Component Updates block, that
+# already announce the given Management Appliance version, either in a block's metadata comment or in
+# a Management Appliance row of a component table. A week with no appliance release used to repeat the
+# previous week's version (DOC-3426), so a match usually means the field should have been left blank.
+appliance_already_announced_in() {
+  local version="$1"
+  awk -v ticket="$JIRA_TICKET" -v version="$version" '
+    /^###? [A-Z][a-z]+ [0-9]{1,2}, [0-9]{4} - / {
+      section = $0
+      sub(/^###? /, "", section)
+      sub(/ \{#.*$/, "", section)
+      owner = ""
+      next
+    }
+    /<!-- COMPONENT UPDATES TICKET: / {
+      owner = $0
+      sub(/.*COMPONENT UPDATES TICKET: */, "", owner)
+      sub(/ *-->.*$/, "", owner)
+      next
+    }
+    owner == ticket { next }
+    index($0, "<!-- RELEASE MANAGEMENT APPLIANCE: " version " -->") { print section; next }
+    /^\|/ && index($0, "Management Appliance](") {
+      split($0, cells, "|")
+      cell = cells[3]
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", cell)
+      if (cell == version) print section
+    }
+  ' "$RELEASE_NOTES_FILE" | awk 'length($0) && !seen[$0]++'
+}
+
+
 JIRA_TITLE=$(
   curl --fail-with-body \
     --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=summary" \
@@ -200,6 +239,17 @@ echo "ℹ️ Release component end version: $RELEASE_COMPONENT_END_VERSION"
 
 COMPONENT_UPDATES_WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$COMPONENT_UPDATES_WORK_DIR"' EXIT
+
+# Warn in the Generator Report when the appliance version was already announced (DOC-3426).
+if [[ -n "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
+  announced_in=$(appliance_already_announced_in "$RELEASE_MANAGEMENT_APPLIANCE")
+  if [[ -n "$announced_in" ]]; then
+    # Section headings carry commas (November 6, 2026 - ...), so join them with semicolons.
+    announced_list=$(printf '%s\n' "$announced_in" | awk '{ printf "%s**%s**", (NR > 1 ? "; " : ""), $0 }')
+    echo "⚠️ Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in: $(printf '%s\n' "$announced_in" | awk '{ printf "%s%s", (NR > 1 ? "; " : ""), $0 }')" >&2
+    report_add notes "Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in $announced_list. If no appliance was released this week, run the workflow again with the Management Appliance field blank, or remove both Management Appliance rows by hand."
+  fi
+fi
 
 # Fetch the ticket's issue links once. The prose issues for Super, the [Platone] tasks for the packs
 # table, and the pack epics are all derived from this response.
@@ -562,16 +612,34 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
     "RELEASE_MANAGEMENT_APPLIANCE" \
     "SUPER_COMPONENT_UPDATES_BODY"
 
-  # Artifact Studio and Terraform are optional. When their version is blank, drop the matching
-  # component-table row(s) rather than emit an empty version cell (which reads as an error).
-  # RELEASE_TERRAFORM_VERSION feeds BOTH the Terraform and Crossplane rows. The metadata HTML
-  # comments above the table keep the (empty) value so the comment-triggered refresh round-trips.
+  # Artifact Studio, Terraform, and the Management Appliance are optional. When their version is
+  # blank, drop the matching component-table row(s) rather than emit an empty version cell (which
+  # reads as an error). RELEASE_TERRAFORM_VERSION feeds BOTH the Terraform and Crossplane rows, and
+  # RELEASE_MANAGEMENT_APPLIANCE feeds BOTH the Palette and VerteX Management Appliance rows. The
+  # metadata HTML comments above the table keep the (empty) value so the comment-triggered refresh
+  # round-trips.
   if [[ -z "$RELEASE_ARTIFACT_STUDIO" ]]; then
     remove_line_containing "[Artifact Studio]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
   fi
   if [[ -z "$RELEASE_TERRAFORM_VERSION" ]]; then
     remove_line_containing "Spectro Cloud Terraform provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
     remove_line_containing "Spectro Cloud Crossplane provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
+  if [[ -z "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
+    remove_line_containing "[Palette Management Appliance]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+    remove_line_containing "[VerteX Management Appliance]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
+  fi
+
+  # A week where none of these components shipped leaves a table with only its header. Drop the
+  # header, its separator, and the lead-in sentence instead, and squeeze the blank lines left behind.
+  if ! grep -qE '^\| \[(Artifact Studio|Spectro Cloud Terraform provider|Spectro Cloud Crossplane provider|Palette Management Appliance|VerteX Management Appliance)\]' "$COMPONENT_UPDATES_OUTPUT_FILE"; then
+    awk '
+      /^The following components have been updated for Palette version/ { next }
+      /^\|[[:space:]]*Component[[:space:]]*\|[[:space:]]*Version[[:space:]]*\|/ { drop_separator = 1; next }
+      drop_separator { drop_separator = 0; if ($0 ~ /^\|[-|: ]+\|[[:space:]]*$/) next }
+      { print }
+    ' "$COMPONENT_UPDATES_OUTPUT_FILE" | cat -s > "${COMPONENT_UPDATES_OUTPUT_FILE}.tmp" \
+      && mv "${COMPONENT_UPDATES_OUTPUT_FILE}.tmp" "$COMPONENT_UPDATES_OUTPUT_FILE"
   fi
 
   if [[ "$IS_RELEASE_RUN" == true ]]; then
@@ -608,8 +676,9 @@ fi
 # On a release run that coincides with a Management Appliance release, prepend a newest-first row to
 # the Palette and VerteX "... Management Appliance" Kubernetes Requirements tables. The Palette Version
 # column is RELEASE_MANAGEMENT_APPLIANCE (a form input); the Kubernetes Version is derived from the
-# appliance-palette release data so it is never transcribed by hand. A RELEASE_MANAGEMENT_APPLIANCE
-# of "NA" or empty means no appliance shipped this release, so the tables are left untouched. Deriving
+# appliance-palette release data so it is never transcribed by hand. An empty RELEASE_MANAGEMENT_APPLIANCE
+# (NA and N/A are normalized to empty above) means no appliance shipped this release, so the tables are
+# left untouched. Deriving
 # the version and comparing it against the current top row also makes reruns idempotent.
 # ---------------------------------------------------------------------------------------------------
 
@@ -678,7 +747,7 @@ update_appliance_table() {
   echo "✅ Prepended $RELEASE_MANAGEMENT_APPLIANCE / $k8s to the $edition_label appliance table in $file."
 }
 
-if [[ "$IS_RELEASE_RUN" == true && -n "$RELEASE_MANAGEMENT_APPLIANCE" && "$RELEASE_MANAGEMENT_APPLIANCE" != "NA" ]]; then
+if [[ "$IS_RELEASE_RUN" == true && -n "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
   echo "ℹ️ Release run with Management Appliance $RELEASE_MANAGEMENT_APPLIANCE; checking the appliance Kubernetes Requirements tables."
   update_appliance_table "Palette" "$INSTALL_PALETTE_FILE" "appliance-data/palette/values-yaml/infra/k8s.yaml"
   update_appliance_table "VerteX" "$INSTALL_VERTEX_FILE" "appliance-data/vertex/values-yaml/infra/k8s.yaml"

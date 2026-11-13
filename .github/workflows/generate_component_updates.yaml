@@ -11,8 +11,8 @@ on:
         description: "The release date for the component update (e.g., May 20, 2026)"
         required: true
       release_management_appliance:
-        description: "The release management appliance for the component update (e.g., 4.8.6)"
-        required: true
+        description: "The release management appliance for the component update (e.g., 4.8.6). Leave blank on a week no Management Appliance was released; its rows are dropped automatically."
+        required: false
       release_artifact_studio:
         description: "The release artifact studio for the component update (e.g., 4.8.6). Leave blank on a week Artifact Studio did not release; its row is dropped automatically."
         required: false
