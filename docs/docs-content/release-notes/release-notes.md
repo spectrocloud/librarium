@@ -581,11 +581,11 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- release-notes-automation-features-4.10.b-start -->
 
-- Terraform version 4.10.b of the
+- Terraform version 0.30.6 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.10.b of the
+- Crossplane version 0.30.6 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
@@ -606,7 +606,64 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 ### Docs and Education
 
-<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+### November 15, 2026 - Component Updates {#component-updates-2026-46}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3428 -->
+<!-- RELEASE DATE: November 15, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: NA -->
+<!-- RELEASE ARTIFACT STUDIO:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.6 -->
+
+The following components have been updated for Palette version 4.10.41.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.6  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.6  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5072 -->
+
+- Added Kubernetes 1.34.13 and 1.35.10 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
+- Added Kubernetes 1.36 to the non-FIPS variant of the `kubernetes-gke` pack for GKE clusters.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
+
+#### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3428. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.17.2 |
+| <VersionedLink text="aws-cluster-autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> | `addon` | :white_check_mark: | :x: | 1.37.0 |
+| <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.21.3 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.4 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
+| <VersionedLink text="falco" url="/integrations/packs/?pack=falco" /> | `addon` | :white_check_mark: | :x: | 9.2.2 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :x: | :white_check_mark: | 2.20.0 |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.45.0-rev1 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.1 |
+| <VersionedLink text="kubernetes-gke" url="/integrations/packs/?pack=kubernetes-gke" /> | `k8s` | :white_check_mark: | :x: | 1.36 |
+| <VersionedLink text="lb-metallb-helm" url="/integrations/packs/?pack=lb-metallb-helm" /> | `addon` | :white_check_mark: | :x: | 0.16.2 |
+| <VersionedLink text="opentelemetry" url="/integrations/packs/?pack=opentelemetry" /> | `addon` | :white_check_mark: | :x: | 0.162.0 |
+| `piraeus-netiface-builder` | `addon` | :x: | :white_check_mark: | 0.1.2 |
+| `piraeus-netiface-builder` | `addon` | :x: | :white_check_mark: | 0.1.3 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :white_check_mark: | 2.12.1 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.12.1 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.47.1 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 93.2.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.23 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.3.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3428. DO NOT DELETE. -->
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
