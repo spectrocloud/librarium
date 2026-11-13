@@ -348,9 +348,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-9862 -->
 
 - Edge clusters can now authenticate to a private Amazon Elastic Container Registry (ECR) repository without storing
-  static AWS credentials on each node. Palette issues short-lived ECR tokens that the Edge hosts use to pull provider
-  images during cluster creation and upgrades. This feature is available only for connected clusters in appliance mode.
-  Refer to
+  static AWS credentials on the Edge hosts. Palette issues short-lived ECR tokens that the Edge hosts use to pull
+  provider images during cluster creation and upgrades. This feature is available only for centrally managed clusters in
+  appliance mode. Refer to
   [Deploy Cluster with an Amazon ECR Provider Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-ecr-provider-registry.md)
   for more information.
 
