@@ -25,7 +25,7 @@ Every request a PaletteAI Inference Launchpad appliance serves carries an estima
 appliance prices each kind of token, and on how much of each prompt was answered from cache instead of computed again.
 This page explains what the estimated cost is, the four rates that produce it, and how each level of caching affects it.
 Read it to interpret the costs that the **Usage** page reports, or before you change the rates under **Settings** >
-**Pricing**.
+**Model Management** > **Model Pricing**.
 
 The **Overview** page also reports how much you save by serving on the appliance instead of a frontier model. For how
 that estimate is calculated, refer to [Estimated Savings](./estimated-savings.md).
@@ -72,11 +72,11 @@ zero.
 | -------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Default rates        | Models hosted on the appliance       | The appliance ships with default rates for hosted models, with the cache-read rate at one tenth of the input rate. A deployment can set different defaults at install time. For the default values, refer to [How Cost Is Calculated](../reference/usage-metrics-reference.md#how-cost-is-calculated). |
 | Provider list prices | Models routed to a frontier provider | The appliance prices these models from the provider's published list prices, including its cache tiers. For example, one provider prices cache reads at a tenth of its input rate and prices cache creation above its input rate.                                                                      |
-| Operator overrides   | Any model                            | An operator can view and override every rate for a model under **Settings** > **Pricing**, including **Cache read** and **Cache write**. A blank cache-read or cache-write rate means the appliance prices those tokens at the model's input rate.                                                     |
+| Operator overrides   | Any model                            | An operator can view and override every rate for a model under **Settings** > **Model Management** > **Model Pricing**, including **Cache read** and **Cache write**. A blank cache-read or cache-write rate means the appliance prices those tokens at the model's input rate.                        |
 
 The default rates for hosted models are a generic on-premises estimate. They do not represent the real cost of your
 hardware, power, or operations. Provider list prices change over time, so this page does not reproduce them. For the
-rates in effect on your appliance, open **Settings** > **Pricing**.
+rates in effect on your appliance, open **Settings** > **Model Management** > **Model Pricing**.
 
 ### Why Hosted Models Carry a Cost
 
@@ -95,8 +95,8 @@ that you pay. The appliance still prices its tokens, for two reasons.
   traffic routed to a frontier provider.
 
 Because the default rates are an estimate, an operator can override the rates for any hosted model under **Settings** >
-**Pricing**, and a deployment can set different defaults at install time. Lower rates for hosted models also lower the
-estimated cost that counts toward each client's cost limits.
+**Model Management** > **Model Pricing**, and a deployment can set different defaults at install time. Lower rates for
+hosted models also lower the estimated cost that counts toward each client's cost limits.
 
 ## Three Levels of Caching
 
@@ -146,9 +146,9 @@ and the cache-read rate lowers the estimated cost substantially.
 ### The Response Cache
 
 The response cache stores whole answers and replays a stored answer when the same request arrives again. It is an
-administrator setting that is off by default. An administrator turns it on, and sets how long a stored answer stays
-valid, in the response cache section of **Settings** > **Configurations**. A stored answer expires after 60 minutes by
-default.
+administrator setting that is off by default. An administrator turns it on and sets how long a stored answer stays
+valid. Both settings are on **Settings** > **Request handling** > **Response Cache**. A stored answer expires after 60
+minutes by default.
 
 Matching is exact. Two prompts that differ by even one character are different requests, so the appliance never serves a
 stored answer for a different question.
