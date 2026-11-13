@@ -53,8 +53,8 @@ credentials on the Edge hosts.
   information, refer to [Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 - A centrally managed Edge Native cluster in appliance mode, or the Edge hosts for a new one. Every Edge host of the
-  cluster must run the Palette agent version that ships with Palette 4.10.b or later. An older agent ignores the
-  selected image registry and does not report an error.
+  cluster must run Palette agent version 4.10.b or later. An older agent ignores the selected image registry and does
+  not report an error. <!-- Release day: replace 4.10.b with the Palette agent version for 4.10.b. -->
 
 - An IAM role in the AWS account that owns the repository. The role needs a trust relationship that allows Palette to
   assume it through STS, and the following permissions.
