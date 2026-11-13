@@ -140,16 +140,16 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
 
 7.  Select **Download manifest**.
 
-    For an Azure PCG, the download also includes the Ambit manifest. Ambit lets the PCG look up Azure resources for
-    [Azure managed identity cloud accounts](../public-cloud/azure/azure-managed-identities.md), so you need it only for
-    those cloud accounts.
+    For an Azure PCG, the download also includes the Ambit manifest. You need it only for
+    [Azure managed identity cloud accounts](../public-cloud/azure/azure-managed-identities.md).
 
     :::info
 
     Once you select **Download manifest**, the cluster status transitions to **Importing**. If you close the drawer and
     later discover the download was blocked or did not complete, the drawer will not reopen. In this case, you must
     fetch the manifests using the [Palette API](/api/introduction/) endpoints `/v1/pcg/<pcg-uid>/services/jet/manifest`
-    and `/v1/pcg/<pcg-uid>/services/ally/manifest`, and, for an Azure PCG, `/v1/pcg/<pcg-uid>/services/ambit/manifest`.
+    and `/v1/pcg/<pcg-uid>/services/ally/manifest`. For an Azure PCG, also fetch
+    `/v1/pcg/<pcg-uid>/services/ambit/manifest`.
 
     :::
 
@@ -268,6 +268,8 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
     ```shell
     kubectl apply --filename "<path-to-download>/cluster-*-ambit-manifest.yaml"
     ```
+
+    Replace `<path-to-download>` with the directory that contains the downloaded manifests.
 
 9.  When the agents initialize, the drawer disappears, and your **Cluster Status** transitions to **Running**. Within a
     few minutes, your cluster's **Health** status changes to **Healthy**.
