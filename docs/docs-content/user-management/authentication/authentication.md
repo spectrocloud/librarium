@@ -40,7 +40,8 @@ You can use authorization tokens to authenticate API requests. To obtain an auth
 `v1/auth/authenticate` API endpoint with a POST request to authenticate and obtain the authorization token. Provide your
 email address, organization name, and password in the request body.
 
-If you have a passkey you cannot complete sign-in through this endpoint. Refer to
+If you have a passkey, or your tenant enforces passkeys and your grace period is over, you cannot complete sign-in
+through this endpoint. Refer to
 [Authorization Tokens and Passkeys](authorization-token.md#authorization-tokens-and-passkeys) for more information.
 
 To learn more about the authorization token, refer to the [Authorization Token](authorization-token.md) section.
