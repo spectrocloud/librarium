@@ -88,6 +88,19 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
   `oidc`. Refer to
   [Create the Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#create-the-profile).
 
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1395 -->
+
+- Fixed security issues that allowed users to read or change resources in namespaces outside their access through the
+  PaletteAI VM Launchpad API. These included the Secrets of other namespaces, the `sysprep` configuration of VM
+  templates, and namespace policies. These requests now respect each user's namespace scope.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1405 -->
+
+- Fixed an issue that caused API keys to keep the permissions of a group after an administrator removed the key's
+  creator from the group. Group membership changes that you make in PaletteAI VM Launchpad now apply to the creator's
+  API keys immediately. Removing a member also signs the user out of their active sessions. Refer to
+  [Groups](../vm-management/vm-launchpad/access-management/groups.md).
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->

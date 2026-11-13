@@ -177,8 +177,9 @@ and role assignments.
 
 :::warning
 
-Changing a user's roles or groups does not revoke their existing API keys. Revoke the keys as well. Refer to
-[API Keys](./api-keys.md).
+Changing a user's roles or groups does not revoke their existing API keys. The keys receive the new permissions instead:
+group membership changes apply immediately, and role and namespace scope changes apply within about 90 seconds. To stop
+a user's API access, revoke the keys as well. Refer to [API Keys](./api-keys.md).
 
 :::
 

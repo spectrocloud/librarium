@@ -99,9 +99,11 @@ fixed.
 
 :::info
 
-Member changes take effect on the user's next sign-in or token refresh. VM Launchpad applies Kubernetes access changes
-immediately and creates or revokes ClusterRoleBindings and RoleBindings in the cluster. Existing API keys keep their
-previous permissions until the user signs in again. Refer to [API Keys](./api-keys.md).
+VM Launchpad applies member changes to the user's API keys immediately. It also applies Kubernetes access changes
+immediately and creates or revokes ClusterRoleBindings and RoleBindings in the cluster. When you remove a member, VM
+Launchpad signs the user out of their active sessions, so their next sign-in uses the new permissions. A member you add
+keeps their current session, which picks up the new permissions on its next token refresh. Refer to
+[API Keys](./api-keys.md).
 
 :::
 
