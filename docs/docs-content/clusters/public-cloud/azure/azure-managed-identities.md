@@ -273,6 +273,11 @@ Kubelet identity both need the **Reader** role on the subscription. Without it, 
 The AKS service identity needs the **Network Contributor** role on the AKS subnet even when the VNet is in the cluster
 resource group.
 
+The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers call Azure as the AKS service identity. If the
+cluster uses storage outside the AKS node resource group, grant the AKS service identity access to that storage. This
+includes StorageClasses with a custom `resourceGroup` parameter, static persistent volumes in other resource groups, and
+disk encryption sets. Without this access, the drivers fail with HTTP 403 errors on these volumes.
+
 For the procedure, refer to [Create and Manage Azure AKS Cluster](./aks.md).
 
 ## Limit Permissions
