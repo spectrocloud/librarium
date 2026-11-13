@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "outcome": { "type": "string", "enum": ["replace", "update-guidance", "no-change", "skip-pattern", "error"] },
+    "replacement": {
+      "type": "string",
+      "description": "The new URL, fetched and verified, without a #fragment. Empty when there is none."
+    },
+    "fragments": {
+      "type": "array",
+      "description": "For replace and update-guidance: each section from the prompt, mapped to the new page's anchor.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string", "description": "A section from the prompt, without the #." },
+          "to": { "type": "string", "description": "The matching anchor on the new page, without the #, or empty." }
+        },
+        "required": ["from", "to"],
+        "additionalProperties": false
+      }
+    },
+    "evidence": { "type": "string", "description": "The replacement's page title, the redirect, or what loaded." },
+    "guidance": { "type": "string", "description": "For update-guidance: what changed and the smallest true edit." },
+    "sources": { "type": "array", "items": { "type": "string" } },
+    "skipPattern": { "type": "string", "description": "For skip-pattern: the anchored regex. Empty otherwise." },
+    "attempts": { "type": "array", "items": { "type": "string" }, "description": "The status of each fetch attempt." },
+    "notes": { "type": "string" }
+  },
+  "required": [
+    "outcome",
+    "replacement",
+    "fragments",
+    "evidence",
+    "guidance",
+    "sources",
+    "skipPattern",
+    "attempts",
+    "notes"
+  ],
+  "additionalProperties": false
+}
