@@ -2163,63 +2163,6 @@
         ]
       }
     },
-    "/v1/edge-mgmt/edgehosts/current/data-volume-group/logical-volume/mount-point": {
-      "put": {
-        "tags": [
-          "edge-mgmt"
-        ],
-        "summary": "Set or clear the mount point of an existing logical volume",
-        "operationId": "V1EdgeHostLogicalVolumeMountPointUpdate",
-        "parameters": [
-          {
-            "description": "Logical volume and its new mount point.",
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1LogicalVolumeMountPointRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The data volume groups after the change.",
-            "schema": {
-              "$ref": "#/definitions/v1DataVolumeGroupList"
-            }
-          },
-          "400": {
-            "description": "Bad request, invalid input",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "404": {
-            "description": "Volume group or logical volume not found",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "default": {
-            "description": "generic error response",
-            "schema": {
-              "$ref": "#/definitions/apiError"
-            }
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
-      }
-    },
     "/v1/edge-mgmt/edgehosts/current/download-logs": {
       "get": {
         "description": "Downloads the logs of the edge host as a tar file.",
@@ -6642,8 +6585,7 @@
           "type": "string"
         },
         "mountPoint": {
-          "type": "string",
-          "x-omitempty": false
+          "type": "string"
         },
         "name": {
           "type": "string"
@@ -6654,29 +6596,6 @@
         "sizeBytes": {
           "type": "integer",
           "format": "int64"
-        }
-      }
-    },
-    "v1LogicalVolumeMountPointRequest": {
-      "description": "LogicalVolumeMountPointRequest sets or clears the mount point of an existing logical volume.",
-      "type": "object",
-      "required": [
-        "volumeGroup",
-        "logicalVolume",
-        "mountPoint"
-      ],
-      "properties": {
-        "logicalVolume": {
-          "description": "Name of the logical volume to mount or unmount.",
-          "type": "string"
-        },
-        "mountPoint": {
-          "description": "New mount point, for example \"/opt/data/spectrocloud\". An empty string\nunmounts the volume and clears the mount point. The value must be an\nabsolute path and must not be a reserved system path.\n",
-          "type": "string"
-        },
-        "volumeGroup": {
-          "description": "Name of the volume group that holds the logical volume.",
-          "type": "string"
         }
       }
     },
