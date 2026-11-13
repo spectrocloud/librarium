@@ -18,7 +18,7 @@ confirm the behavior on your own installation.
 
 ## Transport Encryption
 
-The following interfaces are served over Transport Layer Security (TLS) only:
+Palette VerteX serves the following interfaces over Transport Layer Security (TLS) only.
 
 | Interface                         | Port  |
 | --------------------------------- | ----- |
@@ -27,7 +27,7 @@ The following interfaces are served over Transport Layer Security (TLS) only:
 | Local UI                          | 5080  |
 | Kubernetes API server             | 6443  |
 | etcd                              | 2379  |
-| kubelet                           | 10250 |
+| Kubelet                           | 10250 |
 | Built-in pack registry            | 30003 |
 
 Port 80 answers every request with a redirect to the HTTPS address and returns no other content. A sign-in request sent
@@ -46,7 +46,7 @@ On every interface in the table:
 
 When a client requires the Commercial National Security Algorithm Suite (CNSA) 1.0 parameters (AES-256-GCM, ECDH P-384
 and SHA-384), the Tenant Console, System Console, management API, Kubernetes API server, etcd and built-in pack registry
-negotiate them. The Local UI negotiates AES-256-GCM and SHA-384 and offers only P-256 for key agreement. The kubelet
+negotiate them. The Local UI negotiates AES-256-GCM and SHA-384 and offers only P-256 for key agreement. The Kubelet
 negotiates AES-256-GCM and P-384 and signs the handshake with SHA-256, because its certificate carries a P-256 key. The
 cluster certificate authority signs that certificate with SHA-256 and RSA, like every other certificate in the cluster.
 
@@ -59,8 +59,8 @@ From a workstation that reaches the appliance, confirm that TLS 1.1 is refused a
 Repeat with port 5080 for the Local UI.
 
 ```shell
-echo | openssl s_client -connect <appliance-address>:443 -tls1_1 -cipher 'DEFAULT:@SECLEVEL=0' 2>&1 | grep -i 'alert protocol version'
-echo | openssl s_client -connect <appliance-address>:443 2>/dev/null | grep -E 'Protocol +:|Cipher +:'
+echo | openssl s_client -connect <appliance-address>:443 -tls1_1 -cipher 'DEFAULT:@SECLEVEL=0' 2>&1 | grep --ignore-case 'alert protocol version'
+echo | openssl s_client -connect <appliance-address>:443 2>/dev/null | grep --extended-regexp 'Protocol +:|Cipher +:'
 ```
 
 ```text hideClipboard
@@ -75,7 +75,7 @@ SSL routines:ssl3_read_bytes:tlsv1 alert protocol version
 
 Palette VerteX performs its cryptography in FIPS 140-3 validated modules selected at build time:
 
-- The management plane services, the Kubernetes control-plane components, etcd and the kubelet are built against the
+- The management plane services, the Kubernetes control-plane components, etcd and the Kubelet are built against the
   Spectro Cloud Cryptographic Library
   ([CMVP certificate #5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)).
   Refer to [FIPS-Compliant Components](./fips/fips-compliant-components.md).
@@ -96,7 +96,7 @@ On a control-plane node, confirm kernel FIPS mode and the ingress proxy's module
 
 ```shell
 cat /proc/sys/crypto/fips_enabled
-sudo grep -a -o -E 'build[[:space:]](GOFIPS140|DefaultGODEBUG)=[^[:space:]]*' /proc/$(pgrep -x traefik)/exe | sort -u
+sudo grep --text --only-matching --extended-regexp 'build[[:space:]](GOFIPS140|DefaultGODEBUG)=[^[:space:]]*' /proc/$(pgrep --exact traefik)/exe | sort --unique
 ```
 
 ```text hideClipboard
@@ -110,7 +110,7 @@ build	GOFIPS140=v1.0.0-c2097c7c
 ## Certificates and Signatures
 
 - Every certificate in the appliance cluster's public key infrastructure (the Kubernetes certificate authority, API
-  server, etcd, front proxy and kubelet certificates) and the certificates the consoles present after installation are
+  server, etcd, front proxy and Kubelet certificates) and the certificates the consoles present after installation are
   signed with SHA-256 (`sha256WithRSAEncryption`).
 - Each TLS interface refuses a handshake when the client offers only SHA-1 signature algorithms.
 - A certificate uploaded on the System Console **Administration** > **System Address** tab must verify against the
@@ -123,7 +123,7 @@ build	GOFIPS140=v1.0.0-c2097c7c
 From a workstation that reaches the appliance, confirm that a handshake limited to SHA-1 signatures is refused.
 
 ```shell
-echo | openssl s_client -connect <appliance-address>:443 -tls1_2 -sigalgs 'RSA+SHA1:ECDSA+SHA1' -cipher 'DEFAULT:@SECLEVEL=0' 2>&1 | grep -i alert
+echo | openssl s_client -connect <appliance-address>:443 -tls1_2 -sigalgs 'RSA+SHA1:ECDSA+SHA1' -cipher 'DEFAULT:@SECLEVEL=0' 2>&1 | grep --ignore-case alert
 ```
 
 The output contains `alert handshake failure` and `SSL alert number 40`.
@@ -152,7 +152,7 @@ to read the effective values.
 <summary>Verify</summary>
 
 ```shell
-sudo sshd -T | grep -E '^(ciphers|macs|kexalgorithms) '
+sudo sshd -T | grep --extended-regexp '^(ciphers|macs|kexalgorithms) '
 ```
 
 ```text hideClipboard
@@ -168,7 +168,7 @@ kexalgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-he
 ### Sign-In Feedback
 
 Every sign-in surface masks the password as it is typed and answers a failed sign-in with one message, whether the
-account does not exist or the password is wrong:
+account does not exist or the password is wrong. The following table lists the message on each interface.
 
 | Interface                         | Failure message                                             |
 | --------------------------------- | ----------------------------------------------------------- |
@@ -201,7 +201,7 @@ length or format. Refer to [Create API Key](/user-management/authentication/api-
 Sign in over the API and decode the token header.
 
 ```shell
-curl -sk -H 'Content-Type: application/json' -d '{"emailId":"<user>","password":"<password>"}' https://<appliance-address>/v1/auth/authenticate | jq -r .Authorization | cut -d. -f1 | base64 -d; echo
+curl --silent --insecure --header 'Content-Type: application/json' --data '{"emailId":"<user>","password":"<password>"}' https://<appliance-address>/v1/auth/authenticate | jq --raw-output '.Authorization | split(".")[0] | @base64d'
 ```
 
 ```text hideClipboard
@@ -220,7 +220,7 @@ The following audit layers ship enabled. None can be turned off from a console, 
 | ------------------------------- | --------------------------------------------------------------------------------- |
 | Management API audit trail      | Tenant Console **Audit Logs** page, or `GET /v1/audits`                           |
 | Kubernetes API server audit log | `/var/log/apiserver/audit.log` on control-plane nodes                             |
-| Host audit daemon (auditd)      | `/var/log/audit/audit.log` on each node                                           |
+| Host audit daemon (`auditd`)    | `/var/log/audit/audit.log` on each node                                           |
 | systemd journal                 | `journalctl` on each node                                                         |
 | Local UI audit log              | `/var/log/stylus-audit.log` on each node, or Local UI **Diagnostics** > **Audit** |
 
@@ -233,7 +233,7 @@ Every layer records UTC, and every node runs in UTC. The Tenant Console **Audit 
 viewer's local time zone, to the minute. The Local UI displays times in the viewer's local time zone and labels the
 offset, for example `(Local: UTC-05:00)`. The stored records are unchanged.
 
-Every layer records fractions of a second:
+Every layer records fractions of a second, in the following formats.
 
 | Layer                           | Format                       | Precision    |
 | ------------------------------- | ---------------------------- | ------------ |
@@ -262,8 +262,8 @@ routine requests:
 - Requests for `events`.
 - The `/healthz`, `/version` and `/swagger` endpoints.
 - Reads and watches that Kubernetes system components make on their own objects: kube-proxy watches of endpoints and
-  services, node status reads by kubelets, endpoint reads and updates in `kube-system` by the controller manager,
-  scheduler and endpoint controller, configmap reads in `kube-system` by `system:unsecured`, configmap and endpoint
+  services, node status reads by Kubelets, endpoint reads and updates in `kube-system` by the controller manager,
+  scheduler and endpoint controller, ConfigMap reads in `kube-system` by `system:unsecured`, ConfigMap and endpoint
   reads and updates in `kube-system` by the cluster autoscaler, namespace reads by the API server, and metrics reads by
   the controller manager.
 
@@ -278,7 +278,7 @@ records every file open refused to a non-root account.
 On a control-plane node, read the newest API server audit record and confirm the UTC, sub-second time stamp.
 
 ```shell
-sudo tail -n 1 /var/log/apiserver/audit.log | grep -oE '"requestReceivedTimestamp":"[^"]+"'
+sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extended-regexp '"requestReceivedTimestamp":"[^"]+"'
 ```
 
 ```text hideClipboard
@@ -291,15 +291,16 @@ sudo tail -n 1 /var/log/apiserver/audit.log | grep -oE '"requestReceivedTimestam
 
 - The management plane's security services (authentication, user and role management, the management API and system
   administration) each run as a separate Kubernetes Deployment under its own service account, as a non-root user, with
-  the `RuntimeDefault` seccomp profile and the containerd AppArmor profile. Their namespace enforces the `baseline` Pod
-  Security Standard. The console front end, ingress, image registry, storage and networking run in their own namespaces.
+  the `RuntimeDefault` secure computing mode (`seccomp`) profile and the containerd AppArmor profile. Their namespace
+  enforces the `baseline` Pod Security Standard. The console front end, ingress, image registry, storage and networking
+  run in their own namespaces.
 - No container shares the host PID or mount namespace.
 - Only a fixed set of infrastructure components shipped in the appliance image uses the host network, UTS, IPC or cgroup
   namespaces, or host paths: the Kubernetes control-plane components, kube-vip, kube-proxy, the Calico network agent,
   the LINSTOR and DRBD storage components, and the cluster agent's pack cache at `/usr/local/spectrocloud/packs`.
 - Every unprivileged container runs under the containerd AppArmor profile. The only privileged containers are the Calico
   network agent, kube-proxy and the LINSTOR storage components.
-- The kubelet runs with `protectKernelDefaults: true`.
+- The Kubelet runs with `protectKernelDefaults: true`.
 - Workloads are grouped by function in dedicated Kubernetes namespaces. Nothing runs in the `default` namespace.
 
 <details>
@@ -308,7 +309,7 @@ sudo tail -n 1 /var/log/apiserver/audit.log | grep -oE '"requestReceivedTimestam
 On a control-plane node, count the containers that share the host PID or mount namespace.
 
 ```shell
-for c in $(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock ps -q); do p=$(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock inspect -o go-template --template '{{.info.pid}}' $c); [ "$(sudo readlink /proc/$p/ns/pid)" = "$(sudo readlink /proc/1/ns/pid)" ] || [ "$(sudo readlink /proc/$p/ns/mnt)" = "$(sudo readlink /proc/1/ns/mnt)" ] && echo $c; done | wc -l
+for c in $(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock ps --quiet 2>/dev/null); do p=$(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock inspect --output go-template --template '{{.info.pid}}' $c 2>/dev/null); [ "$(sudo readlink /proc/$p/ns/pid)" = "$(sudo readlink /proc/1/ns/pid)" ] || [ "$(sudo readlink /proc/$p/ns/mnt)" = "$(sudo readlink /proc/1/ns/mnt)" ] && echo $c; done | wc --lines
 ```
 
 ```text hideClipboard
@@ -331,7 +332,7 @@ the same way.
 Send a query parameter of the wrong type.
 
 ```shell
-curl -sk -w ' %{http_code}\n' -H "ApiKey: <api-key>" "https://<appliance-address>/v1/audits?limit=abc"
+curl --silent --insecure --write-out ' %{http_code}\n' --header "ApiKey: <api-key>" "https://<appliance-address>/v1/audits?limit=abc"
 ```
 
 ```text hideClipboard
