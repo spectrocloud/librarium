@@ -595,6 +595,13 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2493 -->
+
+- Fixed an issue in the [Spectro Cloud Terraform provider](../automation/terraform/terraform.md) that left an empty
+  `cluster_profile` entry in the Terraform state of cluster resources, such as `spectrocloud_cluster_eks`, after an
+  apply that changed a `cluster_profile` block with both `pack` overrides and `variables`. As a result, later
+  `terraform plan` runs reported a cluster profile change when nothing had changed.
+
 #### Deprecations and Removals
 
 ### Docs and Education
