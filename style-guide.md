@@ -48,6 +48,7 @@ For reference materials not covered in this guide, defer to the
 - [Other Style Choices](#other-style-choices)
   - [Future Features](#future-features)
   - [Content Scope](#content-scope)
+  - [API Sections](#api-sections)
   - [Directionals](#directionals)
   - [Emoticons](#emoticons)
   - [Text Formatting](#text-formatting)
@@ -664,6 +665,22 @@ Ask "Do users need to know this?" for every implementation-detail paragraph in a
 detail, such as configuration-key internals, inverted flags, backend behavior, or masked-response formats, to a Settings
 Reference table or a dedicated How it Works section rather than embedding it in a procedure step. This keeps procedures
 scannable and confines the reasoning to a single place.
+
+## API Sections
+
+Do not add API sections, such as steps that call the Palette API or the Edge Management API, to regular docs pages. The
+[API reference](https://docs.spectrocloud.com/api/introduction/) is generated from the API specifications and documents
+each endpoint, its request and response schemas, and its error responses. A second copy on a docs page needs manual
+updates and drifts from the reference when the API changes. Instead, state that the API is available and link to the API
+reference.
+
+Include an API section only when the page specifically needs it, such as when a task has no UI equivalent, or when the
+section covers an edge case that the API reference does not explain effectively, such as a workflow that chains several
+calls.
+
+| Good ✅                                                                                                                                                                 | Bad ❌                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| To release the lock without Local UI, use the Edge Management API. Refer to [Edge Management API](https://docs.spectrocloud.com/api/introduction/#edge-management-api). | A **Use the Edge Management API** section that lists each endpoint, its request body, and its error responses. |
 
 ## Directionals
 

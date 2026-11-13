@@ -594,7 +594,7 @@ value wait until the pack is ready.
 
 Pack authors can add `readinessCheck` as a top-level key in the `values.yaml` file of a pack, at the same level as
 `pack` and `charts`. You can also add, change, or remove it in the YAML of a cluster profile layer, including Helm chart
-layers.
+layers. For the other top-level keys of the pack values, refer to [Pack Values Reference](./pack-values-reference.md).
 
 :::warning
 

@@ -43,7 +43,7 @@ model and then deploy the replacement from **Deploy Model**.
 
 1. From the left main menu, select **Cluster**, and then select the **Models** tab.
 2. On the model row, select the trash icon. The **Remove model from cluster** dialog opens.
-3. If the model is the cluster default, type the model name to confirm.
+3. If the dialog asks you to type the model name, type it to confirm.
 4. Select **Remove**.
 5. Wait until the model clears from every node.
 6. Deploy the replacement onto every node that should serve it. Refer to

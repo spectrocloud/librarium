@@ -9,7 +9,8 @@ tags: ["vmo", "VM Launchpad", "quick start"]
 
 PaletteAI VM Launchpad is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare metal
 and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you link together
-to form a cluster to create and managing VMs through a dedicated management UI.
+to form a cluster to create and manage VMs through a dedicated management UI. VM Launchpad was formerly called Launchpad
+for VMs and the VMO Appliance.
 
 Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the VM Launchpad does not require a connection to Palette. It operates
 independently with its own identity management, storage configuration, and observability stack.

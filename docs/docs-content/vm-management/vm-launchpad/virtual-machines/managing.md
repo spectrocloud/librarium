@@ -8,8 +8,8 @@ sidebar_position: 7
 tags: ["vmo", "vm launchpad"]
 ---
 
-This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in VM Launchpad. To
-provision new VMs, refer to [Create a VM](./creating.md).
+This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in PaletteAI VM Launchpad.
+To provision new VMs, refer to [Create a VM](./creating.md).
 
 ## VM List Page
 

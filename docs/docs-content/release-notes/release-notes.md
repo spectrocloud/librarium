@@ -11,6 +11,122 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 13, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3411 -->
+
+This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.TBD.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.TBD}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
+
+- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade
+  does not copy them. Before you upgrade, keep a copy of every custom package and branding image that you uploaded, and
+  upload them again after the upgrade. If you use the VMO pack, configure a package store before you upload them, or
+  PaletteAI VM Launchpad loses the files when its pod restarts. This applies to the PaletteAI VM Launchpad appliance and
+  to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+  [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
+
+- PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
+  uses a data volume. Requests to these endpoints do not return an error. They return the PaletteAI VM Launchpad web
+  interface with a `200` status code, so a removed call can appear to succeed. Remove the following calls from your
+  automation.
+
+  - `GET /api/v1/system/storage/status`
+
+  - `POST /api/v1/system/storage/enable`
+
+  - `PATCH /api/v1/system/storage/resize`
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
+
+- FIPS PaletteAI VM Launchpad appliances now run the Keycloak database as a CloudNativePG cluster. The upgrade moves the
+  database automatically, with no extra steps.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1494 -->
+
+- Fixed an issue that caused upgrades to leave the KubeVirt and Containerized Data Importer (CDI) Custom Resource
+  Definitions (CRDs) at the version that was first installed on the cluster. On clusters first installed with a 4.8
+  version of the VMO pack, the upgrade to KubeVirt 1.9.0 did not complete. On other clusters, saving a KubeVirt setting
+  that was added after the cluster was first installed failed with the
+  `KubeVirt apiserver unreachable or returned invalid response` error. Upgrades now update both CRDs, including on
+  clusters whose CRDs are already out of date. This applies to the PaletteAI VM Launchpad appliance and to the VMO pack.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1483 -->
+
+- Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
+  Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade to
+  version 4.10.TBD first moves replicas that share a node to separate nodes.
+
+## November 6, 2026 - Component Updates {#component-updates-2026-45}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3404 -->
+<!-- RELEASE DATE: November 6, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.33 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.8 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.5 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.34.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.8  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.5  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.5  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.33 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.33 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5068 -->
+
+- Added K3s 1.34.12, 1.35.9, 1.36.5, and 1.37.1 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2500 -->
+
+- Fixed an issue in the Spectro Cloud Terraform and Crossplane providers that caused Day-2 `cloud_config` updates to the
+  `spectrocloud_cluster_edge_native` resource to fail when `ssh_keys` was not set.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3404. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.11.7 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.67.2 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.5.4 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.28.1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.12 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.35.9 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.36.5 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.37.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :x: | :white_check_mark: | 2.19.1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.19.1-rev1 |
+| <VersionedLink text="flux-cd" url="/integrations/packs/?pack=flux-cd" /> | `addon` | :white_check_mark: | :x: | 2.20.0 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :white_check_mark: | 2.5.0 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 29.40.3 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 92.17.1 |
+| <VersionedLink text="tetragon" url="/integrations/packs/?pack=tetragon" /> | `addon` | :white_check_mark: | :x: | 1.8.0 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.2.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3404. DO NOT DELETE. -->
+
 ## October 30, 2026 - Component Updates {#component-updates-2026-44}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3365 -->
