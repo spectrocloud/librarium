@@ -98,5 +98,6 @@ add a passkey. The following example shows the response for a user who must veri
 }
 ```
 
-To authenticate API requests for automation, use an [API key](./api-key/api-key.md) instead. Palette does not ask for a
-passkey when you authenticate with an API key.
+You cannot complete passkey verification through the API. If the `isMfa` field is `true`, finish signing in through your
+browser. To authenticate API requests for automation, use an [API key](./api-key/api-key.md) instead. Palette does not
+ask for a passkey when you authenticate with an API key or sign in through SSO.
