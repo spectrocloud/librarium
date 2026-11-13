@@ -33,9 +33,9 @@
   },
   "components": [
     {
-      "id": "operators",
+      "id": "platform-admins",
       "type": "external",
-      "label": "Operators",
+      "label": "Platform administrators",
       "sublabel": "browser · console",
       "pos": [32, 40],
       "size": [222, 64]
@@ -208,7 +208,7 @@
   ],
   "connections": [
     {
-      "from": "operators",
+      "from": "platform-admins",
       "to": "console",
       "variant": "default"
     },

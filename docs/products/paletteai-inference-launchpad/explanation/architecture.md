@@ -51,15 +51,16 @@ numbers follow a request from an AI application down to the GPU, and they match 
 
 <!-- vale Vale.Terms = YES -->
 
-When an operator allows egress, the gateway can send a request to an external inference endpoint instead of a local
-model. Egress is off by default. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an
+When a platform administrator allows egress, the gateway can send a request to an external inference endpoint instead of
+a local model. Egress is off by default. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an
 OpenAI-compatible host that a platform administrator registered. Refer to
 [External Inference Endpoints](#external-inference-endpoints) and
 [Data Residency and Isolation](#data-residency-and-isolation).
 
-Operators open the console in a web browser to configure the appliance and observe how it is used. The control plane,
-which is separate from the Kubernetes control plane, keeps the appliance in line with the settings that operators save
-for models, clients, and policies. Refer to [Model Provisioning Lifecycle](#model-provisioning-lifecycle).
+Platform administrators open the console in a web browser to configure the appliance and observe how it is used. The
+control plane, which is separate from the Kubernetes control plane, keeps the appliance in line with the settings that
+platform administrators save for models, clients, and policies. Refer to
+[Model Provisioning Lifecycle](#model-provisioning-lifecycle).
 
 The lower layers hold the parts that every service relies on. In Kubernetes, the API server, backed by etcd, is the one
 place where the appliance's components coordinate. The operating system is Kairos, an immutable Linux distribution. In
