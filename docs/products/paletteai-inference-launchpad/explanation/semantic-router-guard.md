@@ -28,8 +28,8 @@ what happens when a check refuses a request. For which requests the semantic rou
 
 ## The Two Checks
 
-The guard makes two checks, and both are on by default. Each check has its own toggle on the **Semantic router** card
-under **Settings** > **Configurations**.
+The guard makes two checks, and both are on by default. Each check has its own toggle on the **Semantic router** card.
+The card is on **Settings** > **Request handling** > **Semantic Router**.
 
 | **Check**      | **What it looks for**                      | **Which requests it applies to**                                                                        |
 | -------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
