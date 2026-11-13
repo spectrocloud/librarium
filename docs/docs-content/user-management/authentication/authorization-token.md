@@ -98,7 +98,7 @@ add a passkey. The following example shows the response for a user who must veri
 }
 ```
 
-You cannot complete passkey verification through the API. If the `isMfa` field is `true` or the `mfaEnrollment` field
-is `required`, sign in to Palette through your browser instead. To authenticate API requests for automation, use an
+You cannot complete passkey verification through the API. If the `isMfa` field is `true` or the `mfaEnrollment` field is
+`required`, sign in to Palette through your browser instead. To authenticate API requests for automation, use an
 [API key](./api-key/api-key.md). Palette does not ask for a passkey when you authenticate with an API key or sign in
 through Single Sign-On (SSO).
