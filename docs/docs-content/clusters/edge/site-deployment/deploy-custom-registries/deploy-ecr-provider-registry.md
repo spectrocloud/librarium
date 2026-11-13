@@ -21,8 +21,12 @@ credentials on the Edge hosts.
 ## Limitations
 
 - Token-based authentication is supported only for centrally managed Edge Native clusters in appliance mode. Locally
-  managed clusters ignore the image registry selected for the cluster. If your cluster cannot use token-based
-  authentication, refer to [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
+  managed clusters ignore the image registry selected for the cluster.
+
+- Token-based authentication is not specific to a Kubernetes distribution. Spectro Cloud tested it with the PXK-E
+  (kubeadm) distribution on Ubuntu 22.04 and also created a K3s cluster with it. If your PXK-E cluster cannot use
+  token-based authentication, refer to
+  [Configure Amazon ECR Authentication Manually](./deploy-ecr-provider-registry-manual.md).
 
 - The image registry supplies credentials only for images on its own endpoint. Set the `system.uri` option in the OS
   layer of your cluster profile to a provider image on the registry's endpoint. Otherwise, the Edge host pulls the image
@@ -32,7 +36,11 @@ credentials on the Edge hosts.
 
 - ECR image registries support only AWS Security Token Service (STS) authentication.
 
-- You cannot change the provider type of a registry after you create it.
+- You cannot change the provider type of an image registry, and you cannot convert a registry of another provider type
+  to an image registry. To use an ECR registry that is already in Palette as a **Helm** or **Packs** OCI registry, add
+  the same endpoint again with the **Image** provider type and a new name.
+
+- You cannot delete a registry while a cluster uses it.
 
 - Spectro Cloud has not tested token-based authentication and the
   [manual configuration](./deploy-ecr-provider-registry-manual.md) together on the same cluster.
@@ -44,9 +52,18 @@ credentials on the Edge hosts.
 - A private Amazon ECR repository that contains a provider image you built during the EdgeForge process. For more
   information, refer to [Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
-- An IAM role in the AWS account that owns the repository. The role needs permission to pull from the repository and a
-  trust relationship that allows Palette to assume it through STS. When you add the registry, the side drawer next to
-  the **ARN** field lists the permissions and the trust relationship to add.
+- A centrally managed Edge Native cluster in appliance mode, or the Edge hosts for a new one. Every Edge host of the
+  cluster must run the Palette agent version that ships with Palette 4.10.b or later. An older agent ignores the
+  selected image registry and does not report an error.
+
+- An IAM role in the AWS account that owns the repository. The role needs a trust relationship that allows Palette to
+  assume it through STS, and the following permissions.
+
+  - `ecr:GetAuthorizationToken`
+  - `ecr:DescribeRepositories` (Palette uses this permission to validate the registry)
+  - `ecr:BatchCheckLayerAvailability`, `ecr:GetDownloadUrlForLayer`, and `ecr:BatchGetImage` on the repository
+
+  When you add the registry, the side drawer next to the **ARN** field lists the trust relationship to add.
 
 - A cluster profile whose OS layer sets `system.uri` to the provider image in your ECR repository.
 
@@ -89,7 +106,8 @@ credentials on the Edge hosts.
 You can select the image registry when you create the cluster. You can also add or change the image registry on an
 existing cluster.
 
-You do not need to set `providerCredentials` in the Edge host user data or the cluster profile.
+The image registry selected for the cluster takes precedence over `providerCredentials` in the Edge host user data and
+the OS pack, including static credentials. A `registry` mirror still receives the credentials.
 
 ### Select the Image Registry for a New Cluster
 
@@ -121,6 +139,9 @@ You can change the image registry in any cluster state. The change does not repa
 3. On the **Overview** tab, confirm that the **Cluster Status** field displays **Running**.
 
 For a new cluster, the **Running** status confirms that the Edge hosts pulled the provider image from your ECR registry.
+
+For an existing cluster, Palette uses the image registry at the next upgrade, and there is no earlier check. After the
+upgrade, the Edge host logs display `uses the credentials of Palette registry`.
 
 ## Next Steps
 

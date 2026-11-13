@@ -75,6 +75,8 @@ change those credentials later, which is what makes credential rotation possible
   is raised. The failure surfaces only at the next pull, which might be when the next node is added or at the next
   upgrade. Verify the credential against ECR out of band on the same schedule that you rotate it.
 
+- Spectro Cloud has not tested this configuration on locally managed clusters.
+
 - Spectro Cloud has not tested this configuration and [token-based authentication](./deploy-ecr-provider-registry.md)
   together on the same cluster.
 
