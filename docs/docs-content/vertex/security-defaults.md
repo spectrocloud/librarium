@@ -198,10 +198,16 @@ length or format. Refer to [Create API Key](/user-management/authentication/api-
 <details>
 <summary>Verify</summary>
 
-Sign in over the API and decode the token header.
+Sign in over the API and save the session token.
 
 ```shell
-curl --silent --insecure --header 'Content-Type: application/json' --data '{"emailId":"<user>","password":"<password>"}' https://<appliance-address>/v1/auth/authenticate | jq --raw-output '.Authorization | split(".")[0] | @base64d'
+TOKEN=$(curl --silent --insecure --header 'Content-Type: application/json' --data '{"emailId":"<user>","password":"<password>"}' https://<appliance-address>/v1/auth/authenticate | jq --raw-output .Authorization)
+```
+
+Decode the token header.
+
+```shell
+echo "$TOKEN" | jq --raw-input --raw-output 'split(".")[0] | @base64d'
 ```
 
 ```text hideClipboard
@@ -306,10 +312,11 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
 <details>
 <summary>Verify</summary>
 
-On a control-plane node, count the containers that share the host PID or mount namespace.
+On a control-plane node, count the pods that share the host PID namespace. Kubernetes has no pod setting that shares the
+host mount namespace.
 
 ```shell
-for c in $(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock ps --quiet 2>/dev/null); do p=$(sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock inspect --output go-template --template '{{.info.pid}}' $c 2>/dev/null); [ "$(sudo readlink /proc/$p/ns/pid)" = "$(sudo readlink /proc/1/ns/pid)" ] || [ "$(sudo readlink /proc/$p/ns/mnt)" = "$(sudo readlink /proc/1/ns/mnt)" ] && echo $c; done | wc --lines
+sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces --output jsonpath='{range .items[?(@.spec.hostPID==true)]}{.metadata.name}{"\n"}{end}' | wc --lines
 ```
 
 ```text hideClipboard
