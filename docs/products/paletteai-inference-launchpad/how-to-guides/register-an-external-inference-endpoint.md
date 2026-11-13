@@ -2,8 +2,8 @@
 sidebar_label: "Register an External Inference Endpoint"
 title: "Register an External Inference Endpoint"
 description:
-  "Step-by-step guidance for platform administrators on how to register an OpenAI-compatible external inference endpoint
-  under Integrations, authorize a policy to use it, and route requests to its models."
+  "Step-by-step guidance for platform administrators on how to register an OpenAI-compatible external inference
+  endpoint, authorize a policy to use it, and route requests to its models."
 hide_table_of_contents: false
 sidebar_position: 6.3
 tags: ["paletteai-inference-launchpad", "models", "how-to"]
@@ -12,14 +12,14 @@ keywords: ["launchpad", "ai", "external", "inference", "endpoint", "egress", "in
 
 This guide explains how to register an OpenAI-compatible inference host as an external inference endpoint on a PaletteAI
 Inference Launchpad appliance, authorize a policy to use it, and route requests to a model the host serves. An endpoint
-exists only after a platform administrator adds it under **Integrations**. A policy or a client then selects that
-endpoint, and neither can create one. To understand how endpoints, keys, and policies relate, refer to
-[External Inferencing](../explanation/frontier-providers.md).
+exists only after a platform administrator adds it under **Settings** > **External access** > **Ext. Inference
+Endpoints**. A policy or a client then selects that endpoint, and neither can create one. To understand how endpoints,
+keys, and policies relate, refer to [External Inferencing](../explanation/frontier-providers.md).
 
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the admin console reachable.
-- Console access as a platform administrator. Only a platform administrator can add an endpoint under **Integrations**.
+- Console access as a platform administrator. Only a platform administrator can add an endpoint.
 - The endpoint's URL, reachable from the appliance.
 - The credentials the host requires, if any. Credentials can be an API key, one or more custom headers, or both.
 - If the endpoint's TLS certificate is self-signed or issued by a private Certificate Authority (CA), that certificate
@@ -29,42 +29,45 @@ endpoint, and neither can create one. To understand how endpoints, keys, and pol
 
 ## Register the Endpoint
 
-1. From the left main menu, select **Integrations**.
+1. From the left main menu, select **Settings**.
 
-2. In **External inference endpoints**, under **Add an endpoint**, enter an **Endpoint id** and the **Endpoint URL**.
-   The URL can be an origin, such as `https://host.example.com`, or an origin followed by a path prefix, such as
+2. On the **Settings** menu, under **External access**, select **Ext. Inference Endpoints**.
+
+3. Select **Add Endpoint**.
+
+4. In the **Add an external inference endpoint** dialog, enter an **Endpoint ID** and the **Endpoint URL**. The URL can
+   be an origin, such as `https://host.example.com`, or an origin followed by a path prefix, such as
    `https://gateway.example.com/openai`. Do not include `/v1` in the URL. A URL that ends in `/v1` is refused, and
-   nothing is stored. For the id's constraints and role, and for how the appliance handles the URL, refer to
+   nothing is stored. For the ID's constraints and role, and for how the appliance handles the URL, refer to
    [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
-3. Enter the **Key** if the host requires an API key. Otherwise, leave **Key** blank; the appliance sends no
+5. Enter the **API key** if the host requires one. Otherwise, leave **API key** blank. The appliance then sends no
    `Authorization` header.
 
-4. _(Optional)_ Add one or more custom headers. In **Custom headers**, select **Add header**, and then enter a header
-   name and its value. You can add up to 16 headers. Header values are stored as secrets and are not shown again after
-   you save. A small set of transport-level header names is reserved and refused. When you edit an existing endpoint,
-   leaving a header's value blank keeps the stored value.
+6. _(Optional)_ Add one or more custom headers. In **Custom headers**, select **Add Header**, and then enter a **Header
+   name** and its **Header value**. You can add up to 16 headers. Header values are stored as secrets and are not shown
+   again after you save. A small set of transport-level header names is reserved and refused. When you edit an existing
+   endpoint, leaving a header's value blank keeps the stored value.
 
-5. _(Optional)_ Trust a self-signed or private CA certificate. Only supply a certificate when the endpoint's own TLS
+7. _(Optional)_ Trust a self-signed or private CA certificate. Only supply a certificate when the endpoint's own TLS
    certificate is not signed by a publicly trusted CA. Expand **Advanced: self-signed or private CA**, and in **CA
    certificate (PEM)**, paste the endpoint's certificate or bundle in PEM format. When you edit an existing endpoint,
    the appliance shows the stored certificate in full.
 
-6. _(Optional)_ Enter **Input $/1M tokens** and **Output $/1M tokens** so usage is priced at the rates you set. If you
-   leave them blank, the appliance applies a generic rate.
+8. In the dialog, select **Add Endpoint**. The appliance contacts the host and lists the models it serves under **Models
+   found**. The appliance reports the failure and stores nothing if the key or a header is rejected, a header name is
+   disallowed, more than 16 headers are set, the certificate is untrusted, or the host is unreachable.
 
-7. Select **Probe models**. The appliance contacts the host and lists the models it serves. The appliance reports the
-   failure and stores nothing if the key or a header is rejected, a header name is disallowed, more than 16 headers are
-   set, the certificate is untrusted, or the host is unreachable.
+9. Review the models and the summary of the change, and then select **Confirm & apply**.
 
-8. Review **Discovered models**, then select **Add endpoint**. Review the preview, and then select **Confirm & apply**.
+10. Confirm that the endpoint appears in the **External endpoints** list. Its row shows its URL, its model count, and
+    **API key set** or **no API key**. If you added custom headers, the row lists their count and names. If you added a
+    CA certificate, the row shows **custom CA**.
 
-9. Confirm the endpoint appears in the list with an **enabled** chip, its URL, its model count, and a **key set** or
-   **no key** indicator on its row. If you added custom headers, the row reports the header count and names. If you
-   added a CA certificate, the row shows a **custom CA** indicator.
+To set your own rates for the endpoint's models, go to **Settings** > **Model Management** > **Model Pricing**.
 
-To stop routing to the endpoint without deleting it, select **Disable**. To delete it, select **Remove**. For the
-fail-safe behavior that catches a routing rule still pointing at a disabled or removed endpoint, refer to
+To delete the endpoint, select the trash icon on its row, and then select **Remove** in the dialog. For the fail-safe
+behavior that catches a routing rule still pointing at a removed endpoint, refer to
 [External Inference Endpoints](../explanation/architecture.md#external-inference-endpoints).
 
 ## Authorize a Policy
@@ -82,29 +85,29 @@ Authorize the endpoint on a policy so that every client in the workspaces that f
 
 5. Turn on **Enable external inferencing**.
 
-   If no endpoint is set up under **Integrations**, the step shows the message `No endpoints are set up yet.` instead of
-   the endpoint table. Register an endpoint first, as described in [Register the Endpoint](#register-the-endpoint).
+   If no endpoint is set up, the step shows the message `No endpoints are set up yet.` instead of the endpoint table.
+   Register an endpoint first, as described in [Register the Endpoint](#register-the-endpoint).
 
 6. Select **Add endpoint**. A row is added to the endpoint table.
 
-7. In the **Endpoint** column, select the endpoint id you registered. The list offers only the endpoints that are set up
-   under **Integrations**.
+7. In the **Endpoint** column, select the endpoint ID you registered. The list offers only the endpoints that are
+   already set up.
 
 8. In the **Key** column, decide which key the policy uses for the endpoint.
 
-   | **The Key field reads**                             | **What to do**                                                                                                                                                    |
-   | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `Using the Integrations key. Paste one to override` | Leave the field empty to use the key stored under **Integrations**. To use a different key for this policy, paste it. The pasted key applies to this policy only. |
-   | `paste token`                                       | Paste a key. The appliance holds no key for this endpoint, so a key is required.                                                                                  |
+   | **The Key field reads**                             | **What to do**                                                                                                                                             |
+   | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `Using the Integrations key. Paste one to override` | Leave the field empty to use the key stored on the endpoint. To use a different key for this policy, paste it. The pasted key applies to this policy only. |
+   | `paste token`                                       | Paste a key. The appliance holds no key for this endpoint, so a key is required.                                                                           |
 
-   A key you paste here does not change the key under **Integrations**. Every other policy and client keeps using the
-   **Integrations** key.
+   A key you paste here does not change the endpoint's key. Every other policy and client keeps using the endpoint's
+   key.
 
 9. Repeat steps 6 through 8 for each endpoint the policy can use.
 
 10. _(Optional)_ In the **Bursting** section, turn on **Enable bursting**. Bursting is available as soon as a listed
-    endpoint has a key, whether the key comes from **Integrations** or from the **Key** column. If no listed endpoint
-    has a key, the section reads `Add an endpoint and its key first.`
+    endpoint has a key, whether the key comes from the endpoint or from the **Key** column. If no listed endpoint has a
+    key, the section reads `Add an endpoint and its key first.`
 
 11. _(New policy only)_ On the **Cache sharing** step, select **Next** to keep the default, **Share within the
     workspace**. For the choices, refer to [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
@@ -124,7 +127,7 @@ Continue in the same policy, on the **Routing** step of the wizard or the **Rout
 1. In the **Tier map**, select **Add alias rule**, or edit an existing row.
 
 2. Set the **Alias prefix**, and then open **Model**. The list offers local models and the models of every endpoint
-   whose key the appliance proved, including a key that comes from **Integrations**. An external model appears as
+   whose key the appliance proved, including a key stored on the endpoint. An external model appears as
    `<endpoint> / <model>`, with a marker that shows the request leaves the appliance. For example, `gemini` serving
    `gemini-2.5-pro` appears as `gemini / gemini-2.5-pro`. Select the model you want.
 

@@ -33,14 +33,14 @@ For the console flow that authorizes an endpoint on a policy, refer to
 endpoint relates to bursting and to the rest of the request path, refer to
 [Architecture](architecture.md#external-inference-endpoints).
 
-## Endpoints Live in Integrations
+## Endpoints Live in Settings
 
 The appliance reaches an external model through an external inference endpoint. An endpoint holds the address of the
 outside host and the key the appliance sends to it. Three endpoints are built in, for Anthropic, OpenAI, and Gemini, and
 a platform administrator can register any OpenAI-compatible host as another one.
 
-A platform administrator sets up every endpoint under **Integrations**, the built-in ones included. A built-in endpoint
-is not available until that happens.
+A platform administrator sets up every endpoint under **Settings** > **External access** > **Ext. Inference Endpoints**,
+including the built-in ones. A built-in endpoint is not available until that happens.
 
 A policy or a client selects an endpoint that already exists, and it can never define one. A key is only half of what
 the appliance needs, because the address lives on the endpoint. A policy that named an endpoint nobody set up would
@@ -56,15 +56,15 @@ offered. The rule that can no longer be reached stays visible, so an operator ca
 Each endpoint row on a policy, or on a client that overrides its policy, has a **Key** field. The field shows which key
 the appliance sends for that endpoint.
 
-| **Where the key comes from**                    | **What the Key field reads**                        | **Who uses the key**                                                           |
-| ----------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------ |
-| **Integrations** holds a key for the endpoint   | `Using the Integrations key. Paste one to override` | Every policy and client that lists the endpoint and holds no key of its own.   |
-| A key typed on the policy or client             | The typed key                                       | That policy, or that client, alone.                                            |
-| No key under **Integrations** and none typed in | `paste token`                                       | No one. The policy or client must supply a key before it can use the endpoint. |
+| **Where the key comes from**             | **What the Key field reads**                        | **Who uses the key**                                                           |
+| ---------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------ |
+| The endpoint holds a key                 | `Using the Integrations key. Paste one to override` | Every policy and client that lists the endpoint and holds no key of its own.   |
+| A key typed on the policy or client      | The typed key                                       | That policy, or that client, alone.                                            |
+| No key on the endpoint and none typed in | `paste token`                                       | No one. The policy or client must supply a key before it can use the endpoint. |
 
-The field stays editable in every state. A key typed on a policy or a client overrides the **Integrations** key for that
-policy or client only. The **Integrations** key does not change. A client that follows a policy does not need a key of
-its own when the policy or **Integrations** already holds one.
+The field stays editable in every state. A key typed on a policy or a client overrides the endpoint's key for that
+policy or client only. The endpoint's key does not change. A client that follows a policy does not need a key of its own
+when the policy or the endpoint already holds one.
 
 Clearing the **Key** field does not remove an override. An emptied field keeps the key the policy or client already
 holds.
@@ -74,11 +74,11 @@ holds.
 Enterprises typically buy one of Anthropic Enterprise, OpenAI Teams, or a Gemini enterprise plan, and then decide how to
 map that single contract to many Launchpad policies and clients. Three patterns cover the common shapes.
 
-| **Pattern**        | **Where the key sits**                                                                                | **Best for**                                    | **Trade-off**                                                   |
-| ------------------ | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
-| A. Shared key      | The enterprise key, stored once under **Integrations**. Policies and clients add no key of their own. | One invoice, minimal admin overhead.            | One compromise or revocation cuts every policy and client.      |
-| B. Per-policy keys | A distinct sub-key per policy or per client, typed in the **Key** field to override the shared key.   | Surgical revocation, provider-side attribution. | More admin overhead; only works if the provider mints sub-keys. |
-| C. Hybrid          | The shared key under **Integrations**, with an override on the policies or clients that need one.     | Common in practice; team invoices stay simple.  | Two lifecycles to manage; audit reads from two places.          |
+| **Pattern**        | **Where the key sits**                                                                              | **Best for**                                    | **Trade-off**                                                   |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
+| A. Shared key      | The enterprise key, stored once on the endpoint. Policies and clients add no key of their own.      | One invoice, minimal admin overhead.            | One compromise or revocation cuts every policy and client.      |
+| B. Per-policy keys | A distinct sub-key per policy or per client, typed in the **Key** field to override the shared key. | Surgical revocation, provider-side attribution. | More admin overhead; only works if the provider mints sub-keys. |
+| C. Hybrid          | The shared key on the endpoint, with an override on the policies or clients that need one.          | Common in practice; team invoices stay simple.  | Two lifecycles to manage; audit reads from two places.          |
 
 ## Five Levers That Keep External Traffic Occasional
 
@@ -133,9 +133,9 @@ decides the terminal outcome only on the budget branch.
 Bursting is the reverse pattern: a request that routing sent to a local model, but that the client's local quota
 exhausted, egresses to a chosen endpoint instead of returning 429. Refer to
 [Architecture](architecture.md#data-residency-and-isolation) for the concept. Bursting is available as soon as a listed
-endpoint has a key, whether the key comes from **Integrations** or from the policy or client. Bursting does not get its
-own budget. When a request bursts to an endpoint, it counts against the client's per-endpoint egress budget, just like
-any other external call.
+endpoint has a key, whether the key comes from the endpoint or from the policy or client. Bursting does not get its own
+budget. When a request bursts to an endpoint, it counts against the client's per-endpoint egress budget, just like any
+other external call.
 
 ## Common Misconfigurations
 
@@ -162,16 +162,16 @@ the raw request count rather than assuming that cache hits absorb repetition.
 
 ## Key Lifecycle
 
-A shared key lives in one place. Rotating it under **Integrations** updates every policy and client that uses the
-**Integrations** key, with no edit on any policy or client. An override lives on its policy or client, so rotating it
-means pasting the new value into that policy or client (Pattern B: exactly one policy or client per key). Every egress
-turn is recorded with the model, token count, cost, and client; the request body is not stored, and external responses
-do not enter the semantic cache or the fine-tuning corpus.
+A shared key lives in one place. Rotating it on the endpoint updates every policy and client that uses the endpoint's
+key, with no edit on any policy or client. An override lives on its policy or client, so rotating it means pasting the
+new value into that policy or client (Pattern B: exactly one policy or client per key). Every egress turn is recorded
+with the model, token count, cost, and client; the request body is not stored, and external responses do not enter the
+semantic cache or the fine-tuning corpus.
 
 ## Resources
 
 - [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md) covers setting
-  up an endpoint under **Integrations** and authorizing it on a policy.
+  up an endpoint and authorizing it on a policy.
 - [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md) covers giving one client its own
   endpoint settings, plus the recommended enterprise-Anthropic recipe.
 - [Architecture](architecture.md#external-inference-endpoints) covers the endpoint object, the broader egress model, and

@@ -20,7 +20,7 @@ inference endpoint.
 - **External models.** A new client cannot reach external models until external inferencing is turned on for it.
   External access is denied by default. A client gets it from its workspace policy, or from its own settings when it
   overrides that policy. Every external model comes from an external inference endpoint that a platform administrator
-  set up under **Integrations**. Refer to
+  set up under **Settings** > **External access** > **Ext. Inference Endpoints**. Refer to
   [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
 To understand how clients and models relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md).
@@ -30,7 +30,7 @@ To understand how clients and models relate, refer to [Clients and Quotas](../ex
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
 - _(Tier map only)_ An existing client. To create one, refer to [Create a Client](./create-a-client.md).
 - Console access with permission to manage clients. Managing clients can require operator access.
-- _(External models only)_ The endpoint set up under **Integrations** by a platform administrator. Refer to
+- _(External models only)_ An endpoint that a platform administrator has set up. Refer to
   [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
 ## Route a Client to Specific Models
@@ -79,23 +79,22 @@ endpoint settings instead, override the policy when you create the client.
 
 5. Go to the **Egress** step, and turn on **Enable external inferencing**.
 
-   If no endpoint is set up under **Integrations**, the step shows the message `No endpoints are set up yet.` instead of
-   the endpoint table. A platform administrator must add an endpoint first. Refer to
+   If no endpoint is set up, the step shows the message `No endpoints are set up yet.` instead of the endpoint table. A
+   platform administrator must add an endpoint first. Refer to
    [Register an External Inference Endpoint](./register-an-external-inference-endpoint.md).
 
 6. Select **Add endpoint**. A row is added to the endpoint table.
 
-7. In the **Endpoint** column, select an endpoint. The list offers only the endpoints that are set up under
-   **Integrations**.
+7. In the **Endpoint** column, select an endpoint. The list offers only the endpoints that are already set up.
 
 8. In the **Key** column, decide which key the client uses for the endpoint.
 
-   | **The Key field reads**                             | **What to do**                                                                                                                                                    |
-   | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `Using the Integrations key. Paste one to override` | Leave the field empty to use the key stored under **Integrations**. To use a different key for this client, paste it. The pasted key applies to this client only. |
-   | `paste token`                                       | Paste a key. The appliance holds no key for this endpoint, so a key is required.                                                                                  |
+   | **The Key field reads**                             | **What to do**                                                                                                                                             |
+   | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `Using the Integrations key. Paste one to override` | Leave the field empty to use the key stored on the endpoint. To use a different key for this client, paste it. The pasted key applies to this client only. |
+   | `paste token`                                       | Paste a key. The appliance holds no key for this endpoint, so a key is required.                                                                           |
 
-   The client does not need a key of its own when its policy or **Integrations** already holds one.
+   The client does not need a key of its own when its policy or the endpoint already holds one.
 
 9. Set a positive **Daily limit**. Egress is fail-closed on the cap, so a limit of `$0` blocks that endpoint for the
    client.
@@ -112,9 +111,8 @@ following opinionated defaults after you authorize the Anthropic endpoint on a p
 policy, as described in [Allow a Client to Reach External Models](#allow-a-client-to-reach-external-models). For the
 mental model behind each choice, refer to [External Inferencing](../explanation/frontier-providers.md).
 
-1. Have a platform administrator set up the Anthropic endpoint under **Integrations** with the enterprise key, and leave
-   the **Key** field empty on every policy and client that should have external access (Pattern A: one contract, one
-   key).
+1. Have a platform administrator set up the Anthropic endpoint with the enterprise key, and leave the **Key** field
+   empty on every policy and client that should have external access (Pattern A: one contract, one key).
 2. Set the tier map so `claude-opus-*` routes to an `anthropic / <model>` target and `claude-sonnet-*` and
    `claude-haiku-*` route to a local model. This captures most of the intended traffic mix because Claude Code defaults
    to Sonnet for cheap-tier turns and reserves Opus for hard work.
