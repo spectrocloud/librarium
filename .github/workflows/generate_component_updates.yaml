@@ -11,8 +11,8 @@ on:
         description: "The release date for the component update (e.g., May 20, 2026)"
         required: true
       release_management_appliance:
-        description: "The release management appliance for the component update (e.g., 4.8.6)"
-        required: true
+        description: "The release management appliance for the component update (e.g., 4.8.6). Leave blank on a week no Management Appliance was released; its rows are dropped automatically."
+        required: false
       release_artifact_studio:
         description: "The release artifact studio for the component update (e.g., 4.8.6). Leave blank on a week Artifact Studio did not release; its row is dropped automatically."
         required: false
@@ -61,6 +61,19 @@ jobs:
             exit 1
           fi
 
+      - name: Validate the optional version inputs
+        run: |
+          # The Management Appliance, Artifact Studio, and Terraform fields are optional free text, so
+          # check that each one is blank or a plain version before it reaches the release notes. Read
+          # from the shell environment, not interpolated into the workflow template.
+          for name in RELEASE_MANAGEMENT_APPLIANCE RELEASE_ARTIFACT_STUDIO RELEASE_TERRAFORM_VERSION; do
+            value="${!name}"
+            if [[ -n "${value//[[:space:]]/}" && ! "$value" =~ ^[[:space:]]*[A-Za-z0-9._/-]+[[:space:]]*$ ]]; then
+              echo "❌ $name must be blank or a version such as 4.10.41." >&2
+              exit 1
+            fi
+          done
+
       - name: Retrieve Credentials
         id: import-secrets
         uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
@@ -103,7 +116,9 @@ jobs:
           COMPONENT_UPDATES_REPORT_FILE: ${{ runner.temp }}/component-updates-report.md
         run: |
           touch .env
-          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" RELEASE_BASE_BRANCH="${{ env.BASE_BRANCH }}" make generate-component-updates
+          # The form inputs are already in the job environment (env: above). Pass them through the shell
+          # instead of interpolating them into the script, so an input cannot inject shell code.
+          RELEASE_BASE_BRANCH="$BASE_BRANCH" make generate-component-updates
 
       - name: Create a PR with generated component updates
         env:
