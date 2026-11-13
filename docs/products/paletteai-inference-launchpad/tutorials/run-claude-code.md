@@ -205,7 +205,7 @@ model answers the requests this client sends.
 
 1. In the workspace drop-down menu in the console header, select **Default**, the workspace the appliance ships with.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select **Add Client**. The **Add client** wizard opens on the **Overview** step.
 
@@ -374,7 +374,7 @@ Undo the changes the tutorial made.
 
 4. In the console header, confirm that the workspace drop-down menu shows **Default**.
 
-5. From the left main menu, select **Access & Policy**.
+5. From the left main menu, select **Access Management**.
 
 6. In the **Clients** list, find the `coding-agent` row and select the three-dot menu at the end of the row.
 

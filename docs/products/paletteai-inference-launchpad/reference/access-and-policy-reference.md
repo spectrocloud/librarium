@@ -2,16 +2,16 @@
 sidebar_label: "Access and Policy Reference"
 title: "PaletteAI Inference Launchpad Access and Policy Reference"
 description:
-  "Reference for the tabs, roles, scopes, table columns, form fields, addresses, and messages on the Access & Policy
-  page of a PaletteAI Inference Launchpad appliance."
+  "Reference for the tabs, roles, scopes, table columns, form fields, addresses, and messages on the Access Management
+  and Users pages of a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 4.9
 tags: ["paletteai-inference-launchpad", "reference", "access", "workspaces", "roles"]
 keywords: ["launchpad", "ai", "access", "policy", "rbac", "workspace", "role", "scope", "member", "user", "group"]
 ---
 
-This reference lists the tabs, roles, columns, fields, addresses, and messages on the **Access & Policy** page of the
-appliance console. It supports the [Create a Workspace](../how-to-guides/create-a-workspace.md),
+This reference lists the tabs, roles, columns, fields, addresses, and messages on the **Access Management** and
+**Users** pages of the appliance console. It supports the [Create a Workspace](../how-to-guides/create-a-workspace.md),
 [Manage Workspace Members](../how-to-guides/manage-workspace-members.md),
 [Manage Users](../how-to-guides/manage-users.md), [Manage Groups](../how-to-guides/manage-groups.md), and
 [Set Prompt Cache Sharing for a Policy](../how-to-guides/set-prompt-cache-sharing.md) how-tos. For how workspaces,
@@ -19,23 +19,24 @@ members, and policies relate, refer to [Clients and Quotas](../explanation/clien
 
 ## Tab Bar and Workspace Drop-Down Menu
 
-The workspace drop-down menu in the console header decides which tabs **Access & Policy** offers.
+The left main menu has two pages for access: **Access Management** and **Users**. The workspace drop-down menu in the
+console header decides which tabs **Access Management** offers.
 
 <!-- vale off -->
 
-| **Drop-down menu selection** | **Tabs offered**                                                                                  |
-| ---------------------------- | ------------------------------------------------------------------------------------------------- |
-| **All workspaces**           | **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and **Groups**                   |
-| One workspace                | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. |
+| **Drop-down menu selection** | **Access Management tabs**                                                                        | **Users tabs**           |
+| ---------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------ |
+| **All workspaces**           | **Workspaces**, **Clients**, **Policies**, and **Roles**                                          | **Users** and **Groups** |
+| One workspace                | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. | **Users** and **Groups** |
 
-| **Tab**        | **Where it appears**             | **What it holds**                                                                                   |
-| -------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Clients**    | All workspaces and one workspace | At **All workspaces**, every client on the appliance. Inside a workspace, that workspace's clients. |
-| **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                                      |
-| **Policies**   | All workspaces                   | The policies a workspace can follow.                                                                |
-| **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                                           |
-| **Users**      | All workspaces                   | The people the identity provider serves.                                                            |
-| **Groups**     | All workspaces                   | The groups the identity provider serves.                                                            |
+| **Page**              | **Tab**        | **Where it appears**             | **What it holds**                                                                                   |
+| --------------------- | -------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Access Management** | **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                                      |
+| **Access Management** | **Clients**    | All workspaces and one workspace | At **All workspaces**, every client on the appliance. Inside a workspace, that workspace's clients. |
+| **Access Management** | **Policies**   | All workspaces                   | The policies a workspace can follow.                                                                |
+| **Access Management** | **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                                           |
+| **Users**             | **Users**      | All workspaces and one workspace | The people the identity provider serves.                                                            |
+| **Users**             | **Groups**     | All workspaces and one workspace | The groups the identity provider serves.                                                            |
 
 <!-- vale on -->
 
@@ -136,12 +137,14 @@ name** for a user.
 | ------------------------ | ----------------------------------------------------------- |
 | **Policy**               | The policy's name.                                          |
 | **Followed by**          | The workspaces that follow the policy, or **No workspace**. |
-| **Limit**                | The limit the policy sets, or **No limit**.                 |
+| **Quota**                | The limit the policy sets, or **No limit**.                 |
 | **External inferencing** | Whether the policy turns on external inferencing.           |
 | **Fallback**             | The policy's fallback setting.                              |
 | **Bursting**             | Whether the policy turns on bursting.                       |
 | **Web tools**            | Whether the policy turns on web tools.                      |
 | **Cache sharing**        | **Workspace** or **Each client**.                           |
+| **Recording**            | The policy's decision recording setting.                    |
+| **Created on**           | The date the policy was created.                            |
 
 <!-- vale on -->
 
@@ -149,6 +152,7 @@ name** for a user.
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Create Policy** | Opens the **Create policy** wizard, with the **Overview**, **Quotas**, **External access**, **Cache sharing**, and **Routing** steps.                                                     |
 | **Edit**          | Opens the policy's own page, titled with the policy name. The page has the **Quotas**, **External access**, **Cache sharing**, and **Routing** sections, and saves with **Save changes**. |
+| **Clone**         | Opens a dialog with the **Name for the new policy** field.                                                                                                                                |
 | **Delete**        | Removes the policy. The appliance refuses it while a workspace follows the policy.                                                                                                        |
 
 ### Cache Sharing Section
@@ -165,6 +169,8 @@ have one field. For what each option means, refer to [Prompt Cache Sharing](../e
 | Alert, while **Share within the workspace** is selected | `Cache sharing lets a client tell with a faster first response time that another client sent the same opening.` |
 
 ## Users Tab
+
+The **Users** tab is on the **Users** page.
 
 | **Column** | **Value**                             |
 | ---------- | ------------------------------------- |
@@ -193,6 +199,8 @@ an optional password with a temporary flag.
 
 ## Groups Tab
 
+The **Groups** tab is on the **Users** page.
+
 | **Column**      | **Value**                          |
 | --------------- | ---------------------------------- |
 | **Group**       | The group's name.                  |
@@ -215,8 +223,8 @@ action returns to the list the form came from.
 
 | **Form**         | **Address**              |
 | ---------------- | ------------------------ |
-| Add user         | `/access/users/new`      |
-| Add group        | `/access/groups/new`     |
+| Add user         | `/directory/users/new`   |
+| Add group        | `/directory/groups/new`  |
 | Create policy    | `/access/policies/new`   |
 | Create workspace | `/access/workspaces/new` |
 | Add client       | `/access/clients/new`    |
@@ -230,7 +238,7 @@ Create wizards use the **Previous**, **Next**, and **Save** buttons. Closing a w
 
 | **Where**                                      | **Message**                                                                                                                    |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Access & Policy**, no read permission        | `You do not have permission to read anything here. Ask a platform administrator for access.`                                   |
+| **Access Management**, no read permission      | `You do not have permission to read anything here. Ask a platform administrator for access.`                                   |
 | **Add user**, **Identity** step                | `Enter a valid email address to continue.`                                                                                     |
 | **Workspaces**, empty                          | `Inference Launchpad has no workspace yet.`                                                                                    |
 | **Create workspace**, **Overview** step        | `A workspace holds its own clients. The policy you pick sets what those clients may spend and what they may reach.`            |

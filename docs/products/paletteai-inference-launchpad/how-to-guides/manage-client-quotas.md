@@ -32,7 +32,7 @@ Use these steps to read or change the appliance-wide **Quota Enforcement** switc
 
 To change the setting, use the following steps.
 
-1. From the left main menu, select **Access & Policy**.
+1. From the left main menu, select **Access Management**.
 
 2. On the **Clients** list, select **Quota Enforcement** in the page header. The **Quota enforcement** dialog opens.
 
@@ -54,7 +54,7 @@ clearing a backlog, and turn it back on afterward.
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 
@@ -84,7 +84,7 @@ client.
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 
@@ -111,7 +111,7 @@ refer to [Clients and Quotas: Limit Ceiling Increases](../explanation/clients-an
    :::warning
 
    **Confirm & Apply** raises the ceiling for the current window immediately and for every window that follows. The
-   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access & Policy** as
+   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access Management** as
    described in [Edit or Remove a Quota](#edit-or-remove-a-quota).
 
    :::

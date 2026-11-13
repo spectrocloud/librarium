@@ -147,7 +147,7 @@ If the appliance has kept less history than the window you asked for, the card s
 Windows reset on the UTC clock. That is not an operator action, and it does not require a confirmation.
 
 **Increase limit** on **Quota Usage** is the operator action. It raises one window's ceiling and keeps the usage already
-counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access & Policy**. Both writes require
+counted. It cannot lower a cap. Lowering or removing a limit is an edit on **Access Management**. Both writes require
 permission to manage clients.
 
 {/* TODO: link to a Quota & Rate Limit reference page once one exists; DOC-2941 was never created. */}
@@ -168,7 +168,7 @@ Access to models depends on whether a model runs locally on the appliance or is 
 
 Sovereignty is a separate switch that overrides every client's egress. When it is armed for the appliance, no request
 leaves the box regardless of any client's permission, and a client's egress chip reads **Blocked by sovereignty** until
-an operator disarms it under **Access & Policy → Sovereignty**.
+an operator disarms it under **Access Management** > **Sovereignty**.
 
 ## Workspaces and Access {#workspaces-and-access}
 
@@ -195,13 +195,15 @@ that needs its own clients and its own policy.
 
 <!-- vale Vale.Spelling = NO -->
 
-The workspace drop-down menu in the console header sets which workspace the console shows. The **Access & Policy** page
-changes with it:
+The workspace drop-down menu in the console header sets which workspace the console shows. The **Access Management**
+page changes with it:
 
-- At **All workspaces**, the page shows the **Clients**, **Workspaces**, **Policies**, **Roles**, **Users**, and
-  **Groups** tabs. Every tab except **Clients** covers the whole appliance.
+- At **All workspaces**, the page shows the **Workspaces**, **Clients**, **Policies**, and **Roles** tabs. Every tab
+  except **Clients** covers the whole appliance.
 
 - Inside one workspace, the page shows only that workspace's **Clients** list, with no tab bar.
+
+The **Users** page shows the **Users** and **Groups** tabs at **All workspaces** and inside a workspace.
 
 <!-- vale Vale.Spelling = YES -->
 
@@ -250,9 +252,9 @@ one.
 A person gains access to a workspace only when they, or a group they are in, become a member of that workspace. Adding a
 group as a member gives everyone in that group the member's role.
 
-The **Users** and **Groups** tabs list the people and groups that the appliance's identity provider serves. The console
-calls this list the directory. You can add and change people and groups there, but being in the directory gives no
-access on its own. Access comes from workspace membership.
+The **Users** and **Groups** tabs of the **Users** page list the people and groups that the appliance's identity
+provider serves. The console calls this list the directory. You can add and change people and groups there, but being in
+the directory gives no access on its own. Access comes from workspace membership.
 
 The appliance also keeps a few groups of its own for sign-in and platform access. They do not appear on the **Groups**
 tab, and you cannot rename them, give them a new description, or delete them. When you change a person's groups, any

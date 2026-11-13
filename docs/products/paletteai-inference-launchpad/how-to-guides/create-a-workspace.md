@@ -10,7 +10,7 @@ tags: ["paletteai-inference-launchpad", "access", "workspaces", "how-to"]
 keywords: ["launchpad", "ai", "access", "policy", "rbac", "workspace", "member", "role"]
 ---
 
-Give a team its own workspace on the **Access & Policy** page. For the concepts, refer to
+Give a team its own workspace on the **Access Management** page. For the concepts, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access). For the page's labels, refer to
 [Access and Policy Reference](../reference/access-and-policy-reference.md).
 
@@ -24,9 +24,9 @@ Give a team its own workspace on the **Access & Policy** page. For the concepts,
 
 ## Give a Team Access to Its Own Workspace
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. In the workspace drop-down menu in the console header, select **All workspaces**.
+2. From the left main menu, select **Access Management**.
 
 3. Select the **Workspaces** tab, and then select **Create Workspace**. The **Create workspace** wizard opens on the
    **Overview** step.
@@ -49,18 +49,19 @@ Give a team its own workspace on the **Access & Policy** page. For the concepts,
    [Add a User](./manage-users.md#add-a-user).
 
 10. In the workspace drop-down menu in the console header, select the new workspace, and then from the left main menu,
-    select **Access & Policy**. Create the team's clients there. For the steps, refer to
+    select **Access Management**. Create the team's clients there. For the steps, refer to
     [Create a Client](./create-a-client.md).
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. Select the **Workspaces** tab. Confirm that the new workspace appears with its **Policy**, its **Limit**, whether
+2. From the left main menu, select **Access Management**.
+
+3. Select the **Workspaces** tab. Confirm that the new workspace appears with its **Policy**, its **Limit**, whether
    **External inferencing** is on, and the number of **Clients** it holds.
 
-3. Open the workspace drop-down menu in the console header, and confirm that the new workspace is listed.
+4. Open the workspace drop-down menu in the console header, and confirm that the new workspace is listed.
 
 ## Next Steps
 

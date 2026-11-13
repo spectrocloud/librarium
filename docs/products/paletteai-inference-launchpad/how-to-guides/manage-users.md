@@ -25,8 +25,7 @@ To add many users at once, refer to [Import Users in Bulk](./import-users-in-bul
 
 ## Add a User
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. From the left main menu, select **Users**.
 
 2. Select the **Users** tab, and then select **Add User**. The **Add user** wizard opens on the **Identity** step.
 
@@ -68,8 +67,7 @@ To add many users at once, refer to [Import Users in Bulk](./import-users-in-bul
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. From the left main menu, select **Users**.
 
 2. Select the **Users** tab. Confirm that each person you added appears with the **Groups** they are in and the
    **State** you set.

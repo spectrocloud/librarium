@@ -53,7 +53,7 @@ Raise the ceiling on one window from **Quota Usage**. For what **Increase limit*
    :::warning
 
    **Confirm & Apply** raises the ceiling for the current window immediately and for every window that follows. The
-   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access & Policy** as
+   dialog does not undo the change. To lower a cap after raising it, edit the client from **Access Management** as
    described in [Edit or Remove a Quota](./manage-client-quotas.md#edit-or-remove-a-quota).
 
    :::
