@@ -91,7 +91,11 @@ jobs:
           done
 
           # Construct backport labels.
-          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
+          # gh label list returns 30 labels unless told otherwise, so read them all. Backport only to the
+          # supported branches: version-4-7 and later (4-2 to 4-6 are frozen), and any 5.x or later line.
+          backport_labels=$(gh label list --limit 1000 --json name --jq '.[].name' \
+            | grep -E '^(auto-backport|backport-version-4-([7-9]|[1-9][0-9])|backport-version-([5-9]|[1-9][0-9])-[0-9]+)$' \
+            | paste -sd "," -)
 
           # Clean up results file.
           rm unused_images.json
