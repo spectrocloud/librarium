@@ -30,7 +30,8 @@ keywords:
 This guide explains how a platform administrator turns the semantic router and its guard checks on or off and sets its
 routing rules on a PaletteAI Inference Launchpad appliance. For what the semantic router does, how its rules are
 inherited from a workspace's policy, and how it combines with the Tier map, refer to
-[Routing Behavior](../explanation/routing-behavior.md).
+[Routing Behavior](../explanation/routing-behavior.md). For a diagram of how a request resolves to a model, refer to
+[Model Resolution Decision Tree](../explanation/routing-behavior.md#model-resolution-decision-tree).
 
 <!-- vale Vale.Spelling = YES -->
 

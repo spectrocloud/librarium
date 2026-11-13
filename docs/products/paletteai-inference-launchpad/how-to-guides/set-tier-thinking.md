@@ -13,7 +13,9 @@ keywords: ["launchpad", "ai", "thinking", "reasoning", "tier map", "effort", "ro
 This guide explains how to set the Thinking directive for a tier on the [Tier Map](../reference/glossary.md#tier-map) of
 a PaletteAI Inference Launchpad appliance. For what the directive does and how each mode is interpreted, refer to
 [The Thinking Directive](../explanation/thinking-directive.md). For the values each mode carries at request time, refer
-to [Thinking Directive Modes](../reference/thinking-modes.md).
+to [Thinking Directive Modes](../reference/thinking-modes.md). For where the directive rides the resolved model in the
+wider routing flow, refer to
+[Model Resolution Decision Tree](../explanation/routing-behavior.md#model-resolution-decision-tree).
 
 ## Prerequisites
 
