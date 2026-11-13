@@ -356,10 +356,14 @@ is set once and used by both.
 
 #### Component Updates
 
-| **Environment Variable**       | **Description**                                                                                                                                                                                                 | **Example Value** |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version. Optional: leave it blank on a week Artifact Studio did not release, and its row is dropped.                                                                                            | `4.9.0`           |
-| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. Optional: leave it blank on a week no Management Appliance was released, and both appliance rows are dropped. Do not enter a dummy version, `NA`, or the previous week's version. | `4.9.8`           |
+| **Environment Variable**       | **Description**                                                                                                                                                                                                                         | **Example Value** |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version. Optional: leave it blank on a week Artifact Studio did not release, and its row is dropped.                                                                                                                    | `4.9.0`           |
+| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. Optional: leave it blank on a week no Management Appliance was released, and both appliance rows are dropped. Enter the new version only, never the previous week's. `NA` and `N/A` are treated as blank. | `4.9.8`           |
+| `RELEASE_TERRAFORM_VERSION`    | Spectro Cloud Terraform provider version, also used for the Crossplane provider. Optional: leave it blank on a week neither released, and both rows are dropped.                                                                        | `0.30.5`          |
+
+When all three are blank, the section has no component table and no Palette version range sentence, only the body and
+the packs list. The Generator Report warns when the Management Appliance version already appears in an earlier section.
 
 #### Other Release Updates
 

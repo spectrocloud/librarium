@@ -174,6 +174,49 @@ echo "ℹ️ Release management appliance: $RELEASE_MANAGEMENT_APPLIANCE"
 echo "ℹ️ Release artifact studio: $RELEASE_ARTIFACT_STUDIO"
 echo "ℹ️ Release terraform version: $RELEASE_TERRAFORM_VERSION"
 
+# The component table and its lead-in sit above the "BEGIN COMPONENT UPDATES BODY" marker. Everything
+# below it is the Super-written body, which can link the same components or carry its own tables, so
+# these edits never touch it.
+#
+# Drop the component-table rows whose link text is one of the given names. When no component row is
+# left, also drop the table header, its separator, and the lead-in sentence, and squeeze the blank lines
+# left behind (above the body marker only).
+drop_component_rows() {
+  local file="$1" names tmp
+  shift
+  # Pass the names through the environment: BSD awk rejects a newline in a -v value.
+  names=$(printf '%s\n' "$@")
+  tmp="$(mktemp)"
+  DROP_COMPONENT_NAMES="$names" awk '
+    BEGIN { n = split(ENVIRON["DROP_COMPONENT_NAMES"], list, "\n"); for (i = 1; i <= n; i++) if (list[i] != "") drop["| [" list[i] "]"] = 1 }
+    { lines[NR] = $0 }
+    index($0, "<!-- BEGIN COMPONENT UPDATES BODY: ") == 1 && !body { body = NR }
+    END {
+      head_end = body ? body - 1 : NR
+      rows = 0
+      for (i = 1; i <= head_end; i++) {
+        if (lines[i] !~ /^\| \[/) continue
+        for (key in drop) if (index(lines[i], key) == 1) { lines[i] = "\001DROP"; break }
+        if (lines[i] != "\001DROP") rows++
+      }
+      blank = 0
+      for (i = 1; i <= NR; i++) {
+        line = lines[i]
+        if (i <= head_end) {
+          if (line == "\001DROP") continue
+          if (rows == 0) {
+            if (line ~ /^The following components have been updated for Palette version/) continue
+            if (line ~ /^\|[[:space:]]*Component[[:space:]]*\|[[:space:]]*Version[[:space:]]*\|/) { skip_separator = 1; continue }
+            if (skip_separator) { skip_separator = 0; if (line ~ /^\|[-|: ]+\|[[:space:]]*$/) continue }
+          }
+          if (line == "") { if (blank) continue; blank = 1 } else blank = 0
+        }
+        print line
+      }
+    }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
 # List the dated release notes sections, other than this ticket's own Component Updates block, that
 # already announce the given Management Appliance version, either in a block's metadata comment or in
 # a Management Appliance row of a component table. A week with no appliance release used to repeat the
@@ -181,7 +224,7 @@ echo "ℹ️ Release terraform version: $RELEASE_TERRAFORM_VERSION"
 appliance_already_announced_in() {
   local version="$1"
   awk -v ticket="$JIRA_TICKET" -v version="$version" '
-    /^###? [A-Z][a-z]+ [0-9]{1,2}, [0-9]{4} - / {
+    /^###? [A-Z][a-z]+ [0-9][0-9]?, [0-9][0-9][0-9][0-9] - / {
       section = $0
       sub(/^###? /, "", section)
       sub(/ \{#.*$/, "", section)
@@ -194,6 +237,8 @@ appliance_already_announced_in() {
       sub(/ *-->.*$/, "", owner)
       next
     }
+    # A block ends at its packs list, so anything after it in the same section is checked again.
+    /<!-- END PACKS LIST BODY: / { owner = ""; next }
     owner == ticket { next }
     index($0, "<!-- RELEASE MANAGEMENT APPLIANCE: " version " -->") { print section; next }
     /^\|/ && index($0, "Management Appliance](") {
@@ -204,7 +249,6 @@ appliance_already_announced_in() {
     }
   ' "$RELEASE_NOTES_FILE" | awk 'length($0) && !seen[$0]++'
 }
-
 
 JIRA_TITLE=$(
   curl --fail-with-body \
@@ -245,9 +289,9 @@ if [[ -n "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
   announced_in=$(appliance_already_announced_in "$RELEASE_MANAGEMENT_APPLIANCE")
   if [[ -n "$announced_in" ]]; then
     # Section headings carry commas (November 6, 2026 - ...), so join them with semicolons.
-    announced_list=$(printf '%s\n' "$announced_in" | awk '{ printf "%s**%s**", (NR > 1 ? "; " : ""), $0 }')
-    echo "⚠️ Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in: $(printf '%s\n' "$announced_in" | awk '{ printf "%s%s", (NR > 1 ? "; " : ""), $0 }')" >&2
-    report_add notes "Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in $announced_list. If no appliance was released this week, run the workflow again with the Management Appliance field blank, or remove both Management Appliance rows by hand."
+    announced_list=$(printf '%s\n' "$announced_in" | awk '{ printf "%s%s", (NR > 1 ? "; " : ""), $0 }')
+    echo "⚠️ Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in: $announced_list" >&2
+    report_add notes "Management Appliance $RELEASE_MANAGEMENT_APPLIANCE already appears in: $announced_list. If no appliance was released this week, delete both Management Appliance rows and blank the \`RELEASE MANAGEMENT APPLIANCE\` comment above the table. To regenerate the section instead, close this PR and run the workflow again with the field blank."
   fi
 fi
 
@@ -618,28 +662,12 @@ if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   # RELEASE_MANAGEMENT_APPLIANCE feeds BOTH the Palette and VerteX Management Appliance rows. The
   # metadata HTML comments above the table keep the (empty) value so the comment-triggered refresh
   # round-trips.
-  if [[ -z "$RELEASE_ARTIFACT_STUDIO" ]]; then
-    remove_line_containing "[Artifact Studio]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
-  fi
-  if [[ -z "$RELEASE_TERRAFORM_VERSION" ]]; then
-    remove_line_containing "Spectro Cloud Terraform provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
-    remove_line_containing "Spectro Cloud Crossplane provider" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
-  fi
-  if [[ -z "$RELEASE_MANAGEMENT_APPLIANCE" ]]; then
-    remove_line_containing "[Palette Management Appliance]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
-    remove_line_containing "[VerteX Management Appliance]" "$COMPONENT_UPDATES_OUTPUT_FILE" || true
-  fi
-
-  # A week where none of these components shipped leaves a table with only its header. Drop the
-  # header, its separator, and the lead-in sentence instead, and squeeze the blank lines left behind.
-  if ! grep -qE '^\| \[(Artifact Studio|Spectro Cloud Terraform provider|Spectro Cloud Crossplane provider|Palette Management Appliance|VerteX Management Appliance)\]' "$COMPONENT_UPDATES_OUTPUT_FILE"; then
-    awk '
-      /^The following components have been updated for Palette version/ { next }
-      /^\|[[:space:]]*Component[[:space:]]*\|[[:space:]]*Version[[:space:]]*\|/ { drop_separator = 1; next }
-      drop_separator { drop_separator = 0; if ($0 ~ /^\|[-|: ]+\|[[:space:]]*$/) next }
-      { print }
-    ' "$COMPONENT_UPDATES_OUTPUT_FILE" | cat -s > "${COMPONENT_UPDATES_OUTPUT_FILE}.tmp" \
-      && mv "${COMPONENT_UPDATES_OUTPUT_FILE}.tmp" "$COMPONENT_UPDATES_OUTPUT_FILE"
+  drop_rows=()
+  [[ -z "$RELEASE_ARTIFACT_STUDIO" ]] && drop_rows+=("Artifact Studio")
+  [[ -z "$RELEASE_TERRAFORM_VERSION" ]] && drop_rows+=("Spectro Cloud Terraform provider" "Spectro Cloud Crossplane provider")
+  [[ -z "$RELEASE_MANAGEMENT_APPLIANCE" ]] && drop_rows+=("Palette Management Appliance" "VerteX Management Appliance")
+  if (( ${#drop_rows[@]} > 0 )); then
+    drop_component_rows "$COMPONENT_UPDATES_OUTPUT_FILE" "${drop_rows[@]}"
   fi
 
   if [[ "$IS_RELEASE_RUN" == true ]]; then
@@ -678,8 +706,8 @@ fi
 # column is RELEASE_MANAGEMENT_APPLIANCE (a form input); the Kubernetes Version is derived from the
 # appliance-palette release data so it is never transcribed by hand. An empty RELEASE_MANAGEMENT_APPLIANCE
 # (NA and N/A are normalized to empty above) means no appliance shipped this release, so the tables are
-# left untouched. Deriving
-# the version and comparing it against the current top row also makes reruns idempotent.
+# left untouched. Deriving the version and comparing it against the current top row also makes reruns
+# idempotent.
 # ---------------------------------------------------------------------------------------------------
 
 # The management appliances build from spectrocloud/appliance-builder, which reads each Palette
