@@ -10,6 +10,96 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - AKS CSI Drivers Fail to Restart After Palette Upgrade
+
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette version for 4.10.b. -->
+
+After Palette is upgraded to 4.10.b or later, an AKS cluster deployed with a service principal cloud account shows an
+`AKSCSIDriversOff` or `AKSCSIDriverRestartFailed` warning event. To view the events of a cluster, log in to Palette.
+From the left main menu, select **Clusters**, select the cluster, and then select the **Events** tab.
+
+Palette versions earlier than 4.10.b created the `azure-cloud-provider` secret in the `kube-system` namespace of these
+clusters. The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers read this secret when they start, so they
+used the cloud account's service principal instead of the
+[AKS control plane identity](https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview#summary-of-managed-identities-used-by-aks).
+After the upgrade, Palette removes the secret that it created and restarts the enabled CSI drivers so that they use the
+AKS control plane identity. If a restart does not complete, Palette retries it and raises one of the following warning
+events.
+
+| **Event**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AKSCSIDriversOff`          | Palette turned the drivers off but could not turn them back on, for example, because another AKS operation was in progress. Palette keeps retrying every 5 minutes until the drivers are back on. Use steps 1 - 3 of the [debug steps](#debug-steps-csi-driver-restart) to check the cluster. If the drivers are still off more than 5 minutes after the provisioning state of the cluster returns to `Succeeded`, contact Spectro Cloud support. |
+| `AKSCSIDriverRestartFailed` | Palette stopped retrying after five attempts. The drivers are on, but they still use the cloud account's service principal. To restart the drivers manually, use the [debug steps](#debug-steps-csi-driver-restart).                                                                                                                                                                                                                              |
+
+### Debug Steps {#debug-steps-csi-driver-restart}
+
+While a CSI driver is turned off, volumes that use it cannot be attached, detached, or mounted. Pods that start or move
+during this time wait until the driver is back, and running pods keep their volumes.
+
+1. Open a terminal session, log in to the Azure CLI with an account that can update the AKS cluster, select the
+   subscription of the cluster, and set variables for the cluster.
+
+   ```shell
+   az login
+   az account set --subscription "<subscription-id>"
+   export RESOURCE_GROUP="<resource-group>"
+   export CLUSTER_NAME="<cluster-name>"
+   ```
+
+   Replace `<subscription-id>` with the ID of the Azure subscription that contains the AKS cluster, `<resource-group>`
+   with the resource group of the AKS cluster, and `<cluster-name>` with the name of the AKS cluster.
+
+2. Check that the provisioning state of the cluster is `Succeeded`. If another operation is in progress, wait until it
+   completes.
+
+   ```shell
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query provisioningState --output tsv
+   ```
+
+   ```text hideClipboard title="Example Output"
+   Succeeded
+   ```
+
+3. Check which CSI drivers are enabled on the cluster. A driver is enabled when its value is `true`. AKS enables the
+   Azure Files and Azure Disk CSI drivers by default, but not the Azure Blob CSI driver.
+
+   ```shell
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --output json \
+     --query "storageProfile.{azureBlob: blobCsiDriver.enabled, azureDisk: diskCsiDriver.enabled, azureFiles: fileCsiDriver.enabled}"
+   ```
+
+   ```json hideClipboard title="Example Output"
+   {
+     "azureBlob": null,
+     "azureDisk": true,
+     "azureFiles": true
+   }
+   ```
+
+4. If the Azure Files CSI driver is enabled, turn it off and back on. Each command returns when the update completes.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-file-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-file-driver
+   ```
+
+5. If the Azure Disk CSI driver is enabled, turn it off and back on.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-disk-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-disk-driver
+   ```
+
+6. If the Azure Blob CSI driver is enabled, turn it off and back on.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-blob-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-blob-driver
+   ```
+
+After the drivers restart, they use the AKS control plane identity, and persistent volume claims stuck in `Pending` bind
+automatically.
+
 ## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
 
 <!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
