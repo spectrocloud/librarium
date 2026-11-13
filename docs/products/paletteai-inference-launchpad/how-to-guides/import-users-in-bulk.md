@@ -31,6 +31,8 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
 
 - The workspaces you plan to add users to. To create one, refer to [Create a Workspace](./create-a-workspace.md).
 
+- The groups that your rows name. To add one, refer to [Add a Group](./manage-groups.md#add-a-group).
+
 ## Sign In
 
 1. Save the following script as `sign-in.sh`.
@@ -100,7 +102,7 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
    ```
 
 3. In the terminal and directory where you ran `sign-in.sh`, set the variables that the next steps use. Run all later
-   steps in the same place.
+   steps in the same terminal session and directory.
 
    ```bash
    BASE="https://<appliance-address>/api"
@@ -121,6 +123,7 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
        "email": "amara@example.com",
        "firstName": "Amara",
        "lastName": "Okafor",
+       "groups": ["ml-team"],
        "role": "operator",
        "status": "active",
        "workspaces": ["default-workspace"],

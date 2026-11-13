@@ -53,8 +53,8 @@ A request without a permission it needs is refused with `403`. The message names
 
 ## Row Fields
 
-The request body is a JSON array of row objects, with one object for each user. The CSV column is the column name to use
-when you convert a CSV file. For the conversion rules, refer to [CSV Conversion](#csv-conversion).
+The request body is a JSON array of row objects, with one object for each user. The **CSV column** header gives the
+column name to use when you convert a CSV file. For the conversion rules, refer to [CSV Conversion](#csv-conversion).
 
 | **JSON key** | **CSV column** | **Required** | **Value and rules**                                                                                                                                                                                                                                                                                         |
 | ------------ | -------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -176,7 +176,8 @@ The preview response and the job both include `counts`.
 | `failed`      | Rows that passed the checks but that the appliance could not fully add. The `results` entry gives the reason.                                 |
 | `noWorkspace` | Rows that name no workspace and do not give the `platform-admin` role. These users get no workspace access. `created` also counts these rows. |
 
-A skipped row is not a problem. When you import a file again, the users that an earlier import added are skipped.
+A skipped row is not a problem. When you import a file again, the appliance skips the users that an earlier import
+added.
 
 ## Results
 
