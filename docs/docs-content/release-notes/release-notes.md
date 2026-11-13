@@ -372,6 +372,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   restores its default configuration if you remove the pack. Refer to
   [Cert Manager Add-On](../clusters/cluster-management/cert-manager-addon.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-4800 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9862 -->
+
+- Edge clusters can now authenticate to a private Amazon Elastic Container Registry (ECR) repository without storing
+  static AWS credentials on the Edge hosts. Palette issues short-lived ECR tokens that the Edge hosts use to pull
+  provider images during cluster creation and upgrades. This feature is available only for centrally managed clusters in
+  appliance mode. Refer to
+  [Deploy Cluster with an Amazon ECR Provider Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-ecr-provider-registry.md)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-9586 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9867 -->
 
