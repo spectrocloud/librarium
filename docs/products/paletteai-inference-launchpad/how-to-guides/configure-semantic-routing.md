@@ -100,7 +100,7 @@ The two guard toggles are unavailable whenever the **Run the semantic router on 
 A policy carries the routing rules that every client in a workspace inherits. Use these steps to set the rules on a
 policy, and then to make a workspace follow that policy.
 
-1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
+1. From the left main menu, select **Access Management**, and then select the **Policies** tab.
 
 2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
    a new policy, complete the **Overview**, **Quotas**, **External access**, and **Cache sharing** steps.
@@ -139,7 +139,7 @@ client. The detail panel opens from inside the client's workspace.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -179,7 +179,7 @@ For how the threshold sets the band of a request, refer to
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -197,7 +197,7 @@ Use these steps to remove a client's own routing, so that the client follows wha
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -216,7 +216,7 @@ Use these steps to record the classified requests of every client in the workspa
 platform administrator can set recording, and it needs the semantic router running. For what is recorded, refer to
 [Decision Recording](../explanation/routing-behavior.md#decision-recording).
 
-1. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
+1. From the left main menu, select **Access Management**, and then select the **Policies** tab.
 
 2. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**.
 
@@ -235,7 +235,7 @@ workspace that follows the policy is now recorded, except a client you exclude.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -249,7 +249,7 @@ turn off the same toggle on its **Routing** step.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -261,7 +261,7 @@ Deleting the recorded requests cannot be undone. Download them first if you need
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -280,7 +280,7 @@ Deleting the recorded requests cannot be undone. Download them first if you need
 
 3. In the workspace drop-down menu in the console header, select the client's workspace.
 
-4. From the left main menu, select **Access & Policy**, and then select the **Clients** tab. Confirm that the
+4. From the left main menu, select **Access Management**, and then select the **Clients** tab. Confirm that the
    **Routing** column shows a count of routes, such as `3 routes`, for a client that has rules of its own. A client that
    inherits its routing shows `Default`, or a count followed by `· default`.
 

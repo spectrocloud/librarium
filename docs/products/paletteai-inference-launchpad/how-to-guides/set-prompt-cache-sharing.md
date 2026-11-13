@@ -36,9 +36,9 @@ cache reads, refer to
 
 ## Change Cache Sharing on a Policy
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. In the workspace drop-down menu in the console header, select **All workspaces**.
+2. From the left main menu, select **Access Management**.
 
 3. Select the **Policies** tab.
 
@@ -57,9 +57,9 @@ cache reads, refer to
 
 ## Choose Cache Sharing on a New Policy
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. In the workspace drop-down menu in the console header, select **All workspaces**.
+2. From the left main menu, select **Access Management**.
 
 3. Select the **Policies** tab, and then select **Create Policy**. The **Create policy** wizard opens on the
    **Overview** step.
@@ -83,15 +83,16 @@ cache reads, refer to
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. Select the **Policies** tab.
+2. From the left main menu, select **Access Management**.
 
-3. In the policy's row, confirm that the **Cache sharing** column reads **Workspace** for **Share within the
+3. Select the **Policies** tab.
+
+4. In the policy's row, confirm that the **Cache sharing** column reads **Workspace** for **Share within the
    workspace**, or **Each client** for **Each client is isolated**.
 
-4. Confirm that the **Followed by** column lists the workspaces whose clients you meant to change.
+5. Confirm that the **Followed by** column lists the workspaces whose clients you meant to change.
 
 ## Troubleshoot a Repeated Prompt with No Cache Reads
 

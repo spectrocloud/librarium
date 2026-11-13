@@ -23,18 +23,19 @@ Change who can act in an existing workspace, and with which role. For what a mem
 
 ## Add, Change, or Remove Workspace Members
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. Select the **Workspaces** tab.
+2. From the left main menu, select **Access Management**.
+
+3. Select the **Workspaces** tab.
 
    <!-- vale Vale.Spelling = NO -->
 
-3. In the workspace's row, open the three-dot menu, and then select **Manage**.
+4. In the workspace's row, open the three-dot menu, and then select **Manage**.
 
    <!-- vale Vale.Spelling = YES -->
 
-4. In the members table, make the changes you need.
+5. In the members table, make the changes you need.
 
    - To add a member, select **Add member**, choose the **Type**, enter the **Group name** or **Email or sign-in name**,
      select the **Role**, and then select **Add**.
@@ -44,7 +45,7 @@ Change who can act in an existing workspace, and with which role. For what a mem
 
    - To remove a member, open the three-dot menu in the member's row, and then select **Remove**.
 
-5. Select **Save**.
+6. Select **Save**.
 
 ## Validate
 

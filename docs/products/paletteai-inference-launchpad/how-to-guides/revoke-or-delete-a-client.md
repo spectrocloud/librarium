@@ -27,7 +27,7 @@ expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-qu
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 
@@ -43,7 +43,7 @@ The **Usage** page also shows a token's state in its per-token detail. For usage
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 
@@ -64,7 +64,7 @@ Both actions are in the **Overview** section of the client's detail panel, each 
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 

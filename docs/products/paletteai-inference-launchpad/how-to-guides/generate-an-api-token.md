@@ -27,7 +27,7 @@ If an administrator already gave you an API token, you can use it and skip the f
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. In the client's row, open the three-dot menu and select **Manage Client**. The client's detail panel opens to the
    **Overview** section.

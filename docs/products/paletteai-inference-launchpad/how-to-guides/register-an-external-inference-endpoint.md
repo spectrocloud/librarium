@@ -76,7 +76,7 @@ Authorize the endpoint on a policy so that every client in the workspaces that f
 
 1. In the workspace drop-down menu in the console header, select **All workspaces**.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Policies** tab.
+2. From the left main menu, select **Access Management**, and then select the **Policies** tab.
 
 3. Select **Create Policy** to start a new policy, or open the three-dot menu on a policy's row and select **Edit**. For
    a new policy, complete the **Overview** and **Quotas** steps.

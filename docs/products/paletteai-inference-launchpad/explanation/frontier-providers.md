@@ -103,7 +103,7 @@ that split. Four are set on a policy or a client; the fifth is appliance-wide.
    overrides its policy. Off pauses external access without deleting any key; on restores egress with the same setup.
 
 5. **Sovereignty (appliance-wide).** A single switch above every client's egress, on the **Sovereignty** card of
-   **Access & Policy** > **Clients** with **All workspaces** selected. After an operator selects **Block all external
+   **Access Management** > **Clients** with **All workspaces** selected. After an operator selects **Block all external
    inferencing**, no request leaves the appliance, regardless of what any client is permitted to do. Each client's
    egress chip reads **Blocked by sovereignty** until an operator selects **Permit external inferencing**. Refer to
    [Clients and Quotas](clients-and-quotas.md#sovereignty-and-egress).

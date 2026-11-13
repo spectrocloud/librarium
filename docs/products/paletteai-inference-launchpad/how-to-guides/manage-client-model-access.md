@@ -39,7 +39,7 @@ Use a client's tier map to route the client's model aliases to the models you ch
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel.
 
@@ -71,7 +71,7 @@ endpoint settings instead, override the policy when you create the client.
 
 1. In the workspace drop-down menu in the console header, select the workspace for the new client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
 
