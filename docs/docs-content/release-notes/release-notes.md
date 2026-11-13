@@ -21,17 +21,18 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
 
-- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade
-  does not copy them. Before you upgrade, keep a copy of every custom package and branding image that you uploaded, and
-  upload them again after the upgrade. If you use the VMO pack, configure a package store before you upload them, or
-  PaletteAI VM Launchpad loses the files when its pod restarts. This applies to the PaletteAI VM Launchpad appliance and
-  to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a persistent volume attached to
+  its pod, and the upgrade does not copy them. Before you upgrade, keep a copy of every custom package and branding
+  image that you uploaded, and upload them again after the upgrade. If you use the VMO pack, configure a package store
+  before you upload them, or PaletteAI VM Launchpad loses those custom packages and branding images when its pod
+  restarts. This applies to the PaletteAI VM Launchpad appliance and to VMO pack deployments that set
+  `persistence.enabled` to `true`. Refer to
   [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
 
 - PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
-  uses a data volume. Requests to these endpoints do not return an error. They return the PaletteAI VM Launchpad web
-  interface with a `200` status code, so a removed call can appear to succeed. Remove the following calls from your
-  automation.
+  uses the persistent volume that the page managed. Requests to these endpoints do not return an error. They return the
+  PaletteAI VM Launchpad web interface with a `200` status code, so a removed call can appear to succeed. Remove the
+  following calls from your automation.
 
   - `GET /api/v1/system/storage/status`
 
@@ -81,25 +82,28 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1514 -->
 
-- Fixed a security issue that allowed users who could reach the VM Migration Assistant service console to open
-  interactive sessions, such as a pod terminal or a VM console, through the service console's Kubernetes proxy. The
-  service console now refuses these requests, and migration workflows keep working. If your VM Migration Assistant
-  profile leaves `vm-migration-assistant-ui.console.deployment.env.userAuth` at its default value, `disabled`, set it to
-  `oidc`. Refer to
+- Fixed a security issue that allowed users who could reach a VM Migration Assistant service console configured without
+  OIDC to open interactive sessions, such as a pod terminal or a VM console, through the service console's Kubernetes
+  proxy. The service console now refuses these requests, including from users who sign in with OIDC, and migration
+  workflows keep working.
+
+  To require users to sign in to the service console, set `vm-migration-assistant-ui.console.deployment.env.userAuth` to
+  `oidc` in your VM Migration Assistant profile. The default value is `disabled`. Refer to
   [Create the Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#create-the-profile).
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1395 -->
 
 - Fixed security issues that allowed users to read or change resources in namespaces outside their access through the
-  PaletteAI VM Launchpad API. These included the Secrets of other namespaces, the `sysprep` configuration of VM
-  templates, and namespace policies. These requests now respect each user's namespace scope.
+  PaletteAI VM Launchpad API, such as the Secrets of other namespaces and namespace policies. These requests now respect
+  each user's namespace scope. Reading the `sysprep` configuration of a VM template now requires the `vmo:vm:create` or
+  `vmo:vm:update` permission, so users with only the **Operator** or **Viewer** role can no longer read it.
 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1405 -->
 
-- Fixed an issue that caused API keys to keep the permissions of a group after an administrator removed the key's
-  creator from the group. Group membership changes that you make in PaletteAI VM Launchpad now apply to the creator's
-  API keys immediately. Removing a member also signs the user out of their active sessions. Refer to
-  [Groups](../vm-management/vm-launchpad/access-management/groups.md).
+- Fixed a security issue that caused API keys to keep the permissions of a group after an administrator removed the
+  key's creator from the group. Group membership changes that you make in PaletteAI VM Launchpad now reach that user's
+  API keys without waiting for the user to sign in again. Refer to
+  [Edit a Group](../vm-management/vm-launchpad/access-management/groups.md#edit-a-group).
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
