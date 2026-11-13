@@ -100,7 +100,7 @@ header.
 
 The **Location** column separates models running on the appliance from models reached through an external provider. Both
 carry an estimated cost at the model's own rates. To set the per-model rates that produce the cost figures, go to
-**Settings** > **Pricing**. For how those rates produce the cost figures, refer to
+**Settings** > **Model Management** > **Model Pricing**. For how those rates produce the cost figures, refer to
 [Usage Pricing](../explanation/usage-pricing.md).
 
 :::

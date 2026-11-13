@@ -136,31 +136,32 @@ platform administrator sets one. To set or remove an instruction, refer to
 
 An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
 Three endpoints are built in, `anthropic`, `openai`, and `gemini`, and a platform administrator can register any
-OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance under
-**Integrations**, and a built-in endpoint is not available until that happens.
+OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance,
+under **Settings** > **External access** > **Ext. Inference Endpoints**. A built-in endpoint is not available until that
+happens.
 
 A policy or a client selects an endpoint that is already set up, and never defines one, so an endpoint that is not set
 up is not offered to a policy or a client.
 
-Each registered endpoint carries a short **Endpoint id**. The id names the endpoint wherever the console lists an
-external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The id cannot be
-changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding id. The
+Each registered endpoint carries a short **Endpoint ID**. The ID names the endpoint wherever the console lists an
+external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The ID cannot be
+changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding ID. The
 **Endpoint URL** can be an origin or an origin followed by a path prefix; the appliance appends the OpenAI-compatible
 request paths itself, so the URL does not include `/v1`.
 
-The credential for an endpoint is stored once on the endpoint, under **Integrations**, and every policy and client that
-lists the endpoint uses it. A policy or a client can override the key for itself alone by typing one in its **Key**
-field; the **Integrations** key does not change. The credential can be an API key, one or more custom headers, or both.
-The appliance sends any custom headers on both the model-catalog probe and every routed request.
+The credential for an endpoint is stored once, on the endpoint, and every policy and client that lists the endpoint uses
+it. A policy or a client can override the key for itself alone by typing one in its **Key** field; the endpoint's key
+does not change. The credential can be an API key, one or more custom headers, or both. The appliance sends any custom
+headers on both the model-catalog probe and every routed request.
 
 The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
 connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
 presents on its own inbound console. Header values are stored as secrets, but a CA certificate is not; the appliance
 shows a stored CA certificate in full whenever an operator edits the endpoint.
 
-Disabling or removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at
-that endpoint falls back to the appliance's local serving in flight rather than returning an error. To register a host,
-refer to [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+Removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at that endpoint
+falls back to the appliance's local serving in flight rather than returning an error. To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 ## Network Topology
 
@@ -201,7 +202,7 @@ following:
 - A built-in endpoint for Anthropic, OpenAI, or Gemini, which serves a
   [frontier model](../reference/glossary.md#frontier-model) hosted by that vendor rather than served from the appliance.
 
-- A registered endpoint, which is any OpenAI-compatible host a platform administrator has added under **Integrations**.
+- A registered endpoint, which is any OpenAI-compatible host that a platform administrator has added.
 
 Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
 overrides its policy. With bursting on, the appliance does not refuse a client that runs out of local quota. It sends

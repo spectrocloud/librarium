@@ -62,8 +62,9 @@ token count multiplied by its rate.
 | **Cache write** | Prompt tokens written into a frontier provider's cache. Applies to egress only.              | Not applicable                      |
 
 The appliance prices models routed to a frontier provider from that provider's published list prices. To view or
-override the rate for any model, open **Settings** > **Pricing**. A blank **Cache read** or **Cache write** rate prices
-those tokens at the input rate. A response cache hit adds $0, and the appliance records its tokens as cache reads.
+override the rate for any model, open **Settings** > **Model Management** > **Model Pricing**. A blank **Cache read** or
+**Cache write** rate prices those tokens at the input rate. A response cache hit adds $0, and the appliance records its
+tokens as cache reads.
 
 The **Usage** page shows every dollar figure rounded to the cent. An amount greater than $0 but less than half a cent
 shows as `<$0.01`, and a response cache hit, which costs $0, shows as `$0.00`.

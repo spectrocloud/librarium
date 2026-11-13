@@ -205,12 +205,13 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 ### External Inference Endpoint
 
 An [egress](#egress) target outside the appliance, which a platform administrator sets up once for the whole appliance
-under **Integrations**. Three endpoints are built in, for Anthropic, OpenAI, and Gemini, and are not available until
-they are set up. Any other OpenAI-compatible host can be registered as an endpoint, such as a hosted router, a partner
-API, a second appliance, or an in-house inference server. A [policy](#policy) or a [client](#client) selects an endpoint
-that is already set up and never defines one. Its models appear in the routing picker as `<endpoint> / <model>`, and
-traffic to it is metered as egress. The host can authenticate the appliance with a key, custom headers, or both, and can
-present a self-signed or private-CA certificate the appliance trusts individually. Refer to
+under **Settings** > **External access** > **Ext. Inference Endpoints**. Three endpoints are built in, for Anthropic,
+OpenAI, and Gemini, and are not available until they are set up. Any other OpenAI-compatible host can be registered as
+an endpoint, such as a hosted router, a partner API, a second appliance, or an in-house inference server. A
+[policy](#policy) or a [client](#client) selects an endpoint that is already set up and never defines one. Its models
+appear in the routing picker as `<endpoint> / <model>`, and traffic to it is metered as egress. The host can
+authenticate the appliance with a key, custom headers, or both, and can present a self-signed or private-CA certificate
+the appliance trusts individually. Refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 <!-- vale Vale.Terms = NO -->
@@ -221,8 +222,8 @@ present a self-signed or private-CA certificate the appliance trusts individuall
 
 The console's name for sending a request to a model outside the appliance through an
 [external inference endpoint](#external-inference-endpoint). A policy, or a client that overrides its policy, turns it
-on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored
-under **Integrations**, unless the policy or client overrides that key for itself alone. Refer to
+on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored on
+the endpoint, unless the policy or client overrides that key for itself alone. Refer to
 [External Inferencing](../explanation/frontier-providers.md).
 
 ### External Vision Reader
@@ -293,9 +294,9 @@ workspace [member](#member) creates a grant. The console shows members, not gran
 The two checks the [semantic router](#semantic-routing) runs on each routed request when it picks the request's
 [category](#category). Both of its checks are on by default. It refuses a prompt attack with HTTP `403` on every route,
 and it refuses a request that carries personal data with HTTP `403` only when that request would leave the appliance.
-Each check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**. The toggles are
-**Refuse jailbreak attempts** and **Scan prompts for personal data before they leave the box**. Refer to
-[Semantic Router Guard](../explanation/semantic-router-guard.md).
+Each check has its own toggle on the **Semantic router** card. The card is on **Settings** > **Request handling** >
+**Semantic Router**. The toggles are **Refuse jailbreak attempts** and **Scan prompts for personal data before they
+leave the box**. Refer to [Semantic Router Guard](../explanation/semantic-router-guard.md).
 
 ## H
 

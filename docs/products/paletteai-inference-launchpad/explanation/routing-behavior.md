@@ -73,7 +73,8 @@ apply to the client today, so that an operator always reads the rule a request a
 the client's own. **Use defaults** removes the client's own rules, and the client follows what it inherits again.
 
 At the appliance level, an operator turns the semantic router and its two guard checks on or off from **Settings** >
-**Configurations**. For what the toggles do, refer to [Semantic Router Guard](./semantic-router-guard.md) and
+**Request handling** > **Semantic Router**. For what the toggles do, refer to
+[Semantic Router Guard](./semantic-router-guard.md) and
 [The Semantic Router on the GPU](#the-semantic-router-on-the-gpu). For each toggle and its default, refer to
 [Semantic Router Card](../reference/semantic-routing-reference.md#semantic-router-card).
 
@@ -105,8 +106,8 @@ deployed model with the largest weights, even one that is still starting. Until 
 it fail.
 
 Vision preprocessing adds one exception. While vision preprocessing is on, the appliance never chooses a vision model
-that has **Only use this model for vision processing** turned on. That toggle is in the **Multimodal preprocessing**
-card on **Settings** > **Configurations**.
+that has **Only use this model for vision processing** turned on. That toggle is on the **Multimodal preprocessing**
+card. The card is on **Settings** > **Model Management** > **Multimodal Preprocessing**.
 
 The appliance chooses again each time a model is deployed, is removed, starts serving, or stops serving. As a result,
 the box default model can change without any action from an operator. There is no setting to choose or pin the box
