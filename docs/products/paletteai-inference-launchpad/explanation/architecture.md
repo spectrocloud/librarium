@@ -10,11 +10,62 @@ tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
 the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
 Launchpad.
 
 ## Component Stack
+
+The following diagram shows the appliance as a stack of four layers, where each layer runs on the layer below it. The
+numbers follow a request from an AI application down to the GPU, and they match the list after the diagram.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Layered diagram of the appliance. From the bottom up, the layers are the hardware, the Kairos operating system, Kubernetes, and the PaletteAI Inference Launchpad services. A request path runs down the middle from AI applications to the gateway, the vLLM engine, and the GPU, and an optional path leads to external inference endpoints. The list after the diagram describes each numbered component."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+
+<!-- vale Vale.Terms = NO -->
+
+1. AI applications, such as [Claude Code](../how-to-guides/use-claude-code.md), [Codex](../how-to-guides/use-codex.md),
+   [Cursor](../how-to-guides/use-cursor.md), and [OpenCode](../how-to-guides/use-opencode.md), send their requests to
+   the gateway through the Platform IP. The gateway serves the OpenAI-compatible and Anthropic Messages APIs. It
+   authenticates each client, enforces the client's quotas, and routes each request to a model. Refer to
+   [Request Routing](#request-routing) and [Network Topology](#network-topology).
+
+2. The vLLM engine serves the model that the gateway chose. Refer to [Model Placement](./model-placement.md).
+
+3. Kubernetes runs the engine as a pod. The kubelet on the node starts the pod, with containerd as its runtime, and the
+   GPU Operator makes the GPUs available to it.
+
+4. The GPU drivers in the operating system let the engine use the GPUs.
+
+5. The model runs on the appliance's GPUs. For how to size the GPUs, refer to [Hardware Sizing](#hardware-sizing).
+
+<!-- vale Vale.Terms = YES -->
+
+When a platform administrator allows egress, the gateway can send a request to an external inference endpoint instead of
+a local model. Egress is off by default. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an
+OpenAI-compatible host that a platform administrator registered. Refer to
+[External Inference Endpoints](#external-inference-endpoints) and
+[Data Residency and Isolation](#data-residency-and-isolation).
+
+Platform administrators open the console in a web browser to configure the appliance and observe how it is used. The
+control plane, which is separate from the Kubernetes control plane, keeps the appliance in line with the settings that
+platform administrators save for models, clients, and policies. Refer to
+[Model Provisioning Lifecycle](#model-provisioning-lifecycle).
+
+The lower layers hold the parts that every service relies on. In Kubernetes, the API server, backed by etcd, is the one
+place where the appliance's components coordinate. The operating system is Kairos, an immutable Linux distribution. In
+it, the Palette agent applies the appliance's cluster profile, and model weights live on the host filesystem, on local
+NVMe storage.
 
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
