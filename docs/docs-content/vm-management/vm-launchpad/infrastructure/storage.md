@@ -607,6 +607,21 @@ VMO uses the selected StorageClass as the default for:
 If no StorageClass is enabled for VM workloads and the cluster has no default StorageClass, you must specify a
 StorageClass explicitly when creating resources.
 
+If you deploy VM Launchpad with the VMO pack, you can set the StorageClass that VMO uses for golden images, including
+builder disks and Virtio PVCs. This StorageClass takes precedence over a StorageClass that is enabled for VM workloads
+and over the cluster default. The VM Launchpad appliance does not support this setting. To set it, add the following
+values to the VMO pack in your cluster profile.
+
+```yaml
+charts:
+  virtual-machine-orchestrator:
+    vmo-manager:
+      goldenImages:
+        storageClass: "<storage-class-name>"
+```
+
+Replace `<storage-class-name>` with the name of the StorageClass.
+
 :::tip
 
 To control the default storage for VM disks, enable the StorageClass that you want for VM workloads. An enabled
