@@ -472,9 +472,8 @@ After the Palette CLI reports that the content is ready, log in to the leader ho
 
    On the non-FIPS Piraeus and Portworx variants, this section also includes a **Replica Count** field, which sets the
    number of replicas for the Zot registry and the SeaweedFS object store that backs it. Select `1` for a single-node
-   cluster or `3` for high availability. The FIPS Piraeus variant has no SeaweedFS object store, so this field does not
-   appear here. On the FIPS Piraeus variant, set replication with **Storage Replica Count** in the [Storage](#storage)
-   section instead.
+   cluster or `3` for high availability. On the FIPS Piraeus variant, this field does not appear here. The **Storage
+   Replica Count** field in the [Storage](#storage) section sets the Zot and SeaweedFS replicas instead.
 
    <!-- vale spectrocloud-docs-internal.heading-all-caps = NO -->
 
@@ -526,8 +525,8 @@ After the Palette CLI reports that the content is ready, log in to the leader ho
    | **Storage Replication Interface** | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible. |
 
    On the FIPS Piraeus variant, this section also includes a **Storage Replica Count** field, which sets the Piraeus
-   DRBD storage class placement count. Select `1` for a single-node cluster or `3` for high availability. The FIPS Zot
-   registry is pinned to `1` because it has no shared backend.
+   DRBD storage class placement count and the number of replicas for the Zot registry and the SeaweedFS object store.
+   Select `1` for a single-node cluster or `3` for high availability. The default is `3`.
 
    On the Portworx variant, this section configures only the Portworx license. The storage replication network for
    Portworx is configured later, in the Portworx Storage Cluster wizard. Refer to

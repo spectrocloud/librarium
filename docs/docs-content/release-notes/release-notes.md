@@ -11,6 +11,83 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 13, 2026 - PaletteAI VM Launchpad 4.10.TBD {#vm-launchpad-4.10.TBD}
+
+<!-- VM LAUNCHPAD RELEASE NOTES TICKET: DOC-3411 -->
+
+This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, which runs on Palette 4.10.TBD.
+
+### Breaking Changes {#breaking-changes-vm-launchpad-4.10.TBD}
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1016 -->
+
+- PaletteAI VM Launchpad no longer stores uploaded package files and branding images on a data volume, and the upgrade
+  does not copy them. Before you upgrade, keep a copy of every custom package and branding image that you uploaded, and
+  upload them again after the upgrade. If you use the VMO pack, configure a package store before you upload them, or
+  PaletteAI VM Launchpad loses the files when its pod restarts. This applies to the PaletteAI VM Launchpad appliance and
+  to VMO pack deployments that set `persistence.enabled` to `true`. Refer to
+  [Upgrade Considerations](../vm-management/vm-launchpad/virtual-machines/packages.md#upgrade-considerations).
+
+- PaletteAI VM Launchpad no longer includes the **System** > **Storage** page or its API endpoints, because it no longer
+  uses a data volume. Requests to these endpoints do not return an error. They return the PaletteAI VM Launchpad web
+  interface with a `200` status code, so a removed call can appear to succeed. Remove the following calls from your
+  automation.
+
+  - `GET /api/v1/system/storage/status`
+
+  - `POST /api/v1/system/storage/enable`
+
+  - `PATCH /api/v1/system/storage/resize`
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-451 -->
+
+- Platform Admins can now create custom VMO roles that grant only the permissions they choose. They can assign custom
+  roles to users and groups cluster-wide or in selected namespaces. Built-in roles stay read-only, but you can clone one
+  as a starting point for a custom role. Refer to
+  [Custom Roles](../vm-management/vm-launchpad/access-management/vmo-roles.md#custom-roles).
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1313 -->
+
+- <TpBadge /> The VM Migration Assistant can now migrate VMs from Nutanix AHV, as a Tech Preview. When you create a
+  source provider, select **Nutanix AHV** and connect to Prism Element or Prism Central. Nutanix migrations are cold
+  migrations only. **Fetch certificate from URL** does not work for Nutanix AHV providers, so upload the Prism CA
+  certificate to verify the Prism certificate.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
+
+- FIPS PaletteAI VM Launchpad appliances now run the Keycloak database as a CloudNativePG cluster. The upgrade moves the
+  database automatically, with no extra steps.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1494 -->
+
+- Fixed an issue that caused upgrades to leave the KubeVirt and Containerized Data Importer (CDI) Custom Resource
+  Definitions (CRDs) at the version that was first installed on the cluster. On clusters first installed with a 4.8
+  version of the VMO pack, the upgrade to KubeVirt 1.9.0 did not complete. On other clusters, saving a KubeVirt setting
+  that was added after the cluster was first installed failed with the
+  `KubeVirt apiserver unreachable or returned invalid response` error. Upgrades now update both CRDs, including on
+  clusters whose CRDs are already out of date. This applies to the PaletteAI VM Launchpad appliance and to the VMO pack.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1483 -->
+
+- Fixed an issue that could stall upgrades of non-FIPS PaletteAI VM Launchpad appliances when both replicas of the
+  Keycloak database stored their data on the same node. The replicas now run on separate nodes, and the upgrade to
+  version 4.10.TBD first moves replicas that share a node to separate nodes.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-1514 -->
+
+- Fixed a security issue that allowed users who could reach the VM Migration Assistant service console to open
+  interactive sessions, such as a pod terminal or a VM console, through the service console's Kubernetes proxy. The
+  service console now refuses these requests, and migration workflows keep working. If your VM Migration Assistant
+  profile leaves `vm-migration-assistant-ui.console.deployment.env.userAuth` at its default value, `disabled`, set it to
+  `oidc`. Refer to
+  [Create the Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#create-the-profile).
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->
