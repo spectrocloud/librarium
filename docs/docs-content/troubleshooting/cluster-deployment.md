@@ -10,7 +10,99 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - AKS CSI Drivers Fail to Restart After Palette Upgrade
+
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette version for 4.10.b. -->
+
+After Palette is upgraded to 4.10.b or later, an AKS cluster deployed with a service principal cloud account shows an
+`AKSCSIDriversOff` or `AKSCSIDriverRestartFailed` warning event. To view the events of a cluster, log in to Palette.
+From the left main menu, select **Clusters**, select the cluster, and then select the **Events** tab.
+
+Palette versions earlier than 4.10.b created the `azure-cloud-provider` secret in the `kube-system` namespace of these
+clusters. The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers read this secret when they start, so they
+used the cloud account's service principal instead of the
+[AKS control plane identity](https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview#summary-of-managed-identities-used-by-aks).
+After the upgrade, Palette removes the secret that it created and restarts the enabled CSI drivers so that they use the
+AKS control plane identity. If a restart does not complete, Palette retries it and raises one of the following warning
+events.
+
+| **Event**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AKSCSIDriversOff`          | Palette turned the drivers off but could not turn them back on, for example, because another AKS operation was in progress. Palette keeps retrying every 5 minutes until the drivers are back on. Use steps 1 - 3 of the [debug steps](#debug-steps-csi-driver-restart) to check the cluster. If the drivers are still off more than 5 minutes after the provisioning state of the cluster returns to `Succeeded`, contact Spectro Cloud support. |
+| `AKSCSIDriverRestartFailed` | Palette stopped retrying after five attempts. The drivers are on, but they still use the cloud account's service principal. To restart the drivers manually, use the [debug steps](#debug-steps-csi-driver-restart).                                                                                                                                                                                                                              |
+
+### Debug Steps {#debug-steps-csi-driver-restart}
+
+While a CSI driver is turned off, volumes that use it cannot be attached, detached, or mounted. Pods that start or move
+during this time wait until the driver is back, and running pods keep their volumes.
+
+1. Open a terminal session, log in to the Azure CLI with an account that can update the AKS cluster, select the
+   subscription of the cluster, and set variables for the cluster.
+
+   ```shell
+   az login
+   az account set --subscription "<subscription-id>"
+   export RESOURCE_GROUP="<resource-group>"
+   export CLUSTER_NAME="<cluster-name>"
+   ```
+
+   Replace `<subscription-id>` with the ID of the Azure subscription that contains the AKS cluster, `<resource-group>`
+   with the resource group of the AKS cluster, and `<cluster-name>` with the name of the AKS cluster.
+
+2. Check that the provisioning state of the cluster is `Succeeded`. If another operation is in progress, wait until it
+   completes.
+
+   ```shell
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query provisioningState --output tsv
+   ```
+
+   ```text hideClipboard title="Example Output"
+   Succeeded
+   ```
+
+3. Check which CSI drivers are enabled on the cluster. A driver is enabled when its value is `true`. AKS enables the
+   Azure Files and Azure Disk CSI drivers by default, but not the Azure Blob CSI driver.
+
+   ```shell
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --output json \
+     --query "storageProfile.{azureBlob: blobCsiDriver.enabled, azureDisk: diskCsiDriver.enabled, azureFiles: fileCsiDriver.enabled}"
+   ```
+
+   ```json hideClipboard title="Example Output"
+   {
+     "azureBlob": null,
+     "azureDisk": true,
+     "azureFiles": true
+   }
+   ```
+
+4. If the Azure Files CSI driver is enabled, turn it off and back on. Each command returns when the update completes.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-file-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-file-driver
+   ```
+
+5. If the Azure Disk CSI driver is enabled, turn it off and back on.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-disk-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-disk-driver
+   ```
+
+6. If the Azure Blob CSI driver is enabled, turn it off and back on.
+
+   ```shell
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --disable-blob-driver --yes
+   az aks update --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --enable-blob-driver
+   ```
+
+After the drivers restart, they use the AKS control plane identity, and persistent volume claims stuck in `Pending` bind
+automatically.
+
 ## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
+
+<!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
 
 If the Palette management plane briefly loses access to its database, the Palette agent on a workload cluster can delete
 the namespaces that Palette created through
@@ -24,10 +116,15 @@ The management plane can lose access to its database during Palette upgrades or 
 its primary, even briefly. On self-hosted Palette and Palette VerteX, for example, a MongoDB crash, a failover, or
 overlapping node maintenance can cause this.
 
-To prevent the deletion, remove the label that marks each namespace as created by Palette. The Palette agent does not
-delete a namespace without this label and does not add the label back. As a result, removing the namespace from the
-cluster RBAC or workspace settings no longer deletes it from the cluster. If you no longer need one of these namespaces,
-delete it with `kubectl delete namespace <namespace-name>`, replacing `<namespace-name>` with the name of the namespace.
+Starting with Palette agent version 4.10.b, the agent does not delete these namespaces when the management plane loses
+access to its database. Workload clusters remain affected until their Palette agent is upgraded. This includes clusters
+with [paused agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
+
+To prevent the deletion until the Palette agent is upgraded, remove the label that marks each namespace as created by
+Palette. The Palette agent does not delete a namespace without this label and does not add the label back. As a result,
+removing the namespace from the cluster RBAC or workspace settings no longer deletes it from the cluster. If you no
+longer need one of these namespaces, delete it with `kubectl delete namespace <namespace-name>`, replacing
+`<namespace-name>` with the name of the namespace.
 
 ### Debug Steps {#debug-steps-rbac-workspace-namespaces}
 
@@ -79,6 +176,68 @@ delete it with `kubectl delete namespace <namespace-name>`, replacing `<namespac
 6. Repeat steps 2 and 3 to confirm that no namespaces carry either label. Both commands return `No resources found`.
 
 7. Repeat steps 1 - 6 on each workload cluster.
+
+### Restore the Labels After the Agent Upgrade
+
+After the Palette agent on a workload cluster is upgraded to version 4.10.b or later, you can restore the labels that
+you removed. With the labels restored, removing a namespace from the cluster RBAC or workspace settings deletes it from
+the cluster again.
+
+:::danger
+
+Restore a label only on namespaces that are still listed in the cluster RBAC or workspace settings. If you restore the
+label on a namespace that you removed from these settings, the Palette agent deletes the namespace and all its resources
+on its next reconciliation.
+
+:::
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Clusters**, and then select the workload cluster.
+
+3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.b or later. If it shows an earlier
+   version, do not restore the labels on this cluster.
+
+4. On the **Workloads** > **Namespaces** tab, select **Manage Namespaces**, and then record the namespaces listed on the
+   **Namespaces** tab in the **Settings** pane.
+
+5. _(Clusters in a workspace only)_ From the left main menu, select **Workspaces**, and then select the workspace that
+   contains the cluster. Select **Settings** > **Namespaces**, and then record the namespaces listed in the pane.
+
+6. Open a terminal session and set the `KUBECONFIG` environment variable to the kubeconfig file of the workload cluster.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the workload cluster.
+
+7. Add the cluster RBAC label back to each namespace that you recorded both in step 2 of the
+   [debug steps](#debug-steps-rbac-workspace-namespaces) and in step 4.
+
+   ```shell
+   kubectl label namespaces <namespace-names> spectrocloud.com/clusterRbac=true
+   ```
+
+   Replace `<namespace-names>` with the names of the namespaces, separated by spaces.
+
+   ```text hideClipboard title="Example Output"
+   namespace/team-a-dev labeled
+   namespace/team-a-prod labeled
+   ```
+
+8. _(Clusters in a workspace only)_ Add the workspace label back to each namespace that you recorded both in step 3 of
+   the debug steps and in step 5.
+
+   ```shell
+   kubectl label namespaces <namespace-names> spectrocloud.com/workspace=true
+   ```
+
+   Replace `<namespace-names>` with the names of the namespaces, separated by spaces.
+
+9. Repeat steps 2 and 3 of the debug steps to confirm that the namespaces carry their labels again.
+
+10. Repeat steps 2 - 9 on each workload cluster.
 
 ## Scenario - GCP IaaS Control Plane Repaved Repeatedly
 

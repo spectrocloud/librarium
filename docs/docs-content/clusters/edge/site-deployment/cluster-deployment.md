@@ -101,6 +101,10 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP
     address already used by other hosts in your network, including your Edge hosts.
 
+    (Optional) From the **Image registry** drop-down menu, select the image registry that the Edge hosts use to pull the
+    provider image. For more information, refer to
+    [Select the Image Registry for a New Cluster](./deploy-custom-registries/deploy-ecr-provider-registry.md#select-the-image-registry-for-a-new-cluster).
+
     You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of
     NTP servers. Click on **Next**.
 

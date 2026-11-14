@@ -706,6 +706,133 @@
         ]
       }
     },
+    "/v1/edge-mgmt/cluster/update-lock": {
+      "get": {
+        "description": "Reports the cluster-profile update lock for this device: whether it is enabled at all, whether the gate is engaged or disengaged, and what profile update is waiting for a local unlock. stylus-operator engages the lock and re-engages it by itself once a rollout finishes; this device is the only place it can be taken off, and the only place it can be put back on by hand.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the cluster-profile update lock state for this device",
+        "operationId": "v1ClusterUpdateLock",
+        "responses": {
+          "200": {
+            "description": "The update lock state",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateLockStatus"
+            }
+          },
+          "400": {
+            "description": "The update lock does not apply on this device",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/update-lock/gate": {
+      "post": {
+        "description": "Works the update lock by hand: takes it off so the waiting profile applies on the next sync, or puts it back on to close a window that is already open. stylus-operator engages the lock and re-engages it by itself once a rollout finishes; these are the manual transitions, and this device is the only place either is reachable, because the Palette API has no equivalent and never will. Engaging re-locks only: it does not recall an update that has already been applied, and an update still rolling out continues. Asking for the gate the lock already has is not an error: that is a 200 carrying the state as it stands, and nothing is written, because restamping the transition would move the clock the operator's closing rule reads. Whether this call caused the state or found it is read from unlockedAt and engagedAt in the response, never from the status code.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Take the cluster-profile update lock off, or put it back on",
+        "operationId": "v1ClusterUpdateLockGate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateLockGate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The gate state the lock now holds",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateLockStatus"
+            }
+          },
+          "400": {
+            "description": "The update lock is not enabled for this cluster",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "403": {
+            "description": "The logged-in user may not work the update lock",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "422": {
+            "description": "The gate is absent from the body, or is neither engaged nor disengaged",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/update-lock/held-profile": {
+      "get": {
+        "description": "Reports the cluster-profile templates behind a held update on this device: the profile hubble is serving while the lock holds it, in the same shape the archive endpoints serve, so the Local UI reviews a held update the way it reviews an uploaded configuration. The profile in force is not repeated here — it comes from the applications endpoint. Nothing held is a 200 with an empty heldProfile, not a 404. It is a separate path from the lock status on purpose: the status is polled every ten seconds and stays small, while this payload is fetched on demand when the operator asks to review the held update. Available only on this device, like the other lock operations.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the cluster-profile templates behind a held update",
+        "operationId": "v1ClusterUpdateLockHeldProfile",
+        "responses": {
+          "200": {
+            "description": "The held profile and the profile in force, or pending false when nothing is held",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateLockHeldProfile"
+            }
+          },
+          "400": {
+            "description": "The update lock does not apply on this device",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/v1/edge-mgmt/cluster/{clusterName}": {
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
@@ -736,6 +863,12 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           },
           "403": {
@@ -4455,21 +4588,60 @@
       }
     },
     "v1CA": {
+      "description": "A certificate that may sign others. Every row in `certificates` uses this\nshape, whether it comes from the K8s CA tree (PCP-6579) or from the Local\nUI / mTLS / registry collectors (PE-9218). A row with no `childCerts` is a\nstandalone leaf.\n",
       "type": "object",
       "properties": {
+        "canAutoRenew": {
+          "description": "True when the appliance renews this certificate on its own, without\noperator action — the K8s CA tree via the scheduled renewal task, and\nmTLS leaves wherever the cert-manager reconcilers run (airgap or\nCanonical). False means renewal is the operator's job (Local UI\nserver cert, on-disk mTLS, in-cluster registry certs): the UI should\nrender those rows as manual renewal.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "category": {
+          "description": "The specific certificate this row describes, narrowing `isK8s`.\nk8s: `k8s-cluster-ca`, `k8s-front-proxy-ca`, `k8s-etcd-ca`,\n`k8s-dqlite-ca` (Canonical on dqlite), `k8s-ca` (unrecognised bucket).\nnon-k8s: `localui-server`, `localui-ca`, `mtls-client`,\n`mtls-server`, `mtls-ca`, `registry-harbor`,\n`registry-harbor-ca`, `registry-zot`, `registry-zot-ca`.\n",
+          "type": "string"
+        },
         "childCerts": {
+          "description": "Certificates signed by this one — K8s CA leaves, or the leaves under\na non-k8s CA (root mTLS CA, Local UI CA, registry CA).\n",
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ChildCerts"
           }
         },
         "expirationDate": {
+          "description": "Timestamp in Go's `time.String()` layout, e.g.\n`2036-08-10 12:00:00 +0000 UTC` — the format this endpoint has\nemitted since PCP-6579. Empty when the source didn't carry an\nexpiry. Migration to RFC 3339 is deferred to the UI refactor.\n",
           "type": "string"
         },
+        "isCA": {
+          "description": "x509 basicConstraints CA — whether this certificate can sign others.\nRead from the parsed certificate, so it is authoritative where the\n`category` suffix and tree position are only heuristics. False when\nthe source gave no certificate to parse (K8s tree children,\ncert-manager rows); those are leaves by construction.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isK8s": {
+          "description": "True for the Kubernetes CA tree (PCP-6579). True for an mTLS certificate\nonly when `canAutoRenew` is true. False for the Local UI and in-cluster\nregistry certificates, and for mTLS certificates that nothing renews.\nFiltering the array on this field recovers the two groups; `category`\nnarrows further.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "issueDate": {
+          "description": "Timestamp in Go's `time.String()` layout, e.g.\n`2026-08-10 12:00:00 +0000 UTC` — the format this endpoint has\nemitted since PCP-6579. Empty when the source didn't carry an\nissue date. Migration to RFC 3339 is deferred to the UI refactor.\n",
+          "type": "string"
+        },
+        "issuer": {
+          "description": "Signing authority (Issuer DN). Only meaningful on top-level rows;\non a nested child it is by definition the parent's subject, so it\nis omitted there.\n",
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "nodeName": {
+          "description": "For per-node certs, the node it belongs to. On the K8s CA rows (which merge every node's view of one CA) it names the node whose instance is reported — the soonest-expiring one.",
+          "type": "string"
+        },
+        "scope": {
+          "description": "One of `cluster`, `per-node`, `per-service`.",
+          "type": "string"
+        },
+        "subject": {
+          "description": "Subject DN (the identity the cert was issued to). Empty on the K8s\ntree — the source secret doesn't carry a Subject DN today; the field\nis optional so upstream can enrich without an API break.\n",
           "type": "string"
         }
       }
@@ -4488,6 +4660,7 @@
       "type": "object",
       "properties": {
         "certificates": {
+          "description": "Every certificate the appliance reports, in one array. Holds the\nKubernetes CA tree (PCP-6579) followed by the Local UI, mTLS (per-node)\nand in-cluster registry certificates (PE-9218). `isK8s` is true for the\nKubernetes rows and for mTLS rows that renew automatically, and false\nfor all other rows.\nFilter the array on `isK8s` to get the two groups back; `category`\nnarrows further.\n",
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1CA"
@@ -4498,22 +4671,56 @@
         },
         "needsRenewal": {
           "type": "boolean"
+        },
+        "statusThresholdDays": {
+          "description": "Days-before-expiry at which this appliance treats a certificate as\ndue for renewal. Sourced from the palette-edge-config ConfigMap, so\na consumer can render expiry against the same threshold the cluster\nrenews on rather than hardcoding its own.\n",
+          "type": "integer"
         }
       }
     },
     "v1ChildCerts": {
+      "description": "A certificate nested under the v1CA that signed it. Carries the same\ntriage fields as its parent, minus `issuer` (redundant with the\nparent's subject) and `childCerts` (the tree is one level deep).\n",
       "type": "object",
       "properties": {
-        "expirationDate": {
+        "canAutoRenew": {
+          "description": "Same meaning as the parent v1CA's `canAutoRenew`: true when the\nappliance renews this leaf on its own (K8s renewal task, cert-manager\nmTLS), false when renewal is the operator's job.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "category": {
+          "description": "`k8s-child` for K8s CA tree leaves; the matching non-k8s leaf\ncategory (`localui-server`, `mtls-client`, `mtls-server`,\n`registry-harbor`, `registry-zot`) otherwise.\n",
           "type": "string"
         },
+        "expirationDate": {
+          "description": "Timestamp in Go's `time.String()` layout, e.g.\n`2036-08-10 12:00:00 +0000 UTC` — the format this endpoint has\nemitted since PCP-6579. Empty when the source didn't carry an\nexpiry. Migration to RFC 3339 is deferred to the UI refactor.\n",
+          "type": "string"
+        },
+        "isCA": {
+          "description": "x509 basicConstraints CA — whether this certificate can sign others.\nRead from the parsed certificate, so it is authoritative where the\n`category` suffix and tree position are only heuristics. False when\nthe source gave no certificate to parse (K8s tree children,\ncert-manager rows); those are leaves by construction.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isK8s": {
+          "description": "Same rule as the parent v1CA's `isK8s`. For an mTLS leaf it follows the\nleaf's own `canAutoRenew`, so it can differ from the parent.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "issueDate": {
+          "description": "Timestamp in Go's `time.String()` layout, e.g.\n`2026-08-10 12:00:00 +0000 UTC` — the format this endpoint has\nemitted since PCP-6579. Empty when the source didn't carry an\nissue date. Migration to RFC 3339 is deferred to the UI refactor.\n",
           "type": "string"
         },
         "name": {
           "type": "string"
         },
         "nodeName": {
+          "type": "string"
+        },
+        "scope": {
+          "description": "One of `cluster`, `per-node`, `per-service`.",
+          "type": "string"
+        },
+        "subject": {
+          "description": "Subject DN. Left empty when not available from the source secret.",
           "type": "string"
         }
       }
@@ -4655,6 +4862,9 @@
         },
         "osImage": {
           "type": "string"
+        },
+        "upgradeStatus": {
+          "$ref": "#/definitions/v1EdgeHostUpgradeStatus"
         }
       }
     },
@@ -5462,6 +5672,62 @@
         },
         "ntp": {
           "$ref": "#/definitions/v1NTP"
+        },
+        "upgradeStatus": {
+          "$ref": "#/definitions/v1EdgeHostUpgradeStatus"
+        }
+      }
+    },
+    "v1EdgeHostUpgradeStatus": {
+      "description": "OS upgrade outcome for the edge host, computed on-box.",
+      "type": "object",
+      "properties": {
+        "attemptedImage": {
+          "type": "string"
+        },
+        "attemptedK8sPack": {
+          "type": "string"
+        },
+        "attemptedOSPack": {
+          "type": "string"
+        },
+        "attemptedRevision": {
+          "type": "string"
+        },
+        "attemptedSystemUri": {
+          "type": "string"
+        },
+        "isFailure": {
+          "description": "True when state is an upgrade failure, so clients need not know every state.",
+          "type": "boolean"
+        },
+        "lastProbeTime": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "lastTransitionTime": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "reason": {
+          "type": "string"
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "",
+            "Upgrading",
+            "Succeeded",
+            "RolledBack",
+            "Failed"
+          ]
         }
       }
     },
@@ -6929,10 +7195,25 @@
     "v1Pack": {
       "type": "object",
       "properties": {
+        "digest": {
+          "description": "The pack digest, on the same terms as the tag: a held update carries it, and the archive endpoints leave it empty.\n",
+          "type": "string"
+        },
         "logo": {
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "params": {
+          "description": "The pack parameters, on the same terms as the tag. A pack may carry its inputs as params instead of values, and a pack whose only change is in its params is still an update.\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "tag": {
+          "description": "The pack tag. A held update carries it, because the device decides whether an update is waiting by the tag as well as by the version and the values. The archive endpoints leave it empty: their source is a configuration file, which carries no tag.\n",
           "type": "string"
         },
         "values": {
@@ -7353,6 +7634,128 @@
     },
     "v1Unauthorized": {
       "description": "Unauthorized"
+    },
+    "v1UpdateLockGate": {
+      "description": "Body of the request that works the update lock. The gate to set is required.",
+      "type": "object",
+      "required": [
+        "gate"
+      ],
+      "properties": {
+        "gate": {
+          "description": "The gate to set. \"disengaged\" takes the lock off so the waiting profile applies on the next sync; \"engaged\" puts it back on, closing the window opened by a local unlock. Asking for the gate the lock already holds is not an error: the call answers 200 with the state as it stands and writes nothing.\n",
+          "type": "string",
+          "enum": [
+            "engaged",
+            "disengaged"
+          ]
+        },
+        "reason": {
+          "description": "Free-text reason for the transition, recorded in the audit line. Not used when the gate already holds, because then nothing is written and no audit line is written either.\n",
+          "type": "string"
+        }
+      }
+    },
+    "v1UpdateLockHeldProfile": {
+      "description": "The cluster-profile templates behind a held update: the profile hubble is serving while the lock holds it, so the Local UI can show what releasing the lock would change. The shape is the one the archive endpoints already serve, so the review reads a held update the way it reads an uploaded configuration in airgap mode. Only the held side is served. The profile in force is not repeated here: it comes from the applications endpoint, which is the source the review already pairs against. This is a separate operation from the lock status on purpose: the status is polled every ten seconds and stays small, while this larger payload is fetched on demand. An empty heldProfile is the whole of \"nothing is held\"; there is no flag beside it, because a flag would need a name, and the name that fits — pending — is taken by the lock status, where it means the narrower thing of an update that actually differs from the profile in force.\n",
+      "type": "object",
+      "properties": {
+        "heldProfile": {
+          "description": "The profile templates hubble is serving and the lock is holding, one entry per cluster profile hubble serves. Empty, never null, when nothing is held — the same as every other collection this API returns. profileName, profileUid, profileType, profileTags, profileDescription and the variable definitions are empty: ally serializes only the profile version and the packs, because those are what the device compares a held update by. Each pack carries its name, version, tag, digest, values and params, which is the set the device compares a pack by.\n",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileDetail"
+          },
+          "x-omitempty": false
+        },
+        "manifestChanges": {
+          "description": "The attached manifests a release would change, one entry per manifest. A manifest-only edit changes no field of the pack, so it cannot be read off heldProfile by comparing packs; the device compares the manifests hubble is serving against the ones it is running and lists the differences here. Empty, never null, when no manifest differs. A profile variable that only changes how a manifest resolves does not move the manifest's digest and is not listed.\n",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1UpdateLockManifestChange"
+          },
+          "x-omitempty": false
+        },
+        "writtenAt": {
+          "description": "When ally wrote the held profile, RFC3339. Empty when nothing is held.",
+          "type": "string",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1UpdateLockManifestChange": {
+      "description": "One attached manifest a release would add, change or remove.",
+      "type": "object",
+      "properties": {
+        "change": {
+          "description": "added when the held profile carries the manifest and the device does not, removed when the device runs it and the held profile does not, changed when both carry it with different content.\n",
+          "type": "string",
+          "enum": [
+            "added",
+            "changed",
+            "removed"
+          ],
+          "x-omitempty": false
+        },
+        "manifest": {
+          "description": "File name of the manifest within the pack.",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "pack": {
+          "description": "Name of the pack the manifest is attached to.",
+          "type": "string",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1UpdateLockStatus": {
+      "description": "State of the cluster-profile update lock on this device.",
+      "type": "object",
+      "properties": {
+        "admittedProfileHash": {
+          "description": "The profile the device has admitted. An unlock deliberately does not clear this: a cleared hash makes the incoming profile look already admitted.\n",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "enabled": {
+          "description": "Whether this cluster is subject to the update lock at all.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "engagedAt": {
+          "description": "When the gate last went back on, stamped by whoever put it back: stylus-operator on its first arm and on every re-engage, or this device when someone re-engages the lock by hand. Empty on a cluster whose lock has never been engaged. This is the record of the engagement in force; unlockedAt records the last time the lock came off.\n",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "gate": {
+          "description": "The lock right now. \"engaged\" holds profile updates; \"disengaged\" is the window opened by a local unlock, which stylus-operator closes once the rollout finishes.\n",
+          "type": "string",
+          "enum": [
+            "engaged",
+            "disengaged"
+          ],
+          "x-omitempty": false
+        },
+        "pending": {
+          "description": "True while a profile update is waiting for a local unlock. Derived on read from the SpectroCluster condition, not stored. It stays true after an unlock: the unlock stops the lock holding the update, it does not apply it.\n",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "pendingSince": {
+          "description": "When the waiting profile started waiting, from the UpdateLocked condition.",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "unlockedAt": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "unlockedBy": {
+          "type": "string",
+          "x-omitempty": false
+        }
+      }
     },
     "v1UpdateStrategy": {
       "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",

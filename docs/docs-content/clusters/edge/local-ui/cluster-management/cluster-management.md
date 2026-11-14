@@ -17,6 +17,9 @@ manage clusters, upload content bundles, or cluster definition on a centrally ma
 manage the cluster instead. For more information, refer to
 [Create Cluster Definition](../../site-deployment/cluster-deployment.md).
 
+On a centrally managed Edge Native cluster, you can use Local UI to review and release the updates that the
+[update lock](../../cluster-management/lock-profile-updates.md) holds.
+
 Refer to the following resources to learn how to upload content and create a cluster using Local UI:
 
 - [Upload Content Bundle](./upload-content-bundle.md)
