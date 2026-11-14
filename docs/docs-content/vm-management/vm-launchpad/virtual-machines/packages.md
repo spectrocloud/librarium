@@ -291,10 +291,11 @@ Windows golden images.
 
 ## Upgrade Considerations
 
-Earlier VM Launchpad releases stored uploaded package files and branding images on a data volume. VM Launchpad no longer
-uses a data volume and stores these files in a [package store](#package-storage) instead. The upgrade does not copy
-anything from the data volume. You must upload your custom packages and branding images again. This applies to the VM
-Launchpad appliance and to VMO pack deployments that set `persistence.enabled` to `true` in the VMO pack values.
+Earlier VM Launchpad releases stored uploaded package files and branding images on a persistent volume attached to the
+VM Launchpad pod. VM Launchpad no longer uses this volume or its PersistentVolumeClaim (PVC). It stores these files in a
+[package store](#package-storage) instead. The upgrade does not copy anything from the volume. You must upload your
+custom packages and branding images again. This applies to the VM Launchpad appliance and to VMO pack deployments that
+set `persistence.enabled` to `true` in the VMO pack values.
 
 ### Before You Upgrade
 
@@ -323,8 +324,8 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
 
    Replace `<vm-launchpad-host>` with the hostname of VM Launchpad.
 
-If you upgrade without a copy, you can still copy the files out of the previous data volume. Refer to
-[Recover Files from the Previous Data Volume](#recover-files-from-the-previous-data-volume).
+If you upgrade without a copy, you can still copy the files out of the previous persistent volume. Refer to
+[Recover Files from the Previous Persistent Volume](#recover-files-from-the-previous-persistent-volume).
 
 ### Upload Packages and Branding Images Again
 
@@ -337,7 +338,7 @@ upload the next time the VM Launchpad pod restarts. Refer to
 
 If you do not have a copy of a custom package, recover it before you delete its row in step 2. The recovery steps use
 the package rows to find each file. Refer to
-[Recover Files from the Previous Data Volume](#recover-files-from-the-previous-data-volume).
+[Recover Files from the Previous Persistent Volume](#recover-files-from-the-previous-persistent-volume).
 
 1. Navigate to **Image Catalog** > **Packages**.
 
@@ -373,10 +374,10 @@ the package rows to find each file. Refer to
 
    Replace `<api-key>` and `<vm-launchpad-host>` with the same values as in step 4.
 
-### Recover Files from the Previous Data Volume
+### Recover Files from the Previous Persistent Volume
 
-VM Launchpad keeps the previous data volume but no longer mounts it, so you can copy files out of the volume before you
-upload them again. The volume is the `vmo-manager-data` PersistentVolumeClaim (PVC), or `data-vmo-manager-<number>` on
+VM Launchpad keeps the previous persistent volume but no longer mounts it, so you can copy files out of the volume
+before you upload them again. Its PersistentVolumeClaim (PVC) is `vmo-manager-data`, or `data-vmo-manager-<number>` on
 older StatefulSet installations. Nothing deletes it. Keep it until you no longer need to roll back to an earlier
 release, because a rollback mounts this volume again and expects the files on it.
 
