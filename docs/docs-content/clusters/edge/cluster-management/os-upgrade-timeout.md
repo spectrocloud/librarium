@@ -51,7 +51,7 @@ parameter applies to both appliance mode and agent mode deployments.
 
 - An Edge cluster profile, or an existing Edge cluster and the cluster profile that it uses.
 
-- Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.b or later. Earlier
+- Every Edge host of the cluster must run the Palette agent version that ships with Palette 4.10.44 or later. Earlier
   versions of the agent ignore `system.upgradeTimeoutMinutes` and limit each attempt to 15 minutes.
 
 - _(Optional)_ Access to the cluster with kubectl to check the limit that an OS upgrade uses. Refer to

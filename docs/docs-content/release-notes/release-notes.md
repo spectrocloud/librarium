@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 15, 2026 - Release 4.10.b {#release-notes-4.10.b}
+## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
 ### Security Notices
 
@@ -333,7 +333,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.b Palette release is 4.10.b.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.44 Palette release is 4.10.14.
 
 :::
 
@@ -496,13 +496,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9954 -->
-<!-- Release day: replace 4.10.b with the CanvOS version for 4.10.b. -->
 
 - Fixed an issue that caused containerized workloads that use `sudo` or PAM to fail on Edge hosts built from Ubuntu
   24.04 [CanvOS](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) images with a hardened
   `/etc/shadow` file, for example, one with file mode `0000`. The workloads failed with
   `sudo: PAM account management error: Authentication service cannot retrieve authentication info`. Edge artifacts built
-  with CanvOS version 4.10.b or later include the fix.
+  with CanvOS version 4.10.14 or later include the fix.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12545 -->
 
@@ -512,44 +511,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ### VerteX
 
-#### Breaking Changes {#breaking-changes-vertex-4.10.b}
-
-#### Upgrade Notes {#upgrade-notes-vertex-4.10.b}
-
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.10.b) for more details.
-
-#### Improvements
-
-#### Bug Fixes
-
-### Virtual Machine Orchestrator (VMO)
-
-#### VMO Pack
-
-##### Breaking Changes {#breaking-changes-vmo-pack-4.10.b}
-
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-##### Deprecations and Removals
-
-#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.b}
-
-##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.b}
-
-##### Features
-
-##### Improvements
-
-##### Bug Fixes
-
-##### Deprecations and Removals
 
 ### Automation
 
@@ -557,14 +522,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::info
 
-The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.b Palette release is
-4.10.b. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.44 Palette release is
+4.10.16. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
 
 :::
 
 <!-- release-notes-automation-callout-4.10.b-end -->
-
-#### Breaking Changes {#breaking-changes-automation-4.10.b}
 
 #### Features
 
@@ -580,8 +543,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- release-notes-automation-features-4.10.b-end -->
 
-#### Improvements
-
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2493 -->
@@ -590,10 +551,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
   `cluster_profile` entry in the Terraform state of cluster resources, such as `spectrocloud_cluster_eks`, after an
   apply that changed a `cluster_profile` block with both `pack` overrides and `variables`. As a result, later
   `terraform plan` runs reported a cluster profile change when nothing had changed.
-
-#### Deprecations and Removals
-
-### Docs and Education
 
 ### November 15, 2026 - Component Updates {#component-updates-2026-46}
 

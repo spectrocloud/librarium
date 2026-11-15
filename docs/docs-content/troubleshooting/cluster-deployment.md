@@ -12,13 +12,11 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 ## Scenario - AKS CSI Drivers Fail to Restart After Palette Upgrade
 
-<!-- Release day: replace each "4.10.b" in this scenario with the Palette version for 4.10.b. -->
-
-After Palette is upgraded to 4.10.b or later, an AKS cluster deployed with a service principal cloud account shows an
+After Palette is upgraded to 4.10.44 or later, an AKS cluster deployed with a service principal cloud account shows an
 `AKSCSIDriversOff` or `AKSCSIDriverRestartFailed` warning event. To view the events of a cluster, log in to Palette.
 From the left main menu, select **Clusters**, select the cluster, and then select the **Events** tab.
 
-Palette versions earlier than 4.10.b created the `azure-cloud-provider` secret in the `kube-system` namespace of these
+Palette versions earlier than 4.10.44 created the `azure-cloud-provider` secret in the `kube-system` namespace of these
 clusters. The AKS-managed Azure Files, Azure Disk, and Azure Blob CSI drivers read this secret when they start, so they
 used the cloud account's service principal instead of the
 [AKS control plane identity](https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview#summary-of-managed-identities-used-by-aks).
@@ -102,8 +100,6 @@ automatically.
 
 ## Scenario - Cluster RBAC and Workspace Namespaces Deleted and Recreated Empty
 
-<!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
-
 If the Palette management plane briefly loses access to its database, the Palette agent on a workload cluster can delete
 the namespaces that Palette created through
 [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
@@ -116,7 +112,7 @@ The management plane can lose access to its database during Palette upgrades or 
 its primary, even briefly. On self-hosted Palette and Palette VerteX, for example, a MongoDB crash, a failover, or
 overlapping node maintenance can cause this.
 
-Starting with Palette agent version 4.10.b, the agent does not delete these namespaces when the management plane loses
+Starting with Palette agent version 4.10.19, the agent does not delete these namespaces when the management plane loses
 access to its database. Workload clusters remain affected until their Palette agent is upgraded. This includes clusters
 with [paused agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md).
 
@@ -179,7 +175,7 @@ longer need one of these namespaces, delete it with `kubectl delete namespace <n
 
 ### Restore the Labels After the Agent Upgrade
 
-After the Palette agent on a workload cluster is upgraded to version 4.10.b or later, you can restore the labels that
+After the Palette agent on a workload cluster is upgraded to version 4.10.19 or later, you can restore the labels that
 you removed. With the labels restored, removing a namespace from the cluster RBAC or workspace settings deletes it from
 the cluster again.
 
@@ -195,8 +191,8 @@ on its next reconciliation.
 
 2. From the left main menu, select **Clusters**, and then select the workload cluster.
 
-3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.b or later. If it shows an earlier
-   version, do not restore the labels on this cluster.
+3. On the **Overview** tab, check that the **Agent version** field shows version 4.10.19 or later. If it shows an
+   earlier version, do not restore the labels on this cluster.
 
 4. On the **Workloads** > **Namespaces** tab, select **Manage Namespaces**, and then record the namespaces listed on the
    **Namespaces** tab in the **Settings** pane.

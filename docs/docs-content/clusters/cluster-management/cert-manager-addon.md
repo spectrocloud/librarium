@@ -39,11 +39,8 @@ certificate expires as necessary.
 
 ## Limitations
 
-<!-- The Edge agent version in this section is a release placeholder. Replace it with the final Edge agent version
-once it is known. -->
-
 - Cert Manager customizations require Palette agent version 4.8.9 or later. Edge clusters require Palette agent version
-  4.10.b or later.
+  4.10.14 or later.
 
 - Imported clusters do not support Cert Manager customizations.
 

@@ -66,7 +66,7 @@ with [Pause Agent Upgrades](../../cluster-management/platform-settings/pause-pla
 ## Prerequisites
 
 - A centrally managed Edge Native cluster, or the Edge hosts for a new one. Every Edge host of the cluster must run the
-  Palette agent version that ships with Palette 4.10.b or later. An older agent ignores the setting and does not report
+  Palette agent version that ships with Palette 4.10.44 or later. An older agent ignores the setting and does not report
   an error.
 
 - The `cluster.update` permission in Palette to turn the update lock on or off.
