@@ -316,9 +316,7 @@ certificates as distrusted and rebuilds the trust store each time the Edge host 
 Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
 provisioning or agent upgrades.
 
-<!-- Release day: replace each "4.10.b" in this scenario with the Palette agent version that ships with 4.10.b, not the Palette version. -->
-
-Palette agent versions 4.10.3 and later, but earlier than 4.10.b, apply a fixed time limit to each provider image
+Palette agent versions 4.10.3 and later, but earlier than 4.10.14, apply a fixed time limit to each provider image
 download and extraction attempt. The limit is 45 minutes in versions 4.10.3 through 4.10.9, and 6 hours in version
 4.10.10 and later. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
 beginning, because these versions do not resume partially completed downloads.
@@ -326,15 +324,15 @@ beginning, because these versions do not resume partially completed downloads.
 If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
 upgrade may not complete.
 
-Starting with Palette agent version 4.10.b, the Palette agent no longer applies a fixed time limit to each download
+Starting with Palette agent version 4.10.14, the Palette agent no longer applies a fixed time limit to each download
 attempt. It stops an attempt only when it receives no data for 5 minutes, and the next attempt resumes the download from
 where the previous attempt stopped. To keep partially completed downloads, the Edge host needs free disk space of about
 three times the compressed size of the provider image. If less space is available, each new attempt starts from the
 beginning.
 
 If a cluster update changes the provider image of a deployed cluster, the download is part of an OS upgrade attempt,
-which has a separate time limit. In Palette agent versions earlier than 4.10.b, each OS upgrade attempt ends after 15
-minutes. Starting with Palette agent version 4.10.b, the default limit is 45 minutes, and you can change it. Refer to
+which has a separate time limit. In Palette agent versions earlier than 4.10.14, each OS upgrade attempt ends after 15
+minutes. Starting with Palette agent version 4.10.14, the default limit is 45 minutes, and you can change it. Refer to
 [Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ### Debug Steps
@@ -362,7 +360,7 @@ minutes. Starting with Palette agent version 4.10.b, the default limit is 45 min
    If `context deadline exceeded` messages repeat at intervals that match the time limit for your Palette agent version,
    the download is consistently exceeding the time limit.
 
-   In Palette agent version 4.10.b and later, you can also follow provider image downloads during cluster provisioning
+   In Palette agent version 4.10.14 and later, you can also follow provider image downloads during cluster provisioning
    in Palette. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Select the Edge
    host, and then select the **Events** tab. The events show when a download starts, resumes, retries, or completes.
 
@@ -400,8 +398,8 @@ minutes. Starting with Palette agent version 4.10.b, the default limit is 45 min
    that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
 
 If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host. On
-Palette agent versions earlier than 4.10.b, the download and extraction must complete within the time limit. If a
-cluster update changes the provider image, you can also increase the OS upgrade timeout on Palette agent version 4.10.b
+Palette agent versions earlier than 4.10.14, the download and extraction must complete within the time limit. If a
+cluster update changes the provider image, you can also increase the OS upgrade timeout on Palette agent version 4.10.14
 and later. Refer to [Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
