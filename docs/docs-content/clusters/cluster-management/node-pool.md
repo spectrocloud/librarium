@@ -106,6 +106,11 @@ pools. You must then add the matching toleration to your non-system pods so they
 the custom taint. Because the system pods do not have the toleration that matches the custom taint, they are only
 scheduled on the dedicated node pool.
 
+Custom taints with the `NoSchedule` or `NoExecute` effect stop conformance scans from running any tests. If you plan to
+run conformance scans on the cluster, review the
+[conformance scan node pool requirements](./compliance-scan.md#node-pool-requirements) before you apply custom taints to
+your other node pools.
+
 To dedicate a node pool for system pods, select the **Dedicate node pool for system pods** option when configuring the
 pool.
 

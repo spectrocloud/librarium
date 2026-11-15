@@ -143,7 +143,7 @@ configuration parameters.
 
 5. Paste the Edge host's unique identifier in the **Edge Host IDs** input box.
 
-6. Specify any tags or pairing keys if you desire.
+6. _(Optional)_ Add tags to each Edge host in its **Tags** field.
 
 7. Confirm your changes to register the Edge host.
 
