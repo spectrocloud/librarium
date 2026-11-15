@@ -9,7 +9,8 @@ sidebar_position: 70
 
 Palette supports the configuration of multiple Open Container Initiative (OCI) registries. You can add a private OCI
 registry to Palette and use OCI artifacts in your cluster profiles. Palette only supports custom OCI registries that are
-hosting the following type of artifacts: Helm charts, Zarf packages, and Packs.
+hosting the following type of artifacts: Helm charts, Zarf packages, and Packs. You can also add an OCI registry as an
+image registry, which Edge clusters use to pull provider images.
 
 Registries that comply with the OCI specification and support basic authentication are supported, although you can also
 add registries that do not require authentication. OCI-compliant registries with basic authentication are labeled as
@@ -20,11 +21,12 @@ add registries that do not require authentication. OCI-compliant registries with
 
 The following table describes the authentication methods supported for each OCI registry type.
 
-| **Provider** | **Description**                 | **No Authentication** | **Basic (includes ACR)** |   **Amazon ECR**   |
-| ------------ | ------------------------------- | :-------------------: | :----------------------: | :----------------: |
-| **Helm**     | OCI-based Helm Chart registries |  :white_check_mark:   |    :white_check_mark:    | :white_check_mark: |
-| **Zarf**     | OCI-based Zarf registries       |          :x:          |    :white_check_mark:    |        :x:         |
-| **Packs**    | OCI-based Packs registries      |          :x:          |    :white_check_mark:    | :white_check_mark: |
+| **Provider** | **Description**                                       | **No Authentication** | **Basic (includes ACR)** |   **Amazon ECR**   |
+| ------------ | ----------------------------------------------------- | :-------------------: | :----------------------: | :----------------: |
+| **Helm**     | OCI-based Helm Chart registries                       |  :white_check_mark:   |    :white_check_mark:    | :white_check_mark: |
+| **Zarf**     | OCI-based Zarf registries                             |          :x:          |    :white_check_mark:    |        :x:         |
+| **Packs**    | OCI-based Packs registries                            |          :x:          |    :white_check_mark:    | :white_check_mark: |
+| **Image**    | OCI-based provider image registries for Edge clusters |  :white_check_mark:   |    :white_check_mark:    | :white_check_mark: |
 
 :::info
 
@@ -63,6 +65,9 @@ how to add an OCI through the system console, refer to the appropriate
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
   synchronization, you must re-register the OCI Helm registry with Palette.
 
+- OCI image registries do not support synchronization, and Amazon ECR image registries support only AWS Security Token
+  Service (STS) authentication.
+
 ## Next Steps
 
 Review the appropriate guide to add an OCI registry to Palette based on the type of content you want to expose in
@@ -73,3 +78,5 @@ Palette. If your registry contains multiple content types that you want to use, 
 - [Add OCI Packs Registry](./add-oci-packs.md)
 
 - [Add OCI Zarf Registry](./add-oci-zarf.md)
+
+- [Add Amazon ECR as an Image Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-ecr-provider-registry.md#add-amazon-ecr-as-an-image-registry)
