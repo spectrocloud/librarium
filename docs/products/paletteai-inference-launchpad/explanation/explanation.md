@@ -24,6 +24,7 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Estimated Savings](./estimated-savings.md)                 | How much you save by serving on the appliance instead of a frontier model, and how the estimate is calculated.                         |
 | [Routing Behavior](./routing-behavior.md)                   | How the Tier map and the semantic router pick the model for each request, and why each appliance runs one mode.                        |
 | [Semantic Router Guard](./semantic-router-guard.md)         | The two checks the semantic router makes on each request it reads, and when it refuses a request with HTTP `403`.                      |
+| [Mid-Task Model Switching](./mid-task-model-switching.md)   | How the hard turns of a coding assistant's task move to a capable model, the switching settings, and when the efficient model answers. |
 | [External Inferencing](./frontier-providers.md)             | Where endpoints are set up, which key the appliance sends, the levers that keep external traffic occasional, and bursting.             |
 | [Model Certification](./model-certification.md)             | What certified means, how models are certified, and how to choose models for your use case.                                            |
 | [Model Recipes](./model-recipes.md)                         | What a model recipe contains, why recipes exist, and why the model is not in the catalog between the two uploads.                      |
