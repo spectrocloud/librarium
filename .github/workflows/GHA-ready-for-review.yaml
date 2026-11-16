@@ -127,7 +127,7 @@ jobs:
         if: steps.check.outputs.notified == 'false'
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          # The marker on its own line is what the check step looks for to avoid posting twice.
+          # The check step looks for the <!-- slack-notified --> marker to avoid posting twice.
           BODY=$(printf '✅ Review request posted to #docs-pr-review at %s\n<!-- slack-notified -->' "$TIMESTAMP")
           curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
