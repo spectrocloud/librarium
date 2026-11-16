@@ -152,10 +152,11 @@ Most domains use `read` and `write`. The following table describes every other a
 | `export`, `import`                   | `config-bundle`              | Export and import configuration bundles. This domain does not define `read` or `write`.                                                     |
 | `manage-manifests`                   | `dashboards`                 | Create, list, and delete dashboard manifests.                                                                                               |
 | `configure`                          | `monitoring`                 | Change the monitoring configuration.                                                                                                        |
-| `partition`                          | `storage`                    | Repartition a disk on a cluster node. The `write` action of the domain does not include it.                                                 |
+| `partition`                          | `storage`                    | Partition a disk on a cluster node. The `write` action does not include it.                                                                 |
 
-Only the Platform Admin role includes the `configure` and `partition` actions. No procedure in this section depends on
-either one.
+Among the built-in roles, only Platform Admin includes the `configure` and `partition` actions. The
+[Partition a Disk for Storage](../infrastructure/storage.md#partition-a-disk-for-storage) procedure requires
+`vmo:storage:partition`.
 
 Three domains define a single action. The `audit` domain defines only `read`, and the `branding` and `instancetypes`
 domains define only `write`.
@@ -164,31 +165,31 @@ domains define only `write`.
 
 The following table lists every VMO permission domain and the actions each domain defines.
 
-| **Domain**      | **Actions**                                                 | **Description**                                                                                                                                          |
-| --------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vm`            | `create`, `read`, `update`, `delete`, `operate`, `snapshot` | Virtual machines, including lifecycle, console access, and snapshots.                                                                                    |
-| `config`        | `read`, `write`                                             | Platform configuration, including environment variables.                                                                                                 |
-| `config-bundle` | `export`, `import`                                          | Export and import configuration bundles.                                                                                                                 |
-| `branding`      | `write`                                                     | Branding assets (logo, colors).                                                                                                                          |
-| `certificates`  | `read`, `write`                                             | TLS certificates.                                                                                                                                        |
-| `packages`      | `read`, `write`                                             | Package repository. Golden image DataVolume operations (upload, delete, build) also use this domain.                                                     |
-| `templates`     | `read`, `write`                                             | VM templates.                                                                                                                                            |
-| `instancetypes` | `write`                                                     | Cluster-scoped instance types and preferences (Platform Admin only). Viewing them requires `vmo:vm:read`.                                                |
-| `dashboards`    | `read`, `manage-manifests`                                  | Dashboards and metrics.                                                                                                                                  |
-| `local-users`   | `read`, `write`                                             | Local authentication accounts.                                                                                                                           |
-| `api-keys`      | `read`, `write`                                             | API key creation and revocation. Refer to [API Keys](./api-keys.md).                                                                                     |
-| `iam`           | `read`, `write`                                             | IAM roles, group mappings, and access policies.                                                                                                          |
-| `audit`         | `read`                                                      | Audit log.                                                                                                                                               |
-| `system`        | `read`, `write`                                             | System health and platform information.                                                                                                                  |
-| `ui-registry`   | `read`, `write`                                             | Resource Catalog registrations, which give a custom resource its own page in the UI. Platform Admin only. The Resource Catalog is turned off by default. |
-| `monitoring`    | `read`, `configure`                                         | Monitoring configuration.                                                                                                                                |
-| `storage`       | `read`, `write`, `partition`                                | StorageClasses, StoragePools, DataVolumes other than golden images, HA settings, and disk partitioning on cluster nodes.                                 |
-| `network`       | `create`, `read`, `update`, `delete`                        | Network Attachment Definition (NAD) resources and network capabilities.                                                                                  |
-| `namespace`     | `create`, `read`, `update`, `delete`                        | Namespaces and namespace policies.                                                                                                                       |
-| `roles`         | `read`, `write`                                             | VMO role definitions. `write`, which creates, edits, and deletes custom roles, is Platform Admin only.                                                   |
-| `features`      | `read`, `write`                                             | Feature flags.                                                                                                                                           |
-| `kubevirt`      | `read`, `write`                                             | Cluster-level KubeVirt configuration.                                                                                                                    |
-| `admission`     | `read`, `write`                                             | Admission control policies.                                                                                                                              |
+| **Domain**      | **Actions**                                                 | **Description**                                                                                                                                           |
+| --------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vm`            | `create`, `read`, `update`, `delete`, `operate`, `snapshot` | Virtual machines, including lifecycle, console access, and snapshots.                                                                                     |
+| `config`        | `read`, `write`                                             | Platform configuration, including environment variables.                                                                                                  |
+| `config-bundle` | `export`, `import`                                          | Export and import configuration bundles.                                                                                                                  |
+| `branding`      | `write`                                                     | Branding assets (logo, colors).                                                                                                                           |
+| `certificates`  | `read`, `write`                                             | TLS certificates.                                                                                                                                         |
+| `packages`      | `read`, `write`                                             | Package repository. Golden image DataVolume operations (upload, delete, build) also use this domain.                                                      |
+| `templates`     | `read`, `write`                                             | VM templates.                                                                                                                                             |
+| `instancetypes` | `write`                                                     | Cluster-scoped instance types and preferences (Platform Admin only). Viewing them requires `vmo:vm:read`.                                                 |
+| `dashboards`    | `read`, `manage-manifests`                                  | Dashboards and metrics.                                                                                                                                   |
+| `local-users`   | `read`, `write`                                             | Local authentication accounts.                                                                                                                            |
+| `api-keys`      | `read`, `write`                                             | API key creation and revocation. Refer to [API Keys](./api-keys.md).                                                                                      |
+| `iam`           | `read`, `write`                                             | IAM roles, group mappings, and access policies.                                                                                                           |
+| `audit`         | `read`                                                      | Audit log.                                                                                                                                                |
+| `system`        | `read`, `write`                                             | System health and platform information.                                                                                                                   |
+| `ui-registry`   | `read`, `write`                                             | Resource Catalog registrations, which give a custom resource its own page in the UI (Platform Admin only). The Resource Catalog is turned off by default. |
+| `monitoring`    | `read`, `configure`                                         | Monitoring configuration.                                                                                                                                 |
+| `storage`       | `read`, `write`, `partition`                                | StorageClasses, StoragePools, DataVolumes other than golden images, HA settings, and disk partitioning on cluster nodes.                                  |
+| `network`       | `create`, `read`, `update`, `delete`                        | Network Attachment Definition (NAD) resources and network capabilities.                                                                                   |
+| `namespace`     | `create`, `read`, `update`, `delete`                        | Namespaces and namespace policies.                                                                                                                        |
+| `roles`         | `read`, `write`                                             | VMO role definitions. `write`, which creates, edits, and deletes custom roles, is Platform Admin only.                                                    |
+| `features`      | `read`, `write`                                             | Feature flags.                                                                                                                                            |
+| `kubevirt`      | `read`, `write`                                             | Cluster-level KubeVirt configuration.                                                                                                                     |
+| `admission`     | `read`, `write`                                             | Admission control policies.                                                                                                                               |
 
 :::info
 
