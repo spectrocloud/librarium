@@ -589,20 +589,43 @@ for you. To inspect or modify PVCs directly, use `kubectl` or another Kubernetes
 
 ## StorageClass Auto-Detection
 
-VMO does not require a static StorageClass configuration. On startup, VMO reads the `spec.storageClassName` of its own
-data PVC, such as `vmo-manager-data`, and caches the value. VMO uses the detected StorageClass as the default for:
+VMO does not require a static StorageClass configuration. It selects the default StorageClass for VM workloads in the
+following order.
 
-- New VM disks.
+1. A StorageClass that is enabled for VM workloads. If more than one StorageClass is enabled, VMO uses the first one in
+   alphabetical order. Refer to [Enable a StorageClass for VM Workloads](#enable-a-storageclass-for-vm-workloads).
+
+2. The cluster default StorageClass. Refer to [Set the Default StorageClass](#set-the-default-storageclass).
+
+VMO uses the selected StorageClass as the default for:
+
+- New VM disks and DataVolumes. For example, the **Create DataVolume** form preselects it.
 - Golden image DataVolumes.
 - Virtio PVCs.
 - Builder disks.
 
-If VMO does not detect a StorageClass, such as when no bound PVC exists, VMO falls back to the cluster default. When no
-cluster default exists, you must specify a StorageClass explicitly when creating resources.
+If no StorageClass is enabled for VM workloads and the cluster has no default StorageClass, you must specify a
+StorageClass explicitly when creating resources.
+
+If you deploy VM Launchpad with the VMO pack, you can set the StorageClass that VMO uses for golden images, including
+builder disks and Virtio PVCs. This StorageClass takes precedence over a StorageClass that is enabled for VM workloads
+and over the cluster default. The VM Launchpad appliance does not support this setting. To set it, add the following
+values to the VMO pack in your cluster profile.
+
+```yaml
+charts:
+  virtual-machine-orchestrator:
+    vmo-manager:
+      goldenImages:
+        storageClass: "<storage-class-name>"
+```
+
+Replace `<storage-class-name>` with the name of the StorageClass.
 
 :::tip
 
-To control the default storage for VM disks, configure the VMO data PVC with the StorageClass you want to use. This PVC
-is the single source of truth for default storage.
+To control the default storage for VM disks, enable the StorageClass that you want for VM workloads. An enabled
+StorageClass takes precedence over the cluster default. You do not need to change the cluster default, which deletes and
+recreates the affected StorageClasses.
 
 :::
