@@ -65,6 +65,7 @@ check whether your upgrade path skips a Kubernetes minor version.
 
 | **Palette Version** | **Kubernetes Version** |
 | ------------------- | ---------------------- |
+| 4.10.44             | 1.35.10                |
 | 4.10.33             | 1.35.8                 |
 | 4.10.27             | 1.35.8                 |
 | 4.10.25             | 1.35.8                 |
