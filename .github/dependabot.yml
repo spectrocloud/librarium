@@ -8,6 +8,7 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 10
     target-branch: "master"
     commit-message:
       prefix: "chore:"
@@ -16,6 +17,7 @@ updates:
     directory: "/" # Root directory of the repository
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 10
     target-branch: "master"
     commit-message:
       prefix: "chore:"

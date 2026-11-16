@@ -8,8 +8,8 @@ sidebar_position: 9
 tags: ["vmo", "vm launchpad", "packages"]
 ---
 
-VM Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and serve them
-to VMs via a built-in APT/YUM-compatible repository.
+PaletteAI VM Launchpad provides package management for airgap environments. Upload DEB, RPM, MSI, and ISO packages, and
+serve them to VMs via a built-in APT/YUM-compatible repository.
 
 ## Overview
 

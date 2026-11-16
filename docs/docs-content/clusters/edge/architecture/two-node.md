@@ -48,8 +48,9 @@ change the number of nodes.
   [Deployment Modes](../../../deployment-modes/deployment-modes.md).
 - Two-node clusters can only have exactly two nodes in the control plane pool. You cannot adjust the number of the nodes
   in the control plane pool after cluster creation.
-- Two-node clusters only support K3s and Palette Optimized Canonical Kubernetes. Other Kubernetes distributions are not
-  supported.
+- Two-node clusters only support K3s on Ubuntu 22.04 or Ubuntu 24.04. Other Kubernetes distributions and operating
+  systems are not supported.
+- Two-node clusters do not support FIPS, because K3s is not available as a FIPS-certified distribution.
 
 ## Use Cases
 

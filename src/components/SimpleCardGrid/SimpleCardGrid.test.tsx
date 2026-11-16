@@ -8,9 +8,9 @@ jest.mock("./SimpleCardFooterArrow", () => {
   });
 });
 
-jest.mock("../VersionedLink", () => {
-  return jest.fn(({ url, component }) => {
-    return <a href={url}>{component}</a>;
+jest.mock("@docusaurus/Link", () => {
+  return jest.fn(({ to, children }) => {
+    return <a href={to}>{children}</a>;
   });
 });
 
@@ -93,5 +93,17 @@ describe("Display SimpleCardGrid", () => {
     it(tc.name, () => {
       assert(tc.cards);
     });
+  });
+
+  it("compact cards render text links and tags", () => {
+    const compactCards = [{ ...testCards[0], tags: ["Edge", "Airgap"] }, testCards[1]];
+    render(<SimpleCardGrid compact cards={compactCards} />);
+
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    compactCards.forEach((card) => {
+      expect(screen.getByText(card.title)).toBeInTheDocument();
+      expect(screen.getByText(card.buttonText, { selector: "span" })).toBeInTheDocument();
+    });
+    expect(screen.getByText("Airgap")).toBeInTheDocument();
   });
 });

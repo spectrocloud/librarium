@@ -10,38 +10,456 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Palette Agent Restarts Repeatedly after Registration on Trusted Boot Edge Hosts
+
+Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
+Palette when they register. This affects Edge hosts that you installed from an Edge Installer ISO with a Palette agent
+version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
+that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect
+that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode, cannot find the cluster
+configuration that the Edge host receives only after registration, and restarts every few seconds.
+
+In Palette, the Edge host stops sending heartbeats, its health status changes to **Unhealthy**, and it still shows the
+earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
+`starting stylus agent after upgrade`.
+
+Starting with Palette agent version 4.10.14, the Palette agent detects registration mode on these Edge hosts. Palette
+versions 4.10.44 and later upgrade Edge hosts to Palette agent version 4.10.14 or later during registration. Upgrading
+Palette does not recover an Edge host that is already affected, because its Palette agent cannot connect to Palette.
+
+### Debug Steps {#debug-steps-trusted-boot-registration}
+
+1. Access the affected Edge host through its console or an SSH connection.
+
+2. Check the Palette agent log for the registration mode and the configuration error.
+
+   ```bash
+   sudo grep --extended-regexp 'registration mode|80_stylus.yaml' /var/log/stylus-agent.log | tail --lines 2
+   ```
+
+   The issue affects the Edge host if the output shows `registration mode: false`, followed by an error that the
+   `/oem/80_stylus.yaml` file does not exist.
+
+   ```bash hideClipboard title="Example Output"
+   time="2026-11-12T14:25:07Z" level=info  msg="registration mode: false" version=v4.10.11
+   time="2026-11-12T14:25:07Z" level=fatal msg="could not read cloud configuration from run: open /oem/80_stylus.yaml: no such file or directory" version=v4.10.11
+   ```
+
+3. Confirm that the Edge host boots from a Unified Kernel Image (UKI) and does not have a registration state directory.
+
+   ```bash
+   grep --only-matching rd.immucore.uki /proc/cmdline
+   ls /opt/spectrocloud/state/
+   ```
+
+   The issue affects the Edge host if the first command returns `rd.immucore.uki` and the second command reports that
+   the directory does not exist.
+
+   ```bash hideClipboard title="Example Output"
+   rd.immucore.uki
+   ls: cannot access '/opt/spectrocloud/state/': No such file or directory
+   ```
+
+4. Create the registration state file, and then reboot the Edge host.
+
+   ```bash
+   sudo mkdir --parents /opt/spectrocloud/state
+   sudo touch /opt/spectrocloud/state/registration
+   sudo reboot
+   ```
+
+5. After the Edge host restarts, verify that the Palette agent starts in registration mode.
+
+   ```bash
+   sudo grep --extended-regexp 'registration mode|Registration completed' /var/log/stylus-agent.log | tail --lines 2
+   ```
+
+   The output shows `registration mode: true` and `Registration completed`. If the output does not show
+   `Registration completed` yet, wait, and then run the command again.
+
+   ```bash hideClipboard title="Example Output"
+   time="2026-11-12T14:31:42Z" level=info  msg="registration mode: true" version=v4.10.11
+   time="2026-11-12T14:32:10Z" level=info  msg="Registration completed" version=v4.10.11
+   ```
+
+   In Palette, the health status of the Edge host changes to **Healthy**.
+
+6. _(Self-hosted Palette and Palette VerteX only)_ To prevent the issue, take one of the following actions before you
+   register Edge hosts that you installed from an ISO with a Palette agent version earlier than 4.10.0.
+
+   - Upgrade Palette or Palette VerteX to version 4.10.44 or later.
+
+   - Pause agent upgrades for Edge hosts that are not part of a cluster in their project or tenant. Resume agent
+     upgrades after you upgrade Palette or Palette VerteX to version 4.10.44 or later. Refer to
+     [Agent Upgrades for PCG and Edge Hosts](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts).
+
+## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
+
+Edge hosts might ignore the Network Time Protocol (NTP) servers that you configure in a `systemd-timesyncd` drop-in
+file. This occurs when a cloud-init stage in the Edge Installer user data or the OS pack writes the drop-in file and
+creates the `/etc/systemd/timesyncd.conf.d` directory. The stage gives the directory permissions that only the root user
+can access. `systemd-timesyncd` runs as the `systemd-timesync` user, so it cannot read the file and uses its default NTP
+servers instead. If the default servers are unreachable, the clock of the Edge host does not synchronize.
+
+The drop-in file still appears correct when you view it as the root user, so check the directory permissions and the
+`systemd-timesyncd` logs instead.
+
+### Debug Steps {#debug-steps-ntp-servers}
+
+1. Establish an SSH connection to the affected Edge host.
+
+2. Check the permissions of the drop-in directory.
+
+   ```bash
+   stat --format='%a %n' /etc/systemd/timesyncd.conf.d
+   ```
+
+   The issue affects the host if the permissions are `744`.
+
+   ```bash hideClipboard title="Example Output"
+   744 /etc/systemd/timesyncd.conf.d
+   ```
+
+3. Check the `systemd-timesyncd` logs for permission errors.
+
+   ```bash
+   sudo journalctl --unit systemd-timesyncd --no-pager | grep 'Permission denied'
+   ```
+
+   ```bash hideClipboard title="Example Output"
+   systemd-timesyncd[1234]: Failed to open configuration file '/etc/systemd/timesyncd.conf.d/ntp.conf': Permission denied
+   ```
+
+4. Give all users access to the directory, and then restart `systemd-timesyncd`.
+
+   ```bash
+   sudo chmod 755 /etc/systemd/timesyncd.conf.d
+   sudo systemctl restart systemd-timesyncd
+   ```
+
+5. Verify that `systemd-timesyncd` uses your NTP servers.
+
+   ```bash
+   timedatectl show-timesync --all | grep SystemNTPServers
+   ```
+
+   The output lists the NTP servers from your drop-in file.
+
+   ```bash hideClipboard title="Example Output"
+   SystemNTPServers=ntp.example.com
+   ```
+
+6. To prevent the issue, add a `directories` entry to the cloud-init stage that writes the drop-in file. Refer to
+   [Create a File in a New Directory](../../clusters/edge/edge-configuration/cloud-init.md#create-a-file-in-a-new-directory)
+   for an example. If the stage is in the OS pack, deployed Edge hosts apply the updated OS pack during the next cluster
+   upgrade and then reboot.
+
+<!-- vale Vale.Spelling = NO -->
+
+## Scenario - OS Upgrade Fails and Edge Host Rolls Back to Previous Image
+
+When an OS upgrade fails on an [appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge host, the
+Edge host rolls back to its previous provider image. Local UI displays an **OS upgrade failed** banner on the **Edge
+Host** page and on the **Overview** tab of the **Cluster** page. This applies to both centrally managed and locally
+managed clusters. The banner stays until a later OS upgrade succeeds on the Edge host.
+
+### Debug Steps - Centrally Managed Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile that the cluster uses.
+
+2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
+
+3. Apply the updated cluster profile to the cluster. For more information, refer to
+   [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+### Debug Steps - Locally Managed Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and open the cluster profile that the cluster uses.
+
+2. In the OS pack, update the `system.uri` parameter to point to a new provider image.
+
+3. Build a new content bundle that includes the cluster definition. For more information, refer to
+   [Build Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+4. In Local UI, upload the content bundle. For more information, refer to
+   [Upload Content Bundle](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md).
+
+5. From the left main menu, select **Cluster**, and then select the **Configuration** tab. Because the content bundle
+   includes the cluster definition, the new configuration appears on the tab automatically.
+
+6. Click **Update Configuration**.
+
+## Scenario - Appliance Mode Edge Hosts Trust Compromised eMudhra Certificate Authorities
+
+[Appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) Edge hosts validate outbound TLS connections,
+such as connections to Palette and to image registries, against the trust store of the host operating system. This trust
+store can still trust the root certificates that the compromised eMudhra intermediate certificate authorities (CAs)
+chain to. For more information, refer to
+[Security Advisory 024](../../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure).
+
+<!-- vale Vale.Spelling = YES -->
+
+This workaround applies to Edge hosts that run Ubuntu, SUSE Linux Enterprise Micro (SLE Micro), Red Hat Enterprise Linux
+(RHEL), or Rocky Linux. Add a cloud-init stage to the OS pack of your cluster profile. The stage marks the affected root
+certificates as distrusted and rebuilds the trust store each time the Edge host boots.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select the cluster profile that your Edge cluster uses, and
+   [create a new version](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of it.
+
+4. In the new profile version, select the OS layer, and then add the cloud-init stage from the tab for the operating
+   system of your Edge hosts to its YAML. If the YAML has no `stages` section, add the example as shown. Otherwise,
+   merge the example into the existing YAML.
+
+   - If the YAML contains a `stages` section but no `boot.before` stage, add the `boot.before` stage to the existing
+     `stages` section.
+
+   - If the YAML already contains a `boot.before` stage, add only the list entry for your operating system
+     (`emudhra-distrust-debian`, `emudhra-distrust-suse`, or `emudhra-distrust-rhel`) to the existing `boot.before`
+     list.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-debian
+         commands:
+           - |
+             set -e
+             conf=/etc/ca-certificates.conf
+             if [ ! -f "$conf" ]; then
+                 echo "emudhra-distrust: $conf not found" >&2
+                 exit 1
+             fi
+             sed --in-place 's/\r$//' "$conf"
+             for f in emSign_ECC_Root_CA_-_G3.crt emSign_Root_TLS_CA_-_G3.crt Comodo_AAA_Services_root.crt AAA_Certificate_Services.crt; do
+                 sed --in-place "s|^mozilla/$f\$|!&|" "$conf"
+             done
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates --fresh
+             else
+                 update-ca-certificates --fresh
+             fi
+   ```
+
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-suse
+         commands:
+           - |
+             set -eu
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/trust/blacklist /etc/pki/trust/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/sbin/update-ca-certificates ]; then
+                 /usr/sbin/update-ca-certificates
+             else
+                 update-ca-certificates
+             fi
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```yaml
+   stages:
+     boot.before:
+       - name: emudhra-distrust-rhel
+         commands:
+           - |
+             set -e
+             if ! command -v trust >/dev/null 2>&1; then
+                 echo "emudhra-distrust: trust not found" >&2
+                 exit 1
+             fi
+
+             dirs="/etc/pki/ca-trust/source/blacklist /etc/pki/ca-trust/source/blocklist"
+             for dir in $dirs; do
+                 mkdir --parents "$dir"
+             done
+
+             for pair in "emSign ECC Root CA - G3:emSign_ECC_Root_CA_-_G3" \
+                         "emSign Root TLS CA - G3:emSign_Root_TLS_CA_-_G3" \
+                         "Comodo AAA Services root:AAA_Certificate_Services"; do
+                 label=${pair%%:*}
+                 name=${pair##*:}
+                 enc=$(printf '%s' "$label" | od --address-radix=n --format=x1 | tr --delete ' \n' | sed 's/../%&/g')
+                 tmp=$(mktemp /tmp/emudhra.XXXXXX)
+                 if trust extract --format=pem-bundle --filter="pkcs11:object=$enc;type=cert" \
+                         --overwrite "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+                     chmod 0644 "$tmp"
+                     for dir in $dirs; do
+                         cp "$tmp" "$dir/$name.pem"
+                     done
+                     rm --force "$tmp"
+                 else
+                     rm --force "$tmp"
+                     echo "emudhra-distrust: label not found: $label" >&2
+                 fi
+             done
+
+             if [ -x /usr/bin/update-ca-trust ]; then
+                 /usr/bin/update-ca-trust
+             else
+                 update-ca-trust
+             fi
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+5. Save your changes.
+
+6. [Update your cluster](../../clusters/cluster-management/cluster-updates.md#update-a-cluster) to use the new profile
+   version.
+
+   :::warning
+
+   Applying the updated OS pack reboots the Edge hosts in the cluster. Plan the update for a maintenance window.
+
+   :::
+
+7. After the Edge hosts reboot, connect to an Edge host using SSH, and issue the command for its operating system to
+   check whether the trust store still contains the affected root certificates.
+
+   <Tabs groupId="emudhra-edge-host-os">
+
+   <TabItem label="Ubuntu" value="ubuntu">
+
+   ```shell
+   ls /etc/ssl/certs/ | grep --extended-regexp 'emSign_ECC_Root_CA_-_G3|emSign_Root_TLS_CA_-_G3|Comodo_AAA_Services_root|AAA_Certificate_Services'
+   ```
+
+   </TabItem>
+
+   <TabItem label="SLE Micro" value="sle-micro">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   <TabItem label="RHEL and Rocky Linux" value="rhel">
+
+   ```shell
+   trust list --filter=ca-anchors | grep --extended-regexp 'emSign ECC Root CA - G3|emSign Root TLS CA - G3|Comodo AAA Services root'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   If the command returns no output, the Edge host no longer trusts these root certificates.
+
 ## Scenario - Provider Image Download Times Out on Slow Network Connections
 
 Edge hosts with limited network bandwidth may fail to download and extract the provider image during cluster
 provisioning or agent upgrades.
 
-Starting with Palette agent version 4.10.3, each provider image download and extraction attempt has a fixed time limit
-of 45 minutes. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
-beginning, because it does not resume partially completed downloads.
+Palette agent versions 4.10.3 and later, but earlier than 4.10.14, apply a fixed time limit to each provider image
+download and extraction attempt. The limit is 45 minutes in versions 4.10.3 through 4.10.9, and 6 hours in version
+4.10.10 and later. If an attempt does not complete within that time, the Palette agent starts the next attempt from the
+beginning, because these versions do not resume partially completed downloads.
 
 If the attempts repeatedly reach the time limit, the cluster may remain in the **Provisioning** state, or the agent
 upgrade may not complete.
+
+Starting with Palette agent version 4.10.14, the Palette agent no longer applies a fixed time limit to each download
+attempt. It stops an attempt only when it receives no data for 5 minutes, and the next attempt resumes the download from
+where the previous attempt stopped. To keep partially completed downloads, the Edge host needs free disk space of about
+three times the compressed size of the provider image. If less space is available, each new attempt starts from the
+beginning.
+
+If a cluster update changes the provider image of a deployed cluster, the download is part of an OS upgrade attempt,
+which has a separate time limit. In Palette agent versions earlier than 4.10.14, each OS upgrade attempt ends after 15
+minutes. Starting with Palette agent version 4.10.14, the default limit is 45 minutes, and you can change it. Refer to
+[Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ### Debug Steps
 
 1. Check the Palette agent logs on the affected Edge host to identify provider image download failures.
 
    ```shell
-   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|failed to apply'
+   journalctl --unit stylus-agent --no-pager | grep --extended-regexp 'downloading image|not found locally|found image|extracted|context deadline exceeded|image download stalled|resuming layer|not enough free space|failed to apply'
    ```
 
    Review the logs for the following messages:
 
    - `downloading image` and `image <image-reference> not found locally` indicate that the Palette agent is downloading
      the provider image over the network.
-   - `context deadline exceeded` indicates that an attempt reached the 45-minute time limit.
+   - `context deadline exceeded` indicates that an attempt reached the time limit.
+   - `image download stalled: no data received for 5m0s` indicates that the Palette agent received no data for 5 minutes
+     and stopped the attempt.
+   - `resuming layer <layer-digest> at byte <offset> of <size>` indicates that an attempt resumed a partially completed
+     download.
+   - `not enough free space in /usr/local/spectrocloud/.download-cache for the download cache: need <required-mb> MB, have <available-mb> MB`
+     indicates that the Edge host does not have enough free disk space to keep partially completed downloads.
    - `failed to apply archive` and `failed to apply os upgrade` may appear when the download or extraction does not
      complete.
 
-   If these messages repeat at intervals of approximately 45 minutes, the download is consistently exceeding the time
-   limit.
+   If `context deadline exceeded` messages repeat at intervals that match the time limit for your Palette agent version,
+   the download is consistently exceeding the time limit.
 
-2. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
+   In Palette agent version 4.10.14 and later, you can also follow provider image downloads during cluster provisioning
+   in Palette. From the left main menu, select **Clusters**, and then select the **Edge Hosts** tab. Select the Edge
+   host, and then select the **Events** tab. The events show when a download starts, resumes, retries, or completes.
+
+2. If the logs contain `not enough free space`, check the free disk space on the file system that contains
+   `/usr/local/spectrocloud`.
+
+   ```shell
+   df --human-readable /usr/local/spectrocloud
+   ```
+
+   The `Avail` column of the output shows the free disk space on that file system.
+
+   The log message reports how much space the Palette agent needs and how much is available, in MB. Free up at least the
+   difference on the Edge host so that later attempts resume the download instead of starting from the beginning.
+
+3. Make the provider image available locally to avoid downloading it over a bandwidth-constrained connection.
 
    Use [`palette content build`](../../automation/palette-cli/commands/content.md#build) to package the required
    provider image into a [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
@@ -51,7 +469,7 @@ upgrade may not complete.
 
    The Palette agent then uses the local provider image instead of downloading it, so the time limit no longer applies.
 
-3. Verify that the provider image is available locally.
+4. Verify that the provider image is available locally.
 
    Run the command from step 1 again and review the Palette agent logs. The logs should show the following message.
 
@@ -62,8 +480,10 @@ upgrade may not complete.
    This confirms that the Palette agent found the image locally instead of starting another network download. Verify
    that the agent upgrade completes and that the cluster returns to the **Healthy** state in Palette.
 
-If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host so
-that the download and extraction complete within the time limit.
+If you cannot make the provider image available locally, increase the network bandwidth available to the Edge host. On
+Palette agent versions earlier than 4.10.14, the download and extraction must complete within the time limit. If a
+cluster update changes the provider image, you can also increase the OS upgrade timeout on Palette agent version 4.10.14
+and later. Refer to [Configure the OS Upgrade Timeout](../../clusters/edge/cluster-management/os-upgrade-timeout.md).
 
 ## Scenario - Agent Mode Edge Hosts Do Not Claim the Control Plane VIP after a Reset
 

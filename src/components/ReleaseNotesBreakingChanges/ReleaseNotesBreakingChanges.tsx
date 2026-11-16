@@ -32,7 +32,7 @@ const externalDomainURL = "legacy.docs.spectrocloud.com";
 
 type CustomOptionProps = OptionProps<VersionOption, false>;
 
-const partials: Modules = partialsExports as unknown as Modules;
+const partials = partialsExports as unknown as Modules;
 
 const CustomOption: React.FC<CustomOptionProps> = (props) => {
   const {

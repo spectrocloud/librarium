@@ -63,7 +63,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write # The Vale action posts review comments with this token.
-    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@3ac6b47577beaee726a785a95fb8b513d35c072e # v0.0.106
+    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@bf0d9e416f342f0dd0a3e9ab16ec265e65dfffb7 # v0.0.114
 
   prettier:
     name: Check Code Formatting
@@ -92,7 +92,7 @@ jobs:
 
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -139,7 +139,7 @@ jobs:
 
       - name: Setup Node.js environment
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"

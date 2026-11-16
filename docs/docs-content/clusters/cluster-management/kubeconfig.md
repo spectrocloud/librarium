@@ -45,6 +45,9 @@ Palette permissions. These files are located at **Clusters** > **Overview** tab.
   to users with [sufficient Palette permissions](#kubeconfig-access-permissions), regardless of whether OIDC is
   configured.
 
+Palette records an audit log entry each time someone downloads either file from the Palette UI or the API. Refer to
+[Kubeconfig Downloads](../../audit-logs/audit-logs.md#kubeconfig-downloads) to learn how to find these entries.
+
 :::info
 
 The <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack affects how Palette routes
@@ -92,10 +95,10 @@ configuration.
 
 ### API Access
 
-Palette exposes two API endpoints for downloading kubeconfig files, which returns the files as text strings. Access is
+Palette exposes two API endpoints for downloading kubeconfig files, which return the files as text strings. Access is
 determined by your Palette permissions. Refer to the [Palette API](/api/introduction) documentation for more
 information.
 
 - **Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/kubeconfig`
 
-- **Admin Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminkubeconfig`
+- **Admin Kubeconfig** - `https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminKubeconfig`

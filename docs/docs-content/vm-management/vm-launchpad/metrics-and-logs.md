@@ -235,13 +235,14 @@ Forwarding** controls. VMO uses OTLP automatically when the **Forwarding URL** i
 
 7. Flip the **Metrics Forwarding** toggle to **Enabled**.
 
-#### Forward Metrics to Datadog
+#### Forward Metrics and Logs to Datadog
 
-The following steps forward metrics to Datadog.
+The following steps forward metrics and logs to Datadog.
 
-1. Select **Add** next to **Forwarding URL**, enter `https://api.datadoghq.com/api/v2/otlp/v1/metrics`, and select the
-   save icon. For a Datadog site other than US1, use your site's API host. Refer to the
-   [Datadog OTLP documentation](https://docs.datadoghq.com/opentelemetry/) for the exact host.
+1. Select **Add** next to **Forwarding URL**, enter `https://otlp.<datadog-site>/v1/metrics`, and select the save icon.
+
+   Replace `<datadog-site>` with your Datadog site, such as `us3.datadoghq.com` for US3 or `datadoghq.com` for US1. For
+   the list of sites, refer to [Getting Started with Datadog Sites](https://docs.datadoghq.com/getting_started/site/).
 
 2. Select **Add** next to **Forwarding Token**, enter `DD-API-KEY=<datadog-api-key>`, and select the save icon. VMO
    sends it as a literal `DD-API-KEY` header.
@@ -252,23 +253,26 @@ The following steps forward metrics to Datadog.
 
 The metrics appear in Datadog on the next scrape cycle, tagged with `service.name:vmo-manager` and `k8s.cluster.name`.
 
-Log forwarding to Datadog or Grafana Cloud is not supported, because log forwarding sends its credential only as a plain
-bearer token. To forward logs, point the **Logs** section at a receiver that accepts a plain bearer token or a Splunk
-HEC token. Refer to [Configure Log Forwarding](#configure-log-forwarding).
+If you leave the log **Forwarding URL** empty, the appliance also sends its logs to Datadog at
+`https://otlp.<datadog-site>/v1/logs`, because each empty log setting uses its metrics value. This works only when the
+metrics **Forwarding Token** holds a single `Key=Value` pair. If it holds more than one, set the log **Forwarding
+Token** to `DD-API-KEY=<datadog-api-key>`. Refer to [Configure Log Forwarding](#configure-log-forwarding).
 
 #### OTLP Receiver Formats
 
-The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers.
+The following table lists the metrics **Forwarding URL** and **Forwarding Token** formats for common OTLP receivers. The
+log **Forwarding Token** takes the same formats but accepts only one `Key=Value` pair.
 
-| **Receiver**            | **Forwarding URL**                                                                       | **Forwarding Token**                    |
-| ----------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
-| Datadog                 | `https://api.datadoghq.com/api/v2/otlp/v1/metrics` (US1; other sites use their own host) | `DD-API-KEY=<datadog-api-key>`          |
-| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                              | `Authorization=Basic <credentials>`     |
-| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`  | `api-key=<license-key>`                 |
-| OpenTelemetry Collector | `https://<receiver-host>/v1/metrics`                                                     | Plain token or `Key=Value` header pairs |
+| **Receiver**            | **Forwarding URL**                                                                            | **Forwarding Token**                    |
+| ----------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Datadog                 | `https://otlp.<datadog-site>/v1/metrics`, such as `https://otlp.us3.datadoghq.com/v1/metrics` | `DD-API-KEY=<datadog-api-key>`          |
+| Grafana Cloud           | `https://otlp-gateway-<region>.grafana.net/otlp/v1/metrics`                                   | `Authorization=Basic <credentials>`     |
+| New Relic               | US `https://otlp.nr-data.net/v1/metrics`, EU `https://otlp.eu01.nr-data.net/v1/metrics`       | `api-key=<license-key>`                 |
+| OpenTelemetry Collector | `https://<receiver-host>/v1/metrics`                                                          | Plain token or `Key=Value` header pairs |
 
-Replace `<datadog-api-key>` with your Datadog API key, `<region>` with your Grafana Cloud region, `<license-key>` with
-your New Relic license key, and `<receiver-host>` with the host name of your OpenTelemetry Collector.
+Replace `<datadog-site>` with your Datadog site, `<datadog-api-key>` with your Datadog API key, `<region>` with your
+Grafana Cloud region, `<license-key>` with your New Relic license key, and `<receiver-host>` with the host name of your
+OpenTelemetry Collector.
 
 Grafana Cloud rejects a plain token sent as a bearer token. For Grafana Cloud, replace `<credentials>` with the Base64
 encoding of your Grafana Cloud instance ID and API token, joined by a colon. Use the following command to generate the
@@ -322,8 +326,14 @@ receiver, or to change the log format.
    :::
 
 5. (Optional) If the log receiver needs a different credential from the metrics receiver, select **Add** next to the log
-   **Forwarding Token**, enter the credential, and select the save icon. The log side accepts a bearer token for an OTLP
-   receiver, or a Splunk HEC token for a Splunk HEC URL.
+   **Forwarding Token**, enter the credential, and select the save icon. The field accepts two formats:
+
+   - A plain token, which VMO sends as an `Authorization: Bearer <token>` header to an OTLP receiver, or as the Splunk
+     HEC token to a Splunk HEC URL.
+
+   - A single `Key=Value` pair, which VMO sends as a literal HTTP header. Use this for a receiver that needs a specific
+     header, such as Datadog (`DD-API-KEY=<datadog-api-key>`), Grafana Cloud (`Authorization=Basic <credentials>`), or
+     New Relic (`api-key=<license-key>`).
 
 6. (Optional) If the log receiver presents a certificate issued by a private or internal CA, select **Add** next to the
    log **CA Certificate**, paste the PEM-encoded CA-signing certificate, and select the save icon. Leave it empty to use
@@ -360,7 +370,7 @@ storage in the `VMOConfig` custom resource.
 | **Log Format**            | `logging.format`                          | `text`      | Encoding of the appliance logs. Accepts `text` and `json`. Applied immediately without a pod restart.                                                |
 | **Log Forwarding**        | `logging.forwarding_enabled`              | `false`     | Starts log delivery when the log **Forwarding URL** is also set. On its own, does not send logs. Emits `logging.forwarding.toggled` on every change. |
 | **Forwarding URL**        | `logging.forwarding_endpoint`             | Empty       | Splunk HEC or OTLP receiver URL for logs. The path decides the protocol. An empty value uses the metrics **Forwarding URL**.                         |
-| **Forwarding Token**      | `logging.forwarding_token`                | Empty       | Bearer token for an OTLP receiver, or a Splunk HEC token. An empty value uses the metrics **Forwarding Token**.                                      |
+| **Forwarding Token**      | `logging.forwarding_token`                | Empty       | Bearer token or a single `Key=Value` header for an OTLP receiver, or a Splunk HEC token. An empty value uses the metrics **Forwarding Token**.       |
 | **CA Certificate**        | `logging.forwarding_ca_cert`              | Empty       | Optional PEM CA-signing certificate for the log receiver. An empty value uses the metrics **CA Certificate**.                                        |
 | **Skip TLS Verification** | `logging.forwarding_insecure_skip_verify` | `false`     | When enabled, log delivery accepts the receiver's TLS certificate without verification. Does not use the metrics value. Leave it off in production.  |
 

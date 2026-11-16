@@ -15,6 +15,9 @@ installers to be used with self-hosted [Palette](../enterprise-version/enterpris
 [Palette VerteX](../vertex/vertex.md). It provides a single location for packs and images, streamlining access and
 management.
 
+Artifact Studio v2 is available as a Tech Preview. For more information, refer to
+[Artifact Studio v2](./artifact-studio-v2.md).
+
 ## Use Cases
 
 Use the Palette or VerteX Management Appliance or Helm chart to instantiate or upgrade your self-hosted environment.
@@ -30,7 +33,7 @@ Following are the main use cases:
 - Install Palette VerteX (content bundle, ISO, Helm chart, or MOK key for Secure Boot).
 - Install PaletteAI (content bundle, ISO, or MOK key for Secure Boot).
 - Install PaletteAI VerteX (content bundle, ISO, or MOK key for Secure Boot).
-- Install VM Launchpad (content bundle, ISO, or MOK key for Secure Boot).
+- Install PaletteAI VM Launchpad (content bundle, ISO, or MOK key for Secure Boot).
 - Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
 - Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and

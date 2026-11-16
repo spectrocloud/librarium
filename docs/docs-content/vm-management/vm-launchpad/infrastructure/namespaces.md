@@ -17,10 +17,10 @@ Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubern
 
 Namespaces managed by VMO are denoted with the following labels:
 
-| Label                                         | Description                                                                                                                     |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all namespaces managed by VMO, whether created in the VMO UI or adopted from the cluster                             |
-| `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by VM Launchpad |
+| Label                                         | Description                                                                                                                               |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `app.kubernetes.io/managed-by=vmo-manager`    | Applied to all namespaces managed by VMO, whether created in the VMO UI or adopted from the cluster                                       |
+| `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable from the UI) from namespaces created automatically by PaletteAI VM Launchpad |
 
 Managed namespaces:
 

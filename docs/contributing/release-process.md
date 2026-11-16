@@ -300,10 +300,27 @@ page.
 | `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
 Looking component versions up from the private `spectrocloud/nickfury` repository is optional, and needs no token in
-your `.env` file. The scripts read it through the [GitHub CLI](https://cli.github.com), so a machine that has run
-`gh auth login` against the organisation can look versions up, and one that has not is told so and falls back to the
-values you set yourself. Spectro Cloud issues short-lived GitHub credentials through Bulwark rather than long-lived
-personal access tokens, so authenticate the CLI with one of those rather than storing a token.
+your `.env` file. The scripts read the repository through the [GitHub CLI](https://cli.github.com). When `gh` is not
+authenticated, the scripts report it and use the values that you set yourself.
+
+Spectro Cloud issues short-lived GitHub credentials through Bulwark instead of long-lived personal access tokens. Use
+the following steps to authenticate `gh` with a Bulwark token.
+
+1. Generate a Bulwark token. You only need to do this once.
+
+   ```shell
+   bulwark token generate
+   ```
+
+2. In the terminal where you run the scripts, export the token for `gh`.
+
+   ```shell
+   export GH_TOKEN=$(bulwark token get)
+   ```
+
+   The exported token is short-lived. Once it expires, `gh` rejects it, even when other credentials are stored. Run the
+   `export` command again in each new terminal session, and whenever the scripts report that the GitHub CLI is not set
+   up.
 
 Super API keys are personal, and Super only accepts a key while its owner has a current SSO session. When the owner has
 not signed in to [Super](https://app.super.work) recently, Super rejects the key with an HTTP 401 error. Because Super
@@ -360,11 +377,13 @@ is set once and used by both.
 | `RELEASE_HIGHEST_KUBERNETES_VERSION` | The highest supported Kubernetes version for Palette [Kubernetes installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                         | `1.30.9`                                                              |
 | `RELEASE_PCG_KUBERNETES_VERSION`     | The Kubernetes cluster version required for PCG [installations](https://docs.spectrocloud.com/clusters/pcg/#kubernetes-requirements).                                                              | `1.30.9`                                                              |
 
-Of the three Palette CLI checksums, only `RELEASE_PALETTE_CLI_SHA` has to be set. The CLI Tools table gives each
-architecture its own tab, and an architecture whose checksum is left empty still gets its row, with a `SHA PENDING`
-marker in the checksum cell. The entry therefore exists from the first run, and only that cell needs filling once the
-checksum is published. Release branches for versions published before the table was split into tabs carry the Linux
-AMD64 tab alone, and the rows for the other architectures are skipped there rather than treated as a failure.
+None of the three Palette CLI checksums has to be set. The CLI Tools table gives each architecture its own tab. For a
+checksum left empty, `make generate-release` reuses the checksum that the release's row already records for the same
+Palette CLI version, or derives it from the published binary, which downloads several hundred megabytes. When the binary
+is not published yet, the row records a `SHA PENDING` marker instead, so the entry exists from the first run, and
+re-running the target once the binary is published fills the cell in. Release branches for versions published before the
+table was split into tabs carry the Linux AMD64 tab alone, and the rows for the other architectures are skipped there
+rather than treated as a failure.
 
 ### Patch Release Notes
 
@@ -400,7 +419,7 @@ default, so confirming it costs one keystroke.
 | Do you know the nickfury branch or tag name?                      | Yes, give the name. No, give the versions at the next two questions instead.                     | `NICKFURY_REF`                |
 | CanvOS version                                                    | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_CANVOS_VERSION`        |
 | Palette CLI version                                               | Press Enter to take the version shown, give another, enter `same`, or enter `pending`.           | `PATCH_PALETTE_CLI_VERSION`   |
-| The Linux AMD64 Palette CLI checksum                              | Paste it from ReTool, type `derive`, or leave it empty to record it as pending.                  | `PATCH_PALETTE_CLI_SHA`       |
+| The Linux AMD64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_SHA`       |
 | The Linux ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_ARM64_SHA` |
 | The macOS ARM64 Palette CLI checksum                              | Type `derive`, paste it if you have it, or leave it empty to record it as pending.               | `PATCH_PALETTE_CLI_MACOS_SHA` |
 
