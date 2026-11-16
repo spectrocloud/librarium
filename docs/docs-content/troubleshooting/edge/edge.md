@@ -10,10 +10,10 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
-## Scenario - Palette Agent Restarts Repeatedly After Registration on Trusted Boot Edge Hosts
+## Scenario - Palette Agent Restarts Repeatedly after Registration on Trusted Boot Edge Hosts
 
 Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
-Palette when they register. This affects Edge hosts that you installed from an Edge installer ISO with a Palette agent
+Palette when they register. This affects Edge hosts that you installed from an Edge Installer ISO with a Palette agent
 version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
 that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect
 that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode, cannot find the cluster
@@ -23,10 +23,9 @@ In Palette, the Edge host stops sending heartbeats, its health status changes to
 earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
 `starting stylus agent after upgrade`.
 
-Starting with Palette agent version 4.10.14, the Palette agent detects registration mode on these Edge hosts. Upgrading
+Starting with Palette agent version 4.10.14, the Palette agent detects registration mode on these Edge hosts. Palette
+versions 4.10.44 and later upgrade Edge hosts to Palette agent version 4.10.14 or later during registration. Upgrading
 Palette does not recover an Edge host that is already affected, because its Palette agent cannot connect to Palette.
-Edge hosts that do not use Trusted Boot and Edge hosts installed from an ISO with Palette agent version 4.10.0 or later
-are not affected.
 
 ### Debug Steps {#debug-steps-trusted-boot-registration}
 
@@ -53,7 +52,8 @@ are not affected.
    ls /opt/spectrocloud/state/
    ```
 
-   The first command returns `rd.immucore.uki`, and the second command reports that the directory does not exist.
+   The issue affects the Edge host if the first command returns `rd.immucore.uki` and the second command reports that
+   the directory does not exist.
 
    ```bash hideClipboard title="Example Output"
    rd.immucore.uki
