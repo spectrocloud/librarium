@@ -642,11 +642,12 @@ Defense deployments.
 
 ### System Prompt
 
-The instruction that a [model](#model) receives ahead of the [prompt](#prompt), as a system message, to set how it
-answers. A [client](#client) can send its own system prompt with a request. When a request carries none, the appliance
-adds the instruction that a platform administrator sets, except on the Responses API. This is the model's own
-instruction or, when the model has none, the default instruction. Refer to
-[System Prompts](../explanation/architecture.md#system-prompts) and
+The text that a [model](#model) receives ahead of the [prompt](#prompt), as a system message, to set how it answers. A
+[client](#client) can send its own system prompt with a request. A platform administrator can also set an instruction.
+The appliance adds it to a request that carries no system prompt. With **Apply to every turn** on, the appliance also
+adds the instruction after a client's own system prompt. The appliance never adds the instruction on the Responses API.
+The added instruction is the model's own instruction. If the model has none, the appliance adds the default instruction.
+Refer to [System Prompts](../explanation/architecture.md#system-prompts) and
 [Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
 
 ## T
