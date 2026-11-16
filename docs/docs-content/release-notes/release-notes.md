@@ -11,6 +11,32 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 15, 2026 - Release 4.10.34-rev.1
+
+<!-- PATCH RELEASE TICKET: DOC-3446 -->
+<!-- PATCH RELEASE VERSION: 4.10.34-rev.1 -->
+<!-- PATCH RELEASE CANDIDATES: PE-10161 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10161 -->
+
+- Fixed an issue that caused Edge hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and were
+  installed from an Edge installer ISO with a Palette agent version earlier than 4.10 to lose their connection to
+  Palette after registration. When Palette automatically upgraded the agent during registration, the agent restarted
+  repeatedly with the error
+  `could not read cloud configuration from run: open /oem/80_stylus.yaml: no such file or directory`, and the Edge host
+  appeared as **Unhealthy**.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34-rev.1 Palette release is
+4.10.11-rev.1.
+
+:::
+
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
 ### Security Notices
