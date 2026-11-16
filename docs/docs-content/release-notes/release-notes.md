@@ -611,6 +611,29 @@ The following components have been updated for Palette version 4.10.41.
 
 <!-- END PACKS LIST BODY: DOC-3428. DO NOT DELETE. -->
 
+## November 15, 2026 - Release 4.10.34-rev.1
+
+<!-- PATCH RELEASE TICKET: DOC-3446 -->
+<!-- PATCH RELEASE VERSION: 4.10.34-rev.1 -->
+<!-- PATCH RELEASE CANDIDATES: PE-10161 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10161 -->
+
+- Fixed an issue that caused Edge hosts to lose their connection to Palette after registration and appear as
+  **Unhealthy**. The issue affected hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and
+  were installed from an Edge installer ISO with a Palette agent version earlier than 4.10.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34-rev.1 Palette release is
+4.10.11-rev.1.
+
+:::
+
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3404 -->
