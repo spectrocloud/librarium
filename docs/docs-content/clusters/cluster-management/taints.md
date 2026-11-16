@@ -12,6 +12,10 @@ pods. A common use case of taints is to prevent pods from being scheduled on nod
 are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept
 any pods that do not tolerate the taints.
 
+Taints that you apply with the `NoSchedule` or `NoExecute` effect also stop conformance scans from running any tests. If
+you plan to run conformance scans on the cluster, review the
+[conformance scan node pool requirements](./compliance-scan.md#node-pool-requirements) before you apply taints.
+
 :::tip
 
 You can think of taints as having the opposite effect to [Node Labels](./node-labels.md). Taints allow you to mark nodes
