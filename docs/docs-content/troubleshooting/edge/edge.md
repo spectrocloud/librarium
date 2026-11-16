@@ -12,15 +12,16 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Palette Agent Restarts Repeatedly After Registration on Trusted Boot Edge Hosts
 
-Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) and that you installed from an Edge
-installer ISO with a Palette agent version earlier than 4.10.0 can lose their connection to Palette when they register.
-During registration, Palette upgrades the Palette agent on the Edge host to the version that matches your Palette
-instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect that these Edge hosts are in
-registration mode. The upgraded agent starts in cluster mode, cannot find the cluster configuration that the Edge host
-receives only after registration, and restarts every few seconds.
+Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
+Palette when they register. This affects Edge hosts that you installed from an Edge installer ISO with a Palette agent
+version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
+that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect
+that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode, cannot find the cluster
+configuration that the Edge host receives only after registration, and restarts every few seconds.
 
 In Palette, the Edge host stops sending heartbeats, its health status changes to **Unhealthy**, and it still shows the
-earlier Palette agent version. The last event of the Edge host is `starting stylus agent after upgrade`.
+earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
+`starting stylus agent after upgrade`.
 
 Starting with Palette agent version 4.10.14, the Palette agent detects registration mode on these Edge hosts. Upgrading
 Palette does not recover an Edge host that is already affected, because its Palette agent cannot connect to Palette.
@@ -38,7 +39,7 @@ are not affected.
    ```
 
    The issue affects the Edge host if the output shows `registration mode: false`, followed by an error that the
-   `/oem/80_stylus.yaml` file does not exist. The error repeats every few seconds.
+   `/oem/80_stylus.yaml` file does not exist.
 
    ```bash hideClipboard title="Example Output"
    time="2026-11-12T14:25:07Z" level=info  msg="registration mode: false" version=v4.10.11
@@ -73,14 +74,24 @@ are not affected.
    sudo grep --extended-regexp 'registration mode|Registration completed' /var/log/stylus-agent.log | tail --lines 2
    ```
 
-   The output shows `registration mode: true` and `Registration completed`. In Palette, the health status of the Edge
-   host changes to **Healthy**.
+   The output shows `registration mode: true` and `Registration completed`. If the output does not show
+   `Registration completed` yet, wait, and then run the command again.
 
-6. To prevent the issue on self-hosted Palette or Palette VerteX, upgrade to version 4.10.44 or later before you
-   register Edge hosts installed from an ISO with a Palette agent version earlier than 4.10.0. If you must register
-   these Edge hosts before you upgrade, first pause agent upgrades for Edge hosts that are not part of a cluster in
-   their project or tenant, and resume agent upgrades after you upgrade. Refer to
-   [Agent Upgrades for PCG and Edge Hosts](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts).
+   ```bash hideClipboard title="Example Output"
+   time="2026-11-12T14:31:42Z" level=info  msg="registration mode: true" version=v4.10.11
+   time="2026-11-12T14:32:10Z" level=info  msg="Registration completed" version=v4.10.11
+   ```
+
+   In Palette, the health status of the Edge host changes to **Healthy**.
+
+6. _(Self-hosted Palette and Palette VerteX only)_ To prevent the issue, take one of the following actions before you
+   register Edge hosts that you installed from an ISO with a Palette agent version earlier than 4.10.0.
+
+   - Upgrade Palette or Palette VerteX to version 4.10.44 or later.
+
+   - Pause agent upgrades for Edge hosts that are not part of a cluster in their project or tenant. Resume agent
+     upgrades after you upgrade Palette or Palette VerteX to version 4.10.44 or later. Refer to
+     [Agent Upgrades for PCG and Edge Hosts](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts).
 
 ## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
 
