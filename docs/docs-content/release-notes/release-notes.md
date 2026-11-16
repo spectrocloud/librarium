@@ -411,6 +411,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   the limit for Edge hosts with slow network connections. Refer to
   [Configure the OS Upgrade Timeout](../clusters/edge/cluster-management/os-upgrade-timeout.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8868 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9864 -->
+
+- Local UI now displays an **OS upgrade failed** banner when an Edge host in appliance mode rolls back to its previous
+  provider image after an OS upgrade fails. The banner appears on the **Edge Host** page and on the **Overview** tab of
+  the **Cluster** page for both centrally managed and locally managed clusters. It stays until a later OS upgrade
+  succeeds on the Edge host. Refer to
+  [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12373 -->
 
