@@ -43,9 +43,6 @@ management.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
-  to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
-
 - The `stylus.managementMode` parameter is set to `local` in your user data configuration for all your hosts.
 
 - Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
