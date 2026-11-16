@@ -621,12 +621,9 @@ The following components have been updated for Palette version 4.10.41.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-10161 -->
 
-- Fixed an issue that caused Edge hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and were
-  installed from an Edge installer ISO with a Palette agent version earlier than 4.10 to lose their connection to
-  Palette after registration. When Palette automatically upgraded the agent during registration, the agent restarted
-  repeatedly with the error
-  `could not read cloud configuration from run: open /oem/80_stylus.yaml: no such file or directory`, and the Edge host
-  appeared as **Unhealthy**.
+- Fixed an issue that caused Edge hosts to lose their connection to Palette after registration and appear as
+  **Unhealthy**. The issue affected hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and
+  were installed from an Edge installer ISO with a Palette agent version earlier than 4.10.
 
 ### Edge
 
