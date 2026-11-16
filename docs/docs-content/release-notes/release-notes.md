@@ -623,7 +623,9 @@ The following components have been updated for Palette version 4.10.41.
 
 - Fixed an issue that caused Edge hosts to lose their connection to Palette after registration and appear as
   **Unhealthy**. The issue affected hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and
-  were installed from an Edge installer ISO with a Palette agent version earlier than 4.10.
+  were installed from an Edge installer ISO with a Palette agent version earlier than 4.10. Upgrading Palette does not
+  recover Edge hosts that are already affected. For the recovery steps, refer to
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---palette-agent-restarts-repeatedly-after-registration-on-trusted-boot-edge-hosts).
 
 ### Edge
 
