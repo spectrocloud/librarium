@@ -427,12 +427,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
   for guidance on when to enable an overlay network.
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-9835 -->
-
-- When you create a cluster in Local UI, you can now enter a Fully Qualified Domain Name (FQDN) in the **Virtual IP
-  Address (VIP)** field, in addition to an IPv4 address. Refer to
-  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
-
 <!-- https://spectrocloud.atlassian.net/browse/PE-9630 -->
 
 - The mTLS certificates that Edge hosts use to secure communication with each other are now valid for 10 years instead
