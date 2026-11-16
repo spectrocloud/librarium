@@ -2,6 +2,8 @@
 # It adds one emoji for each size and urgency label on the PR (monster-pr, small-pr, urgent, not-urgent),
 # and it mentions the reviewers whose working hours include the current UTC hour.
 # It also ensures that Slack is not notified multiple times for the same PR.
+# A Draft PR does not post. If a Draft already has the "notify-slack" label, the post goes out when the PR is
+# marked ready for review.
 # The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
 # After notifying, it records the notification in the PR comments and securely deletes the reviewers file.
 # The workflow is designed to be efficient and secure, ensuring that sensitive information is handled properly.
@@ -10,7 +12,7 @@ name: Ready for Review
 
 on:
   pull_request:
-    types: [labeled]
+    types: [labeled, ready_for_review]
 
 permissions:
   pull-requests: write
@@ -21,7 +23,7 @@ concurrency:
 
 jobs:
   notify-slack:
-    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
+    if: contains(github.event.pull_request.labels.*.name, 'notify-slack') && !github.event.pull_request.draft
     runs-on: ubuntu-latest
 
     steps:

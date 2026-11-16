@@ -32,7 +32,8 @@ Before submitting your PR for review, please complete this checklist to ensure q
 - [ ] Optional: add `pack-pr` to build pack pages in the deploy preview (retry the deploy after adding it), or
       `visual-tests` to run the visual comparison tests.
 - [ ] Add the `notify-slack` label last, after you complete this checklist. It posts the review request to
-      #docs-pr-review once, so add any size or urgency label first.
+      #docs-pr-review once, so add any size or urgency label first. On a Draft PR, it posts when you mark the PR ready
+      for review.
 
 Good job! 👏👏👏
 
