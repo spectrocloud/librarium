@@ -414,10 +414,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-8868 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-9864 -->
 
-- When an OS upgrade fails on an Edge host in appliance mode and the host rolls back to its previous provider image,
-  Local UI now displays an **OS upgrade failed** banner on the **Edge Host** page and on the **Overview** tab of the
-  **Cluster** page. The banner appears for both centrally managed and locally managed clusters, and it stays until a
-  later OS upgrade succeeds on the Edge host. Refer to
+- Local UI now displays an **OS upgrade failed** banner when an Edge host in appliance mode rolls back to its previous
+  provider image after an OS upgrade fails. The banner appears on the **Edge Host** page and on the **Overview** tab of
+  the **Cluster** page for both centrally managed and locally managed clusters. It stays until a later OS upgrade
+  succeeds on the Edge host. Refer to
   [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image)
   for more information.
 
