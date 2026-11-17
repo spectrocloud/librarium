@@ -37,4 +37,6 @@ To learn more about Palette and Azure cluster creation and its capabilities chec
 
 - [Register and Manage Azure Cloud Account](azure-cloud.md)
 
+- [Use Azure Managed Identities](azure-managed-identities.md)
+
 - [Required Permissions](required-permissions.md)
