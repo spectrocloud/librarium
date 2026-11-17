@@ -98,11 +98,12 @@ for the fix on an existing class.
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel at right. The pack provides three access modes.
+7. Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-   Each mode seeds the access values, including `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A
-   selection does not lock these values, and every value remains editable in the pack YAML. Refer to
-   [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
+   The **Proxied** and **Direct** modes seed the access values, including
+   `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A selection does not lock these values, and every
+   value remains editable in the pack YAML. Refer to [Deployment Modes](./deployment-modes.md) for the values that each
+   mode sets.
 
    - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
      Spectro VM Dashboard from anywhere. Check out the
@@ -111,8 +112,8 @@ for the fix on an existing class.
    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
      separately in your cluster profile if you select this option. This mode sets the service type to `LoadBalancer`.
-   - **Custom** mode applies no presets. You provide your own access configuration, including the service type,
-     according to your environment.
+   - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the service
+     type, according to your environment.
 
    :::warning
 
@@ -169,11 +170,12 @@ for the fix on an existing class.
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
 <!-- prettier-ignore -->
-7.  Review the **Access** configuration panel at right. The pack provides three access modes.
+7.  Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-    Each mode seeds the access values, including `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A
-    selection does not lock these values, and every value remains editable in the pack YAML. Refer to
-    [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
+    The **Proxied** and **Direct** modes seed the access values, including
+    `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A selection does not lock these values, and every
+    value remains editable in the pack YAML. Refer to [Deployment Modes](./deployment-modes.md) for the values that each
+    mode sets.
 
     - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
       Spectro VM Dashboard from anywhere. Check out the
@@ -182,8 +184,8 @@ for the fix on an existing class.
     - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
       that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
       separately in your cluster profile if you select this option. This mode sets the service type to `LoadBalancer`.
-    - **Custom** mode applies no presets. You provide your own access configuration, including the service type,
-      according to your environment.
+    - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
+      service type, according to your environment.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -294,11 +296,12 @@ for the fix on an existing class.
 
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7.  Review the **Access** configuration panel at right. The pack provides three access modes.
+7.  Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-    Each mode seeds the access values, including `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A
-    selection does not lock these values, and every value remains editable in the pack YAML. Refer to
-    [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
+    The **Proxied** and **Direct** modes seed the access values, including
+    `charts.virtual-machine-orchestrator.vmo-manager.service.type`. A selection does not lock these values, and every
+    value remains editable in the pack YAML. Refer to [Deployment Modes](./deployment-modes.md) for the values that each
+    mode sets.
 
     - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
       Spectro VM Dashboard from anywhere. Check out the
@@ -307,8 +310,8 @@ for the fix on an existing class.
     - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
       that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
       separately in your cluster profile if you select this option. This mode sets the service type to `LoadBalancer`.
-    - **Custom** mode applies no presets. You provide your own access configuration, including the service type,
-      according to your environment.
+    - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
+      service type, according to your environment.
 
     :::warning
 
