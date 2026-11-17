@@ -11,10 +11,10 @@ You can reboot, shut down and reset an Edge host from Local UI.
 
 :::warning
 
-Local UI drains the Edge host before it reboots or shuts down the host, but the host powers off even if the drain fails,
-and Local UI does not report the failure. If the host runs virtual machines (VMs), the VMs stop instead of
-live-migrating to other nodes. On PaletteAI VM Launchpad clusters, drain the host with `kubectl` before you reboot or
-shut it down. Refer to [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md) and
+Local UI drains the Edge host before it reboots or shuts down the host. If the drain fails, the host still powers off,
+and Local UI does not report the failure. Any virtual machines (VMs) on the host then stop instead of live-migrating to
+other nodes. On PaletteAI VM Launchpad clusters, drain the host with `kubectl` before you reboot or shut it down. Refer
+to [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md) and
 [Known Issues](../../../../release-notes/known-issues.md).
 
 :::
@@ -29,6 +29,9 @@ Edge host is rebooting.
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
 - Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
+
+- On PaletteAI VM Launchpad clusters, the host is drained with `kubectl`. Refer to
+  [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md).
 
 ### Instructions
 
@@ -103,6 +106,9 @@ You can shut down the Edge host from Local UI.
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
 - Credentials to log in to Local UI. Any OS user can be used to log into Local UI.
+
+- On PaletteAI VM Launchpad clusters, the host is drained with `kubectl`. Refer to
+  [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md).
 
 ### Instructions
 
