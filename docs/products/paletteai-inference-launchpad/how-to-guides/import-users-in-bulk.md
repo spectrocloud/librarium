@@ -206,8 +206,7 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. From the left main menu, select **Users**.
 
 2. Select the **Users** tab.
 

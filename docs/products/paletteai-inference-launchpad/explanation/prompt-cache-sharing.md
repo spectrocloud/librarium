@@ -32,7 +32,7 @@ The [policy](../reference/glossary.md#policy) that a workspace follows decides w
 saved work. This page explains the two choices, the rules that always apply, sharing on two or more nodes, and the risk
 that sharing brings. To change the setting, refer to
 [Set Prompt Cache Sharing for a Policy](../how-to-guides/set-prompt-cache-sharing.md). For the console labels, refer to
-[Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab).
+[Access Management Reference](../reference/access-and-policy-reference.md#policies-tab).
 
 ## Why Sharing Helps
 
@@ -177,5 +177,5 @@ that time that it still holds.
 
 - [Usage Pricing](./usage-pricing.md) explains how the appliance reuses work and how cache reads are priced.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab) lists the columns and controls
+- [Access Management Reference](../reference/access-and-policy-reference.md#policies-tab) lists the columns and controls
   on the **Policies** tab.
