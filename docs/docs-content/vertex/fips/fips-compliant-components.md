@@ -93,6 +93,7 @@ FIPS-compliant components in PXK and PXK-E:
 | etcd                       | etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data.                                                                                                                                                                     |
 | Metrics Server             | Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines.                                                                                                                                       |
 | Nginx Server               | The Nginx server is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.                                                                                                                                             |
+| Reloader                   | Reloader restarts workloads when their ConfigMaps or Secrets change.                                                                                                                                                                                              |
 | Traefik Ingress Controller | Traefik is the management cluster ingress controller. It provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services. Traefik uses Custom Resource Definitions (CRDs) for routing configuration. |
 
 ### Runtime Components
