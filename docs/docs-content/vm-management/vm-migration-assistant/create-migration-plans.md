@@ -25,10 +25,6 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - At least one source provider for the VMs to be migrated. Refer to
   [Create Source Providers](./create-source-providers.md) for guidance.
 
-- A target provider for your VMO cluster in the namespace of your source provider. The VM Migration Assistant creates
-  this provider, named `host`, only in the `konveyor-forklift` namespace. If your source provider is in another
-  namespace, create the target provider there. Refer to [Create a Target Provider](#create-a-target-provider).
-
 - A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../vmo-pack/create-vmo-profile.md)
   for further guidance.
 
@@ -73,6 +69,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   ```
 
   :::
+
+- A target provider for your VMO cluster in the namespace of your source provider. If your source provider is in a
+  namespace other than `konveyor-forklift`, refer to [Create a Target Provider](#create-a-target-provider).
 
 - One or more VMs hosted in VMware vSphere.
 
@@ -534,11 +533,14 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 ## Create a Target Provider
 
 A migration plan needs a source provider and a target provider in the same namespace. Until the plan namespace has both,
-**Create plan** is unavailable, and the console reports
-`At least one source and one target provider in the default project must be available`. The VM Migration Assistant
-creates the target provider for your VMO cluster only in the `konveyor-forklift` namespace, and you cannot create a
-target provider from the console. If your source provider is in another namespace, create the target provider in that
-namespace with `kubectl`.
+**Create plan** is unavailable, and the console displays a message that names the namespace, such as
+`At least one source and one target provider in the default project must be available.` The VM Migration Assistant
+creates the target provider for your VMO cluster, named `host`, only in the `konveyor-forklift` namespace, and the
+console cannot create it. If your source provider is in another namespace, create the target provider in that namespace
+with `kubectl`.
+
+Ensure that your terminal is configured to access your VMO cluster using
+[kubectl](../../clusters/cluster-management/palette-webctl.md).
 
 1. Create a file named `host-provider.yaml` with the following content.
 
@@ -556,16 +558,19 @@ namespace with `kubectl`.
 
    Replace `<migration-namespace>` with the namespace of your source provider.
 
-2. Ensure that your terminal is configured to access your VMO cluster using
-   [kubectl](../../clusters/cluster-management/palette-webctl.md), and issue the following command to create the target
-   provider.
+2. Issue the following command to create the target provider.
 
    ```shell
    kubectl apply --filename host-provider.yaml
    ```
 
-3. In the VM Migration Assistant service console, select **Providers** from the left main menu. Confirm that the `host`
-   provider appears in the namespace of your source provider with the **KubeVirt** type and the **Ready** status.
+3. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console),
+   and select **Providers** from the left main menu.
+
+4. In the top-left corner, use the **Namespace** drop-down menu to select the namespace of your source provider.
+
+5. Confirm that the `host` provider appears with the **Host cluster** label, the **KubeVirt** type, and the **Ready**
+   status. **Create plan** on the **Migration plans** page is now available for this namespace.
 
 ## Create Migration Plan
 
@@ -585,7 +590,7 @@ namespace with `kubectl`.
    | **Plan namespace**   | The Kubernetes namespace for the migration plan. Select the same namespace that your [source provider](./create-source-providers.md#create-source-provider) was created in.                    | `myVmMigrationNamespace`                                    |
    | **Description**      | An optional description for your migration plan.                                                                                                                                               | `Migration plan to migrate VMs from vSphere to VMO cluster` |
    | **Source provider**  | Select the source provider for the VMs you want to migrate. This is the provider that you created in the [Create Source Providers](./create-source-providers.md#create-source-provider) guide. | `my-vsphere-provider`                                       |
-   | **Target provider**  | Select `host`, the target provider for your VMO cluster. If the drop-down is empty, refer to [Create a Target Provider](#create-a-target-provider).                                            | `host`                                                      |
+   | **Target provider**  | Select `host`, the target provider for your VMO cluster. If the drop-down menu is empty, refer to [Create a Target Provider](#create-a-target-provider).                                       | `host`                                                      |
    | **Target namespace** | Select the target namespace from the drop-down. The target namespace is where the VMs will be located on your VMO cluster after migration.                                                     | `virtual-machines`                                          |
 
 4. Click **Next**.
