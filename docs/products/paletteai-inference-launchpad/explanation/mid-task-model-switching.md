@@ -36,8 +36,8 @@ going.
 
 For each turn, a decision service on the appliance reads those tool results. When they show that the task is struggling,
 the turn moves to the capable model. After a move, the task stays on the capable model for a set number of turns. All
-other turns stay on the efficient model. The [switching settings](#the-switching-settings) control how far the tool
-signals must lean and how long a move lasts.
+other turns stay on the efficient model. The [switching settings](#the-switching-settings) set how strongly the tool
+results must show that the task is struggling before a turn moves. They also set how long a move lasts.
 
 ## The Model Pair
 
@@ -58,11 +58,11 @@ On the client's **Tier map**, one **Save** stores the alias rules and the pair t
 
 The switching settings appear only while Mid-Task Model Switching is on.
 
-| **Setting**                         | **What it sets**                                        | **Default** |
-| ----------------------------------- | ------------------------------------------------------- | ----------- |
-| **Confidence threshold (%)**        | How far the tool signals must lean before a turn moves. | 50          |
-| **Turns held on the capable model** | How many turns stay on the capable model after a move.  | 2           |
-| **Judge model**                     | Whether the semantic router decides unclear turns.      | Off         |
+| **Setting**                         | **What it sets**                                                                         | **Default** |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- | ----------- |
+| **Confidence threshold (%)**        | How strongly the tool results must show that the task is struggling before a turn moves. | 50          |
+| **Turns held on the capable model** | How many turns stay on the capable model after a move.                                   | 2           |
+| **Judge model**                     | Whether the semantic router decides the turns that the tool results leave unclear.       | Off         |
 
 **Reset to defaults** restores these three values.
 

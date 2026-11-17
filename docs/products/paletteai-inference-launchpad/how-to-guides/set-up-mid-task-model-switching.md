@@ -79,8 +79,8 @@ Use these steps while Mid-Task Model Switching is on. For what each setting does
 
 5. In the **Restart Mid-Task Model Switching?** dialog, select **Apply and restart**.
 
-   An `Applied the Mid-Task Model Switching settings and restarted it.` message appears. The card shows the saved
-   values.
+   An `Applied the Mid-Task Model Switching settings and restarted it.` message appears. The **Switching settings** show
+   the saved values.
 
 ## Choose the Models for a Client's Alias
 
