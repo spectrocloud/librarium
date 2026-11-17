@@ -102,7 +102,7 @@ Use these steps while Mid-Task Model Switching is on. To turn it on, refer to
 
 6. From the **Capable model** drop-down menu, select the model for the hard turns.
 
-7. Make sure that every other alias in the **Tier map** has a model.
+7. Map every other alias in the **Tier map** to a model. **Save** stays unavailable until every alias is mapped.
 
 8. On the **Tier map**, select **Save**, and then select **Save** in the **Save alias routing** dialog.
 
