@@ -71,7 +71,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   :::
 
 - A target provider for your VMO cluster in the namespace of your source provider. If your source provider is in a
-  namespace other than `konveyor-forklift`, refer to [Create a Target Provider](#create-a-target-provider).
+  namespace other than `konveyor-forklift`, refer to [Create Target Provider](#create-target-provider).
 
 - One or more VMs hosted in VMware vSphere.
 
@@ -530,7 +530,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
   </details>
 
-## Create a Target Provider
+## Create Target Provider
 
 A migration plan needs a source provider and a target provider in the same namespace. Until the plan namespace has both,
 **Create plan** is unavailable, and the console displays a message that names the namespace, such as
@@ -590,7 +590,7 @@ Ensure that your terminal is configured to access your VMO cluster using
    | **Plan namespace**   | The Kubernetes namespace for the migration plan. Select the same namespace that your [source provider](./create-source-providers.md#create-source-provider) was created in.                    | `myVmMigrationNamespace`                                    |
    | **Description**      | An optional description for your migration plan.                                                                                                                                               | `Migration plan to migrate VMs from vSphere to VMO cluster` |
    | **Source provider**  | Select the source provider for the VMs you want to migrate. This is the provider that you created in the [Create Source Providers](./create-source-providers.md#create-source-provider) guide. | `my-vsphere-provider`                                       |
-   | **Target provider**  | Select `host`, the target provider for your VMO cluster. If the drop-down menu is empty, refer to [Create a Target Provider](#create-a-target-provider).                                       | `host`                                                      |
+   | **Target provider**  | Select `host`, the target provider for your VMO cluster. If the drop-down menu is empty, refer to [Create Target Provider](#create-target-provider).                                           | `host`                                                      |
    | **Target namespace** | Select the target namespace from the drop-down. The target namespace is where the VMs will be located on your VMO cluster after migration.                                                     | `virtual-machines`                                          |
 
 4. Click **Next**.
