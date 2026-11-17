@@ -84,9 +84,9 @@ pack provides remote access to the UI. This is the default selection.
 
 In VMO pack version 4.10.7 and later, expose the CDI upload proxy and KubeVirt export proxy through native Ingress or
 `LoadBalancer` Services instead of the `directAccess` Traefik route. Refer to
-[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance. The
-`charts.virtual-machine-orchestrator.directAccess` route is deprecated and off by default, and no Deployment Mode turns
-it on.
+[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance. The `directAccess` route
+is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is `false` by default in every Deployment
+Mode.
 
 :::
 
