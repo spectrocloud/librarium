@@ -70,6 +70,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
   :::
 
+- A target provider for your VMO cluster in the namespace of your source provider. If your source provider is in a
+  namespace other than `konveyor-forklift`, refer to [Create Target Provider](#create-target-provider).
+
 - One or more VMs hosted in VMware vSphere.
 
   - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
@@ -528,6 +531,48 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
   </details>
 
+## Create Target Provider
+
+A migration plan needs a source provider and a target provider in the same namespace. Until the plan namespace has both,
+**Create plan** is unavailable, and the console displays a message that names the namespace, such as
+`At least one source and one target provider in the default project must be available.` The VM Migration Assistant
+creates the target provider for your VMO cluster, named `host`, only in the `konveyor-forklift` namespace, and the
+console cannot create it. If your source provider is in another namespace, create the target provider in that namespace
+with `kubectl`.
+
+Ensure that your terminal is configured to access your VMO cluster using
+[kubectl](../../clusters/cluster-management/palette-webctl.md).
+
+1. Create a file named `host-provider.yaml` with the following content.
+
+   ```yaml
+   apiVersion: forklift.konveyor.io/v1beta1
+   kind: Provider
+   metadata:
+     name: host
+     namespace: <migration-namespace>
+   spec:
+     type: openshift
+     url: ""
+     secret: {}
+   ```
+
+   Replace `<migration-namespace>` with the namespace of your source provider.
+
+2. Issue the following command to create the target provider.
+
+   ```shell
+   kubectl apply --filename host-provider.yaml
+   ```
+
+3. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console),
+   and select **Providers** from the left main menu.
+
+4. In the top-left corner, use the **Namespace** drop-down menu to select the namespace of your source provider.
+
+5. Confirm that the `host` provider appears with the **Host cluster** label, the **KubeVirt** type, and the **Ready**
+   status. **Create plan** on the **Migration plans** page is now available for this namespace.
+
 ## Create Migration Plan
 
 1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
@@ -550,7 +595,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    | Setting                 | Description                                                                                                                                                                                                                            | Example                                   |
    | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
    | **Plan name**           | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                         |
-   | **Target provider**     | Select the target provider from the drop-down Menu. By default, this will be your VMO cluster.                                                                                                                                         | `host`                                    |
+   | **Target provider**     | Select `host`, the target provider for your VMO cluster. If the drop-down menu is empty, refer to [Create Target Provider](#create-target-provider).                                                                                   | `host`                                    |
    | **Target namespace**    | Select the target namespace from the drop-down Menu. The target namespace is where the migrated VMs will be located on your VMO cluster.                                                                                               | `myVmMigrationNamespace`                  |
    | **Network map**         | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `VM Network` / `Pod Networking`           |
    | **Storage map**         | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore` / `spectro-storage-class` |
