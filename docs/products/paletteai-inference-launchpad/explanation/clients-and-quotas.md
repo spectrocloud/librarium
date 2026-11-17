@@ -201,7 +201,8 @@ page changes with it:
 - At **All workspaces**, the page shows the **Workspaces**, **Clients**, **Policies**, and **Roles** tabs. Every tab
   except **Clients** covers the whole appliance.
 
-- Inside one workspace, the page shows only that workspace's **Clients** list, with no tab bar.
+- Inside one workspace, the page shows the **Clients** and **Policies** tabs. **Clients** lists that workspace's
+  clients. **Policies** shows the policy the workspace follows, read only.
 
 The **Users** page shows the **Users** and **Groups** tabs at **All workspaces** and inside a workspace.
 

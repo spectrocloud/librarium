@@ -24,19 +24,19 @@ console header decides which tabs **Access Management** offers.
 
 <!-- vale off -->
 
-| **Drop-down menu selection** | **Access Management tabs**                                                          | **Users tabs**           |
-| ---------------------------- | ----------------------------------------------------------------------------------- | ------------------------ |
-| **All workspaces**           | **Workspaces**, **Clients**, **Policies**, and **Roles**                            | **Users** and **Groups** |
-| One workspace                | **Clients** only, with no tab bar. The clients listed are that workspace's clients. | **Users** and **Groups** |
+| **Drop-down menu selection** | **Access Management tabs**                               | **Users tabs**           |
+| ---------------------------- | -------------------------------------------------------- | ------------------------ |
+| **All workspaces**           | **Workspaces**, **Clients**, **Policies**, and **Roles** | **Users** and **Groups** |
+| One workspace                | **Clients** and **Policies**                             | **Users** and **Groups** |
 
-| **Page**              | **Tab**        | **Where it appears**             | **What it holds**                                                                                   |
-| --------------------- | -------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Access Management** | **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                                      |
-| **Access Management** | **Clients**    | All workspaces and one workspace | At **All workspaces**, every client on the appliance. Inside a workspace, that workspace's clients. |
-| **Access Management** | **Policies**   | All workspaces                   | The policies a workspace can follow.                                                                |
-| **Access Management** | **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                                           |
-| **Users**             | **Users**      | All workspaces and one workspace | The people the identity provider serves.                                                            |
-| **Users**             | **Groups**     | All workspaces and one workspace | The groups the identity provider serves.                                                            |
+| **Page**              | **Tab**        | **Where it appears**             | **What it holds**                                                                                                 |
+| --------------------- | -------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Access Management** | **Workspaces** | All workspaces                   | Every workspace, the policy each one follows, and its members.                                                    |
+| **Access Management** | **Clients**    | All workspaces and one workspace | At **All workspaces**, every client on the appliance. Inside a workspace, that workspace's clients.               |
+| **Access Management** | **Policies**   | All workspaces and one workspace | At **All workspaces**, the policies a workspace can follow. Inside a workspace, the policy it follows, read only. |
+| **Access Management** | **Roles**      | All workspaces                   | The roles the appliance ships, read only.                                                                         |
+| **Users**             | **Users**      | All workspaces and one workspace | The people the identity provider serves.                                                                          |
+| **Users**             | **Groups**     | All workspaces and one workspace | The groups the identity provider serves.                                                                          |
 
 <!-- vale on -->
 
