@@ -26,7 +26,16 @@ Before submitting your PR for review, please complete this checklist to ensure q
       `auto-backport` label, as well as the `backport-version-**` labels._
 - [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (for
       example, Engineering, Product, etc.)
-- [ ] Add the `notify-slack` label once this checklist has been completed. The team will be notified and review your PR.
+- [ ] Add a **size label** (`small-pr` or `monster-pr`) and an **urgency label** (`urgent` or `not-urgent`) only when
+      the defaults do not fit. With no labels, the PR counts as medium and gets a first review within 24 hours. For
+      `urgent`, start the PR description with a one-line reason, unless the PR is release, Component Updates, or
+      security work.
+- [ ] _(Optional)_ Add `pack-pr` to build the pack pages in the deploy preview. Netlify does not rebuild when a label
+      changes, so retry the deploy after you add the label.
+- [ ] _(Optional)_ Add `visual-tests` to run the visual comparison tests. The tests skip Draft PRs, so add the label
+      after you mark the PR ready for review.
+- [ ] Add the `notify-slack` label after all other labels and checklist items. It posts the review request to
+      #docs-pr-review only once. On a Draft PR, the post goes out when you mark the PR ready for review.
 
 Good job! 👏👏👏
 
