@@ -77,7 +77,8 @@ The following table lists the Kubernetes version bundled with each recent Palett
 | 4.9.23 and later                               |  1.34.6   |            1.34.9            |
 | 4.10.13                                        |  1.35.6   |        Not applicable        |
 | 4.10.14, 4.10.16, 4.10.17                      |  1.35.6   |            1.35.6            |
-| 4.10.25 and later                              |  1.35.6   |            1.35.8            |
+| 4.10.25, 4.10.27, 4.10.33                      |  1.35.6   |            1.35.8            |
+| 4.10.44 and later                              |  1.35.10  |           1.35.10            |
 
 On EC binary installations, direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x`
 series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade
@@ -660,6 +661,7 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.9.51       |      4.10.44       | :white_check_mark: |
 |       4.9.51       |      4.10.33       | :white_check_mark: |
 |       4.9.51       |      4.10.27       | :white_check_mark: |
 |       4.9.51       |      4.10.25       | :white_check_mark: |
@@ -1218,25 +1220,28 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.9.64       |      4.10.44       | :white_check_mark: |
 |       4.9.64       |      4.10.33       | :white_check_mark: |
+|       4.9.63       |      4.10.44       | :white_check_mark: |
 |       4.9.63       |      4.10.33       | :white_check_mark: |
 |       4.9.63       |      4.10.27       | :white_check_mark: |
 |       4.9.63       |      4.10.25       | :white_check_mark: |
+|       4.9.60       |      4.10.44       | :white_check_mark: |
 |       4.9.60       |      4.10.33       | :white_check_mark: |
 |       4.9.60       |      4.10.27       | :white_check_mark: |
 |       4.9.60       |      4.10.25       | :white_check_mark: |
+|       4.9.59       |      4.10.44       | :white_check_mark: |
 |       4.9.59       |      4.10.33       | :white_check_mark: |
 |       4.9.59       |      4.10.27       | :white_check_mark: |
 |       4.9.59       |      4.10.25       | :white_check_mark: |
 |       4.9.59       |      4.10.17       | :white_check_mark: |
+|       4.9.51       |      4.10.44       | :white_check_mark: |
 |       4.9.51       |      4.10.33       | :white_check_mark: |
 |       4.9.51       |      4.10.27       | :white_check_mark: |
 |       4.9.51       |      4.10.25       | :white_check_mark: |
 |       4.9.51       |      4.10.17       | :white_check_mark: |
 |       4.9.51       |      4.10.16       | :white_check_mark: |
 |       4.9.51       |      4.10.14       | :white_check_mark: |
-|       4.9.51       |      4.10.13       | :white_check_mark: |
-|       4.9.51       |      4.10.11       | :white_check_mark: |
 
 <!-- upgrade-paths:appliance-4.10:end -->
 

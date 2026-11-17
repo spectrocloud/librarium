@@ -34,6 +34,10 @@ flexible, version-driven management.
 
 - An existing [cluster template](./cluster-templates.md).
 
+- Access to the scope of the cluster template to change its cluster profiles. For example, change the profiles of a
+  tenant-scoped cluster template from the **Tenant Admin** scope, not from a project. Palette rejects profile changes
+  made from a different scope.
+
 ## Modify Cluster Templates
 
 Use the appropriate cluster template tab depending on the required modification.
@@ -125,6 +129,10 @@ make changes to a cluster profile attached to a cluster template, you must
 [create a new version](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of your cluster
 profile and update the version referenced in the cluster template. Cluster profiles are modified the same way,
 regardless of whether a cluster is or is not deployed using the cluster template.
+
+If clusters are attached to the cluster template, Palette rejects a profile version update or replacement that moves an
+attached cluster more than one Kubernetes minor version ahead of its current version. The request fails with the
+`K8sUpgradeNotSupported` error code. Change the Kubernetes version of the template one minor version at a time.
 
 ##### Update Cluster Profile Version
 
