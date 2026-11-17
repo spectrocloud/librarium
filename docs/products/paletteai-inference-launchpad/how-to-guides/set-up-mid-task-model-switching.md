@@ -89,7 +89,7 @@ Use these steps while Mid-Task Model Switching is on. To turn it on, refer to
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -118,7 +118,7 @@ Use these steps while Mid-Task Model Switching is on. To turn it on, refer to
 
 5. In the workspace drop-down menu in the console header, select the client's workspace.
 
-6. From the left main menu, select **Access & Policy**, and then select the **Clients** tab.
+6. From the left main menu, select **Access Management**, and then select the **Clients** tab.
 
 7. Select the client to open its detail panel, and then select the **Routing** tab.
 
