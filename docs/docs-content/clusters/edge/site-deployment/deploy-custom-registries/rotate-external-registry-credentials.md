@@ -1,0 +1,322 @@
+---
+sidebar_label: "Rotate External Registry Credentials"
+title: "Rotate External Registry Credentials"
+description:
+  "Rotate the credentials and CA certificate of a private external registry on centrally managed Edge clusters without a
+  repave by using the Registry Connect pack."
+hide_table_of_contents: false
+sidebar_position: 25
+tags: ["edge"]
+---
+
+If your Edge hosts pull images from a [private external registry](./deploy-external-registry.md), you can rotate the
+registry credentials remotely from Palette. You set the credential that your clusters use in the Registry Connect pack
+and optionally keep a bootstrap credential in the Edge installer user data. A rotation then becomes a cluster profile
+update, with no repave and no access to the Edge host. You can also rotate the certificate authority (CA) certificate of
+the registry without a repave. Refer to [Rotate the Registry CA Certificate](#rotate-the-registry-ca-certificate).
+
+This guide applies to centrally managed Edge clusters.
+
+## How Palette Selects the Registry Credential
+
+The Palette agent merges the external registries from the user data with the registries from the Registry Connect pack.
+For each operation, the Edge host takes both the registry credential and the image mapping rules from the same source.
+When both sources define the same registry hostname, the user data takes precedence until the Edge host joins a cluster,
+and the Registry Connect pack takes precedence afterward.
+
+| **Operation**                                              | **Credential and Mapping Rules Used**                               |
+| ---------------------------------------------------------- | ------------------------------------------------------------------- |
+| Edge host registration, including after an Edge host reset | User data                                                           |
+| Cluster creation, and adding or replacing a node           | User data, if it defines the registry. Otherwise, Registry Connect. |
+| Workload image pulls                                       | Registry Connect                                                    |
+| Day-2 OS and Kubernetes upgrades                           | Registry Connect                                                    |
+| Palette agent upgrades after cluster creation              | Registry Connect                                                    |
+
+The credential in the user data is optional. If the user data does not define the registry, cluster creation uses the
+Registry Connect credential and mapping rules from the cluster profile. In that case, an Edge host cannot pull a Palette
+agent upgrade before it joins a cluster, so
+[pause agent upgrades](../../../cluster-management/platform-settings/pause-platform-upgrades.md) before you register the
+Edge hosts.
+
+## Limitations
+
+- The Registry Connect credential overrides the user data credential only when the registry hostname is identical in
+  both places. For example, do not include `https://` or a port such as `:443` in only one of them.
+
+- If the user data contains a credential for the registry, that credential must stay valid for as long as you register
+  Edge hosts, add or replace nodes, or reset Edge hosts. If it is no longer valid, these operations fail, even when the
+  Registry Connect credential is valid.
+
+- Set the Registry Connect credential inline in the pack values. If the credential references a Kubernetes Secret,
+  Palette cannot read the Secret while it creates the cluster, so pods created before the Registry Connect layer deploys
+  use the user data credential.
+
+- This guide does not apply to a registry credential set with `providerCredentials` in the OS pack. Palette does not
+  apply changes to `providerCredentials` on existing Edge hosts. Refer to
+  [Edge Cluster Upgrade Behavior](../../cluster-management/upgrade-behavior.md#os-layer).
+
+## Prerequisites
+
+- A centrally managed Edge cluster whose hosts pull images from a private external registry. Refer to
+  [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
+
+- The new credential for the registry. Keep the previous credential active until the Edge hosts use the new one.
+
+- `kubectl` access to the cluster. Refer to [Kubectl](../../../cluster-management/palette-webctl.md).
+
+- For a CA certificate rotation, the new CA certificate in PEM format and SSH access to an Edge host of the cluster to
+  validate the change.
+
+## Rotate the Registry Credential
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**, and then select the cluster profile that your Edge cluster uses.
+
+3. If the profile does not include the **Registry Connect** pack, add it as an add-on layer. If the user data defines
+   `registryMappingRules` for the registry, copy the same rules, in the same format, to
+   `charts.registry-connect.config.registry.imageReplacementRules` in the pack values. After the Edge hosts join the
+   cluster, they take the mapping rules from Registry Connect, not from the user data.
+
+4. In the values of the **Registry Connect** pack, set the new credential for the registry hostname under
+   `charts.registry-connect.config.registry.credentials`.
+
+   ```yaml
+   charts:
+     registry-connect:
+       config:
+         registry:
+           credentials:
+             - domain: <registry-hostname>
+               username: <username>
+               password: <password>
+   ```
+
+   Replace `<registry-hostname>` with the hostname of the registry. If the user data defines the registry in
+   `stylus.externalRegistries`, use the hostname exactly as it appears there. Replace `<username>` and `<password>` with
+   the new credential.
+
+5. If the OS or Kubernetes layer of the profile configures a containerd registry mirror with a credential for the same
+   registry, for example in `/etc/rancher/k3s/registries.yaml` for K3s, update that credential too. Registry Connect
+   does not update the mirror credential. A change to the `stages` of either layer reboots each Edge host once. On RKE2
+   clusters, the change repaves each Edge host instead. Refer to
+   [Edge Cluster Upgrade Behavior](../../cluster-management/upgrade-behavior.md).
+
+6. Save the changes as a new version of the cluster profile.
+
+7. Update your Edge cluster to the new profile version. Refer to
+   [Update a Cluster](../../../cluster-management/cluster-updates.md).
+
+   Palette updates the image pull secrets in every namespace and the registry login on each Edge host in place. The new
+   Registry Connect credential does not reboot the Edge hosts, and you do not need to restart your workloads. Existing
+   pods use the new credential the next time they pull an image, for example when a container restarts or a pod is
+   rescheduled. This also applies when you add the Registry Connect pack to an existing cluster in step 3.
+
+8. Point `kubectl` to your cluster. Run the remaining commands on this page in the same terminal session.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+   Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of your cluster.
+
+9. Confirm that the image pull secret contains the new credential. Registry Connect creates the secret in every
+   namespace and names it after the registry hostname, with each period replaced by a dash.
+
+   ```shell
+   kubectl get secret <registry-hostname-with-dashes>-pull-secret --namespace default \
+     --output jsonpath='{.data.\.dockerconfigjson}' | base64 --decode
+   ```
+
+   Replace `<registry-hostname-with-dashes>` with the registry hostname, with each period replaced by a dash. For
+   example, the secret for `registry.example.com` is `registry-example-com-pull-secret`.
+
+   The output shows the new username. The audit log of your registry also shows pulls with the new credential, but only
+   for images that are not on the Edge hosts yet. When an image is already on a host, the registry receives only a check
+   request, which some registries do not log as a pull.
+
+10. Revoke the previous credential in your registry, unless the user data of your Edge installer also contains it. A
+    credential in the user data must stay valid for as long as you register, add, replace, or reset Edge hosts. Refer to
+    [Limitations](#limitations).
+
+### Validate the Registry Credential
+
+Validate the rotation after you revoke the previous credential. While the previous credential is still active, a
+successful image pull does not show which credential the cluster used. If you keep the previous credential because the
+user data contains it, rely on the image pull secret check in step 9 of
+[Rotate the Registry Credential](#rotate-the-registry-credential) instead.
+
+1. Start a test pod that pulls an image from the external registry. With the `Always` pull policy, the Edge host checks
+   the image with the registry each time the pod starts, even if the image is already on the host. This check requires a
+   valid credential.
+
+   ```shell
+   kubectl run registry-credential-test \
+     --image=<registry-hostname>/<repository>/<image>:<tag> \
+     --image-pull-policy=Always --restart=Never -- sleep 30
+   ```
+
+   Replace `<registry-hostname>`, `<repository>`, `<image>`, and `<tag>` with the full path of an image in your
+   registry, as it is stored there. Do not use a short image name such as `busybox:1.36`. The image mapping rules
+   rewrite a short name to a different path, and the pull fails if the image does not exist at that path.
+
+2. Check the events of the test pod.
+
+   ```shell
+   kubectl describe pod registry-credential-test | grep --extended-regexp "Pulled|Failed"
+   ```
+
+   | **Event**                                       | **Meaning**                                                                                                                                     |
+   | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `Pulled`                                        | The cluster pulls images with the new credential.                                                                                               |
+   | `Failed` with `401 Unauthorized`                | The credential is wrong or has not reached the cluster yet. Repeat step 9 of [Rotate the Registry Credential](#rotate-the-registry-credential). |
+   | `Failed` with `not found` or `manifest unknown` | The image path does not exist in the registry, or a mapping rule points to a different path. The credential is valid.                           |
+
+3. If you also rotated the containerd mirror credential in step 5 of
+   [Rotate the Registry Credential](#rotate-the-registry-credential), and the `AlwaysPullImages` admission plugin is
+   enabled in your cluster, restart CoreDNS. CoreDNS does not use the image pull secret, so it pulls through the
+   containerd mirror. With `AlwaysPullImages`, the Edge host checks the CoreDNS image with the registry when the pod
+   starts. Without it, CoreDNS starts from the image that is already on the Edge host, so a restart does not test the
+   mirror credential. The restart briefly interrupts DNS lookups in the cluster.
+
+   ```shell
+   kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
+   ```
+
+4. Wait a few seconds, and then confirm that the CoreDNS pods return to the `Running` state.
+
+   ```shell
+   kubectl get pods --namespace kube-system --selector k8s-app=kube-dns
+   ```
+
+5. Delete the test pod.
+
+   ```shell
+   kubectl delete pod registry-credential-test
+   ```
+
+## Rotate the Registry CA Certificate
+
+If your registry uses a certificate issued by a private CA, the Edge hosts trust it through the CA certificates in the
+`charts.registry-connect.config.certificates` list of the Registry Connect pack. If your registry uses a certificate
+from a public CA that the Edge hosts already trust, you do not need to configure a CA certificate.
+
+You can set each CA certificate inline in the pack values or reference a Kubernetes Secret or ConfigMap that holds it.
+We recommend the inline form, because Edge hosts that join the cluster later also receive the CA certificate.
+
+|                                    | **Inline Certificate**                               | **Reference to a Secret or ConfigMap**                                                                                                                              |
+| ---------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Where the CA certificate is**    | In the pack values of the cluster profile.           | In a Secret or ConfigMap on the cluster. Registry Connect only reads it, so you create and update it yourself, for example with a manifest layer or cert-manager.   |
+| **How you start a rotation**       | Apply a new cluster profile version.                 | Update the Secret or ConfigMap. Palette does not show this change.                                                                                                  |
+| **When the Edge hosts receive it** | About 1 minute after you apply the profile.          | The next time Registry Connect checks the cluster, usually within a few minutes. The timing is not guaranteed.                                                      |
+| **New and reset Edge hosts**       | Receive the CA certificate when they join a cluster. | Do not receive the CA certificate when they join a cluster, because the Secret or ConfigMap is not available yet. Keep the CA certificate in the user data as well. |
+
+Each change to the list of CA certificates adds the CA certificates to the trust store of each Edge host and restarts
+the Kubernetes service (for example, K3s) and the `stylus-operator` service. The Edge hosts do not reboot, and your
+workloads keep running.
+
+To avoid failed image pulls, rotate the CA certificate in two phases, so that the Edge hosts trust both CA certificates
+while your registry switches to the new certificate.
+
+1. Create a new version of the cluster profile that your Edge cluster uses. In the values of the **Registry Connect**
+   pack, list both the previous and the new CA certificate under `charts.registry-connect.config.certificates`.
+
+   ```yaml
+   charts:
+     registry-connect:
+       config:
+         certificates:
+           - certificate: |
+               -----BEGIN CERTIFICATE-----
+               <previous-ca-certificate>
+               -----END CERTIFICATE-----
+           - certificate: |
+               -----BEGIN CERTIFICATE-----
+               <new-ca-certificate>
+               -----END CERTIFICATE-----
+   ```
+
+   Replace `<previous-ca-certificate>` and `<new-ca-certificate>` with the lines between `-----BEGIN CERTIFICATE-----`
+   and `-----END CERTIFICATE-----` of each CA certificate, indented to match the example.
+
+   To reference a Secret or ConfigMap instead, use a `certificateRef` entry. The key that you reference can hold one or
+   more PEM-encoded CA certificates.
+
+   ```yaml
+   charts:
+     registry-connect:
+       config:
+         certificates:
+           - certificateRef:
+               kind: Secret
+               name: <secret-name>
+               namespace: <namespace>
+               key: <key>
+   ```
+
+   Replace `<secret-name>`, `<namespace>`, and `<key>` with the name, namespace, and key of your Secret. For a
+   ConfigMap, set `kind` to `ConfigMap`.
+
+   With this form, you edit the Secret or ConfigMap instead of the cluster profile. In step 1, add the new CA
+   certificate to the key next to the previous one. In step 2, wait until Registry Connect reads the change instead of
+   updating the cluster. In step 4, remove the previous CA certificate from the key.
+
+2. Update your Edge cluster to the new profile version. Refer to
+   [Update a Cluster](../../../cluster-management/cluster-updates.md). Before you continue, confirm that the trust store
+   of an Edge host contains the new CA certificate. Refer to step 2 of
+   [Validate the CA Certificate](#validate-the-ca-certificate).
+
+3. Switch your registry to a certificate issued by the new CA. Then confirm that the Edge hosts trust the certificate
+   that your registry serves. Refer to step 3 of [Validate the CA Certificate](#validate-the-ca-certificate).
+
+4. Create another profile version that lists only the new CA certificate, and update your Edge cluster to it. Keep at
+   least one CA certificate in the list. An empty list does not remove the CA certificates that Registry Connect added
+   earlier, so the Edge hosts continue to trust the previous CA. After the update, repeat step 3 of
+   [Validate the CA Certificate](#validate-the-ca-certificate).
+
+5. If the user data of your Edge installer includes the registry CA certificate in the `certificates` field of the
+   registry entry under `stylus.externalRegistries.registries`, replace it with the new CA certificate. Edge hosts use
+   the user data when they register, and Palette cannot change the user data of existing Edge hosts. Refer to
+   [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
+
+### Validate the CA Certificate
+
+1. Establish an SSH connection to an Edge host of the cluster.
+
+2. After step 2 of [Rotate the Registry CA Certificate](#rotate-the-registry-ca-certificate), confirm that the trust
+   store of the Edge host contains the new CA certificate. Copy the new CA certificate file to the Edge host, and then
+   issue the following command.
+
+   ```shell
+   openssl verify -CAfile /etc/ssl/certs/ca-certificates.crt <new-ca-file>
+   ```
+
+   Replace `<new-ca-file>` with the path to the new CA certificate file on the Edge host.
+
+   ```text hideClipboard title="Example Output"
+   new-ca.crt: OK
+   ```
+
+   If the command reports an error, the new CA certificate has not reached the Edge host yet. Do not switch your
+   registry to the new certificate until the check succeeds.
+
+3. After steps 3 and 4 of [Rotate the Registry CA Certificate](#rotate-the-registry-ca-certificate), confirm that the
+   Edge host trusts the certificate that your registry serves.
+
+   ```shell
+   echo | openssl s_client -connect <registry-hostname>:443 -CAfile /etc/ssl/certs/ca-certificates.crt 2>/dev/null | grep "Verify return code"
+   ```
+
+   Replace `<registry-hostname>` with the hostname of your registry. If your registry uses a port other than 443, use
+   that port instead.
+
+   ```text hideClipboard title="Example Output"
+   Verify return code: 0 (ok)
+   ```
+
+   If the return code is not `0`, the Edge host does not trust the CA that issued the certificate of your registry.
+   Repeat step 2 to check the trust store. If the command prints nothing, the Edge host cannot connect to the registry
+   on that port.
+
+   Use the `-CAfile` option as shown. With `-CApath /etc/ssl/certs`, the command can report error 21 when one file holds
+   several CA certificates, even though image pulls work.

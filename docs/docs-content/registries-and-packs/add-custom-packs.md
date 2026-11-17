@@ -285,7 +285,8 @@ Follow the steps below to create a custom pack.
 
    If your pack deploys custom resources, such as the resources that an operator manages, add a top-level
    `readinessCheck` section to `values.yaml` so that Palette waits until they are ready. Refer to
-   [Pack Readiness Checks](./pack-constraints.md#pack-readiness-checks).
+   [Pack Readiness Checks](./pack-constraints.md#pack-readiness-checks). For the other top-level keys that Palette reads
+   from `values.yaml`, refer to [Pack Values Reference](./pack-values-reference.md).
 
 4. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
    ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
