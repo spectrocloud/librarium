@@ -17,7 +17,6 @@ docs/docs-content/vertex/system-management/feature-flags.md:64:8:Vale.Spelling:D
 docs/docs-content/vm-management/vmo-pack/create-manage-vm/advanced-topics/deploy-import-ova.md:79:69:Vale.Spelling:Did you really mean 'balancer's'?
 docs/docs-content/vm-management/vm-launchpad/infrastructure/networking.md:293:5:Vale.Spelling:Did you really mean 'VFs'?
 docs/docs-content/vm-management/vm-launchpad/infrastructure/networking.md:294:5:Vale.Spelling:Did you really mean 'VFs'?
-docs/docs-content/security/product-architecture/product-architecture.md:74:21:Vale.Spelling:Did you really mean 'IDP's'?
 docs/products/paletteai-inference-launchpad/reference/hardware-requirements.md:59:67:Vale.Spelling:Did you really mean 'Resizable'?
 docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md:39:83:Vale.Spelling:Did you really mean 'Resizable'?
 docs/products/paletteai-inference-launchpad/how-to-guides/install-the-appliance.md:189:28:Vale.Spelling:Did you really mean 'Edgehost'?
