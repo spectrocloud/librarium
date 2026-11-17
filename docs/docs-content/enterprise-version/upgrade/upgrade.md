@@ -88,7 +88,7 @@ path tables mark these paths with :x:. To reach `4.9.23` or later from `4.8.x`, 
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
 Palette Management Appliance installations are not affected, because they ship Kubernetes `1.33.9` on `4.8.x` and
-`1.34.9` or `1.34.13` on `4.9.24` and later, which crosses a single minor version.
+`1.34.9` on `4.9.24` and later, which crosses a single minor version.
 
 Before you start any Palette upgrade, compare the Kubernetes version of your current release with that of the target
 release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the missing
