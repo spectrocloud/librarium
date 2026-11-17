@@ -19,15 +19,15 @@ members, and policies relate, refer to [Clients and Quotas](../explanation/clien
 
 ## Tab Bar and Workspace Drop-Down Menu
 
-The left main menu has two pages for access: **Access Management** and **Users**. The workspace drop-down menu in the
+The left main menu has two pages for access, **Access Management** and **Users**. The workspace drop-down menu in the
 console header decides which tabs **Access Management** offers.
 
 <!-- vale off -->
 
-| **Drop-down menu selection** | **Access Management tabs**                                                                        | **Users tabs**           |
-| ---------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------ |
-| **All workspaces**           | **Workspaces**, **Clients**, **Policies**, and **Roles**                                          | **Users** and **Groups** |
-| One workspace                | **Clients** only. The page shows no tab bar, and the clients listed are that workspace's clients. | **Users** and **Groups** |
+| **Drop-down menu selection** | **Access Management tabs**                                                          | **Users tabs**           |
+| ---------------------------- | ----------------------------------------------------------------------------------- | ------------------------ |
+| **All workspaces**           | **Workspaces**, **Clients**, **Policies**, and **Roles**                            | **Users** and **Groups** |
+| One workspace                | **Clients** only, with no tab bar. The clients listed are that workspace's clients. | **Users** and **Groups** |
 
 | **Page**              | **Tab**        | **Where it appears**             | **What it holds**                                                                                   |
 | --------------------- | -------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |

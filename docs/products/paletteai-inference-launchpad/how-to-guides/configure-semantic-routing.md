@@ -139,7 +139,7 @@ client. The detail panel opens from inside the client's workspace.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -179,7 +179,7 @@ For how the threshold sets the band of a request, refer to
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -197,7 +197,7 @@ Use these steps to remove a client's own routing, so that the client follows wha
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -235,7 +235,7 @@ workspace that follows the policy is now recorded, except a client you exclude.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -249,7 +249,7 @@ turn off the same toggle on its **Routing** step.
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -261,7 +261,7 @@ Deleting the recorded requests cannot be undone. Download them first if you need
 
 1. In the workspace drop-down menu in the console header, select the client's workspace.
 
-2. From the left main menu, select **Access Management**, and then select the **Clients** tab.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select the client to open its detail panel, and then select the **Routing** tab.
 
@@ -280,9 +280,9 @@ Deleting the recorded requests cannot be undone. Download them first if you need
 
 3. In the workspace drop-down menu in the console header, select the client's workspace.
 
-4. From the left main menu, select **Access Management**, and then select the **Clients** tab. Confirm that the
-   **Routing** column shows a count of routes, such as `3 routes`, for a client that has rules of its own. A client that
-   inherits its routing shows `Default`, or a count followed by `· default`.
+4. From the left main menu, select **Access Management**. The **Clients** list opens. Confirm that the **Routing**
+   column shows a count of routes, such as `3 routes`, for a client that has rules of its own. A client that inherits
+   its routing shows `Default`, or a count followed by `· default`.
 
 5. From the client, send a request that sets the model to `auto` or that names an alias set to **Use Semantic Router
    rules**.
