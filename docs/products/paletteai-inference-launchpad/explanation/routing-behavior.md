@@ -60,11 +60,11 @@ defaults. A layer's own rules override what it follows.
 
 <!-- vale Vale.Spelling = NO -->
 
-| **Layer**              | **What it holds**                                                                                                                                                                                                         |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The appliance defaults | The defaults that the appliance ships, which are the default alias map and the box default model. There is no appliance-level routing editor.                                                                             |
-| The workspace's policy | The **Routing** step of a policy under **Access & Policy** > **Policies**. A workspace follows one policy, and every client in the workspace runs under that policy's Tier map, Complexity threshold, and category rules. |
-| The client             | The client's own rules, set in the **Routing** step of the **Add client** wizard or on the **Routing** tab of the client's detail panel. A client's own rules override its policy.                                        |
+| **Layer**              | **What it holds**                                                                                                                                                                                                           |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The appliance defaults | The defaults that the appliance ships, which are the default alias map and the box default model. There is no appliance-level routing editor.                                                                               |
+| The workspace's policy | The **Routing** step of a policy under **Access Management** > **Policies**. A workspace follows one policy, and every client in the workspace runs under that policy's Tier map, Complexity threshold, and category rules. |
+| The client             | The client's own rules, set in the **Routing** step of the **Add client** wizard or on the **Routing** tab of the client's detail panel. A client's own rules override its policy.                                          |
 
 <!-- vale Vale.Spelling = YES -->
 
