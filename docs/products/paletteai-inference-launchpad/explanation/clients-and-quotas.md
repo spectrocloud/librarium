@@ -263,7 +263,7 @@ membership they have in these groups stays in place.
 For the steps, refer to [Create a Workspace](../how-to-guides/create-a-workspace.md),
 [Manage Workspace Members](../how-to-guides/manage-workspace-members.md),
 [Manage Users](../how-to-guides/manage-users.md), and [Manage Groups](../how-to-guides/manage-groups.md). For every
-role, scope, and column, refer to [Access and Policy Reference](../reference/access-and-policy-reference.md).
+role, scope, and column, refer to [Access Management Reference](../reference/access-and-policy-reference.md).
 
 ## How It Fits Together
 

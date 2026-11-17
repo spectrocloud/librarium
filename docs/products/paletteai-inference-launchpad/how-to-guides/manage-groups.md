@@ -55,4 +55,4 @@ as a [workspace member](./manage-workspace-members.md).
 
 - [Manage Users](./manage-users.md) to add the people you put in groups.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md#groups-tab) describes the **Groups** tab.
+- [Access Management Reference](../reference/access-and-policy-reference.md#groups-tab) describes the **Groups** tab.

@@ -505,7 +505,7 @@ tools can point at the appliance by changing only the base URL and the API token
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
 models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console). The console
 also ships a [role](#role) named **Operator**, which is a separate concept. The **Operator** role reaches only the
-person's own clients. Refer to [Access and Policy Reference](./access-and-policy-reference.md#roles).
+person's own clients. Refer to [Access Management Reference](./access-and-policy-reference.md#roles).
 
 ### OTP
 
@@ -599,7 +599,7 @@ does this is called a reasoning model, and the depth of that effort can sometime
 
 A named set of permissions that ships with the appliance. A role names no workspaces of its own. It applies in the
 workspaces where a [member](#member) holds it. Refer to
-[Access and Policy Reference](./access-and-policy-reference.md#roles).
+[Access Management Reference](./access-and-policy-reference.md#roles).
 
 ## S
 

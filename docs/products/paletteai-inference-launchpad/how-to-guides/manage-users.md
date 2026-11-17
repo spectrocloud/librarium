@@ -78,5 +78,5 @@ To add many users at once, refer to [Import Users in Bulk](./import-users-in-bul
 
 - [Manage Groups](./manage-groups.md) to put people in groups.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md#users-tab) describes the **Users** tab and
+- [Access Management Reference](../reference/access-and-policy-reference.md#users-tab) describes the **Users** tab and
   the **Add user** wizard.

@@ -12,7 +12,7 @@ keywords: ["launchpad", "ai", "access", "policy", "rbac", "workspace", "member",
 
 Give a team its own workspace on the **Access Management** page. For the concepts, refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access). For the page's labels, refer to
-[Access and Policy Reference](../reference/access-and-policy-reference.md).
+[Access Management Reference](../reference/access-and-policy-reference.md).
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ Give a team its own workspace on the **Access Management** page. For the concept
 6. Choose a **Type** of **Group** or **User**. For a group, enter the **Group name**. For a user, enter the **Email or
    sign-in name**. Select a **Role** of **Workspace administrator** or **Operator**, and then select **Add**.
 
-   For each role's scope, refer to [Access and Policy Reference](../reference/access-and-policy-reference.md#roles).
+   For each role's scope, refer to [Access Management Reference](../reference/access-and-policy-reference.md#roles).
 
 7. Repeat steps 5 and 6 for each person or group the workspace needs.
 
@@ -75,5 +75,5 @@ Give a team its own workspace on the **Access Management** page. For the concept
 - [Manage Users](./manage-users.md) and [Manage Groups](./manage-groups.md) to maintain the people and groups you add as
   members.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md) lists every tab, column, role, and message
+- [Access Management Reference](../reference/access-and-policy-reference.md) lists every tab, column, role, and message
   on the page.

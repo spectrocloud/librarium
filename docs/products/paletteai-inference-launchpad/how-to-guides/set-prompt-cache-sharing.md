@@ -24,7 +24,7 @@ keywords:
 Choose whether clients share the prompt cache or each keep their own. You set this on the policy that their workspace
 follows. For what each choice means and the risk that sharing brings, refer to
 [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md). For the labels on the **Policies** tab, refer to
-[Access and Policy Reference](../reference/access-and-policy-reference.md#policies-tab). If a repeated prompt shows no
+[Access Management Reference](../reference/access-and-policy-reference.md#policies-tab). If a repeated prompt shows no
 cache reads, refer to
 [Troubleshoot a Repeated Prompt with No Cache Reads](#troubleshoot-a-repeated-prompt-with-no-cache-reads).
 

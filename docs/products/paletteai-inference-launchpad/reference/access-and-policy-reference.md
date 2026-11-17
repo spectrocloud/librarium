@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Access and Policy Reference"
-title: "PaletteAI Inference Launchpad Access and Policy Reference"
+sidebar_label: "Access Management Reference"
+title: "PaletteAI Inference Launchpad Access Management Reference"
 description:
   "Reference for the tabs, roles, scopes, table columns, form fields, addresses, and messages on the Access Management
   and Users pages of a PaletteAI Inference Launchpad appliance."

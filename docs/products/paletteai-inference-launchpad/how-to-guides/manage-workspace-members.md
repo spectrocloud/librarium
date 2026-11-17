@@ -60,4 +60,4 @@ Change who can act in an existing workspace, and with which role. For what a mem
 - [Manage Users](./manage-users.md) and [Manage Groups](./manage-groups.md) to maintain the people and groups you add as
   members.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md#members-table) describes the members table.
+- [Access Management Reference](../reference/access-and-policy-reference.md#members-table) describes the members table.
