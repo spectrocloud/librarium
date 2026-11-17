@@ -1220,7 +1220,6 @@ after a few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.9.66       |      4.10.44       | :white_check_mark: |
 |       4.9.64       |      4.10.44       | :white_check_mark: |
 |       4.9.64       |      4.10.33       | :white_check_mark: |
 |       4.9.63       |      4.10.44       | :white_check_mark: |
@@ -1243,8 +1242,6 @@ after a few hours.
 |       4.9.51       |      4.10.17       | :white_check_mark: |
 |       4.9.51       |      4.10.16       | :white_check_mark: |
 |       4.9.51       |      4.10.14       | :white_check_mark: |
-|       4.9.51       |      4.10.13       | :white_check_mark: |
-|       4.9.51       |      4.10.11       | :white_check_mark: |
 
 <!-- upgrade-paths:appliance-4.10:end -->
 
