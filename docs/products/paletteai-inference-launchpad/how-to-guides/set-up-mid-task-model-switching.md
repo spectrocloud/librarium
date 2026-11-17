@@ -98,6 +98,9 @@ Use these steps while Mid-Task Model Switching is on. To turn it on, refer to
 4. In the **Tier map**, find the alias that the client's coding assistant sends. Set its **Model** to **Use Mid-Task
    Model Switching for routing**.
 
+   For the aliases that each coding assistant sends, refer to its configuration reference, such as
+   [Model Aliases](../reference/claude-code-reference.md#model-aliases) for Claude Code.
+
    The **Mid-Task Model Switching** card appears.
 
 5. From the **Efficient model** drop-down menu on the card, select the model for most turns.

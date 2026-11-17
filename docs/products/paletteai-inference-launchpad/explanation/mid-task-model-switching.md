@@ -81,3 +81,10 @@ turns of an alias that uses the feature:
 - For a few seconds after a change to a switching setting, while the decision service restarts.
 
 - When the decision service cannot answer. No request fails. The console counts those turns separately.
+
+## Next Steps
+
+- [Set Up Mid-Task Model Switching](../how-to-guides/set-up-mid-task-model-switching.md) walks through turning the
+  feature on, changing the switching settings, and choosing a client's model pair.
+
+- [Routing Behavior](./routing-behavior.md) explains how the Tier map routes a client's other aliases.
