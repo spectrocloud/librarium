@@ -421,6 +421,15 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 A person or a group holding one [role](#role) in one [workspace](#workspace). A member's role is **Workspace
 administrator** or **Operator**. Refer to [Manage Workspace Members](../how-to-guides/manage-workspace-members.md).
 
+### Mid-Task Model Switching
+
+The feature that moves the hard turns of a [coding assistant's](#coding-assistant) task from an efficient model to a
+capable model. The tool results of the task decide which turns move. A platform administrator turns it on under
+**Settings** > **Request handling** > **Mid-Task Model Switching**. A [client](#client) uses it for each
+[alias](#model-alias) that its [Tier map](#tier-map) sets to **Use Mid-Task Model Switching for routing**. Refer to
+[Mid-Task Model Switching](../explanation/mid-task-model-switching.md) and
+[Set Up Mid-Task Model Switching](../how-to-guides/set-up-mid-task-model-switching.md).
+
 ### Model
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
