@@ -794,8 +794,7 @@ user:
 
 The OIDC macros resolve to the OIDC configuration of the cluster, based on the **OIDC Identity Provider** setting of the
 Kubernetes pack in the cluster profile. Use them to place OIDC settings in the keys and format that your Kubernetes
-distribution requires, such as `kube-apiserver` arguments prefixed with `--`. Palette resolves the macros when it
-deploys the cluster and when you update the pack values.
+distribution requires. Palette resolves the macros when it deploys the cluster and when you update the pack values.
 
 The following table lists the values that the OIDC macros resolve to for each **OIDC Identity Provider** option.
 
@@ -826,17 +825,21 @@ user:
  uid: "{{ .spectro.system.user.uid}}"
 ```
 
-The following example places the OIDC macros in `kube-apiserver` arguments prefixed with `--`.
+For <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />, place the
+OIDC macros in `kubeadmconfig.apiServer.extraArgs` and enter the `kube-apiserver` argument names without the `--`
+prefix, as the following example shows.
 
 ```yaml
-<kube-apiserver-args-key>:
-  --oidc-issuer-url: "{{ .spectro.system.oidc.issuerurl }}"
-  --oidc-client-id: "{{ .spectro.system.oidc.clientid }}"
-  --oidc-username-claim: "{{ .spectro.system.oidc.usernameclaim }}"
-  --oidc-groups-claim: "{{ .spectro.system.oidc.groupsclaim }}"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      oidc-issuer-url: "{{ .spectro.system.oidc.issuerurl }}"
+      oidc-client-id: "{{ .spectro.system.oidc.clientid }}"
+      oidc-username-claim: "{{ .spectro.system.oidc.usernameclaim }}"
+      oidc-groups-claim: "{{ .spectro.system.oidc.groupsclaim }}"
 ```
 
-Replace `<kube-apiserver-args-key>` with the key that your Kubernetes pack uses for `kube-apiserver` arguments.
+For other Kubernetes packs, place the macros in the key and format that the pack uses for `kube-apiserver` arguments.
 
 </TabItem>
 
