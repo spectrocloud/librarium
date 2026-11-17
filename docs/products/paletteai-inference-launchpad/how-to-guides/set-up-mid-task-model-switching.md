@@ -32,7 +32,9 @@ appliance. You turn the feature on in **Settings**. Then you choose the two mode
 
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
 
-- Console access as a person who holds the **Platform administrator** role.
+- _(Settings steps only)_ Console access as a person who holds the **Platform administrator** role.
+
+- _(Client steps only)_ Console access with permission to update routing rules.
 
 - _(Client steps only)_ An existing client. To create one, refer to [Create a Client](./create-a-client.md).
 
