@@ -193,7 +193,7 @@ appliance is doing what you asked.
 Now return to the console and confirm that the model finished. In the **Model** table on the **Cluster** page, the
 **Nodes** column reads `1/1 healthy` for the node you chose, and the model's state reads `Ready`.
 
-![Cluster Models tab with the deployed model row expanded, showing the Ready state chip, a 1 of 1 healthy Health chip, and VRAM usage.](/assets/docs/images/run-claude-code_model-ready.webp)
+![Cluster Models tab with the deployed model row expanded, showing a 1 of 1 healthy Health chip, the node's GPU memory share, and a staged state chip.](/assets/docs/images/run-claude-code_model-ready.webp)
 
 Wait until the state reads `Ready` before you map an alias to the model. An alias pointed at a model that is not yet
 serving cannot answer requests, so the verification later in this tutorial would fail.
@@ -228,7 +228,7 @@ model answers the requests this client sends.
 
 10. The console reveals the token, which begins with `lpai_`.
 
-    ![Client coding-agent created modal with the API tokens section expanded, showing the tutorial token and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
+    ![Client coding-agent created modal with the API keys section expanded, showing the masked tutorial key and a Connect Agent button.](/assets/docs/images/run-claude-code_token-reveal.webp)
 
     :::warning
 
@@ -296,12 +296,12 @@ Now confirm that the appliance counted it.
 3. Find the **Local vs external** card. Every token is kept on the Launchpad, and the share routed externally reads zero
    tokens, because your appliance answered each request and no frontier model took part.
 
-   ![Usage Overview tab with the Totals card showing requests and tokens risen from zero, and the Local vs external card showing 100 percent kept on the Launchpad.](/assets/docs/images/run-claude-code_usage-overview.webp)
+   ![Usage Overview tab with the Totals card showing requests and tokens risen from zero, and the Local vs external card showing 100 percent kept on Inference Launchpad.](/assets/docs/images/run-claude-code_usage-overview.webp)
 
 4. Select the **By Client** tab, and find the `coding-agent` client you named in **Create a Client and Its API Token**.
    Its row carries the tokens your two questions spent.
 
-   ![Usage By Client tab with a coding-agent row showing 1 API key, 3 local requests, and 86.9K local tokens.](/assets/docs/images/run-claude-code_usage-by-client.webp)
+   ![Usage By Client tab with a coding-agent row showing 1 API key, 2 local requests, and 8.0K local tokens.](/assets/docs/images/run-claude-code_usage-by-client.webp)
 
 ## Change a Setting and Watch
 
@@ -378,13 +378,13 @@ Undo the changes the tutorial made.
 
 6. In the **Clients** list, find the `coding-agent` row and select the three-dot menu at the end of the row.
 
-   ![Clients and API tokens page with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/run-claude-code_three-dot-menu.webp)
+   ![Access Management Clients list with the three-dot menu at the end of the coding-agent row highlighted.](/assets/docs/images/run-claude-code_three-dot-menu.webp)
 
 7. Select **Delete** and confirm.
 
    <img
      src="/assets/docs/images/run-claude-code_delete-menu.webp"
-     alt="The three-dot menu open showing Manage Client and Delete options."
+     alt="The three-dot menu open showing the Manage Client, Suspend, and Delete options."
      width="220"
    />
 
