@@ -9,6 +9,16 @@ tags: ["edge"]
 
 You can reboot, shut down and reset an Edge host from Local UI.
 
+:::warning
+
+Local UI drains the Edge host before it reboots or shuts down the host, but the host powers off even if the drain fails,
+and Local UI does not report the failure. If the host runs virtual machines (VMs), the VMs stop instead of
+live-migrating to other nodes. On PaletteAI VM Launchpad clusters, drain the host with `kubectl` before you reboot or
+shut it down. Refer to [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md) and
+[Known Issues](../../../../release-notes/known-issues.md).
+
+:::
+
 ## Reboot Edge Host
 
 You can reboot the Edge host from Local UI. Doing so will cause you to temporarily lose access to Local UI while the
