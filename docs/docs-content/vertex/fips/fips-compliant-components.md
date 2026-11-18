@@ -50,9 +50,9 @@ All services in the management plane are FIPS compiled with Go using
 [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)
 resource to learn about our NIST certificate.
 
-Management plane images are pulled from the Spectro Cloud FIPS image repository,
-`us-docker.pkg.dev/palette-images-fips`. In airgapped environments, they are pulled from the internal Zot registry
-instead.
+On the VerteX Management Appliance, the management plane pulls images from the Spectro Cloud FIPS image registry,
+`us-docker.pkg.dev/palette-images-fips`. In airgap environments, the appliance pulls images from the internal Zot
+registry instead.
 
 <br />
 
