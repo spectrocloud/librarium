@@ -290,8 +290,7 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
 - Local UI sessions are recorded in the Local UI audit log with the actor, the action, and the outcome, including failed
   sign-ins.
 - SSH sessions are recorded by the SSH daemon with the user, the accepted key, and the source address, and by the host
-  audit daemon with the session open and close. The host audit daemon and the systemd journal record commands run with
-  `sudo`.
+  audit daemon with the session open and close. The host audit daemon records commands run with `sudo`.
 - Kubernetes API requests are recorded in the API server audit log with the user, verb, resource, source address, and
   result code.
 
@@ -322,7 +321,9 @@ routine requests:
 ### Access to Runtime Objects
 
 The container runtime socket, `/run/containerd/containerd.sock`, is accessible to root only. The host audit daemon
-records every refused attempt by a non-root account to open a file, including this socket.
+records every attempt to create, open, or truncate a file, including this socket, that fails with `EACCES` or `EPERM`.
+It covers every account that logged in with a non-root user ID, including after `su` or `sudo`. System and service
+accounts that never log in are not covered.
 
 ## Workload Isolation
 
