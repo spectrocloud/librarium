@@ -164,15 +164,27 @@ automatically. There is no operator control to change it. For how the appliance 
 
 ### System Prompts {#system-prompts}
 
-A system prompt is an instruction that a platform administrator sets on the **Prompt Instructions** settings page. The
-gateway adds it to a request that carries no instruction of its own. The following requests reach the model without the
-instruction:
+A client can send its own system prompt with a request. A platform administrator can also set a system prompt, which the
+console calls an instruction, on the **Prompt Instructions** settings page. The **Apply to every turn** toggle, which is
+off by default, controls whether a request that carries its own system prompt also receives the instruction.
 
-- A request that already carries an instruction of its own. That instruction sets how the model answers, so the gateway
-  keeps it and adds nothing. [Coding assistants](../reference/glossary.md#coding-assistant) such as
-  [Claude Code](../how-to-guides/use-claude-code.md) send their own instruction with every request.
+| **Apply to every turn** | **A request without a system prompt** | **A request with its own system prompt**                                        |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
+| Off                     | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds nothing.                  |
+| On                      | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds the instruction after it. |
 
-- A request to the Responses API, the API that [OpenAI Codex](../reference/codex-reference.md) uses.
+The table applies to the Chat Completions API (`/v1/chat/completions`) and the Anthropic Messages API (`/v1/messages`).
+A request to the Responses API (`/v1/responses`) never receives the instruction.
+[OpenAI Codex](../reference/codex-reference.md) uses the Responses API.
+
+[Coding assistants](../reference/glossary.md#coding-assistant) such as
+[Claude Code](../how-to-guides/use-claude-code.md) send their own system prompt with every request. A request from
+Claude Code receives the instruction only while **Apply to every turn** is on. For example, with the toggle on and the
+instruction `Answer every question in Spanish.`, the gateway keeps the system prompt that Claude Code sends and adds the
+instruction after it.
+
+Leave the toggle off when a client's own system prompt should decide how the model answers. Turn it on when the
+instruction must also reach clients that send their own system prompt, such as Claude Code.
 
 The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
 replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
@@ -180,7 +192,7 @@ instruction after routing picks the model. A per-model instruction applies to ea
 model, whatever model name the client sent.
 
 A saved change applies to new requests. A new appliance has no instruction, so it adds nothing to any request until a
-platform administrator sets one. To set or remove an instruction, refer to
+platform administrator sets one. To set or remove an instruction, or to turn **Apply to every turn** on or off, refer to
 [Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
 
 ### External Inference Endpoints {#external-inference-endpoints}
