@@ -42,6 +42,10 @@ or pool identity of a cluster that Palette deploys.
   existing clusters to managed identities. To use managed identities, add a new cloud account. The new cloud account can
   use a new PCG or an existing one. Refer to [Use an Existing PCG](#use-an-existing-pcg).
 
+- When Palette upgrades a self-hosted PCG, it does not upgrade the Ambit service on the PCG, which Palette uses for
+  managed identity cloud accounts. To upgrade Ambit, download the Ambit manifest again and apply it to the cluster that
+  hosts the PCG. Refer to steps 3 and 4 of [Use an Existing PCG](#use-an-existing-pcg).
+
 - You cannot change the cluster identity, the AKS service identity, or the Kubelet identity after you create a cluster.
 
 - You cannot change the pool identities or the **Exclude cluster identity** setting of a worker pool after you create
@@ -50,7 +54,8 @@ or pool identity of a cluster that Palette deploys.
 ## Set Up Managed Identity Authentication
 
 Create the management identity, attach it to the nodes of a Kubernetes cluster in Azure, deploy a PCG to that cluster,
-and then add the cloud account. You can also add managed identity cloud accounts with the
+and then add the cloud account. If you already have a self-hosted PCG in Azure, you can use it instead. Refer to
+[Use an Existing PCG](#use-an-existing-pcg). You can also add managed identity cloud accounts with the
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Prerequisites
@@ -128,8 +133,8 @@ a self-hosted PCG in Azure that serves service principal cloud accounts, you can
 it instead of deploying a new PCG. Palette uses the Ambit service on the PCG only for managed identity cloud accounts,
 so the existing cloud accounts keep using their service principals.
 
-The PCG must meet the [prerequisites](#prerequisites) of this guide. You also need `kubectl` access to the cluster that
-hosts the PCG. Before you start, point `kubectl` at that cluster.
+You and the cluster that hosts the PCG must meet the [Prerequisites](#prerequisites). You also need `kubectl` access to
+that cluster. Before you start, point `kubectl` at it.
 
 ```shell
 export KUBECONFIG=<path-to-kubeconfig>
@@ -139,8 +144,8 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
 
 :::warning
 
-On AKS, Azure upgrades the node pools of the cluster that hosts the PCG when you update its Kubelet identity in step 2.
-The upgrade can interrupt the PCG, so make the change during a maintenance window.
+On AKS, when you update the Kubelet identity of the cluster that hosts the PCG in step 2, Azure upgrades the node pools
+of that cluster. The upgrade can interrupt the PCG, so make the change during a maintenance window.
 
 :::
 
@@ -165,7 +170,7 @@ The upgrade can interrupt the PCG, so make the change during a maintenance windo
    - On virtual machines or virtual machine scale sets, assign it as a user-assigned identity on each virtual machine or
      scale set.
 
-3. Download the Ambit manifest of the PCG with the Palette API.
+3. Download the Ambit manifest of the PCG with the [Palette API](/api/introduction/).
 
    ```shell
    curl --silent --show-error --request GET \
@@ -175,8 +180,9 @@ The upgrade can interrupt the PCG, so make the change during a maintenance windo
    ```
 
    Replace `<palette-endpoint>` with the endpoint of your Palette instance, `<pcg-uid>` with the unique ID of the PCG,
-   and `<api-key>` with your [Palette API key](/user-management/authentication/api-key/create-api-key/). To find the ID
-   of the PCG, refer to **Retrieve Manifests Manually** in [Install PCG](../../pcg/deploy-pcg-k8s.md#install-pcg).
+   and `<api-key>` with your [Palette API key](../../../user-management/authentication/api-key/create-api-key.md). To
+   find the ID of the PCG, expand **Retrieve Manifests Manually** in step 7 of
+   [Install PCG](../../pcg/deploy-pcg-k8s.md#install-pcg), and follow its step 1.
 
 4. Apply the Ambit manifest to the cluster that hosts the PCG.
 
@@ -187,7 +193,7 @@ The upgrade can interrupt the PCG, so make the change during a maintenance windo
    Replace `<pcg-uid>` with the unique ID of the PCG.
 
 5. Complete steps 4 - 6 of [Deploy the PCG and Add the Cloud Account](#deploy-the-pcg-and-add-the-cloud-account). In
-   **Private Cloud Gateway**, select the existing PCG.
+   step 5, select the existing PCG in **Private Cloud Gateway**.
 
 ### Validate
 
