@@ -17,9 +17,9 @@ page, API field, or install-time setting changes the behavior described here.
 
 Most sections end with a command that you can run to confirm the behavior on your own installation.
 
-## Transport Encryption
+## Transport Encryption {#transport-encryption}
 
-Palette VerteX serves the following interfaces over Transport Layer Security (TLS) only.
+The VerteX Management Appliance serves the following interfaces over Transport Layer Security (TLS) only.
 
 | Interface                         | Port  |
 | --------------------------------- | ----- |
@@ -82,9 +82,9 @@ SSL routines:ssl3_read_bytes:tlsv1 alert protocol version
 
 </details>
 
-## Cryptographic Modules
+## Cryptographic Modules {#cryptographic-modules}
 
-Palette VerteX performs its cryptography in FIPS 140-3 validated modules selected at build time:
+The VerteX Management Appliance performs its cryptography in FIPS 140-3 validated modules selected at build time:
 
 - The management plane services, the Kubernetes control-plane components, etcd, and the Kubelet are built against the
   Spectro Cloud Cryptographic Library
@@ -118,7 +118,7 @@ build	GOFIPS140=v1.0.0-c2097c7c
 
 </details>
 
-## Certificates and Signatures
+## Certificates and Signatures {#certificates-and-signatures}
 
 - Every certificate in the appliance cluster's public key infrastructure is signed with SHA-256
   (`sha256WithRSAEncryption`). This includes the Kubernetes certificate authority, API server, etcd, front proxy, and
@@ -143,7 +143,7 @@ The output contains `alert handshake failure` and `SSL alert number 40`.
 
 </details>
 
-## SSH on Appliance Nodes
+## SSH on Appliance Nodes {#ssh-on-appliance-nodes}
 
 The SSH daemon on each appliance node offers only the following algorithms. The host image sets them in
 `/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf`, which `/etc/ssh/sshd_config` includes.
@@ -178,9 +178,9 @@ kexalgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-he
 
 </details>
 
-## Authentication
+## Authentication {#authentication}
 
-### Sign-in Feedback
+### Sign-in Feedback {#sign-in-feedback}
 
 Every sign-in surface masks the password as it is typed and answers a failed sign-in with one message, whether the
 account does not exist or the password is wrong. The following table lists the message on each interface.
@@ -193,14 +193,14 @@ account does not exist or the password is wrong. The following table lists the m
 
 The node console menu masks the password with asterisks.
 
-### API Keys
+### API Keys {#api-keys}
 
 API keys are generated inside the management API from the random bit generator of the Spectro Cloud Cryptographic
 Library. Each key is a 128-bit random value. The key is shown once, when it is created. Palette VerteX stores only a
 salted one-way hash of the key, and no API response returns the key after creation. No field selects a generator, key
 length, or format. Refer to [Create API Key](../user-management/authentication/api-key/create-api-key.md).
 
-### Session Tokens
+### Session Tokens {#session-tokens}
 
 - Tenant Console, System Console, and password-authenticated API sessions use a JSON Web Token (JWT) protected with
   HS256 (HMAC-SHA-256). The signature key is generated at installation and stored as a secret on the management cluster.
@@ -234,9 +234,9 @@ echo "$TOKEN" | jq --raw-input --raw-output 'split(".")[0] | @base64d'
 
 </details>
 
-## Audit Records
+## Audit Records {#audit-records}
 
-### Audit Layers
+### Audit Layers {#audit-layers}
 
 The following audit layers ship enabled. None can be turned off from a console, the API, or an install option.
 
@@ -248,14 +248,14 @@ The following audit layers ship enabled. None can be turned off from a console, 
 | systemd journal                 | `journalctl` on each node                                                         |
 | Local UI audit log              | `/var/log/stylus-audit.log` on each node, or Local UI **Diagnostics** > **Audit** |
 
-### Time Stamps
+### Timestamps {#timestamps}
 
-Every layer takes its time stamps from the system clock of the node that writes the record. When Network Time Protocol
+Every layer takes its timestamps from the system clock of the node that writes the record. When Network Time Protocol
 (NTP) servers are configured, they synchronize that clock. No layer uses another time source.
 
 Every layer records UTC, and every node runs in UTC. The Tenant Console **Audit Logs** page displays times in the
 viewer's local time zone, to the minute. By default, the Local UI displays times in the viewer's local time zone and
-labels the offset, for example `(Local: UTC-05:00)`. To display UTC or both, open the user menu in the upper-right
+labels the offset, for example `(Local: UTC-05:00)`. To display UTC or both, open the **User Menu** in the upper-right
 corner of the Local UI, select **Time/Date Settings**, and then select **Device (UTC)** or **Both (Local, Device)**. The
 display setting does not change the stored records.
 
@@ -271,7 +271,7 @@ The following layers record fractions of a second.
 <details>
 <summary>Verify</summary>
 
-On a control-plane node, read the newest API server audit record and confirm the UTC, sub-second time stamp.
+On a control-plane node, read the newest API server audit record and confirm the UTC, sub-second timestamp.
 
 ```shell
 sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extended-regexp '"requestReceivedTimestamp":"[^"]+"'
@@ -283,26 +283,47 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
 
 </details>
 
-### Maintenance and Diagnostic Sessions
+### Maintenance and Diagnostic Sessions {#maintenance-and-diagnostic-sessions}
 
 - Tenant Console and System Console sessions are recorded in the management API audit trail with the actor and the
   action, starting with the sign-in.
 - Local UI sessions are recorded in the Local UI audit log with the actor, the action, and the outcome, including failed
   sign-ins.
 - SSH sessions are recorded by the SSH daemon with the user, the accepted key, and the source address, and by the host
-  audit daemon with the session open and close. The host audit daemon records commands run with `sudo`.
+  audit daemon with the session open and close. Commands run with `sudo` are recorded by the host audit daemon and by
+  the systemd journal, which logs the user, working directory, target user, and command. There is no separate `sudo` log
+  file.
 - Kubernetes API requests are recorded in the API server audit log with the user, verb, resource, source address, and
   result code.
 
-### Kubernetes API Audit Policy
+<details>
+<summary>Verify</summary>
+
+On an appliance node, list the audit rule for commands run with `sudo`.
+
+<!-- vale off -->
+
+```shell
+sudo auditctl -l | grep /usr/bin/sudo
+```
+
+```text hideClipboard
+-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged
+```
+
+<!-- vale on -->
+
+</details>
+
+### Kubernetes API Audit Policy {#kubernetes-api-audit-policy}
 
 The shipped Kubernetes API server audit policy records requests at the `Metadata` level or higher and ends in a
 catch-all `Metadata` rule. A refused request is recorded with code `403`. The policy does not record the following
 routine requests:
 
 - Requests for `events`.
-- The `/healthz`, `/version`, and `/swagger` endpoints.
-- Reads and watches that Kubernetes system components make on their own objects:
+- Requests to the `/healthz`, `/version`, and `/swagger` endpoints.
+- Reads, watches, and updates that Kubernetes system components make:
 
   - kube-proxy watches of endpoints and services.
 
@@ -318,14 +339,34 @@ routine requests:
 
   - Metrics reads by the controller manager.
 
-### Access to Runtime Objects
+### Access to Runtime Objects {#access-to-runtime-objects}
 
 The container runtime socket, `/run/containerd/containerd.sock`, is accessible to root only. The host audit daemon
-records every attempt to create, open, or truncate a file, including this socket, that fails with `EACCES` or `EPERM`.
-It covers every account that logged in with a non-root user ID, including after `su` or `sudo`. System and service
-accounts that never log in are not covered.
+records every attempt to create, open, or truncate a file that fails with `EACCES` or `EPERM`, including an attempt to
+open this socket. The rule applies to every account that logs in with a user ID of 1000 or higher, and it still applies
+after the account runs `su` or `sudo`. System and service accounts that never log in are not covered.
 
-## Workload Isolation
+<details>
+<summary>Verify</summary>
+
+On an appliance node, count the audit rules for refused file access. The four rules cover `EACCES` and `EPERM` for
+32-bit and 64-bit system calls.
+
+<!-- vale off -->
+
+```shell
+sudo auditctl -l | grep --count key=access
+```
+
+<!-- vale on -->
+
+```text hideClipboard
+4
+```
+
+</details>
+
+## Workload Isolation {#workload-isolation}
 
 - The management plane's security services are authentication, user and role management, the management API, and system
   administration. Each runs as a separate Kubernetes Deployment under its own service account, as a non-root user, with
@@ -369,7 +410,7 @@ sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces -
 
 </details>
 
-## API Input Validation
+## API Input Validation {#api-input-validation}
 
 The management API declares a type for every request parameter and request body in its published
 [API specification](/api/introduction/). It binds each request body to its declared type and refuses a body of the wrong
@@ -395,15 +436,15 @@ VerteX Management Appliance.
 
 </details>
 
-## Operator-Configurable Settings
+## Operator-Configurable Settings {#operator-configurable-settings}
 
 The following related settings can be changed. Nothing else described on this page is configurable.
 
 | Setting                                                                          | Where                                                                                           |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | Console certificate, key, and certificate authority                              | System Console **Administration** > **System Address**                                          |
-| Session lifetime, 15 to 1,440 minutes (default 240)                              | Tenant Console **Tenant Settings** > **Platform** > **Platform Settings** > **Session timeout** |
-| Local UI time display (UTC, local time, or both)                                 | Local UI user menu > **Time/Date Settings**                                                     |
+| Session lifetime, 15 to 1,440 minutes (default 240)                              | Tenant Console **Tenant Settings** > **Platform** > **Platform Settings** > **Session Timeout** |
+| Local UI time display (UTC, local time, or both)                                 | Local UI **User Menu** > **Time/Date Settings**                                                 |
 | NTP servers                                                                      | Local UI **Cluster** > **Actions** > **Cluster Settings** > **Network Time Protocol (NTP)**     |
 | Pack registry certificates, or an external registry in place of the built-in one | Local UI **Cluster** > **Configuration** > **Container Registry**                               |
 | Audit log forwarding                                                             | Tenant Console **Tenant Settings** > **Infrastructure** > **Audit Trails**                      |
