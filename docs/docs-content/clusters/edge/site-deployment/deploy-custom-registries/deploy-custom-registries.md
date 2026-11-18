@@ -68,7 +68,9 @@ another registry.
 If you want to use a private image registry for applications on your Edge cluster, you can instruct the Palette agent to
 download images from an _authenticated external registry_. You can specify an external registry in the `user-data` file
 used to build your Edge Installer ISO. For more information on how to deploy a cluster with an authenticated external
-registry, refer to [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
+registry, refer to [Deploy Cluster with a Private External Registry](./deploy-external-registry.md). To rotate the
+credentials or the CA certificate of an external registry on centrally managed Edge clusters, refer to
+[Rotate External Registry Credentials](./rotate-external-registry-credentials.md).
 
 ## Limitations
 
