@@ -113,26 +113,27 @@ automatically. There is no operator control to change it. For how the appliance 
 
 ### System Prompts {#system-prompts}
 
-A client can send its own system prompt with a request. A platform administrator can also set an instruction on the
-**Prompt Instructions** settings page. The **Apply to every turn** toggle decides which requests receive the
-instruction. The toggle is off by default.
+A client can send its own system prompt with a request. A platform administrator can also set a system prompt, which the
+console calls an instruction, on the **Prompt Instructions** settings page. The **Apply to every turn** toggle, which is
+off by default, controls whether a request that carries its own system prompt also receives the instruction.
 
 | **Apply to every turn** | **A request without a system prompt** | **A request with its own system prompt**                                        |
 | ----------------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
 | Off                     | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds nothing.                  |
 | On                      | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds the instruction after it. |
 
-The table applies to the Chat Completions and Messages APIs. A request to the Responses API never receives the
-instruction. [OpenAI Codex](../reference/codex-reference.md) uses the Responses API.
+The table applies to the Chat Completions API (`/v1/chat/completions`) and the Anthropic Messages API (`/v1/messages`).
+A request to the Responses API (`/v1/responses`) never receives the instruction.
+[OpenAI Codex](../reference/codex-reference.md) uses the Responses API.
 
 [Coding assistants](../reference/glossary.md#coding-assistant) such as
-[Claude Code](../how-to-guides/use-claude-code.md) send their own system prompt with every request. Their requests
-receive the instruction only while **Apply to every turn** is on. For example, with the toggle on, the gateway keeps the
-system prompt that Claude Code sends. The gateway then adds the instruction `Answer every question in Spanish.` after
-that system prompt.
+[Claude Code](../how-to-guides/use-claude-code.md) send their own system prompt with every request. A request from
+Claude Code receives the instruction only while **Apply to every turn** is on. For example, with the toggle on and the
+instruction `Answer every question in Spanish.`, the gateway keeps the system prompt that Claude Code sends and adds the
+instruction after it.
 
 Leave the toggle off when a client's own system prompt should decide how the model answers. Turn it on when the
-instruction must also reach clients that send their own system prompt, such as coding assistants.
+instruction must also reach clients that send their own system prompt, such as Claude Code.
 
 The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
 replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
