@@ -17,8 +17,8 @@ upload an Ubuntu disk image, create a virtual machine from the uploaded disk, an
 
 :::warning
 
-In VMO pack version 4.10.7 and later, expose the CDI upload proxy and the KubeVirt export proxy through the Ingress or
-`LoadBalancer` configuration on this page, not through the `directAccess` Traefik route.
+Do not use the deprecated `directAccess` Traefik route for CDI upload or virtual machine export. Use one of the methods
+in [Choose an Exposure Method](#choose-an-exposure-method) instead.
 
 :::
 

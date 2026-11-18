@@ -60,6 +60,15 @@ Two notations appear in the parameter tables in this section of the documentatio
   [Define Cluster Profile Variables](../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   for guidance.
 
+:::warning
+
+The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
+`false` by default in every Deployment Mode. In VMO pack version 4.10.7 and later, expose the CDI upload proxy and
+KubeVirt export proxy through native Ingress or `LoadBalancer` Services instead. Refer to
+[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance.
+
+:::
+
 ## Proxied
 
 Use **Proxied** when the cluster is behind a firewall or NAT and Palette cannot reach it directly. The Spectro Proxy
@@ -78,17 +87,7 @@ pack provides remote access to the UI. This is the default selection.
 | `tls.certManager.selfSigned`             | `true`                                                                                                    |
 | `caCert.enabled`                         | `true`                                                                                                    |
 | `caCert.configMapName`                   | `platform-ca-cert`                                                                                        |
-| `ingressRoute.enabled`                   | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
-
-:::warning
-
-In VMO pack version 4.10.7 and later, expose the CDI upload proxy and KubeVirt export proxy through native Ingress or
-`LoadBalancer` Services instead of the `directAccess` Traefik route. Refer to
-[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance. The `directAccess` route
-is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is `false` by default in every Deployment
-Mode.
-
-:::
+| `ingressRoute.enabled`                   | `false`, because users reach the UI through the Spectro Proxy pack rather than Traefik                    |
 
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
 self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every
