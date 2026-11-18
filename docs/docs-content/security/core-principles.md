@@ -42,8 +42,8 @@ prevent them from being introduced in a release.
 
 We believe that security should be the default setting for all of our systems and software. Our products are secure to
 use out-of-the-box with little or no configuration needed and at no additional cost – such as audit logs and access
-control for sensitive information. Palette also supports Multi-Factor authentication (MFA) using external Identify
-Providers (IDP), such as Okta.
+control for sensitive information. Palette also supports Multi-Factor Authentication (MFA) through external Identity
+Providers (IdPs), such as Okta, and through passkeys for users who sign in with a password.
 
 ## Never Rely Just on Obscurity
 

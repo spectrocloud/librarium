@@ -43,8 +43,10 @@ BROKEN_LINK_COUNT=0
 # Format comment with JSON content
 COMMENT=":loudspeaker: Broken External Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n *Note*: Some links may be false positives due to redirects behavior.\n\n"
 
-# Loop through each item in the JSON array directly
-for link in $(echo "${JSON_CONTENT}" | jq -c '.[]'); do
+# Loop through each item in the JSON array, one compact JSON object per line. Read whole lines:
+# a `for` loop over $(...) splits on spaces, and link text such as "FIPS Updates" contains them,
+# which turned one broken link into several blank, double-counted report entries.
+while IFS= read -r link; do
     url=$(echo "${link}" | jq -r '.url')
     status=$(echo "${link}" | jq -r '.status')
     state=$(echo "${link}" | jq -r '.state')
@@ -56,9 +58,9 @@ for link in $(echo "${JSON_CONTENT}" | jq -c '.[]'); do
     fi
 
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
-done
+done < <(echo "${JSON_CONTENT}" | jq -c '.[]')
 
-for link in $(echo "${JSON_RATE_LIMIT_CONTENT}" | jq -c '.[]'); do
+while IFS= read -r link; do
     url=$(echo "${link}" | jq -r '.url')
     status=$(echo "${link}" | jq -r '.status')
     state=$(echo "${link}" | jq -r '.state')
@@ -70,15 +72,16 @@ for link in $(echo "${JSON_RATE_LIMIT_CONTENT}" | jq -c '.[]'); do
     fi
 
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
-done
+done < <(echo "${JSON_RATE_LIMIT_CONTENT}" | jq -c '.[]')
 
-for link in $(echo "${DEVELOPER_PORTAL_BROKEN_LINKS_CONTENT}"); do
+while IFS= read -r link; do
+    [[ -z "$link" ]] && continue # an empty report still yields one empty line
     ((BROKEN_LINK_COUNT++)) # All the links in this file are broken
     filename="${link%%:*}"  # everything before the first colon
     url="${link#*:}"        # everything after the first colon
 
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: BROKEN  \n:arrow_up: Parent Page: ${filename}\n\n"
-done
+done <<< "${DEVELOPER_PORTAL_BROKEN_LINKS_CONTENT}"
 
 # Check if no broken links are found
 if [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then

@@ -187,12 +187,14 @@ Use the following steps to validate adding the new backup location.
 
 4. Fill out the input fields listed in the table below.
 
-   | **Field**             | **Value**                                                                                                                                                                                    |
-   | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**     | Provide a name of your choice.                                                                                                                                                               |
-   | **Location Provider** | Select GCP from the **drop-down** Menu.                                                                                                                                                      |
-   | **Bucket**            | The name of the bucket you created in the GCP object store.                                                                                                                                  |
-   | **JSON Credentials**  | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
+   | **Field**             | **Value**                                                                                                                                                                                         |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Location Name**     | Provide a name of your choice.                                                                                                                                                                    |
+   | **Location Provider** | Select **GCP** from the drop-down menu.                                                                                                                                                           |
+   | **Project ID**        | The ID of the GCP project that contains the bucket.                                                                                                                                               |
+   | **Bucket**            | The name of the bucket you created in the GCP object store.                                                                                                                                       |
+   | **JSON Credentials**  | Paste the JSON credentials of the service account, or use **JSON File** instead. Ensure that the associated service account has sufficient permissions to perform the required bucket operations. |
+   | **JSON File**         | Select **Upload**, and then choose the JSON key file that you downloaded from the GCP console. Use either this field or **JSON Credentials**, not both.                                           |
 
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message
    indicates a success, proceed to the next step. If the validation status message indicates an error, review the error
