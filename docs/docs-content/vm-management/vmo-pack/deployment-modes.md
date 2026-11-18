@@ -102,7 +102,7 @@ cluster network. No proxy is required.
 | **Setting**                  | **Value Applied**                                                                                        |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `palette.enabled`            | `true`                                                                                                   |
-| `palette.managedIngress`     | `false`                                                                                                  |
+| `palette.managedIngress`     | `false`, which overrides the pack default of `true`                                                      |
 | `palette.serviceName`        | `vm-dashboard`                                                                                           |
 | `service.type`               | `LoadBalancer`. Use `NodePort` instead on bare metal clusters without a load balancer.                   |
 | `tls.enabled`                | `true`                                                                                                   |
