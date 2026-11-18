@@ -3,16 +3,26 @@ sidebar_label: "Set a System Prompt"
 title: "Set a System Prompt"
 description:
   "Step-by-step guidance for platform administrators on how to set a default system prompt and per-model system prompts
-  on a PaletteAI Inference Launchpad appliance."
+  on a PaletteAI Inference Launchpad appliance, and how to turn the Apply to every turn toggle on or off."
 hide_table_of_contents: false
 sidebar_position: 2.5
 tags: ["paletteai-inference-launchpad", "settings", "system-prompt", "how-to"]
-keywords: ["launchpad", "ai", "system prompt", "default instruction", "per model instructions", "settings"]
+keywords:
+  [
+    "launchpad",
+    "ai",
+    "system prompt",
+    "default instruction",
+    "per model instructions",
+    "apply to every turn",
+    "settings",
+  ]
 ---
 
 This guide explains how to set a [system prompt](../reference/glossary.md#system-prompt) on a PaletteAI Inference
-Launchpad appliance. The console calls a system prompt an instruction. You set one default instruction for every model,
-and you can give a model its own instruction that replaces the default. To learn which requests receive the instruction,
+Launchpad appliance. In the console, a system prompt that you set is an _instruction_. You set one default instruction
+for every model, and you can give a model its own instruction that replaces the default. You can also choose whether a
+request that carries its own system prompt receives the instruction. To learn which requests receive the instruction,
 refer to [System Prompts](../explanation/architecture.md#system-prompts).
 
 ## Prerequisites
@@ -55,6 +65,25 @@ refer to [System Prompts](../explanation/architecture.md#system-prompts).
 6. _(Optional)_ To give another model its own instruction, repeat steps 3 - 5.
 
 7. Select **Apply**.
+
+   A `Prompt settings saved` message appears.
+
+## Turn Apply to Every Turn On or Off
+
+**Apply to every turn** is off by default. To decide whether to turn it on, refer to
+[System Prompts](../explanation/architecture.md#system-prompts).
+
+1. From the left main menu, select **Settings**.
+
+2. On the **Settings** menu, under **Request handling**, select **Prompt Instructions**.
+
+3. Under the **Default instruction** field, turn the **Apply to every turn** toggle on or off.
+
+   - To also add the instruction after the system prompt that a client sends, turn it on.
+
+   - To add the instruction only to a request without a system prompt, turn it off.
+
+4. Select **Apply**.
 
    A `Prompt settings saved` message appears.
 
