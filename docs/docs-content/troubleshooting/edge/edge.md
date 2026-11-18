@@ -10,6 +10,90 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Clusters Lose Pod Networking after Calico Pack Upgrade
+
+After you upgrade the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> pack from version 3.31
+or 3.32 to 3.33.0 through a cluster profile update, Edge clusters, including clusters in appliance mode, lose pod
+networking. Edge clusters that you deploy directly with Calico 3.33.0 and clusters that are not Edge clusters are not
+affected.
+
+Calico 3.33.0 moved its CNI installer into a new image and no longer sets an explicit command on the `install-cni` init
+container of the `calico-node` DaemonSet. When you upgrade an Edge cluster, the DaemonSet keeps the `command` field from
+the previous version of the pack, and that command does not exist in the new image. The `calico-node` pod cannot start,
+and the node is marked network-unavailable. New and rescheduled pods, including `calico-kube-controllers` and your
+application workloads, remain in the `Pending` state. Pods that are already running continue to run until Kubernetes
+recreates them. Palette might still show the Calico pack as installed. Rolling the cluster profile back to Calico 3.31
+or 3.32 does not recover the cluster.
+
+### Debug Steps {#debug-steps-calico-pod-networking}
+
+1. [Connect to your cluster](../../clusters/cluster-management/palette-webctl.md) via `kubectl`.
+
+2. Check the state of the `calico-node` pods.
+
+   ```bash
+   kubectl get pods --namespace kube-system --selector k8s-app=calico-node
+   ```
+
+   The issue affects the cluster if the `calico-node` pod is in the `Init:RunContainerError` or `Init:CrashLoopBackOff`
+   state.
+
+   ```bash hideClipboard title="Example Output"
+   NAME                READY   STATUS                   RESTARTS   AGE
+   calico-node-vpdwd   0/1     Init:RunContainerError   1          25s
+   ```
+
+3. Remove the leftover `command` field from the `install-cni` init container of the `calico-node` DaemonSet. The `test`
+   operation makes the patch fail without changing the DaemonSet if the init container at index `2` is not
+   `install-cni`.
+
+   ```bash
+   kubectl patch daemonset calico-node --namespace kube-system --type=json --patch='[
+     {"op":"test","path":"/spec/template/spec/initContainers/2/name","value":"install-cni"},
+     {"op":"remove","path":"/spec/template/spec/initContainers/2/command"}
+   ]'
+   ```
+
+   ```bash hideClipboard title="Example Output"
+   daemonset.apps/calico-node patched
+   ```
+
+4. If the patch fails because the init container at index `2` is not `install-cni`, list the init containers of the
+   DaemonSet.
+
+   ```bash
+   kubectl get daemonset calico-node --namespace kube-system \
+     --output jsonpath='{range .spec.template.spec.initContainers[*]}{.name}{"\n"}{end}'
+   ```
+
+   The output lists the init containers in index order, starting at `0`. Find the position of `install-cni`.
+
+   ```bash hideClipboard title="Example Output"
+   upgrade-ipam
+   cni-plugins
+   install-cni
+   ebpf-bootstrap
+   ```
+
+   Issue the command from step 3 again, and replace both occurrences of `2` in the paths with the index of
+   `install-cni`.
+
+5. Verify that Calico recovers. The `calico-node` pods restart, and the pending pods are scheduled within about a
+   minute. Palette does not add the `command` field back when it reconciles the cluster.
+
+   ```bash
+   kubectl get pods --namespace kube-system --selector k8s-app=calico-node
+   kubectl get pods --all-namespaces --field-selector status.phase=Pending
+   ```
+
+   The `calico-node` pods are in the `Running` state, and no pods are pending.
+
+   ```bash hideClipboard title="Example Output"
+   NAME                READY   STATUS    RESTARTS   AGE
+   calico-node-nbbn7   1/1     Running   0          42s
+   No resources found
+   ```
+
 ## Scenario - Palette Agent Restarts Repeatedly after Registration on Trusted Boot Edge Hosts
 
 Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
