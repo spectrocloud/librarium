@@ -60,7 +60,7 @@ out and archived. You can still download your log files from any period, but the
    ```
 
 2. Create a file at the path `overlay/files/etc/rsyslog.d/48-audit.conf`. You can change the file name, but it must be a
-   `conf` file and sorted alphanumerically before `49-stylus-audit.conf`. For example, `30-my-log.conf`.
+   `conf` file and sorted alphanumerically before `49-stylus.conf`. For example, `30-my-log.conf`.
 
 <Tabs>
 
@@ -88,7 +88,7 @@ out and archived. You can still download your log files from any period, but the
 
    Ensure your logs follow the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain
    the following keys: `edgeHostId`, `contentMsg`, `action`, `actor`, `actorType`, `resourceId`, `resourceName`,
-   `resourceKind`. If your log entries do not follow the RFE 5424 Syslog protocol, or do not contain the necessary keys,
+   `resourceKind`. If your log entries do not follow the RFC 5424 Syslog protocol, or do not contain the necessary keys,
    they will still be logged, but will not show up in Local UI.
 
 </TabItem>
@@ -129,17 +129,17 @@ out and archived. You can still download your log files from any period, but the
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. In the left **Main Menu**, select **Diagnostics**. Then select the **Audit** tab. Confirm that the list shows the
+2. From the left main menu, select **Diagnostics**, and then select the **Audit** tab. Confirm that the list shows the
    logs from your applications.
 
 ## View and Download Log File from Local UI
 
 Log files are stored in the `/var/log/` folder. The active log file `stylus-audit.log` stores up to one year's worth of
 logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If the log messages
-are configured to be picked up by Local UI, they appear in Local UI.
+follow the expected schema, Local UI displays them.
 
-You can also download the audit log files less than three years old in the `/var/log/` folder from Local UI. This
-includes the log entries that Local UI does not display.
+From Local UI, you can also download the audit log files in the `/var/log/` folder that are less than three years old.
+These files include the log entries that Local UI does not display.
 
 ### Prerequisites
 
@@ -153,8 +153,8 @@ includes the log entries that Local UI does not display.
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. In the left **Main Menu**, select **Diagnostics**. Then select the **Audit** tab. You can view all audit log entries
-   on this page. Local UI displays log entries dated up to one year ago.
+2. From the left main menu, select **Diagnostics**, and then select the **Audit** tab. You can view all audit log
+   entries on this page. Local UI displays log entries dated up to one year ago.
 
    :::info
 
@@ -165,8 +165,8 @@ includes the log entries that Local UI does not display.
    :::
 
 3. To download the log files, select **Download all logs** to the right of the filters. Local UI downloads a compressed
-   archive that contains `stylus-audit.log` and its archived log files. The archive does not include other log files in
-   the `/var/log` folder, such as log files that you configured your applications to write to.
+   archive that contains `stylus-audit.log` and its archived log files. The archive does not include other files in the
+   `/var/log/` folder, such as a separate file that you configured to receive a copy of the Palette agent logs.
 
 ### Validate
 
