@@ -115,7 +115,9 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
 ## Prepare the Rows
 
 1. Create a file named `rows.json` that holds a JSON array. Add one object for each user. Each object must have an
-   `email`. For all fields and their rules, refer to [Row Fields](../reference/user-import-reference.md#row-fields).
+   `email` and a `password`. Use a password of 15 to 64 characters, with at least one uppercase letter, one lowercase
+   letter, one digit, and one special character. For all fields and their rules, refer to
+   [Row Fields](../reference/user-import-reference.md#row-fields).
 
    ```json title="rows.json"
    [
@@ -124,18 +126,17 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
        "firstName": "Amara",
        "lastName": "Okafor",
        "groups": ["ml-team"],
-       "role": "operator",
+       "roles": [{ "role": "operator", "workspace": "default-workspace" }],
        "status": "active",
-       "workspaces": ["default-workspace"],
-       "password": "ChangeMe-2026!"
+       "password": "ChangeMe-2026!!"
      },
      {
        "email": "kenji@example.com",
        "firstName": "Kenji",
        "lastName": "Sato",
-       "role": "operator",
+       "roles": [{ "role": "operator", "workspace": "default-workspace" }],
        "status": "active",
-       "workspaces": ["default-workspace"]
+       "password": "ChangeMe-2026!!"
      }
    ]
    ```
@@ -198,9 +199,14 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
    ```
 
 2. If `invalid` or `failed` is more than `0`, read the `results` list within 1 hour after the job finishes. For how long
-   the appliance keeps a job, refer to [Limits](../reference/user-import-reference.md#limits). Fix the listed rows in
-   `rows.json`. Then repeat [Import the Users](#import-the-users) with the whole file. In the new job, the users from
-   the first import count as `skipped`.
+   the appliance keeps a job, refer to [Limits](../reference/user-import-reference.md#limits). Fix each row that the
+   list names.
+
+   - To fix a `failed` row whose `detail` says that the identity provider refused the password, set the user's password
+     in the console. For the steps, refer to [Set a Password](./manage-users.md#set-a-password).
+
+   - To fix any other row, change it in `rows.json`. Then repeat [Import the Users](#import-the-users) with the whole
+     file. In the new job, the users from the first import count as `skipped`.
 
 3. If `status` is `Failed`, read `statusMessage`. Then repeat [Import the Users](#import-the-users) with the whole file.
 
@@ -210,8 +216,8 @@ You run each step with `curl` from a terminal. For sign-in, row fields, limits, 
 
 2. Select the **Users** tab.
 
-3. Confirm that each user from `rows.json` appears in the list. Check that the **Groups** and **State** columns match
-   the rows.
+3. Confirm that each user from `rows.json` appears in the list, except users from `invalid` rows, such as a row without
+   a password. Check that the **Groups** and **State** columns match the rows.
 
 4. To confirm a user's workspace access, open the workspace's members. For the steps, refer to
    [Manage Workspace Members](./manage-workspace-members.md).
