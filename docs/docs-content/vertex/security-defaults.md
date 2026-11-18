@@ -182,16 +182,15 @@ kexalgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-he
 
 ### Sign-in Feedback {#sign-in-feedback}
 
-Every sign-in surface masks the password as it is typed and answers a failed sign-in with one message, whether the
-account does not exist or the password is wrong. The following table lists the message on each interface.
+The Tenant Console, System Console, and Local UI mask the password as it is typed. Every sign-in surface answers a
+failed sign-in with one message, whether the account does not exist or the password is wrong. The following table lists
+the message on each interface.
 
-| Interface                         | Failure message                                             |
-| --------------------------------- | ----------------------------------------------------------- |
-| Tenant Console and System Console | `Invalid credentials specified or too many failed attempts` |
-| Local UI                          | `Login failed due to incorrect credentials`                 |
-| Node console menu                 | `invalid username or password`                              |
-
-The node console menu masks the password with asterisks.
+| Interface                                                 | Failure message                                             |
+| --------------------------------------------------------- | ----------------------------------------------------------- |
+| Tenant Console and System Console                         | `Invalid credentials specified or too many failed attempts` |
+| Local UI                                                  | `Login failed due to incorrect credentials`                 |
+| Palette Terminal User Interface (TUI) on the node console | `invalid username or password`                              |
 
 ### API Keys {#api-keys}
 
@@ -289,10 +288,10 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
   action, starting with the sign-in.
 - Local UI sessions are recorded in the Local UI audit log with the actor, the action, and the outcome, including failed
   sign-ins.
-- SSH sessions are recorded by the SSH daemon with the user, the accepted key, and the source address, and by the host
-  audit daemon with the session open and close. Commands run with `sudo` are recorded by the host audit daemon and by
-  the systemd journal, which logs the user, working directory, target user, and command. There is no separate `sudo` log
-  file.
+- SSH sessions are recorded in the systemd journal with the user, the accepted key, and the source address, and by the
+  host audit daemon with the session open and close. The SSH daemon also logs to `/var/log/auth.log`, which only root
+  and the `adm` group can read. Commands run with `sudo` are recorded by the host audit daemon and by the systemd
+  journal, which logs the user, working directory, target user, and command. There is no separate `sudo` log file.
 - Kubernetes API requests are recorded in the API server audit log with the user, verb, resource, source address, and
   result code.
 
@@ -349,20 +348,23 @@ after the account runs `su` or `sudo`. System and service accounts that never lo
 <details>
 <summary>Verify</summary>
 
-On an appliance node, count the audit rules for refused file access. The four rules cover `EACCES` and `EPERM` for
-32-bit and 64-bit system calls.
+On an appliance node, list the audit rules for refused file access. The four rules cover `EACCES` and `EPERM` for 32-bit
+and 64-bit system calls.
 
 <!-- vale off -->
 
 ```shell
-sudo auditctl -l | grep --count key=access
+sudo auditctl -l | grep key=access
+```
+
+```text hideClipboard
+-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access
+-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access
+-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access
+-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access
 ```
 
 <!-- vale on -->
-
-```text hideClipboard
-4
-```
 
 </details>
 
