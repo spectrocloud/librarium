@@ -291,9 +291,10 @@ for instructions.
    If you use a V1 Storage Cluster, you do not need to create a separate metadata device. Portworx uses one unmounted
    partition or a raw unmounted disk that you provide.
 
-10. _(Local disks only)_ We recommend that you select **Advanced** and set the `spec.storage` section of the
-    `StorageCluster` YAML to the following values. If the section already lists `devices`, remove them, because Portworx
-    ignores `useAll` when `devices` is set.
+10. _(Local disks only)_ On VM Launchpad appliances, we recommend that you select **Advanced** and set the
+    `spec.storage` section of the `StorageCluster` YAML to the following values. If the section already lists `devices`,
+    remove them, because Portworx
+    [ignores `useAll` when `devices` is set](https://docs.portworx.com/portworx-enterprise/reference/crd/storage-cluster).
 
     ```yaml
     spec:
