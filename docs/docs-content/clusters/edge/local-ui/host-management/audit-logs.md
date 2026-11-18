@@ -129,16 +129,17 @@ out and archived. You can still download your log files from any period, but the
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. In the left **Main Menu**, click **Audit Log**. Confirm that the logs from your applications are being collected.
+2. In the left **Main Menu**, select **Diagnostics**. Then select the **Audit** tab. Confirm that the list shows the
+   logs from your applications.
 
 ## View and Download Log File from Local UI
 
 Log files are stored in the `/var/log/` folder. The active log file `stylus-audit.log` stores up to one year's worth of
 logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If the log messages
-are configured to be picked up by Local UI, they will show up in Local UI.
+are configured to be picked up by Local UI, they appear in Local UI.
 
-You can also download log files less than three years old in the `/var/log/` file from Local UI. This includes the log
-entries that were not configured to be displayed in Local UI.
+You can also download the audit log files less than three years old in the `/var/log/` folder from Local UI. This
+includes the log entries that Local UI does not display.
 
 ### Prerequisites
 
@@ -152,21 +153,21 @@ entries that were not configured to be displayed in Local UI.
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. In the left **Main Menu**, click **Diagnostics**. Then click the **Logs** tab. You can view all audit log entries on
-   this page. Local UI displays log entries dated up to one year ago.
+2. In the left **Main Menu**, select **Diagnostics**. Then select the **Audit** tab. You can view all audit log entries
+   on this page. Local UI displays log entries dated up to one year ago.
 
    :::info
 
-   To configure the preferred **Date & Time** field format, navigate to the **User Menu** in the upper-right corner and
+   To configure the format of the **Timestamp** column, navigate to the **User Menu** in the upper-right corner and
    select **Time/Date Settings**. Local UI supports displaying values in Coordinated Universal Time (UTC), the browser’s
    local time zone, or both simultaneously.
 
    :::
 
-3. To download the log files, click the **Download** button in the upper-right corner. This will download all files in
-   the `/var/log` folder, including the archived log files as well as any additional log files you configured to be
-   stored in the directory.
+3. To download the log files, select **Download all logs** to the right of the filters. Local UI downloads a compressed
+   archive that contains `stylus-audit.log` and its archived log files. The archive does not include other log files in
+   the `/var/log` folder, such as log files that you configured your applications to write to.
 
 ### Validate
 
-1. Open the downloaded file. Confirm that the logs are included in the file.
+1. Extract the downloaded archive. Confirm that it contains `stylus-audit.log`.
