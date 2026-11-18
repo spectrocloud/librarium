@@ -27,15 +27,18 @@ and the Zot pod cannot start. Because the management cluster pulls its images fr
 The following symptoms point to this issue:
 
 - The LINSTOR error reports contain `Failed to adjust DRBD resource`, `Failure: (162) Invalid configuration request`,
-  and `transport net_conf_change failed: -22`. To list the error reports, issue the command
+  and `transport net_conf_change failed: -22`. To list the error reports, complete steps 1 - 4 of
+  [Debug Steps](#debug-steps-drbd-tls), and then issue the command
   `kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor error-reports list`.
 
 - The Zot volume does not attach, and the LINSTOR CSI driver reports `could not determine device path`.
 
-To resolve this issue, switch the DRBD connections to TLS. Before you upgrade an appliance that already runs a version
-that uses DRBD TLS, use the same steps to check the Zot volume and switch its connections ahead of time.
+To resolve this issue, switch the DRBD connections to TLS. The switch pauses I/O on every DRBD volume, including the
+MongoDB volumes, from step 8 until step 10 completes, so Palette or VerteX is unavailable during that time. If your
+appliance already runs Palette Management Appliance 4.9.51 or later, or VerteX Management Appliance 4.10.11 or later,
+use the same steps before you upgrade to check the Zot volume and switch its connections.
 
-:::warning
+:::danger
 
 Do not run `drbdadm invalidate` or any command with the `--discard-my-data` option, and do not delete the Zot
 PersistentVolumeClaim (PVC), PersistentVolume (PV), or VolumeAttachment. This issue is not a split-brain, and the data
@@ -99,7 +102,8 @@ on all three replicas remains intact.
    ```
 
 8. Issue the following command to suspend I/O on all DRBD volumes on each satellite pod. I/O on every DRBD volume,
-   including the MongoDB volumes, stays paused until step 10 completes, so Palette is unavailable during this time.
+   including the MongoDB volumes, stays paused until step 10 completes, so Palette or VerteX is unavailable during this
+   time.
 
    ```shell
    for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
@@ -151,8 +155,20 @@ on all three replicas remains intact.
     kubectl rollout status deployment zot --namespace zot-system
     ```
 
-14. If your upgrade stalled, delete any pods that remain in the `ImagePullBackOff` state so that they pull their images
-    again. Then, retry the upgrade. Refer to
+14. _(Stalled upgrades only)_ Issue the following command to list the pods that remain in the `ImagePullBackOff` state.
+
+    ```shell
+    kubectl get pods --all-namespaces | grep ImagePullBackOff
+    ```
+
+    Issue the following command for each pod in the output so that it pulls its images again.
+
+    ```shell
+    kubectl delete pod <pod-name> --namespace <namespace>
+    ```
+
+    Replace `<namespace>` and `<pod-name>` with the first and second columns of each line in the output. Then, retry the
+    upgrade. Refer to
     [Upgrade Palette Management Appliance](../enterprise-version/upgrade/palette-management-appliance.md) or
     [Upgrade VerteX Management Appliance](../vertex/upgrade/vertex-management-appliance.md) for guidance.
 
