@@ -5,8 +5,8 @@
 # Deploy previews skip the pack pages (DISABLE_PACKS_INTEGRATIONS=true) to stay under the build machine's memory
 # limit. A preview builds the pack pages when either of these is true:
 #   - The PR has the "pack-pr" label. Netlify does not rebuild when a label changes, so retry the deploy after adding it.
-#   - The PR changes a pack README page (docs/docs-content/integrations/*.mdx), a pack partial that those pages include
-#     (_partials/packs/), or a pack-pipeline file (listed in pack_paths).
+#   - The PR changes a pack README page (docs/docs-content/integrations/*.mdx), a partial in _partials/packs/, or a
+#     pack-pipeline file (listed in pack_paths).
 # If a check fails, it counts as no, and the log says why.
 #
 # Production (Release to Production) and the version-* branch deploys do not use this script.
