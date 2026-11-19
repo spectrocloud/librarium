@@ -63,7 +63,9 @@ Two notations appear in the parameter tables in this section of the documentatio
 :::warning
 
 The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
-`false` by default in every Deployment Mode.
+`false` by default in every Deployment Mode. Do not use the route for CDI upload or virtual machine export. Refer to
+[Configure Image Upload and VM Export](https://docs.spectrocloud.com/vm-management/vmo-pack/configure-image-upload-and-vm-export/)
+for the supported methods.
 
 :::
 
@@ -120,9 +122,10 @@ charts:
         baseUrl: "https://<lb-ip-or-dns>"
 ```
 
-Palette-managed OIDC in **Direct** mode uses `appConfig.clusterInfo.consoleBaseAddress` automatically and requires no
-additional configuration. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for
-guidance on setting that address.
+Palette-managed OIDC in **Direct** mode uses
+`charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` automatically and requires no additional
+configuration. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for guidance on
+setting that address.
 
 ## Custom
 
