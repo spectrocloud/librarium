@@ -54,8 +54,8 @@ On the VerteX Management Appliance, the management plane pulls images from the S
 `us-docker.pkg.dev/palette-images-fips`. In airgap environments, the appliance pulls images from the internal Zot
 registry instead.
 
-The VerteX Management Appliance also includes Reloader, a FIPS-compliant add-on component for the Zot registry. Reloader
-is a Kubernetes controller that restarts workloads when their ConfigMaps or Secrets change.
+The appliance also includes Reloader, a FIPS-compliant add-on component for the Zot registry. Reloader is a Kubernetes
+controller that restarts workloads when their ConfigMaps or Secrets change.
 
 <br />
 
