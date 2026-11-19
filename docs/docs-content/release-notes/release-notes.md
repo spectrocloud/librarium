@@ -11,6 +11,44 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 20, 2026 - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-3435 -->
+<!-- PATCH RELEASE VERSION: 4.8.x -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12542 PE-10196 PCP-8006 PCP-7965 PCP-7963 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12542 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7963 -->
+
+- Fixed an issue that caused the Palette agent on a workload cluster to delete and recreate the namespaces that Palette
+  created through
+  [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
+  workspace. This occurred when the Palette management plane briefly lost access to its database, and the recreated
+  namespaces were empty.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7965 -->
+
+- Fixed an issue where the Palette agent could delete a Role-Based Access Control (RBAC) managed namespace during a
+  reconciliation cycle when a transient Kubernetes API error occurred, which briefly disrupted the workloads in that
+  namespace.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10196 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8006 -->
+
+- Fixed an issue that caused the Kubelet on [Edge](../clusters/edge/edge.md) control plane nodes that use
+  <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> to fail
+  to start after the node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted, for
+  example, during a [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md), it failed with
+  the error `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node
+  became `NotReady`.
+
 ## November 2, 2026 - Release 4.8.74
 
 <!-- PATCH RELEASE TICKET: DOC-3359 -->
