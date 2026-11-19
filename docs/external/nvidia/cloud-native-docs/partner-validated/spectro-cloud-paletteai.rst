@@ -13,8 +13,8 @@
    * NVIDIA GPU Driver column: Kevin Reeuwijk confirmed 595.58.03-stig-fips on 2026-11-19. Rafay's
      page has the same column.
    * Helm and Hardware Model columns (template minimums): Kevin Reeuwijk, 2026-11-19. The
-     NVIDIA GPU Operator pack deploys the Helm chart. "Helm v3" is inferred, because Kevin did not
-     name a Helm version and Helm 2 reached end of life in 2020. Confirm with Kevin. The hardware
+     NVIDIA GPU Operator pack deploys the Helm chart. Kevin did not name a Helm version, so the cell
+     says "Helm v3" unless Kevin says otherwise (Linus Bourque, 2026-11-19). The hardware
      is as Kevin gave it: HPE DL380a Gen12, 2x Intel Xeon 6710E, 1 TB ECC RAM at 5200 MHz.
    * About: wording review by Rob Eckhardt and Andreea Munteanu. The first two sentences follow
      https://docs.palette-ai.com/docs/what-is-paletteai/.
