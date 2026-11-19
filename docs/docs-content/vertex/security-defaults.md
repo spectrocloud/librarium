@@ -285,8 +285,8 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
 
 ### Maintenance and Diagnostic Sessions {#maintenance-and-diagnostic-sessions}
 
-- Tenant Console sessions are recorded in the management API audit trail with the actor and the action, starting with
-  the sign-in.
+- Tenant Console sign-ins and changes are recorded in the management API audit trail with the actor and the action.
+  Failed sign-ins, refused requests, and reads are not recorded.
 - System Console sign-ins and some System Console actions are not recorded, and System Console records do not identify
   the administrator who acted. Refer to [Known Issues](../release-notes/known-issues.md).
 - Local UI sessions are recorded in the Local UI audit log with the actor, the action, and the outcome, including failed
