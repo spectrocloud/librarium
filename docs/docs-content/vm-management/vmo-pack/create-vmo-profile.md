@@ -108,8 +108,9 @@ for the fix on an existing class.
      Spectro VM Dashboard from anywhere. Check out the
      <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
      the default selection. This mode sets the service type to `ClusterIP`.
-   - **Direct** mode is for clusters that Palette can reach directly, with no firewall or NAT between Palette and the
-     cluster network. This mode requires no proxy and sets the service type to `LoadBalancer`.
+   - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+     (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+     `LoadBalancer`.
    - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the service
      type, according to your environment.
 
@@ -178,8 +179,9 @@ for the fix on an existing class.
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
       the default selection. This mode sets the service type to `ClusterIP`.
-    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or NAT between Palette and the
-      cluster network. This mode requires no proxy and sets the service type to `LoadBalancer`.
+    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+      (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+      `LoadBalancer`.
     - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
       service type, according to your environment.
 
@@ -302,8 +304,9 @@ for the fix on an existing class.
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
       the default selection. This mode sets the service type to `ClusterIP`.
-    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or NAT between Palette and the
-      cluster network. This mode requires no proxy and sets the service type to `LoadBalancer`.
+    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+      (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+      `LoadBalancer`.
     - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
       service type, according to your environment.
 
