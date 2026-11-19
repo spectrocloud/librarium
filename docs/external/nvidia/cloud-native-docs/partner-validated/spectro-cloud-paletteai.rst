@@ -1,14 +1,16 @@
 .. headings # #, * *, =, -, ^, "
 
-.. |prod-name-long| replace:: Spectro Cloud Palette eXtended Kubernetes
-.. |prod-name-short| replace:: PXK
+.. |prod-name-long| replace:: Spectro Cloud PaletteAI
+.. |prod-name-short| replace:: PaletteAI
 
 ..
    DRAFT for review (DOC-3474). Placeholders to resolve before the upstream PR:
-   * Product name, short name, title, and file name: waiting on the naming decision (DOC-3473).
-   * Version column: Kevin Reeuwijk confirmed 4.10.17 on 2026-11-19, the same release number for
-     Palette and VerteX. Only the product name waits on DOC-3473. PaletteAI 1.4.0 is in the
-     PaletteAI release notes (September 30, 2026): https://docs.palette-ai.com/docs/release-notes/
+   * Product name: PaletteAI (Swarna Podila, 2026-11-19). Rob Eckhardt and Andreea Munteanu can still
+     comment on the wording.
+   * Version column: PaletteAI 1.4.0 is in the PaletteAI release notes (September 30, 2026):
+     https://docs.palette-ai.com/docs/release-notes/. The cluster ran on Palette and VerteX release
+     4.10.17 (Kevin Reeuwijk, 2026-11-19). The cell leaves 4.10.17 out because PaletteAI is the
+     platform name. Add it back if the reviewers want the underlying release listed.
    * Driver version: Kevin Reeuwijk confirmed 595.58.03-stig-fips on 2026-11-19.
    * Getting Support: confirm the support contact with Support (DOC-3473).
    * Matrix intro: the other partner pages say "<vendor> has self-validated". Here NVIDIA QA ran
@@ -42,8 +44,7 @@ NVIDIA QA validated |prod-name-short| with the NVIDIA GPU Operator and the NVIDI
      - NVIDIA GPU
      - Date Validated
 
-   * - | PaletteAI 1.4.0
-       | <Palette or VerteX> 4.10.17
+   * - PaletteAI 1.4.0
      - v26.7.2
      - | Ubuntu 24.04.4 LTS
        | with the Ubuntu Pro FIPS kernel

@@ -8,9 +8,9 @@ does not build this directory, so nothing here appears on docs.spectrocloud.com.
 Each file sits at the same path that it has in the upstream repository, under `docs/external/<org>/<repo>/`. The
 upstream pull request is then a straight copy of the file.
 
-| File in this directory                                             | Upstream repository                                                     | Upstream path                             |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------- |
-| `nvidia/cloud-native-docs/partner-validated/spectro-cloud-pxk.rst` | [NVIDIA/cloud-native-docs](https://github.com/NVIDIA/cloud-native-docs) | `partner-validated/spectro-cloud-pxk.rst` |
+| File in this directory                                                   | Upstream repository                                                     | Upstream path                                   |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------- |
+| `nvidia/cloud-native-docs/partner-validated/spectro-cloud-paletteai.rst` | [NVIDIA/cloud-native-docs](https://github.com/NVIDIA/cloud-native-docs) | `partner-validated/spectro-cloud-paletteai.rst` |
 
 ## Workflow
 
