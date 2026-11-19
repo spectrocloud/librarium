@@ -17,8 +17,10 @@ Console, which don't name the administrator who acted. Organizations that must r
 and API, such as those following the DoD Container Platform SRG, can record these events at a reverse proxy in front of
 Palette VerteX and send the proxy log to their Security Information and Event Management (SIEM) system.
 
-This page describes how to set up the proxy, which fields identify the caller and the outcome of each request, and which
-alerts to send to your system administrators and Information System Security Officer (ISSO). Use it together with
+This page describes what the reverse proxy must do, which fields identify the caller and the outcome of each request,
+and which alerts to send to your system administrators and Information System Security Officer (ISSO). You can use any
+reverse proxy that meets the [requirements](#reverse-proxy-requirements). The page includes example configurations for
+HAProxy and Nginx. Use it together with
 [Audit Trails](../../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk), which forwards the
 events Palette VerteX already records.
 
@@ -41,7 +43,7 @@ Every line records the following.
 | Tenant                                     | The `token.TenantUid` claim                                                                              | Which tenant the user belongs to                                                                                                             |
 | System Console                             | The `token.IsSystem` claim                                                                               | Whether the request came from a System Console session                                                                                       |
 | Administrator type                         | The `token.SystemAdmin.AdminType` claim                                                                  | `AccountAdmin` or `OperationAdmin` for a named System Console administrator                                                                  |
-| Account typed at sign-in                   | The `emailId` field of `POST /v1/auth/authenticate`, or the `username` field of `POST /v1/auth/syslogin` | The account a sign-in attempt targeted, for both successful and failed attempts                                                              |
+| Account typed at sign-in                   | The `emailId` field of `POST /v1/auth/authenticate`, or the `username` field of `POST /v1/auth/syslogin` | The account that a sign-in attempt targeted. Successful and failed attempts both record it.                                                  |
 | Platform error                             | The `err_code` response header                                                                           | The reason Palette VerteX refused a request, such as `RestrictedToTenantAdmin`                                                               |
 | Request ID                                 | The `svc_req_id` response header                                                                         | The request ID Palette VerteX uses internally, for support cases                                                                             |
 
@@ -51,11 +53,10 @@ proxy logs the token's identity claims, never the token itself.
 
 :::warning
 
-The proxy never logs passwords, session tokens, cookie values, API key values, or any request body other than the
-`emailId` and `username` fields of the two sign-in requests. Configure your proxy so it can't log them. Some request
-paths carry a token, such as the session refresh that edge hosts send and password activation links, so the
-configuration on this page logs the path with long token-like segments replaced by `<redacted>`, and never logs the
-query string.
+The proxy must never log passwords, session tokens, cookie values, API key values, or any request body other than the
+`emailId` and `username` fields of the two sign-in requests. Some request paths carry a token, such as the session
+refresh that edge hosts send and password activation links. The example configurations on this page log the path without
+the query string and with long token-like segments replaced by `<redacted>`.
 
 :::
 
@@ -80,31 +81,54 @@ query string.
 - **Field names.** The cookie name, token claims, and response headers on this page are what Palette VerteX uses today.
   After every upgrade, repeat the [Validate](#validate) steps to confirm that the fields haven't changed.
 
+## Reverse Proxy Requirements
+
+The reverse proxy you choose must do the following. Each requirement prevents a failure that breaks the consoles, the
+clusters, or the log.
+
+| Requirement                                                                                                                                                           | Why                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Serve TLS with a certificate that covers every host name your users browse to and that your clusters and edge hosts trust.                                            | Clusters and edge hosts reach Palette VerteX through the proxy after you change DNS, and they verify its certificate.                      |
+| Serve HTTP/2 and HTTP/1.1 to clients, and support WebSocket upgrades.                                                                                                 | Browsers and agents use HTTP/2. Agents also open WebSocket connections, for example on `/v1/tunnel-ws`.                                    |
+| Connect to the IP address of the Palette VerteX console and API endpoint, not its host name.                                                                          | After you change DNS, the host name resolves to the proxy, and the proxy would connect to itself.                                          |
+| Pass the request's host name to Palette VerteX unchanged, and use it as the TLS server name.                                                                          | Palette VerteX picks the tenant from the host name. A rewritten host name sends every tenant request to the System Console's organization. |
+| Verify the Palette VerteX certificate against your CA and the request's host name, and refuse the request if verification fails.                                      | Without verification, the proxy forwards credentials to any server that answers on the address.                                            |
+| Send gRPC requests to Palette VerteX over HTTP/2. These requests use the paths `/BrokerService/`, `/Broker/`, and `/wormhole.*/`.                                     | Clusters and edge hosts use gRPC on these paths.                                                                                           |
+| Keep idle client connections, open streams, and WebSocket connections for at least one hour, while still limiting how long a client can take to send request headers. | Edge hosts keep a remote shell connection open and idle until an operator uses it. A short idle timeout drops it.                          |
+| Read the session token from the `Authorization` cookie or header and log the claims listed in [How It Works](#how-it-works).                                          | These claims identify the caller.                                                                                                          |
+| Read only the `emailId` or `username` field of the two sign-in request bodies.                                                                                        | These fields identify the account a sign-in attempt targeted.                                                                              |
+| Log the `err_code` and `svc_req_id` response headers.                                                                                                                 | These headers carry the reason for a refusal and the request ID.                                                                           |
+| Write one JSON record per request, up to 4 KB long, without truncating it.                                                                                            | Long paths exceed some proxies' default line limit, and a truncated line is not valid JSON.                                                |
+| Never log query strings, cookie values, header values, or request bodies, and remove token-like path segments.                                                        | Some paths and queries carry session tokens or one-time codes.                                                                             |
+| Forward the log to your SIEM over TLS.                                                                                                                                | The log is an audit record.                                                                                                                |
+| Run the processes that handle traffic as an unprivileged user.                                                                                                        | The proxy handles untrusted input from the network.                                                                                        |
+
 ## Prerequisites
 
 - A Palette VerteX installation, the host names your users browse to (the System Console and each tenant), and the IP
-  address of its console and API endpoint (the VIP). The proxy connects to the IP address, because after you complete
-  this page the host names resolve to the proxy.
+  address of its console and API endpoint (the VIP).
 
-- A Linux host for the reverse proxy on the network path between your users and Palette VerteX.
+- A Linux host for the reverse proxy, on the network path between your users and Palette VerteX.
 
-- HAProxy 2.8 or later and `rsyslog` with TLS support on the proxy host. The `haproxy` packages in Ubuntu 24.04 and Red
-  Hat Enterprise Linux 9 meet this. Ubuntu 22.04 ships HAProxy 2.4, which can't decode the session token. Any reverse
-  proxy that can read a cookie, decode a JWT payload, and read one JSON field from a request body works. This page uses
-  HAProxy.
+- A reverse proxy that meets the [requirements](#reverse-proxy-requirements), and `rsyslog` with TLS support, on the
+  proxy host. The examples on this page use the following packages.
+
+  - HAProxy 2.8 or later. The `haproxy` packages in Ubuntu 24.04 and Red Hat Enterprise Linux 9 meet this. Ubuntu 22.04
+    ships HAProxy 2.4, which can't decode the session token.
+  - Nginx 1.24 or later with the `njs` module, such as the `nginx` and `libnginx-mod-http-js` packages in Ubuntu 24.04.
 
   :::info
 
-  If your organization requires FIPS 140-3 validated cryptography, run HAProxy against a validated OpenSSL FIPS provider
-  with `default_properties = fips=yes` in the OpenSSL configuration HAProxy loads, for example through the
-  `OPENSSL_CONF` environment variable of the HAProxy service. The stock OpenSSL packages on Debian and Ubuntu don't
-  include a FIPS provider. To confirm the provider is in force, run `OPENSSL_CONF=<your-config> openssl md5 /dev/null`,
-  which fails with `Error setting digest`.
+  If your organization requires FIPS 140-3 validated cryptography, run the proxy against a FIPS-validated cryptographic
+  module that your operating system supports, such as Red Hat Enterprise Linux in FIPS mode or the Ubuntu Pro FIPS
+  packages. A FIPS provider that is newer than the OpenSSL library on the host might not load. To confirm that the FIPS
+  provider is in force, run `OPENSSL_CONF=<your-config> openssl list -providers` and check that it lists the FIPS
+  provider as active. With the same configuration, `openssl sha256` must succeed and `openssl md5` must fail.
 
   :::
 
 - A TLS certificate and key for the proxy, issued by your organization's PKI and covering every host name your users
-  browse to, combined into one PEM file.
+  browse to.
 
 - The certificate of the CA that issued the Palette VerteX certificate. The proxy checks the Palette VerteX certificate
   against this CA and the host name of each request, so the Palette VerteX certificate must also cover those host names.
@@ -118,9 +142,19 @@ query string.
 
 - System Console access as the root administrator, to create named System Console administrators.
 
+- `curl` and `jq` on a workstation, for the [Validate](#validate) steps.
+
 ## Enablement
 
-1. Install HAProxy and `rsyslog` on the proxy host. The following commands are for Debian or Ubuntu.
+### Configure the Proxy
+
+Use the tab for your reverse proxy. The examples are for Ubuntu 24.04. Replace `10.10.10.5` with the IP address of your
+Palette VerteX console and API endpoint.
+
+<Tabs groupId="reverse-proxy">
+<TabItem label="HAProxy" value="haproxy">
+
+1. Install HAProxy and `rsyslog`.
 
    <!-- vale spectrocloud-docs-internal.longform = NO -->
 
@@ -133,20 +167,21 @@ query string.
 
    The first line of the output shows the version, which must be 2.8 or later.
 
-2. Copy the proxy's certificate and key, combined into one PEM file, to `/etc/haproxy/proxy.pem`, and the Palette VerteX
-   CA certificate to `/etc/haproxy/vertex-ca.pem`. Allow only the `haproxy` user to read the key.
+2. Combine the proxy's certificate and key into one PEM file at `/etc/haproxy/proxy.pem`, and copy the Palette VerteX CA
+   certificate to `/etc/haproxy/vertex-ca.pem`. Allow only the `haproxy` group to read the key.
 
    ```shell
    sudo chown root:haproxy /etc/haproxy/proxy.pem /etc/haproxy/vertex-ca.pem
    sudo chmod 640 /etc/haproxy/proxy.pem
    ```
 
-3. Replace `/etc/haproxy/haproxy.cfg` with the following configuration. Replace `10.10.10.5` with the IP address of your
-   Palette VerteX console and API endpoint. Don't use its host name, which resolves to the proxy after step 6.
+3. Replace `/etc/haproxy/haproxy.cfg` with the following configuration.
 
    ```text
    global
        log /dev/log len 4096 local0
+       user haproxy
+       group haproxy
        tune.bufsize 65536
 
    defaults
@@ -192,17 +227,10 @@ query string.
        server vertex 10.10.10.5:443 ssl verify required ca-file /etc/haproxy/vertex-ca.pem sni req.hdr(host),field(1,:) alpn h2,http/1.1
    ```
 
-   The `log-format` line writes one JSON object per request. The configuration reads only the two sign-in fields from
-   request bodies. The proxy passes each request's host name to Palette VerteX unchanged, so the System Console and
-   every tenant keep working, and checks the Palette VerteX certificate against that host name. If the certificate check
-   fails, the proxy answers `503` and sends nothing to Palette VerteX.
-
-   Keep `alpn h2,http/1.1` on both the `bind` and `server` lines. Without it on the `server` line, the proxy converts
-   browser HTTP/2 requests to HTTP/1.1, and the System Console intermittently fails to load. The one-hour timeouts keep
-   the long-lived connections that clusters and edge hosts hold open to Palette VerteX. Without
-   `timeout http-keep-alive 1h`, HAProxy closes an idle connection after the 10-second `timeout http-request`, and the
-   edge host's remote shell service loses its connection. `timeout http-request` still limits how long a client can take
-   to send a request.
+   The `log-format` line writes one JSON object per request. Keep `alpn h2,http/1.1` on both the `bind` and `server`
+   lines. Without it on the `server` line, HAProxy converts browser HTTP/2 requests to HTTP/1.1, and the System Console
+   intermittently fails to load. Without `timeout http-keep-alive 1h`, HAProxy closes an idle connection after the
+   10-second `timeout http-request`. The `user` and `group` lines make HAProxy drop root privileges after it starts.
 
 4. Check the configuration and restart HAProxy.
 
@@ -217,10 +245,213 @@ query string.
 
    The check prints `Configuration file is valid`.
 
-5. Forward the proxy log to your SIEM. HAProxy writes to the local Syslog socket with facility `local0`. Configure
-   `rsyslog` to send `local0` to your SIEM over TLS. Copy the CA certificate of your SIEM to
-   `/etc/ssl/certs/siem-ca.pem` and create `/etc/rsyslog.d/40-haproxy-siem.conf`. Replace `siem.example.com` with the
-   host name on the SIEM certificate.
+</TabItem>
+<TabItem label="Nginx" value="nginx">
+
+1. Install Nginx, the `njs` module, and `rsyslog`.
+
+   <!-- vale spectrocloud-docs-internal.longform = NO -->
+
+   ```shell
+   sudo apt-get install --yes nginx libnginx-mod-http-js rsyslog rsyslog-gnutls
+   nginx -v
+   ```
+
+   <!-- vale spectrocloud-docs-internal.longform = YES -->
+
+   The output shows the version, which must be 1.24 or later.
+
+2. Copy the proxy's certificate to `/etc/nginx/proxy.crt`, its key to `/etc/nginx/proxy.key`, and the Palette VerteX CA
+   certificate to `/etc/nginx/vertex-ca.pem`. Allow only `root` to read the key.
+
+   ```shell
+   sudo chown root:root /etc/nginx/proxy.crt /etc/nginx/proxy.key /etc/nginx/vertex-ca.pem
+   sudo chmod 600 /etc/nginx/proxy.key
+   ```
+
+3. Create `/etc/nginx/njs/audit.js` with the following content. It reads the session token's claims and the sign-in
+   field for the log.
+
+   ```javascript
+   // Who is calling and what they sent, for the audit log. Reads the session token's payload (never logs the token itself).
+   function b64url(s) {
+     s = s.replace(/-/g, "+").replace(/_/g, "/");
+     while (s.length % 4) {
+       s += "=";
+     }
+     return Buffer.from(s, "base64").toString();
+   }
+   function claims(r) {
+     var t = r.variables.cookie_Authorization || r.headersIn["Authorization"] || "";
+     t = t.replace(/^Bearer /, "");
+     var parts = t.split(".");
+     if (parts.length < 2) {
+       return null;
+     }
+     try {
+       return JSON.parse(b64url(parts[1]));
+     } catch (e) {
+       return null;
+     }
+   }
+   function dig(o, keys) {
+     for (var i = 0; i < keys.length; i++) {
+       if (o === null || o === undefined) {
+         return undefined;
+       }
+       o = o[keys[i]];
+     }
+     return o;
+   }
+   function out(x) {
+     if (x === true) {
+       return "1";
+     }
+     if (x === false) {
+       return "0";
+     }
+     return x === undefined || x === null || x === "" ? "-" : String(x);
+   }
+   function user(r) {
+     return out(dig(claims(r), ["token", "UserUid"]));
+   }
+   function email(r) {
+     return out(dig(claims(r), ["email"]));
+   }
+   function tenant(r) {
+     return out(dig(claims(r), ["token", "TenantUid"]));
+   }
+   function system(r) {
+     return out(dig(claims(r), ["token", "IsSystem"]));
+   }
+   function adminType(r) {
+     return out(dig(claims(r), ["token", "SystemAdmin", "AdminType"]));
+   }
+   function apiKey(r) {
+     return r.headersIn["ApiKey"] ? "yes" : "-";
+   }
+   // Sign-in attempts: the account typed, never the password.
+   function signInAs(r) {
+     var p = r.variables.request_uri.split("?")[0];
+     var field =
+       p.indexOf("/v1/auth/authenticate") === 0 ? "emailId" : p.indexOf("/v1/auth/syslogin") === 0 ? "username" : null;
+     if (!field) {
+       return "-";
+     }
+     try {
+       return out(JSON.parse(r.variables.request_body || "{}")[field]);
+     } catch (e) {
+       return "-";
+     }
+   }
+   // Some paths carry a token (session refresh, password activation). Log the path without the query string and with long token-like segments removed.
+   function path(r) {
+     return r.variables.request_uri.split("?")[0].replace(/[A-Za-z0-9_=-]{32}[A-Za-z0-9_=.-]*/g, "<redacted>");
+   }
+   export default { user, email, tenant, system, adminType, apiKey, signInAs, path };
+   ```
+
+4. Create `/etc/nginx/conf.d/vertex-audit.conf` with the following configuration.
+
+   ```text
+   # /etc/nginx/conf.d/vertex-audit.conf  (nginx 1.24 with the njs module)
+   js_path /etc/nginx/njs/;
+   js_import audit from audit.js;
+   js_set $audit_user audit.user;
+   js_set $audit_email audit.email;
+   js_set $audit_tenant audit.tenant;
+   js_set $audit_system audit.system;
+   js_set $audit_admin_type audit.adminType;
+   js_set $audit_api_key audit.apiKey;
+   js_set $audit_sign_in_as audit.signInAs;
+   js_set $audit_path audit.path;
+
+   map $upstream_http_err_code $audit_err { "" "-"; default $upstream_http_err_code; }
+   map $upstream_http_svc_req_id $audit_reqid { "" "-"; default $upstream_http_svc_req_id; }
+   map $http_upgrade $connection_upgrade { default upgrade; "" ""; }
+
+   log_format vertex_audit escape=json '{"time":"$time_iso8601","client":"$remote_addr","method":"$request_method","path":"$audit_path","status":$status,"user":"$audit_user","email":"$audit_email","tenant":"$audit_tenant","system_console":"$audit_system","admin_type":"$audit_admin_type","api_key":"$audit_api_key","sign_in_as":"$audit_sign_in_as","platform_error":"$audit_err","request_id":"$audit_reqid"}';
+
+   upstream vertex {
+       server 10.10.10.5:443;
+       keepalive 32;
+   }
+
+   server {
+       listen 443 ssl http2;
+       ssl_certificate     /etc/nginx/proxy.crt;
+       ssl_certificate_key /etc/nginx/proxy.key;
+
+       access_log syslog:server=unix:/dev/log,facility=local0,tag=vertex_audit,nohostname vertex_audit;
+
+       # Keep request bodies in memory so the sign-in fields can be read for the log.
+       client_body_buffer_size 64k;
+       client_body_in_single_buffer on;
+       client_max_body_size 0;
+
+       client_header_timeout 10s;
+       keepalive_timeout 3600s;
+
+       # Re-encrypt to Palette VerteX, verify its certificate against the request's host name, and pass the host name unchanged.
+       proxy_ssl_trusted_certificate /etc/nginx/vertex-ca.pem;
+       proxy_ssl_verify on;
+       proxy_ssl_verify_depth 3;
+       proxy_ssl_server_name on;
+       proxy_ssl_name $host;
+       grpc_ssl_trusted_certificate /etc/nginx/vertex-ca.pem;
+       grpc_ssl_verify on;
+       grpc_ssl_verify_depth 3;
+       grpc_ssl_server_name on;
+       grpc_ssl_name $host;
+
+       # gRPC paths used by clusters and edge hosts need HTTP/2 to Palette VerteX.
+       location ~ ^/(BrokerService|Broker|wormhole\.[A-Za-z]+)/ {
+           grpc_pass grpcs://vertex;
+           grpc_set_header Host $host;
+           grpc_read_timeout 3600s;
+           grpc_send_timeout 3600s;
+       }
+
+       location / {
+           proxy_pass https://vertex;
+           proxy_http_version 1.1;
+           proxy_set_header Host $host;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection $connection_upgrade;
+           proxy_read_timeout 3600s;
+           proxy_send_timeout 3600s;
+       }
+   }
+   ```
+
+   The `log_format` line writes one JSON object per request. Nginx sends normal requests to Palette VerteX over
+   HTTP/1.1, so the separate `location` block sends gRPC requests over HTTP/2 with `grpc_pass`. On Nginx 1.25.1 or
+   later, replace `listen 443 ssl http2;` with `listen 443 ssl;` and add `http2 on;`.
+
+5. Check the configuration and restart Nginx.
+
+   <!-- vale spectrocloud-docs-internal.longform = NO -->
+
+   ```shell
+   sudo nginx -t
+   sudo systemctl restart nginx
+   ```
+
+   <!-- vale spectrocloud-docs-internal.longform = YES -->
+
+   The check prints `syntax is ok` and `test is successful`.
+
+</TabItem>
+</Tabs>
+
+If the proxy can't verify the Palette VerteX certificate, it refuses the request with an error (HAProxy returns `503`,
+Nginx returns `502`) and sends nothing to Palette VerteX.
+
+### Forward the Log and Route Traffic
+
+1. Forward the proxy log to your SIEM. Both example configurations write to the local Syslog socket with facility
+   `local0`. Copy the CA certificate of your SIEM to `/etc/ssl/certs/siem-ca.pem` and create
+   `/etc/rsyslog.d/40-proxy-siem.conf`. Replace `siem.example.com` with the host name on the SIEM certificate.
 
    ```text
    local0.* action(type="omfwd" target="siem.example.com" port="6514" protocol="tcp"
@@ -237,27 +468,26 @@ query string.
    keep it for as long as you keep audit records.
 
    Each event arrives with a Syslog header in front of the JSON object, for example
-   `<134>Nov 19 14:49:43 proxy haproxy[812]: {"time":...}`. Configure your SIEM to parse the JSON object that follows
-   `haproxy[<pid>]:`. In Splunk, for example, `rex "(?<proxy_json>\{.*\})" | spath input=proxy_json` extracts every
-   field.
+   `<134>Nov 19 14:49:43 proxy haproxy[812]: {"time":...}`. Configure your SIEM to parse the JSON object at the end of
+   each message. In Splunk, for example, `rex "(?<proxy_json>\{.*\})" | spath input=proxy_json` extracts every field.
 
-6. Update your DNS or load balancer so users and API clients reach Palette VerteX through the proxy's address.
+2. Update your DNS or load balancer so users and API clients reach Palette VerteX through the proxy's address.
 
    Workload clusters and edge hosts connect to Palette VerteX on the same address, so their traffic also passes through
    the proxy after this step. They verify the certificate the proxy presents. Issue the proxy's certificate from a CA
    that your clusters and edge hosts already trust, such as the CA that issued the Palette VerteX certificate.
 
-7. On your firewall or network security group, allow TCP port 443 to Palette VerteX only from the proxy host. This makes
+3. On your firewall or network security group, allow TCP port 443 to Palette VerteX only from the proxy host. This makes
    sure every console and API request passes through the proxy. Before you apply the rule, confirm that every cluster
    and edge host reaches Palette VerteX by host name, not by IP address. A host that uses the IP address bypasses the
    proxy, and the rule cuts it off.
 
-8. Create a named System Console administrator for each person who administers Palette VerteX, so the proxy log names
+4. Create a named System Console administrator for each person who administers Palette VerteX, so the proxy log names
    the person instead of the shared root administrator. Refer to
    [Manage System Accounts](./account-management/manage-system-accounts.md). Named administrators sign in with their
    email address as the username. Keep the root administrator credentials in a vault that records each checkout.
 
-9. Configure [Audit Trails](../../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk) in each
+5. Configure [Audit Trails](../../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk) in each
    tenant so the events Palette VerteX records reach the same SIEM.
 
    :::warning
@@ -267,28 +497,29 @@ query string.
 
    :::
 
-10. In your SIEM, create alert rules that notify your system administrators and your ISSO. The following rules cover the
-    events that Palette VerteX doesn't record in its audit logs.
+6. In your SIEM, create alert rules that notify your system administrators and your ISSO. The following rules cover the
+   events that Palette VerteX doesn't record in its audit logs.
 
-    | Alert                                | Match                                                                                                                                   |
-    | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-    | Failed sign-in                       | `status` is `403` and `path` is `/v1/auth/authenticate` or `/v1/auth/syslogin`                                                          |
-    | Repeated failed sign-ins             | More failed sign-ins for one `sign_in_as` value, or from one `client`, than your organization's threshold allows within its time window |
-    | System Console sign-in               | `path` is `/v1/auth/syslogin` and `status` is `200`                                                                                     |
-    | Refused request                      | `status` is `401` or `403`, or `status` is `500` and `platform_error` is not `-`, on a path that starts with `/v1/`                     |
-    | System Console activity              | `system_console` is `1`                                                                                                                 |
-    | Tenant deactivated or re-activated   | `method` is `PATCH` and `path` matches `/v1/tenants/*/activate`                                                                         |
-    | User restored                        | `method` is `POST` and `path` matches `/v1/users/*/restore`                                                                             |
-    | System Console administrator changed | `method` is `POST` or `DELETE` and `path` starts with `/v1/system/admins`                                                               |
+   | Alert                                | Match                                                                                                                                   |
+   | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+   | Failed sign-in                       | `status` is `403` and `path` is `/v1/auth/authenticate` or `/v1/auth/syslogin`                                                          |
+   | Repeated failed sign-ins             | More failed sign-ins for one `sign_in_as` value, or from one `client`, than your organization's threshold allows within its time window |
+   | System Console sign-in               | `path` is `/v1/auth/syslogin` and `status` is `200`                                                                                     |
+   | Refused request                      | `status` is `401` or `403`, or `status` is `500` and `platform_error` is not `-`, on a path that starts with `/v1/`                     |
+   | System Console activity              | `system_console` is `1`                                                                                                                 |
+   | Tenant deactivated or re-activated   | `method` is `PATCH` and `path` matches `/v1/tenants/*/activate`                                                                         |
+   | User restored                        | `method` is `POST` and `path` matches `/v1/users/*/restore`                                                                             |
+   | System Console administrator changed | `method` is `POST` or `DELETE` and `path` starts with `/v1/system/admins`                                                               |
 
-    Some refusals return HTTP 500 instead of 403. Those lines carry the reason in `platform_error`, for example
-    `RestrictedToTenantAdmin`, which tells them apart from a server fault.
+   Some refusals return HTTP 500 instead of 403. Those lines carry the reason in `platform_error`, for example
+   `RestrictedToTenantAdmin`, which tells them apart from a server fault.
 
 ## Validate
 
 Run these checks after you set up the proxy and again after every Palette VerteX upgrade. Use a test user and a test
-System Console administrator, and delete both afterwards. In the commands, `<tenant-host>` is the host name of the test
-user's tenant, which now resolves to the proxy.
+System Console administrator of type Account Admin, and delete both afterwards. In the commands, `<tenant-host>` is the
+host name of the test user's tenant and `<system-console-host>` is the host name of the System Console. Both now resolve
+to the proxy.
 
 1. From a workstation, sign in to the Tenant Console through the proxy with a wrong password for an existing test user.
 
@@ -332,9 +563,22 @@ user's tenant, which now resolves to the proxy.
    {"method":"GET","path":"/v1/tenants/<tenant-uid>/password/policy","status":500,"user":"<user-uid>","email":"<test-user-email>","platform_error":"RestrictedToTenantAdmin"}
    ```
 
-3. Sign in to the System Console through the proxy as a test System Console administrator of type Account Admin, then
-   create and delete a second test administrator. The proxy log has the sign-in with the email address typed, and the
-   two changes with the administrator's ID and type.
+3. Sign in to the System Console through the proxy as the test administrator, then create and delete a second test
+   administrator.
+
+   ```shell
+   ADMIN_TOKEN=$(curl --silent --request POST "https://<system-console-host>/v1/auth/syslogin?setCookie=false" \
+     --header 'Content-Type: application/json' \
+     --data '{"username":"<test-admin-email>","password":"<password>"}' | jq -r .Authorization)
+   SECOND_ADMIN=$(curl --silent --request POST "https://<system-console-host>/v1/system/admins" \
+     --header "Authorization: $ADMIN_TOKEN" --header 'Content-Type: application/json' \
+     --data '{"metadata":{"name":"<second-admin-name>"},"spec":{"emailId":"<second-admin-email>","firstName":"Test","lastName":"Admin","adminType":"OperationAdmin"}}' | jq -r .uid)
+   curl --silent --output /dev/null --write-out '%{http_code}\n' --request DELETE \
+     "https://<system-console-host>/v1/system/admins/$SECOND_ADMIN" --header "Authorization: $ADMIN_TOKEN"
+   ```
+
+   The last command prints `204`. The proxy log has the sign-in with the email address typed, and the two changes with
+   the administrator's ID and type.
 
    ```json
    {"method":"POST","path":"/v1/auth/syslogin","status":200,"sign_in_as":"<test-admin-email>"}
@@ -342,8 +586,8 @@ user's tenant, which now resolves to the proxy.
    {"method":"DELETE","path":"/v1/system/admins/<second-admin-uid>","status":204,"user":"<admin-uid>","system_console":"1","admin_type":"AccountAdmin"}
    ```
 
-4. Search the proxy log for the test user's password and for any value of the `Authorization` cookie or header. Neither
-   appears.
+4. Search the proxy log for the test user's password, the test administrator's password, and the `TOKEN` and
+   `ADMIN_TOKEN` values. None of them appear.
 
 5. From a host other than the proxy, connect to the Palette VerteX IP address on port 443 directly.
 
