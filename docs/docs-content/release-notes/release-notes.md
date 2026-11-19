@@ -11,6 +11,46 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 20, 2026 - Release 4.10.x
+
+<!-- PATCH RELEASE TICKET: DOC-3466 -->
+<!-- PATCH RELEASE VERSION: 4.10.x -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12730 PEM-12724 PCP-8019 PCP-7991 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
+
+- Improved the scheduled cleanup of cluster metrics in Palette. Palette now runs each cleanup job on one replica of its
+  management services instead of on every replica, and the pod metrics cleanup uses new database indexes. This reduces
+  MongoDB memory usage while the cleanup runs.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12730 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
+
+- Fixed an issue that caused [Headlamp](../clusters/cluster-management/headlamp.md) to stay on its loading screen when
+  you opened it from a cluster's **Connect** link through Spectro Proxy. This occurred when Palette took longer than 15
+  seconds to respond, for example, over a slow network connection.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8019 -->
+
+- Fixed an issue that caused upgrades of self-hosted [Palette](../enterprise-version/upgrade/upgrade.md) and
+  [Palette VerteX](../vertex/upgrade/upgrade.md) instances on VMware vSphere from version 4.9 to leave the control plane
+  nodes of the management cluster on the previous Kubernetes version. The `palette-controller-manager` logs showed the
+  error `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7991 -->
+
+- Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, for example,
+  when it replaced, repaved, or removed a node. MAAS then erased the disks that the machine could access, which could
+  include Storage Area Network (SAN) volumes that were still attached to the node. Palette no longer requests a disk
+  erase by default. To erase disks when Palette releases a machine, set `eraseDisksOnRelease` to `full`, `quick`, or
+  `secure` in the `maasCluster`
+  [Cluster API override](../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release).
+  MAAS still erases disks on release if your MAAS region is configured to do so.
+
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
 ### Security Notices
@@ -283,12 +323,6 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused the Palette UI to reject valid [node pool](../clusters/cluster-management/node-pool.md)
   **Additional Labels** whose value is a single character, such as `workload:a`, and to highlight the wrong label.
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
-
-- Fixed an issue that caused Headlamp to stay on its loading screen when you opened it from a cluster's **Connect** link
-  through Spectro Proxy. This occurred when Palette took longer than 15 seconds to respond, for example, over a slow
-  network connection.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12512 -->
 
