@@ -68,9 +68,10 @@ recreated. Palette might still show the Calico pack as installed. Rolling the cl
 Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
 Palette when they register. This affects Edge hosts that you installed from an Edge Installer ISO with a Palette agent
 version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
-that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect
-that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode, cannot find the cluster
-configuration that the Edge host receives only after registration, and restarts every few seconds.
+that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14 (except version
+4.10.11-rev.1), cannot detect that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode,
+cannot find the cluster configuration that the Edge host receives only after registration, and restarts every few
+seconds.
 
 In Palette, the Edge host stops sending heartbeats, its health status changes to **Unhealthy**, and it still shows the
 earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
