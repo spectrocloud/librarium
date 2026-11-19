@@ -42,12 +42,12 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-10196 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-8006 -->
 
-- Fixed an issue that caused the Kubelet on [Edge](../clusters/edge/edge.md) control plane nodes that use
-  <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> to fail
-  to start after the node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted, for
-  example, during a [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md), it failed with
-  the error `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node
-  became `NotReady`.
+- Fixed an issue that caused the Kubelet to fail to start on [Edge](../clusters/edge/edge.md) control plane nodes that
+  use <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> after
+  a node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted (for example, during a
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
+  `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
+  `NotReady`.
 
 ## November 2, 2026 - Release 4.8.74
 
