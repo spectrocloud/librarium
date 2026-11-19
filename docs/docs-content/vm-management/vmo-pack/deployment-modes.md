@@ -35,6 +35,12 @@ Selections seed values. They do not lock them. Every value remains editable in t
 We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
 settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
+The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
+`false` by default in every Deployment Mode. Do not use the route for Containerized Data Importer (CDI) upload or
+virtual machine export. Refer to
+[Configure Image Upload and VM Export](https://docs.spectrocloud.com/vm-management/vmo-pack/configure-image-upload-and-vm-export/)
+for the supported methods.
+
 :::
 
 ## Values Paths
@@ -59,15 +65,6 @@ Two notations appear in the parameter tables in this section of the documentatio
   it in place. Palette substitutes the value of the profile variable when the cluster deploys. Refer to
   [Define Cluster Profile Variables](../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   for guidance.
-
-:::warning
-
-The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
-`false` by default in every Deployment Mode. Do not use the route for CDI upload or virtual machine export. Refer to
-[Configure Image Upload and VM Export](https://docs.spectrocloud.com/vm-management/vmo-pack/configure-image-upload-and-vm-export/)
-for the supported methods.
-
-:::
 
 ## Proxied
 
