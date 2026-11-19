@@ -39,10 +39,10 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 - An application for the appliance at the external identity provider. For an OpenID Connect provider, the application's
   client ID and client secret. For the steps, refer to your provider's documentation.
 
-  - For Okta with OpenID Connect, a Web Application. Refer to
+  - For Okta with OpenID Connect, a **Web Application**. Refer to
     [Create OpenID Connect app integrations](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_oidc.htm).
 
-  - For Auth0, a Regular Web Application. Refer to
+  - For Auth0, a **Regular Web Application**. Refer to
     [Register Regular Web Applications](https://auth0.com/docs/get-started/auth0-overview/create-applications/regular-web-apps).
 
 - The provider's discovery endpoint, or its authorization, token, user info, and JSON Web Key Set (JWKS) URLs. For a
@@ -71,7 +71,7 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 3. Select **Open Keycloak**. The Keycloak sign-in page opens.
 
 4. Sign in with the **Local Admin Username** and **Local Admin Password**. Keycloak opens **Identity providers** in the
-   realm `ai`.
+   `ai` realm.
 
 5. Select the provider type. If the page already lists providers, select the type from the **Add provider** drop-down
    menu.
@@ -122,8 +122,8 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
 ## Give the Provider's Groups Access
 
-1. In the console, add a group with the exact name that the provider sends, such as `platform-team`. For the steps,
-   refer to [Add a Group](./manage-groups.md#add-a-group).
+1. In the console, add a group with the exact name that the provider sends, such as `platform-team`. For Auth0, use the
+   role name. For the steps, refer to [Add a Group](./manage-groups.md#add-a-group).
 
 2. Add the group as a member of each workspace that its people need, and give it a role. For the steps, refer to
    [Manage Workspace Members](./manage-workspace-members.md).

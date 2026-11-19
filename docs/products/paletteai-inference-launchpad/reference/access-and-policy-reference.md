@@ -238,7 +238,7 @@ You add and change providers in Keycloak. For the steps, refer to
 
 | **Control**       | **Action**                                                                           |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| **Open Keycloak** | Opens the Keycloak sign-in page, then the administration console for the realm `ai`. |
+| **Open Keycloak** | Opens the Keycloak sign-in page, then the administration console for the `ai` realm. |
 
 ### Provider Sign-In
 
