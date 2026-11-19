@@ -77,4 +77,6 @@ Exercise caution when changing system settings as the changes will be applied to
 
 - [SSL Certificate Management](../system-management/ssl-certificate-management.md)
 
+- [Record Console Activity at a Reverse Proxy](./audit-reverse-proxy.md)
+
 - [Configure and manage pack registries](../system-management/add-registry.md).
