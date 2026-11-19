@@ -35,6 +35,11 @@ Selections seed values. They do not lock them. Every value remains editable in t
 We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
 settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
+The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
+`false` by default in every Deployment Mode. In VMO pack version 4.10.7 and later, expose the Containerized Data
+Importer (CDI) upload proxy and KubeVirt export proxy through native Ingress or `LoadBalancer` Services instead. Refer
+to [Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance.
+
 :::
 
 ## Values Paths
@@ -59,15 +64,6 @@ Two notations appear in the parameter tables in this section of the documentatio
   it in place. Palette substitutes the value of the profile variable when the cluster deploys. Refer to
   [Define Cluster Profile Variables](../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   for guidance.
-
-:::warning
-
-The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
-`false` by default in every Deployment Mode. In VMO pack version 4.10.7 and later, expose the CDI upload proxy and
-KubeVirt export proxy through native Ingress or `LoadBalancer` Services instead. Refer to
-[Configure Image Upload and VM Export](./configure-image-upload-and-vm-export.md) for guidance.
-
-:::
 
 ## Proxied
 
