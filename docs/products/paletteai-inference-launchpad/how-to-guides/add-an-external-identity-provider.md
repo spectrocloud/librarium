@@ -143,9 +143,9 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
 6. Confirm that the console opens in the group's workspace.
 
-   If the console shows `You do not have access yet. Ask your administrator to add you to a workspace.`, add the
-   person's group to a workspace. For the steps, refer to
-   [Give the Provider's Groups Access](#give-the-providers-groups-access).
+   If the console shows `You do not have access yet. Ask your administrator to add you to a workspace.` instead, check
+   that a group on the appliance has the exact name that the provider sends, and that the group is a member of a
+   workspace. For the steps, refer to [Give the Provider's Groups Access](#give-the-providers-groups-access).
 
 7. Sign out, and then sign in again as a platform administrator.
 
