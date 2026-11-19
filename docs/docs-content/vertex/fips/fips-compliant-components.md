@@ -54,6 +54,9 @@ On the VerteX Management Appliance, the management plane pulls images from the S
 `us-docker.pkg.dev/palette-images-fips`. In airgap environments, the appliance pulls images from the internal Zot
 registry instead.
 
+The VerteX Management Appliance also includes Reloader, a FIPS-compliant supporting add-on component for the Zot
+registry. Reloader is a Kubernetes controller that restarts workloads when their ConfigMaps or Secrets change.
+
 <br />
 
 ## FIPS-Compliant Kubernetes
@@ -97,7 +100,6 @@ FIPS-compliant components in PXK and PXK-E:
 | etcd                       | etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data.                                                                                                                                                                     |
 | Metrics Server             | Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines.                                                                                                                                       |
 | Nginx Server               | The Nginx server is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.                                                                                                                                             |
-| Reloader                   | Reloader is a Kubernetes controller that restarts workloads when their ConfigMaps or Secrets change.                                                                                                                                                              |
 | Traefik Ingress Controller | Traefik is the management cluster ingress controller. It provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services. Traefik uses Custom Resource Definitions (CRDs) for routing configuration. |
 
 ### Runtime Components
