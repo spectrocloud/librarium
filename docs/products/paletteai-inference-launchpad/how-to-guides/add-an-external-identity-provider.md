@@ -98,7 +98,7 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
 10. In **Advanced settings**, turn on **Trust Email**. Leave **Sync mode** set to **Import**.
 
-11. For an OpenID Connect provider, open **Advanced**, and set **Scopes** to `openid email profile`. For Okta, set
+11. _(OpenID Connect providers only)_ Open **Advanced**, and set **Scopes** to `openid email profile`. For Okta, set
     **Scopes** to `openid email profile groups`.
 
 12. Select **Save**.
