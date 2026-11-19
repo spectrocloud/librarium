@@ -29,4 +29,6 @@ airgap environment, refer to the environment preparation guide before installing
 
 - [Airgap Install Instructions](./airgap-install/install.md)
 
+- [IPv6 EKS Install Instructions](./install-ipv6-eks.md)
+
 - [Helm Configuration Reference](./vertex-helm-ref.md)
