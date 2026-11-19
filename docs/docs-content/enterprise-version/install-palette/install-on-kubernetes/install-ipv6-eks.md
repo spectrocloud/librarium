@@ -9,20 +9,24 @@ tags: ["self-hosted", "enterprise", "eks", "ipv6"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
+<!--
+RELEASE DAY. Replace 4.10.x in Prerequisites with the 4.10 patch version that ships the global.ipFamily Helm values, once
+the final tag exists.
+
+TEST RUN. Validate these steps again with the released Helm charts on an EKS Auto Mode cluster, including the
+cert-manager step.
+-->
+
 You can install self-hosted Palette on an Amazon EKS cluster that uses the IPv6 IP address family. In an IPv6 EKS
-cluster, pods and services receive IPv6 addresses only. The Palette Helm charts require changes before you can install
-them on an IPv6 EKS cluster. These Helm chart changes are available upon request.
+cluster, pods and services receive IPv6 addresses only. You enable IPv6 support through a parameter in the Palette Helm
+chart values file.
 
 This guide contains the complete installation procedure. It follows the
 [Install Non-Airgap Self-Hosted Palette](./install.md) guide and adds the steps that an IPv6 EKS cluster requires.
 
-The steps in this guide were validated with Palette VerteX 4.10.27 on an Amazon EKS cluster that uses EKS Auto Mode and
-Kubernetes 1.36. Palette uses the same installation process.
+This guide uses an Amazon EKS cluster that has EKS Auto Mode enabled.
 
 ## Limitations
-
-- You must apply the IPv6 Helm chart changes each time you download the Helm charts, including before every upgrade of
-  Palette.
 
 - This guide covers non-airgap installations with Helm. It does not cover airgap installations or the
   [Palette Management Appliance](../palette-management-appliance.md).
@@ -45,10 +49,7 @@ agent and Palette-created Kubernetes resources that will interfere with the inst
 
 ### IPv6 and Amazon EKS
 
-- The Helm charts for Palette 4.10.27 or later.
-
-- The IPv6 Helm chart changes for your Palette version. These changes are available upon request. To request them,
-  [open a support ticket](https://support.spectrocloud.io/).
+- The Helm charts for Palette 4.10.x or later.
 
 - A Virtual Private Cloud (VPC) that has both an IPv4 and an IPv6 Classless Inter-Domain Routing (CIDR) block. The
   **Enable auto-assign IPv6 address** setting must be enabled on the private subnets that host the cluster. Refer to
@@ -142,14 +143,9 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
   helm="palette"
 />
 
-### IPv6 Helm Chart Changes
-
-3. Apply the IPv6 Helm chart changes that you received from our support team to the extracted Helm charts. Follow the
-   instructions provided with the changes.
-
 ### Cert-Manager Helm Chart
 
-4. <PartialsComponent
+3. <PartialsComponent
      category="self-hosted"
      name="kubernetes-install-cert-manager-non-airgap"
      edition="palette"
@@ -159,7 +155,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Spectro Management CRDs Helm Chart
 
-7. <PartialsComponent
+6. <PartialsComponent
      category="self-hosted"
      name="kubernetes-install-spectro-mgmt-crds"
      edition="palette"
@@ -169,7 +165,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Palette Helm Chart
 
-8. <PartialsComponent
+7. <PartialsComponent
      category="self-hosted"
      name="kubernetes-install-main-chart-non-airgap"
      edition="palette"
@@ -177,13 +173,17 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
      helm="palette"
    />
 
-### IPv6 Load Balancer Annotation
+### IPv6 Settings
 
-11. In the `palette/values.yaml` file, add the following annotation to the ingress load balancer so that it accepts both
-    IPv4 and IPv6 traffic. If you set `grpc.external` to `true`, add the same annotation to the gRPC load balancer. Save
-    the file when you are done.
+10. In the `palette/values.yaml` file, set `global.ipFamily.enableIPv6` to `true` so that the Palette services listen on
+    IPv6 addresses. Add the following annotation to the ingress load balancer so that it accepts both IPv4 and IPv6
+    traffic. If you set `grpc.external` to `true`, add the same annotation to the gRPC load balancer. Save the file when
+    you are done.
 
     ```yaml
+    global:
+      ipFamily:
+        enableIPv6: true
     grpc:
       annotations:
         service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
@@ -195,7 +195,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Image Swap Helm Chart
 
-12. <PartialsComponent
+11. <PartialsComponent
       category="self-hosted"
       name="kubernetes-install-image-swap"
       edition="palette"
@@ -205,7 +205,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Reach System Helm Chart
 
-13. <PartialsComponent
+12. <PartialsComponent
       category="self-hosted"
       name="kubernetes-install-reach-system"
       edition="palette"
@@ -215,7 +215,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Installation
 
-14. <PartialsComponent
+13. <PartialsComponent
       category="self-hosted"
       name="kubernetes-install-end"
       edition="palette"
@@ -225,7 +225,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### Post-Installation Configuration
 
-20. Create a managed node group in the EKS cluster with the following settings. The `cluster-management-agent` pod of
+19. Create a managed node group in the EKS cluster with the following settings. The `cluster-management-agent` pod of
     Palette cannot be scheduled on nodes that EKS Auto Mode manages.
 
     | **Setting**       | **Value**                       |
@@ -237,7 +237,7 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
     | **Maximum size**  | `2`                             |
     | **Subnets**       | The private subnets of the VPC. |
 
-21. _(Optional)_ If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
+20. _(Optional)_ If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
     [EKS Pod Identity](../../../clusters/public-cloud/aws/add-aws-accounts.md#eks-pod-identity) section of the Register
     and Manage AWS Accounts guide.
 
@@ -263,5 +263,5 @@ kubectl get pods --all-namespaces --output wide
 <PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
 
 To deploy workload clusters that use the IPv6 IP address family, refer to
-[Deploy an IPv6 EKS Cluster](../../../clusters/public-cloud/aws/deploy-ipv6-eks-cluster.md). Before you
-[upgrade Palette](../../upgrade/upgrade-k8s/non-airgap.md), apply the IPv6 Helm chart changes to the new Helm charts.
+[Deploy an IPv6 EKS Cluster](../../../clusters/public-cloud/aws/deploy-ipv6-eks-cluster.md). Keep the IPv6 settings in
+your `values.yaml` file when you [upgrade Palette](../../upgrade/upgrade-k8s/non-airgap.md).
