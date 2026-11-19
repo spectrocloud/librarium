@@ -12,9 +12,10 @@
      platform name. Add it back if the reviewers want the underlying release listed.
    * NVIDIA GPU Driver column: Kevin Reeuwijk confirmed 595.58.03-stig-fips on 2026-11-19. Rafay's
      page has the same column.
-   * Helm and Hardware Model columns: the template lists both as minimum matrix information.
-     The TODO values wait on Kevin Reeuwijk: the Helm version or the product and version that
-     installed the operator, and the server make and model, CPUs, and memory.
+   * Helm and Hardware Model columns (template minimums): Kevin Reeuwijk, 2026-11-19. The
+     NVIDIA GPU Operator pack deploys the Helm chart. "Helm v3" is inferred, because Kevin did not
+     name a Helm version and Helm 2 reached end of life in 2020. Confirm with Kevin. The hardware
+     is as Kevin gave it: HPE DL380a Gen12, 2x Intel Xeon 6710E, 1 TB ECC RAM at 5200 MHz.
    * About: wording review by Rob Eckhardt and Andreea Munteanu. The first two sentences follow
      https://docs.palette-ai.com/docs/what-is-paletteai/.
    * Matrix intro: the other partner pages say "<vendor> has self-validated". Here NVIDIA QA ran
@@ -73,9 +74,12 @@ NVIDIA QA validated |prod-name-short| with the NVIDIA GPU Operator and the NVIDI
        | with the Ubuntu Pro FIPS kernel
      - containerd 2.3.2
      - 1.35.6
-     - TODO: Helm version or installation product
+     - | Helm v3, through the
+       | NVIDIA GPU Operator pack
      - NVIDIA RTX PRO 6000 Blackwell Server Edition
-     - TODO: server make and model, CPUs, memory
+     - | HPE DL380a Gen12
+       | 2x Intel Xeon 6710E
+       | 1 TB ECC RAM, 5200 MHz
      - November 2026
 
 
