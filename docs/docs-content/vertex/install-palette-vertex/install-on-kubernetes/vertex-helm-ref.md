@@ -82,6 +82,30 @@ cat <path/to/.docker/config.json> | base64 | tr --delete '\n'
 
 :::
 
+### IP Family
+
+<!-- RELEASE DAY. Replace 4.10.x in this section with the 4.10 patch version that ships the global.ipFamily Helm values. -->
+
+The `ipFamily` block configures IPv6 support. Use it when you install Palette VerteX on a Kubernetes cluster that uses
+IPv6 or dual-stack networking. This block is available in the Helm charts for Palette VerteX 4.10.x and later. Refer to
+[Install Palette VerteX on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an example.
+
+| **Parameters**          | **Description**                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `enableIPv6`            | Specifies whether Palette VerteX services listen on IPv6 addresses in addition to IPv4 addresses. Set to `true` when the cluster uses IPv6 or dual-stack networking.                                                                                                            | Boolean  | `false`           |
+| `serviceIpFamilyPolicy` | The IP family policy of the ingress and gRPC load balancer services. Allowed values are `""`, `PreferDualStack`, and `RequireDualStack`. An empty value keeps the default policy of the cluster. `RequireDualStack` fails on a cluster that does not use dual-stack networking. | String   | `""`              |
+
+```yaml
+global:
+  ipFamily:
+    enableIPv6: true
+    serviceIpFamilyPolicy: ""
+```
+
+On AWS, the load balancers accept IPv6 traffic only if you also add the
+`service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack` annotation to `ingress.ingress.annotations`
+and `grpc.annotations`.
+
 ## MongoDB
 
 Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment:
