@@ -21,9 +21,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
 
-- Improved the scheduled cleanup of cluster metrics in Palette. Palette now runs each cleanup job on one replica of its
-  management services instead of on every replica, and the pod metrics cleanup uses new database indexes. This reduces
-  MongoDB memory usage while the cleanup runs.
+- Reduced MongoDB memory usage during the scheduled cleanup of cluster metrics in Palette. Palette now runs each cleanup
+  job on one replica of its management services instead of on every replica.
 
 ### Bug Fixes
 
@@ -36,20 +35,18 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-8019 -->
 
-- Fixed an issue that caused upgrades of self-hosted [Palette](../enterprise-version/upgrade/upgrade.md) and
-  [Palette VerteX](../vertex/upgrade/upgrade.md) instances on VMware vSphere from version 4.9 to leave the control plane
-  nodes of the management cluster on the previous Kubernetes version. The `palette-controller-manager` logs showed the
-  error `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
+- Fixed an issue that caused the control plane nodes of self-hosted [Palette](../enterprise-version/upgrade/upgrade.md)
+  and [Palette VerteX](../vertex/upgrade/upgrade.md) management clusters on VMware vSphere to stay on the previous
+  Kubernetes version after an upgrade from version 4.9. The `palette-controller-manager` logs showed the error
+  `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7991 -->
 
-- Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, for example,
-  when it replaced, repaved, or removed a node. MAAS then erased the disks that the machine could access, which could
-  include Storage Area Network (SAN) volumes that were still attached to the node. Palette no longer requests a disk
-  erase by default. To erase disks when Palette releases a machine, set `eraseDisksOnRelease` to `full`, `quick`, or
-  `secure` in the `maasCluster`
+- Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, including
+  when Storage Area Network (SAN) volumes were still attached to the node. Palette no longer requests a disk erase by
+  default. To erase disks on release, set `eraseDisksOnRelease` in a cluster-level
   [Cluster API override](../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release).
-  MAAS still erases disks on release if your MAAS region is configured to do so.
+  MAAS still erases disks on release if your MAAS environment is configured to do so.
 
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 

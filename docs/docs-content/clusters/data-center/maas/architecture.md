@@ -172,13 +172,13 @@ Palette does not repave the cluster in the following cases:
 
 ## Disk Erase on Machine Release
 
-When Palette removes a node from a MAAS cluster, for example, during a repave, a node pool scale-down, or a cluster
-deletion, it releases the machine back to MAAS. By default, Palette does not request a disk erase when it releases a
+When Palette removes a node from a MAAS cluster (for example, during a repave, a node pool scale-down, or a cluster
+deletion), it releases the machine back to MAAS. By default, Palette does not request a disk erase when it releases a
 machine.
 
-You can request a disk erase with the `eraseDisksOnRelease` field in a cluster-level Cluster API override. MAAS erases
-every disk that the machine can access, including Storage Area Network (SAN) volumes that are still attached to the
-node, so leave disk erase off on clusters whose nodes attach SAN volumes. Refer to
+You can request a disk erase with the `eraseDisksOnRelease` field in a cluster-level Cluster API override. When disk
+erase is on, MAAS erases every disk that the machine can access, including Storage Area Network (SAN) volumes that are
+still attached to the node. Leave disk erase off on clusters whose nodes attach SAN volumes. Refer to
 [Disk Erase on Machine Release](../../../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release)
 for the supported values and an example.
 

@@ -60,10 +60,10 @@ maasMachineTemplate:
 
 ### Disk Erase on Machine Release
 
-When Palette removes a node from a MAAS cluster, for example, during a repave, it releases the machine back to MAAS. The
-`eraseDisksOnRelease` field of the `MaasCluster` resource controls whether Palette asks MAAS to erase the machine's
-disks during the release. Set this field in a cluster-level override. The following table describes the supported
-values.
+When Palette removes a node from a MAAS cluster (for example, during a repave, a node pool scale-down, or a cluster
+deletion), it releases the machine back to MAAS. The `eraseDisksOnRelease` field of the `MaasCluster` resource controls
+whether Palette asks MAAS to erase the machine's disks during the release. Set this field in a cluster-level override.
+The following table describes the supported values.
 
 | Value    | Behavior                                                                                                                      |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -78,18 +78,19 @@ maasCluster:
     eraseDisksOnRelease: full
 ```
 
-:::warning
+:::danger
 
-MAAS erases every disk that the machine can access, including Storage Area Network (SAN) volumes that are still attached
-to the node. Use `none` on clusters whose nodes attach SAN volumes.
+When disk erase is on, MAAS erases every disk that the machine can access, including Storage Area Network (SAN) volumes
+that are still attached to the node. Use `none` on clusters whose nodes attach SAN volumes.
 
 :::
 
-Palette applies overrides as a merge patch, so removing `eraseDisksOnRelease` from the override does not turn off disk
-erase on a cluster where you already set it. To turn off disk erase, set the value to `none`.
+Removing `eraseDisksOnRelease` from the override does not turn off disk erase on a cluster where you already set it. To
+turn off disk erase, set the value to `none`. Refer to
+[How Overrides Work](./override-capi-properties.md#how-overrides-work) for more information.
 
-If your MAAS region is configured to erase disks when it releases machines, MAAS erases them even when
-`eraseDisksOnRelease` is `none`. Refer to the MAAS documentation for the disk erase settings of your region.
+If your MAAS environment is configured to erase disks on release, MAAS erases them even when `eraseDisksOnRelease` is
+`none`. Refer to the MAAS documentation for its disk erase settings.
 
 ### Unsupported First-Class Properties
 
