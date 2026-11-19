@@ -7,8 +7,8 @@ sidebar_position: 35
 ---
 
 Palette supports deploying Amazon EKS clusters that use the IPv6 IP address family. In an IPv6 EKS cluster, pods and
-services receive IPv6 addresses only. Worker nodes run in subnets that have both IPv4 and IPv6 CIDR blocks, which allows
-pods to reach IPv4 endpoints outside the cluster. Refer to
+services receive IPv6 addresses only. Worker nodes run in subnets that have both IPv4 and IPv6 Classless Inter-Domain
+Routing (CIDR) blocks, which allows pods to reach IPv4 endpoints outside the cluster. Refer to
 [Learn about IPv6 addresses to clusters, Pods, and services](https://docs.aws.amazon.com/eks/latest/userguide/cni-ipv6.html)
 in the AWS documentation for details on how Amazon EKS implements the IPv6 IP address family.
 
@@ -37,17 +37,17 @@ creation. This guide describes the required configuration and the order in which
 - Do not set `instanceMetadataOptions.httpProtocolIpv6` to `enabled` in a node pool CAPI override. This setting causes
   the node pool to be repaved repeatedly.
 
-- Many services outside the cluster, such as some container image registries, are reachable over IPv4 only. Ensure the
-  subnets of your worker nodes have an IPv4 route to the services your workloads and Palette depend on, for example,
-  through a Network Address Translation (NAT) gateway.
+- Many services outside the cluster, such as some container image registries, are reachable over IPv4 only. Ensure that
+  the subnets of your worker nodes have an IPv4 route to the services that your workloads and Palette depend on, for
+  example, through a Network Address Translation (NAT) gateway.
 
 ## Prerequisites
 
 - All prerequisites listed in the [Create and Manage AWS EKS Cluster](./eks.md#prerequisites) guide.
 
 - An existing Virtual Private Cloud (VPC) that has both an IPv4 and an IPv6 CIDR block, with subnets in at least two
-  Availability Zones (AZs). The **Enable auto-assign IPv6 address** setting must be enabled on the private subnets that
-  host the worker nodes. Refer to
+  Availability Zones. The **Enable auto-assign IPv6 address** setting must be enabled on the private subnets that host
+  the worker nodes. Refer to
   [Learn about IPv6 addresses to clusters, Pods, and services](https://docs.aws.amazon.com/eks/latest/userguide/cni-ipv6.html)
   in the AWS documentation for the complete list of AWS requirements and considerations, such as supported instance
   types.
@@ -102,7 +102,8 @@ storage layers use IAM Roles for Service Accounts (IRSA) to obtain their AWS per
    ```
 
 6. In the same layer, add the following IRSA roles under `managedControlPlane`. Palette creates one IAM role for the
-   Amazon VPC CNI plugin and one for the Amazon Elastic Block Store (EBS) CSI driver when it deploys the cluster.
+   Amazon VPC CNI plugin and one for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI) driver when
+   it deploys the cluster.
 
    ```yaml
    managedControlPlane:
@@ -189,8 +190,8 @@ storage layers use IAM Roles for Service Accounts (IRSA) to obtain their AWS per
 
 8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-9. In the **Cluster Config** step, select the **Region**, enable **Enable static placement (Optional)**, and select the
-   VPC and subnets that meet the IPv6 [prerequisites](#prerequisites).
+9. In the **Cluster Config** step, select the **Region**, select **Enable static placement (Optional)**, and then choose
+   the VPC and subnets that meet the IPv6 [prerequisites](#prerequisites).
 
 10. Enable **Override Cluster API cluster configuration**, and then select **Update Cluster API cluster configuration**.
 
@@ -247,8 +248,13 @@ that Amazon EKS assigned. The service CIDR is specific to each cluster.
 
 3. Wait a few minutes for Palette to apply the change to the cluster.
 
-4. (Optional) If you need node pools that use a CAPI override, add them now, or edit the existing node pool. The
-   following example raises the Instance Metadata Service version 2 (IMDSv2) hop limit to `2` for the nodes of the pool.
+4. _(Optional)_ If you need node pools that use a CAPI override, add them now, or edit the existing node pool. Before
+   you override `awsLaunchTemplate`, select **Enable Nodepool Customization (Optional)** on the node pool. Refer to
+   [Node Pool Launch Template](../../../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-launch-template)
+   for details.
+
+   The following example raises the Instance Metadata Service version 2 (IMDSv2) hop limit to `2` for the nodes of the
+   pool.
 
    ```yaml
    awsManagedMachinePool:
@@ -261,16 +267,11 @@ that Amazon EKS assigned. The service CIDR is specific to each cluster.
            httpPutResponseHopLimit: 2
    ```
 
-   You must enable **Enable Nodepool Customization (Optional)** on the node pool before you override
-   `awsLaunchTemplate`. Refer to
-   [Node Pool Launch Template](../../../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-launch-template)
-   for details.
-
 ## Validate
 
-Use the following steps to confirm that the cluster uses the IPv6 IP address family. The kubectl steps require access to
-the cluster. Refer to [Access EKS Cluster](./eks.md#access-eks-cluster) to obtain the kubeconfig file, and then set the
-`KUBECONFIG` environment variable.
+Use the following steps to confirm that the cluster uses the IPv6 IP address family. The `kubectl` steps require access
+to the cluster. Refer to [Access EKS Cluster](./eks.md#access-eks-cluster) to obtain the kubeconfig file, and then set
+the `KUBECONFIG` environment variable.
 
 ```shell
 export KUBECONFIG=<path-to-kubeconfig>
@@ -287,7 +288,7 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
    Replace `<eks-cluster-name>` with the name of the cluster in the Amazon EKS console and `<region>` with the AWS
    region of the cluster.
 
-2. List the pods in the cluster, and verify that the **IP** column contains IPv6 addresses.
+2. List the pods in the cluster, and verify that the `IP` column contains IPv6 addresses.
 
    ```shell
    kubectl get pods --all-namespaces --output wide
@@ -301,8 +302,8 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
 
 ## Next Steps
 
-- [Create and Manage AWS EKS Cluster](./eks.md)
-
-- [Override Cluster API (CAPI) Properties](../../../architecture/override-capi-properties/override-capi-properties.md)
-
-- [Cluster Management guides](../../cluster-management/cluster-management.md)
+Now that your IPv6 EKS cluster is deployed, refer to [Create and Manage AWS EKS Cluster](./eks.md) to learn how to
+access the cluster and update its endpoint access. To customize the cluster further, refer to
+[Override Cluster API (CAPI) Properties](../../../architecture/override-capi-properties/override-capi-properties.md). To
+manage the cluster after deployment, refer to the
+[Cluster Management guides](../../cluster-management/cluster-management.md).

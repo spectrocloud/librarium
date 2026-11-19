@@ -52,13 +52,13 @@ and VerteX-created Kubernetes resources that will interfere with the installatio
 - The IPv6 Helm chart changes for your Palette VerteX version. These changes are available upon request. To request
   them, [open a support ticket](https://support.spectrocloud.io/).
 
-- A Virtual Private Cloud (VPC) that has both an IPv4 and an IPv6 CIDR block. The **Enable auto-assign IPv6 address**
-  setting must be enabled on the private subnets that host the cluster. Refer to
+- A Virtual Private Cloud (VPC) that has both an IPv4 and an IPv6 Classless Inter-Domain Routing (CIDR) block. The
+  **Enable auto-assign IPv6 address** setting must be enabled on the private subnets that host the cluster. Refer to
   [Learn about IPv6 addresses to clusters, Pods, and services](https://docs.aws.amazon.com/eks/latest/userguide/cni-ipv6.html)
   in the AWS documentation for the complete list of AWS requirements and considerations.
 
-- An Identity and Access Management (IAM) policy for the Amazon VPC Container Network Interface (CNI) plugin that allows
-  it to assign IPv6 addresses, attached to the IAM role that the Amazon VPC CNI add-on uses. AWS does not provide a
+- An Identity and Access Management (IAM) policy that allows the Amazon VPC Container Network Interface (CNI) plugin to
+  assign IPv6 addresses. Attach the policy to the IAM role that the Amazon VPC CNI add-on uses. AWS does not provide a
   managed policy for the IPv6 IP address family, so you must create the policy. This guide uses the policy name
   `AmazonEKS_CNI_IPv6_Policy`. Refer to
   [Configure Amazon VPC CNI plugin to use IRSA](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html) in
@@ -69,7 +69,7 @@ and VerteX-created Kubernetes resources that will interfere with the installatio
 
 ### Kubernetes Cluster
 
-You create the EKS cluster as part of this guide. Ensure the cluster that you create meets the following requirements.
+You create the EKS cluster as part of this guide. Ensure that the cluster you create meets the following requirements.
 
 <PartialsComponent
   category="self-hosted"
@@ -252,7 +252,7 @@ You create the EKS cluster as part of this guide. Ensure the cluster that you cr
     | **Maximum size**  | `2`                             |
     | **Subnets**       | The private subnets of the VPC. |
 
-21. (Optional) If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
+21. _(Optional)_ If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
     [EKS Pod Identity](../../../clusters/public-cloud/aws/add-aws-accounts.md#eks-pod-identity) section of the Register
     and Manage AWS Accounts guide.
 
@@ -266,7 +266,7 @@ You create the EKS cluster as part of this guide. Ensure the cluster that you cr
   helm="vertex"
 />
 
-To confirm that the installation uses IPv6, list the pods with their IP addresses, and verify that the **IP** column
+To confirm that the installation uses IPv6, list the pods with their IP addresses, and verify that the `IP` column
 contains IPv6 addresses.
 
 ```shell
@@ -275,8 +275,9 @@ kubectl get pods --all-namespaces --output wide
 
 ## Next Steps
 
-- [Deploy an IPv6 EKS Cluster](../../../clusters/public-cloud/aws/deploy-ipv6-eks-cluster.md)
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="vertex" version="Palette VerteX" />
 
-- [Upgrade Palette VerteX on Kubernetes](../../upgrade/upgrade-k8s/non-airgap.md)
-
-- [Helm Configuration Reference](./vertex-helm-ref.md)
+To deploy workload clusters that use the IPv6 IP address family, refer to
+[Deploy an IPv6 EKS Cluster](../../../clusters/public-cloud/aws/deploy-ipv6-eks-cluster.md). Before you
+[upgrade Palette VerteX](../../upgrade/upgrade-k8s/non-airgap.md), apply the IPv6 Helm chart changes to the new Helm
+charts.
