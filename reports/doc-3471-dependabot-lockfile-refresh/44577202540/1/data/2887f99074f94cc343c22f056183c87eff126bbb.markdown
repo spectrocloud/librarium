@@ -1,0 +1,2206 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /automation/palette-cli/commands/pde/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  155 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 155 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 155 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - link "Workspaces" [ref=e140] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e142]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "User & Role Management" [ref=e154] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e156]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Registries and Packs" [ref=e161] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e163]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Security" [ref=e168] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e170]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Audit Logs" [ref=e175] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e177]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Self-Hosted Palette" [ref=e182] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e184]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette VerteX" [ref=e189] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e191]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Tenant Administration" [ref=e196] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e198]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Automation" [expanded] [ref=e203] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e205]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e207] [cursor=pointer]
+                - list [ref=e208]:
+                  - listitem [ref=e209]:
+                    - generic [ref=e210]:
+                      - link "Palette CLI" [expanded] [ref=e211] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e212] [cursor=pointer]
+                    - list [ref=e213]:
+                      - listitem [ref=e214]:
+                        - link "Install" [ref=e215] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e216]:
+                        - generic [ref=e217]:
+                          - link "Commands" [expanded] [ref=e218] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e219] [cursor=pointer]
+                        - list [ref=e220]:
+                          - listitem [ref=e221]:
+                            - link "Content" [ref=e222] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/content/
+                          - listitem [ref=e223]:
+                            - link "Docs" [ref=e224] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/docs/
+                          - listitem [ref=e225]:
+                            - link "EC" [ref=e226] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/ec/
+                          - listitem [ref=e227]:
+                            - link "FIPS Validate" [ref=e228] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/fips-validate/
+                          - listitem [ref=e229]:
+                            - link "Import" [ref=e230] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/import/
+                          - listitem [ref=e231]:
+                            - link "Login" [ref=e232] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/login/
+                          - listitem [ref=e233]:
+                            - link "PCG" [ref=e234] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pcg/
+                          - listitem [ref=e235]:
+                            - link "PDE" [ref=e236] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pde/
+                          - listitem [ref=e237]:
+                            - link "Project" [ref=e238] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/project/
+                          - listitem [ref=e239]:
+                            - link "VMO" [ref=e240] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/vmo/
+                  - listitem [ref=e241]:
+                    - generic [ref=e242]:
+                      - link "Palette Go SDK" [ref=e243] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e244] [cursor=pointer]
+                  - listitem [ref=e245]:
+                    - link "Terraform" [ref=e246] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]:
+                      - link "Crossplane" [ref=e249] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e250] [cursor=pointer]
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]:
+                      - link "Palette MCP Server" [ref=e253] [cursor=pointer]:
+                        - /url: /automation/palette-mcp/
+                      - button "Toggle the collapsible sidebar category 'Palette MCP Server'" [ref=e254] [cursor=pointer]
+                  - listitem [ref=e255]:
+                    - link "Documentation MCP Server" [ref=e256] [cursor=pointer]:
+                      - /url: /automation/docs-mcp/
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Troubleshooting" [ref=e259] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e261]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - link "Glossary" [ref=e265] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e267]
+                  - text: Glossary
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Compliance & Legal" [ref=e271] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e273]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - button "Privacy Settings" [ref=e277] [cursor=pointer]:
+                  - img [ref=e278]
+                  - text: Privacy Settings
+      - main [ref=e280]:
+        - generic [ref=e282]:
+          - generic [ref=e284]:
+            - article [ref=e285]:
+              - navigation "Breadcrumbs" [ref=e286]:
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - link "Home page" [ref=e289] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e290]
+                  - listitem [ref=e292]:
+                    - link "Automation" [ref=e293] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e294]:
+                    - link "Palette CLI" [ref=e295] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                  - listitem [ref=e296]:
+                    - link "Commands" [ref=e297] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/
+                  - listitem [ref=e298]:
+                    - generic [ref=e299]: PDE
+              - generic [ref=e300]:
+                - heading "PDE" [level=1] [ref=e302]
+                - paragraph [ref=e303]:
+                  - text: The
+                  - code [ref=e304]: pde
+                  - text: command interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the
+                  - code [ref=e305]: pde
+                  - text: command to log in to Palette, manage virtual clusters, and switch the project scope.
+                - heading "SubcommandsDirect link to Subcommands" [level=2] [ref=e306]:
+                  - text: Subcommands
+                  - link "Direct link to Subcommands" [ref=e307] [cursor=pointer]:
+                    - /url: "#subcommands"
+                    - text: "#"
+                - paragraph [ref=e308]:
+                  - text: The
+                  - code [ref=e309]: pde
+                  - text: command exposes the following subcommands.
+                - list [ref=e310]:
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - link "app" [ref=e313] [cursor=pointer]:
+                        - /url: "#app"
+                        - code [ref=e314]: app
+                      - text: "- Manage Palette Apps deployments."
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - link "app-profile" [ref=e317] [cursor=pointer]:
+                        - /url: "#app-profile"
+                        - code [ref=e318]: app-profile
+                      - text: "- Manage Palette App Profiles."
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - link "cluster-group" [ref=e321] [cursor=pointer]:
+                        - /url: "#cluster-group"
+                        - code [ref=e322]: cluster-group
+                      - text: "- Manage Palette Cluster Groups."
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]:
+                      - link "registry" [ref=e325] [cursor=pointer]:
+                        - /url: "#registry"
+                        - code [ref=e326]: registry
+                      - text: "- Manage Palette Registries for App Mode."
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - link "virtual-cluster" [ref=e329] [cursor=pointer]:
+                        - /url: "#virtual-cluster"
+                        - code [ref=e330]: virtual-cluster
+                      - text: "- Manage Palette Virtual Clusters."
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e331]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e332] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - text: You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the passphrase through the
+                    - code [ref=e335]: PALETTE_ENCRYPTION_PASSWORD
+                    - text: environment variable or the
+                    - code [ref=e336]: "-k"
+                    - text: or
+                    - code [ref=e337]: "--encryption-passphrase"
+                    - text: flag. Refer to the
+                    - link "Encryption" [ref=e338] [cursor=pointer]:
+                      - /url: /automation/palette-cli/#encryption
+                    - text: section for more information on encryption.
+                - heading "AppDirect link to App" [level=2] [ref=e339]:
+                  - text: App
+                  - link "Direct link to App" [ref=e340] [cursor=pointer]:
+                    - /url: "#app"
+                    - text: "#"
+                - paragraph [ref=e341]:
+                  - text: Use the
+                  - code [ref=e342]: app
+                  - text: subcommand to manage Palette Apps deployments. The
+                  - code [ref=e343]: app
+                  - text: subcommand supports the following subcommands.
+                - list [ref=e344]:
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - code [ref=e347]: create
+                      - text: "- Create a Palette App deployment. This command contain several subcommands. Use the"
+                      - code [ref=e348]: "--help"
+                      - text: flag to learn more about each subcommand or refer to the
+                      - link "Create" [ref=e349] [cursor=pointer]:
+                        - /url: "#create"
+                      - text: section.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - code [ref=e352]: delete
+                      - text: "- Delete a Palette App deployment. Refer to the"
+                      - link "Delete" [ref=e353] [cursor=pointer]:
+                        - /url: "#delete"
+                      - text: section for more information.
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - code [ref=e356]: list
+                      - text: "- List Palette App deployments. Refer to the"
+                      - link "List" [ref=e357] [cursor=pointer]:
+                        - /url: "#list"
+                      - text: section for more information.
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - code [ref=e360]: update
+                      - text: "- Update a Palette App deployment. Refer to the"
+                      - link "Update" [ref=e361] [cursor=pointer]:
+                        - /url: "#update"
+                      - text: section for more information.
+                - heading "CreateDirect link to Create" [level=3] [ref=e362]:
+                  - text: Create
+                  - link "Direct link to Create" [ref=e363] [cursor=pointer]:
+                    - /url: "#create"
+                    - text: "#"
+                - paragraph [ref=e364]:
+                  - text: Use the
+                  - code [ref=e365]: create
+                  - text: subcommand to create a Palette App deployment. The
+                  - code [ref=e366]: create
+                  - text: subcommand supports the following subcommands.
+                - list [ref=e367]:
+                  - listitem [ref=e368]:
+                    - paragraph [ref=e369]:
+                      - code [ref=e370]: cluster-group
+                      - text: "- Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use the following flags to create a Palette App deployment inside a Cluster Group."
+                    - table [ref=e371]:
+                      - rowgroup [ref=e372]:
+                        - row "Short Flag Long Flag Description Type" [ref=e373]:
+                          - columnheader "Short Flag" [ref=e374]:
+                            - strong [ref=e375]: Short Flag
+                          - columnheader "Long Flag" [ref=e376]:
+                            - strong [ref=e377]: Long Flag
+                          - columnheader "Description" [ref=e378]:
+                            - strong [ref=e379]: Description
+                          - columnheader "Type" [ref=e380]:
+                            - strong [ref=e381]: Type
+                      - rowgroup [ref=e382]:
+                        - row "- ---app-profile-name Install using a configuration file (optional). Use -config-only to generate a configuration file. string" [ref=e383]:
+                          - cell "-" [ref=e384]
+                          - cell "---app-profile-name" [ref=e385]:
+                            - code [ref=e386]: "---app-profile-name"
+                          - cell "Install using a configuration file (optional). Use -config-only to generate a configuration file." [ref=e387]:
+                            - text: Install using a configuration file (optional). Use
+                            - code [ref=e388]: "-config-only"
+                            - text: to generate a configuration file.
+                          - cell "string" [ref=e389]
+                        - row "- --app-profile-version Generate configuration file only. This command will not proceed with installation. boolean" [ref=e390]:
+                          - cell "-" [ref=e391]
+                          - cell "--app-profile-version" [ref=e392]:
+                            - code [ref=e393]: "--app-profile-version"
+                          - cell "Generate configuration file only. This command will not proceed with installation." [ref=e394]
+                          - cell "boolean" [ref=e395]
+                        - row "- --cluster-group-name Validate prerequisites for environment. Do not proceed with installation. boolean" [ref=e396]:
+                          - cell "-" [ref=e397]
+                          - cell "--cluster-group-name" [ref=e398]:
+                            - code [ref=e399]: "--cluster-group-name"
+                          - cell "Validate prerequisites for environment. Do not proceed with installation." [ref=e400]
+                          - cell "boolean" [ref=e401]
+                        - row "- --cpu CPUs (optional). Defaults to 4 cores. (default 4) int" [ref=e402]:
+                          - cell "-" [ref=e403]
+                          - cell "--cpu" [ref=e404]:
+                            - code [ref=e405]: "--cpu"
+                          - cell "CPUs (optional). Defaults to 4 cores. (default 4)" [ref=e406]
+                          - cell "int" [ref=e407]
+                        - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e408]:
+                          - cell "-k" [ref=e409]:
+                            - code [ref=e410]: "-k"
+                          - cell "--encryption-passphrase" [ref=e411]:
+                            - code [ref=e412]: "--encryption-passphrase"
+                          - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e413]:
+                            - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                            - code [ref=e414]: PALETTE_ENCRYPTION_PASSWORD
+                            - text: . Refer to the
+                            - link "Encryption" [ref=e415] [cursor=pointer]:
+                              - /url: /automation/palette-cli/#encryption
+                            - text: section for more information on encryption.
+                          - cell "string" [ref=e416]
+                        - row "- --memory Memory allocated to the App deployment (optional) in GB. Defaults to 4GB. int" [ref=e417]:
+                          - cell "-" [ref=e418]
+                          - cell "--memory" [ref=e419]:
+                            - code [ref=e420]: "--memory"
+                          - cell "Memory allocated to the App deployment (optional) in GB. Defaults to 4GB." [ref=e421]
+                          - cell "int" [ref=e422]
+                        - row "- --name The name of the App deployment. string" [ref=e423]:
+                          - cell "-" [ref=e424]
+                          - cell "--name" [ref=e425]:
+                            - code [ref=e426]: "--name"
+                          - cell "The name of the App deployment." [ref=e427]
+                          - cell "string" [ref=e428]
+                        - row "- --storage Storage (GB) (optional). Defaults to 4GB. (default 4) int" [ref=e429]:
+                          - cell "-" [ref=e430]
+                          - cell "--storage" [ref=e431]:
+                            - code [ref=e432]: "--storage"
+                          - cell "Storage (GB) (optional). Defaults to 4GB. (default 4)" [ref=e433]
+                          - cell "int" [ref=e434]
+                        - row "- --virtual-cluster-name The name of the new Virtual Cluster. string" [ref=e435]:
+                          - cell "-" [ref=e436]
+                          - cell "--virtual-cluster-name" [ref=e437]:
+                            - code [ref=e438]: "--virtual-cluster-name"
+                          - cell "The name of the new Virtual Cluster." [ref=e439]
+                          - cell "string" [ref=e440]
+                  - listitem [ref=e441]:
+                    - paragraph [ref=e442]:
+                      - code [ref=e443]: interactive
+                      - text: "- Create a Palette App deployment in an interactive mode."
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]:
+                      - code [ref=e446]: virtual-cluster
+                      - text: "- Create a Palette App deployment inside an existing Virtual Cluster. Use the following flags to create a Palette App deployment inside an existing Virtual Cluster."
+                    - table [ref=e447]:
+                      - rowgroup [ref=e448]:
+                        - row "Flag Description Type" [ref=e449]:
+                          - columnheader "Flag" [ref=e450]:
+                            - strong [ref=e451]: Flag
+                          - columnheader "Description" [ref=e452]:
+                            - strong [ref=e453]: Description
+                          - columnheader "Type" [ref=e454]:
+                            - strong [ref=e455]: Type
+                      - rowgroup [ref=e456]:
+                        - row "---app-profile-name Install using a configuration file (optional). Use -config-only to generate a configuration file. string" [ref=e457]:
+                          - cell "---app-profile-name" [ref=e458]:
+                            - code [ref=e459]: "---app-profile-name"
+                          - cell "Install using a configuration file (optional). Use -config-only to generate a configuration file." [ref=e460]:
+                            - text: Install using a configuration file (optional). Use
+                            - code [ref=e461]: "-config-only"
+                            - text: to generate a configuration file.
+                          - cell "string" [ref=e462]
+                        - row "--app-profile-version Generate configuration file only. This command will not proceed with installation. boolean" [ref=e463]:
+                          - cell "--app-profile-version" [ref=e464]:
+                            - code [ref=e465]: "--app-profile-version"
+                          - cell "Generate configuration file only. This command will not proceed with installation." [ref=e466]
+                          - cell "boolean" [ref=e467]
+                        - row "--name The name of the App deployment. string" [ref=e468]:
+                          - cell "--name" [ref=e469]:
+                            - code [ref=e470]: "--name"
+                          - cell "The name of the App deployment." [ref=e471]
+                          - cell "string" [ref=e472]
+                        - row "--virtual-cluster-name The name of the new Virtual Cluster. string" [ref=e473]:
+                          - cell "--virtual-cluster-name" [ref=e474]:
+                            - code [ref=e475]: "--virtual-cluster-name"
+                          - cell "The name of the new Virtual Cluster." [ref=e476]
+                          - cell "string" [ref=e477]
+                - heading "DeleteDirect link to Delete" [level=3] [ref=e478]:
+                  - text: Delete
+                  - link "Direct link to Delete" [ref=e479] [cursor=pointer]:
+                    - /url: "#delete"
+                    - text: "#"
+                - paragraph [ref=e480]:
+                  - text: Use the
+                  - code [ref=e481]: delete
+                  - text: subcommand to delete a Palette App deployment. The
+                  - code [ref=e482]: delete
+                  - text: requires the name of the App deployment to delete. Use the
+                  - code [ref=e483]: "--name"
+                  - text: flag to specify the name of the App deployment to delete.
+                - table [ref=e484]:
+                  - rowgroup [ref=e485]:
+                    - row "Short Flag Long Flag Description Type" [ref=e486]:
+                      - columnheader "Short Flag" [ref=e487]:
+                        - strong [ref=e488]: Short Flag
+                      - columnheader "Long Flag" [ref=e489]:
+                        - strong [ref=e490]: Long Flag
+                      - columnheader "Description" [ref=e491]:
+                        - strong [ref=e492]: Description
+                      - columnheader "Type" [ref=e493]:
+                        - strong [ref=e494]: Type
+                  - rowgroup [ref=e495]:
+                    - row "- --name The name of the App deployment. string" [ref=e496]:
+                      - cell "-" [ref=e497]
+                      - cell "--name" [ref=e498]:
+                        - code [ref=e499]: "--name"
+                      - cell "The name of the App deployment." [ref=e500]
+                      - cell "string" [ref=e501]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e502]:
+                      - cell "-k" [ref=e503]:
+                        - code [ref=e504]: "-k"
+                      - cell "--encryption-passphrase" [ref=e505]:
+                        - code [ref=e506]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e507]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e508]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e509] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e510]
+                    - row "- --help Help for the delete subcommand. -" [ref=e511]:
+                      - cell "-" [ref=e512]
+                      - cell "--help" [ref=e513]:
+                        - code [ref=e514]: "--help"
+                      - cell "Help for the delete subcommand." [ref=e515]:
+                        - text: Help for the
+                        - code [ref=e516]: delete
+                        - text: subcommand.
+                      - cell "-" [ref=e517]
+                - heading "ListDirect link to List" [level=3] [ref=e518]:
+                  - text: List
+                  - link "Direct link to List" [ref=e519] [cursor=pointer]:
+                    - /url: "#list"
+                    - text: "#"
+                - paragraph [ref=e520]:
+                  - text: Use the
+                  - code [ref=e521]: list
+                  - text: subcommand to list all Palette App deployments. The
+                  - code [ref=e522]: list
+                  - text: subcommand supports the following flags.
+                - table [ref=e523]:
+                  - rowgroup [ref=e524]:
+                    - row "Short Flag Long Flag Description Type" [ref=e525]:
+                      - columnheader "Short Flag" [ref=e526]:
+                        - strong [ref=e527]: Short Flag
+                      - columnheader "Long Flag" [ref=e528]:
+                        - strong [ref=e529]: Long Flag
+                      - columnheader "Description" [ref=e530]:
+                        - strong [ref=e531]: Description
+                      - columnheader "Type" [ref=e532]:
+                        - strong [ref=e533]: Type
+                  - rowgroup [ref=e534]:
+                    - row "- --name The name of the App deployment. string" [ref=e535]:
+                      - cell "-" [ref=e536]
+                      - cell "--name" [ref=e537]:
+                        - code [ref=e538]: "--name"
+                      - cell "The name of the App deployment." [ref=e539]
+                      - cell "string" [ref=e540]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e541]:
+                      - cell "-k" [ref=e542]:
+                        - code [ref=e543]: "-k"
+                      - cell "--encryption-passphrase" [ref=e544]:
+                        - code [ref=e545]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e546]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e547]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e548] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e549]
+                    - row "-h --help Help for the list subcommand. -" [ref=e550]:
+                      - cell "-h" [ref=e551]:
+                        - code [ref=e552]: "-h"
+                      - cell "--help" [ref=e553]:
+                        - code [ref=e554]: "--help"
+                      - cell "Help for the list subcommand." [ref=e555]:
+                        - text: Help for the
+                        - code [ref=e556]: list
+                        - text: subcommand.
+                      - cell "-" [ref=e557]
+                - heading "UpdateDirect link to Update" [level=3] [ref=e558]:
+                  - text: Update
+                  - link "Direct link to Update" [ref=e559] [cursor=pointer]:
+                    - /url: "#update"
+                    - text: "#"
+                - paragraph [ref=e560]:
+                  - text: Use the
+                  - code [ref=e561]: update
+                  - text: subcommand to update an App deployment. The
+                  - code [ref=e562]: update
+                  - text: subcommand supports the following flags.
+                - table [ref=e563]:
+                  - rowgroup [ref=e564]:
+                    - row "Short Flag Long Flag Description Type" [ref=e565]:
+                      - columnheader "Short Flag" [ref=e566]:
+                        - strong [ref=e567]: Short Flag
+                      - columnheader "Long Flag" [ref=e568]:
+                        - strong [ref=e569]: Long Flag
+                      - columnheader "Description" [ref=e570]:
+                        - strong [ref=e571]: Description
+                      - columnheader "Type" [ref=e572]:
+                        - strong [ref=e573]: Type
+                  - rowgroup [ref=e574]:
+                    - row "- --name The name of the App deployment. Only Apps pending an App Profile update are eligible for an update. string" [ref=e575]:
+                      - cell "-" [ref=e576]
+                      - cell "--name" [ref=e577]:
+                        - code [ref=e578]: "--name"
+                      - cell "The name of the App deployment. Only Apps pending an App Profile update are eligible for an update." [ref=e579]
+                      - cell "string" [ref=e580]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e581]:
+                      - cell "-k" [ref=e582]:
+                        - code [ref=e583]: "-k"
+                      - cell "--encryption-passphrase" [ref=e584]:
+                        - code [ref=e585]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e586]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e587]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e588] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e589]
+                    - row "-h --help Help for the update subcommand. -" [ref=e590]:
+                      - cell "-h" [ref=e591]:
+                        - code [ref=e592]: "-h"
+                      - cell "--help" [ref=e593]:
+                        - code [ref=e594]: "--help"
+                      - cell "Help for the update subcommand." [ref=e595]:
+                        - text: Help for the
+                        - code [ref=e596]: update
+                        - text: subcommand.
+                      - cell "-" [ref=e597]
+                - heading "App ProfileDirect link to App Profile" [level=2] [ref=e598]:
+                  - text: App Profile
+                  - link "Direct link to App Profile" [ref=e599] [cursor=pointer]:
+                    - /url: "#app-profile"
+                    - text: "#"
+                - paragraph [ref=e600]:
+                  - text: Use the
+                  - code [ref=e601]: app-profile
+                  - text: subcommand to manage app profiles. The
+                  - code [ref=e602]: app-profile
+                  - text: command supports the following subcommands.
+                - list [ref=e603]:
+                  - listitem [ref=e604]:
+                    - paragraph [ref=e605]:
+                      - code [ref=e606]: create
+                      - text: "- Create an app profile"
+                  - listitem [ref=e607]:
+                    - paragraph [ref=e608]:
+                      - code [ref=e609]: delete
+                      - text: "- Delete an app profile"
+                  - listitem [ref=e610]:
+                    - paragraph [ref=e611]:
+                      - code [ref=e612]: describe
+                      - text: "- Describe an app profile"
+                  - listitem [ref=e613]:
+                    - paragraph [ref=e614]:
+                      - code [ref=e615]: list
+                      - text: "- List app profiles"
+                  - listitem [ref=e616]:
+                    - paragraph [ref=e617]:
+                      - code [ref=e618]: versions
+                      - text: "- List the versions of an app profile"
+                - heading "CreateDirect link to Create" [level=3] [ref=e619]:
+                  - text: Create
+                  - link "Direct link to Create" [ref=e620] [cursor=pointer]:
+                    - /url: "#create-1"
+                    - text: "#"
+                - paragraph [ref=e621]:
+                  - text: Use the
+                  - code [ref=e622]: create
+                  - text: subcommand to create an app profile. You have two options to create an app profile. You can create an app profile using a configuration file or in interactive mode. The
+                  - code [ref=e623]: create
+                  - text: subcommand supports the following subcommands.
+                - list [ref=e624]:
+                  - listitem [ref=e625]:
+                    - paragraph [ref=e626]:
+                      - code [ref=e627]: from-config
+                      - text: "- Create an app profile from an app profile configuration file."
+                  - listitem [ref=e628]:
+                    - paragraph [ref=e629]:
+                      - code [ref=e630]: interactive
+                      - text: "- Create an app profile in interactive mode."
+                - heading "From ConfigDirect link to From Config" [level=4] [ref=e631]:
+                  - text: From Config
+                  - link "Direct link to From Config" [ref=e632] [cursor=pointer]:
+                    - /url: "#from-config"
+                    - text: "#"
+                - paragraph [ref=e633]:
+                  - text: You can create an app profile using a configuration file. The configuration file must be in YAML format. The
+                  - code [ref=e634]: from-config
+                  - text: subcommand supports the following flags.
+                - table [ref=e635]:
+                  - rowgroup [ref=e636]:
+                    - row "Short Flag Long Flag Description Type" [ref=e637]:
+                      - columnheader "Short Flag" [ref=e638]:
+                        - strong [ref=e639]: Short Flag
+                      - columnheader "Long Flag" [ref=e640]:
+                        - strong [ref=e641]: Long Flag
+                      - columnheader "Description" [ref=e642]:
+                        - strong [ref=e643]: Description
+                      - columnheader "Type" [ref=e644]:
+                        - strong [ref=e645]: Type
+                  - rowgroup [ref=e646]:
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e647]:
+                      - cell "-k" [ref=e648]:
+                        - code [ref=e649]: "-k"
+                      - cell "--encryption-passphrase" [ref=e650]:
+                        - code [ref=e651]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e652]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e653]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e654] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e655]
+                    - row "-o --config-file The path to the app profile configuration file. string" [ref=e656]:
+                      - cell "-o" [ref=e657]:
+                        - code [ref=e658]: "-o"
+                      - cell "--config-file" [ref=e659]:
+                        - code [ref=e660]: "--config-file"
+                      - cell "The path to the app profile configuration file." [ref=e661]
+                      - cell "string" [ref=e662]
+                    - row "-h --help Help for the from-config subcommand. -" [ref=e663]:
+                      - cell "-h" [ref=e664]:
+                        - code [ref=e665]: "-h"
+                      - cell "--help" [ref=e666]:
+                        - code [ref=e667]: "--help"
+                      - cell "Help for the from-config subcommand." [ref=e668]:
+                        - text: Help for the
+                        - code [ref=e669]: from-config
+                        - text: subcommand.
+                      - cell "-" [ref=e670]
+                - generic [ref=e671]:
+                  - generic [ref=e672]:
+                    - img [ref=e674]
+                    - text: tip
+                  - generic [ref=e676]:
+                    - paragraph [ref=e677]:
+                      - text: You can create an app profile config file by using the
+                      - code [ref=e678]: interactive
+                      - text: subcommand with the
+                      - code [ref=e679]: "--config-only"
+                      - text: flag.
+                    - code [ref=e683]:
+                      - generic [ref=e684]: palette pde app-profile create interactive --config-only
+                    - paragraph [ref=e685]:
+                      - text: The configuration file will be created in the $HOME directory, under the
+                      - code [ref=e686]: ~/.palette/pde/app-profiles/
+                      - text: folder.
+                - heading "InteractiveDirect link to Interactive" [level=4] [ref=e687]:
+                  - text: Interactive
+                  - link "Direct link to Interactive" [ref=e688] [cursor=pointer]:
+                    - /url: "#interactive"
+                    - text: "#"
+                - paragraph [ref=e689]:
+                  - text: Use the interactive subcommand to create an app profile in interactive mode. The
+                  - code [ref=e690]: interactive
+                  - text: subcommand supports the following flags.
+                - table [ref=e691]:
+                  - rowgroup [ref=e692]:
+                    - row "Short Flag Long Flag Description Type" [ref=e693]:
+                      - columnheader "Short Flag" [ref=e694]:
+                        - strong [ref=e695]: Short Flag
+                      - columnheader "Long Flag" [ref=e696]:
+                        - strong [ref=e697]: Long Flag
+                      - columnheader "Description" [ref=e698]:
+                        - strong [ref=e699]: Description
+                      - columnheader "Type" [ref=e700]:
+                        - strong [ref=e701]: Type
+                  - rowgroup [ref=e702]:
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e703]:
+                      - cell "-k" [ref=e704]:
+                        - code [ref=e705]: "-k"
+                      - cell "--encryption-passphrase" [ref=e706]:
+                        - code [ref=e707]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e708]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e709]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e710] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e711]
+                    - row "-o --config-only Generate configuration file only. This command will not proceed with installation. boolean" [ref=e712]:
+                      - cell "-o" [ref=e713]:
+                        - code [ref=e714]: "-o"
+                      - cell "--config-only" [ref=e715]:
+                        - code [ref=e716]: "--config-only"
+                      - cell "Generate configuration file only. This command will not proceed with installation." [ref=e717]
+                      - cell "boolean" [ref=e718]
+                    - row "-h --help Help for the interactive subcommand. -" [ref=e719]:
+                      - cell "-h" [ref=e720]:
+                        - code [ref=e721]: "-h"
+                      - cell "--help" [ref=e722]:
+                        - code [ref=e723]: "--help"
+                      - cell "Help for the interactive subcommand." [ref=e724]:
+                        - text: Help for the
+                        - code [ref=e725]: interactive
+                        - text: subcommand.
+                      - cell "-" [ref=e726]
+                - heading "DeleteDirect link to Delete" [level=3] [ref=e727]:
+                  - text: Delete
+                  - link "Direct link to Delete" [ref=e728] [cursor=pointer]:
+                    - /url: "#delete-1"
+                    - text: "#"
+                - paragraph [ref=e729]:
+                  - text: Use the
+                  - code [ref=e730]: delete
+                  - text: subcommand to delete an app profile. To delete an app profile, you must provide the name and version of the app profile. The
+                  - code [ref=e731]: delete
+                  - text: subcommand supports the following flags.
+                - table [ref=e732]:
+                  - rowgroup [ref=e733]:
+                    - row "Short Flag Long Flag Description Type" [ref=e734]:
+                      - columnheader "Short Flag" [ref=e735]:
+                        - strong [ref=e736]: Short Flag
+                      - columnheader "Long Flag" [ref=e737]:
+                        - strong [ref=e738]: Long Flag
+                      - columnheader "Description" [ref=e739]:
+                        - strong [ref=e740]: Description
+                      - columnheader "Type" [ref=e741]:
+                        - strong [ref=e742]: Type
+                  - rowgroup [ref=e743]:
+                    - row "- --name The name of the app profile. string" [ref=e744]:
+                      - cell "-" [ref=e745]
+                      - cell "--name" [ref=e746]:
+                        - code [ref=e747]: "--name"
+                      - cell "The name of the app profile." [ref=e748]
+                      - cell "string" [ref=e749]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e750]:
+                      - cell "-k" [ref=e751]:
+                        - code [ref=e752]: "-k"
+                      - cell "--encryption-passphrase" [ref=e753]:
+                        - code [ref=e754]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e755]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e756]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e757] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e758]
+                    - row "- --version The version of the app profile. string" [ref=e759]:
+                      - cell "-" [ref=e760]
+                      - cell "--version" [ref=e761]:
+                        - code [ref=e762]: "--version"
+                      - cell "The version of the app profile." [ref=e763]
+                      - cell "string" [ref=e764]
+                    - row "-h --help Help for the delete subcommand. -" [ref=e765]:
+                      - cell "-h" [ref=e766]:
+                        - code [ref=e767]: "-h"
+                      - cell "--help" [ref=e768]:
+                        - code [ref=e769]: "--help"
+                      - cell "Help for the delete subcommand." [ref=e770]:
+                        - text: Help for the
+                        - code [ref=e771]: delete
+                        - text: subcommand.
+                      - cell "-" [ref=e772]
+                - heading "DescribeDirect link to Describe" [level=3] [ref=e773]:
+                  - text: Describe
+                  - link "Direct link to Describe" [ref=e774] [cursor=pointer]:
+                    - /url: "#describe"
+                    - text: "#"
+                - paragraph [ref=e775]:
+                  - text: Use the
+                  - code [ref=e776]: describe
+                  - text: subcommand to describe an app profile. To describe an app profile, you must provide the name and version of the app profile. The
+                  - code [ref=e777]: describe
+                  - text: subcommand supports the following flags.
+                - table [ref=e778]:
+                  - rowgroup [ref=e779]:
+                    - row "Short Flag Long Flag Description Type" [ref=e780]:
+                      - columnheader "Short Flag" [ref=e781]:
+                        - strong [ref=e782]: Short Flag
+                      - columnheader "Long Flag" [ref=e783]:
+                        - strong [ref=e784]: Long Flag
+                      - columnheader "Description" [ref=e785]:
+                        - strong [ref=e786]: Description
+                      - columnheader "Type" [ref=e787]:
+                        - strong [ref=e788]: Type
+                  - rowgroup [ref=e789]:
+                    - row "- --name The name of the app profile. string" [ref=e790]:
+                      - cell "-" [ref=e791]
+                      - cell "--name" [ref=e792]:
+                        - code [ref=e793]: "--name"
+                      - cell "The name of the app profile." [ref=e794]
+                      - cell "string" [ref=e795]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e796]:
+                      - cell "-k" [ref=e797]:
+                        - code [ref=e798]: "-k"
+                      - cell "--encryption-passphrase" [ref=e799]:
+                        - code [ref=e800]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e801]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e802]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e803] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e804]
+                    - row "- --version The version of the app profile. string" [ref=e805]:
+                      - cell "-" [ref=e806]
+                      - cell "--version" [ref=e807]:
+                        - code [ref=e808]: "--version"
+                      - cell "The version of the app profile." [ref=e809]
+                      - cell "string" [ref=e810]
+                    - row "-h --help Help for the describe subcommand. -" [ref=e811]:
+                      - cell "-h" [ref=e812]:
+                        - code [ref=e813]: "-h"
+                      - cell "--help" [ref=e814]:
+                        - code [ref=e815]: "--help"
+                      - cell "Help for the describe subcommand." [ref=e816]:
+                        - text: Help for the
+                        - code [ref=e817]: describe
+                        - text: subcommand.
+                      - cell "-" [ref=e818]
+                - heading "ListDirect link to List" [level=3] [ref=e819]:
+                  - text: List
+                  - link "Direct link to List" [ref=e820] [cursor=pointer]:
+                    - /url: "#list-1"
+                    - text: "#"
+                - paragraph [ref=e821]:
+                  - text: Use the
+                  - code [ref=e822]: list
+                  - text: subcommand to list all app profiles. The
+                  - code [ref=e823]: list
+                  - text: subcommand supports the following flags.
+                - table [ref=e824]:
+                  - rowgroup [ref=e825]:
+                    - row "Short Flag Long Flag Description Type" [ref=e826]:
+                      - columnheader "Short Flag" [ref=e827]:
+                        - strong [ref=e828]: Short Flag
+                      - columnheader "Long Flag" [ref=e829]:
+                        - strong [ref=e830]: Long Flag
+                      - columnheader "Description" [ref=e831]:
+                        - strong [ref=e832]: Description
+                      - columnheader "Type" [ref=e833]:
+                        - strong [ref=e834]: Type
+                  - rowgroup [ref=e835]:
+                    - row "- --name-filter Filter the list of app profiles by providing a name. string" [ref=e836]:
+                      - cell "-" [ref=e837]
+                      - cell "--name-filter" [ref=e838]:
+                        - code [ref=e839]: "--name-filter"
+                      - cell "Filter the list of app profiles by providing a name." [ref=e840]
+                      - cell "string" [ref=e841]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e842]:
+                      - cell "-k" [ref=e843]:
+                        - code [ref=e844]: "-k"
+                      - cell "--encryption-passphrase" [ref=e845]:
+                        - code [ref=e846]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e847]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e848]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e849] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e850]
+                    - row "-h --help Help for the list subcommand. -" [ref=e851]:
+                      - cell "-h" [ref=e852]:
+                        - code [ref=e853]: "-h"
+                      - cell "--help" [ref=e854]:
+                        - code [ref=e855]: "--help"
+                      - cell "Help for the list subcommand." [ref=e856]:
+                        - text: Help for the
+                        - code [ref=e857]: list
+                        - text: subcommand.
+                      - cell "-" [ref=e858]
+                - heading "VersionsDirect link to Versions" [level=3] [ref=e859]:
+                  - text: Versions
+                  - link "Direct link to Versions" [ref=e860] [cursor=pointer]:
+                    - /url: "#versions"
+                    - text: "#"
+                - paragraph [ref=e861]:
+                  - text: Use the
+                  - code [ref=e862]: versions
+                  - text: subcommand to list all versions of an app profile. To list all versions of an app profile, you must provide the name of the app profile. The
+                  - code [ref=e863]: versions
+                  - text: subcommand supports the following flags.
+                - table [ref=e864]:
+                  - rowgroup [ref=e865]:
+                    - row "Short Flag Long Flag Description Type" [ref=e866]:
+                      - columnheader "Short Flag" [ref=e867]:
+                        - strong [ref=e868]: Short Flag
+                      - columnheader "Long Flag" [ref=e869]:
+                        - strong [ref=e870]: Long Flag
+                      - columnheader "Description" [ref=e871]:
+                        - strong [ref=e872]: Description
+                      - columnheader "Type" [ref=e873]:
+                        - strong [ref=e874]: Type
+                  - rowgroup [ref=e875]:
+                    - row "- --name The name of the app profile. string" [ref=e876]:
+                      - cell "-" [ref=e877]
+                      - cell "--name" [ref=e878]:
+                        - code [ref=e879]: "--name"
+                      - cell "The name of the app profile." [ref=e880]
+                      - cell "string" [ref=e881]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e882]:
+                      - cell "-k" [ref=e883]:
+                        - code [ref=e884]: "-k"
+                      - cell "--encryption-passphrase" [ref=e885]:
+                        - code [ref=e886]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e887]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e888]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e889] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e890]
+                    - row "-h --help Help for the versions subcommand. -" [ref=e891]:
+                      - cell "-h" [ref=e892]:
+                        - code [ref=e893]: "-h"
+                      - cell "--help" [ref=e894]:
+                        - code [ref=e895]: "--help"
+                      - cell "Help for the versions subcommand." [ref=e896]:
+                        - text: Help for the
+                        - code [ref=e897]: versions
+                        - text: subcommand.
+                      - cell "-" [ref=e898]
+                - heading "Cluster GroupDirect link to Cluster Group" [level=2] [ref=e899]:
+                  - text: Cluster Group
+                  - link "Direct link to Cluster Group" [ref=e900] [cursor=pointer]:
+                    - /url: "#cluster-group"
+                    - text: "#"
+                - paragraph [ref=e901]:
+                  - text: Use the
+                  - code [ref=e902]: cluster-group
+                  - text: command to change the cluster group that commands will target. You can also list all available clusters. The
+                  - code [ref=e903]: cluster-group
+                  - text: supports the following subcommands.
+                - list [ref=e904]:
+                  - listitem [ref=e905]:
+                    - paragraph [ref=e906]:
+                      - code [ref=e907]: list
+                      - text: "- List Palette Cluster Groups."
+                  - listitem [ref=e908]:
+                    - paragraph [ref=e909]:
+                      - code [ref=e910]: switch
+                      - text: "- Switch your active Palette Cluster Group."
+                - heading "ListDirect link to List" [level=3] [ref=e911]:
+                  - text: List
+                  - link "Direct link to List" [ref=e912] [cursor=pointer]:
+                    - /url: "#list-2"
+                    - text: "#"
+                - paragraph [ref=e913]:
+                  - text: Use the
+                  - code [ref=e914]: list
+                  - text: subcommand to list all Palette Cluster Groups. The
+                  - code [ref=e915]: list
+                  - text: subcommand supports the following flags.
+                - table [ref=e916]:
+                  - rowgroup [ref=e917]:
+                    - row "Short Flag Long Flag Description Type" [ref=e918]:
+                      - columnheader "Short Flag" [ref=e919]:
+                        - strong [ref=e920]: Short Flag
+                      - columnheader "Long Flag" [ref=e921]:
+                        - strong [ref=e922]: Long Flag
+                      - columnheader "Description" [ref=e923]:
+                        - strong [ref=e924]: Description
+                      - columnheader "Type" [ref=e925]:
+                        - strong [ref=e926]: Type
+                  - rowgroup [ref=e927]:
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e928]:
+                      - cell "-k" [ref=e929]:
+                        - code [ref=e930]: "-k"
+                      - cell "--encryption-passphrase" [ref=e931]:
+                        - code [ref=e932]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e933]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e934]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e935] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e936]
+                    - row "-h --help Help for the list subcommand." [ref=e937]:
+                      - cell "-h" [ref=e938]:
+                        - code [ref=e939]: "-h"
+                      - cell "--help" [ref=e940]:
+                        - code [ref=e941]: "--help"
+                      - cell "Help for the list subcommand." [ref=e942]:
+                        - text: Help for the
+                        - code [ref=e943]: list
+                        - text: subcommand.
+                      - cell [ref=e944]
+                - heading "SwitchDirect link to Switch" [level=3] [ref=e945]:
+                  - text: Switch
+                  - link "Direct link to Switch" [ref=e946] [cursor=pointer]:
+                    - /url: "#switch"
+                    - text: "#"
+                - paragraph [ref=e947]:
+                  - text: Use the
+                  - code [ref=e948]: switch
+                  - text: subcommand to switch your active cluster group. The
+                  - code [ref=e949]: switch
+                  - text: subcommand supports the following flags.
+                - table [ref=e950]:
+                  - rowgroup [ref=e951]:
+                    - row "Short Flag Long Flag Description Type" [ref=e952]:
+                      - columnheader "Short Flag" [ref=e953]:
+                        - strong [ref=e954]: Short Flag
+                      - columnheader "Long Flag" [ref=e955]:
+                        - strong [ref=e956]: Long Flag
+                      - columnheader "Description" [ref=e957]:
+                        - strong [ref=e958]: Description
+                      - columnheader "Type" [ref=e959]:
+                        - strong [ref=e960]: Type
+                  - rowgroup [ref=e961]:
+                    - row "- --name The name of the cluster group. string" [ref=e962]:
+                      - cell "-" [ref=e963]
+                      - cell "--name" [ref=e964]:
+                        - code [ref=e965]: "--name"
+                      - cell "The name of the cluster group." [ref=e966]
+                      - cell "string" [ref=e967]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e968]:
+                      - cell "-k" [ref=e969]:
+                        - code [ref=e970]: "-k"
+                      - cell "--encryption-passphrase" [ref=e971]:
+                        - code [ref=e972]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e973]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e974]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e975] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e976]
+                    - row "-h --help Help for the switch subcommand. -" [ref=e977]:
+                      - cell "-h" [ref=e978]:
+                        - code [ref=e979]: "-h"
+                      - cell "--help" [ref=e980]:
+                        - code [ref=e981]: "--help"
+                      - cell "Help for the switch subcommand." [ref=e982]:
+                        - text: Help for the
+                        - code [ref=e983]: switch
+                        - text: subcommand.
+                      - cell "-" [ref=e984]
+                - heading "RegistryDirect link to Registry" [level=2] [ref=e985]:
+                  - text: Registry
+                  - link "Direct link to Registry" [ref=e986] [cursor=pointer]:
+                    - /url: "#registry"
+                    - text: "#"
+                - paragraph [ref=e987]:
+                  - text: Use the
+                  - code [ref=e988]: registry
+                  - text: subcommand to manage Palette Registries for App Mode. The
+                  - code [ref=e989]: registry
+                  - text: subcommand supports the following subcommands.
+                - list [ref=e990]:
+                  - listitem [ref=e991]:
+                    - paragraph [ref=e992]:
+                      - code [ref=e993]: create
+                      - text: "- Create a Palette Registry."
+                  - listitem [ref=e994]:
+                    - paragraph [ref=e995]:
+                      - code [ref=e996]: delete
+                      - text: "- Delete a Palette Registry."
+                  - listitem [ref=e997]:
+                    - paragraph [ref=e998]:
+                      - code [ref=e999]: list
+                      - text: "- List Palette Registries."
+                - heading "CreateDirect link to Create" [level=3] [ref=e1000]:
+                  - text: Create
+                  - link "Direct link to Create" [ref=e1001] [cursor=pointer]:
+                    - /url: "#create-2"
+                    - text: "#"
+                - paragraph [ref=e1002]:
+                  - text: The
+                  - code [ref=e1003]: create
+                  - text: subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the subcommand
+                  - code [ref=e1004]: oci
+                  - text: or
+                  - code [ref=e1005]: helm
+                  - text: to specify the type of registry you want to create. The
+                  - code [ref=e1006]: create
+                  - text: subcommand supports the following subcommands.
+                - list [ref=e1007]:
+                  - listitem [ref=e1008]:
+                    - paragraph [ref=e1009]:
+                      - code [ref=e1010]: oci
+                      - text: "- Create an OCI registry. Use the following flags to create an OCI registry."
+                  - listitem [ref=e1011]:
+                    - paragraph [ref=e1012]:
+                      - code [ref=e1013]: helm
+                      - text: "- Create a Helm registry. Use the following flags to create a Helm registry."
+                - paragraph [ref=e1014]:
+                  - text: The following flags are supported by the
+                  - code [ref=e1015]: oci
+                  - text: and
+                  - code [ref=e1016]: helm
+                  - text: subcommands.
+                - table [ref=e1017]:
+                  - rowgroup [ref=e1018]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1019]:
+                      - columnheader "Short Flag" [ref=e1020]:
+                        - strong [ref=e1021]: Short Flag
+                      - columnheader "Long Flag" [ref=e1022]:
+                        - strong [ref=e1023]: Long Flag
+                      - columnheader "Description" [ref=e1024]:
+                        - strong [ref=e1025]: Description
+                      - columnheader "Type" [ref=e1026]:
+                        - strong [ref=e1027]: Type
+                  - rowgroup [ref=e1028]:
+                    - row "- --endpoint The endpoint of the registry. string" [ref=e1029]:
+                      - cell "-" [ref=e1030]
+                      - cell "--endpoint" [ref=e1031]:
+                        - code [ref=e1032]: "--endpoint"
+                      - cell "The endpoint of the registry." [ref=e1033]
+                      - cell "string" [ref=e1034]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1035]:
+                      - cell "-k" [ref=e1036]:
+                        - code [ref=e1037]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1038]:
+                        - code [ref=e1039]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1040]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1041]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1042] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1043]
+                    - row "-h --help Help for the oci or the helm subcommand. -" [ref=e1044]:
+                      - cell "-h" [ref=e1045]:
+                        - code [ref=e1046]: "-h"
+                      - cell "--help" [ref=e1047]:
+                        - code [ref=e1048]: "--help"
+                      - cell "Help for the oci or the helm subcommand." [ref=e1049]:
+                        - text: Help for the
+                        - code [ref=e1050]: oci
+                        - text: or the
+                        - code [ref=e1051]: helm
+                        - text: subcommand.
+                      - cell "-" [ref=e1052]
+                    - row "- --username The username of the OCI registry. string" [ref=e1053]:
+                      - cell "-" [ref=e1054]
+                      - cell "--username" [ref=e1055]:
+                        - code [ref=e1056]: "--username"
+                      - cell "The username of the OCI registry." [ref=e1057]
+                      - cell "string" [ref=e1058]
+                    - row "- --password The password of the OCI registry. string" [ref=e1059]:
+                      - cell "-" [ref=e1060]
+                      - cell "--password" [ref=e1061]:
+                        - code [ref=e1062]: "--password"
+                      - cell "The password of the OCI registry." [ref=e1063]
+                      - cell "string" [ref=e1064]
+                - paragraph [ref=e1065]: The following example shows how to create an OCI registry.
+                - generic [ref=e1067]:
+                  - code [ref=e1069]:
+                    - generic [ref=e1070]: palette pde registry create oci --endpoint https://harbor.internal.abc.org \
+                    - generic [ref=e1071]: "--name internal-packs --username harbor --password *********"
+                  - button "Toggle word wrap" [ref=e1073] [cursor=pointer]:
+                    - img [ref=e1074]
+                - heading "ListDirect link to List" [level=3] [ref=e1076]:
+                  - text: List
+                  - link "Direct link to List" [ref=e1077] [cursor=pointer]:
+                    - /url: "#list-3"
+                    - text: "#"
+                - paragraph [ref=e1078]:
+                  - text: The
+                  - code [ref=e1079]: list
+                  - text: subcommand lists all Palette Registries available in App Mode. The
+                  - code [ref=e1080]: list
+                  - text: subcommand supports the following flags.
+                - table [ref=e1081]:
+                  - rowgroup [ref=e1082]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1083]:
+                      - columnheader "Short Flag" [ref=e1084]:
+                        - strong [ref=e1085]: Short Flag
+                      - columnheader "Long Flag" [ref=e1086]:
+                        - strong [ref=e1087]: Long Flag
+                      - columnheader "Description" [ref=e1088]:
+                        - strong [ref=e1089]: Description
+                      - columnheader "Type" [ref=e1090]:
+                        - strong [ref=e1091]: Type
+                  - rowgroup [ref=e1092]:
+                    - row "- --type The type of registry. Allowed values are oci and helm. string" [ref=e1093]:
+                      - cell "-" [ref=e1094]
+                      - cell "--type" [ref=e1095]:
+                        - code [ref=e1096]: "--type"
+                      - cell "The type of registry. Allowed values are oci and helm." [ref=e1097]:
+                        - text: The type of registry. Allowed values are
+                        - code [ref=e1098]: oci
+                        - text: and
+                        - code [ref=e1099]: helm
+                        - text: .
+                      - cell "string" [ref=e1100]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1101]:
+                      - cell "-k" [ref=e1102]:
+                        - code [ref=e1103]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1104]:
+                        - code [ref=e1105]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1106]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1107]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1108] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1109]
+                    - row "-h --help Help for the list subcommand. -" [ref=e1110]:
+                      - cell "-h" [ref=e1111]:
+                        - code [ref=e1112]: "-h"
+                      - cell "--help" [ref=e1113]:
+                        - code [ref=e1114]: "--help"
+                      - cell "Help for the list subcommand." [ref=e1115]:
+                        - text: Help for the
+                        - code [ref=e1116]: list
+                        - text: subcommand.
+                      - cell "-" [ref=e1117]
+                - heading "DeleteDirect link to Delete" [level=3] [ref=e1118]:
+                  - text: Delete
+                  - link "Direct link to Delete" [ref=e1119] [cursor=pointer]:
+                    - /url: "#delete-2"
+                    - text: "#"
+                - paragraph [ref=e1120]:
+                  - text: The
+                  - code [ref=e1121]: delete
+                  - text: subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the type flag
+                  - code [ref=e1122]: "--type"
+                  - text: to specify the type of registry you want to delete. The
+                  - code [ref=e1123]: delete
+                  - text: subcommand supports the following flags.
+                - table [ref=e1124]:
+                  - rowgroup [ref=e1125]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1126]:
+                      - columnheader "Short Flag" [ref=e1127]:
+                        - strong [ref=e1128]: Short Flag
+                      - columnheader "Long Flag" [ref=e1129]:
+                        - strong [ref=e1130]: Long Flag
+                      - columnheader "Description" [ref=e1131]:
+                        - strong [ref=e1132]: Description
+                      - columnheader "Type" [ref=e1133]:
+                        - strong [ref=e1134]: Type
+                  - rowgroup [ref=e1135]:
+                    - row "- --name The name of the registry. string" [ref=e1136]:
+                      - cell "-" [ref=e1137]
+                      - cell "--name" [ref=e1138]:
+                        - code [ref=e1139]: "--name"
+                      - cell "The name of the registry." [ref=e1140]
+                      - cell "string" [ref=e1141]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1142]:
+                      - cell "-k" [ref=e1143]:
+                        - code [ref=e1144]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1145]:
+                        - code [ref=e1146]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1147]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1148]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1149] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1150]
+                    - row "- --type The type of registry. Allowed values are oci and helm. string" [ref=e1151]:
+                      - cell "-" [ref=e1152]
+                      - cell "--type" [ref=e1153]:
+                        - code [ref=e1154]: "--type"
+                      - cell "The type of registry. Allowed values are oci and helm." [ref=e1155]:
+                        - text: The type of registry. Allowed values are
+                        - code [ref=e1156]: oci
+                        - text: and
+                        - code [ref=e1157]: helm
+                        - text: .
+                      - cell "string" [ref=e1158]
+                    - row "-h --help Help for the delete subcommand. -" [ref=e1159]:
+                      - cell "-h" [ref=e1160]:
+                        - code [ref=e1161]: "-h"
+                      - cell "--help" [ref=e1162]:
+                        - code [ref=e1163]: "--help"
+                      - cell "Help for the delete subcommand." [ref=e1164]:
+                        - text: Help for the
+                        - code [ref=e1165]: delete
+                        - text: subcommand.
+                      - cell "-" [ref=e1166]
+                - heading "Virtual ClusterDirect link to Virtual Cluster" [level=2] [ref=e1167]:
+                  - text: Virtual Cluster
+                  - link "Direct link to Virtual Cluster" [ref=e1168] [cursor=pointer]:
+                    - /url: "#virtual-cluster"
+                    - text: "#"
+                - paragraph [ref=e1169]:
+                  - text: You can use the
+                  - code [ref=e1170]: virtual-cluster
+                  - text: subcommand to manage Palette Virtual Clusters. Below is a list of the supported subcommands you can use. Use the
+                  - code [ref=e1171]: "--help"
+                  - text: flag to learn more about each subcommand.
+                - list [ref=e1172]:
+                  - listitem [ref=e1173]:
+                    - paragraph [ref=e1174]:
+                      - code [ref=e1175]: create
+                      - text: "- Create a virtual cluster."
+                  - listitem [ref=e1176]:
+                    - paragraph [ref=e1177]:
+                      - code [ref=e1178]: delete
+                      - text: "- Delete a virtual cluster."
+                  - listitem [ref=e1179]:
+                    - paragraph [ref=e1180]:
+                      - code [ref=e1181]: download-kubeconfig
+                      - text: "- Download the kubeconfig for a virtual cluster."
+                  - listitem [ref=e1182]:
+                    - paragraph [ref=e1183]:
+                      - code [ref=e1184]: events
+                      - text: "- View events for a virtual cluster."
+                  - listitem [ref=e1185]:
+                    - paragraph [ref=e1186]:
+                      - code [ref=e1187]: lifecycle
+                      - text: "- Pause or resume a virtual cluster."
+                  - listitem [ref=e1188]:
+                    - paragraph [ref=e1189]:
+                      - code [ref=e1190]: list
+                      - text: "- List all virtual clusters."
+                  - listitem [ref=e1191]:
+                    - paragraph [ref=e1192]:
+                      - code [ref=e1193]: resize
+                      - text: "- Resize a virtual cluster."
+                - heading "CreateDirect link to Create" [level=3] [ref=e1194]:
+                  - text: Create
+                  - link "Direct link to Create" [ref=e1195] [cursor=pointer]:
+                    - /url: "#create-3"
+                    - text: "#"
+                - paragraph [ref=e1196]:
+                  - text: Use the
+                  - code [ref=e1197]: create
+                  - text: subcommand to create a virtual cluster. The
+                  - code [ref=e1198]: create
+                  - text: subcommand supports the following flags.
+                - table [ref=e1199]:
+                  - rowgroup [ref=e1200]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1201]:
+                      - columnheader "Short Flag" [ref=e1202]:
+                        - strong [ref=e1203]: Short Flag
+                      - columnheader "Long Flag" [ref=e1204]:
+                        - strong [ref=e1205]: Long Flag
+                      - columnheader "Description" [ref=e1206]:
+                        - strong [ref=e1207]: Description
+                      - columnheader "Type" [ref=e1208]:
+                        - strong [ref=e1209]: Type
+                  - rowgroup [ref=e1210]:
+                    - row "- --cluster-group-name The name of the Cluster Group. Defaults to the active cluster group. string" [ref=e1211]:
+                      - cell "-" [ref=e1212]
+                      - cell "--cluster-group-name" [ref=e1213]:
+                        - code [ref=e1214]: "--cluster-group-name"
+                      - cell "The name of the Cluster Group. Defaults to the active cluster group." [ref=e1215]
+                      - cell "string" [ref=e1216]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1217]:
+                      - cell "-k" [ref=e1218]:
+                        - code [ref=e1219]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1220]:
+                        - code [ref=e1221]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1222]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1223]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1224] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1225]
+                    - row "- --cpu CPUs (optional). Defaults to 4 cores. (default 4) int" [ref=e1226]:
+                      - cell "-" [ref=e1227]
+                      - cell "--cpu" [ref=e1228]:
+                        - code [ref=e1229]: "--cpu"
+                      - cell "CPUs (optional). Defaults to 4 cores. (default 4)" [ref=e1230]
+                      - cell "int" [ref=e1231]
+                    - row "- --memory Memory (GB) (optional). Defaults to 4GB. (default 4) int" [ref=e1232]:
+                      - cell "-" [ref=e1233]
+                      - cell "--memory" [ref=e1234]:
+                        - code [ref=e1235]: "--memory"
+                      - cell "Memory (GB) (optional). Defaults to 4GB. (default 4)" [ref=e1236]
+                      - cell "int" [ref=e1237]
+                    - row "- --name The name of the Virtual Cluster. string" [ref=e1238]:
+                      - cell "-" [ref=e1239]
+                      - cell "--name" [ref=e1240]:
+                        - code [ref=e1241]: "--name"
+                      - cell "The name of the Virtual Cluster." [ref=e1242]
+                      - cell "string" [ref=e1243]
+                    - row "- --storage Storage (GB) (optional). Defaults to 4GB. (default 4) int" [ref=e1244]:
+                      - cell "-" [ref=e1245]
+                      - cell "--storage" [ref=e1246]:
+                        - code [ref=e1247]: "--storage"
+                      - cell "Storage (GB) (optional). Defaults to 4GB. (default 4)" [ref=e1248]
+                      - cell "int" [ref=e1249]
+                    - row "- --tags A list of tags separated by commas (optional) strings" [ref=e1250]:
+                      - cell "-" [ref=e1251]
+                      - cell "--tags" [ref=e1252]:
+                        - code [ref=e1253]: "--tags"
+                      - cell "A list of tags separated by commas (optional)" [ref=e1254]
+                      - cell "strings" [ref=e1255]
+                    - row "-h --help Help for the create subcommand. -" [ref=e1256]:
+                      - cell "-h" [ref=e1257]:
+                        - code [ref=e1258]: "-h"
+                      - cell "--help" [ref=e1259]:
+                        - code [ref=e1260]: "--help"
+                      - cell "Help for the create subcommand." [ref=e1261]:
+                        - text: Help for the
+                        - code [ref=e1262]: create
+                        - text: subcommand.
+                      - cell "-" [ref=e1263]
+                - paragraph [ref=e1264]: Example
+                - generic [ref=e1266]:
+                  - code [ref=e1268]:
+                    - generic [ref=e1269]: palette pde virtual-cluster create --cpu 4 --memory 4 --storage 4 --name dev-cluster --tags "environment:dev,cli,qa-team"
+                  - button "Toggle word wrap" [ref=e1271] [cursor=pointer]:
+                    - img [ref=e1272]
+                - heading "DeleteDirect link to Delete" [level=3] [ref=e1274]:
+                  - text: Delete
+                  - link "Direct link to Delete" [ref=e1275] [cursor=pointer]:
+                    - /url: "#delete-3"
+                    - text: "#"
+                - paragraph [ref=e1276]:
+                  - text: Use the
+                  - code [ref=e1277]: delete
+                  - text: subcommand to delete a Palette Virtual Cluster. The
+                  - code [ref=e1278]: delete
+                  - text: subcommand requires the name of the Virtual Cluster to delete. Use the
+                  - code [ref=e1279]: "--name"
+                  - text: flag to specify the name of the Virtual Cluster to delete.
+                - table [ref=e1280]:
+                  - rowgroup [ref=e1281]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1282]:
+                      - columnheader "Short Flag" [ref=e1283]:
+                        - strong [ref=e1284]: Short Flag
+                      - columnheader "Long Flag" [ref=e1285]:
+                        - strong [ref=e1286]: Long Flag
+                      - columnheader "Description" [ref=e1287]:
+                        - strong [ref=e1288]: Description
+                      - columnheader "Type" [ref=e1289]:
+                        - strong [ref=e1290]: Type
+                  - rowgroup [ref=e1291]:
+                    - row "- --name The name of the Virtual Cluster. string" [ref=e1292]:
+                      - cell "-" [ref=e1293]
+                      - cell "--name" [ref=e1294]:
+                        - code [ref=e1295]: "--name"
+                      - cell "The name of the Virtual Cluster." [ref=e1296]
+                      - cell "string" [ref=e1297]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1298]:
+                      - cell "-k" [ref=e1299]:
+                        - code [ref=e1300]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1301]:
+                        - code [ref=e1302]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1303]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1304]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1305] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1306]
+                    - row "-h --help Help for the delete subcommand. -" [ref=e1307]:
+                      - cell "-h" [ref=e1308]:
+                        - code [ref=e1309]: "-h"
+                      - cell "--help" [ref=e1310]:
+                        - code [ref=e1311]: "--help"
+                      - cell "Help for the delete subcommand." [ref=e1312]:
+                        - text: Help for the
+                        - code [ref=e1313]: delete
+                        - text: subcommand.
+                      - cell "-" [ref=e1314]
+                - heading "Download KubeconfigDirect link to Download Kubeconfig" [level=3] [ref=e1315]:
+                  - text: Download Kubeconfig
+                  - link "Direct link to Download Kubeconfig" [ref=e1316] [cursor=pointer]:
+                    - /url: "#download-kubeconfig"
+                    - text: "#"
+                - paragraph [ref=e1317]:
+                  - text: Use the
+                  - code [ref=e1318]: download-kubeconfig
+                  - text: subcommand to download the kubeconfig for virtual cluster. The
+                  - code [ref=e1319]: download-kubeconfig
+                  - text: subcommand requires the name of the Virtual Cluster. Use the
+                  - code [ref=e1320]: "--name"
+                  - text: flag to specify the name of the virtual cluster.
+                - table [ref=e1321]:
+                  - rowgroup [ref=e1322]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1323]:
+                      - columnheader "Short Flag" [ref=e1324]:
+                        - strong [ref=e1325]: Short Flag
+                      - columnheader "Long Flag" [ref=e1326]:
+                        - strong [ref=e1327]: Long Flag
+                      - columnheader "Description" [ref=e1328]:
+                        - strong [ref=e1329]: Description
+                      - columnheader "Type" [ref=e1330]:
+                        - strong [ref=e1331]: Type
+                  - rowgroup [ref=e1332]:
+                    - row "- --name The name of the Virtual Cluster. string" [ref=e1333]:
+                      - cell "-" [ref=e1334]
+                      - cell "--name" [ref=e1335]:
+                        - code [ref=e1336]: "--name"
+                      - cell "The name of the Virtual Cluster." [ref=e1337]
+                      - cell "string" [ref=e1338]
+                    - row "- --path Download path for Kubeconfig file (optional). Default is $HOME/.kube/<virtual-cluster-name>.conf string" [ref=e1339]:
+                      - cell "-" [ref=e1340]
+                      - cell "--path" [ref=e1341]:
+                        - code [ref=e1342]: "--path"
+                      - cell "Download path for Kubeconfig file (optional). Default is $HOME/.kube/<virtual-cluster-name>.conf" [ref=e1343]:
+                        - text: Download path for Kubeconfig file (optional). Default is
+                        - code [ref=e1344]: $HOME/.kube/<virtual-cluster-name>.conf
+                      - cell "string" [ref=e1345]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1346]:
+                      - cell "-k" [ref=e1347]:
+                        - code [ref=e1348]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1349]:
+                        - code [ref=e1350]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1351]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1352]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1353] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1354]
+                    - row "-h --help Help for the download-kubeconfig subcommand. -" [ref=e1355]:
+                      - cell "-h" [ref=e1356]:
+                        - code [ref=e1357]: "-h"
+                      - cell "--help" [ref=e1358]:
+                        - code [ref=e1359]: "--help"
+                      - cell "Help for the download-kubeconfig subcommand." [ref=e1360]:
+                        - text: Help for the
+                        - code [ref=e1361]: download-kubeconfig
+                        - text: subcommand.
+                      - cell "-" [ref=e1362]
+                - paragraph [ref=e1363]: Example
+                - generic [ref=e1365]:
+                  - code [ref=e1367]:
+                    - generic [ref=e1368]: palette pde virtual-cluster download-kubeconfig --name cli-cluster --path ~/projects/spectro-cloud/kubeconfig/cli-cluster.config
+                  - button "Toggle word wrap" [ref=e1370] [cursor=pointer]:
+                    - img [ref=e1371]
+                - generic [ref=e1374]:
+                  - code [ref=e1376]:
+                    - generic [ref=e1377]: Downloaded kubeconfig for Virtual Cluster cli-cluster
+                    - generic [ref=e1378]: "Kubeconfig location: /Users/demo/projects/spectro-cloud/kubeconfig/cli-cluster.config"
+                  - button "Toggle word wrap" [ref=e1380] [cursor=pointer]:
+                    - img [ref=e1381]
+                - heading "EventsDirect link to Events" [level=3] [ref=e1383]:
+                  - text: Events
+                  - link "Direct link to Events" [ref=e1384] [cursor=pointer]:
+                    - /url: "#events"
+                    - text: "#"
+                - paragraph [ref=e1385]:
+                  - text: Use the
+                  - code [ref=e1386]: events
+                  - text: subcommand to view event logs for a virtual cluster. The
+                  - code [ref=e1387]: events
+                  - text: subcommand requires the name of the Virtual Cluster. Use the
+                  - code [ref=e1388]: "--name"
+                  - text: flag to specify the name of the virtual cluster.
+                - table [ref=e1389]:
+                  - rowgroup [ref=e1390]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1391]:
+                      - columnheader "Short Flag" [ref=e1392]:
+                        - strong [ref=e1393]: Short Flag
+                      - columnheader "Long Flag" [ref=e1394]:
+                        - strong [ref=e1395]: Long Flag
+                      - columnheader "Description" [ref=e1396]:
+                        - strong [ref=e1397]: Description
+                      - columnheader "Type" [ref=e1398]:
+                        - strong [ref=e1399]: Type
+                  - rowgroup [ref=e1400]:
+                    - row "- --name The name of the Virtual Cluster. string" [ref=e1401]:
+                      - cell "-" [ref=e1402]
+                      - cell "--name" [ref=e1403]:
+                        - code [ref=e1404]: "--name"
+                      - cell "The name of the Virtual Cluster." [ref=e1405]
+                      - cell "string" [ref=e1406]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1407]:
+                      - cell "-k" [ref=e1408]:
+                        - code [ref=e1409]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1410]:
+                        - code [ref=e1411]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1412]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1413]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1414] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1415]
+                    - row "- --limit Event limit (optional). Maximum number of events to return. (default 5) int" [ref=e1416]:
+                      - cell "-" [ref=e1417]
+                      - cell "--limit" [ref=e1418]:
+                        - code [ref=e1419]: "--limit"
+                      - cell "Event limit (optional). Maximum number of events to return. (default 5)" [ref=e1420]
+                      - cell "int" [ref=e1421]
+                    - row "- --max-age Maximum event age in minutes (optional) (default -1) int" [ref=e1422]:
+                      - cell "-" [ref=e1423]
+                      - cell "--max-age" [ref=e1424]:
+                        - code [ref=e1425]: "--max-age"
+                      - cell "Maximum event age in minutes (optional) (default -1)" [ref=e1426]
+                      - cell "int" [ref=e1427]
+                    - 'row "- --severity Event severity (optional). One or more of: [ Normal, Error ], comma-separated. string" [ref=e1428]':
+                      - cell "-" [ref=e1429]
+                      - cell "--severity" [ref=e1430]:
+                        - code [ref=e1431]: "--severity"
+                      - 'cell "Event severity (optional). One or more of: [ Normal, Error ], comma-separated." [ref=e1432]'
+                      - cell "string" [ref=e1433]
+                    - row "-h --help Help for the events subcommand. -" [ref=e1434]:
+                      - cell "-h" [ref=e1435]:
+                        - code [ref=e1436]: "-h"
+                      - cell "--help" [ref=e1437]:
+                        - code [ref=e1438]: "--help"
+                      - cell "Help for the events subcommand." [ref=e1439]:
+                        - text: Help for the
+                        - code [ref=e1440]: events
+                        - text: subcommand.
+                      - cell "-" [ref=e1441]
+                - heading "LifecycleDirect link to Lifecycle" [level=3] [ref=e1442]:
+                  - text: Lifecycle
+                  - link "Direct link to Lifecycle" [ref=e1443] [cursor=pointer]:
+                    - /url: "#lifecycle"
+                    - text: "#"
+                - paragraph [ref=e1444]:
+                  - text: Use the
+                  - code [ref=e1445]: lifecycle
+                  - text: subcommand to pause or resume a virtual cluster. The
+                  - code [ref=e1446]: lifecycle
+                  - text: subcommand requires the name of the virtual cluster and the action type. Use the
+                  - code [ref=e1447]: "--name"
+                  - text: flag to specify the name of the virtual cluster, and the
+                  - code [ref=e1448]: "--action"
+                  - text: flag to specify the action type. The action type can be
+                  - code [ref=e1449]: pause
+                  - text: or
+                  - code [ref=e1450]: resume
+                  - text: .
+                - table [ref=e1451]:
+                  - rowgroup [ref=e1452]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1453]:
+                      - columnheader "Short Flag" [ref=e1454]:
+                        - strong [ref=e1455]: Short Flag
+                      - columnheader "Long Flag" [ref=e1456]:
+                        - strong [ref=e1457]: Long Flag
+                      - columnheader "Description" [ref=e1458]:
+                        - strong [ref=e1459]: Description
+                      - columnheader "Type" [ref=e1460]:
+                        - strong [ref=e1461]: Type
+                  - rowgroup [ref=e1462]:
+                    - row "- --name The name of the Virtual Cluster. string" [ref=e1463]:
+                      - cell "-" [ref=e1464]
+                      - cell "--name" [ref=e1465]:
+                        - code [ref=e1466]: "--name"
+                      - cell "The name of the Virtual Cluster." [ref=e1467]
+                      - cell "string" [ref=e1468]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1469]:
+                      - cell "-k" [ref=e1470]:
+                        - code [ref=e1471]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1472]:
+                        - code [ref=e1473]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1474]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1475]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1476] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1477]
+                    - row "- --action The action type. Allowed values are pause and resume. string" [ref=e1478]:
+                      - cell "-" [ref=e1479]
+                      - cell "--action" [ref=e1480]:
+                        - code [ref=e1481]: "--action"
+                      - cell "The action type. Allowed values are pause and resume." [ref=e1482]:
+                        - text: The action type. Allowed values are
+                        - code [ref=e1483]: pause
+                        - text: and
+                        - code [ref=e1484]: resume
+                        - text: .
+                      - cell "string" [ref=e1485]
+                    - row "-h --help Help for the lifecycle subcommand. -" [ref=e1486]:
+                      - cell "-h" [ref=e1487]:
+                        - code [ref=e1488]: "-h"
+                      - cell "--help" [ref=e1489]:
+                        - code [ref=e1490]: "--help"
+                      - cell "Help for the lifecycle subcommand." [ref=e1491]:
+                        - text: Help for the
+                        - code [ref=e1492]: lifecycle
+                        - text: subcommand.
+                      - cell "-" [ref=e1493]
+                - paragraph [ref=e1494]: Example
+                - generic [ref=e1496]:
+                  - code [ref=e1498]:
+                    - generic [ref=e1499]: palette pde virtual-cluster lifecycle --name cli-cluster --action pause
+                  - button "Toggle word wrap" [ref=e1501] [cursor=pointer]:
+                    - img [ref=e1502]
+                - generic [ref=e1505]:
+                  - code [ref=e1507]:
+                    - generic [ref=e1508]: palette pde virtual-cluster lifecycle --name cli-cluster --action resume
+                  - button "Toggle word wrap" [ref=e1510] [cursor=pointer]:
+                    - img [ref=e1511]
+                - heading "ListDirect link to List" [level=3] [ref=e1513]:
+                  - text: List
+                  - link "Direct link to List" [ref=e1514] [cursor=pointer]:
+                    - /url: "#list-4"
+                    - text: "#"
+                - paragraph [ref=e1515]:
+                  - text: Use the
+                  - code [ref=e1516]: list
+                  - text: subcommand to list all available virtual clusters. The
+                  - code [ref=e1517]: list
+                  - text: subcommand supports the following flags.
+                - table [ref=e1518]:
+                  - rowgroup [ref=e1519]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1520]:
+                      - columnheader "Short Flag" [ref=e1521]:
+                        - strong [ref=e1522]: Short Flag
+                      - columnheader "Long Flag" [ref=e1523]:
+                        - strong [ref=e1524]: Long Flag
+                      - columnheader "Description" [ref=e1525]:
+                        - strong [ref=e1526]: Description
+                      - columnheader "Type" [ref=e1527]:
+                        - strong [ref=e1528]: Type
+                  - rowgroup [ref=e1529]:
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1530]:
+                      - cell "-k" [ref=e1531]:
+                        - code [ref=e1532]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1533]:
+                        - code [ref=e1534]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1535]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1536]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1537] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1538]
+                    - row "-h --help Help for the list subcommand." [ref=e1539]:
+                      - cell "-h" [ref=e1540]:
+                        - code [ref=e1541]: "-h"
+                      - cell "--help" [ref=e1542]:
+                        - code [ref=e1543]: "--help"
+                      - cell "Help for the list subcommand." [ref=e1544]:
+                        - text: Help for the
+                        - code [ref=e1545]: list
+                        - text: subcommand.
+                      - cell [ref=e1546]
+                - heading "ResizeDirect link to Resize" [level=3] [ref=e1547]:
+                  - text: Resize
+                  - link "Direct link to Resize" [ref=e1548] [cursor=pointer]:
+                    - /url: "#resize"
+                    - text: "#"
+                - paragraph [ref=e1549]:
+                  - text: Use the
+                  - code [ref=e1550]: resize
+                  - text: subcommand to resize a virtual cluster. The
+                  - code [ref=e1551]: resize
+                  - text: subcommand requires the name of the virtual cluster and the new size. Use the
+                  - code [ref=e1552]: "--name"
+                  - text: flag to specify the name of the virtual cluster, and the
+                  - code [ref=e1553]: "--size"
+                  - text: flag to specify the new size.
+                - table [ref=e1554]:
+                  - rowgroup [ref=e1555]:
+                    - row "Short Flag Long Flag Description Type" [ref=e1556]:
+                      - columnheader "Short Flag" [ref=e1557]:
+                        - strong [ref=e1558]: Short Flag
+                      - columnheader "Long Flag" [ref=e1559]:
+                        - strong [ref=e1560]: Long Flag
+                      - columnheader "Description" [ref=e1561]:
+                        - strong [ref=e1562]: Description
+                      - columnheader "Type" [ref=e1563]:
+                        - strong [ref=e1564]: Type
+                  - rowgroup [ref=e1565]:
+                    - row "- --name The name of the virtual cluster. string" [ref=e1566]:
+                      - cell "-" [ref=e1567]
+                      - cell "--name" [ref=e1568]:
+                        - code [ref=e1569]: "--name"
+                      - cell "The name of the virtual cluster." [ref=e1570]
+                      - cell "string" [ref=e1571]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e1572]:
+                      - cell "-k" [ref=e1573]:
+                        - code [ref=e1574]: "-k"
+                      - cell "--encryption-passphrase" [ref=e1575]:
+                        - code [ref=e1576]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e1577]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e1578]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e1579] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e1580]
+                    - row "- --cpu CPUs (optional). Defaults to 4 cores. (default 4) int" [ref=e1581]:
+                      - cell "-" [ref=e1582]
+                      - cell "--cpu" [ref=e1583]:
+                        - code [ref=e1584]: "--cpu"
+                      - cell "CPUs (optional). Defaults to 4 cores. (default 4)" [ref=e1585]
+                      - cell "int" [ref=e1586]
+                    - row "- --memory Memory (GB) (optional). Defaults to 4GB. (default 4) int" [ref=e1587]:
+                      - cell "-" [ref=e1588]
+                      - cell "--memory" [ref=e1589]:
+                        - code [ref=e1590]: "--memory"
+                      - cell "Memory (GB) (optional). Defaults to 4GB. (default 4)" [ref=e1591]
+                      - cell "int" [ref=e1592]
+                    - row "- --storage Storage (GB) (optional). Defaults to 4GB. (default 4) int" [ref=e1593]:
+                      - cell "-" [ref=e1594]
+                      - cell "--storage" [ref=e1595]:
+                        - code [ref=e1596]: "--storage"
+                      - cell "Storage (GB) (optional). Defaults to 4GB. (default 4)" [ref=e1597]
+                      - cell "int" [ref=e1598]
+                    - row "-h --help Help for the resize subcommand. -" [ref=e1599]:
+                      - cell "-h" [ref=e1600]:
+                        - code [ref=e1601]: "-h"
+                      - cell "--help" [ref=e1602]:
+                        - code [ref=e1603]: "--help"
+                      - cell "Help for the resize subcommand." [ref=e1604]:
+                        - text: Help for the
+                        - code [ref=e1605]: resize
+                        - text: subcommand.
+                      - cell "-" [ref=e1606]
+                - paragraph [ref=e1607]: Example
+                - generic [ref=e1609]:
+                  - code [ref=e1611]:
+                    - generic [ref=e1612]: palette pde virtual-cluster resize --name cli-cluster --cpu 4 --memory 4 --storage 4
+                  - button "Toggle word wrap" [ref=e1614] [cursor=pointer]:
+                    - img [ref=e1615]
+                - code [ref=e1620]:
+                  - generic [ref=e1621]: Resized Virtual Cluster cli-cluster
+              - generic [ref=e1622]:
+                - generic [ref=e1624]:
+                  - text: "Tags:"
+                  - list [ref=e1625]:
+                    - listitem [ref=e1626]:
+                      - link "palette-cli" [ref=e1627] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e1630] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/commands/pde.md
+                  - img [ref=e1631]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1635]:
+              - link "Previous « PCG" [ref=e1636] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/pcg/
+                - generic [ref=e1637]: Previous
+                - generic [ref=e1638]: « PCG
+              - link "Next Project »" [ref=e1639] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/project/
+                - generic [ref=e1640]: Next
+                - generic [ref=e1641]: Project »
+          - list [ref=e1644]:
+            - listitem [ref=e1645]:
+              - link "Subcommands" [ref=e1646] [cursor=pointer]:
+                - /url: "#subcommands"
+            - listitem [ref=e1647]:
+              - link "Prerequisites" [ref=e1648] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1649]:
+              - link "App" [ref=e1650] [cursor=pointer]:
+                - /url: "#app"
+              - list [ref=e1651]:
+                - listitem [ref=e1652]:
+                  - link "Create" [ref=e1653] [cursor=pointer]:
+                    - /url: "#create"
+                - listitem [ref=e1654]:
+                  - link "Delete" [ref=e1655] [cursor=pointer]:
+                    - /url: "#delete"
+                - listitem [ref=e1656]:
+                  - link "List" [ref=e1657] [cursor=pointer]:
+                    - /url: "#list"
+                - listitem [ref=e1658]:
+                  - link "Update" [ref=e1659] [cursor=pointer]:
+                    - /url: "#update"
+            - listitem [ref=e1660]:
+              - link "App Profile" [ref=e1661] [cursor=pointer]:
+                - /url: "#app-profile"
+              - list [ref=e1662]:
+                - listitem [ref=e1663]:
+                  - link "Create" [ref=e1664] [cursor=pointer]:
+                    - /url: "#create-1"
+                - listitem [ref=e1665]:
+                  - link "Delete" [ref=e1666] [cursor=pointer]:
+                    - /url: "#delete-1"
+                - listitem [ref=e1667]:
+                  - link "Describe" [ref=e1668] [cursor=pointer]:
+                    - /url: "#describe"
+                - listitem [ref=e1669]:
+                  - link "List" [ref=e1670] [cursor=pointer]:
+                    - /url: "#list-1"
+                - listitem [ref=e1671]:
+                  - link "Versions" [ref=e1672] [cursor=pointer]:
+                    - /url: "#versions"
+            - listitem [ref=e1673]:
+              - link "Cluster Group" [ref=e1674] [cursor=pointer]:
+                - /url: "#cluster-group"
+              - list [ref=e1675]:
+                - listitem [ref=e1676]:
+                  - link "List" [ref=e1677] [cursor=pointer]:
+                    - /url: "#list-2"
+                - listitem [ref=e1678]:
+                  - link "Switch" [ref=e1679] [cursor=pointer]:
+                    - /url: "#switch"
+            - listitem [ref=e1680]:
+              - link "Registry" [ref=e1681] [cursor=pointer]:
+                - /url: "#registry"
+              - list [ref=e1682]:
+                - listitem [ref=e1683]:
+                  - link "Create" [ref=e1684] [cursor=pointer]:
+                    - /url: "#create-2"
+                - listitem [ref=e1685]:
+                  - link "List" [ref=e1686] [cursor=pointer]:
+                    - /url: "#list-3"
+                - listitem [ref=e1687]:
+                  - link "Delete" [ref=e1688] [cursor=pointer]:
+                    - /url: "#delete-2"
+            - listitem [ref=e1689]:
+              - link "Virtual Cluster" [ref=e1690] [cursor=pointer]:
+                - /url: "#virtual-cluster"
+              - list [ref=e1691]:
+                - listitem [ref=e1692]:
+                  - link "Create" [ref=e1693] [cursor=pointer]:
+                    - /url: "#create-3"
+                - listitem [ref=e1694]:
+                  - link "Delete" [ref=e1695] [cursor=pointer]:
+                    - /url: "#delete-3"
+                - listitem [ref=e1696]:
+                  - link "Download Kubeconfig" [ref=e1697] [cursor=pointer]:
+                    - /url: "#download-kubeconfig"
+                - listitem [ref=e1698]:
+                  - link "Events" [ref=e1699] [cursor=pointer]:
+                    - /url: "#events"
+                - listitem [ref=e1700]:
+                  - link "Lifecycle" [ref=e1701] [cursor=pointer]:
+                    - /url: "#lifecycle"
+                - listitem [ref=e1702]:
+                  - link "List" [ref=e1703] [cursor=pointer]:
+                    - /url: "#list-4"
+                - listitem [ref=e1704]:
+                  - link "Resize" [ref=e1705] [cursor=pointer]:
+                    - /url: "#resize"
+  - button "Project Logo Ask AI" [ref=e1706] [cursor=pointer]:
+    - generic [ref=e1709]:
+      - img "Project Logo" [ref=e1710]
+      - paragraph [ref=e1711]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
