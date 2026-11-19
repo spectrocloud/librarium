@@ -19,8 +19,8 @@ applications to write to `syslog` and configure your `syslog` daemon to direct t
 do this vary by application, but the log entries must conform to the expected schema. In addition, you can also direct
 Palette agent's logs to another file if you want to collect the logs in a different file.
 
-By default, you can view one year's worth of audit logs in Local UI. Log files past the one year mark will be rotated
-out and archived. You can still download your log files from any period, but they will not be viewable in Local UI.
+By default, Local UI displays one year's worth of audit logs. After one year, log files are rotated out and archived.
+You can download archived log files that are less than three years old, but Local UI does not display them.
 
 ### Prerequisites
 
@@ -89,7 +89,7 @@ out and archived. You can still download your log files from any period, but the
    Ensure your logs follow the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain
    the following keys: `edgeHostId`, `contentMsg`, `action`, `actor`, `actorType`, `resourceId`, `resourceName`,
    `resourceKind`. If your log entries do not follow the RFC 5424 Syslog protocol, or do not contain the necessary keys,
-   they will still be logged, but will not show up in Local UI.
+   they are still logged, but Local UI does not display them.
 
 </TabItem>
 
@@ -153,8 +153,8 @@ These files include the log entries that Local UI does not display.
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. From the left main menu, select **Diagnostics**, and then select the **Audit** tab. You can view all audit log
-   entries on this page. Local UI displays log entries dated up to one year ago.
+2. From the left main menu, select **Diagnostics**, and then select the **Audit** tab. The tab lists the audit log
+   entries from the past year.
 
    :::info
 
