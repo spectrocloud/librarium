@@ -185,7 +185,7 @@ The **Users** tab is on the **Users** page.
 | **Control**           | **Action**                                                                       |
 | --------------------- | -------------------------------------------------------------------------------- |
 | **Everyone**          | Lists every person.                                                              |
-| **Not signed in yet** | Lists the people who got access before their first sign-in.                      |
+| **Not signed in yet** | Lists the people who have access but have not signed in yet.                     |
 | **Add User**          | Opens the **Add user** wizard.                                                   |
 | **Manage**            | Opens the **Manage user** drawer.                                                |
 | **Set password**      | Opens the **Set a password for** dialog, titled with the person's email address. |
