@@ -56,15 +56,15 @@ A request without a permission it needs is refused with `403`. The message names
 The request body is a JSON array of row objects, with one object for each user. The **CSV column** header gives the
 column name to use when you convert a CSV file. For the conversion rules, refer to [CSV Conversion](#csv-conversion).
 
-| **JSON key** | **CSV column** | **Required** | **Value and rules**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ------------ | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `email`      | `email`        | Yes          | Trimmed and lowercased. Must be a valid address of at most 254 characters. A row without an email is invalid. The rest of the file still runs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `firstName`  | `first_name`   | No           | Trimmed. At most 255 characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `lastName`   | `last_name`    | No           | Trimmed. At most 255 characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `groups`     | `groups`       | No           | An array of group names. If the key is missing or the array is empty, the user joins no groups. A reserved group name is invalid. An unknown group is invalid, unless the request has `createMissingGroups=true`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `roles`      | `roles`        | No           | An array of role entries. Each entry is an object with a `role` and an optional `workspace`. The roles are `operator`, `workspace-admin`, and `platform-admin`. The display names, such as `workspace administrator`, also work. An `operator` or `workspace-admin` entry must name a workspace that exists, such as `default-workspace`. A `platform-admin` entry must not name a workspace. A role can appear in more than one entry, each with its own workspace. The user gets one grant for that role over all of those workspaces. A repeated entry adds nothing. An unknown role, an entry with no role, or an entry that breaks a workspace rule makes the whole row invalid. A row with no roles adds the user with no workspace access. |
-| `status`     | `status`       | No           | `active` (default) or `inactive`. Any other value is invalid.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `password`   | `password`     | Yes          | Used exactly as written. Must be 15 to 64 characters, with at least one uppercase letter, one lowercase letter, one digit, and one special character. Set as a temporary password. The user must change it at the first sign-in. A row for a new user without a password is invalid.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **JSON key** | **CSV column** | **Required** | **Value and rules**                                                                                                                                                                                                                                                                  |
+| ------------ | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `email`      | `email`        | Yes          | Trimmed and lowercased. Must be a valid address of at most 254 characters. A row without an email is invalid. The rest of the file still runs.                                                                                                                                       |
+| `firstName`  | `first_name`   | No           | Trimmed. At most 255 characters.                                                                                                                                                                                                                                                     |
+| `lastName`   | `last_name`    | No           | Trimmed. At most 255 characters.                                                                                                                                                                                                                                                     |
+| `groups`     | `groups`       | No           | An array of group names. If the key is missing or the array is empty, the user joins no groups. A reserved group name is invalid. An unknown group is invalid, unless the request has `createMissingGroups=true`.                                                                    |
+| `roles`      | `roles`        | No           | An array of role entries. Each entry is an object with a `role` and an optional `workspace`. For the entry rules, refer to [Role Entries](#role-entries). A row with no roles adds the user with no workspace access.                                                                |
+| `status`     | `status`       | No           | `active` (default) or `inactive`. Any other value is invalid.                                                                                                                                                                                                                        |
+| `password`   | `password`     | Yes          | Used exactly as written. Must be 15 to 64 characters, with at least one uppercase letter, one lowercase letter, one digit, and one special character. Set as a temporary password. The user must change it at the first sign-in. A row for a new user without a password is invalid. |
 
 The body has these rules:
 
@@ -75,6 +75,22 @@ The body has these rules:
 - `groups` must be an array of strings, and `roles` must be an array of objects.
 
 - A row that fails a [row check](#row-checks) counts as `invalid`, with its position. The other rows still run.
+
+### Role Entries
+
+Each entry in `roles` follows these rules:
+
+- The role is `operator`, `workspace-admin`, or `platform-admin`. The display names, such as `workspace administrator`,
+  also work.
+
+- An `operator` or `workspace-admin` entry must name a workspace that exists, such as `default-workspace`.
+
+- A `platform-admin` entry must not name a workspace.
+
+- A role can appear in more than one entry, each with its own workspace. The user gets one grant for that role over all
+  of those workspaces. A repeated entry adds nothing.
+
+- An unknown role, an entry with no role, or an entry that breaks a workspace rule makes the whole row invalid.
 
 ### Row Checks
 
@@ -94,7 +110,7 @@ The appliance checks each row in this order. The first check that fails is the r
 6. The first name and the last name are each at most 255 characters.
 
 7. Each entry in `roles` names a role that exists on the appliance and follows the workspace rules in
-   [Row Fields](#row-fields).
+   [Role Entries](#role-entries).
 
 8. The status is `active` or `inactive`.
 
@@ -106,7 +122,7 @@ The appliance checks each row in this order. The first check that fails is the r
 11. The password has no control characters.
 
 When the job adds the user, the identity provider checks the password length and character types. The preview does not
-run this check.
+run this check. If the identity provider refuses the password, the row counts as `failed`.
 
 ## CSV Conversion
 
@@ -118,8 +134,8 @@ rules:
 - In the `groups` cell, `;` separates the names. Each name becomes one item of the JSON array.
 
 - In the `roles` cell, `;` separates the entries. An entry is `<role>:<workspace>`, such as
-  `operator:default-workspace`, or `platform-admin` with no workspace. Each entry becomes one object of the JSON `roles`
-  array.
+  `operator:default-workspace`. A `platform-admin` entry is the role name alone. Each entry becomes one object of the
+  JSON `roles` array.
 
 - An empty cell means that the key is left out.
 
