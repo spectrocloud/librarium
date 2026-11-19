@@ -74,7 +74,7 @@ echo | openssl s_client -connect <appliance-address>:443 2>/dev/null | grep --ex
 
 Replace `<appliance-address>` with the IP address or domain name of your VerteX Management Appliance.
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 SSL routines:ssl3_read_bytes:tlsv1 alert protocol version
     Protocol  : TLSv1.3
     Cipher    : TLS_AES_128_GCM_SHA256
@@ -88,7 +88,7 @@ The VerteX Management Appliance performs its cryptography in FIPS 140-3 validate
 
 - The management plane services, the Kubernetes control-plane components, etcd, and the Kubelet are built against the
   Spectro Cloud Cryptographic Library
-  ([CMVP certificate #5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)).
+  ([Cryptographic Module Validation Program (CMVP) certificate #5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)).
   Refer to [FIPS-Compliant Components](./fips/fips-compliant-components.md).
 - The Traefik ingress proxy and the built-in pack registry are built against the Go Cryptographic Module v1.0.0
   ([CMVP certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)),
@@ -110,7 +110,7 @@ cat /proc/sys/crypto/fips_enabled
 sudo grep --text --only-matching --extended-regexp 'build[[:space:]](GOFIPS140|DefaultGODEBUG)=[^[:space:]]*' /proc/$(pgrep --exact traefik)/exe | sort --unique
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 1
 build	DefaultGODEBUG=fips140=on
 build	GOFIPS140=v1.0.0-c2097c7c
@@ -145,14 +145,15 @@ The output contains `alert handshake failure` and `SSL alert number 40`.
 
 ## SSH on Appliance Nodes {#ssh-on-appliance-nodes}
 
-The SSH daemon on each appliance node offers only the following algorithms. The host image sets them in
-`/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf`, which `/etc/ssh/sshd_config` includes.
+The SSH daemon on each appliance node offers only the following ciphers, Message Authentication Code (MAC) algorithms,
+and key exchange algorithms. The host image sets them in `/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf`,
+which `/etc/ssh/sshd_config` includes.
 
-| Type         | Algorithms                                                                                               |
-| ------------ | -------------------------------------------------------------------------------------------------------- |
-| Ciphers      | `aes256-ctr`, `aes256-gcm@openssh.com`, `aes192-ctr`, `aes128-ctr`, `aes128-gcm@openssh.com`             |
-| MACs         | `hmac-sha2-512`, `hmac-sha2-512-etm@openssh.com`, `hmac-sha2-256`, `hmac-sha2-256-etm@openssh.com`       |
-| Key exchange | `ecdh-sha2-nistp256`, `ecdh-sha2-nistp384`, `ecdh-sha2-nistp521`, `diffie-hellman-group-exchange-sha256` |
+| Type           | Algorithms                                                                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| Ciphers        | `aes256-ctr`, `aes256-gcm@openssh.com`, `aes192-ctr`, `aes128-ctr`, `aes128-gcm@openssh.com`             |
+| MAC algorithms | `hmac-sha2-512`, `hmac-sha2-512-etm@openssh.com`, `hmac-sha2-256`, `hmac-sha2-256-etm@openssh.com`       |
+| Key exchange   | `ecdh-sha2-nistp256`, `ecdh-sha2-nistp384`, `ecdh-sha2-nistp521`, `diffie-hellman-group-exchange-sha256` |
 
 :::info
 
@@ -170,7 +171,7 @@ On an appliance node, print the effective SSH daemon configuration.
 sudo sshd -T | grep --extended-regexp '^(ciphers|macs|kexalgorithms) '
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 ciphers aes256-ctr,aes256-gcm@openssh.com,aes192-ctr,aes128-ctr,aes128-gcm@openssh.com
 macs hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-256-etm@openssh.com
 kexalgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256
@@ -227,7 +228,7 @@ Decode the token header.
 echo "$TOKEN" | jq --raw-input --raw-output 'split(".")[0] | @base64d'
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 {"alg":"HS256","typ":"JWT"}
 ```
 
@@ -276,7 +277,7 @@ On a control-plane node, read the newest API server audit record and confirm the
 sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extended-regexp '"requestReceivedTimestamp":"[^"]+"'
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 "requestReceivedTimestamp":"2026-11-13T14:58:43.536483Z"
 ```
 
@@ -288,10 +289,11 @@ sudo tail --lines=1 /var/log/apiserver/audit.log | grep --only-matching --extend
   action, starting with the sign-in.
 - Local UI sessions are recorded in the Local UI audit log with the actor, the action, and the outcome, including failed
   sign-ins.
-- SSH sessions are recorded in the systemd journal with the user, the accepted key, and the source address, and by the
-  host audit daemon with the session open and close. The SSH daemon also logs to `/var/log/auth.log`, which only root
-  and the `adm` group can read. Commands run with `sudo` are recorded by the host audit daemon and by the systemd
-  journal, which logs the user, working directory, target user, and command. There is no separate `sudo` log file.
+- SSH sessions are recorded in the systemd journal with the user, the accepted key, and the source address. The host
+  audit daemon records when each session opens and closes. The SSH daemon also logs to `/var/log/auth.log`, which only
+  root and the `adm` group can read.
+- Commands run with `sudo` are recorded by the host audit daemon and by the systemd journal, which logs the user,
+  working directory, target user, and command. There is no separate `sudo` log file.
 - Kubernetes API requests are recorded in the API server audit log with the user, verb, resource, source address, and
   result code.
 
@@ -306,7 +308,7 @@ On an appliance node, list the audit rule for commands run with `sudo`.
 sudo auditctl -l | grep /usr/bin/sudo
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 -a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged
 ```
 
@@ -326,7 +328,7 @@ routine requests:
 
   - kube-proxy watches of endpoints and services.
 
-  - Node status reads by Kubelets.
+  - Node status reads by the Kubelet.
 
   - Endpoint reads and updates in `kube-system` by the controller manager, scheduler, and endpoint controller.
 
@@ -357,7 +359,7 @@ and 64-bit system calls.
 sudo auditctl -l | grep key=access
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 -a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access
 -a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access
 -a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access
@@ -371,10 +373,10 @@ sudo auditctl -l | grep key=access
 ## Workload Isolation {#workload-isolation}
 
 - The management plane's security services are authentication, user and role management, the management API, and system
-  administration. Each runs as a separate Kubernetes Deployment under its own service account, as a non-root user, with
-  the `RuntimeDefault` secure computing mode (`seccomp`) profile and the containerd AppArmor profile. Their namespace
-  enforces the `baseline` Pod Security Standard. The console front end, ingress, image registry, storage, and networking
-  run in their own namespaces.
+  administration. Each runs as a separate Kubernetes Deployment under its own service account and as a non-root user.
+  Each uses the `RuntimeDefault` secure computing mode (`seccomp`) profile and the containerd AppArmor profile. Their
+  namespace enforces the `baseline` Pod Security Standard. The console front end, ingress, image registry, storage, and
+  networking run in their own namespaces.
 - No container shares the host PID or mount namespace.
 - Only the following infrastructure components, shipped in the appliance image, use the host network, UTS, IPC, or
   cgroup namespaces, or host paths:
@@ -406,7 +408,7 @@ host mount namespace.
 sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces --output jsonpath='{range .items[?(@.spec.hostPID==true)]}{.metadata.name}{"\n"}{end}' | wc --lines
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 0
 ```
 
@@ -432,7 +434,7 @@ curl --silent --insecure --write-out ' %{http_code}\n' --header "ApiKey: <api-ke
 Replace `<api-key>` with a Palette VerteX API key, and `<appliance-address>` with the IP address or domain name of your
 VerteX Management Appliance.
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 {"code":601,"message":"limit in query must be of type int64: \"abc\""} 422
 ```
 
