@@ -23,11 +23,14 @@ airgap environment, refer to the environment preparation guide before installing
 | -------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
 | Install Palette on Kubernetes with internet connectivity | None                                                                    | [Install Instructions](install.md)                         |
 | Install Palette on Kubernetes in an airgap environment   | [Environment Setup](./airgap-install/kubernetes-airgap-instructions.md) | [Airgap Install Instructions](./airgap-install/install.md) |
+| Install Palette on an IPv6 Amazon EKS cluster            | None                                                                    | [IPv6 EKS Install Instructions](./install-ipv6-eks.md)     |
 
 ## Resources
 
 - [Non-Airgap Install Instructions](install.md)
 
 - [Airgap Install Instructions](./airgap-install/install.md)
+
+- [IPv6 EKS Install Instructions](./install-ipv6-eks.md)
 
 - [Helm Configuration Reference](palette-helm-ref.md)
