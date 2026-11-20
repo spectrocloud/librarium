@@ -95,7 +95,7 @@
     "@typescript-eslint/parser": "^8.72.1",
     "babel-jest": "^30.5.0",
     "dotenv": "^17.4.0",
-    "eslint": "^8.57.0",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
