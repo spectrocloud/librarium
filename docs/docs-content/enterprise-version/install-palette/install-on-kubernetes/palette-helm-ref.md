@@ -52,8 +52,8 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 
 - **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
   images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
-  your Spectro Cloud customer support representative. Use the Docker configuration JSON (`dockerconfigjson`) value that
-  they provide, which is already base64-encoded. Refer to
+  your Spectro Cloud customer support representative. In the message that they send, use the value that is labeled
+  **Docker Configuration JSON (dockerconfigjson)**. The value is already base64-encoded. Refer to
   [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
   more information.
 
@@ -114,8 +114,9 @@ networking.
 | `PreferDualStack`  | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services receive one cluster IP address, and no error occurs. |
 | `RequireDualStack` | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services cannot be created.                                   |
 
-On a cluster that uses dual-stack networking, we recommend `RequireDualStack`. `PreferDualStack` does not guarantee that
-the services receive IPv6 addresses, because it falls back to one IP family without an error.
+On a cluster that uses dual-stack networking, we recommend `RequireDualStack`. If the cluster does not provide both IP
+families, `PreferDualStack` falls back to one IP family without an error, so the services might not receive IPv6
+addresses.
 
 You cannot use `serviceIpFamilyPolicy` to request services that use IPv6 only. With an empty value, the services use the
 first service CIDR range of the cluster, which is an IPv6 range on an Amazon EKS cluster that uses the IPv6 IP address

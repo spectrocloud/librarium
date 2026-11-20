@@ -106,6 +106,15 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
    | **Add-ons**                   | **Amazon EKS Pod Identity Agent**, **Amazon VPC CNI**, **CoreDNS**, and **kube-proxy**. Do not select **Metrics Server**, because Palette installs its own.                                                                                                                  |
    | **Amazon VPC CNI** IAM role   | The IAM role that has the `AmazonEKS_CNI_IPv6_Policy` policy attached. If you select **Inherit from node** instead, attach the policy to the node IAM role of the managed node group that you create in [Post-Installation Configuration](#post-installation-configuration). |
 
+   :::warning
+
+   Create the managed node group only after the installation completes. If the node group exists during the
+   installation, pods that require persistent volumes, such as the MongoDB pods, can be scheduled on its node. Their
+   volumes are never provisioned, because the Elastic Block Store (EBS) storage driver of EKS Auto Mode runs only on the
+   nodes that EKS Auto Mode manages.
+
+   :::
+
 2. Update your kubeconfig file so that you can access the cluster with `kubectl`.
 
    ```shell
@@ -242,15 +251,6 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
     | **Minimum size**  | `1`                                                                                                                                                                          |
     | **Maximum size**  | `2`                                                                                                                                                                          |
     | **Subnets**       | The private subnets of the VPC.                                                                                                                                              |
-
-    :::warning
-
-    Create the managed node group only after the installation completes. If the node group exists during the
-    installation, pods that require persistent volumes, such as the MongoDB pods, can be scheduled on its node. Their
-    volumes are never provisioned, because the EBS storage driver of EKS Auto Mode runs only on the nodes that EKS Auto
-    Mode manages.
-
-    :::
 
 20. _(Optional)_ If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
     [EKS Pod Identity](../../../clusters/public-cloud/aws/add-aws-accounts.md#eks-pod-identity) section of the Register
