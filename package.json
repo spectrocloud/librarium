@@ -34,11 +34,11 @@
   },
   "overrides": {
     "react-live": ">=3.1.1 <4.0.0",
-    "axios": "1.13.5"
+    "axios": "1.20.0"
   },
   "resolutions": {
     "react-live": ">=3.1.1 <4.0.0",
-    "axios": "1.13.5"
+    "axios": "1.20.0"
   },
   "dependencies": {
     "@ant-design/icons": "^6.3.2",
@@ -112,7 +112,6 @@
     "lint-staged": "^17.6.0",
     "prettier": "3.5.3",
     "semantic-release": "^25.0.8",
-    "test-links": "^0.0.1",
     "ts-jest": "^29.4.15",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.2.0",
