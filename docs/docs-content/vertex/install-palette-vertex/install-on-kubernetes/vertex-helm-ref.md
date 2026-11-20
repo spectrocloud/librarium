@@ -19,10 +19,10 @@ To learn how to install Palette VerteX using the Helm Chart, refer to the Kubern
 
 The following parameters are required for a successful installation of Palette VerteX.
 
-| **Parameters**                                                  | **Description**                                                                                                                                                                                                                                                              | **Type** |
-| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `config.env.rootDomain`                                         | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](#environment) to learn more. | String   |
-| `config.env.ociPackRegistry` or `config.env.ociPackEcrRegistry` | Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                        | Object   |
+| **Parameters**                                          | **Description**                                                                                                                                                                                                                                                              | **Type** |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `config.env.rootDomain`                                 | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](#environment) to learn more. | String   |
+| `config.ociPackRegistry` or `config.ociPackEcrRegistry` | Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                        | Object   |
 
 :::warning
 
@@ -53,7 +53,8 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 
 - **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
   images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
-  your Spectro Cloud customer support representative. Refer to
+  your Spectro Cloud customer support representative. Use the Docker configuration JSON (`dockerconfigjson`) value that
+  they provide, which is already base64-encoded. Refer to
   [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
   more information.
 
@@ -96,11 +97,13 @@ Helm charts for Palette VerteX 4.10.46 and later. Refer to
 | `enableIPv6`            | Specifies whether Palette VerteX services listen on IPv6 addresses in addition to IPv4 addresses. A value of `true` also adds the `::1` address and the `fd00::/8` range to the `NO_PROXY` list. Set to `true` when the cluster uses IPv6 or dual-stack networking. A cluster that uses IPv6 only requires this value. | Boolean  | `false`           |
 | `serviceIpFamilyPolicy` | The IP family policy (`spec.ipFamilyPolicy`) of the ingress and gRPC services. Allowed values are `""`, `PreferDualStack`, and `RequireDualStack`. The table after the example describes the effect of each value.                                                                                                     | String   | `""`              |
 
+The following example is for a cluster that uses dual-stack networking.
+
 ```yaml
 global:
   ipFamily:
     enableIPv6: true
-    serviceIpFamilyPolicy: PreferDualStack
+    serviceIpFamilyPolicy: RequireDualStack
 ```
 
 The effect of the `serviceIpFamilyPolicy` value depends on whether the cluster uses dual-stack or single-stack
@@ -111,6 +114,9 @@ networking.
 | `""`               | The services receive one cluster IP address from the first service Classless Inter-Domain Routing (CIDR) range of the cluster. | The services receive one cluster IP address.                      |
 | `PreferDualStack`  | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services receive one cluster IP address, and no error occurs. |
 | `RequireDualStack` | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services cannot be created.                                   |
+
+On a cluster that uses dual-stack networking, we recommend `RequireDualStack`. `PreferDualStack` does not guarantee that
+the services receive IPv6 addresses, because it falls back to one IP family without an error.
 
 You cannot use `serviceIpFamilyPolicy` to request services that use IPv6 only. With an empty value, the services use the
 first service CIDR range of the cluster, which is an IPv6 range on an Amazon EKS cluster that uses the IPv6 IP address
@@ -368,8 +374,8 @@ AWS ECR registry. Our support team provides the credentials for the OCI ECR regi
 | --------------------------------------- | -------------------------------------------------------------------------------------------------- | -------- | ----------------- |
 | `ociPackEcrRegistry.endpoint`           | The endpoint URL for the registry.                                                                 | String   | `""`              |
 | `ociPackEcrRegistry.name`               | The name of the registry.                                                                          | String   | `""`              |
-| `ociPackEcrRegistry.accessKey`          | The base64-encoded access key for the registry.                                                    | String   | `""`              |
-| `ociPackEcrRegistry.secretKey`          | The base64-encoded secret key for the registry.                                                    | String   | `""`              |
+| `ociPackEcrRegistry.accessKey`          | The access key for the registry.                                                                   | String   | `""`              |
+| `ociPackEcrRegistry.secretKey`          | The secret key for the registry.                                                                   | String   | `""`              |
 | `ociPackEcrRegistry.baseContentPath`    | The base path for the registry.                                                                    | String   | `""`              |
 | `ociPackEcrRegistry.isPrivate`          | Specifies whether the registry is private.                                                         | Boolean  | `true`            |
 | `ociPackEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean  | `false`           |
