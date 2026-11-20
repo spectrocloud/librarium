@@ -828,3 +828,95 @@ require_super_auth() {
     echo "❌ Super still rejects SUPER_API_TOKEN. Confirm that SUPER_API_TOKEN in your .env file matches a current key in your Super settings." >&2
     return 1
 }
+
+# Utility function to collect a Super answer that is still being prepared.
+# When an answer takes longer than about 50 seconds, the Super API stops waiting and returns
+# HTTP 202 with {"status": "processing", "threadId": "...", "retryAfterSeconds": 15}. Super keeps
+# preparing the answer, and GET /v1/threads/{threadId} returns HTTP 202 while the status is
+# "processing", then HTTP 200 with the final status and the question and answer rounds, oldest
+# first. Asking the question again instead would start a new thread and discard this one.
+# Params:
+# $1 - thread ID from the HTTP 202 response
+# $2 - seconds to wait before the first check (retryAfterSeconds from that response; default 15)
+# $3 - file to write the answer to, as {"answer": "..."}, so that callers can read it the same
+#      way as an HTTP 200 response
+# Environment:
+# SUPER_API_BASE_URL - Super API base URL (default https://api.super.work)
+# SUPER_THREAD_TIMEOUT_SECONDS - how long to wait for the answer in total (default 900)
+# Returns 0 when the answer is written to $3, or 1 when the thread failed, is unknown, or timed out.
+# Exits when Super rejects SUPER_API_TOKEN, because retrying never helps until its owner signs in.
+wait_for_super_thread() {
+    local thread_id="$1"
+    local wait_seconds="${2:-15}"
+    local output_file="$3"
+    local base_url="${SUPER_API_BASE_URL:-https://api.super.work}"
+    local timeout_seconds="${SUPER_THREAD_TIMEOUT_SECONDS:-900}"
+    local deadline=$((SECONDS + timeout_seconds))
+    local poll_file status thread_status answer next_wait
+
+    poll_file="$(mktemp)"
+    wait_seconds="${wait_seconds%%.*}"
+    [[ "$wait_seconds" =~ ^[0-9]+$ && "$wait_seconds" -gt 0 ]] || wait_seconds=15
+
+    while (( SECONDS + wait_seconds <= deadline )); do
+        sleep "$wait_seconds"
+
+        status=$(curl -sS --max-time 60 \
+            --output "$poll_file" \
+            --write-out '%{http_code}' \
+            --url "${base_url}/v1/threads/${thread_id}" \
+            --header "Authorization: Bearer ${SUPER_API_TOKEN}") || true
+        # curl reports a connection failure as 000 through --write-out.
+        status="${status:-000}"
+
+        case "$status" in
+            401|403)
+                echo "❌ Super rejected SUPER_API_TOKEN (HTTP $status) part way through this run. Sign in at https://app.super.work and run this script again." >&2
+                rm -f "$poll_file"
+                exit 1
+                ;;
+            200)
+                thread_status=$(jq -r '.status // empty' < "$poll_file" 2>/dev/null || true)
+                if [[ "$thread_status" == "completed" ]]; then
+                    answer=$(jq -r '.rounds[-1].answer // empty' < "$poll_file" 2>/dev/null || true)
+                    rm -f "$poll_file"
+                    if [[ -z "$answer" ]]; then
+                        echo "⚠️ Super thread $thread_id completed with an empty answer." >&2
+                        return 1
+                    fi
+                    jq -n --arg answer "$answer" '{answer: $answer}' > "$output_file"
+                    return 0
+                fi
+                if [[ "$thread_status" != "processing" ]]; then
+                    echo "⚠️ Super thread $thread_id ended with status \"${thread_status:-unknown}\"." >&2
+                    rm -f "$poll_file"
+                    return 1
+                fi
+                ;;
+            202|429)
+                # Still processing, or rate limited: wait and check again.
+                ;;
+            404)
+                echo "⚠️ Super has no thread $thread_id (HTTP 404)." >&2
+                rm -f "$poll_file"
+                return 1
+                ;;
+            *)
+                echo "⚠️ Checking Super thread $thread_id failed (HTTP $status): $(head -c 300 "$poll_file"). Trying again." >&2
+                ;;
+        esac
+
+        next_wait=$(jq -r '.retryAfterSeconds // empty' < "$poll_file" 2>/dev/null || true)
+        next_wait="${next_wait%%.*}"
+        if [[ "$next_wait" =~ ^[0-9]+$ && "$next_wait" -gt 0 ]]; then
+            wait_seconds="$next_wait"
+        else
+            wait_seconds=15
+        fi
+        echo "ℹ️ Super is still preparing the answer in thread $thread_id. Checking again in ${wait_seconds}s..."
+    done
+
+    echo "⚠️ Gave up waiting for Super thread $thread_id after ${timeout_seconds}s." >&2
+    rm -f "$poll_file"
+    return 1
+}
