@@ -28,6 +28,7 @@ refer to [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/u
 | `ANTHROPIC_DEFAULT_FABLE_MODEL`  | The alias Claude Code requests for its Fable-tier work.                                                                                                                                        | `claude-fable-5`                                        |
 | `CLAUDE_CODE_EFFORT_LEVEL`       | Claude Code's reasoning effort. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`. The value `auto` leaves each model at its own default.                                              | `auto`                                                  |
 | `CLAUDE_CODE_MAX_OUTPUT_TOKENS`  | The maximum number of tokens in a single response. Lower it to cap response length and cost.                                                                                                   | `64000`                                                 |
+| `CLAUDE_CODE_AUTO_MODE_SERVER`   | Set to `0` so that Claude Code runs its own auto mode safety checks. Refer to [Auto Mode Safety Checks](../explanation/claude-apps.md#auto-mode-safety-checks).                                | `0`                                                     |
 
 ## Endpoint URL
 
@@ -81,6 +82,8 @@ how quotas apply, refer to [Clients and Quotas](../explanation/clients-and-quota
 ## Resources
 
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md)
+- [Persist Claude Code Configuration](../how-to-guides/persist-claude-code-configuration.md)
+- [Claude Code and Claude Desktop](../explanation/claude-apps.md)
 - [Generate an API Token](../how-to-guides/generate-an-api-token.md)
 - [Clients and Quotas](../explanation/clients-and-quotas.md)
 - [Routing Behavior](../explanation/routing-behavior.md)

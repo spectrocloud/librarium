@@ -29,3 +29,4 @@ They cover design decisions, component relationships, and trade-offs rather than
 | [Inference Engines](./inference-engines.md)                 | What an inference engine is, automatic engine selection, the supported kinds, and engine arguments.                        |
 | [Installation Architecture](./installation-architecture.md) | How the appliance installs, why the network uses a bond, and how day-two upgrades stay in Local UI.                        |
 | [The Thinking Directive](./thinking-directive.md)           | How the Thinking directive on the Tier map controls reasoning depth by effort level and how each engine reacts.            |
+| [Claude Code and Claude Desktop](./claude-apps.md)          | Where Claude Code and Claude Desktop read their configuration, and what a session on the appliance does not include.       |
